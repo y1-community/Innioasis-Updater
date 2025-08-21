@@ -8435,8 +8435,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             )
             
             if reply == QMessageBox.Yes:
-                # Launch the updater script
-                subprocess.Popen([sys.executable, str(updater_script_path)])
+                # Launch the updater script with -f argument for force update
+                subprocess.Popen([sys.executable, str(updater_script_path), "-f"])
                 
                 # Close the current app after a short delay
                 QTimer.singleShot(1000, self.close)
@@ -8447,6 +8447,21 @@ class FirmwareDownloaderGUI(QMainWindow):
 if __name__ == "__main__":
     # Create the application
     app = QApplication(sys.argv)
+    
+    # Set application icon based on platform
+    from PySide6.QtGui import QIcon
+    import platform
+    
+    if platform.system() == "Darwin":  # macOS
+        icon_path = "mtkclient/gui/images/Innioasis Updater Icon.icns"
+    elif platform.system() == "Windows":
+        icon_path = "mtkclient/gui/images/icon.ico"
+    else:
+        # Fallback to PNG for other platforms
+        icon_path = "mtkclient/gui/images/icon.png"
+    
+    if Path(icon_path).exists():
+        app.setWindowIcon(QIcon(icon_path))
     
     # Create and show the main window
     window = FirmwareDownloaderGUI()
