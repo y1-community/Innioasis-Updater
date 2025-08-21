@@ -42,20 +42,13 @@ class CrossPlatformHelper:
     @staticmethod
     def get_python_executable():
         """Get the appropriate Python executable for the platform"""
-        platform_info = CrossPlatformHelper.get_platform_info()
-        
-        if platform_info['is_windows']:
-            # On Windows, try python.exe first, then python3.exe
-            python_candidates = ['python.exe', 'python3.exe', 'python']
-        else:
-            # On macOS/Linux, try python3 first, then python
-            python_candidates = ['python3', 'python']
-        
-        # First try sys.executable
         if sys.executable:
             return sys.executable
         
-        # Then try the candidates
+        python_candidates = ['python3', 'python']
+        if CrossPlatformHelper.get_platform_info()['is_windows']:
+            python_candidates = ['python.exe', 'python3.exe', 'python']
+        
         for candidate in python_candidates:
             try:
                 result = subprocess.run([candidate, '--version'],
@@ -65,59 +58,19 @@ class CrossPlatformHelper:
             except (subprocess.TimeoutExpired, FileNotFoundError):
                 continue
         
-        # Fallback to sys.executable
-        return sys.executable
+        return "python" # Fallback
 
     @staticmethod
     def get_pip_command():
         """Get the appropriate pip command for the platform"""
         python_exe = CrossPlatformHelper.get_python_executable()
-        
-        if platform.system().lower() == 'windows':
-            # On Windows, use python -m pip
-            return [python_exe, '-m', 'pip']
-        else:
-            # On macOS/Linux, try pip3 first, then pip
-            pip_candidates = ['pip3', 'pip']
-            for candidate in pip_candidates:
-                try:
-                    result = subprocess.run([candidate, '--version'],
-                                            capture_output=True, text=True, timeout=5)
-                    if result.returncode == 0:
-                        return [candidate]
-                except (subprocess.TimeoutExpired, FileNotFoundError):
-                    continue
-            
-            # Fallback to python -m pip
-            return [python_exe, '-m', 'pip']
+        return [python_exe, '-m', 'pip']
 
     @staticmethod
     def get_launch_command(script_path):
         """Get the appropriate launch command for the platform"""
         python_exe = CrossPlatformHelper.get_python_executable()
-        platform_info = CrossPlatformHelper.get_platform_info()
-        
-        if platform_info['is_windows']:
-            # On Windows, use python.exe with the script
-            return [python_exe, str(script_path)]
-        else:
-            # On macOS/Linux, try to make the script executable first
-            try:
-                os.chmod(script_path, 0o755)
-            except Exception:
-                pass
-            
-            # Try to run the script directly first
-            try:
-                result = subprocess.run([str(script_path), '--help'],
-                                        capture_output=True, text=True, timeout=5)
-                if result.returncode == 0 or result.returncode == 2:  # Help or usage shown
-                    return [str(script_path)]
-            except (subprocess.TimeoutExpired, FileNotFoundError, PermissionError):
-                pass
-            
-            # Fallback to python with the script
-            return [python_exe, str(script_path)]
+        return [python_exe, str(script_path)]
 
 
 class UpdateWorker(QThread):
@@ -139,9 +92,6 @@ class UpdateWorker(QThread):
             
             self.status_updated.emit(f"Starting update process on {self.platform_info['system'].title()}...")
             self.progress_updated.emit(5)
-            
-            self.status_updated.emit("Preparing update...")
-            self.progress_updated.emit(10)
             
             # Download latest version from GitHub
             github_url = "https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip"
@@ -171,34 +121,29 @@ class UpdateWorker(QThread):
                 self.update_completed.emit(False, f"Error extracting files: {e}")
                 return
             
-            # Find the extracted directory
-            extracted_dir = None
-            for item in current_dir.iterdir():
-                if item.is_dir() and item.name.startswith("Innioasis-Updater-main"):
-                    extracted_dir = item
-                    break
-            
+            extracted_dir = next(current_dir.glob("Innioasis-Updater-main*"), None)
             if not extracted_dir:
                 self.update_completed.emit(False, "Could not find extracted directory")
                 return
             
             # Install dependencies
-            self.install_requirements()
+            self.install_requirements(extracted_dir)
             
             # Copy new files to current directory
             self.status_updated.emit("Installing new files...")
             self.progress_updated.emit(90)
             
             try:
-                # Copy all files from extracted directory to current directory
                 for item in extracted_dir.iterdir():
-                    if item.name not in [".git", "__pycache__", ".DS_Store", "firmware_downloads"]:
-                        if item.is_file():
-                            shutil.copy2(item, current_dir / item.name)
-                        elif item.is_dir():
-                            if (current_dir / item.name).exists():
-                                shutil.rmtree(current_dir / item.name)
-                            shutil.copytree(item, current_dir / item.name)
+                    if item.name in [".git", "__pycache__", ".DS_Store", "firmware_downloads"]:
+                        continue
+                    dest_item = current_dir / item.name
+                    if item.is_file():
+                        shutil.copy2(item, dest_item)
+                    elif item.is_dir():
+                        if dest_item.exists():
+                            shutil.rmtree(dest_item)
+                        shutil.copytree(item, dest_item)
                 
                 self.status_updated.emit("Files installed!")
                 self.progress_updated.emit(95)
@@ -211,18 +156,15 @@ class UpdateWorker(QThread):
             self.progress_updated.emit(98)
             
             try:
-                if zip_file.exists():
-                    zip_file.unlink()
-                if extracted_dir.exists():
-                    shutil.rmtree(extracted_dir)
-                # Write timestamp after successful update
+                zip_file.unlink(missing_ok=True)
+                shutil.rmtree(extracted_dir)
                 timestamp_file.write_text(str(time.time()))
             except Exception as e:
                 self.status_updated.emit(f"Warning: Could not clean up temporary files: {e}")
             
             self.progress_updated.emit(100)
             self.status_updated.emit("Update completed successfully!")
-            self.update_completed.emit(True, "Update successful! Launching firmware_downloader.py...")
+            self.update_completed.emit(True, "Update successful!")
             
         except Exception as e:
             self.update_completed.emit(False, f"Unexpected error: {e}")
@@ -237,59 +179,42 @@ class UpdateWorker(QThread):
         
         with open(filepath, 'wb') as f:
             for chunk in response.iter_content(chunk_size=8192):
+                if self.should_stop: return
                 if chunk:
                     f.write(chunk)
                     downloaded_size += len(chunk)
                     if total_size > 0:
-                        progress = int(15 + (downloaded_size / total_size) * 35)  # Progress from 15% to 50%
+                        progress = int(15 + (downloaded_size / total_size) * 35)
                         self.progress_updated.emit(progress)
                         self.status_updated.emit(f"Downloading... {int((downloaded_size / total_size) * 100)}%")
 
-    def install_requirements(self):
-        """Install requirements.txt if it exists with cross-platform support"""
-        requirements_file = Path("requirements.txt")
+    def install_requirements(self, source_dir):
+        """Install requirements.txt from the source directory."""
+        requirements_file = source_dir / "requirements.txt"
         if requirements_file.exists():
             self.status_updated.emit("Installing Python dependencies...")
             self.progress_updated.emit(75)
             
             try:
                 pip_cmd = CrossPlatformHelper.get_pip_command()
-                install_cmd = pip_cmd + ["install", "-r", "requirements.txt"]
+                install_cmd = pip_cmd + ["install", "-r", str(requirements_file)]
                 
                 self.status_updated.emit(f"Running: {' '.join(install_cmd)}")
                 
-                # Run pip install with platform-specific handling
-                result = subprocess.run(install_cmd,
-                                        capture_output=True,
-                                        text=True,
-                                        timeout=300)  # 5 minute timeout
+                result = subprocess.run(install_cmd, capture_output=True, text=True, timeout=300)
                 
                 if result.returncode == 0:
                     self.status_updated.emit("Dependencies installed successfully!")
                 else:
-                    # Try with --user flag if regular install fails
-                    self.status_updated.emit("Retrying with --user flag...")
-                    install_cmd_user = pip_cmd + ["install", "--user", "-r", "requirements.txt"]
-                    result_user = subprocess.run(install_cmd_user,
-                                                 capture_output=True,
-                                                 text=True,
-                                                 timeout=300)
-                    
-                    if result_user.returncode == 0:
-                        self.status_updated.emit("Dependencies installed successfully (user mode)!")
-                    else:
-                        self.status_updated.emit(f"Warning: Could not install dependencies: {result_user.stderr}")
+                    self.status_updated.emit(f"Warning: Could not install dependencies: {result.stderr}")
                 
                 self.progress_updated.emit(80)
                 
-            except subprocess.TimeoutExpired:
-                self.status_updated.emit("Warning: Dependency installation timed out")
-                self.progress_updated.emit(80)
             except Exception as e:
                 self.status_updated.emit(f"Warning: Could not install dependencies: {e}")
                 self.progress_updated.emit(80)
         else:
-            self.status_updated.emit("No requirements.txt found, skipping dependency installation")
+            self.status_updated.emit("No requirements.txt found, skipping.")
             self.progress_updated.emit(80)
 
 
@@ -301,19 +226,12 @@ class UpdateProgressDialog(QDialog):
         self.setWindowTitle("Innioasis Updater")
         self.setModal(True)
         
-        # Set up UI
         layout = QVBoxLayout(self)
         
         title_label = QLabel("Innioasis Updater")
         title_label.setFont(QFont("Arial", 16, QFont.Bold))
         title_label.setAlignment(Qt.AlignCenter)
         layout.addWidget(title_label)
-        
-        platform_info = CrossPlatformHelper.get_platform_info()
-        platform_label = QLabel(f"Platform: {platform_info['system'].title()} {platform_info['machine']}")
-        platform_label.setAlignment(Qt.AlignCenter)
-        platform_label.setStyleSheet("color: #666; font-size: 10px;")
-        layout.addWidget(platform_label)
         
         self.status_label = QLabel("Initializing...")
         self.status_label.setAlignment(Qt.AlignCenter)
@@ -322,11 +240,9 @@ class UpdateProgressDialog(QDialog):
         
         self.progress_bar = QProgressBar()
         self.progress_bar.setRange(0, 100)
-        self.progress_bar.setValue(0)
         layout.addWidget(self.progress_bar)
         
         self.log_text = QTextEdit()
-        self.log_text.setMaximumHeight(150)
         self.log_text.setReadOnly(True)
         layout.addWidget(self.log_text)
         
@@ -336,41 +252,18 @@ class UpdateProgressDialog(QDialog):
 
         if perform_update:
             self.setFixedSize(500, 300)
-            # Set up and start the update worker thread
             self.update_worker = UpdateWorker()
             self.update_worker.progress_updated.connect(self.progress_bar.setValue)
             self.update_worker.status_updated.connect(self.update_status)
             self.update_worker.update_completed.connect(self.on_update_completed)
             self.update_worker.start()
         else:
-            # If no update is needed, just show a launch message
-            self.setFixedSize(500, 180) # Use a smaller window
+            self.setFixedSize(500, 180)
             self.update_status("Update not required. Launching application...")
             self.progress_bar.hide()
             self.log_text.hide()
             self.cancel_button.hide()
-            # Launch after a short delay so the user sees the message
-            QTimer.singleShot(1500, self._launch_and_close)
-
-    def _launch_main_script(self):
-        """Finds and launches the main firmware_downloader.py script."""
-        firmware_script = Path.cwd() / "firmware_downloader.py"
-        if firmware_script.exists():
-            try:
-                launch_cmd = CrossPlatformHelper.get_launch_command(firmware_script)
-                self.update_status(f"Launching: {' '.join(launch_cmd)}")
-                subprocess.Popen(launch_cmd)
-            except Exception as e:
-                self.update_status(f"Error: Could not auto-launch firmware_downloader.py: {e}")
-                QMessageBox.critical(self, "Launch Failed", f"Could not launch the main application:\n{e}")
-        else:
-            self.update_status("Error: firmware_downloader.py not found.")
-            QMessageBox.critical(self, "Launch Failed", "Could not find 'firmware_downloader.py'.\nPlease try running the update again using the --force flag.")
-            
-    def _launch_and_close(self):
-        """Helper method to launch the main script and then accept the dialog."""
-        self._launch_main_script()
-        self.accept()
+            QTimer.singleShot(1500, self.accept)
 
     def update_status(self, message):
         """Update status message and log"""
@@ -380,15 +273,8 @@ class UpdateProgressDialog(QDialog):
     
     def cancel_update(self):
         """Cancel the update process"""
-        reply = QMessageBox.question(
-            self,
-            "Cancel Update",
-            "Are you sure you want to cancel the update? This may leave the application in an inconsistent state.",
-            QMessageBox.Yes | QMessageBox.No,
-            QMessageBox.No
-        )
-        
-        if reply == QMessageBox.Yes:
+        if QMessageBox.question(self, "Cancel Update", "Are you sure you want to cancel?",
+                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No) == QMessageBox.Yes:
             if hasattr(self, 'update_worker'):
                 self.update_worker.should_stop = True
                 self.update_worker.terminate()
@@ -397,54 +283,58 @@ class UpdateProgressDialog(QDialog):
     
     def on_update_completed(self, success, message):
         """Handle update completion"""
+        self.update_status(message)
         if success:
-            self.update_status(message)
-            self._launch_main_script()
-            # Give a moment for the user to read the final message before closing
             QTimer.singleShot(2000, self.accept)
         else:
-            self.update_status(f"Update failed: {message}")
-            QMessageBox.critical(self, "Update Failed", 
-                                 f"Update failed: {message}\n\nPlease check the error messages above.")
+            QMessageBox.critical(self, "Update Failed", f"Update failed: {message}")
             self.reject()
+
+
+def launch_firmware_downloader():
+    """Finds and launches the main firmware_downloader.py script."""
+    firmware_script = Path.cwd() / "firmware_downloader.py"
+    if firmware_script.exists():
+        try:
+            launch_cmd = CrossPlatformHelper.get_launch_command(firmware_script)
+            print(f"Launching: {' '.join(launch_cmd)}")
+            subprocess.Popen(launch_cmd)
+            return True
+        except Exception as e:
+            QMessageBox.critical(None, "Launch Failed", f"Could not launch the main application:\n{e}")
+    else:
+        QMessageBox.critical(None, "Launch Failed", "Could not find 'firmware_downloader.py'.")
+    return False
 
 
 def main():
     """Main function to check for updates and launch the GUI."""
     parser = argparse.ArgumentParser(description="Innioasis Updater Script")
-    parser.add_argument("-f", "--force", action="store_true", help="Force the update, ignoring the 24-hour check.")
+    parser.add_argument("-f", "--force", action="store_true", help="Force the update.")
     args = parser.parse_args()
 
-    current_dir = Path.cwd()
-    timestamp_file = current_dir / ".last_update_check"
+    timestamp_file = Path.cwd() / ".last_update_check"
     needs_update = False
 
     if args.force:
         needs_update = True
     else:
-        twenty_four_hours_in_seconds = 24 * 60 * 60
-        if timestamp_file.exists():
-            try:
-                last_check_time = float(timestamp_file.read_text())
-                if time.time() - last_check_time >= twenty_four_hours_in_seconds:
-                    needs_update = True
-                # If it's false, we do nothing and proceed to launch with needs_update=False
-            except (ValueError, IOError):
-                # Corrupted file, treat as needing an update.
-                needs_update = True
-        else:
-            # No timestamp file means this is the first run or it was deleted.
+        if not timestamp_file.exists() or (time.time() - float(timestamp_file.read_text()) >= 24 * 3600):
             needs_update = True
 
-    # Always start the GUI application.
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     
-    # Pass the 'needs_update' flag to the dialog to control its behavior.
     dialog = UpdateProgressDialog(perform_update=needs_update)
-    result = dialog.exec_()
+    result = dialog.exec()
     
-    sys.exit(0 if result == QDialog.Accepted else 1)
+    # **REFACTORED LOGIC:** Only launch after the dialog has successfully closed.
+    if result == QDialog.Accepted:
+        launch_firmware_downloader()
+        sys.exit(0)
+    else:
+        # User cancelled or an error occurred.
+        sys.exit(1)
 
 
 if __name__ == "__main__":

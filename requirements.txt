@@ -14,7 +14,5 @@ capstone
 unicorn
 keystone
 requests
-pyusb
-pycryptodome
 # fusepy - Optional dependency for filesystem mounting (fs command only)
 
