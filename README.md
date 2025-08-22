@@ -56,7 +56,7 @@ sudo dnf install python3 git libusb1
 #### Grab files
 ```
 git clone https://github.com/team-slide/Innioasis-Updater
-cd mtkclient
+cd Innioasis-Updater
 pip3 install -r requirements.txt
 pip3 install .
 ```
@@ -75,7 +75,7 @@ pip install .
 ```
 sudo usermod -a -G plugdev $USER
 sudo usermod -a -G dialout $USER
-sudo cp mtkclient/Setup/Linux/*.rules /etc/udev/rules.d
+sudo cp Innioasis-Updater/Setup/Linux/*.rules /etc/udev/rules.d
 sudo udevadm control -R
 sudo udevadm trigger
 ```
@@ -128,8 +128,8 @@ Download and install [here](https://sourceforge.net/projects/openssl-for-windows
 
 #### Grab files and install
 ```
-git clone https://github.com/bkerler/mtkclient
-cd mtkclient
+git clone https://github.com/team-slide/Innioasis-Updater
+cd Innioasis-Updater
 pip3 install -r requirements.txt
 ```
 
