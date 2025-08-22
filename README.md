@@ -153,7 +153,7 @@ pip3 install -r requirements.txt
 ---------------------------------------------------------------------------------------------------------------
 ## Usage
 ### Activating your venv
-Basically, you created a venv folder, so you need to use it to python find the right packages, and don't have any conflicts
+In order to activate your venv you'll need to run these commands
 ```
 . ~/.venv/bin/activate
 ```
