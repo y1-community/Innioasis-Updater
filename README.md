@@ -65,7 +65,7 @@ pip3 install .
 ```
 python3 -m venv ~/.venv
 git clone https://github.com/team-slide/Innioasis-Updater
-cd mtkclient
+cd Innioasis-Updater
 . ~/.venv/bin/activate
 pip install -r requirements.txt
 pip install .
@@ -91,7 +91,7 @@ the "/etc/modprobe.d/blacklist.conf".
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install macfuse openssl
+brew install libusb openssl
 ```
 
 You may need to **reboot**
