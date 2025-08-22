@@ -170,6 +170,12 @@ This means you are on venv folder!
 ### Using Innioasis Updater:
 To start installing firmwares:
 ```
-python updater.py or python3 updater.py (especially on macOS)
+python updater.py
+```
+
+or:
+
+```
+python3 updater.py
 ```
 
