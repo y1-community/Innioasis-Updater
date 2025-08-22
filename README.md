@@ -27,17 +27,21 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 ## Install
 
+### Windows
+
+Easy Install: You can auto-install a preview version of this with Y1 Helper [here](https://www.github.com/team-slide/Y1-Helper/releases/latest)
+
 ### Linux - (Ubuntu recommended, no patched kernel needed except for kamakiri)
 
 #### Install python >=3.8, git and other deps
 
 #### For Debian/Ubuntu
 ```
-sudo apt install python3 git libusb-1.0-0 python3-pip libfuse2
+sudo apt install python3 git libusb-1.0-0 python3-pip
 ```
 #### For ArchLinux
 ```
-(sudo) pacman -S  python python-pip python-pipenv git libusb fuse2
+(sudo) pacman -S  python python-pip python-pipenv git libusb
 ```
 or
 ```
@@ -109,9 +113,7 @@ pip3 install -r requirements.txt
 
 ---------------------------------------------------------------------------------------------------------------
 
-### Windows
-
-Easy Install: You can auto-install a preview version of this with Y1 Helper [here](https://www.github.com/team-slide/Y1-Helper/releases/latest)
+### Windows Manual Python Script Setup
 
 #### Install python + git
 - Install python >= 3.9 and git
