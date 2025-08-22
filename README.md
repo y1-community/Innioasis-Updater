@@ -2,7 +2,7 @@
 </div>
 
 # Innioasis Updater
-![Logo](mtkclient/gui/images/icon.png)
+<img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
 Innioasis Updater is an easy, one-click firmware installer for the Innioasis line of MP3 players running Android firmwares. It is a modification of mtkclient to enable easier 
 
 
