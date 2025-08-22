@@ -8,7 +8,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 ## Developed by
 - Ryan Specter and Team Slide
 
-## Special Thanks too
+## Special Thanks to
 
 - u/wa-a-melyn
 - u/multiwirth
