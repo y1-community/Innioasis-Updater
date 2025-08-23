@@ -172,3 +172,8 @@ To start installing firmwares:
 ```
 python updater.py
 ```
+
+or:
+```
+python3 updater.py
+```
