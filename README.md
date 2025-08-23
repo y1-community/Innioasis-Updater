@@ -51,7 +51,7 @@ An experimental .app version is available to try [here](https://www.github.com/t
 
 ### macOS Manual Setup and Terminal Commands - for those who can't get the .app working - the .app should run after running these commands.
 
-#### Install brew, macFUSE, OpenSSL
+#### Install brew, libusb, OpenSSL
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
