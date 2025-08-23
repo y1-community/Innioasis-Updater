@@ -34,6 +34,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 ### Windows (64bit Intel/AMD Only)
 
 Easy Install: You can easily install this with the Windows and Driver setup packages 
+
 [Download here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
 
 #### Driver Setup
