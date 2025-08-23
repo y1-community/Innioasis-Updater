@@ -57,7 +57,7 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install
 if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
 
-#### If the app doesn't work after two tries, run these commands one-at-a-time first.
+#### If the app doesn't work after two tries, please run these commands a line at a time, by copy-pasting into Terminal and hitting Enter/Return after each.
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install libusb openssl cmake pkg-config
@@ -67,22 +67,22 @@ python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodom
 python3 updater.py
 ```
 
-### macOS Manual Setup and Terminal Commands - for those whose .app isn't at all.
+### macOS Manual Setup and Terminal Commands - for those whose .app didn't run at all / are experienced with using the Terminal.
 
-#### Install brew, libusb, OpenSSL
-
+#### Set up and run Python Script - you may.
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install libusb openssl
-```
-
-You may need to **reboot**
-
-#### Set up and run Python Script.
-```
+brew install libusb openssl cmake pkg-config
 git clone https://github.com/team-slide/Innioasis-Updater
 cd Innioasis-Updater
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 keystone-engine capstone unicorn keystone requests
 pip install -r requirements.txt
+```
+Then reboot your mac, and run Innioasis Updater in terminal with 
+
+```
+cd Innioasis-Updater
 python3 updater.py
 ```
 
