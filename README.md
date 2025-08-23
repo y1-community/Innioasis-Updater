@@ -57,7 +57,14 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install
 if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
 
-### macOS Manual Setup and Terminal Commands - for those whose .app isn't working after two tries - the .app should run after running these commands - it's a work in progress.
+#### If the app doesn't work after two tries, run these commands first.
+```
+cd "$HOME/Library/Application Support/Innioasis Updater"
+pip install -r requirements.txt
+python3 updater.py
+```
+
+### macOS Manual Setup and Terminal Commands - for those whose .app isn't at all.
 
 #### Install brew, libusb, OpenSSL
 
@@ -68,16 +75,13 @@ brew install libusb openssl
 
 You may need to **reboot**
 
-#### or... try the .app again - it should run now.
-
-#### Grab files, setup and run in terminal
+#### Set up and run Python Script.
 ```
 git clone https://github.com/team-slide/Innioasis-Updater
 cd Innioasis-Updater
 pip install -r requirements.txt
 python3 updater.py
 ```
-
 
 
 ---------------------------------------------------------------------------------------------------------------
