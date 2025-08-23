@@ -77,22 +77,11 @@ python3 updater.py
 Open Terminal and run each of these a line at a time.
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-```
 brew install libusb openssl cmake pkg-config
-```
 git clone https://github.com/team-slide/Innioasis-Updater
-```
-```
 cd Innioasis-Updater
-```
-```
 python3 -m pip install --upgrade pip
-```
-```
 python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 keystone-engine capstone unicorn keystone requests
-```
-```
 pip install -r requirements.txt
 ```
 
