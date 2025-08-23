@@ -10,11 +10,15 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 ## Special Thanks to
 
+r/innioasis Mods
 - u/wa-a-melyn
 - u/multiwirth
 - u/TwitchyMcJoe
 - u/Key-Brilliant5623
+Team Slide branding lead
 - u/_allstar
+TikTok / YouTube creator
+- Ryan/ Corduroy cat - @catsteal3r on TikTok
   
 ## MTKclient Credits
 
@@ -176,10 +180,3 @@ To start installing firmwares:
 ```
 python updater.py
 ```
-
-or:
-
-```
-python3 updater.py
-```
-
