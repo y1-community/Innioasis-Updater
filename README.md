@@ -42,7 +42,8 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 - Install USB Development Kit (driver_usbdk.msi)
 - Restart your PC
 
-  You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), you'll need to use another OS / computer to install your firmware if you have an ARM64 (e.g Snapdragon) Windows PC
+ Notice to ARM64 Users: You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), 
+ you'll need to use another OS / computer to install your firmware if you have an ARM64 (e.g Snapdragon) Windows PC
 
 ### macOS Easy App Setup (Needs work)
 
@@ -145,6 +146,10 @@ This means you are on venv folder!
 To start installing firmwares:
 ```
 python updater.py
+```
+
+or:
+
 ```
 
 or:
