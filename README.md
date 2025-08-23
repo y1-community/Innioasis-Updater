@@ -33,7 +33,8 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 ### Windows
 
-Easy Install: You can easily install this with the Windows and Driver setup packages [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
+Easy Install: You can easily install this with the Windows and Driver setup packages 
+[Download here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
 
 #### Driver Setup
 - Install normal MTK Serial Port driver (driver_mtk.exe)
