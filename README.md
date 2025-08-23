@@ -10,7 +10,6 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 ## Special Thanks to
 
-
 ### Team Slide branding lead
 - u/_allstar
   
@@ -21,9 +20,10 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 - u/Key-Brilliant5623
 
 ### ROM Developer
- - @multiwith
+ - [@Multiwirth](https://www.github.com/multiwirth)
+
 ### Rockbox Y1 Port Developer
- - @rockbox-y1
+ - [@rockbox-y1 (u/After-Acanthaceae547)](https://www.github.com/rockbox-y1)
 ### TikTok / YouTube creator
 - Ryan / Corduroy cat - @catsteal3r on TikTok
   
@@ -67,20 +67,17 @@ brew install libusb openssl
 
 You may need to **reboot**
 
-#### Grab files
+#### or... try the .app again - it should run now.
+
+#### Grab files, setup and run in terminal
 ```
 git clone https://github.com/team-slide/Innioasis-Updater
 cd Innioasis-Updater
+pip install -r requirements.txt
+python3 updater.py
 ```
 
-#### Create python 3.9 venv and install dependencies
-```
-python3.9 -m venv mtk_venv
-source mtk_venv/bin/activate
-pip3 install --pre --no-binary capstone capstone
-pip3 install PySide6 libusb
-pip3 install -r requirements.txt
-```
+
 
 ---------------------------------------------------------------------------------------------------------------
 
