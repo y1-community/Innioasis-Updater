@@ -43,7 +43,7 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 - Restart your PC
 
  Notice to ARM64 Users: You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), 
- you'll need to use another OS / computer to install your firmware if you have an ARM64 (e.g Snapdragon) Windows PC
+ you'll need to use another OS / computer to install your firmware if you have an ARM64 (e.g Snapdragon) Windows PC or run it in WSL with USBIPD. (Advanced)
 
 ### macOS Easy App Setup (Needs work)
 
