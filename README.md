@@ -18,7 +18,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 ### Team Slide branding lead
 - u/_allstar
 ### TikTok / YouTube creator
-- Ryan/ Corduroy cat - @catsteal3r on TikTok
+- Ryan / Corduroy cat - @catsteal3r on TikTok
   
 ## MTKclient Credits
 
