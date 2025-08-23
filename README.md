@@ -5,7 +5,7 @@
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
 Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 MP3 player running Android firmwares. It is a modification of mtkclient to enable the installation of Updates, Factory Restore and installation of Custom Firmwares like the Multiwirth ROM with Rockbox.
 
-[How to Install](/#install)
+[How to Install](https://github.com/team-slide/Innioasis-Updater/tree/main?tab=readme-ov-file#mtkclient-credits)
 
 ## Devloped by
 - Ryan Specter of Team Slide
