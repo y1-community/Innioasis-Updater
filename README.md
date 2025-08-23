@@ -10,13 +10,20 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 ## Special Thanks to
 
+
+### Team Slide branding lead
+- u/_allstar
+  
 ### r/innioasis Mods
 - u/wa-a-melyn
 - u/multiwirth
 - u/TwitchyMcJoe
 - u/Key-Brilliant5623
-### Team Slide branding lead
-- u/_allstar
+
+### ROM Developer
+ - @multiwith
+### Rockbox Y1 Port Developer
+ - @rockbox-y1
 ### TikTok / YouTube creator
 - Ryan / Corduroy cat - @catsteal3r on TikTok
   
