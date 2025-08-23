@@ -29,7 +29,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 ### Windows
 
-Easy Install: You can auto-install a preview version of this with Y1 Helper [here](https://www.github.com/team-slide/Y1-Helper/releases/latest)
+Easy Install: You can easily install this with the Windows and Driver setup packages [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
 
 ### Linux - (Ubuntu recommended, no patched kernel needed except for kamakiri)
 
