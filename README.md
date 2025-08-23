@@ -31,6 +31,38 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 Easy Install: You can easily install this with the Windows and Driver setup packages [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
 
+### macOS Easy App Setup (Needs work)
+
+An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install but if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
+
+### macOS Manual Setup
+
+#### Install brew, macFUSE, OpenSSL
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install libusb openssl
+```
+
+You may need to **reboot**
+
+#### Grab files
+```
+git clone https://github.com/team-slide/Innioasis-Updater
+cd Innioasis-Updater
+```
+
+#### Create python 3.9 venv and install dependencies
+```
+python3.9 -m venv mtk_venv
+source mtk_venv/bin/activate
+pip3 install --pre --no-binary capstone capstone
+pip3 install PySide6 libusb
+pip3 install -r requirements.txt
+```
+
+---------------------------------------------------------------------------------------------------------------
+
 ### Linux - (Ubuntu recommended, no patched kernel needed except for kamakiri)
 
 #### Install python >=3.8, git and other deps
@@ -82,38 +114,6 @@ sudo udevadm trigger
 Make sure to reboot after adding the user to dialout/plugdev. If the device
 has a vendor interface 0xFF (like LG), make sure to add "blacklist qcaux" to
 the "/etc/modprobe.d/blacklist.conf".
-
----------------------------------------------------------------------------------------------------------------
-
-### macOS Easy App Setup (Needs work)
-
-An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install but if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
-
-### macOS Manual Setup
-
-#### Install brew, macFUSE, OpenSSL
-
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install libusb openssl
-```
-
-You may need to **reboot**
-
-#### Grab files
-```
-git clone https://github.com/team-slide/Innioasis-Updater
-cd Innioasis-Updater
-```
-
-#### Create python 3.9 venv and install dependencies
-```
-python3.9 -m venv mtk_venv
-source mtk_venv/bin/activate
-pip3 install --pre --no-binary capstone capstone
-pip3 install PySide6 libusb
-pip3 install -r requirements.txt
-```
 
 ---------------------------------------------------------------------------------------------------------------
 
