@@ -59,8 +59,11 @@ if it doesnt run for you, please file an issue with a copy of your launcher.log 
 
 #### If the app doesn't work after two tries, run these commands first.
 ```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install libusb openssl cmake pkg-config
 cd "$HOME/Library/Application Support/Innioasis Updater"
-pip install -r requirements.txt
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 keystone-engine capstone unicorn keystone requests
 python3 updater.py
 ```
 
