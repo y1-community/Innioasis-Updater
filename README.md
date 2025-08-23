@@ -54,9 +54,10 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 
 ### macOS Easy App Setup (Needs work)
 
-An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install but if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
+An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install
+if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
 
-### macOS Manual Setup and Terminal Commands - for those who can't get the .app working - the .app should run after running these commands.
+### macOS Manual Setup and Terminal Commands - for those whose .app isn't working after two tries - the .app should run after running these commands - it's a work in progress.
 
 #### Install brew, libusb, OpenSSL
 
