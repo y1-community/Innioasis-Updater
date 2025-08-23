@@ -75,7 +75,7 @@ pip install .
 ```
 sudo usermod -a -G plugdev $USER
 sudo usermod -a -G dialout $USER
-sudo cp Innioasis-Updater/Setup/Linux/*.rules /etc/udev/rules.d
+sudo cp mediatek/Setup/Linux/*.rules /etc/udev/rules.d
 sudo udevadm control -R
 sudo udevadm trigger
 ```
