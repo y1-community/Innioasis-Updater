@@ -1653,7 +1653,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
         silent_print(f"Loaded {len(self.packages)} software packages")
-        self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
+        
+        # Check if we're on ARM64 Windows - if so, don't override the status
+        if platform.system() == "Windows":
+            import platform as platform_module
+            is_arm64 = platform_module.machine() == 'ARM64'
+            if is_arm64:
+                silent_print("ARM64 Windows detected - preserving status message")
+            else:
+                self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
+        else:
+            self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
 
         # Populate UI components
         self.populate_device_type_combo()
@@ -1666,9 +1676,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Use a timer to ensure the default selection is properly applied
         QTimer.singleShot(100, self.apply_initial_release_display)
 
-
-
-        self.status_label.setText("Ready")
+        # Only set status to "Ready" if not on ARM64 Windows
+        if platform.system() == "Windows":
+            import platform as platform_module
+            is_arm64 = platform_module.machine() == 'ARM64'
+            if not is_arm64:
+                self.status_label.setText("Ready")
+        else:
+            self.status_label.setText("Ready")
         silent_print("Data loading complete")
 
     def apply_initial_release_display(self):
@@ -1950,11 +1965,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         all_releases.sort(key=sort_key)
 
         # Show error message if no releases were found
-        if rate_limited:
-            # Rate limited - set the rate limit state and show appropriate message
-            self.set_rate_limit(rate_limit_minutes)
-            self.show_no_releases_message(failed_repos, is_rate_limited=True)
-        elif not all_releases and failed_repos:
+        if not all_releases and failed_repos:
             # Don't update status label - keep it as "Ready" for firmware installation status only
             silent_print(f"Failed to load releases from repositories: {failed_repos}")
             
@@ -2825,8 +2836,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Load and display presteps.png (startup state)
         self.load_presteps_image()
 
-        # Reset status
-        self.status_label.setText("Ready")
+        # Reset status - but preserve ARM64 Windows status
+        if platform.system() == "Windows":
+            import platform as platform_module
+            is_arm64 = platform_module.machine() == 'ARM64'
+            if is_arm64:
+                self.status_label.setText("There are no MediaTek Drivers available for ARM64 PCs.")
+            else:
+                self.status_label.setText("Ready")
+        else:
+            self.status_label.setText("Ready")
 
     def populate_package_list(self):
         """Populate the package list widget with release information"""
@@ -3080,7 +3099,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 self.populate_all_releases_list_progressive()
 
-            self.status_label.setText("Ready")
+            # Set status to Ready - but preserve ARM64 Windows status
+            if platform.system() == "Windows":
+                import platform as platform_module
+                is_arm64 = platform_module.machine() == 'ARM64'
+                if is_arm64:
+                    self.status_label.setText("There are no MediaTek Drivers available for ARM64 PCs.")
+                else:
+                    self.status_label.setText("Ready")
+            else:
+                self.status_label.setText("Ready")
             silent_print("Data refresh complete.")
         except Exception as e:
             silent_print(f"Error populating releases: {e}")
