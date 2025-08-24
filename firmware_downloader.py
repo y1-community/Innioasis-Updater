@@ -572,23 +572,7 @@ class GitHubAPI:
                     silent_print(f"Token authentication failed for {repo} - trying unauthenticated...")
                 elif response.status_code == 403:
                     silent_print(f"Rate limited for {repo}, trying unauthenticated...")
-                    # Check if this is a rate limit response
-                    try:
-                        rate_limit_data = response.json()
-                        silent_print(f"Rate limit response: {rate_limit_data}")
-                        if 'message' in rate_limit_data and 'rate limit' in rate_limit_data['message'].lower():
-                            # This is a rate limit - return rate limit info
-                            reset_time = rate_limit_data.get('reset', 0)
-                            if reset_time:
-                                from datetime import datetime
-                                reset_datetime = datetime.fromtimestamp(reset_time)
-                                now = datetime.now()
-                                minutes_until_reset = int((reset_datetime - now).total_seconds() / 60)
-                                if minutes_until_reset > 0:
-                                    silent_print(f"Rate limited until {reset_datetime}, {minutes_until_reset} minutes from now")
-                                    return {'rate_limited': True, 'reset_minutes': minutes_until_reset}
-                    except Exception as e:
-                        silent_print(f"Error parsing rate limit response: {e}")
+                    # Don't return rate limit info - just continue with fallback
                 else:
                     silent_print(f"Error getting releases for {repo}: {response.status_code}")
                     silent_print(f"Response text: {response.text[:200]}...")
@@ -650,7 +634,7 @@ class GitHubAPI:
                                 minutes_until_reset = int((reset_datetime - now).total_seconds() / 60)
                                 if minutes_until_reset > 0:
                                     silent_print(f"Unauthenticated rate limited until {reset_datetime}, {minutes_until_reset} minutes from now")
-                                    return {'rate_limited': True, 'reset_minutes': minutes_until_reset}
+                                    # Don't return rate limit info - just continue
                     except Exception as e:
                         silent_print(f"Error parsing unauthenticated rate limit response: {e}")
             except Exception as e:
@@ -705,7 +689,7 @@ class GitHubAPI:
                             minutes_until_reset = int((reset_datetime - now).total_seconds() / 60)
                             if minutes_until_reset > 0:
                                 silent_print(f"Unauthenticated rate limited until {reset_datetime}, {minutes_until_reset} minutes from now")
-                                return {'rate_limited': True, 'reset_minutes': minutes_until_reset}
+                                # Don't return rate limit info - just continue
                 except Exception as e:
                     silent_print(f"Error parsing unauthenticated rate limit response: {e}")
             else:
@@ -1523,16 +1507,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.status_label.setText("Loading configuration...")
         silent_print("Loading configuration and manifest data...")
 
-        # Clear cache at startup to ensure fresh tokens are fetched
-        clear_cache()
-        silent_print("Cleared cache at startup to fetch fresh tokens")
+        # Try to use cached tokens first, only download if none available
+        silent_print("Checking for cached tokens first...")
 
         # Download tokens
         tokens = self.config_downloader.download_config()
         if not tokens:
-            silent_print("ERROR: Failed to download API tokens")
-            self.status_label.setText("No API tokens available")
-            return
+            silent_print("WARNING: Failed to download API tokens - will use unauthenticated mode")
+            self.status_label.setText("Using unauthenticated mode - limited functionality")
+            # Continue with empty tokens list instead of returning
 
         silent_print(f"=== TOKEN LOADING DEBUG ===")
         silent_print(f"Downloaded {len(tokens)} tokens from config")
@@ -1920,8 +1903,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         all_releases = []
         failed_repos = []
 
-        rate_limited = False
-        rate_limit_minutes = 0
+        # Removed rate limit detection since we're not returning rate limit responses
         
         for package in self.packages:
             name = package.get('name', '')
@@ -1939,11 +1921,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Get releases for this software with retry
                 releases = self.github_api.retry_with_delay(self.github_api.get_all_releases, repo)
                 
-                # Check if this was a rate limit response
-                if isinstance(releases, dict) and releases.get('rate_limited'):
-                    rate_limited = True
-                    rate_limit_minutes = releases.get('reset_minutes', 60)
-                    break
+                # No more rate limit detection - just check if we got releases
                 
                 if releases and len(releases) > 0:
                     for release in releases:
