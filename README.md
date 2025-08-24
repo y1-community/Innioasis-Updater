@@ -91,25 +91,20 @@ Open Terminal and run each of these a line at a time.
 brew install libusb openssl cmake pkg-config
 ```
 ```
-git clone https://github.com/team-slide/Innioasis-Updater
+git clone https://github.com/team-slide/Innioasis-Updater.git "$HOME/Library/Application Support/Innioasis Updater"```
 ```
-
 ```
 cd Innioasis-Updater
 ```
-
 ```
 python3 -m pip install --upgrade pip
 ```
-
 ```
 python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 keystone-engine capstone unicorn keystone requests
 ```
-
 ```
 pip install -r requirements.txt
 ```
-
 Then reboot your mac, and run Innioasis Updater in terminal with 
 
 ```
