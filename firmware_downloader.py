@@ -29,7 +29,6 @@ from collections import defaultdict
 import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import datetime
-import urllib.request
 
 # Import AppKit for macOS Dock hiding (only on macOS)
 if platform.system() == "Darwin":
@@ -572,10 +571,8 @@ class GitHubAPI:
                     silent_print(f"Token authentication failed for {repo} - trying unauthenticated...")
                 elif response.status_code == 403:
                     silent_print(f"Rate limited for {repo}, trying unauthenticated...")
-                    # Don't return rate limit info - just continue with fallback
                 else:
                     silent_print(f"Error getting releases for {repo}: {response.status_code}")
-                    silent_print(f"Response text: {response.text[:200]}...")
             except Exception as e:
                 silent_print(f"Error getting releases for {repo} with token: {e}")
 
@@ -620,48 +617,33 @@ class GitHubAPI:
                     if releases:
                         self.cache_releases(repo, releases)
                         return releases
-                elif response.status_code == 403:
-                    # Check unauthenticated rate limit response
-                    try:
-                        rate_limit_data = response.json()
-                        silent_print(f"Unauthenticated rate limit response: {rate_limit_data}")
-                        if 'message' in rate_limit_data and 'rate limit' in rate_limit_data['message'].lower():
-                            reset_time = rate_limit_data.get('reset', 0)
-                            if reset_time:
-                                from datetime import datetime
-                                reset_datetime = datetime.fromtimestamp(reset_time)
-                                now = datetime.now()
-                                minutes_until_reset = int((reset_datetime - now).total_seconds() / 60)
-                                if minutes_until_reset > 0:
-                                    silent_print(f"Unauthenticated rate limited until {reset_datetime}, {minutes_until_reset} minutes from now")
-                                    # Don't return rate limit info - just continue
-                    except Exception as e:
-                        silent_print(f"Error parsing unauthenticated rate limit response: {e}")
             except Exception as e:
-                silent_print(f"Error in rate limit bypass attempt: {e}")
-
-        # Record this unauthenticated request
-        self.record_unauth_request()
+                silent_print(f"Rate limit bypass failed: {e}")
+            
+            return []
 
         try:
+            self.record_unauth_request()
             silent_print(f"Attempting unauthenticated request to {url}")
             response = self.session.get(url, timeout=REQUEST_TIMEOUT)
             silent_print(f"Unauthenticated response status: {response.status_code}")
 
             if response.status_code == 200:
                 releases_data = response.json()
-                silent_print(f"Found {len(releases_data)} total releases for {repo} (unauthenticated)")
+                silent_print(f"Unauthenticated: Found {len(releases_data)} total releases for {repo}")
                 releases = []
 
                 for release in releases_data:
                     assets = release.get('assets', [])
+
+                    # Find any zip asset (more flexible than just rom.zip)
                     zip_asset = None
                     for asset in assets:
                         if asset['name'].lower().endswith('.zip'):
                             zip_asset = asset
                             break
 
-                    if zip_asset:
+                    if zip_asset:  # Include releases with any zip file
                         releases.append({
                             'tag_name': release.get('tag_name', ''),
                             'name': release.get('name', ''),
@@ -672,35 +654,29 @@ class GitHubAPI:
                             'asset_size': zip_asset.get('size', 0)
                         })
 
-                if releases:
-                    self.cache_releases(repo, releases)
-                    return releases
+                silent_print(f"Unauthenticated: Returning {len(releases)} releases with zip assets")
+                # Cache the successful unauthenticated response
+                self.cache_releases(repo, releases)
+                return releases
             elif response.status_code == 403:
-                # Check unauthenticated rate limit response
-                try:
-                    rate_limit_data = response.json()
-                    silent_print(f"Unauthenticated rate limit response: {rate_limit_data}")
-                    if 'message' in rate_limit_data and 'rate limit' in rate_limit_data['message'].lower():
-                        reset_time = rate_limit_data.get('reset', 0)
-                        if reset_time:
-                            from datetime import datetime
-                            reset_datetime = datetime.fromtimestamp(reset_time)
-                            now = datetime.now()
-                            minutes_until_reset = int((reset_datetime - now).total_seconds() / 60)
-                            if minutes_until_reset > 0:
-                                silent_print(f"Unauthenticated rate limited until {reset_datetime}, {minutes_until_reset} minutes from now")
-                                # Don't return rate limit info - just continue
-                except Exception as e:
-                    silent_print(f"Error parsing unauthenticated rate limit response: {e}")
+                silent_print(f"Unauthenticated request rate limited for {repo}")
+                # Try to get cached data if available
+                cached_releases = self.get_cached_releases(repo)
+                if cached_releases:
+                    silent_print(f"Returning {len(cached_releases)} cached releases for {repo}")
+                    return cached_releases
             else:
-                silent_print(f"Unauthenticated request failed: {response.status_code}")
-                silent_print(f"Response text: {response.text[:200]}...")
-
+                silent_print(f"Unauthenticated request failed for {repo}: {response.status_code}")
         except Exception as e:
-            silent_print(f"Error in unauthenticated request: {e}")
+            silent_print(f"Error getting releases for {repo} unauthenticated: {e}")
 
-        # If we get here, nothing worked
-        silent_print(f"All attempts failed for {repo}")
+        # Final fallback: try to get cached data
+        cached_releases = self.get_cached_releases(repo)
+        if cached_releases:
+            silent_print(f"Returning {len(cached_releases)} cached releases for {repo}")
+            return cached_releases
+
+        silent_print(f"No releases found for {repo} - returning empty list")
         return []
 
     def get_cached_releases(self, repo):
@@ -1069,13 +1045,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.theme_check_timer.start(1000)  # Check every second
         self.last_theme_state = self.is_dark_mode()
 
-        # Add rate limit tracking
-        self.last_rate_limit_time = None
-        self.rate_limit_reset_time = None
-        
-        # Add button state tracking
-        self.firmware_buttons_disabled = False
-
     def keyPressEvent(self, event):
         """Handle key press events"""
         # Control+D to toggle silent mode
@@ -1250,101 +1219,31 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Driver Setup button - Windows only, and only if drivers are missing
         if platform.system() == "Windows":
-            # Check if this is an ARM64 Windows system
-            import platform as platform_module
-            is_arm64 = platform_module.machine() == 'ARM64'
-            
-            if is_arm64:
-                # ARM64 Windows - no MediaTek drivers available, don't show Driver Setup button
-                silent_print("ARM64 Windows detected - no MediaTek drivers available, skipping Driver Setup button")
-            else:
-                # x86-64 Windows - check for missing drivers
-                mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
-                usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
+            mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
+            usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
 
-                # Check which drivers are missing
-                missing_drivers = []
-                if not mediatek_driver_file.exists():
-                    missing_drivers.append("MediaTek SP Driver")
-                if not usbdk_driver_file.exists():
-                    missing_drivers.append("UsbDk Runtime Library")
-
-                # Only show the button if drivers are missing
-                if missing_drivers:
-                    driver_btn = QPushButton("🔧 Driver Setup")
-                    driver_btn.setStyleSheet("""
-                        QPushButton {
-                            background-color: #0066CC;
-                            color: white;
-                            border: none;
-                            padding: 8px 16px;
-                            border-radius: 20px;
-                            font-weight: bold;
-                            font-size: 12px;
-                        }
-                        QPushButton:hover {
-                            background-color: #0052A3;
-                        }
-                        QPushButton:pressed {
-                            background-color: #003D7A;
-                        }
-                    """)
-                    driver_btn.clicked.connect(lambda: self.open_driver_setup_and_close(missing_drivers))
-                    coffee_layout.addWidget(driver_btn)
-                    
-                    # Note: Button disabling will be handled in initialize_button_states()
-                    silent_print(f"Drivers missing: {missing_drivers} - will disable firmware buttons")
-                else:
-                    # Show Install from .zip button when drivers are already installed
-                    self.install_zip_btn_coffee = QPushButton("📦 Install from .zip")
-                    self.install_zip_btn_coffee.clicked.connect(self.install_from_zip)
-                    self.install_zip_btn_coffee.setStyleSheet("""
-                        QPushButton {
-                            background-color: #28A745;
-                            color: white;
-                            border: none;
-                            padding: 8px 16px;
-                            border-radius: 20px;
-                            font-weight: bold;
-                            font-size: 12px;
-                        }
-                        QPushButton:hover {
-                            background-color: #218838;
-                        }
-                        QPushButton:pressed {
-                            background-color: #1E7E34;
-                        }
-                    """)
-                    coffee_layout.addWidget(self.install_zip_btn_coffee)
-                    
-                    # Note: Button enabling will be handled in initialize_button_states()
-                    silent_print("Drivers present - will enable firmware buttons")
-
-        # Install from .zip button for non-Windows systems
-        if platform.system() != "Windows":
-            self.install_zip_btn_nonwindows = QPushButton("📦 Install from .zip")
-            self.install_zip_btn_nonwindows.clicked.connect(self.install_from_zip)
-            self.install_zip_btn_nonwindows.setStyleSheet("""
-                QPushButton {
-                    background-color: #28A745;
-                    color: white;
-                    border: none;
-                    padding: 8px 16px;
-                    border-radius: 20px;
-                    font-weight: bold;
-                    font-size: 12px;
-                }
-                QPushButton:hover {
-                    background-color: #218838;
-                }
-                QPushButton:pressed {
-                    background-color: #1E7E34;
-                }
-            """)
-            coffee_layout.addWidget(self.install_zip_btn_nonwindows)
-            
-            # Note: Button enabling will be handled in initialize_button_states()
-            silent_print("Non-Windows system - will enable firmware buttons")
+            # Only show the button if one of the driver files is missing
+            if not mediatek_driver_file.exists() or not usbdk_driver_file.exists():
+                driver_btn = QPushButton("🔧 Driver Setup")
+                driver_btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: #0066CC;
+                        color: white;
+                        border: none;
+                        padding: 8px 16px;
+                        border-radius: 20px;
+                        font-weight: bold;
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #0052A3;
+                    }
+                    QPushButton:pressed {
+                        background-color: #003D7A;
+                    }
+                """)
+                driver_btn.clicked.connect(self.open_driver_setup_and_close)
+                coffee_layout.addWidget(driver_btn)
 
         # Reddit button
         reddit_btn = QPushButton("📱 r/innioasis")
@@ -1419,10 +1318,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         update_layout.addStretch()  # Push buttons to the right
         
         # Install from .zip button
-        self.install_zip_btn_main = QPushButton("📦 Install from .zip")
-        self.install_zip_btn_main.clicked.connect(self.install_from_zip)
-        self.install_zip_btn_main.setToolTip("Install firmware from a local zip file")
-        self.install_zip_btn_main.setStyleSheet("""
+        install_zip_btn = QPushButton("📦 Install from .zip")
+        install_zip_btn.clicked.connect(self.install_from_zip)
+        install_zip_btn.setToolTip("Install firmware from a local zip file")
+        install_zip_btn.setStyleSheet("""
             QPushButton {
                 padding: 6px 12px;
                 font-size: 11px;
@@ -1431,7 +1330,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 margin-right: 6px;
             }
         """)
-        update_layout.addWidget(self.install_zip_btn_main)
+        update_layout.addWidget(install_zip_btn)
 
         # Check for Utility Updates button
         self.update_btn_right = QPushButton("Check for Utility Updates")
@@ -1498,52 +1397,29 @@ class FirmwareDownloaderGUI(QMainWindow):
         splitter.addWidget(left_panel)
         splitter.addWidget(right_panel)
         splitter.setSizes([360, 600])  # Adjusted for 960px total width
-        
-        # Initialize button states based on driver availability
-        self.initialize_button_states()
 
     def load_data(self):
         """Load configuration and manifest data with improved performance"""
-        # Check if we're on ARM64 Windows - if so, skip all GitHub API work
-        if platform.system() == "Windows":
-            import platform as platform_module
-            is_arm64 = platform_module.machine() == 'ARM64'
-            if is_arm64:
-                silent_print("ARM64 Windows detected - skipping GitHub API work (no drivers available)")
-                self.status_label.setText("There are no MediaTek Drivers available for ARM64 PCs.")
-                # Don't create GitHub API instance or download anything
-                self.github_api = None
-                self.packages = []
-                return
-
         self.status_label.setText("Loading configuration...")
         silent_print("Loading configuration and manifest data...")
 
-        # Try to use cached tokens first, only download if none available
-        silent_print("Checking for cached tokens first...")
+        # Clear cache at startup to ensure fresh tokens are fetched
+        clear_cache()
+        silent_print("Cleared cache at startup to fetch fresh tokens")
 
         # Download tokens
         tokens = self.config_downloader.download_config()
         if not tokens:
-            silent_print("WARNING: Failed to download API tokens - will use unauthenticated mode")
-            self.status_label.setText("Using unauthenticated mode - limited functionality")
-            # Continue with empty tokens list instead of returning
-
-        silent_print(f"=== TOKEN LOADING DEBUG ===")
-        silent_print(f"Downloaded {len(tokens)} tokens from config")
-        for i, token in enumerate(tokens):
-            silent_print(f"Token {i+1}: {token[:20]}... (length: {len(token)})")
-            if token.startswith('github_pat_'):
-                silent_print(f"  -> Has github_pat_ prefix")
-            else:
-                silent_print(f"  -> No prefix, will add github_pat_ when using")
+            silent_print("ERROR: Failed to download API tokens")
+            self.status_label.setText("No API tokens available")
+            return
 
         self.github_api = GitHubAPI(tokens)
-        silent_print(f"Created GitHubAPI instance with {len(tokens)} tokens")
+        silent_print(f"Loaded {len(tokens)} API tokens")
 
         # Start parallel token validation for faster startup
         if tokens:
-            silent_print(f"Starting parallel token validation for {len(tokens)} tokens")
+            silent_print(f"Loaded {len(tokens)} API tokens")
             self.status_label.setText("Validating API tokens...")
             # Start parallel token validation
             self.validate_tokens_parallel(tokens)
@@ -1630,8 +1506,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.status_label.setText("Using unauthenticated mode")
         # Try with at least one token anyway, in case validation was too strict
         if tokens:
-            silent_print("Attempting to use tokens despite validation failure...")
-            self.finish_data_loading(tokens)
+            silent_print("Attempting to use first token despite validation failure")
+            # Check if token already has prefix to avoid double-prefixing
+            first_token = tokens[0]
+            if not first_token.startswith('github_pat_'):
+                first_token = f"github_pat_{first_token}"
+            self.github_api = GitHubAPI([first_token])
+            self.finish_data_loading([tokens[0]])
         else:
             self.finish_data_loading([])
 
@@ -1665,54 +1546,22 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
         silent_print(f"Loaded {len(self.packages)} software packages")
-        
-        # Check if we're on ARM64 Windows - if so, don't override the status
-        if platform.system() == "Windows":
-            import platform as platform_module
-            is_arm64 = platform_module.machine() == 'ARM64'
-            if is_arm64:
-                silent_print("ARM64 Windows detected - preserving status message")
-            else:
-                self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
-        else:
-            self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
+        self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
 
-        # Populate UI components - skip on ARM64 Windows since we have no packages
-        if platform.system() == "Windows":
-            import platform as platform_module
-            is_arm64 = platform_module.machine() == 'ARM64'
-            if is_arm64:
-                silent_print("ARM64 Windows - skipping UI population (no packages available)")
-                return
-            else:
-                self.populate_device_type_combo()
-                self.populate_device_model_combo()
-                self.populate_firmware_combo()
+        # Populate UI components
+        self.populate_device_type_combo()
+        self.populate_device_model_combo()
+        self.populate_firmware_combo()
 
-                # Apply initial filters
-                self.filter_firmware_options()
+        # Apply initial filters
+        self.filter_firmware_options()
 
-                # Use a timer to ensure the default selection is properly applied
-                QTimer.singleShot(100, self.apply_initial_release_display)
-        else:
-            self.populate_device_type_combo()
-            self.populate_device_model_combo()
-            self.populate_firmware_combo()
+        # Use a timer to ensure the default selection is properly applied
+        QTimer.singleShot(100, self.apply_initial_release_display)
 
-            # Apply initial filters
-            self.filter_firmware_options()
 
-            # Use a timer to ensure the default selection is properly applied
-            QTimer.singleShot(100, self.apply_initial_release_display)
 
-        # Only set status to "Ready" if not on ARM64 Windows
-        if platform.system() == "Windows":
-            import platform as platform_module
-            is_arm64 = platform_module.machine() == 'ARM64'
-            if not is_arm64:
-                self.status_label.setText("Ready")
-        else:
-            self.status_label.setText("Ready")
+        self.status_label.setText("Ready")
         silent_print("Data loading complete")
 
     def apply_initial_release_display(self):
@@ -1754,11 +1603,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.device_type_combo.clear()
         self.device_type_combo.addItem("All Types", "")
 
-        # Check if we have packages to work with
-        if not hasattr(self, 'packages') or not self.packages:
-            silent_print("No packages available - skipping device type population")
-            return
-
         # Get unique device types from packages
         device_types = set()
         for package in self.packages:
@@ -1780,11 +1624,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.device_model_combo.clear()
         self.device_model_combo.addItem("All Models", "")
 
-        # Check if we have packages to work with
-        if not hasattr(self, 'packages') or not self.packages:
-            silent_print("No packages available - skipping device model population")
-            return
-
         # Get unique device models from packages
         device_models = set()
         for package in self.packages:
@@ -1805,11 +1644,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Populate the software dropdown with package names from manifest"""
         self.firmware_combo.clear()
         self.firmware_combo.addItem("All Software", "")
-
-        # Check if we have packages to work with
-        if not hasattr(self, 'packages') or not self.packages:
-            silent_print("No packages available - skipping firmware combo population")
-            return
 
         # Get current filter selections
         selected_type = self.device_type_combo.currentData()
@@ -1898,7 +1732,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.package_list.clear()
 
         if not releases:
-            self.show_no_releases_message(is_rate_limited=False)
+            self.show_no_releases_message()
             return
 
         # Add releases to the list with detailed information
@@ -1962,8 +1796,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         all_releases = []
         failed_repos = []
 
-        # Removed rate limit detection since we're not returning rate limit responses
-        
         for package in self.packages:
             name = package.get('name', '')
             repo = package.get('repo', '')
@@ -1979,9 +1811,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             if name and repo and type_match and model_match:
                 # Get releases for this software with retry
                 releases = self.github_api.retry_with_delay(self.github_api.get_all_releases, repo)
-                
-                # No more rate limit detection - just check if we got releases
-                
                 if releases and len(releases) > 0:
                     for release in releases:
                         # Add software name to the release info for identification
@@ -1991,7 +1820,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 else:
                     failed_repos.append(repo)
 
-                # Sort releases by software name (alphabetical), then by date (newest first within each software)
+        # Sort releases by software name (alphabetical), then by date (newest first within each software)
         # Use a custom sorting key that sorts alphabetically by software name, then by date (newest first)
         def sort_key(release):
             software_name = release.get('software_name', '')
@@ -2008,13 +1837,13 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         all_releases.sort(key=sort_key)
 
-        # Show error message if no releases were found
+                # Show error message if no releases were found
         if not all_releases and failed_repos:
             # Don't update status label - keep it as "Ready" for firmware installation status only
             silent_print(f"Failed to load releases from repositories: {failed_repos}")
             
             # Use the consistent no releases message
-            self.show_no_releases_message(failed_repos, is_rate_limited=False)
+            self.show_no_releases_message(failed_repos)
         elif all_releases:
             # Don't update status label - keep it as "Ready" for firmware installation status only
             silent_print(f"Loaded {len(all_releases)} releases successfully")
@@ -2044,7 +1873,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if not self.device_type_combo.currentData() and package_info:
                 device_type = package_info.get('device_type', '')
                 if device_type:
-                    display_text += f"Model: {device_type}\n"
+                    display_text += f"Type: {device_type}\n"
 
             # Show device model if "All Models" is selected
             if not self.device_model_combo.currentData() and package_info:
@@ -2060,7 +1889,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if self.package_list.count() > 0:
             self.package_list.setCurrentRow(0)
             self.package_list.setFocus()  # Give focus to the list for blue highlight
-            self.safe_enable_download_button()
+            self.download_btn.setEnabled(True)
             # Update button text for the first selected item
             first_item = self.package_list.item(0)
             self.update_download_button_text(first_item)
@@ -2133,7 +1962,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.package_list.clear()
 
         if not all_releases:
-            self.show_no_releases_message(is_rate_limited=False)
+            self.show_no_releases_message()
             return
 
         # Sort releases by date (newest first)
@@ -2211,13 +2040,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
         self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
         self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
-        self.mtk_worker.disable_update_button.connect(self.disable_firmware_buttons)
-        self.mtk_worker.enable_update_button.connect(self.enable_firmware_buttons)
+        self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+        self.mtk_worker.enable_update_button.connect(self.enable_update_button)
 
         self.mtk_worker.start()
 
-        # Disable all firmware-related buttons during MTK operation
-        self.disable_firmware_buttons()
+        # Disable download button during MTK operation
+        self.download_btn.setEnabled(False)
 
     def on_mtk_completed(self, success, message):
         """Handle MTK command completion"""
@@ -2242,8 +2071,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Set timer to revert to startup state after 30 seconds
             QTimer.singleShot(30000, self.revert_to_startup_state)
 
-        # Re-enable all firmware-related buttons
-        self.enable_firmware_buttons()
+        # Re-enable download button
+        self.download_btn.setEnabled(True)
 
     def disable_update_button(self):
         """Disable the update button during MTK installation"""
@@ -2256,139 +2085,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         if hasattr(self, 'update_btn_right'):
             self.update_btn_right.setEnabled(True)
             self.update_btn_right.setText("Check for Utility Updates")
-
-    def disable_firmware_buttons(self):
-        """Disable all firmware-related buttons during MTK operations or when drivers are missing"""
-        # Set the disabled flag
-        self.firmware_buttons_disabled = True
-        
-        # Disable download button
-        if hasattr(self, 'download_btn'):
-            self.download_btn.setEnabled(False)
-        
-        # Disable all Install from .zip buttons
-        if hasattr(self, 'install_zip_btn_coffee'):
-            self.install_zip_btn_coffee.setEnabled(False)
-        if hasattr(self, 'install_zip_btn_nonwindows'):
-            self.install_zip_btn_nonwindows.setEnabled(False)
-        if hasattr(self, 'install_zip_btn_main'):
-            self.install_zip_btn_main.setEnabled(False)
-        
-        # Disable update button
-        if hasattr(self, 'update_btn_right'):
-            self.update_btn_right.setEnabled(False)
-        
-        silent_print("All firmware-related buttons disabled")
-
-    def enable_firmware_buttons(self):
-        """Enable all firmware-related buttons when returning to ready state"""
-        # Clear the disabled flag
-        self.firmware_buttons_disabled = False
-        
-        # Enable download button
-        if hasattr(self, 'download_btn'):
-            self.download_btn.setEnabled(True)
-        
-        # Enable all Install from .zip buttons
-        if hasattr(self, 'install_zip_btn_coffee'):
-            self.install_zip_btn_coffee.setEnabled(True)
-        if hasattr(self, 'install_zip_btn_nonwindows'):
-            self.install_zip_btn_nonwindows.setEnabled(True)
-        if hasattr(self, 'install_zip_btn_main'):
-            self.install_zip_btn_main.setEnabled(True)
-        
-        # Enable update button
-        if hasattr(self, 'update_btn_right'):
-            self.update_btn_right.setEnabled(True)
-        
-        silent_print("All firmware-related buttons enabled")
-
-    def safe_enable_download_button(self):
-        """Safely enable the download button only if firmware buttons are not disabled"""
-        if not self.firmware_buttons_disabled and hasattr(self, 'download_btn'):
-            self.download_btn.setEnabled(True)
-            silent_print("Download button enabled (firmware buttons not disabled)")
-
-    def initialize_button_states(self):
-        """Initialize button states based on driver availability and platform"""
-        if platform.system() == "Windows":
-            # Check if this is an ARM64 Windows system
-            import platform as platform_module
-            is_arm64 = platform_module.machine() == 'ARM64'
-            
-            if is_arm64:
-                # ARM64 Windows - no MediaTek drivers available
-                self.status_label.setText("There are no MediaTek Drivers available for ARM64 PCs.")
-                self.load_arm64_windows_image()
-                # Don't show Driver Setup button for ARM64 users
-                silent_print("ARM64 Windows detected - no MediaTek drivers available")
-                return
-            
-            # Check if specific driver files exist for x86-64 Windows
-            mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
-            usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
-
-            # Check which drivers are missing
-            missing_drivers = []
-            if not mediatek_driver_file.exists():
-                missing_drivers.append("MediaTek SP Driver")
-            if not usbdk_driver_file.exists():
-                missing_drivers.append("UsbDk Runtime Library")
-
-            if missing_drivers:
-                # Drivers are missing - disable all firmware-related buttons
-                self.disable_firmware_buttons()
-                self.status_label.setText("Drivers needed. Click Driver Setup for more info.")
-                self.load_drivers_windows_image()
-                silent_print(f"Drivers missing: {missing_drivers} - firmware buttons disabled")
-            else:
-                # Drivers are present - enable all firmware-related buttons
-                self.enable_firmware_buttons()
-                silent_print("Drivers present - firmware buttons enabled")
-        else:
-            # Non-Windows system - enable all firmware-related buttons
-            self.enable_firmware_buttons()
-            silent_print("Non-Windows system - firmware buttons enabled")
-
-    def load_drivers_windows_image(self):
-        """Load the driverswindows.png image for x86-64 Windows users with missing drivers"""
-        try:
-            image_path = "mtkclient/gui/images/driverswindows.png"
-            if Path(image_path).exists():
-                pixmap = QPixmap(image_path)
-                if not pixmap.isNull():
-                    self.set_image_with_aspect_ratio(pixmap)
-                    silent_print(f"Loaded driverswindows.png for x86-64 Windows users")
-                else:
-                    silent_print(f"Failed to load driverswindows.png - pixmap is null")
-            else:
-                silent_print(f"driverswindows.png not found at {image_path}")
-                # Fallback to presteps image
-                self.load_presteps_image()
-        except Exception as e:
-            silent_print(f"Error loading driverswindows.png: {e}")
-            # Fallback to presteps image
-            self.load_presteps_image()
-
-    def load_arm64_windows_image(self):
-        """Load the arm64windows.png image for ARM64 Windows users"""
-        try:
-            image_path = "mtkclient/gui/images/arm64windows.png"
-            if Path(image_path).exists():
-                pixmap = QPixmap(image_path)
-                if not pixmap.isNull():
-                    self.set_image_with_aspect_ratio(pixmap)
-                    silent_print(f"Loaded arm64windows.png for ARM64 Windows users")
-                else:
-                    silent_print(f"Failed to load arm64windows.png - pixmap is null")
-            else:
-                silent_print(f"arm64windows.png not found at {image_path}")
-                # Fallback to presteps image
-                self.load_presteps_image()
-        except Exception as e:
-            silent_print(f"Error loading arm64windows.png: {e}")
-            # Fallback to presteps image
-            self.load_presteps_image()
 
     def on_handshake_failed(self):
         """Handle handshake failed error from MTKWorker"""
@@ -2431,7 +2127,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # No dialog for Mac users - just update status
             self.status_label.setText("Handshake failed - please check USB connection and try again")
 
-        self.enable_firmware_buttons()  # Re-enable all firmware-related buttons
+        self.download_btn.setEnabled(True)  # Re-enable download button
 
     def on_errno2_detected(self):
         """Handle errno2 error from MTKWorker"""
@@ -2460,7 +2156,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             self.status_label.setText("Errno2 error - please reinstall Innioasis Updater")
 
-        self.enable_firmware_buttons()  # Re-enable all firmware-related buttons
+        self.download_btn.setEnabled(True)  # Re-enable download button
 
     def on_backend_error_detected(self):
         """Handle backend error from MTKWorker"""
@@ -2497,7 +2193,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             self.status_label.setText("Backend error - please install libusb and restart")
 
-        self.enable_firmware_buttons()  # Re-enable all firmware-related buttons
+        self.download_btn.setEnabled(True)  # Re-enable download button
 
     def on_keyboard_interrupt_detected(self):
         """Handle keyboard interrupt from MTKWorker"""
@@ -2513,7 +2209,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Set timer to revert to startup state after 35 seconds
         QTimer.singleShot(35000, self.revert_to_startup_state)
 
-        self.enable_firmware_buttons()  # Re-enable all firmware-related buttons
+        self.download_btn.setEnabled(True)  # Re-enable download button
 
     def show_presteps_image(self):
         """Show the presteps image"""
@@ -2557,63 +2253,45 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Constructs a path to a platform-specific and model-specific image, with fallbacks.
         
         Priority order:
-        1. Model + Platform specific: y1_presteps_win.png (highest priority)
-        2. Model specific (any OS): g3_presteps.png (device-specific, cross-platform)
-        3. Platform specific: presteps_win.png (OS-specific, generic device)
-        4. Generic: presteps.png (lowest priority - fallback)
+        1. Model + Platform specific: y1_presteps_win.png
+        2. Platform specific: presteps_win.png  
+        3. Generic: presteps.png
         """
-        try:
-            system = platform.system()
-            if system == "Windows":
-                suffix = "_win"
-            elif system == "Darwin":
-                suffix = "_mac"
-            elif system == "Linux":
-                suffix = "_linux"
-            else:
-                suffix = ""
+        system = platform.system()
+        if system == "Windows":
+            suffix = "_win"
+        elif system == "Darwin":
+            suffix = "_mac"
+        elif system == "Linux":
+            suffix = "_linux"
+        else:
+            suffix = ""
 
-            base_path = Path("mtkclient/gui/images")
-            
-            # Get current device model if available
-            device_model = ""
-            if hasattr(self, 'device_model_combo') and self.device_model_combo.currentData():
-                device_model = self.device_model_combo.currentData().lower()  # Convert to lowercase for filename
-            
-            # Try model + platform specific path first (highest priority)
-            if device_model and suffix:
-                model_platform_path = base_path / f"{device_model}_{base_name}{suffix}.png"
-                if model_platform_path.exists():
-                    silent_print(f"Loading model+platform specific image: {model_platform_path}")
-                    return str(model_platform_path)
-            
-            # Try model specific path second (device-specific, cross-platform)
-            if device_model:
-                model_specific_path = base_path / f"{device_model}_{base_name}.png"
-                if model_specific_path.exists():
-                    silent_print(f"Loading model-specific image (cross-platform): {model_specific_path}")
-                    return str(model_specific_path)
-            
-            # Try platform-specific path third (OS-specific, generic device)
-            if suffix:
-                platform_specific_path = base_path / f"{base_name}{suffix}.png"
-                if platform_specific_path.exists():
-                    silent_print(f"Loading platform specific image: {platform_specific_path}")
-                    return str(platform_specific_path)
+        base_path = Path("mtkclient/gui/images")
+        
+        # Get current device model if available
+        device_model = ""
+        if hasattr(self, 'device_model_combo') and self.device_model_combo.currentData():
+            device_model = self.device_model_combo.currentData().lower()  # Convert to lowercase for filename
+        
+        # Try model + platform specific path first (highest priority)
+        if device_model and suffix:
+            model_platform_path = base_path / f"{device_model}_{base_name}{suffix}.png"
+            if model_platform_path.exists():
+                silent_print(f"Loading model+platform specific image: {model_platform_path}")
+                return str(model_platform_path)
+        
+        # Try platform-specific path second
+        if suffix:
+            platform_specific_path = base_path / f"{base_name}{suffix}.png"
+            if platform_specific_path.exists():
+                silent_print(f"Loading platform specific image: {platform_specific_path}")
+                return str(platform_specific_path)
 
-            # Fallback to generic path (lowest priority)
-            generic_path = base_path / f"{base_name}.png"
-            silent_print(f"Loading generic image: {generic_path}")
-            return str(generic_path)
-            
-        except Exception as e:
-            silent_print(f"Error in get_platform_image_path: {e}")
-            # Fallback to generic path on any error
-            try:
-                generic_path = Path("mtkclient/gui/images") / f"{base_name}.png"
-                return str(generic_path)
-            except:
-                return f"mtkclient/gui/images/{base_name}.png"
+        # Fallback to generic path (lowest priority)
+        generic_path = base_path / f"{base_name}.png"
+        silent_print(f"Loading generic image: {generic_path}")
+        return str(generic_path)
 
     def load_presteps_image(self):
         """Load presteps image with lazy loading and platform fallback."""
@@ -2726,21 +2404,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         import webbrowser
         webbrowser.open("https://discord.gg/jv8jEd8Uv5")
 
-    def open_driver_setup_and_close(self, missing_drivers):
+    def open_driver_setup_and_close(self):
         """Open the driver setup instructions in the default browser and close the application"""
         import webbrowser
-        
-        # Create the message showing which specific drivers are missing
-        if len(missing_drivers) == 1:
-            driver_text = f"the {missing_drivers[0]}"
-        else:
-            driver_text = f"the following drivers:\n• {chr(10).join(missing_drivers)}"
         
         # Show message to user
         QMessageBox.information(
             self,
             "Driver Setup Required",
-            f"You need to install {driver_text} for the Innioasis Y1.\n\n"
+            "You need to install the required drivers for the Innioasis Y1.\n\n"
             "The driver setup page will open in your browser. Please:\n"
             "1. Download and install the drivers from the page\n"
             "2. Restart your computer\n"
@@ -2880,16 +2552,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Load and display presteps.png (startup state)
         self.load_presteps_image()
 
-        # Reset status - but preserve ARM64 Windows status
-        if platform.system() == "Windows":
-            import platform as platform_module
-            is_arm64 = platform_module.machine() == 'ARM64'
-            if is_arm64:
-                self.status_label.setText("There are no MediaTek Drivers available for ARM64 PCs.")
-            else:
-                self.status_label.setText("Ready")
-        else:
-            self.status_label.setText("Ready")
+        # Reset status
+        self.status_label.setText("Ready")
 
     def populate_package_list(self):
         """Populate the package list widget with release information"""
@@ -2922,7 +2586,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if self.package_list.count() > 0:
             self.package_list.setCurrentRow(0)
             self.package_list.setFocus()  # Give focus to the list for blue highlight
-            self.safe_enable_download_button()
+            self.download_btn.setEnabled(True)
             # Update button text for the first selected item
             first_item = self.package_list.item(0)
             self.update_download_button_text(first_item)
@@ -3087,21 +2751,6 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def refresh_all_data(self):
         """Refresh all data (tokens, manifest, device types, models, software) with cache clearing"""
-        # Check if we're currently rate limited
-        if self.is_rate_limited():
-            remaining_time = self.rate_limit_reset_time - datetime.datetime.now()
-            minutes_remaining = max(0, int(remaining_time.total_seconds() / 60))
-            if minutes_remaining > 0:
-                QMessageBox.information(self, "Rate Limited", 
-                    f"You are currently rate limited by GitHub.\n\n"
-                    f"Please wait {minutes_remaining} minutes before trying again,\n"
-                    f"or use 'Install from .zip' if you have a local firmware file.")
-                return
-            else:
-                # Rate limit expired, clear it
-                self.last_rate_limit_time = None
-                self.rate_limit_reset_time = None
-        
         self.status_label.setText("Refreshing data...")
         silent_print("Refreshing data...")
 
@@ -3143,16 +2792,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 self.populate_all_releases_list_progressive()
 
-            # Set status to Ready - but preserve ARM64 Windows status
-            if platform.system() == "Windows":
-                import platform as platform_module
-                is_arm64 = platform_module.machine() == 'ARM64'
-                if is_arm64:
-                    self.status_label.setText("There are no MediaTek Drivers available for ARM64 PCs.")
-                else:
-                    self.status_label.setText("Ready")
-            else:
-                self.status_label.setText("Ready")
+            self.status_label.setText("Ready")
             silent_print("Data refresh complete.")
         except Exception as e:
             silent_print(f"Error populating releases: {e}")
@@ -3264,93 +2904,30 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             return f"in {minutes_until_reset} minutes"
 
-    def check_internet_connectivity(self):
-        """Check if the system has internet connectivity"""
-        try:
-            # Try to connect to a reliable service
-            urllib.request.urlopen('https://www.google.com', timeout=5)
-            return True
-        except (urllib.error.URLError, urllib.error.HTTPError):
-            try:
-                # Fallback to GitHub's status page
-                urllib.request.urlopen('https://www.githubstatus.com', timeout=5)
-                return True
-            except (urllib.error.URLError, urllib.error.HTTPError):
-                return False
-
-    def is_rate_limited(self):
-        """Check if we're currently rate limited and should prevent retries"""
-        if not self.last_rate_limit_time:
-            return False
-        
-        if not self.rate_limit_reset_time:
-            return False
-        
-        # Check if we're still within the rate limit window
-        now = datetime.datetime.now()
-        return now < self.rate_limit_reset_time
-
-    def set_rate_limit(self, reset_time_minutes):
-        """Set rate limit state to prevent repeated attempts"""
-        self.last_rate_limit_time = datetime.datetime.now()
-        self.rate_limit_reset_time = self.last_rate_limit_time + datetime.timedelta(minutes=reset_time_minutes)
-        silent_print(f"Rate limit set - preventing retries until {self.rate_limit_reset_time}")
-
-    def show_no_releases_message(self, failed_repos=None, is_rate_limited=False):
-        """Show appropriate message based on failure type"""
+    def show_no_releases_message(self, failed_repos=None):
+        """Show a consistent no releases found message with rate limit timing"""
         # Clear the package list first
         self.package_list.clear()
         
-        if is_rate_limited:
-            # Rate limit case - show timing and prevent retries
-            reset_time = self.get_rate_limit_reset_time()
-            
-            help_item = QListWidgetItem(
-                f"⚠️ GitHub API Rate Limited\n\n"
-                f"Too many requests to GitHub.\n\n"
-                f"Try again {reset_time}"
-            )
-            help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)
-            help_item.setData(Qt.UserRole, None)
-            self.package_list.addItem(help_item)
-            
-            # Update status and disable retry attempts
-            self.status_label.setText(f"GitHub API rate limited - try again {reset_time}")
-            
-            # Disable the refresh button if it exists
-            if hasattr(self, 'refresh_btn'):
-                self.refresh_btn.setEnabled(False)
-                QTimer.singleShot(60000, lambda: self.refresh_btn.setEnabled(True))  # Re-enable after 1 minute
-            
-        else:
-            # Check internet connectivity
-            if not self.check_internet_connectivity():
-                # No internet connection
-                help_item = QListWidgetItem(
-                    f"🌐 No Internet Connection\n\n"
-                    f"Please connect to the internet to install firmwares,\n"
-                    f"or use 'Install from .zip' if you have a local file."
-                )
-                help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)
-                help_item.setData(Qt.UserRole, None)
-                self.package_list.addItem(help_item)
-                
-                self.status_label.setText("No internet connection - please go online or use Install from .zip")
-                
-            else:
-                # Internet available but GitHub API failed for other reasons
-                reset_time = self.get_rate_limit_reset_time()
-                help_item = QListWidgetItem(
-                    f"⚠️ GitHub API Unavailable\n\n"
-                    f"Unable to fetch firmware listings.\n\n"
-                    f"This may be due to busy servers or temporary issues.\n"
-                    f"Try again {reset_time}, or use 'Install from .zip'."
-                )
-                help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)
-                help_item.setData(Qt.UserRole, None)
-                self.package_list.addItem(help_item)
-                
-                self.status_label.setText(f"GitHub API unavailable - try again {reset_time}")
+        # Calculate rate limit reset time
+        reset_time = self.get_rate_limit_reset_time()
+        
+        # Create the help message
+        help_item = QListWidgetItem(
+            f"⚠️ No releases found\n\n"
+            f"This could be due to:\n"
+            f"• GitHub API rate limiting\n"
+            f"• Network connectivity issues\n"
+            f"• Repository access restrictions\n\n"
+            f"Try using 'Install from .zip' button instead\n\n"
+            f"Rate limit resets {reset_time}"
+        )
+        help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)  # Make it non-selectable
+        help_item.setData(Qt.UserRole, None)  # No release data
+        self.package_list.addItem(help_item)
+        
+        # Update status to be more helpful
+        self.status_label.setText(f"GitHub API unavailable - use 'Install from .zip' button (resets {reset_time})")
 
 if __name__ == "__main__":
     # Create the application
