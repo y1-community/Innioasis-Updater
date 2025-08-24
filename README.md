@@ -75,6 +75,8 @@ python3 -m pip install --upgrade pip
 ```
 ```
 python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 keystone-engine capstone unicorn keystone requests
+```
+```
 python3 updater.py
 ```
 
