@@ -48,7 +48,7 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 
 #### Driver Setup
 - Install normal MTK Serial Port driver ([driver_mtk.exe](https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe))
-- Install USB Development Kit ([driver_usbdk.msi](https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_usbdk.msi)
+- Install USB Development Kit ([driver_usbdk.msi](https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_usbdk.msi))
 - Restart your PC
 
  Notice to ARM64 Users: You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), 
