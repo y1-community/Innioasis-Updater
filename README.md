@@ -57,6 +57,7 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 ### macOS Easy App Setup (Needs work)
 
 [Download here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
+
 An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install
 if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
 
