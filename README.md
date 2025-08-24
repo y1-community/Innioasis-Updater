@@ -108,7 +108,7 @@ pip install -r requirements.txt
 Then reboot your mac, and run Innioasis Updater in terminal with 
 
 ```
-"$HOME/Library/Application Support/Innioasis Updater"
+cd "$HOME/Library/Application Support/Innioasis Updater"
 ```
 ```
 python3 updater.py
