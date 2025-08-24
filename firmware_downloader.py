@@ -28,6 +28,7 @@ import time
 from collections import defaultdict
 import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import datetime
 
 # Import AppKit for macOS Dock hiding (only on macOS)
 if platform.system() == "Darwin":
@@ -1147,6 +1148,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         self.device_model_combo = QComboBox()
         self.device_model_combo.currentTextChanged.connect(self.filter_firmware_options)
+        self.device_model_combo.currentTextChanged.connect(self.refresh_images_for_model)
         device_model_layout.addWidget(self.device_model_combo)
         device_model_layout.addStretch()
 
@@ -1240,52 +1242,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         background-color: #003D7A;
                     }
                 """)
-                driver_btn.clicked.connect(self.open_driver_setup_link)
+                driver_btn.clicked.connect(self.open_driver_setup_and_close)
                 coffee_layout.addWidget(driver_btn)
-            else:
-                # Show "Install from .zip" button when drivers are already installed
-                install_zip_btn = QPushButton("📦 Install from .zip")
-                install_zip_btn.setStyleSheet("""
-                    QPushButton {
-                        background-color: #28A745;
-                        color: white;
-                        border: none;
-                        padding: 8px 16px;
-                        border-radius: 20px;
-                        font-weight: bold;
-                        font-size: 12px;
-                    }
-                    QPushButton:hover {
-                        background-color: #218838;
-                    }
-                    QPushButton:pressed {
-                        background-color: #1E7E34;
-                    }
-                """)
-                install_zip_btn.clicked.connect(self.install_from_zip)
-                coffee_layout.addWidget(install_zip_btn)
-        else:
-            # On non-Windows systems, show "Install from .zip" button
-            install_zip_btn = QPushButton("📦 Install from .zip")
-            install_zip_btn.setStyleSheet("""
-                QPushButton {
-                    background-color: #28A745;
-                    color: white;
-                    border: none;
-                    padding: 8px 16px;
-                    border-radius: 20px;
-                    font-weight: bold;
-                    font-size: 12px;
-                }
-                QPushButton:hover {
-                    background-color: #218838;
-                }
-                QPushButton:pressed {
-                    background-color: #1E7E34;
-                }
-            """)
-            install_zip_btn.clicked.connect(self.install_from_zip)
-            coffee_layout.addWidget(install_zip_btn)
 
         # Reddit button
         reddit_btn = QPushButton("📱 r/innioasis")
@@ -1355,14 +1313,38 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         right_layout.addLayout(coffee_layout)
 
-        # App Update button (below social media buttons)
+        # App Update and Install from .zip buttons (below social media buttons, right-aligned)
         update_layout = QHBoxLayout()
-        update_layout.addStretch()  # Push button to the right
+        update_layout.addStretch()  # Push buttons to the right
+        
+        # Install from .zip button
+        install_zip_btn = QPushButton("📦 Install from .zip")
+        install_zip_btn.clicked.connect(self.install_from_zip)
+        install_zip_btn.setToolTip("Install firmware from a local zip file")
+        install_zip_btn.setStyleSheet("""
+            QPushButton {
+                padding: 6px 12px;
+                font-size: 11px;
+                min-width: 120px;
+                max-width: 140px;
+                margin-right: 6px;
+            }
+        """)
+        update_layout.addWidget(install_zip_btn)
 
+        # Check for Utility Updates button
         self.update_btn_right = QPushButton("Check for Utility Updates")
         self.update_btn_right.setEnabled(True)  # Enable immediately
         self.update_btn_right.clicked.connect(self.launch_updater_script)
         self.update_btn_right.setToolTip("Downloads and installs the latest version of the Innioasis Updater")
+        self.update_btn_right.setStyleSheet("""
+            QPushButton {
+                padding: 6px 12px;
+                font-size: 11px;
+                min-width: 140px;
+                max-width: 160px;
+            }
+        """)
         update_layout.addWidget(self.update_btn_right)
         right_layout.addLayout(update_layout)
 
@@ -1750,7 +1732,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.package_list.clear()
 
         if not releases:
-            self.package_list.addItem(f"No releases found for {selected_repo}")
+            self.show_no_releases_message()
             return
 
         # Add releases to the list with detailed information
@@ -1855,19 +1837,13 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         all_releases.sort(key=sort_key)
 
-        # Show error message if no releases were found
+                # Show error message if no releases were found
         if not all_releases and failed_repos:
             # Don't update status label - keep it as "Ready" for firmware installation status only
             silent_print(f"Failed to load releases from repositories: {failed_repos}")
             
-            # Add helpful message to the list
-            help_item = QListWidgetItem("⚠️ No releases found\n\nThis could be due to:\n• GitHub API rate limiting\n• Network connectivity issues\n• Repository access restrictions\n\nTry using 'Install from .zip' button instead")
-            help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)  # Make it non-selectable
-            help_item.setData(Qt.UserRole, None)  # No release data
-            self.package_list.addItem(help_item)
-            
-            # Also update status to be more helpful
-            self.status_label.setText("GitHub API unavailable - use 'Install from .zip' button")
+            # Use the consistent no releases message
+            self.show_no_releases_message(failed_repos)
         elif all_releases:
             # Don't update status label - keep it as "Ready" for firmware installation status only
             silent_print(f"Loaded {len(all_releases)} releases successfully")
@@ -1986,7 +1962,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.package_list.clear()
 
         if not all_releases:
-            self.package_list.addItem("No releases found. Please check your internet connection.")
+            self.show_no_releases_message()
             return
 
         # Sort releases by date (newest first)
@@ -2274,7 +2250,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.set_image_with_aspect_ratio(self._current_pixmap)
 
     def get_platform_image_path(self, base_name):
-        """Constructs a path to a platform-specific image, with a fallback to a generic one."""
+        """Constructs a path to a platform-specific and model-specific image, with fallbacks.
+        
+        Priority order:
+        1. Model + Platform specific: y1_presteps_win.png
+        2. Platform specific: presteps_win.png  
+        3. Generic: presteps.png
+        """
         system = platform.system()
         if system == "Windows":
             suffix = "_win"
@@ -2286,15 +2268,29 @@ class FirmwareDownloaderGUI(QMainWindow):
             suffix = ""
 
         base_path = Path("mtkclient/gui/images")
-
-        # Try platform-specific path first
+        
+        # Get current device model if available
+        device_model = ""
+        if hasattr(self, 'device_model_combo') and self.device_model_combo.currentData():
+            device_model = self.device_model_combo.currentData().lower()  # Convert to lowercase for filename
+        
+        # Try model + platform specific path first (highest priority)
+        if device_model and suffix:
+            model_platform_path = base_path / f"{device_model}_{base_name}{suffix}.png"
+            if model_platform_path.exists():
+                silent_print(f"Loading model+platform specific image: {model_platform_path}")
+                return str(model_platform_path)
+        
+        # Try platform-specific path second
         if suffix:
             platform_specific_path = base_path / f"{base_name}{suffix}.png"
             if platform_specific_path.exists():
+                silent_print(f"Loading platform specific image: {platform_specific_path}")
                 return str(platform_specific_path)
 
-        # Fallback to generic path
+        # Fallback to generic path (lowest priority)
         generic_path = base_path / f"{base_name}.png"
+        silent_print(f"Loading generic image: {generic_path}")
         return str(generic_path)
 
     def load_presteps_image(self):
@@ -2330,12 +2326,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.set_image_with_aspect_ratio(self._initsteps_pixmap)
 
     def load_installing_image(self):
-        """Load installing image with lazy loading"""
+        """Load installing image with lazy loading and platform/model fallback"""
         if not hasattr(self, '_installing_pixmap'):
             try:
-                self._installing_pixmap = QPixmap("mtkclient/gui/images/installing.png")
+                image_path = self.get_platform_image_path("installing")
+                self._installing_pixmap = QPixmap(image_path)
                 if self._installing_pixmap.isNull():
-                    silent_print("Failed to load installing.png")
+                    silent_print(f"Failed to load image from {image_path}")
                     return
             except Exception as e:
                 silent_print(f"Error loading installing image: {e}")
@@ -2345,12 +2342,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.set_image_with_aspect_ratio(self._installing_pixmap)
 
     def load_installed_image(self):
-        """Load installed image with lazy loading"""
+        """Load installed image with lazy loading and platform/model fallback"""
         if not hasattr(self, '_installed_pixmap'):
             try:
-                self._installed_pixmap = QPixmap("mtkclient/gui/images/installed.png")
+                image_path = self.get_platform_image_path("installed")
+                self._installed_pixmap = QPixmap(image_path)
                 if self._installed_pixmap.isNull():
-                    silent_print("Failed to load installed.png")
+                    silent_print(f"Failed to load image from {image_path}")
                     return
             except Exception as e:
                 silent_print(f"Error loading installed image: {e}")
@@ -2376,12 +2374,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.set_image_with_aspect_ratio(self._handshake_error_pixmap)
 
     def load_process_ended_image(self):
-        """Load process ended image with lazy loading"""
+        """Load process ended image with lazy loading and platform/model fallback"""
         if not hasattr(self, '_process_ended_pixmap'):
             try:
-                self._process_ended_pixmap = QPixmap("mtkclient/gui/images/process_ended.png")
+                image_path = self.get_platform_image_path("process_ended")
+                self._process_ended_pixmap = QPixmap(image_path)
                 if self._process_ended_pixmap.isNull():
-                    silent_print("Failed to load process_ended.png")
+                    silent_print(f"Failed to load image from {image_path}")
                     return
             except Exception as e:
                 silent_print(f"Error loading process ended image: {e}")
@@ -2404,6 +2403,28 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Open the Discord server in the default browser"""
         import webbrowser
         webbrowser.open("https://discord.gg/jv8jEd8Uv5")
+
+    def open_driver_setup_and_close(self):
+        """Open the driver setup instructions in the default browser and close the application"""
+        import webbrowser
+        
+        # Show message to user
+        QMessageBox.information(
+            self,
+            "Driver Setup Required",
+            "You need to install the required drivers for the Innioasis Y1.\n\n"
+            "The driver setup page will open in your browser. Please:\n"
+            "1. Download and install the drivers from the page\n"
+            "2. Restart your computer\n"
+            "3. Run Innioasis Updater again\n\n"
+            "The application will now close."
+        )
+        
+        # Open the GitHub page
+        webbrowser.open("https://github.com/team-slide/Innioasis-Updater#windows-64bit-intelamd-only")
+        
+        # Close the application
+        QApplication.quit()
 
     def open_driver_setup_link(self):
         """Open the driver setup instructions in the default browser"""
@@ -2434,7 +2455,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         reply = QMessageBox.question(
             self,
             "Confirm Installation",
-            f"Install firmware from {zip_path.name}?\n\nThis will extract the zip file and prepare it for MTK installation.",
+            f"Install firmware from {zip_path.name}?\n\nThis will extract the zip file and install the firmware on your device.",
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Ok
         )
@@ -2486,11 +2507,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 size_mb = file_size / (1024 * 1024)
                 success_msg += f"- {file} ({size_mb:.1f} MB)\n"
             
-            success_msg += "\nAll required files are present. Ready for MTK installation."
+            success_msg += "\nROM Check Complete, starting installation."
             QMessageBox.information(self, "Success", success_msg)
             
             # Automatically run MTK command after a short delay
-            self.status_label.setText("Starting MTK installation in 3 seconds...")
+            self.status_label.setText("Starting .zip firmware installation in 3 seconds...")
             QTimer.singleShot(3000, self.run_mtk_command)
             
         except Exception as e:
@@ -2584,7 +2605,44 @@ class FirmwareDownloaderGUI(QMainWindow):
             # "All Software" selected - show all releases
             self.populate_all_releases_list()
 
-
+    def refresh_images_for_model(self):
+        """Refresh images when device model changes to load model-specific images"""
+        silent_print("Device model changed, refreshing images...")
+        
+        # Clear cached pixmaps so they'll be reloaded with new model
+        if hasattr(self, '_presteps_pixmap'):
+            delattr(self, '_presteps_pixmap')
+        if hasattr(self, '_initsteps_pixmap'):
+            delattr(self, '_initsteps_pixmap')
+        if hasattr(self, '_installing_pixmap'):
+            delattr(self, '_installing_pixmap')
+        if hasattr(self, '_installed_pixmap'):
+            delattr(self, '_installed_pixmap')
+        if hasattr(self, '_handshake_error_pixmap'):
+            delattr(self, '_handshake_error_pixmap')
+        if hasattr(self, '_process_ended_pixmap'):
+            delattr(self, '_process_ended_pixmap')
+        
+        # Reload the current image with the new model
+        if hasattr(self, '_current_pixmap'):
+            # Determine which image should be currently displayed and reload it
+            if self._current_pixmap == getattr(self, '_presteps_pixmap', None):
+                self.load_presteps_image()
+            elif self._current_pixmap == getattr(self, '_initsteps_pixmap', None):
+                self.load_initsteps_image()
+            elif self._current_pixmap == getattr(self, '_installing_pixmap', None):
+                self.load_installing_image()
+            elif self._current_pixmap == getattr(self, '_installed_pixmap', None):
+                self.load_installed_image()
+            elif self._current_pixmap == getattr(self, '_handshake_error_pixmap', None):
+                self.load_handshake_error_image()
+            elif self._current_pixmap == getattr(self, '_process_ended_pixmap', None):
+                self.load_process_ended_image()
+            else:
+                # Default to presteps image
+                self.load_presteps_image()
+        
+        silent_print("Images refreshed for new device model")
 
     def start_download(self):
         """Start the download and processing process"""
@@ -2831,6 +2889,45 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         except Exception as e:
             QMessageBox.warning(self, "Update Error", f"Error launching updater: {str(e)}")
+
+    def get_rate_limit_reset_time(self):
+        """Calculate how many minutes until the next hour when GitHub API rate limit resets"""
+        now = datetime.datetime.now()
+        # Rate limit resets at the top of the next hour
+        next_hour = now.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(hours=1)
+        minutes_until_reset = int((next_hour - now).total_seconds() / 60)
+        
+        if minutes_until_reset == 0:
+            return "in less than a minute"
+        elif minutes_until_reset == 1:
+            return "in 1 minute"
+        else:
+            return f"in {minutes_until_reset} minutes"
+
+    def show_no_releases_message(self, failed_repos=None):
+        """Show a consistent no releases found message with rate limit timing"""
+        # Clear the package list first
+        self.package_list.clear()
+        
+        # Calculate rate limit reset time
+        reset_time = self.get_rate_limit_reset_time()
+        
+        # Create the help message
+        help_item = QListWidgetItem(
+            f"⚠️ No releases found\n\n"
+            f"This could be due to:\n"
+            f"• GitHub API rate limiting\n"
+            f"• Network connectivity issues\n"
+            f"• Repository access restrictions\n\n"
+            f"Try using 'Install from .zip' button instead\n\n"
+            f"Rate limit resets {reset_time}"
+        )
+        help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)  # Make it non-selectable
+        help_item.setData(Qt.UserRole, None)  # No release data
+        self.package_list.addItem(help_item)
+        
+        # Update status to be more helpful
+        self.status_label.setText(f"GitHub API unavailable - use 'Install from .zip' button (resets {reset_time})")
 
 if __name__ == "__main__":
     # Create the application
