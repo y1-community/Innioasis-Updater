@@ -1504,6 +1504,18 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def load_data(self):
         """Load configuration and manifest data with improved performance"""
+        # Check if we're on ARM64 Windows - if so, skip all GitHub API work
+        if platform.system() == "Windows":
+            import platform as platform_module
+            is_arm64 = platform_module.machine() == 'ARM64'
+            if is_arm64:
+                silent_print("ARM64 Windows detected - skipping GitHub API work (no drivers available)")
+                self.status_label.setText("There are no MediaTek Drivers available for ARM64 PCs.")
+                # Don't create GitHub API instance or download anything
+                self.github_api = None
+                self.packages = []
+                return
+
         self.status_label.setText("Loading configuration...")
         silent_print("Loading configuration and manifest data...")
 
@@ -1665,16 +1677,33 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
 
-        # Populate UI components
-        self.populate_device_type_combo()
-        self.populate_device_model_combo()
-        self.populate_firmware_combo()
+        # Populate UI components - skip on ARM64 Windows since we have no packages
+        if platform.system() == "Windows":
+            import platform as platform_module
+            is_arm64 = platform_module.machine() == 'ARM64'
+            if is_arm64:
+                silent_print("ARM64 Windows - skipping UI population (no packages available)")
+                return
+            else:
+                self.populate_device_type_combo()
+                self.populate_device_model_combo()
+                self.populate_firmware_combo()
 
-        # Apply initial filters
-        self.filter_firmware_options()
+                # Apply initial filters
+                self.filter_firmware_options()
 
-        # Use a timer to ensure the default selection is properly applied
-        QTimer.singleShot(100, self.apply_initial_release_display)
+                # Use a timer to ensure the default selection is properly applied
+                QTimer.singleShot(100, self.apply_initial_release_display)
+        else:
+            self.populate_device_type_combo()
+            self.populate_device_model_combo()
+            self.populate_firmware_combo()
+
+            # Apply initial filters
+            self.filter_firmware_options()
+
+            # Use a timer to ensure the default selection is properly applied
+            QTimer.singleShot(100, self.apply_initial_release_display)
 
         # Only set status to "Ready" if not on ARM64 Windows
         if platform.system() == "Windows":
@@ -1725,6 +1754,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.device_type_combo.clear()
         self.device_type_combo.addItem("All Types", "")
 
+        # Check if we have packages to work with
+        if not hasattr(self, 'packages') or not self.packages:
+            silent_print("No packages available - skipping device type population")
+            return
+
         # Get unique device types from packages
         device_types = set()
         for package in self.packages:
@@ -1746,6 +1780,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.device_model_combo.clear()
         self.device_model_combo.addItem("All Models", "")
 
+        # Check if we have packages to work with
+        if not hasattr(self, 'packages') or not self.packages:
+            silent_print("No packages available - skipping device model population")
+            return
+
         # Get unique device models from packages
         device_models = set()
         for package in self.packages:
@@ -1766,6 +1805,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Populate the software dropdown with package names from manifest"""
         self.firmware_combo.clear()
         self.firmware_combo.addItem("All Software", "")
+
+        # Check if we have packages to work with
+        if not hasattr(self, 'packages') or not self.packages:
+            silent_print("No packages available - skipping firmware combo population")
+            return
 
         # Get current filter selections
         selected_type = self.device_type_combo.currentData()
