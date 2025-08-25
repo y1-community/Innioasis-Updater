@@ -1049,38 +1049,52 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.last_theme_state = self.is_dark_mode()
 
     def check_sp_flash_tool(self):
-        """Check if SP Flash Tool (flashtool.exe) is running on Windows and show warning"""
+        """Check if any flash tool is running on Windows and show warning"""
         try:
-            # Use tasklist to check for running processes
-            result = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq flashtool.exe', '/FO', 'CSV'], 
+            # Use tasklist to get all running processes
+            result = subprocess.run(['tasklist', '/FO', 'CSV'], 
                                   capture_output=True, text=True, timeout=5)
             
-            if result.returncode == 0 and 'flashtool.exe' in result.stdout:
-                # SP Flash Tool is running, show warning dialog
-                msg_box = QMessageBox(self)
-                msg_box.setWindowTitle("SP Flash Tool Detected")
-                msg_box.setIcon(QMessageBox.Warning)
-                msg_box.setText("SP Flash Tool is currently running on your system.")
-                msg_box.setInformativeText(
-                    "SP Flash Tool (flashtool.exe) must be closed before running Innioasis Updater "
-                    "to prevent conflicts with USB device access and flashing operations.\n\n"
-                    "Please close SP Flash Tool completely and then restart Innioasis Updater."
-                )
-                msg_box.setStandardButtons(QMessageBox.Ok)
-                msg_box.setDefaultButton(QMessageBox.Ok)
+            if result.returncode == 0:
+                # Check for any executable containing "flash" in the name
+                flash_processes = []
+                for line in result.stdout.split('\n'):
+                    if 'flash' in line.lower() and '.exe' in line.lower():
+                        # Extract the process name from CSV format
+                        parts = line.split(',')
+                        if len(parts) >= 2:
+                            process_name = parts[0].strip('"')
+                            if 'flash' in process_name.lower():
+                                flash_processes.append(process_name)
                 
-                # Show the dialog
-                msg_box.exec()
-                
-                # Optionally, you could close the application here
-                # self.close()
+                if flash_processes:
+                    # Flash tool(s) detected, show warning dialog
+                    process_list = '\n'.join(f"• {process}" for process in flash_processes)
+                    msg_box = QMessageBox(self)
+                    msg_box.setWindowTitle("Flash Tool Detected")
+                    msg_box.setIcon(QMessageBox.Warning)
+                    msg_box.setText("Flash tool(s) are currently running on your system.")
+                    msg_box.setInformativeText(
+                        f"The following flash tool(s) must be closed before running Innioasis Updater "
+                        f"to prevent conflicts with USB device access and flashing operations:\n\n"
+                        f"{process_list}\n\n"
+                        f"Please close all flash tools completely and then restart Innioasis Updater."
+                    )
+                    msg_box.setStandardButtons(QMessageBox.Ok)
+                    msg_box.setDefaultButton(QMessageBox.Ok)
+                    
+                    # Show the dialog
+                    msg_box.exec()
+                    
+                    # Optionally, you could close the application here
+                    # self.close()
                 
         except subprocess.TimeoutExpired:
             # If tasklist times out, assume no conflict and continue
             pass
         except Exception as e:
             # If there's any error checking for the process, continue silently
-            silent_print(f"Error checking for SP Flash Tool: {e}")
+            silent_print(f"Error checking for flash tools: {e}")
 
     def keyPressEvent(self, event):
         """Handle key press events"""
