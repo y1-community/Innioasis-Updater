@@ -65,7 +65,7 @@ if it doesnt run for you, please file an issue with a copy of your launcher.log 
 
 Run this
 ```
-xcode-select --install"
+xcode-select --install
 ```
 Click install and wait for it to install.
 
