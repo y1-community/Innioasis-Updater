@@ -1035,6 +1035,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize UI first for immediate responsiveness
         self.init_ui()
 
+        # Check for SP Flash Tool on Windows before loading data
+        if platform.system() == "Windows":
+            self.check_sp_flash_tool()
+
         # Load data asynchronously to avoid blocking UI
         QTimer.singleShot(100, self.load_data)
 
@@ -1043,6 +1047,40 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.theme_check_timer.timeout.connect(self.check_theme_change)
         self.theme_check_timer.start(1000)  # Check every second
         self.last_theme_state = self.is_dark_mode()
+
+    def check_sp_flash_tool(self):
+        """Check if SP Flash Tool (flashtool.exe) is running on Windows and show warning"""
+        try:
+            # Use tasklist to check for running processes
+            result = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq flashtool.exe', '/FO', 'CSV'], 
+                                  capture_output=True, text=True, timeout=5)
+            
+            if result.returncode == 0 and 'flashtool.exe' in result.stdout:
+                # SP Flash Tool is running, show warning dialog
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("SP Flash Tool Detected")
+                msg_box.setIcon(QMessageBox.Warning)
+                msg_box.setText("SP Flash Tool is currently running on your system.")
+                msg_box.setInformativeText(
+                    "SP Flash Tool (flashtool.exe) must be closed before running Innioasis Updater "
+                    "to prevent conflicts with USB device access and flashing operations.\n\n"
+                    "Please close SP Flash Tool completely and then restart Innioasis Updater."
+                )
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.setDefaultButton(QMessageBox.Ok)
+                
+                # Show the dialog
+                msg_box.exec()
+                
+                # Optionally, you could close the application here
+                # self.close()
+                
+        except subprocess.TimeoutExpired:
+            # If tasklist times out, assume no conflict and continue
+            pass
+        except Exception as e:
+            # If there's any error checking for the process, continue silently
+            silent_print(f"Error checking for SP Flash Tool: {e}")
 
     def keyPressEvent(self, event):
         """Handle key press events"""
@@ -2085,15 +2123,31 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Load and display installed.png for 30 seconds
             self.load_installed_image()
 
+            # Cancel any existing revert timer to prevent conflicts
+            if hasattr(self, '_revert_timer') and self._revert_timer:
+                self._revert_timer.stop()
+                self._revert_timer = None
+
             # Set timer to revert to startup state after 30 seconds
-            QTimer.singleShot(30000, self.revert_to_startup_state)
+            self._revert_timer = QTimer()
+            self._revert_timer.timeout.connect(self.revert_to_startup_state)
+            self._revert_timer.setSingleShot(True)
+            self._revert_timer.start(30000)
         else:
             self.status_label.setText(f"MTK command failed: {message}")
             # Load and display process_ended.png for 30 seconds
             self.load_process_ended_image()
 
+            # Cancel any existing revert timer to prevent conflicts
+            if hasattr(self, '_revert_timer') and self._revert_timer:
+                self._revert_timer.stop()
+                self._revert_timer = None
+
             # Set timer to revert to startup state after 30 seconds
-            QTimer.singleShot(30000, self.revert_to_startup_state)
+            self._revert_timer = QTimer()
+            self._revert_timer.timeout.connect(self.revert_to_startup_state)
+            self._revert_timer.setSingleShot(True)
+            self._revert_timer.start(30000)
 
         # Re-enable download button
         self.download_btn.setEnabled(True)
@@ -2121,8 +2175,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Load and display the appropriate handshake error image for 50 seconds
         self.load_handshake_error_image()
 
+        # Cancel any existing revert timer to prevent conflicts
+        if hasattr(self, '_revert_timer') and self._revert_timer:
+            self._revert_timer.stop()
+            self._revert_timer = None
+
         # Set timer to revert to startup state after 50 seconds
-        QTimer.singleShot(50000, self.revert_to_startup_state)
+        self._revert_timer = QTimer()
+        self._revert_timer.timeout.connect(self.revert_to_startup_state)
+        self._revert_timer.setSingleShot(True)
+        self._revert_timer.start(50000)
 
         if platform.system() == "Windows":
             # Check if specific driver files exist
@@ -2227,11 +2289,19 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
 
+        # Cancel any existing revert timer to prevent conflicts
+        if hasattr(self, '_revert_timer') and self._revert_timer:
+            self._revert_timer.stop()
+            self._revert_timer = None
+
         # Load and display process_ended.png for 35 seconds
         self.load_process_ended_image()
 
         # Set timer to revert to startup state after 35 seconds
-        QTimer.singleShot(35000, self.revert_to_startup_state)
+        self._revert_timer = QTimer()
+        self._revert_timer.timeout.connect(self.revert_to_startup_state)
+        self._revert_timer.setSingleShot(True)
+        self._revert_timer.start(35000)
 
         self.download_btn.setEnabled(True)  # Re-enable download button
 
@@ -2528,11 +2598,19 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def revert_to_startup_state(self):
         """Revert the app to its startup state"""
+        # Cancel any existing revert timer to prevent conflicts
+        if hasattr(self, '_revert_timer') and self._revert_timer:
+            self._revert_timer.stop()
+            self._revert_timer = None
+
         # Load and display presteps.png (startup state)
         self.load_presteps_image()
 
         # Reset status
         self.status_label.setText("Ready")
+
+        # Ensure download button is enabled
+        self.download_btn.setEnabled(True)
 
     def populate_package_list(self):
         """Populate the package list widget with release information"""
@@ -2588,6 +2666,17 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def start_download(self):
         """Start the download and processing process"""
+        # Cancel any existing revert timer to prevent conflicts
+        if hasattr(self, '_revert_timer') and self._revert_timer:
+            self._revert_timer.stop()
+            self._revert_timer = None
+
+        # Stop any existing MTK worker to prevent conflicts
+        if hasattr(self, 'mtk_worker') and self.mtk_worker:
+            self.mtk_worker.stop()
+            self.mtk_worker.wait()
+            self.mtk_worker = None
+
         current_item = self.package_list.currentItem()
         if not current_item:
             self.status_label.setText("Error: Please select a release from the list")
