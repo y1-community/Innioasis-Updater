@@ -71,7 +71,7 @@ xcode-select --install"
 curl -L -o ~/Downloads/Homebrew.pkg $(curl -s https://api.github.com/repos/Homebrew/brew/releases/latest | grep "browser_download_url.*\.pkg" | cut -d '"' -f 4)
 ```
 ```
-sudo installer -pkg ~/Downloads/Homebrew.pkg -target /
+open ~/Downloads/Homebrew.pkg
 ```
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
