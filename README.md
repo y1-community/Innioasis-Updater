@@ -101,7 +101,7 @@ Finally, run this command
 ```
 pip install -r requirements.txt
 ```
-Then, and run Innioasis Updater.app again, if this doesn't work run it in terminal with 
+Then, run Innioasis Updater.app again, if this doesn't work run it in terminal with 
 
 ```
 cd "$HOME/Library/Application Support/Innioasis Updater"
