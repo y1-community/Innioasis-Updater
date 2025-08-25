@@ -61,29 +61,19 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 An experimental .app version is available to try [here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest) this is intended to be easy for most users to install
 if it doesnt run for you, please file an issue with a copy of your launcher.log from /Users/yourname/Library/Application Support/Innioasis Updater (you'll need to press cmd, shift, . to reveal this in Finder)
 
-### Troubleshooting: If the Mac .app doesn't work after two tries, please run these commands a line at a time, by copy-pasting into Terminal and hitting Enter/Return after each.
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-```
-brew install libusb openssl cmake pkg-config
-```
-```
-cd "$HOME/Library/Application Support/Innioasis Updater"
-```
-```
-python3 -m pip install --upgrade pip
-```
-```
-python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 keystone-engine capstone unicorn keystone requests
-```
-Then reboot the mac and launch the .app again
+### Troubleshooting: If the Mac .app doesn't work after two tries, please run these commands a line at a time, by copy-pasting into Terminal and hitting Enter/Return after each. 
 
-### If the .app STILL doesnt work below you can...
 
-#### Set up and run Python Script Manually on Mac
 
-Open Terminal and run each of these a line at a time.
+```
+xcode-select --install"
+```
+```
+curl -L -o ~/Downloads/Homebrew.pkg $(curl -s https://api.github.com/repos/Homebrew/brew/releases/latest | grep "browser_download_url.*\.pkg" | cut -d '"' -f 4)
+```
+```
+sudo installer -pkg ~/Downloads/Homebrew.pkg -target /
+```
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
