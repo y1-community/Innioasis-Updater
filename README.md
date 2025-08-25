@@ -63,31 +63,41 @@ if it doesnt run for you, please file an issue with a copy of your launcher.log 
 
 ### Manual Setup: If the Mac .app doesn't work after two tries, please run these commands a line at a time, by copy-pasting into Terminal and hitting Enter/Return after each. 
 
-
+Run this
 ```
 xcode-select --install"
 ```
+Click install and wait for it to install.
+
+Now run this in Terminal
 ```
 curl -L -o ~/Downloads/Homebrew.pkg $(curl -s https://api.github.com/repos/Homebrew/brew/releases/latest | grep "browser_download_url.*\.pkg" | cut -d '"' -f 4)
 ```
+When it finishes downloading, run...
 ```
 open ~/Downloads/Homebrew.pkg
 ```
+Go through the setup for Homebrew, then go back to Terminal and run:
 ```
 brew install libusb openssl cmake pkg-config
 ```
+Now we download the files needed by the app
 ```
-git clone https://github.com/team-slide/Innioasis-Updater.git "$HOME/Library/Application Support/Innioasis Updater"```
+git clone https://github.com/team-slide/Innioasis-Updater.git "$HOME/Library/Application Support/Innioasis Updater"
 ```
+then we paste this in the terminal and press enter
 ```
-cd Innioasis-Updater
+cd "$HOME/Library/Application Support/Innioasis Updater"
 ```
+Now this one
 ```
 python3 -m pip install --upgrade pip
 ```
+and this one:
 ```
 python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 keystone-engine capstone unicorn keystone requests
 ```
+Finally, run this command
 ```
 pip install -r requirements.txt
 ```
