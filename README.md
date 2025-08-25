@@ -94,7 +94,7 @@ python3 -m pip install --upgrade wheel setuptools pyusb pycryptodome pycryptodom
 ```
 pip install -r requirements.txt
 ```
-Then reboot your mac, and run Innioasis Updater in terminal with 
+Then, and run Innioasis Updater.app again, if this doesn't work run it in terminal with 
 
 ```
 cd "$HOME/Library/Application Support/Innioasis Updater"
