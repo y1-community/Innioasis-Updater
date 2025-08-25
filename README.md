@@ -47,9 +47,16 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 [Download here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
 
 #### Driver Setup
+```
 - Install normal MTK Serial Port driver ([driver_mtk.exe](https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe))
+```
+```
 - Install USB Development Kit ([driver_usbdk.msi](https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_usbdk.msi))
+```
+```
 - Restart your PC
+```
+```
 
  Notice to ARM64 Users: You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), 
  you'll need to use another OS / computer to install your firmware if you have an ARM64 (e.g Snapdragon) Windows PC or run it in WSL with USBIPD. (Advanced)
