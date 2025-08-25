@@ -74,9 +74,6 @@ curl -L -o ~/Downloads/Homebrew.pkg $(curl -s https://api.github.com/repos/Homeb
 open ~/Downloads/Homebrew.pkg
 ```
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-```
 brew install libusb openssl cmake pkg-config
 ```
 ```
