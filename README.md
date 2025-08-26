@@ -37,7 +37,6 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 - Chaosmaster
 - Geert-Jan Kreileman (GUI, design & fixes)
 
-
 ## Install
 
 ### Windows (64bit Intel/AMD Only)
@@ -51,7 +50,12 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 - Install USB Development Kit ([driver_usbdk.msi](https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_usbdk.msi))
 - Restart your PC
 
- Notice to ARM64 Users: You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), 
+  
+## Windows Troubleshooting 
+
+#### If you get an MTK / Stopped error at the start of your firmware install, close the Updater window, download the .zip from https://troubleshooting.innioasis.app and run the .lnk inside
+
+#### Notice to ARM64 Users: You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), 
  you'll need to use another OS / computer to install your firmware if you have an ARM64 (e.g Snapdragon) Windows PC or run it in WSL with USBIPD. (Advanced)
 
 ### macOS Easy App Setup (Needs work)
