@@ -2096,7 +2096,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         reply = QMessageBox.question(
             self,
             "Get Ready",
-            "Please make sure your Y1 is unplugged and OFF, press OK, then follow the next instructions.",
+            "Please make sure your Y1 is NOT plugged in and press OK, then follow the next instructions.",
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Cancel
         )
