@@ -53,10 +53,14 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
   
 ## Windows Troubleshooting 
 
-#### If you get an MTK / Stopped error at the start of your firmware install, close the Updater window, download the .zip from https://troubleshooting.innioasis.app and run the .lnk inside
+#### If you get an MTK / Stopped error at the start of your firmware install, click Try again, follow the instructions closely on screen and if it doesn't work try the other methods offered on screen.
 
-#### Notice to ARM64 Users: You can only use the Remote Control, Screenshot and App Install features of Y1 Helper (part of Innioasis Updater on Windows), 
- you'll need to use another OS / computer to install your firmware if you have an ARM64 (e.g Snapdragon) Windows PC or run it in WSL with USBIPD. (Advanced)
+#### Not responding: If it stops responding, wait for a minute or so and if nothing happens End or Stop its Task and open it again, then try again, if that doesnt work try another method
+
+#### If no methods work on Windows: 
+Check that you have both drivers set up, and if you don't, install them, restart your PC and try again 
+
+#### If no methods work on Mac or Linux: this usually means you're missing the needed libusb, openssl installation and perhaps other python dependencies, try the setup commands / app installation again, reboot and follow instructions closely
 
 ### macOS Easy App Setup (Needs work)
 
