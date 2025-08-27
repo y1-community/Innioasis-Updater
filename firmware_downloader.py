@@ -1248,7 +1248,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         try_method3_btn = None
         if platform.system() == "Windows":
-            try_method3_btn = msg_box.addButton("Open SP Flash Tool", QMessageBox.ActionRole)
+            try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
         
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
         
@@ -1265,14 +1265,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Start the installation process (same as if .zip was just extracted)
             QTimer.singleShot(500, self.run_mtk_command)
         elif clicked_button == try_method2_btn and try_method2_btn:
-            # Clear the marker, clean up firmware files, and launch Method 2 troubleshooting
+            # Clear the marker and launch Method 2 troubleshooting
             remove_installation_marker()
-            cleanup_firmware_files()
             self.show_troubleshooting_instructions()
         elif clicked_button == try_method3_btn and try_method3_btn:
-            # Clear the marker, clean up firmware files, and launch Method 3 troubleshooting
+            # Clear the marker and launch Method 3 troubleshooting
             remove_installation_marker()
-            cleanup_firmware_files()
             self.try_method_3()
         else:
             # Exit the application
@@ -3173,38 +3171,20 @@ class FirmwareDownloaderGUI(QMainWindow):
             QMessageBox.warning(self, "Update Error", f"Error launching updater: {str(e)}")
 
     def show_install_error_dialog(self):
-        """Show the install error dialog with troubleshooting options (Windows only)"""
-        # Only show troubleshooting dialog on Windows
-        if platform.system() != "Windows":
-            # On Mac/Linux, just show process_ended image as usual
-            self.load_process_ended_image()
-            
-            # Cancel any existing revert timer to prevent conflicts
-            if hasattr(self, '_revert_timer') and self._revert_timer:
-                self._revert_timer.stop()
-                self._revert_timer = None
-
-            # Set timer to revert to startup state after 30 seconds
-            self._revert_timer = QTimer()
-            self._revert_timer.timeout.connect(self.revert_to_startup_state)
-            self._revert_timer.setSingleShot(True)
-            self._revert_timer.start(30000)
-            return
-        
-        # Windows-specific troubleshooting dialog
+        """Show the install error dialog with troubleshooting options"""
+        # Show troubleshooting dialog on all platforms
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Install Error")
         msg_box.setText("Something interrupted the firmware install process, would you like to try a troubleshooting run?")
         msg_box.setIcon(QMessageBox.Critical)
         
-        # Create custom buttons in the desired order: Try Again, Try Method 2 (Windows only), Open SP Flash Tool (Windows only), Exit
+        # Create custom buttons in the desired order: Try Again, Try Method 2, Exit
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
+        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         
-        # Only show Method 2 and SP Flash Tool buttons on Windows
-        try_method2_btn = None
+        # Only show Method 3 (SP Flash Tool) button on Windows
         try_method3_btn = None
         if platform.system() == "Windows":
-            try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
             try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
         
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
@@ -3218,15 +3198,18 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         if clicked_button == try_again_btn:
             # Show unplug Y1 prompt and retry normal installation
+            # Don't clear marker here - it will be cleared after successful installation
             self.show_unplug_prompt_and_retry()
-        elif clicked_button == try_method2_btn and try_method2_btn:
-            # Show troubleshooting instructions
+        elif clicked_button == try_method2_btn:
+            # Clear the marker and show troubleshooting instructions
+            remove_installation_marker()
             self.show_troubleshooting_instructions()
         elif clicked_button == try_method3_btn and try_method3_btn:
-            # Open SP Flash Tool shortcut (Windows only)
+            # Clear the marker and open SP Flash Tool shortcut (Windows only)
+            remove_installation_marker()
             self.try_method_3()
         else:
-            # Exit the application
+            # Exit the application - don't clear marker as user chose to exit
             QApplication.quit()
 
     def show_unplug_prompt_and_retry(self):
@@ -3276,41 +3259,23 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Windows: Check if shortcut exists, download if missing
             if not self.ensure_recovery_shortcut():
                 return
-                
-            msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Troubleshooting Instructions")
-            msg_box.setText("Please follow these steps:\n\n"
-                           "1. Connect your Y1 device via USB\n"
-                           "2. Reconnect the USB cable\n"
-                           "3. Insert your paperclip once when the black window appears\n\n"
-                           "Click OK when ready to launch the recovery firmware installer.")
-            msg_box.setIcon(QMessageBox.Information)
-            msg_box.setStandardButtons(QMessageBox.Ok)
-            msg_box.setDefaultButton(QMessageBox.Ok)
-            
-            reply = msg_box.exec()
-            
-            if reply == QMessageBox.Ok:
-                # Launch Recover Firmware Install.lnk
-                self.launch_recovery_firmware_install()
-        else:
-            # Linux/macOS: Open terminal with MTK command
-            msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Troubleshooting Instructions")
-            msg_box.setText("Please follow these steps:\n\n"
-                           "1. Connect your Y1 device via USB\n"
-                           "2. Reconnect the USB cable\n"
-                           "3. Insert your paperclip once when the black window appears\n\n"
-                           "Click OK to open a terminal with the recovery firmware installer.")
-            msg_box.setIcon(QMessageBox.Information)
-            msg_box.setStandardButtons(QMessageBox.Ok)
-            msg_box.setDefaultButton(QMessageBox.Ok)
-            
-            reply = msg_box.exec()
-            
-            if reply == QMessageBox.Ok:
-                # Launch terminal with MTK command
-                self.launch_recovery_firmware_install()
+        
+        msg_box = QMessageBox(self)
+        msg_box.setWindowTitle("Troubleshooting Instructions")
+        msg_box.setText("Please follow these steps:\n\n"
+                       "1. Connect your Y1 device via USB\n"
+                       "2. Reconnect the USB cable\n"
+                       "3. Insert your paperclip once when the black window appears\n\n"
+                       "Click OK when ready to launch the recovery firmware installer.")
+        msg_box.setIcon(QMessageBox.Information)
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.setDefaultButton(QMessageBox.Ok)
+        
+        reply = msg_box.exec()
+        
+        if reply == QMessageBox.Ok:
+            # Launch recovery firmware installer (platform-specific)
+            self.launch_recovery_firmware_install()
 
     def stop_mtk_processes(self):
         """Stop any running mtk.py processes to prevent libusb conflicts on Windows"""
@@ -3529,17 +3494,17 @@ class FirmwareDownloaderGUI(QMainWindow):
                     )
                     return
                 
-                # Construct the MTK command
-                mtk_command = f"cd '{current_dir}' && python mtk.py"
+                # Construct the MTK command (same as used in regular installation)
+                mtk_command = f"cd '{current_dir}' && python3 mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img"
                 
                 if platform.system() == "Linux":
-                    # Linux: Open terminal with MTK command
-                    terminal_cmd = ["gnome-terminal", "--", "bash", "-c", f"{mtk_command}; exec bash"]
+                    # Linux: Open terminal with MTK command in separate window
+                    terminal_cmd = ["gnome-terminal", "--title=Innioasis Recovery", "--", "bash", "-c", f"{mtk_command}; exec bash"]
                     # Try alternative terminals if gnome-terminal fails
                     alternatives = [
-                        ["xterm", "-e", f"bash -c '{mtk_command}; exec bash'"],
-                        ["konsole", "-e", f"bash -c '{mtk_command}; exec bash'"],
-                        ["xfce4-terminal", "-e", f"bash -c '{mtk_command}; exec bash'"]
+                        ["xterm", "-title", "Innioasis Recovery", "-e", f"bash -c '{mtk_command}; exec bash'"],
+                        ["konsole", "--title", "Innioasis Recovery", "-e", f"bash -c '{mtk_command}; exec bash'"],
+                        ["xfce4-terminal", "--title=Innioasis Recovery", "-e", f"bash -c '{mtk_command}; exec bash'"]
                     ]
                     
                     success = False
@@ -3562,11 +3527,28 @@ class FirmwareDownloaderGUI(QMainWindow):
                         return
                         
                 elif platform.system() == "Darwin":  # macOS
-                    # macOS: Open Terminal.app with MTK command
+                    # macOS: Open Terminal.app with MTK command and activate venv
+                    venv_path = Path.home() / "Library/Application Support/Innioasis Updater/venv"
                     script_content = f"""#!/bin/bash
+# Set terminal title
+echo -ne "\\033]0;Innioasis Recovery\\007"
+
 cd '{current_dir}'
-python mtk.py
-echo "Press any key to close this terminal..."
+
+# Activate virtual environment if it exists
+if [ -f "{venv_path}/bin/activate" ]; then
+    source "{venv_path}/bin/activate"
+    echo "Virtual environment activated"
+fi
+
+echo "Starting Innioasis Recovery Firmware Install..."
+echo "Running MTK command in separate terminal window..."
+
+# Run MTK command with python3 (same as used in regular installation)
+python3 mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img
+
+echo ""
+echo "MTK command completed. Press any key to close this terminal..."
 read -n 1
 """
                     # Create temporary script
