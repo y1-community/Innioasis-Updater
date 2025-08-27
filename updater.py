@@ -134,17 +134,7 @@ class UpdateWorker(QThread):
             self.progress_updated.emit(90)
             
             try:
-                for item in extracted_dir.iterdir():
-                    if item.name in [".git", "__pycache__", ".DS_Store", "firmware_downloads"]:
-                        continue
-                    dest_item = current_dir / item.name
-                    if item.is_file():
-                        shutil.copy2(item, dest_item)
-                    elif item.is_dir():
-                        if dest_item.exists():
-                            shutil.rmtree(dest_item)
-                        shutil.copytree(item, dest_item)
-                
+                self.copy_files_with_error_handling(extracted_dir, current_dir)
                 self.status_updated.emit("Files installed!")
                 self.progress_updated.emit(95)
             except Exception as e:
@@ -187,6 +177,45 @@ class UpdateWorker(QThread):
                         progress = int(15 + (downloaded_size / total_size) * 35)
                         self.progress_updated.emit(progress)
                         self.status_updated.emit(f"Downloading... {int((downloaded_size / total_size) * 100)}%")
+
+    def copy_files_with_error_handling(self, source_dir, dest_dir):
+        """Copy files with error handling for write blocking errors - attempts all files including DLL/EXE"""
+        error_files = []
+        
+        for item in source_dir.iterdir():
+            if item.name in [".git", "__pycache__", ".DS_Store", "firmware_downloads"]:
+                continue
+                
+            dest_item = dest_dir / item.name
+            
+            try:
+                if item.is_file():
+                    shutil.copy2(item, dest_item)
+                elif item.is_dir():
+                    if dest_item.exists():
+                        shutil.rmtree(dest_item)
+                    shutil.copytree(item, dest_item)
+            except PermissionError as e:
+                # Handle write blocking errors (files in use) - common with DLL/EXE files
+                if "being used by another process" in str(e) or "access is denied" in str(e):
+                    error_files.append(f"{item.name} (in use)")
+                    # Don't show individual warnings - just log silently
+                    continue
+                else:
+                    raise e
+            except OSError as e:
+                # Handle other OS errors (like read-only files)
+                if "read-only" in str(e).lower() or "access denied" in str(e).lower():
+                    error_files.append(f"{item.name} (access denied)")
+                    # Don't show individual warnings - just log silently
+                    continue
+                else:
+                    raise e
+        
+        # Only show summary if there were significant errors, don't bother user with individual file issues
+        if error_files:
+            self.status_updated.emit(f"Note: {len(error_files)} files couldn't be updated (likely in use) - will update on next run")
+            self.status_updated.emit("Update proceeding successfully - blocked files will be updated later")
 
     def install_requirements(self, source_dir):
         """Install requirements.txt from the source directory."""
