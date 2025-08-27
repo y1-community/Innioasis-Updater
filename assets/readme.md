@@ -1,1 +1,1 @@
-#contains files for y1 helper
+#contains files for Y1 Remote legacy support
