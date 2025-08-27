@@ -1135,7 +1135,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Updater by Ryan Specter - u/respectyarn")
+        self.setWindowTitle("Innioasis Y1 Updater by Ryan Specter - u/respectyarn")
         self.setGeometry(100, 100, 960, 495)
 
 
@@ -2149,19 +2149,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             self._revert_timer.start(30000)
         else:
             self.status_label.setText(f"MTK command failed: {message}")
-            # Load and display process_ended.png for 30 seconds
+            # On Windows: First show process_ended.png image briefly, then show install error dialog
             self.load_process_ended_image()
-
-            # Cancel any existing revert timer to prevent conflicts
-            if hasattr(self, '_revert_timer') and self._revert_timer:
-                self._revert_timer.stop()
-                self._revert_timer = None
-
-            # Set timer to revert to startup state after 30 seconds
-            self._revert_timer = QTimer()
-            self._revert_timer.timeout.connect(self.revert_to_startup_state)
-            self._revert_timer.setSingleShot(True)
-            self._revert_timer.start(30000)
+            
+            # Use a timer to show the dialog after a short delay so user sees the process_ended image
+            QTimer.singleShot(2000, self.show_install_error_dialog)
+            return  # Don't continue with the revert timer since user will choose action
 
         # Re-enable download button
         self.download_btn.setEnabled(True)
@@ -2303,21 +2296,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
 
-        # Cancel any existing revert timer to prevent conflicts
-        if hasattr(self, '_revert_timer') and self._revert_timer:
-            self._revert_timer.stop()
-            self._revert_timer = None
-
-        # Load and display process_ended.png for 35 seconds
+        # On Windows: First show process_ended.png image briefly, then show install error dialog
         self.load_process_ended_image()
-
-        # Set timer to revert to startup state after 35 seconds
-        self._revert_timer = QTimer()
-        self._revert_timer.timeout.connect(self.revert_to_startup_state)
-        self._revert_timer.setSingleShot(True)
-        self._revert_timer.start(35000)
-
-        self.download_btn.setEnabled(True)  # Re-enable download button
+        
+        # Use a timer to show the dialog after a short delay so user sees the process_ended image
+        QTimer.singleShot(2000, self.show_install_error_dialog)
+        return  # Don't continue with the revert timer since user will choose action
 
     def show_presteps_image(self):
         """Show the presteps image"""
@@ -2934,6 +2918,141 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         except Exception as e:
             QMessageBox.warning(self, "Update Error", f"Error launching updater: {str(e)}")
+
+    def show_install_error_dialog(self):
+        """Show the install error dialog with troubleshooting options (Windows only)"""
+        # Only show troubleshooting dialog on Windows
+        if platform.system() != "Windows":
+            # On Mac/Linux, just show process_ended image as usual
+            self.load_process_ended_image()
+            
+            # Cancel any existing revert timer to prevent conflicts
+            if hasattr(self, '_revert_timer') and self._revert_timer:
+                self._revert_timer.stop()
+                self._revert_timer = None
+
+            # Set timer to revert to startup state after 30 seconds
+            self._revert_timer = QTimer()
+            self._revert_timer.timeout.connect(self.revert_to_startup_state)
+            self._revert_timer.setSingleShot(True)
+            self._revert_timer.start(30000)
+            return
+        
+        # Windows-specific troubleshooting dialog
+        msg_box = QMessageBox(self)
+        msg_box.setWindowTitle("Install Error")
+        msg_box.setText("Something interrupted the firmware install process, would you like to try a troubleshooting run?")
+        msg_box.setIcon(QMessageBox.Critical)
+        msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No | QMessageBox.Retry)
+        msg_box.setDefaultButton(QMessageBox.Yes)
+        
+        # Customize button text
+        msg_box.button(QMessageBox.Yes).setText("Run with Troubleshooting")
+        msg_box.button(QMessageBox.No).setText("Exit")
+        msg_box.button(QMessageBox.Retry).setText("Retry")
+        
+        reply = msg_box.exec()
+        
+        if reply == QMessageBox.Yes:
+            # Show troubleshooting instructions
+            self.show_troubleshooting_instructions()
+        elif reply == QMessageBox.Retry:
+            # Show unplug Y1 prompt and retry normal installation
+            self.show_unplug_prompt_and_retry()
+        else:
+            # Exit the application
+            QApplication.quit()
+
+    def show_unplug_prompt_and_retry(self):
+        """Show the unplug Y1 prompt and retry normal installation"""
+        # Show the same unplug prompt that's used at the start of normal installation
+        reply = QMessageBox.question(
+            self,
+            "Get Ready",
+            "Please make sure your Y1 is NOT plugged in and press OK, then follow the next instructions.",
+            QMessageBox.Ok | QMessageBox.Cancel,
+            QMessageBox.Cancel
+        )
+
+        if reply == QMessageBox.Cancel:
+            return
+
+        # Load and display the init steps image
+        self.load_initsteps_image()
+
+        # Start MTK worker
+        self.mtk_worker = MTKWorker()
+        self.mtk_worker.status_updated.connect(self.status_label.setText)
+        self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
+        self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
+        self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
+        self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
+        self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
+        self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+        self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+
+        self.mtk_worker.start()
+
+        # Disable download button during MTK operation
+        self.download_btn.setEnabled(False)
+
+    def show_troubleshooting_instructions(self):
+        """Show troubleshooting instructions and launch recovery firmware install"""
+        msg_box = QMessageBox(self)
+        msg_box.setWindowTitle("Troubleshooting Instructions")
+        msg_box.setText("Please follow these steps:\n\n"
+                       "1. Connect your Y1 device via USB\n"
+                       "2. Reconnect the USB cable\n"
+                       "3. Insert your paperclip once when the black window appears\n\n"
+                       "Click OK when ready to launch the recovery firmware installer.")
+        msg_box.setIcon(QMessageBox.Information)
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.setDefaultButton(QMessageBox.Ok)
+        
+        reply = msg_box.exec()
+        
+        if reply == QMessageBox.Ok:
+            # Launch Recover Firmware Install.lnk
+            self.launch_recovery_firmware_install()
+
+    def launch_recovery_firmware_install(self):
+        """Launch the Recover Firmware Install.lnk file"""
+        try:
+            # Look for the .lnk file in the same directory as firmware_downloader.py
+            current_dir = Path.cwd()
+            recovery_lnk = current_dir / "Recover Firmware Install.lnk"
+            
+            if recovery_lnk.exists():
+                if platform.system() == "Windows":
+                    # On Windows, use os.startfile to launch the .lnk file
+                    os.startfile(str(recovery_lnk))
+                    self.status_label.setText("Recovery Firmware Install launched successfully")
+                else:
+                    # On other platforms, try to open with default handler
+                    subprocess.run(["xdg-open" if platform.system() == "Linux" else "open", str(recovery_lnk)])
+                    self.status_label.setText("Recovery Firmware Install launched successfully")
+            else:
+                # If .lnk file not found, try to find alternative recovery methods
+                self.status_label.setText("Recovery Firmware Install.lnk not found - please check installation")
+                
+                # Show error message
+                QMessageBox.warning(
+                    self,
+                    "File Not Found",
+                    "Recover Firmware Install.lnk was not found in the current directory.\n\n"
+                    "Please ensure the file is present and try again."
+                )
+        except Exception as e:
+            self.status_label.setText(f"Error launching recovery firmware install: {e}")
+            
+            # Show error message
+            QMessageBox.critical(
+                self,
+                "Launch Error",
+                f"Failed to launch the recovery firmware installer:\n{e}\n\n"
+                "Please try launching it manually."
+            )
 
 if __name__ == "__main__":
     # Create the application
