@@ -2124,6 +2124,40 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Disable download button during MTK operation
         self.download_btn.setEnabled(False)
 
+    def run_mtk_command_auto(self):
+        """Run the MTK flash command automatically without confirmation dialog (for zip installations)"""
+        # Check if required files exist
+        required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+        missing_files = []
+        for file in required_files:
+            if not Path(file).exists():
+                missing_files.append(file)
+
+        if missing_files:
+            QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
+            return
+
+        # Skip confirmation dialog and go straight to MTK installation
+        # Load and display the init steps image
+        self.load_initsteps_image()
+
+        # Start MTK worker
+        self.mtk_worker = MTKWorker()
+        self.mtk_worker.status_updated.connect(self.status_label.setText)
+        self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
+        self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
+        self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
+        self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
+        self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
+        self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+        self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+
+        self.mtk_worker.start()
+
+        # Disable download button during MTK operation
+        self.download_btn.setEnabled(False)
+
     def on_mtk_completed(self, success, message):
         """Handle MTK command completion"""
         # Stop the MTK worker to prevent it from continuing to run
@@ -2557,9 +2591,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             success_msg += "\nAll required files are present. Ready for MTK installation."
             QMessageBox.information(self, "Success", success_msg)
             
-            # Automatically run MTK command after a short delay
+            # Automatically run MTK command after a short delay (bypass confirmation dialog)
             self.status_label.setText("Starting MTK installation in 3 seconds...")
-            QTimer.singleShot(3000, self.run_mtk_command)
+            QTimer.singleShot(3000, self.run_mtk_command_auto)
             
         except Exception as e:
             error_msg = f"Error processing zip file: {str(e)}"
@@ -2952,10 +2986,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg_box.setText("Something interrupted the firmware install process, would you like to try a troubleshooting run?")
         msg_box.setIcon(QMessageBox.Critical)
         
-        # Create custom buttons in the desired order: Try Again, Try Method 2, Try Method 3, Exit
+        # Create custom buttons in the desired order: Try Again, Try Method 2 (Windows only), Open SP Flash Tool (Windows only), Exit
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
-        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
-        try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
+        
+        # Only show Method 2 and SP Flash Tool buttons on Windows
+        try_method2_btn = None
+        try_method3_btn = None
+        if platform.system() == "Windows":
+            try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
+            try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
+        
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
         
         # Set default button
@@ -2968,11 +3008,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         if clicked_button == try_again_btn:
             # Show unplug Y1 prompt and retry normal installation
             self.show_unplug_prompt_and_retry()
-        elif clicked_button == try_method2_btn:
+        elif clicked_button == try_method2_btn and try_method2_btn:
             # Show troubleshooting instructions
             self.show_troubleshooting_instructions()
-        elif clicked_button == try_method3_btn:
-            # Try Method 3: Run flash_tool.exe -c -d "install_rom_sp.xml"
+        elif clicked_button == try_method3_btn and try_method3_btn:
+            # Open SP Flash Tool shortcut (Windows only)
             self.try_method_3()
         else:
             # Exit the application
@@ -3085,56 +3125,60 @@ class FirmwareDownloaderGUI(QMainWindow):
             print(f"Error checking for mtk.py processes: {e}")
 
     def try_method_3(self):
-        """Try Method 3: Run flash_tool.exe -c -d "install_rom_sp.xml" in a new command prompt window"""
+        """Open SP Flash Tool shortcut for Windows users"""
         try:
-            # Look for flash_tool.exe in the same directory as firmware_downloader.py
+            # Look for the SP Flash Tool shortcut in the same directory as firmware_downloader.py
             current_dir = Path.cwd()
-            flash_tool_exe = current_dir / "flash_tool.exe"
-            install_rom_xml = current_dir / "install_rom_sp.xml"
+            sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
             
-            if not flash_tool_exe.exists():
+            if not sp_flash_tool_lnk.exists():
                 QMessageBox.warning(
                     self,
                     "File Not Found",
-                    "flash_tool.exe was not found in the current directory.\n\n"
+                    "Recover Firmware Install - SP Flash Tool.lnk was not found in the current directory.\n\n"
                     "Please ensure the file is present and try again."
                 )
                 return
             
-            if not install_rom_xml.exists():
-                QMessageBox.warning(
-                    self,
-                    "File Not Found",
-                    "install_rom_sp.xml was not found in the current directory.\n\n"
-                    "Please ensure the file is present and try again."
-                )
+            # Show SP Flash Tool specific instructions popup
+            reply = QMessageBox.question(
+                self,
+                "SP Flash Tool Instructions",
+                "Please follow these steps:\n\n"
+                "1. Unplug the Y1 from USB\n"
+                "2. Press the paperclip into the reset hole once\n"
+                "3. Connect the Y1 when the black screen appears\n"
+                "4. If it doesn't start installing right away, try pressing the paperclip into the Y1 once more\n"
+                "5. It should then begin the installation process\n\n"
+                "Click OK when ready to open SP Flash Tool.",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Ok
+            )
+            
+            if reply == QMessageBox.Cancel:
                 return
             
-            # Stop mtk.py processes to prevent libusb conflicts
-            self.stop_mtk_processes()
-            
-            # Launch flash_tool.exe -c -d "install_rom_sp.xml" in a new command prompt window
+            # Launch the SP Flash Tool shortcut
             if platform.system() == "Windows":
-                # Use cmd /k to keep the command prompt window open
-                cmd_command = f'cmd /k "cd /d "{current_dir}" && flash_tool.exe -c -d "install_rom_sp.xml""'
-                subprocess.Popen(cmd_command, shell=True)
-                self.status_label.setText("Method 3 launched: flash_tool.exe running in new command prompt")
+                # On Windows, use os.startfile to launch the .lnk file
+                os.startfile(str(sp_flash_tool_lnk))
+                self.status_label.setText("SP Flash Tool opened successfully")
             else:
-                # For non-Windows platforms, just show a message
+                # This should never happen since the button is only shown on Windows
                 QMessageBox.information(
                     self,
                     "Platform Not Supported",
-                    "Method 3 is only available on Windows systems."
+                    "SP Flash Tool is only available on Windows systems."
                 )
                 
         except Exception as e:
-            self.status_label.setText(f"Error launching Method 3: {e}")
+            self.status_label.setText(f"Error opening SP Flash Tool: {e}")
             
             # Show error message
             QMessageBox.critical(
                 self,
                 "Launch Error",
-                f"Failed to launch Method 3:\n{e}\n\n"
+                f"Failed to open SP Flash Tool:\n{e}\n\n"
                 "Please try launching it manually."
             )
 
