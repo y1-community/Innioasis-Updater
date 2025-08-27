@@ -327,7 +327,13 @@ def launch_firmware_downloader():
         try:
             launch_cmd = CrossPlatformHelper.get_launch_command(firmware_script)
             print(f"Launching: {' '.join(launch_cmd)}")
-            subprocess.Popen(launch_cmd)
+            
+            # Use windowless subprocess on Windows to avoid command prompt flash
+            if CrossPlatformHelper.get_platform_info()['is_windows']:
+                subprocess.Popen(launch_cmd, creationflags=subprocess.CREATE_NO_WINDOW)
+            else:
+                subprocess.Popen(launch_cmd)
+            
             return True
         except Exception as e:
             QMessageBox.critical(None, "Launch Failed", f"Could not launch the main application:\n{e}")

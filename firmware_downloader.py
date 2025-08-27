@@ -2584,7 +2584,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.download_btn.setEnabled(False) # Disable download button while running
 
             # Use subprocess to run main.py in the current directory
-            subprocess.Popen([sys.executable, str(main_py_path)], cwd=str(current_dir))
+            if platform.system() == "Windows":
+                subprocess.Popen([sys.executable, str(main_py_path)], cwd=str(current_dir), 
+                               creationflags=subprocess.CREATE_NO_WINDOW)
+            else:
+                subprocess.Popen([sys.executable, str(main_py_path)], cwd=str(current_dir))
 
             # After main.py finishes, revert to startup state
             QTimer.singleShot(1000, self.revert_to_startup_state) # Small delay to allow main.py to start
@@ -2911,7 +2915,11 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             if reply == QMessageBox.Yes:
                 # Launch the updater script with -f argument for force update
-                subprocess.Popen([sys.executable, str(updater_script_path), "-f"])
+                if platform.system() == "Windows":
+                    subprocess.Popen([sys.executable, str(updater_script_path), "-f"], 
+                                   creationflags=subprocess.CREATE_NO_WINDOW)
+                else:
+                    subprocess.Popen([sys.executable, str(updater_script_path), "-f"])
 
                 # Close the current app after a short delay
                 QTimer.singleShot(1000, self.close)
@@ -2943,21 +2951,29 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg_box.setWindowTitle("Install Error")
         msg_box.setText("Something interrupted the firmware install process, would you like to try a troubleshooting run?")
         msg_box.setIcon(QMessageBox.Critical)
-        msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No | QMessageBox.Retry)
-        msg_box.setDefaultButton(QMessageBox.Yes)
         
-        # Customize button text
-        msg_box.button(QMessageBox.No).setText("Exit")
-        msg_box.button(QMessageBox.Retry).setText("Retry")
-        msg_box.button(QMessageBox.Yes).setText("Run with Troubleshooting")
+        # Create custom buttons in the desired order: Try Again, Try Method 2, Try Method 3, Exit
+        try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
+        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
+        try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
+        exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
+        
+        # Set default button
+        msg_box.setDefaultButton(try_again_btn)
+        
         reply = msg_box.exec()
         
-        if reply == QMessageBox.Yes:
-            # Show troubleshooting instructions
-            self.show_troubleshooting_instructions()
-        elif reply == QMessageBox.Retry:
+        clicked_button = msg_box.clickedButton()
+        
+        if clicked_button == try_again_btn:
             # Show unplug Y1 prompt and retry normal installation
             self.show_unplug_prompt_and_retry()
+        elif clicked_button == try_method2_btn:
+            # Show troubleshooting instructions
+            self.show_troubleshooting_instructions()
+        elif clicked_button == try_method3_btn:
+            # Try Method 3: Run flash_tool.exe -c -d "install_rom_sp.xml"
+            self.try_method_3()
         else:
             # Exit the application
             QApplication.quit()
@@ -3014,6 +3030,113 @@ class FirmwareDownloaderGUI(QMainWindow):
         if reply == QMessageBox.Ok:
             # Launch Recover Firmware Install.lnk
             self.launch_recovery_firmware_install()
+
+    def stop_mtk_processes(self):
+        """Stop any running mtk.py processes to prevent libusb conflicts on Windows"""
+        if platform.system() != "Windows":
+            return  # Only needed on Windows
+            
+        try:
+            # Use tasklist to find mtk.py processes
+            result = subprocess.run(
+                ["tasklist", "/FI", "IMAGENAME eq python.exe", "/FO", "CSV"],
+                capture_output=True,
+                text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
+            
+            if result.returncode == 0:
+                lines = result.stdout.strip().split('\n')
+                mtk_processes = []
+                
+                for line in lines[1:]:  # Skip header line
+                    if 'mtk.py' in line:
+                        # Extract PID from CSV format
+                        parts = line.split(',')
+                        if len(parts) >= 2:
+                            pid = parts[1].strip('"')
+                            if pid.isdigit():
+                                mtk_processes.append(pid)
+                
+                if mtk_processes:
+                    self.status_label.setText(f"Found {len(mtk_processes)} mtk.py processes, stopping them...")
+                    
+                    # Stop each mtk.py process
+                    for pid in mtk_processes:
+                        try:
+                            subprocess.run(
+                                ["taskkill", "/PID", pid, "/F"],
+                                capture_output=True,
+                                creationflags=subprocess.CREATE_NO_WINDOW
+                            )
+                        except Exception as e:
+                            print(f"Failed to stop mtk.py process {pid}: {e}")
+                    
+                    # Give processes time to terminate
+                    import time
+                    time.sleep(1)
+                    
+                    self.status_label.setText(f"Stopped {len(mtk_processes)} mtk.py processes")
+                else:
+                    self.status_label.setText("No mtk.py processes found")
+                    
+        except Exception as e:
+            self.status_label.setText(f"Error checking for mtk.py processes: {e}")
+            print(f"Error checking for mtk.py processes: {e}")
+
+    def try_method_3(self):
+        """Try Method 3: Run flash_tool.exe -c -d "install_rom_sp.xml" in a new command prompt window"""
+        try:
+            # Look for flash_tool.exe in the same directory as firmware_downloader.py
+            current_dir = Path.cwd()
+            flash_tool_exe = current_dir / "flash_tool.exe"
+            install_rom_xml = current_dir / "install_rom_sp.xml"
+            
+            if not flash_tool_exe.exists():
+                QMessageBox.warning(
+                    self,
+                    "File Not Found",
+                    "flash_tool.exe was not found in the current directory.\n\n"
+                    "Please ensure the file is present and try again."
+                )
+                return
+            
+            if not install_rom_xml.exists():
+                QMessageBox.warning(
+                    self,
+                    "File Not Found",
+                    "install_rom_sp.xml was not found in the current directory.\n\n"
+                    "Please ensure the file is present and try again."
+                )
+                return
+            
+            # Stop mtk.py processes to prevent libusb conflicts
+            self.stop_mtk_processes()
+            
+            # Launch flash_tool.exe -c -d "install_rom_sp.xml" in a new command prompt window
+            if platform.system() == "Windows":
+                # Use cmd /k to keep the command prompt window open
+                cmd_command = f'cmd /k "cd /d "{current_dir}" && flash_tool.exe -c -d "install_rom_sp.xml""'
+                subprocess.Popen(cmd_command, shell=True)
+                self.status_label.setText("Method 3 launched: flash_tool.exe running in new command prompt")
+            else:
+                # For non-Windows platforms, just show a message
+                QMessageBox.information(
+                    self,
+                    "Platform Not Supported",
+                    "Method 3 is only available on Windows systems."
+                )
+                
+        except Exception as e:
+            self.status_label.setText(f"Error launching Method 3: {e}")
+            
+            # Show error message
+            QMessageBox.critical(
+                self,
+                "Launch Error",
+                f"Failed to launch Method 3:\n{e}\n\n"
+                "Please try launching it manually."
+            )
 
     def launch_recovery_firmware_install(self):
         """Launch the Recover Firmware Install.lnk file"""
