@@ -1366,7 +1366,10 @@ class FirmwareDownloaderGUI(QMainWindow):
     def init_ui(self):
         """Initialize the user interface"""
         self.setWindowTitle("Innioasis Y1 Updater by Ryan Specter - u/respectyarn")
-        self.setGeometry(100, 100, 960, 495)
+        self.setGeometry(100, 100, 1200, 700)
+        
+        # Force normal window state (not maximized)
+        self.setWindowState(Qt.WindowNoState)
 
 
 
@@ -2701,6 +2704,38 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._current_pixmap = self._process_ended_pixmap
         self.set_image_with_aspect_ratio(self._process_ended_pixmap)
 
+    def load_method2_image(self):
+        """Load method2 image with lazy loading and platform fallback."""
+        if not hasattr(self, '_method2_pixmap'):
+            try:
+                image_path = self.get_platform_image_path("method2")
+                self._method2_pixmap = QPixmap(image_path)
+                if self._method2_pixmap.isNull():
+                    silent_print(f"Failed to load image from {image_path}")
+                    return
+            except Exception as e:
+                silent_print(f"Error loading method2 image: {e}")
+                return
+
+        self._current_pixmap = self._method2_pixmap
+        self.set_image_with_aspect_ratio(self._method2_pixmap)
+
+    def load_method3_image(self):
+        """Load method3 image with lazy loading and platform fallback."""
+        if not hasattr(self, '_method3_pixmap'):
+            try:
+                image_path = self.get_platform_image_path("method3")
+                self._method3_pixmap = QPixmap(image_path)
+                if self._method3_pixmap.isNull():
+                    silent_print(f"Failed to load image from {image_path}")
+                    return
+            except Exception as e:
+                silent_print(f"Error loading method3 image: {e}")
+                return
+
+        self._current_pixmap = self._method3_pixmap
+        self.set_image_with_aspect_ratio(self._method3_pixmap)
+
     def open_coffee_link(self):
         """Open the Buy Us Coffee link in the default browser"""
         import webbrowser
@@ -3255,10 +3290,16 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def show_troubleshooting_instructions(self):
         """Show troubleshooting instructions and launch recovery firmware install"""
+        # Show method2 image when troubleshooting instructions are displayed
+        self.load_method2_image()
+        
         if platform.system() == "Windows":
             # Windows: Check if shortcut exists, download if missing
             if not self.ensure_recovery_shortcut():
                 return
+        
+        # Show Method 2 image while displaying troubleshooting instructions
+        self.load_method2_image()
         
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Troubleshooting Instructions")
@@ -3274,6 +3315,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         reply = msg_box.exec()
         
         if reply == QMessageBox.Ok:
+            # Show Method 2 image before launching recovery
+            self.load_method2_image()
             # Launch recovery firmware installer (platform-specific)
             self.launch_recovery_firmware_install()
 
@@ -3404,6 +3447,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def try_method_3(self):
         """Open SP Flash Tool shortcut for Windows users"""
+        # Show method3 image when SP Flash Tool method is displayed
+        self.load_method3_image()
+        
         # Check if shortcut exists, download if missing
         if not self.ensure_sp_flash_tool_shortcut():
             return
@@ -3412,6 +3458,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Look for the SP Flash Tool shortcut in the same directory as firmware_downloader.py
             current_dir = Path.cwd()
             sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
+            
+            # Show Method 3 image while displaying SP Flash Tool instructions
+            self.load_method3_image()
             
             # Show SP Flash Tool specific instructions popup
             reply = QMessageBox.question(
@@ -3434,6 +3483,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Stop mtk.py processes and clean up libusb state before opening SP Flash Tool
             self.stop_mtk_processes()
             self.cleanup_libusb_state()
+            
+            # Show Method 3 image before launching SP Flash Tool
+            self.load_method3_image()
             
             # Launch the SP Flash Tool shortcut
             if platform.system() == "Windows":
