@@ -1135,7 +1135,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Y1 Updater by Ryan Specter - u/respectyarn")
+        self.setWindowTitle("Innioasis Updater by Ryan Specter - u/respectyarn")
         self.setGeometry(100, 100, 960, 495)
 
 
