@@ -50,7 +50,7 @@ Easy Install: You can easily install this with the Windows and Driver setup pack
 - Restart your PC
 
   
-## Windows Troubleshooting 
+## Troubleshooting Firmware Installs 
 
 #### If you get an MTK / Stopped error at the start of your firmware install, click Try again, follow the instructions closely on screen and if it doesn't work try the other methods offered on screen.
 
