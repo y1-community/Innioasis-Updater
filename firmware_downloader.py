@@ -2947,10 +2947,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg_box.setDefaultButton(QMessageBox.Yes)
         
         # Customize button text
-        msg_box.button(QMessageBox.Yes).setText("Run with Troubleshooting")
         msg_box.button(QMessageBox.No).setText("Exit")
         msg_box.button(QMessageBox.Retry).setText("Retry")
-        
+        msg_box.button(QMessageBox.Yes).setText("Run with Troubleshooting")
         reply = msg_box.exec()
         
         if reply == QMessageBox.Yes:
@@ -3079,3 +3078,4 @@ if __name__ == "__main__":
 
     # Start the application event loop
     sys.exit(app.exec())
+
