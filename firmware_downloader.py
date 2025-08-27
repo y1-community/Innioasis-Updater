@@ -43,6 +43,9 @@ SILENT_MODE = True
 ZIP_STORAGE_DIR = Path("firmware_downloads")
 EXTRACTED_FILES_LOG = Path("extracted_files.log")
 
+# Installation tracking
+INSTALLATION_MARKER_FILE = Path("firmware_installation_in_progress.flag")
+
 # Caching configuration
 CACHE_DIR = Path(".cache")
 CACHE_DIR.mkdir(exist_ok=True)
@@ -71,31 +74,62 @@ def toggle_silent_mode():
 
 def cleanup_extracted_files():
     """Clean up extracted files at startup"""
-    if EXTRACTED_FILES_LOG.exists():
-        try:
-            with open(EXTRACTED_FILES_LOG, 'r') as f:
-                files_to_clean = [line.strip() for line in f.readlines() if line.strip()]
+    # Note: This function is now disabled to prevent conflicts with installation tracking
+    # Extracted files are now managed by the installation marker system
+    silent_print("Extracted files cleanup disabled - using installation marker system instead")
+    return
 
-            for file_path in files_to_clean:
-                path = Path(file_path)
-                if path.exists():
-                    path.unlink()
-                    silent_print(f"Cleaned up: {file_path}")
-
-            # Remove the log file
-            EXTRACTED_FILES_LOG.unlink()
-            silent_print("Cleaned up extracted files log")
-        except Exception as e:
-            silent_print(f"Error cleaning up extracted files: {e}")
+def cleanup_firmware_files():
+    """Clean up extracted firmware files (lk.bin, boot.img, etc.)"""
+    try:
+        firmware_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+        cleaned_count = 0
+        
+        for file_name in firmware_files:
+            file_path = Path(file_name)
+            if file_path.exists():
+                file_path.unlink()
+                cleaned_count += 1
+                silent_print(f"Cleaned up firmware file: {file_name}")
+        
+        if cleaned_count > 0:
+            silent_print(f"Cleaned up {cleaned_count} firmware files")
+        else:
+            silent_print("No firmware files found to clean up")
+            
+    except Exception as e:
+        silent_print(f"Error cleaning up firmware files: {e}")
 
 def log_extracted_files(files):
     """Log extracted files for cleanup"""
+    # Note: This function is now disabled to prevent conflicts with installation tracking
+    # Extracted files are now managed by the installation marker system
+    silent_print("Extracted files logging disabled - using installation marker system instead")
+    return
+
+def create_installation_marker():
+    """Create a marker file to indicate firmware installation is in progress"""
     try:
-        with open(EXTRACTED_FILES_LOG, 'w') as f:
-            for file_path in files:
-                f.write(f"{file_path}\n")
+        INSTALLATION_MARKER_FILE.touch()
+        silent_print("Created installation marker file")
     except Exception as e:
-        silent_print(f"Error logging extracted files: {e}")
+        silent_print(f"Error creating installation marker: {e}")
+
+def remove_installation_marker():
+    """Remove the installation marker file when installation completes successfully"""
+    try:
+        if INSTALLATION_MARKER_FILE.exists():
+            INSTALLATION_MARKER_FILE.unlink()
+            silent_print("Removed installation marker file - installation completed successfully")
+    except Exception as e:
+        silent_print(f"Error removing installation marker: {e}")
+
+def check_for_failed_installation():
+    """Check if there was a failed firmware installation"""
+    if INSTALLATION_MARKER_FILE.exists():
+        silent_print("Detected failed firmware installation - showing troubleshooting options")
+        return True
+    return False
 
 def get_zip_path(repo_name, version):
     """Get the path for a specific zip file"""
@@ -735,10 +769,32 @@ class MTKWorker(QThread):
     def __init__(self):
         super().__init__()
         self.should_stop = False
+        
+        # Platform-specific progress bar characters
+        if platform.system() == "Windows":
+            # Windows: Use ASCII characters that display properly
+            self.progress_filled = "#"
+            self.progress_empty = "-"
+        else:
+            # Linux/macOS: Use box drawing characters
+            self.progress_filled = "█"
+            self.progress_empty = "░"
 
     def stop(self):
         """Stop the MTK worker"""
         self.should_stop = True
+
+    def fix_progress_bar_chars(self, line):
+        """Fix progress bar characters for platform compatibility"""
+        if platform.system() == "Windows":
+            # Replace box drawing characters with ASCII equivalents on Windows
+            line = line.replace("█", self.progress_filled)
+            line = line.replace("░", self.progress_empty)
+            # Also handle other common box drawing characters that might appear
+            line = line.replace("â-ª", self.progress_filled)  # Common mojibake
+            line = line.replace("â", self.progress_filled)    # Partial mojibake
+            line = line.replace("ª", self.progress_empty)     # Partial mojibake
+        return line
 
     def run(self):
         cmd = [
@@ -781,8 +837,11 @@ class MTKWorker(QThread):
                     line = output.strip()
                     last_output_line = line  # Track the last output line
 
+                    # Fix progress bar characters for platform compatibility
+                    fixed_line = self.fix_progress_bar_chars(line)
+                    
                     # Show latest output in status area (no extra whitespace)
-                    self.status_updated.emit(f"MTK: {line}")
+                    self.status_updated.emit(f"MTK: {fixed_line}")
 
                     # Check for errno2 error
                     if "errno2" in line.lower():
@@ -851,8 +910,10 @@ class MTKWorker(QThread):
                         break
                     if output:
                         line = output.strip()
+                        # Fix progress bar characters for platform compatibility
+                        fixed_line = self.fix_progress_bar_chars(line)
                         # Show latest output in status area (no extra whitespace)
-                        self.status_updated.emit(f"MTK: {line}")
+                        self.status_updated.emit(f"MTK: {fixed_line}")
 
             # Wait for process to complete
             process.wait()
@@ -1038,6 +1099,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Check for SP Flash Tool on Windows before loading data
         if platform.system() == "Windows":
             self.check_sp_flash_tool()
+            # Download troubleshooting shortcuts if missing
+            QTimer.singleShot(200, self.ensure_troubleshooting_shortcuts)
+
+        # Check for failed installation and show troubleshooting options
+        QTimer.singleShot(300, self.check_failed_installation_on_startup)
 
         # Load data asynchronously to avoid blocking UI
         QTimer.singleShot(100, self.load_data)
@@ -1095,6 +1161,172 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             # If there's any error checking for the process, continue silently
             silent_print(f"Error checking for flash tools: {e}")
+
+    def ensure_troubleshooting_shortcuts(self):
+        """Download troubleshooting shortcuts if they're missing (Windows only)"""
+        if platform.system() != "Windows":
+            return
+            
+        # Check if shortcuts exist
+        current_dir = Path.cwd()
+        recovery_lnk = current_dir / "Recover Firmware Install.lnk"
+        sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
+        
+        # If both shortcuts exist, no need to download
+        if recovery_lnk.exists() and sp_flash_tool_lnk.exists():
+            silent_print("Troubleshooting shortcuts already exist")
+            return
+            
+        # Download troubleshooting shortcuts
+        self.download_troubleshooting_shortcuts()
+
+    def download_troubleshooting_shortcuts(self):
+        """Download and extract troubleshooting shortcuts zip file"""
+        try:
+            self.status_label.setText("Downloading troubleshooting shortcuts...")
+            silent_print("Downloading troubleshooting shortcuts...")
+            
+            # Download URL for troubleshooting shortcuts
+            url = "https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Troubleshooters.-.Windows.zip"
+            
+            # Download the zip file
+            response = requests.get(url, stream=True, timeout=30)
+            response.raise_for_status()
+            
+            # Save to temporary zip file
+            temp_zip = Path("troubleshooters_temp.zip")
+            with open(temp_zip, 'wb') as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+            
+            silent_print("Downloaded troubleshooting shortcuts zip file")
+            
+            # Extract the zip file to current directory
+            with zipfile.ZipFile(temp_zip, 'r') as zip_ref:
+                zip_ref.extractall(".")
+            
+            silent_print("Extracted troubleshooting shortcuts")
+            
+            # Delete the temporary zip file
+            temp_zip.unlink()
+            silent_print("Cleaned up temporary zip file")
+            
+            # Verify shortcuts were extracted
+            current_dir = Path.cwd()
+            recovery_lnk = current_dir / "Recover Firmware Install.lnk"
+            sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
+            
+            if recovery_lnk.exists() and sp_flash_tool_lnk.exists():
+                self.status_label.setText("Troubleshooting shortcuts downloaded successfully")
+                silent_print("Troubleshooting shortcuts downloaded and extracted successfully")
+            else:
+                self.status_label.setText("Warning: Some troubleshooting shortcuts may be missing")
+                silent_print("Warning: Some troubleshooting shortcuts may be missing after extraction")
+                
+        except Exception as e:
+            self.status_label.setText("Failed to download troubleshooting shortcuts")
+            silent_print(f"Error downloading troubleshooting shortcuts: {e}")
+            # Don't show error dialog - this is not critical for basic functionality
+
+    def check_failed_installation_on_startup(self):
+        """Check for failed installation on startup and show troubleshooting options"""
+        if not check_for_failed_installation():
+            return
+            
+        # Show failed installation dialog with troubleshooting options
+        msg_box = QMessageBox(self)
+        msg_box.setWindowTitle("Firmware Installation Incomplete")
+        msg_box.setText("A previous firmware installation appears to have been interrupted or failed.")
+        msg_box.setInformativeText("Would you like to try troubleshooting the installation?")
+        msg_box.setIcon(QMessageBox.Warning)
+        
+        # Create custom buttons for troubleshooting options
+        try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
+        
+        # Show Method 2 on all platforms, SP Flash Tool only on Windows
+        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
+        try_method3_btn = None
+        if platform.system() == "Windows":
+            try_method3_btn = msg_box.addButton("Open SP Flash Tool", QMessageBox.ActionRole)
+        
+        exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
+        
+        # Set default button
+        msg_box.setDefaultButton(try_again_btn)
+        
+        reply = msg_box.exec()
+        clicked_button = msg_box.clickedButton()
+        
+        if clicked_button == try_again_btn:
+            # Clear the marker and immediately start installation process
+            remove_installation_marker()
+            self.status_label.setText("Starting installation process...")
+            # Start the installation process (same as if .zip was just extracted)
+            QTimer.singleShot(500, self.run_mtk_command)
+        elif clicked_button == try_method2_btn and try_method2_btn:
+            # Clear the marker, clean up firmware files, and launch Method 2 troubleshooting
+            remove_installation_marker()
+            cleanup_firmware_files()
+            self.show_troubleshooting_instructions()
+        elif clicked_button == try_method3_btn and try_method3_btn:
+            # Clear the marker, clean up firmware files, and launch Method 3 troubleshooting
+            remove_installation_marker()
+            cleanup_firmware_files()
+            self.try_method_3()
+        else:
+            # Exit the application
+            QApplication.quit()
+
+    def ensure_recovery_shortcut(self):
+        """Ensure recovery shortcut exists, download if missing"""
+        current_dir = Path.cwd()
+        recovery_lnk = current_dir / "Recover Firmware Install.lnk"
+        
+        if recovery_lnk.exists():
+            return True
+            
+        # Shortcut missing, try to download
+        self.status_label.setText("Recovery shortcut missing, downloading...")
+        self.download_troubleshooting_shortcuts()
+        
+        # Check again after download
+        if recovery_lnk.exists():
+            return True
+            
+        # Still missing, show error
+        QMessageBox.warning(
+            self,
+            "Shortcut Missing",
+            "The recovery firmware installer shortcut could not be downloaded.\n\n"
+            "Please check your internet connection and try again."
+        )
+        return False
+
+    def ensure_sp_flash_tool_shortcut(self):
+        """Ensure SP Flash Tool shortcut exists, download if missing"""
+        current_dir = Path.cwd()
+        sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
+        
+        if sp_flash_tool_lnk.exists():
+            return True
+            
+        # Shortcut missing, try to download
+        self.status_label.setText("SP Flash Tool shortcut missing, downloading...")
+        self.download_troubleshooting_shortcuts()
+        
+        # Check again after download
+        if sp_flash_tool_lnk.exists():
+            return True
+            
+        # Still missing, show error
+        QMessageBox.warning(
+            self,
+            "Shortcut Missing",
+            "The SP Flash Tool shortcut could not be downloaded.\n\n"
+            "Please check your internet connection and try again."
+        )
+        return False
 
     def keyPressEvent(self, event):
         """Handle key press events"""
@@ -2108,6 +2340,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows":
             self.cleanup_libusb_state()
 
+        # Create installation marker to track progress
+        create_installation_marker()
+
         # Load and display the init steps image
         self.load_initsteps_image()
 
@@ -2140,6 +2375,10 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         if success:
             self.status_label.setText("Install completed successfully")
+            # Remove installation marker on successful completion
+            remove_installation_marker()
+            # Clean up firmware files after successful installation
+            cleanup_firmware_files()
             # Load and display installed.png for 30 seconds
             self.load_installed_image()
 
@@ -3008,6 +3247,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows":
             self.cleanup_libusb_state()
 
+        # Create installation marker to track progress
+        create_installation_marker()
+
         # Load and display the init steps image
         self.load_initsteps_image()
 
@@ -3030,22 +3272,45 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def show_troubleshooting_instructions(self):
         """Show troubleshooting instructions and launch recovery firmware install"""
-        msg_box = QMessageBox(self)
-        msg_box.setWindowTitle("Troubleshooting Instructions")
-        msg_box.setText("Please follow these steps:\n\n"
-                       "1. Connect your Y1 device via USB\n"
-                       "2. Reconnect the USB cable\n"
-                       "3. Insert your paperclip once when the black window appears\n\n"
-                       "Click OK when ready to launch the recovery firmware installer.")
-        msg_box.setIcon(QMessageBox.Information)
-        msg_box.setStandardButtons(QMessageBox.Ok)
-        msg_box.setDefaultButton(QMessageBox.Ok)
-        
-        reply = msg_box.exec()
-        
-        if reply == QMessageBox.Ok:
-            # Launch Recover Firmware Install.lnk
-            self.launch_recovery_firmware_install()
+        if platform.system() == "Windows":
+            # Windows: Check if shortcut exists, download if missing
+            if not self.ensure_recovery_shortcut():
+                return
+                
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Troubleshooting Instructions")
+            msg_box.setText("Please follow these steps:\n\n"
+                           "1. Connect your Y1 device via USB\n"
+                           "2. Reconnect the USB cable\n"
+                           "3. Insert your paperclip once when the black window appears\n\n"
+                           "Click OK when ready to launch the recovery firmware installer.")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.setDefaultButton(QMessageBox.Ok)
+            
+            reply = msg_box.exec()
+            
+            if reply == QMessageBox.Ok:
+                # Launch Recover Firmware Install.lnk
+                self.launch_recovery_firmware_install()
+        else:
+            # Linux/macOS: Open terminal with MTK command
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Troubleshooting Instructions")
+            msg_box.setText("Please follow these steps:\n\n"
+                           "1. Connect your Y1 device via USB\n"
+                           "2. Reconnect the USB cable\n"
+                           "3. Insert your paperclip once when the black window appears\n\n"
+                           "Click OK to open a terminal with the recovery firmware installer.")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.setDefaultButton(QMessageBox.Ok)
+            
+            reply = msg_box.exec()
+            
+            if reply == QMessageBox.Ok:
+                # Launch terminal with MTK command
+                self.launch_recovery_firmware_install()
 
     def stop_mtk_processes(self):
         """Stop any running mtk.py processes to prevent libusb conflicts on Windows"""
@@ -3174,19 +3439,14 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def try_method_3(self):
         """Open SP Flash Tool shortcut for Windows users"""
+        # Check if shortcut exists, download if missing
+        if not self.ensure_sp_flash_tool_shortcut():
+            return
+            
         try:
             # Look for the SP Flash Tool shortcut in the same directory as firmware_downloader.py
             current_dir = Path.cwd()
             sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
-            
-            if not sp_flash_tool_lnk.exists():
-                QMessageBox.warning(
-                    self,
-                    "File Not Found",
-                    "Recover Firmware Install - SP Flash Tool.lnk was not found in the current directory.\n\n"
-                    "Please ensure the file is present and try again."
-                )
-                return
             
             # Show SP Flash Tool specific instructions popup
             reply = QMessageBox.question(
@@ -3235,32 +3495,98 @@ class FirmwareDownloaderGUI(QMainWindow):
             )
 
     def launch_recovery_firmware_install(self):
-        """Launch the Recover Firmware Install.lnk file"""
+        """Launch the recovery firmware installer"""
         try:
-            # Look for the .lnk file in the same directory as firmware_downloader.py
-            current_dir = Path.cwd()
-            recovery_lnk = current_dir / "Recover Firmware Install.lnk"
-            
-            if recovery_lnk.exists():
-                if platform.system() == "Windows":
-                    # On Windows, use os.startfile to launch the .lnk file
-                    os.startfile(str(recovery_lnk))
-                    self.status_label.setText("Recovery Firmware Install launched successfully")
-                else:
-                    # On other platforms, try to open with default handler
-                    subprocess.run(["xdg-open" if platform.system() == "Linux" else "open", str(recovery_lnk)])
-                    self.status_label.setText("Recovery Firmware Install launched successfully")
-            else:
-                # If .lnk file not found, try to find alternative recovery methods
-                self.status_label.setText("Recovery Firmware Install.lnk not found - please check installation")
+            if platform.system() == "Windows":
+                # Windows: Check if shortcut exists, download if missing
+                if not self.ensure_recovery_shortcut():
+                    return
+                    
+                # Look for the .lnk file in the same directory as firmware_downloader.py
+                current_dir = Path.cwd()
+                recovery_lnk = current_dir / "Recover Firmware Install.lnk"
                 
-                # Show error message
-                QMessageBox.warning(
-                    self,
-                    "File Not Found",
-                    "Recover Firmware Install.lnk was not found in the current directory.\n\n"
-                    "Please ensure the file is present and try again."
-                )
+                # On Windows, use os.startfile to launch the .lnk file
+                os.startfile(str(recovery_lnk))
+                self.status_label.setText("Recovery Firmware Install launched successfully")
+            else:
+                # Linux/macOS: Open terminal with MTK command
+                current_dir = Path.cwd()
+                
+                # Check if required files exist
+                required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+                missing_files = []
+                for file in required_files:
+                    if not Path(file).exists():
+                        missing_files.append(file)
+
+                if missing_files:
+                    QMessageBox.warning(
+                        self, 
+                        "Missing Files", 
+                        f"Required firmware files are missing: {', '.join(missing_files)}\n\n"
+                        "Please ensure you have extracted the firmware files to the current directory."
+                    )
+                    return
+                
+                # Construct the MTK command
+                mtk_command = f"cd '{current_dir}' && python mtk.py"
+                
+                if platform.system() == "Linux":
+                    # Linux: Open terminal with MTK command
+                    terminal_cmd = ["gnome-terminal", "--", "bash", "-c", f"{mtk_command}; exec bash"]
+                    # Try alternative terminals if gnome-terminal fails
+                    alternatives = [
+                        ["xterm", "-e", f"bash -c '{mtk_command}; exec bash'"],
+                        ["konsole", "-e", f"bash -c '{mtk_command}; exec bash'"],
+                        ["xfce4-terminal", "-e", f"bash -c '{mtk_command}; exec bash'"]
+                    ]
+                    
+                    success = False
+                    for cmd in [terminal_cmd] + alternatives:
+                        try:
+                            subprocess.Popen(cmd, start_new_session=True)
+                            success = True
+                            break
+                        except FileNotFoundError:
+                            continue
+                    
+                    if not success:
+                        QMessageBox.warning(
+                            self,
+                            "Terminal Not Found",
+                            "Could not find a suitable terminal emulator.\n\n"
+                            "Please open a terminal manually and run:\n"
+                            f"{mtk_command}"
+                        )
+                        return
+                        
+                elif platform.system() == "Darwin":  # macOS
+                    # macOS: Open Terminal.app with MTK command
+                    script_content = f"""#!/bin/bash
+cd '{current_dir}'
+python mtk.py
+echo "Press any key to close this terminal..."
+read -n 1
+"""
+                    # Create temporary script
+                    script_path = current_dir / "mtk_recovery.sh"
+                    with open(script_path, 'w') as f:
+                        f.write(script_content)
+                    
+                    # Make script executable
+                    os.chmod(script_path, 0o755)
+                    
+                    # Open Terminal.app with the script
+                    subprocess.Popen([
+                        "open", "-a", "Terminal", str(script_path)
+                    ])
+                    
+                    # Clean up script after a delay
+                    QTimer.singleShot(5000, lambda: script_path.unlink() if script_path.exists() else None)
+                
+                self.status_label.setText("Recovery Firmware Install launched in terminal")
+                
         except Exception as e:
             self.status_label.setText(f"Error launching recovery firmware install: {e}")
             
