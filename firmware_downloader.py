@@ -3290,24 +3290,33 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def show_troubleshooting_instructions(self):
         """Show troubleshooting instructions and launch recovery firmware install"""
-        # Show method2 image when troubleshooting instructions are displayed
+        # Show Method 2 image when troubleshooting instructions are displayed
         self.load_method2_image()
         
         if platform.system() == "Windows":
             # Windows: Check if shortcut exists, download if missing
             if not self.ensure_recovery_shortcut():
                 return
-        
-        # Show Method 2 image while displaying troubleshooting instructions
-        self.load_method2_image()
+            
+            # Windows-specific Method 2 instructions
+            instructions = ("Please follow these steps:\n\n"
+                          "1. INSERT Paperclip\n"
+                          "2. CONNECT Y1 via USB\n"
+                          "3. WAIT for the install to finish in the recovery window\n"
+                          "4. Disconnect Y1 and hold middle button to restart\n\n"
+                          "This method will show the technical information behind your firmware installation which can help to diagnose issues, if this doesn't work try again with method 3.")
+        else:
+            # Non-Windows baseline Method 2 instructions
+            instructions = ("Please follow these steps:\n\n"
+                          "1. INSERT Paperclip\n"
+                          "2. CONNECT Y1 via USB\n"
+                          "3. WAIT for the install to finish in the recovery window\n"
+                          "4. Disconnect Y1 and hold middle button to restart\n\n"
+                          "This method will show the technical information behind your firmware installation which can help to diagnose issues.")
         
         msg_box = QMessageBox(self)
-        msg_box.setWindowTitle("Troubleshooting Instructions")
-        msg_box.setText("Please follow these steps:\n\n"
-                       "1. Connect your Y1 device via USB\n"
-                       "2. Reconnect the USB cable\n"
-                       "3. Insert your paperclip once when the black window appears\n\n"
-                       "Click OK when ready to launch the recovery firmware installer.")
+        msg_box.setWindowTitle("Troubleshooting Instructions - Method 2")
+        msg_box.setText(instructions)
         msg_box.setIcon(QMessageBox.Information)
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.setDefaultButton(QMessageBox.Ok)
@@ -3315,8 +3324,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         reply = msg_box.exec()
         
         if reply == QMessageBox.Ok:
-            # Show Method 2 image before launching recovery
-            self.load_method2_image()
             # Launch recovery firmware installer (platform-specific)
             self.launch_recovery_firmware_install()
 
@@ -3459,19 +3466,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             current_dir = Path.cwd()
             sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
             
-            # Show Method 3 image while displaying SP Flash Tool instructions
-            self.load_method3_image()
-            
             # Show SP Flash Tool specific instructions popup
             reply = QMessageBox.question(
                 self,
-                "SP Flash Tool Instructions",
+                "SP Flash Tool Instructions - Method 3",
                 "Please follow these steps:\n\n"
-                "1. Unplug the Y1 from USB\n"
-                "2. Press the paperclip into the reset hole once\n"
-                "3. Connect the Y1 when the black screen appears\n"
-                "4. If it doesn't start installing right away, try pressing the paperclip into the Y1 once more\n"
-                "5. It should then begin the installation process\n\n"
+                "1. CONNECT Y1 via USB\n"
+                "2. INSERT Paperclip\n"
+                "3. WAIT for SP Flash Tool to finish in the recovery window\n"
+                "4. Disconnect Y1 and hold middle button to restart\n\n"
+                "This method uses the SP Flash Tool, as provided by the manufacturer, to do updates / resets - if you have the drivers installed and this method doesn't work please contact the seller / manufacturer for assistance.\n\n"
                 "Click OK when ready to open SP Flash Tool.",
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok
@@ -3483,9 +3487,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Stop mtk.py processes and clean up libusb state before opening SP Flash Tool
             self.stop_mtk_processes()
             self.cleanup_libusb_state()
-            
-            # Show Method 3 image before launching SP Flash Tool
-            self.load_method3_image()
             
             # Launch the SP Flash Tool shortcut
             if platform.system() == "Windows":
