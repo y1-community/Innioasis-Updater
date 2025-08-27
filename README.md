@@ -1,5 +1,4 @@
-<div align="right">
-</div>
+<img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot" width="300"/>
 
 # Innioasis Updater
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
