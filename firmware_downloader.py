@@ -2104,6 +2104,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         if reply == QMessageBox.Cancel:
             return
 
+        # Clean up libusb state before starting new MTK operation (Windows only)
+        if platform.system() == "Windows":
+            self.cleanup_libusb_state()
+
         # Load and display the init steps image
         self.load_initsteps_image()
 
@@ -2124,39 +2128,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Disable download button during MTK operation
         self.download_btn.setEnabled(False)
 
-    def run_mtk_command_auto(self):
-        """Run the MTK flash command automatically without confirmation dialog (for zip installations)"""
-        # Check if required files exist
-        required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
-        missing_files = []
-        for file in required_files:
-            if not Path(file).exists():
-                missing_files.append(file)
 
-        if missing_files:
-            QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
-            return
-
-        # Skip confirmation dialog and go straight to MTK installation
-        # Load and display the init steps image
-        self.load_initsteps_image()
-
-        # Start MTK worker
-        self.mtk_worker = MTKWorker()
-        self.mtk_worker.status_updated.connect(self.status_label.setText)
-        self.mtk_worker.show_installing_image.connect(self.load_installing_image)
-        self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
-        self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
-        self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
-        self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
-        self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
-        self.mtk_worker.disable_update_button.connect(self.disable_update_button)
-        self.mtk_worker.enable_update_button.connect(self.enable_update_button)
-
-        self.mtk_worker.start()
-
-        # Disable download button during MTK operation
-        self.download_btn.setEnabled(False)
 
     def on_mtk_completed(self, success, message):
         """Handle MTK command completion"""
@@ -2591,9 +2563,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             success_msg += "\nAll required files are present. Ready for MTK installation."
             QMessageBox.information(self, "Success", success_msg)
             
-            # Automatically run MTK command after a short delay (bypass confirmation dialog)
+            # Automatically run MTK command after a short delay
             self.status_label.setText("Starting MTK installation in 3 seconds...")
-            QTimer.singleShot(3000, self.run_mtk_command_auto)
+            QTimer.singleShot(3000, self.run_mtk_command)
             
         except Exception as e:
             error_msg = f"Error processing zip file: {str(e)}"
@@ -3032,6 +3004,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         if reply == QMessageBox.Cancel:
             return
 
+        # Clean up libusb state before starting new MTK operation (Windows only)
+        if platform.system() == "Windows":
+            self.cleanup_libusb_state()
+
         # Load and display the init steps image
         self.load_initsteps_image()
 
@@ -3124,6 +3100,78 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText(f"Error checking for mtk.py processes: {e}")
             print(f"Error checking for mtk.py processes: {e}")
 
+    def cleanup_libusb_state(self):
+        """Clean up libusb state before starting new MTK operations (Windows only)
+        
+        IMPORTANT: This function should ONLY be called BEFORE starting new MTK operations,
+        NEVER during active flashing/installation. It helps resolve libusb conflicts
+        that occur when previous MTK processes didn't clean up properly.
+        """
+        if platform.system() != "Windows":
+            return  # Only needed on Windows
+            
+        try:
+            self.status_label.setText("Cleaning up libusb state...")
+            
+            # Method 1: Try to clear USB device cache using pnputil
+            try:
+                subprocess.run(
+                    ["pnputil", "/enum-devices", "/class", "USB"],
+                    capture_output=True,
+                    creationflags=subprocess.CREATE_NO_WINDOW,
+                    timeout=5
+                )
+                # This refreshes the USB device list without restarting anything
+            except Exception as e:
+                print(f"USB device refresh failed: {e}")
+            
+            # Method 2: Try to reset USB hub service (more aggressive but safer than device restart)
+            try:
+                # Check if USB hub service is running
+                result = subprocess.run(
+                    ["sc", "query", "usbhub"],
+                    capture_output=True,
+                    creationflags=subprocess.CREATE_NO_WINDOW,
+                    timeout=5
+                )
+                
+                if result.returncode == 0 and "RUNNING" in result.stdout:
+                    # Service is running, try to restart it
+                    subprocess.run(
+                        ["sc", "stop", "usbhub"],
+                        capture_output=True,
+                        creationflags=subprocess.CREATE_NO_WINDOW,
+                        timeout=5
+                    )
+                    import time
+                    time.sleep(2)  # Wait for service to stop
+                    
+                    subprocess.run(
+                        ["sc", "start", "usbhub"],
+                        capture_output=True,
+                        creationflags=subprocess.CREATE_NO_WINDOW,
+                        timeout=5
+                    )
+                    time.sleep(3)  # Wait for service to start
+                    
+                    self.status_label.setText("USB hub service restarted to clear libusb conflicts")
+                else:
+                    self.status_label.setText("USB hub service not running, skipping restart")
+                    
+            except Exception as e:
+                print(f"USB hub service restart failed: {e}")
+            
+            # Method 3: Wait a bit for USB subsystem to stabilize
+            import time
+            time.sleep(2)
+            
+            self.status_label.setText("Libusb state cleanup completed")
+            
+        except Exception as e:
+            print(f"Error during libusb cleanup: {e}")
+            self.status_label.setText("Libusb cleanup failed, continuing anyway")
+            # Continue anyway - this is not critical
+
     def try_method_3(self):
         """Open SP Flash Tool shortcut for Windows users"""
         try:
@@ -3157,6 +3205,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if reply == QMessageBox.Cancel:
                 return
+            
+            # Stop mtk.py processes and clean up libusb state before opening SP Flash Tool
+            self.stop_mtk_processes()
+            self.cleanup_libusb_state()
             
             # Launch the SP Flash Tool shortcut
             if platform.system() == "Windows":
