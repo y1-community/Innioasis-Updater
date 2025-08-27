@@ -1,4 +1,4 @@
-<img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot" width="300"/>
+<img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>
 
 # Innioasis Updater
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
