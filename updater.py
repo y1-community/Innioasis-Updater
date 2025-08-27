@@ -33,9 +33,9 @@ class CrossPlatformHelper:
         return {
             'system': system,
             'machine': machine,
-            'is_windows': system == 'windows',
+            'is_windows': system == 'Windows',
             'is_macos': system == 'macOS',
-            'is_linux': system == 'linux',
+            'is_linux': system == 'Linux',
             'is_64bit': machine in ['x86_64', 'amd64', 'arm64']
         }
 
