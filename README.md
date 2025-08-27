@@ -61,6 +61,8 @@ Check that you have both drivers set up, and if you don't, install them, restart
 
 #### If no methods work on Mac or Linux: this usually means you're missing the needed libusb, openssl installation and perhaps other python dependencies, try the setup commands / app installation again, reboot and follow instructions closely
 
+
+
 ### macOS Easy App Setup (Needs work)
 
 [Download here](https://www.github.com/team-slide/Innioasis-Updater/releases/latest)
@@ -116,17 +118,18 @@ cd "$HOME/Library/Application Support/Innioasis Updater"
 ```
 python3 updater.py
 ```
-
-
 ---------------------------------------------------------------------------------------------------------------
 
-### Linux - (Ubuntu recommended, no patched kernel needed except for kamakiri)
+
+
+
+### Linux - (Ubuntu recommended)
 
 #### Install python >=3.8, git and other deps
 
 #### For Debian/Ubuntu
 ```
-sudo apt install python3 git libusb-1.0-0 python3-pip
+sudo apt install python3 git libusb-1.0-0 python3-pip android-sdk-platform-tools
 ```
 #### For ArchLinux
 ```
@@ -139,7 +142,7 @@ yay -S python python-pip git libusb
 
 #### For Fedora
 ```
-sudo dnf install python3 git libusb1
+sudo dnf install python3 git libusb1 android-tools
 ```
 
 #### Grab files
