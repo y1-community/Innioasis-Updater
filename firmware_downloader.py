@@ -1366,7 +1366,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 try:
                     shutil.copy2(innioasis_updater_shortcut, desktop_shortcut)
                     silent_print(f"Added Innioasis Updater shortcut to desktop")
-        except Exception as e:
+                except Exception as e:
                     silent_print(f"Error adding desktop shortcut: {e}")
             
             # Get comprehensive list of start menu paths
@@ -4611,8 +4611,8 @@ Method 2 - MTKclient: Direct technical installation
             method = getattr(self, 'installation_method', 'guided')
             if method == "guided":
                 # Method 1: Show unplug Y1 prompt and retry normal installation
-            # Don't clear marker here - it will be cleared after successful installation
-            self.show_unplug_prompt_and_retry()
+                # Don't clear marker here - it will be cleared after successful installation
+                self.show_unplug_prompt_and_retry()
             elif method == "mtkclient":
                 # Method 2: Same as pressing Try Method 2
                 remove_installation_marker()
