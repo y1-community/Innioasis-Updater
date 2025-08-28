@@ -25,8 +25,8 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 assets_dir = os.path.join(base_dir, 'assets')
 
 def debug_print(message):
-    """Suppress all debug messages by doing nothing."""
-    pass
+    """Print debug messages to help troubleshoot button issues."""
+    print(f"DEBUG: {message}")
 
 def get_platform_font(family="default", size=9, weight="normal"):
     """Get platform-appropriate font family."""
@@ -397,17 +397,44 @@ class Y1HelperApp(tk.Tk):
         mode_frame = ttk.Frame(self.controls_frame)
         mode_frame.pack(fill=tk.X, pady=(3, 0))
         
-        self.input_mode_btn = ttk.Button(mode_frame, text="Touch Screen Mode", command=self.toggle_scroll_wheel_mode, style="TButton")
+        # Create buttons with proper error handling and fallback to tk.Button if ttk fails
+        debug_print("Creating input_mode_btn...")
+        try:
+            self.input_mode_btn = ttk.Button(mode_frame, text="Touch Screen Mode", command=self.toggle_scroll_wheel_mode, style="TButton")
+            debug_print("input_mode_btn created successfully with ttk")
+        except Exception as e:
+            debug_print(f"ttk.Button failed, using tk.Button: {e}")
+            self.input_mode_btn = tk.Button(mode_frame, text="Touch Screen Mode", command=self.toggle_scroll_wheel_mode,
+                                           bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
+                                           activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
+            debug_print("input_mode_btn created successfully with tk.Button")
         self.input_mode_btn.pack(side=tk.LEFT, anchor="w")
         
-        self.screenshot_btn = ttk.Button(mode_frame, text="📸 Screenshot", command=self.take_screenshot, style="TButton")
+        try:
+            self.screenshot_btn = ttk.Button(mode_frame, text="📸 Screenshot", command=self.take_screenshot, style="TButton")
+        except Exception as e:
+            debug_print(f"ttk.Button failed, using tk.Button: {e}")
+            self.screenshot_btn = tk.Button(mode_frame, text="📸 Screenshot", command=self.take_screenshot,
+                                          bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
+                                          activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
         self.screenshot_btn.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
         
         # New "Install Firmware" button
-        self.firmware_btn = ttk.Button(mode_frame, text="Install Firmware", command=self.run_updater_and_exit, style="TButton")
+        try:
+            self.firmware_btn = ttk.Button(mode_frame, text="Install Firmware", command=self.run_updater_and_exit, style="TButton")
+        except Exception as e:
+            debug_print(f"ttk.Button failed, using tk.Button: {e}")
+            self.firmware_btn = tk.Button(mode_frame, text="Install Firmware", command=self.run_updater_and_exit,
+                                        bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
+                                        activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
         self.firmware_btn.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
         
-        self.disable_swap_checkbox = ttk.Checkbutton(mode_frame, text="Disable D-pad Swap", variable=self.disable_dpad_swap_var, command=self.update_controls_display, style="TCheckbutton")
+        try:
+            self.disable_swap_checkbox = ttk.Checkbutton(mode_frame, text="Disable D-pad Swap", variable=self.disable_dpad_swap_var, command=self.update_controls_display, style="TCheckbutton")
+        except Exception as e:
+            debug_print(f"ttk.Checkbutton failed, using tk.Checkbutton: {e}")
+            self.disable_swap_checkbox = tk.Checkbutton(mode_frame, text="Disable D-pad Swap", variable=self.disable_dpad_swap_var, command=self.update_controls_display,
+                                                      bg=self.bg_color, fg=self.fg_color, font=(get_platform_font(), 9))
         self.disable_swap_checkbox.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
         self.disable_swap_checkbox.pack_forget()
         
@@ -570,6 +597,7 @@ This will install your themes and fonts to the device."""
     
     def run_updater_and_exit(self):
         """Launches Innioasis Updater and terminates Y1 Helper."""
+        debug_print("run_updater_and_exit called")
         try:
             # Look for Innioasis Updater.lnk in Start Menu
             start_menu_path = os.path.join(os.environ.get('APPDATA', ''), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Innioasis Updater.lnk')
@@ -695,30 +723,36 @@ This will install your themes and fonts to the device."""
         self.controls_label.config(text=controls_text)
 
     def toggle_scroll_wheel_mode(self):
-        is_scroll_wheel_mode = not self.scroll_wheel_mode_var.get()
-        self.scroll_wheel_mode_var.set(is_scroll_wheel_mode)
-        self.control_launcher = is_scroll_wheel_mode
-        self.manual_mode_override = True
-        self.last_manual_mode_change = time.time()
-        
-        if is_scroll_wheel_mode:
-            self.input_mode_btn.config(text="Scroll Wheel Mode")
-            self.disable_swap_checkbox.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
-            self.status_var.set("Scroll Wheel Mode enabled")
-            if not self.ready_placeholder_shown:
-                self.screen_canvas.config(cursor="")
-        else:
-            self.input_mode_btn.config(text="Touch Screen Mode")
-            self.disable_swap_checkbox.pack_forget()
-            self.status_var.set("Touch Screen Mode enabled")
-            if not self.ready_placeholder_shown:
-                # Use appropriate cursor for each platform
-                if platform.system() == "Windows":
-                    self.screen_canvas.config(cursor="hand2")
-                else:
-                    # macOS and Linux don't have hand2 cursor, use default
+        debug_print("toggle_scroll_wheel_mode called")
+        try:
+            is_scroll_wheel_mode = not self.scroll_wheel_mode_var.get()
+            self.scroll_wheel_mode_var.set(is_scroll_wheel_mode)
+            self.control_launcher = is_scroll_wheel_mode
+            self.manual_mode_override = True
+            self.last_manual_mode_change = time.time()
+            
+            if is_scroll_wheel_mode:
+                self.input_mode_btn.config(text="Scroll Wheel Mode")
+                self.disable_swap_checkbox.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
+                self.status_var.set("Scroll Wheel Mode enabled")
+                if not self.ready_placeholder_shown:
                     self.screen_canvas.config(cursor="")
-        self.update_controls_display()
+            else:
+                self.input_mode_btn.config(text="Touch Screen Mode")
+                self.disable_swap_checkbox.pack_forget()
+                self.status_var.set("Touch Screen Mode enabled")
+                if not self.ready_placeholder_shown:
+                    # Use appropriate cursor for each platform
+                    if platform.system() == "Windows":
+                        self.screen_canvas.config(cursor="hand2")
+                    else:
+                        # macOS and Linux don't have hand2 cursor, use default
+                        self.screen_canvas.config(cursor="")
+            
+            self.update_controls_display()
+        except Exception as e:
+            debug_print(f"Error in toggle_scroll_wheel_mode: {e}")
+            messagebox.showerror("Error", f"Failed to toggle mode: {e}")
 
     def toggle_launcher_control(self, event=None):
         self.scroll_wheel_mode_var.set(not self.scroll_wheel_mode_var.get())
@@ -1372,20 +1406,25 @@ To install ADB on your system:"""
                 self.screen_canvas.config(cursor="")
 
     def take_screenshot(self):
-        if not self.device_connected or not self.last_screen_image:
-            messagebox.showwarning("Screenshot Failed", "Device not connected or no screen data available.")
-            return
-        
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        default_filename = f"Y1_Screenshot_{timestamp}.png"
-        file_path = filedialog.asksaveasfilename(title="Save Screenshot", defaultextension=".png", filetypes=[("PNG files", "*.png")], initialfile=default_filename)
-        
-        if file_path:
-            try:
-                self.last_screen_image.save(file_path)
-                messagebox.showinfo("Success", f"Screenshot saved to {file_path}")
-            except Exception as e:
-                messagebox.showerror("Error", f"Failed to save screenshot: {e}")
+        debug_print("take_screenshot called")
+        try:
+            if not self.device_connected or not self.last_screen_image:
+                messagebox.showwarning("Screenshot Failed", "Device not connected or no screen data available.")
+                return
+            
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            default_filename = f"Y1_Screenshot_{timestamp}.png"
+            file_path = filedialog.asksaveasfilename(title="Save Screenshot", defaultextension=".png", filetypes=[("PNG files", "*.png")], initialfile=default_filename)
+            
+            if file_path:
+                try:
+                    self.last_screen_image.save(file_path)
+                    messagebox.showinfo("Success", f"Screenshot saved to {file_path}")
+                except Exception as e:
+                    messagebox.showerror("Error", f"Failed to save screenshot: {e}")
+        except Exception as e:
+            debug_print(f"Error in take_screenshot: {e}")
+            messagebox.showerror("Error", f"Failed to take screenshot: {e}")
 
     def show_recent_apps(self):
         self.run_adb_command("shell input keyevent 187") # KEYCODE_APP_SWITCH

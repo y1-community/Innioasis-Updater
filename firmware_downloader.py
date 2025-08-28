@@ -1248,7 +1248,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     old_shortcuts.append(("Desktop", str(item)))
                 for item in desktop_path.glob("*Y1*.lnk"):
                     old_shortcuts.append(("Desktop", str(item)))
-                
+            
                 # Check desktop subfolders
                 for subfolder in desktop_path.iterdir():
                     if subfolder.is_dir():
@@ -1366,7 +1366,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 try:
                     shutil.copy2(innioasis_updater_shortcut, desktop_shortcut)
                     silent_print(f"Added Innioasis Updater shortcut to desktop")
-                except Exception as e:
+        except Exception as e:
                     silent_print(f"Error adding desktop shortcut: {e}")
             
             # Get comprehensive list of start menu paths
@@ -1798,11 +1798,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if source_remote.exists():
                     # Copy to first available start menu path
                     for start_menu_path in start_menu_paths:
-                        dest_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
-                        shutil.copy2(source_remote, dest_remote)
-                        silent_print(f"Added Innioasis Y1 Remote Control.lnk to {start_menu_path}")
-                        break
-                        
+                            dest_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
+                            shutil.copy2(source_remote, dest_remote)
+                            silent_print(f"Added Innioasis Y1 Remote Control.lnk to {start_menu_path}")
+                            break
+                            
         except Exception as e:
             silent_print(f"Error ensuring proper start menu shortcuts: {e}")
 
@@ -4611,8 +4611,8 @@ Method 2 - MTKclient: Direct technical installation
             method = getattr(self, 'installation_method', 'guided')
             if method == "guided":
                 # Method 1: Show unplug Y1 prompt and retry normal installation
-                # Don't clear marker here - it will be cleared after successful installation
-                self.show_unplug_prompt_and_retry()
+            # Don't clear marker here - it will be cleared after successful installation
+            self.show_unplug_prompt_and_retry()
             elif method == "mtkclient":
                 # Method 2: Same as pressing Try Method 2
                 remove_installation_marker()

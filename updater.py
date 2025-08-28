@@ -1,8 +1,25 @@
 #!/usr/bin/env python3
 """
 Innioasis Updater Script
-Downloads and installs the latest version of the Innioasis Updater
+Downloads and installs the latest version from team-slide/y1-helper repository
 Cross-platform support for Windows, macOS, and Linux
+
+Features:
+- Automatic process management (kills ADB, flash_tool.exe, libusb, etc.)
+- Conservative file handling (never removes existing files, only merges/updates)
+- Preserves user data directories (firmware_downloads, assets, Lib, DLLs, etc.)
+- Process cleanup on exit and failure
+- Enhanced error reporting for locked files
+- Graceful handling of blocking processes
+- Daily update check with timestamp-based logic
+- Automatic launch of firmware_downloader.py after successful update
+
+Safety Features:
+- NEVER removes existing files unless explicitly requested
+- Preserves all user data and runtime directories
+- Verifies downloaded files before extraction
+- Checks for expected files after update
+- Graceful fallback if update is incomplete
 """
 
 import os
@@ -16,11 +33,122 @@ import time
 import threading
 import platform
 import argparse
+import psutil
 from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                                QWidget, QLabel, QProgressBar, QPushButton, QTextEdit,
                                QMessageBox, QDialog)
 from PySide6.QtCore import QThread, Signal, Qt, QTimer
 from PySide6.QtGui import QFont
+
+class ProcessManager:
+    """Manages processes that might block file updates"""
+    
+    # Processes that commonly block file updates
+    BLOCKING_PROCESSES = [
+        'adb.exe', 'adb', 'flash_tool.exe', 'flash_tool', 'libusb-win32-devel-filter.exe',
+        'libusb-win32-devel-filter', 'mtkclient', 'mtk.py', 'firmware_downloader.py',
+        'y1_helper.py', 'updater.py', 'python.exe', 'python3', 'python'
+    ]
+    
+    @staticmethod
+    def kill_blocking_processes():
+        """Kill processes that might block file updates"""
+        killed_processes = []
+        failed_kills = []
+        
+        try:
+            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+                try:
+                    proc_name = proc.info['name'].lower()
+                    cmdline = proc.info['cmdline']
+                    
+                    # Check if this is a blocking process
+                    is_blocking = False
+                    for blocking_name in ProcessManager.BLOCKING_PROCESSES:
+                        if blocking_name.lower() in proc_name:
+                            is_blocking = True
+                            break
+                    
+                    # Also check command line for Python scripts
+                    if cmdline and any('firmware_downloader.py' in str(arg) or 'y1_helper.py' in str(arg) or 'updater.py' in str(arg) for arg in cmdline):
+                        is_blocking = True
+                    
+                    # Don't kill the current process
+                    if proc.pid == os.getpid():
+                        continue
+                    
+                    if is_blocking:
+                        try:
+                            proc.terminate()
+                            proc.wait(timeout=3)  # Wait up to 3 seconds for graceful termination
+                            killed_processes.append(f"{proc_name} (PID: {proc.pid})")
+                        except (psutil.NoSuchProcess, psutil.TimeoutExpired):
+                            try:
+                                proc.kill()  # Force kill if graceful termination fails
+                                killed_processes.append(f"{proc_name} (PID: {proc.pid}) - force killed")
+                            except psutil.NoSuchProcess:
+                                failed_kills.append(f"{proc_name} (PID: {proc.pid}) - already terminated")
+                        except Exception as e:
+                            failed_kills.append(f"{proc_name} (PID: {proc.pid}) - error: {e}")
+                            
+                except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                    continue
+                    
+        except Exception as e:
+            return [], [f"Error scanning processes: {e}"]
+        
+        return killed_processes, failed_kills
+    
+    @staticmethod
+    def kill_adb_server():
+        """Kill ADB server specifically"""
+        try:
+            # Try to kill ADB server using adb kill-server command
+            if platform.system().lower() == "windows":
+                subprocess.run(['adb', 'kill-server'], 
+                             capture_output=True, timeout=10, 
+                             creationflags=subprocess.CREATE_NO_WINDOW)
+            else:
+                subprocess.run(['adb', 'kill-server'], 
+                             capture_output=True, timeout=10)
+            return True
+        except Exception as e:
+            # If adb command fails, try to kill adb processes directly
+            try:
+                for proc in psutil.process_iter(['pid', 'name']):
+                    if proc.info['name'] and 'adb' in proc.info['name'].lower():
+                        proc.terminate()
+                        proc.wait(timeout=3)
+                return True
+            except Exception:
+                return False
+    
+    @staticmethod
+    def wait_for_process_cleanup(timeout=10):
+        """Wait for processes to be fully cleaned up"""
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            # Check if any blocking processes are still running
+            blocking_running = False
+            try:
+                for proc in psutil.process_iter(['name']):
+                    proc_name = proc.info['name'].lower()
+                    for blocking_name in ProcessManager.BLOCKING_PROCESSES:
+                        if blocking_name.lower() in proc_name:
+                            blocking_running = True
+                            break
+                    if blocking_running:
+                        break
+                
+                if not blocking_running:
+                    return True
+                    
+                time.sleep(0.5)  # Wait 500ms before checking again
+            except Exception:
+                break
+        
+        return False
+
 
 class CrossPlatformHelper:
     """Helper class for cross-platform operations"""
@@ -93,8 +221,43 @@ class UpdateWorker(QThread):
             self.status_updated.emit(f"Starting update process on {self.platform_info['system'].title()}...")
             self.progress_updated.emit(5)
             
-            # Download latest version from GitHub
-            github_url = "https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip"
+            # Kill blocking processes before starting update
+            self.status_updated.emit("Stopping processes that might block updates...")
+            self.progress_updated.emit(8)
+            
+            try:
+                killed_processes, failed_kills = ProcessManager.kill_blocking_processes()
+                
+                if killed_processes:
+                    self.status_updated.emit(f"Stopped {len(killed_processes)} blocking processes")
+                    for proc in killed_processes[:3]:  # Show first 3 processes
+                        self.status_updated.emit(f"  - {proc}")
+                    if len(killed_processes) > 3:
+                        self.status_updated.emit(f"  ... and {len(killed_processes) - 3} more")
+                
+                if failed_kills:
+                    self.status_updated.emit(f"Warning: {len(failed_kills)} processes couldn't be stopped")
+                
+                # Kill ADB server specifically
+                if ProcessManager.kill_adb_server():
+                    self.status_updated.emit("ADB server stopped")
+                else:
+                    self.status_updated.emit("Warning: Could not stop ADB server")
+                
+                # Wait for processes to be fully cleaned up
+                if ProcessManager.wait_for_process_cleanup():
+                    self.status_updated.emit("Process cleanup completed")
+                else:
+                    self.status_updated.emit("Warning: Some processes may still be running")
+                
+            except Exception as e:
+                self.status_updated.emit(f"Warning: Error stopping processes: {e}")
+                self.status_updated.emit("Continuing with update...")
+            
+            self.progress_updated.emit(10)
+            
+            # Download latest version from GitHub - use the correct repository
+            github_url = "https://github.com/team-slide/y1-helper/archive/refs/heads/main.zip"
             zip_file = current_dir / "innioasis_updater_latest.zip"
             
             self.status_updated.emit("Downloading latest version from GitHub...")
@@ -104,6 +267,24 @@ class UpdateWorker(QThread):
                 self.download_with_progress(github_url, zip_file)
                 self.status_updated.emit("Download completed!")
                 self.progress_updated.emit(50)
+                
+                # Verify the downloaded file
+                if not zip_file.exists() or zip_file.stat().st_size < 10000:  # Less than 10KB
+                    self.update_completed.emit(False, "Downloaded file is too small or missing - download may have failed")
+                    return
+                    
+                # Verify it's a valid zip file
+                try:
+                    with zipfile.ZipFile(zip_file, 'r') as test_zip:
+                        file_list = test_zip.namelist()
+                        if not file_list:
+                            self.update_completed.emit(False, "Downloaded file is not a valid zip archive")
+                            return
+                        self.status_updated.emit(f"Zip file verified: {len(file_list)} files found")
+                except Exception as e:
+                    self.update_completed.emit(False, f"Downloaded file is not a valid zip archive: {e}")
+                    return
+                    
             except Exception as e:
                 self.update_completed.emit(False, f"Error downloading update: {e}")
                 return
@@ -121,10 +302,23 @@ class UpdateWorker(QThread):
                 self.update_completed.emit(False, f"Error extracting files: {e}")
                 return
             
-            extracted_dir = next(current_dir.glob("Innioasis-Updater-main*"), None)
+            extracted_dir = next(current_dir.glob("y1-helper-main*"), None)
             if not extracted_dir:
                 self.update_completed.emit(False, "Could not find extracted directory")
                 return
+            
+            # Verify the extracted directory contains expected files
+            expected_files = ["firmware_downloader.py", "y1_helper.py", "updater.py"]
+            missing_files = []
+            for expected_file in expected_files:
+                if not (extracted_dir / expected_file).exists():
+                    missing_files.append(expected_file)
+            
+            if missing_files:
+                self.status_updated.emit(f"Warning: Missing expected files: {', '.join(missing_files)}")
+                self.status_updated.emit("Update may be incomplete")
+            else:
+                self.status_updated.emit("All expected files found in update")
             
             # Install dependencies
             self.install_requirements(extracted_dir)
@@ -153,19 +347,48 @@ class UpdateWorker(QThread):
                 self.status_updated.emit(f"Warning: Could not set up troubleshooting shortcuts: {e}")
                 self.progress_updated.emit(97)
             
+            # Verify that firmware_downloader.py exists after update
+            self.status_updated.emit("Verifying update...")
+            self.progress_updated.emit(98)
+            
+            firmware_script = current_dir / "firmware_downloader.py"
+            if not firmware_script.exists():
+                self.status_updated.emit("Warning: firmware_downloader.py not found after update")
+                self.status_updated.emit("This may indicate an incomplete update")
+                
+                # Try to find any Python scripts that might be the main application
+                python_scripts = list(current_dir.glob("*.py"))
+                if python_scripts:
+                    self.status_updated.emit(f"Found Python scripts: {', '.join([s.name for s in python_scripts])}")
+                    self.status_updated.emit("Update may have been partially successful")
+                else:
+                    self.status_updated.emit("No Python scripts found - update may have failed")
+            else:
+                self.status_updated.emit("firmware_downloader.py verified successfully")
+                
+                # Check file size to ensure it's not empty
+                if firmware_script.stat().st_size < 1000:  # Less than 1KB
+                    self.status_updated.emit("Warning: firmware_downloader.py appears to be very small")
+                    self.status_updated.emit("This may indicate a corrupted download")
+            
             # Clean up
             self.status_updated.emit("Cleaning up...")
-            self.progress_updated.emit(98)
+            self.progress_updated.emit(99)
             
             try:
                 zip_file.unlink(missing_ok=True)
                 shutil.rmtree(extracted_dir)
                 timestamp_file.write_text(str(time.time()))
+                
+                # Log successful update
+                self.status_updated.emit("Update timestamp recorded")
+                
             except Exception as e:
                 self.status_updated.emit(f"Warning: Could not clean up temporary files: {e}")
             
             self.progress_updated.emit(100)
             self.status_updated.emit("Update completed successfully!")
+            self.status_updated.emit("The application will now launch...")
             self.update_completed.emit(True, "Update successful!")
             
         except Exception as e:
@@ -195,8 +418,39 @@ class UpdateWorker(QThread):
         error_files = []
         skipped_files = []
         
+        # Check if any blocking processes are still running before starting file operations
+        self.status_updated.emit("Checking for blocking processes before file operations...")
+        try:
+            blocking_running = False
+            for proc in psutil.process_iter(['name']):
+                proc_name = proc.info['name'].lower()
+                for blocking_name in ProcessManager.BLOCKING_PROCESSES:
+                    if blocking_name.lower() in proc_name and proc.pid != os.getpid():
+                        blocking_running = True
+                        self.status_updated.emit(f"Warning: {proc_name} (PID: {proc.pid}) is still running")
+                        break
+                if blocking_running:
+                    break
+            
+            if blocking_running:
+                self.status_updated.emit("Some blocking processes are still running - file operations may fail")
+                self.status_updated.emit("Attempting to continue with update...")
+        except Exception as e:
+            self.status_updated.emit(f"Warning: Could not check for blocking processes: {e}")
+        
         for item in source_dir.iterdir():
-            if item.name in [".git", "__pycache__", ".DS_Store", "firmware_downloads"]:
+            # Skip Git and cache directories
+            if item.name in [".git", "__pycache__", ".DS_Store"]:
+                continue
+            
+            # NEVER touch firmware_downloads directory - it contains user data
+            if item.name == "firmware_downloads":
+                self.status_updated.emit("Skipping firmware_downloads directory (preserving user data)")
+                continue
+            
+            # Skip any other directories that might contain user data or runtime files
+            if item.name in ["assets", "Lib", "DLLs", "Scripts", "Tools"]:
+                self.status_updated.emit(f"Skipping {item.name} directory (preserving existing files)")
                 continue
             
             # CRITICAL: Never skip .exe files on Windows - they are essential system files
@@ -219,15 +473,41 @@ class UpdateWorker(QThread):
             
             try:
                 if item.is_file():
+                    # For files, always copy (overwrite if exists)
                     shutil.copy2(item, dest_item)
                 elif item.is_dir():
+                    # For directories, merge contents instead of replacing
                     if dest_item.exists():
-                        shutil.rmtree(dest_item)
-                    shutil.copytree(item, dest_item)
+                        # Copy contents of source directory into existing destination
+                        for subitem in item.iterdir():
+                            subdest = dest_item / subitem.name
+                            if subitem.is_file():
+                                shutil.copy2(subitem, subdest)
+                            elif subitem.is_dir():
+                                if subdest.exists():
+                                    # Recursively merge subdirectories
+                                    self.merge_directories(subitem, subdest)
+                                else:
+                                    shutil.copytree(subitem, subdest)
+                    else:
+                        # Destination doesn't exist, copy the entire directory
+                        shutil.copytree(item, dest_item)
             except PermissionError as e:
                 # Handle write blocking errors (files in use) - common with DLL/EXE files
                 if "being used by another process" in str(e) or "access is denied" in str(e):
                     error_files.append(f"{item.name} (in use)")
+                    # Try to identify which process is using the file
+                    try:
+                        for proc in psutil.process_iter(['pid', 'name', 'open_files']):
+                            try:
+                                for file_info in proc.open_files():
+                                    if str(dest_item) in str(file_info.path):
+                                        error_files[-1] = f"{item.name} (in use by {proc.info['name']} PID: {proc.pid})"
+                                        break
+                            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                                continue
+                    except Exception:
+                        pass
                     # Don't show individual warnings - just log silently
                     continue
                 else:
@@ -247,7 +527,34 @@ class UpdateWorker(QThread):
         
         if error_files:
             self.status_updated.emit(f"Note: {len(error_files)} files couldn't be updated (likely in use) - will update on next run")
+            
+            # Show which processes are blocking files
+            blocking_processes = set()
+            for error_file in error_files:
+                if "in use by" in error_file:
+                    process_info = error_file.split("in use by ")[1].split(" PID:")[0]
+                    blocking_processes.add(process_info)
+            
+            if blocking_processes:
+                self.status_updated.emit(f"Files are being used by: {', '.join(blocking_processes)}")
+                self.status_updated.emit("These processes will be automatically stopped on the next update")
+            
             self.status_updated.emit("Update proceeding successfully - blocked files will be updated later")
+
+    def merge_directories(self, source_dir, dest_dir):
+        """Recursively merge source directory into destination directory"""
+        for item in source_dir.iterdir():
+            subdest = dest_dir / item.name
+            if item.is_file():
+                # Always copy files (overwrite if exists)
+                shutil.copy2(item, subdest)
+            elif item.is_dir():
+                if subdest.exists():
+                    # Recursively merge subdirectories
+                    self.merge_directories(item, subdest)
+                else:
+                    # Copy the entire subdirectory if it doesn't exist
+                    shutil.copytree(item, subdest)
 
     def install_requirements(self, source_dir):
         """Install requirements.txt from the source directory."""
@@ -361,6 +668,16 @@ class UpdateProgressDialog(QDialog):
                 self.update_worker.should_stop = True
                 self.update_worker.terminate()
                 self.update_worker.wait()
+            
+            # Clean up any processes that were started during the update
+            self.update_status("Cleaning up processes...")
+            try:
+                ProcessManager.kill_blocking_processes()
+                ProcessManager.kill_adb_server()
+                self.update_status("Process cleanup completed")
+            except Exception as e:
+                self.update_status(f"Warning: Error during process cleanup: {e}")
+            
             self.reject()
     
     def on_update_completed(self, success, message):
@@ -369,6 +686,15 @@ class UpdateProgressDialog(QDialog):
         if success:
             QTimer.singleShot(2000, self.accept)
         else:
+            # Clean up processes if update failed
+            self.update_status("Cleaning up processes after failed update...")
+            try:
+                ProcessManager.kill_blocking_processes()
+                ProcessManager.kill_adb_server()
+                self.update_status("Process cleanup completed")
+            except Exception as e:
+                self.update_status(f"Warning: Error during process cleanup: {e}")
+            
             QMessageBox.critical(self, "Update Failed", f"Update failed: {message}")
             self.reject()
 
@@ -395,6 +721,32 @@ def launch_firmware_downloader():
     return False
 
 
+def check_for_blocking_processes():
+    """Check if any blocking processes are running before starting the updater"""
+    try:
+        blocking_found = []
+        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            try:
+                proc_name = proc.info['name'].lower()
+                cmdline = proc.info['cmdline']
+                
+                # Check if this is a blocking process
+                for blocking_name in ProcessManager.BLOCKING_PROCESSES:
+                    if blocking_name.lower() in proc_name and proc.pid != os.getpid():
+                        blocking_found.append(f"{proc_name} (PID: {proc.pid})")
+                        break
+                
+                # Also check command line for Python scripts
+                if cmdline and any('firmware_downloader.py' in str(arg) or 'y1_helper.py' in str(arg) for arg in cmdline):
+                    blocking_found.append(f"Python script (PID: {proc.pid})")
+                    
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                continue
+        
+        return blocking_found
+    except Exception:
+        return []
+
 def main():
     """Main function to check for updates and launch the GUI."""
     parser = argparse.ArgumentParser(description="Innioasis Updater Script")
@@ -409,6 +761,16 @@ def main():
     else:
         if not timestamp_file.exists() or (time.time() - float(timestamp_file.read_text()) >= 24 * 3600):
             needs_update = True
+
+    # Check for blocking processes before starting
+    if needs_update:
+        blocking_processes = check_for_blocking_processes()
+        if blocking_processes:
+            print("Warning: The following processes may block updates:")
+            for proc in blocking_processes:
+                print(f"  - {proc}")
+            print("The updater will attempt to stop these processes automatically.")
+            print()
 
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
@@ -425,5 +787,27 @@ def main():
         sys.exit(1)
 
 
+def cleanup_on_exit():
+    """Cleanup function to be called on exit"""
+    try:
+        # Kill any remaining blocking processes
+        ProcessManager.kill_blocking_processes()
+        ProcessManager.kill_adb_server()
+    except Exception:
+        pass
+
 if __name__ == "__main__":
-    main()
+    # Register cleanup function
+    import atexit
+    atexit.register(cleanup_on_exit)
+    
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nUpdate interrupted by user")
+        cleanup_on_exit()
+        sys.exit(1)
+    except Exception as e:
+        print(f"Fatal error: {e}")
+        cleanup_on_exit()
+        sys.exit(1)
