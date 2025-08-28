@@ -1398,7 +1398,7 @@ To install ADB on your system:"""
         self.bind_all("<KeyRelease>", self.on_key_release)
 
 if __name__ == "__main__":
-    print("You can minimise this window and use Y1 Helper")
+    print("You can minimise this window and use remote control and app install features")
     app = Y1HelperApp()
     app.protocol("WM_DELETE_WINDOW", app.on_closing)
     app.mainloop()
