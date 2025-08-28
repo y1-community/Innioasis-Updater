@@ -1103,6 +1103,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.check_sp_flash_tool()
             # Download troubleshooting shortcuts if missing
             QTimer.singleShot(200, self.ensure_troubleshooting_shortcuts)
+            # Check for old shortcuts and offer cleanup
+            QTimer.singleShot(400, self.check_and_cleanup_old_shortcuts)
 
         # Check for failed installation and show troubleshooting options
         QTimer.singleShot(300, self.check_failed_installation_on_startup)
@@ -1181,6 +1183,567 @@ class FirmwareDownloaderGUI(QMainWindow):
         if recovery_lnk.exists() and sp_flash_tool_lnk.exists():
             silent_print("Troubleshooting shortcuts already exist")
             return
+
+    def check_and_cleanup_old_shortcuts(self):
+        """Check for old shortcuts and offer to remove them (Windows only)"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            old_shortcuts = []
+            
+            # Check desktop for Y1 Helper shortcuts
+            desktop_path = Path.home() / "Desktop"
+            if desktop_path.exists():
+                for item in desktop_path.glob("*Y1 Helper*.lnk"):
+                    old_shortcuts.append(("Desktop", str(item)))
+                for item in desktop_path.glob("*SP Flash Tool*.lnk"):
+                    old_shortcuts.append(("Desktop", str(item)))
+            
+            # Check Start Menu for Y1 Helper folder
+            start_menu_paths = [
+                Path.home() / "AppData" / "Roaming" / "Microsoft" / "Windows" / "Start Menu" / "Programs",
+                Path.home() / "AppData" / "Local" / "Microsoft" / "Windows" / "Start Menu" / "Programs"
+            ]
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    # Check for Y1 Helper folder
+                    y1_helper_folder = start_menu_path / "Y1 Helper"
+                    if y1_helper_folder.exists():
+                        old_shortcuts.append(("Start Menu", str(y1_helper_folder)))
+                    
+                    # Check for individual Y1 Helper shortcuts
+                    for item in start_menu_path.glob("*Y1 Helper*.lnk"):
+                        old_shortcuts.append(("Start Menu", str(item)))
+            
+            # If old shortcuts found, show cleanup dialog
+            if old_shortcuts:
+                self.show_shortcut_cleanup_dialog(old_shortcuts)
+            
+            # Check for Y1 Helper shortcuts and offer replacement
+            self.check_and_replace_y1_helper_shortcuts()
+                
+        except Exception as e:
+            silent_print(f"Error checking for old shortcuts: {e}")
+
+    def show_shortcut_cleanup_dialog(self, old_shortcuts):
+        """Show dialog offering to remove old shortcuts"""
+        try:
+            # Group shortcuts by location for better display
+            desktop_items = [item for location, item in old_shortcuts if location == "Desktop"]
+            start_menu_items = [item for location, item in old_shortcuts if location == "Start Menu"]
+            
+            message = "Found old shortcuts and folders that may no longer be needed:\n\n"
+            
+            if desktop_items:
+                message += "Desktop:\n"
+                for item in desktop_items:
+                    message += f"• {Path(item).name}\n"
+                message += "\n"
+            
+            if start_menu_items:
+                message += "Start Menu:\n"
+                for item in start_menu_items:
+                    message += f"• {item}\n"
+                message += "\n"
+            
+            message += "These appear to be from previous versions. Would you like to remove them?"
+            
+            reply = QMessageBox.question(
+                self,
+                "Clean Up Old Shortcuts",
+                message,
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
+                QMessageBox.No
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.remove_old_shortcuts(old_shortcuts)
+            elif reply == QMessageBox.Cancel:
+                # Don't ask again this session
+                pass
+                
+        except Exception as e:
+            silent_print(f"Error showing shortcut cleanup dialog: {e}")
+
+    def remove_old_shortcuts(self, old_shortcuts):
+        """Remove old shortcuts and folders"""
+        try:
+            removed_count = 0
+            failed_items = []
+            
+            for location, item_path in old_shortcuts:
+                try:
+                    item_path = Path(item_path)
+                    if item_path.exists():
+                        if item_path.is_file():
+                            item_path.unlink()
+                        elif item_path.is_dir():
+                            shutil.rmtree(item_path)
+                        removed_count += 1
+                        silent_print(f"Removed: {item_path}")
+                except PermissionError:
+                    # Some items may need admin privileges
+                    failed_items.append(f"{item_path} (needs admin)")
+                except Exception as e:
+                    failed_items.append(f"{item_path} ({e})")
+            
+            # Show results
+            if failed_items:
+                message = f"Successfully removed {removed_count} items.\n\n"
+                message += "Some items could not be removed (may need admin privileges):\n"
+                for item in failed_items:
+                    message += f"• {item}\n"
+                
+                QMessageBox.information(
+                    self,
+                    "Cleanup Results",
+                    message
+                )
+            else:
+                QMessageBox.information(
+                    self,
+                    "Cleanup Complete",
+                    f"Successfully removed {removed_count} old shortcuts and folders."
+                )
+                
+        except Exception as e:
+            QMessageBox.warning(
+                self,
+                "Cleanup Error",
+                f"Error during cleanup: {e}"
+            )
+
+    def check_and_replace_y1_helper_shortcuts(self):
+        """Check for Y1 Helper and Y1 Remote Control shortcuts and clean up to desired state"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            shortcuts_to_cleanup = []
+            y1_helper_desktop_shortcut = None
+            
+            # Check desktop for shortcuts
+            desktop_path = Path.home() / "Desktop"
+            if desktop_path.exists():
+                # Check for Y1 Helper.lnk specifically (will be replaced with Innioasis Updater)
+                y1_helper_exact = desktop_path / "Y1 Helper.lnk"
+                if y1_helper_exact.exists():
+                    y1_helper_desktop_shortcut = str(y1_helper_exact)
+                
+                # Check for other Y1 Helper variants
+                for item in desktop_path.glob("*Y1 Helper*.lnk"):
+                    if item.name != "Y1 Helper.lnk":  # Skip the exact match we already found
+                        shortcuts_to_cleanup.append(("Desktop", str(item), "Y1 Helper variant"))
+                
+                # Check for Y1 Remote Control variants
+                for item in desktop_path.glob("*Y1 Remote Control*.lnk"):
+                    shortcuts_to_cleanup.append(("Desktop", str(item), "Y1 Remote Control variant"))
+            
+            # Check Start Menu for shortcuts
+            start_menu_paths = [
+                Path.home() / "AppData" / "Roaming" / "Microsoft" / "Windows" / "Start Menu" / "Programs",
+                Path.home() / "AppData" / "Local" / "Microsoft" / "Windows" / "Start Menu" / "Programs"
+            ]
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    # Check for Y1 Helper folder (will be deleted entirely)
+                    y1_helper_folder = start_menu_path / "Y1 Helper"
+                    if y1_helper_folder.exists():
+                        shortcuts_to_cleanup.append(("Start Menu Folder", str(y1_helper_folder), "Y1 Helper folder"))
+                    
+                    # Check for individual Y1 Helper shortcuts
+                    for item in start_menu_path.glob("*Y1 Helper*.lnk"):
+                        shortcuts_to_cleanup.append(("Start Menu", str(item), "Y1 Helper shortcut"))
+                    
+                    # Check for Y1 Remote Control variants
+                    for item in start_menu_path.glob("*Y1 Remote Control*.lnk"):
+                        shortcuts_to_cleanup.append(("Start Menu", str(item), "Y1 Remote Control variant"))
+            
+            # Always ensure proper desktop shortcut exists
+            self.ensure_proper_desktop_shortcut()
+            
+            # If exact Y1 Helper.lnk found on desktop, offer Innioasis Updater replacement
+            if y1_helper_desktop_shortcut:
+                self.show_innioasis_updater_replacement_dialog(y1_helper_desktop_shortcut)
+            
+            # If other shortcuts found, offer cleanup
+            if shortcuts_to_cleanup:
+                self.show_comprehensive_cleanup_dialog(shortcuts_to_cleanup)
+                
+        except Exception as e:
+            silent_print(f"Error checking for shortcuts: {e}")
+
+    def show_innioasis_updater_replacement_dialog(self, y1_helper_desktop_shortcut):
+        """Show dialog offering to replace Y1 Helper.lnk with Innioasis Updater.lnk"""
+        try:
+            # Check if Innioasis Updater.lnk exists in the same directory
+            current_dir = Path.cwd()
+            innioasis_updater_shortcut = current_dir / "Innioasis Updater.lnk"
+            
+            if not innioasis_updater_shortcut.exists():
+                silent_print("Innioasis Updater.lnk not found in current directory")
+                return
+            
+            message = "Found Y1 Helper.lnk on your desktop that can be replaced with Innioasis Updater:\n\n"
+            message += "Desktop:\n"
+            message += f"• {Path(y1_helper_desktop_shortcut).name}\n\n"
+            message += "Would you like to replace this with the Innioasis Updater shortcut?"
+            
+            reply = QMessageBox.question(
+                self,
+                "Replace Y1 Helper with Innioasis Updater",
+                message,
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
+                QMessageBox.No
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.replace_y1_helper_with_innioasis_updater(y1_helper_desktop_shortcut, str(innioasis_updater_shortcut))
+            elif reply == QMessageBox.Cancel:
+                # Don't ask again this session
+                pass
+                
+        except Exception as e:
+            silent_print(f"Error showing Innioasis Updater replacement dialog: {e}")
+
+    def replace_y1_helper_with_innioasis_updater(self, old_shortcut_path, new_shortcut_path):
+        """Replace Y1 Helper.lnk with Innioasis Updater.lnk on desktop"""
+        try:
+            old_shortcut = Path(old_shortcut_path)
+            new_shortcut = Path(new_shortcut_path)
+            
+            if not old_shortcut.exists():
+                silent_print("Y1 Helper.lnk no longer exists on desktop")
+                return
+            
+            if not new_shortcut.exists():
+                silent_print("Innioasis Updater.lnk not found in current directory")
+                return
+            
+            # Copy Innioasis Updater.lnk to desktop
+            desktop_path = Path.home() / "Desktop"
+            desktop_innioasis_shortcut = desktop_path / "Innioasis Updater.lnk"
+            
+            shutil.copy2(new_shortcut, desktop_innioasis_shortcut)
+            
+            # Remove the old Y1 Helper.lnk
+            old_shortcut.unlink()
+            
+            QMessageBox.information(
+                self,
+                "Replacement Complete",
+                "Successfully replaced Y1 Helper.lnk with Innioasis Updater.lnk on your desktop."
+            )
+            
+            silent_print(f"Replaced: {old_shortcut} -> {desktop_innioasis_shortcut}")
+            
+        except PermissionError:
+            QMessageBox.warning(
+                self,
+                "Permission Error",
+                "Could not replace the shortcut. You may need to run as administrator."
+            )
+        except Exception as e:
+            QMessageBox.warning(
+                self,
+                "Replacement Error",
+                f"Error during replacement: {e}"
+            )
+
+    def ensure_proper_desktop_shortcut(self):
+        """Ensure Innioasis Updater.lnk exists on desktop"""
+        try:
+            desktop_path = Path.home() / "Desktop"
+            if not desktop_path.exists():
+                return
+            
+            # Check if Innioasis Updater.lnk already exists on desktop
+            desktop_innioasis_shortcut = desktop_path / "Innioasis Updater.lnk"
+            if desktop_innioasis_shortcut.exists():
+                silent_print("Innioasis Updater.lnk already exists on desktop")
+                return
+            
+            # Check if the shortcut exists in current directory
+            current_dir = Path.cwd()
+            source_shortcut = current_dir / "Innioasis Updater.lnk"
+            if not source_shortcut.exists():
+                silent_print("Innioasis Updater.lnk not found in current directory")
+                return
+            
+            # Copy the shortcut to desktop
+            shutil.copy2(source_shortcut, desktop_innioasis_shortcut)
+            silent_print(f"Added Innioasis Updater.lnk to desktop")
+            
+        except Exception as e:
+            silent_print(f"Error ensuring proper desktop shortcut: {e}")
+
+    def show_comprehensive_cleanup_dialog(self, shortcuts_to_cleanup):
+        """Show dialog offering to clean up all old shortcuts and ensure proper ones exist"""
+        try:
+            # Group shortcuts by location and type for better display
+            desktop_items = [(item, desc) for location, item, desc in shortcuts_to_cleanup if location == "Desktop"]
+            start_menu_items = [(item, desc) for location, item, desc in shortcuts_to_cleanup if location == "Start Menu"]
+            start_menu_folders = [(item, desc) for location, item, desc in shortcuts_to_cleanup if location == "Start Menu Folder"]
+            
+            message = "Found old shortcuts and folders that should be cleaned up:\n\n"
+            
+            if desktop_items:
+                message += "Desktop:\n"
+                for item, desc in desktop_items:
+                    message += f"• {Path(item).name} ({desc})\n"
+                message += "\n"
+            
+            if start_menu_items:
+                message += "Start Menu:\n"
+                for item, desc in start_menu_items:
+                    message += f"• {Path(item).name} ({desc})\n"
+                message += "\n"
+            
+            if start_menu_folders:
+                message += "Start Menu Folders (will be deleted):\n"
+                for item, desc in start_menu_folders:
+                    message += f"• {Path(item).name} ({desc})\n"
+                message += "\n"
+            
+            message += "This will clean up old shortcuts and ensure you have:\n"
+            message += "• Innioasis Updater.lnk on desktop\n"
+            message += "• Innioasis Updater and Innioasis Y1 Remote Control in Start Menu\n\n"
+            message += "Would you like to proceed with cleanup?"
+            
+            reply = QMessageBox.question(
+                self,
+                "Clean Up Old Shortcuts",
+                message,
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
+                QMessageBox.No
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.perform_comprehensive_cleanup(shortcuts_to_cleanup)
+            elif reply == QMessageBox.Cancel:
+                # Don't ask again this session
+                pass
+                
+        except Exception as e:
+            silent_print(f"Error showing comprehensive cleanup dialog: {e}")
+
+    def perform_comprehensive_cleanup(self, shortcuts_to_cleanup):
+        """Perform comprehensive cleanup of old shortcuts and ensure proper ones exist"""
+        try:
+            removed_count = 0
+            failed_items = []
+            
+            # First, remove all old shortcuts and folders
+            for location, item_path, description in shortcuts_to_cleanup:
+                try:
+                    item_path = Path(item_path)
+                    if item_path.exists():
+                        if location == "Start Menu Folder":
+                            # Delete the entire folder
+                            shutil.rmtree(item_path)
+                            removed_count += 1
+                            silent_print(f"Deleted folder: {item_path}")
+                        else:
+                            # Remove the shortcut
+                            item_path.unlink()
+                            removed_count += 1
+                            silent_print(f"Removed shortcut: {item_path}")
+                except PermissionError:
+                    # Some items may need admin privileges
+                    failed_items.append(f"{item_path} (needs admin)")
+                except Exception as e:
+                    failed_items.append(f"{item_path} ({e})")
+            
+            # Now ensure proper shortcuts exist in Start Menu
+            self.ensure_proper_start_menu_shortcuts()
+            
+            # Also ensure proper desktop shortcut exists
+            self.ensure_proper_desktop_shortcut()
+            
+            # Show results
+            if failed_items:
+                message = f"Successfully cleaned up {removed_count} items.\n\n"
+                message += "Some items could not be removed (may need admin privileges):\n"
+                for item in failed_items:
+                    message += f"• {item}\n"
+                
+                QMessageBox.information(
+                    self,
+                    "Cleanup Results",
+                    message
+                )
+            else:
+                QMessageBox.information(
+                    self,
+                    "Cleanup Complete",
+                    f"Successfully cleaned up {removed_count} old shortcuts and folders.\n\n"
+                    "Your Start Menu now contains:\n"
+                    "• Innioasis Updater\n"
+                    "• Innioasis Y1 Remote Control"
+                )
+                
+        except Exception as e:
+            QMessageBox.warning(
+                self,
+                "Cleanup Error",
+                f"Error during cleanup: {e}"
+            )
+
+    def ensure_proper_start_menu_shortcuts(self):
+        """Ensure proper shortcuts exist in Start Menu"""
+        try:
+            current_dir = Path.cwd()
+            start_menu_paths = [
+                Path.home() / "AppData" / "Roaming" / "Microsoft" / "Windows" / "Start Menu" / "Programs",
+                Path.home() / "AppData" / "Local" / "Microsoft" / "Windows" / "Start Menu" / "Programs"
+            ]
+            
+            # Check if proper shortcuts already exist
+            innioasis_updater_exists = False
+            innioasis_y1_remote_exists = False
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    if (start_menu_path / "Innioasis Updater.lnk").exists():
+                        innioasis_updater_exists = True
+                    if (start_menu_path / "Innioasis Y1 Remote Control.lnk").exists():
+                        innioasis_y1_remote_exists = True
+            
+            # Copy missing shortcuts from current directory
+            if not innioasis_updater_exists:
+                source_updater = current_dir / "Innioasis Updater.lnk"
+                if source_updater.exists():
+                    # Copy to first available start menu path
+                    for start_menu_path in start_menu_paths:
+                        if start_menu_path.exists():
+                            dest_updater = start_menu_path / "Innioasis Updater.lnk"
+                            shutil.copy2(source_updater, dest_updater)
+                            silent_print(f"Added Innioasis Updater.lnk to {start_menu_path}")
+                            break
+            
+            if not innioasis_y1_remote_exists:
+                source_remote = current_dir / "Innioasis Y1 Remote Control.lnk"
+                if source_remote.exists():
+                    # Copy to first available start menu path
+                    for start_menu_path in start_menu_paths:
+                        dest_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
+                        shutil.copy2(source_remote, dest_remote)
+                        silent_print(f"Added Innioasis Y1 Remote Control.lnk to {start_menu_path}")
+                        break
+                        
+        except Exception as e:
+            silent_print(f"Error ensuring proper start menu shortcuts: {e}")
+
+    def show_y1_helper_replacement_dialog(self, y1_helper_shortcuts):
+        """Show dialog offering to replace Y1 Helper shortcuts with Y1 Remote Control"""
+        try:
+            # Group shortcuts by location for better display
+            desktop_items = [item for location, item in y1_helper_shortcuts if location == "Desktop"]
+            start_menu_items = [item for location, item in y1_helper_shortcuts if location == "Start Menu"]
+            start_menu_folders = [item for location, item in y1_helper_shortcuts if location == "Start Menu Folder"]
+            
+            message = "Found Y1 Helper shortcuts that can be replaced with Y1 Remote Control:\n\n"
+            
+            if desktop_items:
+                message += "Desktop:\n"
+                for item in desktop_items:
+                    message += f"• {Path(item).name}\n"
+                message += "\n"
+            
+            if start_menu_items:
+                message += "Start Menu:\n"
+                for item in start_menu_items:
+                    message += f"• {Path(item).name}\n"
+                message += f"• {item}\n"
+                message += "\n"
+            
+            if start_menu_folders:
+                message += "Start Menu Folders (will be deleted):\n"
+                for item in start_menu_folders:
+                    message += f"• {item}\n"
+                message += "\n"
+            
+            message += "Would you like to replace these with Y1 Remote Control shortcuts?"
+            
+            reply = QMessageBox.question(
+                self,
+                "Replace Y1 Helper Shortcuts",
+                message,
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
+                QMessageBox.No
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.replace_y1_helper_shortcuts(y1_helper_shortcuts)
+            elif reply == QMessageBox.Cancel:
+                # Don't ask again this session
+                pass
+                
+        except Exception as e:
+            silent_print(f"Error showing Y1 Helper replacement dialog: {e}")
+
+    def replace_y1_helper_shortcuts(self, y1_helper_shortcuts):
+        """Replace Y1 Helper shortcuts with Y1 Remote Control"""
+        try:
+            replaced_count = 0
+            failed_items = []
+            
+            for location, item_path in y1_helper_shortcuts:
+                try:
+                    item_path = Path(item_path)
+                    if item_path.exists():
+                        if location == "Start Menu Folder":
+                            # Delete the entire folder
+                            shutil.rmtree(item_path)
+                            replaced_count += 1
+                            silent_print(f"Deleted folder: {item_path}")
+                        else:
+                            # Replace shortcut with Y1 Remote Control
+                            new_shortcut_name = item_path.name.replace("Y1 Helper", "Y1 Remote Control")
+                            new_shortcut_path = item_path.parent / new_shortcut_name
+                            
+                            # Copy the shortcut and modify it to point to Y1 Remote Control
+                            shutil.copy2(item_path, new_shortcut_path)
+                            
+                            # Remove the old Y1 Helper shortcut
+                            item_path.unlink()
+                            
+                            replaced_count += 1
+                            silent_print(f"Replaced: {item_path} -> {new_shortcut_path}")
+                except PermissionError:
+                    # Some items may need admin privileges
+                    failed_items.append(f"{item_path} (needs admin)")
+                except Exception as e:
+                    failed_items.append(f"{item_path} ({e})")
+            
+            # Show results
+            if failed_items:
+                message = f"Successfully replaced {replaced_count} shortcuts.\n\n"
+                message += "Some shortcuts could not be replaced (may need admin privileges):\n"
+                for item in failed_items:
+                    message += f"• {item}\n"
+                
+                QMessageBox.information(
+                    self,
+                    "Replacement Results",
+                    message
+                )
+            else:
+                QMessageBox.information(
+                    self,
+                    "Replacement Complete",
+                    f"Successfully replaced {replaced_count} Y1 Helper shortcuts with Y1 Remote Control."
+                )
+                
+        except Exception as e:
+            QMessageBox.warning(
+                self,
+                "Replacement Error",
+                f"Error during replacement: {e}"
+            )
             
         # Download troubleshooting shortcuts
         self.download_troubleshooting_shortcuts()
@@ -1225,13 +1788,19 @@ class FirmwareDownloaderGUI(QMainWindow):
             if recovery_lnk.exists() and sp_flash_tool_lnk.exists():
                 self.status_label.setText("Troubleshooting shortcuts downloaded successfully")
                 silent_print("Troubleshooting shortcuts downloaded and extracted successfully")
+                # Auto-clear status after 3 seconds
+                QTimer.singleShot(3000, lambda: self.status_label.setText("Ready"))
             else:
                 self.status_label.setText("Warning: Some troubleshooting shortcuts may be missing")
                 silent_print("Warning: Some troubleshooting shortcuts may be missing after extraction")
+                # Auto-clear warning after 3 seconds
+                QTimer.singleShot(3000, lambda: self.status_label.setText("Ready"))
                 
         except Exception as e:
             self.status_label.setText("Failed to download troubleshooting shortcuts")
             silent_print(f"Error downloading troubleshooting shortcuts: {e}")
+            # Auto-clear error status after 3 seconds
+            QTimer.singleShot(3000, lambda: self.status_label.setText("Ready"))
             # Don't show error dialog - this is not critical for basic functionality
 
     def check_failed_installation_on_startup(self):
@@ -1311,6 +1880,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Shortcut missing, try to download
         self.status_label.setText("Recovery shortcut missing, downloading...")
         self.download_troubleshooting_shortcuts()
+        # Auto-clear status after 3 seconds
+        QTimer.singleShot(3000, lambda: self.status_label.setText("Ready"))
         
         # Check again after download
         if recovery_lnk.exists():
@@ -1336,6 +1907,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Shortcut missing, try to download
         self.status_label.setText("SP Flash Tool shortcut missing, downloading...")
         self.download_troubleshooting_shortcuts()
+        # Auto-clear status after 3 seconds
+        QTimer.singleShot(3000, lambda: self.status_label.setText("Ready"))
         
         # Check again after download
         if sp_flash_tool_lnk.exists():
@@ -1390,7 +1963,10 @@ class FirmwareDownloaderGUI(QMainWindow):
     def init_ui(self):
         """Initialize the user interface"""
         self.setWindowTitle("Innioasis Y1 Updater by Ryan Specter - u/respectyarn")
-        self.setGeometry(100, 100, 1200, 700)
+        self.setGeometry(100, 100, 1220, 550)
+        
+        # Set fixed window size to maintain layout
+        self.setFixedSize(1220, 550)
         
         # Force normal window state (not maximized)
         self.setWindowState(Qt.WindowNoState)
@@ -1786,7 +2362,36 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add panels to splitter
         splitter.addWidget(left_panel)
         splitter.addWidget(right_panel)
-        splitter.setSizes([360, 600])  # Adjusted for 960px total width
+        splitter.setSizes([480, 720])  # Adjusted for 1220px total width
+
+        # Add Labs link at bottom right corner
+        labs_layout = QHBoxLayout()
+        labs_layout.addStretch()  # Push to the right
+        
+        # Check if current file is test.py or firmware_downloader.py
+        current_file = Path(__file__).name
+        if current_file == "test.py":
+            labs_text = "Labs ON"
+        else:
+            labs_text = "Labs OFF"
+            
+        self.labs_link = QLabel(labs_text)
+        self.labs_link.setStyleSheet("""
+            QLabel {
+                color: #0066CC;
+                font-size: 11px;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            QLabel:hover {
+                color: #004499;
+            }
+        """)
+        self.labs_link.setCursor(Qt.PointingHandCursor)
+        self.labs_link.mousePressEvent = self.switch_to_labs_version
+        labs_layout.addWidget(self.labs_link)
+        
+        main_layout.addLayout(labs_layout)
 
     def load_data(self):
         """Load configuration and manifest data with improved performance"""
@@ -3492,6 +4097,61 @@ Method 2 - MTKclient: Direct technical installation
         if hasattr(self, '_presteps_pixmap') and self._presteps_pixmap:
             self.set_image_with_aspect_ratio(self._presteps_pixmap)
 
+    def switch_to_labs_version(self, event):
+        """Switch between firmware_downloader.py and test.py versions"""
+        try:
+            current_file = Path(__file__).name
+            if current_file == "test.py":
+                # Currently running test.py, switch to firmware_downloader.py
+                target_file = "firmware_downloader.py"
+                target_script = "python firmware_downloader.py"
+            else:
+                # Currently running firmware_downloader.py, switch to test.py
+                target_file = "test.py"
+                target_script = "python test.py"
+            
+            # Check if target file exists
+            if not Path(target_file).exists():
+                QMessageBox.warning(self, "File Not Found", 
+                                  f"Could not find {target_file}. Please ensure both files are in the same directory.")
+                return
+            
+            # Show confirmation dialog
+            if current_file == "test.py":
+                # Currently in labs mode, asking to disable
+                dialog_title = "Disable Labs Mode"
+                dialog_text = f"Testing features are currently ENABLED (running {current_file}).\n\n"
+                dialog_text += f"Would you like to go back to the stable version ({target_file})?\n\n"
+                dialog_text += "This will close the current application and launch the stable version."
+            else:
+                # Currently in stable mode, asking to enable
+                dialog_title = "Enable Labs Mode"
+                dialog_text = f"Testing features are currently DISABLED (running {current_file}).\n\n"
+                dialog_text += f"Would you like to enable experimental features ({target_file})?\n\n"
+                dialog_text += "This will close the current application and launch the labs version."
+            
+            reply = QMessageBox.question(
+                self,
+                dialog_title,
+                dialog_text,
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                # Launch the target script
+                if platform.system() == "Windows":
+                    subprocess.Popen([sys.executable, target_file], 
+                                   creationflags=subprocess.CREATE_NO_WINDOW)
+                else:
+                    subprocess.Popen([sys.executable, target_file])
+                
+                # Close the current app after a short delay
+                QTimer.singleShot(1000, self.close)
+                
+        except Exception as e:
+            QMessageBox.warning(self, "Switch Error", f"Error switching versions: {str(e)}")
+
     def launch_updater_script(self):
         """Launch the separate updater script to handle updates gracefully"""
         try:
@@ -3514,6 +4174,9 @@ Method 2 - MTKclient: Direct technical installation
             )
 
             if reply == QMessageBox.Yes:
+                # Kill conflicting processes before launching updater
+                self.terminate_conflicting_processes_for_update()
+                
                 # Launch the updater script with -f argument for force update
                 if platform.system() == "Windows":
                     subprocess.Popen([sys.executable, str(updater_script_path), "-f"], 
@@ -3526,6 +4189,57 @@ Method 2 - MTKclient: Direct technical installation
 
         except Exception as e:
             QMessageBox.warning(self, "Update Error", f"Error launching updater: {str(e)}")
+
+    def terminate_conflicting_processes_for_update(self):
+        """Terminate adb and libusb processes before launching updater"""
+        try:
+            if platform.system() == "Windows":
+                # Windows: Use taskkill to terminate processes
+                processes_to_kill = ['adb.exe', 'libusb-1.0.dll']
+                
+                for process_name in processes_to_kill:
+                    try:
+                        # Find and kill processes by name
+                        result = subprocess.run(['tasklist', '/FO', 'CSV'], 
+                                              capture_output=True, text=True, timeout=5)
+                        
+                        if result.returncode == 0:
+                            for line in result.stdout.split('\n'):
+                                if process_name.lower() in line.lower():
+                                    # Extract PID from CSV format
+                                    parts = line.split(',')
+                                    if len(parts) >= 2:
+                                        pid = parts[1].strip('"')
+                                        try:
+                                            # Kill the process
+                                            subprocess.run(['taskkill', '/PID', pid, '/F'], 
+                                                          capture_output=True, timeout=5)
+                                            silent_print(f"Terminated {process_name} (PID: {pid}) for update")
+                                        except subprocess.TimeoutExpired:
+                                            silent_print(f"Timeout killing {process_name} (PID: {pid})")
+                                        except Exception as e:
+                                            silent_print(f"Error killing {process_name}: {e}")
+                    except Exception as e:
+                        silent_print(f"Error checking for {process_name}: {e}")
+                        
+            else:
+                # Linux/macOS: Use pkill to terminate processes
+                processes_to_kill = ['adb', 'libusb']
+                
+                for process_name in processes_to_kill:
+                    try:
+                        subprocess.run(['pkill', '-f', process_name], 
+                                      capture_output=True, timeout=5)
+                        silent_print(f"Terminated {process_name} processes for update")
+                    except subprocess.TimeoutExpired:
+                        silent_print(f"Timeout killing {process_name} processes")
+                    except Exception as e:
+                        silent_print(f"Error killing {process_name}: {e}")
+            
+            silent_print("Process cleanup completed for update")
+            
+        except Exception as e:
+            silent_print(f"Warning: Could not terminate all conflicting processes: {e}")
 
     def show_install_error_dialog(self):
         """Show the install error dialog with troubleshooting options"""
