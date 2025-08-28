@@ -13,6 +13,7 @@ import requests
 import configparser
 import json
 import pickle
+import shutil
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
@@ -20,7 +21,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QWidget, QListWidget, QListWidgetItem, QPushButton, QTextEdit,
                                QLabel, QComboBox, QProgressBar, QMessageBox,
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
-                               QFileDialog, QDialog)
+                               QFileDialog)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
 from PySide6.QtGui import QFont, QPixmap
 import platform
@@ -100,6 +101,42 @@ def cleanup_firmware_files():
     except Exception as e:
         silent_print(f"Error cleaning up firmware files: {e}")
 
+def clear_all_extracted_files():
+    """Clear all extracted firmware files and clean up the workspace"""
+    try:
+        firmware_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+        cleaned_count = 0
+        
+        for file_name in firmware_files:
+            file_path = Path(file_name)
+            if file_path.exists():
+                file_path.unlink()
+                cleaned_count += 1
+                silent_print(f"Cleaned up firmware file: {file_name}")
+        
+        # Also clean up any other common extracted files
+        additional_files = ["*.bin", "*.img", "*.zip"]
+        for pattern in additional_files:
+            for file_path in Path(".").glob(pattern):
+                if file_path.name not in ["firmware_downloads"]:  # Don't delete the downloads directory
+                    try:
+                        file_path.unlink()
+                        cleaned_count += 1
+                        silent_print(f"Cleaned up additional file: {file_path.name}")
+                    except Exception as e:
+                        silent_print(f"Could not delete {file_path.name}: {e}")
+        
+        if cleaned_count > 0:
+            silent_print(f"Cleaned up {cleaned_count} files total")
+            return True
+        else:
+            silent_print("No files found to clean up")
+            return False
+            
+    except Exception as e:
+        silent_print(f"Error cleaning up files: {e}")
+        return False
+
 def log_extracted_files(files):
     """Log extracted files for cleanup"""
     # Note: This function is now disabled to prevent conflicts with installation tracking
@@ -130,6 +167,85 @@ def check_for_failed_installation():
         silent_print("Detected failed firmware installation - showing troubleshooting options")
         return True
     return False
+
+def cleanup_windows_shortcuts():
+    """Clean up Windows shortcuts - remove Y1 Helper and replace with Innioasis Y1 Remote Control"""
+    if platform.system() != "Windows":
+        return False, "This function is only available on Windows"
+    
+    try:
+        # Paths to check
+        start_menu_paths = [
+            Path("C:/ProgramData/Microsoft/Windows/Start Menu/Programs"),
+            Path.home() / "AppData/Roaming/Microsoft/Windows/Start Menu/Programs",
+            Path.home() / "AppData/Local/Microsoft/Windows/Start Menu/Programs"
+        ]
+        
+        # Current directory where the scripts are located
+        current_dir = Path.cwd()
+        y1_remote_control_shortcut = current_dir / "Innioasis Y1 Remote Control.lnk"
+        
+        if not y1_remote_control_shortcut.exists():
+            return False, "Innioasis Y1 Remote Control.lnk not found in current directory"
+        
+        cleaned_count = 0
+        replaced_count = 0
+        errors = []
+        
+        for start_menu_path in start_menu_paths:
+            if not start_menu_path.exists():
+                continue
+                
+            # Check for Y1 Helper.lnk specifically
+            y1_helper_shortcut = start_menu_path / "Y1 Helper.lnk"
+            if y1_helper_shortcut.exists():
+                try:
+                    # Remove the old Y1 Helper shortcut
+                    y1_helper_shortcut.unlink()
+                    cleaned_count += 1
+                    silent_print(f"Removed: {y1_helper_shortcut}")
+                except PermissionError:
+                    errors.append(f"Permission denied removing {y1_helper_shortcut} (may need admin)")
+                except Exception as e:
+                    errors.append(f"Error removing {y1_helper_shortcut}: {e}")
+            
+            # Check for Y1 Helper folder
+            y1_helper_folder = start_menu_path / "Y1 Helper"
+            if y1_helper_folder.exists():
+                try:
+                    shutil.rmtree(y1_helper_folder)
+                    cleaned_count += 1
+                    silent_print(f"Removed folder: {y1_helper_folder}")
+                except PermissionError:
+                    errors.append(f"Permission denied removing {y1_helper_folder} (may need admin)")
+                except Exception as e:
+                    errors.append(f"Error removing {y1_helper_folder}: {e}")
+            
+            # Ensure Innioasis Y1 Remote Control shortcut exists
+            dest_shortcut = start_menu_path / "Innioasis Y1 Remote Control.lnk"
+            if not dest_shortcut.exists():
+                try:
+                    shutil.copy2(y1_remote_control_shortcut, dest_shortcut)
+                    replaced_count += 1
+                    silent_print(f"Added: {dest_shortcut}")
+                except PermissionError:
+                    errors.append(f"Permission denied creating {dest_shortcut} (may need admin)")
+                except Exception as e:
+                    errors.append(f"Error creating {dest_shortcut}: {e}")
+        
+        # Summary
+        if errors:
+            message = f"Cleaned up {cleaned_count} old shortcuts and added {replaced_count} new shortcuts.\n\n"
+            message += "Some operations failed (may need admin privileges):\n"
+            for error in errors:
+                message += f"• {error}\n"
+            return False, message
+        else:
+            message = f"Successfully cleaned up {cleaned_count} old shortcuts and added {replaced_count} new shortcuts."
+            return True, message
+            
+    except Exception as e:
+        return False, f"Error during shortcut cleanup: {e}"
 
 def get_zip_path(repo_name, version):
     """Get the path for a specific zip file"""
@@ -186,6 +302,26 @@ def delete_zip_file(repo_name, version):
         zip_path.unlink()
         return True
     return False
+
+def delete_all_cached_zips():
+    """Delete all cached zip files in the firmware_downloads directory"""
+    try:
+        if not ZIP_STORAGE_DIR.exists():
+            return 0
+        
+        deleted_count = 0
+        for zip_file in ZIP_STORAGE_DIR.glob("*.zip"):
+            try:
+                zip_file.unlink()
+                deleted_count += 1
+                silent_print(f"Deleted cached zip: {zip_file.name}")
+            except Exception as e:
+                silent_print(f"Error deleting {zip_file.name}: {e}")
+        
+        return deleted_count
+    except Exception as e:
+        silent_print(f"Error deleting cached zips: {e}")
+        return 0
 
 
 class ConfigDownloader:
@@ -1089,8 +1225,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.download_worker = None
         self.mtk_worker = None
         self.images_loaded = False  # Track if images are loaded
-        self.installation_method = "guided"  # Default installation method
-        self.always_use_method = False  # Default to one-time use
 
         # Clean up any previously extracted files at startup
         cleanup_extracted_files()
@@ -1109,11 +1243,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Check for failed installation and show troubleshooting options
         QTimer.singleShot(300, self.check_failed_installation_on_startup)
 
+        # Ensure troubleshooting shortcuts are available
+        QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
+
         # Load data asynchronously to avoid blocking UI
         QTimer.singleShot(100, self.load_data)
-        
-        # Load saved installation preferences
-        QTimer.singleShot(200, self.load_installation_preferences)
 
         # Set up theme change detection timer
         self.theme_check_timer = QTimer()
@@ -1190,42 +1324,176 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
             
         try:
+            silent_print("Starting shortcut cleanup check...")
+            
+            # Comprehensive cleanup of all Y1 Helper and related shortcuts
+            self.comprehensive_shortcut_cleanup()
+            
+            # Ensure Innioasis Updater shortcuts are properly set up
+            self.ensure_innioasis_updater_shortcuts()
+                
+        except Exception as e:
+            silent_print(f"Error during shortcut cleanup: {e}")
+            import traceback
+            silent_print(f"Full error traceback: {traceback.format_exc()}")
+
+    def comprehensive_shortcut_cleanup(self):
+        """Comprehensive cleanup of all Y1 Helper and related shortcuts"""
+        try:
             old_shortcuts = []
             
-            # Check desktop for Y1 Helper shortcuts
+            # Direct check for the specific path mentioned by user
+            specific_path = Path("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Y1 Helper.lnk")
+            if specific_path.exists():
+                silent_print(f"*** DIRECT CHECK: Found Y1 Helper.lnk at {specific_path} ***")
+                old_shortcuts.append(("Start Menu", str(specific_path)))
+            else:
+                silent_print(f"*** DIRECT CHECK: Y1 Helper.lnk NOT found at {specific_path} ***")
+            
+            # Check desktop and its subfolders for Y1 Helper shortcuts
             desktop_path = Path.home() / "Desktop"
             if desktop_path.exists():
+                # Check desktop root
                 for item in desktop_path.glob("*Y1 Helper*.lnk"):
                     old_shortcuts.append(("Desktop", str(item)))
-                for item in desktop_path.glob("*SP Flash Tool*.lnk"):
+                for item in desktop_path.glob("*Y1*.lnk"):
                     old_shortcuts.append(("Desktop", str(item)))
+                
+                # Check desktop subfolders
+                for subfolder in desktop_path.iterdir():
+                    if subfolder.is_dir():
+                        for item in subfolder.glob("*Y1 Helper*.lnk"):
+                            old_shortcuts.append(("Desktop Subfolder", str(item)))
+                        for item in subfolder.glob("*Y1*.lnk"):
+                            old_shortcuts.append(("Desktop Subfolder", str(item)))
             
-            # Check Start Menu for Y1 Helper folder
-            start_menu_paths = [
-                Path.home() / "AppData" / "Roaming" / "Microsoft" / "Windows" / "Start Menu" / "Programs",
-                Path.home() / "AppData" / "Local" / "Microsoft" / "Windows" / "Start Menu" / "Programs"
-            ]
+            # Get comprehensive list of start menu paths
+            start_menu_paths = self.get_all_start_menu_paths()
+            silent_print(f"Scanning {len(start_menu_paths)} start menu paths for old shortcuts...")
             
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
+                    silent_print(f"Scanning start menu path: {start_menu_path}")
+                    
+                    # Check start menu root
+                    for item in start_menu_path.glob("*Y1 Helper*.lnk"):
+                        old_shortcuts.append(("Start Menu", str(item)))
+                        silent_print(f"Found Y1 Helper shortcut: {item}")
+                    for item in start_menu_path.glob("*Y1*.lnk"):
+                        old_shortcuts.append(("Start Menu", str(item)))
+                        silent_print(f"Found Y1 shortcut: {item}")
+                    
                     # Check for Y1 Helper folder
                     y1_helper_folder = start_menu_path / "Y1 Helper"
                     if y1_helper_folder.exists():
-                        old_shortcuts.append(("Start Menu", str(y1_helper_folder)))
+                        old_shortcuts.append(("Start Menu Folder", str(y1_helper_folder)))
+                        silent_print(f"Found Y1 Helper folder: {y1_helper_folder}")
                     
-                    # Check for individual Y1 Helper shortcuts
-                    for item in start_menu_path.glob("*Y1 Helper*.lnk"):
-                        old_shortcuts.append(("Start Menu", str(item)))
+                    # Check start menu subfolders
+                    for subfolder in start_menu_path.iterdir():
+                        if subfolder.is_dir() and subfolder.name != "Y1 Helper":
+                            for item in subfolder.glob("*Y1 Helper*.lnk"):
+                                old_shortcuts.append(("Start Menu Subfolder", str(item)))
+                                silent_print(f"Found Y1 Helper shortcut in subfolder: {item}")
+                            for item in subfolder.glob("*Y1*.lnk"):
+                                old_shortcuts.append(("Start Menu Subfolder", str(item)))
+                                silent_print(f"Found Y1 shortcut in subfolder: {item}")
             
             # If old shortcuts found, show cleanup dialog
             if old_shortcuts:
-                self.show_shortcut_cleanup_dialog(old_shortcuts)
-            
-            # Check for Y1 Helper shortcuts and offer replacement
-            self.check_and_replace_y1_helper_shortcuts()
+                silent_print(f"Found {len(old_shortcuts)} old shortcuts to clean up:")
+                for location, item in old_shortcuts:
+                    silent_print(f"  - {location}: {item}")
+                self.show_comprehensive_cleanup_dialog(old_shortcuts)
+            else:
+                silent_print("No old shortcuts found to clean up")
                 
         except Exception as e:
-            silent_print(f"Error checking for old shortcuts: {e}")
+            silent_print(f"Error during comprehensive shortcut cleanup: {e}")
+
+    def get_all_start_menu_paths(self):
+        """Get comprehensive list of all possible start menu paths"""
+        paths = []
+        
+        # User-specific paths
+        user_paths = [
+            Path.home() / "AppData" / "Roaming" / "Microsoft" / "Windows" / "Start Menu" / "Programs",
+            Path.home() / "AppData" / "Local" / "Microsoft" / "Windows" / "Start Menu" / "Programs"
+        ]
+        
+        # System-wide paths
+        system_paths = [
+            Path("C:/ProgramData/Microsoft/Windows/Start Menu/Programs"),
+            Path("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp"),
+            Path("C:/Users/Public/Start Menu/Programs"),
+            Path("C:/Users/Public/Desktop")
+        ]
+        
+        # Environment variable paths
+        env_paths = []
+        if "PROGRAMDATA" in os.environ:
+            env_paths.append(Path(os.environ["PROGRAMDATA"]) / "Microsoft" / "Windows" / "Start Menu" / "Programs")
+            env_paths.append(Path(os.environ["PROGRAMDATA"]) / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "StartUp")
+        
+        if "PUBLIC" in os.environ:
+            env_paths.append(Path(os.environ["PUBLIC"]) / "Start Menu" / "Programs")
+            env_paths.append(Path(os.environ["PUBLIC"]) / "Desktop")
+        
+        # Combine all paths and filter existing ones
+        all_paths = user_paths + system_paths + env_paths
+        
+        silent_print(f"Checking {len(all_paths)} potential start menu paths...")
+        
+        for path in all_paths:
+            silent_print(f"Checking path: {path} (exists: {path.exists()})")
+            if path.exists():
+                paths.append(path)
+                silent_print(f"Found start menu path: {path}")
+                
+                # Specifically check for the Y1 Helper.lnk file in this path
+                y1_helper_lnk = path / "Y1 Helper.lnk"
+                if y1_helper_lnk.exists():
+                    silent_print(f"*** FOUND Y1 Helper.lnk at: {y1_helper_lnk} ***")
+        
+        silent_print(f"Total valid start menu paths found: {len(paths)}")
+        return paths
+
+    def ensure_innioasis_updater_shortcuts(self):
+        """Ensure Innioasis Updater shortcuts are properly set up"""
+        try:
+            current_dir = Path.cwd()
+            innioasis_updater_shortcut = current_dir / "Innioasis Updater.lnk"
+            
+            if not innioasis_updater_shortcut.exists():
+                silent_print("Innioasis Updater.lnk not found in current directory")
+                return
+            
+            # Check desktop
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
+            
+            if not desktop_shortcut.exists():
+                try:
+                    shutil.copy2(innioasis_updater_shortcut, desktop_shortcut)
+                    silent_print(f"Added Innioasis Updater shortcut to desktop")
+                except Exception as e:
+                    silent_print(f"Error adding desktop shortcut: {e}")
+            
+            # Get comprehensive list of start menu paths
+            start_menu_paths = self.get_all_start_menu_paths()
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    if not start_menu_shortcut.exists():
+                        try:
+                            shutil.copy2(innioasis_updater_shortcut, start_menu_shortcut)
+                            silent_print(f"Added Innioasis Updater shortcut to start menu: {start_menu_path}")
+                        except Exception as e:
+                            silent_print(f"Error adding start menu shortcut: {e}")
+                            
+        except Exception as e:
+            silent_print(f"Error ensuring Innioasis Updater shortcuts: {e}")
 
     def show_shortcut_cleanup_dialog(self, old_shortcuts):
         """Show dialog offering to remove old shortcuts"""
@@ -1245,7 +1513,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if start_menu_items:
                 message += "Start Menu:\n"
                 for item in start_menu_items:
-                    message += f"• {item}\n"
+                    message += f"• {Path(item).name}\n"
                 message += "\n"
             
             message += "These appear to be from previous versions. Would you like to remove them?"
@@ -1480,37 +1748,51 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error ensuring proper desktop shortcut: {e}")
 
-    def show_comprehensive_cleanup_dialog(self, shortcuts_to_cleanup):
-        """Show dialog offering to clean up all old shortcuts and ensure proper ones exist"""
+    def show_comprehensive_cleanup_dialog(self, old_shortcuts):
+        """Show dialog offering to clean up all old shortcuts"""
         try:
-            # Group shortcuts by location and type for better display
-            desktop_items = [(item, desc) for location, item, desc in shortcuts_to_cleanup if location == "Desktop"]
-            start_menu_items = [(item, desc) for location, item, desc in shortcuts_to_cleanup if location == "Start Menu"]
-            start_menu_folders = [(item, desc) for location, item, desc in shortcuts_to_cleanup if location == "Start Menu Folder"]
+            # Group shortcuts by location for better display
+            desktop_items = [item for location, item in old_shortcuts if location == "Desktop"]
+            desktop_subfolder_items = [item for location, item in old_shortcuts if location == "Desktop Subfolder"]
+            start_menu_items = [item for location, item in old_shortcuts if location == "Start Menu"]
+            start_menu_subfolder_items = [item for location, item in old_shortcuts if location == "Start Menu Subfolder"]
+            start_menu_folders = [item for location, item in old_shortcuts if location == "Start Menu Folder"]
             
             message = "Found old shortcuts and folders that should be cleaned up:\n\n"
             
             if desktop_items:
                 message += "Desktop:\n"
-                for item, desc in desktop_items:
-                    message += f"• {Path(item).name} ({desc})\n"
+                for item in desktop_items:
+                    message += f"• {Path(item).name}\n"
+                message += "\n"
+            
+            if desktop_subfolder_items:
+                message += "Desktop Subfolders:\n"
+                for item in desktop_subfolder_items:
+                    message += f"• {Path(item).name}\n"
                 message += "\n"
             
             if start_menu_items:
                 message += "Start Menu:\n"
-                for item, desc in start_menu_items:
-                    message += f"• {Path(item).name} ({desc})\n"
+                for item in start_menu_items:
+                    message += f"• {Path(item).name}\n"
+                message += "\n"
+            
+            if start_menu_subfolder_items:
+                message += "Start Menu Subfolders:\n"
+                for item in start_menu_subfolder_items:
+                    message += f"• {Path(item).name}\n"
                 message += "\n"
             
             if start_menu_folders:
                 message += "Start Menu Folders (will be deleted):\n"
-                for item, desc in start_menu_folders:
-                    message += f"• {Path(item).name} ({desc})\n"
+                for item in start_menu_folders:
+                    message += f"• {Path(item).name}\n"
                 message += "\n"
             
-            message += "This will clean up old shortcuts and ensure you have:\n"
+            message += "This will clean up all old Y1 Helper and related shortcuts and ensure you have:\n"
             message += "• Innioasis Updater.lnk on desktop\n"
-            message += "• Innioasis Updater and Innioasis Y1 Remote Control in Start Menu\n\n"
+            message += "• Innioasis Updater.lnk in Start Menu\n\n"
             message += "Would you like to proceed with cleanup?"
             
             reply = QMessageBox.question(
@@ -1522,7 +1804,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             )
             
             if reply == QMessageBox.Yes:
-                self.perform_comprehensive_cleanup(shortcuts_to_cleanup)
+                self.perform_comprehensive_cleanup(old_shortcuts)
             elif reply == QMessageBox.Cancel:
                 # Don't ask again this session
                 pass
@@ -1530,14 +1812,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error showing comprehensive cleanup dialog: {e}")
 
-    def perform_comprehensive_cleanup(self, shortcuts_to_cleanup):
+    def perform_comprehensive_cleanup(self, old_shortcuts):
         """Perform comprehensive cleanup of old shortcuts and ensure proper ones exist"""
         try:
             removed_count = 0
             failed_items = []
             
             # First, remove all old shortcuts and folders
-            for location, item_path, description in shortcuts_to_cleanup:
+            for location, item_path in old_shortcuts:
                 try:
                     item_path = Path(item_path)
                     if item_path.exists():
@@ -1557,11 +1839,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except Exception as e:
                     failed_items.append(f"{item_path} ({e})")
             
-            # Now ensure proper shortcuts exist in Start Menu
-            self.ensure_proper_start_menu_shortcuts()
-            
-            # Also ensure proper desktop shortcut exists
-            self.ensure_proper_desktop_shortcut()
+            # Now ensure proper shortcuts exist
+            self.ensure_innioasis_updater_shortcuts()
             
             # Show results
             if failed_items:
@@ -1580,9 +1859,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     "Cleanup Complete",
                     f"Successfully cleaned up {removed_count} old shortcuts and folders.\n\n"
-                    "Your Start Menu now contains:\n"
-                    "• Innioasis Updater\n"
-                    "• Innioasis Y1 Remote Control"
+                    "Your system now has:\n"
+                    "• Innioasis Updater.lnk on desktop\n"
+                    "• Innioasis Updater.lnk in Start Menu"
                 )
                 
         except Exception as e:
@@ -1629,11 +1908,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if source_remote.exists():
                     # Copy to first available start menu path
                     for start_menu_path in start_menu_paths:
-                        dest_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
-                        shutil.copy2(source_remote, dest_remote)
-                        silent_print(f"Added Innioasis Y1 Remote Control.lnk to {start_menu_path}")
-                        break
-                        
+                        if start_menu_path.exists():
+                            dest_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
+                            shutil.copy2(source_remote, dest_remote)
+                            silent_print(f"Added Innioasis Y1 Remote Control.lnk to {start_menu_path}")
+                            break
+                            
         except Exception as e:
             silent_print(f"Error ensuring proper start menu shortcuts: {e}")
 
@@ -1657,13 +1937,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 message += "Start Menu:\n"
                 for item in start_menu_items:
                     message += f"• {Path(item).name}\n"
-                message += f"• {item}\n"
                 message += "\n"
             
             if start_menu_folders:
                 message += "Start Menu Folders (will be deleted):\n"
                 for item in start_menu_folders:
-                    message += f"• {item}\n"
+                    message += f"• {Path(item).name}\n"
                 message += "\n"
             
             message += "Would you like to replace these with Y1 Remote Control shortcuts?"
@@ -1776,6 +2055,18 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             silent_print("Extracted troubleshooting shortcuts")
             
+            # Check if Troubleshooters - Windows.zip was extracted and extract its contents
+            troubleshooters_zip = Path("Troubleshooters - Windows.zip")
+            if troubleshooters_zip.exists():
+                silent_print("Found Troubleshooters - Windows.zip, extracting nested contents...")
+                with zipfile.ZipFile(troubleshooters_zip, 'r') as nested_zip:
+                    nested_zip.extractall(".")
+                silent_print("Extracted nested troubleshooting shortcuts")
+                
+                # Remove the nested zip file after extraction
+                troubleshooters_zip.unlink()
+                silent_print("Removed nested zip file")
+            
             # Delete the temporary zip file
             temp_zip.unlink()
             silent_print("Cleaned up temporary zip file")
@@ -1803,6 +2094,44 @@ class FirmwareDownloaderGUI(QMainWindow):
             QTimer.singleShot(3000, lambda: self.status_label.setText("Ready"))
             # Don't show error dialog - this is not critical for basic functionality
 
+    def ensure_troubleshooting_shortcuts_available(self):
+        """Ensure troubleshooting shortcuts are available, extract from zip if needed"""
+        try:
+            current_dir = Path.cwd()
+            recovery_lnk = current_dir / "Recover Firmware Install.lnk"
+            sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
+            
+            # Check if shortcuts exist
+            if recovery_lnk.exists() and sp_flash_tool_lnk.exists():
+                silent_print("Troubleshooting shortcuts already available")
+                return
+            
+            # Check if Troubleshooters - Windows.zip exists and extract it
+            troubleshooters_zip = current_dir / "Troubleshooters - Windows.zip"
+            if troubleshooters_zip.exists():
+                silent_print("Found Troubleshooters - Windows.zip, extracting shortcuts...")
+                try:
+                    with zipfile.ZipFile(troubleshooters_zip, 'r') as zip_ref:
+                        zip_ref.extractall(current_dir)
+                    
+                    # Remove the zip file after extraction
+                    troubleshooters_zip.unlink()
+                    silent_print("Troubleshooting shortcuts extracted successfully")
+                    
+                    # Verify extraction
+                    if recovery_lnk.exists() and sp_flash_tool_lnk.exists():
+                        silent_print("Troubleshooting shortcuts verified")
+                    else:
+                        silent_print("Warning: Troubleshooting shortcuts still missing after extraction")
+                        
+                except Exception as e:
+                    silent_print(f"Error extracting troubleshooting shortcuts: {e}")
+            else:
+                silent_print("No troubleshooting shortcuts zip found")
+                
+        except Exception as e:
+            silent_print(f"Error ensuring troubleshooting shortcuts: {e}")
+
     def check_failed_installation_on_startup(self):
         """Check for failed installation on startup and show troubleshooting options"""
         if not check_for_failed_installation():
@@ -1824,7 +2153,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows":
             try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
         
-        stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
         
         # Set default button
@@ -1834,25 +2162,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         clicked_button = msg_box.clickedButton()
         
         if clicked_button == try_again_btn:
-            # Try Again - use selected installation method from settings
+            # Clear the marker and immediately start installation process
             remove_installation_marker()
-            method = getattr(self, 'installation_method', 'guided')
-            if method == "guided":
-                # Method 1: Kill orphan libusb processes and restart firmware install
-                self.stop_mtk_processes()
-                self.cleanup_libusb_state()
-                QTimer.singleShot(1000, self.run_mtk_command)
-            elif method == "mtkclient":
-                # Method 2: Same as pressing Try Method 2
-                self.show_troubleshooting_instructions()
-            elif method == "spflash" and platform.system() == "Windows":
-                # Method 3: Same as pressing Try Method 3 (Windows only)
-                self.try_method_3()
-            else:
-                # Fallback to guided method
-                self.stop_mtk_processes()
-                self.cleanup_libusb_state()
-                QTimer.singleShot(1000, self.run_mtk_command)
+            self.status_label.setText("Starting installation process...")
+            # Start the installation process (same as if .zip was just extracted)
+            QTimer.singleShot(500, self.run_mtk_command)
         elif clicked_button == try_method2_btn and try_method2_btn:
             # Clear the marker and launch Method 2 troubleshooting
             remove_installation_marker()
@@ -1861,10 +2175,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Clear the marker and launch Method 3 troubleshooting
             remove_installation_marker()
             self.try_method_3()
-        elif clicked_button == stop_install_btn:
-            # Stop install and return to ready state
-            remove_installation_marker()
-            self.revert_to_startup_state()
         else:
             # Exit the application
             QApplication.quit()
@@ -2009,13 +2319,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 font-size: 12px;
                 margin-left: 5px;
                 border: 1px solid #0066CC;
-                border-radius: 12px;
+                border-radius: 8px;
                 background-color: transparent;
-                min-width: 24px;
-                max-width: 24px;
-                min-height: 24px;
-                max-height: 24px;
-                padding: 0px;
+                min-width: 20px;
+                max-width: 20px;
+                padding: 2px;
             }
             QPushButton:hover {
                 background-color: #0066CC;
@@ -2026,62 +2334,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         help_btn.setToolTip("Try Type A System Software first. If your scroll wheel doesn't respond after installation, install one of the Type B options.")
         help_btn.clicked.connect(self.show_device_type_help)
         device_type_layout.addWidget(help_btn)
-        
-        # Add Tools and Settings buttons horizontally across from the help button
-        self.tools_btn = QPushButton("Tools")
-        self.tools_btn.clicked.connect(self.open_y1_remote_control)
-        self.tools_btn.setFixedHeight(24)  # Match dropdown height
-        self.tools_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #2d2d2d;
-                color: #cccccc;
-                border: 1px solid #555555;
-                padding: 4px 8px;
-                border-radius: 3px;
-                font-weight: normal;
-                font-size: 11px;
-                min-width: 50px;
-                max-width: 70px;
-            }
-            QPushButton:hover {
-                background-color: #3d3d3d;
-                border-color: #666666;
-            }
-            QPushButton:pressed {
-                background-color: #1d1d1d;
-                border-color: #444444;
-            }
-        """)
-        device_type_layout.addWidget(self.tools_btn)
-        
-        self.settings_btn = QPushButton("Settings")
-        self.settings_btn.setFixedHeight(24)  # Match dropdown height
-        self.settings_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #2d2d2d;
-                color: #cccccc;
-                border: 1px solid #555555;
-                padding: 4px 8px;
-                border-radius: 3px;
-                font-weight: normal;
-                font-size: 11px;
-                min-width: 50px;
-                max-width: 70px;
-            }
-            QPushButton:hover {
-                background-color: #3d3d3d;
-                border-color: #666666;
-            }
-            QPushButton:pressed {
-                background-color: #1d1d1d;
-                border-color: #444444;
-            }
-        """)
-        self.settings_btn.setCursor(Qt.PointingHandCursor)
-        self.settings_btn.setToolTip("Choose installation method for next install")
-        self.settings_btn.clicked.connect(self.show_settings_dialog)
-        device_type_layout.addWidget(self.settings_btn)
-        
         device_type_layout.addStretch()
 
         # Device model filter
@@ -2135,11 +2387,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.download_btn.clicked.connect(self.start_download)
         self.download_btn.setEnabled(False)
         left_layout.addWidget(self.download_btn)
-        
-        # Initially enable tools and settings buttons (they will be disabled during operations if needed)
-        self.tools_btn.setEnabled(True)
-        self.settings_btn.setEnabled(True)
-        print("DEBUG: Tools and Settings buttons initially enabled")
 
 
 
@@ -2589,173 +2836,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Ensure it uses native system styling
         msg_box.setModal(True)
-        msg_box.exec()
+        msg_box.exec_()
 
-    def open_y1_remote_control(self):
-        """Open Y1 Remote Control application without closing firmware downloader"""
-        print("DEBUG: Tools button clicked! open_y1_remote_control method called.")
-        
-        # Check if any operations are in progress
-        if INSTALLATION_MARKER_FILE.exists():
-            print("DEBUG: Installation marker exists, showing warning.")
-            QMessageBox.warning(self, "Operation in Progress", 
-                              "Cannot open Y1 Helper while firmware installation or troubleshooting is in progress.\n\nPlease wait for the current operation to complete.")
-            return
-        
-        try:
-            # Simply run y1_helper.py
-            y1_helper_path = Path("y1_helper.py")
-            if y1_helper_path.exists():
-                subprocess.Popen([sys.executable, str(y1_helper_path)])
-                self.status_label.setText("Y1 Remote Control launched successfully")
-                # Don't close the firmware downloader - keep it running
-            else:
-                                                QMessageBox.error(self, "Error", 
-                                                "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
-        except Exception as e:
-            QMessageBox.error(self, "Error", f"Failed to launch Y1 Remote Control: {e}")
-    
-    def show_settings_dialog(self):
-        """Show settings dialog for choosing installation method"""
-        dialog = QDialog(self)
-        dialog.setWindowTitle("Installation Method Settings")
-        dialog.setFixedSize(400, 200)
-        dialog.setModal(True)
-        
-        layout = QVBoxLayout(dialog)
-        
-        # Title
-        title_label = QLabel("Choose Installation Method for Next Install")
-        title_label.setStyleSheet("font-size: 14px; font-weight: bold; margin: 10px;")
-        layout.addWidget(title_label)
-        
-        # Description
-        desc_label = QLabel("This setting will be used for the next firmware installation.")
-        desc_label.setStyleSheet("color: #666; margin: 5px;")
-        layout.addWidget(desc_label)
-        
-        # Method selection
-        method_label = QLabel("Installation Method:")
-        layout.addWidget(method_label)
-        
-        method_combo = QComboBox()
-        method_combo.addItem("Method 1 - Guided", "guided")
-        method_combo.addItem("Method 2 - MTKclient", "mtkclient")
-        
-        # Add Method 3 only on Windows
-        if platform.system() == "Windows":
-            method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
-        
-        # Set current method (default to Method 1)
-        current_method = getattr(self, 'installation_method', 'guided')
-        index = method_combo.findData(current_method)
-        if index >= 0:
-            method_combo.setCurrentIndex(index)
-        
-        layout.addWidget(method_combo)
-        
-        # Always use this method checkbox
-        self.always_use_checkbox = QCheckBox("Always use this method for future installations")
-        self.always_use_checkbox.setToolTip("When checked, this method will be used automatically for all future firmware installations")
-        
-        # Set checkbox state based on saved preference
-        always_use = getattr(self, 'always_use_method', False)
-        self.always_use_checkbox.setChecked(always_use)
-        
-        layout.addWidget(self.always_use_checkbox)
-        
-        # Method descriptions
-        desc_text = QTextEdit()
-        desc_text.setMaximumHeight(80)
-        desc_text.setReadOnly(True)
-        
-        if platform.system() == "Windows":
-            desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation
-Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
-            """)
-        else:
-            desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation
-            """)
-        
-        layout.addWidget(desc_text)
-        
-        # Buttons
-        button_layout = QHBoxLayout()
-        button_layout.addStretch()
-        
-        cancel_btn = QPushButton("Cancel")
-        cancel_btn.clicked.connect(dialog.reject)
-        button_layout.addWidget(cancel_btn)
-        
-        save_btn = QPushButton("Save")
-        save_btn.clicked.connect(lambda: self.save_installation_method(method_combo.currentData(), dialog))
-        button_layout.addWidget(save_btn)
-        
-        layout.addLayout(button_layout)
-        
-        dialog.exec()
-    
-    def save_installation_method(self, method, dialog):
-        """Save the selected installation method and always use preference"""
-        self.installation_method = method
-        self.always_use_method = self.always_use_checkbox.isChecked()
-        
-        # Save to persistent storage
-        self.save_installation_preferences()
-        
-        # Update status message
-        if self.always_use_method:
-            self.status_label.setText(f"Installation method set to: {method} (will be used for all future installations)")
-        else:
-            self.status_label.setText(f"Installation method set to: {method} (one-time use)")
-        
-        dialog.accept()
-    
-    def save_installation_preferences(self):
-        """Save installation preferences to persistent storage"""
-        try:
-            preferences = {
-                'installation_method': self.installation_method,
-                'always_use_method': self.always_use_method
-            }
-            
-            # Save to a JSON file in the same directory
-            preferences_file = Path("installation_preferences.json")
-            import json
-            with open(preferences_file, 'w') as f:
-                json.dump(preferences, f, indent=2)
-                
-            silent_print(f"Saved installation preferences: {preferences}")
-        except Exception as e:
-            silent_print(f"Error saving installation preferences: {e}")
-    
-    def load_installation_preferences(self):
-        """Load installation preferences from persistent storage"""
-        try:
-            preferences_file = Path("installation_preferences.json")
-            if preferences_file.exists():
-                import json
-                with open(preferences_file, 'r') as f:
-                    preferences = json.load(f)
-                
-                # Load saved preferences
-                if 'installation_method' in preferences:
-                    self.installation_method = preferences['installation_method']
-                if 'always_use_method' in preferences:
-                    self.always_use_method = preferences['always_use_method']
-                
-                silent_print(f"Loaded installation preferences: {preferences}")
-            else:
-                silent_print("No saved installation preferences found, using defaults")
-        except Exception as e:
-            silent_print(f"Error loading installation preferences: {e}")
-            # Use defaults if loading fails
-            self.installation_method = "guided"
-            self.always_use_method = False
+
 
     def populate_device_type_combo(self):
         """Dynamically populate device type combo from manifest data"""
@@ -3074,6 +3157,10 @@ Method 2 - MTKclient: Direct technical installation
 
         context_menu = QMenu(self)
         delete_action = context_menu.addAction("Delete Local Zip File")
+        
+        # Add separator and "Delete All Cached Zips" option
+        context_menu.addSeparator()
+        delete_all_action = context_menu.addAction("Delete All Cached Zips")
 
         action = context_menu.exec_(self.package_list.mapToGlobal(position))
 
@@ -3087,6 +3174,43 @@ Method 2 - MTKclient: Direct technical installation
                     QMessageBox.information(self, "Success", f"Deleted zip file for {repo_name} version {version}")
                 else:
                     QMessageBox.information(self, "Info", f"No local zip file found for {repo_name} version {version}")
+        
+        elif action == delete_all_action:
+            # Delete all cached zip files
+            self.delete_all_cached_zips()
+
+    def delete_all_cached_zips(self):
+        """Delete all cached zip files and show confirmation"""
+        try:
+            # Confirm deletion
+            reply = QMessageBox.question(
+                self,
+                "Delete All Cached Zips",
+                "Are you sure you want to delete all cached zip files?\n\nThis will free up disk space but require re-downloading any firmware you want to install.",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
+            
+            if reply == QMessageBox.Yes:
+                deleted_count = delete_all_cached_zips()
+                if deleted_count > 0:
+                    QMessageBox.information(
+                        self,
+                        "Success",
+                        f"Successfully deleted {deleted_count} cached zip file(s)."
+                    )
+                else:
+                    QMessageBox.information(
+                        self,
+                        "Info",
+                        "No cached zip files found to delete."
+                    )
+        except Exception as e:
+            QMessageBox.warning(
+                self,
+                "Error",
+                f"Error deleting cached zip files: {e}"
+            )
 
     def populate_all_releases_list_progressive(self):
         """Populate the releases list progressively for all software"""
@@ -3219,8 +3343,6 @@ Method 2 - MTKclient: Direct technical installation
 
         # Disable download button during MTK operation
         self.download_btn.setEnabled(False)
-        self.tools_btn.setEnabled(False)
-        self.settings_btn.setEnabled(False)
 
 
 
@@ -3262,27 +3384,18 @@ Method 2 - MTKclient: Direct technical installation
 
         # Re-enable download button
         self.download_btn.setEnabled(True)
-        # Re-enable tools and settings buttons
-        self.tools_btn.setEnabled(True)
-        self.settings_btn.setEnabled(True)
 
     def disable_update_button(self):
         """Disable the update button during MTK installation"""
         if hasattr(self, 'update_btn_right'):
             self.update_btn_right.setEnabled(False)
             self.update_btn_right.setText("Check for Utility Updates")
-        # Also disable tools and settings buttons during operations
-        self.tools_btn.setEnabled(False)
-        self.settings_btn.setEnabled(False)
 
     def enable_update_button(self):
         """Enable the update button when returning to ready state"""
         if hasattr(self, 'update_btn_right'):
             self.update_btn_right.setEnabled(True)
             self.update_btn_right.setText("Check for Utility Updates")
-        # Also enable tools and settings buttons when operations are complete
-        self.tools_btn.setEnabled(True)
-        self.settings_btn.setEnabled(True)
 
     def on_handshake_failed(self):
         """Handle handshake failed error from MTKWorker"""
@@ -3334,7 +3447,6 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText("Handshake failed - please check USB connection and try again")
 
         self.download_btn.setEnabled(True)  # Re-enable download button
-        self.tools_btn.setEnabled(True)  # Re-enable tools button
 
     def on_errno2_detected(self):
         """Handle errno2 error from MTKWorker"""
@@ -3364,7 +3476,6 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText("Errno2 error - please reinstall Innioasis Updater")
 
         self.download_btn.setEnabled(True)  # Re-enable download button
-        self.tools_btn.setEnabled(True)  # Re-enable tools button
 
     def on_backend_error_detected(self):
         """Handle backend error from MTKWorker"""
@@ -3402,7 +3513,6 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText("Backend error - please install libusb and restart")
 
         self.download_btn.setEnabled(True)  # Re-enable download button
-        self.tools_btn.setEnabled(True)  # Re-enable tools button
 
     def on_keyboard_interrupt_detected(self):
         """Handle keyboard interrupt from MTKWorker"""
@@ -3412,17 +3522,7 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
 
-        # Check if this was a Method 2 or 3 installation - if so, don't show troubleshooting
-        current_method = getattr(self, 'installation_method', 'guided')
-        if current_method in ["mtkclient", "spflash"]:
-            # Method 2 or 3 failure - just show process_ended.png and return to ready state
-            self.load_process_ended_image()
-            self.status_label.setText("Method installation failed - returning to ready state")
-            # Return to ready state after showing the image briefly
-            QTimer.singleShot(3000, self.revert_to_startup_state)
-            return
-
-        # Method 1 failure - show process_ended.png briefly, then show troubleshooting dialog
+        # On Windows: First show process_ended.png image briefly, then show install error dialog
         self.load_process_ended_image()
         
         # Use a timer to show the dialog after a short delay so user sees the process_ended image
@@ -3656,22 +3756,16 @@ Method 2 - MTKclient: Direct technical installation
             QMessageBox.warning(self, "Error", "Selected file does not exist.")
             return
             
-        # Confirm the installation
-        reply = QMessageBox.question(
-            self,
-            "Confirm Installation",
-            f"Install firmware from {zip_path.name}?\n\nThis will extract the zip file and prepare it for MTK installation.",
-            QMessageBox.Ok | QMessageBox.Cancel,
-            QMessageBox.Ok
-        )
-        
-        if reply == QMessageBox.Cancel:
-            return
-            
-        # Process the zip file
+        # Process the zip file with progress bar and status updates like download process
         self.status_label.setText("Processing zip file...")
+        self.progress_bar.setVisible(True)
+        self.progress_bar.setValue(0)
         
         try:
+            # Simulate progress for zip processing
+            self.progress_bar.setValue(25)
+            self.status_label.setText("Extracting zip file...")
+            
             # Extract the zip file
             extracted_files = []
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
@@ -3682,7 +3776,8 @@ Method 2 - MTKclient: Direct technical installation
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
             
-            self.status_label.setText("Zip file extracted successfully. Checking required files...")
+            self.progress_bar.setValue(75)
+            self.status_label.setText("Checking required files...")
             
             # Check if required files exist
             required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
@@ -3692,6 +3787,7 @@ Method 2 - MTKclient: Direct technical installation
                     missing_files.append(file)
             
             if missing_files:
+                self.progress_bar.setVisible(False)
                 error_msg = f"Missing required files: {', '.join(missing_files)}\n\n"
                 error_msg += "The zip file must contain:\n"
                 error_msg += "- lk.bin\n"
@@ -3705,25 +3801,38 @@ Method 2 - MTKclient: Direct technical installation
                 self.status_label.setText("Zip file missing required firmware files.")
                 return
             
-            # Show success message
+            self.progress_bar.setValue(100)
+            self.status_label.setText("Extraction completed. Files ready for MTK processing.")
+            
+            # Show success message with file list and instructions
             success_msg = "Firmware files successfully extracted:\n"
             for file in required_files:
                 file_size = Path(file).stat().st_size
                 size_mb = file_size / (1024 * 1024)
                 success_msg += f"- {file} ({size_mb:.1f} MB)\n"
             
-            success_msg += "\nAll required files are present. Ready for MTK installation."
+            success_msg += "\nTo flash these files to your device:\n"
+            success_msg += "1. Turn off your Y1\n"
+            success_msg += "2. Run the following command in a new terminal:\n"
+            success_msg += f"   {sys.executable} mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\n"
+            success_msg += "3. Follow the on-screen prompts to turn off your Y1"
+            
             QMessageBox.information(self, "Success", success_msg)
             
-            # Handle installation based on selected method
-            self.status_label.setText("Starting installation in 3 seconds...")
-            QTimer.singleShot(3000, self.handle_installation_method)
+            # Automatically run MTK command after a short delay
+            self.status_label.setText("Starting MTK installation in 3 seconds...")
+            QTimer.singleShot(3000, self.run_mtk_command)
             
         except Exception as e:
+            self.progress_bar.setVisible(False)
             error_msg = f"Error processing zip file: {str(e)}"
             QMessageBox.critical(self, "Error", error_msg)
             self.status_label.setText("Error processing zip file.")
             silent_print(f"Zip processing error: {e}")
+        
+        finally:
+            # Hide progress bar after processing
+            QTimer.singleShot(2000, lambda: self.progress_bar.setVisible(False))
 
     def run_driver_setup(self):
         """Runs the driver setup script (main.py)"""
@@ -3740,7 +3849,6 @@ Method 2 - MTKclient: Direct technical installation
             silent_print("Running main.py for driver setup...")
             self.status_label.setText("Running driver setup...")
             self.download_btn.setEnabled(False) # Disable download button while running
-            self.tools_btn.setEnabled(False) # Disable tools button while running
 
             # Use subprocess to run main.py in the current directory
             if platform.system() == "Windows":
@@ -3756,7 +3864,6 @@ Method 2 - MTKclient: Direct technical installation
             silent_print(f"Error running driver setup: {e}")
             self.status_label.setText(f"Error running driver setup: {e}")
             self.download_btn.setEnabled(True)
-            self.tools_btn.setEnabled(True)
 
     def revert_to_startup_state(self):
         """Revert the app to its startup state"""
@@ -3773,11 +3880,6 @@ Method 2 - MTKclient: Direct technical installation
 
         # Ensure download button is enabled
         self.download_btn.setEnabled(True)
-        # Ensure tools button is enabled
-        self.tools_btn.setEnabled(True)
-        # Ensure settings button is enabled
-        if hasattr(self, 'settings_btn'):
-            self.settings_btn.setEnabled(True)
 
     def populate_package_list(self):
         """Populate the package list widget with release information"""
@@ -3811,8 +3913,6 @@ Method 2 - MTKclient: Direct technical installation
             self.package_list.setCurrentRow(0)
             self.package_list.setFocus()  # Give focus to the list for blue highlight
             self.download_btn.setEnabled(True)
-            self.tools_btn.setEnabled(True)
-            print("DEBUG: Tools button enabled when package selected")
             # Update button text for the first selected item
             first_item = self.package_list.item(0)
             self.update_download_button_text(first_item)
@@ -3908,6 +4008,15 @@ Method 2 - MTKclient: Direct technical installation
             QMessageBox.warning(self, "Error", error_msg)
             return
 
+        # Check if zip file already exists locally
+        zip_path = get_zip_path(selected_repo, release_info['tag_name'])
+        if zip_path.exists():
+            # Zip already exists - automatically use it for seamless experience
+            silent_print(f"Using existing zip file: {zip_path.name}")
+            self.status_label.setText("Using existing zip file. Extracting...")
+            self.process_existing_zip(zip_path, selected_repo, release_info['tag_name'])
+            return
+
         # Start download worker
         self.download_worker = DownloadWorker(release_info['download_url'], selected_repo, release_info['tag_name'])
         self.download_worker.progress_updated.connect(self.progress_bar.setValue)
@@ -3915,7 +4024,6 @@ Method 2 - MTKclient: Direct technical installation
         self.download_worker.download_completed.connect(self.on_download_completed)
 
         self.download_btn.setEnabled(False)
-        self.tools_btn.setEnabled(False)
         self.progress_bar.setVisible(True)
         self.progress_bar.setValue(0)
 
@@ -3925,10 +4033,69 @@ Method 2 - MTKclient: Direct technical installation
 
         self.download_worker.start()
 
+    def process_existing_zip(self, zip_path, repo_name, version):
+        """Process an existing zip file (extract and prepare for installation)"""
+        try:
+            self.status_label.setText("Extracting existing zip file...")
+            self.progress_bar.setVisible(True)
+            self.progress_bar.setValue(0)
+            
+            # Simulate progress for zip processing
+            self.progress_bar.setValue(25)
+            self.status_label.setText("Extracting existing zip file...")
+            
+            # Extract the zip file
+            extracted_files = []
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(".")
+                # Get list of extracted files
+                extracted_files = zip_ref.namelist()
+            
+            # Log extracted files for cleanup
+            log_extracted_files(extracted_files)
+            
+            self.progress_bar.setValue(75)
+            self.status_label.setText("Checking required files...")
+            
+            # Check if required files exist
+            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            missing_files = []
+            for file in required_files:
+                if not Path(file).exists():
+                    missing_files.append(file)
+            
+            if missing_files:
+                self.progress_bar.setVisible(False)
+                error_msg = f"Missing required files: {', '.join(missing_files)}"
+                self.status_label.setText("Missing required firmware files.")
+                QMessageBox.warning(self, "Missing Files", error_msg)
+                return
+            
+            self.progress_bar.setValue(100)
+            self.status_label.setText("Extraction completed. Files ready for MTK processing.")
+            
+            # Continue with the same flow as normal download - run MTK command automatically
+            silent_print("=== AUTOMATICALLY RUNNING MTK COMMAND ===")
+            silent_print("The MTK flash command will now run in this application.")
+            silent_print("Please turn off your Y1 when prompted.")
+            
+            # Use QTimer to delay the automatic MTK command execution slightly
+            QTimer.singleShot(2000, self.run_mtk_command)  # 2 second delay
+            
+        except Exception as e:
+            self.progress_bar.setVisible(False)
+            error_msg = f"Error processing existing zip file: {str(e)}"
+            QMessageBox.critical(self, "Error", error_msg)
+            self.status_label.setText("Error processing existing zip file.")
+            silent_print(f"Existing zip processing error: {e}")
+        
+        finally:
+            # Hide progress bar after processing
+            QTimer.singleShot(2000, lambda: self.progress_bar.setVisible(False))
+
     def on_download_completed(self, success, output):
         """Handle download completion"""
         self.download_btn.setEnabled(True)
-        self.tools_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
 
         if success:
@@ -3936,56 +4103,20 @@ Method 2 - MTKclient: Direct technical installation
             print("=== PROCESSING COMPLETED ===")
             print("Firmware files have been downloaded and extracted successfully.")
 
-            # Check if required files exist and handle installation based on selected method
+            # Check if required files exist and automatically run MTK command
             required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
             if all(Path(file).exists() for file in required_files):
-                silent_print("=== FIRMWARE FILES READY ===")
-                silent_print(f"Selected installation method: {getattr(self, 'installation_method', 'guided')}")
+                silent_print("=== AUTOMATICALLY RUNNING MTK COMMAND ===")
+                silent_print("The MTK flash command will now run in this application.")
+                silent_print("Please turn off your Y1 when prompted.")
 
-                # Handle installation based on selected method
-                QTimer.singleShot(2000, self.handle_installation_method)  # 2 second delay
+                # Use QTimer to delay the automatic MTK command execution slightly
+                QTimer.singleShot(2000, self.run_mtk_command)  # 2 second delay
         else:
             self.status_label.setText("Download or processing failed")
             silent_print("=== PROCESSING FAILED ===")
 
         silent_print(output)
-
-    def handle_installation_method(self):
-        """Handle installation based on the selected method in settings"""
-        method = getattr(self, 'installation_method', 'guided')
-        always_use = getattr(self, 'always_use_method', False)
-        silent_print(f"Handling installation method: {method} (always use: {always_use})")
-        
-        if method == "guided":
-            # Method 1: Normal guided process (default behavior)
-            silent_print("=== RUNNING GUIDED INSTALLATION ===")
-            silent_print("The MTK flash command will now run in this application.")
-            silent_print("Please turn off your Y1 when prompted.")
-            self.run_mtk_command()
-            
-        elif method == "mtkclient":
-            # Method 2: MTKclient method - same as pressing "Try Method 2" in troubleshooting
-            silent_print("=== RUNNING MTKCLIENT METHOD ===")
-            # Show Method 2 image and launch recovery firmware install
-            self.load_method2_image()
-            self.show_troubleshooting_instructions()
-                        
-        elif method == "spflash" and platform.system() == "Windows":
-            # Method 3: SP Flash Tool method - same as pressing "Try Method 3" in troubleshooting
-            silent_print("=== RUNNING SP FLASH TOOL METHOD ===")
-            # Show Method 3 image and launch SP Flash Tool
-            self.load_method3_image()
-            self.try_method_3()
-        else:
-            # Fallback to guided method if invalid method or SP Flash Tool on non-Windows
-            silent_print("=== FALLING BACK TO GUIDED METHOD ===")
-            self.run_mtk_command()
-        
-        # If this was a one-time use method, reset to guided for next time
-        if not always_use:
-            silent_print("Resetting to guided method for next installation (one-time use)")
-            self.installation_method = "guided"
-            self.save_installation_preferences()
 
     def refresh_all_data(self):
         """Refresh all data (tokens, manifest, device types, models, software) with cache clearing"""
@@ -4249,7 +4380,7 @@ Method 2 - MTKclient: Direct technical installation
         msg_box.setText("Something interrupted the firmware install process, would you like to try a troubleshooting run?")
         msg_box.setIcon(QMessageBox.Critical)
         
-        # Create custom buttons in the desired order: Try Again, Try Method 2, Stop Install, Exit
+        # Create custom buttons in the desired order: Try Again, Try Method 2, Exit
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
         try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         
@@ -4258,7 +4389,6 @@ Method 2 - MTKclient: Direct technical installation
         if platform.system() == "Windows":
             try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
         
-        stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
         
         # Set default button
@@ -4269,23 +4399,9 @@ Method 2 - MTKclient: Direct technical installation
         clicked_button = msg_box.clickedButton()
         
         if clicked_button == try_again_btn:
-            # Try Again - use selected installation method from settings
-            method = getattr(self, 'installation_method', 'guided')
-            if method == "guided":
-                # Method 1: Show unplug Y1 prompt and retry normal installation
-                # Don't clear marker here - it will be cleared after successful installation
-                self.show_unplug_prompt_and_retry()
-            elif method == "mtkclient":
-                # Method 2: Same as pressing Try Method 2
-                remove_installation_marker()
-                self.show_troubleshooting_instructions()
-            elif method == "spflash" and platform.system() == "Windows":
-                # Method 3: Same as pressing Try Method 3 (Windows only)
-                remove_installation_marker()
-                self.try_method_3()
-            else:
-                # Fallback to guided method
-                self.show_unplug_prompt_and_retry()
+            # Show unplug Y1 prompt and retry normal installation
+            # Don't clear marker here - it will be cleared after successful installation
+            self.show_unplug_prompt_and_retry()
         elif clicked_button == try_method2_btn:
             # Clear the marker and show troubleshooting instructions
             remove_installation_marker()
@@ -4294,10 +4410,6 @@ Method 2 - MTKclient: Direct technical installation
             # Clear the marker and open SP Flash Tool shortcut (Windows only)
             remove_installation_marker()
             self.try_method_3()
-        elif clicked_button == stop_install_btn:
-            # Stop install and return to ready state
-            remove_installation_marker()
-            self.revert_to_startup_state()
         else:
             # Exit the application - don't clear marker as user chose to exit
             QApplication.quit()
@@ -4342,7 +4454,6 @@ Method 2 - MTKclient: Direct technical installation
 
         # Disable download button during MTK operation
         self.download_btn.setEnabled(False)
-        self.tools_btn.setEnabled(False)
 
     def show_troubleshooting_instructions(self):
         """Show troubleshooting instructions and launch recovery firmware install"""
@@ -4358,19 +4469,17 @@ Method 2 - MTKclient: Direct technical installation
             instructions = ("Please follow these steps:\n\n"
                           "1. INSERT Paperclip\n"
                           "2. CONNECT Y1 via USB\n"
-                          "3. WAIT for the black window to appear\n"
-                          "4. Follow the on-screen instructions in the recovery window\n"
-                          "5. Disconnect Y1 and hold middle button to restart\n\n"
-                          "This method shows technical installation details. If it fails, try Method 3.")
+                          "3. WAIT for the install to finish in the recovery window\n"
+                          "4. Disconnect Y1 and hold middle button to restart\n\n"
+                          "This method will show the technical information behind your firmware installation which can help to diagnose issues, if this doesn't work try again with method 3.")
         else:
             # Non-Windows baseline Method 2 instructions
             instructions = ("Please follow these steps:\n\n"
                           "1. INSERT Paperclip\n"
                           "2. CONNECT Y1 via USB\n"
-                          "3. WAIT for the black window to appear\n"
-                          "4. Follow the on-screen instructions in the recovery window\n"
-                          "5. Disconnect Y1 and hold middle button to restart\n\n"
-                          "This method shows technical installation details.")
+                          "3. WAIT for the install to finish in the recovery window\n"
+                          "4. Disconnect Y1 and hold middle button to restart\n\n"
+                          "This method will show the technical information behind your firmware installation which can help to diagnose issues.")
         
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Troubleshooting Instructions - Method 2")
@@ -4531,10 +4640,9 @@ Method 2 - MTKclient: Direct technical installation
                 "Please follow these steps:\n\n"
                 "1. CONNECT Y1 via USB\n"
                 "2. INSERT Paperclip\n"
-                "3. WAIT for the black window to appear\n"
-                "4. Follow the on-screen instructions in the recovery window\n"
-                "5. Disconnect Y1 and hold middle button to restart\n\n"
-                "This method uses the manufacturer's SP Flash Tool. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
+                "3. WAIT for SP Flash Tool to finish in the recovery window\n"
+                "4. Disconnect Y1 and hold middle button to restart\n\n"
+                "This method uses the SP Flash Tool, as provided by the manufacturer, to do updates / resets - if you have the drivers installed and this method doesn't work please contact the seller / manufacturer for assistance.\n\n"
                 "Click OK when ready to open SP Flash Tool.",
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok

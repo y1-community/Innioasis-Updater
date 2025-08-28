@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innioasis Updates and Custom Firmwares</title>
+    <title>Innioasis Firmware Downloader</title>
     <style>
         * {
             margin: 0;
@@ -199,40 +199,40 @@
             gap: 8px;
         }
 
-        .manual-install-btn {
-            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        .download-rom-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
-        .manual-install-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(108, 117, 125, 0.3);
+        .download-rom-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
         }
 
         .automatic-install-btn {
             background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .automatic-install-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(23, 162, 184, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
         }
 
         .status {
@@ -254,6 +254,72 @@
             background: #fef9e7;
             border-color: #f8c471;
             color: #d68910;
+        }
+        
+        .token-status {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .token-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .token-label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .token-count {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .token-status-text {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .token-refresh-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .token-refresh-btn:hover {
+            background: #218838;
+        }
+        
+        .token-details-btn {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .token-details-btn:hover {
+            background: #138496;
         }
 
         .progress-bar {
@@ -326,7 +392,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔧 Y1 Helper Firmware Downloader</h1>
+            <h1>🔧 Innioasis Firmware Downloader</h1>
             <p>Download firmware releases directly from GitHub</p>
         </div>
 
@@ -357,6 +423,21 @@
                     🔄 Refresh
                 </button>
             </div>
+            
+            <!-- Token Status Display -->
+            <div id="tokenStatus" class="token-status" style="display: none;">
+                <div class="token-info">
+                    <span class="token-label">GitHub API Tokens:</span>
+                    <span id="tokenCount" class="token-count">0</span>
+                    <span class="token-status-text" id="tokenStatusText">Loading...</span>
+                    <button id="refreshTokensBtn" class="token-refresh-btn" onclick="refreshTokens()" style="display: none;">
+                        🔄 Refresh Tokens
+                    </button>
+                    <button id="showTokenDetailsBtn" class="token-details-btn" onclick="showTokenDetails()" style="display: none;">
+                        📊 Token Details
+                    </button>
+                </div>
+            </div>
 
             <div class="status" id="status">
                 Ready to download firmware
@@ -372,7 +453,7 @@
 
         <div class="footer">
             <p>Created by <a href="https://github.com/team-slide" target="_blank">Team Slide</a> | 
-               <a href="https://github.com/team-slide/Y1-helper" target="_blank">GitHub</a></p>
+               <a href="https://innioasis.app" target="_blank">Innioasis App</a></p>
         </div>
     </div>
 
@@ -384,6 +465,12 @@
             deviceModel: '',
             software: ''
         };
+        
+        // GitHub API tokens management
+        let githubTokens = [];
+        let currentTokenIndex = 0;
+        let tokenCallCounts = {};
+        const TOKEN_RATE_LIMIT = 5000; // GitHub's rate limit per hour per token
 
         // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
@@ -400,6 +487,9 @@
         async function loadData() {
             try {
                 setStatus('Loading configuration and manifest data...', 'loading');
+                
+                // Load GitHub API tokens first
+                await loadGitHubTokens();
                 
                 // Load manifest data
                 const manifestResponse = await fetch('https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml');
@@ -432,6 +522,167 @@
             }
         }
 
+        async function loadGitHubTokens() {
+            try {
+                setStatus('Loading GitHub API tokens...', 'loading');
+                
+                // Load tokens from the config file
+                const configResponse = await fetch('https://raw.githubusercontent.com/team-slide/y1-helper/main/config.ini');
+                if (!configResponse.ok) {
+                    throw new Error('Failed to load config file');
+                }
+                
+                const configText = await configResponse.text();
+                const tokens = parseConfigTokens(configText);
+                
+                if (tokens.length === 0) {
+                    console.warn('No GitHub API tokens found in config file');
+                    setStatus('Warning: No GitHub API tokens available - using unauthenticated requests');
+                    updateTokenStatus(0, 'No tokens available - using unauthenticated requests');
+                } else {
+                    console.log(`Loaded ${tokens.length} GitHub API tokens`);
+                    setStatus(`Loaded ${tokens.length} GitHub API tokens`);
+                    updateTokenStatus(tokens.length, `${tokens.length} tokens loaded successfully`);
+                }
+                
+                githubTokens = tokens;
+                
+                // Initialize token call counts
+                tokens.forEach(token => {
+                    tokenCallCounts[token] = 0;
+                });
+                
+            } catch (error) {
+                console.warn('Failed to load GitHub tokens:', error);
+                setStatus('Warning: Using unauthenticated GitHub API requests');
+                updateTokenStatus(0, 'Failed to load tokens - using unauthenticated requests');
+                githubTokens = [];
+            }
+        }
+        
+        function parseConfigTokens(configText) {
+            const tokens = [];
+            const lines = configText.split('\n');
+            
+            for (const line of lines) {
+                const trimmedLine = line.trim();
+                
+                // Parse key_1, key_2, etc. entries
+                if (trimmedLine.startsWith('key_') && trimmedLine.includes('=')) {
+                    const [key, value] = trimmedLine.split('=').map(s => s.trim());
+                    if (value && value !== '') {
+                        // Add github_pat_ prefix if not present
+                        const token = value.startsWith('github_pat_') ? value : `github_pat_${value}`;
+                        tokens.push(token);
+                    }
+                }
+                
+                // Parse token = entry
+                if (trimmedLine.startsWith('token = ')) {
+                    const value = trimmedLine.substring(8).trim();
+                    if (value && value !== '') {
+                        // Add github_pat_ prefix if not present
+                        const token = value.startsWith('github_pat_') ? value : `github_pat_${value}`;
+                        tokens.push(token);
+                    }
+                }
+            }
+            
+            return tokens;
+        }
+        
+        function getNextAvailableToken() {
+            if (githubTokens.length === 0) {
+                return null; // No tokens available
+            }
+            
+            // Find a token that hasn't exceeded rate limit
+            for (let i = 0; i < githubTokens.length; i++) {
+                const tokenIndex = (currentTokenIndex + i) % githubTokens.length;
+                const token = githubTokens[tokenIndex];
+                
+                if (tokenCallCounts[token] < TOKEN_RATE_LIMIT) {
+                    currentTokenIndex = (tokenIndex + 1) % githubTokens.length;
+                    return token;
+                }
+            }
+            
+            // All tokens have exceeded rate limit, reset counts and use first available
+            console.warn('All tokens have exceeded rate limit, resetting counts');
+            Object.keys(tokenCallCounts).forEach(token => {
+                tokenCallCounts[token] = 0;
+            });
+            currentTokenIndex = 0;
+            return githubTokens[0];
+        }
+        
+        function updateTokenStatus(count, statusText) {
+            const tokenStatusElement = document.getElementById('tokenStatus');
+            const tokenCountElement = document.getElementById('tokenCount');
+            const tokenStatusTextElement = document.getElementById('tokenStatusText');
+            const refreshTokensBtn = document.getElementById('refreshTokensBtn');
+            const showTokenDetailsBtn = document.getElementById('showTokenDetailsBtn');
+            
+            if (tokenStatusElement && tokenCountElement && tokenStatusTextElement) {
+                tokenCountElement.textContent = count;
+                
+                // Add usage information if tokens are available
+                if (count > 0) {
+                    const totalCalls = Object.values(tokenCallCounts).reduce((sum, count) => sum + count, 0);
+                    const statusWithUsage = `${statusText} (${totalCalls} API calls made)`;
+                    tokenStatusTextElement.textContent = statusWithUsage;
+                } else {
+                    tokenStatusTextElement.textContent = statusText;
+                }
+                
+                tokenStatusElement.style.display = count > 0 ? 'block' : 'none';
+                
+                // Show buttons if tokens are available
+                if (refreshTokensBtn) {
+                    refreshTokensBtn.style.display = count > 0 ? 'inline-block' : 'none';
+                }
+                if (showTokenDetailsBtn) {
+                    showTokenDetailsBtn.style.display = count > 0 ? 'inline-block' : 'none';
+                }
+            }
+        }
+        
+        async function refreshTokens() {
+            try {
+                setStatus('Refreshing GitHub API tokens...', 'loading');
+                await loadGitHubTokens();
+                setStatus('GitHub API tokens refreshed successfully');
+            } catch (error) {
+                console.error('Error refreshing tokens:', error);
+                setStatus(`Error refreshing tokens: ${error.message}`, 'error');
+            }
+        }
+        
+        function showTokenDetails() {
+            if (githubTokens.length === 0) {
+                alert('No tokens available');
+                return;
+            }
+            
+            let details = `GitHub API Token Details:\n\n`;
+            details += `Total Tokens: ${githubTokens.length}\n`;
+            details += `Current Token Index: ${currentTokenIndex}\n\n`;
+            
+            githubTokens.forEach((token, index) => {
+                const callCount = tokenCallCounts[token] || 0;
+                const remainingCalls = TOKEN_RATE_LIMIT - callCount;
+                const status = callCount >= TOKEN_RATE_LIMIT ? 'RATE LIMITED' : 'ACTIVE';
+                const shortToken = token.substring(0, 8) + '...';
+                
+                details += `Token ${index + 1}: ${shortToken}\n`;
+                details += `  Calls Made: ${callCount}/${TOKEN_RATE_LIMIT}\n`;
+                details += `  Remaining: ${remainingCalls}\n`;
+                details += `  Status: ${status}\n\n`;
+            });
+            
+            alert(details);
+        }
+        
         function parseManifest(xmlText) {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
@@ -555,8 +806,37 @@
 
         async function getReleases(repo) {
             try {
-                const response = await fetch(`https://api.github.com/repos/${repo}/releases`);
+                const token = getNextAvailableToken();
+                const headers = {};
+                
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                    headers['Accept'] = 'application/vnd.github.v3+json';
+                    
+                    // Increment call count for this token
+                    tokenCallCounts[token]++;
+                    console.log(`Using token for ${repo} (call count: ${tokenCallCounts[token]})`);
+                } else {
+                    console.log(`No token available for ${repo}, using unauthenticated request`);
+                }
+                
+                const response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                    headers: headers
+                });
+                
                 if (!response.ok) {
+                    if (response.status === 403) {
+                        // Rate limit exceeded or token invalid
+                        console.warn(`Rate limit or token issue for ${repo}, status: ${response.status}`);
+                        if (token) {
+                            // Mark this token as having issues
+                            tokenCallCounts[token] = TOKEN_RATE_LIMIT;
+                            console.warn(`Token ${token.substring(0, 8)}... marked as rate limited`);
+                            
+                            // Update token status to show the issue
+                            updateTokenStatus(githubTokens.length, `${githubTokens.length} tokens loaded (some rate limited)`);
+                        }
+                    }
                     throw new Error(`GitHub API error: ${response.status}`);
                 }
                 
@@ -608,11 +888,11 @@
                         </div>` : ''}
                     </div>
                     <div class="download-section">
-                        <button class="manual-install-btn" onclick="manualInstall('${release.html_url}', event)">
-                            🔧 Manual Install
+                        <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
+                            📥 Download ROM
                         </button>
-                        <button class="automatic-install-btn" onclick="automaticInstall('${release.software_name}', event)">
-                            ⚡ Automatic Install
+                        <button class="automatic-install-btn" onclick="goToInnioasisApp(event)">
+                            ⚡ Automatic Install at Innioasis.app
                         </button>
                     </div>
                 </div>
@@ -629,373 +909,18 @@
             element.classList.add('selected');
         }
 
-
-
-
-
-        function manualInstall(releasesUrl, event) {
+        function downloadROM(releasesUrl, event) {
             event.stopPropagation();
             
-            // Show manual install guide dialog
-            showManualInstallGuide(releasesUrl);
-        }
-
-        function showManualInstallGuide(releasesUrl) {
-            const dialog = document.createElement('div');
-            dialog.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-                overflow-y: auto;
-            `;
-            
-            dialog.innerHTML = `
-                <div style="
-                    background: white;
-                    border-radius: 15px;
-                    padding: 30px;
-                    max-width: 600px;
-                    width: 90%;
-                    max-height: 80vh;
-                    overflow-y: auto;
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-                ">
-                    <h2 style="color: #2c3e50; margin-bottom: 20px;">🔧 Manual Installation Guide</h2>
-                    
-                    <div style="margin-bottom: 25px;">
-                        <button onclick="downloadROM('${releasesUrl}')" style="
-                            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-                            color: white;
-                            border: none;
-                            padding: 15px 30px;
-                            border-radius: 10px;
-                            font-weight: 600;
-                            font-size: 16px;
-                            cursor: pointer;
-                            transition: transform 0.2s ease;
-                            margin-bottom: 20px;
-                            width: 100%;
-                        " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                            📥 Download ROM
-                        </button>
-                        <p style="color: #6c757d; font-size: 14px; text-align: center;">
-                            Download the ROM file first, then follow the installation guide for your operating system
-                        </p>
-                    </div>
-
-                    <div style="margin-bottom: 25px;">
-                        <h3 style="color: #495057; margin-bottom: 15px;">Choose Your Operating System:</h3>
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <button onclick="showPlatformGuide('windows')" style="
-                                background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
-                                color: white;
-                                border: none;
-                                padding: 12px 20px;
-                                border-radius: 8px;
-                                font-weight: 500;
-                                cursor: pointer;
-                                transition: transform 0.2s ease;
-                                text-align: left;
-                            " onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-                                🪟 Windows Installation Guide
-                            </button>
-                            <button onclick="showPlatformGuide('mac')" style="
-                                background: linear-gradient(135deg, #000000 0%, #333333 100%);
-                                color: white;
-                                border: none;
-                                padding: 12px 20px;
-                                border-radius: 8px;
-                                font-weight: 500;
-                                cursor: pointer;
-                                transition: transform 0.2s ease;
-                                text-align: left;
-                            " onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-                                🍎 macOS Installation Guide
-                            </button>
-                            <button onclick="showPlatformGuide('linux')" style="
-                                background: linear-gradient(135deg, #f47421 0%, #e95420 100%);
-                                color: white;
-                                border: none;
-                                padding: 12px 20px;
-                                border-radius: 8px;
-                                font-weight: 500;
-                                cursor: pointer;
-                                transition: transform 0.2s ease;
-                                text-align: left;
-                            " onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-                                🐧 Linux Installation Guide
-                            </button>
-                        </div>
-                    </div>
-
-                    <button onclick="closeManualInstallGuide()" style="
-                        background: #6c757d;
-                        color: white;
-                        border: none;
-                        padding: 10px 20px;
-                        border-radius: 8px;
-                        font-weight: 500;
-                        cursor: pointer;
-                        transition: background 0.3s ease;
-                        width: 100%;
-                    " onmouseover="this.style.background='#495057'" onmouseout="this.style.background='#6c757d'">
-                        Close
-                    </button>
-                </div>
-            `;
-            
-            document.body.appendChild(dialog);
-        }
-
-        function showPlatformGuide(platform) {
-            const platformGuides = {
-                windows: {
-                    title: "🪟 Windows Installation Guide",
-                    steps: [
-                        "1. Download the ROM file using the Download ROM button above",
-                        "2. Extract the ROM file from the downloaded archive",
-                        "3. Install ADB (Android Debug Bridge) if not already installed",
-                        "4. Enable Developer Options and USB Debugging on your device",
-                        "5. Connect your device via USB cable",
-                        "6. Open Command Prompt as Administrator",
-                        "7. Navigate to the extracted ROM directory",
-                        "8. Run the installation script or follow the README instructions",
-                        "9. Follow any on-screen prompts during installation"
-                    ],
-                    additional: "For detailed instructions, visit the GitHub repository or use the Innioasis Updater for automatic installation."
-                },
-                mac: {
-                    title: "🍎 macOS Installation Guide",
-                    steps: [
-                        "1. Download the ROM file using the Download ROM button above",
-                        "2. Extract the ROM file from the downloaded archive",
-                        "3. Install ADB using Homebrew: brew install android-platform-tools",
-                        "4. Enable Developer Options and USB Debugging on your device",
-                        "5. Connect your device via USB cable",
-                        "6. Open Terminal",
-                        "7. Navigate to the extracted ROM directory",
-                        "8. Run the installation script or follow the README instructions",
-                        "9. Follow any on-screen prompts during installation"
-                    ],
-                    additional: "For detailed instructions, visit the GitHub repository or use the Innioasis Updater for automatic installation."
-                },
-                linux: {
-                    title: "🐧 Linux Installation Guide",
-                    steps: [
-                        "1. Download the ROM file using the Download ROM button above",
-                        "2. Extract the ROM file from the downloaded archive",
-                        "3. Install ADB: sudo apt install android-tools-adb (Ubuntu/Debian) or sudo dnf install android-tools (Fedora)",
-                        "4. Enable Developer Options and USB Debugging on your device",
-                        "5. Connect your device via USB cable",
-                        "6. Open Terminal",
-                        "7. Navigate to the extracted ROM directory",
-                        "8. Run the installation script or follow the README instructions",
-                        "9. Follow any on-screen prompts during installation"
-                    ],
-                    additional: "For detailed instructions, visit the GitHub repository or use the Innioasis Updater for automatic installation."
-                }
-            };
-
-            const guide = platformGuides[platform];
-            
-            // Create platform-specific guide dialog
-            const guideDialog = document.createElement('div');
-            guideDialog.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1001;
-                overflow-y: auto;
-            `;
-            
-            guideDialog.innerHTML = `
-                <div style="
-                    background: white;
-                    border-radius: 15px;
-                    padding: 30px;
-                    max-width: 600px;
-                    width: 90%;
-                    max-height: 80vh;
-                    overflow-y: auto;
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-                ">
-                    <h2 style="color: #2c3e50; margin-bottom: 20px;">${guide.title}</h2>
-                    
-                    <div style="margin-bottom: 25px;">
-                        <h3 style="color: #495057; margin-bottom: 15px;">Installation Steps:</h3>
-                        <div style="
-                            background: #f8f9fa;
-                            border-radius: 10px;
-                            padding: 20px;
-                            margin-bottom: 20px;
-                        ">
-                            ${guide.steps.map(step => `
-                                <p style="color: #495057; margin-bottom: 10px; line-height: 1.5;">${step}</p>
-                            `).join('')}
-                        </div>
-                        <p style="color: #6c757d; font-size: 14px; line-height: 1.5;">
-                            ${guide.additional}
-                        </p>
-                    </div>
-
-                    <div style="display: flex; gap: 10px;">
-                        <button onclick="closePlatformGuide()" style="
-                            background: #6c757d;
-                            color: white;
-                            border: none;
-                            padding: 10px 20px;
-                            border-radius: 8px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: background 0.3s ease;
-                            flex: 1;
-                        " onmouseover="this.style.background='#495057'" onmouseout="this.style.background='#6c757d'">
-                            Back to Manual Install
-                        </button>
-                        <button onclick="closeAllDialogs()" style="
-                            background: #dc3545;
-                            color: white;
-                            border: none;
-                            padding: 10px 20px;
-                            border-radius: 8px;
-                            font-weight: 500;
-                            cursor: pointer;
-                            transition: background 0.3s ease;
-                            flex: 1;
-                        " onmouseover="this.style.background='#c82333'" onmouseout="this.style.background='#dc3545'">
-                            Close All
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(guideDialog);
-        }
-
-        function downloadROM(releasesUrl) {
             // Open the GitHub releases page in a new tab for ROM download
             window.open(releasesUrl, '_blank');
         }
 
-        function closeManualInstallGuide() {
-            const dialog = document.querySelector('div[style*="position: fixed"]');
-            if (dialog) {
-                dialog.remove();
-            }
-        }
-
-        function closePlatformGuide() {
-            // Remove the platform guide dialog but keep the manual install guide
-            const guideDialog = document.querySelector('div[style*="z-index: 1001"]');
-            if (guideDialog) {
-                guideDialog.remove();
-            }
-        }
-
-        function closeAllDialogs() {
-            // Remove all dialogs
-            const dialogs = document.querySelectorAll('div[style*="position: fixed"]');
-            dialogs.forEach(dialog => dialog.remove());
-        }
-
-        function automaticInstall(softwareName, event) {
+        function goToInnioasisApp(event) {
             event.stopPropagation();
             
-            // Show automatic install dialog
-            showAutomaticInstallDialog(softwareName);
-        }
-
-        function showAutomaticInstallDialog(softwareName) {
-            const dialog = document.createElement('div');
-            dialog.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-            `;
-            
-            dialog.innerHTML = `
-                <div style="
-                    background: white;
-                    border-radius: 15px;
-                    padding: 30px;
-                    max-width: 500px;
-                    width: 90%;
-                    text-align: center;
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-                ">
-                    <h2 style="color: #2c3e50; margin-bottom: 20px;">⚡ Automatic Installation</h2>
-                    <p style="color: #495057; margin-bottom: 25px; line-height: 1.6;">
-                        For automatic installation of <strong>${softwareName}</strong>, you'll need the Innioasis Updater application.
-                        This tool will handle the entire installation process automatically.
-                    </p>
-                    <div style="margin-bottom: 25px;">
-                        <button onclick="downloadInnioasisUpdater()" style="
-                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                            color: white;
-                            border: none;
-                            padding: 15px 30px;
-                            border-radius: 10px;
-                            font-weight: 600;
-                            font-size: 16px;
-                            cursor: pointer;
-                            transition: transform 0.2s ease;
-                            margin-bottom: 15px;
-                            width: 100%;
-                        " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                            📥 Download Innioasis Updater
-                        </button>
-                        <p style="color: #6c757d; font-size: 14px;">
-                            This will open the latest release page in a new tab
-                        </p>
-                    </div>
-                    <button onclick="closeAutomaticInstallDialog()" style="
-                        background: #6c757d;
-                        color: white;
-                        border: none;
-                        padding: 10px 20px;
-                        border-radius: 8px;
-                        font-weight: 500;
-                        cursor: pointer;
-                        transition: background 0.3s ease;
-                    " onmouseover="this.style.background='#495057'" onmouseout="this.style.background='#6c757d'">
-                        Close
-                    </button>
-                </div>
-            `;
-            
-            document.body.appendChild(dialog);
-        }
-
-        function downloadInnioasisUpdater() {
-            // Open the Innioasis Updater releases page in a new tab
-            window.open('https://github.com/team-slide/Innioasis-Updater/releases/latest', '_blank');
-        }
-
-        function closeAutomaticInstallDialog() {
-            const dialog = document.querySelector('div[style*="position: fixed"]');
-            if (dialog) {
-                dialog.remove();
-            }
+            // Direct users to innioasis.app for automatic installation
+            window.open('https://innioasis.app', '_blank');
         }
 
         function formatDate(dateString) {

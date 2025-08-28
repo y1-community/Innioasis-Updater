@@ -141,6 +141,18 @@ class UpdateWorker(QThread):
                 self.update_completed.emit(False, f"Error installing files: {e}")
                 return
             
+            # Extract troubleshooting shortcuts if present
+            self.status_updated.emit("Setting up troubleshooting shortcuts...")
+            self.progress_updated.emit(96)
+            
+            try:
+                self.extract_troubleshooting_shortcuts(current_dir)
+                self.status_updated.emit("Troubleshooting shortcuts ready!")
+                self.progress_updated.emit(97)
+            except Exception as e:
+                self.status_updated.emit(f"Warning: Could not set up troubleshooting shortcuts: {e}")
+                self.progress_updated.emit(97)
+            
             # Clean up
             self.status_updated.emit("Cleaning up...")
             self.progress_updated.emit(98)
@@ -181,10 +193,27 @@ class UpdateWorker(QThread):
     def copy_files_with_error_handling(self, source_dir, dest_dir):
         """Copy files with error handling for write blocking errors - attempts all files including DLL/EXE"""
         error_files = []
+        skipped_files = []
         
         for item in source_dir.iterdir():
             if item.name in [".git", "__pycache__", ".DS_Store", "firmware_downloads"]:
                 continue
+            
+            # CRITICAL: Never skip .exe files on Windows - they are essential system files
+            # Only skip .lnk files on Windows if they're old shortcuts
+            if item.name.endswith('.exe'):
+                # Always copy .exe files - they are essential
+                pass
+            elif item.name.endswith('.lnk'):
+                # Handle .lnk files based on platform
+                if not self.platform_info['is_windows']:
+                    # Skip .lnk files on non-Windows systems
+                    skipped_files.append(f"{item.name} (Windows-specific)")
+                    continue
+                elif item.name not in ['Innioasis Updater.lnk']:
+                    # On Windows, skip old .lnk files but keep essential ones
+                    skipped_files.append(f"{item.name} (old shortcut)")
+                    continue
                 
             dest_item = dest_dir / item.name
             
@@ -212,7 +241,10 @@ class UpdateWorker(QThread):
                 else:
                     raise e
         
-        # Only show summary if there were significant errors, don't bother user with individual file issues
+        # Show summary of skipped and error files
+        if skipped_files:
+            self.status_updated.emit(f"Skipped {len(skipped_files)} Windows-specific files on {self.platform_info['system'].title()}")
+        
         if error_files:
             self.status_updated.emit(f"Note: {len(error_files)} files couldn't be updated (likely in use) - will update on next run")
             self.status_updated.emit("Update proceeding successfully - blocked files will be updated later")
@@ -245,6 +277,27 @@ class UpdateWorker(QThread):
         else:
             self.status_updated.emit("No requirements.txt found, skipping.")
             self.progress_updated.emit(80)
+
+    def extract_troubleshooting_shortcuts(self, current_dir):
+        """Extract troubleshooting shortcuts from Troubleshooters - Windows.zip if present"""
+        troubleshooters_zip = current_dir / "Troubleshooters - Windows.zip"
+        
+        if troubleshooters_zip.exists():
+            self.status_updated.emit("Found troubleshooting shortcuts, extracting...")
+            
+            try:
+                with zipfile.ZipFile(troubleshooters_zip, 'r') as zip_ref:
+                    zip_ref.extractall(current_dir)
+                
+                # Remove the zip file after extraction
+                troubleshooters_zip.unlink()
+                self.status_updated.emit("Troubleshooting shortcuts extracted successfully")
+                
+            except Exception as e:
+                self.status_updated.emit(f"Error extracting troubleshooting shortcuts: {e}")
+                raise e
+        else:
+            self.status_updated.emit("No troubleshooting shortcuts found, skipping...")
 
 
 class UpdateProgressDialog(QDialog):
