@@ -1,25 +1,22 @@
 #!/bin/bash
 
 # ==============================================================================
-# Innioasis Updater - Hybrid App Launcher & Setup Script v4.1
+# Innioasis Updater - Robust Terminal Setup & Launcher v5.0
 #
-# This script combines a user-friendly .app launcher with a robust, one-time
-# setup process.
+# This script provides a one-time, terminal-driven setup for the application.
 #
 # How it works:
-# 1. On first launch, it detects that setup is needed, displays a native
-#    macOS dialog to the user, and then opens a Terminal window to run a
-#    comprehensive setup function (`run_full_setup`).
-# 2. The setup function installs all dependencies (Xcode, Homebrew, Python, etc.),
-#    creates a virtual environment, and installs packages with self-healing and
-#    verification steps.
-# 3. Upon successful setup, it creates a completion marker and launches the app.
-# 4. On all subsequent launches, the script sees the completion marker and
-#    immediately runs the Python application silently.
+# 1. On first run, it checks for a completion marker. If not found, it
+#    begins the full, interactive setup process within the terminal.
+# 2. It guides the user through installing Xcode Tools and Homebrew (using
+#    the official .pkg installer), then automates the installation of all
+#    other dependencies.
+# 3. Upon successful setup, it creates a completion marker.
+# 4. On all subsequent runs, it finds the marker and immediately launches the
+#    Python application silently in the background.
 # ==============================================================================
 
 # --- Configuration ---
-APP_NAME="Innioasis Updater.app"
 APP_DIR="$HOME/Library/Application Support/Innioasis Updater"
 REPO_URL="https://github.com/team-slide/Innioasis-Updater.git"
 VENV_DIR="$APP_DIR/venv"
@@ -27,8 +24,7 @@ PYTHON_SCRIPT="$APP_DIR/updater.py"
 COMPLETION_MARKER="$VENV_DIR/.mac_setup_complete"
 
 # ==============================================================================
-# SECTION 1: FULL SETUP LOGIC (to be run in a terminal, only once)
-# This is the robust setup script, encapsulated in a function.
+# SECTION 1: FULL SETUP LOGIC
 # ==============================================================================
 run_full_setup() {
     # --- Style and Formatting ---
@@ -39,14 +35,14 @@ run_full_setup() {
     success_echo() { echo -e "${GREEN}✓ $1${NC}"; }
     warn_echo() { echo -e "${YELLOW}⚠️ $1${NC}"; }
     error_echo() { echo -e "${RED}✗ $1${NC}"; }
-    prompt_for_enter() { read -p "  Press [Enter] to continue..."; }
+    prompt_for_enter() { read -p "   Press [Enter] to continue..."; }
 
     clear
     echo "=========================================="
     echo "  Welcome to the Innioasis Updater Setup"
     echo "=========================================="
     echo "This script will perform a one-time setup to prepare your Mac."
-    echo "Your involvement may be needed to approve installations or enter your password."
+    echo "Your involvement will be needed for the Xcode and Homebrew installers."
     prompt_for_enter
 
     # --- 1. Check macOS Version ---
@@ -63,24 +59,17 @@ run_full_setup() {
     step_echo "Checking for Xcode Command Line Tools..."
     if ! xcode-select -p &>/dev/null; then
         warn_echo "Xcode Command Line Tools are required."
-        echo "A software update popup will appear. Please click 'Install'."
+        echo "A software update popup will appear. Please click 'Install' and wait for it to finish before returning here."
         xcode-select --install
         
-        # Wait for installation with a timeout
-        echo -n "Waiting for installation to complete (this can take several minutes)..."
-        timeout_seconds=900 # 15 minutes
-        start_time=$(date +%s)
-        while ! xcode-select -p &>/dev/null; do
-            current_time=$(date +%s)
-            elapsed=$((current_time - start_time))
-            if [ $elapsed -ge $timeout_seconds ]; then
-                error_echo "\nXcode installation timed out. Please install them manually from the terminal with 'xcode-select --install' and run this script again."
-                exit 1
-            fi
-            echo -n "."
-            sleep 5
-        done
-        echo ""
+        echo "Waiting for you to complete the installation..."
+        prompt_for_enter
+
+        # Verify installation
+        if ! xcode-select -p &>/dev/null; then
+             error_echo "Xcode Tools installation was not detected. Please try running 'xcode-select --install' manually, then run this script again."
+             exit 1
+        fi
         success_echo "Xcode Command Line Tools installed."
     else
         success_echo "Xcode Command Line Tools already installed."
@@ -89,21 +78,60 @@ run_full_setup() {
     # --- 3. Install/Update Homebrew ---
     step_echo "Checking for Homebrew package manager..."
     if ! command -v brew &>/dev/null; then
-        warn_echo "Homebrew is not installed. Installing now..."
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        warn_echo "Homebrew is not installed. We will download the official installer package."
         
-        # Configure Homebrew path for this session
-        if [[ "$(uname -m)" == "arm64" ]]; then # Apple Silicon
-            eval "$(/opt/homebrew/bin/brew shellenv)"
-        else # Intel
-            eval "$(/usr/local/bin/brew shellenv)"
+        # Determine architecture
+        if [[ "$(uname -m)" == "arm64" ]]; then
+            ARCH="arm64"
+        else
+            ARCH="x86_64" # Intel
         fi
+        echo "   Detected architecture: ${ARCH}"
+
+        # Fetch latest release tag from GitHub API
+        echo "   Fetching latest Homebrew version..."
+        LATEST_TAG=$(curl -sL "https://api.github.com/repos/Homebrew/brew/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        if [ -z "$LATEST_TAG" ]; then
+            error_echo "Could not determine the latest Homebrew version. Please install it manually from brew.sh"
+            exit 1
+        fi
+        success_echo "Latest version is ${LATEST_TAG}."
         
-        if ! command -v brew &>/dev/null; then
-             error_echo "Homebrew installation failed to configure correctly. Please restart your terminal and run the app again."
+        PKG_URL="https://github.com/Homebrew/brew/releases/download/${LATEST_TAG}/Homebrew-${LATEST_TAG}.pkg"
+        PKG_PATH="/tmp/Homebrew-${LATEST_TAG}.pkg"
+
+        echo "   Downloading Homebrew installer from GitHub..."
+        if ! curl -L --fail "$PKG_URL" -o "$PKG_PATH"; then
+             error_echo "Failed to download Homebrew installer. Please check your internet connection."
              exit 1
         fi
-        success_echo "Homebrew installed."
+        success_echo "Download complete."
+
+        echo
+        warn_echo "The Homebrew installer will now open."
+        echo "   Please complete the installation, then return to this terminal window."
+        prompt_for_enter
+
+        sudo open "$PKG_PATH"
+        
+        echo
+        echo "Waiting for you to complete the Homebrew installation..."
+        echo "Once it is finished, press Enter here to continue the script."
+        prompt_for_enter
+
+        # Configure Homebrew path for this session
+        if [[ "$ARCH" == "arm64" ]]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        else
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
+
+        if ! command -v brew &>/dev/null; then
+            error_echo "Homebrew installation failed or is not in the PATH. Please check the installer logs."
+            exit 1
+        fi
+        success_echo "Homebrew is now configured."
+        rm "$PKG_PATH"
     else
         success_echo "Homebrew already installed. Updating..."
         brew update
@@ -119,7 +147,7 @@ run_full_setup() {
         if brew list --formula | grep -q "^${pkg}\$"; then
             success_echo "${pkg} is already installed."
         else
-            echo "  Installing ${pkg}..."
+            echo "   Installing ${pkg}..."
             if brew install ${pkg}; then
                 success_echo "Installed ${pkg}."
             else
@@ -130,74 +158,42 @@ run_full_setup() {
     done
 
     # --- 5. Setup Application Files ---
-    step_echo "Setting up application files..."
+    step_echo "Setting up application files from Git..."
     if [ -d "$APP_DIR" ]; then
         warn_echo "Existing directory found. Removing for a clean installation."
         rm -rf "$APP_DIR"
     fi
     if ! git clone "$REPO_URL" "$APP_DIR"; then
-        error_echo "Git clone failed. Falling back to ZIP download."
-        zip_url="https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip"
-        tmp_zip="/tmp/innioasis_updater.zip"
-        if ! curl -L --fail "$zip_url" -o "$tmp_zip"; then
-            error_echo "Failed to download ZIP file. Cannot continue."
-            exit 1
-        fi
-        mkdir -p "$APP_DIR"
-        unzip -q "$tmp_zip" -d "/tmp"
-        unzipped_dir="/tmp/Innioasis-Updater-main"
-        mv "$unzipped_dir"/* "$APP_DIR"/
-        rm -rf "$unzipped_dir" "$tmp_zip"
+        error_echo "Git clone failed. Check your internet connection or if Git is installed correctly."
+        exit 1
     fi
-    success_echo "Application files set up in '$APP_DIR'."
+    success_echo "Application files cloned to '$APP_DIR'."
     cd "$APP_DIR"
 
     # --- 6. Setup Python Virtual Environment and Dependencies ---
     step_echo "Setting up Python environment..."
     PYTHON_EXEC="$HOMEBREW_PREFIX/bin/python3"
     
-    echo "  Creating Python virtual environment..."
+    echo "   Creating Python virtual environment..."
     if ! "$PYTHON_EXEC" -m venv "$VENV_DIR"; then
-        warn_echo "Failed to create virtual environment. Attempting to self-heal by reinstalling Python..."
-        brew reinstall python
-        if ! "$PYTHON_EXEC" -m venv "$VENV_DIR"; then
-            error_echo "Failed to create virtual environment even after reinstalling Python. Please check your Homebrew setup."
-            exit 1
-        fi
+        error_echo "Failed to create virtual environment. Please check your Homebrew Python installation."
+        exit 1
     fi
     success_echo "Virtual environment created."
     
     source "$VENV_DIR/bin/activate"
     python3 -m pip install --upgrade pip wheel setuptools
     
-    echo "  Installing Python dependencies from requirements.txt..."
+    echo "   Installing Python dependencies from requirements.txt..."
     export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libusb)/lib -L$(brew --prefix libffi)/lib"
     export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libusb)/include -I$(brew --prefix libffi)/include"
     export PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig:$(brew --prefix libusb)/lib/pkgconfig:$(brew --prefix libffi)/lib/pkgconfig"
     
     if ! python3 -m pip install --no-cache-dir -r requirements.txt; then
-        warn_echo "Initial installation of Python packages failed. This can happen on some systems."
-        echo "  Attempting automated troubleshooting..."
-        echo "  Running 'brew doctor' to check for common issues..."
-        brew doctor
-        echo "  Updating Homebrew and all installed packages..."
-        brew update && brew upgrade
-        
-        warn_echo "Retrying Python package installation..."
-        if ! python3 -m pip install --no-cache-dir -r requirements.txt; then
-            error_echo "Failed to install Python dependencies after retry. Please review the errors above and report them on the project's GitHub page."
-            deactivate
-            exit 1
-        fi
+        error_echo "Failed to install Python dependencies. Please review the errors above."
+        deactivate
+        exit 1
     fi
-    
-    step_echo "Verifying Python package installation..."
-    if ! python3 -c "import tkinter, PIL, scrypt, numpy"; then
-         error_echo "Verification failed! One or more key Python packages failed to import correctly. The application may not run."
-         deactivate
-         exit 1
-    fi
-    success_echo "Key Python packages verified successfully."
     
     unset LDFLAGS CPPFLAGS PKG_CONFIG_PATH
     success_echo "All Python dependencies installed."
@@ -206,58 +202,19 @@ run_full_setup() {
     # --- 7. Create Completion Marker & Finish ---
     step_echo "Finalizing setup..."
     touch "$COMPLETION_MARKER"
-    success_echo "Completion marker created."
     echo ""
     echo "=========================================="
     success_echo "  Setup Complete!"
     echo "=========================================="
-    echo "The application will now launch. You can close this terminal window once it's running."
+    echo "You can run this script again at any time to start the application."
     sleep 3
 }
 
 # ==============================================================================
-# SCRIPT ENTRY POINT & MAIN LAUNCHER LOGIC
-# This part runs every time the .app is double-clicked.
+# SCRIPT ENTRY POINT
 # ==============================================================================
 
-# --- Argument Parser ---
-# If the script is called with '--run-setup', it means we are in the terminal
-# window that the main app logic opened. We just run the setup function.
-if [ "$1" == "--run-setup" ]; then
-    run_full_setup
-    
-    # After setup, launch the app.
-    cd "$APP_DIR"
-    source "$VENV_DIR/bin/activate"
-    nohup python3 updater.py > /dev/null 2>&1 &
-    exit 0
-fi
-
-# --- Main App Logic (runs from the .app bundle) ---
-
-# 1. Handle moving the application to /Applications folder.
-CURRENT_APP_PATH=$(cd "$(dirname "$0")/../.." && pwd)
-DESTINATION_PATH="/Applications/$APP_NAME"
-
-if [ "$CURRENT_APP_PATH" != "$DESTINATION_PATH" ]; then
-    ANSWER=$(osascript -e 'display dialog "Would you like to move Innioasis Updater to your Applications folder? This is recommended." buttons {"No", "Yes"} default button "Yes" with icon 1')
-    if [ "$ANSWER" = "button returned:Yes" ]; then
-        osascript <<EOF
-tell application "System Events"
-    try
-        do shell script "cp -Rf \\\"$CURRENT_APP_PATH\\\" \\\"/Applications/\\\"" with administrator privileges
-        display dialog "Successfully moved to Applications folder. Please run the app from there." buttons {"OK"} default button "OK"
-        tell application "Finder" to open folder "Applications" of startup disk
-    on error errmsg
-        display dialog "Failed to move the application. Error: " & errmsg buttons {"OK"} default button "OK"
-    end try
-end tell
-EOF
-        exit 0
-    fi
-fi
-
-# 2. Check if setup has been completed.
+# Check if setup has been completed.
 if [ -f "$COMPLETION_MARKER" ]; then
     # --- FAST PATH: Setup is complete, run the app silently ---
     echo "Setup complete. Launching Innioasis Updater..."
@@ -268,25 +225,12 @@ if [ -f "$COMPLETION_MARKER" ]; then
     exit 0
 else
     # --- FIRST RUN: Setup is needed ---
-    echo "First run detected. Initiating setup process."
+    run_full_setup
     
-    # Get the full path to this script itself to pass to the new terminal.
-    THIS_SCRIPT_PATH=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
-
-    # Use AppleScript to inform the user and then open Terminal to run the setup function.
-    osascript <<EOF
-tell application "System Events"
-    display dialog "Welcome to Innioasis Updater!\n\nA one-time setup is required to install necessary components. A Terminal window will now open to complete the installation automatically." buttons {"Begin Setup"} default button "Begin Setup" with icon 1
-end tell
-
-tell application "Terminal"
-    activate
-    -- This command tells the new terminal to run this same script file, but with the
-    -- '--run-setup' argument, which will trigger the setup function.
-    do script "bash '${THIS_SCRIPT_PATH}' --run-setup"
-end tell
-EOF
-    # The main script's job is done; the new terminal window has taken over.
+    # After setup, launch the app for the first time.
+    echo "Launching the application for the first time..."
+    cd "$APP_DIR"
+    source "$VENV_DIR/bin/activate"
+    nohup python3 "$PYTHON_SCRIPT" > /dev/null 2>&1 &
     exit 0
 fi
-
