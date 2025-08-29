@@ -11,52 +11,148 @@
             box-sizing: border-box;
         }
 
+        :root {
+            /* Light mode colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-tertiary: #fafafa;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent-primary: #007aff;
+            --accent-secondary: #5856d6;
+            --accent-success: #34c759;
+            --accent-warning: #ff9500;
+            --accent-error: #ff3b30;
+            --border-primary: #d2d2d7;
+            --border-secondary: #e5e5e7;
+            --shadow-primary: rgba(0, 0, 0, 0.1);
+            --shadow-secondary: rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        [data-theme="dark"] {
+            /* Dark mode colors */
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #ffffff;
+            --text-secondary: #98989d;
+            --text-tertiary: #8e8e93;
+            --accent-primary: #0a84ff;
+            --accent-secondary: #5e5ce6;
+            --accent-success: #30d158;
+            --accent-warning: #ff9f0a;
+            --accent-error: #ff453a;
+            --border-primary: #38383a;
+            --border-secondary: #48484a;
+            --shadow-primary: rgba(0, 0, 0, 0.3);
+            --shadow-secondary: rgba(0, 0, 0, 0.2);
+            --gradient-primary: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+            --gradient-secondary: linear-gradient(135deg, #2c2c2e 0%, #3a3a3c 100%);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
             min-height: 100vh;
-            color: #333;
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            color: white;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+        }
+
+        .theme-toggle .icon {
+            font-size: 1.1rem;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .header-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
         }
 
         .main-content {
-            background: white;
-            border-radius: 20px;
+            background: var(--bg-secondary);
+            border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px var(--shadow-primary);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-secondary);
         }
 
         .filters {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
+            padding: 25px;
+            background: var(--bg-primary);
+            border-radius: 20px;
+            border: 1px solid var(--border-secondary);
+            box-shadow: 0 4px 16px var(--shadow-secondary);
         }
 
         .filter-group {
@@ -67,33 +163,41 @@
         .filter-group label {
             font-weight: 600;
             margin-bottom: 8px;
-            color: #495057;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            letter-spacing: -0.01em;
         }
 
         .filter-group select {
-            padding: 12px;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
+            padding: 12px 16px;
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
             font-size: 14px;
-            background: white;
-            transition: border-color 0.3s ease;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
         }
 
         .refresh-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--accent-primary);
             color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
             align-self: end;
+            font-size: 0.9rem;
+            font-family: inherit;
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
         }
 
         .refresh-btn:hover {
@@ -105,23 +209,27 @@
         }
 
         .firmware-list {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 20px;
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 25px;
             margin-bottom: 30px;
+            border: 1px solid var(--border-secondary);
+            box-shadow: 0 4px 16px var(--shadow-secondary);
         }
 
         .firmware-list h3 {
             margin-bottom: 20px;
-            color: #495057;
+            color: var(--text-primary);
             font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .firmware-item {
             background: white;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
+            padding: 18px;
+            margin-bottom: 12px;
             border: 1px solid #e9ecef;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -139,7 +247,7 @@
         }
 
         .firmware-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #2c3e50;
             margin-bottom: 8px;
@@ -147,8 +255,8 @@
 
         .firmware-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
             margin-bottom: 15px;
         }
 
@@ -158,7 +266,7 @@
         }
 
         .detail-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #6c757d;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -168,6 +276,7 @@
         .detail-value {
             font-weight: 600;
             color: #495057;
+            font-size: 0.9rem;
         }
 
         .download-btn {
@@ -237,10 +346,10 @@
 
         .status {
             text-align: center;
-            padding: 20px;
+            padding: 18px;
             background: #e8f5e8;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             border: 1px solid #a8e6cf;
         }
 
@@ -261,7 +370,7 @@
             border: 1px solid #dee2e6;
             border-radius: 10px;
             padding: 15px;
-            margin: 20px 0;
+            margin: 18px 0;
             text-align: center;
         }
         
@@ -359,20 +468,251 @@
             margin-top: 30px;
             color: white;
             opacity: 0.8;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
         }
 
         .footer a {
             color: white;
             text-decoration: none;
+            transition: opacity 0.3s ease;
         }
 
         .footer a:hover {
             text-decoration: underline;
+            opacity: 1;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            max-width: 240px;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-banner.fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .cta-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+
+        .cta-banner h3 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-banner p {
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .cta-banner .cta-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-banner .cta-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .cta-banner .close-btn {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 11px;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .cta-banner .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Platform-specific dialog styles */
+        .platform-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 2000;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            display: none;
+        }
+
+        .platform-dialog.show {
+            display: block;
+        }
+
+        .platform-dialog h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .platform-dialog p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .platform-dialog .btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .platform-dialog .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .platform-dialog .btn-secondary {
+            background: #6c757d;
+        }
+
+        .platform-dialog .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .dialog-overlay.show {
+            display: block;
+        }
+
+        /* Command box styles */
+        .command-box {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .command-box code {
+            background: var(--bg-primary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-secondary);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            flex: 1;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-1px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
         }
 
         @media (max-width: 768px) {
+            .cta-banner {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                border-radius: 20px;
+            }
+            
             .container {
                 padding: 10px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
             }
             
             .main-content {
@@ -381,10 +721,29 @@
             
             .filters {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
             
             .firmware-details {
                 grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            .container {
+                padding: 8px;
+            }
+            
+            .main-content {
+                padding: 15px;
             }
         }
     </style>
@@ -392,8 +751,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔧 Innioasis Firmware Downloader</h1>
-            <p>Download firmware releases directly from Slidia</p>
+            <img src="mtkclient/gui/images/icon.png" alt="Innioasis Icon" class="header-icon">
+            <div class="header-text">
+                <h1>Innioasis Firmware Downloader</h1>
+                <p>Download firmware releases directly from GitHub</p>
+            </div>
         </div>
 
         <div class="main-content">
@@ -453,8 +815,69 @@
 
         <div class="footer">
             <p>Created by <a href="https://github.com/team-slide" target="_blank">Team Slide</a> | 
-               <a href="https://innioasis.app" target="_blank">Innioasis App</a></p>
+               <a href="https://innioasis.app" target="_blank">Innioasis App</a> | 
+               <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a></p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">🍪 Cookies not used by this site</p>
         </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner" id="ctaBanner">
+        <button class="close-btn" onclick="closeCTABanner()">×</button>
+        <h3>🚀 Get Innioasis Updater</h3>
+        <p>Download the desktop app for your system</p>
+        <button onclick="downloadForPlatform()" class="cta-btn">Download Now</button>
+    </div>
+
+    <!-- Platform-specific dialogs -->
+    <div class="dialog-overlay" id="dialogOverlay"></div>
+    
+    <!-- Windows Dialog -->
+    <div class="platform-dialog" id="windowsDialog">
+        <h3>🪟 Windows Installation</h3>
+        <p>Download the Windows installer and follow the setup instructions. After installation, you'll need to install the MTK drivers for proper device communication.</p>
+        <button class="btn" onclick="downloadWindows()">Download Windows Installer</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+    </div>
+
+    <!-- macOS Dialog -->
+    <div class="platform-dialog" id="macDialog">
+        <h3>🍎 macOS Installation</h3>
+        <p>Copy and paste this command into Terminal and press Enter:</p>
+        <div class="command-box">
+            <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/run_mac.sh)"</code>
+            <button class="copy-btn" onclick="copyMacCommand()">📋 Copy</button>
+        </div>
+        <p><em>This will automatically set up everything you need!</em></p>
+        <p>After the first run, you can use the same command again to launch the app for future uses.</p>
+        <p><strong>Note:</strong> This is a temporary preview release. An installer app is coming soon where you won't need the Terminal window.</p>
+        <button class="btn" onclick="openMacInstructions()">View Manual Instructions</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+    </div>
+
+    <!-- Linux Dialog -->
+    <div class="platform-dialog" id="linuxDialog">
+        <h3>🐧 Linux Installation</h3>
+        <p>Ubuntu is recommended for the best experience, but other distributions should work as well. Follow the instructions in the new tab to set up the required dependencies.</p>
+        <button class="btn" onclick="openLinuxInstructions()">Open Instructions</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+    </div>
+
+    <!-- ChromeOS/FydeOS Dialog -->
+    <div class="platform-dialog" id="chromeosDialog">
+        <h3>🖥️ ChromeOS/FydeOS</h3>
+        <p>You MAY be able to run Innioasis Updater in Linux mode, but we have not tested this configuration. Follow the Linux instructions in the new tab and try running it in your Linux environment.</p>
+        <p><em>Note: This is experimental and may not work as expected.</em></p>
+        <button class="btn" onclick="openLinuxInstructions()">View Linux Instructions</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+    </div>
+
+    <!-- Windows ARM64 Dialog -->
+    <div class="platform-dialog" id="windowsArmDialog">
+        <h3>🪟 Windows ARM64</h3>
+        <p>For Windows ARM64 users, more advanced users may be able to run the Linux version using Python, Libusb, android-platform-tools, USBIPD-win and WSLg. Ubuntu is recommended.</p>
+        <button class="btn" onclick="openLinuxInstructions()">View Linux Instructions</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
 
     <script>
@@ -476,6 +899,196 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadData();
             setupEventListeners();
+            detectUserOS();
+            checkBannerPreference();
+            
+            // Add scroll listener for banner fade-out
+            window.addEventListener('scroll', checkDownloadButtonVisibility);
+            // Check initially
+            checkDownloadButtonVisibility();
+        });
+
+        // Detect user's operating system and update CTA banner
+        function detectUserOS() {
+            const userAgent = navigator.userAgent;
+            let os = 'Windows';
+            let downloadText = 'Download for Windows';
+            let isArm64 = false;
+            
+            if (userAgent.includes('Mac')) {
+                os = 'macOS';
+                downloadText = 'Setup on Mac';
+            } else if (userAgent.includes('Linux')) {
+                os = 'Linux';
+                downloadText = 'Download for Linux';
+            } else if (userAgent.includes('CrOS') || userAgent.includes('FydeOS')) {
+                os = 'ChromeOS/FydeOS';
+                downloadText = 'Linux Mode Setup';
+            }
+            
+            // Check for Windows ARM64
+            if (userAgent.includes('Windows') && (userAgent.includes('ARM64') || userAgent.includes('ARM'))) {
+                isArm64 = true;
+                downloadText = 'Download for Windows ARM64';
+            }
+            
+            // Store platform info globally
+            window.userPlatform = { os, isArm64 };
+            
+            // Update CTA banner text
+            const ctaTitle = document.querySelector('#ctaBanner h3');
+            const ctaDesc = document.querySelector('#ctaBanner p');
+            const ctaBtn = document.querySelector('#ctaBanner .cta-btn');
+            
+            if (ctaTitle && ctaDesc && ctaBtn) {
+                ctaTitle.textContent = `🚀 Get Innioasis Updater`;
+                ctaDesc.textContent = `Download the desktop app for ${os}`;
+                ctaBtn.textContent = downloadText;
+            }
+        }
+
+        // Close CTA banner
+        function closeCTABanner() {
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'none';
+                // Store preference in localStorage
+                localStorage.setItem('ctaBannerClosed', 'true');
+            }
+        }
+
+        // Check if banner was previously closed
+        function checkBannerPreference() {
+            if (localStorage.getItem('ctaBannerClosed') === 'true') {
+                const banner = document.getElementById('ctaBanner');
+                if (banner) {
+                    banner.style.display = 'none';
+                }
+            }
+        }
+
+        // Check if download button is visible and fade out banner
+        function checkDownloadButtonVisibility() {
+            const downloadBtn = document.querySelector('.download-btn');
+            const banner = document.getElementById('ctaBanner');
+            
+            if (downloadBtn && banner) {
+                const rect = downloadBtn.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    banner.classList.add('fade-out');
+                } else {
+                    banner.classList.remove('fade-out');
+                }
+            }
+        }
+
+        // Platform-specific download functions
+        function downloadForPlatform() {
+            const platform = window.userPlatform;
+            
+            if (platform.isArm64) {
+                showDialog('windowsArmDialog');
+            } else if (platform.os === 'Windows') {
+                showDialog('windowsDialog');
+            } else if (platform.os === 'macOS') {
+                showDialog('macDialog');
+            } else if (platform.os === 'Linux') {
+                showDialog('linuxDialog');
+            } else if (platform.os === 'ChromeOS/FydeOS') {
+                showDialog('chromeosDialog');
+            }
+        }
+
+        function downloadWindows() {
+            // Download Windows installer
+            const link = document.createElement('a');
+            link.href = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/InnioasisUpdater-Windows.exe';
+            link.download = 'InnioasisUpdater-Windows.exe';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show driver download popup
+            setTimeout(() => {
+                alert('🎉 Download started! After installation, please download the required drivers from drivers.innioasis.app for proper device communication.');
+            }, 1000);
+            
+            closeDialog();
+        }
+
+        function openMacInstructions() {
+            window.open('https://github.com/team-slide/Innioasis-Updater#manual-setup', '_blank');
+        }
+
+        function copyMacCommand() {
+            const command = '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/run_mac.sh)"';
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                // Use modern clipboard API
+                navigator.clipboard.writeText(command).then(() => {
+                    showCopySuccess();
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(command);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopyTextToClipboard(command);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess();
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess() {
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = '✅ Copied!';
+            copyBtn.style.background = 'var(--accent-success)';
+            
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = 'var(--accent-primary)';
+            }, 2000);
+        }
+
+        function openLinuxInstructions() {
+            window.open('https://github.com/team-slide/Innioasis-Updater#linux---ubuntu-recommended', '_blank');
+        }
+
+        function showDialog(dialogId) {
+            document.getElementById('dialogOverlay').classList.add('show');
+            document.getElementById(dialogId).classList.add('show');
+        }
+
+        function closeDialog() {
+            document.getElementById('dialogOverlay').classList.remove('show');
+            document.querySelectorAll('.platform-dialog').forEach(dialog => {
+                dialog.classList.remove('show');
+            });
+        }
+
+        // Close dialog when clicking overlay
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('dialogOverlay').addEventListener('click', closeDialog);
         });
 
         function setupEventListeners() {
