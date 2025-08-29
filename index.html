@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0079)file:///Users/ryan/Library/Application%20Support/Innioasis%20Updater/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innioasis Updater - Update your Innioasis Y1 Firmware on Windows and Mac</title>
     <style>
@@ -457,6 +457,25 @@
             background: #5a6268;
         }
 
+        .command-display {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+
+        .command-display code {
+            background: transparent;
+            color: #495057;
+            font-size: 14px;
+            word-break: break-all;
+            display: block;
+            line-height: 1.4;
+        }
+
         .dialog-overlay {
             position: fixed;
             top: 0;
@@ -569,11 +588,11 @@
         }
     </style>
 </head>
-<body>
+<body style="overscroll-behavior-x: auto;">
     <div class="container">
         <!-- Header Section -->
         <div class="header">
-            <img src="mtkclient/gui/images/icon.png" alt="Innioasis Icon" class="header-icon">
+            <img src="./index_files/icon.png" alt="Innioasis Icon" class="header-icon">
             <div class="header-text">
                 <h1>Innioasis Updater</h1>
                 <p>Your life with Y1, made easier.</p>
@@ -586,12 +605,12 @@
 
         <!-- Hero Banner Section -->
         <div class="hero-banner">
-            <img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot" class="hero-image">
+            <img src="./index_files/screenshot.jpg" alt="Innioasis Updater Screenshot" class="hero-image">
             <h1>🚀 Innioasis Updater</h1>
             <p class="subtitle">Your life with Y1, made easier.</p>
             
             <div class="features">
-                <div class="feature-item">
+                <div class="feature-item" style="transform: translateY(0px);">
                     <span class="icon">📱</span>
                     <h3>Update</h3>
                     <p>Keep your Y1 running the latest firmware with automatic updates and seamless installation</p>
@@ -603,7 +622,7 @@
                     <p>Easily restore your Y1 to factory settings or previous firmware versions when needed</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item" style="transform: translateY(0px);">
                     <span class="icon">🎵</span>
                     <h3>Rockbox</h3>
                     <p>Install and manage Rockbox themes, fonts, and customizations for the ultimate audio experience</p>
@@ -642,7 +661,7 @@
             
             <div class="info-grid">
                 <div class="info-card">
-                    <h3>🔒 Safe & Reliable</h3>
+                    <h3>🔒 Safe &amp; Reliable</h3>
                     <p>Built with safety in mind, Innioasis Updater ensures your Y1 device is never at risk during firmware operations. Automatic recovery and multiple install methods are available.</p>
                 </div>
                 
@@ -676,7 +695,8 @@
         <div class="footer">
             <p>Created with ❤️ by <a href="https://github.com/team-slide" target="_blank">Ryan Specter and Team Slide</a> | 
                <a href="https://reddit.com/r/innioasis" target="_blank">r/Innioasis</a> | 
-               <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a></p>
+               <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a> | 
+               <a href="https://slidia.innioasis.app/" target="_blank">Add your Apps and Firmwares to Innioasis Updater</a></p>
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">🍪 Cookies not used by this site</p>
         </div>
     </div>
@@ -685,12 +705,12 @@
     <div class="cta-banner" id="ctaBanner">
         <button class="close-btn" onclick="closeCTABanner()">×</button>
         <h3>🚀 Get Innioasis Updater</h3>
-        <p>Download the desktop app for your system</p>
-        <button onclick="downloadForPlatform()" class="cta-btn">Download Now</button>
+        <p>Download the desktop app for macOS</p>
+        <button onclick="downloadForPlatform()" class="cta-btn">Setup on Mac</button>
     </div>
 
     <!-- Platform-specific dialogs -->
-    <div class="dialog-overlay" id="dialogOverlay"></div>
+    <div class="dialog-overlay show" id="dialogOverlay"></div>
     
     <!-- Windows Dialog -->
     <div class="platform-dialog" id="windowsDialog">
@@ -701,11 +721,13 @@
     </div>
 
     <!-- macOS Dialog -->
-    <div class="platform-dialog" id="macDialog">
+    <div class="platform-dialog show" id="macDialog">
         <h3>🍎 macOS Installation</h3>
-        <p>Follow the manual setup instructions in the new tab. After completing the setup, you can run the app with: <code>python3 updater.py</code></p>
-        <p><em>An easier installation method for macOS is coming soon!</em></p>
-        <button class="btn" onclick="openMacInstructions()">Open Instructions</button>
+        <p>Copy and run this command in Terminal to set up Innioasis Updater:</p>
+        <div class="command-display">
+            <code id="macCommand">curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/run_mac.sh | bash</code>
+        </div>
+        <button class="btn" onclick="copyMacCommand()">📋 Copy Command</button>
         <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
 
@@ -906,8 +928,23 @@
             closeDialog();
         }
 
-        function openMacInstructions() {
-            window.open('https://github.com/team-slide/Innioasis-Updater#manual-setup', '_blank');
+        function copyMacCommand() {
+            const commandText = document.getElementById('macCommand').textContent;
+            navigator.clipboard.writeText(commandText).then(function() {
+                // Change button text temporarily to show success
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy command. Please select and copy manually.');
+            });
         }
 
         function openLinuxInstructions() {
@@ -966,7 +1003,8 @@
             }
         }
     </script>
-</body>
-</html>
 
 
+
+
+</body></html>
