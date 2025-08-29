@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # ==============================================================================
-# Innioasis Updater - Robust, Context-Aware Setup & Launcher v6.4
+# Innioasis Updater - Robust, Context-Aware Setup & Launcher v6.5
 #
-# This script provides a one-time, highly automated setup process. It asks
-# for sudo access once upfront, handles all subsequent steps non-interactively,
-# and automatically configures the user's shell environment for Homebrew,
-# even if it was previously installed but not configured.
+# This script provides a one-time, highly automated setup process. It allows
+# the official Homebrew installer to run interactively to handle its own
+# password prompts, ensuring a reliable installation.
 # ==============================================================================
 
 # --- Configuration ---
@@ -58,23 +57,9 @@ run_full_setup() {
     echo "Log file will be saved to: $LOG_FILE"
     echo
 
-    show_dialog_if_needed "Welcome to Innioasis Updater! The setup process is starting. Administrator access is required to install necessary tools."
+    show_dialog_if_needed "Welcome to Innioasis Updater! The setup process is starting. Some steps, like the Homebrew installation, will require your interaction."
 
-    # --- 1. Acquire Sudo Privileges Upfront ---
-    step_echo "Requesting administrator privileges..."
-    echo "Please enter your Mac's password to allow installation of system tools like Homebrew."
-    if ! sudo -v; then
-        error_echo "Failed to obtain administrator privileges. Cannot continue."
-        show_dialog_if_needed "Setup failed: Could not get administrator privileges."
-        exit 1
-    fi
-    # Keep sudo session alive in the background
-    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done &
-    SUDO_KEEPALIVE_PID=$!
-    trap 'kill "$SUDO_KEEPALIVE_PID"' EXIT
-    success_echo "Administrator privileges acquired."
-
-    # --- 2. Install Xcode Command Line Tools ---
+    # --- 1. Install Xcode Command Line Tools ---
     step_echo "Checking for Xcode Command Line Tools..."
     if ! xcode-select -p &>/dev/null; then
         warn_echo "Xcode Command Line Tools are required."
@@ -93,7 +78,7 @@ run_full_setup() {
         success_echo "Xcode Command Line Tools already installed."
     fi
 
-    # --- 3. Install, Configure, or Update Homebrew ---
+    # --- 2. Install, Configure, or Update Homebrew ---
     step_echo "Checking for Homebrew package manager..."
     
     # Define Homebrew paths based on CPU architecture
@@ -134,16 +119,16 @@ run_full_setup() {
 
     # First, check if the Homebrew executable exists at its standard location
     if ! [ -x "$BREW_CMD_PATH" ]; then
-        # --- SCENARIO 1: HOMEBREW NOT INSTALLED ---
-        warn_echo "Homebrew not found. Installing now (this may take 5-15 minutes)..."
-        show_dialog_if_needed "Now installing Homebrew. This is a one-time process and may take several minutes. Please wait."
+        # --- SCENARIO 1: HOMEBREW NOT INSTALLED (INTERACTIVE) ---
+        warn_echo "Homebrew not found. Starting interactive installation..."
+        log_message "The official Homebrew installer will now run. Please follow its instructions."
+        log_message "You will be prompted to enter your password by the installer itself."
+        show_dialog_if_needed "The Homebrew installer will now run in the terminal. Please follow its instructions and enter your password when prompted."
         
-        if ! NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >> "$LOG_FILE" 2>&1; then
-            error_echo "Homebrew installation failed. Check the log file for details: $LOG_FILE"
-            show_dialog_if_needed "Homebrew installation failed. Please check the log file for details."
-            exit 1
-        fi
-        
+        # Run the official installer INTERACTIVELY, allowing it to ask for sudo.
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+        # After the user completes the interactive install, we configure the paths.
         step_echo "Configuring new Homebrew installation..."
         configure_brew_paths
     else
@@ -155,20 +140,16 @@ run_full_setup() {
             configure_brew_paths
         fi
         
-        success_echo "Homebrew is configured. Skipping update as requested."
-        # NOTE: brew update is intentionally skipped. During a one-time setup,
-        # it's usually safe as Homebrew will fetch required formulas anyway.
-        # If package installation fails, uncommenting the following line is a good first step:
-        # brew update >> "$LOG_FILE" 2>&1
+        success_echo "Homebrew is configured. Skipping update."
     fi
 
     # Verify that brew is now available before proceeding
     if ! command -v brew &>/dev/null; then
-        error_echo "Failed to configure Homebrew. The 'brew' command is not available. Please run the script again in a new terminal window."
+        error_echo "Failed to find the 'brew' command after installation. Please run the script again in a new terminal window."
         exit 1
     fi
 
-    # --- 4. Install Brew Dependencies ---
+    # --- 3. Install Brew Dependencies ---
     step_echo "Installing required tools with Homebrew..."
     BREW_PACKAGES="python python-tk libusb openssl libffi rust cmake pkg-config android-platform-tools"
     for pkg in $BREW_PACKAGES; do
@@ -185,7 +166,7 @@ run_full_setup() {
         fi
     done
 
-    # --- 5. Setup Application Files ---
+    # --- 4. Setup Application Files ---
     step_echo "Setting up application files from Git..."
     rm -rf "$APP_DIR" # Always start clean
     if ! git clone "$REPO_URL" "$APP_DIR" >> "$LOG_FILE" 2>&1; then
@@ -195,7 +176,7 @@ run_full_setup() {
     success_echo "Application files cloned to '$APP_DIR'."
     cd "$APP_DIR"
 
-    # --- 6. Setup Python Virtual Environment ---
+    # --- 5. Setup Python Virtual Environment ---
     step_echo "Setting up Python environment..."
     PYTHON_EXEC="$(brew --prefix)/bin/python3"
     
@@ -222,7 +203,7 @@ run_full_setup() {
     success_echo "All Python dependencies installed."
     deactivate
 
-    # --- 7. Finalize ---
+    # --- 6. Finalize ---
     step_echo "Finalizing setup..."
     touch "$COMPLETION_MARKER"
     
