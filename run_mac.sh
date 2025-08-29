@@ -1,15 +1,17 @@
 #!/bin/bash
 
-# Innioasis Updater Setup Script for macOS v3.2
+# Innioasis Updater Setup Script for macOS v3.3
 #
 # Changelog:
-# - Automates Xcode Command Line Tools check by polling for completion,
-#   preventing user confusion and unnecessary prompts.
-# - Implements a completion marker (`.mac_setup_complete`) to bypass setup
-#   on subsequent runs, enabling one-click execution.
-# - Refines user-facing instructions for clarity and a smoother experience.
-# - Retains robust features: git clone with ZIP fallback, Homebrew for a
-#   modern Python, and linker flags for reliable dependency installation.
+# - Enhanced Python dependency installation with more robust environment variables
+#   (LDFLAGS, CPPFLAGS, CFLAGS, PKG_CONFIG_PATH) to prevent wheel build failures for
+#   packages like 'scrypt'.
+# - Added 'rust' and 'libffi' to Homebrew dependencies as a preventative measure
+#   for a wider range of modern Python packages that use Rust or C extensions.
+# - Refined macOS version check to officially support 13.5+ while allowing attempts
+#   on 12.0+ with a warning.
+# - Added --no-cache-dir to pip install to avoid using potentially corrupt cached builds.
+# - Improved error handling during pip install to provide clearer user guidance on failure.
 
 # --- Style and Formatting ---
 BLUE='\033[0;34m'
@@ -71,12 +73,18 @@ prompt_for_enter
 
 # --- 1. Check macOS Version ---
 step_echo "Checking macOS Version..."
-if [[ $(sw_vers -productVersion | cut -d . -f 1) -lt 13 ]]; then
-    warn_echo "Your macOS version is older than 13.5 (Ventura)."
-    warn_echo "This script is tested on macOS 13.5+, but will attempt to continue."
+macos_version=$(sw_vers -productVersion)
+if [[ $(echo "$macos_version" | cut -d . -f 1) -lt 12 ]]; then
+    error_echo "Your macOS version ($macos_version) is older than 12 (Monterey)."
+    error_echo "This script is not compatible with your OS. Please upgrade macOS."
+    exit 1
+elif [[ "$macos_version" < "13.5" ]]; then
+    warn_echo "Your macOS version is $macos_version."
+    warn_echo "This script is officially supported on macOS 13.5 (Ventura) and newer."
+    warn_echo "It will attempt to run, but you may encounter issues."
     prompt_for_enter
 else
-    success_echo "macOS version is compatible."
+    success_echo "macOS version $macos_version is fully supported."
 fi
 
 # --- 2. Install Xcode Command Line Tools ---
@@ -127,7 +135,8 @@ fi
 
 # --- 4. Install Brew Dependencies ---
 step_echo "Installing required tools with Homebrew..."
-BREW_PACKAGES="python libusb openssl cmake pkg-config android-platform-tools"
+# Added rust and libffi to prevent common build failures with Python packages.
+BREW_PACKAGES="python libusb openssl libffi rust cmake pkg-config android-platform-tools"
 for pkg in $BREW_PACKAGES; do
     if brew list --formula | grep -q "^${pkg}\$"; then
         success_echo "${pkg} is already installed."
@@ -192,9 +201,20 @@ cd "$APP_DIR"
 
 # --- 6. Setup Python Virtual Environment and Dependencies ---
 step_echo "Setting up Python environment..."
+
+# It's crucial to use the Python installed by Homebrew, not the system one.
+HOMEBREW_PREFIX=$(brew --prefix)
+PYTHON_EXEC="$HOMEBREW_PREFIX/bin/python3"
+
+if [ ! -f "$PYTHON_EXEC" ]; then
+    error_echo "Could not find Homebrew's Python 3 at '$PYTHON_EXEC'."
+    error_echo "This should have been installed. Please check your Homebrew setup."
+    exit 1
+fi
+
 if [ ! -d "$VENV_DIR" ]; then
-    echo "  Creating Python virtual environment..."
-    python3 -m venv "$VENV_DIR"
+    echo "  Creating Python virtual environment using Homebrew's Python..."
+    "$PYTHON_EXEC" -m venv "$VENV_DIR"
     success_echo "Virtual environment created."
 else
     success_echo "Virtual environment already exists."
@@ -205,16 +225,35 @@ source "$VENV_DIR/bin/activate"
 
 echo "  Upgrading pip, wheel, and setuptools..."
 python3 -m pip install --upgrade pip wheel setuptools
-success_echo "Pip upgraded."
+success_echo "Pip, wheel, and setuptools upgraded."
 
 echo "  Installing Python dependencies from requirements.txt..."
-# Explicitly set flags to help pip find Homebrew's libraries.
-export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libusb)/lib"
-export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libusb)/include"
-pip install -r requirements.txt
-# Unset the variables so they don't linger in the user's shell
-unset LDFLAGS CPPFLAGS
-success_echo "All Python dependencies are installed."
+# Set comprehensive environment variables to help pip find Homebrew libraries.
+# This is critical for compiling packages with C extensions (like 'scrypt') on macOS.
+export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libusb)/lib -L$(brew --prefix libffi)/lib"
+export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libusb)/include -I$(brew --prefix libffi)/include"
+export CFLAGS="$CPPFLAGS"
+export PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig:$(brew --prefix libusb)/lib/pkgconfig:$(brew --prefix libffi)/lib/pkgconfig"
+
+# Attempt installation with flags set and without using cached wheels.
+if ! python3 -m pip install --no-cache-dir -r requirements.txt; then
+    error_echo "Failed to install Python dependencies."
+    warn_echo "This usually happens when a package with C-extensions fails to compile."
+    echo ""
+    echo "  Please review the error messages above this one for specific details."
+    echo "  Common troubleshooting steps:"
+    echo "  1. Run 'brew doctor' and fix any reported issues."
+    echo "  2. Ensure Xcode Command Line Tools are fully updated."
+    echo "  3. If the issue persists, please report the full error log on the project's GitHub page."
+
+    unset LDFLAGS CPPFLAGS CFLAGS PKG_CONFIG_PATH
+    deactivate
+    exit 1
+fi
+
+# Unset the variables so they don't linger in the user's shell.
+unset LDFLAGS CPPFLAGS CFLAGS PKG_CONFIG_PATH
+success_echo "All Python dependencies installed successfully."
 
 deactivate
 
