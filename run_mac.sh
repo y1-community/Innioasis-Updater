@@ -260,7 +260,7 @@ deactivate
 # --- 7. Create Completion Marker ---
 step_echo "Finalizing setup..."
 touch "$COMPLETION_MARKER"
-success_echo "Completion marker created. Future runs of this script will launch the app immediately."
+success_echo "Completion marker created. Future runs of this script will start the app immediately."
 
 # --- 8. Final Steps ---
 echo ""
