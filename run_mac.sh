@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # ==============================================================================
-# Innioasis Updater - Robust, Context-Aware Setup & Launcher v6.2
+# Innioasis Updater - Robust, Context-Aware Setup & Launcher v6.4
 #
 # This script provides a one-time, highly automated setup process. It asks
 # for sudo access once upfront, handles all subsequent steps non-interactively,
-# and automatically configures the user's shell environment for Homebrew.
+# and automatically configures the user's shell environment for Homebrew,
+# even if it was previously installed but not configured.
 # ==============================================================================
 
 # --- Configuration ---
@@ -79,10 +80,8 @@ run_full_setup() {
         warn_echo "Xcode Command Line Tools are required."
         log_message "A software update popup will appear. Please click 'Install' and wait."
         
-        # This is the only mandatory GUI interaction
         xcode-select --install
 
-        # Poll until the installation is complete
         echo -n "Waiting for Xcode Tools installation to complete (this can take several minutes)..."
         while ! xcode-select -p &>/dev/null; do
             echo -n "."
@@ -94,35 +93,24 @@ run_full_setup() {
         success_echo "Xcode Command Line Tools already installed."
     fi
 
-    # --- 3. Install/Update Homebrew Non-Interactively ---
+    # --- 3. Install, Configure, or Update Homebrew ---
     step_echo "Checking for Homebrew package manager..."
-    if ! command -v brew &>/dev/null; then
-        warn_echo "Homebrew not found. Installing now (this may take 5-15 minutes)..."
-        show_dialog_if_needed "Now installing Homebrew. This is a one-time process and may take several minutes. Please wait."
-        
-        # Use the official non-interactive method
-        if ! NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >> "$LOG_FILE" 2>&1; then
-            error_echo "Homebrew installation failed. Check the log file for details: $LOG_FILE"
-            show_dialog_if_needed "Homebrew installation failed. Please check the log file for details."
-            exit 1
-        fi
-        
-        # --- AUTOMATED PATH CONFIGURATION ---
-        # The installer finishes by telling the user to add brew to their path.
-        # We do this automatically for the current session and all future sessions.
-        step_echo "Configuring Homebrew environment..."
-        BREW_PREFIX=""
-        if [[ "$(uname -m)" == "arm64" ]]; then # Apple Silicon
-            BREW_PREFIX="/opt/homebrew"
-        else # Intel
-            BREW_PREFIX="/usr/local"
-        fi
-        BREW_CMD_PATH="$BREW_PREFIX/bin/brew"
+    
+    # Define Homebrew paths based on CPU architecture
+    BREW_PREFIX=""
+    if [[ "$(uname -m)" == "arm64" ]]; then # Apple Silicon
+        BREW_PREFIX="/opt/homebrew"
+    else # Intel
+        BREW_PREFIX="/usr/local"
+    fi
+    BREW_CMD_PATH="$BREW_PREFIX/bin/brew"
 
-        # 1. Configure for the CURRENT script session using Homebrew's recommended method
+    # --- AUTOMATED PATH CONFIGURATION FUNCTION ---
+    configure_brew_paths() {
+        # 1. Configure for the CURRENT script session
         eval "$($BREW_CMD_PATH shellenv)"
         
-        # 2. Configure for FUTURE terminal sessions by adding to the correct shell profile
+        # 2. Configure for FUTURE terminal sessions
         SHELL_PROFILE=""
         CURRENT_SHELL=$(basename "$SHELL")
         if [ "$CURRENT_SHELL" = "zsh" ]; then
@@ -142,19 +130,42 @@ run_full_setup() {
         else
             log_message "   Homebrew is already configured in your shell profile."
         fi
+    }
 
-        # 3. Verify that brew is now available
-        if ! command -v brew &>/dev/null; then
-            error_echo "Homebrew was installed, but 'brew' command is still not available. A new terminal session may be required."
-            show_dialog_if_needed "Homebrew installation finished, but the command is not working. Please try running the script again."
+    # First, check if the Homebrew executable exists at its standard location
+    if ! [ -x "$BREW_CMD_PATH" ]; then
+        # --- SCENARIO 1: HOMEBREW NOT INSTALLED ---
+        warn_echo "Homebrew not found. Installing now (this may take 5-15 minutes)..."
+        show_dialog_if_needed "Now installing Homebrew. This is a one-time process and may take several minutes. Please wait."
+        
+        if ! NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >> "$LOG_FILE" 2>&1; then
+            error_echo "Homebrew installation failed. Check the log file for details: $LOG_FILE"
+            show_dialog_if_needed "Homebrew installation failed. Please check the log file for details."
             exit 1
         fi
-
-        success_echo "Homebrew installed and configured."
+        
+        step_echo "Configuring new Homebrew installation..."
+        configure_brew_paths
     else
-        success_echo "Homebrew already installed. Updating..."
-        brew update >> "$LOG_FILE" 2>&1
-        success_echo "Homebrew updated."
+        # --- SCENARIO 2: HOMEBREW IS INSTALLED ---
+        success_echo "Homebrew installation detected."
+        # Check if it's configured in the current shell. If not, fix it.
+        if ! command -v brew &>/dev/null; then
+            warn_echo "Homebrew is installed but not configured in your shell. Fixing..."
+            configure_brew_paths
+        fi
+        
+        success_echo "Homebrew is configured. Skipping update as requested."
+        # NOTE: brew update is intentionally skipped. During a one-time setup,
+        # it's usually safe as Homebrew will fetch required formulas anyway.
+        # If package installation fails, uncommenting the following line is a good first step:
+        # brew update >> "$LOG_FILE" 2>&1
+    fi
+
+    # Verify that brew is now available before proceeding
+    if ! command -v brew &>/dev/null; then
+        error_echo "Failed to configure Homebrew. The 'brew' command is not available. Please run the script again in a new terminal window."
+        exit 1
     fi
 
     # --- 4. Install Brew Dependencies ---
