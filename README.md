@@ -68,8 +68,7 @@ Check that you have both drivers set up, and if you don't, install them, restart
 Try First: Copy and paste the below command into Terminal and press enter and this should set it up for the first time and also launch it again if you need to run it again in the future.
 
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/run_mac.sh)"
-
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/run_mac.sh)"
 ```
 If that doesn't not...
 
