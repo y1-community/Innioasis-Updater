@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Innioasis Updater Setup Script for macOS v3.1
-# - Prioritizes a clean git clone to prevent conflicts.
-# - Falls back to a ZIP download if git fails.
-# - Installs an up-to-date Python via Homebrew for tkinter compatibility.
-# - Provides clear prompts for all user interactions.
-# - Sets linker flags to prevent "Failed building wheel" errors.
+# Innioasis Updater Setup Script for macOS v3.2
+#
+# Changelog:
+# - Automates Xcode Command Line Tools check by polling for completion,
+#   preventing user confusion and unnecessary prompts.
+# - Implements a completion marker (`.mac_setup_complete`) to bypass setup
+#   on subsequent runs, enabling one-click execution.
+# - Refines user-facing instructions for clarity and a smoother experience.
+# - Retains robust features: git clone with ZIP fallback, Homebrew for a
+#   modern Python, and linker flags for reliable dependency installation.
 
 # --- Style and Formatting ---
 BLUE='\033[0;34m'
@@ -35,19 +39,35 @@ prompt_for_enter() {
     read -p "  Press [Enter] to continue..."
 }
 
+# --- Configuration ---
+APP_DIR="$HOME/Library/Application Support/Innioasis Updater"
+REPO_URL="https://github.com/team-slide/Innioasis-Updater.git"
+VENV_DIR="$APP_DIR/venv"
+COMPLETION_MARKER="$VENV_DIR/.mac_setup_complete"
+
+# --- Pre-flight Check: Has setup already been completed? ---
+# If the completion marker exists, skip the entire setup and just run the app.
+if [ -f "$COMPLETION_MARKER" ]; then
+    echo -e "${GREEN}Setup has already been completed. Launching the application directly.${NC}"
+    cd "$APP_DIR"
+    source "$VENV_DIR/bin/activate"
+    # Use nohup to detach the process, allowing the terminal to close.
+    nohup python3 updater.py > /dev/null 2>&1 &
+    echo "Application is running. You can close this terminal window."
+    exit 0
+fi
+
 # --- Main Script ---
 clear
 echo "=========================================="
 echo "  Welcome to the Innioasis Updater Setup"
 echo "=========================================="
-echo "This script will prepare your Mac to run the application."
-echo "Your involvement will be needed for a few steps."
+echo "This script will perform a one-time setup to prepare your Mac."
+echo "Future runs of this script will launch the application instantly."
+echo ""
+echo "Your involvement may be needed to approve installations or enter your password."
 echo ""
 prompt_for_enter
-
-# --- Configuration ---
-APP_DIR="$HOME/Library/Application Support/Innioasis Updater"
-REPO_URL="https://github.com/team-slide/Innioasis-Updater.git"
 
 # --- 1. Check macOS Version ---
 step_echo "Checking macOS Version..."
@@ -62,21 +82,21 @@ fi
 # --- 2. Install Xcode Command Line Tools ---
 step_echo "Checking for Xcode Command Line Tools..."
 if ! xcode-select -p &>/dev/null; then
-    warn_echo "Xcode Command Line Tools are not installed."
-    echo "  A software update popup will now appear on your screen."
-    echo "  Please click 'Install' and wait for the download and installation to complete."
-    echo "  This script will wait for you."
+    warn_echo "Xcode Command Line Tools are required."
+    echo "  A software update popup will appear on your screen."
+    echo "  Please click 'Install' and agree to the terms."
+    echo -e "  ${YELLOW}This script will automatically detect when the installation is complete and continue. This may take several minutes.${NC}"
     
+    # Trigger the installer GUI
     xcode-select --install
     
-    echo "  Please complete the GUI installation. Once it disappears, press Enter here."
-    prompt_for_enter
-
+    # Poll until the installation is complete
+    echo -n "  Waiting for you to complete the installation..."
     while ! xcode-select -p &>/dev/null; do
-        error_echo "Xcode Tools still not found. Please ensure the installation is fully complete."
-        warn_echo "If the installation failed, please run 'xcode-select --install' again in a new terminal."
-        prompt_for_enter
+        echo -n "."
+        sleep 5
     done
+    echo "" # Newline after the dots
     success_echo "Xcode Command Line Tools installed."
 else
     success_echo "Xcode Command Line Tools already installed."
@@ -85,13 +105,13 @@ fi
 # --- 3. Install Homebrew ---
 step_echo "Checking for Homebrew package manager..."
 if ! command -v brew &>/dev/null; then
-    warn_echo "Homebrew is not installed."
-    echo "  The official Homebrew installer will now run in your terminal."
-    echo "  It will explain the changes it will make and may ask for your password to proceed."
+    warn_echo "Homebrew is not installed. It will be installed now."
+    echo "  The official Homebrew installer will explain the changes it will make and require your password to proceed."
     prompt_for_enter
     
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+    # Add Homebrew to PATH for the current shell session
     if [[ "$(uname -m)" == "arm64" ]]; then
       eval "$(/opt/homebrew/bin/brew shellenv)"
     else
@@ -107,7 +127,6 @@ fi
 
 # --- 4. Install Brew Dependencies ---
 step_echo "Installing required tools with Homebrew..."
-# Add 'python' to ensure a modern version with working tkinter is installed
 BREW_PACKAGES="python libusb openssl cmake pkg-config android-platform-tools"
 for pkg in $BREW_PACKAGES; do
     if brew list --formula | grep -q "^${pkg}\$"; then
@@ -122,7 +141,6 @@ done
 # --- 5. Setup Application Files ---
 setup_with_git() {
     echo "  Attempting a clean clone with git (Primary Method)..."
-    # This is the key change: remove the directory first to prevent conflicts.
     if [ -d "$APP_DIR" ]; then
         warn_echo "Existing directory found. It will be removed to ensure a clean installation."
         rm -rf "$APP_DIR"
@@ -174,7 +192,6 @@ cd "$APP_DIR"
 
 # --- 6. Setup Python Virtual Environment and Dependencies ---
 step_echo "Setting up Python environment..."
-VENV_DIR="venv"
 if [ ! -d "$VENV_DIR" ]; then
     echo "  Creating Python virtual environment..."
     python3 -m venv "$VENV_DIR"
@@ -192,7 +209,6 @@ success_echo "Pip upgraded."
 
 echo "  Installing Python dependencies from requirements.txt..."
 # Explicitly set flags to help pip find Homebrew's libraries.
-# This prevents common "Failed building wheel" errors.
 export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libusb)/lib"
 export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libusb)/include"
 pip install -r requirements.txt
@@ -202,14 +218,18 @@ success_echo "All Python dependencies are installed."
 
 deactivate
 
-# --- 7. Final Steps ---
+# --- 7. Create Completion Marker ---
+step_echo "Finalizing setup..."
+touch "$COMPLETION_MARKER"
+success_echo "Completion marker created. Future runs of this script will launch the app immediately."
+
+# --- 8. Final Steps ---
 echo ""
 echo "=========================================="
 success_echo "  Setup Complete!"
 echo "=========================================="
 echo ""
-echo "The application is ready. To run it manually in the future,"
-echo "open Terminal and use these commands:"
+echo "The application is ready. For reference, to run it manually:"
 echo -e "  1. ${YELLOW}cd \"$APP_DIR\"${NC}"
 echo -e "  2. ${YELLOW}source venv/bin/activate${NC}"
 echo -e "  3. ${YELLOW}python3 updater.py${NC}"
@@ -221,9 +241,7 @@ prompt_for_enter
 cd "$APP_DIR"
 source venv/bin/activate
 # Use nohup to detach the process, allowing the terminal to close.
-# Redirect stdout and stderr to /dev/null to prevent output.
 nohup python3 updater.py > /dev/null 2>&1 &
 
 echo "Application is running. You can close this terminal window."
 exit 0
-
