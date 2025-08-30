@@ -635,12 +635,32 @@
             color: #e74c3c;
             margin-bottom: 15px;
             font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .platform-dialog p {
             margin-bottom: 20px;
             line-height: 1.6;
             color: #333;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .platform-dialog strong {
+            color: #333;
+            font-weight: 700;
+        }
+
+        .platform-dialog a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .platform-dialog a:hover {
+            color: #0056b3;
+            text-decoration: underline;
         }
 
         .platform-dialog .btn {
@@ -688,6 +708,34 @@
             line-height: 1.4;
         }
 
+        /* Windows Installation Steps */
+        .windows-step {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .driver-downloads {
+            margin: 20px 0;
+        }
+
+        .driver-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .driver-item p {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .driver-item .btn {
+            margin: 0;
+        }
+
         /* macOS Installation Steps */
         .mac-step {
             text-align: left;
@@ -696,9 +744,10 @@
 
         .step-content {
             padding: 20px;
-            background: #f8f9fa;
+            background: #ffffff;
             border-radius: 10px;
             border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .step-content h4 {
@@ -710,6 +759,8 @@
         .step-content p {
             margin: 12px 0;
             line-height: 1.6;
+            color: #333;
+            font-weight: 500;
         }
 
         .step-content ol {
@@ -926,30 +977,30 @@
         <div class="hero-banner">
                             <img src="https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot" class="hero-image">
             <h1>🚀 Innioasis Updater</h1>
-            <p class="subtitle">Your life with Y1, made easier.</p>
+            <p class="subtitle">Making your Y1 experience simpler and smoother.</p>
             
             <div class="features">
                 <div class="feature-item" style="transform: translateY(0px);">
                     <span class="icon">📱</span>
                     <h3>Update</h3>
-                    <p>Keep your Y1 running the latest firmware with automatic updates and seamless installation</p>
+                    <p>Keep your Y1 up to date with the latest improvements - no tech headaches needed</p>
                 </div>
                 
                 <div class="feature-item">
                     <span class="icon">🔄</span>
                     <h3>Restore</h3>
-                    <p>Easily restore your Y1 to factory settings or previous firmware versions when needed</p>
+                    <p>Get your Y1 back to working order if something goes wrong - like a reset button for your device</p>
                 </div>
                 
                 <div class="feature-item" style="transform: translateY(0px);">
                     <span class="icon">🎵</span>
                     <h3>Rockbox</h3>
-                    <p>Install and manage Rockbox themes, fonts, and customizations for the ultimate audio experience</p>
+                    <p>Make your Y1 look and sound exactly how you want with custom themes and fonts</p>
                 </div>
             </div>
             
             <div class="platform-info">
-                <h3>🌍 Cross-Platform Support</h3>
+                <h3>🌍 Works on Your Device</h3>
                 <div class="platform-list">
                     <div class="platform-item">
                         <span class="status ready"></span>
@@ -961,7 +1012,7 @@
                     </div>
                     <div class="platform-item">
                         <span class="status preview"></span>
-                        <span>macOS (Early Preview)</span>
+                        <span>macOS (Coming Soon!)</span>
                     </div>
                 </div>
             </div>
@@ -981,34 +1032,34 @@
 
         <!-- Main Content Section -->
         <div class="main-content">
-            <h2 class="section-title">Why Choose Innioasis Updater?</h2>
+            <h2 class="section-title">What Makes This Tool Special?</h2>
             
             <div class="info-grid">
                 <div class="info-card">
                     <h3>🔒 Safe &amp; Reliable</h3>
-                    <p>Built with safety in mind, Innioasis Updater ensures your Y1 device is never at risk during firmware operations. Automatic recovery and multiple install methods are available.</p>
+                    <p>We've made sure your Y1 stays safe while we update it. Think of it like having a safety net - if anything goes wrong, we can get your device back to working order.</p>
                 </div>
                 
                 <div class="info-card">
-                    <h3>⚡ Cross-Platform</h3>
-                    <p>Unlike the confusing .pdf file on the Innioasis Website, which is only made for Windows, our community-made tool can guide the way</p>
+                    <h3>⚡ Works Everywhere</h3>
+                    <p>Unlike the official guide that only works on Windows, our tool works on whatever device you're using - Windows, Mac, or Linux.</p>
                 </div>
                 
                 <div class="info-card">
-                    <h3>🎯 User-Friendly</h3>
-                    <p>Designed with simplicity in mind, even users new to firmware management can confidently update their Y1 devices with our intuitive interface and step-by-step guidance.</p>
+                    <h3>🎯 Super Simple</h3>
+                    <p>No tech jargon here! We've made it so easy that anyone can update their Y1, even if you've never done anything like this before.</p>
                 </div>
                 
                 <div class="info-card">
-                    <h3>🔄 Always Up-to-Date</h3>
-                    <p>Automatic update checking ensures you always have the latest version of Innioasis Updater, with new features and improvements delivered seamlessly.</p>
+                    <h3>🔄 Always Fresh</h3>
+                    <p>We're constantly improving the tool and adding new features, so you'll always have the best experience possible.</p>
                 </div>
                 
                 <div class="info-card">
-                    <h3>🌐 Community Built</h3>
-                    <p>Innioasis Updater was built by Y1 users for Y1 users.</p>
+                    <h3>🌐 Built by the Community</h3>
+                    <p>This tool was made by Y1 users, for Y1 users. We know what you need because we use it ourselves!</p>
                     <div class="ko-fi-section">
-                        <p style="margin: 15px 0 10px 0; font-size: 0.9rem; color: #666;">Support our development:</p>
+                        <p style="margin: 15px 0 10px 0; font-size: 0.9rem; color: #666;">Want to help us keep building?</p>
                         <a href="https://ko-fi.com/teamslide" target="_blank" class="ko-fi-btn">
                             ☕ Buy Us a Coffee
                         </a>
@@ -1062,9 +1113,67 @@
     <!-- Windows Dialog -->
     <div class="platform-dialog" id="windowsDialog">
         <h3>🪟 Windows Installation</h3>
-        <p>Download the Windows installer and follow the setup instructions. After installation, you'll need to install the MTK drivers for proper device communication.</p>
-        <button class="btn" onclick="downloadWindows()">Download Windows Installer</button>
-        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+        
+        <!-- Step 1: Getting Started -->
+        <div class="windows-step" id="windowsStep1">
+            <div class="step-content">
+                <h4>Getting Started</h4>
+                <p>Before we can install the updater, you'll need two drivers so your computer can talk to your Y1 properly:</p>
+                
+                <div class="driver-downloads">
+                    <div class="driver-item">
+                        <p><strong>MediaTek Driver:</strong> This lets your computer recognize your Y1 device</p>
+                        <button class="btn btn-primary" onclick="downloadDriver('mtk')">📥 Download MediaTek Driver</button>
+                    </div>
+                    
+                    <div class="driver-item">
+                        <p><strong>USB Development Kit:</strong> This helps with USB communication</p>
+                        <button class="btn btn-primary" onclick="downloadDriver('usbdk')">📥 Download USB Development Kit</button>
+                    </div>
+                </div>
+                
+                <div class="step-actions">
+                    <button class="btn btn-primary" onclick="nextWindowsStep()">Next →</button>
+                    <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 2: Install & Run -->
+        <div class="windows-step" id="windowsStep2" style="display: none;">
+            <div class="step-content">
+                <h4>Install & Run</h4>
+                <p>Now let's get the actual updater app:</p>
+                <button class="btn btn-primary" onclick="downloadWindows()">📥 Download Windows Installer</button>
+                
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back</button>
+                    <button class="btn btn-primary" onclick="nextWindowsStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3: Final Steps -->
+        <div class="windows-step" id="windowsStep3" style="display: none;">
+            <div class="step-content">
+                <h4>Almost Done!</h4>
+                <p>Here's what to do next:</p>
+                <ol>
+                    <li>Install the MediaTek driver you downloaded</li>
+                    <li>Install the USB Development Kit</li>
+                    <li>Install the Innioasis Updater</li>
+                    <li><strong>Restart your computer</strong></li>
+                    <li>Launch Innioasis Updater from the Start Menu</li>
+                </ol>
+                
+                <p><strong>Important:</strong> Don't skip the restart - it makes sure everything works properly!</p>
+                
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back</button>
+                    <button class="btn btn-primary" onclick="closeDialog()">Finish</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- macOS Dialog -->
@@ -1074,9 +1183,9 @@
         <!-- Step 1: Prerequisites -->
         <div class="mac-step" id="macStep1">
             <div class="step-content">
-                <h4>Prerequisites</h4>
-                <p>Before installing Innioasis Updater, you'll need <a href="https://github.com/Homebrew/brew/releases/latest" target="_blank" class="homebrew-link">Homebrew</a> package manager on your Mac.</p>
-                <p>Homebrew helps manage dependencies and ensures everything works smoothly.</p>
+                <h4>First Things First</h4>
+                <p>Before we can install the updater, you'll need <a href="https://github.com/Homebrew/brew/releases/latest" target="_blank" class="homebrew-link">Homebrew</a> on your Mac.</p>
+                <p>Think of Homebrew as a helper that makes sure all the pieces work together properly.</p>
                 
                 <div class="step-actions">
                     <button class="btn btn-primary" onclick="nextMacStep()">Next →</button>
@@ -1088,8 +1197,8 @@
         <!-- Step 2: Download -->
         <div class="mac-step" id="macStep2" style="display: none;">
             <div class="step-content">
-                <h4>Download Innioasis Updater</h4>
-                <p>Click the button below to download the macOS app package (.dmg file):</p>
+                <h4>Grab the App</h4>
+                <p>Now let's download the actual updater app. Click the button below and it'll start downloading to your Downloads folder:</p>
                 <button class="btn btn-primary" onclick="downloadMacDMG()">📥 Download for Mac</button>
                 
                 <div class="step-actions">
@@ -1102,15 +1211,15 @@
         <!-- Step 3: Installation -->
         <div class="mac-step" id="macStep3" style="display: none;">
             <div class="step-content">
-                <h4>Install & Run</h4>
-                <p>After downloading:</p>
+                <h4>Almost Done!</h4>
+                <p>Now let's get the app installed:</p>
                 <ol>
-                    <li>Double-click the .dmg file</li>
+                    <li>Double-click the downloaded file (it'll look like a disk image)</li>
                     <li>Drag the Innioasis Updater app to your Applications folder</li>
-                    <li>Launch the app from Applications</li>
+                    <li>Open it from your Applications folder</li>
                 </ol>
                 
-                <p><strong>Note:</strong> You may need to <a href="#" id="appleGuideLink" target="_blank" class="apple-guide-link">allow apps from unknown developers</a> in System Preferences.</p>
+                <p><strong>Important:</strong> You might need to <a href="#" id="appleGuideLink" target="_blank" class="apple-guide-link">tell your Mac it's okay to run this app</a> in System Preferences.</p>
                 
                 <div class="step-actions">
                     <button class="btn btn-secondary" onclick="prevMacStep()">← Back</button>
@@ -1122,7 +1231,7 @@
         <!-- Alternative Install Method Link -->
         <div class="alternative-install">
             <a href="#" onclick="showMacTerminalInstall(); return false;" class="alternative-link">
-                🔧 Alternative Install Method (Terminal)
+                🔧 Prefer using Terminal? (Advanced users)
             </a>
         </div>
     </div>
@@ -1130,7 +1239,7 @@
     <!-- Linux Dialog -->
     <div class="platform-dialog" id="linuxDialog">
         <h3>🐧 Linux Installation</h3>
-        <p>Ubuntu is recommended for the best experience, but other distributions should work as well. Follow the instructions in the new tab to set up the required dependencies.</p>
+        <p>Linux users, you're in luck! Ubuntu works best, but most other versions should work too. We'll open a guide that shows you exactly what to install.</p>
         <button class="btn" onclick="openLinuxInstructions()">Open Instructions</button>
         <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
@@ -1138,7 +1247,7 @@
     <!-- Windows ARM64 Dialog -->
     <div class="platform-dialog" id="windowsArmDialog">
         <h3>🪟 Windows ARM64</h3>
-        <p>For Windows ARM64 users, more advanced users may be able to run the Linux version using Python, Libusb, android-platform-tools, USBIPD-win and WSLg. Ubuntu is recommended.</p>
+        <p>If you're using a newer Windows device with ARM64 (like some Surface tablets), you might be able to run the Linux version instead. It's a bit more advanced, but we'll show you how.</p>
         <button class="btn" onclick="openLinuxInstructions()">View Linux Instructions</button>
         <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
@@ -1146,15 +1255,16 @@
     <!-- ChromeOS/FydeOS Dialog -->
     <div class="platform-dialog" id="chromeosDialog">
         <h3>🖥️ ChromeOS/FydeOS</h3>
-        <p>ChromeOS and FydeOS users may be able to run Innioasis Updater in Linux mode, but we have not tested this functionality. Ubuntu is recommended for the best experience.</p>
+        <p>ChromeOS users, you might be able to run this in Linux mode! We haven't tested it thoroughly, but it's worth a shot. We'll show you the Linux instructions to try.</p>
+        <p><em>Note: This is experimental - it might work, it might not. But hey, no harm in trying!</em></p>
         <button class="btn" onclick="openLinuxInstructions()">View Linux Instructions</button>
         <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
 
     <!-- Platform Guides Dialog (for mobile users) -->
     <div class="platform-dialog" id="platformGuidesDialog">
-        <h3>🌍 Platform Setup Guides</h3>
-        <p>Choose your platform to view detailed setup instructions:</p>
+        <h3>🌍 Choose Your Device</h3>
+        <p>Pick what you're using and we'll show you exactly how to get started:</p>
         <div class="platform-guides-grid">
             <button class="btn platform-guide-btn" onclick="navigateToPlatform('windowsDialog')">🪟 Windows</button>
             <button class="btn platform-guide-btn" onclick="navigateToPlatform('macDialog')">🍎 macOS</button>
@@ -1411,34 +1521,117 @@
 
         function downloadWindows() {
             // Download Windows installer
-            const link = document.createElement('a');
-            link.href = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/InnioasisUpdater-Windows.exe';
-            link.download = 'InnioasisUpdater-Windows.exe';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.-.Windows.exe';
             
-            // Show driver download popup
-            setTimeout(() => {
-                alert('🎉 Download started! After installation, please download the required drivers from drivers.innioasis.app for proper device communication.');
-            }, 1000);
+            // For Safari, open in new tab, for other browsers use download attribute
+            if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+                window.open(url, '_blank');
+                setTimeout(() => {
+                    alert('🎉 Opening download page in new tab! Click the download button on the GitHub page.');
+                }, 1000);
+            } else {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Innioasis.Updater.-.Windows.exe';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                setTimeout(() => {
+                    alert('🎉 Download started! The Windows installer is downloading to your Downloads folder.');
+                }, 1000);
+            }
+        }
+
+        function downloadDriver(driverType) {
+            let url, filename;
             
-            closeDialog();
+            if (driverType === 'mtk') {
+                url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe';
+                filename = 'driver_mtk.exe';
+            } else if (driverType === 'usbdk') {
+                url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_usbdk.msi';
+                filename = 'driver_usbdk.msi';
+            }
+            
+            if (url) {
+                // For Safari, open in new tab, for other browsers use download attribute
+                if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+                    window.open(url, '_blank');
+                    setTimeout(() => {
+                        alert(`🎉 Opening ${driverType === 'mtk' ? 'MediaTek driver' : 'USB Development Kit'} download page in new tab! Click the download button on the GitHub page.`);
+                    }, 1000);
+                } else {
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    setTimeout(() => {
+                        alert(`🎉 Download started! The ${driverType === 'mtk' ? 'MediaTek driver' : 'USB Development Kit'} is downloading to your Downloads folder.`);
+                    }, 1000);
+                }
+            }
         }
 
         function downloadMacDMG() {
             // Download macOS DMG installer
-            const link = document.createElement('a');
-            link.href = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.for.Mac.dmg';
-            link.download = 'Innioasis.Updater.for.Mac.dmg';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.for.Mac.dmg';
             
-            // Show download confirmation
-            setTimeout(() => {
-                alert('🎉 Download started! The DMG file is downloading to your Downloads folder.');
-            }, 1000);
+            // For Safari, open in new tab, for other browsers use download attribute
+            if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+                window.open(url, '_blank');
+                setTimeout(() => {
+                    alert('🎉 Opening download page in new tab! Click the download button on the GitHub page.');
+                }, 1000);
+            } else {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Innioasis.Updater.for.Mac.dmg';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                setTimeout(() => {
+                    alert('🎉 Download started! The DMG file is downloading to your Downloads folder.');
+                }, 1000);
+            }
+        }
+
+        // Windows Step Navigation Functions
+        function nextWindowsStep() {
+            const currentStep = getCurrentWindowsStep();
+            if (currentStep < 3) {
+                hideWindowsStep(currentStep);
+                showWindowsStep(currentStep + 1);
+            }
+        }
+
+        function prevWindowsStep() {
+            const currentStep = getCurrentWindowsStep();
+            if (currentStep > 1) {
+                hideWindowsStep(currentStep);
+                showWindowsStep(currentStep - 1);
+            }
+        }
+
+        function getCurrentWindowsStep() {
+            for (let i = 1; i <= 3; i++) {
+                if (document.getElementById(`windowsStep${i}`).style.display !== 'none') {
+                    return i;
+                }
+            }
+            return 1;
+        }
+
+        function showWindowsStep(stepNumber) {
+            document.getElementById(`windowsStep${stepNumber}`).style.display = 'block';
+        }
+
+        function hideWindowsStep(stepNumber) {
+            document.getElementById(`windowsStep${stepNumber}`).style.display = 'none';
         }
 
         // macOS Step Navigation Functions
@@ -1557,6 +1750,15 @@
             // Update Apple guide link if showing macOS dialog
             if (dialogId === 'macDialog') {
                 updateAppleGuideLink();
+            }
+            
+            // Initialize Windows steps if showing Windows dialog
+            if (dialogId === 'windowsDialog') {
+                // Hide all steps except first
+                for (let i = 2; i <= 3; i++) {
+                    document.getElementById(`windowsStep${i}`).style.display = 'none';
+                }
+                document.getElementById('windowsStep1').style.display = 'block';
             }
         }
 
