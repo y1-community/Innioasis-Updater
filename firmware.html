@@ -62,6 +62,123 @@
             transition: all 0.3s ease;
         }
 
+        /* Dark mode styles */
+        body[data-theme="dark"] {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #f8f9fa;
+        }
+
+        body[data-theme="dark"] .main-content {
+            background: #2c2c2e;
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .filters {
+            background: #3a3a3c;
+            color: #ffffff;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .filter-group label {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .filter-group select {
+            background: #2c2c2e;
+            color: #ffffff;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .firmware-list {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .firmware-item {
+            background: #3a3a3c;
+            color: #ffffff;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .firmware-name {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .detail-label {
+            color: #8e8e93;
+        }
+
+        body[data-theme="dark"] .detail-value {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .platform-dialog {
+            background: #2c2c2e;
+            color: #ffffff;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .platform-dialog h3 {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .platform-dialog p {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .step-content {
+            background: #3a3a3c;
+            color: #ffffff;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .step-content h4 {
+            color: #8e8e93;
+        }
+
+        body[data-theme="dark"] .step-content p {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .step-content li {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .driver-item {
+            background: #3a3a3c;
+            color: #ffffff;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .driver-item p {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .command-display {
+            background: #3a3a3c;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .command-display code {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .alternative-link {
+            color: #8e8e93;
+        }
+
+        body[data-theme="dark"] .alternative-link:hover {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .ko-fi-btn {
+            background: #0a84ff;
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .footer-ko-fi-btn {
+            color: #0a84ff;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -84,26 +201,31 @@
             position: absolute;
             top: 0;
             right: 0;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-primary);
-            color: var(--text-primary);
-            padding: 8px 12px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            backdrop-filter: blur(15px);
+            font-weight: 600;
+            min-width: 120px;
+            justify-content: center;
         }
 
         .theme-toggle:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         .theme-toggle .icon {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
         }
 
         .header-icon {
@@ -864,6 +986,10 @@
                 <h1>Innioasis Firmware Downloader</h1>
                 <p>Download firmware releases directly from GitHub</p>
             </div>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span class="icon">🌓</span>
+                <span>Auto</span>
+            </button>
         </div>
 
         <div class="main-content">
@@ -1129,6 +1255,7 @@
             setupEventListeners();
             detectUserOS();
             checkBannerPreference();
+            checkSavedTheme();
             
             // Add scroll listener for banner fade-out
             window.addEventListener('scroll', checkDownloadButtonVisibility);
@@ -1371,6 +1498,7 @@
         // Close dialog when clicking overlay
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('dialogOverlay').addEventListener('click', closeDialog);
+            checkSavedTheme();
         });
 
         function setupEventListeners() {
@@ -2007,6 +2135,75 @@
 
         function hideWindowsStep(stepNumber) {
             document.getElementById(`windowsStep${stepNumber}`).style.display = 'none';
+        }
+
+        // Theme toggle functionality - cycles through Auto → Light → Dark
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            const icon = themeToggle.querySelector('.icon');
+            const text = themeToggle.querySelector('span:not(.icon)');
+            const currentTheme = localStorage.getItem('theme') || 'auto';
+            
+            let newTheme;
+            if (currentTheme === 'auto') {
+                newTheme = 'light';
+            } else if (currentTheme === 'light') {
+                newTheme = 'dark';
+            } else {
+                newTheme = 'auto';
+            }
+            
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        }
+
+        // Apply the specified theme
+        function applyTheme(theme) {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            const icon = themeToggle.querySelector('.icon');
+            const text = themeToggle.querySelector('span:not(.icon)');
+            
+            if (theme === 'auto') {
+                // Check system preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    body.setAttribute('data-theme', 'dark');
+                    icon.textContent = '🌓';
+                    text.textContent = 'Auto';
+                } else {
+                    body.removeAttribute('data-theme');
+                    icon.textContent = '🌓';
+                    text.textContent = 'Auto';
+                }
+            } else if (theme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                text.textContent = 'Light';
+            } else {
+                body.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                text.textContent = 'Dark';
+            }
+        }
+
+        // Check saved theme preference and system theme
+        function checkSavedTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'auto';
+            applyTheme(savedTheme);
+            
+            // Listen for system theme changes when in auto mode
+            if (savedTheme === 'auto') {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if (localStorage.getItem('theme') === 'auto') {
+                        if (e.matches) {
+                            document.body.setAttribute('data-theme', 'dark');
+                        } else {
+                            document.body.removeAttribute('data-theme');
+                        }
+                    }
+                });
+            }
         }
     </script>
 </body>
