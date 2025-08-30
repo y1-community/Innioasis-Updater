@@ -3449,6 +3449,9 @@ Method 2 - MTKclient: Direct technical installation
             "2. Keep Y1 Unplugged",
             "3. Have cable ready in PC",
             "4. Click OK then carefully follow the next steps",
+            "",
+             "Tip: Innioasis Updater will offer to try a different method if something goes wrong",
+             "If the app stops responding, wait for a minute and if it doesn't back just restart it and try again",
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Cancel
         )
@@ -4653,6 +4656,9 @@ Method 2 - MTKclient: Direct technical installation
             "2. Keep Y1 Unplugged",
             "3. Have cable ready in PC",
             "4. Click OK then carefully follow the next steps",
+            "",
+             "Tip: Innioasis Updater will offer to try a different method if something goes wrong",
+             "If the app stops responding, wait for a minute and if it doesn't back just restart it and try again",
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Cancel
         )
