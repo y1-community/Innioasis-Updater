@@ -4645,8 +4645,11 @@ Method 2 - MTKclient: Direct technical installation
         # Show the same unplug prompt that's used at the start of normal installation
         reply = QMessageBox.question(
             self,
-            "Get Ready",
-            "Please make sure your Y1 is NOT plugged in and press OK, then follow the next instructions.",
+            "Before you begin:",
+            "1. Get a pin or paperclip ready",
+            "2. Keep Y1 Unplugged",
+            "3. Have cable ready in PC",
+            "4. Click OK then carefully follow the next steps",
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Cancel
         )
