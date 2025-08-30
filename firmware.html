@@ -485,6 +485,32 @@
             opacity: 1;
         }
 
+        /* Footer Ko-Fi Button Styling */
+        .footer-ko-fi-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #29abe0 0%, #1f8bc3 100%);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(41, 171, 224, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .footer-ko-fi-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 18px rgba(41, 171, 224, 0.4);
+            background: linear-gradient(135deg, #1f8bc3 0%, #1673a3 100%);
+        }
+
+        .footer-ko-fi-btn:active {
+            transform: translateY(0);
+        }
+
         /* CTA Banner */
         .cta-banner {
             position: fixed;
@@ -626,6 +652,25 @@
             background: #5a6268;
         }
 
+        /* Platform Guides Grid */
+        .platform-guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .platform-guide-btn {
+            padding: 15px 10px;
+            font-size: 0.9rem;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
         .dialog-overlay {
             position: fixed;
             top: 0;
@@ -746,6 +791,69 @@
                 padding: 15px;
             }
         }
+
+        /* macOS Installation Steps */
+        .mac-step {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .step-content {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step-content h4 {
+            color: #667eea;
+            margin: 0 0 15px 0;
+            font-size: 1.2rem;
+        }
+
+        .step-content p {
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .step-content ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .step-actions {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .step-actions .btn {
+            margin: 0 10px;
+        }
+
+        .alternative-install {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .alternative-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .alternative-link:hover {
+            color: #495057;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -817,6 +925,11 @@
             <p>Created by <a href="https://github.com/team-slide" target="_blank">Team Slide</a> | 
                <a href="https://innioasis.app" target="_blank">Innioasis App</a> | 
                <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a></p>
+            <p style="margin-top: 15px;">
+                <a href="https://ko-fi.com/teamslide" target="_blank" class="footer-ko-fi-btn">
+                    ☕ Buy Us a Coffee
+                </a>
+            </p>
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">🍪 Cookies not used by this site</p>
         </div>
     </div>
@@ -825,8 +938,8 @@
     <div class="cta-banner" id="ctaBanner">
         <button class="close-btn" onclick="closeCTABanner()">×</button>
         <h3>🚀 Get Innioasis Updater</h3>
-        <p>Download the desktop app for your system</p>
-        <button onclick="downloadForPlatform()" class="cta-btn">Download Now</button>
+        <p id="ctaDescription">Download the desktop app for your platform</p>
+        <button onclick="downloadForPlatform()" class="cta-btn" id="ctaButton">Download</button>
     </div>
 
     <!-- Platform-specific dialogs -->
@@ -843,16 +956,61 @@
     <!-- macOS Dialog -->
     <div class="platform-dialog" id="macDialog">
         <h3>🍎 macOS Installation</h3>
-        <p>Copy and paste this command into Terminal and press Enter:</p>
-        <div class="command-box">
-            <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/run_mac.sh)"</code>
-            <button class="copy-btn" onclick="copyMacCommand()">📋 Copy</button>
+        
+        <!-- Step 1: Prerequisites -->
+        <div class="mac-step" id="macStep1">
+            <div class="step-content">
+                <h4>Prerequisites</h4>
+                <p>Before installing Innioasis Updater, you'll need <a href="https://github.com/Homebrew/brew/releases/latest" target="_blank" class="homebrew-link">Homebrew</a> package manager on your Mac.</p>
+                <p>Homebrew helps manage dependencies and ensures everything works smoothly.</p>
+                
+                <div class="step-actions">
+                    <button class="btn btn-primary" onclick="nextMacStep()">Next →</button>
+                    <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+                </div>
+            </div>
         </div>
-        <p><em>This will automatically set up everything you need!</em></p>
-        <p>After the first run, you can use the same command again to launch the app for future uses.</p>
-        <p><strong>Note:</strong> This is a temporary preview release. An installer app is coming soon where you won't need the Terminal window.</p>
-        <button class="btn" onclick="openMacInstructions()">View Manual Instructions</button>
-        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+        
+        <!-- Step 2: Download -->
+        <div class="mac-step" id="macStep2" style="display: none;">
+            <div class="step-content">
+                <h4>Download Innioasis Updater</h4>
+                <p>Click the button below to download the macOS app package (.dmg file):</p>
+                <button class="btn btn-primary" onclick="downloadMacDMG()">📥 Download for Mac</button>
+                
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back</button>
+                    <button class="btn btn-primary" onclick="nextMacStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3: Installation -->
+        <div class="mac-step" id="macStep3" style="display: none;">
+            <div class="step-content">
+                <h4>Install & Run</h4>
+                <p>After downloading:</p>
+                <ol>
+                    <li>Double-click the .dmg file</li>
+                    <li>Drag the Innioasis Updater app to your Applications folder</li>
+                    <li>Launch the app from Applications</li>
+                </ol>
+                
+                <p><strong>Note:</strong> You may need to <a href="#" id="appleGuideLink" target="_blank" class="apple-guide-link">allow apps from unknown developers</a> in System Preferences.</p>
+                
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back</button>
+                    <button class="btn btn-primary" onclick="closeDialog()">Finish</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Alternative Install Method Link -->
+        <div class="alternative-install">
+            <a href="#" onclick="showMacTerminalInstall(); return false;" class="alternative-link">
+                🔧 Alternative Install Method (Terminal)
+            </a>
+        </div>
     </div>
 
     <!-- Linux Dialog -->
@@ -877,6 +1035,18 @@
         <h3>🪟 Windows ARM64</h3>
         <p>For Windows ARM64 users, more advanced users may be able to run the Linux version using Python, Libusb, android-platform-tools, USBIPD-win and WSLg. Ubuntu is recommended.</p>
         <button class="btn" onclick="openLinuxInstructions()">View Linux Instructions</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+    </div>
+
+    <!-- Platform Guides Dialog -->
+    <div class="platform-dialog" id="platformGuidesDialog">
+        <h3>🌍 Platform Setup Guides</h3>
+        <p>Choose your platform to view detailed setup instructions:</p>
+        <div class="platform-guides-grid">
+            <button class="btn platform-guide-btn" onclick="showDialog('windowsDialog')">🪟 Windows</button>
+            <button class="btn platform-guide-btn" onclick="showDialog('macDialog')">🍎 macOS</button>
+            <button class="btn platform-guide-btn" onclick="showDialog('linuxDialog')">🐧 Linux</button>
+        </div>
         <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
 
@@ -1077,6 +1247,11 @@
         function showDialog(dialogId) {
             document.getElementById('dialogOverlay').classList.add('show');
             document.getElementById(dialogId).classList.add('show');
+            
+            // Update Apple guide link if showing macOS dialog
+            if (dialogId === 'macDialog') {
+                updateAppleGuideLink();
+            }
         }
 
         function closeDialog() {
@@ -1572,6 +1747,107 @@
             console.error('Unhandled promise rejection:', e.reason);
             setStatus('Network or API error occurred', 'error');
         });
+
+        // macOS Step Navigation Functions
+        function downloadMacDMG() {
+            // Download macOS DMG installer
+            const link = document.createElement('a');
+            link.href = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.for.Mac.dmg';
+            link.download = 'Innioasis.Updater.for.Mac.dmg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show download confirmation
+            setTimeout(() => {
+                alert('🎉 Download started! The DMG file is downloading to your Downloads folder.');
+            }, 1000);
+        }
+
+        function nextMacStep() {
+            const currentStep = getCurrentMacStep();
+            if (currentStep < 3) {
+                hideMacStep(currentStep);
+                showMacStep(currentStep + 1);
+                updateAppleGuideLink();
+            }
+        }
+
+        function prevMacStep() {
+            const currentStep = getCurrentMacStep();
+            if (currentStep > 1) {
+                hideMacStep(currentStep);
+                showMacStep(currentStep - 1);
+            }
+        }
+
+        function getCurrentMacStep() {
+            for (let i = 1; i <= 3; i++) {
+                if (document.getElementById(`macStep${i}`).style.display !== 'none') {
+                    return i;
+                }
+            }
+            return 1;
+        }
+
+        function showMacStep(stepNumber) {
+            document.getElementById(`macStep${stepNumber}`).style.display = 'block';
+        }
+
+        function hideMacStep(stepNumber) {
+            document.getElementById(`macStep${stepNumber}`).style.display = 'none';
+        }
+
+        function updateAppleGuideLink() {
+            // Get macOS version and update the Apple guide link
+            const userAgent = navigator.userAgent;
+            let macVersion = '14.0'; // Default to macOS 14
+            
+            if (userAgent.includes('Mac OS X 10_15')) {
+                macVersion = '10.15'; // macOS Catalina
+            } else if (userAgent.includes('Mac OS X 11_')) {
+                macVersion = '11.0'; // macOS Big Sur
+            } else if (userAgent.includes('Mac OS X 12_')) {
+                macVersion = '14.0'; // macOS Monterey
+            } else if (userAgent.includes('Mac OS X 13_')) {
+                macVersion = '14.0'; // macOS Ventura
+            } else if (userAgent.includes('Mac OS X 14_')) {
+                macVersion = '14.0'; // macOS Sonoma
+            } else if (userAgent.includes('Mac OS X 15_')) {
+                macVersion = '15.0'; // macOS Sequoia
+            }
+            
+            const appleGuideLink = document.getElementById('appleGuideLink');
+            if (appleGuideLink) {
+                appleGuideLink.href = `https://support.apple.com/en-gb/guide/mac-help/mh40616/${macVersion}/mac/${macVersion}`;
+            }
+        }
+
+        function showMacTerminalInstall() {
+            // Show terminal installation method
+            const terminalDialog = document.createElement('div');
+            terminalDialog.className = 'platform-dialog show';
+            terminalDialog.innerHTML = `
+                <h3>🍎 Terminal Installation</h3>
+                <p>For advanced users, you can install via Terminal:</p>
+                <div class="command-display">
+                    <code>curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/run_mac.sh | bash</code>
+                </div>
+                <button class="btn" onclick="copyMacCommand()">📋 Copy Command</button>
+                <button class="btn btn-secondary" onclick="closeTerminalDialog()">Close</button>
+            `;
+            
+            document.body.appendChild(terminalDialog);
+            document.getElementById('dialogOverlay').classList.add('show');
+        }
+
+        function closeTerminalDialog() {
+            const terminalDialog = document.querySelector('.platform-dialog.show:not(#macDialog)');
+            if (terminalDialog) {
+                terminalDialog.remove();
+            }
+            document.getElementById('dialogOverlay').classList.remove('show');
+        }
     </script>
 </body>
 </html>

@@ -1156,9 +1156,9 @@
         <h3>🌍 Platform Setup Guides</h3>
         <p>Choose your platform to view detailed setup instructions:</p>
         <div class="platform-guides-grid">
-            <button class="btn platform-guide-btn" onclick="showDialog('windowsDialog')">🪟 Windows</button>
-            <button class="btn platform-guide-btn" onclick="showDialog('macDialog')">🍎 macOS</button>
-            <button class="btn platform-guide-btn" onclick="showDialog('linuxDialog')">🐧 Linux</button>
+            <button class="btn platform-guide-btn" onclick="navigateToPlatform('windowsDialog')">🪟 Windows</button>
+            <button class="btn platform-guide-btn" onclick="navigateToPlatform('macDialog')">🍎 macOS</button>
+            <button class="btn platform-guide-btn" onclick="navigateToPlatform('linuxDialog')">🐧 Linux</button>
         </div>
         <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
@@ -1399,6 +1399,16 @@
             showDialog('platformGuidesDialog');
         }
 
+        // Navigate between platform dialogs
+        function navigateToPlatform(dialogId) {
+            // Close the platform guides dialog
+            closeDialog();
+            // Show the selected platform dialog
+            setTimeout(() => {
+                showDialog(dialogId);
+            }, 100);
+        }
+
         function downloadWindows() {
             // Download Windows installer
             const link = document.createElement('a');
@@ -1543,6 +1553,11 @@
         function showDialog(dialogId) {
             document.getElementById('dialogOverlay').classList.add('show');
             document.getElementById(dialogId).classList.add('show');
+            
+            // Update Apple guide link if showing macOS dialog
+            if (dialogId === 'macDialog') {
+                updateAppleGuideLink();
+            }
         }
 
         function closeDialog() {
