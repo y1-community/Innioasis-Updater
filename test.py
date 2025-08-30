@@ -772,6 +772,51 @@ class GitHubAPI:
 
 
 
+class DebugOutputWindow(QWidget):
+    """Debug output window for showing mtk.py output in real-time"""
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("MTK Debug Output - Labs Mode")
+        self.setGeometry(200, 200, 800, 600)
+        
+        # Create layout
+        layout = QVBoxLayout(self)
+        
+        # Title label
+        title_label = QLabel("MTK.py Output (Debug Mode)")
+        title_label.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
+        layout.addWidget(title_label)
+        
+        # Output text area
+        self.output_text = QTextEdit()
+        self.output_text.setReadOnly(True)
+        self.output_text.setFont(QFont("Consolas", 10))
+        layout.addWidget(self.output_text)
+        
+        # Clear button
+        clear_btn = QPushButton("Clear Output")
+        clear_btn.clicked.connect(self.clear_output)
+        layout.addWidget(clear_btn)
+        
+        # Close button
+        close_btn = QPushButton("Close")
+        close_btn.clicked.connect(self.close)
+        layout.addWidget(close_btn)
+    
+    def append_output(self, text):
+        """Append text to the output area"""
+        self.output_text.append(text)
+        # Auto-scroll to bottom
+        cursor = self.output_text.textCursor()
+        cursor.movePosition(cursor.End)
+        self.output_text.setTextCursor(cursor)
+    
+    def clear_output(self):
+        """Clear the output area"""
+        self.output_text.clear()
+
+
 class MTKWorker(QThread):
     """Worker thread for running MTK command with real-time output"""
 
@@ -786,11 +831,12 @@ class MTKWorker(QThread):
     keyboard_interrupt_detected = Signal()  # New signal for keyboard interrupts
     disable_update_button = Signal()  # Signal to disable update button during MTK installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
-    timeout_detected = Signal()       # Signal for timeout detection (Method 1 only)
 
-    def __init__(self):
+    def __init__(self, debug_mode=False, debug_window=None):
         super().__init__()
         self.should_stop = False
+        self.debug_mode = debug_mode
+        self.debug_window = debug_window
         
         # Platform-specific progress bar characters
         if platform.system() == "Windows":
@@ -862,6 +908,10 @@ class MTKWorker(QThread):
                     # Fix progress bar characters for platform compatibility
                     fixed_line = self.fix_progress_bar_chars(line)
                     
+                    # Show debug output in separate window if debug mode is enabled
+                    if self.debug_mode and self.debug_window:
+                        self.debug_window.append_output(f"MTK: {fixed_line}")
+                    
                     # Show latest output in status area (no extra whitespace)
                     self.status_updated.emit(f"MTK: {fixed_line}")
 
@@ -904,8 +954,6 @@ class MTKWorker(QThread):
                         device_detected = True
                         # Switch to installing.png immediately when device is detected
                         self.show_installing_image.emit()
-                        # Emit timeout signal to stop the timeout timer since device was detected
-                        self.timeout_detected.emit()
 
                     # Check if flashing has started (look for write operations)
                     if device_detected and ("Write" in line or "Progress:" in line) and not flashing_started:
@@ -916,10 +964,10 @@ class MTKWorker(QThread):
                         self.show_installing_image.emit()
                         # Disable update button when MTK installation starts
                         self.disable_update_button.emit()
-                        # Track progress for interruption detection
-                        progress_detected = True
-                        last_progress_time = time.time()
-                        # Don't emit status message - let MTK output be displayed clearly
+                    # Track progress for interruption detection
+                    progress_detected = True
+                    last_progress_time = time.time()
+                    # Don't emit status message - let MTK output be displayed clearly
 
                     # Only show presteps if no device detected and no errors
                     if not device_detected and not usb_connection_issue_detected and not handshake_error_detected and not errno2_error_detected and not backend_error_detected and not keyboard_interrupt_detected:
@@ -1115,6 +1163,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.images_loaded = False  # Track if images are loaded
         self.installation_method = "guided"  # Default installation method
         self.always_use_method = False  # Default to one-time use
+        self.debug_mode = False  # Default debug mode disabled
 
         # Clean up any previously extracted files at startup
         cleanup_extracted_files()
@@ -1141,6 +1190,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Load saved installation preferences
         QTimer.singleShot(200, self.load_installation_preferences)
+        
+        # Restore original installation method when session ends
+        QTimer.singleShot(300, self.restore_original_installation_method)
 
         # Set up theme change detection timer
         self.theme_check_timer = QTimer()
@@ -2030,6 +2082,35 @@ class FirmwareDownloaderGUI(QMainWindow):
         if not check_for_failed_installation():
             return
             
+        # Check driver availability for Windows users
+        if platform.system() == "Windows":
+            driver_info = self.check_drivers_and_architecture()
+            
+            if driver_info['is_arm64']:
+                # ARM64 Windows: No installation methods available
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("ARM64 Windows - No Installation Methods")
+                msg_box.setText("Firmware installation is not supported on ARM64 Windows.")
+                msg_box.setInformativeText("You can download firmware files, but to install them please use WSLg, Linux, or another computer.")
+                msg_box.setIcon(QMessageBox.Information)
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec()
+                remove_installation_marker()
+                return
+                
+            elif not driver_info['can_install_firmware']:
+                # No drivers: No installation methods available
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("Drivers Required")
+                msg_box.setText("No installation methods available. Please install drivers to enable firmware installation.")
+                msg_box.setInformativeText("Click OK to open the driver installation guide.")
+                msg_box.setIcon(QMessageBox.Warning)
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec()
+                remove_installation_marker()
+                self.open_driver_setup_link()
+                return
+            
         # Show failed installation dialog with troubleshooting options
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Firmware Installation Incomplete")
@@ -2255,21 +2336,23 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.tools_btn.setFixedHeight(24)  # Match dropdown height
         self.tools_btn.setStyleSheet("""
             QPushButton {
-                background-color: #0066CC;
-                color: white;
-                border: none;
+                background-color: #2d2d2d;
+                color: #cccccc;
+                border: 1px solid #555555;
                 padding: 4px 8px;
-                border-radius: 15px;
-                font-weight: bold;
+                border-radius: 3px;
+                font-weight: normal;
                 font-size: 11px;
                 min-width: 50px;
                 max-width: 70px;
             }
             QPushButton:hover {
-                background-color: #0052A3;
+                background-color: #3d3d3d;
+                border-color: #666666;
             }
             QPushButton:pressed {
-                background-color: #003D7A;
+                background-color: #1d1d1d;
+                border-color: #444444;
             }
         """)
         device_type_layout.addWidget(self.tools_btn)
@@ -2278,21 +2361,23 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.settings_btn.setFixedHeight(24)  # Match dropdown height
         self.settings_btn.setStyleSheet("""
             QPushButton {
-                background-color: #28A745;
-                color: white;
-                border: none;
+                background-color: #2d2d2d;
+                color: #cccccc;
+                border: 1px solid #555555;
                 padding: 4px 8px;
-                border-radius: 15px;
-                font-weight: bold;
+                border-radius: 3px;
+                font-weight: normal;
                 font-size: 11px;
                 min-width: 50px;
                 max-width: 70px;
             }
             QPushButton:hover {
-                background-color: #218838;
+                background-color: #3d3d3d;
+                border-color: #666666;
             }
             QPushButton:pressed {
-                background-color: #1E7E34;
+                background-color: #1d1d1d;
+                border-color: #444444;
             }
         """)
         self.settings_btn.setCursor(Qt.PointingHandCursor)
@@ -2383,12 +2468,34 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Driver Setup button - Windows only, and only if drivers are missing
         if platform.system() == "Windows":
-            mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
-            usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
-
-            # Only show the button if one of the driver files is missing
-            if not mediatek_driver_file.exists() or not usbdk_driver_file.exists():
-                driver_btn = QPushButton("🔧 Driver Setup")
+            driver_info = self.check_drivers_and_architecture()
+            
+            if driver_info['is_arm64']:
+                # ARM64 Windows: Show ARM64-specific message
+                arm64_btn = QPushButton("🪟 ARM64 Windows")
+                arm64_btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: #FF6B35;
+                        color: white;
+                        border: none;
+                        padding: 8px 16px;
+                        border-radius: 20px;
+                        font-weight: bold;
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #E55A2B;
+                    }
+                    QPushButton:pressed {
+                        background-color: #CC4A24;
+                    }
+                """)
+                arm64_btn.clicked.connect(self.open_arm64_info)
+                coffee_layout.addWidget(arm64_btn)
+                
+            elif not driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # No drivers: Show "Install Windows Drivers" button
+                driver_btn = QPushButton("🔧 Install Windows Drivers")
                 driver_btn.setStyleSheet("""
                     QPushButton {
                         background-color: #0066CC;
@@ -2408,8 +2515,50 @@ class FirmwareDownloaderGUI(QMainWindow):
                 """)
                 driver_btn.clicked.connect(self.open_driver_setup_link)
                 coffee_layout.addWidget(driver_btn)
+                
+            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # Only MTK driver: Show "Install USB Development Kit" link
+                usbdk_link = QLabel("Install USB Development Kit for full functionality")
+                usbdk_link.setStyleSheet("""
+                    QLabel {
+                        color: #0066CC;
+                        font-size: 11px;
+                        text-decoration: underline;
+                        cursor: pointer;
+                        margin: 5px;
+                    }
+                    QLabel:hover {
+                        color: #004499;
+                    }
+                """)
+                usbdk_link.setCursor(Qt.PointingHandCursor)
+                usbdk_link.mousePressEvent = self.open_usbdk_info
+                coffee_layout.addWidget(usbdk_link)
+                
+                # Also show "Install from .zip" button
+                install_zip_btn = QPushButton("📦 Install from .zip")
+                install_zip_btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: #28A745;
+                        color: white;
+                        border: none;
+                        padding: 8px 16px;
+                        border-radius: 20px;
+                        font-weight: bold;
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #218838;
+                    }
+                    QPushButton:pressed {
+                        background-color: #1E7E34;
+                    }
+                """)
+                install_zip_btn.clicked.connect(self.install_from_zip)
+                coffee_layout.addWidget(install_zip_btn)
+                
             else:
-                # Show "Install from .zip" button when drivers are already installed
+                # Both drivers available: Show "Install from .zip" button
                 install_zip_btn = QPushButton("📦 Install from .zip")
                 install_zip_btn.setStyleSheet("""
                     QPushButton {
@@ -2610,6 +2759,269 @@ class FirmwareDownloaderGUI(QMainWindow):
         labs_layout.addWidget(self.labs_link)
         
         main_layout.addLayout(labs_layout)
+        
+        # Add status bar for driver information
+        if platform.system() == "Windows":
+            self.create_driver_status_bar()
+
+    def create_driver_status_bar(self):
+        """Create a status bar showing driver information for Windows users"""
+        driver_info = self.check_drivers_and_architecture()
+        
+        # Create status bar
+        status_bar = self.statusBar()
+        
+        if driver_info['is_arm64']:
+            # ARM64 Windows: Show ARM64-specific message
+            status_bar.showMessage("Only 'Tools' is available on ARM64 Windows, please use WSLg, Linux or another computer for Software Installs")
+        elif not driver_info['can_install_firmware']:
+            # No drivers: Show driver requirement message
+            status_bar.showMessage("No drivers installed. Click 'Install Windows Drivers' to use Innioasis Updater.")
+        elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+            # Only MTK driver: Show limited functionality message
+            status_bar.showMessage("Limited functionality. Install USB Development Kit driver for full functionality.")
+        else:
+            # Both drivers available: Show ready message
+            status_bar.showMessage("Ready - All installation methods available")
+
+    def stop_mtk_processes(self):
+        """Stop any running MTK processes"""
+        try:
+            if platform.system() == "Windows":
+                # Stop any running mtk.py processes on Windows
+                subprocess.run(['taskkill', '/F', '/IM', 'python.exe', '/FI', 'WINDOWTITLE eq *mtk*'], 
+                              capture_output=True, timeout=5)
+            else:
+                # Stop any running mtk.py processes on Unix-like systems
+                subprocess.run(['pkill', '-f', 'mtk.py'], capture_output=True, timeout=5)
+            silent_print("Stopped any running MTK processes")
+        except Exception as e:
+            silent_print(f"Error stopping MTK processes: {e}")
+
+    def cleanup_libusb_state(self):
+        """Clean up libusb state and USB device connections"""
+        try:
+            if platform.system() == "Windows":
+                # On Windows, try to reset USB devices
+                silent_print("Cleaning up USB state on Windows...")
+                # This is a placeholder - actual USB reset would require more complex implementation
+            else:
+                # On Unix-like systems, try to reset USB devices
+                silent_print("Cleaning up USB state on Unix-like system...")
+                # This is a placeholder - actual USB reset would require more complex implementation
+            silent_print("USB state cleanup completed")
+        except Exception as e:
+            silent_print(f"Error during USB state cleanup: {e}")
+
+    def revert_to_startup_state(self):
+        """Revert the application to its startup state"""
+        try:
+            # Reset status and progress
+            self.status_label.setText("Ready")
+            self.progress_bar.setVisible(False)
+            
+            # Load initial image
+            self.load_presteps_image()
+            
+            # Update driver status bar if on Windows
+            if platform.system() == "Windows":
+                self.create_driver_status_bar()
+                
+            silent_print("Application reverted to startup state")
+        except Exception as e:
+            silent_print(f"Error reverting to startup state: {e}")
+
+    def run_mtk_command(self):
+        """Run the MTK command for firmware installation"""
+        try:
+            # Check driver availability for Windows users
+            if platform.system() == "Windows":
+                driver_info = self.check_drivers_and_architecture()
+                
+                if driver_info['is_arm64']:
+                    QMessageBox.information(
+                        self,
+                        "ARM64 Windows Not Supported",
+                        "Firmware installation is not supported on ARM64 Windows.\n\n"
+                        "You can download firmware files, but to install them please use:\n"
+                        "• WSLg (Windows Subsystem for Linux with GUI)\n"
+                        "• Linux (dual boot or live USB)\n"
+                        "• Another computer with x64 Windows"
+                    )
+                    return
+                    
+                elif not driver_info['can_install_firmware']:
+                    QMessageBox.warning(
+                        self,
+                        "Drivers Required",
+                        "No installation methods available. Please install drivers to enable firmware installation.\n\n"
+                        "Click OK to open the driver installation guide."
+                    )
+                    self.open_driver_setup_link()
+                    return
+            
+            # Create installation marker
+            create_installation_marker()
+            
+            # Start MTK worker
+            if not self.mtk_worker or not self.mtk_worker.isRunning():
+                # Create debug window if debug mode is enabled
+                debug_window = None
+                if getattr(self, 'debug_mode', False):
+                    debug_window = DebugOutputWindow(self)
+                    debug_window.show()
+                
+                self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+                self.mtk_worker.status_updated.connect(self.update_status)
+                self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+                self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
+                self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
+                self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
+                self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
+                self.mtk_worker.backend_error_detected.connect(self.handle_backend_error)
+                self.mtk_worker.keyboard_interrupt_detected.connect(self.handle_keyboard_interrupt)
+                self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+                self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+                self.mtk_worker.start()
+                
+                self.status_label.setText("Starting MTK installation...")
+                silent_print("MTK worker started")
+            else:
+                silent_print("MTK worker already running")
+                
+        except Exception as e:
+            silent_print(f"Error starting MTK command: {e}")
+            self.status_label.setText(f"Error starting MTK command: {e}")
+
+    def update_status(self, message):
+        """Update the status label with a message"""
+        self.status_label.setText(message)
+
+    def handle_mtk_completion(self, success, message):
+        """Handle MTK command completion"""
+        if success:
+            self.status_label.setText("Installation completed successfully")
+            self.load_installed_image()
+            remove_installation_marker()
+        else:
+            self.status_label.setText(f"Installation failed: {message}")
+            self.load_process_ended_image()
+            remove_installation_marker()
+
+    def handle_handshake_failure(self):
+        """Handle handshake failure"""
+        self.status_label.setText("Handshake failed - driver setup required")
+        self.load_handshake_error_image()
+
+    def handle_errno2_error(self):
+        """Handle errno2 error"""
+        self.status_label.setText("Errno2 error - Innioasis Updater reinstall required")
+        self.load_process_ended_image()
+
+    def handle_backend_error(self):
+        """Handle backend error"""
+        self.status_label.setText("Backend error - libusb backend issue")
+        self.load_process_ended_image()
+
+    def handle_keyboard_interrupt(self):
+        """Handle keyboard interrupt"""
+        self.status_label.setText("Installation interrupted by user")
+        self.load_process_ended_image()
+
+    def disable_update_button(self):
+        """Disable the update button during MTK installation"""
+        if hasattr(self, 'update_btn_right'):
+            self.update_btn_right.setEnabled(False)
+
+    def enable_update_button(self):
+        """Enable the update button when returning to ready state"""
+        if hasattr(self, 'update_btn_right'):
+            self.update_btn_right.setEnabled(True)
+
+    def show_troubleshooting_instructions(self):
+        """Show Method 2 troubleshooting instructions"""
+        try:
+            # Load Method 2 image
+            self.load_method2_image()
+            
+            # Show dialog with Method 2 instructions
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Method 2 - MTKclient Troubleshooting")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText("Method 2: MTKclient Direct Installation")
+            msg_box.setInformativeText(
+                "This method uses the MTKclient library directly for firmware installation.\n\n"
+                "Please follow the on-screen instructions and ensure your device is properly connected.\n\n"
+                "If this method fails, you may need to check your drivers or try Method 3 (SP Flash Tool)."
+            )
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec()
+            
+        except Exception as e:
+            silent_print(f"Error showing Method 2 instructions: {e}")
+
+    def try_method_3(self):
+        """Try Method 3 - SP Flash Tool (Windows only)"""
+        try:
+            if platform.system() != "Windows":
+                QMessageBox.warning(
+                    self,
+                    "Method 3 Not Available",
+                    "Method 3 (SP Flash Tool) is only available on Windows."
+                )
+                return
+            
+            # Load Method 3 image
+            self.load_method3_image()
+            
+            # Show dialog with Method 3 instructions
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Method 3 - SP Flash Tool")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText("Method 3: SP Flash Tool Installation")
+            msg_box.setInformativeText(
+                "This method uses the manufacturer's SP Flash Tool. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
+                "Please ensure SP Flash Tool is installed and follow its instructions.\n\n"
+                "Note: This method requires the MediaTek SP Driver to be installed."
+            )
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec()
+            
+        except Exception as e:
+            silent_print(f"Error showing Method 3 instructions: {e}")
+
+    def load_method2_image(self):
+        """Load Method 2 troubleshooting image"""
+        try:
+            if not hasattr(self, '_method2_pixmap'):
+                image_path = self.get_platform_image_path("method2")
+                self._method2_pixmap = QPixmap(image_path)
+                if self._method2_pixmap.isNull():
+                    silent_print(f"Failed to load Method 2 image from {image_path}")
+                    return
+            
+            self._current_pixmap = self._method2_pixmap
+            self.set_image_with_aspect_ratio(self._method2_pixmap)
+        except Exception as e:
+            silent_print(f"Error loading Method 2 image: {e}")
+            return
+
+    def load_method3_image(self):
+        """Load Method 3 troubleshooting image"""
+        try:
+            if not hasattr(self, '_method3_pixmap'):
+                image_path = self.get_platform_image_path("method3")
+                self._method3_pixmap = QPixmap(image_path)
+                if self._method3_pixmap.isNull():
+                    silent_print(f"Failed to load Method 3 image from {image_path}")
+                    return
+            
+            self._current_pixmap = self._method3_pixmap
+            self.set_image_with_aspect_ratio(self._method3_pixmap)
+        except Exception as e:
+            silent_print(f"Error loading Method 3 image: {e}")
+            return
 
     def load_data(self):
         """Load configuration and manifest data with improved performance"""
@@ -2821,35 +3233,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
         
         try:
-            # Platform-specific launch for y1_helper.py
+            # Simply run y1_helper.py
             y1_helper_path = Path("y1_helper.py")
-            if not y1_helper_path.exists():
-                QMessageBox.error(self, "Error", 
-                                "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
-                return
-            
-            current_platform = platform.system()
-            
-            if current_platform == "Darwin":  # macOS
-                # On macOS, use nohup to prevent terminal window spawning
-                # and ensure the process runs in background
-                subprocess.Popen([
-                    "nohup", sys.executable, str(y1_helper_path), "&"
-                ], shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                
-            elif current_platform == "Linux":
-                # On Linux, use nohup to prevent terminal window spawning
-                subprocess.Popen([
-                    "nohup", sys.executable, str(y1_helper_path), "&"
-                ], shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                
-            else:  # Windows
-                # On Windows, use the original method
+            if y1_helper_path.exists():
                 subprocess.Popen([sys.executable, str(y1_helper_path)])
-            
-            self.status_label.setText("Y1 Remote Control launched successfully")
-            # Don't close the firmware downloader - keep it running
-            
+                self.status_label.setText("Y1 Remote Control launched successfully")
+                # Don't close the firmware downloader - keep it running
+            else:
+                                                QMessageBox.error(self, "Error", 
+                                                "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Y1 Remote Control: {e}")
     
@@ -2857,136 +3249,166 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Show settings dialog for choosing installation method"""
         dialog = QDialog(self)
         dialog.setWindowTitle("Installation Method Settings")
-        dialog.setFixedSize(500, 350)  # Increased size for better readability
+        dialog.setFixedSize(500, 300)
         dialog.setModal(True)
         
-        # Main layout with proper spacing
         layout = QVBoxLayout(dialog)
-        layout.setSpacing(15)  # Increased spacing between elements
-        layout.setContentsMargins(20, 20, 20, 20)  # Increased margins
         
-        # Title with better styling
+        # Title
         title_label = QLabel("Choose Installation Method for Next Install")
-        title_label.setStyleSheet("""
-            QLabel {
-                font-size: 16px; 
-                font-weight: bold; 
-                color: #333333;
-                margin-bottom: 10px;
-                padding: 5px;
-            }
-        """)
-        title_label.setAlignment(Qt.AlignCenter)
+        title_label.setStyleSheet("font-size: 14px; font-weight: bold; margin: 10px;")
         layout.addWidget(title_label)
         
-        # Description with better styling
+        # Check driver status for Windows users
+        driver_info = None
+        if platform.system() == "Windows":
+            driver_info = self.check_drivers_and_architecture()
+            
+            # Show driver status message
+            if driver_info['is_arm64']:
+                status_label = QLabel("⚠️ ARM64 Windows Detected")
+                status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 5px;")
+                layout.addWidget(status_label)
+                
+                status_desc = QLabel("Only firmware downloads are available on ARM64 Windows.\nPlease use WSLg, Linux, or another computer for software installation.")
+                status_desc.setStyleSheet("color: #666; margin: 5px;")
+                layout.addWidget(status_desc)
+                
+                # Disable method selection for ARM64
+                method_combo = QComboBox()
+                method_combo.addItem("No installation methods available on ARM64 Windows", "")
+                method_combo.setEnabled(False)
+                layout.addWidget(method_combo)
+                
+                # Skip the rest of the dialog for ARM64
+                button_layout = QHBoxLayout()
+                button_layout.addStretch()
+                ok_btn = QPushButton("OK")
+                ok_btn.clicked.connect(dialog.accept)
+                button_layout.addWidget(ok_btn)
+                layout.addLayout(button_layout)
+                dialog.exec()
+                return
+                
+            elif not driver_info['can_install_firmware']:
+                status_label = QLabel("⚠️ Drivers Required")
+                status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 5px;")
+                layout.addWidget(status_label)
+                
+                status_desc = QLabel("No installation methods available. Please install drivers to enable firmware installation.\n\nMore methods will become available if you install the USB Development Kit driver.")
+                status_desc.setStyleSheet("color: #666; margin: 5px;")
+                layout.addWidget(status_desc)
+                
+                # Disable method selection when no drivers
+                method_combo = QComboBox()
+                method_combo.addItem("No installation methods available without drivers", "")
+                method_combo.setEnabled(False)
+                layout.addWidget(method_combo)
+                
+                # Skip the rest of the dialog when no drivers
+                button_layout = QHBoxLayout()
+                button_layout.addStretch()
+                ok_btn = QPushButton("OK")
+                ok_btn.clicked.connect(dialog.accept)
+                button_layout.addWidget(ok_btn)
+                layout.addLayout(button_layout)
+                dialog.exec()
+                return
+                
+            elif not driver_info['has_usbdk_driver']:
+                status_label = QLabel("ℹ️ Limited Functionality")
+                status_label.setStyleSheet("color: #0066CC; font-weight: bold; margin: 5px;")
+                layout.addWidget(status_label)
+                
+                status_desc = QLabel("Only Method 3 (SP Flash Tool) is available.\n\nMore methods will become available if you install the USB Development Kit driver.")
+                status_desc.setStyleSheet("color: #666; margin: 5px;")
+                layout.addWidget(status_desc)
+        
+        # Description
         desc_label = QLabel("This setting will be used for the next firmware installation.")
-        desc_label.setStyleSheet("""
-            QLabel {
-                color: #666666; 
-                font-size: 12px;
-                margin: 5px;
-                padding: 5px;
-            }
-        """)
-        desc_label.setAlignment(Qt.AlignCenter)
+        desc_label.setStyleSheet("color: #666; margin: 5px;")
         layout.addWidget(desc_label)
         
-        # Add some spacing
-        layout.addSpacing(10)
-        
-        # Method selection with better layout
-        method_frame = QFrame()
-        method_layout = QVBoxLayout(method_frame)
-        method_layout.setSpacing(8)
-        
+        # Method selection
         method_label = QLabel("Installation Method:")
-        method_label.setStyleSheet("""
-            QLabel {
-                font-size: 13px;
-                font-weight: bold;
-                color: #333333;
-                margin: 5px;
-            }
-        """)
-        method_layout.addWidget(method_label)
+        layout.addWidget(method_label)
         
         method_combo = QComboBox()
-        method_combo.setMinimumHeight(30)  # Increased height for better usability
-        method_combo.addItem("Method 1 - Guided", "guided")
-        method_combo.addItem("Method 2 - MTKclient", "mtkclient")
         
-        # Add Method 3 only on Windows
-        if platform.system() == "Windows":
-            method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
+        # Add methods based on driver availability
+        if platform.system() == "Windows" and driver_info:
+            if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+                # Both drivers available: All methods
+                method_combo.addItem("Method 1 - Guided", "guided")
+                method_combo.addItem("Method 2 - MTKclient", "mtkclient")
+                method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
+            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # Only MTK driver: Only Method 3
+                method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
+            else:
+                # No drivers: No methods
+                method_combo.addItem("No installation methods available", "")
+        else:
+            # Non-Windows: Standard methods
+            method_combo.addItem("Method 1 - Guided", "guided")
+            method_combo.addItem("Method 2 - MTKclient", "mtkclient")
         
-        # Set current method (default to Method 1)
+        # Set current method
         current_method = getattr(self, 'installation_method', 'guided')
         index = method_combo.findData(current_method)
         if index >= 0:
             method_combo.setCurrentIndex(index)
         
-        method_layout.addWidget(method_combo)
-        layout.addWidget(method_frame)
+        layout.addWidget(method_combo)
         
-        # Always use this method checkbox with better styling
-        checkbox_frame = QFrame()
-        checkbox_layout = QVBoxLayout(checkbox_frame)
-        checkbox_layout.setSpacing(5)
+        # Always use this method checkbox (only show when methods are available)
+        if platform.system() == "Windows" and driver_info and not driver_info['can_install_firmware']:
+            pass  # Don't show checkbox when no methods available
+        else:
+            self.always_use_checkbox = QCheckBox("Always use this method for future installations")
+            self.always_use_checkbox.setToolTip("When checked, this method will be used automatically for all future firmware installations")
+            
+            # Set checkbox state based on saved preference
+            always_use = getattr(self, 'always_use_method', False)
+            self.always_use_checkbox.setChecked(always_use)
+            
+            layout.addWidget(self.always_use_checkbox)
         
-        self.always_use_checkbox = QCheckBox("Always use this method for future installations")
-        self.always_use_checkbox.setStyleSheet("""
-            QCheckBox {
-                font-size: 12px;
-                color: #333333;
-                margin: 5px;
-                padding: 5px;
-            }
-            QCheckBox::indicator {
-                width: 18px;
-                height: 18px;
-            }
-        """)
-        self.always_use_checkbox.setToolTip("When checked, this method will be used automatically for all future firmware installations")
+        # Labs mode debug checkbox
+        self.debug_mode_checkbox = QCheckBox("Enable Debug Mode (Labs)")
+        self.debug_mode_checkbox.setToolTip("When checked, guided installations will show mtk.py's full output in a separate window for debugging")
         
         # Set checkbox state based on saved preference
-        always_use = getattr(self, 'always_use_method', False)
-        self.always_use_checkbox.setChecked(always_use)
+        debug_mode = getattr(self, 'debug_mode', False)
+        self.debug_mode_checkbox.setChecked(debug_mode)
         
-        checkbox_layout.addWidget(self.always_use_checkbox)
-        layout.addWidget(checkbox_frame)
+        layout.addWidget(self.debug_mode_checkbox)
         
-        # Method descriptions with better styling
-        desc_frame = QFrame()
-        desc_layout = QVBoxLayout(desc_frame)
-        desc_layout.setSpacing(5)
-        
-        desc_label2 = QLabel("Method Descriptions:")
-        desc_label2.setStyleSheet("""
-            QLabel {
-                font-size: 13px;
-                font-weight: bold;
-                color: #333333;
-                margin: 5px;
-            }
-        """)
-        desc_layout.addWidget(desc_label2)
-        
+        # Method descriptions
         desc_text = QTextEdit()
-        desc_text.setMaximumHeight(100)  # Increased height
+        desc_text.setMaximumHeight(80)
         desc_text.setReadOnly(True)
-        desc_text.setStyleSheet("""
-            QTextEdit {
-                font-size: 11px;
-                color: #333333;
-                background-color: #f8f9fa;
-                border: 1px solid #dee2e6;
-                border-radius: 5px;
-                padding: 8px;
-            }
-        """)
         
-        if platform.system() == "Windows":
+        if platform.system() == "Windows" and driver_info:
+            if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+                desc_text.setPlainText("""
+Method 1 - Guided: Step-by-step with visual guidance
+Method 2 - MTKclient: Direct technical installation  
+Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
+                """)
+            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                desc_text.setPlainText("""
+Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
+Note: Install USB Development Kit driver to enable Methods 1 and 2
+                """)
+            else:
+                desc_text.setPlainText("""
+No installation methods available.
+Please install drivers to enable firmware installation.
+
+More methods will become available if you install the USB Development Kit driver.
+                """)
+        elif platform.system() == "Windows":
             desc_text.setPlainText("""
 Method 1 - Guided: Step-by-step with visual guidance
 Method 2 - MTKclient: Direct technical installation
@@ -2998,59 +3420,17 @@ Method 1 - Guided: Step-by-step with visual guidance
 Method 2 - MTKclient: Direct technical installation
             """)
         
-        desc_layout.addWidget(desc_text)
-        layout.addWidget(desc_frame)
+        layout.addWidget(desc_text)
         
-        # Add some spacing before buttons
-        layout.addSpacing(15)
-        
-        # Buttons with better styling
+        # Buttons
         button_layout = QHBoxLayout()
         button_layout.addStretch()
         
         cancel_btn = QPushButton("Cancel")
-        cancel_btn.setMinimumHeight(35)  # Increased height
-        cancel_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #6c757d;
-                color: white;
-                border: none;
-                padding: 8px 20px;
-                border-radius: 5px;
-                font-weight: bold;
-                font-size: 12px;
-                min-width: 80px;
-            }
-            QPushButton:hover {
-                background-color: #5a6268;
-            }
-            QPushButton:pressed {
-                background-color: #495057;
-            }
-        """)
         cancel_btn.clicked.connect(dialog.reject)
         button_layout.addWidget(cancel_btn)
         
         save_btn = QPushButton("Save")
-        save_btn.setMinimumHeight(35)  # Increased height
-        save_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #28A745;
-                color: white;
-                border: none;
-                padding: 8px 20px;
-                border-radius: 5px;
-                font-weight: bold;
-                font-size: 12px;
-                min-width: 80px;
-            }
-            QPushButton:hover {
-                background-color: #218838;
-            }
-            QPushButton:pressed {
-                background-color: #1E7E34;
-            }
-        """)
         save_btn.clicked.connect(lambda: self.save_installation_method(method_combo.currentData(), dialog))
         button_layout.addWidget(save_btn)
         
@@ -3062,6 +3442,7 @@ Method 2 - MTKclient: Direct technical installation
         """Save the selected installation method and always use preference"""
         self.installation_method = method
         self.always_use_method = self.always_use_checkbox.isChecked()
+        self.debug_mode = self.debug_mode_checkbox.isChecked()
         
         # Save to persistent storage
         self.save_installation_preferences()
@@ -3072,6 +3453,9 @@ Method 2 - MTKclient: Direct technical installation
         else:
             self.status_label.setText(f"Installation method set to: {method} (one-time use)")
         
+        if self.debug_mode:
+            self.status_label.setText(self.status_label.text() + " - Debug mode enabled")
+        
         dialog.accept()
     
     def save_installation_preferences(self):
@@ -3079,7 +3463,8 @@ Method 2 - MTKclient: Direct technical installation
         try:
             preferences = {
                 'installation_method': self.installation_method,
-                'always_use_method': self.always_use_method
+                'always_use_method': self.always_use_method,
+                'debug_mode': getattr(self, 'debug_mode', False)
             }
             
             # Save to a JSON file in the same directory
@@ -3106,12 +3491,32 @@ Method 2 - MTKclient: Direct technical installation
                     self.installation_method = preferences['installation_method']
                 if 'always_use_method' in preferences:
                     self.always_use_method = preferences['always_use_method']
+                if 'debug_mode' in preferences:
+                    self.debug_mode = preferences['debug_mode']
                 
                 silent_print(f"Loaded installation preferences: {preferences}")
             else:
                 silent_print("No saved installation preferences found, using defaults")
         except Exception as e:
             silent_print(f"Error loading installation preferences: {e}")
+    
+    def restore_original_installation_method(self):
+        """Restore the original installation method if it was temporarily overridden"""
+        if hasattr(self, '_original_installation_method'):
+            # Only restore if the current method is spflash (Method 3) and we have the original
+            if self.installation_method == "spflash" and self._original_installation_method != "spflash":
+                # Check if we still only have MTK driver (no UsbDk)
+                if platform.system() == "Windows":
+                    driver_info = self.check_drivers_and_architecture()
+                    if driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                        # Still only MTK driver, keep Method 3 for this session
+                        silent_print("Keeping Method 3 for this session (only MTK driver available)")
+                    else:
+                        # UsbDk driver now available, restore original method
+                        self.installation_method = self._original_installation_method
+                        silent_print(f"Restored original installation method: {self.installation_method}")
+                        # Clear the stored original method
+                        delattr(self, '_original_installation_method')
             # Use defaults if loading fails
             self.installation_method = "guided"
             self.always_use_method = False
@@ -3604,7 +4009,13 @@ Method 2 - MTKclient: Direct technical installation
         self.load_initsteps_image()
 
         # Start MTK worker
-        self.mtk_worker = MTKWorker()
+        # Create debug window if debug mode is enabled
+        debug_window = None
+        if getattr(self, 'debug_mode', False):
+            debug_window = DebugOutputWindow(self)
+            debug_window.show()
+        
+        self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
@@ -3614,18 +4025,8 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
         self.mtk_worker.disable_update_button.connect(self.disable_update_button)
         self.mtk_worker.enable_update_button.connect(self.enable_update_button)
-        self.mtk_worker.timeout_detected.connect(self.on_timeout_detected)
 
         self.mtk_worker.start()
-
-        # Start timeout timer for Method 1 (Guided) installations only
-        # This prevents the GUI from freezing if mtk.py waits too long for device connection
-        if getattr(self, 'installation_method', 'guided') == "guided":
-            self.mtk_timeout_timer = QTimer()
-            self.mtk_timeout_timer.timeout.connect(self.on_mtk_timeout)
-            self.mtk_timeout_timer.setSingleShot(True)
-            self.mtk_timeout_timer.start(10000)  # 10 seconds timeout
-            silent_print("Started 10-second timeout timer for Method 1 installation")
 
         # Disable download button during MTK operation
         self.download_btn.setEnabled(False)
@@ -3641,11 +4042,6 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.stop()
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
-        
-        # Clean up timeout timer if it exists
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            self.mtk_timeout_timer = None
 
         if success:
             self.status_label.setText("Install completed successfully")
@@ -3706,11 +4102,6 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.stop()
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
-        
-        # Clean up timeout timer if it exists
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            self.mtk_timeout_timer = None
 
         # Load and display the appropriate handshake error image for 50 seconds
         self.load_handshake_error_image()
@@ -3763,11 +4154,6 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.stop()
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
-        
-        # Clean up timeout timer if it exists
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            self.mtk_timeout_timer = None
 
         reply = self.show_custom_message_box(
             "question",
@@ -3798,11 +4184,6 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.stop()
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
-        
-        # Clean up timeout timer if it exists
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            self.mtk_timeout_timer = None
 
         reply = QMessageBox.question(
             self,
@@ -3841,11 +4222,6 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.stop()
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
-        
-        # Clean up timeout timer if it exists
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            self.mtk_timeout_timer = None
 
         # Check if this was a Method 2 or 3 installation - if so, don't show troubleshooting
         current_method = getattr(self, 'installation_method', 'guided')
@@ -3863,36 +4239,6 @@ Method 2 - MTKclient: Direct technical installation
         # Use a timer to show the dialog after a short delay so user sees the process_ended image
         QTimer.singleShot(2000, self.show_install_error_dialog)
         return  # Don't continue with the revert timer since user will choose action
-
-    def on_timeout_detected(self):
-        """Handle timeout detection from MTKWorker - stop the timeout timer"""
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            silent_print("Timeout timer stopped - device detected or progress started")
-
-    def on_mtk_timeout(self):
-        """Handle MTK timeout - reset the process and show retry dialog"""
-        silent_print("MTK timeout detected - resetting process and showing retry dialog")
-        
-        # Stop the MTK worker and reset the process
-        if hasattr(self, 'mtk_worker') and self.mtk_worker:
-            self.mtk_worker.stop()
-            self.mtk_worker.wait()  # Wait for the worker to finish
-            self.mtk_worker = None
-        
-        # Clean up any existing timeout timer
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            self.mtk_timeout_timer = None
-        
-        # Reset buttons to ready state
-        self.download_btn.setEnabled(True)
-        self.tools_btn.setEnabled(True)
-        self.settings_btn.setEnabled(True)
-        
-        # Show the normal retry firmware install dialog
-        # This will allow the user to retry the installation
-        self.show_install_error_dialog()
 
     def show_presteps_image(self):
         """Show the presteps image"""
@@ -3936,7 +4282,26 @@ Method 2 - MTKclient: Direct technical installation
         """Constructs a path to a platform-specific image, with a fallback to a generic one."""
         system = platform.system()
         if system == "Windows":
-            suffix = "_win"
+            # Check driver status and architecture for Windows
+            driver_info = self.check_drivers_and_architecture()
+            
+            if driver_info['is_arm64']:
+                # ARM64 Windows: Use arm64windows.png for presteps
+                if base_name == "presteps":
+                    arm64_path = Path("mtkclient/gui/images/arm64windows.png")
+                    if arm64_path.exists():
+                        return str(arm64_path)
+                suffix = "_win"
+            elif not driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # No drivers: Use driverswindows.png for presteps
+                if base_name == "presteps":
+                    drivers_path = Path("mtkclient/gui/images/driverswindows.png")
+                    if drivers_path.exists():
+                        return str(drivers_path)
+                suffix = "_win"
+            else:
+                # Users with at least MTK driver (including Method 3 only mode) show presteps.png as usual
+                suffix = "_win"
         elif system == "Darwin":
             suffix = "_mac"
         elif system == "Linux":
@@ -4099,11 +4464,59 @@ Method 2 - MTKclient: Direct technical installation
     def open_driver_setup_link(self):
         """Open the driver setup instructions in the default browser"""
         import webbrowser
-        webbrowser.open("https://www.github.com/team-slide/Innioasis-Updater#windows-64bit-intelamd-only")
+        webbrowser.open("https://www.innioasis.app")
+
+    def open_usbdk_info(self, event):
+        """Open USB Development Kit information"""
+        import webbrowser
+        webbrowser.open("https://www.innioasis.app")
+
+    def open_arm64_info(self, event):
+        """Show ARM64 Windows information dialog"""
+        msg_box = QMessageBox(self)
+        msg_box.setWindowTitle("ARM64 Windows Detected")
+        msg_box.setIcon(QMessageBox.Information)
+        msg_box.setText("ARM64 Windows is not supported for firmware installation.")
+        msg_box.setInformativeText(
+            "On ARM64 Windows, you can only download firmware files.\n\n"
+            "To install firmware, please use one of these alternatives:\n"
+            "• WSLg (Windows Subsystem for Linux with GUI)\n"
+            "• Linux (dual boot or live USB)\n"
+            "• Another computer with x64 Windows\n\n"
+            "The firmware download functionality will still work normally."
+        )
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.exec()
 
     def install_from_zip(self):
         """Install firmware from a local zip file"""
         from PySide6.QtWidgets import QFileDialog, QMessageBox
+        
+        # Check driver availability for Windows users
+        if platform.system() == "Windows":
+            driver_info = self.check_drivers_and_architecture()
+            
+            if driver_info['is_arm64']:
+                QMessageBox.information(
+                    self,
+                    "ARM64 Windows Not Supported",
+                    "Firmware installation is not supported on ARM64 Windows.\n\n"
+                    "You can download firmware files, but to install them please use:\n"
+                    "• WSLg (Windows Subsystem for Linux with GUI)\n"
+                    "• Linux (dual boot or live USB)\n"
+                    "• Another computer with x64 Windows"
+                )
+                return
+                
+            elif not driver_info['can_install_firmware']:
+                QMessageBox.warning(
+                    self,
+                    "Drivers Required",
+                    "No installation methods available. Please install drivers to enable firmware installation.\n\n"
+                    "Click OK to open the driver installation guide."
+                )
+                self.open_driver_setup_link()
+                return
         
         # Open file dialog to select zip file
         file_path, _ = QFileDialog.getOpenFileName(
@@ -4319,11 +4732,6 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.stop()
             self.mtk_worker.wait()
             self.mtk_worker = None
-        
-        # Clean up timeout timer if it exists
-        if hasattr(self, 'mtk_timeout_timer') and self.mtk_timeout_timer:
-            self.mtk_timeout_timer.stop()
-            self.mtk_timeout_timer = None
 
         current_item = self.package_list.currentItem()
         if not current_item:
@@ -4500,7 +4908,48 @@ Method 2 - MTKclient: Direct technical installation
 
     def handle_installation_method(self):
         """Handle installation based on the selected method in settings"""
-        method = getattr(self, 'installation_method', 'guided')
+        # Check driver status for Windows users
+        if platform.system() == "Windows":
+            driver_info = self.check_drivers_and_architecture()
+            
+            if driver_info['is_arm64']:
+                # ARM64 Windows: No installation methods available
+                silent_print("=== ARM64 WINDOWS - NO INSTALLATION METHODS AVAILABLE ===")
+                QMessageBox.information(
+                    self,
+                    "ARM64 Windows Not Supported",
+                    "Firmware installation is not supported on ARM64 Windows.\n\n"
+                    "You can download firmware files, but to install them please use:\n"
+                    "• WSLg (Windows Subsystem for Linux with GUI)\n"
+                    "• Linux (dual boot or live USB)\n"
+                    "• Another computer with x64 Windows"
+                )
+                return
+                
+            elif not driver_info['can_install_firmware']:
+                # No drivers: No installation methods available
+                silent_print("=== NO DRIVERS - NO INSTALLATION METHODS AVAILABLE ===")
+                QMessageBox.warning(
+                    self,
+                    "Drivers Required",
+                    "No installation methods available. Please install drivers to enable firmware installation.\n\n"
+                    "Click OK to open the driver installation guide."
+                )
+                self.open_driver_setup_link()
+                return
+                
+            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # Only MTK driver: Force Method 3 for this session
+                silent_print("=== ONLY MTK DRIVER - FORCING METHOD 3 (SP FLASH TOOL) ===")
+                self.installation_method = "spflash"
+                method = "spflash"
+            else:
+                # Both drivers available: Use selected method
+                method = getattr(self, 'installation_method', 'guided')
+        else:
+            # Non-Windows: Use selected method
+            method = getattr(self, 'installation_method', 'guided')
+        
         always_use = getattr(self, 'always_use_method', False)
         silent_print(f"Handling installation method: {method} (always use: {always_use})")
         
@@ -4530,7 +4979,10 @@ Method 2 - MTKclient: Direct technical installation
             self.run_mtk_command()
         
         # If this was a one-time use method, reset to guided for next time
-        if not always_use:
+        # But don't reset if we forced Method 3 due to missing UsbDk driver
+        if not always_use and not (platform.system() == "Windows" and 
+                                  self.check_drivers_and_architecture()['has_mtk_driver'] and 
+                                  not self.check_drivers_and_architecture()['has_usbdk_driver']):
             silent_print("Resetting to guided method for next installation (one-time use)")
             self.installation_method = "guided"
             self.save_installation_preferences()
@@ -4875,7 +5327,13 @@ Method 2 - MTKclient: Direct technical installation
         self.load_initsteps_image()
 
         # Start MTK worker
-        self.mtk_worker = MTKWorker()
+        # Create debug window if debug mode is enabled
+        debug_window = None
+        if getattr(self, 'debug_mode', False):
+            debug_window = DebugOutputWindow(self)
+            debug_window.show()
+        
+        self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
@@ -5239,6 +5697,74 @@ read -n 1
                 f"Failed to launch the recovery firmware installer:\n{e}\n\n"
                 "Please try launching it manually."
             )
+
+    def check_drivers_and_architecture(self):
+        """Check driver availability and system architecture for Windows users"""
+        if platform.system() != "Windows":
+            return {
+                'has_mtk_driver': True,
+                'has_usbdk_driver': True,
+                'is_arm64': False,
+                'available_methods': ['guided', 'mtkclient'],
+                'can_install_firmware': True
+            }
+        
+        # Check for ARM64 architecture
+        is_arm64 = False
+        try:
+            import platform
+            machine = platform.machine().lower()
+            is_arm64 = machine in ['arm64', 'aarch64']
+        except:
+            pass
+        
+        # Check for MTK driver (SP Flash Tool driver)
+        has_mtk_driver = False
+        try:
+            mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
+            has_mtk_driver = mediatek_driver_file.exists()
+        except:
+            pass
+        
+        # Check for UsbDk driver
+        has_usbdk_driver = False
+        try:
+            usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
+            has_usbdk_driver = usbdk_driver_file.exists()
+        except:
+            pass
+        
+        # Determine available methods based on drivers
+        available_methods = []
+        can_install_firmware = True
+        
+        if is_arm64:
+            # ARM64 Windows: Only allow firmware downloads, no installation methods
+            available_methods = []
+            can_install_firmware = False
+        elif has_mtk_driver and has_usbdk_driver:
+            # Both drivers available: All methods available
+            available_methods = ['guided', 'mtkclient', 'spflash']
+        elif has_mtk_driver and not has_usbdk_driver:
+            # Only MTK driver: Force Method 3 (SP Flash Tool) for this session
+            # This acts as though the user selected Method 3 from settings but without ticking "use as default"
+            available_methods = ['spflash']
+            # Temporarily override installation method for this session only
+            if not hasattr(self, '_original_installation_method'):
+                self._original_installation_method = getattr(self, 'installation_method', 'guided')
+            self.installation_method = "spflash"
+        else:
+            # No drivers: No installation methods available
+            available_methods = []
+            can_install_firmware = False
+        
+        return {
+            'has_mtk_driver': has_mtk_driver,
+            'has_usbdk_driver': has_usbdk_driver,
+            'is_arm64': is_arm64,
+            'available_methods': available_methods,
+            'can_install_firmware': can_install_firmware
+        }
 
 if __name__ == "__main__":
     # Create the application
