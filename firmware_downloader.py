@@ -2208,7 +2208,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         left_layout = QVBoxLayout(left_panel)
 
         # Device filters
-        filter_group = QGroupBox()
+        filter_group = QGroupBox("Device Filters")
         filter_layout = QVBoxLayout(filter_group)
 
         # Device type filter
@@ -3441,19 +3441,25 @@ Method 2 - MTKclient: Direct technical installation
             QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
             return
 
-        # Confirm with user
-        reply = QMessageBox.question(
-            self,
-            "Before you begin:",
-            "1. Get a pin or paperclip ready",
-            "2. Keep Y1 Unplugged",
-            "3. Have cable ready in PC",
-            "4. Click OK then carefully follow the next steps",
-             "Tip: Innioasis Updater will offer to try a different method if something goes wrong",
-             "If the app stops responding, wait for a minute and if it doesn't back just restart it and try again",
-            QMessageBox.Ok | QMessageBox.Cancel,
-            QMessageBox.Cancel
-        )
+        # Confirm with user - Create custom message box with detailed instructions
+        msg_box = QMessageBox(self)
+        msg_box.setWindowTitle("Before you begin:")
+        msg_box.setIcon(QMessageBox.Information)
+        
+        # Combine all the instruction text into one detailed message
+        instruction_text = """1. Get a pin or paperclip ready
+2. Keep Y1 Unplugged
+3. Have cable ready in PC
+4. Click OK then carefully follow the next steps
+
+Tip: Innioasis Updater will offer to try a different method if something goes wrong
+If the app stops responding, wait for a minute and if it doesn't back just restart it and try again"""
+        
+        msg_box.setText(instruction_text)
+        msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        msg_box.setDefaultButton(QMessageBox.Cancel)
+        
+        reply = msg_box.exec()
 
         if reply == QMessageBox.Cancel:
             return
@@ -4648,18 +4654,25 @@ Method 2 - MTKclient: Direct technical installation
     def show_unplug_prompt_and_retry(self):
         """Show the unplug Y1 prompt and retry normal installation"""
         # Show the same unplug prompt that's used at the start of normal installation
-        reply = QMessageBox.question(
-            self,
-            "Before you begin:",
-            "1. Get a pin or paperclip ready",
-            "2. Keep Y1 Unplugged",
-            "3. Have cable ready in PC",
-            "4. Click OK then carefully follow the next steps",
-            "Tip: Innioasis Updater will offer to try a different method if something goes wrong",
-            "If the app stops responding, wait for a minute and if it doesn't back just restart it and try again",
-            QMessageBox.Ok | QMessageBox.Cancel,
-            QMessageBox.Cancel
-        )
+        # Create custom message box with detailed instructions
+        msg_box = QMessageBox(self)
+        msg_box.setWindowTitle("Before you begin:")
+        msg_box.setIcon(QMessageBox.Information)
+        
+        # Combine all the instruction text into one detailed message
+        instruction_text = """1. Get a pin or paperclip ready
+2. Keep Y1 Unplugged
+3. Have cable ready in PC
+4. Click OK then carefully follow the next steps
+
+Tip: Innioasis Updater will offer to try a different method if something goes wrong
+If the app stops responding, wait for a minute and if it doesn't back just restart it and try again"""
+        
+        msg_box.setText(instruction_text)
+        msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        msg_box.setDefaultButton(QMessageBox.Cancel)
+        
+        reply = msg_box.exec()
 
         if reply == QMessageBox.Cancel:
             return
