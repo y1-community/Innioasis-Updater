@@ -6,6 +6,8 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 # [Download for Mac and Windows](https://innioasis.app)
 
+
+
 ## Devloped by
 - Ryan Specter of Team Slide
 
@@ -112,4 +114,5 @@ or:
 ```
 python3 updater.py
 ```
-```
+# Windows 64Bit Intel/AMD Only 
+# Please follow the setup steps at www.innioasis.app to get the drivers you need.
