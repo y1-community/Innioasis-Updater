@@ -137,23 +137,32 @@ class UpdateWorker(QThread):
                         if not self.platform_info['is_windows'] and ext in ['.exe', '.dll', '.lnk']:
                             continue
                         if dest_item.exists() and ext in ['.exe', '.dll']:
+                            self.status_updated.emit(f"Skipping {item.name} - already exists (prevents blocking)")
                             continue
                         shutil.copy2(item, dest_item)
                     elif item.is_dir():
                         if dest_item.exists(): shutil.rmtree(dest_item)
                         shutil.copytree(item, dest_item)
                 except (IOError, OSError, shutil.Error) as e:
-                    is_critical = ext in ['.py', '.png'] or (ext == '.exe' and not dest_item.exists())
+                    # Only treat Python files and missing executables as critical
+                    is_critical = ext == '.py' or (ext == '.exe' and not dest_item.exists())
                     if is_critical:
                         critical_error_occurred = True
                         logging.error("CRITICAL ERROR updating %s: %s", item.name, e)
+                        self.status_updated.emit(f"Critical error updating {item.name}: {e}")
                     else:
-                        logging.warning("Non-critical error on %s, skipping.", item.name)
+                        logging.warning("Non-critical error on %s, skipping: %s", item.name, e)
+                        self.status_updated.emit(f"Skipping {item.name} due to error: {e}")
                 
                 progress = int(75 + ((i + 1) / total_items) * 20)
                 self.progress_updated.emit(progress)
 
-            if critical_error_occurred: raise RuntimeError("A critical file could not be updated.")
+            # Even if some files were skipped, continue with the update
+            if critical_error_occurred:
+                self.status_updated.emit("Warning: Some critical files could not be updated")
+                self.status_updated.emit("The app will run with existing versions")
+            else:
+                self.status_updated.emit("All files updated successfully!")
             
             self.status_updated.emit("Finalizing...")
             timestamp_file.write_text(str(datetime.date.today()))
@@ -197,7 +206,7 @@ class UpdateProgressDialog(QDialog):
         title_label = QLabel("Innioasis Updater"); title_label.setFont(QFont("Arial", 16, QFont.Bold)); title_label.setAlignment(Qt.AlignCenter)
         self.status_label = QLabel("Initializing..."); self.status_label.setAlignment(Qt.AlignCenter); self.status_label.setWordWrap(True)
         self.progress_bar = QProgressBar(); self.progress_bar.setRange(0, 100); self.progress_bar.setTextVisible(False)
-        self.update_button = QPushButton("Run without updating"); self.update_button.clicked.connect(self.reject)
+        self.update_button = QPushButton("Run without updating"); self.update_button.clicked.connect(self.run_without_update)
         self.troubleshoot_button = QPushButton("Open Troubleshooting Tools"); self.troubleshoot_button.clicked.connect(self.run_troubleshooter)
         
         layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.troubleshoot_button); layout.addWidget(self.update_button)
@@ -221,6 +230,10 @@ class UpdateProgressDialog(QDialog):
             self.status_label.setText("You're all up to date! Launching now...")
             self.progress_bar.hide(); self.update_button.hide(); self.troubleshoot_button.hide()
             QTimer.singleShot(1500, self.accept)
+
+    def run_without_update(self):
+        """Run the app without updating"""
+        self.accept()  # Close dialog and continue to app launch
 
     def run_troubleshooter(self):
         self.troubleshoot_button.setEnabled(False)
