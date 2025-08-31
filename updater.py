@@ -85,12 +85,12 @@ class UpdateWorker(QThread):
     progress_updated = Signal(int)
     status_updated = Signal(str)
     update_completed = Signal(bool)
-
+    
     def __init__(self):
         super().__init__()
         self.should_stop = False
         self.platform_info = CrossPlatformHelper.get_platform_info()
-
+        
     def run(self):
         temp_dir = None
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s', filename='updater.log', filemode='w')
@@ -101,7 +101,7 @@ class UpdateWorker(QThread):
             timestamp_file = current_dir / ".last_update_check"
             self.status_updated.emit("Just checking for the latest version...")
             self.progress_updated.emit(5)
-
+            
             main_repo_url = "https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip"
             zip_file = temp_dir / "innioasis_updater_latest.zip"
             self.status_updated.emit(f"Grabbing updates from GitHub...")
@@ -134,15 +134,46 @@ class UpdateWorker(QThread):
                     
                     ext = item.suffix.lower()
                     if item.is_file():
+                        # Skip platform-incompatible files
                         if not self.platform_info['is_windows'] and ext in ['.exe', '.dll', '.lnk']:
+                            self.status_updated.emit(f"Skipping {item.name} - not compatible with {self.platform_info['system']}")
                             continue
+                        
+                        # Skip copying existing .exe/.dll files to prevent blocking
                         if dest_item.exists() and ext in ['.exe', '.dll']:
                             self.status_updated.emit(f"Skipping {item.name} - already exists (prevents blocking)")
                             continue
+                        
+                        # Copy the file (this will overwrite existing files safely)
                         shutil.copy2(item, dest_item)
+                        
                     elif item.is_dir():
-                        if dest_item.exists(): shutil.rmtree(dest_item)
-                        shutil.copytree(item, dest_item)
+                        # For directories, preserve existing content and merge new files
+                        if dest_item.exists():
+                            # Copy individual files from the directory without deleting anything
+                            self.status_updated.emit(f"Updating directory {item.name} (preserving existing files)")
+                            for subitem in item.iterdir():
+                                subdest = dest_item / subitem.name
+                                if subitem.is_file():
+                                    # Skip platform-incompatible files
+                                    if not self.platform_info['is_windows'] and subitem.suffix.lower() in ['.exe', '.dll', '.lnk']:
+                                        continue
+                                    # Skip .exe and .dll files that already exist to prevent blocking
+                                    if subdest.exists() and subitem.suffix.lower() in ['.exe', '.dll']:
+                                        self.status_updated.emit(f"Skipping {subitem.name} - already exists (prevents blocking)")
+                                        continue
+                                    # Copy the file (this will overwrite existing files safely)
+                                    shutil.copy2(subitem, subdest)
+                                elif subitem.is_dir():
+                                    # For subdirectories, copy if they don't exist, otherwise merge
+                                    if not subdest.exists():
+                                        shutil.copytree(subitem, subdest)
+                                    else:
+                                        # Recursively merge subdirectories
+                                        self.merge_directories(subitem, subdest)
+                        else:
+                            # Directory doesn't exist, copy it normally
+                            shutil.copytree(item, dest_item)
                 except (IOError, OSError, shutil.Error) as e:
                     # Only treat Python files and missing executables as critical
                     is_critical = ext == '.py' or (ext == '.exe' and not dest_item.exists())
@@ -163,12 +194,13 @@ class UpdateWorker(QThread):
                 self.status_updated.emit("The app will run with existing versions")
             else:
                 self.status_updated.emit("All files updated successfully!")
+            self.status_updated.emit("PNG files and assets preserved - only executables were updated")
             
             self.status_updated.emit("Finalizing...")
             timestamp_file.write_text(str(datetime.date.today()))
             self.progress_updated.emit(100)
             self.update_completed.emit(True)
-
+            
         except requests.exceptions.RequestException as e:
             self.status_updated.emit("Couldn't connect. We'll skip the update for now.")
             time.sleep(3)
@@ -179,6 +211,27 @@ class UpdateWorker(QThread):
             self.update_completed.emit(False)
         finally:
             if temp_dir and temp_dir.exists(): shutil.rmtree(temp_dir, ignore_errors=True)
+
+    def merge_directories(self, src_dir, dest_dir):
+        """Recursively merge source directory into destination directory, preserving existing files"""
+        for item in src_dir.iterdir():
+            dest_item = dest_dir / item.name
+            if item.is_file():
+                # Skip platform-incompatible files
+                if not self.platform_info['is_windows'] and item.suffix.lower() in ['.exe', '.dll', '.lnk']:
+                    continue
+                # Skip .exe and .dll files that already exist to prevent blocking
+                if dest_item.exists() and item.suffix.lower() in ['.exe', '.dll']:
+                    self.status_updated.emit(f"Skipping {item.name} - already exists (prevents blocking)")
+                    continue
+                # Copy the file (this will overwrite existing files safely)
+                shutil.copy2(item, dest_item)
+            elif item.is_dir():
+                if not dest_item.exists():
+                    shutil.copytree(item, dest_item)
+                else:
+                    # Recursively merge subdirectories
+                    self.merge_directories(item, dest_item)
 
     def download_with_progress(self, url, filepath, base_progress, progress_range):
         response = requests.get(url, stream=True, timeout=15)
@@ -201,7 +254,7 @@ class UpdateProgressDialog(QDialog):
         self.setWindowTitle("Innioasis Updater")
         self.setModal(True)
         self.setFixedSize(450, 180)
-
+        
         layout = QVBoxLayout(self)
         title_label = QLabel("Innioasis Updater"); title_label.setFont(QFont("Arial", 16, QFont.Bold)); title_label.setAlignment(Qt.AlignCenter)
         self.status_label = QLabel("Initializing..."); self.status_label.setAlignment(Qt.AlignCenter); self.status_label.setWordWrap(True)
@@ -347,7 +400,7 @@ def main():
     if not (is_troubleshoot_request and not platform_info['is_windows']):
         launch_firmware_downloader()
     
-    sys.exit(0)
+        sys.exit(0)
 
 if __name__ == "__main__":
     main()
