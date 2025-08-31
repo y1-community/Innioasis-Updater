@@ -114,5 +114,26 @@ or:
 ```
 python3 updater.py
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Windows 64Bit Intel/AMD Only 
 # Please follow the setup steps at www.innioasis.app to get the drivers you need.
