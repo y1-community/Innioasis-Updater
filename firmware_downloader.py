@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
                                QFileDialog, QDialog)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
-from PySide6.QtGui import QFont, QPixmap
+from PySide6.QtGui import QFont, QPixmap, QIcon
 import platform
 import time
 from collections import defaultdict
@@ -1121,7 +1121,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Check for SP Flash Tool on Windows before loading data
         if platform.system() == "Windows":
-            self.check_sp_flash_tool()
+            # Delay the flash tool check to avoid blocking startup
+            QTimer.singleShot(100, self.check_sp_flash_tool)
             # Download troubleshooting shortcuts if missing
             QTimer.singleShot(200, self.ensure_troubleshooting_shortcuts)
             # Check for old shortcuts and offer cleanup
@@ -1132,6 +1133,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Ensure troubleshooting shortcuts are available
         QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
+
+        # Download latest updater.py during launch
+        QTimer.singleShot(600, self.download_latest_updater)
 
         # Load data asynchronously to avoid blocking UI
         QTimer.singleShot(100, self.load_data)
@@ -1186,9 +1190,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     # Optionally, you could close the application here
                     # self.close()
                 
-        except subprocess.TimeoutExpired:
-            # If tasklist times out, assume no conflict and continue
-            pass
+        except (subprocess.TimeoutExpired, FileNotFoundError, OSError):
+            # If tasklist times out or is not available, assume no conflict and continue
+            silent_print("Flash tool check skipped - tasklist not available")
         except Exception as e:
             # If there's any error checking for the process, continue silently
             silent_print(f"Error checking for flash tools: {e}")
@@ -2833,6 +2837,79 @@ class FirmwareDownloaderGUI(QMainWindow):
                                                 "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Y1 Remote Control: {e}")
+
+    def download_latest_updater(self):
+        """Download the latest updater.py script silently during launch"""
+        try:
+            updater_url = "https://innioasis.app/updater.py"
+            response = requests.get(updater_url, timeout=10)
+            response.raise_for_status()
+
+            updater_path = Path("updater.py")
+            with open(updater_path, 'wb') as f:
+                f.write(response.content)
+
+            silent_print("Latest updater.py downloaded successfully")
+        except Exception as e:
+            silent_print(f"Failed to download latest updater.py: {e}")
+
+    def check_for_utility_updates(self):
+        """Check for and download the latest updater.py when user clicks the button, then run it"""
+        try:
+            # Show progress dialog
+            progress_dialog = QDialog(self)
+            progress_dialog.setWindowTitle("Checking for Updates")
+            progress_dialog.setFixedSize(300, 100)
+            progress_dialog.setModal(True)
+            
+            layout = QVBoxLayout(progress_dialog)
+            status_label = QLabel("Checking for utility updates...")
+            layout.addWidget(status_label)
+            
+            progress_dialog.show()
+            
+            # Download the latest updater.py
+            updater_url = "https://innioasis.app/updater.py"
+            response = requests.get(updater_url, timeout=15)
+            response.raise_for_status()
+
+            updater_path = Path("updater.py")
+            with open(updater_path, 'wb') as f:
+                f.write(response.content)
+
+            progress_dialog.close()
+            QMessageBox.information(self, "Update Complete", "The latest updater.py has been downloaded successfully!")
+            
+            # Run the updated updater.py
+            self.run_updater()
+            
+        except requests.exceptions.RequestException as e:
+            progress_dialog.close()
+            QMessageBox.warning(self, "Update Failed", 
+                              f"Could not connect to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
+            # Still try to run the existing updater
+            self.run_updater()
+        except Exception as e:
+            progress_dialog.close()
+            QMessageBox.warning(self, "Update Failed", 
+                              f"Failed to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
+            # Still try to run the existing updater
+            self.run_updater()
+
+    def run_updater(self):
+        """Run the updater.py script"""
+        try:
+            updater_path = Path("updater.py")
+            if updater_path.exists():
+                # Close the current application
+                self.close()
+                
+                # Run the updater
+                subprocess.Popen([sys.executable, str(updater_path)])
+            else:
+                QMessageBox.error(self, "Error", "updater.py not found!")
+        except Exception as e:
+            QMessageBox.error(self, "Error", f"Failed to run updater.py: {e}")
     
     def show_settings_dialog(self):
         """Show settings dialog for choosing installation method"""
@@ -2901,6 +2978,12 @@ Method 2 - MTKclient: Direct technical installation
             """)
         
         layout.addWidget(desc_text)
+        
+        # Add utility updates button
+        utility_update_btn = QPushButton("Check for Utility Updates")
+        utility_update_btn.setToolTip("Download the latest updater.py script")
+        utility_update_btn.clicked.connect(self.check_for_utility_updates)
+        layout.addWidget(utility_update_btn)
         
         # Buttons
         button_layout = QHBoxLayout()
@@ -5054,27 +5137,31 @@ read -n 1
             )
 
 if __name__ == "__main__":
-    # Create the application
-    app = QApplication(sys.argv)
+    try:
+        # Create the application
+        app = QApplication(sys.argv)
 
-    # Set application icon based on platform
-    from PySide6.QtGui import QIcon
-    import platform
+        # Set application icon based on platform
+        if platform.system() == "Darwin":  # macOS
+            icon_path = "mtkclient/gui/images/Innioasis Updater Icon.icns"
+        elif platform.system() == "Windows":
+            icon_path = "mtkclient/gui/images/icon.ico"
+        else:
+            # Fallback to PNG for other platforms
+            icon_path = "mtkclient/gui/images/icon.png"
 
-    if platform.system() == "Darwin":  # macOS
-        icon_path = "mtkclient/gui/images/Innioasis Updater Icon.icns"
-    elif platform.system() == "Windows":
-        icon_path = "mtkclient/gui/images/icon.ico"
-    else:
-        # Fallback to PNG for other platforms
-        icon_path = "mtkclient/gui/images/icon.png"
+        if Path(icon_path).exists():
+            app.setWindowIcon(QIcon(icon_path))
 
-    if Path(icon_path).exists():
-        app.setWindowIcon(QIcon(icon_path))
+        # Create and show the main window
+        window = FirmwareDownloaderGUI()
+        window.show()
 
-    # Create and show the main window
-    window = FirmwareDownloaderGUI()
-    window.show()
+        # Start the application event loop
+        sys.exit(app.exec())
+    except Exception as e:
+        print(f"Error starting application: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
 
-    # Start the application event loop
-    sys.exit(app.exec())
