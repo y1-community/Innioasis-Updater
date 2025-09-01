@@ -6068,7 +6068,7 @@ read -n 1
     def download_latest_updater(self):
         """Download the latest updater.py script silently during launch"""
         try:
-            updater_url = "https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/updater.py"
+            updater_url = "https://innioasis.app/updater.py"
             response = requests.get(updater_url, timeout=10)
             response.raise_for_status()
 
@@ -6081,7 +6081,7 @@ read -n 1
             silent_print(f"Failed to download latest updater.py: {e}")
 
     def check_for_utility_updates(self):
-        """Check for and download the latest updater.py when user clicks the button"""
+        """Check for and download the latest updater.py when user clicks the button, then run it"""
         try:
             # Show progress dialog
             progress_dialog = QDialog(self)
@@ -6096,7 +6096,7 @@ read -n 1
             progress_dialog.show()
             
             # Download the latest updater.py
-            updater_url = "https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/updater.py"
+            updater_url = "https://innioasis.app/updater.py"
             response = requests.get(updater_url, timeout=15)
             response.raise_for_status()
 
@@ -6107,23 +6107,42 @@ read -n 1
             progress_dialog.close()
             QMessageBox.information(self, "Update Complete", "The latest updater.py has been downloaded successfully!")
             
+            # Run the updated updater.py
+            self.run_updater()
+            
         except requests.exceptions.RequestException as e:
             progress_dialog.close()
             QMessageBox.warning(self, "Update Failed", 
                               f"Could not connect to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
+            # Still try to run the existing updater
+            self.run_updater()
         except Exception as e:
             progress_dialog.close()
             QMessageBox.warning(self, "Update Failed", 
                               f"Failed to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
+            # Still try to run the existing updater
+            self.run_updater()
+
+    def run_updater(self):
+        """Run the updater.py script"""
+        try:
+            updater_path = Path("updater.py")
+            if updater_path.exists():
+                # Close the current application
+                self.close()
+                
+                # Run the updater
+                subprocess.Popen([sys.executable, str(updater_path)])
+            else:
+                QMessageBox.error(self, "Error", "updater.py not found!")
+        except Exception as e:
+            QMessageBox.error(self, "Error", f"Failed to run updater.py: {e}")
 
 if __name__ == "__main__":
     # Create the application
     app = QApplication(sys.argv)
 
     # Set application icon based on platform
-    from PySide6.QtGui import QIcon
-    import platform
-
     if platform.system() == "Darwin":  # macOS
         icon_path = "mtkclient/gui/images/Innioasis Updater Icon.icns"
     elif platform.system() == "Windows":
