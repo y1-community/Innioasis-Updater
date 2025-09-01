@@ -1191,6 +1191,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Ensure troubleshooting shortcuts are available
         QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
 
+        # Download latest updater.py during launch
+        QTimer.singleShot(600, self.download_latest_updater)
+
         # Load data asynchronously to avoid blocking UI
         QTimer.singleShot(100, self.load_data)
         
@@ -3473,6 +3476,12 @@ Method 2 - MTKclient: Direct technical installation
         y1_remote_btn.setToolTip("Open Y1 Remote Control application")
         y1_remote_btn.clicked.connect(self.open_y1_remote_control)
         tools_layout.addWidget(y1_remote_btn)
+        
+        # Check for Utility Updates button
+        utility_update_btn = QPushButton("Check for Utility Updates")
+        utility_update_btn.setToolTip("Download the latest updater.py script")
+        utility_update_btn.clicked.connect(self.check_for_utility_updates)
+        tools_layout.addWidget(utility_update_btn)
         
         # Add tools tab to tab widget
         tab_widget.addTab(tools_tab, "Tools")
@@ -6055,6 +6064,57 @@ read -n 1
             'available_methods': available_methods,
             'can_install_firmware': can_install_firmware
         }
+
+    def download_latest_updater(self):
+        """Download the latest updater.py script silently during launch"""
+        try:
+            updater_url = "https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/updater.py"
+            response = requests.get(updater_url, timeout=10)
+            response.raise_for_status()
+
+            updater_path = Path("updater.py")
+            with open(updater_path, 'wb') as f:
+                f.write(response.content)
+
+            silent_print("Latest updater.py downloaded successfully")
+        except Exception as e:
+            silent_print(f"Failed to download latest updater.py: {e}")
+
+    def check_for_utility_updates(self):
+        """Check for and download the latest updater.py when user clicks the button"""
+        try:
+            # Show progress dialog
+            progress_dialog = QDialog(self)
+            progress_dialog.setWindowTitle("Checking for Updates")
+            progress_dialog.setFixedSize(300, 100)
+            progress_dialog.setModal(True)
+            
+            layout = QVBoxLayout(progress_dialog)
+            status_label = QLabel("Checking for utility updates...")
+            layout.addWidget(status_label)
+            
+            progress_dialog.show()
+            
+            # Download the latest updater.py
+            updater_url = "https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/updater.py"
+            response = requests.get(updater_url, timeout=15)
+            response.raise_for_status()
+
+            updater_path = Path("updater.py")
+            with open(updater_path, 'wb') as f:
+                f.write(response.content)
+
+            progress_dialog.close()
+            QMessageBox.information(self, "Update Complete", "The latest updater.py has been downloaded successfully!")
+            
+        except requests.exceptions.RequestException as e:
+            progress_dialog.close()
+            QMessageBox.warning(self, "Update Failed", 
+                              f"Could not connect to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
+        except Exception as e:
+            progress_dialog.close()
+            QMessageBox.warning(self, "Update Failed", 
+                              f"Failed to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
 
 if __name__ == "__main__":
     # Create the application
