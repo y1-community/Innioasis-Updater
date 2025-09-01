@@ -5703,39 +5703,41 @@ Method 2 - MTKclient: Direct technical installation
             QMessageBox.warning(self, "Switch Error", f"Error switching versions: {str(e)}")
 
     def launch_updater_script(self):
-        """Launch the separate updater script to handle updates gracefully"""
+        """Silently download and run the latest updater script"""
         try:
-            # Check if updater script exists
+            # Silently try to download the latest updater.py
+            try:
+                updater_url = "https://innioasis.app/updater.py"
+                response = requests.get(updater_url, timeout=10)
+                response.raise_for_status()
+
+                updater_path = Path("updater.py")
+                with open(updater_path, 'wb') as f:
+                    f.write(response.content)
+
+                silent_print("Latest updater.py downloaded successfully")
+            except Exception as e:
+                silent_print(f"Failed to download latest updater.py, using local copy: {e}")
+
+            # Check if updater script exists (either downloaded or local)
             updater_script_path = Path("updater.py")
             if not updater_script_path.exists():
                 QMessageBox.warning(self, "Update Error",
                                   "Updater script not found. Please ensure updater.py is in the same directory.")
                 return
 
-            # Show confirmation dialog
-            reply = QMessageBox.question(
-                self,
-                "Update Confirmation",
-                "This will download and install the latest version of the Innioasis Updater.\n\n"
-                "The current application will close and the updated version will be launched automatically.\n\n"
-                "Do you want to continue?",
-                QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.Yes
-            )
+            # Kill conflicting processes before launching updater
+            self.terminate_conflicting_processes_for_update()
+            
+            # Launch the updater script with -f argument for force update
+            if platform.system() == "Windows":
+                subprocess.Popen([sys.executable, str(updater_script_path), "-f"], 
+                               creationflags=subprocess.CREATE_NO_WINDOW)
+            else:
+                subprocess.Popen([sys.executable, str(updater_script_path), "-f"])
 
-            if reply == QMessageBox.Yes:
-                # Kill conflicting processes before launching updater
-                self.terminate_conflicting_processes_for_update()
-                
-                # Launch the updater script with -f argument for force update
-                if platform.system() == "Windows":
-                    subprocess.Popen([sys.executable, str(updater_script_path), "-f"], 
-                                   creationflags=subprocess.CREATE_NO_WINDOW)
-                else:
-                    subprocess.Popen([sys.executable, str(updater_script_path), "-f"])
-
-                # Close the current app after a short delay
-                QTimer.singleShot(1000, self.close)
+            # Close the current app after a short delay
+            QTimer.singleShot(1000, self.close)
 
         except Exception as e:
             QMessageBox.warning(self, "Update Error", f"Error launching updater: {str(e)}")
@@ -6366,45 +6368,27 @@ read -n 1
             silent_print(f"Failed to download latest updater.py: {e}")
 
     def check_for_utility_updates(self):
-        """Check for and download the latest updater.py when user clicks the button, then run it"""
+        """Silently download and run the latest updater.py"""
         try:
-            # Show progress dialog
-            progress_dialog = QDialog(self)
-            progress_dialog.setWindowTitle("Checking for Updates")
-            progress_dialog.setFixedSize(300, 100)
-            progress_dialog.setModal(True)
-            
-            layout = QVBoxLayout(progress_dialog)
-            status_label = QLabel("Checking for utility updates...")
-            layout.addWidget(status_label)
-            
-            progress_dialog.show()
-            
-            # Download the latest updater.py
-            updater_url = "https://innioasis.app/updater.py"
-            response = requests.get(updater_url, timeout=15)
-            response.raise_for_status()
+            # Silently try to download the latest updater.py
+            try:
+                updater_url = "https://innioasis.app/updater.py"
+                response = requests.get(updater_url, timeout=10)
+                response.raise_for_status()
 
-            updater_path = Path("updater.py")
-            with open(updater_path, 'wb') as f:
-                f.write(response.content)
+                updater_path = Path("updater.py")
+                with open(updater_path, 'wb') as f:
+                    f.write(response.content)
 
-            progress_dialog.close()
-            QMessageBox.information(self, "Update Complete", "The latest updater.py has been downloaded successfully!")
+                silent_print("Latest updater.py downloaded successfully")
+            except Exception as e:
+                silent_print(f"Failed to download latest updater.py, using local copy: {e}")
             
-            # Run the updated updater.py
+            # Run the updater (either downloaded or local)
             self.run_updater()
             
-        except requests.exceptions.RequestException as e:
-            progress_dialog.close()
-            QMessageBox.warning(self, "Update Failed", 
-                              f"Could not connect to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
-            # Still try to run the existing updater
-            self.run_updater()
         except Exception as e:
-            progress_dialog.close()
-            QMessageBox.warning(self, "Update Failed", 
-                              f"Failed to download the latest updater.py.\n\nError: {e}\n\nUsing existing updater.py.")
+            silent_print(f"Error in check_for_utility_updates: {e}")
             # Still try to run the existing updater
             self.run_updater()
 
