@@ -1208,6 +1208,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Download latest updater.py during launch
         QTimer.singleShot(600, self.download_latest_updater)
 
+        # Preload critical images with web fallback
+        QTimer.singleShot(700, self.preload_critical_images)
+
         # Load data asynchronously to avoid blocking UI
         QTimer.singleShot(100, self.load_data)
         
@@ -4626,6 +4629,127 @@ Method 2 - MTKclient: Direct technical installation
         if hasattr(self, '_current_pixmap') and self._current_pixmap:
             self.set_image_with_aspect_ratio(self._current_pixmap)
 
+    def download_image_from_web(self, image_path):
+        """Download an image from the website as a fallback"""
+        try:
+            # Construct the web URL
+            web_url = f"https://innioasis.app/{image_path}"
+            silent_print(f"Attempting to download image from: {web_url}")
+            
+            # Download the image
+            response = requests.get(web_url, timeout=10)
+            response.raise_for_status()
+            
+            # Ensure the local directory exists
+            local_path = Path(image_path)
+            local_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Save the image locally
+            with open(local_path, 'wb') as f:
+                f.write(response.content)
+            
+            silent_print(f"Successfully downloaded image to: {local_path}")
+            return True
+            
+        except Exception as e:
+            silent_print(f"Failed to download image from web: {e}")
+            return False
+
+    def load_image_with_web_fallback(self, image_path):
+        """Load an image with web fallback if local file doesn't exist"""
+        try:
+            local_path = Path(image_path)
+            
+            # Try to load from local file first
+            if local_path.exists():
+                pixmap = QPixmap(image_path)
+                if not pixmap.isNull():
+                    return pixmap
+            
+            # Try to download from web if local file doesn't exist or is invalid
+            if self.download_image_from_web(image_path):
+                pixmap = QPixmap(image_path)
+                if not pixmap.isNull():
+                    return pixmap
+            
+            return None
+            
+        except Exception as e:
+            silent_print(f"Error loading image with web fallback: {e}")
+            return None
+
+    def ensure_image_exists(self, image_path):
+        """Ensure an image exists locally, downloading from web if necessary"""
+        try:
+            local_path = Path(image_path)
+            
+            # If file exists and is valid, return True
+            if local_path.exists():
+                # Test if it's a valid image
+                test_pixmap = QPixmap(image_path)
+                if not test_pixmap.isNull():
+                    return True
+            
+            # Try to download from web
+            return self.download_image_from_web(image_path)
+            
+        except Exception as e:
+            silent_print(f"Error ensuring image exists: {e}")
+            return False
+
+    def preload_critical_images(self):
+        """Preload critical images to ensure they're available when needed"""
+        try:
+            # List of critical images that should be available
+            critical_images = [
+                "mtkclient/gui/images/presteps.png",
+                "mtkclient/gui/images/initsteps.png",
+                "mtkclient/gui/images/installing.png",
+                "mtkclient/gui/images/installed.png",
+                "mtkclient/gui/images/process_ended.png",
+                "mtkclient/gui/images/method2.png",
+                "mtkclient/gui/images/method3.png",
+                "mtkclient/gui/images/handshake_err.png"
+            ]
+            
+            # Add platform-specific variants
+            system = platform.system()
+            if system == "Windows":
+                critical_images.extend([
+                    "mtkclient/gui/images/presteps_win.png",
+                    "mtkclient/gui/images/initsteps_win.png",
+                    "mtkclient/gui/images/method2_win.png",
+                    "mtkclient/gui/images/method3_win.png",
+                    "mtkclient/gui/images/handshake_err_win.png",
+                    "mtkclient/gui/images/arm64windows.png",
+                    "mtkclient/gui/images/driverswindows.png"
+                ])
+            elif system == "Darwin":
+                critical_images.extend([
+                    "mtkclient/gui/images/presteps_mac.png",
+                    "mtkclient/gui/images/initsteps_mac.png",
+                    "mtkclient/gui/images/method2_mac.png",
+                    "mtkclient/gui/images/method3_mac.png",
+                    "mtkclient/gui/images/handshake_err_mac.png"
+                ])
+            elif system == "Linux":
+                critical_images.extend([
+                    "mtkclient/gui/images/presteps_linux.png",
+                    "mtkclient/gui/images/initsteps_linux.png",
+                    "mtkclient/gui/images/method2_linux.png",
+                    "mtkclient/gui/images/method3_linux.png",
+                    "mtkclient/gui/images/handshake_err_linux.png"
+                ])
+            
+            # Ensure each critical image exists
+            for image_path in critical_images:
+                self.ensure_image_exists(image_path)
+                
+            silent_print("Critical images preloaded successfully")
+            
+        except Exception as e:
+            silent_print(f"Error preloading critical images: {e}")
+
     def get_platform_image_path(self, base_name):
         """Constructs a path to a platform-specific image, with a fallback to a generic one."""
         system = platform.system()
@@ -4664,9 +4788,23 @@ Method 2 - MTKclient: Direct technical installation
             platform_specific_path = base_path / f"{base_name}{suffix}.png"
             if platform_specific_path.exists():
                 return str(platform_specific_path)
+            else:
+                # Try to download from web if local file doesn't exist
+                web_path = f"mtkclient/gui/images/{base_name}{suffix}.png"
+                if self.download_image_from_web(web_path):
+                    return str(platform_specific_path)
 
         # Fallback to generic path
         generic_path = base_path / f"{base_name}.png"
+        if generic_path.exists():
+            return str(generic_path)
+        else:
+            # Try to download from web if local file doesn't exist
+            web_path = f"mtkclient/gui/images/{base_name}.png"
+            if self.download_image_from_web(web_path):
+                return str(generic_path)
+        
+        # If all else fails, return the generic path (will be handled by caller)
         return str(generic_path)
 
     def load_presteps_image(self):
@@ -4702,10 +4840,23 @@ Method 2 - MTKclient: Direct technical installation
         self.set_image_with_aspect_ratio(self._initsteps_pixmap)
 
     def load_installing_image(self):
-        """Load installing image with lazy loading"""
+        """Load installing image with lazy loading and web fallback"""
         if not hasattr(self, '_installing_pixmap'):
             try:
-                self._installing_pixmap = QPixmap("mtkclient/gui/images/installing.png")
+                image_path = "mtkclient/gui/images/installing.png"
+                local_path = Path(image_path)
+                
+                # Try to load from local file first
+                if local_path.exists():
+                    self._installing_pixmap = QPixmap(image_path)
+                else:
+                    # Try to download from web if local file doesn't exist
+                    if self.download_image_from_web(image_path):
+                        self._installing_pixmap = QPixmap(image_path)
+                    else:
+                        silent_print("Failed to load installing.png from local and web")
+                        return
+                
                 if self._installing_pixmap.isNull():
                     silent_print("Failed to load installing.png")
                     return
@@ -4717,10 +4868,23 @@ Method 2 - MTKclient: Direct technical installation
         self.set_image_with_aspect_ratio(self._installing_pixmap)
 
     def load_installed_image(self):
-        """Load installed image with lazy loading"""
+        """Load installed image with lazy loading and web fallback"""
         if not hasattr(self, '_installed_pixmap'):
             try:
-                self._installed_pixmap = QPixmap("mtkclient/gui/images/installed.png")
+                image_path = "mtkclient/gui/images/installed.png"
+                local_path = Path(image_path)
+                
+                # Try to load from local file first
+                if local_path.exists():
+                    self._installed_pixmap = QPixmap(image_path)
+                else:
+                    # Try to download from web if local file doesn't exist
+                    if self.download_image_from_web(image_path):
+                        self._installed_pixmap = QPixmap(image_path)
+                    else:
+                        silent_print("Failed to load installed.png from local and web")
+                        return
+                
                 if self._installed_pixmap.isNull():
                     silent_print("Failed to load installed.png")
                     return
@@ -4748,10 +4912,23 @@ Method 2 - MTKclient: Direct technical installation
         self.set_image_with_aspect_ratio(self._handshake_error_pixmap)
 
     def load_process_ended_image(self):
-        """Load process ended image with lazy loading"""
+        """Load process ended image with lazy loading and web fallback"""
         if not hasattr(self, '_process_ended_pixmap'):
             try:
-                self._process_ended_pixmap = QPixmap("mtkclient/gui/images/process_ended.png")
+                image_path = "mtkclient/gui/images/process_ended.png"
+                local_path = Path(image_path)
+                
+                # Try to load from local file first
+                if local_path.exists():
+                    self._process_ended_pixmap = QPixmap(image_path)
+                else:
+                    # Try to download from web if local file doesn't exist
+                    if self.download_image_from_web(image_path):
+                        self._process_ended_pixmap = QPixmap(image_path)
+                    else:
+                        silent_print("Failed to load process_ended.png from local and web")
+                        return
+                
                 if self._process_ended_pixmap.isNull():
                     silent_print("Failed to load process_ended.png")
                     return
