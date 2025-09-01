@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QWidget, QListWidget, QListWidgetItem, QPushButton, QTextEdit,
                                QLabel, QComboBox, QProgressBar, QMessageBox,
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
-                               QFileDialog, QDialog)
+                               QFileDialog, QDialog, QTabWidget)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
 from PySide6.QtGui import QFont, QPixmap
 import platform
@@ -1164,6 +1164,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.installation_method = "guided"  # Default installation method
         self.always_use_method = False  # Default to one-time use
         self.debug_mode = False  # Default debug mode disabled
+        
+        # Initialize shortcut settings with defaults (Windows only)
+        if platform.system() == "Windows":
+            self.desktop_shortcuts_enabled = True  # Default to enabled
+            self.startmenu_shortcuts_enabled = True  # Default to enabled
+            self.auto_cleanup_enabled = True  # Default to enabled
 
         # Clean up any previously extracted files at startup
         cleanup_extracted_files()
@@ -1283,75 +1289,61 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Full error traceback: {traceback.format_exc()}")
 
     def comprehensive_shortcut_cleanup(self):
-        """Comprehensive cleanup of all Y1 Helper and related shortcuts"""
+        """Silent comprehensive cleanup of all Y1 Helper and related shortcuts - no user interaction"""
+        if platform.system() != "Windows":
+            return
+            
         try:
-            old_shortcuts = []
+            cleaned_count = 0
             
-            # Direct check for the specific path mentioned by user
-            specific_path = Path("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Y1 Helper.lnk")
-            if specific_path.exists():
-                silent_print(f"*** DIRECT CHECK: Found Y1 Helper.lnk at {specific_path} ***")
-                old_shortcuts.append(("Start Menu", str(specific_path)))
-            else:
-                silent_print(f"*** DIRECT CHECK: Y1 Helper.lnk NOT found at {specific_path} ***")
-            
-            # Check desktop and its subfolders for Y1 Helper shortcuts
+            # Clean up desktop shortcuts using wildcards
             desktop_path = Path.home() / "Desktop"
             if desktop_path.exists():
-                # Check desktop root
-                for item in desktop_path.glob("*Y1 Helper*.lnk"):
-                    old_shortcuts.append(("Desktop", str(item)))
-                for item in desktop_path.glob("*Y1*.lnk"):
-                    old_shortcuts.append(("Desktop", str(item)))
+                # Remove shortcuts matching patterns
+                patterns = ["*Y1*", "*SP Flash*", "*Innioasis*"]
+                for pattern in patterns:
+                    for item in desktop_path.glob(pattern):
+                        if item.is_file() and item.suffix.lower() == '.lnk':
+                            try:
+                                item.unlink()
+                                cleaned_count += 1
+                                silent_print(f"Removed desktop shortcut: {item.name}")
+                            except Exception as e:
+                                silent_print(f"Error removing {item.name}: {e}")
             
-                # Check desktop subfolders
-                for subfolder in desktop_path.iterdir():
-                    if subfolder.is_dir():
-                        for item in subfolder.glob("*Y1 Helper*.lnk"):
-                            old_shortcuts.append(("Desktop Subfolder", str(item)))
-                        for item in subfolder.glob("*Y1*.lnk"):
-                            old_shortcuts.append(("Desktop Subfolder", str(item)))
-            
-            # Get comprehensive list of start menu paths
+            # Clean up start menu shortcuts using wildcards
             start_menu_paths = self.get_all_start_menu_paths()
-            silent_print(f"Scanning {len(start_menu_paths)} start menu paths for old shortcuts...")
-            
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
-                    silent_print(f"Scanning start menu path: {start_menu_path}")
+                    # Remove shortcuts matching patterns
+                    patterns = ["*Y1*", "*SP Flash*", "*Innioasis*"]
+                    for pattern in patterns:
+                        for item in start_menu_path.glob(pattern):
+                            if item.is_file() and item.suffix.lower() == '.lnk':
+                                try:
+                                    item.unlink()
+                                    cleaned_count += 1
+                                    silent_print(f"Removed start menu shortcut: {item.name}")
+                                except Exception as e:
+                                    silent_print(f"Error removing {item.name}: {e}")
                     
-                    # Check start menu root
-                    for item in start_menu_path.glob("*Y1 Helper*.lnk"):
-                        old_shortcuts.append(("Start Menu", str(item)))
-                        silent_print(f"Found Y1 Helper shortcut: {item}")
-                    for item in start_menu_path.glob("*Y1*.lnk"):
-                        old_shortcuts.append(("Start Menu", str(item)))
-                        silent_print(f"Found Y1 shortcut: {item}")
-                    
-                    # Check for Y1 Helper folder
+                    # Remove Y1 Helper folder if it exists
                     y1_helper_folder = start_menu_path / "Y1 Helper"
-                    if y1_helper_folder.exists():
-                        old_shortcuts.append(("Start Menu Folder", str(y1_helper_folder)))
-                        silent_print(f"Found Y1 Helper folder: {y1_helper_folder}")
-                    
-                    # Check start menu subfolders
-                    for subfolder in start_menu_path.iterdir():
-                        if subfolder.is_dir() and subfolder.name != "Y1 Helper":
-                            for item in subfolder.glob("*Y1 Helper*.lnk"):
-                                old_shortcuts.append(("Start Menu Subfolder", str(item)))
-                                silent_print(f"Found Y1 Helper shortcut in subfolder: {item}")
-                            for item in subfolder.glob("*Y1*.lnk"):
-                                old_shortcuts.append(("Start Menu Subfolder", str(item)))
-                                silent_print(f"Found Y1 shortcut in subfolder: {item}")
+                    if y1_helper_folder.exists() and y1_helper_folder.is_dir():
+                        try:
+                            shutil.rmtree(y1_helper_folder)
+                            cleaned_count += 1
+                            silent_print(f"Removed Y1 Helper folder: {y1_helper_folder}")
+                        except Exception as e:
+                            silent_print(f"Error removing Y1 Helper folder: {e}")
             
-            # If old shortcuts found, show cleanup dialog
-            if old_shortcuts:
-                silent_print(f"Found {len(old_shortcuts)} old shortcuts to clean up:")
-                for location, item in old_shortcuts:
-                    silent_print(f"  - {location}: {item}")
-                self.show_comprehensive_cleanup_dialog(old_shortcuts)
-            else:
-                silent_print("No old shortcuts found to clean up")
+            silent_print(f"Silent comprehensive shortcut cleanup completed: {cleaned_count} items removed")
+            
+            # Create current shortcuts if enabled in settings
+            if getattr(self, 'desktop_shortcuts_enabled', True):
+                self.ensure_desktop_shortcuts()
+            if getattr(self, 'startmenu_shortcuts_enabled', True):
+                self.ensure_startmenu_shortcuts()
                 
         except Exception as e:
             silent_print(f"Error during comprehensive shortcut cleanup: {e}")
@@ -2330,33 +2322,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         help_btn.clicked.connect(self.show_device_type_help)
         device_type_layout.addWidget(help_btn)
         
-        # Add Tools and Settings buttons horizontally across from the help button
-        self.tools_btn = QPushButton("Tools")
-        self.tools_btn.clicked.connect(self.open_y1_remote_control)
-        self.tools_btn.setFixedHeight(24)  # Match dropdown height
-        self.tools_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #2d2d2d;
-                color: #cccccc;
-                border: 1px solid #555555;
-                padding: 4px 8px;
-                border-radius: 3px;
-                font-weight: normal;
-                font-size: 11px;
-                min-width: 50px;
-                max-width: 70px;
-            }
-            QPushButton:hover {
-                background-color: #3d3d3d;
-                border-color: #666666;
-            }
-            QPushButton:pressed {
-                background-color: #1d1d1d;
-                border-color: #444444;
-            }
-        """)
-        device_type_layout.addWidget(self.tools_btn)
-        
+        # Add Settings button (combines Tools and Settings functionality)
         self.settings_btn = QPushButton("Settings")
         self.settings_btn.setFixedHeight(24)  # Match dropdown height
         self.settings_btn.setStyleSheet("""
@@ -2381,7 +2347,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             }
         """)
         self.settings_btn.setCursor(Qt.PointingHandCursor)
-        self.settings_btn.setToolTip("Choose installation method for next install")
+        self.settings_btn.setToolTip("Settings and Tools - Installation method, shortcuts, and Y1 Remote Control")
         self.settings_btn.clicked.connect(self.show_settings_dialog)
         device_type_layout.addWidget(self.settings_btn)
         
@@ -2439,10 +2405,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.download_btn.setEnabled(False)
         left_layout.addWidget(self.download_btn)
         
-        # Initially enable tools and settings buttons (they will be disabled during operations if needed)
-        self.tools_btn.setEnabled(True)
+        # Initially enable settings button (it will be disabled during operations if needed)
         self.settings_btn.setEnabled(True)
-        print("DEBUG: Tools and Settings buttons initially enabled")
+        print("DEBUG: Settings button initially enabled")
 
 
 
@@ -3246,18 +3211,30 @@ class FirmwareDownloaderGUI(QMainWindow):
             QMessageBox.error(self, "Error", f"Failed to launch Y1 Remote Control: {e}")
     
     def show_settings_dialog(self):
-        """Show settings dialog for choosing installation method"""
+        """Show enhanced settings dialog with installation method and shortcut management"""
         dialog = QDialog(self)
-        dialog.setWindowTitle("Installation Method Settings")
-        dialog.setFixedSize(500, 300)
+        dialog.setWindowTitle("Settings")
+        dialog.setFixedSize(600, 500)
         dialog.setModal(True)
         
         layout = QVBoxLayout(dialog)
         
         # Title
-        title_label = QLabel("Choose Installation Method for Next Install")
-        title_label.setStyleSheet("font-size: 14px; font-weight: bold; margin: 10px;")
+        title_label = QLabel("Settings")
+        title_label.setStyleSheet("font-size: 16px; font-weight: bold; margin: 10px;")
         layout.addWidget(title_label)
+        
+        # Create tabbed interface or sections
+        tab_widget = QTabWidget()
+        layout.addWidget(tab_widget)
+        
+        # Installation Method Tab
+        install_tab = QWidget()
+        install_layout = QVBoxLayout(install_tab)
+        
+        install_title = QLabel("Installation Method Settings")
+        install_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
+        install_layout.addWidget(install_title)
         
         # Check driver status for Windows users
         driver_info = None
@@ -3268,17 +3245,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             if driver_info['is_arm64']:
                 status_label = QLabel("⚠️ ARM64 Windows Detected")
                 status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 5px;")
-                layout.addWidget(status_label)
+                install_layout.addWidget(status_label)
                 
                 status_desc = QLabel("Only firmware downloads are available on ARM64 Windows.\nPlease use WSLg, Linux, or another computer for software installation.")
                 status_desc.setStyleSheet("color: #666; margin: 5px;")
-                layout.addWidget(status_desc)
+                install_layout.addWidget(status_desc)
                 
                 # Disable method selection for ARM64
                 method_combo = QComboBox()
                 method_combo.addItem("No installation methods available on ARM64 Windows", "")
                 method_combo.setEnabled(False)
-                layout.addWidget(method_combo)
+                install_layout.addWidget(method_combo)
                 
                 # Skip the rest of the dialog for ARM64
                 button_layout = QHBoxLayout()
@@ -3286,24 +3263,25 @@ class FirmwareDownloaderGUI(QMainWindow):
                 ok_btn = QPushButton("OK")
                 ok_btn.clicked.connect(dialog.accept)
                 button_layout.addWidget(ok_btn)
-                layout.addLayout(button_layout)
+                install_layout.addLayout(button_layout)
+                tab_widget.addTab(install_tab, "Installation")
                 dialog.exec()
                 return
                 
             elif not driver_info['can_install_firmware']:
                 status_label = QLabel("⚠️ Drivers Required")
                 status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 5px;")
-                layout.addWidget(status_label)
+                install_layout.addWidget(status_label)
                 
                 status_desc = QLabel("No installation methods available. Please install drivers to enable firmware installation.\n\nMore methods will become available if you install the USB Development Kit driver.")
                 status_desc.setStyleSheet("color: #666; margin: 5px;")
-                layout.addWidget(status_desc)
+                install_layout.addWidget(status_desc)
                 
                 # Disable method selection when no drivers
                 method_combo = QComboBox()
                 method_combo.addItem("No installation methods available without drivers", "")
                 method_combo.setEnabled(False)
-                layout.addWidget(method_combo)
+                install_layout.addWidget(method_combo)
                 
                 # Skip the rest of the dialog when no drivers
                 button_layout = QHBoxLayout()
@@ -3311,55 +3289,56 @@ class FirmwareDownloaderGUI(QMainWindow):
                 ok_btn = QPushButton("OK")
                 ok_btn.clicked.connect(dialog.accept)
                 button_layout.addWidget(ok_btn)
-                layout.addLayout(button_layout)
+                install_layout.addLayout(button_layout)
+                tab_widget.addTab(install_tab, "Installation")
                 dialog.exec()
                 return
                 
             elif not driver_info['has_usbdk_driver']:
                 status_label = QLabel("ℹ️ Limited Functionality")
                 status_label.setStyleSheet("color: #0066CC; font-weight: bold; margin: 5px;")
-                layout.addWidget(status_label)
+                install_layout.addWidget(status_label)
                 
                 status_desc = QLabel("Only Method 3 (SP Flash Tool) is available.\n\nMore methods will become available if you install the USB Development Kit driver.")
                 status_desc.setStyleSheet("color: #666; margin: 5px;")
-                layout.addWidget(status_desc)
+                install_layout.addWidget(status_desc)
         
         # Description
         desc_label = QLabel("This setting will be used for the next firmware installation.")
         desc_label.setStyleSheet("color: #666; margin: 5px;")
-        layout.addWidget(desc_label)
+        install_layout.addWidget(desc_label)
         
         # Method selection
         method_label = QLabel("Installation Method:")
-        layout.addWidget(method_label)
+        install_layout.addWidget(method_label)
         
-        method_combo = QComboBox()
+        self.method_combo = QComboBox()
         
         # Add methods based on driver availability
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 # Both drivers available: All methods
-                method_combo.addItem("Method 1 - Guided", "guided")
-                method_combo.addItem("Method 2 - MTKclient", "mtkclient")
-                method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
+                self.method_combo.addItem("Method 1 - Guided", "guided")
+                self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
+                self.method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 # Only MTK driver: Only Method 3
-                method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
+                self.method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
             else:
                 # No drivers: No methods
-                method_combo.addItem("No installation methods available", "")
+                self.method_combo.addItem("No installation methods available", "")
         else:
             # Non-Windows: Standard methods
-            method_combo.addItem("Method 1 - Guided", "guided")
-            method_combo.addItem("Method 2 - MTKclient", "mtkclient")
+            self.method_combo.addItem("Method 1 - Guided", "guided")
+            self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
         
         # Set current method
         current_method = getattr(self, 'installation_method', 'guided')
-        index = method_combo.findData(current_method)
+        index = self.method_combo.findData(current_method)
         if index >= 0:
-            method_combo.setCurrentIndex(index)
+            self.method_combo.setCurrentIndex(index)
         
-        layout.addWidget(method_combo)
+        install_layout.addWidget(self.method_combo)
         
         # Always use this method checkbox (only show when methods are available)
         if platform.system() == "Windows" and driver_info and not driver_info['can_install_firmware']:
@@ -3372,7 +3351,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             always_use = getattr(self, 'always_use_method', False)
             self.always_use_checkbox.setChecked(always_use)
             
-            layout.addWidget(self.always_use_checkbox)
+            install_layout.addWidget(self.always_use_checkbox)
         
         # Labs mode debug checkbox
         self.debug_mode_checkbox = QCheckBox("Enable Debug Mode (Labs)")
@@ -3382,7 +3361,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         debug_mode = getattr(self, 'debug_mode', False)
         self.debug_mode_checkbox.setChecked(debug_mode)
         
-        layout.addWidget(self.debug_mode_checkbox)
+        install_layout.addWidget(self.debug_mode_checkbox)
         
         # Method descriptions
         desc_text = QTextEdit()
@@ -3420,7 +3399,83 @@ Method 1 - Guided: Step-by-step with visual guidance
 Method 2 - MTKclient: Direct technical installation
             """)
         
-        layout.addWidget(desc_text)
+        install_layout.addWidget(desc_text)
+        
+        # Add installation tab to tab widget
+        tab_widget.addTab(install_tab, "Installation")
+        
+        # Shortcut Management Tab (Windows only)
+        if platform.system() == "Windows":
+            shortcut_tab = QWidget()
+            shortcut_layout = QVBoxLayout(shortcut_tab)
+            
+            shortcut_title = QLabel("Shortcut Management")
+            shortcut_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
+            shortcut_layout.addWidget(shortcut_title)
+            
+            # Desktop shortcuts toggle
+            self.desktop_shortcuts_checkbox = QCheckBox("Create Desktop Shortcuts")
+            self.desktop_shortcuts_checkbox.setToolTip("When enabled, Innioasis Updater will create and maintain desktop shortcuts")
+            
+            # Set checkbox state based on saved preference
+            desktop_shortcuts = getattr(self, 'desktop_shortcuts_enabled', True)
+            self.desktop_shortcuts_checkbox.setChecked(desktop_shortcuts)
+            
+            shortcut_layout.addWidget(self.desktop_shortcuts_checkbox)
+            
+            # Start menu shortcuts toggle
+            self.startmenu_shortcuts_checkbox = QCheckBox("Create Start Menu Shortcuts")
+            self.startmenu_shortcuts_checkbox.setToolTip("When enabled, Innioasis Updater will create and maintain start menu shortcuts")
+            
+            # Set checkbox state based on saved preference
+            startmenu_shortcuts = getattr(self, 'startmenu_shortcuts_enabled', True)
+            self.startmenu_shortcuts_checkbox.setChecked(startmenu_shortcuts)
+            
+            shortcut_layout.addWidget(self.startmenu_shortcuts_checkbox)
+            
+            # Cleanup options
+            cleanup_group = QGroupBox("Shortcut Cleanup")
+            cleanup_layout = QVBoxLayout(cleanup_group)
+            
+            cleanup_desc = QLabel("Automatically clean up old shortcuts and replace them with current ones:")
+            cleanup_layout.addWidget(cleanup_desc)
+            
+            self.auto_cleanup_checkbox = QCheckBox("Enable Automatic Cleanup")
+            self.auto_cleanup_checkbox.setToolTip("When enabled, old shortcuts will be automatically cleaned up and replaced")
+            
+            # Set checkbox state based on saved preference
+            auto_cleanup = getattr(self, 'auto_cleanup_enabled', True)
+            self.auto_cleanup_checkbox.setChecked(auto_cleanup)
+            
+            cleanup_layout.addWidget(self.auto_cleanup_checkbox)
+            
+            # Manual cleanup button
+            cleanup_btn = QPushButton("Clean Up Shortcuts Now")
+            cleanup_btn.setToolTip("Manually clean up old shortcuts and create current ones")
+            cleanup_btn.clicked.connect(self.manual_shortcut_cleanup)
+            cleanup_layout.addWidget(cleanup_btn)
+            
+            shortcut_layout.addWidget(cleanup_group)
+            
+            # Add shortcut tab to tab widget
+            tab_widget.addTab(shortcut_tab, "Shortcuts")
+        
+        # Tools Tab
+        tools_tab = QWidget()
+        tools_layout = QVBoxLayout(tools_tab)
+        
+        tools_title = QLabel("Tools")
+        tools_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
+        tools_layout.addWidget(tools_title)
+        
+        # Y1 Remote Control button
+        y1_remote_btn = QPushButton("Launch Y1 Remote Control")
+        y1_remote_btn.setToolTip("Open Y1 Remote Control application")
+        y1_remote_btn.clicked.connect(self.open_y1_remote_control)
+        tools_layout.addWidget(y1_remote_btn)
+        
+        # Add tools tab to tab widget
+        tab_widget.addTab(tools_tab, "Tools")
         
         # Buttons
         button_layout = QHBoxLayout()
@@ -3431,27 +3486,38 @@ Method 2 - MTKclient: Direct technical installation
         button_layout.addWidget(cancel_btn)
         
         save_btn = QPushButton("Save")
-        save_btn.clicked.connect(lambda: self.save_installation_method(method_combo.currentData(), dialog))
+        save_btn.clicked.connect(lambda: self.save_settings(dialog))
         button_layout.addWidget(save_btn)
         
         layout.addLayout(button_layout)
         
         dialog.exec()
     
-    def save_installation_method(self, method, dialog):
-        """Save the selected installation method and always use preference"""
-        self.installation_method = method
+    def save_settings(self, dialog):
+        """Save all settings including installation method and shortcut preferences"""
+        # Save installation method settings
+        if hasattr(self, 'method_combo'):
+            self.installation_method = self.method_combo.currentData()
         self.always_use_method = self.always_use_checkbox.isChecked()
         self.debug_mode = self.debug_mode_checkbox.isChecked()
+        
+        # Save shortcut settings (Windows only)
+        if platform.system() == "Windows":
+            self.desktop_shortcuts_enabled = self.desktop_shortcuts_checkbox.isChecked()
+            self.startmenu_shortcuts_enabled = self.startmenu_shortcuts_checkbox.isChecked()
+            self.auto_cleanup_enabled = self.auto_cleanup_checkbox.isChecked()
+            
+            # Apply shortcut settings immediately
+            self.apply_shortcut_settings()
         
         # Save to persistent storage
         self.save_installation_preferences()
         
         # Update status message
         if self.always_use_method:
-            self.status_label.setText(f"Installation method set to: {method} (will be used for all future installations)")
+            self.status_label.setText(f"Installation method set to: {self.installation_method} (will be used for all future installations)")
         else:
-            self.status_label.setText(f"Installation method set to: {method} (one-time use)")
+            self.status_label.setText(f"Installation method set to: {self.installation_method} (one-time use)")
         
         if self.debug_mode:
             self.status_label.setText(self.status_label.text() + " - Debug mode enabled")
@@ -3466,6 +3532,14 @@ Method 2 - MTKclient: Direct technical installation
                 'always_use_method': self.always_use_method,
                 'debug_mode': getattr(self, 'debug_mode', False)
             }
+            
+            # Add shortcut preferences (Windows only)
+            if platform.system() == "Windows":
+                preferences.update({
+                    'desktop_shortcuts_enabled': getattr(self, 'desktop_shortcuts_enabled', True),
+                    'startmenu_shortcuts_enabled': getattr(self, 'startmenu_shortcuts_enabled', True),
+                    'auto_cleanup_enabled': getattr(self, 'auto_cleanup_enabled', True)
+                })
             
             # Save to a JSON file in the same directory
             preferences_file = Path("installation_preferences.json")
@@ -3494,11 +3568,233 @@ Method 2 - MTKclient: Direct technical installation
                 if 'debug_mode' in preferences:
                     self.debug_mode = preferences['debug_mode']
                 
+                # Load shortcut preferences (Windows only)
+                if platform.system() == "Windows":
+                    if 'desktop_shortcuts_enabled' in preferences:
+                        self.desktop_shortcuts_enabled = preferences['desktop_shortcuts_enabled']
+                    if 'startmenu_shortcuts_enabled' in preferences:
+                        self.startmenu_shortcuts_enabled = preferences['startmenu_shortcuts_enabled']
+                    if 'auto_cleanup_enabled' in preferences:
+                        self.auto_cleanup_enabled = preferences['auto_cleanup_enabled']
+                
                 silent_print(f"Loaded installation preferences: {preferences}")
             else:
                 silent_print("No saved installation preferences found, using defaults")
         except Exception as e:
             silent_print(f"Error loading installation preferences: {e}")
+    
+    def apply_shortcut_settings(self):
+        """Apply shortcut settings based on user preferences"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            # Apply desktop shortcut settings
+            if self.desktop_shortcuts_enabled:
+                self.ensure_desktop_shortcuts()
+            else:
+                self.remove_desktop_shortcuts()
+            
+            # Apply start menu shortcut settings
+            if self.startmenu_shortcuts_enabled:
+                self.ensure_startmenu_shortcuts()
+            else:
+                self.remove_startmenu_shortcuts()
+                
+        except Exception as e:
+            silent_print(f"Error applying shortcut settings: {e}")
+    
+    def manual_shortcut_cleanup(self):
+        """Manually clean up shortcuts and create current ones"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            # Silent cleanup using wildcards
+            self.silent_shortcut_cleanup()
+            
+            # Create current shortcuts if enabled
+            if self.desktop_shortcuts_enabled:
+                self.ensure_desktop_shortcuts()
+            if self.startmenu_shortcuts_enabled:
+                self.ensure_startmenu_shortcuts()
+                
+            QMessageBox.information(self, "Shortcut Cleanup", "Shortcut cleanup completed successfully.")
+            
+        except Exception as e:
+            QMessageBox.warning(self, "Shortcut Cleanup Error", f"Error during shortcut cleanup: {e}")
+    
+    def silent_shortcut_cleanup(self):
+        """Silent cleanup of shortcuts using wildcards - no user interaction"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            cleaned_count = 0
+            
+            # Clean up desktop shortcuts
+            desktop_path = Path.home() / "Desktop"
+            if desktop_path.exists():
+                # Remove shortcuts matching patterns
+                patterns = ["*Y1*", "*SP Flash*", "*Innioasis*"]
+                for pattern in patterns:
+                    for item in desktop_path.glob(pattern):
+                        if item.is_file() and item.suffix.lower() == '.lnk':
+                            try:
+                                item.unlink()
+                                cleaned_count += 1
+                                silent_print(f"Removed desktop shortcut: {item.name}")
+                            except Exception as e:
+                                silent_print(f"Error removing {item.name}: {e}")
+            
+            # Clean up start menu shortcuts
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    # Remove shortcuts matching patterns
+                    patterns = ["*Y1*", "*SP Flash*", "*Innioasis*"]
+                    for pattern in patterns:
+                        for item in start_menu_path.glob(pattern):
+                            if item.is_file() and item.suffix.lower() == '.lnk':
+                                try:
+                                    item.unlink()
+                                    cleaned_count += 1
+                                    silent_print(f"Removed start menu shortcut: {item.name}")
+                                except Exception as e:
+                                    silent_print(f"Error removing {item.name}: {e}")
+                    
+                    # Remove Y1 Helper folder if it exists
+                    y1_helper_folder = start_menu_path / "Y1 Helper"
+                    if y1_helper_folder.exists() and y1_helper_folder.is_dir():
+                        try:
+                            shutil.rmtree(y1_helper_folder)
+                            cleaned_count += 1
+                            silent_print(f"Removed Y1 Helper folder: {y1_helper_folder}")
+                        except Exception as e:
+                            silent_print(f"Error removing Y1 Helper folder: {e}")
+            
+            silent_print(f"Silent shortcut cleanup completed: {cleaned_count} items removed")
+            
+        except Exception as e:
+            silent_print(f"Error during silent shortcut cleanup: {e}")
+    
+    def ensure_desktop_shortcuts(self):
+        """Ensure desktop shortcuts exist"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            desktop_path = Path.home() / "Desktop"
+            if not desktop_path.exists():
+                return
+            
+            current_dir = Path.cwd()
+            
+            # Create Innioasis Updater shortcut
+            source_shortcut = current_dir / "Innioasis Updater.lnk"
+            if source_shortcut.exists():
+                dest_shortcut = desktop_path / "Innioasis Updater.lnk"
+                if not dest_shortcut.exists():
+                    shutil.copy2(source_shortcut, dest_shortcut)
+                    silent_print(f"Created desktop shortcut: Innioasis Updater.lnk")
+            
+            # Create Y1 Remote Control shortcut if it exists
+            source_y1_remote = current_dir / "Innioasis Y1 Remote Control.lnk"
+            if source_y1_remote.exists():
+                dest_y1_remote = desktop_path / "Innioasis Y1 Remote Control.lnk"
+                if not dest_y1_remote.exists():
+                    shutil.copy2(source_y1_remote, dest_y1_remote)
+                    silent_print(f"Created desktop shortcut: Innioasis Y1 Remote Control.lnk")
+                    
+        except Exception as e:
+            silent_print(f"Error ensuring desktop shortcuts: {e}")
+    
+    def remove_desktop_shortcuts(self):
+        """Remove desktop shortcuts"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            desktop_path = Path.home() / "Desktop"
+            if not desktop_path.exists():
+                return
+            
+            # Remove Innioasis shortcuts
+            patterns = ["*Innioasis*"]
+            for pattern in patterns:
+                for item in desktop_path.glob(pattern):
+                    if item.is_file() and item.suffix.lower() == '.lnk':
+                        try:
+                            item.unlink()
+                            silent_print(f"Removed desktop shortcut: {item.name}")
+                        except Exception as e:
+                            silent_print(f"Error removing {item.name}: {e}")
+                            
+        except Exception as e:
+            silent_print(f"Error removing desktop shortcuts: {e}")
+    
+    def ensure_startmenu_shortcuts(self):
+        """Ensure start menu shortcuts exist"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            start_menu_paths = self.get_all_start_menu_paths()
+            current_dir = Path.cwd()
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    # Create Innioasis Updater shortcut
+                    source_shortcut = current_dir / "Innioasis Updater.lnk"
+                    if source_shortcut.exists():
+                        dest_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                        if not dest_shortcut.exists():
+                            shutil.copy2(source_shortcut, dest_shortcut)
+                            silent_print(f"Created start menu shortcut: Innioasis Updater.lnk")
+                    
+                    # Create Y1 Remote Control shortcut if it exists
+                    source_y1_remote = current_dir / "Innioasis Y1 Remote Control.lnk"
+                    if source_y1_remote.exists():
+                        dest_y1_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
+                        if not dest_y1_remote.exists():
+                            shutil.copy2(source_y1_remote, dest_y1_remote)
+                            silent_print(f"Created start menu shortcut: Innioasis Y1 Remote Control.lnk")
+                            
+        except Exception as e:
+            silent_print(f"Error ensuring start menu shortcuts: {e}")
+    
+    def remove_startmenu_shortcuts(self):
+        """Remove start menu shortcuts"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            start_menu_paths = self.get_all_start_menu_paths()
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    # Remove Innioasis shortcuts
+                    patterns = ["*Innioasis*"]
+                    for pattern in patterns:
+                        for item in start_menu_path.glob(pattern):
+                            if item.is_file() and item.suffix.lower() == '.lnk':
+                                try:
+                                    item.unlink()
+                                    silent_print(f"Removed start menu shortcut: {item.name}")
+                                except Exception as e:
+                                    silent_print(f"Error removing {item.name}: {e}")
+                    
+                    # Remove Y1 Helper folder if it exists
+                    y1_helper_folder = start_menu_path / "Y1 Helper"
+                    if y1_helper_folder.exists() and y1_helper_folder.is_dir():
+                        try:
+                            shutil.rmtree(y1_helper_folder)
+                            silent_print(f"Removed Y1 Helper folder: {y1_helper_folder}")
+                        except Exception as e:
+                            silent_print(f"Error removing Y1 Helper folder: {e}")
+                            
+        except Exception as e:
+            silent_print(f"Error removing start menu shortcuts: {e}")
     
     def restore_original_installation_method(self):
         """Restore the original installation method if it was temporarily overridden"""
@@ -4030,7 +4326,6 @@ Method 2 - MTKclient: Direct technical installation
 
         # Disable download button during MTK operation
         self.download_btn.setEnabled(False)
-        self.tools_btn.setEnabled(False)
         self.settings_btn.setEnabled(False)
 
 
@@ -4073,8 +4368,7 @@ Method 2 - MTKclient: Direct technical installation
 
         # Re-enable download button
         self.download_btn.setEnabled(True)
-        # Re-enable tools and settings buttons
-        self.tools_btn.setEnabled(True)
+        # Re-enable settings button
         self.settings_btn.setEnabled(True)
 
     def disable_update_button(self):
@@ -4082,8 +4376,7 @@ Method 2 - MTKclient: Direct technical installation
         if hasattr(self, 'update_btn_right'):
             self.update_btn_right.setEnabled(False)
             self.update_btn_right.setText("Check for Utility Updates")
-        # Also disable tools and settings buttons during operations
-        self.tools_btn.setEnabled(False)
+        # Also disable settings button during operations
         self.settings_btn.setEnabled(False)
 
     def enable_update_button(self):
@@ -4091,8 +4384,7 @@ Method 2 - MTKclient: Direct technical installation
         if hasattr(self, 'update_btn_right'):
             self.update_btn_right.setEnabled(True)
             self.update_btn_right.setText("Check for Utility Updates")
-        # Also enable tools and settings buttons when operations are complete
-        self.tools_btn.setEnabled(True)
+        # Also enable settings button when operations are complete
         self.settings_btn.setEnabled(True)
 
     def on_handshake_failed(self):
@@ -4137,7 +4429,7 @@ Method 2 - MTKclient: Direct technical installation
                 if reply == QMessageBox.Ok:
                     # Launch the driver setup URL
                     import webbrowser
-                    webbrowser.open("https://www.github.com/team-slide/Innioasis-Updater#windows-64bit-intelamd-only")
+                    webbrowser.open("https://innioasis.app/drivers.html")
             else:
                 self.status_label.setText("Handshake failed. Drivers seem to be installed. Please check USB connection and reboot.")
         else:
@@ -4145,7 +4437,7 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText("Handshake failed - please check USB connection and try again")
 
         self.download_btn.setEnabled(True)  # Re-enable download button
-        self.tools_btn.setEnabled(True)  # Re-enable tools button
+        self.settings_btn.setEnabled(True)  # Re-enable settings button
 
     def on_errno2_detected(self):
         """Handle errno2 error from MTKWorker"""
@@ -4175,7 +4467,7 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText("Errno2 error - please reinstall Innioasis Updater")
 
         self.download_btn.setEnabled(True)  # Re-enable download button
-        self.tools_btn.setEnabled(True)  # Re-enable tools button
+        self.settings_btn.setEnabled(True)  # Re-enable settings button
 
     def on_backend_error_detected(self):
         """Handle backend error from MTKWorker"""
@@ -4213,7 +4505,7 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText("Backend error - please install libusb and restart")
 
         self.download_btn.setEnabled(True)  # Re-enable download button
-        self.tools_btn.setEnabled(True)  # Re-enable tools button
+        self.settings_btn.setEnabled(True)  # Re-enable settings button
 
     def on_keyboard_interrupt_detected(self):
         """Handle keyboard interrupt from MTKWorker"""
@@ -4454,22 +4746,22 @@ Method 2 - MTKclient: Direct technical installation
     def open_reddit_link(self):
         """Open the r/innioasis subreddit in the default browser"""
         import webbrowser
-        webbrowser.open("https://www.reddit.com/r/innioasis")
+        webbrowser.open("https://reddit.com/r/innioasis")
 
     def open_discord_link(self):
         """Open the Discord server in the default browser"""
         import webbrowser
-        webbrowser.open("https://discord.gg/jv8jEd8Uv5")
+        webbrowser.open("https://discord.gg/timmkoo")
 
     def open_driver_setup_link(self):
         """Open the driver setup instructions in the default browser"""
         import webbrowser
-        webbrowser.open("https://www.innioasis.app")
+        webbrowser.open("https://innioasis.app/drivers.html")
 
     def open_usbdk_info(self, event):
         """Open USB Development Kit information"""
         import webbrowser
-        webbrowser.open("https://www.innioasis.app")
+        webbrowser.open("https://innioasis.app")
 
     def open_arm64_info(self, event):
         """Show ARM64 Windows information dialog"""
@@ -4627,7 +4919,7 @@ Method 2 - MTKclient: Direct technical installation
             silent_print("Running main.py for driver setup...")
             self.status_label.setText("Running driver setup...")
             self.download_btn.setEnabled(False) # Disable download button while running
-            self.tools_btn.setEnabled(False) # Disable tools button while running
+            self.settings_btn.setEnabled(False) # Disable settings button while running
 
             # Use subprocess to run main.py in the current directory
             if platform.system() == "Windows":
@@ -4643,7 +4935,7 @@ Method 2 - MTKclient: Direct technical installation
             silent_print(f"Error running driver setup: {e}")
             self.status_label.setText(f"Error running driver setup: {e}")
             self.download_btn.setEnabled(True)
-            self.tools_btn.setEnabled(True)
+            self.settings_btn.setEnabled(True)
 
     def revert_to_startup_state(self):
         """Revert the app to its startup state"""
@@ -4660,8 +4952,6 @@ Method 2 - MTKclient: Direct technical installation
 
         # Ensure download button is enabled
         self.download_btn.setEnabled(True)
-        # Ensure tools button is enabled
-        self.tools_btn.setEnabled(True)
         # Ensure settings button is enabled
         if hasattr(self, 'settings_btn'):
             self.settings_btn.setEnabled(True)
@@ -4698,8 +4988,8 @@ Method 2 - MTKclient: Direct technical installation
             self.package_list.setCurrentRow(0)
             self.package_list.setFocus()  # Give focus to the list for blue highlight
             self.download_btn.setEnabled(True)
-            self.tools_btn.setEnabled(True)
-            print("DEBUG: Tools button enabled when package selected")
+            self.settings_btn.setEnabled(True)
+            print("DEBUG: Settings button enabled when package selected")
             # Update button text for the first selected item
             first_item = self.package_list.item(0)
             self.update_download_button_text(first_item)
@@ -4811,7 +5101,7 @@ Method 2 - MTKclient: Direct technical installation
         self.download_worker.download_completed.connect(self.on_download_completed)
 
         self.download_btn.setEnabled(False)
-        self.tools_btn.setEnabled(False)
+        self.settings_btn.setEnabled(False)
         self.progress_bar.setVisible(True)
         self.progress_bar.setValue(0)
 
@@ -4884,7 +5174,7 @@ Method 2 - MTKclient: Direct technical installation
     def on_download_completed(self, success, output):
         """Handle download completion"""
         self.download_btn.setEnabled(True)
-        self.tools_btn.setEnabled(True)
+        self.settings_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
 
         if success:
@@ -5348,7 +5638,7 @@ Method 2 - MTKclient: Direct technical installation
 
         # Disable download button during MTK operation
         self.download_btn.setEnabled(False)
-        self.tools_btn.setEnabled(False)
+        self.settings_btn.setEnabled(False)
 
     def show_troubleshooting_instructions(self):
         """Show troubleshooting instructions and launch recovery firmware install"""
