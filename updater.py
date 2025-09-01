@@ -18,7 +18,7 @@ import tempfile
 import logging
 import datetime
 import webbrowser
-from PySide6.QtWidgets import (QApplication, QVBoxLayout, QWidget, QLabel, QProgressBar,
+from PySide6.QtWidgets import (QApplication, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QProgressBar,
                                QPushButton, QDialog, QTextEdit, QMessageBox)
 from PySide6.QtCore import QThread, Signal, Qt, QTimer
 from PySide6.QtGui import QFont, QGuiApplication
@@ -453,9 +453,14 @@ class UpdateProgressDialog(QDialog):
         self.status_label = QLabel("Initializing..."); self.status_label.setAlignment(Qt.AlignCenter); self.status_label.setWordWrap(True)
         self.progress_bar = QProgressBar(); self.progress_bar.setRange(0, 100); self.progress_bar.setTextVisible(False)
         self.update_button = QPushButton("Run without updating"); self.update_button.clicked.connect(self.run_without_update)
-        self.troubleshoot_button = QPushButton("Open Troubleshooting Tools"); self.troubleshoot_button.clicked.connect(self.run_troubleshooter)
+        self.troubleshoot_button = QPushButton("Open Toolkit"); self.troubleshoot_button.clicked.connect(self.run_troubleshooter)
         
-        layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.troubleshoot_button); layout.addWidget(self.update_button)
+        # Only show troubleshooting button on Windows x86-64
+        platform_info = CrossPlatformHelper.get_platform_info()
+        if platform_info['is_windows'] and not CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
+            layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.troubleshoot_button); layout.addWidget(self.update_button)
+        else:
+            layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.update_button)
 
         if mode == 'troubleshoot_win':
             self.status_label.setText("Troubleshooting mode activated.\nClick the button to get the latest tools.")
@@ -492,11 +497,15 @@ class UpdateProgressDialog(QDialog):
         self.accept()  # Close dialog and continue to app launch
 
     def run_troubleshooter(self):
-        self.troubleshoot_button.setEnabled(False)
-        self.worker = TroubleshootWorker()
-        self.worker.status_updated.connect(self.status_label.setText)
-        self.worker.finished.connect(self.accept) # Close dialog when done
-        self.worker.start()
+        """Open the Toolkit folder on Windows x86-64"""
+        try:
+            import subprocess
+            subprocess.Popen(['explorer.exe', '%LocalAppData%\\Innioasis Updater\\Toolkit'])
+            self.accept()  # Close dialog after opening toolkit
+        except Exception as e:
+            logging.error(f"Failed to open toolkit: {e}")
+            self.status_label.setText("Failed to open toolkit folder")
+            self.troubleshoot_button.setEnabled(True)
 
     def run_force_update(self):
         """Force an update even when timestamp indicates recent update"""
@@ -559,10 +568,123 @@ def download_troubleshooters(current_dir, temp_dir):
         logging.error("Could not download troubleshooters: %s", e)
         return False
 
+class ARM64WindowsDialog(QDialog):
+    """Dialog for ARM64 Windows users explaining limited functionality"""
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("ARM64 Windows - Limited Functionality")
+        self.setModal(True)
+        self.setFixedSize(500, 400)
+        
+        layout = QVBoxLayout(self)
+        
+        # Title
+        title_label = QLabel("ARM64 Windows Detected")
+        title_label.setFont(QFont("Arial", 16, QFont.Bold))
+        title_label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(title_label)
+        
+        # Message
+        message = ("You're running Windows on ARM64, which has limited compatibility with firmware installation features.\n\n"
+                  "❌ Not Available:\n"
+                  "• Update Firmware\n"
+                  "• Restore Firmware\n"
+                  "• Custom Firmware Installation\n\n"
+                  "✅ Still Available:\n"
+                  "• Remote Control Features\n"
+                  "• Screen and Scrollwheel Input via PC\n"
+                  "• Screenshotting\n"
+                  "• APK Installation on this computer\n\n"
+                  "Alternative: You can try using the Linux version of Innioasis Updater on Windows ARM64 by using Ubuntu from the Microsoft Store and USBIPD-win.")
+        
+        message_label = QLabel(message)
+        message_label.setWordWrap(True)
+        message_label.setAlignment(Qt.AlignLeft)
+        layout.addWidget(message_label)
+        
+        # Buttons
+        button_layout = QHBoxLayout()
+        
+        remote_control_button = QPushButton("Use Remote Control")
+        remote_control_button.clicked.connect(self.accept)
+        button_layout.addWidget(remote_control_button)
+        
+        wsl_button = QPushButton("Try Innioasis Updater on WSL")
+        wsl_button.clicked.connect(self.open_wsl_guide)
+        button_layout.addWidget(wsl_button)
+        
+        layout.addLayout(button_layout)
+    
+    def open_wsl_guide(self):
+        """Open the WSL installation guide"""
+        webbrowser.open("https://innioasis.app/installguide.html")
+        self.accept()
+
+def launch_y1_helper_arm64():
+    """Launch y1_helper.py for ARM64 Windows users"""
+    current_dir = Path.cwd()
+    platform_info = CrossPlatformHelper.get_platform_info()
+    
+    # Show ARM64 Windows dialog first
+    app = QApplication.instance()
+    if not app:
+        app = QApplication([])
+    dialog = ARM64WindowsDialog()
+    dialog.exec()
+    
+    # Try to launch y1_helper.py
+    script_candidates = [
+        "y1_helper.py",  # Primary target
+    ]
+    
+    for script_name in script_candidates:
+        script_path = current_dir / script_name
+        if script_path.exists():
+            try:
+                # Method 1: Use current Python executable
+                cmd = [sys.executable, str(script_path)]
+                logging.info(f"Attempting to launch {script_name} with current Python: {cmd}")
+                subprocess.Popen(cmd)
+                logging.info(f"Successfully launched {script_name}")
+                return True
+            except Exception as e:
+                logging.error(f"Failed to launch {script_name} with current Python: {e}")
+                
+                try:
+                    # Method 2: Use python.exe explicitly
+                    cmd = ["python.exe", str(script_path)]
+                    logging.info(f"Attempting to launch {script_name} with python.exe: {cmd}")
+                    subprocess.Popen(cmd)
+                    logging.info(f"Successfully launched {script_name} with python.exe")
+                    return True
+                except Exception as e2:
+                    logging.error(f"Failed to launch {script_name} with python.exe: {e2}")
+                    continue
+    
+    # If all methods failed, show error message
+    logging.error("All launch methods failed for y1_helper.py")
+    try:
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        messagebox.showerror("Launch Error", 
+                           "Could not launch y1_helper.py.\n\n"
+                           "Please try running it manually from the terminal.")
+    except:
+        print("ERROR: Could not launch y1_helper.py")
+        print("Please run it manually from the terminal.")
+    
+    return False
+
 def launch_firmware_downloader():
     """Reliably launch firmware_downloader.py with multiple fallback methods"""
     current_dir = Path.cwd()
     platform_info = CrossPlatformHelper.get_platform_info()
+    
+    # Check if we're on ARM64 Windows - launch y1_helper.py instead
+    if platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
+        return launch_y1_helper_arm64()
     
     # Check drivers for Windows x86-64 users
     if platform_info['is_windows'] and not CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
@@ -626,19 +748,19 @@ def launch_firmware_downloader():
                         continue
     
     # If all methods failed, try to show an error message
-    logging.error("All launch methods failed")
+    logging.error("All launch methods failed for firmware_downloader.py")
     try:
         import tkinter as tk
         from tkinter import messagebox
         root = tk.Tk()
         root.withdraw()
         messagebox.showerror("Launch Error", 
-                           "Could not launch the main application.\n\n"
-                           "Please try running firmware_downloader.py manually.")
+                           "Could not launch the main application (firmware_downloader.py).\n\n"
+                           "Please try running firmware_downloader.py manually from the terminal.")
     except:
         # If tkinter fails, just print to console
         print("ERROR: Could not launch firmware_downloader.py")
-        print("Please run it manually.")
+        print("Please run firmware_downloader.py manually from the terminal.")
     
     return False
 
@@ -683,10 +805,17 @@ def main():
     
     # Always launch the main app unless the user is on Mac/Linux and requested troubleshoot
     if not (is_troubleshoot_request and not platform_info['is_windows']):
-        logging.info("Attempting to launch firmware_downloader.py...")
-        launch_success = launch_firmware_downloader()
-        if not launch_success:
-            logging.error("Failed to launch firmware_downloader.py")
+        # Check if we're on ARM64 Windows
+        if platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
+            logging.info("ARM64 Windows detected - launching y1_helper.py...")
+            launch_success = launch_y1_helper_arm64()
+            if not launch_success:
+                logging.error("Failed to launch y1_helper.py")
+        else:
+            logging.info("Attempting to launch firmware_downloader.py...")
+            launch_success = launch_firmware_downloader()
+            if not launch_success:
+                logging.error("Failed to launch firmware_downloader.py")
     
     sys.exit(0)
 
