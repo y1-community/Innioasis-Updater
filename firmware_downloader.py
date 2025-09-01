@@ -3536,7 +3536,8 @@ Method 2 - MTKclient: Direct technical installation
 4. Click OK then carefully follow the next steps
 
 Tip: Innioasis Updater will offer to try a different method if something goes wrong
-If the app stops responding, wait for a minute and if it doesn't back just restart it and try again"""
+
+If the app stops responding, wait for a minute and if it doesn't come back just restart it and try again"""
         
         msg_box.setText(instruction_text)
         msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
@@ -4799,7 +4800,7 @@ If the app stops responding, wait for a minute and if it doesn't back just resta
                 return
             
             # Windows-specific Method 2 instructions
-            instructions = ("Please follow these steps after you click OK:\n\n"
+            instructions = ("Please follow these steps after the Recovery Window appears:\n\n"
                           "1. INSERT Paperclip\n"
                           "2. CONNECT your Y1 via USB\n"
                           "3. INSERT Paperclip again\n"
@@ -4808,7 +4809,7 @@ If the app stops responding, wait for a minute and if it doesn't back just resta
                           "This method shows technical installation details. If it fails, try Method 3.")
         else:
             # Non-Windows baseline Method 2 instructions
-            instructions = ("Please follow these steps:\n\n"
+            instructions = ("Please follow these steps after the Recovery Window appears:\n\n"
                           "1. INSERT Paperclip\n"
                           "2. CONNECT Y1 via USB\n"
                           "3. WAIT for the install to finish\n"
