@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
                                QFileDialog, QDialog, QTabWidget)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
-from PySide6.QtGui import QFont, QPixmap
+from PySide6.QtGui import QFont, QPixmap, QIcon
 import platform
 import time
 from collections import defaultdict
@@ -922,10 +922,23 @@ class MTKWorker(QThread):
                         self.errno2_detected.emit()
                         # Don't break here - continue reading output
 
-                    # Check for handshake failed error
-                    if "handshake failed" in line.lower():
+                    # Check for handshake failed error (generalized detection)
+                    if any(phrase in line.lower() for phrase in [
+                        "handshake failed", 
+                        "handshake error", 
+                        "connection failed", 
+                        "device not responding",
+                        "timeout",
+                        "connection timeout",
+                        "device timeout",
+                        "no device found",
+                        "device not found",
+                        "connection refused",
+                        "failed to connect",
+                        "connection error"
+                    ]):
                         handshake_error_detected = True
-                        self.status_updated.emit("Handshake failed detected - driver issue likely")
+                        self.status_updated.emit("Connection issue detected - please unplug your Y1 and try again")
                         self.handshake_failed.emit()
                         # Don't break here - continue reading output
 
@@ -1179,7 +1192,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Check for SP Flash Tool on Windows before loading data
         if platform.system() == "Windows":
-            self.check_sp_flash_tool()
+            # Delay the flash tool check to avoid blocking startup
+            QTimer.singleShot(100, self.check_sp_flash_tool)
             # Download troubleshooting shortcuts if missing
             QTimer.singleShot(200, self.ensure_troubleshooting_shortcuts)
             # Check for old shortcuts and offer cleanup
@@ -1250,9 +1264,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     # Optionally, you could close the application here
                     # self.close()
                 
-        except subprocess.TimeoutExpired:
-            # If tasklist times out, assume no conflict and continue
-            pass
+        except (subprocess.TimeoutExpired, FileNotFoundError, OSError):
+            # If tasklist times out or is not available, assume no conflict and continue
+            silent_print("Flash tool check skipped - tasklist not available")
         except Exception as e:
             # If there's any error checking for the process, continue silently
             silent_print(f"Error checking for flash tools: {e}")
@@ -2440,7 +2454,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if driver_info['is_arm64']:
                 # ARM64 Windows: Show ARM64-specific message
-                arm64_btn = QPushButton("🪟 ARM64 Windows")
+                arm64_btn = QPushButton("ARM64 Notice")
                 arm64_btn.setStyleSheet("""
                     QPushButton {
                         background-color: #FF6B35;
@@ -2462,8 +2476,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 coffee_layout.addWidget(arm64_btn)
                 
             elif not driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # No drivers: Show "Install Windows Drivers" button
-                driver_btn = QPushButton("🔧 Install Windows Drivers")
+                # No drivers: Show "Install MediaTek & UsbDk Drivers" button
+                driver_btn = QPushButton("🔧 Install MediaTek & UsbDk Drivers")
                 driver_btn.setStyleSheet("""
                     QPushButton {
                         background-color: #0066CC;
@@ -2503,50 +2517,52 @@ class FirmwareDownloaderGUI(QMainWindow):
                 usbdk_link.mousePressEvent = self.open_usbdk_info
                 coffee_layout.addWidget(usbdk_link)
                 
-                # Also show "Install from .zip" button
-                install_zip_btn = QPushButton("📦 Install from .zip")
-                install_zip_btn.setStyleSheet("""
-                    QPushButton {
-                        background-color: #28A745;
-                        color: white;
-                        border: none;
-                        padding: 8px 16px;
-                        border-radius: 20px;
-                        font-weight: bold;
-                        font-size: 12px;
-                    }
-                    QPushButton:hover {
-                        background-color: #218838;
-                    }
-                    QPushButton:pressed {
-                        background-color: #1E7E34;
-                    }
-                """)
-                install_zip_btn.clicked.connect(self.install_from_zip)
-                coffee_layout.addWidget(install_zip_btn)
+                # Only show "Install from .zip" button if not on ARM64 Windows
+                if not driver_info['is_arm64']:
+                    install_zip_btn = QPushButton("📦 Install from .zip")
+                    install_zip_btn.setStyleSheet("""
+                        QPushButton {
+                            background-color: #28A745;
+                            color: white;
+                            border: none;
+                            padding: 8px 16px;
+                            border-radius: 20px;
+                            font-weight: bold;
+                            font-size: 12px;
+                        }
+                        QPushButton:hover {
+                            background-color: #218838;
+                        }
+                        QPushButton:pressed {
+                            background-color: #1E7E34;
+                        }
+                    """)
+                    install_zip_btn.clicked.connect(self.install_from_zip)
+                    coffee_layout.addWidget(install_zip_btn)
                 
             else:
-                # Both drivers available: Show "Install from .zip" button
-                install_zip_btn = QPushButton("📦 Install from .zip")
-                install_zip_btn.setStyleSheet("""
-                    QPushButton {
-                        background-color: #28A745;
-                        color: white;
-                        border: none;
-                        padding: 8px 16px;
-                        border-radius: 20px;
-                        font-weight: bold;
-                        font-size: 12px;
-                    }
-                    QPushButton:hover {
-                        background-color: #218838;
-                    }
-                    QPushButton:pressed {
-                        background-color: #1E7E34;
-                    }
-                """)
-                install_zip_btn.clicked.connect(self.install_from_zip)
-                coffee_layout.addWidget(install_zip_btn)
+                # Both drivers available: Show "Install from .zip" button (but not on ARM64)
+                if not driver_info['is_arm64']:
+                    install_zip_btn = QPushButton("📦 Install from .zip")
+                    install_zip_btn.setStyleSheet("""
+                        QPushButton {
+                            background-color: #28A745;
+                            color: white;
+                            border: none;
+                            padding: 8px 16px;
+                            border-radius: 20px;
+                            font-weight: bold;
+                            font-size: 12px;
+                        }
+                        QPushButton:hover {
+                            background-color: #218838;
+                        }
+                        QPushButton:pressed {
+                            background-color: #1E7E34;
+                        }
+                    """)
+                    install_zip_btn.clicked.connect(self.install_from_zip)
+                    coffee_layout.addWidget(install_zip_btn)
         else:
             # On non-Windows systems, show "Install from .zip" button
             install_zip_btn = QPushButton("📦 Install from .zip")
@@ -2864,7 +2880,25 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def update_status(self, message):
         """Update the status label with a message"""
-        self.status_label.setText(message)
+        if not message or message.strip() == "":
+            self.status_label.setText("Now please follow the instructions below")
+        elif message.startswith("MTK:") and (message.strip() == "MTK:" or 
+                                              message.strip() == "MTK:..........." or 
+                                              message.strip() == "MTK: ..........." or
+                                              message.strip() == "MTK: .........." or
+                                              message.strip() == "MTK: ........" or
+                                              message.strip() == "MTK: ......." or
+                                              message.strip() == "MTK: ......" or
+                                              message.strip() == "MTK: ....." or
+                                              message.strip() == "MTK: ...." or
+                                              message.strip() == "MTK: ..." or
+                                              message.strip() == "MTK: .." or
+                                              message.strip() == "MTK: ." or
+                                              len(message.strip()) <= 10):  # Very short MTK messages likely indicate waiting
+            # MTK is waiting for device connection
+            self.status_label.setText("Now please follow the instructions below")
+        else:
+            self.status_label.setText(message)
 
     def handle_mtk_completion(self, success, message):
         """Handle MTK command completion"""
@@ -2879,8 +2913,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def handle_handshake_failure(self):
         """Handle handshake failure"""
-        self.status_label.setText("Handshake failed - driver setup required")
-        self.load_handshake_error_image()
+        self.status_label.setText("Please unplug your Y1 and try again")
+        self.load_initsteps_image()
 
     def handle_errno2_error(self):
         """Handle errno2 error"""
@@ -4404,49 +4438,62 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
 
-        # Load and display the appropriate handshake error image for 50 seconds
-        self.load_handshake_error_image()
+        # Show the "try again" screen (initsteps image) for the relevant system
+        self.load_initsteps_image()
 
         # Cancel any existing revert timer to prevent conflicts
         if hasattr(self, '_revert_timer') and self._revert_timer:
             self._revert_timer.stop()
             self._revert_timer = None
 
-        # Set timer to revert to startup state after 50 seconds
+        # Set timer to revert to startup state after 30 seconds (shorter timeout for better UX)
         self._revert_timer = QTimer()
         self._revert_timer.timeout.connect(self.revert_to_startup_state)
         self._revert_timer.setSingleShot(True)
-        self._revert_timer.start(50000)
+        self._revert_timer.start(30000)
 
-        if platform.system() == "Windows":
-            # Check if specific driver files exist
-            mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
-            usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
+        # Show user-friendly message asking to unplug and try again
+        self.status_label.setText("Please unplug your Y1 and try again")
 
-            if not mediatek_driver_file.exists() or not usbdk_driver_file.exists():
-                # Show popup with driver setup instructions for Windows users
-                reply = self.show_custom_message_box(
-                    "critical",
-                    "Handshake Failed - Driver Issue Detected",
-                    "The MTK handshake failed, which usually indicates a driver problem.\n\n"
-                    "Please check your drivers, reboot your PC, and try again.\n\n"
-                    "Click OK to open the driver installation guide.",
-                    QMessageBox.Ok,
-                    QMessageBox.Ok
-                )
-
-                if reply == QMessageBox.Ok:
-                    # Launch the driver setup URL
-                    import webbrowser
-                    webbrowser.open("https://innioasis.app/drivers.html")
-            else:
-                self.status_label.setText("Handshake failed. Drivers seem to be installed. Please check USB connection and reboot.")
-        else:
-            # No dialog for Mac users - just update status
-            self.status_label.setText("Handshake failed - please check USB connection and try again")
-
+        # Re-enable buttons for retry
         self.download_btn.setEnabled(True)  # Re-enable download button
         self.settings_btn.setEnabled(True)  # Re-enable settings button
+        
+        # Set up automatic restart after showing initsteps
+        QTimer.singleShot(5000, self.restart_firmware_install)
+
+    def restart_firmware_install(self):
+        """Restart the firmware installation process from where the command is run"""
+        try:
+            # Show initsteps image for the relevant system
+            self.load_initsteps_image()
+            
+            # Update status to indicate restart
+            self.status_label.setText("Restarting firmware installation...")
+            
+            # Create and start a new MTK worker
+            debug_window = None
+            if getattr(self, 'debug_mode', False):
+                debug_window = DebugOutputWindow(self)
+                debug_window.show()
+            
+            self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+            self.mtk_worker.status_updated.connect(self.update_status)
+            self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+            self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
+            self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+            self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
+            self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
+            self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
+            self.mtk_worker.backend_error_detected.connect(self.handle_backend_error)
+            self.mtk_worker.keyboard_interrupt_detected.connect(self.handle_keyboard_interrupt)
+            self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+            self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+            self.mtk_worker.start()
+            
+        except Exception as e:
+            silent_print(f"Error restarting firmware install: {e}")
+            self.status_label.setText("Error restarting installation - please try manually")
 
     def on_errno2_detected(self):
         """Handle errno2 error from MTKWorker"""
@@ -4763,9 +4810,35 @@ Method 2 - MTKclient: Direct technical installation
         webbrowser.open("https://discord.gg/timmkoo")
 
     def open_driver_setup_link(self):
-        """Open the driver setup instructions in the default browser"""
-        import webbrowser
-        webbrowser.open("https://innioasis.app/drivers.html")
+        """Show driver setup dialog and open the installation guide"""
+        driver_info = self.check_drivers_and_architecture()
+        
+        # Determine which drivers are missing
+        missing_drivers = []
+        if not driver_info['has_mtk_driver']:
+            missing_drivers.append("MediaTek SP Flash Tool Driver")
+        if not driver_info['has_usbdk_driver']:
+            missing_drivers.append("UsbDk Driver")
+        
+        if missing_drivers:
+            # Show dialog asking user to install specific drivers
+            driver_names = " and ".join(missing_drivers)
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Driver Setup Required")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText(f"To use all features of Innioasis Updater, you'll need to install:")
+            msg_box.setInformativeText(f"• {driver_names}\n\nWould you like help setting these up?")
+            msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            msg_box.setDefaultButton(QMessageBox.Yes)
+            
+            if msg_box.exec() == QMessageBox.Yes:
+                # Open the installation guide
+                import webbrowser
+                webbrowser.open("https://innioasis.app/installguide.html")
+        else:
+            # Fallback to direct link
+            import webbrowser
+            webbrowser.open("https://innioasis.app/installguide.html")
 
     def open_usbdk_info(self, event):
         """Open USB Development Kit information"""
@@ -4773,21 +4846,22 @@ Method 2 - MTKclient: Direct technical installation
         webbrowser.open("https://innioasis.app")
 
     def open_arm64_info(self, event):
-        """Show ARM64 Windows information dialog"""
+        """Show ARM64 Windows information dialog and redirect to installation guide"""
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("ARM64 Windows Detected")
         msg_box.setIcon(QMessageBox.Information)
-        msg_box.setText("ARM64 Windows is not supported for firmware installation.")
+        msg_box.setText("ARM64 Windows has limited compatibility with firmware installation.")
         msg_box.setInformativeText(
-            "On ARM64 Windows, you can only download firmware files.\n\n"
-            "To install firmware, please use one of these alternatives:\n"
-            "• WSLg (Windows Subsystem for Linux with GUI)\n"
-            "• Linux (dual boot or live USB)\n"
-            "• Another computer with x64 Windows\n\n"
-            "The firmware download functionality will still work normally."
+            "On ARM64 Windows, you can download firmware files but installation methods may not work properly.\n\n"
+            "Would you like to see alternative setup options and compatibility information?"
         )
-        msg_box.setStandardButtons(QMessageBox.Ok)
-        msg_box.exec()
+        msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        msg_box.setDefaultButton(QMessageBox.Yes)
+        
+        if msg_box.exec() == QMessageBox.Yes:
+            # Open the installation guide
+            import webbrowser
+            webbrowser.open("https://innioasis.app/installguide.html")
 
     def install_from_zip(self):
         """Install firmware from a local zip file"""
@@ -5958,14 +6032,48 @@ if [ -f "{venv_path}/bin/activate" ]; then
     echo "Virtual environment activated"
 fi
 
+echo "=========================================="
+echo "  Innioasis Recovery Firmware Install"
+echo "=========================================="
+echo ""
+echo "This terminal window will now run the MTK firmware installation process."
+echo ""
+echo "IMPORTANT INSTRUCTIONS:"
+echo "1. Make sure your Y1 device is connected via USB"
+echo "2. Put your device into Download Mode (power off, then hold Volume Down + Power)"
+echo "3. The installation process will begin automatically"
+echo "4. DO NOT disconnect your device during installation"
+echo "5. Wait for the process to complete - this may take several minutes"
+echo "6. Your device will restart automatically when finished"
+echo ""
+echo "If you see any errors or the process fails:"
+echo "- Check that your device is properly connected"
+echo "- Try putting the device in Download Mode again"
+echo "- Contact support if problems persist"
+echo ""
+echo "Press Enter to start the installation process..."
+read -n 1
+echo ""
 echo "Starting Innioasis Recovery Firmware Install..."
 echo "Running MTK command in separate terminal window..."
+echo ""
 
 # Run MTK command with python3 (same as used in regular installation)
 python3 mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img
 
 echo ""
-echo "MTK command completed. Press any key to close this terminal..."
+echo "=========================================="
+echo "MTK command completed."
+echo ""
+if [ $? -eq 0 ]; then
+    echo "✓ Installation appears to have completed successfully!"
+    echo "Your device should restart automatically."
+else
+    echo "⚠ Installation may have encountered issues."
+    echo "Please check the output above for error messages."
+fi
+echo ""
+echo "Press any key to close this terminal..."
 read -n 1
 """
                     # Create temporary script
@@ -6139,25 +6247,31 @@ read -n 1
             QMessageBox.error(self, "Error", f"Failed to run updater.py: {e}")
 
 if __name__ == "__main__":
-    # Create the application
-    app = QApplication(sys.argv)
+    try:
+        # Create the application
+        app = QApplication(sys.argv)
 
-    # Set application icon based on platform
-    if platform.system() == "Darwin":  # macOS
-        icon_path = "mtkclient/gui/images/Innioasis Updater Icon.icns"
-    elif platform.system() == "Windows":
-        icon_path = "mtkclient/gui/images/icon.ico"
-    else:
-        # Fallback to PNG for other platforms
-        icon_path = "mtkclient/gui/images/icon.png"
+        # Set application icon based on platform
+        if platform.system() == "Darwin":  # macOS
+            icon_path = "mtkclient/gui/images/Innioasis Updater Icon.icns"
+        elif platform.system() == "Windows":
+            icon_path = "mtkclient/gui/images/icon.ico"
+        else:
+            # Fallback to PNG for other platforms
+            icon_path = "mtkclient/gui/images/icon.png"
 
-    if Path(icon_path).exists():
-        app.setWindowIcon(QIcon(icon_path))
+        if Path(icon_path).exists():
+            app.setWindowIcon(QIcon(icon_path))
 
-    # Create and show the main window
-    window = FirmwareDownloaderGUI()
-    window.show()
+        # Create and show the main window
+        window = FirmwareDownloaderGUI()
+        window.show()
 
-    # Start the application event loop
-    sys.exit(app.exec())
+        # Start the application event loop
+        sys.exit(app.exec())
+    except Exception as e:
+        print(f"Error starting application: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
 
