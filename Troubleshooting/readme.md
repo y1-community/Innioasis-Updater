@@ -4,7 +4,7 @@
 explorer.exe "%LocalAppData%\Innioasis Updater\Troubleshooting"
 ```
 
-# Or you can [download it here](https://drive.google.com/file/d/122UTGCwd7MQmo8itxbnlumef9IzJdHjV/view)
+# Or you can [download it here](https://github.com/team-slide/Innioasis-Updater/raw/refs/heads/main/Troubleshooters%20-%20Windows.zip)
 
 ## Innioasis updater frozen after downloading firmware and starting to install:
 Just end the task / force quit the app and restart it, make sure that the Y1 and all non essential USB devices are NOT plugged into your PC, then follow the on screen instructions carefully, click Try Again when the app opens back up and if this doesn't work try one of the other methods in the app.
