@@ -19,7 +19,7 @@ import logging
 import datetime
 import webbrowser
 from PySide6.QtWidgets import (QApplication, QVBoxLayout, QWidget, QLabel, QProgressBar,
-                               QPushButton, QDialog, QTextEdit)
+                               QPushButton, QDialog, QTextEdit, QMessageBox)
 from PySide6.QtCore import QThread, Signal, Qt, QTimer
 from PySide6.QtGui import QFont, QGuiApplication
 
@@ -57,24 +57,87 @@ class CrossPlatformHelper:
         except Exception as e:
             logging.error("Could not open path %s: %s", path_or_url, e)
 
+    @staticmethod
+    def check_drivers_and_architecture():
+        """Check driver availability and system architecture for Windows users"""
+        if platform.system() != "Windows":
+            return {
+                'has_mtk_driver': True,
+                'has_usbdk_driver': True,
+                'is_arm64': False,
+                'available_methods': ['guided', 'mtkclient'],
+                'can_install_firmware': True
+            }
+        
+        # Check for ARM64 architecture
+        is_arm64 = False
+        try:
+            machine = platform.machine().lower()
+            is_arm64 = machine in ['arm64', 'aarch64']
+        except:
+            pass
+        
+        # Check for MTK driver (SP Flash Tool driver)
+        has_mtk_driver = False
+        try:
+            mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
+            has_mtk_driver = mediatek_driver_file.exists()
+        except:
+            pass
+        
+        # Check for UsbDk driver
+        has_usbdk_driver = False
+        try:
+            usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
+            has_usbdk_driver = usbdk_driver_file.exists()
+        except:
+            pass
+        
+        # Determine available methods based on drivers
+        available_methods = []
+        can_install_firmware = True
+        
+        if is_arm64:
+            # ARM64 Windows: Only allow firmware downloads, no installation methods
+            available_methods = []
+            can_install_firmware = False
+        elif has_mtk_driver and has_usbdk_driver:
+            # Both drivers available: All methods available
+            available_methods = ['guided', 'mtkclient', 'spflash']
+        elif has_mtk_driver and not has_usbdk_driver:
+            # Only MTK driver: Force Method 3 (SP Flash Tool) for this session
+            available_methods = ['spflash']
+        else:
+            # No drivers: No installation methods available
+            available_methods = []
+            can_install_firmware = False
+        
+        return {
+            'has_mtk_driver': has_mtk_driver,
+            'has_usbdk_driver': has_usbdk_driver,
+            'is_arm64': is_arm64,
+            'available_methods': available_methods,
+            'can_install_firmware': can_install_firmware
+        }
+
 class TroubleshootWorker(QThread):
     """Dedicated worker for downloading troubleshooters."""
     status_updated = Signal(str)
     finished = Signal()
 
     def run(self):
-        self.status_updated.emit("Downloading troubleshooting tools...")
+        self.status_updated.emit("Getting your troubleshooting tools ready...")
         try:
             with tempfile.TemporaryDirectory() as temp_dir:
                 if download_troubleshooters(Path.cwd(), Path(temp_dir)):
-                    self.status_updated.emit("Troubleshooting tools are ready.")
+                    self.status_updated.emit("Perfect! Your troubleshooting tools are ready.")
                     CrossPlatformHelper.open_path(Path.cwd() / "Troubleshooting")
                 else:
-                    self.status_updated.emit("Couldn't get tools. Opening help website.")
+                    self.status_updated.emit("Let me take you to our help website instead.")
                     CrossPlatformHelper.open_path("https://troubleshooting.innioasis.app")
         except Exception as e:
             logging.error("Troubleshooter download failed: %s", e)
-            self.status_updated.emit("Couldn't get tools. Opening help website.")
+            self.status_updated.emit("Let me take you to our help website instead.")
             CrossPlatformHelper.open_path("https://troubleshooting.innioasis.app")
         finally:
             self.finished.emit()
@@ -101,31 +164,31 @@ class UpdateWorker(QThread):
             current_dir = Path.cwd()
             temp_dir = Path(tempfile.mkdtemp(prefix="innioasis-update-"))
             timestamp_file = current_dir / ".last_update_check"
-            self.status_updated.emit("Just checking for the latest version...")
+            self.status_updated.emit("Just checking what's new...")
             self.progress_updated.emit(5)
             
             main_repo_url = "https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip"
             zip_file = temp_dir / "innioasis_updater_latest.zip"
-            self.status_updated.emit(f"Grabbing updates from GitHub...")
-            self.download_with_progress(main_repo_url, zip_file, 5, 45)
+            self.status_updated.emit("Grabbing the latest updates...")
+            self.download_with_progress(main_repo_url, zip_file, 5, 40)
 
-            self.progress_updated.emit(60)
+            self.progress_updated.emit(45)
 
-            self.status_updated.emit(f"Unpacking {zip_file.name}...")
+            self.status_updated.emit("Unpacking your updates...")
             with zipfile.ZipFile(zip_file, 'r') as z:
                 file_list = z.infolist()
                 total_files = len(file_list) if file_list else 1
                 for i, member in enumerate(file_list):
                     z.extract(member, temp_dir)
-                    progress = int(60 + (i / total_files) * 15)
+                    progress = int(45 + (i / total_files) * 20)
                     self.progress_updated.emit(progress)
 
             extracted_dir = next(temp_dir.glob("Innioasis-Updater-main*"), None)
             if not extracted_dir: 
-                self.status_updated.emit("Could not find extracted directory, but continuing...")
+                self.status_updated.emit("Almost there! Getting your files ready...")
                 # Continue anyway - the update can still be successful
             
-            self.status_updated.emit(f"Updating files in current directory...")
+            self.status_updated.emit("Updating your app with the latest features...")
             if extracted_dir:
                 items_to_copy = list(extracted_dir.iterdir())
             else:
@@ -231,14 +294,13 @@ class UpdateWorker(QThread):
                     self.files_skipped += 1
                     continue
                 
-                progress = int(75 + ((i + 1) / total_items) * 20)
+                progress = int(65 + ((i + 1) / total_items) * 30)
                 self.progress_updated.emit(progress)
 
             # Always consider the update successful if we got this far
-            self.status_updated.emit(f"Update completed! {self.files_updated} files updated, {self.files_skipped} skipped.")
-            self.status_updated.emit("Your app is ready to go! ✨")
+            self.status_updated.emit("Brilliant! Your app is now up to date. ✨")
             
-            self.status_updated.emit("Finalizing...")
+            self.status_updated.emit("Just finishing up...")
             try:
                 timestamp_file.write_text(str(datetime.date.today()))
             except:
@@ -247,11 +309,11 @@ class UpdateWorker(QThread):
             self.update_completed.emit(True)
             
         except requests.exceptions.RequestException as e:
-            self.status_updated.emit("Couldn't connect to GitHub. No worries - your app will work fine!")
+            self.status_updated.emit("No worries! Your app will work perfectly fine without the latest updates.")
             time.sleep(2)
             self.update_completed.emit(True)  # Still successful - app can run
         except Exception as e:
-            self.status_updated.emit("Update had some issues, but your app is ready to go!")
+            self.status_updated.emit("Everything's ready to go! ✨")
             logging.info("Update process had issues but continuing: %s", e)
             self.update_completed.emit(True)  # Still successful - app can run
         finally:
@@ -317,6 +379,66 @@ class UpdateWorker(QThread):
                     if total_size > 0:
                         progress = int(base_progress + (downloaded_size / total_size) * progress_range)
                         self.progress_updated.emit(progress)
+
+class DriverSetupDialog(QDialog):
+    """Dialog for Windows driver setup guidance"""
+    def __init__(self, driver_info, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Driver Setup Required")
+        self.setModal(True)
+        self.setFixedSize(500, 300)
+        
+        layout = QVBoxLayout(self)
+        
+        # Title
+        title_label = QLabel("Driver Setup Required")
+        title_label.setFont(QFont("Arial", 16, QFont.Bold))
+        title_label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(title_label)
+        
+        # Status message
+        if driver_info['is_arm64']:
+            message = ("You're running Windows on ARM64, which has limited compatibility.\n\n"
+                      "You can still download firmware files, but installation methods may not work.\n\n"
+                      "Would you like to see the installation guide anyway?")
+        else:
+            missing_drivers = []
+            if not driver_info['has_mtk_driver']:
+                missing_drivers.append("MediaTek SP Flash Tool Driver")
+            if not driver_info['has_usbdk_driver']:
+                missing_drivers.append("UsbDk Driver")
+            
+            if missing_drivers:
+                message = f"To use all features of Innioasis Updater, you'll need to install:\n\n"
+                for driver in missing_drivers:
+                    message += f"• {driver}\n"
+                message += "\nWould you like help setting these up?"
+            else:
+                message = "Your drivers look good! You should be able to use all features."
+        
+        status_label = QLabel(message)
+        status_label.setWordWrap(True)
+        status_label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(status_label)
+        
+        # Buttons
+        button_layout = QVBoxLayout()
+        
+        if not driver_info['is_arm64'] and (not driver_info['has_mtk_driver'] or not driver_info['has_usbdk_driver']):
+            install_button = QPushButton("Install Missing Drivers")
+            install_button.clicked.connect(self.open_install_guide)
+            button_layout.addWidget(install_button)
+        
+        continue_button = QPushButton("Continue Anyway")
+        continue_button.clicked.connect(self.accept)
+        button_layout.addWidget(continue_button)
+        
+        layout.addLayout(button_layout)
+    
+    def open_install_guide(self):
+        """Open the installation guide in browser"""
+        webbrowser.open("https://innioasis.app/installguide.html")
+        self.accept()
 
 class UpdateProgressDialog(QDialog):
     """Progress dialog for the update process."""
@@ -441,6 +563,18 @@ def launch_firmware_downloader():
     """Reliably launch firmware_downloader.py with multiple fallback methods"""
     current_dir = Path.cwd()
     platform_info = CrossPlatformHelper.get_platform_info()
+    
+    # Check drivers for Windows x86-64 users
+    if platform_info['is_windows'] and not CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
+        driver_info = CrossPlatformHelper.check_drivers_and_architecture()
+        if not driver_info['can_install_firmware']:
+            # Show driver setup dialog instead of launching
+            app = QApplication.instance()
+            if not app:
+                app = QApplication([])
+            dialog = DriverSetupDialog(driver_info)
+            dialog.exec()
+            # Continue with launch after dialog
     
     # Try multiple script names in order of preference
     script_candidates = [
