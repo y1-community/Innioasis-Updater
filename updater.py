@@ -122,7 +122,7 @@ class UpdateWorker(QThread):
 
             extracted_dir = next(temp_dir.glob("Innioasis-Updater-main*"), None)
             if not extracted_dir: 
-                self.status_updated.emit("Update package looks good, proceeding with file updates...")
+                self.status_updated.emit("Could not find extracted directory, but continuing...")
                 # Continue anyway - the update can still be successful
             
             self.status_updated.emit(f"Updating files in current directory...")
@@ -150,10 +150,18 @@ class UpdateWorker(QThread):
                             self.files_skipped += 1
                             continue
                         
-                        # Skip copying existing .exe/.dll files to prevent blocking (be cool about it)
-                        if dest_item.exists() and ext in ['.exe', '.dll']:
-                            self.files_skipped += 1
-                            continue
+                        # For .exe and .dll files, only copy if they don't exist or are newer
+                        if ext in ['.exe', '.dll']:
+                            if dest_item.exists():
+                                # Check if the new file is newer
+                                try:
+                                    if item.stat().st_mtime <= dest_item.stat().st_mtime:
+                                        self.files_skipped += 1
+                                        continue
+                                except:
+                                    # If we can't compare timestamps, skip to be safe
+                                    self.files_skipped += 1
+                                    continue
                         
                         # Try to copy the file, but don't stress if it fails
                         try:
@@ -175,10 +183,20 @@ class UpdateWorker(QThread):
                                     if not self.platform_info['is_windows'] and subitem.suffix.lower() in ['.exe', '.dll', '.lnk']:
                                         self.files_skipped += 1
                                         continue
-                                    # Skip .exe and .dll files that already exist to prevent blocking
-                                    if subdest.exists() and subitem.suffix.lower() in ['.exe', '.dll']:
-                                        self.files_skipped += 1
-                                        continue
+                                    
+                                    # For .exe and .dll files, only copy if they don't exist or are newer
+                                    if subitem.suffix.lower() in ['.exe', '.dll']:
+                                        if subdest.exists():
+                                            # Check if the new file is newer
+                                            try:
+                                                if subitem.stat().st_mtime <= subdest.stat().st_mtime:
+                                                    self.files_skipped += 1
+                                                    continue
+                                            except:
+                                                # If we can't compare timestamps, skip to be safe
+                                                self.files_skipped += 1
+                                                continue
+                                    
                                     # Try to copy the file, but don't stress if it fails
                                     try:
                                         shutil.copy2(subitem, subdest)
@@ -252,10 +270,20 @@ class UpdateWorker(QThread):
                 if not self.platform_info['is_windows'] and item.suffix.lower() in ['.exe', '.dll', '.lnk']:
                     self.files_skipped += 1
                     continue
-                # Skip .exe and .dll files that already exist to prevent blocking
-                if dest_item.exists() and item.suffix.lower() in ['.exe', '.dll']:
-                    self.files_skipped += 1
-                    continue
+                
+                # For .exe and .dll files, only copy if they don't exist or are newer
+                if item.suffix.lower() in ['.exe', '.dll']:
+                    if dest_item.exists():
+                        # Check if the new file is newer
+                        try:
+                            if item.stat().st_mtime <= dest_item.stat().st_mtime:
+                                self.files_skipped += 1
+                                continue
+                        except:
+                            # If we can't compare timestamps, skip to be safe
+                            self.files_skipped += 1
+                            continue
+                
                 # Try to copy the file, but don't stress if it fails
                 try:
                     shutil.copy2(item, dest_item)
@@ -322,10 +350,20 @@ class UpdateProgressDialog(QDialog):
             self.update_worker.status_updated.connect(self.status_label.setText); self.update_worker.update_completed.connect(self.on_update_completed)
             self.update_worker.start()
         else: # No update needed
-            self.setFixedSize(450, 120)
+            self.setFixedSize(450, 180)
             self.status_label.setText("You're all up to date! Launching now...")
-            self.progress_bar.hide(); self.update_button.hide(); self.troubleshoot_button.hide()
-            QTimer.singleShot(1500, self.accept)
+            self.progress_bar.hide()
+            self.update_button.setText("Launch Now")
+            self.update_button.show()
+            self.troubleshoot_button.show()
+            
+            # Add "Check for Updates anyway" button for manual rescue
+            self.force_update_button = QPushButton("Check for Updates anyway")
+            self.force_update_button.clicked.connect(self.run_force_update)
+            layout.addWidget(self.force_update_button)
+            
+            # Auto-launch after 3 seconds if user doesn't click anything
+            QTimer.singleShot(3000, self.accept)
 
     def run_without_update(self):
         """Run the app without updating"""
@@ -337,6 +375,22 @@ class UpdateProgressDialog(QDialog):
         self.worker.status_updated.connect(self.status_label.setText)
         self.worker.finished.connect(self.accept) # Close dialog when done
         self.worker.start()
+
+    def run_force_update(self):
+        """Force an update even when timestamp indicates recent update"""
+        self.status_label.setText("Checking for updates...")
+        self.progress_bar.show()
+        self.progress_bar.setValue(0)
+        self.update_button.hide()
+        self.force_update_button.hide()
+        self.troubleshoot_button.hide()
+        
+        # Create and start the update worker
+        self.update_worker = UpdateWorker()
+        self.update_worker.progress_updated.connect(self.progress_bar.setValue)
+        self.update_worker.status_updated.connect(self.status_label.setText)
+        self.update_worker.update_completed.connect(self.on_update_completed)
+        self.update_worker.start()
 
     def on_update_completed(self, success):
         self.update_button.hide()
@@ -384,28 +438,75 @@ def download_troubleshooters(current_dir, temp_dir):
         return False
 
 def launch_firmware_downloader():
-    # Try to launch test.py first (the enhanced version), then fall back to firmware_downloader.py
-    firmware_script = Path.cwd() / "test.py"
-    if not firmware_script.exists():
-        firmware_script = Path.cwd() / "firmware_downloader.py"
+    """Reliably launch firmware_downloader.py with multiple fallback methods"""
+    current_dir = Path.cwd()
+    platform_info = CrossPlatformHelper.get_platform_info()
     
-    if firmware_script.exists():
-        try:
-            launch_cmd = CrossPlatformHelper.get_launch_command(firmware_script)
-            subprocess.Popen(launch_cmd)
-        except Exception as e: 
-            logging.error("Could not launch main application: %s", e)
-            # Try to show a helpful message
+    # Try multiple script names in order of preference
+    script_candidates = [
+        "firmware_downloader.py",  # Primary target
+        "test.py",                 # Enhanced version as fallback
+    ]
+    
+    for script_name in script_candidates:
+        script_path = current_dir / script_name
+        if script_path.exists():
             try:
-                import tkinter as tk
-                from tkinter import messagebox
-                root = tk.Tk()
-                root.withdraw()
-                messagebox.showerror("Launch Error", f"Could not launch the application.\n\nError: {e}\n\nPlease try running the script manually.")
-            except:
-                pass
-    else:
-        logging.error("Could not find 'test.py' or 'firmware_downloader.py'.")
+                # Method 1: Use CrossPlatformHelper
+                launch_cmd = CrossPlatformHelper.get_launch_command(script_path)
+                logging.info(f"Attempting to launch {script_name} with command: {launch_cmd}")
+                subprocess.Popen(launch_cmd)
+                logging.info(f"Successfully launched {script_name}")
+                return True
+            except Exception as e:
+                logging.error(f"Failed to launch {script_name} with CrossPlatformHelper: {e}")
+                
+                try:
+                    # Method 2: Direct subprocess with sys.executable
+                    cmd = [sys.executable, str(script_path)]
+                    logging.info(f"Attempting to launch {script_name} with direct command: {cmd}")
+                    subprocess.Popen(cmd)
+                    logging.info(f"Successfully launched {script_name} with direct method")
+                    return True
+                except Exception as e2:
+                    logging.error(f"Failed to launch {script_name} with direct method: {e2}")
+                    
+                    try:
+                        # Method 3: Platform-specific commands
+                        if platform_info['is_windows']:
+                            # Windows: try with python.exe explicitly
+                            cmd = ["python.exe", str(script_path)]
+                        elif platform_info['is_macos']:
+                            # macOS: try with python3
+                            cmd = ["python3", str(script_path)]
+                        else:
+                            # Linux: try with python3
+                            cmd = ["python3", str(script_path)]
+                        
+                        logging.info(f"Attempting to launch {script_name} with platform-specific command: {cmd}")
+                        subprocess.Popen(cmd)
+                        logging.info(f"Successfully launched {script_name} with platform-specific method")
+                        return True
+                    except Exception as e3:
+                        logging.error(f"Failed to launch {script_name} with platform-specific method: {e3}")
+                        continue
+    
+    # If all methods failed, try to show an error message
+    logging.error("All launch methods failed")
+    try:
+        import tkinter as tk
+        from tkinter import messagebox
+        root = tk.Tk()
+        root.withdraw()
+        messagebox.showerror("Launch Error", 
+                           "Could not launch the main application.\n\n"
+                           "Please try running firmware_downloader.py manually.")
+    except:
+        # If tkinter fails, just print to console
+        print("ERROR: Could not launch firmware_downloader.py")
+        print("Please run it manually.")
+    
+    return False
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s', filename='updater.log', filemode='w')
@@ -448,9 +549,18 @@ def main():
     
     # Always launch the main app unless the user is on Mac/Linux and requested troubleshoot
     if not (is_troubleshoot_request and not platform_info['is_windows']):
-        launch_firmware_downloader()
+        logging.info("Attempting to launch firmware_downloader.py...")
+        launch_success = launch_firmware_downloader()
+        if not launch_success:
+            logging.error("Failed to launch firmware_downloader.py")
     
-        sys.exit(0)
+    sys.exit(0)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"Error in updater: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
