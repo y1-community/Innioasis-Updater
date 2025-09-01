@@ -3597,7 +3597,7 @@ If the app stops responding, wait for a minute and if it doesn't back just resta
                 if reply == QMessageBox.Ok:
                     # Launch the driver setup URL
                     import webbrowser
-                    webbrowser.open("https://www.github.com/team-slide/Innioasis-Updater#windows-64bit-intelamd-only")
+                    webbrowser.open("https://innioasis.app/drivers.html")
             else:
                 self.status_label.setText("Handshake failed. Drivers seem to be installed. Please check USB connection and reboot.")
         else:
@@ -3905,7 +3905,7 @@ If the app stops responding, wait for a minute and if it doesn't back just resta
     def open_driver_setup_link(self):
         """Open the driver setup instructions in the default browser"""
         import webbrowser
-        webbrowser.open("https://www.github.com/team-slide/Innioasis-Updater#windows-64bit-intelamd-only")
+        webbrowser.open("https://innioasis.app/drivers.html")
 
     def install_from_zip(self):
         """Install firmware from a local zip file"""
