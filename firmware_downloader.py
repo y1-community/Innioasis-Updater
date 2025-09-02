@@ -2374,7 +2374,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         coffee_layout.addWidget(discord_btn)
 
         # Buy Us Coffee button (renamed from Buy Me Coffee)
-        coffee_btn = QPushButton("☕ Buy Us Coffee")
+        coffee_btn = QPushButton("📰News / ☕Tips")
         coffee_btn.setStyleSheet("""
             QPushButton {
                 background-color: #FF5E5B;
