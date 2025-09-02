@@ -3364,6 +3364,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 # Only MTK driver: Only Method 3
                 self.method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
+            elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+                # Only UsbDk driver: Only Method 2
+                self.method_combo.addItem("Method 2 - MTKclient (Only available method)", "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
@@ -3420,12 +3423,17 @@ Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
 Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
 Note: Install USB Development Kit driver to enable Methods 1 and 2
                 """)
+            elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+                desc_text.setPlainText("""
+Method 2 - MTKclient: Direct technical installation (Only available method)
+Note: Install MediaTek SP Driver to enable Methods 1 and 3
+                """)
             else:
                 desc_text.setPlainText("""
 No installation methods available.
 Please install drivers to enable firmware installation.
 
-More methods will become available if you install the USB Development Kit driver.
+More methods will become available if you install the MediaTek SP Driver and USB Development Kit driver.
                 """)
         elif platform.system() == "Windows":
             desc_text.setPlainText("""
@@ -6309,16 +6317,18 @@ read -n 1
         try:
             mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
             has_mtk_driver = mediatek_driver_file.exists()
-        except:
-            pass
+            silent_print(f"MTK driver check: {has_mtk_driver} ({mediatek_driver_file})")
+        except Exception as e:
+            silent_print(f"MTK driver check error: {e}")
         
         # Check for UsbDk driver
         has_usbdk_driver = False
         try:
             usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
             has_usbdk_driver = usbdk_driver_file.exists()
-        except:
-            pass
+            silent_print(f"UsbDk driver check: {has_usbdk_driver} ({usbdk_driver_file})")
+        except Exception as e:
+            silent_print(f"UsbDk driver check error: {e}")
         
         # Determine available methods based on drivers
         available_methods = []
@@ -6335,22 +6345,41 @@ read -n 1
             # Only MTK driver: Force Method 3 (SP Flash Tool) for this session
             # This acts as though the user selected Method 3 from settings but without ticking "use as default"
             available_methods = ['spflash']
+            can_install_firmware = True  # Explicitly set to True for MTK-only
             # Temporarily override installation method for this session only
             if not hasattr(self, '_original_installation_method'):
                 self._original_installation_method = getattr(self, 'installation_method', 'guided')
             self.installation_method = "spflash"
+        elif not has_mtk_driver and has_usbdk_driver:
+            # Only UsbDk driver: Force Method 2 (MTKclient) for this session
+            available_methods = ['mtkclient']
+            can_install_firmware = True  # Explicitly set to True for UsbDk-only
+            # Temporarily override installation method for this session only
+            if not hasattr(self, '_original_installation_method'):
+                self._original_installation_method = getattr(self, 'installation_method', 'guided')
+            self.installation_method = "mtkclient"
         else:
             # No drivers: No installation methods available
             available_methods = []
             can_install_firmware = False
         
-        return {
+        # Summary of driver combinations:
+        # - Both drivers: All 3 methods available
+        # - MTK only: Method 3 (SP Flash Tool) only
+        # - UsbDk only: Method 2 (MTKclient) only  
+        # - No drivers: No methods available
+        # - ARM64: No methods available (firmware download only)
+        
+        result = {
             'has_mtk_driver': has_mtk_driver,
             'has_usbdk_driver': has_usbdk_driver,
             'is_arm64': is_arm64,
             'available_methods': available_methods,
             'can_install_firmware': can_install_firmware
         }
+        
+        silent_print(f"Driver check result: {result}")
+        return result
 
     def download_latest_updater(self):
         """Download the latest updater.py script silently during launch"""
