@@ -4973,7 +4973,7 @@ If the app stops responding, wait for a minute and if it doesn't back just resta
             reply = QMessageBox.question(
                 self,
                 "SP Flash Tool Instructions - Method 3",
-                "Please follow these steps:\n\n"
+                "Please follow these steps after you press OK:\n\n"
                 "1. CONNECT Y1 via USB\n"
                 "2. INSERT Paperclip\n"
                 "3. WAIT for the black window to appear\n"
