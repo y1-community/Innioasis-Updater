@@ -3,338 +3,1042 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driver Setup - Innioasis Updater</title>
+    <title>Innioasis Updater for Y1 - Firmware Installation Guide</title>
     <style>
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-            line-height: 1.6;
+        :root {
+            /* Innioasis-inspired color palette */
+            --innioasis-orange: #ff6b35;
+            --innioasis-blue: #0084d4;
+            --innioasis-green: #00d4aa;
+            --innioasis-yellow: #ffb800;
+            --innioasis-purple: #7b68ee;
+            --innioasis-gray: #f8f9fa;
+            --innioasis-dark: #2d3748;
+            --innioasis-light: #ffffff;
+            --innioasis-border: #e2e8f0;
+            --innioasis-shadow: rgba(0, 0, 0, 0.1);
+            --innioasis-shadow-hover: rgba(0, 0, 0, 0.15);
         }
 
-        /* Dark mode styles */
-        body[data-theme="dark"] {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: #f8f9fa;
-        }
-
-        body[data-theme="dark"] .main-content {
-            background: #2c2c2e;
-            color: #ffffff;
-        }
-
-        body[data-theme="dark"] .checklist-item {
-            background: #3a3a3c;
-            color: #ffffff;
-            border-color: #48484a;
-        }
-
-        body[data-theme="dark"] .checklist-item.completed {
-            background: #2d5a2d;
-            border-color: #4caf50;
-        }
-
-        body[data-theme="dark"] .checklist-item.completed p {
-            color: #ffffff;
-        }
-
-        .container {
-            max-width: 600px;
+        /* Embeddable container - designed to work within existing websites */
+        .innioasis-embed {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--innioasis-light);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--innioasis-shadow);
+            overflow: hidden;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(15px);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .header {
+        /* Header */
+        .embed-header {
             text-align: center;
-            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--innioasis-orange), var(--innioasis-blue));
             color: white;
         }
 
-        .header h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
+        .embed-header h2 {
+            font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .header p {
+        .embed-header p {
             font-size: 1rem;
             opacity: 0.9;
+            font-weight: 500;
         }
 
-        .main-content {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        /* Platform selector */
+        .platform-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 20px;
         }
 
-        .checklist {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .checklist-item {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
+        .platform-card {
+            background: var(--innioasis-light);
+            border: 2px solid var(--innioasis-border);
             border-radius: 12px;
-            padding: 20px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
         }
 
-        .checklist-item.completed {
-            background: #d4edda;
-            border-color: #28a745;
+        .platform-card:hover {
+            border-color: var(--innioasis-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--innioasis-shadow-hover);
         }
 
-        .checklist-item h3 {
-            font-size: 1.1rem;
+        .platform-card.selected {
+            border-color: var(--innioasis-orange);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 132, 212, 0.1));
+        }
+
+        .platform-card .icon {
+            font-size: 2rem;
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            display: block;
+        }
+
+        .platform-card h3 {
+            font-size: 1rem;
             font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--innioasis-dark);
         }
 
-        .checklist-item p {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-bottom: 16px;
-            line-height: 1.4;
-        }
-
-        .checklist-item.completed p {
-            color: #155724;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #667eea;
-            color: white;
-            font-weight: bold;
+        .platform-card p {
             font-size: 0.8rem;
+            color: #666;
+            line-height: 1.3;
         }
 
-        .checklist-item.completed .step-number {
-            background: #28a745;
+        .platform-card .status {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--innioasis-green);
         }
 
-        .btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
+        .platform-card .status.preview {
+            background: var(--innioasis-yellow);
         }
 
-        .btn:hover {
-            background: #5a6fd8;
-            transform: translateY(-1px);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn-success {
-            background: #28a745;
-        }
-
-        .btn-success:hover {
-            background: #218838;
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-        }
-
-        .btn-secondary:hover {
-            background: #5a6268;
-        }
-
-        .completion-message {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
+        /* Installation guide */
+        .installation-guide {
+            background: var(--innioasis-light);
+            border-top: 1px solid var(--innioasis-border);
             padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 20px;
             display: none;
         }
 
-        .completion-message.show {
+        .installation-guide.show {
             display: block;
-            animation: slideIn 0.3s ease;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .guide-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--innioasis-border);
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            color: white;
-            opacity: 0.8;
+        .guide-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--innioasis-dark);
+        }
+
+        .guide-header .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #666;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .guide-header .close-btn:hover {
+            background: var(--innioasis-gray);
+            color: var(--innioasis-dark);
+        }
+
+        /* Steps */
+        .step {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--innioasis-gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--innioasis-orange);
+        }
+
+        .step h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--innioasis-dark);
+        }
+
+        .step p {
+            margin-bottom: 10px;
+            color: #555;
+            line-height: 1.5;
             font-size: 0.9rem;
         }
 
-        .footer a {
-            color: white;
-            text-decoration: none;
+        .step ol, .step ul {
+            margin-left: 18px;
+            margin-bottom: 14px;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
+        .step li {
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 0.9rem;
         }
 
-        .tip {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
             border-radius: 8px;
-            padding: 12px;
-            margin-top: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 6px 6px 6px 0;
+        }
+
+        .btn-primary {
+            background: var(--innioasis-orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--innioasis-gray);
+            color: var(--innioasis-dark);
+            border: 1px solid var(--innioasis-border);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: var(--innioasis-green);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #00b894;
+            transform: translateY(-1px);
+        }
+
+        .btn-warning {
+            background: var(--innioasis-yellow);
+            color: var(--innioasis-dark);
+        }
+
+        .btn-warning:hover {
+            background: #e6a800;
+            transform: translateY(-1px);
+        }
+
+        /* Download sections */
+        .download-section {
+            background: var(--innioasis-light);
+            border: 1px solid var(--innioasis-border);
+            border-radius: 8px;
+            padding: 14px;
+            margin: 14px 0;
+        }
+
+        .download-section h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--innioasis-dark);
+        }
+
+        .download-section p {
+            margin-bottom: 10px;
+            color: #666;
             font-size: 0.85rem;
-            color: #856404;
         }
 
-        body[data-theme="dark"] .tip {
-            background: #3a3a3c;
-            border-color: #ffc107;
-            color: #ffc107;
+        /* Command display */
+        .command-display {
+            background: var(--innioasis-dark);
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.8rem;
+            margin: 14px 0;
+            position: relative;
         }
 
+        .command-display code {
+            color: #00d4aa;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Alternative methods */
+        .alternative-method {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--innioasis-border);
+            text-align: center;
+        }
+
+        .alternative-link {
+            color: var(--innioasis-orange);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .alternative-link:hover {
+            text-decoration: underline;
+            color: #e55a2b;
+        }
+
+        /* ARM64 Windows specific */
+        .arm64-warning {
+            background: linear-gradient(135deg, #fff5f5, #fed7d7);
+            border: 1px solid #feb2b2;
+            border-radius: 8px;
+            padding: 14px;
+            margin: 14px 0;
+        }
+
+        .arm64-warning h5 {
+            color: #c53030;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .arm64-warning p {
+            color: #742a2a;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-step .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--innioasis-border);
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background: var(--innioasis-orange);
+            color: white;
+        }
+
+        .progress-step.completed .step-number {
+            background: var(--innioasis-green);
+            color: white;
+        }
+
+        .progress-step .step-label {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--innioasis-orange);
+            font-weight: 600;
+        }
+
+        .progress-step.completed .step-label {
+            color: var(--innioasis-green);
+            font-weight: 600;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: var(--innioasis-border);
+            z-index: 1;
+        }
+
+        .progress-line .fill {
+            height: 100%;
+            background: var(--innioasis-orange);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+            .platform-selector {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin: 15px;
             }
-            
-            .header h1 {
+
+            .platform-card {
+                padding: 14px;
+            }
+
+            .platform-card .icon {
                 font-size: 1.8rem;
             }
-            
-            .theme-toggle {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin: 0 auto 20px auto;
-                display: block;
-                width: fit-content;
+
+            .installation-guide {
+                padding: 15px;
             }
+
+            .step {
+                padding: 14px;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 6px 0;
+            }
+
+            .guide-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .guide-header .close-btn {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .embed-header {
+                padding: 15px;
+            }
+
+            .embed-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .embed-header p {
+                font-size: 0.9rem;
+            }
+
+            .platform-card {
+                padding: 12px;
+            }
+
+            .step {
+                padding: 12px;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Embed-specific styles */
+        .innioasis-embed {
+            /* Ensure it doesn't interfere with parent site styles */
+            all: initial;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--innioasis-dark);
+        }
+
+        .innioasis-embed * {
+            box-sizing: border-box;
+        }
+
+        /* Responsive container */
+        .innioasis-embed {
+            width: 100%;
+            max-width: 800px;
+            min-width: 320px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
-
-        <div class="header">
-            <h1>🔧 Driver Setup</h1>
-            <p>Quick setup to get your Y1 talking to your computer</p>
+    <div class="innioasis-embed">
+        <!-- Header -->
+        <div class="embed-header">
+            <h2>🚀 Innioasis Updater for Y1</h2>
+            <p>Windows, Mac and Linux compatible firmware installation - it's easier than you think!</p>
         </div>
 
-        <div class="main-content">
-            <div class="checklist">
-                <div class="checklist-item" id="step1">
-                    <h3><span class="step-number">1</span> Download MediaTek Driver</h3>
-                    <p>This lets your computer recognise your Y1 when you plug it in</p>
-                    <button class="btn btn-success" onclick="downloadDriver('mtk')">Download</button>
-                    <div class="tip" id="mtk-tip" style="display: none;">
-                        💡 If it asks to "uninstall/install origin driver" - click Yes
-                    </div>
-                </div>
-
-                <div class="checklist-item" id="step2">
-                    <h3><span class="step-number">2</span> Download USB Development Kit</h3>
-                    <p>Gives your computer the tools it needs for firmware updates</p>
-                    <button class="btn btn-success" onclick="downloadDriver('usbdk')">Download</button>
-                    <div class="tip" id="usbdk-tip" style="display: none;">
-                        💡 If you get an error, it's probably already installed - that's fine!
-                    </div>
-                </div>
-
-                <div class="checklist-item" id="step3">
-                    <h3><span class="step-number">3</span> Install Both Drivers</h3>
-                    <p>Run the files you downloaded and follow the prompts</p>
-                    <button class="btn btn-secondary" onclick="markInstalled()">I've installed both</button>
-                </div>
+        <!-- Platform Selector -->
+        <div class="platform-selector">
+            <div class="platform-card" data-platform="windows" onclick="selectPlatform('windows')">
+                <span class="icon">🪟</span>
+                <h3>Windows</h3>
+                <p>Works great on Windows 10 & 11</p>
+                <span class="status ready"></span>
             </div>
-
-            <div class="completion-message" id="completionMessage">
-                <h3>🎉 All done!</h3>
-                <p>Your Y1 is ready for firmware updates</p>
-                <p style="margin-top: 12px; font-size: 0.9rem; opacity: 0.9;">💡 <strong>Next steps:</strong> Reboot your computer, then launch Innioasis Updater from the Start menu or desktop</p>
-                <button class="btn" onclick="window.location.href='index.html'">Back to main page</button>
+            
+            <div class="platform-card" data-platform="mac" onclick="selectPlatform('mac')">
+                <span class="icon">🍎</span>
+                <h3>macOS</h3>
+                <p>Ventura and later</p>
+                <span class="status ready"></span>
+            </div>
+            
+            <div class="platform-card" data-platform="linux" onclick="selectPlatform('linux')">
+                <span class="icon">🐧</span>
+                <h3>Linux</h3>
+                <p>Ubuntu recommended</p>
+                <span class="status ready"></span>
+            </div>
+            
+            <div class="platform-card" data-platform="arm64" onclick="selectPlatform('arm64')">
+                <span class="icon">🪟</span>
+                <h3>Windows ARM64</h3>
+                <p>Limited functionality</p>
+                <span class="status preview"></span>
             </div>
         </div>
 
-        <div class="footer">
-            <p>Made with ❤️ by <a href="https://github.com/team-slide" target="_blank">Team Slide</a></p>
+        <!-- Windows Installation Guide -->
+        <div class="installation-guide" id="windows-guide">
+            <div class="guide-header">
+                <h3>🪟 Windows Installation</h3>
+                <button class="close-btn" onclick="closeGuide()">×</button>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-line">
+                    <div class="fill" id="windows-progress"></div>
+                </div>
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Drivers</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Download</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Install</div>
+                </div>
+            </div>
+
+            <!-- Step 1: Drivers -->
+            <div class="step" id="windows-step-1">
+                <h4>Step 1: Get the Right Drivers</h4>
+                <p>Your computer needs to know how to talk to your Y1. We'll install two drivers to make this happen:</p>
+                
+                <div class="download-section">
+                    <h5>📥 MediaTek Driver</h5>
+                    <p>This helps your computer recognize your Y1 device</p>
+                    <button class="btn btn-primary" onclick="downloadDriver('mtk')">Download MediaTek Driver</button>
+                </div>
+                
+                <div class="download-section">
+                    <h5>📥 USB Development Kit</h5>
+                    <p>This handles the USB communication between your computer and Y1</p>
+                    <button class="btn btn-primary" onclick="downloadDriver('usbdk')">Download USB Development Kit</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 16px;">
+                    <button class="btn btn-success" onclick="nextWindowsStep()">Next: Download the App →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Download App -->
+            <div class="step" id="windows-step-2" style="display: none;">
+                <h4>Step 2: Download Innioasis Updater</h4>
+                <p>Now let's get the actual app that will handle your firmware updates:</p>
+                
+                <div class="download-section">
+                    <h5>📱 Innioasis Updater for Windows</h5>
+                    <p>This is the main app that will guide you through updating your Y1</p>
+                    <button class="btn btn-primary" onclick="downloadWindows()">Download Windows Installer</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 16px;">
+                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Drivers</button>
+                    <button class="btn btn-success" onclick="nextWindowsStep()">Next: Installation →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Installation -->
+            <div class="step" id="windows-step-3" style="display: none;">
+                <h4>Step 3: Install Everything</h4>
+                <p>Almost there! Here's what to do next:</p>
+                
+                <ol>
+                    <li>Install the MediaTek driver you downloaded</li>
+                    <li>Install the USB Development Kit</li>
+                    <li>Install Innioasis Updater</li>
+                    <li><strong>Restart your computer</strong> (this is important!)</li>
+                    <li>Launch Innioasis Updater from the Start Menu</li>
+                </ol>
+                
+                <div class="arm64-warning">
+                    <h5>⚠️ Windows ARM64 Users</h5>
+                    <p>If you're using a Windows device with ARM64 (like some Surface tablets), you'll have limited functionality. You can still use Remote Control and Screenshot features, but firmware installation won't work.</p>
+                    <button class="btn btn-warning" onclick="showArm64Alternative()">Show Alternative Options</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 16px;">
+                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Download</button>
+                    <button class="btn btn-success" onclick="closeGuide()">Finish Setup</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- macOS Installation Guide -->
+        <div class="installation-guide" id="mac-guide">
+            <div class="guide-header">
+                <h3>🍎 macOS Installation</h3>
+                <button class="close-btn" onclick="closeGuide()">×</button>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-line">
+                    <div class="fill" id="mac-progress"></div>
+                </div>
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Homebrew</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Download</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Install</div>
+                </div>
+            </div>
+
+            <!-- Step 1: Homebrew -->
+            <div class="step" id="mac-step-1">
+                <h4>Step 1: Install Homebrew</h4>
+                <p>Homebrew is like a package manager that helps install all the pieces your Mac needs. Think of it as a helpful assistant that makes sure everything works together properly.</p>
+                
+                <div class="download-section">
+                    <h5>📥 Get Homebrew</h5>
+                    <p>Click the button below to visit the Homebrew website and follow their simple installation guide:</p>
+                    <button class="btn btn-primary" onclick="openHomebrew()">Visit Homebrew Website</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 16px;">
+                    <button class="btn btn-success" onclick="nextMacStep()">Next: Download the App →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Download App -->
+            <div class="step" id="mac-step-2" style="display: none;">
+                <h4>Step 2: Download Innioasis Updater</h4>
+                <p>Now let's get the actual app. Click the button below and it'll start downloading to your Downloads folder:</p>
+                
+                <div class="download-section">
+                    <h5>📱 Innioasis Updater for Mac</h5>
+                    <p>This will download a .dmg file (disk image) to your Downloads folder</p>
+                    <button class="btn btn-primary" onclick="downloadMac()">Download for Mac</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 16px;">
+                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Homebrew</button>
+                    <button class="btn btn-success" onclick="nextMacStep()">Next: Installation →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Installation -->
+            <div class="step" id="mac-step-3" style="display: none;">
+                <h4>Step 3: Install the App</h4>
+                <p>Now let's get the app installed on your Mac:</p>
+                
+                <ol>
+                    <li>Double-click the downloaded .dmg file (it'll look like a disk image)</li>
+                    <li>Drag the Innioasis Updater app to your Applications folder</li>
+                    <li>Open it from your Applications folder</li>
+                </ol>
+                
+                <div class="download-section">
+                    <h5>🔒 Security Settings</h5>
+                    <p>You might need to tell your Mac it's okay to run this app. The exact steps depend on your macOS version:</p>
+                    <button class="btn btn-warning" onclick="openMacSecurityGuide()">Open Security Guide</button>
+                </div>
+                
+                <div class="alternative-method">
+                    <a href="#" onclick="showMacTerminal()" class="alternative-link">
+                        🔧 Prefer using Terminal? (Advanced users)
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 16px;">
+                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Download</button>
+                    <button class="btn btn-success" onclick="closeGuide()">Finish Setup</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linux Installation Guide -->
+        <div class="installation-guide" id="linux-guide">
+            <div class="guide-header">
+                <h3>🐧 Linux Installation</h3>
+                <button class="close-btn" onclick="closeGuide()">×</button>
+            </div>
+            
+            <p>Linux users, you're in luck! Ubuntu works best, but most other distributions should work too. We'll open a comprehensive guide that shows you exactly what to install.</p>
+            
+            <div class="download-section">
+                <h5>📖 Installation Guide</h5>
+                <p>Click the button below to open detailed Linux installation instructions:</p>
+                <button class="btn btn-primary" onclick="openLinuxGuide()">Open Linux Guide</button>
+            </div>
+            
+            <div style="text-align: center; margin-top: 16px;">
+                <button class="btn btn-secondary" onclick="closeGuide()">Close</button>
+            </div>
+        </div>
+
+        <!-- ARM64 Windows Alternative -->
+        <div class="installation-guide" id="arm64-guide">
+            <div class="guide-header">
+                <h3>🪟 Windows ARM64 - Alternative Setup</h3>
+                <button class="close-btn" onclick="closeGuide()">×</button>
+            </div>
+            
+            <div class="arm64-warning">
+                <h5>⚠️ Limited Functionality on ARM64</h5>
+                <p>Windows ARM64 devices can't run the full firmware installation features due to driver limitations. However, you can still use Remote Control, Screenshot, and APK installation features.</p>
+            </div>
+            
+            <div class="step">
+                <h4>Option 1: Use Available Features</h4>
+                <p>You can still download and use Innioasis Updater for the features that work:</p>
+                <ul>
+                    <li>📱 Remote Control - Control your Y1 from your computer</li>
+                    <li>📸 Screenshot - Take screenshots of your Y1</li>
+                    <li>📦 APK Installation - Install Android apps on your Y1</li>
+                </ul>
+                <button class="btn btn-primary" onclick="downloadWindows()">Download for Windows ARM64</button>
+            </div>
+            
+            <div class="step">
+                <h4>Option 2: Advanced Users - WSLg Setup</h4>
+                <p>If you're comfortable with advanced setup, you can try running the Linux version in WSLg (Windows Subsystem for Linux with GUI):</p>
+                
+                <div class="download-section">
+                    <h5>📥 USBIPD-Win Driver</h5>
+                    <p>First, install this driver to enable USB passthrough to WSLg:</p>
+                    <button class="btn btn-warning" onclick="downloadUsbipd()">Download USBIPD-Win</button>
+                </div>
+                
+                <div class="alternative-method">
+                    <a href="#" onclick="showWSLgSetup()" class="alternative-link">
+                        🔧 Show WSLg Setup Guide (Advanced)
+                    </a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 16px;">
+                <button class="btn btn-secondary" onclick="closeGuide()">Close</button>
+            </div>
+        </div>
+
+        <!-- WSLg Setup Guide -->
+        <div class="installation-guide" id="wslg-guide">
+            <div class="guide-header">
+                <h3>🐧 WSLg Setup for Windows ARM64</h3>
+                <button class="close-btn" onclick="closeGuide()">×</button>
+            </div>
+            
+            <div class="step">
+                <h4>Step 1: Install WSLg</h4>
+                <p>First, make sure you have WSLg enabled on your Windows ARM64 device:</p>
+                <ol>
+                    <li>Open PowerShell as Administrator</li>
+                    <li>Run: <code>wsl --install</code></li>
+                    <li>Restart your computer</li>
+                    <li>Install Ubuntu from the Microsoft Store</li>
+                </ol>
+            </div>
+            
+            <div class="step">
+                <h4>Step 2: Install USBIPD-Win</h4>
+                <p>You should have already downloaded this. Install the .msi file you downloaded earlier.</p>
+            </div>
+            
+            <div class="step">
+                <h4>Step 3: Run Setup Script</h4>
+                <p>In your Ubuntu WSLg terminal, run this command to automatically set up everything:</p>
+                
+                <div class="command-display">
+                    <button class="copy-btn" onclick="copyCommand('wslg-setup')">Copy</button>
+                    <code id="wslg-setup">curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/.web_scripts/setup_wslg_arm64.sh | bash</code>
+                </div>
+                
+                <p>This script will:</p>
+                <ul>
+                    <li>Install required packages</li>
+                    <li>Configure USBIPD for your Y1</li>
+                    <li>Download and set up Innioasis Updater</li>
+                    <li>Guide you through the first connection</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <h4>Step 4: Connect Your Y1</h4>
+                <p>After the script completes:</p>
+                <ol>
+                    <li>Connect your Y1 via USB</li>
+                    <li>In Windows, run: <code>usbipd wsl list</code></li>
+                    <li>Attach your Y1: <code>usbipd wsl attach --busid [YOUR_BUS_ID]</code></li>
+                    <li>In WSLg, run: <code>innioasis-updater</code></li>
+                </ol>
+            </div>
+            
+            <div style="text-align: center; margin-top: 16px;">
+                <button class="btn btn-secondary" onclick="closeGuide()">Close</button>
+            </div>
+        </div>
+
+        <!-- macOS Terminal Guide -->
+        <div class="installation-guide" id="mac-terminal-guide">
+            <div class="guide-header">
+                <h3>🍎 Terminal Installation (Advanced)</h3>
+                <button class="close-btn" onclick="closeGuide()">×</button>
+            </div>
+            
+            <div class="step">
+                <h4>Terminal Installation Method</h4>
+                <p>For advanced users who prefer command line installation:</p>
+                
+                <div class="command-display">
+                    <button class="copy-btn" onclick="copyCommand('mac-terminal')">Copy</button>
+                    <code id="mac-terminal">curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/run_mac.sh | bash</code>
+                </div>
+                
+                <p>This command will:</p>
+                <ul>
+                    <li>Check if Homebrew is installed</li>
+                    <li>Install required dependencies</li>
+                    <li>Download and install Innioasis Updater</li>
+                    <li>Set up everything automatically</li>
+                </ul>
+                
+                <div class="alternative-method">
+                    <a href="#" onclick="closeGuide()" class="alternative-link">
+                        ← Back to main guide
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        let completedSteps = 0;
-        const totalSteps = 3;
+        let currentPlatform = null;
+        let currentStep = 1;
 
+        // Platform selection
+        function selectPlatform(platform) {
+            // Hide all guides
+            document.querySelectorAll('.installation-guide').forEach(guide => {
+                guide.classList.remove('show');
+            });
+            
+            // Remove selection from all platform cards
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Select the clicked platform
+            document.querySelector(`[data-platform="${platform}"]`).classList.add('selected');
+            
+            // Show appropriate guide
+            if (platform === 'windows') {
+                document.getElementById('windows-guide').classList.add('show');
+                currentPlatform = 'windows';
+                currentStep = 1;
+                updateProgress('windows', 1);
+            } else if (platform === 'mac') {
+                document.getElementById('mac-guide').classList.add('show');
+                currentPlatform = 'mac';
+                currentStep = 1;
+                updateProgress('mac', 1);
+            } else if (platform === 'linux') {
+                document.getElementById('linux-guide').classList.add('show');
+                currentPlatform = 'linux';
+            } else if (platform === 'arm64') {
+                document.getElementById('arm64-guide').classList.add('show');
+                currentPlatform = 'arm64';
+            }
+        }
+
+        // Close guide
+        function closeGuide() {
+            document.querySelectorAll('.installation-guide').forEach(guide => {
+                guide.classList.remove('show');
+            });
+            
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            currentPlatform = null;
+            currentStep = 1;
+        }
+
+        // Windows step navigation
+        function nextWindowsStep() {
+            if (currentStep < 3) {
+                hideWindowsStep(currentStep);
+                currentStep++;
+                showWindowsStep(currentStep);
+                updateProgress('windows', currentStep);
+            }
+        }
+
+        function prevWindowsStep() {
+            if (currentStep > 1) {
+                hideWindowsStep(currentStep);
+                currentStep--;
+                showWindowsStep(currentStep);
+                updateProgress('windows', currentStep);
+            }
+        }
+
+        function showWindowsStep(step) {
+            document.getElementById(`windows-step-${step}`).style.display = 'block';
+        }
+
+        function hideWindowsStep(step) {
+            document.getElementById(`windows-step-${step}`).style.display = 'none';
+        }
+
+        // macOS step navigation
+        function nextMacStep() {
+            if (currentStep < 3) {
+                hideMacStep(currentStep);
+                currentStep++;
+                showMacStep(currentStep);
+                updateProgress('mac', currentStep);
+            }
+        }
+
+        function prevMacStep() {
+            if (currentStep > 1) {
+                hideMacStep(currentStep);
+                currentStep--;
+                showMacStep(currentStep);
+                updateProgress('mac', currentStep);
+            }
+        }
+
+        function showMacStep(step) {
+            document.getElementById(`mac-step-${step}`).style.display = 'block';
+        }
+
+        function hideMacStep(step) {
+            document.getElementById(`mac-step-${step}`).style.display = 'none';
+        }
+
+        // Progress bar updates
+        function updateProgress(platform, step) {
+            const progressBar = document.getElementById(`${platform}-progress`);
+            const progressSteps = document.querySelectorAll(`#${platform}-guide .progress-step`);
+            
+            // Update progress line
+            const percentage = (step / 3) * 100;
+            progressBar.style.width = percentage + '%';
+            
+            // Update step indicators
+            progressSteps.forEach((stepEl, index) => {
+                const stepNum = index + 1;
+                if (stepNum < step) {
+                    stepEl.classList.remove('active');
+                    stepEl.classList.add('completed');
+                } else if (stepNum === step) {
+                    stepEl.classList.remove('completed');
+                    stepEl.classList.add('active');
+                } else {
+                    stepEl.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        // Download functions
         function downloadDriver(driverType) {
-            let url, filename, tipId;
+            let url, filename;
             
             if (driverType === 'mtk') {
                 url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe';
                 filename = 'driver_mtk.exe';
-                tipId = 'mtk-tip';
             } else if (driverType === 'usbdk') {
                 url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_usbdk.msi';
                 filename = 'driver_usbdk.msi';
-                tipId = 'usbdk-tip';
             }
             
-            // Try to download directly
-            try {
+            if (url) {
                 const link = document.createElement('a');
                 link.href = url;
                 link.download = filename;
@@ -342,111 +1046,147 @@
                 link.click();
                 document.body.removeChild(link);
                 
-                // Show success message and tip
-                const stepElement = document.getElementById(`step${driverType === 'mtk' ? '1' : '2'}`);
-                const tipElement = document.getElementById(tipId);
+                // Show success message
+                setTimeout(() => {
+                    alert(`🎉 Download started! The ${driverType === 'mtk' ? 'MediaTek driver' : 'USB Development Kit'} is downloading to your Downloads folder.`);
+                }, 1000);
+            }
+        }
+
+        function downloadWindows() {
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.-.Windows.exe';
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Innioasis.Updater.-.Windows.exe';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => {
+                alert('🎉 Download started! The Windows installer is downloading to your Downloads folder.');
+            }, 1000);
+        }
+
+        function downloadMac() {
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.for.Mac.dmg';
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Innioasis.Updater.for.Mac.dmg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => {
+                alert('🎉 Download started! The DMG file is downloading to your Downloads folder.');
+            }, 1000);
+        }
+
+        function downloadUsbipd() {
+            const url = 'https://github.com/dorssel/usbipd-win/releases/latest/download/usbipd-win_arm64.msi';
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'usbipd-win_arm64.msi';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => {
+                alert('🎉 Download started! The USBIPD-Win driver is downloading to your Downloads folder.');
+            }, 1000);
+        }
+
+        // External links
+        function openHomebrew() {
+            window.open('https://github.com/Homebrew/brew/releases/latest', '_blank');
+        }
+
+        function openLinuxGuide() {
+            window.open('https://github.com/team-slide/Innioasis-Updater#linux---ubuntu-recommended', '_blank');
+        }
+
+        function openMacSecurityGuide() {
+            // Detect macOS version and open appropriate guide
+            const userAgent = navigator.userAgent;
+            let macVersion = '14.0'; // Default to macOS 14
+            
+            if (userAgent.includes('Mac OS X 10_15')) {
+                macVersion = '10.15'; // macOS Catalina
+            } else if (userAgent.includes('Mac OS X 11_')) {
+                macVersion = '11.0'; // macOS Big Sur
+            } else if (userAgent.includes('Mac OS X 12_')) {
+                macVersion = '12.0'; // macOS Monterey
+            } else if (userAgent.includes('Mac OS X 13_')) {
+                macVersion = '13.0'; // macOS Ventura
+            } else if (userAgent.includes('Mac OS X 14_')) {
+                macVersion = '14.0'; // macOS Sonoma
+            } else if (userAgent.includes('Mac OS X 15_')) {
+                macVersion = '15.0'; // macOS Sequoia
+            }
+            
+            const guideUrl = `https://support.apple.com/en-gb/guide/mac-help/mh40616/${macVersion}/mac/${macVersion}`;
+            window.open(guideUrl, '_blank');
+        }
+
+        // Alternative methods
+        function showArm64Alternative() {
+            closeGuide();
+            setTimeout(() => {
+                document.getElementById('arm64-guide').classList.add('show');
+            }, 100);
+        }
+
+        function showWSLgSetup() {
+            closeGuide();
+            setTimeout(() => {
+                document.getElementById('wslg-guide').classList.add('show');
+            }, 100);
+        }
+
+        function showMacTerminal() {
+            closeGuide();
+            setTimeout(() => {
+                document.getElementById('mac-terminal-guide').classList.add('show');
+            }, 100);
+        }
+
+        // Copy command to clipboard
+        function copyCommand(commandId) {
+            const commandText = document.getElementById(commandId).textContent;
+            navigator.clipboard.writeText(commandText).then(function() {
+                // Change button text temporarily to show success
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.style.background = '#00d4aa';
                 
-                if (driverType === 'mtk') {
-                    alert('✅ MediaTek driver downloading! Check your Downloads folder.\n\n💡 If it asks to "uninstall/install origin driver" - click Yes');
-                } else {
-                    alert('✅ USB Development Kit downloading! Check your Downloads folder.\n\n💡 If you get an error during install, it\'s probably already installed - that\'s fine!');
-                }
-                
-                tipElement.style.display = 'block';
-                completeStep(driverType === 'mtk' ? 1 : 2);
-                
-            } catch (error) {
-                // Fallback to opening in new tab
-                window.open(url, '_blank');
-                alert(`✅ Opening download page in new tab!\n\n💡 Click the download button on the GitHub page.`);
-                
-                const tipElement = document.getElementById(tipId);
-                tipElement.style.display = 'block';
-                completeStep(driverType === 'mtk' ? 1 : 2);
-            }
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy command. Please select and copy manually.');
+            });
         }
 
-        function completeStep(stepNumber) {
-            const stepElement = document.getElementById(`step${stepNumber}`);
-            stepElement.classList.add('completed');
-            
-            // Update step icon
-            const stepNumberElement = stepElement.querySelector('.step-number');
-            stepNumberElement.innerHTML = '✓';
-            
-            completedSteps++;
-            
-            // Move to next step if available
-            if (stepNumber < totalSteps) {
-                const nextStep = document.getElementById(`step${stepNumber + 1}`);
-                nextStep.classList.add('current');
-            }
-        }
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation to container
+            document.querySelector('.innioasis-embed').classList.add('fade-in');
+        });
 
-        function markInstalled() {
-            completeStep(3);
-            document.getElementById('completionMessage').classList.add('show');
-        }
-
-        // Theme toggle functionality
-        function toggleTheme() {
-            const body = document.body;
-            const currentTheme = localStorage.getItem('theme') || 'auto';
-            
-            let newTheme;
-            if (currentTheme === 'auto') {
-                newTheme = 'light';
-            } else if (currentTheme === 'light') {
-                newTheme = 'dark';
-            } else {
-                newTheme = 'auto';
-            }
-            
-            localStorage.setItem('theme', newTheme);
-            applyTheme(newTheme);
-        }
-
-        function applyTheme(theme) {
-            const body = document.body;
-            const themeToggle = document.querySelector('.theme-toggle');
-            
-            if (theme === 'auto') {
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    body.setAttribute('data-theme', 'dark');
-                    themeToggle.textContent = '☀️';
-                } else {
-                    body.removeAttribute('data-theme');
-                    themeToggle.textContent = '🌓';
-                }
-            } else if (theme === 'dark') {
-                body.setAttribute('data-theme', 'dark');
-                themeToggle.textContent = '☀️';
-            } else {
-                body.removeAttribute('data-theme');
-                themeToggle.textContent = '🌙';
-            }
-        }
-
-        // Check saved theme preference and system theme
-        function checkSavedTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'auto';
-            applyTheme(savedTheme);
-            
-            if (savedTheme === 'auto') {
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                    if (localStorage.getItem('theme') === 'auto') {
-                        if (e.matches) {
-                            document.body.setAttribute('data-theme', 'dark');
-                        } else {
-                            document.body.removeAttribute('data-theme');
-                        }
-                    }
-                });
-            }
-        }
-
-        // Initialize theme
-        checkSavedTheme();
+        // Export functions for external use
+        window.InnioasisUpdater = {
+            selectPlatform,
+            closeGuide,
+            downloadDriver,
+            downloadWindows,
+            downloadMac,
+            downloadUsbipd
+        };
     </script>
 </body>
 </html>
