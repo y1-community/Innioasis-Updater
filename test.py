@@ -5930,7 +5930,7 @@ Method 2 - MTKclient: Direct technical installation
                           "This method shows technical installation details. If it fails, try Method 3.")
         else:
             # Non-Windows baseline Method 2 instructions
-            instructions = ("Please follow these steps:\n\n"
+            instructions = ("Please follow these steps after pressing OK:\n\n"
                           "1. INSERT Paperclip\n"
                           "2. CONNECT Y1 via USB\n"
                           "3. WAIT for the install to finish\n"
