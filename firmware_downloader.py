@@ -1390,44 +1390,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error ensuring Innioasis Updater shortcuts: {e}")
 
     def show_shortcut_cleanup_dialog(self, old_shortcuts):
-        """Show dialog offering to remove old shortcuts"""
+        """Silently remove old shortcuts without user interaction"""
         try:
-            # Group shortcuts by location for better display
-            desktop_items = [item for location, item in old_shortcuts if location == "Desktop"]
-            start_menu_items = [item for location, item in old_shortcuts if location == "Start Menu"]
-            
-            message = "Found old shortcuts and folders that may no longer be needed:\n\n"
-            
-            if desktop_items:
-                message += "Desktop:\n"
-                for item in desktop_items:
-                    message += f"• {Path(item).name}\n"
-                message += "\n"
-            
-            if start_menu_items:
-                message += "Start Menu:\n"
-                for item in start_menu_items:
-                    message += f"• {item}\n"
-                message += "\n"
-            
-            message += "These appear to be from previous versions. Would you like to remove them?"
-            
-            reply = QMessageBox.question(
-                self,
-                "Clean Up Old Shortcuts",
-                message,
-                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
-                QMessageBox.No
-            )
-            
-            if reply == QMessageBox.Yes:
-                self.remove_old_shortcuts(old_shortcuts)
-            elif reply == QMessageBox.Cancel:
-                # Don't ask again this session
-                pass
+            if not old_shortcuts:
+                return
+                
+            silent_print(f"Found {len(old_shortcuts)} old shortcuts, removing silently...")
+            self.remove_old_shortcuts(old_shortcuts)
                 
         except Exception as e:
-            silent_print(f"Error showing shortcut cleanup dialog: {e}")
+            silent_print(f"Error during silent shortcut cleanup: {e}")
 
     def remove_old_shortcuts(self, old_shortcuts):
         """Remove old shortcuts and folders"""
@@ -1453,29 +1425,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Show results
             if failed_items:
-                message = f"Successfully removed {removed_count} items.\n\n"
-                message += "Some items could not be removed (may need admin privileges):\n"
-                for item in failed_items:
-                    message += f"• {item}\n"
-                
-                QMessageBox.information(
-                    self,
-                    "Cleanup Results",
-                    message
-                )
+                silent_print(f"Successfully removed {removed_count} items.")
+                silent_print(f"Some items could not be removed (may need admin privileges): {', '.join(failed_items)}")
             else:
-                QMessageBox.information(
-                    self,
-                    "Cleanup Complete",
-                    f"Successfully removed {removed_count} old shortcuts and folders."
-                )
+                silent_print(f"Successfully removed {removed_count} old shortcuts and folders.")
                 
         except Exception as e:
-            QMessageBox.warning(
-                self,
-                "Cleanup Error",
-                f"Error during cleanup: {e}"
-            )
+            silent_print(f"Error during cleanup: {e}")
 
     def check_and_replace_y1_helper_shortcuts(self):
         """Check for Y1 Helper and Y1 Remote Control shortcuts and clean up to desired state"""
@@ -1551,22 +1507,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             message = "Found Y1 Helper.lnk on your desktop that can be replaced with Innioasis Updater:\n\n"
             message += "Desktop:\n"
-            message += f"• {Path(y1_helper_desktop_shortcut).name}\n\n"
-            message += "Would you like to replace this with the Innioasis Updater shortcut?"
-            
-            reply = QMessageBox.question(
-                self,
-                "Replace Y1 Helper with Innioasis Updater",
-                message,
-                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
-                QMessageBox.No
-            )
-            
-            if reply == QMessageBox.Yes:
-                self.replace_y1_helper_with_innioasis_updater(y1_helper_desktop_shortcut, str(innioasis_updater_shortcut))
-            elif reply == QMessageBox.Cancel:
-                # Don't ask again this session
-                pass
+            silent_print(f"Found Y1 Helper shortcut: {Path(y1_helper_desktop_shortcut).name}")
+            silent_print("Replacing with Innioasis Updater shortcut...")
+            self.replace_y1_helper_with_innioasis_updater(y1_helper_desktop_shortcut, str(innioasis_updater_shortcut))
                 
         except Exception as e:
             silent_print(f"Error showing Innioasis Updater replacement dialog: {e}")
@@ -1594,26 +1537,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Remove the old Y1 Helper.lnk
             old_shortcut.unlink()
             
-            QMessageBox.information(
-                self,
-                "Replacement Complete",
-                "Successfully replaced Y1 Helper.lnk with Innioasis Updater.lnk on your desktop."
-            )
-            
+            silent_print("Successfully replaced Y1 Helper.lnk with Innioasis Updater.lnk on your desktop.")
             silent_print(f"Replaced: {old_shortcut} -> {desktop_innioasis_shortcut}")
             
         except PermissionError:
-            QMessageBox.warning(
-                self,
-                "Permission Error",
-                "Could not replace the shortcut. You may need to run as administrator."
-            )
+            silent_print("Could not replace the shortcut. You may need to run as administrator.")
         except Exception as e:
-            QMessageBox.warning(
-                self,
-                "Replacement Error",
-                f"Error during replacement: {e}"
-            )
+            silent_print(f"Error during replacement: {e}")
 
     def ensure_proper_desktop_shortcut(self):
         """Ensure Innioasis Updater.lnk exists on desktop"""
@@ -1686,22 +1616,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             message += "This will clean up all old Y1 Helper and related shortcuts and ensure you have:\n"
             message += "• Innioasis Updater.lnk on desktop\n"
-            message += "• Innioasis Updater.lnk in Start Menu\n\n"
-            message += "Would you like to proceed with cleanup?"
-            
-            reply = QMessageBox.question(
-                self,
-                "Clean Up Old Shortcuts",
-                message,
-                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
-                QMessageBox.No
-            )
-            
-            if reply == QMessageBox.Yes:
-                self.perform_comprehensive_cleanup(old_shortcuts)
-            elif reply == QMessageBox.Cancel:
-                # Don't ask again this session
-                pass
+            silent_print(f"Found {len(old_shortcuts)} old shortcuts and folders, proceeding with cleanup...")
+            self.perform_comprehensive_cleanup(old_shortcuts)
                 
         except Exception as e:
             silent_print(f"Error showing comprehensive cleanup dialog: {e}")
@@ -1736,34 +1652,18 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Now ensure proper shortcuts exist
             self.ensure_innioasis_updater_shortcuts()
             
-            # Show results
+            # Show results silently
             if failed_items:
-                message = f"Successfully cleaned up {removed_count} items.\n\n"
-                message += "Some items could not be removed (may need admin privileges):\n"
-                for item in failed_items:
-                    message += f"• {item}\n"
-                
-                QMessageBox.information(
-                    self,
-                    "Cleanup Results",
-                    message
-                )
+                silent_print(f"Successfully cleaned up {removed_count} items.")
+                silent_print(f"Some items could not be removed (may need admin privileges): {', '.join(failed_items)}")
             else:
-                QMessageBox.information(
-                    self,
-                    "Cleanup Complete",
-                    f"Successfully cleaned up {removed_count} old shortcuts and folders.\n\n"
-                    "Your system now has:\n"
-                    "• Innioasis Updater.lnk on desktop\n"
-                    "• Innioasis Updater.lnk in Start Menu"
-                )
+                silent_print(f"Successfully cleaned up {removed_count} old shortcuts and folders.")
+                silent_print("Your system now has:")
+                silent_print("• Innioasis Updater.lnk on desktop")
+                silent_print("• Innioasis Updater.lnk in Start Menu")
                 
         except Exception as e:
-            QMessageBox.warning(
-                self,
-                "Cleanup Error",
-                f"Error during cleanup: {e}"
-            )
+            silent_print(f"Error during cleanup: {e}")
 
     def ensure_proper_start_menu_shortcuts(self):
         """Ensure proper shortcuts exist in Start Menu"""
@@ -1839,21 +1739,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     message += f"• {item}\n"
                 message += "\n"
             
-            message += "Would you like to replace these with Y1 Remote Control shortcuts?"
-            
-            reply = QMessageBox.question(
-                self,
-                "Replace Y1 Helper Shortcuts",
-                message,
-                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,
-                QMessageBox.No
-            )
-            
-            if reply == QMessageBox.Yes:
-                self.replace_y1_helper_shortcuts(y1_helper_shortcuts)
-            elif reply == QMessageBox.Cancel:
-                # Don't ask again this session
-                pass
+            silent_print(f"Found {len(y1_helper_shortcuts)} Y1 Helper shortcuts, replacing with Y1 Remote Control...")
+            self.replace_y1_helper_shortcuts(y1_helper_shortcuts)
                 
         except Exception as e:
             silent_print(f"Error showing Y1 Helper replacement dialog: {e}")
@@ -1892,31 +1779,15 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except Exception as e:
                     failed_items.append(f"{item_path} ({e})")
             
-            # Show results
+            # Show results silently
             if failed_items:
-                message = f"Successfully replaced {replaced_count} shortcuts.\n\n"
-                message += "Some shortcuts could not be replaced (may need admin privileges):\n"
-                for item in failed_items:
-                    message += f"• {item}\n"
-                
-                QMessageBox.information(
-                    self,
-                    "Replacement Results",
-                    message
-                )
+                silent_print(f"Successfully replaced {replaced_count} shortcuts.")
+                silent_print(f"Some shortcuts could not be replaced (may need admin privileges): {', '.join(failed_items)}")
             else:
-                QMessageBox.information(
-                    self,
-                    "Replacement Complete",
-                    f"Successfully replaced {replaced_count} Y1 Helper shortcuts with Y1 Remote Control."
-                )
+                silent_print(f"Successfully replaced {replaced_count} Y1 Helper shortcuts with Y1 Remote Control.")
                 
         except Exception as e:
-            QMessageBox.warning(
-                self,
-                "Replacement Error",
-                f"Error during replacement: {e}"
-            )
+            silent_print(f"Error during replacement: {e}")
             
         # Download troubleshooting shortcuts
         self.download_troubleshooting_shortcuts()
