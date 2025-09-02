@@ -19,18 +19,59 @@
             --innioasis-green: #00d4aa;
             --innioasis-yellow: #ffb800;
             --innioasis-purple: #7b68ee;
+            
+            /* Light mode colors */
             --innioasis-gray: #f8f9fa;
             --innioasis-dark: #2d3748;
             --innioasis-light: #ffffff;
             --innioasis-border: #e2e8f0;
             --innioasis-shadow: rgba(0, 0, 0, 0.1);
             --innioasis-shadow-hover: rgba(0, 0, 0, 0.15);
+            --innioasis-text-primary: #2d3748;
+            --innioasis-text-secondary: #666666;
+            --innioasis-text-muted: #555555;
+            --innioasis-bg-primary: #ffffff;
+            --innioasis-bg-secondary: #f8f9fa;
+            --innioasis-bg-tertiary: #e2e8f0;
+        }
+
+        /* Light mode body styling */
+        body {
+            background-color: #f7fafc;
+            color: var(--innioasis-text-primary);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Dark mode colors */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --innioasis-gray: #2d3748;
+                --innioasis-dark: #e2e8f0;
+                --innioasis-light: #1a202c;
+                --innioasis-border: #4a5568;
+                --innioasis-shadow: rgba(0, 0, 0, 0.3);
+                --innioasis-shadow-hover: rgba(0, 0, 0, 0.4);
+                --innioasis-text-primary: #e2e8f0;
+                --innioasis-text-secondary: #a0aec0;
+                --innioasis-text-muted: #718096;
+                --innioasis-bg-primary: #1a202c;
+                --innioasis-bg-secondary: #2d3748;
+                --innioasis-bg-tertiary: #4a5568;
+            }
+            
+            body {
+                background-color: #0f1419;
+                color: var(--innioasis-text-primary);
+            }
         }
 
         /* Embeddable container - designed to work within existing websites */
         .innioasis-embed {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--innioasis-light);
+            background: var(--innioasis-bg-primary);
+            color: var(--innioasis-text-primary);
             border-radius: 16px;
             box-shadow: 0 4px 20px var(--innioasis-shadow);
             overflow: hidden;
@@ -67,7 +108,7 @@
         }
 
         .platform-card {
-            background: var(--innioasis-light);
+            background: var(--innioasis-bg-primary);
             border: 2px solid var(--innioasis-border);
             border-radius: 12px;
             padding: 16px;
@@ -99,12 +140,12 @@
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 6px;
-            color: var(--innioasis-dark);
+            color: var(--innioasis-text-primary);
         }
 
         .platform-card p {
             font-size: 0.8rem;
-            color: #666;
+            color: var(--innioasis-text-secondary);
             line-height: 1.3;
         }
 
@@ -124,7 +165,7 @@
 
         /* Installation guide */
         .installation-guide {
-            background: var(--innioasis-light);
+            background: var(--innioasis-bg-primary);
             border-top: 1px solid var(--innioasis-border);
             padding: 20px;
             display: none;
@@ -146,7 +187,7 @@
         .guide-header h3 {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--innioasis-dark);
+            color: var(--innioasis-text-primary);
         }
 
         .guide-header .close-btn {
@@ -154,22 +195,22 @@
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
-            color: #666;
+            color: var(--innioasis-text-secondary);
             padding: 4px;
             border-radius: 4px;
             transition: all 0.2s ease;
         }
 
         .guide-header .close-btn:hover {
-            background: var(--innioasis-gray);
-            color: var(--innioasis-dark);
+            background: var(--innioasis-bg-secondary);
+            color: var(--innioasis-text-primary);
         }
 
         /* Steps */
         .step {
             margin-bottom: 20px;
             padding: 16px;
-            background: var(--innioasis-gray);
+            background: var(--innioasis-bg-secondary);
             border-radius: 8px;
             border-left: 4px solid var(--innioasis-orange);
         }
@@ -178,12 +219,12 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--innioasis-dark);
+            color: var(--innioasis-text-primary);
         }
 
         .step p {
             margin-bottom: 10px;
-            color: #555;
+            color: var(--innioasis-text-muted);
             line-height: 1.5;
             font-size: 0.9rem;
         }
@@ -195,7 +236,7 @@
 
         .step li {
             margin-bottom: 6px;
-            color: #555;
+            color: var(--innioasis-text-muted);
             font-size: 0.9rem;
         }
 
@@ -226,13 +267,13 @@
         }
 
         .btn-secondary {
-            background: var(--innioasis-gray);
-            color: var(--innioasis-dark);
+            background: var(--innioasis-bg-secondary);
+            color: var(--innioasis-text-primary);
             border: 1px solid var(--innioasis-border);
         }
 
         .btn-secondary:hover {
-            background: #e2e8f0;
+            background: var(--innioasis-bg-tertiary);
             transform: translateY(-1px);
         }
 
@@ -248,7 +289,7 @@
 
         .btn-warning {
             background: var(--innioasis-yellow);
-            color: var(--innioasis-dark);
+            color: var(--innioasis-text-primary);
         }
 
         .btn-warning:hover {
@@ -258,7 +299,7 @@
 
         /* Download sections */
         .download-section {
-            background: var(--innioasis-light);
+            background: var(--innioasis-bg-primary);
             border: 1px solid var(--innioasis-border);
             border-radius: 8px;
             padding: 14px;
@@ -269,25 +310,32 @@
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--innioasis-dark);
+            color: var(--innioasis-text-primary);
         }
 
         .download-section p {
             margin-bottom: 10px;
-            color: #666;
+            color: var(--innioasis-text-secondary);
             font-size: 0.85rem;
         }
 
         /* Command display */
         .command-display {
-            background: var(--innioasis-dark);
-            color: white;
+            background: #1a202c;
+            color: #e2e8f0;
             padding: 14px;
             border-radius: 8px;
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             font-size: 0.8rem;
             margin: 14px 0;
             position: relative;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .command-display {
+                background: #2d3748;
+                color: #e2e8f0;
+            }
         }
 
         .command-display code {
@@ -355,6 +403,21 @@
             font-size: 0.85rem;
         }
 
+        @media (prefers-color-scheme: dark) {
+            .arm64-warning {
+                background: linear-gradient(135deg, #2d1b1b, #3d1f1f);
+                border: 1px solid #5d2a2a;
+            }
+
+            .arm64-warning h5 {
+                color: #f56565;
+            }
+
+            .arm64-warning p {
+                color: #e2a0a0;
+            }
+        }
+
         /* Progress indicator */
         .progress-bar {
             display: flex;
@@ -375,7 +438,7 @@
             height: 28px;
             border-radius: 50%;
             background: var(--innioasis-border);
-            color: #666;
+            color: var(--innioasis-text-secondary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -397,7 +460,7 @@
 
         .progress-step .step-label {
             font-size: 0.7rem;
-            color: #666;
+            color: var(--innioasis-text-secondary);
             font-weight: 500;
         }
 
@@ -508,7 +571,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             font-size: 16px;
             line-height: 1.6;
-            color: var(--innioasis-dark);
+            color: var(--innioasis-text-primary);
         }
 
         .innioasis-embed * {
