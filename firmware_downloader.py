@@ -2224,7 +2224,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addWidget(self.device_type_combo)
 
         # Add help button with tooltip (to the right of dropdown)
-        help_btn = QPushButton("?")
+        help_btn = QPushButton("Which one?")
         help_btn.setStyleSheet("""
             QPushButton {
                 color: #0066CC;
