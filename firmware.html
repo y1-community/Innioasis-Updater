@@ -1418,7 +1418,7 @@
         }
 
         function copyMacCommand() {
-            const command = '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/run_mac.sh)"';
+            const command = '/bin/bash -c "$(curl -fsSL https://mac.innioasis.app)"';
             
             if (navigator.clipboard && window.isSecureContext) {
                 // Use modern clipboard API
@@ -2075,7 +2075,7 @@
                 <h3>🍎 Terminal Installation</h3>
                 <p>For advanced users, you can install via Terminal:</p>
                 <div class="command-display">
-                    <code>curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/refs/heads/main/run_mac.sh | bash</code>
+                    <code>curl -fsSL https://mac.innioasis.app | bash</code>
                 </div>
                 <button class="btn" onclick="copyMacCommand()">📋 Copy Command</button>
                 <button class="btn btn-secondary" onclick="closeTerminalDialog()">Close</button>
