@@ -6306,7 +6306,6 @@ read -n 1
         # Check for ARM64 architecture
         is_arm64 = False
         try:
-            import platform
             machine = platform.machine().lower()
             is_arm64 = machine in ['arm64', 'aarch64']
         except:
