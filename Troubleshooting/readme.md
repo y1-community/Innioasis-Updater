@@ -26,4 +26,4 @@ If for some reason the Windows app doesn't work at all for you, don't worry, you
 ## Fix Stuck Updates
 If you have a stuck update, reboot your computer and start Innioasis Updater again from the start menu, it will then update fine, and this shouldn't happen again in the future.
 
-If this doesn't work, right click on your Innioasis Updater shortcut, and look for the Fix Stuck Updates folder, if you don't have one you can download the zip at troubleshooting.innioasis.app
+If this doesn't work, right click on your Innioasis Updater shortcut, and look for the Fix Stuck Updates folder, if you don't have one you can download the zip at [troubleshooting.innioasis.app](https://innioasis.app/Troubleshooting)
