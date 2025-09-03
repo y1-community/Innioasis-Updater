@@ -1,7 +1,7 @@
 ## Innioasis updater app frozen after downloading firmware
 Just end the task / force quit the app and restart it, make sure that the Y1 and all non essential USB devices are NOT plugged into your PC, then follow the on screen instructions carefully, click Try Again when the app opens back up and if this doesn't work try one of the other methods in the app.
 
-#Missing shortcuts on Windows: run the command below and your shortcuts will repopulate after the app updates itself.
+# Missing shortcuts on Windows: run the command below and your shortcuts will repopulate after the app updates itself.
 
 ```
 "%LocalAppData%\Innioasis Updater\pythonw.exe" updater.py --force
