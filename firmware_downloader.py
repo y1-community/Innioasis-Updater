@@ -61,8 +61,11 @@ TOKEN_VALIDATION_TIMEOUT = 10
 
 def silent_print(*args, **kwargs):
     """Print function that respects silent mode - completely silent by default"""
-    # Completely silent - no output to terminal
-    pass
+    if SILENT_MODE:
+        # Completely silent - no output to terminal
+        pass
+    else:
+        print(*args, **kwargs)
 
 def toggle_silent_mode():
     """Toggle silent mode on/off"""
@@ -488,10 +491,10 @@ class GitHubAPI:
                     release_data = response.json()
                     assets = release_data.get('assets', [])
 
-                    # Find any zip asset (more flexible than just rom.zip)
+                    # Find firmware assets
                     zip_asset = None
                     for asset in assets:
-                        if asset['name'].lower().endswith('.zip'):
+                        if asset['name'].lower() == 'rom.zip':
                             zip_asset = asset
                             break
 
@@ -529,10 +532,10 @@ class GitHubAPI:
                 release_data = response.json()
                 assets = release_data.get('assets', [])
 
-                # Find any zip asset (more flexible than just rom.zip)
+                # Find firmware assets
                 zip_asset = None
                 for asset in assets:
-                    if asset['name'].lower().endswith('.zip'):
+                    if asset['name'].lower() == 'rom.zip':
                         zip_asset = asset
                         break
 
@@ -597,10 +600,10 @@ class GitHubAPI:
                         assets = release.get('assets', [])
                         silent_print(f"Release {release.get('tag_name', 'Unknown')} has {len(assets)} assets")
 
-                        # Find any zip asset (more flexible than just rom.zip)
+                        # Find firmware assets
                         zip_asset = None
                         for asset in assets:
-                            if asset['name'].lower().endswith('.zip'):
+                            if asset['name'].lower() == 'rom.zip':
                                 zip_asset = asset
                                 silent_print(f"Found zip asset: {asset['name']}")
                                 break
@@ -653,7 +656,7 @@ class GitHubAPI:
                         assets = release.get('assets', [])
                         zip_asset = None
                         for asset in assets:
-                            if asset['name'].lower().endswith('.zip'):
+                            if asset['name'].lower() == 'rom.zip':
                                 zip_asset = asset
                                 break
                         
@@ -693,7 +696,7 @@ class GitHubAPI:
                     # Find any zip asset (more flexible than just rom.zip)
                     zip_asset = None
                     for asset in assets:
-                        if asset['name'].lower().endswith('.zip'):
+                        if asset['name'].lower() == 'rom.zip':
                             zip_asset = asset
                             break
 
