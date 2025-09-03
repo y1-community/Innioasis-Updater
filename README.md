@@ -1,5 +1,5 @@
 [<img src="start_here.png" alt="Innioasis Updater Screenshot"/>](https://innioasis.app/installguide.html)
-<img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>
+[<img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>](https://innioasis.app/installguide.html)
 
 # Innioasis Updater
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
