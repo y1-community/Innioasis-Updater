@@ -5965,12 +5965,12 @@ Method 2 - MTKclient: Direct technical installation
             reply = QMessageBox.question(
                 self,
                 "SP Flash Tool Instructions - Method 3",
-                "Please follow these steps:\n\n"
+                "Please follow these steps after you click OK:\n\n"
                 "1. CONNECT Y1 via USB\n"
                 "2. INSERT Paperclip\n"
-                "3. WAIT for the black window to appear\n"
-                "4. Follow the on-screen instructions in the recovery window\n"
-                "5. Disconnect Y1 and hold middle button to restart\n\n"
+                "3. WAIT for the installation to finish in the recovery window\n"
+                "4. DISCONNECT the USB and...\n"
+                "5. hold middle button on Y1 to turn it on\n\n"
                 "This method uses the manufacturer's SP Flash Tool. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
                 "Click OK when ready to open SP Flash Tool.",
                 QMessageBox.Ok | QMessageBox.Cancel,
