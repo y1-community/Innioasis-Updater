@@ -1,4 +1,14 @@
-# You can fix a lot of issues with Innioasis Toolkit by opening it from the start menu, you can also bring yours up by pressing Windows Key + R then running the command below, or by using the Command Prompt / Terminal
+## Innioasis updater app frozen after downloading firmware
+Just end the task / force quit the app and restart it, make sure that the Y1 and all non essential USB devices are NOT plugged into your PC, then follow the on screen instructions carefully, click Try Again when the app opens back up and if this doesn't work try one of the other methods in the app.
+
+#Missing shortcuts on Windows: run the command below and your shortcuts will repopulate after the app updates itself.
+
+```
+"%LocalAppData%\Innioasis Updater\pythonw.exe" updater.py --force
+```
+
+
+#WINDOWS: You can fix a lot of issues with Innioasis Toolkit by opening it from the start menu, you can also bring yours up by pressing Windows Key + R then running the command below, or by using the Command Prompt / Terminal
 
 ```
 explorer.exe "%LocalAppData%\Innioasis Updater\Troubleshooting"
@@ -6,8 +16,6 @@ explorer.exe "%LocalAppData%\Innioasis Updater\Troubleshooting"
 
 # Or you can even [download the latest one here](https://github.com/team-slide/Innioasis-Updater/raw/refs/heads/main/Troubleshooters%20-%20Windows.zip) 
 
-## Innioasis updater frozen after downloading firmware and starting to install:
-Just end the task / force quit the app and restart it, make sure that the Y1 and all non essential USB devices are NOT plugged into your PC, then follow the on screen instructions carefully, click Try Again when the app opens back up and if this doesn't work try one of the other methods in the app.
 
 ## Firmwares not installing:
 Make sure the blue Driver Setup button isn't showing in your app, if it does you're missing one of the drivers needed for both methods (Method 1 and 2 use MTKclient, and Method 3 uses SP Flash Tool)
