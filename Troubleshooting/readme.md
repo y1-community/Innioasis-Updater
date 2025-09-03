@@ -8,7 +8,7 @@ Just end the task / force quit the app and restart it, make sure that the Y1 and
 ```
 
 
-#WINDOWS: You can fix a lot of issues with Innioasis Toolkit by opening it from the start menu, you can also bring yours up by pressing Windows Key + R then running the command below, or by using the Command Prompt / Terminal
+# WINDOWS TOOLKIT: You can fix a lot of issues with Innioasis Toolkit by opening it from the start menu, you can also bring yours up by pressing Windows Key + R then running the command below, or by using the Command Prompt / Terminal
 
 ```
 explorer.exe "%LocalAppData%\Innioasis Updater\Troubleshooting"
