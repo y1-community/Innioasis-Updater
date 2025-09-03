@@ -1,4 +1,4 @@
-[(img width=875 height=125 alt=start_here src=httpsgithub.comuser-attachmentsassetsdc8a6919-f360-4a8a-86d5-42b2321e0185 )](httpsinnioasis.appinstallguide.html)
+[<img src="start_here.png" alt="Innioasis Updater Screenshot"/>](https://innioasis.app/installguide.html)
 <img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>
 
 # Innioasis Updater
