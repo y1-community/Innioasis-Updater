@@ -170,14 +170,20 @@
             color: #c7c7cc;
         }
 
-        body[data-theme="dark"] .ko-fi-btn {
-            background: #0a84ff;
+        body[data-theme="dark"] .footer {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        body[data-theme="dark"] .footer a {
+            color: white;
+        }
+
+        body[data-theme="dark"] .platform-dialog p {
             color: #ffffff;
         }
 
-        body[data-theme="dark"] .footer-ko-fi-btn {
-            color: #0a84ff;
-        }
 
         .container {
             max-width: 1400px;
@@ -468,23 +474,26 @@
 
         .status {
             text-align: center;
-            padding: 18px;
-            background: #e8f5e8;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            border: 1px solid #a8e6cf;
+            padding: 8px 12px;
+            background: transparent;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            border: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            color: var(--text-secondary);
         }
 
         .status.error {
-            background: #fadbd8;
-            border-color: #f5b7b1;
-            color: #c0392b;
+            background: rgba(255, 59, 48, 0.1);
+            color: var(--accent-error);
+            opacity: 1;
         }
 
         .status.loading {
-            background: #fef9e7;
-            border-color: #f8c471;
-            color: #d68910;
+            background: rgba(255, 149, 0, 0.1);
+            color: var(--accent-warning);
+            opacity: 1;
         }
         
         .token-status {
@@ -588,16 +597,17 @@
         .footer {
             text-align: center;
             margin-top: 30px;
-            color: white;
+            color: var(--text-primary);
             opacity: 0.8;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--bg-secondary);
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            border: 1px solid var(--border-primary);
         }
 
         .footer a {
-            color: white;
+            color: var(--accent-primary);
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
@@ -607,113 +617,7 @@
             opacity: 1;
         }
 
-        /* Footer Ko-Fi Button Styling */
-        .footer-ko-fi-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #29abe0 0%, #1f8bc3 100%);
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 12px rgba(41, 171, 224, 0.3);
-            border: none;
-            cursor: pointer;
-        }
 
-        .footer-ko-fi-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 18px rgba(41, 171, 224, 0.4);
-            background: linear-gradient(135deg, #1f8bc3 0%, #1673a3 100%);
-        }
-
-        .footer-ko-fi-btn:active {
-            transform: translateY(0);
-        }
-
-        /* CTA Banner */
-        .cta-banner {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            z-index: 1000;
-            max-width: 240px;
-            text-align: center;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .cta-banner.fade-out {
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-        }
-
-        .cta-banner:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-        }
-
-        .cta-banner h3 {
-            margin: 0 0 6px 0;
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .cta-banner p {
-            margin: 0 0 10px 0;
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
-        .cta-banner .cta-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 6px 14px;
-            border-radius: 18px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .cta-banner .cta-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-
-        .cta-banner .close-btn {
-            position: absolute;
-            top: 6px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 11px;
-            line-height: 1;
-            transition: all 0.3s ease;
-        }
-
-        .cta-banner .close-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
 
         /* Platform-specific dialog styles */
         .platform-dialog {
@@ -745,7 +649,7 @@
         .platform-dialog p {
             margin-bottom: 20px;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-primary);
         }
 
         .platform-dialog .btn {
@@ -856,13 +760,6 @@
         }
 
         @media (max-width: 768px) {
-            .cta-banner {
-                bottom: 10px;
-                right: 10px;
-                left: 10px;
-                max-width: none;
-                border-radius: 20px;
-            }
             
             .container {
                 padding: 10px;
@@ -993,6 +890,7 @@
         </div>
 
         <div class="main-content">
+
             <div class="filters">
                 <div class="filter-group">
                     <label for="deviceType">Device Type</label>
@@ -1048,25 +946,13 @@
         </div>
 
         <div class="footer">
-            <p>Created by <a href="https://github.com/team-slide" target="_blank">Team Slide</a> | 
+            <p>Created by <a href="https://ko-fi.com/teamslide" target="_blank">Team Slide</a> | 
                <a href="https://innioasis.app" target="_blank">Innioasis App</a> | 
                <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a></p>
-            <p style="margin-top: 15px;">
-                <a href="https://ko-fi.com/teamslide" target="_blank" class="footer-ko-fi-btn">
-                    ☕ Buy Us a Coffee
-                </a>
-            </p>
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">🍪 Cookies not used by this site</p>
         </div>
     </div>
 
-    <!-- CTA Banner -->
-    <div class="cta-banner" id="ctaBanner">
-        <button class="close-btn" onclick="closeCTABanner()">×</button>
-        <h3>🚀 Get Innioasis Updater</h3>
-        <p id="ctaDescription">Download the desktop app for your platform</p>
-        <button onclick="downloadForPlatform()" class="cta-btn" id="ctaButton">Download</button>
-    </div>
 
     <!-- Platform-specific dialogs -->
     <div class="dialog-overlay" id="dialogOverlay"></div>
@@ -1254,90 +1140,33 @@
             loadData();
             setupEventListeners();
             detectUserOS();
-            checkBannerPreference();
             checkSavedTheme();
-            
-            // Add scroll listener for banner fade-out
-            window.addEventListener('scroll', checkDownloadButtonVisibility);
-            // Check initially
-            checkDownloadButtonVisibility();
         });
 
         // Detect user's operating system and update CTA banner
         function detectUserOS() {
             const userAgent = navigator.userAgent;
             let os = 'Windows';
-            let downloadText = 'Download for Windows';
             let isArm64 = false;
             
             if (userAgent.includes('Mac')) {
                 os = 'macOS';
-                downloadText = 'Setup on Mac';
             } else if (userAgent.includes('Linux')) {
                 os = 'Linux';
-                downloadText = 'Download for Linux';
             } else if (userAgent.includes('CrOS') || userAgent.includes('FydeOS')) {
                 os = 'ChromeOS/FydeOS';
-                downloadText = 'Linux Mode Setup';
             }
             
             // Check for Windows ARM64
             if (userAgent.includes('Windows') && (userAgent.includes('ARM64') || userAgent.includes('ARM'))) {
                 isArm64 = true;
-                downloadText = 'Download for Windows ARM64';
             }
             
             // Store platform info globally
             window.userPlatform = { os, isArm64 };
-            
-            // Update CTA banner text
-            const ctaTitle = document.querySelector('#ctaBanner h3');
-            const ctaDesc = document.querySelector('#ctaBanner p');
-            const ctaBtn = document.querySelector('#ctaBanner .cta-btn');
-            
-            if (ctaTitle && ctaDesc && ctaBtn) {
-                ctaTitle.textContent = `🚀 Get Innioasis Updater`;
-                ctaDesc.textContent = `Download the desktop app for ${os}`;
-                ctaBtn.textContent = downloadText;
-            }
         }
 
-        // Close CTA banner
-        function closeCTABanner() {
-            const banner = document.getElementById('ctaBanner');
-            if (banner) {
-                banner.style.display = 'none';
-                // Store preference in localStorage
-                localStorage.setItem('ctaBannerClosed', 'true');
-            }
-        }
 
-        // Check if banner was previously closed
-        function checkBannerPreference() {
-            if (localStorage.getItem('ctaBannerClosed') === 'true') {
-                const banner = document.getElementById('ctaBanner');
-                if (banner) {
-                    banner.style.display = 'none';
-                }
-            }
-        }
-
-        // Check if download button is visible and fade out banner
-        function checkDownloadButtonVisibility() {
-            const downloadBtn = document.querySelector('.download-btn');
-            const banner = document.getElementById('ctaBanner');
-            
-            if (downloadBtn && banner) {
-                const rect = downloadBtn.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                
-                if (isVisible) {
-                    banner.classList.add('fade-out');
-                } else {
-                    banner.classList.remove('fade-out');
-                }
-            }
-        }
 
         // Platform-specific download functions
         function downloadForPlatform() {
@@ -1502,8 +1331,14 @@
         });
 
         function setupEventListeners() {
-            document.getElementById('deviceType').addEventListener('change', filterFirmware);
-            document.getElementById('deviceModel').addEventListener('change', filterFirmware);
+            document.getElementById('deviceType').addEventListener('change', function() {
+                populateSoftwareCombo();
+                filterFirmware();
+            });
+            document.getElementById('deviceModel').addEventListener('change', function() {
+                populateSoftwareCombo();
+                filterFirmware();
+            });
             document.getElementById('software').addEventListener('change', filterFirmware);
         }
 
@@ -1533,6 +1368,9 @@
                 populateDeviceTypeCombo();
                 populateDeviceModelCombo();
                 populateSoftwareCombo();
+                
+                // Apply default filters and load firmware
+                filterFirmware();
                 
                 // Load initial firmware list
                 await loadFirmwareList();
@@ -1736,6 +1574,10 @@
                 const option = document.createElement('option');
                 option.value = type;
                 option.textContent = `Type ${type}`;
+                // Set Type A as default
+                if (type && type.toLowerCase().includes('a')) {
+                    option.selected = true;
+                }
                 combo.appendChild(option);
             });
         }
@@ -1749,19 +1591,37 @@
                 const option = document.createElement('option');
                 option.value = model;
                 option.textContent = model;
+                // Set Y1 as default
+                if (model && model.toLowerCase().includes('y1')) {
+                    option.selected = true;
+                }
                 combo.appendChild(option);
             });
         }
 
         function populateSoftwareCombo() {
             const combo = document.getElementById('software');
-            const softwareNames = [...new Set(packages.map(p => p.name).filter(n => n))];
+            const selectedType = document.getElementById('deviceType').value;
+            const selectedModel = document.getElementById('deviceModel').value;
+            
+            // Get filtered software names based on current device type and model selections
+            const filteredPackages = packages.filter(package => {
+                const typeMatch = !selectedType || package.device_type === selectedType;
+                const modelMatch = !selectedModel || package.device === selectedModel;
+                return typeMatch && modelMatch;
+            });
+            
+            const softwareNames = [...new Set(filteredPackages.map(p => p.name).filter(n => n))];
             
             combo.innerHTML = '<option value="">All Software</option>';
             softwareNames.sort().forEach(name => {
                 const option = document.createElement('option');
                 option.value = name;
                 option.textContent = name;
+                // Set Original as default
+                if (name && name.toLowerCase().includes('original')) {
+                    option.selected = true;
+                }
                 combo.appendChild(option);
             });
         }
@@ -1864,13 +1724,21 @@
                 }
                 
                 const releases = await response.json();
-                return releases.map(release => ({
-                    tag_name: release.tag_name,
-                    name: release.name || release.tag_name,
-                    published_at: release.published_at,
-                    html_url: release.html_url,
-                    assets: release.assets || []
-                }));
+                return releases
+                    .filter(release => {
+                        // Only include releases that have a rom.zip file
+                        const hasRomZip = release.assets && release.assets.some(asset => 
+                            asset.name && asset.name.toLowerCase() === 'rom.zip'
+                        );
+                        return hasRomZip;
+                    })
+                    .map(release => ({
+                        tag_name: release.tag_name,
+                        name: release.name || release.tag_name,
+                        published_at: release.published_at,
+                        html_url: release.html_url,
+                        assets: release.assets || []
+                    }));
             } catch (error) {
                 console.warn(`Failed to fetch releases for ${repo}:`, error);
                 return [];
@@ -1942,8 +1810,8 @@
         function goToInnioasisApp(event) {
             event.stopPropagation();
             
-            // Direct users to innioasis.app for automatic installation
-            window.open('https://innioasis.app', '_blank');
+            // Direct users to the install guide for automatic installation
+            window.open('https://innioasis.app/installguide.html', '_blank');
         }
 
         function formatDate(dateString) {
@@ -2205,6 +2073,17 @@
                 });
             }
         }
+    </script>
+
+    <!-- Ko-Fi Floating Chat Widget -->
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('teamslide', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support me',
+        'floating-chat.donateButton.background-color': '#00b9fe',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
     </script>
 </body>
 </html>
