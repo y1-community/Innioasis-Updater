@@ -7,7 +7,14 @@
     <style>
         /* System font stack for better cross-platform compatibility */
         * {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        /* Ensure iframe content also uses system fonts */
+        iframe {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
         }
 
         /* Exact copy of index.html CTA banner styles */
@@ -154,6 +161,7 @@
         <h3>🚀 Get Innioasis Updater</h3>
         <p id="ctaDescription">Download the desktop app for your platform</p>
         <button onclick="showInstallGuide()" class="cta-btn" id="ctaButton">Get Started</button>
+        <button onclick="showIntegrationModal()" class="cta-btn" style="margin-left: 8px; background: rgba(255, 255, 255, 0.1);">🔧 Embed</button>
     </div>
 
     <!-- Modal Overlay - exact copy from index.html -->
@@ -168,6 +176,43 @@
                 frameborder="0"
                 style="border-radius: 16px; min-height: 600px;">
             </iframe>
+        </div>
+    </div>
+
+    <!-- Integration Guide Modal -->
+    <div class="modal-overlay" id="integrationModal">
+        <div class="modal-content" style="max-width: 600px; padding: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="margin: 0; color: #333;">🔧 Integration Code</h2>
+                <button onclick="closeIntegrationModal()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">×</button>
+            </div>
+            
+            <p style="margin-bottom: 20px; color: #666;">Copy this code to embed the Innioasis Updater widget on your website:</p>
+            
+            <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; margin-bottom: 20px; position: relative;">
+                <button onclick="copyIntegrationCode()" style="position: absolute; top: 10px; right: 10px; background: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">Copy</button>
+                <pre id="integrationCode" style="margin: 0; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 14px; overflow-x: auto; white-space: pre-wrap; word-break: break-all;">&lt;!-- Innioasis Updater Embed Widget --&gt;
+&lt;iframe 
+    src="https://your-domain.com/innioasis-simple-embed.html"
+    width="300" 
+    height="120" 
+    frameborder="0"
+    style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);"
+    allowtransparency="true"&gt;
+&lt;/iframe&gt;</pre>
+            </div>
+            
+            <div style="background: #e7f3ff; border: 1px solid #b3d9ff; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                <h4 style="margin: 0 0 10px 0; color: #0066cc;">📁 Files Needed:</h4>
+                <ul style="margin: 0; padding-left: 20px; color: #333;">
+                    <li><code>innioasis-simple-embed.html</code> - The embed widget</li>
+                    <li><code>installguide.html</code> - The installation guide</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center;">
+                <button onclick="closeIntegrationModal()" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px;">Got it!</button>
+            </div>
         </div>
     </div>
 
@@ -231,10 +276,137 @@
             }
         });
 
+        // Integration modal functions
+        function showIntegrationModal() {
+            const modal = document.getElementById('integrationModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeIntegrationModal() {
+            const modal = document.getElementById('integrationModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function copyIntegrationCode() {
+            const code = document.getElementById('integrationCode').textContent;
+            navigator.clipboard.writeText(code).then(function() {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#007bff';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy code. Please select and copy manually.');
+            });
+        }
+
+        // Close integration modal when clicking outside
+        document.getElementById('integrationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeIntegrationModal();
+            }
+        });
+
+        // Platform detection
+        function detectPlatform() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const platform = navigator.platform.toLowerCase();
+            
+            if (userAgent.includes('windows')) {
+                return 'windows';
+            } else if (userAgent.includes('mac') || platform.includes('mac')) {
+                return 'mac';
+            } else if (userAgent.includes('linux') || platform.includes('linux')) {
+                return 'linux';
+            }
+            return 'windows'; // Default fallback
+        }
+
+        // Update CTA banner based on platform
+        function updateCTABannerForPlatform() {
+            const platform = detectPlatform();
+            const ctaDesc = document.getElementById('ctaDescription');
+            const ctaBtn = document.getElementById('ctaButton');
+            
+            if (ctaDesc && ctaBtn) {
+                const platformNames = {
+                    'windows': 'Windows',
+                    'mac': 'macOS', 
+                    'linux': 'Linux'
+                };
+                
+                ctaDesc.textContent = `Download the desktop app for ${platformNames[platform]}`;
+                ctaBtn.textContent = `Download for ${platformNames[platform]}`;
+            }
+        }
+
+        // Auto-select platform in install guide
+        function autoSelectPlatform() {
+            const platform = detectPlatform();
+            const iframe = document.getElementById('installGuideFrame');
+            
+            if (iframe) {
+                iframe.onload = function() {
+                    try {
+                        // Try to access iframe content and select platform
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const platformCard = iframeDoc.querySelector(`[data-platform="${platform}"]`);
+                        if (platformCard) {
+                            platformCard.click();
+                        }
+                    } catch (e) {
+                        // Cross-origin restrictions - fallback to URL parameter
+                        const currentSrc = iframe.src;
+                        const separator = currentSrc.includes('?') ? '&' : '?';
+                        iframe.src = currentSrc + separator + 'platform=' + platform;
+                    }
+                };
+            }
+        }
+
+        // Check if running in iframe
+        function isInIframe() {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        }
+
+        // Hide embed button when in iframe
+        function hideEmbedButtonIfEmbedded() {
+            if (isInIframe()) {
+                const embedBtn = document.querySelector('.cta-btn[onclick="showIntegrationModal()"]');
+                if (embedBtn) {
+                    embedBtn.style.display = 'none';
+                }
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             // Check if banner was previously closed
             checkBannerPreference();
+            
+            // Update CTA banner for user's platform
+            updateCTABannerForPlatform();
+            
+            // Auto-select platform in install guide
+            autoSelectPlatform();
+            
+            // Hide embed button if running in iframe
+            hideEmbedButtonIfEmbedded();
         });
 
         // Export functions for external use
