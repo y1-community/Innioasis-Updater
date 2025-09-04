@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innioasis Updater - Simple Embed</title>
+    <style>
+        /* System font stack for better cross-platform compatibility */
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Exact copy of index.html CTA banner styles */
+        .cta-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            z-index: 999999;
+            max-width: 300px;
+            min-width: 280px;
+        }
+
+        .cta-banner.fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .cta-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+
+        .cta-banner h3 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-banner p {
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .cta-banner .cta-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .cta-banner .cta-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .cta-banner .close-btn {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 11px;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .cta-banner .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Modal overlay - exact copy from index.html */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        /* Modal content - contains the installguide.html */
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .modal-content {
+                background: #2c2c2e;
+                color: #ffffff;
+            }
+        }
+
+        /* Mobile optimizations - exact copy from index.html */
+        @media (max-width: 768px) {
+            .cta-banner {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                border-radius: 20px;
+            }
+
+            .modal-overlay {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CTA Banner - exact copy from index.html -->
+    <div class="cta-banner" id="ctaBanner">
+        <button class="close-btn" onclick="closeCTABanner()">×</button>
+        <h3>🚀 Get Innioasis Updater</h3>
+        <p id="ctaDescription">Download the desktop app for your platform</p>
+        <button onclick="showInstallGuide()" class="cta-btn" id="ctaButton">Get Started</button>
+    </div>
+
+    <!-- Modal Overlay - exact copy from index.html -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <!-- This will contain the installguide.html content -->
+            <iframe 
+                id="installGuideFrame"
+                src="installguide.html" 
+                width="100%" 
+                height="100%" 
+                frameborder="0"
+                style="border-radius: 16px; min-height: 600px;">
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        // Exact copy of index.html CTA banner functions
+        function showCTABanner() {
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'block';
+            }
+        }
+
+        function hideCTABanner() {
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+        }
+
+        function closeCTABanner() {
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'none';
+                // Store preference in localStorage
+                localStorage.setItem('innioasisCtaBannerClosed', 'true');
+            }
+        }
+
+        // Check if banner was previously closed
+        function checkBannerPreference() {
+            if (localStorage.getItem('innioasisCtaBannerClosed') === 'true') {
+                const banner = document.getElementById('ctaBanner');
+                if (banner) {
+                    banner.style.display = 'none';
+                }
+            }
+        }
+
+        // Show install guide modal
+        function showInstallGuide() {
+            const modal = document.getElementById('modalOverlay');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Close install guide modal
+        function closeInstallGuide() {
+            const modal = document.getElementById('modalOverlay');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeInstallGuide();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if banner was previously closed
+            checkBannerPreference();
+        });
+
+        // Export functions for external use
+        window.InnioasisUpdater = {
+            showInstallGuide,
+            closeInstallGuide,
+            showCTABanner,
+            hideCTABanner,
+            closeCTABanner
+        };
+    </script>
+</body>
+</html>
