@@ -31,13 +31,7 @@ from collections import defaultdict
 import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Import GitHub App authentication
-try:
-    from github_app_auth import GitHubAppAuth, ConfigManager, create_github_app_auth
-    GITHUB_APP_AVAILABLE = True
-except ImportError:
-    GITHUB_APP_AVAILABLE = False
-    print("Warning: GitHub App authentication not available")
+# GitHub App authentication - simplified approach
 
 # Import AppKit for macOS Dock hiding (only on macOS)
 if platform.system() == "Darwin":
@@ -331,19 +325,8 @@ class ConfigDownloader:
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
         
-        # Initialize GitHub App authentication
-        self.github_app_auth = None
-        if GITHUB_APP_AVAILABLE:
-            self.github_app_auth = create_github_app_auth(self.base_dir)
-            if self.github_app_auth:
-                silent_print("GitHub App authentication initialized")
-            else:
-                silent_print("GitHub App authentication not available, using fallback tokens")
-        
-        # Initialize config manager
-        self.config_manager = None
-        if GITHUB_APP_AVAILABLE:
-            self.config_manager = ConfigManager(self.base_dir)
+        # GitHub App token (simplified)
+        self.github_app_token = None
 
     def download_config(self):
         """Download and parse the config.ini file to extract API tokens with caching"""
@@ -352,46 +335,38 @@ class ConfigDownloader:
         if cached_tokens:
             return cached_tokens
 
-        # Try GitHub App authentication first
-        if self.github_app_auth:
-            silent_print("Using GitHub App authentication for config download")
+        # Try local config file first
+        local_config = Path(self.base_dir) / "config.ini"
+        if local_config.exists():
             try:
-                response = self.github_app_auth.make_authenticated_request(self.config_url)
-                if response and response.status_code == 200:
-                    silent_print("Successfully downloaded config using GitHub App authentication")
-                    return self._parse_config_response(response.text)
-                else:
-                    silent_print(f"GitHub App authentication failed: {response.status_code if response else 'No response'}")
+                with open(local_config, 'r') as f:
+                    config_text = f.read()
+                tokens = self._parse_config_response(config_text)
+                if tokens:
+                    silent_print("Loaded configuration from local file")
+                    save_cache(CONFIG_CACHE_FILE, tokens)
+                    return tokens
             except Exception as e:
-                silent_print(f"GitHub App authentication error: {e}")
+                silent_print(f"Error reading local config: {e}")
 
-        # Fallback to unauthenticated request
+        # Try to download from remote
         try:
-            silent_print("Downloading tokens from remote config (unauthenticated)...")
+            silent_print("Downloading tokens from remote config...")
             silent_print(f"Config URL: {self.config_url}")
             response = self.session.get(self.config_url, timeout=REQUEST_TIMEOUT)
             silent_print(f"Response status: {response.status_code}")
 
             if response.status_code != 200:
                 silent_print(f"Failed to download config: HTTP {response.status_code}")
-                silent_print(f"Response text: {response.text[:200]}...")
-                
-                # Check if it's a rate limit issue
-                if response.status_code == 403:
-                    silent_print("GitHub API rate limited - this is normal for unauthenticated requests")
-                    silent_print("The app will work with limited functionality until rate limit resets")
-                elif response.status_code == 404:
-                    silent_print("Config file not found - check if the repository structure has changed")
-                elif response.status_code >= 500:
-                    silent_print("GitHub server error - temporary issue, will retry later")
-                
                 return []
 
             response.raise_for_status()
-            return self._parse_config_response(response.text)
+            tokens = self._parse_config_response(response.text)
+            if tokens:
+                save_cache(CONFIG_CACHE_FILE, tokens)
+            return tokens
         except Exception as e:
             silent_print(f"Error downloading config: {e}")
-            silent_print("Falling back to unauthenticated requests only")
             return []
 
     def _parse_config_response(self, config_text):
@@ -401,6 +376,13 @@ class ConfigDownloader:
             config.read_string(config_text)
             
             silent_print(f"Config sections found: {list(config.sections())}")
+
+            # Extract GitHub App token first
+            if 'github_app' in config:
+                app_token = config['github_app'].get('installation_token', '').strip()
+                if app_token:
+                    self.github_app_token = app_token
+                    silent_print(f"Found GitHub App token: {app_token[:10]}...")
 
             tokens = []
             if 'api_keys' in config:
@@ -435,8 +417,6 @@ class ConfigDownloader:
             silent_print(f"Successfully loaded {len(tokens)} tokens from config")
             if tokens:
                 silent_print(f"First token preview: {tokens[0][:10]}...")
-                # Cache the tokens
-                save_cache(CONFIG_CACHE_FILE, tokens)
             else:
                 silent_print("No valid tokens found in config - will use unauthenticated mode")
             return tokens
@@ -506,9 +486,9 @@ from collections import defaultdict
 class GitHubAPI:
     """GitHub API wrapper for fetching release information with rate limiting and caching"""
 
-    def __init__(self, tokens, github_app_auth=None):
+    def __init__(self, tokens, github_app_token=None):
         self.tokens = tokens
-        self.github_app_auth = github_app_auth
+        self.github_app_token = github_app_token
         self.token_usage = defaultdict(int)  # Track API calls per token
         self.last_reset = time.time()
         self.hourly_limit = 25  # Limit calls per hour per token
@@ -623,11 +603,15 @@ class GitHubAPI:
         """Get the latest release information for a repository with fallback"""
         url = f"https://api.github.com/repos/{repo}/releases/latest"
 
-        # Try GitHub App authentication first
-        if self.github_app_auth:
+        # Try GitHub App token first
+        if self.github_app_token:
             try:
-                response = self.github_app_auth.make_authenticated_request(url)
-                if response and response.status_code == 200:
+                headers = {
+                    'Authorization': f'token {self.github_app_token}',
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+                response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+                if response.status_code == 200:
                     release_data = response.json()
                     assets = release_data.get('assets', [])
 
@@ -645,9 +629,9 @@ class GitHubAPI:
                         'download_url': zip_asset['browser_download_url'] if zip_asset else None,
                         'asset_name': zip_asset['name'] if zip_asset else None
                     }
-                elif response and response.status_code == 403:
+                elif response.status_code == 403:
                     silent_print(f"GitHub App rate limited for {repo}, trying PAT tokens...")
-                elif response:
+                else:
                     silent_print(f"GitHub App error for {repo}: {response.status_code}")
             except Exception as e:
                 silent_print(f"GitHub App error for {repo}: {e}")
@@ -753,17 +737,21 @@ class GitHubAPI:
         """Get all releases for a repository with improved performance"""
         url = f"https://api.github.com/repos/{repo}/releases"
 
-        # Try GitHub App authentication first
-        if self.github_app_auth:
+        # Try GitHub App token first
+        if self.github_app_token:
             try:
-                response = self.github_app_auth.make_authenticated_request(url)
-                if response and response.status_code == 200:
+                headers = {
+                    'Authorization': f'token {self.github_app_token}',
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+                response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+                if response.status_code == 200:
                     releases_data = response.json()
                     silent_print(f"Found {len(releases_data)} total releases for {repo} using GitHub App")
                     return self._process_releases_data(releases_data, repo)
-                elif response and response.status_code == 403:
+                elif response.status_code == 403:
                     silent_print(f"GitHub App rate limited for {repo}, trying PAT tokens...")
-                elif response:
+                else:
                     silent_print(f"GitHub App error for {repo}: {response.status_code}")
             except Exception as e:
                 silent_print(f"GitHub App error for {repo}: {e}")
@@ -3287,7 +3275,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("No API tokens available")
             return
 
-        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_auth)
+        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_token)
         silent_print(f"Loaded {len(tokens)} API tokens")
 
         # Start parallel token validation for faster startup
@@ -3384,7 +3372,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             first_token = tokens[0]
             if not first_token.startswith('github_pat_'):
                 first_token = f"github_pat_{first_token}"
-            self.github_api = GitHubAPI([first_token], self.config_downloader.github_app_auth)
+            self.github_api = GitHubAPI([first_token], self.config_downloader.github_app_token)
             self.finish_data_loading([tokens[0]])
         else:
             self.finish_data_loading([])
@@ -3406,7 +3394,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Token {i+1}: {token[:20]}...")
 
         # Create GitHub API with properly formatted tokens
-        self.github_api = GitHubAPI(api_tokens, self.config_downloader.github_app_auth)
+        self.github_api = GitHubAPI(api_tokens, self.config_downloader.github_app_token)
         
         # Start periodic cache cleanup
         self.github_api.cleanup_cache_periodically()
@@ -5906,7 +5894,7 @@ Method 2 - MTKclient: Direct technical installation
             QMessageBox.warning(self, "Error", "Failed to download API tokens. Please check your internet connection or try again later.")
             return
 
-        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_auth)
+        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_token)
         silent_print(f"Loaded {len(tokens)} API tokens")
 
         # Download manifest
