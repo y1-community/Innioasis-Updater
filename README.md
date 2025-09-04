@@ -28,9 +28,10 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 ### Rockbox Y1 Port Developer
  - [@rockbox-y1 (u/After-Acanthaceae547)](https://www.github.com/rockbox-y1)
-### TikTok / YouTube creator
-- Ryan / Corduroy cat - @catsteal3r on TikTok
-  
+ ### TikTok / YouTube creators
+- Ryan /@catsteal3r on TikTok
+- Corduroy cat - YouTuber
+- Edit: I previously credited these as the same individual but it turns out they are actually seperate content creators. Sorry for any confusion caused. - Ryan Specter 
 ## MTKclient Credits
 
 - bkerler for creating mtkclient
