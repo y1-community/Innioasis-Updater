@@ -26,9 +26,12 @@ from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
 from PySide6.QtGui import QFont, QPixmap, QIcon
 import platform
 import time
+import datetime
 from collections import defaultdict
 import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# GitHub App authentication - simplified approach
 
 # Import AppKit for macOS Dock hiding (only on macOS)
 if platform.system() == "Darwin":
@@ -43,6 +46,9 @@ SILENT_MODE = True
 # Zip file management
 ZIP_STORAGE_DIR = Path("firmware_downloads")
 EXTRACTED_FILES_LOG = Path("extracted_files.log")
+
+# Manifest file management for cached zips
+MANIFEST_EXTENSION = ".manifest.json"
 
 # Installation tracking
 INSTALLATION_MARKER_FILE = Path("firmware_installation_in_progress.flag")
@@ -61,8 +67,11 @@ TOKEN_VALIDATION_TIMEOUT = 10
 
 def silent_print(*args, **kwargs):
     """Print function that respects silent mode - completely silent by default"""
-    # Completely silent - no output to terminal
-    pass
+    if SILENT_MODE:
+        # Completely silent - no output to terminal
+        pass
+    else:
+        print(*args, **kwargs)
 
 def toggle_silent_mode():
     """Toggle silent mode on/off"""
@@ -100,6 +109,103 @@ def cleanup_firmware_files():
             
     except Exception as e:
         silent_print(f"Error cleaning up firmware files: {e}")
+
+def create_manifest_for_zip(zip_path, release_info):
+    """Create a manifest file for a cached zip with release information"""
+    try:
+        manifest_path = zip_path.with_suffix(MANIFEST_EXTENSION)
+        manifest_data = {
+            'zip_file': zip_path.name,
+            'release_info': release_info,
+            'cached_at': time.time(),
+            'file_size': zip_path.stat().st_size if zip_path.exists() else 0
+        }
+        
+        with open(manifest_path, 'w') as f:
+            json.dump(manifest_data, f, indent=2)
+        
+        silent_print(f"Created manifest for {zip_path.name}")
+        return manifest_path
+    except Exception as e:
+        silent_print(f"Error creating manifest for {zip_path}: {e}")
+        return None
+
+def load_manifest_for_zip(zip_path):
+    """Load manifest information for a cached zip"""
+    try:
+        manifest_path = zip_path.with_suffix(MANIFEST_EXTENSION)
+        if manifest_path.exists():
+            with open(manifest_path, 'r') as f:
+                return json.load(f)
+    except Exception as e:
+        silent_print(f"Error loading manifest for {zip_path}: {e}")
+    return None
+
+def get_cached_firmware_list():
+    """Get list of cached firmware with their manifest information"""
+    cached_firmware = []
+    
+    try:
+        if not ZIP_STORAGE_DIR.exists():
+            return cached_firmware
+        
+        for zip_file in ZIP_STORAGE_DIR.glob("*.zip"):
+            manifest = load_manifest_for_zip(zip_file)
+            if manifest:
+                cached_firmware.append({
+                    'zip_file': zip_file,
+                    'manifest': manifest,
+                    'release_info': manifest.get('release_info', {}),
+                    'cached_at': manifest.get('cached_at', 0),
+                    'file_size': manifest.get('file_size', 0)
+                })
+            else:
+                # Create a basic manifest for zips without one
+                basic_manifest = {
+                    'zip_file': zip_file.name,
+                    'release_info': {
+                        'tag_name': zip_file.stem,
+                        'name': zip_file.stem,
+                        'body': 'Cached firmware file',
+                        'asset_name': zip_file.name
+                    },
+                    'cached_at': zip_file.stat().st_mtime,
+                    'file_size': zip_file.stat().st_size
+                }
+                create_manifest_for_zip(zip_file, basic_manifest['release_info'])
+                cached_firmware.append({
+                    'zip_file': zip_file,
+                    'manifest': basic_manifest,
+                    'release_info': basic_manifest['release_info'],
+                    'cached_at': basic_manifest['cached_at'],
+                    'file_size': basic_manifest['file_size']
+                })
+        
+        # Sort by cached_at (newest first)
+        cached_firmware.sort(key=lambda x: x['cached_at'], reverse=True)
+        
+    except Exception as e:
+        silent_print(f"Error getting cached firmware list: {e}")
+    
+    return cached_firmware
+
+def delete_cached_firmware(zip_path):
+    """Delete a cached firmware zip and its manifest"""
+    try:
+        manifest_path = zip_path.with_suffix(MANIFEST_EXTENSION)
+        
+        if zip_path.exists():
+            zip_path.unlink()
+            silent_print(f"Deleted cached zip: {zip_path.name}")
+        
+        if manifest_path.exists():
+            manifest_path.unlink()
+            silent_print(f"Deleted manifest: {manifest_path.name}")
+        
+        return True
+    except Exception as e:
+        silent_print(f"Error deleting cached firmware {zip_path}: {e}")
+        return False
 
 def log_extracted_files(files):
     """Log extracted files for cleanup"""
@@ -212,11 +318,15 @@ def delete_all_cached_zips():
 class ConfigDownloader:
     """Downloads and parses configuration files from GitHub with caching"""
 
-    def __init__(self):
+    def __init__(self, base_dir=None):
+        self.base_dir = base_dir or os.path.dirname(os.path.abspath(__file__))
         self.config_url = "https://raw.githubusercontent.com/team-slide/Y1-helper/refs/heads/master/config.ini"
         self.manifest_url = "https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml"
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
+        
+        # GitHub App token (simplified)
+        self.github_app_token = None
 
     def download_config(self):
         """Download and parse the config.ini file to extract API tokens with caching"""
@@ -225,6 +335,21 @@ class ConfigDownloader:
         if cached_tokens:
             return cached_tokens
 
+        # Try local config file first
+        local_config = Path(self.base_dir) / "config.ini"
+        if local_config.exists():
+            try:
+                with open(local_config, 'r') as f:
+                    config_text = f.read()
+                tokens = self._parse_config_response(config_text)
+                if tokens:
+                    silent_print("Loaded configuration from local file")
+                    save_cache(CONFIG_CACHE_FILE, tokens)
+                    return tokens
+            except Exception as e:
+                silent_print(f"Error reading local config: {e}")
+
+        # Try to download from remote
         try:
             silent_print("Downloading tokens from remote config...")
             silent_print(f"Config URL: {self.config_url}")
@@ -233,25 +358,31 @@ class ConfigDownloader:
 
             if response.status_code != 200:
                 silent_print(f"Failed to download config: HTTP {response.status_code}")
-                silent_print(f"Response text: {response.text[:200]}...")
-                
-                # Check if it's a rate limit issue
-                if response.status_code == 403:
-                    silent_print("GitHub API rate limited - this is normal for unauthenticated requests")
-                    silent_print("The app will work with limited functionality until rate limit resets")
-                elif response.status_code == 404:
-                    silent_print("Config file not found - check if the repository structure has changed")
-                elif response.status_code >= 500:
-                    silent_print("GitHub server error - temporary issue, will retry later")
-                
                 return []
 
             response.raise_for_status()
+            tokens = self._parse_config_response(response.text)
+            if tokens:
+                save_cache(CONFIG_CACHE_FILE, tokens)
+            return tokens
+        except Exception as e:
+            silent_print(f"Error downloading config: {e}")
+            return []
 
+    def _parse_config_response(self, config_text):
+        """Parse configuration response and extract tokens"""
+        try:
             config = configparser.ConfigParser()
-            config.read_string(response.text)
-
+            config.read_string(config_text)
+            
             silent_print(f"Config sections found: {list(config.sections())}")
+
+            # Extract GitHub App token first
+            if 'github_app' in config:
+                app_token = config['github_app'].get('installation_token', '').strip()
+                if app_token:
+                    self.github_app_token = app_token
+                    silent_print(f"Found GitHub App token: {app_token[:10]}...")
 
             tokens = []
             if 'api_keys' in config:
@@ -283,17 +414,14 @@ class ConfigDownloader:
                     tokens.append(token)
                     silent_print(f"Added legacy token: {token[:10]}...")
 
-            silent_print(f"Successfully loaded {len(tokens)} tokens from remote config")
+            silent_print(f"Successfully loaded {len(tokens)} tokens from config")
             if tokens:
                 silent_print(f"First token preview: {tokens[0][:10]}...")
-                # Cache the tokens
-                save_cache(CONFIG_CACHE_FILE, tokens)
             else:
                 silent_print("No valid tokens found in config - will use unauthenticated mode")
             return tokens
         except Exception as e:
-            silent_print(f"Error downloading config: {e}")
-            silent_print("Falling back to unauthenticated requests only")
+            silent_print(f"Error parsing config: {e}")
             return []
 
     def download_manifest(self):
@@ -358,8 +486,9 @@ from collections import defaultdict
 class GitHubAPI:
     """GitHub API wrapper for fetching release information with rate limiting and caching"""
 
-    def __init__(self, tokens):
+    def __init__(self, tokens, github_app_token=None):
         self.tokens = tokens
+        self.github_app_token = github_app_token
         self.token_usage = defaultdict(int)  # Track API calls per token
         self.last_reset = time.time()
         self.hourly_limit = 25  # Limit calls per hour per token
@@ -474,7 +603,40 @@ class GitHubAPI:
         """Get the latest release information for a repository with fallback"""
         url = f"https://api.github.com/repos/{repo}/releases/latest"
 
-        # Try with authenticated token first (since unauthenticated is failing)
+        # Try GitHub App token first
+        if self.github_app_token:
+            try:
+                headers = {
+                    'Authorization': f'token {self.github_app_token}',
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+                response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+                if response.status_code == 200:
+                    release_data = response.json()
+                    assets = release_data.get('assets', [])
+
+                    # Find firmware assets
+                    zip_asset = None
+                    for asset in assets:
+                        if asset['name'].lower() == 'rom.zip':
+                            zip_asset = asset
+                            break
+
+                    return {
+                        'tag_name': release_data.get('tag_name', ''),
+                        'name': release_data.get('name', ''),
+                        'body': release_data.get('body', ''),
+                        'download_url': zip_asset['browser_download_url'] if zip_asset else None,
+                        'asset_name': zip_asset['name'] if zip_asset else None
+                    }
+                elif response.status_code == 403:
+                    silent_print(f"GitHub App rate limited for {repo}, trying PAT tokens...")
+                else:
+                    silent_print(f"GitHub App error for {repo}: {response.status_code}")
+            except Exception as e:
+                silent_print(f"GitHub App error for {repo}: {e}")
+
+        # Try with authenticated token (PAT)
         token = self.get_next_token()
         if token:
             headers = {
@@ -488,10 +650,10 @@ class GitHubAPI:
                     release_data = response.json()
                     assets = release_data.get('assets', [])
 
-                    # Find any zip asset (more flexible than just rom.zip)
+                    # Find firmware assets
                     zip_asset = None
                     for asset in assets:
-                        if asset['name'].lower().endswith('.zip'):
+                        if asset['name'].lower() == 'rom.zip':
                             zip_asset = asset
                             break
 
@@ -529,10 +691,10 @@ class GitHubAPI:
                 release_data = response.json()
                 assets = release_data.get('assets', [])
 
-                # Find any zip asset (more flexible than just rom.zip)
+                # Find firmware assets
                 zip_asset = None
                 for asset in assets:
-                    if asset['name'].lower().endswith('.zip'):
+                    if asset['name'].lower() == 'rom.zip':
                         zip_asset = asset
                         break
 
@@ -575,7 +737,26 @@ class GitHubAPI:
         """Get all releases for a repository with improved performance"""
         url = f"https://api.github.com/repos/{repo}/releases"
 
-        # Try with authenticated token first
+        # Try GitHub App token first
+        if self.github_app_token:
+            try:
+                headers = {
+                    'Authorization': f'token {self.github_app_token}',
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+                response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+                if response.status_code == 200:
+                    releases_data = response.json()
+                    silent_print(f"Found {len(releases_data)} total releases for {repo} using GitHub App")
+                    return self._process_releases_data(releases_data, repo)
+                elif response.status_code == 403:
+                    silent_print(f"GitHub App rate limited for {repo}, trying PAT tokens...")
+                else:
+                    silent_print(f"GitHub App error for {repo}: {response.status_code}")
+            except Exception as e:
+                silent_print(f"GitHub App error for {repo}: {e}")
+
+        # Try with authenticated token (PAT)
         token = self.get_next_token()
         if token:
             headers = {
@@ -591,36 +772,7 @@ class GitHubAPI:
                 if response.status_code == 200:
                     releases_data = response.json()
                     silent_print(f"Found {len(releases_data)} total releases for {repo}")
-                    releases = []
-
-                    for release in releases_data:
-                        assets = release.get('assets', [])
-                        silent_print(f"Release {release.get('tag_name', 'Unknown')} has {len(assets)} assets")
-
-                        # Find any zip asset (more flexible than just rom.zip)
-                        zip_asset = None
-                        for asset in assets:
-                            if asset['name'].lower().endswith('.zip'):
-                                zip_asset = asset
-                                silent_print(f"Found zip asset: {asset['name']}")
-                                break
-
-                        if zip_asset:  # Include releases with any zip file
-                            releases.append({
-                                'tag_name': release.get('tag_name', ''),
-                                'name': release.get('name', ''),
-                                'body': release.get('body', ''),
-                                'published_at': release.get('published_at', ''),
-                                'download_url': zip_asset['browser_download_url'],
-                                'asset_name': zip_asset['name'],
-                                'asset_size': zip_asset.get('size', 0)
-                            })
-                            silent_print(f"Added release {release.get('tag_name', 'Unknown')} with zip asset")
-                        else:
-                            silent_print(f"No zip assets found for release {release.get('tag_name', 'Unknown')}")
-
-                    silent_print(f"Returning {len(releases)} releases with zip assets")
-                    return releases
+                    return self._process_releases_data(releases_data, repo)
                 elif response.status_code == 401:
                     silent_print(f"Token authentication failed for {repo} - trying unauthenticated...")
                 elif response.status_code == 403:
@@ -653,7 +805,7 @@ class GitHubAPI:
                         assets = release.get('assets', [])
                         zip_asset = None
                         for asset in assets:
-                            if asset['name'].lower().endswith('.zip'):
+                            if asset['name'].lower() == 'rom.zip':
                                 zip_asset = asset
                                 break
                         
@@ -693,7 +845,7 @@ class GitHubAPI:
                     # Find any zip asset (more flexible than just rom.zip)
                     zip_asset = None
                     for asset in assets:
-                        if asset['name'].lower().endswith('.zip'):
+                        if asset['name'].lower() == 'rom.zip':
                             zip_asset = asset
                             break
 
@@ -732,6 +884,41 @@ class GitHubAPI:
 
         silent_print(f"No releases found for {repo} - returning empty list")
         return []
+
+    def _process_releases_data(self, releases_data, repo):
+        """Process releases data and extract zip assets"""
+        releases = []
+        
+        for release in releases_data:
+            assets = release.get('assets', [])
+            silent_print(f"Release {release.get('tag_name', 'Unknown')} has {len(assets)} assets")
+
+            # Find firmware assets
+            zip_asset = None
+            for asset in assets:
+                if asset['name'].lower() == 'rom.zip':
+                    zip_asset = asset
+                    silent_print(f"Found zip asset: {asset['name']}")
+                    break
+
+            if zip_asset:  # Include releases with any zip file
+                releases.append({
+                    'tag_name': release.get('tag_name', ''),
+                    'name': release.get('name', ''),
+                    'body': release.get('body', ''),
+                    'published_at': release.get('published_at', ''),
+                    'download_url': zip_asset['browser_download_url'],
+                    'asset_name': zip_asset['name'],
+                    'asset_size': zip_asset.get('size', 0)
+                })
+                silent_print(f"Added release {release.get('tag_name', 'Unknown')} with zip asset")
+            else:
+                silent_print(f"No zip assets found for release {release.get('tag_name', 'Unknown')}")
+
+        silent_print(f"Returning {len(releases)} releases with zip assets")
+        # Cache the successful response
+        self.cache_releases(repo, releases)
+        return releases
 
     def get_cached_releases(self, repo):
         """Get cached releases for a repository if available and not expired"""
@@ -1120,6 +1307,16 @@ class DownloadWorker(QThread):
 
             self.status_updated.emit("Download completed. Extracting...")
 
+            # Create manifest file for the cached zip
+            release_info = {
+                'tag_name': self.version,
+                'name': f"{self.repo_name} {self.version}",
+                'body': f"Firmware release {self.version} for {self.repo_name}",
+                'asset_name': zip_path.name,
+                'download_url': self.download_url
+            }
+            create_manifest_for_zip(zip_path, release_info)
+
             # Extract the zip file
             extracted_files = []
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
@@ -1216,6 +1413,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Load saved installation preferences
         QTimer.singleShot(200, self.load_installation_preferences)
+        
+        # Populate cached firmware list
+        QTimer.singleShot(150, self.populate_cached_firmware)
         
         # Restore original installation method when session ends
         QTimer.singleShot(300, self.restore_original_installation_method)
@@ -2004,11 +2204,19 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Create custom buttons for troubleshooting options
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
         
-        # Show Method 2 on all platforms, SP Flash Tool only on Windows
-        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
+        # Show Method 2 only for Linux/Mac users, Method 2 for Windows with USBdk
+        try_method2_btn = None
         try_method3_btn = None
+        
         if platform.system() == "Windows":
+            # Check for USBdk driver
+            driver_info = self.check_drivers_and_architecture()
+            if driver_info['has_usbdk_driver']:
+                try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
             try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
+        else:
+            # Linux/Mac: Show Method 2
+            try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         
         stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
@@ -2023,17 +2231,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Try Again - use selected installation method from settings
             remove_installation_marker()
             method = getattr(self, 'installation_method', 'guided')
-            if method == "guided":
-                # Method 1: Kill orphan libusb processes and restart firmware install
+            if method == "spflash" and platform.system() == "Windows":
+                # Method 1: SP Flash Tool (Windows only)
+                self.try_method_3()
+            elif method == "guided":
+                # Method 1: Guided (Linux/Mac)
                 self.stop_mtk_processes()
                 self.cleanup_libusb_state()
                 QTimer.singleShot(1000, self.run_mtk_command)
             elif method == "mtkclient":
                 # Method 2: Same as pressing Try Method 2
                 self.show_troubleshooting_instructions()
-            elif method == "spflash" and platform.system() == "Windows":
-                # Method 3: Same as pressing Try Method 3 (Windows only)
-                self.try_method_3()
             else:
                 # Fallback to guided method
                 self.stop_mtk_processes()
@@ -2214,7 +2422,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addWidget(help_btn)
         
         # Add Settings button (combines Tools and Settings functionality)
-        self.settings_btn = QPushButton("Settings")
+        self.settings_btn = QPushButton("Settings & Tools")
         self.settings_btn.setFixedHeight(24)  # Match dropdown height
         self.settings_btn.setStyleSheet("""
             QPushButton {
@@ -2289,6 +2497,39 @@ class FirmwareDownloaderGUI(QMainWindow):
         package_layout.addWidget(self.package_list)
 
         left_layout.addWidget(package_group)
+
+        # Cached firmware section
+        cached_group = QGroupBox("Cached Firmware")
+        cached_layout = QVBoxLayout(cached_group)
+
+        self.cached_list = QListWidget()
+        self.cached_list.itemClicked.connect(self.on_cached_firmware_selected)
+        self.cached_list.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.cached_list.customContextMenuRequested.connect(self.show_cached_context_menu)
+
+        # Add refresh button for cached firmware
+        refresh_cached_btn = QPushButton("Refresh Cached List")
+        refresh_cached_btn.clicked.connect(self.refresh_cached_firmware)
+        refresh_cached_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #2d2d2d;
+                color: #cccccc;
+                border: 1px solid #555555;
+                padding: 4px 8px;
+                border-radius: 3px;
+                font-weight: normal;
+                font-size: 11px;
+            }
+            QPushButton:hover {
+                background-color: #3d3d3d;
+                border-color: #666666;
+            }
+        """)
+
+        cached_layout.addWidget(refresh_cached_btn)
+        cached_layout.addWidget(self.cached_list)
+
+        left_layout.addWidget(cached_group)
 
         # Download button
         self.download_btn = QPushButton("Download")
@@ -2483,7 +2724,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         coffee_layout.addWidget(reddit_btn)
 
         # Discord button
-        discord_btn = QPushButton("💬 Discord")
+        discord_btn = QPushButton("Get Help")
         discord_btn.setStyleSheet("""
             QPushButton {
                 background-color: #5865F2;
@@ -2864,8 +3105,127 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec()
             
+            # Start SP Flash Tool with status display
+            self.start_sp_flash_tool_with_status()
+            
         except Exception as e:
             silent_print(f"Error showing Method 3 instructions: {e}")
+
+    def start_sp_flash_tool_with_status(self):
+        """Start SP Flash Tool with status display and image states"""
+        try:
+            # Show initial status
+            self.status_label.setText("Getting things ready")
+            self.load_please_wait_image()
+            
+            # Start flash_tool.exe process
+            flash_tool_path = Path("flash_tool.exe")
+            if not flash_tool_path.exists():
+                QMessageBox.warning(self, "Error", "flash_tool.exe not found. Please ensure SP Flash Tool is properly installed.")
+                return
+            
+            # Start the process
+            self.sp_flash_process = subprocess.Popen(
+                [str(flash_tool_path)],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+                universal_newlines=True
+            )
+            
+            # Start monitoring the output
+            self.monitor_sp_flash_output()
+            
+        except Exception as e:
+            silent_print(f"Error starting SP Flash Tool: {e}")
+            QMessageBox.critical(self, "Error", f"Failed to start SP Flash Tool: {str(e)}")
+
+    def monitor_sp_flash_output(self):
+        """Monitor SP Flash Tool output and update status/images accordingly"""
+        try:
+            if not hasattr(self, 'sp_flash_process') or not self.sp_flash_process:
+                return
+            
+            # Read output line by line
+            for line in iter(self.sp_flash_process.stdout.readline, ''):
+                if not line:
+                    break
+                
+                line = line.strip()
+                silent_print(f"SP Flash Tool: {line}")
+                
+                # Update status based on output
+                if line.startswith("search usb"):
+                    self.status_label.setText("Getting things ready")
+                    self.load_please_wait_image()
+                elif line.startswith("usb port obtained"):
+                    self.status_label.setText("Y1 Found, getting ready")
+                    self.load_please_wait_image()
+                elif "Disconnect!" in line:
+                    self.status_label.setText("Install complete, you can now disconnect your device and power it on")
+                    self.load_installed_image()
+                    
+                    # Stop monitoring after 45 seconds
+                    QTimer.singleShot(45000, self.stop_sp_flash_tool)
+                    break
+                else:
+                    # Show progress from the exe
+                    self.status_label.setText(line)
+                    self.load_installing_image()
+            
+        except Exception as e:
+            silent_print(f"Error monitoring SP Flash Tool output: {e}")
+
+    def stop_sp_flash_tool(self):
+        """Stop SP Flash Tool and reset to normal status"""
+        try:
+            if hasattr(self, 'sp_flash_process') and self.sp_flash_process:
+                self.sp_flash_process.terminate()
+                self.sp_flash_process = None
+            
+            # Reset to normal status
+            self.status_label.setText("Ready")
+            self.load_ready_image()
+            
+        except Exception as e:
+            silent_print(f"Error stopping SP Flash Tool: {e}")
+
+    def load_please_wait_image(self):
+        """Load please_wait.png image"""
+        try:
+            image_path = Path("please_wait.png")
+            if image_path.exists():
+                pixmap = QPixmap(str(image_path))
+                if not pixmap.isNull():
+                    self._current_pixmap = pixmap
+                    self.set_image_with_aspect_ratio(pixmap)
+        except Exception as e:
+            silent_print(f"Error loading please_wait image: {e}")
+
+    def load_installing_image(self):
+        """Load installing.png image"""
+        try:
+            image_path = Path("installing.png")
+            if image_path.exists():
+                pixmap = QPixmap(str(image_path))
+                if not pixmap.isNull():
+                    self._current_pixmap = pixmap
+                    self.set_image_with_aspect_ratio(pixmap)
+        except Exception as e:
+            silent_print(f"Error loading installing image: {e}")
+
+    def load_installed_image(self):
+        """Load installed.png image"""
+        try:
+            image_path = Path("installed.png")
+            if image_path.exists():
+                pixmap = QPixmap(str(image_path))
+                if not pixmap.isNull():
+                    self._current_pixmap = pixmap
+                    self.set_image_with_aspect_ratio(pixmap)
+        except Exception as e:
+            silent_print(f"Error loading installed image: {e}")
 
     def load_method2_image(self):
         """Load Method 2 troubleshooting image"""
@@ -2915,7 +3275,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("No API tokens available")
             return
 
-        self.github_api = GitHubAPI(tokens)
+        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_token)
         silent_print(f"Loaded {len(tokens)} API tokens")
 
         # Start parallel token validation for faster startup
@@ -3012,7 +3372,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             first_token = tokens[0]
             if not first_token.startswith('github_pat_'):
                 first_token = f"github_pat_{first_token}"
-            self.github_api = GitHubAPI([first_token])
+            self.github_api = GitHubAPI([first_token], self.config_downloader.github_app_token)
             self.finish_data_loading([tokens[0]])
         else:
             self.finish_data_loading([])
@@ -3034,7 +3394,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Token {i+1}: {token[:20]}...")
 
         # Create GitHub API with properly formatted tokens
-        self.github_api = GitHubAPI(api_tokens)
+        self.github_api = GitHubAPI(api_tokens, self.config_downloader.github_app_token)
         
         # Start periodic cache cleanup
         self.github_api.cleanup_cache_periodically()
@@ -3227,17 +3587,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Add methods based on driver availability
         if platform.system() == "Windows" and driver_info:
-            if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Both drivers available: All methods
-                self.method_combo.addItem("Method 1 - Guided", "guided")
-                self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
-                self.method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
-            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: Only Method 3
-                self.method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
-            elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Only UsbDk driver: Only Method 2
-                self.method_combo.addItem("Method 2 - MTKclient (Only available method)", "mtkclient")
+            if driver_info['has_mtk_driver']:
+                # Windows: Use SP Flash Tool exclusively (method 1 only)
+                self.method_combo.addItem("Method 1 - SP Flash Tool", "spflash")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
@@ -3283,34 +3635,20 @@ class FirmwareDownloaderGUI(QMainWindow):
         desc_text.setReadOnly(True)
         
         if platform.system() == "Windows" and driver_info:
-            if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+            if driver_info['has_mtk_driver']:
                 desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation  
-Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
-                """)
-            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                desc_text.setPlainText("""
-Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
-Note: Install USB Development Kit driver to enable Methods 1 and 2
-                """)
-            elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                desc_text.setPlainText("""
-Method 2 - MTKclient: Direct technical installation (Only available method)
-Note: Install MediaTek SP Driver to enable Methods 1 and 3
+Method 1 - SP Flash Tool: Manufacturer's tool (Windows only)
                 """)
             else:
                 desc_text.setPlainText("""
 No installation methods available.
 Please install drivers to enable firmware installation.
 
-More methods will become available if you install the MediaTek SP Driver and USB Development Kit driver.
+Install the MediaTek SP Driver to enable firmware installation.
                 """)
         elif platform.system() == "Windows":
             desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation
-Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
+Method 1 - SP Flash Tool: Manufacturer's tool (Windows only)
             """)
         else:
             desc_text.setPlainText("""
@@ -4107,12 +4445,132 @@ Method 2 - MTKclient: Direct technical installation
                         "Info",
                         "No cached zip files found to delete."
                     )
-        except Exception as e:
-            QMessageBox.warning(
+
+    def refresh_cached_firmware(self):
+        """Refresh the cached firmware list"""
+        self.populate_cached_firmware()
+
+    def populate_cached_firmware(self):
+        """Populate the cached firmware list"""
+        self.cached_list.clear()
+        
+        cached_firmware = get_cached_firmware_list()
+        
+        if not cached_firmware:
+            item = QListWidgetItem("No cached firmware found")
+            item.setFlags(item.flags() & ~Qt.ItemIsSelectable)
+            self.cached_list.addItem(item)
+            return
+        
+        for firmware in cached_firmware:
+            release_info = firmware['release_info']
+            cached_at = firmware['cached_at']
+            file_size = firmware['file_size']
+            
+            # Format cached date
+            cached_date = datetime.datetime.fromtimestamp(cached_at).strftime("%Y-%m-%d %H:%M")
+            
+            # Format file size
+            size_mb = file_size / (1024 * 1024) if file_size > 0 else 0
+            
+            # Create display text
+            display_text = f"{release_info.get('tag_name', 'Unknown')} ({size_mb:.1f} MB)\nCached: {cached_date}"
+            
+            item = QListWidgetItem(display_text)
+            item.setData(Qt.UserRole, firmware)
+            self.cached_list.addItem(item)
+
+    def on_cached_firmware_selected(self, item):
+        """Handle cached firmware selection"""
+        firmware_data = item.data(Qt.UserRole)
+        if firmware_data:
+            self.download_btn.setEnabled(True)
+            self.download_btn.setText("Install from Cache")
+            self.selected_cached_firmware = firmware_data
+
+    def show_cached_context_menu(self, position):
+        """Show context menu for cached firmware items"""
+        item = self.cached_list.itemAt(position)
+        if item is None:
+            return
+
+        firmware_data = item.data(Qt.UserRole)
+        if firmware_data is None:
+            return
+
+        from PySide6.QtWidgets import QMenu
+
+        context_menu = QMenu(self)
+        install_action = context_menu.addAction("Install from Cache")
+        delete_action = context_menu.addAction("Delete Cached File")
+        
+        action = context_menu.exec_(self.cached_list.mapToGlobal(position))
+
+        if action == install_action:
+            self.install_from_cached_firmware(firmware_data)
+        elif action == delete_action:
+            self.delete_cached_firmware(firmware_data)
+
+    def install_from_cached_firmware(self, firmware_data):
+        """Install firmware from cached zip file"""
+        try:
+            zip_path = firmware_data['zip_file']
+            
+            if not zip_path.exists():
+                QMessageBox.warning(self, "Error", "Cached firmware file not found. Please refresh the list.")
+                return
+            
+            # Extract the cached zip file
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(".")
+            
+            # Check if required files exist
+            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            missing_files = []
+            for file in required_files:
+                if not Path(file).exists():
+                    missing_files.append(file)
+
+            if missing_files:
+                QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
+                return
+
+            # Show success message and start installation
+            QMessageBox.information(
                 self,
-                "Error",
-                f"Error deleting cached zip files: {e}"
+                "Success",
+                "Firmware files extracted from cache. Starting installation process..."
             )
+            
+            # Start MTK installation
+            self.run_mtk_command()
+            
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to extract cached firmware: {str(e)}")
+
+    def delete_cached_firmware(self, firmware_data):
+        """Delete a cached firmware file"""
+        try:
+            zip_path = firmware_data['zip_file']
+            release_info = firmware_data['release_info']
+            
+            reply = QMessageBox.question(
+                self,
+                "Delete Cached Firmware",
+                f"Are you sure you want to delete the cached firmware '{release_info.get('tag_name', 'Unknown')}'?\n\nThis will free up disk space but require re-downloading if you want to install this firmware again.",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
+            
+            if reply == QMessageBox.Yes:
+                if delete_cached_firmware(zip_path):
+                    QMessageBox.information(self, "Success", "Cached firmware deleted successfully.")
+                    self.refresh_cached_firmware()
+                else:
+                    QMessageBox.warning(self, "Error", "Failed to delete cached firmware.")
+                    
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Error deleting cached firmware: {str(e)}")
 
     def populate_all_releases_list_progressive(self):
         """Populate the releases list progressively for all software"""
@@ -4861,9 +5319,9 @@ Method 2 - MTKclient: Direct technical installation
         webbrowser.open("https://reddit.com/r/innioasis")
 
     def open_discord_link(self):
-        """Open the Discord server in the default browser"""
+        """Help with common issues"""
         import webbrowser
-        webbrowser.open("https://discord.gg/timmkoo")
+        webbrowser.open("https://innioasis.app/Troubleshooting")
 
     def open_driver_setup_link(self):
         """Show driver setup dialog and open the installation guide"""
@@ -5162,6 +5620,11 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.wait()
             self.mtk_worker = None
 
+        # Check if we're installing from cached firmware
+        if hasattr(self, 'selected_cached_firmware') and self.selected_cached_firmware:
+            self.install_from_cached_firmware(self.selected_cached_firmware)
+            return
+
         current_item = self.package_list.currentItem()
         if not current_item:
             self.status_label.setText("Error: Please select a release from the list")
@@ -5431,7 +5894,7 @@ Method 2 - MTKclient: Direct technical installation
             QMessageBox.warning(self, "Error", "Failed to download API tokens. Please check your internet connection or try again later.")
             return
 
-        self.github_api = GitHubAPI(tokens)
+        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_token)
         silent_print(f"Loaded {len(tokens)} API tokens")
 
         # Download manifest
@@ -5800,13 +6263,12 @@ Method 2 - MTKclient: Direct technical installation
                           "5. HOLD middle button to restart\n\n"
                           "This method shows technical installation details. If it fails, try Method 3.")
         else:
-            # Non-Windows baseline Method 2 instructions
+            # Linux/Mac Method 2 instructions
             instructions = ("Please follow these steps after pressing OK:\n\n"
-                          "1. INSERT Paperclip\n"
-                          "2. CONNECT Y1 via USB\n"
-                          "3. WAIT for the install to finish\n"
-                          "4. DISCONNECT your Y1\n"
-                          "5. HOLD middle button to restart\n\n"
+                          "1. Disconnect Y1 from PC USB Port\n"
+                          "2. Use a pin to turn the Y1 off in preparation for a system software install\n"
+                          "3. Connect the Y1 to PC and wait for the install to complete\n"
+                          "4. This has to be when you press Enter\n\n"
                           "This method shows technical installation details.")
         
         msg_box = QMessageBox(self)
@@ -6334,4 +6796,3 @@ if __name__ == "__main__":
         import traceback
         traceback.print_exc()
         sys.exit(1)
-
