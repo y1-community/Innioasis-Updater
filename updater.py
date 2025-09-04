@@ -101,11 +101,8 @@ class CrossPlatformHelper:
             # ARM64 Windows: Only allow firmware downloads, no installation methods
             available_methods = []
             can_install_firmware = False
-        elif has_mtk_driver and has_usbdk_driver:
-            # Both drivers available: All methods available
-            available_methods = ['guided', 'mtkclient', 'spflash']
-        elif has_mtk_driver and not has_usbdk_driver:
-            # Only MTK driver: Force Method 3 (SP Flash Tool) for this session
+        elif has_mtk_driver:
+            # Windows: Use SP Flash Tool exclusively (method 1 only)
             available_methods = ['spflash']
         else:
             # No drivers: No installation methods available
