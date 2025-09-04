@@ -2486,7 +2486,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         coffee_layout.addWidget(reddit_btn)
 
         # Discord button
-        discord_btn = QPushButton("💬 Discord")
+        discord_btn = QPushButton("Get Help")
         discord_btn.setStyleSheet("""
             QPushButton {
                 background-color: #5865F2;
@@ -4864,9 +4864,9 @@ Method 2 - MTKclient: Direct technical installation
         webbrowser.open("https://reddit.com/r/innioasis")
 
     def open_discord_link(self):
-        """Open the Discord server in the default browser"""
+        """Help with common issues"""
         import webbrowser
-        webbrowser.open("https://discord.gg/timmkoo")
+        webbrowser.open("https://innioasis.app/Troubleshooting")
 
     def open_driver_setup_link(self):
         """Show driver setup dialog and open the installation guide"""
