@@ -379,6 +379,128 @@
             font-weight: 600;
             color: #2c3e50;
             margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Scrolling text animation for long version names */
+        .firmware-name.scroll-text,
+        .detail-value.scroll-text {
+            white-space: nowrap;
+            animation: scrollText 8s linear infinite;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            min-width: 0;
+        }
+
+        .firmware-name.scroll-text:hover,
+        .detail-value.scroll-text:hover {
+            animation-play-state: paused;
+            white-space: normal;
+            overflow: visible;
+        }
+
+        /* Touch devices - pause animation on touch */
+        .firmware-name.scroll-text:active,
+        .detail-value.scroll-text:active {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(0);
+            }
+            75% {
+                transform: translateX(calc(-100% + 200px));
+            }
+            100% {
+                transform: translateX(calc(-100% + 200px));
+            }
+        }
+
+        /* Pause animation when user is interacting */
+        .firmware-item:hover .scroll-text {
+            animation-play-state: paused;
+        }
+
+        /* Download statistics styling */
+        .download-stats {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+        }
+
+        .firmware-item:hover .download-stats {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .download-stats .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #6c757d;
+            transition: color 0.3s ease;
+        }
+
+        .download-stats .stat-icon {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .firmware-item:hover .download-stats .stat-icon {
+            transform: scale(1.1);
+        }
+
+        .download-stats .stat-value {
+            font-weight: 600;
+            color: #495057;
+            transition: color 0.3s ease;
+        }
+
+        .firmware-item:hover .download-stats .stat-value {
+            color: #007bff;
+        }
+
+        .download-stats .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        /* Dark mode styles for download stats */
+        body[data-theme="dark"] .download-stats {
+            background: linear-gradient(135deg, #3a3a3c 0%, #2c2c2e 100%);
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .firmware-item:hover .download-stats {
+            background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
+        }
+
+        body[data-theme="dark"] .download-stats .stat-item {
+            color: #8e8e93;
+        }
+
+        body[data-theme="dark"] .download-stats .stat-value {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .firmware-item:hover .download-stats .stat-value {
+            color: #0a84ff;
         }
 
         .firmware-details {
@@ -790,6 +912,29 @@
             
             .firmware-details {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Mobile-specific scrolling text improvements */
+            .firmware-name.scroll-text {
+                animation-duration: 6s; /* Faster on mobile */
+                touch-action: pan-x; /* Allow horizontal scrolling on touch */
+            }
+            
+            .detail-value.scroll-text {
+                animation-duration: 5s; /* Faster for detail values */
+                touch-action: pan-x;
+            }
+            
+            /* Download stats mobile layout */
+            .download-stats {
+                flex-direction: column;
+                gap: 6px;
+                align-items: flex-start;
+            }
+            
+            .download-stats .stat-item {
+                width: 100%;
+                justify-content: space-between;
             }
         }
         
@@ -1732,13 +1877,22 @@
                         );
                         return hasRomZip;
                     })
-                    .map(release => ({
-                        tag_name: release.tag_name,
-                        name: release.name || release.tag_name,
-                        published_at: release.published_at,
-                        html_url: release.html_url,
-                        assets: release.assets || []
-                    }));
+                    .map(release => {
+                        // Find the rom.zip asset and get its download count
+                        const romZipAsset = release.assets.find(asset => 
+                            asset.name && asset.name.toLowerCase() === 'rom.zip'
+                        );
+                        
+                        return {
+                            tag_name: release.tag_name,
+                            name: release.name || release.tag_name,
+                            published_at: release.published_at,
+                            html_url: release.html_url,
+                            assets: release.assets || [],
+                            download_count: romZipAsset ? romZipAsset.download_count : 0,
+                            total_downloads: release.assets.reduce((sum, asset) => sum + (asset.download_count || 0), 0)
+                        };
+                    });
             } catch (error) {
                 console.warn(`Failed to fetch releases for ${repo}:`, error);
                 return [];
@@ -1753,41 +1907,76 @@
                 return;
             }
             
-            container.innerHTML = releases.map(release => `
-                <div class="firmware-item" onclick="selectFirmware(this, '${release.software_name}')">
-                    <div class="firmware-name">${release.software_name}</div>
-                    <div class="firmware-details">
-                        <div class="detail-item">
-                            <div class="detail-label">Version</div>
-                            <div class="detail-value">${release.tag_name}</div>
+            container.innerHTML = releases.map(release => {
+                // Check if version name is long enough to need scrolling
+                const needsScrolling = release.tag_name.length > 20 || release.name.length > 20;
+                const versionClass = needsScrolling ? 'firmware-name scroll-text' : 'firmware-name';
+                
+                // Format download counts
+                const formatDownloadCount = (count) => {
+                    if (count >= 1000000) {
+                        return (count / 1000000).toFixed(1) + 'M';
+                    } else if (count >= 1000) {
+                        return (count / 1000).toFixed(1) + 'K';
+                    }
+                    return count.toString();
+                };
+                
+                return `
+                    <div class="firmware-item" onclick="selectFirmware(this, '${release.software_name}')">
+                        <div class="firmware-name">${release.software_name}</div>
+                        <div class="firmware-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Version</div>
+                                <div class="detail-value ${needsScrolling ? 'scroll-text' : ''}" title="${release.tag_name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${release.tag_name}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Name</div>
+                                <div class="detail-value ${needsScrolling ? 'scroll-text' : ''}" title="${release.name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${release.name}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Published</div>
+                                <div class="detail-value">${formatDate(release.published_at)}</div>
+                            </div>
+                            ${!currentFilters.deviceType ? `<div class="detail-item">
+                                <div class="detail-label">Type</div>
+                                <div class="detail-value">${release.device_type || 'N/A'}</div>
+                            </div>` : ''}
+                            ${!currentFilters.deviceModel ? `<div class="detail-item">
+                                <div class="detail-label">Model</div>
+                                <div class="detail-value">${release.device_model || 'N/A'}</div>
+                            </div>` : ''}
                         </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Name</div>
-                            <div class="detail-value">${release.name}</div>
+                        <div class="download-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">📦</span>
+                                <span class="stat-value">${formatDownloadCount(release.download_count || 0)}</span>
+                                <span class="stat-label">ROM Downloads</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">📊</span>
+                                <span class="stat-value">${formatDownloadCount(release.total_downloads || 0)}</span>
+                                <span class="stat-label">Total Downloads</span>
+                            </div>
                         </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Published</div>
-                            <div class="detail-value">${formatDate(release.published_at)}</div>
+                        <div class="download-section">
+                            <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
+                                📥 Download ROM
+                            </button>
+                            <button class="automatic-install-btn" onclick="goToInnioasisApp(event)">
+                                ⚡ Automatic Install at Innioasis.app
+                            </button>
                         </div>
-                        ${!currentFilters.deviceType ? `<div class="detail-item">
-                            <div class="detail-label">Type</div>
-                            <div class="detail-value">${release.device_type || 'N/A'}</div>
-                        </div>` : ''}
-                        ${!currentFilters.deviceModel ? `<div class="detail-item">
-                            <div class="detail-label">Model</div>
-                            <div class="detail-value">${release.device_model || 'N/A'}</div>
-                        </div>` : ''}
                     </div>
-                    <div class="download-section">
-                        <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
-                            📥 Download ROM
-                        </button>
-                        <button class="automatic-install-btn" onclick="goToInnioasisApp(event)">
-                            ⚡ Automatic Install at Innioasis.app
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
+            
+            // Add touch handling for scrolling text
+            setTimeout(() => {
+                document.querySelectorAll('.firmware-item').forEach(item => {
+                    handleScrollingTextTouch(item);
+                });
+            }, 100);
         }
 
         function selectFirmware(element, softwareName) {
@@ -1798,6 +1987,34 @@
             
             // Add selection to clicked item
             element.classList.add('selected');
+        }
+
+        // Handle touch interactions for scrolling text
+        function handleScrollingTextTouch(element) {
+            const scrollTexts = element.querySelectorAll('.scroll-text');
+            scrollTexts.forEach(textElement => {
+                textElement.addEventListener('touchstart', function() {
+                    this.style.animationPlayState = 'paused';
+                });
+                
+                textElement.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.style.animationPlayState = 'running';
+                    }, 1000);
+                });
+            });
+        }
+
+        // Toggle scrolling animation
+        function toggleScrollingAnimation(element) {
+            const scrollTexts = element.querySelectorAll('.scroll-text');
+            scrollTexts.forEach(textElement => {
+                if (textElement.style.animationPlayState === 'paused') {
+                    textElement.style.animationPlayState = 'running';
+                } else {
+                    textElement.style.animationPlayState = 'paused';
+                }
+            });
         }
 
         function downloadROM(releasesUrl, event) {
