@@ -1154,11 +1154,11 @@ class DownloadWorker(QThread):
                 size_mb = file_size / (1024 * 1024)
                 success_msg += f"- {file} ({size_mb:.1f} MB)\n"
 
-            success_msg += "\nTo flash these files to your device:\n"
-            success_msg += "1. Turn off your Y1\n"
-            success_msg += "2. Run the following command in a new terminal:\n"
-            success_msg += f"   {sys.executable} mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\n"
-            success_msg += "3. Follow the on-screen prompts to turn off your Y1"
+            success_msg += "\nFor the best results:\n"
+            success_msg += "1. Make sure your Y1 is disconnect until you're asked\n"
+            success_msg += "2. Follow the on screen guidance during the process"
+            success_msg += f""
+            success_msg += ""
 
             self.download_completed.emit(True, success_msg)
 
