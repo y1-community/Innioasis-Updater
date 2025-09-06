@@ -156,7 +156,7 @@ run_full_setup() {
         if brew list --formula | grep -q "^${pkg}\$"; then
             success_echo "${pkg} is already installed."
         else
-            log_message "   Installing ${pkg}..."
+            log_message "   Downloading resources we need for Innioasis Updater and ${pkg} (This may take 5-60 minutes depending on download speeds."
             if brew install ${pkg} >> "$LOG_FILE" 2>&1; then
                 success_echo "Installed ${pkg}."
             else
