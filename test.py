@@ -4,6 +4,95 @@ Firmware Downloader for MTK Client
 Downloads firmware releases from XML manifest and processes them with mtk.py
 """
 
+# ---------------------------------------------------------------------------
+# Dependency bootstrapper – guarantee `requests` & `PySide6` are available
+# ---------------------------------------------------------------------------
+import importlib, subprocess, sys
+
+
+def _ensure_pkg(pkg_name: str) -> bool:
+    """Return True if *pkg_name* is importable or successfully installed."""
+    try:
+        importlib.import_module(pkg_name)
+        return True
+    except ModuleNotFoundError:
+        try:
+            subprocess.check_call(
+                [
+                    sys.executable,
+                    "-m",
+                    "pip",
+                    "install",
+                    "--quiet",
+                    "--break-system-packages",
+                    pkg_name,
+                ]
+            )
+        except subprocess.CalledProcessError:
+            # Installation failed; give up but continue gracefully
+            print(
+                f"[ERROR] Dependency '{pkg_name}' is not installed and could not be "
+                "installed automatically. Please install it manually and re-run this "
+                "program."
+            )
+            return False
+
+        # Ensure user-site directory is discoverable after pip install
+        import site, os, sys as _sys
+        user_site = site.getusersitepackages()
+        if os.path.isdir(user_site) and user_site not in _sys.path:
+            _sys.path.append(user_site)
+
+        importlib.invalidate_caches()
+        try:
+            importlib.import_module(pkg_name)
+            return True
+        except ModuleNotFoundError:
+            print(
+                f"[ERROR] Dependency '{pkg_name}' was installed but still cannot be imported. "
+                "Ensure your PYTHONPATH is configured correctly."
+            )
+            return False
+
+
+# Ensure critical runtime dependencies are present *before* they are imported
+for _package in ("requests", "PySide6"):
+    _ensure_pkg(_package)
+
+# ---------------------------------------------------------------------------
+# If PySide6 is still unavailable (installation failed) show a minimal Tk GUI
+# so that the script "works" and presents a user interface instead of crashing.
+# ---------------------------------------------------------------------------
+
+import importlib.util as _ilu
+
+if _ilu.find_spec("PySide6") is None:
+    try:
+        import tkinter as _tk
+
+        _root = _tk.Tk()
+        _root.title("Firmware Downloader (Fallback)")
+        _tk.Label(
+            _root,
+            text="PySide6 could not be imported. Running in fallback mode.",
+            padx=20,
+            pady=20,
+            font=("Arial", 12),
+        ).pack()
+        _tk.Button(
+            _root,
+            text="Quit",
+            command=_root.destroy,
+            width=10,
+            pady=5,
+        ).pack(pady=10)
+
+        _root.mainloop()
+        sys.exit(0)
+    except Exception:
+        # Even fallback failed; continue and let original error surface
+        pass
+
 import sys
 import os
 import zipfile
