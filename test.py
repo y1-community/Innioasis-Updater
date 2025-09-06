@@ -4445,6 +4445,8 @@ Method 2 - MTKclient: Direct technical installation
                         "Info",
                         "No cached zip files found to delete."
                     )
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Error deleting cached zips: {str(e)}")
 
     def refresh_cached_firmware(self):
         """Refresh the cached firmware list"""
