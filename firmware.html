@@ -384,25 +384,24 @@
         }
 
         /* Scrolling text animation for long version names */
-        .firmware-name.scroll-text,
         .detail-value.scroll-text {
             white-space: nowrap;
-            animation: scrollText 8s linear infinite;
+            animation: scrollText 10s linear infinite;
             cursor: pointer;
             position: relative;
             display: inline-block;
-            min-width: 0;
+            max-width: 200px;
+            overflow: hidden;
         }
 
-        .firmware-name.scroll-text:hover,
         .detail-value.scroll-text:hover {
             animation-play-state: paused;
             white-space: normal;
             overflow: visible;
+            max-width: none;
         }
 
         /* Touch devices - pause animation on touch */
-        .firmware-name.scroll-text:active,
         .detail-value.scroll-text:active {
             animation-play-state: paused;
         }
@@ -411,10 +410,10 @@
             0% {
                 transform: translateX(0);
             }
-            25% {
+            20% {
                 transform: translateX(0);
             }
-            75% {
+            80% {
                 transform: translateX(calc(-100% + 200px));
             }
             100% {
@@ -427,81 +426,19 @@
             animation-play-state: paused;
         }
 
-        /* Download statistics styling */
-        .download-stats {
+        /* Ensure detail items have proper width constraints */
+        .detail-item {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-            padding: 8px 12px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 8px;
-            font-size: 0.85rem;
-            border: 1px solid #dee2e6;
-            transition: all 0.3s ease;
+            flex-direction: column;
+            min-width: 0;
+            max-width: 250px;
         }
 
-        .firmware-item:hover .download-stats {
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .detail-value {
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
-        .download-stats .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            color: #6c757d;
-            transition: color 0.3s ease;
-        }
-
-        .download-stats .stat-icon {
-            font-size: 0.9rem;
-            transition: transform 0.3s ease;
-        }
-
-        .firmware-item:hover .download-stats .stat-icon {
-            transform: scale(1.1);
-        }
-
-        .download-stats .stat-value {
-            font-weight: 600;
-            color: #495057;
-            transition: color 0.3s ease;
-        }
-
-        .firmware-item:hover .download-stats .stat-value {
-            color: #007bff;
-        }
-
-        .download-stats .stat-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.8;
-        }
-
-        /* Dark mode styles for download stats */
-        body[data-theme="dark"] .download-stats {
-            background: linear-gradient(135deg, #3a3a3c 0%, #2c2c2e 100%);
-            border-color: #48484a;
-        }
-
-        body[data-theme="dark"] .firmware-item:hover .download-stats {
-            background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
-        }
-
-        body[data-theme="dark"] .download-stats .stat-item {
-            color: #8e8e93;
-        }
-
-        body[data-theme="dark"] .download-stats .stat-value {
-            color: #c7c7cc;
-        }
-
-        body[data-theme="dark"] .firmware-item:hover .download-stats .stat-value {
-            color: #0a84ff;
-        }
 
         .firmware-details {
             display: grid;
@@ -559,39 +496,46 @@
         }
 
         .download-rom-btn {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: #6c757d;
             color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
+            border: 1px solid #5a6268;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            font-size: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
 
         .download-rom-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            background: #5a6268;
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .automatic-install-btn {
-            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .automatic-install-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+            background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
         }
 
         .status {
@@ -915,27 +859,16 @@
             }
             
             /* Mobile-specific scrolling text improvements */
-            .firmware-name.scroll-text {
+            .detail-value.scroll-text {
                 animation-duration: 6s; /* Faster on mobile */
                 touch-action: pan-x; /* Allow horizontal scrolling on touch */
+                max-width: 150px; /* Smaller max width on mobile */
             }
             
-            .detail-value.scroll-text {
-                animation-duration: 5s; /* Faster for detail values */
-                touch-action: pan-x;
+            .detail-item {
+                max-width: 180px; /* Smaller max width on mobile */
             }
             
-            /* Download stats mobile layout */
-            .download-stats {
-                flex-direction: column;
-                gap: 6px;
-                align-items: flex-start;
-            }
-            
-            .download-stats .stat-item {
-                width: 100%;
-                justify-content: space-between;
-            }
         }
         
         @media (max-width: 480px) {
@@ -1026,7 +959,7 @@
             <img src="mtkclient/gui/images/icon.png" alt="Innioasis Icon" class="header-icon">
             <div class="header-text">
                 <h1>Innioasis Firmware Downloader</h1>
-                <p>Download firmware releases directly from GitHub</p>
+                <p>Download firmware releases directly from Slidia</p>
             </div>
             <button class="theme-toggle" onclick="toggleTheme()">
                 <span class="icon">🌓</span>
@@ -1066,7 +999,7 @@
             <!-- Token Status Display -->
             <div id="tokenStatus" class="token-status" style="display: none;">
                 <div class="token-info">
-                    <span class="token-label">GitHub API Tokens:</span>
+                    <span class="token-label">Slidia API Tokens:</span>
                     <span id="tokenCount" class="token-count">0</span>
                     <span class="token-status-text" id="tokenStatusText">Loading...</span>
                     <button id="refreshTokensBtn" class="token-refresh-btn" onclick="refreshTokens()" style="display: none;">
@@ -1093,6 +1026,7 @@
         <div class="footer">
             <p>Created by <a href="https://ko-fi.com/teamslide" target="_blank">Team Slide</a> | 
                <a href="https://innioasis.app" target="_blank">Innioasis App</a> | 
+               <a href="https://innioasis.app/slidia.html" target="_blank">Slidia</a> | 
                <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a></p>
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">🍪 Cookies not used by this site</p>
         </div>
@@ -1530,7 +1464,7 @@
 
         async function loadGitHubTokens() {
             try {
-                setStatus('Loading GitHub API tokens...', 'loading');
+                setStatus('Loading Slidia API tokens...', 'loading');
                 
                 // Load tokens from the config file
                 const configResponse = await fetch('https://raw.githubusercontent.com/team-slide/y1-helper/main/config.ini');
@@ -1542,12 +1476,12 @@
                 const tokens = parseConfigTokens(configText);
                 
                 if (tokens.length === 0) {
-                    console.warn('No GitHub API tokens found in config file');
-                    setStatus('Warning: No GitHub API tokens available - using unauthenticated requests');
+                    console.warn('No Slidia API tokens found in config file');
+                    setStatus('Warning: No Slidia API tokens available - using unauthenticated requests');
                     updateTokenStatus(0, 'No tokens available - using unauthenticated requests');
                 } else {
-                    console.log(`Loaded ${tokens.length} GitHub API tokens`);
-                    setStatus(`Loaded ${tokens.length} GitHub API tokens`);
+                    console.log(`Loaded ${tokens.length} Slidia API tokens`);
+                    setStatus(`Loaded ${tokens.length} Slidia API tokens`);
                     updateTokenStatus(tokens.length, `${tokens.length} tokens loaded successfully`);
                 }
                 
@@ -1559,8 +1493,8 @@
                 });
                 
             } catch (error) {
-                console.warn('Failed to load GitHub tokens:', error);
-                setStatus('Warning: Using unauthenticated GitHub API requests');
+                console.warn('Failed to load Slidia tokens:', error);
+                setStatus('Warning: Using unauthenticated Slidia API requests');
                 updateTokenStatus(0, 'Failed to load tokens - using unauthenticated requests');
                 githubTokens = [];
             }
@@ -1655,9 +1589,9 @@
         
         async function refreshTokens() {
             try {
-                setStatus('Refreshing GitHub API tokens...', 'loading');
+                setStatus('Refreshing Slidia API tokens...', 'loading');
                 await loadGitHubTokens();
-                setStatus('GitHub API tokens refreshed successfully');
+                setStatus('Slidia API tokens refreshed successfully');
             } catch (error) {
                 console.error('Error refreshing tokens:', error);
                 setStatus(`Error refreshing tokens: ${error.message}`, 'error');
@@ -1670,7 +1604,7 @@
                 return;
             }
             
-            let details = `GitHub API Token Details:\n\n`;
+            let details = `Slidia API Token Details:\n\n`;
             details += `Total Tokens: ${githubTokens.length}\n`;
             details += `Current Token Index: ${currentTokenIndex}\n\n`;
             
@@ -1865,7 +1799,7 @@
                             updateTokenStatus(githubTokens.length, `${githubTokens.length} tokens loaded (some rate limited)`);
                         }
                     }
-                    throw new Error(`GitHub API error: ${response.status}`);
+                    throw new Error(`Slidia API error: ${response.status}`);
                 }
                 
                 const releases = await response.json();
@@ -1908,9 +1842,8 @@
             }
             
             container.innerHTML = releases.map(release => {
-                // Check if version name is long enough to need scrolling
-                const needsScrolling = release.tag_name.length > 20 || release.name.length > 20;
-                const versionClass = needsScrolling ? 'firmware-name scroll-text' : 'firmware-name';
+                // Check if version field needs scrolling based on actual content length
+                const versionNeedsScrolling = release.tag_name.length > 25;
                 
                 // Format download counts
                 const formatDownloadCount = (count) => {
@@ -1928,15 +1861,15 @@
                         <div class="firmware-details">
                             <div class="detail-item">
                                 <div class="detail-label">Version</div>
-                                <div class="detail-value ${needsScrolling ? 'scroll-text' : ''}" title="${release.tag_name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${release.tag_name}</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Name</div>
-                                <div class="detail-value ${needsScrolling ? 'scroll-text' : ''}" title="${release.name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${release.name}</div>
+                                <div class="detail-value ${versionNeedsScrolling ? 'scroll-text' : ''}" title="${release.tag_name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${release.tag_name}</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Published</div>
                                 <div class="detail-value">${formatDate(release.published_at)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Downloads</div>
+                                <div class="detail-value">${formatDownloadCount(release.download_count || 0)}</div>
                             </div>
                             ${!currentFilters.deviceType ? `<div class="detail-item">
                                 <div class="detail-label">Type</div>
@@ -1947,34 +1880,23 @@
                                 <div class="detail-value">${release.device_model || 'N/A'}</div>
                             </div>` : ''}
                         </div>
-                        <div class="download-stats">
-                            <div class="stat-item">
-                                <span class="stat-icon">📦</span>
-                                <span class="stat-value">${formatDownloadCount(release.download_count || 0)}</span>
-                                <span class="stat-label">ROM Downloads</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-icon">📊</span>
-                                <span class="stat-value">${formatDownloadCount(release.total_downloads || 0)}</span>
-                                <span class="stat-label">Total Downloads</span>
-                            </div>
-                        </div>
                         <div class="download-section">
-                            <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
-                                📥 Download ROM
-                            </button>
                             <button class="automatic-install-btn" onclick="goToInnioasisApp(event)">
                                 ⚡ Automatic Install at Innioasis.app
+                            </button>
+                            <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
+                                📦 Download .zip for manual install
                             </button>
                         </div>
                     </div>
                 `;
             }).join('');
             
-            // Add touch handling for scrolling text
+            // Add touch handling for scrolling text and check if scrolling is actually needed
             setTimeout(() => {
                 document.querySelectorAll('.firmware-item').forEach(item => {
                     handleScrollingTextTouch(item);
+                    checkAndAdjustScrolling(item);
                 });
             }, 100);
         }
@@ -2017,11 +1939,57 @@
             });
         }
 
+        // Check if scrolling is actually needed based on element width
+        function checkAndAdjustScrolling(element) {
+            const scrollTexts = element.querySelectorAll('.scroll-text');
+            scrollTexts.forEach(textElement => {
+                // Temporarily remove scroll class to measure natural width
+                const hasScrollClass = textElement.classList.contains('scroll-text');
+                if (hasScrollClass) {
+                    textElement.classList.remove('scroll-text');
+                    textElement.style.whiteSpace = 'nowrap';
+                    
+                    const naturalWidth = textElement.scrollWidth;
+                    const containerWidth = textElement.offsetWidth;
+                    
+                    // Only add scrolling if text is actually wider than container
+                    if (naturalWidth > containerWidth + 10) { // 10px buffer
+                        textElement.classList.add('scroll-text');
+                    } else {
+                        // Text fits, remove scrolling and restore normal wrapping
+                        textElement.style.whiteSpace = 'normal';
+                        textElement.style.maxWidth = 'none';
+                    }
+                }
+            });
+        }
+
         function downloadROM(releasesUrl, event) {
             event.stopPropagation();
             
-            // Open the GitHub releases page in a new tab for ROM download
-            window.open(releasesUrl, '_blank');
+            // Extract repo and tag from the releases URL
+            const urlParts = releasesUrl.split('/');
+            const repoIndex = urlParts.findIndex(part => part === 'github.com') + 1;
+            const repo = `${urlParts[repoIndex]}/${urlParts[repoIndex + 1]}`;
+            const tag = urlParts[urlParts.length - 1];
+            
+            // Construct direct download URL for rom.zip
+            const downloadUrl = `https://github.com/${repo}/releases/download/${tag}/rom.zip`;
+            
+            // Create a temporary link element to trigger download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = `rom-${tag}.zip`;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            setStatus(`Downloading rom.zip from ${repo}...`, 'loading');
+            setTimeout(() => {
+                setStatus('ROM download started successfully');
+            }, 1000);
         }
 
         function goToInnioasisApp(event) {
