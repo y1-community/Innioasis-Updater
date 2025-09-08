@@ -1467,7 +1467,7 @@
                 setStatus('Loading Slidia API tokens...', 'loading');
                 
                 // Load tokens from the config file
-                const configResponse = await fetch('https://raw.githubusercontent.com/team-slide/y1-helper/main/config.ini');
+                const configResponse = await fetch('https://innioasis.app/config.ini');
                 if (!configResponse.ok) {
                     throw new Error('Failed to load config file');
                 }
