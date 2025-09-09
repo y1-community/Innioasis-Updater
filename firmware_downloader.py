@@ -828,9 +828,11 @@ class MTKWorker(QThread):
     show_reconnect_image = Signal()
     show_presteps_image = Signal()
     show_initsteps_image = Signal()  # New signal for showing initsteps after first empty line
+    show_instructions_image = Signal()  # Signal for showing initsteps when instructions are displayed
     mtk_completed = Signal(bool, str)
     handshake_failed = Signal()  # New signal for handshake failures
     errno2_detected = Signal()   # New signal for errno2 errors
+    usb_io_error_detected = Signal()  # New signal for USB IO errors
     backend_error_detected = Signal()  # New signal for backend errors
     keyboard_interrupt_detected = Signal()  # New signal for keyboard interrupts
     show_try_again_dialog = Signal()  # New signal for showing try again dialog
@@ -899,11 +901,15 @@ class MTKWorker(QThread):
             backend_error_detected = False
             keyboard_interrupt_detected = False
             usb_connection_issue_detected = False
+            usb_io_error_detected = False
             last_output_line = ""
             successful_completion = False
             first_empty_line_detected = False  # Track if we've seen the first empty line
             initsteps_start_time = None  # Track when initsteps phase started
             initsteps_timeout = 12  # 12 seconds timeout for initsteps phase
+            last_status_update = time.time()  # Track when status was last updated
+            status_check_interval = 2  # Check status every 2 seconds
+            current_status = ""  # Track current status message
 
             # Interruption detection variables
             progress_detected = False
@@ -922,6 +928,16 @@ class MTKWorker(QThread):
                     silent_print("MTK process timeout - terminating")
                     process.terminate()
                     break
+                
+                # Check if we need to update status due to lack of output
+                current_time = time.time()
+                if current_time - last_status_update > status_check_interval:
+                    # If no output for a while, emit empty status to trigger instruction message
+                    # But only if we're not in a specific status state like "Please wait..." or active install
+                    if current_status not in ["Please wait...", "Please disconnect your Y1 and restart the app"] and not progress_detected:
+                        self.status_updated.emit("")
+                        self.show_instructions_image.emit()
+                        last_status_update = current_time
                     
                 output = process.stdout.readline()
                 if output == '' and process.poll() is not None:
@@ -953,8 +969,13 @@ class MTKWorker(QThread):
                     
                     # Handle status message replacement for blank/dots output
                     if fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == "":
-                        # Don't show MTK: for blank/dots - let update_status handle the replacement
-                        self.status_updated.emit("")
+                        # When mtk.py only displays blank output or dots/periods, show instruction message
+                        self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
+                        current_status = "Please follow the instructions below to install the software on your Y1"
+                        # Only show initsteps image if we're not in an active install (no progress detected)
+                        if not progress_detected:
+                            self.show_instructions_image.emit()
+                        last_status_update = time.time()  # Update status time
                         
                         # Check if we've been in initsteps phase too long
                         if initsteps_start_time is not None and (time.time() - initsteps_start_time) > initsteps_timeout:
@@ -966,14 +987,21 @@ class MTKWorker(QThread):
                     else:
                         # Show latest output in status area (no extra whitespace)
                         self.status_updated.emit(f"MTK: {fixed_line}")
+                        current_status = f"MTK: {fixed_line}"  # Track current status
                         # Reset initsteps timer when we get real output
                         initsteps_start_time = None
+                        last_status_update = time.time()  # Update status time
 
                     # Check for errno2 error
                     if "errno2" in line.lower():
                         errno2_error_detected = True
                         self.status_updated.emit("Errno2 detected - Innioasis Updater reinstall required")
-                        self.errno2_detected.emit()
+                    
+                    # Check for USBError(5) - Input/Output Error (SP Flash Tool sparse images)
+                    if "usberror(5" in line.lower() or "input/output error" in line.lower():
+                        usb_io_error_detected = True
+                        self.status_updated.emit("USBError(5) - ROM incompatible with Method 1")
+                        self.usb_io_error_detected.emit()
                         # Don't break here - continue reading output
 
                     # Check for handshake failed error (generalized detection)
@@ -1017,15 +1045,30 @@ class MTKWorker(QThread):
                         self.keyboard_interrupt_detected.emit()
                         # Don't break here - continue reading output
 
-                    # Check for Preloader status (indicates slow USB connection)
-                    if "preloader" in line.lower() and ".........." in line:
-                        # This indicates slow USB connection, show appropriate status
-                        self.status_updated.emit("Now please follow the instructions displayed below.")
+                    # Check for Preloader status (indicates slow USB connection or freeze)
+                    if "preloader" in line.lower():
+                        if ".........." in line:
+                            # This indicates slow USB connection, show appropriate status - here is where we'll implement the automatic restart of the firmware installation for Method 1 - this makes more sense than the app freezing - which it almost always does in scenarios where this message will be shown
+                            self.status_updated.emit("USB connection timed out. Please force quit the app if not responding and restart it.")
+                            # Show initsteps image for instruction message
+                            self.show_instructions_image.emit()
+                            last_status_update = time.time()  # Update status time
+                        else:
+                            # Just "Preloader" without dots indicates freeze state
+                            self.status_updated.emit("MTK: Preloader")
+                            current_status = "MTK: Preloader"  # Track current status
+                            # Show initsteps image for instruction message
+                            self.show_instructions_image.emit()
+                            last_status_update = time.time()  # Update status time
                     
                     # Check for BROM status (indicates waiting for device)
                     if "brom" in line.lower():
                         # This indicates waiting for device, show please wait message
                         self.status_updated.emit("Please wait...")
+                        current_status = "Please wait..."  # Track current status
+                        # Show presteps image for please wait status
+                        self.show_presteps_image.emit()
+                        last_status_update = time.time()  # Update status time
                         # Don't treat this as an error, just continue
 
                     if ".Port - Device detected :)" in line:
@@ -1045,6 +1088,14 @@ class MTKWorker(QThread):
                     progress_detected = True
                     last_progress_time = time.time()
                     # Don't emit status message - let MTK output be displayed clearly
+                    
+                    # Check for Progress or Wrote lines to show installing.png and display output in status
+                    if "progress" in line.lower() or line.lower().startswith("wrote"):
+                        self.show_installing_image.emit()
+                        # Display the actual mtk.py output in status field
+                        self.status_updated.emit(f"MTK: {fixed_line}")
+                        current_status = f"MTK: {fixed_line}"
+                        last_status_update = time.time()
 
                     # Only show presteps if no device detected and no errors
                     if not device_detected and not usb_connection_issue_detected and not handshake_error_detected and not errno2_error_detected and not backend_error_detected and not keyboard_interrupt_detected:
@@ -1091,14 +1142,16 @@ class MTKWorker(QThread):
                         successful_completion = False
                     else:
                         # Check if the last progress was 100% or if process completed normally
-                        if "100%" in last_output_line or process.returncode == 0:
+                        # Also check if the last line begins with "wrote" (indicates successful completion)
+                        if "100%" in last_output_line or process.returncode == 0 or last_output_line.lower().startswith("wrote"):
                             successful_completion = True
                         else:
                             # Process stopped before 100% - likely interrupted
                             successful_completion = False
                 else:
                     # No progress was detected, check if process completed successfully
-                    if process.returncode == 0:
+                    # Also check if the last line begins with "wrote" (indicates successful completion)
+                    if process.returncode == 0 or last_output_line.lower().startswith("wrote"):
                         successful_completion = True
                     else:
                         successful_completion = False
@@ -1130,6 +1183,8 @@ class MTKWorker(QThread):
             self.mtk_completed.emit(False, "Handshake failed - driver setup required")
         elif errno2_error_detected:
             self.mtk_completed.emit(False, "Errno2 error - Innioasis Updater reinstall required")
+        elif usb_io_error_detected:
+            self.mtk_completed.emit(False, "USBError(5) - ROM incompatible with Method 1")
         elif backend_error_detected:
             self.mtk_completed.emit(False, "Backend error - libusb backend issue")
         elif keyboard_interrupt_detected:
@@ -2683,7 +2738,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         status_group = QGroupBox("Status")
         status_layout = QVBoxLayout(status_group)
 
-        self.status_label = QLabel("Ready")
+        self.status_label = QLabel("Please follow the instructions below to install this software on your Y1")
         self.status_label.setWordWrap(True)
         self.status_label.setMinimumHeight(30)  # Reduced height for compact display
         self.status_label.setMaximumHeight(40)  # Added maximum height constraint
@@ -2885,6 +2940,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
                 self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
                 self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
                 self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
                 self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
                 self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
@@ -2907,7 +2963,10 @@ class FirmwareDownloaderGUI(QMainWindow):
     def update_status(self, message):
         """Update the status label with a message"""
         if not message or message.strip() == "":
-            self.status_label.setText("Now please follow the instructions displayed below.")
+            self.status_label.setText("Please follow the instructions below to install this software on your Y1")
+        elif message.strip() == "MTK: Preloader":
+            # Just "MTK: Preloader" indicates freeze state
+            self.status_label.setText("Please disconnect your Y1 and restart the app")
         elif message.startswith("MTK:") and (message.strip() == "MTK:" or 
                                               message.strip() == "MTK:..........." or 
                                               message.strip() == "MTK: ..........." or
@@ -2925,7 +2984,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                                               message.strip().startswith("MTK:  ") or  # Lines with just spaces
                                               len(message.strip()) <= 10):  # Very short MTK messages likely indicate waiting
             # MTK is waiting for device connection or showing dots/spaces
-            self.status_label.setText("Now please follow the instructions displayed below.")
+            self.status_label.setText("Now please follow the instructions displayed below. Please force quit the app if not responding and restart it.")
         else:
             self.status_label.setText(message)
 
@@ -4419,9 +4478,11 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
         self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+        self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
         self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
         self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
+        self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
         self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
         self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
         self.mtk_worker.disable_update_button.connect(self.disable_update_button)
@@ -4589,6 +4650,33 @@ Method 2 - MTKclient: Direct technical installation
         else:
             self.status_label.setText("Errno2 error - please reinstall Innioasis Updater")
 
+        self.download_btn.setEnabled(True)  # Re-enable download button
+        self.settings_btn.setEnabled(True)  # Re-enable settings button
+
+    def on_usb_io_error_detected(self):
+        """Handle USB IO error from MTKWorker (USBError(5) - ROM incompatible with Method 1)"""
+        # Stop the MTK worker to prevent it from continuing to run
+        if self.mtk_worker:
+            self.mtk_worker.stop()
+            self.mtk_worker.wait()  # Wait for the worker to finish
+            self.mtk_worker = None
+
+        # Show process_ended.png and dialog
+        self.load_process_ended_image()
+        
+        reply = self.show_custom_message_box(
+            "question",
+            "ROM Incompatible with Method 1",
+            "This ROM was packaged using SP Flash Tool sparse images and is incompatible with Method 1.\n\n"
+            "Windows users can try installing this ROM using Method 3 (SP Flash Tool) instead.\n\n"
+            "All our listed Available Firmwares are packaged in a way where this will not be an issue.\n\n"
+            "Click OK to return to the main screen.",
+            QMessageBox.Ok,
+            QMessageBox.Ok
+        )
+
+        # Return to ready state
+        self.revert_to_startup_state()
         self.download_btn.setEnabled(True)  # Re-enable download button
         self.settings_btn.setEnabled(True)  # Re-enable settings button
 
@@ -5963,9 +6051,11 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
         self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+        self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
         self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
         self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
+        self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
         self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
         self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
         self.mtk_worker.disable_update_button.connect(self.disable_update_button)
