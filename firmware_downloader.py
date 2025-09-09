@@ -1548,7 +1548,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.images_loaded = False  # Track if images are loaded
         # Set default installation method based on platform
         if platform.system() == "Windows":
-            self.installation_method = "spflash"  # Default to Method 1 (SP Flash Tool) on Windows
+            self.installation_method = "spflash"  # Default to Method 1 (Guided) on Windows
         else:
             self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
         self.always_use_method = False  # Default to one-time use
@@ -3099,15 +3099,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         if driver_info['is_arm64']:
             # ARM64 Windows: Show ARM64-specific message
             status_bar.showMessage("Only 'Tools' is available on ARM64 Windows, please use WSLg, Linux or another computer for Software Installs")
-        elif not driver_info['can_install_firmware']:
-            # No drivers: Show driver requirement message
-            status_bar.showMessage("No drivers installed. Click 'Install Windows Drivers' to use Innioasis Updater.")
-        elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-            # Only MTK driver: Show limited functionality message
-            status_bar.showMessage("Limited functionality. Install USB Development Kit driver for full functionality.")
+        elif not driver_info['has_mtk_driver']:
+            # No MTK driver: Show driver requirement message
+            status_bar.showMessage("MTK USB Driver not installed. Click 'Install Windows Drivers' to use Innioasis Updater.")
         else:
-            # Both drivers available: Show ready message
-            status_bar.showMessage("Ready - All installation methods available")
+            # MTK driver available (with or without UsbDk): No status message needed
+            status_bar.showMessage("")
 
     def stop_mtk_processes(self):
         """Stop any running MTK processes"""
@@ -3352,6 +3349,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             if reply == QMessageBox.Cancel:
                 # Show appropriate buttons again when cancelled
                 self.show_appropriate_buttons_for_spflash()
+                # Show left panel again when cancelled
+                self.show_left_panel()
                 return
             
             # No need to stop MTK processes since Method 3 uses flash_tool.exe directly
@@ -3364,6 +3363,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             if not flash_tool_exe.exists():
                 # Show appropriate buttons again when flash tool is missing
                 self.show_appropriate_buttons_for_spflash()
+                # Show left panel again when flash tool is missing
+                self.show_left_panel()
                 QMessageBox.critical(
                     self,
                     "Flash Tool Not Found",
@@ -3374,6 +3375,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             if not install_rom_xml.exists():
                 # Show appropriate buttons again when XML is missing
                 self.show_appropriate_buttons_for_spflash()
+                # Show left panel again when XML is missing
+                self.show_left_panel()
                 QMessageBox.critical(
                     self,
                     "Install ROM XML Not Found",
@@ -3395,6 +3398,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Hide inappropriate buttons for SP Flash Tool method
             self.hide_inappropriate_buttons_for_spflash()
             
+            # Hide left panel for SP Flash Tool installation to focus user attention on instructions
+            self.hide_left_panel()
+            
             # Disable remaining buttons during installation
             self.settings_btn.setEnabled(False)
             
@@ -3405,6 +3411,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error starting Method 3: {e}")
             # Show appropriate buttons again in case of error
             self.show_appropriate_buttons_for_spflash()
+            # Show left panel again in case of error
+            self.show_left_panel()
             QMessageBox.critical(
                 self,
                 "Method 3 Error",
@@ -3416,6 +3424,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             # Show appropriate buttons for SP Flash Tool method
             self.show_appropriate_buttons_for_spflash()
+            
+            # Show left panel again after installation
+            self.show_left_panel()
             
             # Re-enable buttons
             self.settings_btn.setEnabled(True)
@@ -3901,17 +3912,17 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 # Both drivers available: All methods (Windows order: SP Flash Tool first, then Guided/MTKclient)
-                self.method_combo.addItem("Method 1 - SP Flash Tool", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash Tool (Alternative)", "spflash4")
+                self.method_combo.addItem("Method 1 - Guided", "spflash")
+                self.method_combo.addItem("Method 2 - SP Flash (advanced)", "spflash4")
                 self.method_combo.addItem("Method 3 - Guided", "guided")
-                self.method_combo.addItem("Method 4 - MTKclient", "mtkclient")
+                self.method_combo.addItem("Method 4 - MTKclient (advanced)", "mtkclient")
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 # Only MTK driver: Only Method 1 and 2 (SP Flash Tool methods)
-                self.method_combo.addItem("Method 1 - SP Flash Tool (Only available method)", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash Tool (Alternative)", "spflash4")
+                self.method_combo.addItem("Method 1 - Guided (Only available method)", "spflash")
+                self.method_combo.addItem("Method 2 - SP Flash (advanced)", "spflash4")
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 # Only UsbDk driver: Only Method 4 (MTKclient)
-                self.method_combo.addItem("Method 4 - MTKclient (Only available method)", "mtkclient")
+                self.method_combo.addItem("Method 4 - MTKclient (advanced) (Only available method)", "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
@@ -3959,20 +3970,20 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
-Method 1 - SP Flash Tool: Guided manufacturer's tool (Windows only)
-Method 2 - SP Flash Tool: Alternative SP Flash Tool method (Windows only)
+Method 1 - Guided: Step-by-step with visual guidance (Windows only)
+Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
 Method 3 - Guided: Step-by-step with visual guidance
-Method 4 - MTKclient: Direct technical installation
+Method 4 - MTKclient (advanced): Direct technical installation
                 """)
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
-Method 1 - SP Flash Tool: Guided manufacturer's tool (Windows only)
-Method 2 - SP Flash Tool: Alternative SP Flash Tool method (Windows only)
+Method 1 - Guided: Step-by-step with visual guidance (Windows only)
+Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
 Note: Install USB Development Kit driver to enable Methods 3 and 4
                 """)
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
-Method 4 - MTKclient: Direct technical installation (Only available method)
+Method 4 - MTKclient (advanced): Direct technical installation (Only available method)
 Note: Install MediaTek SP Driver to enable Methods 1, 2, and 3
                 """)
             else:
@@ -3984,10 +3995,10 @@ More methods will become available if you install the MediaTek SP Driver and USB
                 """)
         elif platform.system() == "Windows":
             desc_text.setPlainText("""
-Method 1 - SP Flash Tool: Guided manufacturer's tool (Windows only)
-Method 2 - SP Flash Tool: Alternative SP Flash Tool method (Windows only)
+Method 1 - Guided: Step-by-step with visual guidance (Windows only)
+Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
 Method 3 - Guided: Step-by-step with visual guidance
-Method 4 - MTKclient: Direct technical installation
+Method 4 - MTKclient (advanced): Direct technical installation
             """)
         else:
             desc_text.setPlainText("""
@@ -4478,7 +4489,7 @@ Method 2 - MTKclient: Direct technical installation
                         delattr(self, '_original_installation_method')
             # Use defaults if loading fails
             if platform.system() == "Windows":
-                self.installation_method = "spflash"  # Default to Method 1 (SP Flash Tool) on Windows
+                self.installation_method = "spflash"  # Default to Method 1 (Guided) on Windows
             else:
                 self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
             self.always_use_method = False
@@ -6282,26 +6293,26 @@ Method 2 - MTKclient: Direct technical installation
         if platform.system() == "Windows":
             # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
             if method == "spflash":
-                # Method 1: SP Flash Tool (guided) - same as pressing "Try Method 3" in troubleshooting
-                silent_print("=== RUNNING SP FLASH TOOL METHOD 1 ===")
+                # Method 1: Guided - same as pressing "Try Method 3" in troubleshooting
+                silent_print("=== RUNNING GUIDED METHOD 1 ===")
                 # Show Method 3 image and launch SP Flash Tool
                 self.load_method3_image()
                 self.try_method_3()
             elif method == "spflash4":
-                # Method 2: SP Flash Tool Alternative - same as pressing "Try Method 4" in troubleshooting
-                silent_print("=== RUNNING SP FLASH TOOL METHOD 2 ===")
+                # Method 2: SP Flash (advanced) - same as pressing "Try Method 4" in troubleshooting
+                silent_print("=== RUNNING SP FLASH (ADVANCED) METHOD 2 ===")
                 # Show Method 4 image and launch SP Flash Tool Alternative
                 self.load_method4_image()
                 self.try_method_4()
             elif method == "guided":
-                # Method 3: Normal guided process
+                # Method 3: Guided process
                 silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 3) ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
                 self.run_mtk_command()
             elif method == "mtkclient":
-                # Method 4: MTKclient method - same as pressing "Try Method 2" in troubleshooting
-                silent_print("=== RUNNING MTKCLIENT METHOD 4 ===")
+                # Method 4: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
+                silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 4 ===")
                 # Show Method 2 image and launch recovery firmware install
                 self.load_method2_image()
                 self.show_troubleshooting_instructions()
@@ -6636,11 +6647,11 @@ Method 2 - MTKclient: Direct technical installation
             if platform.system() == "Windows":
                 # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
                 if method == "spflash":
-                    # Method 1: SP Flash Tool (Windows only)
+                    # Method 1: Guided (Windows only)
                     remove_installation_marker()
                     self.try_method_3()
                 elif method == "spflash4":
-                    # Method 2: SP Flash Tool Alternative (Windows only)
+                    # Method 2: SP Flash (advanced) (Windows only)
                     remove_installation_marker()
                     self.try_method_4()
                 elif method == "guided":
@@ -6648,7 +6659,7 @@ Method 2 - MTKclient: Direct technical installation
                     # Don't clear marker here - it will be cleared after successful installation
                     self.show_unplug_prompt_and_retry()
                 elif method == "mtkclient":
-                    # Method 4: Same as pressing Try Method 2
+                    # Method 4: MTKclient (advanced) - Same as pressing Try Method 2
                     remove_installation_marker()
                     self.show_troubleshooting_instructions()
             else:
@@ -7193,8 +7204,8 @@ read -n 1
         
         # Summary of driver combinations:
         # - Both drivers: All 4 methods available (SP Flash Tool first, then Guided/MTKclient)
-        # - MTK only: Method 1 and 2 (SP Flash Tool) only
-        # - UsbDk only: Method 4 (MTKclient) only  
+        # - MTK only: Method 1 and 2 (Guided and SP Flash advanced) only
+        # - UsbDk only: Method 4 (MTKclient advanced) only  
         # - No drivers: No methods available
         # - ARM64: No methods available (firmware download only)
         
