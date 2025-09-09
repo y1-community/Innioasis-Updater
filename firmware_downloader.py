@@ -1553,6 +1553,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
         self.always_use_method = False  # Default to one-time use
         self.debug_mode = False  # Default debug mode disabled
+        self.last_attempted_method = None  # Track the last attempted installation method
         
         # Initialize shortcut settings with defaults (Windows only)
         if platform.system() == "Windows":
@@ -2462,9 +2463,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         clicked_button = msg_box.clickedButton()
         
         if clicked_button == try_again_btn:
-            # Try Again - use selected installation method from settings
+            # Try Again - use the last attempted method instead of default method
             remove_installation_marker()
-            method = getattr(self, 'installation_method', 'guided')
+            method = getattr(self, 'last_attempted_method', getattr(self, 'installation_method', 'guided'))
             if platform.system() == "Windows":
                 # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
                 if method == "spflash":
@@ -2502,10 +2503,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         elif clicked_button == try_method2_btn and try_method2_btn:
             # Clear the marker and launch Method 2 troubleshooting
             remove_installation_marker()
+            self.last_attempted_method = "mtkclient"  # Track attempted method
             self.show_troubleshooting_instructions()
         elif clicked_button == try_method3_btn and try_method3_btn:
             # Clear the marker and launch Method 3 troubleshooting
             remove_installation_marker()
+            self.last_attempted_method = "spflash"  # Track attempted method
             self.try_method_3()
         elif clicked_button == stop_install_btn:
             # Stop install and return to ready state
@@ -6290,6 +6293,9 @@ Method 2 - MTKclient: Direct technical installation
         always_use = getattr(self, 'always_use_method', False)
         silent_print(f"Handling installation method: {method} (always use: {always_use})")
         
+        # Store the attempted method for "Try Again" functionality
+        self.last_attempted_method = method
+        
         if platform.system() == "Windows":
             # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
             if method == "spflash":
@@ -6641,9 +6647,9 @@ Method 2 - MTKclient: Direct technical installation
         clicked_button = msg_box.clickedButton()
         
         if clicked_button == try_again_btn:
-            # Try Again - use selected installation method from settings
+            # Try Again - use the last attempted method instead of default method
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
-            method = getattr(self, 'installation_method', 'guided')
+            method = getattr(self, 'last_attempted_method', getattr(self, 'installation_method', 'guided'))
             if platform.system() == "Windows":
                 # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
                 if method == "spflash":
@@ -6680,18 +6686,21 @@ Method 2 - MTKclient: Direct technical installation
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
             # Clear the marker and show troubleshooting instructions
             remove_installation_marker()
+            self.last_attempted_method = "mtkclient"  # Track attempted method
             self.show_troubleshooting_instructions()
         elif clicked_button == try_method3_btn and try_method3_btn:
             # Try Method 3 (SP Flash Tool)
             # No need to terminate MTK processes since Method 3 uses flash_tool.exe directly
             # Clear the marker and start SP Flash Tool (Windows only)
             remove_installation_marker()
+            self.last_attempted_method = "spflash"  # Track attempted method
             self.try_method_3()
         elif clicked_button == try_method4_btn and try_method4_btn:
             # Try Method 4 (SP Flash Tool Alternative)
             # No need to terminate MTK processes since Method 4 uses flash_tool.exe directly
             # Clear the marker and start SP Flash Tool Alternative (Windows only)
             remove_installation_marker()
+            self.last_attempted_method = "spflash4"  # Track attempted method
             self.try_method_4()
         elif clicked_button == stop_install_btn:
             # Stop install and return to ready state
