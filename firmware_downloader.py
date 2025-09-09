@@ -916,29 +916,42 @@ class MTKWorker(QThread):
             progress_detected = False
             last_progress_time = None
             interruption_timeout = 3.0  # 3 seconds timeout
+            
+            # Track installation state
+            active_installation_started = False
+            last_wrote_line_seen = False
 
             # Start 1.5 second timer as fallback to show initsteps if no empty line is detected
             self.initsteps_timer = QTimer()
             self.initsteps_timer.setSingleShot(True)
-            self.initsteps_timer.timeout.connect(lambda: self.show_initsteps_image.emit() if not first_empty_line_detected else None)
+            # Timer callback will be checked inside the main loop where active_installation_started is available
             self.initsteps_timer.start(1500)  # 1.5 seconds
 
             while True:
-                # Check for timeout
+                # Check for timeout - but don't terminate during active installation
                 if time.time() - process_start_time > process_timeout:
-                    silent_print("MTK process timeout - terminating")
-                    process.terminate()
-                    break
+                    if active_installation_started:
+                        silent_print("MTK process timeout during active installation - continuing to wait for completion")
+                        # Don't terminate during active installation, just continue waiting
+                    else:
+                        silent_print("MTK process timeout - terminating")
+                        process.terminate()
+                        break
                 
                 # Check if we need to update status due to lack of output
                 current_time = time.time()
                 if current_time - last_status_update > status_check_interval:
                     # If no output for a while, emit empty status to trigger instruction message
                     # But only if we're not in a specific status state like "Please wait..." or active install
-                    if current_status not in ["Please wait...", "Please disconnect your Y1 and restart the app"] and not progress_detected:
+                    if current_status not in ["Please wait...", "Please disconnect your Y1 and restart the app"] and not progress_detected and not active_installation_started:
                         self.status_updated.emit("")
                         self.show_instructions_image.emit()
                         last_status_update = current_time
+                
+                # Check if initsteps timer has expired and show initsteps if appropriate
+                if hasattr(self, 'initsteps_timer') and not self.initsteps_timer.isActive() and not first_empty_line_detected and not active_installation_started:
+                    self.show_initsteps_image.emit()
+                    first_empty_line_detected = True  # Mark as detected to prevent multiple emissions
                     
                 output = process.stdout.readline()
                 if output == '' and process.poll() is not None:
@@ -952,10 +965,18 @@ class MTKWorker(QThread):
                     # Check for first empty line from mtk.py and emit initsteps signal
                     if not first_empty_line_detected and line == "":
                         first_empty_line_detected = True
-                        self.show_initsteps_image.emit()
+                        # Only show initsteps if not in active installation
+                        if not active_installation_started:
+                            self.show_initsteps_image.emit()
 
                     # Fix progress bar characters for platform compatibility
                     fixed_line = self.fix_progress_bar_chars(line)
+                    
+                    # CRITICAL: Set active_installation_started IMMEDIATELY when first progress or wrote line is detected
+                    # This must happen before any other processing to prevent initsteps.png from showing
+                    if not active_installation_started and ("progress" in line.lower() or line.lower().startswith("wrote")):
+                        active_installation_started = True
+                        silent_print("Active installation started - process will not be terminated until completion")
                     
                     # Show debug output in separate window if debug mode is enabled
                     if self.debug_mode and self.debug_window:
@@ -963,28 +984,38 @@ class MTKWorker(QThread):
                     
                     # Check if this is empty status or dots (awaiting connection) and show installing.png
                     if device_detected and (fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == ""):
-                        self.show_installing_image.emit()
+                        # Only show installing.png if we're in active installation state
+                        if active_installation_started:
+                            self.show_installing_image.emit()
                         # Mark initsteps phase start time
                         if initsteps_start_time is None:
                             initsteps_start_time = time.time()
                     
                     # Handle status message replacement for blank/dots output
                     if fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == "":
-                        # When mtk.py only displays blank output or dots/periods, show instruction message
-                        self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
-                        current_status = "Please follow the instructions below to install the software on your Y1"
-                        # Only show initsteps image if we're not in an active install (no progress detected)
-                        if not progress_detected:
-                            self.show_instructions_image.emit()
-                        last_status_update = time.time()  # Update status time
+                        # Only show instruction message if not in active installation
+                        if not active_installation_started:
+                            # When mtk.py only displays blank output or dots/periods, show instruction message
+                            self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
+                            current_status = "Please follow the instructions below to install the software on your Y1"
+                            # Only show initsteps image if we're not in an active install (no progress detected) AND not in active installation state
+                            if not progress_detected and not active_installation_started:
+                                self.show_instructions_image.emit()
+                            last_status_update = time.time()  # Update status time
                         
-                        # Check if we've been in initsteps phase too long
+                        # Check if we've been in initsteps phase too long - but not during active installation
                         if initsteps_start_time is not None and (time.time() - initsteps_start_time) > initsteps_timeout:
-                            # Kill the process and restart
-                            if process.poll() is None:
-                                process.terminate()
-                            self.show_try_again_dialog.emit()
-                            break
+                            # Only kill the process if we're not in active installation state
+                            if not active_installation_started:
+                                # Kill the process and restart
+                                if process.poll() is None:
+                                    process.terminate()
+                                self.show_try_again_dialog.emit()
+                                break
+                            else:
+                                # During active installation, just reset the timer to prevent false termination
+                                initsteps_start_time = time.time()
+                                silent_print("Reset initsteps timer during active installation")
                     else:
                         # Show latest output in status area (no extra whitespace)
                         self.status_updated.emit(f"MTK: {fixed_line}")
@@ -1051,15 +1082,17 @@ class MTKWorker(QThread):
                         if ".........." in line:
                             # This indicates slow USB connection, show appropriate status - here is where we'll implement the automatic restart of the firmware installation for Method 1 - this makes more sense than the app freezing - which it almost always does in scenarios where this message will be shown
                             self.status_updated.emit("USB connection timed out. Please force quit the app if not responding and restart it.")
-                            # Show initsteps image for instruction message
-                            self.show_instructions_image.emit()
+                            # Show initsteps image for instruction message - but not during active installation
+                            if not active_installation_started:
+                                self.show_instructions_image.emit()
                             last_status_update = time.time()  # Update status time
                         else:
                             # Just "Preloader" without dots indicates freeze state
                             self.status_updated.emit("MTK: Preloader")
                             current_status = "MTK: Preloader"  # Track current status
-                            # Show initsteps image for instruction message
-                            self.show_instructions_image.emit()
+                            # Show initsteps image for instruction message - but not during active installation
+                            if not active_installation_started:
+                                self.show_instructions_image.emit()
                             last_status_update = time.time()  # Update status time
                     
                     # Check for BROM status (indicates waiting for device)
@@ -1085,18 +1118,25 @@ class MTKWorker(QThread):
                         self.show_installing_image.emit()
                         # Disable update button when MTK installation starts
                         self.disable_update_button.emit()
-                    # Track progress for interruption detection
-                    progress_detected = True
-                    last_progress_time = time.time()
-                    # Don't emit status message - let MTK output be displayed clearly
-                    
-                    # Check for Progress or Wrote lines to show installing.png and display output in status
-                    if "progress" in line.lower() or line.lower().startswith("wrote"):
-                        self.show_installing_image.emit()
-                        # Display the actual mtk.py output in status field
-                        self.status_updated.emit(f"MTK: {fixed_line}")
-                        current_status = f"MTK: {fixed_line}"
-                        last_status_update = time.time()
+            # Track progress for interruption detection
+            progress_detected = True
+            last_progress_time = time.time()
+            # Don't emit status message - let MTK output be displayed clearly
+            
+            # Check for Progress or Wrote lines to show installing.png and display output in status
+            if "progress" in line.lower() or line.lower().startswith("wrote"):
+                self.show_installing_image.emit()
+                # Display the actual mtk.py output in status field
+                self.status_updated.emit(f"MTK: {fixed_line}")
+                current_status = f"MTK: {fixed_line}"
+                last_status_update = time.time()
+                
+                # active_installation_started is now set immediately when progress/wrote is first detected above
+                
+                # Track if we've seen a "Wrote" line
+                if line.lower().startswith("wrote"):
+                    last_wrote_line_seen = True
+                    silent_print("Wrote line detected - installation may be completing")
 
                     # Only show presteps if no device detected and no errors
                     if not device_detected and not usb_connection_issue_detected and not handshake_error_detected and not errno2_error_detected and not backend_error_detected and not keyboard_interrupt_detected:
@@ -1106,11 +1146,15 @@ class MTKWorker(QThread):
             if handshake_error_detected or errno2_error_detected or backend_error_detected or keyboard_interrupt_detected:
                 # Continue reading output to show user what's happening
                 while True:
-                    # Check for timeout
+                    # Check for timeout - but don't terminate during active installation
                     if time.time() - process_start_time > process_timeout:
-                        silent_print("MTK process timeout during error reading - terminating")
-                        process.terminate()
-                        break
+                        if active_installation_started:
+                            silent_print("MTK process timeout during active installation error reading - continuing to wait for completion")
+                            # Don't terminate during active installation, just continue waiting
+                        else:
+                            silent_print("MTK process timeout during error reading - terminating")
+                            process.terminate()
+                            break
                         
                     output = process.stdout.readline()
                     if output == '' and process.poll() is not None:
@@ -1140,7 +1184,16 @@ class MTKWorker(QThread):
                     time_since_last_progress = time.time() - last_progress_time
                     if time_since_last_progress > interruption_timeout:
                         # Process was interrupted - no progress for 3+ seconds
-                        successful_completion = False
+                        # But only if we're not in active installation state
+                        if active_installation_started:
+                            # During active installation, wait longer for completion
+                            if time_since_last_progress > (interruption_timeout * 2):  # Double the timeout during active installation
+                                successful_completion = False
+                            else:
+                                # Still in active installation, consider it successful if process exited normally
+                                successful_completion = (process.returncode == 0)
+                        else:
+                            successful_completion = False
                     else:
                         # Check if the last progress was 100% or if process completed normally
                         # Also check if the last line begins with "wrote" (indicates successful completion)
@@ -4659,6 +4712,13 @@ Method 2 - MTKclient: Direct technical installation
 
     def on_usb_io_error_detected(self):
         """Handle USB IO error from MTKWorker (USBError(5) - ROM incompatible with Method 1)"""
+        # Only show dialog once per session
+        if hasattr(self, '_rom_incompatible_dialog_shown') and self._rom_incompatible_dialog_shown:
+            return
+        
+        # Mark dialog as shown
+        self._rom_incompatible_dialog_shown = True
+        
         # Stop the MTK worker to prevent it from continuing to run
         if self.mtk_worker:
             self.mtk_worker.stop()
@@ -4668,21 +4728,30 @@ Method 2 - MTKclient: Direct technical installation
         # Show process_ended.png and dialog
         self.load_process_ended_image()
         
-        reply = self.show_custom_message_box(
-            "question",
-            "ROM Incompatible with Method 1",
-            "This ROM was packaged using SP Flash Tool sparse images and is incompatible with Method 1.\n\n"
-            "Windows users can try installing this ROM using Method 3 (SP Flash Tool) instead.\n\n"
-            "All our listed Available Firmwares are packaged in a way where this will not be an issue.\n\n"
-            "Click OK to return to the main screen.",
-            QMessageBox.Ok,
-            QMessageBox.Ok
-        )
+        # Use a timer to show the comprehensive dialog after a short delay so user sees the process_ended image
+        QTimer.singleShot(2000, self.show_install_error_dialog)
 
-        # Return to ready state
-        self.revert_to_startup_state()
-        self.download_btn.setEnabled(True)  # Re-enable download button
-        self.settings_btn.setEnabled(True)  # Re-enable settings button
+    def ensure_mtk_process_terminated(self):
+        """Ensure MTK process is properly terminated before starting new installation"""
+        try:
+            # Stop any running MTK worker
+            if hasattr(self, 'mtk_worker') and self.mtk_worker:
+                self.mtk_worker.stop()
+                self.mtk_worker.wait()
+                self.mtk_worker = None
+                silent_print("MTK worker terminated")
+            
+            # Additional cleanup for any remaining processes
+            if platform.system() == "Windows":
+                # Kill any remaining mtk.py processes on Windows
+                try:
+                    subprocess.run(['taskkill', '/f', '/im', 'python.exe', '/fi', 'WINDOWTITLE eq mtk.py*'], 
+                                  capture_output=True, timeout=5)
+                except:
+                    pass
+        except Exception as e:
+            silent_print(f"Error terminating MTK process: {e}")
+
 
     def on_backend_error_detected(self):
         """Handle backend error from MTKWorker"""
@@ -5975,12 +6044,18 @@ Method 2 - MTKclient: Direct technical installation
             silent_print(f"Warning: Could not terminate all conflicting processes: {e}")
 
     def show_install_error_dialog(self):
-        """Show the install error dialog with troubleshooting options"""
-        # Show troubleshooting dialog on all platforms
+        """Show the comprehensive install error dialog with troubleshooting options"""
+        # Show comprehensive troubleshooting dialog on all platforms
         msg_box = QMessageBox(self)
-        msg_box.setWindowTitle("Install Error")
-        msg_box.setText("Something interrupted the firmware install process, would you like to try a troubleshooting run?")
-        msg_box.setIcon(QMessageBox.Critical)
+        msg_box.setWindowTitle("Installation Issue")
+        msg_box.setText("The firmware installation encountered an issue. This could be due to:\n\n"
+                       "• USB cable was disconnected during installation\n"
+                       "• Connection issue between device and computer\n"
+                       "• Problem with the ROM file used\n"
+                       "• Driver issues or need to reboot PC after installing drivers\n"
+                       "• USB was connected too early during installation\n\n"
+                       "Would you like to try a different approach?")
+        msg_box.setIcon(QMessageBox.Warning)
         
         # Create custom buttons in the desired order: Try Again, Try Method 2, Stop Install, Exit
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
@@ -6003,6 +6078,7 @@ Method 2 - MTKclient: Direct technical installation
         
         if clicked_button == try_again_btn:
             # Try Again - use selected installation method from settings
+            self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
             method = getattr(self, 'installation_method', 'guided')
             if method == "guided":
                 # Method 1: Show unplug Y1 prompt and retry normal installation
@@ -6020,10 +6096,14 @@ Method 2 - MTKclient: Direct technical installation
                 # Fallback to guided method
                 self.show_unplug_prompt_and_retry()
         elif clicked_button == try_method2_btn:
+            # Try Method 2 (MTKclient)
+            self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
             # Clear the marker and show troubleshooting instructions
             remove_installation_marker()
             self.show_troubleshooting_instructions()
         elif clicked_button == try_method3_btn and try_method3_btn:
+            # Try Method 3 (SP Flash Tool)
+            self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
             # Clear the marker and open SP Flash Tool shortcut (Windows only)
             remove_installation_marker()
             self.try_method_3()
