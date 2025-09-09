@@ -3340,11 +3340,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Show dialog with Method 3 instructions
             reply = QMessageBox.question(
                 self,
-                "SP Flash Tool Instructions - Method 3",
-                "After you press OK:\n"
-                "Power off the Y1 device (or use a pin or paperclip to press the hidden button next to the earphone port), then insert the USB cable.\n\n"
-                "This method uses the manufacturer's SP Flash Tool with guided monitoring.\n\n"
-                "Click OK when ready to start SP Flash Tool.",
+                "Software Install instructions",
+                "Power off your Y1:\n"
+                "Before inserting cable, Press OK.\n\n"
+                "THEN insert the USB cable.\n\n"
+                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).",
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok
             )
