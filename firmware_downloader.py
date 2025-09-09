@@ -216,7 +216,7 @@ class ConfigDownloader:
     """Downloads and parses configuration files from GitHub with caching"""
 
     def __init__(self):
-        self.config_url = "https://innioasis.app/config.ini"
+        self.config_url = "https://raw.githubusercontent.com/team-slide/Y1-helper/refs/heads/master/config.ini"
         self.manifest_url = "https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml"
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
@@ -827,11 +827,13 @@ class MTKWorker(QThread):
     show_installing_image = Signal()
     show_reconnect_image = Signal()
     show_presteps_image = Signal()
+    show_initsteps_image = Signal()  # New signal for showing initsteps after first empty line
     mtk_completed = Signal(bool, str)
     handshake_failed = Signal()  # New signal for handshake failures
     errno2_detected = Signal()   # New signal for errno2 errors
     backend_error_detected = Signal()  # New signal for backend errors
     keyboard_interrupt_detected = Signal()  # New signal for keyboard interrupts
+    show_try_again_dialog = Signal()  # New signal for showing try again dialog
     disable_update_button = Signal()  # Signal to disable update button during MTK installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
@@ -840,6 +842,7 @@ class MTKWorker(QThread):
         self.should_stop = False
         self.debug_mode = debug_mode
         self.debug_window = debug_window
+        self.initsteps_timer = None  # Timer for 1.5 second delay fallback
         
         # Platform-specific progress bar characters
         if platform.system() == "Windows":
@@ -884,6 +887,10 @@ class MTKWorker(QThread):
                 bufsize=0,
                 universal_newlines=True
             )
+            
+            # Ensure process doesn't hang indefinitely
+            process_timeout = 300  # 5 minutes timeout
+            process_start_time = time.time()
 
             device_detected = False
             flashing_started = False
@@ -894,19 +901,41 @@ class MTKWorker(QThread):
             usb_connection_issue_detected = False
             last_output_line = ""
             successful_completion = False
+            first_empty_line_detected = False  # Track if we've seen the first empty line
+            initsteps_start_time = None  # Track when initsteps phase started
+            initsteps_timeout = 12  # 12 seconds timeout for initsteps phase
 
             # Interruption detection variables
             progress_detected = False
             last_progress_time = None
             interruption_timeout = 3.0  # 3 seconds timeout
 
+            # Start 1.5 second timer as fallback to show initsteps if no empty line is detected
+            self.initsteps_timer = QTimer()
+            self.initsteps_timer.setSingleShot(True)
+            self.initsteps_timer.timeout.connect(lambda: self.show_initsteps_image.emit() if not first_empty_line_detected else None)
+            self.initsteps_timer.start(1500)  # 1.5 seconds
+
             while True:
+                # Check for timeout
+                if time.time() - process_start_time > process_timeout:
+                    silent_print("MTK process timeout - terminating")
+                    process.terminate()
+                    break
+                    
                 output = process.stdout.readline()
                 if output == '' and process.poll() is not None:
                     break
                 if output:
+                    # Small delay to keep GUI responsive
+                    time.sleep(0.01)  # 10ms delay
                     line = output.strip()
                     last_output_line = line  # Track the last output line
+
+                    # Check for first empty line from mtk.py and emit initsteps signal
+                    if not first_empty_line_detected and line == "":
+                        first_empty_line_detected = True
+                        self.show_initsteps_image.emit()
 
                     # Fix progress bar characters for platform compatibility
                     fixed_line = self.fix_progress_bar_chars(line)
@@ -915,8 +944,30 @@ class MTKWorker(QThread):
                     if self.debug_mode and self.debug_window:
                         self.debug_window.append_output(f"MTK: {fixed_line}")
                     
-                    # Show latest output in status area (no extra whitespace)
-                    self.status_updated.emit(f"MTK: {fixed_line}")
+                    # Check if this is empty status or dots (awaiting connection) and show installing.png
+                    if device_detected and (fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == ""):
+                        self.show_installing_image.emit()
+                        # Mark initsteps phase start time
+                        if initsteps_start_time is None:
+                            initsteps_start_time = time.time()
+                    
+                    # Handle status message replacement for blank/dots output
+                    if fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == "":
+                        # Don't show MTK: for blank/dots - let update_status handle the replacement
+                        self.status_updated.emit("")
+                        
+                        # Check if we've been in initsteps phase too long
+                        if initsteps_start_time is not None and (time.time() - initsteps_start_time) > initsteps_timeout:
+                            # Kill the process and restart
+                            if process.poll() is None:
+                                process.terminate()
+                            self.show_try_again_dialog.emit()
+                            break
+                    else:
+                        # Show latest output in status area (no extra whitespace)
+                        self.status_updated.emit(f"MTK: {fixed_line}")
+                        # Reset initsteps timer when we get real output
+                        initsteps_start_time = None
 
                     # Check for errno2 error
                     if "errno2" in line.lower():
@@ -966,10 +1017,20 @@ class MTKWorker(QThread):
                         self.keyboard_interrupt_detected.emit()
                         # Don't break here - continue reading output
 
+                    # Check for Preloader status (indicates slow USB connection)
+                    if "preloader" in line.lower() and ".........." in line:
+                        # This indicates slow USB connection, show appropriate status
+                        self.status_updated.emit("Now please follow the instructions displayed below.")
+                    
+                    # Check for BROM status (indicates waiting for device)
+                    if "brom" in line.lower():
+                        # This indicates waiting for device, show please wait message
+                        self.status_updated.emit("Please wait...")
+                        # Don't treat this as an error, just continue
+
                     if ".Port - Device detected :)" in line:
                         device_detected = True
-                        # Switch to installing.png immediately when device is detected
-                        self.show_installing_image.emit()
+                        # Don't switch to installing.png yet - wait for proper timing
 
                     # Check if flashing has started (look for write operations)
                     if device_detected and ("Write" in line or "Progress:" in line) and not flashing_started:
@@ -993,10 +1054,18 @@ class MTKWorker(QThread):
             if handshake_error_detected or errno2_error_detected or backend_error_detected or keyboard_interrupt_detected:
                 # Continue reading output to show user what's happening
                 while True:
+                    # Check for timeout
+                    if time.time() - process_start_time > process_timeout:
+                        silent_print("MTK process timeout during error reading - terminating")
+                        process.terminate()
+                        break
+                        
                     output = process.stdout.readline()
                     if output == '' and process.poll() is not None:
                         break
                     if output:
+                        # Small delay to keep GUI responsive
+                        time.sleep(0.01)  # 10ms delay
                         line = output.strip()
                         # Fix progress bar characters for platform compatibility
                         fixed_line = self.fix_progress_bar_chars(line)
@@ -1035,8 +1104,20 @@ class MTKWorker(QThread):
                         successful_completion = False
 
         except Exception as e:
+            silent_print(f"MTK Worker error: {str(e)}")
             self.status_updated.emit(f"MTK error: {str(e)}")
             successful_completion = False
+            # Ensure process is terminated on error
+            try:
+                if 'process' in locals() and process.poll() is None:
+                    process.terminate()
+            except:
+                pass
+
+        # Clean up timer
+        if self.initsteps_timer:
+            self.initsteps_timer.stop()
+            self.initsteps_timer = None
 
         # Enable update button when returning to ready state
         self.enable_update_button.emit()
@@ -1305,6 +1386,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Ensure Innioasis Updater shortcuts are properly set up
             self.ensure_innioasis_updater_shortcuts()
+            self.ensure_innioasis_toolkit_shortcuts()
                 
         except Exception as e:
             silent_print(f"Error during shortcut cleanup: {e}")
@@ -1454,6 +1536,43 @@ class FirmwareDownloaderGUI(QMainWindow):
                             
         except Exception as e:
             silent_print(f"Error ensuring Innioasis Updater shortcuts: {e}")
+
+    def ensure_innioasis_toolkit_shortcuts(self):
+        """Ensure Innioasis Toolkit shortcuts are properly set up"""
+        try:
+            current_dir = Path.cwd()
+            innioasis_toolkit_shortcut = current_dir / "Innioasis Toolkit.lnk"
+            
+            if not innioasis_toolkit_shortcut.exists():
+                silent_print("Innioasis Toolkit.lnk not found in current directory")
+                return
+            
+            # Check desktop
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Toolkit.lnk"
+            
+            if not desktop_shortcut.exists():
+                try:
+                    shutil.copy2(innioasis_toolkit_shortcut, desktop_shortcut)
+                    silent_print(f"Added Innioasis Toolkit shortcut to desktop")
+                except Exception as e:
+                    silent_print(f"Error adding desktop shortcut: {e}")
+            
+            # Get comprehensive list of start menu paths
+            start_menu_paths = self.get_all_start_menu_paths()
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    start_menu_shortcut = start_menu_path / "Innioasis Toolkit.lnk"
+                    if not start_menu_shortcut.exists():
+                        try:
+                            shutil.copy2(innioasis_toolkit_shortcut, start_menu_shortcut)
+                            silent_print(f"Added Innioasis Toolkit shortcut to start menu: {start_menu_path}")
+                        except Exception as e:
+                            silent_print(f"Error adding start menu shortcut: {e}")
+                            
+        except Exception as e:
+            silent_print(f"Error ensuring Innioasis Toolkit shortcuts: {e}")
 
     def show_shortcut_cleanup_dialog(self, old_shortcuts):
         """Silently remove old shortcuts without user interaction"""
@@ -1682,6 +1801,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             message += "This will clean up all old Y1 Helper and related shortcuts and ensure you have:\n"
             message += "• Innioasis Updater.lnk on desktop\n"
+            message += "• Innioasis Toolkit.lnk on desktop\n"
             silent_print(f"Found {len(old_shortcuts)} old shortcuts and folders, proceeding with cleanup...")
             self.perform_comprehensive_cleanup(old_shortcuts)
                 
@@ -1717,6 +1837,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Now ensure proper shortcuts exist
             self.ensure_innioasis_updater_shortcuts()
+            self.ensure_innioasis_toolkit_shortcuts()
             
             # Show results silently
             if failed_items:
@@ -1726,7 +1847,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Successfully cleaned up {removed_count} old shortcuts and folders.")
                 silent_print("Your system now has:")
                 silent_print("• Innioasis Updater.lnk on desktop")
+                silent_print("• Innioasis Toolkit.lnk on desktop")
                 silent_print("• Innioasis Updater.lnk in Start Menu")
+                silent_print("• Innioasis Toolkit.lnk in Start Menu")
                 
         except Exception as e:
             silent_print(f"Error during cleanup: {e}")
@@ -1743,6 +1866,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Check if proper shortcuts already exist
             innioasis_updater_exists = False
             innioasis_y1_remote_exists = False
+            innioasis_toolkit_exists = False
             
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
@@ -1750,6 +1874,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         innioasis_updater_exists = True
                     if (start_menu_path / "Innioasis Y1 Remote Control.lnk").exists():
                         innioasis_y1_remote_exists = True
+                    if (start_menu_path / "Innioasis Toolkit.lnk").exists():
+                        innioasis_toolkit_exists = True
             
             # Copy missing shortcuts from current directory
             if not innioasis_updater_exists:
@@ -1771,6 +1897,17 @@ class FirmwareDownloaderGUI(QMainWindow):
                             dest_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
                             shutil.copy2(source_remote, dest_remote)
                             silent_print(f"Added Innioasis Y1 Remote Control.lnk to {start_menu_path}")
+                            break
+            
+            if not innioasis_toolkit_exists:
+                source_toolkit = current_dir / "Innioasis Toolkit.lnk"
+                if source_toolkit.exists():
+                    # Copy to first available start menu path
+                    for start_menu_path in start_menu_paths:
+                        if start_menu_path.exists():
+                            dest_toolkit = start_menu_path / "Innioasis Toolkit.lnk"
+                            shutil.copy2(source_toolkit, dest_toolkit)
+                            silent_print(f"Added Innioasis Toolkit.lnk to {start_menu_path}")
                             break
                             
         except Exception as e:
@@ -2591,6 +2728,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         splitter.addWidget(left_panel)
         splitter.addWidget(right_panel)
         splitter.setSizes([480, 720])  # Adjusted for 1220px total width
+        
+        # Store references for panel hiding/showing functionality
+        self.splitter = splitter
+        self.left_panel = left_panel
+        self.right_panel = right_panel
+        self.original_splitter_sizes = [480, 720]  # Store original sizes for restoration
+        self.panel_hidden = False  # Track panel state
 
         # Add Labs link at bottom right corner
         labs_layout = QHBoxLayout()
@@ -2684,6 +2828,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Load initial image
             self.load_presteps_image()
             
+            # Restore left panel to default state
+            self.show_left_panel()
+            
             # Update driver status bar if on Windows
             if platform.system() == "Windows":
                 self.create_driver_status_bar()
@@ -2737,6 +2884,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.mtk_worker.show_installing_image.connect(self.load_installing_image)
                 self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
                 self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
                 self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
                 self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
                 self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
@@ -2758,7 +2907,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def update_status(self, message):
         """Update the status label with a message"""
         if not message or message.strip() == "":
-            self.status_label.setText("Now please follow the instructions below")
+            self.status_label.setText("Now please follow the instructions displayed below.")
         elif message.startswith("MTK:") and (message.strip() == "MTK:" or 
                                               message.strip() == "MTK:..........." or 
                                               message.strip() == "MTK: ..........." or
@@ -2771,9 +2920,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                                               message.strip() == "MTK: ..." or
                                               message.strip() == "MTK: .." or
                                               message.strip() == "MTK: ." or
+                                              message.strip() == "MTK: " or  # Just "MTK: " with space
+                                              message.strip().startswith("MTK:...") or  # Lines beginning with dots
+                                              message.strip().startswith("MTK:  ") or  # Lines with just spaces
                                               len(message.strip()) <= 10):  # Very short MTK messages likely indicate waiting
-            # MTK is waiting for device connection
-            self.status_label.setText("Now please follow the instructions below")
+            # MTK is waiting for device connection or showing dots/spaces
+            self.status_label.setText("Now please follow the instructions displayed below.")
         else:
             self.status_label.setText(message)
 
@@ -2783,10 +2935,14 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Installation completed successfully")
             self.load_installed_image()
             remove_installation_marker()
+            # Restore left panel after successful installation
+            self.show_left_panel()
         else:
             self.status_label.setText(f"Installation failed: {message}")
             self.load_process_ended_image()
             remove_installation_marker()
+            # Restore left panel after failed installation
+            self.show_left_panel()
 
     def handle_handshake_failure(self):
         """Handle handshake failure"""
@@ -3633,6 +3789,14 @@ Method 2 - MTKclient: Direct technical installation
                 if not dest_y1_remote.exists():
                     shutil.copy2(source_y1_remote, dest_y1_remote)
                     silent_print(f"Created desktop shortcut: Innioasis Y1 Remote Control.lnk")
+            
+            # Create Innioasis Toolkit shortcut if it exists
+            source_toolkit = current_dir / "Innioasis Toolkit.lnk"
+            if source_toolkit.exists():
+                dest_toolkit = desktop_path / "Innioasis Toolkit.lnk"
+                if not dest_toolkit.exists():
+                    shutil.copy2(source_toolkit, dest_toolkit)
+                    silent_print(f"Created desktop shortcut: Innioasis Toolkit.lnk")
                     
         except Exception as e:
             silent_print(f"Error ensuring desktop shortcuts: {e}")
@@ -3687,6 +3851,14 @@ Method 2 - MTKclient: Direct technical installation
                         if not dest_y1_remote.exists():
                             shutil.copy2(source_y1_remote, dest_y1_remote)
                             silent_print(f"Created start menu shortcut: Innioasis Y1 Remote Control.lnk")
+                    
+                    # Create Innioasis Toolkit shortcut if it exists
+                    source_toolkit = current_dir / "Innioasis Toolkit.lnk"
+                    if source_toolkit.exists():
+                        dest_toolkit = start_menu_path / "Innioasis Toolkit.lnk"
+                        if not dest_toolkit.exists():
+                            shutil.copy2(source_toolkit, dest_toolkit)
+                            silent_print(f"Created start menu shortcut: Innioasis Toolkit.lnk")
                             
         except Exception as e:
             silent_print(f"Error ensuring start menu shortcuts: {e}")
@@ -4214,7 +4386,7 @@ Method 2 - MTKclient: Direct technical installation
         reply = QMessageBox.question(
             self,
             "Get Ready",
-            "Please ensure that your Y1 is NOT CONNECTED by USB and press OK, then follow the next instructions.",
+            "Please disconnect the USB from your Y1 and press OK, then follow the next instructions.",
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Cancel
         )
@@ -4227,10 +4399,14 @@ Method 2 - MTKclient: Direct technical installation
             self.cleanup_libusb_state()
 
         # Create installation marker to track progress
+        
         create_installation_marker()
 
-        # Load and display the init steps image
-        self.load_initsteps_image()
+        # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
+        self.load_presteps_image()
+        
+        # Hide left panel for Method 1 installation to focus user attention on instructions
+        self.hide_left_panel()
 
         # Start MTK worker
         # Create debug window if debug mode is enabled
@@ -4242,6 +4418,7 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
         self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
         self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
@@ -4274,6 +4451,8 @@ Method 2 - MTKclient: Direct technical installation
             cleanup_firmware_files()
             # Load and display installed.png for 30 seconds
             self.load_installed_image()
+            # Restore left panel after successful installation
+            self.show_left_panel()
 
             # Cancel any existing revert timer to prevent conflicts
             if hasattr(self, '_revert_timer') and self._revert_timer:
@@ -4289,6 +4468,8 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText(f"MTK command failed: {message}")
             # On Windows: First show process_ended.png image briefly, then show install error dialog
             self.load_process_ended_image()
+            # Restore left panel after failed installation
+            self.show_left_panel()
             
             # Use a timer to show the dialog after a short delay so user sees the process_ended image
             QTimer.singleShot(2000, self.show_install_error_dialog)
@@ -4367,6 +4548,7 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.show_installing_image.connect(self.load_installing_image)
             self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
             self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+            self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
             self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
             self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
             self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
@@ -4704,6 +4886,8 @@ Method 2 - MTKclient: Direct technical installation
 
         self._current_pixmap = self._presteps_pixmap
         self.set_image_with_aspect_ratio(self._presteps_pixmap)
+        # Flash border to highlight the new image
+        self.flash_image_border()
 
     def load_initsteps_image(self):
         """Load initsteps image with lazy loading and platform fallback."""
@@ -4720,6 +4904,8 @@ Method 2 - MTKclient: Direct technical installation
 
         self._current_pixmap = self._initsteps_pixmap
         self.set_image_with_aspect_ratio(self._initsteps_pixmap)
+        # Flash border to highlight the new image
+        self.flash_image_border()
 
     def load_installing_image(self):
         """Load installing image with lazy loading and web fallback"""
@@ -5088,6 +5274,9 @@ Method 2 - MTKclient: Direct technical installation
 
         # Load and display presteps.png (startup state)
         self.load_presteps_image()
+        
+        # Restore left panel to default state
+        self.show_left_panel()
 
         # Reset status
         self.status_label.setText("Ready")
@@ -5757,8 +5946,11 @@ Method 2 - MTKclient: Direct technical installation
         # Create installation marker to track progress
         create_installation_marker()
 
-        # Load and display the init steps image
-        self.load_initsteps_image()
+        # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
+        self.load_presteps_image()
+        
+        # Hide left panel for Method 1 installation to focus user attention on instructions
+        self.hide_left_panel()
 
         # Start MTK worker
         # Create debug window if debug mode is enabled
@@ -5770,6 +5962,7 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
         self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
         self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
@@ -6308,6 +6501,78 @@ read -n 1
                 QMessageBox.error(self, "Error", "updater.py not found!")
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to run updater.py: {e}")
+
+    def hide_left_panel(self):
+        """Hide the left panel to give more space to the right panel during installation"""
+        if not self.panel_hidden and hasattr(self, 'splitter') and hasattr(self, 'left_panel'):
+            self.panel_hidden = True
+            # Store current sizes before hiding
+            self.original_splitter_sizes = self.splitter.sizes()
+            # Hide the left panel by setting its size to 0
+            self.splitter.setSizes([0, self.splitter.width()])
+            # Hide the panel completely
+            self.left_panel.hide()
+
+    def show_left_panel(self):
+        """Show the left panel and restore original layout"""
+        if self.panel_hidden and hasattr(self, 'splitter') and hasattr(self, 'left_panel'):
+            self.panel_hidden = False
+            # Show the panel
+            self.left_panel.show()
+            # Restore original sizes
+            self.splitter.setSizes(self.original_splitter_sizes)
+
+    def flash_image_border(self):
+        """Gently flash the white stroke border of the image to highlight it"""
+        if hasattr(self, 'image_label'):
+            # Store original stylesheet
+            original_style = self.image_label.styleSheet()
+            
+            # Create flashing effect with thicker white border
+            flash_style = """
+                QLabel {
+                    border: 3px solid white;
+                    border-radius: 5px;
+                }
+            """
+            
+            # Apply flash style
+            self.image_label.setStyleSheet(flash_style)
+            
+            # Restore original style after 500ms
+            QTimer.singleShot(500, lambda: self.image_label.setStyleSheet(original_style))
+
+    def show_try_again_dialog(self):
+        """Show try again dialog when user spends too long in initsteps phase"""
+        try:
+            # Stop any running MTK worker
+            if hasattr(self, 'mtk_worker') and self.mtk_worker:
+                self.mtk_worker.stop()
+                self.mtk_worker.wait()
+                self.mtk_worker = None
+            
+            # Show the try again dialog with specific instructions
+            reply = QMessageBox.question(
+                self,
+                "Connection Timeout",
+                "The device connection is taking too long. Please disconnect your Y1 and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                # Return to initsteps state to show instructions again
+                self.revert_to_startup_state()
+                # Show initsteps image to guide user
+                self.load_initsteps_image()
+            else:
+                # Return to ready state
+                self.revert_to_startup_state()
+                
+        except Exception as e:
+            silent_print(f"Error showing try again dialog: {e}")
+            # Fallback to reverting to startup state
+            self.revert_to_startup_state()
 
 if __name__ == "__main__":
     try:
