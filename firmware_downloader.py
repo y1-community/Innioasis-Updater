@@ -827,6 +827,7 @@ class MTKWorker(QThread):
     show_installing_image = Signal()
     show_reconnect_image = Signal()
     show_presteps_image = Signal()
+    show_please_wait_image = Signal()  # Signal for showing please_wait image during "Please wait..." status
     show_initsteps_image = Signal()  # New signal for showing initsteps after first empty line
     show_instructions_image = Signal()  # Signal for showing initsteps when instructions are displayed
     mtk_completed = Signal(bool, str)
@@ -1066,8 +1067,8 @@ class MTKWorker(QThread):
                         # This indicates waiting for device, show please wait message
                         self.status_updated.emit("Please wait...")
                         current_status = "Please wait..."  # Track current status
-                        # Show presteps image for please wait status
-                        self.show_presteps_image.emit()
+                        # Show please_wait image for please wait status
+                        self.show_please_wait_image.emit()
                         last_status_update = time.time()  # Update status time
                         # Don't treat this as an error, just continue
 
@@ -2939,6 +2940,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.mtk_worker.show_installing_image.connect(self.load_installing_image)
                 self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
                 self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
                 self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
                 self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
                 self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
@@ -4477,6 +4479,7 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
         self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
         self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
@@ -4609,6 +4612,7 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.show_installing_image.connect(self.load_installing_image)
             self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
             self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+            self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
             self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
             self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
             self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
@@ -4974,6 +4978,24 @@ Method 2 - MTKclient: Direct technical installation
 
         self._current_pixmap = self._presteps_pixmap
         self.set_image_with_aspect_ratio(self._presteps_pixmap)
+        # Flash border to highlight the new image
+        self.flash_image_border()
+
+    def load_please_wait_image(self):
+        """Load please_wait image with lazy loading and platform fallback."""
+        if not hasattr(self, '_please_wait_pixmap'):
+            try:
+                image_path = self.get_platform_image_path("please_wait")
+                self._please_wait_pixmap = QPixmap(image_path)
+                if self._please_wait_pixmap.isNull():
+                    silent_print(f"Failed to load image from {image_path}")
+                    return
+            except Exception as e:
+                silent_print(f"Error loading please_wait image: {e}")
+                return
+
+        self._current_pixmap = self._please_wait_pixmap
+        self.set_image_with_aspect_ratio(self._please_wait_pixmap)
         # Flash border to highlight the new image
         self.flash_image_border()
 
@@ -6050,6 +6072,7 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
         self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
         self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
