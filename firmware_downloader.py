@@ -5920,22 +5920,7 @@ Method 2 - MTKclient: Direct technical installation
                 return
             
             self.progress_bar.setValue(100)
-            self.status_label.setText("Extraction completed. Files ready for MTK processing.")
-            
-            # Show success message with file list and instructions
-            success_msg = "Firmware files successfully extracted:\n"
-            for file in required_files:
-                file_size = Path(file).stat().st_size
-                size_mb = file_size / (1024 * 1024)
-                success_msg += f"- {file} ({size_mb:.1f} MB)\n"
-            
-            success_msg += "\nTo flash these files to your device:\n"
-            success_msg += "1. Turn off your Y1\n"
-            success_msg += "2. Run the following command in a new terminal:\n"
-            success_msg += f"   {sys.executable} mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\n"
-            success_msg += "3. Follow the on-screen prompts to turn off your Y1"
-            
-            QMessageBox.information(self, "Success", success_msg)
+            self.status_label.setText("Extraction completed. Files ready for installation.")
             
             # Handle installation based on selected method
             self.status_label.setText("Starting installation in 3 seconds...")
