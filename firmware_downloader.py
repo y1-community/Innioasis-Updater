@@ -2836,23 +2836,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 coffee_layout.addWidget(driver_btn)
                 
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: Show "Install USB Development Kit" link
-                usbdk_link = QLabel("Install USB Development Kit for full functionality")
-                usbdk_link.setStyleSheet("""
-                    QLabel {
-                        color: #0066CC;
-                        font-size: 11px;
-                        text-decoration: underline;
-                        cursor: pointer;
-                        margin: 5px;
-                    }
-                    QLabel:hover {
-                        color: #004499;
-                    }
-                """)
-                usbdk_link.setCursor(Qt.PointingHandCursor)
-                usbdk_link.mousePressEvent = self.open_usbdk_info
-                coffee_layout.addWidget(usbdk_link)
+                # Only MTK driver: No additional UI elements needed
+                pass
                 
                 # Only show "Install from .zip" button if not on ARM64 Windows
                 if not driver_info['is_arm64']:
@@ -3829,7 +3814,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         install_tab = QWidget()
         install_layout = QVBoxLayout(install_tab)
         
-        install_title = QLabel("Installation Method Settings")
+        install_title = QLabel("Installation Settings")
         install_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
         install_layout.addWidget(install_title)
         
@@ -3891,14 +3876,6 @@ class FirmwareDownloaderGUI(QMainWindow):
                 dialog.exec()
                 return
                 
-            elif not driver_info['has_usbdk_driver']:
-                status_label = QLabel("ℹ️ Limited Functionality")
-                status_label.setStyleSheet("color: #0066CC; font-weight: bold; margin: 5px;")
-                install_layout.addWidget(status_label)
-                
-                status_desc = QLabel("Only Method 3 (SP Flash Tool) is available.\n\nMore methods will become available if you install the USB Development Kit driver.")
-                status_desc.setStyleSheet("color: #666; margin: 5px;")
-                install_layout.addWidget(status_desc)
         
         # Description
         desc_label = QLabel("This setting will be used for the next firmware installation.")
@@ -3969,6 +3946,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         desc_text = QTextEdit()
         desc_text.setMaximumHeight(80)
         desc_text.setReadOnly(True)
+        desc_text.setStyleSheet("""
+            QTextEdit {
+                background-color: #2b2b2b;
+                color: #cccccc;
+                border: 1px solid #555555;
+                border-radius: 4px;
+                padding: 8px;
+                font-size: 11px;
+            }
+        """)
         
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
@@ -3982,7 +3969,8 @@ Method 4 - MTKclient (advanced): Direct technical installation
                 desc_text.setPlainText("""
 Method 1 - Guided: Step-by-step with visual guidance (Windows only)
 Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
-Note: Install USB Development Kit driver to enable Methods 3 and 4
+
+Additional methods (Methods 3 & 4) become available with USB Development Kit driver.
                 """)
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
@@ -4098,6 +4086,7 @@ Method 2 - MTKclient: Direct technical installation
         
         # Add tools tab to tab widget
         tab_widget.addTab(tools_tab, "Tools")
+        
         
         # Buttons
         button_layout = QHBoxLayout()
@@ -5819,10 +5808,6 @@ Method 2 - MTKclient: Direct technical installation
             import webbrowser
             webbrowser.open("https://innioasis.app/installguide.html")
 
-    def open_usbdk_info(self, event):
-        """Open USB Development Kit information"""
-        import webbrowser
-        webbrowser.open("https://innioasis.app")
 
     def open_arm64_info(self, event):
         """Show ARM64 Windows information dialog and redirect to installation guide"""
@@ -6200,15 +6185,14 @@ Method 2 - MTKclient: Direct technical installation
                 return
             
             self.progress_bar.setValue(100)
-            self.status_label.setText("Extraction completed. Files ready for MTK processing.")
+            self.status_label.setText("Extraction completed. Files ready for installation.")
             
-            # Continue with the same flow as normal download - run MTK command automatically
-            silent_print("=== AUTOMATICALLY RUNNING MTK COMMAND ===")
-            silent_print("The MTK flash command will now run in this application.")
-            silent_print("Please turn off your Y1 when prompted.")
+            # Handle installation based on selected method
+            silent_print("=== FIRMWARE FILES READY ===")
+            silent_print(f"Selected installation method: {getattr(self, 'installation_method', 'guided')}")
             
-            # Use QTimer to delay the automatic MTK command execution slightly
-            QTimer.singleShot(2000, self.run_mtk_command)  # 2 second delay
+            # Use QTimer to delay the installation method execution slightly
+            QTimer.singleShot(2000, self.handle_installation_method)  # 2 second delay
             
         except Exception as e:
             self.progress_bar.setVisible(False)
@@ -6278,13 +6262,8 @@ Method 2 - MTKclient: Direct technical installation
                 self.open_driver_setup_link()
                 return
                 
-            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: Force Method 3 for this session
-                silent_print("=== ONLY MTK DRIVER - FORCING METHOD 3 (SP FLASH TOOL) ===")
-                self.installation_method = "spflash"
-                method = "spflash"
             else:
-                # Both drivers available: Use selected method
+                # Use selected method (driver validation will happen later)
                 method = getattr(self, 'installation_method', 'guided')
         else:
             # Non-Windows: Use selected method
@@ -6297,6 +6276,17 @@ Method 2 - MTKclient: Direct technical installation
         self.last_attempted_method = method
         
         if platform.system() == "Windows":
+            # Check if the selected method is available based on drivers
+            available_methods = driver_info.get('available_methods', [])
+            if method not in available_methods:
+                # Method not available, fall back to first available method
+                if available_methods:
+                    method = available_methods[0]
+                    silent_print(f"Selected method not available, falling back to: {method}")
+                else:
+                    silent_print("No installation methods available")
+                    return
+            
             # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
             if method == "spflash":
                 # Method 1: Guided - same as pressing "Try Method 3" in troubleshooting
@@ -7190,22 +7180,13 @@ read -n 1
             # Both drivers available: All methods available (Windows order: SP Flash Tool first, then Guided/MTKclient)
             available_methods = ['spflash', 'spflash4', 'guided', 'mtkclient']
         elif has_mtk_driver and not has_usbdk_driver:
-            # Only MTK driver: Force Method 1 and 2 (SP Flash Tool) for this session
-            # This acts as though the user selected Method 1 or 2 from settings but without ticking "use as default"
+            # Only MTK driver: Only SP Flash Tool methods available
             available_methods = ['spflash', 'spflash4']
-            can_install_firmware = True  # Explicitly set to True for MTK-only
-            # Temporarily override installation method for this session only
-            if not hasattr(self, '_original_installation_method'):
-                self._original_installation_method = getattr(self, 'installation_method', 'guided')
-            self.installation_method = "spflash"
+            can_install_firmware = True
         elif not has_mtk_driver and has_usbdk_driver:
-            # Only UsbDk driver: Force Method 4 (MTKclient) for this session
+            # Only UsbDk driver: Only MTKclient method available
             available_methods = ['mtkclient']
-            can_install_firmware = True  # Explicitly set to True for UsbDk-only
-            # Temporarily override installation method for this session only
-            if not hasattr(self, '_original_installation_method'):
-                self._original_installation_method = getattr(self, 'installation_method', 'guided')
-            self.installation_method = "mtkclient"
+            can_install_firmware = True
         else:
             # No drivers: No installation methods available
             available_methods = []
