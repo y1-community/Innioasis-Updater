@@ -827,6 +827,7 @@ class SPFlashToolWorker(QThread):
     show_installing_image = Signal()
     show_initsteps_image = Signal()
     show_installed_image = Signal()
+    show_please_wait_image = Signal()
     spflash_completed = Signal(bool, str)
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
@@ -866,7 +867,8 @@ class SPFlashToolWorker(QThread):
             process_start_time = time.time()
             
             # Phase tracking variables
-            initsteps_phase = False
+            please_wait_phase = True  # Start with please wait phase
+            instructions_phase = False
             installing_phase = False
             completed_phase = False
             
@@ -893,67 +895,87 @@ class SPFlashToolWorker(QThread):
                     
                     # Phase detection based on flash_tool.exe output patterns
                     
-                    # Initsteps phase: Initial setup and connection detection
-                    if (line.startswith("Begin") or 
-                        "MediaTek SP Flash Tool" in line or
-                        "Init config" in line or
-                        "DLPlugFmtAll Command" in line or
-                        "DownloadCommand" in line or
-                        "General Command" in line or
-                        "Connection create" in line or
-                        "Connecting to BROM" in line or
-                        "Scanning USB port" in line or
-                        "Search usb" in line or
-                        "USB port is obtained" in line or
-                        "USB port detected" in line or
-                        "BROM connected" in line):
-                        initsteps_phase = True
+                    # Please wait phase: Show "Please wait..." until "Search usb" is detected
+                    if please_wait_phase and not line.startswith("Search usb"):
+                        # Keep showing please wait image and status
+                        self.show_please_wait_image.emit()
+                        self.status_updated.emit("Please wait...")
+                        # Don't emit the actual flash tool output yet
+                        continue
+                    
+                    # Instructions phase: When "Search usb" is detected, show instructions
+                    elif line.startswith("Search usb"):
+                        please_wait_phase = False
+                        instructions_phase = True
                         installing_phase = False
                         completed_phase = False
                         self.show_initsteps_image.emit()
+                        self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
+                        # Now start showing flash tool output
                         self.status_updated.emit(f"Flash Tool: {line}")
                         
-                    # Installing phase: Downloading and flashing operations
-                    elif ("Downloading" in line or
-                          "Downloading & Connecting to DA" in line or
-                          "connect DA end stage" in line or
-                          "COM port is open" in line or
-                          "Download DA now" in line or
-                          "Formatting Flash" in line or
-                          "Format Succeeded" in line or
-                          "executing DADownloadAll" in line or
-                          "DA report" in line or
-                          "% of" in line or
-                          "download speed" in line or
-                          "Download Succeeded" in line):
-                        if not installing_phase:
+                    # Continue with instructions phase until installing phase
+                    elif instructions_phase and not installing_phase and not completed_phase:
+                        if ("Downloading" in line or
+                            "Downloading & Connecting to DA" in line or
+                            "connect DA end stage" in line or
+                            "COM port is open" in line or
+                            "Download DA now" in line or
+                            "Formatting Flash" in line or
+                            "Format Succeeded" in line or
+                            "executing DADownloadAll" in line or
+                            "DA report" in line or
+                            "% of" in line or
+                            "download speed" in line or
+                            "Download Succeeded" in line):
+                            # Transition to installing phase
+                            instructions_phase = False
                             installing_phase = True
-                            initsteps_phase = False
                             self.show_installing_image.emit()
                             self.disable_update_button.emit()
-                        self.status_updated.emit(f"Flash Tool: {line}")
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        else:
+                            # Continue showing instructions and flash tool output
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        
+                    # Installing phase: Downloading and flashing operations
+                    elif installing_phase and not completed_phase:
+                        if ("Downloading" in line or
+                            "Downloading & Connecting to DA" in line or
+                            "connect DA end stage" in line or
+                            "COM port is open" in line or
+                            "Download DA now" in line or
+                            "Formatting Flash" in line or
+                            "Format Succeeded" in line or
+                            "executing DADownloadAll" in line or
+                            "DA report" in line or
+                            "% of" in line or
+                            "download speed" in line or
+                            "Download Succeeded" in line):
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        elif (line.startswith("Disconnect!") or
+                              "All command exec done!" in line or
+                              "FlashTool_EnableWatchDogTimeout" in line):
+                            # Transition to completion phase
+                            completed_phase = True
+                            installing_phase = False
+                            if line.startswith("Disconnect!"):
+                                self.show_installed_image.emit()
+                                self.status_updated.emit("Install Complete, please disconnect your Y1 and hold the center button")
+                            else:
+                                self.show_installing_image.emit()  # Use installing image for other completion indicators
+                                self.status_updated.emit(f"Flash Tool: {line}")
+                        else:
+                            self.status_updated.emit(f"Flash Tool: {line}")
                         
                     # Completion phase: Final cleanup and disconnection
-                    elif (line.startswith("Disconnect!") or
-                          "All command exec done!" in line or
-                          "FlashTool_EnableWatchDogTimeout" in line):
-                        completed_phase = True
-                        installing_phase = False
-                        initsteps_phase = False
-                        self.status_updated.emit(f"Flash Tool: {line}")
-                        # Show completion image - use installed.png when Disconnect! is detected
+                    elif completed_phase:
                         if line.startswith("Disconnect!"):
                             self.show_installed_image.emit()
+                            self.status_updated.emit("Install Complete, please disconnect your Y1 and hold the center button")
                         else:
-                            self.show_installing_image.emit()  # Use installing image for other completion indicators
+                            self.status_updated.emit(f"Flash Tool: {line}")
                         
-                    # Other output during initsteps phase
-                    elif initsteps_phase and not installing_phase and not completed_phase:
-                        self.status_updated.emit(f"Flash Tool: {line}")
-                        
-                    # Other output during installing phase
-                    elif installing_phase and not completed_phase:
-                        self.status_updated.emit(f"Flash Tool: {line}")
                         
                     # Other output
                     else:
@@ -1524,7 +1546,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.download_worker = None
         self.mtk_worker = None
         self.images_loaded = False  # Track if images are loaded
-        self.installation_method = "guided"  # Default installation method
+        # Set default installation method based on platform
+        if platform.system() == "Windows":
+            self.installation_method = "spflash"  # Default to Method 1 (SP Flash Tool) on Windows
+        else:
+            self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
         self.always_use_method = False  # Default to one-time use
         self.debug_mode = False  # Default debug mode disabled
         
@@ -3304,18 +3330,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # No need to check for shortcut since we're using flash_tool.exe directly
             
-            # Load Method 3 image initially
-            self.load_method3_image()
+            # Load please wait image initially
+            self.load_please_wait_image()
             
             # Show dialog with Method 3 instructions
             reply = QMessageBox.question(
                 self,
                 "SP Flash Tool Instructions - Method 3",
-                "Please follow these steps after you click OK:\n\n"
-                "1. CONNECT Y1 via USB\n"
-                "2. INSERT Paperclip\n"
-                "3. WAIT for the installation to finish\n"
-                "4. DISCONNECT the USB and hold middle button on Y1 to turn it on\n\n"
+                "After you press OK:\n"
+                "Insert the cable USB into the Y1 and use a pin or paperclip to press the hidden button next to the earphone port.\n\n"
                 "This method uses the manufacturer's SP Flash Tool with guided monitoring.\n\n"
                 "Click OK when ready to start SP Flash Tool.",
                 QMessageBox.Ok | QMessageBox.Cancel,
@@ -3358,8 +3381,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.spflash_worker = SPFlashToolWorker()
             self.spflash_worker.status_updated.connect(self.status_label.setText)
             self.spflash_worker.show_installing_image.connect(self.load_installing_image)
-            self.spflash_worker.show_initsteps_image.connect(self.load_method3_image)  # Use method3.png for initsteps as requested
+            self.spflash_worker.show_initsteps_image.connect(self.load_method3_image)  # Use initsteps_sp.png for SP Flash Tool initsteps
             self.spflash_worker.show_installed_image.connect(self.load_installed_image)  # Use installed.png for completion
+            self.spflash_worker.show_please_wait_image.connect(self.load_please_wait_image)  # Use please_wait.png for initial phase
             self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
             self.spflash_worker.disable_update_button.connect(self.disable_update_button)
             self.spflash_worker.enable_update_button.connect(self.enable_update_button)
@@ -3441,8 +3465,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setIcon(QMessageBox.Information)
             msg_box.setText("Method 4: SP Flash Tool Alternative Installation")
             msg_box.setInformativeText(
+                "After you press OK:\n"
+                "Insert the cable USB into the Y1 and use a pin or paperclip to press the hidden button next to the earphone port.\n\n"
                 "This method uses the manufacturer's SP Flash Tool as an alternative approach. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
-                "Please ensure SP Flash Tool is installed and follow its instructions.\n\n"
                 "Note: This method requires the MediaTek SP Driver to be installed."
             )
             msg_box.setStandardButtons(QMessageBox.Ok)
@@ -3473,19 +3498,20 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
     def load_method3_image(self):
-        """Load Method 3 troubleshooting image"""
+        """Load Method 3 SP Flash Tool initsteps image"""
         try:
             if not hasattr(self, '_method3_pixmap'):
-                image_path = self.get_platform_image_path("method3")
+                # Use initsteps_sp.png for SP Flash Tool method
+                image_path = self.get_platform_image_path("initsteps_sp")
                 self._method3_pixmap = QPixmap(image_path)
                 if self._method3_pixmap.isNull():
-                    silent_print(f"Failed to load Method 3 image from {image_path}")
+                    silent_print(f"Failed to load Method 3 SP Flash Tool image from {image_path}")
                     return
             
             self._current_pixmap = self._method3_pixmap
             self.set_image_with_aspect_ratio(self._method3_pixmap)
         except Exception as e:
-            silent_print(f"Error loading Method 3 image: {e}")
+            silent_print(f"Error loading Method 3 SP Flash Tool image: {e}")
 
     def load_installed_image(self):
         """Load installed completion image"""
@@ -3503,15 +3529,37 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error loading installed image: {e}")
             return
 
+    def load_please_wait_image(self):
+        """Load please wait image"""
+        try:
+            if not hasattr(self, '_please_wait_pixmap'):
+                image_path = self.get_platform_image_path("please_wait")
+                self._please_wait_pixmap = QPixmap(image_path)
+                if self._please_wait_pixmap.isNull():
+                    silent_print(f"Failed to load please wait image from {image_path}")
+                    return
+            
+            self._current_pixmap = self._please_wait_pixmap
+            self.set_image_with_aspect_ratio(self._please_wait_pixmap)
+        except Exception as e:
+            silent_print(f"Error loading please wait image: {e}")
+            return
+
     def load_method4_image(self):
-        """Load Method 4 troubleshooting image"""
+        """Load Method 4 SP Flash Tool Alternative image"""
         try:
             if not hasattr(self, '_method4_pixmap'):
+                # Try method4.png first, fallback to method3.png if not found
                 image_path = self.get_platform_image_path("method4")
                 self._method4_pixmap = QPixmap(image_path)
                 if self._method4_pixmap.isNull():
-                    silent_print(f"Failed to load Method 4 image from {image_path}")
-                    return
+                    silent_print(f"Method 4 image not found, trying fallback to method3.png")
+                    # Fallback to method3.png
+                    fallback_path = self.get_platform_image_path("method3")
+                    self._method4_pixmap = QPixmap(fallback_path)
+                    if self._method4_pixmap.isNull():
+                        silent_print(f"Failed to load Method 4 fallback image from {fallback_path}")
+                        return
             
             self._current_pixmap = self._method4_pixmap
             self.set_image_with_aspect_ratio(self._method4_pixmap)
@@ -3848,18 +3896,18 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add methods based on driver availability
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Both drivers available: All methods
-                self.method_combo.addItem("Method 1 - Guided", "guided")
-                self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
-                self.method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
-                self.method_combo.addItem("Method 4 - SP Flash Tool (Alternative)", "spflash4")
+                # Both drivers available: All methods (Windows order: SP Flash Tool first, then Guided/MTKclient)
+                self.method_combo.addItem("Method 1 - SP Flash Tool", "spflash")
+                self.method_combo.addItem("Method 2 - SP Flash Tool (Alternative)", "spflash4")
+                self.method_combo.addItem("Method 3 - Guided", "guided")
+                self.method_combo.addItem("Method 4 - MTKclient", "mtkclient")
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: Only Method 3 and 4
-                self.method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
-                self.method_combo.addItem("Method 4 - SP Flash Tool (Alternative)", "spflash4")
+                # Only MTK driver: Only Method 1 and 2 (SP Flash Tool methods)
+                self.method_combo.addItem("Method 1 - SP Flash Tool (Only available method)", "spflash")
+                self.method_combo.addItem("Method 2 - SP Flash Tool (Alternative)", "spflash4")
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Only UsbDk driver: Only Method 2
-                self.method_combo.addItem("Method 2 - MTKclient (Only available method)", "mtkclient")
+                # Only UsbDk driver: Only Method 4 (MTKclient)
+                self.method_combo.addItem("Method 4 - MTKclient (Only available method)", "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
@@ -4425,7 +4473,10 @@ Method 2 - MTKclient: Direct technical installation
                         # Clear the stored original method
                         delattr(self, '_original_installation_method')
             # Use defaults if loading fails
-            self.installation_method = "guided"
+            if platform.system() == "Windows":
+                self.installation_method = "spflash"  # Default to Method 1 (SP Flash Tool) on Windows
+            else:
+                self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
             self.always_use_method = False
 
     def populate_device_type_combo(self):
