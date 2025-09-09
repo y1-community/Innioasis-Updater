@@ -1410,6 +1410,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Load saved installation preferences
         QTimer.singleShot(200, self.load_installation_preferences)
         
+        # Apply shortcut settings on startup (Windows only)
+        if platform.system() == "Windows":
+            QTimer.singleShot(300, self.apply_shortcut_settings_on_startup)
+        
         # Restore original installation method when session ends
         QTimer.singleShot(300, self.restore_original_installation_method)
 
@@ -3613,6 +3617,9 @@ Method 2 - MTKclient: Direct technical installation
             desktop_shortcuts = getattr(self, 'desktop_shortcuts_enabled', True)
             self.desktop_shortcuts_checkbox.setChecked(desktop_shortcuts)
             
+            # Connect real-time change handler
+            self.desktop_shortcuts_checkbox.toggled.connect(self.on_desktop_shortcuts_toggled)
+            
             shortcut_layout.addWidget(self.desktop_shortcuts_checkbox)
             
             # Start menu shortcuts toggle
@@ -3622,6 +3629,9 @@ Method 2 - MTKclient: Direct technical installation
             # Set checkbox state based on saved preference
             startmenu_shortcuts = getattr(self, 'startmenu_shortcuts_enabled', True)
             self.startmenu_shortcuts_checkbox.setChecked(startmenu_shortcuts)
+            
+            # Connect real-time change handler
+            self.startmenu_shortcuts_checkbox.toggled.connect(self.on_startmenu_shortcuts_toggled)
             
             shortcut_layout.addWidget(self.startmenu_shortcuts_checkbox)
             
@@ -3877,7 +3887,7 @@ Method 2 - MTKclient: Direct technical installation
             silent_print(f"Error during silent shortcut cleanup: {e}")
     
     def ensure_desktop_shortcuts(self):
-        """Ensure desktop shortcuts exist"""
+        """Ensure desktop shortcuts exist - only Innioasis Updater.lnk as specified"""
         if platform.system() != "Windows":
             return
             
@@ -3888,35 +3898,21 @@ Method 2 - MTKclient: Direct technical installation
             
             current_dir = Path.cwd()
             
-            # Create Innioasis Updater shortcut
+            # Create only Innioasis Updater shortcut as specified
             source_shortcut = current_dir / "Innioasis Updater.lnk"
             if source_shortcut.exists():
                 dest_shortcut = desktop_path / "Innioasis Updater.lnk"
-                if not dest_shortcut.exists():
-                    shutil.copy2(source_shortcut, dest_shortcut)
-                    silent_print(f"Created desktop shortcut: Innioasis Updater.lnk")
-            
-            # Create Y1 Remote Control shortcut if it exists
-            source_y1_remote = current_dir / "Innioasis Y1 Remote Control.lnk"
-            if source_y1_remote.exists():
-                dest_y1_remote = desktop_path / "Innioasis Y1 Remote Control.lnk"
-                if not dest_y1_remote.exists():
-                    shutil.copy2(source_y1_remote, dest_y1_remote)
-                    silent_print(f"Created desktop shortcut: Innioasis Y1 Remote Control.lnk")
-            
-            # Create Innioasis Toolkit shortcut if it exists
-            source_toolkit = current_dir / "Innioasis Toolkit.lnk"
-            if source_toolkit.exists():
-                dest_toolkit = desktop_path / "Innioasis Toolkit.lnk"
-                if not dest_toolkit.exists():
-                    shutil.copy2(source_toolkit, dest_toolkit)
-                    silent_print(f"Created desktop shortcut: Innioasis Toolkit.lnk")
+                # Always copy to ensure it's up to date
+                shutil.copy2(source_shortcut, dest_shortcut)
+                silent_print(f"Created/updated desktop shortcut: Innioasis Updater.lnk")
+            else:
+                silent_print(f"Warning: Innioasis Updater.lnk not found in current directory")
                     
         except Exception as e:
             silent_print(f"Error ensuring desktop shortcuts: {e}")
     
     def remove_desktop_shortcuts(self):
-        """Remove desktop shortcuts"""
+        """Remove desktop shortcuts - includes wildcard cleanup for legacy shortcuts"""
         if platform.system() != "Windows":
             return
             
@@ -3925,8 +3921,8 @@ Method 2 - MTKclient: Direct technical installation
             if not desktop_path.exists():
                 return
             
-            # Remove Innioasis shortcuts
-            patterns = ["*Innioasis*"]
+            # Remove current and legacy shortcuts using wildcards
+            patterns = ["*Innioasis*", "*Y1*", "*SP Flash*"]
             for pattern in patterns:
                 for item in desktop_path.glob(pattern):
                     if item.is_file() and item.suffix.lower() == '.lnk':
@@ -3940,7 +3936,7 @@ Method 2 - MTKclient: Direct technical installation
             silent_print(f"Error removing desktop shortcuts: {e}")
     
     def ensure_startmenu_shortcuts(self):
-        """Ensure start menu shortcuts exist"""
+        """Ensure start menu shortcuts exist - Innioasis Updater.lnk and Innioasis Toolkit.lnk as specified"""
         if platform.system() != "Windows":
             return
             
@@ -3954,31 +3950,27 @@ Method 2 - MTKclient: Direct technical installation
                     source_shortcut = current_dir / "Innioasis Updater.lnk"
                     if source_shortcut.exists():
                         dest_shortcut = start_menu_path / "Innioasis Updater.lnk"
-                        if not dest_shortcut.exists():
-                            shutil.copy2(source_shortcut, dest_shortcut)
-                            silent_print(f"Created start menu shortcut: Innioasis Updater.lnk")
+                        # Always copy to ensure it's up to date
+                        shutil.copy2(source_shortcut, dest_shortcut)
+                        silent_print(f"Created/updated start menu shortcut: Innioasis Updater.lnk")
+                    else:
+                        silent_print(f"Warning: Innioasis Updater.lnk not found in current directory")
                     
-                    # Create Y1 Remote Control shortcut if it exists
-                    source_y1_remote = current_dir / "Innioasis Y1 Remote Control.lnk"
-                    if source_y1_remote.exists():
-                        dest_y1_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
-                        if not dest_y1_remote.exists():
-                            shutil.copy2(source_y1_remote, dest_y1_remote)
-                            silent_print(f"Created start menu shortcut: Innioasis Y1 Remote Control.lnk")
-                    
-                    # Create Innioasis Toolkit shortcut if it exists
+                    # Create Innioasis Toolkit shortcut
                     source_toolkit = current_dir / "Innioasis Toolkit.lnk"
                     if source_toolkit.exists():
                         dest_toolkit = start_menu_path / "Innioasis Toolkit.lnk"
-                        if not dest_toolkit.exists():
-                            shutil.copy2(source_toolkit, dest_toolkit)
-                            silent_print(f"Created start menu shortcut: Innioasis Toolkit.lnk")
+                        # Always copy to ensure it's up to date
+                        shutil.copy2(source_toolkit, dest_toolkit)
+                        silent_print(f"Created/updated start menu shortcut: Innioasis Toolkit.lnk")
+                    else:
+                        silent_print(f"Warning: Innioasis Toolkit.lnk not found in current directory")
                             
         except Exception as e:
             silent_print(f"Error ensuring start menu shortcuts: {e}")
     
     def remove_startmenu_shortcuts(self):
-        """Remove start menu shortcuts"""
+        """Remove start menu shortcuts - includes wildcard cleanup for legacy shortcuts"""
         if platform.system() != "Windows":
             return
             
@@ -3987,8 +3979,8 @@ Method 2 - MTKclient: Direct technical installation
             
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
-                    # Remove Innioasis shortcuts
-                    patterns = ["*Innioasis*"]
+                    # Remove current and legacy shortcuts using wildcards
+                    patterns = ["*Innioasis*", "*Y1*", "*SP Flash*"]
                     for pattern in patterns:
                         for item in start_menu_path.glob(pattern):
                             if item.is_file() and item.suffix.lower() == '.lnk':
@@ -4009,6 +4001,63 @@ Method 2 - MTKclient: Direct technical installation
                             
         except Exception as e:
             silent_print(f"Error removing start menu shortcuts: {e}")
+    
+    def apply_shortcut_settings_on_startup(self):
+        """Apply shortcut settings on startup based on user preferences - silent operation"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            # Load preferences first to ensure we have the latest settings
+            self.load_installation_preferences()
+            
+            # Apply settings silently
+            self.apply_shortcut_settings()
+            
+            silent_print("Startup shortcut settings applied successfully.")
+            
+        except Exception as e:
+            silent_print(f"Error applying startup shortcut settings: {e}")
+    
+    def on_desktop_shortcuts_toggled(self, checked):
+        """Handle real-time desktop shortcuts checkbox changes"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            # Update the setting immediately
+            self.desktop_shortcuts_enabled = checked
+            
+            # Apply the change immediately
+            if checked:
+                self.ensure_desktop_shortcuts()
+                silent_print("Desktop shortcuts enabled and created.")
+            else:
+                self.remove_desktop_shortcuts()
+                silent_print("Desktop shortcuts disabled and removed.")
+                
+        except Exception as e:
+            silent_print(f"Error handling desktop shortcuts toggle: {e}")
+    
+    def on_startmenu_shortcuts_toggled(self, checked):
+        """Handle real-time start menu shortcuts checkbox changes"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            # Update the setting immediately
+            self.startmenu_shortcuts_enabled = checked
+            
+            # Apply the change immediately
+            if checked:
+                self.ensure_startmenu_shortcuts()
+                silent_print("Start menu shortcuts enabled and created.")
+            else:
+                self.remove_startmenu_shortcuts()
+                silent_print("Start menu shortcuts disabled and removed.")
+                
+        except Exception as e:
+            silent_print(f"Error handling start menu shortcuts toggle: {e}")
     
     def restore_original_installation_method(self):
         """Restore the original installation method if it was temporarily overridden"""
