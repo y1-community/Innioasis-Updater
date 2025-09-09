@@ -26,12 +26,9 @@ from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
 from PySide6.QtGui import QFont, QPixmap, QIcon
 import platform
 import time
-import datetime
 from collections import defaultdict
 import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
-# GitHub App authentication - simplified approach
 
 # Import AppKit for macOS Dock hiding (only on macOS)
 if platform.system() == "Darwin":
@@ -46,9 +43,6 @@ SILENT_MODE = True
 # Zip file management
 ZIP_STORAGE_DIR = Path("firmware_downloads")
 EXTRACTED_FILES_LOG = Path("extracted_files.log")
-
-# Manifest file management for cached zips
-MANIFEST_EXTENSION = ".manifest.json"
 
 # Installation tracking
 INSTALLATION_MARKER_FILE = Path("firmware_installation_in_progress.flag")
@@ -109,103 +103,6 @@ def cleanup_firmware_files():
             
     except Exception as e:
         silent_print(f"Error cleaning up firmware files: {e}")
-
-def create_manifest_for_zip(zip_path, release_info):
-    """Create a manifest file for a cached zip with release information"""
-    try:
-        manifest_path = zip_path.with_suffix(MANIFEST_EXTENSION)
-        manifest_data = {
-            'zip_file': zip_path.name,
-            'release_info': release_info,
-            'cached_at': time.time(),
-            'file_size': zip_path.stat().st_size if zip_path.exists() else 0
-        }
-        
-        with open(manifest_path, 'w') as f:
-            json.dump(manifest_data, f, indent=2)
-        
-        silent_print(f"Created manifest for {zip_path.name}")
-        return manifest_path
-    except Exception as e:
-        silent_print(f"Error creating manifest for {zip_path}: {e}")
-        return None
-
-def load_manifest_for_zip(zip_path):
-    """Load manifest information for a cached zip"""
-    try:
-        manifest_path = zip_path.with_suffix(MANIFEST_EXTENSION)
-        if manifest_path.exists():
-            with open(manifest_path, 'r') as f:
-                return json.load(f)
-    except Exception as e:
-        silent_print(f"Error loading manifest for {zip_path}: {e}")
-    return None
-
-def get_cached_firmware_list():
-    """Get list of cached firmware with their manifest information"""
-    cached_firmware = []
-    
-    try:
-        if not ZIP_STORAGE_DIR.exists():
-            return cached_firmware
-        
-        for zip_file in ZIP_STORAGE_DIR.glob("*.zip"):
-            manifest = load_manifest_for_zip(zip_file)
-            if manifest:
-                cached_firmware.append({
-                    'zip_file': zip_file,
-                    'manifest': manifest,
-                    'release_info': manifest.get('release_info', {}),
-                    'cached_at': manifest.get('cached_at', 0),
-                    'file_size': manifest.get('file_size', 0)
-                })
-            else:
-                # Create a basic manifest for zips without one
-                basic_manifest = {
-                    'zip_file': zip_file.name,
-                    'release_info': {
-                        'tag_name': zip_file.stem,
-                        'name': zip_file.stem,
-                        'body': 'Cached firmware file',
-                        'asset_name': zip_file.name
-                    },
-                    'cached_at': zip_file.stat().st_mtime,
-                    'file_size': zip_file.stat().st_size
-                }
-                create_manifest_for_zip(zip_file, basic_manifest['release_info'])
-                cached_firmware.append({
-                    'zip_file': zip_file,
-                    'manifest': basic_manifest,
-                    'release_info': basic_manifest['release_info'],
-                    'cached_at': basic_manifest['cached_at'],
-                    'file_size': basic_manifest['file_size']
-                })
-        
-        # Sort by cached_at (newest first)
-        cached_firmware.sort(key=lambda x: x['cached_at'], reverse=True)
-        
-    except Exception as e:
-        silent_print(f"Error getting cached firmware list: {e}")
-    
-    return cached_firmware
-
-def delete_cached_firmware(zip_path):
-    """Delete a cached firmware zip and its manifest"""
-    try:
-        manifest_path = zip_path.with_suffix(MANIFEST_EXTENSION)
-        
-        if zip_path.exists():
-            zip_path.unlink()
-            silent_print(f"Deleted cached zip: {zip_path.name}")
-        
-        if manifest_path.exists():
-            manifest_path.unlink()
-            silent_print(f"Deleted manifest: {manifest_path.name}")
-        
-        return True
-    except Exception as e:
-        silent_print(f"Error deleting cached firmware {zip_path}: {e}")
-        return False
 
 def log_extracted_files(files):
     """Log extracted files for cleanup"""
@@ -318,15 +215,11 @@ def delete_all_cached_zips():
 class ConfigDownloader:
     """Downloads and parses configuration files from GitHub with caching"""
 
-    def __init__(self, base_dir=None):
-        self.base_dir = base_dir or os.path.dirname(os.path.abspath(__file__))
+    def __init__(self):
         self.config_url = "https://raw.githubusercontent.com/team-slide/Y1-helper/refs/heads/master/config.ini"
         self.manifest_url = "https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml"
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
-        
-        # GitHub App token (simplified)
-        self.github_app_token = None
 
     def download_config(self):
         """Download and parse the config.ini file to extract API tokens with caching"""
@@ -335,21 +228,6 @@ class ConfigDownloader:
         if cached_tokens:
             return cached_tokens
 
-        # Try local config file first
-        local_config = Path(self.base_dir) / "config.ini"
-        if local_config.exists():
-            try:
-                with open(local_config, 'r') as f:
-                    config_text = f.read()
-                tokens = self._parse_config_response(config_text)
-                if tokens:
-                    silent_print("Loaded configuration from local file")
-                    save_cache(CONFIG_CACHE_FILE, tokens)
-                    return tokens
-            except Exception as e:
-                silent_print(f"Error reading local config: {e}")
-
-        # Try to download from remote
         try:
             silent_print("Downloading tokens from remote config...")
             silent_print(f"Config URL: {self.config_url}")
@@ -358,31 +236,25 @@ class ConfigDownloader:
 
             if response.status_code != 200:
                 silent_print(f"Failed to download config: HTTP {response.status_code}")
+                silent_print(f"Response text: {response.text[:200]}...")
+                
+                # Check if it's a rate limit issue
+                if response.status_code == 403:
+                    silent_print("GitHub API rate limited - this is normal for unauthenticated requests")
+                    silent_print("The app will work with limited functionality until rate limit resets")
+                elif response.status_code == 404:
+                    silent_print("Config file not found - check if the repository structure has changed")
+                elif response.status_code >= 500:
+                    silent_print("GitHub server error - temporary issue, will retry later")
+                
                 return []
 
             response.raise_for_status()
-            tokens = self._parse_config_response(response.text)
-            if tokens:
-                save_cache(CONFIG_CACHE_FILE, tokens)
-            return tokens
-        except Exception as e:
-            silent_print(f"Error downloading config: {e}")
-            return []
 
-    def _parse_config_response(self, config_text):
-        """Parse configuration response and extract tokens"""
-        try:
             config = configparser.ConfigParser()
-            config.read_string(config_text)
-            
-            silent_print(f"Config sections found: {list(config.sections())}")
+            config.read_string(response.text)
 
-            # Extract GitHub App token first
-            if 'github_app' in config:
-                app_token = config['github_app'].get('installation_token', '').strip()
-                if app_token:
-                    self.github_app_token = app_token
-                    silent_print(f"Found GitHub App token: {app_token[:10]}...")
+            silent_print(f"Config sections found: {list(config.sections())}")
 
             tokens = []
             if 'api_keys' in config:
@@ -414,14 +286,17 @@ class ConfigDownloader:
                     tokens.append(token)
                     silent_print(f"Added legacy token: {token[:10]}...")
 
-            silent_print(f"Successfully loaded {len(tokens)} tokens from config")
+            silent_print(f"Successfully loaded {len(tokens)} tokens from remote config")
             if tokens:
                 silent_print(f"First token preview: {tokens[0][:10]}...")
+                # Cache the tokens
+                save_cache(CONFIG_CACHE_FILE, tokens)
             else:
                 silent_print("No valid tokens found in config - will use unauthenticated mode")
             return tokens
         except Exception as e:
-            silent_print(f"Error parsing config: {e}")
+            silent_print(f"Error downloading config: {e}")
+            silent_print("Falling back to unauthenticated requests only")
             return []
 
     def download_manifest(self):
@@ -486,9 +361,8 @@ from collections import defaultdict
 class GitHubAPI:
     """GitHub API wrapper for fetching release information with rate limiting and caching"""
 
-    def __init__(self, tokens, github_app_token=None):
+    def __init__(self, tokens):
         self.tokens = tokens
-        self.github_app_token = github_app_token
         self.token_usage = defaultdict(int)  # Track API calls per token
         self.last_reset = time.time()
         self.hourly_limit = 25  # Limit calls per hour per token
@@ -603,40 +477,7 @@ class GitHubAPI:
         """Get the latest release information for a repository with fallback"""
         url = f"https://api.github.com/repos/{repo}/releases/latest"
 
-        # Try GitHub App token first
-        if self.github_app_token:
-            try:
-                headers = {
-                    'Authorization': f'token {self.github_app_token}',
-                    'Accept': 'application/vnd.github.v3+json'
-                }
-                response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
-                if response.status_code == 200:
-                    release_data = response.json()
-                    assets = release_data.get('assets', [])
-
-                    # Find firmware assets
-                    zip_asset = None
-                    for asset in assets:
-                        if asset['name'].lower() == 'rom.zip':
-                            zip_asset = asset
-                            break
-
-                    return {
-                        'tag_name': release_data.get('tag_name', ''),
-                        'name': release_data.get('name', ''),
-                        'body': release_data.get('body', ''),
-                        'download_url': zip_asset['browser_download_url'] if zip_asset else None,
-                        'asset_name': zip_asset['name'] if zip_asset else None
-                    }
-                elif response.status_code == 403:
-                    silent_print(f"GitHub App rate limited for {repo}, trying PAT tokens...")
-                else:
-                    silent_print(f"GitHub App error for {repo}: {response.status_code}")
-            except Exception as e:
-                silent_print(f"GitHub App error for {repo}: {e}")
-
-        # Try with authenticated token (PAT)
+        # Try with authenticated token first (since unauthenticated is failing)
         token = self.get_next_token()
         if token:
             headers = {
@@ -737,26 +578,7 @@ class GitHubAPI:
         """Get all releases for a repository with improved performance"""
         url = f"https://api.github.com/repos/{repo}/releases"
 
-        # Try GitHub App token first
-        if self.github_app_token:
-            try:
-                headers = {
-                    'Authorization': f'token {self.github_app_token}',
-                    'Accept': 'application/vnd.github.v3+json'
-                }
-                response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
-                if response.status_code == 200:
-                    releases_data = response.json()
-                    silent_print(f"Found {len(releases_data)} total releases for {repo} using GitHub App")
-                    return self._process_releases_data(releases_data, repo)
-                elif response.status_code == 403:
-                    silent_print(f"GitHub App rate limited for {repo}, trying PAT tokens...")
-                else:
-                    silent_print(f"GitHub App error for {repo}: {response.status_code}")
-            except Exception as e:
-                silent_print(f"GitHub App error for {repo}: {e}")
-
-        # Try with authenticated token (PAT)
+        # Try with authenticated token first
         token = self.get_next_token()
         if token:
             headers = {
@@ -772,7 +594,36 @@ class GitHubAPI:
                 if response.status_code == 200:
                     releases_data = response.json()
                     silent_print(f"Found {len(releases_data)} total releases for {repo}")
-                    return self._process_releases_data(releases_data, repo)
+                    releases = []
+
+                    for release in releases_data:
+                        assets = release.get('assets', [])
+                        silent_print(f"Release {release.get('tag_name', 'Unknown')} has {len(assets)} assets")
+
+                        # Find firmware assets
+                        zip_asset = None
+                        for asset in assets:
+                            if asset['name'].lower() == 'rom.zip':
+                                zip_asset = asset
+                                silent_print(f"Found zip asset: {asset['name']}")
+                                break
+
+                        if zip_asset:  # Include releases with any zip file
+                            releases.append({
+                                'tag_name': release.get('tag_name', ''),
+                                'name': release.get('name', ''),
+                                'body': release.get('body', ''),
+                                'published_at': release.get('published_at', ''),
+                                'download_url': zip_asset['browser_download_url'],
+                                'asset_name': zip_asset['name'],
+                                'asset_size': zip_asset.get('size', 0)
+                            })
+                            silent_print(f"Added release {release.get('tag_name', 'Unknown')} with zip asset")
+                        else:
+                            silent_print(f"No zip assets found for release {release.get('tag_name', 'Unknown')}")
+
+                    silent_print(f"Returning {len(releases)} releases with zip assets")
+                    return releases
                 elif response.status_code == 401:
                     silent_print(f"Token authentication failed for {repo} - trying unauthenticated...")
                 elif response.status_code == 403:
@@ -885,41 +736,6 @@ class GitHubAPI:
         silent_print(f"No releases found for {repo} - returning empty list")
         return []
 
-    def _process_releases_data(self, releases_data, repo):
-        """Process releases data and extract zip assets"""
-        releases = []
-        
-        for release in releases_data:
-            assets = release.get('assets', [])
-            silent_print(f"Release {release.get('tag_name', 'Unknown')} has {len(assets)} assets")
-
-            # Find firmware assets
-            zip_asset = None
-            for asset in assets:
-                if asset['name'].lower() == 'rom.zip':
-                    zip_asset = asset
-                    silent_print(f"Found zip asset: {asset['name']}")
-                    break
-
-            if zip_asset:  # Include releases with any zip file
-                releases.append({
-                    'tag_name': release.get('tag_name', ''),
-                    'name': release.get('name', ''),
-                    'body': release.get('body', ''),
-                    'published_at': release.get('published_at', ''),
-                    'download_url': zip_asset['browser_download_url'],
-                    'asset_name': zip_asset['name'],
-                    'asset_size': zip_asset.get('size', 0)
-                })
-                silent_print(f"Added release {release.get('tag_name', 'Unknown')} with zip asset")
-            else:
-                silent_print(f"No zip assets found for release {release.get('tag_name', 'Unknown')}")
-
-        silent_print(f"Returning {len(releases)} releases with zip assets")
-        # Cache the successful response
-        self.cache_releases(repo, releases)
-        return releases
-
     def get_cached_releases(self, repo):
         """Get cached releases for a repository if available and not expired"""
         if repo in self.releases_cache:
@@ -1011,11 +827,15 @@ class MTKWorker(QThread):
     show_installing_image = Signal()
     show_reconnect_image = Signal()
     show_presteps_image = Signal()
+    show_initsteps_image = Signal()  # New signal for showing initsteps after first empty line
+    show_instructions_image = Signal()  # Signal for showing initsteps when instructions are displayed
     mtk_completed = Signal(bool, str)
     handshake_failed = Signal()  # New signal for handshake failures
     errno2_detected = Signal()   # New signal for errno2 errors
+    usb_io_error_detected = Signal()  # New signal for USB IO errors
     backend_error_detected = Signal()  # New signal for backend errors
     keyboard_interrupt_detected = Signal()  # New signal for keyboard interrupts
+    show_try_again_dialog = Signal()  # New signal for showing try again dialog
     disable_update_button = Signal()  # Signal to disable update button during MTK installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
@@ -1024,6 +844,7 @@ class MTKWorker(QThread):
         self.should_stop = False
         self.debug_mode = debug_mode
         self.debug_window = debug_window
+        self.initsteps_timer = None  # Timer for 1.5 second delay fallback
         
         # Platform-specific progress bar characters
         if platform.system() == "Windows":
@@ -1068,6 +889,10 @@ class MTKWorker(QThread):
                 bufsize=0,
                 universal_newlines=True
             )
+            
+            # Ensure process doesn't hang indefinitely
+            process_timeout = 300  # 5 minutes timeout
+            process_start_time = time.time()
 
             device_detected = False
             flashing_started = False
@@ -1076,21 +901,57 @@ class MTKWorker(QThread):
             backend_error_detected = False
             keyboard_interrupt_detected = False
             usb_connection_issue_detected = False
+            usb_io_error_detected = False
             last_output_line = ""
             successful_completion = False
+            first_empty_line_detected = False  # Track if we've seen the first empty line
+            initsteps_start_time = None  # Track when initsteps phase started
+            initsteps_timeout = 12  # 12 seconds timeout for initsteps phase
+            last_status_update = time.time()  # Track when status was last updated
+            status_check_interval = 2  # Check status every 2 seconds
+            current_status = ""  # Track current status message
 
             # Interruption detection variables
             progress_detected = False
             last_progress_time = None
             interruption_timeout = 3.0  # 3 seconds timeout
 
+            # Start 1.5 second timer as fallback to show initsteps if no empty line is detected
+            self.initsteps_timer = QTimer()
+            self.initsteps_timer.setSingleShot(True)
+            self.initsteps_timer.timeout.connect(lambda: self.show_initsteps_image.emit() if not first_empty_line_detected else None)
+            self.initsteps_timer.start(1500)  # 1.5 seconds
+
             while True:
+                # Check for timeout
+                if time.time() - process_start_time > process_timeout:
+                    silent_print("MTK process timeout - terminating")
+                    process.terminate()
+                    break
+                
+                # Check if we need to update status due to lack of output
+                current_time = time.time()
+                if current_time - last_status_update > status_check_interval:
+                    # If no output for a while, emit empty status to trigger instruction message
+                    # But only if we're not in a specific status state like "Please wait..." or active install
+                    if current_status not in ["Please wait...", "Please disconnect your Y1 and restart the app"] and not progress_detected:
+                        self.status_updated.emit("")
+                        self.show_instructions_image.emit()
+                        last_status_update = current_time
+                    
                 output = process.stdout.readline()
                 if output == '' and process.poll() is not None:
                     break
                 if output:
+                    # Small delay to keep GUI responsive
+                    time.sleep(0.01)  # 10ms delay
                     line = output.strip()
                     last_output_line = line  # Track the last output line
+
+                    # Check for first empty line from mtk.py and emit initsteps signal
+                    if not first_empty_line_detected and line == "":
+                        first_empty_line_detected = True
+                        self.show_initsteps_image.emit()
 
                     # Fix progress bar characters for platform compatibility
                     fixed_line = self.fix_progress_bar_chars(line)
@@ -1099,14 +960,48 @@ class MTKWorker(QThread):
                     if self.debug_mode and self.debug_window:
                         self.debug_window.append_output(f"MTK: {fixed_line}")
                     
-                    # Show latest output in status area (no extra whitespace)
-                    self.status_updated.emit(f"MTK: {fixed_line}")
+                    # Check if this is empty status or dots (awaiting connection) and show installing.png
+                    if device_detected and (fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == ""):
+                        self.show_installing_image.emit()
+                        # Mark initsteps phase start time
+                        if initsteps_start_time is None:
+                            initsteps_start_time = time.time()
+                    
+                    # Handle status message replacement for blank/dots output
+                    if fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == "":
+                        # When mtk.py only displays blank output or dots/periods, show instruction message
+                        self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
+                        current_status = "Please follow the instructions below to install the software on your Y1"
+                        # Only show initsteps image if we're not in an active install (no progress detected)
+                        if not progress_detected:
+                            self.show_instructions_image.emit()
+                        last_status_update = time.time()  # Update status time
+                        
+                        # Check if we've been in initsteps phase too long
+                        if initsteps_start_time is not None and (time.time() - initsteps_start_time) > initsteps_timeout:
+                            # Kill the process and restart
+                            if process.poll() is None:
+                                process.terminate()
+                            self.show_try_again_dialog.emit()
+                            break
+                    else:
+                        # Show latest output in status area (no extra whitespace)
+                        self.status_updated.emit(f"MTK: {fixed_line}")
+                        current_status = f"MTK: {fixed_line}"  # Track current status
+                        # Reset initsteps timer when we get real output
+                        initsteps_start_time = None
+                        last_status_update = time.time()  # Update status time
 
                     # Check for errno2 error
                     if "errno2" in line.lower():
                         errno2_error_detected = True
                         self.status_updated.emit("Errno2 detected - Innioasis Updater reinstall required")
-                        self.errno2_detected.emit()
+                    
+                    # Check for USBError(5) - Input/Output Error (SP Flash Tool sparse images)
+                    if "usberror(5" in line.lower() or "input/output error" in line.lower():
+                        usb_io_error_detected = True
+                        self.status_updated.emit("USBError(5) - ROM incompatible with Method 1")
+                        self.usb_io_error_detected.emit()
                         # Don't break here - continue reading output
 
                     # Check for handshake failed error (generalized detection)
@@ -1150,10 +1045,35 @@ class MTKWorker(QThread):
                         self.keyboard_interrupt_detected.emit()
                         # Don't break here - continue reading output
 
+                    # Check for Preloader status (indicates slow USB connection or freeze)
+                    if "preloader" in line.lower():
+                        if ".........." in line:
+                            # This indicates slow USB connection, show appropriate status - here is where we'll implement the automatic restart of the firmware installation for Method 1 - this makes more sense than the app freezing - which it almost always does in scenarios where this message will be shown
+                            self.status_updated.emit("USB connection timed out. Please force quit the app if not responding and restart it.")
+                            # Show initsteps image for instruction message
+                            self.show_instructions_image.emit()
+                            last_status_update = time.time()  # Update status time
+                        else:
+                            # Just "Preloader" without dots indicates freeze state
+                            self.status_updated.emit("MTK: Preloader")
+                            current_status = "MTK: Preloader"  # Track current status
+                            # Show initsteps image for instruction message
+                            self.show_instructions_image.emit()
+                            last_status_update = time.time()  # Update status time
+                    
+                    # Check for BROM status (indicates waiting for device)
+                    if "brom" in line.lower():
+                        # This indicates waiting for device, show please wait message
+                        self.status_updated.emit("Please wait...")
+                        current_status = "Please wait..."  # Track current status
+                        # Show presteps image for please wait status
+                        self.show_presteps_image.emit()
+                        last_status_update = time.time()  # Update status time
+                        # Don't treat this as an error, just continue
+
                     if ".Port - Device detected :)" in line:
                         device_detected = True
-                        # Switch to installing.png immediately when device is detected
-                        self.show_installing_image.emit()
+                        # Don't switch to installing.png yet - wait for proper timing
 
                     # Check if flashing has started (look for write operations)
                     if device_detected and ("Write" in line or "Progress:" in line) and not flashing_started:
@@ -1168,6 +1088,14 @@ class MTKWorker(QThread):
                     progress_detected = True
                     last_progress_time = time.time()
                     # Don't emit status message - let MTK output be displayed clearly
+                    
+                    # Check for Progress or Wrote lines to show installing.png and display output in status
+                    if "progress" in line.lower() or line.lower().startswith("wrote"):
+                        self.show_installing_image.emit()
+                        # Display the actual mtk.py output in status field
+                        self.status_updated.emit(f"MTK: {fixed_line}")
+                        current_status = f"MTK: {fixed_line}"
+                        last_status_update = time.time()
 
                     # Only show presteps if no device detected and no errors
                     if not device_detected and not usb_connection_issue_detected and not handshake_error_detected and not errno2_error_detected and not backend_error_detected and not keyboard_interrupt_detected:
@@ -1177,10 +1105,18 @@ class MTKWorker(QThread):
             if handshake_error_detected or errno2_error_detected or backend_error_detected or keyboard_interrupt_detected:
                 # Continue reading output to show user what's happening
                 while True:
+                    # Check for timeout
+                    if time.time() - process_start_time > process_timeout:
+                        silent_print("MTK process timeout during error reading - terminating")
+                        process.terminate()
+                        break
+                        
                     output = process.stdout.readline()
                     if output == '' and process.poll() is not None:
                         break
                     if output:
+                        # Small delay to keep GUI responsive
+                        time.sleep(0.01)  # 10ms delay
                         line = output.strip()
                         # Fix progress bar characters for platform compatibility
                         fixed_line = self.fix_progress_bar_chars(line)
@@ -1206,21 +1142,35 @@ class MTKWorker(QThread):
                         successful_completion = False
                     else:
                         # Check if the last progress was 100% or if process completed normally
-                        if "100%" in last_output_line or process.returncode == 0:
+                        # Also check if the last line begins with "wrote" (indicates successful completion)
+                        if "100%" in last_output_line or process.returncode == 0 or last_output_line.lower().startswith("wrote"):
                             successful_completion = True
                         else:
                             # Process stopped before 100% - likely interrupted
                             successful_completion = False
                 else:
                     # No progress was detected, check if process completed successfully
-                    if process.returncode == 0:
+                    # Also check if the last line begins with "wrote" (indicates successful completion)
+                    if process.returncode == 0 or last_output_line.lower().startswith("wrote"):
                         successful_completion = True
                     else:
                         successful_completion = False
 
         except Exception as e:
+            silent_print(f"MTK Worker error: {str(e)}")
             self.status_updated.emit(f"MTK error: {str(e)}")
             successful_completion = False
+            # Ensure process is terminated on error
+            try:
+                if 'process' in locals() and process.poll() is None:
+                    process.terminate()
+            except:
+                pass
+
+        # Clean up timer
+        if self.initsteps_timer:
+            self.initsteps_timer.stop()
+            self.initsteps_timer = None
 
         # Enable update button when returning to ready state
         self.enable_update_button.emit()
@@ -1233,6 +1183,8 @@ class MTKWorker(QThread):
             self.mtk_completed.emit(False, "Handshake failed - driver setup required")
         elif errno2_error_detected:
             self.mtk_completed.emit(False, "Errno2 error - Innioasis Updater reinstall required")
+        elif usb_io_error_detected:
+            self.mtk_completed.emit(False, "USBError(5) - ROM incompatible with Method 1")
         elif backend_error_detected:
             self.mtk_completed.emit(False, "Backend error - libusb backend issue")
         elif keyboard_interrupt_detected:
@@ -1307,16 +1259,6 @@ class DownloadWorker(QThread):
 
             self.status_updated.emit("Download completed. Extracting...")
 
-            # Create manifest file for the cached zip
-            release_info = {
-                'tag_name': self.version,
-                'name': f"{self.repo_name} {self.version}",
-                'body': f"Firmware release {self.version} for {self.repo_name}",
-                'asset_name': zip_path.name,
-                'download_url': self.download_url
-            }
-            create_manifest_for_zip(zip_path, release_info)
-
             # Extract the zip file
             extracted_files = []
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
@@ -1348,11 +1290,11 @@ class DownloadWorker(QThread):
                 size_mb = file_size / (1024 * 1024)
                 success_msg += f"- {file} ({size_mb:.1f} MB)\n"
 
-            success_msg += "\nTo flash these files to your device:\n"
-            success_msg += "1. Turn off your Y1\n"
-            success_msg += "2. Run the following command in a new terminal:\n"
-            success_msg += f"   {sys.executable} mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\n"
-            success_msg += "3. Follow the on-screen prompts to turn off your Y1"
+            success_msg += "\nFor the best results:\n"
+            success_msg += "1. Make sure your Y1 is disconnect until you're asked\n"
+            success_msg += "2. Follow the on screen guidance during the process"
+            success_msg += f""
+            success_msg += ""
 
             self.download_completed.emit(True, success_msg)
 
@@ -1413,9 +1355,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Load saved installation preferences
         QTimer.singleShot(200, self.load_installation_preferences)
-        
-        # Populate cached firmware list
-        QTimer.singleShot(150, self.populate_cached_firmware)
         
         # Restore original installation method when session ends
         QTimer.singleShot(300, self.restore_original_installation_method)
@@ -1502,6 +1441,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Ensure Innioasis Updater shortcuts are properly set up
             self.ensure_innioasis_updater_shortcuts()
+            self.ensure_innioasis_toolkit_shortcuts()
                 
         except Exception as e:
             silent_print(f"Error during shortcut cleanup: {e}")
@@ -1651,6 +1591,43 @@ class FirmwareDownloaderGUI(QMainWindow):
                             
         except Exception as e:
             silent_print(f"Error ensuring Innioasis Updater shortcuts: {e}")
+
+    def ensure_innioasis_toolkit_shortcuts(self):
+        """Ensure Innioasis Toolkit shortcuts are properly set up"""
+        try:
+            current_dir = Path.cwd()
+            innioasis_toolkit_shortcut = current_dir / "Innioasis Toolkit.lnk"
+            
+            if not innioasis_toolkit_shortcut.exists():
+                silent_print("Innioasis Toolkit.lnk not found in current directory")
+                return
+            
+            # Check desktop
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Toolkit.lnk"
+            
+            if not desktop_shortcut.exists():
+                try:
+                    shutil.copy2(innioasis_toolkit_shortcut, desktop_shortcut)
+                    silent_print(f"Added Innioasis Toolkit shortcut to desktop")
+                except Exception as e:
+                    silent_print(f"Error adding desktop shortcut: {e}")
+            
+            # Get comprehensive list of start menu paths
+            start_menu_paths = self.get_all_start_menu_paths()
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    start_menu_shortcut = start_menu_path / "Innioasis Toolkit.lnk"
+                    if not start_menu_shortcut.exists():
+                        try:
+                            shutil.copy2(innioasis_toolkit_shortcut, start_menu_shortcut)
+                            silent_print(f"Added Innioasis Toolkit shortcut to start menu: {start_menu_path}")
+                        except Exception as e:
+                            silent_print(f"Error adding start menu shortcut: {e}")
+                            
+        except Exception as e:
+            silent_print(f"Error ensuring Innioasis Toolkit shortcuts: {e}")
 
     def show_shortcut_cleanup_dialog(self, old_shortcuts):
         """Silently remove old shortcuts without user interaction"""
@@ -1879,6 +1856,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             message += "This will clean up all old Y1 Helper and related shortcuts and ensure you have:\n"
             message += "• Innioasis Updater.lnk on desktop\n"
+            message += "• Innioasis Toolkit.lnk on desktop\n"
             silent_print(f"Found {len(old_shortcuts)} old shortcuts and folders, proceeding with cleanup...")
             self.perform_comprehensive_cleanup(old_shortcuts)
                 
@@ -1914,6 +1892,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Now ensure proper shortcuts exist
             self.ensure_innioasis_updater_shortcuts()
+            self.ensure_innioasis_toolkit_shortcuts()
             
             # Show results silently
             if failed_items:
@@ -1923,7 +1902,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Successfully cleaned up {removed_count} old shortcuts and folders.")
                 silent_print("Your system now has:")
                 silent_print("• Innioasis Updater.lnk on desktop")
+                silent_print("• Innioasis Toolkit.lnk on desktop")
                 silent_print("• Innioasis Updater.lnk in Start Menu")
+                silent_print("• Innioasis Toolkit.lnk in Start Menu")
                 
         except Exception as e:
             silent_print(f"Error during cleanup: {e}")
@@ -1940,6 +1921,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Check if proper shortcuts already exist
             innioasis_updater_exists = False
             innioasis_y1_remote_exists = False
+            innioasis_toolkit_exists = False
             
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
@@ -1947,6 +1929,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         innioasis_updater_exists = True
                     if (start_menu_path / "Innioasis Y1 Remote Control.lnk").exists():
                         innioasis_y1_remote_exists = True
+                    if (start_menu_path / "Innioasis Toolkit.lnk").exists():
+                        innioasis_toolkit_exists = True
             
             # Copy missing shortcuts from current directory
             if not innioasis_updater_exists:
@@ -1968,6 +1952,17 @@ class FirmwareDownloaderGUI(QMainWindow):
                             dest_remote = start_menu_path / "Innioasis Y1 Remote Control.lnk"
                             shutil.copy2(source_remote, dest_remote)
                             silent_print(f"Added Innioasis Y1 Remote Control.lnk to {start_menu_path}")
+                            break
+            
+            if not innioasis_toolkit_exists:
+                source_toolkit = current_dir / "Innioasis Toolkit.lnk"
+                if source_toolkit.exists():
+                    # Copy to first available start menu path
+                    for start_menu_path in start_menu_paths:
+                        if start_menu_path.exists():
+                            dest_toolkit = start_menu_path / "Innioasis Toolkit.lnk"
+                            shutil.copy2(source_toolkit, dest_toolkit)
+                            silent_print(f"Added Innioasis Toolkit.lnk to {start_menu_path}")
                             break
                             
         except Exception as e:
@@ -2204,19 +2199,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Create custom buttons for troubleshooting options
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
         
-        # Show Method 2 only for Linux/Mac users, Method 2 for Windows with USBdk
-        try_method2_btn = None
+        # Show Method 2 on all platforms, SP Flash Tool only on Windows
+        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         try_method3_btn = None
-        
         if platform.system() == "Windows":
-            # Check for USBdk driver
-            driver_info = self.check_drivers_and_architecture()
-            if driver_info['has_usbdk_driver']:
-                try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
             try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
-        else:
-            # Linux/Mac: Show Method 2
-            try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         
         stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
@@ -2231,17 +2218,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Try Again - use selected installation method from settings
             remove_installation_marker()
             method = getattr(self, 'installation_method', 'guided')
-            if method == "spflash" and platform.system() == "Windows":
-                # Method 1: SP Flash Tool (Windows only)
-                self.try_method_3()
-            elif method == "guided":
-                # Method 1: Guided (Linux/Mac)
+            if method == "guided":
+                # Method 1: Kill orphan libusb processes and restart firmware install
                 self.stop_mtk_processes()
                 self.cleanup_libusb_state()
                 QTimer.singleShot(1000, self.run_mtk_command)
             elif method == "mtkclient":
                 # Method 2: Same as pressing Try Method 2
                 self.show_troubleshooting_instructions()
+            elif method == "spflash" and platform.system() == "Windows":
+                # Method 3: Same as pressing Try Method 3 (Windows only)
+                self.try_method_3()
             else:
                 # Fallback to guided method
                 self.stop_mtk_processes()
@@ -2422,7 +2409,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addWidget(help_btn)
         
         # Add Settings button (combines Tools and Settings functionality)
-        self.settings_btn = QPushButton("Settings & Tools")
+        self.settings_btn = QPushButton("Settings")
         self.settings_btn.setFixedHeight(24)  # Match dropdown height
         self.settings_btn.setStyleSheet("""
             QPushButton {
@@ -2497,39 +2484,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         package_layout.addWidget(self.package_list)
 
         left_layout.addWidget(package_group)
-
-        # Cached firmware section
-        cached_group = QGroupBox("Cached Firmware")
-        cached_layout = QVBoxLayout(cached_group)
-
-        self.cached_list = QListWidget()
-        self.cached_list.itemClicked.connect(self.on_cached_firmware_selected)
-        self.cached_list.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.cached_list.customContextMenuRequested.connect(self.show_cached_context_menu)
-
-        # Add refresh button for cached firmware
-        refresh_cached_btn = QPushButton("Refresh Cached List")
-        refresh_cached_btn.clicked.connect(self.refresh_cached_firmware)
-        refresh_cached_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #2d2d2d;
-                color: #cccccc;
-                border: 1px solid #555555;
-                padding: 4px 8px;
-                border-radius: 3px;
-                font-weight: normal;
-                font-size: 11px;
-            }
-            QPushButton:hover {
-                background-color: #3d3d3d;
-                border-color: #666666;
-            }
-        """)
-
-        cached_layout.addWidget(refresh_cached_btn)
-        cached_layout.addWidget(self.cached_list)
-
-        left_layout.addWidget(cached_group)
 
         # Download button
         self.download_btn = QPushButton("Download")
@@ -2784,7 +2738,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         status_group = QGroupBox("Status")
         status_layout = QVBoxLayout(status_group)
 
-        self.status_label = QLabel("Ready")
+        self.status_label = QLabel("Please follow the instructions below to install this software on your Y1")
         self.status_label.setWordWrap(True)
         self.status_label.setMinimumHeight(30)  # Reduced height for compact display
         self.status_label.setMaximumHeight(40)  # Added maximum height constraint
@@ -2829,6 +2783,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         splitter.addWidget(left_panel)
         splitter.addWidget(right_panel)
         splitter.setSizes([480, 720])  # Adjusted for 1220px total width
+        
+        # Store references for panel hiding/showing functionality
+        self.splitter = splitter
+        self.left_panel = left_panel
+        self.right_panel = right_panel
+        self.original_splitter_sizes = [480, 720]  # Store original sizes for restoration
+        self.panel_hidden = False  # Track panel state
 
         # Add Labs link at bottom right corner
         labs_layout = QHBoxLayout()
@@ -2922,6 +2883,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Load initial image
             self.load_presteps_image()
             
+            # Restore left panel to default state
+            self.show_left_panel()
+            
             # Update driver status bar if on Windows
             if platform.system() == "Windows":
                 self.create_driver_status_bar()
@@ -2975,6 +2939,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.mtk_worker.show_installing_image.connect(self.load_installing_image)
                 self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
                 self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
                 self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
                 self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
                 self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
@@ -2996,7 +2963,10 @@ class FirmwareDownloaderGUI(QMainWindow):
     def update_status(self, message):
         """Update the status label with a message"""
         if not message or message.strip() == "":
-            self.status_label.setText("Now please follow the instructions below")
+            self.status_label.setText("Please follow the instructions below to install this software on your Y1")
+        elif message.strip() == "MTK: Preloader":
+            # Just "MTK: Preloader" indicates freeze state
+            self.status_label.setText("Please disconnect your Y1 and restart the app")
         elif message.startswith("MTK:") and (message.strip() == "MTK:" or 
                                               message.strip() == "MTK:..........." or 
                                               message.strip() == "MTK: ..........." or
@@ -3009,9 +2979,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                                               message.strip() == "MTK: ..." or
                                               message.strip() == "MTK: .." or
                                               message.strip() == "MTK: ." or
+                                              message.strip() == "MTK: " or  # Just "MTK: " with space
+                                              message.strip().startswith("MTK:...") or  # Lines beginning with dots
+                                              message.strip().startswith("MTK:  ") or  # Lines with just spaces
                                               len(message.strip()) <= 10):  # Very short MTK messages likely indicate waiting
-            # MTK is waiting for device connection
-            self.status_label.setText("Now please follow the instructions below")
+            # MTK is waiting for device connection or showing dots/spaces
+            self.status_label.setText("Now please follow the instructions displayed below. Please force quit the app if not responding and restart it.")
         else:
             self.status_label.setText(message)
 
@@ -3021,10 +2994,14 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Installation completed successfully")
             self.load_installed_image()
             remove_installation_marker()
+            # Restore left panel after successful installation
+            self.show_left_panel()
         else:
             self.status_label.setText(f"Installation failed: {message}")
             self.load_process_ended_image()
             remove_installation_marker()
+            # Restore left panel after failed installation
+            self.show_left_panel()
 
     def handle_handshake_failure(self):
         """Handle handshake failure"""
@@ -3105,127 +3082,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec()
             
-            # Start SP Flash Tool with status display
-            self.start_sp_flash_tool_with_status()
-            
         except Exception as e:
             silent_print(f"Error showing Method 3 instructions: {e}")
-
-    def start_sp_flash_tool_with_status(self):
-        """Start SP Flash Tool with status display and image states"""
-        try:
-            # Show initial status
-            self.status_label.setText("Getting things ready")
-            self.load_please_wait_image()
-            
-            # Start flash_tool.exe process
-            flash_tool_path = Path("flash_tool.exe")
-            if not flash_tool_path.exists():
-                QMessageBox.warning(self, "Error", "flash_tool.exe not found. Please ensure SP Flash Tool is properly installed.")
-                return
-            
-            # Start the process
-            self.sp_flash_process = subprocess.Popen(
-                [str(flash_tool_path)],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                bufsize=1,
-                universal_newlines=True
-            )
-            
-            # Start monitoring the output
-            self.monitor_sp_flash_output()
-            
-        except Exception as e:
-            silent_print(f"Error starting SP Flash Tool: {e}")
-            QMessageBox.critical(self, "Error", f"Failed to start SP Flash Tool: {str(e)}")
-
-    def monitor_sp_flash_output(self):
-        """Monitor SP Flash Tool output and update status/images accordingly"""
-        try:
-            if not hasattr(self, 'sp_flash_process') or not self.sp_flash_process:
-                return
-            
-            # Read output line by line
-            for line in iter(self.sp_flash_process.stdout.readline, ''):
-                if not line:
-                    break
-                
-                line = line.strip()
-                silent_print(f"SP Flash Tool: {line}")
-                
-                # Update status based on output
-                if line.startswith("search usb"):
-                    self.status_label.setText("Getting things ready")
-                    self.load_please_wait_image()
-                elif line.startswith("usb port obtained"):
-                    self.status_label.setText("Y1 Found, getting ready")
-                    self.load_please_wait_image()
-                elif "Disconnect!" in line:
-                    self.status_label.setText("Install complete, you can now disconnect your device and power it on")
-                    self.load_installed_image()
-                    
-                    # Stop monitoring after 45 seconds
-                    QTimer.singleShot(45000, self.stop_sp_flash_tool)
-                    break
-                else:
-                    # Show progress from the exe
-                    self.status_label.setText(line)
-                    self.load_installing_image()
-            
-        except Exception as e:
-            silent_print(f"Error monitoring SP Flash Tool output: {e}")
-
-    def stop_sp_flash_tool(self):
-        """Stop SP Flash Tool and reset to normal status"""
-        try:
-            if hasattr(self, 'sp_flash_process') and self.sp_flash_process:
-                self.sp_flash_process.terminate()
-                self.sp_flash_process = None
-            
-            # Reset to normal status
-            self.status_label.setText("Ready")
-            self.load_ready_image()
-            
-        except Exception as e:
-            silent_print(f"Error stopping SP Flash Tool: {e}")
-
-    def load_please_wait_image(self):
-        """Load please_wait.png image"""
-        try:
-            image_path = Path("please_wait.png")
-            if image_path.exists():
-                pixmap = QPixmap(str(image_path))
-                if not pixmap.isNull():
-                    self._current_pixmap = pixmap
-                    self.set_image_with_aspect_ratio(pixmap)
-        except Exception as e:
-            silent_print(f"Error loading please_wait image: {e}")
-
-    def load_installing_image(self):
-        """Load installing.png image"""
-        try:
-            image_path = Path("installing.png")
-            if image_path.exists():
-                pixmap = QPixmap(str(image_path))
-                if not pixmap.isNull():
-                    self._current_pixmap = pixmap
-                    self.set_image_with_aspect_ratio(pixmap)
-        except Exception as e:
-            silent_print(f"Error loading installing image: {e}")
-
-    def load_installed_image(self):
-        """Load installed.png image"""
-        try:
-            image_path = Path("installed.png")
-            if image_path.exists():
-                pixmap = QPixmap(str(image_path))
-                if not pixmap.isNull():
-                    self._current_pixmap = pixmap
-                    self.set_image_with_aspect_ratio(pixmap)
-        except Exception as e:
-            silent_print(f"Error loading installed image: {e}")
 
     def load_method2_image(self):
         """Load Method 2 troubleshooting image"""
@@ -3275,7 +3133,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("No API tokens available")
             return
 
-        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_token)
+        self.github_api = GitHubAPI(tokens)
         silent_print(f"Loaded {len(tokens)} API tokens")
 
         # Start parallel token validation for faster startup
@@ -3372,7 +3230,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             first_token = tokens[0]
             if not first_token.startswith('github_pat_'):
                 first_token = f"github_pat_{first_token}"
-            self.github_api = GitHubAPI([first_token], self.config_downloader.github_app_token)
+            self.github_api = GitHubAPI([first_token])
             self.finish_data_loading([tokens[0]])
         else:
             self.finish_data_loading([])
@@ -3394,7 +3252,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Token {i+1}: {token[:20]}...")
 
         # Create GitHub API with properly formatted tokens
-        self.github_api = GitHubAPI(api_tokens, self.config_downloader.github_app_token)
+        self.github_api = GitHubAPI(api_tokens)
         
         # Start periodic cache cleanup
         self.github_api.cleanup_cache_periodically()
@@ -3587,9 +3445,17 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Add methods based on driver availability
         if platform.system() == "Windows" and driver_info:
-            if driver_info['has_mtk_driver']:
-                # Windows: Use SP Flash Tool exclusively (method 1 only)
-                self.method_combo.addItem("Method 1 - SP Flash Tool", "spflash")
+            if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+                # Both drivers available: All methods
+                self.method_combo.addItem("Method 1 - Guided", "guided")
+                self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
+                self.method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
+            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # Only MTK driver: Only Method 3
+                self.method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
+            elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+                # Only UsbDk driver: Only Method 2
+                self.method_combo.addItem("Method 2 - MTKclient (Only available method)", "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
@@ -3635,20 +3501,34 @@ class FirmwareDownloaderGUI(QMainWindow):
         desc_text.setReadOnly(True)
         
         if platform.system() == "Windows" and driver_info:
-            if driver_info['has_mtk_driver']:
+            if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
-Method 1 - SP Flash Tool: Manufacturer's tool (Windows only)
+Method 1 - Guided: Step-by-step with visual guidance
+Method 2 - MTKclient: Direct technical installation  
+Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
+                """)
+            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                desc_text.setPlainText("""
+Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
+Note: Install USB Development Kit driver to enable Methods 1 and 2
+                """)
+            elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
+                desc_text.setPlainText("""
+Method 2 - MTKclient: Direct technical installation (Only available method)
+Note: Install MediaTek SP Driver to enable Methods 1 and 3
                 """)
             else:
                 desc_text.setPlainText("""
 No installation methods available.
 Please install drivers to enable firmware installation.
 
-Install the MediaTek SP Driver to enable firmware installation.
+More methods will become available if you install the MediaTek SP Driver and USB Development Kit driver.
                 """)
         elif platform.system() == "Windows":
             desc_text.setPlainText("""
-Method 1 - SP Flash Tool: Manufacturer's tool (Windows only)
+Method 1 - Guided: Step-by-step with visual guidance
+Method 2 - MTKclient: Direct technical installation
+Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
             """)
         else:
             desc_text.setPlainText("""
@@ -3968,6 +3848,14 @@ Method 2 - MTKclient: Direct technical installation
                 if not dest_y1_remote.exists():
                     shutil.copy2(source_y1_remote, dest_y1_remote)
                     silent_print(f"Created desktop shortcut: Innioasis Y1 Remote Control.lnk")
+            
+            # Create Innioasis Toolkit shortcut if it exists
+            source_toolkit = current_dir / "Innioasis Toolkit.lnk"
+            if source_toolkit.exists():
+                dest_toolkit = desktop_path / "Innioasis Toolkit.lnk"
+                if not dest_toolkit.exists():
+                    shutil.copy2(source_toolkit, dest_toolkit)
+                    silent_print(f"Created desktop shortcut: Innioasis Toolkit.lnk")
                     
         except Exception as e:
             silent_print(f"Error ensuring desktop shortcuts: {e}")
@@ -4022,6 +3910,14 @@ Method 2 - MTKclient: Direct technical installation
                         if not dest_y1_remote.exists():
                             shutil.copy2(source_y1_remote, dest_y1_remote)
                             silent_print(f"Created start menu shortcut: Innioasis Y1 Remote Control.lnk")
+                    
+                    # Create Innioasis Toolkit shortcut if it exists
+                    source_toolkit = current_dir / "Innioasis Toolkit.lnk"
+                    if source_toolkit.exists():
+                        dest_toolkit = start_menu_path / "Innioasis Toolkit.lnk"
+                        if not dest_toolkit.exists():
+                            shutil.copy2(source_toolkit, dest_toolkit)
+                            silent_print(f"Created start menu shortcut: Innioasis Toolkit.lnk")
                             
         except Exception as e:
             silent_print(f"Error ensuring start menu shortcuts: {e}")
@@ -4446,133 +4342,11 @@ Method 2 - MTKclient: Direct technical installation
                         "No cached zip files found to delete."
                     )
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Error deleting cached zips: {str(e)}")
-
-    def refresh_cached_firmware(self):
-        """Refresh the cached firmware list"""
-        self.populate_cached_firmware()
-
-    def populate_cached_firmware(self):
-        """Populate the cached firmware list"""
-        self.cached_list.clear()
-        
-        cached_firmware = get_cached_firmware_list()
-        
-        if not cached_firmware:
-            item = QListWidgetItem("No cached firmware found")
-            item.setFlags(item.flags() & ~Qt.ItemIsSelectable)
-            self.cached_list.addItem(item)
-            return
-        
-        for firmware in cached_firmware:
-            release_info = firmware['release_info']
-            cached_at = firmware['cached_at']
-            file_size = firmware['file_size']
-            
-            # Format cached date
-            cached_date = datetime.datetime.fromtimestamp(cached_at).strftime("%Y-%m-%d %H:%M")
-            
-            # Format file size
-            size_mb = file_size / (1024 * 1024) if file_size > 0 else 0
-            
-            # Create display text
-            display_text = f"{release_info.get('tag_name', 'Unknown')} ({size_mb:.1f} MB)\nCached: {cached_date}"
-            
-            item = QListWidgetItem(display_text)
-            item.setData(Qt.UserRole, firmware)
-            self.cached_list.addItem(item)
-
-    def on_cached_firmware_selected(self, item):
-        """Handle cached firmware selection"""
-        firmware_data = item.data(Qt.UserRole)
-        if firmware_data:
-            self.download_btn.setEnabled(True)
-            self.download_btn.setText("Install from Cache")
-            self.selected_cached_firmware = firmware_data
-
-    def show_cached_context_menu(self, position):
-        """Show context menu for cached firmware items"""
-        item = self.cached_list.itemAt(position)
-        if item is None:
-            return
-
-        firmware_data = item.data(Qt.UserRole)
-        if firmware_data is None:
-            return
-
-        from PySide6.QtWidgets import QMenu
-
-        context_menu = QMenu(self)
-        install_action = context_menu.addAction("Install from Cache")
-        delete_action = context_menu.addAction("Delete Cached File")
-        
-        action = context_menu.exec_(self.cached_list.mapToGlobal(position))
-
-        if action == install_action:
-            self.install_from_cached_firmware(firmware_data)
-        elif action == delete_action:
-            self.delete_cached_firmware(firmware_data)
-
-    def install_from_cached_firmware(self, firmware_data):
-        """Install firmware from cached zip file"""
-        try:
-            zip_path = firmware_data['zip_file']
-            
-            if not zip_path.exists():
-                QMessageBox.warning(self, "Error", "Cached firmware file not found. Please refresh the list.")
-                return
-            
-            # Extract the cached zip file
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                zip_ref.extractall(".")
-            
-            # Check if required files exist
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
-            missing_files = []
-            for file in required_files:
-                if not Path(file).exists():
-                    missing_files.append(file)
-
-            if missing_files:
-                QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
-                return
-
-            # Show success message and start installation
-            QMessageBox.information(
+            QMessageBox.warning(
                 self,
-                "Success",
-                "Firmware files extracted from cache. Starting installation process..."
+                "Error",
+                f"Error deleting cached zip files: {e}"
             )
-            
-            # Start MTK installation
-            self.run_mtk_command()
-            
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to extract cached firmware: {str(e)}")
-
-    def delete_cached_firmware(self, firmware_data):
-        """Delete a cached firmware file"""
-        try:
-            zip_path = firmware_data['zip_file']
-            release_info = firmware_data['release_info']
-            
-            reply = QMessageBox.question(
-                self,
-                "Delete Cached Firmware",
-                f"Are you sure you want to delete the cached firmware '{release_info.get('tag_name', 'Unknown')}'?\n\nThis will free up disk space but require re-downloading if you want to install this firmware again.",
-                QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.No
-            )
-            
-            if reply == QMessageBox.Yes:
-                if delete_cached_firmware(zip_path):
-                    QMessageBox.information(self, "Success", "Cached firmware deleted successfully.")
-                    self.refresh_cached_firmware()
-                else:
-                    QMessageBox.warning(self, "Error", "Failed to delete cached firmware.")
-                    
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Error deleting cached firmware: {str(e)}")
 
     def populate_all_releases_list_progressive(self):
         """Populate the releases list progressively for all software"""
@@ -4671,7 +4445,7 @@ Method 2 - MTKclient: Direct technical installation
         reply = QMessageBox.question(
             self,
             "Get Ready",
-            "Please make sure your Y1 is NOT plugged in and press OK, then follow the next instructions.",
+            "Please disconnect the USB from your Y1 and press OK, then follow the next instructions.",
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Cancel
         )
@@ -4684,10 +4458,14 @@ Method 2 - MTKclient: Direct technical installation
             self.cleanup_libusb_state()
 
         # Create installation marker to track progress
+        
         create_installation_marker()
 
-        # Load and display the init steps image
-        self.load_initsteps_image()
+        # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
+        self.load_presteps_image()
+        
+        # Hide left panel for Method 1 installation to focus user attention on instructions
+        self.hide_left_panel()
 
         # Start MTK worker
         # Create debug window if debug mode is enabled
@@ -4699,9 +4477,12 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+        self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
         self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
         self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
+        self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
         self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
         self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
         self.mtk_worker.disable_update_button.connect(self.disable_update_button)
@@ -4731,6 +4512,8 @@ Method 2 - MTKclient: Direct technical installation
             cleanup_firmware_files()
             # Load and display installed.png for 30 seconds
             self.load_installed_image()
+            # Restore left panel after successful installation
+            self.show_left_panel()
 
             # Cancel any existing revert timer to prevent conflicts
             if hasattr(self, '_revert_timer') and self._revert_timer:
@@ -4746,6 +4529,8 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText(f"MTK command failed: {message}")
             # On Windows: First show process_ended.png image briefly, then show install error dialog
             self.load_process_ended_image()
+            # Restore left panel after failed installation
+            self.show_left_panel()
             
             # Use a timer to show the dialog after a short delay so user sees the process_ended image
             QTimer.singleShot(2000, self.show_install_error_dialog)
@@ -4824,6 +4609,7 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.show_installing_image.connect(self.load_installing_image)
             self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
             self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+            self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
             self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
             self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
             self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
@@ -4864,6 +4650,33 @@ Method 2 - MTKclient: Direct technical installation
         else:
             self.status_label.setText("Errno2 error - please reinstall Innioasis Updater")
 
+        self.download_btn.setEnabled(True)  # Re-enable download button
+        self.settings_btn.setEnabled(True)  # Re-enable settings button
+
+    def on_usb_io_error_detected(self):
+        """Handle USB IO error from MTKWorker (USBError(5) - ROM incompatible with Method 1)"""
+        # Stop the MTK worker to prevent it from continuing to run
+        if self.mtk_worker:
+            self.mtk_worker.stop()
+            self.mtk_worker.wait()  # Wait for the worker to finish
+            self.mtk_worker = None
+
+        # Show process_ended.png and dialog
+        self.load_process_ended_image()
+        
+        reply = self.show_custom_message_box(
+            "question",
+            "ROM Incompatible with Method 1",
+            "This ROM was packaged using SP Flash Tool sparse images and is incompatible with Method 1.\n\n"
+            "Windows users can try installing this ROM using Method 3 (SP Flash Tool) instead.\n\n"
+            "All our listed Available Firmwares are packaged in a way where this will not be an issue.\n\n"
+            "Click OK to return to the main screen.",
+            QMessageBox.Ok,
+            QMessageBox.Ok
+        )
+
+        # Return to ready state
+        self.revert_to_startup_state()
         self.download_btn.setEnabled(True)  # Re-enable download button
         self.settings_btn.setEnabled(True)  # Re-enable settings button
 
@@ -5161,6 +4974,8 @@ Method 2 - MTKclient: Direct technical installation
 
         self._current_pixmap = self._presteps_pixmap
         self.set_image_with_aspect_ratio(self._presteps_pixmap)
+        # Flash border to highlight the new image
+        self.flash_image_border()
 
     def load_initsteps_image(self):
         """Load initsteps image with lazy loading and platform fallback."""
@@ -5177,6 +4992,8 @@ Method 2 - MTKclient: Direct technical installation
 
         self._current_pixmap = self._initsteps_pixmap
         self.set_image_with_aspect_ratio(self._initsteps_pixmap)
+        # Flash border to highlight the new image
+        self.flash_image_border()
 
     def load_installing_image(self):
         """Load installing image with lazy loading and web fallback"""
@@ -5545,6 +5362,9 @@ Method 2 - MTKclient: Direct technical installation
 
         # Load and display presteps.png (startup state)
         self.load_presteps_image()
+        
+        # Restore left panel to default state
+        self.show_left_panel()
 
         # Reset status
         self.status_label.setText("Ready")
@@ -5621,11 +5441,6 @@ Method 2 - MTKclient: Direct technical installation
             self.mtk_worker.stop()
             self.mtk_worker.wait()
             self.mtk_worker = None
-
-        # Check if we're installing from cached firmware
-        if hasattr(self, 'selected_cached_firmware') and self.selected_cached_firmware:
-            self.install_from_cached_firmware(self.selected_cached_firmware)
-            return
 
         current_item = self.package_list.currentItem()
         if not current_item:
@@ -5896,7 +5711,7 @@ Method 2 - MTKclient: Direct technical installation
             QMessageBox.warning(self, "Error", "Failed to download API tokens. Please check your internet connection or try again later.")
             return
 
-        self.github_api = GitHubAPI(tokens, self.config_downloader.github_app_token)
+        self.github_api = GitHubAPI(tokens)
         silent_print(f"Loaded {len(tokens)} API tokens")
 
         # Download manifest
@@ -6219,8 +6034,11 @@ Method 2 - MTKclient: Direct technical installation
         # Create installation marker to track progress
         create_installation_marker()
 
-        # Load and display the init steps image
-        self.load_initsteps_image()
+        # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
+        self.load_presteps_image()
+        
+        # Hide left panel for Method 1 installation to focus user attention on instructions
+        self.hide_left_panel()
 
         # Start MTK worker
         # Create debug window if debug mode is enabled
@@ -6232,9 +6050,12 @@ Method 2 - MTKclient: Direct technical installation
         self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+        self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+        self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
         self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
         self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
         self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
+        self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
         self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
         self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
         self.mtk_worker.disable_update_button.connect(self.disable_update_button)
@@ -6265,12 +6086,13 @@ Method 2 - MTKclient: Direct technical installation
                           "5. HOLD middle button to restart\n\n"
                           "This method shows technical installation details. If it fails, try Method 3.")
         else:
-            # Linux/Mac Method 2 instructions
+            # Non-Windows baseline Method 2 instructions
             instructions = ("Please follow these steps after pressing OK:\n\n"
-                          "1. Disconnect Y1 from PC USB Port\n"
-                          "2. Use a pin to turn the Y1 off in preparation for a system software install\n"
-                          "3. Connect the Y1 to PC and wait for the install to complete\n"
-                          "4. This has to be when you press Enter\n\n"
+                          "1. INSERT Paperclip\n"
+                          "2. CONNECT Y1 via USB\n"
+                          "3. WAIT for the install to finish\n"
+                          "4. DISCONNECT your Y1\n"
+                          "5. HOLD middle button to restart\n\n"
                           "This method shows technical installation details.")
         
         msg_box = QMessageBox(self)
@@ -6769,6 +6591,78 @@ read -n 1
                 QMessageBox.error(self, "Error", "updater.py not found!")
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to run updater.py: {e}")
+
+    def hide_left_panel(self):
+        """Hide the left panel to give more space to the right panel during installation"""
+        if not self.panel_hidden and hasattr(self, 'splitter') and hasattr(self, 'left_panel'):
+            self.panel_hidden = True
+            # Store current sizes before hiding
+            self.original_splitter_sizes = self.splitter.sizes()
+            # Hide the left panel by setting its size to 0
+            self.splitter.setSizes([0, self.splitter.width()])
+            # Hide the panel completely
+            self.left_panel.hide()
+
+    def show_left_panel(self):
+        """Show the left panel and restore original layout"""
+        if self.panel_hidden and hasattr(self, 'splitter') and hasattr(self, 'left_panel'):
+            self.panel_hidden = False
+            # Show the panel
+            self.left_panel.show()
+            # Restore original sizes
+            self.splitter.setSizes(self.original_splitter_sizes)
+
+    def flash_image_border(self):
+        """Gently flash the white stroke border of the image to highlight it"""
+        if hasattr(self, 'image_label'):
+            # Store original stylesheet
+            original_style = self.image_label.styleSheet()
+            
+            # Create flashing effect with thicker white border
+            flash_style = """
+                QLabel {
+                    border: 3px solid white;
+                    border-radius: 5px;
+                }
+            """
+            
+            # Apply flash style
+            self.image_label.setStyleSheet(flash_style)
+            
+            # Restore original style after 500ms
+            QTimer.singleShot(500, lambda: self.image_label.setStyleSheet(original_style))
+
+    def show_try_again_dialog(self):
+        """Show try again dialog when user spends too long in initsteps phase"""
+        try:
+            # Stop any running MTK worker
+            if hasattr(self, 'mtk_worker') and self.mtk_worker:
+                self.mtk_worker.stop()
+                self.mtk_worker.wait()
+                self.mtk_worker = None
+            
+            # Show the try again dialog with specific instructions
+            reply = QMessageBox.question(
+                self,
+                "Connection Timeout",
+                "The device connection is taking too long. Please disconnect your Y1 and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                # Return to initsteps state to show instructions again
+                self.revert_to_startup_state()
+                # Show initsteps image to guide user
+                self.load_initsteps_image()
+            else:
+                # Return to ready state
+                self.revert_to_startup_state()
+                
+        except Exception as e:
+            silent_print(f"Error showing try again dialog: {e}")
+            # Fallback to reverting to startup state
+            self.revert_to_startup_state()
 
 if __name__ == "__main__":
     try:
