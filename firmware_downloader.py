@@ -820,6 +820,185 @@ class DebugOutputWindow(QWidget):
         self.output_text.clear()
 
 
+class SPFlashToolWorker(QThread):
+    """Worker thread for running SP Flash Tool command with real-time output"""
+
+    status_updated = Signal(str)
+    show_installing_image = Signal()
+    show_initsteps_image = Signal()
+    show_installed_image = Signal()
+    show_please_wait_image = Signal()
+    spflash_completed = Signal(bool, str)
+    disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
+    enable_update_button = Signal()   # Signal to enable update button when returning to ready state
+
+    def __init__(self):
+        super().__init__()
+        self.should_stop = False
+        # Set up the flash_tool.exe command with the XML file
+        current_dir = Path.cwd()
+        self.spflash_command = [
+            str(current_dir / "flash_tool.exe"),
+            "-i",
+            str(current_dir / "install_rom_sp.xml")
+        ]
+        
+    def stop(self):
+        """Stop the SP Flash Tool worker"""
+        self.should_stop = True
+
+    def run(self):
+        """Run the SP Flash Tool command and monitor output"""
+        try:
+            silent_print(f"Starting SP Flash Tool command: {self.spflash_command}")
+            
+            # Start the flash_tool.exe process
+            process = subprocess.Popen(
+                self.spflash_command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=0,
+                universal_newlines=True
+            )
+            
+            # Ensure process doesn't hang indefinitely
+            process_timeout = 1800  # 30 minutes timeout for SP Flash Tool
+            process_start_time = time.time()
+            
+            # Phase tracking variables
+            please_wait_phase = True  # Start with please wait phase
+            instructions_phase = False
+            installing_phase = False
+            completed_phase = False
+            
+            # Read output line by line
+            while True:
+                if self.should_stop:
+                    if process.poll() is None:
+                        process.terminate()
+                    break
+                    
+                # Check for timeout
+                if time.time() - process_start_time > process_timeout:
+                    silent_print("SP Flash Tool process timeout - terminating")
+                    process.terminate()
+                    break
+                
+                output = process.stdout.readline()
+                if output == '' and process.poll() is not None:
+                    break
+                    
+                if output:
+                    line = output.strip()
+                    silent_print(f"SP Flash Tool: {line}")
+                    
+                    # Phase detection based on flash_tool.exe output patterns
+                    
+                    # Please wait phase: Show "Please wait..." until "Search usb" is detected
+                    if please_wait_phase and not line.startswith("Search usb"):
+                        # Keep showing please wait image and status
+                        self.show_please_wait_image.emit()
+                        self.status_updated.emit("Please wait...")
+                        # Don't emit the actual flash tool output yet
+                        continue
+                    
+                    # Instructions phase: When "Search usb" is detected, show instructions
+                    elif line.startswith("Search usb"):
+                        please_wait_phase = False
+                        instructions_phase = True
+                        installing_phase = False
+                        completed_phase = False
+                        self.show_initsteps_image.emit()
+                        self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
+                        # Now start showing flash tool output
+                        self.status_updated.emit(f"Flash Tool: {line}")
+                        
+                    # Continue with instructions phase until installing phase
+                    elif instructions_phase and not installing_phase and not completed_phase:
+                        if ("Downloading" in line or
+                            "Downloading & Connecting to DA" in line or
+                            "connect DA end stage" in line or
+                            "COM port is open" in line or
+                            "Download DA now" in line or
+                            "Formatting Flash" in line or
+                            "Format Succeeded" in line or
+                            "executing DADownloadAll" in line or
+                            "DA report" in line or
+                            "% of" in line or
+                            "download speed" in line or
+                            "Download Succeeded" in line):
+                            # Transition to installing phase
+                            instructions_phase = False
+                            installing_phase = True
+                            self.show_installing_image.emit()
+                            self.disable_update_button.emit()
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        else:
+                            # Continue showing instructions and flash tool output
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        
+                    # Installing phase: Downloading and flashing operations
+                    elif installing_phase and not completed_phase:
+                        if ("Downloading" in line or
+                            "Downloading & Connecting to DA" in line or
+                            "connect DA end stage" in line or
+                            "COM port is open" in line or
+                            "Download DA now" in line or
+                            "Formatting Flash" in line or
+                            "Format Succeeded" in line or
+                            "executing DADownloadAll" in line or
+                            "DA report" in line or
+                            "% of" in line or
+                            "download speed" in line or
+                            "Download Succeeded" in line):
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        elif (line.startswith("Disconnect!") or
+                              "All command exec done!" in line or
+                              "FlashTool_EnableWatchDogTimeout" in line):
+                            # Transition to completion phase
+                            completed_phase = True
+                            installing_phase = False
+                            if line.startswith("Disconnect!"):
+                                self.show_installed_image.emit()
+                                self.status_updated.emit("Install Complete, please disconnect your Y1 and hold the center button")
+                            else:
+                                self.show_installing_image.emit()  # Use installing image for other completion indicators
+                                self.status_updated.emit(f"Flash Tool: {line}")
+                        else:
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        
+                    # Completion phase: Final cleanup and disconnection
+                    elif completed_phase:
+                        if line.startswith("Disconnect!"):
+                            self.show_installed_image.emit()
+                            self.status_updated.emit("Install Complete, please disconnect your Y1 and hold the center button")
+                        else:
+                            self.status_updated.emit(f"Flash Tool: {line}")
+                        
+                        
+                    # Other output
+                    else:
+                        self.status_updated.emit(f"Flash Tool: {line}")
+            
+            # Wait for process to complete
+            process.wait()
+            
+            # Determine success based on completion phase
+            if completed_phase:
+                silent_print("Flash Tool completed successfully")
+                self.spflash_completed.emit(True, "Flash Tool installation completed successfully")
+            else:
+                silent_print("Flash Tool did not complete successfully")
+                self.spflash_completed.emit(False, "Flash Tool installation did not complete successfully")
+                
+        except Exception as e:
+            silent_print(f"Error running Flash Tool: {e}")
+            self.spflash_completed.emit(False, f"Error running Flash Tool: {e}")
+        finally:
+            self.enable_update_button.emit()
+
+
 class MTKWorker(QThread):
     """Worker thread for running MTK command with real-time output"""
 
@@ -1367,7 +1546,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.download_worker = None
         self.mtk_worker = None
         self.images_loaded = False  # Track if images are loaded
-        self.installation_method = "guided"  # Default installation method
+        # Set default installation method based on platform
+        if platform.system() == "Windows":
+            self.installation_method = "spflash"  # Default to Method 1 (SP Flash Tool) on Windows
+        else:
+            self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
         self.always_use_method = False  # Default to one-time use
         self.debug_mode = False  # Default debug mode disabled
         
@@ -1379,6 +1562,10 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Clean up any previously extracted files at startup
         cleanup_extracted_files()
+
+        # Clean up orphaned processes at startup (Windows only)
+        if platform.system() == "Windows":
+            self.stop_flash_tool_processes()
 
         # Initialize UI first for immediate responsiveness
         self.init_ui()
@@ -2260,8 +2447,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Show Method 2 on all platforms, SP Flash Tool only on Windows
         try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         try_method3_btn = None
+        try_method4_btn = None
         if platform.system() == "Windows":
             try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
+            try_method4_btn = msg_box.addButton("Try Method 4", QMessageBox.ActionRole)
         
         stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
@@ -2276,22 +2465,40 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Try Again - use selected installation method from settings
             remove_installation_marker()
             method = getattr(self, 'installation_method', 'guided')
-            if method == "guided":
-                # Method 1: Kill orphan libusb processes and restart firmware install
-                self.stop_mtk_processes()
-                self.cleanup_libusb_state()
-                QTimer.singleShot(1000, self.run_mtk_command)
-            elif method == "mtkclient":
-                # Method 2: Same as pressing Try Method 2
-                self.show_troubleshooting_instructions()
-            elif method == "spflash" and platform.system() == "Windows":
-                # Method 3: Same as pressing Try Method 3 (Windows only)
-                self.try_method_3()
+            if platform.system() == "Windows":
+                # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
+                if method == "spflash":
+                    # Method 1: SP Flash Tool (guided)
+                    self.try_method_3()
+                elif method == "spflash4":
+                    # Method 2: SP Flash Tool Alternative
+                    self.try_method_4()
+                elif method == "guided":
+                    # Method 3: Kill orphan libusb processes and restart firmware install
+                    self.stop_mtk_processes()
+                    self.cleanup_libusb_state()
+                    QTimer.singleShot(1000, self.run_mtk_command)
+                elif method == "mtkclient":
+                    # Method 4: Same as pressing Try Method 2
+                    self.show_troubleshooting_instructions()
+                else:
+                    # Fallback to SP Flash Tool method 1
+                    self.try_method_3()
             else:
-                # Fallback to guided method
-                self.stop_mtk_processes()
-                self.cleanup_libusb_state()
-                QTimer.singleShot(1000, self.run_mtk_command)
+                # Non-Windows: Original method order
+                if method == "guided":
+                    # Method 1: Kill orphan libusb processes and restart firmware install
+                    self.stop_mtk_processes()
+                    self.cleanup_libusb_state()
+                    QTimer.singleShot(1000, self.run_mtk_command)
+                elif method == "mtkclient":
+                    # Method 2: Same as pressing Try Method 2
+                    self.show_troubleshooting_instructions()
+                else:
+                    # Fallback to guided method
+                    self.stop_mtk_processes()
+                    self.cleanup_libusb_state()
+                    QTimer.singleShot(1000, self.run_mtk_command)
         elif clicked_button == try_method2_btn and try_method2_btn:
             # Clear the marker and launch Method 2 troubleshooting
             remove_installation_marker()
@@ -3115,7 +3322,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error showing Method 2 instructions: {e}")
 
     def try_method_3(self):
-        """Try Method 3 - SP Flash Tool (Windows only)"""
+        """Try Method 3 - SP Flash Tool (Windows only) - Guided Process"""
         try:
             if platform.system() != "Windows":
                 QMessageBox.warning(
@@ -3125,24 +3332,158 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
             
-            # Load Method 3 image
-            self.load_method3_image()
+            # No need to check for shortcut since we're using flash_tool.exe directly
+            
+            # Load please wait image initially
+            self.load_please_wait_image()
             
             # Show dialog with Method 3 instructions
+            reply = QMessageBox.question(
+                self,
+                "Software Install instructions",
+                "Power off your Y1:\n"
+                "Before inserting cable, Press OK.\n\n"
+                "THEN insert the USB cable.\n\n"
+                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Ok
+            )
+            
+            if reply == QMessageBox.Cancel:
+                # Show appropriate buttons again when cancelled
+                self.show_appropriate_buttons_for_spflash()
+                return
+            
+            # No need to stop MTK processes since Method 3 uses flash_tool.exe directly
+            
+            # Check if flash_tool.exe and install_rom_sp.xml exist
+            current_dir = Path.cwd()
+            flash_tool_exe = current_dir / "flash_tool.exe"
+            install_rom_xml = current_dir / "install_rom_sp.xml"
+            
+            if not flash_tool_exe.exists():
+                # Show appropriate buttons again when flash tool is missing
+                self.show_appropriate_buttons_for_spflash()
+                QMessageBox.critical(
+                    self,
+                    "Flash Tool Not Found",
+                    "flash_tool.exe not found. Please ensure it's properly installed."
+                )
+                return
+                
+            if not install_rom_xml.exists():
+                # Show appropriate buttons again when XML is missing
+                self.show_appropriate_buttons_for_spflash()
+                QMessageBox.critical(
+                    self,
+                    "Install ROM XML Not Found",
+                    "install_rom_sp.xml not found. Please ensure it's properly installed."
+                )
+                return
+            
+            # Start the SP Flash Tool worker
+            self.spflash_worker = SPFlashToolWorker()
+            self.spflash_worker.status_updated.connect(self.status_label.setText)
+            self.spflash_worker.show_installing_image.connect(self.load_installing_image)
+            self.spflash_worker.show_initsteps_image.connect(self.load_method3_image)  # Use initsteps_sp.png for SP Flash Tool initsteps
+            self.spflash_worker.show_installed_image.connect(self.load_installed_image)  # Use installed.png for completion
+            self.spflash_worker.show_please_wait_image.connect(self.load_please_wait_image)  # Use please_wait.png for initial phase
+            self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
+            self.spflash_worker.disable_update_button.connect(self.disable_update_button)
+            self.spflash_worker.enable_update_button.connect(self.enable_update_button)
+            
+            # Hide inappropriate buttons for SP Flash Tool method
+            self.hide_inappropriate_buttons_for_spflash()
+            
+            # Disable remaining buttons during installation
+            self.settings_btn.setEnabled(False)
+            
+            # Start the worker
+            self.spflash_worker.start()
+            
+        except Exception as e:
+            silent_print(f"Error starting Method 3: {e}")
+            # Show appropriate buttons again in case of error
+            self.show_appropriate_buttons_for_spflash()
+            QMessageBox.critical(
+                self,
+                "Method 3 Error",
+                f"Failed to start SP Flash Tool:\n{e}"
+            )
+
+    def on_spflash_completed(self, success, message):
+        """Handle SP Flash Tool completion"""
+        try:
+            # Show appropriate buttons for SP Flash Tool method
+            self.show_appropriate_buttons_for_spflash()
+            
+            # Re-enable buttons
+            self.settings_btn.setEnabled(True)
+            
+            if success:
+                # Show success message and load completion image
+                self.status_label.setText("Flash Tool installation completed successfully")
+                # Load the installed completion image
+                self.load_installed_image()
+                
+                # Show success dialog
+                QMessageBox.information(
+                    self,
+                    "Installation Complete",
+                    "Flash Tool installation completed successfully!\n\n"
+                    "Please disconnect your Y1 and hold the middle button to turn it on."
+                )
+            else:
+                # Show error message
+                self.status_label.setText(f"Flash Tool installation failed: {message}")
+                QMessageBox.critical(
+                    self,
+                    "Installation Failed",
+                    f"Flash Tool installation failed:\n{message}\n\n"
+                    "Please try again or contact support if the problem persists."
+                )
+                
+        except Exception as e:
+            silent_print(f"Error handling Flash Tool completion: {e}")
+
+    def try_method_4(self):
+        """Try Method 4 - SP Flash Tool Alternative (Windows only)"""
+        try:
+            if platform.system() != "Windows":
+                QMessageBox.warning(
+                    self,
+                    "Method 4 Not Available",
+                    "Method 4 (SP Flash Tool Alternative) is only available on Windows."
+                )
+                return
+            
+            # Load Method 4 image
+            self.load_method4_image()
+            
+            # Hide inappropriate buttons for SP Flash Tool method
+            self.hide_inappropriate_buttons_for_spflash()
+            
+            # Show dialog with Method 4 instructions
             msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Method 3 - SP Flash Tool")
+            msg_box.setWindowTitle("Method 4 - SP Flash Tool Alternative")
             msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("Method 3: SP Flash Tool Installation")
+            msg_box.setText("Method 4: SP Flash Tool Alternative Installation")
             msg_box.setInformativeText(
-                "This method uses the manufacturer's SP Flash Tool. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
-                "Please ensure SP Flash Tool is installed and follow its instructions.\n\n"
+                "After you press OK:\n"
+                "Power off the Y1 device (or use a pin or paperclip to press the hidden button next to the earphone port), then insert the USB cable.\n\n"
+                "This method uses the manufacturer's SP Flash Tool as an alternative approach. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
                 "Note: This method requires the MediaTek SP Driver to be installed."
             )
             msg_box.setStandardButtons(QMessageBox.Ok)
-            msg_box.exec()
+            reply = msg_box.exec()
+            
+            # Show appropriate buttons again after dialog is closed
+            self.show_appropriate_buttons_for_spflash()
             
         except Exception as e:
-            silent_print(f"Error showing Method 3 instructions: {e}")
+            silent_print(f"Error showing Method 4 instructions: {e}")
+            # Show appropriate buttons again in case of error
+            self.show_appropriate_buttons_for_spflash()
 
     def load_method2_image(self):
         """Load Method 2 troubleshooting image"""
@@ -3161,19 +3502,73 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
     def load_method3_image(self):
-        """Load Method 3 troubleshooting image"""
+        """Load Method 3 SP Flash Tool initsteps image"""
         try:
             if not hasattr(self, '_method3_pixmap'):
-                image_path = self.get_platform_image_path("method3")
-                self._method3_pixmap = QPixmap(image_path)
+                # Use initsteps_sp.png directly (Windows-only method, no platform suffix needed)
+                image_path = Path("mtkclient/gui/images/initsteps_sp.png")
+                self._method3_pixmap = QPixmap(str(image_path))
                 if self._method3_pixmap.isNull():
-                    silent_print(f"Failed to load Method 3 image from {image_path}")
+                    silent_print(f"Failed to load Method 3 SP Flash Tool image from {image_path}")
                     return
             
             self._current_pixmap = self._method3_pixmap
             self.set_image_with_aspect_ratio(self._method3_pixmap)
         except Exception as e:
-            silent_print(f"Error loading Method 3 image: {e}")
+            silent_print(f"Error loading Method 3 SP Flash Tool image: {e}")
+
+    def load_installed_image(self):
+        """Load installed completion image"""
+        try:
+            if not hasattr(self, '_installed_pixmap'):
+                image_path = self.get_platform_image_path("installed")
+                self._installed_pixmap = QPixmap(image_path)
+                if self._installed_pixmap.isNull():
+                    silent_print(f"Failed to load installed image from {image_path}")
+                    return
+            
+            self._current_pixmap = self._installed_pixmap
+            self.set_image_with_aspect_ratio(self._installed_pixmap)
+        except Exception as e:
+            silent_print(f"Error loading installed image: {e}")
+            return
+
+    def load_please_wait_image(self):
+        """Load please wait image"""
+        try:
+            if not hasattr(self, '_please_wait_pixmap'):
+                image_path = self.get_platform_image_path("please_wait")
+                self._please_wait_pixmap = QPixmap(image_path)
+                if self._please_wait_pixmap.isNull():
+                    silent_print(f"Failed to load please wait image from {image_path}")
+                    return
+            
+            self._current_pixmap = self._please_wait_pixmap
+            self.set_image_with_aspect_ratio(self._please_wait_pixmap)
+        except Exception as e:
+            silent_print(f"Error loading please wait image: {e}")
+            return
+
+    def load_method4_image(self):
+        """Load Method 4 SP Flash Tool Alternative image"""
+        try:
+            if not hasattr(self, '_method4_pixmap'):
+                # Try method4.png first, fallback to method3.png if not found
+                image_path = self.get_platform_image_path("method4")
+                self._method4_pixmap = QPixmap(image_path)
+                if self._method4_pixmap.isNull():
+                    silent_print(f"Method 4 image not found, trying fallback to method3.png")
+                    # Fallback to method3.png
+                    fallback_path = self.get_platform_image_path("method3")
+                    self._method4_pixmap = QPixmap(fallback_path)
+                    if self._method4_pixmap.isNull():
+                        silent_print(f"Failed to load Method 4 fallback image from {fallback_path}")
+                        return
+            
+            self._current_pixmap = self._method4_pixmap
+            self.set_image_with_aspect_ratio(self._method4_pixmap)
+        except Exception as e:
+            silent_print(f"Error loading Method 4 image: {e}")
             return
 
     def load_data(self):
@@ -3505,16 +3900,18 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add methods based on driver availability
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Both drivers available: All methods
-                self.method_combo.addItem("Method 1 - Guided", "guided")
-                self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
-                self.method_combo.addItem("Method 3 - SP Flash Tool", "spflash")
+                # Both drivers available: All methods (Windows order: SP Flash Tool first, then Guided/MTKclient)
+                self.method_combo.addItem("Method 1 - SP Flash Tool", "spflash")
+                self.method_combo.addItem("Method 2 - SP Flash Tool (Alternative)", "spflash4")
+                self.method_combo.addItem("Method 3 - Guided", "guided")
+                self.method_combo.addItem("Method 4 - MTKclient", "mtkclient")
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: Only Method 3
-                self.method_combo.addItem("Method 3 - SP Flash Tool (Only available method)", "spflash")
+                # Only MTK driver: Only Method 1 and 2 (SP Flash Tool methods)
+                self.method_combo.addItem("Method 1 - SP Flash Tool (Only available method)", "spflash")
+                self.method_combo.addItem("Method 2 - SP Flash Tool (Alternative)", "spflash4")
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Only UsbDk driver: Only Method 2
-                self.method_combo.addItem("Method 2 - MTKclient (Only available method)", "mtkclient")
+                # Only UsbDk driver: Only Method 4 (MTKclient)
+                self.method_combo.addItem("Method 4 - MTKclient (Only available method)", "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
@@ -3562,19 +3959,21 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation  
-Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
+Method 1 - SP Flash Tool: Guided manufacturer's tool (Windows only)
+Method 2 - SP Flash Tool: Alternative SP Flash Tool method (Windows only)
+Method 3 - Guided: Step-by-step with visual guidance
+Method 4 - MTKclient: Direct technical installation
                 """)
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
-Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
-Note: Install USB Development Kit driver to enable Methods 1 and 2
+Method 1 - SP Flash Tool: Guided manufacturer's tool (Windows only)
+Method 2 - SP Flash Tool: Alternative SP Flash Tool method (Windows only)
+Note: Install USB Development Kit driver to enable Methods 3 and 4
                 """)
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
-Method 2 - MTKclient: Direct technical installation (Only available method)
-Note: Install MediaTek SP Driver to enable Methods 1 and 3
+Method 4 - MTKclient: Direct technical installation (Only available method)
+Note: Install MediaTek SP Driver to enable Methods 1, 2, and 3
                 """)
             else:
                 desc_text.setPlainText("""
@@ -3585,9 +3984,10 @@ More methods will become available if you install the MediaTek SP Driver and USB
                 """)
         elif platform.system() == "Windows":
             desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation
-Method 3 - SP Flash Tool: Manufacturer's tool (Windows only)
+Method 1 - SP Flash Tool: Guided manufacturer's tool (Windows only)
+Method 2 - SP Flash Tool: Alternative SP Flash Tool method (Windows only)
+Method 3 - Guided: Step-by-step with visual guidance
+Method 4 - MTKclient: Direct technical installation
             """)
         else:
             desc_text.setPlainText("""
@@ -4077,7 +4477,10 @@ Method 2 - MTKclient: Direct technical installation
                         # Clear the stored original method
                         delattr(self, '_original_installation_method')
             # Use defaults if loading fails
-            self.installation_method = "guided"
+            if platform.system() == "Windows":
+                self.installation_method = "spflash"  # Default to Method 1 (SP Flash Tool) on Windows
+            else:
+                self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
             self.always_use_method = False
 
     def populate_device_type_combo(self):
@@ -4661,6 +5064,95 @@ Method 2 - MTKclient: Direct technical installation
             self.update_btn_right.setText("Check for Utility Updates")
         # Also enable settings button when operations are complete
         self.settings_btn.setEnabled(True)
+
+    def hide_inappropriate_buttons_for_spflash(self):
+        """Hide buttons that are inappropriate for SP Flash Tool methods"""
+        try:
+            # Hide download button (SP Flash Tool uses its own ROM files)
+            if hasattr(self, 'download_btn'):
+                self.download_btn.setVisible(False)
+            
+            # Hide update button (not relevant during SP Flash Tool installation)
+            if hasattr(self, 'update_btn_right'):
+                self.update_btn_right.setVisible(False)
+            
+            # Hide install from zip button if it exists
+            # Note: This button is created dynamically, so we need to find it
+            self.hide_install_zip_button()
+            
+            silent_print("Hidden inappropriate buttons for SP Flash Tool method")
+        except Exception as e:
+            silent_print(f"Error hiding buttons for SP Flash Tool: {e}")
+
+    def show_appropriate_buttons_for_spflash(self):
+        """Show buttons that are appropriate for SP Flash Tool methods"""
+        try:
+            # Show download button (for future use)
+            if hasattr(self, 'download_btn'):
+                self.download_btn.setVisible(True)
+            
+            # Show update button (for utility updates)
+            if hasattr(self, 'update_btn_right'):
+                self.update_btn_right.setVisible(True)
+            
+            # Show install from zip button if it exists
+            self.show_install_zip_button()
+            
+            silent_print("Shown appropriate buttons for SP Flash Tool method")
+        except Exception as e:
+            silent_print(f"Error showing buttons for SP Flash Tool: {e}")
+
+    def hide_install_zip_button(self):
+        """Hide the install from zip button if it exists"""
+        try:
+            # Find the install from zip button in the layout
+            if hasattr(self, 'central_widget'):
+                self.find_and_hide_button(self.central_widget, "📦 Install from .zip")
+        except Exception as e:
+            silent_print(f"Error hiding install zip button: {e}")
+
+    def show_install_zip_button(self):
+        """Show the install from zip button if it exists"""
+        try:
+            # Find the install from zip button in the layout
+            if hasattr(self, 'central_widget'):
+                self.find_and_show_button(self.central_widget, "📦 Install from .zip")
+        except Exception as e:
+            silent_print(f"Error showing install zip button: {e}")
+
+    def find_and_hide_button(self, widget, button_text):
+        """Recursively find and hide a button by its text"""
+        try:
+            if isinstance(widget, QPushButton) and widget.text() == button_text:
+                widget.setVisible(False)
+                return True
+            
+            # Search in child widgets
+            for child in widget.findChildren(QPushButton):
+                if child.text() == button_text:
+                    child.setVisible(False)
+                    return True
+            return False
+        except Exception as e:
+            silent_print(f"Error finding and hiding button: {e}")
+            return False
+
+    def find_and_show_button(self, widget, button_text):
+        """Recursively find and show a button by its text"""
+        try:
+            if isinstance(widget, QPushButton) and widget.text() == button_text:
+                widget.setVisible(True)
+                return True
+            
+            # Search in child widgets
+            for child in widget.findChildren(QPushButton):
+                if child.text() == button_text:
+                    child.setVisible(True)
+                    return True
+            return False
+        except Exception as e:
+            silent_print(f"Error finding and showing button: {e}")
+            return False
 
     def on_handshake_failed(self):
         """Handle handshake failed error from MTKWorker"""
@@ -5802,30 +6294,55 @@ Method 2 - MTKclient: Direct technical installation
         always_use = getattr(self, 'always_use_method', False)
         silent_print(f"Handling installation method: {method} (always use: {always_use})")
         
-        if method == "guided":
-            # Method 1: Normal guided process (default behavior)
-            silent_print("=== RUNNING GUIDED INSTALLATION ===")
-            silent_print("The MTK flash command will now run in this application.")
-            silent_print("Please turn off your Y1 when prompted.")
-            self.run_mtk_command()
-            
-        elif method == "mtkclient":
-            # Method 2: MTKclient method - same as pressing "Try Method 2" in troubleshooting
-            silent_print("=== RUNNING MTKCLIENT METHOD ===")
-            # Show Method 2 image and launch recovery firmware install
-            self.load_method2_image()
-            self.show_troubleshooting_instructions()
-                        
-        elif method == "spflash" and platform.system() == "Windows":
-            # Method 3: SP Flash Tool method - same as pressing "Try Method 3" in troubleshooting
-            silent_print("=== RUNNING SP FLASH TOOL METHOD ===")
-            # Show Method 3 image and launch SP Flash Tool
-            self.load_method3_image()
-            self.try_method_3()
+        if platform.system() == "Windows":
+            # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
+            if method == "spflash":
+                # Method 1: SP Flash Tool (guided) - same as pressing "Try Method 3" in troubleshooting
+                silent_print("=== RUNNING SP FLASH TOOL METHOD 1 ===")
+                # Show Method 3 image and launch SP Flash Tool
+                self.load_method3_image()
+                self.try_method_3()
+            elif method == "spflash4":
+                # Method 2: SP Flash Tool Alternative - same as pressing "Try Method 4" in troubleshooting
+                silent_print("=== RUNNING SP FLASH TOOL METHOD 2 ===")
+                # Show Method 4 image and launch SP Flash Tool Alternative
+                self.load_method4_image()
+                self.try_method_4()
+            elif method == "guided":
+                # Method 3: Normal guided process
+                silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 3) ===")
+                silent_print("The MTK flash command will now run in this application.")
+                silent_print("Please turn off your Y1 when prompted.")
+                self.run_mtk_command()
+            elif method == "mtkclient":
+                # Method 4: MTKclient method - same as pressing "Try Method 2" in troubleshooting
+                silent_print("=== RUNNING MTKCLIENT METHOD 4 ===")
+                # Show Method 2 image and launch recovery firmware install
+                self.load_method2_image()
+                self.show_troubleshooting_instructions()
+            else:
+                # Fallback to SP Flash Tool method 1 if invalid method
+                silent_print("=== FALLING BACK TO SP FLASH TOOL METHOD 1 ===")
+                self.load_method3_image()
+                self.try_method_3()
         else:
-            # Fallback to guided method if invalid method or SP Flash Tool on non-Windows
-            silent_print("=== FALLING BACK TO GUIDED METHOD ===")
-            self.run_mtk_command()
+            # Non-Windows: Original method order
+            if method == "guided":
+                # Method 1: Normal guided process (default behavior)
+                silent_print("=== RUNNING GUIDED INSTALLATION ===")
+                silent_print("The MTK flash command will now run in this application.")
+                silent_print("Please turn off your Y1 when prompted.")
+                self.run_mtk_command()
+            elif method == "mtkclient":
+                # Method 2: MTKclient method - same as pressing "Try Method 2" in troubleshooting
+                silent_print("=== RUNNING MTKCLIENT METHOD ===")
+                # Show Method 2 image and launch recovery firmware install
+                self.load_method2_image()
+                self.show_troubleshooting_instructions()
+            else:
+                # Fallback to guided method if invalid method
+                silent_print("=== FALLING BACK TO GUIDED METHOD ===")
+                self.run_mtk_command()
         
         # If this was a one-time use method, reset to guided for next time
         # But don't reset if we forced Method 3 due to missing UsbDk driver
@@ -6110,10 +6627,12 @@ Method 2 - MTKclient: Direct technical installation
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
         try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
         
-        # Only show Method 3 (SP Flash Tool) button on Windows
+        # Only show Method 3 and 4 (SP Flash Tool) buttons on Windows
         try_method3_btn = None
+        try_method4_btn = None
         if platform.system() == "Windows":
             try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
+            try_method4_btn = msg_box.addButton("Try Method 4", QMessageBox.ActionRole)
         
         stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
         exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
@@ -6129,21 +6648,37 @@ Method 2 - MTKclient: Direct technical installation
             # Try Again - use selected installation method from settings
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
             method = getattr(self, 'installation_method', 'guided')
-            if method == "guided":
-                # Method 1: Show unplug Y1 prompt and retry normal installation
-                # Don't clear marker here - it will be cleared after successful installation
-                self.show_unplug_prompt_and_retry()
-            elif method == "mtkclient":
-                # Method 2: Same as pressing Try Method 2
-                remove_installation_marker()
-                self.show_troubleshooting_instructions()
-            elif method == "spflash" and platform.system() == "Windows":
-                # Method 3: Same as pressing Try Method 3 (Windows only)
-                remove_installation_marker()
-                self.try_method_3()
+            if platform.system() == "Windows":
+                # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
+                if method == "spflash":
+                    # Method 1: SP Flash Tool (Windows only)
+                    remove_installation_marker()
+                    self.try_method_3()
+                elif method == "spflash4":
+                    # Method 2: SP Flash Tool Alternative (Windows only)
+                    remove_installation_marker()
+                    self.try_method_4()
+                elif method == "guided":
+                    # Method 3: Show unplug Y1 prompt and retry normal installation
+                    # Don't clear marker here - it will be cleared after successful installation
+                    self.show_unplug_prompt_and_retry()
+                elif method == "mtkclient":
+                    # Method 4: Same as pressing Try Method 2
+                    remove_installation_marker()
+                    self.show_troubleshooting_instructions()
             else:
-                # Fallback to guided method
-                self.show_unplug_prompt_and_retry()
+                # Non-Windows: Original method order
+                if method == "guided":
+                    # Method 1: Show unplug Y1 prompt and retry normal installation
+                    # Don't clear marker here - it will be cleared after successful installation
+                    self.show_unplug_prompt_and_retry()
+                elif method == "mtkclient":
+                    # Method 2: Same as pressing Try Method 2
+                    remove_installation_marker()
+                    self.show_troubleshooting_instructions()
+                else:
+                    # Fallback to guided method
+                    self.show_unplug_prompt_and_retry()
         elif clicked_button == try_method2_btn:
             # Try Method 2 (MTKclient)
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
@@ -6152,10 +6687,16 @@ Method 2 - MTKclient: Direct technical installation
             self.show_troubleshooting_instructions()
         elif clicked_button == try_method3_btn and try_method3_btn:
             # Try Method 3 (SP Flash Tool)
-            self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
-            # Clear the marker and open SP Flash Tool shortcut (Windows only)
+            # No need to terminate MTK processes since Method 3 uses flash_tool.exe directly
+            # Clear the marker and start SP Flash Tool (Windows only)
             remove_installation_marker()
             self.try_method_3()
+        elif clicked_button == try_method4_btn and try_method4_btn:
+            # Try Method 4 (SP Flash Tool Alternative)
+            # No need to terminate MTK processes since Method 4 uses flash_tool.exe directly
+            # Clear the marker and start SP Flash Tool Alternative (Windows only)
+            remove_installation_marker()
+            self.try_method_4()
         elif clicked_button == stop_install_btn:
             # Stop install and return to ready state
             remove_installation_marker()
@@ -6259,6 +6800,60 @@ Method 2 - MTKclient: Direct technical installation
         if reply == QMessageBox.Ok:
             # Launch recovery firmware installer (platform-specific)
             self.launch_recovery_firmware_install()
+
+    def stop_flash_tool_processes(self):
+        """Stop any running flash_tool.exe processes to prevent conflicts on Windows"""
+        if platform.system() != "Windows":
+            return  # Only needed on Windows
+            
+        try:
+            # Use tasklist to find flash_tool.exe processes
+            result = subprocess.run(
+                ["tasklist", "/FI", "IMAGENAME eq flash_tool.exe", "/FO", "CSV"],
+                capture_output=True,
+                text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
+            
+            if result.returncode == 0:
+                lines = result.stdout.strip().split('\n')
+                flash_tool_processes = []
+                
+                for line in lines[1:]:  # Skip header line
+                    if 'flash_tool.exe' in line:
+                        # Extract PID from CSV format
+                        parts = line.split(',')
+                        if len(parts) >= 2:
+                            pid = parts[1].strip('"')
+                            if pid.isdigit():
+                                flash_tool_processes.append(pid)
+                
+                if flash_tool_processes:
+                    silent_print(f"Found {len(flash_tool_processes)} flash_tool.exe processes, stopping them...")
+                    
+                    # Stop each flash_tool.exe process
+                    for pid in flash_tool_processes:
+                        try:
+                            subprocess.run(
+                                ["taskkill", "/PID", pid, "/F"],
+                                capture_output=True,
+                                creationflags=subprocess.CREATE_NO_WINDOW
+                            )
+                        except Exception as e:
+                            silent_print(f"Failed to stop flash_tool.exe process {pid}: {e}")
+                    
+                    # Give processes time to terminate
+                    import time
+                    time.sleep(1)
+                    
+                    silent_print(f"Stopped {len(flash_tool_processes)} flash_tool.exe processes")
+                else:
+                    silent_print("No flash_tool.exe processes found")
+            else:
+                silent_print("Could not check for flash_tool.exe processes")
+                
+        except Exception as e:
+            silent_print(f"Error checking for flash_tool.exe processes: {e}")
 
     def stop_mtk_processes(self):
         """Stop any running mtk.py processes to prevent libusb conflicts on Windows"""
@@ -6385,66 +6980,6 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText("Libusb cleanup failed, continuing anyway")
             # Continue anyway - this is not critical
 
-    def try_method_3(self):
-        """Open SP Flash Tool shortcut for Windows users"""
-        # Show method3 image when SP Flash Tool method is displayed
-        self.load_method3_image()
-        
-        # Check if shortcut exists, download if missing
-        if not self.ensure_sp_flash_tool_shortcut():
-            return
-            
-        try:
-            # Look for the SP Flash Tool shortcut in the same directory as firmware_downloader.py
-            current_dir = Path.cwd()
-            sp_flash_tool_lnk = current_dir / "Recover Firmware Install - SP Flash Tool.lnk"
-            
-            # Show SP Flash Tool specific instructions popup
-            reply = QMessageBox.question(
-                self,
-                "SP Flash Tool Instructions - Method 3",
-                "Please follow these steps after you click OK:\n\n"
-                "1. CONNECT Y1 via USB\n"
-                "2. INSERT Paperclip\n"
-                "3. WAIT for the installation to finish in the recovery window\n"
-                "4. DISCONNECT the USB and...\n"
-                "5. hold middle button on Y1 to turn it on\n\n"
-                "This method uses the manufacturer's SP Flash Tool. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
-                "Click OK when ready to open SP Flash Tool.",
-                QMessageBox.Ok | QMessageBox.Cancel,
-                QMessageBox.Ok
-            )
-            
-            if reply == QMessageBox.Cancel:
-                return
-            
-            # Stop mtk.py processes and clean up libusb state before opening SP Flash Tool
-            self.stop_mtk_processes()
-            self.cleanup_libusb_state()
-            
-            # Launch the SP Flash Tool shortcut
-            if platform.system() == "Windows":
-                # On Windows, use os.startfile to launch the .lnk file
-                os.startfile(str(sp_flash_tool_lnk))
-                self.status_label.setText("SP Flash Tool opened successfully")
-            else:
-                # This should never happen since the button is only shown on Windows
-                QMessageBox.information(
-                    self,
-                    "Platform Not Supported",
-                    "SP Flash Tool is only available on Windows systems."
-                )
-                
-        except Exception as e:
-            self.status_label.setText(f"Error opening SP Flash Tool: {e}")
-            
-            # Show error message
-            QMessageBox.critical(
-                self,
-                "Launch Error",
-                f"Failed to open SP Flash Tool:\n{e}\n\n"
-                "Please try launching it manually."
-            )
 
     def launch_recovery_firmware_install(self):
         """Launch the recovery firmware installer"""
@@ -6647,19 +7182,19 @@ read -n 1
             available_methods = []
             can_install_firmware = False
         elif has_mtk_driver and has_usbdk_driver:
-            # Both drivers available: All methods available
-            available_methods = ['guided', 'mtkclient', 'spflash']
+            # Both drivers available: All methods available (Windows order: SP Flash Tool first, then Guided/MTKclient)
+            available_methods = ['spflash', 'spflash4', 'guided', 'mtkclient']
         elif has_mtk_driver and not has_usbdk_driver:
-            # Only MTK driver: Force Method 3 (SP Flash Tool) for this session
-            # This acts as though the user selected Method 3 from settings but without ticking "use as default"
-            available_methods = ['spflash']
+            # Only MTK driver: Force Method 1 and 2 (SP Flash Tool) for this session
+            # This acts as though the user selected Method 1 or 2 from settings but without ticking "use as default"
+            available_methods = ['spflash', 'spflash4']
             can_install_firmware = True  # Explicitly set to True for MTK-only
             # Temporarily override installation method for this session only
             if not hasattr(self, '_original_installation_method'):
                 self._original_installation_method = getattr(self, 'installation_method', 'guided')
             self.installation_method = "spflash"
         elif not has_mtk_driver and has_usbdk_driver:
-            # Only UsbDk driver: Force Method 2 (MTKclient) for this session
+            # Only UsbDk driver: Force Method 4 (MTKclient) for this session
             available_methods = ['mtkclient']
             can_install_firmware = True  # Explicitly set to True for UsbDk-only
             # Temporarily override installation method for this session only
@@ -6672,9 +7207,9 @@ read -n 1
             can_install_firmware = False
         
         # Summary of driver combinations:
-        # - Both drivers: All 3 methods available
-        # - MTK only: Method 3 (SP Flash Tool) only
-        # - UsbDk only: Method 2 (MTKclient) only  
+        # - Both drivers: All 4 methods available (SP Flash Tool first, then Guided/MTKclient)
+        # - MTK only: Method 1 and 2 (SP Flash Tool) only
+        # - UsbDk only: Method 4 (MTKclient) only  
         # - No drivers: No methods available
         # - ARM64: No methods available (firmware download only)
         
