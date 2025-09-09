@@ -1563,6 +1563,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Clean up any previously extracted files at startup
         cleanup_extracted_files()
 
+        # Clean up orphaned processes at startup (Windows only)
+        if platform.system() == "Windows":
+            self.stop_flash_tool_processes()
+
         # Initialize UI first for immediate responsiveness
         self.init_ui()
 
@@ -3338,7 +3342,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self,
                 "SP Flash Tool Instructions - Method 3",
                 "After you press OK:\n"
-                "Insert the cable USB into the Y1 and use a pin or paperclip to press the hidden button next to the earphone port.\n\n"
+                "Power off the Y1 device (or use a pin or paperclip to press the hidden button next to the earphone port), then insert the USB cable.\n\n"
                 "This method uses the manufacturer's SP Flash Tool with guided monitoring.\n\n"
                 "Click OK when ready to start SP Flash Tool.",
                 QMessageBox.Ok | QMessageBox.Cancel,
@@ -3466,7 +3470,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setText("Method 4: SP Flash Tool Alternative Installation")
             msg_box.setInformativeText(
                 "After you press OK:\n"
-                "Insert the cable USB into the Y1 and use a pin or paperclip to press the hidden button next to the earphone port.\n\n"
+                "Power off the Y1 device (or use a pin or paperclip to press the hidden button next to the earphone port), then insert the USB cable.\n\n"
                 "This method uses the manufacturer's SP Flash Tool as an alternative approach. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
                 "Note: This method requires the MediaTek SP Driver to be installed."
             )
@@ -3501,9 +3505,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Load Method 3 SP Flash Tool initsteps image"""
         try:
             if not hasattr(self, '_method3_pixmap'):
-                # Use initsteps_sp.png for SP Flash Tool method
-                image_path = self.get_platform_image_path("initsteps_sp")
-                self._method3_pixmap = QPixmap(image_path)
+                # Use initsteps_sp.png directly (Windows-only method, no platform suffix needed)
+                image_path = Path("mtkclient/gui/images/initsteps_sp.png")
+                self._method3_pixmap = QPixmap(str(image_path))
                 if self._method3_pixmap.isNull():
                     silent_print(f"Failed to load Method 3 SP Flash Tool image from {image_path}")
                     return
@@ -6644,25 +6648,37 @@ Method 2 - MTKclient: Direct technical installation
             # Try Again - use selected installation method from settings
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
             method = getattr(self, 'installation_method', 'guided')
-            if method == "guided":
-                # Method 1: Show unplug Y1 prompt and retry normal installation
-                # Don't clear marker here - it will be cleared after successful installation
-                self.show_unplug_prompt_and_retry()
-            elif method == "mtkclient":
-                # Method 2: Same as pressing Try Method 2
-                remove_installation_marker()
-                self.show_troubleshooting_instructions()
-            elif method == "spflash" and platform.system() == "Windows":
-                # Method 3: Same as pressing Try Method 3 (Windows only)
-                remove_installation_marker()
-                self.try_method_3()
-            elif method == "spflash4" and platform.system() == "Windows":
-                # Method 4: Same as pressing Try Method 4 (Windows only)
-                remove_installation_marker()
-                self.try_method_4()
+            if platform.system() == "Windows":
+                # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
+                if method == "spflash":
+                    # Method 1: SP Flash Tool (Windows only)
+                    remove_installation_marker()
+                    self.try_method_3()
+                elif method == "spflash4":
+                    # Method 2: SP Flash Tool Alternative (Windows only)
+                    remove_installation_marker()
+                    self.try_method_4()
+                elif method == "guided":
+                    # Method 3: Show unplug Y1 prompt and retry normal installation
+                    # Don't clear marker here - it will be cleared after successful installation
+                    self.show_unplug_prompt_and_retry()
+                elif method == "mtkclient":
+                    # Method 4: Same as pressing Try Method 2
+                    remove_installation_marker()
+                    self.show_troubleshooting_instructions()
             else:
-                # Fallback to guided method
-                self.show_unplug_prompt_and_retry()
+                # Non-Windows: Original method order
+                if method == "guided":
+                    # Method 1: Show unplug Y1 prompt and retry normal installation
+                    # Don't clear marker here - it will be cleared after successful installation
+                    self.show_unplug_prompt_and_retry()
+                elif method == "mtkclient":
+                    # Method 2: Same as pressing Try Method 2
+                    remove_installation_marker()
+                    self.show_troubleshooting_instructions()
+                else:
+                    # Fallback to guided method
+                    self.show_unplug_prompt_and_retry()
         elif clicked_button == try_method2_btn:
             # Try Method 2 (MTKclient)
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
@@ -6784,6 +6800,60 @@ Method 2 - MTKclient: Direct technical installation
         if reply == QMessageBox.Ok:
             # Launch recovery firmware installer (platform-specific)
             self.launch_recovery_firmware_install()
+
+    def stop_flash_tool_processes(self):
+        """Stop any running flash_tool.exe processes to prevent conflicts on Windows"""
+        if platform.system() != "Windows":
+            return  # Only needed on Windows
+            
+        try:
+            # Use tasklist to find flash_tool.exe processes
+            result = subprocess.run(
+                ["tasklist", "/FI", "IMAGENAME eq flash_tool.exe", "/FO", "CSV"],
+                capture_output=True,
+                text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
+            
+            if result.returncode == 0:
+                lines = result.stdout.strip().split('\n')
+                flash_tool_processes = []
+                
+                for line in lines[1:]:  # Skip header line
+                    if 'flash_tool.exe' in line:
+                        # Extract PID from CSV format
+                        parts = line.split(',')
+                        if len(parts) >= 2:
+                            pid = parts[1].strip('"')
+                            if pid.isdigit():
+                                flash_tool_processes.append(pid)
+                
+                if flash_tool_processes:
+                    silent_print(f"Found {len(flash_tool_processes)} flash_tool.exe processes, stopping them...")
+                    
+                    # Stop each flash_tool.exe process
+                    for pid in flash_tool_processes:
+                        try:
+                            subprocess.run(
+                                ["taskkill", "/PID", pid, "/F"],
+                                capture_output=True,
+                                creationflags=subprocess.CREATE_NO_WINDOW
+                            )
+                        except Exception as e:
+                            silent_print(f"Failed to stop flash_tool.exe process {pid}: {e}")
+                    
+                    # Give processes time to terminate
+                    import time
+                    time.sleep(1)
+                    
+                    silent_print(f"Stopped {len(flash_tool_processes)} flash_tool.exe processes")
+                else:
+                    silent_print("No flash_tool.exe processes found")
+            else:
+                silent_print("Could not check for flash_tool.exe processes")
+                
+        except Exception as e:
+            silent_print(f"Error checking for flash_tool.exe processes: {e}")
 
     def stop_mtk_processes(self):
         """Stop any running mtk.py processes to prevent libusb conflicts on Windows"""
