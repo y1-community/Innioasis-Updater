@@ -886,9 +886,210 @@
             color: #495057;
             text-decoration: underline;
         }
+
+        /* Checklist Styles */
+        .checklist {
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #f1f3f4;
+            border-color: #dee2e6;
+        }
+
+        .checklist-content h5 {
+            margin: 0 0 8px 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .checklist-content p {
+            margin: 0 0 12px 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Dark mode support for checklist items */
+        body[data-theme="dark"] .checklist-item {
+            background: #2c2c2e;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .checklist-item:hover {
+            background: #3a3a3c;
+            border-color: #5a5a5c;
+        }
+
+        body[data-theme="dark"] .checklist-content h5 {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .checklist-content p {
+            color: #c7c7cc;
+        }
+
+        .checklist-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .info-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-btn:hover {
+            background: #5a6268;
+            transform: scale(1.1);
+        }
+
+        .skip-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        .skip-link:hover {
+            color: #495057;
+            text-decoration: underline;
+        }
+
+        /* Info Modal Styles */
+        .info-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-modal.show {
+            display: flex;
+        }
+
+        .info-modal-content {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .info-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .info-modal h3 {
+            margin: 0 0 16px 0;
+            color: #2c3e50;
+        }
+
+        .info-modal p {
+            margin: 0 0 12px 0;
+            line-height: 1.6;
+        }
+
+        .info-modal .highlight {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 16px 0;
+        }
+
+        .info-modal .highlight strong {
+            color: #856404;
+        }
+
+        /* Dark mode support for info modal */
+        body[data-theme="dark"] .info-modal-content {
+            background: #2c2c2e;
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .info-modal h3 {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .info-modal p {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .info-modal .highlight {
+            background: #3a3a3c;
+            border-color: #5a5a5c;
+        }
+
+        body[data-theme="dark"] .info-modal .highlight strong {
+            color: #ffd700;
+        }
+
+        body[data-theme="dark"] .info-modal-close {
+            color: #c7c7cc;
+        }
     </style>
 </head>
 <body>
+    <!-- Driver Info Modal -->
+    <div class="info-modal" id="driverInfoModal">
+        <div class="info-modal-content">
+            <button class="info-modal-close" onclick="closeDriverInfo()">×</button>
+            <h3>📥 MediaTek Driver Installation Info</h3>
+            <p>When installing the MediaTek driver, you may see a dialog asking about removing the "origin driver". Here's what to do:</p>
+            
+            <div class="highlight">
+                <strong>Important:</strong> If the installer asks "Remove origin driver?", click <strong>Yes</strong>. This is normal and helps ensure the driver works properly with your Y1 device.
+            </div>
+            
+            <p>This step is necessary because:</p>
+            <ul>
+                <li>It removes any conflicting drivers that might interfere</li>
+                <li>It ensures the MediaTek driver has full control over USB communication</li>
+                <li>It prevents driver conflicts that could cause connection issues</li>
+            </ul>
+            
+            <p>After installation, restart your computer as prompted to complete the setup.</p>
+        </div>
+    </div>
+
     <div class="container">
         <div class="header">
             <img src="mtkclient/gui/images/icon.png" alt="Innioasis Icon" class="header-icon">
@@ -967,12 +1168,18 @@
                 <h4>Getting Started</h4>
                 <p>Before we can install the updater, you'll need two drivers so your computer can talk to your Y1 properly:</p>
                 
-                <div class="driver-downloads">
-                    <div class="driver-item">
-                        <p><strong>MediaTek Driver:</strong> This lets your computer recognize your Y1 device</p>
-                        <button class="btn btn-primary" onclick="downloadDriver('mtk')">📥 Download MediaTek Driver</button>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <div class="checklist-content">
+                            <h5>📥 MediaTek Driver</h5>
+                            <p>This helps your computer recognize your Y1 device</p>
+                            <div class="checklist-actions">
+                                <button class="btn btn-primary" onclick="downloadDriver('mtk')">Download MediaTek Driver</button>
+                                <button class="info-btn" onclick="showDriverInfo()" title="Important installation info">Help</button>
+                                <a href="#" onclick="markDriverComplete(); return false;" class="skip-link">Already done this</a>
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
                 
                 <div class="step-actions">
@@ -1131,6 +1338,13 @@
             setupEventListeners();
             detectUserOS();
             checkSavedTheme();
+            
+            // Close driver info modal when clicking outside
+            document.getElementById('driverInfoModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeDriverInfo();
+                }
+            });
         });
 
         // Detect user's operating system and update CTA banner
@@ -1197,6 +1411,44 @@
                     alert('🎉 Download started! The Windows installer is downloading to your Downloads folder.');
                 }, 1000);
             }
+            
+            // Auto-advance to next step after a short delay
+            setTimeout(() => {
+                nextWindowsStep();
+            }, 1500);
+        }
+
+        // Driver Info Modal Functions
+        function showDriverInfo() {
+            const modal = document.getElementById('driverInfoModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeDriverInfo() {
+            const modal = document.getElementById('driverInfoModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Checklist Functions
+        function markDriverComplete() {
+            // Mark the driver as complete and move to next step
+            const checklistItem = document.querySelector('.checklist-item');
+            if (checklistItem) {
+                checklistItem.style.opacity = '0.6';
+                checklistItem.style.textDecoration = 'line-through';
+                checklistItem.querySelector('.checklist-actions').innerHTML = '<span style="color: #28a745; font-weight: bold;">✓ Completed</span>';
+            }
+            
+            // Auto-advance to next step after a short delay
+            setTimeout(() => {
+                nextWindowsStep();
+            }, 1500);
         }
 
         function downloadDriver(driverType) {
@@ -1601,7 +1853,7 @@
                         </div>
                         <div class="download-section">
                             <button class="automatic-install-btn" onclick="goToInnioasisApp(event)">
-                                ⚡ Automatic Install at Innioasis.app
+                                ⚡ Get Innioasis Updater
                             </button>
                             <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
                                 📦 Download .zip for manual install
@@ -1778,6 +2030,11 @@
                     alert('🎉 Download started! The DMG file is downloading to your Downloads folder.');
                 }, 1000);
             }
+            
+            // Auto-advance to next step after a short delay
+            setTimeout(() => {
+                nextMacStep();
+            }, 1500);
         }
 
         function nextMacStep() {

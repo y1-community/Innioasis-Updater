@@ -567,87 +567,6 @@
             opacity: 1;
         }
 
-        /* CTA Banner */
-        .cta-banner {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            z-index: 1000;
-            max-width: 240px;
-            text-align: center;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .cta-banner.fade-out {
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-        }
-
-        .cta-banner:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-        }
-
-        .cta-banner h3 {
-            margin: 0 0 6px 0;
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .cta-banner p {
-            margin: 0 0 10px 0;
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
-        .cta-banner .cta-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 6px 14px;
-            border-radius: 18px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .cta-banner .cta-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-
-        .cta-banner .close-btn {
-            position: absolute;
-            top: 6px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 11px;
-            line-height: 1;
-            transition: all 0.3s ease;
-        }
-
-        .cta-banner .close-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
 
         /* Mobile Banner Styles */
         .mobile-banner {
@@ -734,240 +653,399 @@
             gap: 5px;
         }
 
-        /* Platform-specific dialog styles */
-        .platform-dialog {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            z-index: 2000;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            display: none;
-        }
-
-        .platform-dialog.show {
-            display: block;
-        }
-
-        .platform-dialog h3 {
-            color: #e74c3c;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .platform-dialog p {
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: #333;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .platform-dialog strong {
-            color: #333;
-            font-weight: 700;
-        }
-
-        .platform-dialog a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .platform-dialog a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-
-        .platform-dialog .btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-
-        .platform-dialog .btn:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-        }
-
-        .platform-dialog .btn-secondary {
-            background: #6c757d;
-        }
-
-        .platform-dialog .btn-secondary:hover {
-            background: #5a6268;
-        }
-
-        .command-display {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            position: relative;
-        }
-
-        .command-display code {
-            background: transparent;
-            color: #495057;
-            font-size: 14px;
-            word-break: break-all;
-            display: block;
-            line-height: 1.4;
-        }
-
-        /* Windows Installation Steps */
-        .windows-step {
-            text-align: left;
-            margin: 20px 0;
-        }
-
-        .driver-downloads {
-            margin: 20px 0;
-        }
-
-        .driver-item {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid #28a745;
-        }
-
-        .driver-item p {
-            margin: 0 0 10px 0;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .driver-item .btn {
-            margin: 0;
-        }
-
-        /* macOS Installation Steps */
-        .mac-step {
-            text-align: left;
-            margin: 20px 0;
-        }
-
-        .step-content {
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .step-content h4 {
-            color: #667eea;
-            margin: 0 0 15px 0;
-            font-size: 1.2rem;
-        }
-
-        .step-content p {
-            margin: 12px 0;
-            line-height: 1.6;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .step-content ol {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-
-        .step-content li {
-            margin: 8px 0;
-            line-height: 1.5;
-        }
-
-        .step-actions {
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .step-actions .btn {
-            margin: 0 10px;
-        }
-
-        .alternative-install {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #dee2e6;
-        }
-
-        .alternative-link {
-            color: #6c757d;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .alternative-link:hover {
-            color: #495057;
-            text-decoration: underline;
-        }
-
-        .homebrew-link {
-            color: #e74c3c;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .homebrew-link:hover {
-            text-decoration: underline;
-        }
-
-        .apple-guide-link {
-            color: #007aff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .apple-guide-link:hover {
-            text-decoration: underline;
-        }
-
-        .btn-primary {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #218838;
-        }
-
-        .dialog-overlay {
+        /* Install Guide Modal Styles */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 1999;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .modal-content {
+                background: #2c2c2e;
+                color: #ffffff;
+            }
+        }
+
+        /* Install Guide Styles */
+        .install-guide {
+            padding: 0;
+        }
+
+        .guide-header {
+            background: linear-gradient(135deg, #ff6b35, #0084d4);
+            color: white;
+            padding: 20px;
+            border-radius: 16px 16px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .guide-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .guide-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .guide-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Platform selector */
+        .platform-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 20px;
+        }
+
+        .platform-card {
+            background: #f8f9fa;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .platform-card {
+                background: #3a3a3c;
+                border-color: #48484a;
+                color: #ffffff;
+            }
+        }
+
+        .platform-card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .platform-card.selected {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 132, 212, 0.1));
+        }
+
+        .platform-card .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .platform-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .platform-card p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.3;
+        }
+
+        .platform-card .status {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00d4aa;
+        }
+
+        .platform-card .status.preview {
+            background: #ffb800;
+        }
+
+        /* Installation guide content */
+        .installation-guide {
+            padding: 20px;
             display: none;
         }
 
-        .dialog-overlay.show {
+        .installation-guide.show {
             display: block;
+        }
+
+        /* Steps */
+        .step {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .step {
+                background: #3a3a3c;
+            }
+        }
+
+        .step h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .step ol, .step ul {
+            margin-left: 18px;
+            margin-bottom: 14px;
+        }
+
+        .step li {
+            margin-bottom: 6px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 6px 6px 6px 0;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #e2e8f0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .btn-secondary {
+                background: #3a3a3c;
+                color: #ffffff;
+                border-color: #48484a;
+            }
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .btn-secondary:hover {
+                background: #48484a;
+            }
+        }
+
+        .btn-success {
+            background: #00d4aa;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #00b894;
+            transform: translateY(-1px);
+        }
+
+        .btn-warning {
+            background: #ffb800;
+            color: #333;
+        }
+
+        .btn-warning:hover {
+            background: #e6a800;
+            transform: translateY(-1px);
+        }
+
+        /* Download sections */
+        .download-section {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px;
+            margin: 14px 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .download-section {
+                background: #2c2c2e;
+                border-color: #48484a;
+            }
+        }
+
+        .download-section h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .download-section p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-step .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .progress-step.completed .step-number {
+            background: #00d4aa;
+            color: white;
+        }
+
+        .progress-step .step-label {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-label {
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .progress-step.completed .step-label {
+            color: #00d4aa;
+            font-weight: 600;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+
+        .progress-line .fill {
+            height: 100%;
+            background: #ff6b35;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .modal-overlay {
+                padding: 10px;
+            }
+
+            .platform-selector {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin: 15px;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 6px 0;
+            }
         }
 
         /* Responsive Design */
@@ -1080,9 +1158,293 @@
                 gap: 20px;
             }
         }
+
+        /* CTA Banner Styles */
+        .cta-banner {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            max-width: 300px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .cta-banner.fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .cta-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+
+        .cta-banner h3 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-banner p {
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .cta-banner .cta-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .cta-banner .cta-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .cta-banner .close-btn {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .cta-banner .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-banner.fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Checklist Styles */
+        .checklist {
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #f1f3f4;
+            border-color: #dee2e6;
+        }
+
+        .checklist-content h5 {
+            margin: 0 0 8px 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .checklist-content p {
+            margin: 0 0 12px 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Dark mode support for checklist items */
+        body[data-theme="dark"] .checklist-item {
+            background: #2c2c2e;
+            border-color: #48484a;
+        }
+
+        body[data-theme="dark"] .checklist-item:hover {
+            background: #3a3a3c;
+            border-color: #5a5a5c;
+        }
+
+        body[data-theme="dark"] .checklist-content h5 {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .checklist-content p {
+            color: #c7c7cc;
+        }
+
+        .checklist-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .info-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-btn:hover {
+            background: #5a6268;
+            transform: scale(1.1);
+        }
+
+        .skip-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        .skip-link:hover {
+            color: #495057;
+            text-decoration: underline;
+        }
+
+        /* Info Modal Styles */
+        .info-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-modal.show {
+            display: flex;
+        }
+
+        .info-modal-content {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .info-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .info-modal h3 {
+            margin: 0 0 16px 0;
+            color: #2c3e50;
+        }
+
+        .info-modal p {
+            margin: 0 0 12px 0;
+            line-height: 1.6;
+        }
+
+        .info-modal .highlight {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 16px 0;
+        }
+
+        .info-modal .highlight strong {
+            color: #856404;
+        }
+
+        /* Dark mode support for info modal */
+        body[data-theme="dark"] .info-modal-content {
+            background: #2c2c2e;
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .info-modal h3 {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .info-modal p {
+            color: #c7c7cc;
+        }
+
+        body[data-theme="dark"] .info-modal .highlight {
+            background: #3a3a3c;
+            border-color: #5a5a5c;
+        }
+
+        body[data-theme="dark"] .info-modal .highlight strong {
+            color: #ffd700;
+        }
+
+        body[data-theme="dark"] .info-modal-close {
+            color: #c7c7cc;
+        }
     </style>
 </head>
 <body style="overscroll-behavior-x: auto;">
+    <!-- CTA Banner -->
+    <div class="cta-banner" id="ctaBanner">
+        <button class="close-btn" onclick="closeCTABanner()">×</button>
+        <h3>🚀 Get Innioasis Updater</h3>
+        <p id="ctaDescription">Download the desktop app for your platform</p>
+        <button onclick="showInstallGuide()" class="cta-btn" id="ctaButton">Get Started</button>
+    </div>
+
     <div class="container">
         <!-- Header Section -->
         <div class="header">
@@ -1207,13 +1569,6 @@
         </div>
     </div>
 
-    <!-- CTA Banner -->
-    <div class="cta-banner" id="ctaBanner">
-        <button class="close-btn" onclick="closeCTABanner()">×</button>
-        <h3>🚀 Get Innioasis Updater</h3>
-        <p id="ctaDescription">Download the desktop app for your platform</p>
-        <button onclick="downloadForPlatform()" class="cta-btn" id="ctaButton">Download</button>
-    </div>
 
     <!-- Mobile/Non-Desktop Banner -->
     <div class="mobile-banner" id="mobileBanner" style="display: none;">
@@ -1227,179 +1582,314 @@
         </div>
     </div>
 
-    <!-- Platform-specific dialogs -->
-    <div class="dialog-overlay" id="dialogOverlay"></div>
-    
-    <!-- Windows Dialog -->
-    <div class="platform-dialog" id="windowsDialog">
-        <h3>🪟 Windows Installation</h3>
-        
-        <!-- Step 1: Getting Started -->
-        <div class="windows-step" id="windowsStep1">
-            <div class="step-content">
-                <h4>Getting Started</h4>
-                <p>Before we can install the updater, you'll need two drivers so your computer can talk to your Y1 properly:</p>
-                
-                <div class="driver-downloads">
-                    <div class="driver-item">
-                        <p><strong>MediaTek Driver:</strong> This lets your computer recognize your Y1 device</p>
-                        <button class="btn btn-primary" onclick="downloadDriver('mtk')">📥 Download MediaTek Driver</button>
+    <!-- Driver Info Modal -->
+    <div class="info-modal" id="driverInfoModal">
+        <div class="info-modal-content">
+            <button class="info-modal-close" onclick="closeDriverInfo()">×</button>
+            <h3>📥 MediaTek Driver Installation Info</h3>
+            <p>When installing the MediaTek driver, you may see a dialog asking about removing the "origin driver". Here's what to do:</p>
+            
+            <div class="highlight">
+                <strong>Important:</strong> If the installer asks "Remove origin driver?", click <strong>Yes</strong>. This is normal and helps ensure the driver works properly with your Y1 device.
+            </div>
+            
+            <p>This step is necessary because:</p>
+            <ul>
+                <li>It removes any conflicting drivers that might interfere</li>
+                <li>It ensures the MediaTek driver has full control over USB communication</li>
+                <li>It prevents driver conflicts that could cause connection issues</li>
+            </ul>
+            
+            <p>After installation, restart your computer as prompted to complete the setup.</p>
+        </div>
+    </div>
+
+    <!-- Install Guide Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="install-guide">
+                <!-- Header -->
+                <div class="guide-header">
+                    <button class="guide-close-btn" onclick="closeInstallGuide()">×</button>
+                    <h2>🚀 Innioasis Updater for Y1</h2>
+                    <p>Windows, Mac and Linux compatible firmware installation - it's easier than you think!</p>
+                </div>
+
+                <!-- Platform Selector -->
+                <div class="platform-selector">
+                    <div class="platform-card" data-platform="windows" onclick="selectPlatform('windows')">
+                        <span class="icon">🪟</span>
+                        <h3>Windows</h3>
+                        <p>Works great on Windows 10 & 11</p>
+                        <span class="status ready"></span>
                     </div>
                     
+                    <div class="platform-card" data-platform="mac" onclick="selectPlatform('mac')">
+                        <span class="icon">🍎</span>
+                        <h3>macOS</h3>
+                        <p>Ventura and later</p>
+                        <span class="status ready"></span>
+                    </div>
+                    
+                    <div class="platform-card" data-platform="linux" onclick="selectPlatform('linux')">
+                        <span class="icon">🐧</span>
+                        <h3>Linux</h3>
+                        <p>Ubuntu recommended</p>
+                        <span class="status ready"></span>
+                    </div>
                 </div>
-                
-                <div class="step-actions">
-                    <button class="btn btn-primary" onclick="nextWindowsStep()">Next →</button>
-                    <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Step 2: Install & Run -->
-        <div class="windows-step" id="windowsStep2" style="display: none;">
-            <div class="step-content">
-                <h4>Install & Run</h4>
-                <p>Now let's get the actual updater app:</p>
-                <button class="btn btn-primary" onclick="downloadWindows()">📥 Download Windows Installer</button>
-                
-                <div class="step-actions">
-                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back</button>
-                    <button class="btn btn-primary" onclick="nextWindowsStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Step 3: Final Steps -->
-        <div class="windows-step" id="windowsStep3" style="display: none;">
-            <div class="step-content">
-                <h4>Almost Done!</h4>
-                <p>Here's what to do next:</p>
-                <ol>
-                    <li>Install the MediaTek driver you downloaded</li>
-                    <li>Install the Innioasis Updater</li>
-                    <li><strong>Restart your computer</strong></li>
-                    <li>Launch Innioasis Updater from the Start Menu</li>
-                </ol>
-                
-                <p><strong>Important:</strong> Don't skip the restart - it makes sure everything works properly!</p>
-                
-                <div class="step-actions">
-                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back</button>
-                    <button class="btn btn-primary" onclick="closeDialog()">Finish</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- macOS Dialog -->
-    <div class="platform-dialog" id="macDialog">
-        <h3>🍎 macOS Installation</h3>
-        
-        <!-- Step 1: Prerequisites -->
-        <div class="mac-step" id="macStep1">
-            <div class="step-content">
-                <h4>First Things First</h4>
-                <p>Before we can install the updater, you'll need <a href="https://github.com/Homebrew/brew/releases/latest" target="_blank" class="homebrew-link">Homebrew</a> on your Mac.</p>
-                <p>Think of Homebrew as a helper that makes sure all the pieces work together properly.</p>
-                
-                <div class="step-actions">
-                    <button class="btn btn-primary" onclick="nextMacStep()">Next →</button>
-                    <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
+                <!-- Windows Installation Guide -->
+                <div class="installation-guide" id="windows-guide">
+                    <div class="progress-bar">
+                        <div class="progress-line">
+                            <div class="fill" id="windows-progress"></div>
+                        </div>
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Drivers</div>
+                        </div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Download</div>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Install</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Drivers -->
+                    <div class="step" id="windows-step-1">
+                        <h4>Step 1: Get the Right Drivers</h4>
+                        <p>Your computer needs to know how to talk to your Y1. Complete these tasks:</p>
+                        
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <div class="checklist-content">
+                                    <h5>📥 MediaTek Driver</h5>
+                                    <p>This helps your computer recognize your Y1 device</p>
+                                    <div class="checklist-actions">
+                                        <button class="btn btn-primary" onclick="downloadDriver('mtk')">Download MediaTek Driver</button>
+                                        <button class="info-btn" onclick="showDriverInfo()" title="Important installation info">Help</button>
+                                        <a href="#" onclick="markDriverComplete(); return false;" class="skip-link">Already done this</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 16px;">
+                            <button class="btn btn-success" onclick="nextWindowsStep()">Next: Download the App →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Download App -->
+                    <div class="step" id="windows-step-2" style="display: none;">
+                        <h4>Step 2: Download Innioasis Updater</h4>
+                        <p>Now let's get the actual app that will handle your firmware updates:</p>
+                        
+                        <div class="download-section">
+                            <h5>📱 Innioasis Updater for Windows</h5>
+                            <p>This is the main app that will guide you through updating your Y1</p>
+                            <button class="btn btn-primary" onclick="downloadWindows()">Download Windows Installer</button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 16px;">
+                            <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Drivers</button>
+                            <button class="btn btn-success" onclick="nextWindowsStep()">Next: Installation →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Installation -->
+                    <div class="step" id="windows-step-3" style="display: none;">
+                        <h4>Step 3: Install Everything</h4>
+                        <p>Almost there! Here's what to do next:</p>
+                        
+                        <ol>
+                            <li>Install the MediaTek driver you downloaded</li>
+                            <li>Install Innioasis Updater</li>
+                            <li><strong>Restart your computer</strong> (this is important!)</li>
+                            <li>Launch Innioasis Updater from the Start Menu</li>
+                        </ol>
+                        
+                        <div style="text-align: center; margin-top: 16px;">
+                            <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Download</button>
+                            <button class="btn btn-success" onclick="closeInstallGuide()">Finish Setup</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- macOS Installation Guide -->
+                <div class="installation-guide" id="mac-guide">
+                    <div class="progress-bar">
+                        <div class="progress-line">
+                            <div class="fill" id="mac-progress"></div>
+                        </div>
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Homebrew</div>
+                        </div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Download</div>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Install</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Homebrew -->
+                    <div class="step" id="mac-step-1">
+                        <h4>Step 1: Install Homebrew</h4>
+                        <p>Homebrew is like a package manager that helps install all the pieces your Mac needs. Think of it as a helpful assistant that makes sure everything works together properly.</p>
+                        
+                        <div class="download-section">
+                            <h5>📥 Get Homebrew</h5>
+                            <p>Click the button below to visit the Homebrew website and follow their simple installation guide:</p>
+                            <button class="btn btn-primary" onclick="openHomebrew()">Visit Homebrew Website</button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 16px;">
+                            <button class="btn btn-success" onclick="nextMacStep()">Next: Download the App →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Download App -->
+                    <div class="step" id="mac-step-2" style="display: none;">
+                        <h4>Step 2: Download Innioasis Updater</h4>
+                        <p>Now let's get the actual app. Click the button below and it'll start downloading to your Downloads folder:</p>
+                        
+                        <div class="download-section">
+                            <h5>📱 Innioasis Updater for Mac</h5>
+                            <p>This will download a .dmg file (disk image) to your Downloads folder</p>
+                            <button class="btn btn-primary" onclick="downloadMac()">Download for Mac</button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 16px;">
+                            <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Homebrew</button>
+                            <button class="btn btn-success" onclick="nextMacStep()">Next: Installation →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Installation -->
+                    <div class="step" id="mac-step-3" style="display: none;">
+                        <h4>Step 3: Install the App</h4>
+                        <p>Now let's get the app installed on your Mac:</p>
+                        
+                        <ol>
+                            <li>Double-click the downloaded .dmg file (it'll look like a disk image)</li>
+                            <li>Drag the Innioasis Updater app to your Applications folder</li>
+                            <li>Open it from your Applications folder</li>
+                        </ol>
+                        
+                        <div class="download-section">
+                            <h5>🔒 Security Settings</h5>
+                            <p>You might need to tell your Mac it's okay to run this app. The exact steps depend on your macOS version:</p>
+                            <button class="btn btn-warning" onclick="openMacSecurityGuide()">Open Security Guide</button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 16px;">
+                            <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Download</button>
+                            <button class="btn btn-success" onclick="closeInstallGuide()">Finish Setup</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linux Installation Guide -->
+                <div class="installation-guide" id="linux-guide">
+                    <div class="step">
+                        <h4>Linux Installation</h4>
+                        <p>Linux users, you're in luck! Ubuntu works best, but most other distributions should work too. We'll open a comprehensive guide that shows you exactly what to install.</p>
+                        
+                        <div class="download-section">
+                            <h5>📖 Installation Guide</h5>
+                            <p>Click the button below to open detailed Linux installation instructions:</p>
+                            <button class="btn btn-primary" onclick="openLinuxGuide()">Open Linux Guide</button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 16px;">
+                            <button class="btn btn-secondary" onclick="closeInstallGuide()">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Step 2: Download -->
-        <div class="mac-step" id="macStep2" style="display: none;">
-            <div class="step-content">
-                <h4>Grab the App</h4>
-                <p>Now let's download the actual updater app. Click the button below and it'll start downloading to your Downloads folder:</p>
-                <button class="btn btn-primary" onclick="downloadMacDMG()">📥 Download for Mac</button>
-                
-                <div class="step-actions">
-                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back</button>
-                    <button class="btn btn-primary" onclick="nextMacStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Step 3: Installation -->
-        <div class="mac-step" id="macStep3" style="display: none;">
-            <div class="step-content">
-                <h4>Almost Done!</h4>
-                <p>Now let's get the app installed:</p>
-                <ol>
-                    <li>Double-click the downloaded file (it'll look like a disk image)</li>
-                    <li>Drag the Innioasis Updater app to your Applications folder</li>
-                    <li>Open it from your Applications folder</li>
-                </ol>
-                
-                <p><strong>Important:</strong> You might need to <a href="#" id="appleGuideLink" target="_blank" class="apple-guide-link">tell your Mac it's okay to run this app</a> in System Preferences - Security & Privacy.</p>
-                
-                <div class="step-actions">
-                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back</button>
-                    <button class="btn btn-primary" onclick="closeDialog()">Finish</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Alternative Install Method Link -->
-        <div class="alternative-install">
-            <a href="#" onclick="showMacTerminalInstall(); return false;" class="alternative-link">
-                🔧 .app not working? Try this in Terminal
-            </a>
-        </div>
-    </div>
-
-    <!-- Linux Dialog -->
-    <div class="platform-dialog" id="linuxDialog">
-        <h3>🐧 Linux Installation</h3>
-        <p>Linux users, you're in luck! Ubuntu works best, but most other versions should work too. We'll open a guide that shows you exactly what to install.</p>
-        <button class="btn" onclick="openLinuxInstructions()">Open Instructions</button>
-        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
-    </div>
-
-    <!-- Windows ARM64 Dialog -->
-    <div class="platform-dialog" id="windowsArmDialog">
-        <h3>🪟 Windows ARM64</h3>
-        <p>If you're using a newer Windows device with ARM64 (like some Surface tablets), you might be able to run the Linux version instead. It's a bit more advanced, but we'll show you how.</p>
-        <button class="btn" onclick="openLinuxInstructions()">View Linux Instructions</button>
-        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
-    </div>
-
-    <!-- ChromeOS/FydeOS Dialog -->
-    <div class="platform-dialog" id="chromeosDialog">
-        <h3>🖥️ ChromeOS/FydeOS</h3>
-        <p>ChromeOS users, you might be able to run this in Linux mode! We haven't tested it thoroughly, but it's worth a shot. We'll show you the Linux instructions to try.</p>
-        <p><em>Note: This is experimental - it might work, it might not. But hey, no harm in trying!</em></p>
-        <button class="btn" onclick="openLinuxInstructions()">View Linux Instructions</button>
-        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
-    </div>
-
-    <!-- Platform Guides Dialog (for mobile users) -->
-    <div class="platform-dialog" id="platformGuidesDialog">
-        <h3>🌍 Choose Your Device</h3>
-        <p>Pick what you're using and we'll show you exactly how to get started:</p>
-        <div class="platform-guides-grid">
-            <button class="btn platform-guide-btn" onclick="navigateToPlatform('windowsDialog')">🪟 Windows</button>
-            <button class="btn platform-guide-btn" onclick="navigateToPlatform('macDialog')">🍎 macOS</button>
-            <button class="btn platform-guide-btn" onclick="navigateToPlatform('linuxDialog')">🐧 Linux</button>
-        </div>
-        <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
 
     <script>
+        // CTA Banner Functions
+        function closeCTABanner() {
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'none';
+                // Store preference in localStorage
+                localStorage.setItem('innioasisCtaBannerClosed', 'true');
+            }
+        }
+
+        // Driver Info Modal Functions
+        function showDriverInfo() {
+            const modal = document.getElementById('driverInfoModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeDriverInfo() {
+            const modal = document.getElementById('driverInfoModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Checklist Functions
+        function markDriverComplete() {
+            // Mark the driver as complete and move to next step
+            const checklistItem = document.querySelector('.checklist-item');
+            if (checklistItem) {
+                checklistItem.style.opacity = '0.6';
+                checklistItem.style.textDecoration = 'line-through';
+                checklistItem.querySelector('.checklist-actions').innerHTML = '<span style="color: #28a745; font-weight: bold;">✓ Completed</span>';
+            }
+            
+            // Auto-advance to next step after a short delay
+            setTimeout(() => {
+                nextWindowsStep();
+            }, 1500);
+        }
+
+        // Check if banner was previously closed
+        function checkBannerPreference() {
+            // For now, always show the banner (remove localStorage check)
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'block';
+            }
+        }
+
         // Add some interactive features
         document.addEventListener('DOMContentLoaded', function() {
-            // Detect user's operating system and update CTA banner
+            // Detect user's operating system and update main download button
             detectUserOS();
-            checkBannerPreference();
             checkSavedTheme();
+            // Check if banner was previously closed
+            checkBannerPreference();
             
-            // Add scroll listener for banner fade-out
-            window.addEventListener('scroll', checkDownloadButtonVisibility);
-            // Check initially
-            checkDownloadButtonVisibility();
+            // Add fade-in animation to banner
+            const banner = document.getElementById('ctaBanner');
+            if (banner && banner.style.display !== 'none') {
+                banner.classList.add('fade-in');
+            }
+
+            // Close driver info modal when clicking outside
+            document.getElementById('driverInfoModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeDriverInfo();
+                }
+            });
             
             // Add smooth scrolling for any anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1461,12 +1951,11 @@
             }
         });
 
-        // Detect user's operating system and update CTA banner
+        // Detect user's operating system and update main download button
         function detectUserOS() {
             const userAgent = navigator.userAgent;
             let os = 'Windows';
-            let downloadText = 'Download for Windows';
-            let isArm64 = false;
+            let downloadText = 'Setup'; // Platform agnostic text
             let isMobile = false;
             
             // Check if it's a mobile device
@@ -1476,65 +1965,26 @@
                 downloadText = 'View Setup Guides';
             } else if (userAgent.includes('Mac')) {
                 os = 'macOS';
-                downloadText = 'Setup on Mac';
+                downloadText = 'Setup'; // Platform agnostic
             } else if (userAgent.includes('Linux')) {
                 os = 'Linux';
-                downloadText = 'Download for Linux';
+                downloadText = 'Setup'; // Platform agnostic
             } else if (userAgent.includes('CrOS') || userAgent.includes('FydeOS')) {
                 os = 'ChromeOS/FydeOS';
-                downloadText = 'Try Linux Mode';
-            }
-            
-            // Check for Windows ARM64
-            if (userAgent.includes('Windows') && (userAgent.includes('ARM64') || userAgent.includes('ARM'))) {
-                isArm64 = true;
-                downloadText = 'Download for Windows ARM64';
+                downloadText = 'Setup'; // Platform agnostic
             }
             
             // Store platform info globally
-            window.userPlatform = { os, isArm64, isMobile };
+            window.userPlatform = { os, isMobile };
             
             // Show appropriate banner based on platform
             if (isMobile) {
                 showMobileBanner();
                 hideCTABanner();
             } else {
-                showCTABanner();
                 hideMobileBanner();
-                updateCTABanner(os, downloadText);
-            }
-        }
-
-        // Show/hide CTA banner
-        function showCTABanner() {
-            const banner = document.getElementById('ctaBanner');
-            if (banner) {
-                banner.style.display = 'block';
-            }
-        }
-
-        function hideCTABanner() {
-            const banner = document.getElementById('ctaBanner');
-            if (banner) {
-                banner.style.display = 'none';
-            }
-        }
-
-        function updateCTABanner(os, downloadText) {
-            const ctaTitle = document.querySelector('#ctaBanner h3');
-            const ctaDesc = document.querySelector('#ctaBanner p');
-            const ctaBtn = document.querySelector('#ctaBanner .cta-btn');
-            
-            if (ctaTitle && ctaDesc && ctaBtn) {
-                ctaTitle.textContent = `🚀 Get Innioasis Updater`;
-                ctaDesc.textContent = `Download the desktop app for ${os}`;
-                ctaBtn.textContent = downloadText;
-            }
-            
-            // Also update the main download button
-            const mainDownloadText = document.getElementById('mainDownloadText');
-            if (mainDownloadText) {
-                mainDownloadText.textContent = downloadText;
+                showCTABanner();
+                updateMainDownloadButton(os, downloadText);
             }
         }
 
@@ -1557,81 +2007,121 @@
             hideMobileBanner();
         }
 
-        // Show platform guides dialog
-        function showPlatformGuides() {
-            showDialog('platformGuidesDialog');
+        // Show/hide CTA banner
+        function showCTABanner() {
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'block';
+            }
         }
 
-        // Close CTA banner
-        function closeCTABanner() {
+        function hideCTABanner() {
             const banner = document.getElementById('ctaBanner');
             if (banner) {
                 banner.style.display = 'none';
-                // Store preference in localStorage
-                localStorage.setItem('ctaBannerClosed', 'true');
             }
         }
 
-        // Check if banner was previously closed
-        function checkBannerPreference() {
-            // Only check preference for desktop users
-            if (!window.userPlatform?.isMobile && localStorage.getItem('ctaBannerClosed') === 'true') {
-                const banner = document.getElementById('ctaBanner');
-                if (banner) {
-                    banner.style.display = 'none';
-                }
+        // Show platform guides dialog
+        function showPlatformGuides() {
+            showInstallGuide();
+        }
+
+        function updateMainDownloadButton(os, downloadText) {
+            // Update the main download button
+            const mainDownloadText = document.getElementById('mainDownloadText');
+            if (mainDownloadText) {
+                mainDownloadText.textContent = downloadText;
             }
         }
 
-        // Check if download button is visible and fade out banner
-        function checkDownloadButtonVisibility() {
-            const downloadBtn = document.querySelector('.download-btn');
-            const banner = document.getElementById('ctaBanner');
-            
-            if (downloadBtn && banner) {
-                const rect = downloadBtn.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        // Show install guide modal
+        function showInstallGuide() {
+            const modal = document.getElementById('modalOverlay');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
                 
-                if (isVisible) {
-                    banner.classList.add('fade-out');
-                } else {
-                    banner.classList.remove('fade-out');
+                // Auto-detect OS and select appropriate platform
+                const userAgent = navigator.userAgent;
+                let platform = 'windows'; // default
+                
+                if (userAgent.includes('Mac')) {
+                    platform = 'mac';
+                } else if (userAgent.includes('Linux')) {
+                    platform = 'linux';
+                } else if (userAgent.includes('CrOS') || userAgent.includes('FydeOS')) {
+                    platform = 'linux'; // ChromeOS/FydeOS users should use Linux instructions
                 }
+                
+                // Automatically select the detected platform
+                setTimeout(() => {
+                    selectPlatform(platform);
+                }, 100); // Small delay to ensure modal is fully rendered
+            }
+        }
+
+        // Close install guide modal
+        function closeInstallGuide() {
+            const modal = document.getElementById('modalOverlay');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+            
+            // Reset platform selection
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.installation-guide').forEach(guide => {
+                guide.classList.remove('show');
+            });
+            
+            currentPlatform = null;
+            currentStep = 1;
+        }
+
+        // Platform selection
+        function selectPlatform(platform) {
+            // Hide all guides
+            document.querySelectorAll('.installation-guide').forEach(guide => {
+                guide.classList.remove('show');
+            });
+            
+            // Remove selection from all platform cards
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Select the clicked platform
+            document.querySelector(`[data-platform="${platform}"]`).classList.add('selected');
+            
+            // Show appropriate guide
+            if (platform === 'windows') {
+                document.getElementById('windows-guide').classList.add('show');
+                currentPlatform = 'windows';
+                currentStep = 1;
+                updateProgress('windows', 1);
+            } else if (platform === 'mac') {
+                document.getElementById('mac-guide').classList.add('show');
+                currentPlatform = 'mac';
+                currentStep = 1;
+                updateProgress('mac', 1);
+            } else if (platform === 'linux') {
+                document.getElementById('linux-guide').classList.add('show');
+                currentPlatform = 'linux';
             }
         }
 
         // Platform-specific download functions
         function downloadForPlatform() {
-            const platform = window.userPlatform;
-            
-            if (platform.isMobile) {
-                showDialog('platformGuidesDialog');
-            } else if (platform.isArm64) {
-                showDialog('windowsArmDialog');
-            } else if (platform.os === 'Windows') {
-                showDialog('windowsDialog');
-            } else if (platform.os === 'Linux') {
-                showDialog('linuxDialog');
-            } else if (platform.os === 'macOS') {
-                showDialog('macDialog');
-            } else if (platform.os === 'ChromeOS/FydeOS') {
-                showDialog('chromeosDialog');
-            }
+            showInstallGuide();
         }
 
         // Show other platforms dialog
         function showOtherPlatforms() {
-            showDialog('platformGuidesDialog');
-        }
-
-        // Navigate between platform dialogs
-        function navigateToPlatform(dialogId) {
-            // Close the platform guides dialog
-            closeDialog();
-            // Show the selected platform dialog
-            setTimeout(() => {
-                showDialog(dialogId);
-            }, 100);
+            showInstallGuide();
         }
 
         function downloadWindows() {
@@ -1656,6 +2146,93 @@
                     alert('🎉 Download started! The Windows installer is downloading to your Downloads folder.');
                 }, 1000);
             }
+            
+            // Auto-advance to next step after a short delay
+            setTimeout(() => {
+                nextWindowsStep();
+            }, 1500);
+        }
+
+        // Step navigation variables
+        let currentPlatform = null;
+        let currentStep = 1;
+
+        // Windows step navigation
+        function nextWindowsStep() {
+            if (currentStep < 3) {
+                hideWindowsStep(currentStep);
+                currentStep++;
+                showWindowsStep(currentStep);
+                updateProgress('windows', currentStep);
+            }
+        }
+
+        function prevWindowsStep() {
+            if (currentStep > 1) {
+                hideWindowsStep(currentStep);
+                currentStep--;
+                showWindowsStep(currentStep);
+                updateProgress('windows', currentStep);
+            }
+        }
+
+        function showWindowsStep(step) {
+            document.getElementById(`windows-step-${step}`).style.display = 'block';
+        }
+
+        function hideWindowsStep(step) {
+            document.getElementById(`windows-step-${step}`).style.display = 'none';
+        }
+
+        // macOS step navigation
+        function nextMacStep() {
+            if (currentStep < 3) {
+                hideMacStep(currentStep);
+                currentStep++;
+                showMacStep(currentStep);
+                updateProgress('mac', currentStep);
+            }
+        }
+
+        function prevMacStep() {
+            if (currentStep > 1) {
+                hideMacStep(currentStep);
+                currentStep--;
+                showMacStep(currentStep);
+                updateProgress('mac', currentStep);
+            }
+        }
+
+        function showMacStep(step) {
+            document.getElementById(`mac-step-${step}`).style.display = 'block';
+        }
+
+        function hideMacStep(step) {
+            document.getElementById(`mac-step-${step}`).style.display = 'none';
+        }
+
+        // Progress bar updates
+        function updateProgress(platform, step) {
+            const progressBar = document.getElementById(`${platform}-progress`);
+            const progressSteps = document.querySelectorAll(`#${platform}-guide .progress-step`);
+            
+            // Update progress line
+            const percentage = (step / 3) * 100;
+            progressBar.style.width = percentage + '%';
+            
+            // Update step indicators
+            progressSteps.forEach((stepEl, index) => {
+                const stepNum = index + 1;
+                if (stepNum < step) {
+                    stepEl.classList.remove('active');
+                    stepEl.classList.add('completed');
+                } else if (stepNum === step) {
+                    stepEl.classList.remove('completed');
+                    stepEl.classList.add('active');
+                } else {
+                    stepEl.classList.remove('active', 'completed');
+                }
+            });
         }
 
         function downloadDriver(driverType) {
@@ -1685,7 +2262,7 @@
             }
         }
 
-        function downloadMacDMG() {
+        function downloadMac() {
             // Download macOS DMG installer
             const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.for.Mac.dmg';
             
@@ -1707,79 +2284,24 @@
                     alert('🎉 Download started! The DMG file is downloading to your Downloads folder.');
                 }, 1000);
             }
+            
+            // Auto-advance to next step after a short delay
+            setTimeout(() => {
+                nextMacStep();
+            }, 1500);
         }
 
-        // Windows Step Navigation Functions
-        function nextWindowsStep() {
-            const currentStep = getCurrentWindowsStep();
-            if (currentStep < 3) {
-                hideWindowsStep(currentStep);
-                showWindowsStep(currentStep + 1);
-            }
+        // External links
+        function openHomebrew() {
+            window.open('https://github.com/Homebrew/brew/releases/latest', '_blank');
         }
 
-        function prevWindowsStep() {
-            const currentStep = getCurrentWindowsStep();
-            if (currentStep > 1) {
-                hideWindowsStep(currentStep);
-                showWindowsStep(currentStep - 1);
-            }
+        function openLinuxGuide() {
+            window.open('https://github.com/team-slide/Innioasis-Updater#linux---ubuntu-recommended', '_blank');
         }
 
-        function getCurrentWindowsStep() {
-            for (let i = 1; i <= 3; i++) {
-                if (document.getElementById(`windowsStep${i}`).style.display !== 'none') {
-                    return i;
-                }
-            }
-            return 1;
-        }
-
-        function showWindowsStep(stepNumber) {
-            document.getElementById(`windowsStep${stepNumber}`).style.display = 'block';
-        }
-
-        function hideWindowsStep(stepNumber) {
-            document.getElementById(`windowsStep${stepNumber}`).style.display = 'none';
-        }
-
-        // macOS Step Navigation Functions
-        function nextMacStep() {
-            const currentStep = getCurrentMacStep();
-            if (currentStep < 3) {
-                hideMacStep(currentStep);
-                showMacStep(currentStep + 1);
-                updateAppleGuideLink();
-            }
-        }
-
-        function prevMacStep() {
-            const currentStep = getCurrentMacStep();
-            if (currentStep > 1) {
-                hideMacStep(currentStep);
-                showMacStep(currentStep - 1);
-            }
-        }
-
-        function getCurrentMacStep() {
-            for (let i = 1; i <= 3; i++) {
-                if (document.getElementById(`macStep${i}`).style.display !== 'none') {
-                    return i;
-                }
-            }
-            return 1;
-        }
-
-        function showMacStep(stepNumber) {
-            document.getElementById(`macStep${stepNumber}`).style.display = 'block';
-        }
-
-        function hideMacStep(stepNumber) {
-            document.getElementById(`macStep${stepNumber}`).style.display = 'none';
-        }
-
-        function updateAppleGuideLink() {
-            // Get macOS version and update the Apple guide link
+        function openMacSecurityGuide() {
+            // Detect macOS version and open appropriate guide
             const userAgent = navigator.userAgent;
             let macVersion = '14.0'; // Default to macOS 14
             
@@ -1797,90 +2319,17 @@
                 macVersion = '15.0'; // macOS Sequoia
             }
             
-            const appleGuideLink = document.getElementById('appleGuideLink');
-            if (appleGuideLink) {
-                appleGuideLink.href = `https://support.apple.com/en-gb/guide/mac-help/mh40616/${macVersion}/mac/${macVersion}`;
-            }
+            const guideUrl = `https://support.apple.com/en-gb/guide/mac-help/mh40616/${macVersion}/mac/${macVersion}`;
+            window.open(guideUrl, '_blank');
         }
 
-        function showMacTerminalInstall() {
-            // Show terminal installation method
-            const terminalDialog = document.createElement('div');
-            terminalDialog.className = 'platform-dialog show';
-            terminalDialog.innerHTML = `
-                <h3>🍎 Mac app not running properly?</h3>
-                <p>Try running this in the terminal?:</p>
-                <div class="command-display">
-                    <code>curl -fsSL https://mac.innioasis.app | bash</code>
-                </div>
-                <button class="btn" onclick="copyMacCommand()">📋 Copy Command</button>
-                <button class="btn btn-secondary" onclick="closeTerminalDialog()">Close</button>
-            `;
-            
-            document.body.appendChild(terminalDialog);
-            document.getElementById('dialogOverlay').classList.add('show');
-        }
-
-        function closeTerminalDialog() {
-            const terminalDialog = document.querySelector('.platform-dialog.show:not(#macDialog)');
-            if (terminalDialog) {
-                terminalDialog.remove();
-            }
-            document.getElementById('dialogOverlay').classList.remove('show');
-        }
-
-        function copyMacCommand() {
-            const commandText = document.getElementById('macCommand').textContent;
-            navigator.clipboard.writeText(commandText).then(function() {
-                // Change button text temporarily to show success
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = '✅ Copied!';
-                button.style.background = '#28a745';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '';
-                }, 2000);
-            }).catch(function(err) {
-                console.error('Failed to copy: ', err);
-                alert('Failed to copy command. Please select and copy manually.');
-            });
-        }
-
-        function openLinuxInstructions() {
-            window.open('https://github.com/team-slide/Innioasis-Updater#linux---ubuntu-recommended', '_blank');
-        }
-
-        function showDialog(dialogId) {
-            document.getElementById('dialogOverlay').classList.add('show');
-            document.getElementById(dialogId).classList.add('show');
-            
-            // Update Apple guide link if showing macOS dialog
-            if (dialogId === 'macDialog') {
-                updateAppleGuideLink();
-            }
-            
-            // Initialize Windows steps if showing Windows dialog
-            if (dialogId === 'windowsDialog') {
-                // Hide all steps except first
-                for (let i = 2; i <= 3; i++) {
-                    document.getElementById(`windowsStep${i}`).style.display = 'none';
-                }
-                document.getElementById('windowsStep1').style.display = 'block';
-            }
-        }
-
-        function closeDialog() {
-            document.getElementById('dialogOverlay').classList.remove('show');
-            document.querySelectorAll('.platform-dialog').forEach(dialog => {
-                dialog.classList.remove('show');
-            });
-        }
-
-        // Close dialog when clicking overlay
+        // Close modal when clicking outside
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('dialogOverlay').addEventListener('click', closeDialog);
+            document.getElementById('modalOverlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeInstallGuide();
+                }
+            });
         });
 
         // Theme toggle functionality - cycles through Auto → Light → Dark
