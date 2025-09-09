@@ -1246,10 +1246,6 @@
                         <button class="btn btn-primary" onclick="downloadDriver('mtk')">📥 Download MediaTek Driver</button>
                     </div>
                     
-                    <div class="driver-item">
-                        <p><strong>USB Development Kit:</strong> This helps with USB communication</p>
-                        <button class="btn btn-primary" onclick="downloadDriver('usbdk')">📥 Download USB Development Kit</button>
-                    </div>
                 </div>
                 
                 <div class="step-actions">
@@ -1280,7 +1276,6 @@
                 <p>Here's what to do next:</p>
                 <ol>
                     <li>Install the MediaTek driver you downloaded</li>
-                    <li>Install the USB Development Kit</li>
                     <li>Install the Innioasis Updater</li>
                     <li><strong>Restart your computer</strong></li>
                     <li>Launch Innioasis Updater from the Start Menu</li>
@@ -1664,22 +1659,16 @@
         }
 
         function downloadDriver(driverType) {
-            let url, filename;
-            
+            // Only handle MediaTek driver now
             if (driverType === 'mtk') {
-                url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe';
-                filename = 'driver_mtk.exe';
-            } else if (driverType === 'usbdk') {
-                url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_usbdk.msi';
-                filename = 'driver_usbdk.msi';
-            }
-            
-            if (url) {
+                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe';
+                const filename = 'driver_mtk.exe';
+                
                 // For Safari, open in new tab, for other browsers use download attribute
                 if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
                     window.open(url, '_blank');
                     setTimeout(() => {
-                        alert(`🎉 Opening ${driverType === 'mtk' ? 'MediaTek driver' : 'USB Development Kit'} download page in new tab! Click the download button on the GitHub page.`);
+                        alert(`🎉 Opening MediaTek driver download page in new tab! Click the download button on the GitHub page.`);
                     }, 1000);
                 } else {
                     const link = document.createElement('a');
@@ -1690,7 +1679,7 @@
                     document.body.removeChild(link);
                     
                     setTimeout(() => {
-                        alert(`🎉 Download started! The ${driverType === 'mtk' ? 'MediaTek driver' : 'USB Development Kit'} is downloading to your Downloads folder.`);
+                        alert(`🎉 Download started! The MediaTek driver is downloading to your Downloads folder.`);
                     }, 1000);
                 }
             }
