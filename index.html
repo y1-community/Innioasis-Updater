@@ -1462,8 +1462,7 @@
         <!-- Hero Banner Section -->
         <div class="hero-banner">
                             <img src="https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot" class="hero-image">
-            <h1>🚀 Innioasis Updater</h1>
-            <p class="subtitle">Making your Y1 experience simpler and smoother.</p>
+            <p class="subtitle">Loading download statistics...</p>
             
             <div class="features">
                 <div class="feature-item" style="transform: translateY(0px);">
@@ -1563,7 +1562,7 @@
             <p>Created with ❤️ by <a href="https://github.com/team-slide" target="_blank">Ryan Specter and Team Slide</a> | 
                <a href="https://reddit.com/r/innioasis" target="_blank">r/Innioasis</a> | 
                <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a> | 
-               <a href="https://slidia.innioasis.app/" target="_blank">Add your Apps and Firmwares to Innioasis Updater</a></p>
+               <a href="https://innioasis.app" target="_blank">Add your Apps and Firmwares to Innioasis Updater</a></p>
 
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">🍪 Cookies not used by this site</p>
         </div>
@@ -1870,8 +1869,99 @@
             }
         }
 
+        // Load config.ini tokens for API fallback
+        let apiTokens = [];
+        
+        async function loadConfigTokens() {
+            try {
+                const response = await fetch('config.ini');
+                if (!response.ok) {
+                    console.warn('Could not load config.ini, using unauthenticated API calls only');
+                    return [];
+                }
+                
+                const configText = await response.text();
+                const tokens = [];
+                const lines = configText.split('\n');
+                
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith('key_') && trimmed.includes('=')) {
+                        const token = trimmed.split('=')[1].trim();
+                        if (token && token.length > 10) {
+                            tokens.push(token);
+                        }
+                    }
+                }
+                
+                console.log(`Loaded ${tokens.length} API tokens from config.ini`);
+                return tokens;
+            } catch (error) {
+                console.warn('Error loading config.ini:', error);
+                return [];
+            }
+        }
+
+        async function getTotalDownloads() {
+            try {
+                // Try unauthenticated API call first
+                let response = await fetch('https://api.github.com/repos/team-slide/Innioasis-Updater/releases');
+                
+                // If rate limited and we have tokens, try with authentication
+                if (response.status === 403 && apiTokens.length > 0) {
+                    console.log('Rate limited, trying with authentication...');
+                    const randomToken = apiTokens[Math.floor(Math.random() * apiTokens.length)];
+                    response = await fetch('https://api.github.com/repos/team-slide/Innioasis-Updater/releases', {
+                        headers: {
+                            'Authorization': `token ${randomToken}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                }
+                
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status}`);
+                }
+                
+                const releases = await response.json();
+                let totalDownloads = 0;
+                
+                releases.forEach(release => {
+                    if (release.assets) {
+                        release.assets.forEach(asset => {
+                            totalDownloads += asset.download_count || 0;
+                        });
+                    }
+                });
+                
+                return totalDownloads;
+            } catch (error) {
+                console.warn('Failed to fetch download count:', error);
+                return 0;
+            }
+        }
+
+        async function updateDownloadCount() {
+            try {
+                const totalDownloads = await getTotalDownloads();
+                const subtitle = document.querySelector('.hero-banner .subtitle');
+                if (subtitle && totalDownloads > 0) {
+                    const formattedCount = totalDownloads.toLocaleString();
+                    subtitle.textContent = `We've helped to update ${formattedCount} Innioasis Y1's on Windows and Mac using unauthenticated methods, falling back to use tokens stored in config.ini (in same directory as html file) to obtain the numbers, the keys are in a key_1 key_2 key_3 format (with the suffix being whatever number of key it is)`;
+                }
+            } catch (error) {
+                console.warn('Error updating download count:', error);
+            }
+        }
+
         // Add some interactive features
         document.addEventListener('DOMContentLoaded', function() {
+            // Load API tokens and update download count
+            loadConfigTokens().then(tokens => {
+                apiTokens = tokens;
+                updateDownloadCount();
+            });
+            
             // Detect user's operating system and update main download button
             detectUserOS();
             checkSavedTheme();
@@ -2126,7 +2216,7 @@
 
         function downloadWindows() {
             // Download Windows installer
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/latest/Innioasis.Updater.-.Windows.exe';
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.-.Windows.exe';
             
             // For Safari, open in new tab, for other browsers use download attribute
             if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
@@ -2238,7 +2328,7 @@
         function downloadDriver(driverType) {
             // Only handle MediaTek driver now
             if (driverType === 'mtk') {
-                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/latest/driver_mtk.exe';
+                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/driver_mtk.exe';
                 const filename = 'driver_mtk.exe';
                 
                 // For Safari, open in new tab, for other browsers use download attribute
@@ -2264,7 +2354,7 @@
 
         function downloadMac() {
             // Download macOS DMG installer
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/latest/Innioasis.Updater.for.Mac.dmg';
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg';
             
             // For Safari, open in new tab, for other browsers use download attribute
             if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
