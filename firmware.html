@@ -406,6 +406,11 @@
             background: #007aff;
             color: white;
         }
+        
+        .version-pill.ipod-theme::before {
+            content: "✅ ";
+            margin-right: 4px;
+        }
 
         .version-pill.resolution-360p {
             background: #ffd700;
@@ -417,10 +422,75 @@
             color: white;
         }
 
+        .version-pill.wifi {
+            background: #34c759;
+            color: white;
+        }
+
+        .version-pill.bluetooth {
+            background: #007aff;
+            color: white;
+        }
+
+        .version-pill.usb {
+            background: #8e8e93;
+            color: white;
+        }
+
+        .version-pill.ethernet {
+            background: #5856d6;
+            color: white;
+        }
+
+        .version-pill.hdmi {
+            background: #ff3b30;
+            color: white;
+        }
+
+        .version-pill.audio {
+            background: #af52de;
+            color: white;
+        }
+
+        .version-pill.video {
+            background: #ff2d92;
+            color: white;
+        }
+
+        .version-pill.camera {
+            background: #ff9500;
+            color: white;
+        }
+
+        .version-pill.gps {
+            background: #32d74b;
+            color: white;
+        }
+
+        .version-pill.nfc {
+            background: #5ac8fa;
+            color: white;
+        }
+
+        .version-pill.lte {
+            background: #ffcc00;
+            color: #000000;
+        }
+
+        .version-pill.generic {
+            background: #8e8e93;
+            color: white;
+        }
+
         /* Dark mode support for pills */
         body[data-theme="dark"] .version-pill.ipod-theme {
             background: #0a84ff;
             color: white;
+        }
+        
+        body[data-theme="dark"] .version-pill.ipod-theme::before {
+            content: "✅ ";
+            margin-right: 4px;
         }
 
         body[data-theme="dark"] .version-pill.resolution-360p {
@@ -430,6 +500,66 @@
 
         body[data-theme="dark"] .version-pill.nightly {
             background: #ff9f0a;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.wifi {
+            background: #30d158;
+            color: #000000;
+        }
+
+        body[data-theme="dark"] .version-pill.bluetooth {
+            background: #0a84ff;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.usb {
+            background: #8e8e93;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.ethernet {
+            background: #5e5ce6;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.hdmi {
+            background: #ff453a;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.audio {
+            background: #bf5af2;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.video {
+            background: #ff375f;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.camera {
+            background: #ff9f0a;
+            color: #000000;
+        }
+
+        body[data-theme="dark"] .version-pill.gps {
+            background: #32d74b;
+            color: #000000;
+        }
+
+        body[data-theme="dark"] .version-pill.nfc {
+            background: #64d2ff;
+            color: #000000;
+        }
+
+        body[data-theme="dark"] .version-pill.lte {
+            background: #ffd60a;
+            color: #000000;
+        }
+
+        body[data-theme="dark"] .version-pill.generic {
+            background: #8e8e93;
             color: white;
         }
 
@@ -545,23 +675,45 @@
             gap: 8px;
         }
 
+        .whats-new-btn {
+            background: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 122, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .whats-new-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.4);
+            background: linear-gradient(135deg, #0051d5 0%, #003d99 100%);
+        }
+
         .download-rom-btn {
             background: #6c757d;
             color: white;
             border: 1px solid #5a6268;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            font-size: 0.85rem;
-            opacity: 0.8;
+            font-size: 0.75rem;
+            opacity: 0.7;
         }
 
         .download-rom-btn:hover {
             background: #5a6268;
-            opacity: 1;
+            opacity: 0.9;
             transform: translateY(-1px);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
@@ -1095,6 +1247,150 @@
             color: #ffffff;
         }
 
+        /* What's New Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .whats-new-modal {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            max-height: 80vh;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .modal-body {
+            padding: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .release-notes {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .release-notes h1, .release-notes h2, .release-notes h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .release-notes h1 {
+            font-size: 1.5rem;
+        }
+
+        .release-notes h2 {
+            font-size: 1.3rem;
+        }
+
+        .release-notes h3 {
+            font-size: 1.1rem;
+        }
+
+        .release-notes ul {
+            padding-left: 20px;
+        }
+
+        .release-notes li {
+            margin-bottom: 5px;
+        }
+
+        .release-notes code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Dark mode support for What's New modal */
+        body[data-theme="dark"] .whats-new-modal {
+            background: #2c2c2e;
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .modal-header {
+            border-bottom-color: #48484a;
+        }
+
+        body[data-theme="dark"] .modal-header h3 {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .close-btn {
+            color: #8e8e93;
+        }
+
+        body[data-theme="dark"] .close-btn:hover {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .release-notes {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .release-notes h1,
+        body[data-theme="dark"] .release-notes h2,
+        body[data-theme="dark"] .release-notes h3 {
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .release-notes code {
+            background: #48484a;
+            color: #ffffff;
+        }
+
         body[data-theme="dark"] .info-modal h3 {
             color: #ffffff;
         }
@@ -1172,7 +1468,6 @@
                 <div class="filter-group">
                     <label for="software">Software</label>
                     <select id="software">
-                        <option value="">All Software</option>
                     </select>
                 </div>
                 
@@ -1183,13 +1478,13 @@
             
 
             <div class="status" id="status">
-                Ready to download firmware
+                Ready to download system software
             </div>
 
             <div class="firmware-list">
-                <h3>Available Firmware</h3>
+                <h3 id="availableSoftwareTitle">Available System Software</h3>
                 <div id="firmwareContainer">
-                    <p style="text-align: center; color: #6c757d;">Select filters and click refresh to load firmware</p>
+                    <p style="text-align: center; color: #6c757d;">Select filters and click refresh to load system software</p>
                 </div>
             </div>
         </div>
@@ -1380,53 +1675,212 @@
             software: ''
         };
 
-        // Function to parse version names and extract designations
+        // Function to parse version names and extract designations with flexible adjective handling
         function parseVersionDesignations(versionName) {
             const designations = [];
-            let cleanVersion = versionName;
             
-            // Check for nightly designation
-            if (versionName.includes('nightly')) {
-                designations.push({
-                    type: 'nightly',
-                    text: 'Nightly'
-                });
-                cleanVersion = cleanVersion.replace('nightly-', '').replace('-nightly', '');
-            }
+            // Define adjectives that can modify their nearest neighbor
+            const adjectives = ['compatible', 'aware', 'supported', 'enabled', 'disabled', 'ready', 'optimized', 'enhanced'];
             
-            // Check for iPod theme compatibility (handle both formats)
-            if (versionName.includes('ipod-theme-compatible')) {
-                designations.push({
-                    type: 'ipod-theme',
-                    text: 'iPod themes'
-                });
-                cleanVersion = cleanVersion.replace('-ipod-theme-compatible', '');
-            } else if (versionName.includes('nightly-ipod-theme-compatible')) {
-                designations.push({
-                    type: 'ipod-theme',
-                    text: 'iPod themes'
-                });
-                cleanVersion = cleanVersion.replace('-nightly-ipod-theme-compatible', '');
-            }
-            
-            // Check for 360p resolution
-            if (versionName.includes('360p')) {
-                designations.push({
-                    type: 'resolution-360p',
-                    text: '360p'
-                });
-                cleanVersion = cleanVersion.replace('-360p', '');
-            }
-            
-            // Strip ugly version numbers at the end (long hex strings)
-            cleanVersion = cleanVersion.replace(/-[a-f0-9]{16,}!?$/, '');
+            // Extract only the part after the last dash (this is the actual version number)
+            // First remove long hex strings at the end (like -13057e75dc29a1a7!)
+            let cleanVersion = versionName.replace(/-[a-f0-9]{16,}!?$/, '');
             // Remove any remaining trailing dashes or exclamation marks
             cleanVersion = cleanVersion.replace(/[-!]+$/, '');
+            
+            // Extract only the numbers after the last dash
+            if (cleanVersion.includes('-')) {
+                const lastPart = cleanVersion.split('-').pop();
+                // Check if the last part contains only numbers (and possibly dots)
+                if (/^[\d.]+$/.test(lastPart)) {
+                    cleanVersion = lastPart;
+                }
+            }
+            
+            // Parse designations from the original version name
+            // Split by dashes and process each part
+            const parts = versionName.split('-');
+            
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                
+                // Skip if it's the version number part
+                if (/^[\d.]+$/.test(part)) {
+                    continue;
+                }
+                
+                // Skip if it's a hex string
+                if (/^[a-f0-9]{16,}!?$/.test(part)) {
+                    continue;
+                }
+                
+                // Handle special cases first
+                if (part === 'nightly') {
+                    designations.push({
+                        type: 'nightly',
+                        text: 'Nightly'
+                    });
+                } else if (part === '360p') {
+                    designations.push({
+                        type: 'resolution-360p',
+                        text: '360p'
+                    });
+                } else if (part === 'wifi' || part === 'wi-fi') {
+                    designations.push({
+                        type: 'wifi',
+                        text: 'Wi-Fi'
+                    });
+                } else if (part === 'bluetooth') {
+                    designations.push({
+                        type: 'bluetooth',
+                        text: 'Bluetooth'
+                    });
+                } else if (part === 'usb') {
+                    designations.push({
+                        type: 'usb',
+                        text: 'USB'
+                    });
+                } else if (part === 'ethernet') {
+                    designations.push({
+                        type: 'ethernet',
+                        text: 'Ethernet'
+                    });
+                } else if (part === 'hdmi') {
+                    designations.push({
+                        type: 'hdmi',
+                        text: 'HDMI'
+                    });
+                } else if (part === 'audio') {
+                    designations.push({
+                        type: 'audio',
+                        text: 'Audio'
+                    });
+                } else if (part === 'video') {
+                    designations.push({
+                        type: 'video',
+                        text: 'Video'
+                    });
+                } else if (part === 'camera') {
+                    designations.push({
+                        type: 'camera',
+                        text: 'Camera'
+                    });
+                } else if (part === 'gps') {
+                    designations.push({
+                        type: 'gps',
+                        text: 'GPS'
+                    });
+                } else if (part === 'nfc') {
+                    designations.push({
+                        type: 'nfc',
+                        text: 'NFC'
+                    });
+                } else if (part === 'lte') {
+                    designations.push({
+                        type: 'lte',
+                        text: 'LTE'
+                    });
+                } else if (part === '5g') {
+                    designations.push({
+                        type: '5g',
+                        text: '5G'
+                    });
+                } else if (part === 'ipod' && i + 1 < parts.length && parts[i + 1] === 'theme') {
+                    // Handle "ipod-theme" case
+                    if (i + 2 < parts.length && adjectives.includes(parts[i + 2])) {
+                        // Check for adjective after "ipod-theme"
+                        const adjective = parts[i + 2];
+                        designations.push({
+                            type: 'ipod-theme',
+                            text: `iPod Themes ${adjective.charAt(0).toUpperCase() + adjective.slice(1)}`
+                        });
+                    } else {
+                        designations.push({
+                            type: 'ipod-theme',
+                            text: 'iPod Themes'
+                        });
+                    }
+                } else if (part === 'theme' && i > 0 && parts[i - 1] === 'ipod') {
+                    // Skip this as it's handled above
+                    continue;
+                } else {
+                    // Check if this part is followed by an adjective
+                    if (i + 1 < parts.length && adjectives.includes(parts[i + 1])) {
+                        const adjective = parts[i + 1];
+                        // Capitalize the main part and add the adjective
+                        const mainPart = part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        designations.push({
+                            type: 'generic',
+                            text: `${mainPart} ${adjective.charAt(0).toUpperCase() + adjective.slice(1)}`
+                        });
+                    } else {
+                        // Just add the part as-is, capitalized
+                        if (!adjectives.includes(part)) { // Don't add standalone adjectives
+                            designations.push({
+                                type: 'generic',
+                                text: part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+                            });
+                        }
+                    }
+                }
+            }
             
             return {
                 cleanVersion: cleanVersion.trim(),
                 designations: designations
             };
+        }
+
+        // Function to format date in a fancy, simplified way without time
+        function formatFancyDate(dateObj) {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            const dateOnly = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate());
+            const todayOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            const yesterdayOnly = new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate());
+            
+            if (dateOnly.getTime() === todayOnly.getTime()) {
+                return "Today";
+            } else if (dateOnly.getTime() === yesterdayOnly.getTime()) {
+                return "Yesterday";
+            } else {
+                const daysDiff = Math.floor((todayOnly - dateOnly) / (1000 * 60 * 60 * 24));
+                
+                if (daysDiff <= 7) {
+                    // Within the last week - show day name
+                    return dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+                } else if (daysDiff <= 30) {
+                    // Within the last month - show month and day
+                    return dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                } else {
+                    // Older than a month - show month and year
+                    return dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                }
+            }
+        }
+
+        // Function to get display version - either version number or published date
+        function getDisplayVersion(versionInfo, publishedDate) {
+            const versionText = versionInfo.cleanVersion;
+            
+            // If version is longer than 8 characters, use published date instead
+            if (versionText.length > 8) {
+                if (publishedDate) {
+                    try {
+                        const dateObj = new Date(publishedDate);
+                        return formatFancyDate(dateObj);
+                    } catch (e) {
+                        return publishedDate;
+                    }
+                } else {
+                    return "Unknown Date";
+                }
+            }
+            
+            return versionText;
         }
         
 
@@ -1434,6 +1888,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadData();
             setupEventListeners();
+            updateAvailableSoftwareTitle(); // Set initial title
             detectUserOS();
             checkSavedTheme();
             
@@ -1489,7 +1944,7 @@
 
         function downloadWindows() {
             // Download Windows installer
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.-.Windows.exe';
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.6.0/Innioasis.Updater.-.Windows.exe';
             
             // For Safari, open in new tab, for other browsers use download attribute
             if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
@@ -1552,7 +2007,7 @@
         function downloadDriver(driverType) {
             // Only handle MediaTek driver now
             if (driverType === 'mtk') {
-                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe';
+                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.6.0/driver_mtk.exe';
                 const filename = 'driver_mtk.exe';
                 
                 // For Safari, open in new tab, for other browsers use download attribute
@@ -1664,6 +2119,18 @@
             checkSavedTheme();
         });
 
+        function updateAvailableSoftwareTitle() {
+            const softwareSelect = document.getElementById('software');
+            const titleElement = document.getElementById('availableSoftwareTitle');
+            
+            if (softwareSelect.value) {
+                const selectedText = softwareSelect.options[softwareSelect.selectedIndex].text;
+                titleElement.textContent = selectedText;
+            } else {
+                titleElement.textContent = 'Available System Software';
+            }
+        }
+
         function setupEventListeners() {
             document.getElementById('deviceType').addEventListener('change', function() {
                 populateSoftwareCombo();
@@ -1673,7 +2140,10 @@
                 populateSoftwareCombo();
                 filterFirmware();
             });
-            document.getElementById('software').addEventListener('change', filterFirmware);
+            document.getElementById('software').addEventListener('change', function() {
+                updateAvailableSoftwareTitle();
+                filterFirmware();
+            });
         }
 
         // Load config.ini tokens for API fallback
@@ -1825,7 +2295,7 @@
             
             const softwareNames = [...new Set(filteredPackages.map(p => p.name).filter(n => n))];
             
-            combo.innerHTML = '<option value="">All Software</option>';
+            combo.innerHTML = '';
             softwareNames.sort().forEach(name => {
                 const option = document.createElement('option');
                 option.value = name;
@@ -1980,7 +2450,8 @@
             container.innerHTML = releases.map(release => {
                 // Parse version designations
                 const versionInfo = parseVersionDesignations(release.tag_name);
-                const versionNeedsScrolling = versionInfo.cleanVersion.length > 25;
+                const displayVersion = getDisplayVersion(versionInfo, release.published_at);
+                const versionNeedsScrolling = displayVersion.length > 25;
                 
                 // Format download counts
                 const formatDownloadCount = (count) => {
@@ -2000,19 +2471,26 @@
                         ).join('')}
                     </div>` : '';
                 
+                // Add software name detail
+                const softwareHTML = `<div class="detail-item">
+                    <div class="detail-label">Software</div>
+                    <div class="detail-value">${release.software_name}</div>
+                </div>`;
+                
+                // Only show released date if we're using version number as title
+                const releasedDateHTML = versionInfo.cleanVersion.length <= 8 ? 
+                    `<div class="detail-item">
+                        <div class="detail-label">Released</div>
+                        <div class="detail-value">${formatDate(release.published_at)}</div>
+                    </div>` : '';
+                
                 return `
                     <div class="firmware-item" onclick="selectFirmware(this, '${release.software_name}')">
-                        <div class="firmware-name">${release.software_name}</div>
+                        <div class="firmware-name">${displayVersion}</div>
                         <div class="firmware-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Version</div>
-                                <div class="detail-value ${versionNeedsScrolling ? 'scroll-text' : ''}" title="${release.tag_name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${versionInfo.cleanVersion}</div>
-                                ${pillsHTML}
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Published</div>
-                                <div class="detail-value">${formatDate(release.published_at)}</div>
-                            </div>
+                            ${softwareHTML}
+                            ${pillsHTML}
+                            ${releasedDateHTML}
                             <div class="detail-item">
                                 <div class="detail-label">Downloads</div>
                                 <div class="detail-value">${formatDownloadCount(release.download_count || 0)}</div>
@@ -2027,11 +2505,14 @@
                             </div>` : ''}
                         </div>
                         <div class="download-section">
+                            <button class="whats-new-btn" onclick="showWhatsNew('${release.html_url}', '${release.tag_name}')">
+                                📋 What's New
+                            </button>
                             <button class="automatic-install-btn" onclick="goToInnioasisApp(event)">
                                 ⚡ Get Innioasis Updater
                             </button>
                             <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
-                                📦 Download .zip for manual install
+                                📦 Download .zip
                             </button>
                         </div>
                     </div>
@@ -2110,6 +2591,66 @@
             });
         }
 
+        function showWhatsNew(htmlUrl, tagName) {
+            // Extract repository info from HTML URL
+            const urlParts = htmlUrl.split('/');
+            const repo = `${urlParts[3]}/${urlParts[4]}`;
+            
+            // Create modal for release notes
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.innerHTML = `
+                <div class="modal-content whats-new-modal">
+                    <div class="modal-header">
+                        <h3>What's New in ${tagName}</h3>
+                        <button class="close-btn" onclick="closeWhatsNew()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="loading-spinner">Loading release notes...</div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Fetch release notes from GitHub API
+            fetch(`https://api.github.com/repos/${repo}/releases/tags/${tagName}`)
+                .then(response => response.json())
+                .then(data => {
+                    const body = modal.querySelector('.modal-body');
+                    if (data.body) {
+                        // Convert markdown to HTML (basic conversion)
+                        const html = data.body
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                            .replace(/`(.*?)`/g, '<code>$1</code>')
+                            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                            .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                            .replace(/^- (.*$)/gim, '<li>$1</li>')
+                            .replace(/\n\n/g, '</p><p>')
+                            .replace(/\n/g, '<br>');
+                        
+                        body.innerHTML = `<div class="release-notes">${html}</div>`;
+                    } else {
+                        body.innerHTML = '<p>No release notes available for this version.</p>';
+                    }
+                })
+                .catch(error => {
+                    const body = modal.querySelector('.modal-body');
+                    body.innerHTML = '<p>Error loading release notes. Please try again later.</p>';
+                    console.error('Error fetching release notes:', error);
+                });
+        }
+
+        function closeWhatsNew() {
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                document.body.removeChild(modal);
+            }
+        }
+
         function downloadROM(releasesUrl, event) {
             event.stopPropagation();
             
@@ -2148,13 +2689,7 @@
         function formatDate(dateString) {
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
+                return formatFancyDate(date);
             } catch (error) {
                 return dateString;
             }
@@ -2185,7 +2720,7 @@
         // macOS Step Navigation Functions
         function downloadMacDMG() {
             // Download macOS DMG installer
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.for.Mac.dmg';
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.6.0/Innioasis.Updater.for.Mac.dmg';
             
             // For Safari, open in new tab, for other browsers use download attribute
             if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
