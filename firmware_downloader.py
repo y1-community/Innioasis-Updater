@@ -987,10 +987,10 @@ class SPFlashToolWorker(QThread):
             # Determine success based on completion phase
             if completed_phase:
                 silent_print("Flash Tool completed successfully")
-                self.spflash_completed.emit(True, "Flash Tool installation completed successfully")
+                self.spflash_completed.emit(True, "Software installation completed successfully")
             else:
                 silent_print("Flash Tool did not complete successfully")
-                self.spflash_completed.emit(False, "Flash Tool installation did not complete successfully")
+                self.spflash_completed.emit(False, "Software installation did not complete successfully")
                 
         except Exception as e:
             silent_print(f"Error running Flash Tool: {e}")
