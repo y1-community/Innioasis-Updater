@@ -2790,11 +2790,11 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Y1 Updater by Ryan Specter - u/respectyarn")
+        self.setWindowTitle("Innioasis Updater")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
-        self.setFixedSize(1220, 574)
+        self.setFixedSize(1220, 600)
         
         # Force normal window state (not maximized)
         self.setWindowState(Qt.WindowNoState)
