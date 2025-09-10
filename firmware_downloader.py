@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
                                QFileDialog, QDialog, QTabWidget)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
-from PySide6.QtGui import QFont, QPixmap, QIcon
+from PySide6.QtGui import QFont, QPixmap
 import platform
 import time
 from collections import defaultdict
@@ -39,6 +39,177 @@ if platform.system() == "Darwin":
 
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
+
+def parse_version_designations(version_name):
+    """Parse version names and extract designations with flexible adjective handling"""
+    designations = []
+    
+    # Define adjectives that can modify their nearest neighbor
+    adjectives = ['compatible', 'aware', 'supported', 'enabled', 'disabled', 'ready', 'optimized', 'enhanced']
+    
+    # Extract only the part after the last dash (this is the actual version number)
+    import re
+    # First remove long hex strings at the end (like -13057e75dc29a1a7!)
+    clean_version = re.sub(r'-[a-f0-9]{16,}!?$', '', version_name)
+    # Remove any remaining trailing dashes or exclamation marks
+    clean_version = clean_version.rstrip('-!')
+    
+    # Extract only the numbers after the last dash
+    if '-' in clean_version:
+        last_part = clean_version.split('-')[-1]
+        # Check if the last part contains only numbers (and possibly dots)
+        if re.match(r'^[\d.]+$', last_part):
+            clean_version = last_part
+    
+    # Parse designations from the original version name
+    # Split by dashes and process each part
+    parts = version_name.split('-')
+    
+    for i, part in enumerate(parts):
+        # Skip if it's the version number part
+        if re.match(r'^[\d.]+$', part):
+            continue
+            
+        # Skip if it's a hex string
+        if re.match(r'^[a-f0-9]{16,}!?$', part):
+            continue
+            
+        # Handle special cases first
+        if part == 'nightly':
+            designations.append('Nightly')
+        elif part == '360p':
+            designations.append('360p')
+        elif part == 'wifi' or part == 'wi-fi':
+            designations.append('Wi-Fi')
+        elif part == 'bluetooth':
+            designations.append('Bluetooth')
+        elif part == 'usb':
+            designations.append('USB')
+        elif part == 'ethernet':
+            designations.append('Ethernet')
+        elif part == 'hdmi':
+            designations.append('HDMI')
+        elif part == 'audio':
+            designations.append('Audio')
+        elif part == 'video':
+            designations.append('Video')
+        elif part == 'camera':
+            designations.append('Camera')
+        elif part == 'gps':
+            designations.append('GPS')
+        elif part == 'nfc':
+            designations.append('NFC')
+        elif part == 'lte':
+            designations.append('LTE')
+        elif part == '5g':
+            designations.append('5G')
+        elif part == 'ipod' and i + 1 < len(parts) and parts[i + 1] == 'theme':
+            # Handle "ipod-theme" case
+            if i + 2 < len(parts) and parts[i + 2] in adjectives:
+                # Check for adjective after "ipod-theme"
+                adjective = parts[i + 2]
+                designations.append(f'iPod Themes {adjective.title()}')
+            else:
+                designations.append('iPod Themes')
+        elif part == 'theme' and i > 0 and parts[i - 1] == 'ipod':
+            # Skip this as it's handled above
+            continue
+        else:
+            # Check if this part is followed by an adjective
+            if i + 1 < len(parts) and parts[i + 1] in adjectives:
+                adjective = parts[i + 1]
+                # Capitalize the main part and add the adjective
+                main_part = part.replace('-', ' ').title()
+                designations.append(f'{main_part} {adjective.title()}')
+            else:
+                # Just add the part as-is, capitalized
+                if part not in adjectives:  # Don't add standalone adjectives
+                    designations.append(part.replace('-', ' ').title())
+    
+    return {
+        'clean_version': clean_version.strip(),
+        'designations': designations
+    }
+
+def get_display_version(version_info, published_date):
+    """Get the display version - either version number or published date based on length"""
+    version_text = version_info['clean_version']
+    
+    # If version is longer than 8 characters, use published date instead
+    if len(version_text) > 8:
+        if published_date:
+            try:
+                from datetime import datetime
+                date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
+                return format_fancy_date(date_obj)
+            except:
+                return published_date
+        else:
+            return "Unknown Date"
+    
+    return version_text
+
+def format_fancy_date(date_obj):
+    """Format date in a fancy, simplified way without time"""
+    from datetime import datetime, timedelta
+    
+    now = datetime.now(date_obj.tzinfo) if date_obj.tzinfo else datetime.now()
+    today = now.date()
+    yesterday = today - timedelta(days=1)
+    date_only = date_obj.date()
+    
+    if date_only == today:
+        return "Today"
+    elif date_only == yesterday:
+        return "Yesterday"
+    elif (today - date_only).days <= 7:
+        # Within the last week
+        return date_obj.strftime('%A')  # Day name (Monday, Tuesday, etc.)
+    elif (today - date_only).days <= 30:
+        # Within the last month
+        return date_obj.strftime('%b %d')  # Jan 15, Feb 3, etc.
+    else:
+        # Older than a month
+        return date_obj.strftime('%b %Y')  # Jan 2024, Feb 2024, etc.
+
+def format_designations_text(designations):
+    """Format designations as text with visual indicators"""
+    if not designations:
+        return ""
+    
+    # Map designations to emoji indicators
+    emoji_map = {
+        'Nightly': '🟠',
+        '360p': '🟡',
+        'Wi-Fi': '📶',
+        'Bluetooth': '🔵',
+        'USB': '🔌',
+        'Ethernet': '🌐',
+        'HDMI': '📺',
+        'Audio': '🔊',
+        'Video': '🎥',
+        'Camera': '📷',
+        'GPS': '📍',
+        'NFC': '📱',
+        'LTE': '📡',
+        '5G': '📡',
+    }
+    
+    formatted_designations = []
+    for designation in designations:
+        # Check for iPod themes variations
+        if 'iPod Themes' in designation:
+            formatted_designations.append(f"✅ {designation}")
+        else:
+            # Try to find a matching emoji, fallback to generic
+            emoji = '⚪'
+            for key, value in emoji_map.items():
+                if designation.startswith(key):
+                    emoji = value
+                    break
+            formatted_designations.append(f"{emoji} {designation}")
+    
+    return " | ".join(formatted_designations)
 
 # Zip file management
 ZIP_STORAGE_DIR = Path("firmware_downloads")
@@ -473,46 +644,70 @@ class GitHubAPI:
 
         return None
 
-    def get_latest_release(self, repo):
-        """Get the latest release information for a repository with fallback"""
-        url = f"https://api.github.com/repos/{repo}/releases/latest"
-
-        # Try with authenticated token first (since unauthenticated is failing)
-        token = self.get_next_token()
-        if token:
+    def make_authenticated_request(self, url, repo):
+        """Make an authenticated request with robust token fallback"""
+        # Try all available tokens in sequence
+        for token in self.tokens:
+            # Add github_pat_ prefix if not present
+            full_token = token if token.startswith('github_pat_') else f'github_pat_{token}'
+            
             headers = {
-                'Authorization': f'token {token}',
+                'Authorization': f'token {full_token}',
                 'Accept': 'application/vnd.github.v3+json'
             }
 
             try:
                 response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
                 if response.status_code == 200:
-                    release_data = response.json()
-                    assets = release_data.get('assets', [])
-
-                    # Find firmware assets
-                    zip_asset = None
-                    for asset in assets:
-                        if asset['name'].lower() == 'rom.zip':
-                            zip_asset = asset
-                            break
-
-                    return {
-                        'tag_name': release_data.get('tag_name', ''),
-                        'name': release_data.get('name', ''),
-                        'body': release_data.get('body', ''),
-                        'download_url': zip_asset['browser_download_url'] if zip_asset else None,
-                        'asset_name': zip_asset['name'] if zip_asset else None
-                    }
+                    # Mark this token as working
+                    self.working_tokens.add(token)
+                    return response
                 elif response.status_code == 401:
-                    silent_print(f"Token authentication failed for {repo} - trying unauthenticated...")
+                    silent_print(f"Token authentication failed for {repo} with token {token[:10]}...")
+                    continue  # Try next token
                 elif response.status_code == 403:
-                    silent_print(f"Rate limited for {repo}, trying unauthenticated...")
+                    silent_print(f"Rate limited for {repo} with token {token[:10]}...")
+                    continue  # Try next token
                 else:
-                    silent_print(f"Error getting release for {repo}: {response.status_code}")
+                    silent_print(f"Error getting release for {repo} with token {token[:10]}...: {response.status_code}")
+                    continue  # Try next token
             except Exception as e:
-                silent_print(f"Error getting release for {repo} with token: {e}")
+                silent_print(f"Error getting release for {repo} with token {token[:10]}...: {e}")
+                continue  # Try next token
+        
+        return None
+
+    def get_latest_release(self, repo):
+        """Get the latest release information for a repository with fallback"""
+        url = f"https://api.github.com/repos/{repo}/releases/latest"
+
+        # Try authenticated requests with all available tokens
+        if self.tokens:
+            response = self.make_authenticated_request(url, repo)
+            if response:
+                release_data = response.json()
+                assets = release_data.get('assets', [])
+
+                # Find firmware assets
+                zip_asset = None
+                for asset in assets:
+                    if asset['name'].lower() == 'rom.zip':
+                        zip_asset = asset
+                        break
+
+                result = {
+                    'tag_name': release_data.get('tag_name', ''),
+                    'name': release_data.get('name', ''),
+                    'body': release_data.get('body', ''),
+                    'download_url': zip_asset['browser_download_url'] if zip_asset else None,
+                    'asset_name': zip_asset['name'] if zip_asset else None
+                }
+                
+                # Cache this successful response
+                if result['download_url']:
+                    self.cache_releases(repo, [result])
+                
+                return result
 
         # Try unauthenticated as fallback (with rate limiting)
         if not self.can_make_unauth_request():
@@ -578,19 +773,11 @@ class GitHubAPI:
         """Get all releases for a repository with improved performance"""
         url = f"https://api.github.com/repos/{repo}/releases"
 
-        # Try with authenticated token first
-        token = self.get_next_token()
-        if token:
-            headers = {
-                'Authorization': f'token {token}',
-                'Accept': 'application/vnd.github.v3+json'
-            }
-
-            try:
-                silent_print(f"Attempting authenticated request to {url} with token: {token[:10]}...")
-                response = self.session.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+        # Try authenticated requests with all available tokens
+        if self.tokens:
+            response = self.make_authenticated_request(url, repo)
+            if response:
                 silent_print(f"Authenticated response status: {response.status_code}")
-
                 if response.status_code == 200:
                     releases_data = response.json()
                     silent_print(f"Found {len(releases_data)} total releases for {repo}")
@@ -624,14 +811,6 @@ class GitHubAPI:
 
                     silent_print(f"Returning {len(releases)} releases with zip assets")
                     return releases
-                elif response.status_code == 401:
-                    silent_print(f"Token authentication failed for {repo} - trying unauthenticated...")
-                elif response.status_code == 403:
-                    silent_print(f"Rate limited for {repo}, trying unauthenticated...")
-                else:
-                    silent_print(f"Error getting releases for {repo}: {response.status_code}")
-            except Exception as e:
-                silent_print(f"Error getting releases for {repo} with token: {e}")
 
         # Try unauthenticated as fallback (with rate limiting)
         if not self.can_make_unauth_request():
@@ -2612,10 +2791,10 @@ class FirmwareDownloaderGUI(QMainWindow):
     def init_ui(self):
         """Initialize the user interface"""
         self.setWindowTitle("Innioasis Y1 Updater by Ryan Specter - u/respectyarn")
-        self.setGeometry(100, 100, 1220, 550)
+        self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
-        self.setFixedSize(1220, 550)
+        self.setFixedSize(1220, 574)
         
         # Force normal window state (not maximized)
         self.setWindowState(Qt.WindowNoState)
@@ -2721,8 +2900,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         software_layout.addWidget(QLabel("Software:"))
 
         self.firmware_combo = QComboBox()
-        self.firmware_combo.addItem("All Software", "")
+        # No "All Software" option - users must select specific software
         # Default selection will be set dynamically in populate_firmware_combo
+        self.firmware_combo.currentTextChanged.connect(self.update_package_group_title)
         self.firmware_combo.currentTextChanged.connect(self.on_firmware_changed)
         # Make the software dropdown wider
         self.firmware_combo.setMinimumWidth(300)
@@ -2736,7 +2916,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         left_layout.addWidget(filter_group)
 
         # Package list (now shows releases for selected repository)
-        package_group = QGroupBox("Available Software")
+        package_group = QGroupBox("Available System Software")
+        self.package_group = package_group  # Store reference for dynamic updates
         package_layout = QVBoxLayout(package_group)
 
         self.package_list = QListWidget()
@@ -3718,7 +3899,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
         silent_print(f"Loaded {len(self.packages)} software packages")
-        self.status_label.setText("Ready: Select a firmware to Download. Your music will stay safe.")
+        self.status_label.setText("Ready: Select system software to Download. Your music will stay safe.")
 
         # Populate UI components
         self.populate_device_type_combo()
@@ -4489,7 +4670,6 @@ Method 2 - MTKclient: Direct technical installation
     def populate_device_type_combo(self):
         """Dynamically populate device type combo from manifest data"""
         self.device_type_combo.clear()
-        self.device_type_combo.addItem("All Types", "")
 
         # Get unique device types from packages
         device_types = set()
@@ -4502,8 +4682,10 @@ Method 2 - MTKclient: Direct technical installation
         for device_type in sorted(device_types):
             self.device_type_combo.addItem(f"Type {device_type}", device_type)
 
-        # Set default to first available type if any exist
-        if len(device_types) > 0:
+        # Set default to Type A if available, otherwise first available type
+        if 'A' in device_types:
+            self.device_type_combo.setCurrentText("Type A")
+        elif len(device_types) > 0:
             first_type = sorted(device_types)[0]
             self.device_type_combo.setCurrentText(f"Type {first_type}")
 
@@ -4531,7 +4713,6 @@ Method 2 - MTKclient: Direct technical installation
     def populate_firmware_combo(self):
         """Populate the software dropdown with package names from manifest"""
         self.firmware_combo.clear()
-        self.firmware_combo.addItem("All Software", "")
 
         # Get current filter selections
         selected_type = self.device_type_combo.currentData()
@@ -4559,13 +4740,20 @@ Method 2 - MTKclient: Direct technical installation
             self.firmware_combo.addItem(name, repo)
 
         # Set default selection to software containing "Original" if available
-        default_index = 0  # Default to "All Software"
-        for i in range(1, self.firmware_combo.count()):  # Skip "All Software" at index 0
+        default_index = 0  # Default to first item
+        for i in range(self.firmware_combo.count()):
             if "original" in self.firmware_combo.itemText(i).lower():
                 default_index = i
                 break
 
         self.firmware_combo.setCurrentIndex(default_index)
+
+    def update_package_group_title(self, firmware_name):
+        """Update the package group title based on selected software"""
+        if firmware_name:
+            self.package_group.setTitle(firmware_name)
+        else:
+            self.package_group.setTitle("Available System Software")
 
     def on_firmware_changed(self):
         """Handle software selection change"""
@@ -4575,8 +4763,11 @@ Method 2 - MTKclient: Direct technical installation
             # Update package list to show releases for selected software
             self.populate_releases_list()
         else:
-            # "All Software" is selected - show releases from all available software
-            self.populate_all_releases_list()
+            # No software selected - show empty list
+            self.package_list.clear()
+            help_item = QListWidgetItem("Please select a software type to view releases")
+            help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)
+            self.package_list.addItem(help_item)
 
 
 
@@ -4635,18 +4826,32 @@ Method 2 - MTKclient: Direct technical installation
             # Get software name from manifest, fallback to repo name
             software_name = package_info.get('name', selected_repo) if package_info else selected_repo
 
-            # Detailed display format
-            display_text = f"{software_name}\n"
-            display_text += f"Version: {release['tag_name']}\n"
+            # Parse version designations
+            version_info = parse_version_designations(release['tag_name'])
+            
+            # Get display version (either version number or published date)
+            published_date = release.get('published_at', '')
+            display_version = get_display_version(version_info, published_date)
+            
+            # Use display version as the main title
+            display_text = f"{display_version}\n"
+            
+            # Add software name
+            display_text += f"Software: {software_name}\n"
+            
+            # Add designations as formatted text
+            if version_info['designations']:
+                designations_text = format_designations_text(version_info['designations'])
+                display_text += f"{designations_text}\n"
 
-            if release.get('published_at'):
-                # Format the date
+            # Only show published date if we're using version number as title
+            if len(version_info['clean_version']) <= 8 and published_date:
                 try:
                     from datetime import datetime
-                    date_obj = datetime.fromisoformat(release['published_at'].replace('Z', '+00:00'))
-                    display_text += f"Published: {date_obj.strftime('%Y-%m-%d %H:%M')}\n"
+                    date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
+                    display_text += f"Released: {format_fancy_date(date_obj)}\n"
                 except:
-                    display_text += f"Published: {release['published_at']}\n"
+                    display_text += f"Released: {published_date}\n"
 
             # Add software name to release info for button text logic
             release_with_software = release.copy()
@@ -4750,18 +4955,32 @@ Method 2 - MTKclient: Direct technical installation
                     package_info = package
                     break
 
-            # Simplified display format
-            display_text = f"{release['software_name']}\n"
-            display_text += f"Version: {release['tag_name']}\n"
+            # Parse version designations
+            version_info = parse_version_designations(release['tag_name'])
+            
+            # Get display version (either version number or published date)
+            published_date = release.get('published_at', '')
+            display_version = get_display_version(version_info, published_date)
+            
+            # Use display version as the main title
+            display_text = f"{display_version}\n"
+            
+            # Add software name
+            display_text += f"Software: {software_name}\n"
+            
+            # Add designations as formatted text
+            if version_info['designations']:
+                designations_text = format_designations_text(version_info['designations'])
+                display_text += f"{designations_text}\n"
 
-            if release.get('published_at'):
-                # Format the date
+            # Only show published date if we're using version number as title
+            if len(version_info['clean_version']) <= 8 and published_date:
                 try:
                     from datetime import datetime
-                    date_obj = datetime.fromisoformat(release['published_at'].replace('Z', '+00:00'))
-                    display_text += f"Published: {date_obj.strftime('%Y-%m-%d %H:%M')}\n"
+                    date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
+                    display_text += f"Released: {format_fancy_date(date_obj)}\n"
                 except:
-                    display_text += f"Published: {release['published_at']}\n"
+                    display_text += f"Released: {published_date}\n"
 
             # Show device type if "All Types" is selected
             if not self.device_type_combo.currentData() and package_info:
@@ -4863,7 +5082,7 @@ Method 2 - MTKclient: Direct technical installation
         self.package_list.clear()
 
         # Add loading placeholder
-        loading_item = QListWidgetItem("Loading firmware listings...")
+        loading_item = QListWidgetItem("Loading system software listings...")
         loading_item.setFlags(loading_item.flags() & ~Qt.ItemIsSelectable)
         self.package_list.addItem(loading_item)
 
@@ -7342,17 +7561,8 @@ if __name__ == "__main__":
         # Create the application
         app = QApplication(sys.argv)
 
-        # Set application icon based on platform
-        if platform.system() == "Darwin":  # macOS
-            icon_path = "mtkclient/gui/images/Innioasis Updater Icon.icns"
-        elif platform.system() == "Windows":
-            icon_path = "mtkclient/gui/images/icon.ico"
-        else:
-            # Fallback to PNG for other platforms
-            icon_path = "mtkclient/gui/images/icon.png"
-
-        if Path(icon_path).exists():
-            app.setWindowIcon(QIcon(icon_path))
+        # Let the macOS app wrapper handle the icon display
+        # Removed custom icon setting to allow macOS app icon to shine through
 
         # Create and show the main window
         window = FirmwareDownloaderGUI()
