@@ -2126,7 +2126,7 @@
 
         function downloadWindows() {
             // Download Windows installer
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Innioasis.Updater.-.Windows.exe';
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/latest/Innioasis.Updater.-.Windows.exe';
             
             // For Safari, open in new tab, for other browsers use download attribute
             if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
@@ -2238,7 +2238,7 @@
         function downloadDriver(driverType) {
             // Only handle MediaTek driver now
             if (driverType === 'mtk') {
-                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/driver_mtk.exe';
+                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/download/latest/driver_mtk.exe';
                 const filename = 'driver_mtk.exe';
                 
                 // For Safari, open in new tab, for other browsers use download attribute
