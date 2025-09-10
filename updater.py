@@ -437,7 +437,7 @@ class DriverSetupDialog(QDialog):
     
     def open_install_guide(self):
         """Open the installation guide in browser"""
-        webbrowser.open("https://innioasis.app/installguide.html")
+        webbrowser.open("https://innioasis.app/")
         self.accept()
 
 class UpdateProgressDialog(QDialog):
@@ -617,7 +617,7 @@ class ARM64WindowsDialog(QDialog):
     
     def open_wsl_guide(self):
         """Open the WSL installation guide"""
-        webbrowser.open("https://innioasis.app/installguide.html")
+        webbrowser.open("https://innioasis.app/")
         self.accept()
 
 def launch_y1_helper_arm64():
