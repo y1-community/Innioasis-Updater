@@ -1947,7 +1947,7 @@
                 const subtitle = document.querySelector('.hero-banner .subtitle');
                 if (subtitle && totalDownloads > 0) {
                     const formattedCount = totalDownloads.toLocaleString();
-                    subtitle.textContent = `We've helped to update ${formattedCount} Innioasis Y1's on Windows and Mac using unauthenticated methods, falling back to use tokens stored in config.ini (in same directory as html file) to obtain the numbers, the keys are in a key_1 key_2 key_3 format (with the suffix being whatever number of key it is)`;
+                    subtitle.textContent = `We've helped to update ${formattedCount} Innioasis Y1's on Windows and Mac`;
                 }
             } catch (error) {
                 console.warn('Error updating download count:', error);
