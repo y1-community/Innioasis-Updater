@@ -383,6 +383,56 @@
             overflow: hidden;
         }
 
+        /* Pill styles for version designations */
+        .version-pills {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .version-pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .version-pill.ipod-theme {
+            background: #007aff;
+            color: white;
+        }
+
+        .version-pill.resolution-360p {
+            background: #ffd700;
+            color: #1d1d1f;
+        }
+
+        .version-pill.nightly {
+            background: #ff9500;
+            color: white;
+        }
+
+        /* Dark mode support for pills */
+        body[data-theme="dark"] .version-pill.ipod-theme {
+            background: #0a84ff;
+            color: white;
+        }
+
+        body[data-theme="dark"] .version-pill.resolution-360p {
+            background: #ff9f0a;
+            color: #000000;
+        }
+
+        body[data-theme="dark"] .version-pill.nightly {
+            background: #ff9f0a;
+            color: white;
+        }
+
         /* Scrolling text animation for long version names */
         .detail-value.scroll-text {
             white-space: nowrap;
@@ -1109,7 +1159,6 @@
                 <div class="filter-group">
                     <label for="deviceType">Device Type</label>
                     <select id="deviceType">
-                        <option value="">All Types</option>
                     </select>
                 </div>
                 
@@ -1148,7 +1197,7 @@
         <div class="footer">
             <p>Created by <a href="https://ko-fi.com/teamslide" target="_blank">Team Slide</a> | 
                <a href="https://innioasis.app" target="_blank">Innioasis App</a> | 
-               <a href="https://innioasis.app/slidia.html" target="_blank">Slidia</a> | 
+               <a href="https://innioasis.app" target="_blank">Slidia</a> | 
                <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a></p>
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">🍪 Cookies not used by this site</p>
         </div>
@@ -1330,6 +1379,55 @@
             deviceModel: '',
             software: ''
         };
+
+        // Function to parse version names and extract designations
+        function parseVersionDesignations(versionName) {
+            const designations = [];
+            let cleanVersion = versionName;
+            
+            // Check for nightly designation
+            if (versionName.includes('nightly')) {
+                designations.push({
+                    type: 'nightly',
+                    text: 'Nightly'
+                });
+                cleanVersion = cleanVersion.replace('nightly-', '').replace('-nightly', '');
+            }
+            
+            // Check for iPod theme compatibility (handle both formats)
+            if (versionName.includes('ipod-theme-compatible')) {
+                designations.push({
+                    type: 'ipod-theme',
+                    text: 'iPod themes'
+                });
+                cleanVersion = cleanVersion.replace('-ipod-theme-compatible', '');
+            } else if (versionName.includes('nightly-ipod-theme-compatible')) {
+                designations.push({
+                    type: 'ipod-theme',
+                    text: 'iPod themes'
+                });
+                cleanVersion = cleanVersion.replace('-nightly-ipod-theme-compatible', '');
+            }
+            
+            // Check for 360p resolution
+            if (versionName.includes('360p')) {
+                designations.push({
+                    type: 'resolution-360p',
+                    text: '360p'
+                });
+                cleanVersion = cleanVersion.replace('-360p', '');
+            }
+            
+            // Strip ugly version numbers at the end (long hex strings)
+            cleanVersion = cleanVersion.replace(/-[a-f0-9]{16,}!?$/, '');
+            // Remove any remaining trailing dashes or exclamation marks
+            cleanVersion = cleanVersion.replace(/[-!]+$/, '');
+            
+            return {
+                cleanVersion: cleanVersion.trim(),
+                designations: designations
+            };
+        }
         
 
         // Initialize the app
@@ -1578,9 +1676,45 @@
             document.getElementById('software').addEventListener('change', filterFirmware);
         }
 
+        // Load config.ini tokens for API fallback
+        let apiTokens = [];
+        
+        async function loadConfigTokens() {
+            try {
+                const response = await fetch('config.ini');
+                if (!response.ok) {
+                    console.warn('Could not load config.ini, using unauthenticated API calls only');
+                    return [];
+                }
+                
+                const configText = await response.text();
+                const tokens = [];
+                const lines = configText.split('\n');
+                
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith('key_') && trimmed.includes('=')) {
+                        const token = trimmed.split('=')[1].trim();
+                        if (token && token.length > 10) {
+                            tokens.push(token);
+                        }
+                    }
+                }
+                
+                console.log(`Loaded ${tokens.length} API tokens from config.ini`);
+                return tokens;
+            } catch (error) {
+                console.warn('Error loading config.ini:', error);
+                return [];
+            }
+        }
+
         async function loadData() {
             try {
                 setStatus('Loading configuration and manifest data...', 'loading');
+                
+                // Load API tokens first
+                apiTokens = await loadConfigTokens();
                 
                 // Load manifest data
                 const manifestResponse = await fetch('https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml');
@@ -1647,7 +1781,7 @@
             const combo = document.getElementById('deviceType');
             const deviceTypes = [...new Set(packages.map(p => p.device_type).filter(t => t))];
             
-            combo.innerHTML = '<option value="">All Types</option>';
+            combo.innerHTML = '';
             deviceTypes.sort().forEach(type => {
                 const option = document.createElement('option');
                 option.value = type;
@@ -1734,21 +1868,39 @@
                     return;
                 }
                 
-                // Load releases for each package
+                // Group packages by repo to minimize API calls
+                const repoGroups = {};
+                filteredPackages.forEach(pkg => {
+                    if (!repoGroups[pkg.repo]) {
+                        repoGroups[pkg.repo] = [];
+                    }
+                    repoGroups[pkg.repo].push(pkg);
+                });
+                
+                // Load releases for each unique repo (batch requests)
                 const allReleases = [];
-                for (const pkg of filteredPackages) {
+                const repoPromises = Object.keys(repoGroups).map(async (repo) => {
                     try {
-                        const releases = await getReleases(pkg.repo);
+                        const releases = await getReleases(repo);
                         releases.forEach(release => {
-                            release.software_name = pkg.name;
-                            release.device_type = pkg.device_type;
-                            release.device_model = pkg.device;
-                            allReleases.push(release);
+                            // Add metadata for all packages that use this repo
+                            repoGroups[repo].forEach(pkg => {
+                                const releaseWithMetadata = {
+                                    ...release,
+                                    software_name: pkg.name,
+                                    device_type: pkg.device_type,
+                                    device_model: pkg.device
+                                };
+                                allReleases.push(releaseWithMetadata);
+                            });
                         });
                     } catch (error) {
-                        console.warn(`Failed to load releases for ${pkg.repo}:`, error);
+                        console.warn(`Failed to load releases for ${repo}:`, error);
                     }
-                }
+                });
+                
+                // Wait for all repo requests to complete
+                await Promise.all(repoPromises);
                 
                 // Sort releases by date (newest first)
                 allReleases.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
@@ -1767,7 +1919,20 @@
 
         async function getReleases(repo) {
             try {
-                const response = await fetch(`https://api.github.com/repos/${repo}/releases`);
+                // Try unauthenticated API call first
+                let response = await fetch(`https://api.github.com/repos/${repo}/releases`);
+                
+                // If rate limited and we have tokens, try with authentication
+                if (response.status === 403 && apiTokens.length > 0) {
+                    console.log(`Rate limited for ${repo}, trying with authentication...`);
+                    const randomToken = apiTokens[Math.floor(Math.random() * apiTokens.length)];
+                    response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                        headers: {
+                            'Authorization': `token ${randomToken}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                }
                 
                 if (!response.ok) {
                     throw new Error(`GitHub API error: ${response.status}`);
@@ -1813,8 +1978,9 @@
             }
             
             container.innerHTML = releases.map(release => {
-                // Check if version field needs scrolling based on actual content length
-                const versionNeedsScrolling = release.tag_name.length > 25;
+                // Parse version designations
+                const versionInfo = parseVersionDesignations(release.tag_name);
+                const versionNeedsScrolling = versionInfo.cleanVersion.length > 25;
                 
                 // Format download counts
                 const formatDownloadCount = (count) => {
@@ -1826,13 +1992,22 @@
                     return count.toString();
                 };
                 
+                // Generate pills HTML
+                const pillsHTML = versionInfo.designations.length > 0 ? 
+                    `<div class="version-pills">
+                        ${versionInfo.designations.map(designation => 
+                            `<span class="version-pill ${designation.type}">${designation.text}</span>`
+                        ).join('')}
+                    </div>` : '';
+                
                 return `
                     <div class="firmware-item" onclick="selectFirmware(this, '${release.software_name}')">
                         <div class="firmware-name">${release.software_name}</div>
                         <div class="firmware-details">
                             <div class="detail-item">
                                 <div class="detail-label">Version</div>
-                                <div class="detail-value ${versionNeedsScrolling ? 'scroll-text' : ''}" title="${release.tag_name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${release.tag_name}</div>
+                                <div class="detail-value ${versionNeedsScrolling ? 'scroll-text' : ''}" title="${release.tag_name}" onclick="event.stopPropagation(); toggleScrollingAnimation(this.closest('.firmware-item'))">${versionInfo.cleanVersion}</div>
+                                ${pillsHTML}
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Published</div>
@@ -1967,7 +2142,7 @@
             event.stopPropagation();
             
             // Direct users to the install guide for automatic installation
-            window.open('https://innioasis.app/installguide.html', '_blank');
+            window.open('https://innioasis.app', '_blank');
         }
 
         function formatDate(dateString) {
