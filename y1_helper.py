@@ -44,17 +44,6 @@ class Y1HelperApp(tk.Tk):
         super().__init__()
         debug_print("Initializing Y1HelperApp")
         
-        # Set the custom icon for the application window
-        # The .ico file must be in the same directory as the script
-        try:
-            icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'y1_helper.ico')
-            if os.path.exists(icon_path):
-                self.iconbitmap(icon_path)
-            else:
-                debug_print("y1_helper.ico not found, using default icon.")
-        except tk.TclError as e:
-            debug_print(f"Failed to set icon: {e}")
-        
         # Base directory (for config file access)
         self.base_dir = os.path.dirname(os.path.abspath(__file__))
         
@@ -416,8 +405,8 @@ class Y1HelperApp(tk.Tk):
         except Exception as e:
             debug_print(f"ttk.Button failed, using tk.Button: {e}")
             self.input_mode_btn = tk.Button(mode_frame, text="Touch Screen Mode", command=self.toggle_scroll_wheel_mode,
-                                            bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
-                                            activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
+                                           bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
+                                           activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
             debug_print("input_mode_btn created successfully with tk.Button")
         self.input_mode_btn.pack(side=tk.LEFT, anchor="w")
         
@@ -426,22 +415,33 @@ class Y1HelperApp(tk.Tk):
         except Exception as e:
             debug_print(f"ttk.Button failed, using tk.Button: {e}")
             self.screenshot_btn = tk.Button(mode_frame, text="📸 Screenshot", command=self.take_screenshot,
-                                         bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
-                                         activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
+                                          bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
+                                          activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
         self.screenshot_btn.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
+        
+        # New "Install Firmware" button
+        try:
+            self.firmware_btn = ttk.Button(mode_frame, text="Install Firmware", command=self.run_updater_and_exit, style="TButton")
+        except Exception as e:
+            debug_print(f"ttk.Button failed, using tk.Button: {e}")
+            self.firmware_btn = tk.Button(mode_frame, text="Install Firmware", command=self.run_updater_and_exit,
+                                        bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
+                                        activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
+        self.firmware_btn.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
         
         try:
             self.disable_swap_checkbox = ttk.Checkbutton(mode_frame, text="Disable D-pad Swap", variable=self.disable_dpad_swap_var, command=self.update_controls_display, style="TCheckbutton")
         except Exception as e:
             debug_print(f"ttk.Checkbutton failed, using tk.Checkbutton: {e}")
             self.disable_swap_checkbox = tk.Checkbutton(mode_frame, text="Disable D-pad Swap", variable=self.disable_dpad_swap_var, command=self.update_controls_display,
-                                                        bg=self.bg_color, fg=self.fg_color, font=(get_platform_font(), 9))
+                                                      bg=self.bg_color, fg=self.fg_color, font=(get_platform_font(), 9))
         self.disable_swap_checkbox.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
         self.disable_swap_checkbox.pack_forget()
         
         self._add_tooltip(self.input_mode_btn, "Input Mode: Click to switch between Touch Screen Mode and Scroll Wheel Mode.")
         self._add_tooltip(self.screenshot_btn, "Screenshot: Capture the current device screen and save it to a file.")
         self._add_tooltip(self.disable_swap_checkbox, "When checked, disables the D-pad swap in Scroll Wheel Mode.")
+        self._add_tooltip(self.firmware_btn, "Launches Innioasis Updater to install new firmware and closes Y1 Helper.")
         
         status_frame = ttk.Frame(main_frame)
         status_frame.pack(fill=tk.X, pady=(10, 0))
@@ -595,147 +595,841 @@ This will install your themes and fonts to the device."""
         except Exception as e:
             messagebox.showerror("Error", f"Failed to launch Rockbox Utility: {e}")
     
-    # Removed the run_updater_and_exit and launch_updater_and_exit functions
-    # as they are no longer needed for the "Install Firmware" button.
-    
-    def on_close(self):
-        """Handle application close event."""
-        debug_print("on_close called")
-        self.is_capturing = False
-        self.stop_threads()
-        if self.device_connected:
-            self.set_device_stay_awake(False)
-        self.destroy()
-    
-    def stop_threads(self):
-        debug_print("Stopping threads...")
-        self.is_capturing = False
-        if self.capture_thread and self.capture_thread.is_alive():
-            self.capture_thread.join(timeout=2)
-            if self.capture_thread.is_alive():
-                debug_print("Capture thread did not stop gracefully.")
-        debug_print("Threads stopped.")
+    def run_updater_and_exit(self):
+        """Launches Innioasis Updater and terminates Y1 Helper."""
+        debug_print("run_updater_and_exit called")
+        try:
+            # Look for Innioasis Updater.lnk in Start Menu
+            start_menu_path = os.path.join(os.environ.get('APPDATA', ''), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Innioasis Updater.lnk')
+            
+            if os.path.exists(start_menu_path):
+                # Launch the shortcut (this will open in pythonw with no console)
+                subprocess.Popen(['cmd', '/c', 'start', '', start_menu_path])
+                self.status_var.set("Launching Innioasis Updater...")
+                self.update_idletasks()
+                
+                # Wait a moment for the updater to start, then terminate this process
+                self.after(1000, self.terminate_process)
+            else:
+                # Fallback: try to find and run updater.py directly
+                updater_path = os.path.join(self.base_dir, "updater.py")
+                if os.path.exists(updater_path):
+                    # Use pythonw to run without console window (Windows only)
+                    if platform.system() == "Windows":
+                        pythonw_path = os.path.join(self.base_dir, "pythonw.exe")
+                        if os.path.exists(pythonw_path):
+                            subprocess.Popen([pythonw_path, updater_path])
+                        else:
+                            # Fallback to regular python
+                            subprocess.Popen([sys.executable, updater_path])
+                    else:
+                        # macOS/Linux: use sys.executable
+                        subprocess.Popen([sys.executable, updater_path])
+                    
+                    self.status_var.set("Launching Innioasis Updater...")
+                    self.update_idletasks()
+                    self.after(1000, self.terminate_process)
+                else:
+                    messagebox.showerror("Error", "Innioasis Updater not found. Please ensure it is properly installed.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to launch Innioasis Updater: {e}")
+
+    def launch_updater_and_exit(self):
+        """Launches updater.py with --force flag and closes Y1 Helper GUI."""
+        try:
+            updater_path = os.path.join(self.base_dir, "updater.py")
+            if os.path.exists(updater_path):
+                # Launch updater.py with --force flag
+                if platform.system() == "Windows":
+                    # Windows: use pythonw.exe if available
+                    pythonw_path = os.path.join(self.base_dir, "pythonw.exe")
+                    if os.path.exists(pythonw_path):
+                        subprocess.Popen([pythonw_path, updater_path, "--force"])
+                    else:
+                        # Fallback to regular python
+                        subprocess.Popen([sys.executable, updater_path, "--force"])
+                else:
+                    # macOS/Linux: use sys.executable
+                    subprocess.Popen([sys.executable, updater_path, "--force"])
+                
+                self.status_var.set("Launching Innioasis Updater...")
+                self.update_idletasks()
+                
+                # Close the GUI after a short delay
+                self.after(1000, self.terminate_process)
+            else:
+                messagebox.showerror("Error", "updater.py not found. Please ensure it is properly installed.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to launch updater.py: {e}")
     
     def terminate_process(self):
-        debug_print("Terminating process.")
-        sys.exit(0)
-    
-    def show_ready_placeholder(self):
-        debug_print("Showing ready placeholder")
+        """Terminates the Y1 Helper process completely."""
         try:
-            placeholder_path = os.path.join(self.assets_dir, "ready.png")
-            if os.path.exists(placeholder_path):
-                img = Image.open(placeholder_path)
-                photo_img = ImageTk.PhotoImage(img)
-                self.screen_canvas.create_image(0, 0, anchor=tk.NW, image=photo_img)
-                self.screen_canvas.image = photo_img
-                self.screen_canvas.config(width=img.width, height=img.height)
-            else:
-                debug_print("Placeholder image not found.")
-                self.screen_canvas.create_text(self.display_width / 2, self.display_height / 2,
-                                              text="Waiting for device...", fill="white",
-                                              font=(get_platform_font(), 16))
-        except Exception as e:
-            debug_print(f"Failed to show placeholder: {e}")
-            self.screen_canvas.create_text(self.display_width / 2, self.display_height / 2,
-                                          text="Waiting for device...", fill="white",
-                                          font=(get_platform_font(), 16))
-    
+            # Close the GUI
+            self.destroy()
+            # Force terminate the process
+            os._exit(0)
+        except:
+            # If destroy fails, force exit
+            os._exit(0)
+
     def hide_controls_frame(self):
-        self.controls_frame.pack_forget()
-        self.update_controls_display()
+        if hasattr(self, 'controls_frame'):
+            self.controls_frame.pack_forget()
 
     def show_controls_frame(self):
-        self.controls_frame.pack(fill=tk.X, pady=(5, 0))
-        self.update_controls_display()
+        if hasattr(self, 'controls_frame'):
+            self.controls_frame.pack(fill=tk.X, pady=(5, 0))
+
+    def disable_input_bindings(self):
+        if hasattr(self, 'screen_canvas'):
+            self.screen_canvas.unbind("<Button-1>")
+            self.screen_canvas.unbind("<Button-3>")
+            self.screen_canvas.unbind("<MouseWheel>")
+            self.screen_canvas.unbind("<Button-2>")
+            self.unbind_all("<Key>")
+            self.unbind_all("<KeyRelease>")
+            self.bind("<Alt_L>", self.toggle_launcher_control)
+            self.bind("<Alt_R>", self.toggle_launcher_control)
+            self.input_disabled = True
+
+    def enable_input_bindings(self):
+        if hasattr(self, 'screen_canvas'):
+            self.screen_canvas.bind("<Button-1>", self.on_screen_click)
+            self.screen_canvas.bind("<Button-3>", self.on_screen_right_click)
+            self.screen_canvas.bind("<MouseWheel>", self.on_mouse_wheel)
+            self.screen_canvas.bind("<Button-2>", self.on_mouse_wheel_click)
+            self.bind_all("<Key>", self.on_key_press)
+            self.bind_all("<KeyRelease>", self.on_key_release)
+            self.input_disabled = False
+            self.ready_placeholder_shown = False
+            
+            # Set appropriate cursor based on current mode and platform
+            if not self.scroll_wheel_mode_var.get():
+                if platform.system() == "Windows":
+                    self.screen_canvas.config(cursor="hand2")
+                else:
+                    # macOS and Linux don't have hand2 cursor, use default
+                    self.screen_canvas.config(cursor="")
+
+    def update_controls_display(self):
+        if self.scroll_wheel_mode_var.get():
+            if self.disable_dpad_swap_var.get():
+                controls_text = "Scroll Wheel Mode (D-pad Swap Disabled):\nTouch: Left Click | Back: Right Click\nD-pad: W/A/S/D or Arrow Keys\nEnter: Wheel Click, Enter, E"
+            else:
+                controls_text = "Scroll Wheel Mode:\nTouch: Left Click | Back: Right Click\nScroll: W/S or Up/Down -> DPAD_LEFT/RIGHT\nD-pad: A/D or Left/Right -> DPAD_UP/DOWN\nEnter: Wheel Click, Enter, E -> ENTER"
+        else:
+            controls_text = "Touch Screen Mode:\nTouch: Left Click | Back: Right Click\nD-pad: W/A/S/D or Arrow Keys\nEnter: Wheel Click, Enter, E -> DPAD_CENTER"
+        self.controls_label.config(text=controls_text)
+
+    def toggle_scroll_wheel_mode(self):
+        debug_print("toggle_scroll_wheel_mode called")
+        try:
+            is_scroll_wheel_mode = not self.scroll_wheel_mode_var.get()
+            self.scroll_wheel_mode_var.set(is_scroll_wheel_mode)
+            self.control_launcher = is_scroll_wheel_mode
+            self.manual_mode_override = True
+            self.last_manual_mode_change = time.time()
+            
+            if is_scroll_wheel_mode:
+                self.input_mode_btn.config(text="Scroll Wheel Mode")
+                self.disable_swap_checkbox.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
+                self.status_var.set("Scroll Wheel Mode enabled")
+                if not self.ready_placeholder_shown:
+                    self.screen_canvas.config(cursor="")
+            else:
+                self.input_mode_btn.config(text="Touch Screen Mode")
+                self.disable_swap_checkbox.pack_forget()
+                self.status_var.set("Touch Screen Mode enabled")
+                if not self.ready_placeholder_shown:
+                    # Use appropriate cursor for each platform
+                    if platform.system() == "Windows":
+                        self.screen_canvas.config(cursor="hand2")
+                    else:
+                        # macOS and Linux don't have hand2 cursor, use default
+                        self.screen_canvas.config(cursor="")
+            
+            self.update_controls_display()
+        except Exception as e:
+            debug_print(f"Error in toggle_scroll_wheel_mode: {e}")
+            messagebox.showerror("Error", f"Failed to toggle mode: {e}")
+
+    def toggle_launcher_control(self, event=None):
+        self.scroll_wheel_mode_var.set(not self.scroll_wheel_mode_var.get())
+        self.toggle_scroll_wheel_mode()
+
+    def setup_menu(self):
+        menubar = Menu(self)
+        self.config(menu=menubar)
+        
+        device_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Device", menu=device_menu)
+        self.device_menu = device_menu
+        
+        device_menu.add_command(label="Device Info", command=self.show_device_info)
+        device_menu.add_command(label="ADB Shell", command=self.open_adb_shell)
+        device_menu.add_command(label="Take Screenshot", command=self.take_screenshot)
+        device_menu.add_command(label="Recent Apps", command=self.show_recent_apps)
+        device_menu.add_command(label="Change Device Language", command=self.change_device_language)
+        device_menu.add_separator()
+        device_menu.add_command(label="Install Firmware", command=self.run_updater_and_exit)
+        device_menu.add_command(label="Rockbox Utility", command=self.launch_rockbox_utility)
+        
+        self.apps_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Apps", menu=self.apps_menu)
+        self.apps_menu.add_command(label="Browse APKs...", command=self.browse_apks)
+        self.apps_menu.add_separator()
+        self.refresh_apps()
+        
+        help_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Help", menu=help_menu)
+        self.help_menu = help_menu
+        
+        help_menu.add_command(label="r/innioasis", command=lambda: webbrowser.open_new_tab("https://www.reddit.com/r/innioasis"))
+        help_menu.add_command(label="Timmkoo Modders Discord", command=lambda: webbrowser.open_new_tab("https://timmkoo.gg"))
+        help_menu.add_separator()
+        help_menu.add_command(label="Reinstall App", command=lambda: webbrowser.open_new_tab("https://www.innioasis.app"))
+        help_menu.add_command(label="Update App", command=self.launch_updater_and_exit)
+        help_menu.add_separator()
+        help_menu.add_command(label="Buy Us Coffee", command=lambda: webbrowser.open_new_tab("https://ko-fi.com/teamslide"))
+        
+        self.apply_menu_colors()
+
+    def refresh_apps(self):
+        # Check if apps_menu is properly initialized
+        if not hasattr(self, 'apps_menu') or not self.apps_menu:
+            return
+            
+        # Preserve the static menu items
+        try:
+            while self.apps_menu.index('end') is not None and self.apps_menu.index('end') > 0:
+                if self.apps_menu.type(self.apps_menu.index('end')) == 'separator':
+                    break
+                self.apps_menu.delete(self.apps_menu.index('end'))
+        except Exception as e:
+            debug_print(f"Error clearing apps menu: {e}")
+            return
+
+        success, stdout, stderr = self.run_adb_command("shell pm list packages -3 -f")
+        apps = []
+        if success:
+            for line in stdout.strip().split('\n'):
+                if line.startswith('package:'):
+                    package_name = line.split('=')[-1]
+                    apps.append(package_name)
+        
+        if not apps:
+            self.apps_menu.add_command(label="No user apps installed", state="disabled")
+        else:
+            for app in sorted(apps):
+                app_menu = Menu(self.apps_menu, tearoff=0)
+                app_menu.add_command(label="Launch", command=lambda a=app: self.launch_app(a))
+                app_menu.add_command(label="Uninstall", command=lambda a=app: self.uninstall_app(a))
+                self.apps_menu.add_cascade(label=app, menu=app_menu)
+                if hasattr(self, 'menu_bg'):
+                    app_menu.configure(bg=self.menu_bg, fg=self.menu_fg, activebackground=self.menu_select_bg, activeforeground=self.menu_select_fg, relief='flat', bd=0)
+
+    def check_adb_availability(self):
+        """Check if ADB is available and show installation dialog if needed."""
+        adb_path = self.get_adb_path()
+        if adb_path is None:
+            # ADB not found - show installation dialog for non-Windows users
+            if platform.system() != "Windows":
+                self.show_adb_installation_dialog()
+            return False
+        return True
+    
+    def show_adb_installation_dialog(self):
+        """Show dialog explaining how to install ADB on macOS/Linux."""
+        dialog = tk.Toplevel(self)
+        dialog.title("ADB Installation Required")
+        dialog.geometry("700x600")
+        dialog.resizable(False, False)
+        dialog.transient(self)
+        dialog.grab_set()
+        
+        # Center dialog on screen
+        dialog.update_idletasks()
+        x = (self.winfo_screenwidth() // 2) - (700 // 2)
+        y = (self.winfo_screenheight() // 2) - (600 // 2)
+        dialog.geometry(f"700x600+{x}+{y}")
+        
+        # Apply theme colors
+        dialog.configure(bg=self.bg_color)
+        
+        # Title
+        title_label = tk.Label(dialog, text="Android Debug Bridge (ADB) Required", 
+                              font=(get_platform_font(), 14, "bold"), bg=self.bg_color, fg=self.fg_color)
+        title_label.pack(pady=(20, 10))
+        
+        # Instructions text
+        instructions_text = """Y1 Remote Control requires ADB (Android Debug Bridge) to communicate with your device.
+
+To install ADB on your system:"""
+        
+        instructions_label = tk.Label(dialog, text=instructions_text, 
+                                    font=(get_platform_font(), 10), bg=self.bg_color, fg=self.fg_color,
+                                    justify=tk.LEFT, wraplength=650)
+        instructions_label.pack(pady=(0, 20), padx=20)
+        
+        # Platform-specific instructions
+        if platform.system() == "Darwin":  # macOS
+            platform_text = """macOS Installation:
+• Using Homebrew (recommended):
+  brew install android-platform-tools
+
+• Using Android Studio:
+  Download from developer.android.com and install Android SDK
+
+• Manual installation:
+  Download platform-tools from developer.android.com
+  Extract to /usr/local/bin/ or ~/bin/"""
+        else:  # Linux
+            platform_text = """Linux Installation:
+• Ubuntu/Debian:
+  sudo apt update && sudo apt install android-tools-adb
+
+• Fedora:
+  sudo dnf install android-tools
+
+• Arch Linux:
+  sudo pacman -S android-tools
+
+• Using Android Studio:
+  Download from developer.android.com and install Android SDK
+
+• Manual installation:
+  Download platform-tools from developer.android.com
+  Extract to /usr/local/bin/ or ~/bin/"""
+        
+        platform_label = tk.Label(dialog, text=platform_text, 
+                                font=(get_platform_font(), 10), bg=self.bg_color, fg=self.fg_color,
+                                justify=tk.LEFT, wraplength=650)
+        platform_label.pack(pady=(0, 20), padx=20)
+        
+        # Additional info
+        info_text = """After installation:
+1. Restart Y1 Remote Control
+2. Connect your Y1 device via USB
+3. Enable USB debugging on your device
+4. Accept the USB debugging prompt on your device"""
+        
+        info_label = tk.Label(dialog, text=info_text, 
+                             font=(get_platform_font(), 10), bg=self.bg_color, fg=self.fg_color,
+                             justify=tk.LEFT, wraplength=650)
+        info_label.pack(pady=(0, 20), padx=20)
+        
+        # Buttons
+        button_frame = tk.Frame(dialog, bg=self.bg_color)
+        button_frame.pack(pady=(0, 20))
+        
+        # Open download page button
+        download_button = tk.Button(button_frame, text="Open Android SDK Download Page", 
+                                   command=lambda: webbrowser.open_new_tab("https://developer.android.com/studio#command-tools"),
+                                   bg=self.button_bg, fg=self.button_fg, 
+                                   activebackground=self.button_active_bg, 
+                                   activeforeground=self.button_active_fg, 
+                                   font=(get_platform_font(), 9), relief="flat", bd=1)
+        download_button.pack(side=tk.LEFT, padx=(0, 10))
+        
+        # OK button
+        ok_button = tk.Button(button_frame, text="OK", command=dialog.destroy,
+                             bg=self.button_bg, fg=self.button_fg, 
+                             activebackground=self.button_active_bg, 
+                             activeforeground=self.button_active_fg, 
+                             font=(get_platform_font(), 9), relief="flat", bd=1)
+        ok_button.pack(side=tk.LEFT)
+        
+        # Focus on OK button
+        ok_button.focus_set()
+        
+        # Bind Enter key to OK button
+        dialog.bind("<Return>", lambda e: dialog.destroy())
+        dialog.bind("<Escape>", lambda e: dialog.destroy())
 
     def unified_device_check(self):
-        # ... (rest of the code) ...
-        self.after(5000, self.unified_device_check)
-    
-    def start_screen_capture(self):
-        # ... (rest of the code) ...
-        self.capture_thread = threading.Thread(target=self.capture_screen, daemon=True)
-        self.capture_thread.start()
-        
-    def capture_screen(self):
-        # ... (rest of the code) ...
-    
-    def update_screen(self, img):
-        # ... (rest of the code) ...
-    
-    def get_framebuffer(self):
-        # ... (rest of the code) ...
-    
-    def get_current_app(self):
-        # ... (rest of the code) ...
-    
+        try:
+            # First check if ADB is available
+            if not self.check_adb_availability():
+                self.status_var.set("ADB not available - Please install ADB")
+                self.device_connected = False
+                return
+            
+            adb_path = self.get_adb_path()
+            result = subprocess.run([adb_path, "devices"], capture_output=True, text=True, timeout=5)
+            
+            if "device" in result.stdout and "List of devices" in result.stdout:
+                if not self.device_connected:
+                    self.device_connected = True
+                    self.status_var.set("Device connected")
+                    self.show_controls_frame()
+                    self.enable_input_bindings()
+                    self.set_device_stay_awake()
+                self.refresh_apps()
+            else:
+                if self.device_connected:
+                    self.device_connected = False
+                    self.status_var.set("Device disconnected - Please reconnect")
+                    self.hide_controls_frame()
+                    self.disable_input_bindings()
+                else:
+                    self.status_var.set("No ADB device found")
+                    self.device_connected = False
+        except Exception as e:
+            if self.device_connected:
+                self.device_connected = False
+                self.status_var.set("Device disconnected - Please reconnect")
+                self.hide_controls_frame()
+                self.disable_input_bindings()
+            else:
+                self.status_var.set(f"ADB Error: {str(e)}")
+                self.device_connected = False
+
     def detect_current_app(self):
-        # ... (rest of the code) ...
-    
-    def set_device_stay_awake(self, awake=True):
-        # ... (rest of the code) ...
-    
-    def toggle_scroll_wheel_mode(self):
-        # ... (rest of the code) ...
-    
-    def _add_tooltip(self, widget, text):
-        # ... (rest of the code) ...
-    
-    def _show_tooltip(self, event, widget, text):
-        # ... (rest of the code) ...
-    
-    def _hide_tooltip(self, event):
-        # ... (rest of the code) ...
-    
+        if not self.device_connected: return
+        try:
+            success, stdout, stderr = self.run_adb_command("shell dumpsys activity activities | grep mResumedActivity")
+            detected_package = None
+            if success and stdout:
+                match = re.search(r' ([a-zA-Z0-9_.]+)/(\S+)', stdout)
+                if match:
+                    detected_package = match.group(1)
+
+            if detected_package:
+                if self.current_app != detected_package:
+                    self.current_app = detected_package
+                    self.manual_mode_override = False
+                # Logic to auto-switch modes based on app
+                # (You can expand this list)
+                if "rockbox" in detected_package or ".y1" in detected_package:
+                    if not self.manual_mode_override:
+                        self.scroll_wheel_mode_var.set(True)
+                        self.toggle_scroll_wheel_mode() # Update UI
+                else:
+                     if not self.manual_mode_override:
+                        self.scroll_wheel_mode_var.set(False)
+                        self.toggle_scroll_wheel_mode() # Update UI
+
+        except Exception as e:
+            debug_print(f"Error detecting app: {e}")
+
+    def run_adb_command(self, command, timeout=10):
+        try:
+            adb_path = self.get_adb_path()
+            if adb_path is None:
+                return False, "", "ADB not available - Please install ADB"
+            
+            startupinfo = None
+            if platform.system() == "Windows":
+                startupinfo = subprocess.STARTUPINFO()
+                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                startupinfo.wShowWindow = subprocess.SW_HIDE
+
+            if '"' in command:
+                if platform.system() == "Windows":
+                    full_command = f'"{adb_path}" {command}'
+                    result = subprocess.run(full_command, shell=True, capture_output=True, text=True, timeout=timeout, startupinfo=startupinfo)
+                else:
+                    import shlex
+                    full_command = [adb_path] + shlex.split(command)
+                    result = subprocess.run(full_command, capture_output=True, text=True, timeout=timeout)
+            else:
+                full_command = [adb_path] + command.split()
+                if platform.system() == "Windows":
+                    result = subprocess.run(full_command, capture_output=True, text=True, timeout=timeout, startupinfo=startupinfo)
+                else:
+                    result = subprocess.run(full_command, capture_output=True, text=True, timeout=timeout)
+            
+            return result.returncode == 0, result.stdout, result.stderr
+        except Exception as e:
+            return False, "", str(e)
+
+    def start_screen_capture(self):
+        if not self.capture_thread or not self.capture_thread.is_alive():
+            self.is_capturing = True
+            self.capture_thread = threading.Thread(target=self.capture_screen_loop, daemon=True)
+            self.capture_thread.start()
+
+    def capture_screen_loop(self):
+        temp_dir = tempfile.gettempdir()
+        fb_temp_path = os.path.join(temp_dir, "y1_fb0.tmp")
+        placeholder_shown = False
+        
+        while self.is_capturing:
+            try:
+                current_time = time.time()
+                
+                if current_time - self.last_unified_check > self.unified_check_interval:
+                    self.unified_device_check()
+                    self.last_unified_check = current_time
+                
+                if not self.device_connected:
+                    if not placeholder_shown:
+                        self.show_ready_placeholder()
+                        placeholder_shown = True
+                        self.status_var.set("Device disconnected - Please reconnect")
+                        self.disable_input_bindings()
+                    time.sleep(2)
+                    continue
+                
+                if placeholder_shown:
+                    placeholder_shown = False
+                    self.status_var.set("Device connected")
+                    self.enable_input_bindings()
+                
+                if current_time - self.last_framebuffer_refresh > self.framebuffer_refresh_interval or self.force_refresh_requested:
+                    success, _, _ = self.run_adb_command(f"pull /dev/graphics/fb0 \"{fb_temp_path}\"")
+                    if success and os.path.exists(fb_temp_path):
+                        self.process_framebuffer(fb_temp_path)
+                    else:
+                        self.device_connected = False # Assume disconnected
+                    self.last_framebuffer_refresh = current_time
+                    self.force_refresh_requested = False
+                else:
+                    time.sleep(0.5)
+            except Exception as e:
+                self.device_connected = False
+                self.show_ready_placeholder()
+                placeholder_shown = True
+                self.status_var.set("Device disconnected - Please reconnect")
+                time.sleep(1)
+
+    def process_framebuffer(self, fb_path):
+        try:
+            file_size = os.path.getsize(fb_path)
+            if file_size < 100:
+                self.show_sleeping_placeholder()
+                return
+
+            with open(fb_path, 'rb') as f:
+                data = f.read()
+            
+            # Simplified processing logic assuming BGRA8888
+            expected_size = self.device_width * self.device_height * 4
+            if len(data) >= expected_size:
+                arr = np.frombuffer(data[:expected_size], dtype=np.uint8).reshape((self.device_height, self.device_width, 4))
+                arr = arr[..., [2, 1, 0, 3]] # BGRA to RGBA for PIL
+                img = Image.fromarray(arr).convert('RGB')
+
+                if self.is_screen_blank(img):
+                    self.show_sleeping_placeholder()
+                    return
+
+                resized_img = img.resize((self.display_width, self.display_height), Image.Resampling.LANCZOS)
+                photo = ImageTk.PhotoImage(resized_img)
+                self.after_idle(lambda: self.update_screen_display(photo))
+                self.last_screen_image = img
+            else:
+                self.show_sleeping_placeholder()
+
+        except Exception as e:
+            self.show_sleeping_placeholder()
+            
+    def force_framebuffer_refresh(self):
+        self.force_refresh_requested = True
+
+    def update_screen_display(self, photo):
+        self.ready_placeholder_shown = False
+        try:
+            self.current_photo = photo
+            self.screen_canvas.delete("all")
+            self.screen_canvas.create_image(0, 0, anchor=tk.NW, image=self.current_photo)
+        except Exception:
+            pass # Ignore errors during UI update
+
+    def show_sleeping_placeholder(self):
+        try:
+            # Try to load sleeping.png from assets directory first, then current directory
+            img_path = None
+            if os.path.exists(os.path.join(self.assets_dir, 'sleeping.png')):
+                img_path = os.path.join(self.assets_dir, 'sleeping.png')
+            elif os.path.exists('sleeping.png'):
+                img_path = 'sleeping.png'
+            
+            if img_path:
+                img = Image.open(img_path)
+                img = img.resize((self.display_width, self.display_height), Image.Resampling.LANCZOS)
+            else:
+                # Fallback to solid color if PNG not found
+                img = Image.new('RGB', (self.display_width, self.display_height), (20, 20, 20))
+            
+            photo = ImageTk.PhotoImage(img)
+            self.update_screen_display(photo)
+        except Exception as e:
+            debug_print(f"Sleeping placeholder error: {e}")
+            # Fallback to solid color on error
+            try:
+                img = Image.new('RGB', (self.display_width, self.display_height), (20, 20, 20))
+                photo = ImageTk.PhotoImage(img)
+                self.update_screen_display(photo)
+            except:
+                pass
+            
+    def show_ready_placeholder(self):
+        self.ready_placeholder_shown = True
+        try:
+            # Try to load ready.png from assets directory first, then current directory
+            img_path = None
+            if os.path.exists(os.path.join(self.assets_dir, 'ready.png')):
+                img_path = os.path.join(self.assets_dir, 'ready.png')
+            elif os.path.exists('ready.png'):
+                img_path = 'ready.png'
+            
+            if img_path:
+                img = Image.open(img_path)
+                img = img.resize((self.display_width, self.display_height), Image.Resampling.LANCZOS)
+            else:
+                # Fallback to solid color if PNG not found
+                img = Image.new('RGB', (self.display_width, self.display_height), (30, 30, 30))
+            
+            photo = ImageTk.PhotoImage(img)
+            self.update_screen_display(photo)
+        except Exception as e:
+            debug_print(f"Ready placeholder error: {e}")
+            # Fallback to solid color on error
+            try:
+                img = Image.new('RGB', (self.display_width, self.display_height), (30, 30, 30))
+                photo = ImageTk.PhotoImage(img)
+                self.update_screen_display(photo)
+            except:
+                pass
+
+    def send_back_key(self):
+        if not self._input_paced(): return
+        self.force_framebuffer_refresh()
+        self.run_adb_command("shell input keyevent 4")
+        self.after(100, self.force_framebuffer_refresh)
+
+    def set_device_stay_awake(self):
+        if not self.device_connected or self.device_stay_awake_set:
+            return
+        success, _, _ = self.run_adb_command("shell settings put global stay_on_while_plugged_in 3")
+        if success:
+            self.device_stay_awake_set = True
+
+    def is_screen_blank(self, img):
+        try:
+            arr = np.array(img.convert('L'))
+            return np.mean(arr) < 15.0 and np.std(arr) < 5.0
+        except Exception:
+            return False
+
+    def launch_settings(self):
+        self.run_adb_command("shell am start -n com.android.settings/.Settings")
+        self.status_var.set("Settings launched")
+        
+    def go_home(self):
+        self.run_adb_command("shell input keyevent 3") # KEYCODE_HOME
+        self.status_var.set("Home key sent")
+
+    def browse_apks(self):
+        file_path = filedialog.askopenfilename(title="Select APK file", filetypes=[("APK files", "*.apk")])
+        if file_path:
+            self.status_var.set("Installing APK...")
+            self.update_idletasks()
+            success, stdout, stderr = self.run_adb_command(f"install -r \"{file_path}\"")
+            if success:
+                self.status_var.set("APK installed successfully")
+                self.refresh_apps()
+            else:
+                self.status_var.set(f"APK installation failed")
+                messagebox.showerror("Install Failed", stderr or stdout)
+
+    def launch_app(self, package_name):
+        self.run_adb_command(f"shell monkey -p {package_name} -c android.intent.category.LAUNCHER 1")
+        self.status_var.set(f"Launched {package_name}")
+
+    def uninstall_app(self, package_name):
+        if messagebox.askyesno("Uninstall", f"Uninstall {package_name}?"):
+            self.status_var.set(f"Uninstalling {package_name}...")
+            self.update_idletasks()
+            success, stdout, stderr = self.run_adb_command(f"uninstall {package_name}")
+            if success:
+                self.status_var.set(f"{package_name} uninstalled")
+                self.refresh_apps()
+            else:
+                self.status_var.set("Uninstall failed")
+                messagebox.showerror("Uninstall Failed", stderr or stdout)
+
     def on_screen_click(self, event):
-        # ... (rest of the code) ...
-    
+        if self.input_disabled or not self._input_paced(): return
+        x = int(event.x / self.display_scale)
+        y = int(event.y / self.display_scale)
+        if 0 <= x < self.device_width and 0 <= y < self.device_height:
+            self.force_framebuffer_refresh()
+            if self.control_launcher:
+                self.run_adb_command("shell input keyevent 66") # ENTER
+            else:
+                self.run_adb_command(f"shell input tap {x} {y}")
+            self.after(100, self.force_framebuffer_refresh)
+
     def on_screen_right_click(self, event):
-        # ... (rest of the code) ...
+        self.send_back_key()
     
     def on_mouse_wheel(self, event):
-        # ... (rest of the code) ...
-    
+        if self.input_disabled or not self._input_paced(): return
+        direction = 0
+        if hasattr(event, 'delta') and event.delta != 0:
+            direction = 1 if event.delta > 0 else -1
+        elif hasattr(event, 'num'):
+            if event.num == 4: direction = 1
+            elif event.num == 5: direction = -1
+        if direction == 0: return
+
+        if self.scroll_wheel_mode_var.get():
+            self.show_scroll_cursor()
+            if self.disable_dpad_swap_var.get():
+                keycode = 19 if direction > 0 else 20 # UP/DOWN
+            else:
+                keycode = 21 if direction > 0 else 22 # LEFT/RIGHT
+        else:
+            keycode = 19 if direction > 0 else 20 # UP/DOWN
+            
+        self.run_adb_command(f"shell input keyevent {keycode}")
+        self.after(50, self.force_framebuffer_refresh)
+
     def on_mouse_wheel_click(self, event):
-        # ... (rest of the code) ...
-    
+        if self.input_disabled or not self._input_paced(): return
+        keycode = 66 if self.control_launcher else 23 # ENTER or DPAD_CENTER
+        self.run_adb_command(f"shell input keyevent {keycode}")
+        self.after(50, self.force_framebuffer_refresh)
+
     def on_key_press(self, event):
-        # ... (rest of the code) ...
-    
+        if self.input_disabled or not self._input_paced(): return
+        key = event.keysym.lower()
+        dpad_map = {'w': 19, 'up': 19, 's': 20, 'down': 20, 'a': 21, 'left': 21, 'd': 22, 'right': 22}
+        keycode = None
+        if key in dpad_map:
+            keycode = dpad_map[key]
+            if self.control_launcher and self.scroll_wheel_mode_var.get() and not self.disable_dpad_swap_var.get():
+                if keycode == 19: keycode = 21 # up -> left
+                elif keycode == 20: keycode = 22 # down -> right
+        elif key in ['return', 'e']:
+            keycode = 66 if self.control_launcher else 23
+        elif key == 'escape':
+            keycode = 4 # BACK
+        
+        if keycode:
+            self.run_adb_command(f"shell input keyevent {keycode}")
+            self.after(50, self.force_framebuffer_refresh)
+
     def on_key_release(self, event):
-        # ... (rest of the code) ...
-    
-    def send_input_event(self, event_type, value):
-        # ... (rest of the code) ...
-    
-    def update_controls_display(self):
-        # ... (rest of the code) ...
-    
-    def handle_launcher_mode(self):
-        # ... (rest of the code) ...
-    
-    def is_launcher_running(self, package_name):
-        # ... (rest of the code) ...
-    
-    def disable_input_bindings(self):
-        # ... (rest of the code) ...
-    
-    def enable_input_bindings(self):
-        # ... (rest of the code) ...
-    
-    def go_home(self):
-        # ... (rest of the code) ...
-    
-    def launch_settings(self):
-        # ... (rest of the code) ...
-    
+        if self.scroll_cursor_timer:
+            self.after_cancel(self.scroll_cursor_timer)
+            self.hide_scroll_cursor()
+
+    def open_adb_shell(self):
+        try:
+            adb_path = self.get_adb_path()
+            if adb_path is None:
+                messagebox.showerror("Error", "ADB not available - Please install ADB")
+                return
+            
+            if platform.system() == "Windows":
+                subprocess.Popen([adb_path, "shell"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            else:
+                subprocess.Popen([adb_path, "shell"])
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to open ADB shell: {e}")
+
+    def show_device_info(self):
+        info = []
+        model, _ , _ = self.run_adb_command("shell getprop ro.product.model")
+        android_v, _, _ = self.run_adb_command("shell getprop ro.build.version.release")
+        info.append(f"Model: {model.strip()}")
+        info.append(f"Android: {android_v.strip()}")
+        messagebox.showinfo("Device Information", "\n".join(info) if info else "Unable to get info.")
+
+    def change_device_language(self):
+        if not self.device_connected:
+            messagebox.showerror("Error", "Device not connected!")
+            return
+        self.run_adb_command("shell am start -a android.settings.LOCALE_SETTINGS")
+
+    def cleanup(self):
+        self.is_capturing = False
+
+    def on_closing(self):
+        self.cleanup()
+        self.destroy()
+
+    def _input_paced(self):
+        now = time.time()
+        if now - self.last_input_time < self.input_pacing_interval:
+            return False
+        self.last_input_time = now
+        self.last_user_activity = now
+        return True
+
+    def _add_tooltip(self, widget, text):
+        tooltip = tk.Toplevel(widget)
+        tooltip.withdraw()
+        tooltip.overrideredirect(True)
+        
+        label = tk.Label(tooltip, text=text, background="#fff", relief=tk.SOLID, borderwidth=1, font=(get_platform_font(), 9), wraplength=320, justify=tk.LEFT)
+        label.pack(ipadx=4, ipady=2)
+        def enter(event):
+            x = widget.winfo_rootx() + 20
+            y = widget.winfo_rooty() + 20
+            tooltip.geometry(f"+{x}+{y}")
+            tooltip.deiconify()
+        def leave(event):
+            tooltip.withdraw()
+        widget.bind("<Enter>", enter)
+        widget.bind("<Leave>", leave)
+
+    def _should_auto_enable_scroll_wheel(self, package_name):
+        return package_name and ("rockbox" in package_name or ".y1" in package_name)
+
+    def show_scroll_cursor(self):
+        if not self.scroll_wheel_mode_var.get() or self.ready_placeholder_shown: return
+        if self.scroll_cursor_timer: self.after_cancel(self.scroll_cursor_timer)
+        # Use appropriate cursor for each platform
+        if platform.system() == "Windows":
+            self.screen_canvas.config(cursor="wait")
+        elif platform.system() == "Darwin":  # macOS
+            self.screen_canvas.config(cursor="")
+        else:  # Linux
+            self.screen_canvas.config(cursor="")
+        self.scroll_cursor_timer = self.after(self.scroll_cursor_duration, self.hide_scroll_cursor)
+
+    def hide_scroll_cursor(self):
+        if self.ready_placeholder_shown: return
+        # Use appropriate cursor for each platform
+        if self.scroll_wheel_mode_var.get():
+            self.screen_canvas.config(cursor="")
+        else:
+            if platform.system() == "Windows":
+                self.screen_canvas.config(cursor="hand2")
+            else:
+                # macOS and Linux don't have hand2 cursor, use default
+                self.screen_canvas.config(cursor="")
+
     def take_screenshot(self):
-        # ... (rest of the code) ...
-    
+        debug_print("take_screenshot called")
+        try:
+            if not self.device_connected or not self.last_screen_image:
+                messagebox.showwarning("Screenshot Failed", "Device not connected or no screen data available.")
+                return
+            
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            default_filename = f"Y1_Screenshot_{timestamp}.png"
+            file_path = filedialog.asksaveasfilename(title="Save Screenshot", defaultextension=".png", filetypes=[("PNG files", "*.png")], initialfile=default_filename)
+            
+            if file_path:
+                try:
+                    self.last_screen_image.save(file_path)
+                    messagebox.showinfo("Success", f"Screenshot saved to {file_path}")
+                except Exception as e:
+                    messagebox.showerror("Error", f"Failed to save screenshot: {e}")
+        except Exception as e:
+            debug_print(f"Error in take_screenshot: {e}")
+            messagebox.showerror("Error", f"Failed to take screenshot: {e}")
+
     def show_recent_apps(self):
-        # ... (rest of the code) ...
-    
+        self.run_adb_command("shell input keyevent 187") # KEYCODE_APP_SWITCH
+        self.status_var.set("Recent Apps opened")
+        
     def setup_bindings(self):
         self.bind("<Alt_L>", self.toggle_launcher_control)
         self.bind("<Alt_R>", self.toggle_launcher_control)
@@ -745,5 +1439,5 @@ This will install your themes and fonts to the device."""
 if __name__ == "__main__":
     print("You can minimise this window and use remote control and app install features")
     app = Y1HelperApp()
-    app.protocol("WM_DELETE_WINDOW", app.on_close)
+    app.protocol("WM_DELETE_WINDOW", app.on_closing)
     app.mainloop()
