@@ -416,15 +416,28 @@
             margin: 20px 0;
             display: flex;
             justify-content: center;
+            position: relative;
         }
 
         .app-window {
-            background: #2c2c2e;
+            background: var(--bg-secondary);
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px var(--shadow-primary);
             overflow: hidden;
-            max-width: 800px;
+            width: 1200px;
+            height: 500px;
+            max-width: 100%;
             position: relative;
+            border: 1px solid var(--border-primary);
+            transition: all 0.3s ease;
+        }
+
+        .app-window.expanded {
+            width: 1400px;
+        }
+
+        .app-window.installation-mode {
+            width: 1600px;
         }
         
         .app-window.windows {
@@ -445,98 +458,160 @@
 
         .app-content {
             display: flex;
-            min-height: 400px;
+            height: 100%;
+            min-height: 450px;
         }
 
         .app-left-panel {
-            background: #1c1c1e;
+            background: var(--bg-tertiary);
             padding: 20px;
-            width: 40%;
-            border-right: 1px solid #38383a;
+            width: 30%;
+            border-right: 1px solid var(--border-primary);
+            transition: all 0.3s ease;
+        }
+
+        .app-left-panel.hidden {
+            display: none;
         }
 
         .app-right-panel {
-            background: #2c2c2e;
+            background: var(--bg-secondary);
             padding: 20px;
-            width: 60%;
+            width: 70%;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-right-panel.expanded {
+            width: 100%;
         }
 
         .app-section {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
+        .app-section:last-of-type {
+            margin-bottom: 24px;
+        }
+
         .app-section label {
-            color: #ffffff;
+            color: var(--text-primary);
             font-size: 12px;
             min-width: 80px;
+            font-weight: 500;
         }
 
         .app-select {
-            background: #38383a;
-            border: 1px solid #48484a;
-            color: #ffffff;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            color: var(--text-primary);
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 12px;
             flex: 1;
+            transition: all 0.2s ease;
+        }
+
+        .app-select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
         }
 
         .app-icon {
-            color: #007aff;
-            font-size: 14px;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            margin-left: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-icon:hover {
+            background: #0056CC;
+            transform: scale(1.05);
         }
 
         .app-btn-small {
-            background: #007aff;
+            background: var(--accent-primary);
             color: #ffffff;
             border: none;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 10px;
             cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .app-btn-small:hover {
+            background: var(--accent-primary);
+            opacity: 0.8;
+            transform: translateY(-1px);
         }
 
         .app-rom-list {
-            margin: 16px 0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
             max-height: 200px;
             overflow-y: auto;
         }
 
         .app-rom-item {
-            background: #38383a;
-            border: 1px solid #48484a;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
             border-radius: 6px;
-            padding: 8px 12px;
-            margin-bottom: 6px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .app-rom-item.selected {
-            background: #007aff;
-            border-color: #007aff;
+            background: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+            color: #ffffff;
         }
 
         .app-rom-item:hover {
-            background: #48484a;
+            background: var(--bg-secondary);
+            border-color: var(--accent-primary);
         }
 
         .app-rom-item.selected:hover {
-            background: #007aff;
+            background: var(--accent-secondary);
+        }
+
+        .app-rom-item.selected .app-rom-badge,
+        .app-rom-item.selected .app-rom-desc {
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .app-rom-day {
-            color: #ffffff;
+            color: var(--text-primary);
             font-weight: 600;
             font-size: 12px;
             display: block;
         }
 
         .app-rom-info {
-            color: #8e8e93;
+            color: var(--text-primary);
             font-size: 10px;
             display: block;
             margin: 2px 0;
@@ -545,29 +620,249 @@
         .app-rom-badge {
             font-size: 10px;
             font-weight: 500;
-            color: #8e8e93;
+            color: var(--text-primary);
             display: inline-block;
             margin-top: 4px;
         }
 
         .app-rom-desc {
-            color: #8e8e93;
+            color: var(--text-primary);
             font-size: 9px;
             margin-top: 4px;
             line-height: 1.3;
         }
 
+        /* Settings Modal */
+        .app-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            border-radius: 12px;
+        }
+
+        .app-modal {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 450px;
+            width: 85%;
+            max-height: 70vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .app-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .app-modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .app-modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .app-modal-close:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .app-modal-section {
+            margin-bottom: 20px;
+        }
+
+        .app-modal-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .app-modal-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .app-modal-checkbox input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .app-modal-checkbox label {
+            color: var(--text-primary);
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .app-modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .app-modal-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .app-modal-btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .app-modal-btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .app-modal-btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-primary);
+        }
+
+        .app-modal-btn-secondary:hover {
+            background: var(--border-primary);
+        }
+
+        /* Settings Modal Tabs */
+        .app-modal-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-primary);
+            margin-bottom: 20px;
+        }
+
+        .app-modal-tab {
+            background: none;
+            border: none;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .app-modal-tab.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .app-modal-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .app-modal-content {
+            min-height: 200px;
+        }
+
+        .app-modal-tab-content {
+            display: block;
+        }
+
+        .app-modal-description {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .app-modal-radio-group {
+            margin-bottom: 16px;
+        }
+
+        .app-modal-radio {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .app-modal-radio input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .app-modal-radio label {
+            color: var(--text-primary);
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .app-modal-method-info {
+            background: var(--bg-tertiary);
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .app-modal-method-info p {
+            margin: 4px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
         .app-download-btn {
-            background: #007aff;
+            background: #007AFF;
             color: #ffffff;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
             margin-top: 16px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+        }
+
+        .app-download-btn:hover {
+            background: #0056CC;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+        }
+
+        .app-download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 122, 255, 0.3);
+        }
+
+        .app-download-btn:disabled {
+            background: var(--bg-tertiary);
+            color: var(--text-tertiary);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         .app-header {
@@ -580,6 +875,7 @@
         .app-creator {
             color: #8e8e93;
             font-size: 10px;
+            font-weight: 500;
         }
 
         .app-action-buttons {
@@ -595,26 +891,47 @@
             font-size: 10px;
             cursor: pointer;
             color: #ffffff;
+            transition: all 0.2s ease;
+            font-weight: 500;
         }
 
-        .app-action-btn.green { background: #34c759; }
-        .app-action-btn.red { background: #ff3b30; }
-        .app-action-btn.blue { background: #007aff; }
+        .app-action-btn:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
+        }
+
+        .app-action-btn.green { background: var(--accent-success); }
+        .app-action-btn.red { background: var(--accent-error); }
+        .app-action-btn.blue { background: var(--accent-primary); }
 
         .app-status {
-            color: #ffffff;
+            color: var(--text-primary);
             font-size: 12px;
             margin-bottom: 16px;
+            font-weight: 500;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 12px 16px;
         }
 
         .app-getting-ready {
-            color: #ffffff;
+            color: var(--text-primary);
             font-size: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
         }
 
         .app-getting-ready strong {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .app-step {
@@ -644,24 +961,77 @@
             justify-content: center;
             align-items: center;
             margin: 16px 0;
-            padding: 16px;
-            background: #1c1c1e;
+            flex: 1;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
             border-radius: 8px;
-            border: 1px solid #38383a;
+            padding: 16px;
         }
         
         .app-main-image {
             max-width: 100%;
-            max-height: 300px;
+            max-height: 250px;
             width: auto;
             height: auto;
             object-fit: contain;
             display: block;
         }
+
+        .app-text-fallback {
+            padding: 20px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-primary);
+        }
+
+        .app-progress-container {
+            margin: 16px 0;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border-primary);
+        }
+
+        .app-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+
+        .app-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-success));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .app-progress-text {
+            color: var(--text-primary);
+            font-size: 12px;
+            text-align: center;
+            margin: 4px 0;
+        }
+
+        .app-text-fallback h4 {
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .app-text-fallback p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
         
         .app-disclaimer {
             font-size: 10px;
-            color: #8e8e93;
+            color: var(--text-tertiary);
             font-style: italic;
             margin: 4px 0 8px 0;
             text-align: center;
@@ -693,6 +1063,15 @@
             right: 16px;
             color: #8e8e93;
             font-size: 10px;
+            font-weight: 500;
+        }
+
+        .app-disclaimer-outside {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin: 20px 0;
+            font-style: italic;
         }
 
         .app-right-panel {
@@ -832,7 +1211,7 @@
 
                 <!-- App Interface Demo -->
             <div class="info-card">
-                    <h3>🖥️ What the App Looks Like</h3>
+                    <h3>🖥️ Try the app out here</h3>
                     <p>Here's how the Innioasis Updater interface works:</p>
                     <div class="app-demo">
                         <div class="app-window" id="app-window-demo">
@@ -840,54 +1219,30 @@
                                 <div class="app-left-panel">
                                     <div class="app-section">
                                         <label>Device Type:</label>
-                                        <select class="app-select">
-                                            <option>Type A</option>
-                                            <option>Type B</option>
+                                        <select class="app-select" id="device-type-select">
+                                            <option value="A" selected>Type A</option>
+                                            <option value="B">Type B</option>
                                         </select>
-                                        <span class="app-icon">❓</span>
-                                        <button class="app-btn-small">Settings</button>
+                                        <span class="app-icon" title="Help with device selection">❓</span>
+                                        <button class="app-btn-small" onclick="openSettingsModal()">Settings</button>
                                     </div>
                                     <div class="app-section">
                                         <label>Device Model:</label>
-                                        <select class="app-select">
-                                            <option>Y1</option>
+                                        <select class="app-select" id="device-model-select">
+                                            <option value="Y1" selected>Y1</option>
                                         </select>
                                     </div>
                                     <div class="app-section">
                                         <label>Software:</label>
-                                        <select class="app-select">
-                                            <option>Rockbox ROM</option>
-                                            <option>System Software</option>
+                                        <select class="app-select" id="software-select">
+                                            <option value="Original Software" selected>Original Software</option>
+                                            <option value="Rockbox ROM">Rockbox ROM</option>
                                         </select>
                                     </div>
-                                    <div class="app-rom-list">
-                                        <div class="app-rom-item selected">
-                                            <span class="app-rom-day">Friday</span>
-                                            <span class="app-rom-info">Software: Rockbox ROM</span>
-                                            <span class="app-rom-badge ipod">Nightly | ✔️ iPod Themes Compatible</span>
-                                        </div>
-                                        <div class="app-rom-item">
-                                            <span class="app-rom-day">Friday</span>
-                                            <span class="app-rom-info">Software: Rockbox ROM</span>
-                                            <span class="app-rom-badge hd">Nightly | 🟠 360p</span>
-                                        </div>
-                                        <div class="app-rom-item">
-                                            <span class="app-rom-day">Thursday</span>
-                                            <span class="app-rom-info">Software: Rockbox ROM</span>
-                                            <span class="app-rom-badge ipod">Nightly | ✔️ iPod Themes Compatible</span>
-                                        </div>
-                                        <div class="app-rom-item">
-                                            <span class="app-rom-day">Thursday</span>
-                                            <span class="app-rom-info">Software: Rockbox ROM</span>
-                                            <span class="app-rom-badge hd">Nightly | 🟠 360p</span>
-                                        </div>
-                                        <div class="app-rom-item">
-                                            <span class="app-rom-day">Tuesday</span>
-                                            <span class="app-rom-info">Software: Rockbox ROM</span>
-                                            <span class="app-rom-badge ipod">Nightly | ✔️ iPod Themes Compatible</span>
-                                        </div>
+                                    <div class="app-rom-list" id="app-rom-list">
+                                        <!-- ROM items will be populated by JavaScript -->
                                     </div>
-                                    <button class="app-download-btn" onclick="startInstallDemo()">Download</button>
+                                    <button class="app-download-btn" id="download-btn" onclick="startInstallDemo()">Download</button>
                                 </div>
                                 <div class="app-right-panel">
                                     <div class="app-header">
@@ -900,33 +1255,117 @@
                                         </div>
                                     </div>
                                     <div class="app-status">
-                                        <strong>Status:</strong> Ready
+                                        <strong>Status:</strong> <span id="status-text">Ready</span>
                                     </div>
-                                    <div class="app-getting-ready">
+                                    
+                                    <!-- Progress Bar Container -->
+                                    <div class="app-progress-container" id="progress-container" style="display: none;">
+                                        <div class="app-progress-text" id="progress-text">Downloading...</div>
+                                        <div class="app-progress-bar">
+                                            <div class="app-progress-fill" id="progress-fill"></div>
+                                        </div>
+                                        <div class="app-progress-text" id="progress-details">0% (0MB / 0MB)</div>
+                                    </div>
+                                    <div class="app-getting-ready" id="getting-ready-section">
                                         <strong>Getting Ready:</strong>
-                                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
-                                        <div class="app-step">
-                                            <img src="presteps.png" alt="USB-C connection" class="app-step-image">
-                                            <span>Disconnect Y1 and all non-essential USB devices, but keep a Type-C cable in the computer so you can connect it quickly when asked.</span>
-                                        </div>
-                                        <div class="app-step">
-                                            <span class="app-step-icon">📎</span>
-                                            <span>Get a paperclip or similar tool, you'll need this later.</span>
-                                        </div>
-                                        <div class="app-step">
-                                            <span class="app-step-icon">🖱️</span>
-                                            <span>Select and click Download to install.</span>
-                                            <div class="app-version-select">
-                                                <span class="app-version selected">2.1.9</span>
-                                                <span class="app-version">2.1.7</span>
-                                            </div>
+                                        <div class="app-instruction-image">
+                                            <img src="https://innioasis.app/mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
                                         </div>
                                     </div>
                                     <div class="app-labs">Labs OFF</div>
                                 </div>
+                                
+                                <!-- Settings Modal -->
+                                <div class="app-modal-overlay" id="settings-modal" style="display: none;">
+                                    <div class="app-modal">
+                                        <div class="app-modal-header">
+                                            <h3 class="app-modal-title">Settings</h3>
+                                            <button class="app-modal-close" onclick="closeSettingsModal()">&times;</button>
+                                        </div>
+                                        <div class="app-modal-tabs">
+                                            <button class="app-modal-tab active" onclick="switchSettingsTab('installation')">Installation</button>
+                                            <button class="app-modal-tab" onclick="switchSettingsTab('tools')">Tools</button>
+                                        </div>
+                                        <div class="app-modal-content">
+                                            <div class="app-modal-tab-content" id="installation-tab">
+                                                <div class="app-modal-description">
+                                                    <h4>Installation Settings</h4>
+                                                    <p>This setting will be used for the next firmware installation.</p>
+                                                </div>
+                                                <div class="app-modal-radio-group">
+                                                    <label class="app-modal-radio">
+                                                        <input type="radio" name="install-method" value="method1" checked>
+                                                        <span class="radio-custom"></span>
+                                                        <div>
+                                                            <strong>Method 1 - Guided</strong>
+                                                            <p>Step-by-step with visual guidance</p>
+                                                        </div>
+                                                    </label>
+                                                    <label class="app-modal-radio">
+                                                        <input type="radio" name="install-method" value="method2">
+                                                        <span class="radio-custom"></span>
+                                                        <div>
+                                                            <strong>Method 2 - MTKclient</strong>
+                                                            <p>Direct technical installation</p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                <div class="app-modal-checkbox-group">
+                                                    <label class="app-modal-checkbox">
+                                                        <input type="checkbox" id="always-use-method" checked>
+                                                        <span class="checkbox-custom"></span>
+                                                        Always use this method for future installations
+                                                    </label>
+                                                    <label class="app-modal-checkbox">
+                                                        <input type="checkbox" id="debug-mode">
+                                                        <span class="checkbox-custom"></span>
+                                                        Enable Debug Mode (Labs)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="app-modal-tab-content" id="tools-tab" style="display: none;">
+                                                <div class="app-modal-description">
+                                                    <h4>Tools & Utilities</h4>
+                                                    <p>Manage additional tools and shortcuts.</p>
+                                                </div>
+                                                <div id="windows-only-section">
+                                                    <h5>Windows Shortcuts</h5>
+                                                    <label class="app-modal-checkbox">
+                                                        <input type="checkbox" id="desktop-shortcut" checked>
+                                                        <span class="checkbox-custom"></span>
+                                                        Create desktop shortcut
+                                                    </label>
+                                                    <label class="app-modal-checkbox">
+                                                        <input type="checkbox" id="start-menu-shortcut" checked>
+                                                        <span class="checkbox-custom"></span>
+                                                        Add to Start Menu
+                                                    </label>
+                                                </div>
+                                                <div class="app-modal-checkbox-group">
+                                                    <h5>Advanced Options</h5>
+                                                    <label class="app-modal-checkbox">
+                                                        <input type="checkbox" id="auto-update" checked>
+                                                        <span class="checkbox-custom"></span>
+                                                        Check for updates automatically
+                                                    </label>
+                                                    <label class="app-modal-checkbox">
+                                                        <input type="checkbox" id="verbose-logging">
+                                                        <span class="checkbox-custom"></span>
+                                                        Enable verbose logging
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="app-modal-buttons">
+                                            <button class="app-modal-btn app-modal-btn-secondary" onclick="closeSettingsModal()">Cancel</button>
+                                            <button class="app-modal-btn app-modal-btn-primary" onclick="saveSettings()">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <p class="app-disclaimer-outside">This is a scaled approximation of the interface, not an exact replica.</p>
                     <p><strong>Key Elements:</strong></p>
                     <ul>
                         <li><strong>Left Panel:</strong> Select your device type, model, and software</li>
@@ -957,8 +1396,27 @@
                     <p><strong>App frozen?</strong> Close it with Task Manager (Ctrl+Shift+Esc), then restart and click "Try Again"</p>
                     <p><strong>Missing shortcuts?</strong> Run this in Command Prompt:</p>
                 <div class="code-block">"%LocalAppData%\Innioasis Updater\pythonw.exe" updater.py --force</div>
-                    <p><strong>Can't install firmware?</strong> Make sure the blue "Driver Setup" button isn't showing - if it is, you need more drivers</p>
+                    <p><strong>Can't install firmware?</strong> Make sure you have the MTK USB Driver installed - this is the only required Windows USB driver for both Method 1 and Method 2 (both now use SP Flash Tool)</p>
                     <p><strong>App won't work at all?</strong> Download firmwares from <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a> and use the troubleshooting shortcuts</p>
+            </div>
+
+            <!-- USB Driver Information -->
+            <div class="info-card">
+                <h3>🔌 USB Driver Requirements</h3>
+                <p><strong>Required Driver:</strong></p>
+                <ul>
+                    <li><strong>MTK USB Driver</strong> - Required for both Method 1 and Method 2 installation methods</li>
+                </ul>
+                <p><strong>Optional Driver:</strong></p>
+                <ul>
+                    <li><strong>USB Development Kit</strong> - Optional download from <a href="https://innioasis.app/driver_usbdk.msi" target="_blank">innioasis.app/driver_usbdk.msi</a></li>
+                    <li><strong>Purpose:</strong> Enables usage of MTKClient on 64-bit Windows 10 and 11 systems</li>
+                    <li><strong>Note:</strong> Only needed for advanced users who want to use MTKClient directly</li>
+                </ul>
+                <div class="success-box">
+                    <h4>💡 Driver Installation Tip</h4>
+                    <p>For most users, just the MTK USB Driver is sufficient. The USB Development Kit is only needed if you specifically want to use MTKClient tools directly on Windows 10/11 64-bit systems.</p>
+                </div>
             </div>
 
                 <!-- Remote Control -->
@@ -1043,8 +1501,8 @@
                                         <div class="app-step">
                                             <span class="app-step-icon">🔧</span>
                                             <div>
-                                                <strong>MTKClient Method</strong><br>
-                                                <span style="color: #8e8e93; font-size: 10px;">More reliable than Windows SP Flash Tool</span>
+                                                <strong>SP Flash Tool</strong><br>
+                                                <span style="color: #8e8e93; font-size: 10px;">Standard firmware installation method</span>
                                             </div>
                                         </div>
                                         <div class="app-step">
@@ -1118,11 +1576,11 @@
             <div class="info-card">
                 <h3>🔧 Development Overview</h3>
                 <p><strong>Innioasis Updater is built with Python and PyQt6, designed to be cross-platform and extensible.</strong></p>
-                <p>The application provides a unified interface for firmware management, remote control capabilities, and app deployment for the Innioasis Y1 device. The architecture supports multiple installation methods (SP Flash Tool, MTKClient) and provides a robust framework for developers to extend functionality.</p>
+                <p>The application provides a unified interface for firmware management, remote control capabilities, and app deployment for the Innioasis Y1 device. The architecture supports multiple installation methods (both now use SP Flash Tool) and provides a robust framework for developers to extend functionality.</p>
                 <p><strong>Key Technical Components:</strong></p>
                 <ul>
                     <li><strong>Core Engine:</strong> Python-based with PyQt6 GUI framework</li>
-                    <li><strong>Installation Methods:</strong> SP Flash Tool integration, MTKClient support, user-friendly guidance for included utilities</li>
+                    <li><strong>Installation Methods:</strong> SP Flash Tool integration (both Method 1 and Method 2 now use SP Flash Tool), user-friendly guidance for included utilities</li>
                     <li><strong>Remote Control:</strong> ADB-based device communication and control</li>
                     <li><strong>Firmware Management:</strong> Automated download, verification, and installation workflows</li>
                     <li><strong>Cross-Platform:</strong> Windows, macOS, and Linux support with platform-specific optimizations</li>
@@ -1130,7 +1588,7 @@
                 
                 <div class="info-box">
                     <h4>🔧 Flashing Protocol Clarification</h4>
-                    <p><strong>Custom flashing protocols</strong> refers to user-friendly guidance for the included SP Flash Tool and MTKClient utilities for interfacing with the Innioasis Y1's bootloader. These are not custom protocols we've created, but rather simplified interfaces to existing industry-standard flashing tools.</p>
+                    <p><strong>Custom flashing protocols</strong> refers to user-friendly guidance for the included SP Flash Tool utility for interfacing with the Innioasis Y1's bootloader. Both Method 1 and Method 2 now use SP Flash Tool. These are not custom protocols we've created, but rather simplified interfaces to existing industry-standard flashing tools.</p>
                 </div>
             </div>
 
@@ -1186,7 +1644,7 @@ your-rom-repo/
                 <p><strong>Submission Process:</strong></p>
                 <ol>
                     <li><strong>Create GitHub repository</strong> with your ROM files</li>
-                    <li><strong>Test all installation methods</strong> - SP Flash Tool, MTKClient, and Innioasis Updater</li>
+                    <li><strong>Test all installation methods</strong> - SP Flash Tool (Method 1 and 2) and Innioasis Updater</li>
                     <li><strong>Submit pull request</strong> to Team-Slide/Innioasis-Updater with repository details</li>
                     <li><strong>Specify ROM type</strong> - Type A or Type B (must use separate repositories)</li>
                     <li><strong>Include manifest entry</strong> - Provide the XML line for the firmware manifest</li>
@@ -1195,7 +1653,7 @@ your-rom-repo/
                     <h4>⚠️ Important Technical Notes</h4>
                     <p><strong>ROM Compatibility Requirements:</strong></p>
                     <ul>
-                        <li><strong>Must support all installation methods</strong> - SP Flash Tool, MTKClient, and Innioasis Updater</li>
+                        <li><strong>Must support all installation methods</strong> - SP Flash Tool (Method 1 and 2) and Innioasis Updater</li>
                         <li><strong>Type A and Type B ROMs</strong> must be in separate repositories</li>
                         <li><strong>Include proper scatter files</strong> for SP Flash Tool compatibility</li>
                         <li><strong>Test on multiple Y1 devices</strong> to ensure compatibility</li>
@@ -1212,7 +1670,7 @@ your-rom-repo/
                 <ul>
                     <li><strong>Firmware Manager:</strong> Handles download, verification, and installation of firmware packages</li>
                     <li><strong>Device Communication:</strong> ADB-based communication with Y1 devices for remote control and app deployment</li>
-                    <li><strong>Installation Engine:</strong> Multi-method installation support (SP Flash Tool, MTKClient)</li>
+                    <li><strong>Installation Engine:</strong> Multi-method installation support (SP Flash Tool for both methods)</li>
                     <li><strong>UI Framework:</strong> PyQt6-based responsive interface with platform-specific optimizations</li>
                     <li><strong>Configuration System:</strong> JSON-based configuration management for user preferences and device settings</li>
                 </ul>
@@ -1609,6 +2067,29 @@ your-rom-repo/
         // Real ROM data from firmware.html with parsed versions
         const realRomData = [
             {
+                name: "Original Software",
+                device_type: "A",
+                device: "Y1",
+                repo: "team-slide/y1-stock-rom",
+                type: "img",
+                releases: [
+                    {
+                        tag_name: "2.1.9",
+                        name: "2.1.9",
+                        published_at: "2024-07-15T00:00:00Z",
+                        size: 154.8,
+                        badges: ["Latest Release"]
+                    },
+                    {
+                        tag_name: "2.1.7",
+                        name: "2.1.7",
+                        published_at: "2024-06-20T00:00:00Z",
+                        size: 154.8,
+                        badges: ["Previous Release"]
+                    }
+                ]
+            },
+            {
                 name: "Rockbox ROM",
                 device_type: "A",
                 device: "Y1",
@@ -1689,123 +2170,177 @@ your-rom-repo/
 
         // Interactive Installation Demo
         function startInstallDemo() {
-            const statusElement = document.querySelector('.app-status strong');
-            const gettingReadyElement = document.querySelector('.app-getting-ready');
-            const downloadBtn = document.querySelector('.app-download-btn');
-            const leftPanel = document.querySelector('.app-left-panel');
-            const romList = document.querySelector('.app-rom-list');
+            if (isInstalling) return;
+            
+            isInstalling = true;
+            const statusElement = document.getElementById('status-text');
+            const gettingReadyElement = document.getElementById('getting-ready-section');
+            const downloadBtn = document.getElementById('download-btn');
             
             if (!statusElement || !gettingReadyElement || !downloadBtn) return;
             
-            // Hide the left panel (ROM list) during download/installation - matches real app behavior
-            if (leftPanel) {
-                leftPanel.style.display = 'none';
-            }
-            
             // Disable the download button
             downloadBtn.disabled = true;
-            downloadBtn.textContent = 'Installing...';
+            downloadBtn.textContent = 'Downloading...';
             
             // Get selected ROM data
-            const selectedRom = realRomData[0]; // Rockbox ROM
-            const selectedRelease = selectedRom.releases[0]; // Friday release
-            const romSize = selectedRelease.size; // MB
+            let selectedRelease;
+            let romSize = 50; // Default size in MB
+            
+            if (realFirmwareData.length > 0) {
+                // Use real data
+                const filteredReleases = realFirmwareData.filter(release => {
+                    const deviceType = document.getElementById('device-type-select')?.value || 'A';
+                    const software = document.getElementById('software-select')?.value || 'Original Software';
+                    const typeMatch = !deviceType || release.device_type === deviceType;
+                    const softwareMatch = !software || release.software_name === software;
+                    return typeMatch && softwareMatch;
+                });
+                
+                selectedRelease = filteredReleases[currentSelectedRom] || filteredReleases[0];
+                if (selectedRelease && selectedRelease.assets && selectedRelease.assets[0]) {
+                    romSize = Math.round(selectedRelease.assets[0].size / (1024 * 1024)); // Convert bytes to MB
+                }
+            } else {
+                // Fallback to mock data
+                const mockRom = realRomData[0];
+                selectedRelease = mockRom.releases[currentSelectedRom] || mockRom.releases[0];
+                romSize = selectedRelease.size;
+            }
             const platform = detectPlatform();
             
             // Calculate download time at 1Gbps (125 MB/s)
             const downloadSpeed = 125; // MB/s
             const downloadTime = Math.ceil(romSize / downloadSpeed); // seconds
             
+            // Get the correct image path based on platform and step
+            function getImagePath(imageType) {
+                if (imageType === 'initsteps') {
+                    return platform === 'windows' ? 'https://innioasis.app/mtkclient/gui/images/initsteps_win.png' : 'https://innioasis.app/mtkclient/gui/images/initsteps.png';
+                }
+                return `https://innioasis.app/mtkclient/gui/images/${imageType}.png`;
+            }
+
+            // Get the correct initsteps image based on platform and method
+            function getInitStepsImage() {
+                if (platform === 'windows') {
+                    return currentInstallMethod === 'method1' ? 'initsteps_sp' : 'initsteps_win';
+                }
+                return 'initsteps';
+            }
+            
             // Installation steps based on actual firmware_downloader.py process
+            const releaseName = selectedRelease?.name || selectedRelease?.tag_name || 'Unknown Release';
             const installSteps = [
-                { status: 'Downloading...', message: `Downloading ${selectedRom.name}...`, delay: 1000, image: 'presteps' },
-                { status: 'Downloading...', message: `Downloading... 25% (${(romSize * 0.25).toFixed(1)}MB / ${romSize}MB) - ETA: ${Math.ceil(downloadTime * 0.75)}s`, delay: 2000, image: 'presteps' },
-                { status: 'Downloading...', message: `Downloading... 50% (${(romSize * 0.5).toFixed(1)}MB / ${romSize}MB) - ETA: ${Math.ceil(downloadTime * 0.5)}s`, delay: 2000, image: 'presteps' },
-                { status: 'Downloading...', message: `Downloading... 75% (${(romSize * 0.75).toFixed(1)}MB / ${romSize}MB) - ETA: ${Math.ceil(downloadTime * 0.25)}s`, delay: 2000, image: 'presteps' },
-                { status: 'Downloading...', message: `Downloading... 100% (${romSize}MB / ${romSize}MB) - ETA: 0s`, delay: 1500, image: 'presteps' },
-                { status: 'Processing...', message: 'Extracting rom.zip...', delay: 2000, image: 'presteps' },
-                { status: 'Processing...', message: 'Verifying firmware integrity...', delay: 1500, image: 'presteps' },
-                { status: 'Installing...', message: 'Please follow the instructions below to install the software on your Y1', delay: 1000, image: 'initsteps' },
-                { status: 'Installing...', message: 'MTK: Connecting to device...', delay: 2000, image: 'installing' },
-                { status: 'Installing...', message: 'MTK: Preloader', delay: 3000, image: 'installing' },
-                { status: 'Installing...', message: 'MTK: Downloading & Connecting to DA', delay: 4000, image: 'installing' },
-                { status: 'Installing...', message: 'MTK: Flashing boot partition...', delay: 3000, image: 'installing' },
-                { status: 'Installing...', message: 'MTK: Flashing system partition...', delay: 5000, image: 'installing' },
-                { status: 'Installing...', message: 'MTK: Flashing recovery partition...', delay: 2000, image: 'installing' },
-                { status: 'Installing...', message: 'MTK: Finalizing installation...', delay: 2000, image: 'installing' },
-                { status: 'Completed!', message: 'Installation completed successfully!', delay: 2000, image: 'installed' }
+                { status: 'Downloading...', message: `Downloading ${releaseName}...`, delay: 500, image: 'presteps', showText: 'Starting download...', progress: 0 },
+                { status: 'Downloading...', message: `Downloading... 25% (${(romSize * 0.25).toFixed(1)}MB / ${romSize}MB)`, delay: 300, image: 'presteps', showText: 'Downloading firmware...', progress: 25 },
+                { status: 'Downloading...', message: `Downloading... 50% (${(romSize * 0.5).toFixed(1)}MB / ${romSize}MB)`, delay: 300, image: 'presteps', showText: 'Downloading firmware...', progress: 50 },
+                { status: 'Downloading...', message: `Downloading... 75% (${(romSize * 0.75).toFixed(1)}MB / ${romSize}MB)`, delay: 300, image: 'presteps', showText: 'Downloading firmware...', progress: 75 },
+                { status: 'Downloading...', message: `Downloading... 100% (${romSize}MB / ${romSize}MB) - Complete!`, delay: 200, image: 'presteps', showText: 'Download complete!', progress: 100 },
+                { status: 'Processing...', message: 'Extracting rom.zip...', delay: 800, image: 'presteps', showText: 'Extracting firmware files...' },
+                { status: 'Processing...', message: 'Verifying firmware integrity...', delay: 600, image: 'presteps', showText: 'Verifying firmware...' },
+                { status: 'Preparing...', message: 'Follow the instructions below to prepare your Y1 for installation...', delay: Math.floor(Math.random() * 8000) + 7000, image: getInitStepsImage(), showText: 'Follow the instructions below to prepare your Y1 for installation...' },
+                { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Connecting to device...`, delay: 1500, image: 'installing', showText: 'Connecting to device...' },
+                { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Loading preloader...`, delay: 1200, image: 'installing', showText: 'Loading preloader...' },
+                { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing boot partition...`, delay: 2000, image: 'installing', showText: 'Flashing boot partition...' },
+                { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing system partition...`, delay: 2500, image: 'installing', showText: 'Flashing system partition...' },
+                { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing recovery partition...`, delay: 1500, image: 'installing', showText: 'Flashing recovery partition...' },
+                { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Finalizing installation...`, delay: 1200, image: 'installing', showText: 'Finalizing installation...' },
+                { status: 'Completed!', message: 'Installation completed successfully!', delay: 1500, image: 'installed', showText: 'Installation completed successfully!', collapseLeft: true }
             ];
             
             let currentStep = 0;
             
             function runNextStep() {
                 if (currentStep >= installSteps.length) {
-                    // Installation complete - reset to ready state
-                    statusElement.textContent = 'Ready';
-                    downloadBtn.disabled = false;
-                    downloadBtn.textContent = 'Download';
-                    
-                    // Restore the left panel (ROM list) - matches real app behavior
-                    if (leftPanel) {
-                        leftPanel.style.display = 'block';
-                    }
-                    
-                    const platform = detectPlatform();
-                    gettingReadyElement.innerHTML = `
-                        <strong>Getting Ready:</strong>
-                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
-                        <div class="app-instruction-image">
-                            <img src="mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
-                        </div>
-                    `;
+                    // Installation complete - wait longer before reset
+                    setTimeout(() => {
+                        resetPanelLayout();
+                        statusElement.textContent = 'Ready';
+                        downloadBtn.disabled = false;
+                        downloadBtn.textContent = 'Download';
+                        isInstalling = false;
+                        
+                        // Hide progress bar
+                        const progressContainer = document.getElementById('progress-container');
+                        if (progressContainer) {
+                            progressContainer.style.display = 'none';
+                        }
+                        
+                        gettingReadyElement.innerHTML = `
+                            <strong>Getting Ready:</strong>
+                            <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                            <div class="app-instruction-image">
+                                <img src="https://innioasis.app/mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
+                            </div>
+                        `;
+                    }, 4000); // Wait 4 seconds before reset
                     return;
                 }
                 
                 const step = installSteps[currentStep];
                 statusElement.textContent = step.status;
                 
-                // Get the correct image path based on platform and step
-                function getImagePath(imageType) {
-                    if (imageType === 'initsteps') {
-                        return platform === 'windows' ? 'mtkclient/gui/images/initsteps_win.png' : 'mtkclient/gui/images/initsteps.png';
+                // Show/hide progress bar based on step
+                const progressContainer = document.getElementById('progress-container');
+                const progressFill = document.getElementById('progress-fill');
+                const progressText = document.getElementById('progress-text');
+                const progressDetails = document.getElementById('progress-details');
+                
+                if (step.progress !== undefined) {
+                    // This is a download step - show progress bar
+                    if (progressContainer) {
+                        progressContainer.style.display = 'block';
+                        progressFill.style.width = step.progress + '%';
+                        progressText.textContent = step.status;
+                        progressDetails.textContent = step.message;
                     }
-                    return `mtkclient/gui/images/${imageType}.png`;
+                } else if (step.image && step.image.includes('initsteps')) {
+                    // This is the initsteps phase - show a countdown
+                    if (progressContainer) {
+                        progressContainer.style.display = 'block';
+                        progressFill.style.width = '0%';
+                        progressText.textContent = 'Reading Instructions...';
+                        progressDetails.textContent = 'Please follow the instructions below';
+                        
+                        // Start countdown
+                        let timeLeft = Math.ceil(step.delay / 1000);
+                        const countdownInterval = setInterval(() => {
+                            timeLeft--;
+                            if (timeLeft > 0) {
+                                progressDetails.textContent = `Please follow the instructions below (${timeLeft}s remaining)`;
+                            } else {
+                                clearInterval(countdownInterval);
+                            }
+                        }, 1000);
+                    }
+                } else {
+                    // Not a download or initsteps step - hide progress bar
+                    if (progressContainer) {
+                        progressContainer.style.display = 'none';
+                    }
+                }
+                
+                // Collapse left panel when installation starts
+                if (step.collapseLeft) {
+                    expandRightPanel();
                 }
                 
                 // Update the getting ready section with progress and proper image sequence
-                if (step.status === 'Downloading...') {
-                    gettingReadyElement.innerHTML = `
-                        <strong>Getting Ready:</strong>
-                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
-                        <div class="app-instruction-image">
-                            <img src="${getImagePath(step.image)}" alt="Download progress" class="app-main-image">
+                const imagePath = getImagePath(step.image);
+                const textFallback = step.showText || step.message;
+                
+                gettingReadyElement.innerHTML = `
+                    <strong>${step.status === 'Completed!' ? 'Installation Complete!' : 'Getting Ready:'}</strong>
+                    <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                    <div class="app-instruction-image">
+                        <img src="${imagePath}" alt="${textFallback}" class="app-main-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="app-text-fallback" style="display: none; padding: 20px; background: var(--bg-tertiary); border-radius: 8px; text-align: center;">
+                            <h4>${textFallback}</h4>
+                            <p>${step.message}</p>
                         </div>
-                    `;
-                } else if (step.status === 'Processing...') {
-                    gettingReadyElement.innerHTML = `
-                        <strong>Getting Ready:</strong>
-                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
-                        <div class="app-instruction-image">
-                            <img src="${getImagePath(step.image)}" alt="Processing" class="app-main-image">
-                        </div>
-                    `;
-                } else if (step.status === 'Installing...' && step.message.includes('MTK:')) {
-                    gettingReadyElement.innerHTML = `
-                        <strong>Getting Ready:</strong>
-                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
-                        <div class="app-instruction-image">
-                            <img src="${getImagePath(step.image)}" alt="Installing" class="app-main-image">
-                        </div>
-                    `;
-                } else if (step.status === 'Completed!') {
-                    gettingReadyElement.innerHTML = `
-                        <strong>Installation Complete!</strong>
-                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
-                        <div class="app-instruction-image">
-                            <img src="${getImagePath(step.image)}" alt="Installed" class="app-main-image">
-                        </div>
-                    `;
-                }
+                    </div>
+                `;
                 
                 currentStep++;
                 setTimeout(runNextStep, step.delay);
@@ -1815,7 +2350,313 @@ your-rom-repo/
             runNextStep();
         }
 
-        // Initialize app demo with platform-specific chrome and real ROM data
+        // Enhanced app demo with interactive features
+        let currentSelectedRom = 0;
+        let currentInstallMethod = 'method1';
+        let isInstalling = false;
+        let apiTokens = [];
+        let realFirmwareData = [];
+
+        // Parse version designations (copied from firmware.html)
+        function parseVersionDesignations(versionName) {
+            const designations = [];
+            
+            // Define adjectives that can modify their nearest neighbor
+            const adjectives = ['compatible', 'aware', 'supported', 'enabled', 'disabled', 'ready', 'optimized', 'enhanced'];
+            
+            // Extract only the part after the last dash (this is the actual version number)
+            // First remove long hex strings at the end (like -13057e75dc29a1a7!)
+            let cleanVersion = versionName.replace(/-[a-f0-9]{16,}!?$/, '');
+            // Remove any remaining trailing dashes or exclamation marks
+            cleanVersion = cleanVersion.replace(/[-!]+$/, '');
+            
+            // Extract only the numbers after the last dash
+            if (cleanVersion.includes('-')) {
+                const lastPart = cleanVersion.split('-').pop();
+                // Check if the last part contains only numbers (and possibly dots)
+                if (/^[\d.]+$/.test(lastPart)) {
+                    cleanVersion = lastPart;
+                }
+            }
+            
+            // Parse designations from the original version name
+            // Split by dashes and process each part
+            const parts = versionName.split('-');
+            
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                
+                // Skip if it's the version number part
+                if (/^[\d.]+$/.test(part)) {
+                    continue;
+                }
+                
+                // Skip if it's a hex string
+                if (/^[a-f0-9]{16,}!?$/.test(part)) {
+                    continue;
+                }
+                
+                // Handle special cases first
+                if (part === 'nightly') {
+                    designations.push({
+                        type: 'nightly',
+                        text: 'Nightly'
+                    });
+                } else if (part === '360p') {
+                    designations.push({
+                        type: '360p',
+                        text: '360p'
+                    });
+                } else if (part === 'wifi' || part === 'wi-fi') {
+                    designations.push({
+                        type: 'wifi',
+                        text: 'Wi-Fi'
+                    });
+                } else if (part === 'bluetooth') {
+                    designations.push({
+                        type: 'bluetooth',
+                        text: 'Bluetooth'
+                    });
+                } else if (part === 'usb') {
+                    designations.push({
+                        type: 'usb',
+                        text: 'USB'
+                    });
+                } else if (part === 'ethernet') {
+                    designations.push({
+                        type: 'ethernet',
+                        text: 'Ethernet'
+                    });
+                } else if (part === 'hdmi') {
+                    designations.push({
+                        type: 'hdmi',
+                        text: 'HDMI'
+                    });
+                } else if (part === 'audio') {
+                    designations.push({
+                        type: 'audio',
+                        text: 'Audio'
+                    });
+                } else if (part === 'video') {
+                    designations.push({
+                        type: 'video',
+                        text: 'Video'
+                    });
+                } else if (part === 'camera') {
+                    designations.push({
+                        type: 'camera',
+                        text: 'Camera'
+                    });
+                } else if (part === 'gps') {
+                    designations.push({
+                        type: 'gps',
+                        text: 'GPS'
+                    });
+                } else if (part === 'nfc') {
+                    designations.push({
+                        type: 'nfc',
+                        text: 'NFC'
+                    });
+                } else if (part === 'lte') {
+                    designations.push({
+                        type: 'lte',
+                        text: 'LTE'
+                    });
+                } else if (part === '5g') {
+                    designations.push({
+                        type: '5g',
+                        text: '5G'
+                    });
+                } else if (part === 'ipod-theme') {
+                    // Check if this part is followed by an adjective
+                    if (i + 2 < parts.length && adjectives.includes(parts[i + 2])) {
+                        // Check for adjective after "ipod-theme"
+                        const adjective = parts[i + 2];
+                        designations.push({
+                            type: 'ipod-theme',
+                            text: `iPod Themes ${adjective.charAt(0).toUpperCase() + adjective.slice(1)}`
+                        });
+                    } else {
+                        designations.push({
+                            type: 'ipod-theme',
+                            text: 'iPod Themes'
+                        });
+                    }
+                } else {
+                    // Check if this part is followed by an adjective
+                    if (i + 1 < parts.length && adjectives.includes(parts[i + 1])) {
+                        const adjective = parts[i + 1];
+                        // Capitalize the main part and add the adjective
+                        const mainPart = part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        designations.push({
+                            type: 'generic',
+                            text: `${mainPart} ${adjective.charAt(0).toUpperCase() + adjective.slice(1)}`
+                        });
+                    } else {
+                        // Just add the part as-is, capitalized
+                        if (!adjectives.includes(part)) { // Don't add standalone adjectives
+                            designations.push({
+                                type: 'generic',
+                                text: part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+                            });
+                        }
+                    }
+                }
+            }
+            
+            return designations;
+        }
+
+        // Load API tokens from config.ini
+        async function loadApiTokens() {
+            try {
+                const response = await fetch('https://innioasis.app/config.ini');
+                if (!response.ok) {
+                    console.warn('Could not load config.ini, using unauthenticated API calls only');
+                    return [];
+                }
+                
+                const configText = await response.text();
+                const tokens = [];
+                const lines = configText.split('\n');
+                
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith('key_') && trimmed.includes('=')) {
+                        const token = trimmed.split('=')[1].trim();
+                        if (token && token.length > 10) {
+                            tokens.push(token);
+                        }
+                    }
+                }
+                
+                console.log(`Loaded ${tokens.length} API tokens from config.ini`);
+                return tokens;
+            } catch (error) {
+                console.warn('Error loading config.ini:', error);
+                return [];
+            }
+        }
+
+        // Fetch releases from GitHub API
+        async function fetchGitHubReleases(repo, token = null) {
+            const headers = {
+                'Accept': 'application/vnd.github.v3+json'
+            };
+            
+            if (token) {
+                headers['Authorization'] = `token ${token}`;
+            }
+            
+            let response = await fetch(`https://api.github.com/repos/${repo}/releases`, { headers });
+            
+            if (response.status === 403 && apiTokens.length > 0) {
+                console.log(`Rate limited for ${repo}, trying with authentication...`);
+                const randomToken = apiTokens[Math.floor(Math.random() * apiTokens.length)];
+                response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                    headers: {
+                        'Authorization': `token ${randomToken}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+            }
+            
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
+            
+            return await response.json();
+        }
+
+        // Load real firmware data from slidia manifest
+        async function loadRealFirmwareData() {
+            try {
+                // Load slidia manifest
+                const manifestResponse = await fetch('https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml');
+                if (!manifestResponse.ok) {
+                    throw new Error('Failed to load slidia manifest');
+                }
+                
+                const manifestText = await manifestResponse.text();
+                const packages = parseSlidiaManifest(manifestText);
+                
+                const allReleases = [];
+                
+                for (const pkg of packages) {
+                    try {
+                        const releases = await fetchGitHubReleases(pkg.repo);
+                        releases.forEach(release => {
+                            // Only include releases that have rom.zip assets
+                            const hasRomZip = release.assets && release.assets.some(asset => 
+                                asset.name.toLowerCase().includes('rom.zip') || 
+                                (asset.name.toLowerCase().includes('rom') && asset.name.toLowerCase().includes('.zip'))
+                            );
+                            
+                            // Skip releases without rom.zip or with unwanted keywords
+                            if (!hasRomZip || 
+                                release.name.toLowerCase().includes('voice') ||
+                                release.name.toLowerCase().includes('voices') ||
+                                release.name.toLowerCase().includes('theme') ||
+                                release.name.toLowerCase().includes('themes') ||
+                                release.name.toLowerCase().includes('font') ||
+                                release.name.toLowerCase().includes('fonts') ||
+                                release.name.toLowerCase().includes('sound') ||
+                                release.name.toLowerCase().includes('sounds') ||
+                                release.tag_name.toLowerCase().includes('voice') ||
+                                release.tag_name.toLowerCase().includes('voices') ||
+                                release.tag_name.toLowerCase().includes('theme') ||
+                                release.tag_name.toLowerCase().includes('themes') ||
+                                release.tag_name.toLowerCase().includes('font') ||
+                                release.tag_name.toLowerCase().includes('fonts') ||
+                                release.tag_name.toLowerCase().includes('sound') ||
+                                release.tag_name.toLowerCase().includes('sounds')) {
+                                return;
+                            }
+                            
+                            const releaseData = {
+                                ...release,
+                                software_name: pkg.name,
+                                device_type: pkg.device_type,
+                                device_model: pkg.device,
+                                type: pkg.type,
+                                handler: pkg.handler
+                            };
+                            allReleases.push(releaseData);
+                        });
+                    } catch (error) {
+                        console.warn(`Failed to load releases for ${pkg.repo}:`, error);
+                    }
+                }
+                
+                return allReleases;
+            } catch (error) {
+                console.error('Error loading real firmware data:', error);
+                return [];
+            }
+        }
+
+        // Parse slidia manifest XML
+        function parseSlidiaManifest(xmlText) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+            const packageElements = xmlDoc.querySelectorAll('package');
+            
+            const packages = [];
+            for (let pkg of packageElements) {
+                packages.push({
+                    name: pkg.getAttribute('name') || 'Unknown',
+                    device_type: pkg.getAttribute('device_type') || '',
+                    repo: pkg.getAttribute('repo') || '',
+                    device: pkg.getAttribute('device') || '',
+                    url: pkg.getAttribute('url') || '',
+                    type: pkg.getAttribute('type') || '',
+                    handler: pkg.getAttribute('handler') || ''
+                });
+            }
+            
+            return packages;
+        }
+
         function initializeAppDemo() {
             const platform = detectPlatform();
             const appWindow = document.getElementById('app-window-demo');
@@ -1824,24 +2665,196 @@ your-rom-repo/
                 appWindow.className = `app-window ${platform}`;
             }
             
-            // Update ROM list with real data
-            const romList = document.querySelector('.app-rom-list');
-            if (romList) {
-                const rockboxRom = realRomData[0];
-                romList.innerHTML = '';
+            // Load API tokens and real data
+            loadApiTokens().then(tokens => {
+                apiTokens = tokens;
+                return loadRealFirmwareData();
+            }).then(data => {
+                realFirmwareData = data;
+                updateRomList();
+            }).catch(error => {
+                console.error('Error initializing app demo:', error);
+                updateRomList(); // Fallback to mock data
+            });
+            
+            // Add event listeners for interactive features
+            setupInteractiveFeatures();
+            
+            // Show/hide Windows-only settings based on platform
+            const windowsOnlySection = document.getElementById('windows-only-section');
+            if (windowsOnlySection) {
+                windowsOnlySection.style.display = platform === 'windows' ? 'block' : 'none';
+            }
+        }
+
+        function updateRomList() {
+            const romList = document.getElementById('app-rom-list');
+            if (!romList) return;
+            
+            // Get current filter values
+            const deviceType = document.getElementById('device-type-select')?.value || 'A';
+            const software = document.getElementById('software-select')?.value || 'Original Software';
+            
+            // Filter releases based on current selections
+            let filteredReleases = [];
+            
+            if (realFirmwareData.length > 0) {
+                // Use real data from GitHub
+                filteredReleases = realFirmwareData.filter(release => {
+                    const typeMatch = !deviceType || release.device_type === deviceType;
+                    const softwareMatch = !software || release.software_name === software;
+                    return typeMatch && softwareMatch;
+                }).slice(0, 10); // Limit to 10 most recent
+            } else {
+                // Fallback to mock data
+                const mockRom = realRomData[0];
+                filteredReleases = mockRom.releases.map((release, index) => ({
+                    ...release,
+                    software_name: mockRom.name,
+                    device_type: 'A',
+                    device_model: 'Y1'
+                }));
+            }
+            
+            romList.innerHTML = '';
+            
+            if (filteredReleases.length === 0) {
+                romList.innerHTML = '<div class="app-rom-item">No releases found</div>';
+                return;
+            }
+            
+            filteredReleases.forEach((release, index) => {
+                const romItem = document.createElement('div');
+                romItem.className = `app-rom-item ${index === currentSelectedRom ? 'selected' : ''}`;
+                romItem.onclick = () => selectRom(index);
                 
-                rockboxRom.releases.forEach((release, index) => {
-                    const romItem = document.createElement('div');
-                    romItem.className = `app-rom-item ${index === 0 ? 'selected' : ''}`;
-                    
-                    romItem.innerHTML = `
-                        <span class="app-rom-day">${release.name}</span>
-                        <span class="app-rom-info">Software: ${rockboxRom.name}</span>
-                        <span class="app-rom-badge">${release.badges[0]}</span>
-                    `;
-                    
-                    romList.appendChild(romItem);
+                // Parse version designations
+                const designations = parseVersionDesignations(release.tag_name || release.name);
+                const badges = designations.map(d => {
+                    let text = d.text;
+                    // Add emojis based on designation type
+                    if (d.type === 'ipod-theme') {
+                        text = `✅ ${text}`;
+                    } else if (d.type === 'resolution' && text === '360p') {
+                        text = `🟠 ${text}`;
+                    } else if (d.type === 'build-type' && text === 'Nightly') {
+                        text = `🌙 ${text}`;
+                    } else if (d.type === 'build-type' && text === 'Stable') {
+                        text = `⭐ ${text}`;
+                    }
+                    return text;
+                }).join(' | ');
+                
+                // Format date
+                const date = new Date(release.published_at || Date.now());
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+                
+                romItem.innerHTML = `
+                    <span class="app-rom-day">${dayName}</span>
+                    <span class="app-rom-info">Software: ${release.software_name || 'Unknown'}</span>
+                    <span class="app-rom-badge">${badges || 'Release'}</span>
+                `;
+                
+                romList.appendChild(romItem);
+            });
+        }
+
+        function selectRom(index) {
+            currentSelectedRom = index;
+            updateRomList();
+        }
+
+        function setupInteractiveFeatures() {
+            // Add event listeners for dropdowns
+            const deviceTypeSelect = document.getElementById('device-type-select');
+            const softwareSelect = document.getElementById('software-select');
+            
+            if (deviceTypeSelect) {
+                deviceTypeSelect.addEventListener('change', () => {
+                    currentSelectedRom = 0; // Reset selection
+                    updateRomList();
                 });
+            }
+            
+            if (softwareSelect) {
+                softwareSelect.addEventListener('change', () => {
+                    currentSelectedRom = 0; // Reset selection
+                    updateRomList();
+                });
+            }
+        }
+
+        function openSettingsModal() {
+            const modal = document.getElementById('settings-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeSettingsModal() {
+            const modal = document.getElementById('settings-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function saveSettings() {
+            const method1Radio = document.getElementById('method1');
+            const method2Radio = document.getElementById('method2');
+            
+            if (method1Radio && method1Radio.checked) {
+                currentInstallMethod = 'method1';
+            } else if (method2Radio && method2Radio.checked) {
+                currentInstallMethod = 'method2';
+            }
+            
+            closeSettingsModal();
+        }
+
+        function switchSettingsTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.app-modal-tab-content');
+            tabContents.forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.app-modal-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            const selectedTab = document.getElementById(tabName + '-tab');
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        function expandRightPanel() {
+            const appWindow = document.getElementById('app-window-demo');
+            const leftPanel = document.getElementById('app-left-panel');
+            const rightPanel = document.getElementById('app-right-panel');
+            
+            if (appWindow && leftPanel && rightPanel) {
+                appWindow.classList.add('installation-mode');
+                leftPanel.classList.add('hidden');
+                rightPanel.classList.add('expanded');
+            }
+        }
+
+        function resetPanelLayout() {
+            const appWindow = document.getElementById('app-window-demo');
+            const leftPanel = document.getElementById('app-left-panel');
+            const rightPanel = document.getElementById('app-right-panel');
+            
+            if (appWindow && leftPanel && rightPanel) {
+                appWindow.classList.remove('installation-mode');
+                leftPanel.classList.remove('hidden');
+                rightPanel.classList.remove('expanded');
             }
         }
 
