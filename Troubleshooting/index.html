@@ -68,26 +68,29 @@
 
         /* Link Styles - Theme-aware */
         a {
-            color: var(--accent-primary);
-            text-decoration: none;
+            color: var(--text-secondary);
+            text-decoration: underline;
+            text-decoration-color: var(--text-tertiary);
+            text-underline-offset: 2px;
             transition: all 0.2s ease;
-            border-bottom: 1px solid transparent;
         }
 
         a:hover {
-            color: var(--accent-secondary);
-            border-bottom-color: var(--accent-secondary);
-            text-decoration: none;
+            color: var(--accent-primary);
+            text-decoration-color: var(--accent-primary);
+            text-decoration-thickness: 2px;
         }
 
         a:visited {
-            color: var(--accent-primary);
+            color: var(--text-secondary);
+            text-decoration-color: var(--text-tertiary);
         }
 
         a:focus {
             outline: 2px solid var(--accent-primary);
             outline-offset: 2px;
             border-radius: 2px;
+            color: var(--accent-primary);
         }
 
         /* Dark mode styles */
