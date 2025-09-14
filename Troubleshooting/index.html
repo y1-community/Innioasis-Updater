@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innioasis Updater - Troubleshooting Guide</title>
+    <title>Innioasis Updater Guide</title>
     <style>
         * {
             margin: 0;
@@ -241,6 +241,15 @@
             display: block;
         }
 
+        .sub-content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .sub-content-section.active {
+            display: block;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -402,6 +411,294 @@
             opacity: 1;
         }
 
+        /* App Demo Styles */
+        .app-demo {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-window {
+            background: #2c2c2e;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            overflow: hidden;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        .app-window.windows {
+            border-radius: 0;
+        }
+        
+        .app-window.mac {
+            border-radius: 12px;
+        }
+        
+        .app-content {
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+        }
+
+        
+
+
+        .app-content {
+            display: flex;
+            min-height: 400px;
+        }
+
+        .app-left-panel {
+            background: #1c1c1e;
+            padding: 20px;
+            width: 40%;
+            border-right: 1px solid #38383a;
+        }
+
+        .app-right-panel {
+            background: #2c2c2e;
+            padding: 20px;
+            width: 60%;
+        }
+
+        .app-section {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-section label {
+            color: #ffffff;
+            font-size: 12px;
+            min-width: 80px;
+        }
+
+        .app-select {
+            background: #38383a;
+            border: 1px solid #48484a;
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            flex: 1;
+        }
+
+        .app-icon {
+            color: #007aff;
+            font-size: 14px;
+        }
+
+        .app-btn-small {
+            background: #007aff;
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .app-rom-list {
+            margin: 16px 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .app-rom-item {
+            background: #38383a;
+            border: 1px solid #48484a;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .app-rom-item.selected {
+            background: #007aff;
+            border-color: #007aff;
+        }
+
+        .app-rom-item:hover {
+            background: #48484a;
+        }
+
+        .app-rom-item.selected:hover {
+            background: #007aff;
+        }
+
+        .app-rom-day {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 12px;
+            display: block;
+        }
+
+        .app-rom-info {
+            color: #8e8e93;
+            font-size: 10px;
+            display: block;
+            margin: 2px 0;
+        }
+
+        .app-rom-badge {
+            font-size: 10px;
+            font-weight: 500;
+            color: #8e8e93;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .app-rom-desc {
+            color: #8e8e93;
+            font-size: 9px;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        .app-download-btn {
+            background: #007aff;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .app-creator {
+            color: #8e8e93;
+            font-size: 10px;
+        }
+
+        .app-action-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .app-action-btn {
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        .app-action-btn.green { background: #34c759; }
+        .app-action-btn.red { background: #ff3b30; }
+        .app-action-btn.blue { background: #007aff; }
+
+        .app-status {
+            color: #ffffff;
+            font-size: 12px;
+            margin-bottom: 16px;
+        }
+
+        .app-getting-ready {
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        .app-getting-ready strong {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .app-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .app-step-icon {
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        
+        .app-step-image {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+        
+        .app-instruction-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 16px 0;
+            padding: 16px;
+            background: #1c1c1e;
+            border-radius: 8px;
+            border: 1px solid #38383a;
+        }
+        
+        .app-main-image {
+            max-width: 100%;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .app-disclaimer {
+            font-size: 10px;
+            color: #8e8e93;
+            font-style: italic;
+            margin: 4px 0 8px 0;
+            text-align: center;
+        }
+
+        .app-version-select {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .app-version {
+            background: #38383a;
+            color: #8e8e93;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .app-version.selected {
+            background: #007aff;
+            color: #ffffff;
+        }
+
+        .app-labs {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            color: #8e8e93;
+            font-size: 10px;
+        }
+
+        .app-right-panel {
+            position: relative;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -432,6 +729,20 @@
                 right: auto;
                 margin: 20px auto;
             }
+
+            .app-content {
+                flex-direction: column;
+            }
+
+            .app-left-panel,
+            .app-right-panel {
+                width: 100%;
+            }
+
+            .app-left-panel {
+                border-right: none;
+                border-bottom: 1px solid #38383a;
+            }
         }
     </style>
 </head>
@@ -439,10 +750,10 @@
     <div class="container">
         <!-- Header Section -->
         <div class="header">
-            <img src="https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/assets/icon.ico" alt="Innioasis Icon" class="header-icon">
+            <div class="header-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">⚙️</div>
             <div class="header-text">
-                <h1>Innioasis Updater Troubleshooting</h1>
-                <p>Get help with common issues and learn about advanced features</p>
+                <h1>Innioasis Updater Guide</h1>
+                <p>Complete guide for users and developers - troubleshooting, features, and development resources</p>
             </div>
             <button class="theme-toggle" onclick="toggleTheme()">
                 <span class="icon">🌓</span>
@@ -450,23 +761,51 @@
             </button>
         </div>
 
-        <!-- Platform Selector -->
+        <!-- Section Selector -->
         <div class="platform-selector">
-            <div class="platform-card selected" data-platform="windows" onclick="selectPlatform('windows')">
+            <div class="platform-card selected" data-platform="users" onclick="selectPlatform('users')">
+                <span class="icon">👥</span>
+                <h3>For Users</h3>
+                <p>Troubleshooting and usage guide</p>
+                <span class="status"></span>
+            </div>
+            
+            <div class="platform-card" data-platform="developers" onclick="selectPlatform('developers')">
+                <span class="icon">👨‍💻</span>
+                <h3>For Developers</h3>
+                <p>Development resources and guidelines</p>
+                <span class="status"></span>
+            </div>
+            
+            <div class="platform-card" data-platform="rockbox" onclick="selectPlatform('rockbox')">
+                <span class="icon">🎵</span>
+                <h3>Rockbox</h3>
+                <p>Music player and themes guide</p>
+                <span class="status"></span>
+            </div>
+        </div>
+
+        <!-- Users Content -->
+        <div class="content-section active" id="users-content">
+            <h2 class="section-title">For Users - Quick Start & Troubleshooting</h2>
+            
+            <!-- Platform Selector for Users -->
+            <div class="platform-selector" style="margin: 20px 0;">
+                <div class="platform-card selected" data-subplatform="windows" onclick="selectSubPlatform('windows')">
                 <span class="icon">🪟</span>
                 <h3>Windows</h3>
                 <p>Full troubleshooting guide</p>
                 <span class="status"></span>
             </div>
             
-            <div class="platform-card" data-platform="mac" onclick="selectPlatform('mac')">
+                <div class="platform-card" data-subplatform="mac" onclick="selectSubPlatform('mac')">
                 <span class="icon">🍎</span>
                 <h3>macOS</h3>
                 <p>macOS specific guidance</p>
                 <span class="status"></span>
             </div>
             
-            <div class="platform-card" data-platform="linux" onclick="selectPlatform('linux')">
+                <div class="platform-card" data-subplatform="linux" onclick="selectSubPlatform('linux')">
                 <span class="icon">🐧</span>
                 <h3>Linux</h3>
                 <p>Coming soon</p>
@@ -474,220 +813,575 @@
             </div>
         </div>
 
-        <!-- Windows Content -->
-        <div class="content-section active" id="windows-content">
-            <h2 class="section-title">Windows Troubleshooting Guide</h2>
+            <!-- Windows Subsection -->
+            <div class="sub-content-section active" id="windows-sub-content">
+                <h3 class="section-title">Windows Troubleshooting Guide</h3>
             
-            <!-- General Advice -->
+                <!-- Quick Start -->
             <div class="info-card">
-                <h3>🚀 Getting Started - Important First Steps</h3>
-                <p><strong>Before using Innioasis Updater for the first time, please follow these essential steps:</strong></p>
-                <ol>
-                    <li><strong>Install the necessary drivers</strong> - This is crucial for the app to communicate with your Y1 device</li>
-                    <li><strong>Restart your PC</strong> - This ensures all drivers are properly loaded and recognized</li>
-                    <li><strong>Follow on-screen instructions carefully</strong> - The app will guide you through each step</li>
-                    <li><strong>Ensure your Y1 is connected properly</strong> - Use a good quality USB cable</li>
+                    <h3>🚀 Quick Start</h3>
+                    <p>Hey! Here's what you need to know to get started:</p>
+                    <ol>
+                        <li><strong>Install drivers first</strong> - The app will tell you which ones you need</li>
+                        <li><strong>Restart your PC</strong> - This makes sure everything works properly</li>
+                        <li><strong>Disconnect your Y1</strong> - Keep it unplugged until the app tells you to connect it</li>
+                        <li><strong>Follow the on-screen instructions</strong> - We'll guide you through each step</li>
                 </ol>
-                <p>Following these steps will ensure the smoothest System Software (firmware) update or custom firmware install journey.</p>
+                    <p>That's it! The app does the heavy lifting for you. 😊</p>
             </div>
 
-            <!-- App Frozen Issue -->
+                <!-- App Interface Demo -->
             <div class="info-card">
-                <h3>❄️ App Frozen After Downloading Firmware</h3>
-                <p>If the Innioasis Updater app becomes unresponsive (shows "Not Responding"):</p>
-                <ol>
-                    <li><strong>End the task/force quit the app</strong> - Use Task Manager (Ctrl+Shift+Esc) to end the process</li>
-                    <li><strong>Disconnect all non-essential USB devices</strong> - Keep only your Y1 connected</li>
-                    <li><strong>Restart the app</strong> - Launch Innioasis Updater again</li>
-                    <li><strong>Click "Try Again"</strong> when the app opens back up</li>
-                    <li><strong>Try a different method</strong> if the first attempt doesn't work</li>
+                    <h3>🖥️ What the App Looks Like</h3>
+                    <p>Here's how the Innioasis Updater interface works:</p>
+                    <div class="app-demo">
+                        <div class="app-window" id="app-window-demo">
+                            <div class="app-content">
+                                <div class="app-left-panel">
+                                    <div class="app-section">
+                                        <label>Device Type:</label>
+                                        <select class="app-select">
+                                            <option>Type A</option>
+                                            <option>Type B</option>
+                                        </select>
+                                        <span class="app-icon">❓</span>
+                                        <button class="app-btn-small">Settings</button>
+                                    </div>
+                                    <div class="app-section">
+                                        <label>Device Model:</label>
+                                        <select class="app-select">
+                                            <option>Y1</option>
+                                        </select>
+                                    </div>
+                                    <div class="app-section">
+                                        <label>Software:</label>
+                                        <select class="app-select">
+                                            <option>Rockbox ROM</option>
+                                            <option>System Software</option>
+                                        </select>
+                                    </div>
+                                    <div class="app-rom-list">
+                                        <div class="app-rom-item selected">
+                                            <span class="app-rom-day">Friday</span>
+                                            <span class="app-rom-info">Software: Rockbox ROM</span>
+                                            <span class="app-rom-badge ipod">Nightly | ✔️ iPod Themes Compatible</span>
+                                        </div>
+                                        <div class="app-rom-item">
+                                            <span class="app-rom-day">Friday</span>
+                                            <span class="app-rom-info">Software: Rockbox ROM</span>
+                                            <span class="app-rom-badge hd">Nightly | 🟠 360p</span>
+                                        </div>
+                                        <div class="app-rom-item">
+                                            <span class="app-rom-day">Thursday</span>
+                                            <span class="app-rom-info">Software: Rockbox ROM</span>
+                                            <span class="app-rom-badge ipod">Nightly | ✔️ iPod Themes Compatible</span>
+                                        </div>
+                                        <div class="app-rom-item">
+                                            <span class="app-rom-day">Thursday</span>
+                                            <span class="app-rom-info">Software: Rockbox ROM</span>
+                                            <span class="app-rom-badge hd">Nightly | 🟠 360p</span>
+                                        </div>
+                                        <div class="app-rom-item">
+                                            <span class="app-rom-day">Tuesday</span>
+                                            <span class="app-rom-info">Software: Rockbox ROM</span>
+                                            <span class="app-rom-badge ipod">Nightly | ✔️ iPod Themes Compatible</span>
+                                        </div>
+                                    </div>
+                                    <button class="app-download-btn" onclick="startInstallDemo()">Download</button>
+                                </div>
+                                <div class="app-right-panel">
+                                    <div class="app-header">
+                                        <span class="app-creator">Created by Ryan Specter of Team Slide</span>
+                                        <div class="app-action-buttons">
+                                            <button class="app-action-btn green">📦 Install from .zip</button>
+                                            <button class="app-action-btn red">🔗 r/innioasis</button>
+                                            <button class="app-action-btn blue">❓ Get Help</button>
+                                            <button class="app-action-btn red">📰 News / Tips</button>
+                                        </div>
+                                    </div>
+                                    <div class="app-status">
+                                        <strong>Status:</strong> Ready
+                                    </div>
+                                    <div class="app-getting-ready">
+                                        <strong>Getting Ready:</strong>
+                                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                                        <div class="app-step">
+                                            <img src="presteps.png" alt="USB-C connection" class="app-step-image">
+                                            <span>Disconnect Y1 and all non-essential USB devices, but keep a Type-C cable in the computer so you can connect it quickly when asked.</span>
+                                        </div>
+                                        <div class="app-step">
+                                            <span class="app-step-icon">📎</span>
+                                            <span>Get a paperclip or similar tool, you'll need this later.</span>
+                                        </div>
+                                        <div class="app-step">
+                                            <span class="app-step-icon">🖱️</span>
+                                            <span>Select and click Download to install.</span>
+                                            <div class="app-version-select">
+                                                <span class="app-version selected">2.1.9</span>
+                                                <span class="app-version">2.1.7</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="app-labs">Labs OFF</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>Key Elements:</strong></p>
+                    <ul>
+                        <li><strong>Left Panel:</strong> Select your device type, model, and software</li>
+                        <li><strong>ROM List:</strong> Choose from available builds (iPod Themes Compatible or 360p)</li>
+                        <li><strong>Right Panel:</strong> Follow the step-by-step instructions</li>
+                        <li><strong>Status:</strong> Shows when the app is ready for installation</li>
+                    </ul>
+                </div>
+
+                <!-- Critical Timing -->
+                <div class="info-card">
+                    <h3>⚠️ The Most Important Thing</h3>
+                    <p><strong>Before you start any update:</strong></p>
+                    <ol>
+                        <li><strong>Unplug your Y1 completely</strong> - No USB cable connected at all</li>
+                        <li><strong>Wait for the app to tell you when to plug it in</strong> - Don't guess!</li>
+                        <li><strong>If it fails, unplug and try again</strong> - Same timing every time</li>
                 </ol>
+                    <div class="warning-box">
+                        <h4>💡 Why it fails</h4>
+                        <p>Most problems happen because the Y1 gets connected too early. The app knows exactly when to connect it - trust us on this one!</p>
+                    </div>
             </div>
 
-            <!-- Missing Shortcuts -->
+                <!-- Common Issues -->
             <div class="info-card">
-                <h3>🔗 Missing Shortcuts on Windows</h3>
-                <p>If you're missing shortcuts on your desktop or start menu, run this command to restore them:</p>
+                    <h3>🔧 Common Issues & Quick Fixes</h3>
+                    <p><strong>App frozen?</strong> Close it with Task Manager (Ctrl+Shift+Esc), then restart and click "Try Again"</p>
+                    <p><strong>Missing shortcuts?</strong> Run this in Command Prompt:</p>
                 <div class="code-block">"%LocalAppData%\Innioasis Updater\pythonw.exe" updater.py --force</div>
-                <p>Your shortcuts will repopulate after the app updates itself.</p>
+                    <p><strong>Can't install firmware?</strong> Make sure the blue "Driver Setup" button isn't showing - if it is, you need more drivers</p>
+                    <p><strong>App won't work at all?</strong> Download firmwares from <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a> and use the troubleshooting shortcuts</p>
             </div>
 
-            <!-- Windows Toolkit -->
+                <!-- Remote Control -->
             <div class="info-card">
-                <h3>🛠️ Windows Toolkit Access</h3>
-                <p>You can fix many issues with Innioasis Updater using the Windows Toolkit:</p>
-                <ol>
-                    <li>Press <strong>Windows Key + R</strong></li>
-                    <li>Run this command:</li>
-                </ol>
-                <div class="code-block">explorer.exe "%LocalAppData%\Innioasis Updater\Troubleshooting"</div>
-                <p>Or download the latest toolkit directly:</p>
-                <a href="https://github.com/team-slide/Innioasis-Updater/raw/refs/heads/main/Troubleshooters%20-%20Windows.zip" class="download-btn">Download Windows Toolkit</a>
-            </div>
-
-            <!-- Driver Issues -->
-            <div class="info-card">
-                <h3>🔧 Firmware Installation Issues</h3>
-                <p>If firmwares aren't installing with any method or SP Flash Tool/MTKClient in the troubleshooting folder:</p>
-                <ul>
-                    <li>Make sure the <strong>blue Driver Setup button isn't showing</strong> in your app</li>
-                    <li>If it is, you're missing one of the required drivers for both methods</li>
-                    <li>Method 1 and 2 use MTKclient, Method 3 uses SP Flash Tool</li>
-                </ul>
-            </div>
-
-            <!-- Windows App Not Working -->
-            <div class="info-card">
-                <h3>💻 Windows App Doesn't Work At All</h3>
-                <p>If the Windows app doesn't work at all, don't worry! You have alternatives:</p>
-                <ol>
-                    <li>Download firmwares from <a href="https://firmware.innioasis.app" target="_blank">firmware.innioasis.app</a></li>
-                    <li>Extract the zip into the Innioasis Updater folder (right-click start menu shortcut → Open File Location)</li>
-                    <li>Use one of the shortcuts in the Troubleshooting folder</li>
-                </ol>
-            </div>
-
-            <!-- Stuck Updates -->
-            <div class="info-card">
-                <h3>🔄 Fix Stuck Updates</h3>
-                <p>If you have a stuck update:</p>
-                <ol>
-                    <li><strong>Reboot your computer</strong></li>
-                    <li><strong>Start Innioasis Updater again</strong> from the start menu</li>
-                    <li>It will then update fine, and this shouldn't happen again in the future</li>
-                </ol>
-                <p>If this doesn't work:</p>
-                <ul>
-                    <li>Right-click on your Innioasis Updater shortcut</li>
-                    <li>Look for the "Fix Stuck Updates" folder</li>
-                    <li>If you don't have one, download it from <a href="https://troubleshooting.innioasis.app" target="_blank">troubleshooting.innioasis.app</a></li>
-                </ul>
-            </div>
-
-            <!-- Y1 Remote Control -->
-            <div class="info-card">
-                <h3>📱 Y1 Remote Control Features</h3>
-                <p>After installing your first update on the Y1 using Innioasis Updater, you unlock powerful remote control capabilities:</p>
-                <ul>
-                    <li><strong>Screenshot your Y1</strong> - Capture what's on your device's screen</li>
-                    <li><strong>Remote control</strong> - Control your Y1 from your computer</li>
-                    <li><strong>Test and deploy apps</strong> - Install and manage applications remotely</li>
-                </ul>
-                <div class="success-box">
-                    <h4>🎵 Rockbox-y1 Integration</h4>
-                    <p>There's currently one app available specifically made for the Y1: <strong>Rockbox-y1</strong> by the developer. It's available pre-packaged as a ROM from <a href="https://github.com/rockbox-y1/rockbox" target="_blank">github.com/rockbox-y1/rockbox</a>.</p>
+                    <h3>📱 Remote Control Features</h3>
+                    <p>After your first update, you can:</p>
+                    <ul>
+                        <li><strong>Take screenshots</strong> of your Y1</li>
+                        <li><strong>Control it remotely</strong> from your computer</li>
+                        <li><strong>Install apps</strong> without touching the device</li>
+                    </ul>
+                    <p>Pretty neat, right? 😎</p>
                 </div>
             </div>
 
-            <!-- MTKclient Information -->
+            <!-- macOS Subsection -->
+            <div class="sub-content-section" id="mac-sub-content">
+                <h3 class="section-title">macOS Troubleshooting Guide</h3>
+                
+                <!-- Quick Start for macOS -->
+                <div class="info-card">
+                    <h3>🚀 Quick Start</h3>
+                    <p>Hey Mac user! Here's your quick start:</p>
+                    <ol>
+                        <li><strong>Install Homebrew</strong> - The app will guide you through this</li>
+                        <li><strong>Disconnect your Y1</strong> - Keep it unplugged until we tell you to connect it</li>
+                        <li><strong>Follow the on-screen instructions</strong> - We'll handle the rest</li>
+                        <li><strong>Grant permissions when asked</strong> - macOS will prompt you for various permissions</li>
+                </ol>
+                    <p>That's it! Much simpler on Mac. 🍎</p>
+            </div>
+
+                <!-- macOS Interface Demo -->
             <div class="info-card">
-                <h3>⚙️ MTKclient Installation Method</h3>
-                <p>Windows users can enable MTKclient as an install method (it's usually used for macOS and Linux users and is more fiddly):</p>
-                <ul>
-                    <li><strong>Windows users only require:</strong> MTK SP USB Driver</li>
-                    <li><strong>Optional but recommended:</strong> Install USBDK to enable further functionality</li>
-                    <li>MTKclient provides an alternative installation method if other methods fail</li>
+                    <h3>🍎 macOS Interface</h3>
+                    <p>The app looks the same on Mac, but with some macOS-specific features:</p>
+                    <div class="app-demo">
+                        <div class="app-window">
+                            <div class="app-content">
+                                <div class="app-left-panel">
+                                    <div class="app-section">
+                                        <label>Device Type:</label>
+                                        <select class="app-select">
+                                            <option>Type A</option>
+                                        </select>
+                                    </div>
+                                    <div class="app-section">
+                                        <label>Device Model:</label>
+                                        <select class="app-select">
+                                            <option>Y1</option>
+                                        </select>
+                                    </div>
+                                    <div class="app-section">
+                                        <label>Software:</label>
+                                        <select class="app-select">
+                                            <option>System Software</option>
+                                        </select>
+                                    </div>
+                                    <div class="app-rom-list">
+                                        <div class="app-rom-item selected">
+                                            <span class="app-rom-day">Latest</span>
+                                            <span class="app-rom-info">Software: System Software</span>
+                                            <span class="app-rom-badge mac">🍎 macOS Optimized</span>
+                                            <div class="app-rom-desc">MTKClient method • No drivers needed</div>
+                                        </div>
+                                    </div>
+                                    <button class="app-download-btn">Download</button>
+                                </div>
+                                <div class="app-right-panel">
+                                    <div class="app-status">
+                                        <strong>Status:</strong> Ready
+                                    </div>
+                                    <div class="app-getting-ready">
+                                        <strong>macOS Advantages:</strong>
+                                        <div class="app-step">
+                                            <span class="app-step-icon">⚡</span>
+                                            <div>
+                                                <strong>No Driver Installation</strong><br>
+                                                <span style="color: #8e8e93; font-size: 10px;">macOS handles USB communication natively</span>
+                                            </div>
+                                        </div>
+                                        <div class="app-step">
+                                            <span class="app-step-icon">🔧</span>
+                                            <div>
+                                                <strong>MTKClient Method</strong><br>
+                                                <span style="color: #8e8e93; font-size: 10px;">More reliable than Windows SP Flash Tool</span>
+                                            </div>
+                                        </div>
+                                        <div class="app-step">
+                                            <span class="app-step-icon">🏠</span>
+                                            <div>
+                                                <strong>Homebrew Integration</strong><br>
+                                                <span style="color: #8e8e93; font-size: 10px;">Automatic dependency management</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>macOS Benefits:</strong></p>
+                    <ul>
+                        <li><strong>No driver hassles</strong> - macOS handles everything automatically</li>
+                        <li><strong>Better reliability</strong> - MTKClient works more smoothly on Mac</li>
+                        <li><strong>Homebrew integration</strong> - Dependencies managed automatically</li>
+                        <li><strong>Cleaner interface</strong> - Native macOS look and feel</li>
                 </ul>
             </div>
 
-            <!-- ARM64 Windows -->
+                <!-- macOS Specific Issues -->
             <div class="info-card">
-                <h3>🖥️ ARM64 Windows Users</h3>
-                <p>If you're running Windows on ARM64, you have limited but still useful options:</p>
+                    <h3>🍎 macOS Specific Issues</h3>
+                    <p><strong>App won't open?</strong> Right-click → Open, or go to System Preferences → Security & Privacy → Allow</p>
+                    <p><strong>Permission denied?</strong> Grant Terminal/App Store permissions when prompted</p>
+                    <p><strong>USB not recognized?</strong> Try a different USB port or cable</p>
+                    <p><strong>Homebrew issues?</strong> Run <code>brew update && brew upgrade</code> in Terminal</p>
+            </div>
+
+                <!-- Remote Control for macOS -->
+            <div class="info-card">
+                    <h3>📱 Remote Control Features</h3>
+                    <p>After your first update, you can:</p>
+                    <ul>
+                        <li><strong>Take screenshots</strong> of your Y1</li>
+                        <li><strong>Control it remotely</strong> from your Mac</li>
+                        <li><strong>Install apps</strong> without touching the device</li>
+                </ul>
+                    <p>Pretty neat, right? 😎</p>
+                </div>
+            </div>
+
+            <!-- Linux Subsection -->
+            <div class="sub-content-section" id="linux-sub-content">
+                <h3 class="section-title">Linux Troubleshooting Guide</h3>
+                
+            <div class="info-card">
+                    <h3>🐧 Coming Soon</h3>
+                    <p>We're working on Linux support! In the meantime:</p>
+                    <ul>
+                        <li>Check the main <a href="https://github.com/team-slide/Innioasis-Updater" target="_blank">GitHub repository</a> for Linux instructions</li>
+                        <li>Ubuntu is recommended for the best experience</li>
+                        <li>Most Linux distributions should work with manual setup</li>
+                </ul>
+                    <div class="warning-box">
+                        <h4>⚠️ Work in Progress</h4>
+                        <p>Linux support is actively being developed. Please check back soon!</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- Developers Content -->
+        <div class="content-section" id="developers-content">
+            <h2 class="section-title">For Developers - Technical Resources & Guidelines</h2>
+            
+            <!-- Development Overview -->
+            <div class="info-card">
+                <h3>🔧 Development Overview</h3>
+                <p><strong>Innioasis Updater is built with Python and PyQt6, designed to be cross-platform and extensible.</strong></p>
+                <p>The application provides a unified interface for firmware management, remote control capabilities, and app deployment for the Innioasis Y1 device. The architecture supports multiple installation methods (SP Flash Tool, MTKClient) and provides a robust framework for developers to extend functionality.</p>
+                <p><strong>Key Technical Components:</strong></p>
                 <ul>
-                    <li><strong>Y1 Remote Control only</strong> - After first updating your Y1 or installing custom firmware from <a href="https://firmware.innioasis.app" target="_blank">firmware.innioasis.app</a> on another computer</li>
-                    <li><strong>Alternative option:</strong> You may potentially be able to run the full Linux version in WSLg by using USBIPD-win for passthrough (users are on their own with this setup)</li>
+                    <li><strong>Core Engine:</strong> Python-based with PyQt6 GUI framework</li>
+                    <li><strong>Installation Methods:</strong> SP Flash Tool integration, MTKClient support, user-friendly guidance for included utilities</li>
+                    <li><strong>Remote Control:</strong> ADB-based device communication and control</li>
+                    <li><strong>Firmware Management:</strong> Automated download, verification, and installation workflows</li>
+                    <li><strong>Cross-Platform:</strong> Windows, macOS, and Linux support with platform-specific optimizations</li>
+                </ul>
+                
+                <div class="info-box">
+                    <h4>🔧 Flashing Protocol Clarification</h4>
+                    <p><strong>Custom flashing protocols</strong> refers to user-friendly guidance for the included SP Flash Tool and MTKClient utilities for interfacing with the Innioasis Y1's bootloader. These are not custom protocols we've created, but rather simplified interfaces to existing industry-standard flashing tools.</p>
+                </div>
+            </div>
+
+            <!-- Y1 App Development -->
+            <div class="info-card">
+                <h3>📱 Y1 App Development Guidelines</h3>
+                <p><strong>Target Platform Specifications:</strong></p>
+                <ul>
+                    <li><strong>Android Version:</strong> Android 4.2.2 (API Level 17)</li>
+                    <li><strong>Architecture:</strong> ARM-based processor</li>
+                    <li><strong>Display Resolutions:</strong> 240x320 (standard), 360p (high-res versions)</li>
+                    <li><strong>Storage:</strong> Limited internal storage, external SD card support</li>
+                </ul>
+                <p><strong>Development Requirements:</strong></p>
+                <ol>
+                    <li><strong>Target API Level 17</strong> - Ensure compatibility with Android 4.2.2</li>
+                    <li><strong>Optimize for small screens</strong> - Design for 240x320 and 360p resolutions</li>
+                    <li><strong>Minimize resource usage</strong> - Limited RAM and storage on Y1</li>
+                    <li><strong>Test on actual hardware</strong> - Emulator testing may not reflect real performance</li>
+                </ol>
+                <div class="success-box">
+                    <h4>📦 App Distribution Process</h4>
+                    <p><strong>To distribute your Y1 app:</strong></p>
+                    <ol>
+                        <li><strong>Release as APK on GitHub</strong> - Create a public repository with your APK</li>
+                        <li><strong>Submit to Slidia</strong> - Add your app to the Team-Slide/Slidia manifest</li>
+                        <li><strong>Include documentation</strong> - Provide installation and usage instructions</li>
+                        <li><strong>Test thoroughly</strong> - Ensure compatibility with Y1 hardware</li>
+                    </ol>
+            </div>
+        </div>
+
+            <!-- ROM Development -->
+            <div class="info-card">
+                <h3>💾 Custom ROM Development</h3>
+                <p><strong>Adding Custom ROMs to Innioasis Updater:</strong></p>
+                <p>Developers can contribute custom ROMs that will be listed in the Innioasis Updater interface and firmware directory. This requires careful preparation and adherence to specific technical requirements.</p>
+                <p><strong>ROM Package Requirements:</strong></p>
+                <ul>
+                    <li><strong>Create a rom.zip file</strong> containing all necessary flashable files</li>
+                    <li><strong>Include SP Flash Tool compatible files</strong> - scatter.txt, preloader, lk, boot, system, etc.</li>
+                    <li><strong>Include MTKClient compatible files</strong> - Must support all installation methods</li>
+                    <li><strong>Provide comprehensive documentation</strong> - Installation instructions, features, compatibility notes</li>
+                </ul>
+                <p><strong>Repository Structure:</strong></p>
+                <div class="code-block">
+your-rom-repo/
+├── rom.zip                    # All flashable files
+├── README.md                  # Documentation
+├── changelog.txt             # Version history
+└── screenshots/              # Visual documentation
+</div>
+                <p><strong>Submission Process:</strong></p>
+                <ol>
+                    <li><strong>Create GitHub repository</strong> with your ROM files</li>
+                    <li><strong>Test all installation methods</strong> - SP Flash Tool, MTKClient, and Innioasis Updater</li>
+                    <li><strong>Submit pull request</strong> to Team-Slide/Innioasis-Updater with repository details</li>
+                    <li><strong>Specify ROM type</strong> - Type A or Type B (must use separate repositories)</li>
+                    <li><strong>Include manifest entry</strong> - Provide the XML line for the firmware manifest</li>
+                </ol>
+                <div class="warning-box">
+                    <h4>⚠️ Important Technical Notes</h4>
+                    <p><strong>ROM Compatibility Requirements:</strong></p>
+                    <ul>
+                        <li><strong>Must support all installation methods</strong> - SP Flash Tool, MTKClient, and Innioasis Updater</li>
+                        <li><strong>Type A and Type B ROMs</strong> must be in separate repositories</li>
+                        <li><strong>Include proper scatter files</strong> for SP Flash Tool compatibility</li>
+                        <li><strong>Test on multiple Y1 devices</strong> to ensure compatibility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Architecture -->
+            <div class="info-card">
+                <h3>🏗️ Technical Architecture & Integration</h3>
+                <p><strong>Innioasis Updater Architecture Overview:</strong></p>
+                <p>The application is designed with modularity and extensibility in mind, allowing developers to easily integrate new features and support additional devices.</p>
+                <p><strong>Core Components:</strong></p>
+                <ul>
+                    <li><strong>Firmware Manager:</strong> Handles download, verification, and installation of firmware packages</li>
+                    <li><strong>Device Communication:</strong> ADB-based communication with Y1 devices for remote control and app deployment</li>
+                    <li><strong>Installation Engine:</strong> Multi-method installation support (SP Flash Tool, MTKClient)</li>
+                    <li><strong>UI Framework:</strong> PyQt6-based responsive interface with platform-specific optimizations</li>
+                    <li><strong>Configuration System:</strong> JSON-based configuration management for user preferences and device settings</li>
+                </ul>
+                <p><strong>Integration Points for Developers:</strong></p>
+                <ul>
+                    <li><strong>Plugin System:</strong> Extensible architecture for adding new installation methods</li>
+                    <li><strong>API Endpoints:</strong> RESTful API for firmware and app management</li>
+                    <li><strong>Manifest System:</strong> XML-based manifest for firmware and app catalog management</li>
+                    <li><strong>Remote Control SDK:</strong> Python SDK for developing Y1 remote control applications</li>
+                </ul>
+            </div>
+
+            <!-- Development Resources -->
+            <div class="info-card">
+                <h3>📚 Development Resources & Documentation</h3>
+                <p><strong>Essential Resources for Y1 Development:</strong></p>
+                <ul>
+                    <li><strong>GitHub Repository:</strong> <a href="https://github.com/team-slide/Innioasis-Updater" target="_blank">github.com/team-slide/Innioasis-Updater</a></li>
+                    <li><strong>Firmware Directory:</strong> <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a></li>
+                    <li><strong>Slidia Manifest:</strong> <a href="https://github.com/Team-Slide/Slidia" target="_blank">github.com/Team-Slide/Slidia</a></li>
+                    <li><strong>Rockbox-y1 Reference:</strong> <a href="https://github.com/rockbox-y1/rockbox" target="_blank">github.com/rockbox-y1/rockbox</a></li>
+                </ul>
+                <p><strong>Development Tools:</strong></p>
+                <ul>
+                    <li><strong>Android Studio</strong> - For APK development with API Level 17 support</li>
+                    <li><strong>MTKClient</strong> - For low-level device communication and testing</li>
+                    <li><strong>SP Flash Tool</strong> - For ROM flashing and testing</li>
+                    <li><strong>ADB Tools</strong> - For device communication and debugging</li>
+                </ul>
+                <div class="success-box">
+                    <h4>🤝 Contributing Guidelines</h4>
+                    <p><strong>How to Contribute:</strong></p>
+                    <ol>
+                        <li><strong>Fork the repository</strong> and create a feature branch</li>
+                        <li><strong>Follow coding standards</strong> - Python PEP 8, proper documentation</li>
+                        <li><strong>Test thoroughly</strong> - Ensure compatibility across all supported platforms</li>
+                        <li><strong>Submit pull request</strong> with detailed description of changes</li>
+                        <li><strong>Update documentation</strong> - Include any necessary documentation updates</li>
+                    </ol>
+                </div>
+                </div>
+            </div>
+
+        <!-- Rockbox Content -->
+        <div class="content-section" id="rockbox-content">
+            <h2 class="section-title">Rockbox Music Player & Themes</h2>
+            
+            <!-- Rockbox Overview -->
+            <div class="info-card">
+                <h3>🎵 What is Rockbox?</h3>
+                <p>Rockbox is an open-source music player firmware that transforms your Y1 into a powerful, customizable music player. It's available as a pre-packaged ROM directly from the Innioasis Updater main screen or the <a href="https://innioasis.app/firmware.html" target="_blank">Firmware Directory</a>.</p>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li><strong>Advanced audio codec support</strong> - FLAC, OGG, MP3, and many more</li>
+                    <li><strong>Customizable themes</strong> - Thousands of themes available</li>
+                    <li><strong>Advanced playlist management</strong> - Smart playlists, crossfading, gapless playback</li>
+                    <li><strong>Plugin support</strong> - Extend functionality with custom plugins</li>
+                    <li><strong>Crossfade and gapless playback</strong> - Professional audio features</li>
+                </ul>
+                <div class="success-box">
+                    <h4>📦 Easy Installation</h4>
+                    <p>Rockbox-y1 is available as a pre-packaged ROM that installs just like any other firmware through Innioasis Updater. No complex setup required!</p>
+                </div>
+            </div>
+
+            <!-- Theme Compatibility -->
+            <div class="info-card">
+                <h3>🎨 Theme Compatibility & Installation</h3>
+                <p><strong>iPod Classic and iPod Video Theme Support:</strong></p>
+                <p>Rockbox-y1 supports themes designed for iPod Classic and iPod Video devices, giving you access to thousands of existing themes. These themes are designed for 240x320 resolution displays, making them perfect for the Y1's screen.</p>
+                
+                <div class="info-box">
+                    <h4>📱 ROM Designations Explained</h4>
+                    <p><strong>When choosing Rockbox ROMs in Innioasis Updater, you'll see these designations:</strong></p>
+                    <ul>
+                        <li><strong>✔️ iPod Themes Compatible:</strong> Full theme support with 240x320 resolution - thousands of iPod Classic/Video themes available with perfect compatibility</li>
+                        <li><strong>🟠 360p:</strong> High resolution display with limited theme selection - better for reading text and detailed graphics but requires custom themes</li>
+                        <li><strong>🌙 Nightly:</strong> Latest development builds with newest features but may be less stable than release versions</li>
+                    </ul>
+                    <p>Choose <strong>iPod Themes Compatible</strong> for maximum theme variety, or <strong>360p</strong> for higher resolution display with fewer theme options.</p>
+                </div>
+
+                <p><strong>Quick Installation Steps:</strong></p>
+                <ol>
+                    <li><strong>Download theme ZIP files</strong> from <a href="https://themes.rockbox.org/" target="_blank">themes.rockbox.org</a></li>
+                    <li><strong>Extract the ZIP file directly to your Y1's root folder</strong> - This places the .rockbox contents in the correct location</li>
+                    <li><strong>Overwrite files when prompted</strong> - Always choose "Yes to All" when asked to overwrite existing files</li>
+                    <li><strong>Select themes in Rockbox</strong> - Go to Settings → Theme → Browse Themes</li>
+                    <li><strong>Enjoy your new look!</strong> - Switch between themes anytime</li>
+                </ol>
+                <div class="warning-box">
+                    <h4>📱 Display Resolution Note</h4>
+                    <p><strong>All Y1 system software runs at 480x360p, but Rockbox themes work differently:</strong></p>
+                    <ul>
+                        <li><strong>iPod Theme Compatible ROMs:</strong> Rockbox scales up from landscape 240p to maximize compatibility with thousands of iPod Video themes</li>
+                        <li><strong>360p Rockbox ROMs:</strong> Native 360p display with a smaller selection of compatible themes</li>
+                    </ul>
+                    <p>Choose based on your preference: maximum theme variety (iPod compatible) or native high-resolution display (360p).</p>
+            </div>
+        </div>
+
+            <!-- Theme Installation Methods -->
+            <div class="info-card">
+                <h3>🛠️ Theme Installation Methods</h3>
+                <p><strong>There are two ways to install themes on your Y1:</strong></p>
+                
+                <div class="success-box">
+                    <h4>📁 Method 1: Manual Installation (Recommended)</h4>
+                    <p><strong>This is the most reliable method:</strong></p>
+                    <ol>
+                        <li><strong>Download theme ZIP files</strong> from <a href="https://themes.rockbox.org/" target="_blank">themes.rockbox.org</a></li>
+                        <li><strong>Connect your Y1 to your computer</strong> via USB</li>
+                        <li><strong>Extract the ZIP file directly to your Y1's root folder</strong> - Don't extract to a subfolder</li>
+                        <li><strong>Overwrite all files when prompted</strong> - This ensures the theme installs correctly</li>
+                        <li><strong>Eject your Y1 safely</strong> and restart Rockbox</li>
+                    </ol>
+                    <p><strong>Why this works:</strong> The ZIP files contain a .rockbox folder that gets merged with your device's existing .rockbox folder, placing themes in the correct location.</p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>🔧 Method 2: Rockbox Utility (FAT32 Only)</h4>
+                    <p><strong>Alternative method for FAT32-formatted Y1 devices:</strong></p>
+                    <ol>
+                        <li><strong>Download Rockbox Utility</strong> from <a href="https://www.rockbox.org/wiki/RockboxUtility" target="_blank">rockbox.org</a></li>
+                        <li><strong>Connect your Y1</strong> and open Rockbox Utility</li>
+                        <li><strong>Select only "Themes" and "Fonts"</strong> options in the installation settings</li>
+                        <li><strong>Choose your themes</strong> and install them</li>
+                    </ol>
+                    <p><strong>Important:</strong> This method only works if your Y1 is formatted as FAT32. We still recommend manual installation for better control and reliability.</p>
+                </div>
+            </div>
+
+            <!-- Advanced Features -->
+            <div class="info-card">
+                <h3>⚙️ Advanced Rockbox Features</h3>
+                <p><strong>Beyond Basic Music Playback:</strong></p>
+                <ul>
+                    <li><strong>Customizable UI</strong> - Modify every aspect of the interface</li>
+                    <li><strong>Advanced audio settings</strong> - Equalizer, crossfade, gapless playback</li>
+                    <li><strong>Plugin system</strong> - Add games, applications, and utilities</li>
+                    <li><strong>Database management</strong> - Organize your music library efficiently</li>
+                    <li><strong>Remote control support</strong> - Control via ADB when connected to Innioasis Updater</li>
+                </ul>
+                <p><strong>Developer Resources:</strong></p>
+                <ul>
+                    <li><strong>Rockbox-y1 Source:</strong> <a href="https://github.com/rockbox-y1/rockbox" target="_blank">github.com/rockbox-y1/rockbox</a></li>
+                    <li><strong>Theme Development:</strong> Create custom themes using the Rockbox Theme Editor</li>
+                    <li><strong>Plugin Development:</strong> Write custom plugins for enhanced functionality</li>
+                </ul>
+            </div>
+
+            <!-- Installation Methods -->
+            <div class="info-card">
+                <h3>📥 Installation Methods</h3>
+                <p><strong>Multiple Ways to Get Rockbox-y1:</strong></p>
+                <ol>
+                    <li><strong>Innioasis Updater (Recommended)</strong> - Install directly from the main screen</li>
+                    <li><strong>Firmware Directory</strong> - Download from <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a></li>
+                    <li><strong>Advanced Installation</strong> - Download APK from <a href="https://github.com/rockbox-y1/rockbox" target="_blank">GitHub</a> for manual installation</li>
+                </ol>
+                <p><strong>System Requirements:</strong></p>
+                <ul>
+                    <li><strong>Innioasis Y1 device</strong> - Any Y1 model supported</li>
+                    <li><strong>SD Card recommended</strong> - For storing music and themes</li>
+                    <li><strong>USB connection</strong> - For theme installation and file management</li>
                 </ul>
                 <div class="warning-box">
                     <h4>⚠️ Important Note</h4>
-                    <p>ARM64 Windows users cannot directly install firmware but can use remote control features after the initial setup is done on another computer.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- macOS Content -->
-        <div class="content-section" id="mac-content">
-            <h2 class="section-title">macOS Troubleshooting Guide</h2>
-            
-            <!-- General Advice -->
-            <div class="info-card">
-                <h3>🚀 Getting Started - Important First Steps</h3>
-                <p><strong>Before using Innioasis Updater for the first time on macOS:</strong></p>
-                <ol>
-                    <li><strong>Install Homebrew</strong> - Required for dependencies</li>
-                    <li><strong>Follow on-screen instructions carefully</strong> - The app will guide you through each step</li>
-                    <li><strong>Ensure your Y1 is connected properly</strong> - Use a good quality USB cable</li>
-                    <li><strong>Grant necessary permissions</strong> - macOS may ask for various permissions</li>
-                </ol>
-                <p>Following these steps will ensure the smoothest System Software (firmware) update or custom firmware install journey.</p>
-            </div>
-
-            <!-- macOS Specific Issues -->
-            <div class="info-card">
-                <h3>🍎 macOS Specific Troubleshooting</h3>
-                <p>Common issues on macOS and their solutions:</p>
-                <ul>
-                    <li><strong>App won't open:</strong> Right-click the app → Open, or go to System Preferences → Security & Privacy → Allow</li>
-                    <li><strong>Permission denied:</strong> Grant Terminal/App Store permissions when prompted</li>
-                    <li><strong>USB not recognized:</strong> Try a different USB port or cable</li>
-                    <li><strong>Homebrew issues:</strong> Update Homebrew with <code>brew update && brew upgrade</code></li>
-                </ul>
-            </div>
-
-            <!-- Y1 Remote Control -->
-            <div class="info-card">
-                <h3>📱 Y1 Remote Control Features</h3>
-                <p>After installing your first update on the Y1 using Innioasis Updater, you unlock powerful remote control capabilities:</p>
-                <ul>
-                    <li><strong>Screenshot your Y1</strong> - Capture what's on your device's screen</li>
-                    <li><strong>Remote control</strong> - Control your Y1 from your Mac</li>
-                    <li><strong>Test and deploy apps</strong> - Install and manage applications remotely</li>
-                </ul>
-                <div class="success-box">
-                    <h4>🎵 Rockbox-y1 Integration</h4>
-                    <p>There's currently one app available specifically made for the Y1: <strong>Rockbox-y1</strong> by the developer. It's available pre-packaged as a ROM from <a href="https://github.com/rockbox-y1/rockbox" target="_blank">github.com/rockbox-y1/rockbox</a>.</p>
-                </div>
-            </div>
-
-            <!-- MTKclient for macOS -->
-            <div class="info-card">
-                <h3>⚙️ MTKclient on macOS</h3>
-                <p>MTKclient is the primary installation method on macOS:</p>
-                <ul>
-                    <li><strong>No additional drivers needed</strong> - macOS handles USB communication natively</li>
-                    <li><strong>More reliable</strong> - MTKclient works better on macOS than Windows</li>
-                    <li><strong>Command-line interface</strong> - Provides more control over the installation process</li>
-                </ul>
-            </div>
-
-            <!-- macOS Security -->
-            <div class="info-card">
-                <h3>🔒 macOS Security Settings</h3>
-                <p>If you encounter security-related issues:</p>
-                <ol>
-                    <li>Go to <strong>System Preferences → Security & Privacy</strong></li>
-                    <li>Click <strong>"Allow"</strong> when prompted about running the app</li>
-                    <li>For command-line tools, you may need to run <code>sudo spctl --master-disable</code> temporarily</li>
-                    <li>Remember to re-enable security with <code>sudo spctl --master-enable</code> after installation</li>
-                </ol>
-            </div>
-        </div>
-
-        <!-- Linux Content -->
-        <div class="content-section" id="linux-content">
-            <h2 class="section-title">Linux Troubleshooting Guide</h2>
-            
-            <div class="info-card">
-                <h3>🐧 Coming Soon</h3>
-                <p>We're working on comprehensive Linux support! In the meantime:</p>
-                <ul>
-                    <li>Check the main <a href="https://github.com/team-slide/Innioasis-Updater" target="_blank">GitHub repository</a> for Linux installation instructions</li>
-                    <li>Ubuntu is recommended for the best experience</li>
-                    <li>Most Linux distributions should work with manual setup</li>
-                </ul>
-                <div class="warning-box">
-                    <h4>⚠️ Work in Progress</h4>
-                    <p>Linux support is actively being developed. Please check back soon for a complete troubleshooting guide.</p>
+                    <p>Rockbox-y1 replaces the default Android system. Make sure to backup any important data before installation, as the process will wipe the device.</p>
                 </div>
             </div>
         </div>
@@ -718,6 +1412,30 @@
             
             // Show appropriate content
             document.getElementById(`${platform}-content`).classList.add('active');
+            
+            // If it's the users section, also select Windows by default
+            if (platform === 'users') {
+                selectSubPlatform('windows');
+            }
+        }
+
+        // Sub-platform selection (for users section)
+        function selectSubPlatform(subPlatform) {
+            // Hide all sub-content sections
+            document.querySelectorAll('.sub-content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove selection from all sub-platform cards
+            document.querySelectorAll('[data-subplatform]').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Select the clicked sub-platform
+            document.querySelector(`[data-subplatform="${subPlatform}"]`).classList.add('selected');
+            
+            // Show appropriate sub-content
+            document.getElementById(`${subPlatform}-sub-content`).classList.add('active');
         }
 
         // Theme toggle functionality
@@ -789,22 +1507,353 @@
             }
         }
 
+        // Version parsing logic from firmware.html
+        function parseVersionDesignations(versionName) {
+            const designations = [];
+            
+            // Define adjectives that can modify their nearest neighbor
+            const adjectives = ['compatible', 'aware', 'supported', 'enabled', 'disabled', 'ready', 'optimized', 'enhanced'];
+            
+            // Extract only the part after the last dash (this is the actual version number)
+            // First remove long hex strings at the end (like -13057e75dc29a1a7!)
+            let cleanVersion = versionName.replace(/-[a-f0-9]{16,}!?$/, '');
+            // Remove any remaining trailing dashes or exclamation marks
+            cleanVersion = cleanVersion.replace(/[-!]+$/, '');
+            
+            // Extract only the numbers after the last dash
+            if (cleanVersion.includes('-')) {
+                const lastPart = cleanVersion.split('-').pop();
+                // Check if the last part contains only numbers (and possibly dots)
+                if (/^[\d.]+$/.test(lastPart)) {
+                    cleanVersion = lastPart;
+                }
+            }
+            
+            // Split the remaining parts
+            const parts = cleanVersion.split('-');
+            
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                
+                // Skip if it's the version number part
+                if (/^[\d.]+$/.test(part)) {
+                    continue;
+                }
+                
+                // Skip if it's a hex string
+                if (/^[a-f0-9]{16,}!?$/.test(part)) {
+                    continue;
+                }
+                
+                // Check for iPod theme compatibility
+                if (part.toLowerCase().includes('ipod') && i + 1 < parts.length) {
+                    const nextPart = parts[i + 1];
+                    if (nextPart.toLowerCase().includes('theme')) {
+                        if (i + 2 < parts.length && adjectives.includes(parts[i + 2])) {
+                            const adjective = parts[i + 2];
+                            designations.push({
+                                type: 'ipod-theme',
+                                text: `iPod Themes ${adjective.charAt(0).toUpperCase() + adjective.slice(1)}`
+                            });
+                        } else {
+                            designations.push({
+                                type: 'ipod-theme',
+                                text: 'iPod Themes'
+                            });
+                        }
+                    }
+                } else if (part.toLowerCase().includes('360p')) {
+                    designations.push({
+                        type: 'resolution',
+                        text: '360p'
+                    });
+                } else if (part.toLowerCase().includes('nightly')) {
+                    designations.push({
+                        type: 'build-type',
+                        text: 'Nightly'
+                    });
+                } else if (part.toLowerCase().includes('stable')) {
+                    designations.push({
+                        type: 'build-type',
+                        text: 'Stable'
+                    });
+                } else if (!adjectives.includes(part)) {
+                    // Just add the part as-is, capitalized
+                    designations.push({
+                        type: 'generic',
+                        text: part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+                    });
+                }
+            }
+            
+            return {
+                version: cleanVersion,
+                designations: designations
+            };
+        }
+
+        function getDisplayVersion(versionInfo, publishedAt) {
+            const date = new Date(publishedAt);
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const dayName = dayNames[date.getDay()];
+            
+            // For nightly builds, show day name
+            if (versionInfo.designations.some(d => d.text === 'Nightly')) {
+                return dayName;
+            }
+            
+            // For stable releases, show version number
+            return versionInfo.version;
+        }
+
+        // Real ROM data from firmware.html with parsed versions
+        const realRomData = [
+            {
+                name: "Rockbox ROM",
+                device_type: "A",
+                device: "Y1",
+                repo: "rockbox-y1/rockbox",
+                type: "nightly",
+                releases: [
+                    {
+                        tag_name: "2024-12-20-nightly-ipod-themes-compatible",
+                        name: "Friday",
+                        published_at: "2024-12-20T00:00:00Z",
+                        size: 283.1,
+                        badges: ["Nightly | ✅ iPod Themes Compatible"]
+                    },
+                    {
+                        tag_name: "2024-12-20-nightly-360p",
+                        name: "Friday",
+                        published_at: "2024-12-20T00:00:00Z",
+                        size: 285.7,
+                        badges: ["Nightly | 🟠 360p"]
+                    },
+                    {
+                        tag_name: "2024-12-19-nightly-ipod-themes-compatible",
+                        name: "Thursday",
+                        published_at: "2024-12-19T00:00:00Z",
+                        size: 282.8,
+                        badges: ["Nightly | ✅ iPod Themes Compatible"]
+                    },
+                    {
+                        tag_name: "2024-12-19-nightly-360p",
+                        name: "Thursday",
+                        published_at: "2024-12-19T00:00:00Z",
+                        size: 284.3,
+                        badges: ["Nightly | 🟠 360p"]
+                    },
+                    {
+                        tag_name: "2024-12-17-nightly-ipod-themes-compatible",
+                        name: "Tuesday",
+                        published_at: "2024-12-17T00:00:00Z",
+                        size: 281.9,
+                        badges: ["Nightly | ✅ iPod Themes Compatible"]
+                    }
+                ]
+            },
+            {
+                name: "Original Software",
+                device_type: "A",
+                device: "Y1",
+                repo: "team-slide/Innioasis-Updater",
+                type: "stable",
+                releases: [
+                    {
+                        tag_name: "2.1.9",
+                        name: "2.1.9",
+                        published_at: "2024-07-15T00:00:00Z",
+                        size: 156.2,
+                        badges: ["Stable Release"],
+                        released: "Jul 2025"
+                    },
+                    {
+                        tag_name: "2.1.7",
+                        name: "2.1.7",
+                        published_at: "2024-06-20T00:00:00Z",
+                        size: 154.8,
+                        badges: ["Previous Release"],
+                        released: "Jun 2025"
+                    }
+                ]
+            }
+        ];
+
+        // Platform detection
+        function detectPlatform() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.includes('mac')) return 'mac';
+            if (userAgent.includes('win')) return 'windows';
+            return 'mac'; // default to mac
+        }
+
+        // Interactive Installation Demo
+        function startInstallDemo() {
+            const statusElement = document.querySelector('.app-status strong');
+            const gettingReadyElement = document.querySelector('.app-getting-ready');
+            const downloadBtn = document.querySelector('.app-download-btn');
+            const leftPanel = document.querySelector('.app-left-panel');
+            const romList = document.querySelector('.app-rom-list');
+            
+            if (!statusElement || !gettingReadyElement || !downloadBtn) return;
+            
+            // Hide the left panel (ROM list) during download/installation - matches real app behavior
+            if (leftPanel) {
+                leftPanel.style.display = 'none';
+            }
+            
+            // Disable the download button
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = 'Installing...';
+            
+            // Get selected ROM data
+            const selectedRom = realRomData[0]; // Rockbox ROM
+            const selectedRelease = selectedRom.releases[0]; // Friday release
+            const romSize = selectedRelease.size; // MB
+            const platform = detectPlatform();
+            
+            // Calculate download time at 1Gbps (125 MB/s)
+            const downloadSpeed = 125; // MB/s
+            const downloadTime = Math.ceil(romSize / downloadSpeed); // seconds
+            
+            // Installation steps based on actual firmware_downloader.py process
+            const installSteps = [
+                { status: 'Downloading...', message: `Downloading ${selectedRom.name}...`, delay: 1000, image: 'presteps' },
+                { status: 'Downloading...', message: `Downloading... 25% (${(romSize * 0.25).toFixed(1)}MB / ${romSize}MB) - ETA: ${Math.ceil(downloadTime * 0.75)}s`, delay: 2000, image: 'presteps' },
+                { status: 'Downloading...', message: `Downloading... 50% (${(romSize * 0.5).toFixed(1)}MB / ${romSize}MB) - ETA: ${Math.ceil(downloadTime * 0.5)}s`, delay: 2000, image: 'presteps' },
+                { status: 'Downloading...', message: `Downloading... 75% (${(romSize * 0.75).toFixed(1)}MB / ${romSize}MB) - ETA: ${Math.ceil(downloadTime * 0.25)}s`, delay: 2000, image: 'presteps' },
+                { status: 'Downloading...', message: `Downloading... 100% (${romSize}MB / ${romSize}MB) - ETA: 0s`, delay: 1500, image: 'presteps' },
+                { status: 'Processing...', message: 'Extracting rom.zip...', delay: 2000, image: 'presteps' },
+                { status: 'Processing...', message: 'Verifying firmware integrity...', delay: 1500, image: 'presteps' },
+                { status: 'Installing...', message: 'Please follow the instructions below to install the software on your Y1', delay: 1000, image: 'initsteps' },
+                { status: 'Installing...', message: 'MTK: Connecting to device...', delay: 2000, image: 'installing' },
+                { status: 'Installing...', message: 'MTK: Preloader', delay: 3000, image: 'installing' },
+                { status: 'Installing...', message: 'MTK: Downloading & Connecting to DA', delay: 4000, image: 'installing' },
+                { status: 'Installing...', message: 'MTK: Flashing boot partition...', delay: 3000, image: 'installing' },
+                { status: 'Installing...', message: 'MTK: Flashing system partition...', delay: 5000, image: 'installing' },
+                { status: 'Installing...', message: 'MTK: Flashing recovery partition...', delay: 2000, image: 'installing' },
+                { status: 'Installing...', message: 'MTK: Finalizing installation...', delay: 2000, image: 'installing' },
+                { status: 'Completed!', message: 'Installation completed successfully!', delay: 2000, image: 'installed' }
+            ];
+            
+            let currentStep = 0;
+            
+            function runNextStep() {
+                if (currentStep >= installSteps.length) {
+                    // Installation complete - reset to ready state
+                    statusElement.textContent = 'Ready';
+                    downloadBtn.disabled = false;
+                    downloadBtn.textContent = 'Download';
+                    
+                    // Restore the left panel (ROM list) - matches real app behavior
+                    if (leftPanel) {
+                        leftPanel.style.display = 'block';
+                    }
+                    
+                    const platform = detectPlatform();
+                    gettingReadyElement.innerHTML = `
+                        <strong>Getting Ready:</strong>
+                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                        <div class="app-instruction-image">
+                            <img src="mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const step = installSteps[currentStep];
+                statusElement.textContent = step.status;
+                
+                // Get the correct image path based on platform and step
+                function getImagePath(imageType) {
+                    if (imageType === 'initsteps') {
+                        return platform === 'windows' ? 'mtkclient/gui/images/initsteps_win.png' : 'mtkclient/gui/images/initsteps.png';
+                    }
+                    return `mtkclient/gui/images/${imageType}.png`;
+                }
+                
+                // Update the getting ready section with progress and proper image sequence
+                if (step.status === 'Downloading...') {
+                    gettingReadyElement.innerHTML = `
+                        <strong>Getting Ready:</strong>
+                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                        <div class="app-instruction-image">
+                            <img src="${getImagePath(step.image)}" alt="Download progress" class="app-main-image">
+                        </div>
+                    `;
+                } else if (step.status === 'Processing...') {
+                    gettingReadyElement.innerHTML = `
+                        <strong>Getting Ready:</strong>
+                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                        <div class="app-instruction-image">
+                            <img src="${getImagePath(step.image)}" alt="Processing" class="app-main-image">
+                        </div>
+                    `;
+                } else if (step.status === 'Installing...' && step.message.includes('MTK:')) {
+                    gettingReadyElement.innerHTML = `
+                        <strong>Getting Ready:</strong>
+                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                        <div class="app-instruction-image">
+                            <img src="${getImagePath(step.image)}" alt="Installing" class="app-main-image">
+                        </div>
+                    `;
+                } else if (step.status === 'Completed!') {
+                    gettingReadyElement.innerHTML = `
+                        <strong>Installation Complete!</strong>
+                        <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
+                        <div class="app-instruction-image">
+                            <img src="${getImagePath(step.image)}" alt="Installed" class="app-main-image">
+                        </div>
+                    `;
+                }
+                
+                currentStep++;
+                setTimeout(runNextStep, step.delay);
+            }
+            
+            // Start the demo
+            runNextStep();
+        }
+
+        // Initialize app demo with platform-specific chrome and real ROM data
+        function initializeAppDemo() {
+            const platform = detectPlatform();
+            const appWindow = document.getElementById('app-window-demo');
+            
+            if (appWindow) {
+                appWindow.className = `app-window ${platform}`;
+            }
+            
+            // Update ROM list with real data
+            const romList = document.querySelector('.app-rom-list');
+            if (romList) {
+                const rockboxRom = realRomData[0];
+                romList.innerHTML = '';
+                
+                rockboxRom.releases.forEach((release, index) => {
+                    const romItem = document.createElement('div');
+                    romItem.className = `app-rom-item ${index === 0 ? 'selected' : ''}`;
+                    
+                    romItem.innerHTML = `
+                        <span class="app-rom-day">${release.name}</span>
+                        <span class="app-rom-info">Software: ${rockboxRom.name}</span>
+                        <span class="app-rom-badge">${release.badges[0]}</span>
+                    `;
+                    
+                    romList.appendChild(romItem);
+                });
+            }
+        }
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             checkSavedTheme();
             
-            // Auto-detect platform and select appropriate content
-            const userAgent = navigator.userAgent;
-            let platform = 'windows'; // default
+            // Start with users section selected
+            selectPlatform('users');
             
-            if (userAgent.includes('Mac')) {
-                platform = 'mac';
-            } else if (userAgent.includes('Linux')) {
-                platform = 'linux';
-            }
-            
-            // Auto-select the detected platform
-            selectPlatform(platform);
+            // Initialize app demo
+            initializeAppDemo();
         });
     </script>
 </body>
