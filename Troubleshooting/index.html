@@ -12,45 +12,49 @@
         }
 
         :root {
-            /* Light mode colors */
+            /* Light mode colors - Modern cohesive palette */
             --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f7;
-            --bg-tertiary: #fafafa;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --text-tertiary: #6e6e73;
-            --accent-primary: #007aff;
-            --accent-secondary: #5856d6;
-            --accent-success: #34c759;
-            --accent-warning: #ff9500;
-            --accent-error: #ff3b30;
-            --border-primary: #d2d2d7;
-            --border-secondary: #e5e5e7;
-            --shadow-primary: rgba(0, 0, 0, 0.1);
-            --shadow-secondary: rgba(0, 0, 0, 0.05);
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-error: #ef4444;
+            --border-primary: #e2e8f0;
+            --border-secondary: #f1f5f9;
+            --shadow-primary: rgba(15, 23, 42, 0.08);
+            --shadow-secondary: rgba(15, 23, 42, 0.04);
             --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --gradient-surface: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
         }
 
         [data-theme="dark"] {
-            /* Dark mode colors */
-            --bg-primary: #000000;
-            --bg-secondary: #1c1c1e;
-            --bg-tertiary: #2c2c2e;
+            /* Dark mode colors - Modern cohesive palette */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
             --text-primary: #ffffff;
-            --text-secondary: #98989d;
-            --text-tertiary: #8e8e93;
-            --accent-primary: #0a84ff;
-            --accent-secondary: #5e5ce6;
-            --accent-success: #30d158;
-            --accent-warning: #ff9f0a;
-            --accent-error: #ff453a;
-            --border-primary: #38383a;
-            --border-secondary: #48484a;
-            --shadow-primary: rgba(0, 0, 0, 0.3);
+            --text-secondary: #f1f5f9;
+            --text-tertiary: #e2e8f0;
+            --accent-primary: #60a5fa;
+            --accent-secondary: #a78bfa;
+            --accent-success: #34d399;
+            --accent-warning: #fbbf24;
+            --accent-error: #f87171;
+            --border-primary: #475569;
+            --border-secondary: #334155;
+            --shadow-primary: rgba(0, 0, 0, 0.4);
             --shadow-secondary: rgba(0, 0, 0, 0.2);
-            --gradient-primary: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
-            --gradient-secondary: linear-gradient(135deg, #2c2c2e 0%, #3a3a3c 100%);
+            --gradient-primary: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            --gradient-secondary: linear-gradient(135deg, #334155 0%, #475569 100%);
+            --gradient-accent: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            --gradient-surface: linear-gradient(135deg, #1e293b 0%, #334155 100%);
         }
 
         body {
@@ -60,6 +64,30 @@
             color: var(--text-primary);
             line-height: 1.6;
             transition: all 0.3s ease;
+        }
+
+        /* Link Styles - Theme-aware */
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+            border-bottom-color: var(--accent-secondary);
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: var(--accent-primary);
+        }
+
+        a:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+            border-radius: 2px;
         }
 
         /* Dark mode styles */
@@ -145,19 +173,15 @@
         }
 
         .main-content {
-            background: var(--bg-primary);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            background: var(--gradient-surface);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px var(--shadow-primary);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-primary);
             transition: all 0.3s ease;
         }
 
-        body[data-theme="dark"] .main-content {
-            background: #2c2c2e;
-            color: #ffffff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
 
         .platform-selector {
             display: grid;
@@ -167,37 +191,30 @@
         }
 
         .platform-card {
-            background: var(--bg-secondary);
+            background: var(--gradient-surface);
             border: 2px solid var(--border-primary);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 24px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow-secondary);
         }
 
-        body[data-theme="dark"] .platform-card {
-            background: #3a3a3c;
-            border-color: #48484a;
-            color: #ffffff;
-        }
 
         .platform-card:hover {
             border-color: var(--accent-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px var(--shadow-primary);
         }
 
         .platform-card.selected {
             border-color: var(--accent-primary);
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1));
-        }
-
-        body[data-theme="dark"] .platform-card.selected {
-            background: linear-gradient(135deg, rgba(10, 132, 255, 0.2), rgba(94, 92, 230, 0.2));
-            border-color: var(--accent-primary);
+            background: var(--gradient-accent);
+            color: white;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
 
         .platform-card .icon {
@@ -263,22 +280,20 @@
         }
 
         .info-card {
-            background: var(--bg-secondary);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid var(--accent-primary);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--gradient-surface);
+            padding: 32px;
+            border-radius: 20px;
+            border-left: 6px solid var(--accent-primary);
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-secondary);
+            border: 1px solid var(--border-primary);
         }
 
-        body[data-theme="dark"] .info-card {
-            background: #3a3a3c;
-            color: #ffffff;
-        }
 
         .info-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px var(--shadow-primary);
         }
 
         .info-card h3 {
@@ -366,23 +381,24 @@
         }
 
         .download-btn {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background: var(--gradient-accent);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
+            padding: 16px 32px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            margin: 10px 5px;
+            margin: 12px 8px;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
         }
 
         .download-btn:active {
@@ -420,15 +436,16 @@
         }
 
         .app-window {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px var(--shadow-primary);
+            background: var(--gradient-surface);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px var(--shadow-primary);
             overflow: hidden;
             width: 1200px;
-            height: 500px;
+            height: 580px;
             max-width: 100%;
             position: relative;
             transition: all 0.3s ease;
+            border: 1px solid var(--border-primary);
         }
 
         .app-window.expanded {
@@ -458,12 +475,12 @@
         .app-content {
             display: flex;
             height: 100%;
-            min-height: 450px;
+            min-height: 530px;
         }
 
         .app-left-panel {
             background: var(--bg-tertiary);
-            padding: 20px;
+            padding: 24px;
             width: 30%;
             border-right: 1px solid var(--border-primary);
             transition: all 0.3s ease;
@@ -475,7 +492,7 @@
 
         .app-right-panel {
             background: var(--bg-secondary);
-            padding: 20px;
+            padding: 24px;
             width: 70%;
             transition: all 0.3s ease;
             display: flex;
@@ -487,10 +504,10 @@
         }
 
         .app-section {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
         .app-section:last-of-type {
@@ -543,6 +560,7 @@
             transition: all 0.2s ease;
             margin-left: 6px;
             box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+            position: relative;
         }
 
         .app-icon:hover {
@@ -554,6 +572,27 @@
         .app-icon:active {
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(0, 122, 255, 0.3);
+        }
+
+        .app-icon:hover::after {
+            content: "Try Type A System Software first. If your scroll wheel doesn't respond after installation, install one of the Type B options.";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            max-width: 300px;
+            white-space: normal;
+            text-align: center;
+            box-shadow: 0 4px 12px var(--shadow-primary);
+            border: 1px solid var(--border-primary);
+            z-index: 1000;
+            pointer-events: none;
         }
 
         .app-btn-small {
@@ -576,13 +615,14 @@
         }
 
         .app-rom-list {
-            background: var(--bg-secondary);
+            background: var(--gradient-surface);
             border: 1px solid var(--border-primary);
-            border-radius: 6px;
-            padding: 12px;
-            margin: 20px 0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
             max-height: 200px;
             overflow-y: auto;
+            box-shadow: 0 2px 8px var(--shadow-secondary);
         }
 
         .app-rom-item {
@@ -740,6 +780,50 @@
             border-top: 1px solid var(--border-primary);
         }
 
+        .app-modal-tools-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .app-modal-tool-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .app-modal-tool-btn-primary {
+            background: #8B5CF6;
+            color: white;
+            border: 2px solid #8B5CF6;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+        }
+
+        .app-modal-tool-btn-primary:hover {
+            background: #7C3AED;
+            border-color: #7C3AED;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .app-modal-tool-btn-secondary {
+            background: #374151;
+            color: white;
+            border: 1px solid #4B5563;
+        }
+
+        .app-modal-tool-btn-secondary:hover {
+            background: #4B5563;
+            border-color: #6B7280;
+            transform: translateY(-1px);
+        }
+
         .app-modal-btn {
             padding: 8px 16px;
             border: none;
@@ -809,6 +893,42 @@
             color: var(--text-secondary);
             font-size: 13px;
             margin-bottom: 16px;
+        }
+
+        .app-modal-dropdown-group {
+            margin-bottom: 20px;
+        }
+
+        .app-modal-label {
+            display: block;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .app-modal-select {
+            width: 100%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            color: var(--text-primary);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        .app-modal-select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .app-modal-radio-group {
@@ -971,7 +1091,7 @@
         }
 
         .app-creator {
-            color: #8e8e93;
+            color: var(--text-tertiary);
             font-size: 10px;
             font-weight: 500;
         }
@@ -1001,19 +1121,20 @@
             transform: translateY(-1px);
         }
 
-        .app-action-btn.green { background: #34C759; }
-        .app-action-btn.red { background: #FF3B30; }
-        .app-action-btn.blue { background: #007AFF; }
+        .app-action-btn.green { background: var(--accent-success); }
+        .app-action-btn.red { background: var(--accent-error); }
+        .app-action-btn.blue { background: var(--accent-primary); }
 
         .app-status {
             color: var(--text-primary);
             font-size: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             font-weight: 500;
-            background: var(--bg-secondary);
+            background: var(--gradient-surface);
             border: 1px solid var(--border-primary);
-            border-radius: 6px;
-            padding: 8px 12px;
+            border-radius: 8px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px var(--shadow-secondary);
         }
 
         .app-status strong {
@@ -1030,11 +1151,12 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background: var(--bg-secondary);
+            background: var(--gradient-surface);
             border: 1px solid var(--border-primary);
-            border-radius: 6px;
-            padding: 12px;
-            margin-top: 16px;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px var(--shadow-secondary);
         }
 
         .app-getting-ready strong {
@@ -1045,10 +1167,10 @@
         .app-step {
             display: flex;
             align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 12px;
+            gap: 12px;
+            margin-bottom: 16px;
             font-size: 11px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .app-step-icon {
@@ -1068,12 +1190,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 16px 0;
+            margin: 20px 0;
             flex: 1;
-            background: var(--bg-secondary);
+            background: var(--gradient-surface);
             border: 1px solid var(--border-primary);
-            border-radius: 6px;
-            padding: 8px;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 2px 8px var(--shadow-secondary);
         }
         
         .app-main-image {
@@ -1275,36 +1398,6 @@
 
         <!-- Users Content -->
         <div class="content-section active" id="users-content">
-            <h2 class="section-title">For Users - Quick Start & Troubleshooting</h2>
-            
-            <!-- Platform Selector for Users -->
-            <div class="platform-selector" style="margin: 20px 0;">
-                <div class="platform-card selected" data-subplatform="windows" onclick="selectSubPlatform('windows')">
-                <span class="icon">🪟</span>
-                <h3>Windows</h3>
-                <p>Full troubleshooting guide</p>
-                <span class="status"></span>
-            </div>
-            
-                <div class="platform-card" data-subplatform="mac" onclick="selectSubPlatform('mac')">
-                <span class="icon">🍎</span>
-                <h3>macOS</h3>
-                <p>macOS specific guidance</p>
-                <span class="status"></span>
-            </div>
-            
-                <div class="platform-card" data-subplatform="linux" onclick="selectSubPlatform('linux')">
-                <span class="icon">🐧</span>
-                <h3>Linux</h3>
-                <p>Coming soon</p>
-                <span class="status coming-soon"></span>
-            </div>
-        </div>
-
-            <!-- Windows Subsection -->
-            <div class="sub-content-section active" id="windows-sub-content">
-                <h3 class="section-title">Windows Troubleshooting Guide</h3>
-            
                 <!-- Quick Start -->
             <div class="info-card">
                     <h3>🚀 Quick Start</h3>
@@ -1332,7 +1425,7 @@
                                             <option value="A" selected>Type A</option>
                                             <option value="B">Type B</option>
                                         </select>
-                                        <span class="app-icon" title="Help with device selection">❓</span>
+                                        <span class="app-icon" title="Help with device selection" onclick="showDeviceTypeDialog()">❓</span>
                                         <button class="app-btn-small" onclick="openSettingsModal()">Settings</button>
                                     </div>
                                     <div class="app-section">
@@ -1401,23 +1494,12 @@
                                                     <h4>Installation Settings</h4>
                                                     <p>This setting will be used for the next firmware installation.</p>
                                                 </div>
-                                                <div class="app-modal-radio-group">
-                                                    <label class="app-modal-radio">
-                                                        <input type="radio" name="install-method" value="method1" checked>
-                                                        <span class="radio-custom"></span>
-                                                        <div>
-                                                            <strong>Method 1 - Guided</strong>
-                                                            <p>Step-by-step with visual guidance</p>
-                                                        </div>
-                                                    </label>
-                                                    <label class="app-modal-radio">
-                                                        <input type="radio" name="install-method" value="method2">
-                                                        <span class="radio-custom"></span>
-                                                        <div>
-                                                            <strong>Method 2 - MTKclient</strong>
-                                                            <p>Direct technical installation</p>
-                                                        </div>
-                                                    </label>
+                                                <div class="app-modal-dropdown-group">
+                                                    <label for="install-method-select" class="app-modal-label">Installation Method:</label>
+                                                    <select id="install-method-select" class="app-modal-select">
+                                                        <option value="method1" selected>Method 1 - Guided (Step-by-step with visual guidance)</option>
+                                                        <option value="method2">Method 2 - MTKclient (Direct technical installation)</option>
+                                                    </select>
                                                 </div>
                                                 <div class="app-modal-checkbox-group">
                                                     <label class="app-modal-checkbox">
@@ -1436,6 +1518,14 @@
                                                 <div class="app-modal-description">
                                                     <h4>Tools & Utilities</h4>
                                                     <p>Manage additional tools and shortcuts.</p>
+                                                </div>
+                                                <div class="app-modal-tools-section">
+                                                    <button class="app-modal-tool-btn app-modal-tool-btn-primary" onclick="launchY1RemoteControl()">
+                                                        Launch Y1 Remote Control
+                                                    </button>
+                                                    <button class="app-modal-tool-btn app-modal-tool-btn-secondary" onclick="checkForUtilityUpdates()">
+                                                        Check for Utility Updates
+                                                    </button>
                                                 </div>
                                                 <div id="windows-only-section">
                                                     <h5>Windows Shortcuts</h5>
@@ -1472,18 +1562,34 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Installation Dialog -->
-                                <div class="app-dialog-overlay" id="install-dialog" style="display: none;">
-                                    <div class="app-dialog">
-                                        <span class="app-dialog-icon" id="dialog-icon">⚠️</span>
-                                        <h3 class="app-dialog-title" id="dialog-title">Disconnect USB</h3>
-                                        <p class="app-dialog-message" id="dialog-message">Please disconnect the USB from your Y1 and press OK, then follow the next instructions.</p>
-                                        <div class="app-dialog-buttons">
-                                            <button class="app-dialog-btn app-dialog-btn-secondary" onclick="closeInstallDialog()">Cancel</button>
-                                            <button class="app-dialog-btn app-dialog-btn-primary" onclick="confirmInstallDialog()">OK</button>
-                                        </div>
-                                    </div>
-                                </div>
+                <!-- Installation Dialog -->
+                <div class="app-dialog-overlay" id="install-dialog" style="display: none;">
+                    <div class="app-dialog">
+                        <span class="app-dialog-icon" id="dialog-icon">⚠️</span>
+                        <h3 class="app-dialog-title" id="dialog-title">Disconnect USB</h3>
+                        <p class="app-dialog-message" id="dialog-message">Please disconnect the USB from your Y1 and press OK, then follow the next instructions.</p>
+                        <div class="app-dialog-buttons">
+                            <button class="app-dialog-btn app-dialog-btn-secondary" onclick="closeInstallDialog()">Cancel</button>
+                            <button class="app-dialog-btn app-dialog-btn-primary" onclick="confirmInstallDialog()">OK</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Device Type Selection Dialog -->
+                <div class="app-dialog-overlay" id="device-type-dialog" style="display: none;">
+                    <div class="app-dialog">
+                        <span class="app-dialog-icon">ℹ️</span>
+                        <h3 class="app-dialog-title">Device Type Selection Guide</h3>
+                        <div class="app-dialog-message">
+                            <p><strong>Type A Devices:</strong> This is the recommended starting point for most users. Install this first to see if it meets your needs.</p>
+                            <p><strong>Type B Devices:</strong> If your scroll wheel doesn't respond properly after installing Type A, try one of the Type B options. These are alternative configurations that may resolve scroll wheel issues.</p>
+                            <p><strong>Recommendation:</strong> Always start with Type A. Only move to Type B if you experience scroll wheel problems.</p>
+                        </div>
+                        <div class="app-dialog-buttons">
+                            <button class="app-dialog-btn app-dialog-btn-primary" onclick="closeDeviceTypeDialog()">OK</button>
+                        </div>
+                    </div>
+                </div>
                             </div>
                         </div>
                     </div>
@@ -1541,112 +1647,8 @@
                 </div>
             </div>
 
-                <!-- Remote Control -->
-            <div class="info-card">
-                    <h3>📱 Remote Control Features</h3>
-                    <p>After your first update, you can:</p>
-                    <ul>
-                        <li><strong>Take screenshots</strong> of your Y1</li>
-                        <li><strong>Control it remotely</strong> from your computer</li>
-                        <li><strong>Install apps</strong> without touching the device</li>
-                </ul>
-                    <p>Pretty neat, right? 😎</p>
-                </div>
-            </div>
 
-            <!-- macOS Subsection -->
-            <div class="sub-content-section" id="mac-sub-content">
-                <h3 class="section-title">macOS Troubleshooting Guide</h3>
-                
-                <!-- Quick Start for macOS -->
-            <div class="info-card">
-                    <h3>🚀 Quick Start</h3>
-                    <p>Hey Mac user! Here's your quick start:</p>
-                    <ol>
-                        <li><strong>Install Homebrew</strong> - The app will guide you through this</li>
-                        <li><strong>Disconnect your Y1</strong> - Keep it unplugged until we tell you to connect it</li>
-                        <li><strong>Follow the on-screen instructions</strong> - We'll handle the rest</li>
-                        <li><strong>Grant permissions when asked</strong> - macOS will prompt you for various permissions</li>
-                </ol>
-                    <p>That's it! Much simpler on Mac. 🍎</p>
-            </div>
-
-                <!-- macOS Interface Demo -->
-            <div class="info-card">
-                    <h3>🍎 macOS Interface</h3>
-                    <p>The app looks the same on Mac, but with some macOS-specific features:</p>
-                    <div class="app-demo">
-                        <div class="app-window">
-                            <div class="app-content">
-                                <div class="app-left-panel">
-                                    <div class="app-section">
-                                        <label>Device Type:</label>
-                                        <select class="app-select">
-                                            <option>Type A</option>
-                                        </select>
-                                    </div>
-                                    <div class="app-section">
-                                        <label>Device Model:</label>
-                                        <select class="app-select">
-                                            <option>Y1</option>
-                                        </select>
-                                    </div>
-                                    <div class="app-section">
-                                        <label>Software:</label>
-                                        <select class="app-select">
-                                            <option>System Software</option>
-                                        </select>
-                                    </div>
-                                    <div class="app-rom-list">
-                                        <div class="app-rom-item selected">
-                                            <span class="app-rom-day">Latest</span>
-                                            <span class="app-rom-info">Software: System Software</span>
-                                            <span class="app-rom-badge mac">🍎 macOS Optimized</span>
-                                            <div class="app-rom-desc">MTKClient method • No drivers needed</div>
-                                        </div>
-                                    </div>
-                                    <button class="app-download-btn">Download</button>
-                                </div>
-                                <div class="app-right-panel">
-                                    <div class="app-status">
-                                        <strong>Status:</strong> Ready
-                                    </div>
-                                    <div class="app-getting-ready">
-                                        <strong>macOS Advantages:</strong>
-                                        <div class="app-step">
-                                            <span class="app-step-icon">⚡</span>
-                                            <div>
-                                                <strong>No Driver Installation</strong><br>
-                                                <span style="color: #8e8e93; font-size: 10px;">macOS handles USB communication natively</span>
-                                            </div>
-                                        </div>
-                                        <div class="app-step">
-                                            <span class="app-step-icon">🔧</span>
-                                            <div>
-                                                <strong>SP Flash Tool</strong><br>
-                                                <span style="color: #8e8e93; font-size: 10px;">Standard firmware installation method</span>
-                                            </div>
-                                        </div>
-                                        <div class="app-step">
-                                            <span class="app-step-icon">🏠</span>
-                                            <div>
-                                                <strong>Homebrew Integration</strong><br>
-                                                <span style="color: #8e8e93; font-size: 10px;">Automatic dependency management</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p><strong>macOS Benefits:</strong></p>
-                    <ul>
-                        <li><strong>No driver hassles</strong> - macOS handles everything automatically</li>
-                        <li><strong>Better reliability</strong> - MTKClient works more smoothly on Mac</li>
-                        <li><strong>Homebrew integration</strong> - Dependencies managed automatically</li>
-                        <li><strong>Cleaner interface</strong> - Native macOS look and feel</li>
-                </ul>
-            </div>
+        <!-- Developers Content -->
 
                 <!-- macOS Specific Issues -->
             <div class="info-card">
@@ -2369,15 +2371,15 @@ your-rom-repo/
                 { status: 'Downloading...', message: `Downloading... 100% (${romSize}MB / ${romSize}MB) - Complete!`, delay: 200, image: 'presteps', showText: 'Download complete!', progress: 100 },
                 { status: 'Processing...', message: 'Extracting rom.zip...', delay: 800, image: 'presteps', showText: 'Extracting firmware files...' },
                 { status: 'Processing...', message: 'Verifying firmware integrity...', delay: 600, image: 'presteps', showText: 'Verifying firmware...' },
-                { status: 'Preparing...', message: 'Follow the instructions below to prepare your Y1 for installation...', delay: Math.floor(Math.random() * 8000) + 7000, image: getInitStepsImage(), showText: 'Follow the instructions below to prepare your Y1 for installation...' },
                 { status: 'Dialog...', message: 'Please disconnect USB from Y1', delay: 0, image: 'presteps', showText: 'Disconnect USB', dialog: { title: 'Disconnect USB', message: 'Please disconnect the USB from your Y1 and press OK, then follow the next instructions.', icon: '⚠️' } },
+                { status: 'Preparing...', message: 'Follow the instructions below to prepare your Y1 for installation...', delay: Math.floor(Math.random() * 8000) + 7000, image: getInitStepsImage(), showText: 'Follow the instructions below to prepare your Y1 for installation...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Connecting to device...`, delay: 1500, image: 'installing', showText: 'Connecting to device...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Loading preloader...`, delay: 1200, image: 'installing', showText: 'Loading preloader...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing boot partition...`, delay: 2000, image: 'installing', showText: 'Flashing boot partition...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing system partition...`, delay: 2500, image: 'installing', showText: 'Flashing system partition...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing recovery partition...`, delay: 1500, image: 'installing', showText: 'Flashing recovery partition...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Finalizing installation...`, delay: 1200, image: 'installing', showText: 'Finalizing installation...' },
-                { status: 'Completed!', message: 'Installation completed successfully!', delay: 1500, image: 'installed', showText: 'Installation completed successfully!', collapseLeft: true }
+                { status: 'Completed!', message: 'Installation completed successfully!', delay: 3000, image: 'installed', showText: 'Installation completed successfully!', collapseLeft: true }
             ];
             
             let currentStep = 0;
@@ -2668,33 +2670,46 @@ your-rom-repo/
         }
 
         // Fetch releases from GitHub API
-        async function fetchGitHubReleases(repo, token = null) {
-            const headers = {
-                'Accept': 'application/vnd.github.v3+json'
-            };
+        async function fetchGitHubReleases(repo) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
             
-            if (token) {
-                headers['Authorization'] = `token ${token}`;
-            }
-            
-            let response = await fetch(`https://api.github.com/repos/${repo}/releases`, { headers });
-            
-            if (response.status === 403 && apiTokens.length > 0) {
-                console.log(`Rate limited for ${repo}, trying with authentication...`);
-                const randomToken = apiTokens[Math.floor(Math.random() * apiTokens.length)];
-                response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+            try {
+                // First try unauthenticated request
+                let response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
                     headers: {
-                        'Authorization': `token ${randomToken}`,
                         'Accept': 'application/vnd.github.v3+json'
-                    }
+                    },
+                    signal: controller.signal
                 });
+                
+                // If rate limited and we have tokens, try with authentication
+                if (response.status === 403 && apiTokens.length > 0) {
+                    console.log(`Rate limited for ${repo}, trying with authentication...`);
+                    const randomToken = apiTokens[Math.floor(Math.random() * apiTokens.length)];
+                    response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                        headers: {
+                            'Authorization': `token ${randomToken}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        },
+                        signal: controller.signal
+                    });
+                }
+                
+                clearTimeout(timeoutId);
+                
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                clearTimeout(timeoutId);
+                if (error.name === 'AbortError') {
+                    throw new Error(`Request timeout for ${repo}`);
+                }
+                throw error;
             }
-            
-            if (!response.ok) {
-                throw new Error(`GitHub API error: ${response.status}`);
-            }
-            
-            return await response.json();
         }
 
         // Load real firmware data from slidia manifest
@@ -2714,6 +2729,7 @@ your-rom-repo/
                 for (const pkg of packages) {
                     try {
                         const releases = await fetchGitHubReleases(pkg.repo);
+                        console.log(`Fetched ${releases.length} releases from ${pkg.repo}`);
                         releases.forEach(release => {
                             // Only include releases that have rom.zip assets
                             const hasRomZip = release.assets && release.assets.some(asset => 
@@ -2757,6 +2773,7 @@ your-rom-repo/
                     }
                 }
                 
+                console.log(`Loaded ${allReleases.length} real releases from GitHub`);
                 return allReleases;
             } catch (error) {
                 console.error('Error loading real firmware data:', error);
@@ -2827,7 +2844,7 @@ your-rom-repo/
             // Filter releases based on current selections
             let filteredReleases = [];
             
-            if (realFirmwareData.length > 0) {
+            if (realFirmwareData && realFirmwareData.length > 0) {
                 // Use real data from GitHub
                 filteredReleases = realFirmwareData.filter(release => {
                     const typeMatch = !deviceType || release.device_type === deviceType;
@@ -2836,6 +2853,7 @@ your-rom-repo/
                 }).slice(0, 10); // Limit to 10 most recent
             } else {
                 // Fallback to mock data
+                console.log('Using mock data as fallback - no real data available');
                 const mockRom = realRomData[0];
                 filteredReleases = mockRom.releases.map((release, index) => ({
                     ...release,
@@ -2857,22 +2875,28 @@ your-rom-repo/
                 romItem.className = `app-rom-item ${index === currentSelectedRom ? 'selected' : ''}`;
                 romItem.onclick = () => selectRom(index);
                 
-                // Parse version designations
-                const designations = parseVersionDesignations(release.tag_name || release.name);
-                const badges = designations.map(d => {
-                    let text = d.text;
-                    // Add emojis based on designation type
-                    if (d.type === 'ipod-theme') {
-                        text = `✅ ${text}`;
-                    } else if (d.type === '360p') {
-                        text = `🟠 ${text}`;
-                    } else if (d.type === 'nightly') {
-                        text = `🌙 ${text}`;
-                    } else if (d.type === 'stable') {
-                        text = `⭐ ${text}`;
-                    }
-                    return text;
-                }).join(' | ');
+                // Use badges from mock data if available, otherwise parse designations
+                let badges = '';
+                if (release.badges && release.badges.length > 0) {
+                    badges = release.badges.join(' | ');
+                } else {
+                    // Parse version designations for real data
+                    const designations = parseVersionDesignations(release.tag_name || release.name);
+                    badges = designations.map(d => {
+                        let text = d.text;
+                        // Add emojis based on designation type
+                        if (d.type === 'ipod-theme') {
+                            text = `✅ ${text}`;
+                        } else if (d.type === '360p') {
+                            text = `🟠 ${text}`;
+                        } else if (d.type === 'nightly') {
+                            text = `🌙 ${text}`;
+                        } else if (d.type === 'stable') {
+                            text = `⭐ ${text}`;
+                        }
+                        return text;
+                    }).join(' | ');
+                }
                 
                 // Format date
                 const date = new Date(release.published_at || Date.now());
@@ -2927,6 +2951,12 @@ your-rom-repo/
             const modal = document.getElementById('settings-modal');
             if (modal) {
                 modal.style.display = 'flex';
+                
+                // Initialize dropdown with current method
+                const methodSelect = document.getElementById('install-method-select');
+                if (methodSelect) {
+                    methodSelect.value = currentInstallMethod;
+                }
             }
         }
 
@@ -2967,17 +2997,36 @@ your-rom-repo/
             }
         }
 
+        function showDeviceTypeDialog() {
+            const dialog = document.getElementById('device-type-dialog');
+            if (dialog) {
+                dialog.style.display = 'flex';
+            }
+        }
+
+        function closeDeviceTypeDialog() {
+            const dialog = document.getElementById('device-type-dialog');
+            if (dialog) {
+                dialog.style.display = 'none';
+            }
+        }
+
         function saveSettings() {
-            const method1Radio = document.getElementById('method1');
-            const method2Radio = document.getElementById('method2');
+            const methodSelect = document.getElementById('install-method-select');
             
-            if (method1Radio && method1Radio.checked) {
-                currentInstallMethod = 'method1';
-            } else if (method2Radio && method2Radio.checked) {
-                currentInstallMethod = 'method2';
+            if (methodSelect) {
+                currentInstallMethod = methodSelect.value;
             }
             
             closeSettingsModal();
+        }
+
+        function launchY1RemoteControl() {
+            alert('Y1 Remote Control would launch here. This is a simulation.');
+        }
+
+        function checkForUtilityUpdates() {
+            alert('Checking for utility updates... This is a simulation.');
         }
 
         function switchSettingsTab(tabName) {
