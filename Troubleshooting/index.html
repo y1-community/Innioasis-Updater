@@ -508,11 +508,17 @@
             background: var(--bg-tertiary);
             border: 1px solid var(--border-primary);
             color: var(--text-primary);
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 6px 10px;
+            border-radius: 6px;
             font-size: 12px;
             flex: 1;
             transition: all 0.2s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF69B4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 12px;
+            padding-right: 28px;
         }
 
         .app-select:focus {
@@ -526,17 +532,17 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            font-size: 13px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
-            margin-left: 4px;
-            box-shadow: 0 2px 6px rgba(0, 122, 255, 0.4);
+            margin-left: 6px;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
         }
 
         .app-icon:hover {
@@ -551,15 +557,16 @@
         }
 
         .app-btn-small {
-            background: var(--accent-primary);
+            background: #8E8E93;
             color: #ffffff;
             border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 10px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
             cursor: pointer;
             transition: all 0.2s ease;
             font-weight: 500;
+            margin-left: 4px;
         }
 
         .app-btn-small:hover {
@@ -581,16 +588,17 @@
         .app-rom-item {
             background: var(--bg-tertiary);
             border: 1px solid var(--border-primary);
-            border-radius: 6px;
-            padding: 12px 16px;
-            margin-bottom: 12px;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
+            position: relative;
         }
 
         .app-rom-item.selected {
-            background: var(--accent-secondary);
-            border-color: var(--accent-secondary);
+            background: #6B73FF;
+            border-color: #6B73FF;
             color: #ffffff;
         }
 
@@ -836,11 +844,96 @@
             color: var(--text-secondary);
         }
 
+        /* Installation Dialog Styles */
+        .app-dialog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            backdrop-filter: blur(3px);
+            border-radius: 12px;
+        }
+
+        .app-dialog {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid var(--border-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            text-align: center;
+        }
+
+        .app-dialog-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .app-dialog-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .app-dialog-message {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .app-dialog-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .app-dialog-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 80px;
+        }
+
+        .app-dialog-btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .app-dialog-btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .app-dialog-btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-primary);
+        }
+
+        .app-dialog-btn-secondary:hover {
+            background: var(--border-primary);
+        }
+
         .app-download-btn {
-            background: #007AFF;
+            background: #8E8E93;
             color: #ffffff;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
@@ -848,13 +941,13 @@
             width: 100%;
             margin-top: 16px;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(142, 142, 147, 0.3);
         }
 
         .app-download-btn:hover {
-            background: #0056CC;
+            background: #6D6D70;
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(142, 142, 147, 0.4);
         }
 
         .app-download-btn:active {
@@ -891,13 +984,16 @@
 
         .app-action-btn {
             border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 6px 10px;
+            border-radius: 6px;
             font-size: 10px;
             cursor: pointer;
             color: #ffffff;
             transition: all 0.2s ease;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .app-action-btn:hover {
@@ -905,9 +1001,9 @@
             transform: translateY(-1px);
         }
 
-        .app-action-btn.green { background: var(--accent-success); }
-        .app-action-btn.red { background: var(--accent-error); }
-        .app-action-btn.blue { background: var(--accent-primary); }
+        .app-action-btn.green { background: #34C759; }
+        .app-action-btn.red { background: #FF3B30; }
+        .app-action-btn.blue { background: #007AFF; }
 
         .app-status {
             color: var(--text-primary);
@@ -1372,6 +1468,19 @@
                                         <div class="app-modal-buttons">
                                             <button class="app-modal-btn app-modal-btn-secondary" onclick="closeSettingsModal()">Cancel</button>
                                             <button class="app-modal-btn app-modal-btn-primary" onclick="saveSettings()">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Installation Dialog -->
+                                <div class="app-dialog-overlay" id="install-dialog" style="display: none;">
+                                    <div class="app-dialog">
+                                        <span class="app-dialog-icon" id="dialog-icon">⚠️</span>
+                                        <h3 class="app-dialog-title" id="dialog-title">Disconnect USB</h3>
+                                        <p class="app-dialog-message" id="dialog-message">Please disconnect the USB from your Y1 and press OK, then follow the next instructions.</p>
+                                        <div class="app-dialog-buttons">
+                                            <button class="app-dialog-btn app-dialog-btn-secondary" onclick="closeInstallDialog()">Cancel</button>
+                                            <button class="app-dialog-btn app-dialog-btn-primary" onclick="confirmInstallDialog()">OK</button>
                                         </div>
                                     </div>
                                 </div>
@@ -2261,6 +2370,7 @@ your-rom-repo/
                 { status: 'Processing...', message: 'Extracting rom.zip...', delay: 800, image: 'presteps', showText: 'Extracting firmware files...' },
                 { status: 'Processing...', message: 'Verifying firmware integrity...', delay: 600, image: 'presteps', showText: 'Verifying firmware...' },
                 { status: 'Preparing...', message: 'Follow the instructions below to prepare your Y1 for installation...', delay: Math.floor(Math.random() * 8000) + 7000, image: getInitStepsImage(), showText: 'Follow the instructions below to prepare your Y1 for installation...' },
+                { status: 'Dialog...', message: 'Please disconnect USB from Y1', delay: 0, image: 'presteps', showText: 'Disconnect USB', dialog: { title: 'Disconnect USB', message: 'Please disconnect the USB from your Y1 and press OK, then follow the next instructions.', icon: '⚠️' } },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Connecting to device...`, delay: 1500, image: 'installing', showText: 'Connecting to device...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Loading preloader...`, delay: 1200, image: 'installing', showText: 'Loading preloader...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing boot partition...`, delay: 2000, image: 'installing', showText: 'Flashing boot partition...' },
@@ -2299,6 +2409,20 @@ your-rom-repo/
                 }
                 
                 const step = installSteps[currentStep];
+                
+                // Handle dialog steps
+                if (step.dialog) {
+                    statusElement.textContent = step.message || step.status;
+                    showInstallDialog(step.dialog.title, step.dialog.message, step.dialog.icon);
+                    
+                    // Set up continuation function
+                    window.continueInstallation = () => {
+                        currentStep++;
+                        runNextStep();
+                    };
+                    return;
+                }
+                
                 statusElement.textContent = step.message || step.status;
                 
                 // Show/hide progress bar based on step
@@ -2740,11 +2864,11 @@ your-rom-repo/
                     // Add emojis based on designation type
                     if (d.type === 'ipod-theme') {
                         text = `✅ ${text}`;
-                    } else if (d.type === 'resolution' && text === '360p') {
+                    } else if (d.type === '360p') {
                         text = `🟠 ${text}`;
-                    } else if (d.type === 'build-type' && text === 'Nightly') {
+                    } else if (d.type === 'nightly') {
                         text = `🌙 ${text}`;
-                    } else if (d.type === 'build-type' && text === 'Stable') {
+                    } else if (d.type === 'stable') {
                         text = `⭐ ${text}`;
                     }
                     return text;
@@ -2810,6 +2934,36 @@ your-rom-repo/
             const modal = document.getElementById('settings-modal');
             if (modal) {
                 modal.style.display = 'none';
+            }
+        }
+
+        // Installation Dialog Functions
+        function showInstallDialog(title, message, icon = '⚠️') {
+            const dialog = document.getElementById('install-dialog');
+            const dialogTitle = document.getElementById('dialog-title');
+            const dialogMessage = document.getElementById('dialog-message');
+            const dialogIcon = document.getElementById('dialog-icon');
+            
+            if (dialog && dialogTitle && dialogMessage && dialogIcon) {
+                dialogTitle.textContent = title;
+                dialogMessage.textContent = message;
+                dialogIcon.textContent = icon;
+                dialog.style.display = 'flex';
+            }
+        }
+
+        function closeInstallDialog() {
+            const dialog = document.getElementById('install-dialog');
+            if (dialog) {
+                dialog.style.display = 'none';
+            }
+        }
+
+        function confirmInstallDialog() {
+            closeInstallDialog();
+            // Continue with installation
+            if (window.continueInstallation) {
+                window.continueInstallation();
             }
         }
 
