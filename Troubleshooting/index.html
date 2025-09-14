@@ -428,7 +428,6 @@
             height: 500px;
             max-width: 100%;
             position: relative;
-            border: 1px solid var(--border-primary);
             transition: all 0.3s ease;
         }
 
@@ -527,9 +526,9 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 11px;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
@@ -537,12 +536,18 @@
             justify-content: center;
             transition: all 0.2s ease;
             margin-left: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 122, 255, 0.4);
         }
 
         .app-icon:hover {
             background: #0056CC;
-            transform: scale(1.05);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.5);
+        }
+
+        .app-icon:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 122, 255, 0.3);
         }
 
         .app-btn-small {
@@ -566,8 +571,8 @@
         .app-rom-list {
             background: var(--bg-secondary);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 6px;
+            padding: 12px;
             margin: 20px 0;
             max-height: 200px;
             overflow-y: auto;
@@ -911,8 +916,15 @@
             font-weight: 500;
             background: var(--bg-secondary);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
-            padding: 12px 16px;
+            border-radius: 6px;
+            padding: 8px 12px;
+        }
+
+        .app-status strong {
+            font-size: 10px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
         }
 
         .app-getting-ready {
@@ -924,8 +936,8 @@
             justify-content: center;
             background: var(--bg-secondary);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 6px;
+            padding: 12px;
             margin-top: 16px;
         }
 
@@ -964,8 +976,8 @@
             flex: 1;
             background: var(--bg-secondary);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 6px;
+            padding: 8px;
         }
         
         .app-main-image {
@@ -986,35 +998,36 @@
         }
 
         .app-progress-container {
-            margin: 16px 0;
-            background: var(--bg-tertiary);
-            border-radius: 8px;
-            padding: 16px;
-            border: 1px solid var(--border-primary);
+            margin: 4px 0 0 0;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            border: none;
         }
 
         .app-progress-bar {
             width: 100%;
-            height: 8px;
-            background: var(--bg-secondary);
-            border-radius: 4px;
+            height: 3px;
+            background: var(--bg-tertiary);
+            border-radius: 2px;
             overflow: hidden;
-            margin: 8px 0;
+            margin: 2px 0 0 0;
         }
 
         .app-progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-success));
-            border-radius: 4px;
+            border-radius: 2px;
             transition: width 0.3s ease;
             width: 0%;
         }
 
         .app-progress-text {
             color: var(--text-primary);
-            font-size: 12px;
-            text-align: center;
-            margin: 4px 0;
+            font-size: 9px;
+            text-align: left;
+            margin: 1px 0 0 0;
+            line-height: 1.2;
         }
 
         .app-text-fallback h4 {
@@ -1255,16 +1268,16 @@
                                         </div>
                                     </div>
                                     <div class="app-status">
-                                        <strong>Status:</strong> <span id="status-text">Ready</span>
-                                    </div>
-                                    
-                                    <!-- Progress Bar Container -->
-                                    <div class="app-progress-container" id="progress-container" style="display: none;">
-                                        <div class="app-progress-text" id="progress-text">Downloading...</div>
-                                        <div class="app-progress-bar">
-                                            <div class="app-progress-fill" id="progress-fill"></div>
+                                        <strong>Status</strong>
+                                        <div id="status-text">Ready</div>
+                                        <!-- Progress Bar Container -->
+                                        <div class="app-progress-container" id="progress-container" style="display: none;">
+                                            <div class="app-progress-text" id="progress-text">Downloading...</div>
+                                            <div class="app-progress-bar">
+                                                <div class="app-progress-fill" id="progress-fill"></div>
+                                            </div>
+                                            <div class="app-progress-text" id="progress-details">0% (0MB / 0MB)</div>
                                         </div>
-                                        <div class="app-progress-text" id="progress-details">0% (0MB / 0MB)</div>
                                     </div>
                                     <div class="app-getting-ready" id="getting-ready-section">
                                         <strong>Getting Ready:</strong>
@@ -1427,7 +1440,7 @@
                         <li><strong>Take screenshots</strong> of your Y1</li>
                         <li><strong>Control it remotely</strong> from your computer</li>
                         <li><strong>Install apps</strong> without touching the device</li>
-                    </ul>
+                </ul>
                     <p>Pretty neat, right? 😎</p>
                 </div>
             </div>
@@ -1437,7 +1450,7 @@
                 <h3 class="section-title">macOS Troubleshooting Guide</h3>
                 
                 <!-- Quick Start for macOS -->
-                <div class="info-card">
+            <div class="info-card">
                     <h3>🚀 Quick Start</h3>
                     <p>Hey Mac user! Here's your quick start:</p>
                     <ol>
@@ -2183,6 +2196,14 @@ your-rom-repo/
             downloadBtn.disabled = true;
             downloadBtn.textContent = 'Downloading...';
             
+            // Hide the left panel during installation
+            const leftPanel = document.querySelector('.app-left-panel');
+            const rightPanel = document.querySelector('.app-right-panel');
+            if (leftPanel && rightPanel) {
+                leftPanel.style.display = 'none';
+                rightPanel.style.width = '100%';
+            }
+            
             // Get selected ROM data
             let selectedRelease;
             let romSize = 50; // Default size in MB
@@ -2269,7 +2290,6 @@ your-rom-repo/
                         
                         gettingReadyElement.innerHTML = `
                             <strong>Getting Ready:</strong>
-                            <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
                             <div class="app-instruction-image">
                                 <img src="https://innioasis.app/mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
                             </div>
@@ -2279,7 +2299,7 @@ your-rom-repo/
                 }
                 
                 const step = installSteps[currentStep];
-                statusElement.textContent = step.status;
+                statusElement.textContent = step.message || step.status;
                 
                 // Show/hide progress bar based on step
                 const progressContainer = document.getElementById('progress-container');
@@ -2295,25 +2315,6 @@ your-rom-repo/
                         progressText.textContent = step.status;
                         progressDetails.textContent = step.message;
                     }
-                } else if (step.image && step.image.includes('initsteps')) {
-                    // This is the initsteps phase - show a countdown
-                    if (progressContainer) {
-                        progressContainer.style.display = 'block';
-                        progressFill.style.width = '0%';
-                        progressText.textContent = 'Reading Instructions...';
-                        progressDetails.textContent = 'Please follow the instructions below';
-                        
-                        // Start countdown
-                        let timeLeft = Math.ceil(step.delay / 1000);
-                        const countdownInterval = setInterval(() => {
-                            timeLeft--;
-                            if (timeLeft > 0) {
-                                progressDetails.textContent = `Please follow the instructions below (${timeLeft}s remaining)`;
-                            } else {
-                                clearInterval(countdownInterval);
-                            }
-                        }, 1000);
-                    }
                 } else {
                     // Not a download or initsteps step - hide progress bar
                     if (progressContainer) {
@@ -2323,7 +2324,12 @@ your-rom-repo/
                 
                 // Collapse left panel when installation starts
                 if (step.collapseLeft) {
-                    expandRightPanel();
+                    const leftPanel = document.querySelector('.app-left-panel');
+                    const rightPanel = document.querySelector('.app-right-panel');
+                    if (leftPanel && rightPanel) {
+                        leftPanel.style.display = 'none';
+                        rightPanel.style.width = '100%';
+                    }
                 }
                 
                 // Update the getting ready section with progress and proper image sequence
@@ -2332,7 +2338,6 @@ your-rom-repo/
                 
                 gettingReadyElement.innerHTML = `
                     <strong>${step.status === 'Completed!' ? 'Installation Complete!' : 'Getting Ready:'}</strong>
-                    <p class="app-disclaimer">This is a scaled approximation of the interface, not an exact replica.</p>
                     <div class="app-instruction-image">
                         <img src="${imagePath}" alt="${textFallback}" class="app-main-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="app-text-fallback" style="display: none; padding: 20px; background: var(--bg-tertiary); border-radius: 8px; text-align: center;">
@@ -2757,6 +2762,16 @@ your-rom-repo/
                 
                 romList.appendChild(romItem);
             });
+            
+            // Update download button text based on software type
+            const downloadBtn = document.getElementById('download-btn');
+            if (downloadBtn) {
+                if (software.toLowerCase().includes('original')) {
+                    downloadBtn.textContent = 'Download (Update / Restore)';
+                } else {
+                    downloadBtn.textContent = 'Download';
+                }
+            }
         }
 
         function selectRom(index) {
@@ -2848,13 +2863,13 @@ your-rom-repo/
 
         function resetPanelLayout() {
             const appWindow = document.getElementById('app-window-demo');
-            const leftPanel = document.getElementById('app-left-panel');
-            const rightPanel = document.getElementById('app-right-panel');
+            const leftPanel = document.querySelector('.app-left-panel');
+            const rightPanel = document.querySelector('.app-right-panel');
             
             if (appWindow && leftPanel && rightPanel) {
                 appWindow.classList.remove('installation-mode');
-                leftPanel.classList.remove('hidden');
-                rightPanel.classList.remove('expanded');
+                leftPanel.style.display = 'block';
+                rightPanel.style.width = '70%';
             }
         }
 
