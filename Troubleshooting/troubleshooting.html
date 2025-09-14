@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innioasis Updater - Troubleshooting Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light mode colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-tertiary: #fafafa;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent-primary: #007aff;
+            --accent-secondary: #5856d6;
+            --accent-success: #34c759;
+            --accent-warning: #ff9500;
+            --accent-error: #ff3b30;
+            --border-primary: #d2d2d7;
+            --border-secondary: #e5e5e7;
+            --shadow-primary: rgba(0, 0, 0, 0.1);
+            --shadow-secondary: rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        [data-theme="dark"] {
+            /* Dark mode colors */
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #ffffff;
+            --text-secondary: #98989d;
+            --text-tertiary: #8e8e93;
+            --accent-primary: #0a84ff;
+            --accent-secondary: #5e5ce6;
+            --accent-success: #30d158;
+            --accent-warning: #ff9f0a;
+            --accent-error: #ff453a;
+            --border-primary: #38383a;
+            --border-secondary: #48484a;
+            --shadow-primary: rgba(0, 0, 0, 0.3);
+            --shadow-secondary: rgba(0, 0, 0, 0.2);
+            --gradient-primary: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+            --gradient-secondary: linear-gradient(135deg, #2c2c2e 0%, #3a3a3c 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* Dark mode styles */
+        body[data-theme="dark"] {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .header-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(15px);
+            font-weight: 600;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle .icon {
+            font-size: 1.3rem;
+        }
+
+        .main-content {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        body[data-theme="dark"] .main-content {
+            background: #2c2c2e;
+            color: #ffffff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .platform-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .platform-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-primary);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body[data-theme="dark"] .platform-card {
+            background: #3a3a3c;
+            border-color: #48484a;
+            color: #ffffff;
+        }
+
+        .platform-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .platform-card.selected {
+            border-color: var(--accent-primary);
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1));
+        }
+
+        body[data-theme="dark"] .platform-card.selected {
+            background: linear-gradient(135deg, rgba(10, 132, 255, 0.2), rgba(94, 92, 230, 0.2));
+            border-color: var(--accent-primary);
+        }
+
+        .platform-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .platform-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .platform-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .platform-card .status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-success);
+        }
+
+        .platform-card .status.coming-soon {
+            background: var(--accent-warning);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .info-card {
+            background: var(--bg-secondary);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent-primary);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body[data-theme="dark"] .info-card {
+            background: #3a3a3c;
+            color: #ffffff;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .info-card ul, .info-card ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .info-card li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        body[data-theme="dark"] .code-block {
+            background: #2c2c2e;
+            border-color: #48484a;
+            color: #ffffff;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent-warning);
+        }
+
+        body[data-theme="dark"] .warning-box {
+            background: linear-gradient(135deg, #3a3a3c, #48484a);
+            border-color: #5a5a5c;
+            color: #ffffff;
+        }
+
+        .warning-box h4 {
+            color: var(--accent-warning);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent-success);
+        }
+
+        body[data-theme="dark"] .success-box {
+            background: linear-gradient(135deg, #2c2c2e, #3a3a3c);
+            border-color: #48484a;
+            color: #ffffff;
+        }
+
+        .success-box h4 {
+            color: var(--accent-success);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .platform-selector {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .theme-toggle {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/assets/icon.ico" alt="Innioasis Icon" class="header-icon">
+            <div class="header-text">
+                <h1>Innioasis Updater Troubleshooting</h1>
+                <p>Get help with common issues and learn about advanced features</p>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span class="icon">🌓</span>
+                <span>Auto</span>
+            </button>
+        </div>
+
+        <!-- Platform Selector -->
+        <div class="platform-selector">
+            <div class="platform-card selected" data-platform="windows" onclick="selectPlatform('windows')">
+                <span class="icon">🪟</span>
+                <h3>Windows</h3>
+                <p>Full troubleshooting guide</p>
+                <span class="status"></span>
+            </div>
+            
+            <div class="platform-card" data-platform="mac" onclick="selectPlatform('mac')">
+                <span class="icon">🍎</span>
+                <h3>macOS</h3>
+                <p>macOS specific guidance</p>
+                <span class="status"></span>
+            </div>
+            
+            <div class="platform-card" data-platform="linux" onclick="selectPlatform('linux')">
+                <span class="icon">🐧</span>
+                <h3>Linux</h3>
+                <p>Coming soon</p>
+                <span class="status coming-soon"></span>
+            </div>
+        </div>
+
+        <!-- Windows Content -->
+        <div class="content-section active" id="windows-content">
+            <h2 class="section-title">Windows Troubleshooting Guide</h2>
+            
+            <!-- General Advice -->
+            <div class="info-card">
+                <h3>🚀 Getting Started - Important First Steps</h3>
+                <p><strong>Before using Innioasis Updater for the first time, please follow these essential steps:</strong></p>
+                <ol>
+                    <li><strong>Install the necessary drivers</strong> - This is crucial for the app to communicate with your Y1 device</li>
+                    <li><strong>Restart your PC</strong> - This ensures all drivers are properly loaded and recognized</li>
+                    <li><strong>Follow on-screen instructions carefully</strong> - The app will guide you through each step</li>
+                    <li><strong>Ensure your Y1 is connected properly</strong> - Use a good quality USB cable</li>
+                </ol>
+                <p>Following these steps will ensure the smoothest System Software (firmware) update or custom firmware install journey.</p>
+            </div>
+
+            <!-- App Frozen Issue -->
+            <div class="info-card">
+                <h3>❄️ App Frozen After Downloading Firmware</h3>
+                <p>If the Innioasis Updater app becomes unresponsive (shows "Not Responding"):</p>
+                <ol>
+                    <li><strong>End the task/force quit the app</strong> - Use Task Manager (Ctrl+Shift+Esc) to end the process</li>
+                    <li><strong>Disconnect all non-essential USB devices</strong> - Keep only your Y1 connected</li>
+                    <li><strong>Restart the app</strong> - Launch Innioasis Updater again</li>
+                    <li><strong>Click "Try Again"</strong> when the app opens back up</li>
+                    <li><strong>Try a different method</strong> if the first attempt doesn't work</li>
+                </ol>
+            </div>
+
+            <!-- Missing Shortcuts -->
+            <div class="info-card">
+                <h3>🔗 Missing Shortcuts on Windows</h3>
+                <p>If you're missing shortcuts on your desktop or start menu, run this command to restore them:</p>
+                <div class="code-block">"%LocalAppData%\Innioasis Updater\pythonw.exe" updater.py --force</div>
+                <p>Your shortcuts will repopulate after the app updates itself.</p>
+            </div>
+
+            <!-- Windows Toolkit -->
+            <div class="info-card">
+                <h3>🛠️ Windows Toolkit Access</h3>
+                <p>You can fix many issues with Innioasis Updater using the Windows Toolkit:</p>
+                <ol>
+                    <li>Press <strong>Windows Key + R</strong></li>
+                    <li>Run this command:</li>
+                </ol>
+                <div class="code-block">explorer.exe "%LocalAppData%\Innioasis Updater\Troubleshooting"</div>
+                <p>Or download the latest toolkit directly:</p>
+                <a href="https://github.com/team-slide/Innioasis-Updater/raw/refs/heads/main/Troubleshooters%20-%20Windows.zip" class="download-btn">Download Windows Toolkit</a>
+            </div>
+
+            <!-- Driver Issues -->
+            <div class="info-card">
+                <h3>🔧 Firmware Installation Issues</h3>
+                <p>If firmwares aren't installing with any method or SP Flash Tool/MTKClient in the troubleshooting folder:</p>
+                <ul>
+                    <li>Make sure the <strong>blue Driver Setup button isn't showing</strong> in your app</li>
+                    <li>If it is, you're missing one of the required drivers for both methods</li>
+                    <li>Method 1 and 2 use MTKclient, Method 3 uses SP Flash Tool</li>
+                </ul>
+            </div>
+
+            <!-- Windows App Not Working -->
+            <div class="info-card">
+                <h3>💻 Windows App Doesn't Work At All</h3>
+                <p>If the Windows app doesn't work at all, don't worry! You have alternatives:</p>
+                <ol>
+                    <li>Download firmwares from <a href="https://firmware.innioasis.app" target="_blank">firmware.innioasis.app</a></li>
+                    <li>Extract the zip into the Innioasis Updater folder (right-click start menu shortcut → Open File Location)</li>
+                    <li>Use one of the shortcuts in the Troubleshooting folder</li>
+                </ol>
+            </div>
+
+            <!-- Stuck Updates -->
+            <div class="info-card">
+                <h3>🔄 Fix Stuck Updates</h3>
+                <p>If you have a stuck update:</p>
+                <ol>
+                    <li><strong>Reboot your computer</strong></li>
+                    <li><strong>Start Innioasis Updater again</strong> from the start menu</li>
+                    <li>It will then update fine, and this shouldn't happen again in the future</li>
+                </ol>
+                <p>If this doesn't work:</p>
+                <ul>
+                    <li>Right-click on your Innioasis Updater shortcut</li>
+                    <li>Look for the "Fix Stuck Updates" folder</li>
+                    <li>If you don't have one, download it from <a href="https://troubleshooting.innioasis.app" target="_blank">troubleshooting.innioasis.app</a></li>
+                </ul>
+            </div>
+
+            <!-- Y1 Remote Control -->
+            <div class="info-card">
+                <h3>📱 Y1 Remote Control Features</h3>
+                <p>After installing your first update on the Y1 using Innioasis Updater, you unlock powerful remote control capabilities:</p>
+                <ul>
+                    <li><strong>Screenshot your Y1</strong> - Capture what's on your device's screen</li>
+                    <li><strong>Remote control</strong> - Control your Y1 from your computer</li>
+                    <li><strong>Test and deploy apps</strong> - Install and manage applications remotely</li>
+                </ul>
+                <div class="success-box">
+                    <h4>🎵 Rockbox-y1 Integration</h4>
+                    <p>There's currently one app available specifically made for the Y1: <strong>Rockbox-y1</strong> by the developer. It's available pre-packaged as a ROM from <a href="https://github.com/rockbox-y1/rockbox" target="_blank">github.com/rockbox-y1/rockbox</a>.</p>
+                </div>
+            </div>
+
+            <!-- MTKclient Information -->
+            <div class="info-card">
+                <h3>⚙️ MTKclient Installation Method</h3>
+                <p>Windows users can enable MTKclient as an install method (it's usually used for macOS and Linux users and is more fiddly):</p>
+                <ul>
+                    <li><strong>Windows users only require:</strong> MTK SP USB Driver</li>
+                    <li><strong>Optional but recommended:</strong> Install USBDK to enable further functionality</li>
+                    <li>MTKclient provides an alternative installation method if other methods fail</li>
+                </ul>
+            </div>
+
+            <!-- ARM64 Windows -->
+            <div class="info-card">
+                <h3>🖥️ ARM64 Windows Users</h3>
+                <p>If you're running Windows on ARM64, you have limited but still useful options:</p>
+                <ul>
+                    <li><strong>Y1 Remote Control only</strong> - After first updating your Y1 or installing custom firmware from <a href="https://firmware.innioasis.app" target="_blank">firmware.innioasis.app</a> on another computer</li>
+                    <li><strong>Alternative option:</strong> You may potentially be able to run the full Linux version in WSLg by using USBIPD-win for passthrough (users are on their own with this setup)</li>
+                </ul>
+                <div class="warning-box">
+                    <h4>⚠️ Important Note</h4>
+                    <p>ARM64 Windows users cannot directly install firmware but can use remote control features after the initial setup is done on another computer.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- macOS Content -->
+        <div class="content-section" id="mac-content">
+            <h2 class="section-title">macOS Troubleshooting Guide</h2>
+            
+            <!-- General Advice -->
+            <div class="info-card">
+                <h3>🚀 Getting Started - Important First Steps</h3>
+                <p><strong>Before using Innioasis Updater for the first time on macOS:</strong></p>
+                <ol>
+                    <li><strong>Install Homebrew</strong> - Required for dependencies</li>
+                    <li><strong>Follow on-screen instructions carefully</strong> - The app will guide you through each step</li>
+                    <li><strong>Ensure your Y1 is connected properly</strong> - Use a good quality USB cable</li>
+                    <li><strong>Grant necessary permissions</strong> - macOS may ask for various permissions</li>
+                </ol>
+                <p>Following these steps will ensure the smoothest System Software (firmware) update or custom firmware install journey.</p>
+            </div>
+
+            <!-- macOS Specific Issues -->
+            <div class="info-card">
+                <h3>🍎 macOS Specific Troubleshooting</h3>
+                <p>Common issues on macOS and their solutions:</p>
+                <ul>
+                    <li><strong>App won't open:</strong> Right-click the app → Open, or go to System Preferences → Security & Privacy → Allow</li>
+                    <li><strong>Permission denied:</strong> Grant Terminal/App Store permissions when prompted</li>
+                    <li><strong>USB not recognized:</strong> Try a different USB port or cable</li>
+                    <li><strong>Homebrew issues:</strong> Update Homebrew with <code>brew update && brew upgrade</code></li>
+                </ul>
+            </div>
+
+            <!-- Y1 Remote Control -->
+            <div class="info-card">
+                <h3>📱 Y1 Remote Control Features</h3>
+                <p>After installing your first update on the Y1 using Innioasis Updater, you unlock powerful remote control capabilities:</p>
+                <ul>
+                    <li><strong>Screenshot your Y1</strong> - Capture what's on your device's screen</li>
+                    <li><strong>Remote control</strong> - Control your Y1 from your Mac</li>
+                    <li><strong>Test and deploy apps</strong> - Install and manage applications remotely</li>
+                </ul>
+                <div class="success-box">
+                    <h4>🎵 Rockbox-y1 Integration</h4>
+                    <p>There's currently one app available specifically made for the Y1: <strong>Rockbox-y1</strong> by the developer. It's available pre-packaged as a ROM from <a href="https://github.com/rockbox-y1/rockbox" target="_blank">github.com/rockbox-y1/rockbox</a>.</p>
+                </div>
+            </div>
+
+            <!-- MTKclient for macOS -->
+            <div class="info-card">
+                <h3>⚙️ MTKclient on macOS</h3>
+                <p>MTKclient is the primary installation method on macOS:</p>
+                <ul>
+                    <li><strong>No additional drivers needed</strong> - macOS handles USB communication natively</li>
+                    <li><strong>More reliable</strong> - MTKclient works better on macOS than Windows</li>
+                    <li><strong>Command-line interface</strong> - Provides more control over the installation process</li>
+                </ul>
+            </div>
+
+            <!-- macOS Security -->
+            <div class="info-card">
+                <h3>🔒 macOS Security Settings</h3>
+                <p>If you encounter security-related issues:</p>
+                <ol>
+                    <li>Go to <strong>System Preferences → Security & Privacy</strong></li>
+                    <li>Click <strong>"Allow"</strong> when prompted about running the app</li>
+                    <li>For command-line tools, you may need to run <code>sudo spctl --master-disable</code> temporarily</li>
+                    <li>Remember to re-enable security with <code>sudo spctl --master-enable</code> after installation</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Linux Content -->
+        <div class="content-section" id="linux-content">
+            <h2 class="section-title">Linux Troubleshooting Guide</h2>
+            
+            <div class="info-card">
+                <h3>🐧 Coming Soon</h3>
+                <p>We're working on comprehensive Linux support! In the meantime:</p>
+                <ul>
+                    <li>Check the main <a href="https://github.com/team-slide/Innioasis-Updater" target="_blank">GitHub repository</a> for Linux installation instructions</li>
+                    <li>Ubuntu is recommended for the best experience</li>
+                    <li>Most Linux distributions should work with manual setup</li>
+                </ul>
+                <div class="warning-box">
+                    <h4>⚠️ Work in Progress</h4>
+                    <p>Linux support is actively being developed. Please check back soon for a complete troubleshooting guide.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Created with ❤️ by <a href="https://github.com/team-slide" target="_blank">Ryan Specter and Team Slide</a> | 
+               <a href="https://reddit.com/r/innioasis" target="_blank">r/Innioasis</a> | 
+               <a href="https://discord.gg/Timmkoo" target="_blank">Discord</a> | 
+               <a href="https://innioasis.app" target="_blank">Add your Apps and Firmwares to Innioasis Updater</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Platform selection
+        function selectPlatform(platform) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove selection from all platform cards
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Select the clicked platform
+            document.querySelector(`[data-platform="${platform}"]`).classList.add('selected');
+            
+            // Show appropriate content
+            document.getElementById(`${platform}-content`).classList.add('active');
+        }
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            const icon = themeToggle.querySelector('.icon');
+            const text = themeToggle.querySelector('span:not(.icon)');
+            const currentTheme = localStorage.getItem('theme') || 'auto';
+            
+            let newTheme;
+            if (currentTheme === 'auto') {
+                newTheme = 'light';
+            } else if (currentTheme === 'light') {
+                newTheme = 'dark';
+            } else {
+                newTheme = 'auto';
+            }
+            
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        }
+
+        // Apply the specified theme
+        function applyTheme(theme) {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            const icon = themeToggle.querySelector('.icon');
+            const text = themeToggle.querySelector('span:not(.icon)');
+            
+            if (theme === 'auto') {
+                // Check system preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    body.setAttribute('data-theme', 'dark');
+                    icon.textContent = '🌓';
+                    text.textContent = 'Auto';
+                } else {
+                    body.removeAttribute('data-theme');
+                    icon.textContent = '🌓';
+                    text.textContent = 'Auto';
+                }
+            } else if (theme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                icon.textContent = '☀️';
+                text.textContent = 'Light';
+            } else {
+                body.removeAttribute('data-theme');
+                icon.textContent = '🌙';
+                text.textContent = 'Dark';
+            }
+        }
+
+        // Check saved theme preference and system theme
+        function checkSavedTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'auto';
+            applyTheme(savedTheme);
+            
+            // Listen for system theme changes when in auto mode
+            if (savedTheme === 'auto') {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if (localStorage.getItem('theme') === 'auto') {
+                        if (e.matches) {
+                            document.body.setAttribute('data-theme', 'dark');
+                        } else {
+                            document.body.removeAttribute('data-theme');
+                        }
+                    }
+                });
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkSavedTheme();
+            
+            // Auto-detect platform and select appropriate content
+            const userAgent = navigator.userAgent;
+            let platform = 'windows'; // default
+            
+            if (userAgent.includes('Mac')) {
+                platform = 'mac';
+            } else if (userAgent.includes('Linux')) {
+                platform = 'linux';
+            }
+            
+            // Auto-select the detected platform
+            selectPlatform(platform);
+        });
+    </script>
+</body>
+</html>
