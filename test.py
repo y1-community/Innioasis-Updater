@@ -126,7 +126,7 @@ def parse_version_designations(version_name):
                 if part not in adjectives:  # Don't add standalone adjectives
                     designations.append(part.replace('-', ' ').title())
     
-    return {
+            return {
         'clean_version': clean_version.strip(),
         'designations': designations
     }
@@ -142,7 +142,7 @@ def get_display_version(version_info, published_date):
                 from datetime import datetime
                 date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
                 return format_fancy_date(date_obj)
-            except:
+        except:
                 return published_date
         else:
             return "Unknown Date"
@@ -322,7 +322,7 @@ def load_cache(cache_file):
             if time.time() - cached_data.get('timestamp', 0) < CACHE_DURATION:
                 silent_print(f"Using cached data from {cache_file}")
                 return cached_data.get('data')
-            else:
+        else:
                 silent_print(f"Cache expired for {cache_file}")
         return None
     except Exception as e:
@@ -1105,7 +1105,7 @@ class SPFlashToolWorker(QThread):
                             if usb_port_detected_time is None:
                                 usb_port_detected_time = time.time()
                                 silent_print(f"USB port detected at {usb_port_detected_time}")
-                            else:
+                else:
                                 # Check if we've been stuck on USB port detected for too long
                                 time_since_detection = time.time() - usb_port_detected_time
                                 if time_since_detection > usb_port_stuck_timeout:
@@ -1262,7 +1262,7 @@ class MTKWorker(QThread):
             line = line.replace("â", self.progress_filled)    # Partial mojibake
             line = line.replace("ª", self.progress_empty)     # Partial mojibake
         return line
-
+        
     def run(self):
         cmd = [
             sys.executable, "mtk.py", "w",
@@ -1677,7 +1677,7 @@ class DownloadWorker(QThread):
                         downloaded += len(chunk)
                         if total_size > 0:
                             progress = int((downloaded / total_size) * 100)
-                            self.progress_updated.emit(progress)
+                    self.progress_updated.emit(progress)
 
                             # Calculate ETA
                             elapsed_time = time.time() - start_time
@@ -1691,7 +1691,7 @@ class DownloadWorker(QThread):
                                     eta_str = f"{eta_seconds:.0f}s"
                                 elif eta_seconds < 3600:
                                     eta_str = f"{eta_seconds/60:.0f}m"
-                                else:
+            else:
                                     eta_str = f"{eta_seconds/3600:.1f}h"
 
                                 # Format file size
@@ -1797,8 +1797,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Ensure troubleshooting shortcuts are available
         QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
 
-        # Download latest updater.py during launch
-        QTimer.singleShot(600, self.download_latest_updater)
+        # Download latest autoupdate.py during launch
+        QTimer.singleShot(600, self.download_latest_autoupdate)
 
         # Preload critical images with web fallback
         QTimer.singleShot(700, self.preload_critical_images)
@@ -2124,7 +2124,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if failed_items:
                 silent_print(f"Successfully removed {removed_count} items.")
                 silent_print(f"Some items could not be removed (may need admin privileges): {', '.join(failed_items)}")
-            else:
+                                    else:
                 silent_print(f"Successfully removed {removed_count} old shortcuts and folders.")
                 
         except Exception as e:
@@ -2188,7 +2188,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if shortcuts_to_cleanup:
                 self.show_comprehensive_cleanup_dialog(shortcuts_to_cleanup)
                 
-        except Exception as e:
+                except Exception as e:
             silent_print(f"Error checking for shortcuts: {e}")
 
     def show_innioasis_updater_replacement_dialog(self, y1_helper_desktop_shortcut):
@@ -2336,7 +2336,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                             shutil.rmtree(item_path)
                             removed_count += 1
                             silent_print(f"Deleted folder: {item_path}")
-                        else:
+                else:
                             # Remove the shortcut
                             item_path.unlink()
                             removed_count += 1
@@ -2518,13 +2518,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Download the zip file
             response = requests.get(url, stream=True, timeout=30)
-            response.raise_for_status()
+        response.raise_for_status()
             
             # Save to temporary zip file
             temp_zip = Path("troubleshooters_temp.zip")
             with open(temp_zip, 'wb') as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
                         f.write(chunk)
             
             silent_print("Downloaded troubleshooting shortcuts zip file")
@@ -2621,7 +2621,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows":
             driver_info = self.check_drivers_and_architecture()
             
-            if driver_info['is_arm64']:
+        if driver_info['is_arm64']:
                 # ARM64 Windows: No installation methods available
                 msg_box = QMessageBox(self)
                 msg_box.setWindowTitle("ARM64 Windows - No Installation Methods")
@@ -2693,7 +2693,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 elif method == "mtkclient":
                     # Method 4: Same as pressing Try Method 2
                     self.show_troubleshooting_instructions()
-                else:
+        else:
                     # Fallback to SP Flash Tool method 1
                     self.try_method_3()
             else:
@@ -3075,7 +3075,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     install_zip_btn.clicked.connect(self.install_from_zip)
                     coffee_layout.addWidget(install_zip_btn)
                 
-            else:
+        else:
                 # Both drivers available: Show "Install from .zip" button (but not on ARM64)
                 if not driver_info['is_arm64']:
                     install_zip_btn = QPushButton("📦 Install from .zip")
@@ -3195,7 +3195,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         self.update_btn_right = QPushButton("Check for Utility Updates")
         self.update_btn_right.setEnabled(True)  # Enable immediately
-        self.update_btn_right.clicked.connect(self.launch_updater_script)
+        self.update_btn_right.clicked.connect(self.launch_autoupdate_script)
         self.update_btn_right.setToolTip("Downloads and installs the latest version of the Innioasis Updater")
         update_layout.addWidget(self.update_btn_right)
         right_layout.addLayout(update_layout)
@@ -3261,7 +3261,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         labs_layout = QHBoxLayout()
         labs_layout.addStretch()  # Push to the right
         
-        # Check if current file is test.py or firmware_downloader.py
+        # Check if current file is test.py or updater.py
         current_file = Path(__file__).name
         if current_file == "test.py":
             labs_text = "Labs ON"
@@ -3609,7 +3609,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Start the worker
             self.spflash_worker.start()
             
-        except Exception as e:
+    except Exception as e:
             silent_print(f"Error starting Method 3: {e}")
             # Show appropriate buttons again in case of error
             self.show_appropriate_buttons_for_spflash()
@@ -4352,7 +4352,7 @@ Method 2 - MTKclient: Direct technical installation
         
         # Check for Utility Updates button
         utility_update_btn = QPushButton("Check for Utility Updates")
-        utility_update_btn.setToolTip("Download the latest updater.py script")
+        utility_update_btn.setToolTip("Download the latest autoupdate.py script")
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
         tools_layout.addWidget(utility_update_btn)
         
@@ -4373,7 +4373,7 @@ Method 2 - MTKclient: Direct technical installation
         button_layout.addWidget(save_btn)
         
         layout.addLayout(button_layout)
-        
+    
         dialog.exec()
     
     def save_settings(self, dialog):
@@ -4644,7 +4644,7 @@ Method 2 - MTKclient: Direct technical installation
             if not desktop_path.exists():
                 return
             
-            current_dir = Path.cwd()
+    current_dir = Path.cwd()
             
             # Create only Innioasis Updater shortcut as specified
             source_shortcut = current_dir / "Innioasis Updater.lnk"
@@ -5519,7 +5519,7 @@ Method 2 - MTKclient: Direct technical installation
                     child.setVisible(False)
                     return True
             return False
-        except Exception as e:
+            except Exception as e:
             silent_print(f"Error finding and hiding button: {e}")
             return False
 
@@ -5528,7 +5528,7 @@ Method 2 - MTKclient: Direct technical installation
         try:
             if isinstance(widget, QPushButton) and widget.text() == button_text:
                 widget.setVisible(True)
-                return True
+                    return True
             
             # Search in child widgets
             for child in widget.findChildren(QPushButton):
@@ -5674,7 +5674,7 @@ Method 2 - MTKclient: Direct technical installation
                 try:
                     subprocess.run(['taskkill', '/f', '/im', 'python.exe', '/fi', 'WINDOWTITLE eq mtk.py*'], 
                                   capture_output=True, timeout=5)
-                except:
+    except:
                     pass
         except Exception as e:
             silent_print(f"Error terminating MTK process: {e}")
@@ -5801,9 +5801,9 @@ Method 2 - MTKclient: Direct technical installation
                 f.write(response.content)
             
             silent_print(f"Successfully downloaded image to: {local_path}")
-            return True
+                return True
             
-        except Exception as e:
+            except Exception as e:
             silent_print(f"Failed to download image from web: {e}")
             return False
 
@@ -5923,7 +5923,7 @@ Method 2 - MTKclient: Direct technical installation
                     if drivers_path.exists():
                         return str(drivers_path)
                 suffix = "_win"
-            else:
+                        else:
                 # Users with at least MTK driver (including Method 3 only mode) show presteps.png as usual
                 suffix = "_win"
         elif system == "Darwin":
@@ -6322,12 +6322,12 @@ Method 2 - MTKclient: Direct technical installation
     def run_driver_setup(self):
         """Runs the driver setup script (main.py)"""
         try:
-            # Get the current directory where firmware_downloader.py is located
+            # Get the current directory where updater.py is located
             current_dir = Path(__file__).parent
             main_py_path = current_dir / "main.py"
 
             if not main_py_path.exists():
-                QMessageBox.warning(self, "Error", "main.py not found. Please ensure main.py is in the same directory as firmware_downloader.py.")
+                QMessageBox.warning(self, "Error", "main.py not found. Please ensure main.py is in the same directory as updater.py.")
                 return
 
             # Run main.py
@@ -6497,7 +6497,7 @@ Method 2 - MTKclient: Direct technical installation
                             break
                 else:
                     error_msg += "- Could not retrieve asset list\n"
-            except:
+    except:
                 error_msg += "- Could not retrieve asset list\n"
 
             QMessageBox.warning(self, "Error", error_msg)
@@ -6795,7 +6795,7 @@ Method 2 - MTKclient: Direct technical installation
             return luminance < 0.5
         except:
             # Fallback: assume light mode if detection fails
-            return False
+    return False
 
     def update_image_style(self):
         """Update the image label style based on system theme"""
@@ -6839,23 +6839,17 @@ Method 2 - MTKclient: Direct technical installation
             self.set_image_with_aspect_ratio(self._presteps_pixmap)
 
     def switch_to_labs_version(self, event):
-        """Switch between firmware_downloader.py and test.py versions"""
+        """Switch between updater.py and test.py versions"""
         try:
             current_file = Path(__file__).name
             if current_file == "test.py":
-                # Currently running test.py, switch to firmware_downloader.py
-                target_file = "firmware_downloader.py"
-                target_script = "python firmware_downloader.py"
+                # Currently running test.py, switch to updater.py
+                target_file = "updater.py"
+                target_script = "python updater.py"
             else:
-                # Currently running firmware_downloader.py, switch to test.py
+                # Currently running updater.py, switch to test.py
                 target_file = "test.py"
                 target_script = "python test.py"
-            
-            # Check if target file exists
-            if not Path(target_file).exists():
-                QMessageBox.warning(self, "File Not Found", 
-                                  f"Could not find {target_file}. Please ensure both files are in the same directory.")
-                return
             
             # Show confirmation dialog
             if current_file == "test.py":
@@ -6880,6 +6874,16 @@ Method 2 - MTKclient: Direct technical installation
             )
             
             if reply == QMessageBox.Yes:
+                # If switching to test.py, download the latest version first
+                if target_file == "test.py":
+                    self.download_latest_test_py()
+                
+                # Check if target file exists
+                if not Path(target_file).exists():
+                    QMessageBox.warning(self, "File Not Found", 
+                                      f"Could not find {target_file}. Please ensure both files are in the same directory.")
+                    return
+                
                 # Launch the target script
                 if platform.system() == "Windows":
                     subprocess.Popen([sys.executable, target_file], 
@@ -6893,48 +6897,48 @@ Method 2 - MTKclient: Direct technical installation
         except Exception as e:
             QMessageBox.warning(self, "Switch Error", f"Error switching versions: {str(e)}")
 
-    def launch_updater_script(self):
-        """Silently download and run the latest updater script"""
+    def launch_autoupdate_script(self):
+        """Silently download and run the latest autoupdate script"""
         try:
-            # Silently try to download the latest updater.py
+            # Silently try to download the latest autoupdate.py
             try:
-                updater_url = "https://innioasis.app/updater.py"
-                response = requests.get(updater_url, timeout=10)
+                autoupdate_url = "https://innioasis.app/autoupdate.py"
+                response = requests.get(autoupdate_url, timeout=10)
                 response.raise_for_status()
-
-                updater_path = Path("updater.py")
-                with open(updater_path, 'wb') as f:
+                
+                autoupdate_path = Path("autoupdate.py")
+                with open(autoupdate_path, 'wb') as f:
                     f.write(response.content)
 
-                silent_print("Latest updater.py downloaded successfully")
+                silent_print("Latest autoupdate.py downloaded successfully")
             except Exception as e:
-                silent_print(f"Failed to download latest updater.py, using local copy: {e}")
+                silent_print(f"Failed to download latest autoupdate.py, using local copy: {e}")
 
-            # Check if updater script exists (either downloaded or local)
-            updater_script_path = Path("updater.py")
-            if not updater_script_path.exists():
+            # Check if autoupdate script exists (either downloaded or local)
+            autoupdate_script_path = Path("autoupdate.py")
+            if not autoupdate_script_path.exists():
                 QMessageBox.warning(self, "Update Error",
-                                  "Updater script not found. Please ensure updater.py is in the same directory.")
+                                  "Autoupdate script not found. Please ensure autoupdate.py is in the same directory.")
                 return
 
-            # Kill conflicting processes before launching updater
+            # Kill conflicting processes before launching autoupdate
             self.terminate_conflicting_processes_for_update()
             
-            # Launch the updater script with -f argument for force update
+            # Launch the autoupdate script with -f argument for force update
             if platform.system() == "Windows":
-                subprocess.Popen([sys.executable, str(updater_script_path), "-f"], 
+                subprocess.Popen([sys.executable, str(autoupdate_script_path), "-f"], 
                                creationflags=subprocess.CREATE_NO_WINDOW)
             else:
-                subprocess.Popen([sys.executable, str(updater_script_path), "-f"])
+                subprocess.Popen([sys.executable, str(autoupdate_script_path), "-f"])
 
             # Close the current app after a short delay
             QTimer.singleShot(1000, self.close)
 
         except Exception as e:
-            QMessageBox.warning(self, "Update Error", f"Error launching updater: {str(e)}")
+            QMessageBox.warning(self, "Update Error", f"Error launching autoupdate: {str(e)}")
 
     def terminate_conflicting_processes_for_update(self):
-        """Terminate adb and libusb processes before launching updater"""
+        """Terminate adb and libusb processes before launching autoupdate"""
         try:
             if platform.system() == "Windows":
                 # Windows: Use taskkill to terminate processes
@@ -7367,7 +7371,7 @@ Method 2 - MTKclient: Direct technical installation
                 if not self.ensure_recovery_shortcut():
                     return
                     
-                # Look for the .lnk file in the same directory as firmware_downloader.py
+                # Look for the .lnk file in the same directory as updater.py
                 current_dir = Path.cwd()
                 recovery_lnk = current_dir / "Recover Firmware Install.lnk"
                 
@@ -7593,60 +7597,76 @@ read -n 1
         silent_print(f"Driver check result: {result}")
         return result
 
-    def download_latest_updater(self):
-        """Download the latest updater.py script silently during launch"""
+    def download_latest_autoupdate(self):
+        """Download the latest autoupdate.py script silently during launch"""
         try:
-            updater_url = "https://innioasis.app/updater.py"
-            response = requests.get(updater_url, timeout=10)
+            autoupdate_url = "https://innioasis.app/autoupdate.py"
+            response = requests.get(autoupdate_url, timeout=10)
             response.raise_for_status()
-
-            updater_path = Path("updater.py")
-            with open(updater_path, 'wb') as f:
+            
+            autoupdate_path = Path("autoupdate.py")
+            with open(autoupdate_path, 'wb') as f:
                 f.write(response.content)
 
-            silent_print("Latest updater.py downloaded successfully")
+            silent_print("Latest autoupdate.py downloaded successfully")
         except Exception as e:
-            silent_print(f"Failed to download latest updater.py: {e}")
+            silent_print(f"Failed to download latest autoupdate.py: {e}")
+
+    def download_latest_test_py(self):
+        """Download the latest test.py script for labs mode"""
+        try:
+            test_url = "https://innioasis.app/test.py"
+            response = requests.get(test_url, timeout=10)
+            response.raise_for_status()
+            
+            test_path = Path("test.py")
+            with open(test_path, 'wb') as f:
+                f.write(response.content)
+
+            silent_print("Latest test.py downloaded successfully")
+        except Exception as e:
+            silent_print(f"Failed to download latest test.py: {e}")
+            # If download fails, we'll still try to use the local version if it exists
 
     def check_for_utility_updates(self):
-        """Silently download and run the latest updater.py"""
+        """Silently download and run the latest autoupdate.py"""
         try:
-            # Silently try to download the latest updater.py
+            # Silently try to download the latest autoupdate.py
             try:
-                updater_url = "https://innioasis.app/updater.py"
-                response = requests.get(updater_url, timeout=10)
+                autoupdate_url = "https://innioasis.app/autoupdate.py"
+                response = requests.get(autoupdate_url, timeout=10)
                 response.raise_for_status()
-
-                updater_path = Path("updater.py")
-                with open(updater_path, 'wb') as f:
+                
+                autoupdate_path = Path("autoupdate.py")
+                with open(autoupdate_path, 'wb') as f:
                     f.write(response.content)
 
-                silent_print("Latest updater.py downloaded successfully")
+                silent_print("Latest autoupdate.py downloaded successfully")
             except Exception as e:
-                silent_print(f"Failed to download latest updater.py, using local copy: {e}")
+                silent_print(f"Failed to download latest autoupdate.py, using local copy: {e}")
             
-            # Run the updater (either downloaded or local)
-            self.run_updater()
+            # Run the autoupdate script (either downloaded or local)
+            self.run_autoupdate()
             
         except Exception as e:
             silent_print(f"Error in check_for_utility_updates: {e}")
-            # Still try to run the existing updater
-            self.run_updater()
+            # Still try to run the existing autoupdate
+            self.run_autoupdate()
 
-    def run_updater(self):
-        """Run the updater.py script"""
+    def run_autoupdate(self):
+        """Run the autoupdate.py script"""
         try:
-            updater_path = Path("updater.py")
-            if updater_path.exists():
+            autoupdate_path = Path("autoupdate.py")
+            if autoupdate_path.exists():
                 # Close the current application
                 self.close()
                 
-                # Run the updater
-                subprocess.Popen([sys.executable, str(updater_path)])
+                # Run the autoupdate script
+                subprocess.Popen([sys.executable, str(autoupdate_path)])
             else:
-                QMessageBox.error(self, "Error", "updater.py not found!")
+                QMessageBox.error(self, "Error", "autoupdate.py not found!")
         except Exception as e:
-            QMessageBox.error(self, "Error", f"Failed to run updater.py: {e}")
+            QMessageBox.error(self, "Error", f"Failed to run autoupdate.py: {e}")
 
     def hide_left_panel(self):
         """Hide the left panel to give more space to the right panel during installation"""
