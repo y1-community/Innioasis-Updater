@@ -4199,6 +4199,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.always_use_checkbox.setChecked(always_use)
             
             install_layout.addWidget(self.always_use_checkbox)
+            
+            # Connect method combo changes to checkbox management
+            self.method_combo.currentTextChanged.connect(self.on_method_changed)
+            self.always_use_checkbox.stateChanged.connect(self.on_always_use_changed)
         
         # Labs mode debug checkbox
         self.debug_mode_checkbox = QCheckBox("Enable Debug Mode (Labs)")
@@ -4403,10 +4407,45 @@ Method 2 - MTKclient: Direct technical installation
         
         dialog.accept()
     
+    def on_method_changed(self, method_text):
+        """Handle method combo box changes"""
+        if not hasattr(self, 'always_use_checkbox'):
+            return
+            
+        # Get the current method data
+        current_method = self.method_combo.currentData()
+        if not current_method:
+            return
+            
+        # Check if the current method is the one set as "always use"
+        if hasattr(self, 'always_use_method') and self.always_use_method:
+            # If user changes to a different method, uncheck the "always use" checkbox
+            if current_method != self.installation_method:
+                self.always_use_checkbox.setChecked(False)
+    
+    def on_always_use_changed(self, state):
+        """Handle always use checkbox changes"""
+        if not hasattr(self, 'method_combo'):
+            return
+            
+        # Get the current method data
+        current_method = self.method_combo.currentData()
+        if not current_method:
+            return
+            
+        # If user checks "always use" for a different method, 
+        # uncheck it from the previously selected method
+        if state == Qt.Checked:
+            if hasattr(self, 'installation_method') and current_method != self.installation_method:
+                # The user is setting a new method as "always use"
+                # The old method's "always use" status is automatically cleared
+                pass
+    
     def save_installation_preferences(self):
         """Save installation preferences to persistent storage"""
         try:
             preferences = {
+                'preferences_version': 2,  # Version marker for new default behavior
                 'installation_method': self.installation_method,
                 'always_use_method': self.always_use_method,
                 'debug_mode': getattr(self, 'debug_mode', False)
@@ -4434,33 +4473,71 @@ Method 2 - MTKclient: Direct technical installation
         """Load installation preferences from persistent storage"""
         try:
             preferences_file = Path("installation_preferences.json")
+            reset_preferences = False
+            
             if preferences_file.exists():
                 import json
                 with open(preferences_file, 'r') as f:
                     preferences = json.load(f)
                 
-                # Load saved preferences
-                if 'installation_method' in preferences:
-                    self.installation_method = preferences['installation_method']
-                if 'always_use_method' in preferences:
-                    self.always_use_method = preferences['always_use_method']
-                if 'debug_mode' in preferences:
-                    self.debug_mode = preferences['debug_mode']
-                
-                # Load shortcut preferences (Windows only)
-                if platform.system() == "Windows":
-                    if 'desktop_shortcuts_enabled' in preferences:
-                        self.desktop_shortcuts_enabled = preferences['desktop_shortcuts_enabled']
-                    if 'startmenu_shortcuts_enabled' in preferences:
-                        self.startmenu_shortcuts_enabled = preferences['startmenu_shortcuts_enabled']
-                    if 'auto_cleanup_enabled' in preferences:
-                        self.auto_cleanup_enabled = preferences['auto_cleanup_enabled']
-                
-                silent_print(f"Loaded installation preferences: {preferences}")
+                # Check if this is the first run since implementing the new default behavior
+                # Look for the new version marker to determine if we need to reset preferences
+                if 'preferences_version' not in preferences or preferences['preferences_version'] < 2:
+                    silent_print("First run since implementing new default behavior - resetting preferences to Method 1 - Guided")
+                    reset_preferences = True
+                else:
+                    # Load saved preferences
+                    if 'installation_method' in preferences:
+                        self.installation_method = preferences['installation_method']
+                    if 'always_use_method' in preferences:
+                        self.always_use_method = preferences['always_use_method']
+                    if 'debug_mode' in preferences:
+                        self.debug_mode = preferences['debug_mode']
+                    
+                    # Load shortcut preferences (Windows only)
+                    if platform.system() == "Windows":
+                        if 'desktop_shortcuts_enabled' in preferences:
+                            self.desktop_shortcuts_enabled = preferences['desktop_shortcuts_enabled']
+                        if 'startmenu_shortcuts_enabled' in preferences:
+                            self.startmenu_shortcuts_enabled = preferences['startmenu_shortcuts_enabled']
+                        if 'auto_cleanup_enabled' in preferences:
+                            self.auto_cleanup_enabled = preferences['auto_cleanup_enabled']
+                    
+                    silent_print(f"Loaded installation preferences: {preferences}")
             else:
                 silent_print("No saved installation preferences found, using defaults")
+                reset_preferences = True
+            
+            # Reset preferences to new defaults if needed
+            if reset_preferences:
+                # Set new defaults: Method 1 - Guided and always use method
+                if platform.system() == "Windows":
+                    self.installation_method = "spflash"  # Method 1 - Guided on Windows
+                else:
+                    self.installation_method = "guided"   # Method 1 - Guided on macOS/Linux
+                
+                self.always_use_method = True  # Always use this method by default
+                self.debug_mode = False  # Debug mode disabled by default
+                
+                # Set shortcut preferences to defaults (Windows only)
+                if platform.system() == "Windows":
+                    self.desktop_shortcuts_enabled = True
+                    self.startmenu_shortcuts_enabled = True
+                    self.auto_cleanup_enabled = True
+                
+                # Save the reset preferences with new version marker
+                self.save_installation_preferences()
+                silent_print("Reset installation preferences to new defaults: Method 1 - Guided, Always Use Method enabled")
+                
         except Exception as e:
             silent_print(f"Error loading installation preferences: {e}")
+            # If there's an error, set safe defaults
+            if platform.system() == "Windows":
+                self.installation_method = "spflash"
+            else:
+                self.installation_method = "guided"
+            self.always_use_method = True
+            self.debug_mode = False
     
     def apply_shortcut_settings(self):
         """Apply shortcut settings based on user preferences"""
