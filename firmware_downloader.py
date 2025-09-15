@@ -3602,7 +3602,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if success:
                 # Show success message and load completion image
-                self.status_label.setText("Flash Tool installation completed successfully")
+                self.status_label.setText("Your software installation completed successfully")
                 # Load the installed completion image
                 self.load_installed_image()
                 
@@ -3610,7 +3610,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.information(
                     self,
                     "Installation Complete",
-                    "Flash Tool installation completed successfully!\n\n"
+                    "Your installation has completed successfully!\n\n"
                     "Please disconnect your Y1 and hold the middle button to turn it on."
                 )
             else:
@@ -3619,8 +3619,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.critical(
                     self,
                     "Installation Failed",
-                    f"Flash Tool installation failed:\n{message}\n\n"
-                    "Please try again or contact support if the problem persists."
+                    f"Installation failed:\n{message}\n\n"
+                    "Please disconnect your Y1 from USB and try again, if this fails visit troubleshooting.innioasis.app."
                 )
                 
         except Exception as e:
