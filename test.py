@@ -1010,6 +1010,7 @@ class SPFlashToolWorker(QThread):
     spflash_completed = Signal(bool, str)
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
+    device_stuck_detected = Signal()  # Signal when device is detected as stuck
 
     def __init__(self):
         super().__init__()
@@ -1050,6 +1051,10 @@ class SPFlashToolWorker(QThread):
             instructions_phase = False
             installing_phase = False
             completed_phase = False
+            
+            # USB port detection tracking for stuck state
+            usb_port_detected_time = None
+            usb_port_stuck_timeout = 3.0  # 3 seconds timeout for USB port detected
             
             # Read output line by line
             while True:
@@ -1095,6 +1100,33 @@ class SPFlashToolWorker(QThread):
                         
                     # Continue with instructions phase until installing phase
                     elif instructions_phase and not installing_phase and not completed_phase:
+                        # Check for USB port detected and track timing
+                        if "USB port detected" in line:
+                            if usb_port_detected_time is None:
+                                usb_port_detected_time = time.time()
+                                silent_print(f"USB port detected at {usb_port_detected_time}")
+                            else:
+                                # Check if we've been stuck on USB port detected for too long
+                                time_since_detection = time.time() - usb_port_detected_time
+                                if time_since_detection > usb_port_stuck_timeout:
+                                    # Device is stuck - likely due to previous firmware install
+                                    silent_print(f"USB port detected stuck for {time_since_detection:.1f} seconds")
+                                    self.status_updated.emit("Device appears to be stuck. This often happens after a firmware install.")
+                                    self.status_updated.emit("Please disconnect your Y1, turn it off (use paperclip if needed), and try again.")
+                                    self.status_updated.emit("The device may need to be powered off and on again to reset its state.")
+                                    self.device_stuck_detected.emit()  # Emit signal for UI to show prominent message
+                                    # Don't break here - let the process continue in case it recovers
+                        elif "Connect BROM failed" in line:
+                            # BROM connection failed - likely device is stuck
+                            silent_print("Connect BROM failed detected")
+                            self.status_updated.emit("BROM connection failed. The device may be stuck from a previous install.")
+                            self.status_updated.emit("Please disconnect your Y1, turn it off (use paperclip if needed), and try again.")
+                            self.status_updated.emit("The device may need to be powered off and on again to reset its state.")
+                            self.device_stuck_detected.emit()  # Emit signal for UI to show prominent message
+                        else:
+                            # Reset USB port detection timer if we see other output
+                            usb_port_detected_time = None
+                        
                         if ("Downloading" in line or
                             "Downloading & Connecting to DA" in line or
                             "connect DA end stage" in line or
@@ -3563,6 +3595,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
             self.spflash_worker.disable_update_button.connect(self.disable_update_button)
             self.spflash_worker.enable_update_button.connect(self.enable_update_button)
+            self.spflash_worker.device_stuck_detected.connect(self.on_device_stuck_detected)
             
             # Hide inappropriate buttons for SP Flash Tool method
             self.hide_inappropriate_buttons_for_spflash()
@@ -3625,6 +3658,60 @@ class FirmwareDownloaderGUI(QMainWindow):
                 
         except Exception as e:
             silent_print(f"Error handling Flash Tool completion: {e}")
+
+    def on_device_stuck_detected(self):
+        """Handle when device is detected as stuck"""
+        try:
+            silent_print("Device stuck detected - showing user guidance")
+            
+            # Show a prominent message box with guidance
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Device Stuck - Action Required")
+            msg_box.setIcon(QMessageBox.Warning)
+            
+            msg_box.setText(
+                "Your Y1 device appears to be stuck. This often happens after a firmware install.\n\n"
+                "To resolve this:\n"
+                "1. Disconnect your Y1 from the computer\n"
+                "2. Turn off your Y1 (use a paperclip if needed)\n"
+                "3. Wait a few seconds\n"
+                "4. Turn your Y1 back on\n"
+                "5. Try the installation again\n\n"
+                "The device may need to be powered off and on again to reset its state."
+            )
+            
+            # Add buttons
+            try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
+            cancel_btn = msg_box.addButton("Cancel", QMessageBox.RejectRole)
+            
+            msg_box.exec()
+            
+            # Handle button clicks
+            if msg_box.clickedButton() == try_again_btn:
+                # User wants to try again - restart the installation
+                silent_print("User chose to try again after device stuck detection")
+                # Stop current process and restart
+                if hasattr(self, 'spflash_worker'):
+                    self.spflash_worker.stop()
+                    self.spflash_worker.quit()
+                    self.spflash_worker.wait()
+                    delattr(self, 'spflash_worker')
+                
+                # Restart the installation after a short delay
+                QTimer.singleShot(2000, self.try_method_3)
+            else:
+                # User cancelled - clean up
+                silent_print("User cancelled after device stuck detection")
+                if hasattr(self, 'spflash_worker'):
+                    self.spflash_worker.stop()
+                    self.spflash_worker.quit()
+                    self.spflash_worker.wait()
+                    delattr(self, 'spflash_worker')
+                self.enable_update_button()
+                
+        except Exception as e:
+            silent_print(f"Error handling device stuck detection: {e}")
+            self.status_label.setText("Error handling device stuck state")
 
     def try_method_4(self):
         """Try Method 4 - SP Flash Tool Alternative (Windows only)"""
@@ -4036,7 +4123,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 5px;")
                 install_layout.addWidget(status_label)
                 
-                status_desc = QLabel("No installation methods available. Please install drivers to enable firmware installation.\n\nMore methods will become available if you install the USB Development Kit driver.")
+                status_desc = QLabel("No installation methods available. Please install drivers to enable firmware installation.\n\nMore methods will become available if you install the USB Development Kit / UsbDk driver.")
                 status_desc.setStyleSheet("color: #666; margin: 5px;")
                 install_layout.addWidget(status_desc)
                 
@@ -4151,7 +4238,7 @@ Method 4 - MTKclient (advanced): Direct technical installation
 Method 1 - Guided: Step-by-step with visual guidance (Windows only)
 Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
 
-Additional methods (Methods 3 & 4) become available with USB Development Kit driver.
+Additional methods (Methods 3 & 4) become available with USB Development Kit / UsbDk driver.
                 """)
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 desc_text.setPlainText("""
@@ -4163,7 +4250,7 @@ Note: Install MediaTek SP Driver to enable Methods 1, 2, and 3
 No installation methods available.
 Please install drivers to enable firmware installation.
 
-More methods will become available if you install the MediaTek SP Driver and USB Development Kit driver.
+More methods will become available if you install the MediaTek SP Driver and USB Development Kit / UsbDk driver.
                 """)
         elif platform.system() == "Windows":
             desc_text.setPlainText("""
