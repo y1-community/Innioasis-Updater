@@ -1169,7 +1169,7 @@ class SPFlashToolWorker(QThread):
                 self.spflash_completed.emit(True, "Software installation completed successfully")
             else:
                 silent_print("Flash Tool did not complete successfully")
-                self.spflash_completed.emit(False, "Software installation did not complete successfully")
+                self.spflash_completed.emit(False, "Please check that drivers are installed and that you restarted your computer")
                 
         except Exception as e:
             silent_print(f"Error running Flash Tool: {e}")
