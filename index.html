@@ -254,6 +254,28 @@
             gap: 15px;
             margin: 30px 0;
         }
+        
+        /* Responsive platform selector spacing */
+        @media (max-width: 1400px) {
+            .platform-selector {
+                margin: 20px 0;
+                gap: 12px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .platform-selector {
+                margin: 15px 0;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .platform-selector {
+                margin: 10px 0;
+                gap: 8px;
+            }
+        }
 
         .platform-card {
             background: var(--gradient-surface);
@@ -339,7 +361,7 @@
 
         .section-title {
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin: 40px 0 20px 0;
             color: white;
             text-align: center;
             background: var(--gradient-accent);
@@ -347,6 +369,28 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 700;
+        }
+        
+        /* Responsive section title spacing */
+        @media (max-width: 1400px) {
+            .section-title {
+                margin: 30px 0 15px 0;
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .section-title {
+                margin: 20px 0 10px 0;
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                margin: 15px 0 10px 0;
+                font-size: 1.4rem;
+            }
         }
 
         .info-card {
@@ -527,7 +571,7 @@
 
         /* App Demo Styles */
         .app-demo {
-            margin: 20px 0;
+            margin: 0; /* Remove margin to let simulator truly float */
             display: flex;
             justify-content: center;
             position: relative;
@@ -536,10 +580,13 @@
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
-            /* Allow content to overflow */
+            /* Allow content to overflow for floating effect */
             overflow: visible;
             /* Responsive padding to prevent clipping - will be overridden by JavaScript */
-            padding: 40px 20px;
+            padding: 0; /* Remove default padding for true floating */
+            /* Floating window positioning */
+            transform-origin: center center;
+            z-index: 10; /* Float above the hero banner background */
         }
         
         /* Responsive app demo spacing */
@@ -639,12 +686,12 @@
                 display: none !important;
             }
             
-            /* Hide help section on mobile, show mobile message */
-            .mobile-hide {
-                display: none !important;
+            /* Mobile message is hidden by default, shown when needed */
+            .mobile-only {
+                display: none;
             }
             
-            .mobile-only {
+            .mobile-only.show {
                 display: block !important;
             }
             
@@ -2204,17 +2251,28 @@
         /* Hero Banner Styles */
         .hero-banner {
             background: var(--gradient-primary);
-            padding: 40px 20px 20px 20px;
+            padding: 60px 20px; /* Equal padding top and bottom for floating effect */
             text-align: center;
             margin-bottom: 20px;
             border-radius: 20px;
             position: relative;
-            /* Allow simulator to float above */
+            /* Allow simulator to float above and below */
             overflow: visible;
             /* Ensure floating effect is not clipped */
             z-index: 1;
-            /* Prepare for dynamic wallpaper backgrounds */
-            transition: background-image 0.5s ease;
+            /* Prepare for dynamic wallpaper backgrounds and height scaling */
+            transition: background-image 0.5s ease, height 0.3s ease, min-height 0.3s ease, padding 0.3s ease;
+            /* Dynamic height - will be set by JavaScript */
+            min-height: 400px;
+            /* Ensure content is properly contained */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Enhanced floating window effect */
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.3),
+                0 15px 40px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
         }
         
         /* Ensure hero content is above wallpaper overlay */
@@ -3292,7 +3350,7 @@
                                 </div>
                             </div>
                             <div class="app-getting-ready" id="getting-ready-section">
-                                <strong>Let's get ready:</strong>
+                                <strong>Getting ready:</strong>
                                 <div class="app-instruction-image">
                                     <img src="https://innioasis.app/mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
                                 </div>
@@ -3734,12 +3792,12 @@
         </div>
 
         <!-- Help & Support Section -->
-        <div class="section-title mobile-hide">
+        <div class="section-title">
             <h2>Help & Support</h2>
             <p>Get help with installation, development, or troubleshooting</p>
         </div>
         
-        <!-- Mobile-specific message -->
+        <!-- Mobile-specific message (hidden by default) -->
         <div class="mobile-only" style="display: none;">
             <div class="section-title">
                 <h2>Visit from Your Computer</h2>
@@ -3748,7 +3806,7 @@
         </div>
         
         <!-- Section Selector -->
-        <div class="platform-selector mobile-hide">
+        <div class="platform-selector">
             <div class="platform-card selected" data-platform="get-started" onclick="selectPlatform('get-started')">
                 <span class="icon">🚀</span>
                 <h3>Install Innioasis Updater</h3>
@@ -3833,6 +3891,12 @@
                     <div class="troubleshooting-card">
                         <h4>⚙️ Ensure Method 1 is selected</h4>
                         <p>Open Settings and make sure "Method 1" is selected. This is the most reliable installation method and fixes most compatibility issues.</p>
+                    </div>
+                    
+                    <!-- Card 4b: Flash Tool Installation Error Fix - Windows -->
+                    <div class="troubleshooting-card platform-windows">
+                        <h4>🔧 Flash Tool Installation Error Fix</h4>
+                        <p>Click "Check for Utility Updates" and set install method to Method 1. Unplug Y1 before trying again. If still failing, ensure MTK USB Driver is installed and USB Development Kit (UsbDk) is not installed.</p>
                     </div>
                     
                     <!-- Card 5: Missing shortcuts - Windows -->
@@ -4160,6 +4224,9 @@ your-rom-repo/
             // Select the clicked platform
             document.querySelector(`[data-platform="${platform}"]`).classList.add('selected');
             
+            // Check if user is on mobile
+            const isMobile = window.innerWidth <= 768;
+            
             // Handle special "get-started" case
             if (platform === 'get-started') {
                 // Hide all content sections
@@ -4167,8 +4234,24 @@ your-rom-repo/
                     section.classList.remove('active');
                 });
                 
-                // Show the install guide modal
-                showInstallGuide();
+                if (isMobile) {
+                    // On mobile, show the mobile message instead of the modal
+                    const mobileMessage = document.querySelector('.mobile-only');
+                    if (mobileMessage) {
+                        mobileMessage.classList.add('show');
+                        // Scroll to the mobile message
+                        setTimeout(() => {
+                            mobileMessage.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start',
+                                inline: 'nearest'
+                            });
+                        }, 100);
+                    }
+                } else {
+                    // On desktop, show the install guide modal
+                    showInstallGuide();
+                }
                 return;
             }
             
@@ -4177,10 +4260,27 @@ your-rom-repo/
                 section.classList.remove('active');
             });
             
+            // Hide mobile message if it was shown
+            const mobileMessage = document.querySelector('.mobile-only');
+            if (mobileMessage) {
+                mobileMessage.classList.remove('show');
+            }
+            
             // Show appropriate content for other platforms
             const contentSection = document.getElementById(`${platform}-content`);
             if (contentSection) {
                 contentSection.classList.add('active');
+                
+                // Only auto-scroll on desktop, let mobile users scroll manually
+                if (!isMobile) {
+                    setTimeout(() => {
+                        contentSection.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start',
+                            inline: 'nearest'
+                        });
+                    }, 100); // Small delay to ensure content is rendered
+                }
             }
             
             // If it's the users section, also select Windows by default
@@ -4778,28 +4878,32 @@ your-rom-repo/
         }
         
         function getWallpaperUrl(platformInfo) {
-            // Use more reliable gradient backgrounds that always work
+            const basePath = 'mtkclient/gui/images/wallpapers/';
+            
+            // Local wallpaper files with gradient fallbacks
             const wallpapers = {
-                windows11: 'linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003d6b 100%)',
-                windows10: 'linear-gradient(135deg, #0078d4 0%, #005a9e 50%, #004578 100%)',
-                mac: 'linear-gradient(135deg, #1d1d1f 0%, #2d2d30 25%, #3a3a3c 50%, #48484a 75%, #5a5a5c 100%)',
-                mobile: 'linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003d6b 100%)',
-                // Additional beautiful gradients
+                windows11: basePath + 'windows11.jpg',
+                windows10: basePath + 'windows10.jpg', 
+                mac: basePath + 'mac.jpg',
+                mobile: basePath + 'windows11.jpg', // Use Windows 11 for mobile
+                // Gradient fallbacks
+                gradientWindows11: 'linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003d6b 100%)',
+                gradientWindows10: 'linear-gradient(135deg, #0078d4 0%, #005a9e 50%, #004578 100%)',
+                gradientMac: 'linear-gradient(135deg, #1d1d1f 0%, #2d2d30 25%, #3a3a3c 50%, #48484a 75%, #5a5a5c 100%)',
                 gradientBlue: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%)',
-                gradientPurple: 'linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #a855f7 100%)',
-                gradientDark: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%)'
+                gradientPurple: 'linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #a855f7 100%)'
             };
             
             if (platformInfo.platform === 'mobile') {
-                return [wallpapers.mobile, wallpapers.gradientBlue];
+                return [wallpapers.mobile, wallpapers.gradientWindows11, wallpapers.gradientBlue];
             } else if (platformInfo.platform === 'windows') {
                 if (platformInfo.version === '11') {
-                    return [wallpapers.windows11, wallpapers.gradientBlue];
+                    return [wallpapers.windows11, wallpapers.gradientWindows11, wallpapers.gradientBlue];
                 } else {
-                    return [wallpapers.windows10, wallpapers.gradientBlue];
+                    return [wallpapers.windows10, wallpapers.gradientWindows10, wallpapers.gradientBlue];
                 }
             } else if (platformInfo.platform === 'mac') {
-                return [wallpapers.mac, wallpapers.gradientDark];
+                return [wallpapers.mac, wallpapers.gradientMac, wallpapers.gradientPurple];
             }
             
             // Default fallback
@@ -6247,6 +6351,13 @@ your-rom-repo/
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
                 
+                // Add click-outside-to-close functionality
+                modal.onclick = function(event) {
+                    if (event.target === modal) {
+                        closeInstallGuide();
+                    }
+                };
+                
                 // Auto-detect OS and select appropriate platform
                 const userAgent = navigator.userAgent;
                 let platform = 'windows'; // default
@@ -6270,6 +6381,9 @@ your-rom-repo/
             if (modal) {
                 modal.classList.remove('show');
                 document.body.style.overflow = '';
+                
+                // Remove click-outside-to-close functionality
+                modal.onclick = null;
             }
             
             // Reset platform selection
@@ -6507,6 +6621,13 @@ your-rom-repo/
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
                 
+                // Add click-outside-to-close functionality
+                modal.onclick = function(event) {
+                    if (event.target === modal) {
+                        closeDriverInfo();
+                    }
+                };
+                
                 // Force a repaint to ensure the modal appears immediately
                 modal.offsetHeight;
                 
@@ -6520,6 +6641,9 @@ your-rom-repo/
                 modal.classList.remove('show');
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
+                
+                // Remove click-outside-to-close functionality
+                modal.onclick = null;
             }
         }
 
@@ -6530,6 +6654,13 @@ your-rom-repo/
                 modal.style.display = 'flex';
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
+                
+                // Add click-outside-to-close functionality
+                modal.onclick = function(event) {
+                    if (event.target === modal) {
+                        closeUsbDevKitInfo();
+                    }
+                };
                 
                 // Force a repaint to ensure the modal appears immediately
                 modal.offsetHeight;
@@ -6544,6 +6675,9 @@ your-rom-repo/
                 modal.classList.remove('show');
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
+                
+                // Remove click-outside-to-close functionality
+                modal.onclick = null;
             }
         }
 
@@ -6745,6 +6879,23 @@ your-rom-repo/
             // Set padding to maintain floating effect
             appDemo.style.padding = `${padding}px`;
             
+            // Scale the hero-banner height and padding proportionately with the simulator
+            const heroBanner = document.querySelector('.hero-banner');
+            if (heroBanner) {
+                // Calculate proportional dimensions based on simulator scale
+                const baseHeight = 700; // Base height for full-size simulator (includes floating space)
+                const basePadding = 60; // Base padding for floating effect
+                
+                const scaledHeight = Math.max(400, baseHeight * finalZoom); // Minimum height for floating effect
+                const scaledPadding = Math.max(20, basePadding * finalZoom); // Minimum padding
+                
+                heroBanner.style.height = `${scaledHeight}px`;
+                heroBanner.style.minHeight = `${scaledHeight}px`;
+                heroBanner.style.padding = `${scaledPadding}px 20px`; // Equal top/bottom padding for floating
+                
+                console.log(`Scaled hero-banner: height=${scaledHeight}px, padding=${scaledPadding}px (zoom: ${finalZoom})`);
+            }
+            
             // Apply the same scaling to modals and dialogs within the simulator
             updateModalScaling(finalZoom);
         }
@@ -6894,7 +7045,13 @@ your-rom-repo/
             const wallpaperUrls = getWallpaperUrl(platformInfo);
             const heroBanner = document.querySelector('.hero-banner');
             
-            if (!heroBanner) return;
+            console.log('Hero banner element found:', heroBanner);
+            console.log('Hero banner current background:', heroBanner ? heroBanner.style.background : 'No hero banner');
+            
+            if (!heroBanner) {
+                console.error('Hero banner not found! Cannot apply wallpaper.');
+                return;
+            }
             
             console.log(`Loading wallpaper for ${platformInfo.platform} ${platformInfo.version || ''}`);
             console.log('Wallpaper URLs to try:', wallpaperUrls);
@@ -6915,7 +7072,10 @@ your-rom-repo/
                     console.log(`Applying gradient background: ${url}`);
                     heroBanner.style.background = url;
                     heroBanner.style.backgroundImage = '';
+                    heroBanner.style.backgroundSize = 'cover';
+                    heroBanner.style.backgroundPosition = 'center center';
                     
+                    console.log('Gradient applied to hero-banner:', url);
                     // Add overlay for gradients too
                     addWallpaperOverlay();
                     return;
@@ -6928,13 +7088,18 @@ your-rom-repo/
                 img.onload = function() {
                     clearTimeout(imageTimeout);
                     console.log(`Successfully loaded wallpaper: ${url}`);
-                    // Apply the wallpaper as background
+                    // Apply the wallpaper as background with tasteful framing
                     heroBanner.style.backgroundImage = `url('${url}')`;
                     heroBanner.style.backgroundSize = 'cover';
                     heroBanner.style.backgroundPosition = 'center center';
                     heroBanner.style.backgroundRepeat = 'no-repeat';
                     heroBanner.style.backgroundAttachment = 'scroll';
                     
+                    // Override the default gradient background completely
+                    heroBanner.style.background = `url('${url}') center center / cover no-repeat`;
+                    
+                    console.log('Wallpaper applied to hero-banner:', url);
+                    console.log('Hero banner element:', heroBanner);
                     addWallpaperOverlay();
                 };
                 
