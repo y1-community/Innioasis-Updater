@@ -2514,14 +2514,16 @@
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: transparent;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 100000;
+            z-index: 999999;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         .modal-overlay.show {
@@ -2534,11 +2536,11 @@
             border-radius: 16px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
             width: 100%;
             position: relative;
+            margin: auto;
             animation: modalSlideIn 0.3s ease-out;
+            box-sizing: border-box;
         }
 
         /* Dark mode support for modal */
@@ -3147,43 +3149,7 @@
             transform: translateY(-1px);
         }
 
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .modal-overlay {
-                padding: 10px;
-            }
-
-            .modal-content {
-                max-height: 95vh;
-            }
-
-            .platform-selector {
-                grid-template-columns: 1fr;
-                gap: 8px;
-                margin: 15px;
-            }
-
-            .progress-bar {
-                margin-bottom: 20px;
-            }
-
-            .progress-line {
-                margin: 0 10px;
-            }
-
-            .step {
-                padding: 16px;
-            }
-
-            .checklist-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .checklist-actions .btn {
-                margin-bottom: 8px;
-            }
-        }
+        /* Desktop-only site - no mobile optimizations */
 
         .app-right-panel {
             position: relative;
@@ -3277,7 +3243,7 @@
                 </div>
                 <div class="header-text">
                     <h1>Innioasis Updater</h1>
-                    <p id="dynamic-subtitle">We've helped to update <span id="download-count">Loading...</span> Innioasis Y1s on Windows and Mac</p>
+                    <p id="dynamic-subtitle">We've helped to update <span id="download-count">2,600+</span> Innioasis Y1s on Windows and Mac</p>
                 </div>
             </div>
             <div class="header-download">
@@ -4214,6 +4180,79 @@ your-rom-repo/
     </div>
 
     <script>
+        // Global function to ensure scrolling is always restored
+        function restoreScrolling() {
+            document.body.style.overflow = '';
+            document.body.style.overflowX = '';
+            document.body.style.overflowY = '';
+        }
+        
+        // Global function to disable scrolling (for modals)
+        function disableScrolling() {
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Load screenshot fallback when simulator is hidden
+        function loadScreenshotFallback() {
+            const heroBanner = document.querySelector('.hero-banner');
+            if (!heroBanner) return;
+
+            const screenshotUrls = [
+                'https://innioasis.app/mtkclient/gui/images/screenshot.jpg',
+                'https://innioasis.app/mtkclient/gui/images/screenshot.png'
+            ];
+
+            let currentIndex = 0;
+
+            function tryNextScreenshot() {
+                if (currentIndex >= screenshotUrls.length) {
+                    console.log('All screenshots failed to load, keeping current background');
+                    return;
+                }
+
+                const url = screenshotUrls[currentIndex];
+                console.log(`Attempting to load screenshot ${currentIndex + 1}/${screenshotUrls.length}: ${url}`);
+
+                const img = new Image();
+                let imageTimeout;
+
+                img.onload = function() {
+                    clearTimeout(imageTimeout);
+                    console.log(`Successfully loaded screenshot: ${url}`);
+                    
+                    // Apply the screenshot as background with same styling as simulator
+                    heroBanner.style.backgroundImage = `url('${url}')`;
+                    heroBanner.style.backgroundSize = 'cover';
+                    heroBanner.style.backgroundPosition = 'center center';
+                    heroBanner.style.backgroundRepeat = 'no-repeat';
+                    heroBanner.style.backgroundAttachment = 'scroll';
+                    
+                    // Override any existing background
+                    heroBanner.style.background = `url('${url}') center center / cover no-repeat`;
+                    
+                    console.log('Screenshot applied to hero-banner:', url);
+                };
+
+                img.onerror = function() {
+                    clearTimeout(imageTimeout);
+                    console.warn(`Failed to load screenshot: ${url}`);
+                    currentIndex++;
+                    tryNextScreenshot();
+                };
+
+                // Set timeout for slow loading images
+                imageTimeout = setTimeout(() => {
+                    console.warn(`Timeout loading screenshot: ${url}`);
+                    currentIndex++;
+                    tryNextScreenshot();
+                }, 5000);
+
+                img.src = url;
+            }
+
+            tryNextScreenshot();
+        }
+
         // Platform selection
         function selectPlatform(platform) {
             // Remove selection from all platform cards
@@ -4224,8 +4263,7 @@ your-rom-repo/
             // Select the clicked platform
             document.querySelector(`[data-platform="${platform}"]`).classList.add('selected');
             
-            // Check if user is on mobile
-            const isMobile = window.innerWidth <= 768;
+            // Desktop-only site - no mobile detection needed
             
             // Handle special "get-started" case
             if (platform === 'get-started') {
@@ -4234,24 +4272,8 @@ your-rom-repo/
                     section.classList.remove('active');
                 });
                 
-                if (isMobile) {
-                    // On mobile, show the mobile message instead of the modal
-                    const mobileMessage = document.querySelector('.mobile-only');
-                    if (mobileMessage) {
-                        mobileMessage.classList.add('show');
-                        // Scroll to the mobile message
-                        setTimeout(() => {
-                            mobileMessage.scrollIntoView({ 
-                                behavior: 'smooth', 
-                                block: 'start',
-                                inline: 'nearest'
-                            });
-                        }, 100);
-                    }
-                } else {
-                    // On desktop, show the install guide modal
-                    showInstallGuide();
-                }
+                // Show the install guide modal
+                showInstallGuide();
                 return;
             }
             
@@ -4260,27 +4282,21 @@ your-rom-repo/
                 section.classList.remove('active');
             });
             
-            // Hide mobile message if it was shown
-            const mobileMessage = document.querySelector('.mobile-only');
-            if (mobileMessage) {
-                mobileMessage.classList.remove('show');
-            }
+            // Desktop-only site - no mobile message handling needed
             
             // Show appropriate content for other platforms
             const contentSection = document.getElementById(`${platform}-content`);
             if (contentSection) {
                 contentSection.classList.add('active');
                 
-                // Only auto-scroll on desktop, let mobile users scroll manually
-                if (!isMobile) {
-                    setTimeout(() => {
-                        contentSection.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'start',
-                            inline: 'nearest'
-                        });
-                    }, 100); // Small delay to ensure content is rendered
-                }
+                // Scroll to the content section for all users
+                setTimeout(() => {
+                    contentSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }, 100); // Small delay to ensure content is rendered
             }
             
             // If it's the users section, also select Windows by default
@@ -4862,6 +4878,10 @@ your-rom-repo/
                 return { platform: 'mac', version: 'tahoe' }; // Default to latest macOS
             }
             
+            if (userAgent.includes('Linux')) {
+                return { platform: 'linux', version: null };
+            }
+            
             if (userAgent.includes('Windows')) {
                 // Try to detect Windows version
                 if (userAgent.includes('Windows NT 10.0')) {
@@ -4878,36 +4898,35 @@ your-rom-repo/
         }
         
         function getWallpaperUrl(platformInfo) {
-            const basePath = 'mtkclient/gui/images/wallpapers/';
+            const basePath = 'https://innioasis.app/mtkclient/gui/images/';
             
-            // Local wallpaper files with gradient fallbacks
-            const wallpapers = {
-                windows11: basePath + 'windows11.jpg',
-                windows10: basePath + 'windows10.jpg', 
-                mac: basePath + 'mac.jpg',
-                mobile: basePath + 'windows11.jpg', // Use Windows 11 for mobile
+            // OS-appropriate screenshots with gradient fallbacks
+            const screenshots = {
+                windows: basePath + 'screenshot_win.jpg',
+                mac: basePath + 'screenshot.png',
+                linux: basePath + 'screenshot.png',
+                mobile: basePath + 'screenshot.png',
+                default: basePath + 'screenshot.png',
                 // Gradient fallbacks
-                gradientWindows11: 'linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003d6b 100%)',
-                gradientWindows10: 'linear-gradient(135deg, #0078d4 0%, #005a9e 50%, #004578 100%)',
+                gradientWindows: 'linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003d6b 100%)',
                 gradientMac: 'linear-gradient(135deg, #1d1d1f 0%, #2d2d30 25%, #3a3a3c 50%, #48484a 75%, #5a5a5c 100%)',
                 gradientBlue: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%)',
                 gradientPurple: 'linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #a855f7 100%)'
             };
             
-            if (platformInfo.platform === 'mobile') {
-                return [wallpapers.mobile, wallpapers.gradientWindows11, wallpapers.gradientBlue];
-            } else if (platformInfo.platform === 'windows') {
-                if (platformInfo.version === '11') {
-                    return [wallpapers.windows11, wallpapers.gradientWindows11, wallpapers.gradientBlue];
-                } else {
-                    return [wallpapers.windows10, wallpapers.gradientWindows10, wallpapers.gradientBlue];
-                }
+            // Return appropriate screenshots based on platform
+            if (platformInfo.platform === 'windows') {
+                return [screenshots.windows, screenshots.gradientWindows, screenshots.gradientBlue];
             } else if (platformInfo.platform === 'mac') {
-                return [wallpapers.mac, wallpapers.gradientMac, wallpapers.gradientPurple];
+                return [screenshots.mac, screenshots.gradientMac, screenshots.gradientPurple];
+            } else if (platformInfo.platform === 'linux') {
+                return [screenshots.linux, screenshots.gradientBlue, screenshots.gradientPurple];
+            } else if (platformInfo.platform === 'mobile') {
+                return [screenshots.mobile, screenshots.gradientBlue, screenshots.gradientPurple];
             }
             
             // Default fallback
-            return [wallpapers.gradientBlue, wallpapers.gradientPurple];
+            return [screenshots.default, screenshots.gradientBlue, screenshots.gradientPurple];
         }
 
         // Interactive Installation Demo
@@ -6348,8 +6367,26 @@ your-rom-repo/
         function showInstallGuide() {
             const modal = document.getElementById('modalOverlay');
             if (modal) {
+                // Ensure modal is visible and centered
+                modal.style.display = 'flex';
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100vw';
+                modal.style.height = '100vh';
                 modal.classList.add('show');
-                document.body.style.overflow = 'hidden';
+                
+                // Force a reflow to ensure visibility
+                modal.offsetHeight;
+                
+                // Scroll to the modal
+                setTimeout(() => {
+                    modal.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }, 100);
                 
                 // Add click-outside-to-close functionality
                 modal.onclick = function(event) {
@@ -6380,7 +6417,7 @@ your-rom-repo/
             const modal = document.getElementById('modalOverlay');
             if (modal) {
                 modal.classList.remove('show');
-                document.body.style.overflow = '';
+                modal.style.display = 'none';
                 
                 // Remove click-outside-to-close functionality
                 modal.onclick = null;
@@ -6688,13 +6725,6 @@ your-rom-repo/
             if (!appDemo || !appWindow) return;
 
             const viewportWidth = window.innerWidth;
-            const isMobile = viewportWidth <= 768; // Mobile breakpoint
-            
-            if (isMobile) {
-                // Hide simulator completely on mobile
-                appDemo.style.display = 'none';
-                return;
-            }
             
             // Show simulator on desktop/tablet
             appDemo.style.display = 'flex';
@@ -6735,6 +6765,9 @@ your-rom-repo/
                 
                 // Apply the same scaling to the screenshot as we would to the simulator
                 appDemo.style.transform = `scale(${finalZoom})`;
+                
+                // Load screenshot fallback
+                loadScreenshotFallback();
                 
                 let screenshotElement = document.getElementById('simulator-screenshot');
                 if (!screenshotElement) {
@@ -7039,110 +7072,34 @@ your-rom-repo/
             }
         }
 
-        // Dynamic wallpaper loading system
-        function loadPlatformWallpaper() {
+        // Simple background loading system
+        function loadPlatformBackground() {
             const platformInfo = detectDetailedPlatform();
-            const wallpaperUrls = getWallpaperUrl(platformInfo);
             const heroBanner = document.querySelector('.hero-banner');
             
-            console.log('Hero banner element found:', heroBanner);
-            console.log('Hero banner current background:', heroBanner ? heroBanner.style.background : 'No hero banner');
-            
             if (!heroBanner) {
-                console.error('Hero banner not found! Cannot apply wallpaper.');
+                console.error('Hero banner not found! Cannot apply background.');
                 return;
             }
             
-            console.log(`Loading wallpaper for ${platformInfo.platform} ${platformInfo.version || ''}`);
-            console.log('Wallpaper URLs to try:', wallpaperUrls);
+            console.log(`Setting background for ${platformInfo.platform}`);
             
-            let currentIndex = 0;
-            
-            function tryNextWallpaper() {
-                if (currentIndex >= wallpaperUrls.length) {
-                    console.log('All wallpapers failed to load, keeping original gradient background');
-                    return;
-                }
-                
-                const url = wallpaperUrls[currentIndex];
-                console.log(`Attempting to load wallpaper ${currentIndex + 1}/${wallpaperUrls.length}: ${url}`);
-                
-                // Check if this is a gradient (starts with linear-gradient)
-                if (url.startsWith('linear-gradient')) {
-                    console.log(`Applying gradient background: ${url}`);
-                    heroBanner.style.background = url;
-                    heroBanner.style.backgroundImage = '';
-                    heroBanner.style.backgroundSize = 'cover';
-                    heroBanner.style.backgroundPosition = 'center center';
-                    
-                    console.log('Gradient applied to hero-banner:', url);
-                    // Add overlay for gradients too
-                    addWallpaperOverlay();
-                    return;
-                }
-                
-                // Try to load as image with timeout
-                const img = new Image();
-                let imageTimeout;
-                
-                img.onload = function() {
-                    clearTimeout(imageTimeout);
-                    console.log(`Successfully loaded wallpaper: ${url}`);
-                    // Apply the wallpaper as background with tasteful framing
-                    heroBanner.style.backgroundImage = `url('${url}')`;
-                    heroBanner.style.backgroundSize = 'cover';
-                    heroBanner.style.backgroundPosition = 'center center';
-                    heroBanner.style.backgroundRepeat = 'no-repeat';
-                    heroBanner.style.backgroundAttachment = 'scroll';
-                    
-                    // Override the default gradient background completely
-                    heroBanner.style.background = `url('${url}') center center / cover no-repeat`;
-                    
-                    console.log('Wallpaper applied to hero-banner:', url);
-                    console.log('Hero banner element:', heroBanner);
-                    addWallpaperOverlay();
-                };
-                
-                img.onerror = function() {
-                    clearTimeout(imageTimeout);
-                    console.warn(`Failed to load wallpaper: ${url}`);
-                    currentIndex++;
-                    tryNextWallpaper();
-                };
-                
-                // Set timeout for slow loading images
-                imageTimeout = setTimeout(() => {
-                    console.warn(`Timeout loading wallpaper: ${url}`);
-                    currentIndex++;
-                    tryNextWallpaper();
-                }, 5000);
-                
-                img.src = url;
+            // Determine screenshot URL based on platform
+            let screenshotUrl;
+            if (platformInfo.platform === 'windows') {
+                screenshotUrl = 'https://innioasis.app/mtkclient/gui/images/screenshot_win.jpg';
+            } else {
+                screenshotUrl = 'https://innioasis.app/mtkclient/gui/images/screenshot.png';
             }
             
-            function addWallpaperOverlay() {
-                // Add a subtle overlay to ensure text readability
-                heroBanner.style.position = 'relative';
-                if (!heroBanner.querySelector('.wallpaper-overlay')) {
-                    const overlay = document.createElement('div');
-                    overlay.className = 'wallpaper-overlay';
-                    overlay.style.cssText = `
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: rgba(0, 0, 0, 0.3);
-                        border-radius: 20px;
-                        pointer-events: none;
-                        z-index: 1;
-                    `;
-                    heroBanner.appendChild(overlay);
-                }
-            }
+            // Apply background directly
+            heroBanner.style.background = `url('${screenshotUrl}') center center / cover no-repeat`;
+            heroBanner.style.backgroundImage = `url('${screenshotUrl}')`;
+            heroBanner.style.backgroundSize = 'cover';
+            heroBanner.style.backgroundPosition = 'center center';
+            heroBanner.style.backgroundRepeat = 'no-repeat';
             
-            // Start loading wallpapers
-            tryNextWallpaper();
+            console.log(`Background set to: ${screenshotUrl}`);
         }
 
         // Apply platform-specific styling and pre-select appropriate platform
@@ -7210,6 +7167,9 @@ your-rom-repo/
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Ensure scrolling is enabled on page load
+            restoreScrolling();
+            
             // Disable theme detection for quick rollout - force light theme
             localStorage.setItem('theme', 'light');
             applyTheme('light');
@@ -7219,7 +7179,9 @@ your-rom-repo/
             
             // Load platform-specific wallpaper with debugging
             console.log('Starting wallpaper loading...');
-            loadPlatformWallpaper();
+            setTimeout(() => {
+                loadPlatformBackground();
+            }, 100); // Small delay to ensure DOM is ready
             
             // Start download stats immediately (unauthenticated first), load tokens in background for failover
             fetchDownloadStats();
