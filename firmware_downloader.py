@@ -1764,9 +1764,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Clean up RockboxUtility.zip at startup
         QTimer.singleShot(500, self.cleanup_rockbox_utility_zip)
         
-        # Check for UsbDk cleanup on Windows
-        if platform.system() == "Windows":
-            QTimer.singleShot(600, self.check_usbdk_cleanup)
+        # Check for UsbDk cleanup on Windows - DISABLED
+        # UsbDk cleanup prompt removed as it doesn't actually remove anything
+        # if platform.system() == "Windows":
+        #     QTimer.singleShot(600, self.check_usbdk_cleanup)
 
         # Ensure troubleshooting shortcuts are available
         QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
@@ -1924,27 +1925,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error processing RockboxUtility.zip: {e}")
 
     def check_usbdk_cleanup(self):
-        """Check if UsbDk driver should be cleaned up and offer removal"""
-        try:
-            if platform.system() != "Windows":
-                return
-            
-            # Check if UsbDk driver is present
-            driver_info = self.check_drivers_and_architecture()
-            if not driver_info['has_usbdk_driver']:
-                return  # No UsbDk driver present
-            
-            # Check if UsbDk controller exists
-            usbdk_controller = Path("C:/Program Files/UsbDk Runtime Library/UsbDkController.exe")
-            if not usbdk_controller.exists():
-                silent_print("UsbDk driver detected but controller not found")
-                return
-            
-            # Show cleanup dialog
-            self.show_usbdk_cleanup_dialog()
-            
-        except Exception as e:
-            silent_print(f"Error checking UsbDk cleanup: {e}")
+        """Check if UsbDk driver should be cleaned up and offer removal - DISABLED"""
+        # This function is no longer called as UsbDk cleanup doesn't actually remove anything
+        return
 
     def show_usbdk_cleanup_dialog(self):
         """Show dialog offering to remove UsbDk driver"""
