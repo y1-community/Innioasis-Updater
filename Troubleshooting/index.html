@@ -340,8 +340,13 @@
         .section-title {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: var(--text-primary);
+            color: white;
             text-align: center;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
 
         .info-card {
@@ -2199,6 +2204,19 @@
             overflow: visible;
             /* Ensure floating effect is not clipped */
             z-index: 1;
+            /* Prepare for dynamic wallpaper backgrounds */
+            transition: background-image 0.5s ease;
+        }
+        
+        /* Ensure hero content is above wallpaper overlay */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Wallpaper overlay styling */
+        .wallpaper-overlay {
+            z-index: 1;
         }
         
         /* Responsive hero banner spacing */
@@ -2431,12 +2449,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 100000;
             padding: 20px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .modal-overlay.show {
@@ -3329,8 +3349,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
                         
                         <!-- Install from ZIP Modal -->
                         <div class="app-modal-overlay" id="install-zip-modal" style="display: none;">
@@ -3656,6 +3674,8 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
             </div>
             
             
@@ -3704,9 +3724,22 @@
             </div>
         </div>
 
+        <!-- Help & Support Section -->
+        <div class="section-title">
+            <h2>Help & Support</h2>
+            <p>Get help with installation, development, or troubleshooting</p>
+        </div>
+        
         <!-- Section Selector -->
         <div class="platform-selector">
-            <div class="platform-card selected" data-platform="users" onclick="selectPlatform('users')">
+            <div class="platform-card selected" data-platform="get-started" onclick="selectPlatform('get-started')">
+                <span class="icon">🚀</span>
+                <h3>Get Started</h3>
+                <p>Installation guide and setup</p>
+                <span class="status"></span>
+            </div>
+            
+            <div class="platform-card" data-platform="users" onclick="selectPlatform('users')">
                 <span class="icon">👥</span>
                 <h3>For Users</h3>
                 <p>Troubleshooting and usage guide</p>
@@ -3729,7 +3762,7 @@
                 </div>
                 
         <!-- Users Content -->
-        <div class="content-section active" id="users-content">
+        <div class="content-section" id="users-content">
                 <!-- Quick Start -->
                 <div class="info-card">
                     <h3>🚀 Quick Start</h3>
@@ -3745,9 +3778,9 @@
                 
 
 
-                <!-- Common Issues -->
+                <!-- Troubleshooting -->
             <div class="info-card">
-                    <h3>🔧 Common Issues & Quick Fixes</h3>
+                    <h3>🔧 Troubleshooting</h3>
                     
                     <!-- Card 1: USB Timing (Most Important) -->
                     <div class="troubleshooting-card">
@@ -3895,7 +3928,8 @@
 
         <!-- Developers Content -->
         <div class="content-section" id="developers-content">
-            <h2 class="section-title">For Developers - Technical Resources & Guidelines</h2>
+            <div class="container">
+                <h2 class="section-title">For Developers - Technical Resources & Guidelines</h2>
             
             <!-- Development Overview -->
             <div class="info-card">
@@ -4038,10 +4072,12 @@ your-rom-repo/
                 </div>
                 </div>
             </div>
+            </div>
 
         <!-- Rockbox Content -->
         <div class="content-section" id="rockbox-content">
-            <h2 class="section-title">Rockbox Music Player & Themes</h2>
+            <div class="container">
+                <h2 class="section-title">Rockbox Music Player & Themes</h2>
             
             <!-- Rockbox Overview -->
             <div class="info-card">
@@ -4085,6 +4121,7 @@ your-rom-repo/
                 <h4>⚠️ Important</h4>
                 <p>Rockbox modifies your Y1's Android system. Backup important data before installation - the process may affect your device's current setup.</p>
             </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -4098,11 +4135,6 @@ your-rom-repo/
     <script>
         // Platform selection
         function selectPlatform(platform) {
-            // Hide all content sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
             // Remove selection from all platform cards
             document.querySelectorAll('.platform-card').forEach(card => {
                 card.classList.remove('selected');
@@ -4111,8 +4143,28 @@ your-rom-repo/
             // Select the clicked platform
             document.querySelector(`[data-platform="${platform}"]`).classList.add('selected');
             
-            // Show appropriate content
-            document.getElementById(`${platform}-content`).classList.add('active');
+            // Handle special "get-started" case
+            if (platform === 'get-started') {
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the install guide modal
+                showInstallGuide();
+                return;
+            }
+            
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show appropriate content for other platforms
+            const contentSection = document.getElementById(`${platform}-content`);
+            if (contentSection) {
+                contentSection.classList.add('active');
+            }
             
             // If it's the users section, also select Windows by default
             if (platform === 'users') {
@@ -4673,12 +4725,68 @@ your-rom-repo/
             return date.toLocaleDateString('en-US', { weekday: 'long' });
         }
 
-        // Platform detection
+        // Enhanced platform and version detection
         function detectPlatform() {
             const userAgent = navigator.userAgent.toLowerCase();
             if (userAgent.includes('mac')) return 'mac';
             if (userAgent.includes('win')) return 'windows';
             return 'mac'; // default to mac
+        }
+        
+        function detectDetailedPlatform() {
+            const userAgent = navigator.userAgent;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+            
+            if (isMobile) {
+                return { platform: 'mobile', version: null };
+            }
+            
+            if (userAgent.includes('Mac')) {
+                return { platform: 'mac', version: 'tahoe' }; // Default to latest macOS
+            }
+            
+            if (userAgent.includes('Windows')) {
+                // Try to detect Windows version
+                if (userAgent.includes('Windows NT 10.0')) {
+                    // Windows 10 or 11 - check build number if available
+                    if (userAgent.includes('Edg/') && parseInt(userAgent.split('Edg/')[1]) >= 90) {
+                        return { platform: 'windows', version: '11' }; // Likely Windows 11
+                    }
+                    return { platform: 'windows', version: '10' }; // Default to Windows 10
+                }
+                return { platform: 'windows', version: '10' }; // Fallback to Windows 10
+            }
+            
+            return { platform: 'windows', version: '11' }; // Default fallback
+        }
+        
+        function getWallpaperUrl(platformInfo) {
+            // Use alternative URLs that are more likely to work with CORS
+            const wallpapers = {
+                windows11: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2400&h=1600&fit=crop&crop=center',
+                windows10: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=2400&h=1600&fit=crop&crop=center',
+                mac: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=2400&h=1600&fit=crop&crop=center',
+                mobile: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2400&h=1600&fit=crop&crop=center',
+                // Fallback gradients
+                gradientBlue: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%)',
+                gradientPurple: 'linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #a855f7 100%)',
+                gradientDark: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%)'
+            };
+            
+            if (platformInfo.platform === 'mobile') {
+                return [wallpapers.mobile, wallpapers.windows11, wallpapers.gradientBlue];
+            } else if (platformInfo.platform === 'windows') {
+                if (platformInfo.version === '11') {
+                    return [wallpapers.windows11, wallpapers.gradientBlue, wallpapers.gradientPurple];
+                } else {
+                    return [wallpapers.windows10, wallpapers.gradientBlue, wallpapers.gradientPurple];
+                }
+            } else if (platformInfo.platform === 'mac') {
+                return [wallpapers.mac, wallpapers.gradientDark, wallpapers.gradientPurple];
+            }
+            
+            // Default fallback
+            return [wallpapers.gradientBlue, wallpapers.gradientPurple, wallpapers.gradientDark];
         }
 
         // Interactive Installation Demo
@@ -4781,7 +4889,7 @@ your-rom-repo/
                 { status: 'Processing...', message: 'Extracting rom.zip...', delay: 800, image: 'presteps', showText: 'Extracting firmware files...' },
                 { status: 'Processing...', message: 'Verifying firmware integrity...', delay: 600, image: 'presteps', showText: 'Verifying firmware...' },
                 { status: 'Dialog...', message: 'Hey! Please unplug your Y1 from USB', delay: 0, image: 'presteps', showText: 'Disconnect USB', dialog: { title: 'Disconnect USB', message: 'Hey! Please unplug the USB from your Y1 and press OK, then we\'ll guide you through the next steps.', icon: '⚠️' } },
-                { status: 'Preparing...', message: 'Follow the instructions below to prepare your Y1 for installation...', delay: Math.floor(Math.random() * 8000) + 7000, image: getInitStepsImage(), showText: 'Follow the instructions below to prepare your Y1 for installation...' },
+                { status: 'Preparing...', message: 'Follow the instructions below to prepare your Y1 for installation...', delay: Math.floor(Math.random() * 2000) + 3000, image: getInitStepsImage(), showText: 'Follow the instructions below to prepare your Y1 for installation...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Connecting to device...`, delay: 1500, image: 'installing', showText: 'Connecting to device...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Loading preloader...`, delay: 1200, image: 'installing', showText: 'Loading preloader...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Flashing boot partition...`, delay: 2000, image: 'installing', showText: 'Flashing boot partition...' },
@@ -4827,6 +4935,15 @@ your-rom-repo/
                     // Check if this is the disconnect USB dialog
                     if (step.dialog.title === 'Disconnect USB') {
                         showDisconnectUsbModal();
+                        
+                        // Start proactive auto-dismiss timer even if modal doesn't show properly
+                        console.log('Starting proactive disconnect USB auto-dismiss timer');
+                        setTimeout(() => {
+                            console.log('Proactive disconnect USB timeout - continuing installation');
+                            if (window.continueInstallation) {
+                                window.continueInstallation();
+                            }
+                        }, 1500);
                     } else {
                         // Use generic dialog for other cases
                         showInstallDialog(step.dialog.title, step.dialog.message, step.dialog.icon);
@@ -5725,6 +5842,105 @@ your-rom-repo/
             }
         }
 
+        // Universal auto-dismiss functionality for modals
+        let modalTimeouts = {};
+        let modalActivityTrackers = {};
+        
+        function setupAutoDismiss(modalId, timeoutMs = 5000, excludeInstallGuide = true) {
+            // Don't auto-dismiss install guide modals
+            if (excludeInstallGuide && modalId.includes('modalOverlay')) {
+                return;
+            }
+            
+            let lastActivity = Date.now();
+            
+            const checkAndDismiss = () => {
+                const timeSinceActivity = Date.now() - lastActivity;
+                if (timeSinceActivity >= timeoutMs) {
+                    console.log(`Auto-dismissing ${modalId} after ${timeoutMs}ms of inactivity`);
+                    
+                    // Check if modal exists and handle appropriately
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        if (modal.style.display === 'flex' || modal.style.display === 'block') {
+                            // Modal is visible, close normally
+                            closeModal(modalId);
+                        } else {
+                            // Modal exists but isn't visible - might be a spawning issue
+                            console.warn(`Modal ${modalId} exists but isn't visible - attempting to show and then dismiss`);
+                            modal.style.display = 'flex';
+                            updateModalScaling(getCurrentScaleFactor());
+                            setTimeout(() => closeModal(modalId), 100); // Brief flash to show it existed
+                        }
+                    } else {
+                        console.warn(`Modal ${modalId} doesn't exist in DOM`);
+                    }
+                    
+                    // Handle special case for disconnect USB to continue installation
+                    if (modalId === 'disconnect-usb-modal') {
+                        if (window.continueInstallation) {
+                            window.continueInstallation();
+                        }
+                    }
+                } else {
+                    // Check again after remaining time
+                    const remainingTime = timeoutMs - timeSinceActivity;
+                    modalTimeouts[modalId] = setTimeout(checkAndDismiss, remainingTime);
+                }
+            };
+            
+            // Set up initial timeout
+            modalTimeouts[modalId] = setTimeout(checkAndDismiss, timeoutMs);
+            
+            // Track user activity across the entire page
+            const activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'];
+            const updateActivity = () => {
+                lastActivity = Date.now();
+            };
+            
+            activityEvents.forEach(event => {
+                document.addEventListener(event, updateActivity, { passive: true });
+            });
+            
+            // Store cleanup function
+            modalActivityTrackers[modalId] = () => {
+                activityEvents.forEach(event => {
+                    document.removeEventListener(event, updateActivity);
+                });
+            };
+        }
+        
+        // Helper function to get current scale factor
+        function getCurrentScaleFactor() {
+            const appDemo = document.querySelector('.app-demo');
+            if (appDemo) {
+                const currentTransform = appDemo.style.transform;
+                const currentZoom = appDemo.style.zoom;
+                
+                if (currentTransform && currentTransform.includes('scale')) {
+                    const match = currentTransform.match(/scale\(([\d.]+)\)/);
+                    if (match) return parseFloat(match[1]);
+                } else if (currentZoom && currentZoom !== '1' && currentZoom !== '') {
+                    return parseFloat(currentZoom);
+                }
+            }
+            return 1;
+        }
+        
+        function cleanupAutoDismiss(modalId) {
+            // Clear timeout
+            if (modalTimeouts[modalId]) {
+                clearTimeout(modalTimeouts[modalId]);
+                delete modalTimeouts[modalId];
+            }
+            
+            // Clean up activity listeners
+            if (modalActivityTrackers[modalId]) {
+                modalActivityTrackers[modalId]();
+                delete modalActivityTrackers[modalId];
+            }
+        }
+
         // Standardized modal opening function
         function openModal(modalId, initCallback = null) {
             const modal = document.getElementById(modalId);
@@ -5755,6 +5971,9 @@ your-rom-repo/
                     }
                 };
                 
+                // Set up auto-dismiss for simulator modals (5 seconds)
+                setupAutoDismiss(modalId, 5000);
+                
                 // Run any modal-specific initialization
                 if (initCallback) {
                     initCallback();
@@ -5768,6 +5987,9 @@ your-rom-repo/
             if (modal) {
                 modal.style.display = 'none';
                 modal.onclick = null; // Remove event listener
+                
+                // Clean up auto-dismiss functionality
+                cleanupAutoDismiss(modalId);
             }
         }
 
@@ -5896,9 +6118,15 @@ your-rom-repo/
             closeModal('device-type-dialog');
         }
         
-        // Disconnect USB Modal Functions
+        // Disconnect USB Modal Functions with auto-dismiss failsafe
         function showDisconnectUsbModal() {
+            // Clean up any existing auto-dismiss for this modal first
+            cleanupAutoDismiss('disconnect-usb-modal');
+            
             openModal('disconnect-usb-modal');
+            
+            // Override default 5-second auto-dismiss with 1.5-second for disconnect USB
+            setupAutoDismiss('disconnect-usb-modal', 1500, false);
         }
         
         function closeDisconnectUsbModal() {
@@ -6623,7 +6851,99 @@ your-rom-repo/
             }
         }
 
-        // Apply platform-specific styling to troubleshooting section
+        // Dynamic wallpaper loading system
+        function loadPlatformWallpaper() {
+            const platformInfo = detectDetailedPlatform();
+            const wallpaperUrls = getWallpaperUrl(platformInfo);
+            const heroBanner = document.querySelector('.hero-banner');
+            
+            if (!heroBanner) return;
+            
+            console.log(`Loading wallpaper for ${platformInfo.platform} ${platformInfo.version || ''}`);
+            console.log('Wallpaper URLs to try:', wallpaperUrls);
+            
+            let currentIndex = 0;
+            
+            function tryNextWallpaper() {
+                if (currentIndex >= wallpaperUrls.length) {
+                    console.log('All wallpapers failed to load, keeping original gradient background');
+                    return;
+                }
+                
+                const url = wallpaperUrls[currentIndex];
+                console.log(`Attempting to load wallpaper ${currentIndex + 1}/${wallpaperUrls.length}: ${url}`);
+                
+                // Check if this is a gradient (starts with linear-gradient)
+                if (url.startsWith('linear-gradient')) {
+                    console.log(`Applying gradient background: ${url}`);
+                    heroBanner.style.background = url;
+                    heroBanner.style.backgroundImage = '';
+                    
+                    // Add overlay for gradients too
+                    addWallpaperOverlay();
+                    return;
+                }
+                
+                // Try to load as image with timeout
+                const img = new Image();
+                let imageTimeout;
+                
+                img.onload = function() {
+                    clearTimeout(imageTimeout);
+                    console.log(`Successfully loaded wallpaper: ${url}`);
+                    // Apply the wallpaper as background
+                    heroBanner.style.backgroundImage = `url('${url}')`;
+                    heroBanner.style.backgroundSize = 'cover';
+                    heroBanner.style.backgroundPosition = 'center center';
+                    heroBanner.style.backgroundRepeat = 'no-repeat';
+                    heroBanner.style.backgroundAttachment = 'scroll';
+                    
+                    addWallpaperOverlay();
+                };
+                
+                img.onerror = function() {
+                    clearTimeout(imageTimeout);
+                    console.warn(`Failed to load wallpaper: ${url}`);
+                    currentIndex++;
+                    tryNextWallpaper();
+                };
+                
+                // Set timeout for slow loading images
+                imageTimeout = setTimeout(() => {
+                    console.warn(`Timeout loading wallpaper: ${url}`);
+                    currentIndex++;
+                    tryNextWallpaper();
+                }, 5000);
+                
+                img.src = url;
+            }
+            
+            function addWallpaperOverlay() {
+                // Add a subtle overlay to ensure text readability
+                heroBanner.style.position = 'relative';
+                if (!heroBanner.querySelector('.wallpaper-overlay')) {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'wallpaper-overlay';
+                    overlay.style.cssText = `
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0, 0, 0, 0.3);
+                        border-radius: 20px;
+                        pointer-events: none;
+                        z-index: 1;
+                    `;
+                    heroBanner.appendChild(overlay);
+                }
+            }
+            
+            // Start loading wallpapers
+            tryNextWallpaper();
+        }
+
+        // Apply platform-specific styling and pre-select appropriate platform
         function initializePlatformSpecificContent() {
             const platform = detectPlatform();
             console.log(`Detected platform: ${platform}`);
@@ -6664,6 +6984,26 @@ your-rom-repo/
                 }
                 console.log(`Applied ${platform}-specific troubleshooting content`);
             }
+            
+            // Pre-select "Get Started" button and hide all content initially
+            // Remove any existing selections first
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Hide all content sections initially
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Pre-select the "Get Started" button
+            const getStartedCard = document.querySelector(`[data-platform="get-started"]`);
+            if (getStartedCard) {
+                getStartedCard.classList.add('selected');
+                console.log('Pre-selected "Get Started" button, content hidden until user clicks platform');
+            }
+            
+            console.log('All content collapsed by default - user must select platform to reveal info');
         }
 
         // Initialize on page load
@@ -6674,6 +7014,10 @@ your-rom-repo/
             
             // Apply platform-specific content immediately
             initializePlatformSpecificContent();
+            
+            // Load platform-specific wallpaper with debugging
+            console.log('Starting wallpaper loading...');
+            loadPlatformWallpaper();
             
             // Start download stats immediately (unauthenticated first), load tokens in background for failover
             fetchDownloadStats();
@@ -6686,8 +7030,7 @@ your-rom-repo/
                 console.warn('Could not load API tokens for failover, will rely on unauthenticated calls only:', error);
             });
             
-            // Start with users section selected
-            selectPlatform('users');
+            // Don't auto-select content - user must click platform card to reveal content
             
             // Initialize responsive scaling
             updateSimulatorScale();
