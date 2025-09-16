@@ -639,6 +639,15 @@
                 display: none !important;
             }
             
+            /* Hide help section on mobile, show mobile message */
+            .mobile-hide {
+                display: none !important;
+            }
+            
+            .mobile-only {
+                display: block !important;
+            }
+            
             /* Mobile-optimized hero section */
             .hero-banner {
                 padding: 2rem 1rem;
@@ -2449,14 +2458,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: transparent;
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 100000;
             padding: 20px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
         }
 
         .modal-overlay.show {
@@ -2472,6 +2479,8 @@
             max-height: 90vh;
             overflow-y: auto;
             width: 100%;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
         }
 
         /* Dark mode support for modal */
@@ -3288,7 +3297,7 @@
                                     <img src="https://innioasis.app/mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
                                 </div>
                             </div>
-                            <div class="app-labs">interactive app demo</div>
+                            <div class="app-labs">interactive app demo - sequences shortened for demonstration purposes, options may differ between operating systems.          </div>
             </div>
             
                         <!-- Settings Modal -->
@@ -3725,24 +3734,32 @@
         </div>
 
         <!-- Help & Support Section -->
-        <div class="section-title">
+        <div class="section-title mobile-hide">
             <h2>Help & Support</h2>
             <p>Get help with installation, development, or troubleshooting</p>
         </div>
         
+        <!-- Mobile-specific message -->
+        <div class="mobile-only" style="display: none;">
+            <div class="section-title">
+                <h2>Visit from Your Computer</h2>
+                <p>For the best experience, please visit <strong>innioasis.app</strong> from your computer to start your journey</p>
+            </div>
+        </div>
+        
         <!-- Section Selector -->
-        <div class="platform-selector">
+        <div class="platform-selector mobile-hide">
             <div class="platform-card selected" data-platform="get-started" onclick="selectPlatform('get-started')">
                 <span class="icon">🚀</span>
-                <h3>Get Started</h3>
+                <h3>Install Innioasis Updater</h3>
                 <p>Installation guide and setup</p>
                 <span class="status"></span>
             </div>
             
             <div class="platform-card" data-platform="users" onclick="selectPlatform('users')">
                 <span class="icon">👥</span>
-                <h3>For Users</h3>
-                <p>Troubleshooting and usage guide</p>
+                <h3>Troubleshooting and Tips</h3>
+                <p>Usage guide and common fixes</p>
                 <span class="status"></span>
                 </div>
                 
@@ -4761,32 +4778,32 @@ your-rom-repo/
         }
         
         function getWallpaperUrl(platformInfo) {
-            // Use alternative URLs that are more likely to work with CORS
+            // Use more reliable gradient backgrounds that always work
             const wallpapers = {
-                windows11: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2400&h=1600&fit=crop&crop=center',
-                windows10: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=2400&h=1600&fit=crop&crop=center',
-                mac: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=2400&h=1600&fit=crop&crop=center',
-                mobile: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2400&h=1600&fit=crop&crop=center',
-                // Fallback gradients
+                windows11: 'linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003d6b 100%)',
+                windows10: 'linear-gradient(135deg, #0078d4 0%, #005a9e 50%, #004578 100%)',
+                mac: 'linear-gradient(135deg, #1d1d1f 0%, #2d2d30 25%, #3a3a3c 50%, #48484a 75%, #5a5a5c 100%)',
+                mobile: 'linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003d6b 100%)',
+                // Additional beautiful gradients
                 gradientBlue: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%)',
                 gradientPurple: 'linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #a855f7 100%)',
                 gradientDark: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%)'
             };
             
             if (platformInfo.platform === 'mobile') {
-                return [wallpapers.mobile, wallpapers.windows11, wallpapers.gradientBlue];
+                return [wallpapers.mobile, wallpapers.gradientBlue];
             } else if (platformInfo.platform === 'windows') {
                 if (platformInfo.version === '11') {
-                    return [wallpapers.windows11, wallpapers.gradientBlue, wallpapers.gradientPurple];
+                    return [wallpapers.windows11, wallpapers.gradientBlue];
                 } else {
-                    return [wallpapers.windows10, wallpapers.gradientBlue, wallpapers.gradientPurple];
+                    return [wallpapers.windows10, wallpapers.gradientBlue];
                 }
             } else if (platformInfo.platform === 'mac') {
-                return [wallpapers.mac, wallpapers.gradientDark, wallpapers.gradientPurple];
+                return [wallpapers.mac, wallpapers.gradientDark];
             }
             
             // Default fallback
-            return [wallpapers.gradientBlue, wallpapers.gradientPurple, wallpapers.gradientDark];
+            return [wallpapers.gradientBlue, wallpapers.gradientPurple];
         }
 
         // Interactive Installation Demo
@@ -6608,20 +6625,40 @@ your-rom-repo/
                         z-index: 10;
                         position: relative;
                         transform-style: preserve-3d;
+                        transition: transform 0.2s ease;
                     `;
+                    
+                    // Apply the same background wallpaper as the hero banner
+                    const heroBanner = document.querySelector('.hero-banner');
+                    if (heroBanner) {
+                        const heroBannerBg = heroBanner.style.background || heroBanner.style.backgroundImage;
+                        if (heroBannerBg) {
+                            console.log('Applying hero banner background to screenshot:', heroBannerBg);
+                            screenshotElement.style.background = heroBannerBg;
+                            screenshotElement.style.backgroundSize = 'cover';
+                            screenshotElement.style.backgroundPosition = 'center center';
+                        } else {
+                            console.log('No hero banner background found to apply to screenshot');
+                        }
+                    }
 
                     // Smart screenshot loading with dark mode and format fallbacks
                     function loadScreenshot() {
                         const isDarkMode = document.body.getAttribute('data-theme') === 'dark';
                         const basePath = 'mtkclient/gui/images/';
                         
+                        // Enhanced screenshot paths with Windows-specific and general fallbacks
                         const imagePaths = [];
                         if (isDarkMode) {
                             imagePaths.push(basePath + 'screenshot_dark.jpg');
                             imagePaths.push(basePath + 'screenshot_dark.png');
                         }
+                        // Add Windows-specific screenshot
+                        imagePaths.push(basePath + 'screenshot_win.png');
                         imagePaths.push(basePath + 'screenshot.jpg');
                         imagePaths.push(basePath + 'screenshot.png');
+                        
+                        console.log('Screenshot paths to try:', imagePaths);
                         
                         let currentIndex = 0;
                         
