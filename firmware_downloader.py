@@ -1763,6 +1763,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Clean up RockboxUtility.zip at startup
         QTimer.singleShot(500, self.cleanup_rockbox_utility_zip)
+        
+        # Check for UsbDk cleanup on Windows
+        if platform.system() == "Windows":
+            QTimer.singleShot(600, self.check_usbdk_cleanup)
 
         # Ensure troubleshooting shortcuts are available
         QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
@@ -1918,6 +1922,186 @@ class FirmwareDownloaderGUI(QMainWindow):
                     
         except Exception as e:
             silent_print(f"Error processing RockboxUtility.zip: {e}")
+
+    def check_usbdk_cleanup(self):
+        """Check if UsbDk driver should be cleaned up and offer removal"""
+        try:
+            if platform.system() != "Windows":
+                return
+            
+            # Check if UsbDk driver is present
+            driver_info = self.check_drivers_and_architecture()
+            if not driver_info['has_usbdk_driver']:
+                return  # No UsbDk driver present
+            
+            # Check if UsbDk controller exists
+            usbdk_controller = Path("C:/Program Files/UsbDk Runtime Library/UsbDkController.exe")
+            if not usbdk_controller.exists():
+                silent_print("UsbDk driver detected but controller not found")
+                return
+            
+            # Show cleanup dialog
+            self.show_usbdk_cleanup_dialog()
+            
+        except Exception as e:
+            silent_print(f"Error checking UsbDk cleanup: {e}")
+
+    def show_usbdk_cleanup_dialog(self):
+        """Show dialog offering to remove UsbDk driver"""
+        try:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("USB Development Kit Cleanup")
+            msg_box.setText("USB Development Kit Driver Detected")
+            msg_box.setInformativeText(
+                "The USB Development Kit (UsbDk) driver is no longer needed for Innioasis Updater.\n\n"
+                "Would you like to remove it to clean up your system?\n\n"
+                "This will:\n"
+                "• Uninstall the UsbDk driver\n"
+                "• Remove the UsbDk Runtime Library directory\n"
+                "• Reboot your PC to complete the cleanup"
+            )
+            msg_box.setIcon(QMessageBox.Information)
+            
+            # Create buttons
+            uninstall_btn = msg_box.addButton("Remove UsbDk Driver", QMessageBox.ActionRole)
+            keep_btn = msg_box.addButton("Keep Driver", QMessageBox.RejectRole)
+            
+            # Set default button
+            msg_box.setDefaultButton(uninstall_btn)
+            
+            # Show dialog
+            reply = msg_box.exec()
+            clicked_button = msg_box.clickedButton()
+            
+            if clicked_button == uninstall_btn:
+                self.perform_usbdk_cleanup()
+            else:
+                silent_print("User chose to keep UsbDk driver")
+                
+        except Exception as e:
+            silent_print(f"Error showing UsbDk cleanup dialog: {e}")
+
+    def perform_usbdk_cleanup(self):
+        """Perform the actual UsbDk driver cleanup"""
+        try:
+            silent_print("Starting UsbDk driver cleanup...")
+            
+            # Step 1: Run UsbDkController.exe -u to uninstall
+            usbdk_controller = Path("C:/Program Files/UsbDk Runtime Library/UsbDkController.exe")
+            if usbdk_controller.exists():
+                silent_print("Running UsbDk uninstaller...")
+                try:
+                    result = subprocess.run(
+                        [str(usbdk_controller), "-u"],
+                        capture_output=True,
+                        text=True,
+                        timeout=60,
+                        creationflags=subprocess.CREATE_NO_WINDOW
+                    )
+                    silent_print(f"UsbDk uninstaller result: {result.returncode}")
+                    if result.stdout:
+                        silent_print(f"UsbDk uninstaller output: {result.stdout}")
+                    if result.stderr:
+                        silent_print(f"UsbDk uninstaller error: {result.stderr}")
+                except subprocess.TimeoutExpired:
+                    silent_print("UsbDk uninstaller timed out")
+                except Exception as e:
+                    silent_print(f"Error running UsbDk uninstaller: {e}")
+            else:
+                silent_print("UsbDk controller not found, proceeding with directory cleanup")
+            
+            # Step 2: Delete the UsbDk Runtime Library directory
+            usbdk_dir = Path("C:/Program Files/UsbDk Runtime Library")
+            if usbdk_dir.exists():
+                silent_print("Removing UsbDk Runtime Library directory...")
+                try:
+                    import shutil
+                    shutil.rmtree(usbdk_dir, ignore_errors=True)
+                    silent_print("UsbDk Runtime Library directory removed")
+                except Exception as e:
+                    silent_print(f"Error removing UsbDk directory: {e}")
+            else:
+                silent_print("UsbDk Runtime Library directory not found")
+            
+            # Step 3: Show reboot dialog
+            self.show_reboot_dialog()
+            
+        except Exception as e:
+            silent_print(f"Error during UsbDk cleanup: {e}")
+
+    def show_reboot_dialog(self):
+        """Show dialog asking user to reboot"""
+        try:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Restart Required")
+            msg_box.setText("UsbDk Driver Cleanup Complete")
+            msg_box.setInformativeText(
+                "The UsbDk driver has been removed from your system.\n\n"
+                "Please restart your PC to complete the cleanup process.\n\n"
+                "When you return to Innioasis Updater, you'll have a fully working setup! 🎉"
+            )
+            msg_box.setIcon(QMessageBox.Information)
+            
+            # Create buttons
+            reboot_now_btn = msg_box.addButton("Restart Now", QMessageBox.ActionRole)
+            reboot_later_btn = msg_box.addButton("Restart Later", QMessageBox.RejectRole)
+            
+            # Set default button
+            msg_box.setDefaultButton(reboot_now_btn)
+            
+            # Show dialog
+            reply = msg_box.exec()
+            clicked_button = msg_box.clickedButton()
+            
+            if clicked_button == reboot_now_btn:
+                self.initiate_system_reboot()
+            else:
+                silent_print("User chose to restart later")
+                
+        except Exception as e:
+            silent_print(f"Error showing reboot dialog: {e}")
+
+    def initiate_system_reboot(self):
+        """Initiate a system reboot"""
+        try:
+            silent_print("Initiating system reboot...")
+            
+            # Use Windows shutdown command to reboot
+            subprocess.run(
+                ["shutdown", "/r", "/t", "10", "/c", "Innioasis Updater: Restarting to complete UsbDk cleanup"],
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
+            
+            # Show countdown dialog
+            self.show_reboot_countdown()
+            
+        except Exception as e:
+            silent_print(f"Error initiating reboot: {e}")
+
+    def show_reboot_countdown(self):
+        """Show countdown dialog before reboot"""
+        try:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("System Restarting")
+            msg_box.setText("Your PC will restart in 10 seconds...")
+            msg_box.setInformativeText(
+                "The system is restarting to complete the UsbDk driver cleanup.\n\n"
+                "Innioasis Updater will close now.\n\n"
+                "Thank you for using Innioasis Updater! 🚀"
+            )
+            msg_box.setIcon(QMessageBox.Information)
+            
+            # Add only OK button
+            msg_box.addButton("OK", QMessageBox.AcceptRole)
+            
+            # Show dialog
+            msg_box.exec()
+            
+            # Close the application
+            QApplication.quit()
+            
+        except Exception as e:
+            silent_print(f"Error showing reboot countdown: {e}")
 
     def comprehensive_shortcut_cleanup(self):
         """Silent comprehensive cleanup of all Y1 Helper and related shortcuts - no user interaction"""
