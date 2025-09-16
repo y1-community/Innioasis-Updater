@@ -3068,6 +3068,33 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.settings_btn.clicked.connect(self.show_settings_dialog)
         device_type_layout.addWidget(self.settings_btn)
         
+        # Add Toolkit button for Windows users
+        if platform.system() == "Windows":
+            self.toolkit_btn = QPushButton("Toolkit")
+            self.toolkit_btn.setFixedHeight(24)  # Match dropdown height
+            self.toolkit_btn.setStyleSheet("""
+                QPushButton {
+                    background-color: #2d2d2d;
+                    color: #cccccc;
+                    border: 1px solid #555555;
+                    padding: 4px 8px;
+                    border-radius: 3px;
+                    font-size: 11px;
+                }
+                QPushButton:hover {
+                    background-color: #3d3d3d;
+                    border-color: #666666;
+                }
+                QPushButton:pressed {
+                    background-color: #1d1d1d;
+                    border-color: #444444;
+                }
+            """)
+            self.toolkit_btn.setCursor(Qt.PointingHandCursor)
+            self.toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
+            self.toolkit_btn.clicked.connect(self.open_toolkit_folder)
+            device_type_layout.addWidget(self.toolkit_btn)
+        
         device_type_layout.addStretch()
 
         # Device model filter
@@ -3126,6 +3153,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Initially enable settings button (it will be disabled during operations if needed)
         self.settings_btn.setEnabled(True)
+        # Enable toolkit button for Windows users
+        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+            self.toolkit_btn.setEnabled(True)
         print("DEBUG: Settings button initially enabled")
 
 
@@ -3764,6 +3794,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Disable remaining buttons during installation
             self.settings_btn.setEnabled(False)
+            if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+                self.toolkit_btn.setEnabled(False)
             
             # Start the worker
             self.spflash_worker.start()
@@ -3791,6 +3823,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Re-enable buttons
             self.settings_btn.setEnabled(True)
+            if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+                self.toolkit_btn.setEnabled(True)
             
             if success:
                 # Show success message and load completion image
@@ -4166,6 +4200,25 @@ class FirmwareDownloaderGUI(QMainWindow):
                                                 "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Y1 Remote Control: {e}")
+
+    def open_toolkit_folder(self):
+        """Open the Innioasis Toolkit folder in File Explorer (Windows only)"""
+        try:
+            if platform.system() != "Windows":
+                return
+            
+            # Open the actual Toolkit folder in %LocalAppData%\Innioasis Updater\Toolkit
+            toolkit_path = Path.home() / "AppData" / "Local" / "Innioasis Updater" / "Toolkit"
+            
+            if toolkit_path.exists():
+                # Open the folder in File Explorer
+                subprocess.run(["explorer", str(toolkit_path)], check=True)
+                self.status_label.setText("Toolkit folder opened in File Explorer")
+            else:
+                QMessageBox.warning(self, "Toolkit Not Found", 
+                                  f"Toolkit folder not found at:\n{toolkit_path}\n\nPlease ensure the toolkit is properly installed.")
+        except Exception as e:
+            QMessageBox.error(self, "Error", f"Failed to open toolkit folder: {e}")
     
     def show_settings_dialog(self):
         """Show enhanced settings dialog with installation method and shortcut management"""
@@ -4447,6 +4500,13 @@ Method 2 - MTKclient: Direct technical installation
         utility_update_btn.setToolTip("Download the latest updater.py script")
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
         tools_layout.addWidget(utility_update_btn)
+        
+        # Open Toolkit button (Windows only)
+        if platform.system() == "Windows":
+            open_toolkit_btn = QPushButton("Open Toolkit")
+            open_toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
+            open_toolkit_btn.clicked.connect(self.open_toolkit_folder)
+            tools_layout.addWidget(open_toolkit_btn)
         
         # Add tools tab to tab widget
         tab_widget.addTab(tools_tab, "Tools")
@@ -5460,6 +5520,8 @@ Method 2 - MTKclient: Direct technical installation
             self.update_btn_right.setText("Check for Utility Updates")
         # Also disable settings button during operations
         self.settings_btn.setEnabled(False)
+        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+            self.toolkit_btn.setEnabled(False)
 
     def enable_update_button(self):
         """Enable the update button when returning to ready state"""
@@ -5468,6 +5530,8 @@ Method 2 - MTKclient: Direct technical installation
             self.update_btn_right.setText("Check for Utility Updates")
         # Also enable settings button when operations are complete
         self.settings_btn.setEnabled(True)
+        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+            self.toolkit_btn.setEnabled(True)
 
     def hide_inappropriate_buttons_for_spflash(self):
         """Hide buttons that are inappropriate for SP Flash Tool methods"""
@@ -6391,6 +6455,9 @@ Method 2 - MTKclient: Direct technical installation
         # Ensure settings button is enabled
         if hasattr(self, 'settings_btn'):
             self.settings_btn.setEnabled(True)
+        # Ensure toolkit button is enabled for Windows users
+        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+            self.toolkit_btn.setEnabled(True)
 
     def populate_package_list(self):
         """Populate the package list widget with release information"""
@@ -6425,6 +6492,8 @@ Method 2 - MTKclient: Direct technical installation
             self.package_list.setFocus()  # Give focus to the list for blue highlight
             self.download_btn.setEnabled(True)
             self.settings_btn.setEnabled(True)
+            if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+                self.toolkit_btn.setEnabled(True)
             print("DEBUG: Settings button enabled when package selected")
             # Update button text for the first selected item
             first_item = self.package_list.item(0)

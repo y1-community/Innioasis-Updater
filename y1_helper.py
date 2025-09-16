@@ -419,15 +419,7 @@ class Y1HelperApp(tk.Tk):
                                           activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
         self.screenshot_btn.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
         
-        # New "Install Firmware" button
-        try:
-            self.firmware_btn = ttk.Button(mode_frame, text="Install Firmware", command=self.run_updater_and_exit, style="TButton")
-        except Exception as e:
-            debug_print(f"ttk.Button failed, using tk.Button: {e}")
-            self.firmware_btn = tk.Button(mode_frame, text="Install Firmware", command=self.run_updater_and_exit,
-                                        bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
-                                        activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
-        self.firmware_btn.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
+        # Install Firmware button removed
         
         try:
             self.disable_swap_checkbox = ttk.Checkbutton(mode_frame, text="Disable D-pad Swap", variable=self.disable_dpad_swap_var, command=self.update_controls_display, style="TCheckbutton")
@@ -441,7 +433,6 @@ class Y1HelperApp(tk.Tk):
         self._add_tooltip(self.input_mode_btn, "Input Mode: Click to switch between Touch Screen Mode and Scroll Wheel Mode.")
         self._add_tooltip(self.screenshot_btn, "Screenshot: Capture the current device screen and save it to a file.")
         self._add_tooltip(self.disable_swap_checkbox, "When checked, disables the D-pad swap in Scroll Wheel Mode.")
-        self._add_tooltip(self.firmware_btn, "Launches Innioasis Updater to install new firmware and closes Y1 Helper.")
         
         status_frame = ttk.Frame(main_frame)
         status_frame.pack(fill=tk.X, pady=(10, 0))
@@ -471,168 +462,13 @@ class Y1HelperApp(tk.Tk):
         self.hide_controls_frame()
         self.input_disabled = True
     
-    def launch_rockbox_utility(self):
-        """Shows Rockbox theme installation instructions and launches Rockbox Utility."""
-        # Load configuration to check if dialog should be shown
-        config = self.load_config()
-        show_dialog = config.get('show_rockbox_dialog', True)
-        
-        if show_dialog:
-            # Create custom dialog with instructions and checkbox
-            dialog = tk.Toplevel(self)
-            dialog.title("Rockbox Theme Installation Instructions")
-            dialog.geometry("600x500")
-            dialog.resizable(False, False)
-            dialog.transient(self)
-            dialog.grab_set()
-            
-            # Center dialog on screen
-            dialog.update_idletasks()
-            x = (self.winfo_screenwidth() // 2) - (600 // 2)
-            y = (self.winfo_screenheight() // 2) - (500 // 2)
-            dialog.geometry(f"600x500+{x}+{y}")
-            
-            # Apply theme colors
-            dialog.configure(bg=self.bg_color)
-            
-            # Instructions text
-            instructions_text = """To install themes with Rockbox:
-
-1. Turn on USB storage mode on your Y1 device
-2. Connect it to your computer via USB cable
-3. In Rockbox Utility, configure your device as:
-   • iPod Video, OR
-   • iPod Classic 6G
-4. Make sure to check ONLY:
-   • Themes
-   • Fonts
-5. Click "Customize" then "Install" in Rockbox Utility
-
-This will install your themes and fonts to the device."""
-            
-            # Create text widget with instructions
-            text_frame = tk.Frame(dialog, bg=self.bg_color)
-            text_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(20, 10))
-            
-            text_widget = tk.Text(text_frame, wrap=tk.WORD, bg=self.secondary_bg, fg=self.fg_color, 
-                                 font=(get_platform_font(), 10), relief="flat", bd=0, padx=15, pady=15)
-            text_widget.pack(fill=tk.BOTH, expand=True)
-            text_widget.insert(tk.END, instructions_text)
-            text_widget.config(state=tk.DISABLED)
-            
-            # Checkbox for "do not show again"
-            checkbox_var = tk.BooleanVar()
-            checkbox_frame = tk.Frame(dialog, bg=self.bg_color)
-            checkbox_frame.pack(fill=tk.X, padx=20, pady=(0, 20))
-            
-            checkbox = tk.Checkbutton(checkbox_frame, text="Do not show this dialog again", 
-                                     variable=checkbox_var, bg=self.bg_color, fg=self.fg_color,
-                                     selectcolor=self.bg_color, font=(get_platform_font(), 9))
-            checkbox.pack(anchor="w")
-            
-            # Buttons
-            button_frame = tk.Frame(dialog, bg=self.bg_color)
-            button_frame.pack(fill=tk.X, padx=20, pady=(0, 20))
-            
-            ok_button = tk.Button(button_frame, text="OK", command=lambda: self.handle_rockbox_dialog_ok(dialog, checkbox_var.get()), 
-                                 bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg, 
-                                 activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
-            ok_button.pack(side=tk.RIGHT, padx=(10, 0))
-            
-            cancel_button = tk.Button(button_frame, text="Cancel", command=dialog.destroy,
-                                     bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg, 
-                                     activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
-            cancel_button.pack(side=tk.RIGHT)
-            
-            # Focus on OK button
-            ok_button.focus_set()
-            
-            # Bind Enter key to OK button
-            dialog.bind("<Return>", lambda e: self.handle_rockbox_dialog_ok(dialog, checkbox_var.get()))
-            dialog.bind("<Escape>", lambda e: dialog.destroy())
-            
-        else:
-            # Skip dialog and launch directly
-            self.launch_rockbox_utility_direct()
+    # launch_rockbox_utility method removed
     
-    def handle_rockbox_dialog_ok(self, dialog, do_not_show_again):
-        """Handle OK button click from Rockbox dialog."""
-        # Save configuration if checkbox is checked
-        if do_not_show_again:
-            config = self.load_config()
-            config['show_rockbox_dialog'] = False
-            self.save_config(config)
-        
-        # Close dialog
-        dialog.destroy()
-        
-        # Launch Rockbox Utility and close Y1 Helper
-        self.launch_rockbox_utility_direct()
-        self.terminate_process()
+    # handle_rockbox_dialog_ok method removed
     
-    def launch_rockbox_utility_direct(self):
-        """Directly launches Rockbox Utility from start menu or assets."""
-        try:
-            if platform.system() == "Windows":
-                # Windows: try to launch from start menu
-                start_menu_path = os.path.join(os.environ.get('APPDATA', ''), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Rockbox Utility.lnk')
-                
-                if os.path.exists(start_menu_path):
-                    subprocess.Popen(['cmd', '/c', 'start', '', start_menu_path])
-                    self.status_var.set("Rockbox Utility launched")
-                else:
-                    # Fallback: try to run from assets directory
-                    rockbox_path = os.path.join(self.assets_dir, "RockboxUtility.exe")
-                    if os.path.exists(rockbox_path):
-                        subprocess.Popen([rockbox_path])
-                        self.status_var.set("Rockbox Utility launched")
-                    else:
-                        messagebox.showerror("Error", "Rockbox Utility not found in start menu or assets directory.")
-            else:
-                # macOS and Linux: open Rockbox download page
-                webbrowser.open_new_tab("https://www.rockbox.org/download")
-                self.status_var.set("Opened Rockbox download page")
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to launch Rockbox Utility: {e}")
+    # launch_rockbox_utility_direct method removed
     
-    def run_updater_and_exit(self):
-        """Launches Innioasis Updater and terminates Y1 Helper."""
-        debug_print("run_updater_and_exit called")
-        try:
-            # Look for Innioasis Updater.lnk in Start Menu
-            start_menu_path = os.path.join(os.environ.get('APPDATA', ''), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Innioasis Updater.lnk')
-            
-            if os.path.exists(start_menu_path):
-                # Launch the shortcut (this will open in pythonw with no console)
-                subprocess.Popen(['cmd', '/c', 'start', '', start_menu_path])
-                self.status_var.set("Launching Innioasis Updater...")
-                self.update_idletasks()
-                
-                # Wait a moment for the updater to start, then terminate this process
-                self.after(1000, self.terminate_process)
-            else:
-                # Fallback: try to find and run updater.py directly
-                updater_path = os.path.join(self.base_dir, "updater.py")
-                if os.path.exists(updater_path):
-                    # Use pythonw to run without console window (Windows only)
-                    if platform.system() == "Windows":
-                        pythonw_path = os.path.join(self.base_dir, "pythonw.exe")
-                        if os.path.exists(pythonw_path):
-                            subprocess.Popen([pythonw_path, updater_path])
-                        else:
-                            # Fallback to regular python
-                            subprocess.Popen([sys.executable, updater_path])
-                    else:
-                        # macOS/Linux: use sys.executable
-                        subprocess.Popen([sys.executable, updater_path])
-                    
-                    self.status_var.set("Launching Innioasis Updater...")
-                    self.update_idletasks()
-                    self.after(1000, self.terminate_process)
-                else:
-                    messagebox.showerror("Error", "Innioasis Updater not found. Please ensure it is properly installed.")
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to launch Innioasis Updater: {e}")
+    # run_updater_and_exit method removed
 
     def launch_updater_and_exit(self):
         """Launches updater.py with --force flag and closes Y1 Helper GUI."""
@@ -771,9 +607,6 @@ This will install your themes and fonts to the device."""
         device_menu.add_command(label="Take Screenshot", command=self.take_screenshot)
         device_menu.add_command(label="Recent Apps", command=self.show_recent_apps)
         device_menu.add_command(label="Change Device Language", command=self.change_device_language)
-        device_menu.add_separator()
-        device_menu.add_command(label="Install Firmware", command=self.run_updater_and_exit)
-        device_menu.add_command(label="Rockbox Utility", command=self.launch_rockbox_utility)
         
         self.apps_menu = Menu(menubar, tearoff=0)
         menubar.add_cascade(label="Apps", menu=self.apps_menu)
@@ -785,12 +618,9 @@ This will install your themes and fonts to the device."""
         menubar.add_cascade(label="Help", menu=help_menu)
         self.help_menu = help_menu
         
+        help_menu.add_command(label="Getting Started", command=lambda: webbrowser.open_new_tab("https://troubleshooting.innioasis.app"))
+        help_menu.add_separator()
         help_menu.add_command(label="r/innioasis", command=lambda: webbrowser.open_new_tab("https://www.reddit.com/r/innioasis"))
-        help_menu.add_command(label="Timmkoo Modders Discord", command=lambda: webbrowser.open_new_tab("https://timmkoo.gg"))
-        help_menu.add_separator()
-        help_menu.add_command(label="Reinstall App", command=lambda: webbrowser.open_new_tab("https://www.innioasis.app"))
-        help_menu.add_command(label="Update App", command=self.launch_updater_and_exit)
-        help_menu.add_separator()
         help_menu.add_command(label="Buy Us Coffee", command=lambda: webbrowser.open_new_tab("https://ko-fi.com/teamslide"))
         
         self.apply_menu_colors()
