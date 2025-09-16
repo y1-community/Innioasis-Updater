@@ -63,9 +63,7 @@ class CrossPlatformHelper:
         if platform.system() != "Windows":
             return {
                 'has_mtk_driver': True,
-                'has_usbdk_driver': True,
                 'is_arm64': False,
-                'available_methods': ['guided', 'mtkclient'],
                 'can_install_firmware': True
             }
         
@@ -77,7 +75,7 @@ class CrossPlatformHelper:
         except:
             pass
         
-        # Check for MTK driver (SP Flash Tool driver)
+        # Check for MTK driver (SP Flash Tool driver) - only required driver
         has_mtk_driver = False
         try:
             mediatek_driver_file = Path("C:/Program Files/MediaTek/SP Driver/unins000.exe")
@@ -85,38 +83,18 @@ class CrossPlatformHelper:
         except:
             pass
         
-        # Check for UsbDk driver
-        has_usbdk_driver = False
-        try:
-            usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
-            has_usbdk_driver = usbdk_driver_file.exists()
-        except:
-            pass
-        
-        # Determine available methods based on drivers
-        available_methods = []
+        # Determine if firmware installation is possible
         can_install_firmware = True
-        
         if is_arm64:
             # ARM64 Windows: Only allow firmware downloads, no installation methods
-            available_methods = []
             can_install_firmware = False
-        elif has_mtk_driver and has_usbdk_driver:
-            # Both drivers available: All methods available
-            available_methods = ['guided', 'mtkclient', 'spflash']
-        elif has_mtk_driver and not has_usbdk_driver:
-            # Only MTK driver: Force Method 3 (SP Flash Tool) for this session
-            available_methods = ['spflash']
-        else:
-            # No drivers: No installation methods available
-            available_methods = []
+        elif not has_mtk_driver:
+            # No MTK driver: No installation methods available
             can_install_firmware = False
         
         return {
             'has_mtk_driver': has_mtk_driver,
-            'has_usbdk_driver': has_usbdk_driver,
             'is_arm64': is_arm64,
-            'available_methods': available_methods,
             'can_install_firmware': can_install_firmware
         }
 
@@ -402,17 +380,10 @@ class DriverSetupDialog(QDialog):
                       "You can still download firmware files, but installation methods may not work.\n\n"
                       "Would you like to see the installation guide anyway?")
         else:
-            missing_drivers = []
             if not driver_info['has_mtk_driver']:
-                missing_drivers.append("MediaTek SP Flash Tool Driver")
-            if not driver_info['has_usbdk_driver']:
-                missing_drivers.append("UsbDk Driver")
-            
-            if missing_drivers:
-                message = f"To use all features of Innioasis Updater, you'll need to install:\n\n"
-                for driver in missing_drivers:
-                    message += f"• {driver}\n"
-                message += "\nWould you like help setting these up?"
+                message = ("To use all features of Innioasis Updater, you'll need to install:\n\n"
+                          "• MediaTek USB Driver (SP Flash Tool Driver)\n\n"
+                          "Would you like help setting this up?")
             else:
                 message = "Your drivers look good! You should be able to use all features."
         
@@ -424,8 +395,8 @@ class DriverSetupDialog(QDialog):
         # Buttons
         button_layout = QVBoxLayout()
         
-        if not driver_info['is_arm64'] and (not driver_info['has_mtk_driver'] or not driver_info['has_usbdk_driver']):
-            install_button = QPushButton("Install Missing Drivers")
+        if not driver_info['is_arm64'] and not driver_info['has_mtk_driver']:
+            install_button = QPushButton("Install MTK USB Driver")
             install_button.clicked.connect(self.open_install_guide)
             button_layout.addWidget(install_button)
         
@@ -453,26 +424,10 @@ class UpdateProgressDialog(QDialog):
         self.status_label = QLabel("Initializing..."); self.status_label.setAlignment(Qt.AlignCenter); self.status_label.setWordWrap(True)
         self.progress_bar = QProgressBar(); self.progress_bar.setRange(0, 100); self.progress_bar.setTextVisible(False)
         self.update_button = QPushButton("Run without updating"); self.update_button.clicked.connect(self.run_without_update)
-        self.troubleshoot_button = QPushButton("Open Toolkit"); self.troubleshoot_button.clicked.connect(self.run_troubleshooter)
         
-        # Only show troubleshooting button on Windows x86-64
-        platform_info = CrossPlatformHelper.get_platform_info()
-        if platform_info['is_windows'] and not CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
-            layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.troubleshoot_button); layout.addWidget(self.update_button)
-        else:
-            layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.update_button)
+        layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.update_button)
 
-        if mode == 'troubleshoot_win':
-            self.status_label.setText("Troubleshooting mode activated.\nClick the button to get the latest tools.")
-            self.progress_bar.hide()
-            self.update_button.hide()
-            self.troubleshoot_button.show()
-        elif mode == 'troubleshoot_maclinux':
-            CrossPlatformHelper.open_path("https://innioasis.app")
-            # Close immediately after opening browser
-            QTimer.singleShot(0, self.reject)
-        elif mode == 'update':
-            self.troubleshoot_button.hide()
+        if mode == 'update':
             self.update_worker = UpdateWorker(); self.update_worker.progress_updated.connect(self.progress_bar.setValue)
             self.update_worker.status_updated.connect(self.status_label.setText); self.update_worker.update_completed.connect(self.on_update_completed)
             self.update_worker.start()
@@ -482,7 +437,6 @@ class UpdateProgressDialog(QDialog):
             self.progress_bar.hide()
             self.update_button.setText("Launch Now")
             self.update_button.show()
-            self.troubleshoot_button.show()
             
             # Add "Check for Updates anyway" button for manual rescue
             self.force_update_button = QPushButton("Check for Updates anyway")
@@ -496,16 +450,6 @@ class UpdateProgressDialog(QDialog):
         """Run the app without updating"""
         self.accept()  # Close dialog and continue to app launch
 
-    def run_troubleshooter(self):
-        """Open the Toolkit folder on Windows x86-64"""
-        try:
-            import subprocess
-            subprocess.Popen(['explorer.exe', '%LocalAppData%\\Innioasis Updater\\Toolkit'])
-            self.accept()  # Close dialog after opening toolkit
-        except Exception as e:
-            logging.error(f"Failed to open toolkit: {e}")
-            self.status_label.setText("Failed to open toolkit folder")
-            self.troubleshoot_button.setEnabled(True)
 
     def run_force_update(self):
         """Force an update even when timestamp indicates recent update"""
@@ -774,48 +718,38 @@ def main():
 
     app = QApplication(sys.argv)
     
-    modifiers = QGuiApplication.keyboardModifiers()
-    is_troubleshoot_request = bool(modifiers & (Qt.ShiftModifier | Qt.ControlModifier | Qt.AltModifier | Qt.MetaModifier))
-    
     mode = 'update' # Default mode
     platform_info = CrossPlatformHelper.get_platform_info()
 
-    if is_troubleshoot_request:
-        if platform_info['is_windows']:
-            mode = 'troubleshoot_win'
-        else:
-            mode = 'troubleshoot_maclinux'
+    needs_update = False
+    if args.force: needs_update = True
     else:
-        needs_update = False
-        if args.force: needs_update = True
-        else:
-            try:
-                timestamp_file = Path.cwd() / ".last_update_check"
-                today = str(datetime.date.today())
-                if not timestamp_file.exists() or timestamp_file.read_text() != today: needs_update = True
-            except Exception as e:
-                logging.error("Could not read timestamp file: %s", e); needs_update = True
-        
-        if not needs_update:
-            mode = 'no_update'
+        try:
+            timestamp_file = Path.cwd() / ".last_update_check"
+            today = str(datetime.date.today())
+            if not timestamp_file.exists() or timestamp_file.read_text() != today: needs_update = True
+        except Exception as e:
+            logging.error("Could not read timestamp file: %s", e); needs_update = True
+    
+    if not needs_update:
+        mode = 'no_update'
 
     app.setStyle('Fusion')
     dialog = UpdateProgressDialog(mode=mode)
     dialog.exec()
     
-    # Always launch the main app unless the user is on Mac/Linux and requested troubleshoot
-    if not (is_troubleshoot_request and not platform_info['is_windows']):
-        # Check if we're on ARM64 Windows
-        if platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
-            logging.info("ARM64 Windows detected - launching y1_helper.py...")
-            launch_success = launch_y1_helper_arm64()
-            if not launch_success:
-                logging.error("Failed to launch y1_helper.py")
-        else:
-            logging.info("Attempting to launch firmware_downloader.py...")
-            launch_success = launch_firmware_downloader()
-            if not launch_success:
-                logging.error("Failed to launch firmware_downloader.py")
+    # Always launch the main app
+    # Check if we're on ARM64 Windows
+    if platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
+        logging.info("ARM64 Windows detected - launching y1_helper.py...")
+        launch_success = launch_y1_helper_arm64()
+        if not launch_success:
+            logging.error("Failed to launch y1_helper.py")
+    else:
+        logging.info("Attempting to launch firmware_downloader.py...")
+        launch_success = launch_firmware_downloader()
+        if not launch_success:
+            logging.error("Failed to launch firmware_downloader.py")
     
     sys.exit(0)
 
