@@ -1070,7 +1070,7 @@ class SPFlashToolWorker(QThread):
                     
                 if output:
                     line = output.strip()
-                    silent_print(f"SP Flash Tool: {line}")
+                    silent_print(f"{line}")
                     
                     # Phase detection based on flash_tool.exe output patterns
                     
@@ -1089,9 +1089,8 @@ class SPFlashToolWorker(QThread):
                         installing_phase = False
                         completed_phase = False
                         self.show_initsteps_image.emit()
-                        self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
-                        # Now start showing flash tool output
-                        self.status_updated.emit(f"Flash Tool: {line}")
+                        self.status_updated.emit("Please turn off your Y1 (or insert paperclip in hidden button) and connect it via USB")
+                        # Don't show the raw flash tool output, keep the user-friendly message
                         
                     # Continue with instructions phase until installing phase
                     elif instructions_phase and not installing_phase and not completed_phase:
@@ -1112,10 +1111,10 @@ class SPFlashToolWorker(QThread):
                             installing_phase = True
                             self.show_installing_image.emit()
                             self.disable_update_button.emit()
-                            self.status_updated.emit(f"Flash Tool: {line}")
+                            self.status_updated.emit(f"{line}")
                         else:
                             # Continue showing instructions and flash tool output
-                            self.status_updated.emit(f"Flash Tool: {line}")
+                            self.status_updated.emit(f"{line}")
                         
                     # Installing phase: Downloading and flashing operations
                     elif installing_phase and not completed_phase:
@@ -1131,7 +1130,7 @@ class SPFlashToolWorker(QThread):
                             "% of" in line or
                             "download speed" in line or
                             "Download Succeeded" in line):
-                            self.status_updated.emit(f"Flash Tool: {line}")
+                            self.status_updated.emit(f"{line}")
                         elif (line.startswith("Disconnect!") or
                               "All command exec done!" in line or
                               "FlashTool_EnableWatchDogTimeout" in line):
@@ -1730,7 +1729,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.installation_method = "spflash"  # Default to Method 1 (Guided) on Windows
         else:
             self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
-        self.always_use_method = False  # Default to one-time use
+        # Always use method functionality removed - app now always defaults to Method 1
         self.debug_mode = False  # Default debug mode disabled
         self.last_attempted_method = None  # Track the last attempted installation method
         
@@ -2621,19 +2620,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg_box.setInformativeText("Would you like to try troubleshooting the installation?")
         msg_box.setIcon(QMessageBox.Warning)
         
-        # Create custom buttons for troubleshooting options
+        # Create simplified buttons for troubleshooting options
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
-        
-        # Show Method 2 on all platforms, SP Flash Tool only on Windows
-        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
-        try_method3_btn = None
-        try_method4_btn = None
-        if platform.system() == "Windows":
-            try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
-            try_method4_btn = msg_box.addButton("Try Method 4", QMessageBox.ActionRole)
-        
-        stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
-        exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
+        settings_btn = msg_box.addButton("Settings", QMessageBox.ActionRole)
+        quit_app_btn = msg_box.addButton("Quit App", QMessageBox.RejectRole)
         
         # Set default button
         msg_box.setDefaultButton(try_again_btn)
@@ -2642,59 +2632,22 @@ class FirmwareDownloaderGUI(QMainWindow):
         clicked_button = msg_box.clickedButton()
         
         if clicked_button == try_again_btn:
-            # Try Again - use the last attempted method instead of default method
+            # Try Again - use Method 1 (default method for the platform)
             remove_installation_marker()
-            method = getattr(self, 'last_attempted_method', getattr(self, 'installation_method', 'guided'))
             if platform.system() == "Windows":
-                # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
-                if method == "spflash":
-                    # Method 1: SP Flash Tool (guided)
-                    self.try_method_3()
-                elif method == "spflash4":
-                    # Method 2: SP Flash Tool Alternative
-                    self.try_method_4()
-                elif method == "guided":
-                    # Method 3: Kill orphan libusb processes and restart firmware install
-                    self.stop_mtk_processes()
-                    self.cleanup_libusb_state()
-                    QTimer.singleShot(1000, self.run_mtk_command)
-                elif method == "mtkclient":
-                    # Method 4: Same as pressing Try Method 2
-                    self.show_troubleshooting_instructions()
-                else:
-                    # Fallback to SP Flash Tool method 1
-                    self.try_method_3()
+                # Windows: Use guided SP Flash Tool process (Method 1)
+                self.try_method_3()
             else:
-                # Non-Windows: Original method order
-                if method == "guided":
-                    # Method 1: Kill orphan libusb processes and restart firmware install
-                    self.stop_mtk_processes()
-                    self.cleanup_libusb_state()
-                    QTimer.singleShot(1000, self.run_mtk_command)
-                elif method == "mtkclient":
-                    # Method 2: Same as pressing Try Method 2
-                    self.show_troubleshooting_instructions()
-                else:
-                    # Fallback to guided method
-                    self.stop_mtk_processes()
-                    self.cleanup_libusb_state()
-                    QTimer.singleShot(1000, self.run_mtk_command)
-        elif clicked_button == try_method2_btn and try_method2_btn:
-            # Clear the marker and launch Method 2 troubleshooting
+                # Non-Windows: Use guided MTKclient process (Method 1)
+                self.stop_mtk_processes()
+                self.cleanup_libusb_state()
+                QTimer.singleShot(1000, self.run_mtk_command)
+        elif clicked_button == settings_btn:
+            # Settings - clear marker and open settings dialog
             remove_installation_marker()
-            self.last_attempted_method = "mtkclient"  # Track attempted method
-            self.show_troubleshooting_instructions()
-        elif clicked_button == try_method3_btn and try_method3_btn:
-            # Clear the marker and launch Method 3 troubleshooting
-            remove_installation_marker()
-            self.last_attempted_method = "spflash"  # Track attempted method
-            self.try_method_3()
-        elif clicked_button == stop_install_btn:
-            # Stop install and return to ready state
-            remove_installation_marker()
-            self.revert_to_startup_state()
+            self.show_settings_dialog()
         else:
-            # Exit the application
+            # Quit App - exit the application
             QApplication.quit()
 
     def ensure_recovery_shortcut(self):
@@ -4100,18 +4053,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         install_layout.addWidget(self.method_combo)
         
-        # Always use this method checkbox (only show when methods are available)
-        if platform.system() == "Windows" and driver_info and not driver_info['can_install_firmware']:
-            pass  # Don't show checkbox when no methods available
-        else:
-            self.always_use_checkbox = QCheckBox("Always use this method for future installations")
-            self.always_use_checkbox.setToolTip("When checked, this method will be used automatically for all future firmware installations")
-            
-            # Set checkbox state based on saved preference
-            always_use = getattr(self, 'always_use_method', False)
-            self.always_use_checkbox.setChecked(always_use)
-            
-            install_layout.addWidget(self.always_use_checkbox)
+        # Always use this method checkbox removed - app now always defaults to Method 1
         
         # Labs mode debug checkbox
         self.debug_mode_checkbox = QCheckBox("Enable Debug Mode (Labs)")
@@ -4290,7 +4232,7 @@ Method 2 - MTKclient: Direct technical installation
         # Save installation method settings
         if hasattr(self, 'method_combo'):
             self.installation_method = self.method_combo.currentData()
-        self.always_use_method = self.always_use_checkbox.isChecked()
+        # Always use method functionality removed
         self.debug_mode = self.debug_mode_checkbox.isChecked()
         
         # Save shortcut settings (Windows only)
@@ -4306,10 +4248,7 @@ Method 2 - MTKclient: Direct technical installation
         self.save_installation_preferences()
         
         # Update status message
-        if self.always_use_method:
-            self.status_label.setText(f"Installation method set to: {self.installation_method} (will be used for all future installations)")
-        else:
-            self.status_label.setText(f"Installation method set to: {self.installation_method} (one-time use)")
+        self.status_label.setText(f"Installation method set to: {self.installation_method} (one-time use)")
         
         if self.debug_mode:
             self.status_label.setText(self.status_label.text() + " - Debug mode enabled")
@@ -4320,8 +4259,7 @@ Method 2 - MTKclient: Direct technical installation
         """Save installation preferences to persistent storage"""
         try:
             preferences = {
-                'installation_method': self.installation_method,
-                'always_use_method': self.always_use_method,
+                # Don't save installation_method - always defaults to Method 1 on startup
                 'debug_mode': getattr(self, 'debug_mode', False)
             }
             
@@ -4352,11 +4290,14 @@ Method 2 - MTKclient: Direct technical installation
                 with open(preferences_file, 'r') as f:
                     preferences = json.load(f)
                 
-                # Load saved preferences
-                if 'installation_method' in preferences:
-                    self.installation_method = preferences['installation_method']
-                if 'always_use_method' in preferences:
-                    self.always_use_method = preferences['always_use_method']
+                # Always default to Method 1 on startup, regardless of saved preferences
+                # Method changes in settings are only temporary for the current session
+                if platform.system() == "Windows":
+                    self.installation_method = "spflash"  # Always Method 1 on Windows
+                else:
+                    self.installation_method = "guided"  # Always Method 1 on other platforms
+                
+                # Load other preferences (but not installation_method)
                 if 'debug_mode' in preferences:
                     self.debug_mode = preferences['debug_mode']
                 
@@ -4369,7 +4310,7 @@ Method 2 - MTKclient: Direct technical installation
                     if 'auto_cleanup_enabled' in preferences:
                         self.auto_cleanup_enabled = preferences['auto_cleanup_enabled']
                 
-                silent_print(f"Loaded installation preferences: {preferences}")
+                silent_print(f"Loaded preferences (method reset to default): {preferences}")
             else:
                 silent_print("No saved installation preferences found, using defaults")
         except Exception as e:
@@ -4665,7 +4606,7 @@ Method 2 - MTKclient: Direct technical installation
                 self.installation_method = "spflash"  # Default to Method 1 (Guided) on Windows
             else:
                 self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
-            self.always_use_method = False
+            # Always use method functionality removed
 
     def populate_device_type_combo(self):
         """Dynamically populate device type combo from manifest data"""
@@ -6488,8 +6429,7 @@ Method 2 - MTKclient: Direct technical installation
             # Non-Windows: Use selected method
             method = getattr(self, 'installation_method', 'guided')
         
-        always_use = getattr(self, 'always_use_method', False)
-        silent_print(f"Handling installation method: {method} (always use: {always_use})")
+        silent_print(f"Handling installation method: {method}")
         
         # Store the attempted method for "Try Again" functionality
         self.last_attempted_method = method
@@ -6555,14 +6495,7 @@ Method 2 - MTKclient: Direct technical installation
                 silent_print("=== FALLING BACK TO GUIDED METHOD ===")
                 self.run_mtk_command()
         
-        # If this was a one-time use method, reset to guided for next time
-        # But don't reset if we forced Method 3 due to missing UsbDk driver
-        if not always_use and not (platform.system() == "Windows" and 
-                                  self.check_drivers_and_architecture()['has_mtk_driver'] and 
-                                  not self.check_drivers_and_architecture()['has_usbdk_driver']):
-            silent_print("Resetting to guided method for next installation (one-time use)")
-            self.installation_method = "guided"
-            self.save_installation_preferences()
+        # Method always defaults to Method 1 on app restart, no need to reset here
 
     def refresh_all_data(self):
         """Refresh all data (tokens, manifest, device types, models, software) with cache clearing"""
@@ -6834,19 +6767,10 @@ Method 2 - MTKclient: Direct technical installation
                        "Would you like to try a different approach?")
         msg_box.setIcon(QMessageBox.Warning)
         
-        # Create custom buttons in the desired order: Try Again, Try Method 2, Stop Install, Exit
+        # Create simplified buttons: Try Again, Settings, Quit App
         try_again_btn = msg_box.addButton("Try Again", QMessageBox.ActionRole)
-        try_method2_btn = msg_box.addButton("Try Method 2", QMessageBox.ActionRole)
-        
-        # Only show Method 3 and 4 (SP Flash Tool) buttons on Windows
-        try_method3_btn = None
-        try_method4_btn = None
-        if platform.system() == "Windows":
-            try_method3_btn = msg_box.addButton("Try Method 3", QMessageBox.ActionRole)
-            try_method4_btn = msg_box.addButton("Try Method 4", QMessageBox.ActionRole)
-        
-        stop_install_btn = msg_box.addButton("Stop Install", QMessageBox.ActionRole)
-        exit_btn = msg_box.addButton("Exit", QMessageBox.RejectRole)
+        settings_btn = msg_box.addButton("Settings", QMessageBox.ActionRole)
+        quit_app_btn = msg_box.addButton("Quit App", QMessageBox.RejectRole)
         
         # Set default button
         msg_box.setDefaultButton(try_again_btn)
@@ -6856,67 +6780,22 @@ Method 2 - MTKclient: Direct technical installation
         clicked_button = msg_box.clickedButton()
         
         if clicked_button == try_again_btn:
-            # Try Again - use the last attempted method instead of default method
+            # Try Again - use Method 1 (default method for the platform)
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
-            method = getattr(self, 'last_attempted_method', getattr(self, 'installation_method', 'guided'))
             if platform.system() == "Windows":
-                # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
-                if method == "spflash":
-                    # Method 1: Guided (Windows only)
-                    remove_installation_marker()
-                    self.try_method_3()
-                elif method == "spflash4":
-                    # Method 2: SP Flash (advanced) (Windows only)
-                    remove_installation_marker()
-                    self.try_method_4()
-                elif method == "guided":
-                    # Method 3: Show unplug Y1 prompt and retry normal installation
-                    # Don't clear marker here - it will be cleared after successful installation
-                    self.show_unplug_prompt_and_retry()
-                elif method == "mtkclient":
-                    # Method 4: MTKclient (advanced) - Same as pressing Try Method 2
-                    remove_installation_marker()
-                    self.show_troubleshooting_instructions()
+                # Windows: Use guided SP Flash Tool process (Method 1)
+                remove_installation_marker()
+                self.try_method_3()
             else:
-                # Non-Windows: Original method order
-                if method == "guided":
-                    # Method 1: Show unplug Y1 prompt and retry normal installation
-                    # Don't clear marker here - it will be cleared after successful installation
-                    self.show_unplug_prompt_and_retry()
-                elif method == "mtkclient":
-                    # Method 2: Same as pressing Try Method 2
-                    remove_installation_marker()
-                    self.show_troubleshooting_instructions()
-                else:
-                    # Fallback to guided method
-                    self.show_unplug_prompt_and_retry()
-        elif clicked_button == try_method2_btn:
-            # Try Method 2 (MTKclient)
-            self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
-            # Clear the marker and show troubleshooting instructions
+                # Non-Windows: Use guided MTKclient process (Method 1)
+                # Don't clear marker here - it will be cleared after successful installation
+                self.show_unplug_prompt_and_retry()
+        elif clicked_button == settings_btn:
+            # Settings - clear marker and open settings dialog
             remove_installation_marker()
-            self.last_attempted_method = "mtkclient"  # Track attempted method
-            self.show_troubleshooting_instructions()
-        elif clicked_button == try_method3_btn and try_method3_btn:
-            # Try Method 3 (SP Flash Tool)
-            # No need to terminate MTK processes since Method 3 uses flash_tool.exe directly
-            # Clear the marker and start SP Flash Tool (Windows only)
-            remove_installation_marker()
-            self.last_attempted_method = "spflash"  # Track attempted method
-            self.try_method_3()
-        elif clicked_button == try_method4_btn and try_method4_btn:
-            # Try Method 4 (SP Flash Tool Alternative)
-            # No need to terminate MTK processes since Method 4 uses flash_tool.exe directly
-            # Clear the marker and start SP Flash Tool Alternative (Windows only)
-            remove_installation_marker()
-            self.last_attempted_method = "spflash4"  # Track attempted method
-            self.try_method_4()
-        elif clicked_button == stop_install_btn:
-            # Stop install and return to ready state
-            remove_installation_marker()
-            self.revert_to_startup_state()
+            self.show_settings_dialog()
         else:
-            # Exit the application - don't clear marker as user chose to exit
+            # Quit App - exit the application
             QApplication.quit()
 
     def show_unplug_prompt_and_retry(self):
