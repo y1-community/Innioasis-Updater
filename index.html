@@ -59,7 +59,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, #1a0b2e 0%, #16213e 25%, #0f3460 50%, #533a7d 75%, #4c1d95 100%);
             min-height: 100vh;
             color: var(--text-primary);
             line-height: 1.6;
@@ -112,9 +112,35 @@
             color: white;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 20px;
             flex-wrap: wrap;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .header-download {
+            flex-shrink: 0;
+        }
+        
+        .header-download-btn {
+            padding: 12px 24px !important;
+            font-size: 1rem !important;
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .header-download-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(96, 165, 250, 0.4);
         }
 
         .header-icon {
@@ -407,6 +433,46 @@
             font-size: 1.1rem;
         }
 
+        /* Troubleshooting Cards */
+        .troubleshooting-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            border-left: 4px solid var(--accent-primary);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .troubleshooting-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent-success);
+        }
+
+        .troubleshooting-card h4 {
+            color: var(--accent-primary);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .troubleshooting-card p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        .troubleshooting-card .code-block {
+            margin: 12px 0 0 0;
+            font-size: 13px;
+        }
+
         .download-btn {
             background: var(--gradient-accent);
             color: white;
@@ -467,8 +533,30 @@
             margin-right: auto;
             /* Allow content to overflow */
             overflow: visible;
-            /* Add padding to prevent clipping */
+            /* Responsive padding to prevent clipping - will be overridden by JavaScript */
             padding: 40px 20px;
+        }
+        
+        /* Responsive app demo spacing */
+        @media (max-width: 1400px) {
+            .app-demo {
+                margin: 15px 0;
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .app-demo {
+                margin: 10px 0;
+                padding: 20px 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .app-demo {
+                margin: 5px 0;
+                padding: 10px;
+            }
         }
 
         .app-window {
@@ -726,7 +814,7 @@
             width: 100%;
             height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
             /* Prevent any internal reflow - scale like PNG */
@@ -776,6 +864,69 @@
             min-width: 100% !important;
             max-width: 100% !important;
             flex: 1 !important;
+        }
+
+        /* Responsive simulator sizing for intermediate widths */
+        @media (max-width: 1400px) and (min-width: 1201px) {
+            .app-window {
+                width: 1400px;
+                transform: scale(0.875); /* 1400/1600 = 0.875 */
+                transform-origin: center top;
+            }
+            
+            .app-window.installation-mode {
+                width: 1400px;
+            }
+        }
+
+        @media (max-width: 1200px) and (min-width: 1001px) {
+            .app-window {
+                width: 1200px;
+                transform: scale(0.75); /* 1200/1600 = 0.75 */
+                transform-origin: center top;
+            }
+            
+            .app-window.installation-mode {
+                width: 1200px;
+            }
+        }
+
+        @media (max-width: 1000px) and (min-width: 769px) {
+            .app-window {
+                width: 1000px;
+                transform: scale(0.625); /* 1000/1600 = 0.625 */
+                transform-origin: center top;
+            }
+            
+            .app-window.installation-mode {
+                width: 1000px;
+            }
+        }
+
+        /* Ensure modals within app-content scale with the simulator - REMOVED STATIC SCALING */
+        /* Modal scaling is now handled dynamically by JavaScript to match simulator scaling exactly */
+
+        /* Additional breakpoints for smoother transitions */
+        @media (max-width: 1600px) and (min-width: 1401px) {
+            .app-window {
+                width: 1600px;
+                transform: scale(1);
+                transform-origin: center top;
+            }
+        }
+
+        @media (max-width: 900px) and (min-width: 769px) {
+            .app-window {
+                width: 900px;
+                transform: scale(0.5625); /* 900/1600 = 0.5625 */
+                transform-origin: center top;
+            }
+            
+            .app-window.installation-mode {
+                width: 900px;
+            }
+            
+            /* Modal scaling removed - handled by JavaScript */
         }
 
         /* Prevent all internal elements from reflowing - scale like PNG */
@@ -1184,9 +1335,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 10000;
             backdrop-filter: blur(2px);
             border-radius: 12px;
+            /* Ensure modal is contained within simulator */
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .app-modal {
@@ -1377,6 +1533,11 @@
             display: block;
             text-align: center;
         }
+        
+        .app-modal-icon {
+            display: block;
+            text-align: center;
+        }
 
         .app-modal-tab-content {
             display: block;
@@ -1468,9 +1629,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1100;
+            z-index: 10000;
             backdrop-filter: blur(3px);
             border-radius: 12px;
+            /* Ensure dialog is contained within simulator */
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .app-dialog {
@@ -1597,6 +1763,11 @@
             display: none;
             align-items: center;
             justify-content: center;
+            /* Ensure modal is not affected by any parent transforms */
+            transform: none !important;
+            /* Ensure modal is always visible when shown */
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         .info-modal.show {
@@ -2012,22 +2183,45 @@
             text-align: center;
             font-size: 11px;
             color: var(--text-secondary);
-            margin: 20px 0;
+            margin: 10px 0 20px 0;
             font-style: italic;
         }
 
         /* Hero Banner Styles */
         .hero-banner {
             background: var(--gradient-primary);
-            padding: 40px 20px;
+            padding: 40px 20px 20px 20px;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             border-radius: 20px;
             position: relative;
             /* Allow simulator to float above */
             overflow: visible;
             /* Ensure floating effect is not clipped */
             z-index: 1;
+        }
+        
+        /* Responsive hero banner spacing */
+        @media (max-width: 1400px) {
+            .hero-banner {
+                margin-bottom: 15px;
+                padding: 30px 20px 15px 20px;
+            }
+            
+            .app-disclaimer-outside {
+                margin: 5px 0 15px 0;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-banner {
+                margin-bottom: 10px;
+                padding: 20px 15px 10px 15px;
+            }
+            
+            .app-disclaimer-outside {
+                margin: 5px 0 10px 0;
+            }
         }
 
         .hero-banner::before {
@@ -2941,6 +3135,15 @@
                 gap: 15px;
             }
             
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-download {
+                order: -1; /* Move download button to top on mobile */
+            }
+            
             .header h1 {
                 font-size: 2rem;
             }
@@ -2981,12 +3184,17 @@
     <div class="container">
         <!-- Header Section -->
         <div class="header">
-            <div class="header-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; padding: 8px;">
-                <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater" style="width: 115%; height: 115%; object-fit: contain;">
+            <div class="header-content">
+                <div class="header-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; padding: 8px;">
+                    <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater" style="width: 115%; height: 115%; object-fit: contain;">
+                </div>
+                <div class="header-text">
+                    <h1>Innioasis Updater</h1>
+                    <p id="dynamic-subtitle">We've helped to update <span id="download-count">Loading...</span> Innioasis Y1s on Windows and Mac</p>
+                </div>
             </div>
-            <div class="header-text">
-                <h1>Innioasis Updater</h1>
-                <p id="dynamic-subtitle">We've helped to update <span id="download-count">Loading...</span> Innioasis Y1s on Windows and Mac</p>
+            <div class="header-download">
+                <button onclick="showInstallGuide()" class="btn btn-primary header-download-btn">Get Started</button>
             </div>
         </div>
 
@@ -3044,7 +3252,7 @@
                             </div>
                             <div class="app-status">
                                 <strong>Status</strong>
-                                <div id="status-text">Please disconnect USB from Y1</div>
+                                <div id="status-text">Hey! Please unplug your Y1 from USB</div>
                                 <!-- Progress Bar Container -->
                                 <div class="app-progress-container" id="progress-container" style="display: none;">
                                     <div class="app-progress-text" id="progress-text">Downloading...</div>
@@ -3055,7 +3263,7 @@
                                 </div>
                             </div>
                             <div class="app-getting-ready" id="getting-ready-section">
-                                <strong>Getting Ready:</strong>
+                                <strong>Let's get ready:</strong>
                                 <div class="app-instruction-image">
                                     <img src="https://innioasis.app/mtkclient/gui/images/presteps.png" alt="Installation instructions" class="app-main-image">
                                 </div>
@@ -3123,32 +3331,32 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Install from ZIP Modal -->
-            <div class="app-modal-overlay" id="install-zip-modal" style="display: none;">
-                <div class="app-modal">
-                    <div class="app-modal-header">
-                        <h3 class="app-modal-title">Install from .zip File</h3>
-                        <button class="app-modal-close" onclick="closeInstallZipModal()">&times;</button>
-                    </div>
-                    <div class="app-modal-content">
-                        <div class="app-modal-icon">📦</div>
-                        <p>You can install software packaged in <strong>rom.zip</strong> files using Innioasis Updater.</p>
-                        <p>Simply place your <code>rom.zip</code> file in the same directory as the Innioasis Updater application, and it will automatically detect and allow you to install it.</p>
-                        <div class="highlight">
-                            <strong>Supported formats:</strong>
-                            <ul>
-                                <li>SP Flash Tool compatible rom.zip files</li>
-                                <li>MTKClient compatible rom.zip files</li>
-                                <li>Custom ROM packages with proper structure</li>
-                            </ul>
+                        
+                        <!-- Install from ZIP Modal -->
+                        <div class="app-modal-overlay" id="install-zip-modal" style="display: none;">
+                            <div class="app-modal">
+                                <div class="app-modal-header">
+                                    <h3 class="app-modal-title">Install from .zip File</h3>
+                                    <button class="app-modal-close" onclick="closeInstallZipModal()">&times;</button>
+                                </div>
+                                <div class="app-modal-content">
+                                    <div class="app-modal-icon">📦</div>
+                                    <p>You can install software packaged in <strong>rom.zip</strong> files using Innioasis Updater.</p>
+                                    <p>Simply place your <code>rom.zip</code> file in the same directory as the Innioasis Updater application, and it will automatically detect and allow you to install it.</p>
+                                    <div class="highlight">
+                                        <strong>Supported formats:</strong>
+                                        <ul>
+                                            <li>SP Flash Tool compatible rom.zip files</li>
+                                            <li>MTKClient compatible rom.zip files</li>
+                                            <li>Custom ROM packages with proper structure</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="app-modal-buttons">
+                                    <button class="app-modal-btn app-modal-btn-primary" onclick="closeInstallZipModal()">Got it</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="app-modal-buttons">
-                        <button class="app-modal-btn app-modal-btn-primary" onclick="closeInstallZipModal()">Got it</button>
-                    </div>
-                </div>
             </div>
             <div class="app-disclaimer-outside">This is a scaled approximation of the interface, not an exact replica.</div>
             
@@ -3156,8 +3364,7 @@
                 <h1>Install Firmware Safely & Easily</h1>
                 <p>Innioasis Updater makes it simple to install official firmware and custom ROMs on your Y1 device. No technical knowledge required.</p>
                 <div class="hero-buttons">
-                    <button onclick="showInstallGuide()" class="btn btn-primary">Download Now</button>
-                    <button onclick="showInstallGuide()" class="btn btn-secondary">View Guide</button>
+                    <button onclick="showInstallGuide()" class="btn btn-secondary">Get Started</button>
                 </div>
             </div>
         </div>
@@ -3170,7 +3377,7 @@
                     <div class="guide-header">
                         <button class="guide-close-btn" onclick="closeInstallGuide()">×</button>
                         <h2>🚀 Innioasis Updater for Y1</h2>
-                        <p>Windows, Mac and Linux compatible firmware installation - it's easier than you think!</p>
+                        <p>Windows, Mac and Linux compatible firmware installation - honestly, it's easier than you think!</p>
                     </div>
 
                     <!-- Platform Selector -->
@@ -3313,11 +3520,11 @@
                         <!-- Step 1: Homebrew -->
                         <div class="step" id="mac-step-1">
                             <h4>Step 1: Install Homebrew</h4>
-                            <p>Homebrew is like a package manager that helps install all the pieces your Mac needs. Think of it as a helpful assistant that makes sure everything works together properly.</p>
+                            <p>Homebrew is like a package manager that helps install all the pieces your Mac needs. Think of it as a helpful assistant that makes sure everything works together nicely.</p>
                             
                             <div class="download-section">
                                 <h5>📥 Get Homebrew</h5>
-                                <p>Click the button below to visit the Homebrew website and follow their simple installation guide:</p>
+                                <p>Click the button below to visit the Homebrew website and follow their straightforward installation guide:</p>
                                 <button class="btn btn-primary" onclick="openHomebrew()">Visit Homebrew Website</button>
                             </div>
                             
@@ -3371,7 +3578,7 @@
                     <!-- Linux Installation Guide -->
                     <div class="installation-guide" id="linux-guide">
                         <h4>🐧 Linux Installation</h4>
-                        <p>Linux users, you're in luck! Ubuntu works best, but most other distributions should work too. We'll open a comprehensive guide that shows you exactly what to install.</p>
+                        <p>Linux users, you're in luck! Ubuntu works best, but most other distributions should work too. We'll open a helpful guide that shows you exactly what to install.</p>
                         
                         <div class="download-section">
                             <h5>📖 Installation Guide</h5>
@@ -3384,45 +3591,71 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Device Type Dialog -->
-            <div class="app-modal-overlay" id="device-type-dialog" style="display: none;">
-                <div class="app-modal">
-                    <div class="app-modal-header">
-                        <h3 class="app-modal-title">Device Type Selection Guide</h3>
-                        <button class="app-modal-close" onclick="closeDeviceTypeDialog()">&times;</button>
-                    </div>
-                    <div class="app-modal-content">
-                        <div class="app-modal-description">
-                            <h4>Device Type Selection Guide</h4>
-                            <p><strong>Type A Devices:</strong> This is the recommended starting point for most users. Install this first to see if it meets your needs.</p>
-                            <p><strong>Type B Devices:</strong> If your scroll wheel doesn't respond properly after installing Type A, try one of the Type B options. These are alternative configurations that may resolve scroll wheel issues.</p>
-                            <p><strong>Recommendation:</strong> Always start with Type A. Only move to Type B if you experience scroll wheel problems.</p>
+                        
+                        <!-- Device Type Dialog -->
+                        <div class="app-modal-overlay" id="device-type-dialog" style="display: none;">
+                            <div class="app-modal">
+                                <div class="app-modal-header">
+                                    <h3 class="app-modal-title">Device Type Selection Guide</h3>
+                                    <button class="app-modal-close" onclick="closeDeviceTypeDialog()">&times;</button>
+                                </div>
+                                <div class="app-modal-content">
+                                    <div class="app-modal-description">
+                                        <h4>Device Type Selection Guide</h4>
+                                        <p><strong>Type A Devices:</strong> This is the recommended starting point for most users. Install this first to see if it meets your needs.</p>
+                                        <p><strong>Type B Devices:</strong> If your scroll wheel doesn't respond nicely after installing Type A, try one of the Type B options. These are alternative configurations that may fix scroll wheel issues.</p>
+                                        <p><strong>Recommendation:</strong> Always start with Type A. Only move to Type B if you experience scroll wheel problems.</p>
+                                    </div>
+                                </div>
+                                <div class="app-modal-buttons">
+                                    <button class="app-modal-btn app-modal-btn-primary" onclick="closeDeviceTypeDialog()">Got it</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="app-modal-buttons">
-                        <button class="app-modal-btn app-modal-btn-primary" onclick="closeDeviceTypeDialog()">Got it</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Install Dialog -->
-            <div class="app-modal-overlay" id="install-dialog" style="display: none;">
-                <div class="app-modal">
-                    <div class="app-modal-header">
-                        <h3 class="app-modal-title" id="dialog-title">Installation Dialog</h3>
-                        <button class="app-modal-close" onclick="closeInstallDialog()">&times;</button>
-                    </div>
-                    <div class="app-modal-content">
-                        <div class="app-dialog-icon" id="dialog-icon">⚠️</div>
-                        <p id="dialog-message">Please follow the instructions carefully.</p>
-                    </div>
-                    <div class="app-modal-buttons">
-                        <button class="app-modal-btn app-modal-btn-secondary" onclick="cancelInstallDialog()">Cancel</button>
-                        <button class="app-modal-btn app-modal-btn-primary" onclick="confirmInstallDialog()">OK</button>
-                    </div>
-                </div>
+                        
+                        <!-- Disconnect USB Modal -->
+                        <div class="app-modal-overlay" id="disconnect-usb-modal" style="display: none;">
+                            <div class="app-modal">
+                                <div class="app-modal-header">
+                                    <h3 class="app-modal-title">Disconnect USB</h3>
+                                    <button class="app-modal-close" onclick="closeDisconnectUsbModal()">&times;</button>
+                                </div>
+                                <div class="app-modal-content">
+                                    <div class="app-modal-icon" style="font-size: 48px; text-align: center; margin: 20px 0; color: #f59e0b;">⚠️</div>
+                                    <div class="app-modal-description">
+                                        <p style="font-size: 16px; line-height: 1.5; margin-bottom: 16px; text-align: center;">
+                                            <strong>Hey! Please unplug the USB from your Y1 and press OK, then we'll guide you through the next steps.</strong>
+                                        </p>
+                                        <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 8px; margin: 16px 0;">
+                                            <p style="margin: 0; font-size: 14px; color: var(--text-secondary);">
+                                                <strong>Important:</strong> Make sure the USB cable is completely disconnected from your Y1 device before continuing.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-modal-buttons">
+                                    <button class="app-modal-btn app-modal-btn-primary" onclick="confirmDisconnectUsb()">OK, I've disconnected it</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Install Dialog -->
+                        <div class="app-modal-overlay" id="install-dialog" style="display: none;">
+                            <div class="app-modal">
+                                <div class="app-modal-header">
+                                    <h3 class="app-modal-title" id="dialog-title">Installation Dialog</h3>
+                                    <button class="app-modal-close" onclick="closeInstallDialog()">&times;</button>
+                                </div>
+                                <div class="app-modal-content">
+                                    <div class="app-dialog-icon" id="dialog-icon">⚠️</div>
+                                    <p id="dialog-message">Please follow the instructions - we'll guide you through this!</p>
+                                </div>
+                                <div class="app-modal-buttons">
+                                    <button class="app-modal-btn app-modal-btn-secondary" onclick="cancelInstallDialog()">Cancel</button>
+                                    <button class="app-modal-btn app-modal-btn-primary" onclick="confirmInstallDialog()">OK</button>
+                                </div>
+                            </div>
+                        </div>
             </div>
             
             
@@ -3434,7 +3667,7 @@
                     <p>When installing the MediaTek driver, you may see a dialog asking about removing the "origin driver". Here's what to do:</p>
                     
                     <div class="highlight">
-                        <strong>Important:</strong> If the installer asks "Remove origin driver?", click <strong>Yes</strong>. This is normal and helps ensure the driver works properly with your Y1 device.
+                        <strong>Important:</strong> If the installer asks "Remove origin driver?", click <strong>Yes</strong>. This is totally normal and helps make sure the driver works nicely with your Y1 device.
                     </div>
                     
                     <p>This step is necessary because:</p>
@@ -3503,7 +3736,7 @@
                     <p>Hey! Here's what you need to know to get started:</p>
                     <ol>
                         <li><strong>Install drivers first</strong> - The app will tell you which ones you need</li>
-                        <li><strong>Restart your PC</strong> - This makes sure everything works properly</li>
+                        <li><strong>Restart your PC</strong> - This makes sure everything works nicely</li>
                         <li><strong>Disconnect your Y1</strong> - Keep it unplugged until the app tells you to connect it</li>
                         <li><strong>Follow the on-screen instructions</strong> - We'll guide you through each step</li>
                 </ol>
@@ -3511,29 +3744,89 @@
                 </div>
                 
 
-                <!-- Critical Timing -->
-                <div class="info-card">
-                    <h3>⚠️ The Most Important Thing</h3>
-                    <p><strong>Before you start any update:</strong></p>
-                    <ol>
-                        <li><strong>Unplug your Y1 completely</strong> - No USB cable connected at all</li>
-                        <li><strong>Wait for the app to tell you when to plug it in</strong> - Don't guess!</li>
-                        <li><strong>If it fails, unplug and try again</strong> - Same timing every time</li>
-                </ol>
-                    <div class="warning-box">
-                        <h4>💡 Why it fails</h4>
-                        <p>Most problems happen because the Y1 gets connected too early. The app knows exactly when to connect it - trust us on this one!</p>
-                        </div>
-                    </div>
 
                 <!-- Common Issues -->
             <div class="info-card">
                     <h3>🔧 Common Issues & Quick Fixes</h3>
-                    <p><strong>App frozen?</strong> Close it with Task Manager (Ctrl+Shift+Esc), then restart and click "Try Again"</p>
-                    <p><strong>Missing shortcuts?</strong> Run this in Command Prompt:</p>
-                <div class="code-block">"%LocalAppData%\Innioasis Updater\pythonw.exe" updater.py --force</div>
-                    <p><strong>Can't install firmware?</strong> Make sure you have the MTK USB Driver installed - this is the only required Windows USB driver for both Method 1 and Method 2 (both now use SP Flash Tool)</p>
-                    <p><strong>App won't work at all?</strong> Download firmwares from <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a> and use the troubleshooting shortcuts</p>
+                    
+                    <!-- Card 1: USB Timing (Most Important) -->
+                    <div class="troubleshooting-card">
+                        <h4>⚠️ USB Connection Timing</h4>
+                        <p><strong>Before starting any update:</strong></p>
+                        <ol>
+                            <li>Unplug your Y1 completely - No USB cable connected at all</li>
+                            <li>Wait for the app to tell you when to plug it in - Don't guess!</li>
+                            <li>If it fails, unplug and try again - Same timing every time</li>
+                        </ol>
+                        <p><strong>Why it fails:</strong> Most problems happen because the Y1 gets connected too early. The app knows exactly when to connect it - trust us on this one!</p>
+                    </div>
+                    
+                    <!-- Card 2: App frozen - Windows -->
+                    <div class="troubleshooting-card platform-windows">
+                        <h4>🔄 App frozen?</h4>
+                        <p>Close it with Task Manager (Ctrl+Shift+Esc), then restart and click "Try Again"</p>
+                    </div>
+                    
+                    <!-- Card 2: App frozen - Mac -->
+                    <div class="troubleshooting-card platform-mac" style="display: none;">
+                        <h4>🔄 App frozen?</h4>
+                        <p>Force quit the app (Cmd+Option+Esc), then restart and click "Try Again"</p>
+                    </div>
+                    
+                    <!-- Card 3: Check for utility updates (Universal) -->
+                    <div class="troubleshooting-card">
+                        <h4>🆕 Try updating utilities first</h4>
+                        <p>Most issues can be fixed by clicking "Check For Utility Updates" in the Settings dialog. This ensures you have the latest tools.</p>
+                    </div>
+                    
+                    <!-- Card 4: Method selection (Universal) -->
+                    <div class="troubleshooting-card">
+                        <h4>⚙️ Ensure Method 1 is selected</h4>
+                        <p>Open Settings and make sure "Method 1" is selected. This is the most reliable installation method and fixes most compatibility issues.</p>
+                    </div>
+                    
+                    <!-- Card 5: Missing shortcuts - Windows -->
+                    <div class="troubleshooting-card platform-windows">
+                        <h4>🔗 Missing shortcuts?</h4>
+                        <p>Run this in Command Prompt:</p>
+                        <div class="code-block">"%LocalAppData%\Innioasis Updater\pythonw.exe" updater.py --force</div>
+                    </div>
+                    
+                    <!-- Card 5: USB Driver - Windows -->
+                    <div class="troubleshooting-card platform-windows">
+                        <h4>🔌 Can't install firmware?</h4>
+                        <p>Make sure you have the MTK USB Driver installed - this is the only required Windows USB driver for both Method 1 and Method 2 (both now use SP Flash Tool)</p>
+                    </div>
+                    
+                    <!-- Card 5: Mac-specific advice -->
+                    <div class="troubleshooting-card platform-mac" style="display: none;">
+                        <h4>🍎 Mac-specific tips</h4>
+                        <p>On Mac, most issues are resolved by using Method 1 and following the on-screen guidance. If you encounter permission issues, try running from Applications folder or check System Preferences → Security & Privacy.</p>
+                    </div>
+                    
+                    <!-- Card 5b: Mac app location -->
+                    <div class="troubleshooting-card platform-mac" style="display: none;">
+                        <h4>📁 Can't find the app?</h4>
+                        <p>Make sure Innioasis Updater is in your Applications folder. If you're running it from Downloads or Desktop, it might not work properly. Drag it to Applications and try again.</p>
+                    </div>
+                    
+                    <!-- Card 6: Complete reinstall (Universal) -->
+                    <div class="troubleshooting-card">
+                        <h4>🔄 Still having issues?</h4>
+                        <p>If the above steps don't work, try uninstalling Innioasis Updater (or the older Y1 Helper) and reinstalling. This often resolves persistent problems.</p>
+                    </div>
+                    
+                    <!-- Card 7: Manual firmware download (Universal) -->
+                    <div class="troubleshooting-card">
+                        <h4>📥 App won't work at all?</h4>
+                        <p>Download firmwares from <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a> and use the troubleshooting shortcuts</p>
+                    </div>
+                    
+                    <!-- Non-Windows Platform Message -->
+                    <div class="troubleshooting-card platform-non-windows" style="display: none;">
+                        <h4>💻 Troubleshooting for your platform</h4>
+                        <p>These troubleshooting steps are specific to Windows. For Mac and Linux users, please refer to the installation guide or visit <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a> for platform-specific help.</p>
+                    </div>
                         </div>
                         
             <!-- USB Driver Information -->
@@ -3551,7 +3844,7 @@
                 </ul>
                 <div class="success-box">
                     <h4>💡 Driver Installation Tip</h4>
-                    <p>For most users, just the MTK USB Driver is sufficient. The USB Development Kit / UsbDk is only needed for ROM developers who want to test cross-platform compatibility with Innioasis Updater.</p>
+                    <p>For most users, just the MTK USB Driver is enough. The USB Development Kit / UsbDk is only needed for ROM developers who want to test cross-platform compatibility with Innioasis Updater.</p>
                         </div>
                     </div>
 
@@ -3753,126 +4046,44 @@ your-rom-repo/
             <!-- Rockbox Overview -->
             <div class="info-card">
                 <h3>🎵 What is Rockbox?</h3>
-                <p>Rockbox is an open-source music player firmware that transforms your Y1 into a powerful, customizable music player. It's available as a pre-packaged ROM directly from the Innioasis Updater main screen or the <a href="https://innioasis.app/firmware.html" target="_blank">Firmware Directory</a>.</p>
+                <p>Rockbox is a powerful music player that modifies your Y1's Android system with Jo Falkner's Rockbox Android port. Install it directly from Innioasis Updater or <a href="https://innioasis.app/firmware.html" target="_blank">firmware directory</a>.</p>
+                
                 <p><strong>Key Features:</strong></p>
                 <ul>
-                    <li><strong>Advanced audio codec support</strong> - FLAC, OGG, MP3, and many more</li>
-                    <li><strong>Customizable themes</strong> - Thousands of themes available</li>
-                    <li><strong>Advanced playlist management</strong> - Smart playlists, crossfading, gapless playback</li>
-                    <li><strong>Plugin support</strong> - Extend functionality with custom plugins</li>
-                    <li><strong>Crossfade and gapless playback</strong> - Professional audio features</li>
+                    <li>Advanced audio codecs (FLAC, OGG, MP3, etc.)</li>
+                    <li>Thousands of customizable themes</li>
+                    <li>Gapless playback and crossfading</li>
+                    <li>Plugin support for games and apps</li>
                 </ul>
-                <div class="success-box">
-                    <h4>📦 Easy Installation</h4>
-                    <p>Rockbox-y1 is available as a pre-packaged ROM that installs just like any other firmware through Innioasis Updater. No complex setup required!</p>
-                </div>
-                        </div>
-                        
-            <!-- Theme Compatibility -->
-            <div class="info-card">
-                <h3>🎨 Theme Compatibility & Installation</h3>
-                <p><strong>iPod Classic and iPod Video Theme Support:</strong></p>
-                <p>Rockbox-y1 supports themes designed for iPod Classic and iPod Video devices, giving you access to thousands of existing themes. These themes are designed for 240x320 resolution displays, making them perfect for the Y1's screen.</p>
-                
-                <div class="info-box">
-                    <h4>📱 ROM Designations Explained</h4>
-                    <p><strong>When choosing Rockbox ROMs in Innioasis Updater, you'll see these designations:</strong></p>
-                    <ul>
-                        <li><strong>✔️ iPod Themes Compatible:</strong> Full theme support with 240x320 resolution - thousands of iPod Classic/Video themes available with perfect compatibility</li>
-                        <li><strong>🟠 360p:</strong> High resolution display with limited theme selection - better for reading text and detailed graphics but requires custom themes</li>
-                        <li><strong>🌙 Nightly:</strong> Latest development builds with newest features but may be less stable than release versions</li>
-                    </ul>
-                    <p>Choose <strong>iPod Themes Compatible</strong> for maximum theme variety, or <strong>360p</strong> for higher resolution display with fewer theme options.</p>
-                        </div>
-
-                <p><strong>Quick Installation Steps:</strong></p>
-                <ol>
-                    <li><strong>Download theme ZIP files</strong> from <a href="https://themes.rockbox.org/" target="_blank">themes.rockbox.org</a></li>
-                    <li><strong>Extract the ZIP file directly to your Y1's root folder</strong> - This places the .rockbox contents in the correct location</li>
-                    <li><strong>Overwrite files when prompted</strong> - Always choose "Yes to All" when asked to overwrite existing files</li>
-                    <li><strong>Select themes in Rockbox</strong> - Go to Settings → Theme → Browse Themes</li>
-                    <li><strong>Enjoy your new look!</strong> - Switch between themes anytime</li>
-                </ol>
-                <div class="warning-box">
-                    <h4>📱 Display Resolution Note</h4>
-                    <p><strong>All Y1 system software runs at 480x360p, but Rockbox themes work differently:</strong></p>
-                    <ul>
-                        <li><strong>iPod Theme Compatible ROMs:</strong> Rockbox scales up from landscape 240p to maximize compatibility with thousands of iPod Video themes</li>
-                        <li><strong>360p Rockbox ROMs:</strong> Native 360p display with a smaller selection of compatible themes</li>
-                    </ul>
-                    <p>Choose based on your preference: maximum theme variety (iPod compatible) or native high-resolution display (360p).</p>
-                    </div>
-                </div>
-
-            <!-- Theme Installation Methods -->
-            <div class="info-card">
-                <h3>🛠️ Theme Installation Methods</h3>
-                <p><strong>There are two ways to install themes on your Y1:</strong></p>
-                
-                <div class="success-box">
-                    <h4>📁 Method 1: Manual Installation (Recommended)</h4>
-                    <p><strong>This is the most reliable method:</strong></p>
-                    <ol>
-                        <li><strong>Download theme ZIP files</strong> from <a href="https://themes.rockbox.org/" target="_blank">themes.rockbox.org</a></li>
-                        <li><strong>Connect your Y1 to your computer</strong> via USB</li>
-                        <li><strong>Extract the ZIP file directly to your Y1's root folder</strong> - Don't extract to a subfolder</li>
-                        <li><strong>Overwrite all files when prompted</strong> - This ensures the theme installs correctly</li>
-                        <li><strong>Eject your Y1 safely</strong> and restart Rockbox</li>
-                    </ol>
-                    <p><strong>Why this works:</strong> The ZIP files contain a .rockbox folder that gets merged with your device's existing .rockbox folder, placing themes in the correct location.</p>
-                        </div>
-                        
-                <div class="warning-box">
-                    <h4>🔧 Method 2: Rockbox Utility (FAT32 Only)</h4>
-                    <p><strong>Alternative method for FAT32-formatted Y1 devices:</strong></p>
-                    <ol>
-                        <li><strong>Download Rockbox Utility</strong> from <a href="https://www.rockbox.org/wiki/RockboxUtility" target="_blank">rockbox.org</a></li>
-                        <li><strong>Connect your Y1</strong> and open Rockbox Utility</li>
-                        <li><strong>Select only "Themes" and "Fonts"</strong> options in the installation settings</li>
-                        <li><strong>Choose your themes</strong> and install them</li>
-                    </ol>
-                    <p><strong>Important:</strong> This method only works if your Y1 is formatted as FAT32. We still recommend manual installation for better control and reliability.</p>
-                        </div>
-                    </div>
-
-            <!-- Advanced Features -->
-            <div class="info-card">
-                <h3>⚙️ Advanced Rockbox Features</h3>
-                <p><strong>Beyond Basic Music Playback:</strong></p>
-                <ul>
-                    <li><strong>Customizable UI</strong> - Modify every aspect of the interface</li>
-                    <li><strong>Advanced audio settings</strong> - Equalizer, crossfade, gapless playback</li>
-                    <li><strong>Plugin system</strong> - Add games, applications, and utilities</li>
-                    <li><strong>Database management</strong> - Organize your music library efficiently</li>
-                    <li><strong>Remote control support</strong> - Control via ADB when connected to Innioasis Updater</li>
-                </ul>
-                <p><strong>Developer Resources:</strong></p>
-                <ul>
-                    <li><strong>Rockbox-y1 Source:</strong> <a href="https://github.com/rockbox-y1/rockbox" target="_blank">github.com/rockbox-y1/rockbox</a></li>
-                    <li><strong>Theme Development:</strong> Create custom themes using the Rockbox Theme Editor</li>
-                    <li><strong>Plugin Development:</strong> Write custom plugins for enhanced functionality</li>
-                </ul>
-                </div>
-
-            <!-- Installation Methods -->
-            <div class="info-card">
-                <h3>📥 Installation Methods</h3>
-                <p><strong>Multiple Ways to Get Rockbox-y1:</strong></p>
-                <ol>
-                    <li><strong>Innioasis Updater (Recommended)</strong> - Install directly from the main screen</li>
-                    <li><strong>Firmware Directory</strong> - Download from <a href="https://innioasis.app/firmware.html" target="_blank">innioasis.app/firmware.html</a></li>
-                    <li><strong>Advanced Installation</strong> - Download APK from <a href="https://github.com/rockbox-y1/rockbox" target="_blank">GitHub</a> for manual installation</li>
-                </ol>
-                <p><strong>System Requirements:</strong></p>
-                <ul>
-                    <li><strong>Innioasis Y1 device</strong> - Any Y1 model supported</li>
-                    <li><strong>SD Card recommended</strong> - For storing music and themes</li>
-                    <li><strong>USB connection</strong> - For theme installation and file management</li>
-                </ul>
-                <div class="warning-box">
-                    <h4>⚠️ Important Note</h4>
-                    <p>Rockbox-y1 replaces the default Android system. Make sure to backup any important data before installation, as the process will wipe the device.</p>
             </div>
+
+            <!-- ROM Types -->
+            <div class="info-card">
+                <h3>📱 Choose Your ROM Type</h3>
+                <ul>
+                    <li><strong>✔️ iPod Themes Compatible:</strong> Thousands of iPod Classic/Video themes available</li>
+                    <li><strong>🟠 360p:</strong> High resolution display, fewer themes</li>
+                    <li><strong>🌙 Nightly:</strong> Latest features, may be unstable</li>
+                </ul>
+                <p><strong>Recommendation:</strong> Start with "iPod Themes Compatible" for maximum theme variety.</p>
+            </div>
+
+            <!-- Theme Installation -->
+            <div class="info-card">
+                <h3>🎨 Install Themes</h3>
+                <ol>
+                    <li>Download themes from <a href="https://themes.rockbox.org/" target="_blank">themes.rockbox.org</a></li>
+                    <li>Connect Y1 via USB</li>
+                    <li>Extract ZIP directly to Y1's root folder</li>
+                    <li>Overwrite files when prompted</li>
+                    <li>Select themes in Rockbox: Settings → Theme → Browse Themes</li>
+                </ol>
+            </div>
+
+            <!-- Installation Warning -->
+            <div class="warning-box">
+                <h4>⚠️ Important</h4>
+                <p>Rockbox modifies your Y1's Android system. Backup important data before installation - the process may affect your device's current setup.</p>
             </div>
         </div>
 
@@ -4117,12 +4328,12 @@ your-rom-repo/
                         size: 154.8,
                         badges: ["Latest Release"]
                     },
-                        {
-                            tag_name: "2.1.7",
-                            name: "2.1.7",
-                            published_at: "2024-06-20T00:00:00Z",
-                            size: 154.8,
-                            badges: ["Previous Release"]
+                    {
+                        tag_name: "2.1.7",
+                        name: "2.1.7",
+                        published_at: "2024-06-20T00:00:00Z",
+                        size: 154.8,
+                        badges: ["Previous Release"]
                         },
                         {
                             tag_name: "2.1.5",
@@ -4137,7 +4348,7 @@ your-rom-repo/
                             published_at: "2024-04-10T00:00:00Z",
                             size: 153.9,
                             badges: ["Legacy"]
-                        }
+                    }
                 ]
             },
             {
@@ -4235,6 +4446,14 @@ your-rom-repo/
                         size: 154.8,
                         badges: ["Previous Release"],
                         isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2.1.5",
+                        name: "2.1.5",
+                        published_at: "2024-05-15T00:00:00Z",
+                        size: 154.2,
+                        badges: ["Stable"],
+                        isPlaceholder: true
                     }
                 ]
             },
@@ -4275,6 +4494,62 @@ your-rom-repo/
                         published_at: "2024-12-19T00:00:00Z",
                         size: 284.2,
                         badges: ["Nightly | 🟠 360p"],
+                        isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2024-12-18-nightly-ipod-themes-compatible",
+                        name: "Wednesday",
+                        published_at: "2024-12-18T00:00:00Z",
+                        size: 282.5,
+                        badges: ["Nightly | ✅ iPod Themes Compatible"],
+                        isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2024-12-18-nightly-360p",
+                        name: "Wednesday",
+                        published_at: "2024-12-18T00:00:00Z",
+                        size: 285.1,
+                        badges: ["Nightly | 🟠 360p"],
+                        isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2024-12-17-nightly-ipod-themes-compatible",
+                        name: "Tuesday",
+                        published_at: "2024-12-17T00:00:00Z",
+                        size: 282.2,
+                        badges: ["Nightly | ✅ iPod Themes Compatible"],
+                        isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2024-12-17-nightly-360p",
+                        name: "Tuesday",
+                        published_at: "2024-12-17T00:00:00Z",
+                        size: 284.8,
+                        badges: ["Nightly | 🟠 360p"],
+                        isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2024-12-16-nightly-ipod-themes-compatible",
+                        name: "Monday",
+                        published_at: "2024-12-16T00:00:00Z",
+                        size: 281.9,
+                        badges: ["Nightly | ✅ iPod Themes Compatible"],
+                        isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2024-12-16-nightly-360p",
+                        name: "Monday",
+                        published_at: "2024-12-16T00:00:00Z",
+                        size: 284.5,
+                        badges: ["Nightly | 🟠 360p"],
+                        isPlaceholder: true
+                    },
+                    {
+                        tag_name: "2024-12-15-nightly-ipod-themes-compatible",
+                        name: "Sunday",
+                        published_at: "2024-12-15T00:00:00Z",
+                        size: 281.6,
+                        badges: ["Nightly | ✅ iPod Themes Compatible"],
                         isPlaceholder: true
                     }
                 ]
@@ -4411,6 +4686,7 @@ your-rom-repo/
             if (isInstalling) return;
             
             isInstalling = true;
+            installCurrentStep = 0; // Reset step counter
             const statusElement = document.getElementById('status-text');
             const gettingReadyElement = document.getElementById('getting-ready-section');
             const downloadBtn = document.getElementById('download-btn');
@@ -4504,7 +4780,7 @@ your-rom-repo/
                 { status: 'Downloading...', message: `Downloading... 100% (${romSize}MB / ${romSize}MB) - Complete!`, delay: 200, image: 'presteps', showText: 'Download complete!', progress: 100 },
                 { status: 'Processing...', message: 'Extracting rom.zip...', delay: 800, image: 'presteps', showText: 'Extracting firmware files...' },
                 { status: 'Processing...', message: 'Verifying firmware integrity...', delay: 600, image: 'presteps', showText: 'Verifying firmware...' },
-                { status: 'Dialog...', message: 'Please disconnect USB from Y1', delay: 0, image: 'presteps', showText: 'Disconnect USB', dialog: { title: 'Disconnect USB', message: 'Please disconnect the USB from your Y1 and press OK, then follow the next instructions.', icon: '⚠️' } },
+                { status: 'Dialog...', message: 'Hey! Please unplug your Y1 from USB', delay: 0, image: 'presteps', showText: 'Disconnect USB', dialog: { title: 'Disconnect USB', message: 'Hey! Please unplug the USB from your Y1 and press OK, then we\'ll guide you through the next steps.', icon: '⚠️' } },
                 { status: 'Preparing...', message: 'Follow the instructions below to prepare your Y1 for installation...', delay: Math.floor(Math.random() * 8000) + 7000, image: getInitStepsImage(), showText: 'Follow the instructions below to prepare your Y1 for installation...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Connecting to device...`, delay: 1500, image: 'installing', showText: 'Connecting to device...' },
                 { status: 'Installing...', message: `${platform === 'windows' ? 'SP Flash Tool' : 'MTKClient'}: Loading preloader...`, delay: 1200, image: 'installing', showText: 'Loading preloader...' },
@@ -4515,10 +4791,9 @@ your-rom-repo/
                 { status: 'Completed!', message: 'Installation completed successfully!', delay: 3000, image: 'installed', showText: 'Installation completed successfully!', collapseLeft: true }
             ];
             
-            let currentStep = 0;
             
             function runNextStep() {
-                if (currentStep >= installSteps.length) {
+                if (installCurrentStep >= installSteps.length) {
                     // Installation complete - wait longer before reset
                     window.installTimeout = setTimeout(() => {
                         resetPanelLayout();
@@ -4543,16 +4818,23 @@ your-rom-repo/
                     return;
                 }
                 
-                const step = installSteps[currentStep];
+                const step = installSteps[installCurrentStep];
                 
                 // Handle dialog steps
                 if (step.dialog) {
                     statusElement.textContent = step.message || step.status;
-                    showInstallDialog(step.dialog.title, step.dialog.message, step.dialog.icon);
+                    
+                    // Check if this is the disconnect USB dialog
+                    if (step.dialog.title === 'Disconnect USB') {
+                        showDisconnectUsbModal();
+                    } else {
+                        // Use generic dialog for other cases
+                        showInstallDialog(step.dialog.title, step.dialog.message, step.dialog.icon);
+                    }
                     
                     // Set up continuation function
                     window.continueInstallation = () => {
-                        currentStep++;
+                        installCurrentStep++;
                         runNextStep();
                     };
                     return;
@@ -4606,7 +4888,7 @@ your-rom-repo/
                     </div>
                 `;
                 
-                currentStep++;
+                installCurrentStep++;
                 window.installTimeout = setTimeout(runNextStep, step.delay);
             }
             
@@ -4618,6 +4900,7 @@ your-rom-repo/
         let currentSelectedRom = 0;
         let currentInstallMethod = 'method1';
         let isInstalling = false;
+        let installCurrentStep = 0;
         let apiTokens = [];
         let realFirmwareData = [];
 
@@ -4771,82 +5054,110 @@ your-rom-repo/
             return designations;
         }
 
-        // Load API tokens from config.ini
+        // Enhanced API token loading from config.ini with better error handling
         async function loadApiTokens() {
-            try {
-                console.log('Attempting to load API tokens from config.ini...');
-                const response = await fetch('https://innioasis.app/config.ini');
-                if (!response.ok) {
-                    console.warn(`Could not load config.ini (${response.status}), using unauthenticated API calls only`);
-                    return [];
-                }
-                
-                const configText = await response.text();
-                const tokens = [];
-                const lines = configText.split('\n');
-                
-                for (const line of lines) {
-                    const trimmed = line.trim();
-                    if ((trimmed.startsWith('key_') || trimmed.startsWith('token')) && trimmed.includes('=')) {
-                        let token = trimmed.split('=')[1].trim();
-                        if (token && token.length > 10) {
-                            // Add github_pat_ prefix if token doesn't already have it
-                            if (!token.startsWith('github_pat_')) {
-                                token = 'github_pat_' + token;
+            const configUrls = [
+                'https://innioasis.app/config.ini',
+                './config.ini',
+                'config.ini'
+            ];
+            
+            for (const url of configUrls) {
+                try {
+                    console.log(`Attempting to load API tokens from ${url}...`);
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        console.warn(`Could not load config.ini from ${url} (${response.status})`);
+                        continue;
+                    }
+                    
+                    const configText = await response.text();
+                    const tokens = [];
+                    const lines = configText.split('\n');
+                    
+                    for (const line of lines) {
+                        const trimmed = line.trim();
+                        // Look for key_n = or token = patterns
+                        if ((trimmed.match(/^key_\d+\s*=/) || trimmed.match(/^token\s*=/)) && trimmed.includes('=')) {
+                            let token = trimmed.split('=')[1].trim();
+                            // Remove quotes if present
+                            token = token.replace(/^["']|["']$/g, '');
+                            
+                            if (token && token.length > 10) {
+                                // Add github_pat_ prefix if token doesn't already have it
+                                if (!token.startsWith('github_pat_') && !token.startsWith('ghp_')) {
+                                    token = 'github_pat_' + token;
+                                }
+                                tokens.push(token);
                             }
-                            tokens.push(token);
                         }
                     }
+                    
+                    if (tokens.length > 0) {
+                        console.log(`Successfully loaded ${tokens.length} API tokens from ${url}`);
+                        return tokens;
+                    } else {
+                        console.warn(`No valid API tokens found in ${url}`);
+                    }
+                } catch (error) {
+                    console.warn(`Error loading config.ini from ${url}:`, error);
                 }
-                
-                if (tokens.length > 0) {
-                    console.log(`Successfully loaded ${tokens.length} API tokens from config.ini`);
-                } else {
-                    console.warn('No valid API tokens found in config.ini, using unauthenticated API calls only');
-                }
-                return tokens;
-            } catch (error) {
-                console.warn('Error loading config.ini:', error);
-                console.warn('Falling back to unauthenticated API calls only');
-                return [];
             }
+            
+            console.warn('Could not load API tokens from any source, using unauthenticated API calls only');
+            return [];
         }
-
-        // Fetch releases from GitHub API
-        async function fetchGitHubReleases(repo) {
+        
+        // Centralized GitHub API request function with robust token handling
+        async function makeGitHubAPIRequest(url, options = {}) {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
             
             try {
-                console.log(`Fetching releases for ${repo} (unauthenticated)...`);
-                
                 // First try unauthenticated request
-                let response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                let response = await fetch(url, {
                     headers: {
-                        'Accept': 'application/vnd.github.v3+json'
+                        'Accept': 'application/vnd.github.v3+json',
+                        'User-Agent': 'Innioasis-Updater/1.0',
+                        ...options.headers
                     },
-                    signal: controller.signal
+                    signal: controller.signal,
+                    ...options
                 });
                 
                 // If request failed and we have tokens, try with authentication
                 if (!response.ok && apiTokens.length > 0) {
-                    console.log(`Unauthenticated request failed for ${repo} (${response.status}), trying with authentication...`);
+                    console.log(`Unauthenticated request failed (${response.status}), trying with authentication...`);
                     const randomToken = apiTokens[Math.floor(Math.random() * apiTokens.length)];
-                    response = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                    
+                    response = await fetch(url, {
                         headers: {
                             'Authorization': `token ${randomToken}`,
-                            'Accept': 'application/vnd.github.v3+json'
+                            'Accept': 'application/vnd.github.v3+json',
+                            'User-Agent': 'Innioasis-Updater/1.0',
+                            ...options.headers
                         },
-                        signal: controller.signal
+                        signal: controller.signal,
+                        ...options
                     });
-                    console.log(`Authenticated request for ${repo} returned status: ${response.status}`);
-                } else if (!response.ok) {
-                    console.warn(`Unauthenticated request failed for ${repo} (${response.status}) and no tokens available`);
-                } else {
-                    console.log(`Successfully fetched releases for ${repo} (unauthenticated)`);
+                    
+                    console.log(`Authenticated request returned status: ${response.status}`);
                 }
                 
                 clearTimeout(timeoutId);
+                return response;
+                
+            } catch (error) {
+                clearTimeout(timeoutId);
+                throw error;
+            }
+        }
+
+        // Fetch releases from GitHub API using centralized function
+        async function fetchGitHubReleases(repo) {
+            try {
+                console.log(`Fetching releases for ${repo}...`);
+                const response = await makeGitHubAPIRequest(`https://api.github.com/repos/${repo}/releases`);
                 
                 if (!response.ok) {
                     throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
@@ -4967,6 +5278,9 @@ your-rom-repo/
             currentSelectedRom = 0;
             
             // Immediately populate with placeholder data
+            console.log('Initializing with placeholder data...');
+            console.log('placeholderRomData length:', placeholderRomData.length);
+            console.log('realRomData length:', realRomData.length);
             updateRomList();
             
             // Load API tokens and real data
@@ -4998,6 +5312,48 @@ your-rom-repo/
             if (windowsOnlySection) {
                 windowsOnlySection.style.display = platform === 'windows' ? 'block' : 'none';
             }
+            
+            // Show/hide troubleshooting cards based on platform
+            const windowsCards = document.querySelectorAll('.platform-windows');
+            const macCards = document.querySelectorAll('.platform-mac');
+            const nonWindowsCards = document.querySelectorAll('.platform-non-windows');
+            
+            if (platform === 'windows') {
+                // Show Windows-specific troubleshooting cards
+                windowsCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                // Hide Mac-specific cards
+                macCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                // Hide non-Windows message
+                nonWindowsCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+            } else {
+                // Hide Windows-specific troubleshooting cards
+                windowsCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                // Show Mac-specific cards
+                macCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                // Show non-Windows message
+                nonWindowsCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
+            
+            // Initialize modals - ensure they're properly hidden by default
+            const modals = ['device-type-dialog', 'install-dialog', 'install-zip-modal', 'disconnect-usb-modal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            });
         }
 
         function updateRomList() {
@@ -5076,6 +5432,67 @@ your-rom-repo/
             
             romList.innerHTML = '';
             
+            // Ensure minimum listings are always available
+            if (software === 'Original Software' && filteredReleases.length < 1) {
+                console.log('Ensuring minimum Original Software listings');
+                const fallbackOriginal = [
+                    {
+                        tag_name: "2.1.9",
+                        name: "2.1.9",
+                        published_at: "2024-07-15T00:00:00Z",
+                        size: 154.8,
+                        badges: ["Latest Release"],
+                        software_name: "Original Software",
+                        device_type: deviceType || "A",
+                        device_model: "Y1",
+                        isFallback: true
+                    }
+                ];
+                filteredReleases.push(...fallbackOriginal);
+            }
+            
+            if (software === 'Rockbox ROM' && filteredReleases.length < 10) {
+                console.log('Ensuring minimum Rockbox ROM nightly listings');
+                const fallbackRockbox = [];
+                const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const baseDate = new Date('2024-12-15');
+                
+                for (let i = 0; i < 10; i++) {
+                    const date = new Date(baseDate);
+                    date.setDate(date.getDate() + i);
+                    const dayName = days[date.getDay()];
+                    const dateStr = date.toISOString().split('T')[0];
+                    
+                    // Add both iPod Themes Compatible and 360p versions
+                    if (i < 5) {
+                        fallbackRockbox.push({
+                            tag_name: `${dateStr}-nightly-ipod-themes-compatible`,
+                            name: dayName,
+                            published_at: date.toISOString(),
+                            size: 282.5 + (i * 0.5),
+                            badges: ["Nightly | ✅ iPod Themes Compatible"],
+                            software_name: "Rockbox ROM",
+                            device_type: deviceType || "A",
+                            device_model: "Y1",
+                            isFallback: true
+                        });
+                    } else {
+                        fallbackRockbox.push({
+                            tag_name: `${dateStr}-nightly-360p`,
+                            name: dayName,
+                            published_at: date.toISOString(),
+                            size: 284.5 + ((i-5) * 0.5),
+                            badges: ["Nightly | 🟠 360p"],
+                            software_name: "Rockbox ROM",
+                            device_type: deviceType || "A",
+                            device_model: "Y1",
+                            isFallback: true
+                        });
+                    }
+                }
+                filteredReleases.push(...fallbackRockbox);
+            }
+            
             if (filteredReleases.length === 0) {
                 // Final fallback - create basic firmware items
                 console.log('No filtered releases found, creating basic fallback ROMs');
@@ -5149,9 +5566,9 @@ your-rom-repo/
                 romItem.innerHTML = `
                     <div class="app-rom-selection-indicator"></div>
                     <div class="app-rom-content">
-                        <span class="app-rom-day">${displayName}</span>
-                        <span class="app-rom-info">Software: ${release.software_name || 'Unknown'}</span>
-                        <span class="app-rom-badge">${badges || 'Release'}</span>
+                    <span class="app-rom-day">${displayName}</span>
+                    <span class="app-rom-info">Software: ${release.software_name || 'Unknown'}</span>
+                    <span class="app-rom-badge">${badges || 'Release'}</span>
                     </div>
                 `;
                 
@@ -5168,9 +5585,9 @@ your-rom-repo/
                     
                     if (softwareName.toLowerCase().includes('original')) {
                         downloadBtn.textContent = 'Download (Update/Restore)';
-                    } else {
-                        downloadBtn.textContent = 'Download';
-                    }
+                } else {
+                    downloadBtn.textContent = 'Download';
+                }
                 } else {
                     // No firmware selected - show demo prompt
                     downloadBtn.textContent = 'Select Software to Try Demo';
@@ -5308,11 +5725,54 @@ your-rom-repo/
             }
         }
 
-        function openSettingsModal() {
-            const modal = document.getElementById('settings-modal');
+        // Standardized modal opening function
+        function openModal(modalId, initCallback = null) {
+            const modal = document.getElementById(modalId);
             if (modal) {
                 modal.style.display = 'flex';
                 
+                // Apply current scaling to the modal
+                const appDemo = document.querySelector('.app-demo');
+                if (appDemo) {
+                    const currentTransform = appDemo.style.transform;
+                    const currentZoom = appDemo.style.zoom;
+                    let scaleFactor = 1;
+                    
+                    if (currentTransform && currentTransform.includes('scale')) {
+                        const match = currentTransform.match(/scale\(([\d.]+)\)/);
+                        if (match) scaleFactor = parseFloat(match[1]);
+                    } else if (currentZoom && currentZoom !== '1' && currentZoom !== '') {
+                        scaleFactor = parseFloat(currentZoom);
+                    }
+                    
+                    updateModalScaling(scaleFactor);
+                }
+                
+                // Add click-outside-to-close functionality
+                modal.onclick = function(event) {
+                    if (event.target === modal) {
+                        closeModal(modalId);
+                    }
+                };
+                
+                // Run any modal-specific initialization
+                if (initCallback) {
+                    initCallback();
+                }
+            }
+        }
+        
+        // Standardized modal closing function
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                modal.onclick = null; // Remove event listener
+            }
+        }
+
+        function openSettingsModal() {
+            openModal('settings-modal', () => {
                 // Ensure only installation tab is visible when opening
                 switchSettingsTab('installation');
                 
@@ -5321,36 +5781,30 @@ your-rom-repo/
                 if (methodSelect) {
                     methodSelect.value = currentInstallMethod;
                 }
-            }
+            });
         }
 
         function closeSettingsModal() {
-            const modal = document.getElementById('settings-modal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
+            closeModal('settings-modal');
         }
 
         // Installation Dialog Functions
         function showInstallDialog(title, message, icon = '⚠️') {
-            const dialog = document.getElementById('install-dialog');
             const dialogTitle = document.getElementById('dialog-title');
             const dialogMessage = document.getElementById('dialog-message');
             const dialogIcon = document.getElementById('dialog-icon');
             
-            if (dialog && dialogTitle && dialogMessage && dialogIcon) {
+            if (dialogTitle && dialogMessage && dialogIcon) {
                 dialogTitle.textContent = title;
                 dialogMessage.textContent = message;
                 dialogIcon.textContent = icon;
-                dialog.style.display = 'flex';
             }
+            
+            openModal('install-dialog');
         }
 
         function closeInstallDialog() {
-            const dialog = document.getElementById('install-dialog');
-            if (dialog) {
-                dialog.style.display = 'none';
-            }
+            closeModal('install-dialog');
         }
 
         function confirmInstallDialog() {
@@ -5369,14 +5823,14 @@ your-rom-repo/
 
         function resetInstallation() {
             // Reset all installation state
-            currentStep = 0;
+            installCurrentStep = 0;
             const statusElement = document.getElementById('status-text');
             const progressContainer = document.getElementById('progress-container');
             const progressFill = document.getElementById('progress-fill');
             const gettingReadyElement = document.getElementById('getting-ready');
             
             if (statusElement) {
-                statusElement.textContent = 'Please disconnect USB from Y1';
+                statusElement.textContent = 'Hey! Please unplug your Y1 from USB';
             }
             
             if (progressContainer) {
@@ -5409,17 +5863,11 @@ your-rom-repo/
 
         // Install from ZIP Modal Functions
         function showInstallZipModal() {
-            const modal = document.getElementById('install-zip-modal');
-            if (modal) {
-                modal.style.display = 'flex';
-            }
+            openModal('install-zip-modal');
         }
 
         function closeInstallZipModal() {
-            const modal = document.getElementById('install-zip-modal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
+            closeModal('install-zip-modal');
         }
 
         // Scroll to Users Section
@@ -5441,21 +5889,27 @@ your-rom-repo/
         }
 
         function showDeviceTypeDialog() {
-            console.log('showDeviceTypeDialog called');
-            const dialog = document.getElementById('device-type-dialog');
-            console.log('Dialog element found:', dialog);
-            if (dialog) {
-                dialog.style.display = 'flex';
-                console.log('Dialog should now be visible');
-            } else {
-                console.error('Device type dialog element not found!');
-            }
+            openModal('device-type-dialog');
         }
 
         function closeDeviceTypeDialog() {
-            const dialog = document.getElementById('device-type-dialog');
-            if (dialog) {
-                dialog.style.display = 'none';
+            closeModal('device-type-dialog');
+        }
+        
+        // Disconnect USB Modal Functions
+        function showDisconnectUsbModal() {
+            openModal('disconnect-usb-modal');
+        }
+        
+        function closeDisconnectUsbModal() {
+            closeModal('disconnect-usb-modal');
+        }
+        
+        function confirmDisconnectUsb() {
+            closeDisconnectUsbModal();
+            // Continue with installation
+            if (window.continueInstallation) {
+                window.continueInstallation();
             }
         }
 
@@ -5803,8 +6257,15 @@ your-rom-repo/
         function showDriverInfo() {
             const modal = document.getElementById('driverInfoModal');
             if (modal) {
+                // Force immediate visibility
+                modal.style.display = 'flex';
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
+                
+                // Force a repaint to ensure the modal appears immediately
+                modal.offsetHeight;
+                
+                console.log('Driver info modal should now be visible');
             }
         }
 
@@ -5812,6 +6273,7 @@ your-rom-repo/
             const modal = document.getElementById('driverInfoModal');
             if (modal) {
                 modal.classList.remove('show');
+                modal.style.display = 'none';
                 document.body.style.overflow = '';
             }
         }
@@ -5819,8 +6281,15 @@ your-rom-repo/
         function showUsbDevKitInfo() {
             const modal = document.getElementById('usbDevKitInfoModal');
             if (modal) {
+                // Force immediate visibility
+                modal.style.display = 'flex';
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
+                
+                // Force a repaint to ensure the modal appears immediately
+                modal.offsetHeight;
+                
+                console.log('USB DevKit info modal should now be visible');
             }
         }
 
@@ -5828,6 +6297,7 @@ your-rom-repo/
             const modal = document.getElementById('usbDevKitInfoModal');
             if (modal) {
                 modal.classList.remove('show');
+                modal.style.display = 'none';
                 document.body.style.overflow = '';
             }
         }
@@ -5856,8 +6326,19 @@ your-rom-repo/
             const simulatorWidth = 1200;
             const simulatorHeight = 580;
             
-            // Add padding for floating effect
-            const padding = 40;
+            // Add responsive padding for floating effect
+            // Scale padding based on viewport width to avoid excessive gaps on narrow screens
+            let padding;
+            if (viewportWidth <= 768) {
+                padding = 10; // Minimal padding on mobile
+            } else if (viewportWidth <= 1024) {
+                padding = 20; // Medium padding on tablet
+            } else if (viewportWidth <= 1400) {
+                padding = 30; // Standard padding on smaller desktops
+            } else {
+                padding = 40; // Full padding on large screens
+            }
+            
             const availableWidth = viewportWidth - (padding * 2);
             const availableHeight = viewportHeight - (padding * 2);
 
@@ -5998,6 +6479,29 @@ your-rom-repo/
 
             // Set padding to maintain floating effect
             appDemo.style.padding = `${padding}px`;
+            
+            // Apply the same scaling to modals and dialogs within the simulator
+            updateModalScaling(finalZoom);
+        }
+        
+        // Function to dynamically scale modals and dialogs to match simulator scaling
+        function updateModalScaling(scaleFactor) {
+            const modals = document.querySelectorAll('.app-content .app-modal-overlay, .app-content .app-dialog-overlay');
+            modals.forEach(modal => {
+                // Apply the same scale factor as the simulator
+                modal.style.transform = `scale(${scaleFactor})`;
+                modal.style.transformOrigin = 'center center';
+                
+                // Ensure proper z-index and visibility
+                modal.style.zIndex = '10000';
+                modal.style.position = 'absolute';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.right = '0';
+                modal.style.bottom = '0';
+                modal.style.width = '100%';
+                modal.style.height = '100%';
+            });
         }
 
         // Throttled resize handler for better performance
@@ -6051,8 +6555,14 @@ your-rom-repo/
         // Download Counter Functions - Real Data Only! 📊
         async function fetchDownloadStats() {
             try {
-                // Fetch release data from GitHub API
-                const response = await fetch('https://api.github.com/repos/team-slide/Innioasis-Updater/releases');
+                console.log('Fetching download stats with token support...');
+                // Fetch release data from GitHub API using centralized function
+                const response = await makeGitHubAPIRequest('https://api.github.com/repos/team-slide/Innioasis-Updater/releases');
+                
+                if (!response.ok) {
+                    throw new Error(`GitHub API request failed: ${response.status}`);
+                }
+                
                 const releases = await response.json();
                 
                 let totalDownloads = 0;
@@ -6113,14 +6623,68 @@ your-rom-repo/
             }
         }
 
+        // Apply platform-specific styling to troubleshooting section
+        function initializePlatformSpecificContent() {
+            const platform = detectPlatform();
+            console.log(`Detected platform: ${platform}`);
+            
+            // Show/hide troubleshooting cards based on platform
+            const windowsCards = document.querySelectorAll('.platform-windows');
+            const macCards = document.querySelectorAll('.platform-mac');
+            const nonWindowsCards = document.querySelectorAll('.platform-non-windows');
+            
+            if (platform === 'windows') {
+                // Show Windows-specific troubleshooting cards
+                windowsCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                // Hide Mac-specific cards
+                macCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                // Hide non-Windows message
+                nonWindowsCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                console.log('Applied Windows-specific troubleshooting content');
+            } else {
+                // Hide Windows-specific troubleshooting cards
+                windowsCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                // Show Mac-specific cards (and general non-Windows content)
+                macCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                // Show non-Windows message for Linux/other platforms
+                if (platform !== 'mac') {
+                    nonWindowsCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                }
+                console.log(`Applied ${platform}-specific troubleshooting content`);
+            }
+        }
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Disable theme detection for quick rollout - force light theme
             localStorage.setItem('theme', 'light');
             applyTheme('light');
             
-            // Load download stats with pride! 🎉
+            // Apply platform-specific content immediately
+            initializePlatformSpecificContent();
+            
+            // Start download stats immediately (unauthenticated first), load tokens in background for failover
             fetchDownloadStats();
+            
+            // Load API tokens in background for future use and failover
+            loadApiTokens().then(tokens => {
+                apiTokens = tokens;
+                console.log(`API tokens loaded in background: ${tokens.length} tokens available for failover`);
+            }).catch(error => {
+                console.warn('Could not load API tokens for failover, will rely on unauthenticated calls only:', error);
+            });
             
             // Start with users section selected
             selectPlatform('users');
@@ -6130,6 +6694,25 @@ your-rom-repo/
             
             // Update scaling on window resize (throttled for performance)
             window.addEventListener('resize', handleResize);
+            
+            // Ensure any existing modals are properly scaled on initial load
+            setTimeout(() => {
+                const appDemo = document.querySelector('.app-demo');
+                if (appDemo) {
+                    const currentTransform = appDemo.style.transform;
+                    const currentZoom = appDemo.style.zoom;
+                    let scaleFactor = 1;
+                    
+                    if (currentTransform && currentTransform.includes('scale')) {
+                        const match = currentTransform.match(/scale\(([\d.]+)\)/);
+                        if (match) scaleFactor = parseFloat(match[1]);
+                    } else if (currentZoom && currentZoom !== '1' && currentZoom !== '') {
+                        scaleFactor = parseFloat(currentZoom);
+                    }
+                    
+                    updateModalScaling(scaleFactor);
+                }
+            }, 200); // Delay to ensure all elements are rendered
             
             // Initialize app demo with a small delay to ensure DOM is ready
             setTimeout(() => {
