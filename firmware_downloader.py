@@ -3461,8 +3461,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self,
                 "Software Install instructions",
                 "Power off your Y1:\n"
-                "Before inserting cable, Press OK.\n\n"
-                "THEN insert the USB cable.\n\n"
+                "Make sure is NOT connected then, Press OK.\n\n"
+                "Then follow the on screen instructions...\n\n"
                 "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).",
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok
