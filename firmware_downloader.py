@@ -1760,6 +1760,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Check for failed installation and show troubleshooting options
         QTimer.singleShot(300, self.check_failed_installation_on_startup)
+        
+        # Clean up RockboxUtility.zip at startup
+        QTimer.singleShot(500, self.cleanup_rockbox_utility_zip)
 
         # Ensure troubleshooting shortcuts are available
         QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
@@ -1871,6 +1874,50 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error during shortcut cleanup: {e}")
             import traceback
             silent_print(f"Full error traceback: {traceback.format_exc()}")
+
+    def cleanup_rockbox_utility_zip(self):
+        """Clean up RockboxUtility.zip - extract to assets on Windows, delete on other platforms"""
+        try:
+            current_dir = Path.cwd()
+            rockbox_zip = current_dir / "RockboxUtility.zip"
+            
+            if not rockbox_zip.exists():
+                return  # No zip file to process
+            
+            silent_print("Found RockboxUtility.zip, processing...")
+            
+            if platform.system() == "Windows":
+                # On Windows: Extract to assets directory
+                assets_dir = current_dir / "assets"
+                assets_dir.mkdir(exist_ok=True)  # Create assets directory if it doesn't exist
+                
+                try:
+                    with zipfile.ZipFile(rockbox_zip, 'r') as zip_ref:
+                        zip_ref.extractall(assets_dir)
+                        silent_print(f"Extracted RockboxUtility.zip to {assets_dir}")
+                    
+                    # Delete the zip file after successful extraction
+                    rockbox_zip.unlink()
+                    silent_print("Deleted RockboxUtility.zip after extraction")
+                    
+                except Exception as e:
+                    silent_print(f"Error extracting RockboxUtility.zip: {e}")
+                    # Still try to delete the zip file even if extraction failed
+                    try:
+                        rockbox_zip.unlink()
+                        silent_print("Deleted RockboxUtility.zip despite extraction error")
+                    except Exception as delete_error:
+                        silent_print(f"Error deleting RockboxUtility.zip: {delete_error}")
+            else:
+                # On other platforms: Just delete the zip file
+                try:
+                    rockbox_zip.unlink()
+                    silent_print("Deleted RockboxUtility.zip (not needed on this platform)")
+                except Exception as e:
+                    silent_print(f"Error deleting RockboxUtility.zip: {e}")
+                    
+        except Exception as e:
+            silent_print(f"Error processing RockboxUtility.zip: {e}")
 
     def comprehensive_shortcut_cleanup(self):
         """Silent comprehensive cleanup of all Y1 Helper and related shortcuts - no user interaction"""
@@ -3387,6 +3434,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             remove_installation_marker()
             # Restore left panel after failed installation
             self.show_left_panel()
+            # Revert to startup state after showing error
+            QTimer.singleShot(3000, self.revert_to_startup_state)
 
     def handle_handshake_failure(self):
         """Handle handshake failure"""
@@ -3397,16 +3446,22 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle errno2 error"""
         self.status_label.setText("Errno2 error - Innioasis Updater reinstall required")
         self.load_process_ended_image()
+        # Revert to startup state after showing error
+        QTimer.singleShot(3000, self.revert_to_startup_state)
 
     def handle_backend_error(self):
         """Handle backend error"""
         self.status_label.setText("Backend error - libusb backend issue")
         self.load_process_ended_image()
+        # Revert to startup state after showing error
+        QTimer.singleShot(3000, self.revert_to_startup_state)
 
     def handle_keyboard_interrupt(self):
         """Handle keyboard interrupt"""
         self.status_label.setText("Installation interrupted by user")
         self.load_process_ended_image()
+        # Revert to startup state after showing error
+        QTimer.singleShot(3000, self.revert_to_startup_state)
 
     def disable_update_button(self):
         """Disable the update button during MTK installation"""
@@ -3567,7 +3622,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "Please disconnect your Y1 and hold the middle button to turn it on."
                 )
             else:
-                # Show error message
+                # Show error message and revert to startup state
                 self.status_label.setText(f"Flash Tool installation failed: {message}")
                 QMessageBox.critical(
                     self,
@@ -3575,6 +3630,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"Installation failed:\n{message}\n\n"
                     "Please disconnect your Y1 from USB and try again, if this fails visit troubleshooting.innioasis.app."
                 )
+                # Revert to startup state after showing error
+                self.revert_to_startup_state()
                 
         except Exception as e:
             silent_print(f"Error handling Flash Tool completion: {e}")
@@ -6791,11 +6848,13 @@ Method 2 - MTKclient: Direct technical installation
                 # Don't clear marker here - it will be cleared after successful installation
                 self.show_unplug_prompt_and_retry()
         elif clicked_button == settings_btn:
-            # Settings - clear marker and open settings dialog
+            # Settings - clear marker, revert to startup state, and open settings dialog
             remove_installation_marker()
+            self.revert_to_startup_state()
             self.show_settings_dialog()
         else:
-            # Quit App - exit the application
+            # Quit App - revert to startup state and exit the application
+            self.revert_to_startup_state()
             QApplication.quit()
 
     def show_unplug_prompt_and_retry(self):
