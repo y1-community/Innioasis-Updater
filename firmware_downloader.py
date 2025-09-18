@@ -3051,32 +3051,34 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.settings_btn.clicked.connect(self.show_settings_dialog)
         device_type_layout.addWidget(self.settings_btn)
         
-        # Add Toolkit button for Windows users
+        # Add Toolkit button for all platforms
+        self.toolkit_btn = QPushButton("Toolkit")
+        self.toolkit_btn.setFixedHeight(24)  # Match dropdown height
+        self.toolkit_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #3498db;
+                color: white;
+                border: none;
+                padding: 4px 8px;
+                border-radius: 3px;
+                font-weight: bold;
+                font-size: 11px;
+            }
+            QPushButton:hover {
+                background-color: #2980b9;
+            }
+            QPushButton:pressed {
+                background-color: #21618c;
+            }
+        """)
+        self.toolkit_btn.setCursor(Qt.PointingHandCursor)
         if platform.system() == "Windows":
-            self.toolkit_btn = QPushButton("Toolkit")
-            self.toolkit_btn.setFixedHeight(24)  # Match dropdown height
-            self.toolkit_btn.setStyleSheet("""
-                QPushButton {
-                    background-color: #2d2d2d;
-                    color: #cccccc;
-                    border: 1px solid #555555;
-                    padding: 4px 8px;
-                    border-radius: 3px;
-                    font-size: 11px;
-                }
-                QPushButton:hover {
-                    background-color: #3d3d3d;
-                    border-color: #666666;
-                }
-                QPushButton:pressed {
-                    background-color: #1d1d1d;
-                    border-color: #444444;
-                }
-            """)
-            self.toolkit_btn.setCursor(Qt.PointingHandCursor)
             self.toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
             self.toolkit_btn.clicked.connect(self.open_toolkit_folder)
-            device_type_layout.addWidget(self.toolkit_btn)
+        else:
+            self.toolkit_btn.setToolTip("Open Tools settings")
+            self.toolkit_btn.clicked.connect(self.show_tools_dialog)
+        device_type_layout.addWidget(self.toolkit_btn)
         
         device_type_layout.addStretch()
 
@@ -3136,8 +3138,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Initially enable settings button (it will be disabled during operations if needed)
         self.settings_btn.setEnabled(True)
-        # Enable toolkit button for Windows users
-        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+        # Enable toolkit button for all platforms
+        if hasattr(self, 'toolkit_btn'):
             self.toolkit_btn.setEnabled(True)
         print("DEBUG: Settings button initially enabled")
 
@@ -3777,7 +3779,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Disable remaining buttons during installation
             self.settings_btn.setEnabled(False)
-            if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+            if hasattr(self, 'toolkit_btn'):
                 self.toolkit_btn.setEnabled(False)
             
             # Start the worker
@@ -3806,7 +3808,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Re-enable buttons
             self.settings_btn.setEnabled(True)
-            if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+            if hasattr(self, 'toolkit_btn'):
                 self.toolkit_btn.setEnabled(True)
             
             if success:
@@ -4203,6 +4205,45 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to open toolkit folder: {e}")
     
+    def launch_240p_theme_downloader(self):
+        """Launch the 240p theme downloader"""
+        try:
+            script_path = Path("rockbox_240p_theme_downloader.py")
+            if script_path.exists():
+                subprocess.Popen([sys.executable, str(script_path)])
+                self.status_label.setText("240p Theme Downloader launched")
+            else:
+                QMessageBox.warning(self, "File Not Found", 
+                                  "240p Theme Downloader not found. Please ensure rockbox_240p_theme_downloader.py is in the same directory.")
+        except Exception as e:
+            QMessageBox.error(self, "Error", f"Failed to launch 240p Theme Downloader: {e}")
+    
+    def launch_360p_theme_downloader(self):
+        """Launch the 360p theme downloader"""
+        try:
+            script_path = Path("rockbox_360p_theme_downloader.py")
+            if script_path.exists():
+                subprocess.Popen([sys.executable, str(script_path)])
+                self.status_label.setText("360p Theme Downloader launched")
+            else:
+                QMessageBox.warning(self, "File Not Found", 
+                                  "360p Theme Downloader not found. Please ensure rockbox_360p_theme_downloader.py is in the same directory.")
+        except Exception as e:
+            QMessageBox.error(self, "Error", f"Failed to launch 360p Theme Downloader: {e}")
+    
+    def launch_mac_cleanup_utility(self):
+        """Launch the Mac cleanup utility"""
+        try:
+            script_path = Path("mac_cleanup_utility.py")
+            if script_path.exists():
+                subprocess.Popen([sys.executable, str(script_path)])
+                self.status_label.setText("Mac Cleanup Utility launched")
+            else:
+                QMessageBox.warning(self, "File Not Found", 
+                                  "Mac Cleanup Utility not found. Please ensure mac_cleanup_utility.py is in the same directory.")
+        except Exception as e:
+            QMessageBox.error(self, "Error", f"Failed to launch Mac Cleanup Utility: {e}")
+    
     def show_settings_dialog(self):
         """Show enhanced settings dialog with installation method and shortcut management"""
         dialog = QDialog(self)
@@ -4484,6 +4525,31 @@ Method 2 - MTKclient: Direct technical installation
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
         tools_layout.addWidget(utility_update_btn)
         
+        # Theme Downloaders section
+        theme_group = QGroupBox("Theme Downloaders")
+        theme_layout = QVBoxLayout(theme_group)
+        
+        # 240p Theme Downloader button
+        theme_240p_btn = QPushButton("240p Theme Downloader")
+        theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
+        theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
+        theme_layout.addWidget(theme_240p_btn)
+        
+        # 360p Theme Downloader button
+        theme_360p_btn = QPushButton("360p Theme Downloader")
+        theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
+        theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
+        theme_layout.addWidget(theme_360p_btn)
+        
+        tools_layout.addWidget(theme_group)
+        
+        # Mac Cleanup Utility button (Mac only)
+        if platform.system() == "Darwin":
+            mac_cleanup_btn = QPushButton("Mac Cleanup Utility")
+            mac_cleanup_btn.setToolTip("Remove .DS_Store and .Trashes files from Y1 device")
+            mac_cleanup_btn.clicked.connect(self.launch_mac_cleanup_utility)
+            tools_layout.addWidget(mac_cleanup_btn)
+        
         # Open Toolkit button (Windows only)
         if platform.system() == "Windows":
             open_toolkit_btn = QPushButton("Open Toolkit")
@@ -4506,6 +4572,62 @@ Method 2 - MTKclient: Direct technical installation
         save_btn = QPushButton("Save")
         save_btn.clicked.connect(lambda: self.save_settings(dialog))
         button_layout.addWidget(save_btn)
+        
+        layout.addLayout(button_layout)
+        
+        dialog.exec()
+    
+    def show_tools_dialog(self):
+        """Show settings dialog directly to the Tools tab for non-Windows systems"""
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Tools")
+        dialog.setFixedSize(600, 500)
+        dialog.setModal(True)
+        
+        layout = QVBoxLayout(dialog)
+        
+        # Title
+        title_label = QLabel("Tools")
+        title_label.setStyleSheet("font-size: 16px; font-weight: bold; margin: 10px;")
+        layout.addWidget(title_label)
+        
+        # Create tabbed interface
+        tab_widget = QTabWidget()
+        layout.addWidget(tab_widget)
+        
+        # Tools Tab
+        tools_tab = QWidget()
+        tools_layout = QVBoxLayout(tools_tab)
+        
+        tools_title = QLabel("Tools")
+        tools_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
+        tools_layout.addWidget(tools_title)
+        
+        # Y1 Remote Control button
+        y1_remote_btn = QPushButton("Launch Y1 Remote Control")
+        y1_remote_btn.setToolTip("Open Y1 Remote Control application")
+        y1_remote_btn.clicked.connect(self.open_y1_remote_control)
+        tools_layout.addWidget(y1_remote_btn)
+        
+        # Check for Utility Updates button
+        utility_update_btn = QPushButton("Check for Utility Updates")
+        utility_update_btn.setToolTip("Download the latest updater.py script")
+        utility_update_btn.clicked.connect(self.check_for_utility_updates)
+        tools_layout.addWidget(utility_update_btn)
+        
+        # Add tools tab to tab widget
+        tab_widget.addTab(tools_tab, "Tools")
+        
+        # Set the Tools tab as the current tab
+        tab_widget.setCurrentIndex(0)
+        
+        # Buttons
+        button_layout = QHBoxLayout()
+        button_layout.addStretch()
+        
+        close_btn = QPushButton("Close")
+        close_btn.clicked.connect(dialog.accept)
+        button_layout.addWidget(close_btn)
         
         layout.addLayout(button_layout)
         
@@ -5503,7 +5625,7 @@ Method 2 - MTKclient: Direct technical installation
             self.update_btn_right.setText("Check for Utility Updates")
         # Also disable settings button during operations
         self.settings_btn.setEnabled(False)
-        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+        if hasattr(self, 'toolkit_btn'):
             self.toolkit_btn.setEnabled(False)
 
     def enable_update_button(self):
@@ -5513,7 +5635,7 @@ Method 2 - MTKclient: Direct technical installation
             self.update_btn_right.setText("Check for Utility Updates")
         # Also enable settings button when operations are complete
         self.settings_btn.setEnabled(True)
-        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+        if hasattr(self, 'toolkit_btn'):
             self.toolkit_btn.setEnabled(True)
 
     def hide_inappropriate_buttons_for_spflash(self):
@@ -6438,8 +6560,8 @@ Method 2 - MTKclient: Direct technical installation
         # Ensure settings button is enabled
         if hasattr(self, 'settings_btn'):
             self.settings_btn.setEnabled(True)
-        # Ensure toolkit button is enabled for Windows users
-        if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+        # Ensure toolkit button is enabled for all platforms
+        if hasattr(self, 'toolkit_btn'):
             self.toolkit_btn.setEnabled(True)
 
     def populate_package_list(self):
@@ -6475,7 +6597,7 @@ Method 2 - MTKclient: Direct technical installation
             self.package_list.setFocus()  # Give focus to the list for blue highlight
             self.download_btn.setEnabled(True)
             self.settings_btn.setEnabled(True)
-            if platform.system() == "Windows" and hasattr(self, 'toolkit_btn'):
+            if hasattr(self, 'toolkit_btn'):
                 self.toolkit_btn.setEnabled(True)
             print("DEBUG: Settings button enabled when package selected")
             # Update button text for the first selected item
