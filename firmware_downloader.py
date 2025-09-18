@@ -4615,6 +4615,24 @@ Method 2 - MTKclient: Direct technical installation
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
         tools_layout.addWidget(utility_update_btn)
         
+        # Theme Downloaders section
+        theme_group = QGroupBox("Theme Downloaders")
+        theme_layout = QVBoxLayout(theme_group)
+        
+        # 240p Theme Downloader button
+        theme_240p_btn = QPushButton("240p Theme Downloader")
+        theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
+        theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
+        theme_layout.addWidget(theme_240p_btn)
+        
+        # 360p Theme Downloader button
+        theme_360p_btn = QPushButton("360p Theme Downloader")
+        theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
+        theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
+        theme_layout.addWidget(theme_360p_btn)
+        
+        tools_layout.addWidget(theme_group)
+        
         # Add tools tab to tab widget
         tab_widget.addTab(tools_tab, "Tools")
         
