@@ -58,6 +58,27 @@ class CrossPlatformHelper:
             logging.error("Could not open path %s: %s", path_or_url, e)
 
     @staticmethod
+    def launch_mac_app():
+        """Launch Innioasis Updater.app from Applications folder on macOS"""
+        info = CrossPlatformHelper.get_platform_info()
+        if not info['is_macos']:
+            return False
+        
+        app_path = Path("/Applications/Innioasis Updater.app")
+        if not app_path.exists():
+            logging.warning("Innioasis Updater.app not found in Applications folder")
+            return False
+        
+        try:
+            # Use 'open' command to launch the .app bundle
+            subprocess.Popen(['open', str(app_path)])
+            logging.info("Successfully launched Innioasis Updater.app from Applications folder")
+            return True
+        except Exception as e:
+            logging.error("Failed to launch Innioasis Updater.app: %s", e)
+            return False
+
+    @staticmethod
     def check_drivers_and_architecture():
         """Check driver availability and system architecture for Windows users"""
         if platform.system() != "Windows":
@@ -739,8 +760,18 @@ def main():
     dialog.exec()
     
     # Always launch the main app
+    # Check if we're on macOS - launch the .app bundle
+    if platform_info['is_macos']:
+        logging.info("macOS detected - launching Innioasis Updater.app from Applications folder...")
+        launch_success = CrossPlatformHelper.launch_mac_app()
+        if not launch_success:
+            logging.error("Failed to launch Innioasis Updater.app, falling back to Python script...")
+            # Fallback to Python script if .app launch fails
+            launch_success = launch_firmware_downloader()
+            if not launch_success:
+                logging.error("Failed to launch firmware_downloader.py as fallback")
     # Check if we're on ARM64 Windows
-    if platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
+    elif platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
         logging.info("ARM64 Windows detected - launching y1_helper.py...")
         launch_success = launch_y1_helper_arm64()
         if not launch_success:
