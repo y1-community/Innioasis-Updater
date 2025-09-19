@@ -3072,12 +3072,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             }
         """)
         self.toolkit_btn.setCursor(Qt.PointingHandCursor)
-        if platform.system() == "Windows":
-            self.toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
-            self.toolkit_btn.clicked.connect(self.open_toolkit_folder)
-        else:
-            self.toolkit_btn.setToolTip("Open Tools settings")
-            self.toolkit_btn.clicked.connect(self.show_tools_dialog)
+        self.toolkit_btn.setToolTip("Open Innioasis Toolkit - Access all utilities and tools")
+        self.toolkit_btn.clicked.connect(self.show_tools_dialog)
         device_type_layout.addWidget(self.toolkit_btn)
         
         device_type_layout.addStretch()
@@ -4505,60 +4501,6 @@ Method 2 - MTKclient: Direct technical installation
             # Add shortcut tab to tab widget
             tab_widget.addTab(shortcut_tab, "Shortcuts")
         
-        # Tools Tab
-        tools_tab = QWidget()
-        tools_layout = QVBoxLayout(tools_tab)
-        
-        tools_title = QLabel("Tools")
-        tools_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
-        tools_layout.addWidget(tools_title)
-        
-        # Y1 Remote Control button
-        y1_remote_btn = QPushButton("Launch Y1 Remote Control")
-        y1_remote_btn.setToolTip("Open Y1 Remote Control application")
-        y1_remote_btn.clicked.connect(self.open_y1_remote_control)
-        tools_layout.addWidget(y1_remote_btn)
-        
-        # Check for Utility Updates button
-        utility_update_btn = QPushButton("Check for Utility Updates")
-        utility_update_btn.setToolTip("Download the latest updater.py script")
-        utility_update_btn.clicked.connect(self.check_for_utility_updates)
-        tools_layout.addWidget(utility_update_btn)
-        
-        # Theme Downloaders section
-        theme_group = QGroupBox("Theme Downloaders")
-        theme_layout = QVBoxLayout(theme_group)
-        
-        # 240p Theme Downloader button
-        theme_240p_btn = QPushButton("240p Theme Downloader")
-        theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
-        theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
-        theme_layout.addWidget(theme_240p_btn)
-        
-        # 360p Theme Downloader button
-        theme_360p_btn = QPushButton("360p Theme Downloader")
-        theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
-        theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
-        theme_layout.addWidget(theme_360p_btn)
-        
-        tools_layout.addWidget(theme_group)
-        
-        # Mac Cleanup Utility button (Mac only)
-        if platform.system() == "Darwin":
-            mac_cleanup_btn = QPushButton("Mac Cleanup Utility")
-            mac_cleanup_btn.setToolTip("Remove .DS_Store and .Trashes files from Y1 device")
-            mac_cleanup_btn.clicked.connect(self.launch_mac_cleanup_utility)
-            tools_layout.addWidget(mac_cleanup_btn)
-        
-        # Open Toolkit button (Windows only)
-        if platform.system() == "Windows":
-            open_toolkit_btn = QPushButton("Open Toolkit")
-            open_toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
-            open_toolkit_btn.clicked.connect(self.open_toolkit_folder)
-            tools_layout.addWidget(open_toolkit_btn)
-        
-        # Add tools tab to tab widget
-        tab_widget.addTab(tools_tab, "Tools")
         
         
         # Buttons
@@ -4578,66 +4520,82 @@ Method 2 - MTKclient: Direct technical installation
         dialog.exec()
     
     def show_tools_dialog(self):
-        """Show settings dialog directly to the Tools tab for non-Windows systems"""
+        """Show Toolkit dialog with all tools and utilities"""
         dialog = QDialog(self)
-        dialog.setWindowTitle("Tools")
+        dialog.setWindowTitle("Innioasis Toolkit")
         dialog.setFixedSize(600, 500)
         dialog.setModal(True)
         
         layout = QVBoxLayout(dialog)
         
         # Title
-        title_label = QLabel("Tools")
+        title_label = QLabel("Innioasis Toolkit")
         title_label.setStyleSheet("font-size: 16px; font-weight: bold; margin: 10px;")
         layout.addWidget(title_label)
         
-        # Create tabbed interface
-        tab_widget = QTabWidget()
-        layout.addWidget(tab_widget)
+        # Description
+        desc_label = QLabel("Access all Innioasis utilities and tools for your Y1 device")
+        desc_label.setStyleSheet("color: #666; margin: 5px;")
+        layout.addWidget(desc_label)
         
-        # Tools Tab
-        tools_tab = QWidget()
-        tools_layout = QVBoxLayout(tools_tab)
-        
-        tools_title = QLabel("Tools")
-        tools_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
-        tools_layout.addWidget(tools_title)
+        # Main tools layout
+        tools_layout = QVBoxLayout()
         
         # Y1 Remote Control button
         y1_remote_btn = QPushButton("Launch Y1 Remote Control")
         y1_remote_btn.setToolTip("Open Y1 Remote Control application")
         y1_remote_btn.clicked.connect(self.open_y1_remote_control)
+        y1_remote_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
         tools_layout.addWidget(y1_remote_btn)
         
         # Check for Utility Updates button
         utility_update_btn = QPushButton("Check for Utility Updates")
         utility_update_btn.setToolTip("Download the latest updater.py script")
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
+        utility_update_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
         tools_layout.addWidget(utility_update_btn)
         
         # Theme Downloaders section
         theme_group = QGroupBox("Theme Downloaders")
         theme_layout = QVBoxLayout(theme_group)
         
-        # 240p Theme Downloader button
-        theme_240p_btn = QPushButton("240p Theme Downloader")
-        theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
-        theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
-        theme_layout.addWidget(theme_240p_btn)
+        # 240p Theme Downloader button (only if file exists)
+        if Path("rockbox_240p_theme_downloader.py").exists():
+            theme_240p_btn = QPushButton("240p Theme Downloader")
+            theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
+            theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
+            theme_240p_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
+            theme_layout.addWidget(theme_240p_btn)
         
-        # 360p Theme Downloader button
-        theme_360p_btn = QPushButton("360p Theme Downloader")
-        theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
-        theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
-        theme_layout.addWidget(theme_360p_btn)
+        # 360p Theme Downloader button (only if file exists)
+        if Path("rockbox_360p_theme_downloader.py").exists():
+            theme_360p_btn = QPushButton("360p Theme Downloader")
+            theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
+            theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
+            theme_360p_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
+            theme_layout.addWidget(theme_360p_btn)
         
-        tools_layout.addWidget(theme_group)
+        # Only add theme group if it has buttons
+        if theme_layout.count() > 0:
+            tools_layout.addWidget(theme_group)
         
-        # Add tools tab to tab widget
-        tab_widget.addTab(tools_tab, "Tools")
+        # Mac Cleanup Utility button (All platforms, only if file exists)
+        if Path("mac_cleanup_utility.py").exists():
+            mac_cleanup_btn = QPushButton("Clean up Mac Files on Y1")
+            mac_cleanup_btn.setToolTip("Remove .DS_Store and .Trashes files from Y1 device")
+            mac_cleanup_btn.clicked.connect(self.launch_mac_cleanup_utility)
+            mac_cleanup_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
+            tools_layout.addWidget(mac_cleanup_btn)
         
-        # Set the Tools tab as the current tab
-        tab_widget.setCurrentIndex(0)
+        # Open Toolkit in Windows Explorer button (Windows only)
+        if platform.system() == "Windows":
+            open_toolkit_btn = QPushButton("Open Toolkit in Windows Explorer")
+            open_toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
+            open_toolkit_btn.clicked.connect(self.open_toolkit_folder)
+            open_toolkit_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; background-color: #3498db; color: white; }")
+            tools_layout.addWidget(open_toolkit_btn)
+        
+        layout.addLayout(tools_layout)
         
         # Buttons
         button_layout = QHBoxLayout()
