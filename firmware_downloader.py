@@ -14,6 +14,7 @@ import configparser
 import json
 import pickle
 import shutil
+import argparse
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
@@ -78,11 +79,11 @@ def parse_version_designations(version_name):
         if part == 'nightly':
             designations.append('Nightly')
         elif part == '360p':
-            designations.append('360p')
+            designations.append('360p / Y1 Theme Compatible')
         elif part == 'wifi' or part == 'wi-fi':
             designations.append('Wi-Fi')
-        elif part == 'bluetooth':
-            designations.append('Bluetooth')
+        elif part == 'rockbox':
+            designations.append('with Rockbox')
         elif part == 'usb':
             designations.append('USB')
         elif part == 'ethernet':
@@ -108,9 +109,9 @@ def parse_version_designations(version_name):
             if i + 2 < len(parts) and parts[i + 2] in adjectives:
                 # Check for adjective after "ipod-theme"
                 adjective = parts[i + 2]
-                designations.append(f'iPod Themes {adjective.title()}')
+                designations.append(f'240p iPod / 360p Y1 Themes {adjective.title()}')
             else:
-                designations.append('iPod Themes')
+                designations.append('240p iPod themes / 360p Y1 Themes')
         elif part == 'theme' and i > 0 and parts[i - 1] == 'ipod':
             # Skip this as it's handled above
             continue
@@ -182,7 +183,7 @@ def format_designations_text(designations):
         'Nightly': '🟠',
         '360p': '🟡',
         'Wi-Fi': '📶',
-        'Bluetooth': '🔵',
+        'with Rockbox ': '🔵',
         'USB': '🔌',
         'Ethernet': '🌐',
         'HDMI': '📺',
@@ -4170,15 +4171,30 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
         
         try:
-            # Simply run y1_helper.py
-            y1_helper_path = Path("y1_helper.py")
-            if y1_helper_path.exists():
-                subprocess.Popen([sys.executable, str(y1_helper_path)])
-                self.status_label.setText("Y1 Remote Control launched successfully")
-                # Don't close the firmware downloader - keep it running
+            if platform.system() == "Windows":
+                # On Windows, use the Toolkit shortcut to get separate process/taskbar icon
+                toolkit_shortcut = Path("Toolkit") / "Remote Control.lnk"
+                if toolkit_shortcut.exists():
+                    subprocess.Popen([str(toolkit_shortcut)], shell=True)
+                    self.status_label.setText("Y1 Remote Control launched successfully")
+                else:
+                    # Fallback to direct y1_helper.py if shortcut not found
+                    y1_helper_path = Path("y1_helper.py")
+                    if y1_helper_path.exists():
+                        subprocess.Popen([sys.executable, str(y1_helper_path)])
+                        self.status_label.setText("Y1 Remote Control launched successfully")
+                    else:
+                        QMessageBox.error(self, "Error", 
+                                        "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
             else:
-                                                QMessageBox.error(self, "Error", 
-                                                "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
+                # On non-Windows systems, use direct Python execution
+                y1_helper_path = Path("y1_helper.py")
+                if y1_helper_path.exists():
+                    subprocess.Popen([sys.executable, str(y1_helper_path)])
+                    self.status_label.setText("Y1 Remote Control launched successfully")
+                else:
+                    QMessageBox.error(self, "Error", 
+                                    "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Y1 Remote Control: {e}")
 
@@ -7830,15 +7846,26 @@ read -n 1
 
 if __name__ == "__main__":
     try:
+        # Parse command line arguments
+        parser = argparse.ArgumentParser(description="Innioasis Firmware Downloader")
+        parser.add_argument("--toolkit", action="store_true", 
+                          help="Open only the toolkit window")
+        args = parser.parse_args()
+        
         # Create the application
         app = QApplication(sys.argv)
 
         # Let the macOS app wrapper handle the icon display
         # Removed custom icon setting to allow macOS app icon to shine through
 
-        # Create and show the main window
-        window = FirmwareDownloaderGUI()
-        window.show()
+        if args.toolkit:
+            # Show only the toolkit window
+            window = FirmwareDownloaderGUI()
+            window.show_tools_dialog()
+        else:
+            # Create and show the main window
+            window = FirmwareDownloaderGUI()
+            window.show()
 
         # Start the application event loop
         sys.exit(app.exec())
