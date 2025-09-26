@@ -2,8 +2,8 @@
 
 # take care to ensure you use the www.innioasis.app website to install the app. 
 
-[<img src="start_here.png" alt="Innioasis Updater Screenshot"/>](https://innioasis.app)
-[<img src="mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>](https://innioasis.app)
+[<img src="https://innioasis.app/start_here.png" alt="Innioasis Updater Screenshot"/>](https://innioasis.app)
+[<img src="https://innioasis.app/mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>](https://innioasis.app)
 
 # Innioasis Updater
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
