@@ -4550,7 +4550,7 @@ Method 2 - MTKclient: Direct technical installation
         layout.addWidget(title_label)
         
         # Description
-        desc_label = QLabel("Access all Innioasis utilities and tools for your Y1 device")
+        desc_label = QLabel("Additional utilties and tools for your device")
         desc_label.setStyleSheet("color: #666; margin: 5px;")
         layout.addWidget(desc_label)
         
