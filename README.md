@@ -29,7 +29,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 ### ROM Developer
  - [@Multiwirth](https://www.github.com/multiwirth)
 
-### Rockbox Y1 Port Developer
+### Rockbox Y1 Port Developer and custom ROM packager
  - [@rockbox-y1 (u/After-Acanthaceae547)](https://www.github.com/rockbox-y1)
  ### TikTok / YouTube creators
 - Ryan /@catsteal3r on TikTok
