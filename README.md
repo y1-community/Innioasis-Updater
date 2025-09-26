@@ -41,7 +41,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 - kamakiri [xyzz]
 - linecode exploit [chimera]
 - Chaosmaster
-- Geert-Jan Kreileman (GUI, design & fixes)
+- Geert-Jan Kreileman (MTKclient GUI, design & fixes)
 
 ## Installing on Linux
 
