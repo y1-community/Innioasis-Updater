@@ -1,4 +1,4 @@
-# Please ignore any tutorials or gudies that brought you here, 
+# Please ignore any tutorials or guides that brought you here, 
 
 # take care to ensure you use the www.innioasis.app website to install the app. 
 
@@ -13,7 +13,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 
 
 
-## Devloped by
+## Devloped using Cursor IDE by
 - Ryan Specter of Team Slide
 
 ## Special Thanks to
@@ -23,7 +23,6 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
   
 ### r/innioasis Mods
 - u/wa-a-melyn
-- u/multiwirth
 - u/TwitchyMcJoe
 - u/Key-Brilliant5623
 
