@@ -4437,6 +4437,26 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to open toolkit folder: {e}")
     
+    def launch_rockbox_utility(self):
+        """Launch Rockbox Utility from the Toolkit subdirectory (Windows only)"""
+        try:
+            if platform.system() != "Windows":
+                return
+            
+            # Check for Rockbox Utility.lnk in the Toolkit subdirectory
+            toolkit_path = Path("Toolkit")
+            rockbox_utility_lnk = toolkit_path / "Rockbox Utility.lnk"
+            
+            if rockbox_utility_lnk.exists():
+                # Launch the shortcut
+                subprocess.run([str(rockbox_utility_lnk)], check=True)
+                self.status_label.setText("Rockbox Utility launched")
+            else:
+                QMessageBox.warning(self, "Rockbox Utility Not Found", 
+                                  f"Rockbox Utility.lnk not found in:\n{toolkit_path}\n\nPlease ensure the Rockbox Utility is properly installed in the Toolkit.")
+        except Exception as e:
+            QMessageBox.error(self, "Error", f"Failed to launch Rockbox Utility: {e}")
+    
     def launch_240p_theme_downloader(self):
         """Launch the 240p theme downloader"""
         try:
@@ -4821,6 +4841,14 @@ Method 2 - MTKclient: Direct technical installation
         storage_btn.clicked.connect(self.launch_storage_management_tool)
         storage_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
         tools_layout.addWidget(storage_btn)
+        
+        # Rockbox Utility button (Windows only)
+        if platform.system() == "Windows":
+            rockbox_utility_btn = QPushButton("Rockbox Utility")
+            rockbox_utility_btn.setToolTip("Launch Rockbox Utility for Y1 device management")
+            rockbox_utility_btn.clicked.connect(self.launch_rockbox_utility)
+            rockbox_utility_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
+            tools_layout.addWidget(rockbox_utility_btn)
         
         # Open Toolkit in Windows Explorer button (Windows only)
         if platform.system() == "Windows":
