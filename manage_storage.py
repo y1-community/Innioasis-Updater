@@ -121,11 +121,19 @@ class StorageAnalysisWorker(QThread):
             '.cache', '.github', 'assets', 'codecs', 'Contents', 'examples', 
             'firmware_downloads', 'logs', 'More Tools and Troubleshooters', 
             'mtkclient', 'src', 'Toolkit', 'Tools', 'Troubleshooting', 'venv',
-            '__pycache__'  # Add common Python cache directory
+            '__pycache__', 'libs', 'DLLs'  # Add libs and DLLs directories
         }
+        
+        # File extensions that should never be offered for removal by storage manager
+        # These are only handled by redundant_files.txt cleanup
+        protected_extensions = {'.exe', '.py', '.dll', '.so', '.dylib'}
         
         for item in self.project_dir.iterdir():
             if item.is_dir() and item.name not in essential_dirs:
+                # Check if directory contains only protected file types
+                if self.contains_only_protected_files(item, protected_extensions):
+                    continue  # Skip directories with only protected files
+                
                 # Calculate directory size
                 dir_size = self.calculate_directory_size(item)
                 file_info = {
@@ -138,6 +146,17 @@ class StorageAnalysisWorker(QThread):
                 extra_subfolders.append(file_info)
         
         return extra_subfolders
+    
+    def contains_only_protected_files(self, directory, protected_extensions):
+        """Check if directory contains only files with protected extensions"""
+        try:
+            for file_path in directory.rglob('*'):
+                if file_path.is_file():
+                    if file_path.suffix.lower() not in protected_extensions:
+                        return False  # Found a non-protected file
+            return True  # All files are protected
+        except (OSError, PermissionError):
+            return True  # Assume protected if we can't access
     
     def calculate_directory_size(self, directory):
         """Calculate total size of a directory"""
