@@ -500,6 +500,139 @@ class UpdateProgressDialog(QDialog):
             self.progress_bar.setValue(100)
             QTimer.singleShot(2000, self.accept)
 
+def load_redundant_files_list():
+    """Load redundant files list from local file or remote URL"""
+    try:
+        # Try local file first
+        local_file = Path("redundant_files.txt")
+        if local_file.exists():
+            logging.info("Loading redundant files list from local file")
+            with open(local_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+        else:
+            # Try remote URL
+            logging.info("Loading redundant files list from remote URL")
+            response = requests.get("https://innioasis.app/redundant_files.txt", timeout=10)
+            response.raise_for_status()
+            content = response.text
+        
+        # Parse the content
+        redundant_files = {}
+        
+        for line in content.split('\n'):
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            
+            if '=' in line:
+                platform, files = line.split('=', 1)
+                platform = platform.strip()
+                files = files.strip()
+                
+                if platform == 'all':
+                    redundant_files['all'] = [f.strip() for f in files.split(',') if f.strip()]
+                elif platform in ['mac', 'linux', 'win']:
+                    redundant_files[platform] = [f.strip() for f in files.split(',') if f.strip()]
+        
+        logging.info(f"Loaded redundant files list: {redundant_files}")
+        return redundant_files
+        
+    except Exception as e:
+        logging.error(f"Error loading redundant files list: {e}")
+        return {}
+
+def remove_files_by_pattern(directory, pattern):
+    """Remove files or directories matching a pattern in the given directory and subdirectories"""
+    removed_count = 0
+    try:
+        # Check if pattern is a directory (no file extension and exists as directory)
+        pattern_path = directory / pattern
+        if pattern_path.exists() and pattern_path.is_dir():
+            # Remove entire directory
+            import shutil
+            shutil.rmtree(pattern_path)
+            logging.info(f"Removed redundant directory: {pattern}")
+            removed_count += 1
+        elif '*' in pattern:
+            # Handle wildcard patterns - search recursively in subdirectories
+            for file_path in directory.rglob(pattern):
+                if file_path.is_file():
+                    file_path.unlink()
+                    logging.info(f"Removed redundant file: {file_path.relative_to(directory)}")
+                    removed_count += 1
+                elif file_path.is_dir():
+                    import shutil
+                    shutil.rmtree(file_path)
+                    logging.info(f"Removed redundant directory: {file_path.relative_to(directory)}")
+                    removed_count += 1
+        else:
+            # Handle specific file names - search recursively in subdirectories
+            for file_path in directory.rglob(pattern):
+                if file_path.is_file():
+                    file_path.unlink()
+                    logging.info(f"Removed redundant file: {file_path.relative_to(directory)}")
+                    removed_count += 1
+                elif file_path.is_dir():
+                    import shutil
+                    shutil.rmtree(file_path)
+                    logging.info(f"Removed redundant directory: {file_path.relative_to(directory)}")
+                    removed_count += 1
+    except Exception as e:
+        logging.error(f"Error removing files/directories matching pattern '{pattern}': {e}")
+    
+    return removed_count
+
+def cleanup_redundant_files():
+    """Clean up redundant files based on platform and redundant_files.txt"""
+    try:
+        current_platform = platform.system().lower()
+        if current_platform == "darwin":
+            platform_key = "mac"
+        elif current_platform == "linux":
+            platform_key = "linux"
+        elif current_platform == "windows":
+            platform_key = "win"
+        else:
+            platform_key = "unknown"
+        
+        logging.info(f"Cleaning up redundant files for platform: {platform_key}")
+        
+        # Load redundant files list
+        redundant_files = load_redundant_files_list()
+        if not redundant_files:
+            logging.info("No redundant files list found, skipping cleanup")
+            return
+        
+        current_dir = Path.cwd()
+        removed_count = 0
+        
+        # Clean up files for all platforms
+        if 'all' in redundant_files:
+            for pattern in redundant_files['all']:
+                removed_count += remove_files_by_pattern(current_dir, pattern)
+        
+        # Clean up platform-specific files
+        if platform_key in redundant_files:
+            for pattern in redundant_files[platform_key]:
+                removed_count += remove_files_by_pattern(current_dir, pattern)
+        
+        if removed_count > 0:
+            logging.info(f"Cleaned up {removed_count} redundant files")
+        else:
+            logging.info("No redundant files found to clean up")
+        
+        # Remove redundant_files.txt after cleanup is complete
+        try:
+            redundant_files_path = Path("redundant_files.txt")
+            if redundant_files_path.exists():
+                redundant_files_path.unlink()
+                logging.info("Removed redundant_files.txt after cleanup")
+        except Exception as e:
+            logging.error(f"Error removing redundant_files.txt: {e}")
+            
+    except Exception as e:
+        logging.error(f"Error during redundant files cleanup: {e}")
+
 def perform_initial_cleanup():
     """Removes obsolete or platform-specific files and folders."""
     logging.info("Performing initial directory cleanup...")
@@ -517,6 +650,9 @@ def perform_initial_cleanup():
                     shutil.rmtree(path); logging.info("Removed Windows-specific folder: %s", path.name)
         except OSError as e:
             logging.warning("Could not remove %s during cleanup: %s", path.name, e)
+    
+    # Clean up redundant files after initial cleanup
+    cleanup_redundant_files()
 
 def download_troubleshooters(current_dir, temp_dir):
     try:

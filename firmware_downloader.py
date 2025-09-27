@@ -356,30 +356,57 @@ def cleanup_redundant_files():
             silent_print(f"Cleaned up {removed_count} redundant files")
         else:
             silent_print("No redundant files found to clean up")
+        
+        # Remove redundant_files.txt after cleanup is complete
+        try:
+            redundant_files_path = Path("redundant_files.txt")
+            if redundant_files_path.exists():
+                redundant_files_path.unlink()
+                silent_print("Removed redundant_files.txt after cleanup")
+        except Exception as e:
+            silent_print(f"Error removing redundant_files.txt: {e}")
             
     except Exception as e:
         silent_print(f"Error during redundant files cleanup: {e}")
 
 def remove_files_by_pattern(directory, pattern):
-    """Remove files matching a pattern in the given directory"""
+    """Remove files or directories matching a pattern in the given directory and subdirectories"""
     removed_count = 0
     try:
-        if '*' in pattern:
-            # Handle wildcard patterns
-            for file_path in directory.glob(pattern):
+        # Check if pattern is a directory (no file extension and exists as directory)
+        pattern_path = directory / pattern
+        if pattern_path.exists() and pattern_path.is_dir():
+            # Remove entire directory
+            import shutil
+            shutil.rmtree(pattern_path)
+            silent_print(f"Removed redundant directory: {pattern}")
+            removed_count += 1
+        elif '*' in pattern:
+            # Handle wildcard patterns - search recursively in subdirectories
+            for file_path in directory.rglob(pattern):
                 if file_path.is_file():
                     file_path.unlink()
-                    silent_print(f"Removed redundant file: {file_path.name}")
+                    silent_print(f"Removed redundant file: {file_path.relative_to(directory)}")
+                    removed_count += 1
+                elif file_path.is_dir():
+                    import shutil
+                    shutil.rmtree(file_path)
+                    silent_print(f"Removed redundant directory: {file_path.relative_to(directory)}")
                     removed_count += 1
         else:
-            # Handle specific file names
-            file_path = directory / pattern
-            if file_path.exists() and file_path.is_file():
-                file_path.unlink()
-                silent_print(f"Removed redundant file: {file_path.name}")
-                removed_count += 1
+            # Handle specific file names - search recursively in subdirectories
+            for file_path in directory.rglob(pattern):
+                if file_path.is_file():
+                    file_path.unlink()
+                    silent_print(f"Removed redundant file: {file_path.relative_to(directory)}")
+                    removed_count += 1
+                elif file_path.is_dir():
+                    import shutil
+                    shutil.rmtree(file_path)
+                    silent_print(f"Removed redundant directory: {file_path.relative_to(directory)}")
+                    removed_count += 1
     except Exception as e:
-        silent_print(f"Error removing files matching pattern '{pattern}': {e}")
+        silent_print(f"Error removing files/directories matching pattern '{pattern}': {e}")
     
     return removed_count
 
