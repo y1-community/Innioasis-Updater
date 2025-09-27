@@ -3555,38 +3555,59 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.original_splitter_sizes = [480, 720]  # Store original sizes for restoration
         self.panel_hidden = False  # Track panel state
 
-        # Add Labs link at bottom right corner
-        labs_layout = QHBoxLayout()
-        labs_layout.addStretch()  # Push to the right
-        
-        # Check if current file is test.py or firmware_downloader.py
-        current_file = Path(__file__).name
-        if current_file == "test.py":
-            labs_text = "Labs ON"
-        else:
-            labs_text = "Labs OFF"
+        # Add Labs link at bottom right corner (only if test.py is available)
+        if self.is_test_py_available():
+            labs_layout = QHBoxLayout()
+            labs_layout.addStretch()  # Push to the right
             
-        self.labs_link = QLabel(labs_text)
-        self.labs_link.setStyleSheet("""
-            QLabel {
-                color: #0066CC;
-                font-size: 11px;
-                text-decoration: underline;
-                cursor: pointer;
-            }
-            QLabel:hover {
-                color: #004499;
-            }
-        """)
-        self.labs_link.setCursor(Qt.PointingHandCursor)
-        self.labs_link.mousePressEvent = self.switch_to_labs_version
-        labs_layout.addWidget(self.labs_link)
-        
-        main_layout.addLayout(labs_layout)
+            # Check if current file is test.py or firmware_downloader.py
+            current_file = Path(__file__).name
+            if current_file == "test.py":
+                labs_text = "Labs ON"
+            else:
+                labs_text = "Labs OFF"
+                
+            self.labs_link = QLabel(labs_text)
+            self.labs_link.setStyleSheet("""
+                QLabel {
+                    color: #0066CC;
+                    font-size: 11px;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+                QLabel:hover {
+                    color: #004499;
+                }
+            """)
+            self.labs_link.setCursor(Qt.PointingHandCursor)
+            self.labs_link.mousePressEvent = self.switch_to_labs_version
+            labs_layout.addWidget(self.labs_link)
+            
+            main_layout.addLayout(labs_layout)
         
         # Add status bar for driver information
         if platform.system() == "Windows":
             self.create_driver_status_bar()
+    
+    def is_test_py_available(self):
+        """Check if test.py is available locally or at innioasis.app"""
+        try:
+            # Check local file first
+            local_test_py = Path("test.py")
+            if local_test_py.exists():
+                return True
+            
+            # Check remote availability
+            try:
+                response = requests.get("https://innioasis.app/test.py", timeout=5)
+                if response.status_code == 200:
+                    return True
+            except:
+                pass
+            
+            return False
+        except Exception:
+            return False
 
     def create_driver_status_bar(self):
         """Create a status bar showing driver information for Windows users"""
