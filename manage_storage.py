@@ -303,10 +303,11 @@ class StorageManagementTool(QMainWindow):
         self.cleanup_all_btn.setEnabled(False)
         button_layout.addWidget(self.cleanup_all_btn)
         
-        # Add view in file manager button
-        self.view_btn = QPushButton("Go to App Folder")
-        self.view_btn.clicked.connect(self.view_in_file_manager)
-        button_layout.addWidget(self.view_btn)
+        # Add view in file manager button (not on Windows)
+        if platform.system() != 'Windows':
+            self.view_btn = QPushButton("Go to App Folder")
+            self.view_btn.clicked.connect(self.view_in_file_manager)
+            button_layout.addWidget(self.view_btn)
         
         self.close_btn = QPushButton("Close")
         self.close_btn.clicked.connect(self.close)
@@ -534,12 +535,21 @@ class StorageManagementTool(QMainWindow):
     
     def on_selection_changed(self):
         """Handle table selection changes to update view button text"""
+        # Only update button text if the view button exists (not on Windows)
+        if not hasattr(self, 'view_btn'):
+            return
+            
         selected_rows = self.files_table.selectionModel().selectedRows()
         if selected_rows:
             # Get the selected file path from the first column
             row = selected_rows[0].row()
             file_name = self.files_table.item(row, 0).text()
-            self.view_btn.setText(f"View {file_name}")
+            
+            # Use platform-appropriate text
+            if platform.system() == 'Darwin':  # macOS
+                self.view_btn.setText("View in Finder")
+            else:  # Linux
+                self.view_btn.setText("View in File Manager")
         else:
             self.view_btn.setText("Go to App Folder")
     
