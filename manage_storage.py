@@ -45,6 +45,11 @@ class StorageAnalysisWorker(QThread):
             # Analyze extra subfolders
             self.status.emit("Analyzing extra subfolders...")
             extra_subfolders = self.analyze_extra_subfolders()
+            self.progress.emit(60)
+            
+            # Analyze platform-specific files (Windows executables on non-Windows systems)
+            self.status.emit("Analyzing platform-specific files...")
+            platform_files = self.analyze_platform_specific_files()
             self.progress.emit(70)
             
             # Calculate totals
@@ -53,10 +58,12 @@ class StorageAnalysisWorker(QThread):
                 'firmware_downloads': firmware_downloads,
                 'extracted_files': extracted_files,
                 'extra_subfolders': extra_subfolders,
+                'platform_files': platform_files,
                 'total_download_size': sum(f['size'] for f in firmware_downloads),
                 'total_extracted_size': sum(f['size'] for f in extracted_files),
                 'total_extra_size': sum(f['size'] for f in extra_subfolders),
-                'total_cleanup_size': sum(f['size'] for f in firmware_downloads) + sum(f['size'] for f in extracted_files) + sum(f['size'] for f in extra_subfolders)
+                'total_platform_size': sum(f['size'] for f in platform_files),
+                'total_cleanup_size': sum(f['size'] for f in firmware_downloads) + sum(f['size'] for f in extracted_files) + sum(f['size'] for f in extra_subfolders) + sum(f['size'] for f in platform_files)
             }
             
             self.progress.emit(100)
@@ -126,7 +133,13 @@ class StorageAnalysisWorker(QThread):
         
         # File extensions that should never be offered for removal by storage manager
         # These are only handled by redundant_files.txt cleanup
-        protected_extensions = {'.exe', '.py', '.dll', '.so', '.dylib'}
+        # On Windows, .exe and .dll are protected, but on macOS/Linux they can be removed
+        current_platform = platform.system().lower()
+        if current_platform == "windows":
+            protected_extensions = {'.exe', '.py', '.dll', '.so', '.dylib'}
+        else:
+            # On macOS/Linux, .exe and .dll files are not needed and can be removed
+            protected_extensions = {'.py', '.so', '.dylib'}
         
         for item in self.project_dir.iterdir():
             if item.is_dir() and item.name not in essential_dirs:
@@ -146,6 +159,31 @@ class StorageAnalysisWorker(QThread):
                 extra_subfolders.append(file_info)
         
         return extra_subfolders
+    
+    def analyze_platform_specific_files(self):
+        """Analyze platform-specific files that can be removed on non-Windows systems"""
+        platform_files = []
+        current_platform = platform.system().lower()
+        
+        # Only analyze on non-Windows systems
+        if current_platform != "windows":
+            # Look for .exe and .dll files in the project directory
+        for file_path in self.project_dir.rglob('*'):
+                if file_path.is_file() and file_path.suffix.lower() in ['.exe', '.dll']:
+                    # Skip files in protected directories
+                    if any(protected_dir in str(file_path) for protected_dir in ['venv', 'mtkclient', 'assets', 'Tools', 'Troubleshooting']):
+                        continue
+                    
+                    file_info = {
+                        'name': file_path.name,
+                        'path': str(file_path.relative_to(self.project_dir)),
+                        'size': file_path.stat().st_size,
+                        'full_path': str(file_path),
+                        'type': 'platform_file'
+                    }
+                    platform_files.append(file_info)
+        
+        return platform_files
     
     def contains_only_protected_files(self, directory, protected_extensions):
         """Check if directory contains only files with protected extensions"""
@@ -303,6 +341,7 @@ class StorageManagementTool(QMainWindow):
         total_downloads = len(result['firmware_downloads'])
         total_extracted = len(result['extracted_files'])
         total_extra = len(result['extra_subfolders'])
+        total_platform = len(result['platform_files'])
         total_size = result['total_cleanup_size']
         
         summary_text = f"""
@@ -310,6 +349,7 @@ class StorageManagementTool(QMainWindow):
         <b>Firmware Downloads:</b> {total_downloads} files ({self.format_size(result['total_download_size'])})<br>
         <b>Extracted Files:</b> {total_extracted} files ({self.format_size(result['total_extracted_size'])})<br>
         <b>Extra Subfolders:</b> {total_extra} folders ({self.format_size(result['total_extra_size'])})<br>
+        <b>Platform Files:</b> {total_platform} files ({self.format_size(result['total_platform_size'])})<br>
         <b>Total Cleanup Available:</b> {self.format_size(total_size)}<br><br>
         <b>Note:</b> Extracted files are automatically cleaned up by firmware_downloader.py and updater.py after installation.
         """
@@ -342,6 +382,10 @@ class StorageManagementTool(QMainWindow):
         # Add extra subfolders
         for file_info in result['extra_subfolders']:
             all_files.append((file_info, "Extra Subfolder"))
+        
+        # Add platform files
+        for file_info in result['platform_files']:
+            all_files.append((file_info, "Platform File"))
         
         # Sort by size (largest first)
         all_files.sort(key=lambda x: x[0]['size'], reverse=True)
@@ -424,7 +468,8 @@ class StorageManagementTool(QMainWindow):
         
         all_files = (self.analysis_result['firmware_downloads'] + 
                     self.analysis_result['extracted_files'] + 
-                    self.analysis_result['extra_subfolders'])
+                    self.analysis_result['extra_subfolders'] +
+                    self.analysis_result['platform_files'])
         
         if not all_files:
             QMessageBox.information(self, "No Files", "No files to clean up.")
@@ -473,10 +518,10 @@ class StorageManagementTool(QMainWindow):
             error_msg += f"Errors:\n" + "\n".join(errors)
             QMessageBox.warning(self, "Cleanup Results", error_msg)
         else:
-            QMessageBox.information(
-                self, "Cleanup Complete",
+        QMessageBox.information(
+            self, "Cleanup Complete",
                 f"Successfully deleted {deleted_count} files ({self.format_size(deleted_size)})."
-            )
+        )
         
         # Refresh analysis
         self.start_analysis()
