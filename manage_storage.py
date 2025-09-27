@@ -281,6 +281,7 @@ class StorageManagementTool(QMainWindow):
         self.files_table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
         self.files_table.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.files_table.setVisible(False)
+        self.files_table.selectionModel().selectionChanged.connect(self.on_selection_changed)
         results_layout.addWidget(self.files_table)
         
         main_layout.addWidget(results_group)
@@ -301,6 +302,11 @@ class StorageManagementTool(QMainWindow):
         self.cleanup_all_btn.clicked.connect(self.cleanup_all_files)
         self.cleanup_all_btn.setEnabled(False)
         button_layout.addWidget(self.cleanup_all_btn)
+        
+        # Add view in file manager button
+        self.view_btn = QPushButton("Go to App Folder")
+        self.view_btn.clicked.connect(self.view_in_file_manager)
+        button_layout.addWidget(self.view_btn)
         
         self.close_btn = QPushButton("Close")
         self.close_btn.clicked.connect(self.close)
@@ -525,6 +531,51 @@ class StorageManagementTool(QMainWindow):
         
         # Refresh analysis
         self.start_analysis()
+    
+    def on_selection_changed(self):
+        """Handle table selection changes to update view button text"""
+        selected_rows = self.files_table.selectionModel().selectedRows()
+        if selected_rows:
+            # Get the selected file path from the first column
+            row = selected_rows[0].row()
+            file_name = self.files_table.item(row, 0).text()
+            self.view_btn.setText(f"View {file_name}")
+        else:
+            self.view_btn.setText("Go to App Folder")
+    
+    def view_in_file_manager(self):
+        """Open the selected file/folder or app folder in the system file manager"""
+        import subprocess
+        import os
+        from pathlib import Path
+        
+        # Get the app folder (where the script is located)
+        app_folder = Path(__file__).parent.absolute()
+        
+        # Check if a file is selected
+        selected_rows = self.files_table.selectionModel().selectedRows()
+        if selected_rows:
+            # Get the selected file path from the first column
+            row = selected_rows[0].row()
+            file_name = self.files_table.item(row, 0).text()
+            target_path = app_folder / file_name
+        else:
+            # No file selected, open app folder
+            target_path = app_folder
+        
+        try:
+            # Determine the platform and use appropriate command
+            if os.name == 'nt':  # Windows
+                subprocess.run(['explorer', '/select,', str(target_path)], check=True)
+            elif os.name == 'posix':  # macOS and Linux
+                if platform.system() == 'Darwin':  # macOS
+                    subprocess.run(['open', '-R', str(target_path)], check=True)
+                else:  # Linux
+                    subprocess.run(['xdg-open', str(target_path)], check=True)
+        except subprocess.CalledProcessError as e:
+            QMessageBox.warning(self, "Error", f"Failed to open file manager: {e}")
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"Unexpected error: {e}")
 
 def main():
     """Main function"""
