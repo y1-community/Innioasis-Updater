@@ -4772,6 +4772,11 @@ Method 2 - MTKclient: Direct technical installation
             self.startmenu_shortcuts_enabled = self.startmenu_shortcuts_checkbox.isChecked()
             self.auto_cleanup_enabled = self.auto_cleanup_checkbox.isChecked()
             
+            # Check if no shortcuts are selected and warn user
+            if not self.desktop_shortcuts_enabled and not self.startmenu_shortcuts_enabled:
+                if not self.show_no_shortcuts_warning():
+                    return  # Don't save settings if user cancels
+            
             # Apply shortcut settings immediately
             self.apply_shortcut_settings()
         
@@ -4785,6 +4790,32 @@ Method 2 - MTKclient: Direct technical installation
             self.status_label.setText(self.status_label.text() + " - Debug mode enabled")
         
         dialog.accept()
+    
+    def show_no_shortcuts_warning(self):
+        """Show warning dialog when no shortcut options are selected"""
+        msg = QMessageBox(self)
+        msg.setWindowTitle("No Shortcuts Selected")
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText("No shortcut options are selected!")
+        msg.setInformativeText(
+            "If you proceed without creating shortcuts, you will need to manually run:\n\n"
+            '"%LocalAppData%\\Innioasis Updater\\pythonw.exe" updater.py\n\n'
+            "to use Innioasis Updater in the future.\n\n"
+            "Are you sure you want to continue without shortcuts?"
+        )
+        
+        # Set Cancel as the default button
+        cancel_btn = msg.addButton("Cancel", QMessageBox.RejectRole)
+        continue_btn = msg.addButton("Continue Anyway", QMessageBox.AcceptRole)
+        msg.setDefaultButton(cancel_btn)
+        
+        result = msg.exec()
+        
+        # If user clicked Cancel, don't save settings
+        if msg.clickedButton() == cancel_btn:
+            return False
+        
+        return True
     
     def save_installation_preferences(self):
         """Save installation preferences to persistent storage"""

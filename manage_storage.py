@@ -168,7 +168,7 @@ class StorageAnalysisWorker(QThread):
         # Only analyze on non-Windows systems
         if current_platform != "windows":
             # Look for .exe and .dll files in the project directory
-        for file_path in self.project_dir.rglob('*'):
+            for file_path in self.project_dir.rglob('*'):
                 if file_path.is_file() and file_path.suffix.lower() in ['.exe', '.dll']:
                     # Skip files in protected directories
                     if any(protected_dir in str(file_path) for protected_dir in ['venv', 'mtkclient', 'assets', 'Tools', 'Troubleshooting']):
@@ -518,10 +518,10 @@ class StorageManagementTool(QMainWindow):
             error_msg += f"Errors:\n" + "\n".join(errors)
             QMessageBox.warning(self, "Cleanup Results", error_msg)
         else:
-        QMessageBox.information(
-            self, "Cleanup Complete",
+            QMessageBox.information(
+                self, "Cleanup Complete",
                 f"Successfully deleted {deleted_count} files ({self.format_size(deleted_size)})."
-        )
+            )
         
         # Refresh analysis
         self.start_analysis()
