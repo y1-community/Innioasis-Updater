@@ -43,75 +43,10 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 - Chaosmaster
 - Geert-Jan Kreileman (MTKclient GUI, design & fixes)
 
-## Installing on Linux
+## Installing on Linux (Not officially supported - you're on you're own)
 
-### Linux - (Ubuntu recommended)
+Please clone the repo on your linux system and follow the MTKclient setup instructions, once you've completed the setup process for MTKclient, simply open a terminal window, change into the directory you cloned Innioasis Updater into and run the command below.
 
-#### Install python >=3.8, git and other deps
-
-#### For Debian/Ubuntu
-```
-sudo apt install python3 git libusb-1.0-0 python3-pip android-sdk-platform-tools
-```
-#### For ArchLinux
-```
-(sudo) pacman -S  python python-pip python-pipenv git libusb
-```
-or
-```
-yay -S python python-pip git libusb
-```
-
-#### For Fedora
-```
-sudo dnf install python3 git libusb1 android-tools
-```
-
-#### Grab files
-```
-git clone https://github.com/team-slide/Innioasis-Updater
-cd Innioasis-Updater
-pip3 install -r requirements.txt
-pip3 install .
-```
-
-### Using venv
-```
-python3 -m venv ~/.venv
-git clone https://github.com/team-slide/Innioasis-Updater
-cd Innioasis-Updater
-. ~/.venv/bin/activate
-pip install -r requirements.txt
-pip install .
-```
-
-#### Install rules
-```
-sudo usermod -a -G plugdev $USER
-sudo usermod -a -G dialout $USER
-sudo cp mtkclient/Setup/Linux/*.rules /etc/udev/rules.d
-sudo udevadm control -R
-sudo udevadm trigger
-```
-Make sure to reboot after adding the user to dialout/plugdev. If the device
-has a vendor interface 0xFF (like LG), make sure to add "blacklist qcaux" to
-the "/etc/modprobe.d/blacklist.conf".
-
----------------------------------------------------------------------------------------------------------------
-## Usage
-### Activating your venv
-In order to activate your venv you'll need to run these commands
-```
-. ~/.venv/bin/activate
-```
-You should see something like this...
-```
-(.venv) [user@hostname]$ 
-```
-This means you are on venv folder!
-
-### Using Innioasis Updater on Linux:
-To start installing firmwares:
 ```
 python updater.py
 ```
