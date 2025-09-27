@@ -530,9 +530,9 @@ def load_redundant_files_list():
                 files = files.strip()
                 
                 if platform == 'all':
-                    redundant_files['all'] = [f.strip() for f in files.split(',') if f.strip()]
+                    redundant_files['all'] = [f.strip().strip('"') for f in files.split(',') if f.strip()]
                 elif platform in ['mac', 'linux', 'win']:
-                    redundant_files[platform] = [f.strip() for f in files.split(',') if f.strip()]
+                    redundant_files[platform] = [f.strip().strip('"') for f in files.split(',') if f.strip()]
         
         logging.info(f"Loaded redundant files list: {redundant_files}")
         return redundant_files
