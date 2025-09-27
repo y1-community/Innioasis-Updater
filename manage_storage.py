@@ -128,7 +128,7 @@ class StorageAnalysisWorker(QThread):
             '.cache', '.github', 'assets', 'codecs', 'Contents', 'examples', 
             'firmware_downloads', 'logs', 'More Tools and Troubleshooters', 
             'mtkclient', 'src', 'Toolkit', 'Tools', 'Troubleshooting', 'venv',
-            '__pycache__', 'libs', 'DLLs', 'Lib', 'scripts', 'tcl', 'include'  # Add libs, DLLs, Lib, scripts, tcl, include directories
+            '__pycache__', 'libs', 'DLLs', 'Lib', 'scripts', 'Scripts', 'tcl', 'include'  # Add libs, DLLs, Lib, scripts, Scripts, tcl, include directories
         }
         
         # File extensions that should never be offered for removal by storage manager
