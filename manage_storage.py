@@ -566,7 +566,13 @@ class StorageManagementTool(QMainWindow):
         try:
             # Determine the platform and use appropriate command
             if os.name == 'nt':  # Windows
-                subprocess.run(['explorer', '/select,', str(target_path)], check=True)
+                # Windows explorer /select, returns non-zero exit code even on success
+                # So we don't use check=True for Windows
+                result = subprocess.run(['explorer', '/select,', str(target_path)], 
+                                      capture_output=True, text=True)
+                # Only show error if the command actually failed (not just non-zero exit)
+                if result.returncode != 0 and result.stderr:
+                    QMessageBox.warning(self, "Error", f"Failed to open file manager: {result.stderr}")
             elif os.name == 'posix':  # macOS and Linux
                 if platform.system() == 'Darwin':  # macOS
                     subprocess.run(['open', '-R', str(target_path)], check=True)
