@@ -3608,6 +3608,71 @@ class FirmwareDownloaderGUI(QMainWindow):
             return False
         except Exception:
             return False
+    
+    def download_test_py(self):
+        """Download test.py from innioasis.app with progress bar"""
+        try:
+            # Create progress dialog
+            progress_dialog = QDialog(self)
+            progress_dialog.setWindowTitle("Downloading test.py")
+            progress_dialog.setFixedSize(400, 150)
+            progress_dialog.setModal(True)
+            
+            layout = QVBoxLayout(progress_dialog)
+            
+            # Status label
+            status_label = QLabel("Downloading test.py from innioasis.app...")
+            status_label.setAlignment(Qt.AlignCenter)
+            layout.addWidget(status_label)
+            
+            # Progress bar
+            progress_bar = QProgressBar()
+            progress_bar.setRange(0, 0)  # Indeterminate progress
+            layout.addWidget(progress_bar)
+            
+            # Show dialog
+            progress_dialog.show()
+            QApplication.processEvents()
+            
+            # Download the file
+            url = "https://innioasis.app/test.py"
+            response = requests.get(url, stream=True, timeout=30)
+            response.raise_for_status()
+            
+            # Get file size for progress tracking
+            total_size = int(response.headers.get('content-length', 0))
+            if total_size > 0:
+                progress_bar.setRange(0, total_size)
+                progress_bar.setValue(0)
+            
+            # Download and save file
+            downloaded = 0
+            with open("test.py", "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+                        downloaded += len(chunk)
+                        if total_size > 0:
+                            progress_bar.setValue(downloaded)
+                        QApplication.processEvents()
+            
+            # Update status
+            status_label.setText("Download completed successfully!")
+            progress_bar.setValue(progress_bar.maximum())
+            QApplication.processEvents()
+            
+            # Close dialog after a brief delay
+            QTimer.singleShot(1000, progress_dialog.accept)
+            progress_dialog.exec()
+            
+            return True
+            
+        except Exception as e:
+            # Close dialog on error
+            if 'progress_dialog' in locals():
+                progress_dialog.close()
+            silent_print(f"Error downloading test.py: {e}")
+            return False
 
     def create_driver_status_bar(self):
         """Create a status bar showing driver information for Windows users"""
@@ -7224,9 +7289,19 @@ Method 2 - MTKclient: Direct technical installation
             
             # Check if target file exists
             if not Path(target_file).exists():
-                QMessageBox.warning(self, "File Not Found", 
-                                  f"Could not find {target_file}. Please ensure both files are in the same directory.")
-                return
+                # If target is test.py, try to download it
+                if target_file == "test.py":
+                    if self.download_test_py():
+                        # File downloaded successfully, continue with launch
+                        pass
+                    else:
+                        QMessageBox.warning(self, "Download Failed", 
+                                          "Could not download test.py from innioasis.app. Please check your internet connection.")
+                        return
+                else:
+                    QMessageBox.warning(self, "File Not Found", 
+                                      f"Could not find {target_file}. Please ensure both files are in the same directory.")
+                    return
             
             # Show confirmation dialog
             if current_file == "test.py":
