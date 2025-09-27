@@ -1,4 +1,4 @@
 all = *.html, *.msi, old_fw_d.py, run_mac.sh, start_here.png
 mac = *.exe, *.dll, *.msi, history.ini, *.lnk, readback_ui_bak.xsd, *.ico, *_win.png, "More Tools and Troubleshooters", Toolkit, Troubleshooting
-linux = *.exe, *.dll, *.msi, *.lnk, "More Tools and Troubleshooters", Toolkit, Troubleshooting, *.ico
+linux = *.exe, *.dll, *.msi, *.lnk, "More Tools and Troubleshooters", Toolkit, Troubleshooting, *.ico, *_win.png
 win = *.msi, run_mac.sh
