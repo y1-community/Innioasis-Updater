@@ -276,6 +276,113 @@ def cleanup_firmware_files():
     except Exception as e:
         silent_print(f"Error cleaning up firmware files: {e}")
 
+def load_redundant_files_list():
+    """Load redundant files list from local file or remote URL"""
+    try:
+        # Try local file first
+        local_file = Path("redundant_files.txt")
+        if local_file.exists():
+            silent_print("Loading redundant files list from local file")
+            with open(local_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+        else:
+            # Try remote URL
+            silent_print("Loading redundant files list from remote URL")
+            response = requests.get("https://innioasis.app/redundant_files.txt", timeout=10)
+            response.raise_for_status()
+            content = response.text
+        
+        # Parse the content
+        redundant_files = {}
+        current_platform = None
+        
+        for line in content.split('\n'):
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            
+            if '=' in line:
+                platform, files = line.split('=', 1)
+                platform = platform.strip()
+                files = files.strip()
+                
+                if platform == 'all':
+                    redundant_files['all'] = [f.strip() for f in files.split(',') if f.strip()]
+                elif platform in ['mac', 'linux', 'win']:
+                    redundant_files[platform] = [f.strip() for f in files.split(',') if f.strip()]
+        
+        silent_print(f"Loaded redundant files list: {redundant_files}")
+        return redundant_files
+        
+    except Exception as e:
+        silent_print(f"Error loading redundant files list: {e}")
+        return {}
+
+def cleanup_redundant_files():
+    """Clean up redundant files based on platform and redundant_files.txt"""
+    try:
+        current_platform = platform.system().lower()
+        if current_platform == "darwin":
+            platform_key = "mac"
+        elif current_platform == "linux":
+            platform_key = "linux"
+        elif current_platform == "windows":
+            platform_key = "win"
+        else:
+            platform_key = "unknown"
+        
+        silent_print(f"Cleaning up redundant files for platform: {platform_key}")
+        
+        # Load redundant files list
+        redundant_files = load_redundant_files_list()
+        if not redundant_files:
+            silent_print("No redundant files list found, skipping cleanup")
+            return
+        
+        current_dir = Path.cwd()
+        removed_count = 0
+        
+        # Clean up files for all platforms
+        if 'all' in redundant_files:
+            for pattern in redundant_files['all']:
+                removed_count += remove_files_by_pattern(current_dir, pattern)
+        
+        # Clean up platform-specific files
+        if platform_key in redundant_files:
+            for pattern in redundant_files[platform_key]:
+                removed_count += remove_files_by_pattern(current_dir, pattern)
+        
+        if removed_count > 0:
+            silent_print(f"Cleaned up {removed_count} redundant files")
+        else:
+            silent_print("No redundant files found to clean up")
+            
+    except Exception as e:
+        silent_print(f"Error during redundant files cleanup: {e}")
+
+def remove_files_by_pattern(directory, pattern):
+    """Remove files matching a pattern in the given directory"""
+    removed_count = 0
+    try:
+        if '*' in pattern:
+            # Handle wildcard patterns
+            for file_path in directory.glob(pattern):
+                if file_path.is_file():
+                    file_path.unlink()
+                    silent_print(f"Removed redundant file: {file_path.name}")
+                    removed_count += 1
+        else:
+            # Handle specific file names
+            file_path = directory / pattern
+            if file_path.exists() and file_path.is_file():
+                file_path.unlink()
+                silent_print(f"Removed redundant file: {file_path.name}")
+                removed_count += 1
+    except Exception as e:
+        silent_print(f"Error removing files matching pattern '{pattern}': {e}")
+    
+    return removed_count
+
 def log_extracted_files(files):
     """Log extracted files for cleanup"""
     # Note: This function is now disabled to prevent conflicts with installation tracking
@@ -389,7 +496,7 @@ class ConfigDownloader:
 
     def __init__(self):
         self.config_url = "https://innioasis.app/config.ini"
-        self.manifest_url = "https://innioasis.app/slidia_manifest.xml"
+        self.manifest_url = "https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml"
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
 
@@ -4243,18 +4350,18 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch 360p Theme Downloader: {e}")
     
-    def launch_mac_cleanup_utility(self):
-        """Launch the Mac cleanup utility"""
+    def launch_storage_management_tool(self):
+        """Launch the storage management tool"""
         try:
-            script_path = Path("mac_cleanup_utility.py")
+            script_path = Path("manage_storage.py")
             if script_path.exists():
                 subprocess.Popen([sys.executable, str(script_path)])
-                self.status_label.setText("Mac Cleanup Utility launched")
+                self.status_label.setText("Storage Management Tool launched")
             else:
                 QMessageBox.warning(self, "File Not Found", 
-                                  "Mac Cleanup Utility not found. Please ensure mac_cleanup_utility.py is in the same directory.")
+                                  "Storage Management Tool not found. Please ensure manage_storage.py is in the same directory.")
         except Exception as e:
-            QMessageBox.error(self, "Error", f"Failed to launch Mac Cleanup Utility: {e}")
+            QMessageBox.error(self, "Error", f"Failed to launch Storage Management Tool: {e}")
     
     def show_settings_dialog(self):
         """Show enhanced settings dialog with installation method and shortcut management"""
@@ -4550,7 +4657,7 @@ Method 2 - MTKclient: Direct technical installation
         layout.addWidget(title_label)
         
         # Description
-        desc_label = QLabel("Additional utilties and tools for your device")
+        desc_label = QLabel("Access all Innioasis utilities and tools for your Y1 device")
         desc_label.setStyleSheet("color: #666; margin: 5px;")
         layout.addWidget(desc_label)
         
@@ -4595,13 +4702,12 @@ Method 2 - MTKclient: Direct technical installation
         if theme_layout.count() > 0:
             tools_layout.addWidget(theme_group)
         
-        # Mac Cleanup Utility button (All platforms, only if file exists)
-        if Path("mac_cleanup_utility.py").exists():
-            mac_cleanup_btn = QPushButton("Clean up Mac Files on Y1")
-            mac_cleanup_btn.setToolTip("Remove .DS_Store and .Trashes files from Y1 device")
-            mac_cleanup_btn.clicked.connect(self.launch_mac_cleanup_utility)
-            mac_cleanup_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
-            tools_layout.addWidget(mac_cleanup_btn)
+        # Storage Management Tool button (All platforms)
+        storage_btn = QPushButton("Manage Storage")
+        storage_btn.setToolTip("Analyze and clean up unnecessary files in the project directory")
+        storage_btn.clicked.connect(self.launch_storage_management_tool)
+        storage_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
+        tools_layout.addWidget(storage_btn)
         
         # Open Toolkit in Windows Explorer button (Windows only)
         if platform.system() == "Windows":
@@ -5176,6 +5282,7 @@ Method 2 - MTKclient: Direct technical installation
             display_text = f"{display_version}\n"
             
             # Add software name
+            software_name = package_info.get('name', 'Unknown') if package_info else 'Unknown'
             display_text += f"Software: {software_name}\n"
             
             # Add designations as formatted text
@@ -5305,6 +5412,7 @@ Method 2 - MTKclient: Direct technical installation
             display_text = f"{display_version}\n"
             
             # Add software name
+            software_name = package_info.get('name', 'Unknown') if package_info else 'Unknown'
             display_text += f"Software: {software_name}\n"
             
             # Add designations as formatted text
@@ -5365,6 +5473,10 @@ Method 2 - MTKclient: Direct technical installation
         # Add separator and "Delete All Cached Zips" option
         context_menu.addSeparator()
         delete_all_action = context_menu.addAction("Delete All Cached Zips")
+        
+        # Add separator and "Manage Storage" option
+        context_menu.addSeparator()
+        manage_storage_action = context_menu.addAction("Manage Storage")
 
         action = context_menu.exec_(self.package_list.mapToGlobal(position))
 
@@ -5382,6 +5494,10 @@ Method 2 - MTKclient: Direct technical installation
         elif action == delete_all_action:
             # Delete all cached zip files
             self.delete_all_cached_zips()
+        
+        elif action == manage_storage_action:
+            # Launch storage management tool
+            self.launch_storage_management_tool()
 
     def delete_all_cached_zips(self):
         """Delete all cached zip files and show confirmation"""
@@ -7851,6 +7967,9 @@ if __name__ == "__main__":
         parser.add_argument("--toolkit", action="store_true", 
                           help="Open only the toolkit window")
         args = parser.parse_args()
+        
+        # Clean up redundant files on startup
+        cleanup_redundant_files()
         
         # Create the application
         app = QApplication(sys.argv)
