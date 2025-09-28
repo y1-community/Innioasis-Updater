@@ -2,6 +2,8 @@
 
 # take care to ensure you use the www.innioasis.app website to install the app. 
 
+# Please re-enable Windows Defender if you've been asked to turn it off in a tutorial video, this is no longer needed due to the tool no longer setting off Windows Defender, this tool will not work on Windows without the MediaTek USB Driver, as it is a front-end for SP Flash Tool, you can also install USB Development Kit if you'd like to use MTKclient based flashing 
+
 [<img src="https://innioasis.app/start_here.png" alt="Innioasis Updater Screenshot"/>](https://innioasis.app)
 [<img src="https://innioasis.app/mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>](https://innioasis.app)
 
