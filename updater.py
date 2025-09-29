@@ -881,12 +881,18 @@ def main():
     needs_update = False
     if args.force: needs_update = True
     else:
-        try:
-            timestamp_file = Path.cwd() / ".last_update_check"
-            today = str(datetime.date.today())
-            if not timestamp_file.exists() or timestamp_file.read_text() != today: needs_update = True
-        except Exception as e:
-            logging.error("Could not read timestamp file: %s", e); needs_update = True
+        # Check if automatic updates are disabled via no_updates file
+        no_updates_file = Path.cwd() / "no_updates"
+        if no_updates_file.exists():
+            logging.info("Automatic updates disabled by user (no_updates file found)")
+            needs_update = False
+        else:
+            try:
+                timestamp_file = Path.cwd() / ".last_update_check"
+                today = str(datetime.date.today())
+                if not timestamp_file.exists() or timestamp_file.read_text() != today: needs_update = True
+            except Exception as e:
+                logging.error("Could not read timestamp file: %s", e); needs_update = True
     
     if not needs_update:
         mode = 'no_update'

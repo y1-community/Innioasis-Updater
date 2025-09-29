@@ -27,6 +27,7 @@ from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
 from PySide6.QtGui import QFont, QPixmap
 import platform
 import time
+import logging
 from collections import defaultdict
 import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -1873,6 +1874,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.desktop_shortcuts_enabled = True  # Default to enabled
             self.startmenu_shortcuts_enabled = True  # Default to enabled
             self.auto_cleanup_enabled = True  # Default to enabled
+        
+        # Initialize automatic utility updates setting (all platforms)
+        self.auto_utility_updates_enabled = True  # Default to enabled
 
         # Clean up any previously extracted files at startup
         cleanup_extracted_files()
@@ -4637,6 +4641,23 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         install_layout.addWidget(self.debug_mode_checkbox)
         
+        # Automatic Utility Updates checkbox
+        self.auto_utility_updates_checkbox = QCheckBox("Automatic Utility Updates")
+        self.auto_utility_updates_checkbox.setToolTip("When checked, Innioasis Updater will automatically check for and download utility updates")
+        
+        # Set checkbox state based on saved preference and no_updates file
+        # Check if no_updates file exists to determine current state
+        no_updates_file = Path("no_updates")
+        if no_updates_file.exists():
+            # no_updates file exists, so automatic updates are disabled
+            auto_utility_updates = False
+        else:
+            # no_updates file doesn't exist, use saved preference (default to True)
+            auto_utility_updates = getattr(self, 'auto_utility_updates_enabled', True)
+        self.auto_utility_updates_checkbox.setChecked(auto_utility_updates)
+        
+        install_layout.addWidget(self.auto_utility_updates_checkbox)
+        
         # Method descriptions
         desc_text = QTextEdit()
         desc_text.setMaximumHeight(80)
@@ -4881,6 +4902,25 @@ Method 2 - MTKclient: Direct technical installation
             self.installation_method = self.method_combo.currentData()
         # Always use method functionality removed
         self.debug_mode = self.debug_mode_checkbox.isChecked()
+        
+        # Save automatic utility updates setting
+        self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
+        
+        # Create or delete no_updates file based on setting
+        no_updates_file = Path("no_updates")
+        if self.auto_utility_updates_enabled:
+            # Automatic updates enabled - delete no_updates file if it exists
+            if no_updates_file.exists():
+                try:
+                    no_updates_file.unlink()
+                except Exception as e:
+                    logging.warning(f"Could not delete no_updates file: {e}")
+        else:
+            # Automatic updates disabled - create no_updates file
+            try:
+                no_updates_file.write_text("Automatic utility updates disabled by user")
+            except Exception as e:
+                logging.warning(f"Could not create no_updates file: {e}")
         
         # Save shortcut settings (Windows only)
         if platform.system() == "Windows":
