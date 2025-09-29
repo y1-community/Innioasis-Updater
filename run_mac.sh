@@ -175,6 +175,9 @@ run_full_setup() {
     fi
     success_echo "Application files cloned to '$APP_DIR'."
     cd "$APP_DIR"
+    
+    # Create version file to prevent first-time dialog
+    echo "1.6.1" > "$APP_DIR/.version"
 
     # --- 5. Setup Python Virtual Environment ---
     step_echo "Setting up Python environment..."
