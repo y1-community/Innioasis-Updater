@@ -4645,14 +4645,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.auto_utility_updates_checkbox = QCheckBox("Automatic Utility Updates")
         self.auto_utility_updates_checkbox.setToolTip("When checked, Innioasis Updater will automatically check for and download utility updates")
         
-        # Set checkbox state based on saved preference and no_updates file
-        # Check if no_updates file exists to determine current state
-        no_updates_file = Path("no_updates")
+        # Set checkbox state based on saved preference and .no_updates file
+        # Check if .no_updates file exists to determine current state
+        no_updates_file = Path(".no_updates")
         if no_updates_file.exists():
-            # no_updates file exists, so automatic updates are disabled
+            # .no_updates file exists, so automatic updates are disabled
             auto_utility_updates = False
         else:
-            # no_updates file doesn't exist, use saved preference (default to True)
+            # .no_updates file doesn't exist, use saved preference (default to True)
             auto_utility_updates = getattr(self, 'auto_utility_updates_enabled', True)
         self.auto_utility_updates_checkbox.setChecked(auto_utility_updates)
         
@@ -4906,21 +4906,21 @@ Method 2 - MTKclient: Direct technical installation
         # Save automatic utility updates setting
         self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
         
-        # Create or delete no_updates file based on setting
-        no_updates_file = Path("no_updates")
+        # Create or delete .no_updates file based on setting
+        no_updates_file = Path(".no_updates")
         if self.auto_utility_updates_enabled:
-            # Automatic updates enabled - delete no_updates file if it exists
+            # Automatic updates enabled - delete .no_updates file if it exists
             if no_updates_file.exists():
                 try:
                     no_updates_file.unlink()
                 except Exception as e:
-                    logging.warning(f"Could not delete no_updates file: {e}")
+                    logging.warning(f"Could not delete .no_updates file: {e}")
         else:
-            # Automatic updates disabled - create no_updates file
+            # Automatic updates disabled - create .no_updates file
             try:
                 no_updates_file.write_text("Automatic utility updates disabled by user")
             except Exception as e:
-                logging.warning(f"Could not create no_updates file: {e}")
+                logging.warning(f"Could not create .no_updates file: {e}")
         
         # Save shortcut settings (Windows only)
         if platform.system() == "Windows":

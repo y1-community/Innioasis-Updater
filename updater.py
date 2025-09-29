@@ -881,10 +881,10 @@ def main():
     needs_update = False
     if args.force: needs_update = True
     else:
-        # Check if automatic updates are disabled via no_updates file
-        no_updates_file = Path.cwd() / "no_updates"
+        # Check if automatic updates are disabled via .no_updates file
+        no_updates_file = Path.cwd() / ".no_updates"
         if no_updates_file.exists():
-            logging.info("Automatic updates disabled by user (no_updates file found)")
+            logging.info("Automatic updates disabled by user (.no_updates file found)")
             needs_update = False
         else:
             try:
@@ -900,6 +900,19 @@ def main():
     app.setStyle('Fusion')
     dialog = UpdateProgressDialog(mode=mode)
     dialog.exec()
+    
+    # Always update the timestamp file, even if updates were skipped
+    # This is critical for macOS compatibility: the .app bundle checks this file to determine
+    # whether to launch updater.py (for updates) or firmware_downloader.py (if already updated today).
+    # If this file is missing, the .app bundle will always launch updater.py instead of
+    # firmware_downloader.py directly, breaking the normal launch flow on macOS.
+    try:
+        timestamp_file = Path.cwd() / ".last_update_check"
+        today = str(datetime.date.today())
+        timestamp_file.write_text(today)
+        logging.info("Updated timestamp file to: %s", today)
+    except Exception as e:
+        logging.error("Could not update timestamp file: %s", e)
     
     # Always launch the main app
     # Check if we're on macOS - launch the .app bundle
