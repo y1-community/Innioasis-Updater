@@ -1333,9 +1333,6 @@ class MTKWorker(QThread):
         self.debug_window = debug_window
         self.initsteps_timer = None  # Timer for 1.5 second delay fallback
         
-        # Detect system theme
-        self.is_dark_mode = self.detect_dark_mode()
-        
         # Platform-specific progress bar characters
         if platform.system() == "Windows":
             # Windows: Use ASCII characters that display properly
@@ -3972,9 +3969,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Show dialog with Method 2 instructions
             msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Method 2 - MTKclient Troubleshooting")
+            msg_box.setWindowTitle("Method 2 - in Terminal Troubleshooting")
             msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("Method 2: MTKclient Direct Installation")
+            msg_box.setText("Method 2: in Terminal Direct Installation")
             msg_box.setInformativeText(
                 "This method uses the MTKclient library directly for firmware installation.\n\n"
                 "Please follow the on-screen instructions and ensure your device is properly connected.\n\n"
@@ -4689,7 +4686,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             # Non-Windows: Standard methods
             self.method_combo.addItem("Method 1 - Guided", "guided")
-            self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
+            self.method_combo.addItem("Method 2 - in Terminal", "mtkclient")
         
         # Set current method
         current_method = getattr(self, 'installation_method', 'guided')
@@ -4756,7 +4753,7 @@ Method 4 - MTKclient (advanced): Direct technical installation
         else:
             desc_text.setPlainText("""
 Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation
+Method 2 - in Terminal: Direct technical installation
             """)
         
         install_layout.addWidget(desc_text)
@@ -4911,8 +4908,6 @@ Method 2 - MTKclient: Direct technical installation
         credits_label.setStyleSheet("""
             font-size: 10px;
             margin: 5px;
-            border: 1px solid #c0c0c0;
-            border-radius: 3px;
             padding: 8px;
         """)
         credits_label.setAlignment(Qt.AlignCenter)
@@ -6054,72 +6049,111 @@ Method 2 - MTKclient: Direct technical installation
         self.download_btn.setEnabled(True)
         self.update_download_button_text(item)
 
-    def run_mtk_command(self):
-        """Run the MTK flash command with image display"""
-        # Check if required files exist
-        required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
-        missing_files = []
-        for file in required_files:
-            if not Path(file).exists():
-                missing_files.append(file)
+    def run_mtk_command_guided(self):
+        """Run the MTK flash command with image display for guided installation"""
+        try:
+            # Check driver availability for Windows users
+            if platform.system() == "Windows":
+                driver_info = self.check_drivers_and_architecture()
+                
+                if driver_info['is_arm64']:
+                    QMessageBox.information(
+                        self,
+                        "ARM64 Windows Not Supported",
+                        "Firmware installation is not supported on ARM64 Windows.\n\n"
+                        "You can download firmware files, but to install them please use:\n"
+                        "• WSLg (Windows Subsystem for Linux with GUI)\n"
+                        "• Linux (dual boot or live USB)\n"
+                        "• Another computer with x64 Windows"
+                    )
+                    return
+                    
+                elif not driver_info['can_install_firmware']:
+                    QMessageBox.warning(
+                        self,
+                        "Drivers Required",
+                        "No installation methods available. Please install drivers to enable firmware installation.\n\n"
+                        "Click OK to open the driver installation guide."
+                    )
+                    self.open_driver_setup_link()
+                    return
+            
+            # Check if required files exist
+            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            missing_files = []
+            for file in required_files:
+                if not Path(file).exists():
+                    missing_files.append(file)
 
-        if missing_files:
-            QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
-            return
+            if missing_files:
+                QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
+                return
 
-        # Confirm with user
-        reply = QMessageBox.question(
-            self,
-            "Get Ready",
-            "Please disconnect the USB from your Y1 and press OK, then follow the next instructions.",
-            QMessageBox.Ok | QMessageBox.Cancel,
-            QMessageBox.Cancel
-        )
+            # Confirm with user
+            reply = QMessageBox.question(
+                self,
+                "Get Ready",
+                "Please disconnect the USB from your Y1 and press OK, then follow the next instructions.",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Cancel
+            )
 
-        if reply == QMessageBox.Cancel:
-            return
+            if reply == QMessageBox.Cancel:
+                return
 
-        # Clean up libusb state before starting new MTK operation (Windows only)
-        if platform.system() == "Windows":
-            self.cleanup_libusb_state()
+            # Clean up libusb state before starting new MTK operation (Windows only)
+            if platform.system() == "Windows":
+                self.cleanup_libusb_state()
 
-        # Create installation marker to track progress
-        
-        create_installation_marker()
+            # Create installation marker to track progress
+            create_installation_marker()
 
-        # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
-        self.load_presteps_image()
-        
-        # Hide left panel for Method 1 installation to focus user attention on instructions
-        self.hide_left_panel()
+            # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
+            self.load_presteps_image()
+            
+            # Hide left panel for Method 1 installation to focus user attention on instructions
+            self.hide_left_panel()
 
-        # Start MTK worker
-        # Create debug window if debug mode is enabled
-        debug_window = None
-        if getattr(self, 'debug_mode', False):
-            debug_window = DebugOutputWindow(self)
-            debug_window.show()
-        
-        self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
-        self.mtk_worker.status_updated.connect(self.status_label.setText)
-        self.mtk_worker.show_installing_image.connect(self.load_installing_image)
-        self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
-        self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
-        self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
-        self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
-        self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
-        self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
-        self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
-        self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
-        self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
-        self.mtk_worker.disable_update_button.connect(self.disable_update_button)
-        self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+            # Start MTK worker
+            if not self.mtk_worker or not self.mtk_worker.isRunning():
+                # Create debug window if debug mode is enabled
+                debug_window = None
+                if getattr(self, 'debug_mode', False):
+                    debug_window = DebugOutputWindow(self)
+                    debug_window.show()
+                
+                self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+                # Use update_status instead of direct status_label.setText for proper status handling
+                self.mtk_worker.status_updated.connect(self.update_status)
+                self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+                self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
+                self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
+                self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
+                self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
+                self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
+                self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
+                self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
+                self.mtk_worker.backend_error_detected.connect(self.handle_backend_error)
+                self.mtk_worker.keyboard_interrupt_detected.connect(self.handle_keyboard_interrupt)
+                self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+                self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+                self.mtk_worker.start()
+                
+                self.status_label.setText("Starting MTK installation...")
+                silent_print("MTK worker started")
+            else:
+                silent_print("MTK worker already running")
 
-        self.mtk_worker.start()
-
-        # Disable download button during MTK operation
-        self.download_btn.setEnabled(False)
-        self.settings_btn.setEnabled(False)
+            # Disable download button during MTK operation
+            self.download_btn.setEnabled(False)
+            self.settings_btn.setEnabled(False)
+                
+        except Exception as e:
+            silent_print(f"Error starting MTK command: {e}")
+            self.status_label.setText(f"Error starting MTK command: {e}")
 
 
 
@@ -7761,7 +7795,7 @@ Method 2 - MTKclient: Direct technical installation
                 silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 3) ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
-                self.run_mtk_command()
+                self.run_mtk_command_guided()
             elif method == "mtkclient":
                 # Method 4: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
                 silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 4 ===")
@@ -7780,9 +7814,9 @@ Method 2 - MTKclient: Direct technical installation
                 silent_print("=== RUNNING GUIDED INSTALLATION ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
-                self.run_mtk_command()
+                self.run_mtk_command_guided()
             elif method == "mtkclient":
-                # Method 2: MTKclient method - same as pressing "Try Method 2" in troubleshooting
+                # Method 2: in Terminal method - same as pressing "Try Method 2" in troubleshooting
                 silent_print("=== RUNNING MTKCLIENT METHOD ===")
                 # Show Method 2 image and launch recovery firmware install
                 self.load_method2_image()
@@ -7790,7 +7824,7 @@ Method 2 - MTKclient: Direct technical installation
             else:
                 # Fallback to guided method if invalid method
                 silent_print("=== FALLING BACK TO GUIDED METHOD ===")
-                self.run_mtk_command()
+                self.run_mtk_command_guided()
         
         # Method always defaults to Method 1 on app restart, no need to reset here
 
@@ -8182,13 +8216,9 @@ Method 2 - MTKclient: Direct technical installation
                           "This method shows technical installation details. If it fails, try Method 3.")
         else:
             # Non-Windows baseline Method 2 instructions
-            instructions = ("Please follow these steps after pressing OK:\n\n"
-                          "1. INSERT Paperclip\n"
-                          "2. CONNECT Y1 via USB\n"
-                          "3. WAIT for the install to finish\n"
-                          "4. DISCONNECT your Y1\n"
-                          "5. HOLD middle button to restart\n\n"
-                          "This method shows technical installation details.")
+            instructions = ("We'll now take you to Terminal to show you what's happening under the hood:\n\n"
+                          "\n"
+                          "Make sure you have your Y1 disconnected from your computer\n")
         
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Troubleshooting Instructions - Method 2")
@@ -8469,26 +8499,25 @@ echo "=========================================="
 echo "  Innioasis Recovery Firmware Install"
 echo "=========================================="
 echo ""
-echo "This terminal window will now run the MTK firmware installation process."
+echo "This terminal window will now run the necessary command needed to install your chosen firmware with MTKclient (mtk.py)"
+echo ""
+echo "Thank you to u/wa-a-melyn from r/innioasis for documenting this process in an accessible way."
 echo ""
 echo "IMPORTANT INSTRUCTIONS:"
-echo "1. Make sure your Y1 device is connected via USB"
-echo "2. Put your device into Download Mode (power off, then hold Volume Down + Power)"
-echo "3. The installation process will begin automatically"
-echo "4. DO NOT disconnect your device during installation"
+echo "1. Make sure your Y1 device is disconnected from the USB port"
+echo "2. Put your device into Download Mode (Use paperclip to power off)"
+echo "3. Then after pressing Enter..."
+echo "4. Connect your Y1 to the computer by USB"
 echo "5. Wait for the process to complete - this may take several minutes"
 echo "6. Your device will restart automatically when finished"
 echo ""
-echo "If you see any errors or the process fails:"
-echo "- Check that your device is properly connected"
-echo "- Try putting the device in Download Mode again"
-echo "- Contact support if problems persist"
 echo ""
 echo "Press Enter to start the installation process..."
 read -n 1
 echo ""
 echo "Starting Innioasis Recovery Firmware Install..."
-echo "Running MTK command in separate terminal window..."
+echo "python3 mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img
+"
 echo ""
 
 # Run MTK command with python3 (same as used in regular installation)
