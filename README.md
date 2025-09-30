@@ -24,9 +24,6 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 - u/_allstar
   
 ### r/innioasis Mods
-- u/wa-a-melyn
-- u/TwitchyMcJoe
-- u/Key-Brilliant5623
 
 ### ROM Developer
  - [@Multiwirth](https://www.github.com/multiwirth)
