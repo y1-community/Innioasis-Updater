@@ -22,9 +22,9 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QWidget, QListWidget, QListWidgetItem, QPushButton, QTextEdit,
                                QLabel, QComboBox, QProgressBar, QMessageBox,
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
-                               QFileDialog, QDialog, QTabWidget)
-from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer
-from PySide6.QtGui import QFont, QPixmap
+                               QFileDialog, QDialog, QTabWidget, QScrollArea)
+from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer, QPropertyAnimation, QEasingCurve
+from PySide6.QtGui import QFont, QPixmap, QTextDocument
 import platform
 import time
 import logging
@@ -240,14 +240,7 @@ def silent_print(*args, **kwargs):
     else:
         print(*args, **kwargs)
 
-def toggle_silent_mode():
-    """Toggle silent mode on/off"""
-    global SILENT_MODE
-    SILENT_MODE = not SILENT_MODE
-    # Only output when explicitly toggling to verbose mode
-    if not SILENT_MODE:
-        print("Verbose mode enabled - press Ctrl+D again to disable")
-    return SILENT_MODE
+# toggle_silent_mode function removed - debug mode is now controlled by keyboard shortcut
 
 def cleanup_extracted_files():
     """Clean up extracted files at startup"""
@@ -1878,6 +1871,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize automatic utility updates setting (all platforms)
         self.auto_utility_updates_enabled = True  # Default to enabled
 
+        # Handle version check file and macOS app update message
+        self.handle_version_check()
+
         # Clean up any previously extracted files at startup
         cleanup_extracted_files()
 
@@ -1934,7 +1930,75 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.theme_check_timer = QTimer()
         self.theme_check_timer.timeout.connect(self.check_theme_change)
         self.theme_check_timer.start(1000)  # Check every second
-        self.last_theme_state = self.is_dark_mode()
+        self.last_theme_state = self.is_dark_mode
+
+    def handle_version_check(self):
+        """Handle version check file and show macOS app update message for new users"""
+        try:
+            version_file = Path(".version")
+            current_version = "1.6.1"
+            
+            # Read the last used version
+            last_version = None
+            if version_file.exists():
+                try:
+                    last_version = version_file.read_text().strip()
+                except Exception as e:
+                    logging.warning(f"Could not read .version file: {e}")
+            
+            # Write current version to file
+            try:
+                version_file.write_text(current_version)
+            except Exception as e:
+                logging.warning(f"Could not write .version file: {e}")
+            
+            # Show macOS app update message for users running this version for the first time
+            if platform.system() == "Darwin" and last_version != current_version:
+                QTimer.singleShot(1000, self.show_macos_app_update_message)
+                
+        except Exception as e:
+            logging.error(f"Error in handle_version_check: {e}")
+
+    def show_macos_app_update_message(self):
+        """Show message encouraging macOS users to download new .app version"""
+        try:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("macOS App Update Available")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText("New macOS App Version Available")
+            msg_box.setInformativeText(
+                "A new version of the Innioasis Updater macOS app is available at www.innioasis.app\n\n"
+                "This will improve launch times and reliability on macOS.\n\n"
+                "You can continue using this version, but we recommend downloading the updated app for the best experience."
+            )
+            
+            # Add custom buttons
+            take_me_there_btn = msg_box.addButton("Take me there", QMessageBox.ActionRole)
+            remind_later_btn = msg_box.addButton("Remind me later", QMessageBox.ActionRole)
+            msg_box.addButton(QMessageBox.Ok)
+            
+            # Set the default button
+            msg_box.setDefaultButton(take_me_there_btn)
+            
+            result = msg_box.exec()
+            
+            # Handle button clicks
+            if msg_box.clickedButton() == take_me_there_btn:
+                # Open innioasis.app in the default browser
+                import webbrowser
+                webbrowser.open("https://www.innioasis.app")
+            elif msg_box.clickedButton() == remind_later_btn:
+                # Remove the .version file so the message shows again next time
+                try:
+                    version_file = Path(".version")
+                    if version_file.exists():
+                        version_file.unlink()
+                        logging.info("Removed .version file - macOS app update message will show again next time")
+                except Exception as e:
+                    logging.warning(f"Could not remove .version file: {e}")
+                    
+        except Exception as e:
+            logging.error(f"Error showing macOS app update message: {e}")
 
     def check_sp_flash_tool(self):
         """Check if any flash tool is running on Windows and show warning"""
@@ -3059,13 +3123,13 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def keyPressEvent(self, event):
         """Handle key press events"""
-        # Control+D to toggle silent mode
-        if event.key() == Qt.Key_D and event.modifiers() == Qt.ControlModifier:
-            silent_mode = toggle_silent_mode()
-            if silent_mode:
-                self.status_label.setText("Silent mode enabled - press Ctrl+D to disable")
+        # Control+D (Windows/Linux) or Cmd+D (macOS) to toggle debug mode
+        if event.key() == Qt.Key_D and (event.modifiers() == Qt.ControlModifier or event.modifiers() == Qt.MetaModifier):
+            self.debug_mode = not self.debug_mode
+            if self.debug_mode:
+                self.status_label.setText("Debug mode enabled - guided installations will show full output")
             else:
-                self.status_label.setText("Verbose mode enabled - press Ctrl+D to enable silent mode")
+                self.status_label.setText("Debug mode disabled - guided installations will show minimal output")
         else:
             super().keyPressEvent(event)
 
@@ -3096,7 +3160,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Updater")
+        self.setWindowTitle("Innioasis Updater v1.6.1")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -3143,7 +3207,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 font-size: 12px;
                 margin-left: 5px;
                 border: 1px solid #0066CC;
-                border-radius: 12px;
+                border-radius: 3px;
                 background-color: transparent;
                 min-width: 24px;
                 max-width: 24px;
@@ -3164,27 +3228,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add Settings button (combines Tools and Settings functionality)
         self.settings_btn = QPushButton("Settings")
         self.settings_btn.setFixedHeight(24)  # Match dropdown height
-        self.settings_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #2d2d2d;
-                color: #cccccc;
-                border: 1px solid #555555;
-                padding: 4px 8px;
-                border-radius: 3px;
-                font-weight: normal;
-                font-size: 11px;
-                min-width: 50px;
-                max-width: 70px;
-            }
-            QPushButton:hover {
-                background-color: #3d3d3d;
-                border-color: #666666;
-            }
-            QPushButton:pressed {
-                background-color: #1d1d1d;
-                border-color: #444444;
-            }
-        """)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
         self.settings_btn.setCursor(Qt.PointingHandCursor)
         self.settings_btn.setToolTip("Settings and Tools - Installation method, shortcuts, and Y1 Remote Control")
         self.settings_btn.clicked.connect(self.show_settings_dialog)
@@ -3269,6 +3313,28 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.download_btn = QPushButton("Download")
         self.download_btn.clicked.connect(self.start_download)
         self.download_btn.setEnabled(False)
+        colors = self.get_theme_colors()
+        self.download_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #007AFF;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 3px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #0056CC;
+            }
+            QPushButton:pressed {
+                background-color: #004499;
+            }
+            QPushButton:disabled {
+                background-color: #cccccc;
+                color: #666666;
+            }
+        """)
         left_layout.addWidget(self.download_btn)
         
         # Initially enable settings button (it will be disabled during operations if needed)
@@ -3313,7 +3379,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         color: white;
                         border: none;
                         padding: 8px 16px;
-                        border-radius: 20px;
+                        border-radius: 3px;
                         font-weight: bold;
                         font-size: 12px;
                     }
@@ -3336,7 +3402,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         color: white;
                         border: none;
                         padding: 8px 16px;
-                        border-radius: 20px;
+                        border-radius: 3px;
                         font-weight: bold;
                         font-size: 12px;
                     }
@@ -3363,7 +3429,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                             color: white;
                             border: none;
                             padding: 8px 16px;
-                            border-radius: 20px;
+                            border-radius: 3px;
                             font-weight: bold;
                             font-size: 12px;
                         }
@@ -3387,7 +3453,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                             color: white;
                             border: none;
                             padding: 8px 16px;
-                            border-radius: 20px;
+                            border-radius: 3px;
                             font-weight: bold;
                             font-size: 12px;
                         }
@@ -3409,7 +3475,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     color: white;
                     border: none;
                     padding: 8px 16px;
-                    border-radius: 20px;
+                    border-radius: 3px;
                     font-weight: bold;
                     font-size: 12px;
                 }
@@ -3423,27 +3489,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             install_zip_btn.clicked.connect(self.install_from_zip)
             coffee_layout.addWidget(install_zip_btn)
 
-        # Reddit button
-        reddit_btn = QPushButton("📱 r/innioasis")
-        reddit_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #FF4500;
-                color: white;
-                border: none;
-                padding: 8px 16px;
-                border-radius: 20px;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: #E63939;
-            }
-            QPushButton:pressed {
-                background-color: #CC3300;
-            }
-        """)
-        reddit_btn.clicked.connect(self.open_reddit_link)
-        coffee_layout.addWidget(reddit_btn)
+        # Reddit button moved to About tab
 
         # Discord button
         discord_btn = QPushButton("Get Help")
@@ -3453,7 +3499,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 color: white;
                 border: none;
                 padding: 8px 16px;
-                border-radius: 20px;
+                border-radius: 3px;
                 font-weight: bold;
                 font-size: 12px;
             }
@@ -3467,15 +3513,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         discord_btn.clicked.connect(self.open_discord_link)
         coffee_layout.addWidget(discord_btn)
 
-        # Buy Us Coffee button (renamed from Buy Me Coffee)
-        coffee_btn = QPushButton("📰News / ☕Tips")
-        coffee_btn.setStyleSheet("""
+        # About button (opens Settings dialog to About tab)
+        about_btn = QPushButton("About")
+        about_btn.setStyleSheet("""
             QPushButton {
                 background-color: #FF5E5B;
                 color: white;
                 border: none;
                 padding: 8px 16px;
-                border-radius: 20px;
+                border-radius: 3px;
                 font-weight: bold;
                 font-size: 12px;
             }
@@ -3486,8 +3532,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 background-color: #E63939;
             }
         """)
-        coffee_btn.clicked.connect(self.open_coffee_link)
-        coffee_layout.addWidget(coffee_btn)
+        about_btn.clicked.connect(self.show_settings_dialog)
+        coffee_layout.addWidget(about_btn)
 
         right_layout.addLayout(coffee_layout)
 
@@ -3499,6 +3545,28 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.update_btn_right.setEnabled(True)  # Enable immediately
         self.update_btn_right.clicked.connect(self.launch_updater_script)
         self.update_btn_right.setToolTip("Downloads and installs the latest version of the Innioasis Updater")
+        colors = self.get_theme_colors()
+        self.update_btn_right.setStyleSheet("""
+            QPushButton {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 3px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #218838;
+            }
+            QPushButton:pressed {
+                background-color: #1e7e34;
+            }
+            QPushButton:disabled {
+                background-color: #cccccc;
+                color: #666666;
+            }
+        """)
         update_layout.addWidget(self.update_btn_right)
         right_layout.addLayout(update_layout)
 
@@ -3532,7 +3600,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             QLabel {
                 background-color: transparent;
                 border: 1px solid #cccccc;
-                border-radius: 5px;
+                border-radius: 3px;
                 color: #333;
             }
         """)
@@ -3901,9 +3969,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Show dialog with Method 2 instructions
             msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Method 2 - MTKclient Troubleshooting")
+            msg_box.setWindowTitle("Method 2 - in Terminal Troubleshooting")
             msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("Method 2: MTKclient Direct Installation")
+            msg_box.setText("Method 2: in Terminal Direct Installation")
             msg_box.setInformativeText(
                 "This method uses the MTKclient library directly for firmware installation.\n\n"
                 "Please follow the on-screen instructions and ensure your device is properly connected.\n\n"
@@ -4346,7 +4414,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Use a timer to ensure the default selection is properly applied
         QTimer.singleShot(100, self.apply_initial_release_display)
 
-
+        # Native widgets automatically adapt to theme changes - no timer needed
 
         self.status_label.setText("Ready")
         silent_print("Data loading complete")
@@ -4502,26 +4570,24 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Rockbox Utility: {e}")
     
-    def show_settings_dialog(self):
+    def show_settings_dialog(self, initial_tab="installation"):
         """Show enhanced settings dialog with installation method and shortcut management"""
         dialog = QDialog(self)
         dialog.setWindowTitle("Settings")
-        dialog.setFixedSize(600, 500)
+        dialog.setFixedSize(590, 520)  # Reduced width by 160px and height by 80px for better proportions
         dialog.setModal(True)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
         
         layout = QVBoxLayout(dialog)
         
-        # Title
-        title_label = QLabel("Settings")
-        title_label.setStyleSheet("font-size: 16px; font-weight: bold; margin: 10px;")
-        layout.addWidget(title_label)
-        
         # Create tabbed interface or sections
         tab_widget = QTabWidget()
+        # Use native styling - no custom stylesheet for automatic theme adaptation
         layout.addWidget(tab_widget)
         
         # Installation Method Tab
         install_tab = QWidget()
+        # Use native styling - no custom stylesheet for automatic theme adaptation
         install_layout = QVBoxLayout(install_tab)
         
         install_title = QLabel("Installation Settings")
@@ -4589,11 +4655,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Description
         desc_label = QLabel("This setting will be used for the next firmware installation.")
-        desc_label.setStyleSheet("color: #666; margin: 5px;")
+        desc_label.setStyleSheet("margin: 5px;")
         install_layout.addWidget(desc_label)
         
         # Method selection
         method_label = QLabel("Installation Method:")
+        # Use native styling - no custom stylesheet for automatic theme adaptation
         install_layout.addWidget(method_label)
         
         self.method_combo = QComboBox()
@@ -4619,7 +4686,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             # Non-Windows: Standard methods
             self.method_combo.addItem("Method 1 - Guided", "guided")
-            self.method_combo.addItem("Method 2 - MTKclient", "mtkclient")
+            self.method_combo.addItem("Method 2 - in Terminal", "mtkclient")
         
         # Set current method
         current_method = getattr(self, 'installation_method', 'guided')
@@ -4631,32 +4698,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Always use this method checkbox removed - app now always defaults to Method 1
         
-        # Labs mode debug checkbox
-        self.debug_mode_checkbox = QCheckBox("Enable Debug Mode (Labs)")
-        self.debug_mode_checkbox.setToolTip("When checked, guided installations will show mtk.py's full output in a separate window for debugging")
+        # Debug mode is now controlled by keyboard shortcut (Ctrl+D/Cmd+D)
+        # No checkbox needed in settings
         
-        # Set checkbox state based on saved preference
-        debug_mode = getattr(self, 'debug_mode', False)
-        self.debug_mode_checkbox.setChecked(debug_mode)
-        
-        install_layout.addWidget(self.debug_mode_checkbox)
-        
-        # Automatic Utility Updates checkbox
-        self.auto_utility_updates_checkbox = QCheckBox("Automatic Utility Updates")
-        self.auto_utility_updates_checkbox.setToolTip("When checked, Innioasis Updater will automatically check for and download utility updates")
-        
-        # Set checkbox state based on saved preference and .no_updates file
-        # Check if .no_updates file exists to determine current state
-        no_updates_file = Path(".no_updates")
-        if no_updates_file.exists():
-            # .no_updates file exists, so automatic updates are disabled
-            auto_utility_updates = False
-        else:
-            # .no_updates file doesn't exist, use saved preference (default to True)
-            auto_utility_updates = getattr(self, 'auto_utility_updates_enabled', True)
-        self.auto_utility_updates_checkbox.setChecked(auto_utility_updates)
-        
-        install_layout.addWidget(self.auto_utility_updates_checkbox)
+        # Automatic Utility Updates checkbox moved to About tab
         
         # Method descriptions
         desc_text = QTextEdit()
@@ -4664,10 +4709,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         desc_text.setReadOnly(True)
         desc_text.setStyleSheet("""
             QTextEdit {
-                background-color: #2b2b2b;
-                color: #cccccc;
-                border: 1px solid #555555;
-                border-radius: 4px;
+                border: 1px solid #c0c0c0;
+                border-radius: 3px;
                 padding: 8px;
                 font-size: 11px;
             }
@@ -4710,16 +4753,15 @@ Method 4 - MTKclient (advanced): Direct technical installation
         else:
             desc_text.setPlainText("""
 Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - MTKclient: Direct technical installation
+Method 2 - in Terminal: Direct technical installation
             """)
         
         install_layout.addWidget(desc_text)
         
-        # Add installation tab to tab widget
-        tab_widget.addTab(install_tab, "Installation")
+        # Add About tab first (will be added later)
         
-        # Shortcut Management Tab (Windows only)
-        if platform.system() == "Windows":
+        # Shortcut Management Tab (Windows and Linux)
+        if platform.system() in ["Windows", "Linux"]:
             shortcut_tab = QWidget()
             shortcut_layout = QVBoxLayout(shortcut_tab)
             
@@ -4780,7 +4822,206 @@ Method 2 - MTKclient: Direct technical installation
             # Add shortcut tab to tab widget
             tab_widget.addTab(shortcut_tab, "Shortcuts")
         
+        # About Tab
+        about_tab = QWidget()
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        about_layout = QVBoxLayout(about_tab)
+        about_layout.setAlignment(Qt.AlignCenter)
         
+        # App icon (load from mtkclient/gui/images/icon.png)
+        icon_label = QLabel()
+        icon_path = Path("mtkclient/gui/images/icon.png")
+        if icon_path.exists():
+            try:
+                pixmap = QPixmap(str(icon_path))
+                # Scale the icon to a larger size for better visibility
+                scaled_pixmap = pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+                icon_label.setPixmap(scaled_pixmap)
+            except Exception as e:
+                # Fallback to emoji if icon loading fails
+                icon_label.setText("📱")
+                icon_label.setStyleSheet("""
+                    QLabel {
+                        font-size: 80px;
+                        color: #007AFF;
+                        margin: 20px;
+                    }
+                """)
+        else:
+            # Fallback to emoji if icon file doesn't exist
+            icon_label.setText("📱")
+            icon_label.setStyleSheet("""
+                QLabel {
+                    font-size: 64px;
+                    color: #007AFF;
+                    margin: 20px;
+                }
+            """)
+        icon_label.setAlignment(Qt.AlignCenter)
+        icon_label.setFixedHeight(100)  # Ensure enough space for the icon
+        icon_label.setContentsMargins(0, 10, 0, 10)  # Add vertical padding
+        about_layout.addWidget(icon_label)
+        
+        # App name
+        app_name_label = QLabel("Innioasis Updater")
+        app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 10px;")
+        app_name_label.setAlignment(Qt.AlignCenter)
+        about_layout.addWidget(app_name_label)
+        
+        # App description
+        desc_label = QLabel("Official Firmware Installer created by Y1 users in collaboration with Innioasis")
+        desc_label.setStyleSheet("font-size: 12px; margin: 10px;")
+        desc_label.setAlignment(Qt.AlignCenter)
+        desc_label.setWordWrap(True)
+        about_layout.addWidget(desc_label)
+        
+        # Remove redundant version line - version will be shown in credits
+        
+        # Special thanks label
+        special_thanks_label = QLabel("A special thanks to:")
+        special_thanks_label.setStyleSheet("font-size: 12px; font-weight: bold; margin: 10px;")
+        special_thanks_label.setAlignment(Qt.AlignCenter)
+        about_layout.addWidget(special_thanks_label)
+        
+        # Credits section with line-by-line display and fade transitions
+        credits_container = QWidget()
+        credits_container.setFixedHeight(50)  # Single line height
+        credits_container.setStyleSheet("""
+            QWidget {
+                background-color: transparent;
+                border: none;
+            }
+        """)
+        
+        # Create a container for the credits label
+        credits_label_container = QWidget()
+        credits_label_container.setFixedHeight(50)  # Single line height
+        credits_label_container.setStyleSheet("""
+            QWidget {
+                background-color: transparent;
+                border: none;
+            }
+        """)
+        
+        credits_label = QLabel()
+        credits_label.setParent(credits_label_container)
+        credits_label.setStyleSheet("""
+            font-size: 10px;
+            margin: 5px;
+            padding: 8px;
+        """)
+        credits_label.setAlignment(Qt.AlignCenter)
+        credits_label.setOpenExternalLinks(True)
+        credits_label.setWordWrap(False)  # Disable word wrap for horizontal scrolling
+        
+        # Position the label in the container for single line display
+        credits_label.setGeometry(5, 5, credits_container.width() - 10, 40)
+        
+        credits_container_layout = QVBoxLayout(credits_container)
+        credits_container_layout.setContentsMargins(0, 0, 0, 0)
+        credits_container_layout.addWidget(credits_label_container)
+        
+        about_layout.addWidget(credits_container)
+        
+        # Set up line-by-line display with fade transitions
+        self.setup_credits_line_display(credits_label, credits_label_container)
+        
+        # Automatic Utility Updates checkbox
+        self.auto_utility_updates_checkbox = QCheckBox("Check for Updates Automatically")
+        self.auto_utility_updates_checkbox.setToolTip("When checked, Innioasis Updater will automatically check for and download utility updates")
+        
+        # Set checkbox state based on saved preference and .no_updates file
+        # Check if .no_updates file exists to determine current state
+        no_updates_file = Path(".no_updates")
+        if no_updates_file.exists():
+            # .no_updates file exists, so automatic updates are disabled
+            auto_utility_updates = False
+        else:
+            # .no_updates file doesn't exist, use saved preference (default to True)
+            auto_utility_updates = getattr(self, 'auto_utility_updates_enabled', True)
+        self.auto_utility_updates_checkbox.setChecked(auto_utility_updates)
+        
+        # Center the checkbox
+        checkbox_layout = QHBoxLayout()
+        checkbox_layout.addStretch()
+        checkbox_layout.addWidget(self.auto_utility_updates_checkbox)
+        checkbox_layout.addStretch()
+        about_layout.addLayout(checkbox_layout)
+        
+        # Reddit button
+        reddit_btn = QPushButton("📱 r/innioasis")
+        reddit_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #FF4500;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 3px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #E63939;
+            }
+            QPushButton:pressed {
+                background-color: #CC3300;
+            }
+        """)
+        reddit_btn.clicked.connect(self.open_reddit_link)
+        
+        # Center the reddit button
+        reddit_layout = QHBoxLayout()
+        reddit_layout.addStretch()
+        reddit_layout.addWidget(reddit_btn)
+        reddit_layout.addStretch()
+        about_layout.addLayout(reddit_layout)
+        
+        # Support The Devs button
+        support_btn = QPushButton("Support The Devs")
+        support_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #FF5E5B;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 3px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #FF4441;
+            }
+            QPushButton:pressed {
+                background-color: #E63939;
+            }
+        """)
+        support_btn.clicked.connect(self.open_coffee_link)
+        
+        # Center the support button
+        support_layout = QHBoxLayout()
+        support_layout.addStretch()
+        support_layout.addWidget(support_btn)
+        support_layout.addStretch()
+        about_layout.addLayout(support_layout)
+        
+        # Add some spacing
+        about_layout.addStretch()
+        
+        # Add tabs to tab widget in order: About, Installation, Shortcuts (if applicable)
+        tab_widget.addTab(about_tab, "About")
+        tab_widget.addTab(install_tab, "Installation")
+        
+        # Set initial tab based on parameter
+        if initial_tab == "about":
+            tab_widget.setCurrentIndex(0)  # About tab
+        elif initial_tab == "installation":
+            tab_widget.setCurrentIndex(1)  # Installation tab
+        elif initial_tab == "shortcuts":
+            # Shortcuts tab index depends on whether it was added
+            if platform.system() == "Windows":
+                tab_widget.setCurrentIndex(2)  # Shortcuts tab (3rd tab)
+            else:
+                tab_widget.setCurrentIndex(1)  # Installation tab (fallback)
         
         # Buttons
         button_layout = QHBoxLayout()
@@ -4824,14 +5065,12 @@ Method 2 - MTKclient: Direct technical installation
         y1_remote_btn = QPushButton("Launch Y1 Remote Control")
         y1_remote_btn.setToolTip("Open Y1 Remote Control application")
         y1_remote_btn.clicked.connect(self.open_y1_remote_control)
-        y1_remote_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
         tools_layout.addWidget(y1_remote_btn)
         
         # Check for Utility Updates button
         utility_update_btn = QPushButton("Check for Utility Updates")
         utility_update_btn.setToolTip("Download the latest updater.py script")
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
-        utility_update_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
         tools_layout.addWidget(utility_update_btn)
         
         # Theme Downloaders section
@@ -4843,7 +5082,6 @@ Method 2 - MTKclient: Direct technical installation
             theme_240p_btn = QPushButton("240p Theme Downloader")
             theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
             theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
-            theme_240p_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
             theme_layout.addWidget(theme_240p_btn)
         
         # 360p Theme Downloader button (only if file exists)
@@ -4851,7 +5089,6 @@ Method 2 - MTKclient: Direct technical installation
             theme_360p_btn = QPushButton("360p Theme Downloader")
             theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
             theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
-            theme_360p_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
             theme_layout.addWidget(theme_360p_btn)
         
         # Only add theme group if it has buttons
@@ -4862,7 +5099,6 @@ Method 2 - MTKclient: Direct technical installation
         storage_btn = QPushButton("Manage Storage")
         storage_btn.setToolTip("Analyze and clean up unnecessary files in the project directory")
         storage_btn.clicked.connect(self.launch_storage_management_tool)
-        storage_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
         tools_layout.addWidget(storage_btn)
         
         # Rockbox Utility button (Windows only)
@@ -4870,7 +5106,6 @@ Method 2 - MTKclient: Direct technical installation
             rockbox_utility_btn = QPushButton("Rockbox Utility")
             rockbox_utility_btn.setToolTip("Launch Rockbox Utility for Y1 device management")
             rockbox_utility_btn.clicked.connect(self.launch_rockbox_utility)
-            rockbox_utility_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; }")
             tools_layout.addWidget(rockbox_utility_btn)
         
         # Open Toolkit in Windows Explorer button (Windows only)
@@ -4901,7 +5136,7 @@ Method 2 - MTKclient: Direct technical installation
         if hasattr(self, 'method_combo'):
             self.installation_method = self.method_combo.currentData()
         # Always use method functionality removed
-        self.debug_mode = self.debug_mode_checkbox.isChecked()
+        # Debug mode is now controlled by keyboard shortcut, not saved in settings
         
         # Save automatic utility updates setting
         self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
@@ -5826,72 +6061,111 @@ Method 2 - MTKclient: Direct technical installation
         self.download_btn.setEnabled(True)
         self.update_download_button_text(item)
 
-    def run_mtk_command(self):
-        """Run the MTK flash command with image display"""
-        # Check if required files exist
-        required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
-        missing_files = []
-        for file in required_files:
-            if not Path(file).exists():
-                missing_files.append(file)
+    def run_mtk_command_guided(self):
+        """Run the MTK flash command with image display for guided installation"""
+        try:
+            # Check driver availability for Windows users
+            if platform.system() == "Windows":
+                driver_info = self.check_drivers_and_architecture()
+                
+                if driver_info['is_arm64']:
+                    QMessageBox.information(
+                        self,
+                        "ARM64 Windows Not Supported",
+                        "Firmware installation is not supported on ARM64 Windows.\n\n"
+                        "You can download firmware files, but to install them please use:\n"
+                        "• WSLg (Windows Subsystem for Linux with GUI)\n"
+                        "• Linux (dual boot or live USB)\n"
+                        "• Another computer with x64 Windows"
+                    )
+                    return
+                    
+                elif not driver_info['can_install_firmware']:
+                    QMessageBox.warning(
+                        self,
+                        "Drivers Required",
+                        "No installation methods available. Please install drivers to enable firmware installation.\n\n"
+                        "Click OK to open the driver installation guide."
+                    )
+                    self.open_driver_setup_link()
+                    return
+            
+            # Check if required files exist
+            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            missing_files = []
+            for file in required_files:
+                if not Path(file).exists():
+                    missing_files.append(file)
 
-        if missing_files:
-            QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
-            return
+            if missing_files:
+                QMessageBox.warning(self, "Error", f"Missing required files: {', '.join(missing_files)}")
+                return
 
-        # Confirm with user
-        reply = QMessageBox.question(
-            self,
-            "Get Ready",
-            "Please disconnect the USB from your Y1 and press OK, then follow the next instructions.",
-            QMessageBox.Ok | QMessageBox.Cancel,
-            QMessageBox.Cancel
-        )
+            # Confirm with user
+            reply = QMessageBox.question(
+                self,
+                "Get Ready",
+                "Please disconnect the USB from your Y1 and press OK, then follow the next instructions.",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Cancel
+            )
 
-        if reply == QMessageBox.Cancel:
-            return
+            if reply == QMessageBox.Cancel:
+                return
 
-        # Clean up libusb state before starting new MTK operation (Windows only)
-        if platform.system() == "Windows":
-            self.cleanup_libusb_state()
+            # Clean up libusb state before starting new MTK operation (Windows only)
+            if platform.system() == "Windows":
+                self.cleanup_libusb_state()
 
-        # Create installation marker to track progress
-        
-        create_installation_marker()
+            # Create installation marker to track progress
+            create_installation_marker()
 
-        # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
-        self.load_presteps_image()
-        
-        # Hide left panel for Method 1 installation to focus user attention on instructions
-        self.hide_left_panel()
+            # Load and display the presteps image first, initsteps will be shown when mtk.py emits first empty line
+            self.load_presteps_image()
+            
+            # Hide left panel for Method 1 installation to focus user attention on instructions
+            self.hide_left_panel()
 
-        # Start MTK worker
-        # Create debug window if debug mode is enabled
-        debug_window = None
-        if getattr(self, 'debug_mode', False):
-            debug_window = DebugOutputWindow(self)
-            debug_window.show()
-        
-        self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
-        self.mtk_worker.status_updated.connect(self.status_label.setText)
-        self.mtk_worker.show_installing_image.connect(self.load_installing_image)
-        self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
-        self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
-        self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
-        self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
-        self.mtk_worker.handshake_failed.connect(self.on_handshake_failed)
-        self.mtk_worker.errno2_detected.connect(self.on_errno2_detected)
-        self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
-        self.mtk_worker.backend_error_detected.connect(self.on_backend_error_detected)
-        self.mtk_worker.keyboard_interrupt_detected.connect(self.on_keyboard_interrupt_detected)
-        self.mtk_worker.disable_update_button.connect(self.disable_update_button)
-        self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+            # Start MTK worker
+            if not self.mtk_worker or not self.mtk_worker.isRunning():
+                # Create debug window if debug mode is enabled
+                debug_window = None
+                if getattr(self, 'debug_mode', False):
+                    debug_window = DebugOutputWindow(self)
+                    debug_window.show()
+                
+                self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+                # Use update_status instead of direct status_label.setText for proper status handling
+                self.mtk_worker.status_updated.connect(self.update_status)
+                self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+                self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
+                self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
+                self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_instructions_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
+                self.mtk_worker.mtk_completed.connect(self.handle_mtk_completion)
+                self.mtk_worker.handshake_failed.connect(self.handle_handshake_failure)
+                self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
+                self.mtk_worker.usb_io_error_detected.connect(self.on_usb_io_error_detected)
+                self.mtk_worker.backend_error_detected.connect(self.handle_backend_error)
+                self.mtk_worker.keyboard_interrupt_detected.connect(self.handle_keyboard_interrupt)
+                self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+                self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+                self.mtk_worker.start()
+                
+                self.status_label.setText("Starting MTK installation...")
+                silent_print("MTK worker started")
+            else:
+                silent_print("MTK worker already running")
 
-        self.mtk_worker.start()
-
-        # Disable download button during MTK operation
-        self.download_btn.setEnabled(False)
-        self.settings_btn.setEnabled(False)
+            # Disable download button during MTK operation
+            self.download_btn.setEnabled(False)
+            self.settings_btn.setEnabled(False)
+                
+        except Exception as e:
+            silent_print(f"Error starting MTK command: {e}")
+            self.status_label.setText(f"Error starting MTK command: {e}")
 
 
 
@@ -6664,6 +6938,340 @@ Method 2 - MTKclient: Direct technical installation
         import webbrowser
         webbrowser.open("https://reddit.com/r/innioasis")
 
+    def load_about_content(self):
+        """Load about content from remote URL or local fallback file"""
+        try:
+            # Try to load from remote URL first
+            import requests
+            response = requests.get("https://innioasis.app/about", timeout=5)
+            if response.status_code == 200:
+                content = response.text.strip()
+                if content:  # Make sure we got actual content
+                    logging.info("Successfully loaded about content from innioasis.app")
+                    return content
+        except Exception as e:
+            logging.warning(f"Failed to load about content from remote URL: {e}")
+        
+        # Fallback to local file
+        try:
+            local_about_file = Path("about")
+            if local_about_file.exists():
+                content = local_about_file.read_text(encoding='utf-8').strip()
+                logging.info("Loaded about content from local file")
+                return content
+        except Exception as e:
+            logging.warning(f"Failed to load about content from local file: {e}")
+        
+        # Final fallback to hardcoded content
+        logging.info("Using fallback about content")
+        return """
+        <div style="text-align: center; font-size: 9px; line-height: 1.4;">
+        <p><strong>Thanks to:</strong></p>
+        <p><strong>Team Slide:</strong><br/>
+        Melody (u/wa-a-melyn) and Leonardo (u/allstar)</p>
+        <p>Bklerler for developing MTKClient<br/>
+        <a href="https://github.com/bkerler" style="color: #007AFF; text-decoration: none;">@bkerler</a> • 
+        <a href="https://github.com/bkerler/mtkclient" style="color: #007AFF; text-decoration: none;">MTKClient</a></p>
+        <p><a href="https://cursor.com" style="color: #007AFF; text-decoration: none;">Cursor.com</a></p>
+        <p><a href="https://github.com/NoahDomingues" style="color: #007AFF; text-decoration: none;">NoahDomingues</a> for 
+        <a href="https://github.com/NoahDomingues/Android-IMG-Editor" style="color: #007AFF; text-decoration: none;">Android-IMG-Editor</a></p>
+        <p>Innioasis for adopting Updater as the official firmware installer</p>
+        </div>
+        """
+
+    def setup_credits_scrolling(self, scroll_area, credits_label, credits_text):
+        """Set up iPod-style horizontal auto-scrolling for credits"""
+        # Calculate the actual rendered width of the HTML content
+        doc = QTextDocument()
+        doc.setHtml(credits_text)
+        doc.setTextWidth(1000)  # Set a large width to get full content width
+        content_width = doc.idealWidth()
+        
+        # Get the available width in the scroll area
+        available_width = scroll_area.width() - 20  # Account for margins
+        
+        # Only set up scrolling if content is wider than available space
+        if content_width <= available_width:
+            return  # No scrolling needed
+        
+        # Animation properties
+        self.credits_scroll_position = 0
+        self.credits_scroll_speed = 1
+        self.credits_pause_duration = 2000  # 2 seconds pause at each end
+        self.credits_pause_timer = 0
+        self.credits_scrolling_right = True
+        self.credits_scroll_area = scroll_area
+        self.credits_max_scroll = content_width - available_width
+        
+        # Start the animation timer
+        self.credits_timer = QTimer()
+        self.credits_timer.timeout.connect(self._animate_credits_scroll)
+        self.credits_timer.start(50)  # Update every 50ms
+
+    def _animate_credits_scroll(self):
+        """Animate the credits horizontal scrolling"""
+        if not hasattr(self, 'credits_scroll_area'):
+            return
+            
+        # Handle pausing at ends
+        if self.credits_pause_timer > 0:
+            self.credits_pause_timer -= 50
+            return
+        
+        # Update scroll position
+        if self.credits_scrolling_right:
+            self.credits_scroll_position += self.credits_scroll_speed
+            if self.credits_scroll_position >= self.credits_max_scroll:
+                self.credits_scroll_position = self.credits_max_scroll
+                self.credits_scrolling_right = False
+                self.credits_pause_timer = self.credits_pause_duration
+        else:
+            self.credits_scroll_position -= self.credits_scroll_speed
+            if self.credits_scroll_position <= 0:
+                self.credits_scroll_position = 0
+                self.credits_scrolling_right = True
+                self.credits_pause_timer = self.credits_pause_duration
+        
+        # Update the scroll bar position
+        self.credits_scroll_area.horizontalScrollBar().setValue(int(self.credits_scroll_position))
+
+    def setup_credits_line_display(self, credits_label, credits_label_container):
+        """Set up line-by-line display with fade transitions"""
+        # Start with version line (from firmware_downloader.py, not remote)
+        clean_lines = ["Version 1.6.1"]
+        
+        # Load credits content from remote or local file
+        credits_text = self.load_about_content()
+        
+        # Parse HTML content into individual lines preserving order
+        import re
+        # Remove div tags but keep content, but preserve centering by adding it to each line
+        clean_text = re.sub(r'</?div[^>]*>', '', credits_text)
+        
+        # Split by paragraph tags to get individual paragraphs
+        paragraphs = re.split(r'</?p>', clean_text)
+        
+        # Process each paragraph
+        for paragraph in paragraphs:
+            paragraph = paragraph.strip()
+            if paragraph:
+                # Remove extra whitespace but preserve single spaces
+                paragraph = re.sub(r'\s+', ' ', paragraph).strip()
+                # Remove HTML line breaks and ensure single line
+                paragraph = re.sub(r'<br\s*/?>', ' ', paragraph)
+                paragraph = re.sub(r'</?p>', '', paragraph)
+                # Check if it's not just HTML tags
+                if paragraph and not re.match(r'^<[^>]*>$', paragraph):
+                    # Wrap each line with centering div to ensure proper centering
+                    centered_paragraph = f'<div style="text-align: center;">{paragraph}</div>'
+                    clean_lines.append(centered_paragraph)
+        
+        # Store lines for animation
+        self.credits_lines = clean_lines
+        self.current_line_index = 0
+        self.credits_label = credits_label
+        
+        # Debug: log the parsed lines
+        logging.info(f"Parsed credits lines: {self.credits_lines}")
+        self.credits_container = credits_label_container
+        
+        # Set up fade animations
+        self.fade_out_animation = QPropertyAnimation(credits_label, b"windowOpacity")
+        self.fade_out_animation.setDuration(500)
+        self.fade_out_animation.setStartValue(1.0)
+        self.fade_out_animation.setEndValue(0.0)
+        self.fade_out_animation.setEasingCurve(QEasingCurve.OutQuad)
+        
+        self.fade_in_animation = QPropertyAnimation(credits_label, b"windowOpacity")
+        self.fade_in_animation.setDuration(500)
+        self.fade_in_animation.setStartValue(0.0)
+        self.fade_in_animation.setEndValue(1.0)
+        self.fade_in_animation.setEasingCurve(QEasingCurve.InQuad)
+        
+        # Connect animations
+        self.fade_out_animation.finished.connect(self.show_next_line)
+        self.fade_in_animation.finished.connect(self.start_line_timer)
+        
+        # Start the display
+        if self.credits_lines:
+            self.show_current_line()
+            self.start_line_timer()
+
+    def show_current_line(self):
+        """Display the current line with horizontal scrolling if needed"""
+        if not hasattr(self, 'credits_lines') or not self.credits_lines:
+            return
+            
+        current_line = self.credits_lines[self.current_line_index]
+        self.credits_label.setHtml(current_line)
+        
+        # Check if line needs horizontal scrolling
+        doc = QTextDocument()
+        doc.setHtml(current_line)
+        doc.setTextWidth(1000)
+        content_width = doc.idealWidth()
+        available_width = self.credits_container.width() - 20
+        
+        if content_width > available_width:
+            # Set up horizontal scrolling for this line
+            self.setup_line_scrolling(current_line, content_width, available_width)
+        else:
+            # Stop any existing scrolling
+            if hasattr(self, 'line_scroll_timer'):
+                self.line_scroll_timer.stop()
+
+    def setup_line_scrolling(self, line_text, content_width, available_width):
+        """Set up horizontal scrolling for a single line"""
+        # Animation properties for this line
+        self.line_scroll_position = 0
+        self.line_scroll_speed = 1
+        self.line_pause_duration = 1500  # 1.5 seconds pause at each end
+        self.line_pause_timer = 0
+        self.line_scrolling_right = True
+        self.line_max_scroll = content_width - available_width
+        
+        # Start the line scrolling timer
+        if hasattr(self, 'line_scroll_timer'):
+            self.line_scroll_timer.stop()
+        
+        self.line_scroll_timer = QTimer()
+        self.line_scroll_timer.timeout.connect(self._animate_line_scroll)
+        self.line_scroll_timer.start(50)  # Update every 50ms
+
+    def _animate_line_scroll(self):
+        """Animate horizontal scrolling for the current line"""
+        if not hasattr(self, 'line_scroll_timer'):
+            return
+            
+        # Handle pausing at ends
+        if self.line_pause_timer > 0:
+            self.line_pause_timer -= 50
+            return
+        
+        # Update scroll position
+        if self.line_scrolling_right:
+            self.line_scroll_position += self.line_scroll_speed
+            if self.line_scroll_position >= self.line_max_scroll:
+                self.line_scroll_position = self.line_max_scroll
+                self.line_scrolling_right = False
+                self.line_pause_timer = self.line_pause_duration
+        else:
+            self.line_scroll_position -= self.line_scroll_speed
+            if self.line_scroll_position <= 0:
+                self.line_scroll_position = 0
+                self.line_scrolling_right = True
+                self.line_pause_timer = self.line_pause_duration
+        
+            # Update the label position to create scrolling effect
+            if hasattr(self, 'credits_label'):
+                current_x = 5 - int(self.line_scroll_position)
+                self.credits_label.setGeometry(current_x, 5, self.credits_container.width() - 10, 40)
+
+    def show_next_line(self):
+        """Show the next line after fade out"""
+        if not hasattr(self, 'credits_lines') or not self.credits_lines:
+            return
+            
+        # Move to next line
+        self.current_line_index = (self.current_line_index + 1) % len(self.credits_lines)
+        self.show_current_line()
+        
+        # Fade in the new line
+        self.fade_in_animation.start()
+
+    def start_line_timer(self):
+        """Start timer to show next line after delay"""
+        if not hasattr(self, 'credits_lines') or not self.credits_lines:
+            return
+            
+        # Show each line for 3 seconds
+        self.line_display_timer = QTimer()
+        self.line_display_timer.timeout.connect(self.fade_out_animation.start)
+        self.line_display_timer.setSingleShot(True)
+        self.line_display_timer.start(3000)
+
+    def detect_dark_mode(self):
+        """Detect if the system is in dark mode"""
+        try:
+            if platform.system() == "Darwin":  # macOS
+                import subprocess
+                result = subprocess.run(['defaults', 'read', '-g', 'AppleInterfaceStyle'], 
+                                      capture_output=True, text=True, timeout=5)
+                is_dark = result.stdout.strip() == 'Dark'
+                return is_dark
+            elif platform.system() == "Windows":
+                import winreg
+                with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 
+                                  r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize") as key:
+                    value, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
+                    is_dark = value == 0
+                    return is_dark
+            else:  # Linux
+                # Try to detect dark mode from environment variables
+                import os
+                is_dark = os.environ.get('GTK_THEME', '').endswith(':dark') or \
+                         os.environ.get('COLORFGBG', '').endswith(';0')
+                return is_dark
+        except Exception as e:
+            # Fallback to light mode if detection fails
+            return False
+
+    def get_theme_colors(self):
+        """Get appropriate colors based on system theme"""
+        if self.is_dark_mode:
+            colors = {
+                'button_bg': '#2d2d2d',
+                'button_text': '#cccccc',
+                'button_border': '#555555',
+                'button_hover_bg': '#3d3d3d',
+                'button_hover_border': '#666666',
+                'button_pressed_bg': '#1d1d1d',
+                'button_pressed_border': '#444444',
+                'text_bg': '#2b2b2b',
+                'text_color': '#cccccc',
+                'text_border': '#555555',
+                'tab_bg': '#2d2d2d',
+                'tab_text': '#cccccc',
+                'tab_border': '#555555',
+                'tab_selected_bg': '#2b2b2b',
+                'tab_hover_bg': '#3d3d3d'
+            }
+            return colors
+        else:
+            colors = {
+                'button_bg': '#f0f0f0',
+                'button_text': '#000000',
+                'button_border': '#c0c0c0',
+                'button_hover_bg': '#e0e0e0',
+                'button_hover_border': '#a0a0a0',
+                'button_pressed_bg': '#d0d0d0',
+                'button_pressed_border': '#808080',
+                'text_bg': '#ffffff',
+                'text_color': '#000000',
+                'text_border': '#c0c0c0',
+                'tab_bg': '#f0f0f0',
+                'tab_text': '#000000',
+                'tab_border': '#c0c0c0',
+                'tab_selected_bg': '#ffffff',
+                'tab_hover_bg': '#e0e0e0'
+            }
+            return colors
+
+    # Theme change detection methods removed - native widgets handle this automatically
+
+    def closeEvent(self, event):
+        """Handle application close event"""
+        # Stop any running workers
+        if hasattr(self, 'download_worker') and self.download_worker:
+            self.download_worker.stop()
+            self.download_worker.wait()
+        
+        if hasattr(self, 'mtk_worker') and self.mtk_worker:
+            self.mtk_worker.stop()
+            self.mtk_worker.wait()
+        
+        event.accept()
+
     def open_discord_link(self):
         """Help with common issues"""
         import webbrowser
@@ -7201,7 +7809,7 @@ Method 2 - MTKclient: Direct technical installation
                 silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 3) ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
-                self.run_mtk_command()
+                self.run_mtk_command_guided()
             elif method == "mtkclient":
                 # Method 4: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
                 silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 4 ===")
@@ -7220,9 +7828,9 @@ Method 2 - MTKclient: Direct technical installation
                 silent_print("=== RUNNING GUIDED INSTALLATION ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
-                self.run_mtk_command()
+                self.run_mtk_command_guided()
             elif method == "mtkclient":
-                # Method 2: MTKclient method - same as pressing "Try Method 2" in troubleshooting
+                # Method 2: in Terminal method - same as pressing "Try Method 2" in troubleshooting
                 silent_print("=== RUNNING MTKCLIENT METHOD ===")
                 # Show Method 2 image and launch recovery firmware install
                 self.load_method2_image()
@@ -7230,7 +7838,7 @@ Method 2 - MTKclient: Direct technical installation
             else:
                 # Fallback to guided method if invalid method
                 silent_print("=== FALLING BACK TO GUIDED METHOD ===")
-                self.run_mtk_command()
+                self.run_mtk_command_guided()
         
         # Method always defaults to Method 1 on app restart, no need to reset here
 
@@ -7313,7 +7921,7 @@ Method 2 - MTKclient: Direct technical installation
                 QLabel {
                     background-color: transparent;
                     border: 0.5px solid #2a2a2a;
-                    border-radius: 5px;
+                    border-radius: 3px;
                     color: white;
                 }
             """)
@@ -7323,7 +7931,7 @@ Method 2 - MTKclient: Direct technical installation
                 QLabel {
                     background-color: transparent;
                     border: 0.5px solid #f0f0f0;
-                    border-radius: 5px;
+                    border-radius: 3px;
                     color: #333;
                 }
             """)
@@ -7396,15 +8004,35 @@ Method 2 - MTKclient: Direct technical installation
             )
             
             if reply == QMessageBox.Yes:
-                # Launch the target script
+                # Launch the target script or app
                 if platform.system() == "Windows":
                     subprocess.Popen([sys.executable, target_file], 
                                    creationflags=subprocess.CREATE_NO_WINDOW)
+                    # Close the current app after a short delay
+                    QTimer.singleShot(1000, self.close)
+                elif platform.system() == "Darwin":  # macOS
+                    if current_file == "test.py":
+                        # Switching from labs mode back to stable mode - launch the .app
+                        app_path = "/Applications/Innioasis Updater.app"
+                        if Path(app_path).exists():
+                            # Launch the .app which will show proper dock icon and bouncing
+                            subprocess.Popen(["open", app_path])
+                            # Close the current app after a short delay
+                            QTimer.singleShot(1000, self.close)
+                        else:
+                            # Fallback to direct script launch if .app not found
+                            subprocess.Popen([sys.executable, target_file])
+                            QTimer.singleShot(1000, self.close)
+                    else:
+                        # Switching to labs mode - launch test.py directly
+                        subprocess.Popen([sys.executable, target_file])
+                        # Close the current app after a short delay
+                        QTimer.singleShot(1000, self.close)
                 else:
+                    # Linux and other systems
                     subprocess.Popen([sys.executable, target_file])
-                
-                # Close the current app after a short delay
-                QTimer.singleShot(1000, self.close)
+                    # Close the current app after a short delay
+                    QTimer.singleShot(1000, self.close)
                 
         except Exception as e:
             QMessageBox.warning(self, "Switch Error", f"Error switching versions: {str(e)}")
@@ -7622,13 +8250,9 @@ Method 2 - MTKclient: Direct technical installation
                           "This method shows technical installation details. If it fails, try Method 3.")
         else:
             # Non-Windows baseline Method 2 instructions
-            instructions = ("Please follow these steps after pressing OK:\n\n"
-                          "1. INSERT Paperclip\n"
-                          "2. CONNECT Y1 via USB\n"
-                          "3. WAIT for the install to finish\n"
-                          "4. DISCONNECT your Y1\n"
-                          "5. HOLD middle button to restart\n\n"
-                          "This method shows technical installation details.")
+            instructions = ("We'll now take you to Terminal to show you what's happening under the hood:\n\n"
+                          "\n"
+                          "Make sure you have your Y1 disconnected from your computer\n")
         
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Troubleshooting Instructions - Method 2")
@@ -7909,26 +8533,25 @@ echo "=========================================="
 echo "  Innioasis Recovery Firmware Install"
 echo "=========================================="
 echo ""
-echo "This terminal window will now run the MTK firmware installation process."
+echo "This terminal window will now run the necessary command needed to install your chosen firmware with MTKclient (mtk.py)"
+echo ""
+echo "Thank you to u/wa-a-melyn from r/innioasis for documenting this process in an accessible way."
 echo ""
 echo "IMPORTANT INSTRUCTIONS:"
-echo "1. Make sure your Y1 device is connected via USB"
-echo "2. Put your device into Download Mode (power off, then hold Volume Down + Power)"
-echo "3. The installation process will begin automatically"
-echo "4. DO NOT disconnect your device during installation"
+echo "1. Make sure your Y1 device is disconnected from the USB port"
+echo "2. Put your device into Download Mode (Use paperclip to power off)"
+echo "3. Then after pressing Enter..."
+echo "4. Connect your Y1 to the computer by USB"
 echo "5. Wait for the process to complete - this may take several minutes"
 echo "6. Your device will restart automatically when finished"
 echo ""
-echo "If you see any errors or the process fails:"
-echo "- Check that your device is properly connected"
-echo "- Try putting the device in Download Mode again"
-echo "- Contact support if problems persist"
 echo ""
 echo "Press Enter to start the installation process..."
 read -n 1
 echo ""
 echo "Starting Innioasis Recovery Firmware Install..."
-echo "Running MTK command in separate terminal window..."
+echo "python3 mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img
+"
 echo ""
 
 # Run MTK command with python3 (same as used in regular installation)
@@ -8142,7 +8765,7 @@ read -n 1
             flash_style = """
                 QLabel {
                     border: 3px solid white;
-                    border-radius: 5px;
+                    border-radius: 3px;
                 }
             """
             
