@@ -4570,11 +4570,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Rockbox Utility: {e}")
     
-    def show_settings_dialog(self):
+    def show_settings_dialog(self, initial_tab="installation"):
         """Show enhanced settings dialog with installation method and shortcut management"""
+        silent_print(f"Opening settings dialog with initial_tab: {initial_tab}")
         dialog = QDialog(self)
         dialog.setWindowTitle("Settings")
-        dialog.setFixedSize(750, 600)  # Increased size for better icon display
+        dialog.setFixedSize(590, 520)  # Reduced width by 160px and height by 80px for better proportions
         dialog.setModal(True)
         # Use native styling - no custom stylesheet for automatic theme adaptation
         
@@ -4904,7 +4905,6 @@ Method 2 - in Terminal: Direct technical installation
         """)
         
         credits_label = QLabel()
-        credits_label.setParent(credits_label_container)
         credits_label.setStyleSheet("""
             font-size: 10px;
             margin: 5px;
@@ -4914,17 +4914,16 @@ Method 2 - in Terminal: Direct technical installation
         credits_label.setOpenExternalLinks(True)
         credits_label.setWordWrap(False)  # Disable word wrap for horizontal scrolling
         
-        # Position the label in the container for single line display
-        credits_label.setGeometry(5, 5, credits_container.width() - 10, 40)
-        
+        # Use proper layout centering instead of manual geometry
         credits_container_layout = QVBoxLayout(credits_container)
         credits_container_layout.setContentsMargins(0, 0, 0, 0)
-        credits_container_layout.addWidget(credits_label_container)
+        credits_container_layout.setAlignment(Qt.AlignCenter)
+        credits_container_layout.addWidget(credits_label)
         
         about_layout.addWidget(credits_container)
         
         # Set up line-by-line display with fade transitions
-        self.setup_credits_line_display(credits_label, credits_label_container)
+        self.setup_credits_line_display(credits_label, credits_container)
         
         # Automatic Utility Updates checkbox
         self.auto_utility_updates_checkbox = QCheckBox("Check for Updates Automatically")
@@ -5025,7 +5024,21 @@ Method 2 - in Terminal: Direct technical installation
         
         layout.addLayout(button_layout)
         
+        # Set initial tab based on parameter
+        if initial_tab == "about":
+            tab_widget.setCurrentIndex(0)  # About tab
+        elif initial_tab == "installation":
+            tab_widget.setCurrentIndex(1)  # Installation tab
+        elif initial_tab == "shortcuts":
+            # Shortcuts tab index depends on whether it was added
+            if platform.system() in ["Windows", "Linux"]:
+                tab_widget.setCurrentIndex(2)  # Shortcuts tab (3rd tab)
+            else:
+                tab_widget.setCurrentIndex(1)  # Installation tab (fallback)
+        
+        silent_print("About to show settings dialog")
         dialog.exec()
+        silent_print("Settings dialog closed")
     
     def show_tools_dialog(self):
         """Show Toolkit dialog with all tools and utilities"""
