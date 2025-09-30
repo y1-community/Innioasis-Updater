@@ -4570,11 +4570,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Rockbox Utility: {e}")
     
-    def show_settings_dialog(self, initial_tab="installation"):
+    def show_settings_dialog(self):
         """Show enhanced settings dialog with installation method and shortcut management"""
         dialog = QDialog(self)
         dialog.setWindowTitle("Settings")
-        dialog.setFixedSize(590, 520)  # Reduced width by 160px and height by 80px for better proportions
+        dialog.setFixedSize(750, 600)  # Increased size for better icon display
         dialog.setModal(True)
         # Use native styling - no custom stylesheet for automatic theme adaptation
         
@@ -4760,8 +4760,8 @@ Method 2 - in Terminal: Direct technical installation
         
         # Add About tab first (will be added later)
         
-        # Shortcut Management Tab (Windows and Linux)
-        if platform.system() in ["Windows", "Linux"]:
+        # Shortcut Management Tab (Windows only)
+        if platform.system() == "Windows":
             shortcut_tab = QWidget()
             shortcut_layout = QVBoxLayout(shortcut_tab)
             
@@ -5007,21 +5007,9 @@ Method 2 - in Terminal: Direct technical installation
         # Add some spacing
         about_layout.addStretch()
         
-        # Add tabs to tab widget in order: About, Installation, Shortcuts (if applicable)
+        # Add tabs to tab widget in order
         tab_widget.addTab(about_tab, "About")
         tab_widget.addTab(install_tab, "Installation")
-        
-        # Set initial tab based on parameter
-        if initial_tab == "about":
-            tab_widget.setCurrentIndex(0)  # About tab
-        elif initial_tab == "installation":
-            tab_widget.setCurrentIndex(1)  # Installation tab
-        elif initial_tab == "shortcuts":
-            # Shortcuts tab index depends on whether it was added
-            if platform.system() == "Windows":
-                tab_widget.setCurrentIndex(2)  # Shortcuts tab (3rd tab)
-            else:
-                tab_widget.setCurrentIndex(1)  # Installation tab (fallback)
         
         # Buttons
         button_layout = QHBoxLayout()
@@ -7045,7 +7033,7 @@ Method 2 - in Terminal: Direct technical installation
         
         # Parse HTML content into individual lines preserving order
         import re
-        # Remove div tags but keep content, but preserve centering by adding it to each line
+        # Remove div tags but keep content
         clean_text = re.sub(r'</?div[^>]*>', '', credits_text)
         
         # Split by paragraph tags to get individual paragraphs
@@ -7062,9 +7050,7 @@ Method 2 - in Terminal: Direct technical installation
                 paragraph = re.sub(r'</?p>', '', paragraph)
                 # Check if it's not just HTML tags
                 if paragraph and not re.match(r'^<[^>]*>$', paragraph):
-                    # Wrap each line with centering div to ensure proper centering
-                    centered_paragraph = f'<div style="text-align: center;">{paragraph}</div>'
-                    clean_lines.append(centered_paragraph)
+                    clean_lines.append(paragraph)
         
         # Store lines for animation
         self.credits_lines = clean_lines
@@ -7103,7 +7089,7 @@ Method 2 - in Terminal: Direct technical installation
             return
             
         current_line = self.credits_lines[self.current_line_index]
-        self.credits_label.setHtml(current_line)
+        self.credits_label.setText(current_line)
         
         # Check if line needs horizontal scrolling
         doc = QTextDocument()
@@ -8004,35 +7990,15 @@ Method 2 - in Terminal: Direct technical installation
             )
             
             if reply == QMessageBox.Yes:
-                # Launch the target script or app
+                # Launch the target script
                 if platform.system() == "Windows":
                     subprocess.Popen([sys.executable, target_file], 
                                    creationflags=subprocess.CREATE_NO_WINDOW)
-                    # Close the current app after a short delay
-                    QTimer.singleShot(1000, self.close)
-                elif platform.system() == "Darwin":  # macOS
-                    if current_file == "test.py":
-                        # Switching from labs mode back to stable mode - launch the .app
-                        app_path = "/Applications/Innioasis Updater.app"
-                        if Path(app_path).exists():
-                            # Launch the .app which will show proper dock icon and bouncing
-                            subprocess.Popen(["open", app_path])
-                            # Close the current app after a short delay
-                            QTimer.singleShot(1000, self.close)
-                        else:
-                            # Fallback to direct script launch if .app not found
-                            subprocess.Popen([sys.executable, target_file])
-                            QTimer.singleShot(1000, self.close)
-                    else:
-                        # Switching to labs mode - launch test.py directly
-                        subprocess.Popen([sys.executable, target_file])
-                        # Close the current app after a short delay
-                        QTimer.singleShot(1000, self.close)
                 else:
-                    # Linux and other systems
                     subprocess.Popen([sys.executable, target_file])
-                    # Close the current app after a short delay
-                    QTimer.singleShot(1000, self.close)
+                
+                # Close the current app after a short delay
+                QTimer.singleShot(1000, self.close)
                 
         except Exception as e:
             QMessageBox.warning(self, "Switch Error", f"Error switching versions: {str(e)}")
