@@ -2050,53 +2050,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             except Exception as e:
                 logging.warning(f"Could not write .version file: {e}")
             
-            # Show macOS app update message for users running this version for the first time
-            if platform.system() == "Darwin" and last_version != current_version:
-                QTimer.singleShot(1000, self.show_macos_app_update_message)
+            # macOS app update message removed as requested
                 
         except Exception as e:
             logging.error(f"Error in handle_version_check: {e}")
-
-    def show_macos_app_update_message(self):
-        """Show message encouraging macOS users to download new .app version"""
-        try:
-            msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("macOS App Update Available")
-            msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("New macOS App Version Available")
-            msg_box.setInformativeText(
-                "A new version of the Innioasis Updater macOS app is available at www.innioasis.app\n\n"
-                "This will improve launch times and reliability on macOS.\n\n"
-                "You can continue using this version, but we recommend downloading the updated app for the best experience."
-            )
-            
-            # Add custom buttons
-            take_me_there_btn = msg_box.addButton("Take me there", QMessageBox.ActionRole)
-            remind_later_btn = msg_box.addButton("Remind me later", QMessageBox.ActionRole)
-            msg_box.addButton(QMessageBox.Ok)
-            
-            # Set the default button
-            msg_box.setDefaultButton(take_me_there_btn)
-            
-            result = msg_box.exec()
-            
-            # Handle button clicks
-            if msg_box.clickedButton() == take_me_there_btn:
-                # Open innioasis.app in the default browser
-                import webbrowser
-                webbrowser.open("https://www.innioasis.app")
-            elif msg_box.clickedButton() == remind_later_btn:
-                # Remove the .version file so the message shows again next time
-                try:
-                    version_file = Path(".version")
-                    if version_file.exists():
-                        version_file.unlink()
-                        logging.info("Removed .version file - macOS app update message will show again next time")
-                except Exception as e:
-                    logging.warning(f"Could not remove .version file: {e}")
-                    
-        except Exception as e:
-            logging.error(f"Error showing macOS app update message: {e}")
 
     def check_sp_flash_tool(self):
         """Check if any flash tool is running on Windows and show warning"""
