@@ -4667,7 +4667,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Rockbox Utility: {e}")
     
-    def show_settings_dialog(self, initial_tab="installation"):
+    def show_settings_dialog(self, initial_tab="about"):
         """Show enhanced settings dialog with installation method and shortcut management"""
         silent_print(f"Opening settings dialog with initial_tab: {initial_tab}")
         dialog = QDialog(self)
