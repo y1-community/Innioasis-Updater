@@ -23,8 +23,8 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QLabel, QComboBox, QProgressBar, QMessageBox,
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
                                QFileDialog, QDialog, QTabWidget, QScrollArea)
-from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer, QPropertyAnimation, QEasingCurve
-from PySide6.QtGui import QFont, QPixmap, QTextDocument
+from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer, QPropertyAnimation, QEasingCurve, QObject
+from PySide6.QtGui import QFont, QPixmap, QTextDocument, QPalette
 import platform
 import time
 import logging
@@ -1842,6 +1842,99 @@ class DownloadWorker(QThread):
             self.download_completed.emit(False, f"Error: {str(e)}")
 
 
+class ThemeMonitor(QObject):
+    """Monitors system theme changes and emits signals for UI updates"""
+    theme_changed = Signal()
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.running = False
+        self.thread = None
+        self.last_theme = None
+        
+    def start_monitoring(self):
+        """Start the theme monitoring thread"""
+        if self.running:
+            return
+            
+        self.running = True
+        self.thread = threading.Thread(target=self._monitor_theme, daemon=True)
+        self.thread.start()
+        
+    def stop_monitoring(self):
+        """Stop the theme monitoring thread"""
+        self.running = False
+        if self.thread:
+            self.thread.join(timeout=1.0)
+            
+    def _monitor_theme(self):
+        """Background thread that monitors system theme changes"""
+        while self.running:
+            try:
+                current_theme = self._get_current_theme()
+                if current_theme != self.last_theme:
+                    self.last_theme = current_theme
+                    self.theme_changed.emit()
+                time.sleep(1.0)  # Check every second
+            except Exception as e:
+                # Silently handle errors to prevent thread crashes
+                time.sleep(2.0)
+                
+    def _get_current_theme(self):
+        """Get the current system theme (light/dark)"""
+        try:
+            if platform.system() == "Darwin":  # macOS
+                return self._get_macos_theme()
+            elif platform.system() == "Windows":  # Windows
+                return self._get_windows_theme()
+            else:  # Linux and others
+                return self._get_linux_theme()
+        except:
+            return "unknown"
+            
+    def _get_macos_theme(self):
+        """Get macOS theme using system preferences"""
+        try:
+            import subprocess
+            result = subprocess.run(['defaults', 'read', '-g', 'AppleInterfaceStyle'], 
+                                  capture_output=True, text=True, timeout=2)
+            return "dark" if result.returncode == 0 and result.stdout.strip() else "light"
+        except:
+            return "light"
+            
+    def _get_windows_theme(self):
+        """Get Windows theme using registry"""
+        try:
+            import winreg
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 
+                              r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize") as key:
+                value, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
+                return "light" if value else "dark"
+        except:
+            return "light"
+            
+    def _get_linux_theme(self):
+        """Get Linux theme using environment variables"""
+        try:
+            # Check common environment variables
+            gtk_theme = os.environ.get('GTK_THEME', '').lower()
+            if 'dark' in gtk_theme:
+                return "dark"
+            elif 'light' in gtk_theme:
+                return "light"
+                
+            # Check for dark mode indicators
+            color_scheme = os.environ.get('COLORSCHEME', '').lower()
+            if 'dark' in color_scheme:
+                return "dark"
+            elif 'light' in color_scheme:
+                return "light"
+                
+            return "light"  # Default to light
+        except:
+            return "light"
+
+
 class FirmwareDownloaderGUI(QMainWindow):
     """Main GUI window for the firmware downloader"""
 
@@ -1870,6 +1963,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Initialize automatic utility updates setting (all platforms)
         self.auto_utility_updates_enabled = True  # Default to enabled
+
+        # Initialize theme monitor for dynamic theme switching
+        self.theme_monitor = ThemeMonitor(self)
+        self.theme_monitor.theme_changed.connect(self.refresh_button_styles)
+        self.theme_monitor.start_monitoring()
 
         # Handle version check file and macOS app update message
         self.handle_version_check()
@@ -1936,7 +2034,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.6.1"
+            current_version = "1.6.5"
             
             # Read the last used version
             last_version = None
@@ -1952,53 +2050,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             except Exception as e:
                 logging.warning(f"Could not write .version file: {e}")
             
-            # Show macOS app update message for users running this version for the first time
-            if platform.system() == "Darwin" and last_version != current_version:
-                QTimer.singleShot(1000, self.show_macos_app_update_message)
+            # macOS app update message removed as requested
                 
         except Exception as e:
             logging.error(f"Error in handle_version_check: {e}")
-
-    def show_macos_app_update_message(self):
-        """Show message encouraging macOS users to download new .app version"""
-        try:
-            msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("macOS App Update Available")
-            msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("New macOS App Version Available")
-            msg_box.setInformativeText(
-                "A new version of the Innioasis Updater macOS app is available at www.innioasis.app\n\n"
-                "This will improve launch times and reliability on macOS.\n\n"
-                "You can continue using this version, but we recommend downloading the updated app for the best experience."
-            )
-            
-            # Add custom buttons
-            take_me_there_btn = msg_box.addButton("Take me there", QMessageBox.ActionRole)
-            remind_later_btn = msg_box.addButton("Remind me later", QMessageBox.ActionRole)
-            msg_box.addButton(QMessageBox.Ok)
-            
-            # Set the default button
-            msg_box.setDefaultButton(take_me_there_btn)
-            
-            result = msg_box.exec()
-            
-            # Handle button clicks
-            if msg_box.clickedButton() == take_me_there_btn:
-                # Open innioasis.app in the default browser
-                import webbrowser
-                webbrowser.open("https://www.innioasis.app")
-            elif msg_box.clickedButton() == remind_later_btn:
-                # Remove the .version file so the message shows again next time
-                try:
-                    version_file = Path(".version")
-                    if version_file.exists():
-                        version_file.unlink()
-                        logging.info("Removed .version file - macOS app update message will show again next time")
-                except Exception as e:
-                    logging.warning(f"Could not remove .version file: {e}")
-                    
-        except Exception as e:
-            logging.error(f"Error showing macOS app update message: {e}")
 
     def check_sp_flash_tool(self):
         """Check if any flash tool is running on Windows and show warning"""
@@ -3160,7 +3215,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Updater v1.6.1")
+        self.setWindowTitle("Innioasis Updater v1.6.5")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -3206,8 +3261,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 font-weight: bold;
                 font-size: 12px;
                 margin-left: 5px;
-                border: 1px solid #0066CC;
-                border-radius: 3px;
+                border: none;
                 background-color: transparent;
                 min-width: 24px;
                 max-width: 24px;
@@ -3216,8 +3270,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 padding: 0px;
             }
             QPushButton:hover {
-                background-color: #0066CC;
-                color: white;
+                background-color: rgba(0, 102, 204, 0.1);
+                color: #0066CC;
             }
         """)
         help_btn.setCursor(Qt.PointingHandCursor)
@@ -3227,31 +3281,56 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Add Settings button (combines Tools and Settings functionality)
         self.settings_btn = QPushButton("Settings")
-        self.settings_btn.setFixedHeight(24)  # Match dropdown height
-        # Use native styling - no custom stylesheet for automatic theme adaptation
+        self.settings_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
+        self.settings_btn.setStyleSheet("""
+            QPushButton {
+                background-color: palette(base);
+                color: palette(text);
+                border: 1px solid palette(mid);
+                padding: 4px 8px;
+                border-radius: 3px;
+                font-weight: bold;
+                font-size: 11px;
+                min-height: 24px;
+            }
+            QPushButton:hover {
+                background-color: palette(highlight);
+                color: palette(highlighted-text);
+            }
+            QPushButton:pressed {
+                background-color: palette(dark);
+                color: palette(light);
+            }
+        """)
         self.settings_btn.setCursor(Qt.PointingHandCursor)
         self.settings_btn.setToolTip("Settings and Tools - Installation method, shortcuts, and Y1 Remote Control")
         self.settings_btn.clicked.connect(self.show_settings_dialog)
         device_type_layout.addWidget(self.settings_btn)
         
+        # Add small spacing between Settings and Toolkit buttons
+        device_type_layout.addSpacing(4)
+        
         # Add Toolkit button for all platforms
         self.toolkit_btn = QPushButton("Toolkit")
-        self.toolkit_btn.setFixedHeight(24)  # Match dropdown height
+        self.toolkit_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
         self.toolkit_btn.setStyleSheet("""
             QPushButton {
-                background-color: #3498db;
-                color: white;
-                border: none;
+                background-color: palette(base);
+                color: palette(text);
+                border: 1px solid palette(mid);
                 padding: 4px 8px;
                 border-radius: 3px;
                 font-weight: bold;
                 font-size: 11px;
+                min-height: 24px;
             }
             QPushButton:hover {
-                background-color: #2980b9;
+                background-color: palette(highlight);
+                color: palette(highlighted-text);
             }
             QPushButton:pressed {
-                background-color: #21618c;
+                background-color: palette(dark);
+                color: palette(light);
             }
         """)
         self.toolkit_btn.setCursor(Qt.PointingHandCursor)
@@ -3331,8 +3410,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 background-color: #004499;
             }
             QPushButton:disabled {
-                background-color: #cccccc;
-                color: #666666;
+                background-color: palette(mid);
+                color: palette(text);
+                opacity: 0.5;
             }
         """)
         left_layout.addWidget(self.download_btn)
@@ -3375,19 +3455,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                 arm64_btn = QPushButton("ARM64 Notice")
                 arm64_btn.setStyleSheet("""
                     QPushButton {
-                        background-color: #FF6B35;
-                        color: white;
-                        border: none;
+                        background-color: palette(button);
+                        color: palette(button-text);
+                        border: 1px solid palette(mid);
                         padding: 8px 16px;
                         border-radius: 3px;
                         font-weight: bold;
                         font-size: 12px;
                     }
                     QPushButton:hover {
-                        background-color: #E55A2B;
+                        background-color: palette(highlight);
+                        color: palette(highlighted-text);
                     }
                     QPushButton:pressed {
-                        background-color: #CC4A24;
+                        background-color: palette(dark);
+                        color: palette(light);
                     }
                 """)
                 arm64_btn.clicked.connect(self.open_arm64_info)
@@ -3398,19 +3480,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                 driver_btn = QPushButton("🔧 Install MediaTek & UsbDk Drivers")
                 driver_btn.setStyleSheet("""
                     QPushButton {
-                        background-color: #0066CC;
-                        color: white;
-                        border: none;
+                        background-color: palette(button);
+                        color: palette(button-text);
+                        border: 1px solid palette(mid);
                         padding: 8px 16px;
                         border-radius: 3px;
                         font-weight: bold;
                         font-size: 12px;
                     }
                     QPushButton:hover {
-                        background-color: #0052A3;
+                        background-color: palette(highlight);
+                        color: palette(highlighted-text);
                     }
                     QPushButton:pressed {
-                        background-color: #003D7A;
+                        background-color: palette(dark);
+                        color: palette(light);
                     }
                 """)
                 driver_btn.clicked.connect(self.open_driver_setup_link)
@@ -3425,19 +3509,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                     install_zip_btn = QPushButton("📦 Install from .zip")
                     install_zip_btn.setStyleSheet("""
                         QPushButton {
-                            background-color: #28A745;
-                            color: white;
-                            border: none;
+                            background-color: palette(button);
+                            color: palette(button-text);
+                            border: 1px solid palette(mid);
                             padding: 8px 16px;
                             border-radius: 3px;
                             font-weight: bold;
                             font-size: 12px;
                         }
                         QPushButton:hover {
-                            background-color: #218838;
+                            background-color: palette(highlight);
+                            color: palette(highlighted-text);
                         }
                         QPushButton:pressed {
-                            background-color: #1E7E34;
+                            background-color: palette(dark);
+                            color: palette(light);
                         }
                     """)
                     install_zip_btn.clicked.connect(self.install_from_zip)
@@ -3449,19 +3535,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                     install_zip_btn = QPushButton("📦 Install from .zip")
                     install_zip_btn.setStyleSheet("""
                         QPushButton {
-                            background-color: #28A745;
-                            color: white;
-                            border: none;
+                            background-color: palette(button);
+                            color: palette(button-text);
+                            border: 1px solid palette(mid);
                             padding: 8px 16px;
                             border-radius: 3px;
                             font-weight: bold;
                             font-size: 12px;
                         }
                         QPushButton:hover {
-                            background-color: #218838;
+                            background-color: palette(highlight);
+                            color: palette(highlighted-text);
                         }
                         QPushButton:pressed {
-                            background-color: #1E7E34;
+                            background-color: palette(dark);
+                            color: palette(light);
                         }
                     """)
                     install_zip_btn.clicked.connect(self.install_from_zip)
@@ -3471,19 +3559,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             install_zip_btn = QPushButton("📦 Install from .zip")
             install_zip_btn.setStyleSheet("""
                 QPushButton {
-                    background-color: #28A745;
-                    color: white;
-                    border: none;
+                    background-color: palette(button);
+                    color: palette(button-text);
+                    border: 1px solid palette(mid);
                     padding: 8px 16px;
                     border-radius: 3px;
                     font-weight: bold;
                     font-size: 12px;
                 }
                 QPushButton:hover {
-                    background-color: #218838;
+                    background-color: palette(highlight);
+                    color: palette(highlighted-text);
                 }
                 QPushButton:pressed {
-                    background-color: #1E7E34;
+                    background-color: palette(dark);
+                    color: palette(light);
                 }
             """)
             install_zip_btn.clicked.connect(self.install_from_zip)
@@ -3495,19 +3585,21 @@ class FirmwareDownloaderGUI(QMainWindow):
         discord_btn = QPushButton("Get Help")
         discord_btn.setStyleSheet("""
             QPushButton {
-                background-color: #5865F2;
-                color: white;
-                border: none;
+                background-color: palette(base);
+                color: palette(text);
+                border: 1px solid palette(mid);
                 padding: 8px 16px;
                 border-radius: 3px;
                 font-weight: bold;
                 font-size: 12px;
             }
             QPushButton:hover {
-                background-color: #4752C4;
+                background-color: palette(highlight);
+                color: palette(highlighted-text);
             }
             QPushButton:pressed {
-                background-color: #3C45A5;
+                background-color: palette(dark);
+                color: palette(light);
             }
         """)
         discord_btn.clicked.connect(self.open_discord_link)
@@ -3517,19 +3609,21 @@ class FirmwareDownloaderGUI(QMainWindow):
         about_btn = QPushButton("About")
         about_btn.setStyleSheet("""
             QPushButton {
-                background-color: #FF5E5B;
-                color: white;
-                border: none;
+                background-color: palette(base);
+                color: palette(text);
+                border: 1px solid palette(mid);
                 padding: 8px 16px;
                 border-radius: 3px;
                 font-weight: bold;
                 font-size: 12px;
             }
             QPushButton:hover {
-                background-color: #FF4441;
+                background-color: palette(highlight);
+                color: palette(highlighted-text);
             }
             QPushButton:pressed {
-                background-color: #E63939;
+                background-color: palette(dark);
+                color: palette(light);
             }
         """)
         about_btn.clicked.connect(self.show_settings_dialog)
@@ -3548,23 +3642,26 @@ class FirmwareDownloaderGUI(QMainWindow):
         colors = self.get_theme_colors()
         self.update_btn_right.setStyleSheet("""
             QPushButton {
-                background-color: #28a745;
-                color: white;
-                border: none;
+                background-color: palette(base);
+                color: palette(text);
+                border: 1px solid palette(mid);
                 padding: 8px 16px;
                 border-radius: 3px;
                 font-weight: bold;
                 font-size: 12px;
             }
             QPushButton:hover {
-                background-color: #218838;
+                background-color: palette(highlight);
+                color: palette(highlighted-text);
             }
             QPushButton:pressed {
-                background-color: #1e7e34;
+                background-color: palette(dark);
+                color: palette(light);
             }
             QPushButton:disabled {
-                background-color: #cccccc;
-                color: #666666;
+                background-color: palette(mid);
+                color: palette(text);
+                opacity: 0.5;
             }
         """)
         update_layout.addWidget(self.update_btn_right)
@@ -4570,7 +4667,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Rockbox Utility: {e}")
     
-    def show_settings_dialog(self, initial_tab="installation"):
+    def show_settings_dialog(self, initial_tab="about"):
         """Show enhanced settings dialog with installation method and shortcut management"""
         silent_print(f"Opening settings dialog with initial_tab: {initial_tab}")
         dialog = QDialog(self)
@@ -4865,7 +4962,7 @@ Method 2 - in Terminal: Direct technical installation
         
         # App name
         app_name_label = QLabel("Innioasis Updater")
-        app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 10px;")
+        app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px;")  # Add 8px top margin
         app_name_label.setAlignment(Qt.AlignCenter)
         about_layout.addWidget(app_name_label)
         
@@ -4951,19 +5048,21 @@ Method 2 - in Terminal: Direct technical installation
         reddit_btn = QPushButton("📱 r/innioasis")
         reddit_btn.setStyleSheet("""
             QPushButton {
-                background-color: #FF4500;
-                color: white;
-                border: none;
+                background-color: palette(base);
+                color: palette(text);
+                border: 1px solid palette(mid);
                 padding: 8px 16px;
                 border-radius: 3px;
                 font-weight: bold;
                 font-size: 12px;
             }
             QPushButton:hover {
-                background-color: #E63939;
+                background-color: palette(highlight);
+                color: palette(highlighted-text);
             }
             QPushButton:pressed {
-                background-color: #CC3300;
+                background-color: palette(dark);
+                color: palette(light);
             }
         """)
         reddit_btn.clicked.connect(self.open_reddit_link)
@@ -4979,19 +5078,21 @@ Method 2 - in Terminal: Direct technical installation
         support_btn = QPushButton("Support The Devs")
         support_btn.setStyleSheet("""
             QPushButton {
-                background-color: #FF5E5B;
-                color: white;
-                border: none;
+                background-color: palette(base);
+                color: palette(text);
+                border: 1px solid palette(mid);
                 padding: 8px 16px;
                 border-radius: 3px;
                 font-weight: bold;
                 font-size: 12px;
             }
             QPushButton:hover {
-                background-color: #FF4441;
+                background-color: palette(highlight);
+                color: palette(highlighted-text);
             }
             QPushButton:pressed {
-                background-color: #E63939;
+                background-color: palette(dark);
+                color: palette(light);
             }
         """)
         support_btn.clicked.connect(self.open_coffee_link)
@@ -5114,7 +5215,24 @@ Method 2 - in Terminal: Direct technical installation
             open_toolkit_btn = QPushButton("Open Toolkit in Windows Explorer")
             open_toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
             open_toolkit_btn.clicked.connect(self.open_toolkit_folder)
-            open_toolkit_btn.setStyleSheet("QPushButton { padding: 8px; font-size: 12px; background-color: #3498db; color: white; }")
+            open_toolkit_btn.setStyleSheet("""
+                QPushButton {
+                    background-color: palette(button);
+                    color: palette(button-text);
+                    border: 1px solid palette(mid);
+                    padding: 8px;
+                    font-size: 12px;
+                    border-radius: 3px;
+                }
+                QPushButton:hover {
+                    background-color: palette(highlight);
+                    color: palette(highlighted-text);
+                }
+                QPushButton:pressed {
+                    background-color: palette(dark);
+                    color: palette(light);
+                }
+            """)
             tools_layout.addWidget(open_toolkit_btn)
         
         layout.addLayout(tools_layout)
@@ -7039,7 +7157,7 @@ Method 2 - in Terminal: Direct technical installation
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.6.1"]
+        clean_lines = ["Version 1.6.5"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -7268,6 +7386,10 @@ Method 2 - in Terminal: Direct technical installation
         if hasattr(self, 'mtk_worker') and self.mtk_worker:
             self.mtk_worker.stop()
             self.mtk_worker.wait()
+        
+        # Stop theme monitoring
+        if hasattr(self, 'theme_monitor') and self.theme_monitor:
+            self.theme_monitor.stop_monitoring()
         
         event.accept()
 
@@ -7934,6 +8056,75 @@ Method 2 - in Terminal: Direct technical installation
                     color: #333;
                 }
             """)
+
+    def refresh_button_styles(self):
+        """Refresh all button styles when system theme changes"""
+        try:
+            # Get all buttons in the application
+            buttons = self.findChildren(QPushButton)
+            
+            for button in buttons:
+                # Skip the download button as it should keep its blue color
+                if button == self.download_btn:
+                    continue
+                
+                # Skip the help button (?) as it should keep its text-only styling
+                if button.text() == "?":
+                    continue
+                
+                # Determine appropriate padding based on button type
+                button_text = button.text().lower()
+                if any(keyword in button_text for keyword in ['settings', 'toolkit']):
+                    # Small buttons (Settings, Toolkit) - use smaller padding and fixed size
+                    padding = "4px 8px"
+                    font_size = "11px"
+                    min_height = "min-height: 24px;"
+                    # Apply fixed size for alignment
+                    button.setFixedSize(80, 24)
+                elif any(keyword in button_text for keyword in ['install', 'get help', 'about', 'check for', 'support']):
+                    # Medium buttons - use standard padding
+                    padding = "8px 16px"
+                    font_size = "12px"
+                    min_height = ""
+                else:
+                    # Default for other buttons
+                    padding = "8px 16px"
+                    font_size = "12px"
+                    min_height = ""
+                    
+                # Apply the appropriate button styling
+                button.setStyleSheet(f"""
+                    QPushButton {{
+                        background-color: palette(base);
+                        color: palette(text);
+                        border: 1px solid palette(mid);
+                        padding: {padding};
+                        border-radius: 3px;
+                        font-weight: bold;
+                        font-size: {font_size};
+                        {min_height}
+                    }}
+                    QPushButton:hover {{
+                        background-color: palette(highlight);
+                        color: palette(highlighted-text);
+                    }}
+                    QPushButton:pressed {{
+                        background-color: palette(dark);
+                        color: palette(light);
+                    }}
+                    QPushButton:disabled {{
+                        background-color: palette(mid);
+                        color: palette(text);
+                        opacity: 0.5;
+                    }}
+                """)
+                
+            # Also refresh the image style
+            self.update_image_style()
+            
+        except Exception as e:
+            # Silently handle errors to prevent UI crashes
+            pass
 
     def check_theme_change(self):
         """Check if the system theme has changed"""
