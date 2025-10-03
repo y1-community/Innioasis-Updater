@@ -2034,7 +2034,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.6.5"
+            current_version = "1.6.7"
             
             # Read the last used version
             last_version = None
@@ -3219,7 +3219,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Updater v1.6.5")
+        self.setWindowTitle("Innioasis Updater v1.6.7")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -7198,7 +7198,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.6.5"]
+        clean_lines = ["Version 1.6.7"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
