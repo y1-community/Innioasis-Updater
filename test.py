@@ -18,6 +18,8 @@ import argparse
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
+from datetime import datetime, date
+import random
 from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                                QWidget, QListWidget, QListWidgetItem, QPushButton, QTextEdit,
                                QLabel, QComboBox, QProgressBar, QMessageBox,
@@ -239,6 +241,267 @@ def silent_print(*args, **kwargs):
         pass
     else:
         print(*args, **kwargs)
+
+# Easter Egg System - Seasonal Emojis
+def is_us_user():
+    """Check if the user is in the US based on system locale/region"""
+    try:
+        import locale
+        # Get the system locale
+        system_locale = locale.getdefaultlocale()[0]
+        if system_locale:
+            # Check if locale starts with 'en_US' or contains 'US'
+            return system_locale.startswith('en_US') or 'US' in system_locale
+    except:
+        pass
+    
+    try:
+        # Fallback: check environment variables
+        import os
+        lc_all = os.environ.get('LC_ALL', '')
+        lang = os.environ.get('LANG', '')
+        return 'en_US' in lc_all or 'en_US' in lang or 'US' in lc_all or 'US' in lang
+    except:
+        pass
+    
+    # Default to True if we can't determine (assume US for safety)
+    return True
+
+def is_thanksgiving_region():
+    """Check if the user is in a region that celebrates Thanksgiving (US/Canada)"""
+    try:
+        import locale
+        # Get the system locale
+        system_locale = locale.getdefaultlocale()[0]
+        if system_locale:
+            # Check for US or Canadian locales
+            return (system_locale.startswith('en_US') or 
+                   system_locale.startswith('en_CA') or 
+                   'US' in system_locale or 
+                   'CA' in system_locale)
+    except:
+        pass
+    
+    try:
+        # Fallback: check environment variables
+        import os
+        lc_all = os.environ.get('LC_ALL', '')
+        lang = os.environ.get('LANG', '')
+        return ('en_US' in lc_all or 'en_CA' in lc_all or 
+                'en_US' in lang or 'en_CA' in lang or
+                'US' in lc_all or 'CA' in lc_all or
+                'US' in lang or 'CA' in lang)
+    except:
+        pass
+    
+    # Default to True if we can't determine (assume US for safety)
+    return True
+
+def get_seasonal_emoji():
+    """Get seasonal emoji based on current date - Christmas and Halloween easter eggs!"""
+    today = date.today()
+    month = today.month
+    day = today.day
+    
+    # Christmas Season: December 25 - January 5 (12 days of Christmas)
+    if (month == 12 and day >= 25) or (month == 1 and day <= 5):
+        christmas_emojis = [
+            "🎄", "🎅", "🤶", "🎁", "❄️", "⛄", "🦌", "🔔", "🌟", "🎊", "🎉", "✨"
+        ]
+        # Use day to pick emoji (Dec 25 = first emoji, Jan 5 = last emoji)
+        if month == 12:
+            # December 25-31: days 25-31
+            emoji_index = (day - 25) % len(christmas_emojis)
+        else:
+            # January 1-5: days 1-5 (continue from December)
+            emoji_index = (day + 6) % len(christmas_emojis)  # +6 because Dec 25-31 = 7 days
+        return christmas_emojis[emoji_index]
+    
+    # Halloween Season: October 25-31
+    elif month == 10 and 25 <= day <= 31:
+        halloween_emojis = [
+            "🎃", "👻", "🦇", "🕷️", "🕸️", "💀", "🧙‍♀️", "🧛‍♂️", "🦹‍♀️", "🎭", "⚰️", "🦴"
+        ]
+        # Use day of month to pick emoji (25th = first emoji, 31st = last emoji)
+        emoji_index = (day - 25) % len(halloween_emojis)
+        return halloween_emojis[emoji_index]
+    
+    # Thanksgiving Season: November 20-30 - only for US/Canada
+    elif month == 11 and 20 <= day <= 30 and is_thanksgiving_region():
+        thanksgiving_emojis = [
+            "🦃", "🍗", "🥧", "🌽", "🍂", "🍁", "🦌", "🌾", "🏠", "👨‍👩‍👧‍👦", "🙏", "🍽️"
+        ]
+        emoji_index = (day - 20) % len(thanksgiving_emojis)
+        return thanksgiving_emojis[emoji_index]
+    
+    # St. Patrick's Day: March 17
+    elif month == 3 and day == 17:
+        st_patricks_emojis = [
+            "🍀", "☘️", "🌈", "🍺", "🥃", "🇮🇪", "🧚‍♀️", "🪙", "🎩", "🎭", "🎪", "🎨"
+        ]
+        return random.choice(st_patricks_emojis)
+    
+    # Valentine's Day: February 14
+    elif month == 2 and day == 14:
+        valentines_emojis = [
+            "💕", "💖", "💗", "💘", "💝", "💞", "💟", "❤️", "🧡", "💛", "💚", "💙"
+        ]
+        return random.choice(valentines_emojis)
+    
+    # Easter Season: March 22 - April 25 (approximate range)
+    elif month == 3 and day >= 22:
+        easter_emojis = [
+            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
+        ]
+        emoji_index = (day - 22) % len(easter_emojis)
+        return easter_emojis[emoji_index]
+    elif month == 4 and day <= 25:
+        easter_emojis = [
+            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
+        ]
+        emoji_index = (day + 9) % len(easter_emojis)  # +9 because March 22-31 = 10 days
+        return easter_emojis[emoji_index]
+    
+    # New Year's Day: January 1
+    elif month == 1 and day == 1:
+        new_year_emojis = [
+            "🎊", "🎉", "🥳", "🍾", "🥂", "🎆", "🎇", "✨", "🌟", "💫", "🎈", "🎁"
+        ]
+        return random.choice(new_year_emojis)
+    
+    # Independence Day (US): July 4 - only for US users
+    elif month == 7 and day == 4 and is_us_user():
+        independence_emojis = [
+            "🇺🇸", "🎆", "🎇", "⭐", "🌟", "💥", "🎊", "🎉", "🏛️", "🗽", "🦅", "🎪"
+        ]
+        return random.choice(independence_emojis)
+    
+    # Summer Solstice: June 20-22 (approximate)
+    elif month == 6 and 20 <= day <= 22:
+        summer_emojis = [
+            "☀️", "🌞", "🌻", "🌺", "🏖️", "🏝️", "🌊", "🏄‍♂️", "🏄‍♀️", "🌴", "🍉", "🍓"
+        ]
+        emoji_index = (day - 20) % len(summer_emojis)
+        return summer_emojis[emoji_index]
+    
+    # No seasonal emoji
+    return ""
+
+def get_seasonal_emoji_random():
+    """Get a random seasonal emoji if in season, otherwise return empty string"""
+    today = date.today()
+    month = today.month
+    day = today.day
+    
+    # Christmas Season: December 25 - January 5
+    if (month == 12 and day >= 25) or (month == 1 and day <= 5):
+        christmas_emojis = [
+            "🎄", "🎅", "🤶", "🎁", "❄️", "⛄", "🦌", "🔔", "🌟", "🎊", "🎉", "✨"
+        ]
+        return random.choice(christmas_emojis)
+    
+    # Halloween Season: October 25-31
+    elif month == 10 and 25 <= day <= 31:
+        halloween_emojis = [
+            "🎃", "👻", "🦇", "🕷️", "🕸️", "💀", "🧙‍♀️", "🧛‍♂️", "🦹‍♀️", "🎭", "⚰️", "🦴"
+        ]
+        return random.choice(halloween_emojis)
+    
+    # Thanksgiving Season: November 20-30 - only for US/Canada
+    elif month == 11 and 20 <= day <= 30 and is_thanksgiving_region():
+        thanksgiving_emojis = [
+            "🦃", "🍗", "🥧", "🌽", "🍂", "🍁", "🦌", "🌾", "🏠", "👨‍👩‍👧‍👦", "🙏", "🍽️"
+        ]
+        return random.choice(thanksgiving_emojis)
+    
+    # St. Patrick's Day: March 17
+    elif month == 3 and day == 17:
+        st_patricks_emojis = [
+            "🍀", "☘️", "🌈", "🍺", "🥃", "🇮🇪", "🧚‍♀️", "🪙", "🎩", "🎭", "🎪", "🎨"
+        ]
+        return random.choice(st_patricks_emojis)
+    
+    # Valentine's Day: February 14
+    elif month == 2 and day == 14:
+        valentines_emojis = [
+            "💕", "💖", "💗", "💘", "💝", "💞", "💟", "❤️", "🧡", "💛", "💚", "💙"
+        ]
+        return random.choice(valentines_emojis)
+    
+    # Easter Season: March 22 - April 25
+    elif (month == 3 and day >= 22) or (month == 4 and day <= 25):
+        easter_emojis = [
+            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
+        ]
+        return random.choice(easter_emojis)
+    
+    # New Year's Day: January 1
+    elif month == 1 and day == 1:
+        new_year_emojis = [
+            "🎊", "🎉", "🥳", "🍾", "🥂", "🎆", "🎇", "✨", "🌟", "💫", "🎈", "🎁"
+        ]
+        return random.choice(new_year_emojis)
+    
+    # Independence Day (US): July 4 - only for US users
+    elif month == 7 and day == 4 and is_us_user():
+        independence_emojis = [
+            "🇺🇸", "🎆", "🎇", "⭐", "🌟", "💥", "🎊", "🎉", "🏛️", "🗽", "🦅", "🎪"
+        ]
+        return random.choice(independence_emojis)
+    
+    # Summer Solstice: June 20-22
+    elif month == 6 and 20 <= day <= 22:
+        summer_emojis = [
+            "☀️", "🌞", "🌻", "🌺", "🏖️", "🏝️", "🌊", "🏄‍♂️", "🏄‍♀️", "🌴", "🍉", "🍓"
+        ]
+        return random.choice(summer_emojis)
+    
+    return ""
+
+def is_christmas_season():
+    """Check if it's Christmas season (12 days of Christmas: Dec 25 - Jan 5)"""
+    today = date.today()
+    return (today.month == 12 and today.day >= 25) or (today.month == 1 and today.day <= 5)
+
+def is_halloween_season():
+    """Check if it's Halloween season"""
+    today = date.today()
+    return today.month == 10 and 25 <= today.day <= 31
+
+def is_thanksgiving_season():
+    """Check if it's Thanksgiving season"""
+    today = date.today()
+    return today.month == 11 and 20 <= today.day <= 30
+
+def is_st_patricks_day():
+    """Check if it's St. Patrick's Day"""
+    today = date.today()
+    return today.month == 3 and today.day == 17
+
+def is_valentines_day():
+    """Check if it's Valentine's Day"""
+    today = date.today()
+    return today.month == 2 and today.day == 14
+
+def is_easter_season():
+    """Check if it's Easter season"""
+    today = date.today()
+    return (today.month == 3 and today.day >= 22) or (today.month == 4 and today.day <= 25)
+
+def is_new_years_day():
+    """Check if it's New Year's Day"""
+    today = date.today()
+    return today.month == 1 and today.day == 1
+
+def is_independence_day():
+    """Check if it's Independence Day (US)"""
+    today = date.today()
+    return today.month == 7 and today.day == 4
+
+def is_summer_solstice():
+    """Check if it's Summer Solstice"""
+    today = date.today()
+    return today.month == 6 and 20 <= today.day <= 22
 
 # toggle_silent_mode function removed - debug mode is now controlled by keyboard shortcut
 
@@ -3351,7 +3614,10 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Updater v1.6.7")
+        # Add seasonal emoji to window title
+        seasonal_emoji = get_seasonal_emoji()
+        title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
+        self.setWindowTitle(f"Innioasis Updater v1.6.7{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -3416,7 +3682,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addWidget(help_btn)
         
         # Add Settings button (combines Tools and Settings functionality)
-        self.settings_btn = QPushButton("Settings")
+        seasonal_emoji = get_seasonal_emoji_random()
+        settings_text = f"Settings{seasonal_emoji}" if seasonal_emoji else "Settings"
+        self.settings_btn = QPushButton(settings_text)
         self.settings_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
         self.settings_btn.setStyleSheet("""
             QPushButton {
@@ -3447,7 +3715,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addSpacing(4)
         
         # Add Toolkit button for all platforms
-        self.toolkit_btn = QPushButton("Toolkit")
+        seasonal_emoji = get_seasonal_emoji_random()
+        toolkit_text = f"Toolkit{seasonal_emoji}" if seasonal_emoji else "Toolkit"
+        self.toolkit_btn = QPushButton(toolkit_text)
         self.toolkit_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
         self.toolkit_btn.setStyleSheet("""
             QPushButton {
@@ -3525,7 +3795,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         left_layout.addWidget(package_group)
 
         # Download button
-        self.download_btn = QPushButton("Download")
+        seasonal_emoji = get_seasonal_emoji_random()
+        download_text = f"Download{seasonal_emoji}" if seasonal_emoji else "Download"
+        self.download_btn = QPushButton(download_text)
         self.download_btn.clicked.connect(self.start_download)
         self.download_btn.setEnabled(False)
         colors = self.get_theme_colors()
@@ -3718,7 +3990,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Reddit button moved to About tab
 
         # Discord button
-        discord_btn = QPushButton("Get Help")
+        seasonal_emoji = get_seasonal_emoji_random()
+        discord_text = f"Get Help{seasonal_emoji}" if seasonal_emoji else "Get Help"
+        discord_btn = QPushButton(discord_text)
         discord_btn.setStyleSheet("""
             QPushButton {
                 background-color: palette(base);
@@ -4075,7 +4349,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Revert the application to its startup state"""
         try:
             # Reset status and progress
-            self.status_label.setText("Ready")
+            # Add seasonal emoji to ready status
+            seasonal_emoji = get_seasonal_emoji_random()
+            ready_text = f"Ready{seasonal_emoji}" if seasonal_emoji else "Ready"
+            self.status_label.setText(ready_text)
             self.progress_bar.setVisible(False)
             
             # Load initial image
@@ -4190,7 +4467,10 @@ class FirmwareDownloaderGUI(QMainWindow):
     def handle_mtk_completion(self, success, message):
         """Handle MTK command completion"""
         if success:
-            self.status_label.setText("Installation completed successfully")
+            # Add seasonal emoji to completion message
+            seasonal_emoji = get_seasonal_emoji_random()
+            completion_text = f"Installation completed successfully{seasonal_emoji}" if seasonal_emoji else "Installation completed successfully"
+            self.status_label.setText(completion_text)
             self.load_installed_image()
             remove_installation_marker()
             # Restore left panel after successful installation
@@ -4385,10 +4665,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Load the installed completion image
                 self.load_installed_image()
                 
-                # Show success dialog
+                # Show success dialog with seasonal emoji
+                seasonal_emoji = get_seasonal_emoji_random()
+                dialog_title = f"Installation Complete{seasonal_emoji}" if seasonal_emoji else "Installation Complete"
                 QMessageBox.information(
                     self,
-                    "Installation Complete",
+                    dialog_title,
                     "Your installation has completed successfully!\n\n"
                     "Please disconnect your Y1 and hold the middle button to turn it on."
                 )
@@ -4427,10 +4709,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Load the installed completion image
                 self.load_installed_image()
                 
-                # Show success dialog
+                # Show success dialog with seasonal emoji
+                seasonal_emoji = get_seasonal_emoji_random()
+                dialog_title = f"Installation Complete{seasonal_emoji}" if seasonal_emoji else "Installation Complete"
                 QMessageBox.information(
                     self,
-                    "Installation Complete",
+                    dialog_title,
                     "Your installation has completed successfully!\n\n"
                     "Please disconnect your Y1 and hold the middle button to turn it on."
                 )
@@ -5109,26 +5393,45 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 # Both drivers available: All methods (Windows order: SP Flash Tool first, then Guided/MTKclient)
-                self.method_combo.addItem("Method 1 - Guided", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash Tool GUI", "spflash4")
-                self.method_combo.addItem("Method 3 - SP Flash Tool Console Mode", "spflash_console")
-                self.method_combo.addItem("Method 4 - Guided", "guided")
-                self.method_combo.addItem("Method 5 - MTKclient (advanced)", "mtkclient")
+                # Add seasonal emojis to method names
+                seasonal_emoji = get_seasonal_emoji_random()
+                method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
+                method2_text = f"Method 2 - SP Flash Tool GUI{seasonal_emoji}" if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
+                method3_text = f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}" if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
+                method4_text = f"Method 4 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 4 - Guided"
+                method5_text = f"Method 5 - MTKclient (advanced){seasonal_emoji}" if seasonal_emoji else "Method 5 - MTKclient (advanced)"
+                
+                self.method_combo.addItem(method1_text, "spflash")
+                self.method_combo.addItem(method2_text, "spflash4")
+                self.method_combo.addItem(method3_text, "spflash_console")
+                self.method_combo.addItem(method4_text, "guided")
+                self.method_combo.addItem(method5_text, "mtkclient")
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 # Only MTK driver: Only Method 1, 2, and 3 (SP Flash Tool methods)
-                self.method_combo.addItem("Method 1 - Guided (Only available method)", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash Tool GUI", "spflash4")
-                self.method_combo.addItem("Method 3 - SP Flash Tool Console Mode", "spflash_console")
+                seasonal_emoji = get_seasonal_emoji_random()
+                method1_text = f"Method 1 - Guided (Only available method){seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided (Only available method)"
+                method2_text = f"Method 2 - SP Flash Tool GUI{seasonal_emoji}" if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
+                method3_text = f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}" if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
+                
+                self.method_combo.addItem(method1_text, "spflash")
+                self.method_combo.addItem(method2_text, "spflash4")
+                self.method_combo.addItem(method3_text, "spflash_console")
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 # Only UsbDk driver: Only Method 5 (MTKclient)
-                self.method_combo.addItem("Method 5 - MTKclient (advanced) (Only available method)", "mtkclient")
+                seasonal_emoji = get_seasonal_emoji_random()
+                method5_text = f"Method 5 - MTKclient (advanced) (Only available method){seasonal_emoji}" if seasonal_emoji else "Method 5 - MTKclient (advanced) (Only available method)"
+                self.method_combo.addItem(method5_text, "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
         else:
             # Non-Windows: Standard methods
-            self.method_combo.addItem("Method 1 - Guided", "guided")
-            self.method_combo.addItem("Method 2 - in Terminal", "mtkclient")
+            seasonal_emoji = get_seasonal_emoji_random()
+            method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
+            method2_text = f"Method 2 - in Terminal{seasonal_emoji}" if seasonal_emoji else "Method 2 - in Terminal"
+            
+            self.method_combo.addItem(method1_text, "guided")
+            self.method_combo.addItem(method2_text, "mtkclient")
         
         # Set current method
         current_method = getattr(self, 'installation_method', 'guided')
@@ -5256,6 +5559,34 @@ class FirmwareDownloaderGUI(QMainWindow):
         app_name_label.setAlignment(Qt.AlignCenter)
         about_layout.addWidget(app_name_label)
         
+        # Seasonal message
+        if is_christmas_season():
+            seasonal_message = "🎄 Merry Christmas! 🎅"
+        elif is_halloween_season():
+            seasonal_message = "🎃 Happy Halloween! 👻"
+        elif is_thanksgiving_season() and is_thanksgiving_region():
+            seasonal_message = "🦃 Happy Thanksgiving! 🍗"
+        elif is_st_patricks_day():
+            seasonal_message = "🍀 Happy St. Patrick's Day! ☘️"
+        elif is_valentines_day():
+            seasonal_message = "💕 Happy Valentine's Day! 💖"
+        elif is_easter_season():
+            seasonal_message = "🐰 Happy Easter! 🐣"
+        elif is_new_years_day():
+            seasonal_message = "🎊 Happy New Year! 🎉"
+        elif is_independence_day() and is_us_user():
+            seasonal_message = "🇺🇸 Happy Independence Day! 🎆"
+        elif is_summer_solstice():
+            seasonal_message = "☀️ Happy Summer Solstice! 🌞"
+        else:
+            seasonal_message = ""
+        
+        if seasonal_message:
+            seasonal_label = QLabel(seasonal_message)
+            seasonal_label.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px 10px; color: #FF6B35;")
+            seasonal_label.setAlignment(Qt.AlignCenter)
+            about_layout.addWidget(seasonal_label)
+        
         # App description
         desc_label = QLabel("Official Firmware Installer created by Y1 users in collaboration with Innioasis")
         desc_label.setStyleSheet("font-size: 12px; margin: 10px;")
@@ -5339,7 +5670,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         about_layout.addLayout(checkbox_layout)
         
         # Reddit button
-        reddit_btn = QPushButton("📱 r/innioasis")
+        seasonal_emoji = get_seasonal_emoji_random()
+        reddit_text = f"📱 r/innioasis{seasonal_emoji}" if seasonal_emoji else "📱 r/innioasis"
+        reddit_btn = QPushButton(reddit_text)
         reddit_btn.setStyleSheet("""
             QPushButton {
                 background-color: palette(base);
