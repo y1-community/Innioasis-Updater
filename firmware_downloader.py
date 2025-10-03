@@ -18,6 +18,8 @@ import argparse
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
+from datetime import datetime, date
+import random
 from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                                QWidget, QListWidget, QListWidgetItem, QPushButton, QTextEdit,
                                QLabel, QComboBox, QProgressBar, QMessageBox,
@@ -239,6 +241,267 @@ def silent_print(*args, **kwargs):
         pass
     else:
         print(*args, **kwargs)
+
+# Easter Egg System - Seasonal Emojis
+def is_us_user():
+    """Check if the user is in the US based on system locale/region"""
+    try:
+        import locale
+        # Get the system locale
+        system_locale = locale.getdefaultlocale()[0]
+        if system_locale:
+            # Check if locale starts with 'en_US' or contains 'US'
+            return system_locale.startswith('en_US') or 'US' in system_locale
+    except:
+        pass
+    
+    try:
+        # Fallback: check environment variables
+        import os
+        lc_all = os.environ.get('LC_ALL', '')
+        lang = os.environ.get('LANG', '')
+        return 'en_US' in lc_all or 'en_US' in lang or 'US' in lc_all or 'US' in lang
+    except:
+        pass
+    
+    # Default to True if we can't determine (assume US for safety)
+    return True
+
+def is_thanksgiving_region():
+    """Check if the user is in a region that celebrates Thanksgiving (US/Canada)"""
+    try:
+        import locale
+        # Get the system locale
+        system_locale = locale.getdefaultlocale()[0]
+        if system_locale:
+            # Check for US or Canadian locales
+            return (system_locale.startswith('en_US') or 
+                   system_locale.startswith('en_CA') or 
+                   'US' in system_locale or 
+                   'CA' in system_locale)
+    except:
+        pass
+    
+    try:
+        # Fallback: check environment variables
+        import os
+        lc_all = os.environ.get('LC_ALL', '')
+        lang = os.environ.get('LANG', '')
+        return ('en_US' in lc_all or 'en_CA' in lc_all or 
+                'en_US' in lang or 'en_CA' in lang or
+                'US' in lc_all or 'CA' in lc_all or
+                'US' in lang or 'CA' in lang)
+    except:
+        pass
+    
+    # Default to True if we can't determine (assume US for safety)
+    return True
+
+def get_seasonal_emoji():
+    """Get seasonal emoji based on current date - Christmas and Halloween easter eggs!"""
+    today = date.today()
+    month = today.month
+    day = today.day
+    
+    # Christmas Season: December 25 - January 5 (12 days of Christmas)
+    if (month == 12 and day >= 25) or (month == 1 and day <= 5):
+        christmas_emojis = [
+            "🎄", "🎅", "🤶", "🎁", "❄️", "⛄", "🦌", "🔔", "🌟", "🎊", "🎉", "✨"
+        ]
+        # Use day to pick emoji (Dec 25 = first emoji, Jan 5 = last emoji)
+        if month == 12:
+            # December 25-31: days 25-31
+            emoji_index = (day - 25) % len(christmas_emojis)
+        else:
+            # January 1-5: days 1-5 (continue from December)
+            emoji_index = (day + 6) % len(christmas_emojis)  # +6 because Dec 25-31 = 7 days
+        return christmas_emojis[emoji_index]
+    
+    # Halloween Season: October 25-31
+    elif month == 10 and 25 <= day <= 31:
+        halloween_emojis = [
+            "🎃", "👻", "🦇", "🕷️", "🕸️", "💀", "🧙‍♀️", "🧛‍♂️", "🦹‍♀️", "🎭", "⚰️", "🦴"
+        ]
+        # Use day of month to pick emoji (25th = first emoji, 31st = last emoji)
+        emoji_index = (day - 25) % len(halloween_emojis)
+        return halloween_emojis[emoji_index]
+    
+    # Thanksgiving Season: November 20-30 - only for US/Canada
+    elif month == 11 and 20 <= day <= 30 and is_thanksgiving_region():
+        thanksgiving_emojis = [
+            "🦃", "🍗", "🥧", "🌽", "🍂", "🍁", "🦌", "🌾", "🏠", "👨‍👩‍👧‍👦", "🙏", "🍽️"
+        ]
+        emoji_index = (day - 20) % len(thanksgiving_emojis)
+        return thanksgiving_emojis[emoji_index]
+    
+    # St. Patrick's Day: March 17
+    elif month == 3 and day == 17:
+        st_patricks_emojis = [
+            "🍀", "☘️", "🌈", "🍺", "🥃", "🇮🇪", "🧚‍♀️", "🪙", "🎩", "🎭", "🎪", "🎨"
+        ]
+        return random.choice(st_patricks_emojis)
+    
+    # Valentine's Day: February 14
+    elif month == 2 and day == 14:
+        valentines_emojis = [
+            "💕", "💖", "💗", "💘", "💝", "💞", "💟", "❤️", "🧡", "💛", "💚", "💙"
+        ]
+        return random.choice(valentines_emojis)
+    
+    # Easter Season: March 22 - April 25 (approximate range)
+    elif month == 3 and day >= 22:
+        easter_emojis = [
+            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
+        ]
+        emoji_index = (day - 22) % len(easter_emojis)
+        return easter_emojis[emoji_index]
+    elif month == 4 and day <= 25:
+        easter_emojis = [
+            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
+        ]
+        emoji_index = (day + 9) % len(easter_emojis)  # +9 because March 22-31 = 10 days
+        return easter_emojis[emoji_index]
+    
+    # New Year's Day: January 1
+    elif month == 1 and day == 1:
+        new_year_emojis = [
+            "🎊", "🎉", "🥳", "🍾", "🥂", "🎆", "🎇", "✨", "🌟", "💫", "🎈", "🎁"
+        ]
+        return random.choice(new_year_emojis)
+    
+    # Independence Day (US): July 4 - only for US users
+    elif month == 7 and day == 4 and is_us_user():
+        independence_emojis = [
+            "🇺🇸", "🎆", "🎇", "⭐", "🌟", "💥", "🎊", "🎉", "🏛️", "🗽", "🦅", "🎪"
+        ]
+        return random.choice(independence_emojis)
+    
+    # Summer Solstice: June 20-22 (approximate)
+    elif month == 6 and 20 <= day <= 22:
+        summer_emojis = [
+            "☀️", "🌞", "🌻", "🌺", "🏖️", "🏝️", "🌊", "🏄‍♂️", "🏄‍♀️", "🌴", "🍉", "🍓"
+        ]
+        emoji_index = (day - 20) % len(summer_emojis)
+        return summer_emojis[emoji_index]
+    
+    # No seasonal emoji
+    return ""
+
+def get_seasonal_emoji_random():
+    """Get a random seasonal emoji if in season, otherwise return empty string"""
+    today = date.today()
+    month = today.month
+    day = today.day
+    
+    # Christmas Season: December 25 - January 5
+    if (month == 12 and day >= 25) or (month == 1 and day <= 5):
+        christmas_emojis = [
+            "🎄", "🎅", "🤶", "🎁", "❄️", "⛄", "🦌", "🔔", "🌟", "🎊", "🎉", "✨"
+        ]
+        return random.choice(christmas_emojis)
+    
+    # Halloween Season: October 25-31
+    elif month == 10 and 25 <= day <= 31:
+        halloween_emojis = [
+            "🎃", "👻", "🦇", "🕷️", "🕸️", "💀", "🧙‍♀️", "🧛‍♂️", "🦹‍♀️", "🎭", "⚰️", "🦴"
+        ]
+        return random.choice(halloween_emojis)
+    
+    # Thanksgiving Season: November 20-30 - only for US/Canada
+    elif month == 11 and 20 <= day <= 30 and is_thanksgiving_region():
+        thanksgiving_emojis = [
+            "🦃", "🍗", "🥧", "🌽", "🍂", "🍁", "🦌", "🌾", "🏠", "👨‍👩‍👧‍👦", "🙏", "🍽️"
+        ]
+        return random.choice(thanksgiving_emojis)
+    
+    # St. Patrick's Day: March 17
+    elif month == 3 and day == 17:
+        st_patricks_emojis = [
+            "🍀", "☘️", "🌈", "🍺", "🥃", "🇮🇪", "🧚‍♀️", "🪙", "🎩", "🎭", "🎪", "🎨"
+        ]
+        return random.choice(st_patricks_emojis)
+    
+    # Valentine's Day: February 14
+    elif month == 2 and day == 14:
+        valentines_emojis = [
+            "💕", "💖", "💗", "💘", "💝", "💞", "💟", "❤️", "🧡", "💛", "💚", "💙"
+        ]
+        return random.choice(valentines_emojis)
+    
+    # Easter Season: March 22 - April 25
+    elif (month == 3 and day >= 22) or (month == 4 and day <= 25):
+        easter_emojis = [
+            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
+        ]
+        return random.choice(easter_emojis)
+    
+    # New Year's Day: January 1
+    elif month == 1 and day == 1:
+        new_year_emojis = [
+            "🎊", "🎉", "🥳", "🍾", "🥂", "🎆", "🎇", "✨", "🌟", "💫", "🎈", "🎁"
+        ]
+        return random.choice(new_year_emojis)
+    
+    # Independence Day (US): July 4 - only for US users
+    elif month == 7 and day == 4 and is_us_user():
+        independence_emojis = [
+            "🇺🇸", "🎆", "🎇", "⭐", "🌟", "💥", "🎊", "🎉", "🏛️", "🗽", "🦅", "🎪"
+        ]
+        return random.choice(independence_emojis)
+    
+    # Summer Solstice: June 20-22
+    elif month == 6 and 20 <= day <= 22:
+        summer_emojis = [
+            "☀️", "🌞", "🌻", "🌺", "🏖️", "🏝️", "🌊", "🏄‍♂️", "🏄‍♀️", "🌴", "🍉", "🍓"
+        ]
+        return random.choice(summer_emojis)
+    
+    return ""
+
+def is_christmas_season():
+    """Check if it's Christmas season (12 days of Christmas: Dec 25 - Jan 5)"""
+    today = date.today()
+    return (today.month == 12 and today.day >= 25) or (today.month == 1 and today.day <= 5)
+
+def is_halloween_season():
+    """Check if it's Halloween season"""
+    today = date.today()
+    return today.month == 10 and 25 <= today.day <= 31
+
+def is_thanksgiving_season():
+    """Check if it's Thanksgiving season"""
+    today = date.today()
+    return today.month == 11 and 20 <= today.day <= 30
+
+def is_st_patricks_day():
+    """Check if it's St. Patrick's Day"""
+    today = date.today()
+    return today.month == 3 and today.day == 17
+
+def is_valentines_day():
+    """Check if it's Valentine's Day"""
+    today = date.today()
+    return today.month == 2 and today.day == 14
+
+def is_easter_season():
+    """Check if it's Easter season"""
+    today = date.today()
+    return (today.month == 3 and today.day >= 22) or (today.month == 4 and today.day <= 25)
+
+def is_new_years_day():
+    """Check if it's New Year's Day"""
+    today = date.today()
+    return today.month == 1 and today.day == 1
+
+def is_independence_day():
+    """Check if it's Independence Day (US)"""
+    today = date.today()
+    return today.month == 7 and today.day == 4
+
+def is_summer_solstice():
+    """Check if it's Summer Solstice"""
+    today = date.today()
+    return today.month == 6 and 20 <= today.day <= 22
 
 # toggle_silent_mode function removed - debug mode is now controlled by keyboard shortcut
 
@@ -2034,7 +2297,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.6.5"
+            current_version = "1.6.7"
             
             # Read the last used version
             last_version = None
@@ -2452,25 +2715,34 @@ class FirmwareDownloaderGUI(QMainWindow):
         return paths
 
     def ensure_innioasis_updater_shortcuts(self):
-        """Ensure Innioasis Updater shortcuts are properly set up"""
+        """Ensure Innioasis Updater shortcuts are properly set up using appropriate source"""
         try:
-            current_dir = Path.cwd()
-            innioasis_updater_shortcut = current_dir / "Innioasis Updater.lnk"
+            # Use the new method to get appropriate shortcut source
+            source_shortcut = self.get_appropriate_shortcut_source()
             
-            if not innioasis_updater_shortcut.exists():
-                silent_print("Innioasis Updater.lnk not found in current directory")
+            if not source_shortcut:
+                silent_print("Appropriate Innioasis Updater shortcut source not found")
                 return
             
             # Check desktop
             desktop_path = Path.home() / "Desktop"
             desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
             
-            if not desktop_shortcut.exists():
+            # Force replacement of existing shortcut
+            if desktop_shortcut.exists():
                 try:
-                    shutil.copy2(innioasis_updater_shortcut, desktop_shortcut)
-                    silent_print(f"Added Innioasis Updater shortcut to desktop")
+                    desktop_shortcut.unlink()  # Remove existing shortcut
+                    silent_print(f"Removed existing desktop shortcut: Innioasis Updater.lnk")
                 except Exception as e:
-                    silent_print(f"Error adding desktop shortcut: {e}")
+                    silent_print(f"Warning: Could not remove existing desktop shortcut: {e}")
+            
+            try:
+                shutil.copy2(source_shortcut, desktop_shortcut)
+                auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                shortcut_type = "regular" if auto_updates_enabled else "skip-update"
+                silent_print(f"Added Innioasis Updater shortcut to desktop ({shortcut_type})")
+            except Exception as e:
+                silent_print(f"Error adding desktop shortcut: {e}")
             
             # Get comprehensive list of start menu paths
             start_menu_paths = self.get_all_start_menu_paths()
@@ -2478,12 +2750,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
                     start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
-                    if not start_menu_shortcut.exists():
+                    # Force replacement of existing shortcut
+                    if start_menu_shortcut.exists():
                         try:
-                            shutil.copy2(innioasis_updater_shortcut, start_menu_shortcut)
-                            silent_print(f"Added Innioasis Updater shortcut to start menu: {start_menu_path}")
+                            start_menu_shortcut.unlink()  # Remove existing shortcut
+                            silent_print(f"Removed existing start menu shortcut: Innioasis Updater.lnk")
                         except Exception as e:
-                            silent_print(f"Error adding start menu shortcut: {e}")
+                            silent_print(f"Warning: Could not remove existing start menu shortcut: {e}")
+                    
+                    try:
+                        shutil.copy2(source_shortcut, start_menu_shortcut)
+                        auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                        shortcut_type = "regular" if auto_updates_enabled else "skip-update"
+                        silent_print(f"Added Innioasis Updater shortcut to start menu: {start_menu_path} ({shortcut_type})")
+                    except Exception as e:
+                        silent_print(f"Error adding start menu shortcut: {e}")
                             
         except Exception as e:
             silent_print(f"Error ensuring Innioasis Updater shortcuts: {e}")
@@ -3215,7 +3496,10 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Innioasis Updater v1.6.5")
+        # Add seasonal emoji to window title
+        seasonal_emoji = get_seasonal_emoji()
+        title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
+        self.setWindowTitle(f"Innioasis Updater v1.6.7{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -3280,7 +3564,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addWidget(help_btn)
         
         # Add Settings button (combines Tools and Settings functionality)
-        self.settings_btn = QPushButton("Settings")
+        seasonal_emoji = get_seasonal_emoji_random()
+        settings_text = f"Settings{seasonal_emoji}" if seasonal_emoji else "Settings"
+        self.settings_btn = QPushButton(settings_text)
         self.settings_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
         self.settings_btn.setStyleSheet("""
             QPushButton {
@@ -3311,7 +3597,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addSpacing(4)
         
         # Add Toolkit button for all platforms
-        self.toolkit_btn = QPushButton("Toolkit")
+        seasonal_emoji = get_seasonal_emoji_random()
+        toolkit_text = f"Toolkit{seasonal_emoji}" if seasonal_emoji else "Toolkit"
+        self.toolkit_btn = QPushButton(toolkit_text)
         self.toolkit_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
         self.toolkit_btn.setStyleSheet("""
             QPushButton {
@@ -3389,7 +3677,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         left_layout.addWidget(package_group)
 
         # Download button
-        self.download_btn = QPushButton("Download")
+        seasonal_emoji = get_seasonal_emoji_random()
+        download_text = f"Download{seasonal_emoji}" if seasonal_emoji else "Download"
+        self.download_btn = QPushButton(download_text)
         self.download_btn.clicked.connect(self.start_download)
         self.download_btn.setEnabled(False)
         colors = self.get_theme_colors()
@@ -3582,7 +3872,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Reddit button moved to About tab
 
         # Discord button
-        discord_btn = QPushButton("Get Help")
+        seasonal_emoji = get_seasonal_emoji_random()
+        discord_text = f"Get Help{seasonal_emoji}" if seasonal_emoji else "Get Help"
+        discord_btn = QPushButton(discord_text)
         discord_btn.setStyleSheet("""
             QPushButton {
                 background-color: palette(base);
@@ -3724,8 +4016,70 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.original_splitter_sizes = [480, 720]  # Store original sizes for restoration
         self.panel_hidden = False  # Track panel state
 
-        # Add Labs link at bottom right corner (only if test.py is available)
-        if self.is_test_py_available():
+        # Check for test.py availability asynchronously to avoid blocking GUI launch
+        self.check_test_py_availability_async()
+        
+        # Add status bar for driver information
+        if platform.system() == "Windows":
+            self.create_driver_status_bar()
+    
+    def is_test_py_available(self):
+        """Check if test.py is available locally or at innioasis.app"""
+        try:
+            # Check local file first
+            local_test_py = Path("test.py")
+            if local_test_py.exists():
+                return True
+            
+            # Check remote availability
+            try:
+                response = requests.get("https://innioasis.app/test.py", timeout=5)
+                if response.status_code == 200:
+                    return True
+            except:
+                pass
+            
+            return False
+        except Exception:
+            return False
+    
+    def check_test_py_availability_async(self):
+        """Check for test.py availability asynchronously and add Labs link if available"""
+        def check_and_add_labs():
+            try:
+                # Check local file first (fast)
+                local_test_py = Path("test.py")
+                if local_test_py.exists():
+                    self.add_labs_link()
+                    return
+                
+                # Check remote availability (slow, but async)
+                try:
+                    response = requests.get("https://innioasis.app/test.py", timeout=5)
+                    if response.status_code == 200:
+                        self.add_labs_link()
+                except:
+                    pass
+            except Exception:
+                pass
+        
+        # Run the check in a separate thread to avoid blocking GUI
+        import threading
+        thread = threading.Thread(target=check_and_add_labs, daemon=True)
+        thread.start()
+    
+    def add_labs_link(self):
+        """Add the Labs link to the GUI (called from async thread)"""
+        # Use QTimer to safely update GUI from background thread
+        QTimer.singleShot(0, self._add_labs_link_safe)
+    
+    def _add_labs_link_safe(self):
+        """Safely add Labs link to GUI from main thread"""
+        try:
+            # Check if we already added the labs link
+            if hasattr(self, 'labs_link'):
+                return
+            
             labs_layout = QHBoxLayout()
             labs_layout.addStretch()  # Push to the right
             
@@ -3752,31 +4106,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.labs_link.mousePressEvent = self.switch_to_labs_version
             labs_layout.addWidget(self.labs_link)
             
-            main_layout.addLayout(labs_layout)
-        
-        # Add status bar for driver information
-        if platform.system() == "Windows":
-            self.create_driver_status_bar()
-    
-    def is_test_py_available(self):
-        """Check if test.py is available locally or at innioasis.app"""
-        try:
-            # Check local file first
-            local_test_py = Path("test.py")
-            if local_test_py.exists():
-                return True
-            
-            # Check remote availability
-            try:
-                response = requests.get("https://innioasis.app/test.py", timeout=5)
-                if response.status_code == 200:
-                    return True
-            except:
-                pass
-            
-            return False
-        except Exception:
-            return False
+            # Find the main layout and add the labs layout
+            # We need to find the right layout to add to
+            main_widget = self.centralWidget()
+            if main_widget:
+                main_layout = main_widget.layout()
+                if main_layout:
+                    main_layout.addLayout(labs_layout)
+        except Exception as e:
+            silent_print(f"Error adding labs link: {e}")
     
     def download_test_py(self):
         """Download test.py from innioasis.app with progress bar"""
@@ -3893,7 +4231,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Revert the application to its startup state"""
         try:
             # Reset status and progress
-            self.status_label.setText("Ready")
+            # Add seasonal emoji to ready status
+            seasonal_emoji = get_seasonal_emoji_random()
+            ready_text = f"Ready{seasonal_emoji}" if seasonal_emoji else "Ready"
+            self.status_label.setText(ready_text)
             self.progress_bar.setVisible(False)
             
             # Load initial image
@@ -4008,7 +4349,10 @@ class FirmwareDownloaderGUI(QMainWindow):
     def handle_mtk_completion(self, success, message):
         """Handle MTK command completion"""
         if success:
-            self.status_label.setText("Installation completed successfully")
+            # Add seasonal emoji to completion message
+            seasonal_emoji = get_seasonal_emoji_random()
+            completion_text = f"Installation completed successfully{seasonal_emoji}" if seasonal_emoji else "Installation completed successfully"
+            self.status_label.setText(completion_text)
             self.load_installed_image()
             remove_installation_marker()
             # Restore left panel after successful installation
@@ -4072,7 +4416,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setInformativeText(
                 "This method uses the MTKclient library directly for firmware installation.\n\n"
                 "Please follow the on-screen instructions and ensure your device is properly connected.\n\n"
-                "If this method fails, you may need to check your drivers or try Method 3 (SP Flash Tool)."
+                "If this method fails, you may need to check your drivers or try Method 3 (SP Flash Tool Console Mode)."
             )
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec()
@@ -4203,10 +4547,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Load the installed completion image
                 self.load_installed_image()
                 
-                # Show success dialog
+                # Show success dialog with seasonal emoji
+                seasonal_emoji = get_seasonal_emoji_random()
+                dialog_title = f"Installation Complete{seasonal_emoji}" if seasonal_emoji else "Installation Complete"
                 QMessageBox.information(
                     self,
-                    "Installation Complete",
+                    dialog_title,
                     "Your installation has completed successfully!\n\n"
                     "Please disconnect your Y1 and hold the middle button to turn it on."
                 )
@@ -4226,43 +4572,154 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error handling Flash Tool completion: {e}")
 
     def try_method_4(self):
-        """Try Method 4 - SP Flash Tool Alternative (Windows only)"""
+        """Try SP Flash Tool GUI (Windows only) - Launches SP Flash Tool - GUI.lnk from Toolkit directory"""
         try:
             if platform.system() != "Windows":
                 QMessageBox.warning(
                     self,
-                    "Method 4 Not Available",
-                    "Method 4 (SP Flash Tool Alternative) is only available on Windows."
+                    "SP Flash Tool GUI Not Available",
+                    "SP Flash Tool GUI is only available on Windows."
                 )
                 return
             
-            # Load Method 4 image
-            self.load_method4_image()
+            # Check if SP Flash Tool - GUI.lnk exists in Toolkit directory
+            current_dir = Path.cwd()
+            toolkit_dir = current_dir / "Toolkit"
+            sp_flash_tool_lnk = toolkit_dir / "SP Flash Tool - GUI.lnk"
             
-            # Hide inappropriate buttons for SP Flash Tool method
-            self.hide_inappropriate_buttons_for_spflash()
+            if not sp_flash_tool_lnk.exists():
+                QMessageBox.critical(
+                    self,
+                    "SP Flash Tool GUI Not Found",
+                    "SP Flash Tool - GUI.lnk not found in Toolkit directory. Please ensure it's properly installed."
+                )
+                return
             
-            # Show dialog with Method 4 instructions
-            msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Method 4 - SP Flash Tool Alternative")
-            msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("Method 4: SP Flash Tool Alternative Installation")
-            msg_box.setInformativeText(
-                "After you press OK:\n"
-                "Power off the Y1 device (or use a pin or paperclip to press the hidden button next to the earphone port), then insert the USB cable.\n\n"
-                "This method uses the manufacturer's SP Flash Tool as an alternative approach. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
-                "Note: This method requires the MediaTek SP Driver to be installed."
+            # Show dialog with SP Flash Tool GUI instructions
+            reply = QMessageBox.question(
+                self,
+                "SP Flash Tool GUI",
+                "SP Flash Tool GUI will now launch.\n\n"
+                "Power off your Y1:\n"
+                "Make sure is NOT connected then, Press OK.\n\n"
+                "Then follow the on screen instructions...\n\n"
+                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
+                "This method launches the SP Flash Tool GUI interface.",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Ok
             )
-            msg_box.setStandardButtons(QMessageBox.Ok)
-            reply = msg_box.exec()
             
-            # Show appropriate buttons again after dialog is closed
-            self.show_appropriate_buttons_for_spflash()
+            if reply == QMessageBox.Cancel:
+                return
+            
+            # Launch SP Flash Tool - GUI.lnk from Toolkit directory using proper Windows method
+            try:
+                # Use os.startfile() to properly launch .lnk files on Windows
+                import os
+                os.startfile(str(sp_flash_tool_lnk))
+                silent_print(f"Launched SP Flash Tool GUI: {sp_flash_tool_lnk}")
+                
+                # Show success message
+                QMessageBox.information(
+                    self,
+                    "SP Flash Tool GUI Launched",
+                    "Your downloaded ROM is loaded into SP Flash Tool's GUI\n\n"
+                    "Make sure you power off your Y1 and select Format All + Download in the drop down menu."
+                )
+                
+                # Revert to ready and presteps.png state after successful launch
+                self.revert_to_startup_state()
+                
+            except Exception as e:
+                silent_print(f"Error launching SP Flash Tool GUI: {e}")
+                QMessageBox.critical(
+                    self,
+                    "Launch Error",
+                    f"Failed to launch SP Flash Tool GUI:\n\n{e}"
+                )
             
         except Exception as e:
-            silent_print(f"Error showing Method 4 instructions: {e}")
-            # Show appropriate buttons again in case of error
-            self.show_appropriate_buttons_for_spflash()
+            silent_print(f"Error in SP Flash Tool GUI method: {e}")
+            QMessageBox.critical(
+                self,
+                "Error",
+                f"An error occurred: {e}"
+            )
+
+    def try_method_3_console(self):
+        """Try Method 3 - SP Flash Tool Console Mode (Windows only) - Launches SP Flash Tool.lnk from Toolkit directory"""
+        try:
+            if platform.system() != "Windows":
+                QMessageBox.warning(
+                    self,
+                    "Method 3 Not Available",
+                    "Method 3 (SP Flash Tool Console Mode) is only available on Windows."
+                )
+                return
+            
+            # Check if SP Flash Tool.lnk exists in Toolkit directory
+            current_dir = Path.cwd()
+            toolkit_dir = current_dir / "Toolkit"
+            sp_flash_tool_lnk = toolkit_dir / "SP Flash Tool.lnk"
+            
+            if not sp_flash_tool_lnk.exists():
+                QMessageBox.critical(
+                    self,
+                    "SP Flash Tool Console Mode Not Found",
+                    "SP Flash Tool.lnk not found in Toolkit directory. Please ensure it's properly installed."
+                )
+                return
+            
+            # Show dialog with Method 3 Console Mode instructions
+            reply = QMessageBox.question(
+                self,
+                "SP Flash Tool Console Mode",
+                "SP Flash Tool Console Mode will now launch.\n\n"
+                "Power off your Y1:\n"
+                "Make sure is NOT connected then, Press OK.\n\n"
+                "Then follow the on screen instructions...\n\n"
+                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
+                "This method launches the SP Flash Tool console interface.",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Ok
+            )
+            
+            if reply == QMessageBox.Cancel:
+                return
+            
+            # Launch SP Flash Tool.lnk from Toolkit directory using proper Windows method
+            try:
+                # Use os.startfile() to properly launch .lnk files on Windows
+                import os
+                os.startfile(str(sp_flash_tool_lnk))
+                silent_print(f"Launched SP Flash Tool Console Mode: {sp_flash_tool_lnk}")
+                
+                # Show success message
+                QMessageBox.information(
+                    self,
+                    "SP Flash Tool Console Mode Launched",
+                    "SP Flash Tool Console Mode has been launched successfully.\n\n"
+                    "Please follow the instructions in the SP Flash Tool window to complete the installation."
+                )
+                
+                # Revert to ready and presteps.png state after successful launch
+                self.revert_to_startup_state()
+                
+            except Exception as e:
+                silent_print(f"Error launching SP Flash Tool Console Mode: {e}")
+                QMessageBox.critical(
+                    self,
+                    "Launch Error",
+                    f"Failed to launch SP Flash Tool Console Mode:\n\n{e}"
+                )
+            
+        except Exception as e:
+            silent_print(f"Error in SP Flash Tool Console Mode method: {e}")
+            QMessageBox.critical(
+                self,
+                "Error",
+                f"An error occurred: {e}"
+            )
 
     def load_method2_image(self):
         """Load Method 2 troubleshooting image"""
@@ -4329,25 +4786,25 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
     def load_method4_image(self):
-        """Load Method 4 SP Flash Tool Alternative image"""
+        """Load SP Flash Tool GUI Method image"""
         try:
             if not hasattr(self, '_method4_pixmap'):
                 # Try method4.png first, fallback to method3.png if not found
                 image_path = self.get_platform_image_path("method4")
                 self._method4_pixmap = QPixmap(image_path)
                 if self._method4_pixmap.isNull():
-                    silent_print(f"Method 4 image not found, trying fallback to method3.png")
+                    silent_print(f"SP Flash Tool GUI Method image not found, trying fallback to method3.png")
                     # Fallback to method3.png
                     fallback_path = self.get_platform_image_path("method3")
                     self._method4_pixmap = QPixmap(fallback_path)
                     if self._method4_pixmap.isNull():
-                        silent_print(f"Failed to load Method 4 fallback image from {fallback_path}")
+                        silent_print(f"Failed to load SP Flash Tool GUI Method fallback image from {fallback_path}")
                         return
             
             self._current_pixmap = self._method4_pixmap
             self.set_image_with_aspect_ratio(self._method4_pixmap)
         except Exception as e:
-            silent_print(f"Error loading Method 4 image: {e}")
+            silent_print(f"Error loading SP Flash Tool GUI Method image: {e}")
             return
 
     def load_data(self):
@@ -4687,10 +5144,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         install_tab = QWidget()
         # Use native styling - no custom stylesheet for automatic theme adaptation
         install_layout = QVBoxLayout(install_tab)
+        install_layout.setSpacing(8)  # Reduce spacing between widgets
+        install_layout.setContentsMargins(10, 10, 10, 10)  # Set consistent margins
         
-        install_title = QLabel("Installation Settings")
-        install_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
-        install_layout.addWidget(install_title)
         
         # Check driver status for Windows users
         driver_info = None
@@ -4700,11 +5156,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Show driver status message
             if driver_info['is_arm64']:
                 status_label = QLabel("⚠️ ARM64 Windows Detected")
-                status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 5px;")
+                status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 2px;")
                 install_layout.addWidget(status_label)
                 
                 status_desc = QLabel("Only firmware downloads are available on ARM64 Windows.\nPlease use WSLg, Linux, or another computer for software installation.")
-                status_desc.setStyleSheet("color: #666; margin: 5px;")
+                status_desc.setStyleSheet("color: #666; margin: 2px;")
                 install_layout.addWidget(status_desc)
                 
                 # Disable method selection for ARM64
@@ -4726,11 +5182,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 
             elif not driver_info['can_install_firmware']:
                 status_label = QLabel("⚠️ Drivers Required")
-                status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 5px;")
+                status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 2px;")
                 install_layout.addWidget(status_label)
                 
                 status_desc = QLabel("No installation methods available. Please install drivers to enable firmware installation.\n\nMore methods will become available if you install the USB Development Kit driver.")
-                status_desc.setStyleSheet("color: #666; margin: 5px;")
+                status_desc.setStyleSheet("color: #666; margin: 2px;")
                 install_layout.addWidget(status_desc)
                 
                 # Disable method selection when no drivers
@@ -4753,7 +5209,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Description
         desc_label = QLabel("This setting will be used for the next firmware installation.")
-        desc_label.setStyleSheet("margin: 5px;")
+        desc_label.setStyleSheet("margin: 2px;")
         install_layout.addWidget(desc_label)
         
         # Method selection
@@ -4767,24 +5223,45 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows" and driver_info:
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 # Both drivers available: All methods (Windows order: SP Flash Tool first, then Guided/MTKclient)
-                self.method_combo.addItem("Method 1 - Guided", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash (advanced)", "spflash4")
-                self.method_combo.addItem("Method 3 - Guided", "guided")
-                self.method_combo.addItem("Method 4 - MTKclient (advanced)", "mtkclient")
+                # Add seasonal emojis to method names
+                seasonal_emoji = get_seasonal_emoji_random()
+                method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
+                method2_text = f"Method 2 - SP Flash Tool GUI{seasonal_emoji}" if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
+                method3_text = f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}" if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
+                method4_text = f"SP Flash Tool GUI Method{seasonal_emoji}" if seasonal_emoji else "SP Flash Tool GUI Method"
+                method5_text = f"Method 5 - MTKclient (advanced){seasonal_emoji}" if seasonal_emoji else "Method 5 - MTKclient (advanced)"
+                
+                self.method_combo.addItem(method1_text, "spflash")
+                self.method_combo.addItem(method2_text, "spflash4")
+                self.method_combo.addItem(method3_text, "spflash_console")
+                self.method_combo.addItem(method4_text, "guided")
+                self.method_combo.addItem(method5_text, "mtkclient")
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: Only Method 1 and 2 (SP Flash Tool methods)
-                self.method_combo.addItem("Method 1 - Guided (Only available method)", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash (advanced)", "spflash4")
+                # Only MTK driver: Only Method 1, 2, and 3 (SP Flash Tool methods)
+                seasonal_emoji = get_seasonal_emoji_random()
+                method1_text = f"Method 1 - Guided (Only available method){seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided (Only available method)"
+                method2_text = f"Method 2 - SP Flash Tool GUI{seasonal_emoji}" if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
+                method3_text = f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}" if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
+                
+                self.method_combo.addItem(method1_text, "spflash")
+                self.method_combo.addItem(method2_text, "spflash4")
+                self.method_combo.addItem(method3_text, "spflash_console")
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Only UsbDk driver: Only Method 4 (MTKclient)
-                self.method_combo.addItem("Method 4 - MTKclient (advanced) (Only available method)", "mtkclient")
+                # Only UsbDk driver: Only Method 5 (MTKclient)
+                seasonal_emoji = get_seasonal_emoji_random()
+                method5_text = f"Method 5 - MTKclient (advanced) (Only available method){seasonal_emoji}" if seasonal_emoji else "Method 5 - MTKclient (advanced) (Only available method)"
+                self.method_combo.addItem(method5_text, "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
         else:
             # Non-Windows: Standard methods
-            self.method_combo.addItem("Method 1 - Guided", "guided")
-            self.method_combo.addItem("Method 2 - in Terminal", "mtkclient")
+            seasonal_emoji = get_seasonal_emoji_random()
+            method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
+            method2_text = f"Method 2 - in Terminal{seasonal_emoji}" if seasonal_emoji else "Method 2 - in Terminal"
+            
+            self.method_combo.addItem(method1_text, "guided")
+            self.method_combo.addItem(method2_text, "mtkclient")
         
         # Set current method
         current_method = getattr(self, 'installation_method', 'guided')
@@ -4801,60 +5278,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Automatic Utility Updates checkbox moved to About tab
         
-        # Method descriptions
-        desc_text = QTextEdit()
-        desc_text.setMaximumHeight(80)
-        desc_text.setReadOnly(True)
-        desc_text.setStyleSheet("""
-            QTextEdit {
-                border: 1px solid #c0c0c0;
-                border-radius: 3px;
-                padding: 8px;
-                font-size: 11px;
-            }
-        """)
-        
-        if platform.system() == "Windows" and driver_info:
-            if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance (Windows only)
-Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
-Method 3 - Guided: Step-by-step with visual guidance
-Method 4 - MTKclient (advanced): Direct technical installation
-                """)
-            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance (Windows only)
-Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
-
-Additional methods (Methods 3 & 4) become available with USB Development Kit driver.
-                """)
-            elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                desc_text.setPlainText("""
-Method 4 - MTKclient (advanced): Direct technical installation (Only available method)
-Note: Install MediaTek SP Driver to enable Methods 1, 2, and 3
-                """)
-            else:
-                desc_text.setPlainText("""
-No installation methods available.
-Please install drivers to enable firmware installation.
-
-More methods will become available if you install the MediaTek SP Driver and USB Development Kit driver.
-                """)
-        elif platform.system() == "Windows":
-            desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance (Windows only)
-Method 2 - SP Flash (advanced): Manufacturer's SP Flash Tool (Windows only)
-Method 3 - Guided: Step-by-step with visual guidance
-Method 4 - MTKclient (advanced): Direct technical installation
-            """)
-        else:
-            desc_text.setPlainText("""
-Method 1 - Guided: Step-by-step with visual guidance
-Method 2 - in Terminal: Direct technical installation
-            """)
-        
-        install_layout.addWidget(desc_text)
         
         # Add About tab first (will be added later)
         
@@ -4960,9 +5383,35 @@ Method 2 - in Terminal: Direct technical installation
         icon_label.setContentsMargins(0, 10, 0, 10)  # Add vertical padding
         about_layout.addWidget(icon_label)
         
-        # App name
-        app_name_label = QLabel("Innioasis Updater")
-        app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px;")  # Add 8px top margin
+        # Determine seasonal message
+        if is_christmas_season():
+            seasonal_message = "🎄 Merry Christmas! 🎅"
+        elif is_halloween_season():
+            seasonal_message = "🎃 Happy Halloween! 👻"
+        elif is_thanksgiving_season() and is_thanksgiving_region():
+            seasonal_message = "🦃 Happy Thanksgiving! 🍗"
+        elif is_st_patricks_day():
+            seasonal_message = "🍀 Happy St. Patrick's Day! ☘️"
+        elif is_valentines_day():
+            seasonal_message = "💕 Happy Valentine's Day! 💖"
+        elif is_easter_season():
+            seasonal_message = "🐰 Happy Easter! 🐣"
+        elif is_new_years_day():
+            seasonal_message = "🎊 Happy New Year! 🎉"
+        elif is_independence_day() and is_us_user():
+            seasonal_message = "🇺🇸 Happy Independence Day! 🎆"
+        elif is_summer_solstice():
+            seasonal_message = "☀️ Happy Summer Solstice! 🌞"
+        else:
+            seasonal_message = ""
+        
+        # App name - use seasonal message as title if available, otherwise use default title
+        if seasonal_message:
+            app_name_label = QLabel(seasonal_message)
+            app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px; color: #FF6B35;")  # Use seasonal color
+        else:
+            app_name_label = QLabel("Innioasis Updater")
+            app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px;")  # Default styling
         app_name_label.setAlignment(Qt.AlignCenter)
         about_layout.addWidget(app_name_label)
         
@@ -5037,6 +5486,10 @@ Method 2 - in Terminal: Direct technical installation
             auto_utility_updates = getattr(self, 'auto_utility_updates_enabled', True)
         self.auto_utility_updates_checkbox.setChecked(auto_utility_updates)
         
+        # Connect checkbox change to shortcut update (Windows only)
+        if platform.system() == "Windows":
+            self.auto_utility_updates_checkbox.stateChanged.connect(self.update_shortcuts_for_auto_updates)
+        
         # Center the checkbox
         checkbox_layout = QHBoxLayout()
         checkbox_layout.addStretch()
@@ -5045,7 +5498,9 @@ Method 2 - in Terminal: Direct technical installation
         about_layout.addLayout(checkbox_layout)
         
         # Reddit button
-        reddit_btn = QPushButton("📱 r/innioasis")
+        seasonal_emoji = get_seasonal_emoji_random()
+        reddit_text = f"📱 r/innioasis{seasonal_emoji}" if seasonal_emoji else "📱 r/innioasis"
+        reddit_btn = QPushButton(reddit_text)
         reddit_btn.setStyleSheet("""
             QPushButton {
                 background-color: palette(base);
@@ -5287,7 +5742,12 @@ Method 2 - in Terminal: Direct technical installation
                 if not self.show_no_shortcuts_warning():
                     return  # Don't save settings if user cancels
             
-            # Apply shortcut settings immediately
+            # Ensure Skip Update shortcut exists if auto-updates are disabled
+            if not self.auto_utility_updates_enabled:
+                if not self.ensure_skip_update_shortcut_exists():
+                    silent_print("Warning: Could not ensure Skip Update shortcut exists when saving settings")
+            
+            # Apply shortcut settings immediately (this will use the updated auto-updates setting)
             self.apply_shortcut_settings()
         
         # Save to persistent storage
@@ -5483,8 +5943,212 @@ Method 2 - in Terminal: Direct technical installation
         except Exception as e:
             silent_print(f"Error during silent shortcut cleanup: {e}")
     
+    def get_appropriate_shortcut_source(self):
+        """Get the appropriate shortcut source based on auto-updates setting"""
+        if platform.system() != "Windows":
+            return None
+            
+        current_dir = Path.cwd()
+        
+        # Check if auto-updates are enabled
+        auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+        silent_print(f"Getting shortcut source - Auto-updates enabled: {auto_updates_enabled}")
+        
+        if auto_updates_enabled:
+            # Auto-updates enabled: use regular Innioasis Updater.lnk
+            source_shortcut = current_dir / "Innioasis Updater.lnk"
+            silent_print(f"Looking for regular shortcut: {source_shortcut}")
+        else:
+            # Auto-updates disabled: use Skip Update and Launch.lnk
+            # Try multiple possible locations for the Skip Update and Launch.lnk file
+            possible_paths = [
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk",
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Fix PC App and PC App Updates" / "Skip Update and Launch.lnk",
+                current_dir / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk"
+            ]
+            
+            source_shortcut = None
+            for path in possible_paths:
+                if path.exists():
+                    source_shortcut = path
+                    break
+            silent_print(f"Looking for skip-update shortcut: {source_shortcut}")
+        
+        if source_shortcut:
+            exists = source_shortcut.exists()
+            silent_print(f"Shortcut source exists: {exists}")
+            if exists:
+                return source_shortcut
+            else:
+                silent_print(f"Shortcut source not found at: {source_shortcut}")
+        else:
+            silent_print("No valid shortcut source path found")
+        
+        return None
+
+    def ensure_skip_update_shortcut_exists(self):
+        """Ensure the Skip Update and Launch.lnk file exists (Windows only)"""
+        if platform.system() != "Windows":
+            return False
+            
+        try:
+            current_dir = Path.cwd()
+            
+            # Try to find existing Skip Update and Launch.lnk
+            possible_paths = [
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk",
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Fix PC App and PC App Updates" / "Skip Update and Launch.lnk",
+                current_dir / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk"
+            ]
+            
+            for path in possible_paths:
+                if path.exists():
+                    silent_print(f"Found existing Skip Update and Launch.lnk at: {path}")
+                    return True
+            
+            # If not found, create it by copying the regular shortcut and modifying it
+            regular_shortcut = current_dir / "Innioasis Updater.lnk"
+            if not regular_shortcut.exists():
+                silent_print("Cannot create Skip Update shortcut: Innioasis Updater.lnk not found")
+                return False
+            
+            # Create the directory structure if it doesn't exist
+            target_dir = current_dir / "Troubleshooting" / "More Tools and Troubleshooters"
+            target_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Copy the regular shortcut to create the skip update version
+            skip_update_shortcut = target_dir / "Skip Update and Launch.lnk"
+            shutil.copy2(regular_shortcut, skip_update_shortcut)
+            
+            silent_print(f"Created Skip Update and Launch.lnk at: {skip_update_shortcut}")
+            return True
+            
+        except Exception as e:
+            silent_print(f"Error ensuring Skip Update shortcut exists: {e}")
+            return False
+
+    def update_shortcuts_for_auto_updates(self):
+        """Update shortcuts when auto-updates setting changes (Windows only)"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            # Update the auto-updates setting from the checkbox
+            self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
+            silent_print(f"Auto-updates setting changed to: {self.auto_utility_updates_enabled}")
+            
+            # Ensure the Skip Update shortcut exists if auto-updates are disabled
+            if not self.auto_utility_updates_enabled:
+                if not self.ensure_skip_update_shortcut_exists():
+                    silent_print("Warning: Could not ensure Skip Update shortcut exists")
+            
+            # Check what source shortcut will be used
+            source_shortcut = self.get_appropriate_shortcut_source()
+            if source_shortcut:
+                silent_print(f"Will use shortcut source: {source_shortcut}")
+            else:
+                silent_print("Warning: No appropriate shortcut source found")
+            
+            # Only update shortcuts if they are enabled in user preferences
+            desktop_enabled = getattr(self, 'desktop_shortcuts_enabled', True)
+            startmenu_enabled = getattr(self, 'startmenu_shortcuts_enabled', True)
+            silent_print(f"Shortcut preferences - Desktop: {desktop_enabled}, Start Menu: {startmenu_enabled}")
+            
+            if desktop_enabled:
+                self.ensure_desktop_shortcuts()
+                silent_print("Desktop shortcuts updated for auto-updates setting change")
+                
+            if startmenu_enabled:
+                self.ensure_startmenu_shortcuts()
+                silent_print("Start menu shortcuts updated for auto-updates setting change")
+                
+        except Exception as e:
+            silent_print(f"Error updating shortcuts for auto-updates: {e}")
+            import traceback
+            silent_print(f"Full error traceback: {traceback.format_exc()}")
+
+    def test_shortcut_replacement(self):
+        """Test method to manually trigger shortcut replacement (for debugging)"""
+        if platform.system() != "Windows":
+            silent_print("Shortcut replacement test only available on Windows")
+            return
+            
+        try:
+            silent_print("=== Testing Shortcut Replacement ===")
+            
+            # Test getting appropriate source
+            source = self.get_appropriate_shortcut_source()
+            if source:
+                silent_print(f"Current source shortcut: {source}")
+            else:
+                silent_print("No source shortcut found")
+            
+            # Test desktop shortcut replacement
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
+            silent_print(f"Desktop shortcut exists: {desktop_shortcut.exists()}")
+            
+            # Test start menu shortcuts
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    if start_menu_shortcut.exists():
+                        silent_print(f"Start menu shortcut exists at: {start_menu_shortcut}")
+            
+            silent_print("=== End Shortcut Replacement Test ===")
+            
+        except Exception as e:
+            silent_print(f"Error during shortcut replacement test: {e}")
+            import traceback
+            silent_print(f"Full error traceback: {traceback.format_exc()}")
+
+    def test_shortcut_magic(self):
+        """Test the magical shortcut replacement functionality (for debugging)"""
+        if platform.system() != "Windows":
+            silent_print("Shortcut magic test only available on Windows")
+            return
+            
+        try:
+            silent_print("=== Testing Shortcut Magic ===")
+            
+            # Test current auto-updates setting
+            auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+            silent_print(f"Current auto-updates setting: {auto_updates_enabled}")
+            
+            # Test Skip Update shortcut existence
+            skip_exists = self.ensure_skip_update_shortcut_exists()
+            silent_print(f"Skip Update shortcut exists: {skip_exists}")
+            
+            # Test getting appropriate source
+            source = self.get_appropriate_shortcut_source()
+            if source:
+                silent_print(f"Appropriate shortcut source: {source}")
+            else:
+                silent_print("No appropriate shortcut source found")
+            
+            # Test desktop shortcut
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
+            silent_print(f"Desktop shortcut exists: {desktop_shortcut.exists()}")
+            
+            # Test start menu shortcuts
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    if start_menu_shortcut.exists():
+                        silent_print(f"Start menu shortcut exists at: {start_menu_shortcut}")
+            
+            silent_print("=== End Shortcut Magic Test ===")
+            
+        except Exception as e:
+            silent_print(f"Error during shortcut magic test: {e}")
+            import traceback
+            silent_print(f"Full error traceback: {traceback.format_exc()}")
+
     def ensure_desktop_shortcuts(self):
-        """Ensure desktop shortcuts exist - only Innioasis Updater.lnk as specified"""
+        """Ensure desktop shortcuts exist - uses appropriate shortcut based on auto-updates setting"""
         if platform.system() != "Windows":
             return
             
@@ -5493,17 +6157,25 @@ Method 2 - in Terminal: Direct technical installation
             if not desktop_path.exists():
                 return
             
-            current_dir = Path.cwd()
-            
-            # Create only Innioasis Updater shortcut as specified
-            source_shortcut = current_dir / "Innioasis Updater.lnk"
-            if source_shortcut.exists():
+            # Get the appropriate shortcut source
+            source_shortcut = self.get_appropriate_shortcut_source()
+            if source_shortcut:
                 dest_shortcut = desktop_path / "Innioasis Updater.lnk"
-                # Always copy to ensure it's up to date
+                # Force replacement of existing shortcut
+                if dest_shortcut.exists():
+                    try:
+                        dest_shortcut.unlink()  # Remove existing shortcut
+                        silent_print(f"Removed existing desktop shortcut: Innioasis Updater.lnk")
+                    except Exception as e:
+                        silent_print(f"Warning: Could not remove existing shortcut: {e}")
+                
+                # Copy the new shortcut
                 shutil.copy2(source_shortcut, dest_shortcut)
-                silent_print(f"Created/updated desktop shortcut: Innioasis Updater.lnk")
+                auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                shortcut_type = "regular" if auto_updates_enabled else "skip-update"
+                silent_print(f"Created/updated desktop shortcut: Innioasis Updater.lnk ({shortcut_type})")
             else:
-                silent_print(f"Warning: Innioasis Updater.lnk not found in current directory")
+                silent_print(f"Warning: Appropriate shortcut source not found")
                     
         except Exception as e:
             silent_print(f"Error ensuring desktop shortcuts: {e}")
@@ -5533,7 +6205,7 @@ Method 2 - in Terminal: Direct technical installation
             silent_print(f"Error removing desktop shortcuts: {e}")
     
     def ensure_startmenu_shortcuts(self):
-        """Ensure start menu shortcuts exist - Innioasis Updater.lnk and Innioasis Toolkit.lnk as specified"""
+        """Ensure start menu shortcuts exist - uses appropriate shortcut based on auto-updates setting"""
         if platform.system() != "Windows":
             return
             
@@ -5543,17 +6215,27 @@ Method 2 - in Terminal: Direct technical installation
             
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
-                    # Create Innioasis Updater shortcut
-                    source_shortcut = current_dir / "Innioasis Updater.lnk"
-                    if source_shortcut.exists():
+                    # Create Innioasis Updater shortcut using appropriate source
+                    source_shortcut = self.get_appropriate_shortcut_source()
+                    if source_shortcut:
                         dest_shortcut = start_menu_path / "Innioasis Updater.lnk"
-                        # Always copy to ensure it's up to date
+                        # Force replacement of existing shortcut
+                        if dest_shortcut.exists():
+                            try:
+                                dest_shortcut.unlink()  # Remove existing shortcut
+                                silent_print(f"Removed existing start menu shortcut: Innioasis Updater.lnk")
+                            except Exception as e:
+                                silent_print(f"Warning: Could not remove existing shortcut: {e}")
+                        
+                        # Copy the new shortcut
                         shutil.copy2(source_shortcut, dest_shortcut)
-                        silent_print(f"Created/updated start menu shortcut: Innioasis Updater.lnk")
+                        auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                        shortcut_type = "regular" if auto_updates_enabled else "skip-update"
+                        silent_print(f"Created/updated start menu shortcut: Innioasis Updater.lnk ({shortcut_type})")
                     else:
-                        silent_print(f"Warning: Innioasis Updater.lnk not found in current directory")
+                        silent_print(f"Warning: Appropriate shortcut source not found")
                     
-                    # Create Innioasis Toolkit shortcut
+                    # Create Innioasis Toolkit shortcut (always uses regular source)
                     source_toolkit = current_dir / "Innioasis Toolkit.lnk"
                     if source_toolkit.exists():
                         dest_toolkit = start_menu_path / "Innioasis Toolkit.lnk"
@@ -5608,6 +6290,11 @@ Method 2 - in Terminal: Direct technical installation
             # Load preferences first to ensure we have the latest settings
             self.load_installation_preferences()
             
+            # Ensure the Skip Update shortcut exists if auto-updates are disabled
+            if not getattr(self, 'auto_utility_updates_enabled', True):
+                if not self.ensure_skip_update_shortcut_exists():
+                    silent_print("Warning: Could not ensure Skip Update shortcut exists on startup")
+            
             # Apply settings silently
             self.apply_shortcut_settings()
             
@@ -5627,6 +6314,9 @@ Method 2 - in Terminal: Direct technical installation
             
             # Apply the change immediately
             if checked:
+                # Ensure Skip Update shortcut exists if auto-updates are disabled
+                if not getattr(self, 'auto_utility_updates_enabled', True):
+                    self.ensure_skip_update_shortcut_exists()
                 self.ensure_desktop_shortcuts()
                 silent_print("Desktop shortcuts enabled and created.")
             else:
@@ -5647,6 +6337,9 @@ Method 2 - in Terminal: Direct technical installation
             
             # Apply the change immediately
             if checked:
+                # Ensure Skip Update shortcut exists if auto-updates are disabled
+                if not getattr(self, 'auto_utility_updates_enabled', True):
+                    self.ensure_skip_update_shortcut_exists()
                 self.ensure_startmenu_shortcuts()
                 silent_print("Start menu shortcuts enabled and created.")
             else:
@@ -7157,7 +7850,7 @@ Method 2 - in Terminal: Direct technical installation
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.6.5"]
+        clean_lines = ["Version 1.6.7"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -7920,20 +8613,25 @@ Method 2 - in Terminal: Direct technical installation
                 self.load_method3_image()
                 self.try_method_3()
             elif method == "spflash4":
-                # Method 2: SP Flash (advanced) - same as pressing "Try Method 4" in troubleshooting
-                silent_print("=== RUNNING SP FLASH (ADVANCED) METHOD 2 ===")
-                # Show Method 4 image and launch SP Flash Tool Alternative
-                self.load_method4_image()
+                # Method 2: SP Flash Tool GUI - launches SP Flash Tool - GUI.lnk from Toolkit directory
+                silent_print("=== RUNNING SP FLASH TOOL GUI METHOD 2 ===")
+                # Launch SP Flash Tool GUI directly
                 self.try_method_4()
+            elif method == "spflash_console":
+                # Method 3: SP Flash Tool Console Mode - launches SP Flash Tool.lnk from Toolkit directory
+                silent_print("=== RUNNING SP FLASH TOOL CONSOLE MODE METHOD 3 ===")
+                # Show Method 3 image and launch SP Flash Tool Console Mode
+                self.load_method3_image()
+                self.try_method_3_console()
             elif method == "guided":
-                # Method 3: Guided process
-                silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 3) ===")
+                # Method 4: Guided process
+                silent_print("=== RUNNING GUIDED INSTALLATION (SP FLASH TOOL GUI METHOD) ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
                 self.run_mtk_command_guided()
             elif method == "mtkclient":
-                # Method 4: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
-                silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 4 ===")
+                # Method 5: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
+                silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 5 ===")
                 # Show Method 2 image and launch recovery firmware install
                 self.load_method2_image()
                 self.show_troubleshooting_instructions()
@@ -8417,7 +9115,7 @@ Method 2 - in Terminal: Direct technical installation
                           "3. INSERT Paperclip again\n"
                           "4. WAIT for install to finish then disconnect your Y1\n"
                           "5. HOLD middle button to restart\n\n"
-                          "This method shows technical installation details. If it fails, try Method 3.")
+                          "This method shows technical installation details. If it fails, try Method 3 (SP Flash Tool Console Mode).")
         else:
             # Non-Windows baseline Method 2 instructions
             instructions = ("We'll now take you to Terminal to show you what's happening under the hood:\n\n"
@@ -8833,9 +9531,9 @@ read -n 1
             can_install_firmware = False
         
         # Summary of driver combinations:
-        # - Both drivers: All 4 methods available (SP Flash Tool first, then Guided/MTKclient)
-        # - MTK only: Method 1 and 2 (Guided and SP Flash advanced) only
-        # - UsbDk only: Method 4 (MTKclient advanced) only  
+        # - Both drivers: All 5 methods available (SP Flash Tool first, then Guided/MTKclient)
+        # - MTK only: Method 1, 2, and 3 (Guided, SP Flash GUI, and SP Flash Console) only
+        # - UsbDk only: Method 5 (MTKclient advanced) only  
         # - No drivers: No methods available
         # - ARM64: No methods available (firmware download only)
         
