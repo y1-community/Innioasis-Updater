@@ -4451,43 +4451,73 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error handling Flash Tool Console completion: {e}")
 
     def try_method_4(self):
-        """Try Method 4 - SP Flash Tool Alternative (Windows only)"""
+        """Try SP Flash Tool GUI (Windows only) - Launches flash_tool.exe without arguments"""
         try:
             if platform.system() != "Windows":
                 QMessageBox.warning(
                     self,
-                    "Method 4 Not Available",
-                    "Method 4 (SP Flash Tool Alternative) is only available on Windows."
+                    "SP Flash Tool GUI Not Available",
+                    "SP Flash Tool GUI is only available on Windows."
                 )
                 return
             
-            # Load Method 4 image
-            self.load_method4_image()
+            # Check if flash_tool.exe exists
+            current_dir = Path.cwd()
+            flash_tool_exe = current_dir / "flash_tool.exe"
             
-            # Hide inappropriate buttons for SP Flash Tool method
-            self.hide_inappropriate_buttons_for_spflash()
+            if not flash_tool_exe.exists():
+                QMessageBox.critical(
+                    self,
+                    "Flash Tool Not Found",
+                    "flash_tool.exe not found. Please ensure it's properly installed."
+                )
+                return
             
-            # Show dialog with Method 4 instructions
-            msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Method 4 - SP Flash Tool Alternative")
-            msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("Method 4: SP Flash Tool Alternative Installation")
-            msg_box.setInformativeText(
-                "After you press OK:\n"
-                "Power off the Y1 device (or use a pin or paperclip to press the hidden button next to the earphone port), then insert the USB cable.\n\n"
-                "This method uses the manufacturer's SP Flash Tool as an alternative approach. If it fails with proper drivers, contact the seller/manufacturer.\n\n"
-                "Note: This method requires the MediaTek SP Driver to be installed."
+            # Show dialog with SP Flash Tool GUI instructions
+            reply = QMessageBox.question(
+                self,
+                "SP Flash Tool GUI",
+                "SP Flash Tool GUI will now launch.\n\n"
+                "Power off your Y1:\n"
+                "Make sure is NOT connected then, Press OK.\n\n"
+                "Then follow the on screen instructions...\n\n"
+                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
+                "This method launches the SP Flash Tool GUI interface.",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Ok
             )
-            msg_box.setStandardButtons(QMessageBox.Ok)
-            reply = msg_box.exec()
             
-            # Show appropriate buttons again after dialog is closed
-            self.show_appropriate_buttons_for_spflash()
+            if reply == QMessageBox.Cancel:
+                return
+            
+            # Launch flash_tool.exe without any arguments (GUI mode)
+            try:
+                subprocess.Popen([str(flash_tool_exe)], cwd=str(current_dir))
+                silent_print(f"Launched SP Flash Tool GUI: {flash_tool_exe}")
+                
+                # Show success message
+                QMessageBox.information(
+                    self,
+                    "SP Flash Tool GUI Launched",
+                    "SP Flash Tool GUI has been launched successfully.\n\n"
+                    "Please follow the instructions in the SP Flash Tool window to complete the installation."
+                )
+                
+            except Exception as e:
+                silent_print(f"Error launching SP Flash Tool GUI: {e}")
+                QMessageBox.critical(
+                    self,
+                    "Launch Error",
+                    f"Failed to launch SP Flash Tool GUI:\n\n{e}"
+                )
             
         except Exception as e:
-            silent_print(f"Error showing Method 4 instructions: {e}")
-            # Show appropriate buttons again in case of error
-            self.show_appropriate_buttons_for_spflash()
+            silent_print(f"Error in SP Flash Tool GUI method: {e}")
+            QMessageBox.critical(
+                self,
+                "Error",
+                f"An error occurred: {e}"
+            )
 
     def try_method_3_console(self):
         """Try Method 3 - SP Flash Tool Console Mode (Windows only)"""
@@ -8422,10 +8452,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.load_method3_image()
                 self.try_method_3()
             elif method == "spflash4":
-                # Method 2: SP Flash Tool GUI - same as pressing "Try Method 4" in troubleshooting
+                # Method 2: SP Flash Tool GUI - launches flash_tool.exe without arguments
                 silent_print("=== RUNNING SP FLASH TOOL GUI METHOD 2 ===")
-                # Show Method 4 image and launch SP Flash Tool Alternative
-                self.load_method4_image()
+                # Launch SP Flash Tool GUI directly
                 self.try_method_4()
             elif method == "spflash_console":
                 # Method 3: SP Flash Tool Console Mode - runs without GUI arguments
