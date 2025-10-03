@@ -5551,6 +5551,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if not self.show_no_shortcuts_warning():
                     return  # Don't save settings if user cancels
             
+            # Ensure Skip Update shortcut exists if auto-updates are disabled
+            if not self.auto_utility_updates_enabled:
+                if not self.ensure_skip_update_shortcut_exists():
+                    silent_print("Warning: Could not ensure Skip Update shortcut exists when saving settings")
+            
             # Apply shortcut settings immediately (this will use the updated auto-updates setting)
             self.apply_shortcut_settings()
         
@@ -5764,12 +5769,72 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Looking for regular shortcut: {source_shortcut}")
         else:
             # Auto-updates disabled: use Skip Update and Launch.lnk
-            source_shortcut = current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk"
+            # Try multiple possible locations for the Skip Update and Launch.lnk file
+            possible_paths = [
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk",
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Fix PC App and PC App Updates" / "Skip Update and Launch.lnk",
+                current_dir / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk"
+            ]
+            
+            source_shortcut = None
+            for path in possible_paths:
+                if path.exists():
+                    source_shortcut = path
+                    break
             silent_print(f"Looking for skip-update shortcut: {source_shortcut}")
         
-        exists = source_shortcut.exists()
-        silent_print(f"Shortcut source exists: {exists}")
-        return source_shortcut if exists else None
+        if source_shortcut:
+            exists = source_shortcut.exists()
+            silent_print(f"Shortcut source exists: {exists}")
+            if exists:
+                return source_shortcut
+            else:
+                silent_print(f"Shortcut source not found at: {source_shortcut}")
+        else:
+            silent_print("No valid shortcut source path found")
+        
+        return None
+
+    def ensure_skip_update_shortcut_exists(self):
+        """Ensure the Skip Update and Launch.lnk file exists (Windows only)"""
+        if platform.system() != "Windows":
+            return False
+            
+        try:
+            current_dir = Path.cwd()
+            
+            # Try to find existing Skip Update and Launch.lnk
+            possible_paths = [
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk",
+                current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Fix PC App and PC App Updates" / "Skip Update and Launch.lnk",
+                current_dir / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk"
+            ]
+            
+            for path in possible_paths:
+                if path.exists():
+                    silent_print(f"Found existing Skip Update and Launch.lnk at: {path}")
+                    return True
+            
+            # If not found, create it by copying the regular shortcut and modifying it
+            regular_shortcut = current_dir / "Innioasis Updater.lnk"
+            if not regular_shortcut.exists():
+                silent_print("Cannot create Skip Update shortcut: Innioasis Updater.lnk not found")
+                return False
+            
+            # Create the directory structure if it doesn't exist
+            target_dir = current_dir / "Troubleshooting" / "More Tools and Troubleshooters"
+            target_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Copy the regular shortcut to create the skip update version
+            skip_update_shortcut = target_dir / "Skip Update and Launch.lnk"
+            shutil.copy2(regular_shortcut, skip_update_shortcut)
+            
+            silent_print(f"Created Skip Update and Launch.lnk at: {skip_update_shortcut}")
+            return True
+            
+        except Exception as e:
+            silent_print(f"Error ensuring Skip Update shortcut exists: {e}")
+            return False
 
     def update_shortcuts_for_auto_updates(self):
         """Update shortcuts when auto-updates setting changes (Windows only)"""
@@ -5780,6 +5845,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Update the auto-updates setting from the checkbox
             self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
             silent_print(f"Auto-updates setting changed to: {self.auto_utility_updates_enabled}")
+            
+            # Ensure the Skip Update shortcut exists if auto-updates are disabled
+            if not self.auto_utility_updates_enabled:
+                if not self.ensure_skip_update_shortcut_exists():
+                    silent_print("Warning: Could not ensure Skip Update shortcut exists")
             
             # Check what source shortcut will be used
             source_shortcut = self.get_appropriate_shortcut_source()
@@ -5839,6 +5909,50 @@ class FirmwareDownloaderGUI(QMainWindow):
             
         except Exception as e:
             silent_print(f"Error during shortcut replacement test: {e}")
+            import traceback
+            silent_print(f"Full error traceback: {traceback.format_exc()}")
+
+    def test_shortcut_magic(self):
+        """Test the magical shortcut replacement functionality (for debugging)"""
+        if platform.system() != "Windows":
+            silent_print("Shortcut magic test only available on Windows")
+            return
+            
+        try:
+            silent_print("=== Testing Shortcut Magic ===")
+            
+            # Test current auto-updates setting
+            auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+            silent_print(f"Current auto-updates setting: {auto_updates_enabled}")
+            
+            # Test Skip Update shortcut existence
+            skip_exists = self.ensure_skip_update_shortcut_exists()
+            silent_print(f"Skip Update shortcut exists: {skip_exists}")
+            
+            # Test getting appropriate source
+            source = self.get_appropriate_shortcut_source()
+            if source:
+                silent_print(f"Appropriate shortcut source: {source}")
+            else:
+                silent_print("No appropriate shortcut source found")
+            
+            # Test desktop shortcut
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
+            silent_print(f"Desktop shortcut exists: {desktop_shortcut.exists()}")
+            
+            # Test start menu shortcuts
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    if start_menu_shortcut.exists():
+                        silent_print(f"Start menu shortcut exists at: {start_menu_shortcut}")
+            
+            silent_print("=== End Shortcut Magic Test ===")
+            
+        except Exception as e:
+            silent_print(f"Error during shortcut magic test: {e}")
             import traceback
             silent_print(f"Full error traceback: {traceback.format_exc()}")
 
@@ -5985,6 +6099,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Load preferences first to ensure we have the latest settings
             self.load_installation_preferences()
             
+            # Ensure the Skip Update shortcut exists if auto-updates are disabled
+            if not getattr(self, 'auto_utility_updates_enabled', True):
+                if not self.ensure_skip_update_shortcut_exists():
+                    silent_print("Warning: Could not ensure Skip Update shortcut exists on startup")
+            
             # Apply settings silently
             self.apply_shortcut_settings()
             
@@ -6004,6 +6123,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Apply the change immediately
             if checked:
+                # Ensure Skip Update shortcut exists if auto-updates are disabled
+                if not getattr(self, 'auto_utility_updates_enabled', True):
+                    self.ensure_skip_update_shortcut_exists()
                 self.ensure_desktop_shortcuts()
                 silent_print("Desktop shortcuts enabled and created.")
             else:
@@ -6024,6 +6146,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Apply the change immediately
             if checked:
+                # Ensure Skip Update shortcut exists if auto-updates are disabled
+                if not getattr(self, 'auto_utility_updates_enabled', True):
+                    self.ensure_skip_update_shortcut_exists()
                 self.ensure_startmenu_shortcuts()
                 silent_print("Start menu shortcuts enabled and created.")
             else:
