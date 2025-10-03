@@ -4787,7 +4787,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     "SP Flash Tool GUI Launched",
                     "Your downloaded ROM is loaded into SP Flash Tool's GUI\n\n"
-                    "Make sure you power off your Y1 before proceeding."
+                    "Make sure you power off your Y1 and select Format All + Download in the drop down menu."
                 )
                 
                 # Revert to ready and presteps.png state after successful launch
