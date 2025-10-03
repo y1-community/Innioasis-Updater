@@ -4775,9 +4775,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             if reply == QMessageBox.Cancel:
                 return
             
-            # Launch SP Flash Tool - GUI.lnk from Toolkit directory
+            # Launch SP Flash Tool - GUI.lnk from Toolkit directory using proper Windows method
             try:
-                subprocess.Popen([str(sp_flash_tool_lnk)], cwd=str(toolkit_dir))
+                # Use os.startfile() to properly launch .lnk files on Windows
+                import os
+                os.startfile(str(sp_flash_tool_lnk))
                 silent_print(f"Launched SP Flash Tool GUI: {sp_flash_tool_lnk}")
                 
                 # Show success message
@@ -4787,6 +4789,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "SP Flash Tool GUI has been launched successfully.\n\n"
                     "Please follow the instructions in the SP Flash Tool window to complete the installation."
                 )
+                
+                # Revert to ready and presteps.png state after successful launch
+                self.revert_to_startup_state()
                 
             except Exception as e:
                 silent_print(f"Error launching SP Flash Tool GUI: {e}")
