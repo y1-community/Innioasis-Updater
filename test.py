@@ -4735,7 +4735,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error handling Flash Tool Console completion: {e}")
 
     def try_method_4(self):
-        """Try SP Flash Tool GUI (Windows only) - Launches flash_tool.exe without arguments"""
+        """Try SP Flash Tool GUI (Windows only) - Launches SP Flash Tool - GUI.lnk from Toolkit directory"""
         try:
             if platform.system() != "Windows":
                 QMessageBox.warning(
@@ -4745,15 +4745,16 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
             
-            # Check if flash_tool.exe exists
+            # Check if SP Flash Tool - GUI.lnk exists in Toolkit directory
             current_dir = Path.cwd()
-            flash_tool_exe = current_dir / "flash_tool.exe"
+            toolkit_dir = current_dir / "Toolkit"
+            sp_flash_tool_lnk = toolkit_dir / "SP Flash Tool - GUI.lnk"
             
-            if not flash_tool_exe.exists():
+            if not sp_flash_tool_lnk.exists():
                 QMessageBox.critical(
                     self,
-                    "Flash Tool Not Found",
-                    "flash_tool.exe not found. Please ensure it's properly installed."
+                    "SP Flash Tool GUI Not Found",
+                    "SP Flash Tool - GUI.lnk not found in Toolkit directory. Please ensure it's properly installed."
                 )
                 return
             
@@ -4774,10 +4775,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             if reply == QMessageBox.Cancel:
                 return
             
-            # Launch flash_tool.exe without any arguments (GUI mode)
+            # Launch SP Flash Tool - GUI.lnk from Toolkit directory
             try:
-                subprocess.Popen([str(flash_tool_exe)], cwd=str(current_dir))
-                silent_print(f"Launched SP Flash Tool GUI: {flash_tool_exe}")
+                subprocess.Popen([str(sp_flash_tool_lnk)], cwd=str(toolkit_dir))
+                silent_print(f"Launched SP Flash Tool GUI: {sp_flash_tool_lnk}")
                 
                 # Show success message
                 QMessageBox.information(
@@ -4956,25 +4957,25 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
     def load_method4_image(self):
-        """Load Method 4 SP Flash Tool Alternative image"""
+        """Load SP Flash Tool GUI Method image"""
         try:
             if not hasattr(self, '_method4_pixmap'):
                 # Try method4.png first, fallback to method3.png if not found
                 image_path = self.get_platform_image_path("method4")
                 self._method4_pixmap = QPixmap(image_path)
                 if self._method4_pixmap.isNull():
-                    silent_print(f"Method 4 image not found, trying fallback to method3.png")
+                    silent_print(f"SP Flash Tool GUI Method image not found, trying fallback to method3.png")
                     # Fallback to method3.png
                     fallback_path = self.get_platform_image_path("method3")
                     self._method4_pixmap = QPixmap(fallback_path)
                     if self._method4_pixmap.isNull():
-                        silent_print(f"Failed to load Method 4 fallback image from {fallback_path}")
+                        silent_print(f"Failed to load SP Flash Tool GUI Method fallback image from {fallback_path}")
                         return
             
             self._current_pixmap = self._method4_pixmap
             self.set_image_with_aspect_ratio(self._method4_pixmap)
         except Exception as e:
-            silent_print(f"Error loading Method 4 image: {e}")
+            silent_print(f"Error loading SP Flash Tool GUI Method image: {e}")
             return
 
     def load_data(self):
@@ -5398,7 +5399,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
                 method2_text = f"Method 2 - SP Flash Tool GUI{seasonal_emoji}" if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
                 method3_text = f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}" if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
-                method4_text = f"Method 4 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 4 - Guided"
+                method4_text = f"SP Flash Tool GUI Method{seasonal_emoji}" if seasonal_emoji else "SP Flash Tool GUI Method"
                 method5_text = f"Method 5 - MTKclient (advanced){seasonal_emoji}" if seasonal_emoji else "Method 5 - MTKclient (advanced)"
                 
                 self.method_combo.addItem(method1_text, "spflash")
@@ -5553,13 +5554,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         icon_label.setContentsMargins(0, 10, 0, 10)  # Add vertical padding
         about_layout.addWidget(icon_label)
         
-        # App name
-        app_name_label = QLabel("Innioasis Updater")
-        app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px;")  # Add 8px top margin
-        app_name_label.setAlignment(Qt.AlignCenter)
-        about_layout.addWidget(app_name_label)
-        
-        # Seasonal message
+        # Determine seasonal message
         if is_christmas_season():
             seasonal_message = "🎄 Merry Christmas! 🎅"
         elif is_halloween_season():
@@ -5581,11 +5576,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             seasonal_message = ""
         
+        # App name - use seasonal message as title if available, otherwise use default title
         if seasonal_message:
-            seasonal_label = QLabel(seasonal_message)
-            seasonal_label.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px 10px; color: #FF6B35;")
-            seasonal_label.setAlignment(Qt.AlignCenter)
-            about_layout.addWidget(seasonal_label)
+            app_name_label = QLabel(seasonal_message)
+            app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px; color: #FF6B35;")  # Use seasonal color
+        else:
+            app_name_label = QLabel("Innioasis Updater")
+            app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px;")  # Default styling
+        app_name_label.setAlignment(Qt.AlignCenter)
+        about_layout.addWidget(app_name_label)
         
         # App description
         desc_label = QLabel("Official Firmware Installer created by Y1 users in collaboration with Innioasis")
@@ -8797,7 +8796,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.try_method_3_console()
             elif method == "guided":
                 # Method 4: Guided process
-                silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 4) ===")
+                silent_print("=== RUNNING GUIDED INSTALLATION (SP FLASH TOOL GUI METHOD) ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
                 self.run_mtk_command_guided()
