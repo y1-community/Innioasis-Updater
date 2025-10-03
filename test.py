@@ -1306,6 +1306,124 @@ class SPFlashToolWorker(QThread):
             self.enable_update_button.emit()
 
 
+class SPFlashToolConsoleWorker(QThread):
+    """Worker thread for running SP Flash Tool command in console mode with real-time output"""
+
+    status_updated = Signal(str)
+    show_installing_image = Signal()
+    show_initsteps_image = Signal()
+    show_installed_image = Signal()
+    show_please_wait_image = Signal()
+    spflash_completed = Signal(bool, str)
+    disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
+    enable_update_button = Signal()   # Signal to enable update button when returning to ready state
+
+    def __init__(self):
+        super().__init__()
+        self.should_stop = False
+        # Set up the flash_tool.exe command in console mode (without GUI arguments)
+        current_dir = Path.cwd()
+        self.spflash_command = [
+            str(current_dir / "flash_tool.exe"),
+            "-i",
+            str(current_dir / "install_rom_sp.xml")
+        ]
+        
+    def stop(self):
+        """Stop the SP Flash Tool console worker"""
+        self.should_stop = True
+
+    def run(self):
+        """Run the SP Flash Tool command in console mode and monitor output"""
+        try:
+            silent_print(f"Starting SP Flash Tool console command: {self.spflash_command}")
+            
+            # Disable update button during installation
+            self.disable_update_button.emit()
+            
+            # Start the flash_tool.exe process in console mode
+            process = subprocess.Popen(
+                self.spflash_command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW  # Run in console mode without GUI
+            )
+            
+            # Track phases for image display
+            please_wait_phase = True
+            installing_phase = False
+            initsteps_shown = False
+            
+            # Monitor output in real-time
+            while True:
+                if self.should_stop:
+                    process.terminate()
+                    break
+                    
+                output = process.stdout.readline()
+                if output == '' and process.poll() is not None:
+                    break
+                    
+                if output:
+                    line = output.strip()
+                    silent_print(f"{line}")
+                    
+                    # Phase detection based on flash_tool.exe output patterns
+                    
+                    # Please wait phase: Show "Please wait..." until "Search usb" is detected
+                    if please_wait_phase and not line.startswith("Search usb"):
+                        # Keep showing please wait image and status
+                        self.show_please_wait_image.emit()
+                        self.status_updated.emit("Please wait...")
+                        continue
+                    
+                    # Transition from please wait to installing phase
+                    if please_wait_phase and line.startswith("Search usb"):
+                        please_wait_phase = False
+                        installing_phase = True
+                        self.show_installing_image.emit()
+                        self.status_updated.emit("Installing firmware...")
+                        continue
+                    
+                    # Installing phase: Show installing image and update status
+                    if installing_phase:
+                        self.show_installing_image.emit()
+                        self.status_updated.emit("Installing firmware...")
+                        
+                        # Show initsteps image after first empty line during installing phase
+                        if not initsteps_shown and line == "":
+                            initsteps_shown = True
+                            self.show_initsteps_image.emit()
+                            self.status_updated.emit("Follow the on-screen instructions...")
+                            continue
+                        
+                        # Check for completion indicators
+                        if "Download OK" in line or "Download completed" in line:
+                            self.show_installed_image.emit()
+                            self.status_updated.emit("Installation completed successfully!")
+                            self.spflash_completed.emit(True, "Installation completed successfully!")
+                            break
+                        elif "Download failed" in line or "Error" in line:
+                            self.spflash_completed.emit(False, f"Installation failed: {line}")
+                            break
+            
+            # Check final return code
+            return_code = process.poll()
+            if return_code == 0:
+                self.show_installed_image.emit()
+                self.status_updated.emit("Installation completed successfully!")
+                self.spflash_completed.emit(True, "Installation completed successfully!")
+            else:
+                self.spflash_completed.emit(False, "Please check that drivers are installed and that you restarted your computer")
+                
+        except Exception as e:
+            silent_print(f"Error running Flash Tool console: {e}")
+            self.spflash_completed.emit(False, f"Error running Flash Tool console: {e}")
+        finally:
+            self.enable_update_button.emit()
+
+
 class MTKWorker(QThread):
     """Worker thread for running MTK command with real-time output"""
 
@@ -2465,14 +2583,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             desktop_path = Path.home() / "Desktop"
             desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
             
-            if not desktop_shortcut.exists():
+            # Force replacement of existing shortcut
+            if desktop_shortcut.exists():
                 try:
-                    shutil.copy2(source_shortcut, desktop_shortcut)
-                    auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
-                    shortcut_type = "regular" if auto_updates_enabled else "skip-update"
-                    silent_print(f"Added Innioasis Updater shortcut to desktop ({shortcut_type})")
+                    desktop_shortcut.unlink()  # Remove existing shortcut
+                    silent_print(f"Removed existing desktop shortcut: Innioasis Updater.lnk")
                 except Exception as e:
-                    silent_print(f"Error adding desktop shortcut: {e}")
+                    silent_print(f"Warning: Could not remove existing desktop shortcut: {e}")
+            
+            try:
+                shutil.copy2(source_shortcut, desktop_shortcut)
+                auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                shortcut_type = "regular" if auto_updates_enabled else "skip-update"
+                silent_print(f"Added Innioasis Updater shortcut to desktop ({shortcut_type})")
+            except Exception as e:
+                silent_print(f"Error adding desktop shortcut: {e}")
             
             # Get comprehensive list of start menu paths
             start_menu_paths = self.get_all_start_menu_paths()
@@ -2480,14 +2605,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
                     start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
-                    if not start_menu_shortcut.exists():
+                    # Force replacement of existing shortcut
+                    if start_menu_shortcut.exists():
                         try:
-                            shutil.copy2(source_shortcut, start_menu_shortcut)
-                            auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
-                            shortcut_type = "regular" if auto_updates_enabled else "skip-update"
-                            silent_print(f"Added Innioasis Updater shortcut to start menu: {start_menu_path} ({shortcut_type})")
+                            start_menu_shortcut.unlink()  # Remove existing shortcut
+                            silent_print(f"Removed existing start menu shortcut: Innioasis Updater.lnk")
                         except Exception as e:
-                            silent_print(f"Error adding start menu shortcut: {e}")
+                            silent_print(f"Warning: Could not remove existing start menu shortcut: {e}")
+                    
+                    try:
+                        shutil.copy2(source_shortcut, start_menu_shortcut)
+                        auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                        shortcut_type = "regular" if auto_updates_enabled else "skip-update"
+                        silent_print(f"Added Innioasis Updater shortcut to start menu: {start_menu_path} ({shortcut_type})")
+                    except Exception as e:
+                        silent_print(f"Error adding start menu shortcut: {e}")
                             
         except Exception as e:
             silent_print(f"Error ensuring Innioasis Updater shortcuts: {e}")
@@ -4122,7 +4254,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setInformativeText(
                 "This method uses the MTKclient library directly for firmware installation.\n\n"
                 "Please follow the on-screen instructions and ensure your device is properly connected.\n\n"
-                "If this method fails, you may need to check your drivers or try Method 3 (SP Flash Tool)."
+                "If this method fails, you may need to check your drivers or try Method 3 (SP Flash Tool Console Mode)."
             )
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec()
@@ -4275,6 +4407,49 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error handling Flash Tool completion: {e}")
 
+    def handle_spflash_console_completion(self, success, message):
+        """Handle SP Flash Tool Console completion"""
+        try:
+            # Show appropriate buttons for SP Flash Tool method
+            self.show_appropriate_buttons_for_spflash()
+            
+            # Show left panel again after installation
+            self.show_left_panel()
+            
+            # Re-enable buttons
+            self.settings_btn.setEnabled(True)
+            if hasattr(self, 'toolkit_btn'):
+                self.toolkit_btn.setEnabled(True)
+            
+            if success:
+                # Show success message and load completion image
+                self.status_label.setText("Your software installation completed successfully")
+                # Load the installed completion image
+                self.load_installed_image()
+                
+                # Show success dialog
+                QMessageBox.information(
+                    self,
+                    "Installation Complete",
+                    "Your installation has completed successfully!\n\n"
+                    "Please disconnect your Y1 and hold the middle button to turn it on."
+                )
+            else:
+                # Show error message and revert to startup state
+                self.status_label.setText(f"Flash Tool Console installation failed: {message}")
+                self.load_startup_image()
+                
+                # Show error dialog
+                QMessageBox.critical(
+                    self,
+                    "Installation Failed",
+                    f"Flash Tool Console installation failed:\n\n{message}\n\n"
+                    "Please check that drivers are installed and that you restarted your computer."
+                )
+                
+        except Exception as e:
+            silent_print(f"Error handling Flash Tool Console completion: {e}")
+
     def try_method_4(self):
         """Try Method 4 - SP Flash Tool Alternative (Windows only)"""
         try:
@@ -4313,6 +4488,94 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error showing Method 4 instructions: {e}")
             # Show appropriate buttons again in case of error
             self.show_appropriate_buttons_for_spflash()
+
+    def try_method_3_console(self):
+        """Try Method 3 - SP Flash Tool Console Mode (Windows only)"""
+        try:
+            if platform.system() != "Windows":
+                QMessageBox.warning(
+                    self,
+                    "Method 3 Not Available",
+                    "Method 3 (SP Flash Tool Console Mode) is only available on Windows."
+                )
+                return
+            
+            # No need to check for shortcut since we're using flash_tool.exe directly
+            
+            # Load please wait image initially
+            self.load_please_wait_image()
+            
+            # Show dialog with Method 3 Console Mode instructions
+            reply = QMessageBox.question(
+                self,
+                "Software Install instructions",
+                "Power off your Y1:\n"
+                "Make sure is NOT connected then, Press OK.\n\n"
+                "Then follow the on screen instructions...\n\n"
+                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
+                "This method runs SP Flash Tool in console mode without GUI arguments.",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Ok
+            )
+            
+            if reply == QMessageBox.Cancel:
+                # Show appropriate buttons again when cancelled
+                self.show_appropriate_buttons_for_spflash()
+                # Show left panel again when cancelled
+                self.show_left_panel()
+                return
+            
+            # No need to stop MTK processes since Method 3 uses flash_tool.exe directly
+            
+            # Check if flash_tool.exe and install_rom_sp.xml exist
+            current_dir = Path.cwd()
+            flash_tool_exe = current_dir / "flash_tool.exe"
+            install_rom_xml = current_dir / "install_rom_sp.xml"
+            
+            if not flash_tool_exe.exists():
+                # Show appropriate buttons again when flash tool is missing
+                self.show_appropriate_buttons_for_spflash()
+                # Show left panel again when flash tool is missing
+                self.show_left_panel()
+                QMessageBox.critical(
+                    self,
+                    "Flash Tool Not Found",
+                    "flash_tool.exe not found. Please ensure it's properly installed."
+                )
+                return
+                
+            if not install_rom_xml.exists():
+                # Show appropriate buttons again when XML is missing
+                self.show_appropriate_buttons_for_spflash()
+                # Show left panel again when XML is missing
+                self.show_left_panel()
+                QMessageBox.critical(
+                    self,
+                    "Installation File Not Found",
+                    "install_rom_sp.xml not found. Please ensure it's properly installed."
+                )
+                return
+            
+            # Start the SP Flash Tool Console worker
+            self.spflash_console_worker = SPFlashToolConsoleWorker()
+            self.spflash_console_worker.status_updated.connect(self.update_status)
+            self.spflash_console_worker.show_installing_image.connect(self.load_installing_image)
+            self.spflash_console_worker.show_initsteps_image.connect(self.load_method3_image)
+            self.spflash_console_worker.show_installed_image.connect(self.load_installed_image)
+            self.spflash_console_worker.show_please_wait_image.connect(self.load_please_wait_image)
+            self.spflash_console_worker.spflash_completed.connect(self.handle_spflash_console_completion)
+            self.spflash_console_worker.disable_update_button.connect(self.disable_update_button)
+            self.spflash_console_worker.enable_update_button.connect(self.enable_update_button)
+            
+            # Start the worker
+            self.spflash_console_worker.start()
+            
+        except Exception as e:
+            silent_print(f"Error starting Method 3 Console Mode: {e}")
+            # Show appropriate buttons again in case of error
+            self.show_appropriate_buttons_for_spflash()
+            # Show left panel again in case of error
+            self.show_left_panel()
 
     def load_method2_image(self):
         """Load Method 2 troubleshooting image"""
@@ -4817,16 +5080,18 @@ class FirmwareDownloaderGUI(QMainWindow):
             if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
                 # Both drivers available: All methods (Windows order: SP Flash Tool first, then Guided/MTKclient)
                 self.method_combo.addItem("Method 1 - Guided", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash (advanced)", "spflash4")
-                self.method_combo.addItem("Method 3 - Guided", "guided")
-                self.method_combo.addItem("Method 4 - MTKclient (advanced)", "mtkclient")
+                self.method_combo.addItem("Method 2 - SP Flash Tool GUI", "spflash4")
+                self.method_combo.addItem("Method 3 - SP Flash Tool Console Mode", "spflash_console")
+                self.method_combo.addItem("Method 4 - Guided", "guided")
+                self.method_combo.addItem("Method 5 - MTKclient (advanced)", "mtkclient")
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: Only Method 1 and 2 (SP Flash Tool methods)
+                # Only MTK driver: Only Method 1, 2, and 3 (SP Flash Tool methods)
                 self.method_combo.addItem("Method 1 - Guided (Only available method)", "spflash")
-                self.method_combo.addItem("Method 2 - SP Flash (advanced)", "spflash4")
+                self.method_combo.addItem("Method 2 - SP Flash Tool GUI", "spflash4")
+                self.method_combo.addItem("Method 3 - SP Flash Tool Console Mode", "spflash_console")
             elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                # Only UsbDk driver: Only Method 4 (MTKclient)
-                self.method_combo.addItem("Method 4 - MTKclient (advanced) (Only available method)", "mtkclient")
+                # Only UsbDk driver: Only Method 5 (MTKclient)
+                self.method_combo.addItem("Method 5 - MTKclient (advanced) (Only available method)", "mtkclient")
             else:
                 # No drivers: No methods
                 self.method_combo.addItem("No installation methods available", "")
@@ -5491,15 +5756,20 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Check if auto-updates are enabled
         auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+        silent_print(f"Getting shortcut source - Auto-updates enabled: {auto_updates_enabled}")
         
         if auto_updates_enabled:
             # Auto-updates enabled: use regular Innioasis Updater.lnk
             source_shortcut = current_dir / "Innioasis Updater.lnk"
+            silent_print(f"Looking for regular shortcut: {source_shortcut}")
         else:
             # Auto-updates disabled: use Skip Update and Launch.lnk
-            source_shortcut = current_dir / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk"
+            source_shortcut = current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Skip Update and Launch.lnk"
+            silent_print(f"Looking for skip-update shortcut: {source_shortcut}")
         
-        return source_shortcut if source_shortcut.exists() else None
+        exists = source_shortcut.exists()
+        silent_print(f"Shortcut source exists: {exists}")
+        return source_shortcut if exists else None
 
     def update_shortcuts_for_auto_updates(self):
         """Update shortcuts when auto-updates setting changes (Windows only)"""
@@ -5509,18 +5779,68 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             # Update the auto-updates setting from the checkbox
             self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
+            silent_print(f"Auto-updates setting changed to: {self.auto_utility_updates_enabled}")
+            
+            # Check what source shortcut will be used
+            source_shortcut = self.get_appropriate_shortcut_source()
+            if source_shortcut:
+                silent_print(f"Will use shortcut source: {source_shortcut}")
+            else:
+                silent_print("Warning: No appropriate shortcut source found")
             
             # Only update shortcuts if they are enabled in user preferences
-            if getattr(self, 'desktop_shortcuts_enabled', True):
+            desktop_enabled = getattr(self, 'desktop_shortcuts_enabled', True)
+            startmenu_enabled = getattr(self, 'startmenu_shortcuts_enabled', True)
+            silent_print(f"Shortcut preferences - Desktop: {desktop_enabled}, Start Menu: {startmenu_enabled}")
+            
+            if desktop_enabled:
                 self.ensure_desktop_shortcuts()
                 silent_print("Desktop shortcuts updated for auto-updates setting change")
                 
-            if getattr(self, 'startmenu_shortcuts_enabled', True):
+            if startmenu_enabled:
                 self.ensure_startmenu_shortcuts()
                 silent_print("Start menu shortcuts updated for auto-updates setting change")
                 
         except Exception as e:
             silent_print(f"Error updating shortcuts for auto-updates: {e}")
+            import traceback
+            silent_print(f"Full error traceback: {traceback.format_exc()}")
+
+    def test_shortcut_replacement(self):
+        """Test method to manually trigger shortcut replacement (for debugging)"""
+        if platform.system() != "Windows":
+            silent_print("Shortcut replacement test only available on Windows")
+            return
+            
+        try:
+            silent_print("=== Testing Shortcut Replacement ===")
+            
+            # Test getting appropriate source
+            source = self.get_appropriate_shortcut_source()
+            if source:
+                silent_print(f"Current source shortcut: {source}")
+            else:
+                silent_print("No source shortcut found")
+            
+            # Test desktop shortcut replacement
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
+            silent_print(f"Desktop shortcut exists: {desktop_shortcut.exists()}")
+            
+            # Test start menu shortcuts
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    if start_menu_shortcut.exists():
+                        silent_print(f"Start menu shortcut exists at: {start_menu_shortcut}")
+            
+            silent_print("=== End Shortcut Replacement Test ===")
+            
+        except Exception as e:
+            silent_print(f"Error during shortcut replacement test: {e}")
+            import traceback
+            silent_print(f"Full error traceback: {traceback.format_exc()}")
 
     def ensure_desktop_shortcuts(self):
         """Ensure desktop shortcuts exist - uses appropriate shortcut based on auto-updates setting"""
@@ -5536,7 +5856,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             source_shortcut = self.get_appropriate_shortcut_source()
             if source_shortcut:
                 dest_shortcut = desktop_path / "Innioasis Updater.lnk"
-                # Always copy to ensure it's up to date
+                # Force replacement of existing shortcut
+                if dest_shortcut.exists():
+                    try:
+                        dest_shortcut.unlink()  # Remove existing shortcut
+                        silent_print(f"Removed existing desktop shortcut: Innioasis Updater.lnk")
+                    except Exception as e:
+                        silent_print(f"Warning: Could not remove existing shortcut: {e}")
+                
+                # Copy the new shortcut
                 shutil.copy2(source_shortcut, dest_shortcut)
                 auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
                 shortcut_type = "regular" if auto_updates_enabled else "skip-update"
@@ -5586,7 +5914,15 @@ class FirmwareDownloaderGUI(QMainWindow):
                     source_shortcut = self.get_appropriate_shortcut_source()
                     if source_shortcut:
                         dest_shortcut = start_menu_path / "Innioasis Updater.lnk"
-                        # Always copy to ensure it's up to date
+                        # Force replacement of existing shortcut
+                        if dest_shortcut.exists():
+                            try:
+                                dest_shortcut.unlink()  # Remove existing shortcut
+                                silent_print(f"Removed existing start menu shortcut: Innioasis Updater.lnk")
+                            except Exception as e:
+                                silent_print(f"Warning: Could not remove existing shortcut: {e}")
+                        
+                        # Copy the new shortcut
                         shutil.copy2(source_shortcut, dest_shortcut)
                         auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
                         shortcut_type = "regular" if auto_updates_enabled else "skip-update"
@@ -7961,20 +8297,26 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.load_method3_image()
                 self.try_method_3()
             elif method == "spflash4":
-                # Method 2: SP Flash (advanced) - same as pressing "Try Method 4" in troubleshooting
-                silent_print("=== RUNNING SP FLASH (ADVANCED) METHOD 2 ===")
+                # Method 2: SP Flash Tool GUI - same as pressing "Try Method 4" in troubleshooting
+                silent_print("=== RUNNING SP FLASH TOOL GUI METHOD 2 ===")
                 # Show Method 4 image and launch SP Flash Tool Alternative
                 self.load_method4_image()
                 self.try_method_4()
+            elif method == "spflash_console":
+                # Method 3: SP Flash Tool Console Mode - runs without GUI arguments
+                silent_print("=== RUNNING SP FLASH TOOL CONSOLE MODE METHOD 3 ===")
+                # Show Method 3 image and launch SP Flash Tool Console Mode
+                self.load_method3_image()
+                self.try_method_3_console()
             elif method == "guided":
-                # Method 3: Guided process
-                silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 3) ===")
+                # Method 4: Guided process
+                silent_print("=== RUNNING GUIDED INSTALLATION (METHOD 4) ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print("Please turn off your Y1 when prompted.")
                 self.run_mtk_command_guided()
             elif method == "mtkclient":
-                # Method 4: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
-                silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 4 ===")
+                # Method 5: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
+                silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 5 ===")
                 # Show Method 2 image and launch recovery firmware install
                 self.load_method2_image()
                 self.show_troubleshooting_instructions()
@@ -8458,7 +8800,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                           "3. INSERT Paperclip again\n"
                           "4. WAIT for install to finish then disconnect your Y1\n"
                           "5. HOLD middle button to restart\n\n"
-                          "This method shows technical installation details. If it fails, try Method 3.")
+                          "This method shows technical installation details. If it fails, try Method 3 (SP Flash Tool Console Mode).")
         else:
             # Non-Windows baseline Method 2 instructions
             instructions = ("We'll now take you to Terminal to show you what's happening under the hood:\n\n"
@@ -8874,9 +9216,9 @@ read -n 1
             can_install_firmware = False
         
         # Summary of driver combinations:
-        # - Both drivers: All 4 methods available (SP Flash Tool first, then Guided/MTKclient)
-        # - MTK only: Method 1 and 2 (Guided and SP Flash advanced) only
-        # - UsbDk only: Method 4 (MTKclient advanced) only  
+        # - Both drivers: All 5 methods available (SP Flash Tool first, then Guided/MTKclient)
+        # - MTK only: Method 1, 2, and 3 (Guided, SP Flash GUI, and SP Flash Console) only
+        # - UsbDk only: Method 5 (MTKclient advanced) only  
         # - No drivers: No methods available
         # - ARM64: No methods available (firmware download only)
         
