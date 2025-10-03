@@ -4786,8 +4786,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.information(
                     self,
                     "SP Flash Tool GUI Launched",
-                    "SP Flash Tool GUI has been launched successfully.\n\n"
-                    "Please follow the instructions in the SP Flash Tool window to complete the installation."
+                    "Your downloaded ROM is loaded into SP Flash Tool's GUI\n\n"
+                    "Make sure you power off your Y1 before proceeding."
                 )
                 
                 # Revert to ready and presteps.png state after successful launch
