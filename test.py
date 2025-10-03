@@ -1604,13 +1604,13 @@ class SPFlashToolConsoleWorker(QThread):
             # Disable update button during installation
             self.disable_update_button.emit()
             
-            # Start the flash_tool.exe process in console mode
+            # Start the flash_tool.exe process in console mode with visible window
             process = subprocess.Popen(
                 self.spflash_command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                text=True,
-                creationflags=subprocess.CREATE_NO_WINDOW  # Run in console mode without GUI
+                text=True
+                # No CREATE_NO_WINDOW flag - let the console window be visible for Method 3
             )
             
             # Track phases for image display
@@ -4810,7 +4810,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             )
 
     def try_method_3_console(self):
-        """Try Method 3 - SP Flash Tool Console Mode (Windows only)"""
+        """Try Method 3 - SP Flash Tool Console Mode (Windows only) - Launches command in visible console window"""
         try:
             if platform.system() != "Windows":
                 QMessageBox.warning(
@@ -4820,43 +4820,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
             
-            # No need to check for shortcut since we're using flash_tool.exe directly
-            
-            # Load please wait image initially
-            self.load_please_wait_image()
-            
-            # Show dialog with Method 3 Console Mode instructions
-            reply = QMessageBox.question(
-                self,
-                "Software Install instructions",
-                "Power off your Y1:\n"
-                "Make sure is NOT connected then, Press OK.\n\n"
-                "Then follow the on screen instructions...\n\n"
-                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
-                "This method runs SP Flash Tool in console mode without GUI arguments.",
-                QMessageBox.Ok | QMessageBox.Cancel,
-                QMessageBox.Ok
-            )
-            
-            if reply == QMessageBox.Cancel:
-                # Show appropriate buttons again when cancelled
-                self.show_appropriate_buttons_for_spflash()
-                # Show left panel again when cancelled
-                self.show_left_panel()
-                return
-            
-            # No need to stop MTK processes since Method 3 uses flash_tool.exe directly
-            
             # Check if flash_tool.exe and install_rom_sp.xml exist
             current_dir = Path.cwd()
             flash_tool_exe = current_dir / "flash_tool.exe"
             install_rom_xml = current_dir / "install_rom_sp.xml"
             
             if not flash_tool_exe.exists():
-                # Show appropriate buttons again when flash tool is missing
-                self.show_appropriate_buttons_for_spflash()
-                # Show left panel again when flash tool is missing
-                self.show_left_panel()
                 QMessageBox.critical(
                     self,
                     "Flash Tool Not Found",
@@ -4865,10 +4834,6 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return
                 
             if not install_rom_xml.exists():
-                # Show appropriate buttons again when XML is missing
-                self.show_appropriate_buttons_for_spflash()
-                # Show left panel again when XML is missing
-                self.show_left_panel()
                 QMessageBox.critical(
                     self,
                     "Installation File Not Found",
@@ -4876,26 +4841,56 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
             
-            # Start the SP Flash Tool Console worker
-            self.spflash_console_worker = SPFlashToolConsoleWorker()
-            self.spflash_console_worker.status_updated.connect(self.update_status)
-            self.spflash_console_worker.show_installing_image.connect(self.load_installing_image)
-            self.spflash_console_worker.show_initsteps_image.connect(self.load_method3_image)
-            self.spflash_console_worker.show_installed_image.connect(self.load_installed_image)
-            self.spflash_console_worker.show_please_wait_image.connect(self.load_please_wait_image)
-            self.spflash_console_worker.spflash_completed.connect(self.handle_spflash_console_completion)
-            self.spflash_console_worker.disable_update_button.connect(self.disable_update_button)
-            self.spflash_console_worker.enable_update_button.connect(self.enable_update_button)
+            # Show dialog with Method 3 Console Mode instructions
+            reply = QMessageBox.question(
+                self,
+                "SP Flash Tool Console Mode",
+                "SP Flash Tool Console Mode will now launch in a command window.\n\n"
+                "Power off your Y1:\n"
+                "Make sure is NOT connected then, Press OK.\n\n"
+                "The command window will show the installation progress.\n\n"
+                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
+                "This method runs: flash_tool.exe -i install_rom_sp.xml",
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Ok
+            )
             
-            # Start the worker
-            self.spflash_console_worker.start()
+            if reply == QMessageBox.Cancel:
+                return
+            
+            # Launch SP Flash Tool in console mode with visible window
+            try:
+                # Use cmd /k to keep the console window open and visible
+                cmd_command = f'cmd /k "cd /d "{current_dir}" && flash_tool.exe -i install_rom_sp.xml"'
+                subprocess.Popen(cmd_command, shell=True)
+                silent_print(f"Launched SP Flash Tool Console Mode: {cmd_command}")
+                
+                # Show success message
+                QMessageBox.information(
+                    self,
+                    "SP Flash Tool Console Mode Launched",
+                    "SP Flash Tool Console Mode has been launched in a command window.\n\n"
+                    "Please follow the instructions in the command window to complete the installation."
+                )
+                
+                # Revert to ready and presteps.png state after successful launch
+                self.revert_to_startup_state()
+                
+            except Exception as e:
+                silent_print(f"Error launching SP Flash Tool Console Mode: {e}")
+                QMessageBox.critical(
+                    self,
+                    "Launch Error",
+                    f"Failed to launch SP Flash Tool Console Mode:\n\n{e}"
+                )
             
         except Exception as e:
-            silent_print(f"Error starting Method 3 Console Mode: {e}")
-            # Show appropriate buttons again in case of error
-            self.show_appropriate_buttons_for_spflash()
-            # Show left panel again in case of error
-            self.show_left_panel()
+            silent_print(f"Error in SP Flash Tool Console Mode method: {e}")
+            QMessageBox.critical(
+                self,
+                "Error",
+                f"An error occurred: {e}"
+            )
 
     def load_method2_image(self):
         """Load Method 2 troubleshooting image"""
