@@ -5819,6 +5819,14 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if not self.show_no_shortcuts_warning():
                     return  # Don't save settings if user cancels
             
+            # Check if user has only toolkit shortcuts (no direct updater shortcuts) and show helpful dialog
+            has_direct_updater_shortcuts = (self.desktop_updater_enabled or self.startmenu_updater_enabled)
+            has_toolkit_shortcuts = (self.desktop_toolkit_enabled or self.startmenu_toolkit_enabled)
+            
+            if has_toolkit_shortcuts and not has_direct_updater_shortcuts:
+                # User has toolkit shortcuts but no direct updater shortcuts - show helpful dialog
+                self.show_toolkit_only_help_dialog()
+            
             # Ensure Skip Update shortcut exists if auto-updates are disabled
             if not self.auto_utility_updates_enabled:
                 if not self.ensure_skip_update_shortcut_exists():
@@ -5878,7 +5886,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     'desktop_updater_enabled': getattr(self, 'desktop_updater_enabled', True),
                     'desktop_toolkit_enabled': getattr(self, 'desktop_toolkit_enabled', False),  # Default: Desktop Updater only
                     'startmenu_updater_enabled': getattr(self, 'startmenu_updater_enabled', True),
-                    'startmenu_toolkit_enabled': getattr(self, 'startmenu_toolkit_enabled', True)  # Default: Start Menu Updater + Toolkit
+                    'startmenu_toolkit_enabled': getattr(self, 'startmenu_toolkit_enabled', True),  # Default: Start Menu Updater + Toolkit
+                    'toolkit_help_dialog_shown': getattr(self, '_toolkit_help_dialog_shown', False)
                     # auto_cleanup_enabled is always True and not saved to preferences
                 })
             
@@ -5922,6 +5931,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self.startmenu_updater_enabled = preferences['startmenu_updater_enabled']
                     if 'startmenu_toolkit_enabled' in preferences:
                         self.startmenu_toolkit_enabled = preferences['startmenu_toolkit_enabled']
+                    if 'toolkit_help_dialog_shown' in preferences:
+                        self._toolkit_help_dialog_shown = preferences['toolkit_help_dialog_shown']
                     # auto_cleanup_enabled is always True and not loaded from preferences
                 
                 # Load auto-update preferences (all platforms)
@@ -6643,8 +6654,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if has_toolkit_shortcuts and not has_direct_updater_shortcuts:
                 # User has toolkit shortcuts but no direct updater shortcuts
-                # Show helpful dialog and ensure updater shortcut is in Toolkit directory
-                self.show_toolkit_only_help_dialog()
+                # Ensure updater shortcut is in Toolkit directory (dialog will show on save)
                 self.ensure_toolkit_updater_shortcut()
             elif has_direct_updater_shortcuts:
                 # User has direct updater shortcuts, remove from Toolkit directory
@@ -6654,18 +6664,31 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error checking and managing toolkit updater shortcut: {e}")
     
     def show_toolkit_only_help_dialog(self):
-        """Show helpful dialog for users with only Toolkit shortcuts"""
+        """Show helpful dialog for users with only Toolkit shortcuts (one time only)"""
         try:
+            # Check if we've already shown this dialog
+            if hasattr(self, '_toolkit_help_dialog_shown') and self._toolkit_help_dialog_shown:
+                return  # Already shown, don't show again
+            
+            # Determine which Toolkit shortcuts the user has enabled
+            toolkit_locations = []
+            if getattr(self, 'desktop_toolkit_enabled', False):
+                toolkit_locations.append("Desktop")
+            if getattr(self, 'startmenu_toolkit_enabled', True):
+                toolkit_locations.append("Start Menu")
+            
+            location_text = " and ".join(toolkit_locations)
+            
             msg_box = QMessageBox(self)
-            msg_box.setWindowTitle("Toolkit Shortcut Information")
+            msg_box.setWindowTitle("Toolkit Shortcut")
             msg_box.setIcon(QMessageBox.Information)
-            msg_box.setText("You can continue to launch Innioasis Updater from the Toolkit shortcut you have selected.")
-            msg_box.setInformativeText(
-                "Since you don't have direct Updater shortcuts enabled, the app will automatically place "
-                "an Innioasis Updater shortcut in the Toolkit directory for easy access."
-            )
+            msg_box.setText(f"You can launch Updater as normal from Innioasis Toolkit ({location_text}).")
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.exec()
+            
+            # Mark as shown so it won't appear again
+            self._toolkit_help_dialog_shown = True
+            
         except Exception as e:
             silent_print(f"Error showing toolkit help dialog: {e}")
     
