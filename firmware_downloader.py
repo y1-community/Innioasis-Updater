@@ -6001,6 +6001,24 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Detected shortcuts - Desktop Updater: {desktop_updater_exists}, Desktop Toolkit: {desktop_toolkit_exists}, Start Menu Updater: {startmenu_updater_exists}, Start Menu Toolkit: {startmenu_toolkit_exists}")
             silent_print(f"Auto-updates setting: {self.auto_utility_updates_enabled}")
             
+            # Create or delete .no_updates file based on detected setting
+            no_updates_file = Path(".no_updates")
+            if self.auto_utility_updates_enabled:
+                # Automatic updates enabled - delete .no_updates file if it exists
+                if no_updates_file.exists():
+                    try:
+                        no_updates_file.unlink()
+                        silent_print("Deleted .no_updates file - automatic updates enabled")
+                    except Exception as e:
+                        silent_print(f"Could not delete .no_updates file: {e}")
+            else:
+                # Automatic updates disabled - create .no_updates file
+                try:
+                    no_updates_file.write_text("Automatic utility updates disabled by user")
+                    silent_print("Created .no_updates file - automatic updates disabled")
+                except Exception as e:
+                    silent_print(f"Could not create .no_updates file: {e}")
+            
             # Save the detected preferences so they persist
             self.save_installation_preferences()
             silent_print("Saved detected preferences to file")
@@ -6255,6 +6273,24 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Update the auto-updates setting from the checkbox
             self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
             silent_print(f"Auto-updates setting changed to: {self.auto_utility_updates_enabled}")
+            
+            # Create or delete .no_updates file based on setting
+            no_updates_file = Path(".no_updates")
+            if self.auto_utility_updates_enabled:
+                # Automatic updates enabled - delete .no_updates file if it exists
+                if no_updates_file.exists():
+                    try:
+                        no_updates_file.unlink()
+                        silent_print("Deleted .no_updates file - automatic updates enabled")
+                    except Exception as e:
+                        silent_print(f"Could not delete .no_updates file: {e}")
+            else:
+                # Automatic updates disabled - create .no_updates file
+                try:
+                    no_updates_file.write_text("Automatic utility updates disabled by user")
+                    silent_print("Created .no_updates file - automatic updates disabled")
+                except Exception as e:
+                    silent_print(f"Could not create .no_updates file: {e}")
             
             # Ensure the Skip Update shortcut exists if auto-updates are disabled
             if not self.auto_utility_updates_enabled:
