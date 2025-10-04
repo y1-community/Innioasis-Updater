@@ -178,6 +178,10 @@ run_full_setup() {
     
     # Create version file to prevent first-time dialog
     echo "1.6.1" > "$APP_DIR/.version"
+    
+    # Create .no_updates file for new users to decide on automatic updates
+    echo "Automatic utility updates disabled by default for new users" > "$APP_DIR/.no_updates"
+    log_message "Created .no_updates file - new users can enable automatic updates in the app settings"
 
     # --- 5. Setup Python Virtual Environment ---
     step_echo "Setting up Python environment..."
@@ -210,10 +214,6 @@ run_full_setup() {
     step_echo "Finalizing setup..."
     touch "$COMPLETION_MARKER"
     
-    # Create .no_updates file for new users to decide on automatic updates
-    echo "Automatic utility updates disabled by default for new users" > "$APP_DIR/.no_updates"
-    log_message "Created .no_updates file - new users can enable automatic updates in the app settings"
-    
     echo
     echo "=========================================="
     success_echo "  Setup Complete!"
@@ -232,16 +232,16 @@ if [ -f "$COMPLETION_MARKER" ]; then
     # --- FAST PATH: Setup is complete, run the app silently ---
     cd "$APP_DIR"
     source "$VENV_DIR/bin/activate"
-    nohup python3 "$PYTHON_SCRIPT" >/dev/null 2>&1 &
+    nohup python3 "$APP_DIR/firmware_downloader.py" >/dev/null 2>&1 &
     exit 0
 else
     # --- FIRST RUN: Setup is needed ---
     run_full_setup
     
     # After setup, launch the app for the first time.
-    log_message "Launching the application..."
+    log_message "Launching firmware_downloader.py..."
     cd "$APP_DIR"
     source "$VENV_DIR/bin/activate"
-    nohup python3 "$PYTHON_SCRIPT" >/dev/null 2>&1 &
+    nohup python3 "$APP_DIR/firmware_downloader.py" >/dev/null 2>&1 &
     exit 0
 fi
