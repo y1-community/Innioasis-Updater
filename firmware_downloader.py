@@ -5382,16 +5382,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             desktop_group = QGroupBox("Desktop Shortcuts")
             desktop_layout = QVBoxLayout(desktop_group)
             
-            self.desktop_updater_checkbox = QCheckBox("Innioasis Updater")
+            self.desktop_updater_checkbox = QCheckBox("Updater")
             self.desktop_updater_checkbox.setToolTip("Create Innioasis Updater shortcut on desktop")
             desktop_updater = getattr(self, 'desktop_updater_enabled', True)
             self.desktop_updater_checkbox.setChecked(desktop_updater)
             self.desktop_updater_checkbox.toggled.connect(self.on_desktop_updater_toggled)
             desktop_layout.addWidget(self.desktop_updater_checkbox)
             
-            self.desktop_toolkit_checkbox = QCheckBox("Innioasis Toolkit")
+            self.desktop_toolkit_checkbox = QCheckBox("Toolkit")
             self.desktop_toolkit_checkbox.setToolTip("Create Innioasis Toolkit shortcut on desktop")
-            desktop_toolkit = getattr(self, 'desktop_toolkit_enabled', True)
+            desktop_toolkit = getattr(self, 'desktop_toolkit_enabled', False)  # Default to False for desktop
             self.desktop_toolkit_checkbox.setChecked(desktop_toolkit)
             self.desktop_toolkit_checkbox.toggled.connect(self.on_desktop_toolkit_toggled)
             desktop_layout.addWidget(self.desktop_toolkit_checkbox)
@@ -5402,14 +5402,14 @@ class FirmwareDownloaderGUI(QMainWindow):
             startmenu_group = QGroupBox("Start Menu Shortcuts")
             startmenu_layout = QVBoxLayout(startmenu_group)
             
-            self.startmenu_updater_checkbox = QCheckBox("Innioasis Updater")
+            self.startmenu_updater_checkbox = QCheckBox("Updater")
             self.startmenu_updater_checkbox.setToolTip("Create Innioasis Updater shortcut in start menu")
             startmenu_updater = getattr(self, 'startmenu_updater_enabled', True)
             self.startmenu_updater_checkbox.setChecked(startmenu_updater)
             self.startmenu_updater_checkbox.toggled.connect(self.on_startmenu_updater_toggled)
             startmenu_layout.addWidget(self.startmenu_updater_checkbox)
             
-            self.startmenu_toolkit_checkbox = QCheckBox("Innioasis Toolkit")
+            self.startmenu_toolkit_checkbox = QCheckBox("Toolkit")
             self.startmenu_toolkit_checkbox.setToolTip("Create Innioasis Toolkit shortcut in start menu")
             startmenu_toolkit = getattr(self, 'startmenu_toolkit_enabled', True)
             self.startmenu_toolkit_checkbox.setChecked(startmenu_toolkit)
@@ -5876,9 +5876,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             if platform.system() == "Windows":
                 preferences.update({
                     'desktop_updater_enabled': getattr(self, 'desktop_updater_enabled', True),
-                    'desktop_toolkit_enabled': getattr(self, 'desktop_toolkit_enabled', True),
+                    'desktop_toolkit_enabled': getattr(self, 'desktop_toolkit_enabled', False),  # Default: Desktop Updater only
                     'startmenu_updater_enabled': getattr(self, 'startmenu_updater_enabled', True),
-                    'startmenu_toolkit_enabled': getattr(self, 'startmenu_toolkit_enabled', True)
+                    'startmenu_toolkit_enabled': getattr(self, 'startmenu_toolkit_enabled', True)  # Default: Start Menu Updater + Toolkit
                     # auto_cleanup_enabled is always True and not saved to preferences
                 })
             
@@ -5961,6 +5961,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.ensure_startmenu_toolkit_shortcut()
             else:
                 self.remove_startmenu_toolkit_shortcut()
+            
+            # Check and manage toolkit updater shortcut based on current settings
+            self.check_and_manage_toolkit_updater_shortcut()
                 
         except Exception as e:
             silent_print(f"Error applying shortcut settings: {e}")
@@ -6460,6 +6463,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             shutil.copy2(source_shortcut, dest_shortcut)
             silent_print(f"Created desktop Innioasis Toolkit shortcut")
             
+            # Also ensure Innioasis Updater.lnk is in Toolkit directory for app launching
+            self.ensure_toolkit_updater_shortcut()
+            
         except Exception as e:
             silent_print(f"Error ensuring desktop toolkit shortcut: {e}")
     
@@ -6546,6 +6552,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     silent_print(f"Created start menu Innioasis Toolkit shortcut: {start_menu_path}")
                     break  # Only create in first available start menu path
             
+            # Also ensure Innioasis Updater.lnk is in Toolkit directory for app launching
+            self.ensure_toolkit_updater_shortcut()
+            
         except Exception as e:
             silent_print(f"Error ensuring start menu toolkit shortcut: {e}")
     
@@ -6564,6 +6573,101 @@ class FirmwareDownloaderGUI(QMainWindow):
                         silent_print(f"Removed start menu Innioasis Toolkit shortcut: {start_menu_path}")
         except Exception as e:
             silent_print(f"Error removing start menu toolkit shortcut: {e}")
+    
+    def ensure_toolkit_updater_shortcut(self):
+        """Ensure Innioasis Updater.lnk exists in Toolkit directory for app launching"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            current_dir = Path.cwd()
+            toolkit_dir = current_dir / "Toolkit"
+            
+            # Only proceed if Toolkit directory exists
+            if not toolkit_dir.exists():
+                silent_print("Toolkit directory not found - skipping updater shortcut placement")
+                return
+            
+            # Get the appropriate source shortcut (handles Skip Update vs regular)
+            source_shortcut = self.get_appropriate_shortcut_source()
+            if not source_shortcut or not source_shortcut.exists():
+                silent_print("Innioasis Updater shortcut source not found for Toolkit directory")
+                return
+            
+            # Place the shortcut in Toolkit directory
+            toolkit_updater_shortcut = toolkit_dir / "Innioasis Updater.lnk"
+            
+            # Remove existing shortcut first
+            if toolkit_updater_shortcut.exists():
+                toolkit_updater_shortcut.unlink()
+            
+            shutil.copy2(source_shortcut, toolkit_updater_shortcut)
+            silent_print(f"Placed Innioasis Updater.lnk in Toolkit directory for app launching")
+            
+        except Exception as e:
+            silent_print(f"Error ensuring toolkit updater shortcut: {e}")
+    
+    def remove_toolkit_updater_shortcut(self):
+        """Remove Innioasis Updater.lnk from Toolkit directory"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            current_dir = Path.cwd()
+            toolkit_dir = current_dir / "Toolkit"
+            
+            if not toolkit_dir.exists():
+                return  # Toolkit directory doesn't exist, nothing to remove
+            
+            toolkit_updater_shortcut = toolkit_dir / "Innioasis Updater.lnk"
+            if toolkit_updater_shortcut.exists():
+                toolkit_updater_shortcut.unlink()
+                silent_print(f"Removed Innioasis Updater.lnk from Toolkit directory")
+            
+        except Exception as e:
+            silent_print(f"Error removing toolkit updater shortcut: {e}")
+    
+    def check_and_manage_toolkit_updater_shortcut(self):
+        """Check if we need to add/remove updater shortcut from Toolkit directory based on current settings"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            # Check if user has any direct updater shortcuts enabled
+            has_direct_updater_shortcuts = (getattr(self, 'desktop_updater_enabled', True) or 
+                                          getattr(self, 'startmenu_updater_enabled', True))
+            
+            # Check if user has any toolkit shortcuts enabled
+            has_toolkit_shortcuts = (getattr(self, 'desktop_toolkit_enabled', False) or 
+                                   getattr(self, 'startmenu_toolkit_enabled', True))
+            
+            if has_toolkit_shortcuts and not has_direct_updater_shortcuts:
+                # User has toolkit shortcuts but no direct updater shortcuts
+                # Show helpful dialog and ensure updater shortcut is in Toolkit directory
+                self.show_toolkit_only_help_dialog()
+                self.ensure_toolkit_updater_shortcut()
+            elif has_direct_updater_shortcuts:
+                # User has direct updater shortcuts, remove from Toolkit directory
+                self.remove_toolkit_updater_shortcut()
+            
+        except Exception as e:
+            silent_print(f"Error checking and managing toolkit updater shortcut: {e}")
+    
+    def show_toolkit_only_help_dialog(self):
+        """Show helpful dialog for users with only Toolkit shortcuts"""
+        try:
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Toolkit Shortcut Information")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText("You can continue to launch Innioasis Updater from the Toolkit shortcut you have selected.")
+            msg_box.setInformativeText(
+                "Since you don't have direct Updater shortcuts enabled, the app will automatically place "
+                "an Innioasis Updater shortcut in the Toolkit directory for easy access."
+            )
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.exec()
+        except Exception as e:
+            silent_print(f"Error showing toolkit help dialog: {e}")
     
     def apply_shortcut_settings_on_startup(self):
         """Apply shortcut settings on startup based on user preferences - silent operation"""
@@ -6612,9 +6716,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if checked:
                 self.ensure_desktop_updater_shortcut()
+                # Remove updater shortcut from Toolkit directory since user now has direct access
+                self.remove_toolkit_updater_shortcut()
                 silent_print("Desktop Innioasis Updater shortcut enabled and created.")
             else:
                 self.remove_desktop_updater_shortcut()
+                # Check if we need to add updater shortcut to Toolkit directory
+                self.check_and_manage_toolkit_updater_shortcut()
                 silent_print("Desktop Innioasis Updater shortcut disabled and removed.")
                 
         except Exception as e:
@@ -6648,9 +6756,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if checked:
                 self.ensure_startmenu_updater_shortcut()
+                # Remove updater shortcut from Toolkit directory since user now has direct access
+                self.remove_toolkit_updater_shortcut()
                 silent_print("Start menu Innioasis Updater shortcut enabled and created.")
             else:
                 self.remove_startmenu_updater_shortcut()
+                # Check if we need to add updater shortcut to Toolkit directory
+                self.check_and_manage_toolkit_updater_shortcut()
                 silent_print("Start menu Innioasis Updater shortcut disabled and removed.")
                 
         except Exception as e:
