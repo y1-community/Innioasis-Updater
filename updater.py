@@ -64,6 +64,12 @@ class CrossPlatformHelper:
         if not info['is_macos']:
             return False
         
+        # Check if we're already running from within the app bundle
+        current_dir = Path.cwd()
+        if "Innioasis Updater.app" in str(current_dir):
+            logging.info("Already running from within Innioasis Updater.app bundle, launching firmware_downloader.py directly")
+            return CrossPlatformHelper.launch_firmware_downloader_direct()
+        
         app_path = Path("/Applications/Innioasis Updater.app")
         if not app_path.exists():
             logging.warning("Innioasis Updater.app not found in Applications folder")
@@ -76,6 +82,24 @@ class CrossPlatformHelper:
             return True
         except Exception as e:
             logging.error("Failed to launch Innioasis Updater.app: %s", e)
+            return False
+
+    @staticmethod
+    def launch_firmware_downloader_direct():
+        """Launch firmware_downloader.py directly (for use when already in app bundle)"""
+        current_dir = Path.cwd()
+        script_path = current_dir / "firmware_downloader.py"
+        
+        if script_path.exists():
+            try:
+                subprocess.Popen([sys.executable, str(script_path)])
+                logging.info("Successfully launched firmware_downloader.py directly")
+                return True
+            except Exception as e:
+                logging.error("Failed to launch firmware_downloader.py directly: %s", e)
+                return False
+        else:
+            logging.error("firmware_downloader.py not found in current directory")
             return False
 
     @staticmethod
