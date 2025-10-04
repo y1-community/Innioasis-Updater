@@ -210,6 +210,10 @@ run_full_setup() {
     step_echo "Finalizing setup..."
     touch "$COMPLETION_MARKER"
     
+    # Create .no_updates file for new users to decide on automatic updates
+    echo "Automatic utility updates disabled by default for new users" > "$APP_DIR/.no_updates"
+    log_message "Created .no_updates file - new users can enable automatic updates in the app settings"
+    
     echo
     echo "=========================================="
     success_echo "  Setup Complete!"
@@ -241,4 +245,3 @@ else
     nohup python3 "$PYTHON_SCRIPT" >/dev/null 2>&1 &
     exit 0
 fi
-
