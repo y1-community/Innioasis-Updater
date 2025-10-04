@@ -91,6 +91,12 @@ def lazy_import_concurrent():
         from concurrent.futures import ThreadPoolExecutor, as_completed
     return ThreadPoolExecutor, as_completed
 
+def lazy_import_winreg():
+    global winreg
+    if 'winreg' not in globals():
+        import winreg
+    return winreg
+
 # Import AppKit for macOS Dock hiding (only on macOS)
 if platform.system() == "Darwin":
     try:
@@ -2431,12 +2437,15 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Initialize theme monitor for dynamic theme switching (defer heavy operations)
         self.theme_monitor = None  # Defer initialization
+        
+        # Initialize dependency tracking
+        self.missing_dependencies = False
 
         # Initialize UI first for immediate responsiveness
         self.init_ui()
 
-        # Defer all heavy initialization to background with minimal delays
-        # Initialize config downloader in background
+        # Defer all heavy initialization to background with proper sequencing
+        # Initialize config downloader first (critical for data loading)
         QTimer.singleShot(1, self._init_config_downloader)
         
         # Initialize theme monitor in background
@@ -2481,8 +2490,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Preload critical images with web fallback
         QTimer.singleShot(200, self.preload_critical_images)
 
-        # Load data asynchronously to avoid blocking UI
-        QTimer.singleShot(20, self.load_data)
+        # Load data asynchronously AFTER config downloader is initialized
+        QTimer.singleShot(100, self.load_data)
         
         # Load saved installation preferences
         QTimer.singleShot(30, self.load_installation_preferences)
@@ -2508,8 +2517,19 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Initialize config downloader in background"""
         try:
             self.config_downloader = ConfigDownloader()
+            silent_print("Config downloader initialized successfully")
+        except ImportError as e:
+            silent_print(f"Missing dependency for config downloader: {e}")
+            silent_print("Please install required dependencies: pip install requests")
+            # Set a flag to indicate missing dependencies
+            self.missing_dependencies = True
         except Exception as e:
             silent_print(f"Error initializing config downloader: {e}")
+            # Create a fallback config downloader to prevent complete failure
+            try:
+                self.config_downloader = ConfigDownloader()
+            except:
+                silent_print("Failed to create fallback config downloader")
 
     def _init_theme_monitor(self):
         """Initialize theme monitor in background"""
@@ -5049,30 +5069,44 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.status_label.setText("Loading configuration...")
         silent_print("Loading configuration and manifest data...")
 
-        # Check if config_downloader is initialized, if not, defer loading
-        if self.config_downloader is None:
-            QTimer.singleShot(50, self.load_data)
+        # Check if dependencies are missing
+        if hasattr(self, 'missing_dependencies') and self.missing_dependencies:
+            silent_print("Missing dependencies detected, cannot load data")
+            self.status_label.setText("Error: Missing required dependencies. Please install: pip install requests")
             return
 
-        # Load manifest first for instant startup (no token validation needed)
-        self.packages = self.config_downloader.download_manifest(use_local_first=True)
-        if self.packages:
-            silent_print(f"Loaded {len(self.packages)} software packages from local manifest")
-            self.status_label.setText("Ready: Select system software to Download. Your music will stay safe.")
-            
-            # Initialize github_api with empty tokens for immediate UI population
-            # This allows the UI to work while tokens are loaded in background
-            self.github_api = GitHubAPI([])
-            silent_print("Initialized GitHub API with empty tokens for instant startup")
-            
-            # Populate UI components immediately
-            self.populate_device_type_combo()
-            self.populate_device_model_combo()
-            self.populate_firmware_combo()
-            self.filter_firmware_options()
-            QTimer.singleShot(100, self.apply_initial_release_display)
-            self.status_label.setText("Ready")
-            silent_print("Data loading complete - instant startup achieved")
+        # Check if config_downloader is initialized, if not, defer loading
+        if self.config_downloader is None:
+            silent_print("Config downloader not ready, deferring data load...")
+            QTimer.singleShot(100, self.load_data)
+            return
+
+        try:
+            # Load manifest first for instant startup (no token validation needed)
+            self.packages = self.config_downloader.download_manifest(use_local_first=True)
+            if self.packages:
+                silent_print(f"Loaded {len(self.packages)} software packages from local manifest")
+                self.status_label.setText("Ready: Select system software to Download. Your music will stay safe.")
+                
+                # Initialize github_api with empty tokens for immediate UI population
+                # This allows the UI to work while tokens are loaded in background
+                self.github_api = GitHubAPI([])
+                silent_print("Initialized GitHub API with empty tokens for instant startup")
+                
+                # Populate UI components immediately
+                self.populate_device_type_combo()
+                self.populate_device_model_combo()
+                self.populate_firmware_combo()
+                self.filter_firmware_options()
+                QTimer.singleShot(100, self.apply_initial_release_display)
+                self.status_label.setText("Ready")
+                silent_print("Data loading complete - instant startup achieved")
+            else:
+                silent_print("No packages loaded from manifest")
+                self.status_label.setText("Error: Could not load software packages")
+        except Exception as e:
+            silent_print(f"Error loading data: {e}")
+            self.status_label.setText("Error: Could not load configuration")
         
         # Start background token validation and remote manifest refresh
         QTimer.singleShot(100, self.load_tokens_and_validate_background)
