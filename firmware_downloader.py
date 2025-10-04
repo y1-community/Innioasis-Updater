@@ -2358,12 +2358,14 @@ class ThemeMonitor(QObject):
     def _get_windows_theme(self):
         """Get Windows theme using registry"""
         try:
+            # Use lazy import for winreg to avoid startup delays
             import winreg
             with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 
                               r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize") as key:
                 value, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
                 return "light" if value else "dark"
-        except:
+        except Exception as e:
+            silent_print(f"Could not detect Windows theme: {e}")
             return "light"
             
     def _get_linux_theme(self):
@@ -2496,10 +2498,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Restore original installation method when session ends
         QTimer.singleShot(50, self.restore_original_installation_method)
 
-        # Set up theme change detection timer
-        self.theme_check_timer = QTimer()
-        self.theme_check_timer.timeout.connect(self.check_theme_change)
-        self.theme_check_timer.start(1000)  # Check every second
+        # Set up theme change detection timer (defer for Windows to avoid startup delays)
+        if platform.system() == "Windows":
+            QTimer.singleShot(1000, self._init_theme_detection)
+        else:
+            self._init_theme_detection()
 
     def _init_config_downloader(self):
         """Initialize config downloader in background"""
@@ -2517,6 +2520,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error initializing theme monitor: {e}")
         self.last_theme_state = self.is_dark_mode
+
+    def _init_theme_detection(self):
+        """Initialize theme detection timer"""
+        try:
+            self.theme_check_timer = QTimer()
+            self.theme_check_timer.timeout.connect(self.check_theme_change)
+            self.theme_check_timer.start(1000)  # Check every second
+        except Exception as e:
+            silent_print(f"Error initializing theme detection: {e}")
 
     def handle_version_check(self):
         """Handle version check file and show macOS app update message for new users"""
@@ -9575,8 +9587,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                         0.114 * background_color.blue()) / 255
 
             return luminance < 0.5
-        except:
+        except Exception as e:
             # Fallback: assume light mode if detection fails
+            silent_print(f"Could not detect dark mode: {e}")
             return False
 
     def update_image_style(self):
