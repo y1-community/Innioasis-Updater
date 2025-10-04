@@ -3562,7 +3562,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater v1.6.8{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater v1.6.7{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -5686,6 +5686,8 @@ class FirmwareDownloaderGUI(QMainWindow):
     
     def show_tools_dialog(self):
         """Show Toolkit dialog with all tools and utilities"""
+        silent_print(f"show_tools_dialog called on platform: {platform.system()}")
+        
         # For Windows users, check if Toolkit directory exists and open it directly
         if platform.system() == "Windows":
             current_dir = Path.cwd()
@@ -5701,9 +5703,15 @@ class FirmwareDownloaderGUI(QMainWindow):
                     return  # Exit early, no need to show dialog
                 except Exception as e:
                     silent_print(f"Error opening Toolkit folder: {e}")
-                    # Fall through to show dialog if opening folder fails
+                    # Continue to show dialog if opening folder fails
+            else:
+                silent_print("Toolkit directory not found, showing dialog instead")
         
-        # Show dialog if Toolkit directory doesn't exist or if not on Windows
+        # Show dialog only if:
+        # 1. Not on Windows, OR
+        # 2. On Windows but Toolkit directory doesn't exist, OR  
+        # 3. On Windows but failed to open Toolkit directory
+        silent_print("Creating Toolkit dialog - this should only happen if Toolkit directory not found or not on Windows")
         dialog = QDialog(self)
         dialog.setWindowTitle("Innioasis Toolkit")
         dialog.setFixedSize(600, 500)
@@ -7978,7 +7986,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.6.8"]
+        clean_lines = ["Version 1.6.7"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
