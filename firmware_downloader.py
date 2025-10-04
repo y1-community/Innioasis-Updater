@@ -5686,6 +5686,22 @@ class FirmwareDownloaderGUI(QMainWindow):
     
     def show_tools_dialog(self):
         """Show Toolkit dialog with all tools and utilities"""
+        # For Windows users, check if Toolkit directory exists and open it directly
+        if platform.system() == "Windows":
+            current_dir = Path.cwd()
+            toolkit_dir = current_dir / "Toolkit"
+            
+            if toolkit_dir.exists():
+                # Toolkit directory exists, open it directly in File Explorer
+                try:
+                    subprocess.run(["explorer", str(toolkit_dir)], check=True)
+                    self.status_label.setText("Toolkit folder opened in File Explorer")
+                    return  # Exit early, no need to show dialog
+                except Exception as e:
+                    silent_print(f"Error opening Toolkit folder: {e}")
+                    # Fall through to show dialog if opening folder fails
+        
+        # Show dialog if Toolkit directory doesn't exist or if not on Windows
         dialog = QDialog(self)
         dialog.setWindowTitle("Innioasis Toolkit")
         dialog.setFixedSize(600, 500)
@@ -5753,30 +5769,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             rockbox_utility_btn.clicked.connect(self.launch_rockbox_utility)
             tools_layout.addWidget(rockbox_utility_btn)
         
-        # Open Toolkit in Windows Explorer button (Windows only)
-        if platform.system() == "Windows":
-            open_toolkit_btn = QPushButton("Open Toolkit in Windows Explorer")
-            open_toolkit_btn.setToolTip("Open the Innioasis Toolkit folder in File Explorer")
-            open_toolkit_btn.clicked.connect(self.open_toolkit_folder)
-            open_toolkit_btn.setStyleSheet("""
-                QPushButton {
-                    background-color: palette(button);
-                    color: palette(button-text);
-                    border: 1px solid palette(mid);
-                    padding: 8px;
-                    font-size: 12px;
-                    border-radius: 3px;
-                }
-                QPushButton:hover {
-                    background-color: palette(highlight);
-                    color: palette(highlighted-text);
-                }
-                QPushButton:pressed {
-                    background-color: palette(dark);
-                    color: palette(light);
-                }
-            """)
-            tools_layout.addWidget(open_toolkit_btn)
+        # Note: "Open Toolkit in Windows Explorer" button removed as it's now redundant
+        # The Toolkit folder opens directly when the Toolkit button is clicked (if directory exists)
         
         layout.addLayout(tools_layout)
         
