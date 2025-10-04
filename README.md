@@ -44,26 +44,3 @@ Please clone the repo on your linux system and follow the [MTKclient setup instr
 ```
 python updater.py
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Windows 64Bit Intel/AMD Only 
-# Please follow the setup steps at [drivers.innioasis.app](https://innioasis.app) to get the drivers you need.
