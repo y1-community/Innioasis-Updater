@@ -6,7 +6,7 @@
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
 Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 MP3 player running Android firmwares. It lists official software updates as well as community built firmwares.
 
-# [Download and guide for Mac and Windows at Innioasis.app](https://innioasis.app)
+# [Looking to update or customise your Innioasis or Timmkoo player, head to innioasis.com/pages/download](https://innioasis.com/pages/download)
 
 ## Devloped in Python using Cursor IDE by
 - Ryan Specter of Team Slide
