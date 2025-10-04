@@ -6190,6 +6190,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             if startmenu_enabled:
                 self.ensure_startmenu_shortcuts()
                 silent_print("Start menu shortcuts updated for auto-updates setting change")
+            
+            # Save preferences immediately when auto-updates setting is changed
+            self.save_installation_preferences()
                 
         except Exception as e:
             silent_print(f"Error updating shortcuts for auto-updates: {e}")
@@ -6801,6 +6804,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Check if we need to add updater shortcut to Toolkit directory
                 self.check_and_manage_toolkit_updater_shortcut()
                 silent_print("Desktop Innioasis Updater shortcut disabled and removed.")
+            
+            # Save preferences immediately when checkbox is toggled
+            self.save_installation_preferences()
                 
         except Exception as e:
             silent_print(f"Error handling desktop updater shortcut toggle: {e}")
@@ -6819,6 +6825,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 self.remove_desktop_toolkit_shortcut()
                 silent_print("Desktop Innioasis Toolkit shortcut disabled and removed.")
+            
+            # Save preferences immediately when checkbox is toggled
+            self.save_installation_preferences()
                 
         except Exception as e:
             silent_print(f"Error handling desktop toolkit shortcut toggle: {e}")
@@ -6841,6 +6850,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Check if we need to add updater shortcut to Toolkit directory
                 self.check_and_manage_toolkit_updater_shortcut()
                 silent_print("Start menu Innioasis Updater shortcut disabled and removed.")
+            
+            # Save preferences immediately when checkbox is toggled
+            self.save_installation_preferences()
                 
         except Exception as e:
             silent_print(f"Error handling start menu updater shortcut toggle: {e}")
@@ -6859,6 +6871,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 self.remove_startmenu_toolkit_shortcut()
                 silent_print("Start menu Innioasis Toolkit shortcut disabled and removed.")
+            
+            # Save preferences immediately when checkbox is toggled
+            self.save_installation_preferences()
                 
         except Exception as e:
             silent_print(f"Error handling start menu toolkit shortcut toggle: {e}")
