@@ -9664,11 +9664,20 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Launch Innioasis Updater.app from Applications folder
             app_path = Path("/Applications/Innioasis Updater.app")
             if app_path.exists():
-                subprocess.Popen(['open', str(app_path)])
+                # Launch the app using subprocess.Popen with detach=True to prevent termination
+                subprocess.Popen(['open', str(app_path)], 
+                               stdout=subprocess.DEVNULL, 
+                               stderr=subprocess.DEVNULL, 
+                               stdin=subprocess.DEVNULL)
                 silent_print("Launched Innioasis Updater.app from Applications folder")
                 
-                # Close firmware_downloader.py
-                QTimer.singleShot(1000, self.close)
+                # Give the app time to start before terminating this process
+                import time
+                time.sleep(1.5)
+                
+                # Terminate this process cleanly without affecting the launched app
+                import sys
+                sys.exit(0)
             else:
                 QMessageBox.warning(self, "Update Error", "Innioasis Updater.app not found in Applications folder")
                 
@@ -9683,11 +9692,20 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if toolkit_update_shortcut.exists():
                 # Launch the Toolkit shortcut
-                subprocess.Popen(['cmd', '/c', 'start', '', str(toolkit_update_shortcut)], shell=True)
+                subprocess.Popen(['cmd', '/c', 'start', '', str(toolkit_update_shortcut)], 
+                               shell=True,
+                               stdout=subprocess.DEVNULL, 
+                               stderr=subprocess.DEVNULL, 
+                               stdin=subprocess.DEVNULL)
                 silent_print("Launched Toolkit Check for Updates.lnk")
                 
-                # Close firmware_downloader.py
-                QTimer.singleShot(1000, self.close)
+                # Give the process time to start before terminating this process
+                import time
+                time.sleep(1.5)
+                
+                # Terminate this process cleanly without affecting the launched process
+                import sys
+                sys.exit(0)
             else:
                 # Fallback to standard updater.py if Toolkit shortcut not found
                 silent_print("Toolkit Check for Updates.lnk not found, using standard updater.py")
