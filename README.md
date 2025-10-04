@@ -1,6 +1,6 @@
-# Innioasis Updater is the official firmware installation tool for the Innioasis Y1, 
-# built by Y1 users, _for_ Y1 users.
-To get started with Innioasis Updater, or if you're looking for firmware downloads or updates for another Innioasis device, please head to [innioasis.com/pages/download](https://innioasis.com/pages/download)
+# Innioasis Updater is the official firmware installation tool for the Innioasis Y1, built by the users, _for_ the users.
+
+# To get started with Innioasis Updater, or if you're looking for firmware downloads or updates for another Innioasis device, please head to [innioasis.com/pages/download](https://innioasis.com/pages/download)
 
 [<img src="https://innioasis.app/mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>](https://innioasis.com/pages/download)
 
@@ -8,7 +8,7 @@ To get started with Innioasis Updater, or if you're looking for firmware downloa
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
 Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 MP3 player running Android firmwares. It lists official software updates as well as community built firmwares.
 
-# [Looking to update or customise your Innioasis or Timmkoo player, head to innioasis.com/pages/download](https://innioasis.com/pages/download)
+# Looking to update or customise your Innioasis player? head to [innioasis.com/pages/download](https://innioasis.com/pages/download) to begin
 
 ## Devloped in Python using Cursor IDE by
 - Ryan Specter of Team Slide
