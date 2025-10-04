@@ -449,9 +449,9 @@ class UpdateProgressDialog(QDialog):
         layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.update_button)
 
         if mode == 'update':
-            self.update_worker = UpdateWorker(); self.update_worker.progress_updated.connect(self.progress_bar.setValue)
-            self.update_worker.status_updated.connect(self.status_label.setText); self.update_worker.update_completed.connect(self.on_update_completed)
-            self.update_worker.start()
+            # Show GUI immediately, start update process with small delay
+            self.status_label.setText("Starting update process...")
+            QTimer.singleShot(50, self.start_update_process)
         else: # No update needed
             self.setFixedSize(450, 180)
             self.status_label.setText("You're all up to date! Launching now...")
@@ -464,8 +464,16 @@ class UpdateProgressDialog(QDialog):
             self.force_update_button.clicked.connect(self.run_force_update)
             layout.addWidget(self.force_update_button)
             
-            # Auto-launch after 3 seconds if user doesn't click anything
-            QTimer.singleShot(3000, self.accept)
+            # Auto-launch after 2 seconds if user doesn't click anything (faster)
+            QTimer.singleShot(2000, self.accept)
+
+    def start_update_process(self):
+        """Start the update process in background"""
+        self.update_worker = UpdateWorker()
+        self.update_worker.progress_updated.connect(self.progress_bar.setValue)
+        self.update_worker.status_updated.connect(self.status_label.setText)
+        self.update_worker.update_completed.connect(self.on_update_completed)
+        self.update_worker.start()
 
     def run_without_update(self):
         """Run the app without updating"""
@@ -634,25 +642,35 @@ def cleanup_redundant_files():
         logging.error(f"Error during redundant files cleanup: {e}")
 
 def perform_initial_cleanup():
-    """Removes obsolete or platform-specific files and folders."""
+    """Removes obsolete or platform-specific files and folders (optimized for speed)."""
     logging.info("Performing initial directory cleanup...")
     platform_info = CrossPlatformHelper.get_platform_info()
     
-    for path in Path.cwd().iterdir():
+    # Use list() to avoid iterator issues and make it faster
+    try:
+        paths = list(Path.cwd().iterdir())
+    except OSError as e:
+        logging.warning("Could not list directory contents: %s", e)
+        return
+    
+    for path in paths:
         try:
             if path.is_dir() and path.name == '.web_scripts':
-                shutil.rmtree(path); logging.info("Removed obsolete folder: %s", path.name)
+                shutil.rmtree(path)
+                logging.info("Removed obsolete folder: %s", path.name)
                 continue
             if not platform_info['is_windows']:
                 if path.suffix.lower() in ['.exe', '.dll', '.lnk']:
-                    path.unlink(); logging.info("Removed Windows-specific file: %s", path.name)
+                    path.unlink()
+                    logging.info("Removed Windows-specific file: %s", path.name)
                 elif path.is_dir() and 'trouble' in path.name.lower():
-                    shutil.rmtree(path); logging.info("Removed Windows-specific folder: %s", path.name)
+                    shutil.rmtree(path)
+                    logging.info("Removed Windows-specific folder: %s", path.name)
         except OSError as e:
             logging.warning("Could not remove %s during cleanup: %s", path.name, e)
     
-    # Clean up redundant files after initial cleanup
-    cleanup_redundant_files()
+    # Clean up redundant files after initial cleanup (non-blocking)
+    QTimer.singleShot(50, cleanup_redundant_files)
 
 def download_troubleshooters(current_dir, temp_dir):
     try:
@@ -867,13 +885,15 @@ def launch_firmware_downloader():
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s', filename='updater.log', filemode='w')
-    perform_initial_cleanup()
     
     parser = argparse.ArgumentParser(description="Innioasis Updater Script", add_help=False)
     parser.add_argument("-f", "--force", action="store_true", help="Force the update.")
     args, _ = parser.parse_known_args()
 
     app = QApplication(sys.argv)
+    
+    # Perform cleanup after GUI is created (non-blocking)
+    QTimer.singleShot(100, perform_initial_cleanup)
     
     mode = 'update' # Default mode
     platform_info = CrossPlatformHelper.get_platform_info()
