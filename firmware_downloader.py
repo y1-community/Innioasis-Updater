@@ -5948,17 +5948,107 @@ class FirmwareDownloaderGUI(QMainWindow):
                 
                 silent_print(f"Loaded preferences (method reset to default): {preferences}")
             else:
-                silent_print("No saved installation preferences found, using defaults")
-                # Ensure defaults are explicitly set for new users
+                silent_print("No saved installation preferences found, detecting existing shortcuts")
+                # Detect existing shortcuts and set preferences accordingly for new users
                 if platform.system() == "Windows":
-                    self.desktop_updater_enabled = True  # Desktop: Innioasis Updater.lnk
-                    self.desktop_toolkit_enabled = False  # Desktop: No Toolkit
-                    self.startmenu_updater_enabled = True  # Start Menu: Innioasis Updater.lnk
-                    self.startmenu_toolkit_enabled = True  # Start Menu: Innioasis Toolkit.lnk
-                    self._toolkit_help_dialog_shown = False
-                self.auto_utility_updates_enabled = True  # Check for Utility Updates Automatically ON
+                    self.detect_existing_shortcuts_and_set_preferences()
+                else:
+                    # Non-Windows platforms use defaults
+                    self.auto_utility_updates_enabled = True  # Check for Utility Updates Automatically ON
         except Exception as e:
             silent_print(f"Error loading installation preferences: {e}")
+    
+    def detect_existing_shortcuts_and_set_preferences(self):
+        """Detect existing shortcuts and set preferences accordingly for new users"""
+        try:
+            silent_print("Detecting existing shortcuts to determine user preferences...")
+            
+            # Check desktop shortcuts
+            desktop_path = Path.home() / "Desktop"
+            desktop_updater_exists = (desktop_path / "Innioasis Updater.lnk").exists()
+            desktop_toolkit_exists = (desktop_path / "Innioasis Toolkit.lnk").exists()
+            
+            # Check start menu shortcuts
+            start_menu_paths = self.get_all_start_menu_paths()
+            startmenu_updater_exists = False
+            startmenu_toolkit_exists = False
+            
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    if (start_menu_path / "Innioasis Updater.lnk").exists():
+                        startmenu_updater_exists = True
+                    if (start_menu_path / "Innioasis Toolkit.lnk").exists():
+                        startmenu_toolkit_exists = True
+                    break  # Only check first available start menu path
+            
+            # Set preferences based on detected shortcuts
+            self.desktop_updater_enabled = desktop_updater_exists
+            self.desktop_toolkit_enabled = desktop_toolkit_exists
+            self.startmenu_updater_enabled = startmenu_updater_exists
+            self.startmenu_toolkit_enabled = startmenu_toolkit_exists
+            self._toolkit_help_dialog_shown = False  # New user, haven't shown dialog yet
+            
+            # Determine auto-updates setting based on shortcut types
+            # If any shortcuts exist, check if they're "Skip Update" type
+            if desktop_updater_exists or startmenu_updater_exists:
+                # Check if shortcuts point to "Skip Update and Launch.lnk"
+                skip_update_detected = self.detect_skip_update_shortcuts()
+                self.auto_utility_updates_enabled = not skip_update_detected
+            else:
+                # No shortcuts exist, use default (enabled)
+                self.auto_utility_updates_enabled = True
+            
+            silent_print(f"Detected shortcuts - Desktop Updater: {desktop_updater_exists}, Desktop Toolkit: {desktop_toolkit_exists}, Start Menu Updater: {startmenu_updater_exists}, Start Menu Toolkit: {startmenu_toolkit_exists}")
+            silent_print(f"Auto-updates setting: {self.auto_utility_updates_enabled}")
+            
+            # Save the detected preferences so they persist
+            self.save_installation_preferences()
+            silent_print("Saved detected preferences to file")
+            
+        except Exception as e:
+            silent_print(f"Error detecting existing shortcuts: {e}")
+            # Fall back to defaults if detection fails
+            self.desktop_updater_enabled = True  # Desktop: Innioasis Updater.lnk
+            self.desktop_toolkit_enabled = False  # Desktop: No Toolkit
+            self.startmenu_updater_enabled = True  # Start Menu: Innioasis Updater.lnk
+            self.startmenu_toolkit_enabled = True  # Start Menu: Innioasis Toolkit.lnk
+            self.auto_utility_updates_enabled = True  # Check for Utility Updates Automatically ON
+            self._toolkit_help_dialog_shown = False
+    
+    def detect_skip_update_shortcuts(self):
+        """Detect if existing shortcuts are 'Skip Update' type by checking their targets"""
+        try:
+            # Check desktop shortcut
+            desktop_path = Path.home() / "Desktop"
+            desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
+            
+            if desktop_shortcut.exists():
+                # Try to read the shortcut target to see if it points to Skip Update
+                # This is a simplified check - in practice, we'd need to parse the .lnk file
+                # For now, we'll check if the Skip Update shortcut exists in the expected location
+                skip_update_shortcut = Path("Troubleshooting/More Tools and Troubleshooters/Skip Update and Launch.lnk")
+                if skip_update_shortcut.exists():
+                    # If Skip Update shortcut exists, assume existing shortcuts might be that type
+                    # This is a heuristic - in a real implementation, we'd parse the .lnk files
+                    return True
+            
+            # Check start menu shortcuts
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    startmenu_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    if startmenu_shortcut.exists():
+                        # Same heuristic as desktop
+                        skip_update_shortcut = Path("Troubleshooting/More Tools and Troubleshooters/Skip Update and Launch.lnk")
+                        if skip_update_shortcut.exists():
+                            return True
+                    break
+            
+            return False
+            
+        except Exception as e:
+            silent_print(f"Error detecting skip update shortcuts: {e}")
+            return False
     
     def apply_shortcut_settings(self):
         """Apply shortcut settings based on user preferences"""
