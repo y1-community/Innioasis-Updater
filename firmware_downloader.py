@@ -5930,6 +5930,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                     if 'auto_cleanup_enabled' in preferences:
                         self.auto_cleanup_enabled = preferences['auto_cleanup_enabled']
                 
+                # Load auto-update preferences (all platforms)
+                if 'auto_utility_updates_enabled' in preferences:
+                    self.auto_utility_updates_enabled = preferences['auto_utility_updates_enabled']
+                
                 silent_print(f"Loaded preferences (method reset to default): {preferences}")
             else:
                 silent_print("No saved installation preferences found, using defaults")
@@ -6378,8 +6382,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Load preferences first to ensure we have the latest settings
             self.load_installation_preferences()
             
+            # Check for .no_updates file to determine if updates are disabled
+            no_updates_file = Path(".no_updates")
+            updates_disabled_by_file = no_updates_file.exists()
+            
+            # Update auto_utility_updates_enabled based on .no_updates file
+            if updates_disabled_by_file:
+                self.auto_utility_updates_enabled = False
+                silent_print("Updates disabled by .no_updates file detected at startup")
+            else:
+                # Use saved preference if no .no_updates file exists
+                self.auto_utility_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                silent_print(f"Updates enabled based on saved preference: {self.auto_utility_updates_enabled}")
+            
             # Ensure the Skip Update shortcut exists if auto-updates are disabled
-            if not getattr(self, 'auto_utility_updates_enabled', True):
+            if not self.auto_utility_updates_enabled:
                 if not self.ensure_skip_update_shortcut_exists():
                     silent_print("Warning: Could not ensure Skip Update shortcut exists on startup")
             
