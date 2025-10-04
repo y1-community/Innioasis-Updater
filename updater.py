@@ -796,8 +796,30 @@ def launch_y1_helper_arm64():
     
     return False
 
-def launch_firmware_downloader():
-    """Reliably launch firmware_downloader.py with multiple fallback methods"""
+def launch_windows_skip_update_shortcut():
+    """Launch firmware_downloader.py using the Skip Update and Launch.lnk shortcut on Windows"""
+    current_dir = Path.cwd()
+    
+    # Look for the Skip Update and Launch.lnk shortcut
+    skip_update_shortcut = current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Fix PC App and PC App Updates" / "Skip Update and Launch.lnk"
+    
+    if skip_update_shortcut.exists():
+        try:
+            logging.info("Found Skip Update and Launch.lnk shortcut, launching...")
+            # Use os.startfile to launch the .lnk file
+            os.startfile(str(skip_update_shortcut))
+            logging.info("Successfully launched Skip Update and Launch.lnk")
+            return True
+        except Exception as e:
+            logging.error("Failed to launch Skip Update and Launch.lnk: %s", e)
+            # Fallback to direct launch
+            return launch_firmware_downloader_direct()
+    else:
+        logging.warning("Skip Update and Launch.lnk not found, falling back to direct launch")
+        return launch_firmware_downloader_direct()
+
+def launch_firmware_downloader_direct():
+    """Reliably launch firmware_downloader.py with multiple fallback methods (direct launch)"""
     current_dir = Path.cwd()
     platform_info = CrossPlatformHelper.get_platform_info()
     
@@ -948,7 +970,7 @@ def main():
         if not launch_success:
             logging.error("Failed to launch Innioasis Updater.app, falling back to Python script...")
             # Fallback to Python script if .app launch fails
-            launch_success = launch_firmware_downloader()
+            launch_success = launch_firmware_downloader_direct()
             if not launch_success:
                 logging.error("Failed to launch firmware_downloader.py as fallback")
     # Check if we're on ARM64 Windows
@@ -957,9 +979,15 @@ def main():
         launch_success = launch_y1_helper_arm64()
         if not launch_success:
             logging.error("Failed to launch y1_helper.py")
+    # Check if we're on regular Windows (x86-64)
+    elif platform_info['is_windows']:
+        logging.info("Windows detected - launching using Skip Update and Launch.lnk shortcut...")
+        launch_success = launch_windows_skip_update_shortcut()
+        if not launch_success:
+            logging.error("Failed to launch using Windows shortcut")
     else:
         logging.info("Attempting to launch firmware_downloader.py...")
-        launch_success = launch_firmware_downloader()
+        launch_success = launch_firmware_downloader_direct()
         if not launch_success:
             logging.error("Failed to launch firmware_downloader.py")
     
