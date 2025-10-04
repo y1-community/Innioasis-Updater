@@ -297,6 +297,30 @@ def is_thanksgiving_region():
     # Default to True if we can't determine (assume US for safety)
     return True
 
+def is_uk_user():
+    """Check if the user is in the UK based on system locale/region"""
+    try:
+        import locale
+        # Get the system locale
+        system_locale = locale.getdefaultlocale()[0]
+        if system_locale:
+            # Check if locale starts with 'en_GB' or contains 'GB'
+            return system_locale.startswith('en_GB') or 'GB' in system_locale
+    except:
+        pass
+    
+    try:
+        # Fallback: check environment variables
+        import os
+        lc_all = os.environ.get('LC_ALL', '')
+        lang = os.environ.get('LANG', '')
+        return 'en_GB' in lc_all or 'en_GB' in lang or 'GB' in lc_all or 'GB' in lang
+    except:
+        pass
+    
+    # Default to False if we can't determine
+    return False
+
 def get_seasonal_emoji():
     """Get seasonal emoji based on current date - Christmas and Halloween easter eggs!"""
     today = date.today()
@@ -384,6 +408,25 @@ def get_seasonal_emoji():
         emoji_index = (day - 20) % len(summer_emojis)
         return summer_emojis[emoji_index]
     
+    # Pride Month: June 1-30
+    elif month == 6:
+        pride_emojis = [
+            "🏳️‍🌈", "🏳️‍⚧️", "🌈", "💜", "💙", "💚", "💛", "🧡", "❤️", "💖", "✨", "🎉"
+        ]
+        emoji_index = (day - 1) % len(pride_emojis)
+        return pride_emojis[emoji_index]
+    
+    # Black History Month: February (International) or October (UK)
+    elif (month == 2 and not is_uk_user()) or (month == 10 and is_uk_user()):
+        black_history_emojis = [
+            "✊🏿", "✊🏾", "✊🏽", "✊🏼", "✊🏻", "🌍", "📚", "🎓", "💪", "🌟", "🕊️", "❤️"
+        ]
+        if month == 2:
+            emoji_index = (day - 1) % len(black_history_emojis)
+        else:  # October for UK
+            emoji_index = (day - 1) % len(black_history_emojis)
+        return black_history_emojis[emoji_index]
+    
     # No seasonal emoji
     return ""
 
@@ -456,6 +499,20 @@ def get_seasonal_emoji_random():
         ]
         return random.choice(summer_emojis)
     
+    # Pride Month: June 1-30
+    elif month == 6:
+        pride_emojis = [
+            "🏳️‍🌈", "🏳️‍⚧️", "🌈", "💜", "💙", "💚", "💛", "🧡", "❤️", "💖", "✨", "🎉"
+        ]
+        return random.choice(pride_emojis)
+    
+    # Black History Month: February (International) or October (UK)
+    elif (month == 2 and not is_uk_user()) or (month == 10 and is_uk_user()):
+        black_history_emojis = [
+            "✊🏿", "✊🏾", "✊🏽", "✊🏼", "✊🏻", "🌍", "📚", "🎓", "💪", "🌟", "🕊️", "❤️"
+        ]
+        return random.choice(black_history_emojis)
+    
     return ""
 
 def is_christmas_season():
@@ -502,6 +559,16 @@ def is_summer_solstice():
     """Check if it's Summer Solstice"""
     today = date.today()
     return today.month == 6 and 20 <= today.day <= 22
+
+def is_pride_month():
+    """Check if it's Pride Month (June)"""
+    today = date.today()
+    return today.month == 6
+
+def is_black_history_month():
+    """Check if it's Black History Month (February for international, October for UK)"""
+    today = date.today()
+    return (today.month == 2 and not is_uk_user()) or (today.month == 10 and is_uk_user())
 
 # toggle_silent_mode function removed - debug mode is now controlled by keyboard shortcut
 
@@ -5494,6 +5561,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             seasonal_message = "🇺🇸 Happy Independence Day! 🎆"
         elif is_summer_solstice():
             seasonal_message = "☀️ Happy Summer Solstice! 🌞"
+        elif is_pride_month():
+            seasonal_message = "🏳️‍🌈 Happy Pride Month! 🌈"
+        elif is_black_history_month():
+            if is_uk_user():
+                seasonal_message = "✊🏿 Celebrating Black History Month! 🌍"
+            else:
+                seasonal_message = "✊🏿 Celebrating Black History Month! 🌍"
         else:
             seasonal_message = ""
         
