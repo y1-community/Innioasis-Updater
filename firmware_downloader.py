@@ -862,59 +862,122 @@ class ConfigDownloader:
             silent_print("Falling back to unauthenticated requests only")
             return []
 
-    def download_manifest(self):
-        """Download and parse the XML manifest file with caching"""
+    def download_manifest(self, use_local_first=True):
+        """Download and parse the XML manifest file with local-first loading for instant startup"""
         # Try cache first
         cached_packages = load_cache(MANIFEST_CACHE_FILE)
         if cached_packages:
+            silent_print("Using cached manifest for instant startup")
             return cached_packages
 
+        # Load local manifest first for instant startup
+        if use_local_first:
+            local_packages = self.load_local_manifest()
+            if local_packages:
+                silent_print(f"Loaded {len(local_packages)} packages from local manifest for instant startup")
+                # Cache the local packages immediately
+                save_cache(MANIFEST_CACHE_FILE, local_packages)
+                # Start background refresh of remote manifest
+                self.refresh_remote_manifest_async()
+                return local_packages
+
+        # Fallback to remote download if no local manifest
+        return self.download_remote_manifest()
+
+    def load_local_manifest(self):
+        """Load manifest from local slidia_manifest.xml file"""
         try:
+            local_manifest_path = Path("slidia_manifest.xml")
+            if not local_manifest_path.exists():
+                silent_print("Local manifest not found")
+                return []
+            
+            silent_print("Loading local manifest for instant startup...")
+            with open(local_manifest_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            root = ET.fromstring(content)
+            packages = self.parse_manifest_xml(root)
+            silent_print(f"Successfully loaded {len(packages)} packages from local manifest")
+            return packages
+        except Exception as e:
+            silent_print(f"Error loading local manifest: {e}")
+            return []
+
+    def download_remote_manifest(self):
+        """Download manifest from remote URL"""
+        try:
+            silent_print("Downloading remote manifest...")
             response = self.session.get(self.manifest_url, timeout=REQUEST_TIMEOUT)
             response.raise_for_status()
 
             root = ET.fromstring(response.text)
-            packages = []
-
-            # Handle the actual manifest structure with <slidia> root
-            if root.tag == 'slidia':
-                # Find all package elements within the slidia root
-                for package in root.findall('package'):
-                    pkg_data = package.attrib
-                    package_info = {
-                        'name': pkg_data.get('name', 'Unknown'),
-                        'device_type': pkg_data.get('device_type', ''),
-                        'repo': pkg_data.get('repo', ''),
-                        'device': pkg_data.get('device', ''),
-                        'url': pkg_data.get('url', ''),
-                        'type': pkg_data.get('type', ''),
-                        'handler': pkg_data.get('handler', '')
-                    }
-                    packages.append(package_info)
-                    silent_print(f"Parsed package: {package_info['name']} -> {package_info['repo']}")
-            else:
-                # Fallback to old structure for backward compatibility
-                for package in root.findall('package'):
-                    pkg_data = package.attrib
-                    package_info = {
-                        'name': pkg_data.get('name', 'Unknown'),
-                        'device_type': pkg_data.get('device_type', ''),
-                        'repo': pkg_data.get('repo', ''),
-                        'device': pkg_data.get('device', ''),
-                        'url': pkg_data.get('url', ''),
-                        'type': pkg_data.get('type', ''),
-                        'handler': pkg_data.get('handler', '')
-                    }
-                    packages.append(package_info)
-                    silent_print(f"Parsed package (fallback): {package_info['name']} -> {package_info['repo']}")
-
-            silent_print(f"Successfully loaded {len(packages)} packages from manifest")
+            packages = self.parse_manifest_xml(root)
+            silent_print(f"Successfully loaded {len(packages)} packages from remote manifest")
             # Cache the packages
             save_cache(MANIFEST_CACHE_FILE, packages)
             return packages
         except Exception as e:
-            silent_print(f"Error downloading manifest: {e}")
+            silent_print(f"Error downloading remote manifest: {e}")
             return []
+
+    def parse_manifest_xml(self, root):
+        """Parse XML manifest and return packages list"""
+        packages = []
+        
+        # Handle the actual manifest structure with <slidia> root
+        if root.tag == 'slidia':
+            # Find all package elements within the slidia root
+            for package in root.findall('package'):
+                pkg_data = package.attrib
+                package_info = {
+                    'name': pkg_data.get('name', 'Unknown'),
+                    'device_type': pkg_data.get('device_type', ''),
+                    'repo': pkg_data.get('repo', ''),
+                    'device': pkg_data.get('device', ''),
+                    'url': pkg_data.get('url', ''),
+                    'type': pkg_data.get('type', ''),
+                    'handler': pkg_data.get('handler', '')
+                }
+                packages.append(package_info)
+                silent_print(f"Parsed package: {package_info['name']} -> {package_info['repo']}")
+        else:
+            # Fallback to old structure for backward compatibility
+            for package in root.findall('package'):
+                pkg_data = package.attrib
+                package_info = {
+                    'name': pkg_data.get('name', 'Unknown'),
+                    'device_type': pkg_data.get('device_type', ''),
+                    'repo': pkg_data.get('repo', ''),
+                    'device': pkg_data.get('device', ''),
+                    'url': pkg_data.get('url', ''),
+                    'type': pkg_data.get('type', ''),
+                    'handler': pkg_data.get('handler', '')
+                }
+                packages.append(package_info)
+                silent_print(f"Parsed package (fallback): {package_info['name']} -> {package_info['repo']}")
+        
+        return packages
+
+    def refresh_remote_manifest_async(self):
+        """Refresh manifest from remote source in background"""
+        def refresh_worker():
+            try:
+                silent_print("Refreshing manifest from remote source in background...")
+                remote_packages = self.download_remote_manifest()
+                if remote_packages:
+                    # Update the packages if we got a successful remote load
+                    self.packages = remote_packages
+                    silent_print(f"Background refresh completed: {len(remote_packages)} packages")
+                else:
+                    silent_print("Background refresh failed, keeping local manifest")
+            except Exception as e:
+                silent_print(f"Background manifest refresh error: {e}")
+        
+        # Start background refresh in a separate thread
+        import threading
+        refresh_thread = threading.Thread(target=refresh_worker, daemon=True)
+        refresh_thread.start()
 
 
 import time
@@ -2232,18 +2295,18 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.theme_monitor.theme_changed.connect(self.refresh_button_styles)
         self.theme_monitor.start_monitoring()
 
-        # Handle version check file and macOS app update message
-        self.handle_version_check()
-
-        # Clean up any previously extracted files at startup
-        cleanup_extracted_files()
-
-        # Clean up orphaned processes at startup (Windows only)
-        if platform.system() == "Windows":
-            self.stop_flash_tool_processes()
-
         # Initialize UI first for immediate responsiveness
         self.init_ui()
+
+        # Handle version check file and macOS app update message (non-blocking)
+        QTimer.singleShot(50, self.handle_version_check)
+
+        # Clean up any previously extracted files at startup (non-blocking)
+        QTimer.singleShot(50, cleanup_extracted_files)
+
+        # Clean up orphaned processes at startup (Windows only, non-blocking)
+        if platform.system() == "Windows":
+            QTimer.singleShot(50, self.stop_flash_tool_processes)
 
         # Check for SP Flash Tool on Windows before loading data
         if platform.system() == "Windows":
@@ -4808,42 +4871,68 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
 
     def load_data(self):
-        """Load configuration and manifest data with improved performance"""
+        """Load configuration and manifest data with instant startup optimization"""
         self.status_label.setText("Loading configuration...")
         silent_print("Loading configuration and manifest data...")
 
-        # Clear cache at startup to ensure fresh tokens are fetched
-        clear_cache()
-        silent_print("Cleared cache at startup to fetch fresh tokens")
+        # Load manifest first for instant startup (no token validation needed)
+        self.packages = self.config_downloader.download_manifest(use_local_first=True)
+        if self.packages:
+            silent_print(f"Loaded {len(self.packages)} software packages from local manifest")
+            self.status_label.setText("Ready: Select system software to Download. Your music will stay safe.")
+            
+            # Initialize github_api with empty tokens for immediate UI population
+            # This allows the UI to work while tokens are loaded in background
+            self.github_api = GitHubAPI([])
+            silent_print("Initialized GitHub API with empty tokens for instant startup")
+            
+            # Populate UI components immediately
+            self.populate_device_type_combo()
+            self.populate_device_model_combo()
+            self.populate_firmware_combo()
+            self.filter_firmware_options()
+            QTimer.singleShot(100, self.apply_initial_release_display)
+            self.status_label.setText("Ready")
+            silent_print("Data loading complete - instant startup achieved")
+        
+        # Start background token validation and remote manifest refresh
+        QTimer.singleShot(100, self.load_tokens_and_validate_background)
 
-        # Download tokens
-        tokens = self.config_downloader.download_config()
-        if not tokens:
-            silent_print("ERROR: Failed to download API tokens")
-            self.status_label.setText("No API tokens available")
-            return
+    def load_tokens_and_validate_background(self):
+        """Load and validate tokens in background without blocking UI"""
+        try:
+            # Clear cache at startup to ensure fresh tokens are fetched
+            clear_cache()
+            silent_print("Cleared cache at startup to fetch fresh tokens")
 
-        self.github_api = GitHubAPI(tokens)
-        silent_print(f"Loaded {len(tokens)} API tokens")
+            # Download tokens
+            tokens = self.config_downloader.download_config()
+            if not tokens:
+                silent_print("No API tokens available - using unauthenticated mode")
+                return
 
-        # Start parallel token validation for faster startup
-        if tokens:
+            # Replace the empty GitHubAPI with properly initialized one
+            self.github_api = GitHubAPI(tokens)
             silent_print(f"Loaded {len(tokens)} API tokens")
-            self.status_label.setText("Validating API tokens...")
-            # Start parallel token validation
-            self.validate_tokens_parallel(tokens)
-        else:
-            silent_print("No tokens loaded")
-            self.status_label.setText("No API tokens available")
 
-        # Manifest loading is now handled asynchronously in validate_tokens_parallel
-        # The UI will be populated once a working token is found or fallback occurs
+            # Start parallel token validation in background
+            if tokens:
+                silent_print(f"Validating {len(tokens)} API tokens in background...")
+                # Start parallel token validation
+                self.validate_tokens_parallel(tokens)
+            else:
+                silent_print("No tokens loaded - continuing with unauthenticated mode")
+                return
+
+        except Exception as e:
+            silent_print(f"Background token loading error: {e}")
+            # Continue with unauthenticated mode
 
     def validate_tokens_parallel(self, tokens):
         """Validate tokens in parallel for faster startup"""
         if not tokens:
             silent_print("No tokens to validate, using unauthenticated mode")
-            self.status_label.setText("Using unauthenticated mode")
+            # Don't update status label - keep it as "Ready" for user experience
             self.finish_data_loading([])
             return
 
@@ -4898,7 +4987,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if token is not None:
                     # Found a working token, cancel other tasks and proceed
                     silent_print(f"Found working token for user: {username}")
-                    self.status_label.setText(f"Authenticated as {username}")
+                    # Don't update status label - keep it as "Ready" for user experience
 
                     # Cancel remaining tasks
                     for remaining_future in future_to_token:
@@ -4907,12 +4996,11 @@ class FirmwareDownloaderGUI(QMainWindow):
 
                     # Mark token as working and proceed
                     self.github_api.mark_token_working(token)
-                    self.finish_data_loading([token])
+                    silent_print("Background token validation completed - authenticated mode enabled")
                     return
 
         # If we get here, no tokens worked
         silent_print("All tokens failed validation, using unauthenticated mode")
-        self.status_label.setText("Using unauthenticated mode")
         # Try with at least one token anyway, in case validation was too strict
         if tokens:
             silent_print("Attempting to use first token despite validation failure")
@@ -4921,9 +5009,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             if not first_token.startswith('github_pat_'):
                 first_token = f"github_pat_{first_token}"
             self.github_api = GitHubAPI([first_token])
-            self.finish_data_loading([tokens[0]])
+            silent_print("Background token validation completed - fallback mode enabled")
         else:
-            self.finish_data_loading([])
+            silent_print("Background token validation completed - unauthenticated mode enabled")
 
     def finish_data_loading(self, working_tokens):
         """Complete data loading with working tokens"""
@@ -4947,11 +5035,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Start periodic cache cleanup
         self.github_api.cleanup_cache_periodically()
 
-        # Download manifest
-        self.packages = self.config_downloader.download_manifest()
+        # Download manifest (local-first for instant startup)
+        self.packages = self.config_downloader.download_manifest(use_local_first=True)
         if not self.packages:
-            silent_print("ERROR: Failed to download software manifest")
-            self.status_label.setText("Error: Failed to download software manifest")
+            silent_print("ERROR: Failed to load software manifest")
+            self.status_label.setText("Error: Failed to load software manifest")
             return
 
         silent_print(f"Loaded {len(self.packages)} software packages")
@@ -9176,9 +9264,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         except Exception as e:
                             silent_print(f"Failed to stop flash_tool.exe process {pid}: {e}")
                     
-                    # Give processes time to terminate
-                    import time
-                    time.sleep(1)
+                    # Give processes time to terminate (non-blocking)
+                    # Note: Removed blocking sleep to improve startup performance
                     
                     silent_print(f"Stopped {len(flash_tool_processes)} flash_tool.exe processes")
                 else:
@@ -9683,9 +9770,6 @@ if __name__ == "__main__":
                           help="Open only the toolkit window")
         args = parser.parse_args()
         
-        # Clean up redundant files on startup
-        cleanup_redundant_files()
-        
         # Create the application
         app = QApplication(sys.argv)
 
@@ -9700,6 +9784,10 @@ if __name__ == "__main__":
             # Create and show the main window
             window = FirmwareDownloaderGUI()
             window.show()
+        
+        # Clean up redundant files after GUI is shown (non-blocking)
+        from PySide6.QtCore import QTimer
+        QTimer.singleShot(100, cleanup_redundant_files)
 
         # Start the application event loop
         sys.exit(app.exec())
