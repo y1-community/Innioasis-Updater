@@ -2283,9 +2283,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Initialize shortcut settings with defaults (Windows only)
         if platform.system() == "Windows":
+            # Legacy settings (kept for compatibility)
             self.desktop_shortcuts_enabled = True  # Default to enabled
             self.startmenu_shortcuts_enabled = True  # Default to enabled
             self.auto_cleanup_enabled = True  # Default to enabled
+            
+            # New individual shortcut settings with proper defaults
+            self.desktop_updater_enabled = True  # Desktop: Innioasis Updater.lnk
+            self.desktop_toolkit_enabled = False  # Desktop: No Toolkit
+            self.startmenu_updater_enabled = True  # Start Menu: Innioasis Updater.lnk
+            self.startmenu_toolkit_enabled = True  # Start Menu: Innioasis Toolkit.lnk
         
         # Initialize automatic utility updates setting (all platforms)
         self.auto_utility_updates_enabled = True  # Default to enabled
@@ -5942,6 +5949,14 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Loaded preferences (method reset to default): {preferences}")
             else:
                 silent_print("No saved installation preferences found, using defaults")
+                # Ensure defaults are explicitly set for new users
+                if platform.system() == "Windows":
+                    self.desktop_updater_enabled = True  # Desktop: Innioasis Updater.lnk
+                    self.desktop_toolkit_enabled = False  # Desktop: No Toolkit
+                    self.startmenu_updater_enabled = True  # Start Menu: Innioasis Updater.lnk
+                    self.startmenu_toolkit_enabled = True  # Start Menu: Innioasis Toolkit.lnk
+                    self._toolkit_help_dialog_shown = False
+                self.auto_utility_updates_enabled = True  # Check for Utility Updates Automatically ON
         except Exception as e:
             silent_print(f"Error loading installation preferences: {e}")
     
@@ -5952,12 +5967,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             
         try:
             # Apply individual desktop shortcut settings
-            if getattr(self, 'desktop_updater_enabled', True):
+            desktop_updater_enabled = getattr(self, 'desktop_updater_enabled', True)
+            desktop_toolkit_enabled = getattr(self, 'desktop_toolkit_enabled', False)
+            silent_print(f"Desktop shortcuts - Updater: {desktop_updater_enabled}, Toolkit: {desktop_toolkit_enabled}")
+            
+            if desktop_updater_enabled:
                 self.ensure_desktop_updater_shortcut()
             else:
                 self.remove_desktop_updater_shortcut()
             
-            if getattr(self, 'desktop_toolkit_enabled', False):
+            if desktop_toolkit_enabled:
                 self.ensure_desktop_toolkit_shortcut()
             else:
                 self.remove_desktop_toolkit_shortcut()
@@ -6754,6 +6773,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     silent_print("Warning: Could not ensure Skip Update shortcut exists on startup")
             
             # Apply settings silently
+            silent_print(f"Applying startup shortcut settings - Desktop Updater: {getattr(self, 'desktop_updater_enabled', 'NOT SET')}, Desktop Toolkit: {getattr(self, 'desktop_toolkit_enabled', 'NOT SET')}, Start Menu Updater: {getattr(self, 'startmenu_updater_enabled', 'NOT SET')}, Start Menu Toolkit: {getattr(self, 'startmenu_toolkit_enabled', 'NOT SET')}")
             self.apply_shortcut_settings()
             
             silent_print("Startup shortcut settings applied successfully.")
