@@ -6,20 +6,16 @@ Downloads firmware releases from XML manifest and processes them with mtk.py
 
 import sys
 import os
-import zipfile
-import subprocess
-import threading
-import requests
-import configparser
-import json
-import pickle
-import shutil
 import argparse
 from pathlib import Path
-from urllib.parse import urlparse
-from xml.etree import ElementTree as ET
 from datetime import datetime, date
 import random
+import platform
+import time
+import logging
+from collections import defaultdict
+
+# Essential PySide6 imports for immediate GUI display
 from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                                QWidget, QListWidget, QListWidgetItem, QPushButton, QTextEdit,
                                QLabel, QComboBox, QProgressBar, QMessageBox,
@@ -27,12 +23,73 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QFileDialog, QDialog, QTabWidget, QScrollArea)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer, QPropertyAnimation, QEasingCurve, QObject
 from PySide6.QtGui import QFont, QPixmap, QTextDocument, QPalette
-import platform
-import time
-import logging
-from collections import defaultdict
-import random
-from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# Lazy imports - loaded only when needed
+def lazy_import_requests():
+    global requests
+    if 'requests' not in globals():
+        import requests
+    return requests
+
+def lazy_import_zipfile():
+    global zipfile
+    if 'zipfile' not in globals():
+        import zipfile
+    return zipfile
+
+def lazy_import_subprocess():
+    global subprocess
+    if 'subprocess' not in globals():
+        import subprocess
+    return subprocess
+
+def lazy_import_threading():
+    global threading
+    if 'threading' not in globals():
+        import threading
+    return threading
+
+def lazy_import_configparser():
+    global configparser
+    if 'configparser' not in globals():
+        import configparser
+    return configparser
+
+def lazy_import_json():
+    global json
+    if 'json' not in globals():
+        import json
+    return json
+
+def lazy_import_pickle():
+    global pickle
+    if 'pickle' not in globals():
+        import pickle
+    return pickle
+
+def lazy_import_shutil():
+    global shutil
+    if 'shutil' not in globals():
+        import shutil
+    return shutil
+
+def lazy_import_urllib():
+    global urlparse
+    if 'urlparse' not in globals():
+        from urllib.parse import urlparse
+    return urlparse
+
+def lazy_import_xml():
+    global ET
+    if 'ET' not in globals():
+        from xml.etree import ElementTree as ET
+    return ET
+
+def lazy_import_concurrent():
+    global ThreadPoolExecutor, as_completed
+    if 'ThreadPoolExecutor' not in globals():
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+    return ThreadPoolExecutor, as_completed
 
 # Import AppKit for macOS Dock hiding (only on macOS)
 if platform.system() == "Darwin":
@@ -612,6 +669,7 @@ def load_redundant_files_list():
         else:
             # Try remote URL
             silent_print("Loading redundant files list from remote URL")
+            requests = lazy_import_requests()
             response = requests.get("https://innioasis.app/redundant_files.txt", timeout=10)
             response.raise_for_status()
             content = response.text
@@ -701,7 +759,7 @@ def remove_files_by_pattern(directory, pattern):
         pattern_path = directory / pattern
         if pattern_path.exists() and pattern_path.is_dir():
             # Remove entire directory
-            import shutil
+            shutil = lazy_import_shutil()
             shutil.rmtree(pattern_path)
             silent_print(f"Removed redundant directory: {pattern}")
             removed_count += 1
@@ -713,7 +771,7 @@ def remove_files_by_pattern(directory, pattern):
                     silent_print(f"Removed redundant file: {file_path.relative_to(directory)}")
                     removed_count += 1
                 elif file_path.is_dir():
-                    import shutil
+                    shutil = lazy_import_shutil()
                     shutil.rmtree(file_path)
                     silent_print(f"Removed redundant directory: {file_path.relative_to(directory)}")
                     removed_count += 1
@@ -725,7 +783,7 @@ def remove_files_by_pattern(directory, pattern):
                     silent_print(f"Removed redundant file: {file_path.relative_to(directory)}")
                     removed_count += 1
                 elif file_path.is_dir():
-                    import shutil
+                    shutil = lazy_import_shutil()
                     shutil.rmtree(file_path)
                     silent_print(f"Removed redundant directory: {file_path.relative_to(directory)}")
                     removed_count += 1
@@ -848,6 +906,8 @@ class ConfigDownloader:
     def __init__(self):
         self.config_url = "https://innioasis.app/config.ini"
         self.manifest_url = "https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml"
+        # Use lazy import for requests
+        requests = lazy_import_requests()
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
 
@@ -2333,12 +2393,15 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.config_downloader = ConfigDownloader()
+        
+        # Initialize minimal required attributes first for instant startup
+        self.config_downloader = None  # Defer initialization
         self.github_api = None
         self.packages = []
         self.download_worker = None
         self.mtk_worker = None
         self.images_loaded = False  # Track if images are loaded
+        
         # Set default installation method based on platform
         if platform.system() == "Windows":
             self.installation_method = "spflash"  # Default to Method 1 (Guided) on Windows
@@ -2364,38 +2427,43 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize automatic utility updates setting (all platforms)
         self.auto_utility_updates_enabled = True  # Default to enabled
 
-        # Initialize theme monitor for dynamic theme switching
-        self.theme_monitor = ThemeMonitor(self)
-        self.theme_monitor.theme_changed.connect(self.refresh_button_styles)
-        self.theme_monitor.start_monitoring()
+        # Initialize theme monitor for dynamic theme switching (defer heavy operations)
+        self.theme_monitor = None  # Defer initialization
 
         # Initialize UI first for immediate responsiveness
         self.init_ui()
 
+        # Defer all heavy initialization to background with minimal delays
+        # Initialize config downloader in background
+        QTimer.singleShot(1, self._init_config_downloader)
+        
+        # Initialize theme monitor in background
+        QTimer.singleShot(1, self._init_theme_monitor)
+
         # Handle version check file and macOS app update message (non-blocking)
-        QTimer.singleShot(50, self.handle_version_check)
+        QTimer.singleShot(10, self.handle_version_check)
 
         # Clean up any previously extracted files at startup (non-blocking)
-        QTimer.singleShot(50, cleanup_extracted_files)
+        QTimer.singleShot(10, cleanup_extracted_files)
 
         # Clean up orphaned processes at startup (Windows only, non-blocking)
         if platform.system() == "Windows":
-            QTimer.singleShot(50, self.stop_flash_tool_processes)
+            QTimer.singleShot(10, self.stop_flash_tool_processes)
 
         # Check for SP Flash Tool on Windows before loading data
         if platform.system() == "Windows":
             # Delay the flash tool check to avoid blocking startup
-            QTimer.singleShot(100, self.check_sp_flash_tool)
+            QTimer.singleShot(20, self.check_sp_flash_tool)
             # Download troubleshooting shortcuts if missing
-            QTimer.singleShot(200, self.ensure_troubleshooting_shortcuts)
+            QTimer.singleShot(50, self.ensure_troubleshooting_shortcuts)
             # Check for old shortcuts and offer cleanup
-            QTimer.singleShot(400, self.check_and_cleanup_old_shortcuts)
+            QTimer.singleShot(100, self.check_and_cleanup_old_shortcuts)
 
         # Check for failed installation and show troubleshooting options
-        QTimer.singleShot(300, self.check_failed_installation_on_startup)
+        QTimer.singleShot(50, self.check_failed_installation_on_startup)
         
         # Clean up RockboxUtility.zip at startup
-        QTimer.singleShot(500, self.cleanup_rockbox_utility_zip)
+        QTimer.singleShot(100, self.cleanup_rockbox_utility_zip)
         
         # Check for UsbDk cleanup on Windows - DISABLED
         # UsbDk cleanup prompt removed as it doesn't actually remove anything
@@ -2403,35 +2471,51 @@ class FirmwareDownloaderGUI(QMainWindow):
         #     QTimer.singleShot(600, self.check_usbdk_cleanup)
 
         # Ensure troubleshooting shortcuts are available
-        QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
+        QTimer.singleShot(100, self.ensure_troubleshooting_shortcuts_available)
 
         # Download latest updater.py during launch
-        QTimer.singleShot(600, self.download_latest_updater)
+        QTimer.singleShot(150, self.download_latest_updater)
 
         # Preload critical images with web fallback
-        QTimer.singleShot(700, self.preload_critical_images)
+        QTimer.singleShot(200, self.preload_critical_images)
 
         # Load data asynchronously to avoid blocking UI
-        QTimer.singleShot(100, self.load_data)
+        QTimer.singleShot(20, self.load_data)
         
         # Load saved installation preferences
-        QTimer.singleShot(200, self.load_installation_preferences)
+        QTimer.singleShot(30, self.load_installation_preferences)
         
         # Apply shortcut settings on startup (Windows only)
         if platform.system() == "Windows":
-            QTimer.singleShot(300, self.apply_shortcut_settings_on_startup)
+            QTimer.singleShot(50, self.apply_shortcut_settings_on_startup)
         
         # Check for macOS one-time update file and restore preferences
         if platform.system() == "Darwin":
-            QTimer.singleShot(400, self.check_macos_one_time_update)
+            QTimer.singleShot(100, self.check_macos_one_time_update)
         
         # Restore original installation method when session ends
-        QTimer.singleShot(300, self.restore_original_installation_method)
+        QTimer.singleShot(50, self.restore_original_installation_method)
 
         # Set up theme change detection timer
         self.theme_check_timer = QTimer()
         self.theme_check_timer.timeout.connect(self.check_theme_change)
         self.theme_check_timer.start(1000)  # Check every second
+
+    def _init_config_downloader(self):
+        """Initialize config downloader in background"""
+        try:
+            self.config_downloader = ConfigDownloader()
+        except Exception as e:
+            silent_print(f"Error initializing config downloader: {e}")
+
+    def _init_theme_monitor(self):
+        """Initialize theme monitor in background"""
+        try:
+            self.theme_monitor = ThemeMonitor(self)
+            self.theme_monitor.theme_changed.connect(self.refresh_button_styles)
+            self.theme_monitor.start_monitoring()
+        except Exception as e:
+            silent_print(f"Error initializing theme monitor: {e}")
         self.last_theme_state = self.is_dark_mode
 
     def handle_version_check(self):
@@ -4952,6 +5036,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Load configuration and manifest data with instant startup optimization"""
         self.status_label.setText("Loading configuration...")
         silent_print("Loading configuration and manifest data...")
+
+        # Check if config_downloader is initialized, if not, defer loading
+        if self.config_downloader is None:
+            QTimer.singleShot(50, self.load_data)
+            return
 
         # Load manifest first for instant startup (no token validation needed)
         self.packages = self.config_downloader.download_manifest(use_local_first=True)
@@ -10570,7 +10659,7 @@ if __name__ == "__main__":
         
         # Clean up redundant files after GUI is shown (non-blocking)
         from PySide6.QtCore import QTimer
-        QTimer.singleShot(100, cleanup_redundant_files)
+        QTimer.singleShot(10, cleanup_redundant_files)
 
         # Start the application event loop
         sys.exit(app.exec())
