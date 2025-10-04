@@ -5957,7 +5957,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 self.remove_desktop_updater_shortcut()
             
-            if getattr(self, 'desktop_toolkit_enabled', True):
+            if getattr(self, 'desktop_toolkit_enabled', False):
                 self.ensure_desktop_toolkit_shortcut()
             else:
                 self.remove_desktop_toolkit_shortcut()
@@ -6428,12 +6428,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             desktop_path = Path.home() / "Desktop"
             dest_shortcut = desktop_path / "Innioasis Updater.lnk"
             
+            # Check if shortcut already exists and is up to date
+            if dest_shortcut.exists():
+                # Compare file modification times to see if update is needed
+                source_mtime = source_shortcut.stat().st_mtime
+                dest_mtime = dest_shortcut.stat().st_mtime
+                if dest_mtime >= source_mtime:
+                    silent_print("Desktop Innioasis Updater shortcut is already up to date")
+                    return
+            
             # Remove existing shortcut first
             if dest_shortcut.exists():
                 dest_shortcut.unlink()
             
             shutil.copy2(source_shortcut, dest_shortcut)
-            silent_print(f"Created desktop Innioasis Updater shortcut")
+            silent_print(f"Created/updated desktop Innioasis Updater shortcut")
             
         except Exception as e:
             silent_print(f"Error ensuring desktop updater shortcut: {e}")
@@ -6467,12 +6476,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             desktop_path = Path.home() / "Desktop"
             dest_shortcut = desktop_path / "Innioasis Toolkit.lnk"
             
+            # Check if shortcut already exists and is up to date
+            if dest_shortcut.exists():
+                # Compare file modification times to see if update is needed
+                source_mtime = source_shortcut.stat().st_mtime
+                dest_mtime = dest_shortcut.stat().st_mtime
+                if dest_mtime >= source_mtime:
+                    silent_print("Desktop Innioasis Toolkit shortcut is already up to date")
+                    return
+            
             # Remove existing shortcut first
             if dest_shortcut.exists():
                 dest_shortcut.unlink()
             
             shutil.copy2(source_shortcut, dest_shortcut)
-            silent_print(f"Created desktop Innioasis Toolkit shortcut")
+            silent_print(f"Created/updated desktop Innioasis Toolkit shortcut")
             
             # Also ensure Innioasis Updater.lnk is in Toolkit directory for app launching
             self.ensure_toolkit_updater_shortcut()
@@ -6511,12 +6529,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if start_menu_path.exists():
                     dest_shortcut = start_menu_path / "Innioasis Updater.lnk"
                     
+                    # Check if shortcut already exists and is up to date
+                    if dest_shortcut.exists():
+                        # Compare file modification times to see if update is needed
+                        source_mtime = source_shortcut.stat().st_mtime
+                        dest_mtime = dest_shortcut.stat().st_mtime
+                        if dest_mtime >= source_mtime:
+                            silent_print("Start menu Innioasis Updater shortcut is already up to date")
+                            break  # Skip creation if already up to date
+                    
                     # Remove existing shortcut first
                     if dest_shortcut.exists():
                         dest_shortcut.unlink()
                     
                     shutil.copy2(source_shortcut, dest_shortcut)
-                    silent_print(f"Created start menu Innioasis Updater shortcut: {start_menu_path}")
+                    silent_print(f"Created/updated start menu Innioasis Updater shortcut: {start_menu_path}")
                     break  # Only create in first available start menu path
             
         except Exception as e:
@@ -6555,12 +6582,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if start_menu_path.exists():
                     dest_shortcut = start_menu_path / "Innioasis Toolkit.lnk"
                     
+                    # Check if shortcut already exists and is up to date
+                    if dest_shortcut.exists():
+                        # Compare file modification times to see if update is needed
+                        source_mtime = source_shortcut.stat().st_mtime
+                        dest_mtime = dest_shortcut.stat().st_mtime
+                        if dest_mtime >= source_mtime:
+                            silent_print("Start menu Innioasis Toolkit shortcut is already up to date")
+                            break  # Skip creation if already up to date
+                    
                     # Remove existing shortcut first
                     if dest_shortcut.exists():
                         dest_shortcut.unlink()
                     
                     shutil.copy2(source_shortcut, dest_shortcut)
-                    silent_print(f"Created start menu Innioasis Toolkit shortcut: {start_menu_path}")
+                    silent_print(f"Created/updated start menu Innioasis Toolkit shortcut: {start_menu_path}")
                     break  # Only create in first available start menu path
             
             # Also ensure Innioasis Updater.lnk is in Toolkit directory for app launching
@@ -6698,9 +6734,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
             
         try:
-            # Load preferences first to ensure we have the latest settings
-            self.load_installation_preferences()
-            
+            # Note: Preferences are already loaded by load_installation_preferences() called earlier
             # Check for .no_updates file to determine if updates are disabled
             no_updates_file = Path(".no_updates")
             updates_disabled_by_file = no_updates_file.exists()
