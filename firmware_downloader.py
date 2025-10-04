@@ -5686,32 +5686,20 @@ class FirmwareDownloaderGUI(QMainWindow):
     
     def show_tools_dialog(self):
         """Show Toolkit dialog with all tools and utilities"""
-        silent_print(f"show_tools_dialog called on platform: {platform.system()}")
-        
         # For Windows users, check if Toolkit directory exists and open it directly
         if platform.system() == "Windows":
             current_dir = Path.cwd()
             toolkit_dir = current_dir / "Toolkit"
             
             if toolkit_dir.exists():
-                # Toolkit directory exists, open it directly in File Explorer
-                try:
-                    silent_print(f"Opening Toolkit directory: {toolkit_dir}")
-                    subprocess.run(["explorer", str(toolkit_dir)], check=True)
-                    self.status_label.setText("Toolkit folder opened in File Explorer")
-                    silent_print("Toolkit directory opened successfully, returning early")
-                    return  # Exit early, no need to show dialog
-                except Exception as e:
-                    silent_print(f"Error opening Toolkit folder: {e}")
-                    # Continue to show dialog if opening folder fails
-            else:
-                silent_print("Toolkit directory not found, showing dialog instead")
+                # Toolkit directory exists, open it directly in File Explorer and return
+                subprocess.run(["explorer", str(toolkit_dir)])
+                self.status_label.setText("Toolkit folder opened in File Explorer")
+                return  # Exit early, no need to show dialog
         
         # Show dialog only if:
         # 1. Not on Windows, OR
-        # 2. On Windows but Toolkit directory doesn't exist, OR  
-        # 3. On Windows but failed to open Toolkit directory
-        silent_print("Creating Toolkit dialog - this should only happen if Toolkit directory not found or not on Windows")
+        # 2. On Windows but Toolkit directory doesn't exist
         dialog = QDialog(self)
         dialog.setWindowTitle("Innioasis Toolkit")
         dialog.setFixedSize(600, 500)
