@@ -3562,7 +3562,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater v1.6.7{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater v1.6.8{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -7978,7 +7978,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.6.7"]
+        clean_lines = ["Version 1.6.8"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
