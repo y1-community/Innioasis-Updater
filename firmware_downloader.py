@@ -2360,7 +2360,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.6.7"
+            current_version = "1.6.8"
             
             # Read the last used version
             last_version = None
@@ -5694,8 +5694,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             if toolkit_dir.exists():
                 # Toolkit directory exists, open it directly in File Explorer
                 try:
+                    silent_print(f"Opening Toolkit directory: {toolkit_dir}")
                     subprocess.run(["explorer", str(toolkit_dir)], check=True)
                     self.status_label.setText("Toolkit folder opened in File Explorer")
+                    silent_print("Toolkit directory opened successfully, returning early")
                     return  # Exit early, no need to show dialog
                 except Exception as e:
                     silent_print(f"Error opening Toolkit folder: {e}")
