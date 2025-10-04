@@ -79,35 +79,6 @@ class CrossPlatformHelper:
             return False
 
     @staticmethod
-    def restart_mac_app():
-        """Restart Innioasis Updater.app from Applications folder using osascript"""
-        try:
-            # Use osascript to quit current app and launch fresh instance
-            applescript = '''
-            tell application "Innioasis Updater"
-                quit
-            end tell
-            delay 1
-            tell application "Finder"
-                open application file "Innioasis Updater.app" of folder "Applications" of startup disk
-            end tell
-            '''
-            
-            subprocess.run(['osascript', '-e', applescript], check=True)
-            logging.info("Successfully restarted Innioasis Updater.app using osascript")
-            return True
-        except Exception as e:
-            logging.error("Failed to restart Innioasis Updater.app with osascript: %s", e)
-            # Fallback to simple open command
-            try:
-                subprocess.Popen(['open', '/Applications/Innioasis Updater.app'])
-                logging.info("Fallback: launched Innioasis Updater.app with open command")
-                return True
-            except Exception as e2:
-                logging.error("Fallback also failed: %s", e2)
-                return False
-
-    @staticmethod
     def check_drivers_and_architecture():
         """Check driver availability and system architecture for Windows users"""
         if platform.system() != "Windows":
@@ -478,9 +449,9 @@ class UpdateProgressDialog(QDialog):
         layout.addWidget(title_label); layout.addWidget(self.status_label); layout.addWidget(self.progress_bar); layout.addWidget(self.update_button)
 
         if mode == 'update':
-            # Show GUI immediately, start update process with small delay
-            self.status_label.setText("Starting update process...")
-            QTimer.singleShot(50, self.start_update_process)
+            self.update_worker = UpdateWorker(); self.update_worker.progress_updated.connect(self.progress_bar.setValue)
+            self.update_worker.status_updated.connect(self.status_label.setText); self.update_worker.update_completed.connect(self.on_update_completed)
+            self.update_worker.start()
         else: # No update needed
             self.setFixedSize(450, 180)
             self.status_label.setText("You're all up to date! Launching now...")
@@ -493,16 +464,8 @@ class UpdateProgressDialog(QDialog):
             self.force_update_button.clicked.connect(self.run_force_update)
             layout.addWidget(self.force_update_button)
             
-            # Auto-launch after 2 seconds if user doesn't click anything (faster)
-            QTimer.singleShot(2000, self.accept)
-
-    def start_update_process(self):
-        """Start the update process in background"""
-        self.update_worker = UpdateWorker()
-        self.update_worker.progress_updated.connect(self.progress_bar.setValue)
-        self.update_worker.status_updated.connect(self.status_label.setText)
-        self.update_worker.update_completed.connect(self.on_update_completed)
-        self.update_worker.start()
+            # Auto-launch after 3 seconds if user doesn't click anything
+            QTimer.singleShot(3000, self.accept)
 
     def run_without_update(self):
         """Run the app without updating"""
@@ -671,35 +634,25 @@ def cleanup_redundant_files():
         logging.error(f"Error during redundant files cleanup: {e}")
 
 def perform_initial_cleanup():
-    """Removes obsolete or platform-specific files and folders (optimized for speed)."""
+    """Removes obsolete or platform-specific files and folders."""
     logging.info("Performing initial directory cleanup...")
     platform_info = CrossPlatformHelper.get_platform_info()
     
-    # Use list() to avoid iterator issues and make it faster
-    try:
-        paths = list(Path.cwd().iterdir())
-    except OSError as e:
-        logging.warning("Could not list directory contents: %s", e)
-        return
-    
-    for path in paths:
+    for path in Path.cwd().iterdir():
         try:
             if path.is_dir() and path.name == '.web_scripts':
-                shutil.rmtree(path)
-                logging.info("Removed obsolete folder: %s", path.name)
+                shutil.rmtree(path); logging.info("Removed obsolete folder: %s", path.name)
                 continue
             if not platform_info['is_windows']:
                 if path.suffix.lower() in ['.exe', '.dll', '.lnk']:
-                    path.unlink()
-                    logging.info("Removed Windows-specific file: %s", path.name)
+                    path.unlink(); logging.info("Removed Windows-specific file: %s", path.name)
                 elif path.is_dir() and 'trouble' in path.name.lower():
-                    shutil.rmtree(path)
-                    logging.info("Removed Windows-specific folder: %s", path.name)
+                    shutil.rmtree(path); logging.info("Removed Windows-specific folder: %s", path.name)
         except OSError as e:
             logging.warning("Could not remove %s during cleanup: %s", path.name, e)
     
-    # Clean up redundant files after initial cleanup (non-blocking)
-    QTimer.singleShot(50, cleanup_redundant_files)
+    # Clean up redundant files after initial cleanup
+    cleanup_redundant_files()
 
 def download_troubleshooters(current_dir, temp_dir):
     try:
@@ -825,30 +778,8 @@ def launch_y1_helper_arm64():
     
     return False
 
-def launch_windows_skip_update_shortcut():
-    """Launch firmware_downloader.py using the Skip Update and Launch.lnk shortcut on Windows"""
-    current_dir = Path.cwd()
-    
-    # Look for the Skip Update and Launch.lnk shortcut
-    skip_update_shortcut = current_dir / "Troubleshooting" / "More Tools and Troubleshooters" / "Fix PC App and PC App Updates" / "Skip Update and Launch.lnk"
-    
-    if skip_update_shortcut.exists():
-        try:
-            logging.info("Found Skip Update and Launch.lnk shortcut, launching...")
-            # Use os.startfile to launch the .lnk file
-            os.startfile(str(skip_update_shortcut))
-            logging.info("Successfully launched Skip Update and Launch.lnk")
-            return True
-        except Exception as e:
-            logging.error("Failed to launch Skip Update and Launch.lnk: %s", e)
-            # Fallback to direct launch
-            return launch_firmware_downloader_direct()
-    else:
-        logging.warning("Skip Update and Launch.lnk not found, falling back to direct launch")
-        return launch_firmware_downloader_direct()
-
-def launch_firmware_downloader_direct():
-    """Reliably launch firmware_downloader.py with multiple fallback methods (direct launch)"""
+def launch_firmware_downloader():
+    """Reliably launch firmware_downloader.py with multiple fallback methods"""
     current_dir = Path.cwd()
     platform_info = CrossPlatformHelper.get_platform_info()
     
@@ -936,15 +867,13 @@ def launch_firmware_downloader_direct():
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s', filename='updater.log', filemode='w')
+    perform_initial_cleanup()
     
     parser = argparse.ArgumentParser(description="Innioasis Updater Script", add_help=False)
     parser.add_argument("-f", "--force", action="store_true", help="Force the update.")
     args, _ = parser.parse_known_args()
 
     app = QApplication(sys.argv)
-    
-    # Perform cleanup after GUI is created (non-blocking)
-    QTimer.singleShot(100, perform_initial_cleanup)
     
     mode = 'update' # Default mode
     platform_info = CrossPlatformHelper.get_platform_info()
@@ -992,27 +921,25 @@ def main():
         logging.error("Could not update timestamp file: %s", e)
     
     # Always launch the main app
-    # Check if we're on macOS - restart the .app bundle
+    # Check if we're on macOS - launch the .app bundle
     if platform_info['is_macos']:
-        logging.info("macOS detected - restarting Innioasis Updater.app from Applications folder...")
-        launch_success = CrossPlatformHelper.restart_mac_app()
+        logging.info("macOS detected - launching Innioasis Updater.app from Applications folder...")
+        launch_success = CrossPlatformHelper.launch_mac_app()
         if not launch_success:
-            logging.error("Failed to restart Innioasis Updater.app")
+            logging.error("Failed to launch Innioasis Updater.app, falling back to Python script...")
+            # Fallback to Python script if .app launch fails
+            launch_success = launch_firmware_downloader()
+            if not launch_success:
+                logging.error("Failed to launch firmware_downloader.py as fallback")
     # Check if we're on ARM64 Windows
     elif platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
         logging.info("ARM64 Windows detected - launching y1_helper.py...")
         launch_success = launch_y1_helper_arm64()
         if not launch_success:
             logging.error("Failed to launch y1_helper.py")
-    # Check if we're on regular Windows (x86-64)
-    elif platform_info['is_windows']:
-        logging.info("Windows detected - launching using Skip Update and Launch.lnk shortcut...")
-        launch_success = launch_windows_skip_update_shortcut()
-        if not launch_success:
-            logging.error("Failed to launch using Windows shortcut")
     else:
         logging.info("Attempting to launch firmware_downloader.py...")
-        launch_success = launch_firmware_downloader_direct()
+        launch_success = launch_firmware_downloader()
         if not launch_success:
             logging.error("Failed to launch firmware_downloader.py")
     
