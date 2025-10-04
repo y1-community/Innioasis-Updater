@@ -638,40 +638,21 @@ def perform_initial_cleanup():
     logging.info("Performing initial directory cleanup...")
     platform_info = CrossPlatformHelper.get_platform_info()
     
-    # Use a more efficient approach with list comprehension and batch operations
-    paths_to_remove = []
+    for path in Path.cwd().iterdir():
+        try:
+            if path.is_dir() and path.name == '.web_scripts':
+                shutil.rmtree(path); logging.info("Removed obsolete folder: %s", path.name)
+                continue
+            if not platform_info['is_windows']:
+                if path.suffix.lower() in ['.exe', '.dll', '.lnk']:
+                    path.unlink(); logging.info("Removed Windows-specific file: %s", path.name)
+                elif path.is_dir() and 'trouble' in path.name.lower():
+                    shutil.rmtree(path); logging.info("Removed Windows-specific folder: %s", path.name)
+        except OSError as e:
+            logging.warning("Could not remove %s during cleanup: %s", path.name, e)
     
-    try:
-        for path in Path.cwd().iterdir():
-            try:
-                if path.is_dir() and path.name == '.web_scripts':
-                    paths_to_remove.append(('dir', path))
-                    continue
-                if not platform_info['is_windows']:
-                    if path.suffix.lower() in ['.exe', '.dll', '.lnk']:
-                        paths_to_remove.append(('file', path))
-                    elif path.is_dir() and 'trouble' in path.name.lower():
-                        paths_to_remove.append(('dir', path))
-            except OSError:
-                continue  # Skip problematic paths
-        
-        # Batch remove operations
-        for path_type, path in paths_to_remove:
-            try:
-                if path_type == 'dir':
-                    shutil.rmtree(path)
-                    logging.info("Removed obsolete folder: %s", path.name)
-                else:
-                    path.unlink()
-                    logging.info("Removed Windows-specific file: %s", path.name)
-            except OSError as e:
-                logging.warning("Could not remove %s during cleanup: %s", path.name, e)
-        
-        # Clean up redundant files after initial cleanup (defer to background)
-        QTimer.singleShot(100, cleanup_redundant_files)
-        
-    except Exception as e:
-        logging.error("Error during initial cleanup: %s", e)
+    # Clean up redundant files after initial cleanup
+    cleanup_redundant_files()
 
 def download_troubleshooters(current_dir, temp_dir):
     try:
@@ -886,15 +867,13 @@ def launch_firmware_downloader():
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s', filename='updater.log', filemode='w')
+    perform_initial_cleanup()
     
     parser = argparse.ArgumentParser(description="Innioasis Updater Script", add_help=False)
     parser.add_argument("-f", "--force", action="store_true", help="Force the update.")
     args, _ = parser.parse_known_args()
 
     app = QApplication(sys.argv)
-    
-    # Defer heavy cleanup operations to background after app is created
-    QTimer.singleShot(1, perform_initial_cleanup)
     
     mode = 'update' # Default mode
     platform_info = CrossPlatformHelper.get_platform_info()
