@@ -6592,6 +6592,14 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.package_list.addItem("Please select a software type")
             return
 
+        # Check if we have tokens available - if not, this might be startup with empty tokens
+        has_tokens = hasattr(self.github_api, 'tokens') and len(self.github_api.tokens) > 0
+        if not has_tokens:
+            silent_print("No tokens available yet - this might be startup, will retry after tokens are loaded")
+            # Set up a retry timer for when tokens are loaded
+            QTimer.singleShot(1500, self.retry_releases_after_tokens_loaded)
+            return
+
         # Set up timeout timer
         timeout_timer = QTimer()
         timeout_timer.setSingleShot(True)
@@ -6616,8 +6624,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.package_list.clear()
 
         if not releases:
-            self.package_list.addItem(f"No releases found for {selected_repo}")
-            return
+            # Check if this might be due to no tokens (startup issue)
+            has_tokens = hasattr(self.github_api, 'tokens') and len(self.github_api.tokens) > 0
+            if not has_tokens:
+                silent_print("No releases found and no tokens available - this might be startup issue, will retry")
+                QTimer.singleShot(1500, self.retry_releases_after_tokens_loaded)
+                return
+            else:
+                self.package_list.addItem(f"No releases found for {selected_repo}")
+                return
 
         # Add releases to the list with detailed information
         for release in releases:
@@ -6676,6 +6691,18 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Keep status as Ready - don't change it for release loading
         silent_print("Releases loaded successfully")
+
+    def retry_releases_after_tokens_loaded(self):
+        """Retry loading releases after tokens have been loaded in background"""
+        # Check if tokens are now available
+        has_tokens = hasattr(self.github_api, 'tokens') and len(self.github_api.tokens) > 0
+        if has_tokens:
+            silent_print("Tokens are now available, retrying release loading...")
+            self.populate_releases_list()
+        else:
+            silent_print("Tokens still not available, will retry again...")
+            # Retry again after another 1.5 seconds
+            QTimer.singleShot(1500, self.retry_releases_after_tokens_loaded)
 
     def handle_releases_timeout(self):
         """Handle timeout when loading releases"""
