@@ -2354,9 +2354,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows":
             QTimer.singleShot(300, self.apply_shortcut_settings_on_startup)
         
-        # Check for macOS one-time update file and restore preferences
-        if platform.system() == "Darwin":
-            QTimer.singleShot(400, self.check_macos_one_time_update)
         
         # Restore original installation method when session ends
         QTimer.singleShot(300, self.restore_original_installation_method)
@@ -9634,125 +9631,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.warning(self, "Update Error", f"Error launching updater: {str(e)}")
 
-    def launch_macos_update(self):
-        """Launch macOS-specific update flow with preference preservation"""
-        try:
-            # Store current auto-updates preference
-            current_auto_updates = getattr(self, 'auto_utility_updates_enabled', True)
-            
-            # Set update preference to check automatically
-            self.auto_utility_updates_enabled = True
-            self.save_installation_preferences()
-            
-            # Create .mac_one_time_update file to track this one-time update
-            mac_one_time_file = Path(".mac_one_time_update")
-            mac_one_time_file.write_text(f"original_auto_updates={current_auto_updates}")
-            silent_print(f"Created .mac_one_time_update file with original preference: {current_auto_updates}")
-            
-            # Delete .last_update_check and .no_updates files
-            last_update_file = Path(".last_update_check")
-            no_updates_file = Path(".no_updates")
-            
-            if last_update_file.exists():
-                last_update_file.unlink()
-                silent_print("Deleted .last_update_check file")
-            
-            if no_updates_file.exists():
-                no_updates_file.unlink()
-                silent_print("Deleted .no_updates file")
-            
-            # Launch Innioasis Updater.app from Applications folder
-            app_path = Path("/Applications/Innioasis Updater.app")
-            if app_path.exists():
-                # Launch the app using subprocess.Popen with detach=True to prevent termination
-                subprocess.Popen(['open', str(app_path)], 
-                               stdout=subprocess.DEVNULL, 
-                               stderr=subprocess.DEVNULL, 
-                               stdin=subprocess.DEVNULL)
-                silent_print("Launched Innioasis Updater.app from Applications folder")
-                
-                # Give the app time to start before terminating this process
-                import time
-                time.sleep(1.5)
-                
-                # Terminate this process cleanly without affecting the launched app
-                import sys
-                sys.exit(0)
-            else:
-                QMessageBox.warning(self, "Update Error", "Innioasis Updater.app not found in Applications folder")
-                
-        except Exception as e:
-            QMessageBox.warning(self, "Update Error", f"Error launching macOS update: {str(e)}")
 
-    def launch_windows_update(self):
-        """Launch Windows-specific update using Toolkit shortcut"""
-        try:
-            # Check for Toolkit Check for Updates.lnk shortcut
-            toolkit_update_shortcut = Path("Toolkit/Check for Updates.lnk")
-            
-            if toolkit_update_shortcut.exists():
-                # Launch the Toolkit shortcut
-                subprocess.Popen(['cmd', '/c', 'start', '', str(toolkit_update_shortcut)], 
-                               shell=True,
-                               stdout=subprocess.DEVNULL, 
-                               stderr=subprocess.DEVNULL, 
-                               stdin=subprocess.DEVNULL)
-                silent_print("Launched Toolkit Check for Updates.lnk")
-                
-                # Give the process time to start before terminating this process
-                import time
-                time.sleep(1.5)
-                
-                # Terminate this process cleanly without affecting the launched process
-                import sys
-                sys.exit(0)
-            else:
-                # Fallback to standard updater.py if Toolkit shortcut not found
-                silent_print("Toolkit Check for Updates.lnk not found, using standard updater.py")
-                self.run_updater()
-                
-        except Exception as e:
-            QMessageBox.warning(self, "Update Error", f"Error launching Windows update: {str(e)}")
-
-    def check_macos_one_time_update(self):
-        """Check for .mac_one_time_update file and restore original preferences"""
-        try:
-            mac_one_time_file = Path(".mac_one_time_update")
-            if mac_one_time_file.exists():
-                # Read the original preference
-                content = mac_one_time_file.read_text().strip()
-                silent_print(f"Found .mac_one_time_update file: {content}")
-                
-                # Parse the original preference
-                if "original_auto_updates=" in content:
-                    original_preference = content.split("=")[1].strip()
-                    original_auto_updates = original_preference.lower() == "true"
-                    
-                    # Restore the original preference
-                    self.auto_utility_updates_enabled = original_auto_updates
-                    self.save_installation_preferences()
-                    
-                    # Create or delete .no_updates file based on restored preference
-                    no_updates_file = Path(".no_updates")
-                    if not original_auto_updates:
-                        # User originally had auto-updates disabled, create .no_updates file
-                        no_updates_file.write_text("Automatic utility updates disabled by user")
-                        silent_print("Restored original preference: auto-updates disabled")
-                    else:
-                        # User originally had auto-updates enabled, ensure .no_updates file is deleted
-                        if no_updates_file.exists():
-                            no_updates_file.unlink()
-                        silent_print("Restored original preference: auto-updates enabled")
-                    
-                    # Delete the one-time update file
-                    mac_one_time_file.unlink()
-                    silent_print("Deleted .mac_one_time_update file and restored original preferences")
-                else:
-                    silent_print("Invalid .mac_one_time_update file format, deleting it")
-                    mac_one_time_file.unlink()
-                    
-        except Exception as e:
-            silent_print(f"Error checking macOS one-time update file: {e}")
 
     def terminate_conflicting_processes_for_update(self):
         """Terminate adb and libusb processes before launching updater"""
@@ -10372,7 +10251,7 @@ read -n 1
             silent_print(f"Failed to download latest updater.py: {e}")
 
     def check_for_utility_updates(self):
-        """Platform-specific update check and launch"""
+        """Launch updater.py to check for utility updates"""
         try:
             # Silently try to download the latest updater.py
             try:
@@ -10388,14 +10267,8 @@ read -n 1
             except Exception as e:
                 silent_print(f"Failed to download latest updater.py, using local copy: {e}")
             
-            # Platform-specific update launch
-            if platform.system() == "Darwin":  # macOS
-                self.launch_macos_update()
-            elif platform.system() == "Windows":
-                self.launch_windows_update()
-            else:
-                # Non-Windows, non-macOS systems - use standard updater.py
-                self.run_updater()
+            # Launch updater.py for all platforms
+            self.run_updater()
             
         except Exception as e:
             silent_print(f"Error in check_for_utility_updates: {e}")
