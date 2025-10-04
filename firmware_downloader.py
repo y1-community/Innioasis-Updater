@@ -5378,68 +5378,48 @@ class FirmwareDownloaderGUI(QMainWindow):
             shortcut_title.setStyleSheet("font-size: 14px; font-weight: bold; margin: 5px;")
             shortcut_layout.addWidget(shortcut_title)
             
-            # Desktop shortcuts toggle
-            self.desktop_shortcuts_checkbox = QCheckBox("Create Desktop Shortcuts")
-            self.desktop_shortcuts_checkbox.setToolTip("When enabled, Innioasis Updater will create and maintain desktop shortcuts")
+            # Desktop shortcuts section
+            desktop_group = QGroupBox("Desktop Shortcuts")
+            desktop_layout = QVBoxLayout(desktop_group)
             
-            # Set checkbox state based on saved preference
-            desktop_shortcuts = getattr(self, 'desktop_shortcuts_enabled', True)
-            self.desktop_shortcuts_checkbox.setChecked(desktop_shortcuts)
+            self.desktop_updater_checkbox = QCheckBox("Innioasis Updater")
+            self.desktop_updater_checkbox.setToolTip("Create Innioasis Updater shortcut on desktop")
+            desktop_updater = getattr(self, 'desktop_updater_enabled', True)
+            self.desktop_updater_checkbox.setChecked(desktop_updater)
+            self.desktop_updater_checkbox.toggled.connect(self.on_desktop_updater_toggled)
+            desktop_layout.addWidget(self.desktop_updater_checkbox)
             
-            # Connect real-time change handler
-            self.desktop_shortcuts_checkbox.toggled.connect(self.on_desktop_shortcuts_toggled)
+            self.desktop_toolkit_checkbox = QCheckBox("Innioasis Toolkit")
+            self.desktop_toolkit_checkbox.setToolTip("Create Innioasis Toolkit shortcut on desktop")
+            desktop_toolkit = getattr(self, 'desktop_toolkit_enabled', True)
+            self.desktop_toolkit_checkbox.setChecked(desktop_toolkit)
+            self.desktop_toolkit_checkbox.toggled.connect(self.on_desktop_toolkit_toggled)
+            desktop_layout.addWidget(self.desktop_toolkit_checkbox)
             
-            shortcut_layout.addWidget(self.desktop_shortcuts_checkbox)
+            shortcut_layout.addWidget(desktop_group)
             
-            # Start menu shortcuts toggle
-            self.startmenu_shortcuts_checkbox = QCheckBox("Create Start Menu Shortcuts")
-            self.startmenu_shortcuts_checkbox.setToolTip("When enabled, Innioasis Updater will create and maintain start menu shortcuts")
+            # Start menu shortcuts section
+            startmenu_group = QGroupBox("Start Menu Shortcuts")
+            startmenu_layout = QVBoxLayout(startmenu_group)
             
-            # Set checkbox state based on saved preference
-            startmenu_shortcuts = getattr(self, 'startmenu_shortcuts_enabled', True)
-            self.startmenu_shortcuts_checkbox.setChecked(startmenu_shortcuts)
+            self.startmenu_updater_checkbox = QCheckBox("Innioasis Updater")
+            self.startmenu_updater_checkbox.setToolTip("Create Innioasis Updater shortcut in start menu")
+            startmenu_updater = getattr(self, 'startmenu_updater_enabled', True)
+            self.startmenu_updater_checkbox.setChecked(startmenu_updater)
+            self.startmenu_updater_checkbox.toggled.connect(self.on_startmenu_updater_toggled)
+            startmenu_layout.addWidget(self.startmenu_updater_checkbox)
             
-            # Connect real-time change handler
-            self.startmenu_shortcuts_checkbox.toggled.connect(self.on_startmenu_shortcuts_toggled)
+            self.startmenu_toolkit_checkbox = QCheckBox("Innioasis Toolkit")
+            self.startmenu_toolkit_checkbox.setToolTip("Create Innioasis Toolkit shortcut in start menu")
+            startmenu_toolkit = getattr(self, 'startmenu_toolkit_enabled', True)
+            self.startmenu_toolkit_checkbox.setChecked(startmenu_toolkit)
+            self.startmenu_toolkit_checkbox.toggled.connect(self.on_startmenu_toolkit_toggled)
+            startmenu_layout.addWidget(self.startmenu_toolkit_checkbox)
             
-            shortcut_layout.addWidget(self.startmenu_shortcuts_checkbox)
+            shortcut_layout.addWidget(startmenu_group)
             
-            # Innioasis Toolkit shortcut toggle
-            self.toolkit_shortcut_checkbox = QCheckBox("Create Innioasis Toolkit Shortcut")
-            self.toolkit_shortcut_checkbox.setToolTip("When enabled, Innioasis Toolkit shortcut will be created in the start menu")
-            
-            # Set checkbox state based on saved preference (default enabled)
-            toolkit_shortcut = getattr(self, 'toolkit_shortcut_enabled', True)
-            self.toolkit_shortcut_checkbox.setChecked(toolkit_shortcut)
-            
-            # Connect real-time change handler
-            self.toolkit_shortcut_checkbox.toggled.connect(self.on_toolkit_shortcut_toggled)
-            
-            shortcut_layout.addWidget(self.toolkit_shortcut_checkbox)
-            
-            # Cleanup options
-            cleanup_group = QGroupBox("Shortcut Cleanup")
-            cleanup_layout = QVBoxLayout(cleanup_group)
-            
-            cleanup_desc = QLabel("Automatically clean up old shortcuts and replace them with current ones:")
-            cleanup_layout.addWidget(cleanup_desc)
-            
-            self.auto_cleanup_checkbox = QCheckBox("Enable Automatic Cleanup")
-            self.auto_cleanup_checkbox.setToolTip("When enabled, old shortcuts will be automatically cleaned up and replaced")
-            
-            # Set checkbox state based on saved preference
-            auto_cleanup = getattr(self, 'auto_cleanup_enabled', True)
-            self.auto_cleanup_checkbox.setChecked(auto_cleanup)
-            
-            cleanup_layout.addWidget(self.auto_cleanup_checkbox)
-            
-            # Manual cleanup button
-            cleanup_btn = QPushButton("Clean Up Shortcuts Now")
-            cleanup_btn.setToolTip("Manually clean up old shortcuts and create current ones")
-            cleanup_btn.clicked.connect(self.manual_shortcut_cleanup)
-            cleanup_layout.addWidget(cleanup_btn)
-            
-            shortcut_layout.addWidget(cleanup_group)
+            # Note: Automatic cleanup is always enabled and not exposed to users
+            # as it's required for proper shortcut management
             
             # Add shortcut tab to tab widget
             tab_widget.addTab(shortcut_tab, "Shortcuts")
@@ -5826,13 +5806,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Save shortcut settings (Windows only)
         if platform.system() == "Windows":
-            self.desktop_shortcuts_enabled = self.desktop_shortcuts_checkbox.isChecked()
-            self.startmenu_shortcuts_enabled = self.startmenu_shortcuts_checkbox.isChecked()
-            self.toolkit_shortcut_enabled = self.toolkit_shortcut_checkbox.isChecked()
-            self.auto_cleanup_enabled = self.auto_cleanup_checkbox.isChecked()
+            self.desktop_updater_enabled = self.desktop_updater_checkbox.isChecked()
+            self.desktop_toolkit_enabled = self.desktop_toolkit_checkbox.isChecked()
+            self.startmenu_updater_enabled = self.startmenu_updater_checkbox.isChecked()
+            self.startmenu_toolkit_enabled = self.startmenu_toolkit_checkbox.isChecked()
+            # auto_cleanup_enabled is always True and not user-configurable
             
             # Check if no shortcuts are selected and warn user
-            if not self.desktop_shortcuts_enabled and not self.startmenu_shortcuts_enabled:
+            has_any_shortcuts = (self.desktop_updater_enabled or self.desktop_toolkit_enabled or 
+                               self.startmenu_updater_enabled or self.startmenu_toolkit_enabled)
+            if not has_any_shortcuts:
                 if not self.show_no_shortcuts_warning():
                     return  # Don't save settings if user cancels
             
@@ -5892,10 +5875,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Add shortcut preferences (Windows only)
             if platform.system() == "Windows":
                 preferences.update({
-                    'desktop_shortcuts_enabled': getattr(self, 'desktop_shortcuts_enabled', True),
-                    'startmenu_shortcuts_enabled': getattr(self, 'startmenu_shortcuts_enabled', True),
-                    'toolkit_shortcut_enabled': getattr(self, 'toolkit_shortcut_enabled', True),
-                    'auto_cleanup_enabled': getattr(self, 'auto_cleanup_enabled', True)
+                    'desktop_updater_enabled': getattr(self, 'desktop_updater_enabled', True),
+                    'desktop_toolkit_enabled': getattr(self, 'desktop_toolkit_enabled', True),
+                    'startmenu_updater_enabled': getattr(self, 'startmenu_updater_enabled', True),
+                    'startmenu_toolkit_enabled': getattr(self, 'startmenu_toolkit_enabled', True)
+                    # auto_cleanup_enabled is always True and not saved to preferences
                 })
             
             # Save to a JSON file in the same directory
@@ -5930,14 +5914,15 @@ class FirmwareDownloaderGUI(QMainWindow):
                 
                 # Load shortcut preferences (Windows only)
                 if platform.system() == "Windows":
-                    if 'desktop_shortcuts_enabled' in preferences:
-                        self.desktop_shortcuts_enabled = preferences['desktop_shortcuts_enabled']
-                    if 'startmenu_shortcuts_enabled' in preferences:
-                        self.startmenu_shortcuts_enabled = preferences['startmenu_shortcuts_enabled']
-                    if 'toolkit_shortcut_enabled' in preferences:
-                        self.toolkit_shortcut_enabled = preferences['toolkit_shortcut_enabled']
-                    if 'auto_cleanup_enabled' in preferences:
-                        self.auto_cleanup_enabled = preferences['auto_cleanup_enabled']
+                    if 'desktop_updater_enabled' in preferences:
+                        self.desktop_updater_enabled = preferences['desktop_updater_enabled']
+                    if 'desktop_toolkit_enabled' in preferences:
+                        self.desktop_toolkit_enabled = preferences['desktop_toolkit_enabled']
+                    if 'startmenu_updater_enabled' in preferences:
+                        self.startmenu_updater_enabled = preferences['startmenu_updater_enabled']
+                    if 'startmenu_toolkit_enabled' in preferences:
+                        self.startmenu_toolkit_enabled = preferences['startmenu_toolkit_enabled']
+                    # auto_cleanup_enabled is always True and not loaded from preferences
                 
                 # Load auto-update preferences (all platforms)
                 if 'auto_utility_updates_enabled' in preferences:
@@ -5955,23 +5940,27 @@ class FirmwareDownloaderGUI(QMainWindow):
             return
             
         try:
-            # Apply desktop shortcut settings
-            if self.desktop_shortcuts_enabled:
-                self.ensure_desktop_shortcuts()
+            # Apply individual desktop shortcut settings
+            if getattr(self, 'desktop_updater_enabled', True):
+                self.ensure_desktop_updater_shortcut()
             else:
-                self.remove_desktop_shortcuts()
+                self.remove_desktop_updater_shortcut()
             
-            # Apply start menu shortcut settings
-            if self.startmenu_shortcuts_enabled:
-                self.ensure_startmenu_shortcuts()
+            if getattr(self, 'desktop_toolkit_enabled', True):
+                self.ensure_desktop_toolkit_shortcut()
             else:
-                self.remove_startmenu_shortcuts()
+                self.remove_desktop_toolkit_shortcut()
             
-            # Apply toolkit shortcut settings
-            if getattr(self, 'toolkit_shortcut_enabled', True):
-                self.ensure_innioasis_toolkit_shortcuts()
+            # Apply individual start menu shortcut settings
+            if getattr(self, 'startmenu_updater_enabled', True):
+                self.ensure_startmenu_updater_shortcut()
             else:
-                self.remove_toolkit_shortcuts()
+                self.remove_startmenu_updater_shortcut()
+            
+            if getattr(self, 'startmenu_toolkit_enabled', True):
+                self.ensure_startmenu_toolkit_shortcut()
+            else:
+                self.remove_startmenu_toolkit_shortcut()
                 
         except Exception as e:
             silent_print(f"Error applying shortcut settings: {e}")
@@ -6410,6 +6399,172 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error removing toolkit shortcuts: {e}")
     
+    def ensure_desktop_updater_shortcut(self):
+        """Ensure Innioasis Updater shortcut exists on desktop"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            current_dir = Path.cwd()
+            source_shortcut = self.get_appropriate_shortcut_source()
+            if not source_shortcut or not source_shortcut.exists():
+                silent_print("Innioasis Updater shortcut source not found")
+                return
+            
+            desktop_path = Path.home() / "Desktop"
+            dest_shortcut = desktop_path / "Innioasis Updater.lnk"
+            
+            # Remove existing shortcut first
+            if dest_shortcut.exists():
+                dest_shortcut.unlink()
+            
+            shutil.copy2(source_shortcut, dest_shortcut)
+            silent_print(f"Created desktop Innioasis Updater shortcut")
+            
+        except Exception as e:
+            silent_print(f"Error ensuring desktop updater shortcut: {e}")
+    
+    def remove_desktop_updater_shortcut(self):
+        """Remove Innioasis Updater shortcut from desktop"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            desktop_path = Path.home() / "Desktop"
+            shortcut = desktop_path / "Innioasis Updater.lnk"
+            if shortcut.exists():
+                shortcut.unlink()
+                silent_print(f"Removed desktop Innioasis Updater shortcut")
+        except Exception as e:
+            silent_print(f"Error removing desktop updater shortcut: {e}")
+    
+    def ensure_desktop_toolkit_shortcut(self):
+        """Ensure Innioasis Toolkit shortcut exists on desktop"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            current_dir = Path.cwd()
+            source_shortcut = current_dir / "Innioasis Toolkit.lnk"
+            if not source_shortcut.exists():
+                silent_print("Innioasis Toolkit.lnk not found in current directory")
+                return
+            
+            desktop_path = Path.home() / "Desktop"
+            dest_shortcut = desktop_path / "Innioasis Toolkit.lnk"
+            
+            # Remove existing shortcut first
+            if dest_shortcut.exists():
+                dest_shortcut.unlink()
+            
+            shutil.copy2(source_shortcut, dest_shortcut)
+            silent_print(f"Created desktop Innioasis Toolkit shortcut")
+            
+        except Exception as e:
+            silent_print(f"Error ensuring desktop toolkit shortcut: {e}")
+    
+    def remove_desktop_toolkit_shortcut(self):
+        """Remove Innioasis Toolkit shortcut from desktop"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            desktop_path = Path.home() / "Desktop"
+            shortcut = desktop_path / "Innioasis Toolkit.lnk"
+            if shortcut.exists():
+                shortcut.unlink()
+                silent_print(f"Removed desktop Innioasis Toolkit shortcut")
+        except Exception as e:
+            silent_print(f"Error removing desktop toolkit shortcut: {e}")
+    
+    def ensure_startmenu_updater_shortcut(self):
+        """Ensure Innioasis Updater shortcut exists in start menu"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            current_dir = Path.cwd()
+            source_shortcut = self.get_appropriate_shortcut_source()
+            if not source_shortcut or not source_shortcut.exists():
+                silent_print("Innioasis Updater shortcut source not found")
+                return
+            
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    dest_shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    
+                    # Remove existing shortcut first
+                    if dest_shortcut.exists():
+                        dest_shortcut.unlink()
+                    
+                    shutil.copy2(source_shortcut, dest_shortcut)
+                    silent_print(f"Created start menu Innioasis Updater shortcut: {start_menu_path}")
+                    break  # Only create in first available start menu path
+            
+        except Exception as e:
+            silent_print(f"Error ensuring start menu updater shortcut: {e}")
+    
+    def remove_startmenu_updater_shortcut(self):
+        """Remove Innioasis Updater shortcut from start menu"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    shortcut = start_menu_path / "Innioasis Updater.lnk"
+                    if shortcut.exists():
+                        shortcut.unlink()
+                        silent_print(f"Removed start menu Innioasis Updater shortcut: {start_menu_path}")
+        except Exception as e:
+            silent_print(f"Error removing start menu updater shortcut: {e}")
+    
+    def ensure_startmenu_toolkit_shortcut(self):
+        """Ensure Innioasis Toolkit shortcut exists in start menu"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            current_dir = Path.cwd()
+            source_shortcut = current_dir / "Innioasis Toolkit.lnk"
+            if not source_shortcut.exists():
+                silent_print("Innioasis Toolkit.lnk not found in current directory")
+                return
+            
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    dest_shortcut = start_menu_path / "Innioasis Toolkit.lnk"
+                    
+                    # Remove existing shortcut first
+                    if dest_shortcut.exists():
+                        dest_shortcut.unlink()
+                    
+                    shutil.copy2(source_shortcut, dest_shortcut)
+                    silent_print(f"Created start menu Innioasis Toolkit shortcut: {start_menu_path}")
+                    break  # Only create in first available start menu path
+            
+        except Exception as e:
+            silent_print(f"Error ensuring start menu toolkit shortcut: {e}")
+    
+    def remove_startmenu_toolkit_shortcut(self):
+        """Remove Innioasis Toolkit shortcut from start menu"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            start_menu_paths = self.get_all_start_menu_paths()
+            for start_menu_path in start_menu_paths:
+                if start_menu_path.exists():
+                    shortcut = start_menu_path / "Innioasis Toolkit.lnk"
+                    if shortcut.exists():
+                        shortcut.unlink()
+                        silent_print(f"Removed start menu Innioasis Toolkit shortcut: {start_menu_path}")
+        except Exception as e:
+            silent_print(f"Error removing start menu toolkit shortcut: {e}")
+    
     def apply_shortcut_settings_on_startup(self):
         """Apply shortcut settings on startup based on user preferences - silent operation"""
         if platform.system() != "Windows":
@@ -6445,71 +6600,79 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error applying startup shortcut settings: {e}")
     
-    def on_desktop_shortcuts_toggled(self, checked):
-        """Handle real-time desktop shortcuts checkbox changes"""
-        if platform.system() != "Windows":
-            return
-            
-        try:
-            # Update the setting immediately
-            self.desktop_shortcuts_enabled = checked
-            
-            # Apply the change immediately
-            if checked:
-                # Ensure Skip Update shortcut exists if auto-updates are disabled
-                if not getattr(self, 'auto_utility_updates_enabled', True):
-                    self.ensure_skip_update_shortcut_exists()
-                self.ensure_desktop_shortcuts()
-                silent_print("Desktop shortcuts enabled and created.")
-            else:
-                self.remove_desktop_shortcuts()
-                silent_print("Desktop shortcuts disabled and removed.")
-                
-        except Exception as e:
-            silent_print(f"Error handling desktop shortcuts toggle: {e}")
+    # Old toggle handlers removed - replaced with individual shortcut handlers
     
-    def on_startmenu_shortcuts_toggled(self, checked):
-        """Handle real-time start menu shortcuts checkbox changes"""
+    def on_desktop_updater_toggled(self, checked):
+        """Handle real-time desktop Innioasis Updater shortcut checkbox changes"""
         if platform.system() != "Windows":
             return
             
         try:
-            # Update the setting immediately
-            self.startmenu_shortcuts_enabled = checked
+            self.desktop_updater_enabled = checked
             
-            # Apply the change immediately
             if checked:
-                # Ensure Skip Update shortcut exists if auto-updates are disabled
-                if not getattr(self, 'auto_utility_updates_enabled', True):
-                    self.ensure_skip_update_shortcut_exists()
-                self.ensure_startmenu_shortcuts()
-                silent_print("Start menu shortcuts enabled and created.")
+                self.ensure_desktop_updater_shortcut()
+                silent_print("Desktop Innioasis Updater shortcut enabled and created.")
             else:
-                self.remove_startmenu_shortcuts()
-                silent_print("Start menu shortcuts disabled and removed.")
+                self.remove_desktop_updater_shortcut()
+                silent_print("Desktop Innioasis Updater shortcut disabled and removed.")
                 
         except Exception as e:
-            silent_print(f"Error handling start menu shortcuts toggle: {e}")
+            silent_print(f"Error handling desktop updater shortcut toggle: {e}")
     
-    def on_toolkit_shortcut_toggled(self, checked):
-        """Handle real-time toolkit shortcut checkbox changes"""
+    def on_desktop_toolkit_toggled(self, checked):
+        """Handle real-time desktop Innioasis Toolkit shortcut checkbox changes"""
         if platform.system() != "Windows":
             return
             
         try:
-            # Update the setting immediately
-            self.toolkit_shortcut_enabled = checked
+            self.desktop_toolkit_enabled = checked
             
-            # Apply the change immediately
             if checked:
-                self.ensure_innioasis_toolkit_shortcuts()
-                silent_print("Innioasis Toolkit shortcut enabled and created.")
+                self.ensure_desktop_toolkit_shortcut()
+                silent_print("Desktop Innioasis Toolkit shortcut enabled and created.")
             else:
-                self.remove_toolkit_shortcuts()
-                silent_print("Innioasis Toolkit shortcut disabled and removed.")
+                self.remove_desktop_toolkit_shortcut()
+                silent_print("Desktop Innioasis Toolkit shortcut disabled and removed.")
                 
         except Exception as e:
-            silent_print(f"Error handling toolkit shortcut toggle: {e}")
+            silent_print(f"Error handling desktop toolkit shortcut toggle: {e}")
+    
+    def on_startmenu_updater_toggled(self, checked):
+        """Handle real-time start menu Innioasis Updater shortcut checkbox changes"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            self.startmenu_updater_enabled = checked
+            
+            if checked:
+                self.ensure_startmenu_updater_shortcut()
+                silent_print("Start menu Innioasis Updater shortcut enabled and created.")
+            else:
+                self.remove_startmenu_updater_shortcut()
+                silent_print("Start menu Innioasis Updater shortcut disabled and removed.")
+                
+        except Exception as e:
+            silent_print(f"Error handling start menu updater shortcut toggle: {e}")
+    
+    def on_startmenu_toolkit_toggled(self, checked):
+        """Handle real-time start menu Innioasis Toolkit shortcut checkbox changes"""
+        if platform.system() != "Windows":
+            return
+            
+        try:
+            self.startmenu_toolkit_enabled = checked
+            
+            if checked:
+                self.ensure_startmenu_toolkit_shortcut()
+                silent_print("Start menu Innioasis Toolkit shortcut enabled and created.")
+            else:
+                self.remove_startmenu_toolkit_shortcut()
+                silent_print("Start menu Innioasis Toolkit shortcut disabled and removed.")
+                
+        except Exception as e:
+            silent_print(f"Error handling start menu toolkit shortcut toggle: {e}")
     
     def restore_original_installation_method(self):
         """Restore the original installation method if it was temporarily overridden"""
