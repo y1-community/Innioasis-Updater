@@ -64,12 +64,6 @@ class CrossPlatformHelper:
         if not info['is_macos']:
             return False
         
-        # Check if we're already running from within the app bundle
-        current_dir = Path.cwd()
-        if "Innioasis Updater.app" in str(current_dir):
-            logging.info("Already running from within Innioasis Updater.app bundle, launching firmware_downloader.py directly")
-            return CrossPlatformHelper.launch_firmware_downloader_direct()
-        
         app_path = Path("/Applications/Innioasis Updater.app")
         if not app_path.exists():
             logging.warning("Innioasis Updater.app not found in Applications folder")
@@ -85,22 +79,33 @@ class CrossPlatformHelper:
             return False
 
     @staticmethod
-    def launch_firmware_downloader_direct():
-        """Launch firmware_downloader.py directly (for use when already in app bundle)"""
-        current_dir = Path.cwd()
-        script_path = current_dir / "firmware_downloader.py"
-        
-        if script_path.exists():
+    def restart_mac_app():
+        """Restart Innioasis Updater.app from Applications folder using osascript"""
+        try:
+            # Use osascript to quit current app and launch fresh instance
+            applescript = '''
+            tell application "Innioasis Updater"
+                quit
+            end tell
+            delay 1
+            tell application "Finder"
+                open application file "Innioasis Updater.app" of folder "Applications" of startup disk
+            end tell
+            '''
+            
+            subprocess.run(['osascript', '-e', applescript], check=True)
+            logging.info("Successfully restarted Innioasis Updater.app using osascript")
+            return True
+        except Exception as e:
+            logging.error("Failed to restart Innioasis Updater.app with osascript: %s", e)
+            # Fallback to simple open command
             try:
-                subprocess.Popen([sys.executable, str(script_path)])
-                logging.info("Successfully launched firmware_downloader.py directly")
+                subprocess.Popen(['open', '/Applications/Innioasis Updater.app'])
+                logging.info("Fallback: launched Innioasis Updater.app with open command")
                 return True
-            except Exception as e:
-                logging.error("Failed to launch firmware_downloader.py directly: %s", e)
+            except Exception as e2:
+                logging.error("Fallback also failed: %s", e2)
                 return False
-        else:
-            logging.error("firmware_downloader.py not found in current directory")
-            return False
 
     @staticmethod
     def check_drivers_and_architecture():
@@ -987,16 +992,12 @@ def main():
         logging.error("Could not update timestamp file: %s", e)
     
     # Always launch the main app
-    # Check if we're on macOS - launch the .app bundle
+    # Check if we're on macOS - restart the .app bundle
     if platform_info['is_macos']:
-        logging.info("macOS detected - launching Innioasis Updater.app from Applications folder...")
-        launch_success = CrossPlatformHelper.launch_mac_app()
+        logging.info("macOS detected - restarting Innioasis Updater.app from Applications folder...")
+        launch_success = CrossPlatformHelper.restart_mac_app()
         if not launch_success:
-            logging.error("Failed to launch Innioasis Updater.app, falling back to Python script...")
-            # Fallback to Python script if .app launch fails
-            launch_success = launch_firmware_downloader_direct()
-            if not launch_success:
-                logging.error("Failed to launch firmware_downloader.py as fallback")
+            logging.error("Failed to restart Innioasis Updater.app")
     # Check if we're on ARM64 Windows
     elif platform_info['is_windows'] and CrossPlatformHelper.check_drivers_and_architecture()['is_arm64']:
         logging.info("ARM64 Windows detected - launching y1_helper.py...")
