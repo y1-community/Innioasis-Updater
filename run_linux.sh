@@ -107,6 +107,73 @@ check_root() {
     return 0
 }
 
+# Check for partial installations and clean them up
+check_and_cleanup_partial_installation() {
+    log "Checking for previous partial installations..."
+    
+    # Get installation directory
+    get_install_dir
+    
+    local cleanup_needed=false
+    
+    # Check for incomplete installation directory
+    if [ -d "$INSTALL_DIR" ]; then
+        # Check if installation is incomplete
+        if [ ! -f "$INSTALL_DIR/firmware_downloader.py" ] || [ ! -f "$INSTALL_DIR/README.md" ]; then
+            warning "Found incomplete installation directory: $INSTALL_DIR"
+            cleanup_needed=true
+        else
+            log "Found existing complete installation at: $INSTALL_DIR"
+            return 0
+        fi
+    fi
+    
+    # Check for temporary download directories
+    local temp_dirs=("$HOME/innioasis-updater-temp" "/tmp/innioasis-updater-*" "$HOME/.cache/innioasis-updater")
+    for temp_dir in "${temp_dirs[@]}"; do
+        if ls $temp_dir >/dev/null 2>&1; then
+            warning "Found temporary installation files: $temp_dir"
+            cleanup_needed=true
+        fi
+    done
+    
+    # Check for incomplete launcher scripts
+    if [ -f "$HOME/.local/bin/innioasis-updater" ] && [ ! -f "$INSTALL_DIR/firmware_downloader.py" ]; then
+        warning "Found launcher script but missing main application files"
+        cleanup_needed=true
+    fi
+    
+    if [ "$cleanup_needed" = true ]; then
+        log "Partial installation detected. Cleaning up..."
+        
+        # Remove incomplete installation directory
+        if [ -d "$INSTALL_DIR" ]; then
+            rm -rf "$INSTALL_DIR"
+            success "Removed incomplete installation directory"
+        fi
+        
+        # Remove temporary directories
+        for temp_dir in "${temp_dirs[@]}"; do
+            if ls $temp_dir >/dev/null 2>&1; then
+                rm -rf $temp_dir
+                success "Removed temporary directory: $temp_dir"
+            fi
+        done
+        
+        # Remove incomplete launcher
+        if [ -f "$HOME/.local/bin/innioasis-updater" ] && [ ! -d "$INSTALL_DIR" ]; then
+            rm -f "$HOME/.local/bin/innioasis-updater"
+            success "Removed incomplete launcher script"
+        fi
+        
+        log "Cleanup completed. Ready for fresh installation."
+    else
+        log "No partial installation detected."
+    fi
+    
+    return 0
+}
+
 # Check if sudo is available
 check_sudo() {
     if ! command -v sudo >/dev/null 2>&1; then
@@ -1398,6 +1465,13 @@ main() {
         exit 1
     fi
     
+    # Check for partial installations and clean them up
+    if ! check_and_cleanup_partial_installation; then
+        error "Partial installation cleanup failed"
+        pause_before_exit
+        exit 1
+    fi
+    
     # Check if sudo is available
     if ! check_sudo; then
         error "Sudo check failed"
@@ -1493,6 +1567,7 @@ Options:
   -u, --uninstall Uninstall Innioasis Updater
   -l, --launch   Launch Innioasis Updater (if already installed)
   --update       Update Innioasis Updater to latest version
+  --cleanup      Clean up partial installations and temporary files
 
 Examples:
   $0                    # Install Innioasis Updater
@@ -1500,6 +1575,7 @@ Examples:
   $0 --uninstall        # Uninstall Innioasis Updater
   $0 --launch           # Launch Innioasis Updater
   $0 --update           # Update to latest version
+  $0 --cleanup          # Clean up partial installations
 
 Requirements:
   - Python 3.6 or higher
@@ -1664,6 +1740,10 @@ case "${1:-}" in
         ;;
     --update)
         update
+        exit 0
+        ;;
+    --cleanup)
+        check_and_cleanup_partial_installation
         exit 0
         ;;
     -i|--install|"")
