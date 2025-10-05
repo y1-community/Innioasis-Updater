@@ -1297,9 +1297,6 @@ EOF
     
     return 0
 }
-    
-    return 0
-}
 
 # Show completion message and offer to launch
 show_completion_message() {
