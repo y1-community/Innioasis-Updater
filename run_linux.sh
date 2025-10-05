@@ -116,6 +116,78 @@ check_sudo() {
     return 0
 }
 
+# Setup virtual environment
+setup_virtual_environment() {
+    log "Setting up Python virtual environment..."
+    
+    # Get installation directory
+    get_install_dir
+    
+    # Create virtual environment in installation directory
+    VENV_DIR="$INSTALL_DIR/venv"
+    
+    if [ -d "$VENV_DIR" ]; then
+        log "Virtual environment already exists, removing old one..."
+        rm -rf "$VENV_DIR"
+    fi
+    
+    # Create new virtual environment
+    if python3 -m venv "$VENV_DIR"; then
+        success "Virtual environment created at $VENV_DIR"
+    else
+        error "Failed to create virtual environment"
+        return 1
+    fi
+    
+    # Activate virtual environment and install packages
+    log "Installing Python packages in virtual environment..."
+    if source "$VENV_DIR/bin/activate" && pip install --upgrade pip; then
+        success "pip upgraded in virtual environment"
+    else
+        error "Failed to upgrade pip in virtual environment"
+        return 1
+    fi
+    
+    # Install all required packages
+    if source "$VENV_DIR/bin/activate" && pip install $PYTHON_PACKAGES; then
+        success "Python packages installed in virtual environment"
+    else
+        error "Failed to install Python packages in virtual environment"
+        return 1
+    fi
+    
+    # Create activation script
+    cat > "$INSTALL_DIR/activate_venv.sh" << EOF
+#!/bin/bash
+# Activate Innioasis Updater virtual environment
+source "$VENV_DIR/bin/activate"
+echo "Virtual environment activated for Innioasis Updater"
+EOF
+    chmod +x "$INSTALL_DIR/activate_venv.sh"
+    
+    success "Virtual environment setup completed"
+    return 0
+}
+
+# Fix Cryptodome import statements in Innioasis Updater code
+fix_cryptodome_imports() {
+    log "Fixing Cryptodome import statements..."
+    
+    # Get installation directory
+    get_install_dir
+    
+    # Fix all Python files that have incorrect Cryptodome imports
+    if find "$INSTALL_DIR" -name "*.py" -exec grep -l "from Cryptodome" {} \; 2>/dev/null | head -1 | grep -q .; then
+        log "Found files with incorrect Cryptodome imports, fixing..."
+        find "$INSTALL_DIR" -name "*.py" -exec sed -i 's/from Cryptodome/from Crypto/g' {} \;
+        success "Cryptodome import statements fixed"
+    else
+        log "No incorrect Cryptodome imports found"
+    fi
+    
+    return 0
+}
+
 # Install Python packages via pip as fallback
 install_python_packages_via_pip() {
     log "Installing Python packages via pip..."
@@ -128,7 +200,7 @@ install_python_packages_via_pip() {
     
     # Install packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome usb pyusb libusb1 pyserial adbutils"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     if pip3 install --user --break-system-packages $PYTHON_PACKAGES 2>/dev/null; then
         success "Python packages installed via pip successfully"
@@ -593,7 +665,7 @@ install_generic_deps() {
     
     # Install Python packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodome usb pyusb libusb1 pyserial adbutils"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodome usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     log "Installing Python packages..."
     if ! pip3 install --user --break-system-packages $PYTHON_PACKAGES 2>/dev/null; then
@@ -1123,6 +1195,11 @@ if [ ! -f "firmware_downloader.py" ]; then
     exit 1
 fi
 
+# Activate virtual environment if it exists
+if [ -f "venv/bin/activate" ]; then
+    source venv/bin/activate
+fi
+
 # Launch the application
 exec python3 firmware_downloader.py "\$@"
 EOF
@@ -1159,6 +1236,11 @@ cd "$INSTALL_DIR" || {
 if [ ! -f "firmware_downloader.py" ]; then
     echo "Error: firmware_downloader.py not found in $INSTALL_DIR" >&2
     exit 1
+fi
+
+# Activate virtual environment if it exists
+if [ -f "venv/bin/activate" ]; then
+    source venv/bin/activate
 fi
 
 # Launch the application
@@ -1355,6 +1437,13 @@ main() {
         warning "You may need to install them manually"
     fi
     
+    # Setup virtual environment
+    if ! setup_virtual_environment; then
+        error "Virtual environment setup failed"
+        pause_before_exit
+        exit 1
+    fi
+    
     # Setup udev rules
     if ! setup_udev_rules; then
         error "udev rules setup failed"
@@ -1369,6 +1458,12 @@ main() {
         error "Innioasis Updater installation failed"
         pause_before_exit
         exit 1
+    fi
+    
+    # Fix Cryptodome import statements
+    if ! fix_cryptodome_imports; then
+        warning "Failed to fix Cryptodome imports"
+        warning "You may need to fix import statements manually"
     fi
     
     # Create desktop entry
