@@ -1521,13 +1521,9 @@ uninstall() {
     # Get installation directory
     get_install_dir
     
-    # Remove installation directory
+    # Remove installation directory (user directory - no sudo needed)
     if [ -d "$INSTALL_DIR" ]; then
-        if [[ "$INSTALL_DIR" == /opt/* ]]; then
-            sudo rm -rf "$INSTALL_DIR"
-        else
-            rm -rf "$INSTALL_DIR"
-        fi
+        rm -rf "$INSTALL_DIR"
         success "Removed installation directory: $INSTALL_DIR"
     fi
     
@@ -1641,10 +1637,7 @@ launch() {
     if command -v innioasis-updater >/dev/null 2>&1; then
         log "Using launcher script: innioasis-updater"
         innioasis-updater
-    elif [[ "$INSTALL_DIR" == /opt/* ]] && [ -f "/usr/local/bin/innioasis-updater" ]; then
-        log "Using system launcher: /usr/local/bin/innioasis-updater"
-        /usr/local/bin/innioasis-updater
-    elif [[ "$INSTALL_DIR" != /opt/* ]] && [ -f "$HOME/.local/bin/innioasis-updater" ]; then
+    elif [ -f "$HOME/.local/bin/innioasis-updater" ]; then
         log "Using user launcher: $HOME/.local/bin/innioasis-updater"
         "$HOME/.local/bin/innioasis-updater"
     elif [ -f "$INSTALL_DIR/firmware_downloader.py" ]; then
