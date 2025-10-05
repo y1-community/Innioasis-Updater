@@ -2366,7 +2366,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.6.8"
+            current_version = "1.6.9"
             
             # Read the last used version
             last_version = None
@@ -3590,7 +3590,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater v1.6.8{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater v1.6.9{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -3798,6 +3798,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Use native styling - no custom stylesheet for automatic theme adaptation
         # Use default cursor for native OS feel
         update_layout.addWidget(self.update_btn_right)
+        
+        # Check for updates and show button only if newer version is available
+        QTimer.singleShot(2000, self.check_for_updates_and_show_button)
         right_layout.addLayout(update_layout)
 
         # Status group
@@ -7413,7 +7416,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Disable the update button during MTK installation"""
         if hasattr(self, 'update_btn_right'):
             self.update_btn_right.setEnabled(False)
-            self.update_btn_right.setText("Check for Utility Updates")
         # Also disable settings button during operations
         self.settings_btn.setEnabled(False)
         if hasattr(self, 'toolkit_btn'):
@@ -7423,7 +7425,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Enable the update button when returning to ready state"""
         if hasattr(self, 'update_btn_right'):
             self.update_btn_right.setEnabled(True)
-            self.update_btn_right.setText("Check for Utility Updates")
         # Also enable settings button when operations are complete
         self.settings_btn.setEnabled(True)
         if hasattr(self, 'toolkit_btn'):
@@ -7455,9 +7456,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             if hasattr(self, 'download_btn'):
                 self.download_btn.setVisible(True)
             
-            # Show update button (for utility updates)
+            # Re-check for updates and show button if newer version available
             if hasattr(self, 'update_btn_right'):
-                self.update_btn_right.setVisible(True)
+                QTimer.singleShot(500, self.check_for_updates_and_show_button)
             
             # Show install from zip button if it exists
             self.show_install_zip_button()
@@ -8233,7 +8234,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.6.8"]
+        clean_lines = ["Version 1.6.9"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -9876,6 +9877,94 @@ read -n 1
             silent_print("Latest updater.py downloaded successfully")
         except Exception as e:
             silent_print(f"Failed to download latest updater.py: {e}")
+
+    def check_for_updates_and_show_button(self):
+        """Check GitHub for newer version and show update button only if needed"""
+        try:
+            # Get latest release from GitHub
+            latest_version = self.get_latest_github_version()
+            if latest_version:
+                current_version = "1.6.9"
+                
+                # Compare versions
+                if self.compare_versions(latest_version, current_version) > 0:
+                    # Newer version available - show button
+                    self.update_btn_right.setText("Updates Available")
+                    self.update_btn_right.setToolTip(f"New version {latest_version} available (current: {current_version})")
+                    self.update_btn_right.setVisible(True)
+                    silent_print(f"Newer version available: {latest_version} (current: {current_version})")
+                else:
+                    # Same or older version - hide button
+                    self.update_btn_right.setVisible(False)
+                    silent_print(f"No updates needed (latest: {latest_version}, current: {current_version})")
+            else:
+                # Failed to get version - hide button to be safe
+                self.update_btn_right.setVisible(False)
+                silent_print("Failed to check for updates - hiding update button")
+                
+        except Exception as e:
+            silent_print(f"Error checking for updates: {e}")
+            # On error, hide the button to be safe
+            self.update_btn_right.setVisible(False)
+
+    def get_latest_github_version(self):
+        """Get the latest version from GitHub releases"""
+        try:
+            import requests
+            
+            # Try with authentication first if tokens are available
+            headers = {'Accept': 'application/vnd.github.v3+json'}
+            if hasattr(self, 'github_api') and hasattr(self.github_api, 'tokens') and self.github_api.tokens:
+                token = self.github_api.get_next_token()
+                if token:
+                    headers['Authorization'] = f'token {token}'
+            
+            # Get latest release
+            response = requests.get(
+                'https://api.github.com/repos/team-slide/Innioasis-Updater/releases/latest',
+                headers=headers,
+                timeout=10
+            )
+            
+            if response.status_code == 200:
+                release_data = response.json()
+                tag_name = release_data.get('tag_name', '')
+                # Remove 'v' prefix if present
+                version = tag_name.lstrip('v')
+                silent_print(f"Latest GitHub version: {version}")
+                return version
+            else:
+                silent_print(f"GitHub API returned status {response.status_code}")
+                return None
+                
+        except Exception as e:
+            silent_print(f"Error fetching latest version from GitHub: {e}")
+            return None
+
+    def compare_versions(self, version1, version2):
+        """Compare two version strings. Returns 1 if v1 > v2, -1 if v1 < v2, 0 if equal"""
+        try:
+            # Split version strings and convert to integers
+            v1_parts = [int(x) for x in version1.split('.')]
+            v2_parts = [int(x) for x in version2.split('.')]
+            
+            # Pad shorter version with zeros
+            max_length = max(len(v1_parts), len(v2_parts))
+            v1_parts.extend([0] * (max_length - len(v1_parts)))
+            v2_parts.extend([0] * (max_length - len(v2_parts)))
+            
+            # Compare each part
+            for i in range(max_length):
+                if v1_parts[i] > v2_parts[i]:
+                    return 1
+                elif v1_parts[i] < v2_parts[i]:
+                    return -1
+            
+            return 0
+            
+        except Exception as e:
+            silent_print(f"Error comparing versions {version1} and {version2}: {e}")
+            return 0
 
     def check_for_utility_updates(self):
         """Silently download and run the latest updater.py"""
