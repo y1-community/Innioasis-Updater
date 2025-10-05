@@ -3629,7 +3629,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         device_type_layout.addWidget(self.device_type_combo)
 
         # Add help button with tooltip (to the right of dropdown) - using native styling
-        help_btn = QPushButton("?")
+        help_btn = QPushButton("Type?")
         # Use native styling - no custom stylesheet for automatic theme adaptation
         # Use default cursor for native OS feel
         help_btn.setToolTip("Try Type A System Software first. If your scroll wheel doesn't respond after installation, install one of the Type B options.")
