@@ -3737,7 +3737,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         coffee_layout = QHBoxLayout()
 
         # Creator credit
-        creator_label = QLabel("Created by Ryan Specter of Team Slide")
+        creator_label = QLabel("Made with 🩵 by Y1 users, <u><i>for</i></u> Y1 users")
         creator_label.setStyleSheet("""
             QLabel {
                 color: #666666;
@@ -3782,7 +3782,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         about_btn = QPushButton("About")
         # Use native styling - no custom stylesheet for automatic theme adaptation
         # Use default cursor for native OS feel
-        about_btn.clicked.connect(self.show_settings_dialog)
+        about_btn.clicked.connect(lambda: self.show_settings_dialog("about"))
         coffee_layout.addWidget(about_btn)
 
         right_layout.addLayout(coffee_layout)
