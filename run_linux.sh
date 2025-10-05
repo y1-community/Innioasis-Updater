@@ -185,6 +185,74 @@ fix_cryptodome_imports() {
         log "No incorrect Cryptodome imports found"
     fi
     
+    # Fix firmware_downloader.py to use virtual environment Python for mtk.py calls
+    log "Updating firmware_downloader.py to use virtual environment..."
+    firmware_downloader="$INSTALL_DIR/firmware_downloader.py"
+    
+    if [ -f "$firmware_downloader" ]; then
+        # Create backup
+        cp "$firmware_downloader" "$firmware_downloader.backup"
+        
+        # Create a Python script to fix the firmware_downloader.py
+        cat > "$INSTALL_DIR/fix_firmware_downloader.py" << 'EOF'
+#!/usr/bin/env python3
+import re
+import sys
+
+def fix_firmware_downloader(file_path):
+    """Fix firmware_downloader.py to use virtual environment Python for mtk.py calls"""
+    
+    with open(file_path, 'r') as f:
+        content = f.read()
+    
+    # Fix the main mtk.py call in the run() method
+    # Replace sys.executable with python_executable
+    content = re.sub(
+        r'(\s+)cmd = \[\s*sys\.executable, "mtk\.py"',
+        r'\1# Use virtual environment Python if available, otherwise use system Python\n\1python_executable = sys.executable\n\1venv_python = os.path.join(os.getcwd(), "venv", "bin", "python")\n\1if os.path.exists(venv_python):\n\1    python_executable = venv_python\n\1\n\1cmd = [\n\1    python_executable, "mtk.py"',
+        content
+    )
+    
+    # Fix the terminal command generation for Linux
+    content = re.sub(
+        r'python3 mtk\.py w uboot,bootimg,recovery,android,usrdata lk\.bin,boot\.img,recovery\.img,system\.img,userdata\.img',
+        r'$(if [ -f "venv/bin/python" ]; then echo "./venv/bin/python"; else echo "python3"; fi) mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img',
+        content
+    )
+    
+    # Fix the macOS terminal script
+    content = re.sub(
+        r'# Run MTK command with python3 \(same as used in regular installation\)\npython3 mtk\.py w uboot,bootimg,recovery,android,usrdata lk\.bin,boot\.img,recovery\.img,system\.img,userdata\.img',
+        r'# Run MTK command with virtual environment Python if available, otherwise python3\nif [ -f "venv/bin/python" ]; then\n    ./venv/bin/python mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\nelse\n    python3 mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\nfi',
+        content
+    )
+    
+    with open(file_path, 'w') as f:
+        f.write(content)
+    
+    print(f"Fixed {file_path} to use virtual environment")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 fix_firmware_downloader.py <firmware_downloader.py>")
+        sys.exit(1)
+    
+    fix_firmware_downloader(sys.argv[1])
+EOF
+        
+        # Run the fix script
+        if python3 "$INSTALL_DIR/fix_firmware_downloader.py" "$firmware_downloader"; then
+            success "firmware_downloader.py updated to use virtual environment"
+            rm -f "$INSTALL_DIR/fix_firmware_downloader.py"
+        else
+            warning "Failed to update firmware_downloader.py"
+            # Restore backup
+            mv "$firmware_downloader.backup" "$firmware_downloader"
+        fi
+    else
+        warning "firmware_downloader.py not found, skipping virtual environment fix"
+    fi
+    
     return 0
 }
 
