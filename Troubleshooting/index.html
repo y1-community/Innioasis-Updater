@@ -253,6 +253,16 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin: 30px 0;
+            transition: all 0.5s ease;
+        }
+
+        .platform-selector.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+            margin: 0;
+            height: 0;
+            overflow: hidden;
         }
         
         /* Responsive platform selector spacing */
@@ -323,17 +333,39 @@
         }
 
         .platform-card .status {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent-success);
+            display: none; /* Hide status dots */
         }
 
         .platform-card .status.coming-soon {
-            background: var(--accent-warning);
+            display: none; /* Hide status dots */
+        }
+
+        /* Change Platform Link */
+        .change-platform-btn {
+            display: none;
+            margin: 12px auto 0 auto;
+            padding: 0;
+            background: none;
+            color: rgba(100, 100, 100, 0.8);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-align: center;
+            text-decoration: underline;
+            text-decoration-color: rgba(100, 100, 100, 0.4);
+            text-underline-offset: 2px;
+        }
+
+        .change-platform-btn:hover {
+            color: rgba(60, 60, 60, 1);
+            text-decoration-color: rgba(60, 60, 60, 0.7);
+            text-decoration-thickness: 1px;
+        }
+
+        .change-platform-btn.show {
+            display: block;
         }
 
         .content-section {
@@ -3243,7 +3275,7 @@
                 </div>
                 <div class="header-text">
                     <h1>Innioasis Updater</h1>
-                    <p id="dynamic-subtitle">We've helped to update <span id="download-count">2,600+</span> Innioasis Y1s on Windows and Mac</p>
+                    <p id="dynamic-subtitle">We've helped to update <span id="download-count">3,350+</span> Innioasis Y1s on Windows and Mac</p>
                 </div>
             </div>
             <div class="header-download">
@@ -3420,297 +3452,304 @@
             </div>
         </div>
 
-        <!-- Install Guide Modal -->
-        <div class="modal-overlay" id="modalOverlay">
-            <div class="modal-content">
-                <div class="install-guide">
-                    <!-- Header -->
-                    <div class="guide-header">
-                        <button class="guide-close-btn" onclick="closeInstallGuide()">×</button>
-                        <h2>🚀 Innioasis Updater for Y1</h2>
-                        <p>Windows, Mac and Linux compatible firmware installation - honestly, it's easier than you think!</p>
-                    </div>
+            </div>
 
-                    <!-- Platform Selector -->
-                    <div class="platform-selector">
-                        <div class="platform-card" data-platform="windows" onclick="selectInstallPlatform('windows')">
-                            <span class="icon">🪟</span>
-                            <h3>Windows</h3>
-                            <p>Works great on Windows 10 & 11</p>
-                            <span class="status ready"></span>
-                        </div>
-                        
-                        <div class="platform-card" data-platform="mac" onclick="selectInstallPlatform('mac')">
-                            <span class="icon">🍎</span>
-                            <h3>macOS</h3>
-                            <p>Ventura and later</p>
-                            <span class="status ready"></span>
-                        </div>
-                        
-                        <div class="platform-card" data-platform="linux" onclick="selectInstallPlatform('linux')">
-                            <span class="icon">🐧</span>
-                            <h3>Linux</h3>
-                            <p>Ubuntu recommended</p>
-                            <span class="status ready"></span>
-                        </div>
-                    </div>
-
-                    <!-- Windows Installation Guide -->
-                    <div class="installation-guide" id="windows-guide">
-                        <div class="progress-bar">
-                            <div class="progress-line">
-                                <div class="fill" id="windows-progress"></div>
-                            </div>
-                            <div class="progress-step active" data-step="1">
-                                <div class="step-number">1</div>
-                                <div class="step-label">Drivers</div>
-                            </div>
-                            <div class="progress-step" data-step="2">
-                                <div class="step-number">2</div>
-                                <div class="step-label">Download</div>
-                            </div>
-                            <div class="progress-step" data-step="3">
-                                <div class="step-number">3</div>
-                                <div class="step-label">Install</div>
-                            </div>
+          <!-- Install Guide Modal -->
+            <div class="modal-overlay" id="modalOverlay">
+                <div class="modal-content">
+                    <div class="install-guide">
+                        <!-- Header -->
+                        <div class="guide-header">
+                            <button class="guide-close-btn" onclick="closeInstallGuide()">×</button>
+                            <h2>🚀 Innioasis Updater for Y1</h2>
+                            <p>Windows, Mac and Linux compatible firmware installation - honestly, it's easier than you think!</p>
                         </div>
 
-                        <!-- Step 1: Drivers -->
-                        <div class="step" id="windows-step-1">
-                            <h4>Step 1: Get the Right Drivers</h4>
-                            <p>Your computer needs to know how to talk to your Y1. Complete these tasks:</p>
+                        <!-- Platform Selector -->
+                        <div class="platform-selector" id="install-platform-selector">
+                            <div class="platform-card" data-platform="windows" onclick="selectInstallPlatform('windows')">
+                                <span class="icon">🪟</span>
+                                <h3>Windows</h3>
+                                <p>Works great on Windows 10 & 11</p>
+                                <span class="status ready"></span>
+                            </div>
                             
-                            <div class="checklist">
-                                <div class="checklist-item">
-                                    <div class="checklist-content">
-                                         <h5>📥 MediaTek Driver (Required)</h5>
-                                         <p>This is required for your computer to recognize your Y1 device on Windows</p>
-                                        <div class="checklist-actions">
-                                            <button class="btn btn-primary" onclick="downloadDriver('mtk')">Download MediaTek Driver</button>
-                                            <button class="info-btn" onclick="showDriverInfo()" title="Important installation info">Help</button>
-                                            <a href="#" onclick="markDriverComplete(); return false;" class="skip-link">Already done this</a>
+                            <div class="platform-card" data-platform="mac" onclick="selectInstallPlatform('mac')">
+                                <span class="icon">🍎</span>
+                                <h3>macOS</h3>
+                                <p>Ventura and later</p>
+                                <span class="status ready"></span>
+                            </div>
+                            
+                            <div class="platform-card" data-platform="linux" onclick="selectInstallPlatform('linux')">
+                                <span class="icon">🐧</span>
+                                <h3>Linux</h3>
+                                <p>Ubuntu recommended</p>
+                                <span class="status ready"></span>
+                            </div>
+                        </div>
+
+
+                        <!-- Windows Installation Guide -->
+                        <div class="installation-guide" id="windows-guide">
+                            <div class="progress-bar">
+                                <div class="progress-line">
+                                    <div class="fill" id="windows-progress"></div>
+                                </div>
+                                <div class="progress-step active" data-step="1">
+                                    <div class="step-number">1</div>
+                                    <div class="step-label">Drivers</div>
+                                </div>
+                                <div class="progress-step" data-step="2">
+                                    <div class="step-number">2</div>
+                                    <div class="step-label">Download</div>
+                                </div>
+                                <div class="progress-step" data-step="3">
+                                    <div class="step-number">3</div>
+                                    <div class="step-label">Install</div>
+                                </div>
+                            </div>
+
+                            <!-- Step 1: Drivers -->
+                            <div class="step" id="windows-step-1">
+                                <h4>Step 1: Get the Right Drivers</h4>
+                                <p>Your computer needs to know how to talk to your Y1. Complete these tasks:</p>
+                                
+                                <div class="checklist">
+                                    <div class="checklist-item">
+                                        <div class="checklist-content">
+                                             <h5>📥 MediaTek Driver (Required)</h5>
+                                             <p>This is required for your computer to recognize your Y1 device on Windows</p>
+                                            <div class="checklist-actions">
+                                                <button class="btn btn-primary" onclick="downloadDriver('mtk')">Download MediaTek Driver</button>
+                                                <button class="info-btn" onclick="showDriverInfo()" title="Important installation info">Help</button>
+                                                <a href="#" onclick="markDriverComplete(); return false;" class="skip-link">Already done this</a>
+                                            </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 
-                                <div class="checklist-item optional-item">
-                                    <div class="checklist-content">
-                                         <h5>🔧 USB Development Kit / UsbDk (Optional)</h5>
-                                         <p>Enables MTKclient-based installation methods on Windows, allowing ROM developers to test cross-platform compatibility with Innioasis Updater.</p>
-                                        <div class="checklist-actions">
-                                            <button class="btn btn-secondary" onclick="downloadDriver('usb')">Download USB Dev Kit</button>
-                                            <button class="info-btn" onclick="showUsbDevKitInfo()" title="USB Development Kit info">Help</button>
-                                            <a href="#" onclick="markUsbDevKitComplete(); return false;" class="skip-link">Skip this step</a>
+                                <div style="text-align: center; margin-top: 16px;">
+                                    <button class="btn btn-success" onclick="nextWindowsStep()">Next: Download the App →</button>
+                                    <button class="change-platform-btn" id="change-install-platform-btn" onclick="showInstallPlatformSelector()">
+                                        Change Platform
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Download App -->
+                            <div class="step" id="windows-step-2" style="display: none;">
+                                <h4>Step 2: Download Innioasis Updater</h4>
+                                <p>Now let's get the actual app that will handle your firmware updates:</p>
+                                
+                                <div class="download-section">
+                                    <h5>📱 Innioasis Updater for Windows</h5>
+                                    <p>This is the main app that will guide you through updating your Y1</p>
+                                    <button class="btn btn-primary" onclick="downloadWindows()">Download Windows Installer</button>
+                                </div>
+                                
+                                <div style="text-align: center; margin-top: 16px;">
+                                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Drivers</button>
+                                    <button class="btn btn-success" onclick="nextWindowsStep()">Next: Installation →</button>
+                                    <button class="change-platform-btn" id="change-install-platform-btn" onclick="showInstallPlatformSelector()">
+                                        Change Platform
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Installation -->
+                            <div class="step" id="windows-step-3" style="display: none;">
+                                <h4>Step 3: Install Everything</h4>
+                                <p>Almost there! Here's what to do next:</p>
+                                
+                                <ol>
+                                    <li>Install the MediaTek driver you downloaded</li>
+                                    <li>Install Innioasis Updater</li>
+                                    <li><strong>Restart your computer</strong> (this is important after installing drivers!)</li>
+                                    <li>Launch Innioasis Updater from the Start Menu</li>
+                                </ol>
+                                
+                                <div style="text-align: center; margin-top: 16px;">
+                                    <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Download</button>
+                                    <button class="btn btn-success" onclick="closeInstallGuide()">Finish Setup</button>
+                                    <button class="change-platform-btn" id="change-install-platform-btn" onclick="showInstallPlatformSelector()">
+                                        Change Platform
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- macOS Installation Guide -->
+                        <div class="installation-guide" id="mac-guide">
+                            <div class="progress-bar">
+                                <div class="progress-line">
+                                    <div class="fill" id="mac-progress"></div>
+                                </div>
+                                <div class="progress-step active" data-step="1">
+                                    <div class="step-number">1</div>
+                                    <div class="step-label">Homebrew</div>
+                                </div>
+                                <div class="progress-step" data-step="2">
+                                    <div class="step-number">2</div>
+                                    <div class="step-label">Download</div>
+                                </div>
+                                <div class="progress-step" data-step="3">
+                                    <div class="step-number">3</div>
+                                    <div class="step-label">Install</div>
+                                </div>
+                            </div>
+
+                            <!-- Step 1: Homebrew -->
+                            <div class="step" id="mac-step-1">
+                                <h4>Step 1: Install Homebrew</h4>
+                                <p>Homebrew is like a package manager that helps install all the pieces your Mac needs. Think of it as a helpful assistant that makes sure everything works together nicely.</p>
+                                
+                                <div class="download-section">
+                                    <h5>📥 Get Homebrew</h5>
+                                    <p>Click the button below to visit the Homebrew website and follow their straightforward installation guide:</p>
+                                    <button class="btn btn-primary" onclick="openHomebrew()">Visit Homebrew Website</button>
+                                </div>
+                                
+                                <div style="text-align: center; margin-top: 16px;">
+                                    <button class="btn btn-success" onclick="nextMacStep()">Next: Download the App →</button>
+                                    <button class="change-platform-btn" id="change-install-platform-btn" onclick="showInstallPlatformSelector()">
+                                        Change Platform
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Download App -->
+                            <div class="step" id="mac-step-2" style="display: none;">
+                                <h4>Step 2: Download Innioasis Updater</h4>
+                                <p>Now let's get the actual app. Click the button below and it'll start downloading to your Downloads folder:</p>
+                                
+                                <div class="download-section">
+                                    <h5>📱 Innioasis Updater for Mac</h5>
+                                    <p>This will download a .dmg file (disk image) to your Downloads folder</p>
+                                    <button class="btn btn-primary" onclick="downloadMac()">Download for Mac</button>
+                                </div>
+                                
+                                <div style="text-align: center; margin-top: 16px;">
+                                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Homebrew</button>
+                                    <button class="btn btn-success" onclick="nextMacStep()">Next: Installation →</button>
+                                    <button class="change-platform-btn" id="change-install-platform-btn" onclick="showInstallPlatformSelector()">
+                                        Change Platform
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Installation -->
+                            <div class="step" id="mac-step-3" style="display: none;">
+                                <h4>Step 3: Install the App</h4>
+                                <p>Now let's get the app installed on your Mac:</p>
+                                
+                                <ol>
+                                    <li>Double-click the downloaded .dmg file (it'll look like a disk image)</li>
+                                    <li>Drag the Innioasis Updater app to your Applications folder</li>
+                                    <li><strong>Restart your Mac</strong> (this is important after installing Homebrew and the app!)</li>
+                                    <li>Open it from your Applications folder</li>
+                                </ol>
+                                
+                                <div class="download-section">
+                                    <h5>🔒 Security Settings</h5>
+                                    <p>You might need to tell your Mac it's okay to run this app. The exact steps depend on your macOS version:</p>
+                                    <button class="btn btn-warning" onclick="openMacSecurityGuide()">Open Security Guide</button>
+                                </div>
+                                
+                                <div style="text-align: center; margin-top: 16px;">
+                                    <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Download</button>
+                                    <button class="btn btn-success" onclick="closeInstallGuide()">Finish Setup</button>
+                                    <button class="change-platform-btn" id="change-install-platform-btn" onclick="showInstallPlatformSelector()">
+                                        Change Platform
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Linux Installation Guide -->
+                        <div class="installation-guide" id="linux-guide">
+                            <h4>🐧 Linux Installation</h4>
+                            <p>Linux users, you're in luck! Ubuntu works best, but most other distributions should work too. We'll open a helpful guide that shows you exactly what to install.</p>
+                            
+                            <div class="download-section">
+                                <h5>📖 Installation Guide</h5>
+                                <p>Click the button below to open detailed Linux installation instructions:</p>
+                                <button class="btn btn-primary" onclick="openLinuxGuide()">Open Linux Guide</button>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 16px;">
+                                <button class="btn btn-secondary" onclick="closeInstallGuide()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                            
+                            <!-- Device Type Dialog -->
+                            <div class="app-modal-overlay" id="device-type-dialog" style="display: none;">
+                                <div class="app-modal">
+                                    <div class="app-modal-header">
+                                        <h3 class="app-modal-title">Device Type Selection Guide</h3>
+                                        <button class="app-modal-close" onclick="closeDeviceTypeDialog()">&times;</button>
+                                    </div>
+                                    <div class="app-modal-content">
+                                        <div class="app-modal-description">
+                                            <h4>Device Type Selection Guide</h4>
+                                            <p><strong>Type A Devices:</strong> This is the recommended starting point for most users. Install this first to see if it meets your needs.</p>
+                                            <p><strong>Type B Devices:</strong> If your scroll wheel doesn't respond nicely after installing Type A, try one of the Type B options. These are alternative configurations that may fix scroll wheel issues.</p>
+                                            <p><strong>Recommendation:</strong> Always start with Type A. Only move to Type B if you experience scroll wheel problems.</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 16px;">
-                                <button class="btn btn-success" onclick="nextWindowsStep()">Next: Download the App →</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Download App -->
-                        <div class="step" id="windows-step-2" style="display: none;">
-                            <h4>Step 2: Download Innioasis Updater</h4>
-                            <p>Now let's get the actual app that will handle your firmware updates:</p>
-                            
-                            <div class="download-section">
-                                <h5>📱 Innioasis Updater for Windows</h5>
-                                <p>This is the main app that will guide you through updating your Y1</p>
-                                <button class="btn btn-primary" onclick="downloadWindows()">Download Windows Installer</button>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 16px;">
-                                <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Drivers</button>
-                                <button class="btn btn-success" onclick="nextWindowsStep()">Next: Installation →</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Installation -->
-                        <div class="step" id="windows-step-3" style="display: none;">
-                            <h4>Step 3: Install Everything</h4>
-                            <p>Almost there! Here's what to do next:</p>
-                            
-                            <ol>
-                                <li>Install the MediaTek driver you downloaded</li>
-                                <li>If you downloaded the USB Development Kit, install it as well</li>
-                                <li>Install Innioasis Updater</li>
-                                <li><strong>Restart your computer</strong> (this is important after installing drivers!)</li>
-                                <li>Launch Innioasis Updater from the Start Menu</li>
-                            </ol>
-                            
-                            <div style="text-align: center; margin-top: 16px;">
-                                <button class="btn btn-secondary" onclick="prevWindowsStep()">← Back to Download</button>
-                                <button class="btn btn-success" onclick="closeInstallGuide()">Finish Setup</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- macOS Installation Guide -->
-                    <div class="installation-guide" id="mac-guide">
-                        <div class="progress-bar">
-                            <div class="progress-line">
-                                <div class="fill" id="mac-progress"></div>
-                            </div>
-                            <div class="progress-step active" data-step="1">
-                                <div class="step-number">1</div>
-                                <div class="step-label">Homebrew</div>
-                            </div>
-                            <div class="progress-step" data-step="2">
-                                <div class="step-number">2</div>
-                                <div class="step-label">Download</div>
-                            </div>
-                            <div class="progress-step" data-step="3">
-                                <div class="step-number">3</div>
-                                <div class="step-label">Install</div>
-                            </div>
-                        </div>
-
-                        <!-- Step 1: Homebrew -->
-                        <div class="step" id="mac-step-1">
-                            <h4>Step 1: Install Homebrew</h4>
-                            <p>Homebrew is like a package manager that helps install all the pieces your Mac needs. Think of it as a helpful assistant that makes sure everything works together nicely.</p>
-                            
-                            <div class="download-section">
-                                <h5>📥 Get Homebrew</h5>
-                                <p>Click the button below to visit the Homebrew website and follow their straightforward installation guide:</p>
-                                <button class="btn btn-primary" onclick="openHomebrew()">Visit Homebrew Website</button>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 16px;">
-                                <button class="btn btn-success" onclick="nextMacStep()">Next: Download the App →</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Download App -->
-                        <div class="step" id="mac-step-2" style="display: none;">
-                            <h4>Step 2: Download Innioasis Updater</h4>
-                            <p>Now let's get the actual app. Click the button below and it'll start downloading to your Downloads folder:</p>
-                            
-                            <div class="download-section">
-                                <h5>📱 Innioasis Updater for Mac</h5>
-                                <p>This will download a .dmg file (disk image) to your Downloads folder</p>
-                                <button class="btn btn-primary" onclick="downloadMac()">Download for Mac</button>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 16px;">
-                                <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Homebrew</button>
-                                <button class="btn btn-success" onclick="nextMacStep()">Next: Installation →</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Installation -->
-                        <div class="step" id="mac-step-3" style="display: none;">
-                            <h4>Step 3: Install the App</h4>
-                            <p>Now let's get the app installed on your Mac:</p>
-                            
-                            <ol>
-                                <li>Double-click the downloaded .dmg file (it'll look like a disk image)</li>
-                                <li>Drag the Innioasis Updater app to your Applications folder</li>
-                                <li><strong>Restart your Mac</strong> (this is important after installing Homebrew and the app!)</li>
-                                <li>Open it from your Applications folder</li>
-                            </ol>
-                            
-                            <div class="download-section">
-                                <h5>🔒 Security Settings</h5>
-                                <p>You might need to tell your Mac it's okay to run this app. The exact steps depend on your macOS version:</p>
-                                <button class="btn btn-warning" onclick="openMacSecurityGuide()">Open Security Guide</button>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 16px;">
-                                <button class="btn btn-secondary" onclick="prevMacStep()">← Back to Download</button>
-                                <button class="btn btn-success" onclick="closeInstallGuide()">Finish Setup</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Linux Installation Guide -->
-                    <div class="installation-guide" id="linux-guide">
-                        <h4>🐧 Linux Installation</h4>
-                        <p>Linux users, you're in luck! Ubuntu works best, but most other distributions should work too. We'll open a helpful guide that shows you exactly what to install.</p>
-                        
-                        <div class="download-section">
-                            <h5>📖 Installation Guide</h5>
-                            <p>Click the button below to open detailed Linux installation instructions:</p>
-                            <button class="btn btn-primary" onclick="openLinuxGuide()">Open Linux Guide</button>
-                        </div>
-                        
-                        <div style="text-align: center; margin-top: 16px;">
-                            <button class="btn btn-secondary" onclick="closeInstallGuide()">Close</button>
-                        </div>
-                    </div>
-                </div>
-                        
-                        <!-- Device Type Dialog -->
-                        <div class="app-modal-overlay" id="device-type-dialog" style="display: none;">
-                            <div class="app-modal">
-                                <div class="app-modal-header">
-                                    <h3 class="app-modal-title">Device Type Selection Guide</h3>
-                                    <button class="app-modal-close" onclick="closeDeviceTypeDialog()">&times;</button>
-                                </div>
-                                <div class="app-modal-content">
-                                    <div class="app-modal-description">
-                                        <h4>Device Type Selection Guide</h4>
-                                        <p><strong>Type A Devices:</strong> This is the recommended starting point for most users. Install this first to see if it meets your needs.</p>
-                                        <p><strong>Type B Devices:</strong> If your scroll wheel doesn't respond nicely after installing Type A, try one of the Type B options. These are alternative configurations that may fix scroll wheel issues.</p>
-                                        <p><strong>Recommendation:</strong> Always start with Type A. Only move to Type B if you experience scroll wheel problems.</p>
+                                    <div class="app-modal-buttons">
+                                        <button class="app-modal-btn app-modal-btn-primary" onclick="closeDeviceTypeDialog()">Got it</button>
                                     </div>
                                 </div>
-                                <div class="app-modal-buttons">
-                                    <button class="app-modal-btn app-modal-btn-primary" onclick="closeDeviceTypeDialog()">Got it</button>
-                                </div>
                             </div>
-                        </div>
-                        
-                        <!-- Disconnect USB Modal -->
-                        <div class="app-modal-overlay" id="disconnect-usb-modal" style="display: none;">
-                            <div class="app-modal">
-                                <div class="app-modal-header">
-                                    <h3 class="app-modal-title">Disconnect USB</h3>
-                                    <button class="app-modal-close" onclick="closeDisconnectUsbModal()">&times;</button>
-                                </div>
-                                <div class="app-modal-content">
-                                    <div class="app-modal-icon" style="font-size: 48px; text-align: center; margin: 20px 0; color: #f59e0b;">⚠️</div>
-                                    <div class="app-modal-description">
-                                        <p style="font-size: 16px; line-height: 1.5; margin-bottom: 16px; text-align: center;">
-                                            <strong>Hey! Please unplug the USB from your Y1 and press OK, then we'll guide you through the next steps.</strong>
-                                        </p>
-                                        <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 8px; margin: 16px 0;">
-                                            <p style="margin: 0; font-size: 14px; color: var(--text-secondary);">
-                                                <strong>Important:</strong> Make sure the USB cable is completely disconnected from your Y1 device before continuing.
+                            
+                            <!-- Disconnect USB Modal -->
+                            <div class="app-modal-overlay" id="disconnect-usb-modal" style="display: none;">
+                                <div class="app-modal">
+                                    <div class="app-modal-header">
+                                        <h3 class="app-modal-title">Disconnect USB</h3>
+                                        <button class="app-modal-close" onclick="closeDisconnectUsbModal()">&times;</button>
+                                    </div>
+                                    <div class="app-modal-content">
+                                        <div class="app-modal-icon" style="font-size: 48px; text-align: center; margin: 20px 0; color: #f59e0b;">⚠️</div>
+                                        <div class="app-modal-description">
+                                            <p style="font-size: 16px; line-height: 1.5; margin-bottom: 16px; text-align: center;">
+                                                <strong>Hey! Please unplug the USB from your Y1 and press OK, then we'll guide you through the next steps.</strong>
                                             </p>
+                                            <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 8px; margin: 16px 0;">
+                                                <p style="margin: 0; font-size: 14px; color: var(--text-secondary);">
+                                                    <strong>Important:</strong> Make sure the USB cable is completely disconnected from your Y1 device before continuing.
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="app-modal-buttons">
-                                    <button class="app-modal-btn app-modal-btn-primary" onclick="confirmDisconnectUsb()">OK, I've disconnected it</button>
+                                    <div class="app-modal-buttons">
+                                        <button class="app-modal-btn app-modal-btn-primary" onclick="confirmDisconnectUsb()">OK, I've disconnected it</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <!-- Install Dialog -->
-                        <div class="app-modal-overlay" id="install-dialog" style="display: none;">
-                            <div class="app-modal">
-                                <div class="app-modal-header">
-                                    <h3 class="app-modal-title" id="dialog-title">Installation Dialog</h3>
-                                    <button class="app-modal-close" onclick="closeInstallDialog()">&times;</button>
-                                </div>
-                                <div class="app-modal-content">
-                                    <div class="app-dialog-icon" id="dialog-icon">⚠️</div>
-                                    <p id="dialog-message">Please follow the instructions - we'll guide you through this!</p>
-                                </div>
-                                <div class="app-modal-buttons">
-                                    <button class="app-modal-btn app-modal-btn-secondary" onclick="cancelInstallDialog()">Cancel</button>
-                                    <button class="app-modal-btn app-modal-btn-primary" onclick="confirmInstallDialog()">OK</button>
+                            
+                            <!-- Install Dialog -->
+                            <div class="app-modal-overlay" id="install-dialog" style="display: none;">
+                                <div class="app-modal">
+                                    <div class="app-modal-header">
+                                        <h3 class="app-modal-title" id="dialog-title">Installation Dialog</h3>
+                                        <button class="app-modal-close" onclick="closeInstallDialog()">&times;</button>
+                                    </div>
+                                    <div class="app-modal-content">
+                                        <div class="app-dialog-icon" id="dialog-icon">⚠️</div>
+                                        <p id="dialog-message">Please follow the instructions - we'll guide you through this!</p>
+                                    </div>
+                                    <div class="app-modal-buttons">
+                                        <button class="app-modal-btn app-modal-btn-secondary" onclick="cancelInstallDialog()">Cancel</button>
+                                        <button class="app-modal-btn app-modal-btn-primary" onclick="confirmInstallDialog()">OK</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
             
             <!-- Driver Info Modal -->
             <div class="info-modal" id="driverInfoModal">
@@ -5435,8 +5474,8 @@ your-rom-repo/
         // Load real firmware data from slidia manifest
         async function loadRealFirmwareData() {
             try {
-                // Load slidia manifest
-                const manifestResponse = await fetch('https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml');
+                // Load slidia manifest from local file
+                const manifestResponse = await fetch('./slidia_manifest.xml');
                 if (!manifestResponse.ok) {
                     throw new Error('Failed to load slidia manifest');
                 }
@@ -6432,6 +6471,16 @@ your-rom-repo/
                 guide.classList.remove('show');
             });
             
+            // Reset platform selector visibility
+            const platformSelector = document.getElementById('install-platform-selector');
+            const changePlatformBtns = document.querySelectorAll('.change-platform-btn');
+            if (platformSelector) {
+                platformSelector.classList.remove('hidden');
+            }
+            changePlatformBtns.forEach(btn => {
+                btn.classList.remove('show');
+            });
+            
             currentPlatform = null;
             currentStep = 1;
         }
@@ -6460,9 +6509,31 @@ your-rom-repo/
                 guide.classList.add('show');
             }
             
+            // Hide platform selector and show change platform buttons
+            const platformSelector = document.getElementById('install-platform-selector');
+            const changePlatformBtns = document.querySelectorAll('.change-platform-btn');
+            if (platformSelector) {
+                platformSelector.classList.add('hidden');
+            }
+            changePlatformBtns.forEach(btn => {
+                btn.classList.add('show');
+            });
+            
             currentPlatform = platform;
             currentStep = 1;
             updateProgressBar(platform, 1);
+        }
+
+        // Show platform selector again
+        function showInstallPlatformSelector() {
+            const platformSelector = document.getElementById('install-platform-selector');
+            const changePlatformBtns = document.querySelectorAll('.change-platform-btn');
+            if (platformSelector) {
+                platformSelector.classList.remove('hidden');
+            }
+            changePlatformBtns.forEach(btn => {
+                btn.classList.remove('show');
+            });
         }
 
         // Update progress bar
@@ -6531,7 +6602,7 @@ your-rom-repo/
         // Download functions
         function downloadDriver(driverType) {
             if (driverType === 'mtk') {
-                const url = 'https://innioasis.app/assets/driver_mtk.exe';
+                const url = 'https://innioasis.app/driver_mtk.exe';
                 const filename = 'driver_mtk.exe';
                 
                 // For Safari, open in new tab, for other browsers use download attribute
