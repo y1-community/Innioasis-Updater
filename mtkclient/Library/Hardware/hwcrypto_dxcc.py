@@ -7,9 +7,9 @@
 import logging
 import hashlib
 from struct import pack
-from Cryptodome.Util.number import bytes_to_long
-from Cryptodome.Cipher import AES
-from Cryptodome.Util import Counter
+from Crypto.Util.number import bytes_to_long
+from Crypto.Cipher import AES
+from Crypto.Util import Counter
 from mtkclient.Library.utils import LogBase, logsetup
 
 Lcs = 0xA
