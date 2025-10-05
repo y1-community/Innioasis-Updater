@@ -258,88 +258,8 @@ EOF
 
 # Fix Cryptodome import statements in Innioasis Updater code
 fix_cryptodome_imports() {
-    log "Fixing Cryptodome import statements..."
-    
-    # Get installation directory
-    get_install_dir
-    
-    # Fix all Python files that have incorrect Cryptodome imports
-    if find "$INSTALL_DIR" -name "*.py" -exec grep -l "from Cryptodome" {} \; 2>/dev/null | head -1 | grep -q .; then
-        log "Found files with incorrect Cryptodome imports, fixing..."
-        find "$INSTALL_DIR" -name "*.py" -exec sed -i 's/from Cryptodome/from Crypto/g' {} \;
-        success "Cryptodome import statements fixed"
-    else
-        log "No incorrect Cryptodome imports found"
-    fi
-    
-    # Fix firmware_downloader.py to use virtual environment Python for mtk.py calls
-    log "Updating firmware_downloader.py to use virtual environment..."
-    firmware_downloader="$INSTALL_DIR/firmware_downloader.py"
-    
-    if [ -f "$firmware_downloader" ]; then
-        # Create backup
-        cp "$firmware_downloader" "$firmware_downloader.backup"
-        
-        # Create a Python script to fix the firmware_downloader.py
-        cat > "$INSTALL_DIR/fix_firmware_downloader.py" << 'EOF'
-#!/usr/bin/env python3
-import re
-import sys
-
-def fix_firmware_downloader(file_path):
-    """Fix firmware_downloader.py to use virtual environment Python for mtk.py calls"""
-    
-    with open(file_path, 'r') as f:
-        content = f.read()
-    
-    # Fix the main mtk.py call in the run() method
-    # Replace sys.executable with python_executable
-    content = re.sub(
-        r'(\s+)cmd = \[\s*sys\.executable, "mtk\.py"',
-        r'\1# Use virtual environment Python if available, otherwise use system Python\n\1python_executable = sys.executable\n\1venv_python = os.path.join(os.getcwd(), "venv", "bin", "python")\n\1if os.path.exists(venv_python):\n\1    python_executable = venv_python\n\1\n\1cmd = [\n\1    python_executable, "mtk.py"',
-        content
-    )
-    
-    # Fix the terminal command generation for Linux
-    content = re.sub(
-        r'python3 mtk\.py w uboot,bootimg,recovery,android,usrdata lk\.bin,boot\.img,recovery\.img,system\.img,userdata\.img',
-        r'$(if [ -f "venv/bin/python" ]; then echo "./venv/bin/python"; else echo "python3"; fi) mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img',
-        content
-    )
-    
-    # Fix the macOS terminal script
-    content = re.sub(
-        r'# Run MTK command with python3 \(same as used in regular installation\)\npython3 mtk\.py w uboot,bootimg,recovery,android,usrdata lk\.bin,boot\.img,recovery\.img,system\.img,userdata\.img',
-        r'# Run MTK command with virtual environment Python if available, otherwise python3\nif [ -f "venv/bin/python" ]; then\n    ./venv/bin/python mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\nelse\n    python3 mtk.py w uboot,bootimg,recovery,android,usrdata lk.bin,boot.img,recovery.img,system.img,userdata.img\nfi',
-        content
-    )
-    
-    with open(file_path, 'w') as f:
-        f.write(content)
-    
-    print(f"Fixed {file_path} to use virtual environment")
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 fix_firmware_downloader.py <firmware_downloader.py>")
-        sys.exit(1)
-    
-    fix_firmware_downloader(sys.argv[1])
-EOF
-        
-        # Run the fix script
-        if python3 "$INSTALL_DIR/fix_firmware_downloader.py" "$firmware_downloader"; then
-            success "firmware_downloader.py updated to use virtual environment"
-            rm -f "$INSTALL_DIR/fix_firmware_downloader.py"
-        else
-            warning "Failed to update firmware_downloader.py"
-            # Restore backup
-            mv "$firmware_downloader.backup" "$firmware_downloader"
-        fi
-    else
-        warning "firmware_downloader.py not found, skipping virtual environment fix"
-    fi
-    
+    log "Skipping Cryptodome import fixes - the codebase already handles imports correctly"
+    log "No modifications needed to firmware_downloader.py"
     return 0
 }
 
@@ -1305,13 +1225,28 @@ if [ ! -f "firmware_downloader.py" ]; then
     exit 1
 fi
 
+# Determine Python executable to use
+PYTHON_EXEC="python3"
+
 # Activate virtual environment if it exists
 if [ -f "venv/bin/activate" ]; then
+    # Source the virtual environment
     source venv/bin/activate
+    
+    # Use the virtual environment's Python if available
+    if [ -f "venv/bin/python" ]; then
+        PYTHON_EXEC="./venv/bin/python"
+    elif [ -f "venv/bin/python3" ]; then
+        PYTHON_EXEC="./venv/bin/python3"
+    fi
+    
+    echo "Using virtual environment Python: $PYTHON_EXEC"
+else
+    echo "Warning: Virtual environment not found, using system Python"
 fi
 
-# Launch the application
-exec python3 firmware_downloader.py "\$@"
+# Launch the application with the determined Python executable
+exec \$PYTHON_EXEC firmware_downloader.py "\$@"
 EOF
     then
         error "Failed to create launcher script"
@@ -1407,7 +1342,18 @@ show_completion_message() {
             "$HOME/.local/bin/innioasis-updater"
         else
             cd "$INSTALL_DIR"
-            python3 firmware_downloader.py
+            
+            # Determine Python executable to use
+            PYTHON_EXEC="python3"
+            
+            # Use virtual environment Python if available
+            if [ -f "venv/bin/python" ]; then
+                PYTHON_EXEC="./venv/bin/python"
+            elif [ -f "venv/bin/python3" ]; then
+                PYTHON_EXEC="./venv/bin/python3"
+            fi
+            
+            $PYTHON_EXEC firmware_downloader.py
         fi
     else
         echo
@@ -1716,7 +1662,22 @@ launch() {
     elif [ -f "$INSTALL_DIR/firmware_downloader.py" ]; then
         log "Using direct Python execution"
         cd "$INSTALL_DIR"
-        python3 firmware_downloader.py
+        
+        # Determine Python executable to use
+        PYTHON_EXEC="python3"
+        
+        # Use virtual environment Python if available
+        if [ -f "venv/bin/python" ]; then
+            PYTHON_EXEC="./venv/bin/python"
+            log "Using virtual environment Python: $PYTHON_EXEC"
+        elif [ -f "venv/bin/python3" ]; then
+            PYTHON_EXEC="./venv/bin/python3"
+            log "Using virtual environment Python: $PYTHON_EXEC"
+        else
+            log "Virtual environment not found, using system Python"
+        fi
+        
+        exec $PYTHON_EXEC firmware_downloader.py
     else
         error "Innioasis Updater not found. Please install it first using: $0 --install"
         error "Expected location: $INSTALL_DIR/firmware_downloader.py"
