@@ -113,6 +113,26 @@ check_sudo() {
         error "sudo is not available. Please install sudo or run as root (not recommended)."
         return 1
     fi
+    
+    # Request sudo permissions early
+    log "This script requires sudo permissions for:"
+    log "  - Installing system packages"
+    log "  - Setting up udev rules for USB device access"
+    log "  - Creating system directories"
+    log ""
+    log "Requesting sudo permissions..."
+    
+    if ! sudo -v; then
+        error "Failed to obtain sudo permissions. Please ensure you have sudo access and try again."
+        return 1
+    fi
+    
+    # Keep sudo session alive in background
+    while true; do
+        sudo -n true 2>/dev/null && sleep 60 || break
+    done &
+    
+    success "Sudo permissions obtained successfully"
     return 0
 }
 
@@ -1002,37 +1022,30 @@ EOF
 
 # Determine appropriate installation directory
 get_install_dir() {
-    # Check if we can write to /opt (requires sudo)
-    if [ -w "/opt" ] 2>/dev/null || sudo -n true 2>/dev/null; then
-        # We have write access to /opt or sudo without password
-        case "$DISTRO_ID" in
-            ubuntu|linuxmint|pop|elementary|zorin|debian)
-                INSTALL_DIR="/opt/innioasis-updater"
-                ;;
-            arch|manjaro|endeavouros)
-                INSTALL_DIR="/opt/innioasis-updater"
-                ;;
-            fedora|rhel|centos|almalinux|rocky)
-                INSTALL_DIR="/opt/innioasis-updater"
-                ;;
-            opensuse*|sles)
-                INSTALL_DIR="/opt/innioasis-updater"
-                ;;
-            steamos|holoiso)
-                INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
-                ;;
-            chromeos|fydeos)
-                INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
-                ;;
-            *)
-                INSTALL_DIR="/opt/innioasis-updater"
-                ;;
-        esac
-    else
-        # No sudo access, install to user directory
-        log "No sudo access detected, installing to user directory"
-        INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
-    fi
+    # Default to user directory for better compatibility and no sudo requirements
+    case "$DISTRO_ID" in
+        ubuntu|linuxmint|pop|elementary|zorin|debian)
+            INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
+            ;;
+        arch|manjaro|endeavouros)
+            INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
+            ;;
+        fedora|rhel|centos|almalinux|rocky)
+            INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
+            ;;
+        opensuse*|sles)
+            INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
+            ;;
+        steamos|holoiso)
+            INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
+            ;;
+        chromeos|fydeos)
+            INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
+            ;;
+        *)
+            INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
+            ;;
+    esac
     
     log "Installation directory: $INSTALL_DIR"
 }
@@ -1126,65 +1139,32 @@ install_innioasis() {
         return 1
     fi
     
-    # Create installation directory
-    if [[ "$INSTALL_DIR" == /opt/* ]]; then
-        # System-wide installation requires sudo
-        if ! sudo mkdir -p "$INSTALL_DIR"; then
-            error "Failed to create installation directory: $INSTALL_DIR"
-            rm -rf "$(dirname "$DOWNLOAD_DIR")"
-            return 1
-        fi
-        
-        # Copy files to installation directory
-        if ! sudo cp -r "$DOWNLOAD_DIR"/* "$INSTALL_DIR/"; then
-            error "Failed to copy files to installation directory"
-            rm -rf "$(dirname "$DOWNLOAD_DIR")"
-            return 1
-        fi
-        
-        # Set proper permissions
-        if ! sudo chown -R root:root "$INSTALL_DIR"; then
-            error "Failed to set ownership of installation directory"
-            return 1
-        fi
-        
-        if ! sudo chmod -R 755 "$INSTALL_DIR"; then
-            error "Failed to set permissions of installation directory"
-            return 1
-        fi
-    else
-        # User directory installation
-        if ! mkdir -p "$INSTALL_DIR"; then
-            error "Failed to create installation directory: $INSTALL_DIR"
-            rm -rf "$(dirname "$DOWNLOAD_DIR")"
-            return 1
-        fi
-        
-        # Copy files to installation directory
-        if ! cp -r "$DOWNLOAD_DIR"/* "$INSTALL_DIR/"; then
-            error "Failed to copy files to installation directory"
-            rm -rf "$(dirname "$DOWNLOAD_DIR")"
-            return 1
-        fi
-        
-        # Set proper permissions
-        if ! chmod -R 755 "$INSTALL_DIR"; then
-            error "Failed to set permissions of installation directory"
-            return 1
-        fi
+    # Create installation directory (user directory - no sudo needed)
+    if ! mkdir -p "$INSTALL_DIR"; then
+        error "Failed to create installation directory: $INSTALL_DIR"
+        rm -rf "$(dirname "$DOWNLOAD_DIR")"
+        return 1
+    fi
+    
+    # Copy files to installation directory
+    if ! cp -r "$DOWNLOAD_DIR"/* "$INSTALL_DIR/"; then
+        error "Failed to copy files to installation directory"
+        rm -rf "$(dirname "$DOWNLOAD_DIR")"
+        return 1
+    fi
+    
+    # Set proper permissions
+    if ! chmod -R 755 "$INSTALL_DIR"; then
+        error "Failed to set permissions of installation directory"
+        return 1
     fi
     
     # Clean up temporary directory
     rm -rf "$(dirname "$DOWNLOAD_DIR")"
     
     # Make scripts executable
-    if [[ "$INSTALL_DIR" == /opt/* ]]; then
-        sudo chmod +x "$INSTALL_DIR"/*.py 2>/dev/null || true
-        sudo chmod +x "$INSTALL_DIR"/*.sh 2>/dev/null || true
-    else
-        chmod +x "$INSTALL_DIR"/*.py 2>/dev/null || true
-        chmod +x "$INSTALL_DIR"/*.sh 2>/dev/null || true
-    fi
+    chmod +x "$INSTALL_DIR"/*.py 2>/dev/null || true
+    chmod +x "$INSTALL_DIR"/*.sh 2>/dev/null || true
     
     success "Innioasis Updater installed to $INSTALL_DIR"
     return 0
@@ -1200,16 +1180,9 @@ create_desktop_entry() {
         return 1
     fi
     
-    # Create desktop entry
-    if [[ "$INSTALL_DIR" == /opt/* ]]; then
-        # System-wide installation
-        LAUNCHER_CMD="innioasis-updater"
-        ICON_PATH="$INSTALL_DIR/mtkclient/gui/images/icon.png"
-    else
-        # User installation
-        LAUNCHER_CMD="$HOME/.local/bin/innioasis-updater"
-        ICON_PATH="$INSTALL_DIR/mtkclient/gui/images/icon.png"
-    fi
+    # Create desktop entry (user installation)
+    LAUNCHER_CMD="$HOME/.local/bin/innioasis-updater"
+    ICON_PATH="$INSTALL_DIR/mtkclient/gui/images/icon.png"
     
     if ! cat > "$HOME/.local/share/applications/innioasis-updater.desktop" << EOF
 [Desktop Entry]
@@ -1244,9 +1217,11 @@ EOF
 create_launcher() {
     log "Creating launcher script..."
     
-    if [[ "$INSTALL_DIR" == /opt/* ]]; then
-        # System-wide installation - create global launcher
-        if ! sudo tee /usr/local/bin/innioasis-updater > /dev/null << EOF
+    # User installation - create user launcher
+    USER_BIN_DIR="$HOME/.local/bin"
+    mkdir -p "$USER_BIN_DIR"
+    
+    if ! tee "$USER_BIN_DIR/innioasis-updater" > /dev/null << EOF
 #!/bin/bash
 # Innioasis Updater Launcher
 # Generated by run_linux.sh installer
@@ -1271,98 +1246,57 @@ fi
 # Launch the application
 exec python3 firmware_downloader.py "\$@"
 EOF
-        then
-            error "Failed to create launcher script"
-            return 1
-        fi
-        
-        # Make launcher executable
-        if ! sudo chmod +x /usr/local/bin/innioasis-updater; then
-            error "Failed to make launcher script executable"
-            return 1
-        fi
-        
-        success "Launcher script created at /usr/local/bin/innioasis-updater"
-        log "Command 'innioasis-updater' is now available system-wide"
-    else
-        # User installation - create user launcher
-        USER_BIN_DIR="$HOME/.local/bin"
-        mkdir -p "$USER_BIN_DIR"
-        
-        if ! tee "$USER_BIN_DIR/innioasis-updater" > /dev/null << EOF
-#!/bin/bash
-# Innioasis Updater Launcher
-# Generated by run_linux.sh installer
-
-# Change to installation directory
-cd "$INSTALL_DIR" || {
-    echo "Error: Cannot access installation directory: $INSTALL_DIR" >&2
-    exit 1
-}
-
-# Check if main application file exists
-if [ ! -f "firmware_downloader.py" ]; then
-    echo "Error: firmware_downloader.py not found in $INSTALL_DIR" >&2
-    exit 1
-fi
-
-# Activate virtual environment if it exists
-if [ -f "venv/bin/activate" ]; then
-    source venv/bin/activate
-fi
-
-# Launch the application
-exec python3 firmware_downloader.py "\$@"
-EOF
-        then
-            error "Failed to create launcher script"
-            return 1
-        fi
-        
-        # Make launcher executable
-        if ! chmod +x "$USER_BIN_DIR/innioasis-updater"; then
-            error "Failed to make launcher script executable"
-            return 1
-        fi
-        
-        success "Launcher script created at $USER_BIN_DIR/innioasis-updater"
-        
-        # Check if ~/.local/bin is in PATH
-        if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
-            log "Adding $USER_BIN_DIR to PATH..."
-            
-            # Add to .bashrc
-            if [ -f "$HOME/.bashrc" ]; then
-                if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.bashrc"; then
-                    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
-                    log "Added $USER_BIN_DIR to ~/.bashrc"
-                fi
-            fi
-            
-            # Add to .profile
-            if [ -f "$HOME/.profile" ]; then
-                if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.profile"; then
-                    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.profile"
-                    log "Added $USER_BIN_DIR to ~/.profile"
-                fi
-            fi
-            
-            # Add to .zshrc if it exists
-            if [ -f "$HOME/.zshrc" ]; then
-                if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.zshrc"; then
-                    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
-                    log "Added $USER_BIN_DIR to ~/.zshrc"
-                fi
-            fi
-            
-            # Update current session PATH
-            export PATH="$HOME/.local/bin:$PATH"
-            
-            log "Note: You may need to restart your terminal or run 'source ~/.bashrc' for the command to be available"
-        else
-            log "Command 'innioasis-updater' is now available (PATH already configured)"
-        fi
+    then
+        error "Failed to create launcher script"
+        return 1
     fi
+    
+    # Make launcher executable
+    if ! chmod +x "$USER_BIN_DIR/innioasis-updater"; then
+        error "Failed to make launcher script executable"
+        return 1
+    fi
+    
+    success "Launcher script created at $USER_BIN_DIR/innioasis-updater"
+    
+    # Check if ~/.local/bin is in PATH
+    if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
+        log "Adding $USER_BIN_DIR to PATH..."
+        
+        # Add to .bashrc
+        if [ -f "$HOME/.bashrc" ]; then
+            if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.bashrc"; then
+                echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+                log "Added $USER_BIN_DIR to ~/.bashrc"
+            fi
+        fi
+        
+        # Add to .profile
+        if [ -f "$HOME/.profile" ]; then
+            if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.profile"; then
+                echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.profile"
+                log "Added $USER_BIN_DIR to ~/.profile"
+            fi
+        fi
+        
+        # Add to .zshrc if it exists
+        if [ -f "$HOME/.zshrc" ]; then
+            if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.zshrc"; then
+                echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
+                log "Added $USER_BIN_DIR to ~/.zshrc"
+            fi
+        fi
+        
+        # Update current session PATH
+        export PATH="$HOME/.local/bin:$PATH"
+        
+        log "Note: You may need to restart your terminal or run 'source ~/.bashrc' for the command to be available"
+    else
+        log "Command 'innioasis-updater' is now available (PATH already configured)"
+    fi
+    
+    return 0
+}
     
     return 0
 }
@@ -1386,15 +1320,10 @@ show_completion_message() {
     if command -v innioasis-updater >/dev/null 2>&1; then
         log "✅ Command 'innioasis-updater' is ready to use!"
     else
-        if [[ "$INSTALL_DIR" == /opt/* ]]; then
-            warning "Command 'innioasis-updater' should be available system-wide"
-            log "If not working, try: sudo ln -sf $INSTALL_DIR/innioasis-updater /usr/local/bin/"
-        else
-            warning "Command 'innioasis-updater' may not be in PATH yet"
-            log "Try running: source ~/.bashrc"
-            log "Or restart your terminal"
-            log "Or run directly: ~/.local/bin/innioasis-updater"
-        fi
+        warning "Command 'innioasis-updater' may not be in PATH yet"
+        log "Try running: source ~/.bashrc"
+        log "Or restart your terminal"
+        log "Or run directly: ~/.local/bin/innioasis-updater"
         echo
     fi
     
@@ -1407,35 +1336,20 @@ show_completion_message() {
         log "🚀 Launching Innioasis Updater..."
         echo
         
-        if [[ "$INSTALL_DIR" == /opt/* ]]; then
-            # System-wide installation
-            if command -v innioasis-updater >/dev/null 2>&1; then
-                innioasis-updater
-            elif [ -f "/usr/local/bin/innioasis-updater" ]; then
-                /usr/local/bin/innioasis-updater
-            else
-                cd "$INSTALL_DIR"
-                python3 firmware_downloader.py
-            fi
+        # User installation
+        if command -v innioasis-updater >/dev/null 2>&1; then
+            innioasis-updater
+        elif [ -f "$HOME/.local/bin/innioasis-updater" ]; then
+            "$HOME/.local/bin/innioasis-updater"
         else
-            # User installation
-            if command -v innioasis-updater >/dev/null 2>&1; then
-                innioasis-updater
-            elif [ -f "$HOME/.local/bin/innioasis-updater" ]; then
-                "$HOME/.local/bin/innioasis-updater"
-            else
-                cd "$INSTALL_DIR"
-                python3 firmware_downloader.py
-            fi
+            cd "$INSTALL_DIR"
+            python3 firmware_downloader.py
         fi
     else
         echo
         log "You can launch Innioasis Updater later using:"
-        if [[ "$INSTALL_DIR" == /opt/* ]]; then
-            echo "    innioasis-updater"
-        else
-            echo "    ~/.local/bin/innioasis-updater"
-        fi
+        echo "    innioasis-updater"
+        echo "    or: ~/.local/bin/innioasis-updater"
         echo "    or find it in your applications menu"
     fi
     
