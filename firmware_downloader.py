@@ -2294,8 +2294,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.startmenu_updater_enabled = True  # Start Menu: Innioasis Updater.lnk
             self.startmenu_toolkit_enabled = True  # Start Menu: Innioasis Toolkit.lnk
         
-        # Initialize automatic utility updates setting (all platforms)
-        self.auto_utility_updates_enabled = True  # Default to enabled
+        # Automatic updates are now manual by default - no setting needed
 
         # Initialize theme monitor for dynamic theme switching
         self.theme_monitor = ThemeMonitor(self)
@@ -2304,6 +2303,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Initialize UI first for immediate responsiveness
         self.init_ui()
+
+        # Create .no_updates file at launch if it doesn't exist (manual updates by default)
+        QTimer.singleShot(25, self.ensure_manual_updates_default)
 
         # Handle version check file and macOS app update message (non-blocking)
         QTimer.singleShot(50, self.handle_version_check)
@@ -2344,8 +2346,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Preload critical images with web fallback
         QTimer.singleShot(700, self.preload_critical_images)
 
-        # Load data asynchronously to avoid blocking UI
-        QTimer.singleShot(100, self.load_data)
+        # Load data asynchronously to avoid blocking UI (reduced delay for instant startup)
+        QTimer.singleShot(10, self.load_data)
         
         # Load saved installation preferences
         QTimer.singleShot(200, self.load_installation_preferences)
@@ -2357,10 +2359,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Restore original installation method when session ends
         QTimer.singleShot(300, self.restore_original_installation_method)
 
-        # Set up theme change detection timer
-        self.theme_check_timer = QTimer()
-        self.theme_check_timer.timeout.connect(self.check_theme_change)
-        self.theme_check_timer.start(1000)  # Check every second
+        # Theme change detection removed - let native buttons handle styling
         self.last_theme_state = self.is_dark_mode
 
     def handle_version_check(self):
@@ -2798,7 +2797,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             desktop_path = Path.home() / "Desktop"
             desktop_shortcut = desktop_path / "Innioasis Updater.lnk"
             
-            # Force replacement of existing shortcut
+            # Always force replacement with Skip Update shortcut (manual updates by default)
             if desktop_shortcut.exists():
                 try:
                     desktop_shortcut.unlink()  # Remove existing shortcut
@@ -2808,9 +2807,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             try:
                 shutil.copy2(source_shortcut, desktop_shortcut)
-                auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
-                shortcut_type = "regular" if auto_updates_enabled else "skip-update"
-                silent_print(f"Added Innioasis Updater shortcut to desktop ({shortcut_type})")
+                silent_print(f"Added Innioasis Updater shortcut to desktop (skip-update type)")
             except Exception as e:
                 silent_print(f"Error adding desktop shortcut: {e}")
             
@@ -2820,7 +2817,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             for start_menu_path in start_menu_paths:
                 if start_menu_path.exists():
                     start_menu_shortcut = start_menu_path / "Innioasis Updater.lnk"
-                    # Force replacement of existing shortcut
+                    # Always force replacement with Skip Update shortcut (manual updates by default)
                     if start_menu_shortcut.exists():
                         try:
                             start_menu_shortcut.unlink()  # Remove existing shortcut
@@ -2830,9 +2827,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     
                     try:
                         shutil.copy2(source_shortcut, start_menu_shortcut)
-                        auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
-                        shortcut_type = "regular" if auto_updates_enabled else "skip-update"
-                        silent_print(f"Added Innioasis Updater shortcut to start menu: {start_menu_path} ({shortcut_type})")
+                        silent_print(f"Added Innioasis Updater shortcut to start menu: {start_menu_path} (skip-update type)")
                     except Exception as e:
                         silent_print(f"Error adding start menu shortcut: {e}")
                             
@@ -2872,6 +2867,32 @@ class FirmwareDownloaderGUI(QMainWindow):
                             silent_print(f"Added Innioasis Toolkit shortcut to start menu: {start_menu_path}")
                         except Exception as e:
                             silent_print(f"Error adding start menu shortcut: {e}")
+            
+            # Always ensure Innioasis Updater shortcut exists in Toolkit directory (manual updates by default)
+            toolkit_dir = current_dir / "Toolkit"
+            if toolkit_dir.exists():
+                toolkit_updater_shortcut = toolkit_dir / "Innioasis Updater.lnk"
+                if not toolkit_updater_shortcut.exists():
+                    # Get the Skip Update shortcut source (manual updates by default)
+                    source_shortcut = self.get_appropriate_shortcut_source()
+                    if source_shortcut and source_shortcut.exists():
+                        try:
+                            shutil.copy2(source_shortcut, toolkit_updater_shortcut)
+                            silent_print(f"Added Innioasis Updater shortcut to Toolkit directory (skip-update type)")
+                        except Exception as e:
+                            silent_print(f"Error adding Toolkit Innioasis Updater shortcut: {e}")
+                    else:
+                        silent_print("Cannot create Toolkit Innioasis Updater shortcut: source not found")
+                else:
+                    # Force replacement with Skip Update shortcut if it exists
+                    source_shortcut = self.get_appropriate_shortcut_source()
+                    if source_shortcut and source_shortcut.exists():
+                        try:
+                            toolkit_updater_shortcut.unlink()  # Remove existing
+                            shutil.copy2(source_shortcut, toolkit_updater_shortcut)
+                            silent_print(f"Replaced Toolkit Innioasis Updater shortcut with skip-update type")
+                        except Exception as e:
+                            silent_print(f"Error replacing Toolkit Innioasis Updater shortcut: {e}")
                             
         except Exception as e:
             silent_print(f"Error ensuring Innioasis Toolkit shortcuts: {e}")
@@ -3607,58 +3628,20 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.device_type_combo.currentTextChanged.connect(self.filter_firmware_options)
         device_type_layout.addWidget(self.device_type_combo)
 
-        # Add help button with tooltip (to the right of dropdown)
+        # Add help button with tooltip (to the right of dropdown) - using native styling
         help_btn = QPushButton("?")
-        help_btn.setStyleSheet("""
-            QPushButton {
-                color: #0066CC;
-                font-weight: bold;
-                font-size: 12px;
-                margin-left: 5px;
-                border: none;
-                background-color: transparent;
-                min-width: 24px;
-                max-width: 24px;
-                min-height: 24px;
-                max-height: 24px;
-                padding: 0px;
-            }
-            QPushButton:hover {
-                background-color: rgba(0, 102, 204, 0.1);
-                color: #0066CC;
-            }
-        """)
-        help_btn.setCursor(Qt.PointingHandCursor)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        # Use default cursor for native OS feel
         help_btn.setToolTip("Try Type A System Software first. If your scroll wheel doesn't respond after installation, install one of the Type B options.")
         help_btn.clicked.connect(self.show_device_type_help)
         device_type_layout.addWidget(help_btn)
         
-        # Add Settings button (combines Tools and Settings functionality)
+        # Add Settings button (combines Tools and Settings functionality) - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
         settings_text = f"Settings{seasonal_emoji}" if seasonal_emoji else "Settings"
         self.settings_btn = QPushButton(settings_text)
-        self.settings_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
-        self.settings_btn.setStyleSheet("""
-            QPushButton {
-                background-color: palette(base);
-                color: palette(text);
-                border: 1px solid palette(mid);
-                padding: 4px 8px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 11px;
-                min-height: 24px;
-            }
-            QPushButton:hover {
-                background-color: palette(highlight);
-                color: palette(highlighted-text);
-            }
-            QPushButton:pressed {
-                background-color: palette(dark);
-                color: palette(light);
-            }
-        """)
-        self.settings_btn.setCursor(Qt.PointingHandCursor)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        # Use default cursor for native OS feel
         self.settings_btn.setToolTip("Settings and Tools - Installation method, shortcuts, and Y1 Remote Control")
         self.settings_btn.clicked.connect(self.show_settings_dialog)
         device_type_layout.addWidget(self.settings_btn)
@@ -3666,32 +3649,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add small spacing between Settings and Toolkit buttons
         device_type_layout.addSpacing(4)
         
-        # Add Toolkit button for all platforms
+        # Add Toolkit button for all platforms - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
         toolkit_text = f"Toolkit{seasonal_emoji}" if seasonal_emoji else "Toolkit"
         self.toolkit_btn = QPushButton(toolkit_text)
-        self.toolkit_btn.setFixedSize(80, 24)  # Fixed width and height for consistent alignment
-        self.toolkit_btn.setStyleSheet("""
-            QPushButton {
-                background-color: palette(base);
-                color: palette(text);
-                border: 1px solid palette(mid);
-                padding: 4px 8px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 11px;
-                min-height: 24px;
-            }
-            QPushButton:hover {
-                background-color: palette(highlight);
-                color: palette(highlighted-text);
-            }
-            QPushButton:pressed {
-                background-color: palette(dark);
-                color: palette(light);
-            }
-        """)
-        self.toolkit_btn.setCursor(Qt.PointingHandCursor)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        # Use default cursor for native OS feel
         self.toolkit_btn.setToolTip("Open Innioasis Toolkit - Access all utilities and tools")
         self.toolkit_btn.clicked.connect(self.show_tools_dialog)
         device_type_layout.addWidget(self.toolkit_btn)
@@ -3746,35 +3709,15 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         left_layout.addWidget(package_group)
 
-        # Download button
+        # Download button - using native styling with system accent colors
         seasonal_emoji = get_seasonal_emoji_random()
         download_text = f"Download{seasonal_emoji}" if seasonal_emoji else "Download"
         self.download_btn = QPushButton(download_text)
         self.download_btn.clicked.connect(self.start_download)
         self.download_btn.setEnabled(False)
-        colors = self.get_theme_colors()
-        self.download_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #007AFF;
-                color: white;
-                border: none;
-                padding: 8px 16px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: #0056CC;
-            }
-            QPushButton:pressed {
-                background-color: #004499;
-            }
-            QPushButton:disabled {
-                background-color: palette(mid);
-                color: palette(text);
-                opacity: 0.5;
-            }
-        """)
+        # Make this a Default button to get system accent color (like Y1 Remote Control)
+        self.download_btn.setDefault(True)
+        self.download_btn.setAutoDefault(True)
         left_layout.addWidget(self.download_btn)
         
         # Initially enable settings button (it will be disabled during operations if needed)
@@ -3806,188 +3749,39 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         coffee_layout.addStretch()  # Push buttons to the right
 
-        # Driver Setup button - Windows only, and only if drivers are missing
+        # Driver Setup button - Windows only, defer driver checks for instant UI loading
         if platform.system() == "Windows":
-            driver_info = self.check_drivers_and_architecture()
+            # Create placeholder for driver-dependent buttons (will be populated after driver check)
+            self.driver_buttons_container = QWidget()
+            self.driver_buttons_layout = QHBoxLayout(self.driver_buttons_container)
+            self.driver_buttons_layout.setContentsMargins(0, 0, 0, 0)
+            coffee_layout.addWidget(self.driver_buttons_container)
             
-            if driver_info['is_arm64']:
-                # ARM64 Windows: Show ARM64-specific message
-                arm64_btn = QPushButton("ARM64 Notice")
-                arm64_btn.setStyleSheet("""
-                    QPushButton {
-                        background-color: palette(button);
-                        color: palette(button-text);
-                        border: 1px solid palette(mid);
-                        padding: 8px 16px;
-                        border-radius: 3px;
-                        font-weight: bold;
-                        font-size: 12px;
-                    }
-                    QPushButton:hover {
-                        background-color: palette(highlight);
-                        color: palette(highlighted-text);
-                    }
-                    QPushButton:pressed {
-                        background-color: palette(dark);
-                        color: palette(light);
-                    }
-                """)
-                arm64_btn.clicked.connect(self.open_arm64_info)
-                coffee_layout.addWidget(arm64_btn)
-                
-            elif not driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # No drivers: Show "Install MediaTek & UsbDk Drivers" button
-                driver_btn = QPushButton("🔧 Install MediaTek & UsbDk Drivers")
-                driver_btn.setStyleSheet("""
-                    QPushButton {
-                        background-color: palette(button);
-                        color: palette(button-text);
-                        border: 1px solid palette(mid);
-                        padding: 8px 16px;
-                        border-radius: 3px;
-                        font-weight: bold;
-                        font-size: 12px;
-                    }
-                    QPushButton:hover {
-                        background-color: palette(highlight);
-                        color: palette(highlighted-text);
-                    }
-                    QPushButton:pressed {
-                        background-color: palette(dark);
-                        color: palette(light);
-                    }
-                """)
-                driver_btn.clicked.connect(self.open_driver_setup_link)
-                coffee_layout.addWidget(driver_btn)
-                
-            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                # Only MTK driver: No additional UI elements needed
-                pass
-                
-                # Only show "Install from .zip" button if not on ARM64 Windows
-                if not driver_info['is_arm64']:
-                    install_zip_btn = QPushButton("📦 Install from .zip")
-                    install_zip_btn.setStyleSheet("""
-                        QPushButton {
-                            background-color: palette(button);
-                            color: palette(button-text);
-                            border: 1px solid palette(mid);
-                            padding: 8px 16px;
-                            border-radius: 3px;
-                            font-weight: bold;
-                            font-size: 12px;
-                        }
-                        QPushButton:hover {
-                            background-color: palette(highlight);
-                            color: palette(highlighted-text);
-                        }
-                        QPushButton:pressed {
-                            background-color: palette(dark);
-                            color: palette(light);
-                        }
-                    """)
-                    install_zip_btn.clicked.connect(self.install_from_zip)
-                    coffee_layout.addWidget(install_zip_btn)
-                
-            else:
-                # Both drivers available: Show "Install from .zip" button (but not on ARM64)
-                if not driver_info['is_arm64']:
-                    install_zip_btn = QPushButton("📦 Install from .zip")
-                    install_zip_btn.setStyleSheet("""
-                        QPushButton {
-                            background-color: palette(button);
-                            color: palette(button-text);
-                            border: 1px solid palette(mid);
-                            padding: 8px 16px;
-                            border-radius: 3px;
-                            font-weight: bold;
-                            font-size: 12px;
-                        }
-                        QPushButton:hover {
-                            background-color: palette(highlight);
-                            color: palette(highlighted-text);
-                        }
-                        QPushButton:pressed {
-                            background-color: palette(dark);
-                            color: palette(light);
-                        }
-                    """)
-                    install_zip_btn.clicked.connect(self.install_from_zip)
-                    coffee_layout.addWidget(install_zip_btn)
+            # Schedule driver check in background (reduced delay for faster UI population)
+            QTimer.singleShot(50, self.update_driver_dependent_ui)
         else:
-            # On non-Windows systems, show "Install from .zip" button
+            # On non-Windows systems, show "Install from .zip" button immediately
             install_zip_btn = QPushButton("📦 Install from .zip")
-            install_zip_btn.setStyleSheet("""
-                QPushButton {
-                    background-color: palette(button);
-                    color: palette(button-text);
-                    border: 1px solid palette(mid);
-                    padding: 8px 16px;
-                    border-radius: 3px;
-                    font-weight: bold;
-                    font-size: 12px;
-                }
-                QPushButton:hover {
-                    background-color: palette(highlight);
-                    color: palette(highlighted-text);
-                }
-                QPushButton:pressed {
-                    background-color: palette(dark);
-                    color: palette(light);
-                }
-            """)
+            # Use native styling - no custom stylesheet for automatic theme adaptation
+            # Use default cursor for native OS feel
             install_zip_btn.clicked.connect(self.install_from_zip)
             coffee_layout.addWidget(install_zip_btn)
 
         # Reddit button moved to About tab
 
-        # Discord button
+        # Discord button - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
         discord_text = f"Get Help{seasonal_emoji}" if seasonal_emoji else "Get Help"
         discord_btn = QPushButton(discord_text)
-        discord_btn.setStyleSheet("""
-            QPushButton {
-                background-color: palette(base);
-                color: palette(text);
-                border: 1px solid palette(mid);
-                padding: 8px 16px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: palette(highlight);
-                color: palette(highlighted-text);
-            }
-            QPushButton:pressed {
-                background-color: palette(dark);
-                color: palette(light);
-            }
-        """)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        discord_btn.setCursor(Qt.PointingHandCursor)  # Keep pointing hand for web link
         discord_btn.clicked.connect(self.open_discord_link)
         coffee_layout.addWidget(discord_btn)
 
-        # About button (opens Settings dialog to About tab)
+        # About button (opens Settings dialog to About tab) - using native styling
         about_btn = QPushButton("About")
-        about_btn.setStyleSheet("""
-            QPushButton {
-                background-color: palette(base);
-                color: palette(text);
-                border: 1px solid palette(mid);
-                padding: 8px 16px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: palette(highlight);
-                color: palette(highlighted-text);
-            }
-            QPushButton:pressed {
-                background-color: palette(dark);
-                color: palette(light);
-            }
-        """)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        # Use default cursor for native OS feel
         about_btn.clicked.connect(self.show_settings_dialog)
         coffee_layout.addWidget(about_btn)
 
@@ -4001,31 +3795,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.update_btn_right.setEnabled(True)  # Enable immediately
         self.update_btn_right.clicked.connect(self.launch_updater_script)
         self.update_btn_right.setToolTip("Downloads and installs the latest version of the Innioasis Updater")
-        colors = self.get_theme_colors()
-        self.update_btn_right.setStyleSheet("""
-            QPushButton {
-                background-color: palette(base);
-                color: palette(text);
-                border: 1px solid palette(mid);
-                padding: 8px 16px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: palette(highlight);
-                color: palette(highlighted-text);
-            }
-            QPushButton:pressed {
-                background-color: palette(dark);
-                color: palette(light);
-            }
-            QPushButton:disabled {
-                background-color: palette(mid);
-                color: palette(text);
-                opacity: 0.5;
-            }
-        """)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        # Use default cursor for native OS feel
         update_layout.addWidget(self.update_btn_right)
         right_layout.addLayout(update_layout)
 
@@ -4898,12 +4669,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.populate_device_model_combo()
             self.populate_firmware_combo()
             self.filter_firmware_options()
-            QTimer.singleShot(100, self.apply_initial_release_display)
+            QTimer.singleShot(10, self.apply_initial_release_display)
             self.status_label.setText("Ready")
             silent_print("Data loading complete - instant startup achieved")
         
-        # Start background token validation and remote manifest refresh
-        QTimer.singleShot(100, self.load_tokens_and_validate_background)
+        # Start background token validation and remote manifest refresh (reduced delay for faster startup)
+        QTimer.singleShot(25, self.load_tokens_and_validate_background)
 
     def load_tokens_and_validate_background(self):
         """Load and validate tokens in background without blocking UI"""
@@ -5544,6 +5315,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             margin: 5px;
             padding: 8px;
         """)
+        # Set link color to system accent color
+        credits_label.setStyleSheet(credits_label.styleSheet() + """
+            QLabel a {
+                color: palette(highlight);
+                text-decoration: none;
+            }
+            QLabel a:hover {
+                color: palette(highlight);
+                text-decoration: underline;
+            }
+        """)
         credits_label.setAlignment(Qt.AlignCenter)
         credits_label.setOpenExternalLinks(True)
         credits_label.setWordWrap(False)  # Disable word wrap for horizontal scrolling
@@ -5559,55 +5341,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Set up line-by-line display with fade transitions
         self.setup_credits_line_display(credits_label, credits_container)
         
-        # Automatic Utility Updates checkbox
-        self.auto_utility_updates_checkbox = QCheckBox("Check for Updates Automatically")
-        self.auto_utility_updates_checkbox.setToolTip("When checked, Innioasis Updater will automatically check for and download utility updates")
+        # Automatic updates are now manual by default - no checkbox needed
         
-        # Set checkbox state based on saved preference and .no_updates file
-        # Check if .no_updates file exists to determine current state
-        no_updates_file = Path(".no_updates")
-        if no_updates_file.exists():
-            # .no_updates file exists, so automatic updates are disabled
-            auto_utility_updates = False
-        else:
-            # .no_updates file doesn't exist, use saved preference (default to True)
-            auto_utility_updates = getattr(self, 'auto_utility_updates_enabled', True)
-        self.auto_utility_updates_checkbox.setChecked(auto_utility_updates)
-        
-        # Connect checkbox change to shortcut update (Windows only)
-        if platform.system() == "Windows":
-            self.auto_utility_updates_checkbox.stateChanged.connect(self.update_shortcuts_for_auto_updates)
-        
-        # Center the checkbox
-        checkbox_layout = QHBoxLayout()
-        checkbox_layout.addStretch()
-        checkbox_layout.addWidget(self.auto_utility_updates_checkbox)
-        checkbox_layout.addStretch()
-        about_layout.addLayout(checkbox_layout)
-        
-        # Reddit button
+        # Reddit button - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
         reddit_text = f"📱 r/innioasis{seasonal_emoji}" if seasonal_emoji else "📱 r/innioasis"
         reddit_btn = QPushButton(reddit_text)
-        reddit_btn.setStyleSheet("""
-            QPushButton {
-                background-color: palette(base);
-                color: palette(text);
-                border: 1px solid palette(mid);
-                padding: 8px 16px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: palette(highlight);
-                color: palette(highlighted-text);
-            }
-            QPushButton:pressed {
-                background-color: palette(dark);
-                color: palette(light);
-            }
-        """)
+        # Use completely native styling - no custom stylesheet
+        reddit_btn.setCursor(Qt.PointingHandCursor)
         reddit_btn.clicked.connect(self.open_reddit_link)
         
         # Center the reddit button
@@ -5617,27 +5358,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         reddit_layout.addStretch()
         about_layout.addLayout(reddit_layout)
         
-        # Support The Devs button
+        # Support The Devs button - using native styling
         support_btn = QPushButton("Support The Devs")
-        support_btn.setStyleSheet("""
-            QPushButton {
-                background-color: palette(base);
-                color: palette(text);
-                border: 1px solid palette(mid);
-                padding: 8px 16px;
-                border-radius: 3px;
-                font-weight: bold;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: palette(highlight);
-                color: palette(highlighted-text);
-            }
-            QPushButton:pressed {
-                background-color: palette(dark);
-                color: palette(light);
-            }
-        """)
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        support_btn.setCursor(Qt.PointingHandCursor)  # Keep pointing hand for web link
         support_btn.clicked.connect(self.open_coffee_link)
         
         # Center the support button
@@ -5720,15 +5444,17 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Main tools layout
         tools_layout = QVBoxLayout()
         
-        # Y1 Remote Control button
+        # Y1 Remote Control button - using native styling
         y1_remote_btn = QPushButton("Launch Y1 Remote Control")
         y1_remote_btn.setToolTip("Open Y1 Remote Control application")
+        # Use default cursor for native OS feel
         y1_remote_btn.clicked.connect(self.open_y1_remote_control)
         tools_layout.addWidget(y1_remote_btn)
         
-        # Check for Utility Updates button
+        # Check for Utility Updates button - using native styling
         utility_update_btn = QPushButton("Check for Utility Updates")
         utility_update_btn.setToolTip("Download the latest updater.py script")
+        # Use default cursor for native OS feel
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
         tools_layout.addWidget(utility_update_btn)
         
@@ -5736,17 +5462,19 @@ class FirmwareDownloaderGUI(QMainWindow):
         theme_group = QGroupBox("Theme Downloaders")
         theme_layout = QVBoxLayout(theme_group)
         
-        # 240p Theme Downloader button (only if file exists)
+        # 240p Theme Downloader button (only if file exists) - using native styling
         if Path("rockbox_240p_theme_downloader.py").exists():
             theme_240p_btn = QPushButton("240p Theme Downloader")
             theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
+            # Use default cursor for native OS feel
             theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
             theme_layout.addWidget(theme_240p_btn)
         
-        # 360p Theme Downloader button (only if file exists)
+        # 360p Theme Downloader button (only if file exists) - using native styling
         if Path("rockbox_360p_theme_downloader.py").exists():
             theme_360p_btn = QPushButton("360p Theme Downloader")
             theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
+            # Use default cursor for native OS feel
             theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
             theme_layout.addWidget(theme_360p_btn)
         
@@ -5754,16 +5482,18 @@ class FirmwareDownloaderGUI(QMainWindow):
         if theme_layout.count() > 0:
             tools_layout.addWidget(theme_group)
         
-        # Storage Management Tool button (All platforms)
+        # Storage Management Tool button (All platforms) - using native styling
         storage_btn = QPushButton("Manage Storage")
         storage_btn.setToolTip("Analyze and clean up unnecessary files in the project directory")
+        # Use default cursor for native OS feel
         storage_btn.clicked.connect(self.launch_storage_management_tool)
         tools_layout.addWidget(storage_btn)
         
-        # Rockbox Utility button (Windows only)
+        # Rockbox Utility button (Windows only) - using native styling
         if platform.system() == "Windows":
             rockbox_utility_btn = QPushButton("Rockbox Utility")
             rockbox_utility_btn.setToolTip("Launch Rockbox Utility for Y1 device management")
+            # Use default cursor for native OS feel
             rockbox_utility_btn.clicked.connect(self.launch_rockbox_utility)
             tools_layout.addWidget(rockbox_utility_btn)
         
@@ -5777,6 +5507,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         button_layout.addStretch()
         
         close_btn = QPushButton("Close")
+        # Use native styling - no custom stylesheet for automatic theme adaptation
+        # Use default cursor for native OS feel
         close_btn.clicked.connect(dialog.accept)
         button_layout.addWidget(close_btn)
         
@@ -5792,24 +5524,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Always use method functionality removed
         # Debug mode is now controlled by keyboard shortcut, not saved in settings
         
-        # Save automatic utility updates setting
-        self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
-        
-        # Create or delete .no_updates file based on setting
-        no_updates_file = Path(".no_updates")
-        if self.auto_utility_updates_enabled:
-            # Automatic updates enabled - delete .no_updates file if it exists
-            if no_updates_file.exists():
-                try:
-                    no_updates_file.unlink()
-                except Exception as e:
-                    logging.warning(f"Could not delete .no_updates file: {e}")
-        else:
-            # Automatic updates disabled - create .no_updates file
-            try:
-                no_updates_file.write_text("Automatic utility updates disabled by user")
-            except Exception as e:
-                logging.warning(f"Could not create .no_updates file: {e}")
+        # Automatic updates are now manual by default - no setting to save
         
         # Save shortcut settings (Windows only)
         if platform.system() == "Windows":
@@ -5835,7 +5550,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.show_toolkit_only_help_dialog()
             
             # Ensure Skip Update shortcut exists if auto-updates are disabled
-            if not self.auto_utility_updates_enabled:
+            if True:  # Manual updates by default
                 if not self.ensure_skip_update_shortcut_exists():
                     silent_print("Warning: Could not ensure Skip Update shortcut exists when saving settings")
             
@@ -5942,9 +5657,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self._toolkit_help_dialog_shown = preferences['toolkit_help_dialog_shown']
                     # auto_cleanup_enabled is always True and not loaded from preferences
                 
-                # Load auto-update preferences (all platforms)
-                if 'auto_utility_updates_enabled' in preferences:
-                    self.auto_utility_updates_enabled = preferences['auto_utility_updates_enabled']
+                # Automatic updates are now manual by default - no preferences to load
                 
                 silent_print(f"Loaded preferences (method reset to default): {preferences}")
             else:
@@ -5953,8 +5666,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 if platform.system() == "Windows":
                     self.detect_existing_shortcuts_and_set_preferences()
                 else:
-                    # Non-Windows platforms use defaults
-                    self.auto_utility_updates_enabled = True  # Check for Utility Updates Automatically ON
+                    # Non-Windows platforms use defaults - automatic updates are manual by default
+                    pass
         except Exception as e:
             silent_print(f"Error loading installation preferences: {e}")
     
@@ -5990,34 +5703,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Determine auto-updates setting based on shortcut types
             # If any shortcuts exist, check if they're "Skip Update" type
-            if desktop_updater_exists or startmenu_updater_exists:
-                # Check if shortcuts point to "Skip Update and Launch.lnk"
-                skip_update_detected = self.detect_skip_update_shortcuts()
-                self.auto_utility_updates_enabled = not skip_update_detected
-            else:
-                # No shortcuts exist, use default (enabled)
-                self.auto_utility_updates_enabled = True
-            
             silent_print(f"Detected shortcuts - Desktop Updater: {desktop_updater_exists}, Desktop Toolkit: {desktop_toolkit_exists}, Start Menu Updater: {startmenu_updater_exists}, Start Menu Toolkit: {startmenu_toolkit_exists}")
-            silent_print(f"Auto-updates setting: {self.auto_utility_updates_enabled}")
             
-            # Create or delete .no_updates file based on detected setting
-            no_updates_file = Path(".no_updates")
-            if self.auto_utility_updates_enabled:
-                # Automatic updates enabled - delete .no_updates file if it exists
-                if no_updates_file.exists():
-                    try:
-                        no_updates_file.unlink()
-                        silent_print("Deleted .no_updates file - automatic updates enabled")
-                    except Exception as e:
-                        silent_print(f"Could not delete .no_updates file: {e}")
-            else:
-                # Automatic updates disabled - create .no_updates file
-                try:
-                    no_updates_file.write_text("Automatic utility updates disabled by user")
-                    silent_print("Created .no_updates file - automatic updates disabled")
-                except Exception as e:
-                    silent_print(f"Could not create .no_updates file: {e}")
+            # Automatic updates are now manual by default - no need to detect or set auto-updates preferences
             
             # Save the detected preferences so they persist
             self.save_installation_preferences()
@@ -6030,7 +5718,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.desktop_toolkit_enabled = False  # Desktop: No Toolkit
             self.startmenu_updater_enabled = True  # Start Menu: Innioasis Updater.lnk
             self.startmenu_toolkit_enabled = True  # Start Menu: Innioasis Toolkit.lnk
-            self.auto_utility_updates_enabled = True  # Check for Utility Updates Automatically ON
+            # Automatic updates are now manual by default
             self._toolkit_help_dialog_shown = False
     
     def detect_skip_update_shortcuts(self):
@@ -6188,7 +5876,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         current_dir = Path.cwd()
         
         # Check if auto-updates are enabled
-        auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+        auto_updates_enabled = False  # Manual updates by default
         silent_print(f"Getting shortcut source - Auto-updates enabled: {auto_updates_enabled}")
         
         if auto_updates_enabled:
@@ -6258,72 +5946,92 @@ class FirmwareDownloaderGUI(QMainWindow):
             shutil.copy2(regular_shortcut, skip_update_shortcut)
             
             silent_print(f"Created Skip Update and Launch.lnk at: {skip_update_shortcut}")
+            
+            # Also overwrite the main Innioasis Updater.lnk with the skip update version (manual updates by default)
+            main_shortcut = current_dir / "Innioasis Updater.lnk"
+            try:
+                shutil.copy2(regular_shortcut, main_shortcut)
+                silent_print(f"Overwrote main Innioasis Updater.lnk with skip-update type")
+            except Exception as e:
+                silent_print(f"Error overwriting main Innioasis Updater.lnk: {e}")
+            
             return True
             
         except Exception as e:
             silent_print(f"Error ensuring Skip Update shortcut exists: {e}")
             return False
 
-    def update_shortcuts_for_auto_updates(self):
-        """Update shortcuts when auto-updates setting changes (Windows only)"""
-        if platform.system() != "Windows":
+    # Method removed - automatic updates are now manual by default
+
+    def ensure_manual_updates_default(self):
+        """Ensure .no_updates file exists at launch to make updates manual by default"""
+        try:
+            no_updates_file = Path(".no_updates")
+            if not no_updates_file.exists():
+                # Create .no_updates file to disable automatic updates by default
+                no_updates_file.write_text("Automatic utility updates disabled by default for all users")
+                silent_print("Created .no_updates file - automatic updates are now manual by default")
+            else:
+                silent_print(".no_updates file already exists - updates remain manual")
+            
+            # Ensure Skip Update shortcut exists for Windows users (manual updates by default)
+            if platform.system() == "Windows":
+                self.ensure_skip_update_shortcut_exists()
+                
+        except Exception as e:
+            silent_print(f"Error creating .no_updates file: {e}")
+
+    def update_driver_dependent_ui(self):
+        """Update UI elements that depend on driver status (called after UI loads)"""
+        if platform.system() != "Windows" or not hasattr(self, 'driver_buttons_container'):
             return
             
         try:
-            # Update the auto-updates setting from the checkbox
-            self.auto_utility_updates_enabled = self.auto_utility_updates_checkbox.isChecked()
-            silent_print(f"Auto-updates setting changed to: {self.auto_utility_updates_enabled}")
+            # Clear existing buttons
+            while self.driver_buttons_layout.count():
+                child = self.driver_buttons_layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
             
-            # Create or delete .no_updates file based on setting
-            no_updates_file = Path(".no_updates")
-            if self.auto_utility_updates_enabled:
-                # Automatic updates enabled - delete .no_updates file if it exists
-                if no_updates_file.exists():
-                    try:
-                        no_updates_file.unlink()
-                        silent_print("Deleted .no_updates file - automatic updates enabled")
-                    except Exception as e:
-                        silent_print(f"Could not delete .no_updates file: {e}")
-            else:
-                # Automatic updates disabled - create .no_updates file
-                try:
-                    no_updates_file.write_text("Automatic utility updates disabled by user")
-                    silent_print("Created .no_updates file - automatic updates disabled")
-                except Exception as e:
-                    silent_print(f"Could not create .no_updates file: {e}")
+            # Check driver status (now in background)
+            driver_info = self.check_drivers_and_architecture()
             
-            # Ensure the Skip Update shortcut exists if auto-updates are disabled
-            if not self.auto_utility_updates_enabled:
-                if not self.ensure_skip_update_shortcut_exists():
-                    silent_print("Warning: Could not ensure Skip Update shortcut exists")
-            
-            # Check what source shortcut will be used
-            source_shortcut = self.get_appropriate_shortcut_source()
-            if source_shortcut:
-                silent_print(f"Will use shortcut source: {source_shortcut}")
-            else:
-                silent_print("Warning: No appropriate shortcut source found")
-            
-            # Only update shortcuts if they are enabled in user preferences
-            desktop_enabled = getattr(self, 'desktop_shortcuts_enabled', True)
-            startmenu_enabled = getattr(self, 'startmenu_shortcuts_enabled', True)
-            silent_print(f"Shortcut preferences - Desktop: {desktop_enabled}, Start Menu: {startmenu_enabled}")
-            
-            if desktop_enabled:
-                self.ensure_desktop_shortcuts()
-                silent_print("Desktop shortcuts updated for auto-updates setting change")
+            if driver_info['is_arm64']:
+                # ARM64 Windows: Show ARM64-specific message
+                arm64_btn = QPushButton("ARM64 Notice")
+                # Use default cursor for native OS feel
+                arm64_btn.clicked.connect(self.open_arm64_info)
+                self.driver_buttons_layout.addWidget(arm64_btn)
                 
-            if startmenu_enabled:
-                self.ensure_startmenu_shortcuts()
-                silent_print("Start menu shortcuts updated for auto-updates setting change")
-            
-            # Save preferences immediately when auto-updates setting is changed
-            self.save_installation_preferences()
+            elif not driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # No drivers: Show "Install MediaTek & UsbDk Drivers" button
+                driver_btn = QPushButton("🔧 Install MediaTek & UsbDk Drivers")
+                # Use default cursor for native OS feel
+                driver_btn.clicked.connect(self.open_driver_setup_link)
+                self.driver_buttons_layout.addWidget(driver_btn)
                 
+            elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
+                # Only MTK driver: Show "Install from .zip" button if not ARM64
+                if not driver_info['is_arm64']:
+                    install_zip_btn = QPushButton("📦 Install from .zip")
+                    # Use native styling - no custom stylesheet for automatic theme adaptation
+                    # Use default cursor for native OS feel
+                    install_zip_btn.clicked.connect(self.install_from_zip)
+                    self.driver_buttons_layout.addWidget(install_zip_btn)
+                
+            else:
+                # Both drivers available: Show "Install from .zip" button (but not on ARM64)
+                if not driver_info['is_arm64']:
+                    install_zip_btn = QPushButton("📦 Install from .zip")
+                    # Use native styling - no custom stylesheet for automatic theme adaptation
+                    # Use default cursor for native OS feel
+                    install_zip_btn.clicked.connect(self.install_from_zip)
+                    self.driver_buttons_layout.addWidget(install_zip_btn)
+                    
+            silent_print("Driver-dependent UI updated in background")
+            
         except Exception as e:
-            silent_print(f"Error updating shortcuts for auto-updates: {e}")
-            import traceback
-            silent_print(f"Full error traceback: {traceback.format_exc()}")
+            silent_print(f"Error updating driver-dependent UI: {e}")
 
     def test_shortcut_replacement(self):
         """Test method to manually trigger shortcut replacement (for debugging)"""
@@ -6371,7 +6079,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print("=== Testing Shortcut Magic ===")
             
             # Test current auto-updates setting
-            auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+            auto_updates_enabled = False  # Manual updates by default
             silent_print(f"Current auto-updates setting: {auto_updates_enabled}")
             
             # Test Skip Update shortcut existence
@@ -6429,7 +6137,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 
                 # Copy the new shortcut
                 shutil.copy2(source_shortcut, dest_shortcut)
-                auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                auto_updates_enabled = False  # Manual updates by default
                 shortcut_type = "regular" if auto_updates_enabled else "skip-update"
                 silent_print(f"Created/updated desktop shortcut: Innioasis Updater.lnk ({shortcut_type})")
             else:
@@ -6487,7 +6195,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         
                         # Copy the new shortcut
                         shutil.copy2(source_shortcut, dest_shortcut)
-                        auto_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
+                        auto_updates_enabled = False  # Manual updates by default
                         shortcut_type = "regular" if auto_updates_enabled else "skip-update"
                         silent_print(f"Created/updated start menu shortcut: Innioasis Updater.lnk ({shortcut_type})")
                     else:
@@ -6887,17 +6595,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             no_updates_file = Path(".no_updates")
             updates_disabled_by_file = no_updates_file.exists()
             
-            # Update auto_utility_updates_enabled based on .no_updates file
-            if updates_disabled_by_file:
-                self.auto_utility_updates_enabled = False
-                silent_print("Updates disabled by .no_updates file detected at startup")
-            else:
-                # Use saved preference if no .no_updates file exists
-                self.auto_utility_updates_enabled = getattr(self, 'auto_utility_updates_enabled', True)
-                silent_print(f"Updates enabled based on saved preference: {self.auto_utility_updates_enabled}")
+            # Automatic updates are now manual by default - no need to check .no_updates file for settings
             
             # Ensure the Skip Update shortcut exists if auto-updates are disabled
-            if not self.auto_utility_updates_enabled:
+            if True:  # Manual updates by default
                 if not self.ensure_skip_update_shortcut_exists():
                     silent_print("Warning: Could not ensure Skip Update shortcut exists on startup")
             
@@ -9438,80 +9139,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             """)
 
     def refresh_button_styles(self):
-        """Refresh all button styles when system theme changes"""
-        try:
-            # Get all buttons in the application
-            buttons = self.findChildren(QPushButton)
-            
-            for button in buttons:
-                # Skip the download button as it should keep its blue color
-                if button == self.download_btn:
-                    continue
-                
-                # Skip the help button (?) as it should keep its text-only styling
-                if button.text() == "?":
-                    continue
-                
-                # Determine appropriate padding based on button type
-                button_text = button.text().lower()
-                if any(keyword in button_text for keyword in ['settings', 'toolkit']):
-                    # Small buttons (Settings, Toolkit) - use smaller padding and fixed size
-                    padding = "4px 8px"
-                    font_size = "11px"
-                    min_height = "min-height: 24px;"
-                    # Apply fixed size for alignment
-                    button.setFixedSize(80, 24)
-                elif any(keyword in button_text for keyword in ['install', 'get help', 'about', 'check for', 'support']):
-                    # Medium buttons - use standard padding
-                    padding = "8px 16px"
-                    font_size = "12px"
-                    min_height = ""
-                else:
-                    # Default for other buttons
-                    padding = "8px 16px"
-                    font_size = "12px"
-                    min_height = ""
-                    
-                # Apply the appropriate button styling
-                button.setStyleSheet(f"""
-                    QPushButton {{
-                        background-color: palette(base);
-                        color: palette(text);
-                        border: 1px solid palette(mid);
-                        padding: {padding};
-                        border-radius: 3px;
-                        font-weight: bold;
-                        font-size: {font_size};
-                        {min_height}
-                    }}
-                    QPushButton:hover {{
-                        background-color: palette(highlight);
-                        color: palette(highlighted-text);
-                    }}
-                    QPushButton:pressed {{
-                        background-color: palette(dark);
-                        color: palette(light);
-                    }}
-                    QPushButton:disabled {{
-                        background-color: palette(mid);
-                        color: palette(text);
-                        opacity: 0.5;
-                    }}
-                """)
-                
-            # Also refresh the image style
-            self.update_image_style()
-            
-        except Exception as e:
-            # Silently handle errors to prevent UI crashes
-            pass
+        """Native buttons handle their own styling - no intervention needed"""
+        pass
 
     def check_theme_change(self):
-        """Check if the system theme has changed"""
-        current_theme_state = self.is_dark_mode()
-        if current_theme_state != self.last_theme_state:
-            self.last_theme_state = current_theme_state
-            self.update_image_style()
+        """Theme change detection disabled - native buttons handle styling"""
+        pass
 
     def on_palette_changed(self):
         """Handle system theme changes (legacy method)"""
