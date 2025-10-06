@@ -238,7 +238,8 @@ setup_virtual_environment() {
     fi
     
     # Define Python packages for virtual environment
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome usb pyusb libusb1 pyserial adbutils pillow numpy"
+    # Use pycryptodomex instead of pycryptodome to support "Cryptodome" imports
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     # Activate virtual environment and install packages
     log "Installing Python packages in virtual environment..."
@@ -294,27 +295,55 @@ EOF
     return 0
 }
 
-# Verify pycryptodome installation
+# Verify pycryptodome installation (supports both pycryptodome and pycryptodomex)
 verify_pycryptodome_installation() {
     local venv_dir="$1"
     
-    log "Verifying pycryptodome installation..."
+    log "Verifying pycryptodome/pycryptodomex installation..."
     
     if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
-        # Test in virtual environment
-        if source "$venv_dir/bin/activate" && python -c "from Crypto.Cipher import AES; print('pycryptodome import successful')" 2>/dev/null; then
-            success "pycryptodome verified in virtual environment"
+        # Test in virtual environment - try both Crypto and Cryptodome imports
+        if source "$venv_dir/bin/activate" && python -c "
+import sys
+try:
+    from Crypto.Cipher import AES
+    print('pycryptodome (Crypto) import successful')
+    sys.exit(0)
+except ImportError:
+    try:
+        from Cryptodome.Cipher import AES
+        print('pycryptodomex (Cryptodome) import successful')
+        sys.exit(0)
+    except ImportError:
+        print('Neither pycryptodome nor pycryptodomex found')
+        sys.exit(1)
+" 2>/dev/null; then
+            success "pycryptodome/pycryptodomex verified in virtual environment"
             return 0
         fi
     else
-        # Test in system Python
-        if python3 -c "from Crypto.Cipher import AES; print('pycryptodome import successful')" 2>/dev/null; then
-            success "pycryptodome verified in system Python"
+        # Test in system Python - try both Crypto and Cryptodome imports
+        if python3 -c "
+import sys
+try:
+    from Crypto.Cipher import AES
+    print('pycryptodome (Crypto) import successful')
+    sys.exit(0)
+except ImportError:
+    try:
+        from Cryptodome.Cipher import AES
+        print('pycryptodomex (Cryptodome) import successful')
+        sys.exit(0)
+    except ImportError:
+        print('Neither pycryptodome nor pycryptodomex found')
+        sys.exit(1)
+" 2>/dev/null; then
+            success "pycryptodome/pycryptodomex verified in system Python"
             return 0
         fi
     fi
     
-    warning "pycryptodome verification failed"
+    warning "pycryptodome/pycryptodomex verification failed"
     return 1
 }
 
@@ -376,13 +405,19 @@ install_pycryptodome_fallback() {
             ;;
     esac
     
-    # Try different installation methods
+    # Try different installation methods - prioritize pycryptodomex for Cryptodome imports
     local install_methods=(
+        "pip install pycryptodomex --upgrade $extra_flags"
+        "pip install pycryptodomex --no-cache-dir $extra_flags"
+        "pip install pycryptodomex --force-reinstall $extra_flags"
         "pip install pycryptodome --upgrade $extra_flags"
         "pip install pycryptodome --no-cache-dir $extra_flags"
         "pip install pycryptodome --force-reinstall $extra_flags"
+        "pip install pycryptodomex --no-deps --force-reinstall $extra_flags"
         "pip install pycryptodome --no-deps --force-reinstall $extra_flags"
+        "pip install pycryptodomex --pre --force-reinstall $extra_flags"
         "pip install pycryptodome --pre --force-reinstall $extra_flags"
+        "pip install pycryptodomex --no-binary=pycryptodomex --force-reinstall"
         "pip install pycryptodome --no-binary=pycryptodome --force-reinstall"
     )
     
@@ -515,7 +550,8 @@ install_python_packages_via_pip() {
     
     # Install packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome usb pyusb libusb1 pyserial adbutils pillow numpy"
+    # Use pycryptodomex to support "Cryptodome" imports
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     if pip3 install --user --break-system-packages $PYTHON_PACKAGES 2>/dev/null; then
         success "Python packages installed via pip successfully"
@@ -592,7 +628,8 @@ install_ubuntu_deps() {
     log "Installing essential packages..."
     
     # Base packages for all architectures
-    BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils android-tools-adb android-tools-fastboot cmake build-essential gcc g++ make libffi-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev"
+    # MTKClient requirements: libfuse2, libfuse3, fuse3, libusb-1.0-0-dev, openssl
+    BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils android-tools-adb android-tools-fastboot cmake build-essential gcc g++ make libffi-dev libssl-dev openssl zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libfuse2 libfuse3 fuse3 libusb-1.0-0-dev libusb-1.0-0"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -744,7 +781,8 @@ install_arch_deps() {
     sudo pacman -Sy
     
     # Base packages for all architectures
-    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl zlib bzip2 readline sqlite tk libxml2 xz-utils ncurses android-tools"
+    # MTKClient requirements: fuse2, fuse3, libusb
+    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl zlib bzip2 readline sqlite tk libxml2 xz-utils ncurses android-tools fuse2 fuse3 libusb"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -786,7 +824,8 @@ install_fedora_deps() {
     sudo dnf update -y
     
     # Base packages for all architectures
-    BASE_PACKAGES="python3 python3-pip python3-venv python3-devel python3-setuptools pkgconfig gcc gcc-c++ make git curl wget unzip systemd-udev usbutils cmake libffi-devel openssl-devel zlib-devel bzip2-devel readline-devel sqlite-devel tk-devel libxml2-devel xz-devel ncurses-devel android-tools"
+    # MTKClient requirements: fuse, fuse-devel, libusb1-devel
+    BASE_PACKAGES="python3 python3-pip python3-venv python3-devel python3-setuptools pkgconfig gcc gcc-c++ make git curl wget unzip systemd-udev usbutils cmake libffi-devel openssl-devel zlib-devel bzip2-devel readline-devel sqlite-devel tk-devel libxml2-devel xz-devel ncurses-devel android-tools fuse fuse-devel libusb1-devel libusb1"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -828,7 +867,8 @@ install_opensuse_deps() {
     sudo zypper refresh
     
     # Base packages for all architectures
-    BASE_PACKAGES="python3 python3-pip python3-venv python3-devel python3-setuptools pkg-config gcc gcc-c++ make git curl wget unzip udev usbutils cmake libffi-devel openssl-devel zlib-devel bzip2-devel readline-devel sqlite3-devel tk-devel libxml2-devel xz-devel ncurses-devel android-tools"
+    # MTKClient requirements: fuse, fuse-devel, libusb-1_0-devel
+    BASE_PACKAGES="python3 python3-pip python3-venv python3-devel python3-setuptools pkg-config gcc gcc-c++ make git curl wget unzip udev usbutils cmake libffi-devel openssl-devel zlib-devel bzip2-devel readline-devel sqlite3-devel tk-devel libxml2-devel xz-devel ncurses-devel android-tools fuse fuse-devel libusb-1_0-devel libusb-1_0-0"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -945,7 +985,8 @@ install_chromeos_deps() {
         sudo apt install -y android-tools-adb android-tools-fastboot 2>/dev/null || warning "Android tools not available in ChromeOS repos"
         
         # Install Python packages via pip (ChromeOS may not have PySide6 in repos)
-        pip3 install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodome usb pyusb libusb1 pyserial adbutils
+        # Use pycryptodomex to support "Cryptodome" imports
+        pip3 install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodomex usb pyusb libusb1 pyserial adbutils
         
         # Verify pycryptodome installation for ChromeOS
         if ! verify_pycryptodome_installation; then
@@ -992,7 +1033,8 @@ install_generic_deps() {
     
     # Install Python packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodome usb pyusb libusb1 pyserial adbutils pillow numpy"
+    # Use pycryptodomex to support "Cryptodome" imports
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     log "Installing Python packages..."
     if ! pip3 install --user --break-system-packages $PYTHON_PACKAGES 2>/dev/null; then
@@ -1104,6 +1146,121 @@ install_android_tools_fallback() {
     return 0
 }
 
+# Setup MTKClient specific requirements
+setup_mtkclient_requirements() {
+    log "Setting up MTKClient specific requirements..."
+    
+    # Add user to required groups
+    log "Adding user to required groups for MTKClient..."
+    
+    # Add to plugdev group (for USB device access)
+    if getent group plugdev >/dev/null 2>&1; then
+        if sudo usermod -a -G plugdev "$USER"; then
+            log "Added user $USER to plugdev group"
+        else
+            warning "Failed to add user to plugdev group"
+        fi
+    else
+        warning "plugdev group does not exist on this system"
+    fi
+    
+    # Add to dialout group (for serial port access)
+    if getent group dialout >/dev/null 2>&1; then
+        if sudo usermod -a -G dialout "$USER"; then
+            log "Added user $USER to dialout group"
+        else
+            warning "Failed to add user to dialout group"
+        fi
+    else
+        warning "dialout group does not exist on this system"
+    fi
+    
+    # Check for vendor interface 0xFF (like LG devices)
+    log "Checking for vendor interface 0xFF devices..."
+    if [ -f "/etc/modprobe.d/blacklist.conf" ]; then
+        if ! grep -q "blacklist qcaux" "/etc/modprobe.d/blacklist.conf" 2>/dev/null; then
+            if echo "blacklist qcaux" | sudo tee -a "/etc/modprobe.d/blacklist.conf" >/dev/null; then
+                log "Added qcaux blacklist for LG devices"
+            else
+                warning "Failed to add qcaux blacklist"
+            fi
+        else
+            log "qcaux blacklist already exists"
+        fi
+    else
+        warning "blacklist.conf not found - vendor interface 0xFF devices may have issues"
+    fi
+    
+    # Verify OpenSSL installation
+    log "Verifying OpenSSL installation..."
+    if command -v openssl >/dev/null 2>&1; then
+        local openssl_version=$(openssl version 2>/dev/null)
+        success "OpenSSL found: $openssl_version"
+        
+        # Check if OpenSSL version is compatible (1.1.1 or higher)
+        local openssl_major=$(echo "$openssl_version" | grep -o "OpenSSL [0-9]" | cut -d' ' -f2)
+        local openssl_minor=$(echo "$openssl_version" | grep -o "\.[0-9]" | head -1 | cut -d'.' -f2)
+        local openssl_patch=$(echo "$openssl_version" | grep -o "\.[0-9]" | tail -1 | cut -d'.' -f2)
+        
+        if [ "$openssl_major" -ge 1 ] && [ "$openssl_minor" -ge 1 ] && [ "$openssl_patch" -ge 1 ]; then
+            success "OpenSSL version is compatible for MTKClient"
+        else
+            warning "OpenSSL version may be too old for MTKClient (need 1.1.1+)"
+            warning "Current version: $openssl_version"
+        fi
+    else
+        error "OpenSSL not found - MTKClient requires OpenSSL for cryptographic operations"
+        return 1
+    fi
+    
+    # Verify libfuse installation
+    log "Verifying libfuse installation..."
+    local fuse_available=false
+    
+    if pkg-config --exists fuse3 2>/dev/null; then
+        local fuse_version=$(pkg-config --modversion fuse3 2>/dev/null)
+        success "libfuse3 found: version $fuse_version"
+        fuse_available=true
+    elif pkg-config --exists fuse 2>/dev/null; then
+        local fuse_version=$(pkg-config --modversion fuse 2>/dev/null)
+        success "libfuse found: version $fuse_version"
+        fuse_available=true
+    fi
+    
+    if [ "$fuse_available" = false ]; then
+        warning "libfuse not found - filesystem mounting may not work"
+        warning "MTKClient uses fuse for mounting flash partitions as filesystems"
+    fi
+    
+    # Verify libusb installation
+    log "Verifying libusb installation..."
+    if pkg-config --exists libusb-1.0 2>/dev/null; then
+        local libusb_version=$(pkg-config --modversion libusb-1.0 2>/dev/null)
+        success "libusb-1.0 found: version $libusb_version"
+    else
+        error "libusb-1.0 not found - USB communication will not work"
+        error "MTKClient requires libusb-1.0 for USB device communication"
+        return 1
+    fi
+    
+    # Check for required Python packages for MTKClient
+    log "Checking MTKClient Python dependencies..."
+    local required_packages=("pycryptodomex" "pyusb" "libusb1" "pyserial" "lxml")
+    
+    for package in "${required_packages[@]}"; do
+        if python3 -c "import $package" 2>/dev/null; then
+            success "Python package $package is available"
+        else
+            warning "Python package $package is missing - will be installed later"
+        fi
+    done
+    
+    success "MTKClient requirements setup completed"
+    log "Note: You may need to reboot or log out/in for group changes to take effect"
+    log "Note: For full MTKClient functionality, ensure your device is in BROM mode when connecting"
+    return 0
+}
+
 # Create udev rules for USB access
 setup_udev_rules() {
     log "Setting up udev rules for USB device access..."
@@ -1114,13 +1271,18 @@ setup_udev_rules() {
         return 1
     fi
     
-    # Create udev rule for MediaTek devices
+    # Create udev rule for MediaTek devices (MTKClient compatible)
     if ! sudo tee /etc/udev/rules.d/99-mediatek.rules > /dev/null << 'EOF'
-# MediaTek USB devices
+# MediaTek USB devices for MTKClient
+# Main MediaTek vendor ID
 SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0666", GROUP="plugdev"
+# HTC devices
 SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0666", GROUP="plugdev"
+# Google devices
 SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev"
+# Oppo devices
 SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", MODE="0666", GROUP="plugdev"
+# Extended MediaTek vendor IDs (0x2e8a-0x2eff range)
 SUBSYSTEM=="usb", ATTR{idVendor}=="2e8a", MODE="0666", GROUP="plugdev"
 SUBSYSTEM=="usb", ATTR{idVendor}=="2e8b", MODE="0666", GROUP="plugdev"
 SUBSYSTEM=="usb", ATTR{idVendor}=="2e8c", MODE="0666", GROUP="plugdev"
@@ -1702,6 +1864,12 @@ main() {
         exit 1
     fi
     
+    # Setup MTKClient specific requirements
+    if ! setup_mtkclient_requirements; then
+        error "MTKClient requirements setup failed"
+        warning "MTKClient may not work properly"
+    fi
+    
     # Setup udev rules
     if ! setup_udev_rules; then
         error "udev rules setup failed"
@@ -1739,37 +1907,54 @@ main() {
     log "Running comprehensive pycryptodome functionality test..."
     
     if [ -d "$INSTALL_DIR/venv" ]; then
-        # Test in virtual environment
+        # Test in virtual environment - try both pycryptodome and pycryptodomex
         if source "$INSTALL_DIR/venv/bin/activate" && python -c "
 import sys
 print(f'Python version: {sys.version}')
 print(f'Architecture: {sys.platform}')
+
+# Try pycryptodomex first (Cryptodome imports), then pycryptodome (Crypto imports)
+crypto_imports = None
 try:
-    from Crypto.Cipher import AES
-    from Crypto.Random import get_random_bytes
-    from Crypto.Util.Padding import pad, unpad
-    
-    # Test basic encryption/decryption
-    key = get_random_bytes(32)
-    iv = get_random_bytes(16)
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    
-    data = b'Hello, pycryptodome!'
-    padded_data = pad(data, AES.block_size)
-    encrypted = cipher.encrypt(padded_data)
-    
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    decrypted = cipher.decrypt(encrypted)
-    original = unpad(decrypted, AES.block_size)
-    
-    if original == data:
-        print('SUCCESS: pycryptodome encryption/decryption test passed')
-    else:
-        print('ERROR: pycryptodome encryption/decryption test failed')
+    from Cryptodome.Cipher import AES
+    from Cryptodome.Random import get_random_bytes
+    from Cryptodome.Util.Padding import pad, unpad
+    crypto_imports = 'pycryptodomex (Cryptodome)'
+    print(f'Using {crypto_imports}')
+except ImportError:
+    try:
+        from Crypto.Cipher import AES
+        from Crypto.Random import get_random_bytes
+        from Crypto.Util.Padding import pad, unpad
+        crypto_imports = 'pycryptodome (Crypto)'
+        print(f'Using {crypto_imports}')
+    except ImportError:
+        print('ERROR: Neither pycryptodome nor pycryptodomex found')
         sys.exit(1)
-except Exception as e:
-    print(f'ERROR: pycryptodome test failed: {e}')
-    sys.exit(1)
+
+if crypto_imports:
+    try:
+        # Test basic encryption/decryption
+        key = get_random_bytes(32)
+        iv = get_random_bytes(16)
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        
+        data = b'Hello, pycryptodome!'
+        padded_data = pad(data, AES.block_size)
+        encrypted = cipher.encrypt(padded_data)
+        
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        decrypted = cipher.decrypt(encrypted)
+        original = unpad(decrypted, AES.block_size)
+        
+        if original == data:
+            print(f'SUCCESS: {crypto_imports} encryption/decryption test passed')
+        else:
+            print(f'ERROR: {crypto_imports} encryption/decryption test failed')
+            sys.exit(1)
+    except Exception as e:
+        print(f'ERROR: {crypto_imports} test failed: {e}')
+        sys.exit(1)
 " 2>/dev/null; then
             success "pycryptodome comprehensive test passed in virtual environment"
         else
@@ -1777,37 +1962,54 @@ except Exception as e:
             warning "Innioasis Updater may not work correctly"
         fi
     else
-        # Test in system Python
+        # Test in system Python - try both pycryptodome and pycryptodomex
         if python3 -c "
 import sys
 print(f'Python version: {sys.version}')
 print(f'Architecture: {sys.platform}')
+
+# Try pycryptodomex first (Cryptodome imports), then pycryptodome (Crypto imports)
+crypto_imports = None
 try:
-    from Crypto.Cipher import AES
-    from Crypto.Random import get_random_bytes
-    from Crypto.Util.Padding import pad, unpad
-    
-    # Test basic encryption/decryption
-    key = get_random_bytes(32)
-    iv = get_random_bytes(16)
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    
-    data = b'Hello, pycryptodome!'
-    padded_data = pad(data, AES.block_size)
-    encrypted = cipher.encrypt(padded_data)
-    
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    decrypted = cipher.decrypt(encrypted)
-    original = unpad(decrypted, AES.block_size)
-    
-    if original == data:
-        print('SUCCESS: pycryptodome encryption/decryption test passed')
-    else:
-        print('ERROR: pycryptodome encryption/decryption test failed')
+    from Cryptodome.Cipher import AES
+    from Cryptodome.Random import get_random_bytes
+    from Cryptodome.Util.Padding import pad, unpad
+    crypto_imports = 'pycryptodomex (Cryptodome)'
+    print(f'Using {crypto_imports}')
+except ImportError:
+    try:
+        from Crypto.Cipher import AES
+        from Crypto.Random import get_random_bytes
+        from Crypto.Util.Padding import pad, unpad
+        crypto_imports = 'pycryptodome (Crypto)'
+        print(f'Using {crypto_imports}')
+    except ImportError:
+        print('ERROR: Neither pycryptodome nor pycryptodomex found')
         sys.exit(1)
-except Exception as e:
-    print(f'ERROR: pycryptodome test failed: {e}')
-    sys.exit(1)
+
+if crypto_imports:
+    try:
+        # Test basic encryption/decryption
+        key = get_random_bytes(32)
+        iv = get_random_bytes(16)
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        
+        data = b'Hello, pycryptodome!'
+        padded_data = pad(data, AES.block_size)
+        encrypted = cipher.encrypt(padded_data)
+        
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        decrypted = cipher.decrypt(encrypted)
+        original = unpad(decrypted, AES.block_size)
+        
+        if original == data:
+            print(f'SUCCESS: {crypto_imports} encryption/decryption test passed')
+        else:
+            print(f'ERROR: {crypto_imports} encryption/decryption test failed')
+            sys.exit(1)
+    except Exception as e:
+        print(f'ERROR: {crypto_imports} test failed: {e}')
+        sys.exit(1)
 " 2>/dev/null; then
             success "pycryptodome comprehensive test passed in system Python"
         else
