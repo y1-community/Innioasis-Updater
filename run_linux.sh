@@ -124,6 +124,17 @@ check_and_cleanup_partial_installation() {
             cleanup_needed=true
         else
             log "Found existing complete installation at: $INSTALL_DIR"
+            
+            # Check if pycryptodome is properly installed in existing installation
+            if [ -d "$INSTALL_DIR/venv" ]; then
+                log "Checking pycryptodome in existing virtual environment..."
+                if ! verify_pycryptodome_installation "$INSTALL_DIR/venv"; then
+                    warning "pycryptodome not properly installed in existing virtual environment"
+                    log "Will reinstall virtual environment to fix pycryptodome"
+                    cleanup_needed=true
+                fi
+            fi
+            
             return 0
         fi
     fi
@@ -226,6 +237,9 @@ setup_virtual_environment() {
         return 1
     fi
     
+    # Define Python packages for virtual environment
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome usb pyusb libusb1 pyserial adbutils pillow numpy"
+    
     # Activate virtual environment and install packages
     log "Installing Python packages in virtual environment..."
     if source "$VENV_DIR/bin/activate" && pip install --upgrade pip; then
@@ -235,13 +249,37 @@ setup_virtual_environment() {
         return 1
     fi
     
-    # Install all required packages
+    # Install all required packages with pycryptodome verification
     if source "$VENV_DIR/bin/activate" && pip install $PYTHON_PACKAGES; then
         success "Python packages installed in virtual environment"
     else
         error "Failed to install Python packages in virtual environment"
         return 1
     fi
+    
+    # Check and fix pycryptodome installation if needed
+    check_pycryptodome_status "$VENV_DIR"
+    local pycrypto_status=$?
+    
+    case $pycrypto_status in
+        0)
+            log "pycryptodome is already working correctly"
+            ;;
+        1)
+            warning "pycryptodome is installed but not working, attempting to fix..."
+            if ! install_pycryptodome_fallback "$VENV_DIR"; then
+                error "Failed to fix pycryptodome installation"
+                return 1
+            fi
+            ;;
+        2)
+            log "pycryptodome not found, installing fresh..."
+            if ! install_pycryptodome_fallback "$VENV_DIR"; then
+                error "Failed to install pycryptodome"
+                return 1
+            fi
+            ;;
+    esac
     
     # Create activation script
     cat > "$INSTALL_DIR/activate_venv.sh" << EOF
@@ -254,6 +292,208 @@ EOF
     
     success "Virtual environment setup completed"
     return 0
+}
+
+# Verify pycryptodome installation
+verify_pycryptodome_installation() {
+    local venv_dir="$1"
+    
+    log "Verifying pycryptodome installation..."
+    
+    if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
+        # Test in virtual environment
+        if source "$venv_dir/bin/activate" && python -c "from Crypto.Cipher import AES; print('pycryptodome import successful')" 2>/dev/null; then
+            success "pycryptodome verified in virtual environment"
+            return 0
+        fi
+    else
+        # Test in system Python
+        if python3 -c "from Crypto.Cipher import AES; print('pycryptodome import successful')" 2>/dev/null; then
+            success "pycryptodome verified in system Python"
+            return 0
+        fi
+    fi
+    
+    warning "pycryptodome verification failed"
+    return 1
+}
+
+# Check if pycryptodome is already properly installed
+check_pycryptodome_status() {
+    local venv_dir="$1"
+    
+    log "Checking pycryptodome installation status..."
+    
+    # Check if pycryptodome is already working
+    if verify_pycryptodome_installation "$venv_dir"; then
+        log "pycryptodome is already properly installed and working"
+        return 0
+    fi
+    
+    # Check if it's installed but not working (version conflict, etc.)
+    local check_cmd="python -c \"import pkg_resources; print([d for d in pkg_resources.working_set if d.project_name.lower() in ['pycryptodome', 'pycrypto']])\" 2>/dev/null || true"
+    
+    if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
+        local installed_packages=$(source "$venv_dir/bin/activate" && eval $check_cmd)
+    else
+        local installed_packages=$(eval $check_cmd)
+    fi
+    
+    if [ -n "$installed_packages" ] && [ "$installed_packages" != "[]" ]; then
+        log "Found existing pycryptodome/pycrypto packages: $installed_packages"
+        log "Package exists but import failed - attempting to fix..."
+        return 1
+    fi
+    
+    log "pycryptodome not installed - will install fresh"
+    return 2
+}
+
+# Install pycryptodome with fallback methods
+install_pycryptodome_fallback() {
+    local venv_dir="$1"
+    
+    log "Attempting fallback pycryptodome installation..."
+    log "Architecture: $ARCH_TYPE ($ARCH_BITS-bit)"
+    
+    # Architecture-specific considerations
+    local extra_flags=""
+    case "$ARCH_TYPE" in
+        armhf|armel|arm64)
+            log "ARM architecture detected - using optimized build flags"
+            extra_flags="--no-binary=pycryptodome"
+            # Ensure we have necessary build tools for ARM
+            if ! command -v gcc >/dev/null 2>&1; then
+                warning "GCC not found - pycryptodome may fail to compile on ARM"
+                log "Consider installing build-essential package"
+            fi
+            ;;
+        amd64|i386)
+            log "x86 architecture detected - using standard installation"
+            ;;
+        *)
+            warning "Unknown architecture - attempting standard installation"
+            ;;
+    esac
+    
+    # Try different installation methods
+    local install_methods=(
+        "pip install pycryptodome --upgrade $extra_flags"
+        "pip install pycryptodome --no-cache-dir $extra_flags"
+        "pip install pycryptodome --force-reinstall $extra_flags"
+        "pip install pycryptodome --no-deps --force-reinstall $extra_flags"
+        "pip install pycryptodome --pre --force-reinstall $extra_flags"
+        "pip install pycryptodome --no-binary=pycryptodome --force-reinstall"
+    )
+    
+    for method in "${install_methods[@]}"; do
+        log "Trying: $method"
+        
+        if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
+            if source "$venv_dir/bin/activate" && eval $method 2>/dev/null; then
+                if verify_pycryptodome_installation "$venv_dir"; then
+                    success "pycryptodome installed successfully with method: $method"
+                    return 0
+                fi
+            fi
+        else
+            if eval $method 2>/dev/null; then
+                if verify_pycryptodome_installation; then
+                    success "pycryptodome installed successfully with method: $method"
+                    return 0
+                fi
+            fi
+        fi
+    done
+    
+    # Try installing from source as last resort
+    log "Attempting to install pycryptodome from source..."
+    
+    if command -v git >/dev/null 2>&1; then
+        local temp_dir=$(mktemp -d)
+        cd "$temp_dir"
+        
+        if git clone https://github.com/Legrandin/pycryptodome.git 2>/dev/null; then
+            cd pycryptodome
+            
+            # Set up build environment for source compilation
+            export CFLAGS="-O2"
+            export CXXFLAGS="-O2"
+            
+            # Architecture-specific compiler flags
+            case "$ARCH_TYPE" in
+                armhf|armel)
+                    export CFLAGS="$CFLAGS -march=armv7-a -mfpu=neon"
+                    ;;
+                arm64)
+                    export CFLAGS="$CFLAGS -march=armv8-a"
+                    ;;
+            esac
+            
+            if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
+                if source "$venv_dir/bin/activate" && python setup.py build_ext --inplace && pip install . 2>/dev/null; then
+                    if verify_pycryptodome_installation "$venv_dir"; then
+                        success "pycryptodome installed from source successfully"
+                        rm -rf "$temp_dir"
+                        return 0
+                    fi
+                fi
+            else
+                if python3 setup.py build_ext --inplace && pip3 install . 2>/dev/null; then
+                    if verify_pycryptodome_installation; then
+                        success "pycryptodome installed from source successfully"
+                        rm -rf "$temp_dir"
+                        return 0
+                    fi
+                fi
+            fi
+        fi
+        
+        rm -rf "$temp_dir"
+    fi
+    
+    # Final attempt with system package manager if available
+    log "Attempting to install pycryptodome via system package manager..."
+    
+    case "$DISTRO_ID" in
+        ubuntu|linuxmint|pop|elementary|zorin|debian|raspbian)
+            if command -v apt >/dev/null 2>&1; then
+                if sudo apt install -y python3-cryptography 2>/dev/null; then
+                    log "Installed python3-cryptography as alternative to pycryptodome"
+                    # Test if cryptography can be used as a fallback
+                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
+                        success "cryptography installed as pycryptodome alternative"
+                        return 0
+                    fi
+                fi
+            fi
+            ;;
+        arch|manjaro|endeavouros)
+            if command -v pacman >/dev/null 2>&1; then
+                if sudo pacman -S --noconfirm python-cryptography 2>/dev/null; then
+                    log "Installed python-cryptography as alternative to pycryptodome"
+                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
+                        success "cryptography installed as pycryptodome alternative"
+                        return 0
+                    fi
+                fi
+            fi
+            ;;
+        fedora|rhel|centos|almalinux|rocky)
+            if command -v dnf >/dev/null 2>&1; then
+                if sudo dnf install -y python3-cryptography 2>/dev/null; then
+                    log "Installed python3-cryptography as alternative to pycryptodome"
+                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
+                        success "cryptography installed as pycryptodome alternative"
+                        return 0
+                    fi
+                fi
+            fi
+            ;;
+    esac
+    
+    error "All pycryptodome installation methods failed"
+    return 1
 }
 
 # Fix Cryptodome import statements in Innioasis Updater code
@@ -285,6 +525,12 @@ install_python_packages_via_pip() {
         warning "Failed to install some Python packages via pip"
         warning "You may need to install them manually later"
         warning "Try: pip3 install --user --break-system-packages $PYTHON_PACKAGES"
+    fi
+    
+    # Verify pycryptodome installation
+    if ! verify_pycryptodome_installation; then
+        warning "pycryptodome verification failed, attempting fallback installation..."
+        install_pycryptodome_fallback
     fi
 }
 
@@ -700,6 +946,12 @@ install_chromeos_deps() {
         
         # Install Python packages via pip (ChromeOS may not have PySide6 in repos)
         pip3 install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodome usb pyusb libusb1 pyserial adbutils
+        
+        # Verify pycryptodome installation for ChromeOS
+        if ! verify_pycryptodome_installation; then
+            warning "pycryptodome verification failed on ChromeOS, attempting fallback installation..."
+            install_pycryptodome_fallback
+        fi
     else
         warning "ChromeOS/FydeOS detected but apt not available. Using generic installation."
         install_generic_deps
@@ -758,6 +1010,13 @@ install_generic_deps() {
     log "Attempting to install keystone-engine..."
     if ! pip3 install --user --break-system-packages keystone-engine 2>/dev/null; then
         pip3 install --user keystone-engine 2>/dev/null || warning "keystone-engine failed to install (requires cmake and build tools)"
+    fi
+    
+    # Verify pycryptodome installation
+    log "Verifying pycryptodome installation..."
+    if ! verify_pycryptodome_installation; then
+        warning "pycryptodome verification failed, attempting fallback installation..."
+        install_pycryptodome_fallback
     fi
     
     # Try to install libusb
@@ -1457,6 +1716,104 @@ main() {
         error "Innioasis Updater installation failed"
         pause_before_exit
         exit 1
+    fi
+    
+    # Final pycryptodome verification and setup
+    log "Performing final pycryptodome verification..."
+    
+    # Check in virtual environment first
+    if [ -d "$INSTALL_DIR/venv" ]; then
+        if ! verify_pycryptodome_installation "$INSTALL_DIR/venv"; then
+            warning "pycryptodome not working in virtual environment, attempting final fix..."
+            install_pycryptodome_fallback "$INSTALL_DIR/venv"
+        fi
+    fi
+    
+    # Check system Python as fallback
+    if ! verify_pycryptodome_installation; then
+        warning "pycryptodome not working in system Python, attempting final fix..."
+        install_pycryptodome_fallback
+    fi
+    
+    # Final comprehensive test
+    log "Running comprehensive pycryptodome functionality test..."
+    
+    if [ -d "$INSTALL_DIR/venv" ]; then
+        # Test in virtual environment
+        if source "$INSTALL_DIR/venv/bin/activate" && python -c "
+import sys
+print(f'Python version: {sys.version}')
+print(f'Architecture: {sys.platform}')
+try:
+    from Crypto.Cipher import AES
+    from Crypto.Random import get_random_bytes
+    from Crypto.Util.Padding import pad, unpad
+    
+    # Test basic encryption/decryption
+    key = get_random_bytes(32)
+    iv = get_random_bytes(16)
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    
+    data = b'Hello, pycryptodome!'
+    padded_data = pad(data, AES.block_size)
+    encrypted = cipher.encrypt(padded_data)
+    
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    decrypted = cipher.decrypt(encrypted)
+    original = unpad(decrypted, AES.block_size)
+    
+    if original == data:
+        print('SUCCESS: pycryptodome encryption/decryption test passed')
+    else:
+        print('ERROR: pycryptodome encryption/decryption test failed')
+        sys.exit(1)
+except Exception as e:
+    print(f'ERROR: pycryptodome test failed: {e}')
+    sys.exit(1)
+" 2>/dev/null; then
+            success "pycryptodome comprehensive test passed in virtual environment"
+        else
+            error "pycryptodome comprehensive test failed in virtual environment"
+            warning "Innioasis Updater may not work correctly"
+        fi
+    else
+        # Test in system Python
+        if python3 -c "
+import sys
+print(f'Python version: {sys.version}')
+print(f'Architecture: {sys.platform}')
+try:
+    from Crypto.Cipher import AES
+    from Crypto.Random import get_random_bytes
+    from Crypto.Util.Padding import pad, unpad
+    
+    # Test basic encryption/decryption
+    key = get_random_bytes(32)
+    iv = get_random_bytes(16)
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    
+    data = b'Hello, pycryptodome!'
+    padded_data = pad(data, AES.block_size)
+    encrypted = cipher.encrypt(padded_data)
+    
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    decrypted = cipher.decrypt(encrypted)
+    original = unpad(decrypted, AES.block_size)
+    
+    if original == data:
+        print('SUCCESS: pycryptodome encryption/decryption test passed')
+    else:
+        print('ERROR: pycryptodome encryption/decryption test failed')
+        sys.exit(1)
+except Exception as e:
+    print(f'ERROR: pycryptodome test failed: {e}')
+    sys.exit(1)
+" 2>/dev/null; then
+            success "pycryptodome comprehensive test passed in system Python"
+        else
+            error "pycryptodome comprehensive test failed in system Python"
+            warning "Innioasis Updater may not work correctly"
+        fi
     fi
     
     # Fix Cryptodome import statements
