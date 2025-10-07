@@ -15,7 +15,6 @@ import json
 import pickle
 import shutil
 import argparse
-import webbrowser
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
@@ -2367,7 +2366,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.7.1"
+            current_version = "1.7.0"
             
             # Read the last used version
             last_version = None
@@ -3591,7 +3590,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater v1.7.1{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater v1.7.0{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -6941,10 +6940,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except:
                     display_text += f"Released: {published_date}\n"
 
-            # Add software name and repo name to release info for button text logic
+            # Add software name to release info for button text logic
             release_with_software = release.copy()
             release_with_software['software_name'] = software_name
-            release_with_software['repo_name'] = selected_repo
 
             item = QListWidgetItem(display_text)
             item.setData(Qt.UserRole, release_with_software)
@@ -7007,10 +7005,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 releases = self.github_api.retry_with_delay(self.github_api.get_all_releases, repo)
                 if releases and len(releases) > 0:
                     for release in releases:
-                        # Add software name and repo name to the release info for identification
+                        # Add software name to the release info for identification
                         release_with_software = release.copy()
                         release_with_software['software_name'] = name
-                        release_with_software['repo_name'] = repo
                         all_releases.append(release_with_software)
                 else:
                     failed_repos.append(repo)
@@ -7113,55 +7110,30 @@ class FirmwareDownloaderGUI(QMainWindow):
     def show_context_menu(self, position):
         """Show context menu for right-click on firmware items"""
         item = self.package_list.itemAt(position)
-        
-        # Get the firmware data from the item (if any)
-        firmware_data = None
-        if item is not None:
-            firmware_data = item.data(Qt.UserRole)
+        if item is None:
+            return
+
+        # Get the firmware data from the item
+        firmware_data = item.data(Qt.UserRole)
+        if firmware_data is None:
+            return
 
         from PySide6.QtWidgets import QMenu
 
         context_menu = QMenu(self)
+        delete_action = context_menu.addAction("Delete Local Zip File")
         
-        # Add "View Releases" option (only if we have firmware data with repo_name)
-        view_releases_action = None
-        if firmware_data and firmware_data.get('repo_name'):
-            view_releases_action = context_menu.addAction("View Releases")
-        
-        # Add "Firmware Directory" option (always available)
-        firmware_directory_action = context_menu.addAction("Firmware Directory")
-        
-        # Add separator before delete options (only if we have firmware data)
-        if firmware_data:
-            context_menu.addSeparator()
-            delete_action = context_menu.addAction("Delete Local Zip File")
-        else:
-            delete_action = None
-        
-        # Add separator and "Delete All Cached Zips" option (always available)
+        # Add separator and "Delete All Cached Zips" option
         context_menu.addSeparator()
         delete_all_action = context_menu.addAction("Delete All Cached Zips")
         
-        # Add separator and "Manage Storage" option (always available)
+        # Add separator and "Manage Storage" option
         context_menu.addSeparator()
         manage_storage_action = context_menu.addAction("Manage Storage")
 
         action = context_menu.exec_(self.package_list.mapToGlobal(position))
 
-        if action == view_releases_action and firmware_data:
-            # Open GitHub releases page for this software
-            repo_name = firmware_data.get('repo_name', '')
-            if repo_name:
-                github_url = f"https://github.com/{repo_name}/releases"
-                webbrowser.open(github_url)
-                self.status_label.setText(f"Opened releases page for {repo_name}")
-        
-        elif action == firmware_directory_action:
-            # Open Innioasis firmware directory webpage
-            webbrowser.open("https://innioasis.app/firmware.html")
-            self.status_label.setText("Opened Innioasis Firmware Directory")
-        
-        elif action == delete_action and firmware_data:
+        if action == delete_action:
             # Extract repo_name and version from the firmware data
             repo_name = firmware_data.get('repo_name', '')
             version = firmware_data.get('version', '')
@@ -7233,11 +7205,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             try:
                 releases = self.github_api.get_all_releases(repo)
                 if releases:
-                    # Add software name and repo name to each release for consistent button text logic
+                    # Add software name to each release for consistent button text logic
                     for release in releases:
                         release_with_software = release.copy()
                         release_with_software['software_name'] = package.get('name', repo)
-                        release_with_software['repo_name'] = repo
                         all_releases.append(release_with_software)
 
                     # Update status less frequently to reduce UI updates
@@ -8269,7 +8240,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.7.1"]
+        clean_lines = ["Version 1.7.0"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -9933,7 +9904,7 @@ read -n 1
             # Get latest release from GitHub
             latest_version = self.get_latest_github_version()
             if latest_version:
-                current_version = "1.7.1"
+                current_version = "1.7.0"
                 
                 # Compare versions
                 if self.compare_versions(latest_version, current_version) > 0:
