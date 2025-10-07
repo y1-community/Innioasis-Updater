@@ -6646,11 +6646,11 @@ your-rom-repo/
         }
 
         function downloadWindows() {
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.-.Windows.exe';
+            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/installer.exe';
             
             const link = document.createElement('a');
             link.href = url;
-            link.download = 'Innioasis.Updater.-.Windows.exe';
+            link.download = 'installer.exe';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
