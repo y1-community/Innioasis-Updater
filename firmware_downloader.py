@@ -2366,7 +2366,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.6.9"
+            current_version = "1.7.0"
             
             # Read the last used version
             last_version = None
@@ -3590,7 +3590,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater v1.6.9{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater v1.7.0{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -3622,19 +3622,20 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Device type filter
         device_type_layout = QHBoxLayout()
-        device_type_layout.addWidget(QLabel("Device Type:"))
+        self.device_type_label = QLabel("Device Type:")
+        device_type_layout.addWidget(self.device_type_label)
 
         self.device_type_combo = QComboBox()
         self.device_type_combo.currentTextChanged.connect(self.filter_firmware_options)
         device_type_layout.addWidget(self.device_type_combo)
 
         # Add help button with tooltip (to the right of dropdown) - using native styling
-        help_btn = QPushButton("Type?")
+        self.type_help_btn = QPushButton("Type?")
         # Use native styling - no custom stylesheet for automatic theme adaptation
         # Use default cursor for native OS feel
-        help_btn.setToolTip("Try Type A System Software first. If your scroll wheel doesn't respond after installation, install one of the Type B options.")
-        help_btn.clicked.connect(self.show_device_type_help)
-        device_type_layout.addWidget(help_btn)
+        self.type_help_btn.setToolTip("Try Type A System Software first. If your scroll wheel doesn't respond after installation, install one of the Type B options.")
+        self.type_help_btn.clicked.connect(self.show_device_type_help)
+        device_type_layout.addWidget(self.type_help_btn)
         
         # Add Settings button (combines Tools and Settings functionality) - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
@@ -5424,6 +5425,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.status_label.setText("Toolkit folder opened in File Explorer")
                 return  # Exit early, no need to show dialog
         
+        # Check if Y1 model is selected
+        selected_model = self.device_model_combo.currentText()
+        is_y1_model = "Y1" in selected_model.upper()
+        
         # Show dialog only if:
         # 1. Not on Windows, OR
         # 2. On Windows but Toolkit directory doesn't exist
@@ -5440,19 +5445,42 @@ class FirmwareDownloaderGUI(QMainWindow):
         layout.addWidget(title_label)
         
         # Description
-        desc_label = QLabel("Access all Innioasis utilities and tools for your Y1 device")
+        desc_label = QLabel("Access all Innioasis utilities and tools for your device")
         desc_label.setStyleSheet("color: #666; margin: 5px;")
         layout.addWidget(desc_label)
         
         # Main tools layout
         tools_layout = QVBoxLayout()
         
-        # Y1 Remote Control button - using native styling
-        y1_remote_btn = QPushButton("Launch Y1 Remote Control")
-        y1_remote_btn.setToolTip("Open Y1 Remote Control application")
-        # Use default cursor for native OS feel
-        y1_remote_btn.clicked.connect(self.open_y1_remote_control)
-        tools_layout.addWidget(y1_remote_btn)
+        # Tools for Innioasis Y1 section (only show if Y1 model is selected)
+        if is_y1_model:
+            y1_tools_group = QGroupBox("Tools for Innioasis Y1")
+            y1_tools_layout = QVBoxLayout(y1_tools_group)
+            
+            # Y1 Remote Control button - using native styling
+            y1_remote_btn = QPushButton("Launch Y1 Remote Control")
+            y1_remote_btn.setToolTip("Open Y1 Remote Control application")
+            # Use default cursor for native OS feel
+            y1_remote_btn.clicked.connect(self.open_y1_remote_control)
+            y1_tools_layout.addWidget(y1_remote_btn)
+            
+            # 240p Theme Downloader button (only if file exists) - using native styling
+            if Path("rockbox_240p_theme_downloader.py").exists():
+                theme_240p_btn = QPushButton("240p Theme Downloader")
+                theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
+                # Use default cursor for native OS feel
+                theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
+                y1_tools_layout.addWidget(theme_240p_btn)
+            
+            # 360p Theme Downloader button (only if file exists) - using native styling
+            if Path("rockbox_360p_theme_downloader.py").exists():
+                theme_360p_btn = QPushButton("360p Theme Downloader")
+                theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
+                # Use default cursor for native OS feel
+                theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
+                y1_tools_layout.addWidget(theme_360p_btn)
+            
+            tools_layout.addWidget(y1_tools_group)
         
         # Check for Utility Updates button - using native styling
         utility_update_btn = QPushButton("Check for Utility Updates")
@@ -5460,30 +5488,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Use default cursor for native OS feel
         utility_update_btn.clicked.connect(self.check_for_utility_updates)
         tools_layout.addWidget(utility_update_btn)
-        
-        # Theme Downloaders section
-        theme_group = QGroupBox("Theme Downloaders")
-        theme_layout = QVBoxLayout(theme_group)
-        
-        # 240p Theme Downloader button (only if file exists) - using native styling
-        if Path("rockbox_240p_theme_downloader.py").exists():
-            theme_240p_btn = QPushButton("240p Theme Downloader")
-            theme_240p_btn.setToolTip("Download and install 240p themes for Y1")
-            # Use default cursor for native OS feel
-            theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
-            theme_layout.addWidget(theme_240p_btn)
-        
-        # 360p Theme Downloader button (only if file exists) - using native styling
-        if Path("rockbox_360p_theme_downloader.py").exists():
-            theme_360p_btn = QPushButton("360p Theme Downloader")
-            theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
-            # Use default cursor for native OS feel
-            theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
-            theme_layout.addWidget(theme_360p_btn)
-        
-        # Only add theme group if it has buttons
-        if theme_layout.count() > 0:
-            tools_layout.addWidget(theme_group)
         
         # Storage Management Tool button (All platforms) - using native styling
         storage_btn = QPushButton("Manage Storage")
@@ -6757,7 +6761,6 @@ class FirmwareDownloaderGUI(QMainWindow):
     def populate_device_model_combo(self):
         """Dynamically populate device model combo from manifest data"""
         self.device_model_combo.clear()
-        self.device_model_combo.addItem("All Models", "")
 
         # Get unique device models from packages
         device_models = set()
@@ -6774,6 +6777,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         if len(device_models) > 0:
             first_model = sorted(device_models)[0]
             self.device_model_combo.setCurrentText(first_model)
+        
+        # Update device type visibility based on selected model
+        self.update_device_type_visibility()
 
     def populate_firmware_combo(self):
         """Populate the software dropdown with package names from manifest"""
@@ -8234,7 +8240,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.6.9"]
+        clean_lines = ["Version 1.7.0"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -8732,8 +8738,22 @@ class FirmwareDownloaderGUI(QMainWindow):
             first_item = self.package_list.item(0)
             self.update_download_button_text(first_item)
 
+    def update_device_type_visibility(self):
+        """Show/hide device type controls based on selected model"""
+        selected_model = self.device_model_combo.currentText()
+        
+        # Show device type controls only if model is or contains "Y1"
+        show_type_controls = "Y1" in selected_model.upper()
+        
+        self.device_type_label.setVisible(show_type_controls)
+        self.device_type_combo.setVisible(show_type_controls)
+        self.type_help_btn.setVisible(show_type_controls)
+    
     def filter_firmware_options(self):
         """Filter software options based on device type and model"""
+        # Update device type visibility based on selected model
+        self.update_device_type_visibility()
+        
         # Repopulate software combo with filtered options
         self.populate_firmware_combo()
 
@@ -9884,7 +9904,7 @@ read -n 1
             # Get latest release from GitHub
             latest_version = self.get_latest_github_version()
             if latest_version:
-                current_version = "1.6.9"
+                current_version = "1.7.0"
                 
                 # Compare versions
                 if self.compare_versions(latest_version, current_version) > 0:
