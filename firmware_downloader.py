@@ -15,6 +15,7 @@ import json
 import pickle
 import shutil
 import argparse
+import webbrowser
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
@@ -51,6 +52,9 @@ def parse_version_designations(version_name):
     # Define adjectives that can modify their nearest neighbor
     adjectives = ['compatible', 'aware', 'supported', 'enabled', 'disabled', 'ready', 'optimized', 'enhanced']
     
+    # Define parts to exclude from parsing and display
+    excluded_parts = ['type', 'b', 'base']
+    
     # Extract only the part after the last dash (this is the actual version number)
     import re
     # First remove long hex strings at the end (like -13057e75dc29a1a7!)
@@ -76,6 +80,10 @@ def parse_version_designations(version_name):
             
         # Skip if it's a hex string
         if re.match(r'^[a-f0-9]{16,}!?$', part):
+            continue
+            
+        # Skip excluded parts (type, b, base)
+        if part.lower() in excluded_parts:
             continue
             
         # Handle special cases first
@@ -932,7 +940,6 @@ class ConfigDownloader:
                 pkg_data = package.attrib
                 package_info = {
                     'name': pkg_data.get('name', 'Unknown'),
-                    'device_type': pkg_data.get('device_type', ''),
                     'repo': pkg_data.get('repo', ''),
                     'device': pkg_data.get('device', ''),
                     'url': pkg_data.get('url', ''),
@@ -947,7 +954,6 @@ class ConfigDownloader:
                 pkg_data = package.attrib
                 package_info = {
                     'name': pkg_data.get('name', 'Unknown'),
-                    'device_type': pkg_data.get('device_type', ''),
                     'repo': pkg_data.get('repo', ''),
                     'device': pkg_data.get('device', ''),
                     'url': pkg_data.get('url', ''),
@@ -2366,7 +2372,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.7.0"
+            current_version = "1.7.1"
             
             # Read the last used version
             last_version = None
@@ -3590,7 +3596,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater v1.7.0{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater v1.7.1{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -5472,13 +5478,13 @@ class FirmwareDownloaderGUI(QMainWindow):
                 theme_240p_btn.clicked.connect(self.launch_240p_theme_downloader)
                 y1_tools_layout.addWidget(theme_240p_btn)
             
-            # 360p Theme Downloader button (only if file exists) - using native styling
-            if Path("rockbox_360p_theme_downloader.py").exists():
-                theme_360p_btn = QPushButton("360p Theme Downloader")
-                theme_360p_btn.setToolTip("Download and install 360p themes for Y1")
-                # Use default cursor for native OS feel
-                theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
-                y1_tools_layout.addWidget(theme_360p_btn)
+        # Y1 and 360p Rockbox Theme Downloader button (only if file exists) - using native styling
+        if Path("rockbox_360p_theme_downloader.py").exists():
+            theme_360p_btn = QPushButton("Y1 and 360p Rockbox Theme Downloader")
+            theme_360p_btn.setToolTip("Download and install Y1 themes and 360p Rockbox themes")
+            # Use default cursor for native OS feel
+            theme_360p_btn.clicked.connect(self.launch_360p_theme_downloader)
+            y1_tools_layout.addWidget(theme_360p_btn)
             
             tools_layout.addWidget(y1_tools_group)
         
@@ -6737,26 +6743,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Always use method functionality removed
 
     def populate_device_type_combo(self):
-        """Dynamically populate device type combo from manifest data"""
+        """Dynamically populate device type combo based on available release tags"""
         self.device_type_combo.clear()
 
-        # Get unique device types from packages
-        device_types = set()
-        for package in self.packages:
-            device_type = package.get('device_type', '')
-            if device_type:
-                device_types.add(device_type)
+        # Always add Type A and Type B options since we can determine this from release tags
+        # Type A: releases without 'type-b' in tag
+        # Type B: releases with 'type-b' in tag
+        self.device_type_combo.addItem("Type A", "A")
+        self.device_type_combo.addItem("Type B", "B")
 
-        # Add device types to combo (sorted)
-        for device_type in sorted(device_types):
-            self.device_type_combo.addItem(f"Type {device_type}", device_type)
-
-        # Set default to Type A if available, otherwise first available type
-        if 'A' in device_types:
-            self.device_type_combo.setCurrentText("Type A")
-        elif len(device_types) > 0:
-            first_type = sorted(device_types)[0]
-            self.device_type_combo.setCurrentText(f"Type {first_type}")
+        # Set default to Type A
+        self.device_type_combo.setCurrentText("Type A")
 
     def populate_device_model_combo(self):
         """Dynamically populate device model combo from manifest data"""
@@ -6782,7 +6779,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.update_device_type_visibility()
 
     def populate_firmware_combo(self):
-        """Populate the software dropdown with package names from manifest"""
+        """Populate the software dropdown with package names based on release tag filtering"""
         self.firmware_combo.clear()
 
         # Get current filter selections
@@ -6794,17 +6791,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         for package in self.packages:
             name = package.get('name', '')
             repo = package.get('repo', '')
-            device_type = package.get('device_type', '')
             device_model = package.get('device', '')
-
-            # Check device type filter
-            type_match = not selected_type or device_type == selected_type
 
             # Check device model filter
             model_match = not selected_model or device_model == selected_model
 
-            if name and repo and type_match and model_match:
-                software_options.append((name, repo))
+            if name and repo and model_match:
+                # Check if this software has releases that match the type filter
+                # We need to check the actual releases to determine type compatibility
+                if self._software_matches_type_filter(repo, selected_type):
+                    software_options.append((name, repo))
 
         # Add filtered software options to dropdown (sorted by name)
         for name, repo in sorted(software_options, key=lambda x: x[0]):
@@ -6818,6 +6814,48 @@ class FirmwareDownloaderGUI(QMainWindow):
                 break
 
         self.firmware_combo.setCurrentIndex(default_index)
+
+    def _software_matches_type_filter(self, repo, selected_type):
+        """Check if a software repository has releases that match the selected device type filter"""
+        if not selected_type:
+            # No type filter selected - show all software
+            return True
+        
+        try:
+            # Get releases for this repository to check their tags
+            releases = self.github_api.get_all_releases(repo)
+            if not releases:
+                return False
+            
+            # Check if any release matches the type filter
+            for release in releases:
+                tag_name = release.get('tag_name', '')
+                if self._release_matches_type_filter(tag_name, selected_type):
+                    return True
+            
+            return False
+        except Exception as e:
+            silent_print(f"Error checking releases for {repo}: {e}")
+            return False
+
+    def _release_matches_type_filter(self, tag_name, selected_type):
+        """Check if a release tag matches the selected device type filter"""
+        if not selected_type:
+            return True
+        
+        has_type_b = 'type-b' in tag_name.lower()
+        
+        if selected_type == 'B':
+            # Type B filter: only show releases with 'type-b' in tag
+            return has_type_b
+        else:
+            # Type A filter (or other types): show releases without 'type-b' in tag
+            return not has_type_b
+
+    def _should_exclude_release(self, tag_name):
+        """Check if a release should be excluded from listings (e.g., contains 'base')"""
+        # Exclude releases that contain 'base' in the tag name
+        return 'base' in tag_name.lower()
 
     def update_package_group_title(self, firmware_name):
         """Update the package group title based on selected software"""
@@ -6900,8 +6938,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.package_list.addItem(f"No releases found for {selected_repo}")
                 return
 
+        # Get current type filter to filter releases
+        selected_type = self.device_type_combo.currentData()
+
         # Add releases to the list with detailed information
         for release in releases:
+            # Filter releases based on tag name and selected type
+            tag_name = release.get('tag_name', '')
+            
+            # Skip releases that should be excluded (e.g., contains 'base')
+            if self._should_exclude_release(tag_name):
+                continue
+                
+            if not self._release_matches_type_filter(tag_name, selected_type):
+                continue  # Skip this release if it doesn't match the type filter
+
             # Find the package info for this release to get software name from manifest
             package_info = None
             for package in self.packages:
@@ -6940,9 +6991,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except:
                     display_text += f"Released: {published_date}\n"
 
-            # Add software name to release info for button text logic
+            # Add software name and repo name to release info for button text logic
             release_with_software = release.copy()
             release_with_software['software_name'] = software_name
+            release_with_software['repo_name'] = selected_repo
 
             item = QListWidgetItem(display_text)
             item.setData(Qt.UserRole, release_with_software)
@@ -6991,24 +7043,29 @@ class FirmwareDownloaderGUI(QMainWindow):
         for package in self.packages:
             name = package.get('name', '')
             repo = package.get('repo', '')
-            device_type = package.get('device_type', '')
             device_model = package.get('device', '')
-
-            # Check device type filter
-            type_match = not selected_type or device_type == selected_type
 
             # Check device model filter
             model_match = not selected_model or device_model == selected_model
 
-            if name and repo and type_match and model_match:
+            if name and repo and model_match:
                 # Get releases for this software with retry
                 releases = self.github_api.retry_with_delay(self.github_api.get_all_releases, repo)
                 if releases and len(releases) > 0:
                     for release in releases:
-                        # Add software name to the release info for identification
-                        release_with_software = release.copy()
-                        release_with_software['software_name'] = name
-                        all_releases.append(release_with_software)
+                        # Filter releases based on tag name and selected type
+                        tag_name = release.get('tag_name', '')
+                        
+                        # Skip releases that should be excluded (e.g., contains 'base')
+                        if self._should_exclude_release(tag_name):
+                            continue
+                            
+                        if self._release_matches_type_filter(tag_name, selected_type):
+                            # Add software name and repo name to the release info for identification
+                            release_with_software = release.copy()
+                            release_with_software['software_name'] = name
+                            release_with_software['repo_name'] = repo
+                            all_releases.append(release_with_software)
                 else:
                     failed_repos.append(repo)
 
@@ -7082,11 +7139,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except:
                     display_text += f"Released: {published_date}\n"
 
-            # Show device type if "All Types" is selected
-            if not self.device_type_combo.currentData() and package_info:
-                device_type = package_info.get('device_type', '')
-                if device_type:
-                    display_text += f"Type: {device_type}\n"
+            # Device type is now determined from release tags, not manifest
+            # No need to show device type from manifest since it's been removed
 
             # Show device model if "All Models" is selected
             if not self.device_model_combo.currentData() and package_info:
@@ -7110,30 +7164,55 @@ class FirmwareDownloaderGUI(QMainWindow):
     def show_context_menu(self, position):
         """Show context menu for right-click on firmware items"""
         item = self.package_list.itemAt(position)
-        if item is None:
-            return
-
-        # Get the firmware data from the item
-        firmware_data = item.data(Qt.UserRole)
-        if firmware_data is None:
-            return
+        
+        # Get the firmware data from the item (if any)
+        firmware_data = None
+        if item is not None:
+            firmware_data = item.data(Qt.UserRole)
 
         from PySide6.QtWidgets import QMenu
 
         context_menu = QMenu(self)
-        delete_action = context_menu.addAction("Delete Local Zip File")
         
-        # Add separator and "Delete All Cached Zips" option
+        # Add "View Releases" option (only if we have firmware data with repo_name)
+        view_releases_action = None
+        if firmware_data and firmware_data.get('repo_name'):
+            view_releases_action = context_menu.addAction("View Releases")
+        
+        # Add "Firmware Directory" option (always available)
+        firmware_directory_action = context_menu.addAction("Firmware Directory")
+        
+        # Add separator before delete options (only if we have firmware data)
+        if firmware_data:
+            context_menu.addSeparator()
+            delete_action = context_menu.addAction("Delete Local Zip File")
+        else:
+            delete_action = None
+        
+        # Add separator and "Delete All Cached Zips" option (always available)
         context_menu.addSeparator()
         delete_all_action = context_menu.addAction("Delete All Cached Zips")
         
-        # Add separator and "Manage Storage" option
+        # Add separator and "Manage Storage" option (always available)
         context_menu.addSeparator()
         manage_storage_action = context_menu.addAction("Manage Storage")
 
         action = context_menu.exec_(self.package_list.mapToGlobal(position))
 
-        if action == delete_action:
+        if action == view_releases_action and firmware_data:
+            # Open GitHub releases page for this software
+            repo_name = firmware_data.get('repo_name', '')
+            if repo_name:
+                github_url = f"https://github.com/{repo_name}/releases"
+                webbrowser.open(github_url)
+                self.status_label.setText(f"Opened releases page for {repo_name}")
+        
+        elif action == firmware_directory_action:
+            # Open Innioasis firmware directory webpage
+            webbrowser.open("https://innioasis.app/firmware.html")
+            self.status_label.setText("Opened Innioasis Firmware Directory")
+        
+        elif action == delete_action and firmware_data:
             # Extract repo_name and version from the firmware data
             repo_name = firmware_data.get('repo_name', '')
             version = firmware_data.get('version', '')
@@ -7205,10 +7284,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             try:
                 releases = self.github_api.get_all_releases(repo)
                 if releases:
-                    # Add software name to each release for consistent button text logic
+                    # Add software name and repo name to each release for consistent button text logic
                     for release in releases:
                         release_with_software = release.copy()
                         release_with_software['software_name'] = package.get('name', repo)
+                        release_with_software['repo_name'] = repo
                         all_releases.append(release_with_software)
 
                     # Update status less frequently to reduce UI updates
@@ -8240,7 +8320,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.7.0"]
+        clean_lines = ["Version 1.7.1"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -8703,10 +8783,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.package_list.clear()
 
         for package in self.packages:
-            device_type = package.get('device_type', '')
             device_model = package.get('device', '')
 
-            device_type_text = f" (Type {device_type})" if device_type else ""
+            # Device type is now determined from release tags, not manifest
+            device_type_text = ""
             device_model_text = f" [{device_model}]" if device_model else ""
 
             # Get latest release information
@@ -9904,7 +9984,7 @@ read -n 1
             # Get latest release from GitHub
             latest_version = self.get_latest_github_version()
             if latest_version:
-                current_version = "1.7.0"
+                current_version = "1.7.1"
                 
                 # Compare versions
                 if self.compare_versions(latest_version, current_version) > 0:
