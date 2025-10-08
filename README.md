@@ -4,8 +4,8 @@
 
 [<img src="https://innioasis.app/mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>](https://innioasis.com/pages/download)
 
-# How to submit firmwares to Innioasis Updater
-Simply edit slidia_manfiest.xml and submit a PR with an additional line stating your ROM's GitHub repo and latest release URL, for ROMs made for the Type B (1.8volt scroll wheel) variant of the Y1, plese ensure you prefix the rom.zip release's version tag with type-b (e.g type-b-1.2.3) ROM's without Type B designation in their version tag will be assumed to be the more common Type A(3volt scroll wheel) and listed in the Firmware Directory and Innioasis Updater upon an approved submission.
+# Developer: Here's how to submit firmwares to Innioasis Updater
+Simply edit slidia_manfiest.xml and submit a PR with an additional line stating your ROM's GitHub repo and latest release URL, for ROMs made for the Type B (1.8volt scroll wheel) variant of the Y1, plese ensure you prefix the rom.zip release's version tag with type-b (e.g type-b-1.2.3) ROM's without Type B designation in their version tag will be assumed to be the more common Type A(3volt scroll wheel) and listed in the Firmware Directory and Innioasis Updater upon an approved submission. A ROM.zip must contain all the images needed to flash in SP Flash Tool, as well as the Download Agent File and Scatter file, this affords the ROM full compatibility with Innioasis Updater and its underlying firmware flashing tools, namely SP Flash Tool and MTKClient
 
 # Innioasis Updater
 <img src="mtkclient/gui/images/icon.png" alt="Innioasis Updater Icon" width="128"/>
