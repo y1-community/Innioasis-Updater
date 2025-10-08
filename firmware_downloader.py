@@ -938,6 +938,12 @@ class ConfigDownloader:
             # Find all package elements within the slidia root
             for package in root.findall('package'):
                 pkg_data = package.attrib
+                
+                # Skip packages that have device_type attribute (legacy device type handling)
+                if 'device_type' in pkg_data:
+                    silent_print(f"Skipping package with device_type: {pkg_data.get('name', 'Unknown')}")
+                    continue
+                
                 package_info = {
                     'name': pkg_data.get('name', 'Unknown'),
                     'repo': pkg_data.get('repo', ''),
@@ -952,6 +958,12 @@ class ConfigDownloader:
             # Fallback to old structure for backward compatibility
             for package in root.findall('package'):
                 pkg_data = package.attrib
+                
+                # Skip packages that have device_type attribute (legacy device type handling)
+                if 'device_type' in pkg_data:
+                    silent_print(f"Skipping package with device_type (fallback): {pkg_data.get('name', 'Unknown')}")
+                    continue
+                
                 package_info = {
                     'name': pkg_data.get('name', 'Unknown'),
                     'repo': pkg_data.get('repo', ''),
