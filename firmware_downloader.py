@@ -2372,7 +2372,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.7.1"
+            current_version = "1.7.2"
             
             # Read the last used version
             last_version = None
@@ -3596,7 +3596,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater v1.7.1{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater v1.7.2{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
         
         # Set fixed window size to maintain layout
@@ -6779,11 +6779,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.update_device_type_visibility()
 
     def populate_firmware_combo(self):
-        """Populate the software dropdown with package names based on release tag filtering"""
+        """Populate the software dropdown with package names from manifest"""
         self.firmware_combo.clear()
 
         # Get current filter selections
-        selected_type = self.device_type_combo.currentData()
         selected_model = self.device_model_combo.currentData()
 
         # Get filtered software names from packages
@@ -6793,14 +6792,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             repo = package.get('repo', '')
             device_model = package.get('device', '')
 
-            # Check device model filter
+            # Check device model filter only - type filtering happens at release level
             model_match = not selected_model or device_model == selected_model
 
             if name and repo and model_match:
-                # Check if this software has releases that match the type filter
-                # We need to check the actual releases to determine type compatibility
-                if self._software_matches_type_filter(repo, selected_type):
-                    software_options.append((name, repo))
+                software_options.append((name, repo))
 
         # Add filtered software options to dropdown (sorted by name)
         for name, repo in sorted(software_options, key=lambda x: x[0]):
@@ -6815,28 +6811,6 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         self.firmware_combo.setCurrentIndex(default_index)
 
-    def _software_matches_type_filter(self, repo, selected_type):
-        """Check if a software repository has releases that match the selected device type filter"""
-        if not selected_type:
-            # No type filter selected - show all software
-            return True
-        
-        try:
-            # Get releases for this repository to check their tags
-            releases = self.github_api.get_all_releases(repo)
-            if not releases:
-                return False
-            
-            # Check if any release matches the type filter
-            for release in releases:
-                tag_name = release.get('tag_name', '')
-                if self._release_matches_type_filter(tag_name, selected_type):
-                    return True
-            
-            return False
-        except Exception as e:
-            silent_print(f"Error checking releases for {repo}: {e}")
-            return False
 
     def _release_matches_type_filter(self, tag_name, selected_type):
         """Check if a release tag matches the selected device type filter"""
@@ -8320,7 +8294,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.7.1"]
+        clean_lines = ["Version 1.7.2"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -9984,7 +9958,7 @@ read -n 1
             # Get latest release from GitHub
             latest_version = self.get_latest_github_version()
             if latest_version:
-                current_version = "1.7.1"
+                current_version = "1.7.2"
                 
                 # Compare versions
                 if self.compare_versions(latest_version, current_version) > 0:
