@@ -740,6 +740,25 @@
             background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
         }
 
+        .github-release-btn {
+            background: #6c757d;
+            color: white;
+            border: 1px solid #5a6268;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .github-release-btn:hover {
+            background: #5a6268;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
         .status {
             text-align: center;
             padding: 8px 12px;
@@ -1714,6 +1733,11 @@
                     continue;
                 }
                 
+                // Skip "Type", "B", and "Base" as they are used for device type filtering, not display
+                if (part === 'type' || part === 'b' || part === 'base') {
+                    continue;
+                }
+                
                 // Handle special cases first
                 if (part === 'nightly') {
                     designations.push({
@@ -2137,6 +2161,7 @@
                 filterFirmware();
             });
             document.getElementById('deviceModel').addEventListener('change', function() {
+                updateTypeFilterVisibility();
                 populateSoftwareCombo();
                 filterFirmware();
             });
@@ -2233,9 +2258,17 @@
             
             const packages = [];
             for (let pkg of packageElements) {
+                // Skip packages that have a device_type specified in the manifest
+                // These are special packages (like "Please Update App To Continue") that shouldn't be shown
+                const manifestDeviceType = pkg.getAttribute('device_type') || '';
+                if (manifestDeviceType) {
+                    console.log(`Skipping package with manifest device_type: ${pkg.getAttribute('name')} (device_type=${manifestDeviceType})`);
+                    continue;
+                }
+                
                 packages.push({
                     name: pkg.getAttribute('name') || 'Unknown',
-                    device_type: pkg.getAttribute('device_type') || '',
+                    device_type: '',  // Device type will be determined from release tags, not manifest
                     repo: pkg.getAttribute('repo') || '',
                     device: pkg.getAttribute('device') || '',
                     url: pkg.getAttribute('url') || '',
@@ -2249,19 +2282,20 @@
 
         function populateDeviceTypeCombo() {
             const combo = document.getElementById('deviceType');
-            const deviceTypes = [...new Set(packages.map(p => p.device_type).filter(t => t))];
             
+            // Always populate with Type A and Type B since we determine this from release tags
             combo.innerHTML = '';
-            deviceTypes.sort().forEach(type => {
-                const option = document.createElement('option');
-                option.value = type;
-                option.textContent = `Type ${type}`;
-                // Set Type A as default
-                if (type && type.toLowerCase().includes('a')) {
-                    option.selected = true;
-                }
-                combo.appendChild(option);
-            });
+            
+            const typeA = document.createElement('option');
+            typeA.value = 'A';
+            typeA.textContent = 'Type A';
+            typeA.selected = true;  // Set Type A as default
+            combo.appendChild(typeA);
+            
+            const typeB = document.createElement('option');
+            typeB.value = 'B';
+            typeB.textContent = 'Type B';
+            combo.appendChild(typeB);
         }
 
         function populateDeviceModelCombo() {
@@ -2279,18 +2313,32 @@
                 }
                 combo.appendChild(option);
             });
+            
+            // Show/hide Type selector based on selected model
+            updateTypeFilterVisibility();
+        }
+        
+        function updateTypeFilterVisibility() {
+            const selectedModel = document.getElementById('deviceModel').value;
+            const typeFilterGroup = document.getElementById('deviceType').closest('.filter-group');
+            
+            // Only show Type selector when Y1 is selected
+            if (selectedModel && selectedModel.toLowerCase().includes('y1')) {
+                typeFilterGroup.style.display = '';
+            } else {
+                typeFilterGroup.style.display = 'none';
+            }
         }
 
         function populateSoftwareCombo() {
             const combo = document.getElementById('software');
-            const selectedType = document.getElementById('deviceType').value;
             const selectedModel = document.getElementById('deviceModel').value;
             
-            // Get filtered software names based on current device type and model selections
+            // Get filtered software names based on model selection only
+            // Type filtering happens at the release level now
             const filteredPackages = packages.filter(package => {
-                const typeMatch = !selectedType || package.device_type === selectedType;
                 const modelMatch = !selectedModel || package.device === selectedModel;
-                return typeMatch && modelMatch;
+                return modelMatch;
             });
             
             const softwareNames = [...new Set(filteredPackages.map(p => p.name).filter(n => n))];
@@ -2308,6 +2356,24 @@
             });
         }
 
+        function releaseMatchesTypeFilter(tagName, selectedType) {
+            // Check if a release tag matches the selected device type filter
+            // This mimics the logic from firmware_downloader.py
+            if (!selectedType) {
+                return true;
+            }
+            
+            const hasTypeB = tagName.toLowerCase().includes('type-b') || tagName.toLowerCase().includes('-b-');
+            
+            if (selectedType === 'B') {
+                // Type B filter: only show releases with 'type-b' or '-b-' in tag
+                return hasTypeB;
+            } else {
+                // Type A filter: show releases without 'type-b' or '-b-' in tag
+                return !hasTypeB;
+            }
+        }
+        
         function filterFirmware() {
             currentFilters.deviceType = document.getElementById('deviceType').value;
             currentFilters.deviceModel = document.getElementById('deviceModel').value;
@@ -2323,13 +2389,12 @@
                 const container = document.getElementById('firmwareContainer');
                 container.innerHTML = '<div class="loading-spinner"></div> Loading...';
                 
-                // Get filtered packages
+                // Get filtered packages (without type filter, since type comes from release tags now)
                 const filteredPackages = packages.filter(pkg => {
-                    const typeMatch = !currentFilters.deviceType || pkg.device_type === currentFilters.deviceType;
                     const modelMatch = !currentFilters.deviceModel || pkg.device === currentFilters.deviceModel;
                     const softwareMatch = !currentFilters.software || pkg.name === currentFilters.software;
                     
-                    return typeMatch && modelMatch && softwareMatch;
+                    return modelMatch && softwareMatch;
                 });
                 
                 if (filteredPackages.length === 0) {
@@ -2353,12 +2418,22 @@
                     try {
                         const releases = await getReleases(repo);
                         releases.forEach(release => {
+                            // Filter by type based on release tag name
+                            if (!releaseMatchesTypeFilter(release.tag_name, currentFilters.deviceType)) {
+                                return; // Skip this release if it doesn't match type filter
+                            }
+                            
                             // Add metadata for all packages that use this repo
                             repoGroups[repo].forEach(pkg => {
+                                // Determine device type from tag name
+                                const hasTypeB = release.tag_name.toLowerCase().includes('type-b') || 
+                                                release.tag_name.toLowerCase().includes('-b-');
+                                const deviceType = hasTypeB ? 'B' : 'A';
+                                
                                 const releaseWithMetadata = {
                                     ...release,
                                     software_name: pkg.name,
-                                    device_type: pkg.device_type,
+                                    device_type: deviceType,
                                     device_model: pkg.device
                                 };
                                 allReleases.push(releaseWithMetadata);
@@ -2505,14 +2580,11 @@
                             </div>` : ''}
                         </div>
                         <div class="download-section">
-                            <button class="whats-new-btn" onclick="showWhatsNew('${release.html_url}', '${release.tag_name}')">
-                                📋 What's New
-                            </button>
                             <button class="automatic-install-btn" onclick="goToInnioasisApp(event)">
                                 ⚡ Get Innioasis Updater
                             </button>
-                            <button class="download-rom-btn" onclick="downloadROM('${release.html_url}', event)">
-                                📦 view on GitHub repo
+                            <button class="github-release-btn" onclick="goToGitHubRelease('${release.html_url}', event)">
+                                📦 View Release Notes
                             </button>
                         </div>
                     </div>
@@ -2591,99 +2663,19 @@
             });
         }
 
-        function showWhatsNew(htmlUrl, tagName) {
-            // Extract repository info from HTML URL
-            const urlParts = htmlUrl.split('/');
-            const repo = `${urlParts[3]}/${urlParts[4]}`;
-            
-            // Create modal for release notes
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.innerHTML = `
-                <div class="modal-content whats-new-modal">
-                    <div class="modal-header">
-                        <h3>What's New in ${tagName}</h3>
-                        <button class="close-btn" onclick="closeWhatsNew()">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="loading-spinner">Loading release notes...</div>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            // Fetch release notes from GitHub API
-            fetch(`https://api.github.com/repos/${repo}/releases/tags/${tagName}`)
-                .then(response => response.json())
-                .then(data => {
-                    const body = modal.querySelector('.modal-body');
-                    if (data.body) {
-                        // Convert markdown to HTML (basic conversion)
-                        const html = data.body
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                            .replace(/`(.*?)`/g, '<code>$1</code>')
-                            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                            .replace(/^\* (.*$)/gim, '<li>$1</li>')
-                            .replace(/^- (.*$)/gim, '<li>$1</li>')
-                            .replace(/\n\n/g, '</p><p>')
-                            .replace(/\n/g, '<br>');
-                        
-                        body.innerHTML = `<div class="release-notes">${html}</div>`;
-                    } else {
-                        body.innerHTML = '<p>No release notes available for this version.</p>';
-                    }
-                })
-                .catch(error => {
-                    const body = modal.querySelector('.modal-body');
-                    body.innerHTML = '<p>Error loading release notes. Please try again later.</p>';
-                    console.error('Error fetching release notes:', error);
-                });
-        }
-
-        function closeWhatsNew() {
-            const modal = document.querySelector('.modal-overlay');
-            if (modal) {
-                document.body.removeChild(modal);
-            }
-        }
-
-        function downloadROM(releasesUrl, event) {
-            event.stopPropagation();
-            
-            // Extract repo and tag from the releases URL
-            const urlParts = releasesUrl.split('/');
-            const repoIndex = urlParts.findIndex(part => part === 'github.com') + 1;
-            const repo = `${urlParts[repoIndex]}/${urlParts[repoIndex + 1]}`;
-            const tag = urlParts[urlParts.length - 1];
-            
-            // Construct direct download URL for rom.zip
-            const downloadUrl = `https://github.com/${repo}/releases/download/${tag}/rom.zip`;
-            
-            // Create a temporary link element to trigger download
-            const link = document.createElement('a');
-            link.href = downloadUrl;
-            link.download = `rom-${tag}.zip`;
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Show success message
-            setStatus(`Downloading rom.zip from ${repo}...`, 'loading');
-            setTimeout(() => {
-                setStatus('ROM download started successfully');
-            }, 1000);
-        }
 
         function goToInnioasisApp(event) {
             event.stopPropagation();
             
             // Direct users to the install guide for automatic installation
             window.open('https://innioasis.app', '_blank');
+        }
+
+        function goToGitHubRelease(releaseUrl, event) {
+            event.stopPropagation();
+            
+            // Open the specific release page on GitHub in a new tab
+            window.open(releaseUrl, '_blank');
         }
 
         function formatDate(dateString) {
