@@ -392,6 +392,15 @@ def get_seasonal_emoji():
         emoji_index = (day - 20) % len(summer_emojis)
         return summer_emojis[emoji_index]
     
+    # Pride Month: June 1-30 (celebrated internationally, primarily in June)
+    elif month == 6:
+        pride_emojis = [
+            "🏳️‍🌈", "❤️", "🧡", "💛", "💚", "💙", "💜", "🌈", "✨", "💕", "🏳️‍⚧️", "🦄"
+        ]
+        # Cycle through emojis based on day of month
+        emoji_index = (day - 1) % len(pride_emojis)
+        return pride_emojis[emoji_index]
+    
     # No seasonal emoji
     return ""
 
@@ -464,6 +473,13 @@ def get_seasonal_emoji_random():
         ]
         return random.choice(summer_emojis)
     
+    # Pride Month: June 1-30 (celebrated internationally, primarily in June)
+    elif month == 6:
+        pride_emojis = [
+            "🏳️‍🌈", "❤️", "🧡", "💛", "💚", "💙", "💜", "🌈", "✨", "💕", "🏳️‍⚧️", "🦄"
+        ]
+        return random.choice(pride_emojis)
+    
     return ""
 
 def is_christmas_season():
@@ -495,6 +511,11 @@ def is_easter_season():
     """Check if it's Easter season"""
     today = date.today()
     return (today.month == 3 and today.day >= 22) or (today.month == 4 and today.day <= 25)
+
+def is_pride_month():
+    """Check if it's Pride Month"""
+    today = date.today()
+    return today.month == 6
 
 def is_new_years_day():
     """Check if it's New Year's Day"""
