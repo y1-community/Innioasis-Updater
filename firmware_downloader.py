@@ -2405,7 +2405,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle version check file and show macOS app update message for new users"""
         try:
             version_file = Path(".version")
-            current_version = "1.7.2"
+            current_version = "1.7.3"
             
             # Read the last used version
             last_version = None
@@ -8327,7 +8327,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def setup_credits_line_display(self, credits_label, credits_label_container):
         """Set up line-by-line display with fade transitions"""
         # Start with version line (from firmware_downloader.py, not remote)
-        clean_lines = ["Version 1.7.2"]
+        clean_lines = ["Version 1.7.3"]
         
         # Load credits content from remote or local file
         credits_text = self.load_about_content()
@@ -9991,7 +9991,7 @@ read -n 1
             # Get latest release from GitHub
             latest_version = self.get_latest_github_version()
             if latest_version:
-                current_version = "1.7.2"
+                current_version = "1.7.3"
                 
                 # Compare versions
                 if self.compare_versions(latest_version, current_version) > 0:
