@@ -1,6 +1,6 @@
 # Innioasis Updater is the official firmware installation tool for the Innioasis Y1, built by the users, _for_ the users.
 
-# To get started with Innioasis Updater, or if you're looking for firmware downloads or updates for another Innioasis device, please head to [innioasis.com/pages/download](https://innioasis.com/pages/download)
+# Came from an old Y1 Helper tutorial? We've got a new, guided tool called Innioasis Updater, To get started with it, or if you're looking for firmware downloads or updates for another Innioasis device, please head to [innioasis.com/pages/download](https://innioasis.com/pages/download)
 
 [<img src="https://innioasis.app/mtkclient/gui/images/screenshot.jpg" alt="Innioasis Updater Screenshot"/>](https://innioasis.com/pages/download)
 
