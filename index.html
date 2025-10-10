@@ -3275,7 +3275,7 @@
                 </div>
                 <div class="header-text">
                     <h1>Innioasis Updater</h1>
-                    <p id="dynamic-subtitle">We've helped to update <span id="download-count">3,600+</span> Innioasis Y1s on Windows and Mac</p>
+                    <p id="dynamic-subtitle">We've helped to update <span id="download-count">3,800+</span> Innioasis Y1s on Windows and Mac</p>
                 </div>
             </div>
             <div class="header-download">
@@ -3957,7 +3957,7 @@
                 </ul>
                 <p><strong>Optional Driver:</strong></p>
                 <ul>
-                    <li><strong>USB Development Kit / UsbDk</strong> - Optional download from <a href="https://innioasis.app/driver_usbdk.msi" target="_blank">innioasis.app/driver_usbdk.msi</a></li>
+                    <li><strong>USB Development Kit / UsbDk</strong> - Optional download from <a href="https://github.com/daynix/UsbDk/releases/download/v1.00-22/UsbDk_1.0.22_x64.msi" target="_blank">Daynix's GitHub</a></li>
                     <li><strong>Purpose:</strong> Enables MTKclient-based installation methods on Windows for cross-platform ROM testing</li>
                     <li><strong>Note:</strong> Only needed for ROM developers who want to test cross-platform compatibility</li>
                 </ul>
@@ -6623,8 +6623,8 @@ your-rom-repo/
                     }, 1000);
                 }
             } else if (driverType === 'usb') {
-                const url = 'https://innioasis.app/driver_usbdk.msi';
-                const filename = 'driver_usbdk.msi';
+                const url = 'https://github.com/daynix/UsbDk/releases/download/v1.00-22/UsbDk_1.0.22_x64.msi';
+                const filename = 'UsbDk_1.0.22_x64.msi';
                 
                 if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
                     window.open(url, '_blank');
