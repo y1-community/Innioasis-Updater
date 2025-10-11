@@ -212,7 +212,8 @@ run_full_setup() {
     step_echo "Installing required tools with Homebrew..."
     
     # Essential packages (required for basic functionality)
-    ESSENTIAL_PACKAGES="python python-tk libusb openssl libffi"
+    # Install latest Python version to ensure compatibility with modern packages
+    ESSENTIAL_PACKAGES="python@3.13 libusb openssl libffi"
     # Optional packages (nice to have but not critical)
     OPTIONAL_PACKAGES="rust cmake pkg-config android-platform-tools"
     
@@ -224,6 +225,20 @@ run_full_setup() {
             log_message "   Installing essential package: ${pkg}..."
             if brew install ${pkg} >> "$LOG_FILE" 2>&1; then
                 success_echo "Installed ${pkg}."
+                
+                # Special handling for Python installations
+                if [[ "$pkg" == python@* ]]; then
+                    log_message "   Python package installed - verifying installation..."
+                    PYTHON_VERSION_INSTALLED=$(brew --prefix "$pkg")/bin/python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')" 2>/dev/null || echo "unknown"
+                    log_message "   Installed Python version: $PYTHON_VERSION_INSTALLED"
+                    
+                    # Check Tkinter support for the newly installed Python
+                    if "$(brew --prefix "$pkg")/bin/python3" -c "import tkinter" 2>/dev/null; then
+                        log_message "   ✓ Tkinter support confirmed for installed Python"
+                    else
+                        warn_echo "   ⚠ Tkinter not available in installed Python - GUI may not work"
+                    fi
+                fi
             else
                 error_echo "Failed to install essential package ${pkg}. This may cause issues."
                 warn_echo "Continuing setup - you may need to install ${pkg} manually later."
@@ -269,12 +284,41 @@ run_full_setup() {
     # Try to find the best Python 3 installation
     PYTHON_EXEC=""
     
-    # First try Homebrew Python (architecture-aware)
+    # First, check if we installed Python@3.13 via Homebrew (latest version with best compatibility)
     if command -v brew &>/dev/null; then
-        BREW_PYTHON_PATH="$(brew --prefix)/bin/python3"
-        if [ -x "$BREW_PYTHON_PATH" ]; then
-            PYTHON_EXEC="$BREW_PYTHON_PATH"
-            log_message "   Using Homebrew Python: $PYTHON_EXEC"
+        # Check for Python 3.13 specifically (latest version with best package compatibility)
+        PYTHON_313_PATHS=(
+            "$(brew --prefix python@3.13)/bin/python3"
+            "$(brew --prefix python@3.13)/bin/python3.13"
+        )
+        
+        for python_path in "${PYTHON_313_PATHS[@]}"; do
+            if [ -x "$python_path" ]; then
+                PYTHON_EXEC="$python_path"
+                log_message "   Using Homebrew Python 3.13: $PYTHON_EXEC"
+                break
+            fi
+        done
+        
+        # If Python 3.13 not found, try other Homebrew Python versions
+        if [ -z "$PYTHON_EXEC" ]; then
+            for version in "3.12" "3.11" "3.10"; do
+                PYTHON_PATH="$(brew --prefix python@${version})/bin/python3"
+                if [ -x "$PYTHON_PATH" ]; then
+                    PYTHON_EXEC="$PYTHON_PATH"
+                    log_message "   Using Homebrew Python ${version}: $PYTHON_EXEC"
+                    break
+                fi
+            done
+        fi
+        
+        # Fallback to generic Homebrew Python
+        if [ -z "$PYTHON_EXEC" ]; then
+            BREW_PYTHON_PATH="$(brew --prefix)/bin/python3"
+            if [ -x "$BREW_PYTHON_PATH" ]; then
+                PYTHON_EXEC="$BREW_PYTHON_PATH"
+                log_message "   Using Homebrew Python: $PYTHON_EXEC"
+            fi
         fi
     fi
     
@@ -308,6 +352,14 @@ run_full_setup() {
     log_message "   Python version: $PYTHON_VERSION"
     log_message "   Python architecture: $PYTHON_ARCH"
     
+    # Check Tkinter compatibility
+    if "$PYTHON_EXEC" -c "import tkinter" 2>/dev/null; then
+        log_message "   ✓ Tkinter support confirmed"
+    else
+        warn_echo "   ⚠ Tkinter not available - GUI components may not work"
+        log_message "   This may be due to missing tkinter support in the Python installation"
+    fi
+    
     if ! "$PYTHON_EXEC" -m venv "$VENV_DIR"; then
         error_echo "Failed to create Python virtual environment. Check log."
         exit 1
@@ -315,18 +367,46 @@ run_full_setup() {
     success_echo "Virtual environment created."
     
     source "$VENV_DIR/bin/activate"
-    python3 -m pip install --upgrade pip wheel setuptools >> "$LOG_FILE" 2>&1
+    
+    # Ensure we're using the correct Python in the virtual environment
+    VENV_PYTHON="$VENV_DIR/bin/python"
+    if [ -x "$VENV_PYTHON" ]; then
+        log_message "   Using virtual environment Python: $VENV_PYTHON"
+        python3 -m pip install --upgrade pip wheel setuptools >> "$LOG_FILE" 2>&1
+    else
+        error_echo "Virtual environment Python not found. Setup failed."
+        exit 1
+    fi
     
     # Create a temporary requirements file without problematic packages for older Python versions
     TEMP_REQUIREMENTS="/tmp/innioasis_requirements_temp.txt"
     cp requirements.txt "$TEMP_REQUIREMENTS"
     
-    # Remove problematic packages for Python < 3.10
+    # Check Python version compatibility for packages
+    PYTHON_MAJOR_MINOR=$("$PYTHON_EXEC" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+    log_message "   Current Python version: $PYTHON_MAJOR_MINOR"
+    
+    # Check if we have Python 3.10+ (required for shiboken6 and pyside6)
+    PYTHON_VERSION_OK=false
     if python3 -c "import sys; exit(0 if sys.version_info >= (3, 10) else 1)"; then
-        log_message "   Python 3.10+ detected - installing all dependencies"
+        PYTHON_VERSION_OK=true
+        log_message "   ✓ Python 3.10+ detected - all dependencies should be compatible"
     else
-        log_message "   Python < 3.10 detected - removing shiboken6 and pyside6 (requires Python 3.10+)"
-        sed -i '' '/^shiboken6$/d; /^pyside6$/d' "$TEMP_REQUIREMENTS"
+        log_message "   ⚠ Python < 3.10 detected - some packages may not be available"
+    fi
+    
+    # Only remove problematic packages if we don't have Python 3.10+
+    if ! $PYTHON_VERSION_OK; then
+        log_message "   Removing packages that require Python 3.10+..."
+        PROBLEMATIC_PACKAGES=("shiboken6" "pyside6")
+        for pkg in "${PROBLEMATIC_PACKAGES[@]}"; do
+            if grep -q "^${pkg}$" "$TEMP_REQUIREMENTS"; then
+                log_message "   Removing ${pkg} due to Python version incompatibility"
+                sed -i '' "/^${pkg}$/d" "$TEMP_REQUIREMENTS"
+            fi
+        done
+    else
+        log_message "   All packages should be compatible with Python $PYTHON_MAJOR_MINOR"
     fi
     
     log_message "   Installing Python dependencies from requirements.txt..."
@@ -345,10 +425,25 @@ run_full_setup() {
             fi
             
             log_message "   Attempting to install: $package"
+            
+            # Special handling for known problematic packages
+            if [[ "$package" == "shiboken6" ]]; then
+                log_message "   Note: shiboken6 requires Python 3.10+ and may take longer to install"
+            elif [[ "$package" == "pyside6" ]]; then
+                log_message "   Note: pyside6 requires Python 3.10+ and may take longer to install"
+            fi
+            
             if python3 -m pip install --no-cache-dir "$package" >> "$LOG_FILE" 2>&1; then
                 log_message "   ✓ Successfully installed: $package"
             else
-                warn_echo "   ⚠ Failed to install: $package (continuing without it)"
+                # Provide specific guidance for known problematic packages
+                if [[ "$package" == "shiboken6" ]] || [[ "$package" == "pyside6" ]]; then
+                    warn_echo "   ⚠ Failed to install: $package"
+                    log_message "   This may be due to Python version requirements or build dependencies"
+                    log_message "   The application should still work without GUI components"
+                else
+                    warn_echo "   ⚠ Failed to install: $package (continuing without it)"
+                fi
                 DEPENDENCY_SUCCESS=false
             fi
         done < "$TEMP_REQUIREMENTS"
