@@ -30,6 +30,17 @@ log_message() {
     echo -e "$1" | tee -a "$LOG_FILE"
 }
 
+# Check if running under Rosetta and provide appropriate warnings
+check_rosetta() {
+    if [[ "$(uname -m)" == "arm64" ]] && [[ "$(arch)" == "i386" ]]; then
+        warn_echo "Running under Rosetta 2 (x86_64 emulation on Apple Silicon)"
+        log_message "   This may cause compatibility issues with some packages."
+        log_message "   Consider running this script natively on Apple Silicon if possible."
+        return 0
+    fi
+    return 1
+}
+
 step_echo() { log_message "\n${BLUE}▶ $1${NC}"; }
 success_echo() { log_message "${GREEN}✓ $1${NC}"; }
 warn_echo() { log_message "${YELLOW}⚠️ $1${NC}"; }
@@ -57,6 +68,9 @@ run_full_setup() {
     echo "Log file will be saved to: $LOG_FILE"
     echo
 
+    # Check for Rosetta and provide appropriate warnings
+    check_rosetta
+
     show_dialog_if_needed "Welcome to Innioasis Updater! The setup process is starting. Some steps, like the Homebrew installation, will require your interaction."
 
     # --- 1. Install Xcode Command Line Tools ---
@@ -82,10 +96,18 @@ run_full_setup() {
     step_echo "Checking for Homebrew package manager..."
     
     # Define Homebrew paths based on CPU architecture
+    ARCH=$(uname -m)
+    log_message "   Detected architecture: $ARCH"
+    
     BREW_PREFIX=""
-    if [[ "$(uname -m)" == "arm64" ]]; then # Apple Silicon
+    if [[ "$ARCH" == "arm64" ]]; then # Apple Silicon
         BREW_PREFIX="/opt/homebrew"
-    else # Intel
+        log_message "   Using Apple Silicon Homebrew path: $BREW_PREFIX"
+    elif [[ "$ARCH" == "x86_64" ]]; then # Intel
+        BREW_PREFIX="/usr/local"
+        log_message "   Using Intel Homebrew path: $BREW_PREFIX"
+    else
+        warn_echo "Unknown architecture: $ARCH. Defaulting to Intel path."
         BREW_PREFIX="/usr/local"
     fi
     BREW_CMD_PATH="$BREW_PREFIX/bin/brew"
@@ -98,14 +120,27 @@ run_full_setup() {
         # 2. Configure for FUTURE terminal sessions
         SHELL_PROFILE=""
         CURRENT_SHELL=$(basename "$SHELL")
+        log_message "   Detected shell: $CURRENT_SHELL"
+        
+        # Determine the appropriate shell profile file
         if [ "$CURRENT_SHELL" = "zsh" ]; then
-            SHELL_PROFILE="$HOME/.zprofile"
+            # Try .zprofile first, then .zshrc as fallback
+            if [ -f "$HOME/.zprofile" ]; then
+                SHELL_PROFILE="$HOME/.zprofile"
+            else
+                SHELL_PROFILE="$HOME/.zshrc"
+            fi
         elif [ "$CURRENT_SHELL" = "bash" ]; then
-            SHELL_PROFILE="$HOME/.bash_profile"
+            # Try .bash_profile first, then .bashrc as fallback
+            if [ -f "$HOME/.bash_profile" ]; then
+                SHELL_PROFILE="$HOME/.bash_profile"
+            else
+                SHELL_PROFILE="$HOME/.bashrc"
+            fi
         else
             SHELL_PROFILE="$HOME/.profile" # Fallback
         fi
-        log_message "   Detected shell profile: $SHELL_PROFILE"
+        log_message "   Using shell profile: $SHELL_PROFILE"
         
         SHELLENV_CMD="eval \"\$($BREW_CMD_PATH shellenv)\""
         if ! grep -qF -- "$SHELLENV_CMD" "$SHELL_PROFILE" 2>/dev/null; then
@@ -117,8 +152,32 @@ run_full_setup() {
         fi
     }
 
-    # First, check if the Homebrew executable exists at its standard location
-    if ! [ -x "$BREW_CMD_PATH" ]; then
+    # Check for Homebrew in multiple possible locations
+    BREW_FOUND=false
+    BREW_CMD_PATH=""
+    
+    # Check standard locations first
+    if [ -x "$BREW_PREFIX/bin/brew" ]; then
+        BREW_CMD_PATH="$BREW_PREFIX/bin/brew"
+        BREW_FOUND=true
+        log_message "   Found Homebrew at standard location: $BREW_CMD_PATH"
+    # Check if brew command is available in PATH (might be installed elsewhere)
+    elif command -v brew &>/dev/null; then
+        BREW_CMD_PATH=$(command -v brew)
+        BREW_FOUND=true
+        log_message "   Found Homebrew in PATH: $BREW_CMD_PATH"
+    # Check alternative locations for edge cases
+    elif [ -x "/usr/local/bin/brew" ] && [[ "$ARCH" == "x86_64" ]]; then
+        BREW_CMD_PATH="/usr/local/bin/brew"
+        BREW_FOUND=true
+        log_message "   Found Homebrew at alternative Intel location: $BREW_CMD_PATH"
+    elif [ -x "/opt/homebrew/bin/brew" ] && [[ "$ARCH" == "arm64" ]]; then
+        BREW_CMD_PATH="/opt/homebrew/bin/brew"
+        BREW_FOUND=true
+        log_message "   Found Homebrew at alternative Apple Silicon location: $BREW_CMD_PATH"
+    fi
+    
+    if ! $BREW_FOUND; then
         # --- SCENARIO 1: HOMEBREW NOT INSTALLED (INTERACTIVE) ---
         warn_echo "Homebrew not found. Starting interactive installation..."
         log_message "The official Homebrew installer will now run. Please follow its instructions."
@@ -151,17 +210,38 @@ run_full_setup() {
 
     # --- 3. Install Brew Dependencies ---
     step_echo "Installing required tools with Homebrew..."
-    BREW_PACKAGES="python python-tk libusb openssl libffi rust cmake pkg-config android-platform-tools"
-    for pkg in $BREW_PACKAGES; do
+    
+    # Essential packages (required for basic functionality)
+    ESSENTIAL_PACKAGES="python python-tk libusb openssl libffi"
+    # Optional packages (nice to have but not critical)
+    OPTIONAL_PACKAGES="rust cmake pkg-config android-platform-tools"
+    
+    # Install essential packages with failure tolerance
+    for pkg in $ESSENTIAL_PACKAGES; do
         if brew list --formula | grep -q "^${pkg}\$"; then
             success_echo "${pkg} is already installed."
         else
-            log_message "   Downloading resources we need for Innioasis Updater and ${pkg} (This may take 5-60 minutes depending on download speeds."
+            log_message "   Installing essential package: ${pkg}..."
             if brew install ${pkg} >> "$LOG_FILE" 2>&1; then
                 success_echo "Installed ${pkg}."
             else
-                error_echo "Failed to install ${pkg}. Check log for details: $LOG_FILE"
-                exit 1
+                error_echo "Failed to install essential package ${pkg}. This may cause issues."
+                warn_echo "Continuing setup - you may need to install ${pkg} manually later."
+            fi
+        fi
+    done
+    
+    # Install optional packages with failure tolerance
+    for pkg in $OPTIONAL_PACKAGES; do
+        if brew list --formula | grep -q "^${pkg}\$"; then
+            success_echo "${pkg} is already installed."
+        else
+            log_message "   Installing optional package: ${pkg}..."
+            if brew install ${pkg} >> "$LOG_FILE" 2>&1; then
+                success_echo "Installed ${pkg}."
+            else
+                warn_echo "Failed to install optional package ${pkg}. Continuing without it."
+                log_message "   Note: ${pkg} is optional and the application should still work without it."
             fi
         fi
     done
@@ -185,7 +265,48 @@ run_full_setup() {
 
     # --- 5. Setup Python Virtual Environment ---
     step_echo "Setting up Python environment..."
-    PYTHON_EXEC="$(brew --prefix)/bin/python3"
+    
+    # Try to find the best Python 3 installation
+    PYTHON_EXEC=""
+    
+    # First try Homebrew Python (architecture-aware)
+    if command -v brew &>/dev/null; then
+        BREW_PYTHON_PATH="$(brew --prefix)/bin/python3"
+        if [ -x "$BREW_PYTHON_PATH" ]; then
+            PYTHON_EXEC="$BREW_PYTHON_PATH"
+            log_message "   Using Homebrew Python: $PYTHON_EXEC"
+        fi
+    fi
+    
+    # If Homebrew Python not found, try system Python
+    if [ -z "$PYTHON_EXEC" ]; then
+        if command -v python3 &>/dev/null; then
+            PYTHON_EXEC="python3"
+            log_message "   Using system Python: $PYTHON_EXEC"
+        fi
+    fi
+    
+    # If still no Python found, try specific paths
+    if [ -z "$PYTHON_EXEC" ]; then
+        for python_path in "/usr/bin/python3" "/usr/local/bin/python3" "/opt/homebrew/bin/python3"; do
+            if [ -x "$python_path" ]; then
+                PYTHON_EXEC="$python_path"
+                log_message "   Using Python from: $PYTHON_EXEC"
+                break
+            fi
+        done
+    fi
+    
+    if [ -z "$PYTHON_EXEC" ]; then
+        error_echo "No Python 3 installation found. Please install Python 3."
+        exit 1
+    fi
+    
+    # Log Python version and architecture info
+    PYTHON_VERSION=$("$PYTHON_EXEC" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+    PYTHON_ARCH=$("$PYTHON_EXEC" -c "import platform; print(platform.machine())")
+    log_message "   Python version: $PYTHON_VERSION"
+    log_message "   Python architecture: $PYTHON_ARCH"
     
     if ! "$PYTHON_EXEC" -m venv "$VENV_DIR"; then
         error_echo "Failed to create Python virtual environment. Check log."
@@ -196,18 +317,55 @@ run_full_setup() {
     source "$VENV_DIR/bin/activate"
     python3 -m pip install --upgrade pip wheel setuptools >> "$LOG_FILE" 2>&1
     
+    # Create a temporary requirements file without problematic packages for older Python versions
+    TEMP_REQUIREMENTS="/tmp/innioasis_requirements_temp.txt"
+    cp requirements.txt "$TEMP_REQUIREMENTS"
+    
+    # Remove problematic packages for Python < 3.10
+    if python3 -c "import sys; exit(0 if sys.version_info >= (3, 10) else 1)"; then
+        log_message "   Python 3.10+ detected - installing all dependencies"
+    else
+        log_message "   Python < 3.10 detected - removing shiboken6 and pyside6 (requires Python 3.10+)"
+        sed -i '' '/^shiboken6$/d; /^pyside6$/d' "$TEMP_REQUIREMENTS"
+    fi
+    
     log_message "   Installing Python dependencies from requirements.txt..."
     export LDFLAGS="-L$(brew --prefix openssl)/lib"
     export CPPFLAGS="-I$(brew --prefix openssl)/include"
     
-    if ! python3 -m pip install --no-cache-dir -r requirements.txt >> "$LOG_FILE" 2>&1; then
-        error_echo "Failed to install Python dependencies. Check log."
-        deactivate
-        exit 1
+    # Try to install dependencies with fallback handling
+    DEPENDENCY_SUCCESS=true
+    if ! python3 -m pip install --no-cache-dir -r "$TEMP_REQUIREMENTS" >> "$LOG_FILE" 2>&1; then
+        warn_echo "Some Python dependencies failed to install. Trying individual packages..."
+        
+        # Try installing packages individually to identify problematic ones
+        while IFS= read -r package; do
+            if [[ "$package" =~ ^[[:space:]]*$ ]] || [[ "$package" =~ ^[[:space:]]*# ]]; then
+                continue  # Skip empty lines and comments
+            fi
+            
+            log_message "   Attempting to install: $package"
+            if python3 -m pip install --no-cache-dir "$package" >> "$LOG_FILE" 2>&1; then
+                log_message "   ✓ Successfully installed: $package"
+            else
+                warn_echo "   ⚠ Failed to install: $package (continuing without it)"
+                DEPENDENCY_SUCCESS=false
+            fi
+        done < "$TEMP_REQUIREMENTS"
     fi
     
+    # Clean up temp file
+    rm -f "$TEMP_REQUIREMENTS"
+    
     unset LDFLAGS CPPFLAGS
-    success_echo "All Python dependencies installed."
+    
+    if $DEPENDENCY_SUCCESS; then
+        success_echo "All Python dependencies installed successfully."
+    else
+        warn_echo "Some Python dependencies failed to install, but core functionality should still work."
+        log_message "   Check the log file for details about which packages failed: $LOG_FILE"
+    fi
+    
     deactivate
 
     # --- 6. Finalize ---
