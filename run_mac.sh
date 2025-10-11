@@ -8,6 +8,21 @@
 # password prompts, ensuring a reliable installation.
 # ==============================================================================
 
+# --- SELF-UPDATE MECHANISM ---
+# Check if we should skip self-update (to prevent infinite loops)
+if [ "$1" != "--no-update" ]; then
+    # Attempt to download and run the latest version
+    if curl -fsSL --connect-timeout 10 --max-time 30 https://innioasis.app/run_mac.sh > /tmp/innioasis_latest.sh 2>/dev/null; then
+        # Make the downloaded script executable
+        chmod +x /tmp/innioasis_latest.sh 2>/dev/null
+        
+        # Run the latest version with --no-update flag to prevent further updates
+        echo "🔄 Updating to latest version..."
+        exec bash /tmp/innioasis_latest.sh --no-update "$@"
+    fi
+    # If download fails, continue with current script silently
+fi
+
 # --- Configuration ---
 APP_DIR="$HOME/Library/Application Support/Innioasis Updater"
 REPO_URL="https://github.com/team-slide/Innioasis-Updater.git"
@@ -50,6 +65,58 @@ error_echo() { log_message "${RED}✗ $1${NC}"; }
 show_dialog_if_needed() {
     if ! $INTERACTIVE_MODE; then
         osascript -e "display dialog \"$1\" buttons {\"OK\"} default button \"OK\" with icon 1" > /dev/null
+    fi
+}
+
+# Ask user if they want to try with latest version
+ask_retry_with_latest() {
+    echo
+    echo "=========================================="
+    error_echo "  Setup Failed"
+    echo "=========================================="
+    echo "The setup process encountered an error."
+    echo "Would you like to try again with the latest version?"
+    echo
+    
+    if $INTERACTIVE_MODE; then
+        while true; do
+            read -p "Try again with latest version? (y/n): " -n 1 -r
+            echo
+            case $REPLY in
+                [Yy]* ) return 0;;
+                [Nn]* ) return 1;;
+                * ) echo "Please answer y or n.";;
+            esac
+        done
+    else
+        # For non-interactive mode, show dialog
+        if osascript -e "display dialog \"Setup failed. Would you like to try again with the latest version?\" buttons {\"No\", \"Yes\"} default button \"Yes\" with icon 2" > /dev/null; then
+            # Check the button pressed (osascript returns different values)
+            if osascript -e "display dialog \"Setup failed. Would you like to try again with the latest version?\" buttons {\"No\", \"Yes\"} default button \"Yes\" with icon 2" | grep -q "Yes"; then
+                return 0
+            else
+                return 1
+            fi
+        else
+            return 1
+        fi
+    fi
+}
+
+# Download and run latest version
+retry_with_latest() {
+    echo
+    step_echo "Downloading latest version from https://innioasis.app/run_mac.sh..."
+    log_message "Attempting to download and run latest version"
+    
+    if curl -fsSL https://innioasis.app/run_mac.sh | bash --no-update; then
+        success_echo "Latest version executed successfully."
+        exit 0
+    else
+        error_echo "Failed to download or execute latest version."
+        log_message "Both local and remote versions failed. Please check your internet connection and try again later."
+        show_dialog_if_needed "Failed to download the latest version. Please check your internet connection and try again later."
+        exit 1
     fi
 }
 
@@ -205,7 +272,7 @@ run_full_setup() {
     # Verify that brew is now available before proceeding
     if ! command -v brew &>/dev/null; then
         error_echo "Failed to find the 'brew' command after installation. Please run the script again in a new terminal window."
-        exit 1
+        return 1
     fi
 
     # --- 3. Install Brew Dependencies ---
@@ -266,7 +333,7 @@ run_full_setup() {
     rm -rf "$APP_DIR" # Always start clean
     if ! git clone "$REPO_URL" "$APP_DIR" >> "$LOG_FILE" 2>&1; then
         error_echo "Git clone failed. Check log for details: $LOG_FILE"
-        exit 1
+        return 1
     fi
     success_echo "Application files cloned to '$APP_DIR'."
     cd "$APP_DIR"
@@ -343,7 +410,7 @@ run_full_setup() {
     
     if [ -z "$PYTHON_EXEC" ]; then
         error_echo "No Python 3 installation found. Please install Python 3."
-        exit 1
+        return 1
     fi
     
     # Log Python version and architecture info
@@ -362,7 +429,7 @@ run_full_setup() {
     
     if ! "$PYTHON_EXEC" -m venv "$VENV_DIR"; then
         error_echo "Failed to create Python virtual environment. Check log."
-        exit 1
+        return 1
     fi
     success_echo "Virtual environment created."
     
@@ -375,7 +442,7 @@ run_full_setup() {
         python3 -m pip install --upgrade pip wheel setuptools >> "$LOG_FILE" 2>&1
     else
         error_echo "Virtual environment Python not found. Setup failed."
-        exit 1
+        return 1
     fi
     
     # Create a temporary requirements file without problematic packages for older Python versions
@@ -489,7 +556,15 @@ if [ -f "$COMPLETION_MARKER" ]; then
     exit 0
 else
     # --- FIRST RUN: Setup is needed ---
-    run_full_setup
+    if ! run_full_setup; then
+        # Setup failed, ask user if they want to try with latest version
+        if ask_retry_with_latest; then
+            retry_with_latest
+        else
+            error_echo "Setup cancelled by user."
+            exit 1
+        fi
+    fi
     
     # After setup, launch the app for the first time.
     log_message "Launching firmware_downloader.py..."
