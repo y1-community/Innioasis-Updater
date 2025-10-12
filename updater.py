@@ -166,7 +166,7 @@ class UpdateWorker(QThread):
             self.status_updated.emit("Just checking what's new...")
             self.progress_updated.emit(5)
             
-            main_repo_url = "https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip"
+            main_repo_url = "https://github.com/y1-community/Innioasis-Updater/archive/refs/heads/main.zip"
             zip_file = temp_dir / "innioasis_updater_latest.zip"
             self.status_updated.emit("Grabbing the latest updates...")
             self.download_with_progress(main_repo_url, zip_file, 5, 40)
@@ -656,7 +656,7 @@ def perform_initial_cleanup():
 
 def download_troubleshooters(current_dir, temp_dir):
     try:
-        troubleshooter_url = "https://github.com/team-slide/Innioasis-Updater/raw/main/Troubleshooters%20-%20Windows.zip"
+        troubleshooter_url = "https://github.com/y1-community/Innioasis-Updater/raw/main/Troubleshooters%20-%20Windows.zip"
         troubleshooter_zip = temp_dir / "troubleshooters.zip"
         response = requests.get(troubleshooter_url, timeout=15)
         response.raise_for_status()
