@@ -25,7 +25,7 @@ fi
 
 # --- Configuration ---
 APP_DIR="$HOME/Library/Application Support/Innioasis Updater"
-REPO_URL="https://github.com/team-slide/Innioasis-Updater.git"
+REPO_URL="https://github.com/y1-community/Innioasis-Updater.git"
 VENV_DIR="$APP_DIR/venv"
 PYTHON_SCRIPT="$APP_DIR/updater.py"
 COMPLETION_MARKER="$VENV_DIR/.mac_setup_complete"
