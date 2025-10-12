@@ -23,7 +23,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
   
 ### the r/innioasis community and Mods
 
-### ROM Developer
+### Y1 Custom Android 4.2.2 ROM Developer
  - [@Multiwirth](https://www.github.com/multiwirth)
 
 ### Rockbox Y1 Port Developer and custom ROM packager
