@@ -809,7 +809,7 @@ class ConfigDownloader:
 
     def __init__(self):
         self.config_url = "https://innioasis.app/config.ini"
-        self.manifest_url = "https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml"
+        self.manifest_url = "https://raw.githubusercontent.com/y1-community/slidia/refs/heads/main/slidia_manifest.xml"
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
 
@@ -3364,7 +3364,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print("Downloading troubleshooting shortcuts...")
             
             # Download URL for troubleshooting shortcuts
-            url = "https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/Troubleshooters.-.Windows.zip"
+            url = "https://github.com/y1-community/Innioasis-Updater/releases/download/1.0.0/Troubleshooters.-.Windows.zip"
             
             # Download the zip file
             response = requests.get(url, stream=True, timeout=30)
@@ -7700,7 +7700,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if reply == QMessageBox.Ok:
             # Open the GitHub releases page in the default browser
             import webbrowser
-            releases_url = "https://github.com/team-slide/Innioasis-Updater/releases/latest"
+            releases_url = "https://github.com/y1-community/Innioasis-Updater/releases/latest"
             webbrowser.open(releases_url)
             self.status_label.setText("GitHub releases page opened - please reinstall Innioasis Updater")
         else:
@@ -10028,7 +10028,7 @@ read -n 1
             
             # Get latest release
             response = requests.get(
-                'https://api.github.com/repos/team-slide/Innioasis-Updater/releases/latest',
+                'https://api.github.com/repos/y1-community/Innioasis-Updater/releases/latest',
                 headers=headers,
                 timeout=10
             )
