@@ -809,7 +809,7 @@ class ConfigDownloader:
 
     def __init__(self):
         self.config_url = "https://innioasis.app/config.ini"
-        self.manifest_url = "https://raw.githubusercontent.com/y1-community/slidia/refs/heads/main/slidia_manifest.xml"
+        self.manifest_url = "https://innioasis.app/slidia_manifest.xml"
         self.session = requests.Session()
         self.session.timeout = REQUEST_TIMEOUT
 
