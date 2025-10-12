@@ -2212,7 +2212,7 @@
                 apiTokens = await loadConfigTokens();
                 
                 // Load manifest data
-                const manifestResponse = await fetch('https://raw.githubusercontent.com/y1-community/slidia/refs/heads/main/slidia_manifest.xml');
+                const manifestResponse = await fetch('./slidia_manifest.xml');
                 if (!manifestResponse.ok) {
                     throw new Error('Failed to load manifest');
                 }
