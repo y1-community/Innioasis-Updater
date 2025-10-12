@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <slidia>
   <!-- App Market: APKs -->
- <!-- <package name="Stock Menu 2.1.9 Update for Type B Y1's" repo="rockbox-y1/rockbox" url="https://github.com/team-slide/com.innioasis.y1/releases/latest" android_package="org.rockbox" device="y1" type="apk" handler="App" /> -->
+ <!-- <package name="Stock Menu 2.1.9 Update for Type B Y1's" repo="rockbox-y1/rockbox" url="https://github.com/y1-community/com.innioasis.y1/releases/latest" android_package="org.rockbox" device="y1" type="apk" handler="App" /> -->
   <!-- Custom Firmware: Project Gallagher -->
-<package name="Original Software" repo="team-slide/y1-stock-rom" device="Y1" url="https://github.com/team-slide/y1-stock-rom/releases/latest" type="img" handler="Custom Firmware" />
+<package name="Original Software" repo="y1-community/y1-stock-rom" device="Y1" url="https://github.com/y1-community/y1-stock-rom/releases/latest" type="img" handler="Custom Firmware" />
 <package name="Please Update App To Continue" device_type="0" repo="Please-Click/Updates-Available" device="Y1" url="https://github.com/Please-Click/Updates-Available/releases/latest" type="img" handler="Custom Firmware" />
 <package name="Rockbox ROM" repo="rockbox-y1/rockbox" device="Y1" url="https://github.com/rockbox-y1/rockbox/releases/latest" type="img" handler="Custom Firmware" />
 <!-- <package name="Multiwirth's Android 4.2 ROM" device_type="A" repo="multiwirth/Innioasis_Y1_system_dumps" device="Y1" url="https://github.com/multiwirth/Innioasis_Y1_system_dumps/releases/latest" type="img" handler="Custom Firmware" /> -->
 <!-- <package name="Multiwirth Android 4.2 ROM (For Type B Y1s)" device_type="B" repo="multiwirth/Innioasis_Y1_system_dumps_type_b" device="Y1" url="https://github.com/multiwirth/Innioasis_Y1_system_dumps_type_b/releases/latest" type="img" handler="Custom Firmware" /> -->
-<!--  <package name="Original Software" device_type="A" repo="team-slide/q3-english-stock" device="Q3" url="https://github.com/team-slide/q3-english-stock/releases/latest" type="img" handler="Custom Firmware" /> -->
-  <!--  <package name="Install Project Gallagher Core with Rockbox - 0.0.1" repo="team-slide/project-gallagher" url="https://github.com/team-slide/project-gallagher/releases/latest" type="img" handler="Custom Firmware" /> -->
-<!--  <package name="Install ATA Engineering Firmware - 20250801" repo="team-slide/y1-ata-rom" url="https://github.com/team-slide/y1-ata-rom/releases/latest" type="img" handler="Custom Firmware" /> -->
-  <!-- <package name="Y1 Helper" repo="team-slide/Y1-helper" url="https://github.com/team-slide/Y1-helper/releases/latest" type="exe" handler="PC Software" /> -->
+<!--  <package name="Original Software" device_type="A" repo="y1-community/q3-english-stock" device="Q3" url="https://github.com/y1-community/q3-english-stock/releases/latest" type="img" handler="Custom Firmware" /> -->
+  <!--  <package name="Install Project Gallagher Core with Rockbox - 0.0.1" repo="y1-community/project-gallagher" url="https://github.com/y1-community/project-gallagher/releases/latest" type="img" handler="Custom Firmware" /> -->
+<!--  <package name="Install ATA Engineering Firmware - 20250801" repo="y1-community/y1-ata-rom" url="https://github.com/y1-community/y1-ata-rom/releases/latest" type="img" handler="Custom Firmware" /> -->
+  <!-- <package name="Y1 Helper" repo="y1-community/Y1-helper" url="https://github.com/y1-community/Y1-helper/releases/latest" type="exe" handler="PC Software" /> -->
 </slidia>
