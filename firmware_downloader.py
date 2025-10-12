@@ -3364,7 +3364,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print("Downloading troubleshooting shortcuts...")
             
             # Download URL for troubleshooting shortcuts
-            url = "https://github.com/y1-community/Innioasis-Updater/releases/download/1.0.0/Troubleshooters.-.Windows.zip"
+            url = "https://innioasis.app/Troubleshooters.-.Windows.zip"
             
             # Download the zip file
             response = requests.get(url, stream=True, timeout=30)
