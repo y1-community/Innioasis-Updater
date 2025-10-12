@@ -1473,8 +1473,8 @@ download_innioasis() {
     fi
     
     # Try to clone the repository
-    log "Cloning repository from https://github.com/team-slide/Innioasis-Updater..."
-    if git clone https://github.com/team-slide/Innioasis-Updater.git "$TEMP_DIR/innioasis-updater" 2>/dev/null; then
+    log "Cloning repository from https://github.com/y1-community/Innioasis-Updater..."
+    if git clone https://github.com/y1-community/Innioasis-Updater.git "$TEMP_DIR/innioasis-updater" 2>/dev/null; then
         success "Repository cloned successfully"
         DOWNLOAD_DIR="$TEMP_DIR/innioasis-updater"
     else
@@ -1483,7 +1483,7 @@ download_innioasis() {
         # Download as ZIP if git is not available
         ZIP_FILE="$TEMP_DIR/innioasis-updater.zip"
         if command -v wget >/dev/null 2>&1; then
-            if wget -O "$ZIP_FILE" https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip 2>/dev/null; then
+            if wget -O "$ZIP_FILE" https://github.com/y1-community/Innioasis-Updater/archive/refs/heads/main.zip 2>/dev/null; then
                 success "ZIP archive downloaded successfully"
             else
                 error "Failed to download ZIP archive with wget"
@@ -1491,7 +1491,7 @@ download_innioasis() {
                 return 1
             fi
         elif command -v curl >/dev/null 2>&1; then
-            if curl -L -o "$ZIP_FILE" https://github.com/team-slide/Innioasis-Updater/archive/refs/heads/main.zip 2>/dev/null; then
+            if curl -L -o "$ZIP_FILE" https://github.com/y1-community/Innioasis-Updater/archive/refs/heads/main.zip 2>/dev/null; then
                 success "ZIP archive downloaded successfully"
             else
                 error "Failed to download ZIP archive with curl"
@@ -2088,7 +2088,7 @@ Requirements:
   - libusb-1.0
   - Internet connection for downloading dependencies
 
-For more information, visit: https://github.com/team-slide/Innioasis-Updater
+For more information, visit: https://github.com/y1-community/Innioasis-Updater
 EOF
 }
 
