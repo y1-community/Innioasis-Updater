@@ -1968,7 +1968,7 @@
 
         function downloadWindows() {
             // Download Windows installer
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.-.Windows.exe';
+            const url = 'https://github.com/y1-community/Innioasis-Updater/releases/latest/download/Innioasis.Updater.-.Windows.exe';
             
             // For Safari, open in new tab, for other browsers use download attribute
             if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
@@ -2031,7 +2031,7 @@
         function downloadDriver(driverType) {
             // Only handle MediaTek driver now
             if (driverType === 'mtk') {
-                const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/driver_mtk.exe';
+                const url = 'https://github.com/y1-community/Innioasis-Updater/releases/latest/download/driver_mtk.exe';
                 const filename = 'driver_mtk.exe';
                 
                 // For Safari, open in new tab, for other browsers use download attribute
@@ -2056,7 +2056,7 @@
         }
 
         function openMacInstructions() {
-            window.open('https://github.com/team-slide/Innioasis-Updater#manual-setup', '_blank');
+            window.open('https://github.com/y1-community/Innioasis-Updater#manual-setup', '_blank');
         }
 
         function copyMacCommand() {
@@ -2108,7 +2108,7 @@
         }
 
         function openLinuxInstructions() {
-            window.open('https://github.com/team-slide/Innioasis-Updater#linux---ubuntu-recommended', '_blank');
+            window.open('https://github.com/y1-community/Innioasis-Updater#linux---ubuntu-recommended', '_blank');
         }
 
         function showDialog(dialogId) {
@@ -2212,7 +2212,7 @@
                 apiTokens = await loadConfigTokens();
                 
                 // Load manifest data
-                const manifestResponse = await fetch('https://raw.githubusercontent.com/team-slide/slidia/refs/heads/main/slidia_manifest.xml');
+                const manifestResponse = await fetch('https://raw.githubusercontent.com/y1-community/slidia/refs/heads/main/slidia_manifest.xml');
                 if (!manifestResponse.ok) {
                     throw new Error('Failed to load manifest');
                 }
@@ -2712,7 +2712,7 @@
         // macOS Step Navigation Functions
         function downloadMacDMG() {
             // Download macOS DMG installer
-            const url = 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg';
+            const url = 'https://github.com/y1-community/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg';
             
             // For Safari, open in new tab, for other browsers use download attribute
             if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
