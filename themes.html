@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Innioasis Updater — Themes</title>
+
+  <meta name="description"
+    content="Browse and download Rockbox themes for the Innioasis Y1. Customize your player with community-made themes for 240p and 360p models.">
+  <meta name="keywords" content="Innioasis Y1 themes, Rockbox themes Y1, Y1 UI themes, Rockbox customization">
+  <meta name="author" content="Innioasis Community">
+
+  <link rel="canonical" href="https://innioasis.app/themes.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Innioasis Y1 Rockbox Themes">
+  <meta property="og:description" content="Customize your Innioasis Y1 with Rockbox themes made by the community.">
+  <meta property="og:url" content="https://innioasis.app/themes.html">
+  <meta property="og:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Innioasis Y1 Rockbox Themes">
+  <meta name="twitter:description" content="Download and customize Rockbox themes for the Innioasis Y1.">
+  <meta name="twitter:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+
+  <link rel="icon" href="y1_illustration.png">
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-top: 6rem;
+    }
+
+    header h1 {
+      margin: 0 0 8px 0
+    }
+
+    header p {
+      margin: 0;
+      color: var(--text-secondary)
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 18px
+    }
+
+    .theme-card {
+      justify-content: center;
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      border: 2px solid var(--bg-card);
+      position: relative;
+    }
+
+    .theme-card img {
+      height: 140px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      width: auto;
+      max-width: 250px;
+    }
+
+    .theme-card img:hover {
+      scale: 1.05;
+    }
+
+    .theme-name {
+      font-weight: 700;
+      text-align: center
+    }
+
+    .theme-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      text-align: center
+    }
+
+    .theme-author {
+      font-size: 0.85rem;
+      color: var(--text-secondary)
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      color: var(--text-secondary)
+    }
+
+    .muted-link {
+      color: lightblue;
+      text-decoration: none
+    }
+
+    @media (max-width: 600px) {
+      .theme-card img {
+        width: 100%;
+        height: 160px
+      }
+
+      .theme-card {
+        border: none;
+        border-bottom: 2px solid var(--bg-card);
+        border-radius: 0;
+      }
+    }
+
+    .os-switch {
+      display: flex;
+      gap: 12px;
+      margin: 18px 0 8px;
+    }
+
+    .os-switch .os-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-weight: normal;
+    }
+
+    .os-switch .os-secondary:hover {
+      background: var(--bg-card);
+      color: var(--primary);
+    }
+
+    .os-switch button,
+    .rckbox-btn,
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      border: none;
+      font-family: Inter;
+      cursor: pointer;
+    }
+
+    .os-switch button:hover,
+    .rckbox-btn:hover,
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* per-card inline progress UI (replaces the download button during download) */
+    .theme-progress {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: stretch;
+      padding: 6px;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      min-width: 180px;
+      max-width: 100%;
+    }
+
+    .theme-progress .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theme-progress .progress-bar {
+      flex: 1;
+      height: 10px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .theme-progress .progress-bar-inner {
+      width: 0%;
+      height: 100%;
+      background: var(--primary);
+      transition: width 0.18s linear;
+    }
+
+    .theme-progress .progress-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-align: left;
+      word-break: break-word;
+    }
+
+    .theme-progress .progress-percent {
+      min-width: 48px;
+      text-align: right;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .theme-card .btn[disabled] {
+      opacity: .7;
+      cursor: default;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="nav-root"></div>
+  <div class="wrap">
+    <header>
+      <h1>Themes</h1>
+      <p>Download themes for your Y1. Visit the <a href='guide.html'>themes guide</a> to learn how to upload them to your
+        device.</p>
+    </header>
+
+    <div class="os-switch">
+      <button id="stock-btn">Stock OS</button>
+      <button id="rockbox-btn" class="os-secondary"><i class="fas fa-external-link"
+          style="margin-right: 3px;"></i>Rockbox</button>
+    </div>
+
+    <div id="theme-grid" class="theme-grid"></div>
+
+    <footer>
+      <p>&copy; 2025<br>Website by <a href="https://sipped.org" target="_blank" rel="noopener"
+          class="muted-link">sipped</a></p>
+    </footer>
+  </div>
+
+  <div id="rockbox-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0, 0, 0, 0.5);align-items:center;justify-content:center;z-index:1000">
+    <div
+      style="background:var(--bg-card);border-radius:12px;min-width:400px;padding:20px;display:flex;flex-direction:column;gap:16px;position:relative">
+      <button id="rockbox-close"
+        style="position:absolute;top:12px;right:12px;background:none;border:0;color:var(--text-secondary);font-size:1.2rem;cursor:pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="font-size:1.2rem;font-weight:800">Rockbox themes</div>
+      <div style="color:var(--text-secondary);font-size:.95rem">
+        Choose your screen resolution
+      </div>
+
+      <button class="btn rckbox-btn" id="rb-240">240p themes</button>
+      <button class="btn rckbox-btn" id="rb-360">360p themes</button>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    const rbBtn = document.getElementById('rockbox-btn')
+    const rbBackdrop = document.getElementById('rockbox-backdrop')
+    const rbClose = document.getElementById('rockbox-close')
+
+    rbBtn.onclick = () => {
+      rbBackdrop.style.display = 'flex'
+    }
+    rbClose.onclick = () => {
+      rbBackdrop.style.display = 'none'
+    }
+
+    rbBackdrop.onclick = e => {
+      if (e.target === rbBackdrop) rbBackdrop.style.display = 'none'
+    }
+
+    document.getElementById('rb-240').onclick = () => {
+      rbBackdrop.style.display = 'none'
+      window.open('https://themes.rockbox.org/index.php?target=ipodvideo')
+    }
+
+    document.getElementById('rb-360').onclick = () => {
+      rbBackdrop.style.display = 'none'
+      window.open('https://github.com/rockbox-y1/themes/releases/tag/for_the_gays_and_the_theys')
+    }
+
+    async function tryFetchThemes() {
+      const urls = [
+        'https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/themes.json',
+        'https://themes.innioasis.app/themes.json'
+      ]
+      for (const u of urls) {
+        try {
+          const r = await fetch(u)
+          const j = await r.json()
+          if (r.ok && j.themes) return j.themes
+        } catch (e) { }
+      }
+      return []
+    }
+
+    function resolveScreenshotPath(path) {
+      if (!path) return ''
+      if (path.startsWith('http')) return path
+      if (path.startsWith('./')) return 'https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/' + path.slice(2)
+      return path
+    }
+
+    function safeText(v) {
+      return v ?? 'Unknown'
+    }
+
+    function githubApiUrlForFolder(folder) {
+      const cleaned = (folder || '').replace(/^\.\/+/, '')
+      return `https://api.github.com/repos/y1-community/InnioasisY1Themes/contents/${encodeURIComponent(cleaned)}`
+    }
+
+    async function downloadGitHubFolderAsZip(folderName, themeName, progressCallbacks) {
+      const zip = new JSZip();
+      const apiUrl = githubApiUrlForFolder(folderName);
+
+      progressCallbacks?.onStart?.(`Fetching file list for ${themeName}...`);
+
+      let files;
+      try {
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          throw new Error(`Failed to fetch GitHub API folder contents (${res.status})`);
+        }
+        files = await res.json();
+      } catch (e) {
+        throw new Error(`Cannot fetch folder contents: ${e.message}`);
+      }
+
+      if (!Array.isArray(files)) throw new Error('GitHub API did not return a file list.');
+
+      const fileEntries = [];
+
+      async function walk(entries, basePath = '') {
+        for (const entry of entries) {
+          if (entry.type === 'file') {
+            fileEntries.push(entry);
+          } else if (entry.type === 'dir') {
+            const res = await fetch(entry.url);
+            if (!res.ok) {
+              console.warn('Failed to fetch subfolder', entry.path);
+              continue;
+            }
+            const nested = await res.json();
+            await walk(nested, entry.path);
+          }
+        }
+      }
+
+      await walk(files);
+
+      const totalFiles = fileEntries.length;
+      if (totalFiles === 0) throw new Error('No files found in the theme folder.');
+
+      let downloadedFiles = 0;
+
+      for (const file of fileEntries) {
+        try {
+          const beforePercent = Math.round((downloadedFiles / totalFiles) * 80);
+          progressCallbacks?.onProgress?.(`${file.path} (${downloadedFiles + 1}/${totalFiles})`, beforePercent);
+          const fileResp = await fetch(file.download_url);
+          if (!fileResp.ok) {
+            console.warn(`Failed to fetch file ${file.path}: ${fileResp.status}`);
+            downloadedFiles++;
+            progressCallbacks?.onProgress?.(`Skipped ${file.path}`, Math.round((downloadedFiles / totalFiles) * 80));
+            continue;
+          }
+          const blob = await fileResp.blob();
+          zip.file(file.path, blob);
+          downloadedFiles++;
+          progressCallbacks?.onProgress?.(`Downlding ${file.path} (${downloadedFiles}/${totalFiles})`, Math.round((downloadedFiles / totalFiles) * 80));
+        } catch (e) {
+          console.warn(`Error downloading file ${file.path}:`, e);
+          downloadedFiles++;
+          progressCallbacks?.onProgress?.(`Error ${file.path}`, Math.round((downloadedFiles / totalFiles) * 80));
+        }
+      }
+
+      progressCallbacks?.onProgress?.('Generating ZIP...', 80);
+
+      const content = await zip.generateAsync({ type: 'blob' }, metadata => {
+        const mapped = 80 + Math.round((metadata.percent || 0) * 0.2);
+        progressCallbacks?.onProgress?.(`Zipping: ${Math.round(metadata.percent || 0)}%`, mapped);
+      });
+
+      return content;
+    }
+
+    function createProgressUI(parent, oldButton, themeName) {
+      const progressWrap = document.createElement('div');
+      progressWrap.className = 'theme-progress';
+      progressWrap.setAttribute('role', 'status');
+      progressWrap.setAttribute('aria-live', 'polite');
+
+      const row = document.createElement('div');
+      row.className = 'progress-row';
+
+      const barOuter = document.createElement('div');
+      barOuter.className = 'progress-bar';
+      const barInner = document.createElement('div');
+      barInner.className = 'progress-bar-inner';
+      barOuter.appendChild(barInner);
+
+      const percent = document.createElement('div');
+      percent.className = 'progress-percent';
+      percent.textContent = '0%';
+
+      row.appendChild(barOuter);
+      row.appendChild(percent);
+
+      const text = document.createElement('div');
+      text.className = 'progress-text';
+      text.textContent = `Preparing ${themeName}...`;
+
+      progressWrap.appendChild(row);
+      progressWrap.appendChild(text);
+
+      parent.replaceChild(progressWrap, oldButton);
+
+      return {
+        root: progressWrap,
+        setProgress(pct, msg) {
+          const clamped = Math.max(0, Math.min(100, Math.round(pct)));
+          barInner.style.width = clamped + '%';
+          percent.textContent = clamped + '%';
+          if (msg) text.textContent = msg;
+        },
+        removeAndRestoreButton(originalButton) {
+          try {
+            if (!originalButton.parentElement) parent.appendChild(originalButton);
+            parent.replaceChild(originalButton, progressWrap);
+            const origText = originalButton.innerHTML;
+            originalButton.innerHTML = 'Downloaded ✓';
+            originalButton.disabled = false;
+            setTimeout(() => {
+              originalButton.innerHTML = origText;
+            }, 2500);
+          } catch (e) {
+            console.warn('restore button failed', e);
+          }
+        },
+        abortAndRestore(originalButton) {
+          try {
+            if (!originalButton.parentElement) parent.appendChild(originalButton);
+            parent.replaceChild(originalButton, progressWrap);
+            originalButton.disabled = false;
+          } catch (e) {
+            console.warn('abort restore failed', e);
+          }
+        }
+      };
+    }
+
+    async function downloadTheme(theme, buttonNode) {
+      const card = buttonNode.closest('.theme-card');
+      if (!card) return;
+      buttonNode.disabled = true;
+
+      const progressUI = createProgressUI(card, buttonNode, theme.name || 'theme');
+
+      try {
+        if (!theme.folder) {
+          alert('No downloadable folder info for this theme.');
+          progressUI.abortAndRestore(buttonNode);
+          return;
+        }
+
+        const callbacks = {
+          onStart: (msg) => {
+            progressUI.setProgress(0, msg);
+          },
+          onProgress: (msg, percent) => {
+            progressUI.setProgress(percent || 0, msg || '');
+          }
+        };
+
+        const zipBlob = await downloadGitHubFolderAsZip(theme.folder, theme.name, callbacks);
+
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(zipBlob);
+        const safe = (theme.name || 'theme').replace(/[^\w\d-_ ]/g, '_') || 'theme';
+        a.download = `${safe}.zip`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        progressUI.removeAndRestoreButton(buttonNode);
+      } catch (err) {
+        console.error('Download failed', err);
+        alert(`Failed to download theme "${theme.name}": ${err.message || err}`);
+        progressUI.abortAndRestore(buttonNode);
+      }
+    }
+
+    function createCard(theme) {
+      const c = document.createElement('article')
+      c.className = 'theme-card'
+
+      const img = document.createElement('img')
+      img.src = resolveScreenshotPath(theme.screenshot)
+      img.alt = safeText(theme.name)
+      img.onerror = function () {
+        this.src = 'placeholder.png'
+      }
+
+      const n = document.createElement('div')
+      n.className = 'theme-name'
+      n.textContent = safeText(theme.name)
+
+      const d = document.createElement('div')
+      d.className = 'theme-desc'
+      d.textContent = safeText(theme.description)
+
+      const a = document.createElement('div')
+      a.className = 'theme-author'
+      a.innerHTML = theme.author
+        ? `by <a href='https://reddit.com/${theme.author}' target="_blank" rel="noopener">${theme.author}</a>`
+        : 'Unknown author'
+
+      const dl = document.createElement('button')
+      dl.className = 'btn'
+      dl.innerHTML = '<i class="fa-solid fa-download"></i> Download'
+      dl.type = 'button'
+      dl.onclick = () => downloadTheme(theme, dl)
+
+      c.append(img, n, d, a, dl)
+      return c
+    }
+
+    async function load() {
+      const grid = document.getElementById('theme-grid')
+      const themes = await tryFetchThemes()
+      if (!themes.length) {
+        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#94a3b8">Unable to load themes</p>'
+        return
+      }
+      themes.forEach(t => grid.appendChild(createCard(t)))
+    }
+
+    load()
+  </script>
+</body>
+
+</html>
