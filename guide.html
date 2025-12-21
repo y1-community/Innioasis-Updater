@@ -63,6 +63,7 @@
                     <li><a href="#finishing">Finishing up</a></li>
                     <li><a href="#r_themes">Rockbox themes</a></li>
                     <li><a href="#s_themes">Stock themes</a></li>
+                    <li><a href="#c_themes">Creating themes</a></li>
                 </ul>
             </aside>
 
@@ -111,7 +112,7 @@
 
                 <div class="mac-doc card platform-doc" style="display:none;" id="mac-homebrew">
                     <h3>Required: Downloading Homebrew</h3>
-                    <p>Go to the <a href="https://brew.sh">Homebrew</a> website, and continue with the simple installation.</p>
+                    <p>Go to the <a href="https://brew.sh" target="_blank">Homebrew</a> website, and continue with the simple installation.</p>
                     <ul>
                         <li>Homebrew is required for the Innioasis Updater app.</li>
                     </ul>
@@ -140,7 +141,7 @@
                     <pre class="code-block">curl -fsSL https://innioasis.app/run_linux.sh | bash</pre>
 
                     <ul>
-                        <li>Then, follow the <a href="https://github.com/bkerler/mtkclient">MTKclient setup instructions</a></li>
+                        <li>Then, follow the <a href="https://github.com/bkerler/mtkclient" target="_blank">MTKclient setup instructions</a></li>
                         <li>Once completed, open a terminal window and change into the directory you cloned Innioasis Updater into</li>
                         <li>In that directory, run the command below:</li>
                     </ul>
@@ -203,9 +204,9 @@
 
                     <h4>Find themes</h4>
                     <ul>
-                        <li>Download the Rockbox fontpack (required for many themes) <a href="http://download.rockbox.org/daily/fonts/rockbox-fonts.zip">here</a></li>
-                        <li>Download 240p themes <a href="https://themes.rockbox.org/index.php?target=ipodvideo">here</a></li>
-                        <li>Download 360p themes <a href="https://github.com/rockbox-y1/themes/releases/tag/for_the_gays_and_the_theys">here</a></li>
+                        <li>Download the Rockbox fontpack (required for many themes) <a href="http://download.rockbox.org/daily/fonts/rockbox-fonts.zip" target="_blank">here</a></li>
+                        <li>Download 240p themes <a href="https://themes.rockbox.org/index.php?target=ipodvideo" target="_blank">here</a></li>
+                        <li>Download 360p themes <a href="https://github.com/rockbox-y1/themes/releases/tag/for_the_gays_and_the_theys" target="_blank">here</a></li>
                     </ul>
 
                     <p>After finding and downloading a theme, let's add it to your Y1's Rockbox. No, Original Software themes are not compatible with Rockbox themes, and vice versa.</p>
@@ -243,7 +244,7 @@
 
                     <h4>Find themes</h4>
                     <ul>
-                        <li>Find themes <a href="themes.html">here</a></li>
+                        <li>Find themes <a href="themes.html" target="_blank">here</a></li>
                     </ul>
 
                     <p>After finding and downloading a theme, let's add it to your Y1. No, Original Software themes are not compatible with Rockbox themes, and vice versa.</p>
@@ -270,13 +271,54 @@
                         <li>Go to <strong>Themes -> select your theme</strong></li>
                     </ul>
                 </div>
+
+                <div class="card" id="c_themes">
+                    <h3>Creating themes</h3>
+
+                    <h4>Basics</h4>
+                    <ul>
+                        <li><a href="themes.html#melodymuncher">Download</a> the preset theme <strong>MelodyMuncher</strong></li>
+                        <li>Create a GitHub account <a href="https://github.com" target="_blank">here</a></li>
+                        <li>Extract your downloaded theme zip</li>
+                        <li>Rename the folder to your theme name (letters and numbers only)</li>
+                    </ul>
+
+                    <div class="note-box"><strong>Why MelodyMuncher? </strong>Downloading the template ensures you get config.json set up correctly. It is not technically required, but recommended for beginners.</div> 
+
+                    <h4>Customize theme</h4>
+                    <ul>
+                        <li>Replace images with your own (keep same file names)</li>
+                        <li>Edit <strong>config.json</strong>: change <strong>title, author, </strong>and <strong>description</strong></li>
+                    </ul>
+
+                    <h4>Upload to GitHub</h4>
+                    <ul>
+                        <li>Go to the themes repository <a href="https://github.com/y1-community/InnioasisY1Themes" target="_blank">here</a></li>
+                        <li>Click "Fork"</li>
+                        <li>In your fork (repository copy), click <strong>Add file</strong> → <strong>Upload files</strong></li>
+                        <li>Drag your entire theme folder into the upload area</li>
+                        <li>GitHub shows all files to be uploaded</li>
+                        <li>Scroll down, click <strong>Commit changes</strong></li>
+                        <li>Click <strong>Contribute</strong> → <strong>Open pull request</strong></li>
+                    </ul>
+
+                    After an amount of time, your theme will be reviewed and added to the themes collection.
+
+                    <div class="note-box"><strong>To update your theme, </strong>repeat the same process of uploading to GitHub under a new fork.</div>
+
+                    <h4>Notes</h4>
+                    <ul>
+                        <li>Theme information priority: config.json > themes.json > folder name</li>
+                        <li>config.json structure includes theme_info (title, author, authorUrl, description), itemConfig (colors and images), menuConfig, and dialogConfig</li>
+                        <li>File naming: cover.png (cover), screenshot.png (screenshots), 1.png (selected background), 2.png (right arrow). Suffixed variants like 1_YS.png take priority over 1.png</li>
+                        <li>Theme creation documentation also <a href="https://github.com/y1-community/InnioasisY1Themes/tree/main/MelodyMuncher" target="_blank">here</a></li>
+                    </ul>
+                </div>
             </section>
         </div>
-
-        <footer style="margin-top:2rem">
-            <p style="color:var(--text-secondary);">Innioasis Updater — Guide</p>
-        </footer>
     </main>
+
+    <div id="footer-root"></div>
 
     <script src="nav.js"></script>
     <script>
@@ -345,6 +387,18 @@
                 });
             });
         });
+
+        function scrollToHash() {
+        if (!location.hash) return
+        const id = decodeURIComponent(location.hash.slice(1))
+        const target = document.getElementById(id)
+        if (!target) return
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 90
+        window.scrollTo({ top: y, behavior: 'smooth' })
+    }
+
+    window.addEventListener('load', scrollToHash)
+    window.addEventListener('hashchange', scrollToHash)
     </script>
 </body>
 

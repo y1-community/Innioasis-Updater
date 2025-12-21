@@ -380,7 +380,9 @@ footer {
 .credits-list li a,
 footer a,
 .wrap header a,
-.theme-author a {
+.theme-author a,
+#right a,
+.theme-name {
     color: lightblue;
 }
 
@@ -494,6 +496,71 @@ footer a,
     font-size: 0.9rem;
     margin: 0.15rem 0;
 }
+
+.site-footer {
+    margin-top: 6rem;
+    padding: 3rem 1.5rem 1.5rem;
+    background: rgba(0,0,0,.35);
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.footer-col h4 {
+    margin-bottom: .75rem;
+    font-size: .95rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.footer-col a {
+    display: block;
+    margin-bottom: .35rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
+}
+
+.footer-person {
+    margin-bottom: .75rem;
+}
+
+.footer-person strong {
+    display: block;
+    font-size: .9rem;
+    margin-bottom: .15rem;
+}
+
+.footer-logo {
+    max-width: 140px;
+    margin-top: .5rem;
+    opacity: .9;
+}
+
+.footer-bottom {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: .8rem;
+    color: var(--text-secondary);
+}
+
+.cast-div {
+    background: var(--bg-card);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
 
 @media (max-width: 900px) {
     .nav-links {

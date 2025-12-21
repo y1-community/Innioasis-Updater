@@ -129,20 +129,22 @@
       margin: 18px 0 8px;
     }
 
-    .os-switch .os-secondary {
+    #rockbox-btn {
       background: var(--bg-card);
       color: var(--text-primary);
       border: 1px solid rgba(255, 255, 255, 0.06);
       font-weight: normal;
+      padding: .875rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 15px;
     }
 
-    .os-switch .os-secondary:hover {
+    #rockbox-btn:hover {
       background: var(--bg-card);
       color: var(--primary);
     }
 
-    .os-switch button,
-    .rckbox-btn,
     .btn {
       background: var(--primary);
       color: #fff;
@@ -158,13 +160,10 @@
       cursor: pointer;
     }
 
-    .os-switch button:hover,
-    .rckbox-btn:hover,
     .btn:hover {
       background: var(--primary-dark);
     }
 
-    /* per-card inline progress UI (replaces the download button during download) */
     .theme-progress {
       width: 100%;
       display: flex;
@@ -230,18 +229,13 @@
         device.</p>
     </header>
 
-    <div class="os-switch">
-      <button id="stock-btn">Stock OS</button>
-      <button id="rockbox-btn" class="os-secondary"><i class="fas fa-external-link"
-          style="margin-right: 3px;"></i>Rockbox</button>
+    <div class="cast-div" style="margin-top: 3rem;">
+      <a href="guide.html#c_themes" class="btn" style="padding: .875rem 2rem; font-weight: normal;"><i class="fas fa-plus" style="margin-right: 4px"></i>Create and submit themes</a>
+      <a id="rockbox-btn"><i class="fas fa-external-link" style="margin-right: 8px;"></i>Rockbox themes</a>
     </div>
 
     <div id="theme-grid" class="theme-grid"></div>
 
-    <footer>
-      <p>&copy; 2025<br>Website by <a href="https://sipped.org" target="_blank" rel="noopener"
-          class="muted-link">sipped</a></p>
-    </footer>
   </div>
 
   <div id="rockbox-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0, 0, 0, 0.5);align-items:center;justify-content:center;z-index:1000">
@@ -261,6 +255,8 @@
       <button class="btn rckbox-btn" id="rb-360">360p themes</button>
     </div>
   </div>
+
+  <div id="footer-root"></div>
 
   <script src="nav.js"></script>
   <script>
@@ -298,6 +294,7 @@
         try {
           const r = await fetch(u)
           const j = await r.json()
+          console.log(j);
           if (r.ok && j.themes) return j.themes
         } catch (e) { }
       }
@@ -502,19 +499,39 @@
       }
     }
 
+    function handleHashAutoDownload() {
+  const hash = location.hash.replace('#', '').toLowerCase()
+  if (!hash) return
+
+  const targetCard = document.getElementById(hash)
+  if (!targetCard) return
+
+  targetCard.scrollIntoView({ behavior: 'instant', block: 'center' })
+
+  const downloadBtn = targetCard.querySelector('.btn')
+  if (downloadBtn && !downloadBtn.disabled) {
+    setTimeout(() => {
+      downloadBtn.click()
+    }, 300)
+  }
+}
+
     function createCard(theme) {
       const c = document.createElement('article')
       c.className = 'theme-card'
+      if (theme.name === "MelodyMuncher") c.id = 'melodymuncher';
 
       const img = document.createElement('img')
       img.src = resolveScreenshotPath(theme.screenshot)
       img.alt = safeText(theme.name)
+      img.style.marginTop = 'auto';
       img.onerror = function () {
         this.src = 'placeholder.png'
       }
 
-      const n = document.createElement('div')
+      const n = document.createElement('a')
       n.className = 'theme-name'
+      n.href = `theme.html?theme=${encodeURIComponent(theme.name || '')}`
       n.textContent = safeText(theme.name)
 
       const d = document.createElement('div')
@@ -522,13 +539,27 @@
       d.textContent = safeText(theme.description)
 
       const a = document.createElement('div')
-      a.className = 'theme-author'
-      a.innerHTML = theme.author
-        ? `by <a href='https://reddit.com/${theme.author}' target="_blank" rel="noopener">${theme.author}</a>`
-        : 'Unknown author'
+a.className = 'theme-author'
+
+if (!theme.author) {
+  a.textContent = 'Unknown author'
+} else if (theme.author === 'Innioasis') {
+  a.innerHTML = `by <a href="https://innioasis.com" target="_blank" rel="noopener">Innioasis</a>`
+} else if (theme.author === 'u/ope-nz | Normal-Curve-1642') {
+  a.innerHTML = `by <a href="https://reddit.com/u/Normal-Curve-1642" target="_blank" rel="noopener">Normal-Curve-1642</a>`
+} else {
+  a.innerHTML = `by <a href="https://reddit.com/${theme.author}" target="_blank" rel="noopener">${theme.author}</a>`
+}
+
 
       const dl = document.createElement('button')
       dl.className = 'btn'
+      dl.style.backgroundImage = `url("https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/${theme.folder.replace(/^\.\/+/, '')}/3.png")`
+      dl.style.backgroundSize = 'cover'
+      dl.style.backgroundPosition = 'center'
+      dl.style.fontWeight = 'normal';
+      dl.style.marginTop = 'auto';
+
       dl.innerHTML = '<i class="fa-solid fa-download"></i> Download'
       dl.type = 'button'
       dl.onclick = () => downloadTheme(theme, dl)
@@ -538,14 +569,17 @@
     }
 
     async function load() {
-      const grid = document.getElementById('theme-grid')
-      const themes = await tryFetchThemes()
-      if (!themes.length) {
-        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#94a3b8">Unable to load themes</p>'
-        return
-      }
-      themes.forEach(t => grid.appendChild(createCard(t)))
-    }
+  const grid = document.getElementById('theme-grid')
+  const themes = await tryFetchThemes()
+  if (!themes.length) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#94a3b8">Unable to load themes</p>'
+    return
+  }
+  themes.forEach(t => grid.appendChild(createCard(t)))
+
+  handleHashAutoDownload()
+}
+
 
     load()
   </script>
