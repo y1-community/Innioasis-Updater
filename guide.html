@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Innioasis Updater — Guide</title>
+    
+    <meta name="description" content="Step-by-step guide for installing Rockbox, updating stock firmware, and using the Innioasis Y1 Updater safely.">
+    <meta name="keywords" content="Innioasis Y1 guide, Rockbox install Y1, Y1 firmware guide, Rockbox Y1 tutorial">
+    <meta name="author" content="Innioasis Community">
+
+    <link rel="canonical" href="https://innioasis.app/guide.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Innioasis Y1 Installation Guide">
+    <meta property="og:description" content="Learn how to install Rockbox and manage firmware on the Innioasis Y1.">
+    <meta property="og:url" content="https://innioasis.app/guide.html">
+    <meta property="og:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Innioasis Y1 Installation Guide">
+    <meta name="twitter:description" content="Official guide for installing Rockbox and managing Innioasis Y1 firmware.">
+    <meta name="twitter:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+
+    <link rel="icon" href="y1_illustration.png">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="nav-root"></div>
+
+    <main style="padding:1rem">
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <div class="updater-banner" id="updaterBanner" style="display:none;">
+                <div class="left">
+                    <strong id="updaterTitle">Updater is installing</strong>
+                    <div style="margin-top:.5rem;color:var(--text-secondary);">
+                        The updater should have started downloading. If it didn't, <a style="color: lightblue" href="#installing">click here.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="guide-wrap">
+            <aside class="guide-sidebar">
+                <div class="platform-links">
+                    <a href="#" data-platform="windows" class="platform-link">Windows</a>
+                    <span style="color:var(--text-secondary)">|</span>
+                    <a href="#" data-platform="mac" class="platform-link">Mac</a>
+                    <span style="color:var(--text-secondary)">|</span>
+                    <a href="#" data-platform="linux" class="platform-link">Linux</a>
+                </div>
+                <ul>
+                    <li><a href="#why">Why Rockbox?</a></li>
+                    <li><a href="#before">Before we start</a></li>
+                    <li><a href="#requirements">Requirements</a></li>
+                    <li><a href="#installing">Installing app</a></li>
+                    <li><a href="#rockbox">Installing Rockbox</a></li>
+                    <li><a href="#finishing">Finishing up</a></li>
+                    <li><a href="#r_themes">Rockbox themes</a></li>
+                    <li><a href="#s_themes">Stock themes</a></li>
+                </ul>
+            </aside>
+
+            <section class="guide-main">
+                <div id="guide" style="margin-bottom:1rem;"></div>
+
+                <div class="card" id="why">
+                    <h3>Why Rockbox?</h3>
+                    <h4>Pros</h4>
+                    <ul>
+                        <li>Better UI and UX: 23 years of team support</li>
+                        <li>Quality of life settings, and deep Android customization</li>
+                        <li>Sound settings: Equalizer, crossfade, max volume limit, channel config, stereo width, dithering...</li>
+                        <li>Deep sorting: by Album Artist, Genre, Year, Composer, First Letter, User Rating, Recently Added...</li>
+                        <li>More customization: vast themes collection</li>
+                    </ul>
+                    <h4>Cons</h4>
+                    <ul>
+                        <li>Slightly worse battery life. Workaround: enable Airplane mode</li>
+                        <li>No videos. Possible workaround: find a video plugin</li>
+                    </ul>
+                </div>
+
+                <div class="card" id="before">
+                    <h3>Before we start</h3>
+                    <p><strong>Stock UI</strong> means the original software/firmware your device had or has now.</p>
+                    <p>After this guide you keep both the Stock Firmware, and Rockbox. You'll be able to boot into both firmwares at any time.</p>
+                    <div class="warning-box" style="margin-top: 20px;">
+                        <strong>⚠️ Warning:</strong> Do at your own risk. Non-zero chance to brick device, but you can restore it at any time by doing <a href="#bricked">this.</a>
+                    </div>
+                </div>
+
+                <div class="card" id="requirements">
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>Y1 (your Innioasis Y1 device)</li>
+                        <li>USB-C data cable: the cable it came with works perfectly</li>
+                        <li>Computer with: Windows [Best] or MacOS or Linux [Ubuntu recommended]</li>
+                    </ul>
+                </div>
+
+                <div class="windows-doc card platform-doc" style="display:none;" id="installing">
+                    <h3>Installing the updater</h3>
+                    <p><a href="https://github.com/team-slide/Innioasis-Updater/releases/latest/download/installer.exe" download>Download</a> the Windows installer and run <strong>installer.exe</strong>. Follow the installer's steps.</p>
+                </div>
+
+                <div class="mac-doc card platform-doc" style="display:none;" id="mac-homebrew">
+                    <h3>Required: Downloading Homebrew</h3>
+                    <p>Go to the <a href="https://brew.sh">Homebrew</a> website, and continue with the simple installation.</p>
+                    <ul>
+                        <li>Homebrew is required for the Innioasis Updater app.</li>
+                    </ul>
+                    <img src="guide_img3.png" class="guide-image" alt="Guide image">
+                </div>
+
+                <div class="mac-doc card platform-doc" style="display:none;" id="installing">
+                    <h3>Installing the updater</h3>
+                    <ul>
+                        <li><a href="https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg" download>Download</a> the <strong>.dmg</strong> file</li>
+                        <li>Open the downloaded file and drag the Innioasis Updater app to your Applications folder</li>
+                        <li>Restart your Mac</li>
+                        <li>Open the Updater app from Applications</li>
+                    </ul>
+                    <div class="warning-box"><strong>Security issues?</strong> Your Mac may block apps not made by Apple. Visit this <a href="https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac">guide</a> to fix this issue.</div>
+                </div>
+
+                <div class="linux-doc card platform-doc" style="display:none;" id="installing">
+                    <h3>Installing the updater</h3>
+                    <p>Ubuntu is recommended, but all distros should work fine.</p>
+
+                    <ul>
+                        <li>Run the install command in your terminal:</li>
+                    </ul>
+
+                    <pre class="code-block">curl -fsSL https://innioasis.app/run_linux.sh | bash</pre>
+
+                    <ul>
+                        <li>Then, follow the <a href="https://github.com/bkerler/mtkclient">MTKclient setup instructions</a></li>
+                        <li>Once completed, open a terminal window and change into the directory you cloned Innioasis Updater into</li>
+                        <li>In that directory, run the command below:</li>
+                    </ul>
+
+                    <pre class="code-block">python updater.py</pre>
+
+                    <div class="warning-box"><strong>Not officially supported!</strong> Unfortunately, the Linux release of the Innioasis Updater is not officially supported, so you're on your own.</div>
+                </div>
+
+                <div class="card" id="rockbox">
+                    <h3>Installing Rockbox</h3>
+                    <div class="note-box" style="margin-bottom: 20px"><strong>Note:</strong> Updating stock firmware version is not necessary - Rockbox installation does it for you.</div>
+                    <h4>In the updater:</h4>
+                    <ul>
+                        <li>Choose your <strong>Device type</strong>, which is either type A or B.</li>
+                        <li>Always choose Type A first, and only switch to Type B if your scroll wheel doesn't work after installation.</li>
+                        <li>Make sure your Device model is set to the Y1.</li>
+                        <li>Choose <strong>Rockbox ROM</strong> in the Software type</li>
+                    </ul>
+                    <img src="guide_img1.png" class="guide-image" alt="Guide image">
+                    <h4>Choosing a Version</h4>
+                    <p>Decide whether you want a Rockbox version which will install Rockbox and update your main Stock OS, or just to update your Stock OS.</p>
+                    <ul>
+                        <li>"Nightly" versions are <strong>BETA</strong>. Unless you know what you're doing, don't choose these.</li>
+                        <li>"Stable" versions are stable builds you <strong>should</strong> choose.</li>
+                        <li><strong>240p</strong> (also called "iPod Themes Compatible") will have more themes, but slightly worse resolution</li>
+                        <li><strong>360p</strong> (also called "Y1 Theme Compatible) will have WAY less themes, but slightly better resolution.</li>
+                    </ul>
+                    <img src="guide_img2.png" class="guide-image" alt="Guide image">
+                    <div class="note-box" style="margin-bottom: 20px"><strong>Recommendation:</strong> choose a <strong>Stable 240p build</strong> for more themes, less hassle, and less risk. If not 240p, go for Stable 360p.</div>
+                    <h4>Installation Process</h4>
+                    <ul>
+                        <li>Select your build, and hit <strong>Install / Restore</strong> on the bottom</li>
+                        <li>Wait until the <strong>zip</strong> installs and extracts (this can take a while)</li>
+                        <li>Then, whenever the Updater tells you to, <strong>Power off your Y1</strong>. On Windows, Powering off should be enough, however on other OSes, it might prompt you to take a paperclip and hit a secret button on the bottom, in between the headphone jack and the charging port, until you hear a CLICK. Then continue.</li>
+                        <li>Connect your Y1 via a <a href="#requirements">compatible</a> USB-C cable</li>
+                        <li>Put down your Y1, and don't touch it</li>
+                        <li>If all went well, the Updater should congratulate you and prompt you to <strong>Disconnect the cable</strong></li>
+                    </ul>
+                    <div class="note-box"><strong>Errors?</strong> Right click the build, and then hit "Delete Local Zip File" and "Delete All Cached Zips", and then restart the process. If that doesn't solve it, make sure to either restart your device, or download the same version zip from here and then just click "Install from .zip" in the Updater.</div>
+
+                    <img src="https://innioasis.app/mtkclient/gui/images/initsteps_sp.png" class="guide-image" alt="Guide image" style="width: auto; height: 300px;">
+
+                    <div class="warning-box"><strong>Windows Driver Errors?</strong> During install on Windows, you might have driver usb2ser.sys issues after this step. Here's a temporary fix: go to Settings, hit the "Privacy & security" tab, go to "Windows Security", and hit the "Device security" button. In the newly opened app, under "Core isolation" click "Core isolation details", and turn off "Memory integrity". After that, restart your PC and try again.</div>
+                    <div class="warning-box" id="bricked"><strong>Bricked device?</strong> Don't panic! Go to the Updater, hit any 'Original software' build, and click "Install / Restore". Follow the steps and see if it fixed it.</div>
+
+                </div>
+
+                <div class="card" id="finishing">
+                    <h3>Finish installation</h3>
+                    <p>Turn on your Y1 (hold down the middle button), and if all went well, you should see Rockbox.</p>
+
+                    <h4>Switching firmware</h4>
+                    <p><strong>Rockbox → Stock:</strong> System > Reboot to Stock Firmware</p>
+                    <p><strong>Stock → Rockbox:</strong> Press the top button; Back (Menu) first and hold it, then hold the play/pause button at the same time as Back. Continue this for 10-15 seconds and the screen should turn black.</p>
+                </div>
+
+                <div class="card" id="r_themes">
+                    <h3>Rockbox themes</h3>
+
+                    <h4>Find themes</h4>
+                    <ul>
+                        <li>Download the Rockbox fontpack (required for many themes) <a href="http://download.rockbox.org/daily/fonts/rockbox-fonts.zip">here</a></li>
+                        <li>Download 240p themes <a href="https://themes.rockbox.org/index.php?target=ipodvideo">here</a></li>
+                        <li>Download 360p themes <a href="https://github.com/rockbox-y1/themes/releases/tag/for_the_gays_and_the_theys">here</a></li>
+                    </ul>
+
+                    <p>After finding and downloading a theme, let's add it to your Y1's Rockbox. No, Original Software themes are not compatible with Rockbox themes, and vice versa.</p>
+
+                    <h4>Smart Drop themes</h4>
+                    <ul>
+                        <li>Open the Innioasis Updater app</li>
+                        <li>Connect your Y1 via a cable; allow data access</li>
+                        <li>Drag and drop the theme folder into the app</li>
+                    </ul>
+
+                    <h4>Manually upload themes</h4>
+                    <ul>
+                        <li>Connect your V1 via a cable; allow data access</li>
+                        <li>Go to your File Explorer / Files app</li>
+                        <li>Find your Y1 Android directory and open it</li>
+                        <li>Extract your downloaded theme zip</li>
+                        <li>Drag and drop your extracted theme folder</li>
+                        <li>It will ask you whether to replace <strong>.rockbox</strong>, allow it.</li>
+                    </ul>
+
+                    <div class="note-box"><strong>No .rockbox folder on Mac?</strong> Press cmd + shift + . to see "hidden" folders which begin with a period. Drag the .rockbox folder into your innioasis' contents.</div>
+
+                    <h4>After downloading a theme</h4>
+                    <ul>
+                        <li>Power on your Y1, go to <strong>Settings</strong></li>
+                        <li>Go to <strong>Browse Theme Files -> select your theme</strong></li>
+                    </ul>
+
+                    <div class="note-box"><strong>Tip:</strong> you can <strong>mix</strong> various themes in various parts of Rockbox. For example, you can make your base skin one theme, and your While Playing Screen use a different theme.</div>
+                </div>
+
+                <div class="card" id="s_themes">
+                    <h3>Stock themes</h3>
+
+                    <h4>Find themes</h4>
+                    <ul>
+                        <li>Find themes <a href="themes.html">here</a></li>
+                    </ul>
+
+                    <p>After finding and downloading a theme, let's add it to your Y1. No, Original Software themes are not compatible with Rockbox themes, and vice versa.</p>
+
+                    <h4>Smart Drop themes</h4>
+                    <ul>
+                        <li>Open the Innioasis Updater app</li>
+                        <li>Connect your Y1 via a cable; allow data access</li>
+                        <li>Drag and drop the theme folder into the app</li>
+                    </ul>
+
+                    <h4>Manually upload themes</h4>
+                    <ul>
+                        <li>Connect your V1 via a cable; allow data access</li>
+                        <li>Go to your File Explorer / Files app</li>
+                        <li>Find your Y1 Android directory and open it</li>
+                        <li>Extract your downloaded theme</li>
+                        <li>Drag and drop your extracted theme folder into the <strong>themes</strong> folder</li>
+                    </ul>
+
+                    <h4>After downloading a theme</h4>
+                    <ul>
+                        <li>Power on your Y1, go to <strong>Settings</strong></li>
+                        <li>Go to <strong>Themes -> select your theme</strong></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <footer style="margin-top:2rem">
+            <p style="color:var(--text-secondary);">Innioasis Updater — Guide</p>
+        </footer>
+    </main>
+
+    <script src="nav.js"></script>
+    <script>
+        const platformInstall = {
+            windows: 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/installer.exe',
+            mac: 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg',
+            linux: 'curl -fsSL https://innioasis.app/run_linux.sh | bash'
+        };
+
+        function detectPlatform() {
+            const ua = navigator.userAgent || '';
+            if (/Mac|iPhone|iPad|iPod/.test(ua)) return 'mac';
+            if (/Android/.test(ua)) return 'linux';
+            if (/Win|Windows/.test(ua)) return 'windows';
+            if (/Linux/.test(ua)) return 'linux';
+            return 'windows';
+        }
+
+        let currentPlatform = detectPlatform();
+        const platformLinks = document.querySelectorAll('.platform-link');
+        const platformDocs = document.querySelectorAll('.platform-doc');
+        const wrongPlatformLink = document.getElementById('wrongPlatformLink');
+
+        function showPlatformDocs() {
+            platformDocs.forEach(d => d.style.display = 'none');
+            const el = document.querySelectorAll('.' + currentPlatform + '-doc');
+            el.forEach(e => e.style.display = 'block');
+            platformLinks.forEach(a => a.classList.toggle('active', a.dataset.platform === currentPlatform));
+        }
+
+        platformLinks.forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPlatform = a.dataset.platform;
+                history.replaceState({}, '', 'guide.html?platform=' + currentPlatform);
+                showPlatformDocs();
+            });
+        });
+
+        const params = new URLSearchParams(location.search);
+        if (params.get('platform')) currentPlatform = params.get('platform');
+
+        showPlatformDocs();
+
+        const banner = document.getElementById('updaterBanner');
+        if (params.has('install') && banner) banner.style.display = 'block';
+
+        if (params.has('install')) {
+            if (currentPlatform === 'windows' || currentPlatform === 'mac') {
+                window.location.href = platformInstall[currentPlatform];
+            } else {
+                const banner = document.getElementById('updaterBanner');
+                if (banner) banner.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        document.querySelectorAll('.guide-sidebar a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) window.scrollTo({
+                    top: target.offsetTop - 90,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
