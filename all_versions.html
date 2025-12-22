@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innioasis Updater — All versions</title>
+
+    <meta name="description" content="All firmware releases of Y1 - Rockbox and Original.">
+    <meta name="keywords" content="Innioasis Y1, Innioasis updater, Rockbox Y1, Y1 firmware, Rockbox installer, Y1 stock firmware">
+    <meta name="author" content="Innioasis Community">
+
+    <link rel="canonical" href="https://innioasis.app/all_versions.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Innioasis Y1 Updater">
+    <meta property="og:description" content="All firmware releases of Y1 - Rockbox and Original.">
+    <meta property="og:url" content="https://innioasis.app/all_versions.html">
+    <meta property="og:image" content="https://innioasis.app/y1_illustration.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Innioasis Y1 Updater">
+    <meta name="twitter:description" content="All firmware releases of Y1 - Rockbox and Original.">
+    <meta name="twitter:image" content="https://innioasis.app/y1_illustration.png">
+
+    <link rel="icon" href="y1_illustration.png">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="nav-root"></div>
+
+    <section class="all-versions-container" style="padding: 6rem;">
+        <div class="section-div">
+            <div class="back-button">
+                <a href="index.html#versions" class="btn-back" style="text-decoration: none;">
+                    <i class="fas fa-arrow-left" style="margin-right: 4px;"></i> Back
+                </a>
+            </div>
+
+            <h1>All Firmware Releases</h1>
+
+            <div class="filter-top" style="margin-top: 2rem; margin-bottom: 1rem;">
+                <label>
+                    Type:
+                    <select id="filterType" class="filter-dropdown av">
+                        <option value="">All</option>
+                        <option value="A">Type A</option>
+                        <option value="B">Type B</option>
+                    </select>
+                </label>
+
+                <label>
+                    Firmware:
+                    <select id="filterFirmware" class="filter-dropdown av">
+                        <option value="">All</option>
+                        <option value="Rockbox">Rockbox</option>
+                        <option value="Original">Original</option>
+                    </select>
+                </label>
+
+                <label>
+                    Resolution:
+                    <select id="filterResolution" class="filter-dropdown av">
+                        <option value="">All</option>
+                        <option value="240p">240p</option>
+                        <option value="360p">360p</option>
+                    </select>
+                </label>
+
+                <label>
+                    Version:
+                    <select id="filterVersion" class="filter-dropdown av">
+                        <option value="">All</option>
+                        <option value="Stable">Stable</option>
+                        <option value="Beta">Beta</option>
+                    </select>
+                </label>
+            </div>
+
+            <div id="versionsList" class="versions-list"></div>
+        </div>
+    </section>
+
+    <div id="footer-root"></div>
+
+    <script src="nav.js"></script>
+    <script>
+        let allReleases = [];
+
+        async function loadConfigTokens() {
+            const res = await fetch('https://innioasis.app/config.ini');
+            if (!res.ok) return [];
+            const text = await res.text();
+            return text.split('\n')
+                .map(l => l.trim())
+                .filter(l => l.startsWith('key_') && l.includes('='))
+                .map(l => l.split('=')[1].trim())
+                .filter(t => t.length > 10);
+        }
+
+        async function loadManifest() {
+            const res = await fetch('https://innioasis.app/slidia_manifest.xml');
+            if (!res.ok) throw new Error('manifest load failed');
+            const xml = await res.text();
+            const doc = new DOMParser().parseFromString(xml, 'text/xml');
+            return [...doc.getElementsByTagName('package')]
+                .filter(p => !p.getAttribute('device_type'))
+                .map(p => ({
+                    name: p.getAttribute('name'),
+                    repo: p.getAttribute('repo'),
+                    device: p.getAttribute('device')
+                }));
+        }
+
+        async function getReleases(repo) {
+            let res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100`);
+            if (res.status === 403) {
+                res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100`, {
+                    headers: {
+                        Authorization: `Bearer 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`,
+                        Accept: 'application/vnd.github.v3+json'
+                    }
+                });
+            }
+            if (!res.ok) return [];
+            const data = await res.json();
+
+            return data
+                .filter(r => r.assets?.some(a => a.name?.toLowerCase() === 'rom.zip'))
+                .map(r => {
+                    const tag = r.tag_name.toLowerCase();
+                    const hasStable = tag.includes('stable');
+                    let prerelease = r.prerelease || r.draft || tag.includes('nightly') || tag.includes('beta');
+                    if (hasStable) prerelease = false;
+
+                    const rom = r.assets.find(a => a.name.toLowerCase() === 'rom.zip');
+
+                    return {
+                        tag_name: r.tag_name,
+                        name: r.name || r.tag_name,
+                        body: r.body || '',
+                        published_at: r.published_at,
+                        html_url: r.html_url,
+                        prerelease,
+                        draft: r.draft || false,
+                        total_downloads: r.assets.reduce((s, a) => s + (a.download_count || 0), 0),
+                        rom_url: rom?.browser_download_url || null,
+                        rom_filename: rom?.name || 'rom.zip'
+                    };
+                });
+        }
+
+        async function loadFirmware() {
+            const packages = await loadManifest();
+
+            const repoGroups = {};
+            packages.forEach(p => {
+                if (!repoGroups[p.repo]) repoGroups[p.repo] = [];
+                repoGroups[p.repo].push(p);
+            });
+
+            const all = [];
+
+            await Promise.all(Object.keys(repoGroups).map(async repo => {
+                const releases = await getReleases(repo);
+                releases.forEach(r => {
+                    repoGroups[repo].forEach(pkg => {
+                        const tag = r.tag_name.toLowerCase();
+                        const typeB = tag.includes('type-b') || tag.includes('-b-');
+                        all.push({
+                            ...r,
+                            software_name: pkg.name,
+                            device_model: pkg.device,
+                            device_type: typeB ? 'B' : 'A'
+                        });
+                    });
+                });
+            }));
+
+            all.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+            return all;
+        }
+
+        function getResolution(tagName, softwareName) {
+            if (tagName.includes('240')) return '240p';
+            if (tagName.includes('360')) return '360p';
+            if (softwareName && softwareName.includes('240')) return '240p';
+            if (softwareName && softwareName.includes('360')) return '360p';
+            return '240p';
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        function renderVersions() {
+            const typeFilter = document.getElementById('filterType').value;
+            const firmwareFilter = document.getElementById('filterFirmware').value;
+            const resolutionFilter = document.getElementById('filterResolution').value;
+            const versionFilter = document.getElementById('filterVersion').value;
+
+            let filtered = allReleases;
+
+            if (typeFilter) {
+                filtered = filtered.filter(r => r.device_type === typeFilter);
+            }
+
+            if (firmwareFilter) {
+                const isSoftwareType = firmwareFilter === 'Rockbox' || firmwareFilter === 'Original';
+                filtered = filtered.filter(r => {
+                    const softType = (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original';
+                    return softType === firmwareFilter;
+                });
+            }
+
+            if (resolutionFilter) {
+                filtered = filtered.filter(r => {
+                    const softType = (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original';
+                    if (softType === 'Original') return true;
+                    const res = getResolution(r.tag_name.toLowerCase(), (r.software_name || '').toLowerCase());
+                    return res === resolutionFilter;
+                });
+            }
+
+            if (versionFilter) {
+                const isStable = versionFilter === 'Stable';
+                filtered = filtered.filter(r => {
+                    const tag = r.tag_name.toLowerCase();
+                    const hasStable = tag.includes('stable');
+                    let prerelease = r.prerelease || r.draft || tag.includes('nightly') || tag.includes('beta');
+                    if (hasStable) prerelease = false;
+                    return isStable ? !prerelease : prerelease;
+                });
+            }
+
+            const container = document.getElementById('versionsList');
+            if (filtered.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No releases match your filters.</p>';
+                return;
+            }
+
+            container.innerHTML = filtered.map((r, i) => {
+                const softType = (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original';
+                const resolution = softType === 'Original' ? '360p' : getResolution(r.tag_name.toLowerCase(), (r.software_name || '').toLowerCase());
+                const tag = r.tag_name || '';
+                const tagLower = tag.toLowerCase();
+                const hasStable = tagLower.includes('stable');
+                let isStable = !r.prerelease && !r.draft && !tagLower.includes('nightly') && !tagLower.includes('beta');
+                if (hasStable) isStable = true;
+                const variant = isStable ? 'Stable' : 'Beta';
+                const badgeText = variant;
+                const downloads = r.total_downloads || 0;
+                const released = formatDate(r.published_at);
+                const fileName = r.rom_filename || 'rom.zip';
+                const downloadHtml = r.rom_url ? `<a href="${r.rom_url}" download style="margin-left:0.5rem;">Download</a>` : `<button class="btn btn-secondary" disabled style="margin-left:0.5rem;">No Download</button>`;
+
+                const tagId = 'tag-' + i + '-' + Math.random().toString(36).slice(2, 6);
+                const shortTag = tag.length > 50 ? `${tag.slice(0, 50)}...` : tag;
+
+                return `
+                    <div class="version-list-item" style="padding:8px 0;border-bottom:1px solid var(--bg-card); display: flex; justify-content: space-between; align-items: center;">
+                        <div><span style="color: gray" id="${tagId}">${shortTag}</span> · ${badgeText} · Type ${r.device_type} · ${softType} · ${resolution} · ${released} · ${downloads} downloads</div>
+                        <div>${downloadHtml}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.getElementById('filterType').addEventListener('change', renderVersions);
+        document.getElementById('filterFirmware').addEventListener('change', (e) => {
+            const resFilter = document.getElementById('filterResolution');
+            const isOriginal = e.target.value === 'Original';
+            resFilter.disabled = isOriginal;
+            resFilter.style.opacity = isOriginal ? '0.5' : '1';
+            if (isOriginal) resFilter.value = '';
+            renderVersions();
+        });
+        document.getElementById('filterResolution').addEventListener('change', renderVersions);
+        document.getElementById('filterVersion').addEventListener('change', renderVersions);
+
+        function toggleTag(id, full) {
+            try {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.textContent = full;
+                const link = document.getElementById('expand-' + id);
+                if (link) link.style.display = 'none';
+            } catch (e) {}
+        }
+
+        loadFirmware().then(releases => {
+            allReleases = releases.map(r => {
+                const softType = (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original';
+                return {
+                    ...r,
+                    software_type: softType,
+                    resolution: getResolution(r.tag_name.toLowerCase(), (r.software_name || '').toLowerCase())
+                };
+            });
+            renderVersions();
+        });
+    </script>
+</body>
+
+</html>

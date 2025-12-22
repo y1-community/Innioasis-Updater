@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Innioasis Updater — Guide</title>
-    
+
     <meta name="description" content="Step-by-step guide for installing Rockbox, updating stock firmware, and using the Innioasis Y1 Updater safely.">
     <meta name="keywords" content="Innioasis Y1 guide, Rockbox install Y1, Y1 firmware guide, Rockbox Y1 tutorial">
     <meta name="author" content="Innioasis Community">
@@ -54,12 +54,21 @@
                     <span style="color:var(--text-secondary)">|</span>
                     <a href="#" data-platform="linux" class="platform-link">Linux</a>
                 </div>
+                <hr style="margin-top: 15px">
                 <ul>
-                    <li><a href="#why">Why Rockbox?</a></li>
                     <li><a href="#before">Before we start</a></li>
+                    <li><a href="#methods">Methods of installation</a></li>
                     <li><a href="#requirements">Requirements</a></li>
-                    <li><a href="#installing">Installing app</a></li>
+                </ul>
+                <hr>
+                <ul>
+                    <li><a href="#installing">Installing Updater</a></li>
+                    <li><a href="#why">Why Rockbox?</a></li>
+                    <li><a href="#updatestock">Updating Original OS</a></li>
                     <li><a href="#rockbox">Installing Rockbox</a></li>
+                </ul>
+                <hr>
+                <ul>
                     <li><a href="#finishing">Finishing up</a></li>
                     <li><a href="#r_themes">Rockbox themes</a></li>
                     <li><a href="#s_themes">Stock themes</a></li>
@@ -70,30 +79,25 @@
             <section class="guide-main">
                 <div id="guide" style="margin-bottom:1rem;"></div>
 
-                <div class="card" id="why">
-                    <h3>Why Rockbox?</h3>
-                    <h4>Pros</h4>
-                    <ul>
-                        <li>Better UI and UX: 23 years of team support</li>
-                        <li>Quality of life settings, and deep Android customization</li>
-                        <li>Sound settings: Equalizer, crossfade, max volume limit, channel config, stereo width, dithering...</li>
-                        <li>Deep sorting: by Album Artist, Genre, Year, Composer, First Letter, User Rating, Recently Added...</li>
-                        <li>More customization: vast themes collection</li>
-                    </ul>
-                    <h4>Cons</h4>
-                    <ul>
-                        <li>Slightly worse battery life. Workaround: enable Airplane mode</li>
-                        <li>No videos. Possible workaround: find a video plugin</li>
-                    </ul>
-                </div>
-
                 <div class="card" id="before">
                     <h3>Before we start</h3>
                     <p><strong>Stock UI</strong> means the original software/firmware your device had or has now.</p>
-                    <p>After this guide you keep both the Stock Firmware, and Rockbox. You'll be able to boot into both firmwares at any time.</p>
+                    <p>This guide teaches you both how to update the original firmware; and how to install Rockbox, while keeping the original firmware, which lets you be able to boot into both firmwares at any time.</p>
+                    <div class="note-box" style="margin-bottom: 20px"><strong>Good to know:</strong> Original (stock) firmware always uses 360p resolution. Rockbox firmware resolution depends on build.</div>
                     <div class="warning-box" style="margin-top: 20px;">
                         <strong>⚠️ Warning:</strong> Do at your own risk. Non-zero chance to brick device, but you can restore it at any time by doing <a href="#bricked">this.</a>
                     </div>
+                </div>
+
+                <div class="card" id="methods">
+                    <h3>Methods of installation</h3>
+                    <ul>
+                        <li><strong>Innioasis Updater</strong> - application on all operating systems. Easy, reliable, guide written here.</li>
+                        <li><strong>MTKclient</strong> - uses command line. No written guide for Y1. <a href="https://github.com/bkerler/mtkclient" target="_blank">Download</a></li>
+                        <li><strong>SP Flash Tool</strong> - Windows only, has a GUI. <a href="https://spflashtool.com" target="_blank">Download</a> + <a href="https://drive.google.com/file/d/1lGo9kYN0R0k41YHO58feccHdlXZFTWkU/view" target="_blank">required drivers</a></li>
+                    </ul>
+
+                    <p><br>This guide covers the Innioasis Updater, the recommended method as it combines both methods into a single application, is beginner friendly, fully documented here, and is most reliable.</p>
                 </div>
 
                 <div class="card" id="requirements">
@@ -101,7 +105,7 @@
                     <ul>
                         <li>Y1 (your Innioasis Y1 device)</li>
                         <li>USB-C data cable: the cable it came with works perfectly</li>
-                        <li>Computer with: Windows [Best] or MacOS or Linux [Ubuntu recommended]</li>
+                        <li>Computer with: <strong>Windows</strong> (Best) or <strong>MacOS</strong> or <strong>Linux </strong>(Ubuntu recommended)</li>
                     </ul>
                 </div>
 
@@ -151,6 +155,61 @@
                     <div class="warning-box"><strong>Not officially supported!</strong> Unfortunately, the Linux release of the Innioasis Updater is not officially supported, so you're on your own.</div>
                 </div>
 
+                <div class="card">
+                    <h3>Choose what to do:</h3>
+                    <ul>
+                        <li><strong>Update</strong> original firmware <a href="#updatestock">-></a> </li>
+                        <li><strong>Install Rockbox</strong> (updates and keeps original firmware too) <a href="#rockbox">-></a> </li>
+                    </ul>
+                </div>
+
+                <div class="card" id="why">
+                    <h3>Why would I want Rockbox?</h3>
+                    <h4>Pros</h4>
+                    <ul>
+                        <li>Better UI and UX: 23 years of team support</li>
+                        <li>Quality of life settings, and deep Android customization</li>
+                        <li>Sound settings: Equalizer, crossfade, max volume limit, channel config, stereo width, dithering...</li>
+                        <li>Deep sorting: by Album Artist, Genre, Year, Composer, First Letter, User Rating, Recently Added...</li>
+                        <li>More customization: vast themes collection</li>
+                    </ul>
+                    <h4>Cons</h4>
+                    <ul>
+                        <li>Slightly worse battery life. Workaround: enable Airplane mode</li>
+                        <li>No videos. Possible workaround: find a video plugin</li>
+                    </ul>
+                </div>
+
+                <div class="card" id="updatestock">
+                    <h3>Updating Original Stock Firmware</h3>
+                    <div class="note-box" style="margin-bottom: 20px"><strong>Note:</strong> Updating stock firmware version is not necessary for Rockbox installation. <a href="#rockbox">Continue</a> to Rockbox installation here.</div>
+                    <h4>In the updater:</h4>
+                    <ul>
+                        <li>Choose your <strong>Device type</strong>, which is either type A or B:</li>
+                        <li>Always choose Type A first, and only switch to Type B if your scroll wheel doesn't work after installation.</li>
+                        <li>Make sure your Device model is set to the Y1.</li>
+                        <li>Choose <strong>Original Software</strong> in the Software type</li>
+                    </ul>
+                    <img src="guide_img4.png" class="guide-image" alt="Guide image">
+                    <p style="margin-top: 15px;">Choose the latest version.</p>
+                    <h4>Installation Process</h4>
+                    <ul>
+                        <li>Select your build, and hit <strong>Install / Restore</strong> on the bottom</li>
+                        <li>Wait until the <strong>zip</strong> installs and extracts (this can take a while)</li>
+                        <li>Then, whenever the Updater tells you to, <strong>Power off your Y1</strong>. On Windows, Powering off should be enough, however on other OSes, it might prompt you to take a paperclip and hit a secret button on the bottom, in between the headphone jack and the charging port, until you hear a CLICK. Then continue.</li>
+                        <li>Connect your Y1 via a <a href="#requirements">compatible</a> USB-C cable</li>
+                        <li>Put down your Y1, and don't touch it</li>
+                        <li>If all went well, the Updater should congratulate you and prompt you to <strong>Disconnect the cable</strong></li>
+                    </ul>
+                    <div class="note-box"><strong>Errors?</strong> Right click the build, and then hit "Delete Local Zip File" and "Delete All Cached Zips", and then restart the process. If that doesn't solve it, make sure to either restart your device, or download the same version zip from here and then just click "Install from .zip" in the Updater.</div>
+
+                    <img src="https://innioasis.app/mtkclient/gui/images/initsteps_sp.png" class="guide-image" alt="Guide image" style="width: auto; height: 300px;">
+
+                    <div class="warning-box"><strong>Windows Driver Errors?</strong> During install on Windows, you might have driver usb2ser.sys issues after this step. Here's a temporary fix: go to Settings, hit the "Privacy & security" tab, go to "Windows Security", and hit the "Device security" button. In the newly opened app, under "Core isolation" click "Core isolation details", and turn off "Memory integrity". After that, restart your PC and try again.</div>
+                    <div class="warning-box" id="bricked"><strong>Bricked device?</strong> Don't panic! Repeat this step (reinstall original software build)</div>
+
+                </div>
+
                 <div class="card" id="rockbox">
                     <h3>Installing Rockbox</h3>
                     <div class="note-box" style="margin-bottom: 20px"><strong>Note:</strong> Updating stock firmware version is not necessary - Rockbox installation does it for you.</div>
@@ -168,8 +227,9 @@
                         <li>"Nightly" versions are <strong>BETA</strong>. Unless you know what you're doing, don't choose these.</li>
                         <li>"Stable" versions are stable builds you <strong>should</strong> choose.</li>
                         <li><strong>240p</strong> (also called "iPod Themes Compatible") will have more themes, but slightly worse resolution</li>
-                        <li><strong>360p</strong> (also called "Y1 Theme Compatible) will have WAY less themes, but slightly better resolution.</li>
+                        <li><strong>360p</strong> (also called "Y1 Theme Compatible) will have less themes, but slightly better resolution.</li>
                     </ul>
+                    <div class="note-box" style="margin-bottom: 20px"><strong>Note:</strong> Thanks to the Y1 community, a lot of 240p themes have been ported to 360p. Not all, but many.</div>
                     <img src="guide_img2.png" class="guide-image" alt="Guide image">
                     <div class="note-box" style="margin-bottom: 20px"><strong>Recommendation:</strong> choose a <strong>Stable 240p build</strong> for more themes, less hassle, and less risk. If not 240p, go for Stable 360p.</div>
                     <h4>Installation Process</h4>
@@ -186,15 +246,15 @@
                     <img src="https://innioasis.app/mtkclient/gui/images/initsteps_sp.png" class="guide-image" alt="Guide image" style="width: auto; height: 300px;">
 
                     <div class="warning-box"><strong>Windows Driver Errors?</strong> During install on Windows, you might have driver usb2ser.sys issues after this step. Here's a temporary fix: go to Settings, hit the "Privacy & security" tab, go to "Windows Security", and hit the "Device security" button. In the newly opened app, under "Core isolation" click "Core isolation details", and turn off "Memory integrity". After that, restart your PC and try again.</div>
-                    <div class="warning-box" id="bricked"><strong>Bricked device?</strong> Don't panic! Go to the Updater, hit any 'Original software' build, and click "Install / Restore". Follow the steps and see if it fixed it.</div>
+                    <div class="warning-box" id="bricked"><strong>Bricked device?</strong> Don't panic! Install any original software build, guide written <a href="#updatestock">here</a>.</div>
 
                 </div>
 
                 <div class="card" id="finishing">
                     <h3>Finish installation</h3>
-                    <p>Turn on your Y1 (hold down the middle button), and if all went well, you should see Rockbox.</p>
+                    <p>Turn on your Y1 (hold down the middle button), and if all went well, everything should work!</p>
 
-                    <h4>Switching firmware</h4>
+                    <h4>Switching firmware (if you have both)</h4>
                     <p><strong>Rockbox → Stock:</strong> System > Reboot to Stock Firmware</p>
                     <p><strong>Stock → Rockbox:</strong> Press the top button; Back (Menu) first and hold it, then hold the play/pause button at the same time as Back. Continue this for 10-15 seconds and the screen should turn black.</p>
                 </div>
@@ -249,11 +309,13 @@
 
                     <p>After finding and downloading a theme, let's add it to your Y1. No, Original Software themes are not compatible with Rockbox themes, and vice versa.</p>
 
-                    <h4>Smart Drop themes</h4>
+                    <h4>Direct Install themes</h4>
                     <ul>
-                        <li>Open the Innioasis Updater app</li>
+                        <li>Go to <a href="themes.html" target="_blank">the themes page</a></li>
                         <li>Connect your Y1 via a cable; allow data access</li>
-                        <li>Drag and drop the theme folder into the app</li>
+                        <li>Use supported browser: Chrome / Edge / Opera</li>
+                        <li>Click "Choose Y1 Themes Folder" and locate Y1's "Themes" Folder</li>
+                        <li>Find a theme, then click "Direct Install" (really easy)</li>
                     </ul>
 
                     <h4>Manually upload themes</h4>
@@ -275,6 +337,8 @@
                 <div class="card" id="c_themes">
                     <h3>Creating themes</h3>
 
+                    <div class="note-box"><strong>Note! </strong> This (below) is a simplified guide. Find detailed guide (+ troubleshooting and help) <a href="https://github.com/y1-community/InnioasisY1Themes/blob/main/README.md" target="_blank">here</a>.</div>
+
                     <h4>Basics</h4>
                     <ul>
                         <li><a href="themes.html#melodymuncher">Download</a> the preset theme <strong>MelodyMuncher</strong></li>
@@ -283,7 +347,7 @@
                         <li>Rename the folder to your theme name (letters and numbers only)</li>
                     </ul>
 
-                    <div class="note-box"><strong>Why MelodyMuncher? </strong>Downloading the template ensures you get config.json set up correctly. It is not technically required, but recommended for beginners.</div> 
+                    <div class="note-box"><strong>Why MelodyMuncher? </strong>Downloading the template ensures you get config.json set up correctly. It is not technically required, but recommended for beginners.</div>
 
                     <h4>Customize theme</h4>
                     <ul>
@@ -389,16 +453,19 @@
         });
 
         function scrollToHash() {
-        if (!location.hash) return
-        const id = decodeURIComponent(location.hash.slice(1))
-        const target = document.getElementById(id)
-        if (!target) return
-        const y = target.getBoundingClientRect().top + window.pageYOffset - 90
-        window.scrollTo({ top: y, behavior: 'smooth' })
-    }
+            if (!location.hash) return
+            const id = decodeURIComponent(location.hash.slice(1))
+            const target = document.getElementById(id)
+            if (!target) return
+            const y = target.getBoundingClientRect().top + window.pageYOffset - 90
+            window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+            })
+        }
 
-    window.addEventListener('load', scrollToHash)
-    window.addEventListener('hashchange', scrollToHash)
+        window.addEventListener('load', scrollToHash)
+        window.addEventListener('hashchange', scrollToHash)
     </script>
 </body>
 

@@ -26,6 +26,20 @@ body {
     scroll-behavior: smooth;
 }
 
+.filter-dropdown {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--text-secondary);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-family: Inter;
+}
+
+.av {
+    margin-left: 8px;
+    margin-right: 15px;
+}
+
 #nav-root nav {
     position: fixed;
     top: 0;
@@ -382,8 +396,15 @@ footer a,
 .wrap header a,
 .theme-author a,
 #right a,
-.theme-name {
+.theme-name,
+.version-list-item a,
+.back-button a {
     color: lightblue;
+}
+
+.all-versions-container {
+    display: flex;
+    justify-content: center;
 }
 
 .updater-banner {
@@ -618,6 +639,15 @@ footer a,
 .theme-card.on-device {
     border-color: #4caf50;
     box-shadow: 0 4px 8px rgba(76, 175, 80, 0.06);
+}
+
+#browser-support-warning {
+    font-family: Inter;
+}
+
+.guide-sidebar hr {
+    margin-top: 5px;
+    border: 1px solid #2d2d2d;
 }
 
 @media (max-width: 900px) {

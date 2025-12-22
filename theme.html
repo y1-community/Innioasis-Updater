@@ -1,515 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Innioasis — Theme</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Innioasis — Theme</title>
 
-  <meta name="description" content="Innioasis Y1 Updater lets you install Rockbox, manage stock firmware, and download the latest Y1 firmware releases easily.">
-    <meta name="keywords" content="Innioasis Y1, Innioasis updater, Rockbox Y1, Y1 firmware, Rockbox installer, Y1 stock firmware">
-    <meta name="author" content="Innioasis Community">
-
-    <link rel="canonical" href="https://innioasis.app/theme.html">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Innioasis Y1 Updater">
-    <meta property="og:description" content="Install Rockbox, manage firmware, and download the latest Innioasis Y1 releases.">
-    <meta property="og:url" content="https://innioasis.app/theme.html">
-    <meta property="og:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Innioasis Y1 Updater">
-    <meta name="twitter:description" content="The easiest way to install Rockbox and manage Innioasis Y1 firmware.">
-    <meta name="twitter:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
-
-    <link rel="icon" href="y1_illustration.png">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <style>
-.btn-primary {
-    font-family: Inter;
-    font-weight: normal;
-    cursor: pointer;
-    border: none;
-}
-.btn-secondary {
-    font-family: Inter;
-    font-weight: normal;
-    cursor: pointer;
-}
+    .btn-primary {
+        font-family: Inter;
+        font-weight: normal;
+        cursor: pointer;
+        border: none;
+    }
+
+    .btn-secondary {
+        font-family: Inter;
+        font-weight: normal;
+        cursor: pointer;
+    }
 </style>
+
 <body>
 
-<div id="nav-root"></div>
+    <div id="nav-root"></div>
 
     <div style="display: flex; justify-content: center;">
-  <div class="wrap" style="max-width:1200px;margin-top:6rem;">
-    <div id="theme-root" style="display:flex;gap:20px;align-items:stretch;">
-      <div id="left" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:360px;">
-        <img id="main-screenshot" src="placeholder.png" alt="Screenshot" style="width:400px;height:auto;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.5)">
-      </div>
+        <div class="wrap" style="max-width:1200px;margin-top:6rem;">
+            <div id="theme-root" style="display:flex;gap:20px;align-items:stretch;">
+                <div id="left" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:360px;">
+                    <img id="main-screenshot" src="placeholder.png" alt="Screenshot" style="width:400px;height:auto;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.5)">
+                </div>
 
-      <div id="right" style="width:420px;display:flex;flex-direction:column;gap:12px;">
-        <div style="background:var(--bg-card);padding:16px;border-radius:10px;">
-          <h1 id="theme-name" style="margin:0 0 6px 0;font-size:1.5rem"></h1>
-          <div id="theme-author" style="margin-bottom:8px;color:var(--text-secondary)"></div>
-          <div id="theme-desc" style="color:var(--text-secondary);margin-bottom:12px"></div>
+                <div id="right" style="width:420px;display:flex;flex-direction:column;gap:12px;">
+                    <div style="background:var(--bg-card);padding:16px;border-radius:10px;">
+                        <h1 id="theme-name" style="margin:0 0 6px 0;font-size:1.5rem"></h1>
+                        <div id="theme-author" style="margin-bottom:8px;color:var(--text-secondary)"></div>
+                        <div id="theme-desc" style="color:var(--text-secondary);margin-bottom:12px"></div>
 
-          <div id="download-area" style="display:flex;gap:8px;align-items:center">
-            <button id="download-btn" class="btn btn-primary"><i class="fa-solid fa-download"></i> Download</button>
-            <a id="raw-folder-link" class="btn btn-secondary" style="text-decoration:none;padding:.6rem .9rem" target="_blank" rel="noopener"><i class="fa-solid fa-folder-open"></i> Open folder</a>
-          </div>
+                        <div id="download-area" style="display:flex;gap:8px;align-items:center">
+                            <button id="download-btn" class="btn btn-primary"><i class="fa-solid fa-download"></i> Download</button>
+                            <a id="raw-folder-link" class="btn btn-secondary" style="text-decoration:none;padding:.6rem .9rem" target="_blank" rel="noopener"><i class="fa-solid fa-folder-open"></i> Open folder</a>
+                        </div>
+                    </div>
+
+                    <div id="assets-wrap" style="background:var(--bg-card);padding:12px;border-radius:8px;min-height:120px;">
+                        <h4 style="margin:0 0 8px 0;color:var(--accent)">Theme assets</h4>
+                        <div id="assets-list" style="display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="assets-wrap" style="background:var(--bg-card);padding:12px;border-radius:8px;min-height:120px;">
-          <h4 style="margin:0 0 8px 0;color:var(--accent)">Theme assets</h4>
-          <div id="assets-list" style="display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto"></div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  </div>
+    <div id="footer-root"></div>
 
-<div id="footer-root"></div>
-  
-<script src="nav.js"></script>
-<script>
-  const GITHUB_TOKEN = '';
-  function resolveScreenshotPath(path) {
-    if (!path) return ''
-    if (path.startsWith('http')) return path
-    if (path.startsWith('./')) return 'https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/' + path.slice(2)
-    return path
-  }
+    <script src="nav.js"></script>
+    <script>
+        const GITHUB_TOKEN = '';
 
-  function safeText(v) {
-    return v ?? 'Unknown'
-  }
-
-  function githubApiUrlForFolder(folder) {
-    const cleaned = (folder || '').replace(/^\.\/+/, '')
-    return `https://api.github.com/repos/y1-community/InnioasisY1Themes/contents/${encodeURIComponent(cleaned)}`
-  }
-
-  async function tryFetchThemes() {
-    const urls = [
-      'https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/themes.json',
-      'https://themes.innioasis.app/themes.json'
-    ]
-    for (const u of urls) {
-      try {
-        const r = await fetch(u)
-        const j = await r.json()
-        if (r.ok && j.themes) return j.themes
-      } catch (e) { }
-    }
-    return []
-  }
-
-  async function ghFetch(url) {
-    const headers = { 'Accept': 'application/vnd.github.v3+json' }
-    if (GITHUB_TOKEN && GITHUB_TOKEN.trim()) headers['Authorization'] = 'Bearer ' + GITHUB_TOKEN.trim()
-    return fetch(url, { headers })
-  }
-
-  async function listFolderFiles(folderPath) {
-    const apiUrl = githubApiUrlForFolder(folderPath)
-    const res = await ghFetch(apiUrl)
-    if (!res.ok) throw new Error('Failed to fetch folder listing: ' + res.status)
-    const entries = await res.json()
-    if (!Array.isArray(entries)) throw new Error('No folder contents')
-
-    const fileEntries = []
-    async function walk(entries) {
-      for (const entry of entries) {
-        if (entry.type === 'file') {
-          fileEntries.push(entry)
-        } else if (entry.type === 'dir') {
-          try {
-            const r = await ghFetch(entry.url)
-            if (!r.ok) continue
-            const nested = await r.json()
-            await walk(nested)
-          } catch (e) {
-            console.warn('nested fetch failed', e)
-          }
-        }
-      }
-    }
-
-    await walk(entries)
-    return fileEntries
-  }
-
-  function chooseScreenshotFromFiles(metadataScreenshot, files) {
-    if (metadataScreenshot) return resolveScreenshotPath(metadataScreenshot)
-    const prefer = ['3.png','1.png','screenshot.png','preview.png','thumb.png','cover.png']
-    const names = files.map(f => f.name.toLowerCase())
-    for (const p of prefer) {
-      const idx = names.indexOf(p)
-      if (idx !== -1) return files[idx].download_url
-    }
-    const imageExt = ['.png','.jpg','.jpeg','.gif','.webp']
-    for (const f of files) {
-      const n = f.name.toLowerCase()
-      if (imageExt.some(ext => n.endsWith(ext))) return f.download_url
-    }
-    return '' // none found
-  }
-
-
-  async function downloadGitHubFolderAsZip(folderName, themeName, progressCallbacks) {
-    const zip = new JSZip();
-    const apiUrl = githubApiUrlForFolder(folderName);
-
-    progressCallbacks?.onStart?.(`Fetching file list for ${themeName}...`);
-
-    let files;
-    try {
-      const res = await ghFetch(apiUrl);
-      if (!res.ok) {
-        throw new Error(`Failed to fetch GitHub API folder contents (${res.status})`);
-      }
-      files = await res.json();
-    } catch (e) {
-      throw new Error(`Cannot fetch folder contents: ${e.message}`);
-    }
-
-    if (!Array.isArray(files)) throw new Error('GitHub API did not return a file list.');
-
-    const fileEntries = [];
-
-    async function walk(entries) {
-      for (const entry of entries) {
-        if (entry.type === 'file') {
-          fileEntries.push(entry);
-        } else if (entry.type === 'dir') {
-          const res = await ghFetch(entry.url);
-          if (!res.ok) {
-            console.warn('Failed to fetch subfolder', entry.path);
-            continue;
-          }
-          const nested = await res.json();
-          await walk(nested);
-        }
-      }
-    }
-
-    await walk(files);
-
-    const totalFiles = fileEntries.length;
-    if (totalFiles === 0) throw new Error('No files found in the theme folder.');
-
-    let downloadedFiles = 0;
-
-    for (const file of fileEntries) {
-      try {
-        const beforePercent = Math.round((downloadedFiles / totalFiles) * 80);
-        progressCallbacks?.onProgress?.(`${file.path} (${downloadedFiles + 1}/${totalFiles})`, beforePercent);
-        const fileResp = await ghFetch(file.download_url);
-        let blob;
-        try {
-          const fr = await fetch(file.download_url);
-          if (!fr.ok) throw new Error('raw download failed')
-          blob = await fr.blob();
-        } catch (e) {
-          const apiR = await ghFetch(file.url);
-          if (!apiR.ok) {
-            console.warn(`Failed to fetch file ${file.path}: ${apiR.status}`);
-            downloadedFiles++;
-            progressCallbacks?.onProgress?.(`Skipped ${file.path}`, Math.round((downloadedFiles / totalFiles) * 80));
-            continue;
-          }
-          const json = await apiR.json();
-          if (json.encoding === 'base64' && json.content) {
-            const bytes = atob(json.content.replace(/\n/g,''));
-            const arr = new Uint8Array(bytes.length);
-            for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
-            blob = new Blob([arr]);
-          } else {
-            blob = new Blob([json.content || '']);
-          }
-        }
-        zip.file(file.path, blob);
-        downloadedFiles++;
-        progressCallbacks?.onProgress?.(`Downloading ${file.path} (${downloadedFiles}/${totalFiles})`, Math.round((downloadedFiles / totalFiles) * 80));
-      } catch (e) {
-        console.warn(`Error downloading file ${file.path}:`, e);
-        downloadedFiles++;
-        progressCallbacks?.onProgress?.(`Error ${file.path}`, Math.round((downloadedFiles / totalFiles) * 80));
-      }
-    }
-
-    progressCallbacks?.onProgress?.('Generating ZIP...', 80);
-
-    const content = await zip.generateAsync({ type: 'blob' }, metadata => {
-      const mapped = 80 + Math.round((metadata.percent || 0) * 0.2);
-      progressCallbacks?.onProgress?.(`Zipping: ${Math.round(metadata.percent || 0)}%`, mapped);
-    });
-
-    return content;
-  }
-
-  function createProgressUI(parent, oldButton, themeName) {
-    const progressWrap = document.createElement('div');
-    progressWrap.className = 'theme-progress';
-    progressWrap.setAttribute('role', 'status');
-    progressWrap.setAttribute('aria-live', 'polite');
-
-    const row = document.createElement('div');
-    row.className = 'progress-row';
-
-    const barOuter = document.createElement('div');
-    barOuter.className = 'progress-bar';
-    const barInner = document.createElement('div');
-    barInner.className = 'progress-bar-inner';
-    barOuter.appendChild(barInner);
-
-    const percent = document.createElement('div');
-    percent.className = 'progress-percent';
-    percent.textContent = '0%';
-
-    row.appendChild(barOuter);
-    row.appendChild(percent);
-
-    const text = document.createElement('div');
-    text.className = 'progress-text';
-    text.textContent = `Preparing ${themeName}...`;
-
-    progressWrap.appendChild(row);
-    progressWrap.appendChild(text);
-
-    parent.replaceChild(progressWrap, oldButton);
-
-    return {
-      root: progressWrap,
-      setProgress(pct, msg) {
-        const clamped = Math.max(0, Math.min(100, Math.round(pct)));
-        barInner.style.width = clamped + '%';
-        percent.textContent = clamped + '%';
-        if (msg) text.textContent = msg;
-      },
-      removeAndRestoreButton(originalButton) {
-        try {
-          if (!originalButton.parentElement) parent.appendChild(originalButton);
-          parent.replaceChild(originalButton, progressWrap);
-          const origText = originalButton.innerHTML;
-          originalButton.innerHTML = 'Downloaded ✓';
-          originalButton.disabled = false;
-          setTimeout(() => {
-            originalButton.innerHTML = origText;
-          }, 2500);
-        } catch (e) {
-          console.warn('restore button failed', e);
-        }
-      },
-      abortAndRestore(originalButton) {
-        try {
-          if (!originalButton.parentElement) parent.appendChild(originalButton);
-          parent.replaceChild(originalButton, progressWrap);
-          originalButton.disabled = false;
-        } catch (e) {
-          console.warn('abort restore failed', e);
-        }
-      }
-    };
-  }
-
-  async function downloadTheme(theme, buttonNode) {
-    const parent = buttonNode.parentElement || buttonNode.parentNode;
-    if (!parent) return;
-    buttonNode.disabled = true;
-
-    const progressUI = createProgressUI(parent, buttonNode, theme.name || 'theme');
-
-    try {
-      if (!theme.folder) {
-        alert('No downloadable folder info for this theme.');
-        progressUI.abortAndRestore(buttonNode);
-        return;
-      }
-
-      const callbacks = {
-        onStart: (msg) => {
-          progressUI.setProgress(0, msg);
-        },
-        onProgress: (msg, percent) => {
-          progressUI.setProgress(percent || 0, msg || '');
-        }
-      };
-
-      const zipBlob = await downloadGitHubFolderAsZip(theme.folder, theme.name, callbacks);
-
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(zipBlob);
-      const safe = (theme.name || 'theme').replace(/[^\w\d-_ ]/g, '_') || 'theme';
-      a.download = `${safe}.zip`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-      progressUI.removeAndRestoreButton(buttonNode);
-    } catch (err) {
-      console.error('Download failed', err);
-      alert(`Failed to download theme "${theme.name}": ${err.message || err}`);
-      progressUI.abortAndRestore(buttonNode);
-    }
-  }
-
-  (async function main() {
-    const params = new URLSearchParams(location.search);
-    const themeQuery = params.get('theme') || params.get('t') || '';
-    if (!themeQuery) {
-      document.getElementById('theme-name').textContent = 'No theme specified';
-      document.getElementById('theme-desc').textContent = 'Provide ?theme={name}';
-      return;
-    }
-
-    const themeName = themeQuery;
-    let themeMeta = null;
-    try {
-      const themes = await tryFetchThemes()
-      themeMeta = themes.find(t => (t.name || '').toLowerCase() === themeName.toLowerCase())
-    } catch (e) {
-      console.warn('themes.json fetch failed', e)
-    }
-
-    const folder = (themeMeta && themeMeta.folder) ? themeMeta.folder : `./${themeName}`;
-
-    let files = []
-    try {
-      files = await listFolderFiles(folder)
-    } catch (e) {
-      console.warn('listFolderFiles failed', e)
-      files = []
-    }
-
-    const nameEl = document.getElementById('theme-name')
-    const descEl = document.getElementById('theme-desc')
-    const authorEl = document.getElementById('theme-author')
-    const screenshotEl = document.getElementById('main-screenshot')
-    const assetsList = document.getElementById('assets-list')
-    const downloadBtn = document.getElementById('download-btn')
-    const rawFolderLink = document.getElementById('raw-folder-link')
-
-    const displayName = (themeMeta && themeMeta.name) ? themeMeta.name : themeName
-    nameEl.textContent = displayName
-    descEl.textContent = (themeMeta && themeMeta.description) ? themeMeta.description : 'No description available.'
-
-    if (!themeMeta || !themeMeta.author) {
-      authorEl.textContent = 'Unknown author'
-    } else {
-      const a = document.createElement('span')
-      if (themeMeta.author === 'Innioasis') {
-        a.innerHTML = `by <a href="https://innioasis.com" target="_blank" rel="noopener">Innioasis</a>`
-      } else if (themeMeta.author === 'u/ope-nz | Normal-Curve-1642') {
-        a.innerHTML = `by <a href="https://reddit.com/u/Normal-Curve-1642" target="_blank" rel="noopener">Normal-Curve-1642</a>`
-      } else {
-        a.innerHTML = `by <a href="https://reddit.com/${themeMeta.author}" target="_blank" rel="noopener">${themeMeta.author}</a>`
-      }
-      authorEl.innerHTML = ''
-      authorEl.appendChild(a)
-      if (themeMeta.authorUrl) {
-        const ic = document.createElement('a')
-        ic.href = themeMeta.authorUrl
-        ic.target = '_blank'
-        ic.rel = 'noopener'
-        ic.style.marginLeft = '8px'
-        ic.innerHTML = `<i class="fa-brands fa-reddit" title="author link"></i>`
-        authorEl.appendChild(ic)
-      }
-    }
-
-    const screenshotUrl = chooseScreenshotFromFiles(themeMeta?.screenshot, files)
-    if (screenshotUrl) {
-      screenshotEl.src = screenshotUrl
-    } else {
-      screenshotEl.src = 'placeholder.png'
-    }
-
-    const folderClean = (folder || '').replace(/^\.\/+/, '')
-    rawFolderLink.href = `https://github.com/y1-community/InnioasisY1Themes/tree/main/${encodeURIComponent(folderClean)}`
-
-    const themeObj = {
-      name: displayName,
-      folder: folder
-    }
-
-    downloadBtn.onclick = () => downloadTheme(themeObj, downloadBtn)
-
-    if (!files.length) {
-      assetsList.innerHTML = `<div style="color:var(--text-secondary)">No files found in that folder or failed to fetch folder contents.</div>`
-    } else {
-      files.sort((a,b) => a.path.localeCompare(b.path))
-      for (const f of files) {
-        const row = document.createElement('div')
-        row.style.display = 'flex'
-        row.style.alignItems = 'center'
-        row.style.gap = '10px'
-        row.style.background = 'transparent'
-        row.style.padding = '6px'
-        row.style.borderRadius = '6px'
-
-        const isImage = /\.(png|jpe?g|gif|webp|svg)$/i.test(f.name)
-        if (isImage) {
-          const img = document.createElement('img')
-          img.src = f.download_url
-          img.alt = f.name
-          img.style.width = '72px'
-          img.style.height = '48px'
-          img.style.objectFit = 'contain'
-          img.style.borderRadius = '6px'
-          img.onerror = () => { img.src = 'placeholder.png' }
-          row.appendChild(img)
-        } else {
-          const ic = document.createElement('div')
-          ic.style.width = '72px'
-          ic.style.height = '48px'
-          ic.style.display = 'flex'
-          ic.style.alignItems = 'center'
-          ic.style.justifyContent = 'center'
-          ic.innerHTML = `<i class="fa-solid ${iconForExtension(f.name)}" style="font-size:20px;color:var(--text-secondary)"></i>`
-          row.appendChild(ic)
+        function resolveScreenshotPath(path) {
+            if (!path) return ''
+            if (path.startsWith('http')) return path
+            if (path.startsWith('./')) return 'https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/' + path.slice(2)
+            return path
         }
 
-        const nameWrap = document.createElement('div')
-        nameWrap.style.display = 'flex'
-        nameWrap.style.flexDirection = 'column'
-        nameWrap.style.flex = '1'
+        function safeText(v) {
+            return v ?? 'Unknown'
+        }
 
-        const link = document.createElement('a')
-        link.href = f.download_url
-        link.textContent = f.path
-        link.target = '_blank'
-        link.rel = 'noopener'
-        link.style.color = 'lightblue'
-        link.style.textDecoration = 'none'
-        link.style.fontWeight = '600'
-        link.style.fontSize = '0.95rem'
+        function githubApiUrlForFolder(folder) {
+            const cleaned = (folder || '').replace(/^\.\/+/, '')
+            return `https://api.github.com/repos/y1-community/InnioasisY1Themes/contents/${encodeURIComponent(cleaned)}`
+        }
 
-        const meta = document.createElement('div')
-        function formatSize(size) {
-  if (size >= 1_000_000) return (size / 1_000_000).toFixed(2) + ' MB';
-  if (size >= 1_000) return (size / 1_000).toFixed(2) + ' KB';
-  return size + ' bytes';
-}
-        meta.textContent = formatSize(f.size ?? 0);
-        meta.style.color = 'var(--text-secondary)'
-        meta.style.fontSize = '0.85rem'
-        meta.style.marginTop = '4px'
+        async function tryFetchThemes() {
+            const urls = [
+                'https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/themes.json',
+                'https://themes.innioasis.app/themes.json'
+            ]
+            for (const u of urls) {
+                try {
+                    const r = await fetch(u)
+                    const j = await r.json()
+                    if (r.ok && j.themes) return j.themes
+                } catch (e) {}
+            }
+            return []
+        }
 
-        nameWrap.appendChild(link)
-        nameWrap.appendChild(meta)
-        row.appendChild(nameWrap)
-        assetsList.appendChild(row)
-      }
-    }
-  })()
-</script>
+        async function ghFetch(url) {
+            const headers = {
+                'Accept': 'application/vnd.github.v3+json'
+            }
+            if (GITHUB_TOKEN && GITHUB_TOKEN.trim()) headers['Authorization'] = 'Bearer ' + GITHUB_TOKEN.trim()
+            return fetch(url, {
+                headers
+            })
+        }
+
+        async function listFolderFiles(folderPath) {
+            const apiUrl = githubApiUrlForFolder(folderPath)
+            const res = await ghFetch(apiUrl)
+            if (!res.ok) throw new Error('Failed to fetch folder listing: ' + res.status)
+            const entries = await res.json()
+            if (!Array.isArray(entries)) throw new Error('No folder contents')
+
+            const fileEntries = []
+            async function walk(entries) {
+                for (const entry of entries) {
+                    if (entry.type === 'file') {
+                        fileEntries.push(entry)
+                    } else if (entry.type === 'dir') {
+                        try {
+                            const r = await ghFetch(entry.url)
+                            if (!r.ok) continue
+                            const nested = await r.json()
+                            await walk(nested)
+                        } catch (e) {
+                            console.warn('nested fetch failed', e)
+                        }
+                    }
+                }
+            }
+
+            await walk(entries)
+            return fileEntries
+        }
+
+        function chooseScreenshotFromFiles(metadataScreenshot, files) {
+            if (metadataScreenshot) return resolveScreenshotPath(metadataScreenshot)
+            const prefer = ['3.png', '1.png', 'screenshot.png', 'preview.png', 'thumb.png', 'cover.png']
+            const names = files.map(f => f.name.toLowerCase())
+            for (const p of prefer) {
+                const idx = names.indexOf(p)
+                if (idx !== -1) return files[idx].download_url
+            }
+            const imageExt = ['.png', '.jpg', '.jpeg', '.gif', '.webp']
+            for (const f of files) {
+                const n = f.name.toLowerCase()
+                if (imageExt.some(ext => n.endsWith(ext))) return f.download_url
+            }
+            return ''
+        }
+
+
+        async function downloadGitHubFolderAsZip(folderName, themeName, progressCallbacks) {
+            const zip = new JSZip();
+            const apiUrl = githubApiUrlForFolder(folderName);
+
+            progressCallbacks?.onStart?.(`Fetching file list for ${themeName}...`);
+
+            let files;
+            try {
+                const res = await ghFetch(apiUrl);
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch GitHub API folder contents (${res.status})`);
+                }
+                files = await res.json();
+            } catch (e) {
+                throw new Error(`Cannot fetch folder contents: ${e.message}`);
+            }
+
+            if (!Array.isArray(files)) throw new Error('GitHub API did not return a file list.');
+
+            const fileEntries = [];
+
+            async function walk(entries) {
+                for (const entry of entries) {
+                    if (entry.type === 'file') {
+                        fileEntries.push(entry);
+                    } else if (entry.type === 'dir') {
+                        const res = await ghFetch(entry.url);
+                        if (!res.ok) {
+                            console.warn('Failed to fetch subfolder', entry.path);
+                            continue;
+                        }
+                        const nested = await res.json();
+                        await walk(nested);
+                    }
+                }
+            }
+
+            await walk(files);
+
+            const totalFiles = fileEntries.length;
+            if (totalFiles === 0) throw new Error('No files found in the theme folder.');
+
+            let downloadedFiles = 0;
+
+            for (const file of fileEntries) {
+                try {
+                    const beforePercent = Math.round((downloadedFiles / totalFiles) * 80);
+                    progressCallbacks?.onProgress?.(`${file.path} (${downloadedFiles + 1}/${totalFiles})`, beforePercent);
+                    const fileResp = await ghFetch(file.download_url);
+                    let blob;
+                    try {
+                        const fr = await fetch(file.download_url);
+                        if (!fr.ok) throw new Error('raw download failed')
+                        blob = await fr.blob();
+                    } catch (e) {
+                        const apiR = await ghFetch(file.url);
+                        if (!apiR.ok) {
+                            console.warn(`Failed to fetch file ${file.path}: ${apiR.status}`);
+                            downloadedFiles++;
+                            progressCallbacks?.onProgress?.(`Skipped ${file.path}`, Math.round((downloadedFiles / totalFiles) * 80));
+                            continue;
+                        }
+                        const json = await apiR.json();
+                        if (json.encoding === 'base64' && json.content) {
+                            const bytes = atob(json.content.replace(/\n/g, ''));
+                            const arr = new Uint8Array(bytes.length);
+                            for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+                            blob = new Blob([arr]);
+                        } else {
+                            blob = new Blob([json.content || '']);
+                        }
+                    }
+                    zip.file(file.path, blob);
+                    downloadedFiles++;
+                    progressCallbacks?.onProgress?.(`Downloading ${file.path} (${downloadedFiles}/${totalFiles})`, Math.round((downloadedFiles / totalFiles) * 80));
+                } catch (e) {
+                    console.warn(`Error downloading file ${file.path}:`, e);
+                    downloadedFiles++;
+                    progressCallbacks?.onProgress?.(`Error ${file.path}`, Math.round((downloadedFiles / totalFiles) * 80));
+                }
+            }
+
+            progressCallbacks?.onProgress?.('Generating ZIP...', 80);
+
+            const content = await zip.generateAsync({
+                type: 'blob'
+            }, metadata => {
+                const mapped = 80 + Math.round((metadata.percent || 0) * 0.2);
+                progressCallbacks?.onProgress?.(`Zipping: ${Math.round(metadata.percent || 0)}%`, mapped);
+            });
+
+            return content;
+        }
+
+        function createProgressUI(parent, oldButton, themeName) {
+            const progressWrap = document.createElement('div');
+            progressWrap.className = 'theme-progress';
+            progressWrap.setAttribute('role', 'status');
+            progressWrap.setAttribute('aria-live', 'polite');
+
+            const row = document.createElement('div');
+            row.className = 'progress-row';
+
+            const barOuter = document.createElement('div');
+            barOuter.className = 'progress-bar';
+            const barInner = document.createElement('div');
+            barInner.className = 'progress-bar-inner';
+            barOuter.appendChild(barInner);
+
+            const percent = document.createElement('div');
+            percent.className = 'progress-percent';
+            percent.textContent = '0%';
+
+            row.appendChild(barOuter);
+            row.appendChild(percent);
+
+            const text = document.createElement('div');
+            text.className = 'progress-text';
+            text.textContent = `Preparing ${themeName}...`;
+
+            progressWrap.appendChild(row);
+            progressWrap.appendChild(text);
+
+            parent.replaceChild(progressWrap, oldButton);
+
+            return {
+                root: progressWrap,
+                setProgress(pct, msg) {
+                    const clamped = Math.max(0, Math.min(100, Math.round(pct)));
+                    barInner.style.width = clamped + '%';
+                    percent.textContent = clamped + '%';
+                    if (msg) text.textContent = msg;
+                },
+                removeAndRestoreButton(originalButton) {
+                    try {
+                        if (!originalButton.parentElement) parent.appendChild(originalButton);
+                        parent.replaceChild(originalButton, progressWrap);
+                        const origText = originalButton.innerHTML;
+                        originalButton.innerHTML = 'Downloaded ✓';
+                        originalButton.disabled = false;
+                        setTimeout(() => {
+                            originalButton.innerHTML = origText;
+                        }, 2500);
+                    } catch (e) {
+                        console.warn('restore button failed', e);
+                    }
+                },
+                abortAndRestore(originalButton) {
+                    try {
+                        if (!originalButton.parentElement) parent.appendChild(originalButton);
+                        parent.replaceChild(originalButton, progressWrap);
+                        originalButton.disabled = false;
+                    } catch (e) {
+                        console.warn('abort restore failed', e);
+                    }
+                }
+            };
+        }
+
+        async function downloadTheme(theme, buttonNode) {
+            const parent = buttonNode.parentElement || buttonNode.parentNode;
+            if (!parent) return;
+            buttonNode.disabled = true;
+
+            const progressUI = createProgressUI(parent, buttonNode, theme.name || 'theme');
+
+            try {
+                if (!theme.folder) {
+                    alert('No downloadable folder info for this theme.');
+                    progressUI.abortAndRestore(buttonNode);
+                    return;
+                }
+
+                const callbacks = {
+                    onStart: (msg) => {
+                        progressUI.setProgress(0, msg);
+                    },
+                    onProgress: (msg, percent) => {
+                        progressUI.setProgress(percent || 0, msg || '');
+                    }
+                };
+
+                const zipBlob = await downloadGitHubFolderAsZip(theme.folder, theme.name, callbacks);
+
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(zipBlob);
+                const safe = (theme.name || 'theme').replace(/[^\w\d-_ ]/g, '_') || 'theme';
+                a.download = `${safe}.zip`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+
+                progressUI.removeAndRestoreButton(buttonNode);
+            } catch (err) {
+                console.error('Download failed', err);
+                alert(`Failed to download theme "${theme.name}": ${err.message || err}`);
+                progressUI.abortAndRestore(buttonNode);
+            }
+        }
+
+        (async function main() {
+            const params = new URLSearchParams(location.search);
+            const themeQuery = params.get('theme') || params.get('t') || '';
+            if (!themeQuery) {
+                document.getElementById('theme-name').textContent = 'No theme specified';
+                document.getElementById('theme-desc').textContent = 'Provide ?theme={name}';
+                return;
+            }
+
+            const themeName = themeQuery;
+            let themeMeta = null;
+            try {
+                const themes = await tryFetchThemes()
+                themeMeta = themes.find(t => (t.name || '').toLowerCase() === themeName.toLowerCase())
+            } catch (e) {
+                console.warn('themes.json fetch failed', e)
+            }
+
+            const folder = (themeMeta && themeMeta.folder) ? themeMeta.folder : `./${themeName}`;
+
+            let files = []
+            try {
+                files = await listFolderFiles(folder)
+            } catch (e) {
+                console.warn('listFolderFiles failed', e)
+                files = []
+            }
+
+            const nameEl = document.getElementById('theme-name')
+            const descEl = document.getElementById('theme-desc')
+            const authorEl = document.getElementById('theme-author')
+            const screenshotEl = document.getElementById('main-screenshot')
+            const assetsList = document.getElementById('assets-list')
+            const downloadBtn = document.getElementById('download-btn')
+            const rawFolderLink = document.getElementById('raw-folder-link')
+
+            const displayName = (themeMeta && themeMeta.name) ? themeMeta.name : themeName
+            nameEl.textContent = displayName
+            descEl.textContent = (themeMeta && themeMeta.description) ? themeMeta.description : 'No description available.'
+
+            if (!themeMeta || !themeMeta.author) {
+                authorEl.textContent = 'Unknown author'
+            } else {
+                const a = document.createElement('span')
+                if (themeMeta.author === 'Innioasis') {
+                    a.innerHTML = `by <a href="https://innioasis.com" target="_blank" rel="noopener">Innioasis</a>`
+                } else if (themeMeta.author === 'u/ope-nz | Normal-Curve-1642') {
+                    a.innerHTML = `by <a href="https://reddit.com/u/Normal-Curve-1642" target="_blank" rel="noopener">Normal-Curve-1642</a>`
+                } else {
+                    a.innerHTML = `by <a href="https://reddit.com/${themeMeta.author}" target="_blank" rel="noopener">${themeMeta.author}</a>`
+                }
+                authorEl.innerHTML = ''
+                authorEl.appendChild(a)
+                if (themeMeta.authorUrl) {
+                    const ic = document.createElement('a')
+                    ic.href = themeMeta.authorUrl
+                    ic.target = '_blank'
+                    ic.rel = 'noopener'
+                    ic.style.marginLeft = '8px'
+                    ic.innerHTML = `<i class="fa-brands fa-reddit" title="author link"></i>`
+                    authorEl.appendChild(ic)
+                }
+            }
+
+            const screenshotUrl = chooseScreenshotFromFiles(themeMeta?.screenshot, files)
+            if (screenshotUrl) {
+                screenshotEl.src = screenshotUrl
+            } else {
+                screenshotEl.src = 'placeholder.png'
+            }
+
+            const folderClean = (folder || '').replace(/^\.\/+/, '')
+            rawFolderLink.href = `https://github.com/y1-community/InnioasisY1Themes/tree/main/${encodeURIComponent(folderClean)}`
+
+            const themeObj = {
+                name: displayName,
+                folder: folder
+            }
+
+            downloadBtn.onclick = () => downloadTheme(themeObj, downloadBtn)
+
+            if (!files.length) {
+                assetsList.innerHTML = `<div style="color:var(--text-secondary)">No files found in that folder or failed to fetch folder contents.</div>`
+            } else {
+                files.sort((a, b) => a.path.localeCompare(b.path))
+                for (const f of files) {
+                    const row = document.createElement('div')
+                    row.style.display = 'flex'
+                    row.style.alignItems = 'center'
+                    row.style.gap = '10px'
+                    row.style.background = 'transparent'
+                    row.style.padding = '6px'
+                    row.style.borderRadius = '6px'
+
+                    const isImage = /\.(png|jpe?g|gif|webp|svg)$/i.test(f.name)
+                    if (isImage) {
+                        const img = document.createElement('img')
+                        img.src = f.download_url
+                        img.alt = f.name
+                        img.style.width = '72px'
+                        img.style.height = '48px'
+                        img.style.objectFit = 'contain'
+                        img.style.borderRadius = '6px'
+                        img.onerror = () => {
+                            img.src = 'placeholder.png'
+                        }
+                        row.appendChild(img)
+                    } else {
+                        const ic = document.createElement('div')
+                        ic.style.width = '72px'
+                        ic.style.height = '48px'
+                        ic.style.display = 'flex'
+                        ic.style.alignItems = 'center'
+                        ic.style.justifyContent = 'center'
+                        ic.innerHTML = `<i class="fa-solid ${iconForExtension(f.name)}" style="font-size:20px;color:var(--text-secondary)"></i>`
+                        row.appendChild(ic)
+                    }
+
+                    const nameWrap = document.createElement('div')
+                    nameWrap.style.display = 'flex'
+                    nameWrap.style.flexDirection = 'column'
+                    nameWrap.style.flex = '1'
+
+                    const link = document.createElement('a')
+                    link.href = f.download_url
+                    link.textContent = f.path
+                    link.target = '_blank'
+                    link.rel = 'noopener'
+                    link.style.color = 'lightblue'
+                    link.style.textDecoration = 'none'
+                    link.style.fontWeight = '600'
+                    link.style.fontSize = '0.95rem'
+
+                    const meta = document.createElement('div')
+
+                    function formatSize(size) {
+                        if (size >= 1_000_000) return (size / 1_000_000).toFixed(2) + ' MB';
+                        if (size >= 1_000) return (size / 1_000).toFixed(2) + ' KB';
+                        return size + ' bytes';
+                    }
+                    meta.textContent = formatSize(f.size ?? 0);
+                    meta.style.color = 'var(--text-secondary)'
+                    meta.style.fontSize = '0.85rem'
+                    meta.style.marginTop = '4px'
+
+                    nameWrap.appendChild(link)
+                    nameWrap.appendChild(meta)
+                    row.appendChild(nameWrap)
+                    assetsList.appendChild(row)
+                }
+            }
+        })()
+    </script>
 </body>
-</html>
 
+</html>

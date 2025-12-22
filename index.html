@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innioasis Updater</title>
-    
+
     <meta name="description" content="Innioasis Y1 Updater lets you install Rockbox, manage stock firmware, and download the latest Y1 firmware releases easily.">
     <meta name="keywords" content="Innioasis Y1, Innioasis updater, Rockbox Y1, Y1 firmware, Rockbox installer, Y1 stock firmware">
     <meta name="author" content="Innioasis Community">
@@ -66,6 +66,12 @@
             <hr>
             <h3 style="text-align: center; margin: 2rem 0 1rem;">Find the latest release for you</h3>
             <div class="versions-grid" id="versionsGrid"></div>
+
+            <div class="back-button" style="display: flex; justify-content: center;">
+                <a href="all_versions.html" class="btn-back" style="text-decoration: none;">
+                    <i class="fas fa-code-branch" style="margin-top: 6rem; margin-right: 4px;"></i> All versions
+                </a>
+            </div>
         </div>
     </section>
 
@@ -97,7 +103,11 @@
                         <h3>sipped</h3>
                         <p>Support the site creator</p>
                     </div>
-                    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'K3K31AMKAQ');kofiwidget2.draw();</script> 
+                    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                    <script type='text/javascript'>
+                        kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'K3K31AMKAQ');
+                        kofiwidget2.draw();
+                    </script>
                 </div>
             </div>
         </div>
@@ -108,10 +118,10 @@
             <h2>Credits</h2>
             <div class="credits-list">
                 <ul style="list-style-type: none;">
-                    <li>Rockbox-Y1 creators - For developing and maintaining Rockbox for the Y1 device</li>
                     <li><a href="https://github.com/ryan-specter/">Ryan Specter</a> - For creating the Updater app, old website, and helping with this guide</li>
-                    <li>u/After-Acanthaceae547 (deleted account) & <a href="https://reddit.com/user/ThinkVHS">u/ThinkVHS</a> - For discovering the Stock to Rockbox boot method</li>
+                    <li>Rockbox-Y1 creators - For developing and maintaining Rockbox for the Y1 device</li>
                     <li>The Rockbox Community - 23 years of open source audio player development</li>
+                    <li>Bjoern Kerler (<a href="https://github.com/bkerler/mtkclient">bkerler</a>) - For creating mtkclient, tool for the updater</li>
                     <li><a href="https://github.com/sippedaway">sipped</a> - For creating this website and guide</li>
                 </ul>
             </div>
@@ -339,7 +349,7 @@
                 ...r,
                 resolution: getResolution(r.tag_name.toLowerCase(), (r.software_name || '').toLowerCase()),
                 variant: r.prerelease ? 'Beta' : 'Stable',
-                software_type: (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Stock'
+                software_type: (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original'
             }));
 
             const recommendations = [{
@@ -354,11 +364,11 @@
                 },
                 {
                     device_type: 'A',
-                    software_type: 'Stock'
+                    software_type: 'Original'
                 },
                 {
                     device_type: 'B',
-                    software_type: 'Stock'
+                    software_type: 'Original'
                 }
             ];
 
@@ -420,12 +430,7 @@
                 label.textContent = labelText + ':';
 
                 const select = document.createElement('select');
-                select.style.padding = '0.5rem';
-                select.style.borderRadius = '5px';
-                select.style.border = '1px solid var(--text-secondary)';
-                select.style.background = 'var(--bg-card)';
-                select.style.color = 'var(--text-primary)';
-                select.style.fontFamily = 'Inter';
+                select.className = 'filter-dropdown';
 
                 opts.forEach(o => {
                     const option = document.createElement('option');
@@ -442,7 +447,7 @@
             }
 
             const typeSel = createSelect('Type', ['A', 'B']);
-            const firmwareSel = createSelect('Firmware', ['Rockbox', 'Stock']);
+            const firmwareSel = createSelect('Firmware', ['Rockbox', 'Original']);
             const resolutionSel = createSelect('Resolution', ['240p', '360p']);
             const versionSel = createSelect('Version', ['Stable', 'Beta']);
 
@@ -471,7 +476,7 @@
                 let filtered = enriched.filter(r =>
                     r.device_type === filters.type &&
                     r.software_type.toLowerCase() === filters.firmware.toLowerCase() &&
-                    r.resolution === filters.resolution &&
+                    (filters.firmware === 'Original' ? true : r.resolution === filters.resolution) &&
                     (filters.version === 'Stable' ? r.variant === 'Stable' : r.variant === 'Beta')
                 );
 
@@ -486,6 +491,7 @@
                 const card = document.createElement('div')
                 card.className = 'version-card'
                 card.style.margin = '0 auto'
+                const resolutionLine = (filters.firmware === 'Original') ? `<p class="meta">Resolution: 360p</p>` : `<p class="meta">Resolution: ${latest.resolution}</p>`;
                 card.innerHTML = `
     <span class="version-badge badge-latest">Latest</span>
 
@@ -496,7 +502,7 @@
             <p class="meta">${latest.total_downloads} downloads</p>
             <p class="meta">Firmware: ${latest.software_type}</p>
             <p class="meta">Type ${latest.device_type}</p>
-            <p class="meta">Resolution: ${latest.resolution}</p>
+            ${resolutionLine}
         </div>
 
         <div class="version-right">
@@ -506,13 +512,26 @@
             }
         </div>
     </div>
-`
+`;
 
-
+                console.log(latest);
                 resultContainer.appendChild(card);
             }
 
-            Object.values(selects).forEach(s => s.addEventListener('change', updateFilter));
+            selects.firmware.addEventListener('change', () => {
+                const isOriginal = selects.firmware.value === 'Original';
+                selects.resolution.disabled = isOriginal;
+                selects.resolution.style.opacity = isOriginal ? '0.5' : '1';
+                selects.resolution.style.cursor = isOriginal ? 'not-allowed' : 'pointer';
+                if (isOriginal) {
+                    selects.resolution.value = '360p';
+                }
+                updateFilter();
+            });
+
+            Object.values(selects).forEach(s => {
+                if (s !== selects.firmware) s.addEventListener('change', updateFilter);
+            });
 
             grid.parentElement.insertBefore(filterContainer, grid);
             grid.parentElement.insertBefore(resultContainer, grid);
@@ -523,6 +542,5 @@
     </script>
 
 </body>
-
 
 </html>
