@@ -62,7 +62,7 @@
                 <a href="index.html#home">Home</a>
                 <a href="guide.html">Guide</a>
                 <a href="themes.html">Themes</a>
-                <a href="all_versions.html">Versions</a>
+                <a href="firmware.html">Versions</a>
                 <a href="index.html#donate">Donate</a>
             </div>
 
