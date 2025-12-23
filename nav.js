@@ -4,7 +4,7 @@
         navRoot.innerHTML = `
         <nav>
           <div class="nav-container">
-            <div class="logo" onclick="window.location.href='index.html#home'">Innioasis Updater</div>
+            <div class="logo"><a href='index.html#home' style="text-decoration: none; color: var(--accent)">Innioasis Updater</a></div>
             <ul class="nav-links" id="navLinks">
               <li><a href="index.html#home"><i class="fa-solid fa-house" style="margin-right:3px;"></i> Home</a></li>
               <li><a href="guide.html#guide"><i class="fa-solid fa-book" style="margin-right:3px;"></i> Guide</a></li>
@@ -45,9 +45,9 @@
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('#nav-root nav')
         if (!nav) return
-        nav.style.boxShadow = window.scrollY > 100
-            ? '0 4px 20px rgba(0,0,0,0.3)'
-            : 'none'
+        nav.style.boxShadow = window.scrollY > 100 ?
+            '0 4px 20px rgba(0,0,0,0.3)' :
+            'none'
     })
 
     const footerRoot = document.getElementById('footer-root')
@@ -62,7 +62,7 @@
                 <a href="index.html#home">Home</a>
                 <a href="guide.html">Guide</a>
                 <a href="themes.html">Themes</a>
-                <a href="index.html#versions">Versions</a>
+                <a href="all_versions.html">Versions</a>
                 <a href="index.html#donate">Donate</a>
             </div>
 
@@ -88,17 +88,11 @@
                 </div>
             </div>
 
-            <div class="footer-col" style="display:flex;flex-direction:column;justify-content:space-between;">
+            <div class="footer-col" style="display:flex;flex-direction:column;justify-content:space-between;">   
                 <div>
                     <h4>In collaboration with</h4>
                     <a href="https://www.innioasis.com" target="_blank">
                         <img src="innioasis.png" class="footer-logo" alt="Innioasis">
-                    </a>
-                </div>
-                <div>
-                    <h4>Using</h4>
-                    <a href="https://www.rockbox.org" target="_blank">
-                        <img src="https://www.rockbox.org/rockbox100.png" class="footer-logo" alt="Rockbox">
                     </a>
                 </div>
             </div>
@@ -110,48 +104,50 @@
         </div>
     </footer>`
 
-const footerBottom = footerRoot.querySelector('.footer-bottom')
+    const footerBottom = footerRoot.querySelector('.footer-bottom')
 
-const PUNCH_URL = 'https://counter.sipped.org/punch/innioasisupdater-counter/12336c13dc3fd1c8ddfbe1953149debc/website'
-const GET_URL = 'https://counter.sipped.org/get/innioasisupdater-counter/12336c13dc3fd1c8ddfbe1953149debc/website'
+    const PUNCH_URL = 'https://counter.sipped.org/punch/innioasisupdater-counter/12336c13dc3fd1c8ddfbe1953149debc/website'
+    const GET_URL = 'https://counter.sipped.org/get/innioasisupdater-counter/12336c13dc3fd1c8ddfbe1953149debc/website'
 
-async function fetchCounter(url) {
-  try {
-    const res = await fetch(url, { cache: 'no-store' })
-    if (!res.ok) throw new Error('Failed to fetch counter')
+    async function fetchCounter(url) {
+        try {
+            const res = await fetch(url, {
+                cache: 'no-store'
+            })
+            if (!res.ok) throw new Error('Failed to fetch counter')
 
-    try {
-      const data = await res.json()
-      if (typeof data.count === 'number') return data.count
-      if (typeof data.value === 'number') return data.value
-    } catch {}
+            try {
+                const data = await res.json()
+                if (typeof data.count === 'number') return data.count
+                if (typeof data.value === 'number') return data.value
+            } catch {}
 
-    const text = await res.text()
-    const num = parseInt(text, 10)
-    if (!isNaN(num)) return num
+            const text = await res.text()
+            const num = parseInt(text, 10)
+            if (!isNaN(num)) return num
 
-    return null
-  } catch {
-    return null
-  }
-}
+            return null
+        } catch {
+            return null
+        }
+    }
 
-async function initCounter() {
-  const hasRun = localStorage.getItem("hasrun")
-  const urlToUse = hasRun ? GET_URL : PUNCH_URL
+    async function initCounter() {
+        const hasRun = localStorage.getItem("hasrun")
+        const urlToUse = hasRun ? GET_URL : PUNCH_URL
 
-  const count = await fetchCounter(urlToUse)
+        const count = await fetchCounter(urlToUse)
 
-  if (!hasRun) localStorage.setItem("hasrun", 'true')
+        if (!hasRun) localStorage.setItem("hasrun", 'true')
 
-  const span = document.createElement('span')
-  span.style.marginLeft = '20px'
-  span.innerHTML = `<i class="fas fa-eye" style="font-size: 11px; margin-right: 6px;"></i>${
+        const span = document.createElement('span')
+        span.style.marginLeft = '20px'
+        span.innerHTML = `<i class="fas fa-eye" style="font-size: 11px; margin-right: 6px;"></i>${
     count !== null ? count.toLocaleString() + ' views' : '... views'
   }`
-  footerBottom.appendChild(span)
-}
+        footerBottom.appendChild(span)
+    }
 
-initCounter()
+    initCounter()
 
 })();

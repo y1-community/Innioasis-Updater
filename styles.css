@@ -419,38 +419,6 @@ footer a,
     width: 50%;
 }
 
-@media (max-width: 900px) {
-    .guide-wrap {
-        flex-direction: column;
-        margin-top: 5rem;
-    }
-
-    .guide-sidebar {
-        width: 100%;
-        position: relative;
-        top: auto;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .hero {
-        flex-direction: column;
-        padding: 3rem 1rem;
-    }
-
-    .hero .hero-content {
-        text-align: center;
-    }
-
-    .hero .hero-image {
-        max-width: 320px;
-        width: 80%;
-        margin-top: 1rem;
-    }
-}
-
 .download {
     background: var(--primary);
     color: #fff;
@@ -476,6 +444,10 @@ footer a,
     border-radius: 6px;
 }
 
+select {
+    font-family: Inter;
+}
+
 .small-action {
     font-size: .9rem;
     color: var(--text-secondary);
@@ -489,6 +461,17 @@ footer a,
 
 .version-card {
     position: relative;
+}
+
+.vcentered {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.version-card a {
+    font-weight: normal;
+    text-align: center;
 }
 
 .version-split {
@@ -650,7 +633,62 @@ footer a,
     border: 1px solid #2d2d2d;
 }
 
+#theme-root {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+#alv-btn {
+    text-decoration: none;
+}
+
+#alv-btn:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 900px) {
+    #theme-root {
+        display: block;
+    }
+
+    .guide-wrap {
+        flex-direction: column;
+        margin-top: 5rem;
+    }
+
+    .guide-sidebar {
+        width: 100%;
+        position: relative;
+        top: auto;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero .hero-content {
+        text-align: center;
+    }
+
+    .hero h1 {
+        text-align: center;
+    }
+
+    .hero .hero-image {
+        max-width: 320px;
+        width: 80%;
+        margin-top: 1rem;
+    }
+
+    .footer-grid {
+        gap: 0;
+    }
+
     .nav-links {
         position: absolute;
         top: 100%;
@@ -701,5 +739,13 @@ footer a,
 
     .version-card {
         max-width: 100%;
+    }
+
+    .avc-section {
+        width: 100%;
+    }
+
+    .all-versions-container {
+        padding: 1rem;
     }
 }

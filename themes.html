@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Innioasis Updater — Themes</title>
+    <title>Browse themes — Innioasis Y1</title>
 
     <meta name="description" content="Browse and download Rockbox themes for the Innioasis Y1. Customize your player with community-made themes for 240p and 360p models.">
     <meta name="keywords" content="Innioasis Y1 themes, Rockbox themes Y1, Y1 UI themes, Rockbox customization">
@@ -16,12 +16,12 @@
     <meta property="og:title" content="Innioasis Y1 Rockbox Themes">
     <meta property="og:description" content="Customize your Innioasis Y1 with Rockbox themes made by the community.">
     <meta property="og:url" content="https://innioasis.app/themes.html">
-    <meta property="og:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+    <meta property="og:image" content="https://innioasis.app/y1_illustration.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Innioasis Y1 Rockbox Themes">
     <meta name="twitter:description" content="Download and customize Rockbox themes for the Innioasis Y1.">
-    <meta name="twitter:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+    <meta name="twitter:image" content="https://innioasis.app/y1_illustration.png">
 
     <link rel="icon" href="y1_illustration.png">
 
@@ -110,11 +110,6 @@
         }
 
         @media (max-width: 600px) {
-            .theme-card img {
-                width: 100%;
-                height: 160px
-            }
-
             .theme-card {
                 border: none;
                 border-bottom: 2px solid var(--bg-card);
@@ -188,7 +183,7 @@
                 <div style="flex: 1; min-width: 300px;">
                     <div style="margin-bottom: 4px;">Direct Install</div>
                     <div style="font-size: 0.9rem; color: var(--text-secondary);">Connect your Y1 and select its themes folder to install themes directly without downloading zip files.</div>
-                    <div id="browser-support-warning" style="font-size: 0.85rem; color: #ff9800; margin-top: 6px; display: none;"><i class="fas fa-exclamation-triangle" style="margin-right: 4px;"></i>Your browser doesn't support Direct Install. Use Chrome, Edge, or Opera.</div>
+                    <div id="browser-support-warning" style="font-family: Inter; font-size: 0.85rem; color: #ff9800; margin-top: 6px; display: none;"><i class="fas fa-exclamation-triangle" style="margin-right: 4px;"></i>Your browser doesn't support Direct Install. Use Chrome, Edge, or Opera.</div>
                 </div>
                 <button id="choose-folder-btn" class="btn" style="font-family: Inter; padding: .875rem 1.5rem; font-weight: normal; white-space: nowrap;">
                     <i class="fas fa-folder" style="margin-right: 8px;"></i>Choose Y1 Themes Folder
@@ -769,7 +764,6 @@
             const img = document.createElement('img');
             img.src = resolveScreenshotPath(theme.screenshot);
             img.alt = safeText(theme.name);
-            img.style.marginTop = 'auto';
             img.onerror = function() {
                 this.src = 'placeholder.png'
             };
@@ -801,7 +795,8 @@
 
             const dl = document.createElement('button');
             dl.className = 'btn';
-            dl.style.backgroundImage = `url("https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/${theme.folder.replace(/^\.\/+/, '')}/3.png")`;
+            const backgroundimg = '3.png' || 'Background1.png' || '@Pris_itemSelectedBackground.png';
+            dl.style.backgroundImage = `url("https://raw.githubusercontent.com/y1-community/InnioasisY1Themes/main/${theme.folder.replace(/^\.\/+/, '')}/${backgroundimg}")`;
             dl.style.backgroundSize = 'cover';
             dl.style.backgroundPosition = 'center';
             dl.style.fontWeight = 'normal';

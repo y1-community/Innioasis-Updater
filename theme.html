@@ -4,7 +4,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Innioasis — Theme</title>
+    <title>Get theme — Innioasis Y1</title>
+
+    <meta name="description" content="Download and customize this theme for the Innioasis Y1 device easily and for free.">
+    <meta name="keywords" content="Innioasis Y1 themes, Innioasis theme Y1, Y1 theme, Y1 UI themes, innioasis customization">
+    <meta name="author" content="Innioasis Community">
+
+    <link rel="canonical" href="https://innioasis.app/theme.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Innioasis Y1 Theme">
+    <meta property="og:description" content="Download and customize this theme for the Innioasis Y1.">
+    <meta property="og:url" content="https://innioasis.app/theme.html">
+    <meta property="og:image" content="https://innioasis.app/y1_illustration.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Innioasis Y1 Theme">
+    <meta name="twitter:description" content="Download and customize this theme for the Innioasis Y1.">
+    <meta name="twitter:image" content="https://innioasis.app/y1_illustration.png">
+
+    <link rel="icon" href="y1_illustration.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -31,7 +50,7 @@
 
     <div style="display: flex; justify-content: center;">
         <div class="wrap" style="max-width:1200px;margin-top:6rem;">
-            <div id="theme-root" style="display:flex;gap:20px;align-items:stretch;">
+            <div id="theme-root">
                 <div id="left" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:360px;">
                     <img id="main-screenshot" src="placeholder.png" alt="Screenshot" style="width:400px;height:auto;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.5)">
                 </div>
@@ -43,9 +62,15 @@
                         <div id="theme-desc" style="color:var(--text-secondary);margin-bottom:12px"></div>
 
                         <div id="download-area" style="display:flex;gap:8px;align-items:center">
-                            <button id="download-btn" class="btn btn-primary"><i class="fa-solid fa-download"></i> Download</button>
+                            <button id="download-btn" class="btn btn-primary" style="font-weight: normal"><i class="fa-solid fa-download" style="margin-right: 4px;"></i> Download</button>
                             <a id="raw-folder-link" class="btn btn-secondary" style="text-decoration:none;padding:.6rem .9rem" target="_blank" rel="noopener"><i class="fa-solid fa-folder-open"></i> Open folder</a>
                         </div>
+                    </div>
+
+                    <div id="direct-install-promo" style="background:var(--bg-card);padding:16px;border-radius:10px;display:none;">
+                        <h4 style="margin:0 0 8px 0;color:var(--accent)">Quick Install</h4>
+                        <p style="color:var(--text-secondary);margin:0 0 12px 0;font-size:0.95rem;">Directly install theme to Y1 with one click!</p>
+                        <a href="themes.html#direct-install-banner" class="btn btn-primary" style="font-weight: normal; display:inline-flex; align-items:center; gap:6px;"><i class="fa-solid fa-bolt"></i> Go to Direct Install</a>
                     </div>
 
                     <div id="assets-wrap" style="background:var(--bg-card);padding:12px;border-radius:8px;min-height:120px;">
@@ -352,6 +377,12 @@
         }
 
         (async function main() {
+            const supportDirectInstall = typeof window.showDirectoryPicker === 'function';
+            const directInstallPromo = document.getElementById('direct-install-promo');
+            if (supportDirectInstall && directInstallPromo) {
+                directInstallPromo.style.display = 'block';
+            }
+
             const params = new URLSearchParams(location.search);
             const themeQuery = params.get('theme') || params.get('t') || '';
             if (!themeQuery) {
@@ -361,6 +392,7 @@
             }
 
             const themeName = themeQuery;
+            document.title = `${themeName} — Innioasis Y1`;
             let themeMeta = null;
             try {
                 const themes = await tryFetchThemes()
@@ -465,7 +497,7 @@
                         ic.style.display = 'flex'
                         ic.style.alignItems = 'center'
                         ic.style.justifyContent = 'center'
-                        ic.innerHTML = `<i class="fa-solid ${iconForExtension(f.name)}" style="font-size:20px;color:var(--text-secondary)"></i>`
+                        ic.innerHTML = `<i class="fa-solid fa-file" style="font-size:20px;color:var(--text-secondary)"></i>`
                         row.appendChild(ic)
                     }
 

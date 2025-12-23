@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innioasis Updater — All versions</title>
+    <title>All versions — Innioasis.app</title>
 
     <meta name="description" content="All firmware releases of Y1 - Rockbox and Original.">
     <meta name="keywords" content="Innioasis Y1, Innioasis updater, Rockbox Y1, Y1 firmware, Rockbox installer, Y1 stock firmware">
@@ -32,8 +32,8 @@
 <body>
     <div id="nav-root"></div>
 
-    <section class="all-versions-container" style="padding: 6rem;">
-        <div class="section-div">
+    <section class="all-versions-container" style="margin-top: 6rem;">
+        <div class="section-div avc-section">
             <div class="back-button">
                 <a href="index.html#versions" class="btn-back" style="text-decoration: none;">
                     <i class="fas fa-arrow-left" style="margin-right: 4px;"></i> Back
@@ -267,7 +267,7 @@
 
                 return `
                     <div class="version-list-item" style="padding:8px 0;border-bottom:1px solid var(--bg-card); display: flex; justify-content: space-between; align-items: center;">
-                        <div><span style="color: gray" id="${tagId}">${shortTag}</span> · ${badgeText} · Type ${r.device_type} · ${softType} · ${resolution} · ${released} · ${downloads} downloads</div>
+                        <div><span style="color: gray" id="${tagId}">${window.innerWidth < 900 ? (tag.length > 20 ? `${tag.slice(0, 20)}...` : tag) : shortTag}</span> · ${badgeText} · Type ${r.device_type} · ${softType} · ${resolution} · ${released} · ${downloads} downloads</div>
                         <div>${downloadHtml}</div>
                     </div>
                 `;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innioasis Updater</title>
+    <title>Innioasis.app</title>
 
     <meta name="description" content="Innioasis Y1 Updater lets you install Rockbox, manage stock firmware, and download the latest Y1 firmware releases easily.">
     <meta name="keywords" content="Innioasis Y1, Innioasis updater, Rockbox Y1, Y1 firmware, Rockbox installer, Y1 stock firmware">
@@ -16,18 +16,19 @@
     <meta property="og:title" content="Innioasis Y1 Updater">
     <meta property="og:description" content="Install Rockbox, manage firmware, and download the latest Innioasis Y1 releases.">
     <meta property="og:url" content="https://innioasis.app/">
-    <meta property="og:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+    <meta property="og:image" content="https://innioasis.app/y1_illustration.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Innioasis Y1 Updater">
     <meta name="twitter:description" content="The easiest way to install Rockbox and manage Innioasis Y1 firmware.">
-    <meta name="twitter:image" content="https://innioasisapp.sipped.org/y1_illustration.png">
+    <meta name="twitter:image" content="https://innioasis.app/y1_illustration.png">
 
     <link rel="icon" href="y1_illustration.png">
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
 </head>
 
 <body>
@@ -35,11 +36,11 @@
 
     <div class="hero" id="home">
         <div class="hero-content">
-            <h1>Innioasis Y1 Updater</h1>
+            <h1>Innioasis Updater</h1>
             <p>The easiest tool for installing Rockbox, and managing the current firmware on your Innioasis Y1. Install, update, and customize.</p>
             <div class="btn-group">
                 <a href="guide.html?install" id="getUpdater" class="btn btn-primary" style="font-weight: unset;">Get Updater</a>
-                <a href="#versions" class="btn btn-secondary">See Versions</a>
+                <a href="#versions" class="btn btn-secondary" style="font-weight: normal;">See Versions</a>
             </div>
         </div>
         <div class="hero-image" aria-hidden="true">
@@ -68,7 +69,7 @@
             <div class="versions-grid" id="versionsGrid"></div>
 
             <div class="back-button" style="display: flex; justify-content: center;">
-                <a href="all_versions.html" class="btn-back" style="text-decoration: none;">
+                <a href="all_versions.html" class="btn-back" id="alv-btn">
                     <i class="fas fa-code-branch" style="margin-top: 6rem; margin-right: 4px;"></i> All versions
                 </a>
             </div>
@@ -86,7 +87,7 @@
                 <div class="donate-card">
                     <h3>Ryan Specter</h3>
                     <p>Support the app creator</p>
-                    <div style="margin-top:.5rem;">
+                    <div style="margin-top:.5rem; display: flex; justify-content: space-between; align-items: center;">
                         <select id="ryanMethods" style="font-family: Inter; padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);">
                             <option>Revolut</option>
                             <option>Ko-fi</option>
@@ -94,7 +95,7 @@
                             <option>Bitcoin</option>
                             <option>Ethereum</option>
                         </select>
-                        <div id="ryanMethodContent" style="margin-top:.75rem;"></div>
+                        <div id="ryanMethodContent"></div>
                     </div>
                 </div>
 
@@ -103,11 +104,9 @@
                         <h3>sipped</h3>
                         <p>Support the site creator</p>
                     </div>
-                    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-                    <script type='text/javascript'>
-                        kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'K3K31AMKAQ');
-                        kofiwidget2.draw();
-                    </script>
+                    <div style="display: flex; justify-content: right;">
+                        <a href="https://ko-fi.com/sipped" class="btn btn-primary" style="color: white; padding: 2px 15px; display:flex; align-items: center; gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;" />Donate via Ko-fi</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,12 +181,18 @@
             else if (/Linux/.test(ua) && !/Android/.test(ua)) os = 'linux';
 
             const icons = {
-                windows: '<i class="fab fa-windows" style="margin-right:.5rem"></i>Windows',
-                mac: '<i class="fab fa-apple" style="margin-right:.5rem"></i>macOS',
-                linux: '<i class="fas fa-linux" style="margin-right:.5rem"></i>Linux'
+                windows: '<i class="fab fa-windows" style="font-size: 20px; margin-right:.5rem"></i>',
+                mac: '<i class="fab fa-apple" style="font-size: 20px; margin-right:.5rem"></i>',
+                linux: '<i class="fas fa-linux" style="font-size: 20px; margin-right:.5rem"></i>'
             };
 
-            if (btn) btn.innerHTML = icons[os] + ': Get Updater';
+            const osnames = {
+                windows: 'Windows',
+                mac: 'macOS',
+                linux: 'Linux'
+            };
+
+            if (btn) btn.innerHTML = icons[os] + ' Get Updater for ' + osnames[os];
             if (wrong) wrong.style.display = 'block';
         })();
         let apiTokens = []
@@ -211,15 +216,15 @@
             const val = sel.value;
             const inputStyle = 'font-family: monospace; flex:1;padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-primary);';
             if (val === 'Revolut') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;"><a href="https://revolut.me/rspecter">Revolut</a></div>';
+                container.innerHTML = '<a href="https://revolut.me/rspecter" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://img.icons8.com/ios_filled/512/FFFFFF/revolut--v2.png" alt="Revolut" style="height:20px;"/><span>Donate via Revolut</span></a>';
             } else if (val === 'Ko-fi') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem;"><a href="https://ko-fi.com/teamslide">Ko-fi</a></div>';
+                container.innerHTML = '<a href="https://ko-fi.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;"/>Donate via Ko-fi</a>';
             } else if (val === 'PayPal') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem;"><a href="https://www.paypal.com/paypalme/respectyarn">PayPal</a></div>';
+                container.innerHTML = '<a href="https://www.paypal.com/paypalme/respectyarn" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><i class="fab fa-paypal"></i>Donate via PayPal</a>';
             } else if (val === 'Bitcoin') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem;"><input id="btcAddr" readonly value="bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue" style="' + inputStyle + '" /><a onclick="copyAddress(\'btcAddr\', this)" style="text-decoration: underline; cursor: pointer;">Copy</a></div><div id="btcMsg" style="margin-top:.5rem;color:var(--text-secondary);font-size:0.9rem;"></div>';
+                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="btcAddr" readonly value="bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue" style="' + inputStyle + '" /><button onclick="copyAddress(\'btcAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;"><i class="fas fa-copy"></i></button></div>';
             } else if (val === 'Ethereum') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem;"><input id="ethAddr" readonly value="0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4" style="' + inputStyle + '" /><a onclick="copyAddress(\'ethAddr\', this)" style="text-decoration: underline; cursor: pointer;">Copy</a></div><div id="ethMsg" style="margin-top:.5rem;color:var(--text-secondary);font-size:0.9rem;"></div>';
+                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="ethAddr" readonly value="0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4" style="' + inputStyle + '" /><button onclick="copyAddress(\'ethAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;"><i class="fas fa-copy"></i></button></div>';
             } else {
                 container.innerHTML = '';
             }
@@ -396,15 +401,17 @@
                 if (!latest) return;
 
                 const recCard = document.createElement('div');
-                recCard.className = 'version-card';
+                recCard.className = 'version-card vcentered';
                 recCard.style.background = 'rgba(16, 185, 129, 0.1)';
                 const title = rec.resolution ? `Type ${rec.device_type} ${rec.software_type} ${rec.resolution}` : `Type ${rec.device_type} ${rec.software_type}`;
                 recCard.innerHTML = `
+                <div>
             <span class="version-badge badge-stable">Stable</span>
             <h4 style="color:var(--success);margin:.5rem 0;">${title}</h4>
             <p style="font-weight:600;margin-bottom:.25rem;">${latest.tag_name}</p>
             <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:.75rem;">${formatDate(latest.published_at)}  •  ${latest.total_downloads} downloads</p>
-            ${latest.rom_url ? `<a href="${latest.rom_url}" class="btn btn-primary" download>Download</a>` : ''}
+            </div>
+            ${latest.rom_url ? `<a href="${latest.rom_url}" class="btn btn-primary" download><i class="fa-solid fa-download" style="margin-right: 8px"></i>Download</a>` : ''}
         `;
                 recGrid.appendChild(recCard);
             });
@@ -508,7 +515,7 @@
         <div class="version-right">
             ${latest.rom_url
                 ? `<a href="${latest.rom_url}" class="btn btn-primary" download>Download</a>`
-                : `<button class="btn btn-secondary" disabled>No Download</button>`
+                : `<button class="btn btn-secondary" disabled>No download</button>`
             }
         </div>
     </div>
