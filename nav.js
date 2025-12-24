@@ -92,7 +92,7 @@
                 <div>
                     <h4>In collaboration with</h4>
                     <a href="https://www.innioasis.com" target="_blank">
-                        <img src="innioasis.png" class="footer-logo" alt="Innioasis">
+                        <img src="https://innioasis.app/innioasis.png" class="footer-logo" alt="Innioasis">
                     </a>
                 </div>
             </div>
