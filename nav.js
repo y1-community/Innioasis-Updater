@@ -4,12 +4,12 @@
         navRoot.innerHTML = `
         <nav>
           <div class="nav-container">
-            <div class="logo"><a href='index.html#home' style="text-decoration: none; color: var(--accent)">Innioasis Updater</a></div>
+            <div class="logo"><a href='https://innioasis.app/index.html#home' style="text-decoration: none; color: var(--accent)">Innioasis Updater</a></div>
             <ul class="nav-links" id="navLinks">
-              <li><a href="index.html#home"><i class="fa-solid fa-house" style="margin-right:3px;"></i> Home</a></li>
-              <li><a href="guide.html#guide"><i class="fa-solid fa-book" style="margin-right:3px;"></i> Guide</a></li>
-              <li><a href="index.html#versions"><i class="fa-solid fa-code-branch" style="margin-right:3px;"></i> Versions</a></li>
-              <li><a href="themes.html"><i class="fa-solid fa-palette" style="margin-right:3px;"></i> Themes</a></li>
+              <li><a href="https://innioasis.app/index.html#home"><i class="fa-solid fa-house" style="margin-right:3px;"></i> Home</a></li>
+              <li><a href="https://innioasis.app/guide.html"><i class="fa-solid fa-book" style="margin-right:3px;"></i> Guide</a></li>
+              <li><a href="https://innioasis.app/index.html#versions"><i class="fa-solid fa-code-branch" style="margin-right:3px;"></i> Versions</a></li>
+              <li><a href="https://themes.innioasis.app/"><i class="fa-solid fa-palette" style="margin-right:3px;"></i> Themes</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
               <span></span><span></span><span></span>
@@ -59,11 +59,11 @@
 
             <div class="footer-col">
                 <h4>Links</h4>
-                <a href="index.html#home">Home</a>
-                <a href="guide.html">Guide</a>
-                <a href="themes.html">Themes</a>
-                <a href="firmware.html">Versions</a>
-                <a href="index.html#donate">Donate</a>
+                <a href="https://innioasis.app/index.html#home">Home</a>
+                <a href="https://innioasis.app/guide.html">Guide</a>
+                <a href="https://themes.innioasis.app/">Themes</a>
+                <a href="https://innioasis.app/index.html#versions">Versions</a>
+                <a href="https://innioasis.app/index.html#donate">Donate</a>
             </div>
 
             <div class="footer-col">
