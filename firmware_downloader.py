@@ -16418,11 +16418,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             if msg_box.exec() == QMessageBox.Yes:
                 # Open the installation guide
                 import webbrowser
-                webbrowser.open("https://innioasis.app/installguide.html")
+                webbrowser.open("https://www.innioasis.com/pages/how-to-setup-innioasis-updater")
         else:
             # Fallback to direct link
             import webbrowser
-            webbrowser.open("https://innioasis.app/installguide.html")
+            webbrowser.open("https://www.innioasis.com/pages/how-to-setup-innioasis-updater")
 
 
     def open_arm64_info(self, event):
