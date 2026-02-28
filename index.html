@@ -2,25 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Installation guide — Innioasis.app</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innioasis.app</title>
 
-    <meta name="description" content="Step-by-step guide for installing Rockbox, updating stock firmware, and using the Innioasis Y1 Updater safely.">
-    <meta name="keywords" content="Innioasis Y1 guide, Rockbox install Y1, Y1 firmware guide, Rockbox Y1 tutorial">
+    <meta name="description" content="Innioasis Y1 Updater lets you install Rockbox, manage stock firmware, and download the latest Y1 firmware releases easily.">
+    <meta name="keywords" content="Innioasis Y1, Innioasis updater, Rockbox Y1, Y1 firmware, Rockbox installer, Y1 stock firmware">
     <meta name="author" content="Innioasis Community">
 
-    <link rel="canonical" href="https://innioasis.app/guide.html">
+    <link rel="canonical" href="https://innioasis.app/">
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Innioasis Y1 Installation Guide">
-    <meta property="og:description" content="Learn how to install Rockbox, update original OS, and manage firmware on the Innioasis Y1.">
-    <meta property="og:url" content="https://innioasis.app/guide.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Innioasis Y1 Updater">
+    <meta property="og:description" content="Install Rockbox, manage firmware, and download the latest Innioasis Y1 releases.">
+    <meta property="og:url" content="https://innioasis.app/">
     <meta property="og:image" content="https://innioasis.app/y1_illustration.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Innioasis Y1 Installation Guide">
-    <meta name="twitter:description" content="Official guide for installing Rockbox and managing Innioasis Y1 firmware via the Updater app.">
+    <meta name="twitter:title" content="Innioasis Y1 Updater">
+    <meta name="twitter:description" content="The easiest way to install Rockbox and manage Innioasis Y1 firmware.">
     <meta name="twitter:image" content="https://innioasis.app/y1_illustration.png">
 
     <link rel="icon" href="y1_illustration.png">
@@ -28,445 +28,526 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
 </head>
 
 <body>
     <div id="nav-root"></div>
 
-    <main style="padding:1rem">
-        <div style="width: 100%; display: flex; justify-content: center;">
-            <div class="updater-banner" id="updaterBanner" style="display:none;">
-                <div class="left">
-                    <strong id="updaterTitle">Updater is installing</strong>
-                    <div style="margin-top:.5rem;color:var(--text-secondary);">
-                        The updater should have started downloading. If it didn't, <a style="color: lightblue" href="#installing">click here.</a>
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <h1>Innioasis Updater</h1>
+            <p>The easiest tool for installing Rockbox, and managing the current firmware on your Innioasis Y1. Install, update, and customize.</p>
+            <div class="btn-group">
+                <a href="guide.html?install" id="getUpdater" class="btn btn-primary" style="font-weight: unset;">Get Updater</a>
+                <a href="#versions" class="btn btn-secondary" style="font-weight: normal;">See Versions</a>
+            </div>
+        </div>
+        <div class="hero-image" aria-hidden="true">
+            <img src="y1_illustration.png" alt="Innioasis Y1" />
+        </div>
+    </div>
+
+    <section id="features" class="with-flex">
+        <h4>IN COLLABORATION WITH</h4>
+        <a href="https://innioasis.com" target="_blank">
+            <img class="innioasis-logo" src="innioasis.png" alt="innioasis Logo">
+        </a>
+    </section>
+
+    <section id="versions" style="margin-top: 10%;">
+        <div class="section-div">
+            <h2>Y1 firmware releases</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                Manually download rom ZIPs to install via the Updater app.
+            </p>
+
+            <div id="recommendedContainer" style="margin-bottom: 3rem;"></div>
+
+            <hr>
+            <h3 style="text-align: center; margin: 2rem 0 1rem;">Find the latest release for you</h3>
+            <div class="versions-grid" id="versionsGrid"></div>
+
+            <div class="back-button" style="display: flex; justify-content: center;">
+                <a href="https://innioasis.app/firmware.html" class="btn-back" id="alv-btn">
+                    <i class="fas fa-code-branch" style="margin-top: 6rem; margin-right: 4px;"></i> All versions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" style="margin-top: 5%;">
+        <div class="section-div">
+            <h2>Donate</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                Help keep this project alive and support ongoing development
+            </p>
+
+            <div class="donate-options">
+                <div class="donate-card">
+                    <h3>Ryan Specter</h3>
+                    <p>Support the app creator</p>
+                    <div style="margin-top:.5rem; display: flex; justify-content: space-between; align-items: center;">
+                        <select id="ryanMethods" style="font-family: Inter; padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);">
+                            <option>Revolut</option>
+                            <option>Ko-fi</option>
+                            <option>PayPal</option>
+                            <option>Bitcoin</option>
+                            <option>Ethereum</option>
+                        </select>
+                        <div id="ryanMethodContent"></div>
+                    </div>
+                </div>
+
+                <div class="donate-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3>sipped</h3>
+                        <p>Support the site creator</p>
+                    </div>
+                    <div style="display: flex; justify-content: right;">
+                        <a href="https://ko-fi.com/sipped" class="btn btn-primary" style="color: white; padding: 2px 15px; display:flex; align-items: center; gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;" />Donate via Ko-fi</a>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="guide-wrap">
-            <aside class="guide-sidebar">
-                <div class="platform-links">
-                    <a href="#" data-platform="windows" class="platform-link">Windows</a>
-                    <span style="color:var(--text-secondary)">|</span>
-                    <a href="#" data-platform="mac" class="platform-link">Mac</a>
-                    <span style="color:var(--text-secondary)">|</span>
-                    <a href="#" data-platform="linux" class="platform-link">Linux</a>
-                </div>
-                <hr style="margin-top: 15px">
-                <ul>
-                    <li><a href="#before">Before we start</a></li>
-                    <li><a href="#methods">Methods of installation</a></li>
-                    <li><a href="#requirements">Requirements</a></li>
+    <section id="credits" style="margin-top: 5%;">
+        <div class="section-div">
+            <h2>Credits</h2>
+            <div class="credits-list">
+                <ul style="list-style-type: none;">
+                    <li><a href="https://github.com/ryan-specter/">Ryan Specter</a> - For creating the Updater app, old website, and helping with this guide</li>
+                    <li>Rockbox-Y1 creators - For developing and maintaining Rockbox for the Y1 device</li>
+                    <li>The Rockbox Community - 23 years of open source audio player development</li>
+                    <li>Bjoern Kerler (<a href="https://github.com/bkerler/mtkclient">bkerler</a>) - For creating mtkclient, tool for the updater</li>
+                    <li><a href="https://github.com/sippedaway">sipped</a> - For creating this website and guide</li>
                 </ul>
-                <hr>
-                <ul>
-                    <li><a href="#installing">Installing Updater</a></li>
-                    <li><a href="#why">Why Rockbox?</a></li>
-                    <li><a href="#updatestock">Updating Original OS</a></li>
-                    <li><a href="#rockbox">Installing Rockbox</a></li>
-                </ul>
-                <hr>
-                <ul>
-                    <li><a href="#finishing">Finishing up</a></li>
-                    <li><a href="#r_themes">Rockbox themes</a></li>
-                    <li><a href="#s_themes">Stock themes</a></li>
-                    <li><a href="#c_themes">Creating themes</a></li>
-                </ul>
-            </aside>
-
-            <section class="guide-main">
-                <div id="guide" style="margin-bottom:1rem;"></div>
-
-                <div class="card" id="before">
-                    <h3>Before we start</h3>
-                    <p><strong>Stock UI</strong> means the original software/firmware your device had or has now.</p>
-                    <p>This guide teaches you both how to update the original firmware; and how to install Rockbox, while keeping the original firmware, which lets you be able to boot into both firmwares at any time.</p>
-                    <div class="note-box" style="margin-bottom: 20px"><strong>Good to know:</strong> Original (stock) firmware always uses 360p resolution. Rockbox firmware resolution depends on build.</div>
-                    <div class="warning-box" style="margin-top: 20px;">
-                        <strong>⚠️ Warning:</strong> Do at your own risk. Non-zero chance to brick device, but you can restore it at any time by doing <a href="#bricked">this.</a>
-                    </div>
-                </div>
-
-                <div class="card" id="methods">
-                    <h3>Methods of installation</h3>
-                    <ul>
-                        <li><strong>Innioasis Updater</strong> - application on all operating systems. Easy, reliable, guide written here.</li>
-                        <li><strong>MTKclient</strong> - uses command line. No written guide for Y1. <a href="https://github.com/bkerler/mtkclient" target="_blank">Download</a></li>
-                        <li><strong>SP Flash Tool</strong> - Windows only, has a GUI. <a href="https://spflashtool.com" target="_blank">Download</a> + <a href="https://drive.google.com/file/d/1lGo9kYN0R0k41YHO58feccHdlXZFTWkU/view" target="_blank">required drivers</a></li>
-                    </ul>
-
-                    <p><br>This guide covers the Innioasis Updater, the recommended method as it combines both methods into a single application, is beginner friendly, fully documented here, and is most reliable.</p>
-                </div>
-
-                <div class="card" id="requirements">
-                    <h3>Requirements</h3>
-                    <ul>
-                        <li>Y1 (your Innioasis Y1 device)</li>
-                        <li>USB-C data cable: the cable it came with works perfectly</li>
-                        <li>Computer with: <strong>Windows</strong> (Best) or <strong>MacOS</strong> or <strong>Linux </strong>(Ubuntu recommended)</li>
-                    </ul>
-                </div>
-
-                <div class="windows-doc card platform-doc" style="display:none;" id="installing">
-                    <h3>Installing the updater</h3>
-                    <p><a href="https://github.com/team-slide/Innioasis-Updater/releases/latest/download/installer.exe" download>Download</a> the Windows installer and run <strong>installer.exe</strong>. Follow the installer's steps.</p>
-                </div>
-
-                <div class="mac-doc card platform-doc" style="display:none;" id="mac-homebrew">
-                    <h3>Required: Downloading Homebrew</h3>
-                    <p>Go to the <a href="https://brew.sh" target="_blank">Homebrew</a> website, and continue with the simple installation.</p>
-                    <ul>
-                        <li>Homebrew is required for the Innioasis Updater app.</li>
-                    </ul>
-                    <img src="guide_img3.png" class="guide-image" alt="Guide image">
-                </div>
-
-                <div class="mac-doc card platform-doc" style="display:none;" id="installing">
-                    <h3>Installing the updater</h3>
-                    <ul>
-                        <li><a href="https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg" download>Download</a> the <strong>.dmg</strong> file</li>
-                        <li>Open the downloaded file and drag the Innioasis Updater app to your Applications folder</li>
-                        <li>Restart your Mac</li>
-                        <li>Open the Updater app from Applications</li>
-                    </ul>
-                    <div class="warning-box"><strong>Security issues?</strong> Your Mac may block apps not made by Apple. Visit this <a href="https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac">guide</a> to fix this issue.</div>
-                </div>
-
-                <div class="linux-doc card platform-doc" style="display:none;" id="installing">
-                    <h3>Installing the updater</h3>
-                    <p>Ubuntu is recommended, but all distros should work fine.</p>
-
-                    <ul>
-                        <li>Run the install command in your terminal:</li>
-                    </ul>
-
-                    <pre class="code-block">curl -fsSL https://innioasis.app/run_linux.sh | bash</pre>
-
-                    <ul>
-                        <li>Then, follow the <a href="https://github.com/bkerler/mtkclient" target="_blank">MTKclient setup instructions</a></li>
-                        <li>Once completed, open a terminal window and change into the directory you cloned Innioasis Updater into</li>
-                        <li>In that directory, run the command below:</li>
-                    </ul>
-
-                    <pre class="code-block">python updater.py</pre>
-
-                    <div class="warning-box"><strong>Not officially supported!</strong> Unfortunately, the Linux release of the Innioasis Updater is not officially supported, so you're on your own.</div>
-                </div>
-
-                <div class="card">
-                    <h3>Choose what to do:</h3>
-                    <ul>
-                        <li><strong>Update</strong> original firmware <a href="#updatestock">-></a> </li>
-                        <li><strong>Install Rockbox</strong> (updates and keeps original firmware too) <a href="#rockbox">-></a> </li>
-                    </ul>
-                </div>
-
-                <div class="card" id="why">
-                    <h3>Why would I want Rockbox?</h3>
-                    <h4>Pros</h4>
-                    <ul>
-                        <li>Better UI and UX: 23 years of team support</li>
-                        <li>Quality of life settings, and deep Android customization</li>
-                        <li>Sound settings: Equalizer, crossfade, max volume limit, channel config, stereo width, dithering...</li>
-                        <li>Deep sorting: by Album Artist, Genre, Year, Composer, First Letter, User Rating, Recently Added...</li>
-                        <li>More customization: vast themes collection</li>
-                    </ul>
-                    <h4>Cons</h4>
-                    <ul>
-                        <li>Slightly worse battery life. Workaround: enable Airplane mode</li>
-                        <li>No videos. Possible workaround: find a video plugin</li>
-                    </ul>
-                </div>
-
-                <div class="card" id="updatestock">
-                    <h3>Updating Original Stock Firmware</h3>
-                    <div class="note-box" style="margin-bottom: 20px"><strong>Note:</strong> Updating stock firmware version is not necessary for Rockbox installation. <a href="#rockbox">Continue</a> to Rockbox installation here.</div>
-                    <h4>In the updater:</h4>
-                    <ul>
-                        <li>Choose your <strong>Device type</strong>, which is either type A or B:</li>
-                        <li>Always choose Type A first, and only switch to Type B if your scroll wheel doesn't work after installation.</li>
-                        <li>Make sure your Device model is set to the Y1.</li>
-                        <li>Choose <strong>Original Software</strong> in the Software type</li>
-                    </ul>
-                    <img src="guide_img4.png" class="guide-image" alt="Guide image">
-                    <p style="margin-top: 15px;">Choose the latest version.</p>
-                    <h4>Installation Process</h4>
-                    <ul>
-                        <li>Select your build, and hit <strong>Install / Restore</strong> on the bottom</li>
-                        <li>Wait until the <strong>zip</strong> installs and extracts (this can take a while)</li>
-                        <li>Then, whenever the Updater tells you to, <strong>Power off your Y1</strong>. On Windows, Powering off should be enough, however on other OSes, it might prompt you to take a paperclip and hit a secret button on the bottom, in between the headphone jack and the charging port, until you hear a CLICK. Then continue.</li>
-                        <li>Connect your Y1 via a <a href="#requirements">compatible</a> USB-C cable</li>
-                        <li>Put down your Y1, and don't touch it</li>
-                        <li>If all went well, the Updater should congratulate you and prompt you to <strong>Disconnect the cable</strong></li>
-                    </ul>
-                    <div class="note-box"><strong>Errors?</strong> Right click the build, and then hit "Delete Local Zip File" and "Delete All Cached Zips", and then restart the process. If that doesn't solve it, make sure to either restart your device, or download the same version zip from here and then just click "Install from .zip" in the Updater.</div>
-
-                    <img src="https://innioasis.app/mtkclient/gui/images/initsteps_sp.png" class="guide-image" alt="Guide image" style="width: auto; height: 300px;">
-
-                    <div class="warning-box"><strong>Windows Driver Errors?</strong> During install on Windows, you might have driver usb2ser.sys issues after this step. Here's a temporary fix: go to Settings, hit the "Privacy & security" tab, go to "Windows Security", and hit the "Device security" button. In the newly opened app, under "Core isolation" click "Core isolation details", and turn off "Memory integrity". After that, restart your PC and try again.</div>
-                    <div class="warning-box" id="bricked"><strong>Bricked device?</strong> Don't panic! Repeat this step (reinstall original software build)</div>
-
-                </div>
-
-                <div class="card" id="rockbox">
-                    <h3>Installing Rockbox</h3>
-                    <div class="note-box" style="margin-bottom: 20px"><strong>Note:</strong> Updating stock firmware version is not necessary - Rockbox installation does it for you.</div>
-                    <h4>In the updater:</h4>
-                    <ul>
-                        <li>Choose your <strong>Device type</strong>, which is either type A or B.</li>
-                        <li>Always choose Type A first, and only switch to Type B if your scroll wheel doesn't work after installation.</li>
-                        <li>Make sure your Device model is set to the Y1.</li>
-                        <li>Choose <strong>Rockbox ROM</strong> in the Software type</li>
-                    </ul>
-                    <img src="guide_img1.png" class="guide-image" alt="Guide image">
-                    <h4>Choosing a Version</h4>
-                    <p>Decide whether you want a Rockbox version which will install Rockbox and update your main Stock OS, or just to update your Stock OS.</p>
-                    <ul>
-                        <li>"Nightly" versions are <strong>BETA</strong>. Unless you know what you're doing, don't choose these.</li>
-                        <li>"Stable" versions are stable builds you <strong>should</strong> choose.</li>
-                        <li><strong>240p</strong> (also called "iPod Themes Compatible") will have more themes, but slightly worse resolution</li>
-                        <li><strong>360p</strong> (also called "Y1 Theme Compatible) will have less themes, but slightly better resolution.</li>
-                    </ul>
-                    <div class="note-box" style="margin-bottom: 20px"><strong>Note:</strong> Thanks to the Y1 community, a lot of 240p themes have been ported to 360p. Not all, but many.</div>
-                    <img src="guide_img2.png" class="guide-image" alt="Guide image">
-                    <div class="note-box" style="margin-bottom: 20px"><strong>Recommendation:</strong> choose a <strong>Stable 240p build</strong> for more themes, less hassle, and less risk. If not 240p, go for Stable 360p.</div>
-                    <h4>Installation Process</h4>
-                    <ul>
-                        <li>Select your build, and hit <strong>Install / Restore</strong> on the bottom</li>
-                        <li>Wait until the <strong>zip</strong> installs and extracts (this can take a while)</li>
-                        <li>Then, whenever the Updater tells you to, <strong>Power off your Y1</strong>. On Windows, Powering off should be enough, however on other OSes, it might prompt you to take a paperclip and hit a secret button on the bottom, in between the headphone jack and the charging port, until you hear a CLICK. Then continue.</li>
-                        <li>Connect your Y1 via a <a href="#requirements">compatible</a> USB-C cable</li>
-                        <li>Put down your Y1, and don't touch it</li>
-                        <li>If all went well, the Updater should congratulate you and prompt you to <strong>Disconnect the cable</strong></li>
-                    </ul>
-                    <div class="note-box"><strong>Errors?</strong> Right click the build, and then hit "Delete Local Zip File" and "Delete All Cached Zips", and then restart the process. If that doesn't solve it, make sure to either restart your device, or download the same version zip from here and then just click "Install from .zip" in the Updater.</div>
-
-                    <img src="https://innioasis.app/mtkclient/gui/images/initsteps_sp.png" class="guide-image" alt="Guide image" style="width: auto; height: 300px;">
-
-                    <div class="warning-box"><strong>Windows Driver Errors?</strong> During install on Windows, you might have driver usb2ser.sys issues after this step. Here's a temporary fix: go to Settings, hit the "Privacy & security" tab, go to "Windows Security", and hit the "Device security" button. In the newly opened app, under "Core isolation" click "Core isolation details", and turn off "Memory integrity". After that, restart your PC and try again.</div>
-                    <div class="warning-box" id="bricked"><strong>Bricked device?</strong> Don't panic! Install any original software build, guide written <a href="#updatestock">here</a>.</div>
-
-                </div>
-
-                <div class="card" id="finishing">
-                    <h3>Finish installation</h3>
-                    <p>Turn on your Y1 (hold down the middle button), and if all went well, everything should work!</p>
-
-                    <h4>Switching firmware (if you have both)</h4>
-                    <p><strong>Rockbox → Stock:</strong> System > Reboot to Stock Firmware</p>
-                    <p><strong>Stock → Rockbox:</strong> Press the top button; Back (Menu) first and hold it, then hold the play/pause button at the same time as Back. Continue this for 10-15 seconds and the screen should turn black.</p>
-                </div>
-
-                <div class="card" id="r_themes">
-                    <h3>Rockbox themes</h3>
-
-                    <h4>Find themes</h4>
-                    <ul>
-                        <li>Download the Rockbox fontpack (required for many themes) <a href="http://download.rockbox.org/daily/fonts/rockbox-fonts.zip" target="_blank">here</a></li>
-                        <li>Download 240p themes <a href="https://themes.rockbox.org/index.php?target=ipodvideo" target="_blank">here</a></li>
-                        <li>Download 360p themes <a href="https://github.com/rockbox-y1/themes/releases/tag/for_the_gays_and_the_theys" target="_blank">here</a></li>
-                    </ul>
-
-                    <p>After finding and downloading a theme, let's add it to your Y1's Rockbox. No, Original Software themes are not compatible with Rockbox themes, and vice versa.</p>
-
-                    <h4>Smart Drop themes</h4>
-                    <ul>
-                        <li>Open the Innioasis Updater app</li>
-                        <li>Connect your Y1 via a cable; allow data access</li>
-                        <li>Drag and drop the theme folder into the app</li>
-                    </ul>
-
-                    <h4>Manually upload themes</h4>
-                    <ul>
-                        <li>Connect your V1 via a cable; allow data access</li>
-                        <li>Go to your File Explorer / Files app</li>
-                        <li>Find your Y1 Android directory and open it</li>
-                        <li>Extract your downloaded theme zip</li>
-                        <li>Drag and drop your extracted theme folder</li>
-                        <li>It will ask you whether to replace <strong>.rockbox</strong>, allow it.</li>
-                    </ul>
-
-                    <div class="note-box"><strong>No .rockbox folder on Mac?</strong> Press cmd + shift + . to see "hidden" folders which begin with a period. Drag the .rockbox folder into your innioasis' contents.</div>
-
-                    <h4>After downloading a theme</h4>
-                    <ul>
-                        <li>Power on your Y1, go to <strong>Settings</strong></li>
-                        <li>Go to <strong>Browse Theme Files -> select your theme</strong></li>
-                    </ul>
-
-                    <div class="note-box"><strong>Tip:</strong> you can <strong>mix</strong> various themes in various parts of Rockbox. For example, you can make your base skin one theme, and your While Playing Screen use a different theme.</div>
-                </div>
-
-                <div class="card" id="s_themes">
-                    <h3>Stock themes</h3>
-
-                    <h4>Find themes</h4>
-                    <ul>
-                        <li>Find themes <a href="https://themes.innioasis.app/" target="_blank">here</a></li>
-                    </ul>
-
-                    <p>After finding and downloading a theme, let's add it to your Y1. No, Original Software themes are not compatible with Rockbox themes, and vice versa.</p>
-
-                    <h4>Direct Install themes</h4>
-                    <ul>
-                        <li>Go to <a href="https://themes.innioasis.app/" target="_blank">the themes page</a></li>
-                        <li>Connect your Y1 via a cable; allow data access</li>
-                        <li>Use supported browser: Chrome / Edge / Opera</li>
-                        <li>Click "Choose Y1 Themes Folder" and locate Y1's "Themes" Folder</li>
-                        <li>Find a theme, then click "Direct Install" (really easy)</li>
-                    </ul>
-
-                    <h4>Manually upload themes</h4>
-                    <ul>
-                        <li>Connect your V1 via a cable; allow data access</li>
-                        <li>Go to your File Explorer / Files app</li>
-                        <li>Find your Y1 Android directory and open it</li>
-                        <li>Extract your downloaded theme</li>
-                        <li>Drag and drop your extracted theme folder into the <strong>themes</strong> folder</li>
-                    </ul>
-
-                    <h4>After downloading a theme</h4>
-                    <ul>
-                        <li>Power on your Y1, go to <strong>Settings</strong></li>
-                        <li>Go to <strong>Themes -> select your theme</strong></li>
-                    </ul>
-                </div>
-
-                <div class="card" id="c_themes">
-                    <h3>Creating themes</h3>
-
-                    <div class="note-box"><strong>Note! </strong> This (below) is a simplified guide. Find detailed guide (+ troubleshooting and help) <a href="https://github.com/y1-community/InnioasisY1Themes/blob/main/README.md" target="_blank">here</a>.</div>
-
-                    <h4>Basics</h4>
-                    <ul>
-                        <li><a href="https://themes.innioasis.app/index.html#melodymuncher">Download</a> the preset theme <strong>MelodyMuncher</strong></li>
-                        <li>Create a GitHub account <a href="https://github.com" target="_blank">here</a></li>
-                        <li>Extract your downloaded theme zip</li>
-                        <li>Rename the folder to your theme name (letters and numbers only)</li>
-                    </ul>
-
-                    <div class="note-box"><strong>Why MelodyMuncher? </strong>Downloading the template ensures you get config.json set up correctly. It is not technically required, but recommended for beginners.</div>
-
-                    <h4>Customize theme</h4>
-                    <ul>
-                        <li>Replace images with your own (keep same file names)</li>
-                        <li>Edit <strong>config.json</strong>: change <strong>title, author, </strong>and <strong>description</strong></li>
-                    </ul>
-
-                    <h4>Upload to GitHub</h4>
-                    <ul>
-                        <li>Go to the themes repository <a href="https://github.com/y1-community/InnioasisY1Themes" target="_blank">here</a></li>
-                        <li>Click "Fork"</li>
-                        <li>In your fork (repository copy), click <strong>Add file</strong> → <strong>Upload files</strong></li>
-                        <li>Drag your entire theme folder into the upload area</li>
-                        <li>GitHub shows all files to be uploaded</li>
-                        <li>Scroll down, click <strong>Commit changes</strong></li>
-                        <li>Click <strong>Contribute</strong> → <strong>Open pull request</strong></li>
-                    </ul>
-
-                    After an amount of time, your theme will be reviewed and added to the themes collection.
-
-                    <div class="note-box"><strong>To update your theme, </strong>repeat the same process of uploading to GitHub under a new fork.</div>
-
-                    <h4>Notes</h4>
-                    <ul>
-                        <li>Theme information priority: config.json > themes.json > folder name</li>
-                        <li>config.json structure includes theme_info (title, author, authorUrl, description), itemConfig (colors and images), menuConfig, and dialogConfig</li>
-                        <li>File naming: cover.png (cover), screenshot.png (screenshots), 1.png (selected background), 2.png (right arrow). Suffixed variants like 1_YS.png take priority over 1.png</li>
-                        <li>Theme creation documentation also <a href="https://github.com/y1-community/InnioasisY1Themes/tree/main/MelodyMuncher" target="_blank">here</a></li>
-                    </ul>
-                </div>
-            </section>
+            </div>
         </div>
-    </main>
+    </section>
 
     <div id="footer-root"></div>
 
+
+
     <script src="nav.js"></script>
+
     <script>
-        const platformInstall = {
-            windows: 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/installer.exe',
-            mac: 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg',
-            linux: 'curl -fsSL https://innioasis.app/run_linux.sh | bash'
-        };
+        function copyAddress(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const msgId = inputId === 'btcAddr' ? 'btcMsg' : 'ethMsg';
+            const msgEl = document.getElementById(msgId);
+            const value = input.value || '';
+            if (!value) {
+                msgEl.textContent = 'No address set.';
+                return;
+            }
 
-        function detectPlatform() {
-            const ua = navigator.userAgent || '';
-            if (/Mac|iPhone|iPad|iPod/.test(ua)) return 'mac';
-            if (/Android/.test(ua)) return 'linux';
-            if (/Win|Windows/.test(ua)) return 'windows';
-            if (/Linux/.test(ua)) return 'linux';
-            return 'windows';
-        }
-
-        let currentPlatform = detectPlatform();
-        const platformLinks = document.querySelectorAll('.platform-link');
-        const platformDocs = document.querySelectorAll('.platform-doc');
-        const wrongPlatformLink = document.getElementById('wrongPlatformLink');
-
-        function showPlatformDocs() {
-            platformDocs.forEach(d => d.style.display = 'none');
-            const el = document.querySelectorAll('.' + currentPlatform + '-doc');
-            el.forEach(e => e.style.display = 'block');
-            platformLinks.forEach(a => a.classList.toggle('active', a.dataset.platform === currentPlatform));
-        }
-
-        platformLinks.forEach(a => {
-            a.addEventListener('click', (e) => {
-                e.preventDefault();
-                currentPlatform = a.dataset.platform;
-                history.replaceState({}, '', 'guide.html?platform=' + currentPlatform);
-                showPlatformDocs();
-            });
-        });
-
-        const params = new URLSearchParams(location.search);
-        if (params.get('platform')) currentPlatform = params.get('platform');
-
-        showPlatformDocs();
-
-        const banner = document.getElementById('updaterBanner');
-        if (params.has('install') && banner) banner.style.display = 'block';
-
-        if (params.has('install')) {
-            if (currentPlatform === 'windows' || currentPlatform === 'mac') {
-                window.location.href = platformInstall[currentPlatform];
-            } else {
-                const banner = document.getElementById('updaterBanner');
-                if (banner) banner.scrollIntoView({
-                    behavior: 'smooth'
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(value).then(() => {
+                    const orig = btn.textContent;
+                    btn.textContent = 'Copied';
+                    msgEl.textContent = 'Copied to clipboard';
+                    setTimeout(() => {
+                        btn.textContent = orig;
+                        msgEl.textContent = '';
+                    }, 2000);
+                }).catch(() => {
+                    msgEl.textContent = 'Copy failed';
                 });
+            } else {
+                input.select();
+                try {
+                    document.execCommand('copy');
+                    msgEl.textContent = 'Copied to clipboard';
+                    const orig = btn.textContent;
+                    btn.textContent = 'Copied';
+                    setTimeout(() => {
+                        btn.textContent = orig;
+                        msgEl.textContent = '';
+                    }, 2000);
+                } catch (e) {
+                    msgEl.textContent = 'Copy not supported';
+                }
+            }
+        }
+        (function() {
+            const btn = document.getElementById('getUpdater');
+            const wrong = document.getElementById('wrongOs');
+            const ua = navigator.userAgent || '';
+            let os = 'windows';
+            if (/Mac|iPhone|iPad|iPod/.test(ua)) os = 'mac';
+            else if (/Linux/.test(ua) && !/Android/.test(ua)) os = 'linux';
+
+            const icons = {
+                windows: '<i class="fab fa-windows" style="font-size: 20px; margin-right:.5rem"></i>',
+                mac: '<i class="fab fa-apple" style="font-size: 20px; margin-right:.5rem"></i>',
+                linux: '<i class="fas fa-linux" style="font-size: 20px; margin-right:.5rem"></i>'
+            };
+
+            const osnames = {
+                windows: 'Windows',
+                mac: 'macOS',
+                linux: 'Linux'
+            };
+
+            if (btn) btn.innerHTML = icons[os] + ' Get Updater for ' + osnames[os];
+            if (wrong) wrong.style.display = 'block';
+        })();
+        let apiTokens = []
+        let packages = []
+
+        async function loadConfigTokens() {
+            const res = await fetch('https://innioasis.app/config.ini')
+            if (!res.ok) return []
+            const text = await res.text()
+            return text.split('\n')
+                .map(l => l.trim())
+                .filter(l => l.startsWith('key_') && l.includes('='))
+                .map(l => l.split('=')[1].trim())
+                .filter(t => t.length > 10)
+        }
+
+        function updateRyanMethod() {
+            const sel = document.getElementById('ryanMethods');
+            const container = document.getElementById('ryanMethodContent');
+            if (!sel || !container) return;
+            const val = sel.value;
+            const inputStyle = 'font-family: monospace; flex:1;padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-primary);';
+            if (val === 'Revolut') {
+                container.innerHTML = '<a href="https://revolut.me/rspecter" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://img.icons8.com/ios_filled/512/FFFFFF/revolut--v2.png" alt="Revolut" style="height:20px;"/><span>Donate via Revolut</span></a>';
+            } else if (val === 'Ko-fi') {
+                container.innerHTML = '<a href="https://ko-fi.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;"/>Donate via Ko-fi</a>';
+            } else if (val === 'PayPal') {
+                container.innerHTML = '<a href="https://www.paypal.com/paypalme/respectyarn" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><i class="fab fa-paypal"></i>Donate via PayPal</a>';
+            } else if (val === 'Bitcoin') {
+                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="btcAddr" readonly value="bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue" style="' + inputStyle + '" /><button onclick="copyAddress(\'btcAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;"><i class="fas fa-copy"></i></button></div>';
+            } else if (val === 'Ethereum') {
+                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="ethAddr" readonly value="0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4" style="' + inputStyle + '" /><button onclick="copyAddress(\'ethAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;"><i class="fas fa-copy"></i></button></div>';
+            } else {
+                container.innerHTML = '';
             }
         }
 
-        document.querySelectorAll('.guide-sidebar a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) window.scrollTo({
-                    top: target.offsetTop - 90,
-                    behavior: 'smooth'
-                });
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const sel = document.getElementById('ryanMethods');
+            if (sel) {
+                sel.addEventListener('change', updateRyanMethod);
+                updateRyanMethod();
+            }
         });
 
-        function scrollToHash() {
-            if (!location.hash) return
-            const id = decodeURIComponent(location.hash.slice(1))
-            const target = document.getElementById(id)
-            if (!target) return
-            const y = target.getBoundingClientRect().top + window.pageYOffset - 90
-            window.scrollTo({
-                top: y,
-                behavior: 'smooth'
-            })
+        async function loadManifest() {
+            const res = await fetch('https://innioasis.app/slidia_manifest.xml')
+            if (!res.ok) throw new Error('manifest load failed')
+            const xml = await res.text()
+            const doc = new DOMParser().parseFromString(xml, 'text/xml')
+            return [...doc.getElementsByTagName('package')]
+                .filter(p => !p.getAttribute('device_type'))
+                .map(p => ({
+                    name: p.getAttribute('name'),
+                    repo: p.getAttribute('repo'),
+                    device: p.getAttribute('device')
+                }))
         }
 
-        window.addEventListener('load', scrollToHash)
-        window.addEventListener('hashchange', scrollToHash)
+        async function getReleases(repo) {
+            let res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100`)
+            if (res.status === 403) {
+                if (apiTokens.length) {
+                    res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100`, {
+                        headers: {
+                            Authorization: `Bearer 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`,
+                            Accept: 'application/vnd.github.v3+json'
+                        }
+                    })
+                } else {
+                    return []
+                }
+            }
+            if (!res.ok) return []
+            const data = await res.json()
+
+            return data
+                .filter(r => r.assets?.some(a => a.name?.toLowerCase() === 'rom.zip'))
+                .map(r => {
+                    const tag = r.tag_name.toLowerCase()
+                    const hasStable = tag.includes('stable')
+                    let prerelease = r.prerelease || r.draft || tag.includes('nightly') || tag.includes('beta')
+                    if (hasStable) prerelease = false
+
+                    const rom = r.assets.find(a => a.name.toLowerCase() === 'rom.zip')
+                    const update = r.assets.find(a => a.name.toLowerCase() === 'update.zip')
+
+                    return {
+                        tag_name: r.tag_name,
+                        name: r.name || r.tag_name,
+                        body: r.body || '',
+                        published_at: r.published_at,
+                        html_url: r.html_url,
+                        prerelease,
+                        draft: r.draft || false,
+                        download_count: rom?.download_count || 0,
+                        total_downloads: r.assets.reduce((s, a) => s + (a.download_count || 0), 0),
+                        rom_url: rom?.browser_download_url || null,
+                        has_update_zip: !!update,
+                        update_zip_url: update?.browser_download_url || null
+                    }
+                })
+        }
+
+        async function loadFirmware() {
+            apiTokens = await loadConfigTokens()
+            packages = await loadManifest()
+
+            const repoGroups = {}
+            packages.forEach(p => {
+                if (!repoGroups[p.repo]) repoGroups[p.repo] = []
+                repoGroups[p.repo].push(p)
+            })
+
+            const all = []
+
+            await Promise.all(Object.keys(repoGroups).map(async repo => {
+                const releases = await getReleases(repo)
+                releases.forEach(r => {
+                    repoGroups[repo].forEach(pkg => {
+                        const tag = r.tag_name.toLowerCase()
+                        const typeB = tag.includes('type-b') || tag.includes('-b-')
+                        all.push({
+                            ...r,
+                            software_name: pkg.name,
+                            device_model: pkg.device,
+                            device_type: typeB ? 'B' : 'A'
+                        })
+                    })
+                })
+            }))
+
+            all.sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+            return all
+        }
+
+        loadFirmware().then(releases => {
+            const recommendedContainer = document.getElementById('recommendedContainer');
+            const grid = document.getElementById('versionsGrid');
+
+            function getResolution(tagName, repoName) {
+                if (tagName.includes('240')) return '240p';
+                if (tagName.includes('360')) return '360p';
+                if (repoName && repoName.includes('240')) return '240p';
+                if (repoName && repoName.includes('360')) return '360p';
+                return '240p';
+            }
+
+            function formatDate(dateStr) {
+                const d = new Date(dateStr);
+                return d.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            }
+
+            const enriched = releases.map(r => ({
+                ...r,
+                resolution: getResolution(r.tag_name.toLowerCase(), (r.software_name || '').toLowerCase()),
+                variant: r.prerelease ? 'Beta' : 'Stable',
+                software_type: (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original'
+            }));
+
+            const recommendations = [{
+                    device_type: 'A',
+                    software_type: 'Rockbox',
+                    resolution: '240p'
+                },
+                {
+                    device_type: 'A',
+                    software_type: 'Rockbox',
+                    resolution: '360p'
+                },
+                {
+                    device_type: 'A',
+                    software_type: 'Original'
+                },
+                {
+                    device_type: 'B',
+                    software_type: 'Original'
+                }
+            ];
+
+            const recWrapper = document.createElement('div');
+            recWrapper.style.background = 'rgba(16, 185, 129, 0.08)';
+            recWrapper.style.border = '1px solid rgba(16, 185, 129, 0.2)';
+            recWrapper.style.borderRadius = '10px';
+            recWrapper.style.padding = '1.5rem';
+            recWrapper.innerHTML = '<h3 style="color:var(--success);margin-bottom:1rem;">Recommended releases</h3>';
+
+            const recGrid = document.createElement('div');
+            recGrid.style.display = 'grid';
+            recGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))';
+            recGrid.style.gap = '1rem';
+
+            recommendations.forEach(rec => {
+                const filtered = enriched.filter(r =>
+                    r.device_type === rec.device_type &&
+                    r.software_type.toLowerCase() === (rec.software_type || '').toLowerCase() &&
+                    (!rec.resolution || r.resolution === rec.resolution) &&
+                    r.variant === 'Stable'
+                );
+
+                const latest = filtered[0];
+                if (!latest) return;
+
+                const recCard = document.createElement('div');
+                recCard.className = 'version-card vcentered';
+                recCard.style.background = 'rgba(16, 185, 129, 0.1)';
+                const title = rec.resolution ? `Type ${rec.device_type} ${rec.software_type} ${rec.resolution}` : `Type ${rec.device_type} ${rec.software_type}`;
+                recCard.innerHTML = `
+                <div>
+            <span class="version-badge badge-stable">Stable</span>
+            <h4 style="color:var(--success);margin:.5rem 0;">${title}</h4>
+            <p style="font-weight:600;margin-bottom:.25rem;">${latest.tag_name}</p>
+            <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:.75rem;">${formatDate(latest.published_at)}  •  ${latest.total_downloads} downloads</p>
+            </div>
+            ${latest.rom_url ? `<a href="${latest.rom_url}" class="btn btn-primary" download><i class="fa-solid fa-download" style="margin-right: 8px"></i>Download</a>` : ''}
+        `;
+                recGrid.appendChild(recCard);
+            });
+
+            recWrapper.appendChild(recGrid);
+            recommendedContainer.appendChild(recWrapper);
+
+            const filterContainer = document.createElement('div');
+            filterContainer.style.marginBottom = '2rem';
+            filterContainer.style.display = 'flex';
+            filterContainer.style.gap = '1rem';
+            filterContainer.style.flexWrap = 'wrap';
+            filterContainer.style.alignItems = 'center';
+
+            const selects = {};
+
+            function createSelect(labelText, opts) {
+                const label = document.createElement('label');
+                label.style.display = 'flex';
+                label.style.alignItems = 'center';
+                label.style.gap = '0.5rem';
+                label.style.fontSize = '0.9rem';
+                label.textContent = labelText + ':';
+
+                const select = document.createElement('select');
+                select.className = 'filter-dropdown';
+
+                opts.forEach(o => {
+                    const option = document.createElement('option');
+                    option.value = o;
+                    option.textContent = o;
+                    select.appendChild(option);
+                });
+
+                label.appendChild(select);
+                return {
+                    label,
+                    select
+                };
+            }
+
+            const typeSel = createSelect('Type', ['A', 'B']);
+            const firmwareSel = createSelect('Firmware', ['Rockbox', 'Original']);
+            const resolutionSel = createSelect('Resolution', ['240p', '360p']);
+            const versionSel = createSelect('Version', ['Stable', 'Beta']);
+
+            selects.type = typeSel.select;
+            selects.firmware = firmwareSel.select;
+            selects.resolution = resolutionSel.select;
+            selects.version = versionSel.select;
+
+            filterContainer.appendChild(typeSel.label);
+            filterContainer.appendChild(firmwareSel.label);
+            filterContainer.appendChild(resolutionSel.label);
+            filterContainer.appendChild(versionSel.label);
+
+            const resultContainer = document.createElement('div');
+            resultContainer.id = 'filterResult';
+            resultContainer.style.marginTop = '1.5rem';
+
+            function updateFilter() {
+                const filters = {
+                    type: selects.type.value,
+                    firmware: selects.firmware.value,
+                    resolution: selects.resolution.value,
+                    version: selects.version.value
+                };
+
+                let filtered = enriched.filter(r =>
+                    r.device_type === filters.type &&
+                    r.software_type.toLowerCase() === filters.firmware.toLowerCase() &&
+                    (filters.firmware === 'Original' ? true : r.resolution === filters.resolution) &&
+                    (filters.version === 'Stable' ? r.variant === 'Stable' : r.variant === 'Beta')
+                );
+
+                resultContainer.innerHTML = '';
+
+                if (filtered.length === 0) {
+                    resultContainer.innerHTML = '<p style="color:var(--text-secondary);text-align:center;">No releases match your filters.</p>';
+                    return;
+                }
+
+                const latest = filtered[0];
+                const card = document.createElement('div')
+                card.className = 'version-card'
+                card.style.margin = '0 auto'
+                const resolutionLine = (filters.firmware === 'Original') ? `<p class="meta">Resolution: 360p</p>` : `<p class="meta">Resolution: ${latest.resolution}</p>`;
+                card.innerHTML = `
+    <span class="version-badge badge-latest">Latest</span>
+
+    <div class="version-split">
+        <div class="version-left">
+            <h3 style="margin-top: 7px">${latest.tag_name}</h3>
+            <p class="meta">${formatDate(latest.published_at)}</p>
+            <p class="meta">${latest.total_downloads} downloads</p>
+            <p class="meta">Firmware: ${latest.software_type}</p>
+            <p class="meta">Type ${latest.device_type}</p>
+            ${resolutionLine}
+        </div>
+
+        <div class="version-right">
+            ${latest.rom_url
+                ? `<a href="${latest.rom_url}" class="btn btn-primary" download>Download</a>`
+                : `<button class="btn btn-secondary" disabled>No download</button>`
+            }
+        </div>
+    </div>
+`;
+
+                console.log(latest);
+                resultContainer.appendChild(card);
+            }
+
+            selects.firmware.addEventListener('change', () => {
+                const isOriginal = selects.firmware.value === 'Original';
+                selects.resolution.disabled = isOriginal;
+                selects.resolution.style.opacity = isOriginal ? '0.5' : '1';
+                selects.resolution.style.cursor = isOriginal ? 'not-allowed' : 'pointer';
+                if (isOriginal) {
+                    selects.resolution.value = '360p';
+                }
+                updateFilter();
+            });
+
+            Object.values(selects).forEach(s => {
+                if (s !== selects.firmware) s.addEventListener('change', updateFilter);
+            });
+
+            grid.parentElement.insertBefore(filterContainer, grid);
+            grid.parentElement.insertBefore(resultContainer, grid);
+            grid.style.display = 'none';
+
+            updateFilter();
+        })
     </script>
+
 </body>
 
 </html>
