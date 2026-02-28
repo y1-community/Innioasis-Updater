@@ -1,4 +1,3 @@
-# Script from https://github.com/rockbox-y1/rockbox - pushed to devices via ADB to enable Fast Update - original author is @rockbox-y1
 echo "++++ Starting system update"
 
 mount -o rw,remount /system
@@ -30,8 +29,8 @@ chmod 644 /system/app/org.rockbox.apk
 chown root:root /system/app/org.rockbox.apk
 echo "++ Updated rockbox apk"
 
-cp com.innioasis.y1_*.apk /data/app/com.innioasis.y1-1.apk
-echo "++ Updated stock apk"
+#cp com.innioasis.y1_*.apk /data/app/com.innioasis.y1-1.apk
+#echo "++ Updated stock apk"
 
 cp /sdcard/.rockbox/update/install-recovery.sh /system/etc/install-recovery.sh
 chmod 755 /system/etc/install-recovery.sh
@@ -39,6 +38,11 @@ mkdir -p /system/etc/init.d
 cp /sdcard/.rockbox/update/99Y1ButtonScript /system/etc/init.d/
 chmod 755 /system/etc/init.d/99Y1ButtonScript
 cp /sdcard/.rockbox/update/switch-to-stock.sh /data/data/
+cp /sdcard/.rockbox/update/gocurl /data/data/
+chmod 755 /data/data/gocurl
+cp /sdcard/.rockbox/update/poddl /data/data/
+chmod 755 /data/data/poddl
+cp /sdcard/.rockbox/update/update.sh /data/data/update/update.sh
 echo "++ Updated scripts"
 
 cp /sdcard/.rockbox/update/Rockbox.kl /system/usr/keylayout/Rockbox.kl
