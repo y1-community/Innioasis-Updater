@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.6.1"
+APP_VERSION = "1.9.6.2"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -16418,11 +16418,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             if msg_box.exec() == QMessageBox.Yes:
                 # Open the installation guide
                 import webbrowser
-                webbrowser.open("https://www.innioasis.com/pages/how-to-setup-innioasis-updater")
+                webbrowser.open("https://innioasis.app/guide.html")
         else:
             # Fallback to direct link
             import webbrowser
-            webbrowser.open("https://www.innioasis.com/pages/how-to-setup-innioasis-updater")
+            webbrowser.open("https://innioasis.app/guide.html")
 
 
     def open_arm64_info(self, event):
