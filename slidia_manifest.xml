@@ -6,7 +6,7 @@
 <package name="Original Software" repo="y1-community/y1-stock-rom" device="Y1" url="https://github.com/y1-community/y1-stock-rom/releases/latest" type="img" handler="Custom Firmware" />
 <package name="Please Update App To Continue" device_type="0" repo="Please-Click/Updates-Available" device="Y1" url="https://github.com/Please-Click/Updates-Available/releases/latest" type="img" handler="Custom Firmware" />
 <!-- <package name="Rockbox" repo="ryan-specter/mirror" device="Y1" url="https://github.com/ryan-specter/mirror/releases/latest" type="img" handler="Custom Firmware" /> -->
-<!-- <package name="Rockbox-Y1" repo="rockbox-y1/rockbox" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" handler="Custom Firmware" /> -->
+ <package name="Rockbox-Y1" repo="rockbox-y1/rockbox" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" handler="Custom Firmware" /> 
 
 <package name="Kidz-Y1" repo="pcorbel/kidz-y1" device="Y1" url="https://github.com/pcorbel/kidz-y1/releases/latest" type="img" handler="Custom Firmware" />
 <!-- <package name="Multiwirth's Android 4.2 ROM" device_type="A" repo="multiwirth/Innioasis_Y1_system_dumps" device="Y1" url="https://github.com/multiwirth/Innioasis_Y1_system_dumps/releases/latest" type="img" handler="Custom Firmware" /> -->
