@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.6.2"
+APP_VERSION = "1.9.7"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -941,6 +941,165 @@ def get_zip_path(repo_name, version):
     safe_repo_name = repo_name.replace('/', '_')
     return ZIP_STORAGE_DIR / f"{safe_repo_name}_{version}.zip"
 
+def _parse_rom_asset_variant(asset, tag_name=''):
+    """
+    Classify a rom*.zip asset into hardware type (A/B) and resolution.
+    
+    New-style releases use filenames like:
+      - rom_240p.zip
+      - rom_240p_type_b.zip
+      - rom_360p.zip
+      - rom_360p_type_b.zip
+    
+    Legacy releases used a single rom.zip per tag, with Type B encoded in the tag
+    name (e.g. '360p-type-b-v0.3'). For those, we treat rom.zip as Type B.
+    """
+    try:
+        name = asset.get('name', '')
+        lower = name.lower()
+        # Only consider rom*.zip
+        if not fnmatch.fnmatch(lower, 'rom*.zip'):
+            return None
+        
+        tag_lower = (tag_name or '').lower()
+        
+        # Determine hardware type:
+        # - New scheme: filename contains '_type_b'
+        # - Legacy scheme: tag contains 'type-b'
+        is_type_b = '_type_b' in lower or 'type-b' in lower or ' type b' in lower
+        if not is_type_b and 'type-b' in tag_lower:
+            is_type_b = True
+        hw_type = 'B' if is_type_b else 'A'
+        
+        # Determine resolution from filename; default to 'native' when not specified
+        if '_360p' in lower:
+            resolution = '360p'
+        elif '_240p' in lower:
+            resolution = '240p'
+        else:
+            # Plain rom.zip or rom_type_b.zip etc. -> assume native panel resolution
+            resolution = 'native'
+        
+        return {
+            'asset': asset,
+            'type': hw_type,        # 'A' or 'B'
+            'resolution': resolution,  # '360p', '240p', or 'native'
+        }
+    except Exception:
+        return None
+
+def extract_rom_variants_from_assets(assets, tag_name=''):
+    """Return a list of rom*.zip variants for a release, including type/resolution metadata."""
+    variants = []
+    for asset in assets or []:
+        variant = _parse_rom_asset_variant(asset, tag_name)
+        if variant:
+            variants.append(variant)
+    return variants
+
+def _resolution_priority(resolution):
+    """
+    Priority for choosing a default ROM:
+      1. 360p (native Y1 resolution, preferred)
+      2. native (unspecified, assume panel-native build)
+      3. 240p (upscaled Rockbox themes etc.)
+      4. anything else
+    """
+    if resolution == '360p':
+        return 0
+    if resolution == 'native':
+        return 1
+    if resolution == '240p':
+        return 2
+    return 3
+
+def select_preferred_rom_asset(variants, selected_type=None):
+    """
+    Select the best rom*.zip asset from a list of variants.
+    
+    - selected_type:
+        'A' -> prefer Type A, fall back to Type B if needed
+        'B' -> prefer Type B, fall back to Type A if needed
+        None -> prefer Type A, then Type B (for generic/latest-release lookups)
+    - Within a type, prefer higher resolution priority as defined above.
+    """
+    if not variants:
+        return None
+    
+    # Normalize type selection
+    st = (selected_type or 'A').upper()
+    if st not in ('A', 'B'):
+        st = 'A'
+    
+    primary_type = st
+    fallback_type = 'B' if st == 'A' else 'A'
+    
+    def _best_for_type(t):
+        candidates = [v for v in variants if v.get('type') == t]
+        if not candidates:
+            return None
+        # Choose by resolution priority, then by asset name for stability
+        return min(
+            candidates,
+            key=lambda v: (
+                _resolution_priority(v.get('resolution')),
+                v.get('asset', {}).get('name', '')
+            )
+        )
+    
+    best = _best_for_type(primary_type)
+    if not best:
+        best = _best_for_type(fallback_type)
+    return best
+
+def select_rom_asset_for_resolution(variants, selected_type, resolution):
+    """
+    Select the best ROM asset for a specific resolution and hardware type.
+    Resolution is one of: '360p', '240p', 'native'.
+    """
+    if not variants:
+        return None
+    
+    # Filter to requested resolution first, then apply normal preference logic
+    filtered = [v for v in variants if v.get('resolution') == resolution]
+    if not filtered:
+        return None
+    return select_preferred_rom_asset(filtered, selected_type=selected_type)
+
+def release_supports_device_type(release, selected_type):
+    """
+    Determine if a release has at least one rom*.zip variant matching the
+    requested hardware type (A/B). Falls back to tag-based detection when
+    no ROM variants are present.
+    """
+    if not selected_type:
+        return True
+    
+    st = selected_type.upper()
+    if st not in ('A', 'B'):
+        return True
+    
+    tag_name = release.get('tag_name', '')
+    assets = release.get('assets', [])
+    # Prefer precomputed variants if present (from API), otherwise extract on the fly
+    variants = release.get('rom_variants') or extract_rom_variants_from_assets(assets, tag_name)
+    
+    if variants:
+        has_type_a = any(v.get('type') == 'A' for v in variants)
+        has_type_b = any(v.get('type') == 'B' for v in variants)
+        
+        if st == 'B':
+            return has_type_b
+        else:
+            # For Type A, only show releases that actually have a Type A ROM
+            return has_type_a
+    
+    # Fallback for very old releases without explicit rom*.zip assets
+    has_type_b = 'type-b' in (tag_name or '').lower()
+    if st == 'B':
+        return has_type_b
+    return not has_type_b
+
 def get_update_zip_cache_path(update_zip_url):
     """Get the cache path for an update.zip file based on URL"""
     # Create a safe filename from the URL
@@ -1524,19 +1683,21 @@ class GitHubAPI:
                 release_data = response.json()
                 assets = release_data.get('assets', [])
 
-                # Find firmware assets
-                zip_asset = None
-                for asset in assets:
-                    if asset['name'].lower() == 'rom.zip':
-                        zip_asset = asset
-                        break
+                # Find firmware assets (rom*.zip, including new-style variants)
+                tag_name = release_data.get('tag_name', '')
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                zip_asset = preferred['asset'] if preferred else None
 
                 result = {
                     'tag_name': release_data.get('tag_name', ''),
                     'name': release_data.get('name', ''),
                     'body': release_data.get('body', ''),
                     'download_url': zip_asset['browser_download_url'] if zip_asset else None,
-                    'asset_name': zip_asset['name'] if zip_asset else None
+                    'asset_name': zip_asset['name'] if zip_asset else None,
+                    'assets': assets,
+                    'rom_variants': rom_variants,
+                    'source_repo': repo
                 }
                 
                 # Cache this successful response
@@ -1563,19 +1724,21 @@ class GitHubAPI:
                 release_data = response.json()
                 assets = release_data.get('assets', [])
 
-                # Find firmware assets
-                zip_asset = None
-                for asset in assets:
-                    if asset['name'].lower() == 'rom.zip':
-                        zip_asset = asset
-                        break
+                # Find firmware assets (rom*.zip, including new-style variants)
+                tag_name = release_data.get('tag_name', '')
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                zip_asset = preferred['asset'] if preferred else None
 
                 result = {
                     'tag_name': release_data.get('tag_name', ''),
                     'name': release_data.get('name', ''),
                     'body': release_data.get('body', ''),
                     'download_url': zip_asset['browser_download_url'] if zip_asset else None,
-                    'asset_name': zip_asset['name'] if zip_asset else None
+                    'asset_name': zip_asset['name'] if zip_asset else None,
+                    'assets': assets,
+                    'rom_variants': rom_variants,
+                    'source_repo': repo
                 }
                 
                 # Cache this successful response
@@ -1646,15 +1809,12 @@ class GitHubAPI:
                         assets = release.get('assets', [])
                         silent_print(f"Processing release: {tag_name} (prerelease={is_prerelease}) with {len(assets)} assets")
 
-                        # Find firmware assets
-                        zip_asset = None
-                        for asset in assets:
-                            if asset['name'].lower() == 'rom.zip':
-                                zip_asset = asset
-                                silent_print(f"Found zip asset: {asset['name']}")
-                                break
+                        # Find firmware assets (rom*.zip, including new-style variants)
+                        rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                        preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                        zip_asset = preferred['asset'] if preferred else None
 
-                        if zip_asset:  # Include releases with any zip file
+                        if zip_asset:
                             releases.append({
                                 'tag_name': release.get('tag_name', ''),
                                 'name': release.get('name', ''),
@@ -1664,13 +1824,15 @@ class GitHubAPI:
                                 'asset_name': zip_asset['name'],
                                 'asset_size': zip_asset.get('size', 0),
                                 'assets': release.get('assets', []),  # Include full assets array for update.zip detection
-                                'prerelease': is_prerelease  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'rom_variants': rom_variants,
+                                'prerelease': is_prerelease,  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'source_repo': repo
                             })
-                            silent_print(f"Added release {tag_name} (prerelease={is_prerelease}) with zip asset")
+                            silent_print(f"Added release {tag_name} (prerelease={is_prerelease}) with rom*.zip asset")
                         else:
-                            silent_print(f"Skipped release {tag_name} - no rom.zip found")
+                            silent_print(f"Skipped release {tag_name} - no rom*.zip assets found")
 
-                    silent_print(f"Returning {len(releases)} releases with zip assets")
+                    silent_print(f"Returning {len(releases)} releases with rom*.zip assets")
                     return releases
 
         # Try unauthenticated as fallback (with rate limiting)
@@ -1699,11 +1861,9 @@ class GitHubAPI:
                         if 'stable' in tag_name.lower():
                             is_prerelease = False
                         assets = release.get('assets', [])
-                        zip_asset = None
-                        for asset in assets:
-                            if asset['name'].lower() == 'rom.zip':
-                                zip_asset = asset
-                                break
+                        rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                        preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                        zip_asset = preferred['asset'] if preferred else None
                         
                         if zip_asset:
                             releases.append({
@@ -1715,7 +1875,9 @@ class GitHubAPI:
                                 'asset_name': zip_asset['name'],
                                 'asset_size': zip_asset.get('size', 0),
                                 'assets': release.get('assets', []),  # Include full assets array for update.zip detection
-                                'prerelease': is_prerelease  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'rom_variants': rom_variants,
+                                'prerelease': is_prerelease,  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'source_repo': repo
                             })
                     
                     if releases:
@@ -1748,14 +1910,12 @@ class GitHubAPI:
                         is_prerelease = False
                     assets = release.get('assets', [])
 
-                    # Find any zip asset (more flexible than just rom.zip)
-                    zip_asset = None
-                    for asset in assets:
-                        if asset['name'].lower() == 'rom.zip':
-                            zip_asset = asset
-                            break
+                    # Find rom*.zip assets (new-style and legacy)
+                    rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                    preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                    zip_asset = preferred['asset'] if preferred else None
 
-                    if zip_asset:  # Include releases with any zip file
+                    if zip_asset:
                         releases.append({
                             'tag_name': tag_name,
                             'name': release.get('name', ''),
@@ -1765,10 +1925,12 @@ class GitHubAPI:
                             'asset_name': zip_asset['name'],
                             'asset_size': zip_asset.get('size', 0),
                             'assets': release.get('assets', []),  # Include full assets array for update.zip detection
-                            'prerelease': is_prerelease  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                            'rom_variants': rom_variants,
+                            'prerelease': is_prerelease,  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                            'source_repo': repo
                         })
 
-                silent_print(f"Unauthenticated: Returning {len(releases)} releases with zip assets")
+                silent_print(f"Unauthenticated: Returning {len(releases)} releases with rom*.zip assets")
                 # Cache the successful unauthenticated response
                 self.cache_releases(repo, releases)
                 return releases
@@ -2828,19 +2990,18 @@ class ProgressiveReleaseWorker(QThread):
                 if self.stop_requested:
                     return
                 
-                # Check if release has rom.zip
                 assets = release_data.get('assets', [])
-                zip_asset = None
-                for asset in assets:
-                    if asset['name'].lower() == 'rom.zip':
-                        zip_asset = asset
-                        break
+                tag_name = release_data.get('tag_name', '')
+                # Extract ROM variants from assets (rom*.zip, including new-style names)
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                zip_asset = preferred['asset'] if preferred else None
                 
                 if not zip_asset:
-                    continue  # Skip releases without rom.zip
+                    # Skip releases that don't ship any rom*.zip asset
+                    continue
                 
                 # Override prerelease flag if "stable" is in tag name
-                tag_name = release_data.get('tag_name', '')
                 is_prerelease = release_data.get('prerelease', False)
                 if 'stable' in tag_name.lower():
                     is_prerelease = False
@@ -2855,6 +3016,7 @@ class ProgressiveReleaseWorker(QThread):
                     'asset_name': zip_asset['name'],
                     'asset_size': zip_asset.get('size', 0),
                     'assets': release_data.get('assets', []),
+                    'rom_variants': rom_variants,
                     'prerelease': is_prerelease  # Overridden if "stable" in tag
                 }
                 
@@ -2907,14 +3069,9 @@ class ProgressiveReleaseWorker(QThread):
         if 'base' in tag_name.lower():
             return False
         
-        # Check type filter
-        has_type_b = 'type-b' in tag_name.lower()
-        if self.selected_type == 'B':
-            if not has_type_b:
-                return False
-        else:
-            if has_type_b:
-                return False
+        # Check type filter based on ROM assets (fallbacks to tag when needed)
+        if not release_supports_device_type(release, self.selected_type):
+            return False
         
         # Check pre-release filter
         # When unchecked: Show only stable builds (hide pre-releases and nightly)
@@ -13051,12 +13208,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Always use method functionality removed
 
     def populate_device_type_combo(self):
-        """Dynamically populate device type combo based on available release tags"""
+        """Dynamically populate device type combo based on available ROM variants"""
         self.device_type_combo.clear()
 
-        # Always add Type A and Type B options since we can determine this from release tags
-        # Type A: releases without 'type-b' in tag
-        # Type B: releases with 'type-b' in tag
+        # Always offer Type A and Type B options; actual availability is determined
+        # per-release based on rom*.zip assets (and legacy tag names for old builds).
         self.device_type_combo.addItem("Type A", "A")
         self.device_type_combo.addItem("Type B", "B")
 
@@ -13127,19 +13283,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.firmware_combo.blockSignals(was_blocked)
 
 
-    def _release_matches_type_filter(self, tag_name, selected_type):
-        """Check if a release tag matches the selected device type filter"""
-        if not selected_type:
-            return True
-        
-        has_type_b = 'type-b' in tag_name.lower()
-        
-        if selected_type == 'B':
-            # Type B filter: only show releases with 'type-b' in tag
-            return has_type_b
-        else:
-            # Type A filter (or other types): show releases without 'type-b' in tag
-            return not has_type_b
+    def _release_matches_type_filter(self, release, selected_type):
+        """
+        Check if a release matches the selected device type filter.
+        Uses ROM variants (rom*.zip) when available, with legacy tag-name
+        fallback for very old releases.
+        """
+        return release_supports_device_type(release, selected_type)
 
     def _should_exclude_release(self, tag_name):
         """Check if a release should be excluded from listings (e.g., contains 'base')"""
@@ -13227,14 +13377,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     if 'base' in tag_name.lower():
                         continue
                     
-                    # Check type filter
-                    has_type_b = 'type-b' in tag_name.lower()
-                    if selected_type == 'B':
-                        if not has_type_b:
-                            continue
-                    else:
-                        if has_type_b:
-                            continue
+                    # Check type filter based on ROM variants (with tag-name fallback)
+                    if not release_supports_device_type(release, selected_type):
+                        continue
                     
                     # Check if it's a pre-release or nightly
                     is_prerelease = release.get('prerelease', False)
@@ -13441,14 +13586,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     if 'base' in tag_name.lower():
                         continue
                     
-                    # Check type filter
-                    has_type_b = 'type-b' in tag_name.lower()
-                    if selected_type == 'B':
-                        if not has_type_b:
-                            continue
-                    else:
-                        if has_type_b:
-                            continue
+                    # Check type filter based on ROM variants / tag
+                    if not release_supports_device_type(release, selected_type):
+                        continue
                     
                     # Check pre-release filter
                     if not show_prereleases:
@@ -14243,6 +14383,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             tag_name = release.get('tag_name', '')
             selected_repo = self.firmware_combo.currentData()
+            selected_type = self.device_type_combo.currentData()
             
             if not selected_repo:
                 silent_print("No repo selected, cannot add release")
@@ -14265,37 +14406,98 @@ class FirmwareDownloaderGUI(QMainWindow):
             published_date = release.get('published_at', '')
             display_version = get_display_version(version_info, published_date)
             
-            # Use display version as the main title
-            display_text = f"{display_version}\n"
-            
-            # Add software name
+            # Base text used for all variant rows for this release
+            base_header = f"{display_version}\n"
             software_name = package_info.get('name', 'Unknown') if package_info else 'Unknown'
-            display_text += f"Software: {software_name}\n"
+            base_header += f"Software: {software_name}\n"
             
-            # Add designations as formatted text
+            # Add designations as formatted text (nightly, 360p tag flag, etc.)
             if version_info.get('designations'):
                 designations_text = format_designations_text(version_info['designations'])
-                display_text += f"{designations_text}\n"
-
-            # Only show published date if we're using version number as title
-            if len(version_info.get('clean_version', '')) <= 8 and published_date:
+                base_header += f"{designations_text}\n"
+            
+            # Always show published date when available (including nightly builds)
+            date_line = ""
+            if published_date:
                 try:
                     from datetime import datetime
                     date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
-                    display_text += f"Released: {format_fancy_date(date_obj)}\n"
-                except:
-                    display_text += f"Released: {published_date}\n"
-
-            # Add software name and repo name to release info for button text logic
-            release_with_software = release.copy()
-            release_with_software['software_name'] = software_name
-            release_with_software['repo_name'] = selected_repo
-
-            item = QListWidgetItem(display_text)
-            item.setData(Qt.UserRole, release_with_software)
-            self.package_list.addItem(item)
-
-            silent_print(f"Added release to UI: {tag_name}")
+                    date_line = f"Released: {format_fancy_date(date_obj)}\n"
+                except Exception:
+                    date_line = f"Released: {published_date}\n"
+            
+            # If we have ROM variants, create one row per resolution; otherwise single row per release
+            rom_variants = release.get('rom_variants')
+            if rom_variants:
+                # Unique resolutions present in this release, ordered by preference
+                resolutions = sorted(
+                    {v.get('resolution', 'native') for v in rom_variants},
+                    key=_resolution_priority
+                )
+                
+                for resolution in resolutions:
+                    # For the currently selected Type A/B, see if we have a matching asset at this resolution
+                    variant = select_rom_asset_for_resolution(rom_variants, selected_type, resolution)
+                    if not variant:
+                        # No ROM for this type/resolution combination – skip this row
+                        continue
+                    
+                    variant_asset = variant.get('asset', {})
+                    variant_type = variant.get('type')
+                    
+                    display_text = base_header
+                    
+                    # Resolution line (keep it simple for users)
+                    if resolution == '360p':
+                        resolution_text = "Resolution: 360p"
+                    elif resolution == '240p':
+                        resolution_text = "Resolution: 240p"
+                    else:
+                        resolution_text = "Resolution: Native"
+                    display_text += f"{resolution_text}\n"
+                    
+                    # Optional hint when a 240p build exists (iPod Classic/Video themes)
+                    if resolution == '240p':
+                        display_text += "Compatible with iPod Classic/Video Rockbox themes\n"
+                    
+                    # Optional debug-ish hint: which hardware type this row currently maps to
+                    if variant_type in ('A', 'B'):
+                        display_text += f"Device Type: Type {variant_type}\n"
+                    
+                    if date_line:
+                        display_text += date_line
+                    
+                    # Clone release data and bind it to this specific resolution
+                    release_with_software = release.copy()
+                    release_with_software['software_name'] = software_name
+                    release_with_software['repo_name'] = selected_repo
+                    release_with_software['selected_resolution'] = resolution
+                    release_with_software['selected_type'] = selected_type
+                    release_with_software['download_url'] = variant_asset.get('browser_download_url')
+                    release_with_software['asset_name'] = variant_asset.get('name')
+                    release_with_software['asset_size'] = variant_asset.get('size', 0)
+                    release_with_software['rom_type'] = variant_type
+                    
+                    item = QListWidgetItem(display_text)
+                    item.setData(Qt.UserRole, release_with_software)
+                    self.package_list.addItem(item)
+                    
+                    silent_print(f"Added release to UI: {tag_name} ({resolution}, Type {variant_type})")
+            else:
+                # Non-ROM or legacy single-rom.zip releases – keep existing single-row behavior
+                display_text = base_header
+                if date_line:
+                    display_text += date_line
+                
+                release_with_software = release.copy()
+                release_with_software['software_name'] = software_name
+                release_with_software['repo_name'] = selected_repo
+                
+                item = QListWidgetItem(display_text)
+                item.setData(Qt.UserRole, release_with_software)
+                self.package_list.addItem(item)
+                
+                silent_print(f"Added release to UI: {tag_name}")
         except Exception as e:
             silent_print(f"Error in _add_release_to_list: {e}")
             import traceback
@@ -14372,7 +14574,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         if self._should_exclude_release(tag_name):
                             continue
                             
-                        if self._release_matches_type_filter(tag_name, selected_type):
+                        if self._release_matches_type_filter(release, selected_type):
                             # For ARM64 users, only show releases with update.zip
                             if platform.system() == "Windows":
                                 driver_info = self.check_drivers_and_architecture()
