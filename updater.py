@@ -147,7 +147,7 @@ def parse_version_designations(version_name):
             
         # Handle special cases first
         if part == 'nightly':
-            designations.append('Nightly')
+            continue
         elif part == '360p':
             designations.append('360p / Y1 Theme Compatible')
         elif part == 'wifi' or part == 'wi-fi':
@@ -202,19 +202,20 @@ def parse_version_designations(version_name):
         'designations': designations
     }
 
-def get_display_version(version_info, published_date):
-    """Get the display version - either version number or published date based on length"""
+def get_display_version(version_info, published_date, is_prerelease=False):
+    """Get the display version - either version number or published date based on length or prerelease status"""
     version_text = version_info['clean_version']
+    is_nightly = 'nightly' in version_text.lower()
     
-    # If version is longer than 8 characters, use published date instead
-    if len(version_text) > 8:
+    # If version is longer than 8 characters or it's a pre-release/nightly, use published date instead
+    if len(version_text) > 8 or is_prerelease or is_nightly:
         if published_date:
             try:
                 from datetime import datetime
                 date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
-                return format_fancy_date(date_obj)
+                return f"Released: {format_fancy_date(date_obj)}"
             except:
-                return published_date
+                return f"Released: {published_date}"
         else:
             return "Unknown Date"
     
@@ -4551,7 +4552,7 @@ class URLDownloadWorker(QThread):
                         # Default based on URL
                         if 'themeid' in self.url or 'themes.rockbox.org' in self.url:
                             filename = 'theme.zip'
-                        elif 'rom.zip' in self.url.lower() or 'update.zip' in self.url.lower():
+                        elif ('rom' in self.url.lower() and '.zip' in self.url.lower()) or ('update' in self.url.lower() and '.zip' in self.url.lower()):
                             filename = self.url.split('/')[-1].split('?')[0]
                         else:
                             filename = 'downloaded_file'
@@ -4560,7 +4561,7 @@ class URLDownloadWorker(QThread):
                     if not filename:
                         if 'themeid' in self.url or 'themes.rockbox.org' in self.url:
                             filename = 'theme.zip'
-                        elif 'rom.zip' in self.url.lower() or 'update.zip' in self.url.lower():
+                        elif ('rom' in self.url.lower() and '.zip' in self.url.lower()) or ('update' in self.url.lower() and '.zip' in self.url.lower()):
                             filename = self.url.split('/')[-1].split('?')[0]
                         else:
                             filename = 'downloaded_file'
@@ -8029,14 +8030,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.discord_btn.clicked.connect(self.open_discord_link)
         coffee_layout.addWidget(self.discord_btn)
 
-        # About button (opens Settings dialog to About tab) - using native styling
+        # About / Ko-fi button (opens ko-fi link in browser) - using native styling
 # 2025-11-09 22:10:00 UTC - original: Button label permanently read "About" and navigated directly to the About tab.
-        self.about_btn = QPushButton("About")
-        self.about_btn_base_text = "About"
+        self.about_btn = QPushButton("☕ Buy Us A Coffee")
+        self.about_btn_base_text = "☕ Buy Us A Coffee"
         self.about_btn_base_tooltip = self.about_btn.toolTip() or ""
         # Use native styling - no custom stylesheet for automatic theme adaptation
-        # Use default cursor for native OS feel
-        self.about_btn.clicked.connect(self.open_about_tab)
+        self.about_btn.setCursor(Qt.PointingHandCursor)
+        self.about_btn.clicked.connect(self.open_coffee_link)
         coffee_layout.addWidget(self.about_btn)
         self._top_right_update_mode = False
         # Removed: _refresh_top_right_update_cta - no longer modifying Discord/About buttons
@@ -8887,7 +8888,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     dialog_title,
                     "Your installation has completed successfully!\n\n"
-                    "Please disconnect your Y1 and hold the middle button to turn it on."
+                    "Please disconnect your Y1 and hold the middle button to turn it on.\n\n"
+                    "If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
             else:
                 # Show error message and revert to startup state
@@ -14404,12 +14406,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Get display version (either version number or published date)
             published_date = release.get('published_at', '')
-            display_version = get_display_version(version_info, published_date)
+            is_prerelease = release.get('prerelease', False)
+            display_version = get_display_version(version_info, published_date, is_prerelease)
             
             # Base text used for all variant rows for this release
             base_header = f"{display_version}\n"
             software_name = package_info.get('name', 'Unknown') if package_info else 'Unknown'
-            base_header += f"Software: {software_name}\n"
             
             # Add designations as formatted text (nightly, 360p tag flag, etc.)
             if version_info.get('designations'):
@@ -14417,8 +14419,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 base_header += f"{designations_text}\n"
             
             # Always show published date when available (including nightly builds)
+            # Suppress if already shown at the top of the header
             date_line = ""
-            if published_date:
+            if published_date and not str(display_version).startswith("Released:"):
                 try:
                     from datetime import datetime
                     date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
@@ -14460,9 +14463,6 @@ class FirmwareDownloaderGUI(QMainWindow):
                     if resolution == '240p':
                         display_text += "Compatible with iPod Classic/Video Rockbox themes\n"
                     
-                    # Optional debug-ish hint: which hardware type this row currently maps to
-                    if variant_type in ('A', 'B'):
-                        display_text += f"Device Type: Type {variant_type}\n"
                     
                     if date_line:
                         display_text += date_line
@@ -16589,6 +16589,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Help with common issues"""
         import webbrowser
         webbrowser.open("https://innioasis.app/Troubleshooting")
+
+    def open_coffee_link(self):
+        """Open ko-fi link to support developers"""
+        import webbrowser
+        webbrowser.open("https://ko-fi.com/teamslide#checkoutModal")
 
     def open_about_tab(self):
         """Open Settings dialog to About tab"""
@@ -25224,7 +25229,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"✅ update.zip has been sent to your Y1.\n\n"
                     f"✅ Update script executed successfully via ADB.\n\n"
                     f"Your Y1 will restart and apply the update automatically.\n\n"
-                    f"After reboot, the app will automatically detect Fast Update capability."
+                    f"After reboot, the app will automatically detect Fast Update capability.\n\n"
+                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
                 # Delay ADB status refresh after reboot (device needs time to initialize)
                 # Wait 30 seconds after expected reboot time for device to fully initialize
@@ -25240,7 +25246,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"📱 Installation Instructions:\n\n"
                     f"1. Safely disconnect your Y1\n\n"
                     f"2. Go to Main Menu > System and click Firmware Update\n\n"
-                    f"3. The update process will now run in the background and automatically restart the device once it is done"
+                    f"3. The update process will now run in the background and automatically restart the device once it is done\n\n"
+                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
             else:
                 # ADB transfer but script didn't run - show simple message
@@ -25248,7 +25255,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     "Update Sent Successfully! ✅",
                     f"✅ update.zip has been sent to your Y1.\n\n"
-                    f"Please check your device for update status."
+                    f"Please check your device for update status.\n\n"
+                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
         else:
             # Fail gracefully - don't show error dialog, just update status
