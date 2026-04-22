@@ -6288,6 +6288,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize UI first for immediate responsiveness
         self.init_ui()
         QTimer.singleShot(0, self.update_update_badges)
+        QTimer.singleShot(0, self._show_y1_hardware_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -6364,6 +6365,24 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.status_clear_timer = None
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
+
+    def _show_y1_hardware_notice(self):
+        """Show one-time important notice about Y1 3.0.7 hardware at launch."""
+        msg = QMessageBox(self)
+        msg.setWindowTitle("Important notice")
+        msg.setIcon(QMessageBox.Warning)
+        msg.setTextFormat(Qt.RichText)
+        msg.setText(
+            "NOTICE: Due to recent hardware changes to the Y1, Innioasis Updater and Rockbox-Y1 are not "
+            "compatible with Y1s that came with OS 3.0.7 out of the box and will break your device if used "
+            "in combination or seperately. If this has happened to you please contact "
+            '<a href="https://www.innioasis.com/pages/contact">Innioasis</a> for assistance. '
+            "Existing Users of devices running OS 3.0.2 or Rockbox-Y1 are not affected."
+        )
+        msg.setStandardButtons(QMessageBox.Ok)
+        for label in msg.findChildren(QLabel):
+            label.setOpenExternalLinks(True)
+        msg.exec()
 
     def update_creator_label(self):
         """Update the creator label text and styling based on theme."""
