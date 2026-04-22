@@ -32,11 +32,17 @@
 </head>
 
 <body>
-    <div class="y1-notice-banner" role="alert">
-        <p>
-            <strong>NOTICE:</strong> Due to recent hardware changes to the Y1, Innioasis Updater and Rockbox-Y1 are not compatible with Y1s that came with OS 3.0.7 out of the box and will break your device if used in combination or seperately. If this has happened to you please contact <a href="https://www.innioasis.com/pages/contact" rel="noopener noreferrer">Innioasis</a> for assistance. Existing Users of devices running OS 3.0.2 or Rockbox-Y1 are not affected.
-        </p>
-    </div>
+    <dialog class="y1-notice-dialog" id="y1-notice-dialog" aria-modal="true" aria-labelledby="y1-notice-title" role="alertdialog">
+        <div class="y1-notice-dialog__inner">
+            <h2 id="y1-notice-title" class="y1-notice-dialog__title">NOTICE</h2>
+            <p class="y1-notice-dialog__text">
+                Due to recent hardware changes to the Y1, Innioasis Updater and Rockbox-Y1 are not compatible with Y1s that came with OS 3.0.7 out of the box and will break your device if used in combination or seperately. If this has happened to you please contact <a href="https://www.innioasis.com/pages/contact" rel="noopener noreferrer">Innioasis</a> for assistance. Existing Users of devices running OS 3.0.2 or Rockbox-Y1 are not affected.
+            </p>
+            <form method="dialog" class="y1-notice-dialog__actions">
+                <button type="submit" class="y1-notice-dialog__btn" autofocus>I understand</button>
+            </form>
+        </div>
+    </dialog>
     <div id="nav-root"></div>
 
     <div class="hero" id="home">
@@ -547,6 +553,14 @@
 
             updateFilter();
         })
+    </script>
+    <script>
+        (function () {
+            var d = document.getElementById('y1-notice-dialog');
+            if (d && typeof d.showModal === 'function') {
+                d.showModal();
+            }
+        })();
     </script>
 
 </body>
