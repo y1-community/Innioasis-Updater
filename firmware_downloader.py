@@ -6373,11 +6373,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg.setIcon(QMessageBox.Warning)
         msg.setTextFormat(Qt.RichText)
         msg.setText(
-            "NOTICE: Due to recent hardware changes to the Y1, Innioasis Updater and Rockbox-Y1 are not "
-            "compatible with Y1s that came with OS 3.0.7 out of the box and will break your device if used "
-            "in combination or seperately. If this has happened to you please contact "
-            '<a href="https://www.innioasis.com/pages/contact">Innioasis</a> for assistance. '
-            "Existing Users of devices running OS 3.0.2 or Rockbox-Y1 are not affected."
+            "Due to recent hardware changes to the Y1, Rockbox-Y1 is not compatible with Y1s that came "
+            "with OS 3.0.7 out of the box and will break your device. If this has happened to you please "
+            "try installing 3.0.7 in Updater, and if this does not work, please contact "
+            '<a href="https://innioasis.com/pages/download">Innioasis</a> for assistance. '
+            "Existing Users of devices running Rockbox-Y1 are not affected."
         )
         msg.setStandardButtons(QMessageBox.Ok)
         for label in msg.findChildren(QLabel):
