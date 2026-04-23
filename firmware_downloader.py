@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.7.3"
+APP_VERSION = "1.9.7.4"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -13650,6 +13650,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self._show_offline_message(has_tokens)
                 self.download_btn.setEnabled(False)
                 return
+
+            # Keep newest versions at the top using numeric version ordering.
+            self._sort_package_list_releases(group_by_software=False)
             
             # Select first item
             if self.package_list.count() > 0:
@@ -14088,39 +14091,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self._show_offline_message(has_tokens)
                 return
             
-            # Sort releases by software name (alphabetical), then by date (newest first)
+            # Sort releases by software name (alphabetical), then by version (newest first).
             try:
-                # Get all items from list
-                items = []
-                for i in range(self.package_list.count()):
-                    item = self.package_list.item(i)
-                    if item and item.data(Qt.UserRole):
-                        items.append((item, item.data(Qt.UserRole)))
-                
-                # Sort by software name, then by date
-                def sort_key(item_data):
-                    release = item_data[1]
-                    software_name = release.get('software_name', '')
-                    published_at = release.get('published_at', '')
-                    try:
-                        from datetime import datetime
-                        date_obj = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
-                        timestamp = date_obj.timestamp()
-                    except:
-                        timestamp = 0
-                    return (software_name, -timestamp)
-                
-                items.sort(key=sort_key)
-                
-                # Clear and re-add sorted items
-                self.package_list.clear()
-                for item, release in items:
-                    software_name = release.get('software_name', 'Unknown')
-                    display_text = f"{software_name} - {release['tag_name']}"
-                    new_item = QListWidgetItem(display_text)
-                    new_item.setData(Qt.UserRole, release)
-                    self.package_list.addItem(new_item)
-                
+                self._sort_package_list_releases(group_by_software=True)
             except Exception as e:
                 silent_print(f"Error sorting releases: {e}")
             
@@ -14364,6 +14337,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Auto-filter for Fast Update: If only pre-releases have update.zip, auto-set filters
             self._auto_filter_for_fast_update()
+
+            # Re-sort after batched loading so latest release stays on top.
+            self._sort_package_list_releases(group_by_software=False)
             
             # Show left panel if releases are available
             self._show_left_panel()
@@ -14398,6 +14374,58 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.package_list.clear()
             self.package_list.addItem("Unable To Load Releases")
         # If we have cached releases, silently continue using them
+
+    def _release_sort_key(self, release):
+        """Build a sortable key so newer semantic versions appear first."""
+        tag_name = (release or {}).get('tag_name', '')
+        version_info = parse_version_designations(tag_name)
+        clean_version = str(version_info.get('clean_version', '')).lstrip('vV')
+        numeric_version = self._parse_semver(clean_version)
+        published_at = (release or {}).get('published_at', '')
+        try:
+            published_timestamp = datetime.fromisoformat(published_at.replace('Z', '+00:00')).timestamp()
+        except Exception:
+            published_timestamp = 0
+        return (
+            1 if numeric_version is not None else 0,
+            numeric_version or tuple(),
+            published_timestamp,
+            str(tag_name).lower(),
+        )
+
+    def _sort_package_list_releases(self, group_by_software=False):
+        """Sort release rows in the package list in-place."""
+        if not hasattr(self, 'package_list') or self.package_list is None:
+            return
+
+        release_items = []
+        other_items = []
+
+        try:
+            while self.package_list.count() > 0:
+                item = self.package_list.takeItem(0)
+                if item is None:
+                    continue
+                data = item.data(Qt.UserRole)
+                if isinstance(data, dict) and not data.get('is_link'):
+                    release_items.append(item)
+                else:
+                    other_items.append(item)
+        except Exception as sort_err:
+            silent_print(f"Error extracting list items for sorting: {sort_err}")
+            return
+
+        release_items.sort(key=lambda it: self._release_sort_key(it.data(Qt.UserRole)), reverse=True)
+
+        if group_by_software:
+            release_items.sort(
+                key=lambda it: str((it.data(Qt.UserRole) or {}).get('software_name', '')).lower()
+            )
+
+        for item in release_items:
+            self.package_list.addItem(item)
+        for item in other_items:
+            self.package_list.addItem(item)
 
     def _add_release_to_list(self, release):
         """Add a single release to the list with detailed information"""
@@ -14616,22 +14644,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 else:
                     failed_repos.append(repo)
 
-        # Sort releases by software name (alphabetical), then by date (newest first within each software)
-        # Use a custom sorting key that sorts alphabetically by software name, then by date (newest first)
-        def sort_key(release):
-            software_name = release.get('software_name', '')
-            published_at = release.get('published_at', '')
-            # Convert date string to a comparable format for sorting (newest first)
-            try:
-                from datetime import datetime
-                date_obj = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
-                timestamp = date_obj.timestamp()
-            except:
-                timestamp = 0
-            # Return a tuple: (software_name, -timestamp) where negative timestamp ensures newest first
-            return (software_name, -timestamp)
-
-        all_releases.sort(key=sort_key)
+        # Sort by software name (A-Z), then by version (newest first) within each software.
+        all_releases.sort(key=self._release_sort_key, reverse=True)
+        all_releases.sort(key=lambda release: str(release.get('software_name', '')).lower())
 
         # Show error message if no releases were found
         if not all_releases and failed_repos:
