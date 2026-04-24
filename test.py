@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.5.1"
+APP_VERSION = "1.9.7.5"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -147,7 +147,7 @@ def parse_version_designations(version_name):
             
         # Handle special cases first
         if part == 'nightly':
-            designations.append('Nightly')
+            continue
         elif part == '360p':
             designations.append('360p / Y1 Theme Compatible')
         elif part == 'wifi' or part == 'wi-fi':
@@ -202,19 +202,20 @@ def parse_version_designations(version_name):
         'designations': designations
     }
 
-def get_display_version(version_info, published_date):
-    """Get the display version - either version number or published date based on length"""
+def get_display_version(version_info, published_date, is_prerelease=False):
+    """Get the display version - either version number or published date based on length or prerelease status"""
     version_text = version_info['clean_version']
+    is_nightly = 'nightly' in version_text.lower()
     
-    # If version is longer than 8 characters, use published date instead
-    if len(version_text) > 8:
+    # If version is longer than 8 characters or it's a pre-release/nightly, use published date instead
+    if len(version_text) > 8 or is_prerelease or is_nightly:
         if published_date:
             try:
                 from datetime import datetime
                 date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
-                return format_fancy_date(date_obj)
+                return f"Released: {format_fancy_date(date_obj)}"
             except:
-                return published_date
+                return f"Released: {published_date}"
         else:
             return "Unknown Date"
     
@@ -941,6 +942,165 @@ def get_zip_path(repo_name, version):
     safe_repo_name = repo_name.replace('/', '_')
     return ZIP_STORAGE_DIR / f"{safe_repo_name}_{version}.zip"
 
+def _parse_rom_asset_variant(asset, tag_name=''):
+    """
+    Classify a rom*.zip asset into hardware type (A/B) and resolution.
+    
+    New-style releases use filenames like:
+      - rom_240p.zip
+      - rom_240p_type_b.zip
+      - rom_360p.zip
+      - rom_360p_type_b.zip
+    
+    Legacy releases used a single rom.zip per tag, with Type B encoded in the tag
+    name (e.g. '360p-type-b-v0.3'). For those, we treat rom.zip as Type B.
+    """
+    try:
+        name = asset.get('name', '')
+        lower = name.lower()
+        # Only consider rom*.zip
+        if not fnmatch.fnmatch(lower, 'rom*.zip'):
+            return None
+        
+        tag_lower = (tag_name or '').lower()
+        
+        # Determine hardware type:
+        # - New scheme: filename contains '_type_b'
+        # - Legacy scheme: tag contains 'type-b'
+        is_type_b = '_type_b' in lower or 'type-b' in lower or ' type b' in lower
+        if not is_type_b and 'type-b' in tag_lower:
+            is_type_b = True
+        hw_type = 'B' if is_type_b else 'A'
+        
+        # Determine resolution from filename; default to 'native' when not specified
+        if '_360p' in lower:
+            resolution = '360p'
+        elif '_240p' in lower:
+            resolution = '240p'
+        else:
+            # Plain rom.zip or rom_type_b.zip etc. -> assume native panel resolution
+            resolution = 'native'
+        
+        return {
+            'asset': asset,
+            'type': hw_type,        # 'A' or 'B'
+            'resolution': resolution,  # '360p', '240p', or 'native'
+        }
+    except Exception:
+        return None
+
+def extract_rom_variants_from_assets(assets, tag_name=''):
+    """Return a list of rom*.zip variants for a release, including type/resolution metadata."""
+    variants = []
+    for asset in assets or []:
+        variant = _parse_rom_asset_variant(asset, tag_name)
+        if variant:
+            variants.append(variant)
+    return variants
+
+def _resolution_priority(resolution):
+    """
+    Priority for choosing a default ROM:
+      1. 360p (native Y1 resolution, preferred)
+      2. native (unspecified, assume panel-native build)
+      3. 240p (upscaled Rockbox themes etc.)
+      4. anything else
+    """
+    if resolution == '360p':
+        return 0
+    if resolution == 'native':
+        return 1
+    if resolution == '240p':
+        return 2
+    return 3
+
+def select_preferred_rom_asset(variants, selected_type=None):
+    """
+    Select the best rom*.zip asset from a list of variants.
+    
+    - selected_type:
+        'A' -> prefer Type A, fall back to Type B if needed
+        'B' -> prefer Type B, fall back to Type A if needed
+        None -> prefer Type A, then Type B (for generic/latest-release lookups)
+    - Within a type, prefer higher resolution priority as defined above.
+    """
+    if not variants:
+        return None
+    
+    # Normalize type selection
+    st = (selected_type or 'A').upper()
+    if st not in ('A', 'B'):
+        st = 'A'
+    
+    primary_type = st
+    fallback_type = 'B' if st == 'A' else 'A'
+    
+    def _best_for_type(t):
+        candidates = [v for v in variants if v.get('type') == t]
+        if not candidates:
+            return None
+        # Choose by resolution priority, then by asset name for stability
+        return min(
+            candidates,
+            key=lambda v: (
+                _resolution_priority(v.get('resolution')),
+                v.get('asset', {}).get('name', '')
+            )
+        )
+    
+    best = _best_for_type(primary_type)
+    if not best:
+        best = _best_for_type(fallback_type)
+    return best
+
+def select_rom_asset_for_resolution(variants, selected_type, resolution):
+    """
+    Select the best ROM asset for a specific resolution and hardware type.
+    Resolution is one of: '360p', '240p', 'native'.
+    """
+    if not variants:
+        return None
+    
+    # Filter to requested resolution first, then apply normal preference logic
+    filtered = [v for v in variants if v.get('resolution') == resolution]
+    if not filtered:
+        return None
+    return select_preferred_rom_asset(filtered, selected_type=selected_type)
+
+def release_supports_device_type(release, selected_type):
+    """
+    Determine if a release has at least one rom*.zip variant matching the
+    requested hardware type (A/B). Falls back to tag-based detection when
+    no ROM variants are present.
+    """
+    if not selected_type:
+        return True
+    
+    st = selected_type.upper()
+    if st not in ('A', 'B'):
+        return True
+    
+    tag_name = release.get('tag_name', '')
+    assets = release.get('assets', [])
+    # Prefer precomputed variants if present (from API), otherwise extract on the fly
+    variants = release.get('rom_variants') or extract_rom_variants_from_assets(assets, tag_name)
+    
+    if variants:
+        has_type_a = any(v.get('type') == 'A' for v in variants)
+        has_type_b = any(v.get('type') == 'B' for v in variants)
+        
+        if st == 'B':
+            return has_type_b
+        else:
+            # For Type A, only show releases that actually have a Type A ROM
+            return has_type_a
+    
+    # Fallback for very old releases without explicit rom*.zip assets
+    has_type_b = 'type-b' in (tag_name or '').lower()
+    if st == 'B':
+        return has_type_b
+    return not has_type_b
+
 def get_update_zip_cache_path(update_zip_url):
     """Get the cache path for an update.zip file based on URL"""
     # Create a safe filename from the URL
@@ -1524,19 +1684,21 @@ class GitHubAPI:
                 release_data = response.json()
                 assets = release_data.get('assets', [])
 
-                # Find firmware assets
-                zip_asset = None
-                for asset in assets:
-                    if asset['name'].lower() == 'rom.zip':
-                        zip_asset = asset
-                        break
+                # Find firmware assets (rom*.zip, including new-style variants)
+                tag_name = release_data.get('tag_name', '')
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                zip_asset = preferred['asset'] if preferred else None
 
                 result = {
                     'tag_name': release_data.get('tag_name', ''),
                     'name': release_data.get('name', ''),
                     'body': release_data.get('body', ''),
                     'download_url': zip_asset['browser_download_url'] if zip_asset else None,
-                    'asset_name': zip_asset['name'] if zip_asset else None
+                    'asset_name': zip_asset['name'] if zip_asset else None,
+                    'assets': assets,
+                    'rom_variants': rom_variants,
+                    'source_repo': repo
                 }
                 
                 # Cache this successful response
@@ -1563,19 +1725,21 @@ class GitHubAPI:
                 release_data = response.json()
                 assets = release_data.get('assets', [])
 
-                # Find firmware assets
-                zip_asset = None
-                for asset in assets:
-                    if asset['name'].lower() == 'rom.zip':
-                        zip_asset = asset
-                        break
+                # Find firmware assets (rom*.zip, including new-style variants)
+                tag_name = release_data.get('tag_name', '')
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                zip_asset = preferred['asset'] if preferred else None
 
                 result = {
                     'tag_name': release_data.get('tag_name', ''),
                     'name': release_data.get('name', ''),
                     'body': release_data.get('body', ''),
                     'download_url': zip_asset['browser_download_url'] if zip_asset else None,
-                    'asset_name': zip_asset['name'] if zip_asset else None
+                    'asset_name': zip_asset['name'] if zip_asset else None,
+                    'assets': assets,
+                    'rom_variants': rom_variants,
+                    'source_repo': repo
                 }
                 
                 # Cache this successful response
@@ -1646,15 +1810,12 @@ class GitHubAPI:
                         assets = release.get('assets', [])
                         silent_print(f"Processing release: {tag_name} (prerelease={is_prerelease}) with {len(assets)} assets")
 
-                        # Find firmware assets
-                        zip_asset = None
-                        for asset in assets:
-                            if asset['name'].lower() == 'rom.zip':
-                                zip_asset = asset
-                                silent_print(f"Found zip asset: {asset['name']}")
-                                break
+                        # Find firmware assets (rom*.zip, including new-style variants)
+                        rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                        preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                        zip_asset = preferred['asset'] if preferred else None
 
-                        if zip_asset:  # Include releases with any zip file
+                        if zip_asset:
                             releases.append({
                                 'tag_name': release.get('tag_name', ''),
                                 'name': release.get('name', ''),
@@ -1664,13 +1825,15 @@ class GitHubAPI:
                                 'asset_name': zip_asset['name'],
                                 'asset_size': zip_asset.get('size', 0),
                                 'assets': release.get('assets', []),  # Include full assets array for update.zip detection
-                                'prerelease': is_prerelease  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'rom_variants': rom_variants,
+                                'prerelease': is_prerelease,  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'source_repo': repo
                             })
-                            silent_print(f"Added release {tag_name} (prerelease={is_prerelease}) with zip asset")
+                            silent_print(f"Added release {tag_name} (prerelease={is_prerelease}) with rom*.zip asset")
                         else:
-                            silent_print(f"Skipped release {tag_name} - no rom.zip found")
+                            silent_print(f"Skipped release {tag_name} - no rom*.zip assets found")
 
-                    silent_print(f"Returning {len(releases)} releases with zip assets")
+                    silent_print(f"Returning {len(releases)} releases with rom*.zip assets")
                     return releases
 
         # Try unauthenticated as fallback (with rate limiting)
@@ -1699,11 +1862,9 @@ class GitHubAPI:
                         if 'stable' in tag_name.lower():
                             is_prerelease = False
                         assets = release.get('assets', [])
-                        zip_asset = None
-                        for asset in assets:
-                            if asset['name'].lower() == 'rom.zip':
-                                zip_asset = asset
-                                break
+                        rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                        preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                        zip_asset = preferred['asset'] if preferred else None
                         
                         if zip_asset:
                             releases.append({
@@ -1715,7 +1876,9 @@ class GitHubAPI:
                                 'asset_name': zip_asset['name'],
                                 'asset_size': zip_asset.get('size', 0),
                                 'assets': release.get('assets', []),  # Include full assets array for update.zip detection
-                                'prerelease': is_prerelease  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'rom_variants': rom_variants,
+                                'prerelease': is_prerelease,  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                                'source_repo': repo
                             })
                     
                     if releases:
@@ -1748,14 +1911,12 @@ class GitHubAPI:
                         is_prerelease = False
                     assets = release.get('assets', [])
 
-                    # Find any zip asset (more flexible than just rom.zip)
-                    zip_asset = None
-                    for asset in assets:
-                        if asset['name'].lower() == 'rom.zip':
-                            zip_asset = asset
-                            break
+                    # Find rom*.zip assets (new-style and legacy)
+                    rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                    preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                    zip_asset = preferred['asset'] if preferred else None
 
-                    if zip_asset:  # Include releases with any zip file
+                    if zip_asset:
                         releases.append({
                             'tag_name': tag_name,
                             'name': release.get('name', ''),
@@ -1765,10 +1926,12 @@ class GitHubAPI:
                             'asset_name': zip_asset['name'],
                             'asset_size': zip_asset.get('size', 0),
                             'assets': release.get('assets', []),  # Include full assets array for update.zip detection
-                            'prerelease': is_prerelease  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                            'rom_variants': rom_variants,
+                            'prerelease': is_prerelease,  # GitHub's official pre-release flag (overridden if "stable" in tag)
+                            'source_repo': repo
                         })
 
-                silent_print(f"Unauthenticated: Returning {len(releases)} releases with zip assets")
+                silent_print(f"Unauthenticated: Returning {len(releases)} releases with rom*.zip assets")
                 # Cache the successful unauthenticated response
                 self.cache_releases(repo, releases)
                 return releases
@@ -2828,19 +2991,18 @@ class ProgressiveReleaseWorker(QThread):
                 if self.stop_requested:
                     return
                 
-                # Check if release has rom.zip
                 assets = release_data.get('assets', [])
-                zip_asset = None
-                for asset in assets:
-                    if asset['name'].lower() == 'rom.zip':
-                        zip_asset = asset
-                        break
+                tag_name = release_data.get('tag_name', '')
+                # Extract ROM variants from assets (rom*.zip, including new-style names)
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
+                zip_asset = preferred['asset'] if preferred else None
                 
                 if not zip_asset:
-                    continue  # Skip releases without rom.zip
+                    # Skip releases that don't ship any rom*.zip asset
+                    continue
                 
                 # Override prerelease flag if "stable" is in tag name
-                tag_name = release_data.get('tag_name', '')
                 is_prerelease = release_data.get('prerelease', False)
                 if 'stable' in tag_name.lower():
                     is_prerelease = False
@@ -2855,6 +3017,7 @@ class ProgressiveReleaseWorker(QThread):
                     'asset_name': zip_asset['name'],
                     'asset_size': zip_asset.get('size', 0),
                     'assets': release_data.get('assets', []),
+                    'rom_variants': rom_variants,
                     'prerelease': is_prerelease  # Overridden if "stable" in tag
                 }
                 
@@ -2907,14 +3070,9 @@ class ProgressiveReleaseWorker(QThread):
         if 'base' in tag_name.lower():
             return False
         
-        # Check type filter
-        has_type_b = 'type-b' in tag_name.lower()
-        if self.selected_type == 'B':
-            if not has_type_b:
-                return False
-        else:
-            if has_type_b:
-                return False
+        # Check type filter based on ROM assets (fallbacks to tag when needed)
+        if not release_supports_device_type(release, self.selected_type):
+            return False
         
         # Check pre-release filter
         # When unchecked: Show only stable builds (hide pre-releases and nightly)
@@ -4394,7 +4552,7 @@ class URLDownloadWorker(QThread):
                         # Default based on URL
                         if 'themeid' in self.url or 'themes.rockbox.org' in self.url:
                             filename = 'theme.zip'
-                        elif 'rom.zip' in self.url.lower() or 'update.zip' in self.url.lower():
+                        elif ('rom' in self.url.lower() and '.zip' in self.url.lower()) or ('update' in self.url.lower() and '.zip' in self.url.lower()):
                             filename = self.url.split('/')[-1].split('?')[0]
                         else:
                             filename = 'downloaded_file'
@@ -4403,7 +4561,7 @@ class URLDownloadWorker(QThread):
                     if not filename:
                         if 'themeid' in self.url or 'themes.rockbox.org' in self.url:
                             filename = 'theme.zip'
-                        elif 'rom.zip' in self.url.lower() or 'update.zip' in self.url.lower():
+                        elif ('rom' in self.url.lower() and '.zip' in self.url.lower()) or ('update' in self.url.lower() and '.zip' in self.url.lower()):
                             filename = self.url.split('/')[-1].split('?')[0]
                         else:
                             filename = 'downloaded_file'
@@ -6130,6 +6288,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize UI first for immediate responsiveness
         self.init_ui()
         QTimer.singleShot(0, self.update_update_badges)
+        QTimer.singleShot(0, self._show_y1_hardware_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -6206,6 +6365,24 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.status_clear_timer = None
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
+
+    def _show_y1_hardware_notice(self):
+        """Show one-time important notice about Y1 3.0.7 hardware at launch."""
+        msg = QMessageBox(self)
+        msg.setWindowTitle("Important notice")
+        msg.setIcon(QMessageBox.Warning)
+        msg.setTextFormat(Qt.RichText)
+        msg.setText(
+            "Due to recent hardware changes to the Y1, Rockbox-Y1 is not compatible with Y1s that came "
+            "with OS 3.0.7 out of the box and will break your device. If this has happened to you please "
+            "try installing 3.0.7 in Updater, and if this does not work, please contact "
+            '<a href="https://innioasis.com/pages/download">Innioasis</a> for assistance. '
+            "Existing Users of devices running Rockbox-Y1 are not affected."
+        )
+        msg.setStandardButtons(QMessageBox.Ok)
+        for label in msg.findChildren(QLabel):
+            label.setOpenExternalLinks(True)
+        msg.exec()
 
     def update_creator_label(self):
         """Update the creator label text and styling based on theme."""
@@ -7872,14 +8049,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.discord_btn.clicked.connect(self.open_discord_link)
         coffee_layout.addWidget(self.discord_btn)
 
-        # About button (opens Settings dialog to About tab) - using native styling
+        # About / Ko-fi button (opens ko-fi link in browser) - using native styling
 # 2025-11-09 22:10:00 UTC - original: Button label permanently read "About" and navigated directly to the About tab.
-        self.about_btn = QPushButton("About")
-        self.about_btn_base_text = "About"
+        self.about_btn = QPushButton("☕ Buy Us A Coffee")
+        self.about_btn_base_text = "☕ Buy Us A Coffee"
         self.about_btn_base_tooltip = self.about_btn.toolTip() or ""
         # Use native styling - no custom stylesheet for automatic theme adaptation
-        # Use default cursor for native OS feel
-        self.about_btn.clicked.connect(self.open_about_tab)
+        self.about_btn.setCursor(Qt.PointingHandCursor)
+        self.about_btn.clicked.connect(self.open_coffee_link)
         coffee_layout.addWidget(self.about_btn)
         self._top_right_update_mode = False
         # Removed: _refresh_top_right_update_cta - no longer modifying Discord/About buttons
@@ -8730,7 +8907,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     dialog_title,
                     "Your installation has completed successfully!\n\n"
-                    "Please disconnect your Y1 and hold the middle button to turn it on."
+                    "Please disconnect your Y1 and hold the middle button to turn it on.\n\n"
+                    "If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
             else:
                 # Show error message and revert to startup state
@@ -13051,12 +13229,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Always use method functionality removed
 
     def populate_device_type_combo(self):
-        """Dynamically populate device type combo based on available release tags"""
+        """Dynamically populate device type combo based on available ROM variants"""
         self.device_type_combo.clear()
 
-        # Always add Type A and Type B options since we can determine this from release tags
-        # Type A: releases without 'type-b' in tag
-        # Type B: releases with 'type-b' in tag
+        # Always offer Type A and Type B options; actual availability is determined
+        # per-release based on rom*.zip assets (and legacy tag names for old builds).
         self.device_type_combo.addItem("Type A", "A")
         self.device_type_combo.addItem("Type B", "B")
 
@@ -13127,19 +13304,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.firmware_combo.blockSignals(was_blocked)
 
 
-    def _release_matches_type_filter(self, tag_name, selected_type):
-        """Check if a release tag matches the selected device type filter"""
-        if not selected_type:
-            return True
-        
-        has_type_b = 'type-b' in tag_name.lower()
-        
-        if selected_type == 'B':
-            # Type B filter: only show releases with 'type-b' in tag
-            return has_type_b
-        else:
-            # Type A filter (or other types): show releases without 'type-b' in tag
-            return not has_type_b
+    def _release_matches_type_filter(self, release, selected_type):
+        """
+        Check if a release matches the selected device type filter.
+        Uses ROM variants (rom*.zip) when available, with legacy tag-name
+        fallback for very old releases.
+        """
+        return release_supports_device_type(release, selected_type)
 
     def _should_exclude_release(self, tag_name):
         """Check if a release should be excluded from listings (e.g., contains 'base')"""
@@ -13227,14 +13398,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     if 'base' in tag_name.lower():
                         continue
                     
-                    # Check type filter
-                    has_type_b = 'type-b' in tag_name.lower()
-                    if selected_type == 'B':
-                        if not has_type_b:
-                            continue
-                    else:
-                        if has_type_b:
-                            continue
+                    # Check type filter based on ROM variants (with tag-name fallback)
+                    if not release_supports_device_type(release, selected_type):
+                        continue
                     
                     # Check if it's a pre-release or nightly
                     is_prerelease = release.get('prerelease', False)
@@ -13432,8 +13598,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     # Reset the flag after using it
                     self._user_manually_changed_filter = False
             
-            # Filter and display cached releases (no limit)
-            for release in cached_releases:
+            # Filter and display cached releases (no limit), newest version first.
+            sorted_cached_releases = sorted(cached_releases, key=self._release_sort_key, reverse=True)
+            for release in sorted_cached_releases:
                 try:
                     tag_name = release.get('tag_name', '')
                     
@@ -13441,14 +13608,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     if 'base' in tag_name.lower():
                         continue
                     
-                    # Check type filter
-                    has_type_b = 'type-b' in tag_name.lower()
-                    if selected_type == 'B':
-                        if not has_type_b:
-                            continue
-                    else:
-                        if has_type_b:
-                            continue
+                    # Check type filter based on ROM variants / tag
+                    if not release_supports_device_type(release, selected_type):
+                        continue
                     
                     # Check pre-release filter
                     if not show_prereleases:
@@ -13489,6 +13651,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self._show_offline_message(has_tokens)
                 self.download_btn.setEnabled(False)
                 return
+
+            # Keep newest versions at the top using numeric version ordering.
+            self._sort_package_list_releases(group_by_software=False)
             
             # Select first item
             if self.package_list.count() > 0:
@@ -13728,7 +13893,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             processed = 0
             releases_to_add = []
             
-            for release in self._pending_releases[:]:
+            pending_sorted = sorted(self._pending_releases[:], key=self._release_sort_key, reverse=True)
+            for release in pending_sorted:
                 if processed >= batch_size:
                     break
                 
@@ -13755,6 +13921,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except (RuntimeError, AttributeError) as e:
                     silent_print(f"Error adding release to list: {e}")
                     continue
+
+            # Maintain numeric descending ordering during progressive updates.
+            if releases_to_add:
+                self._sort_package_list_releases(group_by_software=False)
             
             # Show left panel when first release is loaded
             if self.releases_loaded_count > 0 and not self.left_panel.isVisible():
@@ -13841,7 +14011,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             processed = 0
             releases_to_add = []
             
-            for release in self._all_releases_pending[:]:
+            pending_sorted = sorted(self._all_releases_pending[:], key=self._release_sort_key, reverse=True)
+            for release in pending_sorted:
                 if processed >= batch_size:
                     break
                 
@@ -13927,39 +14098,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self._show_offline_message(has_tokens)
                 return
             
-            # Sort releases by software name (alphabetical), then by date (newest first)
+            # Sort releases by software name (alphabetical), then by version (newest first).
             try:
-                # Get all items from list
-                items = []
-                for i in range(self.package_list.count()):
-                    item = self.package_list.item(i)
-                    if item and item.data(Qt.UserRole):
-                        items.append((item, item.data(Qt.UserRole)))
-                
-                # Sort by software name, then by date
-                def sort_key(item_data):
-                    release = item_data[1]
-                    software_name = release.get('software_name', '')
-                    published_at = release.get('published_at', '')
-                    try:
-                        from datetime import datetime
-                        date_obj = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
-                        timestamp = date_obj.timestamp()
-                    except:
-                        timestamp = 0
-                    return (software_name, -timestamp)
-                
-                items.sort(key=sort_key)
-                
-                # Clear and re-add sorted items
-                self.package_list.clear()
-                for item, release in items:
-                    software_name = release.get('software_name', 'Unknown')
-                    display_text = f"{software_name} - {release['tag_name']}"
-                    new_item = QListWidgetItem(display_text)
-                    new_item.setData(Qt.UserRole, release)
-                    self.package_list.addItem(new_item)
-                
+                self._sort_package_list_releases(group_by_software=True)
             except Exception as e:
                 silent_print(f"Error sorting releases: {e}")
             
@@ -14203,6 +14344,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Auto-filter for Fast Update: If only pre-releases have update.zip, auto-set filters
             self._auto_filter_for_fast_update()
+
+            # Re-sort after batched loading so latest release stays on top.
+            self._sort_package_list_releases(group_by_software=False)
             
             # Show left panel if releases are available
             self._show_left_panel()
@@ -14238,11 +14382,64 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.package_list.addItem("Unable To Load Releases")
         # If we have cached releases, silently continue using them
 
+    def _release_sort_key(self, release):
+        """Build a sortable key so newer semantic versions appear first."""
+        tag_name = (release or {}).get('tag_name', '')
+        version_info = parse_version_designations(tag_name)
+        clean_version = str(version_info.get('clean_version', '')).lstrip('vV')
+        numeric_version = self._parse_semver(clean_version)
+        published_at = (release or {}).get('published_at', '')
+        try:
+            published_timestamp = datetime.fromisoformat(published_at.replace('Z', '+00:00')).timestamp()
+        except Exception:
+            published_timestamp = 0
+        return (
+            1 if numeric_version is not None else 0,
+            numeric_version or tuple(),
+            published_timestamp,
+            str(tag_name).lower(),
+        )
+
+    def _sort_package_list_releases(self, group_by_software=False):
+        """Sort release rows in the package list in-place."""
+        if not hasattr(self, 'package_list') or self.package_list is None:
+            return
+
+        release_items = []
+        other_items = []
+
+        try:
+            while self.package_list.count() > 0:
+                item = self.package_list.takeItem(0)
+                if item is None:
+                    continue
+                data = item.data(Qt.UserRole)
+                if isinstance(data, dict) and not data.get('is_link'):
+                    release_items.append(item)
+                else:
+                    other_items.append(item)
+        except Exception as sort_err:
+            silent_print(f"Error extracting list items for sorting: {sort_err}")
+            return
+
+        release_items.sort(key=lambda it: self._release_sort_key(it.data(Qt.UserRole)), reverse=True)
+
+        if group_by_software:
+            release_items.sort(
+                key=lambda it: str((it.data(Qt.UserRole) or {}).get('software_name', '')).lower()
+            )
+
+        for item in release_items:
+            self.package_list.addItem(item)
+        for item in other_items:
+            self.package_list.addItem(item)
+
     def _add_release_to_list(self, release):
         """Add a single release to the list with detailed information"""
         try:
             tag_name = release.get('tag_name', '')
             selected_repo = self.firmware_combo.currentData()
+            selected_type = self.device_type_combo.currentData()
             
             if not selected_repo:
                 silent_print("No repo selected, cannot add release")
@@ -14263,39 +14460,98 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # Get display version (either version number or published date)
             published_date = release.get('published_at', '')
-            display_version = get_display_version(version_info, published_date)
+            is_prerelease = release.get('prerelease', False)
+            display_version = get_display_version(version_info, published_date, is_prerelease)
             
-            # Use display version as the main title
-            display_text = f"{display_version}\n"
-            
-            # Add software name
+            # Base text used for all variant rows for this release
+            base_header = f"{display_version}\n"
             software_name = package_info.get('name', 'Unknown') if package_info else 'Unknown'
-            display_text += f"Software: {software_name}\n"
             
-            # Add designations as formatted text
+            # Add designations as formatted text (nightly, 360p tag flag, etc.)
             if version_info.get('designations'):
                 designations_text = format_designations_text(version_info['designations'])
-                display_text += f"{designations_text}\n"
-
-            # Only show published date if we're using version number as title
-            if len(version_info.get('clean_version', '')) <= 8 and published_date:
+                base_header += f"{designations_text}\n"
+            
+            # Always show published date when available (including nightly builds)
+            # Suppress if already shown at the top of the header
+            date_line = ""
+            if published_date and not str(display_version).startswith("Released:"):
                 try:
                     from datetime import datetime
                     date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
-                    display_text += f"Released: {format_fancy_date(date_obj)}\n"
-                except:
-                    display_text += f"Released: {published_date}\n"
-
-            # Add software name and repo name to release info for button text logic
-            release_with_software = release.copy()
-            release_with_software['software_name'] = software_name
-            release_with_software['repo_name'] = selected_repo
-
-            item = QListWidgetItem(display_text)
-            item.setData(Qt.UserRole, release_with_software)
-            self.package_list.addItem(item)
-
-            silent_print(f"Added release to UI: {tag_name}")
+                    date_line = f"Released: {format_fancy_date(date_obj)}\n"
+                except Exception:
+                    date_line = f"Released: {published_date}\n"
+            
+            # If we have ROM variants, create one row per resolution; otherwise single row per release
+            rom_variants = release.get('rom_variants')
+            if rom_variants:
+                # Unique resolutions present in this release, ordered by preference
+                resolutions = sorted(
+                    {v.get('resolution', 'native') for v in rom_variants},
+                    key=_resolution_priority
+                )
+                
+                for resolution in resolutions:
+                    # For the currently selected Type A/B, see if we have a matching asset at this resolution
+                    variant = select_rom_asset_for_resolution(rom_variants, selected_type, resolution)
+                    if not variant:
+                        # No ROM for this type/resolution combination – skip this row
+                        continue
+                    
+                    variant_asset = variant.get('asset', {})
+                    variant_type = variant.get('type')
+                    
+                    display_text = base_header
+                    
+                    # Resolution line (keep it simple for users)
+                    if resolution == '360p':
+                        resolution_text = "Resolution: 360p"
+                    elif resolution == '240p':
+                        resolution_text = "Resolution: 240p"
+                    else:
+                        resolution_text = "Resolution: Native"
+                    display_text += f"{resolution_text}\n"
+                    
+                    # Optional hint when a 240p build exists (iPod Classic/Video themes)
+                    if resolution == '240p':
+                        display_text += "Compatible with iPod Classic/Video Rockbox themes\n"
+                    
+                    
+                    if date_line:
+                        display_text += date_line
+                    
+                    # Clone release data and bind it to this specific resolution
+                    release_with_software = release.copy()
+                    release_with_software['software_name'] = software_name
+                    release_with_software['repo_name'] = selected_repo
+                    release_with_software['selected_resolution'] = resolution
+                    release_with_software['selected_type'] = selected_type
+                    release_with_software['download_url'] = variant_asset.get('browser_download_url')
+                    release_with_software['asset_name'] = variant_asset.get('name')
+                    release_with_software['asset_size'] = variant_asset.get('size', 0)
+                    release_with_software['rom_type'] = variant_type
+                    
+                    item = QListWidgetItem(display_text)
+                    item.setData(Qt.UserRole, release_with_software)
+                    self.package_list.addItem(item)
+                    
+                    silent_print(f"Added release to UI: {tag_name} ({resolution}, Type {variant_type})")
+            else:
+                # Non-ROM or legacy single-rom.zip releases – keep existing single-row behavior
+                display_text = base_header
+                if date_line:
+                    display_text += date_line
+                
+                release_with_software = release.copy()
+                release_with_software['software_name'] = software_name
+                release_with_software['repo_name'] = selected_repo
+                
+                item = QListWidgetItem(display_text)
+                item.setData(Qt.UserRole, release_with_software)
+                self.package_list.addItem(item)
+                
+                silent_print(f"Added release to UI: {tag_name}")
         except Exception as e:
             silent_print(f"Error in _add_release_to_list: {e}")
             import traceback
@@ -14372,7 +14628,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         if self._should_exclude_release(tag_name):
                             continue
                             
-                        if self._release_matches_type_filter(tag_name, selected_type):
+                        if self._release_matches_type_filter(release, selected_type):
                             # For ARM64 users, only show releases with update.zip
                             if platform.system() == "Windows":
                                 driver_info = self.check_drivers_and_architecture()
@@ -14395,22 +14651,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 else:
                     failed_repos.append(repo)
 
-        # Sort releases by software name (alphabetical), then by date (newest first within each software)
-        # Use a custom sorting key that sorts alphabetically by software name, then by date (newest first)
-        def sort_key(release):
-            software_name = release.get('software_name', '')
-            published_at = release.get('published_at', '')
-            # Convert date string to a comparable format for sorting (newest first)
-            try:
-                from datetime import datetime
-                date_obj = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
-                timestamp = date_obj.timestamp()
-            except:
-                timestamp = 0
-            # Return a tuple: (software_name, -timestamp) where negative timestamp ensures newest first
-            return (software_name, -timestamp)
-
-        all_releases.sort(key=sort_key)
+        # Sort by software name (A-Z), then by version (newest first) within each software.
+        all_releases.sort(key=self._release_sort_key, reverse=True)
+        all_releases.sort(key=lambda release: str(release.get('software_name', '')).lower())
 
         # Show error message if no releases were found
         if not all_releases and failed_repos:
@@ -16388,6 +16631,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         import webbrowser
         webbrowser.open("https://innioasis.app/Troubleshooting")
 
+    def open_coffee_link(self):
+        """Open ko-fi link to support developers"""
+        import webbrowser
+        webbrowser.open("https://ko-fi.com/teamslide#checkoutModal")
+
     def open_about_tab(self):
         """Open Settings dialog to About tab"""
 # 2025-11-09 22:10:00 UTC - original: About button used a lambda inside init_ui; this helper keeps parity while enabling dynamic label changes.
@@ -16418,11 +16666,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             if msg_box.exec() == QMessageBox.Yes:
                 # Open the installation guide
                 import webbrowser
-                webbrowser.open("https://innioasis.app/installguide.html")
+                webbrowser.open("https://innioasis.app/guide.html")
         else:
             # Fallback to direct link
             import webbrowser
-            webbrowser.open("https://innioasis.app/installguide.html")
+            webbrowser.open("https://innioasis.app/guide.html")
 
 
     def open_arm64_info(self, event):
@@ -25022,7 +25270,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"✅ update.zip has been sent to your Y1.\n\n"
                     f"✅ Update script executed successfully via ADB.\n\n"
                     f"Your Y1 will restart and apply the update automatically.\n\n"
-                    f"After reboot, the app will automatically detect Fast Update capability."
+                    f"After reboot, the app will automatically detect Fast Update capability.\n\n"
+                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
                 # Delay ADB status refresh after reboot (device needs time to initialize)
                 # Wait 30 seconds after expected reboot time for device to fully initialize
@@ -25038,7 +25287,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"📱 Installation Instructions:\n\n"
                     f"1. Safely disconnect your Y1\n\n"
                     f"2. Go to Main Menu > System and click Firmware Update\n\n"
-                    f"3. The update process will now run in the background and automatically restart the device once it is done"
+                    f"3. The update process will now run in the background and automatically restart the device once it is done\n\n"
+                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
             else:
                 # ADB transfer but script didn't run - show simple message
@@ -25046,7 +25296,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     "Update Sent Successfully! ✅",
                     f"✅ update.zip has been sent to your Y1.\n\n"
-                    f"Please check your device for update status."
+                    f"Please check your device for update status.\n\n"
+                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
         else:
             # Fail gracefully - don't show error dialog, just update status
