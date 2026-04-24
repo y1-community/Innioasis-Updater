@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.7.4"
+APP_VERSION = "1.9.7.5"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -13598,8 +13598,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     # Reset the flag after using it
                     self._user_manually_changed_filter = False
             
-            # Filter and display cached releases (no limit)
-            for release in cached_releases:
+            # Filter and display cached releases (no limit), newest version first.
+            sorted_cached_releases = sorted(cached_releases, key=self._release_sort_key, reverse=True)
+            for release in sorted_cached_releases:
                 try:
                     tag_name = release.get('tag_name', '')
                     
@@ -13892,7 +13893,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             processed = 0
             releases_to_add = []
             
-            for release in self._pending_releases[:]:
+            pending_sorted = sorted(self._pending_releases[:], key=self._release_sort_key, reverse=True)
+            for release in pending_sorted:
                 if processed >= batch_size:
                     break
                 
@@ -13919,6 +13921,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except (RuntimeError, AttributeError) as e:
                     silent_print(f"Error adding release to list: {e}")
                     continue
+
+            # Maintain numeric descending ordering during progressive updates.
+            if releases_to_add:
+                self._sort_package_list_releases(group_by_software=False)
             
             # Show left panel when first release is loaded
             if self.releases_loaded_count > 0 and not self.left_panel.isVisible():
@@ -14005,7 +14011,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             processed = 0
             releases_to_add = []
             
-            for release in self._all_releases_pending[:]:
+            pending_sorted = sorted(self._all_releases_pending[:], key=self._release_sort_key, reverse=True)
+            for release in pending_sorted:
                 if processed >= batch_size:
                     break
                 
