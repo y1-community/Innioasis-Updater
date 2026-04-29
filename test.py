@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.7.7"
+APP_VERSION = "1.9.7.8"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -6373,11 +6373,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg.setIcon(QMessageBox.Warning)
         msg.setTextFormat(Qt.RichText)
         msg.setText(
-            "Due to recent hardware changes to the Y1, Rockbox-Y1 is not compatible with Y1s that came "
-            "with OS 3.0.7 out of the box and will break your device. If this has happened to you please "
-            "try installing 3.0.7 in Updater, and if this does not work, please contact "
-            '<a href="https://innioasis.com/pages/download">Innioasis</a> for assistance. '
-            "Existing Users of devices running Rockbox-Y1 are not affected."
+            "The 27th April 2026 Nightly Build is now available for users who want to install Rockbox "
+            "on Y1 devices bought since March 24, 2026 that came with OS 3.0.7 out of the box."
         )
         msg.setStandardButtons(QMessageBox.Ok)
         for label in msg.findChildren(QLabel):
@@ -7905,7 +7902,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Pre-release filter checkbox (hidden by default, shown only when pre-releases exist)
         prerelease_layout = QHBoxLayout()
-        self.show_prerelease_checkbox = QCheckBox("Show pre-release builds")
+        self.show_prerelease_checkbox = QCheckBox("Show nightly builds")
         self.show_prerelease_checkbox.setToolTip("Show alpha, beta, nightly, and RC releases")
         self.show_prerelease_checkbox.setChecked(False)
         self.show_prerelease_checkbox.stateChanged.connect(self.on_prerelease_filter_changed)
@@ -13374,6 +13371,37 @@ class FirmwareDownloaderGUI(QMainWindow):
             return release.get('prerelease', False)
         return False
 
+    def _is_prerelease_or_nightly(self, release):
+        """Return True when a release should be treated as pre-release/nightly."""
+        if not isinstance(release, dict):
+            return False
+        tag_name = str(release.get('tag_name', ''))
+        tag_lower = tag_name.lower()
+        is_prerelease = bool(release.get('prerelease', False))
+        if 'stable' in tag_lower:
+            is_prerelease = False
+        return is_prerelease or ('nightly' in tag_lower)
+
+    def _update_prerelease_checkbox_visibility(self, releases, selected_type=None):
+        """Show the pre-release checkbox whenever matching pre-release builds exist."""
+        if not hasattr(self, 'show_prerelease_checkbox'):
+            return
+        if selected_type is None and hasattr(self, 'device_type_combo'):
+            selected_type = self.device_type_combo.currentData()
+
+        has_prereleases = False
+        for release in releases or []:
+            tag_name = str(release.get('tag_name', ''))
+            if 'base' in tag_name.lower():
+                continue
+            if not release_supports_device_type(release, selected_type):
+                continue
+            if self._is_prerelease_or_nightly(release):
+                has_prereleases = True
+                break
+
+        self.show_prerelease_checkbox.setVisible(has_prereleases)
+
     def _check_and_auto_enable_prereleases(self, all_releases, selected_type):
         """
         Check if we should automatically enable pre-releases when only pre-releases are available.
@@ -13564,21 +13592,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.releases_loaded_count = 0
             self.all_releases_loaded = []
             
-            # Check if any pre-releases exist in cached releases
-            has_prereleases = False
-            for release in cached_releases:
-                tag_name = release.get('tag_name', '')
-                # Check if it's a pre-release or nightly (accounting for "stable" override)
-                is_prerelease = release.get('prerelease', False)
-                if 'stable' in tag_name.lower():
-                    is_prerelease = False
-                if is_prerelease or 'nightly' in tag_name.lower():
-                    has_prereleases = True
-                    break
-            
-            # Show/hide pre-release checkbox based on availability
-            if hasattr(self, 'show_prerelease_checkbox'):
-                self.show_prerelease_checkbox.setVisible(has_prereleases)
+            # Keep pre-release checkbox visibility in sync with available releases.
+            self._update_prerelease_checkbox_visibility(cached_releases, selected_type)
             
             # Check if we should auto-enable pre-releases BEFORE filtering
             # This ensures we enable it immediately if only pre-releases are available
@@ -13769,7 +13784,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 </head>
                 <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
                     <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>No releases match your current filter settings.</p>
-                    <p style='font-size: 14px; color: {text_color} !important; margin-top: 10px;'>Try adjusting your device type selection or enable "Show pre-release builds" if available.</p>
+                    <p style='font-size: 14px; color: {text_color} !important; margin-top: 10px;'>Try adjusting your device type selection or enable "Show nightly builds" if available.</p>
                     <p style='font-size: 14px; color: {text_color} !important; margin-top: 10px;'>If this issue persists, there may be a connection problem or issue with the release server.</p>
                 </body>
                 </html>
@@ -14302,6 +14317,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                         if hasattr(self, '_pending_releases') and self._pending_releases:
                             QTimer.singleShot(50, continue_processing)
                 QTimer.singleShot(50, continue_processing)
+
+            # Ensure checkbox visibility also works when we loaded from fresh network data.
+            selected_type = self.device_type_combo.currentData()
+            self._update_prerelease_checkbox_visibility(all_releases, selected_type)
             
             # Check if we should auto-enable pre-releases (only pre-releases available)
             # Only check if no releases were displayed AND we have releases loaded
@@ -14309,7 +14328,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             if self.releases_loaded_count == 0 and all_releases and len(all_releases) > 0 and not (hasattr(self, '_auto_enabling_prereleases') and self._auto_enabling_prereleases):
                 # Don't auto-enable if user manually changed the filter
                 if not (hasattr(self, '_user_manually_changed_filter') and self._user_manually_changed_filter):
-                    selected_type = self.device_type_combo.currentData()
                     auto_enabled = self._check_and_auto_enable_prereleases(all_releases, selected_type)
                     if auto_enabled:
                         # Checkbox is now enabled, re-run populate to apply the filter
@@ -14510,7 +14528,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     elif resolution == '240p':
                         resolution_text = "Resolution: 240p"
                     else:
-                        resolution_text = "Resolution: Native"
+                        resolution_text = "Resolution: Native (360p)"
                     display_text += f"{resolution_text}\n"
                     
                     # Optional hint when a 240p build exists (iPod Classic/Video themes)
