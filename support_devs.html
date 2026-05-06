@@ -408,6 +408,7 @@
                     <p>The <a href="https://themes.innioasis.app">Themes directory</a> is open for community contributions. You can add your own themes or ones you've found on the internet for archival purposes.</p>
                     <ol style="margin-top: 12px;">
                         <li><strong>Fork the GitHub Repository:</strong> Visit <a href="https://github.com/y1-community/InnioasisY1Themes">github.com/y1-community/InnioasisY1Themes</a> and fork it. This creates a copy you can work on.</li>
+                        <li><strong>Ensure <code>theme_info</code> is in <code>config.json</code>:</strong> Include your theme details in <code>theme_info</code>. More info and examples: <a href="https://themes.innioasis.app/creators">themes.innioasis.app/creators</a>.</li>
                         <li><strong>Upload the theme folder:</strong> Upload the new theme's folder to the main directory of your forked repository.</li>
                         <li><strong>Update themes.json:</strong> Open <code>themes.json</code> in your forked repository and copy and paste a theme block (starting with <code>{"</code> and ending with <code>},</code>) where your theme needs to go alphabetically. If it's the last item in the list, don't include the trailing comma.</li>
                         <li><strong>Commit changes:</strong> Commit your changes to the file, then go back to your repository.</li>
@@ -444,31 +445,43 @@
         <section id="donations">
             <h2>Help Cover Running Costs & Developer Time</h2>
             <p>If you want to chip in financially to help cover running costs (hosting, domains, developer memberships) and support the spare time developers put into these projects:</p>
+            <p class="note" style="margin-top: 14px;">
+                <strong>Family support:</strong> Ryan and his partner are expecting a baby in December. If you'd like to help with the new addition to the family, supporting the
+                <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD">Amazon Baby Wishlist</a>
+                is deeply appreciated.
+            </p>
             
             <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px;">
+                <a class="cta" href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
+                    Baby Wishlist
+                </a>
                 <a class="cta" href="https://ko-fi.com/teamslide" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
                     Ko-fi
                 </a>
-                <a class="cta" href="https://patreon.com/TeamSlide" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
+                <a class="cta" href="https://www.patreon.com/teamslide" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
                     Patreon
                 </a>
                 <a class="cta" href="https://revolut.me/rspecter" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
                     Revolut
                 </a>
-                <a class="cta" href="https://paypal.me/respectyarn" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
+                <a class="cta" href="https://paypal.me/RyanSpecter282" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
                     PayPal
                 </a>
             </div>
 
             <div style="margin-top: 16px; padding: 14px; background: var(--bg-panel-alt); border-radius: 12px; border: 1px solid var(--border);">
-                <div style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr;">
+                <div style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr 1fr;">
                     <div style="padding: 10px; background: var(--bg-highlight); border-radius: 8px; border: 1px solid var(--border);">
                         <strong style="color: var(--accent); display: block; margin-bottom: 4px; font-size: 0.8rem;">Bitcoin</strong>
-                        <code id="btc-address" style="display: block; padding: 6px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; font-size: 0.75rem; word-break: break-all; color: var(--text-primary); cursor: pointer;" onclick="copyToClipboard('bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue', 'btc-address')" title="Click to copy">bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue</code>
+                        <code id="btc-address" style="display: block; padding: 6px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; font-size: 0.75rem; word-break: break-all; color: var(--text-primary); cursor: pointer;" onclick="copyToClipboard('bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g', 'btc-address')" title="Click to copy">bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g</code>
                     </div>
                     <div style="padding: 10px; background: var(--bg-highlight); border-radius: 8px; border: 1px solid var(--border);">
-                        <strong style="color: var(--accent); display: block; margin-bottom: 4px; font-size: 0.8rem;">Ethereum</strong>
-                        <code id="eth-address" style="display: block; padding: 6px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; font-size: 0.75rem; word-break: break-all; color: var(--text-primary); cursor: pointer;" onclick="copyToClipboard('0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4', 'eth-address')" title="Click to copy">0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4</code>
+                        <strong style="color: var(--accent); display: block; margin-bottom: 4px; font-size: 0.8rem;">SHIBA INU (ERC-20)</strong>
+                        <code id="shib-address" style="display: block; padding: 6px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; font-size: 0.75rem; word-break: break-all; color: var(--text-primary); cursor: pointer;" onclick="copyToClipboard('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'shib-address')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
+                    </div>
+                    <div style="padding: 10px; background: var(--bg-highlight); border-radius: 8px; border: 1px solid var(--border);">
+                        <strong style="color: var(--accent); display: block; margin-bottom: 4px; font-size: 0.8rem;">Ethereum / Arbitrum / Optimism</strong>
+                        <code id="eth-address" style="display: block; padding: 6px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; font-size: 0.75rem; word-break: break-all; color: var(--text-primary); cursor: pointer;" onclick="copyToClipboard('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'eth-address')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
                     </div>
                 </div>
             </div>
@@ -764,6 +777,10 @@
                 <span>Donate</span>
             </button>
             <div id="donate-options">
+                <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">👶</span>
+                    <span>Baby Wishlist</span>
+                </a>
                 <a href="https://revolut.me/rspecter" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
                     <span class="support-toolbar-icon">💸</span>
                     <span>Revolut</span>
@@ -772,7 +789,11 @@
                     <span class="support-toolbar-icon">☕</span>
                     <span>Ko-fi</span>
                 </a>
-                <a href="https://paypal.me/respectyarn" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.patreon.com/teamslide" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">🧡</span>
+                    <span>Patreon</span>
+                </a>
+                <a href="https://paypal.me/RyanSpecter282" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
                     <span class="support-toolbar-icon">💳</span>
                     <span>PayPal</span>
                 </a>
@@ -781,14 +802,21 @@
                         Bitcoin
                         <span class="crypto-copy-hint">(click to copy)</span>
                     </span>
-                    <code class="crypto-code" id="btc-address-support" onclick="copyCryptoAddress('bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue', 'btc-address-support')" title="Click to copy">bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue</code>
+                    <code class="crypto-code" id="btc-address-support" onclick="copyCryptoAddress('bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g', 'btc-address-support')" title="Click to copy">bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g</code>
                 </div>
                 <div class="crypto-address">
                     <span class="crypto-label">
-                        Ethereum
+                        SHIBA INU (ERC-20)
                         <span class="crypto-copy-hint">(click to copy)</span>
                     </span>
-                    <code class="crypto-code" id="eth-address-support" onclick="copyCryptoAddress('0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4', 'eth-address-support')" title="Click to copy">0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4</code>
+                    <code class="crypto-code" id="shib-address-support" onclick="copyCryptoAddress('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'shib-address-support')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
+                </div>
+                <div class="crypto-address">
+                    <span class="crypto-label">
+                        Ethereum / Arbitrum / Optimism
+                        <span class="crypto-copy-hint">(same wallet, click to copy)</span>
+                    </span>
+                    <code class="crypto-code" id="eth-address-support" onclick="copyCryptoAddress('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'eth-address-support')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
                 </div>
             </div>
         </div>
