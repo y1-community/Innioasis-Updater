@@ -87,7 +87,7 @@
         <div class="section-div">
             <h2>Donate</h2>
             <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-                Help keep this project alive and support ongoing development
+                Support development and help Ryan's growing family via the Baby Wishlist.
             </p>
 
             <div class="donate-options">
@@ -96,11 +96,14 @@
                     <p>Support the app creator</p>
                     <div style="margin-top:.5rem; display: flex; justify-content: space-between; align-items: center;">
                         <select id="ryanMethods" style="font-family: Inter; padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);">
+                            <option>Baby Wishlist</option>
                             <option>Revolut</option>
                             <option>Ko-fi</option>
+                            <option>Patreon</option>
                             <option>PayPal</option>
                             <option>Bitcoin</option>
-                            <option>Ethereum</option>
+                            <option>SHIBA INU (ERC-20)</option>
+                            <option>Ethereum / Arbitrum / Optimism</option>
                         </select>
                         <div id="ryanMethodContent"></div>
                     </div>
@@ -135,19 +138,51 @@
     </section>
 
     <div id="footer-root"></div>
+    <div id="support-toolbar-slot"></div>
 
 
 
     <script src="nav.js"></script>
 
     <script>
+        function executeInlineScripts(container) {
+            if (!container) return;
+            const scripts = container.querySelectorAll('script');
+            for (const oldScript of scripts) {
+                const newScript = document.createElement('script');
+                for (const attr of oldScript.attributes) {
+                    newScript.setAttribute(attr.name, attr.value);
+                }
+                newScript.textContent = oldScript.textContent;
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            }
+        }
+
+        async function loadSupportToolbar() {
+            const slot = document.getElementById('support-toolbar-slot');
+            if (!slot) return;
+            const candidates = [
+                'support_toolbar.html',
+                '../support_toolbar.html',
+                'https://themes.innioasis.app/support_toolbar.html'
+            ];
+            for (const url of candidates) {
+                try {
+                    const res = await fetch(url, { cache: 'no-cache' });
+                    if (!res.ok) continue;
+                    slot.innerHTML = await res.text();
+                    executeInlineScripts(slot);
+                    return;
+                } catch (e) {}
+            }
+        }
+
+        loadSupportToolbar();
+
         function copyAddress(inputId, btn) {
             const input = document.getElementById(inputId);
-            const msgId = inputId === 'btcAddr' ? 'btcMsg' : 'ethMsg';
-            const msgEl = document.getElementById(msgId);
             const value = input.value || '';
             if (!value) {
-                msgEl.textContent = 'No address set.';
                 return;
             }
 
@@ -155,27 +190,25 @@
                 navigator.clipboard.writeText(value).then(() => {
                     const orig = btn.textContent;
                     btn.textContent = 'Copied';
-                    msgEl.textContent = 'Copied to clipboard';
                     setTimeout(() => {
                         btn.textContent = orig;
-                        msgEl.textContent = '';
                     }, 2000);
                 }).catch(() => {
-                    msgEl.textContent = 'Copy failed';
+                    btn.textContent = 'Copy failed';
+                    setTimeout(() => btn.textContent = 'Copy', 1500);
                 });
             } else {
                 input.select();
                 try {
                     document.execCommand('copy');
-                    msgEl.textContent = 'Copied to clipboard';
                     const orig = btn.textContent;
                     btn.textContent = 'Copied';
                     setTimeout(() => {
                         btn.textContent = orig;
-                        msgEl.textContent = '';
                     }, 2000);
                 } catch (e) {
-                    msgEl.textContent = 'Copy not supported';
+                    btn.textContent = 'Copy not supported';
+                    setTimeout(() => btn.textContent = 'Copy', 1500);
                 }
             }
         }
@@ -222,16 +255,22 @@
             if (!sel || !container) return;
             const val = sel.value;
             const inputStyle = 'font-family: monospace; flex:1;padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-primary);';
-            if (val === 'Revolut') {
+            if (val === 'Baby Wishlist') {
+                container.innerHTML = '<a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><span style="font-size: 18px;">👶</span><span>Open Baby Wishlist</span></a>';
+            } else if (val === 'Revolut') {
                 container.innerHTML = '<a href="https://revolut.me/rspecter" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://img.icons8.com/ios_filled/512/FFFFFF/revolut--v2.png" alt="Revolut" style="height:20px;"/><span>Donate via Revolut</span></a>';
             } else if (val === 'Ko-fi') {
                 container.innerHTML = '<a href="https://ko-fi.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;"/>Donate via Ko-fi</a>';
+            } else if (val === 'Patreon') {
+                container.innerHTML = '<a href="https://www.patreon.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><span style="font-size: 16px;">🧡</span>Donate via Patreon</a>';
             } else if (val === 'PayPal') {
-                container.innerHTML = '<a href="https://www.paypal.com/paypalme/respectyarn" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><i class="fab fa-paypal"></i>Donate via PayPal</a>';
+                container.innerHTML = '<a href="https://paypal.me/RyanSpecter282" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><i class="fab fa-paypal"></i>Donate via PayPal</a>';
             } else if (val === 'Bitcoin') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="btcAddr" readonly value="bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue" style="' + inputStyle + '" /><button onclick="copyAddress(\'btcAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;"><i class="fas fa-copy"></i></button></div>';
-            } else if (val === 'Ethereum') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="ethAddr" readonly value="0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4" style="' + inputStyle + '" /><button onclick="copyAddress(\'ethAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;"><i class="fas fa-copy"></i></button></div>';
+                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="btcAddr" readonly value="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g" style="' + inputStyle + '" /><button onclick="copyAddress(\'btcAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;">Copy</button></div>';
+            } else if (val === 'SHIBA INU (ERC-20)') {
+                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="shibAddr" readonly value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" style="' + inputStyle + '" /><button onclick="copyAddress(\'shibAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;">Copy</button></div>';
+            } else if (val === 'Ethereum / Arbitrum / Optimism') {
+                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="ethAddr" readonly value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" style="' + inputStyle + '" /><button onclick="copyAddress(\'ethAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;">Copy</button></div>';
             } else {
                 container.innerHTML = '';
             }
