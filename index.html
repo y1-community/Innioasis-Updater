@@ -336,9 +336,29 @@
                     const rom = r.assets.find(a => a.name.toLowerCase() === 'rom.zip')
                     const romTypeB = r.assets.find(a => a.name.toLowerCase() === 'rom_type_b.zip')
                     const update = r.assets.find(a => a.name.toLowerCase() === 'update.zip')
+                    const romVariants = []
+                    ;(r.assets || []).forEach(a => {
+                        const n = (a.name || '').toLowerCase()
+                        if (!n.startsWith('rom') || !n.endsWith('.zip')) return
+                        const type = n.includes('type_b') ? 'B' : 'A'
+                        let resolution = 'any'
+                        if (n.includes('360p')) resolution = '360p'
+                        else if (n.includes('240p')) resolution = '240p'
+                        romVariants.push({
+                            type,
+                            resolution,
+                            name: n,
+                            url: a.browser_download_url || null,
+                            download_count: a.download_count || 0
+                        })
+                    })
                     const compatibility = [];
                     if (rom) compatibility.push('A');
                     if (romTypeB) compatibility.push('B');
+                    if (!compatibility.length) {
+                        if (romVariants.some(v => v.type === 'A')) compatibility.push('A')
+                        if (romVariants.some(v => v.type === 'B')) compatibility.push('B')
+                    }
 
                     return {
                         tag_name: r.tag_name,
@@ -354,7 +374,8 @@
                         rom_type_b_url: romTypeB?.browser_download_url || null,
                         has_update_zip: !!update,
                         update_zip_url: update?.browser_download_url || null,
-                        compatibility
+                        compatibility,
+                        rom_variants: romVariants
                     }
                 })
         }
@@ -417,6 +438,32 @@
                 software_type: (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original'
             }));
 
+            function hasRomForType(release, type) {
+                const variants = Array.isArray(release.rom_variants) ? release.rom_variants : [];
+                return variants.some(v => v.type === type);
+            }
+
+            function hasRomForTypeAndResolution(release, type, resolution) {
+                const variants = Array.isArray(release.rom_variants) ? release.rom_variants : [];
+                return variants.some(v => v.type === type && (v.resolution === resolution || v.resolution === 'any'));
+            }
+
+            function pickRomDownload(release, type, resolution) {
+                const variants = (Array.isArray(release.rom_variants) ? release.rom_variants : []).filter(v => v.type === type && v.url);
+                if (!variants.length) return null;
+                if (!resolution) {
+                    return variants[0].url;
+                }
+                const exact = variants.find(v => v.resolution === resolution);
+                if (exact) return exact.url;
+                const preferred360 = variants.find(v => v.resolution === '360p');
+                if (preferred360) return preferred360.url;
+                const preferred240 = variants.find(v => v.resolution === '240p');
+                if (preferred240) return preferred240.url;
+                const any = variants.find(v => v.resolution === 'any');
+                return any ? any.url : variants[0].url;
+            }
+
             const recommendations = [{
                     device_type: 'A',
                     software_type: 'Rockbox',
@@ -446,10 +493,10 @@
 
             recommendations.forEach(rec => {
                 const filtered = enriched.filter(r =>
-                    r.device_type === rec.device_type &&
+                    hasRomForType(r, rec.device_type) &&
                     r.software_type.toLowerCase() === (rec.software_type || '').toLowerCase() &&
-                    (!rec.resolution || r.resolution === rec.resolution) &&
-                    r.variant === 'Stable'
+                    (!rec.resolution || hasRomForTypeAndResolution(r, rec.device_type, rec.resolution)) &&
+                    (rec.software_type === 'Rockbox' ? true : r.variant === 'Stable')
                 );
 
                 const latest = filtered[0];
@@ -459,7 +506,7 @@
                 recCard.className = 'version-card vcentered';
                 recCard.style.background = 'rgba(16, 185, 129, 0.1)';
                 const title = rec.resolution ? `Type ${rec.device_type} ${rec.software_type} ${rec.resolution}` : `Type ${rec.device_type} ${rec.software_type}`;
-                const downloadUrl = rec.device_type === 'B' ? (latest.rom_type_b_url || latest.rom_url) : (latest.rom_url || latest.rom_type_b_url);
+                const downloadUrl = pickRomDownload(latest, rec.device_type, rec.resolution || null);
                 recCard.innerHTML = `
                 <div>
             <span class="version-badge badge-stable">Stable</span>
@@ -550,9 +597,9 @@
                 };
 
                 let filtered = enriched.filter(r =>
-                    Array.isArray(r.compatibility) && r.compatibility.includes(filters.type) &&
+                    hasRomForType(r, filters.type) &&
                     r.software_type.toLowerCase() === filters.firmware.toLowerCase() &&
-                    (filters.firmware === 'Original' ? true : r.resolution === filters.resolution) &&
+                    (filters.firmware === 'Original' ? true : hasRomForTypeAndResolution(r, filters.type, filters.resolution)) &&
                     (filters.version === 'Stable' ? r.variant === 'Stable' : r.variant === 'Beta')
                 );
 
@@ -568,7 +615,11 @@
                 card.className = 'version-card'
                 card.style.margin = '0 auto'
                 const resolutionLine = (filters.firmware === 'Original') ? `<p class="meta">Resolution: 360p</p>` : `<p class="meta">Resolution: ${latest.resolution}</p>`;
-                const selectedDownloadUrl = filters.type === 'B' ? (latest.rom_type_b_url || latest.rom_url) : (latest.rom_url || latest.rom_type_b_url);
+                const selectedDownloadUrl = pickRomDownload(
+                    latest,
+                    filters.type,
+                    filters.firmware === 'Rockbox' ? filters.resolution : null
+                );
                 card.innerHTML = `
     <span class="version-badge badge-latest">Latest</span>
 
