@@ -90,7 +90,7 @@
     <section id="donate" style="margin-top: 5%;">
         <div class="section-div">
             <h2>Donate</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+            <p id="donate-intro" style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
                 Support development and help Ryan's growing family via the Baby Wishlist.
             </p>
 
@@ -275,6 +275,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const sel = document.getElementById('ryanMethods');
             const babyCard = document.getElementById('baby-wishlist-card');
+            const donateIntro = document.getElementById('donate-intro');
             if (sel) {
                 sel.addEventListener('change', updateRyanMethod);
                 updateRyanMethod();
@@ -282,6 +283,11 @@
             if (babyCard) {
                 const showBabyCard = Math.random() < 0.5;
                 babyCard.style.display = showBabyCard ? 'flex' : 'none';
+                if (donateIntro) {
+                    donateIntro.textContent = showBabyCard
+                        ? "Support development and help Ryan's growing family via the Baby Wishlist."
+                        : "Support development and ongoing work on Innioasis Updater and the themes ecosystem.";
+                }
             }
         });
 
