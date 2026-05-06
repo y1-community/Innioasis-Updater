@@ -96,16 +96,25 @@
                     <p>Support the app creator</p>
                     <div style="margin-top:.5rem; display: flex; justify-content: space-between; align-items: center;">
                         <select id="ryanMethods" style="font-family: Inter; padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);">
-                            <option>Baby Wishlist</option>
+                            <option>PayPal</option>
                             <option>Revolut</option>
                             <option>Ko-fi</option>
                             <option>Patreon</option>
-                            <option>PayPal</option>
                             <option>Bitcoin</option>
                             <option>SHIBA INU (ERC-20)</option>
                             <option>Ethereum / Arbitrum / Optimism</option>
                         </select>
                         <div id="ryanMethodContent"></div>
+                    </div>
+                </div>
+
+                <div class="donate-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3>Baby Wishlist</h3>
+                        <p>Ryan and his partner are expecting a baby in December. If you'd like to help with the new addition to the family, gifts from the wishlist are deeply appreciated.</p>
+                    </div>
+                    <div style="display: flex; justify-content: right;">
+                        <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" class="btn btn-primary" style="color: white; padding: 2px 15px; display:flex; align-items: center; gap:.5rem;"><span style="font-size: 16px;">👶</span>Open Baby Wishlist</a>
                     </div>
                 </div>
 
@@ -118,21 +127,6 @@
                         <a href="https://ko-fi.com/sipped" class="btn btn-primary" style="color: white; padding: 2px 15px; display:flex; align-items: center; gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;" />Donate via Ko-fi</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="credits" style="margin-top: 5%;">
-        <div class="section-div">
-            <h2>Credits</h2>
-            <div class="credits-list">
-                <ul style="list-style-type: none;">
-                    <li><a href="https://github.com/ryan-specter/">Ryan Specter</a> - For creating the Updater app, old website, and helping with this guide</li>
-                    <li>Rockbox-Y1 creators - For developing and maintaining Rockbox for the Y1 device</li>
-                    <li>The Rockbox Community - 23 years of open source audio player development</li>
-                    <li>Bjoern Kerler (<a href="https://github.com/bkerler/mtkclient">bkerler</a>) - For creating mtkclient, tool for the updater</li>
-                    <li><a href="https://github.com/sippedaway">sipped</a> - For creating this website and guide</li>
-                </ul>
             </div>
         </div>
     </section>
@@ -255,16 +249,14 @@
             if (!sel || !container) return;
             const val = sel.value;
             const inputStyle = 'font-family: monospace; flex:1;padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-primary);';
-            if (val === 'Baby Wishlist') {
-                container.innerHTML = '<a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><span style="font-size: 18px;">👶</span><span>Open Baby Wishlist</span></a>';
-            } else if (val === 'Revolut') {
+            if (val === 'Revolut') {
                 container.innerHTML = '<a href="https://revolut.me/rspecter" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://img.icons8.com/ios_filled/512/FFFFFF/revolut--v2.png" alt="Revolut" style="height:20px;"/><span>Donate via Revolut</span></a>';
             } else if (val === 'Ko-fi') {
                 container.innerHTML = '<a href="https://ko-fi.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;"/>Donate via Ko-fi</a>';
             } else if (val === 'Patreon') {
                 container.innerHTML = '<a href="https://www.patreon.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><span style="font-size: 16px;">🧡</span>Donate via Patreon</a>';
             } else if (val === 'PayPal') {
-                container.innerHTML = '<a href="https://paypal.me/RyanSpecter282" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><i class="fab fa-paypal"></i>Donate via PayPal</a>';
+                container.innerHTML = '<a href="https://www.paypal.com/paypalme/RyanSpecter282" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><i class="fab fa-paypal"></i>Donate via PayPal</a>';
             } else if (val === 'Bitcoin') {
                 container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="btcAddr" readonly value="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g" style="' + inputStyle + '" /><button onclick="copyAddress(\'btcAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;">Copy</button></div>';
             } else if (val === 'SHIBA INU (ERC-20)') {
