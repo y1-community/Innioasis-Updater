@@ -16739,6 +16739,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         kofi_btn.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/teamslide"))
         layout.addWidget(kofi_btn)
 
+        patreon_btn = QPushButton("🧡 Patreon")
+        patreon_btn.setCursor(Qt.PointingHandCursor)
+        patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/teamslide"))
+        layout.addWidget(patreon_btn)
+
         paypal_btn = QPushButton("💳 PayPal")
         paypal_btn.setCursor(Qt.PointingHandCursor)
         paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/RyanSpecter282"))
