@@ -6373,7 +6373,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg.setIcon(QMessageBox.Warning)
         msg.setTextFormat(Qt.RichText)
         msg.setText(
-            "The 27th April 2026 Nightly Build is now available for users who want to install Rockbox "
+            "The 28th April 2026 Nightly Build is now available for users who want to install Rockbox "
             "on Y1 devices bought since March 24, 2026 that came with OS 3.0.7 out of the box."
         )
         msg.setStandardButtons(QMessageBox.Ok)
@@ -8048,12 +8048,16 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # About / Ko-fi button (opens ko-fi link in browser) - using native styling
 # 2025-11-09 22:10:00 UTC - original: Button label permanently read "About" and navigated directly to the About tab.
-        self.about_btn = QPushButton("☕ Buy Us A Coffee")
-        self.about_btn_base_text = "☕ Buy Us A Coffee"
+        self.about_btn = QPushButton()
+        self.about_btn_base_text = ""
         self.about_btn_base_tooltip = self.about_btn.toolTip() or ""
         # Use native styling - no custom stylesheet for automatic theme adaptation
         self.about_btn.setCursor(Qt.PointingHandCursor)
         self.about_btn.clicked.connect(self.open_coffee_link)
+        self._apply_random_support_cta_to_button()
+        self.support_cta_timer = QTimer(self)
+        self.support_cta_timer.timeout.connect(self._apply_random_support_cta_to_button)
+        self.support_cta_timer.start(90000)
         coffee_layout.addWidget(self.about_btn)
         self._top_right_update_mode = False
         # Removed: _refresh_top_right_update_cta - no longer modifying Discord/About buttons
@@ -8706,6 +8710,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             remove_installation_marker()
             # Restore left panel after successful installation
             self.show_left_panel()
+            self.show_donation_dialog("rockbox_install_success")
         else:
             self.status_label.setText(f"Installation failed: {message}")
             self.load_process_ended_image()
@@ -8907,6 +8912,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "Please disconnect your Y1 and hold the middle button to turn it on.\n\n"
                     "If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
+                self.show_donation_dialog("rockbox_install_success")
             else:
                 # Show error message and revert to startup state
                 self.status_label.setText(f"Flash Tool installation failed: {message}")
@@ -15376,6 +15382,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.load_installed_image()
             # Restore left panel after successful installation
             self.show_left_panel()
+            self.show_donation_dialog("rockbox_install_success")
 
             # Cancel any existing revert timer to prevent conflicts
             if hasattr(self, '_revert_timer') and self._revert_timer:
@@ -16132,10 +16139,47 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._current_pixmap = self._method3_pixmap
         self.set_image_with_aspect_ratio(self._method3_pixmap)
 
-    def open_coffee_link(self):
-        """Open the Buy Us Coffee link in the default browser"""
-        import webbrowser
-        webbrowser.open("https://ryanspecter.uk")
+    def _is_holiday_period(self):
+        """Return True during late-November holiday through early January."""
+        now = datetime.now()
+        return (now.month == 11 and now.day >= 20) or now.month == 12 or (now.month == 1 and now.day <= 5)
+
+    def _pick_support_cta_text(self):
+        """Pick a random support CTA with seasonal and infrequent variants."""
+        base_ctas = [
+            "Support Development",
+            "Buy Us A Coffee",
+            "Donate",
+            "Fuel New Features",
+            "Back The Project"
+        ]
+        holiday_ctas = [
+            "Holiday Baby Wishlist Support",
+            "Buy Us a Gift",
+            "Holiday Support",
+            "Seasonal Cheer For Devs",
+            "A Little Holiday Help"
+        ]
+        ctas = list(base_ctas)
+        if self._is_holiday_period():
+            ctas.extend(holiday_ctas)
+        if random.random() < 0.12:
+            ctas.append("Help Welcome Our December Baby")
+        if random.random() < 0.08:
+            ctas.append("Holiday Baby Wishlist Support")
+        if random.random() < 0.07:
+            ctas.append("Support Our Baby Wishlist")
+        if random.random() < 0.05:
+            ctas.append("Keep Updater Alive")
+        return random.choice(ctas)
+
+    def _apply_random_support_cta_to_button(self):
+        """Apply a random CTA label to the top-right support button."""
+        if not hasattr(self, 'about_btn'):
+            return
+        label = self._pick_support_cta_text()
+        self.about_btn.setText(f"☕ {label}")
+        self.about_btn_base_text = f"☕ {label}"
 
     def open_reddit_link(self):
         """Open the r/innioasis subreddit in the default browser"""
@@ -16649,10 +16693,92 @@ class FirmwareDownloaderGUI(QMainWindow):
         import webbrowser
         webbrowser.open("https://innioasis.app/Troubleshooting")
 
+    def _copy_donation_value(self, label, value):
+        """Copy a donation value to clipboard and notify the user."""
+        try:
+            QApplication.clipboard().setText(value)
+            QMessageBox.information(self, "Copied", f"{label} copied to clipboard.")
+        except Exception as e:
+            QMessageBox.warning(self, "Copy Failed", f"Could not copy {label}.\n\n{e}")
+
+    def show_donation_dialog(self, context="general"):
+        """Show donation options matching the website support toolbar."""
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Support the Developers")
+        dialog.setModal(True)
+        dialog.resize(700, 560)
+
+        layout = QVBoxLayout(dialog)
+
+        intro = QLabel(
+            "If Innioasis Updater helped you, you can support development using any option below."
+        )
+        intro.setWordWrap(True)
+        layout.addWidget(intro)
+
+        family_note = QLabel(
+            "Ryan, one of the developers, and his partner are expecting a baby in December. "
+            "If you are able to help, we would deeply appreciate support for the new addition to our family, "
+            "including gifts from our Amazon Baby Wishlist."
+        )
+        family_note.setWordWrap(True)
+        layout.addWidget(family_note)
+
+        wishlist_btn = QPushButton("👶 View Baby Wishlist")
+        wishlist_btn.setCursor(Qt.PointingHandCursor)
+        wishlist_btn.clicked.connect(lambda: webbrowser.open("https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD"))
+        layout.addWidget(wishlist_btn)
+
+        if context == "rockbox_install_success":
+            context_label = QLabel("Rockbox installation completed successfully. Thank you for your support.")
+            context_label.setWordWrap(True)
+            layout.addWidget(context_label)
+
+        kofi_btn = QPushButton("☕ Ko-Fi")
+        kofi_btn.setCursor(Qt.PointingHandCursor)
+        kofi_btn.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/teamslide"))
+        layout.addWidget(kofi_btn)
+
+        paypal_btn = QPushButton("💳 PayPal")
+        paypal_btn.setCursor(Qt.PointingHandCursor)
+        paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/RyanSpecter282"))
+        layout.addWidget(paypal_btn)
+
+        revolut_btn = QPushButton("💸 Revolut")
+        revolut_btn.setCursor(Qt.PointingHandCursor)
+        revolut_btn.clicked.connect(lambda: webbrowser.open("https://revolut.me/rspecter"))
+        layout.addWidget(revolut_btn)
+
+        crypto_title = QLabel("Crypto donation addresses (click to copy):")
+        layout.addWidget(crypto_title)
+
+        crypto_rows = [
+            ("Bitcoin", "bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g"),
+            ("SHIBA INU (ERC-20)", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"),
+            ("Ethereum / Arbitrum / Optimism", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"),
+        ]
+
+        for label, value in crypto_rows:
+            row = QHBoxLayout()
+            row_label = QLabel(f"{label}:")
+            value_btn = QPushButton(value)
+            value_btn.setToolTip(f"Copy {label} address")
+            value_btn.clicked.connect(lambda _checked=False, l=label, v=value: self._copy_donation_value(l, v))
+            row.addWidget(row_label)
+            row.addWidget(value_btn, 1)
+            layout.addLayout(row)
+
+        buttons = QDialogButtonBox(QDialogButtonBox.Close)
+        buttons.rejected.connect(dialog.reject)
+        buttons.accepted.connect(dialog.accept)
+        layout.addWidget(buttons)
+
+        dialog.exec()
+
     def open_coffee_link(self):
-        """Open ko-fi link to support developers"""
-        import webbrowser
-        webbrowser.open("https://ko-fi.com/teamslide#checkoutModal")
+        """Open donation dialog with support options."""
+        self._apply_random_support_cta_to_button()
+        self.show_donation_dialog("support_cta")
 
     def open_about_tab(self):
         """Open Settings dialog to About tab"""
@@ -24195,6 +24321,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 # All items succeeded
                 self.status_label.setText("Successfully installed Rockbox Theme")
+                self.show_donation_dialog("rockbox_install_success")
                 QTimer.singleShot(2000, lambda: self.progress_bar.setVisible(False))
             
             self.adb_operation_in_progress = False
@@ -24312,6 +24439,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         f"Successfully installed {theme_count} Rockbox {theme_word}.\n\n"
                         "Files will be available after you turn off USB Storage Mode."
                     )
+                    self.show_donation_dialog("rockbox_install_success")
                 else:
                     self.status_label.setText("Successfully installed Rockbox theme")
                     QMessageBox.information(
@@ -24320,6 +24448,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         "Successfully installed Rockbox theme.\n\n"
                         "Files will be available after you turn off USB Storage Mode."
                     )
+                    self.show_donation_dialog("rockbox_install_success")
                 QTimer.singleShot(2000, lambda: self.progress_bar.setVisible(False))
             
         except Exception as e:
@@ -25291,6 +25420,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"After reboot, the app will automatically detect Fast Update capability.\n\n"
                     f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
+                self.show_donation_dialog("rockbox_install_success")
                 # Delay ADB status refresh after reboot (device needs time to initialize)
                 # Wait 30 seconds after expected reboot time for device to fully initialize
                 QTimer.singleShot(35000, lambda: self._refresh_adb_status_after_fast_update())
@@ -25308,6 +25438,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"3. The update process will now run in the background and automatically restart the device once it is done\n\n"
                     f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
+                self.show_donation_dialog("rockbox_install_success")
             else:
                 # ADB transfer but script didn't run - show simple message
                 QMessageBox.information(
@@ -25317,6 +25448,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"Please check your device for update status.\n\n"
                     f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
+                self.show_donation_dialog("rockbox_install_success")
         else:
             # Fail gracefully - don't show error dialog, just update status
             self.status_label.setText("Update transfer completed")
