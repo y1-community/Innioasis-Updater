@@ -70,6 +70,10 @@
                 -2px -2px 4px rgba(118, 75, 162, 0.3);
         }
 
+        .support-toolbar-btn.donate-priority {
+            border: 1px solid rgba(102, 126, 234, 0.25);
+        }
+
         .support-toolbar-icon {
             font-size: 16px;
             display: inline-block;
@@ -78,13 +82,28 @@
 
         #donate-options {
             display: none;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 16px;
+            background: #f0f0f3;
+            box-shadow:
+                inset 2px 2px 4px rgba(163, 177, 198, 0.5),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.5);
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
         }
 
         #donate-options.expanded {
             display: flex;
+        }
+
+        .donate-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: stretch;
         }
 
         .crypto-address {
@@ -100,8 +119,35 @@
             min-width: 140px;
         }
 
-        .crypto-label {
+        .support-note {
+            max-width: 360px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #f0f0f3;
+            box-shadow:
+                2px 2px 4px rgba(163, 177, 198, 0.6),
+                -2px -2px 4px rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            line-height: 1.5;
+            color: #2d2d2d;
+        }
+
+        .support-note strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
             font-size: 11px;
+        }
+
+        .support-note a {
+            color: #4f46e5;
+            font-weight: 600;
+        }
+
+        .crypto-label {
+            font-size: 12px;
             font-weight: 700;
             color: #667eea;
             text-transform: uppercase;
@@ -112,7 +158,7 @@
         }
 
         .crypto-copy-hint {
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 400;
             color: #86868b;
             text-transform: none;
@@ -120,7 +166,7 @@
         }
 
         .crypto-code {
-            font-size: 10px;
+            font-size: 12px;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             color: #2d2d2d;
             word-break: break-all;
@@ -140,20 +186,36 @@
             color: #22c55e;
         }
 
+        .network-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .network-tag {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 999px;
+            background: rgba(102, 126, 234, 0.12);
+            color: #4f46e5;
+        }
+
         @media (max-width: 768px) {
             #support-toolbar {
                 bottom: 15px;
                 right: 15px;
                 left: 15px;
                 justify-content: center;
-                padding: 6px 10px;
+                padding: 10px 12px;
                 gap: 8px;
-                border-radius: 25px;
+                border-radius: 18px;
             }
 
             .support-toolbar-btn {
-                padding: 8px 14px;
-                font-size: 12px;
+                padding: 10px 14px;
+                font-size: 13px;
             }
 
             .support-toolbar-icon {
@@ -166,7 +228,16 @@
             }
 
             .crypto-code {
-                font-size: 9px;
+                font-size: 11px;
+            }
+
+            #donate-options {
+                padding: 10px;
+            }
+
+            .support-note {
+                max-width: none;
+                font-size: 12px;
             }
         }
 
@@ -204,6 +275,21 @@
                 box-shadow: 
                     2px 2px 4px rgba(0, 0, 0, 0.4),
                     -2px -2px 4px rgba(60, 60, 60, 0.3);
+            }
+
+            .support-note {
+                background: #2d2d2d;
+                color: #e0e0e0;
+                box-shadow:
+                    2px 2px 4px rgba(0, 0, 0, 0.4),
+                    -2px -2px 4px rgba(60, 60, 60, 0.3);
+            }
+
+            #donate-options {
+                background: #2d2d2d;
+                box-shadow:
+                    inset 2px 2px 4px rgba(0, 0, 0, 0.4),
+                    inset -2px -2px 4px rgba(60, 60, 60, 0.3);
             }
 
             .crypto-code {
@@ -256,6 +342,23 @@
                 -2px -2px 4px rgba(60, 60, 60, 0.3);
         }
 
+        body[data-theme="dark"] .support-note,
+        html[data-theme="dark"] .support-note {
+            background: #2d2d2d;
+            color: #e0e0e0;
+            box-shadow:
+                2px 2px 4px rgba(0, 0, 0, 0.4),
+                -2px -2px 4px rgba(60, 60, 60, 0.3);
+        }
+
+        body[data-theme="dark"] #donate-options,
+        html[data-theme="dark"] #donate-options {
+            background: #2d2d2d;
+            box-shadow:
+                inset 2px 2px 4px rgba(0, 0, 0, 0.4),
+                inset -2px -2px 4px rgba(60, 60, 60, 0.3);
+        }
+
         body[data-theme="dark"] .crypto-code,
         html[data-theme="dark"] .crypto-code {
             color: #e0e0e0;
@@ -281,38 +384,67 @@
     <div id="support-toolbar">
         <a href="https://innioasis.app/support_devs.html" class="support-toolbar-btn primary" target="_blank" rel="noopener noreferrer">
             <span class="support-toolbar-icon">💙</span>
-            <span>Support Development</span>
+            <span>Add Themes + Support Development</span>
         </a>
         <button id="donate-toggle" class="support-toolbar-btn" type="button">
             <span class="support-toolbar-icon">💳</span>
             <span>Donate</span>
         </button>
         <div id="donate-options">
-            <a href="https://revolut.me/rspecter" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
-                <span class="support-toolbar-icon">💸</span>
-                <span>Revolut</span>
-            </a>
-            <a href="https://ko-fi.com/teamslide" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
-                <span class="support-toolbar-icon">☕</span>
-                <span>Ko-fi</span>
-            </a>
-            <a href="https://paypal.me/respectyarn" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
-                <span class="support-toolbar-icon">💳</span>
-                <span>PayPal</span>
-            </a>
-            <div class="crypto-address">
-                <span class="crypto-label">
-                    Bitcoin
-                    <span class="crypto-copy-hint">(click to copy)</span>
-                </span>
-                <code class="crypto-code" id="btc-address" onclick="copyCryptoAddress('bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue', 'btc-address')" title="Click to copy">bc1q9vsjqjr6pjuc3vrgverx0v9ydst8s82ck4kpue</code>
+            <div class="support-note">
+                <strong>Support the developers</strong>
+                Ryan and his partner are expecting a baby in December. If this project helps you, we would truly appreciate any support, including gifts from our
+                <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" target="_blank" rel="noopener noreferrer">Amazon Baby Wishlist</a>.
             </div>
-            <div class="crypto-address">
-                <span class="crypto-label">
-                    Ethereum
-                    <span class="crypto-copy-hint">(click to copy)</span>
-                </span>
-                <code class="crypto-code" id="eth-address" onclick="copyCryptoAddress('0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4', 'eth-address')" title="Click to copy">0x3eec22630ca9fd77D22d362bF6C50dE29D3B84c4</code>
+            <div class="donate-section">
+                <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">👶</span>
+                    <span>Baby Wishlist</span>
+                </a>
+                <a href="https://ko-fi.com/teamslide" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">☕</span>
+                    <span>Ko-fi</span>
+                </a>
+                <a href="https://www.patreon.com/teamslide" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">🧡</span>
+                    <span>Patreon</span>
+                </a>
+                <a href="https://paypal.me/RyanSpecter282" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">💳</span>
+                    <span>PayPal</span>
+                </a>
+                <a href="https://revolut.me/rspecter" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">💸</span>
+                    <span>Revolut</span>
+                </a>
+            </div>
+            <div class="donate-section">
+                <div class="crypto-address">
+                    <span class="crypto-label">
+                        Bitcoin
+                        <span class="crypto-copy-hint">(click to copy)</span>
+                    </span>
+                    <code class="crypto-code" id="btc-address" onclick="copyCryptoAddress('bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g', 'btc-address')" title="Click to copy">bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g</code>
+                </div>
+                <div class="crypto-address">
+                    <span class="crypto-label">
+                        SHIBA INU (ERC-20)
+                        <span class="crypto-copy-hint">(click to copy)</span>
+                    </span>
+                    <code class="crypto-code" id="shib-address" onclick="copyCryptoAddress('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'shib-address')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
+                </div>
+                <div class="crypto-address">
+                    <span class="crypto-label">
+                        Ethereum
+                        <span class="crypto-copy-hint">(same wallet on Ethereum, Arbitrum, and Optimism)</span>
+                    </span>
+                    <div class="network-tags">
+                        <span class="network-tag">Ethereum</span>
+                        <span class="network-tag">Arbitrum</span>
+                        <span class="network-tag">Optimism</span>
+                    </div>
+                    <code class="crypto-code" id="eth-address-multichain" onclick="copyCryptoAddress('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'eth-address-multichain')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
+                </div>
             </div>
         </div>
     </div>
