@@ -247,6 +247,17 @@
             gap: 10px;
         }
 
+        .theme-spotlight {
+            margin-top: 10px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.45);
+            background: rgba(59, 130, 246, 0.14);
+            color: #dbeafe;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         .step-label {
             font-weight: 700;
             letter-spacing: 0.3px;
@@ -373,8 +384,11 @@
                     <span class="step-label">Themes</span>
                     <h3>Maintain the Themes Directory</h3>
                     <p>The <a href="https://themes.innioasis.app">Themes directory</a> at themes.innioasis.app is entirely community-maintained. Found a cool theme? Made your own? Fork the repo, add your theme, update themes.json, and submit a PR. Simple as that.</p>
-                    <a class="cta" href="https://github.com/y1-community/InnioasisY1Themes" style="margin-top: 12px; font-size: 0.95rem; padding: 12px 22px;">
-                        Themes Repository →
+                    <div class="theme-spotlight">
+                        <strong>Want to add a theme quickly?</strong> Jump to the full step-by-step guide below and follow each checklist item.
+                    </div>
+                    <a class="cta" href="#how-to-add-themes" style="margin-top: 12px; font-size: 0.95rem; padding: 12px 22px;">
+                        Go to Step-by-Step Theme Guide ↓
                     </a>
                 </article>
                 <article class="step-card">
@@ -404,7 +418,7 @@
                     <p>Documenting the projects and tools with tutorials and videos is another useful way to contribute to Y1 development projects. Whether you're writing step-by-step guides, creating video walkthroughs, or improving existing documentation, your efforts help make these tools more accessible to everyone.</p>
                 </div>
                 <div>
-                    <h3>How to Add Themes</h3>
+                    <h3 id="how-to-add-themes">How to Add Themes</h3>
                     <p>The <a href="https://themes.innioasis.app">Themes directory</a> is open for community contributions. You can add your own themes or ones you've found on the internet for archival purposes.</p>
                     <ol style="margin-top: 12px;">
                         <li><strong>Fork the GitHub Repository:</strong> Visit <a href="https://github.com/y1-community/InnioasisY1Themes">github.com/y1-community/InnioasisY1Themes</a> and fork it. This creates a copy you can work on.</li>
@@ -457,6 +471,9 @@
                 </a>
                 <a class="cta" href="https://ko-fi.com/teamslide" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
                     Ko-fi
+                </a>
+                <a class="cta" href="https://www.patreon.com/teamslide" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
+                    Patreon
                 </a>
                 <a class="cta" href="https://revolut.me/rspecter" style="flex: 1; min-width: 80px; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
                     Revolut
@@ -785,6 +802,10 @@
                 <a href="https://ko-fi.com/teamslide" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
                     <span class="support-toolbar-icon">☕</span>
                     <span>Ko-fi</span>
+                </a>
+                <a href="https://www.patreon.com/teamslide" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
+                    <span class="support-toolbar-icon">🧡</span>
+                    <span>Patreon</span>
                 </a>
                 <a href="https://paypal.me/RyanSpecter282" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
                     <span class="support-toolbar-icon">💳</span>
