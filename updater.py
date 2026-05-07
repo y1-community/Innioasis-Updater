@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.7.9"
+APP_VERSION = "1.9.8"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -6373,7 +6373,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg.setIcon(QMessageBox.Warning)
         msg.setTextFormat(Qt.RichText)
         msg.setText(
-            "The 28th April 2026 Nightly Build is now available for users who want to install Rockbox "
+            "The 6th May 2026 Nightly Build is now available for users who want to install Rockbox "
             "on Y1 devices bought since March 24, 2026 that came with OS 3.0.7 out of the box."
         )
         msg.setStandardButtons(QMessageBox.Ok)
