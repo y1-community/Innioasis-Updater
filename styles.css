@@ -551,6 +551,23 @@ select {
     opacity: .9;
 }
 
+.footer-powered-label {
+    margin: 0 0 .5rem 0;
+    font-size: .95rem;
+    font-weight: 500;
+    text-transform: none;
+    color: var(--text-secondary);
+}
+
+.footer-logo-luci {
+    display: block;
+    max-width: 130px;
+    max-height: 44px;
+    width: auto;
+    height: auto;
+    margin-top: .35rem;
+}
+
 .footer-bottom {
     margin-top: 2.5rem;
     text-align: center;
@@ -635,8 +652,22 @@ select {
 
 #theme-root {
     display: flex;
-    gap: 20px;
-    align-items: stretch;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+#theme-root #left {
+    width: 100%;
+    max-width: min(960px, 100%);
+    box-sizing: border-box;
+}
+
+#theme-root #right {
+    width: 100%;
+    max-width: min(720px, 100%);
+    box-sizing: border-box;
 }
 
 #alv-btn {
@@ -648,9 +679,6 @@ select {
 }
 
 @media (max-width: 900px) {
-    #theme-root {
-        display: block;
-    }
 
     .guide-wrap {
         flex-direction: column;
