@@ -6367,18 +6367,36 @@ class FirmwareDownloaderGUI(QMainWindow):
         QTimer.singleShot(0, self.update_creator_label)
 
     def _show_y1_hardware_notice(self):
-        """Show one-time important notice about Y1 3.0.7 hardware at launch."""
+        """Show important notice about Y1 firmware mods at launch."""
         msg = QMessageBox(self)
-        msg.setWindowTitle("Important notice")
-        msg.setIcon(QMessageBox.Warning)
+        msg.setWindowTitle("Koensayr mod available")
+        msg.setIcon(QMessageBox.Information)
         msg.setTextFormat(Qt.RichText)
         msg.setText(
-            "The 6th May 2026 Nightly Build is now available for users who want to install Rockbox "
-            "on Y1 devices bought since March 24, 2026 that came with OS 3.0.7 out of the box."
+            "<h3 style='margin-top: 0; margin-bottom: 12px;'>Koensayr mod (Type A Y1s)</h3>"
+            "<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
+            "The <b>Koensayr</b> mod from <b>SeanathanVT</b> is now available. "
+            "It is for <b>Type A Y1s</b> only.</p>"
+            "<p style='margin-top: 0; margin-bottom: 8px;'><b>What it adds</b></p>"
+            "<ul style='margin-top: 0; margin-bottom: 16px; padding-left: 22px; line-height: 1.5;'>"
+            "<li style='margin-bottom: 6px;'>Remote control of Bluetooth audio</li>"
+            "<li style='margin-bottom: 6px;'>Track name display on car infotainment systems</li>"
+            "<li style='margin-bottom: 6px;'>Browse an Artist's albums "
+            "(Main Menu - Artists - Albums)</li>"
+            "</ul>"
+            "<p style='margin-top: 0; margin-bottom: 8px;'><b>How to install</b></p>"
+            "<ol style='margin-top: 0; margin-bottom: 0; padding-left: 22px; line-height: 1.5;'>"
+            "<li style='margin-bottom: 8px;'>Select <b>Koensayr</b> from the <b>Software</b> dropdown</li>"
+            "<li style='margin-bottom: 0;'>Click <b>Install / Restore</b></li>"
+            "</ol>"
         )
         msg.setStandardButtons(QMessageBox.Ok)
+        msg.setMinimumWidth(440)
         for label in msg.findChildren(QLabel):
             label.setOpenExternalLinks(True)
+            if label.text():
+                label.setWordWrap(True)
+                label.setMinimumWidth(400)
         msg.exec()
 
     def update_creator_label(self):
@@ -8702,15 +8720,13 @@ class FirmwareDownloaderGUI(QMainWindow):
     def handle_mtk_completion(self, success, message):
         """Handle MTK command completion"""
         if success:
-            # Add seasonal emoji to completion message
-            seasonal_emoji = get_seasonal_emoji_random()
-            completion_text = f"Installation completed successfully{seasonal_emoji}" if seasonal_emoji else "Installation completed successfully"
-            self.status_label.setText(completion_text)
+            software_name = self._get_selected_software_name()
+            self.status_label.setText(self._install_success_status_text(software_name))
             self.load_installed_image()
             remove_installation_marker()
             # Restore left panel after successful installation
             self.show_left_panel()
-            self.show_donation_dialog("rockbox_install_success")
+            self._maybe_show_install_donation(software_name)
         else:
             self.status_label.setText(f"Installation failed: {message}")
             self.load_process_ended_image()
@@ -8897,8 +8913,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.toolkit_btn.setEnabled(True)
             
             if success:
-                # Show success message and load completion image
-                self.status_label.setText("Your software installation completed successfully")
+                software_name = self._get_selected_software_name()
+                kind = self._format_firmware_kind_label(software_name)
+                self.status_label.setText(self._install_success_status_text(software_name))
                 # Load the installed completion image
                 self.load_installed_image()
                 
@@ -8908,11 +8925,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.information(
                     self,
                     dialog_title,
-                    "Your installation has completed successfully!\n\n"
+                    f"Your {kind} installation has completed successfully!\n\n"
                     "Please disconnect your Y1 and hold the middle button to turn it on.\n\n"
                     "If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
-                self.show_donation_dialog("rockbox_install_success")
+                self._maybe_show_install_donation(software_name)
             else:
                 # Show error message and revert to startup state
                 self.status_label.setText(f"Flash Tool installation failed: {message}")
@@ -15373,7 +15390,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.mtk_worker = None
 
         if success:
-            self.status_label.setText("Install completed successfully")
+            software_name = self._get_selected_software_name()
+            self.status_label.setText(self._install_success_status_text(software_name))
             # Remove installation marker on successful completion
             remove_installation_marker()
             # Clean up firmware files after successful installation
@@ -15382,7 +15400,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.load_installed_image()
             # Restore left panel after successful installation
             self.show_left_panel()
-            self.show_donation_dialog("rockbox_install_success")
+            self._maybe_show_install_donation(software_name)
 
             # Cancel any existing revert timer to prevent conflicts
             if hasattr(self, '_revert_timer') and self._revert_timer:
@@ -16154,7 +16172,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             "Back The Project"
         ]
         holiday_ctas = [
-            "Holiday Baby Wishlist Support",
             "Buy Us a Gift",
             "Holiday Support",
             "Seasonal Cheer For Devs",
@@ -16163,12 +16180,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         ctas = list(base_ctas)
         if self._is_holiday_period():
             ctas.extend(holiday_ctas)
-        if random.random() < 0.12:
-            ctas.append("Help Welcome Our December Baby")
-        if random.random() < 0.08:
-            ctas.append("Holiday Baby Wishlist Support")
-        if random.random() < 0.07:
-            ctas.append("Support Our Baby Wishlist")
         if random.random() < 0.05:
             ctas.append("Keep Updater Alive")
         return random.choice(ctas)
@@ -16701,7 +16712,122 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.warning(self, "Copy Failed", f"Could not copy {label}.\n\n{e}")
 
-    def show_donation_dialog(self, context="general"):
+    def _get_installation_preferences(self):
+        """Load installation preferences from persistent storage."""
+        preferences_file = Path("installation_preferences.json")
+        if not preferences_file.exists():
+            return {}
+        try:
+            with open(preferences_file, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            silent_print(f"Error reading installation preferences: {e}")
+            return {}
+
+    def _set_installation_preference(self, key, value):
+        """Update a single installation preference without dropping other keys."""
+        preferences = self._get_installation_preferences()
+        preferences[key] = value
+        try:
+            with open(Path("installation_preferences.json"), 'w', encoding='utf-8') as f:
+                json.dump(preferences, f, indent=2)
+        except Exception as e:
+            silent_print(f"Error saving installation preference {key}: {e}")
+
+    def _has_completed_first_firmware_action(self):
+        """True after the user's first firmware download or install in this app."""
+        return bool(self._get_installation_preferences().get('has_completed_first_firmware_action', False))
+
+    def _mark_first_firmware_action_complete(self):
+        if not self._has_completed_first_firmware_action():
+            self._set_installation_preference('has_completed_first_firmware_action', True)
+
+    def _get_selected_software_name(self, default="firmware"):
+        """Return the software name for the currently selected firmware package."""
+        try:
+            selected_item = self.package_list.currentItem()
+            if selected_item and selected_item.data(Qt.UserRole):
+                return selected_item.data(Qt.UserRole).get('software_name', default)
+        except Exception as e:
+            silent_print(f"Could not read selected software name: {e}")
+        return default
+
+    def _format_firmware_kind_label(self, software_name):
+        """Human-readable label for an installed firmware package."""
+        labels = {
+            "Rockbox-Y1": "Rockbox",
+            "Koensayr": "Koensayr",
+            "Original Software": "Original Software",
+        }
+        return labels.get(software_name, software_name)
+
+    def _should_show_post_install_donation(self, software_name):
+        """Skip donation after Original Software unless user already used firmware features."""
+        if software_name == "Original Software":
+            return self._has_completed_first_firmware_action()
+        return True
+
+    def _maybe_show_install_donation(self, software_name=None, record_firmware_action=True):
+        """Show donation dialog after firmware install when appropriate."""
+        if software_name is None:
+            software_name = self._get_selected_software_name()
+        if self._should_show_post_install_donation(software_name):
+            self.show_donation_dialog("install_success", software_name=software_name)
+        if record_firmware_action:
+            self._mark_first_firmware_action_complete()
+
+    def _install_success_status_text(self, software_name=None):
+        kind = self._format_firmware_kind_label(software_name or self._get_selected_software_name())
+        seasonal_emoji = get_seasonal_emoji_random()
+        base = f"{kind} installed successfully"
+        return f"{base}{seasonal_emoji}" if seasonal_emoji else base
+
+    def _pick_donation_support_blurb(self):
+        """Return a varied support message; ~50% mention the upcoming baby."""
+        baby_blurbs = [
+            (
+                "Ryan, one of the developers, and his partner are expecting a baby in December. "
+                "Donations are appreciated and help support development of Innioasis Updater, "
+                "our mod projects, and the Innioasis Y1 Themes gallery."
+            ),
+            (
+                "Our lead developer and his partner are expecting a baby in December. "
+                "If you can chip in, your support keeps Innioasis Updater, community mods, "
+                "and the Innioasis Y1 Themes gallery moving forward."
+            ),
+            (
+                "Ryan and his partner are welcoming a baby in December. "
+                "Contributions of any size help us continue work on Updater, firmware mods, "
+                "and the Innioasis Y1 Themes gallery—thank you for considering it."
+            ),
+            (
+                "With a baby due in December for one of our developers and his partner, "
+                "we are especially grateful for support. Donations fund Innioasis Updater, "
+                "mod projects, and the Innioasis Y1 Themes gallery."
+            ),
+        ]
+        general_blurbs = [
+            (
+                "Donations are appreciated and help support development of Innioasis Updater, "
+                "our mod projects, and the Innioasis Y1 Themes gallery."
+            ),
+            (
+                "Your support helps us keep building Innioasis Updater, community firmware mods, "
+                "and the Innioasis Y1 Themes gallery—thank you for considering a contribution."
+            ),
+            (
+                "If Innioasis Updater has been useful to you, contributions help fund ongoing work "
+                "on Updater, our mod projects, and the Innioasis Y1 Themes gallery."
+            ),
+            (
+                "Every bit of support goes toward Innioasis Updater, mod development, "
+                "and the Y1 Themes gallery. We appreciate you helping the project grow."
+            ),
+        ]
+        pool = baby_blurbs if random.random() < 0.5 else general_blurbs
+        return random.choice(pool)
+
+    def show_donation_dialog(self, context="general", software_name=None):
         """Show donation options matching the website support toolbar."""
         dialog = QDialog(self)
         dialog.setWindowTitle("Support the Developers")
@@ -16716,21 +16842,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         intro.setWordWrap(True)
         layout.addWidget(intro)
 
-        family_note = QLabel(
-            "Ryan, one of the developers, and his partner are expecting a baby in December. "
-            "If you are able to help, we would deeply appreciate support for the new addition to our family, "
-            "including gifts from our Amazon Baby Wishlist."
-        )
-        family_note.setWordWrap(True)
-        layout.addWidget(family_note)
+        support_note = QLabel(self._pick_donation_support_blurb())
+        support_note.setWordWrap(True)
+        support_note.setStyleSheet("margin: 8px 0 12px 0; line-height: 1.45;")
+        layout.addWidget(support_note)
 
-        wishlist_btn = QPushButton("👶 View Baby Wishlist")
-        wishlist_btn.setCursor(Qt.PointingHandCursor)
-        wishlist_btn.clicked.connect(lambda: webbrowser.open("https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD"))
-        layout.addWidget(wishlist_btn)
-
-        if context == "rockbox_install_success":
-            context_label = QLabel("Rockbox installation completed successfully. Thank you for your support.")
+        if context == "install_success":
+            kind = self._format_firmware_kind_label(software_name or self._get_selected_software_name())
+            context_label = QLabel(f"{kind} installation completed successfully. Thank you for your support.")
             context_label.setWordWrap(True)
             layout.addWidget(context_label)
 
@@ -24326,7 +24445,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 # All items succeeded
                 self.status_label.setText("Successfully installed Rockbox Theme")
-                self.show_donation_dialog("rockbox_install_success")
+                self.show_donation_dialog("install_success", software_name="Rockbox")
                 QTimer.singleShot(2000, lambda: self.progress_bar.setVisible(False))
             
             self.adb_operation_in_progress = False
@@ -24444,7 +24563,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         f"Successfully installed {theme_count} Rockbox {theme_word}.\n\n"
                         "Files will be available after you turn off USB Storage Mode."
                     )
-                    self.show_donation_dialog("rockbox_install_success")
+                    self.show_donation_dialog("install_success", software_name="Rockbox")
                 else:
                     self.status_label.setText("Successfully installed Rockbox theme")
                     QMessageBox.information(
@@ -24453,7 +24572,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         "Successfully installed Rockbox theme.\n\n"
                         "Files will be available after you turn off USB Storage Mode."
                     )
-                    self.show_donation_dialog("rockbox_install_success")
+                    self.show_donation_dialog("install_success", software_name="Rockbox")
                 QTimer.singleShot(2000, lambda: self.progress_bar.setVisible(False))
             
         except Exception as e:
@@ -25407,25 +25526,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self._fast_update_completion_time = time.time()
                 silent_print("Fast update completed successfully - device will reboot, delaying ADB status checks")
             
-            # Get software name for the note
-            selected_item = self.package_list.currentItem()
-            software_name = "this firmware"
-            if selected_item and selected_item.data(Qt.UserRole):
-                release_info = selected_item.data(Qt.UserRole)
-                software_name = release_info.get('software_name', 'this firmware')
+            software_name = self._get_selected_software_name("this firmware")
+            kind = self._format_firmware_kind_label(software_name)
             
             # Show completion dialog with instructions
             if script_success:
                 QMessageBox.information(
                     self,
                     "Update Complete! ✅",
-                    f"✅ update.zip has been sent to your Y1.\n\n"
+                    f"✅ {kind} update.zip has been sent to your Y1.\n\n"
                     f"✅ Update script executed successfully via ADB.\n\n"
                     f"Your Y1 will restart and apply the update automatically.\n\n"
                     f"After reboot, the app will automatically detect Fast Update capability.\n\n"
                     f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
-                self.show_donation_dialog("rockbox_install_success")
+                self._maybe_show_install_donation(software_name)
                 # Delay ADB status refresh after reboot (device needs time to initialize)
                 # Wait 30 seconds after expected reboot time for device to fully initialize
                 QTimer.singleShot(35000, lambda: self._refresh_adb_status_after_fast_update())
@@ -25435,7 +25550,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     "Update Sent Successfully! ✅",
                     f"⚠️ IMPORTANT - PLEASE READ:\n\n"
-                    f"If this is the FIRST TIME you install {software_name} on your Y1, if you don't see the Firmware Update option in Main Menu > System, you'll need to use a tool like Innioasis Updater (+ SP Flash Tool or MTKclient) to do this update the first time.\n\n"
+                    f"If this is the FIRST TIME you install {kind} on your Y1, if you don't see the Firmware Update option in Main Menu > System, you'll need to use a tool like Innioasis Updater (+ SP Flash Tool or MTKclient) to do this update the first time.\n\n"
                     f"━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
                     f"📱 Installation Instructions:\n\n"
                     f"1. Safely disconnect your Y1\n\n"
@@ -25443,17 +25558,17 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"3. The update process will now run in the background and automatically restart the device once it is done\n\n"
                     f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
-                self.show_donation_dialog("rockbox_install_success")
+                self._maybe_show_install_donation(software_name)
             else:
                 # ADB transfer but script didn't run - show simple message
                 QMessageBox.information(
                     self,
                     "Update Sent Successfully! ✅",
-                    f"✅ update.zip has been sent to your Y1.\n\n"
+                    f"✅ {kind} update.zip has been sent to your Y1.\n\n"
                     f"Please check your device for update status.\n\n"
                     f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
                 )
-                self.show_donation_dialog("rockbox_install_success")
+                self._maybe_show_install_donation(software_name)
         else:
             # Fail gracefully - don't show error dialog, just update status
             self.status_label.setText("Update transfer completed")
@@ -25931,6 +26046,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.progress_bar.setVisible(False)
 
         if success:
+            self._mark_first_firmware_action_complete()
             self.status_label.setText("Download and processing completed successfully")
             print("=== PROCESSING COMPLETED ===")
             print("Firmware files have been downloaded and extracted successfully.")
