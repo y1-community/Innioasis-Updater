@@ -4,6 +4,8 @@
  <!-- <package name="Stock Menu 2.1.9 Update for Type B Y1's" repo="rockbox-y1/rockbox" url="https://github.com/y1-community/com.innioasis.y1/releases/latest" android_package="org.rockbox" device="y1" type="apk" handler="App" /> -->
   <!-- Custom Firmware: Project Gallagher -->
 <package name="Original Software" repo="y1-community/y1-stock-rom" device="Y1" url="https://github.com/y1-community/y1-stock-rom/releases/latest" type="img" handler="Custom Firmware" />
+  <package name="Koensayr" repo="ryan-specter/koensayr-auto" device="Y1" url="https://github.com/ryan-specter/koensayr-auto/releases/latest" type="img" handler="Custom Firmware" />
+
 <package name="Please Update App To Continue" device_type="0" repo="Please-Click/Updates-Available" device="Y1" url="https://github.com/Please-Click/Updates-Available/releases/latest" type="img" handler="Custom Firmware" />
 <!-- <package name="Rockbox for 3.0.7 Y1s" repo="ryan-specter/mirror" device="Y1" url="https://github.com/ryan-specter/mirror/releases/latest" type="img" handler="Custom Firmware" /> -->
   
