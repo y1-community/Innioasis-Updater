@@ -66,11 +66,14 @@ detect_architecture() {
 
 # Detect Linux distribution
 detect_distro() {
+    DISTRO_LIKE=""
+
     if [ -f /etc/os-release ]; then
         . /etc/os-release
-        DISTRO_ID="$ID"
+        DISTRO_ID="${ID:-unknown}"
         DISTRO_VERSION="$VERSION_ID"
         DISTRO_NAME="$NAME"
+        DISTRO_LIKE="${ID_LIKE:-}"
         
         # Special handling for Raspberry Pi OS
         if [ "$ID" = "debian" ] && [ -f /etc/rpi-issue ]; then
@@ -87,8 +90,40 @@ detect_distro() {
         DISTRO_ID="unknown"
         DISTRO_NAME="Unknown Linux Distribution"
     fi
-    
+
+    # Normalize to lowercase for consistent case matching
+    DISTRO_ID=$(echo "$DISTRO_ID" | tr '[:upper:]' '[:lower:]')
+    DISTRO_LIKE=$(echo "$DISTRO_LIKE" | tr '[:upper:]' '[:lower:]')
+
     log "Detected distribution: $DISTRO_NAME ($DISTRO_ID)"
+    if [ -n "$DISTRO_LIKE" ]; then
+        log "Distribution family hints: $DISTRO_LIKE"
+    fi
+}
+
+# Detect package manager independent of distro branding
+detect_package_manager() {
+    PACKAGE_MANAGER=""
+
+    if command -v apt-get >/dev/null 2>&1; then
+        PACKAGE_MANAGER="apt"
+    elif command -v dnf >/dev/null 2>&1; then
+        PACKAGE_MANAGER="dnf"
+    elif command -v yum >/dev/null 2>&1; then
+        PACKAGE_MANAGER="yum"
+    elif command -v pacman >/dev/null 2>&1; then
+        PACKAGE_MANAGER="pacman"
+    elif command -v zypper >/dev/null 2>&1; then
+        PACKAGE_MANAGER="zypper"
+    elif command -v apk >/dev/null 2>&1; then
+        PACKAGE_MANAGER="apk"
+    elif command -v xbps-install >/dev/null 2>&1; then
+        PACKAGE_MANAGER="xbps"
+    else
+        PACKAGE_MANAGER="unknown"
+    fi
+
+    log "Detected package manager: $PACKAGE_MANAGER"
 }
 
 # Pause before exit to allow user to see error messages
@@ -573,34 +608,45 @@ install_python_packages_via_pip() {
 # Install dependencies based on distribution
 install_dependencies() {
     log "Installing required dependencies for $DISTRO_NAME..."
-    
-    case "$DISTRO_ID" in
-        ubuntu|linuxmint|pop|elementary|zorin)
+
+    case "$PACKAGE_MANAGER" in
+        apt)
             install_ubuntu_deps
             ;;
-        debian)
-            install_debian_deps
-            ;;
-        raspbian)
-            install_raspbian_deps
-            ;;
-        arch|manjaro|endeavouros)
+        pacman)
             install_arch_deps
             ;;
-        fedora|rhel|centos|almalinux|rocky)
+        dnf|yum)
             install_fedora_deps
             ;;
-        opensuse*|sles)
+        zypper)
             install_opensuse_deps
             ;;
-        steamos|holoiso)
-            install_steamos_deps
+        apk)
+            install_alpine_deps
             ;;
-        chromeos|fydeos)
-            install_chromeos_deps
+        xbps)
+            install_void_deps
             ;;
         *)
-            install_generic_deps
+            # Fall back to distro-like hints if package manager detection is ambiguous.
+            case "$DISTRO_ID $DISTRO_LIKE" in
+                *arch*|*manjaro*|*endeavouros*)
+                    install_arch_deps
+                    ;;
+                *fedora*|*rhel*|*centos*|*rocky*|*almalinux*)
+                    install_fedora_deps
+                    ;;
+                *suse*|*opensuse*|*sles*)
+                    install_opensuse_deps
+                    ;;
+                *debian*|*ubuntu*|*raspbian*|*linuxmint*|*pop*|*elementary*|*zorin*)
+                    install_ubuntu_deps
+                    ;;
+                *)
+                    install_generic_deps
+                    ;;
+            esac
             ;;
     esac
     
@@ -682,6 +728,70 @@ install_ubuntu_deps() {
     install_python_packages_via_pip
     
     success "Ubuntu/Debian dependencies installation completed"
+}
+
+# Alpine Linux
+install_alpine_deps() {
+    log "Installing dependencies for Alpine Linux..."
+
+    sudo apk update
+    sudo apk add \
+        python3 \
+        py3-pip \
+        py3-virtualenv \
+        python3-dev \
+        build-base \
+        git \
+        curl \
+        wget \
+        unzip \
+        eudev \
+        usbutils \
+        cmake \
+        pkgconf \
+        libffi-dev \
+        openssl-dev \
+        zlib-dev \
+        bzip2-dev \
+        readline-dev \
+        sqlite-dev \
+        xz-dev \
+        tk-dev \
+        libxml2-dev \
+        linux-headers || warning "Some Alpine packages failed to install"
+
+    success "Alpine dependencies installed successfully"
+}
+
+# Void Linux
+install_void_deps() {
+    log "Installing dependencies for Void Linux..."
+
+    sudo xbps-install -Sy \
+        python3 \
+        python3-pip \
+        python3-virtualenv \
+        python3-devel \
+        base-devel \
+        git \
+        curl \
+        wget \
+        unzip \
+        eudev \
+        usbutils \
+        cmake \
+        pkg-config \
+        libffi-devel \
+        openssl-devel \
+        zlib-devel \
+        bzip2-devel \
+        readline-devel \
+        sqlite-devel \
+        xz-devel \
+        tk-devel \
+        libxml2-devel || warning "Some Void packages failed to install"
+
+    success "Void dependencies installed successfully"
 }
 
 # Debian
@@ -819,9 +929,14 @@ install_arch_deps() {
 # Fedora/RHEL-based distributions
 install_fedora_deps() {
     log "Installing dependencies for Fedora/RHEL-based distribution..."
-    
+
+    local pkg_cmd="dnf"
+    if ! command -v dnf >/dev/null 2>&1 && command -v yum >/dev/null 2>&1; then
+        pkg_cmd="yum"
+    fi
+
     # Update package database
-    sudo dnf update -y
+    sudo "$pkg_cmd" update -y
     
     # Base packages for all architectures
     # MTKClient requirements: fuse, fuse-devel, libusb1-devel
@@ -840,17 +955,17 @@ install_fedora_deps() {
             ;;
     esac
     
-    sudo dnf install -y $BASE_PACKAGES $ARCH_PACKAGES
+    sudo "$pkg_cmd" install -y $BASE_PACKAGES $ARCH_PACKAGES
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if sudo dnf install -y \
+    if sudo "$pkg_cmd" install -y \
         python3-PySide6 \
         python3-requests \
         python3-lxml 2>/dev/null; then
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        sudo dnf install -y \
+        sudo "$pkg_cmd" install -y \
             python3-PySide2 \
             python3-requests \
             python3-lxml
@@ -1849,6 +1964,7 @@ main() {
     # Detect architecture and distribution
     detect_architecture
     detect_distro
+    detect_package_manager
     
     # Install dependencies
     if ! install_dependencies; then
