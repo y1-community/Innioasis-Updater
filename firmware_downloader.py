@@ -6244,6 +6244,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._update_check_attempts = 0
         self._max_update_check_attempts = 4
         self._update_check_in_progress = False
+        self._required_update_prompted = False
         self._gui_closing = False  # Flag to prevent worker threads from accessing GUI during shutdown
         try:
             self.is_windows_arm64 = (
@@ -11503,6 +11504,8 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _handle_required_update(self, latest_version, current_version):
         """Handle forced manual updates that include required.txt."""
         try:
+            if getattr(self, "_required_update_prompted", False):
+                return True
             if self.compare_versions(latest_version, current_version) <= 0:
                 return False
             release_data = self._get_release_data(latest_version)
@@ -11514,6 +11517,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return False
 
             silent_print(f"Required update detected for version {latest_version}.")
+            self._required_update_prompted = True
             QTimer.singleShot(0, lambda: self._force_manual_update(latest_version))
             return True
         except Exception as e:
@@ -11523,13 +11527,17 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _force_manual_update(self, version):
         """Force user to install update manually."""
         try:
+            QMessageBox.warning(
+                self,
+                "Update recommended",
+                f"A newer updater release ({version}) is recommended.\n\n"
+                "The download page will open in your browser. You can continue using this session meanwhile."
+            )
             silent_print("Launching manual update instructions in browser.")
             import webbrowser
             webbrowser.open("https://www.innioasis.app", new=2)
         except Exception as e:
             silent_print(f"Error opening manual update URL: {e}")
-        finally:
-            QTimer.singleShot(250, self.close)
 
     def download_selected_version(self, settings_dialog=None):
         """Install the selected Innioasis Updater release directly from the GUI."""
