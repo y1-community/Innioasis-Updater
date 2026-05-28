@@ -494,6 +494,19 @@ check_pycryptodome_status() {
 # Install pycryptodome with fallback methods
 install_pycryptodome_fallback() {
     local venv_dir="$1"
+    local cache_scope="system"
+    if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
+        cache_scope="venv"
+    fi
+
+    # Avoid repeatedly running the same expensive fallback sequence in one installer run.
+    if [ "$cache_scope" = "venv" ] && [ "${PYCRYPTODOME_FALLBACK_VENV_STATUS:-}" = "failed" ]; then
+        warning "Skipping repeated pycryptodome fallback attempts for virtual environment"
+        return 1
+    elif [ "$cache_scope" = "system" ] && [ "${PYCRYPTODOME_FALLBACK_SYSTEM_STATUS:-}" = "failed" ]; then
+        warning "Skipping repeated pycryptodome fallback attempts for system python"
+        return 1
+    fi
     
     log "Attempting fallback pycryptodome installation..."
     log "Architecture: $ARCH_TYPE ($ARCH_BITS-bit)"
@@ -524,8 +537,8 @@ install_pycryptodome_fallback() {
         "pip install pycryptodome --no-cache-dir $extra_flags"
         "pip install pycryptodome --force-reinstall $extra_flags"
         "pip install pycryptodomex --upgrade $extra_flags"
-        "pip install pycryptodome --no-cache-dir $extra_flags"
-        "pip install pycryptodome --force-reinstall $extra_flags"
+        "pip install pycryptodomex --no-cache-dir $extra_flags"
+        "pip install pycryptodomex --force-reinstall $extra_flags"
         "pip install pycryptodomex --no-deps --force-reinstall $extra_flags"
         "pip install pycryptodome --no-deps --force-reinstall $extra_flags"
         "pip install pycryptodomex --pre --force-reinstall $extra_flags"
@@ -541,6 +554,11 @@ install_pycryptodome_fallback() {
             if source "$venv_dir/bin/activate" && eval $method 2>/dev/null; then
                 if verify_pycryptodome_installation "$venv_dir"; then
                     success "pycryptodome installed successfully with method: $method"
+                    if [ "$cache_scope" = "venv" ]; then
+                        PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
+                    else
+                        PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="ok"
+                    fi
                     return 0
                 fi
             fi
@@ -548,16 +566,21 @@ install_pycryptodome_fallback() {
             if eval $method 2>/dev/null; then
                 if verify_pycryptodome_installation; then
                     success "pycryptodome installed successfully with method: $method"
+                    if [ "$cache_scope" = "venv" ]; then
+                        PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
+                    else
+                        PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="ok"
+                    fi
                     return 0
                 fi
             fi
         fi
     done
     
-    # Try installing from source as last resort
-    log "Attempting to install pycryptodome from source..."
-    
-    if command -v git >/dev/null 2>&1; then
+    # Source builds are slow/brittle on many distros; disabled by default.
+    # Set ENABLE_PYCRYPTODOME_SOURCE_BUILD=1 to re-enable for debugging.
+    if [ "${ENABLE_PYCRYPTODOME_SOURCE_BUILD:-0}" = "1" ] && command -v git >/dev/null 2>&1 && command -v gcc >/dev/null 2>&1; then
+        log "Attempting to install pycryptodome from source..."
         local temp_dir
         local original_cwd
         temp_dir=$(mktemp -d)
@@ -585,6 +608,11 @@ install_pycryptodome_fallback() {
                 if source "$venv_dir/bin/activate" && python setup.py build_ext --inplace && pip install . 2>/dev/null; then
                     if verify_pycryptodome_installation "$venv_dir"; then
                         success "pycryptodome installed from source successfully"
+                        if [ "$cache_scope" = "venv" ]; then
+                            PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
+                        else
+                            PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="ok"
+                        fi
                         cd "$original_cwd" || true
                         rm -rf "$temp_dir"
                         return 0
@@ -594,6 +622,11 @@ install_pycryptodome_fallback() {
                 if python3 setup.py build_ext --inplace && pip3 install . 2>/dev/null; then
                     if verify_pycryptodome_installation; then
                         success "pycryptodome installed from source successfully"
+                        if [ "$cache_scope" = "venv" ]; then
+                            PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
+                        else
+                            PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="ok"
+                        fi
                         cd "$original_cwd" || true
                         rm -rf "$temp_dir"
                         return 0
@@ -604,6 +637,8 @@ install_pycryptodome_fallback() {
         
         cd "$original_cwd" || true
         rm -rf "$temp_dir"
+    else
+        log "Skipping pycryptodome source build fallback (disabled by default)"
     fi
     
     # Final attempt with system package manager if available
@@ -615,6 +650,11 @@ install_pycryptodome_fallback() {
                 if sudo apt install -y python3-pycryptodome 2>/dev/null || sudo apt install -y python3-pycryptodomex 2>/dev/null; then
                     if verify_pycryptodome_installation; then
                         success "Installed pycryptodome package via apt"
+                        if [ "$cache_scope" = "venv" ]; then
+                            PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
+                        else
+                            PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="ok"
+                        fi
                         return 0
                     fi
                 fi
@@ -625,6 +665,11 @@ install_pycryptodome_fallback() {
                 if sudo pacman -S --noconfirm --needed python-pycryptodome 2>/dev/null || sudo pacman -S --noconfirm --needed python-pycryptodomex 2>/dev/null; then
                     if verify_pycryptodome_installation; then
                         success "Installed pycryptodome package via pacman"
+                        if [ "$cache_scope" = "venv" ]; then
+                            PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
+                        else
+                            PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="ok"
+                        fi
                         return 0
                     fi
                 fi
@@ -637,6 +682,11 @@ install_pycryptodome_fallback() {
                 if sudo "$dnf_cmd" install -y python3-pycryptodome 2>/dev/null || sudo "$dnf_cmd" install -y python3-pycryptodomex 2>/dev/null; then
                     if verify_pycryptodome_installation; then
                         success "Installed pycryptodome package via $dnf_cmd"
+                        if [ "$cache_scope" = "venv" ]; then
+                            PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
+                        else
+                            PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="ok"
+                        fi
                         return 0
                     fi
                 fi
@@ -644,6 +694,11 @@ install_pycryptodome_fallback() {
             ;;
     esac
     
+    if [ "$cache_scope" = "venv" ]; then
+        PYCRYPTODOME_FALLBACK_VENV_STATUS="failed"
+    else
+        PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="failed"
+    fi
     error "All pycryptodome installation methods failed"
     return 1
 }
