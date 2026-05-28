@@ -2217,7 +2217,7 @@ Usage:
 Options:
   -h, --help     Show this help message
   -i, --install  Install Innioasis Updater (default)
-  -u, --uninstall Uninstall Innioasis Updater
+  -u, --uninstall, -uninstall  Uninstall Innioasis Updater
   -l, --launch   Launch Innioasis Updater (if already installed)
   --update       Update Innioasis Updater to latest version
   --cleanup      Clean up partial installations and temporary files
@@ -2274,6 +2274,26 @@ uninstall() {
     if [ -f "$HOME/.local/share/applications/innioasis-updater.desktop" ]; then
         rm -f "$HOME/.local/share/applications/innioasis-updater.desktop"
         success "Removed desktop entry"
+    fi
+
+    # Remove udev rules created by installer
+    if [ -f "/etc/udev/rules.d/99-mediatek.rules" ]; then
+        if sudo rm -f "/etc/udev/rules.d/99-mediatek.rules"; then
+            success "Removed udev rules: /etc/udev/rules.d/99-mediatek.rules"
+            sudo udevadm control --reload-rules >/dev/null 2>&1 || true
+            sudo udevadm trigger >/dev/null 2>&1 || true
+        else
+            warning "Failed to remove udev rules file"
+        fi
+    fi
+
+    # Remove qcaux blacklist line added by installer, if present
+    if [ -f "/etc/modprobe.d/blacklist.conf" ] && grep -q '^blacklist qcaux$' "/etc/modprobe.d/blacklist.conf"; then
+        if sudo sed -i '/^blacklist qcaux$/d' "/etc/modprobe.d/blacklist.conf"; then
+            success "Removed qcaux blacklist entry from /etc/modprobe.d/blacklist.conf"
+        else
+            warning "Failed to remove qcaux blacklist entry"
+        fi
     fi
     
     # Update desktop database
@@ -2398,7 +2418,7 @@ case "${1:-}" in
         show_help
         exit 0
         ;;
-    -u|--uninstall)
+    -u|--uninstall|-uninstall)
         uninstall
         exit 0
         ;;
