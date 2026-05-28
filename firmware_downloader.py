@@ -32,7 +32,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QLabel, QComboBox, QProgressBar, QMessageBox,
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
                                QFileDialog, QDialog, QDialogButtonBox, QTabWidget, QScrollArea, QTextBrowser, QLineEdit,
-                               QTreeWidget, QTreeWidgetItem, QTreeView, QAbstractItemView)
+                               QTreeWidget, QTreeWidgetItem, QTreeView, QAbstractItemView, QSizePolicy)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer, QPropertyAnimation, QEasingCurve, QObject, QMimeData, QEvent
 from PySide6.QtGui import (QFont, QPixmap, QTextDocument, QPalette, QDragEnterEvent,
                            QDropEvent, QIcon, QImage, QPainter, QColor)
@@ -8188,6 +8188,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Image widget (page 0)
         self.image_label = QLabel()
         self.image_label.setAlignment(Qt.AlignCenter)
+        self.image_label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
         self.image_label.setStyleSheet("""
             QLabel {
                 background-color: transparent;
@@ -15760,20 +15761,30 @@ class FirmwareDownloaderGUI(QMainWindow):
         if pixmap.isNull():
             return
 
-        # Get the label size
-        label_size = self.image_label.size()
-        if label_size.width() <= 0 or label_size.height() <= 0:
-            # Use minimum size if label not properly sized yet
-            label_size = QSize(400, 300)
+        # Prefer the actual available stack area to avoid clipped prompt images.
+        if hasattr(self, 'image_notes_stack') and self.image_notes_stack is not None:
+            target_size = self.image_notes_stack.contentsRect().size()
+        else:
+            target_size = self.image_label.contentsRect().size()
+
+        if target_size.width() <= 0 or target_size.height() <= 0:
+            target_size = self.image_label.size()
+
+        if target_size.width() <= 0 or target_size.height() <= 0:
+            target_size = QSize(400, 300)
+
+        # Keep a small margin so frame/border rendering never clips content.
+        target_size = QSize(max(1, target_size.width() - 8), max(1, target_size.height() - 8))
 
         # Scale image to fit the label while maintaining aspect ratio
         scaled_pixmap = pixmap.scaled(
-            label_size,
+            target_size,
             Qt.KeepAspectRatio,
             Qt.SmoothTransformation
         )
 
         # Set the scaled pixmap
+        self.image_label.setMinimumSize(1, 1)
         self.image_label.setPixmap(scaled_pixmap)
 
         # Don't use setScaledContents to maintain aspect ratio
