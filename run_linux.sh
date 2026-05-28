@@ -1360,27 +1360,21 @@ setup_mtkclient_requirements() {
     # Add user to required groups
     log "Adding user to required groups for MTKClient..."
     
-    # Add to plugdev group (for USB device access)
-    if getent group plugdev >/dev/null 2>&1; then
-        if sudo usermod -a -G plugdev "$USER"; then
-            log "Added user $USER to plugdev group"
-        else
-            warning "Failed to add user to plugdev group"
-        fi
-    else
-        warning "plugdev group does not exist on this system"
+    # Ensure commonly-used USB/serial groups exist and add current user.
+    # Arch/CachyOS often use uucp/lock and may not ship plugdev by default.
+    if ! getent group plugdev >/dev/null 2>&1; then
+        sudo groupadd -f plugdev >/dev/null 2>&1 || true
     fi
-    
-    # Add to dialout group (for serial port access)
-    if getent group dialout >/dev/null 2>&1; then
-        if sudo usermod -a -G dialout "$USER"; then
-            log "Added user $USER to dialout group"
-        else
-            warning "Failed to add user to dialout group"
+    local mtk_groups=("plugdev" "dialout" "uucp" "lock")
+    for grp in "${mtk_groups[@]}"; do
+        if getent group "$grp" >/dev/null 2>&1; then
+            if sudo usermod -a -G "$grp" "$USER"; then
+                log "Added user $USER to $grp group"
+            else
+                warning "Failed to add user to $grp group"
+            fi
         fi
-    else
-        warning "dialout group does not exist on this system"
-    fi
+    done
     
     # Check for vendor interface 0xFF (like LG devices)
     log "Checking for vendor interface 0xFF devices..."
@@ -1612,6 +1606,20 @@ EOF
     then
         error "Failed to create udev rules file"
         return 1
+    fi
+
+    # Supplemental Linux-desktop-friendly rules:
+    # - TAG+="uaccess" grants active local session access without strict group dependency
+    # - ID_MM_DEVICE_IGNORE prevents ModemManager from claiming MTK ports
+    if ! sudo tee /etc/udev/rules.d/78-mediatek-access.rules > /dev/null << 'EOF'
+# MediaTek access helper rules for desktop Linux distros
+SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
+EOF
+    then
+        warning "Failed to create supplemental MediaTek udev access rules"
     fi
     
     # Add user to plugdev group if it exists
@@ -2343,6 +2351,9 @@ uninstall() {
         else
             warning "Failed to remove udev rules file"
         fi
+    fi
+    if [ -f "/etc/udev/rules.d/78-mediatek-access.rules" ]; then
+        sudo rm -f "/etc/udev/rules.d/78-mediatek-access.rules" >/dev/null 2>&1 || true
     fi
 
     # Remove qcaux blacklist line added by installer, if present
