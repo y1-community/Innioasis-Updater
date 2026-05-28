@@ -554,8 +554,11 @@ install_pycryptodome_fallback() {
     log "Attempting to install pycryptodome from source..."
     
     if command -v git >/dev/null 2>&1; then
-        local temp_dir=$(mktemp -d)
-        cd "$temp_dir"
+        local temp_dir
+        local original_cwd
+        temp_dir=$(mktemp -d)
+        original_cwd=$(pwd)
+        cd "$temp_dir" || return 1
         
         if git clone https://github.com/Legrandin/pycryptodome.git 2>/dev/null; then
             cd pycryptodome
@@ -578,6 +581,7 @@ install_pycryptodome_fallback() {
                 if source "$venv_dir/bin/activate" && python setup.py build_ext --inplace && pip install . 2>/dev/null; then
                     if verify_pycryptodome_installation "$venv_dir"; then
                         success "pycryptodome installed from source successfully"
+                        cd "$original_cwd" || true
                         rm -rf "$temp_dir"
                         return 0
                     fi
@@ -586,6 +590,7 @@ install_pycryptodome_fallback() {
                 if python3 setup.py build_ext --inplace && pip3 install . 2>/dev/null; then
                     if verify_pycryptodome_installation; then
                         success "pycryptodome installed from source successfully"
+                        cd "$original_cwd" || true
                         rm -rf "$temp_dir"
                         return 0
                     fi
@@ -593,6 +598,7 @@ install_pycryptodome_fallback() {
             fi
         fi
         
+        cd "$original_cwd" || true
         rm -rf "$temp_dir"
     fi
     
@@ -893,7 +899,7 @@ install_arch_deps() {
     
     # Base packages for all architectures
     # MTKClient requirements: fuse2, fuse3, libusb
-    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl zlib bzip2 readline sqlite tk libxml2 xz-utils ncurses android-tools fuse2 fuse3 libusb"
+    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl zlib bzip2 readline sqlite tk libxml2 xz ncurses android-tools fuse2 fuse3 libusb"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -1216,7 +1222,9 @@ install_android_tools_fallback() {
     
     # Create temporary directory
     TEMP_DIR=$(mktemp -d)
-    cd "$TEMP_DIR"
+    local original_cwd
+    original_cwd=$(pwd)
+    cd "$TEMP_DIR" || return 1
     
     # Download Android Platform Tools
     log "Downloading Android Platform Tools..."
@@ -1225,6 +1233,7 @@ install_android_tools_fallback() {
             success "Downloaded Android Platform Tools"
         else
             warning "Failed to download Android Platform Tools with wget"
+            cd "$original_cwd" || true
             rm -rf "$TEMP_DIR"
             return 1
         fi
@@ -1233,11 +1242,13 @@ install_android_tools_fallback() {
             success "Downloaded Android Platform Tools"
         else
             warning "Failed to download Android Platform Tools with curl"
+            cd "$original_cwd" || true
             rm -rf "$TEMP_DIR"
             return 1
         fi
     else
         warning "Neither wget nor curl available for downloading Android Platform Tools"
+        cd "$original_cwd" || true
         rm -rf "$TEMP_DIR"
         return 1
     fi
@@ -1248,11 +1259,13 @@ install_android_tools_fallback() {
             success "Extracted Android Platform Tools"
         else
             warning "Failed to extract Android Platform Tools"
+            cd "$original_cwd" || true
             rm -rf "$TEMP_DIR"
             return 1
         fi
     else
         warning "unzip not available for extracting Android Platform Tools"
+        cd "$original_cwd" || true
         rm -rf "$TEMP_DIR"
         return 1
     fi
@@ -1268,11 +1281,13 @@ install_android_tools_fallback() {
         log "Note: You may need to add $USER_BIN_DIR to your PATH"
     else
         warning "Failed to install Android Platform Tools"
+        cd "$original_cwd" || true
         rm -rf "$TEMP_DIR"
         return 1
     fi
     
     # Clean up
+    cd "$original_cwd" || true
     rm -rf "$TEMP_DIR"
     return 0
 }
