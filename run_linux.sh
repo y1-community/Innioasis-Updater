@@ -30,6 +30,20 @@ success() {
     echo -e "${GREEN}[SUCCESS]${NC} $1"
 }
 
+step() {
+    echo
+    echo -e "${BLUE}==>${NC} $1"
+}
+
+# Keep crypto dependency troubleshooting quiet by default.
+# Set PYCRYPTO_VERBOSE=1 to show full pycryptodome diagnostics.
+PYCRYPTO_VERBOSE="${PYCRYPTO_VERBOSE:-0}"
+pycrypto_log() {
+    if [ "$PYCRYPTO_VERBOSE" = "1" ]; then
+        log "$1"
+    fi
+}
+
 # Use first available command from a candidate list
 resolve_cmd() {
     for candidate in "$@"; do
@@ -411,56 +425,40 @@ EOF
 # Verify pycryptodome installation (supports both pycryptodome and pycryptodomex)
 verify_pycryptodome_installation() {
     local venv_dir="$1"
-    
-    log "Verifying pycryptodome/pycryptodomex installation..."
-    
-    if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
-        # Test in virtual environment - try both Crypto and Cryptodome imports
-        if source "$venv_dir/bin/activate" && python -c "
-import sys
+    local quiet="${2:-0}"
+
+    if [ "$quiet" != "1" ]; then
+        log "Verifying pycryptodome/pycryptodomex installation..."
+    fi
+
+    local verify_script='import sys
 try:
     from Crypto.Cipher import AES
     from Crypto.Util.number import bytes_to_long
     _ = bytes_to_long(b"\x01")
-    print('pycryptodome (Crypto) import successful')
     sys.exit(0)
 except ImportError:
-    try:
-        from Cryptodome.Cipher import AES
-        print('pycryptodomex found, but Crypto namespace is required')
-        sys.exit(2)
-    except ImportError:
-        print('Neither pycryptodome nor pycryptodomex found')
-        sys.exit(1)
-" 2>/dev/null; then
-            success "pycryptodome/pycryptodomex verified in virtual environment"
+    sys.exit(1)'
+
+    if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
+        if source "$venv_dir/bin/activate" && python -c "$verify_script" >/dev/null 2>&1; then
+            if [ "$quiet" != "1" ]; then
+                success "pycryptodome verified in virtual environment"
+            fi
             return 0
         fi
     else
-        # Test in system Python - try both Crypto and Cryptodome imports
-        if python3 -c "
-import sys
-try:
-    from Crypto.Cipher import AES
-    from Crypto.Util.number import bytes_to_long
-    _ = bytes_to_long(b"\x01")
-    print('pycryptodome (Crypto) import successful')
-    sys.exit(0)
-except ImportError:
-    try:
-        from Cryptodome.Cipher import AES
-        print('pycryptodomex found, but Crypto namespace is required')
-        sys.exit(2)
-    except ImportError:
-        print('Neither pycryptodome nor pycryptodomex found')
-        sys.exit(1)
-" 2>/dev/null; then
-            success "pycryptodome/pycryptodomex verified in system Python"
+        if python3 -c "$verify_script" >/dev/null 2>&1; then
+            if [ "$quiet" != "1" ]; then
+                success "pycryptodome verified in system Python"
+            fi
             return 0
         fi
     fi
-    
-    warning "pycryptodome/pycryptodomex verification failed"
+
+    if [ "$quiet" != "1" ]; then
+        warning "pycryptodome verification failed"
+    fi
     return 1
 }
 
@@ -512,14 +510,14 @@ install_pycryptodome_fallback() {
         return 1
     fi
     
-    log "Attempting fallback pycryptodome installation..."
-    log "Architecture: $ARCH_TYPE ($ARCH_BITS-bit)"
+    pycrypto_log "Attempting fallback pycryptodome installation..."
+    pycrypto_log "Architecture: $ARCH_TYPE ($ARCH_BITS-bit)"
     
     # Architecture-specific considerations
     local extra_flags=""
     case "$ARCH_TYPE" in
         armhf|armel|arm64)
-            log "ARM architecture detected - using optimized build flags"
+            pycrypto_log "ARM architecture detected - using optimized build flags"
             extra_flags="--no-binary=pycryptodome"
             # Ensure we have necessary build tools for ARM
             if ! command -v gcc >/dev/null 2>&1; then
@@ -528,7 +526,7 @@ install_pycryptodome_fallback() {
             fi
             ;;
         amd64|i386)
-            log "x86 architecture detected - using standard installation"
+            pycrypto_log "x86 architecture detected - using standard installation"
             ;;
         *)
             warning "Unknown architecture - attempting standard installation"
@@ -541,22 +539,15 @@ install_pycryptodome_fallback() {
         "pip install pycryptodome --no-cache-dir $extra_flags"
         "pip install pycryptodome --force-reinstall $extra_flags"
         "pip install pycryptodomex --upgrade $extra_flags"
-        "pip install pycryptodomex --no-cache-dir $extra_flags"
         "pip install pycryptodomex --force-reinstall $extra_flags"
-        "pip install pycryptodomex --no-deps --force-reinstall $extra_flags"
-        "pip install pycryptodome --no-deps --force-reinstall $extra_flags"
-        "pip install pycryptodomex --pre --force-reinstall $extra_flags"
-        "pip install pycryptodome --pre --force-reinstall $extra_flags"
-        "pip install pycryptodomex --no-binary=pycryptodomex --force-reinstall"
-        "pip install pycryptodome --no-binary=pycryptodome --force-reinstall"
     )
     
     for method in "${install_methods[@]}"; do
-        log "Trying: $method"
+        pycrypto_log "Trying: $method"
         
         if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
             if source "$venv_dir/bin/activate" && eval $method 2>/dev/null; then
-                if verify_pycryptodome_installation "$venv_dir"; then
+                if verify_pycryptodome_installation "$venv_dir" 1; then
                     success "pycryptodome installed successfully with method: $method"
                     if [ "$cache_scope" = "venv" ]; then
                         PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
@@ -568,7 +559,7 @@ install_pycryptodome_fallback() {
             fi
         else
             if eval $method 2>/dev/null; then
-                if verify_pycryptodome_installation; then
+                if verify_pycryptodome_installation "" 1; then
                     success "pycryptodome installed successfully with method: $method"
                     if [ "$cache_scope" = "venv" ]; then
                         PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
@@ -584,7 +575,7 @@ install_pycryptodome_fallback() {
     # Source builds are slow/brittle on many distros; disabled by default.
     # Set ENABLE_PYCRYPTODOME_SOURCE_BUILD=1 to re-enable for debugging.
     if [ "${ENABLE_PYCRYPTODOME_SOURCE_BUILD:-0}" = "1" ] && command -v git >/dev/null 2>&1 && command -v gcc >/dev/null 2>&1; then
-        log "Attempting to install pycryptodome from source..."
+        pycrypto_log "Attempting to install pycryptodome from source..."
         local temp_dir
         local original_cwd
         temp_dir=$(mktemp -d)
@@ -610,7 +601,7 @@ install_pycryptodome_fallback() {
             
             if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
                 if source "$venv_dir/bin/activate" && python setup.py build_ext --inplace && pip install . 2>/dev/null; then
-                    if verify_pycryptodome_installation "$venv_dir"; then
+                    if verify_pycryptodome_installation "$venv_dir" 1; then
                         success "pycryptodome installed from source successfully"
                         if [ "$cache_scope" = "venv" ]; then
                             PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
@@ -624,7 +615,7 @@ install_pycryptodome_fallback() {
                 fi
             else
                 if python3 setup.py build_ext --inplace && pip3 install . 2>/dev/null; then
-                    if verify_pycryptodome_installation; then
+                    if verify_pycryptodome_installation "" 1; then
                         success "pycryptodome installed from source successfully"
                         if [ "$cache_scope" = "venv" ]; then
                             PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
@@ -642,17 +633,17 @@ install_pycryptodome_fallback() {
         cd "$original_cwd" || true
         rm -rf "$temp_dir"
     else
-        log "Skipping pycryptodome source build fallback (disabled by default)"
+        pycrypto_log "Skipping pycryptodome source build fallback (disabled by default)"
     fi
     
     # Final attempt with system package manager if available
-    log "Attempting to install pycryptodome via system package manager..."
+    pycrypto_log "Attempting to install pycryptodome via system package manager..."
     
     case "$DISTRO_ID" in
         ubuntu|linuxmint|pop|elementary|zorin|debian|raspbian)
             if command -v apt >/dev/null 2>&1; then
                 if sudo apt install -y python3-pycryptodome 2>/dev/null || sudo apt install -y python3-pycryptodomex 2>/dev/null; then
-                    if verify_pycryptodome_installation; then
+                    if verify_pycryptodome_installation "" 1; then
                         success "Installed pycryptodome package via apt"
                         if [ "$cache_scope" = "venv" ]; then
                             PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
@@ -667,7 +658,7 @@ install_pycryptodome_fallback() {
         arch|manjaro|endeavouros|cachyos|garuda|artix)
             if command -v pacman >/dev/null 2>&1; then
                 if sudo pacman -S --noconfirm --needed python-pycryptodome 2>/dev/null || sudo pacman -S --noconfirm --needed python-pycryptodomex 2>/dev/null; then
-                    if verify_pycryptodome_installation; then
+                    if verify_pycryptodome_installation "" 1; then
                         success "Installed pycryptodome package via pacman"
                         if [ "$cache_scope" = "venv" ]; then
                             PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
@@ -684,7 +675,7 @@ install_pycryptodome_fallback() {
             dnf_cmd=$(resolve_cmd dnf yum)
             if [ -n "$dnf_cmd" ]; then
                 if sudo "$dnf_cmd" install -y python3-pycryptodome 2>/dev/null || sudo "$dnf_cmd" install -y python3-pycryptodomex 2>/dev/null; then
-                    if verify_pycryptodome_installation; then
+                    if verify_pycryptodome_installation "" 1; then
                         success "Installed pycryptodome package via $dnf_cmd"
                         if [ "$cache_scope" = "venv" ]; then
                             PYCRYPTODOME_FALLBACK_VENV_STATUS="ok"
@@ -703,7 +694,8 @@ install_pycryptodome_fallback() {
     else
         PYCRYPTODOME_FALLBACK_SYSTEM_STATUS="failed"
     fi
-    error "All pycryptodome installation methods failed"
+    warning "Optional crypto package could not be validated automatically"
+    warning "Installation will continue. Most core features still work."
     return 1
 }
 
@@ -2031,9 +2023,14 @@ check_environment() {
 
 # Main installation function
 main() {
-    log "Starting Innioasis Updater Linux installation..."
+    echo
+    echo "╔══════════════════════════════════════════════════════════════╗"
+    echo "║               Innioasis Updater Linux Installer             ║"
+    echo "╚══════════════════════════════════════════════════════════════╝"
+    log "Starting installation..."
     
     # Check environment
+    step "Checking your system environment"
     if ! check_environment; then
         error "Environment check failed"
         pause_before_exit
@@ -2041,6 +2038,7 @@ main() {
     fi
     
     # Check if running as root
+    step "Validating safe install mode"
     if ! check_root; then
         error "Root check failed"
         pause_before_exit
@@ -2048,6 +2046,7 @@ main() {
     fi
     
     # Check for partial installations and clean them up
+    step "Cleaning up any previous partial install"
     if ! check_and_cleanup_partial_installation; then
         error "Partial installation cleanup failed"
         pause_before_exit
@@ -2055,6 +2054,7 @@ main() {
     fi
     
     # Check if sudo is available
+    step "Preparing required permissions"
     if ! check_sudo; then
         error "Sudo check failed"
         pause_before_exit
@@ -2062,10 +2062,12 @@ main() {
     fi
     
     # Detect architecture and distribution
+    step "Detecting your Linux distribution"
     detect_architecture
     detect_distro
     
     # Install dependencies
+    step "Installing dependencies (this can take a few minutes)"
     if ! install_dependencies; then
         error "Dependency installation failed"
         warning "Some dependencies may not be installed correctly"
@@ -2073,18 +2075,21 @@ main() {
     fi
     
     # Setup virtual environment
+    step "Setting up bundled Python environment"
     if ! setup_virtual_environment; then
         warning "Virtual environment setup failed"
         warning "Continuing installation with system Python fallback"
     fi
     
     # Setup MTKClient specific requirements
+    step "Applying MTK USB access setup"
     if ! setup_mtkclient_requirements; then
         error "MTKClient requirements setup failed"
         warning "MTKClient may not work properly"
     fi
     
     # Setup udev rules
+    step "Installing USB access rules"
     if ! setup_udev_rules; then
         error "udev rules setup failed"
         warning "USB device access may not work properly"
@@ -2094,6 +2099,7 @@ main() {
     get_install_dir
     
     # Install Innioasis Updater
+    step "Downloading and installing Innioasis Updater"
     if ! install_innioasis; then
         error "Innioasis Updater installation failed"
         pause_before_exit
