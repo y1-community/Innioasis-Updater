@@ -252,11 +252,43 @@ pause_before_exit() {
     read -p "Press Enter to continue..." -r
 }
 
+# Ensure the installer is running from a valid directory.
+# If current working directory was removed (or is inside a path we are about to delete),
+# switch to a safe location to avoid getcwd-related Python/pip failures.
+ensure_safe_working_directory() {
+    local install_target="${1:-}"
+    local current_dir
+    current_dir=$(pwd 2>/dev/null || true)
+
+    if [ -z "$current_dir" ]; then
+        warning "Current directory is no longer available; switching to a safe directory."
+        cd "$HOME" 2>/dev/null || cd /tmp || return 1
+        return 0
+    fi
+
+    if [ -n "$install_target" ] && [[ "$current_dir" == "$install_target"* ]]; then
+        warning "Installer is running from inside $install_target; switching to home directory."
+        cd "$HOME" 2>/dev/null || cd /tmp || return 1
+    fi
+}
+
 # Check if running as root
 check_root() {
     if [ "$EUID" -eq 0 ]; then
         error "This script should not be run as root for security reasons."
         error "Please run as a regular user. The script will use sudo when needed."
+        return 1
+    fi
+    return 0
+}
+
+# Detect existing running GUI instance to avoid partial-overwrite races.
+check_existing_updater_instance() {
+    local pids
+    pids=$(pgrep -f "firmware_downloader.py" 2>/dev/null || true)
+    if [ -n "$pids" ]; then
+        warning "Innioasis Updater is already running (PID(s): $(echo "$pids" | tr '\n' ' '))."
+        warning "Please close Innioasis Updater, then run this installer again."
         return 1
     fi
     return 0
@@ -268,6 +300,7 @@ check_and_cleanup_partial_installation() {
     
     # Get installation directory
     get_install_dir
+    ensure_safe_working_directory "$INSTALL_DIR"
     
     local cleanup_needed=false
     
@@ -308,6 +341,9 @@ check_and_cleanup_partial_installation() {
     
     if [ "$cleanup_needed" = true ]; then
         log "Partial installation detected. Cleaning up..."
+
+        # Avoid deleting the directory we are currently running from.
+        ensure_safe_working_directory "$INSTALL_DIR"
         
         # Remove incomplete installation directory
         if [ -d "$INSTALL_DIR" ]; then
@@ -1415,11 +1451,22 @@ setup_mtkclient_requirements() {
         success "OpenSSL found: $openssl_version"
         
         # Check if OpenSSL version is compatible (1.1.1 or higher)
-        local openssl_major=$(echo "$openssl_version" | grep -o "OpenSSL [0-9]" | cut -d' ' -f2)
-        local openssl_minor=$(echo "$openssl_version" | grep -o "\.[0-9]" | head -1 | cut -d'.' -f2)
-        local openssl_patch=$(echo "$openssl_version" | grep -o "\.[0-9]" | tail -1 | cut -d'.' -f2)
-        
-        if [ "$openssl_major" -ge 1 ] && [ "$openssl_minor" -ge 1 ] && [ "$openssl_patch" -ge 1 ]; then
+        local openssl_numeric
+        openssl_numeric=$(echo "$openssl_version" | awk '{print $2}')
+        local openssl_major=0
+        local openssl_minor=0
+        local openssl_patch=0
+
+        IFS='.' read -r openssl_major openssl_minor openssl_patch _ <<< "$openssl_numeric"
+        openssl_major=${openssl_major//[^0-9]/}
+        openssl_minor=${openssl_minor//[^0-9]/}
+        openssl_patch=${openssl_patch//[^0-9]/}
+
+        [ -z "$openssl_major" ] && openssl_major=0
+        [ -z "$openssl_minor" ] && openssl_minor=0
+        [ -z "$openssl_patch" ] && openssl_patch=0
+
+        if [ "$openssl_major" -gt 1 ] || { [ "$openssl_major" -eq 1 ] && [ "$openssl_minor" -gt 1 ]; } || { [ "$openssl_major" -eq 1 ] && [ "$openssl_minor" -eq 1 ] && [ "$openssl_patch" -ge 1 ]; }; then
             success "OpenSSL version is compatible for MTKClient"
         else
             warning "OpenSSL version may be too old for MTKClient (need 1.1.1+)"
@@ -1959,6 +2006,32 @@ EOF
     return 0
 }
 
+launch_updater_detached() {
+    local launch_cmd=""
+
+    # Prefer launcher command so any future launcher improvements apply automatically.
+    if command -v innioasis-updater >/dev/null 2>&1; then
+        launch_cmd="innioasis-updater"
+    elif [ -f "$HOME/.local/bin/innioasis-updater" ]; then
+        launch_cmd="$HOME/.local/bin/innioasis-updater"
+    elif [ -f "$INSTALL_DIR/firmware_downloader.py" ]; then
+        local py_exec="python3"
+        if [ -f "$INSTALL_DIR/venv/bin/python" ]; then
+            py_exec="$INSTALL_DIR/venv/bin/python"
+        elif [ -f "$INSTALL_DIR/venv/bin/python3" ]; then
+            py_exec="$INSTALL_DIR/venv/bin/python3"
+        fi
+        launch_cmd="cd \"$INSTALL_DIR\" && \"$py_exec\" firmware_downloader.py"
+    else
+        return 1
+    fi
+
+    # Fully detach from terminal so users can close this window safely.
+    nohup bash -lc "$launch_cmd" >/dev/null 2>&1 &
+    disown 2>/dev/null || true
+    return 0
+}
+
 # Show completion message and offer to launch
 show_completion_message() {
     echo
@@ -1992,26 +2065,12 @@ show_completion_message() {
     if [[ ! $REPLY =~ ^[Nn]$ ]]; then
         log "🚀 Launching Innioasis Updater..."
         echo
-        
-        # User installation
-        if command -v innioasis-updater >/dev/null 2>&1; then
-            innioasis-updater
-        elif [ -f "$HOME/.local/bin/innioasis-updater" ]; then
-            "$HOME/.local/bin/innioasis-updater"
+
+        if launch_updater_detached; then
+            success "Innioasis Updater started as a separate GUI process."
+            log "You can now close this terminal window safely."
         else
-            cd "$INSTALL_DIR"
-            
-            # Determine Python executable to use
-            PYTHON_EXEC="python3"
-            
-            # Use virtual environment Python if available
-            if [ -f "venv/bin/python" ]; then
-                PYTHON_EXEC="./venv/bin/python"
-            elif [ -f "venv/bin/python3" ]; then
-                PYTHON_EXEC="./venv/bin/python3"
-            fi
-            
-            $PYTHON_EXEC firmware_downloader.py
+            warning "Could not launch automatically. Start it manually with: innioasis-updater"
         fi
     else
         echo
@@ -2051,6 +2110,9 @@ check_environment() {
 main() {
     local install_start_ts
     install_start_ts=$(date +%s)
+
+    # Prevent getcwd-related failures if launched from a removed directory.
+    ensure_safe_working_directory
     echo
     echo "╔══════════════════════════════════════════════════════════════╗"
     echo "║               Innioasis Updater Linux Installer             ║"
@@ -2069,6 +2131,11 @@ main() {
     phase "Validating safe install mode"
     if ! check_root; then
         error "Root check failed"
+        pause_before_exit
+        exit 1
+    fi
+
+    if ! check_existing_updater_instance; then
         pause_before_exit
         exit 1
     fi
