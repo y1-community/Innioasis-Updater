@@ -856,7 +856,7 @@ install_ubuntu_deps() {
     
     # Base packages for all architectures
     # MTKClient requirements: libfuse2, libfuse3, fuse3, libusb-1.0-0-dev, openssl
-    BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils android-tools-adb android-tools-fastboot cmake build-essential gcc g++ make libffi-dev libssl-dev openssl zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libfuse2 libfuse3 fuse3 libusb-1.0-0-dev libusb-1.0-0"
+    BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils android-tools-adb android-tools-fastboot cmake build-essential gcc g++ make libffi-dev libssl-dev openssl zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libfuse2 libfuse3 fuse3 libusb-1.0-0-dev libusb-1.0-0 libxcb-cursor0"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -919,7 +919,7 @@ install_debian_deps() {
     sudo apt-get update
     
     # Base packages for all architectures
-    BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils"
+    BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils libxcb-cursor0"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
