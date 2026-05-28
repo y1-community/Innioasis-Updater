@@ -348,7 +348,7 @@ setup_virtual_environment() {
     
     # Define Python packages for virtual environment
     # Use pycryptodomex instead of pycryptodome to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     # Activate virtual environment and install packages
     log "Installing Python packages in virtual environment..."
@@ -416,13 +416,15 @@ verify_pycryptodome_installation() {
 import sys
 try:
     from Crypto.Cipher import AES
+    from Crypto.Util.number import bytes_to_long
+    _ = bytes_to_long(b"\x01")
     print('pycryptodome (Crypto) import successful')
     sys.exit(0)
 except ImportError:
     try:
         from Cryptodome.Cipher import AES
-        print('pycryptodomex (Cryptodome) import successful')
-        sys.exit(0)
+        print('pycryptodomex found, but Crypto namespace is required')
+        sys.exit(2)
     except ImportError:
         print('Neither pycryptodome nor pycryptodomex found')
         sys.exit(1)
@@ -436,13 +438,15 @@ except ImportError:
 import sys
 try:
     from Crypto.Cipher import AES
+    from Crypto.Util.number import bytes_to_long
+    _ = bytes_to_long(b"\x01")
     print('pycryptodome (Crypto) import successful')
     sys.exit(0)
 except ImportError:
     try:
         from Cryptodome.Cipher import AES
-        print('pycryptodomex (Cryptodome) import successful')
-        sys.exit(0)
+        print('pycryptodomex found, but Crypto namespace is required')
+        sys.exit(2)
     except ImportError:
         print('Neither pycryptodome nor pycryptodomex found')
         sys.exit(1)
@@ -469,7 +473,7 @@ check_pycryptodome_status() {
     fi
     
     # Check if it's installed but not working (version conflict, etc.)
-    local check_cmd="python -c \"import pkg_resources; print([d for d in pkg_resources.working_set if d.project_name.lower() in ['pycryptodome', 'pycrypto']])\" 2>/dev/null || true"
+    local check_cmd="python -c \"import pkg_resources; print([d for d in pkg_resources.working_set if d.project_name.lower() in ['pycryptodome', 'pycryptodomex', 'pycrypto']])\" 2>/dev/null || true"
     
     if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
         local installed_packages=$(source "$venv_dir/bin/activate" && eval $check_cmd)
@@ -514,12 +518,12 @@ install_pycryptodome_fallback() {
             ;;
     esac
     
-    # Try different installation methods - prioritize pycryptodomex for Cryptodome imports
+    # Try different installation methods - prioritize pycryptodome for Crypto imports
     local install_methods=(
-        "pip install pycryptodomex --upgrade $extra_flags"
-        "pip install pycryptodomex --no-cache-dir $extra_flags"
-        "pip install pycryptodomex --force-reinstall $extra_flags"
         "pip install pycryptodome --upgrade $extra_flags"
+        "pip install pycryptodome --no-cache-dir $extra_flags"
+        "pip install pycryptodome --force-reinstall $extra_flags"
+        "pip install pycryptodomex --upgrade $extra_flags"
         "pip install pycryptodome --no-cache-dir $extra_flags"
         "pip install pycryptodome --force-reinstall $extra_flags"
         "pip install pycryptodomex --no-deps --force-reinstall $extra_flags"
@@ -608,11 +612,9 @@ install_pycryptodome_fallback() {
     case "$DISTRO_ID" in
         ubuntu|linuxmint|pop|elementary|zorin|debian|raspbian)
             if command -v apt >/dev/null 2>&1; then
-                if sudo apt install -y python3-cryptography 2>/dev/null; then
-                    log "Installed python3-cryptography as alternative to pycryptodome"
-                    # Test if cryptography can be used as a fallback
-                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
-                        success "cryptography installed as pycryptodome alternative"
+                if sudo apt install -y python3-pycryptodome 2>/dev/null || sudo apt install -y python3-pycryptodomex 2>/dev/null; then
+                    if verify_pycryptodome_installation; then
+                        success "Installed pycryptodome package via apt"
                         return 0
                     fi
                 fi
@@ -620,21 +622,21 @@ install_pycryptodome_fallback() {
             ;;
         arch|manjaro|endeavouros|cachyos|garuda|artix)
             if command -v pacman >/dev/null 2>&1; then
-                if sudo pacman -S --noconfirm python-cryptography 2>/dev/null; then
-                    log "Installed python-cryptography as alternative to pycryptodome"
-                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
-                        success "cryptography installed as pycryptodome alternative"
+                if sudo pacman -S --noconfirm --needed python-pycryptodome 2>/dev/null || sudo pacman -S --noconfirm --needed python-pycryptodomex 2>/dev/null; then
+                    if verify_pycryptodome_installation; then
+                        success "Installed pycryptodome package via pacman"
                         return 0
                     fi
                 fi
             fi
             ;;
         fedora|rhel|centos|almalinux|rocky|bazzite|ublue-os)
-            if command -v dnf >/dev/null 2>&1; then
-                if sudo dnf install -y python3-cryptography 2>/dev/null; then
-                    log "Installed python3-cryptography as alternative to pycryptodome"
-                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
-                        success "cryptography installed as pycryptodome alternative"
+            local dnf_cmd
+            dnf_cmd=$(resolve_cmd dnf yum)
+            if [ -n "$dnf_cmd" ]; then
+                if sudo "$dnf_cmd" install -y python3-pycryptodome 2>/dev/null || sudo "$dnf_cmd" install -y python3-pycryptodomex 2>/dev/null; then
+                    if verify_pycryptodome_installation; then
+                        success "Installed pycryptodome package via $dnf_cmd"
                         return 0
                     fi
                 fi
@@ -665,7 +667,7 @@ install_python_packages_via_pip() {
     # Install packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
     # Use pycryptodomex to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     if install_python_packages python3 $PYTHON_PACKAGES; then
         success "Python packages installed via pip successfully"
@@ -1119,7 +1121,7 @@ install_chromeos_deps() {
         
         # Install Python packages via pip (ChromeOS may not have PySide6 in repos)
         # Use pycryptodomex to support "Cryptodome" imports
-        pip3 install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodomex usb pyusb libusb1 pyserial adbutils
+        python3 -m pip install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils
         
         # Verify pycryptodome installation for ChromeOS
         if ! verify_pycryptodome_installation; then
@@ -1173,7 +1175,7 @@ install_generic_deps() {
     # Install Python packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
     # Use pycryptodomex to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     log "Installing Python packages..."
     if ! install_python_packages python3 $PYTHON_PACKAGES; then
@@ -1391,10 +1393,10 @@ setup_mtkclient_requirements() {
     
     # Check for required Python packages for MTKClient
     log "Checking MTKClient Python dependencies..."
-    local required_packages=("pycryptodomex" "pyusb" "libusb1" "pyserial" "lxml")
+    local required_packages=("Crypto" "Cryptodome" "pyusb" "usb" "serial" "lxml")
     
     for package in "${required_packages[@]}"; do
-        if python3 -c "import $package" 2>/dev/null; then
+        if python3 -c "import ${package}" 2>/dev/null; then
             success "Python package $package is available"
         else
             warning "Python package $package is missing - will be installed later"
