@@ -6403,50 +6403,66 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Update the creator label text and styling based on theme."""
         if not hasattr(self, 'creator_label') or not self.creator_label:
             return
-        message = self._creator_messages[self._creator_message_index % len(self._creator_messages)]
+        if not self._creator_messages:
+            return
+
+        message_index = self._creator_message_index % len(self._creator_messages)
         palette = self.palette() if self else QApplication.palette()
         text_color = palette.color(QPalette.WindowText).name()
-        link_color = text_color
-        emphasis_color = text_color
+        color_key = (text_color,)
 
-        formatted_message = message
-        if "by Y1 users, for Y1 users" in formatted_message:
-            formatted_message = formatted_message.replace(
-                "by Y1 users, for Y1 users",
-                f'by <span style="font-weight: 700; font-size: 13px; color: {emphasis_color};">Y1 users</span>, '
-                f'for <span style="font-weight: 700; font-size: 13px; color: {emphasis_color};">Y1 users</span>'
-            )
-        if "Ryan Specter" in formatted_message:
-            formatted_message = formatted_message.replace(
-                "Ryan Specter",
-                f'<span style="font-weight: 700; font-size: 13px; color: {link_color};">Ryan Specter</span>'
-            )
-        if formatted_message.startswith("Developer:"):
-            formatted_message = formatted_message.replace(
-                "Developer:",
-                f'<span style="font-weight: 700; font-size: 12px; color: {emphasis_color};">Developer:</span>',
-                1
-            )
+        # Rebuild expensive style/text artifacts only when theme colors change.
+        if self._creator_render_cache_key != color_key:
+            self._creator_render_cache_key = color_key
+            self._creator_last_applied_index = None
+            self._creator_rendered_messages = []
 
-        html = (
-            f'<a href="https://ryanspecter.uk" '
-            f'style="color: {text_color}; text-decoration: none;">{formatted_message}</a>'
-        )
-        self.creator_label.setText(html)
-        self.creator_label.setStyleSheet(f"""
-            QLabel {{
-                color: {text_color};
-                font-size: 12px;
-                font-weight: 600;
-            }}
-            QLabel:hover {{
-                color: {text_color};
-            }}
-            a {{
-                color: {text_color};
-                text-decoration: none;
-            }}
-        """)
+            for message in self._creator_messages:
+                formatted_message = message
+                if "by Y1 users, for Y1 users" in formatted_message:
+                    formatted_message = formatted_message.replace(
+                        "by Y1 users, for Y1 users",
+                        f'by <span style="font-weight: 700; font-size: 13px; color: {text_color};">Y1 users</span>, '
+                        f'for <span style="font-weight: 700; font-size: 13px; color: {text_color};">Y1 users</span>'
+                    )
+                if "Ryan Specter" in formatted_message:
+                    formatted_message = formatted_message.replace(
+                        "Ryan Specter",
+                        f'<span style="font-weight: 700; font-size: 13px; color: {text_color};">Ryan Specter</span>'
+                    )
+                if formatted_message.startswith("Developer:"):
+                    formatted_message = formatted_message.replace(
+                        "Developer:",
+                        f'<span style="font-weight: 700; font-size: 12px; color: {text_color};">Developer:</span>',
+                        1
+                    )
+                html = (
+                    f'<a href="https://ryanspecter.uk" '
+                    f'style="color: {text_color}; text-decoration: none;">{formatted_message}</a>'
+                )
+                self._creator_rendered_messages.append(html)
+
+            self.creator_label.setStyleSheet(f"""
+                QLabel {{
+                    color: {text_color};
+                    font-size: 12px;
+                    font-weight: 600;
+                }}
+                QLabel:hover {{
+                    color: {text_color};
+                }}
+                a {{
+                    color: {text_color};
+                    text-decoration: none;
+                }}
+            """)
+
+        # Prevent redundant setText/repaint work when nothing changed.
+        if self._creator_last_applied_index == message_index:
+            return
+
+        self.creator_label.setText(self._creator_rendered_messages[message_index])
+        self._creator_last_applied_index = message_index
 
     def cycle_creator_message(self):
         """Rotate through creator messages."""
@@ -8019,6 +8035,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             "Developer: Ryan Specter",
         ]
         self._creator_message_index = 0
+        self._creator_render_cache_key = None
+        self._creator_rendered_messages = []
+        self._creator_last_applied_index = None
         self.update_creator_label()
         self.creator_timer = QTimer(self)
         self.creator_timer.timeout.connect(self.cycle_creator_message)
