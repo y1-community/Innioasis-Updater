@@ -476,8 +476,8 @@ check_pycryptodome_status() {
         return 0
     fi
     
-    # Check if it's installed but not working (version conflict, etc.)
-    local check_cmd="python -c \"import pkg_resources; print([d for d in pkg_resources.working_set if d.project_name.lower() in ['pycryptodome', 'pycryptodomex', 'pycrypto']])\" 2>/dev/null || true"
+    # Check if package metadata exists even when imports fail (Python 3.12+/3.14 friendly).
+    local check_cmd="python -c \"import importlib.metadata as md; print([d.metadata.get('Name','') for d in md.distributions() if d.metadata.get('Name','').lower() in ['pycryptodome','pycryptodomex','pycrypto']])\" 2>/dev/null || true"
     
     if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
         local installed_packages=$(source "$venv_dir/bin/activate" && eval $check_cmd)
@@ -2066,9 +2066,8 @@ main() {
     
     # Setup virtual environment
     if ! setup_virtual_environment; then
-        error "Virtual environment setup failed"
-        pause_before_exit
-        exit 1
+        warning "Virtual environment setup failed"
+        warning "Continuing installation with system Python fallback"
     fi
     
     # Setup MTKClient specific requirements
