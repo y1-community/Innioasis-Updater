@@ -2,10 +2,27 @@
 # -*- coding: utf-8 -*-
 # (c) B.Kerler 2018-2024 GPLv3 License
 
-from Cryptodome.Hash import SHA256
-from Cryptodome.Util.number import bytes_to_long, ceil_div, size, long_to_bytes
-from Cryptodome.Cipher import PKCS1_OAEP
-from Cryptodome.PublicKey import RSA
+class _MissingCryptoModule:
+    def __getattr__(self, _name):
+        raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+
+def _missing_crypto(*_args, **_kwargs):
+    raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+try:
+    from Cryptodome.Hash import SHA256
+    from Cryptodome.Util.number import bytes_to_long, ceil_div, size, long_to_bytes
+    from Cryptodome.Cipher import PKCS1_OAEP
+    from Cryptodome.PublicKey import RSA
+except ImportError:
+    SHA256 = _MissingCryptoModule()
+    PKCS1_OAEP = _MissingCryptoModule()
+    RSA = _MissingCryptoModule()
+    bytes_to_long = _missing_crypto
+    ceil_div = _missing_crypto
+    size = _missing_crypto
+    long_to_bytes = _missing_crypto
 
 
 def customized_sign(n, e, msg):

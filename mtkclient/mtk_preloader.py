@@ -8,7 +8,19 @@ from enum import Enum
 from struct import unpack, pack
 from binascii import hexlify
 
-from Crypto.Util.number import size
+class _MissingCryptoModule:
+    def __getattr__(self, _name):
+        raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+
+def _missing_crypto(*_args, **_kwargs):
+    raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+try:
+    from Crypto.Util.number import size
+except ImportError:
+    size = _missing_crypto
+
 from mtkclient.Library.Auth.sla import generate_brom_sla_challenge
 from mtkclient.Library.settings import HwParam
 from mtkclient.Library.utils import LogBase, logsetup

@@ -1,4 +1,7 @@
-from Cryptodome.Cipher import AES
+try:
+    from Cryptodome.Cipher import AES
+except ImportError as exc:
+    raise ImportError("This test requires pycryptodome (Cryptodome.Cipher.AES).") from exc
 from struct import unpack, pack
 from binascii import hexlify
 

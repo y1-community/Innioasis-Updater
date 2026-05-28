@@ -6,13 +6,28 @@ import os
 from struct import pack, unpack
 from queue import Queue
 from threading import Thread
-
-from Cryptodome.Util.number import long_to_bytes
-from Cryptodome.Cipher import PKCS1_OAEP
-from Cryptodome.Hash import SHA256
-from Cryptodome.PublicKey import RSA
-from Cryptodome.Util.number import size, bytes_to_long
 from mtkclient.Library.DA.xml.xml_param import DataType, FtSystemOSE, LogLevel
+
+class _MissingCryptoModule:
+    def __getattr__(self, _name):
+        raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+
+def _missing_crypto(*_args, **_kwargs):
+    raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+try:
+    from Cryptodome.Util.number import long_to_bytes, size, bytes_to_long
+    from Cryptodome.Cipher import PKCS1_OAEP
+    from Cryptodome.Hash import SHA256
+    from Cryptodome.PublicKey import RSA
+except ImportError:
+    long_to_bytes = _missing_crypto
+    size = _missing_crypto
+    bytes_to_long = _missing_crypto
+    PKCS1_OAEP = _MissingCryptoModule()
+    SHA256 = _MissingCryptoModule()
+    RSA = _MissingCryptoModule()
 from mtkclient.Library.utils import logsetup, LogBase
 from mtkclient.Library.error import ErrorHandler
 from mtkclient.Library.DA.daconfig import EmmcPartitionType, UFSPartitionType, DaStorage
