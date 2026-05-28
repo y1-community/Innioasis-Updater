@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.8.1"
+APP_VERSION = "1.9.9"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -15761,6 +15761,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         if pixmap.isNull():
             return
 
+        # Ensure latest layout geometry is applied before sizing calculations.
+        if hasattr(self, 'image_notes_stack') and self.image_notes_stack is not None:
+            self.image_notes_stack.layout().activate() if self.image_notes_stack.layout() else None
+
         # Prefer the actual available stack area to avoid clipped prompt images.
         if hasattr(self, 'image_notes_stack') and self.image_notes_stack is not None:
             target_size = self.image_notes_stack.contentsRect().size()
@@ -15773,8 +15777,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         if target_size.width() <= 0 or target_size.height() <= 0:
             target_size = QSize(400, 300)
 
-        # Keep a small margin so frame/border rendering never clips content.
-        target_size = QSize(max(1, target_size.width() - 8), max(1, target_size.height() - 8))
+        # Keep a generous margin so bordered prompt assets never clip text near edges.
+        target_size = QSize(max(1, target_size.width() - 24), max(1, target_size.height() - 24))
 
         # Scale image to fit the label while maintaining aspect ratio
         scaled_pixmap = pixmap.scaled(
@@ -15783,7 +15787,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             Qt.SmoothTransformation
         )
 
+        # Normalize device pixel ratio to avoid high-DPI center-cropping artifacts.
+        if hasattr(scaled_pixmap, "setDevicePixelRatio"):
+            scaled_pixmap.setDevicePixelRatio(1.0)
+
         # Set the scaled pixmap
+        self.image_label.setMaximumSize(target_size)
         self.image_label.setMinimumSize(1, 1)
         self.image_label.setPixmap(scaled_pixmap)
 
