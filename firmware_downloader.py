@@ -2336,7 +2336,8 @@ class MTKWorker(QThread):
             )
             
             # Ensure process doesn't hang indefinitely
-            process_timeout = 300  # 5 minutes timeout
+            # Linux users may need longer to follow connection instructions.
+            process_timeout = 900  # 15 minutes timeout
             process_start_time = time.time()
 
             device_detected = False
@@ -2347,14 +2348,16 @@ class MTKWorker(QThread):
             keyboard_interrupt_detected = False
             usb_connection_issue_detected = False
             usb_io_error_detected = False
+            device_config_error_detected = False
             last_output_line = ""
             successful_completion = False
             first_empty_line_detected = False  # Track if we've seen the first empty line
             initsteps_start_time = None  # Track when initsteps phase started
-            initsteps_timeout = 12  # 12 seconds timeout for initsteps phase
+            initsteps_timeout = 45  # Allow longer pre-connect window before nudging user
             last_status_update = time.time()  # Track when status was last updated
             status_check_interval = 2  # Check status every 2 seconds
             current_status = ""  # Track current status message
+            waiting_notice_shown = False
 
             # Interruption detection variables
             progress_detected = False
@@ -2449,13 +2452,12 @@ class MTKWorker(QThread):
                         
                         # Check if we've been in initsteps phase too long - but not during active installation
                         if initsteps_start_time is not None and (time.time() - initsteps_start_time) > initsteps_timeout:
-                            # Only kill the process if we're not in active installation state
+                            # Do not terminate here; keep waiting for user/device connection.
                             if not active_installation_started:
-                                # Kill the process and restart
-                                if process.poll() is None:
-                                    process.terminate()
-                                self.show_try_again_dialog.emit()
-                                break
+                                if not waiting_notice_shown:
+                                    self.status_updated.emit("Still waiting for Y1 connection... keep device unplugged until prompted, then connect it.")
+                                    waiting_notice_shown = True
+                                initsteps_start_time = time.time()
                             else:
                                 # During active installation, just reset the timer to prevent false termination
                                 initsteps_start_time = time.time()
@@ -2511,6 +2513,13 @@ class MTKWorker(QThread):
                     if "attributerror: 'nonetype' object has no attribute 'hex'" in line.lower():
                         usb_connection_issue_detected = True
                         self.status_updated.emit("Please unplug the USB cable from your Y1 and reconnect it.")
+                        self.show_reconnect_image.emit()
+                        # Don't break here - continue reading output
+
+                    # Detect libusb permission/config access problems (common on Linux).
+                    if "couldn't get device configuration" in line.lower() or "could not get device configuration" in line.lower():
+                        device_config_error_detected = True
+                        self.status_updated.emit("USB permission issue detected - verify udev rules/group membership, then reconnect Y1.")
                         self.show_reconnect_image.emit()
                         # Don't break here - continue reading output
 
@@ -2675,6 +2684,8 @@ class MTKWorker(QThread):
 
         if self.should_stop:
             self.mtk_completed.emit(False, "MTK command cancelled")
+        elif device_config_error_detected:
+            self.mtk_completed.emit(False, "Could not access device configuration - check Linux USB permissions/udev rules")
         elif usb_connection_issue_detected:
             self.mtk_completed.emit(False, "USB connection issue - please reconnect device")
         elif handshake_error_detected:
@@ -26908,8 +26919,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             # Non-Windows baseline Method 2 instructions
             instructions = ("We'll now take you to Terminal to show you what's happening under the hood:\n\n"
-                          "\n"
-                          "Make sure you have your Y1 disconnected from your computer\n")
+                          "1. Keep Y1 disconnected until Terminal asks you to connect.\n"
+                          "2. Use a data-capable USB cable and connect directly (no hub).\n"
+                          "3. If Linux says device config/permission failed, relog/reboot once so udev/group changes apply.\n\n"
+                          "Method 2 guide: https://github.com/y1-community/Innioasis-Updater#readme\n\n"
+                          "If an old QR code appears in screenshots, ignore it and use the guide link above.\n")
         
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Troubleshooting Instructions - Method 2")
