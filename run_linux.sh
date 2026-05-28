@@ -30,6 +30,103 @@ success() {
     echo -e "${GREEN}[SUCCESS]${NC} $1"
 }
 
+# Use first available command from a candidate list
+resolve_cmd() {
+    for candidate in "$@"; do
+        if command -v "$candidate" >/dev/null 2>&1; then
+            echo "$candidate"
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Return 0 for immutable/ostree style systems where package managers may be read-only
+is_immutable_system() {
+    [ -e /run/ostree-booted ] || [ -f /usr/lib/os-release ] && grep -qi "ostree" /usr/lib/os-release 2>/dev/null
+}
+
+# Ensure pip tooling exists for the provided Python executable
+ensure_pip_tools() {
+    local py_bin="${1:-python3}"
+
+    if ! command -v "$py_bin" >/dev/null 2>&1; then
+        warning "Python executable not found: $py_bin"
+        return 1
+    fi
+
+    if "$py_bin" -m pip --version >/dev/null 2>&1; then
+        return 0
+    fi
+
+    log "pip not available for $py_bin, attempting bootstrap..."
+    if "$py_bin" -m ensurepip --upgrade >/dev/null 2>&1; then
+        success "Bootstrapped pip using ensurepip"
+    else
+        warning "ensurepip failed for $py_bin"
+    fi
+
+    if "$py_bin" -m pip --version >/dev/null 2>&1; then
+        return 0
+    fi
+
+    case "$DISTRO_ID" in
+        ubuntu|linuxmint|pop|elementary|zorin|debian|raspbian)
+            sudo apt-get update >/dev/null 2>&1 || true
+            sudo apt-get install -y python3-pip python3-setuptools python3-venv >/dev/null 2>&1 || true
+            ;;
+        arch|manjaro|endeavouros|cachyos|garuda|artix)
+            sudo pacman -Sy --noconfirm >/dev/null 2>&1 || true
+            sudo pacman -S --noconfirm python-pip python-setuptools >/dev/null 2>&1 || true
+            ;;
+        fedora|rhel|centos|almalinux|rocky|bazzite|ublue-os)
+            local dnf_cmd
+            dnf_cmd=$(resolve_cmd dnf yum)
+            if [ -n "$dnf_cmd" ]; then
+                sudo "$dnf_cmd" install -y python3-pip python3-setuptools >/dev/null 2>&1 || true
+            fi
+            ;;
+        opensuse*|sles)
+            sudo zypper install -y python3-pip python3-setuptools >/dev/null 2>&1 || true
+            ;;
+    esac
+
+    if "$py_bin" -m pip --version >/dev/null 2>&1; then
+        success "pip is now available for $py_bin"
+        return 0
+    fi
+
+    warning "pip is still unavailable for $py_bin"
+    return 1
+}
+
+# Install python packages with graceful fallback and package isolation flags when needed
+install_python_packages() {
+    local py_bin="$1"
+    shift
+    local packages=("$@")
+
+    if ! ensure_pip_tools "$py_bin"; then
+        warning "Skipping Python package installation: pip unavailable for $py_bin"
+        return 1
+    fi
+
+    local base_args=("-m" "pip" "install")
+    local user_args=()
+    if [ "$py_bin" = "python3" ]; then
+        user_args+=("--user")
+    fi
+
+    if "$py_bin" "${base_args[@]}" "${user_args[@]}" --break-system-packages "${packages[@]}" >/dev/null 2>&1; then
+        return 0
+    fi
+    if "$py_bin" "${base_args[@]}" "${user_args[@]}" "${packages[@]}" >/dev/null 2>&1; then
+        return 0
+    fi
+
+    return 1
+}
+
 # Detect system architecture
 detect_architecture() {
     ARCH=$(uname -m)
@@ -71,11 +168,16 @@ detect_distro() {
         DISTRO_ID="$ID"
         DISTRO_VERSION="$VERSION_ID"
         DISTRO_NAME="$NAME"
-        
-        # Special handling for Raspberry Pi OS
+        DISTRO_ID_LIKE="${ID_LIKE:-}"
+
+        # Special handling for Raspberry Pi OS and known derivatives
         if [ "$ID" = "debian" ] && [ -f /etc/rpi-issue ]; then
             DISTRO_ID="raspbian"
             DISTRO_NAME="Raspberry Pi OS"
+        elif [ "$ID" = "cachyos" ]; then
+            DISTRO_ID="cachyos"
+        elif [ "$ID" = "bazzite" ]; then
+            DISTRO_ID="bazzite"
         fi
     elif [ -f /etc/redhat-release ]; then
         DISTRO_ID="rhel"
@@ -233,8 +335,15 @@ setup_virtual_environment() {
     if python3 -m venv "$VENV_DIR"; then
         success "Virtual environment created at $VENV_DIR"
     else
-        error "Failed to create virtual environment"
-        return 1
+        warning "Standard venv creation failed, retrying with ensurepip..."
+        if python3 -m venv --without-pip "$VENV_DIR" && python3 -m ensurepip --upgrade >/dev/null 2>&1; then
+            if ! "$VENV_DIR/bin/python" -m ensurepip --upgrade >/dev/null 2>&1; then
+                warning "Could not bootstrap pip inside venv via ensurepip"
+            fi
+        else
+            error "Failed to create virtual environment"
+            return 1
+        fi
     fi
     
     # Define Python packages for virtual environment
@@ -243,19 +352,19 @@ setup_virtual_environment() {
     
     # Activate virtual environment and install packages
     log "Installing Python packages in virtual environment..."
-    if source "$VENV_DIR/bin/activate" && pip install --upgrade pip; then
+    "$VENV_DIR/bin/python" -m ensurepip --upgrade >/dev/null 2>&1 || true
+    if "$VENV_DIR/bin/python" -m pip install --upgrade pip setuptools wheel; then
         success "pip upgraded in virtual environment"
     else
-        error "Failed to upgrade pip in virtual environment"
-        return 1
+        warning "Failed to upgrade pip in virtual environment; continuing with existing pip"
     fi
-    
+
     # Install all required packages with pycryptodome verification
-    if source "$VENV_DIR/bin/activate" && pip install $PYTHON_PACKAGES; then
+    if install_python_packages "$VENV_DIR/bin/python" $PYTHON_PACKAGES; then
         success "Python packages installed in virtual environment"
     else
-        error "Failed to install Python packages in virtual environment"
-        return 1
+        warning "Failed to install one or more Python packages in virtual environment"
+        warning "Application may still run if missing packages are optional"
     fi
     
     # Check and fix pycryptodome installation if needed
@@ -503,7 +612,7 @@ install_pycryptodome_fallback() {
                 fi
             fi
             ;;
-        arch|manjaro|endeavouros)
+        arch|manjaro|endeavouros|cachyos|garuda|artix)
             if command -v pacman >/dev/null 2>&1; then
                 if sudo pacman -S --noconfirm python-cryptography 2>/dev/null; then
                     log "Installed python-cryptography as alternative to pycryptodome"
@@ -514,7 +623,7 @@ install_pycryptodome_fallback() {
                 fi
             fi
             ;;
-        fedora|rhel|centos|almalinux|rocky)
+        fedora|rhel|centos|almalinux|rocky|bazzite|ublue-os)
             if command -v dnf >/dev/null 2>&1; then
                 if sudo dnf install -y python3-cryptography 2>/dev/null; then
                     log "Installed python3-cryptography as alternative to pycryptodome"
@@ -542,9 +651,8 @@ fix_cryptodome_imports() {
 install_python_packages_via_pip() {
     log "Installing Python packages via pip..."
     
-    # Check if pip is available
-    if ! command -v pip3 >/dev/null 2>&1; then
-        warning "pip3 not available, skipping Python package installation"
+    if ! ensure_pip_tools python3; then
+        warning "pip tooling unavailable for system python, skipping global user package install"
         return 1
     fi
     
@@ -553,14 +661,11 @@ install_python_packages_via_pip() {
     # Use pycryptodomex to support "Cryptodome" imports
     PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
-    if pip3 install --user --break-system-packages $PYTHON_PACKAGES 2>/dev/null; then
-        success "Python packages installed via pip successfully"
-    elif pip3 install --user $PYTHON_PACKAGES 2>/dev/null; then
+    if install_python_packages python3 $PYTHON_PACKAGES; then
         success "Python packages installed via pip successfully"
     else
         warning "Failed to install some Python packages via pip"
-        warning "You may need to install them manually later"
-        warning "Try: pip3 install --user --break-system-packages $PYTHON_PACKAGES"
+        warning "You may need to install them manually later with: python3 -m pip install --user --break-system-packages $PYTHON_PACKAGES"
     fi
     
     # Verify pycryptodome installation
@@ -584,10 +689,10 @@ install_dependencies() {
         raspbian)
             install_raspbian_deps
             ;;
-        arch|manjaro|endeavouros)
+        arch|manjaro|endeavouros|cachyos|garuda|artix)
             install_arch_deps
             ;;
-        fedora|rhel|centos|almalinux|rocky)
+        fedora|rhel|centos|almalinux|rocky|bazzite|ublue-os)
             install_fedora_deps
             ;;
         opensuse*|sles)
@@ -776,7 +881,13 @@ install_raspbian_deps() {
 # Arch-based distributions
 install_arch_deps() {
     log "Installing dependencies for Arch-based distribution..."
-    
+
+    if is_immutable_system; then
+        warning "Immutable/ostree system detected; skipping pacman system package install"
+        install_python_packages_via_pip
+        return 0
+    fi
+
     # Update package database
     sudo pacman -Sy
     
@@ -797,31 +908,46 @@ install_arch_deps() {
             ;;
     esac
     
-    sudo pacman -S --noconfirm $BASE_PACKAGES $ARCH_PACKAGES
+    sudo pacman -S --noconfirm --needed $BASE_PACKAGES $ARCH_PACKAGES || warning "Some Arch dependencies failed to install"
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if sudo pacman -S --noconfirm \
+    if sudo pacman -S --noconfirm --needed \
         python-pyside6 \
         python-requests \
         python-lxml 2>/dev/null; then
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        sudo pacman -S --noconfirm \
+        sudo pacman -S --noconfirm --needed \
             python-pyside2 \
             python-requests \
-            python-lxml
+            python-lxml || warning "PySide2 fallback package installation failed"
     fi
     
+    install_python_packages_via_pip
     success "Arch dependencies installed successfully"
 }
 
 # Fedora/RHEL-based distributions
 install_fedora_deps() {
     log "Installing dependencies for Fedora/RHEL-based distribution..."
-    
+
+    if is_immutable_system; then
+        warning "Immutable/ostree system detected; skipping system package install"
+        install_python_packages_via_pip
+        return 0
+    fi
+
+    local dnf_cmd
+    dnf_cmd=$(resolve_cmd dnf yum)
+    if [ -z "$dnf_cmd" ]; then
+        warning "dnf/yum not available; using generic dependency flow"
+        install_generic_deps
+        return 0
+    fi
+
     # Update package database
-    sudo dnf update -y
+    sudo "$dnf_cmd" update -y
     
     # Base packages for all architectures
     # MTKClient requirements: fuse, fuse-devel, libusb1-devel
@@ -840,22 +966,23 @@ install_fedora_deps() {
             ;;
     esac
     
-    sudo dnf install -y $BASE_PACKAGES $ARCH_PACKAGES
+    sudo "$dnf_cmd" install -y $BASE_PACKAGES $ARCH_PACKAGES || warning "Some Fedora/RHEL dependencies failed to install"
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if sudo dnf install -y \
+    if sudo "$dnf_cmd" install -y \
         python3-PySide6 \
         python3-requests \
         python3-lxml 2>/dev/null; then
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        sudo dnf install -y \
+        sudo "$dnf_cmd" install -y \
             python3-PySide2 \
             python3-requests \
-            python3-lxml
+            python3-lxml || warning "PySide2 fallback package installation failed"
     fi
     
+    install_python_packages_via_pip
     success "Fedora/RHEL dependencies installed successfully"
 }
 
@@ -1021,11 +1148,17 @@ install_generic_deps() {
         sudo apt update 2>/dev/null || true
         sudo apt install -y build-essential cmake pkg-config libusb-1.0-0-dev 2>/dev/null || warning "Could not install build tools via apt"
     elif command -v pacman >/dev/null 2>&1; then
-        sudo pacman -Sy 2>/dev/null || true
-        sudo pacman -S --noconfirm base-devel cmake pkgconf libusb 2>/dev/null || warning "Could not install build tools via pacman"
-    elif command -v dnf >/dev/null 2>&1; then
-        sudo dnf update -y 2>/dev/null || true
-        sudo dnf install -y gcc gcc-c++ make cmake pkgconfig libusb1-devel 2>/dev/null || warning "Could not install build tools via dnf"
+        if is_immutable_system; then
+            warning "Immutable/ostree system detected; skipping pacman build tool install"
+        else
+            sudo pacman -Sy 2>/dev/null || true
+            sudo pacman -S --noconfirm base-devel cmake pkgconf libusb 2>/dev/null || warning "Could not install build tools via pacman"
+        fi
+    elif command -v dnf >/dev/null 2>&1 || command -v yum >/dev/null 2>&1; then
+        local dnf_cmd
+        dnf_cmd=$(resolve_cmd dnf yum)
+        sudo "$dnf_cmd" update -y 2>/dev/null || true
+        sudo "$dnf_cmd" install -y gcc gcc-c++ make cmake pkgconfig libusb1-devel 2>/dev/null || warning "Could not install build tools via $dnf_cmd"
     elif command -v zypper >/dev/null 2>&1; then
         sudo zypper refresh 2>/dev/null || true
         sudo zypper install -y gcc gcc-c++ make cmake pkg-config libusb-1_0-devel 2>/dev/null || warning "Could not install build tools via zypper"
@@ -1037,21 +1170,19 @@ install_generic_deps() {
     PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     log "Installing Python packages..."
-    if ! pip3 install --user --break-system-packages $PYTHON_PACKAGES 2>/dev/null; then
-        if ! pip3 install --user $PYTHON_PACKAGES 2>/dev/null; then
-            warning "Some Python packages failed to install. Trying individual packages..."
-            for package in $PYTHON_PACKAGES; do
-                if ! pip3 install --user --break-system-packages $package 2>/dev/null; then
-                    pip3 install --user $package 2>/dev/null || warning "Failed to install $package"
-                fi
-            done
-        fi
+    if ! install_python_packages python3 $PYTHON_PACKAGES; then
+        warning "Some Python packages failed to install. Trying individual packages..."
+        for package in $PYTHON_PACKAGES; do
+            if ! install_python_packages python3 "$package"; then
+                warning "Failed to install $package"
+            fi
+        done
     fi
     
     # Try to install keystone-engine separately (it often needs build tools)
     log "Attempting to install keystone-engine..."
-    if ! pip3 install --user --break-system-packages keystone-engine 2>/dev/null; then
-        pip3 install --user keystone-engine 2>/dev/null || warning "keystone-engine failed to install (requires cmake and build tools)"
+    if ! install_python_packages python3 keystone-engine; then
+        warning "keystone-engine failed to install (requires cmake and build tools)"
     fi
     
     # Verify pycryptodome installation
@@ -1435,10 +1566,10 @@ get_install_dir() {
         ubuntu|linuxmint|pop|elementary|zorin|debian)
             INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
             ;;
-        arch|manjaro|endeavouros)
+        arch|manjaro|endeavouros|cachyos|garuda|artix)
             INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
             ;;
-        fedora|rhel|centos|almalinux|rocky)
+        fedora|rhel|centos|almalinux|rocky|bazzite|ublue-os)
             INSTALL_DIR="/home/$USER/.local/share/innioasis-updater"
             ;;
         opensuse*|sles)
