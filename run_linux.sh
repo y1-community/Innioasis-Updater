@@ -378,16 +378,20 @@ setup_virtual_environment() {
         1)
             warning "pycryptodome is installed but not working, attempting to fix..."
             if ! install_pycryptodome_fallback "$VENV_DIR"; then
-                error "Failed to fix pycryptodome installation"
-                return 1
+                warning "Failed to fix pycryptodome installation"
+                warning "Continuing installation anyway. Crypto-dependent features may fail."
             fi
             ;;
         2)
             log "pycryptodome not found, installing fresh..."
             if ! install_pycryptodome_fallback "$VENV_DIR"; then
-                error "Failed to install pycryptodome"
-                return 1
+                warning "Failed to install pycryptodome"
+                warning "Continuing installation anyway. Crypto-dependent features may fail."
             fi
+            ;;
+        3)
+            warning "pycryptodome package exists but verification failed"
+            warning "Continuing installation anyway. Crypto-dependent features may fail."
             ;;
     esac
     
@@ -483,8 +487,8 @@ check_pycryptodome_status() {
     
     if [ -n "$installed_packages" ] && [ "$installed_packages" != "[]" ]; then
         log "Found existing pycryptodome/pycrypto packages: $installed_packages"
-        log "Package exists but import failed - attempting to fix..."
-        return 1
+        log "Package exists but import failed - treating as degraded state"
+        return 3
     fi
     
     log "pycryptodome not installed - will install fresh"
