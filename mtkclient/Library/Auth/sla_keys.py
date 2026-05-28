@@ -1,5 +1,17 @@
-from Cryptodome.PublicKey import RSA
-from Cryptodome.Util.number import bytes_to_long
+class _MissingCryptoModule:
+    def __getattr__(self, _name):
+        raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+
+def _missing_crypto(*_args, **_kwargs):
+    raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+try:
+    from Cryptodome.PublicKey import RSA
+    from Cryptodome.Util.number import bytes_to_long
+except ImportError:
+    RSA = _MissingCryptoModule()
+    bytes_to_long = _missing_crypto
 
 
 class SlaKey:

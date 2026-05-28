@@ -8,7 +8,19 @@ import sys
 from binascii import hexlify
 from struct import pack, unpack
 
-from Cryptodome.Util.number import bytes_to_long, long_to_bytes
+class _MissingCryptoModule:
+    def __getattr__(self, _name):
+        raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+
+def _missing_crypto(*_args, **_kwargs):
+    raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+try:
+    from Cryptodome.Util.number import bytes_to_long, long_to_bytes
+except ImportError:
+    bytes_to_long = _missing_crypto
+    long_to_bytes = _missing_crypto
 
 from mtkclient.Library.Auth.sla import generate_da_sla_signature
 from mtkclient.Library.DA.xflash.xflash_flash_param import NandExtension

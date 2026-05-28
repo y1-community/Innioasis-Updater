@@ -348,7 +348,7 @@ setup_virtual_environment() {
     
     # Define Python packages for virtual environment
     # Use pycryptodomex instead of pycryptodome to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     # Activate virtual environment and install packages
     log "Installing Python packages in virtual environment..."
@@ -416,13 +416,15 @@ verify_pycryptodome_installation() {
 import sys
 try:
     from Crypto.Cipher import AES
+    from Crypto.Util.number import bytes_to_long
+    _ = bytes_to_long(b"\x01")
     print('pycryptodome (Crypto) import successful')
     sys.exit(0)
 except ImportError:
     try:
         from Cryptodome.Cipher import AES
-        print('pycryptodomex (Cryptodome) import successful')
-        sys.exit(0)
+        print('pycryptodomex found, but Crypto namespace is required')
+        sys.exit(2)
     except ImportError:
         print('Neither pycryptodome nor pycryptodomex found')
         sys.exit(1)
@@ -436,13 +438,15 @@ except ImportError:
 import sys
 try:
     from Crypto.Cipher import AES
+    from Crypto.Util.number import bytes_to_long
+    _ = bytes_to_long(b"\x01")
     print('pycryptodome (Crypto) import successful')
     sys.exit(0)
 except ImportError:
     try:
         from Cryptodome.Cipher import AES
-        print('pycryptodomex (Cryptodome) import successful')
-        sys.exit(0)
+        print('pycryptodomex found, but Crypto namespace is required')
+        sys.exit(2)
     except ImportError:
         print('Neither pycryptodome nor pycryptodomex found')
         sys.exit(1)
@@ -469,7 +473,7 @@ check_pycryptodome_status() {
     fi
     
     # Check if it's installed but not working (version conflict, etc.)
-    local check_cmd="python -c \"import pkg_resources; print([d for d in pkg_resources.working_set if d.project_name.lower() in ['pycryptodome', 'pycrypto']])\" 2>/dev/null || true"
+    local check_cmd="python -c \"import pkg_resources; print([d for d in pkg_resources.working_set if d.project_name.lower() in ['pycryptodome', 'pycryptodomex', 'pycrypto']])\" 2>/dev/null || true"
     
     if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
         local installed_packages=$(source "$venv_dir/bin/activate" && eval $check_cmd)
@@ -514,12 +518,12 @@ install_pycryptodome_fallback() {
             ;;
     esac
     
-    # Try different installation methods - prioritize pycryptodomex for Cryptodome imports
+    # Try different installation methods - prioritize pycryptodome for Crypto imports
     local install_methods=(
-        "pip install pycryptodomex --upgrade $extra_flags"
-        "pip install pycryptodomex --no-cache-dir $extra_flags"
-        "pip install pycryptodomex --force-reinstall $extra_flags"
         "pip install pycryptodome --upgrade $extra_flags"
+        "pip install pycryptodome --no-cache-dir $extra_flags"
+        "pip install pycryptodome --force-reinstall $extra_flags"
+        "pip install pycryptodomex --upgrade $extra_flags"
         "pip install pycryptodome --no-cache-dir $extra_flags"
         "pip install pycryptodome --force-reinstall $extra_flags"
         "pip install pycryptodomex --no-deps --force-reinstall $extra_flags"
@@ -554,8 +558,11 @@ install_pycryptodome_fallback() {
     log "Attempting to install pycryptodome from source..."
     
     if command -v git >/dev/null 2>&1; then
-        local temp_dir=$(mktemp -d)
-        cd "$temp_dir"
+        local temp_dir
+        local original_cwd
+        temp_dir=$(mktemp -d)
+        original_cwd=$(pwd)
+        cd "$temp_dir" || return 1
         
         if git clone https://github.com/Legrandin/pycryptodome.git 2>/dev/null; then
             cd pycryptodome
@@ -578,6 +585,7 @@ install_pycryptodome_fallback() {
                 if source "$venv_dir/bin/activate" && python setup.py build_ext --inplace && pip install . 2>/dev/null; then
                     if verify_pycryptodome_installation "$venv_dir"; then
                         success "pycryptodome installed from source successfully"
+                        cd "$original_cwd" || true
                         rm -rf "$temp_dir"
                         return 0
                     fi
@@ -586,6 +594,7 @@ install_pycryptodome_fallback() {
                 if python3 setup.py build_ext --inplace && pip3 install . 2>/dev/null; then
                     if verify_pycryptodome_installation; then
                         success "pycryptodome installed from source successfully"
+                        cd "$original_cwd" || true
                         rm -rf "$temp_dir"
                         return 0
                     fi
@@ -593,6 +602,7 @@ install_pycryptodome_fallback() {
             fi
         fi
         
+        cd "$original_cwd" || true
         rm -rf "$temp_dir"
     fi
     
@@ -602,11 +612,9 @@ install_pycryptodome_fallback() {
     case "$DISTRO_ID" in
         ubuntu|linuxmint|pop|elementary|zorin|debian|raspbian)
             if command -v apt >/dev/null 2>&1; then
-                if sudo apt install -y python3-cryptography 2>/dev/null; then
-                    log "Installed python3-cryptography as alternative to pycryptodome"
-                    # Test if cryptography can be used as a fallback
-                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
-                        success "cryptography installed as pycryptodome alternative"
+                if sudo apt install -y python3-pycryptodome 2>/dev/null || sudo apt install -y python3-pycryptodomex 2>/dev/null; then
+                    if verify_pycryptodome_installation; then
+                        success "Installed pycryptodome package via apt"
                         return 0
                     fi
                 fi
@@ -614,21 +622,21 @@ install_pycryptodome_fallback() {
             ;;
         arch|manjaro|endeavouros|cachyos|garuda|artix)
             if command -v pacman >/dev/null 2>&1; then
-                if sudo pacman -S --noconfirm python-cryptography 2>/dev/null; then
-                    log "Installed python-cryptography as alternative to pycryptodome"
-                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
-                        success "cryptography installed as pycryptodome alternative"
+                if sudo pacman -S --noconfirm --needed python-pycryptodome 2>/dev/null || sudo pacman -S --noconfirm --needed python-pycryptodomex 2>/dev/null; then
+                    if verify_pycryptodome_installation; then
+                        success "Installed pycryptodome package via pacman"
                         return 0
                     fi
                 fi
             fi
             ;;
         fedora|rhel|centos|almalinux|rocky|bazzite|ublue-os)
-            if command -v dnf >/dev/null 2>&1; then
-                if sudo dnf install -y python3-cryptography 2>/dev/null; then
-                    log "Installed python3-cryptography as alternative to pycryptodome"
-                    if python3 -c "from cryptography.hazmat.primitives.ciphers import Cipher; print('cryptography import successful')" 2>/dev/null; then
-                        success "cryptography installed as pycryptodome alternative"
+            local dnf_cmd
+            dnf_cmd=$(resolve_cmd dnf yum)
+            if [ -n "$dnf_cmd" ]; then
+                if sudo "$dnf_cmd" install -y python3-pycryptodome 2>/dev/null || sudo "$dnf_cmd" install -y python3-pycryptodomex 2>/dev/null; then
+                    if verify_pycryptodome_installation; then
+                        success "Installed pycryptodome package via $dnf_cmd"
                         return 0
                     fi
                 fi
@@ -659,7 +667,7 @@ install_python_packages_via_pip() {
     # Install packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
     # Use pycryptodomex to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     if install_python_packages python3 $PYTHON_PACKAGES; then
         success "Python packages installed via pip successfully"
@@ -893,7 +901,7 @@ install_arch_deps() {
     
     # Base packages for all architectures
     # MTKClient requirements: fuse2, fuse3, libusb
-    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl zlib bzip2 readline sqlite tk libxml2 xz-utils ncurses android-tools fuse2 fuse3 libusb"
+    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl zlib bzip2 readline sqlite tk libxml2 xz ncurses android-tools fuse2 fuse3 libusb"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -1113,7 +1121,7 @@ install_chromeos_deps() {
         
         # Install Python packages via pip (ChromeOS may not have PySide6 in repos)
         # Use pycryptodomex to support "Cryptodome" imports
-        pip3 install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodomex usb pyusb libusb1 pyserial adbutils
+        python3 -m pip install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils
         
         # Verify pycryptodome installation for ChromeOS
         if ! verify_pycryptodome_installation; then
@@ -1167,7 +1175,7 @@ install_generic_deps() {
     # Install Python packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
     # Use pycryptodomex to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     log "Installing Python packages..."
     if ! install_python_packages python3 $PYTHON_PACKAGES; then
@@ -1216,7 +1224,9 @@ install_android_tools_fallback() {
     
     # Create temporary directory
     TEMP_DIR=$(mktemp -d)
-    cd "$TEMP_DIR"
+    local original_cwd
+    original_cwd=$(pwd)
+    cd "$TEMP_DIR" || return 1
     
     # Download Android Platform Tools
     log "Downloading Android Platform Tools..."
@@ -1225,6 +1235,7 @@ install_android_tools_fallback() {
             success "Downloaded Android Platform Tools"
         else
             warning "Failed to download Android Platform Tools with wget"
+            cd "$original_cwd" || true
             rm -rf "$TEMP_DIR"
             return 1
         fi
@@ -1233,11 +1244,13 @@ install_android_tools_fallback() {
             success "Downloaded Android Platform Tools"
         else
             warning "Failed to download Android Platform Tools with curl"
+            cd "$original_cwd" || true
             rm -rf "$TEMP_DIR"
             return 1
         fi
     else
         warning "Neither wget nor curl available for downloading Android Platform Tools"
+        cd "$original_cwd" || true
         rm -rf "$TEMP_DIR"
         return 1
     fi
@@ -1248,11 +1261,13 @@ install_android_tools_fallback() {
             success "Extracted Android Platform Tools"
         else
             warning "Failed to extract Android Platform Tools"
+            cd "$original_cwd" || true
             rm -rf "$TEMP_DIR"
             return 1
         fi
     else
         warning "unzip not available for extracting Android Platform Tools"
+        cd "$original_cwd" || true
         rm -rf "$TEMP_DIR"
         return 1
     fi
@@ -1268,11 +1283,13 @@ install_android_tools_fallback() {
         log "Note: You may need to add $USER_BIN_DIR to your PATH"
     else
         warning "Failed to install Android Platform Tools"
+        cd "$original_cwd" || true
         rm -rf "$TEMP_DIR"
         return 1
     fi
     
     # Clean up
+    cd "$original_cwd" || true
     rm -rf "$TEMP_DIR"
     return 0
 }
@@ -1376,10 +1393,10 @@ setup_mtkclient_requirements() {
     
     # Check for required Python packages for MTKClient
     log "Checking MTKClient Python dependencies..."
-    local required_packages=("pycryptodomex" "pyusb" "libusb1" "pyserial" "lxml")
+    local required_packages=("Crypto" "Cryptodome" "pyusb" "usb" "serial" "lxml")
     
     for package in "${required_packages[@]}"; do
-        if python3 -c "import $package" 2>/dev/null; then
+        if python3 -c "import ${package}" 2>/dev/null; then
             success "Python package $package is available"
         else
             warning "Python package $package is missing - will be installed later"
@@ -2200,7 +2217,7 @@ Usage:
 Options:
   -h, --help     Show this help message
   -i, --install  Install Innioasis Updater (default)
-  -u, --uninstall Uninstall Innioasis Updater
+  -u, --uninstall, -uninstall  Uninstall Innioasis Updater
   -l, --launch   Launch Innioasis Updater (if already installed)
   --update       Update Innioasis Updater to latest version
   --cleanup      Clean up partial installations and temporary files
@@ -2257,6 +2274,26 @@ uninstall() {
     if [ -f "$HOME/.local/share/applications/innioasis-updater.desktop" ]; then
         rm -f "$HOME/.local/share/applications/innioasis-updater.desktop"
         success "Removed desktop entry"
+    fi
+
+    # Remove udev rules created by installer
+    if [ -f "/etc/udev/rules.d/99-mediatek.rules" ]; then
+        if sudo rm -f "/etc/udev/rules.d/99-mediatek.rules"; then
+            success "Removed udev rules: /etc/udev/rules.d/99-mediatek.rules"
+            sudo udevadm control --reload-rules >/dev/null 2>&1 || true
+            sudo udevadm trigger >/dev/null 2>&1 || true
+        else
+            warning "Failed to remove udev rules file"
+        fi
+    fi
+
+    # Remove qcaux blacklist line added by installer, if present
+    if [ -f "/etc/modprobe.d/blacklist.conf" ] && grep -q '^blacklist qcaux$' "/etc/modprobe.d/blacklist.conf"; then
+        if sudo sed -i '/^blacklist qcaux$/d' "/etc/modprobe.d/blacklist.conf"; then
+            success "Removed qcaux blacklist entry from /etc/modprobe.d/blacklist.conf"
+        else
+            warning "Failed to remove qcaux blacklist entry"
+        fi
     fi
     
     # Update desktop database
@@ -2381,7 +2418,7 @@ case "${1:-}" in
         show_help
         exit 0
         ;;
-    -u|--uninstall)
+    -u|--uninstall|-uninstall)
         uninstall
         exit 0
         ;;

@@ -7,10 +7,24 @@
 import logging
 import hashlib
 from struct import pack
-from Crypto.Util.number import bytes_to_long
-from Crypto.Cipher import AES
-from Crypto.Util import Counter
 from mtkclient.Library.utils import LogBase, logsetup
+
+class _MissingCryptoModule:
+    def __getattr__(self, _name):
+        raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+
+def _missing_crypto(*_args, **_kwargs):
+    raise ImportError("Crypto backend is required for this operation. Install pycryptodome.")
+
+try:
+    from Crypto.Util.number import bytes_to_long
+    from Crypto.Cipher import AES
+    from Crypto.Util import Counter
+except ImportError:
+    bytes_to_long = _missing_crypto
+    AES = _MissingCryptoModule()
+    Counter = _MissingCryptoModule()
 
 Lcs = 0xA
 KceSet = 0xB
