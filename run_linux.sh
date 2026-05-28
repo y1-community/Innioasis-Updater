@@ -13,6 +13,10 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# User-facing verbosity: concise by default.
+# Set INSTALL_VERBOSE=1 for detailed diagnostics.
+INSTALL_VERBOSE="${INSTALL_VERBOSE:-0}"
+
 # Logging function
 log() {
     echo -e "${BLUE}[$(date +'%Y-%m-%d %H:%M:%S')]${NC} $1"
@@ -35,9 +39,44 @@ step() {
     echo -e "${BLUE}==>${NC} $1"
 }
 
+vlog() {
+    if [ "$INSTALL_VERBOSE" = "1" ]; then
+        log "$1"
+    fi
+}
+
+run_cmd() {
+    # Usage: run_cmd "description" "command"
+    local description="$1"
+    local command_str="$2"
+    if [ "$INSTALL_VERBOSE" = "1" ]; then
+        log "$description"
+        eval "$command_str"
+    else
+        log "$description"
+        eval "$command_str" >/dev/null 2>&1
+    fi
+}
+
+elapsed_seconds() {
+    local start_ts="$1"
+    local end_ts
+    end_ts=$(date +%s)
+    echo $((end_ts - start_ts))
+}
+
+TOTAL_PHASES=10
+CURRENT_PHASE=0
+phase() {
+    CURRENT_PHASE=$((CURRENT_PHASE + 1))
+    step "[$CURRENT_PHASE/$TOTAL_PHASES] $1"
+}
+
 # Keep crypto dependency troubleshooting quiet by default.
-# Set PYCRYPTO_VERBOSE=1 to show full pycryptodome diagnostics.
-PYCRYPTO_VERBOSE="${PYCRYPTO_VERBOSE:-0}"
+# Set PYCRYPTO_VERBOSE=1 to override, otherwise it follows INSTALL_VERBOSE.
+PYCRYPTO_VERBOSE="${PYCRYPTO_VERBOSE:-$INSTALL_VERBOSE}"
+# Optional crypto package install. Keep disabled by default now that crypto is lazy-loaded.
+INSTALL_PYCRYPTO="${INSTALL_PYCRYPTO:-0}"
 pycrypto_log() {
     if [ "$PYCRYPTO_VERBOSE" = "1" ]; then
         log "$1"
@@ -241,14 +280,11 @@ check_and_cleanup_partial_installation() {
         else
             log "Found existing complete installation at: $INSTALL_DIR"
             
-            # Check if pycryptodome is properly installed in existing installation
-            if [ -d "$INSTALL_DIR/venv" ]; then
-                log "Checking pycryptodome in existing virtual environment..."
-                if ! verify_pycryptodome_installation "$INSTALL_DIR/venv"; then
-                    warning "pycryptodome not properly installed in existing virtual environment"
-                    log "Will reinstall virtual environment to fix pycryptodome"
-                    cleanup_needed=true
-                fi
+            # Crypto backends are optional during install because they are lazy-loaded at runtime.
+            # Keep existing install even if crypto verification is degraded.
+            if [ -d "$INSTALL_DIR/venv" ] && ! verify_pycryptodome_installation "$INSTALL_DIR/venv" 1; then
+                warning "Existing install found; crypto backend could not be verified"
+                warning "Continuing without forced cleanup (crypto features may be limited)"
             fi
             
             return 0
@@ -309,12 +345,8 @@ check_sudo() {
     fi
     
     # Request sudo permissions early
-    log "This script requires sudo permissions for:"
-    log "  - Installing system packages"
-    log "  - Setting up udev rules for USB device access"
-    log "  - Creating system directories"
-    log ""
     log "Requesting sudo permissions..."
+    vlog "Needed for system packages and USB access rules"
     
     if ! sudo -v; then
         error "Failed to obtain sudo permissions. Please ensure you have sudo access and try again."
@@ -360,9 +392,8 @@ setup_virtual_environment() {
         fi
     fi
     
-    # Define Python packages for virtual environment
-    # Use pycryptodomex instead of pycryptodome to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    # Define Python packages for virtual environment (crypto backend is optional)
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     # Activate virtual environment and install packages
     log "Installing Python packages in virtual environment..."
@@ -373,7 +404,7 @@ setup_virtual_environment() {
         warning "Failed to upgrade pip in virtual environment; continuing with existing pip"
     fi
 
-    # Install all required packages with pycryptodome verification
+    # Install all required packages
     if install_python_packages "$VENV_DIR/bin/python" $PYTHON_PACKAGES; then
         success "Python packages installed in virtual environment"
     else
@@ -382,32 +413,24 @@ setup_virtual_environment() {
     fi
     
     # Check and fix pycryptodome installation if needed
-    check_pycryptodome_status "$VENV_DIR"
-    local pycrypto_status=$?
-    
-    case $pycrypto_status in
-        0)
-            log "pycryptodome is already working correctly"
-            ;;
-        1)
-            warning "pycryptodome is installed but not working, attempting to fix..."
-            if ! install_pycryptodome_fallback "$VENV_DIR"; then
-                warning "Failed to fix pycryptodome installation"
-                warning "Continuing installation anyway. Crypto-dependent features may fail."
-            fi
-            ;;
-        2)
-            log "pycryptodome not found, installing fresh..."
-            if ! install_pycryptodome_fallback "$VENV_DIR"; then
-                warning "Failed to install pycryptodome"
-                warning "Continuing installation anyway. Crypto-dependent features may fail."
-            fi
-            ;;
-        3)
-            warning "pycryptodome package exists but verification failed"
-            warning "Continuing installation anyway. Crypto-dependent features may fail."
-            ;;
-    esac
+    if [ "$INSTALL_PYCRYPTO" = "1" ]; then
+        check_pycryptodome_status "$VENV_DIR"
+        local pycrypto_status=$?
+        
+        case $pycrypto_status in
+            0)
+                log "pycryptodome is already working correctly"
+                ;;
+            1|2|3)
+                warning "Attempting optional crypto package setup..."
+                if ! install_pycryptodome_fallback "$VENV_DIR"; then
+                    warning "Optional crypto setup failed; continuing installation"
+                fi
+                ;;
+        esac
+    else
+        vlog "Skipping optional pycryptodome setup in virtual environment"
+    fi
     
     # Create activation script
     cat > "$INSTALL_DIR/activate_venv.sh" << EOF
@@ -438,26 +461,32 @@ try:
     _ = bytes_to_long(b"\x01")
     sys.exit(0)
 except ImportError:
-    sys.exit(1)'
+    try:
+        from Cryptodome.Cipher import AES
+        from Cryptodome.Util.number import bytes_to_long
+        _ = bytes_to_long(b"\x01")
+        sys.exit(0)
+    except ImportError:
+        sys.exit(1)'
 
     if [ -n "$venv_dir" ] && [ -d "$venv_dir" ]; then
         if source "$venv_dir/bin/activate" && python -c "$verify_script" >/dev/null 2>&1; then
             if [ "$quiet" != "1" ]; then
-                success "pycryptodome verified in virtual environment"
+                success "Crypto backend verified in virtual environment"
             fi
             return 0
         fi
     else
         if python3 -c "$verify_script" >/dev/null 2>&1; then
             if [ "$quiet" != "1" ]; then
-                success "pycryptodome verified in system Python"
+                success "Crypto backend verified in system Python"
             fi
             return 0
         fi
     fi
 
     if [ "$quiet" != "1" ]; then
-        warning "pycryptodome verification failed"
+        warning "Crypto backend verification failed"
     fi
     return 1
 }
@@ -466,11 +495,11 @@ except ImportError:
 check_pycryptodome_status() {
     local venv_dir="$1"
     
-    log "Checking pycryptodome installation status..."
+    vlog "Checking optional crypto backend status..."
     
     # Check if pycryptodome is already working
-    if verify_pycryptodome_installation "$venv_dir"; then
-        log "pycryptodome is already properly installed and working"
+    if verify_pycryptodome_installation "$venv_dir" 1; then
+        vlog "Crypto backend is already available"
         return 0
     fi
     
@@ -484,12 +513,12 @@ check_pycryptodome_status() {
     fi
     
     if [ -n "$installed_packages" ] && [ "$installed_packages" != "[]" ]; then
-        log "Found existing pycryptodome/pycrypto packages: $installed_packages"
-        log "Package exists but import failed - treating as degraded state"
+        vlog "Found installed crypto packages: $installed_packages"
+        vlog "Package exists but import failed; treating as degraded state"
         return 3
     fi
     
-    log "pycryptodome not installed - will install fresh"
+    vlog "Crypto package not currently installed"
     return 2
 }
 
@@ -503,10 +532,10 @@ install_pycryptodome_fallback() {
 
     # Avoid repeatedly running the same expensive fallback sequence in one installer run.
     if [ "$cache_scope" = "venv" ] && [ "${PYCRYPTODOME_FALLBACK_VENV_STATUS:-}" = "failed" ]; then
-        warning "Skipping repeated pycryptodome fallback attempts for virtual environment"
+        pycrypto_log "Skipping repeated pycryptodome fallback attempts for virtual environment"
         return 1
     elif [ "$cache_scope" = "system" ] && [ "${PYCRYPTODOME_FALLBACK_SYSTEM_STATUS:-}" = "failed" ]; then
-        warning "Skipping repeated pycryptodome fallback attempts for system python"
+        pycrypto_log "Skipping repeated pycryptodome fallback attempts for system python"
         return 1
     fi
     
@@ -701,8 +730,7 @@ install_pycryptodome_fallback() {
 
 # Fix Cryptodome import statements in Innioasis Updater code
 fix_cryptodome_imports() {
-    log "Skipping Cryptodome import fixes - the codebase already handles imports correctly"
-    log "No modifications needed to firmware_downloader.py"
+    vlog "Skipping Cryptodome import fixes; codebase already handles imports"
     return 0
 }
 
@@ -718,7 +746,7 @@ install_python_packages_via_pip() {
     # Install packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
     # Use pycryptodomex to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone keystone-engine usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     if install_python_packages python3 $PYTHON_PACKAGES; then
         success "Python packages installed via pip successfully"
@@ -727,9 +755,8 @@ install_python_packages_via_pip() {
         warning "You may need to install them manually later with: python3 -m pip install --user --break-system-packages $PYTHON_PACKAGES"
     fi
     
-    # Verify pycryptodome installation
-    if ! verify_pycryptodome_installation; then
-        warning "pycryptodome verification failed, attempting fallback installation..."
+    if [ "$INSTALL_PYCRYPTO" = "1" ] && ! verify_pycryptodome_installation "" 1; then
+        warning "Optional crypto backend setup requested, attempting install..."
         install_pycryptodome_fallback
     fi
 }
@@ -948,11 +975,13 @@ install_arch_deps() {
     fi
 
     # Update package database
-    sudo pacman -Sy
+    if ! run_cmd "Refreshing package database..." "sudo pacman -Sy"; then
+        warning "Could not refresh package database"
+    fi
     
     # Base packages for all architectures
     # MTKClient requirements: fuse2, fuse3, libusb
-    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl zlib bzip2 readline sqlite tk libxml2 xz ncurses android-tools fuse2 fuse3 libusb"
+    BASE_PACKAGES="python python-pip python-virtualenv python-setuptools pkgconf base-devel git curl wget unzip udev usbutils cmake gcc gcc-libs make libffi openssl bzip2 readline sqlite tk libxml2 xz ncurses android-tools fuse2 fuse3 libusb"
     
     # Architecture-specific packages
     case "$ARCH_TYPE" in
@@ -967,20 +996,16 @@ install_arch_deps() {
             ;;
     esac
     
-    sudo pacman -S --noconfirm --needed $BASE_PACKAGES $ARCH_PACKAGES || warning "Some Arch dependencies failed to install"
+    if ! run_cmd "Installing system packages..." "sudo pacman -S --noconfirm --needed $BASE_PACKAGES $ARCH_PACKAGES"; then
+        warning "Some Arch dependencies failed to install"
+    fi
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if sudo pacman -S --noconfirm --needed \
-        python-pyside6 \
-        python-requests \
-        python-lxml 2>/dev/null; then
+    if run_cmd "Installing optional GUI packages..." "sudo pacman -S --noconfirm --needed python-pyside6 python-requests python-lxml"; then
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        sudo pacman -S --noconfirm --needed \
-            python-pyside2 \
-            python-requests \
-            python-lxml || warning "PySide2 fallback package installation failed"
+        run_cmd "Installing PySide2 fallback packages..." "sudo pacman -S --noconfirm --needed python-pyside2 python-requests python-lxml" || warning "PySide2 fallback package installation failed"
     fi
     
     install_python_packages_via_pip
@@ -1171,12 +1196,10 @@ install_chromeos_deps() {
         sudo apt install -y android-tools-adb android-tools-fastboot 2>/dev/null || warning "Android tools not available in ChromeOS repos"
         
         # Install Python packages via pip (ChromeOS may not have PySide6 in repos)
-        # Use pycryptodomex to support "Cryptodome" imports
-        python3 -m pip install --user --break-system-packages PySide6 requests lxml configparser colorama capstone pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils
+        python3 -m pip install --user --break-system-packages PySide6 requests lxml configparser colorama capstone usb pyusb libusb1 pyserial adbutils
         
-        # Verify pycryptodome installation for ChromeOS
-        if ! verify_pycryptodome_installation; then
-            warning "pycryptodome verification failed on ChromeOS, attempting fallback installation..."
+        if [ "$INSTALL_PYCRYPTO" = "1" ] && ! verify_pycryptodome_installation "" 1; then
+            warning "Optional crypto backend setup requested, attempting install..."
             install_pycryptodome_fallback
         fi
     else
@@ -1225,8 +1248,8 @@ install_generic_deps() {
     
     # Install Python packages via pip
     # Try with --break-system-packages for Ubuntu 25.04+ which has externally-managed-environment
-    # Use pycryptodomex to support "Cryptodome" imports
-    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone pycryptodome pycryptodomex usb pyusb libusb1 pyserial adbutils pillow numpy"
+    # Crypto backend is optional and lazy-loaded at runtime.
+    PYTHON_PACKAGES="PySide6 requests lxml configparser colorama capstone usb pyusb libusb1 pyserial adbutils pillow numpy"
     
     log "Installing Python packages..."
     if ! install_python_packages python3 $PYTHON_PACKAGES; then
@@ -1244,11 +1267,12 @@ install_generic_deps() {
         warning "keystone-engine failed to install (requires cmake and build tools)"
     fi
     
-    # Verify pycryptodome installation
-    log "Verifying pycryptodome installation..."
-    if ! verify_pycryptodome_installation; then
-        warning "pycryptodome verification failed, attempting fallback installation..."
-        install_pycryptodome_fallback
+    if [ "$INSTALL_PYCRYPTO" = "1" ]; then
+        log "Verifying optional crypto backend installation..."
+        if ! verify_pycryptodome_installation "" 1; then
+            warning "Optional crypto backend setup requested, attempting install..."
+            install_pycryptodome_fallback
+        fi
     fi
     
     # Try to install libusb
@@ -1670,7 +1694,7 @@ DOWNLOAD_DIR=""
 
 # Download Innioasis Updater from GitHub
 download_innioasis() {
-    log "Downloading Innioasis Updater from GitHub..."
+    step "Fetching app files from GitHub (usually under 1 minute)"
     
     # Create temporary directory for download
     TEMP_DIR=$(mktemp -d)
@@ -1680,18 +1704,22 @@ download_innioasis() {
     fi
     
     # Try to clone the repository
-    log "Cloning repository from https://github.com/y1-community/Innioasis-Updater..."
+    local clone_start
+    clone_start=$(date +%s)
+    log "Downloading repository..."
     if git clone https://github.com/y1-community/Innioasis-Updater.git "$TEMP_DIR/innioasis-updater" 2>/dev/null; then
-        success "Repository cloned successfully"
+        success "Repository download complete ($(elapsed_seconds "$clone_start")s)"
         DOWNLOAD_DIR="$TEMP_DIR/innioasis-updater"
     else
-        warning "Git clone failed, trying to download as ZIP archive..."
+        warning "Direct clone failed; switching to ZIP download."
         
         # Download as ZIP if git is not available
         ZIP_FILE="$TEMP_DIR/innioasis-updater.zip"
+        local zip_start
+        zip_start=$(date +%s)
         if command -v wget >/dev/null 2>&1; then
             if wget -O "$ZIP_FILE" https://github.com/y1-community/Innioasis-Updater/archive/refs/heads/main.zip 2>/dev/null; then
-                success "ZIP archive downloaded successfully"
+                success "ZIP download complete ($(elapsed_seconds "$zip_start")s)"
             else
                 error "Failed to download ZIP archive with wget"
                 rm -rf "$TEMP_DIR"
@@ -1699,7 +1727,7 @@ download_innioasis() {
             fi
         elif command -v curl >/dev/null 2>&1; then
             if curl -L -o "$ZIP_FILE" https://github.com/y1-community/Innioasis-Updater/archive/refs/heads/main.zip 2>/dev/null; then
-                success "ZIP archive downloaded successfully"
+                success "ZIP download complete ($(elapsed_seconds "$zip_start")s)"
             else
                 error "Failed to download ZIP archive with curl"
                 rm -rf "$TEMP_DIR"
@@ -1712,9 +1740,12 @@ download_innioasis() {
         fi
         
         # Extract ZIP file
+        local unzip_start
+        unzip_start=$(date +%s)
+        log "Extracting app files..."
         if command -v unzip >/dev/null 2>&1; then
             if unzip -q "$ZIP_FILE" -d "$TEMP_DIR" 2>/dev/null; then
-                success "ZIP archive extracted successfully"
+                success "Extraction complete ($(elapsed_seconds "$unzip_start")s)"
                 DOWNLOAD_DIR="$TEMP_DIR/Innioasis-Updater-main"
             else
                 error "Failed to extract ZIP archive"
@@ -1735,7 +1766,7 @@ download_innioasis() {
         return 1
     fi
     
-    success "Innioasis Updater downloaded successfully"
+    success "App files are ready for installation"
     return 0
 }
 
@@ -1931,16 +1962,10 @@ EOF
 # Show completion message and offer to launch
 show_completion_message() {
     echo
-    echo "╔══════════════════════════════════════════════════════════════╗"
-    echo "║                    🎉 Installation Complete! 🎉              ║"
-    echo "╚══════════════════════════════════════════════════════════════╝"
-    echo
-    success "Innioasis Updater has been successfully installed!"
-    echo
-    log "📁 Installation directory: $INSTALL_DIR"
-    log "🚀 Launcher command: innioasis-updater"
-    log "🖥️  Desktop shortcut: Available in your applications menu"
-    log "🌐 Website: https://innioasis.app"
+    success "Installation complete."
+    log "Install location: $INSTALL_DIR"
+    log "Launch command: innioasis-updater"
+    log "Desktop entry: Innioasis Updater"
     echo
     
     # Check if command is available
@@ -1948,14 +1973,19 @@ show_completion_message() {
         log "✅ Command 'innioasis-updater' is ready to use!"
     else
         warning "Command 'innioasis-updater' may not be in PATH yet"
-        log "Try running: source ~/.bashrc"
-        log "Or restart your terminal"
-        log "Or run directly: ~/.local/bin/innioasis-updater"
+        log "Run: source ~/.bashrc (or restart terminal)"
+        log "Fallback launch: ~/.local/bin/innioasis-updater"
         echo
     fi
     
+    echo "If your phone is not detected:"
+    echo "  1) Reboot or log out/in once (group and udev changes)"
+    echo "  2) Stop ModemManager and retry"
+    echo "  3) Use a short known-good USB data cable"
+    echo
+
     # Ask if user wants to launch the application
-    echo "Would you like to launch Innioasis Updater now?"
+    echo "Launch Innioasis Updater now?"
     read -p "Press Enter to launch, or type 'n' to skip: " -r
     echo
     
@@ -1985,14 +2015,10 @@ show_completion_message() {
         fi
     else
         echo
-        log "You can launch Innioasis Updater later using:"
-        echo "    innioasis-updater"
-        echo "    or: ~/.local/bin/innioasis-updater"
-        echo "    or find it in your applications menu"
+        log "You can launch later with: innioasis-updater"
+        log "Or: ~/.local/bin/innioasis-updater"
     fi
     
-    echo
-    echo "Thank you for using Innioasis Updater! 🙏"
     echo
 }
 
@@ -2023,6 +2049,8 @@ check_environment() {
 
 # Main installation function
 main() {
+    local install_start_ts
+    install_start_ts=$(date +%s)
     echo
     echo "╔══════════════════════════════════════════════════════════════╗"
     echo "║               Innioasis Updater Linux Installer             ║"
@@ -2030,7 +2058,7 @@ main() {
     log "Starting installation..."
     
     # Check environment
-    step "Checking your system environment"
+    phase "Checking your system environment"
     if ! check_environment; then
         error "Environment check failed"
         pause_before_exit
@@ -2038,7 +2066,7 @@ main() {
     fi
     
     # Check if running as root
-    step "Validating safe install mode"
+    phase "Validating safe install mode"
     if ! check_root; then
         error "Root check failed"
         pause_before_exit
@@ -2046,7 +2074,7 @@ main() {
     fi
     
     # Check for partial installations and clean them up
-    step "Cleaning up any previous partial install"
+    phase "Cleaning up any previous partial install"
     if ! check_and_cleanup_partial_installation; then
         error "Partial installation cleanup failed"
         pause_before_exit
@@ -2054,7 +2082,7 @@ main() {
     fi
     
     # Check if sudo is available
-    step "Preparing required permissions"
+    phase "Preparing required permissions"
     if ! check_sudo; then
         error "Sudo check failed"
         pause_before_exit
@@ -2062,12 +2090,12 @@ main() {
     fi
     
     # Detect architecture and distribution
-    step "Detecting your Linux distribution"
+    phase "Detecting your Linux distribution"
     detect_architecture
     detect_distro
     
     # Install dependencies
-    step "Installing dependencies (this can take a few minutes)"
+    phase "Installing dependencies (this can take a few minutes)"
     if ! install_dependencies; then
         error "Dependency installation failed"
         warning "Some dependencies may not be installed correctly"
@@ -2075,21 +2103,21 @@ main() {
     fi
     
     # Setup virtual environment
-    step "Setting up bundled Python environment"
+    phase "Setting up bundled Python environment"
     if ! setup_virtual_environment; then
         warning "Virtual environment setup failed"
         warning "Continuing installation with system Python fallback"
     fi
     
     # Setup MTKClient specific requirements
-    step "Applying MTK USB access setup"
+    phase "Applying MTK USB access setup"
     if ! setup_mtkclient_requirements; then
         error "MTKClient requirements setup failed"
         warning "MTKClient may not work properly"
     fi
     
     # Setup udev rules
-    step "Installing USB access rules"
+    phase "Installing USB access rules"
     if ! setup_udev_rules; then
         error "udev rules setup failed"
         warning "USB device access may not work properly"
@@ -2099,143 +2127,20 @@ main() {
     get_install_dir
     
     # Install Innioasis Updater
-    step "Downloading and installing Innioasis Updater"
+    phase "Downloading and installing Innioasis Updater"
     if ! install_innioasis; then
         error "Innioasis Updater installation failed"
         pause_before_exit
         exit 1
     fi
     
-    # Final pycryptodome verification and setup
-    log "Performing final pycryptodome verification..."
-    
-    # Check in virtual environment first
-    if [ -d "$INSTALL_DIR/venv" ]; then
-        if ! verify_pycryptodome_installation "$INSTALL_DIR/venv"; then
-            warning "pycryptodome not working in virtual environment, attempting final fix..."
-            install_pycryptodome_fallback "$INSTALL_DIR/venv"
-        fi
-    fi
-    
-    # Check system Python as fallback
-    if ! verify_pycryptodome_installation; then
-        warning "pycryptodome not working in system Python, attempting final fix..."
-        install_pycryptodome_fallback
-    fi
-    
-    # Final comprehensive test
-    log "Running comprehensive pycryptodome functionality test..."
-    
-    if [ -d "$INSTALL_DIR/venv" ]; then
-        # Test in virtual environment - try both pycryptodome and pycryptodomex
-        if source "$INSTALL_DIR/venv/bin/activate" && python -c "
-import sys
-print(f'Python version: {sys.version}')
-print(f'Architecture: {sys.platform}')
-
-# Try pycryptodomex first (Cryptodome imports), then pycryptodome (Crypto imports)
-crypto_imports = None
-try:
-    from Cryptodome.Cipher import AES
-    from Cryptodome.Random import get_random_bytes
-    from Cryptodome.Util.Padding import pad, unpad
-    crypto_imports = 'pycryptodomex (Cryptodome)'
-    print(f'Using {crypto_imports}')
-except ImportError:
-    try:
-        from Crypto.Cipher import AES
-        from Crypto.Random import get_random_bytes
-        from Crypto.Util.Padding import pad, unpad
-        crypto_imports = 'pycryptodome (Crypto)'
-        print(f'Using {crypto_imports}')
-    except ImportError:
-        print('ERROR: Neither pycryptodome nor pycryptodomex found')
-        sys.exit(1)
-
-if crypto_imports:
-    try:
-        # Test basic encryption/decryption
-        key = get_random_bytes(32)
-        iv = get_random_bytes(16)
-        cipher = AES.new(key, AES.MODE_CBC, iv)
-        
-        data = b'Hello, pycryptodome!'
-        padded_data = pad(data, AES.block_size)
-        encrypted = cipher.encrypt(padded_data)
-        
-        cipher = AES.new(key, AES.MODE_CBC, iv)
-        decrypted = cipher.decrypt(encrypted)
-        original = unpad(decrypted, AES.block_size)
-        
-        if original == data:
-            print(f'SUCCESS: {crypto_imports} encryption/decryption test passed')
-        else:
-            print(f'ERROR: {crypto_imports} encryption/decryption test failed')
-            sys.exit(1)
-    except Exception as e:
-        print(f'ERROR: {crypto_imports} test failed: {e}')
-        sys.exit(1)
-" 2>/dev/null; then
-            success "pycryptodome comprehensive test passed in virtual environment"
-        else
-            error "pycryptodome comprehensive test failed in virtual environment"
-            warning "Innioasis Updater may not work correctly"
-        fi
+    # Final optional crypto check (non-blocking)
+    if [ -d "$INSTALL_DIR/venv" ] && verify_pycryptodome_installation "$INSTALL_DIR/venv" 1; then
+        vlog "Optional crypto backend available in virtual environment"
+    elif verify_pycryptodome_installation "" 1; then
+        vlog "Optional crypto backend available in system Python"
     else
-        # Test in system Python - try both pycryptodome and pycryptodomex
-        if python3 -c "
-import sys
-print(f'Python version: {sys.version}')
-print(f'Architecture: {sys.platform}')
-
-# Try pycryptodomex first (Cryptodome imports), then pycryptodome (Crypto imports)
-crypto_imports = None
-try:
-    from Cryptodome.Cipher import AES
-    from Cryptodome.Random import get_random_bytes
-    from Cryptodome.Util.Padding import pad, unpad
-    crypto_imports = 'pycryptodomex (Cryptodome)'
-    print(f'Using {crypto_imports}')
-except ImportError:
-    try:
-        from Crypto.Cipher import AES
-        from Crypto.Random import get_random_bytes
-        from Crypto.Util.Padding import pad, unpad
-        crypto_imports = 'pycryptodome (Crypto)'
-        print(f'Using {crypto_imports}')
-    except ImportError:
-        print('ERROR: Neither pycryptodome nor pycryptodomex found')
-        sys.exit(1)
-
-if crypto_imports:
-    try:
-        # Test basic encryption/decryption
-        key = get_random_bytes(32)
-        iv = get_random_bytes(16)
-        cipher = AES.new(key, AES.MODE_CBC, iv)
-        
-        data = b'Hello, pycryptodome!'
-        padded_data = pad(data, AES.block_size)
-        encrypted = cipher.encrypt(padded_data)
-        
-        cipher = AES.new(key, AES.MODE_CBC, iv)
-        decrypted = cipher.decrypt(encrypted)
-        original = unpad(decrypted, AES.block_size)
-        
-        if original == data:
-            print(f'SUCCESS: {crypto_imports} encryption/decryption test passed')
-        else:
-            print(f'ERROR: {crypto_imports} encryption/decryption test failed')
-            sys.exit(1)
-    except Exception as e:
-        print(f'ERROR: {crypto_imports} test failed: {e}')
-        sys.exit(1)
-" 2>/dev/null; then
-            success "pycryptodome comprehensive test passed in system Python"
-        else
-            error "pycryptodome comprehensive test failed in system Python"
-            warning "Innioasis Updater may not work correctly"
-        fi
+        warning "Optional crypto backend unavailable; secure/auth workflows may be limited"
     fi
     
     # Fix Cryptodome import statements
@@ -2254,6 +2159,8 @@ if crypto_imports:
         warning "Failed to create launcher script"
     fi
     
+    success "Install flow finished in $(elapsed_seconds "$install_start_ts")s"
+
     # Show completion message
     show_completion_message
 }
@@ -2307,6 +2214,11 @@ Requirements:
   - PySide6 (or PySide2 as fallback)
   - libusb-1.0
   - Internet connection for downloading dependencies
+
+Environment variables:
+  INSTALL_VERBOSE=1                      Enable detailed diagnostic logs
+  INSTALL_PYCRYPTO=1                     Attempt optional crypto backend install
+  ENABLE_PYCRYPTODOME_SOURCE_BUILD=1     Allow source-build crypto fallback (advanced)
 
 For more information, visit: https://github.com/y1-community/Innioasis-Updater
 EOF
