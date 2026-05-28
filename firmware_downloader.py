@@ -6404,15 +6404,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         if not hasattr(self, 'creator_label') or not self.creator_label:
             return
         message = self._creator_messages[self._creator_message_index % len(self._creator_messages)]
-        is_dark = self.is_dark_mode()
-        if hasattr(self, 'theme_monitor') and getattr(self.theme_monitor, 'last_theme', None):
-            last_theme = self.theme_monitor.last_theme
-            if last_theme == "dark":
-                is_dark = True
-            elif last_theme == "light":
-                is_dark = False
-        text_color = "#FFFFFF" if is_dark else "#000000"
-        link_color = "#4FA8FF" if is_dark else "#0C4BCC"
+        palette = self.palette() if self else QApplication.palette()
+        text_color = palette.color(QPalette.WindowText).name()
+        link_color = text_color
         emphasis_color = text_color
 
         formatted_message = message
