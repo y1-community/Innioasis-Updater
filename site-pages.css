@@ -1,0 +1,80 @@
+/* Page-level layout + legacy variable bridge (loads after innioasis styles) */
+
+body.site-themes-app {
+    --bg-card: var(--site-bg-elevated, #12141c);
+    --text-primary: var(--site-text, #f4f6fb);
+    --text-secondary: var(--site-muted, #9aa3b5);
+    --accent: var(--site-accent, #6b9fff);
+}
+
+/* —— Theme preview page —— */
+body.site-themes-app .theme-page-wrap {
+    max-width: 1200px;
+    margin: 1.5rem auto 3rem;
+    padding: 0 0.75rem;
+    box-sizing: border-box;
+}
+
+body.site-themes-app .theme-panel {
+    background: var(--site-bg-elevated) !important;
+    border: 1px solid var(--site-border) !important;
+    border-radius: var(--site-radius-lg) !important;
+    padding: 16px !important;
+    box-sizing: border-box;
+}
+
+body.site-themes-app .theme-panel h4 {
+    color: var(--site-accent) !important;
+    margin: 0 0 8px 0;
+}
+
+body.site-themes-app .theme-gold-medal-banner {
+    display: block;
+    padding: 10px 12px;
+    border-radius: var(--site-radius-md);
+    background: rgba(184, 137, 30, 0.12);
+    border: 1px solid rgba(255, 230, 160, 0.35);
+    color: #f4e6b8 !important;
+}
+
+body.site-themes-app #download-area .btn,
+body.site-themes-app #theme-maintainer-row .btn {
+    font-weight: 600 !important;
+}
+
+body.site-themes-app #assets-wrap {
+    min-height: 120px;
+}
+
+body.site-themes-app #assets-list {
+    max-height: 420px;
+    overflow: auto;
+}
+
+/* —— Report / upload prose —— */
+body.site-themes-app .wrap {
+    color: var(--site-text);
+}
+
+body.site-themes-app .report-page input,
+body.site-themes-app .report-page select,
+body.site-themes-app .report-page textarea,
+body.site-themes-app .upload-prose input,
+body.site-themes-app .upload-prose select,
+body.site-themes-app .upload-prose textarea {
+    background: #1a1e28;
+    border: 1px solid var(--site-border);
+    color: var(--site-text);
+    border-radius: var(--site-radius-md);
+    font-family: var(--site-font);
+}
+
+/* —— index (4) / updater landing: dark chrome when site shell active —— */
+body.site-themes-app.site-dock-mode .hero,
+body.site-themes-app.site-dock-mode section {
+    color: var(--site-text);
+}
+
+body.site-themes-app #nav-root {
+    display: none;
+}

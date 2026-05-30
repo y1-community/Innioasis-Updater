@@ -1,520 +1,167 @@
-<!-- Neomorphic Floating Support Us Toolbar - Horizontal Pills with Expandable Donate -->
-<!-- Embed this component in any webpage -->
+<!-- Unified bottom dock: themes, donate, privacy — styled via site-toolbar.css -->
 <div id="support-toolbar-container">
-    <style>
-        #support-toolbar {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 10000;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: #f0f0f3;
-            padding: 8px 12px;
-            border-radius: 50px;
-            box-shadow: 
-                8px 8px 16px rgba(163, 177, 198, 0.6),
-                -8px -8px 16px rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-            flex-wrap: wrap;
-            max-width: calc(100vw - 40px);
-        }
-
-        .support-toolbar-btn {
-            background: #f0f0f3;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 18px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            color: #2d2d2d;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 
-                4px 4px 8px rgba(163, 177, 198, 0.6),
-                -4px -4px 8px rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .support-toolbar-btn:hover {
-            box-shadow: 
-                2px 2px 4px rgba(163, 177, 198, 0.6),
-                -2px -2px 4px rgba(255, 255, 255, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .support-toolbar-btn:active {
-            box-shadow: 
-                inset 2px 2px 4px rgba(163, 177, 198, 0.6),
-                inset -2px -2px 4px rgba(255, 255, 255, 0.5);
-            transform: translateY(0);
-        }
-
-        .support-toolbar-btn.primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 
-                4px 4px 8px rgba(102, 126, 234, 0.4),
-                -4px -4px 8px rgba(118, 75, 162, 0.3);
-        }
-
-        .support-toolbar-btn.primary:hover {
-            box-shadow: 
-                2px 2px 4px rgba(102, 126, 234, 0.4),
-                -2px -2px 4px rgba(118, 75, 162, 0.3);
-        }
-
-        .support-toolbar-btn.donate-priority {
-            border: 1px solid rgba(102, 126, 234, 0.25);
-        }
-
-        .support-toolbar-icon {
-            font-size: 16px;
-            display: inline-block;
-            line-height: 1;
-        }
-
-        #donate-options {
-            display: none;
-            width: 100%;
-            margin-top: 10px;
-            padding: 12px;
-            border-radius: 16px;
-            background: #f0f0f3;
-            box-shadow:
-                inset 2px 2px 4px rgba(163, 177, 198, 0.5),
-                inset -2px -2px 4px rgba(255, 255, 255, 0.5);
-            flex-direction: column;
-            gap: 12px;
-            align-items: stretch;
-        }
-
-        #donate-options.expanded {
-            display: flex;
-        }
-
-        .donate-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: stretch;
-        }
-
-        .crypto-address {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            padding: 8px 12px;
-            background: #f0f0f3;
-            border-radius: 12px;
-            box-shadow: 
-                2px 2px 4px rgba(163, 177, 198, 0.6),
-                -2px -2px 4px rgba(255, 255, 255, 0.5);
-            min-width: 140px;
-        }
-
-        .support-note {
-            max-width: 360px;
-            padding: 10px 12px;
-            border-radius: 12px;
-            background: #f0f0f3;
-            box-shadow:
-                2px 2px 4px rgba(163, 177, 198, 0.6),
-                -2px -2px 4px rgba(255, 255, 255, 0.5);
-            font-size: 13px;
-            line-height: 1.5;
-            color: #2d2d2d;
-        }
-
-        .support-note strong {
-            display: block;
-            margin-bottom: 4px;
-            color: #667eea;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            font-size: 11px;
-        }
-
-        .support-note a {
-            color: #4f46e5;
-            font-weight: 600;
-        }
-
-        .crypto-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: #667eea;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .crypto-copy-hint {
-            font-size: 10px;
-            font-weight: 400;
-            color: #86868b;
-            text-transform: none;
-            letter-spacing: 0;
-        }
-
-        .crypto-code {
-            font-size: 12px;
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            color: #2d2d2d;
-            word-break: break-all;
-            cursor: pointer;
-            padding: 4px 6px;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .crypto-code:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .crypto-code.copied {
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
-        }
-
-        .network-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-top: 4px;
-        }
-
-        .network-tag {
-            font-size: 10px;
-            font-weight: 600;
-            padding: 2px 6px;
-            border-radius: 999px;
-            background: rgba(102, 126, 234, 0.12);
-            color: #4f46e5;
-        }
-
-        @media (max-width: 768px) {
-            #support-toolbar {
-                bottom: 15px;
-                right: 15px;
-                left: 15px;
-                justify-content: center;
-                padding: 10px 12px;
-                gap: 8px;
-                border-radius: 18px;
-            }
-
-            .support-toolbar-btn {
-                padding: 10px 14px;
-                font-size: 13px;
-            }
-
-            .support-toolbar-icon {
-                font-size: 16px;
-            }
-
-            .crypto-address {
-                min-width: 120px;
-                padding: 6px 10px;
-            }
-
-            .crypto-code {
-                font-size: 11px;
-            }
-
-            #donate-options {
-                padding: 10px;
-            }
-
-            .support-note {
-                max-width: none;
-                font-size: 12px;
-            }
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            #support-toolbar {
-                background: #2d2d2d;
-                box-shadow: 
-                    8px 8px 16px rgba(0, 0, 0, 0.4),
-                    -8px -8px 16px rgba(60, 60, 60, 0.3);
-            }
-
-            .support-toolbar-btn {
-                background: #2d2d2d;
-                color: #e0e0e0;
-                box-shadow: 
-                    4px 4px 8px rgba(0, 0, 0, 0.4),
-                    -4px -4px 8px rgba(60, 60, 60, 0.3);
-            }
-
-            .support-toolbar-btn:hover {
-                box-shadow: 
-                    2px 2px 4px rgba(0, 0, 0, 0.4),
-                    -2px -2px 4px rgba(60, 60, 60, 0.3);
-            }
-
-            .support-toolbar-btn:active {
-                box-shadow: 
-                    inset 2px 2px 4px rgba(0, 0, 0, 0.4),
-                    inset -2px -2px 4px rgba(60, 60, 60, 0.3);
-            }
-
-            .crypto-address {
-                background: #2d2d2d;
-                box-shadow: 
-                    2px 2px 4px rgba(0, 0, 0, 0.4),
-                    -2px -2px 4px rgba(60, 60, 60, 0.3);
-            }
-
-            .support-note {
-                background: #2d2d2d;
-                color: #e0e0e0;
-                box-shadow:
-                    2px 2px 4px rgba(0, 0, 0, 0.4),
-                    -2px -2px 4px rgba(60, 60, 60, 0.3);
-            }
-
-            #donate-options {
-                background: #2d2d2d;
-                box-shadow:
-                    inset 2px 2px 4px rgba(0, 0, 0, 0.4),
-                    inset -2px -2px 4px rgba(60, 60, 60, 0.3);
-            }
-
-            .crypto-code {
-                color: #e0e0e0;
-                background: rgba(255, 255, 255, 0.05);
-            }
-
-            .crypto-code:hover {
-                background: rgba(255, 255, 255, 0.1);
-            }
-        }
-
-        /* Support for data-theme attribute */
-        body[data-theme="dark"] #support-toolbar,
-        html[data-theme="dark"] #support-toolbar {
-            background: #2d2d2d;
-            box-shadow: 
-                8px 8px 16px rgba(0, 0, 0, 0.4),
-                -8px -8px 16px rgba(60, 60, 60, 0.3);
-        }
-
-        body[data-theme="dark"] .support-toolbar-btn,
-        html[data-theme="dark"] .support-toolbar-btn {
-            background: #2d2d2d;
-            color: #e0e0e0;
-            box-shadow: 
-                4px 4px 8px rgba(0, 0, 0, 0.4),
-                -4px -4px 8px rgba(60, 60, 60, 0.3);
-        }
-
-        body[data-theme="dark"] .support-toolbar-btn:hover,
-        html[data-theme="dark"] .support-toolbar-btn:hover {
-            box-shadow: 
-                2px 2px 4px rgba(0, 0, 0, 0.4),
-                -2px -2px 4px rgba(60, 60, 60, 0.3);
-        }
-
-        body[data-theme="dark"] .support-toolbar-btn:active,
-        html[data-theme="dark"] .support-toolbar-btn:active {
-            box-shadow: 
-                inset 2px 2px 4px rgba(0, 0, 0, 0.4),
-                inset -2px -2px 4px rgba(60, 60, 60, 0.3);
-        }
-
-        body[data-theme="dark"] .crypto-address,
-        html[data-theme="dark"] .crypto-address {
-            background: #2d2d2d;
-            box-shadow: 
-                2px 2px 4px rgba(0, 0, 0, 0.4),
-                -2px -2px 4px rgba(60, 60, 60, 0.3);
-        }
-
-        body[data-theme="dark"] .support-note,
-        html[data-theme="dark"] .support-note {
-            background: #2d2d2d;
-            color: #e0e0e0;
-            box-shadow:
-                2px 2px 4px rgba(0, 0, 0, 0.4),
-                -2px -2px 4px rgba(60, 60, 60, 0.3);
-        }
-
-        body[data-theme="dark"] #donate-options,
-        html[data-theme="dark"] #donate-options {
-            background: #2d2d2d;
-            box-shadow:
-                inset 2px 2px 4px rgba(0, 0, 0, 0.4),
-                inset -2px -2px 4px rgba(60, 60, 60, 0.3);
-        }
-
-        body[data-theme="dark"] .crypto-code,
-        html[data-theme="dark"] .crypto-code {
-            color: #e0e0e0;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        body[data-theme="dark"] .crypto-code:hover,
-        html[data-theme="dark"] .crypto-code:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        body[data-theme="dark"] .crypto-copy-hint,
-        html[data-theme="dark"] .crypto-copy-hint {
-            color: #a0a0a0;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .crypto-copy-hint {
-                color: #a0a0a0;
-            }
-        }
-    </style>
-    <div id="support-toolbar">
-        <a href="https://innioasis.app/support_devs.html" class="support-toolbar-btn primary" target="_blank" rel="noopener noreferrer">
-            <span class="support-toolbar-icon">💙</span>
-            <span>Add Themes + Support Development</span>
-        </a>
-        <button id="donate-toggle" class="support-toolbar-btn" type="button">
-            <span class="support-toolbar-icon">💳</span>
-            <span>Donate</span>
-        </button>
-        <div id="donate-options">
-            <div class="support-note">
-                <strong>Support the developers</strong>
-                Ryan and his partner are expecting a baby in December. If this project helps you, we would truly appreciate any support, including gifts from our
-                <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" target="_blank" rel="noopener noreferrer">Amazon Baby Wishlist</a>.
-            </div>
-            <div class="donate-section">
-                <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
-                    <span class="support-toolbar-icon">👶</span>
-                    <span>Baby Wishlist</span>
-                </a>
-                <a href="https://ko-fi.com/teamslide" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
-                    <span class="support-toolbar-icon">☕</span>
-                    <span>Ko-fi</span>
-                </a>
-                <a href="https://www.patreon.com/teamslide" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
-                    <span class="support-toolbar-icon">🧡</span>
-                    <span>Patreon</span>
-                </a>
-                <a href="https://paypal.me/RyanSpecter282" class="support-toolbar-btn donate-priority" target="_blank" rel="noopener noreferrer">
-                    <span class="support-toolbar-icon">💳</span>
-                    <span>PayPal</span>
-                </a>
-                <a href="https://revolut.me/rspecter" class="support-toolbar-btn" target="_blank" rel="noopener noreferrer">
-                    <span class="support-toolbar-icon">💸</span>
-                    <span>Revolut</span>
-                </a>
-            </div>
-            <div class="donate-section">
-                <div class="crypto-address">
-                    <span class="crypto-label">
-                        Bitcoin
-                        <span class="crypto-copy-hint">(click to copy)</span>
-                    </span>
-                    <code class="crypto-code" id="btc-address" onclick="copyCryptoAddress('bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g', 'btc-address')" title="Click to copy">bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g</code>
+    <div class="y1-site-dock-wrap" id="y1-site-dock">
+        <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-labelledby="y1-donate-panel-title" aria-hidden="true">
+            <div class="y1-donate-panel-header">
+                <div>
+                    <p class="y1-donate-panel-title" id="y1-donate-panel-title">Expecting in December</p>
+                    <p class="y1-donate-panel-intro">
+                        Ryan and his partner are expecting a baby in December — your support would mean a lot right now.
+                        Donations also help cover hosting, the domain, and day-to-day running costs for this site.
+                    </p>
                 </div>
-                <div class="crypto-address">
-                    <span class="crypto-label">
-                        SHIBA INU (ERC-20)
-                        <span class="crypto-copy-hint">(click to copy)</span>
-                    </span>
-                    <code class="crypto-code" id="shib-address" onclick="copyCryptoAddress('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'shib-address')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
+                <button type="button" class="y1-donate-close" id="y1-donate-close" aria-label="Close donation panel" title="Close">×</button>
+            </div>
+            <div class="y1-donate-links">
+                <a href="https://ko-fi.com/teamslide" class="y1-dock-link" target="_blank" rel="noopener noreferrer">Ko-fi</a>
+                <a href="https://paypal.me/RyanSpecter282" class="y1-dock-link" target="_blank" rel="noopener noreferrer">PayPal</a>
+                <a href="https://revolut.me/rspecter" class="y1-dock-link" target="_blank" rel="noopener noreferrer">Revolut</a>
+            </div>
+            <div class="y1-donate-crypto">
+                <div class="y1-donate-crypto-item">
+                    <span class="y1-donate-crypto-label">Bitcoin <span class="y1-donate-crypto-hint">(tap to copy)</span></span>
+                    <code class="y1-donate-crypto-code" id="dock-btc-address" data-copy="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g">bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g</code>
                 </div>
-                <div class="crypto-address">
-                    <span class="crypto-label">
-                        Ethereum
-                        <span class="crypto-copy-hint">(same wallet on Ethereum, Arbitrum, and Optimism)</span>
-                    </span>
-                    <div class="network-tags">
-                        <span class="network-tag">Ethereum</span>
-                        <span class="network-tag">Arbitrum</span>
-                        <span class="network-tag">Optimism</span>
-                    </div>
-                    <code class="crypto-code" id="eth-address-multichain" onclick="copyCryptoAddress('0x5E902083ee1B3A05dd39d824012B39cB10FB80D3', 'eth-address-multichain')" title="Click to copy">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
+                <div class="y1-donate-crypto-item">
+                    <span class="y1-donate-crypto-label">SHIBA INU (ERC-20) <span class="y1-donate-crypto-hint">(tap to copy)</span></span>
+                    <code class="y1-donate-crypto-code" id="dock-shib-address" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
+                </div>
+                <div class="y1-donate-crypto-item">
+                    <span class="y1-donate-crypto-label">Ethereum <span class="y1-donate-crypto-hint">(Ethereum, Arbitrum, Optimism)</span></span>
+                    <code class="y1-donate-crypto-code" id="dock-eth-address" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
                 </div>
             </div>
         </div>
+        <nav class="y1-site-dock-bar" aria-label="Site shortcuts">
+            <a href="https://themes.innioasis.app/index.html" class="y1-dock-link">
+                <i class="fa-solid fa-palette" aria-hidden="true"></i> Themes
+            </a>
+            <span class="y1-dock-sep" aria-hidden="true">|</span>
+            <button type="button" class="y1-dock-link" id="donate-toggle" aria-expanded="false" aria-controls="y1-donate-panel">
+                <i class="fa-solid fa-heart" aria-hidden="true"></i> Donate
+            </button>
+            <span class="y1-dock-sep" aria-hidden="true">|</span>
+            <span id="y1-site-dock-privacy-slot"></span>
+        </nav>
     </div>
     <script>
-        (function() {
+        (function () {
             const donateToggle = document.getElementById('donate-toggle');
-            const donateOptions = document.getElementById('donate-options');
-            function removeLegacyFooterCredits() {
-                const footerRoot = document.getElementById('footer-root');
-                if (!footerRoot) return;
-                const footerCols = footerRoot.querySelectorAll('.footer-col');
-                footerCols.forEach(col => {
-                    const title = (col.querySelector('h4')?.textContent || '').trim().toLowerCase();
-                    if (title === 'credits') {
-                        col.remove();
-                    }
+            const donatePanel = document.getElementById('y1-donate-panel');
+            const donateClose = document.getElementById('y1-donate-close');
+
+            function setDonateOpen(open) {
+                if (!donatePanel || !donateToggle) return;
+                donatePanel.classList.toggle('is-open', open);
+                donatePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+                donateToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+
+            function openDonateOptions() {
+                setDonateOpen(true);
+            }
+
+            function closeDonateOptions() {
+                setDonateOpen(false);
+            }
+
+            function closePrivacyPanel() {
+                try {
+                    document.dispatchEvent(new CustomEvent("y1-close-privacy-panel"));
+                } catch (_) {}
+                var privacyPanel = document.getElementById("y1-privacy-panel");
+                if (privacyPanel) privacyPanel.classList.remove("y1-privacy-panel--open");
+            }
+
+            if (donateToggle) {
+                donateToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var opening = !donatePanel.classList.contains('is-open');
+                    if (opening) closePrivacyPanel();
+                    setDonateOpen(opening);
                 });
             }
-            function openDonateOptions() {
-                if (!donateOptions.classList.contains('expanded')) {
-                    donateOptions.classList.add('expanded');
-                }
+            if (donateClose) {
+                donateClose.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeDonateOptions();
+                });
             }
-            removeLegacyFooterCredits();
-            setTimeout(removeLegacyFooterCredits, 500);
-            setTimeout(removeLegacyFooterCredits, 1500);
-            
-            donateToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                donateOptions.classList.toggle('expanded');
+
+            document.addEventListener('click', function (e) {
+                const donateLink = e.target.closest('a[href="#donate"]');
+                if (donateLink) {
+                    e.preventDefault();
+                    openDonateOptions();
+                    return;
+                }
+                if (!e.target.closest('#support-toolbar-container')) {
+                    closeDonateOptions();
+                }
             });
 
-            // Allow legacy #donate links (including credits/footer icons) to open this popup.
-            document.addEventListener('click', function(e) {
-                const donateLink = e.target.closest('a[href="#donate"]');
-                if (!donateLink) return;
-                e.preventDefault();
-                openDonateOptions();
-            });
+            document.addEventListener("y1-close-donate-panel", closeDonateOptions);
 
             if (window.location.hash === '#donate') {
                 openDonateOptions();
             }
 
-            // Close when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('#support-toolbar-container')) {
-                    donateOptions.classList.remove('expanded');
-                }
+            document.querySelectorAll('.y1-donate-crypto-code[data-copy]').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    const text = el.getAttribute('data-copy') || el.textContent || '';
+                    if (!text) return;
+                    const done = function () {
+                        const orig = el.getAttribute('data-copy') || text;
+                        el.textContent = 'Copied!';
+                        el.classList.add('copied');
+                        setTimeout(function () {
+                            el.textContent = orig;
+                            el.classList.remove('copied');
+                        }, 2000);
+                    };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(done).catch(function () {
+                            alert('Copy manually: ' + text);
+                        });
+                    } else {
+                        alert('Copy manually: ' + text);
+                    }
+                });
             });
 
-            function copyCryptoAddress(address, elementId) {
-                navigator.clipboard.writeText(address).then(function() {
-                    const element = document.getElementById(elementId);
-                    const originalText = element.textContent;
-                    element.textContent = 'Copied!';
-                    element.classList.add('copied');
-                    setTimeout(function() {
-                        element.textContent = originalText;
-                        element.classList.remove('copied');
-                    }, 2000);
-                }).catch(function(err) {
-                    console.error('Failed to copy: ', err);
-                    alert('Failed to copy to clipboard. Please copy manually: ' + address);
+            const VISIT_COUNT_KEY = 'y1_themes_visit_count';
+            const DONATE_AUTO_SESSION_KEY = 'y1_donate_panel_auto_shown';
+            function maybeAutoOpenForReturningVisitor() {
+                try {
+                    const prev = parseInt(localStorage.getItem(VISIT_COUNT_KEY) || '0', 10) || 0;
+                    localStorage.setItem(VISIT_COUNT_KEY, String(prev + 1));
+                    if (prev < 1) return;
+                    if (sessionStorage.getItem(DONATE_AUTO_SESSION_KEY) === '1') return;
+                    sessionStorage.setItem(DONATE_AUTO_SESSION_KEY, '1');
+                    setTimeout(openDonateOptions, 900);
+                } catch (_) {}
+            }
+            maybeAutoOpenForReturningVisitor();
+
+            function removeLegacyFooterCredits() {
+                const footerRoot = document.getElementById('footer-root');
+                if (!footerRoot) return;
+                footerRoot.querySelectorAll('.footer-col').forEach(function (col) {
+                    const title = (col.querySelector('h4')?.textContent || '').trim().toLowerCase();
+                    if (title === 'credits') col.remove();
                 });
             }
+            removeLegacyFooterCredits();
+            setTimeout(removeLegacyFooterCredits, 500);
 
-            // Make copyCryptoAddress available globally
-            window.copyCryptoAddress = copyCryptoAddress;
+            window.openY1DonatePanel = openDonateOptions;
+            window.closeY1DonatePanel = closeDonateOptions;
+
+            try {
+                window.dispatchEvent(new Event('y1-dock-slot-ready'));
+            } catch (_) {}
         })();
     </script>
 </div>

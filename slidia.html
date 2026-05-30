@@ -663,8 +663,11 @@
     <!-- Linux Dialog -->
     <div class="platform-dialog" id="linuxDialog">
         <h3>🐧 Linux Installation</h3>
-        <p>Ubuntu is recommended for the best experience, but other distributions should work as well. Follow the instructions in the new tab to set up the required dependencies.</p>
-        <button class="btn" onclick="openLinuxInstructions()">Open Instructions</button>
+        <p>Ubuntu is recommended for the best experience, but other distributions should work as well.</p>
+        <p>Run this one-line install command in your terminal:</p>
+        <pre style="background:#f4f4f5;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:0.85rem;user-select:all;white-space:pre-wrap;word-break:break-all;margin:12px 0;">curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash</pre>
+        <p>For dependency details and troubleshooting, open the full guide.</p>
+        <button class="btn" onclick="openLinuxInstructions()">Open Full Guide</button>
         <button class="btn btn-secondary" onclick="closeDialog()">Close</button>
     </div>
 

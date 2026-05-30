@@ -10,6 +10,7 @@
               <li><a href="https://innioasis.app/guide.html"><i class="fa-solid fa-book" style="margin-right:3px;"></i> Guide</a></li>
               <li><a href="https://innioasis.app/index.html#versions"><i class="fa-solid fa-code-branch" style="margin-right:3px;"></i> Versions</a></li>
               <li><a href="https://themes.innioasis.app/"><i class="fa-solid fa-palette" style="margin-right:3px;"></i> Themes</a></li>
+              <li><a href="https://discord.gg/u95pr8XfN" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" style="margin-right:3px;"></i> Discord</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
               <span></span><span></span><span></span>
@@ -32,6 +33,18 @@
         const t = e.target.closest('a')
         if (!t) return
         const href = t.getAttribute('href') || ''
+        if (t.classList.contains('open-donate-toolbar') || href === '#donate') {
+            e.preventDefault()
+            if (typeof window.openY1DonatePanel === 'function') {
+                window.openY1DonatePanel()
+                return
+            }
+            const donateToggle = document.getElementById('donate-toggle')
+            if (donateToggle) {
+                donateToggle.click()
+                return
+            }
+        }
         if (href.startsWith('#')) {
             e.preventDefault()
             const target = document.querySelector(href)
@@ -53,102 +66,37 @@
     const footerRoot = document.getElementById('footer-root')
     if (!footerRoot) return
 
+    let luciLogoSrc = 'luci-alt.svg'
+    try {
+        luciLogoSrc = new URL('luci-alt.svg', document.baseURI || window.location.href).href
+    } catch (_) {}
+
     footerRoot.innerHTML = `
-    <footer class="site-footer">
+    <footer class="site-footer site-footer--updater">
         <div class="footer-grid">
 
             <div class="footer-col">
                 <h4>Links</h4>
                 <a href="https://innioasis.app/index.html#home">Home</a>
                 <a href="https://innioasis.app/guide.html">Guide</a>
-                <a href="https://themes.innioasis.app/">Themes</a>
                 <a href="https://innioasis.app/index.html#versions">Versions</a>
+                <a href="https://themes.innioasis.app/">Themes</a>
                 <a href="https://discord.gg/u95pr8XfN" target="_blank" rel="noopener noreferrer">Discord</a>
-                <a href="https://innioasis.app/index.html#donate">Donate</a>
+                <a href="#donate" class="open-donate-toolbar">Donate</a>
             </div>
 
-            <div class="footer-col">
-                <h4>Credits</h4>
-
-                <div class="footer-person">
-                    <strong>Ryan Specter</strong>
-                    <div style="display:flex;gap:15px;justify-content:center;">
-                        <a href="https://github.com/ryan-specter/" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://reddit.com/u/RespectYarn" target="_blank"><i class="fab fa-reddit"></i></a>
-                        <a href="#donate"><i class="fas fa-donate"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-person">
-                    <strong>sipped</strong>
-                    <div style="display:flex;gap:15px;justify-content:center;">
-                        <a href="https://github.com/sippedaway" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://sipped.org" target="_blank"><i class="fas fa-globe"></i></a>
-                        <a href="#donate"><i class="fas fa-donate"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-col" style="display:flex;flex-direction:column;justify-content:space-between;">   
-                <div>
-                    <h4>In collaboration with</h4>
-                    <a href="https://www.innioasis.com" target="_blank">
-                        <img src="https://innioasis.app/innioasis.png" class="footer-logo" alt="Innioasis">
-                    </a>
-                </div>
+            <div class="footer-col footer-col-powered">
+                <p class="footer-powered-label">This site is powered by</p>
+                <a href="https://www.luci.ltd" target="_blank" rel="noopener noreferrer" class="footer-luci-link">
+                    <img src="${luciLogoSrc}" class="footer-logo footer-logo-luci" alt="Luci Ltd web hosting — powers innioasis.app (luci.ltd)" title="Luci hosting and domains — www.luci.ltd" decoding="async">
+                </a>
             </div>
 
         </div>
 
         <div class="footer-bottom">
-            © 2025 innioasis Community
+            <a href="https://en.wikipedia.org/wiki/Copyleft" class="footer-copyleft" target="_blank" rel="noopener noreferrer" title="Copyleft — Wikipedia">🄯</a> - Ryan Specter — Made with ❤️ by Y1 users, for Y1 users
         </div>
     </footer>`
-
-    const footerBottom = footerRoot.querySelector('.footer-bottom')
-
-    const PUNCH_URL = 'https://counter.sipped.org/punch/innioasisupdater-counter/12336c13dc3fd1c8ddfbe1953149debc/website'
-    const GET_URL = 'https://counter.sipped.org/get/innioasisupdater-counter/12336c13dc3fd1c8ddfbe1953149debc/website'
-
-    async function fetchCounter(url) {
-        try {
-            const res = await fetch(url, {
-                cache: 'no-store'
-            })
-            if (!res.ok) throw new Error('Failed to fetch counter')
-
-            try {
-                const data = await res.json()
-                if (typeof data.count === 'number') return data.count
-                if (typeof data.value === 'number') return data.value
-            } catch {}
-
-            const text = await res.text()
-            const num = parseInt(text, 10)
-            if (!isNaN(num)) return num
-
-            return null
-        } catch {
-            return null
-        }
-    }
-
-    async function initCounter() {
-        const hasRun = localStorage.getItem("hasrun")
-        const urlToUse = hasRun ? GET_URL : PUNCH_URL
-
-        const count = await fetchCounter(urlToUse)
-
-        if (!hasRun) localStorage.setItem("hasrun", 'true')
-
-        const span = document.createElement('span')
-        span.style.marginLeft = '20px'
-        span.innerHTML = `<i class="fas fa-eye" style="font-size: 11px; margin-right: 6px;"></i>${
-    count !== null ? count.toLocaleString() + ' views' : '... views'
-  }`
-        footerBottom.appendChild(span)
-    }
-
-    initCounter()
 
 })();

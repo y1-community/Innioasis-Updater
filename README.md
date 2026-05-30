@@ -43,7 +43,7 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 Try this install command in your terminal, and if it doesn't work for some reason, [file an issue](https://github.com/y1-community/Innioasis-Updater/issues) explaining your Linux distribution and the issue you encountered.
 
 ```
-curl -fsSL https://innioasis.app/run_linux.sh | bash
+curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash
 ```
 
 - Setting up the MTKclient backend (if the install script doesn't do this properly and run it for you)

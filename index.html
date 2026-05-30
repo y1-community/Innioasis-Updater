@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="site-theme.css?v=20260622">
     <link rel="stylesheet" href="site-toolbar.css?v=20260622">
     <link rel="stylesheet" href="site-pages.css?v=20260622">
-    <script src="gallery-chrome.js?v=20260622"></script>
     <script src="site-init.js?v=20260622"></script>
     <meta name="publisher" content="Luci Ltd" />
     <link rel="author" href="https://www.luci.ltd" title="Luci Ltd — web hosting for Innioasis Y1 Themes" />
@@ -55,21 +54,6 @@
         </div>
     </dialog>
     <div id="nav-root"></div>
-    <div class="gallery-topbar">
-        <a class="gallery-brand" href="https://themes.innioasis.app/index.html" title="Innioasis Y1 Themes gallery">
-            <span class="gallery-brand-icon" aria-hidden="true"><i class="fa-solid fa-palette"></i></span>
-            <span class="gallery-brand-text">Y1 Themes</span>
-        </a>
-        <div class="gallery-tabs" aria-label="Site sections">
-            <a class="gallery-tab" href="https://y1-themes.vercel.app">Editor</a>
-            <a class="gallery-tab" href="https://themes.innioasis.app/index.html">Gallery</a>
-            <a class="gallery-tab" href="https://themes.innioasis.app/upload.html">Upload</a>
-        </div>
-        <form class="topbar-search-wrap" action="https://themes.innioasis.app/index.html" method="get">
-            <i class="fa-solid fa-magnifying-glass topbar-search-icon" aria-hidden="true"></i>
-            <input class="topbar-search" name="q" type="search" placeholder="Search themes" aria-label="Search themes">
-        </form>
-    </div>
 
     <div class="hero" id="home">
         <div class="hero-content">
@@ -113,13 +97,13 @@
         <div class="section-div">
             <h2>Donate</h2>
             <p id="donate-intro" style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-                Support development and help Ryan's growing family via the Baby Wishlist.
+                Ryan and his partner are expecting a baby in December — your support would mean a lot. Donations also help keep Innioasis Updater and related tools online: hosting, the domain, and running costs.
             </p>
 
             <div class="donate-options">
                 <div class="donate-card">
                     <h3>Ryan Specter</h3>
-                    <p>Support the app creator</p>
+                    <p>Help cover hosting, the domain, and running costs for Innioasis Updater and related community tools.</p>
                     <div style="margin-top:.5rem; display: flex; justify-content: space-between; align-items: center;">
                         <select id="ryanMethods" style="font-family: Inter; padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);">
                             <option>PayPal</option>
@@ -134,13 +118,13 @@
                     </div>
                 </div>
 
-                <div id="baby-wishlist-card" class="donate-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="donate-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
-                        <h3>Baby Wishlist</h3>
-                        <p>Ryan and his partner are expecting a baby in December. If you'd like to help with the new addition to the family, gifts from the wishlist are deeply appreciated.</p>
+                        <h3>Donate</h3>
+                        <p>Your support helps fund Innioasis Updater development, hosting, and related community tools.</p>
                     </div>
                     <div style="display: flex; justify-content: right;">
-                        <a href="https://www.amazon.co.uk/baby-reg/kayla-mallett-ryan-specter-november-2026-norwich/26D94K25Z5HWD" class="btn btn-primary" style="color: white; padding: 2px 15px; display:flex; align-items: center; gap:.5rem;"><span style="font-size: 16px;">👶</span>Open Baby Wishlist</a>
+                        <a href="https://www.ko-fi.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex; align-items: center; gap:.5rem;" target="_blank" rel="noopener noreferrer"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="" style="height:20px;" aria-hidden="true" />Donate on Ko-fi</a>
                     </div>
                 </div>
 
@@ -252,20 +236,9 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const sel = document.getElementById('ryanMethods');
-            const babyCard = document.getElementById('baby-wishlist-card');
-            const donateIntro = document.getElementById('donate-intro');
             if (sel) {
                 sel.addEventListener('change', updateRyanMethod);
                 updateRyanMethod();
-            }
-            if (babyCard) {
-                const showBabyCard = Math.random() < 0.5;
-                babyCard.style.display = showBabyCard ? 'flex' : 'none';
-                if (donateIntro) {
-                    donateIntro.textContent = showBabyCard
-                        ? "Support development and help Ryan's growing family via the Baby Wishlist."
-                        : "Support development and ongoing work on Innioasis Updater and the themes ecosystem.";
-                }
             }
         });
 

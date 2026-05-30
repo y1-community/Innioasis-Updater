@@ -31,9 +31,12 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="site-theme.css?v=20260622">
+    <link rel="stylesheet" href="site-toolbar.css?v=20260622">
+    <script src="site-init.js?v=20260622"></script>
 </head>
 
-<body>
+<body class="site-themes-app site-dock-mode">
     <div id="nav-root"></div>
 
     <main style="padding:1rem">
@@ -150,7 +153,7 @@
                         <li>Run the install command in your terminal:</li>
                     </ul>
 
-                    <pre class="code-block">curl -fsSL https://innioasis.app/run_linux.sh | bash</pre>
+                    <pre class="code-block">curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash</pre>
 
                     <ul>
                         <li>Then, follow the <a href="https://github.com/bkerler/mtkclient" target="_blank">MTKclient setup instructions</a></li>
@@ -391,13 +394,14 @@
     </main>
 
     <div id="footer-root"></div>
+    <div id="support-toolbar-slot"></div>
 
     <script src="nav.js"></script>
     <script>
         const platformInstall = {
             windows: 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/installer.exe',
             mac: 'https://github.com/team-slide/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg',
-            linux: 'curl -fsSL https://innioasis.app/run_linux.sh | bash'
+            linux: 'curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash'
         };
 
         function detectPlatform() {
