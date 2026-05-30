@@ -1,11 +1,8 @@
 /**
- * Shared site shell: body classes, bottom dock, and privacy button (theme-analytics).
+ * Shared site shell: body classes and bottom dock.
  */
 (function (global) {
     "use strict";
-
-    var THEME_ANALYTICS_VERSION = "20260524b";
-    var THEME_ANALYTICS_CSS_VERSION = "20260518";
 
     function executeInlineScripts(container) {
         if (!container) return;
@@ -30,106 +27,10 @@
         ];
     }
 
-    function themeAnalyticsScriptCandidates() {
-        return [
-            "theme-analytics.js?v=" + THEME_ANALYTICS_VERSION,
-            "../theme-analytics.js?v=" + THEME_ANALYTICS_VERSION,
-            "../../theme-analytics.js?v=" + THEME_ANALYTICS_VERSION,
-            "../../../theme-analytics.js?v=" + THEME_ANALYTICS_VERSION,
-            "https://themes.innioasis.app/theme-analytics.js?v=" + THEME_ANALYTICS_VERSION,
-        ];
-    }
-
-    function themeAnalyticsCssHref() {
-        try {
-            return new URL(
-                "theme-analytics.css?v=" + THEME_ANALYTICS_CSS_VERSION,
-                document.baseURI || global.location.href
-            ).href;
-        } catch (_) {
-            return (
-                "https://themes.innioasis.app/theme-analytics.css?v=" +
-                THEME_ANALYTICS_CSS_VERSION
-            );
-        }
-    }
-
-    function themeAnalyticsAlreadyIncluded() {
-        if (global.ThemeAnalytics) return true;
-        if (document.getElementById("y1-privacy-settings-btn")) return true;
-        return !!document.querySelector('script[src*="theme-analytics.js"]');
-    }
-
-    function ensureThemeAnalyticsCss() {
-        if (document.querySelector('link[href*="theme-analytics.css"]')) return;
-        var link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = themeAnalyticsCssHref();
-        document.head.appendChild(link);
-    }
-
-    function waitForThemeAnalytics(maxMs) {
-        return new Promise(function (resolve) {
-            if (themeAnalyticsAlreadyIncluded()) {
-                resolve();
-                return;
-            }
-            var start = Date.now();
-            var timer = setInterval(function () {
-                if (themeAnalyticsAlreadyIncluded()) {
-                    clearInterval(timer);
-                    resolve();
-                } else if (Date.now() - start >= maxMs) {
-                    clearInterval(timer);
-                    resolve();
-                }
-            }, 50);
-        });
-    }
-
     function notifyDockReady() {
         try {
             global.dispatchEvent(new CustomEvent("y1-dock-slot-ready"));
         } catch (_) {}
-    }
-
-    function loadThemeAnalyticsOnce() {
-        if (themeAnalyticsAlreadyIncluded()) {
-            return waitForThemeAnalytics(10000).then(notifyDockReady);
-        }
-        if (global.__y1ThemeAnalyticsLoading) {
-            return global.__y1ThemeAnalyticsLoading.then(notifyDockReady);
-        }
-
-        ensureThemeAnalyticsCss();
-
-        global.__y1ThemeAnalyticsLoading = new Promise(function (resolve) {
-            var candidates = themeAnalyticsScriptCandidates();
-            var index = 0;
-
-            function tryNext() {
-                if (index >= candidates.length) {
-                    resolve();
-                    return;
-                }
-                var src = candidates[index++];
-                var script = document.createElement("script");
-                script.src = src;
-                script.async = true;
-                script.dataset.y1ThemeAnalytics = "1";
-                script.onload = function () {
-                    resolve();
-                };
-                script.onerror = function () {
-                    tryNext();
-                };
-                document.head.appendChild(script);
-            }
-
-            tryNext();
-        }).then(notifyDockReady);
-
-        return global.__y1ThemeAnalyticsLoading;
     }
 
     async function loadSupportToolbar() {
@@ -159,7 +60,6 @@
         if (document.body) {
             document.body.classList.add("site-dock-mode");
         }
-        await loadThemeAnalyticsOnce();
     }
 
     if (document.readyState === "loading") {
@@ -171,5 +71,4 @@
     }
 
     global.y1LoadSupportToolbar = loadSupportToolbar;
-    global.y1LoadThemeAnalytics = loadThemeAnalyticsOnce;
 })(typeof window !== "undefined" ? window : globalThis);

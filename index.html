@@ -38,21 +38,6 @@
 </head>
 
 <body class="site-themes-app site-dock-mode">
-    <dialog class="y1-notice-dialog" id="y1-notice-dialog" aria-modal="true" aria-labelledby="y1-notice-title" role="alertdialog">
-        <div class="y1-notice-dialog__inner">
-            <h2 id="y1-notice-title" class="y1-notice-dialog__title">NOTICE</h2>
-            <p class="y1-notice-dialog__text">
-                Y1 devices purchased from March 14 onwards that came with OS 3.0.7 out of the box are not compatible with Rockbox builds released before the April 28, 2026 Nightly. Installing older Rockbox builds may cause these Y1s to fail to power on.
-                <br><br>
-                If this happened, you can recover by installing the April 28th (or newer) Rockbox-Y1 Nightly, or by reinstalling OS 3.0.7 using Innioasis Updater. Updater includes guided SP Flash Tool and MTKClient install options to help with recovery.
-                <br><br>
-                See compatibility details: <a href="https://github.com/rockbox-y1/rockbox/issues/46" rel="noopener noreferrer" target="_blank">rockbox-y1 issue #46</a>.
-            </p>
-            <form method="dialog" class="y1-notice-dialog__actions">
-                <button type="submit" class="y1-notice-dialog__btn" autofocus>I understand</button>
-            </form>
-        </div>
-    </dialog>
     <div id="nav-root"></div>
 
     <div class="hero" id="home">
@@ -618,14 +603,6 @@
 
             updateFilter();
         })
-    </script>
-    <script>
-        (function () {
-            var d = document.getElementById('y1-notice-dialog');
-            if (d && typeof d.showModal === 'function') {
-                d.showModal();
-            }
-        })();
     </script>
 
 </body>

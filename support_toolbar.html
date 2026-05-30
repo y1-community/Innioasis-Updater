@@ -1,4 +1,4 @@
-<!-- Unified bottom dock: themes, donate, privacy — styled via site-toolbar.css -->
+<!-- Unified bottom dock: themes, donate, discord — styled via site-toolbar.css -->
 <div id="support-toolbar-container">
     <div class="y1-site-dock-wrap" id="y1-site-dock">
         <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-labelledby="y1-donate-panel-title" aria-hidden="true">
@@ -41,7 +41,9 @@
                 <i class="fa-solid fa-heart" aria-hidden="true"></i> Donate
             </button>
             <span class="y1-dock-sep" aria-hidden="true">|</span>
-            <span id="y1-site-dock-privacy-slot"></span>
+            <a href="https://discord.gg/u95pr8XfN" class="y1-dock-link" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-discord" aria-hidden="true"></i> Discord
+            </a>
         </nav>
     </div>
     <script>
@@ -65,20 +67,11 @@
                 setDonateOpen(false);
             }
 
-            function closePrivacyPanel() {
-                try {
-                    document.dispatchEvent(new CustomEvent("y1-close-privacy-panel"));
-                } catch (_) {}
-                var privacyPanel = document.getElementById("y1-privacy-panel");
-                if (privacyPanel) privacyPanel.classList.remove("y1-privacy-panel--open");
-            }
-
             if (donateToggle) {
                 donateToggle.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     var opening = !donatePanel.classList.contains('is-open');
-                    if (opening) closePrivacyPanel();
                     setDonateOpen(opening);
                 });
             }
