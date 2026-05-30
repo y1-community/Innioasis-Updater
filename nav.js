@@ -63,6 +63,7 @@
                 <a href="https://innioasis.app/guide.html">Guide</a>
                 <a href="https://themes.innioasis.app/">Themes</a>
                 <a href="https://innioasis.app/index.html#versions">Versions</a>
+                <a href="https://discord.gg/u95pr8XfN" target="_blank" rel="noopener noreferrer">Discord</a>
                 <a href="https://innioasis.app/index.html#donate">Donate</a>
             </div>
 
