@@ -67,6 +67,8 @@
     if (!footerRoot) return
 
     let luciLogoSrc = 'luci-alt.svg'
+    const luciAlt = 'Luci Ltd — web development, web hosting, domain names, business email, SSL certificates, and more. Visit luci.ltd'
+    const luciTitle = 'Luci Ltd: web development, hosting, domains, business email, SSL certificates and more'
     try {
         luciLogoSrc = new URL('luci-alt.svg', document.baseURI || window.location.href).href
     } catch (_) {}
@@ -87,8 +89,8 @@
 
             <div class="footer-col footer-col-powered">
                 <p class="footer-powered-label">This site is powered by</p>
-                <a href="https://www.luci.ltd" target="_blank" rel="noopener noreferrer" class="footer-luci-link">
-                    <img src="${luciLogoSrc}" class="footer-logo footer-logo-luci" alt="Luci Ltd web hosting — powers innioasis.app (luci.ltd)" title="Luci hosting and domains — www.luci.ltd" decoding="async">
+                <a href="https://www.luci.ltd" target="_blank" rel="noopener noreferrer" class="footer-luci-link" aria-label="${luciTitle}">
+                    <img src="${luciLogoSrc}" class="footer-logo footer-logo-luci" alt="${luciAlt}" title="${luciTitle}" decoding="async">
                 </a>
             </div>
 

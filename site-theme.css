@@ -810,19 +810,22 @@ body.site-themes-app .site-footer.site-footer--themes {
     background: rgba(107, 159, 255, 0.18);
 }
 
-.site-footer--themes .footer-grid {
+.site-footer--themes .footer-grid,
+.site-footer--updater .footer-grid {
     align-items: start;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem 2.5rem;
 }
 
 @media (max-width: 640px) {
-    .site-footer--themes .footer-grid {
+    .site-footer--themes .footer-grid,
+    .site-footer--updater .footer-grid {
         grid-template-columns: 1fr;
     }
 }
 
-.site-footer--themes .footer-col-powered {
+.site-footer--themes .footer-col-powered,
+.site-footer--updater .footer-col-powered {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -830,14 +833,17 @@ body.site-themes-app .site-footer.site-footer--themes {
     text-align: center;
 }
 
-.site-footer--themes .footer-powered-label {
+.site-footer--themes .footer-powered-label,
+.site-footer--updater .footer-powered-label {
     margin: 0 0 0.75rem;
     text-align: center;
     width: 100%;
 }
 
 body.site-themes-app .site-footer--themes .footer-luci-link,
-.site-footer--themes .footer-luci-link {
+body.site-themes-app .site-footer--updater .footer-luci-link,
+.site-footer--themes .footer-luci-link,
+.site-footer--updater .footer-luci-link {
     display: block;
     width: 100%;
     max-width: var(--site-footer-luci-max-width) !important;
@@ -846,8 +852,12 @@ body.site-themes-app .site-footer--themes .footer-luci-link,
 
 body.site-themes-app .site-footer--themes .footer-logo-luci,
 body.site-themes-app .site-footer--themes .footer-logo.footer-logo-luci,
+body.site-themes-app .site-footer--updater .footer-logo-luci,
+body.site-themes-app .site-footer--updater .footer-logo.footer-logo-luci,
 .site-footer--themes .footer-logo-luci,
-.site-footer--themes .footer-logo.footer-logo-luci {
+.site-footer--themes .footer-logo.footer-logo-luci,
+.site-footer--updater .footer-logo-luci,
+.site-footer--updater .footer-logo.footer-logo-luci {
     display: block !important;
     width: 100% !important;
     max-width: var(--site-footer-luci-max-width) !important;
@@ -860,11 +870,13 @@ body.site-themes-app .site-footer--themes .footer-logo.footer-logo-luci,
     object-fit: contain;
 }
 
-.site-footer--themes .footer-col a {
+.site-footer--themes .footer-col a,
+.site-footer--updater .footer-col a {
     color: var(--site-text);
 }
 
-.site-footer--themes .footer-bottom {
+.site-footer--themes .footer-bottom,
+.site-footer--updater .footer-bottom {
     color: var(--site-muted);
     font-size: 0.82rem;
     text-align: center;
