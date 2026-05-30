@@ -53,8 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.9.1"
-DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
+APP_VERSION = "1.9.9.2"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -8089,15 +8088,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.discord_btn.setCursor(Qt.PointingHandCursor)  # Keep pointing hand for web link
         self.discord_btn.clicked.connect(self.open_discord_link)
         coffee_layout.addWidget(self.discord_btn)
-
-        self.community_discord_btn = QPushButton("Discord")
-        discord_icon_path = Path(__file__).resolve().parent / "discord.png"
-        if discord_icon_path.is_file():
-            self.community_discord_btn.setIcon(QIcon(str(discord_icon_path)))
-        self.community_discord_btn.setToolTip("Join the Innioasis community on Discord")
-        self.community_discord_btn.setCursor(Qt.PointingHandCursor)
-        self.community_discord_btn.clicked.connect(self.open_community_discord_link)
-        coffee_layout.addWidget(self.community_discord_btn)
 
         # About / Ko-fi button (opens ko-fi link in browser) - using native styling
 # 2025-11-09 22:10:00 UTC - original: Button label permanently read "About" and navigated directly to the About tab.
@@ -16766,11 +16756,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         import webbrowser
         webbrowser.open("https://innioasis.app/Troubleshooting")
 
-    def open_community_discord_link(self):
-        """Open the community Discord invite in the default browser."""
-        import webbrowser
-        webbrowser.open(DISCORD_INVITE_URL)
-
     def _copy_donation_value(self, label, value):
         """Copy a donation value to clipboard and notify the user."""
         try:
@@ -19773,8 +19758,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.driver_buttons_container.setVisible(False)
         if hasattr(self, 'discord_btn'):
             self.discord_btn.setVisible(False)
-        if hasattr(self, 'community_discord_btn'):
-            self.community_discord_btn.setVisible(False)
         if hasattr(self, 'about_btn'):
             self.about_btn.setVisible(False)
     
@@ -19786,8 +19769,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.driver_buttons_container.setVisible(True)
         if hasattr(self, 'discord_btn'):
             self.discord_btn.setVisible(True)
-        if hasattr(self, 'community_discord_btn'):
-            self.community_discord_btn.setVisible(True)
         if hasattr(self, 'about_btn'):
             self.about_btn.setVisible(True)
     
