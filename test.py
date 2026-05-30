@@ -32,7 +32,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayo
                                QLabel, QComboBox, QProgressBar, QMessageBox,
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
                                QFileDialog, QDialog, QDialogButtonBox, QTabWidget, QScrollArea, QTextBrowser, QLineEdit,
-                               QTreeWidget, QTreeWidgetItem, QTreeView, QAbstractItemView)
+                               QTreeWidget, QTreeWidgetItem, QTreeView, QAbstractItemView, QSizePolicy)
 from PySide6.QtCore import QThread, Signal, Qt, QSize, QTimer, QPropertyAnimation, QEasingCurve, QObject, QMimeData, QEvent
 from PySide6.QtGui import (QFont, QPixmap, QTextDocument, QPalette, QDragEnterEvent,
                            QDropEvent, QIcon, QImage, QPainter, QColor)
@@ -53,7 +53,8 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.8.1"
+APP_VERSION = "1.9.9.3"
+DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -286,6 +287,12 @@ def format_designations_text(designations):
 # Zip file management
 ZIP_STORAGE_DIR = Path("firmware_downloads")
 EXTRACTED_FILES_LOG = Path("extracted_files.log")
+
+# SP Flash Tool defaults (beside firmware_downloader.py)
+HISTORY_DEF_INI = "history_def.ini"
+HISTORY_INI = "history.ini"
+SCATTER_DEF_TXT = "MT6572_Android_scatter_def.txt"
+SCATTER_TXT = "MT6572_Android_scatter.txt"
 
 # Installation tracking
 INSTALLATION_MARKER_FILE = Path("firmware_installation_in_progress.flag")
@@ -622,117 +629,43 @@ def cleanup_firmware_files():
     except Exception as e:
         silent_print(f"Error cleaning up firmware files: {e}")
 
-def find_last_extracted_scatter_file():
-    """Find the last scatter.txt file based on file system data (most recently modified)"""
-    try:
-        current_dir = Path.cwd()
-        # Find all files matching *scatter.txt pattern in the current directory
-        scatter_files = list(current_dir.glob("*scatter.txt"))
-        
-        if not scatter_files:
-            silent_print("No scatter.txt files found in current directory - using default fallback")
-            # Default fallback: MT6572_Android_scatter.txt (most commonly used)
-            return "MT6572_Android_scatter.txt"
-        
-        # Sort by modification time, get the most recently modified
-        scatter_files.sort(key=lambda p: p.stat().st_mtime, reverse=True)
-        last_scatter_file = scatter_files[0]
-        
-        # Return just the filename without path
-        scatter_file_name = last_scatter_file.name
-        silent_print(f"Found most recently modified scatter file: {scatter_file_name}")
-        return scatter_file_name
-    except Exception as e:
-        silent_print(f"Error finding last extracted scatter.txt file: {e} - using default fallback")
-        # Default fallback: MT6572_Android_scatter.txt (most commonly used)
-        return "MT6572_Android_scatter.txt"
+def get_firmware_app_dir():
+    """Directory containing firmware_downloader.py (SP Flash Tool install root)."""
+    return Path(__file__).resolve().parent
 
-def update_history_ini():
-    """Update history.ini to reference the last extracted scatter.txt file without path"""
+
+def prepare_sp_flash_tool_files():
+    """Reset history.ini and ensure default scatter file exist for SP Flash Tool."""
     try:
-        current_dir = Path.cwd()
-        history_ini_path = current_dir / "history.ini"
-        
-        # Find the last extracted scatter.txt file (uses file system data, falls back to default)
-        last_scatter_file = find_last_extracted_scatter_file()
-        
-        # Function always returns a value (either found file or default fallback)
-        silent_print(f"Using scatter file: {last_scatter_file}")
-        
-        # Create or update history.ini
-        config = configparser.ConfigParser()
-        
-        # Read existing history.ini if it exists
-        if history_ini_path.exists():
-            config.read(history_ini_path)
-        
-        # Update [scatterHistory] section
-        # Ensure scatterHistory section exists
-        if 'scatterHistory' not in config:
-            config.add_section('scatterHistory')
-        
-        # Check for existing option name (might be scatterfile or scatterFile)
-        # Use lowercase to match existing format
-        option_name = 'scatterfile'
-        if config.has_option('scatterHistory', 'scatterFile'):
-            option_name = 'scatterFile'
-        elif config.has_option('scatterHistory', 'scatterfile'):
-            option_name = 'scatterfile'
-        
-        # Update with just the filename (no path)
-        # If there's an existing entry with a path, extract just the filename
-        if config.has_option('scatterHistory', option_name):
-            existing_value = config.get('scatterHistory', option_name)
-            # If it contains a path separator, extract just the filename
-            if os.sep in existing_value or '/' in existing_value or '\\' in existing_value:
-                # Extract just the filename from the path
-                existing_filename = os.path.basename(existing_value)
-                silent_print(f"Removed path from existing entry: {existing_value} -> {existing_filename}")
-        
-        # Update with just the filename (no path) - use lowercase to match existing format
-        config.set('scatterHistory', 'scatterfile', last_scatter_file)
-        
-        # Update [RecentOpenFile] section
-        # Ensure RecentOpenFile section exists
-        if 'RecentOpenFile' not in config:
-            config.add_section('RecentOpenFile')
-        
-        # Set lastDir to empty string
-        config.set('RecentOpenFile', 'lastDir', '')
-        
-        # Check for existing scatterHistory option in RecentOpenFile section
-        # Update with just the filename (no path)
-        if config.has_option('RecentOpenFile', 'scatterHistory'):
-            existing_value = config.get('RecentOpenFile', 'scatterHistory')
-            # If it contains a path separator, extract just the filename
-            if os.sep in existing_value or '/' in existing_value or '\\' in existing_value:
-                # Extract just the filename from the path
-                existing_filename = os.path.basename(existing_value)
-                silent_print(f"Removed path from RecentOpenFile.scatterHistory: {existing_value} -> {existing_filename}")
-        
-        # Update RecentOpenFile.scatterHistory with just the filename (no path)
-        config.set('RecentOpenFile', 'scatterHistory', last_scatter_file)
-        
-        # Set authHistory to empty string (always reset to empty)
-        config.set('RecentOpenFile', 'authHistory', '')
-        
-        # Update [LastDAFilePath] section
-        # Ensure LastDAFilePath section exists
-        if 'LastDAFilePath' not in config:
-            config.add_section('LastDAFilePath')
-        
-        # Always reset lastDir to MTK_AllInOne_DA.bin (covers all device models)
-        config.set('LastDAFilePath', 'lastDir', 'MTK_AllInOne_DA.bin')
-        
-        # Write to file
-        with open(history_ini_path, 'w') as f:
-            config.write(f)
-        
-        silent_print(f"Updated history.ini: scatterfile = {last_scatter_file}, RecentOpenFile.scatterHistory = {last_scatter_file}, RecentOpenFile.lastDir = '', LastDAFilePath.lastDir = MTK_AllInOne_DA.bin")
+        app_dir = get_firmware_app_dir()
+        history_def_path = app_dir / HISTORY_DEF_INI
+        history_ini_path = app_dir / HISTORY_INI
+
+        if history_def_path.exists():
+            shutil.copy2(history_def_path, history_ini_path)
+            silent_print(f"Reset {HISTORY_INI} from {HISTORY_DEF_INI}")
+        else:
+            silent_print(f"Warning: {history_def_path} not found; skipping {HISTORY_INI} reset")
+
+        scatter_path = app_dir / SCATTER_TXT
+        if not scatter_path.exists():
+            scatter_def_path = app_dir / SCATTER_DEF_TXT
+            if scatter_def_path.exists():
+                shutil.copy2(scatter_def_path, scatter_path)
+                silent_print(f"Created {SCATTER_TXT} from {SCATTER_DEF_TXT}")
+            else:
+                silent_print(f"Warning: {scatter_def_path} not found; cannot create {SCATTER_TXT}")
+        else:
+            silent_print(f"{SCATTER_TXT} already present in app directory")
     except Exception as e:
-        silent_print(f"Error updating history.ini: {e}")
+        silent_print(f"Error preparing SP Flash Tool files: {e}")
         import traceback
         traceback.print_exc()
+
+
+def update_history_ini():
+    """Legacy entry point; resets SP Flash Tool config from shipped defaults."""
+    prepare_sp_flash_tool_files()
 
 def load_redundant_files_list():
     """Load redundant files list from local file or remote URL"""
@@ -2336,7 +2269,8 @@ class MTKWorker(QThread):
             )
             
             # Ensure process doesn't hang indefinitely
-            process_timeout = 300  # 5 minutes timeout
+            # Linux users may need longer to follow connection instructions.
+            process_timeout = 900  # 15 minutes timeout
             process_start_time = time.time()
 
             device_detected = False
@@ -2347,14 +2281,16 @@ class MTKWorker(QThread):
             keyboard_interrupt_detected = False
             usb_connection_issue_detected = False
             usb_io_error_detected = False
+            device_config_error_detected = False
             last_output_line = ""
             successful_completion = False
             first_empty_line_detected = False  # Track if we've seen the first empty line
             initsteps_start_time = None  # Track when initsteps phase started
-            initsteps_timeout = 12  # 12 seconds timeout for initsteps phase
+            initsteps_timeout = 45  # Allow longer pre-connect window before nudging user
             last_status_update = time.time()  # Track when status was last updated
             status_check_interval = 2  # Check status every 2 seconds
             current_status = ""  # Track current status message
+            waiting_notice_shown = False
 
             # Interruption detection variables
             progress_detected = False
@@ -2449,13 +2385,12 @@ class MTKWorker(QThread):
                         
                         # Check if we've been in initsteps phase too long - but not during active installation
                         if initsteps_start_time is not None and (time.time() - initsteps_start_time) > initsteps_timeout:
-                            # Only kill the process if we're not in active installation state
+                            # Do not terminate here; keep waiting for user/device connection.
                             if not active_installation_started:
-                                # Kill the process and restart
-                                if process.poll() is None:
-                                    process.terminate()
-                                self.show_try_again_dialog.emit()
-                                break
+                                if not waiting_notice_shown:
+                                    self.status_updated.emit("Still waiting for Y1 connection... keep device unplugged until prompted, then connect it.")
+                                    waiting_notice_shown = True
+                                initsteps_start_time = time.time()
                             else:
                                 # During active installation, just reset the timer to prevent false termination
                                 initsteps_start_time = time.time()
@@ -2511,6 +2446,13 @@ class MTKWorker(QThread):
                     if "attributerror: 'nonetype' object has no attribute 'hex'" in line.lower():
                         usb_connection_issue_detected = True
                         self.status_updated.emit("Please unplug the USB cable from your Y1 and reconnect it.")
+                        self.show_reconnect_image.emit()
+                        # Don't break here - continue reading output
+
+                    # Detect libusb permission/config access problems (common on Linux).
+                    if "couldn't get device configuration" in line.lower() or "could not get device configuration" in line.lower():
+                        device_config_error_detected = True
+                        self.status_updated.emit("USB permission issue detected - verify udev rules/group membership, then reconnect Y1.")
                         self.show_reconnect_image.emit()
                         # Don't break here - continue reading output
 
@@ -2675,6 +2617,8 @@ class MTKWorker(QThread):
 
         if self.should_stop:
             self.mtk_completed.emit(False, "MTK command cancelled")
+        elif device_config_error_detected:
+            self.mtk_completed.emit(False, "Could not access device configuration - check Linux USB permissions/udev rules")
         elif usb_connection_issue_detected:
             self.mtk_completed.emit(False, "USB connection issue - please reconnect device")
         elif handshake_error_detected:
@@ -2873,8 +2817,7 @@ class DownloadWorker(QThread):
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
 
-            # Update history.ini with the last extracted .txt file (scatter file)
-            update_history_ini()
+            prepare_sp_flash_tool_files()
 
             self.status_updated.emit("Extraction completed. Files ready for MTK processing.")
 
@@ -6233,6 +6176,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._update_check_attempts = 0
         self._max_update_check_attempts = 4
         self._update_check_in_progress = False
+        self._required_update_prompted = False
         self._gui_closing = False  # Flag to prevent worker threads from accessing GUI during shutdown
         try:
             self.is_windows_arm64 = (
@@ -6403,56 +6347,66 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Update the creator label text and styling based on theme."""
         if not hasattr(self, 'creator_label') or not self.creator_label:
             return
-        message = self._creator_messages[self._creator_message_index % len(self._creator_messages)]
-        is_dark = self.is_dark_mode()
-        if hasattr(self, 'theme_monitor') and getattr(self.theme_monitor, 'last_theme', None):
-            last_theme = self.theme_monitor.last_theme
-            if last_theme == "dark":
-                is_dark = True
-            elif last_theme == "light":
-                is_dark = False
-        text_color = "#FFFFFF" if is_dark else "#000000"
-        link_color = "#4FA8FF" if is_dark else "#0C4BCC"
-        emphasis_color = text_color
+        if not self._creator_messages:
+            return
 
-        formatted_message = message
-        if "by Y1 users, for Y1 users" in formatted_message:
-            formatted_message = formatted_message.replace(
-                "by Y1 users, for Y1 users",
-                f'by <span style="font-weight: 700; font-size: 13px; color: {emphasis_color};">Y1 users</span>, '
-                f'for <span style="font-weight: 700; font-size: 13px; color: {emphasis_color};">Y1 users</span>'
-            )
-        if "Ryan Specter" in formatted_message:
-            formatted_message = formatted_message.replace(
-                "Ryan Specter",
-                f'<span style="font-weight: 700; font-size: 13px; color: {link_color};">Ryan Specter</span>'
-            )
-        if formatted_message.startswith("Developer:"):
-            formatted_message = formatted_message.replace(
-                "Developer:",
-                f'<span style="font-weight: 700; font-size: 12px; color: {emphasis_color};">Developer:</span>',
-                1
-            )
+        message_index = self._creator_message_index % len(self._creator_messages)
+        palette = self.palette() if self else QApplication.palette()
+        text_color = palette.color(QPalette.WindowText).name()
+        color_key = (text_color,)
 
-        html = (
-            f'<a href="https://ryanspecter.uk" '
-            f'style="color: {text_color}; text-decoration: none;">{formatted_message}</a>'
-        )
-        self.creator_label.setText(html)
-        self.creator_label.setStyleSheet(f"""
-            QLabel {{
-                color: {text_color};
-                font-size: 12px;
-                font-weight: 600;
-            }}
-            QLabel:hover {{
-                color: {text_color};
-            }}
-            a {{
-                color: {text_color};
-                text-decoration: none;
-            }}
-        """)
+        # Rebuild expensive style/text artifacts only when theme colors change.
+        if self._creator_render_cache_key != color_key:
+            self._creator_render_cache_key = color_key
+            self._creator_last_applied_index = None
+            self._creator_rendered_messages = []
+
+            for message in self._creator_messages:
+                formatted_message = message
+                if "by Y1 users, for Y1 users" in formatted_message:
+                    formatted_message = formatted_message.replace(
+                        "by Y1 users, for Y1 users",
+                        f'by <span style="font-weight: 700; font-size: 13px; color: {text_color};">Y1 users</span>, '
+                        f'for <span style="font-weight: 700; font-size: 13px; color: {text_color};">Y1 users</span>'
+                    )
+                if "Ryan Specter" in formatted_message:
+                    formatted_message = formatted_message.replace(
+                        "Ryan Specter",
+                        f'<span style="font-weight: 700; font-size: 13px; color: {text_color};">Ryan Specter</span>'
+                    )
+                if formatted_message.startswith("Developer:"):
+                    formatted_message = formatted_message.replace(
+                        "Developer:",
+                        f'<span style="font-weight: 700; font-size: 12px; color: {text_color};">Developer:</span>',
+                        1
+                    )
+                html = (
+                    f'<a href="https://ryanspecter.uk" '
+                    f'style="color: {text_color}; text-decoration: none;">{formatted_message}</a>'
+                )
+                self._creator_rendered_messages.append(html)
+
+            self.creator_label.setStyleSheet(f"""
+                QLabel {{
+                    color: {text_color};
+                    font-size: 12px;
+                    font-weight: 600;
+                }}
+                QLabel:hover {{
+                    color: {text_color};
+                }}
+                a {{
+                    color: {text_color};
+                    text-decoration: none;
+                }}
+            """)
+
+        # Prevent redundant setText/repaint work when nothing changed.
+        if self._creator_last_applied_index == message_index:
+            return
+
+        self.creator_label.setText(self._creator_rendered_messages[message_index])
+        self._creator_last_applied_index = message_index
 
     def cycle_creator_message(self):
         """Rotate through creator messages."""
@@ -8025,6 +7979,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             "Developer: Ryan Specter",
         ]
         self._creator_message_index = 0
+        self._creator_render_cache_key = None
+        self._creator_rendered_messages = []
+        self._creator_last_applied_index = None
         self.update_creator_label()
         self.creator_timer = QTimer(self)
         self.creator_timer.timeout.connect(self.cycle_creator_message)
@@ -8063,6 +8020,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.discord_btn.setCursor(Qt.PointingHandCursor)  # Keep pointing hand for web link
         self.discord_btn.clicked.connect(self.open_discord_link)
         coffee_layout.addWidget(self.discord_btn)
+
+        self.community_discord_btn = QPushButton("Discord")
+        discord_icon_path = Path(__file__).resolve().parent / "discord.png"
+        if discord_icon_path.is_file():
+            self.community_discord_btn.setIcon(QIcon(str(discord_icon_path)))
+        self.community_discord_btn.setToolTip("Join the Innioasis community on Discord")
+        self.community_discord_btn.setCursor(Qt.PointingHandCursor)
+        self.community_discord_btn.clicked.connect(self.open_community_discord_link)
+        coffee_layout.addWidget(self.community_discord_btn)
 
         # About / Ko-fi button (opens ko-fi link in browser) - using native styling
 # 2025-11-09 22:10:00 UTC - original: Button label permanently read "About" and navigated directly to the About tab.
@@ -8175,6 +8141,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Image widget (page 0)
         self.image_label = QLabel()
         self.image_label.setAlignment(Qt.AlignCenter)
+        self.image_label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
         self.image_label.setStyleSheet("""
             QLabel {
                 background-color: transparent;
@@ -11478,6 +11445,8 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _handle_required_update(self, latest_version, current_version):
         """Handle forced manual updates that include required.txt."""
         try:
+            if getattr(self, "_required_update_prompted", False):
+                return True
             if self.compare_versions(latest_version, current_version) <= 0:
                 return False
             release_data = self._get_release_data(latest_version)
@@ -11489,6 +11458,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return False
 
             silent_print(f"Required update detected for version {latest_version}.")
+            self._required_update_prompted = True
             QTimer.singleShot(0, lambda: self._force_manual_update(latest_version))
             return True
         except Exception as e:
@@ -11498,13 +11468,17 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _force_manual_update(self, version):
         """Force user to install update manually."""
         try:
+            QMessageBox.warning(
+                self,
+                "Update recommended",
+                f"A newer updater release ({version}) is recommended.\n\n"
+                "The download page will open in your browser. You can continue using this session meanwhile."
+            )
             silent_print("Launching manual update instructions in browser.")
             import webbrowser
             webbrowser.open("https://www.innioasis.app", new=2)
         except Exception as e:
             silent_print(f"Error opening manual update URL: {e}")
-        finally:
-            QTimer.singleShot(250, self.close)
 
     def download_selected_version(self, settings_dialog=None):
         """Install the selected Innioasis Updater release directly from the GUI."""
@@ -15747,20 +15721,39 @@ class FirmwareDownloaderGUI(QMainWindow):
         if pixmap.isNull():
             return
 
-        # Get the label size
-        label_size = self.image_label.size()
-        if label_size.width() <= 0 or label_size.height() <= 0:
-            # Use minimum size if label not properly sized yet
-            label_size = QSize(400, 300)
+        # Ensure latest layout geometry is applied before sizing calculations.
+        if hasattr(self, 'image_notes_stack') and self.image_notes_stack is not None:
+            self.image_notes_stack.layout().activate() if self.image_notes_stack.layout() else None
+
+        # Prefer the actual available stack area to avoid clipped prompt images.
+        if hasattr(self, 'image_notes_stack') and self.image_notes_stack is not None:
+            target_size = self.image_notes_stack.contentsRect().size()
+        else:
+            target_size = self.image_label.contentsRect().size()
+
+        if target_size.width() <= 0 or target_size.height() <= 0:
+            target_size = self.image_label.size()
+
+        if target_size.width() <= 0 or target_size.height() <= 0:
+            target_size = QSize(400, 300)
+
+        # Keep a generous margin so bordered prompt assets never clip text near edges.
+        target_size = QSize(max(1, target_size.width() - 24), max(1, target_size.height() - 24))
 
         # Scale image to fit the label while maintaining aspect ratio
         scaled_pixmap = pixmap.scaled(
-            label_size,
+            target_size,
             Qt.KeepAspectRatio,
             Qt.SmoothTransformation
         )
 
+        # Normalize device pixel ratio to avoid high-DPI center-cropping artifacts.
+        if hasattr(scaled_pixmap, "setDevicePixelRatio"):
+            scaled_pixmap.setDevicePixelRatio(1.0)
+
         # Set the scaled pixmap
+        self.image_label.setMaximumSize(target_size)
+        self.image_label.setMinimumSize(1, 1)
         self.image_label.setPixmap(scaled_pixmap)
 
         # Don't use setScaledContents to maintain aspect ratio
@@ -16704,6 +16697,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         import webbrowser
         webbrowser.open("https://innioasis.app/Troubleshooting")
 
+    def open_community_discord_link(self):
+        """Open the community Discord invite in the default browser."""
+        import webbrowser
+        webbrowser.open(DISCORD_INVITE_URL)
+
     def _copy_donation_value(self, label, value):
         """Copy a donation value to clipboard and notify the user."""
         try:
@@ -17224,6 +17222,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.warning(self, "Missing Files", error_msg)
                 self.status_label.setText("Zip file missing required firmware files.")
                 return
+
+            prepare_sp_flash_tool_files()
             
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -19706,6 +19706,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.driver_buttons_container.setVisible(False)
         if hasattr(self, 'discord_btn'):
             self.discord_btn.setVisible(False)
+        if hasattr(self, 'community_discord_btn'):
+            self.community_discord_btn.setVisible(False)
         if hasattr(self, 'about_btn'):
             self.about_btn.setVisible(False)
     
@@ -19717,6 +19719,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.driver_buttons_container.setVisible(True)
         if hasattr(self, 'discord_btn'):
             self.discord_btn.setVisible(True)
+        if hasattr(self, 'community_discord_btn'):
+            self.community_discord_btn.setVisible(True)
         if hasattr(self, 'about_btn'):
             self.about_btn.setVisible(True)
     
@@ -26017,6 +26021,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.status_label.setText("Missing required firmware files.")
                 QMessageBox.warning(self, "Missing Files", error_msg)
                 return
+
+            prepare_sp_flash_tool_files()
             
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -26067,6 +26073,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def handle_installation_method(self):
         """Handle installation based on the selected method in settings"""
+        prepare_sp_flash_tool_files()
+
         # Check storage space before starting installation (full firmware install requires 6GB)
         # Note: This is always a full install, not Fast Update, so storage check is required
         has_enough_space, available_gb, error_message = self._check_storage_space(required_gb=6)
@@ -26875,8 +26883,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             # Non-Windows baseline Method 2 instructions
             instructions = ("We'll now take you to Terminal to show you what's happening under the hood:\n\n"
-                          "\n"
-                          "Make sure you have your Y1 disconnected from your computer\n")
+                          "1. Keep Y1 disconnected until Terminal asks you to connect.\n"
+                          "2. Use a data-capable USB cable and connect directly (no hub).\n"
+                          "3. If Linux says device config/permission failed, relog/reboot once so udev/group changes apply.\n\n"
+                          "Method 2 guide: https://github.com/y1-community/Innioasis-Updater#readme\n\n"
+                          "If an old QR code appears in screenshots, ignore it and use the guide link above.\n")
         
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Troubleshooting Instructions - Method 2")
@@ -27951,8 +27962,8 @@ if __name__ == "__main__":
                           help="Skip GUI and launch flash_tool.exe after updating history.ini")
         args = parser.parse_args()
         
-        # Update history.ini at launch (prepares valid history.ini for SP Flash Tool)
-        update_history_ini()
+        # Prepare valid history.ini and scatter file for SP Flash Tool at launch
+        prepare_sp_flash_tool_files()
         
         # If -sp argument is provided, skip GUI entirely and launch flash_tool.exe
         if args.sp:
