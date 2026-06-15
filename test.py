@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.9.3"
+APP_VERSION = "1.9.9.5"
 DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
@@ -6232,7 +6232,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize UI first for immediate responsiveness
         self.init_ui()
         QTimer.singleShot(0, self.update_update_badges)
-        QTimer.singleShot(0, self._show_y1_hardware_notice)
+        QTimer.singleShot(0, self._show_jj_launcher_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -6310,27 +6310,27 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
 
-    def _show_y1_hardware_notice(self):
-        """Show important notice about Y1 firmware mods at launch."""
+    def _show_jj_launcher_notice(self):
+        """Show important notice about JJ Launcher at launch."""
         msg = QMessageBox(self)
-        msg.setWindowTitle("Koensayr mod available")
+        msg.setWindowTitle("JJ Launcher (MO-ON) available")
         msg.setIcon(QMessageBox.Information)
         msg.setTextFormat(Qt.RichText)
         msg.setText(
-            "<h3 style='margin-top: 0; margin-bottom: 12px;'>Koensayr mod (Type A Y1s)</h3>"
+            "<h3 style='margin-top: 0; margin-bottom: 12px;'>JJ Launcher (MO-ON)</h3>"
             "<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
-            "The <b>Koensayr</b> mod from <b>SeanathanVT</b> is now available. "
-            "It is for <b>Type A Y1s</b> only.</p>"
+            "<b>JJ Launcher (MO-ON)</b> from "
+            "<a href='https://github.com/ismileblue/y1_launcher'>ismileblue</a> on GitHub "
+            "is now available for installation via Updater.</p>"
             "<p style='margin-top: 0; margin-bottom: 8px;'><b>What it adds</b></p>"
             "<ul style='margin-top: 0; margin-bottom: 16px; padding-left: 22px; line-height: 1.5;'>"
-            "<li style='margin-bottom: 6px;'>Remote control of Bluetooth audio</li>"
-            "<li style='margin-bottom: 6px;'>Track name display on car infotainment systems</li>"
-            "<li style='margin-bottom: 6px;'>Browse an Artist's albums "
-            "(Main Menu - Artists - Albums)</li>"
+            "<li style='margin-bottom: 6px;'>Wi-Fi uploads for wireless music transfer</li>"
+            "<li style='margin-bottom: 6px;'>Automatic album art download</li>"
+            "<li style='margin-bottom: 6px;'>And more</li>"
             "</ul>"
             "<p style='margin-top: 0; margin-bottom: 8px;'><b>How to install</b></p>"
             "<ol style='margin-top: 0; margin-bottom: 0; padding-left: 22px; line-height: 1.5;'>"
-            "<li style='margin-bottom: 8px;'>Select <b>Koensayr</b> from the <b>Software</b> dropdown</li>"
+            "<li style='margin-bottom: 8px;'>Select <b>JJ Launcher</b> from the <b>Software</b> dropdown</li>"
             "<li style='margin-bottom: 0;'>Click <b>Install / Restore</b></li>"
             "</ol>"
         )
