@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.9.5"
+APP_VERSION = "1.9.9.6"
 DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
@@ -1033,6 +1033,37 @@ def release_supports_device_type(release, selected_type):
     if st == 'B':
         return has_type_b
     return not has_type_b
+
+def package_supports_device_type(github_api, package, selected_type):
+    """
+    Return True when a manifest package has at least one release matching the
+    requested hardware type (A/B). Uses cached release data when available.
+    """
+    if not selected_type:
+        return True
+
+    st = str(selected_type).upper()
+    if st not in ('A', 'B'):
+        return True
+
+    repo = package.get('repo', '')
+    if not repo:
+        return False
+
+    cached_releases = github_api.get_cached_releases(repo)
+    if not cached_releases:
+        # Without release data, default to Original Software only for Type B
+        if st == 'B':
+            return 'original' in (package.get('name') or '').lower()
+        return True
+
+    for release in cached_releases:
+        tag_name = release.get('tag_name', '')
+        if 'base' in tag_name.lower():
+            continue
+        if release_supports_device_type(release, selected_type):
+            return True
+    return False
 
 def get_update_zip_cache_path(update_zip_url):
     """Get the cache path for an update.zip file based on URL"""
@@ -13262,11 +13293,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Block signals during population to prevent network calls on setCurrentIndex
         was_blocked = self.firmware_combo.signalsBlocked()
         self.firmware_combo.blockSignals(True)
-        
+
+        previous_repo = self.firmware_combo.currentData()
+
         self.firmware_combo.clear()
 
         # Get current filter selections
         selected_model = self.device_model_combo.currentData()
+        selected_type = None
+        if hasattr(self, 'device_type_combo') and self.device_type_combo.isVisible():
+            selected_type = self.device_type_combo.currentData()
 
         # Get filtered software names from packages
         software_options = []
@@ -13275,27 +13311,65 @@ class FirmwareDownloaderGUI(QMainWindow):
             repo = package.get('repo', '')
             device_model = package.get('device', '')
 
-            # Check device model filter only - type filtering happens at release level
             model_match = not selected_model or device_model == selected_model
-
-            if name and repo and model_match:
-                software_options.append((name, repo))
+            if not (name and repo and model_match):
+                continue
+            if not package_supports_device_type(self.github_api, package, selected_type):
+                continue
+            software_options.append((name, repo))
 
         # Add filtered software options to dropdown (sorted by name)
         for name, repo in sorted(software_options, key=lambda x: x[0]):
             self.firmware_combo.addItem(name, repo)
 
-        # Set default selection to software containing "Original" if available
-        default_index = 0  # Default to first item
-        for i in range(self.firmware_combo.count()):
-            if "original" in self.firmware_combo.itemText(i).lower():
-                default_index = i
-                break
+        # Keep current selection when still valid; otherwise fall back to Original Software
+        selected_index = -1
+        if previous_repo:
+            for i in range(self.firmware_combo.count()):
+                if self.firmware_combo.itemData(i) == previous_repo:
+                    selected_index = i
+                    break
 
-        self.firmware_combo.setCurrentIndex(default_index)
-        
+        if selected_index < 0 and self.firmware_combo.count() > 0:
+            selected_index = 0
+            for i in range(self.firmware_combo.count()):
+                if "original" in self.firmware_combo.itemText(i).lower():
+                    selected_index = i
+                    break
+
+        if self.firmware_combo.count() > 0:
+            self.firmware_combo.setCurrentIndex(selected_index)
+
         # Unblock signals after population
         self.firmware_combo.blockSignals(was_blocked)
+
+    def _revert_to_compatible_firmware_if_needed(self):
+        """Switch to Original Software when the current selection has no releases for the device type."""
+        if not hasattr(self, 'device_type_combo') or not self.device_type_combo.isVisible():
+            return False
+
+        selected_type = self.device_type_combo.currentData()
+        if not selected_type:
+            return False
+
+        selected_repo = self.firmware_combo.currentData()
+        if not selected_repo:
+            return False
+
+        package = next((p for p in self.packages if p.get('repo') == selected_repo), None)
+        if not package or package_supports_device_type(self.github_api, package, selected_type):
+            return False
+
+        silent_print(
+            f"Reverting software selection from {package.get('name')} "
+            f"(not available for Type {selected_type})"
+        )
+        previous_repo = selected_repo
+        self.populate_firmware_combo()
+        if self.firmware_combo.currentData() != previous_repo:
+            self.populate_releases_list()
+            return True
+        return False
 
 
     def _release_matches_type_filter(self, release, selected_type):
@@ -13651,11 +13725,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             if self.releases_loaded_count > 0:
                 self._auto_enabling_prereleases = False
             
-            # If we have cached releases but none match filters, show filter message
-            # Otherwise show connection message (no releases loaded at all)
+            # If we have cached releases but none match filters, try reverting software selection
             if self.releases_loaded_count == 0:
                 # We have cached releases available, but filters excluded them all
                 if cached_releases and len(cached_releases) > 0:
+                    if self._revert_to_compatible_firmware_if_needed():
+                        return
                     self._show_no_filter_results_message()
                 else:
                     # No releases loaded at all - connection/server issue
@@ -14339,11 +14414,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                     # User manually changed filter - reset the flag
                     self._user_manually_changed_filter = False
             
-            # If we have releases loaded but none match filters, show filter message
-            # Otherwise show connection message (no releases loaded at all)
+            # If we have releases loaded but none match filters, try reverting software selection
             if self.releases_loaded_count == 0:
                 # Check if releases were actually loaded (even if filtered out)
                 if all_releases and len(all_releases) > 0:
+                    if self._revert_to_compatible_firmware_if_needed():
+                        return
                     # Releases were loaded but filters excluded them all
                     self._show_no_filter_results_message()
                 else:
@@ -14383,6 +14459,15 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self.on_release_selected(first_item)
             except (RuntimeError, AttributeError) as e:
                 silent_print(f"Error selecting first item: {e}")
+
+            # Refresh software dropdown now that release caches may include new type variants
+            previous_repo = self.firmware_combo.currentData()
+            was_blocked = self.firmware_combo.signalsBlocked()
+            self.firmware_combo.blockSignals(True)
+            self.populate_firmware_combo()
+            self.firmware_combo.blockSignals(was_blocked)
+            if self.firmware_combo.currentData() != previous_repo:
+                QTimer.singleShot(0, self.populate_releases_list)
         except Exception as e:
             silent_print(f"Error in on_releases_loading_complete: {e}")
             import traceback
