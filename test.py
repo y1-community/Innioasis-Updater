@@ -6744,7 +6744,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize UI first for immediate responsiveness
         self.init_ui()
         QTimer.singleShot(0, self.update_update_badges)
-        QTimer.singleShot(0, self._show_jj_launcher_notice)
+        QTimer.singleShot(0, self._show_startup_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -6822,29 +6822,22 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
 
-    def _show_jj_launcher_notice(self):
-        """Show important notice about JJ Launcher at launch."""
+    def _show_startup_notice(self):
+        """Show startup notice about Innioasis Y2 availability."""
         msg = QMessageBox(self)
-        msg.setWindowTitle("JJ Launcher (MO-ON) available")
+        msg.setWindowTitle("Innioasis Y2 now available")
         msg.setIcon(QMessageBox.Information)
         msg.setTextFormat(Qt.RichText)
         msg.setText(
-            "<h3 style='margin-top: 0; margin-bottom: 12px;'>JJ Launcher (MO-ON)</h3>"
+            "<h3 style='margin-top: 0; margin-bottom: 12px;'>Innioasis Y2 is now available</h3>"
             "<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
-            "<b>JJ Launcher (MO-ON)</b> from "
-            "<a href='https://github.com/ismileblue/y1_launcher'>ismileblue</a> on GitHub "
-            "is now available for installation via Updater.</p>"
-            "<p style='margin-top: 0; margin-bottom: 8px;'><b>What it adds</b></p>"
-            "<ul style='margin-top: 0; margin-bottom: 16px; padding-left: 22px; line-height: 1.5;'>"
-            "<li style='margin-bottom: 6px;'>Wi-Fi uploads for wireless music transfer</li>"
-            "<li style='margin-bottom: 6px;'>Automatic album art download</li>"
-            "<li style='margin-bottom: 6px;'>And more</li>"
-            "</ul>"
-            "<p style='margin-top: 0; margin-bottom: 8px;'><b>How to install</b></p>"
-            "<ol style='margin-top: 0; margin-bottom: 0; padding-left: 22px; line-height: 1.5;'>"
-            "<li style='margin-bottom: 8px;'>Select <b>JJ Launcher</b> from the <b>Software</b> dropdown</li>"
-            "<li style='margin-bottom: 0;'>Click <b>Install / Restore</b></li>"
-            "</ol>"
+            "The Innioasis Y2 is now available to purchase. "
+            "<a href='https://www.amazon.com/dp/B0H3NV1HMF'>Available here</a></p>"
+            "<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
+            "This tool is ready for firmware updates and factory restores "
+            "for users with Y2 models.</p>"
+            "<p style='margin-top: 0; margin-bottom: 0; line-height: 1.45;'>"
+            "<i>MicroSD not included ;)</i></p>"
         )
         msg.setStandardButtons(QMessageBox.Ok)
         msg.setMinimumWidth(440)
