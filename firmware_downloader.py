@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.9.6"
+APP_VERSION = "1.9.9.7"
 DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
@@ -288,17 +288,224 @@ def format_designations_text(designations):
 ZIP_STORAGE_DIR = Path("firmware_downloads")
 EXTRACTED_FILES_LOG = Path("extracted_files.log")
 
-# SP Flash Tool defaults (beside firmware_downloader.py)
+# SP Flash Tool defaults (beside firmware_downloader.py) — Y1 aliases
 HISTORY_DEF_INI = "history_def.ini"
 HISTORY_INI = "history.ini"
 SCATTER_DEF_TXT = "MT6572_Android_scatter_def.txt"
 SCATTER_TXT = "MT6572_Android_scatter.txt"
+Y2_SCATTER_TXT = "MT6582_Android_scatter.txt"
+Y1_SCATTER_TXT = "MT6572_Android_scatter.txt"
+
+# Known-bad or not-yet-published repos → working GitHub repo
+FIRMWARE_REPO_FALLBACKS = {
+    "y1-community/stock-rom": "y1-community/y1-stock-rom",
+    "y1-community/y2-stock-rom": "y1-community/y1-stock-rom",
+}
+
+
+def resolve_firmware_repo(repo):
+    """Map legacy/unpublished manifest repo names to a fetchable GitHub repo."""
+    return FIRMWARE_REPO_FALLBACKS.get(repo, repo)
+
+
+def is_y2_model(model):
+    """Return True when the selected device model is Y2."""
+    return "Y2" in (model or "").upper()
+
+
+def is_y1_model(model):
+    """Return True when the selected device model is Y1."""
+    return "Y1" in (model or "").upper()
+
+
+def device_label_for_model(model):
+    """Short device label (Y1, Y2, or fallback) for user-facing copy."""
+    if is_y2_model(model):
+        return "Y2"
+    if is_y1_model(model):
+        return "Y1"
+    model_str = str(model or "").strip()
+    return model_str if model_str else "Y1"
+
+
+def innioasis_name_for_model(model):
+    """Marketing-style device name for UI strings."""
+    label = device_label_for_model(model)
+    return f"Innioasis {label}" if label in ("Y1", "Y2") else label
+
+
+def personalize_device_copy(text, model):
+    """Replace hardcoded Y1 phrasing with the active device model label."""
+    if not text:
+        return text
+    label = device_label_for_model(model)
+    innioasis = innioasis_name_for_model(model)
+    replacements = [
+        ("Innioasis Y1", innioasis),
+        ("Innioasis Y2", innioasis),
+        ("your Y1's", f"your {label}'s"),
+        ("Your Y1's", f"Your {label}'s"),
+        ("your Y1", f"your {label}"),
+        ("Your Y1", f"Your {label}"),
+        ("the Y1's", f"the {label}'s"),
+        ("the Y1", f"the {label}"),
+        ("The Y1", f"The {label}"),
+        ("Y1's", f"{label}'s"),
+        ("for the Y1", f"for the {label}"),
+        ("for Y1", f"for {label}"),
+        ("on the Y1", f"on the {label}"),
+        ("on your Y1", f"on your {label}"),
+        ("from your Y1", f"from your {label}"),
+        ("to your Y1", f"to your {label}"),
+        ("with your Y1", f"with your {label}"),
+        ("Waiting for Y1", f"Waiting for {label}"),
+        ("Still waiting for Y1", f"Still waiting for {label}"),
+        (" install the software on your Y1", f" install the software on your {label}"),
+        ("install this software on your Y1", f"install this software on your {label}"),
+        ("disconnect your Y1", f"disconnect your {label}"),
+        ("Disconnect your Y1", f"disconnect your {label}"),
+        ("unplug your Y1", f"unplug your {label}"),
+        ("Unplug your Y1", f"unplug your {label}"),
+        ("Power off your Y1", f"Power off your {label}"),
+        ("power off your Y1", f"power off your {label}"),
+        ("Turn on your Y1", f"Turn on your {label}"),
+        ("turn on your Y1", f"turn on your {label}"),
+        ("Make sure your Y1", f"Make sure your {label}"),
+        ("make sure your Y1", f"make sure your {label}"),
+        ("Prepare your Y1", f"Prepare your {label}"),
+        ("prepare your Y1", f"prepare your {label}"),
+        ("unplug the USB cable from your Y1", f"unplug the USB cable from your {label}"),
+        ("Disconnect the USB cable from your Y1", f"Disconnect the USB cable from your {label}"),
+    ]
+    result = text
+    for old, new in replacements:
+        result = result.replace(old, new)
+    return result
+
+
+def get_flash_config(device_model=None):
+    """Return SP Flash Tool file names for a resolved device model, or None if unknown."""
+    if is_y2_model(device_model):
+        return {
+            "history_def_ini": "history_y2_def.ini",
+            "scatter_def_txt": "MT6582_Android_scatter_def.txt",
+            "scatter_txt": Y2_SCATTER_TXT,
+            "install_rom_sp_xml": "install_rom_sp_y2.xml",
+            "preloader_bin": "preloader_eastaeon82_wet_kk.bin",
+        }
+    if is_y1_model(device_model):
+        return {
+            "history_def_ini": HISTORY_DEF_INI,
+            "scatter_def_txt": SCATTER_DEF_TXT,
+            "scatter_txt": SCATTER_TXT,
+            "install_rom_sp_xml": "install_rom_sp.xml",
+            "preloader_bin": "preloader_g368_nyx.bin",
+        }
+    return None
+
+
+def _read_scatter_chip_family(scatter_path):
+    """Return 'Y2', 'Y1', or None based on scatter file contents."""
+    try:
+        text = Path(scatter_path).read_text(encoding='utf-8', errors='ignore').lower()
+    except Exception:
+        return None
+
+    if 'platform: mt6582' in text or 'platform:mt6582' in text.replace(' ', ''):
+        return 'Y2'
+    if 'eastaeon82' in text or 'preloader_eastaeon82' in text:
+        return 'Y2'
+    if '6582' in text and ('platform' in text or 'project' in text):
+        return 'Y2'
+    if 'platform: mt6572' in text or 'g368_nyx' in text:
+        return 'Y1'
+    return None
+
+
+def _firmware_file_names_in_install_root(extracted_files=None):
+    """Collect relevant firmware filenames from an extract list and the install directory."""
+    names = set()
+    if extracted_files:
+        names.update(Path(f).name for f in extracted_files)
+
+    app_dir = get_firmware_app_dir()
+    watch_names = {
+        Y2_SCATTER_TXT,
+        Y1_SCATTER_TXT,
+        'preloader_eastaeon82_wet_kk.bin',
+        'preloader_g368_nyx.bin',
+    }
+    for file_name in watch_names:
+        if (app_dir / file_name).exists() or Path(file_name).exists():
+            names.add(file_name)
+    return names
+
+
+def detect_device_model_for_install(device_model=None, zip_path=None, extracted_files=None):
+    """
+    Resolve device model for install prep.
+
+    Returns 'Y1', 'Y2', or None when the platform cannot be determined.
+    Unknown models must not default to Y1/MT6572 — inspect extracted ROM assets instead.
+    """
+    if device_model and str(device_model).strip():
+        if is_y2_model(device_model):
+            return 'Y2'
+        if is_y1_model(device_model):
+            return 'Y1'
+
+    if zip_path:
+        zip_lower = str(zip_path).lower()
+        if '_y2' in zip_lower or 'rom_y2' in zip_lower:
+            return 'Y2'
+
+    names = _firmware_file_names_in_install_root(extracted_files)
+
+    # Definitive Y2: MT6582 scatter shipped in the ROM zip / install folder
+    if Y2_SCATTER_TXT in names and Path(Y2_SCATTER_TXT).exists():
+        return 'Y2'
+
+    if 'preloader_eastaeon82_wet_kk.bin' in names:
+        return 'Y2'
+
+    y2_scatter = Path(Y2_SCATTER_TXT)
+    if y2_scatter.exists() and _read_scatter_chip_family(y2_scatter) == 'Y2':
+        return 'Y2'
+
+    y1_scatter = Path(Y1_SCATTER_TXT)
+    if y1_scatter.exists():
+        family = _read_scatter_chip_family(y1_scatter)
+        if family == 'Y2':
+            # MT6572-named scatter with MT6582/eastaeon content
+            return 'Y2'
+        if family == 'Y1':
+            return 'Y1'
+        # Y2 ROMs may ship MT6572 scatter + preloader_g368_nyx.bin shims for legacy updaters;
+        # without MT6582 scatter or other Y2 markers, do not assume Y1.
+        return None
+
+    return None
+
+
+def resolve_device_model_for_install(device_model=None, zip_path=None, extracted_files=None):
+    """Resolve model for install, keeping explicit manifest/dropdown selection when set."""
+    return detect_device_model_for_install(device_model, zip_path, extracted_files)
+
+
+def build_mtk_write_command(device_model=None):
+    """Build the mtk.py write command for firmware installation (Y1 command unchanged)."""
+    return [
+        sys.executable, "mtk.py", "w",
+        "logo,uboot,bootimg,recovery,android,usrdata",
+        "logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img",
+    ]
 
 # Installation tracking
 INSTALLATION_MARKER_FILE = Path("firmware_installation_in_progress.flag")
 
-# Caching configuration
-CACHE_DIR = Path(".cache")
+# Caching configuration (anchored to script dir so cache works regardless of cwd)
+_FIRMWARE_APP_DIR = Path(__file__).resolve().parent
+CACHE_DIR = _FIRMWARE_APP_DIR / ".cache"
 CACHE_DIR.mkdir(exist_ok=True)
 CONFIG_CACHE_FILE = CACHE_DIR / "config_cache.json"
 MANIFEST_CACHE_FILE = CACHE_DIR / "manifest_cache.json"
@@ -316,6 +523,30 @@ def silent_print(*args, **kwargs):
         pass
     else:
         print(*args, **kwargs)
+
+
+def _debug_session_log(location, message, data=None, hypothesis_id=None, run_id="pre-fix"):
+    """Append one NDJSON debug line for the active Cursor debug session."""
+    # #region agent log
+    try:
+        import json
+        import time
+        payload = {
+            "sessionId": "6f154c",
+            "runId": run_id,
+            "hypothesisId": hypothesis_id or "",
+            "location": location,
+            "message": message,
+            "data": data or {},
+            "timestamp": int(time.time() * 1000),
+        }
+        log_path = _FIRMWARE_APP_DIR / ".cursor" / "debug-6f154c.log"
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(log_path, "a", encoding="utf-8") as log_file:
+            log_file.write(json.dumps(payload) + "\n")
+    except Exception:
+        pass
+    # #endregion
 
 # Easter Egg System - Seasonal Emojis
 def is_us_user():
@@ -631,41 +862,50 @@ def cleanup_firmware_files():
 
 def get_firmware_app_dir():
     """Directory containing firmware_downloader.py (SP Flash Tool install root)."""
-    return Path(__file__).resolve().parent
+    return _FIRMWARE_APP_DIR
 
 
-def prepare_sp_flash_tool_files():
+def prepare_sp_flash_tool_files(device_model=None):
     """Reset history.ini and ensure default scatter file exist for SP Flash Tool."""
     try:
+        resolved_model = resolve_device_model_for_install(device_model)
+        config = get_flash_config(resolved_model)
+        if not config:
+            silent_print(
+                "Device model unknown; skipping SP Flash Tool default file preparation "
+                "(extract firmware or select Y1/Y2 first)"
+            )
+            return
+
         app_dir = get_firmware_app_dir()
-        history_def_path = app_dir / HISTORY_DEF_INI
+        history_def_path = app_dir / config["history_def_ini"]
         history_ini_path = app_dir / HISTORY_INI
 
         if history_def_path.exists():
             shutil.copy2(history_def_path, history_ini_path)
-            silent_print(f"Reset {HISTORY_INI} from {HISTORY_DEF_INI}")
+            silent_print(f"Reset {HISTORY_INI} from {config['history_def_ini']}")
         else:
             silent_print(f"Warning: {history_def_path} not found; skipping {HISTORY_INI} reset")
 
-        scatter_path = app_dir / SCATTER_TXT
+        scatter_path = app_dir / config["scatter_txt"]
         if not scatter_path.exists():
-            scatter_def_path = app_dir / SCATTER_DEF_TXT
+            scatter_def_path = app_dir / config["scatter_def_txt"]
             if scatter_def_path.exists():
                 shutil.copy2(scatter_def_path, scatter_path)
-                silent_print(f"Created {SCATTER_TXT} from {SCATTER_DEF_TXT}")
+                silent_print(f"Created {config['scatter_txt']} from {config['scatter_def_txt']}")
             else:
-                silent_print(f"Warning: {scatter_def_path} not found; cannot create {SCATTER_TXT}")
+                silent_print(f"Warning: {scatter_def_path} not found; cannot create {config['scatter_txt']}")
         else:
-            silent_print(f"{SCATTER_TXT} already present in app directory")
+            silent_print(f"{config['scatter_txt']} already present in app directory")
     except Exception as e:
         silent_print(f"Error preparing SP Flash Tool files: {e}")
         import traceback
         traceback.print_exc()
 
 
-def update_history_ini():
+def update_history_ini(device_model=None):
     """Legacy entry point; resets SP Flash Tool config from shipped defaults."""
-    prepare_sp_flash_tool_files()
+    prepare_sp_flash_tool_files(device_model)
 
 def load_redundant_files_list():
     """Load redundant files list from local file or remote URL"""
@@ -875,15 +1115,38 @@ def get_zip_path(repo_name, version):
     safe_repo_name = repo_name.replace('/', '_')
     return ZIP_STORAGE_DIR / f"{safe_repo_name}_{version}.zip"
 
-def _parse_rom_asset_variant(asset, tag_name=''):
+def _classify_variant_model(name, tag_name='', repo=''):
+    """Classify a rom*.zip asset as Y1, Y2, or dual (eligible for both)."""
+    lower = (name or '').lower()
+    tag_lower = (tag_name or '').lower()
+    repo_lower = (repo or '').lower()
+    repo_name = repo_lower.split('/')[-1] if '/' in repo_lower else repo_lower
+
+    if '_y2' in lower or lower.startswith('rom_y2'):
+        return 'Y2'
+    if any(token in lower for token in ('6582', 'eastaeon', 'mt6582')):
+        return 'Y2'
+    if any(token in tag_lower for token in ('6582', 'eastaeon', 'mt6582')):
+        return 'Y2'
+    if 'y2' in tag_lower and 'y1' not in tag_lower:
+        return 'Y2'
+
+    if 'y2' in repo_name and 'y1' not in repo_name.replace('y2', '', 1):
+        return 'Y2'
+
+    return 'dual'
+
+
+def _parse_rom_asset_variant(asset, tag_name='', repo=''):
     """
-    Classify a rom*.zip asset into hardware type (A/B) and resolution.
+    Classify a rom*.zip asset into hardware type (A/B), resolution, and model family.
     
     New-style releases use filenames like:
       - rom_240p.zip
       - rom_240p_type_b.zip
       - rom_360p.zip
       - rom_360p_type_b.zip
+      - rom_y2.zip
     
     Legacy releases used a single rom.zip per tag, with Type B encoded in the tag
     name (e.g. '360p-type-b-v0.3'). For those, we treat rom.zip as Type B.
@@ -918,15 +1181,16 @@ def _parse_rom_asset_variant(asset, tag_name=''):
             'asset': asset,
             'type': hw_type,        # 'A' or 'B'
             'resolution': resolution,  # '360p', '240p', or 'native'
+            'model': _classify_variant_model(name, tag_name, repo),
         }
     except Exception:
         return None
 
-def extract_rom_variants_from_assets(assets, tag_name=''):
+def extract_rom_variants_from_assets(assets, tag_name='', repo=''):
     """Return a list of rom*.zip variants for a release, including type/resolution metadata."""
     variants = []
     for asset in assets or []:
-        variant = _parse_rom_asset_variant(asset, tag_name)
+        variant = _parse_rom_asset_variant(asset, tag_name, repo)
         if variant:
             variants.append(variant)
     return variants
@@ -999,6 +1263,121 @@ def select_rom_asset_for_resolution(variants, selected_type, resolution):
     if not filtered:
         return None
     return select_preferred_rom_asset(filtered, selected_type=selected_type)
+
+
+def filter_rom_variants_for_model(variants, selected_model, package_device=None, repo='', tag_name=''):
+    """Return ROM variants compatible with the selected device model."""
+    if not variants:
+        return []
+
+    enriched = []
+    for variant in variants:
+        asset_name = variant.get('asset', {}).get('name', '')
+        model = variant.get('model') or _classify_variant_model(asset_name, tag_name, repo)
+        enriched.append({**variant, 'model': model})
+
+    selecting_y2 = is_y2_model(selected_model)
+    package_dev = (package_device or '').upper()
+
+    def variant_ok(variant):
+        model = variant.get('model', 'dual')
+        if selecting_y2:
+            # Y2-specific ROM assets (rom_y2.zip) always match when Y2 is selected
+            if model == 'Y2':
+                return True
+            if package_dev == 'Y1':
+                return False
+            if model == 'dual':
+                # Legacy rom.zip on a Y1-named repo is not for Y2 users
+                repo_name = (repo or '').lower().split('/')[-1]
+                if package_dev == 'Y2' and 'y2' not in repo_name:
+                    return False
+                return True
+            return False
+        if package_dev == 'Y2':
+            return False
+        if model == 'Y2':
+            return False
+        return model in ('Y1', 'dual')
+
+    filtered = [v for v in enriched if variant_ok(v)]
+
+    if selecting_y2:
+        y2_explicit = [v for v in filtered if v.get('model') == 'Y2']
+        if y2_explicit:
+            return y2_explicit
+    else:
+        non_y2 = [v for v in filtered if v.get('model') != 'Y2']
+        if non_y2:
+            return non_y2
+
+    return filtered
+
+
+def select_rom_asset_for_model_and_resolution(
+    variants, selected_model, selected_type, resolution,
+    package_device=None, repo='', tag_name=''
+):
+    """Select the best ROM asset for model, resolution, and hardware type."""
+    model_variants = filter_rom_variants_for_model(
+        variants, selected_model, package_device, repo, tag_name
+    )
+    if not model_variants:
+        return None
+
+    effective_type = 'A' if is_y2_model(selected_model) else selected_type
+    resolution_variants = [v for v in model_variants if v.get('resolution') == resolution]
+    if not resolution_variants:
+        return None
+    return select_preferred_rom_asset(resolution_variants, selected_type=effective_type)
+
+
+def release_supports_device_model(release, selected_model, package_device=None, repo=''):
+    """Determine if a release has at least one ROM variant for the selected model."""
+    if not selected_model:
+        return True
+
+    tag_name = release.get('tag_name', '')
+    assets = release.get('assets', [])
+    variants = release.get('rom_variants') or extract_rom_variants_from_assets(assets, tag_name, repo)
+
+    if variants:
+        return len(filter_rom_variants_for_model(
+            variants, selected_model, package_device, repo, tag_name
+        )) > 0
+
+    tag_lower = tag_name.lower()
+    body_lower = (release.get('body') or '').lower()
+    repo_lower = (repo or '').lower()
+
+    if is_y2_model(selected_model):
+        if any(token in tag_lower or token in body_lower for token in ('y2', '6582', 'eastaeon')):
+            return True
+        if 'y2' in repo_lower.split('/')[-1]:
+            return True
+        return bool(package_device and is_y2_model(package_device))
+
+    if is_y2_model(package_device or ''):
+        return False
+    if any(token in tag_lower for token in ('_y2', '6582', 'eastaeon')) and 'y1' not in tag_lower:
+        return False
+    return True
+
+
+def package_supports_device_model(selected_model, package_device):
+    """Return True when a manifest package should appear for the selected model."""
+    if not selected_model:
+        return True
+
+    pd = (package_device or '').strip()
+    if not pd:
+        return True
+
+    if is_y2_model(selected_model):
+        return is_y2_model(pd)
+    if is_y1_model(selected_model):
+        return is_y1_model(pd)
+    return pd.upper() == str(selected_model).upper()
 
 def release_supports_device_type(release, selected_type):
     """
@@ -1313,25 +1692,22 @@ class ConfigDownloader:
 
     def download_manifest(self, use_local_first=True):
         """Download and parse the XML manifest file with local-first loading for instant startup"""
-        # Try cache first
+        local_packages = None
+        if use_local_first:
+            local_packages = self.load_local_manifest()
+
+        # Prefer local manifest when present so dev edits take effect immediately
+        if local_packages:
+            silent_print(f"Loaded {len(local_packages)} packages from local manifest for instant startup")
+            save_cache(MANIFEST_CACHE_FILE, local_packages)
+            self.refresh_remote_manifest_async()
+            return local_packages
+
         cached_packages = load_cache(MANIFEST_CACHE_FILE)
         if cached_packages:
             silent_print("Using cached manifest for instant startup")
             return cached_packages
 
-        # Load local manifest first for instant startup
-        if use_local_first:
-            local_packages = self.load_local_manifest()
-            if local_packages:
-                silent_print(f"Loaded {len(local_packages)} packages from local manifest for instant startup")
-                # Cache the local packages immediately
-                save_cache(MANIFEST_CACHE_FILE, local_packages)
-                # Start background refresh of remote manifest (non-blocking)
-                self.refresh_remote_manifest_async()
-                return local_packages
-
-        # If no local manifest and no cache, return empty list (non-blocking for offline mode)
-        # The app can still work with "Install from rom.zip" feature
         silent_print("No local manifest or cache found - app will work in offline mode")
         silent_print("Use 'Browse Files' button to install firmware from local files")
         return []
@@ -1339,7 +1715,7 @@ class ConfigDownloader:
     def load_local_manifest(self):
         """Load manifest from local slidia_manifest.xml file"""
         try:
-            local_manifest_path = Path("slidia_manifest.xml")
+            local_manifest_path = _FIRMWARE_APP_DIR / "slidia_manifest.xml"
             if not local_manifest_path.exists():
                 silent_print("Local manifest not found")
                 return []
@@ -1397,7 +1773,7 @@ class ConfigDownloader:
                 
                 package_info = {
                     'name': pkg_data.get('name', 'Unknown'),
-                    'repo': pkg_data.get('repo', ''),
+                    'repo': resolve_firmware_repo(pkg_data.get('repo', '')),
                     'device': pkg_data.get('device', ''),
                     'url': pkg_data.get('url', ''),
                     'type': pkg_data.get('type', ''),
@@ -1417,7 +1793,7 @@ class ConfigDownloader:
                 
                 package_info = {
                     'name': pkg_data.get('name', 'Unknown'),
-                    'repo': pkg_data.get('repo', ''),
+                    'repo': resolve_firmware_repo(pkg_data.get('repo', '')),
                     'device': pkg_data.get('device', ''),
                     'url': pkg_data.get('url', ''),
                     'type': pkg_data.get('type', ''),
@@ -1436,6 +1812,8 @@ class ConfigDownloader:
                 remote_packages = self.download_remote_manifest()
                 if remote_packages:
                     # Update the packages if we got a successful remote load
+                    for package in remote_packages:
+                        package['repo'] = resolve_firmware_repo(package.get('repo', ''))
                     self.packages = remote_packages
                     silent_print(f"Background refresh completed: {len(remote_packages)} packages")
                 else:
@@ -1473,7 +1851,7 @@ class GitHubAPI:
         # Persistent caching for releases to enable offline mode
         self.releases_cache = {}
         self.cache_duration = 86400  # 24 hour cache duration
-        self.releases_cache_dir = Path(".cache/releases")
+        self.releases_cache_dir = _FIRMWARE_APP_DIR / ".cache" / "releases"
         self.releases_cache_dir.mkdir(parents=True, exist_ok=True)
 
     def get_next_token(self):
@@ -1650,7 +2028,7 @@ class GitHubAPI:
 
                 # Find firmware assets (rom*.zip, including new-style variants)
                 tag_name = release_data.get('tag_name', '')
-                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name, repo)
                 preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
                 zip_asset = preferred['asset'] if preferred else None
 
@@ -1691,7 +2069,7 @@ class GitHubAPI:
 
                 # Find firmware assets (rom*.zip, including new-style variants)
                 tag_name = release_data.get('tag_name', '')
-                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name, repo)
                 preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
                 zip_asset = preferred['asset'] if preferred else None
 
@@ -1736,6 +2114,55 @@ class GitHubAPI:
 
         return None
 
+    def _ensure_latest_in_releases_data(self, releases_data, repo):
+        """
+        Merge /releases/latest when missing from the paginated list.
+        GitHub can omit republished releases (e.g. Y2 3.1.7 with rom_y2.zip) from ?per_page= list.
+        """
+        if not isinstance(releases_data, list):
+            releases_data = list(releases_data or [])
+        try:
+            latest_url = f"https://api.github.com/repos/{repo}/releases/latest"
+            response = None
+            if self.tokens:
+                response = self.make_authenticated_request(latest_url, repo)
+            if not response or response.status_code != 200:
+                if self.can_make_unauth_request():
+                    self.record_unauth_request()
+                    response = self.session.get(latest_url, timeout=REQUEST_TIMEOUT)
+            if response and response.status_code == 200:
+                latest = response.json()
+                latest_id = latest.get('id')
+                latest_tag = latest.get('tag_name', '')
+                existing_ids = {r.get('id') for r in releases_data if r.get('id')}
+                existing_tags = {r.get('tag_name') for r in releases_data if r.get('tag_name')}
+                if latest_id not in existing_ids and latest_tag not in existing_tags:
+                    releases_data = [latest] + releases_data
+                    silent_print(
+                        f"Merged /releases/latest ({latest_tag}) into release list for {repo}"
+                    )
+                    # #region agent log
+                    _debug_session_log(
+                        "firmware_downloader.py:_ensure_latest_in_releases_data",
+                        "Merged latest release missing from paginated list",
+                        {
+                            "repo": repo,
+                            "tag": latest_tag,
+                            "rom_assets": [
+                                a.get('name', '')
+                                for a in latest.get('assets', [])
+                                if 'rom' in (a.get('name') or '').lower()
+                            ],
+                            "paginated_count_before": len(releases_data) - 1,
+                        },
+                        hypothesis_id="F",
+                        run_id="post-fix",
+                    )
+                    # #endregion
+        except Exception as e:
+            silent_print(f"Could not merge /releases/latest for {repo}: {e}")
+        return releases_data
+
     def get_all_releases(self, repo):
         """
         Get all releases for a repository with improved performance - CACHE FIRST, LIMITED TO 30
@@ -1744,6 +2171,7 @@ class GitHubAPI:
         from worker threads (QThread instances) to avoid freezing the UI. Do not call
         this method from the main thread.
         """
+        repo = resolve_firmware_repo(repo)
         # Try cache first for instant loading
         cached_releases = self.get_cached_releases(repo)
         if cached_releases:
@@ -1762,6 +2190,7 @@ class GitHubAPI:
                 silent_print(f"Authenticated response status: {response.status_code}")
                 if response.status_code == 200:
                     releases_data = response.json()
+                    releases_data = self._ensure_latest_in_releases_data(releases_data, repo)
                     silent_print(f"Found {len(releases_data)} total releases for {repo}")
                     releases = []
 
@@ -1775,7 +2204,7 @@ class GitHubAPI:
                         silent_print(f"Processing release: {tag_name} (prerelease={is_prerelease}) with {len(assets)} assets")
 
                         # Find firmware assets (rom*.zip, including new-style variants)
-                        rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                        rom_variants = extract_rom_variants_from_assets(assets, tag_name, repo)
                         preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
                         zip_asset = preferred['asset'] if preferred else None
 
@@ -1817,6 +2246,7 @@ class GitHubAPI:
                 if response.status_code == 200:
                     silent_print("Rate limit bypass successful!")
                     releases_data = response.json()
+                    releases_data = self._ensure_latest_in_releases_data(releases_data, repo)
                     releases = []
                     
                     for release in releases_data:
@@ -1826,7 +2256,7 @@ class GitHubAPI:
                         if 'stable' in tag_name.lower():
                             is_prerelease = False
                         assets = release.get('assets', [])
-                        rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                        rom_variants = extract_rom_variants_from_assets(assets, tag_name, repo)
                         preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
                         zip_asset = preferred['asset'] if preferred else None
                         
@@ -1864,6 +2294,7 @@ class GitHubAPI:
 
             if response.status_code == 200:
                 releases_data = response.json()
+                releases_data = self._ensure_latest_in_releases_data(releases_data, repo)
                 silent_print(f"Unauthenticated: Found {len(releases_data)} total releases for {repo}")
                 releases = []
 
@@ -1876,7 +2307,7 @@ class GitHubAPI:
                     assets = release.get('assets', [])
 
                     # Find rom*.zip assets (new-style and legacy)
-                    rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                    rom_variants = extract_rom_variants_from_assets(assets, tag_name, repo)
                     preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
                     zip_asset = preferred['asset'] if preferred else None
 
@@ -1923,18 +2354,20 @@ class GitHubAPI:
         silent_print(f"No releases found for {repo} - returning empty list")
         return []
 
-    def get_cached_releases(self, repo):
+    def get_cached_releases(self, repo, allow_stale=False):
         """Get cached releases for a repository - PERSISTENT DISK CACHE for offline mode"""
         # Check in-memory cache first (fastest)
         if repo in self.releases_cache:
             cache_time, releases = self.releases_cache[repo]
-            if time.time() - cache_time < self.cache_duration:
+            cache_age = time.time() - cache_time
+            if cache_age < self.cache_duration or allow_stale:
                 # Apply "stable" override to cached releases (in case they were cached before the fix)
                 for release in releases:
                     tag_name = release.get('tag_name', '')
                     if 'stable' in tag_name.lower():
                         release['prerelease'] = False
-                silent_print(f"Using in-memory cached releases for {repo} (age: {time.time() - cache_time:.0f}s)")
+                stale_note = " (stale fallback)" if allow_stale and cache_age >= self.cache_duration else ""
+                silent_print(f"Using in-memory cached releases for {repo} (age: {cache_age:.0f}s{stale_note})")
                 return releases
             else:
                 # Remove expired cache entry
@@ -1947,14 +2380,19 @@ class GitHubAPI:
                 with open(cache_file, 'r') as f:
                     cache_data = json.load(f)
                 cache_time = cache_data.get('timestamp', 0)
-                if time.time() - cache_time < self.cache_duration:
+                cache_age = time.time() - cache_time
+                if cache_age < self.cache_duration or allow_stale:
                     releases = cache_data.get('releases', [])
                     # Apply "stable" override to cached releases (in case they were cached before the fix)
                     for release in releases:
                         tag_name = release.get('tag_name', '')
                         if 'stable' in tag_name.lower():
                             release['prerelease'] = False
-                    silent_print(f"Using disk cached releases for {repo} (age: {time.time() - cache_time:.0f}s, OFFLINE MODE)")
+                    stale_note = " (stale fallback)" if allow_stale and cache_age >= self.cache_duration else ""
+                    silent_print(
+                        f"Using disk cached releases for {repo} "
+                        f"(age: {cache_age:.0f}s{stale_note})"
+                    )
                     # Load into memory cache for faster subsequent access
                     self.releases_cache[repo] = (cache_time, releases)
                     return releases
@@ -2062,15 +2500,19 @@ class SPFlashToolWorker(QThread):
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
-    def __init__(self):
+    def __init__(self, install_xml_path=None, device_model=None):
         super().__init__()
         self.should_stop = False
+        self.device_label = "Y2" if is_y2_model(device_model) else "Y1"
         # Set up the flash_tool.exe command with the XML file
         current_dir = Path.cwd()
+        xml_name = install_xml_path or "install_rom_sp.xml"
+        if not isinstance(xml_name, Path):
+            xml_name = current_dir / xml_name
         self.spflash_command = [
             str(current_dir / "flash_tool.exe"),
             "-i",
-            str(current_dir / "install_rom_sp.xml")
+            str(xml_name),
         ]
         
     def stop(self):
@@ -2140,7 +2582,10 @@ class SPFlashToolWorker(QThread):
                         installing_phase = False
                         completed_phase = False
                         self.show_initsteps_image.emit()
-                        self.status_updated.emit("Please turn off your Y1 (or insert paperclip in hidden button) and connect it via USB")
+                        self.status_updated.emit(
+                            f"If it isn't already off, please turn off your {self.device_label} "
+                            "(or insert paperclip in hidden button) and connect it via USB"
+                        )
                         # Don't show the raw flash tool output, keep the user-friendly message
                         
                     # Continue with instructions phase until installing phase
@@ -2190,7 +2635,9 @@ class SPFlashToolWorker(QThread):
                             installing_phase = False
                             if line.startswith("Disconnect!"):
                                 self.show_installed_image.emit()
-                                self.status_updated.emit("Install Complete, please disconnect your Y1 and hold the center button")
+                                self.status_updated.emit(
+                                    f"Install Complete, please disconnect your {self.device_label} and hold the center button"
+                                )
                             else:
                                 self.show_installing_image.emit()  # Use installing image for other completion indicators
                                 self.status_updated.emit(f"Flash Tool: {line}")
@@ -2201,7 +2648,9 @@ class SPFlashToolWorker(QThread):
                     elif completed_phase:
                         if line.startswith("Disconnect!"):
                             self.show_installed_image.emit()
-                            self.status_updated.emit("Install Complete, please disconnect your Y1 and hold the center button")
+                            self.status_updated.emit(
+                                f"Install Complete, please disconnect your {self.device_label} and hold the center button"
+                            )
                         else:
                             self.status_updated.emit(f"Flash Tool: {line}")
                         
@@ -2248,11 +2697,15 @@ class MTKWorker(QThread):
     disable_update_button = Signal()  # Signal to disable update button during MTK installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
-    def __init__(self, debug_mode=False, debug_window=None):
+    def __init__(self, debug_mode=False, debug_window=None, device_model=None):
         super().__init__()
         self.should_stop = False
         self.debug_mode = debug_mode
         self.debug_window = debug_window
+        self.device_model = device_model
+        self.device_label = device_label_for_model(
+            resolve_device_model_for_install(device_model)
+        )
         self.initsteps_timer = None  # Timer for 1.5 second delay fallback
         
         # Platform-specific progress bar characters
@@ -2282,11 +2735,8 @@ class MTKWorker(QThread):
         return line
 
     def run(self):
-        cmd = [
-            sys.executable, "mtk.py", "w",
-            "logo,uboot,bootimg,recovery,android,usrdata",
-            "logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img"
-        ]
+        model = resolve_device_model_for_install(getattr(self, 'device_model', None))
+        cmd = build_mtk_write_command(model)
 
         try:
             # Don't emit status message - let MTK output be displayed clearly
@@ -2354,7 +2804,8 @@ class MTKWorker(QThread):
                 if current_time - last_status_update > status_check_interval:
                     # If no output for a while, emit empty status to trigger instruction message
                     # But only if we're not in a specific status state like "Please wait..." or active install
-                    if current_status not in ["Please wait...", "Please disconnect your Y1 and restart the app"] and not progress_detected and not active_installation_started:
+                    disconnect_restart = f"Please disconnect your {self.device_label} and restart the app"
+                    if current_status not in ["Please wait...", disconnect_restart] and not progress_detected and not active_installation_started:
                         self.status_updated.emit("")
                         self.show_instructions_image.emit()
                         last_status_update = current_time
@@ -2372,6 +2823,11 @@ class MTKWorker(QThread):
                     time.sleep(0.01)  # 10ms delay
                     line = output.strip()
                     last_output_line = line  # Track the last output line
+                    lower_line = line.lower()
+                    if any(token in lower_line for token in ('mt6582', 'eastaeon82', 'eastaeon')):
+                        self.device_label = 'Y2'
+                    elif any(token in lower_line for token in ('mt6572', 'g368_nyx', 'g368')):
+                        self.device_label = 'Y1'
 
                     # Check for first empty line from mtk.py and emit initsteps signal
                     if not first_empty_line_detected and line == "":
@@ -2407,8 +2863,11 @@ class MTKWorker(QThread):
                         # Only show instruction message if not in active installation
                         if not active_installation_started:
                             # When mtk.py only displays blank output or dots/periods, show instruction message
-                            self.status_updated.emit("Please follow the instructions below to install the software on your Y1")
-                            current_status = "Please follow the instructions below to install the software on your Y1"
+                            install_instructions = (
+                                f"Please follow the instructions below to install the software on your {self.device_label}"
+                            )
+                            self.status_updated.emit(install_instructions)
+                            current_status = install_instructions
                             # Only show initsteps image if we're not in an active install (no progress detected) AND not in active installation state
                             if not progress_detected and not active_installation_started:
                                 self.show_instructions_image.emit()
@@ -2419,7 +2878,10 @@ class MTKWorker(QThread):
                             # Do not terminate here; keep waiting for user/device connection.
                             if not active_installation_started:
                                 if not waiting_notice_shown:
-                                    self.status_updated.emit("Still waiting for Y1 connection... keep device unplugged until prompted, then connect it.")
+                                    self.status_updated.emit(
+                                        f"Still waiting for {self.device_label} connection... "
+                                        "keep device unplugged until prompted, then connect it."
+                                    )
                                     waiting_notice_shown = True
                                 initsteps_start_time = time.time()
                             else:
@@ -2462,7 +2924,9 @@ class MTKWorker(QThread):
                         "connection error"
                     ]):
                         handshake_error_detected = True
-                        self.status_updated.emit("Connection issue detected - please unplug your Y1 and try again")
+                        self.status_updated.emit(
+                            f"Connection issue detected - please unplug your {self.device_label} and try again"
+                        )
                         self.handshake_failed.emit()
                         # Don't break here - continue reading output
 
@@ -2476,14 +2940,18 @@ class MTKWorker(QThread):
                     # Check for USB connection issue (AttributeError: 'NoneType' object has no attribute 'hex')
                     if "attributerror: 'nonetype' object has no attribute 'hex'" in line.lower():
                         usb_connection_issue_detected = True
-                        self.status_updated.emit("Please unplug the USB cable from your Y1 and reconnect it.")
+                        self.status_updated.emit(
+                            f"Please unplug the USB cable from your {self.device_label} and reconnect it."
+                        )
                         self.show_reconnect_image.emit()
                         # Don't break here - continue reading output
 
                     # Detect libusb permission/config access problems (common on Linux).
                     if "couldn't get device configuration" in line.lower() or "could not get device configuration" in line.lower():
                         device_config_error_detected = True
-                        self.status_updated.emit("USB permission issue detected - verify udev rules/group membership, then reconnect Y1.")
+                        self.status_updated.emit(
+                            f"USB permission issue detected - verify udev rules/group membership, then reconnect {self.device_label}."
+                        )
                         self.show_reconnect_image.emit()
                         # Don't break here - continue reading output
 
@@ -2779,11 +3247,12 @@ class DownloadWorker(QThread):
     status_updated = Signal(str)
     download_completed = Signal(bool, str)
 
-    def __init__(self, download_url, repo_name, version):
+    def __init__(self, download_url, repo_name, version, device_model=None):
         super().__init__()
         self.download_url = download_url
         self.repo_name = repo_name
         self.version = version
+        self.device_model = device_model
         self.should_stop = False
     
     def stop(self):
@@ -2848,7 +3317,10 @@ class DownloadWorker(QThread):
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
 
-            prepare_sp_flash_tool_files()
+            resolved_model = resolve_device_model_for_install(
+                self.device_model, zip_path=zip_path.name, extracted_files=extracted_files
+            )
+            prepare_sp_flash_tool_files(resolved_model)
 
             self.status_updated.emit("Extraction completed. Files ready for MTK processing.")
 
@@ -2872,10 +3344,11 @@ class DownloadWorker(QThread):
                 success_msg += f"- {file} ({size_mb:.1f} MB)\n"
 
             success_msg += "\nFor the best results:\n"
-            success_msg += "1. Make sure your Y1 is disconnect until you're asked\n"
+            label = device_label_for_model(
+                resolve_device_model_for_install(getattr(self, 'device_model', None))
+            )
+            success_msg += f"1. If it isn't already disconnected, keep your {label} unplugged until you're asked to connect\n"
             success_msg += "2. Follow the on screen guidance during the process"
-            success_msg += f""
-            success_msg += ""
 
             self.download_completed.emit(True, success_msg)
 
@@ -2890,12 +3363,14 @@ class ProgressiveReleaseWorker(QThread):
     loading_complete = Signal(list)  # Emitted when all releases are loaded
     loading_failed = Signal(str)  # Emitted on error
     
-    def __init__(self, github_api, repo, selected_type, show_prereleases):
+    def __init__(self, github_api, repo, selected_type, show_prereleases, selected_model=None, package_device=None):
         super().__init__()
         self.github_api = github_api
         self.repo = repo
         self.selected_type = selected_type
         self.show_prereleases = show_prereleases
+        self.selected_model = selected_model
+        self.package_device = package_device
         self.stop_requested = False
         
     def stop(self):
@@ -2955,6 +3430,7 @@ class ProgressiveReleaseWorker(QThread):
                 return
             
             releases_data = response.json()
+            releases_data = self.github_api._ensure_latest_in_releases_data(releases_data, self.repo)
             silent_print(f"Fetched {len(releases_data)} releases from GitHub API")
             
             all_releases = []
@@ -2968,7 +3444,7 @@ class ProgressiveReleaseWorker(QThread):
                 assets = release_data.get('assets', [])
                 tag_name = release_data.get('tag_name', '')
                 # Extract ROM variants from assets (rom*.zip, including new-style names)
-                rom_variants = extract_rom_variants_from_assets(assets, tag_name)
+                rom_variants = extract_rom_variants_from_assets(assets, tag_name, self.repo)
                 preferred = select_preferred_rom_asset(rom_variants, selected_type=None)
                 zip_asset = preferred['asset'] if preferred else None
                 
@@ -3046,6 +3522,11 @@ class ProgressiveReleaseWorker(QThread):
         
         # Check type filter based on ROM assets (fallbacks to tag when needed)
         if not release_supports_device_type(release, self.selected_type):
+            return False
+
+        if self.selected_model and not release_supports_device_model(
+            release, self.selected_model, self.package_device, self.repo
+        ):
             return False
         
         # Check pre-release filter
@@ -6394,11 +6875,11 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             for message in self._creator_messages:
                 formatted_message = message
-                if "by Y1 users, for Y1 users" in formatted_message:
+                if "by the community, for the community" in formatted_message:
                     formatted_message = formatted_message.replace(
-                        "by Y1 users, for Y1 users",
-                        f'by <span style="font-weight: 700; font-size: 13px; color: {text_color};">Y1 users</span>, '
-                        f'for <span style="font-weight: 700; font-size: 13px; color: {text_color};">Y1 users</span>'
+                        "by the community, for the community",
+                        f'by <span style="font-weight: 700; font-size: 13px; color: {text_color};">the community</span>, '
+                        f'for <span style="font-weight: 700; font-size: 13px; color: {text_color};">the community</span>'
                     )
                 if "Ryan Specter" in formatted_message:
                     formatted_message = formatted_message.replace(
@@ -7870,7 +8351,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Add Toolkit button for all platforms - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
-        toolkit_text = f"Y1 Themes + Tools{seasonal_emoji}" if seasonal_emoji else "Y1 Themes + Tools"
+        toolkit_text = f"Tools{seasonal_emoji}" if seasonal_emoji else "Tools"
         self.toolkit_btn = QPushButton(toolkit_text)
         # Use native styling - no custom stylesheet for automatic theme adaptation
         # Use default cursor for native OS feel
@@ -7963,7 +8444,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         seasonal_emoji = get_seasonal_emoji_random()
         download_text = f"Install / Restore{seasonal_emoji}" if seasonal_emoji else "Install / Restore"
         self.download_btn = QPushButton(download_text)
-        self.download_btn.setToolTip("Install or restore the selected system software to your Y1")
+        self.download_btn.setToolTip("Install or restore the selected system software to your device")
         self.download_btn.clicked.connect(self.start_download)
         self.download_btn.setEnabled(False)
         # Make this a Default button to get system accent color (like Y1 Remote Control)
@@ -8006,7 +8487,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         coffee_layout.addWidget(creator_label)
         self.creator_label = creator_label
         self._creator_messages = [
-            "Made with 🩵 by Y1 users, for Y1 users",
+            "Made with 🩵 by the community, for the community.",
             "Developer: Ryan Specter",
         ]
         self._creator_message_index = 0
@@ -8147,7 +8628,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         status_group = QGroupBox("Status")
         status_layout = QVBoxLayout(status_group)
 
-        self.status_label = QLabel("Please follow the instructions below to install this software on your Y1")
+        self.status_label = QLabel(self.default_install_status_text())
         self.status_label.setWordWrap(True)
         self.status_label.setMinimumHeight(30)  # Reduced height for compact display
         self.status_label.setMaximumHeight(40)  # Added maximum height constraint
@@ -8519,7 +9000,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                     debug_window = DebugOutputWindow(self)
                     debug_window.show()
                 
-                self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+                self.mtk_worker = MTKWorker(
+                    debug_mode=getattr(self, 'debug_mode', False),
+                    debug_window=debug_window,
+                    device_model=self.get_selected_device_model(),
+                )
                 self.mtk_worker.status_updated.connect(self.update_status)
                 self.mtk_worker.show_installing_image.connect(self.load_installing_image)
                 self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
@@ -8558,10 +9043,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_clear_timer = None
         
         if not message or message.strip() == "":
-            self.status_label.setText("Please follow the instructions below to install this software on your Y1")
+            self.status_label.setText(self.default_install_status_text())
         elif message.strip() == "MTK: Preloader":
             # Just "MTK: Preloader" indicates freeze state
-            self.status_label.setText("Please disconnect your Y1 and restart the app")
+            self.status_label.setText(
+                self.device_copy("Please disconnect your Y1 and restart the app")
+            )
         elif message.startswith("MTK:") and (message.strip() == "MTK:" or 
                                               message.strip() == "MTK:..........." or 
                                               message.strip() == "MTK: ..........." or
@@ -8736,7 +9223,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def handle_handshake_failure(self):
         """Handle handshake failure"""
-        self.status_label.setText("Please unplug your Y1 and try again")
+        self.status_label.setText(self.device_copy("Please unplug your Y1 and try again"))
         self.load_initsteps_image()
 
     def handle_errno2_error(self):
@@ -8808,15 +9295,29 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Load please wait image initially
             self.load_please_wait_image()
             
+            device_model = resolve_device_model_for_install(self.get_selected_device_model())
+            flash_config = get_flash_config(device_model)
+            if not flash_config:
+                QMessageBox.warning(
+                    self,
+                    "Device Model Unknown",
+                    self.device_copy(
+                        "Could not determine whether this firmware is for a Y1 or Y2 device.\n\n"
+                        "Extract the firmware files first, select the correct device model, or use "
+                        "Browse Files with a rom_y2.zip / Y2 firmware package."
+                    ),
+                )
+                self.show_appropriate_buttons_for_spflash()
+                self.show_left_panel()
+                return
+            install_rom_xml_name = flash_config["install_rom_sp_xml"]
+            device_label = "Y2" if is_y2_model(device_model) else "Y1"
+
             # Show dialog with Method 3 instructions
             reply = QMessageBox.question(
                 self,
                 "Software Install instructions",
-                "Before continuing, please:\n\n"
-                "1. Power off your Y1\n"
-                "   (You can use a pin or paperclip to press the reset button if needed)\n\n"
-                "2. Make sure your Y1 is NOT connected via USB\n\n"
-                "Then click OK and follow the on-screen instructions.",
+                self.install_disconnect_guidance(),
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok
             )
@@ -8830,10 +9331,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             # No need to stop MTK processes since Method 3 uses flash_tool.exe directly
             
-            # Check if flash_tool.exe and install_rom_sp.xml exist
+            prepare_sp_flash_tool_files(device_model)
+
+            # Check if flash_tool.exe and model-specific install XML exist
             current_dir = Path.cwd()
             flash_tool_exe = current_dir / "flash_tool.exe"
-            install_rom_xml = current_dir / "install_rom_sp.xml"
+            install_rom_xml = current_dir / install_rom_xml_name
             
             if not flash_tool_exe.exists():
                 # Show appropriate buttons again when flash tool is missing
@@ -8855,12 +9358,14 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.critical(
                     self,
                     "Install ROM XML Not Found",
-                    "install_rom_sp.xml not found. Please ensure it's properly installed."
+                    f"{install_rom_xml_name} not found. Please ensure it's properly installed."
                 )
                 return
             
             # Start the SP Flash Tool worker
-            self.spflash_worker = SPFlashToolWorker()
+            self.spflash_worker = SPFlashToolWorker(
+                install_xml_path=install_rom_xml, device_model=device_model
+            )
             self.spflash_worker.status_updated.connect(self.status_label.setText)
             self.spflash_worker.show_installing_image.connect(self.load_installing_image)
             self.spflash_worker.show_initsteps_image.connect(self.load_method3_image)  # Use initsteps_sp.png for SP Flash Tool initsteps
@@ -8923,9 +9428,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.information(
                     self,
                     dialog_title,
-                    f"Your {kind} installation has completed successfully!\n\n"
-                    "Please disconnect your Y1 and hold the middle button to turn it on.\n\n"
-                    "If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
+                    self.device_copy(
+                        f"Your {kind} installation has completed successfully!\n\n"
+                        "Please disconnect your Y1 and hold the middle button to turn it on.\n\n"
+                        "If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
+                    )
                 )
                 self._maybe_show_install_donation(software_name)
             else:
@@ -8934,8 +9441,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.critical(
                     self,
                     "Installation Failed",
-                    f"Installation failed:\n{message}\n\n"
-                    "Please disconnect your Y1 from USB and try again, if this fails visit troubleshooting.innioasis.app."
+                    self.device_copy(
+                        f"Installation failed:\n{message}\n\n"
+                        "Please disconnect your Y1 from USB and try again, if this fails visit troubleshooting.innioasis.app."
+                    )
                 )
                 # Revert to startup state after showing error
                 self.revert_to_startup_state()
@@ -8971,14 +9480,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             reply = QMessageBox.question(
                 self,
                 "SP Flash Tool GUI",
-                "SP Flash Tool GUI will now launch.\n\n"
-                "Power off your Y1:\n"
-                "Make sure is NOT connected then, Press OK.\n\n"
-                "Then follow the on screen instructions...\n\n"
-                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
-                "This method launches the SP Flash Tool GUI interface.",
+                self.device_copy(
+                    "SP Flash Tool GUI will now launch.\n\n"
+                    f"If it isn't already off, power off your {self.get_device_label()}.\n"
+                    "If it is connected, disconnect it, then press OK.\n\n"
+                    "Then follow the on screen instructions...\n\n"
+                    "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
+                    "This method launches the SP Flash Tool GUI interface."
+                ),
                 QMessageBox.Ok | QMessageBox.Cancel,
-                QMessageBox.Ok
+                QMessageBox.Ok,
             )
             
             if reply == QMessageBox.Cancel:
@@ -8995,8 +9506,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.information(
                     self,
                     "SP Flash Tool GUI Launched",
-                    "Your downloaded ROM is loaded into SP Flash Tool's GUI\n\n"
-                    "Make sure you power off your Y1 and select Format All + Download in the drop down menu."
+                    self.device_copy(
+                        "Your downloaded ROM is loaded into SP Flash Tool's GUI\n\n"
+                        f"If it isn't already off, power off your {self.get_device_label()} and select "
+                        "Format All + Download in the drop down menu."
+                    ),
                 )
                 
                 # Revert to ready and presteps.png state after successful launch
@@ -9042,22 +9556,39 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
             
+            device_model = resolve_device_model_for_install(self.get_selected_device_model())
+            if not device_model:
+                QMessageBox.warning(
+                    self,
+                    "Device Model Unknown",
+                    self.device_copy(
+                        "Could not determine whether this firmware is for a Y1 or Y2 device.\n\n"
+                        "Extract the firmware files first or select the correct device model."
+                    ),
+                )
+                return
+            device_label = "Y2" if is_y2_model(device_model) else "Y1"
+
             # Show dialog with Method 3 Console Mode instructions
             reply = QMessageBox.question(
                 self,
                 "SP Flash Tool Console Mode",
-                "SP Flash Tool Console Mode will now launch.\n\n"
-                "Power off your Y1:\n"
-                "Make sure is NOT connected then, Press OK.\n\n"
-                "Then follow the on screen instructions...\n\n"
-                "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
-                "This method launches the SP Flash Tool console interface.",
+                self.device_copy(
+                    "SP Flash Tool Console Mode will now launch.\n\n"
+                    f"If it isn't already off, power off your {device_label}.\n"
+                    "If it is connected, disconnect it, then press OK.\n\n"
+                    "Then follow the on screen instructions...\n\n"
+                    "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
+                    "This method launches the SP Flash Tool console interface."
+                ),
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok
             )
             
             if reply == QMessageBox.Cancel:
                 return
+
+            prepare_sp_flash_tool_files(device_model)
             
             # Launch SP Flash Tool.lnk from Toolkit directory using proper Windows method
             try:
@@ -9263,6 +9794,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.populate_firmware_combo()
                 # Skip filter_firmware_options - it causes blocking network calls during startup
                 # self.filter_firmware_options()  # DISABLED for instant startup
+                self.refresh_device_aware_status_defaults()
                 # Delay release loading slightly to ensure offline message is shown first
                 QTimer.singleShot(50, self.apply_initial_release_display)
                 self.status_label.setText("Ready")
@@ -9573,8 +10105,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Check if any operations are in progress
         if INSTALLATION_MARKER_FILE.exists():
             print("DEBUG: Installation marker exists, showing warning.")
-            QMessageBox.warning(self, "Operation in Progress", 
-                              "Cannot open Y1 Helper while firmware installation or troubleshooting is in progress.\n\nPlease wait for the current operation to complete.")
+            QMessageBox.warning(self, self.device_copy("Operation in Progress"), self.device_copy("Cannot open Y1 Helper while firmware installation or troubleshooting is in progress.\n\nPlease wait for the current operation to complete."))
             return
         
         try:
@@ -9583,13 +10114,13 @@ class FirmwareDownloaderGUI(QMainWindow):
                 toolkit_shortcut = Path("Toolkit") / "Remote Control.lnk"
                 if toolkit_shortcut.exists():
                     subprocess.Popen([str(toolkit_shortcut)], shell=True)
-                    self.status_label.setText("Y1 Remote Control launched successfully")
+                    self.status_label.setText(self.device_copy("Y1 Remote Control launched successfully"))
                 else:
                     # Fallback to direct y1_helper.py if shortcut not found
                     y1_helper_path = Path("y1_helper.py")
                     if y1_helper_path.exists():
                         subprocess.Popen([sys.executable, str(y1_helper_path)])
-                        self.status_label.setText("Y1 Remote Control launched successfully")
+                        self.status_label.setText(self.device_copy("Y1 Remote Control launched successfully"))
                     else:
                         QMessageBox.error(self, "Error", 
                                         "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
@@ -9598,7 +10129,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 y1_helper_path = Path("y1_helper.py")
                 if y1_helper_path.exists():
                     subprocess.Popen([sys.executable, str(y1_helper_path)])
-                    self.status_label.setText("Y1 Remote Control launched successfully")
+                    self.status_label.setText(self.device_copy("Y1 Remote Control launched successfully"))
                 else:
                     QMessageBox.error(self, "Error", 
                                     "Y1 Remote Control not found. Please ensure y1_helper.py is in the same directory.")
@@ -9716,7 +10247,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             import webbrowser
             webbrowser.open("https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://themes.innioasis.app/&ved=2ahUKEwjZpuSEsK6RAxU9VkEAHd4OJOg4HhAWegQIEBAB&usg=AOvVaw29pOeGbaRIkVSHZ_mmWzv2")
-            self.status_label.setText("Opened Original Y1 Menu Themes in browser")
+            self.status_label.setText(self.device_copy("Opened Original Y1 Menu Themes in browser"))
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to open Original Y1 Menu Themes: {e}")
     
@@ -9734,7 +10265,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             import webbrowser
             webbrowser.open("https://www.github.com/rockbox-y1/themes/releases/latest")
-            self.status_label.setText("Opened Y1 (360p) Rockbox Themes in browser")
+            self.status_label.setText(self.device_copy("Opened Y1 (360p) Rockbox Themes in browser"))
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to open Y1 (360p) Rockbox Themes: {e}")
     
@@ -10034,7 +10565,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         about_layout.addWidget(app_name_label)
         
         # App description
-        desc_label = QLabel("Official Firmware Installer created by Y1 users in collaboration with Innioasis")
+        desc_label = QLabel("Official Firmware Installer created by the community in collaboration with Innioasis")
         desc_label.setStyleSheet("font-size: 12px; margin: 10px;")
         desc_label.setAlignment(Qt.AlignCenter)
         desc_label.setWordWrap(True)
@@ -10977,7 +11508,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.save_usb_drive_path(detected)
             QMessageBox.information(self, "Auto-Detection", f"Found Y1 USB drive:\n\n{detected}")
         else:
-            QMessageBox.information(self, "Auto-Detection", "No Y1 USB drive detected.\n\nPlease ensure your Y1 is connected in USB Storage Mode and contains a '.rockbox' or 'Themes' folder.")
+            QMessageBox.information(self, self.device_copy("Auto-Detection"), self.device_copy("No Y1 USB drive detected.\n\nPlease ensure your Y1 is connected in USB Storage Mode and contains a '.rockbox' or 'Themes' folder."))
     
     def _on_select_usb_drive(self):
         """Handle browse USB drive button click"""
@@ -11002,10 +11533,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 reply = QMessageBox.warning(
                     self,
                     "Invalid Path",
-                    "The selected folder doesn't appear to be a Y1 USB drive.\n\n"
-                    "Y1 drives should contain a '.rockbox' or 'Themes' folder.\n\n"
-                    "Do you want to use this path anyway?",
-                    QMessageBox.Yes | QMessageBox.No
+                    self.device_copy(
+                        "The selected folder doesn't appear to be a Y1 USB drive.\n\n"
+                        "Y1 drives should contain a '.rockbox' or 'Themes' folder.\n\n"
+                        "Do you want to use this path anyway?"
+                    ),
+                    QMessageBox.Yes | QMessageBox.No,
                 )
                 if reply == QMessageBox.Yes:
                     self.smart_drop_path_display.setText(folder)
@@ -13311,8 +13844,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             repo = package.get('repo', '')
             device_model = package.get('device', '')
 
-            model_match = not selected_model or device_model == selected_model
-            if not (name and repo and model_match):
+            if not (name and repo):
+                continue
+            if not package_supports_device_model(selected_model, device_model):
                 continue
             if not package_supports_device_type(self.github_api, package, selected_type):
                 continue
@@ -13372,6 +13906,116 @@ class FirmwareDownloaderGUI(QMainWindow):
         return False
 
 
+    def get_selected_device_model(self):
+        """Return the currently selected device model from the dropdown."""
+        if hasattr(self, 'device_model_combo') and self.device_model_combo:
+            return self.device_model_combo.currentData() or self.device_model_combo.currentText()
+        return None
+
+    def detect_device_model_from_install_files(self):
+        """Detect Y1/Y2 from scatter/preloader files in the install directory."""
+        try:
+            names = _firmware_file_names_in_install_root(get_firmware_app_dir())
+            return detect_device_model_for_install(extracted_files=names)
+        except Exception:
+            return None
+
+    def set_runtime_detected_device_model(self, model):
+        """Remember a model detected from a connected device or extracted ROM."""
+        if model:
+            self._runtime_detected_device_model = model
+
+    def get_effective_device_model(self):
+        """Model for UI copy: runtime detection > install files > dropdown."""
+        runtime = getattr(self, '_runtime_detected_device_model', None)
+        if runtime:
+            return runtime
+        from_files = self.detect_device_model_from_install_files()
+        if from_files:
+            self._runtime_detected_device_model = from_files
+            return from_files
+        return self.get_selected_device_model() or 'Y1'
+
+    def get_device_label(self):
+        return device_label_for_model(self.get_effective_device_model())
+
+    def device_copy(self, text):
+        return personalize_device_copy(text, self.get_effective_device_model())
+
+    def default_install_status_text(self):
+        label = self.get_device_label()
+        return f"Please follow the instructions below to install this software on your {label}"
+
+    def install_disconnect_guidance(self):
+        label = self.get_device_label()
+        return (
+            "Before continuing, please:\n\n"
+            f"1. If it isn't already off, power off your {label}\n"
+            "   (You can use a pin or paperclip to press the reset button if needed)\n\n"
+            f"2. If it is connected, disconnect the USB cable from your {label}\n\n"
+            "Then click OK and follow the on-screen instructions."
+        )
+
+    def refresh_device_aware_status_defaults(self):
+        """Refresh default status/creator copy when the selected model changes."""
+        if hasattr(self, 'status_label') and self.status_label:
+            current = self.status_label.text() or ""
+            if not current or "install this software on your" in current or current == "Ready":
+                self.status_label.setText(self.default_install_status_text())
+        label = self.get_device_label()
+        if hasattr(self, 'download_btn') and self.download_btn:
+            self.download_btn.setToolTip(
+                f"Install or restore the selected system software to your {label}"
+            )
+        if hasattr(self, 'send_update_btn') and self.send_update_btn:
+            self.send_update_btn.setToolTip(
+                f"Quick update: Downloads update.zip and places it in .rockbox folder on your {label}"
+            )
+        if hasattr(self, '_creator_messages') and self._creator_messages:
+            self._creator_messages[0] = "Made with 🩵 by the community, for the community."
+            self._creator_render_cache_key = None
+            self.update_creator_label()
+
+    def _get_package_device_for_repo(self, repo):
+        """Look up manifest device attribute for a repository."""
+        selected_model = self.get_selected_device_model()
+        matches = [
+            package for package in getattr(self, 'packages', []) or []
+            if package.get('repo') == repo
+        ]
+        resolved = ''
+        # Shared repos (e.g. y1-stock-rom) have separate Y1/Y2 manifest entries — match selected model
+        if selected_model:
+            for package in matches:
+                pd = (package.get('device') or '').strip()
+                if pd and pd.upper() == str(selected_model).upper():
+                    resolved = pd
+                    break
+        if not resolved:
+            for package in matches:
+                pd = package.get('device', '')
+                if pd:
+                    resolved = pd
+                    break
+        # #region agent log
+        _debug_session_log(
+            "firmware_downloader.py:_get_package_device_for_repo",
+            "Resolved package device for repo",
+            {
+                "repo": repo,
+                "selected_model": selected_model,
+                "resolved_package_device": resolved,
+                "matching_packages": [
+                    {"name": p.get("name"), "device": p.get("device")}
+                    for p in matches
+                ],
+            },
+            hypothesis_id="A",
+            run_id="post-fix",
+        )
+        # #endregion
+        return resolved
+
     def _release_matches_type_filter(self, release, selected_type):
         """
         Check if a release matches the selected device type filter.
@@ -13379,6 +14023,33 @@ class FirmwareDownloaderGUI(QMainWindow):
         fallback for very old releases.
         """
         return release_supports_device_type(release, selected_type)
+
+    def _release_matches_model_filter(self, release, selected_model, repo=''):
+        """Check if a release matches the selected device model filter."""
+        package_device = self._get_package_device_for_repo(repo)
+        result = release_supports_device_model(release, selected_model, package_device, repo)
+        # #region agent log
+        assets = release.get('assets') or []
+        rom_assets = [
+            a.get('name', '') for a in assets
+            if 'rom' in (a.get('name') or '').lower()
+        ]
+        _debug_session_log(
+            "firmware_downloader.py:_release_matches_model_filter",
+            "Model filter evaluation",
+            {
+                "tag": release.get('tag_name', ''),
+                "selected_model": selected_model,
+                "repo": repo,
+                "package_device": package_device,
+                "rom_assets": rom_assets,
+                "matches": result,
+            },
+            hypothesis_id="A,B",
+            run_id="post-fix",
+        )
+        # #endregion
+        return result
 
     def _should_exclude_release(self, tag_name):
         """Check if a release should be excluded from listings (e.g., contains 'base')"""
@@ -13608,8 +14279,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.package_list.addItem("Please select a software type")
             return
 
+        fetch_repo = resolve_firmware_repo(selected_repo)
+
         # Get current filters
         selected_type = self.device_type_combo.currentData()
+        selected_model = self.get_selected_device_model()
         show_prereleases = self.show_prerelease_checkbox.isChecked()
         
         # Clear the list when filter changes to ensure fresh display
@@ -13624,38 +14298,62 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Check online status (non-blocking, cached check)
         is_online = self.is_online()
         
-        # Only show cached releases if we have tokens AND we're actually online
-        # This prevents showing cached releases when offline, which could mislead users
-        cached_releases = self.github_api.get_cached_releases(selected_repo)
+        # Prefer fresh cache; fall back to stale cache when online so startup isn't blocked
+        cached_releases = self.github_api.get_cached_releases(fetch_repo)
+        using_stale_cache = False
+        if not cached_releases and has_tokens and is_online:
+            cached_releases = self.github_api.get_cached_releases(fetch_repo, allow_stale=True)
+            using_stale_cache = cached_releases is not None
+
         if cached_releases and has_tokens and is_online:
             # Online mode: show cached releases instantly for fast startup
-            silent_print(f"Using {len(cached_releases)} cached releases (INSTANT, ONLINE MODE)")
+            cache_mode = "STALE FALLBACK" if using_stale_cache else "INSTANT"
+            silent_print(f"Using {len(cached_releases)} cached releases ({cache_mode}, ONLINE MODE)")
             # Show cached releases immediately (will auto-enable pre-releases if needed)
-            self._display_cached_releases(cached_releases, selected_repo, selected_type, show_prereleases, is_online=True)
+            self._display_cached_releases(
+                cached_releases, selected_repo, selected_type, show_prereleases,
+                is_online=True, selected_model=selected_model
+            )
             # Start background refresh in background (non-blocking)
-            QTimer.singleShot(100, lambda: self._start_background_refresh(selected_repo, selected_type, show_prereleases))
+            QTimer.singleShot(
+                100,
+                lambda: self._start_background_refresh(
+                    fetch_repo, selected_type, show_prereleases, selected_model, manifest_repo=selected_repo
+                )
+            )
             return
 
         # Offline mode OR no cache: show offline message
         if not has_tokens or not is_online:
-            # No tokens or offline = offline mode - show offline message
+            # No tokens or offline = offline mode - try stale cache before giving up
+            if not cached_releases:
+                cached_releases = self.github_api.get_cached_releases(fetch_repo, allow_stale=True)
+            if cached_releases:
+                silent_print(f"Using {len(cached_releases)} stale cached releases (OFFLINE MODE)")
+                self._display_cached_releases(
+                    cached_releases, selected_repo, selected_type, show_prereleases,
+                    is_online=False, selected_model=selected_model
+                )
+                self.download_btn.setEnabled(False)
+                return
             silent_print("Offline mode detected - showing Install from rom.zip prompt")
             self._show_offline_message(has_tokens)
-            # Disable download button when offline
             self.download_btn.setEnabled(False)
-            # Don't retry - we're intentionally offline
             return
         
-        # Has tokens and online but no cache - show offline message while fetching
-        self._show_offline_message(has_tokens)
-        # Disable download button until releases are loaded
+        # Has tokens and online but no cache - show loading message while fetching
+        self._show_loading_firmware_message()
         self.download_btn.setEnabled(False)
         
-        # Start background fetch (non-blocking) - don't show loading item, keep offline message
-        # The left panel will show automatically when releases are loaded
-        self._start_background_refresh(selected_repo, selected_type, show_prereleases)
+        # Start background fetch (non-blocking) - left panel appears when releases load
+        self._start_background_refresh(
+            fetch_repo, selected_type, show_prereleases, selected_model, manifest_repo=selected_repo
+        )
         
-    def _display_cached_releases(self, cached_releases, selected_repo, selected_type, show_prereleases, is_online=True):
+    def _display_cached_releases(
+        self, cached_releases, selected_repo, selected_type, show_prereleases,
+        is_online=True, selected_model=None
+    ):
         """Display cached releases instantly (online mode only)"""
         try:
             # Clear the list first to ensure we start fresh with the new filter
@@ -13697,6 +14395,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                     # Check type filter based on ROM variants / tag
                     if not release_supports_device_type(release, selected_type):
                         continue
+
+                    # Check device model filter
+                    if selected_model and not self._release_matches_model_filter(
+                        release, selected_model, selected_repo
+                    ):
+                        continue
                     
                     # Check pre-release filter
                     if not show_prereleases:
@@ -13729,13 +14433,32 @@ class FirmwareDownloaderGUI(QMainWindow):
             if self.releases_loaded_count == 0:
                 # We have cached releases available, but filters excluded them all
                 if cached_releases and len(cached_releases) > 0:
+                    # #region agent log
+                    _debug_session_log(
+                        "firmware_downloader.py:_display_cached_releases",
+                        "All cached releases filtered out",
+                        {
+                            "selected_model": selected_model,
+                            "selected_repo": selected_repo,
+                            "selected_type": selected_type,
+                            "show_prereleases": show_prereleases,
+                            "cached_release_count": len(cached_releases),
+                            "cached_tags": [r.get("tag_name", "") for r in cached_releases[:10]],
+                            "package_device": self._get_package_device_for_repo(selected_repo),
+                        },
+                        hypothesis_id="A,B,C,D",
+                        run_id="post-fix",
+                    )
+                    # #endregion
                     if self._revert_to_compatible_firmware_if_needed():
                         return
                     self._show_no_filter_results_message()
                 else:
-                    # No releases loaded at all - connection/server issue
                     has_tokens = hasattr(self.github_api, 'tokens') and len(self.github_api.tokens) > 0
-                    self._show_offline_message(has_tokens)
+                    if has_tokens and is_online:
+                        self._show_repository_unavailable_message(selected_repo)
+                    else:
+                        self._show_offline_message(has_tokens)
                 self.download_btn.setEnabled(False)
                 return
 
@@ -13790,6 +14513,38 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error showing initial offline state: {e}")
     
+    def _show_loading_firmware_message(self):
+        """Show a loading message while fetching firmware listings from GitHub."""
+        try:
+            if hasattr(self, 'left_panel'):
+                self.left_panel.setVisible(False)
+
+            if hasattr(self, 'release_notes_browser'):
+                text_color = self._get_text_color_for_theme()
+                message_html = f"""
+                <html>
+                <head>
+                    <style>
+                        body, div, p, strong {{
+                            color: {text_color} !important;
+                        }}
+                    </style>
+                </head>
+                <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
+                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Loading firmware from the online directory...</p>
+                    <p style='color: {text_color} !important; margin-top: 10px;'>You can also use <strong style="color: {text_color} !important;">Browse Files</strong> to install a local ROM zip.</p>
+                </body>
+                </html>
+                """
+                self.release_notes_browser.setHtml(message_html)
+
+            if hasattr(self, 'image_notes_stack'):
+                self.image_notes_stack.setCurrentIndex(1)
+                if hasattr(self, 'output_group'):
+                    self.output_group.setTitle("Getting Ready:")
+        except Exception as e:
+            silent_print(f"Error showing loading firmware message: {e}")
+
     def _show_offline_message(self, has_tokens):
         """Show offline message when unable to load firmware listings (connection/server issue)"""
         try:
@@ -13832,6 +14587,52 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self.output_group.setTitle("Getting Ready:")
         except Exception as e:
             silent_print(f"Error showing offline message: {e}")
+
+    def _show_repository_unavailable_message(self, repo):
+        """Show a clearer message when the firmware repo cannot be reached or has no ROMs."""
+        try:
+            if hasattr(self, 'left_panel'):
+                self.left_panel.setVisible(False)
+
+            if hasattr(self, 'release_notes_browser'):
+                text_color = self._get_text_color_for_theme()
+                resolved = resolve_firmware_repo(repo or '')
+                extra = ""
+                if resolved != repo:
+                    extra = (
+                        f"<p style='color: {text_color} !important; margin-top: 10px;'>"
+                        f"Trying fallback repository: <strong>{resolved}</strong></p>"
+                    )
+                if is_y2_model(self.get_selected_device_model()):
+                    extra += (
+                        f"<p style='color: {text_color} !important; margin-top: 10px;'>"
+                        "No Y2 firmware releases are available yet for this software selection. "
+                        "Y2 builds use <strong>rom_y2.zip</strong> assets on the stock ROM repo.</p>"
+                    )
+                message_html = f"""
+                <html>
+                <head>
+                    <style>
+                        body, div, p, strong {{
+                            color: {text_color} !important;
+                        }}
+                    </style>
+                </head>
+                <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
+                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Could not load firmware listings for <strong>{repo or 'selected software'}</strong>.</p>
+                    <p style='color: {text_color} !important; margin-top: 10px;'>Please check your internet connection, or use <strong>Browse Files</strong> to install a local <strong>rom.zip</strong> / <strong>rom_y2.zip</strong>.</p>
+                    {extra}
+                </body>
+                </html>
+                """
+                self.release_notes_browser.setHtml(message_html)
+
+            if hasattr(self, 'image_notes_stack'):
+                self.image_notes_stack.setCurrentIndex(1)
+                if hasattr(self, 'output_group'):
+                    self.output_group.setTitle("Getting Ready:")
+        except Exception as e:
+            silent_print(f"Error showing repository unavailable message: {e}")
     
     def _show_no_filter_results_message(self):
         """Show message when releases were loaded but filters found no matching results"""
@@ -13880,8 +14681,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error showing left panel: {e}")
         
-    def _start_background_refresh(self, selected_repo, selected_type, show_prereleases):
+    def _start_background_refresh(
+        self, selected_repo, selected_type, show_prereleases,
+        selected_model=None, manifest_repo=None
+    ):
         """Start background refresh of releases (non-blocking)"""
+        manifest_repo = manifest_repo or selected_repo
         # Don't reset counters if we already have cached releases displayed
         # Only initialize if not already set
         if not hasattr(self, 'releases_loaded_count'):
@@ -13891,11 +14696,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Create and start progressive release worker (only fetches fresh data)
         # Parent the worker to this window so it gets cleaned up properly
+        package_device = self._get_package_device_for_repo(manifest_repo)
         self.release_worker = ProgressiveReleaseWorker(
             self.github_api, 
             selected_repo, 
             selected_type, 
-            show_prereleases
+            show_prereleases,
+            selected_model=selected_model,
+            package_device=package_device,
         )
         self.release_worker.setParent(self)  # Parent to main window for proper cleanup
         self.release_worker.release_loaded.connect(self._on_fresh_release_loaded)
@@ -14037,9 +14845,36 @@ class FirmwareDownloaderGUI(QMainWindow):
             self._pending_releases = []
     
     def _on_background_refresh_failed(self, error_msg):
-        """Handle background refresh failure - silently continue with cached data"""
-        silent_print(f"Background refresh failed (using cached data): {error_msg}")
-        # Don't show error - just continue with cached releases
+        """Handle background refresh failure - fall back to stale cache if available."""
+        silent_print(f"Background refresh failed: {error_msg}")
+        try:
+            if hasattr(self, 'package_list') and self.package_list.count() > 0:
+                return
+
+            selected_repo = self.firmware_combo.currentData() if hasattr(self, 'firmware_combo') else None
+            if not selected_repo or not hasattr(self, 'github_api') or not self.github_api:
+                has_tokens = hasattr(self.github_api, 'tokens') and len(self.github_api.tokens) > 0
+                self._show_offline_message(has_tokens)
+                return
+
+            fetch_repo = resolve_firmware_repo(selected_repo)
+            stale_releases = self.github_api.get_cached_releases(fetch_repo, allow_stale=True)
+            if stale_releases:
+                selected_type = self.device_type_combo.currentData()
+                selected_model = self.get_selected_device_model()
+                show_prereleases = self.show_prerelease_checkbox.isChecked()
+                silent_print(f"Falling back to {len(stale_releases)} stale cached releases after refresh failure")
+                self._display_cached_releases(
+                    stale_releases, selected_repo, selected_type, show_prereleases,
+                    is_online=self.is_online(), selected_model=selected_model
+                )
+                return
+
+            has_tokens = hasattr(self.github_api, 'tokens') and len(self.github_api.tokens) > 0
+            self._show_offline_message(has_tokens)
+            self.download_btn.setEnabled(False)
+        except Exception as e:
+            silent_print(f"Error handling background refresh failure: {e}")
     
     def _on_all_releases_loaded(self, releases):
         """Handle releases loaded from a package - queue for batched UI update"""
@@ -14540,6 +15375,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             tag_name = release.get('tag_name', '')
             selected_repo = self.firmware_combo.currentData()
             selected_type = self.device_type_combo.currentData()
+            selected_model = self.get_selected_device_model()
+            package_device = self._get_package_device_for_repo(selected_repo)
             
             if not selected_repo:
                 silent_print("No repo selected, cannot add release")
@@ -14593,8 +15430,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 
                 for resolution in resolutions:
-                    # For the currently selected Type A/B, see if we have a matching asset at this resolution
-                    variant = select_rom_asset_for_resolution(rom_variants, selected_type, resolution)
+                    # For the currently selected model/type, see if we have a matching asset
+                    variant = select_rom_asset_for_model_and_resolution(
+                        rom_variants, selected_model, selected_type, resolution,
+                        package_device=package_device, repo=selected_repo, tag_name=tag_name
+                    )
                     if not variant:
                         # No ROM for this type/resolution combination – skip this row
                         continue
@@ -14713,43 +15553,46 @@ class FirmwareDownloaderGUI(QMainWindow):
             repo = package.get('repo', '')
             device_model = package.get('device', '')
 
-            # Check device model filter
-            model_match = not selected_model or device_model == selected_model
+            if not (name and repo):
+                continue
+            if not package_supports_device_model(selected_model, device_model):
+                continue
 
-            if name and repo and model_match:
-                # Get releases for this software with retry
-                releases = self.github_api.retry_with_delay(self.github_api.get_all_releases, repo)
-                if releases and len(releases) > 0:
-                    for release in releases:
-                        # Filter releases based on tag name and selected type
-                        tag_name = release.get('tag_name', '')
+            releases = self.github_api.retry_with_delay(self.github_api.get_all_releases, repo)
+            if releases and len(releases) > 0:
+                for release in releases:
+                    # Filter releases based on tag name and selected type
+                    tag_name = release.get('tag_name', '')
+                    
+                    # Skip releases that should be excluded (e.g., contains 'base')
+                    if self._should_exclude_release(tag_name):
+                        continue
+
+                    if not self._release_matches_model_filter(release, selected_model, repo):
+                        continue
                         
-                        # Skip releases that should be excluded (e.g., contains 'base')
-                        if self._should_exclude_release(tag_name):
-                            continue
-                            
-                        if self._release_matches_type_filter(release, selected_type):
-                            # For ARM64 users, only show releases with update.zip
-                            if platform.system() == "Windows":
-                                driver_info = self.check_drivers_and_architecture()
-                                if driver_info.get('is_arm64', False):
-                                    # Check if release has update.zip
-                                    assets = release.get('assets', [])
-                                    has_update_zip = any(
-                                        asset.get('name', '').lower() == 'update.zip'
-                                        for asset in assets
-                                    )
-                                    if not has_update_zip:
-                                        # Skip releases without update.zip for ARM64 users
-                                        continue
-                            
-                            # Add software name and repo name to the release info for identification
-                            release_with_software = release.copy()
-                            release_with_software['software_name'] = name
-                            release_with_software['repo_name'] = repo
-                            all_releases.append(release_with_software)
-                else:
-                    failed_repos.append(repo)
+                    if self._release_matches_type_filter(release, selected_type):
+                        # For ARM64 users, only show releases with update.zip
+                        if platform.system() == "Windows":
+                            driver_info = self.check_drivers_and_architecture()
+                            if driver_info.get('is_arm64', False):
+                                # Check if release has update.zip
+                                assets = release.get('assets', [])
+                                has_update_zip = any(
+                                    asset.get('name', '').lower() == 'update.zip'
+                                    for asset in assets
+                                )
+                                if not has_update_zip:
+                                    # Skip releases without update.zip for ARM64 users
+                                    continue
+                        
+                        # Add software name and repo name to the release info for identification
+                        release_with_software = release.copy()
+                        release_with_software['software_name'] = name
+                        release_with_software['repo_name'] = repo
+                        all_releases.append(release_with_software)
+            else:
+                failed_repos.append(repo)
 
         # Sort by software name (A-Z), then by version (newest first) within each software.
         all_releases.sort(key=self._release_sort_key, reverse=True)
@@ -15372,11 +16215,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             reply = QMessageBox.question(
                 self,
                 "Get Ready",
-                "Before continuing, please:\n\n"
-                "1. Power off your Y1\n"
-                "   (You can use a pin or paperclip to press the reset button if needed)\n\n"
-                "2. Disconnect the USB cable from your Y1 (if connected)\n\n"
-                "Then click OK and follow the next instructions.",
+                self.install_disconnect_guidance(),
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Cancel
             )
@@ -15405,7 +16244,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                     debug_window = DebugOutputWindow(self)
                     debug_window.show()
                 
-                self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+                self.mtk_worker = MTKWorker(
+                    debug_mode=getattr(self, 'debug_mode', False),
+                    debug_window=debug_window,
+                    device_model=self.get_selected_device_model(),
+                )
                 # Use update_status instead of direct status_label.setText for proper status handling
                 self.mtk_worker.status_updated.connect(self.update_status)
                 self.mtk_worker.show_installing_image.connect(self.load_installing_image)
@@ -15617,7 +16460,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._revert_timer.start(30000)
 
         # Show user-friendly message asking to unplug and try again
-        self.status_label.setText("Please unplug your Y1 and try again")
+        self.status_label.setText(self.device_copy("Please unplug your Y1 and try again"))
 
         # Re-enable buttons for retry
         self.download_btn.setEnabled(True)  # Re-enable download button
@@ -15641,7 +16484,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 debug_window = DebugOutputWindow(self)
                 debug_window.show()
             
-            self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+            self.mtk_worker = MTKWorker(
+                debug_mode=getattr(self, 'debug_mode', False),
+                debug_window=debug_window,
+                device_model=self.get_selected_device_model(),
+            )
             self.mtk_worker.status_updated.connect(self.update_status)
             self.mtk_worker.show_installing_image.connect(self.load_installing_image)
             self.mtk_worker.show_reconnect_image.connect(self.load_handshake_error_image)
@@ -17180,14 +18027,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             reply = QMessageBox.question(
                 self,
                 "Fast Update - USB Mode",
-                "📱 Please prepare your Y1:\n\n"
-                "1. Power on your Y1\n"
-                "2. Connect it to your computer via USB\n"
-                "3. Make sure your Y1 is in USB Storage mode\n"
-                "   (Your computer should see it as a USB drive)\n\n"
-                "Click OK when your Y1 is connected and ready.",
+                self.device_copy(
+                    "📱 Please prepare your Y1:\n\n"
+                    "1. Power on your Y1\n"
+                    "2. Connect it to your computer via USB\n"
+                    "3. Make sure your Y1 is in USB Storage mode\n"
+                    "   (Your computer should see it as a USB drive)\n\n"
+                    "Click OK when your Y1 is connected and ready."
+                ),
                 QMessageBox.Ok | QMessageBox.Cancel,
-                QMessageBox.Ok
+                QMessageBox.Ok,
             )
             
             if reply == QMessageBox.Cancel:
@@ -17210,7 +18059,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             try:
                 destination = Path(folder_path) / "update.zip"
                 
-                self.status_label.setText("Copying update.zip to Y1...")
+                self.status_label.setText(self.device_copy("Copying update.zip to Y1..."))
                 self.progress_bar.setVisible(True)
                 self.progress_bar.setValue(50)
                 
@@ -17226,20 +18075,24 @@ class FirmwareDownloaderGUI(QMainWindow):
                     QMessageBox.information(
                         self,
                         "Update Complete",
-                        "✅ update.zip has been copied to your Y1.\n\n"
-                        "✅ Update script executed successfully via ADB.\n\n"
-                        "Your Y1 will restart and apply the update automatically."
+                        self.device_copy(
+                            "✅ update.zip has been copied to your Y1.\n\n"
+                            "✅ Update script executed successfully via ADB.\n\n"
+                            "Your Y1 will restart and apply the update automatically."
+                        ),
                     )
                 else:
                     QMessageBox.information(
                         self,
                         "Update Copied Successfully",
-                        "✅ update.zip has been copied to your Y1.\n\n"
-                        "Next steps:\n"
-                        "1. Safely disconnect your Y1 from your computer\n"
-                        "2. On your Y1, go to Main Menu > System\n"
-                        "3. Select Firmware Update\n"
-                        "4. The update will install automatically"
+                        self.device_copy(
+                            "✅ update.zip has been copied to your Y1.\n\n"
+                            "Next steps:\n"
+                            "1. Safely disconnect your Y1 from your computer\n"
+                            "2. On your Y1, go to Main Menu > System\n"
+                            "3. Select Firmware Update\n"
+                            "4. The update will install automatically"
+                        ),
                     )
                 
                 self.progress_bar.setVisible(False)
@@ -17308,7 +18161,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.status_label.setText("Zip file missing required firmware files.")
                 return
 
-            prepare_sp_flash_tool_files()
+            resolved_model = resolve_device_model_for_install(
+                self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
+            )
+            prepare_sp_flash_tool_files(resolved_model)
             
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -17548,7 +18404,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             return False, None, None
         
         # Wait for USB or ADB detection (poll up to 30 seconds)
-        self.status_label.setText("Waiting for Y1 USB drive...")
+        self.status_label.setText(self.device_copy("Waiting for Y1 USB drive..."))
         QApplication.processEvents()
         
         max_attempts = 60  # 30 seconds (0.5 second intervals)
@@ -17589,12 +18445,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         QMessageBox.warning(
             self,
             "Connection Not Detected",
-            "Y1 USB drive was not detected after waiting.\n\n"
-            "Please ensure:\n"
-            "• Your Y1 is powered on\n"
-            "• USB Storage Mode is enabled\n"
-            "• The USB cable is properly connected\n\n"
-            "You can try again once your Y1 is connected."
+            self.device_copy(
+                "Y1 USB drive was not detected after waiting.\n\n"
+                "Please ensure:\n"
+                "• Your Y1 is powered on\n"
+                "• USB Storage Mode is enabled\n"
+                "• The USB cable is properly connected\n\n"
+                "You can try again once your Y1 is connected."
+            ),
         )
         self.status_label.setText("Connection not detected")
         return False, None, None
@@ -18279,8 +19137,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                     QMessageBox.warning(
                         self,
                         "Wireless Device Not Detected",
-                        "Could not confirm an Innioasis Y1 at this address. "
-                        "Make sure your Y1 is powered on with Wireless ADB enabled, then try again."
+                        self.device_copy(
+                            "Could not confirm an Innioasis Y1 at this address. "
+                            "Make sure your Y1 is powered on with Wireless ADB enabled, then try again."
+                        ),
                     )
                     return
 
@@ -18297,9 +19157,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                         QMessageBox.warning(
                             self,
                             "Dual Connection Detected",
-                            "Your Y1 is connected via both USB and Wi-Fi ADB.\n\n"
-                            "The app will automatically use USB for ADB tasks when both connections are available (USB is more reliable).\n\n"
-                            "You don't need the USB cable connected - you can disconnect it and use Wi-Fi only. All ADB features will work over Wi-Fi."
+                            self.device_copy(
+                                "Your Y1 is connected via both USB and Wi-Fi ADB.\n\n"
+                                "The app will automatically use USB for ADB tasks when both connections are available (USB is more reliable).\n\n"
+                                "You don't need the USB cable connected - you can disconnect it and use Wi-Fi only. All ADB features will work over Wi-Fi."
+                            ),
                         )
                 
                 # Persist the confirmed Y1 wireless host information
@@ -18452,9 +19314,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                                     QMessageBox.warning(
                                         self,
                                         "Dual Connection Detected",
-                                        "Your Y1 is connected via both USB and Wi-Fi ADB.\n\n"
-                                        "The app will automatically use USB for ADB tasks when both connections are available (USB is more reliable).\n\n"
-                                        "You don't need the USB cable connected - you can disconnect it and use Wi-Fi only. All ADB features will work over Wi-Fi."
+                                        self.device_copy(
+                                            "Your Y1 is connected via both USB and Wi-Fi ADB.\n\n"
+                                            "The app will automatically use USB for ADB tasks when both connections are available (USB is more reliable).\n\n"
+                                            "You don't need the USB cable connected - you can disconnect it and use Wi-Fi only. All ADB features will work over Wi-Fi."
+                                        ),
                                     )
                             
                             # Immediately trigger ADB status update for better performance
@@ -18579,8 +19443,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                         QMessageBox.information(
                             self,
                             "Wireless ADB (Beta) Connected",
-                            "Your Y1 is now connected wirelessly via ADB (beta).\n\n"
-                            "You don't need the USB cable connected - all ADB features will work over Wi-Fi. You can disconnect the USB cable if you like."
+                            self.device_copy(
+                                "Your Y1 is now connected wirelessly via ADB (beta).\n\n"
+                                "You don't need the USB cable connected - all ADB features will work over Wi-Fi. You can disconnect the USB cable if you like."
+                            ),
                         )
                 
                 # Trigger ADB check to update status (with delay to prevent stale indicator state on Windows)
@@ -18632,8 +19498,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.warning(
                     self,
                     "Device Not Connected",
-                    "Please connect your Y1 device via USB and enable USB debugging.\n\n"
-                    "The device must be connected via USB to install ADB Wi-Fi Reborn."
+                    self.device_copy(
+                        "Please connect your Y1 device via USB and enable USB debugging.\n\n"
+                        "The device must be connected via USB to install ADB Wi-Fi Reborn."
+                    ),
                 )
                 return
             
@@ -18641,15 +19509,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             reply = QMessageBox.question(
                 self,
                 "Install ADB Wi-Fi Reborn",
-                "This will download and install ADB Wi-Fi Reborn to your Y1 device.\n\n"
-                "After installation, you'll need to:\n"
-                "1. Open ADB Wi-Fi from the Rockbox Apps menu\n"
-                "2. Accept the Terms of Service if prompted\n"
-                "3. Enable 'Run at Boot' and grant root access in Settings\n"
-                "4. Connect it to Wi-Fi inside the app, then power-cycle your Y1 once\n\n"
-                "Continue with installation?",
+                self.device_copy(
+                    "This will download and install ADB Wi-Fi Reborn to your Y1 device.\n\n"
+                    "After installation, you'll need to:\n"
+                    "1. Open ADB Wi-Fi from the Rockbox Apps menu\n"
+                    "2. Accept the Terms of Service if prompted\n"
+                    "3. Enable 'Run at Boot' and grant root access in Settings\n"
+                    "4. Connect it to Wi-Fi inside the app, then power-cycle your Y1 once\n\n"
+                    "Continue with installation?"
+                ),
                 QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.Yes
+                QMessageBox.Yes,
             )
             
             if reply != QMessageBox.Yes:
@@ -18777,7 +19647,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     QMessageBox.information(
                         self,
                         "Installation Complete",
-                        "ADB Wi-Fi Reborn is now on your Y1. We’ll guide you through the first-run steps next."
+                        self.device_copy(
+                            "ADB Wi-Fi Reborn is now on your Y1. We’ll guide you through the first-run steps next."
+                        ),
                     )
                     
                     # Launch the ADB Wi-Fi app to surface first-run prompts
@@ -18846,9 +19718,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                     QMessageBox.information(
                         self,
                         "Dual Connection Detected",
-                        "Your Y1 is connected via both USB and Wi-Fi ADB.\n\n"
-                        "The app will automatically use USB for ADB tasks when both connections are available (USB is more reliable).\n\n"
-                        "You don't need the USB cable connected - you can disconnect it and use Wi-Fi only. All ADB features will work over Wi-Fi."
+                        self.device_copy(
+                            "Your Y1 is connected via both USB and Wi-Fi ADB.\n\n"
+                            "The app will automatically use USB for ADB tasks when both connections are available (USB is more reliable).\n\n"
+                            "You don't need the USB cable connected - you can disconnect it and use Wi-Fi only. All ADB features will work over Wi-Fi."
+                        ),
                     )
         except:
             pass
@@ -20733,20 +21607,24 @@ class FirmwareDownloaderGUI(QMainWindow):
                     QMessageBox.information(
                         self,
                         "Update Complete",
-                        "✅ update*.zip has been pushed to your Y1.\n\n"
-                        "✅ Update script executed successfully via ADB.\n\n"
-                        "Your Y1 will restart and apply the update automatically."
+                        self.device_copy(
+                            "✅ update*.zip has been pushed to your Y1.\n\n"
+                            "✅ Update script executed successfully via ADB.\n\n"
+                            "Your Y1 will restart and apply the update automatically."
+                        ),
                     )
                     self.status_label.setText("Fast Update completed successfully")
                 else:
                     QMessageBox.information(
                         self,
                         "Update Pushed",
-                        "✅ update*.zip has been pushed to your Y1.\n\n"
-                        "Next steps:\n"
-                        "1. On your Y1, go to Main Menu > System\n"
-                        "2. Select Firmware Update\n"
-                        "3. The update will install automatically"
+                        self.device_copy(
+                            "✅ update*.zip has been pushed to your Y1.\n\n"
+                            "Next steps:\n"
+                            "1. On your Y1, go to Main Menu > System\n"
+                            "2. Select Firmware Update\n"
+                            "3. The update will install automatically"
+                        ),
                     )
                     self.status_label.setText("update*.zip pushed - run Firmware Update on device")
             else:
@@ -20798,20 +21676,24 @@ class FirmwareDownloaderGUI(QMainWindow):
                     QMessageBox.information(
                         self,
                         "Update Complete",
-                        "✅ update*.zip has been copied to your Y1.\n\n"
-                        "✅ Update script executed successfully via ADB.\n\n"
-                        "Your Y1 will restart and apply the update automatically."
+                        self.device_copy(
+                            "✅ update*.zip has been copied to your Y1.\n\n"
+                            "✅ Update script executed successfully via ADB.\n\n"
+                            "Your Y1 will restart and apply the update automatically."
+                        ),
                     )
                 else:
                     QMessageBox.information(
                         self,
                         "Update Copied",
-                        "✅ update*.zip has been copied to your Y1.\n\n"
-                        "Next steps:\n"
-                        "1. Safely disconnect your Y1 from your computer\n"
-                        "2. On your Y1, go to Main Menu > System\n"
-                        "3. Select Firmware Update\n"
-                        "4. The update will install automatically"
+                        self.device_copy(
+                            "✅ update*.zip has been copied to your Y1.\n\n"
+                            "Next steps:\n"
+                            "1. Safely disconnect your Y1 from your computer\n"
+                            "2. On your Y1, go to Main Menu > System\n"
+                            "3. Select Firmware Update\n"
+                            "4. The update will install automatically"
+                        ),
                     )
                 return
             
@@ -20859,19 +21741,23 @@ class FirmwareDownloaderGUI(QMainWindow):
                     QMessageBox.information(
                         self,
                         "Update Complete",
-                        "✅ update*.zip has been pushed to your Y1.\n\n"
-                        "✅ Update script executed successfully via ADB.\n\n"
-                        "Your Y1 will restart and apply the update automatically."
+                        self.device_copy(
+                            "✅ update*.zip has been pushed to your Y1.\n\n"
+                            "✅ Update script executed successfully via ADB.\n\n"
+                            "Your Y1 will restart and apply the update automatically."
+                        ),
                     )
                 else:
                     QMessageBox.information(
                         self,
                         "Update Pushed",
-                        "✅ update*.zip has been pushed to your Y1.\n\n"
-                        "Next steps:\n"
-                        "1. On your Y1, go to Main Menu > System\n"
-                        "2. Select Firmware Update\n"
-                        "3. The update will install automatically"
+                        self.device_copy(
+                            "✅ update*.zip has been pushed to your Y1.\n\n"
+                            "Next steps:\n"
+                            "1. On your Y1, go to Main Menu > System\n"
+                            "2. Select Firmware Update\n"
+                            "3. The update will install automatically"
+                        ),
                     )
             else:
                 QMessageBox.warning(
@@ -21622,15 +22508,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             device_id = snapshot.get("active_device_id") or snapshot.get("device_id")
         
         if not device_id:
-            QMessageBox.warning(self, "Device Not Connected", "No rooted Y1 was detected over ADB.")
+            QMessageBox.warning(self, self.device_copy("Device Not Connected"), self.device_copy("No rooted Y1 was detected over ADB."))
             return
         
         if device_id != "0123456789ABCDEF":
             QMessageBox.warning(
                 self,
                 "Unsupported Device",
-                "This Wi-Fi setup tool is designed for the Innioasis Y1. "
-                "Connect a Y1 over USB with root ADB enabled to continue.",
+                self.device_copy(
+                    "This Wi-Fi setup tool is designed for the Innioasis Y1. "
+                    "Connect a Y1 over USB with root ADB enabled to continue."
+                ),
             )
             return
         
@@ -25776,6 +26664,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Filter software options based on device type and model"""
         # Update device type visibility based on selected model
         self.update_device_type_visibility()
+        self.refresh_device_aware_status_defaults()
         
         # Repopulate software combo with filtered options
         self.populate_firmware_combo()
@@ -26021,7 +26910,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.show_paperclip_message()
         
         # Start download worker
-        self.download_worker = DownloadWorker(release_info['download_url'], selected_repo, release_info['tag_name'])
+        self.download_worker = DownloadWorker(
+            release_info['download_url'], selected_repo, release_info['tag_name'],
+            device_model=self.get_selected_device_model(),
+        )
         self.download_worker.progress_updated.connect(self.progress_bar.setValue)
         self.download_worker.status_updated.connect(self.status_label.setText)
         self.download_worker.download_completed.connect(self.on_download_completed)
@@ -26107,7 +26999,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.warning(self, "Missing Files", error_msg)
                 return
 
-            prepare_sp_flash_tool_files()
+            resolved_model = resolve_device_model_for_install(
+                self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
+            )
+            prepare_sp_flash_tool_files(resolved_model)
             
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -26138,6 +27033,10 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         if success:
             self._mark_first_firmware_action_complete()
+            detected = self.detect_device_model_from_install_files()
+            if detected:
+                self.set_runtime_detected_device_model(detected)
+                self.refresh_device_aware_status_defaults()
             self.status_label.setText("Download and processing completed successfully")
             print("=== PROCESSING COMPLETED ===")
             print("Firmware files have been downloaded and extracted successfully.")
@@ -26158,7 +27057,10 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def handle_installation_method(self):
         """Handle installation based on the selected method in settings"""
-        prepare_sp_flash_tool_files()
+        resolved_model = resolve_device_model_for_install(self.get_selected_device_model())
+        if resolved_model:
+            self.set_runtime_detected_device_model(resolved_model)
+        prepare_sp_flash_tool_files(resolved_model)
 
         # Check storage space before starting installation (full firmware install requires 6GB)
         # Note: This is always a full install, not Fast Update, so storage check is required
@@ -26241,7 +27143,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Method 4: Guided process
                 silent_print("=== RUNNING GUIDED INSTALLATION (SP FLASH TOOL GUI METHOD) ===")
                 silent_print("The MTK flash command will now run in this application.")
-                silent_print("Please turn off your Y1 when prompted.")
+                silent_print(f"Please turn off your {self.get_device_label()} when prompted.")
                 self.run_mtk_command_guided()
             elif method == "mtkclient":
                 # Method 5: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
@@ -26260,7 +27162,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Method 1: Normal guided process (default behavior)
                 silent_print("=== RUNNING GUIDED INSTALLATION ===")
                 silent_print("The MTK flash command will now run in this application.")
-                silent_print("Please turn off your Y1 when prompted.")
+                silent_print(f"Please turn off your {self.get_device_label()} when prompted.")
                 self.run_mtk_command_guided()
             elif method == "mtkclient":
                 # Method 2: in Terminal method - same as pressing "Try Method 2" in troubleshooting
@@ -26895,10 +27797,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def show_unplug_prompt_and_retry(self):
         """Show the unplug Y1 prompt and retry normal installation"""
         # Show the same unplug prompt that's used at the start of normal installation
-        reply = QMessageBox.question(
-            self,
-            "Get Ready",
-            "Please make sure your Y1 is NOT plugged in and press OK, then follow the next instructions.",
+        reply = QMessageBox.question(self, self.device_copy("Get Ready"), self.device_copy("Please make sure your Y1 is NOT plugged in and press OK, then follow the next instructions."),
             QMessageBox.Ok | QMessageBox.Cancel,
             QMessageBox.Cancel
         )
@@ -26926,7 +27825,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             debug_window = DebugOutputWindow(self)
             debug_window.show()
         
-        self.mtk_worker = MTKWorker(debug_mode=getattr(self, 'debug_mode', False), debug_window=debug_window)
+        self.mtk_worker = MTKWorker(
+            debug_mode=getattr(self, 'debug_mode', False),
+            debug_window=debug_window,
+            device_model=self.get_selected_device_model(),
+        )
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
         self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
@@ -27201,8 +28104,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                     )
                     return
                 
-                # Construct the MTK command (same as used in regular installation)
-                mtk_command = f"cd '{current_dir}' && python3 mtk.py w logo,uboot,bootimg,recovery,android,usrdata logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img"
+                device_model = resolve_device_model_for_install(self.get_selected_device_model())
+                device_label = "Y2" if is_y2_model(device_model) else "Y1"
+                mtk_cmd_parts = build_mtk_write_command(device_model)
+                mtk_args = " ".join(shlex.quote(part) for part in mtk_cmd_parts[1:])
+                mtk_command = f"cd '{current_dir}' && python3 {mtk_args}"
                 
                 if platform.system() == "Linux":
                     # Linux: Open terminal with MTK command in separate window
@@ -27236,6 +28142,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 elif platform.system() == "Darwin":  # macOS
                     # macOS: Open Terminal.app with MTK command and activate venv
                     venv_path = Path.home() / "Library/Application Support/Innioasis Updater/venv"
+                    mtk_run_line = f"python3 {mtk_args}"
                     script_content = f"""#!/bin/bash
 # Set terminal title
 echo -ne "\\033]0;Innioasis Recovery\\007"
@@ -27257,10 +28164,10 @@ echo ""
 echo "Thank you to u/wa-a-melyn from r/innioasis for documenting this process in an accessible way."
 echo ""
 echo "IMPORTANT INSTRUCTIONS:"
-echo "1. Make sure your Y1 device is disconnected from the USB port"
+echo "1. Make sure your {device_label} device is disconnected from the USB port"
 echo "2. Put your device into Download Mode (Use paperclip to power off)"
 echo "3. Then after pressing Enter..."
-echo "4. Connect your Y1 to the computer by USB"
+echo "4. Connect your {device_label} to the computer by USB"
 echo "5. Wait for the process to complete - this may take several minutes"
 echo "6. Your device will restart automatically when finished"
 echo ""
@@ -27269,12 +28176,11 @@ echo "Press Enter to start the installation process..."
 read -n 1
 echo ""
 echo "Starting Innioasis Recovery Firmware Install..."
-echo "python3 mtk.py w logo,uboot,bootimg,recovery,android,usrdata logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img
-"
+echo "{mtk_run_line}"
 echo ""
 
 # Run MTK command with python3 (same as used in regular installation)
-python3 mtk.py w logo,uboot,bootimg,recovery,android,usrdata logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img
+{mtk_run_line}
 
 echo ""
 echo "=========================================="
@@ -28015,10 +28921,7 @@ read -n 1
                 self.mtk_worker = None
             
             # Show the try again dialog with specific instructions
-            reply = QMessageBox.question(
-                self,
-                "Connection Timeout",
-                "The device connection is taking too long. Please disconnect your Y1 and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?",
+            reply = QMessageBox.question(self, self.device_copy("Connection Timeout"), self.device_copy("The device connection is taking too long. Please disconnect your Y1 and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?"),
                 QMessageBox.Yes | QMessageBox.No,
                 QMessageBox.Yes
             )
