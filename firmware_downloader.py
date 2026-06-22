@@ -6824,11 +6824,16 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def _show_startup_notice(self):
         """Show startup notice about Innioasis Y2 availability."""
-        msg = QMessageBox(self)
-        msg.setWindowTitle("Innioasis Y2 now available")
-        msg.setIcon(QMessageBox.Information)
-        msg.setTextFormat(Qt.RichText)
-        msg.setText(
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Innioasis Y2 now available")
+        dialog.setMinimumWidth(460)
+        dialog.setModal(True)
+
+        layout = QVBoxLayout(dialog)
+        layout.setContentsMargins(16, 16, 16, 16)
+        layout.setSpacing(12)
+
+        body = QLabel(
             "<h3 style='margin-top: 0; margin-bottom: 12px;'>Innioasis Y2 is now available</h3>"
             "<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
             "The Innioasis Y2 is now available to purchase. "
@@ -6839,14 +6844,34 @@ class FirmwareDownloaderGUI(QMainWindow):
             "<p style='margin-top: 0; margin-bottom: 0; line-height: 1.45;'>"
             "<i>MicroSD not included ;)</i></p>"
         )
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.setMinimumWidth(440)
-        for label in msg.findChildren(QLabel):
-            label.setOpenExternalLinks(True)
-            if label.text():
-                label.setWordWrap(True)
-                label.setMinimumWidth(400)
-        msg.exec()
+        body.setTextFormat(Qt.RichText)
+        body.setWordWrap(True)
+        body.setOpenExternalLinks(True)
+        body.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        layout.addWidget(body)
+
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok)
+        buttons.accepted.connect(dialog.accept)
+        layout.addWidget(buttons)
+
+        # #region agent log
+        dialog.show()
+        QApplication.processEvents()
+        _debug_session_log(
+            "firmware_downloader.py:_show_startup_notice",
+            "startup_notice_label_metrics",
+            {
+                "dialog_width": dialog.width(),
+                "body_width": body.width(),
+                "body_height": body.height(),
+                "body_word_wrap": body.wordWrap(),
+                "body_text_format": str(body.textFormat()),
+            },
+            hypothesis_id="G",
+            run_id="post-fix-v2",
+        )
+        # #endregion
+        dialog.exec()
 
     def update_creator_label(self):
         """Update the creator label text and styling based on theme."""
