@@ -8,7 +8,7 @@
         <authentication />
         <certification />
         <rom-list>
-            <rom index="0" enable="true">preloader_g368_nyx.bin</rom>
+            <rom index="0" enable="true">preloader_eastaeon82_wet_kk</rom>
             <rom index="1" enable="true">MBR</rom>
             <rom index="2" enable="true">EBR1</rom>
             <rom index="8" enable="true">lk.bin</rom>
