@@ -54,6 +54,9 @@ if platform.system() == "Darwin":
 SILENT_MODE = True
 
 APP_VERSION = "1.9.9.8"
+REMOTE_FIRMWARE_DOWNLOADER_URL = (
+    "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
+)
 DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
@@ -76,6 +79,13 @@ def _extract_signal_value(value):
     except Exception:
         pass
     return -200
+
+def parse_app_version_from_source(source_text):
+    """Extract APP_VERSION from firmware_downloader.py source text."""
+    if not source_text:
+        return None
+    match = re.search(r'^APP_VERSION\s*=\s*["\']([^"\']+)["\']', source_text, re.MULTILINE)
+    return match.group(1).strip() if match else None
 
 class UpdateCheckEvent(QEvent):
     """Custom event for update check results from worker thread"""
@@ -541,6 +551,30 @@ def _debug_session_log(location, message, data=None, hypothesis_id=None, run_id=
             "timestamp": int(time.time() * 1000),
         }
         log_path = _FIRMWARE_APP_DIR / ".cursor" / "debug-6f154c.log"
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(log_path, "a", encoding="utf-8") as log_file:
+            log_file.write(json.dumps(payload) + "\n")
+    except Exception:
+        pass
+    # #endregion
+
+
+def _debug_e788a7_log(location, message, data=None, hypothesis_id=None, run_id="pre-fix"):
+    """Append one NDJSON debug line for debug session e788a7."""
+    # #region agent log
+    try:
+        import json
+        import time
+        payload = {
+            "sessionId": "e788a7",
+            "runId": run_id,
+            "hypothesisId": hypothesis_id or "",
+            "location": location,
+            "message": message,
+            "data": data or {},
+            "timestamp": int(time.time() * 1000),
+        }
+        log_path = _FIRMWARE_APP_DIR / ".cursor" / "debug-e788a7.log"
         log_path.parent.mkdir(parents=True, exist_ok=True)
         with open(log_path, "a", encoding="utf-8") as log_file:
             log_file.write(json.dumps(payload) + "\n")
@@ -11817,6 +11851,23 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 silent_print(f"_refresh_update_notice_label: Adding message for banner/label")
 
+            # #region agent log
+            _debug_e788a7_log(
+                "firmware_downloader.py:_refresh_update_notice_label",
+                "refresh_update_notice",
+                {
+                    "has_update": has_update,
+                    "suppress": suppress,
+                    "latest_app_version": getattr(self, '_latest_app_version', None),
+                    "app_version": getattr(self, 'app_version', None) or APP_VERSION,
+                    "message_count": len(messages),
+                    "banner_visible": bool(banner and banner.isVisible()) if banner else False,
+                    "banner_has_text": bool(banner and banner.text()) if banner else False,
+                },
+                hypothesis_id="D" if suppress else "E",
+            )
+            # #endregion
+
             for target in (label, banner):
                 if not target:
                     silent_print(f"_refresh_update_notice_label: Target is None (label={label is not None}, banner={banner is not None})")
@@ -14826,6 +14877,18 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Maintain numeric descending ordering during progressive updates.
             if releases_to_add:
                 self._sort_package_list_releases(group_by_software=False)
+                # #region agent log
+                _debug_e788a7_log(
+                    "firmware_downloader.py:_process_batched_releases",
+                    "fresh_releases_added_to_ui",
+                    {
+                        "count": len(releases_to_add),
+                        "tags": [r.get('tag_name', '') for r in releases_to_add[:5]],
+                        "selected_repo": self.firmware_combo.currentData() if hasattr(self, 'firmware_combo') else None,
+                    },
+                    hypothesis_id="F",
+                )
+                # #endregion
             
             # Show left panel when first release is loaded
             if self.releases_loaded_count > 0 and not self.left_panel.isVisible():
@@ -15203,6 +15266,21 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Handle completion of loading all releases"""
         try:
             silent_print(f"Progressive loading complete: {len(all_releases)} total, {self.releases_loaded_count} displayed")
+            # #region agent log
+            _debug_e788a7_log(
+                "firmware_downloader.py:on_releases_loading_complete",
+                "firmware_release_load_complete",
+                {
+                    "total_releases": len(all_releases or []),
+                    "displayed_count": getattr(self, 'releases_loaded_count', 0),
+                    "selected_repo": self.firmware_combo.currentData() if hasattr(self, 'firmware_combo') else None,
+                    "latest_tag": (all_releases[0].get('tag_name') if all_releases else None),
+                    "is_online": self.is_online() if hasattr(self, 'is_online') else None,
+                    "has_tokens": bool(getattr(getattr(self, 'github_api', None), 'tokens', None)),
+                },
+                hypothesis_id="F",
+            )
+            # #endregion
             
             # Defensive check - ensure UI elements exist
             if not hasattr(self, 'package_list') or self.package_list is None:
@@ -28335,12 +28413,32 @@ read -n 1
             # Ensure banner exists before checking
             if not hasattr(self, 'update_alert_banner') or not self.update_alert_banner:
                 silent_print("Update banner not yet created, retrying check...")
+                # #region agent log
+                _debug_e788a7_log(
+                    "firmware_downloader.py:_run_independent_update_check",
+                    "banner_missing_retry",
+                    {"has_banner_attr": hasattr(self, 'update_alert_banner')},
+                    hypothesis_id="E",
+                )
+                # #endregion
                 QTimer.singleShot(500, self._run_independent_update_check)
                 return
             
             # Reset attempt counter for independent check
             self._update_check_attempts = 0
             self._update_check_in_progress = False
+            # #region agent log
+            _debug_e788a7_log(
+                "firmware_downloader.py:_run_independent_update_check",
+                "starting_independent_update_check",
+                {
+                    "app_version": getattr(self, 'app_version', None) or APP_VERSION,
+                    "suppress_update_notifications": getattr(self, 'suppress_update_notifications', False),
+                    "max_attempts": getattr(self, '_max_update_check_attempts', None),
+                },
+                hypothesis_id="C",
+            )
+            # #endregion
             # Run the update check - this will call get_latest_github_version independently
             silent_print("Running independent update check for Innioasis Updater...")
             self.check_for_updates_and_show_button()
@@ -28364,8 +28462,24 @@ read -n 1
     def check_for_updates_and_show_button(self):
         """Check GitHub for newer version and show update button only if needed (runs in worker thread)"""
         if getattr(self, '_update_check_in_progress', False):
+            # #region agent log
+            _debug_e788a7_log(
+                "firmware_downloader.py:check_for_updates_and_show_button",
+                "skipped_in_progress",
+                {"attempts": getattr(self, '_update_check_attempts', None)},
+                hypothesis_id="C",
+            )
+            # #endregion
             return
         if self._update_check_attempts >= getattr(self, '_max_update_check_attempts', 3):
+            # #region agent log
+            _debug_e788a7_log(
+                "firmware_downloader.py:check_for_updates_and_show_button",
+                "skipped_max_attempts",
+                {"attempts": self._update_check_attempts, "max": getattr(self, '_max_update_check_attempts', 3)},
+                hypothesis_id="C",
+            )
+            # #endregion
             return
 
         self._update_check_attempts += 1
@@ -28384,19 +28498,57 @@ read -n 1
                     return
                 
                 silent_print("Update check: Starting GitHub API request...")
-                # Get latest release from GitHub (this is now in a worker thread)
-                # This call is completely independent of the settings dialog
-                latest_version = self.get_latest_github_version()
-                silent_print(f"Update check: Got latest version from GitHub: {latest_version}")
+                current_version = self.app_version or APP_VERSION
+                release_version = self.get_latest_github_version()
+                silent_print(f"Update check: GitHub releases version: {release_version}")
+
+                source_version = self.get_latest_source_app_version()
+                silent_print(f"Update check: Remote source APP_VERSION: {source_version}")
+
+                latest_version = None
+                version_source = None
+                for candidate, source in (
+                    (release_version, "github_releases"),
+                    (source_version, "remote_source"),
+                ):
+                    if not candidate:
+                        continue
+                    if latest_version is None or self.compare_versions(candidate, latest_version) > 0:
+                        latest_version = candidate
+                        version_source = source
                 
                 # Check again after potentially long-running operation
                 if getattr(self, '_gui_closing', False):
                     silent_print("Update check: GUI closing after API call, skipping")
                     return
                 
+                # #region agent log
+                _debug_e788a7_log(
+                    "firmware_downloader.py:check_updates_worker",
+                    "version_compare_result",
+                    {
+                        "release_version": release_version,
+                        "source_version": source_version,
+                        "latest_version": latest_version,
+                        "version_source": version_source,
+                        "current_version": current_version,
+                        "is_newer": bool(
+                            latest_version
+                            and self.compare_versions(latest_version, current_version) > 0
+                        ),
+                        "suppress_update_notifications": getattr(self, 'suppress_update_notifications', False),
+                        "attempt": getattr(self, '_update_check_attempts', None),
+                    },
+                    hypothesis_id="A",
+                    run_id="post-fix",
+                )
+                # #endregion
+
                 if latest_version:
-                    current_version = self.app_version or APP_VERSION
-                    silent_print(f"Update check: Comparing versions - latest: {latest_version}, current: {current_version}")
+                    silent_print(
+                        f"Update check: Comparing versions - latest: {latest_version} "
+                        f"({version_source}), current: {current_version}"
+                    )
                     is_newer = self.compare_versions(latest_version, current_version) > 0
 
                     if not is_newer:
@@ -28435,6 +28587,14 @@ read -n 1
                 else:
                     # Failed to get version - don't show button
                     silent_print("Failed to check for updates - no version returned")
+                    # #region agent log
+                    _debug_e788a7_log(
+                        "firmware_downloader.py:check_updates_worker",
+                        "no_latest_version_returned",
+                        {"attempt": getattr(self, '_update_check_attempts', None)},
+                        hypothesis_id="B",
+                    )
+                    # #endregion
                     if not getattr(self, '_gui_closing', False):
                         QTimer.singleShot(3000, lambda: self._safe_schedule_update_retry())
             except Exception as e:
@@ -28490,6 +28650,18 @@ read -n 1
         if isinstance(event, UpdateCheckEvent):
             try:
                 silent_print(f"customEvent received: latest={event.latest_version}, current={event.current_version}")
+                # #region agent log
+                _debug_e788a7_log(
+                    "firmware_downloader.py:customEvent",
+                    "update_check_event_received",
+                    {
+                        "latest_version": event.latest_version,
+                        "current_version": event.current_version,
+                        "gui_closing": getattr(self, '_gui_closing', False),
+                    },
+                    hypothesis_id="E",
+                )
+                # #endregion
                 if not getattr(self, '_gui_closing', False):
                     self._process_update_check_result(event.latest_version, event.current_version)
             except Exception as e:
@@ -28716,6 +28888,24 @@ read -n 1
             return None
         except Exception as e:
             silent_print(f"Error fetching latest version from GitHub: {e}")
+            return None
+
+    def get_latest_source_app_version(self):
+        """Fallback: read APP_VERSION from main-branch firmware_downloader.py on GitHub."""
+        try:
+            response = requests.get(REMOTE_FIRMWARE_DOWNLOADER_URL, timeout=6)
+            if response.status_code != 200:
+                silent_print(f"Remote source check returned HTTP {response.status_code}")
+                return None
+            version = parse_app_version_from_source(response.text)
+            if not version:
+                silent_print("Remote source check: APP_VERSION not found in firmware_downloader.py")
+            return version
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as e:
+            silent_print(f"Network error fetching remote source APP_VERSION (offline?): {e}")
+            return None
+        except Exception as e:
+            silent_print(f"Error fetching remote source APP_VERSION: {e}")
             return None
 
     def compare_versions(self, version1, version2):
