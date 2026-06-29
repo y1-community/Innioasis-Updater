@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.9.7"
+APP_VERSION = "1.9.9.8"
 DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
@@ -6744,7 +6744,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Initialize UI first for immediate responsiveness
         self.init_ui()
         QTimer.singleShot(0, self.update_update_badges)
-        QTimer.singleShot(0, self._show_jj_launcher_notice)
+        QTimer.singleShot(0, self._show_startup_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -6822,38 +6822,49 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
 
-    def _show_jj_launcher_notice(self):
-        """Show important notice about JJ Launcher at launch."""
-        msg = QMessageBox(self)
-        msg.setWindowTitle("JJ Launcher (MO-ON) available")
-        msg.setIcon(QMessageBox.Information)
-        msg.setTextFormat(Qt.RichText)
-        msg.setText(
-            "<h3 style='margin-top: 0; margin-bottom: 12px;'>JJ Launcher (MO-ON)</h3>"
-            "<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
-            "<b>JJ Launcher (MO-ON)</b> from "
-            "<a href='https://github.com/ismileblue/y1_launcher'>ismileblue</a> on GitHub "
-            "is now available for installation via Updater.</p>"
-            "<p style='margin-top: 0; margin-bottom: 8px;'><b>What it adds</b></p>"
-            "<ul style='margin-top: 0; margin-bottom: 16px; padding-left: 22px; line-height: 1.5;'>"
-            "<li style='margin-bottom: 6px;'>Wi-Fi uploads for wireless music transfer</li>"
-            "<li style='margin-bottom: 6px;'>Automatic album art download</li>"
-            "<li style='margin-bottom: 6px;'>And more</li>"
+    def _show_startup_notice(self):
+        """Show startup notice about Solar + Rockbox-Y1 availability for Y1."""
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Solar + Rockbox-Y1 now available")
+        dialog.setMinimumWidth(480)
+        dialog.setModal(True)
+
+        layout = QVBoxLayout(dialog)
+        layout.setContentsMargins(16, 16, 16, 16)
+        layout.setSpacing(12)
+
+        solar_url = "https://www.github.com/thesolarproject/solar"
+        solar_link = f"<a href='{solar_url}'>Solar</a>"
+
+        body = QLabel(
+            f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} + Rockbox-Y1 is now available for Y1</h3>"
+            f"<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
+            f"{solar_link} + Rockbox-Y1 is now available on Innioasis Updater.</p>"
+            "<p style='margin-top: 0; margin-bottom: 8px; line-height: 1.45;'>"
+            "This new custom firmware for Y1 features:</p>"
+            "<ul style='margin-top: 0; margin-bottom: 0; padding-left: 20px; line-height: 1.45;'>"
+            "<li>Online music streaming from Deezer and Soulseek</li>"
+            "<li>Online podcasts playback</li>"
+            "<li>Video playback</li>"
+            "<li>Rockbox-Y1 built in with fast switching</li>"
+            "<li>Updates over Wi-Fi without a computer</li>"
+            "<li>Quick Access Menu for easier volume / brightness control</li>"
+            "<li>Enhanced Y1/Y2 Theme Support</li>"
             "</ul>"
-            "<p style='margin-top: 0; margin-bottom: 8px;'><b>How to install</b></p>"
-            "<ol style='margin-top: 0; margin-bottom: 0; padding-left: 22px; line-height: 1.5;'>"
-            "<li style='margin-bottom: 8px;'>Select <b>JJ Launcher</b> from the <b>Software</b> dropdown</li>"
-            "<li style='margin-bottom: 0;'>Click <b>Install / Restore</b></li>"
-            "</ol>"
         )
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.setMinimumWidth(440)
-        for label in msg.findChildren(QLabel):
-            label.setOpenExternalLinks(True)
-            if label.text():
-                label.setWordWrap(True)
-                label.setMinimumWidth(400)
-        msg.exec()
+        body.setTextFormat(Qt.RichText)
+        body.setWordWrap(True)
+        body.setOpenExternalLinks(True)
+        body.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        layout.addWidget(body)
+
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok)
+        find_out_btn = buttons.addButton("Find out more", QDialogButtonBox.ActionRole)
+        find_out_btn.clicked.connect(lambda: webbrowser.open(solar_url))
+        buttons.accepted.connect(dialog.accept)
+        layout.addWidget(buttons)
+
+        dialog.exec()
 
     def update_creator_label(self):
         """Update the creator label text and styling based on theme."""
@@ -13837,8 +13848,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if hasattr(self, 'device_type_combo') and self.device_type_combo.isVisible():
             selected_type = self.device_type_combo.currentData()
 
-        # Get filtered software names from packages
-        software_options = []
+        # Add filtered software options in manifest order
         for package in self.packages:
             name = package.get('name', '')
             repo = package.get('repo', '')
@@ -13850,10 +13860,6 @@ class FirmwareDownloaderGUI(QMainWindow):
                 continue
             if not package_supports_device_type(self.github_api, package, selected_type):
                 continue
-            software_options.append((name, repo))
-
-        # Add filtered software options to dropdown (sorted by name)
-        for name, repo in sorted(software_options, key=lambda x: x[0]):
             self.firmware_combo.addItem(name, repo)
 
         # Keep current selection when still valid; otherwise fall back to Original Software
