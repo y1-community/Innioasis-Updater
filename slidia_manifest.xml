@@ -4,7 +4,7 @@
  <!-- <package name="Stock Menu 2.1.9 Update for Type B Y1's" repo="rockbox-y1/rockbox" url="https://github.com/y1-community/com.innioasis.y1/releases/latest" android_package="org.rockbox" device="y1" type="apk" handler="App" /> -->
   <!-- Custom Firmware: Project Gallagher -->
 <package name="Original Software" repo="y1-community/y1-stock-rom" device="Y1" url="https://github.com/y1-community/y1-stock-rom/releases/latest" type="img" handler="Custom Firmware" />
-    <package name="Solar & Rockbox-Y1" repo="thesolarproject/solar" url="https://github.com/thesolarproject/solar" type="img" handler="Custom Firmware" /> 
+<package name="Solar + Rockbox-Y1" device="y1" repo="thesolarproject/solar" url="https://github.com/thesolarproject/solar" type="img" handler="Custom Firmware" />
   <package name="Rockbox-Y1" repo="rockbox-y1/rockbox" device="Y1" url="https://github.com/rockbox-y1/rockbox" type="img" handler="Custom Firmware" /> 
   <package name="Koensayr" repo="ryan-specter/koensayr-auto" device="Y1" url="https://github.com/ryan-specter/koensayr-auto/releases/latest" type="img" handler="Custom Firmware" />
   <package name="JJ Launcher" repo="ryan-specter/jj_auto" device="Y1" url="https://github.com/ryan-specter/jj_auto/releases/latest" type="img" handler="Custom Firmware" />
