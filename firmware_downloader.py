@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.9.8"
+APP_VERSION = "1.9.9.9"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
@@ -116,11 +116,18 @@ def parse_version_designations(version_name):
     # Initialize extracted_version to None - we'll set it when we find a valid version
     extracted_version = None
     
+    # Check for YYYYMMDD-HHMM timestamp pattern in tag names (e.g. "Solar 20260630-0550")
+    # This must be checked before generic version extraction to avoid treating HHMM as a version
+    timestamp_match = re.search(r'(\d{8})-(\d{4})\b', clean_version)
+    if timestamp_match:
+        extracted_version = f"{timestamp_match.group(1)}-{timestamp_match.group(2)}"
+    
     # First, try to find a version pattern anywhere in the tag (e.g., "v0.3", "v1.2.3")
     # This handles cases like "Stable-v0.3-ipod-theme-compatible" where version is in the middle
-    version_pattern = re.search(r'\bv([\d.]+)\b', clean_version, re.IGNORECASE)
-    if version_pattern:
-        extracted_version = version_pattern.group(1)  # Extract just the numbers (without "v")
+    if not extracted_version:
+        version_pattern = re.search(r'\bv([\d.]+)\b', clean_version, re.IGNORECASE)
+        if version_pattern:
+            extracted_version = version_pattern.group(1)  # Extract just the numbers (without "v")
     
     # Fallback: Also check the last part after the last dash (original behavior)
     # This handles cases where version is at the end like "some-tag-v0.3"
@@ -215,8 +222,14 @@ def parse_version_designations(version_name):
 
 def get_display_version(version_info, published_date, is_prerelease=False):
     """Get the display version - either version number or published date based on length or prerelease status"""
+    import re
     version_text = version_info['clean_version']
     is_nightly = 'nightly' in version_text.lower()
+    
+    # Check if clean_version is a YYYYMMDD-HHMM datestamp (from tag names like "Solar 20260630-0550")
+    datestamp_match = re.match(r'^(\d{4})(\d{2})(\d{2})-(\d{2})(\d{2})$', version_text)
+    if datestamp_match:
+        return format_datestamp_version(datestamp_match)
     
     # If version is longer than 8 characters or it's a pre-release/nightly, use published date instead
     if len(version_text) > 8 or is_prerelease or is_nightly:
@@ -231,6 +244,42 @@ def get_display_version(version_info, published_date, is_prerelease=False):
             return "Unknown Date"
     
     return version_text
+
+def format_datestamp_version(match):
+    """Format a YYYYMMDD-HHMM datestamp as a human-readable date with time.
+    
+    Recent dates use relative labels (e.g. "Today at 05:50", "Yesterday at 09:55").
+    Older dates use calendar format (e.g. "Jun 28 at 03:04", "Jan 15, 2025 at 12:30").
+    """
+    from datetime import datetime, timedelta, timezone
+    
+    year, month, day = int(match.group(1)), int(match.group(2)), int(match.group(3))
+    hour, minute = int(match.group(4)), int(match.group(5))
+    
+    try:
+        release_dt = datetime(year, month, day, hour, minute)
+    except ValueError:
+        # Invalid date components — fall back to raw string
+        return match.group(0)
+    
+    time_str = f"{hour:02d}:{minute:02d}"
+    now = datetime.now()
+    today = now.date()
+    yesterday = today - timedelta(days=1)
+    release_date = release_dt.date()
+    
+    if release_date == today:
+        return f"Today at {time_str}"
+    elif release_date == yesterday:
+        return f"Yesterday at {time_str}"
+    elif 0 < (today - release_date).days <= 7:
+        day_name = release_dt.strftime('%A')  # Monday, Tuesday, …
+        return f"{day_name} at {time_str}"
+    elif release_date.year == today.year:
+        return release_dt.strftime(f'%b %d at {time_str}')
+    else:
+        return release_dt.strftime(f'%b %d, %Y at {time_str}')
+
 
 def format_fancy_date(date_obj):
     """Format date in a fancy, simplified way without time"""
@@ -6874,9 +6923,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} + Rockbox-Y1 is now available for Y1</h3>"
             f"<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
             f"{solar_link} + Rockbox-Y1 is now available on Innioasis Updater.</p>"
-            "<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
-            "To install it, select <b>Solar + Rockbox-Y1</b> from the Software dropdown "
-            "and click <b>Install / Restore</b>.</p>"
             "<p style='margin-top: 0; margin-bottom: 8px; line-height: 1.45;'>"
             "This new custom firmware for Y1 features:</p>"
             "<ul style='margin-top: 0; margin-bottom: 0; padding-left: 20px; line-height: 1.45;'>"
@@ -15404,21 +15450,59 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.package_list.addItem("Unable To Load Releases")
         # If we have cached releases, silently continue using them
 
+    @staticmethod
+    def _extract_tag_timestamp(tag_name):
+        """Extract a YYYYMMDD-HHMM timestamp from a tag name and return it as a sortable int.
+
+        Returns 0 when no such timestamp is found.
+        """
+        import re
+        m = re.search(r'(\d{8})-(\d{4})\b', tag_name or '')
+        if m:
+            try:
+                # Combine into a single integer for easy comparison, e.g. 202606300550
+                return int(m.group(1)) * 10000 + int(m.group(2))
+            except ValueError:
+                pass
+        return 0
+
     def _release_sort_key(self, release):
-        """Build a sortable key so newer semantic versions appear first."""
+        """Build a sortable key so newer releases appear first.
+
+        Priority order:
+        1. Releases with a YYYYMMDD-HHMM timestamp in the tag sort by that timestamp.
+        2. Releases with a valid semver sort by that semver.
+        3. The GitHub published_at timestamp is used as a tiebreaker.
+        """
         tag_name = (release or {}).get('tag_name', '')
         version_info = parse_version_designations(tag_name)
         clean_version = str(version_info.get('clean_version', '')).lstrip('vV')
-        numeric_version = self._parse_semver(clean_version)
+
+        # Try extracting an embedded YYYYMMDD-HHMM timestamp from the tag name
+        tag_timestamp = self._extract_tag_timestamp(tag_name)
+
+        # Try parsing as a semantic version (e.g. "1.2.3")
+        # Skip semver parsing when the clean_version is actually a YYYYMMDD-HHMM timestamp
+        numeric_version = None
+        if not tag_timestamp:
+            numeric_version = self._parse_semver(clean_version)
+
         published_at = (release or {}).get('published_at', '')
         try:
             published_timestamp = datetime.fromisoformat(published_at.replace('Z', '+00:00')).timestamp()
         except Exception:
             published_timestamp = 0
+
         return (
-            1 if numeric_version is not None else 0,
+            # Tier: releases with either a tag timestamp or a semver sort above those without
+            1 if (tag_timestamp or numeric_version is not None) else 0,
+            # Tag-embedded timestamp (0 when absent, so semver releases fall through)
+            tag_timestamp,
+            # Semantic version tuple (empty tuple when absent)
             numeric_version or tuple(),
+            # GitHub published_at as a tiebreaker
             published_timestamp,
+            # Final tiebreaker: tag name alphabetically
             str(tag_name).lower(),
         )
 
@@ -15497,9 +15581,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 base_header += f"{designations_text}\n"
             
             # Always show published date when available (including nightly builds)
-            # Suppress if already shown at the top of the header
+            # Suppress if already shown at the top of the header (either "Released: ..." or datestamp "Today at HH:MM")
             date_line = ""
-            if published_date and not str(display_version).startswith("Released:"):
+            display_version_str = str(display_version)
+            if published_date and not display_version_str.startswith("Released:") and " at " not in display_version_str:
                 try:
                     from datetime import datetime
                     date_obj = datetime.fromisoformat(published_date.replace('Z', '+00:00'))
