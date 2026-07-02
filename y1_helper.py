@@ -104,6 +104,7 @@ class Y1HelperApp(tk.Tk):
         self.status_var = tk.StringVar(value="Ready")
         self.scroll_wheel_mode_var = tk.BooleanVar()
         self.disable_dpad_swap_var = tk.BooleanVar()
+        self.viewport_rotation_var = tk.StringVar()
         self.rgb_profile_var = tk.StringVar(value="BGRA8888")
         
         # Add input pacing: minimum delay between input events (in seconds)
@@ -139,6 +140,7 @@ class Y1HelperApp(tk.Tk):
         # Input mode persistence
         self.manual_mode_override = False
         self.last_manual_mode_change = time.time()
+        self.load_ui_preferences()
         
         debug_print("Setting up UI components")
         # Initialize UI
@@ -197,6 +199,25 @@ class Y1HelperApp(tk.Tk):
             debug_print(f"Version file written: {version_file_path}")
         except Exception as e:
             debug_print(f"Failed to write version file: {e}")
+
+    def load_ui_preferences(self):
+        """Load persisted UI preferences."""
+        try:
+            rotation_value = str(self.app_config.get("viewport_rotation", 0))
+            if rotation_value not in {"0", "90", "180", "270"}:
+                rotation_value = "0"
+            self.viewport_rotation_var.set(rotation_value)
+        except Exception as e:
+            debug_print(f"Failed to load UI preferences: {e}")
+            self.viewport_rotation_var.set("0")
+
+    def save_ui_preferences(self):
+        """Persist UI preferences to config file."""
+        try:
+            self.app_config["viewport_rotation"] = int(self.viewport_rotation_var.get())
+            self.save_config(self.app_config)
+        except Exception as e:
+            debug_print(f"Failed to save UI preferences: {e}")
 
     def setup_windows_11_theme(self):
         debug_print("Setting up Windows 11 theme")
@@ -384,9 +405,10 @@ class Y1HelperApp(tk.Tk):
             # macOS and Linux don't have hand2 cursor, use default
             default_cursor = ""
         
-        self.screen_canvas = tk.Canvas(screen_frame, width=self.display_width, height=self.display_height, bg='black', cursor=default_cursor, highlightthickness=0, bd=0, relief="flat")
+        canvas_width, canvas_height = self.get_canvas_dimensions()
+        self.screen_canvas = tk.Canvas(screen_frame, width=canvas_width, height=canvas_height, bg='black', cursor=default_cursor, highlightthickness=0, bd=0, relief="flat")
         self.screen_canvas.pack()
-        self.screen_canvas.config(width=self.display_width, height=self.display_height)
+        self.screen_canvas.config(width=canvas_width, height=canvas_height)
         
         self.controls_frame = ttk.LabelFrame(screen_frame, text="Controls", padding=3)
         self.controls_frame.pack(fill=tk.X, pady=(5, 0))
@@ -418,6 +440,31 @@ class Y1HelperApp(tk.Tk):
                                           bg=self.button_bg, fg=self.button_fg, activebackground=self.button_active_bg,
                                           activeforeground=self.button_active_fg, font=(get_platform_font(), 9), relief="flat", bd=1)
         self.screenshot_btn.pack(side=tk.LEFT, padx=(10, 0), anchor="w")
+
+        rotation_label = ttk.Label(mode_frame, text="Rotation:")
+        rotation_label.pack(side=tk.LEFT, padx=(10, 4), anchor="w")
+        try:
+            self.rotation_combo = ttk.Combobox(
+                mode_frame,
+                textvariable=self.viewport_rotation_var,
+                values=("0", "90", "180", "270"),
+                width=4,
+                state="readonly",
+            )
+            self.rotation_combo.pack(side=tk.LEFT, anchor="w")
+            self.rotation_combo.bind("<<ComboboxSelected>>", self.on_rotation_changed)
+        except Exception as e:
+            debug_print(f"ttk.Combobox failed, using OptionMenu: {e}")
+            self.rotation_combo = tk.OptionMenu(
+                mode_frame,
+                self.viewport_rotation_var,
+                "0",
+                "90",
+                "180",
+                "270",
+                command=lambda _value: self.on_rotation_changed(),
+            )
+            self.rotation_combo.pack(side=tk.LEFT, anchor="w")
         
         # Install Firmware button removed
         
@@ -433,6 +480,7 @@ class Y1HelperApp(tk.Tk):
         self._add_tooltip(self.input_mode_btn, "Input Mode: Click to switch between Touch Screen Mode and Scroll Wheel Mode.")
         self._add_tooltip(self.screenshot_btn, "Screenshot: Capture the current device screen and save it to a file.")
         self._add_tooltip(self.disable_swap_checkbox, "When checked, disables the D-pad swap in Scroll Wheel Mode.")
+        self._add_tooltip(self.rotation_combo, "Rotate viewport to match portrait apps. Touch mapping follows the selected rotation.")
         
         status_frame = ttk.Frame(main_frame)
         status_frame.pack(fill=tk.X, pady=(10, 0))
@@ -461,6 +509,7 @@ class Y1HelperApp(tk.Tk):
         
         self.hide_controls_frame()
         self.input_disabled = True
+        self.update_canvas_dimensions()
     
     # launch_rockbox_utility method removed
     
@@ -549,6 +598,7 @@ class Y1HelperApp(tk.Tk):
                     self.screen_canvas.config(cursor="")
 
     def update_controls_display(self):
+        rotation = self.get_viewport_rotation()
         if self.scroll_wheel_mode_var.get():
             if self.disable_dpad_swap_var.get():
                 controls_text = "Scroll Wheel Mode (D-pad Swap Disabled):\nTouch: Left Click | Back: Right Click\nD-pad: W/A/S/D or Arrow Keys\nEnter: Wheel Click, Enter, E"
@@ -556,7 +606,73 @@ class Y1HelperApp(tk.Tk):
                 controls_text = "Scroll Wheel Mode:\nTouch: Left Click | Back: Right Click\nScroll: W/S or Up/Down -> DPAD_LEFT/RIGHT\nD-pad: A/D or Left/Right -> DPAD_UP/DOWN\nEnter: Wheel Click, Enter, E -> ENTER"
         else:
             controls_text = "Touch Screen Mode:\nTouch: Left Click | Back: Right Click\nD-pad: W/A/S/D or Arrow Keys\nEnter: Wheel Click, Enter, E -> DPAD_CENTER"
-        self.controls_label.config(text=controls_text)
+        self.controls_label.config(text=f"{controls_text}\nViewport Rotation: {rotation}°")
+
+    def get_viewport_rotation(self):
+        """Get viewport rotation in degrees (clockwise)."""
+        try:
+            rotation = int(self.viewport_rotation_var.get())
+        except (TypeError, ValueError):
+            rotation = 0
+        if rotation not in (0, 90, 180, 270):
+            rotation = 0
+        return rotation
+
+    def get_viewport_dimensions(self):
+        """Return framebuffer dimensions after applying viewport rotation."""
+        rotation = self.get_viewport_rotation()
+        if rotation in (90, 270):
+            return self.device_height, self.device_width
+        return self.device_width, self.device_height
+
+    def get_canvas_dimensions(self):
+        """Return canvas dimensions after scaling the rotated viewport."""
+        viewport_width, viewport_height = self.get_viewport_dimensions()
+        return int(viewport_width * self.display_scale), int(viewport_height * self.display_scale)
+
+    def update_canvas_dimensions(self):
+        """Resize the canvas to match the current viewport rotation."""
+        canvas_width, canvas_height = self.get_canvas_dimensions()
+        self.screen_canvas.config(width=canvas_width, height=canvas_height)
+
+    def rotate_framebuffer_image(self, image):
+        """Rotate framebuffer image to match viewport orientation."""
+        transpose = getattr(Image, "Transpose", Image)
+        rotation = self.get_viewport_rotation()
+        if rotation == 90:
+            return image.transpose(transpose.ROTATE_270)
+        if rotation == 180:
+            return image.transpose(transpose.ROTATE_180)
+        if rotation == 270:
+            return image.transpose(transpose.ROTATE_90)
+        return image
+
+    def map_canvas_to_device_coordinates(self, canvas_x, canvas_y):
+        """
+        Convert canvas coordinates into ADB input coordinates.
+
+        When the viewport is rotated to match a portrait app, Android expects
+        taps in the current display orientation (e.g. 360x480), not raw
+        landscape framebuffer coordinates (480x360). Use viewport space directly.
+        """
+        viewport_width, viewport_height = self.get_viewport_dimensions()
+        canvas_width, canvas_height = self.get_canvas_dimensions()
+        if canvas_width <= 0 or canvas_height <= 0:
+            return None
+
+        view_x = int(canvas_x * viewport_width / canvas_width)
+        view_y = int(canvas_y * viewport_height / canvas_height)
+        view_x = max(0, min(viewport_width - 1, view_x))
+        view_y = max(0, min(viewport_height - 1, view_y))
+        return view_x, view_y
+
+    def on_rotation_changed(self, event=None):
+        """Handle viewport rotation selection changes."""
+        self.update_canvas_dimensions()
+        self.save_ui_preferences()
+        self.update_controls_display()
+        self.status_var.set(f"Viewport rotation set to {self.get_viewport_rotation()}°")
+        self.force_framebuffer_refresh()
 
     def toggle_scroll_wheel_mode(self):
         debug_print("toggle_scroll_wheel_mode called")
@@ -945,7 +1061,9 @@ To install ADB on your system:"""
                     self.show_sleeping_placeholder()
                     return
 
-                resized_img = img.resize((self.display_width, self.display_height), Image.Resampling.LANCZOS)
+                rotated_img = self.rotate_framebuffer_image(img)
+                canvas_width, canvas_height = self.get_canvas_dimensions()
+                resized_img = rotated_img.resize((canvas_width, canvas_height), Image.Resampling.LANCZOS)
                 photo = ImageTk.PhotoImage(resized_img)
                 self.after_idle(lambda: self.update_screen_display(photo))
                 self.last_screen_image = img
@@ -978,10 +1096,12 @@ To install ADB on your system:"""
             
             if img_path:
                 img = Image.open(img_path)
-                img = img.resize((self.display_width, self.display_height), Image.Resampling.LANCZOS)
+                canvas_width, canvas_height = self.get_canvas_dimensions()
+                img = img.resize((canvas_width, canvas_height), Image.Resampling.LANCZOS)
             else:
                 # Fallback to solid color if PNG not found
-                img = Image.new('RGB', (self.display_width, self.display_height), (20, 20, 20))
+                canvas_width, canvas_height = self.get_canvas_dimensions()
+                img = Image.new('RGB', (canvas_width, canvas_height), (20, 20, 20))
             
             photo = ImageTk.PhotoImage(img)
             self.update_screen_display(photo)
@@ -989,7 +1109,8 @@ To install ADB on your system:"""
             debug_print(f"Sleeping placeholder error: {e}")
             # Fallback to solid color on error
             try:
-                img = Image.new('RGB', (self.display_width, self.display_height), (20, 20, 20))
+                canvas_width, canvas_height = self.get_canvas_dimensions()
+                img = Image.new('RGB', (canvas_width, canvas_height), (20, 20, 20))
                 photo = ImageTk.PhotoImage(img)
                 self.update_screen_display(photo)
             except:
@@ -1007,10 +1128,12 @@ To install ADB on your system:"""
             
             if img_path:
                 img = Image.open(img_path)
-                img = img.resize((self.display_width, self.display_height), Image.Resampling.LANCZOS)
+                canvas_width, canvas_height = self.get_canvas_dimensions()
+                img = img.resize((canvas_width, canvas_height), Image.Resampling.LANCZOS)
             else:
                 # Fallback to solid color if PNG not found
-                img = Image.new('RGB', (self.display_width, self.display_height), (30, 30, 30))
+                canvas_width, canvas_height = self.get_canvas_dimensions()
+                img = Image.new('RGB', (canvas_width, canvas_height), (30, 30, 30))
             
             photo = ImageTk.PhotoImage(img)
             self.update_screen_display(photo)
@@ -1018,7 +1141,8 @@ To install ADB on your system:"""
             debug_print(f"Ready placeholder error: {e}")
             # Fallback to solid color on error
             try:
-                img = Image.new('RGB', (self.display_width, self.display_height), (30, 30, 30))
+                canvas_width, canvas_height = self.get_canvas_dimensions()
+                img = Image.new('RGB', (canvas_width, canvas_height), (30, 30, 30))
                 photo = ImageTk.PhotoImage(img)
                 self.update_screen_display(photo)
             except:
@@ -1083,9 +1207,9 @@ To install ADB on your system:"""
 
     def on_screen_click(self, event):
         if self.input_disabled or not self._input_paced(): return
-        x = int(event.x / self.display_scale)
-        y = int(event.y / self.display_scale)
-        if 0 <= x < self.device_width and 0 <= y < self.device_height:
+        mapped_coords = self.map_canvas_to_device_coordinates(event.x, event.y)
+        if mapped_coords:
+            x, y = mapped_coords
             self.force_framebuffer_refresh()
             if self.control_launcher:
                 self.run_adb_command("shell input keyevent 66") # ENTER
