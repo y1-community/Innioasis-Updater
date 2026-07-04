@@ -551,13 +551,223 @@ def resolve_device_model_for_install(device_model=None, zip_path=None, extracted
     return detect_device_model_for_install(device_model, zip_path, extracted_files)
 
 
-def build_mtk_write_command(device_model=None):
-    """Build the mtk.py write command for firmware installation (Y1 command unchanged)."""
-    return [
-        sys.executable, "mtk.py", "w",
-        "logo,uboot,bootimg,recovery,android,usrdata",
-        "logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img",
+# Y2 MTK flash order mirrors install_rom_sp_y2.xml (includes partition table).
+Y2_MTK_FLASH_PARTS = (
+    ("MBR", "MBR"),
+    ("EBR1", "EBR1"),
+    ("lk.bin", "UBOOT"),
+    ("boot.img", "BOOTIMG"),
+    ("recovery.img", "RECOVERY"),
+    ("secro.img", "SEC_RO"),
+    ("logo.bin", "LOGO"),
+    ("system.img", "ANDROID"),
+    ("cache.img", "CACHE"),
+    ("userdata.img", "USRDATA"),
+)
+Y2_MTK_INSTALL_SCRIPT = "y2_mtk_install.script"
+ANDROID_SPARSE_MAGIC = 0xED26FF3A
+
+
+def _is_android_sparse_image(image_path):
+    """Return True when image_path is an Android sparse ext4 image."""
+    try:
+        with open(image_path, "rb") as sparse_file:
+            header = sparse_file.read(4)
+        if len(header) < 4:
+            return False
+        return int.from_bytes(header, "little") == ANDROID_SPARSE_MAGIC
+    except OSError:
+        return False
+
+
+def _desparse_android_image(image_path, install_root):
+    """
+    Convert an Android sparse image to a raw ext4 image for mtk `wo` writes.
+
+    mtkclient offset writes expect unpacked bytes; SP Flash Tool handles sparse
+    images itself, but our scatter-script path does not.
+    """
+    image_path = Path(image_path)
+    install_root = Path(install_root)
+    desparse_name = f"{image_path.stem}_desparse{image_path.suffix}"
+    desparse_path = install_root / desparse_name
+    if desparse_path.exists() and desparse_path.stat().st_mtime >= image_path.stat().st_mtime:
+        return desparse_path
+
+    simg2img = shutil.which("simg2img")
+    if not simg2img:
+        raise FileNotFoundError(
+            "simg2img is required to desparse Android sparse images for Y2 MTK installs"
+        )
+
+    result = subprocess.run(
+        [simg2img, str(image_path), str(desparse_path)],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout or "").strip()
+        raise RuntimeError(f"simg2img failed for {image_path.name}: {detail}")
+
+    return desparse_path
+
+
+def _find_y2_scatter_path(install_dir=None):
+    """Locate MT6582 scatter beside extracted firmware files."""
+    bases = []
+    if install_dir is not None:
+        bases.append(Path(install_dir))
+    bases.extend((Path.cwd(), get_firmware_app_dir()))
+    for base in bases:
+        candidate = base / Y2_SCATTER_TXT
+        if candidate.exists():
+            return candidate
+    return Path(Y2_SCATTER_TXT)
+
+
+def parse_scatter_physical_addresses(scatter_path):
+    """Parse physical_start_addr values from a MediaTek scatter file."""
+    entries = {}
+    current = {}
+    try:
+        text = Path(scatter_path).read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return entries
+
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if line.startswith("- partition_index:"):
+            if current.get("partition_name"):
+                entries[current["partition_name"]] = current
+            current = {}
+            continue
+        if not line or ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        key = key.strip()
+        value = value.strip()
+        if key == "partition_name":
+            current["partition_name"] = value
+        elif key == "physical_start_addr":
+            try:
+                current["physical_start_addr"] = int(value, 16)
+            except ValueError:
+                pass
+        elif key == "file_name":
+            current["file_name"] = value
+        elif key == "is_download":
+            current["is_download"] = value.lower() == "true"
+
+    if current.get("partition_name"):
+        entries[current["partition_name"]] = current
+    return entries
+
+
+def _y2_mtk_flash_plan(install_root=None):
+    """
+  Plan Y2 scatter-script writes: (filename, scatter partition name, emmc parttype).
+
+  PRELOADER lives on EMMC_BOOT_1/2 (not user area); SP Flash Tool always flashes it first.
+    """
+    config = get_flash_config("Y2") or {}
+    preloader_bin = config.get("preloader_bin", "preloader_eastaeon82_wet_kk.bin")
+    plan = [
+        (preloader_bin, "PRELOADER", "boot1"),
+        (preloader_bin, "PRELOADER", "boot2"),
     ]
+    plan.extend((filename, partition_name, "user") for filename, partition_name in Y2_MTK_FLASH_PARTS)
+    return plan
+
+
+def build_mtk_y2_install_script(install_dir=None):
+    """
+    Build an mtkclient script that writes Y2 firmware using scatter physical offsets.
+
+    MT6582 devices often expose PMT rather than GPT, so partition-name writes fail;
+    scatter physical addresses are used with mtk `wo` instead.
+    """
+    install_root = Path(install_dir or Path.cwd())
+    scatter_path = _find_y2_scatter_path(install_root)
+    scatter_entries = parse_scatter_physical_addresses(scatter_path)
+    script_lines = []
+
+    for filename, partition_name, parttype in _y2_mtk_flash_plan(install_root):
+        file_path = install_root / filename
+        if not file_path.exists():
+            raise FileNotFoundError(f"Missing Y2 firmware file: {file_path}")
+
+        scatter_entry = scatter_entries.get(partition_name, {})
+        offset = scatter_entry.get("physical_start_addr")
+        if offset is None:
+            raise ValueError(f"Missing physical_start_addr for {partition_name} in {scatter_path}")
+
+        flash_path = file_path
+        if _is_android_sparse_image(file_path):
+            flash_path = _desparse_android_image(file_path, install_root)
+
+        file_size = flash_path.stat().st_size
+        line = f"wo {hex(offset)} {hex(file_size)} {flash_path.name}"
+        if parttype and parttype != "user":
+            line += f" --parttype {parttype}"
+        script_lines.append(line)
+
+    script_path = install_root / Y2_MTK_INSTALL_SCRIPT
+    script_path.write_text("\n".join(script_lines) + "\n", encoding="utf-8")
+    # #region agent log
+    _debug_e788a7_log(
+        "firmware_downloader.py:build_mtk_y2_install_script",
+        "y2_script_built",
+        {
+            "scatter_path": str(scatter_path),
+            "line_count": len(script_lines),
+            "preloader_lines": [line for line in script_lines if "preloader" in line.lower()],
+            "first_lines": script_lines[:4],
+        },
+        hypothesis_id="P",
+        run_id="preloader-fix",
+    )
+    # #endregion
+    return script_path, script_lines
+
+
+def build_mtk_write_command(device_model=None):
+    """Build the mtk.py command for firmware installation."""
+    resolved = resolve_device_model_for_install(
+        device_model,
+        extracted_files=_firmware_file_names_in_install_root(),
+    )
+    script_lines = None
+    if is_y2_model(resolved):
+        config = get_flash_config("Y2") or {}
+        preloader_bin = config.get("preloader_bin", "preloader_eastaeon82_wet_kk.bin")
+        script_path, script_lines = build_mtk_y2_install_script()
+        cmd = [
+            sys.executable, "mtk.py", "script",
+            "--preloader", preloader_bin,
+            str(script_path),
+        ]
+    else:
+        cmd = [
+            sys.executable, "mtk.py", "w",
+            "logo,uboot,bootimg,recovery,android,usrdata",
+            "logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img",
+        ]
+    # #region agent log
+    _debug_e788a7_log(
+        "firmware_downloader.py:build_mtk_write_command",
+        "built_mtk_command",
+        {
+            "device_model": device_model,
+            "resolved_model": resolved,
+            "cmd": cmd,
+            "cwd_hint": str(Path.cwd()),
+            "y2_script_lines": script_lines if is_y2_model(resolved) else None,
+        },
+        hypothesis_id="Y2",
+        run_id="post-fix",
+    )
+    # #endregion
+    return cmd
 
 # Installation tracking
 INSTALLATION_MARKER_FILE = Path("firmware_installation_in_progress.flag")
@@ -1782,7 +1992,10 @@ class ConfigDownloader:
         # Prefer local manifest when present so dev edits take effect immediately
         if local_packages:
             silent_print(f"Loaded {len(local_packages)} packages from local manifest for instant startup")
-            save_cache(MANIFEST_CACHE_FILE, local_packages)
+            threading.Thread(
+                target=lambda: save_cache(MANIFEST_CACHE_FILE, local_packages),
+                daemon=True,
+            ).start()
             self.refresh_remote_manifest_async()
             return local_packages
 
@@ -2818,10 +3031,21 @@ class MTKWorker(QThread):
         return line
 
     def run(self):
-        model = resolve_device_model_for_install(getattr(self, 'device_model', None))
+        model = resolve_device_model_for_install(
+            getattr(self, 'device_model', None),
+            extracted_files=_firmware_file_names_in_install_root(),
+        )
         cmd = build_mtk_write_command(model)
 
         try:
+            # Stale mtkclient .state from a prior session breaks reconnect/reinit.
+            for state_file in (Path.cwd() / ".state", get_firmware_app_dir() / ".state"):
+                if state_file.exists():
+                    try:
+                        state_file.unlink()
+                    except Exception:
+                        pass
+
             # Don't emit status message - let MTK output be displayed clearly
             process = subprocess.Popen(
                 cmd,
@@ -6800,8 +7024,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._disconnect_usb_dialog_shown = False
         # Load persistent flag for dual connection dialog (shown once per user)
         self._dual_connection_dialog_shown = self.load_dual_connection_dialog_shown()
-        # Ensure legacy updater.py launches the modern GUI if invoked directly
-        self._ensure_legacy_updater_redirect()
+        # Keep legacy updater.py in sync — deferred so startup stays responsive (file is ~1.4MB).
+        QTimer.singleShot(2000, self._ensure_legacy_updater_redirect_async)
         # Track if auto-connect has been attempted for current USB device
         self._auto_connect_attempted_for_device = None
         
@@ -6826,8 +7050,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Initialize UI first for immediate responsiveness
         self.init_ui()
+        QApplication.processEvents()
+
         QTimer.singleShot(0, self.update_update_badges)
-        QTimer.singleShot(0, self._show_startup_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -6844,17 +7069,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         if platform.system() == "Windows":
             QTimer.singleShot(1500, self.stop_flash_tool_processes)
 
-        # Check for SP Flash Tool on Windows before loading data
+        # Defer Windows housekeeping — COM shortcut work and modal checks froze the UI at launch.
         if platform.system() == "Windows":
-            # Delay the flash tool check to avoid blocking startup
-            QTimer.singleShot(100, self.check_sp_flash_tool)
-            # Download troubleshooting shortcuts if missing
+            QTimer.singleShot(8000, self.check_sp_flash_tool)
             QTimer.singleShot(200, self.ensure_troubleshooting_shortcuts)
         # Check for old shortcuts and offer cleanup (moved to worker thread to avoid blocking)
         QTimer.singleShot(2000, self.check_and_cleanup_old_shortcuts)  # Delayed to not block startup
 
         # Check for failed installation and show troubleshooting options
-        QTimer.singleShot(300, self.check_failed_installation_on_startup)
+        QTimer.singleShot(10000, self.check_failed_installation_on_startup)
         
         # Clean up RockboxUtility.zip at startup (delayed to not block startup)
         QTimer.singleShot(2000, self.cleanup_rockbox_utility_zip)
@@ -6865,36 +7088,35 @@ class FirmwareDownloaderGUI(QMainWindow):
         #     QTimer.singleShot(600, self.check_usbdk_cleanup)
 
         # Ensure troubleshooting shortcuts are available
-        QTimer.singleShot(500, self.ensure_troubleshooting_shortcuts_available)
+        QTimer.singleShot(8000, self.ensure_troubleshooting_shortcuts_available)
 
         # Download latest updater.py during launch
         # REMOVED: Legacy updater.py method no longer used - app handles updates internally
         # QTimer.singleShot(600, self.download_latest_updater)
 
         # Preload critical images with web fallback
-        QTimer.singleShot(700, self.preload_critical_images)
+        QTimer.singleShot(3000, self.preload_critical_images)
 
-        # Load data asynchronously to avoid blocking UI (reduced delay for instant startup)
-        # Use worker thread to avoid blocking file I/O and XML parsing
-        QTimer.singleShot(10, self.start_data_loader_worker)
+        # Load manifest in a worker thread immediately after the first paint
+        QTimer.singleShot(0, self.start_data_loader_worker)
         
         # Load saved installation preferences
-        QTimer.singleShot(200, self.load_installation_preferences)
+        QTimer.singleShot(500, self.load_installation_preferences)
         
         # Apply shortcut settings on startup (Windows only)
         if platform.system() == "Windows":
-            QTimer.singleShot(300, self.apply_shortcut_settings_on_startup)
+            QTimer.singleShot(12000, self.apply_shortcut_settings_on_startup)
         
         # Restore original installation method when session ends
-        QTimer.singleShot(300, self.restore_original_installation_method)
+        QTimer.singleShot(500, self.restore_original_installation_method)
 
         # Theme change detection removed - let native buttons handle styling
         self.last_theme_state = self.is_dark_mode
         
         # Check USB storage mode and ADB device status at startup (non-blocking via worker thread)
         QTimer.singleShot(2000, self._check_usb_and_adb_status)
-        # Schedule update check early so users see update prompts immediately (independent of settings dialog)
-        QTimer.singleShot(300, self._run_independent_update_check)
+        # Schedule update check after UI is interactive (was firing at 300ms and competing with load)
+        QTimer.singleShot(4000, self._run_independent_update_check)
         # Also schedule periodic update checks every 5 minutes to catch updates that might be missed
         self._update_check_timer = QTimer()
         self._update_check_timer.timeout.connect(self._run_independent_update_check)
@@ -6904,50 +7126,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.status_clear_timer = None
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
-
-    def _show_startup_notice(self):
-        """Show startup notice about Solar + Rockbox-Y1 availability for Y1."""
-        dialog = QDialog(self)
-        dialog.setWindowTitle("Solar + Rockbox-Y1 now available")
-        dialog.setMinimumWidth(480)
-        dialog.setModal(True)
-
-        layout = QVBoxLayout(dialog)
-        layout.setContentsMargins(16, 16, 16, 16)
-        layout.setSpacing(12)
-
-        solar_url = "https://www.github.com/thesolarproject/solar"
-        solar_link = f"<a href='{solar_url}'>Solar</a>"
-
-        body = QLabel(
-            f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} + Rockbox-Y1 is now available for Y1</h3>"
-            f"<p style='margin-top: 0; margin-bottom: 14px; line-height: 1.45;'>"
-            f"{solar_link} + Rockbox-Y1 is now available on Innioasis Updater.</p>"
-            "<p style='margin-top: 0; margin-bottom: 8px; line-height: 1.45;'>"
-            "This new custom firmware for Y1 features:</p>"
-            "<ul style='margin-top: 0; margin-bottom: 0; padding-left: 20px; line-height: 1.45;'>"
-            "<li>Online music streaming from Deezer and Soulseek</li>"
-            "<li>Online podcasts playback</li>"
-            "<li>Video playback</li>"
-            "<li>Rockbox-Y1 built in with fast switching</li>"
-            "<li>Updates over Wi-Fi without a computer</li>"
-            "<li>Quick Access Menu for easier volume / brightness control</li>"
-            "<li>Enhanced Y1/Y2 Theme Support</li>"
-            "</ul>"
-        )
-        body.setTextFormat(Qt.RichText)
-        body.setWordWrap(True)
-        body.setOpenExternalLinks(True)
-        body.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        layout.addWidget(body)
-
-        buttons = QDialogButtonBox(QDialogButtonBox.Ok)
-        find_out_btn = buttons.addButton("Find out more", QDialogButtonBox.ActionRole)
-        find_out_btn.clicked.connect(lambda: webbrowser.open(solar_url))
-        buttons.accepted.connect(dialog.accept)
-        layout.addWidget(buttons)
-
-        dialog.exec()
 
     def update_creator_label(self):
         """Update the creator label text and styling based on theme."""
@@ -7037,52 +7215,58 @@ class FirmwareDownloaderGUI(QMainWindow):
         pass
 
     def check_sp_flash_tool(self):
-        """Check if any flash tool is running on Windows and show warning"""
+        """Check if any flash tool is running on Windows and show a non-blocking warning."""
+        if platform.system() != "Windows":
+            return
+        threading.Thread(target=self._check_sp_flash_tool_worker, daemon=True).start()
+
+    def _check_sp_flash_tool_worker(self):
         try:
-            # Use tasklist to get all running processes
-            result = subprocess.run(['tasklist', '/FO', 'CSV'], 
-                                  capture_output=True, text=True, timeout=5)
-            
-            if result.returncode == 0:
-                # Check for any executable containing "flash" in the name
-                flash_processes = []
-                for line in result.stdout.split('\n'):
-                    if 'flash' in line.lower() and '.exe' in line.lower():
-                        # Extract the process name from CSV format
-                        parts = line.split(',')
-                        if len(parts) >= 2:
-                            process_name = parts[0].strip('"')
-                            if 'flash' in process_name.lower():
-                                flash_processes.append(process_name)
-                
-                if flash_processes:
-                    # Flash tool(s) detected, show warning dialog
-                    process_list = '\n'.join(f"• {process}" for process in flash_processes)
-                    msg_box = QMessageBox(self)
-                    msg_box.setWindowTitle("Flash Tool Detected")
-                    msg_box.setIcon(QMessageBox.Warning)
-                    msg_box.setText("Flash tool(s) are currently running on your system.")
-                    msg_box.setInformativeText(
-                        f"The following flash tool(s) must be closed before running Innioasis Updater "
-                        f"to prevent conflicts with USB device access and flashing operations:\n\n"
-                        f"{process_list}\n\n"
-                        f"Please close all flash tools completely and then restart Innioasis Updater."
-                    )
-                    msg_box.setStandardButtons(QMessageBox.Ok)
-                    msg_box.setDefaultButton(QMessageBox.Ok)
-                    
-                    # Show the dialog
-                    msg_box.exec()
-                    
-                    # Optionally, you could close the application here
-                    # self.close()
-                
+            result = subprocess.run(
+                ['tasklist', '/FO', 'CSV'],
+                capture_output=True,
+                text=True,
+                timeout=5,
+            )
+            if result.returncode != 0:
+                return
+
+            flash_processes = []
+            for line in result.stdout.split('\n'):
+                if 'flash' in line.lower() and '.exe' in line.lower():
+                    parts = line.split(',')
+                    if len(parts) >= 2:
+                        process_name = parts[0].strip('"')
+                        if 'flash' in process_name.lower():
+                            flash_processes.append(process_name)
+
+            if flash_processes:
+                QTimer.singleShot(0, lambda: self._show_flash_tool_warning(flash_processes))
         except (subprocess.TimeoutExpired, FileNotFoundError, OSError):
-            # If tasklist times out or is not available, assume no conflict and continue
             silent_print("Flash tool check skipped - tasklist not available")
         except Exception as e:
-            # If there's any error checking for the process, continue silently
             silent_print(f"Error checking for flash tools: {e}")
+
+    def _show_flash_tool_warning(self, flash_processes):
+        """Non-modal warning so startup stays responsive."""
+        try:
+            process_list = '\n'.join(f"• {process}" for process in flash_processes)
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("Flash Tool Detected")
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.setText("Flash tool(s) are currently running on your system.")
+            msg_box.setInformativeText(
+                f"The following flash tool(s) must be closed before running Innioasis Updater "
+                f"to prevent conflicts with USB device access and flashing operations:\n\n"
+                f"{process_list}\n\n"
+                f"Please close all flash tools completely and then restart Innioasis Updater."
+            )
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            msg_box.setDefaultButton(QMessageBox.Ok)
+            msg_box.setWindowModality(Qt.NonModal)
+            msg_box.show()
+        except Exception as e:
+            silent_print(f"Error showing flash tool warning: {e}")
 
     def ensure_troubleshooting_shortcuts(self):
         """Download troubleshooting shortcuts if they're missing (Windows only)"""
@@ -8175,6 +8359,13 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def ensure_troubleshooting_shortcuts_available(self):
         """Ensure troubleshooting shortcuts are available, extract from zip if needed"""
+        threading.Thread(
+            target=self._ensure_troubleshooting_shortcuts_available_worker,
+            daemon=True,
+        ).start()
+
+    def _ensure_troubleshooting_shortcuts_available_worker(self):
+        """Background zip extraction — can block on large archives."""
         try:
             current_dir = Path.cwd()
             recovery_lnk = current_dir / "Recover Firmware Install.lnk"
@@ -8777,8 +8968,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.image_notes_stack.addWidget(self.image_label)  # Index 0 - image
         self.image_notes_stack.addWidget(self.release_notes_browser)  # Index 1 - release notes
 
-        # Load initial image with proper sizing
-        self.load_presteps_image()
+        # Load initial image after first paint (get_platform_image_path can be slow on Windows)
+        QTimer.singleShot(0, self.load_presteps_image)
         
         # Show image initially (page 0)
         self.image_notes_stack.setCurrentIndex(0)
@@ -8828,9 +9019,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Check for test.py availability asynchronously to avoid blocking GUI launch
         self.check_test_py_availability_async()
         
-        # Add status bar for driver information
+        # Driver status bar touches filesystem — defer so first paint stays smooth
         if platform.system() == "Windows":
-            self.create_driver_status_bar()
+            QTimer.singleShot(500, self.create_driver_status_bar)
     
     def is_test_py_available(self):
         """Check if test.py is available locally or at innioasis.app"""
@@ -9807,7 +9998,6 @@ class FirmwareDownloaderGUI(QMainWindow):
     def start_data_loader_worker(self):
         """Start data loader in worker thread to avoid blocking UI"""
         try:
-            self.status_label.setText("Loading configuration...")
             silent_print("Loading configuration and manifest data...")
 
             # Stop any existing data loader worker
@@ -12220,6 +12410,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             error_message = install_dialog.error_message or "The selected version could not be installed."
             QMessageBox.warning(self, "Update not applied", error_message)
 
+    def _ensure_legacy_updater_redirect_async(self):
+        """Run legacy updater.py sync off the GUI thread."""
+        threading.Thread(target=self._ensure_legacy_updater_redirect, daemon=True).start()
+
     def _ensure_legacy_updater_redirect(self):
         """Ensure legacy updater.py launches the main GUI by mirroring this module."""
         try:
@@ -12227,20 +12421,19 @@ class FirmwareDownloaderGUI(QMainWindow):
             updater_path = current_path.with_name("updater.py")
             if updater_path == current_path:
                 return
-            
-            needs_update = True
+
             if updater_path.exists():
                 try:
-                    if updater_path.stat().st_size == current_path.stat().st_size:
-                        with open(current_path, 'rb') as src, open(updater_path, 'rb') as dst:
-                            if src.read() == dst.read():
-                                needs_update = False
+                    src_stat = current_path.stat()
+                    dst_stat = updater_path.stat()
+                    if (
+                        src_stat.st_size == dst_stat.st_size
+                        and int(src_stat.st_mtime) == int(dst_stat.st_mtime)
+                    ):
+                        return
                 except Exception as compare_error:
-                    silent_print(f"Warning: unable to compare updater.py contents: {compare_error}")
-                    needs_update = True
-            if not needs_update:
-                return
-            
+                    silent_print(f"Warning: unable to compare updater.py metadata: {compare_error}")
+
             with open(current_path, 'rb') as src, open(updater_path, 'wb') as dst:
                 dst.write(src.read())
             silent_print("Legacy updater.py replaced with current firmware_downloader.py")
@@ -12790,9 +12983,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Loaded preferences (method reset to default): {preferences}")
             else:
                 silent_print("No saved installation preferences found, detecting existing shortcuts")
-                # Detect existing shortcuts and set preferences accordingly for new users
                 if platform.system() == "Windows":
-                    self.detect_existing_shortcuts_and_set_preferences()
+                    QTimer.singleShot(12000, self.detect_existing_shortcuts_and_set_preferences)
                 else:
                     # Non-Windows platforms use defaults - automatic updates are manual by default
                     pass
@@ -29234,11 +29426,9 @@ if __name__ == "__main__":
                           help="Skip GUI and launch flash_tool.exe after updating history.ini")
         args = parser.parse_args()
         
-        # Prepare valid history.ini and scatter file for SP Flash Tool at launch
-        prepare_sp_flash_tool_files()
-        
         # If -sp argument is provided, skip GUI entirely and launch flash_tool.exe
         if args.sp:
+            prepare_sp_flash_tool_files()
             current_dir = Path.cwd()
             flash_tool_exe = current_dir / "flash_tool.exe"
             
@@ -29294,6 +29484,7 @@ if __name__ == "__main__":
 
         # Let the macOS app wrapper handle the icon display
         # Removed custom icon setting to allow macOS app icon to shine through
+        QTimer.singleShot(0, prepare_sp_flash_tool_files)
 
         if args.toolkit:
             # Show only the toolkit window
@@ -29303,6 +29494,7 @@ if __name__ == "__main__":
             # Create and show the main window
             window = FirmwareDownloaderGUI()
             window.show()
+            QApplication.processEvents()
         
         # Clean up redundant files after GUI is shown (non-blocking, in background thread)
         from PySide6.QtCore import QTimer
