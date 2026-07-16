@@ -57,7 +57,9 @@ APP_VERSION = "1.9.9.9"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
-DISCORD_INVITE_URL = "https://discord.gg/u95pr8XfN"
+DISCORD_INVITE_URL = "https://discord.gg/zn42mRh32z"
+SUBREDDIT_URL = "https://www.reddit.com/r/innioasismodders"
+SOLAR_PROJECT_URL = "https://www.github.com/thesolarproject/solar"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -259,7 +261,7 @@ def format_datestamp_version(match):
     try:
         release_dt = datetime(year, month, day, hour, minute)
     except ValueError:
-        # Invalid date components — fall back to raw string
+        # Invalid date components - fall back to raw string
         return match.group(0)
     
     time_str = f"{hour:02d}:{minute:02d}"
@@ -347,7 +349,7 @@ def format_designations_text(designations):
 ZIP_STORAGE_DIR = Path("firmware_downloads")
 EXTRACTED_FILES_LOG = Path("extracted_files.log")
 
-# SP Flash Tool defaults (beside firmware_downloader.py) — Y1 aliases
+# SP Flash Tool defaults (beside firmware_downloader.py) - Y1 aliases
 HISTORY_DEF_INI = "history_def.ini"
 HISTORY_INI = "history.ini"
 SCATTER_DEF_TXT = "MT6572_Android_scatter_def.txt"
@@ -505,7 +507,7 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
     Resolve device model for install prep.
 
     Returns 'Y1', 'Y2', or None when the platform cannot be determined.
-    Unknown models must not default to Y1/MT6572 — inspect extracted ROM assets instead.
+    Unknown models must not default to Y1/MT6572 - inspect extracted ROM assets instead.
     """
     if device_model and str(device_model).strip():
         if is_y2_model(device_model):
@@ -1435,11 +1437,11 @@ def _parse_rom_asset_variant(asset, tag_name='', repo=''):
     Classify a rom*.zip asset into hardware type (A/B), resolution, and model family.
     
     New-style releases use filenames like:
-      - rom_240p.zip
-      - rom_240p_type_b.zip
-      - rom_360p.zip
-      - rom_360p_type_b.zip
-      - rom_y2.zip
+     - rom_240p.zip
+     - rom_240p_type_b.zip
+     - rom_360p.zip
+     - rom_360p_type_b.zip
+     - rom_y2.zip
     
     Legacy releases used a single rom.zip per tag, with Type B encoded in the tag
     name (e.g. '360p-type-b-v0.3'). For those, we treat rom.zip as Type B.
@@ -1508,11 +1510,11 @@ def select_preferred_rom_asset(variants, selected_type=None):
     """
     Select the best rom*.zip asset from a list of variants.
     
-    - selected_type:
+   - selected_type:
         'A' -> prefer Type A, fall back to Type B if needed
         'B' -> prefer Type B, fall back to Type A if needed
         None -> prefer Type A, then Type B (for generic/latest-release lookups)
-    - Within a type, prefer higher resolution priority as defined above.
+   - Within a type, prefer higher resolution priority as defined above.
     """
     if not variants:
         return None
@@ -2039,6 +2041,15 @@ class ConfigDownloader:
             root = ET.fromstring(response.text)
             packages = self.parse_manifest_xml(root)
             silent_print(f"Successfully loaded {len(packages)} packages from remote manifest")
+            
+            # Save the raw XML to slidia_manifest.xml so the app uses the latest version on next startup
+            try:
+                local_manifest_path = _FIRMWARE_APP_DIR / "slidia_manifest.xml"
+                with open(local_manifest_path, 'w', encoding='utf-8') as f:
+                    f.write(response.text)
+            except Exception as e:
+                silent_print(f"Error caching local manifest XML: {e}")
+                
             # Cache the packages
             save_cache(MANIFEST_CACHE_FILE, packages)
             return packages
@@ -6562,6 +6573,12 @@ class ThemeMonitor(QObject):
             return
             
         self.running = True
+        # Seed last_theme so the first poll does not emit a theme_changed storm
+        # during startup (that used to re-style the whole UI on the main thread).
+        try:
+            self.last_theme = self._get_current_theme()
+        except Exception:
+            self.last_theme = None
         self.thread = threading.Thread(target=self._monitor_theme, daemon=True)
         self.thread.start()
         
@@ -7024,7 +7041,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._disconnect_usb_dialog_shown = False
         # Load persistent flag for dual connection dialog (shown once per user)
         self._dual_connection_dialog_shown = self.load_dual_connection_dialog_shown()
-        # Keep legacy updater.py in sync — deferred so startup stays responsive (file is ~1.4MB).
+        # Keep legacy updater.py in sync - deferred so startup stays responsive (file is ~1.4MB).
         QTimer.singleShot(2000, self._ensure_legacy_updater_redirect_async)
         # Track if auto-connect has been attempted for current USB device
         self._auto_connect_attempted_for_device = None
@@ -7053,6 +7070,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         QApplication.processEvents()
 
         QTimer.singleShot(0, self.update_update_badges)
+        # Solar notice is scheduled from on_data_loaded / on_data_loading_failed once
+        # the first load pass finishes (see _schedule_startup_notice). Showing it on a
+        # fixed early timer competed with manifest/token/USB work and froze the UI.
+        self._startup_notice_scheduled = False
+        # Safety net if the data loader never reports back
+        QTimer.singleShot(8000, self._schedule_startup_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -7065,11 +7088,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Clean up any previously extracted files at startup (non-blocking, delayed)
         QTimer.singleShot(1000, cleanup_extracted_files)
 
-        # Clean up orphaned processes at startup (Windows only, non-blocking, delayed)
+        # Clean up orphaned processes at startup (Windows only; runs off the UI thread)
         if platform.system() == "Windows":
-            QTimer.singleShot(1500, self.stop_flash_tool_processes)
+            QTimer.singleShot(1500, self._stop_flash_tool_processes_async)
 
-        # Defer Windows housekeeping — COM shortcut work and modal checks froze the UI at launch.
+        # Defer Windows housekeeping - COM shortcut work and modal checks froze the UI at launch.
         if platform.system() == "Windows":
             QTimer.singleShot(8000, self.check_sp_flash_tool)
             QTimer.singleShot(200, self.ensure_troubleshooting_shortcuts)
@@ -7113,8 +7136,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Theme change detection removed - let native buttons handle styling
         self.last_theme_state = self.is_dark_mode
         
-        # Check USB storage mode and ADB device status at startup (non-blocking via worker thread)
-        QTimer.singleShot(2000, self._check_usb_and_adb_status)
+        # Check USB storage mode and ADB device status after the UI has settled.
+        # Drive scanning on the UI thread during the first 1-2s made the Solar notice
+        # look frozen; keep this clearly after first paint / notice scheduling.
+        QTimer.singleShot(4000, self._check_usb_and_adb_status)
         # Schedule update check after UI is interactive (was firing at 300ms and competing with load)
         QTimer.singleShot(4000, self._run_independent_update_check)
         # Also schedule periodic update checks every 5 minutes to catch updates that might be missed
@@ -7122,10 +7147,114 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._update_check_timer.timeout.connect(self._run_independent_update_check)
         self._update_check_timer.start(300000)  # 5 minutes
         
+        # Periodically refresh the manifest every 15 minutes (non-blocking)
+        self.manifest_refresh_timer = QTimer(self)
+        self.manifest_refresh_timer.timeout.connect(self._periodic_manifest_refresh)
+        self.manifest_refresh_timer.start(15 * 60 * 1000)  # 15 minutes
+        
         # Initialize status clear timer for auto-clearing orphaned messages
         self.status_clear_timer = None
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
+
+    def _periodic_manifest_refresh(self):
+        """Periodically grab the latest slidia_manifest.xml file in the background"""
+        try:
+            if hasattr(self, 'config_downloader'):
+                self.config_downloader.refresh_remote_manifest_async()
+        except Exception as e:
+            silent_print(f"Periodic manifest refresh failed: {e}")
+
+    def _schedule_startup_notice(self):
+        """Show the Solar notice once, after the first load pass yields the UI thread."""
+        if getattr(self, "_startup_notice_scheduled", False):
+            return
+        self._startup_notice_scheduled = True
+        # Wait a beat so combos/lists can paint and any queued load work can finish.
+        # Non-modal notice must not open while is_online / USB scans are mid-flight.
+        QTimer.singleShot(1200, self._show_startup_notice)
+
+    def _show_startup_notice(self):
+        """Show Solar availability notice without freezing the app.
+
+        Fully non-modal (same pattern as the flash-tool warning). Window-modal
+        dialogs at startup blocked the main window while concurrent main-thread
+        work (network checks, USB scans) still ran, so users saw a frozen UI.
+        """
+        try:
+            existing = getattr(self, "_startup_notice_dialog", None)
+            if existing is not None:
+                try:
+                    if existing.isVisible():
+                        existing.raise_()
+                        return
+                except RuntimeError:
+                    # Dialog already deleted (WA_DeleteOnClose)
+                    self._startup_notice_dialog = None
+
+            # Don't steal focus / block the main window during remaining startup work.
+            dialog = QDialog(self)
+            dialog.setWindowTitle("Solar is available for Y1")
+            dialog.setMinimumWidth(500)
+            dialog.setWindowModality(Qt.NonModal)
+            dialog.setModal(False)
+            dialog.setAttribute(Qt.WA_DeleteOnClose, True)
+
+            layout = QVBoxLayout(dialog)
+            layout.setContentsMargins(16, 16, 16, 16)
+            layout.setSpacing(12)
+
+            solar_link = f"<a href='{SOLAR_PROJECT_URL}'>Solar</a>"
+
+            body = QLabel(
+                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} is available in Innioasis Updater</h3>"
+                f"<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
+                f"{solar_link} is a custom firmware for Y1 that turns on Wi-Fi and unlocks lots of new features. "
+                f"You can install it right here in Updater.</p>"
+                "<p style='margin-top: 0; margin-bottom: 8px; line-height: 1.45;'>"
+                "<b>What Solar brings to the Y1</b></p>"
+                "<ul style='margin-top: 0; margin-bottom: 12px; padding-left: 20px; line-height: 1.5;'>"
+                "<li style='margin-bottom: 4px;'><b>YouTube</b> video and audio: stream or download offline, without ads</li>"
+                "<li style='margin-bottom: 4px;'><b>Deezer</b> streaming and downloads without ads</li>"
+                "<li style='margin-bottom: 4px;'><b>Soulseek</b> file sharing so you can find and download music</li>"
+                "<li style='margin-bottom: 4px;'><b>Navidrome</b> for your own music library</li>"
+                "<li style='margin-bottom: 4px;'><b>Flow</b>: Cover Flow-style album browsing on the device</li>"
+                "<li style='margin-bottom: 4px;'>Download <b>themes</b> straight onto the Y1</li>"
+                "<li style='margin-bottom: 4px;'><b>Updates over Wi-Fi</b> (no computer needed)</li>"
+                "<li style='margin-bottom: 0;'>Podcasts, Quick Access Menu, and more</li>"
+                "</ul>"
+                "<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
+                "<i>Solar is still a work in progress and gets better all the time. Y2 support is coming soon.</i></p>"
+                "<p style='margin-top: 0; margin-bottom: 0; line-height: 1.45;'>"
+                "Pick <b>Solar</b> from the <b>Software</b> dropdown, then hit "
+                "<b>Install / Restore</b>.</p>"
+            )
+            body.setTextFormat(Qt.RichText)
+            body.setWordWrap(True)
+            body.setOpenExternalLinks(True)
+            body.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+            body.setTextInteractionFlags(Qt.TextBrowserInteraction)
+            layout.addWidget(body)
+
+            buttons = QDialogButtonBox()
+            ok_btn = buttons.addButton("OK", QDialogButtonBox.AcceptRole)
+            find_out_btn = buttons.addButton("Find Out More", QDialogButtonBox.ActionRole)
+            ok_btn.clicked.connect(dialog.close)
+            find_out_btn.clicked.connect(lambda: webbrowser.open(SOLAR_PROJECT_URL))
+            layout.addWidget(buttons)
+
+            def _clear_startup_notice_ref(*_args):
+                if getattr(self, "_startup_notice_dialog", None) is dialog:
+                    self._startup_notice_dialog = None
+
+            dialog.finished.connect(_clear_startup_notice_ref)
+            dialog.destroyed.connect(_clear_startup_notice_ref)
+            self._startup_notice_dialog = dialog
+            # show() only - never exec() - keeps the main event loop free
+            dialog.show()
+        except Exception as e:
+            silent_print(f"Error showing startup notice: {e}")
+            self._startup_notice_dialog = None
 
     def update_creator_label(self):
         """Update the creator label text and styling based on theme."""
@@ -8365,7 +8494,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         ).start()
 
     def _ensure_troubleshooting_shortcuts_available_worker(self):
-        """Background zip extraction — can block on large archives."""
+        """Background zip extraction - can block on large archives."""
         try:
             current_dir = Path.cwd()
             recovery_lnk = current_dir / "Recover Firmware Install.lnk"
@@ -8818,13 +8947,20 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.discord_btn.clicked.connect(self.open_discord_link)
         coffee_layout.addWidget(self.discord_btn)
 
-        self.community_discord_btn = QPushButton("Discord")
-        discord_icon_path = Path(__file__).resolve().parent / "discord.png"
-        if discord_icon_path.is_file():
-            self.community_discord_btn.setIcon(QIcon(str(discord_icon_path)))
-        self.community_discord_btn.setToolTip("Join the Innioasis community on Discord")
+        # Community link lottery: Subreddit 80% of the time, Discord 20%
+        self.community_discord_btn = QPushButton()
         self.community_discord_btn.setCursor(Qt.PointingHandCursor)
-        self.community_discord_btn.clicked.connect(self.open_community_discord_link)
+        if random.random() < 0.2:
+            self.community_discord_btn.setText("Discord")
+            discord_icon_path = Path(__file__).resolve().parent / "discord.png"
+            if discord_icon_path.is_file():
+                self.community_discord_btn.setIcon(QIcon(str(discord_icon_path)))
+            self.community_discord_btn.setToolTip("Join the Innioasis community on Discord")
+            self.community_discord_btn.clicked.connect(self.open_community_discord_link)
+        else:
+            self.community_discord_btn.setText("Subreddit")
+            self.community_discord_btn.setToolTip("Join the community on r/innioasismodders")
+            self.community_discord_btn.clicked.connect(self.open_reddit_link)
         coffee_layout.addWidget(self.community_discord_btn)
 
         # About / Ko-fi button (opens ko-fi link in browser) - using native styling
@@ -9019,7 +9155,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Check for test.py availability asynchronously to avoid blocking GUI launch
         self.check_test_py_availability_async()
         
-        # Driver status bar touches filesystem — defer so first paint stays smooth
+        # Driver status bar touches filesystem - defer so first paint stays smooth
         if platform.system() == "Windows":
             QTimer.singleShot(500, self.create_driver_status_bar)
     
@@ -10100,6 +10236,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Start background token validation and remote manifest refresh (reduced delay for faster startup)
             # This is non-blocking and will gracefully fail if offline - runs in worker thread
             QTimer.singleShot(25, self.start_token_loader_worker)
+            # Solar notice after first load pass (non-modal; does not block startup)
+            self._schedule_startup_notice()
         except Exception as e:
             silent_print(f"Error handling loaded data: {e}")
             # Fallback to offline mode
@@ -10122,8 +10260,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             QTimer.singleShot(50, self._show_initial_offline_state)
             self.status_label.setText("Ready: Use 'Browse Files' to install firmware from local files")
             silent_print("App initialized in offline mode due to loading failure")
+            self._schedule_startup_notice()
         except Exception as e:
             silent_print(f"Error handling data loading failure: {e}")
+            self._schedule_startup_notice()
 
     def start_token_loader_worker(self):
         """Start token loader in worker thread to avoid blocking UI"""
@@ -10214,7 +10354,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Continue with unauthenticated mode - app will work fine
 
     def validate_tokens_parallel(self, tokens):
-        """Validate tokens in parallel for faster startup"""
+        """Validate tokens in parallel — runs entirely off the UI thread.
+
+        The previous implementation used ThreadPoolExecutor + as_completed
+        directly on the main thread, which blocked the event loop for the
+        duration of every network request (up to TOKEN_VALIDATION_TIMEOUT × N).
+        Now the whole executor block runs in a daemon thread and results are
+        posted back to the main thread via QTimer.singleShot.
+        """
         if not tokens:
             silent_print("No tokens to validate, using unauthenticated mode")
             # Don't update status label - keep it as "Ready" for user experience
@@ -10265,42 +10412,63 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Token validation error: {e}")
                 return None, None
 
-        # Use ThreadPoolExecutor for parallel validation
-        with ThreadPoolExecutor(max_workers=min(len(tokens), MAX_CONCURRENT_REQUESTS)) as executor:
-            # Submit all token validation tasks
-            future_to_token = {executor.submit(validate_single_token, token): token for token in tokens}
+        def _run_validation():
+            """Background thread body — runs the executor and posts results."""
+            try:
+                # Use ThreadPoolExecutor for parallel validation
+                with ThreadPoolExecutor(max_workers=min(len(tokens), MAX_CONCURRENT_REQUESTS)) as executor:
+                    # Submit all token validation tasks
+                    future_to_token = {executor.submit(validate_single_token, token): token for token in tokens}
 
-            # Process results as they complete
-            for future in as_completed(future_to_token):
-                token, username = future.result()
-                if token is not None:
-                    # Found a working token, cancel other tasks and proceed
-                    silent_print(f"Found working token for user: {username}")
-                    # Don't update status label - keep it as "Ready" for user experience
+                    # Process results as they complete
+                    for future in as_completed(future_to_token):
+                        token, username = future.result()
+                        if token is not None:
+                            # Found a working token, cancel other tasks and proceed
+                            silent_print(f"Found working token for user: {username}")
 
-                    # Cancel remaining tasks
-                    for remaining_future in future_to_token:
-                        if not remaining_future.done():
-                            remaining_future.cancel()
+                            # Cancel remaining tasks
+                            for remaining_future in future_to_token:
+                                if not remaining_future.done():
+                                    remaining_future.cancel()
 
-                    # Mark token as working and proceed
-                    self.github_api.mark_token_working(token)
-                    silent_print("Background token validation completed - authenticated mode enabled")
-                    return
+                            # Deliver result to main thread
+                            def _apply_working_token(t=token):
+                                try:
+                                    self.github_api.mark_token_working(t)
+                                    silent_print("Background token validation completed - authenticated mode enabled")
+                                except Exception as apply_err:
+                                    silent_print(f"Error applying working token: {apply_err}")
 
-        # If we get here, no tokens worked
-        silent_print("All tokens failed validation, using unauthenticated mode")
-        # Try with at least one token anyway, in case validation was too strict
-        if tokens:
-            silent_print("Attempting to use first token despite validation failure")
-            # Check if token already has prefix to avoid double-prefixing
-            first_token = tokens[0]
-            if not first_token.startswith('github_pat_'):
-                first_token = f"github_pat_{first_token}"
-            self.github_api = GitHubAPI([first_token])
-            silent_print("Background token validation completed - fallback mode enabled")
-        else:
-            silent_print("Background token validation completed - unauthenticated mode enabled")
+                            QTimer.singleShot(0, _apply_working_token)
+                            return
+
+                # If we get here, no tokens worked
+                silent_print("All tokens failed validation, using unauthenticated mode")
+
+                def _apply_fallback():
+                    try:
+                        if tokens:
+                            silent_print("Attempting to use first token despite validation failure")
+                            first_token = tokens[0]
+                            if not first_token.startswith('github_pat_'):
+                                first_token = f"github_pat_{first_token}"
+                            self.github_api = GitHubAPI([first_token])
+                            silent_print("Background token validation completed - fallback mode enabled")
+                        else:
+                            silent_print("Background token validation completed - unauthenticated mode enabled")
+                    except Exception as fb_err:
+                        silent_print(f"Error in token fallback: {fb_err}")
+
+                QTimer.singleShot(0, _apply_fallback)
+
+            except Exception as e:
+                silent_print(f"Token validation thread error: {e}")
+
+        # Run the entire validation off the UI thread
+        validation_thread = threading.Thread(target=_run_validation, daemon=True)
+        validation_thread.start()
+
 
     def finish_data_loading(self, working_tokens):
         """Complete data loading with working tokens"""
@@ -10919,7 +11087,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         # Reddit button - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
-        reddit_text = f"📱 r/innioasis{seasonal_emoji}" if seasonal_emoji else "📱 r/innioasis"
+        reddit_text = f"📱 r/innioasismodders{seasonal_emoji}" if seasonal_emoji else "📱 r/innioasismodders"
         reddit_btn = QPushButton(reddit_text)
         # Use completely native styling - no custom stylesheet
         reddit_btn.setCursor(Qt.PointingHandCursor)
@@ -14282,7 +14450,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if package.get('repo') == repo
         ]
         resolved = ''
-        # Shared repos (e.g. y1-stock-rom) have separate Y1/Y2 manifest entries — match selected model
+        # Shared repos (e.g. y1-stock-rom) have separate Y1/Y2 manifest entries - match selected model
         if selected_model:
             for package in matches:
                 pd = (package.get('device') or '').strip()
@@ -14870,7 +15038,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     </style>
                 </head>
                 <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
-                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Please select <strong style="color: {text_color} !important;">Browse Files</strong> to begin, or wait for a connection to the online firmware directory.</p>
+                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Please wait while we fetch the latest available software, or select <strong style="color: {text_color} !important;">Browse Files</strong> to install from a .zip file</p>
                     {online_message}
                 </body>
                 </html>
@@ -15800,7 +15968,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         package_device=package_device, repo=selected_repo, tag_name=tag_name
                     )
                     if not variant:
-                        # No ROM for this type/resolution combination – skip this row
+                        # No ROM for this type/resolution combination - skip this row
                         continue
                     
                     variant_asset = variant.get('asset', {})
@@ -15842,7 +16010,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     
                     silent_print(f"Added release to UI: {tag_name} ({resolution}, Type {variant_type})")
             else:
-                # Non-ROM or legacy single-rom.zip releases – keep existing single-row behavior
+                # Non-ROM or legacy single-rom.zip releases - keep existing single-row behavior
                 display_text = base_header
                 if date_line:
                     display_text += date_line
@@ -17482,9 +17650,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.about_btn_base_text = f"☕ {label}"
 
     def open_reddit_link(self):
-        """Open the r/innioasis subreddit in the default browser"""
+        """Open the r/innioasismodders subreddit in the default browser"""
         import webbrowser
-        webbrowser.open("https://reddit.com/r/innioasis")
+        webbrowser.open(SUBREDDIT_URL)
 
     def load_about_content(self):
         """Load about content from local file only - remote loading DISABLED to prevent hang"""
@@ -17727,24 +17895,34 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.line_display_timer.start(3000)
 
     def is_online(self):
-        """Check if we have an active internet connection (non-blocking check)"""
+        """Return whether the machine appears online.
+
+        Cached for a few seconds so repeated callers during startup (release list
+        populate, token path, etc.) do not each pay a multi-second socket stall
+        on the UI thread. Timeouts are short on purpose.
+        """
+        now = time.monotonic()
+        cache = getattr(self, "_online_status_cache", None)
+        # 8s TTL covers the busy startup window without going stale for long.
+        if cache is not None and (now - cache[0]) < 8.0:
+            return cache[1]
+
+        online = False
         try:
             import socket
-            # Try to connect to a reliable DNS server (Google's public DNS)
-            # Use a short timeout to avoid blocking
-            socket.setdefaulttimeout(1)
-            socket.create_connection(("8.8.8.8", 53), timeout=1)
-            return True
-        except (socket.error, OSError):
-            # Also try GitHub (actual service we use)
+            # Prefer a single short probe; avoid stacked 1s+1s freezes on the UI thread.
+            socket.create_connection(("8.8.8.8", 53), timeout=0.25)
+            online = True
+        except (socket.error, OSError, Exception):
             try:
-                socket.create_connection(("github.com", 443), timeout=1)
-                return True
-            except (socket.error, OSError):
-                return False
-        finally:
-            # Reset timeout
-            socket.setdefaulttimeout(None)
+                import socket
+                socket.create_connection(("1.1.1.1", 53), timeout=0.25)
+                online = True
+            except (socket.error, OSError, Exception):
+                online = False
+
+        self._online_status_cache = (now, online)
+        return online
 
     def detect_dark_mode(self):
         """Detect if the system is in dark mode"""
@@ -18092,7 +18270,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             (
                 "Ryan and his partner are welcoming a baby in December. "
                 "Contributions of any size help us continue work on Updater, firmware mods, "
-                "and the Innioasis Y1 Themes gallery—thank you for considering it."
+                "and the Innioasis Y1 Themes gallery. Thank you for considering it."
             ),
             (
                 "With a baby due in December for one of our developers and his partner, "
@@ -18107,7 +18285,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             ),
             (
                 "Your support helps us keep building Innioasis Updater, community firmware mods, "
-                "and the Innioasis Y1 Themes gallery—thank you for considering a contribution."
+                "and the Innioasis Y1 Themes gallery. Thank you for considering a contribution."
             ),
             (
                 "If Innioasis Updater has been useful to you, contributions help fund ongoing work "
@@ -18733,9 +18911,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             
         Returns:
             tuple: (has_connection: bool, connection_type: str or None, usb_drive: str or None)
-                - has_connection: True if ADB or USB drive is available
-                - connection_type: "usb_storage", "adb", or None
-                - usb_drive: USB drive path if available, None otherwise
+               - has_connection: True if ADB or USB drive is available
+               - connection_type: "usb_storage", "adb", or None
+               - usb_drive: USB drive path if available, None otherwise
         """
         # First check for existing connections
         usb_drive = self._detect_usb_storage_drive()
@@ -18970,67 +19148,13 @@ class FirmwareDownloaderGUI(QMainWindow):
     def is_device_fast_update_enabled(self):
         """Check if device is fast update enabled (rooted ADB device connected by any means - USB, Wi-Fi, or both)"""
         try:
-            # Find ADB executable
-            adb_path = self.find_adb_executable()
-            if not adb_path:
-                return False
-            
-            # Prepare environment with proper PATH for macOS
-            env = os.environ.copy()
-            if platform.system() == "Darwin":
-                homebrew_paths = ["/opt/homebrew/bin", "/usr/local/bin"]
-                current_path = env.get("PATH", "")
-                for brew_path in homebrew_paths:
-                    if brew_path not in current_path:
-                        env["PATH"] = f"{brew_path}:{env.get('PATH', '')}"
-            
-            # Check if device is connected via ADB (any connection type - USB, Wi-Fi, or both)
-            result = subprocess.run(
-                [str(adb_path), 'devices'],
-                capture_output=True,
-                text=True,
-                timeout=5,
-                env=env,
-                creationflags=subprocess.CREATE_NO_WINDOW if platform.system() == "Windows" else 0
-            )
-            
-            # Parse device list and prefer USB device (0123456789ABCDEF) when both are available
-            target_device_id = "0123456789ABCDEF"
-            devices = []
-            usb_device = None
-            wireless_device = None
-            
-            for line in result.stdout.split('\n'):
-                if '\tdevice' in line:
-                    device_id = line.split('\t')[0]
-                    devices.append(device_id)
-                    # Prefer USB device when both are available
-                    if device_id == target_device_id:
-                        usb_device = device_id
-                    elif ':' in device_id and wireless_device is None:
-                        wireless_device = device_id
-            
-            if not devices:
-                return False
-            
-            # Select device: prefer USB when both are available, otherwise use any available device
-            selected_device = usb_device if usb_device else (wireless_device if wireless_device else devices[0])
-            
-            # Check if device is rooted (using selected device)
-            root_check_result = subprocess.run(
-                [str(adb_path), '-s', selected_device, 'shell', 'su', '-c', 'id'],
-                capture_output=True,
-                text=True,
-                timeout=5,
-                env=env,
-                creationflags=subprocess.CREATE_NO_WINDOW if platform.system() == "Windows" else 0
-            )
-            
-            device_is_rooted = (root_check_result.returncode == 0 and 'uid=0' in root_check_result.stdout)
-            
-            # Fast Update is enabled if device is rooted (script can be installed automatically)
-            return device_is_rooted
-            
+            # Use cached ADB status from broker instead of blocking UI thread with subprocess calls
+            if hasattr(self, 'adb_status_broker') and self.adb_status_broker:
+                snapshot = self.adb_status_broker.get_snapshot() or {}
+                status = snapshot.get('status', 'no_adb')
+                metadata = snapshot.get('metadata', {})
+                return status == 'adb_root' or bool(metadata.get('rooted', False))
+            return False
         except Exception as e:
             silent_print(f"Error checking fast update enabled status: {e}")
             return False
@@ -22283,10 +22407,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Continue Smart Drop workflow after asynchronous status lookup completes.
         
         Gracefully selects the appropriate transfer method:
-        - USB Storage Mode: If detected, uses file system access (works for file transfers)
-        - ADB over Wi-Fi: If available and USB Storage Mode is off, uses ADB Wi-Fi
-        - ADB over USB: If available and USB Storage Mode is off, uses ADB USB
-        - Fallback: Prompts user to use USB Storage Mode if no ADB available
+       - USB Storage Mode: If detected, uses file system access (works for file transfers)
+       - ADB over Wi-Fi: If available and USB Storage Mode is off, uses ADB Wi-Fi
+       - ADB over USB: If available and USB Storage Mode is off, uses ADB USB
+       - Fallback: Prompts user to use USB Storage Mode if no ADB available
         """
         status = snapshot.get('status', 'no_adb')
         connected_device_id = snapshot.get('device_id')
@@ -22964,7 +23088,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             status_label.setText(
                 "Select a network and click Connect."
                 if networks
-                else "No networks detected yet—check your router or try again."
+                else "No networks detected yet. Check your router or try again."
             )
             refresh_btn.setEnabled(True)
         
@@ -23583,7 +23707,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             if all(context_cache.values()):
                 set_controls_enabled(True)
-                status_label.setText("Status: Ready—refresh to update.")
+                status_label.setText("Status: Ready. Refresh to update.")
                 dialog._usb_connected = True
                 return True
             
@@ -23631,7 +23755,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             context_cache['env'] = env
             context_cache['device_id'] = device_id
             set_controls_enabled(True)
-            status_label.setText("Status: Ready—refresh to update.")
+            status_label.setText("Status: Ready. Refresh to update.")
             dialog._usb_connected = True
             return True
         
@@ -23947,7 +24071,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     silent_print(f"Wi-Fi scan completed: found {len(networks)} networks")
                     if networks:
                         for net in networks[:3]:  # Log first 3 for debugging
-                            silent_print(f"  - {net.get('ssid', 'unknown')} ({net.get('signal', 'no signal')})")
+                            silent_print(f" - {net.get('ssid', 'unknown')} ({net.get('signal', 'no signal')})")
                     silent_print(f"Emitting networks_ready with {len(networks)} entries")
                     dialog.networks_ready.emit(networks)
                 except Exception as e:
@@ -24251,7 +24375,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         intro = QLabel(
             "Follow these quick steps on your Y1 to finish enabling wireless ADB. "
-            "Use the Next button below—each screen explains what to do before you continue."
+            "Use the Next button below. Each screen explains what to do before you continue."
         )
         intro.setWordWrap(True)
         layout.addWidget(intro)
@@ -24315,7 +24439,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if config_pushed:
             steps[2]["body"] = (
                 "In Settings you should see that <b>Run at Boot</b> is already enabled. "
-                "Confirm that root access stays granted—tap the option once if the toggle looks disabled."
+                "Confirm that root access stays granted. Tap the option once if the toggle looks disabled."
             )
         
         progress_label = QLabel()
@@ -28254,6 +28378,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Launch recovery firmware installer (platform-specific)
             self.launch_recovery_firmware_install()
 
+    def _stop_flash_tool_processes_async(self):
+        """Run flash-tool process cleanup off the UI thread (startup-safe)."""
+        if platform.system() != "Windows":
+            return
+        threading.Thread(target=self.stop_flash_tool_processes, daemon=True).start()
+
     def stop_flash_tool_processes(self):
         """Stop any running flash_tool.exe processes to prevent conflicts on Windows"""
         if platform.system() != "Windows":
@@ -28265,6 +28395,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 ["tasklist", "/FI", "IMAGENAME eq flash_tool.exe", "/FO", "CSV"],
                 capture_output=True,
                 text=True,
+                timeout=5,
                 creationflags=subprocess.CREATE_NO_WINDOW
             )
             
@@ -28290,6 +28421,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                             subprocess.run(
                                 ["taskkill", "/PID", pid, "/F"],
                                 capture_output=True,
+                                timeout=5,
                                 creationflags=subprocess.CREATE_NO_WINDOW
                             )
                         except Exception as e:
@@ -28525,7 +28657,7 @@ echo "=========================================="
 echo ""
 echo "This terminal window will now run the necessary command needed to install your chosen firmware with MTKclient (mtk.py)"
 echo ""
-echo "Thank you to u/wa-a-melyn from r/innioasis for documenting this process in an accessible way."
+echo "Thank you to u/wa-a-melyn from r/innioasismodders for documenting this process in an accessible way."
 echo ""
 echo "IMPORTANT INSTRUCTIONS:"
 echo "1. Make sure your {device_label} device is disconnected from the USB port"
