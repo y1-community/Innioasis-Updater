@@ -7194,7 +7194,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             # Don't steal focus / block the main window during remaining startup work.
             dialog = QDialog(self)
-            dialog.setWindowTitle("Solar is available for Y1")
+            dialog.setWindowTitle("Testers needed: Solar for Y1")
             dialog.setMinimumWidth(500)
             dialog.setWindowModality(Qt.NonModal)
             dialog.setModal(False)
@@ -7204,10 +7204,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             layout.setContentsMargins(16, 16, 16, 16)
             layout.setSpacing(12)
 
-            solar_link = f"<a href='{SOLAR_PROJECT_URL}'>Solar</a>"
+            solar_link = f"<a href='{SOLAR_PROJECT_URL}'>The Solar Project</a>"
 
             body = QLabel(
-                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} is available in Innioasis Updater</h3>"
+                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} are looking for testers to leave feedback on their new firmware</h3>"
                 f"<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
                 f"{solar_link} is a custom firmware for Y1 that turns on Wi-Fi and unlocks lots of new features. "
                 f"You can install it right here in Updater.</p>"
@@ -7224,7 +7224,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 "<li style='margin-bottom: 0;'>Podcasts, Quick Access Menu, and more</li>"
                 "</ul>"
                 "<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
-                "<i>Solar is still a work in progress and gets better all the time. Y2 support is coming soon.</i></p>"
+                "<i>Solar is still a work in progress and gets better all the time. You will encounter bugs and slowdowns</i></p>"
                 "<p style='margin-top: 0; margin-bottom: 0; line-height: 1.45;'>"
                 "Pick <b>Solar</b> from the <b>Software</b> dropdown, then hit "
                 "<b>Install / Restore</b>.</p>"
