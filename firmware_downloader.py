@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.10"
+APP_VERSION = "1.9.9.9"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
@@ -2041,6 +2041,15 @@ class ConfigDownloader:
             root = ET.fromstring(response.text)
             packages = self.parse_manifest_xml(root)
             silent_print(f"Successfully loaded {len(packages)} packages from remote manifest")
+            
+            # Save the raw XML to slidia_manifest.xml so the app uses the latest version on next startup
+            try:
+                local_manifest_path = _FIRMWARE_APP_DIR / "slidia_manifest.xml"
+                with open(local_manifest_path, 'w', encoding='utf-8') as f:
+                    f.write(response.text)
+            except Exception as e:
+                silent_print(f"Error caching local manifest XML: {e}")
+                
             # Cache the packages
             save_cache(MANIFEST_CACHE_FILE, packages)
             return packages
@@ -7138,10 +7147,23 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._update_check_timer.timeout.connect(self._run_independent_update_check)
         self._update_check_timer.start(300000)  # 5 minutes
         
+        # Periodically refresh the manifest every 15 minutes (non-blocking)
+        self.manifest_refresh_timer = QTimer(self)
+        self.manifest_refresh_timer.timeout.connect(self._periodic_manifest_refresh)
+        self.manifest_refresh_timer.start(15 * 60 * 1000)  # 15 minutes
+        
         # Initialize status clear timer for auto-clearing orphaned messages
         self.status_clear_timer = None
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
+
+    def _periodic_manifest_refresh(self):
+        """Periodically grab the latest slidia_manifest.xml file in the background"""
+        try:
+            if hasattr(self, 'config_downloader'):
+                self.config_downloader.refresh_remote_manifest_async()
+        except Exception as e:
+            silent_print(f"Periodic manifest refresh failed: {e}")
 
     def _schedule_startup_notice(self):
         """Show the Solar notice once, after the first load pass yields the UI thread."""
@@ -10332,7 +10354,14 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Continue with unauthenticated mode - app will work fine
 
     def validate_tokens_parallel(self, tokens):
-        """Validate tokens in parallel for faster startup"""
+        """Validate tokens in parallel — runs entirely off the UI thread.
+
+        The previous implementation used ThreadPoolExecutor + as_completed
+        directly on the main thread, which blocked the event loop for the
+        duration of every network request (up to TOKEN_VALIDATION_TIMEOUT × N).
+        Now the whole executor block runs in a daemon thread and results are
+        posted back to the main thread via QTimer.singleShot.
+        """
         if not tokens:
             silent_print("No tokens to validate, using unauthenticated mode")
             # Don't update status label - keep it as "Ready" for user experience
@@ -10383,42 +10412,63 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Token validation error: {e}")
                 return None, None
 
-        # Use ThreadPoolExecutor for parallel validation
-        with ThreadPoolExecutor(max_workers=min(len(tokens), MAX_CONCURRENT_REQUESTS)) as executor:
-            # Submit all token validation tasks
-            future_to_token = {executor.submit(validate_single_token, token): token for token in tokens}
+        def _run_validation():
+            """Background thread body — runs the executor and posts results."""
+            try:
+                # Use ThreadPoolExecutor for parallel validation
+                with ThreadPoolExecutor(max_workers=min(len(tokens), MAX_CONCURRENT_REQUESTS)) as executor:
+                    # Submit all token validation tasks
+                    future_to_token = {executor.submit(validate_single_token, token): token for token in tokens}
 
-            # Process results as they complete
-            for future in as_completed(future_to_token):
-                token, username = future.result()
-                if token is not None:
-                    # Found a working token, cancel other tasks and proceed
-                    silent_print(f"Found working token for user: {username}")
-                    # Don't update status label - keep it as "Ready" for user experience
+                    # Process results as they complete
+                    for future in as_completed(future_to_token):
+                        token, username = future.result()
+                        if token is not None:
+                            # Found a working token, cancel other tasks and proceed
+                            silent_print(f"Found working token for user: {username}")
 
-                    # Cancel remaining tasks
-                    for remaining_future in future_to_token:
-                        if not remaining_future.done():
-                            remaining_future.cancel()
+                            # Cancel remaining tasks
+                            for remaining_future in future_to_token:
+                                if not remaining_future.done():
+                                    remaining_future.cancel()
 
-                    # Mark token as working and proceed
-                    self.github_api.mark_token_working(token)
-                    silent_print("Background token validation completed - authenticated mode enabled")
-                    return
+                            # Deliver result to main thread
+                            def _apply_working_token(t=token):
+                                try:
+                                    self.github_api.mark_token_working(t)
+                                    silent_print("Background token validation completed - authenticated mode enabled")
+                                except Exception as apply_err:
+                                    silent_print(f"Error applying working token: {apply_err}")
 
-        # If we get here, no tokens worked
-        silent_print("All tokens failed validation, using unauthenticated mode")
-        # Try with at least one token anyway, in case validation was too strict
-        if tokens:
-            silent_print("Attempting to use first token despite validation failure")
-            # Check if token already has prefix to avoid double-prefixing
-            first_token = tokens[0]
-            if not first_token.startswith('github_pat_'):
-                first_token = f"github_pat_{first_token}"
-            self.github_api = GitHubAPI([first_token])
-            silent_print("Background token validation completed - fallback mode enabled")
-        else:
-            silent_print("Background token validation completed - unauthenticated mode enabled")
+                            QTimer.singleShot(0, _apply_working_token)
+                            return
+
+                # If we get here, no tokens worked
+                silent_print("All tokens failed validation, using unauthenticated mode")
+
+                def _apply_fallback():
+                    try:
+                        if tokens:
+                            silent_print("Attempting to use first token despite validation failure")
+                            first_token = tokens[0]
+                            if not first_token.startswith('github_pat_'):
+                                first_token = f"github_pat_{first_token}"
+                            self.github_api = GitHubAPI([first_token])
+                            silent_print("Background token validation completed - fallback mode enabled")
+                        else:
+                            silent_print("Background token validation completed - unauthenticated mode enabled")
+                    except Exception as fb_err:
+                        silent_print(f"Error in token fallback: {fb_err}")
+
+                QTimer.singleShot(0, _apply_fallback)
+
+            except Exception as e:
+                silent_print(f"Token validation thread error: {e}")
+
+        # Run the entire validation off the UI thread
+        validation_thread = threading.Thread(target=_run_validation, daemon=True)
+        validation_thread.start()
+
 
     def finish_data_loading(self, working_tokens):
         """Complete data loading with working tokens"""
@@ -14988,7 +15038,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     </style>
                 </head>
                 <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
-                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Please select <strong style="color: {text_color} !important;">Browse Files</strong> to begin, or wait for a connection to the online firmware directory.</p>
+                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Please wait while we fetch the latest available software, or select <strong style="color: {text_color} !important;">Browse Files</strong> to install from a .zip file</p>
                     {online_message}
                 </body>
                 </html>
@@ -19098,67 +19148,13 @@ class FirmwareDownloaderGUI(QMainWindow):
     def is_device_fast_update_enabled(self):
         """Check if device is fast update enabled (rooted ADB device connected by any means - USB, Wi-Fi, or both)"""
         try:
-            # Find ADB executable
-            adb_path = self.find_adb_executable()
-            if not adb_path:
-                return False
-            
-            # Prepare environment with proper PATH for macOS
-            env = os.environ.copy()
-            if platform.system() == "Darwin":
-                homebrew_paths = ["/opt/homebrew/bin", "/usr/local/bin"]
-                current_path = env.get("PATH", "")
-                for brew_path in homebrew_paths:
-                    if brew_path not in current_path:
-                        env["PATH"] = f"{brew_path}:{env.get('PATH', '')}"
-            
-            # Check if device is connected via ADB (any connection type - USB, Wi-Fi, or both)
-            result = subprocess.run(
-                [str(adb_path), 'devices'],
-                capture_output=True,
-                text=True,
-                timeout=5,
-                env=env,
-                creationflags=subprocess.CREATE_NO_WINDOW if platform.system() == "Windows" else 0
-            )
-            
-            # Parse device list and prefer USB device (0123456789ABCDEF) when both are available
-            target_device_id = "0123456789ABCDEF"
-            devices = []
-            usb_device = None
-            wireless_device = None
-            
-            for line in result.stdout.split('\n'):
-                if '\tdevice' in line:
-                    device_id = line.split('\t')[0]
-                    devices.append(device_id)
-                    # Prefer USB device when both are available
-                    if device_id == target_device_id:
-                        usb_device = device_id
-                    elif ':' in device_id and wireless_device is None:
-                        wireless_device = device_id
-            
-            if not devices:
-                return False
-            
-            # Select device: prefer USB when both are available, otherwise use any available device
-            selected_device = usb_device if usb_device else (wireless_device if wireless_device else devices[0])
-            
-            # Check if device is rooted (using selected device)
-            root_check_result = subprocess.run(
-                [str(adb_path), '-s', selected_device, 'shell', 'su', '-c', 'id'],
-                capture_output=True,
-                text=True,
-                timeout=5,
-                env=env,
-                creationflags=subprocess.CREATE_NO_WINDOW if platform.system() == "Windows" else 0
-            )
-            
-            device_is_rooted = (root_check_result.returncode == 0 and 'uid=0' in root_check_result.stdout)
-            
-            # Fast Update is enabled if device is rooted (script can be installed automatically)
-            return device_is_rooted
-            
+            # Use cached ADB status from broker instead of blocking UI thread with subprocess calls
+            if hasattr(self, 'adb_status_broker') and self.adb_status_broker:
+                snapshot = self.adb_status_broker.get_snapshot() or {}
+                status = snapshot.get('status', 'no_adb')
+                metadata = snapshot.get('metadata', {})
+                return status == 'adb_root' or bool(metadata.get('rooted', False))
+            return False
         except Exception as e:
             silent_print(f"Error checking fast update enabled status: {e}")
             return False
