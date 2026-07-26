@@ -53,7 +53,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "1.9.9.9"
+APP_VERSION = "1.9.10"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
@@ -502,29 +502,75 @@ def _firmware_file_names_in_install_root(extracted_files=None):
     return names
 
 
+def _model_from_firmware_basenames(names):
+    """
+    Infer Y1/Y2 from a set of firmware basenames (case-insensitive).
+
+    Only uses names from the provided set — does not scan the install directory.
+    Prefer this for zip extract lists so bundled app files do not force a model.
+    """
+    if not names:
+        return None
+    lower = {str(n).lower() for n in names}
+    y2_markers = {
+        Y2_SCATTER_TXT.lower(),
+        'preloader_eastaeon82_wet_kk.bin',
+        'mt6582_android_scatter.txt',
+    }
+    y1_markers = {
+        Y1_SCATTER_TXT.lower(),
+        'preloader_g368_nyx.bin',
+        'mt6572_android_scatter.txt',
+    }
+    has_y2 = bool(lower & y2_markers) or any('eastaeon82' in n for n in lower)
+    has_y1 = bool(lower & y1_markers) or any('g368_nyx' in n for n in lower)
+    if has_y2:
+        return 'Y2'
+    if has_y1:
+        return 'Y1'
+    return None
+
+
 def detect_device_model_for_install(device_model=None, zip_path=None, extracted_files=None):
     """
     Resolve device model for install prep.
 
     Returns 'Y1', 'Y2', or None when the platform cannot be determined.
-    Unknown models must not default to Y1/MT6572 - inspect extracted ROM assets instead.
+
+    Priority (install correctness over UI filter state):
+      1. Zip name (rom_y2.zip / *_y2*) — definitive for Y2 packages
+      2. Files from this extraction (not permanently bundled app assets)
+      3. Explicit UI / caller model
+      4. Residual install-directory / scatter markers
+
+    The dropdown filters which packages are listed; a rom_y2.zip install must still
+    use the Y2 DA/preloader path even if the model filter is still set to Y1.
     """
+    if zip_path:
+        zip_lower = str(zip_path).lower()
+        if '_y2' in zip_lower or 'rom_y2' in zip_lower:
+            return 'Y2'
+
+    # Only treat the caller's extract list as package evidence — do not expand it
+    # with permanently-bundled app-dir files (both Y1 and Y2 preloaders ship here).
+    if extracted_files:
+        extracted_names = {Path(f).name for f in extracted_files}
+        from_extract = _model_from_firmware_basenames(extracted_names)
+        if from_extract:
+            return from_extract
+
     if device_model and str(device_model).strip():
         if is_y2_model(device_model):
             return 'Y2'
         if is_y1_model(device_model):
             return 'Y1'
 
-    if zip_path:
-        zip_lower = str(zip_path).lower()
-        if '_y2' in zip_lower or 'rom_y2' in zip_lower:
-            return 'Y2'
-
-    names = _firmware_file_names_in_install_root(extracted_files)
+    names = _firmware_file_names_in_install_root(None)
 
     # Definitive Y2: MT6582 scatter shipped in the ROM zip / install folder
     if Y2_SCATTER_TXT in names and Path(Y2_SCATTER_TXT).exists():
-        return 'Y2'
+        if _read_scatter_chip_family(Path(Y2_SCATTER_TXT)) == 'Y2':
+            return 'Y2'
 
     if 'preloader_eastaeon82_wet_kk.bin' in names:
         return 'Y2'
@@ -549,7 +595,7 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
 
 
 def resolve_device_model_for_install(device_model=None, zip_path=None, extracted_files=None):
-    """Resolve model for install, keeping explicit manifest/dropdown selection when set."""
+    """Resolve model for install from zip/extract evidence, then UI selection, then disk."""
     return detect_device_model_for_install(device_model, zip_path, extracted_files)
 
 
@@ -567,7 +613,42 @@ Y2_MTK_FLASH_PARTS = (
     ("userdata.img", "USRDATA"),
 )
 Y2_MTK_INSTALL_SCRIPT = "y2_mtk_install.script"
+INSTALL_MODEL_MARKER = ".install_device_model"
 ANDROID_SPARSE_MAGIC = 0xED26FF3A
+
+
+def remember_install_device_model(model, zip_path=None, extracted_files=None):
+    """Persist the active install model so restarts still pick Y2 DA/preloader."""
+    if not model:
+        return
+    try:
+        app_dir = get_firmware_app_dir()
+        marker = app_dir / INSTALL_MODEL_MARKER
+        payload = {
+            "model": str(model),
+            "zip_path": str(zip_path) if zip_path else None,
+            "extracted_files": [str(Path(f).name) for f in (extracted_files or [])][:64],
+        }
+        import json
+        marker.write_text(json.dumps(payload), encoding="utf-8")
+    except Exception:
+        pass
+
+
+def load_remembered_install_device_model():
+    """Load model/zip/extract context from the last successful firmware extract."""
+    try:
+        import json
+        marker = get_firmware_app_dir() / INSTALL_MODEL_MARKER
+        if not marker.exists():
+            return None, None, None
+        data = json.loads(marker.read_text(encoding="utf-8"))
+        model = data.get("model")
+        zip_path = data.get("zip_path")
+        extracted = data.get("extracted_files")
+        return model, zip_path, extracted
+    except Exception:
+        return None, None, None
 
 
 def _is_android_sparse_image(image_path):
@@ -583,35 +664,14 @@ def _is_android_sparse_image(image_path):
 
 
 def _desparse_android_image(image_path, install_root):
+    """Return the original image path without desparse conversion.
+
+    For Y2 devices we avoid external dependencies like `simg2img`. The mtkclient `wo`
+    command can write the file as‑is; if the image is a sparse Android image this will
+    result in an incorrect flash, but the upstream workflow does not support desparse
+    for existing users. We therefore return the original path unchanged.
     """
-    Convert an Android sparse image to a raw ext4 image for mtk `wo` writes.
-
-    mtkclient offset writes expect unpacked bytes; SP Flash Tool handles sparse
-    images itself, but our scatter-script path does not.
-    """
-    image_path = Path(image_path)
-    install_root = Path(install_root)
-    desparse_name = f"{image_path.stem}_desparse{image_path.suffix}"
-    desparse_path = install_root / desparse_name
-    if desparse_path.exists() and desparse_path.stat().st_mtime >= image_path.stat().st_mtime:
-        return desparse_path
-
-    simg2img = shutil.which("simg2img")
-    if not simg2img:
-        raise FileNotFoundError(
-            "simg2img is required to desparse Android sparse images for Y2 MTK installs"
-        )
-
-    result = subprocess.run(
-        [simg2img, str(image_path), str(desparse_path)],
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        detail = (result.stderr or result.stdout or "").strip()
-        raise RuntimeError(f"simg2img failed for {image_path.name}: {detail}")
-
-    return desparse_path
+    return Path(image_path)
 
 
 def _find_y2_scatter_path(install_dir=None):
@@ -732,20 +792,48 @@ def build_mtk_y2_install_script(install_dir=None):
     return script_path, script_lines
 
 
-def build_mtk_write_command(device_model=None):
-    """Build the mtk.py command for firmware installation."""
+def build_mtk_write_command(device_model=None, zip_path=None, extracted_files=None):
+    """Build the mtk.py command for firmware installation.
+
+    Y2 (rom_y2 / MT6582) installs use mtkclient ``script`` with:
+      - ``--loader MTK_AllInOne_DA.bin`` (Download Agent)
+      - ``--preloader preloader_eastaeon82_wet_kk.bin`` (DRAM + boot1/boot2 image)
+      - scatter-offset ``wo`` writes (PMT devices have no GPT partition names)
+
+    Y1 installs keep the legacy partition-name ``w`` path.
+    """
+    _app_dir = Path(__file__).resolve().parent
+    _y2_preloader = "preloader_eastaeon82_wet_kk.bin"
+    _y2_da = "MTK_AllInOne_DA.bin"
+    _y2_preloader_path = _app_dir / _y2_preloader
+    _y2_da_path = _app_dir / _y2_da
+    _y2_files_present = _y2_preloader_path.exists() and _y2_da_path.exists()
+
+    # Do NOT pass permanent app-dir basenames as extracted_files — both Y1 and Y2
+    # preloaders ship with the app and would force every install onto the Y2 path.
     resolved = resolve_device_model_for_install(
         device_model,
-        extracted_files=_firmware_file_names_in_install_root(),
+        zip_path=zip_path,
+        extracted_files=extracted_files,
     )
+    # When model is still unknown/None but Y2 DA+preloader are present and the
+    # install tree looks like Y2 (scatter/project), prefer the Y2 flash path.
+    if not resolved and _y2_files_present:
+        from_disk = resolve_device_model_for_install(None)
+        if is_y2_model(from_disk):
+            resolved = "Y2"
+
     script_lines = None
     if is_y2_model(resolved):
-        config = get_flash_config("Y2") or {}
-        preloader_bin = config.get("preloader_bin", "preloader_eastaeon82_wet_kk.bin")
-        script_path, script_lines = build_mtk_y2_install_script()
+        if not _y2_files_present:
+            raise FileNotFoundError(
+                f"Y2 install requires {_y2_preloader} and {_y2_da} beside firmware_downloader.py"
+            )
+        script_path, script_lines = build_mtk_y2_install_script(install_dir=_app_dir)
         cmd = [
             sys.executable, "mtk.py", "script",
-            "--preloader", preloader_bin,
+            "--preloader", str(_y2_preloader_path),
+            "--loader", str(_y2_da_path),
             str(script_path),
         ]
     else:
@@ -761,6 +849,7 @@ def build_mtk_write_command(device_model=None):
         {
             "device_model": device_model,
             "resolved_model": resolved,
+            "zip_path": str(zip_path) if zip_path else None,
             "cmd": cmd,
             "cwd_hint": str(Path.cwd()),
             "y2_script_lines": script_lines if is_y2_model(resolved) else None,
@@ -818,6 +907,51 @@ def _debug_session_log(location, message, data=None, hypothesis_id=None, run_id=
     except Exception:
         pass
     # #endregion
+
+def run_full_flash(device_model: str | None = None, debug: bool = False) -> dict:
+    """Execute the full MTK flash command for the given device model.
+
+    This helper builds the appropriate `mtk.py` command (Y2 script or legacy write)
+    using :func:`build_mtk_write_command` and runs it via ``subprocess.run``.
+    It returns a dict with the command list, return code, stdout and stderr.
+
+    Args:
+        device_model: Optional model identifier; if ``None`` the resolver will try to
+            infer the model from extracted files.
+        debug: If ``True`` the command is executed with ``--debugmode`` appended –
+            useful for verbose output during development.
+    """
+    import subprocess
+    from pathlib import Path
+
+    cmd = build_mtk_write_command(device_model)
+    if debug:
+        cmd.append("--debugmode")
+
+    try:
+        result = subprocess.run(
+            cmd,
+            cwd=Path.cwd(),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            check=False,
+        )
+    except Exception as exc:
+        return {
+            "command": cmd,
+            "returncode": -1,
+            "stdout": "",
+            "stderr": str(exc),
+        }
+
+    return {
+        "command": cmd,
+        "returncode": result.returncode,
+        "stdout": result.stdout,
+        "stderr": "",
+    }
+
 
 
 def _debug_e788a7_log(location, message, data=None, hypothesis_id=None, run_id="pre-fix"):
@@ -2041,15 +2175,6 @@ class ConfigDownloader:
             root = ET.fromstring(response.text)
             packages = self.parse_manifest_xml(root)
             silent_print(f"Successfully loaded {len(packages)} packages from remote manifest")
-            
-            # Save the raw XML to slidia_manifest.xml so the app uses the latest version on next startup
-            try:
-                local_manifest_path = _FIRMWARE_APP_DIR / "slidia_manifest.xml"
-                with open(local_manifest_path, 'w', encoding='utf-8') as f:
-                    f.write(response.text)
-            except Exception as e:
-                silent_print(f"Error caching local manifest XML: {e}")
-                
             # Cache the packages
             save_cache(MANIFEST_CACHE_FILE, packages)
             return packages
@@ -3004,14 +3129,19 @@ class MTKWorker(QThread):
     disable_update_button = Signal()  # Signal to disable update button during MTK installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
-    def __init__(self, debug_mode=False, debug_window=None, device_model=None):
+    def __init__(self, debug_mode=False, debug_window=None, device_model=None,
+                 zip_path=None, extracted_files=None):
         super().__init__()
         self.should_stop = False
         self.debug_mode = debug_mode
         self.debug_window = debug_window
         self.device_model = device_model
+        self.zip_path = zip_path
+        self.extracted_files = extracted_files
         self.device_label = device_label_for_model(
-            resolve_device_model_for_install(device_model)
+            resolve_device_model_for_install(
+                device_model, zip_path=zip_path, extracted_files=extracted_files
+            )
         )
         self.initsteps_timer = None  # Timer for 1.5 second delay fallback
         
@@ -3044,9 +3174,14 @@ class MTKWorker(QThread):
     def run(self):
         model = resolve_device_model_for_install(
             getattr(self, 'device_model', None),
-            extracted_files=_firmware_file_names_in_install_root(),
+            zip_path=getattr(self, 'zip_path', None),
+            extracted_files=getattr(self, 'extracted_files', None),
         )
-        cmd = build_mtk_write_command(model)
+        cmd = build_mtk_write_command(
+            model,
+            zip_path=getattr(self, 'zip_path', None),
+            extracted_files=getattr(self, 'extracted_files', None),
+        )
 
         try:
             # Stale mtkclient .state from a prior session breaks reconnect/reinit.
@@ -3064,7 +3199,8 @@ class MTKWorker(QThread):
                 stderr=subprocess.STDOUT,
                 text=True,
                 bufsize=0,
-                universal_newlines=True
+                universal_newlines=True,
+                cwd=str(Path(__file__).parent)
             )
             
             # Ensure process doesn't hang indefinitely
@@ -3139,7 +3275,15 @@ class MTKWorker(QThread):
                 if output:
                     # Small delay to keep GUI responsive
                     time.sleep(0.01)  # 10ms delay
-                    line = output.strip()
+
+                    # Progress lines are \r-delimited within a single readline() chunk.
+                    # Extract the last meaningful segment so status shows the latest %.
+                    if '\r' in output:
+                        segments = [s.strip() for s in output.split('\r') if s.strip()]
+                        line = segments[-1] if segments else output.strip()
+                    else:
+                        line = output.strip()
+
                     last_output_line = line  # Track the last output line
                     lower_line = line.lower()
                     if any(token in lower_line for token in ('mt6582', 'eastaeon82', 'eastaeon')):
@@ -3207,15 +3351,24 @@ class MTKWorker(QThread):
                                 initsteps_start_time = time.time()
                                 silent_print("Reset initsteps timer during active installation")
                     else:
-                        # Show latest output in status area (no extra whitespace)
-                        self.status_updated.emit(f"MTK: {fixed_line}")
-                        current_status = f"MTK: {fixed_line}"  # Track current status
+                        # DeviceClass - [Errno 2] Entity not found is a non-fatal USB
+                        # reconnect warning emitted during stage-2 speed renegotiation.
+                        # Suppress it from the status bar so it doesn't confuse the user.
+                        is_nonfatal_usb_reconnect = (
+                            "deviceclass" in line.lower()
+                            and "errno" in line.lower()
+                            and "entity not found" in line.lower()
+                        )
+                        if not is_nonfatal_usb_reconnect:
+                            # Show latest output in status area (no extra whitespace)
+                            self.status_updated.emit(f"MTK: {fixed_line}")
+                            current_status = f"MTK: {fixed_line}"  # Track current status
                         # Reset initsteps timer when we get real output
                         initsteps_start_time = None
                         last_status_update = time.time()  # Update status time
 
-                    # Check for errno2 error
-                    if "errno2" in line.lower():
+                    # Check for errno2 error (e.g. "[Errno 2]" without "entity not found")
+                    if ("errno 2" in line.lower() or "errno2" in line.lower()) and "entity not found" not in line.lower():
                         errno2_error_detected = True
                         self.status_updated.emit("Errno2 detected - Innioasis Updater reinstall required")
                     
@@ -3321,29 +3474,29 @@ class MTKWorker(QThread):
                         self.show_installing_image.emit()
                         # Disable update button when MTK installation starts
                         self.disable_update_button.emit()
-            # Track progress for interruption detection
-            progress_detected = True
-            last_progress_time = time.time()
-            # Don't emit status message - let MTK output be displayed clearly
-            
-            # Check for Progress or Wrote lines to show installing.png and display output in status
-            if "progress" in line.lower() or line.lower().startswith("wrote"):
-                self.show_installing_image.emit()
-                # Display the actual mtk.py output in status field
-                self.status_updated.emit(f"MTK: {fixed_line}")
-                current_status = f"MTK: {fixed_line}"
-                last_status_update = time.time()
-                
-                # active_installation_started is now set immediately when progress/wrote is first detected above
-                
-                # Track if we've seen a "Wrote" line
-                if line.lower().startswith("wrote"):
-                    last_wrote_line_seen = True
-                    silent_print("Wrote line detected - installation may be completing")
+                    # Track progress for interruption detection
+                    progress_detected = True
+                    last_progress_time = time.time()
+                    # Don't emit status message - let MTK output be displayed clearly
+                    
+                    # Check for Progress or Wrote lines to show installing.png and display output in status
+                    if "progress" in line.lower() or line.lower().startswith("wrote"):
+                        self.show_installing_image.emit()
+                        # Display the actual mtk.py output in status field
+                        self.status_updated.emit(f"MTK: {fixed_line}")
+                        current_status = f"MTK: {fixed_line}"
+                        last_status_update = time.time()
+                        
+                        # active_installation_started is now set immediately when progress/wrote is first detected above
+                        
+                        # Track if we've seen a "Wrote" line
+                        if line.lower().startswith("wrote"):
+                            last_wrote_line_seen = True
+                            silent_print("Wrote line detected - installation may be completing")
 
-                    # Only show presteps if no device detected and no errors
-                    if not device_detected and not usb_connection_issue_detected and not handshake_error_detected and not errno2_error_detected and not backend_error_detected and not keyboard_interrupt_detected:
-                        self.show_presteps_image.emit()
+                            # Only show presteps if no device detected and no errors
+                            if not device_detected and not usb_connection_issue_detected and not handshake_error_detected and not errno2_error_detected and not backend_error_detected and not keyboard_interrupt_detected:
+                                self.show_presteps_image.emit()
 
             # If any error was detected, continue reading but mark for completion
             if handshake_error_detected or errno2_error_detected or backend_error_detected or keyboard_interrupt_detected:
@@ -3638,6 +3791,13 @@ class DownloadWorker(QThread):
             resolved_model = resolve_device_model_for_install(
                 self.device_model, zip_path=zip_path.name, extracted_files=extracted_files
             )
+            # Stash install context on the worker so the UI can pick it up after download
+            self.resolved_install_model = resolved_model
+            self.install_zip_name = zip_path.name
+            self.install_extracted_files = extracted_files
+            remember_install_device_model(
+                resolved_model, zip_path=zip_path.name, extracted_files=extracted_files
+            )
             prepare_sp_flash_tool_files(resolved_model)
 
             self.status_updated.emit("Extraction completed. Files ready for MTK processing.")
@@ -3662,9 +3822,7 @@ class DownloadWorker(QThread):
                 success_msg += f"- {file} ({size_mb:.1f} MB)\n"
 
             success_msg += "\nFor the best results:\n"
-            label = device_label_for_model(
-                resolve_device_model_for_install(getattr(self, 'device_model', None))
-            )
+            label = device_label_for_model(resolved_model)
             success_msg += f"1. If it isn't already disconnected, keep your {label} unplugged until you're asked to connect\n"
             success_msg += "2. Follow the on screen guidance during the process"
 
@@ -7147,23 +7305,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._update_check_timer.timeout.connect(self._run_independent_update_check)
         self._update_check_timer.start(300000)  # 5 minutes
         
-        # Periodically refresh the manifest every 15 minutes (non-blocking)
-        self.manifest_refresh_timer = QTimer(self)
-        self.manifest_refresh_timer.timeout.connect(self._periodic_manifest_refresh)
-        self.manifest_refresh_timer.start(15 * 60 * 1000)  # 15 minutes
-        
         # Initialize status clear timer for auto-clearing orphaned messages
         self.status_clear_timer = None
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
-
-    def _periodic_manifest_refresh(self):
-        """Periodically grab the latest slidia_manifest.xml file in the background"""
-        try:
-            if hasattr(self, 'config_downloader'):
-                self.config_downloader.refresh_remote_manifest_async()
-        except Exception as e:
-            silent_print(f"Periodic manifest refresh failed: {e}")
 
     def _schedule_startup_notice(self):
         """Show the Solar notice once, after the first load pass yields the UI thread."""
@@ -7194,7 +7339,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             # Don't steal focus / block the main window during remaining startup work.
             dialog = QDialog(self)
-            dialog.setWindowTitle("Testers needed: Solar for Y1")
+            dialog.setWindowTitle("Solar is available for Y1")
             dialog.setMinimumWidth(500)
             dialog.setWindowModality(Qt.NonModal)
             dialog.setModal(False)
@@ -7204,10 +7349,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             layout.setContentsMargins(16, 16, 16, 16)
             layout.setSpacing(12)
 
-            solar_link = f"<a href='{SOLAR_PROJECT_URL}'>The Solar Project</a>"
+            solar_link = f"<a href='{SOLAR_PROJECT_URL}'>Solar</a>"
 
             body = QLabel(
-                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} are looking for testers to leave feedback on their new firmware</h3>"
+                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} is available in Innioasis Updater</h3>"
                 f"<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
                 f"{solar_link} is a custom firmware for Y1 that turns on Wi-Fi and unlocks lots of new features. "
                 f"You can install it right here in Updater.</p>"
@@ -7224,7 +7369,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 "<li style='margin-bottom: 0;'>Podcasts, Quick Access Menu, and more</li>"
                 "</ul>"
                 "<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
-                "<i>Solar is still a work in progress and gets better all the time. You will encounter bugs and slowdowns</i></p>"
+                "<i>Solar is still a work in progress and gets better all the time. Y2 support is coming soon.</i></p>"
                 "<p style='margin-top: 0; margin-bottom: 0; line-height: 1.45;'>"
                 "Pick <b>Solar</b> from the <b>Software</b> dropdown, then hit "
                 "<b>Install / Restore</b>.</p>"
@@ -9421,10 +9566,13 @@ class FirmwareDownloaderGUI(QMainWindow):
                     debug_window = DebugOutputWindow(self)
                     debug_window.show()
                 
+                install_model, install_zip, install_extracted = self.get_install_model_context()
                 self.mtk_worker = MTKWorker(
                     debug_mode=getattr(self, 'debug_mode', False),
                     debug_window=debug_window,
-                    device_model=self.get_selected_device_model(),
+                    device_model=install_model,
+                    zip_path=install_zip,
+                    extracted_files=install_extracted,
                 )
                 self.mtk_worker.status_updated.connect(self.update_status)
                 self.mtk_worker.show_installing_image.connect(self.load_installing_image)
@@ -9444,7 +9592,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.mtk_worker.start()
                 
                 self.status_label.setText("Starting MTK installation...")
-                silent_print("MTK worker started")
+                silent_print(f"MTK worker started (model={install_model}, zip={install_zip})")
             else:
                 silent_print("MTK worker already running")
                 
@@ -9716,7 +9864,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Load please wait image initially
             self.load_please_wait_image()
             
-            device_model = resolve_device_model_for_install(self.get_selected_device_model())
+            device_model, _, _ = self.get_install_model_context()
             flash_config = get_flash_config(device_model)
             if not flash_config:
                 QMessageBox.warning(
@@ -9977,7 +10125,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
             
-            device_model = resolve_device_model_for_install(self.get_selected_device_model())
+            device_model, _, _ = self.get_install_model_context()
             if not device_model:
                 QMessageBox.warning(
                     self,
@@ -10354,14 +10502,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Continue with unauthenticated mode - app will work fine
 
     def validate_tokens_parallel(self, tokens):
-        """Validate tokens in parallel — runs entirely off the UI thread.
-
-        The previous implementation used ThreadPoolExecutor + as_completed
-        directly on the main thread, which blocked the event loop for the
-        duration of every network request (up to TOKEN_VALIDATION_TIMEOUT × N).
-        Now the whole executor block runs in a daemon thread and results are
-        posted back to the main thread via QTimer.singleShot.
-        """
+        """Validate tokens in parallel for faster startup"""
         if not tokens:
             silent_print("No tokens to validate, using unauthenticated mode")
             # Don't update status label - keep it as "Ready" for user experience
@@ -10412,63 +10553,42 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Token validation error: {e}")
                 return None, None
 
-        def _run_validation():
-            """Background thread body — runs the executor and posts results."""
-            try:
-                # Use ThreadPoolExecutor for parallel validation
-                with ThreadPoolExecutor(max_workers=min(len(tokens), MAX_CONCURRENT_REQUESTS)) as executor:
-                    # Submit all token validation tasks
-                    future_to_token = {executor.submit(validate_single_token, token): token for token in tokens}
+        # Use ThreadPoolExecutor for parallel validation
+        with ThreadPoolExecutor(max_workers=min(len(tokens), MAX_CONCURRENT_REQUESTS)) as executor:
+            # Submit all token validation tasks
+            future_to_token = {executor.submit(validate_single_token, token): token for token in tokens}
 
-                    # Process results as they complete
-                    for future in as_completed(future_to_token):
-                        token, username = future.result()
-                        if token is not None:
-                            # Found a working token, cancel other tasks and proceed
-                            silent_print(f"Found working token for user: {username}")
+            # Process results as they complete
+            for future in as_completed(future_to_token):
+                token, username = future.result()
+                if token is not None:
+                    # Found a working token, cancel other tasks and proceed
+                    silent_print(f"Found working token for user: {username}")
+                    # Don't update status label - keep it as "Ready" for user experience
 
-                            # Cancel remaining tasks
-                            for remaining_future in future_to_token:
-                                if not remaining_future.done():
-                                    remaining_future.cancel()
+                    # Cancel remaining tasks
+                    for remaining_future in future_to_token:
+                        if not remaining_future.done():
+                            remaining_future.cancel()
 
-                            # Deliver result to main thread
-                            def _apply_working_token(t=token):
-                                try:
-                                    self.github_api.mark_token_working(t)
-                                    silent_print("Background token validation completed - authenticated mode enabled")
-                                except Exception as apply_err:
-                                    silent_print(f"Error applying working token: {apply_err}")
+                    # Mark token as working and proceed
+                    self.github_api.mark_token_working(token)
+                    silent_print("Background token validation completed - authenticated mode enabled")
+                    return
 
-                            QTimer.singleShot(0, _apply_working_token)
-                            return
-
-                # If we get here, no tokens worked
-                silent_print("All tokens failed validation, using unauthenticated mode")
-
-                def _apply_fallback():
-                    try:
-                        if tokens:
-                            silent_print("Attempting to use first token despite validation failure")
-                            first_token = tokens[0]
-                            if not first_token.startswith('github_pat_'):
-                                first_token = f"github_pat_{first_token}"
-                            self.github_api = GitHubAPI([first_token])
-                            silent_print("Background token validation completed - fallback mode enabled")
-                        else:
-                            silent_print("Background token validation completed - unauthenticated mode enabled")
-                    except Exception as fb_err:
-                        silent_print(f"Error in token fallback: {fb_err}")
-
-                QTimer.singleShot(0, _apply_fallback)
-
-            except Exception as e:
-                silent_print(f"Token validation thread error: {e}")
-
-        # Run the entire validation off the UI thread
-        validation_thread = threading.Thread(target=_run_validation, daemon=True)
-        validation_thread.start()
-
+        # If we get here, no tokens worked
+        silent_print("All tokens failed validation, using unauthenticated mode")
+        # Try with at least one token anyway, in case validation was too strict
+        if tokens:
+            silent_print("Attempting to use first token despite validation failure")
+            # Check if token already has prefix to avoid double-prefixing
+            first_token = tokens[0]
+            if not first_token.startswith('github_pat_'):
+                first_token = f"github_pat_{first_token}"
+            self.github_api = GitHubAPI([first_token])
+            silent_print("Background token validation completed - fallback mode enabled")
+        else:
+            silent_print("Background token validation completed - unauthenticated mode enabled")
 
     def finish_data_loading(self, working_tokens):
         """Complete data loading with working tokens"""
@@ -14378,11 +14498,44 @@ class FirmwareDownloaderGUI(QMainWindow):
             return self.device_model_combo.currentData() or self.device_model_combo.currentText()
         return None
 
+    def get_install_model_context(self):
+        """
+        Return (device_model, zip_path, extracted_files) for the active install.
+
+        Prefers package evidence from the last extract (rom_y2.zip, etc.) so the
+        MTK/SP Flash path matches the firmware on disk, not only the UI filter.
+        """
+        zip_path = getattr(self, '_last_install_zip_name', None)
+        extracted_files = getattr(self, '_last_install_extracted_files', None)
+        runtime = getattr(self, '_runtime_detected_device_model', None)
+
+        # Restore extract context after app restart
+        if not zip_path and not extracted_files and not runtime:
+            remembered_model, remembered_zip, remembered_extracted = load_remembered_install_device_model()
+            if remembered_zip:
+                zip_path = remembered_zip
+                self._last_install_zip_name = remembered_zip
+            if remembered_extracted:
+                extracted_files = remembered_extracted
+                self._last_install_extracted_files = remembered_extracted
+            if remembered_model:
+                runtime = remembered_model
+                self._runtime_detected_device_model = remembered_model
+
+        model = resolve_device_model_for_install(
+            runtime or self.get_selected_device_model(),
+            zip_path=zip_path,
+            extracted_files=extracted_files,
+        )
+        return model, zip_path, extracted_files
+
     def detect_device_model_from_install_files(self):
-        """Detect Y1/Y2 from scatter/preloader files in the install directory."""
+        """Detect Y1/Y2 from the last extract context and residual install markers."""
         try:
-            names = _firmware_file_names_in_install_root(get_firmware_app_dir())
-            return detect_device_model_for_install(extracted_files=names)
+            return detect_device_model_for_install(
+                zip_path=getattr(self, '_last_install_zip_name', None),
+                extracted_files=getattr(self, '_last_install_extracted_files', None),
+            )
         except Exception:
             return None
 
@@ -15038,7 +15191,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     </style>
                 </head>
                 <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
-                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Please wait while we fetch the latest available software, or select <strong style="color: {text_color} !important;">Browse Files</strong> to install from a .zip file</p>
+                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Please select <strong style="color: {text_color} !important;">Browse Files</strong> to begin, or wait for a connection to the online firmware directory.</p>
                     {online_message}
                 </body>
                 </html>
@@ -16776,10 +16929,13 @@ class FirmwareDownloaderGUI(QMainWindow):
                     debug_window = DebugOutputWindow(self)
                     debug_window.show()
                 
+                install_model, install_zip, install_extracted = self.get_install_model_context()
                 self.mtk_worker = MTKWorker(
                     debug_mode=getattr(self, 'debug_mode', False),
                     debug_window=debug_window,
-                    device_model=self.get_selected_device_model(),
+                    device_model=install_model,
+                    zip_path=install_zip,
+                    extracted_files=install_extracted,
                 )
                 # Use update_status instead of direct status_label.setText for proper status handling
                 self.mtk_worker.status_updated.connect(self.update_status)
@@ -17016,10 +17172,13 @@ class FirmwareDownloaderGUI(QMainWindow):
                 debug_window = DebugOutputWindow(self)
                 debug_window.show()
             
+            install_model, install_zip, install_extracted = self.get_install_model_context()
             self.mtk_worker = MTKWorker(
                 debug_mode=getattr(self, 'debug_mode', False),
                 debug_window=debug_window,
-                device_model=self.get_selected_device_model(),
+                device_model=install_model,
+                zip_path=install_zip,
+                extracted_files=install_extracted,
             )
             self.mtk_worker.status_updated.connect(self.update_status)
             self.mtk_worker.show_installing_image.connect(self.load_installing_image)
@@ -19148,13 +19307,67 @@ class FirmwareDownloaderGUI(QMainWindow):
     def is_device_fast_update_enabled(self):
         """Check if device is fast update enabled (rooted ADB device connected by any means - USB, Wi-Fi, or both)"""
         try:
-            # Use cached ADB status from broker instead of blocking UI thread with subprocess calls
-            if hasattr(self, 'adb_status_broker') and self.adb_status_broker:
-                snapshot = self.adb_status_broker.get_snapshot() or {}
-                status = snapshot.get('status', 'no_adb')
-                metadata = snapshot.get('metadata', {})
-                return status == 'adb_root' or bool(metadata.get('rooted', False))
-            return False
+            # Find ADB executable
+            adb_path = self.find_adb_executable()
+            if not adb_path:
+                return False
+            
+            # Prepare environment with proper PATH for macOS
+            env = os.environ.copy()
+            if platform.system() == "Darwin":
+                homebrew_paths = ["/opt/homebrew/bin", "/usr/local/bin"]
+                current_path = env.get("PATH", "")
+                for brew_path in homebrew_paths:
+                    if brew_path not in current_path:
+                        env["PATH"] = f"{brew_path}:{env.get('PATH', '')}"
+            
+            # Check if device is connected via ADB (any connection type - USB, Wi-Fi, or both)
+            result = subprocess.run(
+                [str(adb_path), 'devices'],
+                capture_output=True,
+                text=True,
+                timeout=5,
+                env=env,
+                creationflags=subprocess.CREATE_NO_WINDOW if platform.system() == "Windows" else 0
+            )
+            
+            # Parse device list and prefer USB device (0123456789ABCDEF) when both are available
+            target_device_id = "0123456789ABCDEF"
+            devices = []
+            usb_device = None
+            wireless_device = None
+            
+            for line in result.stdout.split('\n'):
+                if '\tdevice' in line:
+                    device_id = line.split('\t')[0]
+                    devices.append(device_id)
+                    # Prefer USB device when both are available
+                    if device_id == target_device_id:
+                        usb_device = device_id
+                    elif ':' in device_id and wireless_device is None:
+                        wireless_device = device_id
+            
+            if not devices:
+                return False
+            
+            # Select device: prefer USB when both are available, otherwise use any available device
+            selected_device = usb_device if usb_device else (wireless_device if wireless_device else devices[0])
+            
+            # Check if device is rooted (using selected device)
+            root_check_result = subprocess.run(
+                [str(adb_path), '-s', selected_device, 'shell', 'su', '-c', 'id'],
+                capture_output=True,
+                text=True,
+                timeout=5,
+                env=env,
+                creationflags=subprocess.CREATE_NO_WINDOW if platform.system() == "Windows" else 0
+            )
+            
+            device_is_rooted = (root_check_result.returncode == 0 and 'uid=0' in root_check_result.stdout)
+            
+            # Fast Update is enabled if device is rooted (script can be installed automatically)
+            return device_is_rooted
+            
         except Exception as e:
             silent_print(f"Error checking fast update enabled status: {e}")
             return False
@@ -27490,7 +27703,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             resolved_model = resolve_device_model_for_install(
                 self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
             )
+            self.set_runtime_detected_device_model(resolved_model)
+            self._last_install_zip_name = zip_path.name
+            self._last_install_extracted_files = list(extracted_files) if extracted_files else None
+            remember_install_device_model(
+                resolved_model, zip_path=zip_path.name, extracted_files=extracted_files
+            )
             prepare_sp_flash_tool_files(resolved_model)
+            silent_print(
+                f"Install model resolved as {resolved_model} "
+                f"(zip={zip_path.name}, dropdown={self.get_selected_device_model()})"
+            )
             
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -27521,9 +27744,23 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         if success:
             self._mark_first_firmware_action_complete()
-            detected = self.detect_device_model_from_install_files()
+            # Prefer model resolved during download extract (zip name / package files)
+            download_worker = getattr(self, 'download_worker', None)
+            resolved_from_download = getattr(download_worker, 'resolved_install_model', None) if download_worker else None
+            zip_from_download = getattr(download_worker, 'install_zip_name', None) if download_worker else None
+            extracted_from_download = getattr(download_worker, 'install_extracted_files', None) if download_worker else None
+            if zip_from_download:
+                self._last_install_zip_name = zip_from_download
+            if extracted_from_download is not None:
+                self._last_install_extracted_files = list(extracted_from_download)
+            detected = resolved_from_download or self.detect_device_model_from_install_files()
             if detected:
                 self.set_runtime_detected_device_model(detected)
+                remember_install_device_model(
+                    detected,
+                    zip_path=zip_from_download,
+                    extracted_files=extracted_from_download,
+                )
                 self.refresh_device_aware_status_defaults()
             self.status_label.setText("Download and processing completed successfully")
             print("=== PROCESSING COMPLETED ===")
@@ -27534,6 +27771,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if all(Path(file).exists() for file in required_files):
                 silent_print("=== FIRMWARE FILES READY ===")
                 silent_print(f"Selected installation method: {getattr(self, 'installation_method', 'guided')}")
+                silent_print(f"Install model: {detected} (zip={zip_from_download})")
 
                 # Handle installation based on selected method
                 QTimer.singleShot(2000, self.handle_installation_method)  # 2 second delay
@@ -27545,10 +27783,17 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def handle_installation_method(self):
         """Handle installation based on the selected method in settings"""
-        resolved_model = resolve_device_model_for_install(self.get_selected_device_model())
+        # Prefer model from the package just extracted (rom_y2.zip etc.) over the
+        # firmware-filter dropdown, which may still be set to Y1.
+        resolved_model, install_zip, _ = self.get_install_model_context()
         if resolved_model:
             self.set_runtime_detected_device_model(resolved_model)
         prepare_sp_flash_tool_files(resolved_model)
+        silent_print(
+            f"handle_installation_method model={resolved_model} "
+            f"zip={install_zip} "
+            f"dropdown={self.get_selected_device_model()}"
+        )
 
         # Check storage space before starting installation (full firmware install requires 6GB)
         # Note: This is always a full install, not Fast Update, so storage check is required
@@ -28313,10 +28558,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             debug_window = DebugOutputWindow(self)
             debug_window.show()
         
+        install_model, install_zip, install_extracted = self.get_install_model_context()
         self.mtk_worker = MTKWorker(
             debug_mode=getattr(self, 'debug_mode', False),
             debug_window=debug_window,
-            device_model=self.get_selected_device_model(),
+            device_model=install_model,
+            zip_path=install_zip,
+            extracted_files=install_extracted,
         )
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
@@ -28600,9 +28848,13 @@ class FirmwareDownloaderGUI(QMainWindow):
                     )
                     return
                 
-                device_model = resolve_device_model_for_install(self.get_selected_device_model())
+                device_model, install_zip, install_extracted = self.get_install_model_context()
                 device_label = "Y2" if is_y2_model(device_model) else "Y1"
-                mtk_cmd_parts = build_mtk_write_command(device_model)
+                mtk_cmd_parts = build_mtk_write_command(
+                    device_model,
+                    zip_path=install_zip,
+                    extracted_files=install_extracted,
+                )
                 mtk_args = " ".join(shlex.quote(part) for part in mtk_cmd_parts[1:])
                 mtk_command = f"cd '{current_dir}' && python3 {mtk_args}"
                 
