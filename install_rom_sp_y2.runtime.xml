@@ -29,7 +29,7 @@
         </rom-list>
 <connection type="BromUSB" high-speed="true" power="AutoDetect" da_log_level="Info" da_log_channel="UART" timeout-count="3600000" com-port="" />
         <checksum-level>none</checksum-level>
-        <log-info log_on="true" log_path="/tmp/SP_FT_Logs" clean_hours="720" />
+        <log-info log_on="true" log_path="/home/deck/.local/share/innioasis-updater/SP_FT_Logs" clean_hours="720" />
     </general>
     <commands>
         <format-download>
