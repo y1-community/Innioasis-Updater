@@ -1525,185 +1525,80 @@ setup_mtkclient_requirements() {
     return 0
 }
 
-# Create udev rules for USB access
-setup_udev_rules() {
-    log "Setting up udev rules for USB device access..."
-    
-    # Create udev rules directory if it doesn't exist
-    if ! sudo mkdir -p /etc/udev/rules.d; then
-        error "Failed to create udev rules directory"
-        return 1
-    fi
-    
-    # Create udev rule for MediaTek devices (MTKClient compatible)
-    if ! sudo tee /etc/udev/rules.d/99-mediatek.rules > /dev/null << 'EOF'
-# MediaTek USB devices for MTKClient
-# Main MediaTek vendor ID
-SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0666", GROUP="plugdev"
-# HTC devices
-SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0666", GROUP="plugdev"
-# Google devices
-SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev"
-# Oppo devices
-SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", MODE="0666", GROUP="plugdev"
-# Extended MediaTek vendor IDs (0x2e8a-0x2eff range)
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e8a", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e8b", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e8c", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e8d", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e8e", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e8f", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e90", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e91", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e92", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e93", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e94", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e95", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e96", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e97", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e98", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e99", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e9a", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e9b", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e9c", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e9d", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e9e", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2e9f", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea0", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea1", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea2", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea3", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea4", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea5", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea6", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea7", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea8", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ea9", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eaa", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eab", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eac", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ead", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eae", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eaf", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb0", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb1", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb2", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb3", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb4", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb5", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb6", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb7", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb8", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eb9", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eba", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ebb", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ebc", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ebd", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ebe", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ebf", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec0", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec1", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec2", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec3", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec4", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec5", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec6", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec7", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec8", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ec9", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eca", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ecb", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ecc", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ecd", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ece", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ecf", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed0", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed1", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed2", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed3", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed4", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed5", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed6", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed7", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed8", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ed9", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eda", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2edb", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2edc", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2edd", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ede", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2edf", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee0", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee1", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee2", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee3", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee4", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee5", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee6", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee7", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee8", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ee9", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eea", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eeb", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eec", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eed", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eee", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eef", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef0", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef1", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef2", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef3", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef4", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef5", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef6", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef7", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef8", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2ef9", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2efa", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2efb", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2efc", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2efd", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2efe", MODE="0666", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="2eff", MODE="0666", GROUP="plugdev"
-EOF
-    then
-        error "Failed to create udev rules file"
-        return 1
+# Resolve the shared SP Flash Tool system-prep script (identical to firmware_downloader.py).
+# Prefer the copy next to this installer; after install, prefer INSTALL_DIR.
+find_spflash_system_prep_script() {
+    local candidates=()
+    local here
+    here="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd)" || here=""
+    [ -n "$here" ] && candidates+=("$here/linux_spflash_system_prep.sh")
+    [ -n "${INSTALL_DIR:-}" ] && candidates+=("$INSTALL_DIR/linux_spflash_system_prep.sh")
+    candidates+=("$HOME/.local/share/innioasis-updater/linux_spflash_system_prep.sh")
+    local c
+    for c in "${candidates[@]}"; do
+        if [ -f "$c" ]; then
+            echo "$c"
+            return 0
+        fi
+    done
+    return 1
+}
+
+# SP Flash Tool + MediaTek system prep — soft-fail; never aborts the installer.
+# Uses the same linux_spflash_system_prep.sh as firmware_downloader.py.
+setup_spflash_system_prep() {
+    log "Preparing SP Flash Tool / MediaTek USB+serial access (best-effort)..."
+
+    local prep_script=""
+    if prep_script="$(find_spflash_system_prep_script)"; then
+        log "Using shared prep script: $prep_script"
+        chmod +x "$prep_script" 2>/dev/null || true
+        if sudo bash "$prep_script" "$USER"; then
+            success "SP Flash Tool system prep finished"
+            return 0
+        fi
+        warning "SP Flash Tool system prep reported issues — continuing install"
+        return 0
     fi
 
-    # Supplemental Linux-desktop-friendly rules:
-    # - TAG+="uaccess" grants active local session access without strict group dependency
-    # - ID_MM_DEVICE_IGNORE prevents ModemManager from claiming MTK ports
-    if ! sudo tee /etc/udev/rules.d/78-mediatek-access.rules > /dev/null << 'EOF'
-# MediaTek access helper rules for desktop Linux distros
-SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
-SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
-SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
-SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", MODE="0660", TAG+="uaccess", GROUP="plugdev", ENV{ID_MM_DEVICE_IGNORE}="1"
+    warning "linux_spflash_system_prep.sh not found next to installer"
+    warning "Skipping full SP Flash Tool prep for now; the app will re-run it on first launch"
+    return 0
+}
+
+# Create udev rules for USB access (MTKClient broad rules + shared SPFT prep).
+# Soft-fail: missing pieces are skipped; install continues.
+setup_udev_rules() {
+    log "Setting up udev rules for USB device access..."
+
+    if ! sudo mkdir -p /etc/udev/rules.d; then
+        warning "Failed to create udev rules directory — skipping USB rules (install continues)"
+        return 0
+    fi
+
+    # Broad MediaTek/vendor USB rules for MTKClient (best-effort; soft-fail)
+    if ! sudo tee /etc/udev/rules.d/99-mediatek.rules > /dev/null << 'EOF'
+# MediaTek USB devices for MTKClient (installer; soft-fail safe)
+SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0666", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", MODE="0666", GROUP="plugdev", TAG+="uaccess"
 EOF
     then
-        warning "Failed to create supplemental MediaTek udev access rules"
+        warning "Failed to write 99-mediatek.rules — continuing"
     fi
-    
-    # Add user to plugdev group if it exists
-    if getent group plugdev >/dev/null 2>&1; then
-        if sudo usermod -a -G plugdev "$USER"; then
-            log "Added user $USER to plugdev group"
-        else
-            warning "Failed to add user to plugdev group"
-        fi
-    else
-        warning "plugdev group does not exist on this system"
+
+    # Canonical SP Flash Tool prep (identical to firmware_downloader.py)
+    setup_spflash_system_prep
+
+    # Best-effort udev reload
+    if command -v udevadm >/dev/null 2>&1; then
+        sudo udevadm control --reload-rules >/dev/null 2>&1 || true
+        sudo udevadm trigger >/dev/null 2>&1 || true
     fi
-    
-    # Reload udev rules
-    if sudo udevadm control --reload-rules && sudo udevadm trigger; then
-        success "udev rules configured successfully"
-        return 0
-    else
-        error "Failed to reload udev rules"
-        return 1
-    fi
+
+    success "USB access setup finished (any failures were skipped)"
+    return 0
 }
 
 # Determine appropriate installation directory
@@ -2183,15 +2078,12 @@ main() {
         warning "MTKClient may not work properly"
     fi
     
-    # Setup udev rules
-    phase "Installing USB access rules"
-    if ! setup_udev_rules; then
-        error "udev rules setup failed"
-        warning "USB device access may not work properly"
-    fi
-    
-    # Get installation directory
+    # Get installation directory early (needed for shared prep script lookup)
     get_install_dir
+
+    # Setup udev rules + SP Flash Tool system prep (soft-fail; never aborts install)
+    phase "Installing USB access rules (MediaTek / SP Flash Tool)"
+    setup_udev_rules || warning "USB access setup had issues — install continues; app can re-prep later"
     
     # Install Innioasis Updater
     phase "Downloading and installing Innioasis Updater"
@@ -2199,6 +2091,15 @@ main() {
         error "Innioasis Updater installation failed"
         pause_before_exit
         exit 1
+    fi
+
+    # Re-run SP Flash Tool prep from the installed tree so files on disk match the app.
+    # Soft-fail: password denial or missing tools must not undo a successful install.
+    phase "Finalizing SP Flash Tool system prep"
+    if [ -f "$INSTALL_DIR/linux_spflash_system_prep.sh" ]; then
+        setup_spflash_system_prep || warning "Post-install SP Flash Tool prep skipped — app will retry on first launch"
+    else
+        warning "Installed tree missing linux_spflash_system_prep.sh — app will prep on first launch"
     fi
     
     # Final optional crypto check (non-blocking)
@@ -2327,19 +2228,26 @@ uninstall() {
         success "Removed desktop entry"
     fi
 
-    # Remove udev rules created by installer
-    if [ -f "/etc/udev/rules.d/99-mediatek.rules" ]; then
-        if sudo rm -f "/etc/udev/rules.d/99-mediatek.rules"; then
-            success "Removed udev rules: /etc/udev/rules.d/99-mediatek.rules"
-            sudo udevadm control --reload-rules >/dev/null 2>&1 || true
-            sudo udevadm trigger >/dev/null 2>&1 || true
-        else
-            warning "Failed to remove udev rules file"
+    # Remove udev rules created by installer / SP Flash Tool prep (best-effort)
+    for rule in \
+        99-mediatek.rules \
+        78-mediatek-access.rules \
+        20-innioasis-mm-blacklist-mtk.rules \
+        49-innioasis-ttyacm-mode.rules \
+        78-innioasis-mediatek-access.rules \
+        99-innioasis-mediatek.rules \
+        99-ttyacms.rules
+    do
+        if [ -f "/etc/udev/rules.d/$rule" ]; then
+            if sudo rm -f "/etc/udev/rules.d/$rule"; then
+                success "Removed udev rules: /etc/udev/rules.d/$rule"
+            else
+                warning "Failed to remove /etc/udev/rules.d/$rule"
+            fi
         fi
-    fi
-    if [ -f "/etc/udev/rules.d/78-mediatek-access.rules" ]; then
-        sudo rm -f "/etc/udev/rules.d/78-mediatek-access.rules" >/dev/null 2>&1 || true
-    fi
+    done
+    sudo udevadm control --reload-rules >/dev/null 2>&1 || true
+    sudo udevadm trigger >/dev/null 2>&1 || true
 
     # Remove qcaux blacklist line added by installer, if present
     if [ -f "/etc/modprobe.d/blacklist.conf" ] && grep -q '^blacklist qcaux$' "/etc/modprobe.d/blacklist.conf"; then

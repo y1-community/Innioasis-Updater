@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Firmware Downloader for MTK Client
-Downloads firmware releases from XML manifest and processes them with mtk.py
+Firmware Downloader for Innioasis Updater
+Downloads firmware releases from XML manifest and installs them with:
+  - Windows/Linux: SP Flash Tool console-mode XML (default), with MTKClient as fallback
+  - macOS: MTKClient only
 """
 
 import sys
@@ -63,6 +65,35 @@ SOLAR_PROJECT_URL = "https://www.github.com/thesolarproject/solar"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
+
+# Linux SP Flash Tool package (console-mode binary + Qt4/DA libs)
+FLASH_TOOL_LINUX_URL = (
+    "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip"
+)
+FLASH_TOOL_LINUX_ZIP_NAME = "flash_tool_linux.zip"
+FLASH_TOOL_LINUX_BIN = "flash_tool"
+FLASH_TOOL_WIN_BIN = "flash_tool.exe"
+# udev rule filenames (order matters: low numbers run first)
+# 20-*: ModemManager blacklist early (community SPFT guides + freedesktop MM filters)
+# 78-*: session uaccess helper
+# 99-*: full MODE/GROUP for usb + ttyACM (SP Flash Tool opens /dev/ttyACM*)
+FLASH_TOOL_LINUX_UDEV_RULE = "99-innioasis-mediatek.rules"
+FLASH_TOOL_LINUX_UDEV_HELPER_RULE = "78-innioasis-mediatek-access.rules"
+FLASH_TOOL_LINUX_MM_BLACKLIST_RULE = "20-innioasis-mm-blacklist-mtk.rules"
+# Early MODE=0666 without ATTRS — defeats SP Flash Tool open-on-uevent race
+FLASH_TOOL_LINUX_UDEV_EARLY_RULE = "49-innioasis-ttyacm-mode.rules"
+# Community-standard unprivileged ttyACM/ttyUSB access:
+#   sudo install -m 644 99-ttyacms.rules /etc/udev/rules.d/99-ttyacms.rules
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE = "99-ttyacms.rules"
+FLASH_TOOL_LINUX_LOG_DIR_NAME = "SP_FT_Logs"
+# Shared with run_linux.sh — single source of truth for privileged system prep.
+FLASH_TOOL_LINUX_SYSTEM_PREP_SCRIPT = "linux_spflash_system_prep.sh"
+# LD_PRELOAD that retries open() on /dev/ttyACM* (SP Flash Tool uevent race).
+FLASH_TOOL_LINUX_OPEN_RETRY_C = "spft_tty_open_retry.c"
+FLASH_TOOL_LINUX_OPEN_RETRY_SO = "spft_tty_open_retry.so"
+# Auto self-heal / retry limits for Linux flash paths
+LINUX_FLASH_SELF_HEAL_MAX_ATTEMPTS = 3
 
 
 def _extract_signal_value(value):
@@ -1294,8 +1325,1412 @@ def get_firmware_app_dir():
     return _FIRMWARE_APP_DIR
 
 
+def is_linux_platform():
+    return platform.system() == "Linux"
+
+
+def is_windows_platform():
+    return platform.system() == "Windows"
+
+
+def is_macos_platform():
+    return platform.system() == "Darwin"
+
+
+def linux_cpu_machine():
+    """Normalized ``platform.machine()`` for Linux arch checks."""
+    return (platform.machine() or "").lower().strip()
+
+
+def linux_spflash_arch_supported():
+    """
+    True when this Linux CPU can run the bundled SP Flash Tool binary.
+
+    Official Linux SP Flash Tool builds are x86/x86_64 only. On aarch64/armv7
+    (and other non-x86 arches) there is no SP Flash Tool — use MTKClient only.
+    """
+    if not is_linux_platform():
+        return False
+    machine = linux_cpu_machine()
+    # Common names: x86_64, amd64, i386, i686, x86, i586
+    if machine in ("x86_64", "amd64", "x64"):
+        return True
+    if machine in ("i386", "i486", "i586", "i686", "x86"):
+        return True
+    # Reject arm64/aarch64/armv7/riscv/ppc/etc. explicitly
+    return False
+
+
+def linux_spflash_arch_unsupported_reason():
+    """Human-readable reason when SP Flash Tool is not available for this arch."""
+    machine = linux_cpu_machine() or "unknown"
+    return (
+        f"SP Flash Tool is only available on x86 / x86_64 Linux "
+        f"(this system is {machine}). Installs use MTKClient instead."
+    )
+
+
+def default_installation_method(linux_spflash_ok=None):
+    """Platform default install path.
+
+    Windows: SP Flash Tool console XML (``spflash``).
+    Linux x86/x86_64: ``spflash`` when staged; ``guided`` (MTKClient) as fallback.
+    Linux non-x86 (e.g. aarch64): always MTKClient (``guided``) — no SP Flash Tool.
+    macOS: MTKClient guided (``guided``).
+    """
+    if is_windows_platform():
+        return "spflash"
+    if is_linux_platform():
+        if not linux_spflash_arch_supported():
+            return "guided"
+        if linux_spflash_ok is None:
+            linux_spflash_ok = linux_spflash_staged()
+        return "spflash" if linux_spflash_ok else "guided"
+    return "guided"
+
+
+def get_sp_flash_tool_binary_path(app_dir=None):
+    """Return path to the platform SP Flash Tool binary, or None if unsupported."""
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    if is_windows_platform():
+        return app_dir / FLASH_TOOL_WIN_BIN
+    if is_linux_platform():
+        if not linux_spflash_arch_supported():
+            return None
+        return app_dir / FLASH_TOOL_LINUX_BIN
+    return None
+
+
+def sp_flash_tool_binary_ready(app_dir=None):
+    """True when the platform SP Flash Tool binary is present on disk."""
+    path = get_sp_flash_tool_binary_path(app_dir)
+    return bool(path and path.is_file())
+
+
+# Y2 installs via MTKClient are disabled until the Y2 mtkclient path is solid.
+# Linux x86/Windows use SP Flash Tool for Y2; non-x86 Linux has no SP Flash Tool
+# so MTKClient is allowed there (see mtkclient_allowed_for_model).
+Y2_MTKCLIENT_INSTALLS_ENABLED = False
+
+
+def linux_spflash_staged(app_dir=None):
+    """True when Linux flash_tool is present on an arch that can run it."""
+    if not is_linux_platform() or not linux_spflash_arch_supported():
+        return False
+    binary = get_sp_flash_tool_binary_path(app_dir)
+    return bool(binary and binary.is_file())
+
+
+def mtkclient_allowed_for_model(device_model):
+    """Whether MTKClient may be used for this device model right now."""
+    if is_y2_model(device_model) and not Y2_MTKCLIENT_INSTALLS_ENABLED:
+        # No SP Flash Tool on non-x86 Linux — MTKClient is the only install path.
+        if is_linux_platform() and not linux_spflash_arch_supported():
+            return True
+        return False
+    return True
+
+
+def ensure_spft_open_retry_preload(app_dir=None):
+    """
+    Ensure ``spft_tty_open_retry.so`` exists beside flash_tool.
+
+    Built from ``spft_tty_open_retry.c`` with gcc when missing/outdated.
+    Returns path to the .so, or None if build is unavailable.
+    """
+    if not is_linux_platform():
+        return None
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    so_path = app_dir / FLASH_TOOL_LINUX_OPEN_RETRY_SO
+    c_path = app_dir / FLASH_TOOL_LINUX_OPEN_RETRY_C
+    try:
+        if so_path.is_file() and c_path.is_file():
+            if so_path.stat().st_mtime >= c_path.stat().st_mtime:
+                return so_path
+        elif so_path.is_file() and not c_path.is_file():
+            return so_path
+        if not c_path.is_file():
+            silent_print(f"Open-retry source missing: {c_path}")
+            return so_path if so_path.is_file() else None
+        gcc = shutil.which("gcc") or shutil.which("cc")
+        if not gcc:
+            silent_print("gcc not found — cannot build SP Flash Tool open-retry preload")
+            return so_path if so_path.is_file() else None
+        cmd = [
+            gcc,
+            "-shared",
+            "-fPIC",
+            "-O2",
+            "-o",
+            str(so_path),
+            str(c_path),
+            "-ldl",
+        ]
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60, cwd=str(app_dir))
+        if proc.returncode != 0:
+            silent_print(
+                f"Failed to build {FLASH_TOOL_LINUX_OPEN_RETRY_SO}: "
+                f"{(proc.stderr or proc.stdout or '')[:300]}"
+            )
+            return so_path if so_path.is_file() else None
+        silent_print(f"Built SP Flash Tool open-retry preload: {so_path}")
+        return so_path
+    except Exception as e:
+        silent_print(f"ensure_spft_open_retry_preload: {e}")
+        return so_path if so_path.is_file() else None
+
+
+def sp_flash_tool_process_env(app_dir=None, with_open_retry_preload=True):
+    """Environment for launching SP Flash Tool (Linux needs bundled Qt/DA libs)."""
+    env = os.environ.copy()
+    if not is_linux_platform():
+        return env
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    lib_dirs = [str(app_dir), str(app_dir / "lib")]
+    existing = env.get("LD_LIBRARY_PATH", "").strip()
+    if existing:
+        lib_dirs.append(existing)
+    env["LD_LIBRARY_PATH"] = ":".join(lib_dirs)
+    plugins = app_dir / "plugins"
+    if plugins.is_dir():
+        env["QT_PLUGIN_PATH"] = str(plugins)
+    # Prefer xcb for the Qt4 SP Flash Tool build when available.
+    env.setdefault("QT_QPA_PLATFORM", "xcb")
+    if with_open_retry_preload:
+        so_path = ensure_spft_open_retry_preload(app_dir)
+        if so_path and so_path.is_file():
+            prev = env.get("LD_PRELOAD", "").strip()
+            preload = str(so_path)
+            env["LD_PRELOAD"] = f"{preload}:{prev}" if prev else preload
+            silent_print(f"SP Flash Tool LD_PRELOAD open-retry: {preload}")
+    return env
+
+
+def ensure_sp_flash_tool_executable(app_dir=None):
+    """chmod +x flash_tool (+ launcher script) on Linux. No-op elsewhere."""
+    if not is_linux_platform():
+        return
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    for name in (FLASH_TOOL_LINUX_BIN, "flash_tool.sh", Path("bin") / "assistant"):
+        path = app_dir / name
+        if path.is_file():
+            try:
+                mode = path.stat().st_mode
+                path.chmod(mode | 0o111)
+            except Exception as e:
+                silent_print(f"Warning: could not chmod +x {path}: {e}")
+
+
+def _linux_find_askpass_helper():
+    """Locate a graphical askpass helper for sudo -A across major desktops.
+
+    Covers KDE/Plasma (SteamOS, Kubuntu, CachyOS KDE), GNOME, LXQt, and
+    generic zenity/kdialog/yad fallbacks used on Debian/Ubuntu/Fedora/OpenSUSE.
+    """
+    env_helper = os.environ.get("SUDO_ASKPASS") or os.environ.get("SSH_ASKPASS")
+    if env_helper and Path(env_helper).is_file() and os.access(env_helper, os.X_OK):
+        return env_helper
+
+    for candidate in (
+        # KDE / Plasma (Steam Deck Desktop, Kubuntu, CachyOS KDE, OpenSUSE KDE)
+        "ksshaskpass",
+        "kdesu",
+        # GNOME / generic OpenSSH askpass packages
+        "ssh-askpass",
+        "gnome-ssh-askpass",
+        "gnome-ssh-askpass3",
+        "ssh-askpass-gnome",
+        "x11-ssh-askpass",
+        "lxqt-openssh-askpass",
+        "seahorse-ssh-askpass",
+        "openssh-askpass",
+        "qt4-ssh-askpass",
+        "qt5-ssh-askpass",
+    ):
+        found = shutil.which(candidate)
+        if found and os.access(found, os.X_OK):
+            # kdesu is not an askpass binary; skip non-askpass tools
+            if candidate == "kdesu":
+                continue
+            return found
+
+    # Build a short-lived zenity/kdialog/yad/qarma askpass wrapper when needed.
+    for tool, args in (
+        ("kdialog", ["--password", "Authentication Required — Innioasis Updater"]),
+        ("zenity", ["--password", "--title=Authentication Required — Innioasis Updater"]),
+        ("qarma", ["--password", "--title=Authentication Required — Innioasis Updater"]),
+        (
+            "yad",
+            [
+                "--entry",
+                "--hide-text",
+                "--title=Authentication Required — Innioasis Updater",
+                "--text=Administrator password:",
+            ],
+        ),
+    ):
+        tool_path = shutil.which(tool)
+        if not tool_path:
+            continue
+        try:
+            helper = Path(tempfile.gettempdir()) / f"innioasis-askpass-{os.getuid()}.sh"
+            cmd = " ".join(shlex.quote(a) for a in [tool_path, *args])
+            helper.write_text(
+                "#!/bin/sh\n"
+                "# Auto-generated askpass helper for Innioasis Updater SP Flash Tool setup\n"
+                f"exec {cmd}\n",
+                encoding="utf-8",
+            )
+            helper.chmod(0o700)
+            return str(helper)
+        except Exception as e:
+            silent_print(f"Warning: could not create askpass helper with {tool}: {e}")
+    return None
+
+
+def _linux_run_privileged(script_body, progress_cb=None, env_extra=None):
+    """
+    Run a shell script as root using pkexec (preferred) or sudo -A (askpass).
+
+    Returns (ok: bool, output: str).
+    """
+    script_path = None
+    try:
+        fd, script_path = tempfile.mkstemp(prefix="innioasis-spft-setup-", suffix=".sh")
+        os.close(fd)
+        script_path = Path(script_path)
+        script_path.write_text(script_body, encoding="utf-8")
+        script_path.chmod(0o700)
+
+        env = os.environ.copy()
+        if env_extra:
+            env.update(env_extra)
+
+        pkexec = shutil.which("pkexec")
+        if pkexec and (env.get("DISPLAY") or env.get("WAYLAND_DISPLAY")):
+            if progress_cb:
+                progress_cb("Requesting administrator permission (polkit)...")
+            cmd = [pkexec, "/bin/bash", str(script_path)]
+            proc = subprocess.run(
+                cmd, capture_output=True, text=True, env=env, timeout=300
+            )
+            out = (proc.stdout or "") + (proc.stderr or "")
+            if proc.returncode == 0:
+                return True, out
+            # Fall through to sudo if pkexec is unavailable/denied without auth UI.
+            silent_print(f"pkexec setup exit {proc.returncode}: {out.strip()[:400]}")
+
+        sudo = shutil.which("sudo")
+        if not sudo:
+            return False, "Neither pkexec nor sudo is available to configure USB permissions."
+
+        askpass = _linux_find_askpass_helper()
+        cmd = [sudo, "-A", "/bin/bash", str(script_path)] if askpass else [sudo, "/bin/bash", str(script_path)]
+        if askpass:
+            env["SUDO_ASKPASS"] = askpass
+            if progress_cb:
+                progress_cb("Requesting administrator password (askpass)...")
+        else:
+            if progress_cb:
+                progress_cb("Requesting administrator permission (sudo)...")
+        proc = subprocess.run(
+            cmd, capture_output=True, text=True, env=env, timeout=300
+        )
+        out = (proc.stdout or "") + (proc.stderr or "")
+        return proc.returncode == 0, out
+    except subprocess.TimeoutExpired:
+        return False, "Timed out waiting for administrator authentication."
+    except Exception as e:
+        return False, str(e)
+    finally:
+        if script_path:
+            try:
+                Path(script_path).unlink(missing_ok=True)
+            except Exception:
+                pass
+
+
+def _linux_system_prep_script_path(app_dir=None):
+    """Path to shared linux_spflash_system_prep.sh (same file run_linux.sh uses)."""
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    return app_dir / FLASH_TOOL_LINUX_SYSTEM_PREP_SCRIPT
+
+
+def _linux_system_prep_script(target_user, app_dir=None):
+    """
+    Build the root shell body for SP Flash Tool system prep.
+
+    Prefers exec'ing the shared ``linux_spflash_system_prep.sh`` next to the app
+    so run_linux.sh and firmware_downloader.py always apply identical rules.
+    Falls back to a minimal embedded prep if that file is missing.
+    """
+    script_path = _linux_system_prep_script_path(app_dir)
+    user_q = shlex.quote(target_user)
+    if script_path.is_file():
+        path_q = shlex.quote(str(script_path.resolve()))
+        # Identical path as run_linux.sh: sudo bash linux_spflash_system_prep.sh "$USER"
+        return f"""#!/bin/bash
+set +e
+export TARGET_USER={user_q}
+chmod +x {path_q} 2>/dev/null || true
+exec /bin/bash {path_q} {user_q}
+"""
+    # Minimal fallback if the shared file was not shipped (still soft-fail friendly).
+    silent_print(
+        f"WARNING: {FLASH_TOOL_LINUX_SYSTEM_PREP_SCRIPT} missing; "
+        "using embedded fallback prep"
+    )
+    return f"""#!/bin/bash
+set +e
+TARGET_USER={user_q}
+export DEBIAN_FRONTEND=noninteractive
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+log() {{ echo "[spft-setup] $*"; }}
+RULES_DIR=/etc/udev/rules.d
+SERIAL_GROUP=root
+getent group uucp >/dev/null 2>&1 && SERIAL_GROUP=uucp
+getent group dialout >/dev/null 2>&1 && SERIAL_GROUP=dialout
+groupadd -f plugdev 2>/dev/null || true
+mkdir -p "$RULES_DIR" 2>/dev/null || true
+cat > "$RULES_DIR/{FLASH_TOOL_LINUX_MM_BLACKLIST_RULE}" << 'EOF' || true
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{{idVendor}}=="0e8d", ENV{{ID_MM_DEVICE_IGNORE}}="1", ENV{{ID_MM_PORT_IGNORE}}="1"
+ACTION=="add|change", SUBSYSTEM=="tty", ATTRS{{idVendor}}=="0e8d", ENV{{ID_MM_DEVICE_IGNORE}}="1", ENV{{ID_MM_PORT_IGNORE}}="1"
+EOF
+cat > "$RULES_DIR/{FLASH_TOOL_LINUX_UDEV_EARLY_RULE}" << 'EOF' || true
+ACTION=="add|change", SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", MODE="0666", TAG+="uaccess"
+ACTION=="add|change", SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", RUN+="/bin/chmod 0666 /dev/%k"
+EOF
+cat > "$RULES_DIR/{FLASH_TOOL_LINUX_UDEV_HELPER_RULE}" << EOF || true
+SUBSYSTEM=="usb", ATTR{{idVendor}}=="0e8d", MODE="0666", TAG+="uaccess", GROUP="$SERIAL_GROUP", ENV{{ID_MM_DEVICE_IGNORE}}="1"
+SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", ATTRS{{idVendor}}=="0e8d", MODE="0666", TAG+="uaccess", GROUP="$SERIAL_GROUP", ENV{{ID_MM_DEVICE_IGNORE}}="1", ENV{{ID_MM_PORT_IGNORE}}="1"
+EOF
+cat > "$RULES_DIR/{FLASH_TOOL_LINUX_UDEV_RULE}" << EOF || true
+SUBSYSTEM=="usb", ATTR{{idVendor}}=="0e8d", MODE="0666", GROUP="$SERIAL_GROUP", TAG+="uaccess", ENV{{ID_MM_DEVICE_IGNORE}}="1"
+SUBSYSTEM=="usb", ATTR{{idVendor}}=="0e8d", ATTR{{idProduct}}=="0003", MODE="0666", TAG+="uaccess", ENV{{ID_MM_DEVICE_IGNORE}}="1"
+SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", ATTRS{{idVendor}}=="0e8d", MODE="0666", GROUP="$SERIAL_GROUP", TAG+="uaccess", ENV{{ID_MM_DEVICE_IGNORE}}="1", ENV{{ID_MM_PORT_IGNORE}}="1"
+SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", ATTRS{{idVendor}}=="0e8d", RUN+="/bin/chmod 0666 /dev/%k"
+EOF
+# Community-standard unprivileged ttyACM access (install -m 644 99-ttyacms.rules)
+cat > "$RULES_DIR/{FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE}" << 'EOF' || true
+KERNEL=="ttyACM[0-9]*", MODE="0666", TAG+="uaccess"
+KERNEL=="ttyUSB[0-9]*", MODE="0666", TAG+="uaccess"
+EOF
+for grp in plugdev dialout uucp lock; do
+  getent group "$grp" >/dev/null 2>&1 && usermod -aG "$grp" "$TARGET_USER" 2>/dev/null || true
+done
+command -v systemctl >/dev/null 2>&1 && systemctl stop ModemManager.service 2>/dev/null || true
+# sudo udevadm control --reload-rules && sudo udevadm trigger
+command -v udevadm >/dev/null 2>&1 && udevadm control --reload-rules 2>/dev/null; udevadm trigger 2>/dev/null || true
+log "OK: embedded fallback prep finished for $TARGET_USER (includes 99-ttyacms.rules)"
+exit 0
+"""
+
+
+def download_linux_flash_tool_zip(app_dir=None, progress_cb=None):
+    """Download flash_tool_linux.zip into app_dir. Returns zip Path."""
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    app_dir.mkdir(parents=True, exist_ok=True)
+    zip_path = app_dir / FLASH_TOOL_LINUX_ZIP_NAME
+    if progress_cb:
+        progress_cb("Downloading SP Flash Tool for Linux...", 5)
+
+    # Stream download with optional content-length progress.
+    with requests.get(FLASH_TOOL_LINUX_URL, stream=True, timeout=120) as resp:
+        resp.raise_for_status()
+        total = int(resp.headers.get("Content-Length") or 0)
+        written = 0
+        tmp_path = zip_path.with_suffix(".partial")
+        with open(tmp_path, "wb") as out:
+            for chunk in resp.iter_content(chunk_size=1024 * 256):
+                if not chunk:
+                    continue
+                out.write(chunk)
+                written += len(chunk)
+                if progress_cb and total > 0:
+                    # Map download to 5–55%
+                    pct = 5 + int(50 * (written / total))
+                    progress_cb(
+                        f"Downloading SP Flash Tool… {written // (1024 * 1024)} / "
+                        f"{total // (1024 * 1024)} MB",
+                        min(pct, 55),
+                    )
+        tmp_path.replace(zip_path)
+    if progress_cb:
+        progress_cb("Download complete", 55)
+    return zip_path
+
+
+def extract_linux_flash_tool_zip(zip_path, app_dir=None, progress_cb=None):
+    """Extract flash_tool_linux.zip into app_dir (overwrite)."""
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    zip_path = Path(zip_path)
+    if progress_cb:
+        progress_cb("Extracting SP Flash Tool…", 60)
+    with zipfile.ZipFile(zip_path, "r") as zf:
+        # extractall overwrites existing files by default for matching names.
+        zf.extractall(path=app_dir)
+    ensure_sp_flash_tool_executable(app_dir)
+    if progress_cb:
+        progress_cb("Extraction complete", 75)
+    binary = get_sp_flash_tool_binary_path(app_dir)
+    if not binary or not binary.is_file():
+        raise FileNotFoundError(
+            f"Extracted archive but {FLASH_TOOL_LINUX_BIN} was not found in {app_dir}"
+        )
+    return binary
+
+
+def configure_linux_spflash_system(progress_cb=None, app_dir=None):
+    """Install runtime libs, udev rules, and USB groups for SP Flash Tool on Linux.
+
+    Soft-fail friendly: returns (False, details) when admin auth is denied, but
+    never raises — callers (installer path / app setup) may continue without
+    aborting the rest of Innioasis Updater.
+    """
+    if not is_linux_platform():
+        return True, "Not Linux"
+    user = _linux_current_username()
+    if not user:
+        return False, "Could not determine current username for USB group setup."
+    if progress_cb:
+        progress_cb(
+            "Preparing system (packages, USB permissions — admin password may be required)…",
+            80,
+        )
+    ok, out = _linux_run_privileged(
+        _linux_system_prep_script(user, app_dir=app_dir),
+        progress_cb=progress_cb,
+        env_extra={"TARGET_USER": user},
+    )
+    if progress_cb:
+        progress_cb(
+            "System preparation finished" if ok else "System preparation had issues (continuing)",
+            90,
+        )
+    return ok, out
+
+
+def _linux_current_username():
+    user = os.environ.get("USER") or os.environ.get("LOGNAME") or ""
+    try:
+        import pwd
+        user = user or pwd.getpwuid(os.getuid()).pw_name
+    except Exception:
+        pass
+    return user
+
+
+def _linux_user_groups():
+    """Return set of group names for the current process (supplementary + primary)."""
+    names = set()
+    try:
+        import grp
+        import pwd
+        uid = os.getuid()
+        try:
+            names.add(pwd.getpwuid(uid).pw_name)
+        except Exception:
+            pass
+        for gid in os.getgroups():
+            try:
+                names.add(grp.getgrgid(gid).gr_name)
+            except Exception:
+                pass
+    except Exception:
+        pass
+    return names
+
+
+def _linux_is_arch_family():
+    """True on Arch/CachyOS/Manjaro/SteamOS-style systems (serial group = uucp)."""
+    if not is_linux_platform():
+        return False
+    try:
+        text = Path("/etc/os-release").read_text(encoding="utf-8", errors="replace").lower()
+    except Exception:
+        text = ""
+    keys = ("arch", "cachyos", "manjaro", "endeavouros", "garuda", "artix", "steamos", "holoiso")
+    return any(k in text for k in keys)
+
+
+def linux_spflash_serial_groups_status():
+    """
+    Report which serial-access groups exist and whether the current session has them.
+
+    Returns dict with keys: exists, missing_from_session, recommended, session.
+    Recommended group follows distro defaults and prefers a group the session already has.
+    """
+    result = {
+        "exists": [],
+        "missing_from_session": [],
+        "recommended": None,
+        "session": [],
+    }
+    if not is_linux_platform():
+        return result
+    candidates = []
+    for name in ("dialout", "uucp", "plugdev", "lock"):
+        try:
+            import grp
+            grp.getgrnam(name)
+            candidates.append(name)
+        except Exception:
+            continue
+    result["exists"] = candidates
+    session = _linux_user_groups()
+    result["session"] = sorted(session)
+    # Distro default preference
+    if _linux_is_arch_family():
+        preferred = ["uucp", "dialout", "plugdev", "lock"]
+    else:
+        preferred = ["dialout", "uucp", "plugdev", "lock"]
+    recommended = None
+    for name in preferred:
+        if name in candidates:
+            recommended = name
+            break
+    # Prefer a serial group already active in this session (avoids false "log out" panic
+    # when dialout exists on disk but the session already has uucp and rules use uucp).
+    for name in preferred:
+        if name in candidates and name in session:
+            recommended = name
+            break
+    result["recommended"] = recommended
+    # Only flag missing groups that matter for the recommended access path.
+    if recommended and recommended not in session:
+        result["missing_from_session"] = [recommended]
+    else:
+        result["missing_from_session"] = []
+    return result
+
+
+def linux_spflash_udev_rules_present():
+    """True when any MediaTek-oriented udev rules appear under /etc/udev/rules.d."""
+    rules_dir = Path("/etc/udev/rules.d")
+    if not rules_dir.is_dir():
+        return False
+    primary = rules_dir / FLASH_TOOL_LINUX_UDEV_RULE
+    mm = rules_dir / FLASH_TOOL_LINUX_MM_BLACKLIST_RULE
+    if primary.is_file() or mm.is_file():
+        return True
+    alt_names = (
+        "99-mediatek-sp-flash.rules",
+        "52-mtk.rules",
+        "20-mm-blacklist-mtk.rules",
+        "51-android.rules",
+        "99-mediatek.rules",
+        "78-innioasis-mediatek-access.rules",
+        "78-mediatek-access.rules",
+        "99-ttyacms.rules",
+        FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE,
+    )
+    return any((rules_dir / name).is_file() for name in alt_names)
+
+
+def linux_spflash_system_prep_complete():
+    """
+    True when the *current* Innioasis SP Flash Tool prep is installed correctly.
+
+    Requires MM blacklist, early tty MODE rule (open-race fix), helper + main
+    rules with ttyACM + MODE=0666. Older partial installs return False so the
+    app re-runs prep for existing users.
+    """
+    if not is_linux_platform():
+        return True
+    rules_dir = Path("/etc/udev/rules.d")
+    required = (
+        rules_dir / FLASH_TOOL_LINUX_MM_BLACKLIST_RULE,
+        rules_dir / FLASH_TOOL_LINUX_UDEV_EARLY_RULE,
+        rules_dir / FLASH_TOOL_LINUX_UDEV_HELPER_RULE,
+        rules_dir / FLASH_TOOL_LINUX_UDEV_RULE,
+        rules_dir / FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE,
+    )
+    if not all(p.is_file() for p in required):
+        return False
+    try:
+        main_txt = (rules_dir / FLASH_TOOL_LINUX_UDEV_RULE).read_text(
+            encoding="utf-8", errors="replace"
+        )
+        mm_txt = (rules_dir / FLASH_TOOL_LINUX_MM_BLACKLIST_RULE).read_text(
+            encoding="utf-8", errors="replace"
+        )
+        helper_txt = (rules_dir / FLASH_TOOL_LINUX_UDEV_HELPER_RULE).read_text(
+            encoding="utf-8", errors="replace"
+        )
+        early_txt = (rules_dir / FLASH_TOOL_LINUX_UDEV_EARLY_RULE).read_text(
+            encoding="utf-8", errors="replace"
+        )
+        ttyacms_txt = (rules_dir / FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE).read_text(
+            encoding="utf-8", errors="replace"
+        )
+    except Exception:
+        return False
+    # Early rule must set MODE without requiring ATTRS (fast path for SPFT race).
+    if "ttyACM" not in early_txt or 'MODE="0666"' not in early_txt:
+        return False
+    # Community 99-ttyacms.rules for unprivileged /dev/ttyACM*
+    if "ttyACM" not in ttyacms_txt or 'MODE="0666"' not in ttyacms_txt:
+        return False
+    # Main rule must cover serial nodes and world-writable mode.
+    if "ttyACM" not in main_txt or 'MODE="0666"' not in main_txt:
+        return False
+    if "0e8d" not in main_txt:
+        return False
+    # Helper must not tighten back to 0660-only (old broken rule).
+    if 'MODE="0660"' in helper_txt and 'MODE="0666"' not in helper_txt:
+        return False
+    # ModemManager blacklist must ignore MediaTek.
+    if "ID_MM_DEVICE_IGNORE" not in mm_txt or "0e8d" not in mm_txt:
+        return False
+    return True
+
+
+def linux_spflash_prep_needed(app_dir=None):
+    """True when binary is missing and/or system udev/group prep is incomplete.
+
+    Always False on non-x86 Linux (no SP Flash Tool path — MTKClient only).
+    """
+    if not is_linux_platform() or not linux_spflash_arch_supported():
+        return False
+    if not sp_flash_tool_binary_ready(app_dir):
+        return True
+    if not linux_spflash_system_prep_complete():
+        return True
+    return False
+
+
+def fix_linux_spflash_option_ini(app_dir=None):
+    """
+    Point option.ini LogPath at a Linux-writable directory.
+
+    Shipped SP Flash Tool option.ini uses a Windows path
+    (C:\\ProgramData\\SP_FT_Logs), which creates garbage nested dirs under cwd
+    and can confuse log cleanup on Linux.
+    """
+    if not is_linux_platform():
+        return
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    option_path = app_dir / "option.ini"
+    log_dir = app_dir / FLASH_TOOL_LINUX_LOG_DIR_NAME
+    try:
+        log_dir.mkdir(parents=True, exist_ok=True)
+    except Exception as e:
+        silent_print(f"Warning: could not create SP Flash Tool log dir {log_dir}: {e}")
+    if not option_path.is_file():
+        return
+    try:
+        text = option_path.read_text(encoding="utf-8", errors="replace")
+        # Normalize Windows and relative junk log paths to an absolute Linux path.
+        new_log = str(log_dir)
+        lines = []
+        changed = False
+        for line in text.splitlines():
+            if line.strip().lower().startswith("logpath="):
+                current = line.split("=", 1)[-1].strip()
+                if current != new_log:
+                    lines.append(f"LogPath={new_log}")
+                    changed = True
+                else:
+                    lines.append(line)
+            else:
+                lines.append(line)
+        if changed:
+            option_path.write_text("\n".join(lines) + ("\n" if text.endswith("\n") else ""), encoding="utf-8")
+            silent_print(f"Set option.ini LogPath to {new_log}")
+    except Exception as e:
+        silent_print(f"Warning: could not fix option.ini LogPath: {e}")
+
+
+def _linux_stop_serial_port_holders():
+    """
+    Best-effort stop of services that seize /dev/ttyACM* (no password prompt).
+
+    ModemManager is the classic SP Flash Tool conflict on Ubuntu/Fedora desktops.
+    brltty can also open ttyACM nodes. Failures are ignored when the user lacks
+    privileges or the unit is absent.
+    """
+    if not is_linux_platform():
+        return
+    systemctl = shutil.which("systemctl")
+    if not systemctl:
+        return
+    for unit in ("ModemManager.service", "ModemManager", "brltty.service", "brltty"):
+        try:
+            active = subprocess.run(
+                [systemctl, "is-active", "--quiet", unit],
+                capture_output=True,
+                timeout=5,
+            )
+            if active.returncode != 0:
+                continue
+            # Prefer --user no; these are system units. May fail without root.
+            stop = subprocess.run(
+                [systemctl, "stop", unit],
+                capture_output=True,
+                text=True,
+                timeout=15,
+            )
+            if stop.returncode == 0:
+                silent_print(f"Stopped {unit} so it cannot hold MediaTek serial ports")
+            else:
+                silent_print(
+                    f"Could not stop {unit} without admin rights "
+                    f"(exit {stop.returncode}); udev MM-ignore rules should still help"
+                )
+        except Exception as e:
+            silent_print(f"Warning: systemctl stop {unit}: {e}")
+
+
+def _linux_chmod_mtk_tty_nodes_best_effort():
+    """If any MediaTek tty nodes are already present and writable by us, leave them;
+    if we can chmod (already open perms or root), force 0666."""
+    if not is_linux_platform():
+        return
+    for pattern in ("/dev/ttyACM*", "/dev/ttyUSB*"):
+        for path in sorted(Path("/dev").glob(Path(pattern).name)):
+            try:
+                # Only touch nodes we can already open or that look MTK-owned via udev.
+                os.chmod(path, 0o666)
+                silent_print(f"chmod 0666 {path}")
+            except PermissionError:
+                pass
+            except Exception:
+                pass
+
+
+def _linux_try_open_serial_nodes():
+    """Return list of (path, ok, err) for current ttyACM/ttyUSB open probes."""
+    results = []
+    if not is_linux_platform():
+        return results
+    for path in sorted(Path("/dev").glob("ttyACM*")) + sorted(Path("/dev").glob("ttyUSB*")):
+        try:
+            fd = os.open(str(path), os.O_RDWR | os.O_NONBLOCK | os.O_NOCTTY)
+            os.close(fd)
+            results.append((str(path), True, None))
+        except OSError as e:
+            results.append((str(path), False, e))
+    return results
+
+
+class _LinuxTtyAccessGuardian(threading.Thread):
+    """
+    While SP Flash Tool is scanning/connecting, hammer chmod 0666 on new ttyACM*
+    nodes. SPFT open()s within milliseconds of the kernel uevent; udev ATTRS rules
+    often apply too late. Early udev MODE rules handle most cases; this is a
+    best-effort userspace assist (works when we already have permission to chmod).
+    """
+
+    def __init__(self, interval=0.015):
+        super().__init__(daemon=True, name="spft-tty-guardian")
+        self._stop = threading.Event()
+        self.interval = interval
+
+    def stop(self):
+        self._stop.set()
+
+    def run(self):
+        while not self._stop.is_set():
+            for path in Path("/dev").glob("ttyACM*"):
+                try:
+                    os.chmod(path, 0o666)
+                except Exception:
+                    pass
+            for path in Path("/dev").glob("ttyUSB*"):
+                try:
+                    os.chmod(path, 0o666)
+                except Exception:
+                    pass
+            self._stop.wait(self.interval)
+
+
+def diagnose_linux_spflash_port_access():
+    """
+    Human-readable diagnostics for S_COM_PORT_OPEN_FAIL / permission denied.
+
+    Used in setup messages and post-failure UI copy.
+    """
+    if not is_linux_platform():
+        return "Not Linux"
+    lines = []
+    rules_ok = linux_spflash_udev_rules_present()
+    prep_ok = linux_spflash_system_prep_complete()
+    lines.append(f"udev MediaTek rules installed: {'yes' if rules_ok else 'NO'}")
+    lines.append(f"Innioasis SP Flash Tool prep complete: {'yes' if prep_ok else 'NO (will re-run setup)'}")
+    grp = linux_spflash_serial_groups_status()
+    lines.append(
+        f"serial groups present: {', '.join(grp['exists']) or '(none)'}; "
+        f"recommended: {grp['recommended'] or '(none)'}"
+    )
+    if grp["missing_from_session"]:
+        lines.append(
+            "this session is missing group(s): "
+            + ", ".join(grp["missing_from_session"])
+            + " — log out and back in after setup (or reboot)"
+        )
+    else:
+        rec = grp.get("recommended") or "serial"
+        lines.append(f"session has recommended serial group access ({rec})")
+    # Early race-fix rule + community unprivileged ttyACM rule
+    early = Path("/etc/udev/rules.d") / FLASH_TOOL_LINUX_UDEV_EARLY_RULE
+    lines.append(
+        f"early tty MODE rule ({FLASH_TOOL_LINUX_UDEV_EARLY_RULE}): "
+        f"{'yes' if early.is_file() else 'NO — re-run setup'}"
+    )
+    ttyacms = Path("/etc/udev/rules.d") / FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE
+    lines.append(
+        f"unprivileged ttyACM rule ({FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE}): "
+        f"{'yes' if ttyacms.is_file() else 'NO — re-run setup '
+         '(sudo install -m 644 99-ttyacms.rules /etc/udev/rules.d/)'}"
+    )
+    mm = shutil.which("systemctl")
+    if mm:
+        try:
+            r = subprocess.run(
+                [mm, "is-active", "ModemManager.service"],
+                capture_output=True,
+                text=True,
+                timeout=5,
+            )
+            state = (r.stdout or r.stderr or "").strip() or f"exit {r.returncode}"
+            lines.append(f"ModemManager: {state}")
+        except Exception:
+            pass
+    tty_nodes = sorted(Path("/dev").glob("ttyACM*")) + sorted(Path("/dev").glob("ttyUSB*"))
+    if tty_nodes:
+        for node in tty_nodes:
+            try:
+                st = node.stat()
+                mode = oct(st.st_mode & 0o777)
+                accessible = os.access(node, os.R_OK | os.W_OK)
+                lines.append(f"{node}: mode={mode} rw_ok={accessible}")
+            except Exception as e:
+                lines.append(f"{node}: ({e})")
+    else:
+        lines.append("no /dev/ttyACM* or /dev/ttyUSB* currently present (plug device while flashing)")
+    return "\n".join(lines)
+
+
+def prepare_linux_spflash_runtime(app_dir=None):
+    """
+    Per-launch Linux preparation before starting flash_tool.
+
+    Fixes option.ini paths, best-effort stops ModemManager/brltty, chmods
+    present tty nodes, and logs access diagnostics. Does not require root.
+    """
+    if not is_linux_platform():
+        return True, "Not Linux"
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    fix_linux_spflash_option_ini(app_dir)
+    ensure_sp_flash_tool_executable(app_dir)
+    _linux_stop_serial_port_holders()
+    _linux_chmod_mtk_tty_nodes_best_effort()
+    diag = diagnose_linux_spflash_port_access()
+    silent_print("Linux SP Flash Tool runtime preflight:\n" + diag)
+    notes = []
+    if not linux_spflash_udev_rules_present():
+        notes.append(
+            "MediaTek udev rules are not installed. Re-run SP Flash Tool setup "
+            "(admin password required) so /dev/ttyACM* is world-accessible."
+        )
+    grp = linux_spflash_serial_groups_status()
+    if grp["missing_from_session"] and grp["recommended"] in grp["missing_from_session"]:
+        notes.append(
+            f"Log out and back in so group '{grp['recommended']}' applies to this session."
+        )
+    return True, "\n".join(notes) if notes else diag
+
+
+def linux_spflash_com_port_fail_message():
+    """User-facing explanation when SP Flash Tool reports S_COM_PORT_OPEN_FAIL (1013)."""
+    diag = diagnose_linux_spflash_port_access()
+    open_probe = _linux_try_open_serial_nodes()
+    can_open_now = any(ok for _, ok, _ in open_probe)
+    race_hint = ""
+    if can_open_now or "rw_ok=True" in diag:
+        race_hint = (
+            "\nNote: the port is openable from this app right now. SP Flash Tool often "
+            "tries to open /dev/ttyACM* in the same instant the device appears, before "
+            "Linux finishes applying permissions (open race). Re-run SP Flash Tool setup "
+            "once to install the early tty access rule, then unplug the player completely, "
+            "start the install again, and only plug in when the app says to connect.\n"
+        )
+    return (
+        "SP Flash Tool found your device but could not open the serial port "
+        "(/dev/ttyACM*). On Linux this is almost always permissions timing, group "
+        "membership, or another program holding the port.\n\n"
+        "Try this:\n"
+        "1. Re-run SP Flash Tool setup in this app (installs udev rules for unprivileged "
+        "/dev/ttyACM* — including 99-ttyacms.rules via install -m 644, then "
+        "udevadm control --reload-rules && udevadm trigger).\n"
+        "2. Fully unplug the player, start flash again, and plug in only when prompted.\n"
+        "3. If setup just added you to a serial group, log out and back in once.\n"
+        "4. If ModemManager is running: systemctl stop ModemManager\n"
+        f"{race_hint}\n"
+        f"Diagnostics:\n{diag}"
+    )
+
+
+def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_system_prep=False):
+    """
+    Ensure Linux ``flash_tool`` is present and system prep matches run_linux.sh.
+
+    - Downloads/extracts the binary when missing (or force_download).
+    - Runs the shared ``linux_spflash_system_prep.sh`` when udev/group prep is
+      incomplete (existing users) or force_system_prep is set.
+    - Soft-fails system prep: binary presence alone still returns success so the
+      app can fall back to MTKClient for Y1; Y2 will re-offer setup.
+    Returns (ok, message).
+    """
+    if not is_linux_platform():
+        return True, "SP Flash Tool bootstrap is only required on Linux"
+
+    if not linux_spflash_arch_supported():
+        return False, linux_spflash_arch_unsupported_reason()
+
+    app_dir = get_firmware_app_dir()
+    try:
+        need_fetch = force_download or not sp_flash_tool_binary_ready(app_dir)
+        if need_fetch:
+            if progress_cb:
+                progress_cb("SP Flash Tool not found — starting first-time setup…", 2)
+            zip_path = download_linux_flash_tool_zip(app_dir, progress_cb=progress_cb)
+            extract_linux_flash_tool_zip(zip_path, app_dir, progress_cb=progress_cb)
+        else:
+            if progress_cb:
+                progress_cb("SP Flash Tool already present — verifying permissions…", 50)
+            ensure_sp_flash_tool_executable(app_dir)
+
+        # Linux-only config hygiene (no root required)
+        fix_linux_spflash_option_ini(app_dir)
+
+        need_sys = (
+            force_system_prep
+            or force_download
+            or not linux_spflash_system_prep_complete()
+        )
+        perm_ok, perm_out = True, ""
+        if need_sys:
+            if progress_cb:
+                progress_cb(
+                    "Installing USB/serial access rules (same prep as run_linux.sh)…",
+                    75,
+                )
+            # Soft-fail: do not abort app setup if the user cancels the password dialog.
+            perm_ok, perm_out = configure_linux_spflash_system(
+                progress_cb=progress_cb, app_dir=app_dir
+            )
+        else:
+            if progress_cb:
+                progress_cb("USB/serial access rules already installed", 85)
+
+        if not sp_flash_tool_binary_ready(app_dir):
+            return False, "SP Flash Tool binary is still missing after setup."
+        ensure_sp_flash_tool_executable(app_dir)
+        prepare_linux_spflash_runtime(app_dir)
+        if progress_cb:
+            progress_cb("SP Flash Tool setup complete", 100)
+
+        msg_parts = ["SP Flash Tool is ready."]
+        if need_sys and not perm_ok:
+            msg_parts.append(
+                "USB driver/permission setup did not fully succeed (skipped or denied). "
+                "You can re-run setup later; Innioasis Updater itself remains usable.\n"
+                f"Details: {(perm_out or '').strip()[:500]}"
+            )
+        elif need_sys and perm_ok:
+            msg_parts.append(
+                "USB rules, ModemManager blacklist, and serial-port access were installed "
+                "(same prep as run_linux.sh). If the device is not accessible yet: "
+                "unplug/replug it, and log out and back in once so group membership applies."
+            )
+        else:
+            msg_parts.append("System prep was already complete; skipped re-installing udev rules.")
+        diag = diagnose_linux_spflash_port_access()
+        msg_parts.append("Current access status:\n" + diag)
+        # Binary ready = overall ok (system prep soft-failed still allows app use).
+        return True, "\n".join(msg_parts)
+    except Exception as e:
+        silent_print(f"Linux SP Flash Tool setup failed: {e}")
+        # Soft path: if binary exists, don't treat as hard failure for the whole app.
+        if sp_flash_tool_binary_ready(app_dir):
+            return True, (
+                f"SP Flash Tool binary is present, but setup hit an error (continuing): {e}"
+            )
+        return False, str(e)
+
+
+def list_mediatek_serial_ports():
+    """
+    Enumerate MediaTek (0e8d) serial ports currently visible on Linux.
+
+    Returns a list of dicts:
+      tty, vid, pid, product, manufacturer, mode (brom|preloader|da|unknown),
+      openable (bool).
+    Empty list on non-Linux or when none found.
+    """
+    if not is_linux_platform():
+        return []
+    results = []
+    for tty_path in sorted(Path("/dev").glob("ttyACM*")) + sorted(Path("/dev").glob("ttyUSB*")):
+        info = {
+            "tty": str(tty_path),
+            "vid": "",
+            "pid": "",
+            "product": "",
+            "manufacturer": "",
+            "mode": "unknown",
+            "openable": False,
+        }
+        try:
+            sys_dev = Path(f"/sys/class/tty/{tty_path.name}/device")
+            if not sys_dev.exists():
+                continue
+            cur = sys_dev.resolve()
+            for _ in range(10):
+                vfile, pfile = cur / "idVendor", cur / "idProduct"
+                if vfile.is_file() and pfile.is_file():
+                    info["vid"] = vfile.read_text(encoding="utf-8", errors="replace").strip().lower()
+                    info["pid"] = pfile.read_text(encoding="utf-8", errors="replace").strip().lower()
+                    if (cur / "product").is_file():
+                        info["product"] = (cur / "product").read_text(
+                            encoding="utf-8", errors="replace"
+                        ).strip()
+                    if (cur / "manufacturer").is_file():
+                        info["manufacturer"] = (cur / "manufacturer").read_text(
+                            encoding="utf-8", errors="replace"
+                        ).strip()
+                    break
+                if cur.parent == cur:
+                    break
+                cur = cur.parent
+            if info["vid"] != "0e8d":
+                continue
+            pid = info["pid"]
+            if pid == "0003":
+                info["mode"] = "brom"
+            elif pid in ("2000", "2007"):
+                info["mode"] = "preloader"
+            elif pid == "2001":
+                info["mode"] = "da"
+            try:
+                fd = os.open(str(tty_path), os.O_RDWR | os.O_NONBLOCK | os.O_NOCTTY)
+                os.close(fd)
+                info["openable"] = True
+            except OSError:
+                info["openable"] = False
+            results.append(info)
+        except Exception as e:
+            silent_print(f"list_mediatek_serial_ports: skip {tty_path}: {e}")
+    return results
+
+
+def select_spflash_com_port(device_model=None, ports=None):
+    """
+    Choose the best MediaTek serial port for an SP Flash Tool session.
+
+    Live system (with both Y1 + Y2 plugged) often shows:
+      - Y1 in pure BROM: 0e8d:0003
+      - Y2 as preloader: 0e8d:2000 (cdc_acm on interface 1.1; if0 often fails probe)
+
+    SP Flash Tool auto-detect grabs the *first* matching uevent, which is often
+    the wrong device when both are connected. We pin com-port when we can.
+
+    Preference:
+      Y2: preloader (2000/2007) first, then brom (0003)
+      Y1: brom (0003) first, then preloader (2000/2007)
+      Prefer openable ports; if multiple of same mode, pick the highest ACM index
+      (usually the more recently enumerated device).
+    Returns port dict or None.
+    """
+    if ports is None:
+        ports = list_mediatek_serial_ports()
+    if not ports:
+        return None
+    if is_y2_model(device_model):
+        mode_order = ("preloader", "brom", "da", "unknown")
+    else:
+        mode_order = ("brom", "preloader", "da", "unknown")
+    for mode in mode_order:
+        candidates = [p for p in ports if p.get("mode") == mode]
+        if not candidates:
+            continue
+        openable = [p for p in candidates if p.get("openable")]
+        pool = openable or candidates
+        # Higher ttyACM index tends to be more recently plugged
+        pool = sorted(
+            pool,
+            key=lambda p: int(re.sub(r"\D", "", Path(p["tty"]).name) or "0"),
+            reverse=True,
+        )
+        return pool[0]
+    return ports[-1]
+
+
+def describe_mediatek_ports(ports=None):
+    """One-line human summary of connected MTK ports."""
+    if ports is None:
+        ports = list_mediatek_serial_ports()
+    if not ports:
+        return "No MediaTek serial ports currently visible."
+    parts = []
+    for p in ports:
+        parts.append(
+            f"{p['tty']} pid={p.get('pid') or '?'} ({p.get('mode') or '?'}"
+            f"{', ok' if p.get('openable') else ', busy/denied'}"
+            f"{', ' + p['product'] if p.get('product') else ''})"
+        )
+    return "; ".join(parts)
+
+
+def parse_scatter_download_partitions(scatter_path):
+    """
+    Parse SP Flash Tool scatter text into downloadable partitions.
+
+    Returns list of dicts: name, file, size (int bytes), start (int), index (int SYS N).
+    """
+    scatter_path = Path(scatter_path)
+    if not scatter_path.is_file():
+        return []
+    text = scatter_path.read_text(encoding="utf-8", errors="replace")
+    parts = []
+    for block in re.split(r"(?m)^-\s*partition_index:", text)[1:]:
+        idx_m = re.match(r"\s*SYS(\d+)", block)
+        name_m = re.search(r"partition_name:\s*(\S+)", block)
+        file_m = re.search(r"file_name:\s*(\S+)", block)
+        size_m = re.search(r"partition_size:\s*(\S+)", block)
+        start_m = re.search(r"linear_start_addr:\s*(\S+)", block)
+        dl_m = re.search(r"is_download:\s*(\S+)", block)
+        fname = (file_m.group(1) if file_m else "NONE").strip()
+        if not fname or fname.upper() == "NONE":
+            continue
+        if dl_m and dl_m.group(1).strip().upper() in ("FALSE", "0", "NO"):
+            continue
+        try:
+            size = int(size_m.group(1), 0) if size_m else 0
+        except ValueError:
+            size = 0
+        try:
+            start = int(start_m.group(1), 0) if start_m else 0
+        except ValueError:
+            start = 0
+        try:
+            index = int(idx_m.group(1)) if idx_m else -1
+        except ValueError:
+            index = -1
+        parts.append(
+            {
+                "name": name_m.group(1) if name_m else "?",
+                "file": fname,
+                "size": size,
+                "start": start,
+                "index": index,
+            }
+        )
+    return parts
+
+
+def build_spflash_rom_list_xml(scatter_path, app_dir=None):
+    """
+    Build <rom-list>…</rom-list> from scatter SYS indices.
+
+    SP Flash Tool rom index N maps to scatter partition_index SYSN. Y2's extra
+    EBR2/EXPDB shifts ANDROID/CACHE/USRDATA vs Y1 — hardcoding Y1 indices for Y2
+    maps cache.img onto ANDROID and aborts with S_DL_LOAD_REGION_IS_OVERLAP.
+    """
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    parts = parse_scatter_download_partitions(scatter_path)
+    lines = ["        <rom-list>"]
+    for part in parts:
+        if part.get("index", -1) < 0:
+            continue
+        fpath = app_dir / part["file"]
+        if not fpath.is_file() and not Path(part["file"]).is_file():
+            # Skip missing optional images rather than pointing SPFT at nothing
+            silent_print(
+                f"Scatter rom index {part['index']} ({part['name']}): "
+                f"missing {part['file']}, skipping"
+            )
+            continue
+        lines.append(
+            f'            <rom index="{part["index"]}" enable="true">{part["file"]}</rom>'
+        )
+    lines.append("        </rom-list>")
+    return "\n".join(lines) + "\n"
+
+
+def validate_spflash_images_for_model(device_model=None, app_dir=None):
+    """
+    Ensure on-disk images fit the scatter for this model.
+
+    Returns (ok: bool, errors: list[str], warnings: list[str]).
+    Catches the silent SPFT exit after "load roms in rom list" caused by
+    S_DL_LOAD_REGION_IS_OVERLAP (5016) when system.img is larger than ANDROID.
+    """
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    resolved = resolve_device_model_for_install(device_model)
+    config = get_flash_config(resolved)
+    errors = []
+    warnings = []
+    if not config:
+        return False, ["Unknown device model for SP Flash Tool validation."], warnings
+    scatter_path = app_dir / config["scatter_txt"]
+    if not scatter_path.is_file():
+        def_path = app_dir / config["scatter_def_txt"]
+        if def_path.is_file():
+            try:
+                shutil.copy2(def_path, scatter_path)
+            except Exception as e:
+                errors.append(f"Could not create {scatter_path.name}: {e}")
+                return False, errors, warnings
+        else:
+            errors.append(f"Missing scatter file: {scatter_path.name}")
+            return False, errors, warnings
+    # Sanity: Y2 images with Y1 scatter (or vice versa)
+    family = _read_scatter_chip_family(scatter_path)
+    if family and resolved and family not in (resolved,):
+        # resolved may be 'Y1'/'Y2' — family same
+        if (family == "Y1" and is_y2_model(resolved)) or (
+            family == "Y2" and is_y1_model(resolved)
+        ):
+            errors.append(
+                f"Scatter {scatter_path.name} looks like {family} but install model is {resolved}."
+            )
+    parts = parse_scatter_download_partitions(scatter_path)
+    if not parts:
+        warnings.append(f"Could not parse partitions from {scatter_path.name}")
+    for part in parts:
+        fpath = app_dir / part["file"]
+        if not fpath.is_file():
+            # also try basename only in cwd
+            fpath2 = Path(part["file"])
+            if fpath2.is_file():
+                fpath = fpath2
+            else:
+                errors.append(f"Missing image for {part['name']}: {part['file']}")
+                continue
+        try:
+            actual = fpath.stat().st_size
+        except OSError as e:
+            errors.append(f"Cannot stat {part['file']}: {e}")
+            continue
+        if part["size"] > 0 and actual > part["size"]:
+            errors.append(
+                f"{part['file']} is {actual} bytes but {part['name']} partition is only "
+                f"{part['size']} bytes (0x{part['size']:x}) in {scatter_path.name}. "
+                f"SP Flash Tool fails with S_DL_LOAD_REGION_IS_OVERLAP (5016) and exits "
+                f"before waiting for USB — usually a Y1/Y2 scatter mismatch."
+            )
+    # Hint if Y2 preloader present but model resolved as Y1
+    y2_pl = app_dir / "preloader_eastaeon82_wet_kk.bin"
+    y1_pl = app_dir / "preloader_g368_nyx.bin"
+    if is_y1_model(resolved) and y2_pl.is_file() and not y1_pl.is_file():
+        errors.append(
+            "On-disk preloader is Y2 (preloader_eastaeon82_wet_kk.bin) but install "
+            "model is Y1. Select/extract a Y2 firmware package."
+        )
+    if is_y2_model(resolved) and y1_pl.is_file() and not y2_pl.is_file():
+        errors.append(
+            "On-disk preloader is Y1 (preloader_g368_nyx.bin) but install model is Y2."
+        )
+    return (len(errors) == 0), errors, warnings
+
+
+def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_dir=None):
+    """
+    Build a per-run install XML from the model template with Linux-friendly
+    log path and an optional pinned com-port.
+
+    Returns Path to the runtime XML (e.g. install_rom_sp_y2.runtime.xml).
+    """
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    resolved = resolve_device_model_for_install(device_model)
+    config = get_flash_config(resolved)
+    if not config:
+        raise FileNotFoundError("Unknown device model — cannot build SP Flash Tool XML")
+    template = app_dir / config["install_rom_sp_xml"]
+    if not template.is_file():
+        raise FileNotFoundError(f"Missing install template: {template}")
+    text = template.read_text(encoding="utf-8", errors="replace")
+    # Always bind scatter from config so a stale template cannot point at the wrong chip.
+    text = re.sub(
+        r"<scatter>[^<]*</scatter>",
+        f"<scatter>{config['scatter_txt']}</scatter>",
+        text,
+        count=1,
+    )
+    # Rebuild rom-list from the scatter SYS indices (Y2 ≠ Y1 index map).
+    scatter_path = app_dir / config["scatter_txt"]
+    try:
+        rom_list_xml = build_spflash_rom_list_xml(scatter_path, app_dir=app_dir)
+        if "<rom index=" in rom_list_xml:
+            text, n_sub = re.subn(
+                r"(?s)\s*<rom-list>.*?</rom-list>\s*",
+                "\n" + rom_list_xml,
+                text,
+                count=1,
+            )
+            if n_sub:
+                silent_print(
+                    f"Rebuilt rom-list from {scatter_path.name} "
+                    f"({rom_list_xml.count('<rom index=')} entries)"
+                )
+            else:
+                silent_print("Warning: could not substitute rom-list in install XML")
+    except Exception as e:
+        silent_print(f"Warning: scatter-based rom-list rebuild failed: {e}")
+        if config.get("preloader_bin"):
+            text = re.sub(
+                r'(<rom index="0" enable="true">)[^<]+(</rom>)',
+                rf"\1{config['preloader_bin']}\2",
+                text,
+                count=1,
+            )
+    # Fix Windows log path in the install XML (separate from option.ini)
+    if is_linux_platform():
+        log_dir = app_dir / FLASH_TOOL_LINUX_LOG_DIR_NAME
+        try:
+            log_dir.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            pass
+        text = re.sub(
+            r'log_path="[^"]*"',
+            f'log_path="{log_dir}"',
+            text,
+            count=1,
+        )
+    # Pin or clear com-port. Never pin a path that does not currently exist —
+    # that skips auto-detect and can exit before the user can plug in.
+    if com_port and Path(com_port).exists():
+        com_port = str(com_port)
+        if re.search(r'com-port="[^"]*"', text):
+            text = re.sub(r'com-port="[^"]*"', f'com-port="{com_port}"', text, count=1)
+        else:
+            text = text.replace(
+                'connection type="BromUSB"',
+                f'connection type="BromUSB" com-port="{com_port}"',
+                1,
+            )
+        silent_print(f"SP Flash Tool runtime XML pinned com-port={com_port}")
+    else:
+        if com_port and not Path(com_port).exists():
+            silent_print(
+                f"Ignoring stale com-port {com_port} (not present) — using auto-detect"
+            )
+        text = re.sub(r'com-port="[^"]*"', 'com-port=""', text, count=1)
+        silent_print("SP Flash Tool runtime XML: auto-detect com-port (none pinned)")
+    out_name = template.stem + ".runtime.xml"
+    out_path = app_dir / out_name
+    out_path.write_text(text, encoding="utf-8")
+    silent_print(
+        f"SP Flash Tool runtime XML for {resolved}: {out_path.name} "
+        f"(scatter={config['scatter_txt']}, template={template.name})"
+    )
+    return out_path
+
+
 def prepare_sp_flash_tool_files(device_model=None):
-    """Reset history.ini and ensure default scatter file exist for SP Flash Tool."""
+    """Reset history.ini and ensure model-correct scatter file for SP Flash Tool."""
     try:
         resolved_model = resolve_device_model_for_install(device_model)
         config = get_flash_config(resolved_model)
@@ -1316,16 +2751,56 @@ def prepare_sp_flash_tool_files(device_model=None):
         else:
             silent_print(f"Warning: {history_def_path} not found; skipping {HISTORY_INI} reset")
 
+        # Always refresh scatter from the model default so a previous Y1 extract
+        # cannot leave a too-small ANDROID region under Y2 images (or vice versa).
         scatter_path = app_dir / config["scatter_txt"]
-        if not scatter_path.exists():
-            scatter_def_path = app_dir / config["scatter_def_txt"]
-            if scatter_def_path.exists():
-                shutil.copy2(scatter_def_path, scatter_path)
-                silent_print(f"Created {config['scatter_txt']} from {config['scatter_def_txt']}")
-            else:
-                silent_print(f"Warning: {scatter_def_path} not found; cannot create {config['scatter_txt']}")
+        scatter_def_path = app_dir / config["scatter_def_txt"]
+        if scatter_def_path.exists():
+            shutil.copy2(scatter_def_path, scatter_path)
+            silent_print(
+                f"Installed {config['scatter_txt']} from {config['scatter_def_txt']} "
+                f"for {resolved_model}"
+            )
+        elif scatter_path.exists():
+            silent_print(f"{config['scatter_txt']} already present (no def to refresh)")
         else:
-            silent_print(f"{config['scatter_txt']} already present in app directory")
+            silent_print(
+                f"Warning: neither {scatter_path.name} nor {scatter_def_path.name} found"
+            )
+
+        # Always normalize Linux SP Flash Tool config paths when preparing files.
+        if is_linux_platform():
+            fix_linux_spflash_option_ini(app_dir)
+
+        # Rewrite the on-disk install XML rom-list from the scatter so a GUI
+        # export (which often keeps Y1 indices for Y2) cannot break console mode.
+        try:
+            prepare_spflash_runtime_install_xml(
+                device_model=resolved_model,
+                com_port=None,
+                app_dir=app_dir,
+            )
+            # Also rewrite the template itself so `flash_tool -i install_rom_sp_y2.xml`
+            # (terminal mode) uses correct indices without requiring .runtime.xml.
+            template = app_dir / config["install_rom_sp_xml"]
+            scatter_path = app_dir / config["scatter_txt"]
+            if template.is_file() and scatter_path.is_file():
+                tpl = template.read_text(encoding="utf-8", errors="replace")
+                rom_list_xml = build_spflash_rom_list_xml(scatter_path, app_dir=app_dir)
+                if "<rom index=" in rom_list_xml:
+                    tpl2, n = re.subn(
+                        r"(?s)\s*<rom-list>.*?</rom-list>\s*",
+                        "\n" + rom_list_xml,
+                        tpl,
+                        count=1,
+                    )
+                    if n:
+                        template.write_text(tpl2, encoding="utf-8")
+                        silent_print(
+                            f"Normalized rom-list in {template.name} from {scatter_path.name}"
+                        )
+        except Exception as e:
+            silent_print(f"Warning: could not normalize install XML rom-list: {e}")
     except Exception as e:
         silent_print(f"Error preparing SP Flash Tool files: {e}")
         import traceback
@@ -2920,6 +4395,29 @@ class DebugOutputWindow(QWidget):
         self.output_text.clear()
 
 
+class LinuxFlashToolSetupWorker(QThread):
+    """First-time Linux SP Flash Tool download, extract, and system prep."""
+
+    progress = Signal(str, int)  # message, percent 0-100
+    setup_finished = Signal(bool, str)
+
+    def __init__(self, force_download=False):
+        super().__init__()
+        self.force_download = force_download
+
+    def run(self):
+        def _cb(message, percent=0):
+            try:
+                self.progress.emit(str(message), int(percent or 0))
+            except Exception:
+                pass
+
+        ok, message = ensure_linux_sp_flash_tool(
+            progress_cb=_cb, force_download=self.force_download
+        )
+        self.setup_finished.emit(ok, message)
+
+
 class SPFlashToolWorker(QThread):
     """Worker thread for running SP Flash Tool command with real-time output"""
 
@@ -2932,38 +4430,125 @@ class SPFlashToolWorker(QThread):
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
-    def __init__(self, install_xml_path=None, device_model=None):
+    def __init__(self, install_xml_path=None, device_model=None, com_port=None):
         super().__init__()
         self.should_stop = False
+        self.device_model = device_model
         self.device_label = "Y2" if is_y2_model(device_model) else "Y1"
-        # Set up the flash_tool.exe command with the XML file
-        current_dir = Path.cwd()
+        self.requested_com_port = com_port
+        # Console-mode XML install: flash_tool(.exe) -i install_rom_sp(_y2).xml
+        app_dir = get_firmware_app_dir()
+        if is_linux_platform() and not linux_spflash_arch_supported():
+            raise RuntimeError(linux_spflash_arch_unsupported_reason())
+        binary = get_sp_flash_tool_binary_path(app_dir)
+        if binary is None:
+            raise RuntimeError("SP Flash Tool is not supported on this platform")
+        self.app_dir = app_dir
+        self.binary = binary
+        # Template path (may be rewritten to .runtime.xml in run())
         xml_name = install_xml_path or "install_rom_sp.xml"
         if not isinstance(xml_name, Path):
-            xml_name = current_dir / xml_name
-        self.spflash_command = [
-            str(current_dir / "flash_tool.exe"),
-            "-i",
-            str(xml_name),
-        ]
+            xml_name = app_dir / xml_name
+        self.template_xml = xml_name
+        self.spflash_command = [str(binary), "-i", str(xml_name)]
         
     def stop(self):
         """Stop the SP Flash Tool worker"""
         self.should_stop = True
 
+    def _build_runtime_command(self):
+        """Prepare runtime XML (pinned com-port when known) and return argv."""
+        # Always resolve model from install context again so we never flash Y1
+        # XML against Y2 images (that aborts during LoadRoms with 5016).
+        resolved = resolve_device_model_for_install(self.device_model)
+        self.device_model = resolved
+        self.device_label = "Y2" if is_y2_model(resolved) else "Y1"
+        prepare_sp_flash_tool_files(resolved)
+
+        ok, errors, warnings = validate_spflash_images_for_model(resolved, self.app_dir)
+        for w in warnings:
+            silent_print(f"SPFT preflight warning: {w}")
+        if not ok:
+            msg = (
+                f"Cannot start SP Flash Tool for {self.device_label}: image/scatter "
+                f"check failed.\n\n" + "\n".join(f"• {e}" for e in errors)
+            )
+            raise RuntimeError(msg)
+
+        com_port = self.requested_com_port
+        ports = []
+        if is_linux_platform():
+            ports = list_mediatek_serial_ports()
+            silent_print(f"MediaTek ports before SPFT: {describe_mediatek_ports(ports)}")
+            if not com_port:
+                chosen = select_spflash_com_port(self.device_model, ports=ports)
+                if chosen and chosen.get("openable") and Path(chosen["tty"]).exists():
+                    com_port = chosen["tty"]
+                    silent_print(
+                        f"Selected SP Flash Tool port for {self.device_label}: "
+                        f"{com_port} pid={chosen.get('pid')} mode={chosen.get('mode')}"
+                    )
+            if len(ports) > 1:
+                silent_print(
+                    f"WARNING: {len(ports)} MediaTek serial ports present — "
+                    "wrong device may be selected if com-port is not pinned"
+                )
+        # Only pin if the node still exists (do not block auto-detect when waiting
+        # for the user to plug the player after "Search usb").
+        if com_port and not Path(com_port).exists():
+            silent_print(f"Not pinning missing com-port {com_port}")
+            com_port = None
+        runtime_xml = prepare_spflash_runtime_install_xml(
+            device_model=resolved,
+            com_port=com_port,
+            app_dir=self.app_dir,
+        )
+        return [str(self.binary), "-i", str(runtime_xml)], com_port, ports
+
     def run(self):
         """Run the SP Flash Tool command and monitor output"""
+        tty_guardian = None
         try:
+            if is_linux_platform():
+                ensure_sp_flash_tool_executable(self.app_dir)
+                # Fix LogPath, stop ModemManager if possible, preflight tty access.
+                prepare_linux_spflash_runtime(self.app_dir)
+                ensure_spft_open_retry_preload(self.app_dir)
+                # Beat SP Flash Tool's open-on-uevent race (chmod as nodes appear).
+                tty_guardian = _LinuxTtyAccessGuardian()
+                tty_guardian.start()
+
+            try:
+                self.spflash_command, pinned_port, ports_before = self._build_runtime_command()
+            except RuntimeError as preflight_err:
+                silent_print(f"SP Flash Tool preflight failed: {preflight_err}")
+                self.spflash_completed.emit(False, str(preflight_err))
+                return
+
             silent_print(f"Starting SP Flash Tool command: {self.spflash_command}")
-            
-            # Start the flash_tool.exe process
+            self.status_updated.emit(
+                f"Loading {self.device_label} firmware images (please wait)…"
+            )
+            if pinned_port:
+                self.status_updated.emit(
+                    f"Using serial port {pinned_port} for {self.device_label} "
+                    f"({describe_mediatek_ports(ports_before)})"
+                )
+            elif is_linux_platform() and len(ports_before) > 1:
+                self.status_updated.emit(
+                    "Multiple MediaTek devices detected — unplug the one you are not flashing"
+                )
+
+            # Start flash_tool (Windows) or flash_tool (Linux) with console XML
             process = subprocess.Popen(
                 self.spflash_command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
                 bufsize=0,
-                universal_newlines=True
+                universal_newlines=True,
+                cwd=str(self.app_dir),
+                env=sp_flash_tool_process_env(self.app_dir),
             )
             
             # Ensure process doesn't hang indefinitely
@@ -2975,6 +4560,9 @@ class SPFlashToolWorker(QThread):
             instructions_phase = False
             installing_phase = False
             completed_phase = False
+            com_port_open_fail = False
+            saw_permission_hint = False
+            self._spft_overlap_error = False
             
             # Read output line by line
             while True:
@@ -2996,6 +4584,28 @@ class SPFlashToolWorker(QThread):
                 if output:
                     line = output.strip()
                     silent_print(f"{line}")
+
+                    # Linux COM open failures (1013) — capture for a better post-mortem.
+                    if (
+                        "S_COM_PORT_OPEN_FAIL" in line
+                        or "Failed to open COM port" in line
+                        or "err_code[1013]" in line
+                        or "ERROR : S_COM_PORT_OPEN_FAIL" in line
+                    ):
+                        com_port_open_fail = True
+                    if "Permission denied" in line or "open fail! , 13" in line:
+                        saw_permission_hint = True
+                        com_port_open_fail = True
+                    if (
+                        "S_DL_LOAD_REGION_IS_OVERLAP" in line
+                        or "5016" in line
+                        or "LOAD_REGION_IS_OVERLAP" in line
+                        or "Boundary Check Failed" in line
+                    ):
+                        # Will surface a clear message after process ends.
+                        saw_permission_hint = False
+                        com_port_open_fail = False
+                        self._spft_overlap_error = True
                     
                     # Phase detection based on flash_tool.exe output patterns
                     
@@ -3098,14 +4708,47 @@ class SPFlashToolWorker(QThread):
             if completed_phase:
                 silent_print("Flash Tool completed successfully")
                 self.spflash_completed.emit(True, "Software installation completed successfully")
+            elif getattr(self, "_spft_overlap_error", False):
+                silent_print("Flash Tool failed: image/scatter region overlap (5016)")
+                self.spflash_completed.emit(
+                    False,
+                    "SP Flash Tool quit while loading images (S_DL_LOAD_REGION_IS_OVERLAP).\n\n"
+                    "That almost always means the wrong scatter was used for the files on disk "
+                    "(for example a Y2 system.img with a Y1 scatter). "
+                    "Re-extract the correct Y1 or Y2 firmware package and try again.\n\n"
+                    f"Device model this run: {self.device_label}",
+                )
+            elif com_port_open_fail and is_linux_platform():
+                silent_print("Flash Tool failed: COM port open (Linux USB/serial permissions)")
+                msg = linux_spflash_com_port_fail_message()
+                if saw_permission_hint:
+                    msg = "Permission denied opening /dev/ttyACM*.\n\n" + msg
+                self.spflash_completed.emit(False, msg)
             else:
                 silent_print("Flash Tool did not complete successfully")
-                self.spflash_completed.emit(False, "Please check that drivers are installed and that you restarted your computer")
+                if is_linux_platform():
+                    self.spflash_completed.emit(
+                        False,
+                        "Flash did not finish. On Linux, check USB cable/port, that the player is "
+                        "off when connecting, and that SP Flash Tool setup (udev rules) completed.\n\n"
+                        + diagnose_linux_spflash_port_access(),
+                    )
+                else:
+                    self.spflash_completed.emit(
+                        False,
+                        "Please check that drivers are installed and that you restarted your computer",
+                    )
                 
         except Exception as e:
             silent_print(f"Error running Flash Tool: {e}")
             self.spflash_completed.emit(False, f"Error running Flash Tool: {e}")
         finally:
+            if tty_guardian is not None:
+                try:
+                    tty_guardian.stop()
+                    tty_guardian.join(timeout=1.0)
+                except Exception:
+                    pass
             self.enable_update_button.emit()
 
 
@@ -7146,10 +8789,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._pending_releases = []  # Queue for batching UI updates
         self._release_update_timer = None  # Timer for batched UI updates
         # Set default installation method based on platform
-        if platform.system() == "Windows":
-            self.installation_method = "spflash"  # Default to Method 1 (Guided) on Windows
-        else:
-            self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
+        # Windows + Linux: SP Flash Tool console XML; macOS: MTKClient guided
+        self.installation_method = default_installation_method()
         # Always use method functionality removed - app now always defaults to Method 1
         self.debug_mode = False  # Default debug mode disabled
         self.last_attempted_method = None  # Track the last attempted installation method
@@ -7228,12 +8869,48 @@ class FirmwareDownloaderGUI(QMainWindow):
         QApplication.processEvents()
 
         QTimer.singleShot(0, self.update_update_badges)
-        # Solar notice is scheduled from on_data_loaded / on_data_loading_failed once
-        # the first load pass finishes (see _schedule_startup_notice). Showing it on a
-        # fixed early timer competed with manifest/token/USB work and froze the UI.
+        # Solar / first-run notice is scheduled from on_data_loaded (and a safety timer)
+        # only after any Linux SP Flash Tool first-time setup finishes.
         self._startup_notice_scheduled = False
-        # Safety net if the data loader never reports back
-        QTimer.singleShot(8000, self._schedule_startup_notice)
+        self._startup_notice_pending_after_linux_setup = False
+        self._linux_setup_in_progress = False
+        # When True, Solar notice must not open (blocks admin-password / setup UI).
+        self._linux_setup_blocks_startup_notice = False
+        self._linux_flash_tool_setup_worker = None
+        self._linux_setup_dialog = None
+        # Linux SP Flash Tool mode: "unknown" | "ready" | "mtk_fallback" | "n/a"
+        # SP Flash Tool only exists for x86/x86_64 Linux; other arches use MTKClient only.
+        if is_linux_platform():
+            if not linux_spflash_arch_supported():
+                self._linux_spflash_mode = "mtk_fallback"
+                self.installation_method = "guided"
+                silent_print(
+                    f"Linux install mode: MTKClient only ({linux_spflash_arch_unsupported_reason()})"
+                )
+            else:
+                staged = linux_spflash_staged()
+                prep_ok = linux_spflash_system_prep_complete()
+                if staged and prep_ok:
+                    self._linux_spflash_mode = "ready"
+                else:
+                    self._linux_spflash_mode = "unknown"
+                self.installation_method = default_installation_method(
+                    linux_spflash_ok=(self._linux_spflash_mode == "ready")
+                )
+        else:
+            self._linux_spflash_mode = "n/a"
+        if (
+            is_linux_platform()
+            and linux_spflash_arch_supported()
+            and (self._linux_spflash_mode != "ready" or linux_spflash_prep_needed())
+        ):
+            # Block Solar immediately (before any data-load callback can schedule it).
+            self._linux_setup_blocks_startup_notice = True
+            # Download/extract flash_tool + udev prep BEFORE the startup notice.
+            QTimer.singleShot(200, self._start_linux_flash_tool_first_time_setup)
+        else:
+            # Safety net if the data loader never reports back
+            QTimer.singleShot(8000, self._schedule_startup_notice)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -7310,14 +8987,400 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Set initial creator label styling
         QTimer.singleShot(0, self.update_creator_label)
 
+    def _linux_blocks_startup_notice(self):
+        """True while Linux SP Flash Tool first-time setup owns the UI."""
+        if not is_linux_platform():
+            return False
+        if getattr(self, "_linux_setup_in_progress", False):
+            return True
+        if getattr(self, "_linux_setup_blocks_startup_notice", False):
+            return True
+        return False
+
+    def _dismiss_startup_notice_if_open(self):
+        """Close Solar notice if it already appeared so setup dialogs stay on top."""
+        dialog = getattr(self, "_startup_notice_dialog", None)
+        if dialog is None:
+            return
+        try:
+            dialog.close()
+        except RuntimeError:
+            pass
+        except Exception as e:
+            silent_print(f"Could not dismiss startup notice: {e}")
+        self._startup_notice_dialog = None
+
     def _schedule_startup_notice(self):
         """Show the Solar notice once, after the first load pass yields the UI thread."""
+        # Never open Solar during Linux SPFT setup / admin-password explanation.
+        if self._linux_blocks_startup_notice():
+            self._startup_notice_pending_after_linux_setup = True
+            silent_print("Deferring Solar startup notice until Linux SP Flash Tool setup finishes")
+            return
         if getattr(self, "_startup_notice_scheduled", False):
             return
         self._startup_notice_scheduled = True
+        self._startup_notice_pending_after_linux_setup = False
         # Wait a beat so combos/lists can paint and any queued load work can finish.
         # Non-modal notice must not open while is_online / USB scans are mid-flight.
         QTimer.singleShot(1200, self._show_startup_notice)
+
+    def linux_spflash_ready(self):
+        """True when Linux SP Flash Tool is staged and not forced into MTK-only fallback."""
+        if not is_linux_platform() or not linux_spflash_arch_supported():
+            return False
+        if getattr(self, "_linux_spflash_mode", None) == "mtk_fallback":
+            return False
+        return linux_spflash_staged()
+
+    def apply_linux_install_mode(self, spflash_ok, reason=None):
+        """Switch Linux default install path between SP Flash Tool and MTKClient fallback."""
+        if not is_linux_platform():
+            return
+        if not linux_spflash_arch_supported():
+            self._linux_spflash_mode = "mtk_fallback"
+            self.installation_method = "guided"
+            silent_print(
+                f"Linux install mode: MTKClient only "
+                f"({reason or linux_spflash_arch_unsupported_reason()})"
+            )
+            return
+        if spflash_ok and linux_spflash_staged():
+            self._linux_spflash_mode = "ready"
+            self.installation_method = "spflash"
+            silent_print("Linux install mode: SP Flash Tool (default)")
+        else:
+            self._linux_spflash_mode = "mtk_fallback"
+            self.installation_method = "guided"
+            silent_print(f"Linux install mode: MTKClient fallback ({reason or 'spflash unavailable'})")
+
+    def _explain_linux_admin_password(self):
+        """Explain clearly why admin/sudo is required before polkit/askpass appears."""
+        # Keep this fully modal and above other startup UI (e.g. Solar notice).
+        self._dismiss_startup_notice_if_open()
+        box = QMessageBox(self)
+        box.setIcon(QMessageBox.Information)
+        box.setWindowTitle("Administrator password required")
+        box.setText(
+            "Innioasis Updater needs to install the underlying flash tool support and "
+            "USB device drivers so your computer can communicate with Y1 and Y2 players."
+        )
+        box.setInformativeText(
+            "You will be asked for your administrator (sudo) password to:\n\n"
+            "• Install udev rules so unprivileged users can open /dev/ttyACM* "
+            "(including the standard 99-ttyacms.rules — same as:\n"
+            "    sudo install -m 644 99-ttyacms.rules /etc/udev/rules.d/\n"
+            "    sudo udevadm control --reload-rules && sudo udevadm trigger)\n"
+            "• Install MediaTek USB + serial access rules for BROM/preloader\n"
+            "• Blacklist ModemManager from MediaTek ports (common COM port open fail)\n"
+            "• Add your user to the right serial group (dialout on Ubuntu/Fedora, uucp on Arch)\n"
+            "• Install a few system libraries required by SP Flash Tool on this Linux distro\n\n"
+            "What does not need root:\n"
+            "• Downloading SP Flash Tool into this app folder\n"
+            "• Extracting the tool files next to firmware_downloader.py\n\n"
+            "Your password is entered only in your system’s secure password dialog "
+            "(polkit or askpass). This app never sees or stores your password.\n\n"
+            "If you cancel the password prompt, Y1 installs can still use MTKClient as a "
+            "fallback. Y2 installs require SP Flash Tool on x86/x86_64 Linux and will ask "
+            "you to try setup again."
+        )
+        box.setStandardButtons(QMessageBox.Ok)
+        box.setDefaultButton(QMessageBox.Ok)
+        box.setWindowModality(Qt.ApplicationModal)
+        try:
+            box.setWindowFlag(Qt.WindowStaysOnTopHint, True)
+        except Exception:
+            pass
+        box.exec()
+
+    def _offer_linux_spflash_setup_again(self, context_message=None):
+        """Ask the user to re-run SP Flash Tool setup (e.g. before a Y2 install)."""
+        if is_linux_platform() and not linux_spflash_arch_supported():
+            QMessageBox.information(
+                self,
+                "SP Flash Tool not available",
+                linux_spflash_arch_unsupported_reason()
+                + "\n\nUse MTKClient (guided install) on this computer.",
+            )
+            self.apply_linux_install_mode(
+                False, reason=linux_spflash_arch_unsupported_reason()
+            )
+            return False
+        detail = context_message or (
+            "SP Flash Tool is not fully set up on this computer yet."
+        )
+        reply = QMessageBox.question(
+            self,
+            "Set up SP Flash Tool?",
+            f"{detail}\n\n"
+            "SP Flash Tool is the recommended (and for Y2, required) installer on "
+            "x86 / x86_64 Linux.\n"
+            "Setup will download the tool into this app folder and may ask for your "
+            "administrator password to install USB drivers/rules.\n\n"
+            "Try SP Flash Tool setup now?",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.Yes,
+        )
+        if reply == QMessageBox.Yes:
+            self._force_linux_flash_tool_setup = True
+            # Clear fallback so a successful retry can re-enable SPFT default.
+            if getattr(self, "_linux_spflash_mode", None) == "mtk_fallback":
+                self._linux_spflash_mode = "unknown"
+            self._start_linux_flash_tool_first_time_setup()
+            return True
+        return False
+
+    def ensure_install_path_for_model(self, device_model, preferred_method=None):
+        """
+        Gate installs by platform/tool readiness.
+
+        - Non-x86 Linux: MTKClient only (no SP Flash Tool binary exists)
+        - Y2 + MTKClient: blocked until Y2_MTKCLIENT_INSTALLS_ENABLED (except non-x86)
+        - Linux x86 Y2 without staged SPFT: offer setup again
+        - Linux Y1 without SPFT: allow MTKClient guided fallback
+        Returns True if the caller may proceed.
+        """
+        method = preferred_method or getattr(self, "installation_method", default_installation_method())
+        model = resolve_device_model_for_install(device_model)
+        mtk_methods = {"guided", "mtkclient"}
+
+        # Non-x86 Linux never uses SP Flash Tool.
+        if is_linux_platform() and not linux_spflash_arch_supported():
+            if method in {"spflash", "spflash_console"}:
+                silent_print(
+                    f"Redirecting install to MTKClient: {linux_spflash_arch_unsupported_reason()}"
+                )
+                self.installation_method = "guided"
+                QMessageBox.information(
+                    self,
+                    "Using MTKClient",
+                    linux_spflash_arch_unsupported_reason()
+                    + "\n\nContinuing with MTKClient.",
+                )
+            return True
+
+        if is_y2_model(model) and method in mtk_methods and not mtkclient_allowed_for_model(model):
+            if is_linux_platform():
+                if not self.linux_spflash_ready():
+                    self._offer_linux_spflash_setup_again(
+                        "Y2 firmware cannot be installed with MTKClient yet.\n\n"
+                        "On x86 / x86_64 Linux, Y2 installs need SP Flash Tool, which is not fully "
+                        "configured on this system."
+                    )
+                    return False
+                silent_print("Redirecting Y2 install from MTKClient to SP Flash Tool")
+                self.installation_method = "spflash"
+                QMessageBox.information(
+                    self,
+                    "Y2 uses SP Flash Tool",
+                    "Y2 firmware installs currently use SP Flash Tool (not MTKClient).\n\n"
+                    "Continuing with the SP Flash Tool guided installer.",
+                )
+                return True
+            if is_macos_platform():
+                QMessageBox.warning(
+                    self,
+                    "Y2 install not available on macOS yet",
+                    "Y2 firmware cannot be installed with MTKClient yet, and SP Flash Tool "
+                    "is not available on macOS.\n\n"
+                    "Please install Y2 firmware from Windows or Linux (SP Flash Tool), "
+                    "or wait for a future update that enables Y2 on MTKClient/macOS.",
+                )
+                return False
+            silent_print("Redirecting Windows Y2 install from MTKClient to SP Flash Tool")
+            self.installation_method = "spflash"
+            QMessageBox.information(
+                self,
+                "Y2 uses SP Flash Tool",
+                "Y2 firmware installs currently use SP Flash Tool (not MTKClient).\n\n"
+                "Continuing with the SP Flash Tool guided installer.",
+            )
+            return True
+
+        if is_linux_platform() and method in {"spflash", "spflash_console"}:
+            if not linux_spflash_arch_supported():
+                silent_print(linux_spflash_arch_unsupported_reason())
+                self.installation_method = "guided"
+                QMessageBox.information(
+                    self,
+                    "Using MTKClient",
+                    linux_spflash_arch_unsupported_reason()
+                    + "\n\nContinuing with MTKClient.",
+                )
+                return True
+            if not self.linux_spflash_ready():
+                self._offer_linux_spflash_setup_again(
+                    "SP Flash Tool is selected, but it is not fully set up on this computer."
+                )
+                return False
+        return True
+
+    def _start_linux_flash_tool_first_time_setup(self):
+        """Download/extract Linux SP Flash Tool and prepare USB access before startup notice.
+
+        Covers new installs (no binary) and existing users with incomplete system
+        prep. Uses the same ``linux_spflash_system_prep.sh`` as run_linux.sh.
+        Skipped entirely on non-x86 Linux (MTKClient only).
+        """
+        if not is_linux_platform():
+            self._linux_setup_blocks_startup_notice = False
+            self._schedule_startup_notice()
+            return
+        if not linux_spflash_arch_supported():
+            self.apply_linux_install_mode(
+                False, reason=linux_spflash_arch_unsupported_reason()
+            )
+            self._linux_setup_blocks_startup_notice = False
+            self._force_linux_flash_tool_setup = False
+            self._schedule_startup_notice()
+            return
+        force = bool(getattr(self, "_force_linux_flash_tool_setup", False))
+        needs = force or linux_spflash_prep_needed()
+        if not needs and getattr(self, "_linux_spflash_mode", None) == "ready":
+            self.apply_linux_install_mode(True)
+            self._linux_setup_blocks_startup_notice = False
+            self._schedule_startup_notice()
+            return
+        if getattr(self, "_linux_setup_in_progress", False):
+            return
+
+        # Own the UI before any dialog: block Solar and dismiss it if it already opened.
+        self._linux_setup_blocks_startup_notice = True
+        self._linux_setup_in_progress = True
+        self._dismiss_startup_notice_if_open()
+
+        # Only prompt for admin when system udev/group prep is actually needed.
+        need_admin = force or not linux_spflash_system_prep_complete()
+        if need_admin:
+            try:
+                self._explain_linux_admin_password()
+            except Exception as e:
+                silent_print(f"Admin password explanation dialog failed: {e}")
+
+        try:
+            dialog = QProgressDialog(
+                "Preparing SP Flash Tool for Linux…",
+                None,
+                0,
+                100,
+                self,
+            )
+            dialog.setWindowTitle("Linux SP Flash Tool setup")
+            dialog.setWindowModality(Qt.ApplicationModal)
+            dialog.setMinimumDuration(0)
+            dialog.setAutoClose(False)
+            dialog.setAutoReset(False)
+            dialog.setValue(0)
+            dialog.setLabelText(
+                "Setting up SP Flash Tool…\n\n"
+                "1) Download the flash tool into this app folder (if needed)\n"
+                "2) Extract and mark it executable\n"
+                "3) Install USB/serial access rules (same as run_linux.sh)\n\n"
+                + (
+                    "Your system password dialog may appear next."
+                    if need_admin
+                    else "No administrator password needed for this step."
+                )
+            )
+            try:
+                dialog.setWindowFlag(Qt.WindowStaysOnTopHint, True)
+            except Exception:
+                pass
+            dialog.show()
+            dialog.raise_()
+            dialog.activateWindow()
+            self._linux_setup_dialog = dialog
+        except Exception as e:
+            silent_print(f"Could not create Linux setup progress dialog: {e}")
+            self._linux_setup_dialog = None
+
+        worker = LinuxFlashToolSetupWorker(
+            force_download=force or not linux_spflash_staged()
+        )
+        self._linux_flash_tool_setup_worker = worker
+        worker.progress.connect(self._on_linux_flash_tool_setup_progress)
+        worker.setup_finished.connect(self._on_linux_flash_tool_setup_finished)
+        worker.start()
+
+    def _on_linux_flash_tool_setup_progress(self, message, percent):
+        dialog = getattr(self, "_linux_setup_dialog", None)
+        if dialog is not None:
+            try:
+                dialog.setLabelText(str(message))
+                dialog.setValue(max(0, min(100, int(percent or 0))))
+            except RuntimeError:
+                self._linux_setup_dialog = None
+        try:
+            if hasattr(self, "status_label") and self.status_label is not None:
+                self.status_label.setText(str(message))
+        except Exception:
+            pass
+
+    def _on_linux_flash_tool_setup_finished(self, success, message):
+        self._linux_setup_in_progress = False
+        self._force_linux_flash_tool_setup = False
+        dialog = getattr(self, "_linux_setup_dialog", None)
+        if dialog is not None:
+            try:
+                dialog.setValue(100)
+                dialog.close()
+            except RuntimeError:
+                pass
+            self._linux_setup_dialog = None
+        self._linux_flash_tool_setup_worker = None
+
+        staged = linux_spflash_staged()
+        if success and staged:
+            self.apply_linux_install_mode(True)
+            silent_print(f"Linux SP Flash Tool setup OK: {message}")
+            try:
+                if hasattr(self, "status_label") and self.status_label is not None:
+                    self.status_label.setText("SP Flash Tool ready")
+            except Exception:
+                pass
+            try:
+                QMessageBox.information(
+                    self,
+                    "SP Flash Tool ready",
+                    "SP Flash Tool is set up and will be used as the default installer "
+                    "for Y1 and Y2 on Linux.\n\n"
+                    f"{message}",
+                )
+            except Exception:
+                pass
+        else:
+            # Safe fallback: Y1 can use MTKClient guided; Y2 still requires SPFT later.
+            self.apply_linux_install_mode(False, reason=message)
+            silent_print(f"Linux SP Flash Tool setup failed/incomplete: {message}")
+            try:
+                if hasattr(self, "status_label") and self.status_label is not None:
+                    self.status_label.setText("Using MTKClient fallback (SP Flash Tool not ready)")
+            except Exception:
+                pass
+            try:
+                QMessageBox.warning(
+                    self,
+                    "SP Flash Tool setup incomplete — using MTKClient for Y1",
+                    "SP Flash Tool could not be fully set up on this system.\n\n"
+                    f"{message}\n\n"
+                    "What this means:\n"
+                    "• Y1 firmware installs will use MTKClient Guided as the default\n"
+                    "• Y2 firmware installs still need SP Flash Tool — the app will offer "
+                    "to run setup again if you try a Y2 install\n\n"
+                    "You can retry SP Flash Tool setup any time by choosing an SP Flash Tool "
+                    "method in Settings → Installation, or by starting a Y2 install.\n\n"
+                    "Admin password was needed only for USB drivers/rules and system libraries; "
+                    "the tool itself installs into this app folder.",
+                )
+            except Exception:
+                pass
+
+        # Unblock Solar only after setup result dialogs are done.
+        self._linux_setup_blocks_startup_notice = False
+        # Allow a fresh schedule even if data-load tried earlier during setup.
+        self._startup_notice_scheduled = False
+        self._startup_notice_pending_after_linux_setup = False
+        self._schedule_startup_notice()
 
     def _show_startup_notice(self):
         """Show Solar availability notice without freezing the app.
@@ -7327,6 +9390,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         work (network checks, USB scans) still ran, so users saw a frozen UI.
         """
         try:
+            # Critical: never open Solar over Linux admin-password / SPFT setup UI.
+            if self._linux_blocks_startup_notice():
+                self._startup_notice_scheduled = False
+                self._startup_notice_pending_after_linux_setup = True
+                silent_print("Skipping Solar notice while Linux SP Flash Tool setup is active")
+                return
+
             existing = getattr(self, "_startup_notice_dialog", None)
             if existing is not None:
                 try:
@@ -8722,11 +10792,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         if clicked_button == try_again_btn:
             # Try Again - use Method 1 (default method for the platform)
             remove_installation_marker()
-            if platform.system() == "Windows":
-                # Windows: Use guided SP Flash Tool process (Method 1)
+            if is_windows_platform() or is_linux_platform():
+                # Windows/Linux: guided SP Flash Tool console XML (Method 1)
                 self.try_method_3()
             else:
-                # Non-Windows: Use guided MTKclient process (Method 1)
+                # macOS: guided MTKclient (Method 1)
                 self.stop_mtk_processes()
                 self.cleanup_libusb_state()
                 QTimer.singleShot(1000, self.run_mtk_command)
@@ -9849,22 +11919,42 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error showing Method 2 instructions: {e}")
 
     def try_method_3(self):
-        """Try Method 3 - SP Flash Tool (Windows only) - Guided Process"""
+        """Guided SP Flash Tool console-mode XML install (Windows + Linux)."""
         try:
-            if platform.system() != "Windows":
+            if is_macos_platform():
                 QMessageBox.warning(
                     self,
-                    "Method 3 Not Available",
-                    "Method 3 (SP Flash Tool) is only available on Windows."
+                    "SP Flash Tool Not Available",
+                    "SP Flash Tool is not available on macOS. Use MTKClient instead."
                 )
                 return
-            
-            # No need to check for shortcut since we're using flash_tool.exe directly
+
+            if not (is_windows_platform() or is_linux_platform()):
+                QMessageBox.warning(
+                    self,
+                    "SP Flash Tool Not Available",
+                    "SP Flash Tool is only available on Windows and Linux."
+                )
+                return
             
             # Load please wait image initially
             self.load_please_wait_image()
             
             device_model, _, _ = self.get_install_model_context()
+            # Prefer evidence on disk (preloader/scatter) so a stale UI filter cannot
+            # launch Y1 XML against Y2 images (silent LoadRoms exit).
+            disk_hint = detect_device_model_for_install(
+                zip_path=getattr(self, "_last_install_zip_name", None),
+                extracted_files=getattr(self, "_last_install_extracted_files", None),
+            )
+            if disk_hint and device_model and disk_hint != device_model:
+                silent_print(
+                    f"Install model mismatch: context={device_model} disk={disk_hint}; using {disk_hint}"
+                )
+                device_model = disk_hint
+                self.set_runtime_detected_device_model(disk_hint)
+            elif not device_model and disk_hint:
+                device_model = disk_hint
             flash_config = get_flash_config(device_model)
             if not flash_config:
                 QMessageBox.warning(
@@ -9880,9 +11970,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.show_left_panel()
                 return
             install_rom_xml_name = flash_config["install_rom_sp_xml"]
-            device_label = "Y2" if is_y2_model(device_model) else "Y1"
 
-            # Show dialog with Method 3 instructions
             reply = QMessageBox.question(
                 self,
                 "Software Install instructions",
@@ -9892,37 +11980,59 @@ class FirmwareDownloaderGUI(QMainWindow):
             )
             
             if reply == QMessageBox.Cancel:
-                # Show appropriate buttons again when cancelled
                 self.show_appropriate_buttons_for_spflash()
-                # Show left panel again when cancelled
                 self.show_left_panel()
                 return
             
-            # No need to stop MTK processes since Method 3 uses flash_tool.exe directly
-            
             prepare_sp_flash_tool_files(device_model)
-
-            # Check if flash_tool.exe and model-specific install XML exist
-            current_dir = Path.cwd()
-            flash_tool_exe = current_dir / "flash_tool.exe"
-            install_rom_xml = current_dir / install_rom_xml_name
-            
-            if not flash_tool_exe.exists():
-                # Show appropriate buttons again when flash tool is missing
+            ok_imgs, img_errors, img_warns = validate_spflash_images_for_model(
+                device_model, get_firmware_app_dir()
+            )
+            if not ok_imgs:
                 self.show_appropriate_buttons_for_spflash()
-                # Show left panel again when flash tool is missing
+                self.show_left_panel()
+                QMessageBox.critical(
+                    self,
+                    "Firmware images do not match this device model",
+                    "SP Flash Tool would quit before waiting for USB (image/scatter mismatch).\n\n"
+                    + "\n".join(f"• {e}" for e in img_errors)
+                    + "\n\nExtract the correct Y1 or Y2 firmware package and try again.",
+                )
+                return
+
+            app_dir = get_firmware_app_dir()
+            flash_tool_bin = get_sp_flash_tool_binary_path(app_dir)
+            install_rom_xml = app_dir / install_rom_xml_name
+
+            if is_linux_platform() and (flash_tool_bin is None or not flash_tool_bin.exists()):
+                self.show_appropriate_buttons_for_spflash()
+                self.show_left_panel()
+                reply_setup = QMessageBox.question(
+                    self,
+                    "Flash Tool Not Found",
+                    "The Linux SP Flash Tool binary (flash_tool) was not found.\n\n"
+                    "Download and set it up now? This may ask for your administrator password.",
+                    QMessageBox.Yes | QMessageBox.No,
+                    QMessageBox.Yes,
+                )
+                if reply_setup == QMessageBox.Yes:
+                    self._force_linux_flash_tool_setup = True
+                    self._start_linux_flash_tool_first_time_setup()
+                return
+            
+            if flash_tool_bin is None or not flash_tool_bin.exists():
+                self.show_appropriate_buttons_for_spflash()
                 self.show_left_panel()
                 QMessageBox.critical(
                     self,
                     "Flash Tool Not Found",
-                    "flash_tool.exe not found. Please ensure it's properly installed."
+                    f"{flash_tool_bin.name if flash_tool_bin else 'flash_tool'} not found. "
+                    "Please ensure it's properly installed."
                 )
                 return
                 
             if not install_rom_xml.exists():
-                # Show appropriate buttons again when XML is missing
                 self.show_appropriate_buttons_for_spflash()
-                # Show left panel again when XML is missing
                 self.show_left_panel()
                 QMessageBox.critical(
                     self,
@@ -9930,43 +12040,82 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"{install_rom_xml_name} not found. Please ensure it's properly installed."
                 )
                 return
+
+            # Multi-device safety: Y1 (often 0e8d:0003 BROM) + Y2 (often 0e8d:2000
+            # preloader) both look like valid SP Flash Tool ports. Auto-detect picks
+            # the first uevent and flashes the wrong player. Ask the user to unplug.
+            pinned_com = None
+            if is_linux_platform():
+                mtk_ports = list_mediatek_serial_ports()
+                if len(mtk_ports) > 1:
+                    label = device_label_for_model(device_model)
+                    detail = describe_mediatek_ports(mtk_ports)
+                    chosen = select_spflash_com_port(device_model, ports=mtk_ports)
+                    prefer = (
+                        "Y2 usually shows as Preloader (pid 2000); "
+                        "Y1 usually shows as BROM (pid 0003)."
+                    )
+                    reply_multi = QMessageBox.question(
+                        self,
+                        "Multiple MediaTek devices connected",
+                        f"SP Flash Tool sees more than one MediaTek serial port:\n\n"
+                        f"{detail}\n\n"
+                        f"You are installing for {label}. {prefer}\n\n"
+                        f"Recommended port: {chosen['tty'] if chosen else 'none'} "
+                        f"(pid={chosen.get('pid') if chosen else '?'}, "
+                        f"mode={chosen.get('mode') if chosen else '?'}).\n\n"
+                        f"Best practice: unplug the other player so only the {label} "
+                        f"is connected, then click Yes to continue "
+                        f"{'(pinned to ' + chosen['tty'] + ')' if chosen else ''}.\n\n"
+                        f"Continue with the recommended port?",
+                        QMessageBox.Yes | QMessageBox.No,
+                        QMessageBox.Yes,
+                    )
+                    if reply_multi == QMessageBox.No:
+                        self.show_appropriate_buttons_for_spflash()
+                        self.show_left_panel()
+                        return
+                    if chosen:
+                        pinned_com = chosen["tty"]
+                elif len(mtk_ports) == 1:
+                    chosen = select_spflash_com_port(device_model, ports=mtk_ports)
+                    if chosen:
+                        pinned_com = chosen["tty"]
+                        silent_print(
+                            f"Single MediaTek port for {device_label_for_model(device_model)}: "
+                            f"{pinned_com} ({describe_mediatek_ports(mtk_ports)})"
+                        )
             
-            # Start the SP Flash Tool worker
             self.spflash_worker = SPFlashToolWorker(
-                install_xml_path=install_rom_xml, device_model=device_model
+                install_xml_path=install_rom_xml,
+                device_model=device_model,
+                com_port=pinned_com,
             )
             self.spflash_worker.status_updated.connect(self.status_label.setText)
             self.spflash_worker.show_installing_image.connect(self.load_installing_image)
-            self.spflash_worker.show_initsteps_image.connect(self.load_method3_image)  # Use initsteps_sp.png for SP Flash Tool initsteps
-            self.spflash_worker.show_installed_image.connect(self.load_installed_image)  # Use installed.png for completion
-            self.spflash_worker.show_please_wait_image.connect(self.load_please_wait_image)  # Use please_wait.png for initial phase
+            self.spflash_worker.show_initsteps_image.connect(self.load_method3_image)
+            self.spflash_worker.show_installed_image.connect(self.load_installed_image)
+            self.spflash_worker.show_please_wait_image.connect(self.load_please_wait_image)
             self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
             self.spflash_worker.disable_update_button.connect(self.disable_update_button)
             self.spflash_worker.enable_update_button.connect(self.enable_update_button)
             
-            # Hide inappropriate buttons for SP Flash Tool method
             self.hide_inappropriate_buttons_for_spflash()
-            
-            # Hide left panel for SP Flash Tool installation to focus user attention on instructions
             self.hide_left_panel()
             
-            # Disable remaining buttons during installation
             self.settings_btn.setEnabled(False)
             if hasattr(self, 'toolkit_btn'):
                 self.toolkit_btn.setEnabled(False)
             
-            # Start the worker
             self.spflash_worker.start()
             
         except Exception as e:
-            silent_print(f"Error starting Method 3: {e}")
-            # Show appropriate buttons again in case of error
+            silent_print(f"Error starting SP Flash Tool guided install: {e}")
             self.show_appropriate_buttons_for_spflash()
-            # Show left panel again in case of error
             self.show_left_panel()
             QMessageBox.critical(
                 self,
-                "Method 3 Error",
+                "SP Flash Tool Error",
                 f"Failed to start SP Flash Tool:\n{e}"
             )
 
@@ -10021,31 +12170,31 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error handling Flash Tool completion: {e}")
 
-    def try_method_4(self):
-        """Try SP Flash Tool GUI (Windows only) - Launches SP Flash Tool - GUI.lnk from Toolkit directory"""
+    def launch_sp_flash_tool_gui(self):
+        """
+        Launch SP Flash Tool in GUI mode (Windows shortcut or Linux flash_tool binary).
+
+        macOS is not supported (MTKClient only). Linux requires x86/x86_64 and the
+        bundled flash_tool; run without ``-i`` so the Qt GUI opens (``-i`` is console mode).
+        """
         try:
-            if platform.system() != "Windows":
+            if is_macos_platform():
                 QMessageBox.warning(
                     self,
                     "SP Flash Tool GUI Not Available",
-                    "SP Flash Tool GUI is only available on Windows."
+                    "SP Flash Tool is not available on macOS.\n\n"
+                    "macOS uses MTKClient only for installs.",
                 )
-                return
-            
-            # Check if SP Flash Tool - GUI.lnk exists in Toolkit directory
-            current_dir = Path.cwd()
-            toolkit_dir = current_dir / "Toolkit"
-            sp_flash_tool_lnk = toolkit_dir / "SP Flash Tool - GUI.lnk"
-            
-            if not sp_flash_tool_lnk.exists():
-                QMessageBox.critical(
+                return False
+
+            if is_linux_platform() and not linux_spflash_arch_supported():
+                QMessageBox.information(
                     self,
-                    "SP Flash Tool GUI Not Found",
-                    "SP Flash Tool - GUI.lnk not found in Toolkit directory. Please ensure it's properly installed."
+                    "SP Flash Tool GUI Not Available",
+                    linux_spflash_arch_unsupported_reason(),
                 )
-                return
-            
-            # Show dialog with SP Flash Tool GUI instructions
+                return False
+
             reply = QMessageBox.question(
                 self,
                 "SP Flash Tool GUI",
@@ -10053,140 +12202,317 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "SP Flash Tool GUI will now launch.\n\n"
                     f"If it isn't already off, power off your {self.get_device_label()}.\n"
                     "If it is connected, disconnect it, then press OK.\n\n"
-                    "Then follow the on screen instructions...\n\n"
-                    "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
-                    "This method launches the SP Flash Tool GUI interface."
+                    "Then follow the on-screen instructions in SP Flash Tool.\n\n"
+                    "Powering Off: You can also insert a pin/paper clip in the hole on the bottom.\n\n"
+                    "Tip: Load the scatter for your model (MT6572 = Y1, MT6582 = Y2) "
+                    "from this app folder if it is not already loaded."
                 ),
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok,
             )
-            
             if reply == QMessageBox.Cancel:
-                return
-            
-            # Launch SP Flash Tool - GUI.lnk from Toolkit directory using proper Windows method
+                return False
+
+            if is_windows_platform():
+                current_dir = Path.cwd()
+                toolkit_dir = current_dir / "Toolkit"
+                sp_flash_tool_lnk = toolkit_dir / "SP Flash Tool - GUI.lnk"
+                if not sp_flash_tool_lnk.exists():
+                    # Fall back to flash_tool.exe in app dir if present
+                    exe = get_sp_flash_tool_binary_path(get_firmware_app_dir())
+                    if exe and exe.is_file():
+                        subprocess.Popen(
+                            [str(exe)],
+                            cwd=str(exe.parent),
+                            env=sp_flash_tool_process_env(exe.parent),
+                        )
+                        silent_print(f"Launched SP Flash Tool GUI binary: {exe}")
+                    else:
+                        QMessageBox.critical(
+                            self,
+                            "SP Flash Tool GUI Not Found",
+                            "SP Flash Tool - GUI.lnk not found in Toolkit directory "
+                            "and flash_tool.exe is missing.",
+                        )
+                        return False
+                else:
+                    import os as _os
+                    _os.startfile(str(sp_flash_tool_lnk))
+                    silent_print(f"Launched SP Flash Tool GUI: {sp_flash_tool_lnk}")
+
+            elif is_linux_platform():
+                app_dir = get_firmware_app_dir()
+                binary = get_sp_flash_tool_binary_path(app_dir)
+                if binary is None or not binary.is_file():
+                    reply_setup = QMessageBox.question(
+                        self,
+                        "Flash Tool Not Found",
+                        "The Linux SP Flash Tool binary (flash_tool) was not found.\n\n"
+                        "Download and set it up now? This may ask for your administrator password.",
+                        QMessageBox.Yes | QMessageBox.No,
+                        QMessageBox.Yes,
+                    )
+                    if reply_setup == QMessageBox.Yes:
+                        self._force_linux_flash_tool_setup = True
+                        self._start_linux_flash_tool_first_time_setup()
+                    return False
+
+                ensure_sp_flash_tool_executable(app_dir)
+                prepare_linux_spflash_runtime(app_dir)
+                # Prepare model scatter/history so the GUI can load the right files
+                try:
+                    model, _, _ = self.get_install_model_context()
+                    prepare_sp_flash_tool_files(model)
+                except Exception as e:
+                    silent_print(f"SP Flash Tool GUI file prep: {e}")
+
+                env = sp_flash_tool_process_env(app_dir)
+                # No -i → Qt GUI. ( -i is console mode. )
+                # Prefer flash_tool.sh when present so LD_LIBRARY_PATH is set like the package expects.
+                launcher = app_dir / "flash_tool.sh"
+                if launcher.is_file():
+                    cmd = ["bash", str(launcher)]
+                else:
+                    cmd = [str(binary)]
+                subprocess.Popen(
+                    cmd,
+                    cwd=str(app_dir),
+                    env=env,
+                    start_new_session=True,
+                )
+                silent_print(f"Launched SP Flash Tool GUI on Linux: {cmd}")
+            else:
+                QMessageBox.warning(
+                    self,
+                    "SP Flash Tool GUI Not Available",
+                    "SP Flash Tool GUI is only available on Windows and Linux (x86/x86_64).",
+                )
+                return False
+
+            QMessageBox.information(
+                self,
+                "SP Flash Tool GUI Launched",
+                self.device_copy(
+                    "SP Flash Tool GUI is starting.\n\n"
+                    f"If it isn't already off, power off your {self.get_device_label()} and use "
+                    "Download / Format All + Download in the tool as needed.\n\n"
+                    "Scatter files and images are in the Innioasis Updater app folder."
+                ),
+            )
             try:
-                # Use os.startfile() to properly launch .lnk files on Windows
-                import os
-                os.startfile(str(sp_flash_tool_lnk))
-                silent_print(f"Launched SP Flash Tool GUI: {sp_flash_tool_lnk}")
-                
-                # Show success message
-                QMessageBox.information(
-                    self,
-                    "SP Flash Tool GUI Launched",
-                    self.device_copy(
-                        "Your downloaded ROM is loaded into SP Flash Tool's GUI\n\n"
-                        f"If it isn't already off, power off your {self.get_device_label()} and select "
-                        "Format All + Download in the drop down menu."
-                    ),
-                )
-                
-                # Revert to ready and presteps.png state after successful launch
                 self.revert_to_startup_state()
-                
-            except Exception as e:
-                silent_print(f"Error launching SP Flash Tool GUI: {e}")
-                QMessageBox.critical(
-                    self,
-                    "Launch Error",
-                    f"Failed to launch SP Flash Tool GUI:\n\n{e}"
-                )
-            
+            except Exception:
+                pass
+            return True
+
         except Exception as e:
-            silent_print(f"Error in SP Flash Tool GUI method: {e}")
+            silent_print(f"Error launching SP Flash Tool GUI: {e}")
             QMessageBox.critical(
                 self,
-                "Error",
-                f"An error occurred: {e}"
+                "Launch Error",
+                f"Failed to launch SP Flash Tool GUI:\n\n{e}",
             )
+            return False
+
+    def try_method_4(self):
+        """Installation-method entry: SP Flash Tool GUI (Windows + Linux x86)."""
+        self.launch_sp_flash_tool_gui()
 
     def try_method_3_console(self):
-        """Try Method 3 - SP Flash Tool Console Mode (Windows only) - Launches SP Flash Tool.lnk from Toolkit directory"""
+        """SP Flash Tool in an external terminal (Windows shortcut / Linux console XML)."""
         try:
-            if platform.system() != "Windows":
+            if is_macos_platform():
                 QMessageBox.warning(
                     self,
-                    "Method 3 Not Available",
-                    "Method 3 (SP Flash Tool Console Mode) is only available on Windows."
+                    "SP Flash Tool Console Mode Not Available",
+                    "SP Flash Tool is not available on macOS. Use MTKClient instead."
                 )
                 return
-            
-            # Check if SP Flash Tool.lnk exists in Toolkit directory
-            current_dir = Path.cwd()
-            toolkit_dir = current_dir / "Toolkit"
-            sp_flash_tool_lnk = toolkit_dir / "SP Flash Tool.lnk"
-            
-            if not sp_flash_tool_lnk.exists():
-                QMessageBox.critical(
-                    self,
-                    "SP Flash Tool Console Mode Not Found",
-                    "SP Flash Tool.lnk not found in Toolkit directory. Please ensure it's properly installed."
-                )
-                return
-            
+
             device_model, _, _ = self.get_install_model_context()
             if not device_model:
-                QMessageBox.warning(
-                    self,
-                    "Device Model Unknown",
-                    self.device_copy(
-                        "Could not determine whether this firmware is for a Y1 or Y2 device.\n\n"
-                        "Extract the firmware files first or select the correct device model."
-                    ),
-                )
-                return
-            device_label = "Y2" if is_y2_model(device_model) else "Y1"
-
-            # Show dialog with Method 3 Console Mode instructions
-            reply = QMessageBox.question(
-                self,
-                "SP Flash Tool Console Mode",
-                self.device_copy(
-                    "SP Flash Tool Console Mode will now launch.\n\n"
-                    f"If it isn't already off, power off your {device_label}.\n"
-                    "If it is connected, disconnect it, then press OK.\n\n"
-                    "Then follow the on screen instructions...\n\n"
-                    "Powering Off: You can also insert a pin/paper clip in the hole on the bottom).\n\n"
-                    "This method launches the SP Flash Tool console interface."
-                ),
-                QMessageBox.Ok | QMessageBox.Cancel,
-                QMessageBox.Ok
-            )
-            
-            if reply == QMessageBox.Cancel:
-                return
-
+                # Still allow launch; prepare_sp may no-op without model.
+                pass
             prepare_sp_flash_tool_files(device_model)
-            
-            # Launch SP Flash Tool.lnk from Toolkit directory using proper Windows method
-            try:
-                # Use os.startfile() to properly launch .lnk files on Windows
-                import os
-                os.startfile(str(sp_flash_tool_lnk))
+
+            if is_windows_platform():
+                current_dir = Path.cwd()
+                toolkit_dir = current_dir / "Toolkit"
+                sp_flash_tool_lnk = toolkit_dir / "SP Flash Tool.lnk"
+                if not sp_flash_tool_lnk.exists():
+                    QMessageBox.critical(
+                        self,
+                        "SP Flash Tool Console Mode Not Found",
+                        "SP Flash Tool.lnk not found in Toolkit directory. Please ensure it's properly installed."
+                    )
+                    return
+                reply = QMessageBox.question(
+                    self,
+                    "SP Flash Tool Console Mode",
+                    self.device_copy(
+                        "SP Flash Tool Console Mode will now launch.\n\n"
+                        f"If it isn't already off, power off your {self.get_device_label()}.\n"
+                        "If it is connected, disconnect it, then press OK."
+                    ),
+                    QMessageBox.Ok | QMessageBox.Cancel,
+                    QMessageBox.Ok,
+                )
+                if reply == QMessageBox.Cancel:
+                    return
+                import os as _os
+                _os.startfile(str(sp_flash_tool_lnk))
                 silent_print(f"Launched SP Flash Tool Console Mode: {sp_flash_tool_lnk}")
-                
-                # Show success message
                 QMessageBox.information(
                     self,
                     "SP Flash Tool Console Mode Launched",
-                    "SP Flash Tool Console Mode has been launched successfully.\n\n"
-                    "Please follow the instructions in the SP Flash Tool window to complete the installation."
+                    "Follow the on-screen SP Flash Tool console instructions."
                 )
-                
-                # Revert to ready and presteps.png state after successful launch
                 self.revert_to_startup_state()
-                
-            except Exception as e:
-                silent_print(f"Error launching SP Flash Tool Console Mode: {e}")
-                QMessageBox.critical(
-                    self,
-                    "Launch Error",
-                    f"Failed to launch SP Flash Tool Console Mode:\n\n{e}"
+                return
+
+            if is_linux_platform():
+                if not linux_spflash_arch_supported():
+                    QMessageBox.information(
+                        self,
+                        "SP Flash Tool not available",
+                        linux_spflash_arch_unsupported_reason(),
+                    )
+                    return
+                app_dir = get_firmware_app_dir()
+                flash_tool_bin = get_sp_flash_tool_binary_path(app_dir)
+                if flash_tool_bin is None or not flash_tool_bin.exists():
+                    reply_setup = QMessageBox.question(
+                        self,
+                        "Flash Tool Not Found",
+                        "The Linux SP Flash Tool binary (flash_tool) was not found.\n\n"
+                        "Download and set it up now?",
+                        QMessageBox.Yes | QMessageBox.No,
+                        QMessageBox.Yes,
+                    )
+                    if reply_setup == QMessageBox.Yes:
+                        self._force_linux_flash_tool_setup = True
+                        self._start_linux_flash_tool_first_time_setup()
+                    return
+
+                # Prefer disk evidence so Y2 packages never get Y1 rom indices.
+                disk_hint = detect_device_model_for_install(
+                    zip_path=getattr(self, "_last_install_zip_name", None),
+                    extracted_files=getattr(self, "_last_install_extracted_files", None),
                 )
-            
+                if disk_hint:
+                    device_model = disk_hint
+                    self.set_runtime_detected_device_model(disk_hint)
+                prepare_sp_flash_tool_files(device_model)
+                ok_imgs, img_errors, _ = validate_spflash_images_for_model(
+                    device_model, app_dir
+                )
+                if not ok_imgs:
+                    QMessageBox.critical(
+                        self,
+                        "Firmware images do not match this device model",
+                        "SP Flash Tool would quit before waiting for USB:\n\n"
+                        + "\n".join(f"• {e}" for e in img_errors),
+                    )
+                    return
+
+                flash_config = get_flash_config(device_model)
+                # Always use scatter-normalized runtime XML (fixes GUI exports that
+                # still use Y1 rom indices 15/16/17 for Y2's 16/17/18 layout).
+                try:
+                    xml_path = prepare_spflash_runtime_install_xml(
+                        device_model=device_model,
+                        com_port=None,
+                        app_dir=app_dir,
+                    )
+                except Exception as e:
+                    QMessageBox.critical(
+                        self,
+                        "Install XML Error",
+                        f"Could not prepare SP Flash Tool config:\n{e}",
+                    )
+                    return
+                if not xml_path.exists():
+                    QMessageBox.critical(
+                        self,
+                        "Install ROM XML Not Found",
+                        f"{xml_path} not found beside firmware_downloader.py."
+                    )
+                    return
+
+                reply = QMessageBox.question(
+                    self,
+                    "SP Flash Tool in Terminal",
+                    self.device_copy(
+                        "SP Flash Tool will open in a terminal using a corrected console-mode "
+                        "XML for this model (rom indices taken from the scatter file).\n\n"
+                        f"Model: {device_label_for_model(device_model)}\n"
+                        f"Config: {xml_path.name}\n\n"
+                        f"If it isn't already off, power off your {self.get_device_label()}, "
+                        "disconnect USB, then press OK. Connect only after Search usb."
+                    ),
+                    QMessageBox.Ok | QMessageBox.Cancel,
+                    QMessageBox.Ok,
+                )
+                if reply == QMessageBox.Cancel:
+                    return
+
+                ensure_sp_flash_tool_executable(app_dir)
+                prepare_linux_spflash_runtime(app_dir)
+                env = sp_flash_tool_process_env(app_dir)
+                # Build a shell snippet that keeps LD_LIBRARY_PATH / LD_PRELOAD and runs
+                # flash_tool -i <runtime xml with correct Y2 rom indices>
+                preload = env.get("LD_PRELOAD", "")
+                run_cmd = (
+                    f"cd {shlex.quote(str(app_dir))} && "
+                    f"export LD_LIBRARY_PATH={shlex.quote(env.get('LD_LIBRARY_PATH',''))} && "
+                    f"export QT_PLUGIN_PATH={shlex.quote(env.get('QT_PLUGIN_PATH', str(app_dir / 'plugins')))} && "
+                    + (
+                        f"export LD_PRELOAD={shlex.quote(preload)} && "
+                        if preload
+                        else ""
+                    )
+                    + f"{shlex.quote(str(flash_tool_bin))} -i {shlex.quote(str(xml_path))}; "
+                    f"echo; echo 'SP Flash Tool exited. Press Enter to close.'; read _"
+                )
+                launched = False
+                for term_cmd in (
+                    ["x-terminal-emulator", "-e", "bash", "-lc", run_cmd],
+                    ["gnome-terminal", "--", "bash", "-lc", run_cmd],
+                    ["konsole", "-e", "bash", "-lc", run_cmd],
+                    ["kgx", "-e", "bash", "-lc", run_cmd],
+                    ["xfce4-terminal", "-e", f"bash -lc {shlex.quote(run_cmd)}"],
+                    ["mate-terminal", "-e", f"bash -lc {shlex.quote(run_cmd)}"],
+                    ["tilix", "-e", "bash", "-lc", run_cmd],
+                    ["alacritty", "-e", "bash", "-lc", run_cmd],
+                    ["kitty", "bash", "-lc", run_cmd],
+                    ["xterm", "-e", "bash", "-lc", run_cmd],
+                ):
+                    if shutil.which(term_cmd[0]):
+                        try:
+                            subprocess.Popen(term_cmd, cwd=str(app_dir), env=env)
+                            launched = True
+                            silent_print(f"Launched SP Flash Tool terminal via {term_cmd[0]}")
+                            break
+                        except Exception as term_err:
+                            silent_print(f"Terminal launch failed ({term_cmd[0]}): {term_err}")
+                if not launched:
+                    QMessageBox.critical(
+                        self,
+                        "No Terminal Found",
+                        "Could not find a terminal emulator to run SP Flash Tool.\n"
+                        "Install gnome-terminal, konsole, or xterm, or use Method 1 (Guided)."
+                    )
+                    return
+                self.revert_to_startup_state()
+                return
+
+            QMessageBox.warning(
+                self,
+                "Not Available",
+                "SP Flash Tool console mode is only available on Windows and Linux."
+            )
         except Exception as e:
-            silent_print(f"Error in SP Flash Tool Console Mode method: {e}")
+            silent_print(f"Error in SP Flash Tool console method: {e}")
             QMessageBox.critical(
                 self,
                 "Error",
@@ -10987,7 +13313,65 @@ class FirmwareDownloaderGUI(QMainWindow):
                                 self.method_combo.addItem(method_text, "mtkclient")
                     else:
                         self.method_combo.addItem("Method 1 - Guided (Fallback)", "guided")
+            elif is_linux_platform() and linux_spflash_arch_supported():
+                seasonal_emoji = get_seasonal_emoji_random()
+                spft_ready = False
+                try:
+                    spft_ready = self.linux_spflash_ready()
+                except Exception:
+                    spft_ready = linux_spflash_staged()
+                if spft_ready:
+                    method1_text = (
+                        f"Method 1 - Guided (SP Flash Tool){seasonal_emoji}"
+                        if seasonal_emoji else "Method 1 - Guided (SP Flash Tool)"
+                    )
+                    method2_text = (
+                        f"Method 2 - SP Flash Tool in Terminal{seasonal_emoji}"
+                        if seasonal_emoji else "Method 2 - SP Flash Tool in Terminal"
+                    )
+                else:
+                    method1_text = (
+                        f"Method 1 - Guided (SP Flash Tool — setup required){seasonal_emoji}"
+                        if seasonal_emoji else "Method 1 - Guided (SP Flash Tool — setup required)"
+                    )
+                    method2_text = (
+                        f"Method 2 - SP Flash Tool in Terminal (setup required){seasonal_emoji}"
+                        if seasonal_emoji else "Method 2 - SP Flash Tool in Terminal (setup required)"
+                    )
+                method3_text = (
+                    f"Method 3 - MTKclient Guided (Y1 only){seasonal_emoji}"
+                    if seasonal_emoji else "Method 3 - MTKclient Guided (Y1 only)"
+                )
+                method4_text = (
+                    f"Method 4 - MTKclient in Terminal (Y1 only){seasonal_emoji}"
+                    if seasonal_emoji else "Method 4 - MTKclient in Terminal (Y1 only)"
+                )
+                self.method_combo.addItem(method1_text, "spflash")
+                self.method_combo.addItem(method2_text, "spflash_console")
+                self.method_combo.addItem(method3_text, "guided")
+                self.method_combo.addItem(method4_text, "mtkclient")
+            elif is_linux_platform():
+                # aarch64 / other non-x86: no SP Flash Tool binary exists
+                seasonal_emoji = get_seasonal_emoji_random()
+                method1_text = (
+                    f"Method 1 - Guided (MTKClient){seasonal_emoji}"
+                    if seasonal_emoji else "Method 1 - Guided (MTKClient)"
+                )
+                method2_text = (
+                    f"Method 2 - MTKClient in Terminal{seasonal_emoji}"
+                    if seasonal_emoji else "Method 2 - MTKClient in Terminal"
+                )
+                arch_note = QLabel(
+                    linux_spflash_arch_unsupported_reason()
+                    + " USB access rules from run_linux.sh still help MTKClient."
+                )
+                arch_note.setWordWrap(True)
+                arch_note.setStyleSheet("color: #666; margin: 2px;")
+                install_layout.addWidget(arch_note)
+                self.method_combo.addItem(method1_text, "guided")
+                self.method_combo.addItem(method2_text, "mtkclient")
             else:
+                # macOS / other: MTKClient only
                 seasonal_emoji = get_seasonal_emoji_random()
                 method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
                 method2_text = f"Method 2 - in Terminal{seasonal_emoji}" if seasonal_emoji else "Method 2 - in Terminal"
@@ -10995,7 +13379,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.method_combo.addItem(method1_text, "guided")
                 self.method_combo.addItem(method2_text, "mtkclient")
             
-            current_method = getattr(self, 'installation_method', 'guided')
+            current_method = getattr(self, 'installation_method', default_installation_method())
             if platform.system() == "Windows" and driver_info and not driver_info.get('has_mtk_driver'):
                 current_method = 'guided'
                 silent_print("No MTK driver detected, defaulting to guided method")
@@ -12874,6 +15258,25 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Use default cursor for native OS feel
         storage_btn.clicked.connect(self.launch_storage_management_tool)
         tools_layout.addWidget(storage_btn)
+
+        # SP Flash Tool GUI — Windows + Linux x86/x86_64 only (not macOS; MTKClient only there)
+        if is_windows_platform() or (
+            is_linux_platform() and linux_spflash_arch_supported()
+        ):
+            spft_gui_btn = QPushButton("Launch SP Flash Tool GUI")
+            if is_linux_platform():
+                spft_gui_btn.setToolTip(
+                    "Open MediaTek SP Flash Tool (Qt GUI). Uses the bundled flash_tool "
+                    "binary; scatter/images are in this app folder. Not available on macOS."
+                )
+            else:
+                spft_gui_btn.setToolTip(
+                    "Open MediaTek SP Flash Tool GUI (Toolkit shortcut or flash_tool.exe)"
+                )
+            spft_gui_btn.clicked.connect(
+                lambda: (dialog.accept(), self.launch_sp_flash_tool_gui())
+            )
+            tools_layout.addWidget(spft_gui_btn)
         
         # Rockbox Utility button (Windows only) - using native styling
         if platform.system() == "Windows":
@@ -13241,10 +15644,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 
                 # Always default to Method 1 on startup, regardless of saved preferences
                 # Method changes in settings are only temporary for the current session
-                if platform.system() == "Windows":
-                    self.installation_method = "spflash"  # Always Method 1 on Windows
-                else:
-                    self.installation_method = "guided"  # Always Method 1 on other platforms
+                # Always Method 1 for the platform (SPFT on Win/Linux, MTK on macOS)
+                self.installation_method = default_installation_method()
                 
                 # Load other preferences (but not installation_method)
                 if 'debug_mode' in preferences:
@@ -14371,10 +16772,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         # Clear the stored original method
                         delattr(self, '_original_installation_method')
             # Use defaults if loading fails
-            if platform.system() == "Windows":
-                self.installation_method = "spflash"  # Default to Method 1 (Guided) on Windows
-            else:
-                self.installation_method = "guided"  # Default to Method 1 (Guided) on other platforms
+            self.installation_method = default_installation_method()
             # Always use method functionality removed
 
     def populate_device_type_combo(self):
@@ -16860,6 +19258,26 @@ class FirmwareDownloaderGUI(QMainWindow):
     def run_mtk_command_guided(self):
         """Run the MTK flash command with image display for guided installation"""
         try:
+            install_model, _, _ = self.get_install_model_context()
+            if is_y2_model(install_model) and not mtkclient_allowed_for_model(install_model):
+                if is_linux_platform():
+                    if self.linux_spflash_ready():
+                        self.try_method_3()
+                    else:
+                        self._offer_linux_spflash_setup_again(
+                            "Y2 firmware cannot use MTKClient yet and SP Flash Tool is not set up."
+                        )
+                elif is_windows_platform():
+                    self.try_method_3()
+                else:
+                    QMessageBox.warning(
+                        self,
+                        "Y2 not available via MTKClient",
+                        "Y2 firmware installs are not available through MTKClient yet.\n"
+                        "Use Windows or Linux with SP Flash Tool.",
+                    )
+                return
+
             # Check driver availability for Windows users
             if platform.system() == "Windows":
                 driver_info = self.check_drivers_and_architecture()
@@ -27836,6 +30254,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Non-Windows: Use selected method
             method = getattr(self, 'installation_method', 'guided')
         
+        # Gate Y2/MTK and offer Linux SPFT re-setup when needed. Do not silently
+        # rewrite an explicit SP Flash Tool selection — that path re-offers setup.
+        if not self.ensure_install_path_for_model(resolved_model, preferred_method=method):
+            return
+        # Method may have been redirected (e.g. Y2 MTK -> SPFT)
+        method = getattr(self, "installation_method", method)
+
         silent_print(f"Handling installation method: {method}")
         
         # Store the attempted method for "Try Again" functionality
@@ -27889,22 +30314,63 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print("=== FALLING BACK TO SP FLASH TOOL METHOD 1 ===")
                 self.load_method3_image()
                 self.try_method_3()
+        elif is_linux_platform():
+            # Linux: SP Flash Tool by default; MTKClient only as Y1 fallback
+            if method == "spflash":
+                silent_print("=== RUNNING LINUX SP FLASH TOOL GUIDED (console XML) ===")
+                self.load_method3_image()
+                self.try_method_3()
+            elif method == "spflash_console":
+                silent_print("=== RUNNING LINUX SP FLASH TOOL IN TERMINAL ===")
+                self.load_method3_image()
+                self.try_method_3_console()
+            elif method == "guided":
+                if is_y2_model(resolved_model) and not mtkclient_allowed_for_model(resolved_model):
+                    if self.linux_spflash_ready():
+                        self.load_method3_image()
+                        self.try_method_3()
+                    else:
+                        self._offer_linux_spflash_setup_again(
+                            "Y2 firmware requires SP Flash Tool on Linux (MTKClient is not enabled for Y2 yet)."
+                        )
+                    return
+                silent_print("=== RUNNING MTKCLIENT GUIDED INSTALLATION ===")
+                silent_print("The MTK flash command will now run in this application.")
+                silent_print(f"Please turn off your {self.get_device_label()} when prompted.")
+                self.run_mtk_command_guided()
+            elif method == "mtkclient":
+                if is_y2_model(resolved_model) and not mtkclient_allowed_for_model(resolved_model):
+                    if self.linux_spflash_ready():
+                        self.load_method3_image()
+                        self.try_method_3()
+                    else:
+                        self._offer_linux_spflash_setup_again(
+                            "Y2 firmware requires SP Flash Tool on Linux (MTKClient is not enabled for Y2 yet)."
+                        )
+                    return
+                silent_print("=== RUNNING MTKCLIENT IN TERMINAL ===")
+                self.load_method2_image()
+                self.show_troubleshooting_instructions()
+            else:
+                if self.linux_spflash_ready():
+                    silent_print("=== FALLING BACK TO LINUX SP FLASH TOOL GUIDED ===")
+                    self.load_method3_image()
+                    self.try_method_3()
+                else:
+                    silent_print("=== FALLING BACK TO MTKCLIENT GUIDED ===")
+                    self.run_mtk_command_guided()
         else:
-            # Non-Windows: Original method order
+            # macOS (and other non-Windows): MTKClient only
             if method == "guided":
-                # Method 1: Normal guided process (default behavior)
                 silent_print("=== RUNNING GUIDED INSTALLATION ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print(f"Please turn off your {self.get_device_label()} when prompted.")
                 self.run_mtk_command_guided()
             elif method == "mtkclient":
-                # Method 2: in Terminal method - same as pressing "Try Method 2" in troubleshooting
                 silent_print("=== RUNNING MTKCLIENT METHOD ===")
-                # Show Method 2 image and launch recovery firmware install
                 self.load_method2_image()
                 self.show_troubleshooting_instructions()
             else:
-                # Fallback to guided method if invalid method
                 silent_print("=== FALLING BACK TO GUIDED METHOD ===")
                 self.run_mtk_command_guided()
         
@@ -28509,12 +30975,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         if clicked_button == try_again_btn:
             # Try Again - use Method 1 (default method for the platform)
             self.ensure_mtk_process_terminated()  # Ensure MTK process is terminated
-            if platform.system() == "Windows":
-                # Windows: Use guided SP Flash Tool process (Method 1)
+            if is_windows_platform() or is_linux_platform():
+                # Windows/Linux: guided SP Flash Tool console XML (Method 1)
                 remove_installation_marker()
                 self.try_method_3()
             else:
-                # Non-Windows: Use guided MTKclient process (Method 1)
+                # macOS: guided MTKclient (Method 1)
                 # Don't clear marker here - it will be cleared after successful installation
                 self.show_unplug_prompt_and_retry()
         elif clicked_button == settings_btn:
