@@ -2,12 +2,14 @@
 """
 Firmware Downloader for Innioasis Updater
 Downloads firmware releases from XML manifest and installs them with:
-  - Windows/Linux: SP Flash Tool console-mode XML (default), with MTKClient as fallback
-  - macOS: MTKClient only
+  - Windows: SP Flash Tool only (no MTKClient methods)
+  - Linux x86: SP Flash Tool default, MTKClient fallback (desparses images via simg2img)
+  - Linux non-x86 / macOS: MTKClient only (simg2img staged for sparse→raw before flash)
 """
 
 import sys
 import os
+import errno
 import re
 import zipfile
 import subprocess
@@ -55,7 +57,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "2.0.0"
+APP_VERSION = "2.0.1"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
@@ -73,6 +75,35 @@ FLASH_TOOL_LINUX_URL = (
 FLASH_TOOL_LINUX_ZIP_NAME = "flash_tool_linux.zip"
 FLASH_TOOL_LINUX_BIN = "flash_tool"
 FLASH_TOOL_WIN_BIN = "flash_tool.exe"
+# Minimum plausible size for a good local flash_tool_linux.zip (~67MB full package).
+FLASH_TOOL_LINUX_ZIP_MIN_BYTES = 10 * 1024 * 1024
+# Required members of flash_tool_linux.zip (relative to app dir). The binary alone is
+# not enough: Qt4 and DA libs ship under lib/ and the package root. If any of these
+# are missing, ensure_linux_sp_flash_tool / prepare_linux_spflash_runtime re-extract.
+# Keep in sync with the release zip layout (unzip -l flash_tool_linux.zip).
+FLASH_TOOL_LINUX_REQUIRED_FILES = (
+    "flash_tool",
+    "flash_tool.sh",
+    "libflashtool.so",
+    "libflashtool.v1.so",
+    "libflashtoolEx.so",
+    "libsla_challenge.so",
+    "MTK_AllInOne_DA.bin",
+    # Bundled Qt4 (LD_LIBRARY_PATH = app_dir:app_dir/lib)
+    "lib/libQtCore.so.4",
+    "lib/libQtGui.so.4",
+    "lib/libQtNetwork.so.4",
+    "lib/libQtWebKit.so.4",
+    "lib/libQtXml.so.4",
+    "lib/libQtXmlPatterns.so.4",
+    "lib/libQtSql.so.4",
+    "lib/libQtHelp.so.4",
+    "lib/libQtCLucene.so.4",
+    "lib/libphonon.so.4",
+    # Qt plugins used by the GUI/console tooling
+    "plugins/imageformats/libqjpeg.so",
+    "plugins/sqldrivers/libqsqlite.so",
+)
 # udev rule filenames (order matters: low numbers run first)
 # 20-*: ModemManager blacklist early (community SPFT guides + freedesktop MM filters)
 # 78-*: session uaccess helper
@@ -92,8 +123,14 @@ FLASH_TOOL_LINUX_SYSTEM_PREP_SCRIPT = "linux_spflash_system_prep.sh"
 # LD_PRELOAD that retries open() on /dev/ttyACM* (SP Flash Tool uevent race).
 FLASH_TOOL_LINUX_OPEN_RETRY_C = "spft_tty_open_retry.c"
 FLASH_TOOL_LINUX_OPEN_RETRY_SO = "spft_tty_open_retry.so"
-# Auto self-heal / retry limits for Linux flash paths
-LINUX_FLASH_SELF_HEAL_MAX_ATTEMPTS = 3
+# Auto self-heal / retry limits for Linux SP Flash Tool COM open races (1013)
+LINUX_FLASH_SELF_HEAL_MAX_ATTEMPTS = 5
+# After COM open fail, wait this long for user unplug / replug during self-heal
+LINUX_FLASH_RECONNECT_UNPLUG_TIMEOUT_S = 90.0
+LINUX_FLASH_RECONNECT_PLUG_TIMEOUT_S = 180.0
+# Bump when spft_tty_open_retry.c ABI/behavior changes so .so is rebuilt
+# v4: ioctl TIOCCBRK soft-success (Linux S_COM_PORT_OPEN_FAIL 1013 / errno 95)
+SPFT_OPEN_RETRY_PRELOAD_VERSION = 4
 
 
 def _extract_signal_value(value):
@@ -420,6 +457,25 @@ def device_label_for_model(model):
     return model_str if model_str else "Y1"
 
 
+def power_on_button_for_model(model):
+    """
+    Hardware button used to turn the player on after install.
+
+    Y1: hold the centre (select) button.
+    Y2: hold the power/lock button on the side.
+    """
+    if is_y2_model(model):
+        return "power/lock button"
+    return "centre button"
+
+
+def install_power_on_steps(model):
+    """Short post-install power-on steps for the active model."""
+    label = device_label_for_model(model)
+    button = power_on_button_for_model(model)
+    return f"Unplug your {label}, then hold the {button} until it turns on."
+
+
 def innioasis_name_for_model(model):
     """Marketing-style device name for UI strings."""
     label = device_label_for_model(model)
@@ -562,6 +618,33 @@ def _model_from_firmware_basenames(names):
     return None
 
 
+# Y1 stock ANDROID region in MT6572 scatter (0x28a00000). system.img larger than
+# this almost always means a Y2 (or non-Y1) package is on disk.
+Y1_ANDROID_PARTITION_SIZE = 0x28A00000
+
+
+def _model_from_system_image_size(install_dir=None):
+    """
+    Infer Y2 when on-disk system.img is larger than the Y1 ANDROID region.
+
+    Both preloaders often ship in the app tree, so basenames alone cannot decide;
+    a ~820MB+ system.img is a reliable Y2 package signal.
+    """
+    try:
+        root = Path(install_dir or get_firmware_app_dir())
+        sys_img = root / "system.img"
+        if not sys_img.is_file():
+            sys_img = Path("system.img")
+        if not sys_img.is_file():
+            return None
+        size = sys_img.stat().st_size
+        if size > Y1_ANDROID_PARTITION_SIZE:
+            return "Y2"
+    except Exception:
+        pass
+    return None
+
+
 def detect_device_model_for_install(device_model=None, zip_path=None, extracted_files=None):
     """
     Resolve device model for install prep.
@@ -569,18 +652,35 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
     Returns 'Y1', 'Y2', or None when the platform cannot be determined.
 
     Priority (install correctness over UI filter state):
-      1. Zip name (rom_y2.zip / *_y2*) — definitive for Y2 packages
+      1. Zip name (rom_y2.zip / *_y2* / *_y1* / y1-stock) — definitive from package name
       2. Files from this extraction (not permanently bundled app assets)
-      3. Explicit UI / caller model
-      4. Residual install-directory / scatter markers
+      3. On-disk system.img size (larger than Y1 ANDROID → Y2)
+      4. Explicit UI / caller model
+      5. Residual install-directory / scatter markers
 
     The dropdown filters which packages are listed; a rom_y2.zip install must still
     use the Y2 DA/preloader path even if the model filter is still set to Y1.
     """
     if zip_path:
-        zip_lower = str(zip_path).lower()
-        if '_y2' in zip_lower or 'rom_y2' in zip_lower:
-            return 'Y2'
+        zip_lower = str(zip_path).lower().replace("\\", "/")
+        base = Path(zip_lower).name
+        # Y2 first so mixed names cannot win as Y1
+        if (
+            "_y2" in base
+            or "rom_y2" in base
+            or "y2-stock" in base
+            or base.startswith("y2")
+            or "/y2" in zip_lower
+        ):
+            return "Y2"
+        if (
+            "_y1" in base
+            or "rom_y1" in base
+            or "y1-stock" in base
+            or base.startswith("y1")
+            or "y1-community" in base
+        ):
+            return "Y1"
 
     # Only treat the caller's extract list as package evidence — do not expand it
     # with permanently-bundled app-dir files (both Y1 and Y2 preloaders ship here).
@@ -589,6 +689,11 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
         from_extract = _model_from_firmware_basenames(extracted_names)
         if from_extract:
             return from_extract
+
+    # Large system.img before residual Y1 scatter leftovers (common after mixed installs)
+    from_size = _model_from_system_image_size()
+    if from_size:
+        return from_size
 
     if device_model and str(device_model).strip():
         if is_y2_model(device_model):
@@ -604,7 +709,9 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
             return 'Y2'
 
     if 'preloader_eastaeon82_wet_kk.bin' in names:
-        return 'Y2'
+        # Only trust Y2 preloader when Y1 preloader is absent — both often ship in-app
+        if 'preloader_g368_nyx.bin' not in names:
+            return 'Y2'
 
     y2_scatter = Path(Y2_SCATTER_TXT)
     if y2_scatter.exists() and _read_scatter_chip_family(y2_scatter) == 'Y2':
@@ -630,22 +737,543 @@ def resolve_device_model_for_install(device_model=None, zip_path=None, extracted
     return detect_device_model_for_install(device_model, zip_path, extracted_files)
 
 
-# Y2 MTK flash order mirrors install_rom_sp_y2.xml (includes partition table).
-Y2_MTK_FLASH_PARTS = (
-    ("MBR", "MBR"),
-    ("EBR1", "EBR1"),
-    ("lk.bin", "UBOOT"),
-    ("boot.img", "BOOTIMG"),
-    ("recovery.img", "RECOVERY"),
-    ("secro.img", "SEC_RO"),
-    ("logo.bin", "LOGO"),
-    ("system.img", "ANDROID"),
-    ("cache.img", "CACHE"),
-    ("userdata.img", "USRDATA"),
+# Y1/Y2 mtkclient — **stock mtkclient only** (same tree as
+# github.com/y1-community/Innioasis-Updater/mtkclient — no forks/patches).
+#
+# Install == full-system unbrick (same package SP Flash Tool would download):
+#   - Windows: SP Flash Tool only (Format All + Download, full rom-list).
+#   - Linux/macOS MTKClient:
+#       1. Desparse system.img / cache.img / userdata.img (raw only for DA write).
+#       2. Y1: named ``mtk.py w`` (on-device GPT/PMT supplies addresses). Full
+#          community image set from the package.
+#       3. Y2: blank / unreadable PMT is normal. Named ``w`` finds *no* partitions.
+#          Full unbrick uses scatter **physical_start_addr** via one-session::
+#            mtk.py script y2_mtk_install.script --preloader … --loader …
+#          Script lines are ``wo <offset> <length> <file>`` (user area) plus
+#          preloader ``wo … --parttype boot1``. Offsets come only from the package
+#          MT6582 scatter (or shipped def), never invented addresses.
+#   - SP Flash Tool path also stages the entire downloadable package (preloader +
+#     all is_download images) so both methods are unbrick-capable.
+#
+# Fallback file→partition names when scatter is missing (user-area package images).
+# MBR/EBR* are omitted: stock packages ship them as empty placeholders; on a given
+# device those regions are device-resident and must not be overwritten with zeros.
+Y2_MTK_FLASH_PARTS_FALLBACK = (
+    ("lk.bin", "uboot"),
+    ("boot.img", "bootimg"),
+    ("recovery.img", "recovery"),
+    ("secro.img", "sec_ro"),
+    ("logo.bin", "logo"),
+    ("system.img", "android"),
+    ("cache.img", "cache"),
+    ("userdata.img", "usrdata"),
 )
+# Partition names / basenames we never write via mtkclient (device-local tables).
+MTK_SKIP_DEVICE_TABLE_FILES = frozenset({
+    "mbr", "ebr1", "ebr2", "ebr3", "pgpt", "sgpt", "pmt",
+})
+MTK_SKIP_DEVICE_TABLE_PARTS = frozenset({
+    "mbr", "ebr1", "ebr2", "ebr3", "pgpt", "sgpt", "pmt",
+})
+Y2_MTK_FLASH_PARTS = Y2_MTK_FLASH_PARTS_FALLBACK
 Y2_MTK_INSTALL_SCRIPT = "y2_mtk_install.script"
+Y2_MTK_WO_INSTALL_SCRIPT = "y2_mtk_wo_install.script"
+Y1_MTK_INSTALL_SCRIPT = "y1_mtk_install.script"
+Y2_MTK_PRELOADER_DEFAULT = "preloader_eastaeon82_wet_kk.bin"
+Y1_MTK_PRELOADER_DEFAULT = "preloader_g368_nyx.bin"
+Y2_MTK_DA_DEFAULT = "MTK_AllInOne_DA.bin"
 INSTALL_MODEL_MARKER = ".install_device_model"
-ANDROID_SPARSE_MAGIC = 0xED26FF3A
+MTK_SKIP_FLASH_IMAGES = frozenset()
+MTK_Y1_WIPE_PARTITIONS = "cache,usrdata"
+MTK_EMMC_PAGE_SIZE = 512
+ANDROID_SPARSE_MAGIC = b"\x3a\xff\x26\xed"
+MTK_DESPARSE_IMAGES = ("system.img", "cache.img", "userdata.img")
+
+
+def find_simg2img():
+    """Return absolute path to ``simg2img``, or None if not installed."""
+    candidates = []
+    which = shutil.which("simg2img")
+    if which:
+        candidates.append(Path(which))
+    # Common Homebrew / system locations (PATH may not include brew in GUI apps).
+    for p in (
+        "/opt/homebrew/bin/simg2img",
+        "/usr/local/bin/simg2img",
+        "/usr/bin/simg2img",
+        "/bin/simg2img",
+    ):
+        candidates.append(Path(p))
+    # Homebrew cellars sometimes expose versioned paths only.
+    for base in (Path("/opt/homebrew"), Path("/usr/local")):
+        cellar = base / "Cellar" / "simg2img"
+        if cellar.is_dir():
+            for match in sorted(cellar.glob("*/bin/simg2img"), reverse=True):
+                candidates.append(match)
+    seen = set()
+    for cand in candidates:
+        try:
+            resolved = cand.resolve()
+        except Exception:
+            resolved = cand
+        key = str(resolved)
+        if key in seen:
+            continue
+        seen.add(key)
+        if cand.is_file() and os.access(cand, os.X_OK):
+            return str(cand)
+    return None
+
+
+def is_android_sparse_image(path):
+    """True when *path* is an Android sparse image (magic 0xed26ff3a)."""
+    try:
+        p = Path(path)
+        if not p.is_file() or p.stat().st_size < 28:
+            return False
+        with open(p, "rb") as fh:
+            return fh.read(4) == ANDROID_SPARSE_MAGIC
+    except Exception:
+        return False
+
+
+def android_sparse_declared_raw_size(path):
+    """
+    Return the expanded raw size declared in an Android sparse header, or None.
+
+    Sparse on-disk size is much smaller than this value — never use st_size of a
+    sparse file as mtk.py ``wo`` length (that under-writes and corrupts flash).
+    """
+    try:
+        p = Path(path)
+        if not p.is_file() or p.stat().st_size < 28:
+            return None
+        with open(p, "rb") as fh:
+            hdr = fh.read(28)
+        if hdr[:4] != ANDROID_SPARSE_MAGIC:
+            return None
+        import struct
+        # magic, major, minor, file_hdr_sz, chunk_hdr_sz, blk_sz, total_blks, total_chunks, checksum
+        _magic, _maj, _min, _fhs, _chs, blk_sz, total_blks, _tc, _ck = struct.unpack(
+            "<I4H4I", hdr
+        )
+        if blk_sz <= 0 or total_blks <= 0:
+            return None
+        return int(blk_sz) * int(total_blks)
+    except Exception:
+        return None
+
+
+def raw_flash_length_for_wo(path, partition_size=None):
+    """
+    Byte length for stock mtkclient ``wo`` — **raw file size only**.
+
+    - Refuses Android sparse images (caller must desparse first).
+    - Uses st_size of the raw file (after simg2img), not partition_size and not
+      sparse packing size.
+    - Errors if raw size exceeds scatter partition_size when known.
+    """
+    p = Path(path)
+    if not p.is_file():
+        raise FileNotFoundError(f"Image not found for wo: {p}")
+    if is_android_sparse_image(p):
+        declared = android_sparse_declared_raw_size(p)
+        hint = (
+            f" declared raw size {declared} (0x{declared:x}) bytes"
+            if declared
+            else ""
+        )
+        raise ValueError(
+            f"{p.name} is still Android sparse{hint}; sparse on-disk size "
+            f"{p.stat().st_size} must not be used as wo length. "
+            "Run prepare_mtkclient_images / simg2img first."
+        )
+    length = int(p.stat().st_size)
+    if length <= 0:
+        raise ValueError(f"{p.name} is empty — cannot wo")
+    if partition_size is not None and int(partition_size) > 0:
+        if length > int(partition_size):
+            raise ValueError(
+                f"{p.name} raw size {length} (0x{length:x}) exceeds scatter "
+                f"partition_size {int(partition_size)} (0x{int(partition_size):x})"
+            )
+    return length
+
+
+def _simg2img_progress(progress_cb, message, percent=None):
+    if not progress_cb:
+        return
+    try:
+        if percent is None:
+            progress_cb(message)
+        else:
+            progress_cb(message, percent)
+    except TypeError:
+        try:
+            progress_cb(message)
+        except Exception:
+            pass
+    except Exception:
+        pass
+
+
+def _macos_brew_paths():
+    """Return (brew_executable, env_with_path) for GUI/app launches."""
+    brew = shutil.which("brew")
+    env = os.environ.copy()
+    path_parts = env.get("PATH", "").split(os.pathsep)
+    for prefix in ("/opt/homebrew/bin", "/usr/local/bin"):
+        if prefix not in path_parts:
+            path_parts.insert(0, prefix)
+    env["PATH"] = os.pathsep.join(path_parts)
+    if brew:
+        return brew, env
+    for candidate in ("/opt/homebrew/bin/brew", "/usr/local/bin/brew"):
+        if Path(candidate).is_file():
+            return candidate, env
+    return None, env
+
+
+def _write_macos_askpass_helper():
+    """
+    Create a temporary SUDO_ASKPASS helper that prompts via osascript.
+    Returns path to the helper script, or None on failure.
+    """
+    try:
+        fd, path = tempfile.mkstemp(prefix="innioasis_askpass_", suffix=".sh")
+        os.close(fd)
+        script = """#!/bin/bash
+osascript <<'APPLESCRIPT'
+Tell application "System Events" to display dialog \\
+  "Innioasis Updater needs your Mac password to install simg2img (required to prepare firmware for MTKClient)." \\
+  default answer "" with hidden answer with title "Innioasis Updater" buttons {"Cancel", "OK"} default button "OK"
+text returned of result
+APPLESCRIPT
+"""
+        Path(path).write_text(script, encoding="utf-8")
+        os.chmod(path, 0o700)
+        return path
+    except Exception as e:
+        silent_print(f"Could not create macOS askpass helper: {e}")
+        return None
+
+
+def install_simg2img_macos(progress_cb=None):
+    """Install simg2img via Homebrew. Uses SUDO_ASKPASS when sudo is required."""
+    _simg2img_progress(progress_cb, "Installing simg2img via Homebrew…", 5)
+    brew, env = _macos_brew_paths()
+    if not brew:
+        return None, (
+            "Homebrew was not found. Run run_mac.sh once to install Homebrew, "
+            "then restart Innioasis Updater."
+        )
+    askpass = _write_macos_askpass_helper()
+    if askpass:
+        env["SUDO_ASKPASS"] = askpass
+        # Prefer non-interactive sudo when askpass is available.
+        env["HOMEBREW_SUDO_ASKPASS"] = askpass
+    env.setdefault("HOMEBREW_NO_AUTO_UPDATE", "1")
+    env.setdefault("NONINTERACTIVE", "1")
+    try:
+        # Already installed?
+        check = subprocess.run(
+            [brew, "list", "--formula", "simg2img"],
+            capture_output=True,
+            text=True,
+            env=env,
+            timeout=120,
+        )
+        if check.returncode != 0:
+            _simg2img_progress(progress_cb, "brew install simg2img…", 15)
+            proc = subprocess.run(
+                [brew, "install", "simg2img"],
+                capture_output=True,
+                text=True,
+                env=env,
+                timeout=900,
+            )
+            if proc.returncode != 0:
+                err = (proc.stderr or proc.stdout or "brew install failed").strip()
+                return None, f"Homebrew could not install simg2img: {err[:500]}"
+        path = find_simg2img()
+        if path:
+            _simg2img_progress(progress_cb, f"simg2img ready: {path}", 30)
+            return path, None
+        return None, "simg2img installed but not found on PATH"
+    except subprocess.TimeoutExpired:
+        return None, "Timed out installing simg2img via Homebrew"
+    except Exception as e:
+        return None, f"macOS simg2img install failed: {e}"
+    finally:
+        if askpass:
+            try:
+                os.unlink(askpass)
+            except Exception:
+                pass
+
+
+def install_simg2img_linux(progress_cb=None):
+    """
+    Install simg2img using the distro package manager (pkexec/sudo when needed).
+
+    Package names tried (first available wins):
+      android-tools, android-sdk-libsparse-utils, android-tools-fsutils
+    """
+    _simg2img_progress(progress_cb, "Installing simg2img (package manager)…", 5)
+    # Prefer already-present binary after a previous partial install.
+    existing = find_simg2img()
+    if existing:
+        return existing, None
+
+    package_candidates = (
+        "android-tools",
+        "android-sdk-libsparse-utils",
+        "android-tools-fsutils",
+        "android-sdk-libsparse",
+    )
+
+    def _run_root(cmd_list):
+        # Try pkexec, then sudo -n, then sudo.
+        for wrapper in (
+            ["pkexec"] + cmd_list,
+            ["sudo", "-n"] + cmd_list,
+            ["sudo"] + cmd_list,
+        ):
+            try:
+                proc = subprocess.run(
+                    wrapper,
+                    capture_output=True,
+                    text=True,
+                    timeout=900,
+                )
+                if proc.returncode == 0:
+                    return True, ""
+                last_err = (proc.stderr or proc.stdout or "").strip()
+            except FileNotFoundError:
+                last_err = f"command not found: {wrapper[0]}"
+            except subprocess.TimeoutExpired:
+                return False, "package install timed out"
+            except Exception as e:
+                last_err = str(e)
+        return False, last_err or "privileged install failed"
+
+    # Detect package manager
+    if shutil.which("pacman"):
+        for pkg in package_candidates:
+            _simg2img_progress(progress_cb, f"pacman -S {pkg}…", 10)
+            ok, err = _run_root(["pacman", "-S", "--noconfirm", "--needed", pkg])
+            if ok or find_simg2img():
+                path = find_simg2img()
+                if path:
+                    return path, None
+        return None, err or "pacman could not install simg2img"
+    if shutil.which("apt-get"):
+        _run_root(["apt-get", "update", "-y"])
+        for pkg in package_candidates:
+            _simg2img_progress(progress_cb, f"apt-get install {pkg}…", 10)
+            ok, err = _run_root(
+                ["apt-get", "install", "-y", "--no-install-recommends", pkg]
+            )
+            if ok or find_simg2img():
+                path = find_simg2img()
+                if path:
+                    return path, None
+        return None, err or "apt-get could not install simg2img"
+    if shutil.which("dnf"):
+        for pkg in package_candidates:
+            _simg2img_progress(progress_cb, f"dnf install {pkg}…", 10)
+            ok, err = _run_root(["dnf", "install", "-y", pkg])
+            if ok or find_simg2img():
+                path = find_simg2img()
+                if path:
+                    return path, None
+        return None, err or "dnf could not install simg2img"
+    if shutil.which("zypper"):
+        for pkg in package_candidates:
+            _simg2img_progress(progress_cb, f"zypper install {pkg}…", 10)
+            ok, err = _run_root(["zypper", "--non-interactive", "install", pkg])
+            if ok or find_simg2img():
+                path = find_simg2img()
+                if path:
+                    return path, None
+        return None, err or "zypper could not install simg2img"
+
+    return None, (
+        "Could not install simg2img automatically. Install android-tools "
+        "(or android-sdk-libsparse-utils) with your package manager, then retry."
+    )
+
+
+def ensure_simg2img_available(progress_cb=None):
+    """
+    Locate simg2img, installing it on Linux/macOS when missing.
+
+    Returns (path_or_None, error_message_or_None).
+    Windows always returns (None, reason) — SP Flash Tool does not need simg2img.
+    """
+    if is_windows_platform():
+        return None, "simg2img is not used on Windows (SP Flash Tool only)"
+    path = find_simg2img()
+    if path:
+        _simg2img_progress(progress_cb, f"simg2img found: {path}", 5)
+        return path, None
+    _simg2img_progress(progress_cb, "simg2img not found — installing…", 2)
+    if is_macos_platform():
+        return install_simg2img_macos(progress_cb=progress_cb)
+    if is_linux_platform():
+        return install_simg2img_linux(progress_cb=progress_cb)
+    return None, f"simg2img install is not supported on {platform.system()}"
+
+
+def desparse_one_image(image_path, simg2img_bin, progress_cb=None, progress_base=0, progress_span=30):
+    """
+    If *image_path* is Android sparse, convert in-place to raw via simg2img.
+
+    Writes to a temp file next to the image, replaces the original, deletes the
+    sparse original (via atomic replace). Returns (changed: bool, error_or_None).
+    """
+    image_path = Path(image_path)
+    if not image_path.is_file():
+        return False, None
+    if not is_android_sparse_image(image_path):
+        _simg2img_progress(
+            progress_cb,
+            f"{image_path.name}: already raw — skipping desparse",
+            progress_base + progress_span,
+        )
+        return False, None
+
+    size_mb = image_path.stat().st_size / (1024 * 1024)
+    _simg2img_progress(
+        progress_cb,
+        f"Desparsing {image_path.name} ({size_mb:.1f} MB sparse)…",
+        progress_base,
+    )
+    # Output next to source; never leave a half-written .img
+    tmp_out = image_path.with_suffix(image_path.suffix + ".desparse.tmp")
+    try:
+        if tmp_out.exists():
+            tmp_out.unlink()
+        proc = subprocess.run(
+            [simg2img_bin, str(image_path), str(tmp_out)],
+            capture_output=True,
+            text=True,
+            timeout=3600,
+        )
+        if proc.returncode != 0 or not tmp_out.is_file() or tmp_out.stat().st_size <= 0:
+            err = (proc.stderr or proc.stdout or "simg2img failed").strip()
+            try:
+                if tmp_out.exists():
+                    tmp_out.unlink()
+            except Exception:
+                pass
+            return False, f"Failed to desparse {image_path.name}: {err[:400]}"
+
+        raw_mb = tmp_out.stat().st_size / (1024 * 1024)
+        # Replace sparse original with raw image (delete original sparse).
+        os.replace(str(tmp_out), str(image_path))
+        _simg2img_progress(
+            progress_cb,
+            f"Desparsed {image_path.name} → {raw_mb:.1f} MB raw",
+            progress_base + progress_span,
+        )
+        silent_print(
+            f"simg2img: {image_path.name} sparse→raw ({size_mb:.1f} MB → {raw_mb:.1f} MB)"
+        )
+        return True, None
+    except subprocess.TimeoutExpired:
+        try:
+            if tmp_out.exists():
+                tmp_out.unlink()
+        except Exception:
+            pass
+        return False, f"Timed out desparsing {image_path.name}"
+    except Exception as e:
+        try:
+            if tmp_out.exists():
+                tmp_out.unlink()
+        except Exception:
+            pass
+        return False, f"Error desparsing {image_path.name}: {e}"
+
+
+def prepare_mtkclient_images(install_dir=None, progress_cb=None):
+    """
+    Ensure simg2img is available and desparse system/cache/userdata in *install_dir*.
+
+    Called between zip extraction and MTKClient flash (Linux/macOS only).
+    Sparse originals are replaced with raw images (original sparse deleted).
+
+    Returns (ok: bool, message: str, desparsed: list[str]).
+    """
+    if is_windows_platform():
+        return True, "skipped on Windows", []
+
+    install_root = Path(install_dir or get_firmware_app_dir())
+    _simg2img_progress(progress_cb, "Preparing images for MTKClient…", 1)
+
+    simg2img_bin, err = ensure_simg2img_available(progress_cb=progress_cb)
+    if not simg2img_bin:
+        return False, err or "simg2img is required for MTKClient installs", []
+
+    targets = []
+    for name in MTK_DESPARSE_IMAGES:
+        p = install_root / name
+        if p.is_file():
+            targets.append(p)
+        else:
+            # Also check cwd (extract often lands next to the app script).
+            alt = Path.cwd() / name
+            if alt.is_file() and alt.resolve() != p.resolve():
+                targets.append(alt)
+
+    if not targets:
+        return True, "no system/cache/userdata images found to desparse", []
+
+    desparsed = []
+    n = len(targets)
+    for i, path in enumerate(targets):
+        base = 30 + int(60 * i / max(n, 1))
+        span = max(1, int(60 / max(n, 1)))
+        changed, file_err = desparse_one_image(
+            path,
+            simg2img_bin,
+            progress_cb=progress_cb,
+            progress_base=base,
+            progress_span=span,
+        )
+        if file_err:
+            return False, file_err, desparsed
+        if changed:
+            desparsed.append(path.name)
+
+    # Hard fail if any target is still sparse — wo length must never use sparse size.
+    still_sparse = []
+    for name in MTK_DESPARSE_IMAGES:
+        for root in (install_root, Path.cwd()):
+            p = root / name
+            if p.is_file() and is_android_sparse_image(p):
+                declared = android_sparse_declared_raw_size(p)
+                still_sparse.append(
+                    f"{p.name} (sparse_on_disk={p.stat().st_size}, "
+                    f"declared_raw={declared})"
+                )
+                break
+    if still_sparse:
+        return (
+            False,
+            "Images still Android sparse after prepare (cannot mtk.py wo safely): "
+            + "; ".join(still_sparse),
+            desparsed,
+        )
+
+    msg = (
+        f"Desparsed {', '.join(desparsed)}"
+        if desparsed
+        else "All target images already raw"
+    )
+    _simg2img_progress(progress_cb, msg, 95)
+    return True, msg, desparsed
 
 
 def remember_install_device_model(model, zip_path=None, extracted_files=None):
@@ -682,56 +1310,110 @@ def load_remembered_install_device_model():
         return None, None, None
 
 
-def _is_android_sparse_image(image_path):
-    """Return True when image_path is an Android sparse ext4 image."""
-    try:
-        with open(image_path, "rb") as sparse_file:
-            header = sparse_file.read(4)
-        if len(header) < 4:
-            return False
-        return int.from_bytes(header, "little") == ANDROID_SPARSE_MAGIC
-    except OSError:
-        return False
-
-
-def _desparse_android_image(image_path, install_root):
-    """Return the original image path without desparse conversion.
-
-    For Y2 devices we avoid external dependencies like `simg2img`. The mtkclient `wo`
-    command can write the file as‑is; if the image is a sparse Android image this will
-    result in an incorrect flash, but the upstream workflow does not support desparse
-    for existing users. We therefore return the original path unchanged.
-    """
-    return Path(image_path)
-
-
-def _find_y2_scatter_path(install_dir=None):
-    """Locate MT6582 scatter beside extracted firmware files."""
+def _scatter_search_bases(install_dir=None):
     bases = []
     if install_dir is not None:
         bases.append(Path(install_dir))
     bases.extend((Path.cwd(), get_firmware_app_dir()))
-    for base in bases:
+    # Deduplicate while preserving order
+    seen = set()
+    out = []
+    for b in bases:
+        try:
+            key = str(b.resolve())
+        except Exception:
+            key = str(b)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(Path(b))
+    return out
+
+
+def _scatter_platform_chip(scatter_path):
+    """Return platform chip string from scatter (e.g. MT6572 / MT6582), or ''."""
+    try:
+        for line in Path(scatter_path).read_text(encoding="utf-8", errors="ignore").splitlines():
+            s = line.strip()
+            if s.lower().startswith("platform:"):
+                return s.split(":", 1)[1].strip().upper()
+    except Exception:
+        pass
+    return ""
+
+
+def _find_y2_scatter_path(install_dir=None):
+    """Locate MT6582 scatter for **name/file lists only** (not write offsets)."""
+    for base in _scatter_search_bases(install_dir):
         candidate = base / Y2_SCATTER_TXT
-        if candidate.exists():
+        if not candidate.is_file():
+            continue
+        chip = _scatter_platform_chip(candidate)
+        if chip and chip != "MT6582":
+            silent_print(f"Skip {candidate.name}: platform {chip} (want MT6582)")
+            continue
+        return candidate
+    for base in _scatter_search_bases(install_dir):
+        candidate = base / Y2_SCATTER_TXT
+        if candidate.is_file():
             return candidate
     return Path(Y2_SCATTER_TXT)
 
 
+def _find_y1_scatter_path(install_dir=None):
+    """
+    Locate MT6572_Android_scatter.txt for optional name/file metadata only.
+
+    Does **not** fall back to MT6572_Android_scatter_def.txt — those def files
+    often have zeroed physical addresses and must never drive flash offsets.
+    Y1 installs use named ``w`` (on-device partition detection), not scatter addrs.
+    """
+    for base in _scatter_search_bases(install_dir):
+        candidate = base / Y1_SCATTER_TXT
+        if not candidate.is_file():
+            continue
+        chip = _scatter_platform_chip(candidate)
+        if chip and chip != "MT6572":
+            silent_print(
+                f"Skip {candidate.name}: platform {chip} (want MT6572); "
+                "not using *_def scatter fallback"
+            )
+            continue
+        return candidate
+    # No def fallback — named w does not need a scatter file
+    for base in _scatter_search_bases(install_dir):
+        candidate = base / Y1_SCATTER_TXT
+        if candidate.is_file():
+            return candidate
+    return None
+
+
 def parse_scatter_physical_addresses(scatter_path):
-    """Parse physical_start_addr values from a MediaTek scatter file."""
+    """Parse scatter partition rows keyed by partition_name (scatter order preserved).
+
+    Each entry may include: partition_name, file_name, physical_start_addr,
+    linear_start_addr, partition_size, region, is_download, _order.
+    """
     entries = {}
     current = {}
+    order = 0
     try:
         text = Path(scatter_path).read_text(encoding="utf-8", errors="ignore")
     except Exception:
         return entries
 
+    def _commit():
+        nonlocal order
+        name = current.get("partition_name")
+        if name:
+            current["_order"] = order
+            order += 1
+            entries[name] = dict(current)
+
     for raw_line in text.splitlines():
         line = raw_line.strip()
         if line.startswith("- partition_index:"):
-            if current.get("partition_name"):
-                entries[current["partition_name"]] = current
+            _commit()
             current = {}
             continue
         if not line or ":" not in line:
@@ -743,136 +1425,565 @@ def parse_scatter_physical_addresses(scatter_path):
             current["partition_name"] = value
         elif key == "physical_start_addr":
             try:
-                current["physical_start_addr"] = int(value, 16)
+                current["physical_start_addr"] = int(value, 0)
+            except ValueError:
+                pass
+        elif key == "linear_start_addr":
+            try:
+                current["linear_start_addr"] = int(value, 0)
+            except ValueError:
+                pass
+        elif key == "partition_size":
+            try:
+                current["partition_size"] = int(value, 0)
             except ValueError:
                 pass
         elif key == "file_name":
             current["file_name"] = value
+        elif key == "region":
+            current["region"] = value
         elif key == "is_download":
-            current["is_download"] = value.lower() == "true"
+            current["is_download"] = value.lower() in ("true", "yes", "1")
 
-    if current.get("partition_name"):
-        entries[current["partition_name"]] = current
+    _commit()
     return entries
 
 
-def _y2_mtk_flash_plan(install_root=None):
-    """
-  Plan Y2 scatter-script writes: (filename, scatter partition name, emmc parttype).
+def _scatter_is_boot_region(entry_or_region, partition_name=""):
+    """True for preloader / eMMC boot1/boot2 regions."""
+    if isinstance(entry_or_region, dict):
+        region = (entry_or_region.get("region") or "").upper()
+        name = (entry_or_region.get("partition_name") or partition_name or "").upper()
+    else:
+        region = (entry_or_region or "").upper()
+        name = (partition_name or "").upper()
+    if name == "PRELOADER":
+        return True
+    if "EMMC_BOOT" in region or region.endswith("BOOT1") or region.endswith("BOOT2"):
+        return True
+    return False
 
-  PRELOADER lives on EMMC_BOOT_1/2 (not user area); SP Flash Tool always flashes it first.
+
+def _y2_preloader_filename(install_root, scatter_entries=None):
+    """Resolve the Y2 preloader basename from scatter or on-disk files."""
+    install_root = Path(install_root)
+    if scatter_entries:
+        entry = scatter_entries.get("PRELOADER") or {}
+        fname = entry.get("file_name")
+        if fname and fname.upper() != "NONE" and (install_root / fname).is_file():
+            return fname
+    preferred = (get_flash_config("Y2") or {}).get(
+        "preloader_bin", Y2_MTK_PRELOADER_DEFAULT
+    )
+    if (install_root / preferred).is_file():
+        return preferred
+    for candidate in sorted(install_root.glob("preloader_*.bin")):
+        return candidate.name
+    return preferred
+
+
+def _y1_preloader_filename(install_root, scatter_entries=None):
+    """Resolve the Y1 preloader basename from scatter or on-disk files."""
+    install_root = Path(install_root)
+    if scatter_entries:
+        entry = scatter_entries.get("PRELOADER") or {}
+        fname = entry.get("file_name")
+        if fname and fname.upper() != "NONE" and (install_root / fname).is_file():
+            return fname
+    preferred = (get_flash_config("Y1") or {}).get(
+        "preloader_bin", Y1_MTK_PRELOADER_DEFAULT
+    )
+    if (install_root / preferred).is_file():
+        return preferred
+    for candidate in sorted(install_root.glob("preloader_*.bin")):
+        if "g368" in candidate.name or "nyx" in candidate.name:
+            return candidate.name
+    for candidate in sorted(install_root.glob("preloader_*.bin")):
+        return candidate.name
+    return preferred
+
+
+def _y2_is_boot_region(region, partition_name=""):
+    """True for preloader / eMMC boot regions (excluded from named ``w``)."""
+    return _scatter_is_boot_region(region, partition_name)
+
+
+def _mtk_named_write_plan(install_root=None, device_model=None):
     """
-    config = get_flash_config("Y2") or {}
-    preloader_bin = config.get("preloader_bin", "preloader_eastaeon82_wet_kk.bin")
-    plan = [
-        (preloader_bin, "PRELOADER", "boot1"),
-        (preloader_bin, "PRELOADER", "boot2"),
-    ]
-    plan.extend((filename, partition_name, "user") for filename, partition_name in Y2_MTK_FLASH_PARTS)
+    Plan named-partition writes (stock ``mtk.py w``).
+
+    Addresses come from the **device** partition table, never from scatter_def
+    physical/linear inventing. Scatter (if present and platform-correct) only
+    supplies partition_name ↔ file_name for user-area images.
+    """
+    install_root = Path(install_root or get_firmware_app_dir())
+    model = device_model or resolve_device_model_for_install(None)
+    plan = []
+    seen = set()
+
+    def _add(partition_name, filename):
+        pname = (partition_name or "").strip()
+        fname = Path(filename).name
+        if not pname or not fname:
+            return
+        if fname.lower() in {n.lower() for n in MTK_SKIP_FLASH_IMAGES}:
+            return
+        # Do not write empty package MBR/EBR stubs over a live device table
+        if _is_device_table_partition(pname, fname):
+            silent_print(
+                f"Named-w plan: skip {pname}/{fname} (device-local table)"
+            )
+            return
+        path = install_root / fname
+        if not path.is_file():
+            alt = get_firmware_app_dir() / fname
+            if not alt.is_file():
+                return
+            path = alt
+        if _flash_file_is_empty_placeholder(path):
+            silent_print(
+                f"Named-w plan: skip {pname}/{fname} (all-zero placeholder)"
+            )
+            return
+        # Named writes need raw images; sparse would write garbage via DA
+        if is_android_sparse_image(path):
+            raise ValueError(
+                f"{fname} is still Android sparse — desparse before mtk.py w "
+                f"(declared raw {android_sparse_declared_raw_size(path)})"
+            )
+        key = pname.lower()
+        if key in seen:
+            return
+        seen.add(key)
+        plan.append((pname.lower(), fname))
+
+    if is_y2_model(model):
+        scatter_path = _find_y2_scatter_path(install_root)
+        scatter_entries = (
+            parse_scatter_physical_addresses(scatter_path)
+            if scatter_path and Path(scatter_path).is_file()
+            else {}
+        )
+        for name, entry in sorted(
+            scatter_entries.items(), key=lambda kv: kv[1].get("_order", 0)
+        ):
+            if not entry.get("is_download", True):
+                continue
+            fname = entry.get("file_name") or ""
+            if not fname or fname.upper() == "NONE":
+                continue
+            if _scatter_is_boot_region(entry, name):
+                continue
+            _add(name, fname)
+        if not plan:
+            for filename, partition_name in Y2_MTK_FLASH_PARTS_FALLBACK:
+                _add(partition_name, filename)
+    else:
+        # Y1 classic community named list — partitions detected on device
+        for part, fname in zip(MTK_W_PARTITIONS.split(","), MTK_W_FILES.split(",")):
+            _add(part, fname)
+
     return plan
 
 
 def build_mtk_y2_install_script(install_dir=None):
-    """
-    Build an mtkclient script that writes Y2 firmware using scatter physical offsets.
-
-    MT6582 devices often expose PMT rather than GPT, so partition-name writes fail;
-    scatter physical addresses are used with mtk `wo` instead.
-    """
-    install_root = Path(install_dir or Path.cwd())
-    scatter_path = _find_y2_scatter_path(install_root)
-    scatter_entries = parse_scatter_physical_addresses(scatter_path)
-    script_lines = []
-
-    for filename, partition_name, parttype in _y2_mtk_flash_plan(install_root):
-        file_path = install_root / filename
-        if not file_path.exists():
-            raise FileNotFoundError(f"Missing Y2 firmware file: {file_path}")
-
-        scatter_entry = scatter_entries.get(partition_name, {})
-        offset = scatter_entry.get("physical_start_addr")
-        if offset is None:
-            raise ValueError(f"Missing physical_start_addr for {partition_name} in {scatter_path}")
-
-        flash_path = file_path
-        if _is_android_sparse_image(file_path):
-            flash_path = _desparse_android_image(file_path, install_root)
-
-        file_size = flash_path.stat().st_size
-        line = f"wo {hex(offset)} {hex(file_size)} {flash_path.name}"
-        if parttype and parttype != "user":
-            line += f" --parttype {parttype}"
-        script_lines.append(line)
-
+    """Build Y2 mtkclient named-``w`` script (device partition table required)."""
+    install_root = Path(install_dir or get_firmware_app_dir())
+    plan = _mtk_named_write_plan(install_root, device_model="Y2")
+    if not plan:
+        raise FileNotFoundError(
+            f"No Y2 images under {install_root} for named mtk.py w"
+        )
+    parts = ",".join(p for p, _ in plan)
+    files = ",".join(f for _, f in plan)
+    script_lines = [f"w {parts} {files}"]
     script_path = install_root / Y2_MTK_INSTALL_SCRIPT
     script_path.write_text("\n".join(script_lines) + "\n", encoding="utf-8")
-    # #region agent log
-    _debug_e788a7_log(
-        "firmware_downloader.py:build_mtk_y2_install_script",
-        "y2_script_built",
-        {
-            "scatter_path": str(scatter_path),
-            "line_count": len(script_lines),
-            "preloader_lines": [line for line in script_lines if "preloader" in line.lower()],
-            "first_lines": script_lines[:4],
-        },
-        hypothesis_id="P",
-        run_id="preloader-fix",
+    silent_print(
+        f"Y2 mtk script (named w, {len(plan)} images; on-device table): {script_path.name}"
     )
-    # #endregion
     return script_path, script_lines
 
 
-def build_mtk_write_command(device_model=None, zip_path=None, extracted_files=None):
-    """Build the mtk.py command for firmware installation.
+def _flash_file_is_empty_placeholder(path, sample_max=65536):
+    """
+    True when *path* has no real payload — typical stock-package MBR/EBR stubs.
 
-    Y2 (rom_y2 / MT6582) installs use mtkclient ``script`` with:
-      - ``--loader MTK_AllInOne_DA.bin`` (Download Agent)
-      - ``--preloader preloader_eastaeon82_wet_kk.bin`` (DRAM + boot1/boot2 image)
-      - scatter-offset ``wo`` writes (PMT devices have no GPT partition names)
+    Stock Y1/Y2 zips often ship 512-byte MBR/EBR files that are all zeros except
+    the classic 0x55AA boot signature. Writing those with mtkclient overwrites
+    the device's existing table with nothing useful and can brick/bootloop.
+    """
+    try:
+        p = Path(path)
+        if not p.is_file():
+            return True
+        data = p.read_bytes()
+        if not data:
+            return True
+        # Ignore MBR boot signature at end of first sector (and only that)
+        if len(data) >= 512 and data[510:512] == b"\x55\xaa":
+            # First sector minus signature; rest of file if larger
+            body = data[:510] + data[512:]
+        elif len(data) >= 2 and data[-2:] == b"\x55\xaa" and len(data) <= 512:
+            body = data[:-2]
+        else:
+            body = data
+        return not any(body)
+    except Exception:
+        return False
 
-    Y1 installs keep the legacy partition-name ``w`` path.
+
+def _is_device_table_partition(partition_name, filename):
+    """MBR/EBR/PMT-style regions that should stay device-local for mtkclient."""
+    pn = (partition_name or "").strip().lower()
+    fn = Path(filename or "").name.strip().lower()
+    if pn in MTK_SKIP_DEVICE_TABLE_PARTS or fn in MTK_SKIP_DEVICE_TABLE_FILES:
+        return True
+    # Catch EBR3, EBR_1, etc.
+    if pn.startswith("ebr") or fn.startswith("ebr"):
+        return True
+    if pn == "mbr" or fn == "mbr":
+        return True
+    return False
+
+
+def build_mtk_scatter_wo_plan(install_root=None, device_model="Y2"):
+    """
+    Full-package unbrick plan from scatter physical addresses.
+
+    Returns list of dicts: name, offset, length, file, parttype ('boot1'|'user').
+    Only ``is_download`` partitions with on-disk images that carry real payload.
+    Skips empty MBR/EBR placeholders (device-resident tables). Offsets are
+    ``physical_start_addr`` (eMMC user-area byte offset / boot1 offset).
+    """
+    install_root = Path(install_root or get_firmware_app_dir())
+    if is_y2_model(device_model):
+        scatter_path = _find_y2_scatter_path(install_root)
+    else:
+        scatter_path = _find_y1_scatter_path(install_root)
+    if not scatter_path or not Path(scatter_path).is_file():
+        # Fall back to shipped def for the model
+        cfg = get_flash_config(device_model) or {}
+        def_name = cfg.get("scatter_def_txt")
+        if def_name and (install_root / def_name).is_file():
+            scatter_path = install_root / def_name
+        elif def_name and (get_firmware_app_dir() / def_name).is_file():
+            scatter_path = get_firmware_app_dir() / def_name
+    if not scatter_path or not Path(scatter_path).is_file():
+        raise FileNotFoundError(
+            f"No scatter for {device_model} full-system install under {install_root}"
+        )
+
+    entries = parse_scatter_physical_addresses(scatter_path)
+    plan = []
+    for name, entry in sorted(
+        entries.items(), key=lambda kv: kv[1].get("_order", 0)
+    ):
+        if not entry.get("is_download", True):
+            continue
+        fname = (entry.get("file_name") or "").strip()
+        if not fname or fname.upper() == "NONE":
+            continue
+        # Never wipe device-local partition table scaffolding via mtkclient
+        if _is_device_table_partition(name, fname):
+            silent_print(
+                f"Unbrick plan: skip {name}/{fname} "
+                f"(device-local table; package stubs are empty / not rewritten)"
+            )
+            continue
+        path = install_root / fname
+        if not path.is_file():
+            alt = get_firmware_app_dir() / fname
+            if alt.is_file():
+                path = alt
+            else:
+                silent_print(f"Unbrick plan: skip missing {fname} ({name})")
+                continue
+        # Empty placeholders (all-zero MBR/EBR even under alternate names)
+        if _flash_file_is_empty_placeholder(path):
+            silent_print(
+                f"Unbrick plan: skip {name}/{fname} "
+                f"(all-zero placeholder — leave on-device content intact)"
+            )
+            continue
+        if is_android_sparse_image(path):
+            raise ValueError(
+                f"{fname} is still Android sparse — desparse before unbrick write "
+                f"(declared raw {android_sparse_declared_raw_size(path)})"
+            )
+        length = path.stat().st_size
+        if length <= 0:
+            continue
+        phys = entry.get("physical_start_addr")
+        if phys is None:
+            silent_print(f"Unbrick plan: skip {name} (no physical_start_addr)")
+            continue
+        part_size = entry.get("partition_size") or 0
+        if part_size > 0 and length > part_size:
+            silent_print(
+                f"Unbrick plan: {fname} raw size 0x{length:x} exceeds scatter "
+                f"{name} size 0x{part_size:x} — writing file length anyway "
+                f"(matches SP Flash Tool image load behaviour)"
+            )
+        if _scatter_is_boot_region(entry, name):
+            parttype = "boot1"
+        else:
+            parttype = "user"
+        plan.append(
+            {
+                "name": name,
+                "offset": int(phys),
+                "length": int(length),
+                "file": path.name,
+                "parttype": parttype,
+                "path": str(path.resolve()),
+            }
+        )
+    if not plan:
+        raise FileNotFoundError(
+            f"No downloadable images for full-system unbrick under {install_root}"
+        )
+    return plan, Path(scatter_path)
+
+
+def build_mtk_y2_unbrick_script(install_dir=None):
+    """
+    Full Y2 system unbrick script: preloader (boot1) + firmware images from package.
+
+    Skips empty MBR/EBR package stubs so on-device partition scaffolding is kept.
+
+    One mtkclient session::
+        mtk.py script y2_mtk_install.script --preloader … --loader …
+
+    Lines use scatter physical offsets (``wo``), not named partition detection.
+    """
+    install_root = Path(install_dir or get_firmware_app_dir())
+    plan, scatter_path = build_mtk_scatter_wo_plan(install_root, device_model="Y2")
+    lines = []
+    for p in plan:
+        if p["parttype"] == "boot1":
+            lines.append(
+                f"wo 0x{p['offset']:x} 0x{p['length']:x} {p['file']} --parttype boot1"
+            )
+        else:
+            lines.append(f"wo 0x{p['offset']:x} 0x{p['length']:x} {p['file']}")
+    # Primary script name used by the rest of the app
+    script_path = install_root / Y2_MTK_INSTALL_SCRIPT
+    script_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    # Keep a clearly-named copy for debugging / manual one-liner use
+    wo_copy = install_root / Y2_MTK_WO_INSTALL_SCRIPT
+    try:
+        wo_copy.write_text(script_path.read_text(encoding="utf-8"), encoding="utf-8")
+    except Exception:
+        pass
+    silent_print(
+        f"Y2 full-system unbrick script ({len(plan)} images from {scatter_path.name}; "
+        f"MBR/EBR stubs skipped): {script_path.name}"
+    )
+    for p in plan:
+        silent_print(
+            f"  {p['name']:12} wo 0x{p['offset']:x} 0x{p['length']:x} {p['file']}"
+            f"{' (boot1)' if p['parttype']=='boot1' else ''}"
+        )
+    return script_path, lines, plan, scatter_path
+
+
+# Y1 named-partition flash list — addresses from device GPT/PMT, not scatter_def.
+MTK_W_PARTITIONS = "logo,uboot,bootimg,recovery,android,usrdata"
+MTK_W_FILES = "logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img"
+MTK_FLASH_FILE_TO_SCATTER = (
+    ("logo.bin", "LOGO"),
+    ("lk.bin", "UBOOT"),
+    ("boot.img", "BOOTIMG"),
+    ("recovery.img", "RECOVERY"),
+    ("system.img", "ANDROID"),
+    ("userdata.img", "USRDATA"),
+)
+
+
+def build_mtk_y1_install_script(install_dir=None):
+    """Build Y1 mtkclient named-``w`` script (classic; partitions detected)."""
+    install_root = Path(install_dir or get_firmware_app_dir())
+    plan = _mtk_named_write_plan(install_root, device_model="Y1")
+    if not plan:
+        raise FileNotFoundError(
+            f"No Y1 images under {install_root} for named mtk.py w"
+        )
+    parts = ",".join(p for p, _ in plan)
+    files = ",".join(f for _, f in plan)
+    script_lines = [f"w {parts} {files}"]
+    script_path = install_root / Y1_MTK_INSTALL_SCRIPT
+    script_path.write_text("\n".join(script_lines) + "\n", encoding="utf-8")
+    silent_print(
+        f"Y1 mtk script (named w, {len(plan)} images; on-device table): {script_path.name}"
+    )
+    return script_path, script_lines
+
+
+def resolve_mtk_scatter_path_for_install(install_dir=None):
+    """Scatter path for model/metadata only — never for invented write offsets."""
+    model = resolve_device_model_for_install(None)
+    if is_y2_model(model):
+        return _find_y2_scatter_path(install_dir)
+    return _find_y1_scatter_path(install_dir)
+
+
+def build_mtk_y2_install_script_from_scatter(install_dir=None):
+    """Y2 full-system unbrick script from scatter (preferred over named w)."""
+    script_path, lines, _plan, _scatter = build_mtk_y2_unbrick_script(install_dir)
+    return script_path, lines
+
+
+def build_mtk_named_staged_commands(install_dir=None, device_model=None):
+    """
+    Full-system mtkclient install stages (unbrick-capable).
+
+    Y1: named ``w`` (device partition table).
+    Y2: scatter ``wo`` script (physical offsets) including preloader→boot1 —
+        blank eMMC has no partition names, so offsets are required.
+    """
+    install_root = Path(install_dir or get_firmware_app_dir())
+    app_dir = get_firmware_app_dir()
+    model = resolve_device_model_for_install(device_model)
+
+    if is_y2_model(model):
+        script_path, script_lines, wo_plan, scatter_path = build_mtk_y2_unbrick_script(
+            install_root
+        )
+        preloader_name = _y2_preloader_filename(install_root)
+        preloader_path = install_root / preloader_name
+        if not preloader_path.is_file():
+            preloader_path = app_dir / preloader_name
+        da_path = install_root / Y2_MTK_DA_DEFAULT
+        if not da_path.is_file():
+            da_path = app_dir / Y2_MTK_DA_DEFAULT
+        if not preloader_path.is_file() or not da_path.is_file():
+            raise FileNotFoundError(
+                "Y2 full-system install needs preloader + MTK_AllInOne_DA.bin "
+                f"(preloader={preloader_path.name}, da={da_path.name})"
+            )
+        # One-liner style: single process, one DA session, entire package
+        cmd = [
+            sys.executable,
+            str(app_dir / "mtk.py"),
+            "script",
+            str(script_path.resolve()),
+            "--preloader",
+            str(preloader_path.resolve()),
+            "--loader",
+            str(da_path.resolve()),
+        ]
+        stages = [
+            {
+                "name": "unbrick",
+                "required": True,
+                "retries": 2,
+                "cwd": str(install_root),
+                "cmd": list(cmd),
+            }
+        ]
+        meta = {
+            "scatter": str(scatter_path),
+            "stages": ["unbrick"],
+            "install_root": str(install_root),
+            "full_script": str(script_path),
+            "full_lines": len(script_lines),
+            "wo_plan": wo_plan,
+            "oneshot_cmd": list(cmd),
+            "mode": "scatter_wo_unbrick",
+            "device_model": model,
+            "named_parts": ",".join(p["name"] for p in wo_plan),
+            "named_files": ",".join(p["file"] for p in wo_plan),
+        }
+        return stages, meta
+
+    # Y1: named w full package set from plan
+    plan = _mtk_named_write_plan(install_root, device_model=model)
+    if not plan:
+        raise FileNotFoundError(
+            f"No firmware images for named mtk.py w under {install_root}"
+        )
+    script_path, script_lines = build_mtk_y1_install_script(install_root)
+    parts = ",".join(p for p, _ in plan)
+    files = ",".join(f for _, f in plan)
+    cmd = [
+        sys.executable,
+        str(app_dir / "mtk.py"),
+        "w",
+        parts,
+        files,
+    ]
+    stages = [
+        {
+            "name": "flash",
+            "required": True,
+            "retries": 3,
+            "cwd": str(install_root),
+            "cmd": list(cmd),
+        }
+    ]
+    meta = {
+        "scatter": str(resolve_mtk_scatter_path_for_install(install_root) or ""),
+        "stages": ["flash"],
+        "install_root": str(install_root),
+        "full_script": str(script_path),
+        "full_lines": len(script_lines),
+        "named_parts": parts,
+        "named_files": files,
+        "oneshot_cmd": list(cmd),
+        "mode": "named_w",
+        "device_model": model,
+    }
+    return stages, meta
+
+
+def build_mtk_y2_staged_commands(install_dir=None):
+    """Y2 full-system unbrick stages (scatter wo + preloader boot1)."""
+    return build_mtk_named_staged_commands(install_dir=install_dir, device_model="Y2")
+
+
+def build_mtk_y1_staged_commands(install_dir=None):
+    """Y1 named-``w`` stages (on-device partition table)."""
+    return build_mtk_named_staged_commands(install_dir=install_dir, device_model="Y1")
+
+
+def build_mtk_write_command(device_model=None, zip_path=None, extracted_files=None,
+                            install_dir=None):
+    """
+    Build the mtk.py command for a full-system install (unbrick-capable).
+
+    Y1::
+        mtk.py w logo,uboot,… logo.bin,lk.bin,…
+
+    Y2 (blank PMT — offsets from package scatter)::
+        mtk.py script y2_mtk_install.script --preloader … --loader …
     """
     _app_dir = Path(__file__).resolve().parent
-    _y2_preloader = "preloader_eastaeon82_wet_kk.bin"
-    _y2_da = "MTK_AllInOne_DA.bin"
-    _y2_preloader_path = _app_dir / _y2_preloader
-    _y2_da_path = _app_dir / _y2_da
-    _y2_files_present = _y2_preloader_path.exists() and _y2_da_path.exists()
+    _install = Path(install_dir) if install_dir else _app_dir
+    _y2_da_path = _install / Y2_MTK_DA_DEFAULT
+    if not _y2_da_path.is_file():
+        _y2_da_path = _app_dir / Y2_MTK_DA_DEFAULT
 
-    # Do NOT pass permanent app-dir basenames as extracted_files — both Y1 and Y2
-    # preloaders ship with the app and would force every install onto the Y2 path.
     resolved = resolve_device_model_for_install(
         device_model,
         zip_path=zip_path,
         extracted_files=extracted_files,
     )
-    # When model is still unknown/None but Y2 DA+preloader are present and the
-    # install tree looks like Y2 (scatter/project), prefer the Y2 flash path.
-    if not resolved and _y2_files_present:
+    if not resolved and _y2_da_path.exists():
         from_disk = resolve_device_model_for_install(None)
         if is_y2_model(from_disk):
             resolved = "Y2"
 
-    script_lines = None
-    if is_y2_model(resolved):
-        if not _y2_files_present:
-            raise FileNotFoundError(
-                f"Y2 install requires {_y2_preloader} and {_y2_da} beside firmware_downloader.py"
-            )
-        script_path, script_lines = build_mtk_y2_install_script(install_dir=_app_dir)
-        cmd = [
-            sys.executable, "mtk.py", "script",
-            "--preloader", str(_y2_preloader_path),
-            "--loader", str(_y2_da_path),
-            str(script_path),
-        ]
-    else:
-        cmd = [
-            sys.executable, "mtk.py", "w",
-            "logo,uboot,bootimg,recovery,android,usrdata",
-            "logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img",
-        ]
+    stages, meta = build_mtk_named_staged_commands(
+        install_dir=_install, device_model=resolved
+    )
+    cmd = list(meta.get("oneshot_cmd") or stages[0]["cmd"])
+    build_mtk_write_command._y2_stages = stages if is_y2_model(resolved) else None
+    build_mtk_write_command._y2_meta = meta if is_y2_model(resolved) else None
+    build_mtk_write_command._y1_stages = stages if not is_y2_model(resolved) else None
+    build_mtk_write_command._y1_meta = meta if not is_y2_model(resolved) else None
+    build_mtk_write_command._scatter_stages = stages
+    build_mtk_write_command._scatter_meta = meta
     # #region agent log
     _debug_e788a7_log(
         "firmware_downloader.py:build_mtk_write_command",
@@ -883,13 +1994,19 @@ def build_mtk_write_command(device_model=None, zip_path=None, extracted_files=No
             "zip_path": str(zip_path) if zip_path else None,
             "cmd": cmd,
             "cwd_hint": str(Path.cwd()),
-            "y2_script_lines": script_lines if is_y2_model(resolved) else None,
+            "mode": "named_w",
+            "named_parts": meta.get("named_parts"),
         },
         hypothesis_id="Y2",
         run_id="post-fix",
     )
     # #endregion
     return cmd
+
+
+def mtk_process_env(install_dir=None):
+    """Environment for mtk.py subprocesses (cwd-independent defaults)."""
+    return os.environ.copy()
 
 # Installation tracking
 INSTALLATION_MARKER_FILE = Path("firmware_installation_in_progress.flag")
@@ -1407,35 +2524,565 @@ def sp_flash_tool_binary_ready(app_dir=None):
     return bool(path and path.is_file())
 
 
-# Y2 installs via MTKClient are disabled until the Y2 mtkclient path is solid.
-# Linux x86/Windows use SP Flash Tool for Y2; non-x86 Linux has no SP Flash Tool
-# so MTKClient is allowed there (see mtkclient_allowed_for_model).
+def linux_spflash_required_files():
+    """Relative paths that must exist for a complete Linux SP Flash Tool install."""
+    return FLASH_TOOL_LINUX_REQUIRED_FILES
+
+
+def linux_spflash_missing_files(app_dir=None):
+    """
+    Return a list of relative paths from FLASH_TOOL_LINUX_REQUIRED_FILES that are
+    missing or empty under app_dir.
+
+    Used to detect partial installs (e.g. flash_tool present but lib/libQtWebKit.so.4
+    deleted) so we can re-extract flash_tool_linux.zip.
+    """
+    if not is_linux_platform() or not linux_spflash_arch_supported():
+        return []
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    missing = []
+    for rel in FLASH_TOOL_LINUX_REQUIRED_FILES:
+        path = app_dir / rel
+        try:
+            if not path.is_file() or path.stat().st_size <= 0:
+                missing.append(rel)
+        except OSError:
+            missing.append(rel)
+    return missing
+
+
+def linux_spflash_files_ready(app_dir=None):
+    """True when binary + required Qt/DA package files from the Linux zip are present."""
+    if not is_linux_platform() or not linux_spflash_arch_supported():
+        return False
+    return not linux_spflash_missing_files(app_dir)
+
+
+def linux_spflash_local_zip_path(app_dir=None):
+    """Path to a cached flash_tool_linux.zip beside the app, if any."""
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    return app_dir / FLASH_TOOL_LINUX_ZIP_NAME
+
+
+def linux_spflash_zip_has_required_members(zip_path):
+    """
+    True when zip_path is a readable zip that contains every required package file.
+
+    Matches the release layout of flash_tool_linux.zip (flat members, forward slashes).
+    """
+    zip_path = Path(zip_path)
+    try:
+        if not zip_path.is_file() or zip_path.stat().st_size < FLASH_TOOL_LINUX_ZIP_MIN_BYTES:
+            return False
+        with zipfile.ZipFile(zip_path, "r") as zf:
+            # Normalize: strip leading ./ and drop directory entries
+            names = set()
+            for name in zf.namelist():
+                n = name.lstrip("./")
+                if n.endswith("/"):
+                    continue
+                names.add(n)
+        for rel in FLASH_TOOL_LINUX_REQUIRED_FILES:
+            if rel not in names:
+                return False
+        return True
+    except Exception as e:
+        silent_print(f"linux_spflash_zip_has_required_members({zip_path}): {e}")
+        return False
+
+
+def _install_process_exclude_set(exclude_pids=None):
+    """PIDs that must never be killed by install-session cleanup (us + callers)."""
+    exclude = set(int(p) for p in (exclude_pids or []) if p is not None)
+    exclude.add(os.getpid())
+    try:
+        exclude.add(os.getppid())
+    except Exception:
+        pass
+    return exclude
+
+
+def _linux_read_proc_cmdline(pid):
+    """Return (comm, cmdline_str, argv_list) for a Linux pid, or (None, '', [])."""
+    try:
+        ent = Path("/proc") / str(pid)
+        comm = (ent / "comm").read_text(encoding="utf-8", errors="replace").strip()
+        raw = (ent / "cmdline").read_bytes()
+        if not raw:
+            return comm, "", []
+        argv = [a.decode("utf-8", "replace") for a in raw.split(b"\x00") if a]
+        cmd = " ".join(argv)
+        return comm, cmd, argv
+    except Exception:
+        return None, "", []
+
+
+def _linux_signal_pids(pids, label="process"):
+    """SIGTERM then SIGKILL a list of pids. Returns number of processes signaled."""
+    stopped = 0
+    pids = [int(p) for p in pids]
+    if not pids:
+        return 0
+    silent_print(f"Found {len(pids)} {label} process(es), stopping…")
+    for pid in pids:
+        try:
+            os.kill(pid, 15)  # SIGTERM
+            stopped += 1
+        except ProcessLookupError:
+            pass
+        except Exception as e:
+            silent_print(f"SIGTERM {label} pid={pid}: {e}")
+    time.sleep(0.35)
+    for pid in pids:
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            continue
+        try:
+            os.kill(pid, 9)  # SIGKILL
+            silent_print(f"SIGKILL {label} pid={pid}")
+        except ProcessLookupError:
+            pass
+        except Exception as e:
+            silent_print(f"SIGKILL {label} pid={pid}: {e}")
+    silent_print(f"Stopped {stopped} {label} process(es)")
+    return stopped
+
+
+def _linux_cmdline_is_flash_tool(comm, cmd, argv):
+    """True when this process is the SP Flash Tool binary (not a shell mentioning it)."""
+    if comm == FLASH_TOOL_LINUX_BIN:
+        return True
+    if not cmd:
+        return False
+    # Avoid killing shells / editors that merely mention flash_tool in args
+    if comm in ("bash", "sh", "fish", "zsh", "dash") or "python" in (comm or ""):
+        return False
+    if argv:
+        base = Path(argv[0]).name
+        if base == FLASH_TOOL_LINUX_BIN or base == "flash_tool.exe":
+            return True
+    return (
+        cmd.startswith("flash_tool ")
+        or "/flash_tool " in f" {cmd}"
+        or cmd.rstrip().endswith("/flash_tool")
+        or cmd.strip() == "flash_tool"
+    )
+
+
+def _linux_cmdline_is_mtk_client(comm, cmd, argv):
+    """
+    True when this process is an mtk.py / mtkclient flash session.
+
+    Does **not** match firmware_downloader.py / updater.py (the app itself), even
+    though those import mtkclient modules.
+    """
+    if not cmd and not argv:
+        return False
+    joined = cmd or " ".join(argv)
+    lower = joined.lower()
+    # Never kill the Innioasis Updater UI / main process scripts
+    for app_script in (
+        "firmware_downloader.py",
+        "updater.py",
+        "y1_helper.py",
+        "main.py",
+    ):
+        if app_script in lower and "mtk.py" not in lower:
+            # Main app may appear as "python firmware_downloader.py" — skip
+            if "mtk.py" not in lower and "mtk_gui.py" not in lower:
+                # If cmdline is only the app, skip. If it is mtk.py under python, fall through.
+                bases = [Path(a).name.lower() for a in (argv or [])]
+                if any(b in ("firmware_downloader.py", "updater.py", "y1_helper.py", "main.py") for b in bases):
+                    if not any(b in ("mtk.py", "mtk_gui.py", "mtk_main.py") for b in bases):
+                        return False
+    # Direct script invocation
+    bases = [Path(a).name for a in (argv or [])]
+    for name in ("mtk.py", "mtk_gui.py", "mtk_main.py", "mtk_preloader.py"):
+        if name in bases:
+            return True
+    # python -m mtkclient … / python …/mtkclient/…
+    if "mtkclient" in lower and (
+        " -m mtk" in lower
+        or lower.rstrip().endswith("mtkclient")
+        or "/mtkclient/" in lower
+        or "mtkclient.mtk" in lower
+    ):
+        # Avoid killing the updater if it only has mtkclient on sys.path in a weird way
+        if any(
+            Path(a).name in ("firmware_downloader.py", "updater.py")
+            for a in (argv or [])
+        ):
+            return False
+        return True
+    if "mtk.py" in lower or "mtk_gui.py" in lower:
+        return True
+    return False
+
+
+def stop_sp_flash_tool_processes(exclude_pids=None):
+    """
+    Stop any running SP Flash Tool processes so a new install owns the session.
+
+    Windows: ``flash_tool.exe`` (tasklist + taskkill).
+    Linux: ``flash_tool`` (comm/cmdline match; SIGTERM then SIGKILL).
+    macOS / other: no-op (no SP Flash Tool binary).
+
+    Same purpose as the long-standing Windows startup cleanup — GUI or console
+    leftovers hold /dev/ttyACM* or COM ports and break the next install.
+
+    Returns number of processes signaled.
+    """
+    exclude = _install_process_exclude_set(exclude_pids)
+    stopped = 0
+
+    if is_windows_platform():
+        try:
+            flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+            result = subprocess.run(
+                ["tasklist", "/FI", "IMAGENAME eq flash_tool.exe", "/FO", "CSV"],
+                capture_output=True,
+                text=True,
+                timeout=8,
+                creationflags=flags,
+            )
+            if result.returncode != 0:
+                silent_print("Could not list flash_tool.exe processes")
+                return 0
+            pids = []
+            for line in result.stdout.strip().splitlines()[1:]:
+                if "flash_tool.exe" not in line.lower():
+                    continue
+                parts = line.split(",")
+                if len(parts) >= 2:
+                    pid = parts[1].strip().strip('"')
+                    if pid.isdigit() and int(pid) not in exclude:
+                        pids.append(pid)
+            if not pids:
+                silent_print("No flash_tool.exe processes found")
+                return 0
+            silent_print(f"Found {len(pids)} flash_tool.exe process(es), stopping…")
+            for pid in pids:
+                try:
+                    subprocess.run(
+                        ["taskkill", "/PID", pid, "/F"],
+                        capture_output=True,
+                        timeout=8,
+                        creationflags=flags,
+                    )
+                    stopped += 1
+                except Exception as e:
+                    silent_print(f"Failed to stop flash_tool.exe pid={pid}: {e}")
+            silent_print(f"Stopped {stopped} flash_tool.exe process(es)")
+        except Exception as e:
+            silent_print(f"Error stopping flash_tool.exe: {e}")
+        return stopped
+
+    if is_linux_platform():
+        pids = []
+        try:
+            for ent in Path("/proc").iterdir():
+                if not ent.name.isdigit():
+                    continue
+                pid = int(ent.name)
+                if pid in exclude:
+                    continue
+                comm, cmd, argv = _linux_read_proc_cmdline(pid)
+                if comm is None:
+                    continue
+                if _linux_cmdline_is_flash_tool(comm, cmd, argv):
+                    pids.append(pid)
+        except Exception as e:
+            silent_print(f"Error scanning for flash_tool processes: {e}")
+            return 0
+        if not pids:
+            silent_print("No flash_tool processes found")
+            return 0
+        return _linux_signal_pids(pids, label="flash_tool")
+
+    return 0
+
+
+def stop_mtk_client_processes(exclude_pids=None):
+    """
+    Stop orphan mtk.py / mtkclient install processes that hold USB or /dev/ttyACM*.
+
+    Never kills this process or firmware_downloader.py / updater.py. Returns count
+    of processes signaled.
+    """
+    exclude = _install_process_exclude_set(exclude_pids)
+    stopped = 0
+
+    if is_windows_platform():
+        try:
+            flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+            result = subprocess.run(
+                ["tasklist", "/V", "/FO", "CSV"],
+                capture_output=True,
+                text=True,
+                timeout=12,
+                creationflags=flags,
+            )
+            if result.returncode != 0:
+                return 0
+            pids = []
+            for line in result.stdout.strip().splitlines()[1:]:
+                low = line.lower()
+                if "mtk.py" not in low and "mtkclient" not in low and "mtk_gui" not in low:
+                    continue
+                if "firmware_downloader" in low or "updater.py" in low:
+                    continue
+                parts = line.split(",")
+                if len(parts) >= 2:
+                    pid = parts[1].strip().strip('"')
+                    if pid.isdigit() and int(pid) not in exclude:
+                        pids.append(pid)
+            for pid in pids:
+                try:
+                    subprocess.run(
+                        ["taskkill", "/PID", pid, "/F"],
+                        capture_output=True,
+                        timeout=8,
+                        creationflags=flags,
+                    )
+                    stopped += 1
+                except Exception as e:
+                    silent_print(f"Failed to stop mtk process pid={pid}: {e}")
+            if stopped:
+                silent_print(f"Stopped {stopped} mtk.py/mtkclient process(es)")
+            else:
+                silent_print("No mtk.py processes found")
+        except Exception as e:
+            silent_print(f"Error stopping mtk processes: {e}")
+        return stopped
+
+    if is_linux_platform() or is_macos_platform():
+        pids = []
+        try:
+            for ent in Path("/proc").iterdir() if is_linux_platform() else []:
+                if not ent.name.isdigit():
+                    continue
+                pid = int(ent.name)
+                if pid in exclude:
+                    continue
+                comm, cmd, argv = _linux_read_proc_cmdline(pid)
+                if comm is None:
+                    continue
+                if _linux_cmdline_is_mtk_client(comm, cmd, argv):
+                    pids.append(pid)
+        except Exception as e:
+            silent_print(f"Error scanning for mtk.py processes: {e}")
+            # macOS / fallback: pgrep
+            pids = []
+        if not pids and not is_linux_platform():
+            # macOS: pgrep -f mtk.py carefully
+            try:
+                r = subprocess.run(
+                    ["pgrep", "-f", "mtk.py"],
+                    capture_output=True,
+                    text=True,
+                    timeout=5,
+                )
+                for line in (r.stdout or "").splitlines():
+                    line = line.strip()
+                    if line.isdigit() and int(line) not in exclude:
+                        pids.append(int(line))
+            except Exception:
+                pass
+        if not pids:
+            silent_print("No mtk.py processes found")
+            return 0
+        if is_linux_platform():
+            return _linux_signal_pids(pids, label="mtk.py")
+        for pid in pids:
+            try:
+                os.kill(pid, 15)
+                stopped += 1
+            except Exception:
+                pass
+        time.sleep(0.3)
+        for pid in pids:
+            try:
+                os.kill(pid, 9)
+            except Exception:
+                pass
+        silent_print(f"Stopped {stopped} mtk.py process(es)")
+        return stopped
+
+    return 0
+
+
+def linux_list_serial_port_holder_pids(exclude_pids=None):
+    """
+    Return {tty_path: [pid, …]} for processes that currently hold /dev/ttyACM* or
+    /dev/ttyUSB* open (via /proc/*/fd). Used to free ports before SP Flash Tool.
+    """
+    holders = {}
+    if not is_linux_platform():
+        return holders
+    exclude = _install_process_exclude_set(exclude_pids)
+    targets = {}
+    for path in list(Path("/dev").glob("ttyACM*")) + list(Path("/dev").glob("ttyUSB*")):
+        try:
+            targets[str(path.resolve())] = str(path)
+        except Exception:
+            targets[str(path)] = str(path)
+        targets[str(path)] = str(path)
+    if not targets:
+        return holders
+    try:
+        for ent in Path("/proc").iterdir():
+            if not ent.name.isdigit():
+                continue
+            pid = int(ent.name)
+            if pid in exclude:
+                continue
+            fd_dir = ent / "fd"
+            if not fd_dir.is_dir():
+                continue
+            try:
+                for fd in fd_dir.iterdir():
+                    try:
+                        link = os.readlink(fd)
+                    except OSError:
+                        continue
+                    # link may be "/dev/ttyACM0" or "socket:…" etc.
+                    if link in targets:
+                        tty = targets[link]
+                        holders.setdefault(tty, []).append(pid)
+                        break
+                    # Also match trailing path form
+                    for abs_path, tty in targets.items():
+                        if link == abs_path or link.endswith("/" + Path(tty).name):
+                            if link.startswith("/dev/tty"):
+                                holders.setdefault(tty, []).append(pid)
+                                break
+            except Exception:
+                continue
+    except Exception as e:
+        silent_print(f"linux_list_serial_port_holder_pids: {e}")
+    return holders
+
+
+def linux_release_serial_port_holders(exclude_pids=None, also_fuser=True):
+    """
+    Kill processes (other than exclude) that hold /dev/ttyACM* or /dev/ttyUSB* open.
+
+    SP Flash Tool's S_COM_PORT_OPEN_FAIL is often EBUSY from a leftover mtk.py /
+    flash_tool / cat / minicom session. Returns number of holder processes signaled.
+    """
+    if not is_linux_platform():
+        return 0
+    exclude = _install_process_exclude_set(exclude_pids)
+    holders = linux_list_serial_port_holder_pids(exclude_pids=exclude)
+    pids = sorted({p for plist in holders.values() for p in plist if p not in exclude})
+    if holders:
+        for tty, plist in holders.items():
+            silent_print(f"Serial port {tty} held by pid(s): {plist}")
+    if pids:
+        n = _linux_signal_pids(pids, label="serial-port holder")
+    else:
+        n = 0
+        silent_print("No non-app processes holding /dev/ttyACM* or /dev/ttyUSB*")
+    # fuser fallback (some holders show only via fuser)
+    if also_fuser:
+        fuser = shutil.which("fuser")
+        if fuser:
+            for path in list(Path("/dev").glob("ttyACM*")) + list(Path("/dev").glob("ttyUSB*")):
+                try:
+                    # -k sends SIGKILL to holders; may need privileges for other users
+                    r = subprocess.run(
+                        [fuser, "-k", "-TERM", str(path)],
+                        capture_output=True,
+                        text=True,
+                        timeout=5,
+                    )
+                    if r.returncode == 0 or (r.stderr or r.stdout):
+                        silent_print(
+                            f"fuser -k {path}: rc={r.returncode} "
+                            f"{(r.stderr or r.stdout or '').strip()[:120]}"
+                        )
+                        n += 1
+                except Exception as e:
+                    silent_print(f"fuser {path}: {e}")
+    return n
+
+
+def stop_install_competitor_processes(exclude_pids=None, release_serial_holders=True):
+    """
+    Ensure only this app's upcoming child install process owns flash tooling / ports.
+
+    Stops leftover ``flash_tool`` / ``flash_tool.exe``, orphan ``mtk.py`` /
+    mtkclient sessions, and (on Linux) anything still holding /dev/ttyACM*.
+
+    Call before every SP Flash Tool or MTKClient install attempt and during COM
+    open self-heal. Returns total processes signaled (approx).
+    """
+    exclude = list(_install_process_exclude_set(exclude_pids))
+    total = 0
+    try:
+        total += stop_sp_flash_tool_processes(exclude_pids=exclude) or 0
+    except Exception as e:
+        silent_print(f"stop_sp_flash_tool_processes: {e}")
+    try:
+        total += stop_mtk_client_processes(exclude_pids=exclude) or 0
+    except Exception as e:
+        silent_print(f"stop_mtk_client_processes: {e}")
+    if release_serial_holders and is_linux_platform():
+        try:
+            total += linux_release_serial_port_holders(exclude_pids=exclude) or 0
+        except Exception as e:
+            silent_print(f"linux_release_serial_port_holders: {e}")
+    if total:
+        silent_print(f"Install competitor cleanup: signaled ~{total} process(es)")
+        time.sleep(0.25)
+    return total
+
+
+# Y2 MTKClient path: named ``w`` (same style as Y1) after simg2img desparse of
+# system/cache/userdata on Linux/macOS. No scatter offset calculation.
+# Preferred defaults:
+#   - Windows: SP Flash Tool only (no MTKClient)
+#   - Linux x86/x86_64: SP Flash Tool first, MTKClient fallback
+#   - Linux non-x86 + macOS: MTKClient only
+# Y2 MTKclient flash is not yet reliable — images brick devices.
+# Set True only once scatter-based raw-offset + desparse flow is validated.
 Y2_MTKCLIENT_INSTALLS_ENABLED = False
 
 
 def linux_spflash_staged(app_dir=None):
-    """True when Linux flash_tool is present on an arch that can run it."""
+    """
+    True when Linux flash_tool *and* required package files (Qt/DA libs) are present.
+
+    Presence of flash_tool alone is not enough — missing lib/libQtWebKit.so.4 etc.
+    makes the binary fail at load time. Callers that need a runnable install should
+    use this (or ensure_linux_sp_flash_tool which self-heals).
+    """
     if not is_linux_platform() or not linux_spflash_arch_supported():
         return False
-    binary = get_sp_flash_tool_binary_path(app_dir)
-    return bool(binary and binary.is_file())
+    return linux_spflash_files_ready(app_dir)
 
 
 def mtkclient_allowed_for_model(device_model):
-    """Whether MTKClient may be used for this device model right now."""
+    """Whether MTKClient may be used for this device model right now.
+
+    Y2 MTKclient installs brick devices (sparse system/cache images written raw;
+    userdata not wiped).  Blocked on every platform until the scatter-based
+    desparse + raw-offset flash path is validated.  On Linux/Windows the caller
+    automatically redirects to SP Flash Tool; on macOS the user is told to use
+    a Linux or Windows machine.
+    """
     if is_y2_model(device_model) and not Y2_MTKCLIENT_INSTALLS_ENABLED:
-        # No SP Flash Tool on non-x86 Linux — MTKClient is the only install path.
-        if is_linux_platform() and not linux_spflash_arch_supported():
-            return True
-        return False
+        return False  # Blocked on ALL platforms — including non-x86 Linux
     return True
 
 
-def ensure_spft_open_retry_preload(app_dir=None):
+def ensure_spft_open_retry_preload(app_dir=None, force_rebuild=False):
     """
     Ensure ``spft_tty_open_retry.so`` exists beside flash_tool.
 
-    Built from ``spft_tty_open_retry.c`` with gcc when missing/outdated.
+    Built from ``spft_tty_open_retry.c`` with gcc when missing/outdated/version
+    stamp does not match :data:`SPFT_OPEN_RETRY_PRELOAD_VERSION`.
     Returns path to the .so, or None if build is unavailable.
     """
     if not is_linux_platform():
@@ -1443,11 +3090,25 @@ def ensure_spft_open_retry_preload(app_dir=None):
     app_dir = Path(app_dir or get_firmware_app_dir())
     so_path = app_dir / FLASH_TOOL_LINUX_OPEN_RETRY_SO
     c_path = app_dir / FLASH_TOOL_LINUX_OPEN_RETRY_C
+    ver_path = app_dir / ".spft_open_retry_version"
     try:
-        if so_path.is_file() and c_path.is_file():
-            if so_path.stat().st_mtime >= c_path.stat().st_mtime:
-                return so_path
-        elif so_path.is_file() and not c_path.is_file():
+        version_ok = False
+        if ver_path.is_file():
+            try:
+                version_ok = ver_path.read_text(encoding="utf-8").strip() == str(
+                    SPFT_OPEN_RETRY_PRELOAD_VERSION
+                )
+            except Exception:
+                version_ok = False
+        if (
+            not force_rebuild
+            and so_path.is_file()
+            and c_path.is_file()
+            and so_path.stat().st_mtime >= c_path.stat().st_mtime
+            and version_ok
+        ):
+            return so_path
+        if not force_rebuild and so_path.is_file() and not c_path.is_file() and version_ok:
             return so_path
         if not c_path.is_file():
             silent_print(f"Open-retry source missing: {c_path}")
@@ -1473,7 +3134,13 @@ def ensure_spft_open_retry_preload(app_dir=None):
                 f"{(proc.stderr or proc.stdout or '')[:300]}"
             )
             return so_path if so_path.is_file() else None
-        silent_print(f"Built SP Flash Tool open-retry preload: {so_path}")
+        try:
+            ver_path.write_text(str(SPFT_OPEN_RETRY_PRELOAD_VERSION), encoding="utf-8")
+        except Exception:
+            pass
+        silent_print(
+            f"Built SP Flash Tool open-retry preload v{SPFT_OPEN_RETRY_PRELOAD_VERSION}: {so_path}"
+        )
         return so_path
     except Exception as e:
         silent_print(f"ensure_spft_open_retry_preload: {e}")
@@ -1761,7 +3428,7 @@ def download_linux_flash_tool_zip(app_dir=None, progress_cb=None):
 
 
 def extract_linux_flash_tool_zip(zip_path, app_dir=None, progress_cb=None):
-    """Extract flash_tool_linux.zip into app_dir (overwrite)."""
+    """Extract flash_tool_linux.zip into app_dir (overwrite package members)."""
     app_dir = Path(app_dir or get_firmware_app_dir())
     zip_path = Path(zip_path)
     if progress_cb:
@@ -1772,12 +3439,103 @@ def extract_linux_flash_tool_zip(zip_path, app_dir=None, progress_cb=None):
     ensure_sp_flash_tool_executable(app_dir)
     if progress_cb:
         progress_cb("Extraction complete", 75)
+    missing = linux_spflash_missing_files(app_dir)
+    if missing:
+        raise FileNotFoundError(
+            f"Extracted archive but still missing package files: "
+            f"{', '.join(missing[:8])}"
+            + ("…" if len(missing) > 8 else "")
+        )
     binary = get_sp_flash_tool_binary_path(app_dir)
     if not binary or not binary.is_file():
         raise FileNotFoundError(
             f"Extracted archive but {FLASH_TOOL_LINUX_BIN} was not found in {app_dir}"
         )
     return binary
+
+
+def ensure_linux_spflash_package_files(app_dir=None, progress_cb=None, force_reextract=False):
+    """
+    Ensure all required flash_tool_linux.zip files are present on disk.
+
+    Self-heals partial installs (binary present but Qt/DA libs gone) by:
+      1. Re-extracting a valid local flash_tool_linux.zip when available
+      2. Re-downloading the release zip when the local cache is missing/corrupt
+      3. Re-downloading once more if extract from a local zip still leaves gaps
+
+    Returns (ok: bool, message: str).
+    """
+    if not is_linux_platform():
+        return True, "SP Flash Tool package check is only required on Linux"
+    if not linux_spflash_arch_supported():
+        return False, linux_spflash_arch_unsupported_reason()
+
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    missing = linux_spflash_missing_files(app_dir)
+    if not force_reextract and not missing:
+        return True, "SP Flash Tool package files complete"
+
+    sample = ", ".join(missing[:4]) if missing else "(forced re-extract)"
+    if len(missing) > 4:
+        sample += f", … (+{len(missing) - 4} more)"
+    silent_print(
+        f"SP Flash Tool package incomplete ({len(missing)} missing): {sample}"
+    )
+    if progress_cb:
+        progress_cb(
+            f"SP Flash Tool missing files ({missing[0] if missing else 'repair'}) "
+            "— restoring package…",
+            8,
+        )
+
+    zip_path = linux_spflash_local_zip_path(app_dir)
+    used_local = False
+    if (
+        not force_reextract
+        and zip_path.is_file()
+        and linux_spflash_zip_has_required_members(zip_path)
+    ):
+        used_local = True
+        if progress_cb:
+            progress_cb("Re-extracting SP Flash Tool from local package cache…", 40)
+        silent_print(f"Re-extracting SP Flash Tool from local zip: {zip_path}")
+        try:
+            extract_linux_flash_tool_zip(zip_path, app_dir, progress_cb=progress_cb)
+        except Exception as e:
+            silent_print(f"Local zip extract failed, will re-download: {e}")
+            used_local = False
+
+    still_missing = linux_spflash_missing_files(app_dir)
+    if still_missing or force_reextract:
+        # Download when no usable local zip, extract failed, or still incomplete.
+        if progress_cb:
+            progress_cb(
+                "Downloading SP Flash Tool package to repair missing files…",
+                15,
+            )
+        silent_print(
+            "Downloading flash_tool_linux.zip to repair package "
+            f"(local_used={used_local}, still_missing={len(still_missing)})"
+        )
+        zip_path = download_linux_flash_tool_zip(app_dir, progress_cb=progress_cb)
+        if not linux_spflash_zip_has_required_members(zip_path):
+            return False, (
+                f"Downloaded {FLASH_TOOL_LINUX_ZIP_NAME} is missing required members. "
+                f"URL: {FLASH_TOOL_LINUX_URL}"
+            )
+        extract_linux_flash_tool_zip(zip_path, app_dir, progress_cb=progress_cb)
+
+    still_missing = linux_spflash_missing_files(app_dir)
+    if still_missing:
+        return False, (
+            "SP Flash Tool package still incomplete after repair. Missing: "
+            + ", ".join(still_missing[:10])
+            + ("…" if len(still_missing) > 10 else "")
+        )
+    ensure_sp_flash_tool_executable(app_dir)
+    if progress_cb:
+        progress_cb("SP Flash Tool package files restored", 75)
+    return True, "SP Flash Tool package files restored"
 
 
 def configure_linux_spflash_system(progress_cb=None, app_dir=None):
@@ -1986,13 +3744,14 @@ def linux_spflash_system_prep_complete():
 
 
 def linux_spflash_prep_needed(app_dir=None):
-    """True when binary is missing and/or system udev/group prep is incomplete.
+    """True when package files are incomplete and/or system udev/group prep is incomplete.
 
-    Always False on non-x86 Linux (no SP Flash Tool path — MTKClient only).
+    Package completeness includes flash_tool plus Qt/DA libs from flash_tool_linux.zip
+    (not merely the binary). Always False on non-x86 Linux (MTKClient only).
     """
     if not is_linux_platform() or not linux_spflash_arch_supported():
         return False
-    if not sp_flash_tool_binary_ready(app_dir):
+    if not linux_spflash_files_ready(app_dir):
         return True
     if not linux_spflash_system_prep_complete():
         return True
@@ -2206,28 +3965,266 @@ def diagnose_linux_spflash_port_access():
                 lines.append(f"{node}: mode={mode} rw_ok={accessible}")
             except Exception as e:
                 lines.append(f"{node}: ({e})")
+        try:
+            holders = linux_list_serial_port_holder_pids()
+            if holders:
+                for tty, pids in holders.items():
+                    detail = []
+                    for pid in pids:
+                        _c, cmd, _a = _linux_read_proc_cmdline(pid)
+                        detail.append(f"{pid}:{(_c or '?')}")
+                    lines.append(
+                        f"HOLDERS on {tty}: {', '.join(detail)} "
+                        "(will be killed before next flash attempt)"
+                    )
+            else:
+                lines.append("no other processes currently holding ttyACM/USB open")
+        except Exception as e:
+            lines.append(f"holder scan: {e}")
     else:
         lines.append("no /dev/ttyACM* or /dev/ttyUSB* currently present (plug device while flashing)")
     return "\n".join(lines)
 
 
-def prepare_linux_spflash_runtime(app_dir=None):
+def _linux_udevadm_trigger_best_effort():
+    """Reload/trigger tty udev rules without requiring a password when allowed."""
+    if not is_linux_platform():
+        return
+    udevadm = shutil.which("udevadm")
+    if not udevadm:
+        return
+    for args in (
+        [udevadm, "control", "--reload-rules"],
+        [udevadm, "trigger", "--subsystem-match=tty", "--action=add"],
+        [udevadm, "trigger", "--subsystem-match=usb", "--action=change"],
+        [udevadm, "settle", "--timeout=5"],
+    ):
+        try:
+            subprocess.run(args, capture_output=True, text=True, timeout=15)
+        except Exception:
+            pass
+
+
+def linux_spflash_self_heal_port_access(
+    app_dir=None,
+    force_rebuild_preload=False,
+    exclude_pids=None,
+    kill_competitors=True,
+):
+    """
+    Best-effort fix for S_COM_PORT_OPEN_FAIL without blocking on a password.
+
+    - Stops leftover flash_tool / mtk.py and anything holding /dev/ttyACM*
+    - Rebuilds open-retry LD_PRELOAD (longer open() window for udev race)
+    - Stops ModemManager/brltty when possible
+    - chmod 0666 on present ttyACM/ttyUSB nodes
+    - udevadm reload/trigger (no-op if permission denied)
+    - Re-runs full system prep only when rules are incomplete and a passwordless
+      path is available (otherwise leaves a note for the interactive setup)
+
+    Returns (healed_something: bool, message: str).
+    """
+    if not is_linux_platform():
+        return False, "Not Linux"
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    actions = []
+    if kill_competitors:
+        n = stop_install_competitor_processes(
+            exclude_pids=exclude_pids, release_serial_holders=True
+        )
+        actions.append(f"killed ~{n} competitor/holder process(es)")
+    so = ensure_spft_open_retry_preload(app_dir, force_rebuild=force_rebuild_preload)
+    if so and so.is_file():
+        actions.append(f"open-retry preload ready ({so.name})")
+    _linux_stop_serial_port_holders()
+    actions.append("stopped ModemManager/brltty (best-effort)")
+    _linux_chmod_mtk_tty_nodes_best_effort()
+    actions.append("chmod 0666 on present ttyACM/USB (best-effort)")
+    _linux_udevadm_trigger_best_effort()
+    actions.append("udevadm reload/trigger (best-effort)")
+    # If udev rules are incomplete, try system prep once (may prompt via polkit/sudo).
+    if not linux_spflash_system_prep_complete():
+        silent_print("Linux SPFT self-heal: system prep incomplete — attempting configure…")
+        try:
+            ok, out = configure_linux_spflash_system(progress_cb=None, app_dir=app_dir)
+            actions.append(f"system prep: {'ok' if ok else 'needs admin'}")
+            if out:
+                silent_print(str(out)[:500])
+        except Exception as e:
+            actions.append(f"system prep skipped: {e}")
+    # Package files (Qt libs) can also surface as odd launch failures — cheap check.
+    try:
+        missing = linux_spflash_missing_files(app_dir)
+        if missing:
+            pkg_ok, pkg_msg = ensure_linux_spflash_package_files(
+                app_dir, progress_cb=None, force_reextract=False
+            )
+            actions.append(f"package repair: {pkg_msg if pkg_ok else 'failed'}")
+    except Exception as e:
+        actions.append(f"package check skipped: {e}")
+    msg = "; ".join(actions)
+    silent_print("Linux SPFT self-heal: " + msg)
+    return True, msg
+
+
+def linux_spflash_wait_for_clean_reconnect(
+    status_cb=None,
+    should_stop=None,
+    unplug_timeout_s=None,
+    plug_timeout_s=None,
+    require_unplug_if_present=True,
+):
+    """
+    After S_COM_PORT_OPEN_FAIL, get a clean BROM/preloader session.
+
+    When a tty is still present (common: app can open it, SPFT already raced),
+    ask the user to fully unplug, wait until nodes disappear, then wait for a
+    fresh plug. Also kills competitor processes while waiting.
+
+    Returns True if a MediaTek port is present and openable at the end, False
+    on cancel/timeout (caller may still retry SPFT Search-usb).
+    """
+    if not is_linux_platform():
+        return True
+    if should_stop is None:
+        should_stop = lambda: False
+    unplug_timeout_s = float(
+        unplug_timeout_s
+        if unplug_timeout_s is not None
+        else LINUX_FLASH_RECONNECT_UNPLUG_TIMEOUT_S
+    )
+    plug_timeout_s = float(
+        plug_timeout_s
+        if plug_timeout_s is not None
+        else LINUX_FLASH_RECONNECT_PLUG_TIMEOUT_S
+    )
+
+    def _emit(msg):
+        silent_print(msg)
+        if status_cb:
+            try:
+                status_cb(msg)
+            except Exception:
+                pass
+
+    stop_install_competitor_processes(release_serial_holders=True)
+    ports = list_mediatek_serial_ports()
+    if require_unplug_if_present and ports:
+        _emit(
+            "Port still present after COM open fail — fully unplug the player now "
+            "(USB cable out) so we can take a clean connection…"
+        )
+        deadline = time.time() + unplug_timeout_s
+        while time.time() < deadline:
+            if should_stop():
+                return False
+            # Keep killing anything that re-grabs the port while user unplugs
+            if int(time.time() * 2) % 4 == 0:
+                stop_install_competitor_processes(release_serial_holders=True)
+            ports = list_mediatek_serial_ports()
+            if not ports and not list(Path("/dev").glob("ttyACM*")):
+                _emit("Device unplugged — good. Waiting a moment…")
+                time.sleep(0.8)
+                break
+            time.sleep(0.25)
+        else:
+            _emit(
+                "Still seeing a serial port after wait — continuing anyway "
+                "(will retry Search usb)."
+            )
+    else:
+        _emit("No MediaTek port present — waiting for you to plug in when prompted…")
+
+    stop_install_competitor_processes(release_serial_holders=True)
+    _linux_chmod_mtk_tty_nodes_best_effort()
+    _emit(
+        "When ready: power the player off (or paperclip), then plug USB in. "
+        "Waiting for MediaTek serial…"
+    )
+    deadline = time.time() + plug_timeout_s
+    while time.time() < deadline:
+        if should_stop():
+            return False
+        stop_install_competitor_processes(release_serial_holders=True)
+        _linux_chmod_mtk_tty_nodes_best_effort()
+        ports = list_mediatek_serial_ports()
+        for info in ports:
+            tty = info.get("tty")
+            if not tty:
+                continue
+            try:
+                os.chmod(tty, 0o666)
+            except Exception:
+                pass
+            # Prefer access check + short open; release immediately for flash_tool
+            try:
+                fd = open_linux_serial_port_with_retry(tty, timeout_s=2.5)
+                os.close(fd)
+            except OSError:
+                _emit(f"Saw {tty} but cannot open yet — waiting…")
+                time.sleep(0.2)
+                continue
+            # Free any racer that grabbed it between our open and flash_tool start
+            linux_release_serial_port_holders()
+            try:
+                os.chmod(tty, 0o666)
+            except Exception:
+                pass
+            _emit(
+                f"Fresh port {tty} is openable (mode={info.get('mode')}). "
+                "Starting SP Flash Tool…"
+            )
+            time.sleep(0.15)
+            return True
+        time.sleep(0.3)
+    _emit("Timed out waiting for a clean plug-in — retrying SP Flash Tool Search usb anyway.")
+    return False
+
+
+def prepare_linux_spflash_runtime(app_dir=None, ensure_package=True):
     """
     Per-launch Linux preparation before starting flash_tool.
 
-    Fixes option.ini paths, best-effort stops ModemManager/brltty, chmods
-    present tty nodes, and logs access diagnostics. Does not require root.
+    When ensure_package is True (default), self-heals missing flash_tool package
+    files (Qt libs under lib/, DA/.so beside the binary) from the local zip or a
+    re-download — this fixes ``libQtWebKit.so.4: cannot open shared object file``
+    when only the binary remained after a partial install.
+
+    Also fixes option.ini paths, best-effort stops ModemManager/brltty, chmods
+    present tty nodes, ensures open-retry preload, and logs access diagnostics.
+    Does not require root for the non-package steps.
     """
     if not is_linux_platform():
         return True, "Not Linux"
     app_dir = Path(app_dir or get_firmware_app_dir())
+    notes = []
+    if ensure_package and linux_spflash_arch_supported():
+        missing = linux_spflash_missing_files(app_dir)
+        if missing:
+            silent_print(
+                "prepare_linux_spflash_runtime: repairing missing package files: "
+                + ", ".join(missing[:8])
+            )
+            pkg_ok, pkg_msg = ensure_linux_spflash_package_files(
+                app_dir, progress_cb=None, force_reextract=False
+            )
+            if not pkg_ok:
+                notes.append(pkg_msg)
+            else:
+                notes.append(pkg_msg)
     fix_linux_spflash_option_ini(app_dir)
     ensure_sp_flash_tool_executable(app_dir)
+    ensure_spft_open_retry_preload(app_dir)
+    # Only this install should own flash_tool / mtk.py / ttyACM*
+    try:
+        stop_install_competitor_processes(release_serial_holders=True)
+    except Exception as e:
+        silent_print(f"prepare: competitor cleanup: {e}")
     _linux_stop_serial_port_holders()
     _linux_chmod_mtk_tty_nodes_best_effort()
+    _linux_udevadm_trigger_best_effort()
     diag = diagnose_linux_spflash_port_access()
     silent_print("Linux SP Flash Tool runtime preflight:\n" + diag)
-    notes = []
     if not linux_spflash_udev_rules_present():
         notes.append(
             "MediaTek udev rules are not installed. Re-run SP Flash Tool setup "
@@ -2238,47 +4235,143 @@ def prepare_linux_spflash_runtime(app_dir=None):
         notes.append(
             f"Log out and back in so group '{grp['recommended']}' applies to this session."
         )
+    still_missing = (
+        linux_spflash_missing_files(app_dir)
+        if linux_spflash_arch_supported()
+        else []
+    )
+    if still_missing:
+        notes.append(
+            "SP Flash Tool package still incomplete (will fail to load): "
+            + ", ".join(still_missing[:6])
+        )
+        return False, "\n".join(notes)
     return True, "\n".join(notes) if notes else diag
 
 
-def linux_spflash_com_port_fail_message():
+def spflash_connect_status_text(device_label, device_model=None):
+    """
+    Status-bar copy when SP Flash Tool reaches “Search usb”.
+
+    Community (r/innioasis) pattern: player must be fully off, plug only when
+    asked, paperclip/pin in the reset hole if the unit will not power off cleanly.
+    Y2 often shows as preloader; Y1 often as BROM — same physical steps for both.
+    """
+    label = device_label or device_label_for_model(device_model) or "player"
+    return (
+        f"Ready for your {label}. Power it fully off "
+        f"(paperclip/pin in the small reset hole if it will not shut down), "
+        f"then plug in USB only now — leave other phones/players unplugged."
+    )
+
+
+def spflash_success_status_text(device_label=None, device_model=None):
+    """Status after a successful flash — model-aware power-on button."""
+    model = device_model
+    if not model and device_label:
+        model = device_label  # "Y1" / "Y2" work with is_y*_model
+    label = device_label or device_label_for_model(model) or "player"
+    return f"Install finished. {install_power_on_steps(model or label)}"
+
+
+def windows_spflash_com_port_fail_message(device_label=None):
+    """User-facing explanation when SP Flash Tool reports S_COM_PORT_OPEN_FAIL (1013) on Windows."""
+    label = device_label or "player"
+    return (
+        f"SP Flash Tool could not open the download connection to your {label} "
+        f"(error S_COM_PORT_OPEN_FAIL / 1013).\n\n"
+        "On Windows this almost always means the MediaTek USB drivers are missing, "
+        "outdated, or not fully loaded yet.\n\n"
+        "What to do:\n"
+        "1. Install / reinstall the MediaTek VCOM / USB drivers from this app’s "
+        "driver setup (or the Toolkit driver package).\n"
+        "2. Reboot the PC once after installing drivers — Windows often needs a "
+        "restart before the ports show up correctly.\n"
+        f"3. Fully power off your {label}, unplug USB, start install again, and "
+        "plug in only when asked.\n"
+        "4. Use a short data-capable cable on a rear USB port (avoid hubs).\n\n"
+        "You do not need to browse for a scatter file — this app loads the correct "
+        "scatter for your model automatically."
+    )
+
+
+def linux_spflash_com_port_fail_message(device_label=None):
     """User-facing explanation when SP Flash Tool reports S_COM_PORT_OPEN_FAIL (1013)."""
+    label = device_label or "player"
     diag = diagnose_linux_spflash_port_access()
     open_probe = _linux_try_open_serial_nodes()
     can_open_now = any(ok for _, ok, _ in open_probe)
-    race_hint = ""
-    if can_open_now or "rw_ok=True" in diag:
-        race_hint = (
-            "\nNote: the port is openable from this app right now. SP Flash Tool often "
-            "tries to open /dev/ttyACM* in the same instant the device appears, before "
-            "Linux finishes applying permissions (open race). Re-run SP Flash Tool setup "
-            "once to install the early tty access rule, then unplug the player completely, "
-            "start the install again, and only plug in when the app says to connect.\n"
+    holders = {}
+    try:
+        holders = linux_list_serial_port_holder_pids()
+    except Exception:
+        holders = {}
+
+    # Hallmark-style error: what happened → why → what to do (community steps first).
+    parts = [
+        f"We found your {label} on USB, but the flash tool could not open "
+        f"the download connection (S_COM_PORT_OPEN_FAIL / 1013).",
+        "",
+        "On Linux this is usually a short race (permissions not ready yet), another "
+        "program holding the port (old flash_tool / mtk.py / ModemManager), the player "
+        "already plugged in before the app said “connect,” or a CDC-ACM quirk where "
+        "break-control (TIOCCBRK) is rejected until our open-retry helper softens it.",
+        "",
+        "What to do next:",
+        f"1. Fully unplug the {label} (cable out of both ends if unsure).",
+        "2. Close any other flash tools or terminal windows that might talk to the player.",
+        "3. In this app, run SP Flash Tool setup once if you never have "
+        "(installs USB permission rules; you may need your password).",
+        "4. Start install again — wait for the connect prompt, then power the "
+        f"{label} fully off and plug USB only then.",
+        "5. Use a short, data-capable cable on a direct USB port "
+        "(not a hub if you can avoid it).",
+        "6. If setup just added you to a serial group (uucp/dialout), log out "
+        "and back in once so it applies.",
+    ]
+    if holders:
+        parts.extend(
+            [
+                "",
+                "Another program still had the serial port open when we checked. "
+                "The next install attempt will close leftover flash_tool and mtk.py "
+                "sessions automatically.",
+            ]
         )
-    return (
-        "SP Flash Tool found your device but could not open the serial port "
-        "(/dev/ttyACM*). On Linux this is almost always permissions timing, group "
-        "membership, or another program holding the port.\n\n"
-        "Try this:\n"
-        "1. Re-run SP Flash Tool setup in this app (installs udev rules for unprivileged "
-        "/dev/ttyACM* — including 99-ttyacms.rules via install -m 644, then "
-        "udevadm control --reload-rules && udevadm trigger).\n"
-        "2. Fully unplug the player, start flash again, and plug in only when prompted.\n"
-        "3. If setup just added you to a serial group, log out and back in once.\n"
-        "4. If ModemManager is running: systemctl stop ModemManager\n"
-        f"{race_hint}\n"
-        f"Diagnostics:\n{diag}"
-    )
+    if can_open_now or "rw_ok=True" in diag:
+        parts.extend(
+            [
+                "",
+                "Good news: this app can open the port right now. The flash tool "
+                "often tries a few milliseconds earlier than udev finishes — we "
+                "already lengthen that window and retry. A full unplug → wait for "
+                "the prompt → plug cycle is still the most reliable fix on Linux.",
+            ]
+        )
+    if "ModemManager: active" in diag:
+        parts.extend(
+            [
+                "",
+                "ModemManager is still running and can steal MediaTek ports. "
+                "This app tries to stop it; if it comes back, run: "
+                "systemctl stop ModemManager",
+            ]
+        )
+    parts.extend(["", "Technical details (for troubleshooting):", diag])
+    return "\n".join(parts)
 
 
 def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_system_prep=False):
     """
-    Ensure Linux ``flash_tool`` is present and system prep matches run_linux.sh.
+    Ensure Linux ``flash_tool`` package is complete and system prep matches run_linux.sh.
 
-    - Downloads/extracts the binary when missing (or force_download).
+    - Downloads/extracts the full flash_tool_linux.zip when the binary *or* any
+      required package file is missing (Qt under lib/, DA/libs at package root).
+      Prefers re-extracting a valid local zip before re-downloading.
+    - force_download forces a fresh download + extract even if files look complete.
     - Runs the shared ``linux_spflash_system_prep.sh`` when udev/group prep is
       incomplete (existing users) or force_system_prep is set.
-    - Soft-fails system prep: binary presence alone still returns success so the
+    - Soft-fails system prep: package completeness alone still returns success so the
       app can fall back to MTKClient for Y1; Y2 will re-offer setup.
     Returns (ok, message).
     """
@@ -2290,15 +4383,29 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
 
     app_dir = get_firmware_app_dir()
     try:
-        need_fetch = force_download or not sp_flash_tool_binary_ready(app_dir)
+        missing = linux_spflash_missing_files(app_dir)
+        need_fetch = force_download or bool(missing)
         if need_fetch:
             if progress_cb:
-                progress_cb("SP Flash Tool not found — starting first-time setup…", 2)
-            zip_path = download_linux_flash_tool_zip(app_dir, progress_cb=progress_cb)
-            extract_linux_flash_tool_zip(zip_path, app_dir, progress_cb=progress_cb)
+                if force_download:
+                    progress_cb("Refreshing SP Flash Tool package…", 2)
+                elif not sp_flash_tool_binary_ready(app_dir):
+                    progress_cb("SP Flash Tool not found — starting first-time setup…", 2)
+                else:
+                    progress_cb(
+                        f"SP Flash Tool incomplete ({missing[0]}) — repairing…",
+                        2,
+                    )
+            pkg_ok, pkg_msg = ensure_linux_spflash_package_files(
+                app_dir,
+                progress_cb=progress_cb,
+                force_reextract=force_download,
+            )
+            if not pkg_ok:
+                return False, pkg_msg
         else:
             if progress_cb:
-                progress_cb("SP Flash Tool already present — verifying permissions…", 50)
+                progress_cb("SP Flash Tool package complete — verifying permissions…", 50)
             ensure_sp_flash_tool_executable(app_dir)
 
         # Linux-only config hygiene (no root required)
@@ -2324,14 +4431,24 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
             if progress_cb:
                 progress_cb("USB/serial access rules already installed", 85)
 
-        if not sp_flash_tool_binary_ready(app_dir):
-            return False, "SP Flash Tool binary is still missing after setup."
+        if not linux_spflash_files_ready(app_dir):
+            still = linux_spflash_missing_files(app_dir)
+            return False, (
+                "SP Flash Tool package is still incomplete after setup. Missing: "
+                + ", ".join(still[:10])
+            )
         ensure_sp_flash_tool_executable(app_dir)
-        prepare_linux_spflash_runtime(app_dir)
+        # Skip package re-check inside prepare — just verified above.
+        prepare_linux_spflash_runtime(app_dir, ensure_package=False)
         if progress_cb:
             progress_cb("SP Flash Tool setup complete", 100)
 
         msg_parts = ["SP Flash Tool is ready."]
+        if need_fetch and missing:
+            msg_parts.append(
+                f"Restored {len(missing)} missing package file(s) "
+                f"(e.g. {missing[0]})."
+            )
         if need_sys and not perm_ok:
             msg_parts.append(
                 "USB driver/permission setup did not fully succeed (skipped or denied). "
@@ -2348,16 +4465,185 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
             msg_parts.append("System prep was already complete; skipped re-installing udev rules.")
         diag = diagnose_linux_spflash_port_access()
         msg_parts.append("Current access status:\n" + diag)
-        # Binary ready = overall ok (system prep soft-failed still allows app use).
+        # Package ready = overall ok (system prep soft-failed still allows app use).
         return True, "\n".join(msg_parts)
     except Exception as e:
         silent_print(f"Linux SP Flash Tool setup failed: {e}")
-        # Soft path: if binary exists, don't treat as hard failure for the whole app.
-        if sp_flash_tool_binary_ready(app_dir):
+        # Soft path: if package is complete, don't treat as hard failure for the whole app.
+        if linux_spflash_files_ready(app_dir):
             return True, (
-                f"SP Flash Tool binary is present, but setup hit an error (continuing): {e}"
+                f"SP Flash Tool package is present, but setup hit an error (continuing): {e}"
             )
         return False, str(e)
+
+
+def open_linux_serial_port_with_retry(
+    path,
+    timeout_s=5.0,
+    interval_s=0.02,
+    flags=None,
+):
+    """
+    Open a serial device the way SP Flash Tool needs to — with patience.
+
+    SPFT's stock open window is ~40ms; udev often applies MODE=0666 later, so
+    the first open fails with EACCES even though a later open succeeds. This
+    helper retries like our LD_PRELOAD, and is used to *prove* a port is ready
+    before we hand the path to flash_tool.
+
+    Returns open fd on success, or raises OSError on timeout/non-retryable error.
+    Caller must os.close(fd). Does not keep the port locked for SPFT (that would
+    block flash_tool); claim then close, then pin the path in the install XML.
+    """
+    if flags is None:
+        flags = os.O_RDWR | os.O_NONBLOCK | os.O_NOCTTY
+    path = str(path)
+    deadline = time.time() + float(timeout_s)
+    last_err = None
+    while time.time() < deadline:
+        try:
+            fd = os.open(path, flags)
+            return fd
+        except OSError as e:
+            last_err = e
+            # Match spft_tty_open_retry.c retryable set
+            if e.errno not in (
+                errno.EACCES,
+                errno.EPERM,
+                errno.ENOENT,
+                errno.EAGAIN,
+                errno.EBUSY,
+                errno.EINTR,
+            ):
+                raise
+            time.sleep(interval_s)
+            try:
+                os.chmod(path, 0o666)
+            except Exception:
+                pass
+    if last_err:
+        raise last_err
+    raise OSError(errno.ETIMEDOUT, f"timeout opening {path}")
+
+
+def claim_mediatek_spflash_serial_port(
+    timeout_s=180.0,
+    status_cb=None,
+    should_stop=None,
+    prefer_modes=("brom", "preloader", "da", "unknown"),
+):
+    """
+    Wait for a MediaTek serial node, open it successfully, then release it.
+
+    Why this exists
+    ---------------
+    The Updater can often open /dev/ttyACM* *after* SP Flash Tool has already
+    failed: SPFT races the kernel uevent (~ms), while our open runs later when
+    udev has set MODE=0666. SPFT "can open" in the GUI when the user is slower
+    (scatter load + click Download) — same race, more time.
+
+    Strategy (same ability, used *before* flash_tool)::
+
+      1. Wait until a MediaTek (0e8d) tty appears
+      2. Retry open until it succeeds (udev race absorbed here, not in SPFT)
+      3. chmod 0666, brief hold, close (do **not** keep the fd open)
+      4. Return the path for logging / optional use
+
+    Important: do **not** pin this path into SP Flash Tool's ``com-port=`` on Linux
+    for the whole flash_tool run. Console mode then prints
+    "searching user specified com port" and waits forever if the node
+    re-enumerates (ACM0→ACM1) or BROM drops after our open/close. Prefer
+    empty com-port (auto "Search usb") and LD_PRELOAD open-retry instead.
+
+    Returns dict {tty, mode, vid, pid, ...} or None on timeout/cancel.
+    """
+    if not is_linux_platform():
+        return None
+    if should_stop is None:
+        should_stop = lambda: False
+    deadline = time.time() + float(timeout_s)
+    last_status = 0.0
+    seen = set()
+
+    def _emit(msg):
+        nonlocal last_status
+        now = time.time()
+        if status_cb and (now - last_status) >= 0.8:
+            try:
+                status_cb(msg)
+            except Exception:
+                pass
+            last_status = now
+        silent_print(msg)
+
+    _emit("Waiting for MediaTek serial port (plug in the player in download/BROM mode)…")
+    linux_spflash_self_heal_port_access()
+
+    while time.time() < deadline:
+        if should_stop():
+            return None
+        ports = list_mediatek_serial_ports()
+        # Prefer BROM/preloader over DA leftover from a previous session
+        def _rank(p):
+            try:
+                return prefer_modes.index(p.get("mode") or "unknown")
+            except ValueError:
+                return len(prefer_modes)
+
+        for info in sorted(ports, key=_rank):
+            tty = info.get("tty")
+            if not tty:
+                continue
+            if tty not in seen:
+                seen.add(tty)
+                _emit(
+                    f"Found {tty} mode={info.get('mode')} pid={info.get('pid')} — "
+                    "opening (retrying until udev allows access)…"
+                )
+            try:
+                os.chmod(tty, 0o666)
+            except Exception:
+                pass
+            try:
+                fd = open_linux_serial_port_with_retry(tty, timeout_s=4.0)
+            except OSError as e:
+                _emit(f"Still cannot open {tty}: {e} — waiting…")
+                time.sleep(0.15)
+                continue
+            # Port is open — same moment SPFT needs. Settle + release for flash_tool.
+            try:
+                try:
+                    os.chmod(tty, 0o666)
+                except Exception:
+                    pass
+                # Brief hold so udev/races finish; do not keep locked for SPFT.
+                time.sleep(0.05)
+            finally:
+                try:
+                    os.close(fd)
+                except Exception:
+                    pass
+            # Re-open once more to confirm still available for the next process
+            try:
+                fd2 = open_linux_serial_port_with_retry(tty, timeout_s=2.0)
+                os.close(fd2)
+            except OSError as e:
+                _emit(f"Port {tty} opened once then failed re-check: {e} — retrying…")
+                time.sleep(0.1)
+                continue
+            info = dict(info)
+            info["openable"] = True
+            info["claimed"] = True
+            _emit(f"Locked onto {tty} (open OK). Handing port to SP Flash Tool…")
+            return info
+        if not ports:
+            _emit(
+                "No MediaTek port yet — power off the player and connect USB "
+                "(hold vol if needed for BROM)…"
+            )
+        time.sleep(0.2)
+    _emit("Timed out waiting for an openable MediaTek serial port.")
+    return None
 
 
 def list_mediatek_serial_ports():
@@ -2561,11 +4847,16 @@ def build_spflash_rom_list_xml(scatter_path, app_dir=None):
 
 def validate_spflash_images_for_model(device_model=None, app_dir=None):
     """
-    Ensure on-disk images fit the scatter for this model.
+    Light preflight before SP Flash Tool: required images present, scatter exists.
+
+    Does **not** block when an image is larger than the scatter partition_size.
+    Firmware zips ship scatters whose declared sizes often disagree with the
+    packed images; SP Flash Tool handles that itself. Hard-failing here only
+    blocked valid installs.
 
     Returns (ok: bool, errors: list[str], warnings: list[str]).
-    Catches the silent SPFT exit after "load roms in rom list" caused by
-    S_DL_LOAD_REGION_IS_OVERLAP (5016) when system.img is larger than ANDROID.
+    ``ok`` is False only for hard problems (unknown model, missing scatter after
+    recovery attempt, missing downloadable image files).
     """
     app_dir = Path(app_dir or get_firmware_app_dir())
     resolved = resolve_device_model_for_install(device_model)
@@ -2586,14 +4877,13 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
         else:
             errors.append(f"Missing scatter file: {scatter_path.name}")
             return False, errors, warnings
-    # Sanity: Y2 images with Y1 scatter (or vice versa)
+    # Informational only — do not block install on chip-family notes
     family = _read_scatter_chip_family(scatter_path)
-    if family and resolved and family not in (resolved,):
-        # resolved may be 'Y1'/'Y2' — family same
+    if family and resolved:
         if (family == "Y1" and is_y2_model(resolved)) or (
             family == "Y2" and is_y1_model(resolved)
         ):
-            errors.append(
+            warnings.append(
                 f"Scatter {scatter_path.name} looks like {family} but install model is {resolved}."
             )
     parts = parse_scatter_download_partitions(scatter_path)
@@ -2602,35 +4892,38 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
     for part in parts:
         fpath = app_dir / part["file"]
         if not fpath.is_file():
-            # also try basename only in cwd
             fpath2 = Path(part["file"])
             if fpath2.is_file():
                 fpath = fpath2
             else:
-                errors.append(f"Missing image for {part['name']}: {part['file']}")
+                # Only require the main downloadable images; skip empty optional slots
+                if part["file"] and part.get("size", 0) > 0:
+                    errors.append(f"Missing image for {part['name']}: {part['file']}")
                 continue
         try:
             actual = fpath.stat().st_size
         except OSError as e:
             errors.append(f"Cannot stat {part['file']}: {e}")
             continue
+        # Size vs scatter partition_size is NOT a hard error. Zip scatters often
+        # under-declare ANDROID/USRDATA; SP Flash Tool still accepts the images.
         if part["size"] > 0 and actual > part["size"]:
-            errors.append(
-                f"{part['file']} is {actual} bytes but {part['name']} partition is only "
-                f"{part['size']} bytes (0x{part['size']:x}) in {scatter_path.name}. "
-                f"SP Flash Tool fails with S_DL_LOAD_REGION_IS_OVERLAP (5016) and exits "
-                f"before waiting for USB — usually a Y1/Y2 scatter mismatch."
+            msg = (
+                f"{part['file']} is {actual} bytes vs scatter {part['name']} "
+                f"{part['size']} bytes (0x{part['size']:x}) in {scatter_path.name} "
+                f"— continuing; SP Flash Tool will decide"
             )
-    # Hint if Y2 preloader present but model resolved as Y1
+            warnings.append(msg)
+            silent_print(f"SPFT preflight: {msg}")
     y2_pl = app_dir / "preloader_eastaeon82_wet_kk.bin"
     y1_pl = app_dir / "preloader_g368_nyx.bin"
     if is_y1_model(resolved) and y2_pl.is_file() and not y1_pl.is_file():
-        errors.append(
+        warnings.append(
             "On-disk preloader is Y2 (preloader_eastaeon82_wet_kk.bin) but install "
-            "model is Y1. Select/extract a Y2 firmware package."
+            "model is Y1."
         )
     if is_y2_model(resolved) and y1_pl.is_file() and not y2_pl.is_file():
-        errors.append(
+        warnings.append(
             "On-disk preloader is Y1 (preloader_g368_nyx.bin) but install model is Y2."
         )
     return (len(errors) == 0), errors, warnings
@@ -2701,6 +4994,9 @@ def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_di
         )
     # Pin or clear com-port. Never pin a path that does not currently exist —
     # that skips auto-detect and can exit before the user can plug in.
+    # Accept either a path string or a port dict from select_spflash_com_port().
+    if isinstance(com_port, dict):
+        com_port = com_port.get("tty") or com_port.get("device") or com_port.get("port")
     if com_port and Path(com_port).exists():
         com_port = str(com_port)
         if re.search(r'com-port="[^"]*"', text):
@@ -2729,10 +5025,78 @@ def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_di
     return out_path
 
 
-def prepare_sp_flash_tool_files(device_model=None):
-    """Reset history.ini and ensure model-correct scatter file for SP Flash Tool."""
+def _write_history_ini_scatter(app_dir, scatter_txt):
+    """
+    Ensure history.ini exists and scatterHistory points at the model scatter.
+
+    Prefer copying the model history_def when present; otherwise patch or create
+    a minimal history.ini so SP Flash Tool GUI never prompts to browse for scatter.
+    """
+    app_dir = Path(app_dir)
+    history_ini_path = app_dir / HISTORY_INI
+    scatter_name = Path(scatter_txt).name
     try:
-        resolved_model = resolve_device_model_for_install(device_model)
+        if history_ini_path.is_file():
+            text = history_ini_path.read_text(encoding="utf-8", errors="replace")
+            if re.search(r"(?m)^\s*scatterHistory\s*=", text):
+                text2, n = re.subn(
+                    r"(?m)^\s*scatterHistory\s*=\s*.*$",
+                    f"scatterHistory={scatter_name}",
+                    text,
+                    count=1,
+                )
+                if n:
+                    history_ini_path.write_text(text2, encoding="utf-8")
+                    return True
+            # Missing key — append under RecentOpenFile or create section
+            if "[RecentOpenFile]" in text:
+                text2 = re.sub(
+                    r"(?m)(\[RecentOpenFile\][^\[]*)",
+                    lambda m: (
+                        m.group(1).rstrip() + f"\nscatterHistory={scatter_name}\n"
+                        if "scatterHistory=" not in m.group(1)
+                        else m.group(1)
+                    ),
+                    text,
+                    count=1,
+                )
+                history_ini_path.write_text(text2, encoding="utf-8")
+            else:
+                history_ini_path.write_text(
+                    text.rstrip()
+                    + f"\n\n[RecentOpenFile]\nlastDir=\nscatterHistory={scatter_name}\n"
+                    "authHistory=\n",
+                    encoding="utf-8",
+                )
+            return True
+        history_ini_path.write_text(
+            "[LastDAFilePath]\n"
+            "lastDir=MTK_AllInOne_DA.bin\n\n"
+            "[RecentOpenFile]\n"
+            "lastDir=\n"
+            f"scatterHistory={scatter_name}\n"
+            "authHistory=\n",
+            encoding="utf-8",
+        )
+        return True
+    except Exception as e:
+        silent_print(f"Could not write {HISTORY_INI} scatterHistory: {e}")
+        return False
+
+
+def prepare_sp_flash_tool_files(device_model=None, zip_path=None, extracted_files=None):
+    """
+    Reset history.ini and ensure model-correct scatter file for SP Flash Tool.
+
+    Call before firmware zip extract, after extract, at app launch, and before
+    opening the SP Flash Tool GUI so scatterHistory always matches the active
+    model (Y1 → MT6572_Android_scatter.txt, Y2 → MT6582_Android_scatter.txt).
+    Users should never need to browse for a scatter file.
+    """
+    try:
+        resolved_model = resolve_device_model_for_install(
+            device_model, zip_path=zip_path, extracted_files=extracted_files
+        )
         config = get_flash_config(resolved_model)
         if not config:
             silent_print(
@@ -2747,22 +5111,46 @@ def prepare_sp_flash_tool_files(device_model=None):
 
         if history_def_path.exists():
             shutil.copy2(history_def_path, history_ini_path)
-            silent_print(f"Reset {HISTORY_INI} from {config['history_def_ini']}")
+            silent_print(
+                f"Reset {HISTORY_INI} from {config['history_def_ini']} "
+                f"(scatterHistory={config['scatter_txt']}) for {resolved_model}"
+            )
         else:
-            silent_print(f"Warning: {history_def_path} not found; skipping {HISTORY_INI} reset")
+            silent_print(
+                f"Warning: {history_def_path} not found; patching {HISTORY_INI} scatterHistory"
+            )
+        # Always force scatterHistory even if a def was missing or a zip overwrote history.ini
+        _write_history_ini_scatter(app_dir, config["scatter_txt"])
 
-        # Always refresh scatter from the model default so a previous Y1 extract
-        # cannot leave a too-small ANDROID region under Y2 images (or vice versa).
+        # Prefer the scatter that shipped in the firmware zip when it matches this
+        # model’s chip. Zip scatters often declare partition sizes that differ from
+        # packed images; SP Flash Tool still accepts them, so do not clobber a good
+        # package scatter with our stock *_def every prepare.
+        # Only install from *_def when the scatter is missing or is the wrong chip
+        # (e.g. leftover MT6572 content after switching to a Y2 package).
         scatter_path = app_dir / config["scatter_txt"]
         scatter_def_path = app_dir / config["scatter_def_txt"]
-        if scatter_def_path.exists():
+        want_family = "Y2" if is_y2_model(resolved_model) else "Y1"
+        have_family = (
+            _read_scatter_chip_family(scatter_path) if scatter_path.is_file() else None
+        )
+        if scatter_path.is_file() and have_family in (want_family, None):
+            silent_print(
+                f"Keeping package/on-disk {config['scatter_txt']} "
+                f"(family={have_family or 'unknown'}) for {resolved_model}"
+            )
+        elif scatter_def_path.exists():
             shutil.copy2(scatter_def_path, scatter_path)
             silent_print(
                 f"Installed {config['scatter_txt']} from {config['scatter_def_txt']} "
-                f"for {resolved_model}"
+                f"for {resolved_model} "
+                f"(was missing or family={have_family}, want {want_family})"
             )
         elif scatter_path.exists():
-            silent_print(f"{config['scatter_txt']} already present (no def to refresh)")
+            silent_print(
+                f"{config['scatter_txt']} already present (no def to refresh; "
+                f"family={have_family})"
+            )
         else:
             silent_print(
                 f"Warning: neither {scatter_path.name} nor {scatter_def_path.name} found"
@@ -2807,9 +5195,91 @@ def prepare_sp_flash_tool_files(device_model=None):
         traceback.print_exc()
 
 
-def update_history_ini(device_model=None):
+def update_history_ini(device_model=None, zip_path=None, extracted_files=None):
     """Legacy entry point; resets SP Flash Tool config from shipped defaults."""
-    prepare_sp_flash_tool_files(device_model)
+    prepare_sp_flash_tool_files(
+        device_model, zip_path=zip_path, extracted_files=extracted_files
+    )
+
+
+def extract_firmware_rom_zip(zip_path, device_model=None, extract_path="."):
+    """
+    Extract a firmware ROM zip with model-correct history.ini scatter handling.
+
+    Firmware zips often ship their own history.ini (frequently still pointing at
+    MT6582). We prepare history.ini *before* extract from zip name / UI model,
+    skip overwriting history.ini from the zip, then prepare again after extract
+    once package files are known.
+    """
+    zip_path = Path(zip_path)
+    extract_path = Path(extract_path)
+    pre_model = resolve_device_model_for_install(device_model, zip_path=zip_path.name)
+    silent_print(
+        f"Pre-extract SPFT prep for model={pre_model!r} "
+        f"(zip={zip_path.name}, ui={device_model!r})"
+    )
+    prepare_sp_flash_tool_files(pre_model or device_model, zip_path=zip_path.name)
+
+    with zipfile.ZipFile(zip_path, "r") as zip_ref:
+        extracted_files = _safe_extractall_skip_history(
+            zip_ref, str(extract_path), zip_path.name
+        )
+
+    post_model = resolve_device_model_for_install(
+        device_model, zip_path=zip_path.name, extracted_files=extracted_files
+    )
+    prepare_sp_flash_tool_files(
+        post_model or pre_model or device_model,
+        zip_path=zip_path.name,
+        extracted_files=extracted_files,
+    )
+    silent_print(
+        f"Post-extract SPFT prep for model={post_model!r} (zip={zip_path.name})"
+    )
+    return extracted_files, post_model or pre_model
+
+
+def _safe_extractall_skip_history(zip_ref, extract_path=".", zip_name="archive"):
+    """Like safe_extractall, but never overwrites managed history.ini."""
+    extracted_files = []
+    skipped_files = []
+
+    def is_macos_metadata(path):
+        path_str = str(path).replace("\\", "/").lower()
+        name = Path(path).name.lower()
+        if name.startswith("._") or name == ".ds_store" or name == "__macosx":
+            return True
+        if "_macosx" in path_str or "__macosx" in path_str:
+            return True
+        if "/._" in path_str or "\\._" in path_str:
+            return True
+        return False
+
+    for member in zip_ref.namelist():
+        if is_macos_metadata(member):
+            silent_print(f"Skipping macOS metadata: {member}")
+            continue
+        if Path(member).name.lower() == HISTORY_INI.lower():
+            silent_print(f"Skipping zip-provided history.ini: {member}")
+            continue
+        try:
+            zip_ref.extract(member, extract_path)
+            extracted_files.append(member)
+        except (PermissionError, OSError, IOError) as e:
+            skipped_files.append(member)
+            silent_print(f"Skipping locked file {member}: {e}")
+        except Exception as e:
+            skipped_files.append(member)
+            silent_print(f"Skipping file {member} due to error: {e}")
+
+    if skipped_files:
+        silent_print(
+            f"Extracted {len(extracted_files)} files from {zip_name}, "
+            f"skipped {len(skipped_files)} locked/unwritable files"
+        )
+    else:
+        silent_print(f"Successfully extracted {len(extracted_files)} files from {zip_name}")
+    return extracted_files
 
 def load_redundant_files_list():
     """Load redundant files list from local file or remote URL"""
@@ -4430,11 +6900,14 @@ class SPFlashToolWorker(QThread):
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
-    def __init__(self, install_xml_path=None, device_model=None, com_port=None):
+    def __init__(self, install_xml_path=None, device_model=None, com_port=None,
+                 zip_path=None, extracted_files=None):
         super().__init__()
         self.should_stop = False
         self.device_model = device_model
-        self.device_label = "Y2" if is_y2_model(device_model) else "Y1"
+        self.zip_path = zip_path
+        self.extracted_files = extracted_files
+        self.device_label = device_label_for_model(device_model)
         self.requested_com_port = com_port
         # Console-mode XML install: flash_tool(.exe) -i install_rom_sp(_y2).xml
         app_dir = get_firmware_app_dir()
@@ -4456,13 +6929,23 @@ class SPFlashToolWorker(QThread):
         """Stop the SP Flash Tool worker"""
         self.should_stop = True
 
+    def _sync_device_label(self, model=None):
+        """Keep device_model + device_label aligned for progress/status strings."""
+        resolved = resolve_device_model_for_install(
+            model if model is not None else self.device_model,
+            zip_path=getattr(self, "zip_path", None),
+            extracted_files=getattr(self, "extracted_files", None),
+        )
+        if resolved:
+            self.device_model = resolved
+        self.device_label = device_label_for_model(self.device_model)
+        return self.device_model
+
     def _build_runtime_command(self):
         """Prepare runtime XML (pinned com-port when known) and return argv."""
         # Always resolve model from install context again so we never flash Y1
         # XML against Y2 images (that aborts during LoadRoms with 5016).
-        resolved = resolve_device_model_for_install(self.device_model)
-        self.device_model = resolved
-        self.device_label = "Y2" if is_y2_model(resolved) else "Y1"
+        resolved = self._sync_device_label()
         prepare_sp_flash_tool_files(resolved)
 
         ok, errors, warnings = validate_spflash_images_for_model(resolved, self.app_dir)
@@ -4476,25 +6959,25 @@ class SPFlashToolWorker(QThread):
             raise RuntimeError(msg)
 
         com_port = self.requested_com_port
-        ports = []
+        ports = list_mediatek_serial_ports() if is_linux_platform() else []
         if is_linux_platform():
-            ports = list_mediatek_serial_ports()
             silent_print(f"MediaTek ports before SPFT: {describe_mediatek_ports(ports)}")
-            if not com_port:
-                chosen = select_spflash_com_port(self.device_model, ports=ports)
-                if chosen and chosen.get("openable") and Path(chosen["tty"]).exists():
-                    com_port = chosen["tty"]
-                    silent_print(
-                        f"Selected SP Flash Tool port for {self.device_label}: "
-                        f"{com_port} pid={chosen.get('pid')} mode={chosen.get('mode')}"
-                    )
+            # Never pin a single port on Linux console mode. Pinned com-port makes
+            # flash_tool print "searching user specified com port" and hang if the
+            # node re-enumerates or BROM drops (common after a probe open/close).
+            # Empty com-port → "Search usb" auto-detect + LD_PRELOAD open-retry.
+            if com_port:
+                silent_print(
+                    f"Linux: not pinning com-port={com_port} "
+                    "(use Search usb auto-detect to avoid hang)"
+                )
+            com_port = None
             if len(ports) > 1:
                 silent_print(
                     f"WARNING: {len(ports)} MediaTek serial ports present — "
-                    "wrong device may be selected if com-port is not pinned"
+                    "unplug devices you are not flashing"
                 )
-        # Only pin if the node still exists (do not block auto-detect when waiting
-        # for the user to plug the player after "Search usb").
+        # Only pin if the node still exists (Windows / explicit request)
         if com_port and not Path(com_port).exists():
             silent_print(f"Not pinning missing com-port {com_port}")
             com_port = None
@@ -4505,243 +6988,576 @@ class SPFlashToolWorker(QThread):
         )
         return [str(self.binary), "-i", str(runtime_xml)], com_port, ports
 
-    def run(self):
-        """Run the SP Flash Tool command and monitor output"""
-        tty_guardian = None
+    def _prepare_linux_port_access_before_flash(self, attempt, max_attempts):
+        """
+        Preflight without pinning com-port and without open/close on BROM.
+
+        Opening the MediaTek tty here often leaves Y1/Y2 in a bad handshake
+        state so SP Flash Tool later reports S_COM_PORT_OPEN_FAIL even though
+        this app can open the node afterward. Instead: kill competitors,
+        chmod nodes, leave Search-usb + LD_PRELOAD to own the real open.
+        """
+        if not is_linux_platform():
+            return True, None
+        stop_install_competitor_processes(release_serial_holders=True)
+        _linux_chmod_mtk_tty_nodes_best_effort()
+        ports = list_mediatek_serial_ports()
+        if not ports:
+            silent_print(
+                "Linux: no MediaTek port yet — SP Flash Tool will Search usb "
+                "(auto-detect, no pin)"
+            )
+            self.status_updated.emit(
+                f"Getting firmware ready for your {self.device_label}. "
+                f"Keep it unplugged until we ask you to connect."
+            )
+            return True, None
+
+        # Already plugged — free holders, warn; do not open/close the port.
+        holders = linux_list_serial_port_holder_pids()
+        if holders:
+            silent_print(f"Preflight: serial holders present: {holders}")
+            linux_release_serial_port_holders()
+        modes = ", ".join(
+            f"{p.get('tty')} ({p.get('mode')})" for p in ports[:4]
+        )
+        silent_print(
+            f"Linux: MediaTek port already present ({modes}) — "
+            "not probing open (avoids BROM/preloader disrupt); Search usb"
+        )
+        self.status_updated.emit(
+            f"Your {self.device_label} already looks connected. "
+            f"If this attempt fails, unplug fully, wait for the connect prompt, "
+            f"then power it off and plug in only then."
+        )
+        self.requested_com_port = None
+        return True, None
+
+    def _run_flash_tool_once(self, attempt, max_attempts):
+        """
+        One flash_tool -i session. Returns dict:
+          ok, completed, com_port_open_fail, saw_permission_hint, overlap,
+          reached_search_usb, message
+        """
+        result = {
+            "ok": False,
+            "completed": False,
+            "com_port_open_fail": False,
+            "saw_permission_hint": False,
+            "overlap": False,
+            "reached_search_usb": False,
+            "message": "",
+        }
+        # Linux: settle permissions if a port is already up; never pin com-port
+        # (pinned path → "searching user specified com port" forever on re-enum).
+        if is_linux_platform():
+            ok_prep, _ = self._prepare_linux_port_access_before_flash(attempt, max_attempts)
+            if not ok_prep:
+                result["message"] = "cancelled"
+                return result
+            self.requested_com_port = None
+
         try:
-            if is_linux_platform():
-                ensure_sp_flash_tool_executable(self.app_dir)
-                # Fix LogPath, stop ModemManager if possible, preflight tty access.
-                prepare_linux_spflash_runtime(self.app_dir)
-                ensure_spft_open_retry_preload(self.app_dir)
-                # Beat SP Flash Tool's open-on-uevent race (chmod as nodes appear).
-                tty_guardian = _LinuxTtyAccessGuardian()
-                tty_guardian.start()
+            self.spflash_command, pinned_port, ports_before = self._build_runtime_command()
+        except RuntimeError as preflight_err:
+            silent_print(f"SP Flash Tool preflight failed: {preflight_err}")
+            result["message"] = str(preflight_err)
+            return result
 
-            try:
-                self.spflash_command, pinned_port, ports_before = self._build_runtime_command()
-            except RuntimeError as preflight_err:
-                silent_print(f"SP Flash Tool preflight failed: {preflight_err}")
-                self.spflash_completed.emit(False, str(preflight_err))
-                return
-
-            silent_print(f"Starting SP Flash Tool command: {self.spflash_command}")
+        silent_print(
+            f"Starting SP Flash Tool command (attempt {attempt}/{max_attempts}): "
+            f"{self.spflash_command}"
+        )
+        self.show_please_wait_image.emit()
+        if attempt == 1:
             self.status_updated.emit(
                 f"Loading {self.device_label} firmware images (please wait)…"
             )
-            if pinned_port:
-                self.status_updated.emit(
-                    f"Using serial port {pinned_port} for {self.device_label} "
-                    f"({describe_mediatek_ports(ports_before)})"
-                )
-            elif is_linux_platform() and len(ports_before) > 1:
-                self.status_updated.emit(
-                    "Multiple MediaTek devices detected — unplug the one you are not flashing"
-                )
-
-            # Start flash_tool (Windows) or flash_tool (Linux) with console XML
-            process = subprocess.Popen(
-                self.spflash_command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                bufsize=0,
-                universal_newlines=True,
-                cwd=str(self.app_dir),
-                env=sp_flash_tool_process_env(self.app_dir),
+        else:
+            self.status_updated.emit(
+                f"Retrying SP Flash Tool ({attempt}/{max_attempts})…"
             )
-            
-            # Ensure process doesn't hang indefinitely
-            process_timeout = 1800  # 30 minutes timeout for SP Flash Tool
-            process_start_time = time.time()
-            
-            # Phase tracking variables
-            please_wait_phase = True  # Start with please wait phase
-            instructions_phase = False
-            installing_phase = False
-            completed_phase = False
-            com_port_open_fail = False
-            saw_permission_hint = False
-            self._spft_overlap_error = False
-            
-            # Read output line by line
-            while True:
-                if self.should_stop:
-                    if process.poll() is None:
-                        process.terminate()
-                    break
-                    
-                # Check for timeout
-                if time.time() - process_start_time > process_timeout:
-                    silent_print("SP Flash Tool process timeout - terminating")
-                    process.terminate()
-                    break
-                
-                output = process.stdout.readline()
-                if output == '' and process.poll() is not None:
-                    break
-                    
-                if output:
-                    line = output.strip()
-                    silent_print(f"{line}")
+        if pinned_port:
+            self.status_updated.emit(
+                f"Using serial port {pinned_port} for {self.device_label} "
+                f"({describe_mediatek_ports(ports_before)})"
+            )
+        elif is_linux_platform():
+            # Expected path: Search usb auto-detect
+            pass
 
-                    # Linux COM open failures (1013) — capture for a better post-mortem.
-                    if (
-                        "S_COM_PORT_OPEN_FAIL" in line
-                        or "Failed to open COM port" in line
-                        or "err_code[1013]" in line
-                        or "ERROR : S_COM_PORT_OPEN_FAIL" in line
-                    ):
-                        com_port_open_fail = True
-                    if "Permission denied" in line or "open fail! , 13" in line:
-                        saw_permission_hint = True
-                        com_port_open_fail = True
-                    if (
-                        "S_DL_LOAD_REGION_IS_OVERLAP" in line
-                        or "5016" in line
-                        or "LOAD_REGION_IS_OVERLAP" in line
-                        or "Boundary Check Failed" in line
-                    ):
-                        # Will surface a clear message after process ends.
-                        saw_permission_hint = False
-                        com_port_open_fail = False
-                        self._spft_overlap_error = True
-                    
-                    # Phase detection based on flash_tool.exe output patterns
-                    
-                    # Please wait phase: Show "Please wait..." until "Search usb" is detected
-                    if please_wait_phase and not line.startswith("Search usb"):
-                        # Keep showing please wait image and status
-                        self.show_please_wait_image.emit()
-                        self.status_updated.emit("Please wait...")
-                        # Don't emit the actual flash tool output yet
-                        continue
-                    
-                    # Instructions phase: When "Search usb" is detected, show instructions
-                    elif line.startswith("Search usb"):
-                        please_wait_phase = False
-                        instructions_phase = True
-                        installing_phase = False
-                        completed_phase = False
-                        self.show_initsteps_image.emit()
+        process = subprocess.Popen(
+            self.spflash_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=0,
+            universal_newlines=True,
+            cwd=str(self.app_dir),
+            env=sp_flash_tool_process_env(self.app_dir),
+        )
+
+        process_timeout = 1800  # 30 minutes
+        process_start_time = time.time()
+        please_wait_phase = True
+        instructions_phase = False
+        installing_phase = False
+        completed_phase = False
+        com_port_open_fail = False
+        saw_permission_hint = False
+        overlap_error = False
+        reached_search_usb = False
+        mid_run_heal_done = False
+        flash_pid = getattr(process, "pid", None)
+        load_fail_hints = []
+
+        while True:
+            if self.should_stop:
+                if process.poll() is None:
+                    process.terminate()
+                break
+            if time.time() - process_start_time > process_timeout:
+                silent_print("SP Flash Tool process timeout - terminating")
+                process.terminate()
+                break
+
+            output = process.stdout.readline()
+            if output == "" and process.poll() is not None:
+                break
+            if not output:
+                continue
+
+            line = output.strip()
+            silent_print(f"{line}")
+
+            if (
+                "S_COM_PORT_OPEN_FAIL" in line
+                or "Failed to open COM port" in line
+                or "err_code[1013]" in line
+                or "ERROR : S_COM_PORT_OPEN_FAIL" in line
+            ):
+                com_port_open_fail = True
+                # Mid-run: free competing holders without killing our flash_tool
+                if is_linux_platform() and not mid_run_heal_done:
+                    mid_run_heal_done = True
+                    try:
+                        exclude = [flash_pid] if flash_pid else []
+                        stop_mtk_client_processes(exclude_pids=exclude)
+                        linux_release_serial_port_holders(exclude_pids=exclude)
+                        _linux_chmod_mtk_tty_nodes_best_effort()
                         self.status_updated.emit(
-                            f"If it isn't already off, please turn off your {self.device_label} "
-                            "(or insert paperclip in hidden button) and connect it via USB"
+                            "Could not open the download port — cleared other tools "
+                            "holding the connection. Waiting for the flash tool to retry…"
                         )
-                        # Don't show the raw flash tool output, keep the user-friendly message
-                        
-                    # Continue with instructions phase until installing phase
-                    elif instructions_phase and not installing_phase and not completed_phase:
-                        if ("Downloading" in line or
-                            "Downloading & Connecting to DA" in line or
-                            "connect DA end stage" in line or
-                            "COM port is open" in line or
-                            "Download DA now" in line or
-                            "Formatting Flash" in line or
-                            "Format Succeeded" in line or
-                            "executing DADownloadAll" in line or
-                            "DA report" in line or
-                            "% of" in line or
-                            "download speed" in line or
-                            "Download Succeeded" in line):
-                            # Transition to installing phase
-                            instructions_phase = False
-                            installing_phase = True
-                            self.show_installing_image.emit()
-                            self.disable_update_button.emit()
-                            self.status_updated.emit(f"{line}")
-                        else:
-                            # Continue showing instructions and flash tool output
-                            self.status_updated.emit(f"{line}")
-                        
-                    # Installing phase: Downloading and flashing operations
-                    elif installing_phase and not completed_phase:
-                        if ("Downloading" in line or
-                            "Downloading & Connecting to DA" in line or
-                            "connect DA end stage" in line or
-                            "COM port is open" in line or
-                            "Download DA now" in line or
-                            "Formatting Flash" in line or
-                            "Format Succeeded" in line or
-                            "executing DADownloadAll" in line or
-                            "DA report" in line or
-                            "% of" in line or
-                            "download speed" in line or
-                            "Download Succeeded" in line):
-                            self.status_updated.emit(f"{line}")
-                        elif (line.startswith("Disconnect!") or
-                              "All command exec done!" in line or
-                              "FlashTool_EnableWatchDogTimeout" in line):
-                            # Transition to completion phase
-                            completed_phase = True
-                            installing_phase = False
-                            if line.startswith("Disconnect!"):
-                                self.show_installed_image.emit()
-                                self.status_updated.emit(
-                                    f"Install Complete, please disconnect your {self.device_label} and hold the center button"
-                                )
-                            else:
-                                self.show_installing_image.emit()  # Use installing image for other completion indicators
-                                self.status_updated.emit(f"Flash Tool: {line}")
-                        else:
-                            self.status_updated.emit(f"Flash Tool: {line}")
-                        
-                    # Completion phase: Final cleanup and disconnection
-                    elif completed_phase:
-                        if line.startswith("Disconnect!"):
-                            self.show_installed_image.emit()
-                            self.status_updated.emit(
-                                f"Install Complete, please disconnect your {self.device_label} and hold the center button"
-                            )
-                        else:
-                            self.status_updated.emit(f"Flash Tool: {line}")
-                        
-                        
-                    # Other output
-                    else:
-                        self.status_updated.emit(f"Flash Tool: {line}")
-            
-            # Wait for process to complete
-            process.wait()
-            
-            # Determine success based on completion phase
-            if completed_phase:
-                silent_print("Flash Tool completed successfully")
-                self.spflash_completed.emit(True, "Software installation completed successfully")
-            elif getattr(self, "_spft_overlap_error", False):
-                silent_print("Flash Tool failed: image/scatter region overlap (5016)")
-                self.spflash_completed.emit(
-                    False,
-                    "SP Flash Tool quit while loading images (S_DL_LOAD_REGION_IS_OVERLAP).\n\n"
-                    "That almost always means the wrong scatter was used for the files on disk "
-                    "(for example a Y2 system.img with a Y1 scatter). "
-                    "Re-extract the correct Y1 or Y2 firmware package and try again.\n\n"
-                    f"Device model this run: {self.device_label}",
+                    except Exception as e:
+                        silent_print(f"mid-run COM heal: {e}")
+            if "Permission denied" in line or "open fail! , 13" in line:
+                saw_permission_hint = True
+                com_port_open_fail = True
+            if (
+                "S_DL_LOAD_REGION_IS_OVERLAP" in line
+                or "LOAD_REGION_IS_OVERLAP" in line
+                or "Boundary Check Failed" in line
+                or "err_code[5016]" in line
+                or ("5016" in line and ("err" in line.lower() or "overlap" in line.lower()
+                                        or "LoadRom" in line or "failed" in line.lower()))
+            ):
+                saw_permission_hint = False
+                com_port_open_fail = False
+                overlap_error = True
+                load_fail_hints.append(line)
+            if (
+                "LoadRomFile failed" in line
+                or "LoadRoms" in line and "fail" in line.lower()
+                or "S_FT_" in line and "ERROR" in line
+            ):
+                load_fail_hints.append(line)
+
+            if please_wait_phase and not line.startswith("Search usb"):
+                self.show_please_wait_image.emit()
+                self.status_updated.emit(
+                    f"Loading firmware for your {self.device_label} — please wait…"
                 )
-            elif com_port_open_fail and is_linux_platform():
-                silent_print("Flash Tool failed: COM port open (Linux USB/serial permissions)")
-                msg = linux_spflash_com_port_fail_message()
-                if saw_permission_hint:
-                    msg = "Permission denied opening /dev/ttyACM*.\n\n" + msg
-                self.spflash_completed.emit(False, msg)
+                continue
+
+            if line.startswith("Search usb"):
+                please_wait_phase = False
+                instructions_phase = True
+                installing_phase = False
+                completed_phase = False
+                reached_search_usb = True
+                self.show_initsteps_image.emit()
+                self.status_updated.emit(
+                    spflash_connect_status_text(
+                        self.device_label, device_model=self.device_model
+                    )
+                )
+            elif instructions_phase and not installing_phase and not completed_phase:
+                if (
+                    "Downloading" in line
+                    or "Downloading & Connecting to DA" in line
+                    or "connect DA end stage" in line
+                    or "COM port is open" in line
+                    or "Download DA now" in line
+                    or "Formatting Flash" in line
+                    or "Format Succeeded" in line
+                    or "executing DADownloadAll" in line
+                    or "DA report" in line
+                    or "% of" in line
+                    or "download speed" in line
+                    or "Download Succeeded" in line
+                ):
+                    instructions_phase = False
+                    installing_phase = True
+                    self.show_installing_image.emit()
+                    self.disable_update_button.emit()
+                    self.status_updated.emit(
+                        f"Writing firmware to your {self.device_label} — keep USB connected…"
+                    )
+                else:
+                    # Soften raw flash_tool chatter for waiting users
+                    if "searching" in line.lower() or "usb" in line.lower():
+                        self.status_updated.emit(
+                            spflash_connect_status_text(
+                                self.device_label, device_model=self.device_model
+                            )
+                        )
+                    else:
+                        self.status_updated.emit(line)
+            elif installing_phase and not completed_phase:
+                if (
+                    "Downloading" in line
+                    or "Downloading & Connecting to DA" in line
+                    or "connect DA end stage" in line
+                    or "COM port is open" in line
+                    or "Download DA now" in line
+                    or "Formatting Flash" in line
+                    or "Format Succeeded" in line
+                    or "executing DADownloadAll" in line
+                    or "DA report" in line
+                    or "% of" in line
+                    or "download speed" in line
+                    or "Download Succeeded" in line
+                ):
+                    # Keep progress lines when they carry %, else a calm status
+                    if "%" in line or "speed" in line.lower():
+                        self.status_updated.emit(line)
+                    else:
+                        self.status_updated.emit(
+                            f"Installing on your {self.device_label} — do not unplug…"
+                        )
+                elif (
+                    line.startswith("Disconnect!")
+                    or "All command exec done!" in line
+                    or "FlashTool_EnableWatchDogTimeout" in line
+                ):
+                    completed_phase = True
+                    installing_phase = False
+                    if line.startswith("Disconnect!"):
+                        self.show_installed_image.emit()
+                        self.status_updated.emit(
+                            spflash_success_status_text(
+                                self.device_label, device_model=self.device_model
+                            )
+                        )
+                    else:
+                        self.show_installing_image.emit()
+                        self.status_updated.emit(
+                            f"Almost done on your {self.device_label}…"
+                        )
+                else:
+                    self.status_updated.emit(
+                        f"Installing on your {self.device_label} — do not unplug…"
+                    )
+            elif completed_phase:
+                if line.startswith("Disconnect!"):
+                    self.show_installed_image.emit()
+                    self.status_updated.emit(
+                        spflash_success_status_text(
+                            self.device_label, device_model=self.device_model
+                        )
+                    )
+                else:
+                    self.status_updated.emit(
+                        spflash_success_status_text(
+                            self.device_label, device_model=self.device_model
+                        )
+                    )
             else:
-                silent_print("Flash Tool did not complete successfully")
-                if is_linux_platform():
+                self.status_updated.emit(line)
+
+        # Ensure our flash_tool is not left as a zombie holding the port
+        try:
+            if process.poll() is None:
+                process.terminate()
+                try:
+                    process.wait(timeout=2)
+                except Exception:
+                    process.kill()
+        except Exception:
+            pass
+        if flash_pid and is_linux_platform():
+            try:
+                # Kill siblings only — not this process (already exiting)
+                stop_sp_flash_tool_processes(exclude_pids=[os.getpid()])
+            except Exception:
+                pass
+
+        process.wait()
+        # If SPFT exited during LoadRoms (before Search usb), treat as load/config
+        # failure — never as "you forgot to plug in". Also scan recent SPFT logs
+        # for 5016 when stdout did not surface the overlap string.
+        if not reached_search_usb and not completed_phase and not overlap_error:
+            try:
+                log_dir = self.app_dir / FLASH_TOOL_LINUX_LOG_DIR_NAME
+                if log_dir.is_dir():
+                    dumps = sorted(
+                        log_dir.glob("SP_FT_Dump_*"),
+                        key=lambda p: p.stat().st_mtime,
+                        reverse=True,
+                    )
+                    for dump in dumps[:2]:
+                        for log_name in ("QT_FLASH_TOOL.log", "BROM_DLL_V5.log"):
+                            log_path = dump / log_name
+                            if not log_path.is_file():
+                                continue
+                            try:
+                                tail = log_path.read_text(
+                                    encoding="utf-8", errors="ignore"
+                                )[-12000:]
+                            except Exception:
+                                continue
+                            if (
+                                "S_DL_LOAD_REGION_IS_OVERLAP" in tail
+                                or "err_code[5016]" in tail
+                                or "Boundary Check Failed" in tail
+                                or "LoadRomFile failed" in tail
+                            ):
+                                overlap_error = True
+                                silent_print(
+                                    f"SPFT early exit: overlap/load fail in {log_path.name}"
+                                )
+                                break
+                        if overlap_error:
+                            break
+            except Exception as e:
+                silent_print(f"SPFT log scan after early exit: {e}")
+
+        result["completed"] = completed_phase
+        result["com_port_open_fail"] = com_port_open_fail and reached_search_usb
+        result["saw_permission_hint"] = saw_permission_hint
+        result["overlap"] = overlap_error
+        result["reached_search_usb"] = reached_search_usb
+        result["ok"] = completed_phase
+        if (
+            not completed_phase
+            and not reached_search_usb
+            and not overlap_error
+            and not result["message"]
+        ):
+            result["message"] = (
+                f"SP Flash Tool quit while loading firmware images for your "
+                f"{self.device_label}, before waiting for USB.\n\n"
+                f"That is a scatter/config problem on this computer — not a cable "
+                f"or plug-in issue. Try Install / Restore again (we will re-pin the "
+                f"correct Y1/Y2 scatter). If it keeps failing, re-extract the "
+                f"{self.device_label} firmware zip."
+            )
+            if load_fail_hints:
+                result["message"] += "\n\n" + "\n".join(load_fail_hints[-4:])
+        return result
+
+    def run(self):
+        """Run SP Flash Tool; on Linux COM open fail, self-heal and retry."""
+        tty_guardian = None
+        max_attempts = (
+            LINUX_FLASH_SELF_HEAL_MAX_ATTEMPTS if is_linux_platform() else 1
+        )
+        try:
+            # Kill leftover flash_tool + mtk.py so only this install owns the session.
+            try:
+                n = stop_install_competitor_processes(release_serial_holders=True)
+                if n:
+                    self.status_updated.emit(
+                        "Closed leftover flash tools so this install can use the port…"
+                    )
+                    time.sleep(0.3)
+            except Exception as e:
+                silent_print(f"stop_install_competitor_processes before install: {e}")
+
+            if is_linux_platform():
+                ensure_sp_flash_tool_executable(self.app_dir)
+                prepare_linux_spflash_runtime(self.app_dir)
+                # Force rebuild open-retry preload if version stamp is stale
+                ensure_spft_open_retry_preload(self.app_dir, force_rebuild=False)
+                tty_guardian = _LinuxTtyAccessGuardian()
+                tty_guardian.start()
+            elif is_windows_platform():
+                stop_install_competitor_processes(release_serial_holders=False)
+
+            last = None
+            for attempt in range(1, max_attempts + 1):
+                if self.should_stop:
+                    break
+                # Before each attempt, clear flash_tool / mtk.py / tty holders
+                if attempt > 1:
+                    stop_install_competitor_processes(release_serial_holders=True)
+                last = self._run_flash_tool_once(attempt, max_attempts)
+                if last.get("ok") or last.get("completed"):
+                    silent_print("Flash Tool completed successfully")
+                    self._sync_device_label()
+                    # UI shows status + donation screen; keep message minimal
+                    self.spflash_completed.emit(
+                        True,
+                        f"Firmware installed on your {self.device_label}.",
+                    )
+                    return
+                if last.get("overlap") or (
+                    not last.get("reached_search_usb")
+                    and not last.get("com_port_open_fail")
+                    and not last.get("ok")
+                    and "quit while loading" in (last.get("message") or "")
+                ):
+                    silent_print(
+                        "Flash Tool failed during image load "
+                        f"(overlap={last.get('overlap')}, "
+                        f"reached_search_usb={last.get('reached_search_usb')})"
+                    )
+                    # One automatic recovery: if images look like Y2 but we used Y1
+                    # (or the reverse), flip model and retry once without asking to plug in.
+                    size_hint = _model_from_system_image_size(self.app_dir)
+                    should_flip = (
+                        attempt == 1
+                        and size_hint
+                        and size_hint != (
+                            "Y2" if is_y2_model(self.device_model) else "Y1"
+                        )
+                    )
+                    if should_flip:
+                        silent_print(
+                            f"SPFT load failed with model={self.device_model}; "
+                            f"system.img suggests {size_hint} — retrying once"
+                        )
+                        self._sync_device_label(size_hint)
+                        prepare_sp_flash_tool_files(size_hint)
+                        self.status_updated.emit(
+                            f"Reloading with {self.device_label} scatter/config…"
+                        )
+                        continue
                     self.spflash_completed.emit(
                         False,
-                        "Flash did not finish. On Linux, check USB cable/port, that the player is "
-                        "off when connecting, and that SP Flash Tool setup (udev rules) completed.\n\n"
+                        last.get("message")
+                        or (
+                            f"SP Flash Tool could not load the firmware images for your "
+                            f"{self.device_label} (scatter/layout error).\n\n"
+                            f"You do not need to plug the player in yet — this failed "
+                            f"while preparing files on the computer.\n\n"
+                            f"Select the correct Device Model (Y1 or Y2), re-extract "
+                            f"that model’s firmware zip, and try Install / Restore again."
+                        ),
+                    )
+                    return
+                if last.get("message") and not last.get("com_port_open_fail"):
+                    # Preflight / hard error — do not retry COM heal
+                    if (
+                        "Cannot start SP Flash Tool" in last["message"]
+                        or "image/scatter" in last["message"]
+                        or "quit while loading" in last["message"]
+                    ):
+                        self.spflash_completed.emit(False, last["message"])
+                        return
+
+                can_retry = (
+                    is_linux_platform()
+                    and last.get("com_port_open_fail")
+                    and last.get("reached_search_usb")
+                    and attempt < max_attempts
+                    and not self.should_stop
+                )
+                if can_retry:
+                    silent_print(
+                        f"SP Flash Tool COM open fail on attempt {attempt} — self-healing…"
+                    )
+                    self.show_please_wait_image.emit()
+                    # Never leave a sticky pin for Linux console mode.
+                    self.requested_com_port = None
+                    self.status_updated.emit(
+                        f"Could not open the download port "
+                        f"(try {attempt}/{max_attempts}). "
+                        f"Clearing other tools and fixing USB access…"
+                    )
+                    linux_spflash_self_heal_port_access(
+                        self.app_dir,
+                        force_rebuild_preload=(attempt <= 2),
+                        kill_competitors=True,
+                    )
+                    # After first failure: guide a clean unplug/replug (community-standard)
+                    if attempt >= 1:
+                        def _status(msg):
+                            self.status_updated.emit(msg)
+
+                        linux_spflash_wait_for_clean_reconnect(
+                            status_cb=_status,
+                            should_stop=lambda: self.should_stop,
+                            # First retry: shorter unplug wait if already unplugged
+                            require_unplug_if_present=True,
+                        )
+                    if self.should_stop:
+                        break
+                    continue
+                break
+
+            # Exhausted attempts or non-retryable failure
+            if last and last.get("com_port_open_fail") and last.get("reached_search_usb"):
+                silent_print(
+                    "Flash Tool failed: COM port open "
+                    f"({'Linux self-heal retries exhausted' if is_linux_platform() else 'Windows'})"
+                )
+                if is_linux_platform():
+                    msg = linux_spflash_com_port_fail_message(self.device_label)
+                    msg += (
+                        f"\n\nWe automatically retried {max_attempts} times "
+                        f"(closed leftover flash tools, cleared the port, refreshed USB rules, "
+                        f"and asked for a clean unplug/replug)."
+                    )
+                    msg += (
+                        f"\n\nFully unplug your {self.device_label} and try again. "
+                        f"If it still fails: troubleshooting.innioasis.app"
+                    )
+                else:
+                    msg = windows_spflash_com_port_fail_message(self.device_label)
+                self.spflash_completed.emit(False, msg)
+            elif last and last.get("message"):
+                self.spflash_completed.emit(False, last["message"])
+            else:
+                silent_print("Flash Tool did not complete successfully")
+                if last and not last.get("reached_search_usb"):
+                    self.spflash_completed.emit(
+                        False,
+                        f"SP Flash Tool quit while loading firmware for your "
+                        f"{self.device_label}, before waiting for USB.\n\n"
+                        f"This is not a plug-in / cable problem. Re-select Device Model "
+                        f"Y1 or Y2 to match the package, re-extract the firmware, and try again.",
+                    )
+                elif is_linux_platform():
+                    self.spflash_completed.emit(
+                        False,
+                        f"The install did not finish on your {self.device_label}.\n\n"
+                        f"Check: short data-capable USB cable, player fully off when you plug in, "
+                        f"and that SP Flash Tool setup has been run once in this app.\n\n"
                         + diagnose_linux_spflash_port_access(),
                     )
                 else:
                     self.spflash_completed.emit(
                         False,
-                        "Please check that drivers are installed and that you restarted your computer",
+                        windows_spflash_com_port_fail_message(self.device_label),
                     )
-                
+
         except Exception as e:
             silent_print(f"Error running Flash Tool: {e}")
-            self.spflash_completed.emit(False, f"Error running Flash Tool: {e}")
+            self.spflash_completed.emit(
+                False, f"The flash tool stopped unexpectedly: {e}"
+            )
         finally:
             if tty_guardian is not None:
                 try:
@@ -4749,6 +7565,11 @@ class SPFlashToolWorker(QThread):
                     tty_guardian.join(timeout=1.0)
                 except Exception:
                     pass
+            # Always leave the machine clean for the next attempt
+            try:
+                stop_install_competitor_processes(release_serial_holders=True)
+            except Exception:
+                pass
             self.enable_update_button.emit()
 
 
@@ -4814,26 +7635,288 @@ class MTKWorker(QThread):
             line = line.replace("ª", self.progress_empty)     # Partial mojibake
         return line
 
+    def _clear_mtk_state(self, *dirs):
+        """Remove stale mtkclient .state / hwparam so reconnect re-handshakes cleanly."""
+        for base in dirs:
+            if not base:
+                continue
+            base = Path(base)
+            for name in (".state", "hwparam.json"):
+                path = base / name
+                if path.exists():
+                    try:
+                        path.unlink()
+                    except Exception:
+                        pass
+
+    def _run_one_mtk_cmd(self, cmd, cwd, app_dir, stage_name=""):
+        """
+        Run one mtk.py invocation, streaming status. Returns
+        (success: bool, last_line: str, saw_progress: bool).
+        """
+        self._clear_mtk_state(cwd, app_dir, Path.cwd())
+        label = f"[{stage_name}] " if stage_name else ""
+        self.status_updated.emit(f"MTK: {label}starting…")
+        self.show_initsteps_image.emit()
+
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=0,
+            universal_newlines=True,
+            cwd=str(cwd or app_dir),
+            env=mtk_process_env(app_dir),
+        )
+        last_line = ""
+        saw_progress = False
+        saw_wrote = False
+        failed_write = False
+        deadline = time.time() + 900  # 15 min per stage
+        while True:
+            if self.should_stop:
+                try:
+                    process.terminate()
+                except Exception:
+                    pass
+                return False, last_line, saw_progress
+            if time.time() > deadline:
+                try:
+                    process.terminate()
+                except Exception:
+                    pass
+                return False, last_line or "timeout", saw_progress
+
+            output = process.stdout.readline()
+            if output == "" and process.poll() is not None:
+                break
+            if not output:
+                time.sleep(0.02)
+                continue
+            if "\r" in output:
+                segments = [s.strip() for s in output.split("\r") if s.strip()]
+                line = segments[-1] if segments else output.strip()
+            else:
+                line = output.strip()
+            if not line:
+                continue
+            last_line = line
+            fixed = self.fix_progress_bar_chars(line)
+            lower = line.lower()
+            if "progress" in lower or line.lower().startswith("wrote"):
+                saw_progress = True
+                self.show_installing_image.emit()
+                self.disable_update_button.emit()
+            if line.lower().startswith("wrote"):
+                saw_wrote = True
+            if "failed to write" in lower or "data ack failed" in lower:
+                failed_write = True
+            if "device detected" in lower:
+                self.show_please_wait_image.emit()
+            if "brom" in lower or "waiting for" in lower:
+                self.status_updated.emit("Please wait…")
+                self.show_please_wait_image.emit()
+            else:
+                self.status_updated.emit(f"MTK: {label}{fixed}")
+
+        process.wait()
+        ok = (process.returncode == 0 or saw_wrote) and not failed_write
+        # If we saw 100% / Wrote and no explicit failure, treat as success even
+        # when mtkclient exits non-zero after a non-fatal USB note.
+        if failed_write:
+            ok = False
+        elif saw_wrote and ("100%" in last_line or last_line.lower().startswith("wrote")):
+            ok = True
+        elif process.returncode == 0 and saw_progress:
+            ok = True
+        return ok, last_line, saw_progress
+
+    def _run_named_w_staged(self, stages, meta, app_dir, device_label="player"):
+        """Run named ``mtk.py w`` stage(s) — addresses from on-device partition table."""
+        install_root = Path((meta or {}).get("install_root") or app_dir)
+        successful = True
+        fail_msg = ""
+        try:
+            self.disable_update_button.emit()
+            for stage in stages:
+                if self.should_stop:
+                    successful = False
+                    fail_msg = "MTK command cancelled"
+                    break
+                name = stage.get("name", "stage")
+                required = bool(stage.get("required", True))
+                retries = int(stage.get("retries", 1) or 1)
+                cmd = stage.get("cmd") or []
+                cwd = stage.get("cwd") or str(install_root)
+                stage_ok = False
+                last_err = ""
+                for attempt in range(1, retries + 1):
+                    if self.should_stop:
+                        break
+                    self.status_updated.emit(
+                        f"{device_label} flash ({name}) try {attempt}/{retries} — "
+                        f"power off the player and connect USB when asked"
+                    )
+                    self.show_reconnect_image.emit()
+                    ok, last_line, _ = self._run_one_mtk_cmd(
+                        cmd, cwd, app_dir, stage_name=name
+                    )
+                    if ok:
+                        stage_ok = True
+                        silent_print(f"named-w stage {name} OK: {last_line}")
+                        break
+                    last_err = last_line
+                    silent_print(
+                        f"named-w stage {name} attempt {attempt} failed: {last_line}"
+                    )
+                    self._clear_mtk_state(cwd, app_dir)
+                    time.sleep(1.0)
+                if not stage_ok:
+                    if required:
+                        successful = False
+                        low = (last_err or "").lower()
+                        if (
+                            "couldn't detect partition" in low
+                            or "available partitions:" in low
+                        ):
+                            fail_msg = (
+                                f"No partition table detected on your {device_label}.\n\n"
+                                "MTKClient writes by partition name once the table exists. "
+                                "Flash once with SP Flash Tool to create the layout, then "
+                                "try MTKClient again.\n\n"
+                                f"Detail: {last_err}"
+                            )
+                        else:
+                            fail_msg = f"Flash stage {name} failed: {last_err}"
+                        break
+                    silent_print(
+                        f"Optional stage {name} failed (continuing): {last_err}"
+                    )
+                    self.status_updated.emit(
+                        f"Optional stage {name} skipped after error — continuing"
+                    )
+        except Exception as e:
+            successful = False
+            fail_msg = f"MTK error: {e}"
+            silent_print(fail_msg)
+        finally:
+            self.enable_update_button.emit()
+
+        if self.should_stop:
+            self.mtk_completed.emit(False, "MTK command cancelled")
+        elif successful:
+            # UI shows unified status + donation screen (model-aware power-on steps)
+            self.mtk_completed.emit(
+                True,
+                f"Firmware installed on your {device_label}.",
+            )
+        else:
+            self.mtk_completed.emit(
+                False, fail_msg or "Install process interrupted — please try again"
+            )
+
+    def _run_y2_staged(self, stages, meta, app_dir):
+        """Back-compat alias for Y2 named-w staged flash."""
+        self._run_named_w_staged(stages, meta, app_dir, device_label="Y2")
+
+    def _run_scatter_wo_staged(self, stages, meta, app_dir, device_label="player"):
+        """Deprecated alias — installs use named ``w``, not scatter offsets."""
+        self._run_named_w_staged(stages, meta, app_dir, device_label=device_label)
+
     def run(self):
         model = resolve_device_model_for_install(
             getattr(self, 'device_model', None),
             zip_path=getattr(self, 'zip_path', None),
             extracted_files=getattr(self, 'extracted_files', None),
         )
-        cmd = build_mtk_write_command(
-            model,
-            zip_path=getattr(self, 'zip_path', None),
-            extracted_files=getattr(self, 'extracted_files', None),
-        )
+        app_dir = Path(__file__).resolve().parent
+        device_label = device_label_for_model(model)
+
+        # Windows never uses MTKClient (SP Flash Tool only).
+        if is_windows_platform():
+            self.mtk_completed.emit(
+                False,
+                "MTKClient is not available on Windows. Use SP Flash Tool.",
+            )
+            return
+
+        # Between extract and flash: ensure simg2img, desparse system/cache/userdata
+        # so wo lengths use raw sizes (never sparse packing size).
+        def _desparse_status(message, percent=None):
+            if percent is not None:
+                self.status_updated.emit(f"{message} ({int(percent)}%)")
+            else:
+                self.status_updated.emit(str(message))
+
+        try:
+            ok, prep_msg, desparsed = prepare_mtkclient_images(
+                install_dir=app_dir,
+                progress_cb=_desparse_status,
+            )
+        except Exception as e:
+            ok, prep_msg, desparsed = False, f"Image preparation failed: {e}", []
+        if not ok:
+            silent_print(f"MTK image prep failed: {prep_msg}")
+            self.mtk_completed.emit(False, prep_msg)
+            return
+        if desparsed:
+            silent_print(f"MTK image prep desparsed: {desparsed}")
+            self.status_updated.emit(
+                f"Prepared raw images ({', '.join(desparsed)}) — building flash plan…"
+            )
+        else:
+            self.status_updated.emit("Images ready (raw) — building flash plan…")
+
+        try:
+            cmd = build_mtk_write_command(
+                model,
+                zip_path=getattr(self, 'zip_path', None),
+                extracted_files=getattr(self, 'extracted_files', None),
+                install_dir=app_dir,
+            )
+        except Exception as e:
+            silent_print(f"build_mtk_write_command failed: {e}")
+            self.mtk_completed.emit(
+                False,
+                f"Could not build MTKClient full-system install plan: {e}",
+            )
+            return
+
+        stages = getattr(build_mtk_write_command, "_scatter_stages", None) or []
+        meta = getattr(build_mtk_write_command, "_scatter_meta", None) or {}
+        if not stages:
+            stages = (
+                getattr(build_mtk_write_command, "_y2_stages", None)
+                or getattr(build_mtk_write_command, "_y1_stages", None)
+                or []
+            )
+            meta = (
+                getattr(build_mtk_write_command, "_y2_meta", None)
+                or getattr(build_mtk_write_command, "_y1_meta", None)
+                or {}
+            )
+
+        mode = (meta or {}).get("mode") or "named_w"
+        if mode == "scatter_wo_unbrick":
+            self.status_updated.emit(
+                f"Full-system install for your {device_label} "
+                f"(scatter offsets + preloader — unbrick-capable)…"
+            )
+        else:
+            self.status_updated.emit(
+                f"Full-system install for your {device_label} "
+                f"(named partitions — unbrick-capable)…"
+            )
+
+        # Full package write (Y2 scatter wo / Y1 named w) — install doubles as unbrick
+        if stages:
+            self._run_named_w_staged(stages, meta, app_dir, device_label=device_label)
+            return
 
         try:
             # Stale mtkclient .state from a prior session breaks reconnect/reinit.
-            for state_file in (Path.cwd() / ".state", get_firmware_app_dir() / ".state"):
-                if state_file.exists():
-                    try:
-                        state_file.unlink()
-                    except Exception:
-                        pass
+            self._clear_mtk_state(Path.cwd(), app_dir)
 
             # Don't emit status message - let MTK output be displayed clearly
             process = subprocess.Popen(
@@ -4843,7 +7926,8 @@ class MTKWorker(QThread):
                 text=True,
                 bufsize=0,
                 universal_newlines=True,
-                cwd=str(Path(__file__).parent)
+                cwd=str(app_dir),
+                env=mtk_process_env(app_dir),
             )
             
             # Ensure process doesn't hang indefinitely
@@ -4930,9 +8014,11 @@ class MTKWorker(QThread):
                     last_output_line = line  # Track the last output line
                     lower_line = line.lower()
                     if any(token in lower_line for token in ('mt6582', 'eastaeon82', 'eastaeon')):
-                        self.device_label = 'Y2'
+                        self.device_model = 'Y2'
+                        self.device_label = device_label_for_model('Y2')
                     elif any(token in lower_line for token in ('mt6572', 'g368_nyx', 'g368')):
-                        self.device_label = 'Y1'
+                        self.device_model = 'Y1'
+                        self.device_label = device_label_for_model('Y1')
 
                     # Check for first empty line from mtk.py and emit initsteps signal
                     if not first_empty_line_detected and line == "":
@@ -5003,9 +8089,27 @@ class MTKWorker(QThread):
                             and "entity not found" in line.lower()
                         )
                         if not is_nonfatal_usb_reconnect:
+                            # Strip [module] tags (e.g. [flash], [lib], [warn]) and
+                            # replace mtkclient's generic power-hold tip with the
+                            # device-specific paperclip/pin reset instruction.
+                            display_line = re.sub(r'^\[[^\]]+\]\s*', '', fixed_line)
+                            display_line = re.sub(
+                                r'hold power for \d+ seconds? to reset',
+                                'press a paperclip or pin into the reset hole to power off',
+                                display_line,
+                                flags=re.IGNORECASE,
+                            )
+                            # Show connection instructions image when we're still in the
+                            # "waiting for device" hint phase (not during active flash).
+                            _hint_keywords = ('power off', 'brom mode', 'preloader mode',
+                                              'reset hole', 'paperclip', 'connect usb',
+                                              'port - hint')
+                            if (not active_installation_started
+                                    and any(kw in display_line.lower() for kw in _hint_keywords)):
+                                self.show_instructions_image.emit()
                             # Show latest output in status area (no extra whitespace)
-                            self.status_updated.emit(f"MTK: {fixed_line}")
-                            current_status = f"MTK: {fixed_line}"  # Track current status
+                            self.status_updated.emit(f"MTK: {display_line}")
+                            current_status = f"MTK: {display_line}"  # Track current status
                         # Reset initsteps timer when we get real output
                         initsteps_start_time = None
                         last_status_update = time.time()  # Update status time
@@ -5094,13 +8198,17 @@ class MTKWorker(QThread):
                                 self.show_instructions_image.emit()
                             last_status_update = time.time()  # Update status time
                     
-                    # Check for BROM status (indicates waiting for device)
+                    # Check for BROM status (indicates waiting for device) —
+                    # show connection instructions so the user knows to use the
+                    # paperclip/pin and plug in USB; not the please-wait spinner.
                     if "brom" in line.lower():
-                        # This indicates waiting for device, show please wait message
-                        self.status_updated.emit("Please wait...")
-                        current_status = "Please wait..."  # Track current status
-                        # Show please_wait image for please wait status
-                        self.show_please_wait_image.emit()
+                        self.status_updated.emit(
+                            f"Power off your {self.device_label} using a paperclip or pin "
+                            "in the reset hole, then connect the USB cable."
+                        )
+                        current_status = "Waiting for device connection"  # Track current status
+                        # Show connection instructions image (explains paperclip + USB steps)
+                        self.show_instructions_image.emit()
                         last_status_update = time.time()  # Update status time
                         # Don't treat this as an error, just continue
 
@@ -5423,17 +8531,17 @@ class DownloadWorker(QThread):
 
             self.status_updated.emit("Download completed. Extracting...")
 
-            # Extract the zip file
-            extracted_files = []
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                extracted_files = safe_extractall(zip_ref, ".", zip_path.name)
+            # Extract + prepare history.ini scatter for model (before and after)
+            extracted_files, resolved_model = extract_firmware_rom_zip(
+                zip_path, device_model=self.device_model, extract_path="."
+            )
 
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
 
             resolved_model = resolve_device_model_for_install(
                 self.device_model, zip_path=zip_path.name, extracted_files=extracted_files
-            )
+            ) or resolved_model
             # Stash install context on the worker so the UI can pick it up after download
             self.resolved_install_model = resolved_model
             self.install_zip_name = zip_path.name
@@ -5441,7 +8549,6 @@ class DownloadWorker(QThread):
             remember_install_device_model(
                 resolved_model, zip_path=zip_path.name, extracted_files=extracted_files
             )
-            prepare_sp_flash_tool_files(resolved_model)
 
             self.status_updated.emit("Extraction completed. Files ready for MTK processing.")
 
@@ -8911,6 +12018,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             # Safety net if the data loader never reports back
             QTimer.singleShot(8000, self._schedule_startup_notice)
+
+        # Linux/macOS: ensure simg2img is present for MTKClient sparse→raw prep.
+        if not is_windows_platform():
+            QTimer.singleShot(400, self._ensure_simg2img_on_startup)
         
         # Show offline message immediately (default state before content loads)
         # Hide left panel by default - will show when releases are available
@@ -9134,6 +12245,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """
         Gate installs by platform/tool readiness.
 
+        - Windows: SP Flash Tool only (MTKClient methods redirected)
         - Non-x86 Linux: MTKClient only (no SP Flash Tool binary exists)
         - Y2 + MTKClient: blocked until Y2_MTKCLIENT_INSTALLS_ENABLED (except non-x86)
         - Linux x86 Y2 without staged SPFT: offer setup again
@@ -9144,8 +12256,25 @@ class FirmwareDownloaderGUI(QMainWindow):
         model = resolve_device_model_for_install(device_model)
         mtk_methods = {"guided", "mtkclient"}
 
+        # Windows never offers MTKClient — force SP Flash Tool.
+        if is_windows_platform() and method in mtk_methods:
+            silent_print("Windows: redirecting MTKClient method to SP Flash Tool")
+            self.installation_method = "spflash"
+            return True
+
         # Non-x86 Linux never uses SP Flash Tool.
         if is_linux_platform() and not linux_spflash_arch_supported():
+            # Y2 MTKclient is blocked on all platforms — block before the early return.
+            if is_y2_model(model) and not mtkclient_allowed_for_model(model):
+                QMessageBox.warning(
+                    self,
+                    "Y2 ROM — x86 Linux or Windows Required",
+                    "Y2 ROM installation via MTKClient is temporarily unavailable on this architecture.\n\n"
+                    "Please use an x86/x86_64 Linux or Windows computer with SP Flash Tool "
+                    "(Guided or Terminal mode) to install the Y2 stock ROM.\n\n"
+                    "Y1 ROMs can still be installed on this machine using MTKClient.",
+                )
+                return False
             if method in {"spflash", "spflash_console"}:
                 silent_print(
                     f"Redirecting install to MTKClient: {linux_spflash_arch_unsupported_reason()}"
@@ -9159,43 +12288,36 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
             return True
 
+
+        # Y2 MTKClient is enabled (same guided/terminal methods as Y1). Only block
+        # when the flag is off *and* SP Flash Tool cannot take over.
         if is_y2_model(model) and method in mtk_methods and not mtkclient_allowed_for_model(model):
-            if is_linux_platform():
-                if not self.linux_spflash_ready():
-                    self._offer_linux_spflash_setup_again(
-                        "Y2 firmware cannot be installed with MTKClient yet.\n\n"
-                        "On x86 / x86_64 Linux, Y2 installs need SP Flash Tool, which is not fully "
-                        "configured on this system."
-                    )
-                    return False
-                silent_print("Redirecting Y2 install from MTKClient to SP Flash Tool")
+            if is_linux_platform() and self.linux_spflash_ready():
+                silent_print("Y2 MTKClient disabled — redirecting to SP Flash Tool")
                 self.installation_method = "spflash"
-                QMessageBox.information(
-                    self,
-                    "Y2 uses SP Flash Tool",
-                    "Y2 firmware installs currently use SP Flash Tool (not MTKClient).\n\n"
-                    "Continuing with the SP Flash Tool guided installer.",
-                )
                 return True
+            if is_windows_platform():
+                self.installation_method = "spflash"
+                return True
+            # macOS (and other non-SP-Flash-Tool platforms): inform clearly.
             if is_macos_platform():
                 QMessageBox.warning(
                     self,
-                    "Y2 install not available on macOS yet",
-                    "Y2 firmware cannot be installed with MTKClient yet, and SP Flash Tool "
-                    "is not available on macOS.\n\n"
-                    "Please install Y2 firmware from Windows or Linux (SP Flash Tool), "
-                    "or wait for a future update that enables Y2 on MTKClient/macOS.",
+                    "Y2 ROM — Linux or Windows Required",
+                    "Y2 ROM installation via MTKClient is temporarily unavailable.\n\n"
+                    "To install a Y2 stock ROM please use a Linux or Windows "
+                    "computer with SP Flash Tool (Guided or Terminal mode).\n\n"
+                    "Y1 ROMs can still be installed on this Mac using MTKClient.",
                 )
-                return False
-            silent_print("Redirecting Windows Y2 install from MTKClient to SP Flash Tool")
-            self.installation_method = "spflash"
-            QMessageBox.information(
-                self,
-                "Y2 uses SP Flash Tool",
-                "Y2 firmware installs currently use SP Flash Tool (not MTKClient).\n\n"
-                "Continuing with the SP Flash Tool guided installer.",
-            )
-            return True
+            else:
+                QMessageBox.warning(
+                    self,
+                    "Y2 ROM — SP Flash Tool Required",
+                    "Y2 ROM installation via MTKClient is temporarily disabled.\n\n"
+                    "Please use SP Flash Tool (Guided or Terminal mode) to install "
+                    "the Y2 stock ROM on this computer.",
+                )
+            return False
 
         if is_linux_platform() and method in {"spflash", "spflash_console"}:
             if not linux_spflash_arch_supported():
@@ -9214,6 +12336,69 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return False
         return True
+
+    def _ensure_simg2img_on_startup(self):
+        """First-run / startup: install simg2img when missing (Linux/macOS only).
+
+        MTKClient needs raw images; simg2img converts Android sparse system/cache/
+        userdata after zip extract. Runs in a background thread so the UI stays
+        responsive. Progress is shown on the status label.
+        """
+        if is_windows_platform():
+            return
+        if find_simg2img():
+            silent_print(f"simg2img available: {find_simg2img()}")
+            return
+        if getattr(self, "_simg2img_setup_in_progress", False):
+            return
+        self._simg2img_setup_in_progress = True
+
+        class _Simg2imgSetupWorker(QThread):
+            status = Signal(str)
+            finished_ok = Signal(bool, str)
+
+            def run(self_inner):
+                def cb(msg, pct=None):
+                    if pct is not None:
+                        self_inner.status.emit(f"{msg} ({int(pct)}%)")
+                    else:
+                        self_inner.status.emit(str(msg))
+
+                path, err = ensure_simg2img_available(progress_cb=cb)
+                if path:
+                    self_inner.finished_ok.emit(True, path)
+                else:
+                    self_inner.finished_ok.emit(False, err or "simg2img setup failed")
+
+        worker = _Simg2imgSetupWorker(self)
+        self._simg2img_setup_worker = worker
+
+        def _on_status(msg):
+            try:
+                self.status_label.setText(msg)
+            except Exception:
+                pass
+
+        def _on_done(ok, detail):
+            self._simg2img_setup_in_progress = False
+            if ok:
+                silent_print(f"simg2img ready after setup: {detail}")
+                try:
+                    self.status_label.setText("simg2img ready for MTKClient installs")
+                except Exception:
+                    pass
+            else:
+                silent_print(f"simg2img setup failed: {detail}")
+                try:
+                    self.status_label.setText(
+                        "simg2img not installed — will retry before the next MTKClient flash"
+                    )
+                except Exception:
+                    pass
+
+        worker.status.connect(_on_status)
+        worker.finished_ok.connect(_on_done)
+        worker.start()
 
     def _start_linux_flash_tool_first_time_setup(self):
         """Download/extract Linux SP Flash Tool and prepare USB access before startup notice.
@@ -11545,18 +14730,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             status_bar.showMessage("")
 
     def stop_mtk_processes(self):
-        """Stop any running MTK processes"""
+        """Stop orphan mtk.py / flash_tool sessions (safe: never kills this app)."""
         try:
-            if platform.system() == "Windows":
-                # Stop any running mtk.py processes on Windows
-                subprocess.run(['taskkill', '/F', '/IM', 'python.exe', '/FI', 'WINDOWTITLE eq *mtk*'], 
-                              capture_output=True, timeout=5)
-            else:
-                # Stop any running mtk.py processes on Unix-like systems
-                subprocess.run(['pkill', '-f', 'mtk.py'], capture_output=True, timeout=5)
-            silent_print("Stopped any running MTK processes")
+            n = stop_install_competitor_processes(release_serial_holders=True)
+            silent_print(f"Stopped install competitor process(es): ~{n}")
         except Exception as e:
-            silent_print(f"Error stopping MTK processes: {e}")
+            silent_print(f"Error stopping MTK/flash_tool processes: {e}")
 
     def cleanup_libusb_state(self):
         """Clean up libusb state and USB device connections"""
@@ -11600,31 +14779,14 @@ class FirmwareDownloaderGUI(QMainWindow):
     def run_mtk_command(self):
         """Run the MTK command for firmware installation"""
         try:
-            # Check driver availability for Windows users
-            if platform.system() == "Windows":
-                driver_info = self.check_drivers_and_architecture()
-                
-                if driver_info['is_arm64']:
-                    silent_print("ARM64 Windows requested MTK install; ignoring because full installs are disabled.")
-                    self.status_label.setText("Install / Restore is unavailable on Windows ARM64.")
-                    return
-                    
-                elif not driver_info['can_install_firmware'] and not driver_info.get('has_mtk_driver') and not driver_info.get('has_usbdk_driver'):
-                    # Show warning but don't block - allow fallback methods
-                    result = QMessageBox.information(
-                        self,
-                        "No Specific Drivers Detected",
-                        "No specific drivers detected. The application will attempt installation using fallback methods.\n\n"
-                        "If installation fails, consider installing drivers for better compatibility.\n\n"
-                        "Click OK to continue with fallback methods or Cancel to install drivers.",
-                        QMessageBox.Ok | QMessageBox.Cancel,
-                        QMessageBox.Ok
-                    )
-                    if result == QMessageBox.Cancel:
-                        self.open_driver_setup_link()
-                        return
-                    # Continue with fallback methods if OK is clicked
-            
+            # Windows: SP Flash Tool only — never start MTKClient.
+            if is_windows_platform():
+                silent_print("Windows: MTKClient install redirected to SP Flash Tool")
+                self.installation_method = "spflash"
+                if hasattr(self, "try_method_3"):
+                    self.try_method_3()
+                return
+
             # Create installation marker
             create_installation_marker()
             
@@ -11842,23 +15004,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             return False
 
     def handle_mtk_completion(self, success, message):
-        """Handle MTK command completion"""
-        if success:
-            software_name = self._get_selected_software_name()
-            self.status_label.setText(self._install_success_status_text(software_name))
-            self.load_installed_image()
-            remove_installation_marker()
-            # Restore left panel after successful installation
-            self.show_left_panel()
-            self._maybe_show_install_donation(software_name)
-        else:
-            self.status_label.setText(f"Installation failed: {message}")
-            self.load_process_ended_image()
-            remove_installation_marker()
-            # Restore left panel after failed installation
-            self.show_left_panel()
-            # Revert to startup state after showing error
-            QTimer.singleShot(3000, self.revert_to_startup_state)
+        """Handle MTK command completion (same success path as SP Flash Tool)."""
+        self._finish_firmware_install(success, message, method="mtkclient")
 
     def handle_handshake_failure(self):
         """Handle handshake failure"""
@@ -12009,9 +15156,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.show_left_panel()
                 reply_setup = QMessageBox.question(
                     self,
-                    "Flash Tool Not Found",
-                    "The Linux SP Flash Tool binary (flash_tool) was not found.\n\n"
-                    "Download and set it up now? This may ask for your administrator password.",
+                    "Flash tool not set up yet",
+                    "The installer still needs the Linux flash tool package "
+                    "(including Qt libraries).\n\n"
+                    "Download and set it up now? Your password may be required "
+                    "once for USB permission rules.",
                     QMessageBox.Yes | QMessageBox.No,
                     QMessageBox.Yes,
                 )
@@ -12052,19 +15201,20 @@ class FirmwareDownloaderGUI(QMainWindow):
                     detail = describe_mediatek_ports(mtk_ports)
                     chosen = select_spflash_com_port(device_model, ports=mtk_ports)
                     prefer = (
-                        "Y2 usually shows as Preloader (pid 2000); "
-                        "Y1 usually shows as BROM (pid 0003)."
+                        "Tip from the community: Y2 often appears as Preloader; "
+                        "Y1 often as BROM. Flashing with two players plugged in "
+                        "can write the wrong firmware."
                     )
                     reply_multi = QMessageBox.question(
                         self,
-                        "Multiple MediaTek devices connected",
-                        f"SP Flash Tool sees more than one MediaTek serial port:\n\n"
+                        "More than one player is connected",
+                        f"We see more than one MediaTek USB device:\n\n"
                         f"{detail}\n\n"
-                        f"You are installing for {label}. {prefer}\n\n"
-                        f"Recommended port: {chosen['tty'] if chosen else 'none'} "
+                        f"You chose to install for {label}. {prefer}\n\n"
+                        f"Suggested port: {chosen['tty'] if chosen else 'none'} "
                         f"(pid={chosen.get('pid') if chosen else '?'}, "
                         f"mode={chosen.get('mode') if chosen else '?'}).\n\n"
-                        f"Best practice: unplug the other player so only the {label} "
+                        f"Unplug every other phone or player so only the {label} "
                         f"is connected, then click Yes to continue "
                         f"{'(pinned to ' + chosen['tty'] + ')' if chosen else ''}.\n\n"
                         f"Continue with the recommended port?",
@@ -12086,10 +15236,17 @@ class FirmwareDownloaderGUI(QMainWindow):
                             f"{pinned_com} ({describe_mediatek_ports(mtk_ports)})"
                         )
             
+            install_zip = getattr(self, "_last_install_zip_name", None)
+            install_extracted = getattr(self, "_last_install_extracted_files", None)
+            # Keep UI model copy in sync for progress + completion donation text
+            if device_model:
+                self.set_runtime_detected_device_model(device_model)
             self.spflash_worker = SPFlashToolWorker(
                 install_xml_path=install_rom_xml,
                 device_model=device_model,
                 com_port=pinned_com,
+                zip_path=install_zip,
+                extracted_files=install_extracted,
             )
             self.spflash_worker.status_updated.connect(self.status_label.setText)
             self.spflash_worker.show_installing_image.connect(self.load_installing_image)
@@ -12106,6 +15263,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.settings_btn.setEnabled(False)
             if hasattr(self, 'toolkit_btn'):
                 self.toolkit_btn.setEnabled(False)
+
+            # UI-thread best-effort: free serial ports before worker starts
+            try:
+                stop_sp_flash_tool_processes()
+            except Exception as e:
+                silent_print(f"stop_sp_flash_tool_processes before guided install: {e}")
             
             self.spflash_worker.start()
             
@@ -12120,53 +15283,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             )
 
     def on_spflash_completed(self, success, message):
-        """Handle SP Flash Tool completion"""
+        """Handle SP Flash Tool completion (same success path as MTKClient)."""
         try:
             # Show appropriate buttons for SP Flash Tool method
             self.show_appropriate_buttons_for_spflash()
-            
-            # Show left panel again after installation
-            self.show_left_panel()
-            
             # Re-enable buttons
             self.settings_btn.setEnabled(True)
             if hasattr(self, 'toolkit_btn'):
                 self.toolkit_btn.setEnabled(True)
-            
-            if success:
-                software_name = self._get_selected_software_name()
-                kind = self._format_firmware_kind_label(software_name)
-                self.status_label.setText(self._install_success_status_text(software_name))
-                # Load the installed completion image
-                self.load_installed_image()
-                
-                # Show success dialog with seasonal emoji
-                seasonal_emoji = get_seasonal_emoji_random()
-                dialog_title = f"Installation Complete{seasonal_emoji}" if seasonal_emoji else "Installation Complete"
-                QMessageBox.information(
-                    self,
-                    dialog_title,
-                    self.device_copy(
-                        f"Your {kind} installation has completed successfully!\n\n"
-                        "Please disconnect your Y1 and hold the middle button to turn it on.\n\n"
-                        "If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
-                    )
-                )
-                self._maybe_show_install_donation(software_name)
-            else:
-                # Show error message and revert to startup state
-                self.status_label.setText(f"Flash Tool installation failed: {message}")
-                QMessageBox.critical(
-                    self,
-                    "Installation Failed",
-                    self.device_copy(
-                        f"Installation failed:\n{message}\n\n"
-                        "Please disconnect your Y1 from USB and try again, if this fails visit troubleshooting.innioasis.app."
-                    )
-                )
-                # Revert to startup state after showing error
-                self.revert_to_startup_state()
-                
+            self._finish_firmware_install(success, message, method="spflash")
         except Exception as e:
             silent_print(f"Error handling Flash Tool completion: {e}")
 
@@ -12195,23 +15320,43 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return False
 
+            # Always pin history.ini scatterHistory to the active model before launch
+            # so the GUI never asks the user to browse for a scatter file.
+            try:
+                model, zip_name, extracted = self.get_install_model_context()
+                prepare_sp_flash_tool_files(
+                    model or self.get_selected_device_model(),
+                    zip_path=zip_name,
+                    extracted_files=extracted,
+                )
+            except Exception as e:
+                silent_print(f"SP Flash Tool GUI file prep: {e}")
+
+            label = self.get_device_label()
             reply = QMessageBox.question(
                 self,
                 "SP Flash Tool GUI",
                 self.device_copy(
                     "SP Flash Tool GUI will now launch.\n\n"
-                    f"If it isn't already off, power off your {self.get_device_label()}.\n"
+                    f"If it isn't already off, power off your {label}.\n"
                     "If it is connected, disconnect it, then press OK.\n\n"
-                    "Then follow the on-screen instructions in SP Flash Tool.\n\n"
-                    "Powering Off: You can also insert a pin/paper clip in the hole on the bottom.\n\n"
-                    "Tip: Load the scatter for your model (MT6572 = Y1, MT6582 = Y2) "
-                    "from this app folder if it is not already loaded."
+                    "The correct scatter file for your model is already selected — "
+                    "you do not need to browse for one.\n\n"
+                    "Then follow the on-screen instructions in SP Flash Tool "
+                    "(Download or Format All + Download as needed).\n\n"
+                    "Powering Off: You can also insert a pin/paper clip in the hole on the bottom."
                 ),
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Ok,
             )
             if reply == QMessageBox.Cancel:
                 return False
+
+            # Free COM/tty from any leftover flash_tool before GUI launch
+            try:
+                stop_install_competitor_processes(release_serial_holders=is_linux_platform())
+            except Exception as e:
+                silent_print(f"stop_install_competitor_processes before GUI: {e}")
 
             if is_windows_platform():
                 current_dir = Path.cwd()
@@ -12259,16 +15404,21 @@ class FirmwareDownloaderGUI(QMainWindow):
 
                 ensure_sp_flash_tool_executable(app_dir)
                 prepare_linux_spflash_runtime(app_dir)
-                # Prepare model scatter/history so the GUI can load the right files
+                # Re-pin history/scatter after runtime prep (idempotent)
                 try:
-                    model, _, _ = self.get_install_model_context()
-                    prepare_sp_flash_tool_files(model)
+                    model, zip_name, extracted = self.get_install_model_context()
+                    prepare_sp_flash_tool_files(
+                        model or self.get_selected_device_model(),
+                        zip_path=zip_name,
+                        extracted_files=extracted,
+                    )
                 except Exception as e:
-                    silent_print(f"SP Flash Tool GUI file prep: {e}")
+                    silent_print(f"SP Flash Tool GUI file prep (linux): {e}")
 
                 env = sp_flash_tool_process_env(app_dir)
                 # No -i → Qt GUI. ( -i is console mode. )
                 # Prefer flash_tool.sh when present so LD_LIBRARY_PATH is set like the package expects.
+                # LD_PRELOAD (open-retry + TIOCCBRK soft-success) is inherited from env.
                 launcher = app_dir / "flash_tool.sh"
                 if launcher.is_file():
                     cmd = ["bash", str(launcher)]
@@ -12294,9 +15444,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 "SP Flash Tool GUI Launched",
                 self.device_copy(
                     "SP Flash Tool GUI is starting.\n\n"
-                    f"If it isn't already off, power off your {self.get_device_label()} and use "
-                    "Download / Format All + Download in the tool as needed.\n\n"
-                    "Scatter files and images are in the Innioasis Updater app folder."
+                    f"If it isn't already off, power off your {label}, then use "
+                    "Download or Format All + Download in the tool as needed.\n\n"
+                    "The scatter for your model is already loaded — you do not need "
+                    "to browse for a scatter file."
                 ),
             )
             try:
@@ -13266,53 +16417,24 @@ class FirmwareDownloaderGUI(QMainWindow):
             
             self.method_combo = QComboBox()
             
-            if platform.system() == "Windows" and driver_info:
-                if driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                    seasonal_emoji = get_seasonal_emoji_random()
-                    method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
-                    method2_text = f"Method 2 - SP Flash Tool GUI{seasonal_emoji}" if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
-                    method3_text = f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}" if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
-                    method4_text = f"SP Flash Tool GUI Method{seasonal_emoji}" if seasonal_emoji else "SP Flash Tool GUI Method"
-                    method5_text = f"Method 5 - MTKclient (advanced){seasonal_emoji}" if seasonal_emoji else "Method 5 - MTKclient (advanced)"
-                    
-                    self.method_combo.addItem(method1_text, "spflash")
-                    self.method_combo.addItem(method2_text, "spflash4")
-                    self.method_combo.addItem(method3_text, "spflash_console")
-                    self.method_combo.addItem(method4_text, "guided")
-                    self.method_combo.addItem(method5_text, "mtkclient")
-                elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
-                    seasonal_emoji = get_seasonal_emoji_random()
-                    method1_text = f"Method 1 - Guided (Only available method){seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided (Only available method)"
-                    method2_text = f"Method 2 - SP Flash Tool GUI{seasonal_emoji}" if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
-                    method3_text = f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}" if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
-                    
-                    self.method_combo.addItem(method1_text, "spflash")
-                    self.method_combo.addItem(method2_text, "spflash4")
-                    self.method_combo.addItem(method3_text, "spflash_console")
-                elif not driver_info['has_mtk_driver'] and driver_info['has_usbdk_driver']:
-                    available_methods = driver_info.get('available_methods', ['guided', 'mtkclient'])
-                    if available_methods:
-                        seasonal_emoji = get_seasonal_emoji_random()
-                        for method in available_methods:
-                            if method == 'guided':
-                                method_text = f"Method 1 - Guided (Default){seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided (Default)"
-                                self.method_combo.addItem(method_text, "guided")
-                            elif method == 'mtkclient':
-                                method_text = f"Method 2 - MTKclient (Advanced){seasonal_emoji}" if seasonal_emoji else "Method 2 - MTKclient (Advanced)"
-                                self.method_combo.addItem(method_text, "mtkclient")
-                else:
-                    available_methods = driver_info.get('available_methods', ['guided', 'mtkclient'])
-                    if available_methods:
-                        seasonal_emoji = get_seasonal_emoji_random()
-                        for method in available_methods:
-                            if method == 'guided':
-                                method_text = f"Method 1 - Guided (Default){seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided (Default)"
-                                self.method_combo.addItem(method_text, "guided")
-                            elif method == 'mtkclient':
-                                method_text = f"Method 2 - MTKclient (Advanced){seasonal_emoji}" if seasonal_emoji else "Method 2 - MTKclient (Advanced)"
-                                self.method_combo.addItem(method_text, "mtkclient")
-                    else:
-                        self.method_combo.addItem("Method 1 - Guided (Fallback)", "guided")
+            if platform.system() == "Windows":
+                # Windows: SP Flash Tool only — no MTKClient methods.
+                seasonal_emoji = get_seasonal_emoji_random()
+                method1_text = (
+                    f"Method 1 - Guided (SP Flash Tool){seasonal_emoji}"
+                    if seasonal_emoji else "Method 1 - Guided (SP Flash Tool)"
+                )
+                method2_text = (
+                    f"Method 2 - SP Flash Tool GUI{seasonal_emoji}"
+                    if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
+                )
+                method3_text = (
+                    f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}"
+                    if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
+                )
+                self.method_combo.addItem(method1_text, "spflash")
+                self.method_combo.addItem(method2_text, "spflash4")
+                self.method_combo.addItem(method3_text, "spflash_console")
             elif is_linux_platform() and linux_spflash_arch_supported():
                 seasonal_emoji = get_seasonal_emoji_random()
                 spft_ready = False
@@ -13339,12 +16461,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                         if seasonal_emoji else "Method 2 - SP Flash Tool in Terminal (setup required)"
                     )
                 method3_text = (
-                    f"Method 3 - MTKclient Guided (Y1 only){seasonal_emoji}"
-                    if seasonal_emoji else "Method 3 - MTKclient Guided (Y1 only)"
+                    f"Method 3 - MTKclient Guided{seasonal_emoji}"
+                    if seasonal_emoji else "Method 3 - MTKclient Guided"
                 )
                 method4_text = (
-                    f"Method 4 - MTKclient in Terminal (Y1 only){seasonal_emoji}"
-                    if seasonal_emoji else "Method 4 - MTKclient in Terminal (Y1 only)"
+                    f"Method 4 - MTKclient in Terminal{seasonal_emoji}"
+                    if seasonal_emoji else "Method 4 - MTKclient in Terminal"
                 )
                 self.method_combo.addItem(method1_text, "spflash")
                 self.method_combo.addItem(method2_text, "spflash_console")
@@ -13380,13 +16502,17 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.method_combo.addItem(method2_text, "mtkclient")
             
             current_method = getattr(self, 'installation_method', default_installation_method())
-            if platform.system() == "Windows" and driver_info and not driver_info.get('has_mtk_driver'):
-                current_method = 'guided'
-                silent_print("No MTK driver detected, defaulting to guided method")
+            if platform.system() == "Windows":
+                # Windows is SP Flash Tool only — never select guided/mtkclient.
+                if current_method in {"guided", "mtkclient", None}:
+                    current_method = "spflash"
+                    silent_print("Windows: defaulting installation method to SP Flash Tool")
             
             index = self.method_combo.findData(current_method)
             if index >= 0:
                 self.method_combo.setCurrentIndex(index)
+            elif self.method_combo.count() > 0:
+                self.method_combo.setCurrentIndex(0)
             
             install_layout.addWidget(self.method_combo)
             tab_widget.addTab(install_tab, "Installation")
@@ -16798,6 +19924,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             if device_model:
                 device_models.add(device_model)
 
+        # On macOS, Y2 MTKclient installs are disabled and SP Flash Tool is not
+        # available, so hide Y2 from the dropdown entirely to prevent confusion.
+        # Users are directed to Linux/Windows for Y2 ROM installation.
+        if is_macos_platform() and not Y2_MTKCLIENT_INSTALLS_ENABLED:
+            device_models = {m for m in device_models if not is_y2_model(m)}
+
         # Add device models to combo (sorted)
         for device_model in sorted(device_models):
             self.device_model_combo.addItem(device_model, device_model)
@@ -16810,8 +19942,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Update device type visibility based on selected model
         self.update_device_type_visibility()
 
+
     def populate_firmware_combo(self):
-        """Populate the software dropdown with package names from manifest"""
+        """Populate the software dropdown with package names from manifest.
+
+        Never leave the Software dropdown empty when the model has packages.
+        Type A/B filters the release list; if a type would wipe every software
+        entry, we still list packages for this model so the user can change
+        Type / Software without the dropdowns vanishing.
+        """
         # Block signals during population to prevent network calls on setCurrentIndex
         was_blocked = self.firmware_combo.signalsBlocked()
         self.firmware_combo.blockSignals(True)
@@ -16826,7 +19965,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         if hasattr(self, 'device_type_combo') and self.device_type_combo.isVisible():
             selected_type = self.device_type_combo.currentData()
 
-        # Add filtered software options in manifest order
+        type_matched = []
+        model_matched = []
         for package in self.packages:
             name = package.get('name', '')
             repo = package.get('repo', '')
@@ -16836,8 +19976,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 continue
             if not package_supports_device_model(selected_model, device_model):
                 continue
-            if not package_supports_device_type(self.github_api, package, selected_type):
-                continue
+            model_matched.append((name, repo))
+            if package_supports_device_type(self.github_api, package, selected_type):
+                type_matched.append((name, repo))
+
+        # Prefer type-compatible software; if none, keep model packages so filters stay usable.
+        for name, repo in (type_matched if type_matched else model_matched):
             self.firmware_combo.addItem(name, repo)
 
         # Keep current selection when still valid; otherwise fall back to Original Software
@@ -16900,12 +20044,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         """
         Return (device_model, zip_path, extracted_files) for the active install.
 
-        Prefers package evidence from the last extract (rom_y2.zip, etc.) so the
-        MTK/SP Flash path matches the firmware on disk, not only the UI filter.
+        Priority:
+          1. Last extracted package (zip name / extract list / system.img size)
+          2. Device Model dropdown (user intent — must not lose to a stale runtime)
+          3. Runtime / remembered model from a previous successful detect
+          4. Residual markers on disk
         """
         zip_path = getattr(self, '_last_install_zip_name', None)
         extracted_files = getattr(self, '_last_install_extracted_files', None)
         runtime = getattr(self, '_runtime_detected_device_model', None)
+        ui_model = self.get_selected_device_model()
 
         # Restore extract context after app restart
         if not zip_path and not extracted_files and not runtime:
@@ -16920,10 +20068,24 @@ class FirmwareDownloaderGUI(QMainWindow):
                 runtime = remembered_model
                 self._runtime_detected_device_model = remembered_model
 
+        # Package / image evidence first (ignore UI so rom_y2.zip wins over Y1 filter)
+        package_model = resolve_device_model_for_install(
+            None, zip_path=zip_path, extracted_files=extracted_files
+        )
+        if package_model:
+            return package_model, zip_path, extracted_files
+
+        # Explicit dropdown next — never let a stale runtime force Y1 while UI says Y2
+        if ui_model and (is_y1_model(ui_model) or is_y2_model(ui_model)):
+            model = "Y2" if is_y2_model(ui_model) else "Y1"
+            return model, zip_path, extracted_files
+
+        if runtime and (is_y1_model(runtime) or is_y2_model(runtime)):
+            model = "Y2" if is_y2_model(runtime) else "Y1"
+            return model, zip_path, extracted_files
+
         model = resolve_device_model_for_install(
-            runtime or self.get_selected_device_model(),
-            zip_path=zip_path,
-            extracted_files=extracted_files,
+            None, zip_path=zip_path, extracted_files=extracted_files
         )
         return model, zip_path, extracted_files
 
@@ -17446,9 +20608,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             if self.releases_loaded_count > 0:
                 self._auto_enabling_prereleases = False
             
-            # If we have cached releases but none match filters, try reverting software selection
+            # Empty release list: keep filters/dropdowns visible so the user can change
+            # Type / Model / Software without the left panel vanishing.
             if self.releases_loaded_count == 0:
-                # We have cached releases available, but filters excluded them all
                 if cached_releases and len(cached_releases) > 0:
                     # #region agent log
                     _debug_session_log(
@@ -17467,8 +20629,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         run_id="post-fix",
                     )
                     # #endregion
-                    if self._revert_to_compatible_firmware_if_needed():
-                        return
+                    # Do not auto-jump to another software package — keep selection
+                    # and show an empty state next to the still-visible dropdowns.
                     self._show_no_filter_results_message()
                 else:
                     has_tokens = hasattr(self.github_api, 'tokens') and len(self.github_api.tokens) > 0
@@ -17492,9 +20654,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 except Exception as e:
                     silent_print(f"Error selecting first item: {e}")
             
-            # Show left panel when releases are available
-            if self.releases_loaded_count > 0:
-                self._show_left_panel()
+            # Filters stay visible whether or not a release is selected
+            self._show_left_panel()
             
             # Enable download button only when online
             # This prevents users from attempting downloads when offline
@@ -17509,13 +20670,81 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error in _display_cached_releases: {e}")
             import traceback
             traceback.print_exc()
+
+    def _ensure_filter_panel_visible(self):
+        """Keep Type / Model / Software dropdowns available (never hide on empty results)."""
+        try:
+            if hasattr(self, "left_panel") and self.left_panel is not None:
+                self.left_panel.setVisible(True)
+            # If install flow hid the panel via splitter, restore it for browsing.
+            if getattr(self, "panel_hidden", False) and not getattr(
+                self, "_install_in_progress_hide_panel", False
+            ):
+                try:
+                    self.show_left_panel()
+                except Exception:
+                    pass
+        except Exception as e:
+            silent_print(f"_ensure_filter_panel_visible: {e}")
+
+    def _set_package_list_empty_state(self, title_line, detail_line=None):
+        """Non-selectable empty-state rows in the releases list (filters stay up)."""
+        try:
+            if not hasattr(self, "package_list") or self.package_list is None:
+                return
+            self.package_list.clear()
+            title = QListWidgetItem(title_line)
+            title.setFlags(title.flags() & ~Qt.ItemIsSelectable & ~Qt.ItemIsEnabled)
+            self.package_list.addItem(title)
+            if detail_line:
+                detail = QListWidgetItem(detail_line)
+                detail.setFlags(detail.flags() & ~Qt.ItemIsSelectable & ~Qt.ItemIsEnabled)
+                self.package_list.addItem(detail)
+        except Exception as e:
+            silent_print(f"_set_package_list_empty_state: {e}")
+
+    def _show_empty_state_in_notes(self, title, body_lines, notes_title="Getting Ready:"):
+        """Hallmark-style empty state in the notes pane; does not hide dropdowns."""
+        try:
+            self._ensure_filter_panel_visible()
+            if hasattr(self, "release_notes_browser") and self.release_notes_browser:
+                text_color = self._get_text_color_for_theme()
+                paragraphs = "".join(
+                    f"<p style='font-size: 14px; color: {text_color} !important; "
+                    f"margin-top: 10px;'>{line}</p>"
+                    for line in (body_lines or [])
+                )
+                message_html = f"""
+                <html>
+                <head>
+                    <style>
+                        body, div, p, strong {{
+                            color: {text_color} !important;
+                        }}
+                    </style>
+                </head>
+                <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                    "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6;
+                    padding: 20px; text-align: center; color: {text_color} !important;'>
+                    <p style='font-size: 16px; color: {text_color} !important;
+                        margin-bottom: 15px;'>{title}</p>
+                    {paragraphs}
+                </body>
+                </html>
+                """
+                self.release_notes_browser.setHtml(message_html)
+            if hasattr(self, "image_notes_stack"):
+                self.image_notes_stack.setCurrentIndex(1)
+            if hasattr(self, "output_group") and self.output_group:
+                self.output_group.setTitle(notes_title)
+        except Exception as e:
+            silent_print(f"_show_empty_state_in_notes: {e}")
     
     def _show_initial_offline_state(self):
         """Show offline message as default state on startup (before content loads)"""
         try:
-            # Hide left panel by default
-            if hasattr(self, 'left_panel'):
-                self.left_panel.setVisible(False)
+            # Keep filter dropdowns visible even before listings load
+            self._ensure_filter_panel_visible()
             
             # Check if we have tokens (might be online) - but don't block waiting for network
             has_tokens = False
@@ -17533,165 +20762,108 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _show_loading_firmware_message(self):
         """Show a loading message while fetching firmware listings from GitHub."""
         try:
-            if hasattr(self, 'left_panel'):
-                self.left_panel.setVisible(False)
-
-            if hasattr(self, 'release_notes_browser'):
-                text_color = self._get_text_color_for_theme()
-                message_html = f"""
-                <html>
-                <head>
-                    <style>
-                        body, div, p, strong {{
-                            color: {text_color} !important;
-                        }}
-                    </style>
-                </head>
-                <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
-                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Loading firmware from the online directory...</p>
-                    <p style='color: {text_color} !important; margin-top: 10px;'>You can also use <strong style="color: {text_color} !important;">Browse Files</strong> to install a local ROM zip.</p>
-                </body>
-                </html>
-                """
-                self.release_notes_browser.setHtml(message_html)
-
-            if hasattr(self, 'image_notes_stack'):
-                self.image_notes_stack.setCurrentIndex(1)
-                if hasattr(self, 'output_group'):
-                    self.output_group.setTitle("Getting Ready:")
+            self._ensure_filter_panel_visible()
+            self._set_package_list_empty_state(
+                "Loading releases…",
+                "You can still change Type, Model, or Software above.",
+            )
+            self._show_empty_state_in_notes(
+                "Loading firmware from the online directory…",
+                [
+                    "This usually takes a few seconds.",
+                    "You can also use <strong>Browse Files</strong> to install a local ROM zip.",
+                ],
+            )
         except Exception as e:
             silent_print(f"Error showing loading firmware message: {e}")
 
     def _show_offline_message(self, has_tokens):
         """Show offline message when unable to load firmware listings (connection/server issue)"""
         try:
-            # Hide left panel
-            if hasattr(self, 'left_panel'):
-                self.left_panel.setVisible(False)
-            
-            # Show offline message in release notes area
-            if hasattr(self, 'release_notes_browser'):
-                # Get theme-aware text color
-                text_color = self._get_text_color_for_theme()
-                
-                # Check if online
-                online_message = ""
-                if has_tokens:
-                    online_message = f"<p style='color: {text_color} !important; margin-top: 10px;'>Unable to connect to the online firmware directory. Please check your internet connection or try again later.</p>"
-                
-                message_html = f"""
-                <html>
-                <head>
-                    <style>
-                        body, div, p, strong {{
-                            color: {text_color} !important;
-                        }}
-                    </style>
-                </head>
-                <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
-                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Please select <strong style="color: {text_color} !important;">Browse Files</strong> to begin, or wait for a connection to the online firmware directory.</p>
-                    {online_message}
-                </body>
-                </html>
-                """
-                self.release_notes_browser.setHtml(message_html)
-            
-            # Switch to release notes view
-            if hasattr(self, 'image_notes_stack'):
-                self.image_notes_stack.setCurrentIndex(1)
-                # Update title
-                if hasattr(self, 'output_group'):
-                    self.output_group.setTitle("Getting Ready:")
+            self._ensure_filter_panel_visible()
+            self._set_package_list_empty_state(
+                "No online releases right now",
+                "Use Browse Files for a local rom.zip, or check your connection.",
+            )
+            body = [
+                "Use <strong>Browse Files</strong> to install a local <strong>rom.zip</strong> "
+                "or <strong>rom_y2.zip</strong>, or wait for a connection.",
+            ]
+            if has_tokens:
+                body.append(
+                    "Unable to reach the online firmware directory. "
+                    "Check your internet connection and try again."
+                )
+            self._show_empty_state_in_notes(
+                "Firmware listings are not available yet",
+                body,
+            )
         except Exception as e:
             silent_print(f"Error showing offline message: {e}")
 
     def _show_repository_unavailable_message(self, repo):
         """Show a clearer message when the firmware repo cannot be reached or has no ROMs."""
         try:
-            if hasattr(self, 'left_panel'):
-                self.left_panel.setVisible(False)
-
-            if hasattr(self, 'release_notes_browser'):
-                text_color = self._get_text_color_for_theme()
-                resolved = resolve_firmware_repo(repo or '')
-                extra = ""
-                if resolved != repo:
-                    extra = (
-                        f"<p style='color: {text_color} !important; margin-top: 10px;'>"
-                        f"Trying fallback repository: <strong>{resolved}</strong></p>"
-                    )
-                if is_y2_model(self.get_selected_device_model()):
-                    extra += (
-                        f"<p style='color: {text_color} !important; margin-top: 10px;'>"
-                        "No Y2 firmware releases are available yet for this software selection. "
-                        "Y2 builds use <strong>rom_y2.zip</strong> assets on the stock ROM repo.</p>"
-                    )
-                message_html = f"""
-                <html>
-                <head>
-                    <style>
-                        body, div, p, strong {{
-                            color: {text_color} !important;
-                        }}
-                    </style>
-                </head>
-                <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
-                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>Could not load firmware listings for <strong>{repo or 'selected software'}</strong>.</p>
-                    <p style='color: {text_color} !important; margin-top: 10px;'>Please check your internet connection, or use <strong>Browse Files</strong> to install a local <strong>rom.zip</strong> / <strong>rom_y2.zip</strong>.</p>
-                    {extra}
-                </body>
-                </html>
-                """
-                self.release_notes_browser.setHtml(message_html)
-
-            if hasattr(self, 'image_notes_stack'):
-                self.image_notes_stack.setCurrentIndex(1)
-                if hasattr(self, 'output_group'):
-                    self.output_group.setTitle("Getting Ready:")
+            self._ensure_filter_panel_visible()
+            software = repo or "this software"
+            self._set_package_list_empty_state(
+                f"No releases for {software}",
+                "Pick another Software option above, or use Browse Files.",
+            )
+            body = [
+                "Check your internet connection, pick a different Software option above, "
+                "or use <strong>Browse Files</strong> for a local "
+                "<strong>rom.zip</strong> / <strong>rom_y2.zip</strong>.",
+            ]
+            resolved = resolve_firmware_repo(repo or "")
+            if resolved != repo:
+                body.append(f"Trying fallback repository: <strong>{resolved}</strong>")
+            if is_y2_model(self.get_selected_device_model()):
+                body.append(
+                    "Y2 builds ship as <strong>rom_y2.zip</strong>. "
+                    "Some software packages may not have a Y2 release yet."
+                )
+            self._show_empty_state_in_notes(
+                f"No firmware listings for <strong>{software}</strong>",
+                body,
+            )
         except Exception as e:
             silent_print(f"Error showing repository unavailable message: {e}")
     
     def _show_no_filter_results_message(self):
-        """Show message when releases were loaded but filters found no matching results"""
+        """Show message when releases were loaded but filters found no matching results.
+
+        Leaves Type / Model / Software dropdowns visible so the user can adjust
+        filters (Hallmark empty state: name what’s empty → why → next step).
+        """
         try:
-            # Hide left panel
-            if hasattr(self, 'left_panel'):
-                self.left_panel.setVisible(False)
-            
-            # Show no results message in release notes area
-            if hasattr(self, 'release_notes_browser'):
-                # Get theme-aware text color
-                text_color = self._get_text_color_for_theme()
-                
-                message_html = f"""
-                <html>
-                <head>
-                    <style>
-                        body, div, p, strong {{
-                            color: {text_color} !important;
-                        }}
-                    </style>
-                </head>
-                <body style='font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; text-align: center; color: {text_color} !important;'>
-                    <p style='font-size: 16px; color: {text_color} !important; margin-bottom: 15px;'>No releases match your current filter settings.</p>
-                    <p style='font-size: 14px; color: {text_color} !important; margin-top: 10px;'>Try adjusting your device type selection or enable "Show nightly builds" if available.</p>
-                    <p style='font-size: 14px; color: {text_color} !important; margin-top: 10px;'>If this issue persists, there may be a connection problem or issue with the release server.</p>
-                </body>
-                </html>
-                """
-                self.release_notes_browser.setHtml(message_html)
-            
-            # Switch to release notes view
-            if hasattr(self, 'image_notes_stack'):
-                self.image_notes_stack.setCurrentIndex(1)
-                # Update title
-                if hasattr(self, 'output_group'):
-                    self.output_group.setTitle("Getting Ready:")
+            selected_type = None
+            if hasattr(self, "device_type_combo") and self.device_type_combo.isVisible():
+                selected_type = self.device_type_combo.currentData()
+            selected_model = self.get_selected_device_model() or "your player"
+            type_label = f"Type {selected_type}" if selected_type else "this type"
+
+            self._ensure_filter_panel_visible()
+            self._set_package_list_empty_state(
+                f"No releases for {selected_model} · {type_label}",
+                "Change Type, Software, or turn on Show nightly builds.",
+            )
+            body = [
+                f"Nothing in the list matches <strong>{selected_model}</strong> with "
+                f"<strong>{type_label}</strong> for the software you selected.",
+                "Try another Device Type, a different Software package, or enable "
+                "<strong>Show nightly builds</strong> if it is available.",
+                "You can also use <strong>Browse Files</strong> to install a local ROM zip.",
+            ]
+            self._show_empty_state_in_notes(
+                "No releases match these filters",
+                body,
+            )
         except Exception as e:
             silent_print(f"Error showing no filter results message: {e}")
     
     def _show_left_panel(self):
-        """Show left panel when releases are available"""
+        """Show left panel (filters + release list) — always safe to call after load."""
         try:
             if hasattr(self, 'left_panel'):
                 self.left_panel.setVisible(True)
@@ -19258,6 +22430,14 @@ class FirmwareDownloaderGUI(QMainWindow):
     def run_mtk_command_guided(self):
         """Run the MTK flash command with image display for guided installation"""
         try:
+            # Windows: SP Flash Tool only — never start MTKClient.
+            if is_windows_platform():
+                silent_print("Windows: MTKClient guided install redirected to SP Flash Tool")
+                self.installation_method = "spflash"
+                if hasattr(self, "try_method_3"):
+                    self.try_method_3()
+                return
+
             install_model, _, _ = self.get_install_model_context()
             if is_y2_model(install_model) and not mtkclient_allowed_for_model(install_model):
                 if is_linux_platform():
@@ -19267,8 +22447,6 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self._offer_linux_spflash_setup_again(
                             "Y2 firmware cannot use MTKClient yet and SP Flash Tool is not set up."
                         )
-                elif is_windows_platform():
-                    self.try_method_3()
                 else:
                     QMessageBox.warning(
                         self,
@@ -19278,31 +22456,6 @@ class FirmwareDownloaderGUI(QMainWindow):
                     )
                 return
 
-            # Check driver availability for Windows users
-            if platform.system() == "Windows":
-                driver_info = self.check_drivers_and_architecture()
-                
-                if driver_info['is_arm64']:
-                    silent_print("ARM64 Windows requested guided MTK install; operation skipped.")
-                    self.status_label.setText("Install / Restore is unavailable on Windows ARM64.")
-                    return
-                    
-                elif not driver_info['can_install_firmware'] and not driver_info.get('has_mtk_driver') and not driver_info.get('has_usbdk_driver'):
-                    # Show warning but don't block - allow fallback methods
-                    result = QMessageBox.information(
-                        self,
-                        "No Specific Drivers Detected",
-                        "No specific drivers detected. The application will attempt installation using fallback methods.\n\n"
-                        "If installation fails, consider installing drivers for better compatibility.\n\n"
-                        "Click OK to continue with fallback methods or Cancel to install drivers.",
-                        QMessageBox.Ok | QMessageBox.Cancel,
-                        QMessageBox.Ok
-                    )
-                    if result == QMessageBox.Cancel:
-                        self.open_driver_setup_link()
-                        return
-                    # Continue with fallback methods if OK is clicked
-            
             # Check if required files exist
             required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
             missing_files = []
@@ -19318,17 +22471,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             reply = QMessageBox.question(
                 self,
                 "Get Ready",
-                self.install_disconnect_guidance(),
+                self.install_disconnect_guidance()
+                + "\n\nBefore flashing, sparse system/cache/userdata images will be "
+                "converted to raw with simg2img (progress shown in the status bar).",
                 QMessageBox.Ok | QMessageBox.Cancel,
                 QMessageBox.Cancel
             )
 
             if reply == QMessageBox.Cancel:
                 return
-
-            # Clean up libusb state before starting new MTK operation (Windows only)
-            if platform.system() == "Windows":
-                self.cleanup_libusb_state()
 
             # Create installation marker to track progress
             create_installation_marker()
@@ -19390,46 +22541,14 @@ class FirmwareDownloaderGUI(QMainWindow):
 
 
     def on_mtk_completed(self, success, message):
-        """Handle MTK command completion"""
+        """Handle MTK command completion (legacy path — same as handle_mtk_completion)."""
         # Stop the MTK worker to prevent it from continuing to run
         if self.mtk_worker:
             self.mtk_worker.stop()
             self.mtk_worker.wait()  # Wait for the worker to finish
             self.mtk_worker = None
 
-        if success:
-            software_name = self._get_selected_software_name()
-            self.status_label.setText(self._install_success_status_text(software_name))
-            # Remove installation marker on successful completion
-            remove_installation_marker()
-            # Clean up firmware files after successful installation
-            cleanup_firmware_files()
-            # Load and display installed.png for 30 seconds
-            self.load_installed_image()
-            # Restore left panel after successful installation
-            self.show_left_panel()
-            self._maybe_show_install_donation(software_name)
-
-            # Cancel any existing revert timer to prevent conflicts
-            if hasattr(self, '_revert_timer') and self._revert_timer:
-                self._revert_timer.stop()
-                self._revert_timer = None
-
-            # Set timer to revert to startup state after 30 seconds
-            self._revert_timer = QTimer()
-            self._revert_timer.timeout.connect(self.revert_to_startup_state)
-            self._revert_timer.setSingleShot(True)
-            self._revert_timer.start(30000)
-        else:
-            self.status_label.setText(f"MTK command failed: {message}")
-            # On Windows: First show process_ended.png image briefly, then show install error dialog
-            self.load_process_ended_image()
-            # Restore left panel after failed installation
-            self.show_left_panel()
-            
-            # Use a timer to show the dialog after a short delay so user sees the process_ended image
-            QTimer.singleShot(2000, self.show_install_error_dialog)
-            return  # Don't continue with the revert timer since user will choose action
+        self._finish_firmware_install(success, message, method="mtkclient")
 
         # Re-enable download button
         self.download_btn.setEnabled(True)
@@ -19999,7 +23118,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             if hasattr(self, 'status_label'):
                 current_status = self.status_label.text().lower()
                 if "downloading" not in current_status and "extracting" not in current_status and "please get" not in current_status:
-                    self.status_label.setText("Please get a paperclip or pin ready while your firmware downloads and extracts...")
+                    self.status_label.setText(
+                        "While this downloads: find a paperclip or pin for the reset hole, "
+                        "and keep the player unplugged until the app asks you to connect."
+                    )
         except Exception as e:
             silent_print(f"Error showing paperclip message: {e}")
     
@@ -20199,23 +23321,24 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _pick_support_cta_text(self):
         """Pick a random support CTA with seasonal and infrequent variants."""
         base_ctas = [
+            "Donate What You Can",
+            "Support Free Tools",
+            "Help Cover Hosting",
             "Support Development",
             "Buy Us A Coffee",
-            "Donate",
-            "Fuel New Features",
-            "Back The Project"
+            "Keep Tools Free",
         ]
         holiday_ctas = [
-            "Buy Us a Gift",
+            "Holiday Donation",
             "Holiday Support",
             "Seasonal Cheer For Devs",
-            "A Little Holiday Help"
+            "A Little Holiday Help",
         ]
         ctas = list(base_ctas)
         if self._is_holiday_period():
             ctas.extend(holiday_ctas)
-        if random.random() < 0.05:
-            ctas.append("Keep Updater Alive")
+        if random.random() < 0.08:
+            ctas.append("Help With $100+/mo Costs")
         return random.choice(ctas)
 
     def _apply_random_support_cta_to_button(self):
@@ -20826,69 +23949,158 @@ class FirmwareDownloaderGUI(QMainWindow):
             self._mark_first_firmware_action_complete()
 
     def _install_success_status_text(self, software_name=None):
-        kind = self._format_firmware_kind_label(software_name or self._get_selected_software_name())
+        """Status-bar text after a successful SP Flash Tool or MTKClient install."""
+        kind = self._format_firmware_kind_label(
+            software_name or self._get_selected_software_name()
+        )
         seasonal_emoji = get_seasonal_emoji_random()
-        base = f"{kind} installed successfully"
+        steps = install_power_on_steps(self.get_effective_device_model())
+        base = f"{kind} installed successfully. {steps}"
         return f"{base}{seasonal_emoji}" if seasonal_emoji else base
 
+    def _finish_firmware_install(self, success, message, method="install"):
+        """
+        Unified SP Flash Tool / MTKClient install completion.
+
+        Success: status bar + installed image + donation screen (no extra popup).
+        Failure: status + process_ended image + error dialog (model-aware).
+        """
+        try:
+            self.show_left_panel()
+            self.settings_btn.setEnabled(True)
+            if hasattr(self, "toolkit_btn"):
+                self.toolkit_btn.setEnabled(True)
+            if hasattr(self, "download_btn"):
+                self.download_btn.setEnabled(True)
+
+            if success:
+                software_name = self._get_selected_software_name()
+                self.status_label.setText(self._install_success_status_text(software_name))
+                self.load_installed_image()
+                remove_installation_marker()
+                try:
+                    cleanup_firmware_files()
+                except Exception as e:
+                    silent_print(f"cleanup_firmware_files after {method}: {e}")
+                # Donation / completion screen (same for SPFT and MTKClient)
+                self._maybe_show_install_donation(software_name)
+
+                # Cancel any existing revert timer to prevent conflicts
+                if hasattr(self, "_revert_timer") and self._revert_timer:
+                    self._revert_timer.stop()
+                    self._revert_timer = None
+                self._revert_timer = QTimer()
+                self._revert_timer.timeout.connect(self.revert_to_startup_state)
+                self._revert_timer.setSingleShot(True)
+                self._revert_timer.start(30000)
+                return
+
+            # Failure
+            short = (message or "").split("\n")[0][:120]
+            label = self.get_device_label()
+            self.status_label.setText(
+                f"Install did not finish: {short}" if short else "Install did not finish"
+            )
+            self.load_process_ended_image()
+            remove_installation_marker()
+            if method == "mtkclient":
+                # Rich try-again / settings dialog (existing MTK path)
+                QTimer.singleShot(2000, self.show_install_error_dialog)
+            else:
+                QMessageBox.critical(
+                    self,
+                    "Install did not finish",
+                    self.device_copy(
+                        f"{message}\n\n"
+                        f"Unplug your {label} completely, then try again. "
+                        "Plug in only when the app asks you to connect. "
+                        "If it still fails: troubleshooting.innioasis.app"
+                    ),
+                )
+                self.revert_to_startup_state()
+        except Exception as e:
+            silent_print(f"_finish_firmware_install ({method}): {e}")
+            import traceback
+            traceback.print_exc()
+
+    def _post_install_donation_nudge(self):
+        """Short Wikipedia-style line for install-complete message boxes."""
+        return (
+            "Innioasis Updater, the Y1 Themes gallery, and our other mod projects "
+            "cost on average $100+ a month to keep online as the community grows. "
+            "If you can, please donate what you are able via Ko-fi, Patreon, PayPal, "
+            "Revolut, or crypto — every contribution helps."
+        )
+
     def _pick_donation_support_blurb(self):
-        """Return a varied support message; ~50% mention the upcoming baby."""
+        """Return a varied, Wikipedia-like funding appeal (costs + give what you can)."""
+        cost_blurbs = [
+            (
+                "Innioasis Updater, the Innioasis Y1 Themes gallery, and our other mod "
+                "projects cost on average more than $100 a month to run — hosting, "
+                "downloads, and tools for a growing community. We do not charge for "
+                "the software. If everyone who can spare a little does, we can keep "
+                "this free for everyone. Please give only what you can afford."
+            ),
+            (
+                "As more people use these tools, running costs have risen. On average "
+                "we spend $100+ each month on Innioasis Updater, the Y1 Themes gallery, "
+                "and related mod projects. Your donation — large or small — is optional "
+                "and deeply appreciated. Choose any method below that works for you."
+            ),
+            (
+                "These projects stay free for the whole community. Hosting and "
+                "infrastructure for Updater, the Y1 Themes gallery, and our mods "
+                "average over $100 per month, and that figure grows with popularity. "
+                "If this work has helped you, please consider donating what you can. "
+                "No amount is too small."
+            ),
+            (
+                "We rely on readers and users like you. Innioasis Updater, the Y1 "
+                "Themes gallery, and our other mod projects cost $100+ a month on "
+                "average to operate. If you value free firmware tools and themes, "
+                "please donate what you can through one of the options below. "
+                "Thank you for keeping the lights on."
+            ),
+        ]
+        # Occasional personal note (softer share than pure CTA)
         baby_blurbs = [
             (
-                "Ryan, one of the developers, and his partner are expecting a baby in December. "
-                "Donations are appreciated and help support development of Innioasis Updater, "
-                "our mod projects, and the Innioasis Y1 Themes gallery."
+                "Innioasis Updater, the Y1 Themes gallery, and our mod projects cost "
+                "on average $100+ a month to run as the community grows. One of our "
+                "developers and his partner are also expecting a baby in December — "
+                "if you can donate what you are able, it helps both the projects and "
+                "the people who maintain them. Give only what feels right for you."
             ),
             (
-                "Our lead developer and his partner are expecting a baby in December. "
-                "If you can chip in, your support keeps Innioasis Updater, community mods, "
-                "and the Innioasis Y1 Themes gallery moving forward."
-            ),
-            (
-                "Ryan and his partner are welcoming a baby in December. "
-                "Contributions of any size help us continue work on Updater, firmware mods, "
-                "and the Innioasis Y1 Themes gallery. Thank you for considering it."
-            ),
-            (
-                "With a baby due in December for one of our developers and his partner, "
-                "we are especially grateful for support. Donations fund Innioasis Updater, "
-                "mod projects, and the Innioasis Y1 Themes gallery."
+                "Operating costs for Updater, the Y1 Themes gallery, and related mods "
+                "average more than $100 monthly. We ask the same way Wikipedia does: "
+                "please donate what you can, when you can. A personal note: Ryan and "
+                "his partner are expecting a baby in December — every contribution "
+                "helps keep free tools available for everyone."
             ),
         ]
-        general_blurbs = [
-            (
-                "Donations are appreciated and help support development of Innioasis Updater, "
-                "our mod projects, and the Innioasis Y1 Themes gallery."
-            ),
-            (
-                "Your support helps us keep building Innioasis Updater, community firmware mods, "
-                "and the Innioasis Y1 Themes gallery. Thank you for considering a contribution."
-            ),
-            (
-                "If Innioasis Updater has been useful to you, contributions help fund ongoing work "
-                "on Updater, our mod projects, and the Innioasis Y1 Themes gallery."
-            ),
-            (
-                "Every bit of support goes toward Innioasis Updater, mod development, "
-                "and the Y1 Themes gallery. We appreciate you helping the project grow."
-            ),
-        ]
-        pool = baby_blurbs if random.random() < 0.5 else general_blurbs
+        pool = cost_blurbs + (baby_blurbs if random.random() < 0.35 else [])
         return random.choice(pool)
 
     def show_donation_dialog(self, context="general", software_name=None):
         """Show donation options matching the website support toolbar."""
         dialog = QDialog(self)
-        dialog.setWindowTitle("Support the Developers")
+        dialog.setWindowTitle("Please support free community tools")
         dialog.setModal(True)
-        dialog.resize(700, 560)
+        dialog.resize(720, 600)
 
         layout = QVBoxLayout(dialog)
 
         intro = QLabel(
-            "If Innioasis Updater helped you, you can support development using any option below."
+            "Innioasis Updater, the Y1 Themes gallery, and our other mod projects "
+            "are free to use. Hosting and infrastructure cost on average $100+ a "
+            "month as more people download firmware, themes, and tools.\n\n"
+            "If you can, please donate what you are able using any option below. "
+            "There is no required amount — give what feels right for you."
         )
         intro.setWordWrap(True)
+        intro.setStyleSheet("line-height: 1.45;")
         layout.addWidget(intro)
 
         support_note = QLabel(self._pick_donation_support_blurb())
@@ -20897,8 +24109,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         layout.addWidget(support_note)
 
         if context == "install_success":
-            kind = self._format_firmware_kind_label(software_name or self._get_selected_software_name())
-            context_label = QLabel(f"{kind} installation completed successfully. Thank you for your support.")
+            kind = self._format_firmware_kind_label(
+                software_name or self._get_selected_software_name()
+            )
+            power_steps = install_power_on_steps(self.get_effective_device_model())
+            context_label = QLabel(
+                f"{kind} installation completed successfully.\n\n"
+                f"{power_steps}\n\n"
+                "Thank you for using the tools — and thank you if you can help fund them."
+            )
             context_label.setWordWrap(True)
             layout.addWidget(context_label)
 
@@ -21247,10 +24466,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.progress_bar.setValue(25)
             self.status_label.setText("Extracting zip file...")
             
-            # Extract the zip file
-            extracted_files = []
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                extracted_files = safe_extractall(zip_ref, ".", zip_path.name)
+            # Extract + prepare history.ini scatter for model (before and after)
+            extracted_files, resolved_model = extract_firmware_rom_zip(
+                zip_path,
+                device_model=self.get_selected_device_model(),
+                extract_path=".",
+            )
             
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
@@ -21282,8 +24503,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             resolved_model = resolve_device_model_for_install(
                 self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
-            )
-            prepare_sp_flash_tool_files(resolved_model)
+            ) or resolved_model
             
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -29634,7 +32854,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"✅ Update script executed successfully via ADB.\n\n"
                     f"Your Y1 will restart and apply the update automatically.\n\n"
                     f"After reboot, the app will automatically detect Fast Update capability.\n\n"
-                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
+                    f"{self._post_install_donation_nudge()}"
                 )
                 self._maybe_show_install_donation(software_name)
                 # Delay ADB status refresh after reboot (device needs time to initialize)
@@ -29652,7 +32872,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"1. Safely disconnect your Y1\n\n"
                     f"2. Go to Main Menu > System and click Firmware Update\n\n"
                     f"3. The update process will now run in the background and automatically restart the device once it is done\n\n"
-                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
+                    f"{self._post_install_donation_nudge()}"
                 )
                 self._maybe_show_install_donation(software_name)
             else:
@@ -29662,7 +32882,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "Update Sent Successfully! ✅",
                     f"✅ {kind} update.zip has been sent to your Y1.\n\n"
                     f"Please check your device for update status.\n\n"
-                    f"If you found this tool useful, consider supporting us and Buy Us A Coffee! ☕"
+                    f"{self._post_install_donation_nudge()}"
                 )
                 self._maybe_show_install_donation(software_name)
         else:
@@ -29784,6 +33004,20 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Update device type visibility based on selected model
         self.update_device_type_visibility()
         self.refresh_device_aware_status_defaults()
+
+        # Keep history.ini scatterHistory aligned with the chosen model so the
+        # SP Flash Tool GUI (Toolkit) always opens with the correct scatter.
+        try:
+            selected = self.get_selected_device_model()
+            if selected and (is_y1_model(selected) or is_y2_model(selected)):
+                # Dropdown is authoritative when the user changes model — clear any
+                # stale runtime Y1/Y2 so install does not keep the previous path.
+                self.set_runtime_detected_device_model(
+                    "Y2" if is_y2_model(selected) else "Y1"
+                )
+                prepare_sp_flash_tool_files(selected)
+        except Exception as e:
+            silent_print(f"history.ini prep on model change: {e}")
         
         # Repopulate software combo with filtered options
         self.populate_firmware_combo()
@@ -30093,10 +33327,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.progress_bar.setValue(25)
             self.status_label.setText("Extracting existing zip file...")
             
-            # Extract the zip file
-            extracted_files = []
-            with zipfile.ZipFile(str(zip_path), 'r') as zip_ref:
-                extracted_files = safe_extractall(zip_ref, ".", zip_path.name)
+            # Extract + prepare history.ini scatter for model (before and after)
+            extracted_files, resolved_model = extract_firmware_rom_zip(
+                zip_path,
+                device_model=self.get_selected_device_model(),
+                extract_path=".",
+            )
             
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
@@ -30120,14 +33356,13 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             resolved_model = resolve_device_model_for_install(
                 self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
-            )
+            ) or resolved_model
             self.set_runtime_detected_device_model(resolved_model)
             self._last_install_zip_name = zip_path.name
             self._last_install_extracted_files = list(extracted_files) if extracted_files else None
             remember_install_device_model(
                 resolved_model, zip_path=zip_path.name, extracted_files=extracted_files
             )
-            prepare_sp_flash_tool_files(resolved_model)
             silent_print(
                 f"Install model resolved as {resolved_model} "
                 f"(zip={zip_path.name}, dropdown={self.get_selected_device_model()})"
@@ -30225,34 +33460,17 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText(f"Insufficient storage space ({available_gb:.2f} GB available, 6 GB required)")
             return
         
-        # Check driver status for Windows users
+        # Resolve install method; Windows is always SP Flash Tool only.
+        method = getattr(self, "installation_method", default_installation_method())
         if platform.system() == "Windows":
             driver_info = self.check_drivers_and_architecture()
-            
             if driver_info['is_arm64']:
-                # ARM64 Windows: No installation methods available
                 silent_print("=== ARM64 WINDOWS - NO INSTALLATION METHODS AVAILABLE ===")
                 self.status_label.setText("Install / Restore is unavailable on Windows ARM64.")
                 return
-                
-            elif not driver_info['can_install_firmware'] and not driver_info.get('has_mtk_driver') and not driver_info.get('has_usbdk_driver'):
-                # No drivers detected: Show warning but allow fallback methods instead of blocking
-                silent_print("=== NO SPECIFIC DRIVERS DETECTED - USING FALLBACK METHODS ===")
-                QMessageBox.information(
-                    self,
-                    "Using Fallback Methods",
-                    "No specific drivers detected. The application will attempt installation using default methods.\n\n"
-                    "If installation fails, consider installing drivers for better compatibility.\n\n"
-                    "Click OK to continue with fallback methods or Cancel to install drivers."
-                )
-                # Continue with fallback methods instead of returning
-                
-            else:
-                # Use selected method (driver validation will happen later)
-                method = getattr(self, 'installation_method', 'guided')
-        else:
-            # Non-Windows: Use selected method
-            method = getattr(self, 'installation_method', 'guided')
+            if method in {"guided", "mtkclient"}:
+                method = "spflash"
+                self.installation_method = "spflash"
         
         # Gate Y2/MTK and offer Linux SPFT re-setup when needed. Do not silently
         # rewrite an explicit SP Flash Tool selection — that path re-offers setup.
@@ -30267,51 +33485,26 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.last_attempted_method = method
         
         if platform.system() == "Windows":
-            # Check if the selected method is available based on drivers
-            available_methods = driver_info.get('available_methods', ['guided', 'mtkclient'])
-            if method not in available_methods:
-                # Method not available, fall back to first available method
-                if available_methods:
-                    method = available_methods[0]
-                    silent_print(f"Selected method not available, falling back to: {method}")
-                else:
-                    # Ultimate fallback: use guided method to avoid blocking functionality
-                    method = 'guided'
-                    silent_print(f"No specific methods available, using fallback method: {method}")
-            
-            # Windows method order: SP Flash Tool methods first, then Guided/MTKclient
+            # Windows: SP Flash Tool methods only — never MTKClient.
+            windows_spft_methods = {"spflash", "spflash4", "spflash_console"}
+            if method not in windows_spft_methods:
+                method = "spflash"
+                self.installation_method = "spflash"
+                silent_print("Windows: forcing SP Flash Tool (MTKClient methods disabled)")
+
             if method == "spflash":
-                # Method 1: Guided - same as pressing "Try Method 3" in troubleshooting
-                silent_print("=== RUNNING GUIDED METHOD 1 ===")
-                # Show Method 3 image and launch SP Flash Tool
+                silent_print("=== RUNNING WINDOWS SP FLASH TOOL GUIDED ===")
                 self.load_method3_image()
                 self.try_method_3()
             elif method == "spflash4":
-                # Method 2: SP Flash Tool GUI - launches SP Flash Tool - GUI.lnk from Toolkit directory
-                silent_print("=== RUNNING SP FLASH TOOL GUI METHOD 2 ===")
-                # Launch SP Flash Tool GUI directly
+                silent_print("=== RUNNING WINDOWS SP FLASH TOOL GUI ===")
                 self.try_method_4()
             elif method == "spflash_console":
-                # Method 3: SP Flash Tool Console Mode - launches SP Flash Tool.lnk from Toolkit directory
-                silent_print("=== RUNNING SP FLASH TOOL CONSOLE MODE METHOD 3 ===")
-                # Show Method 3 image and launch SP Flash Tool Console Mode
+                silent_print("=== RUNNING WINDOWS SP FLASH TOOL CONSOLE ===")
                 self.load_method3_image()
                 self.try_method_3_console()
-            elif method == "guided":
-                # Method 4: Guided process
-                silent_print("=== RUNNING GUIDED INSTALLATION (SP FLASH TOOL GUI METHOD) ===")
-                silent_print("The MTK flash command will now run in this application.")
-                silent_print(f"Please turn off your {self.get_device_label()} when prompted.")
-                self.run_mtk_command_guided()
-            elif method == "mtkclient":
-                # Method 5: MTKclient (advanced) - same as pressing "Try Method 2" in troubleshooting
-                silent_print("=== RUNNING MTKCLIENT (ADVANCED) METHOD 5 ===")
-                # Show Method 2 image and launch recovery firmware install
-                self.load_method2_image()
-                self.show_troubleshooting_instructions()
             else:
-                # Fallback to SP Flash Tool method 1 if invalid method
-                silent_print("=== FALLING BACK TO SP FLASH TOOL METHOD 1 ===")
+                silent_print("=== FALLING BACK TO WINDOWS SP FLASH TOOL GUIDED ===")
                 self.load_method3_image()
                 self.try_method_3()
         elif is_linux_platform():
@@ -30325,29 +33518,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.load_method3_image()
                 self.try_method_3_console()
             elif method == "guided":
-                if is_y2_model(resolved_model) and not mtkclient_allowed_for_model(resolved_model):
-                    if self.linux_spflash_ready():
-                        self.load_method3_image()
-                        self.try_method_3()
-                    else:
-                        self._offer_linux_spflash_setup_again(
-                            "Y2 firmware requires SP Flash Tool on Linux (MTKClient is not enabled for Y2 yet)."
-                        )
-                    return
                 silent_print("=== RUNNING MTKCLIENT GUIDED INSTALLATION ===")
                 silent_print("The MTK flash command will now run in this application.")
                 silent_print(f"Please turn off your {self.get_device_label()} when prompted.")
                 self.run_mtk_command_guided()
             elif method == "mtkclient":
-                if is_y2_model(resolved_model) and not mtkclient_allowed_for_model(resolved_model):
-                    if self.linux_spflash_ready():
-                        self.load_method3_image()
-                        self.try_method_3()
-                    else:
-                        self._offer_linux_spflash_setup_again(
-                            "Y2 firmware requires SP Flash Tool on Linux (MTKClient is not enabled for Y2 yet)."
-                        )
-                    return
                 silent_print("=== RUNNING MTKCLIENT IN TERMINAL ===")
                 self.load_method2_image()
                 self.show_troubleshooting_instructions()
@@ -31094,117 +34269,40 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def _stop_flash_tool_processes_async(self):
         """Run flash-tool process cleanup off the UI thread (startup-safe)."""
-        if platform.system() != "Windows":
+        if is_macos_platform():
+            return
+        if is_linux_platform() and not linux_spflash_arch_supported():
             return
         threading.Thread(target=self.stop_flash_tool_processes, daemon=True).start()
 
     def stop_flash_tool_processes(self):
-        """Stop any running flash_tool.exe processes to prevent conflicts on Windows"""
-        if platform.system() != "Windows":
-            return  # Only needed on Windows
-            
+        """Stop any running SP Flash Tool processes (Windows + Linux x86).
+
+        Matches Windows ``flash_tool.exe`` cleanup; on Linux stops leftover
+        ``flash_tool`` console/GUI so they cannot hold /dev/ttyACM*.
+        """
         try:
-            # Use tasklist to find flash_tool.exe processes
-            result = subprocess.run(
-                ["tasklist", "/FI", "IMAGENAME eq flash_tool.exe", "/FO", "CSV"],
-                capture_output=True,
-                text=True,
-                timeout=5,
-                creationflags=subprocess.CREATE_NO_WINDOW
-            )
-            
-            if result.returncode == 0:
-                lines = result.stdout.strip().split('\n')
-                flash_tool_processes = []
-                
-                for line in lines[1:]:  # Skip header line
-                    if 'flash_tool.exe' in line:
-                        # Extract PID from CSV format
-                        parts = line.split(',')
-                        if len(parts) >= 2:
-                            pid = parts[1].strip('"')
-                            if pid.isdigit():
-                                flash_tool_processes.append(pid)
-                
-                if flash_tool_processes:
-                    silent_print(f"Found {len(flash_tool_processes)} flash_tool.exe processes, stopping them...")
-                    
-                    # Stop each flash_tool.exe process
-                    for pid in flash_tool_processes:
-                        try:
-                            subprocess.run(
-                                ["taskkill", "/PID", pid, "/F"],
-                                capture_output=True,
-                                timeout=5,
-                                creationflags=subprocess.CREATE_NO_WINDOW
-                            )
-                        except Exception as e:
-                            silent_print(f"Failed to stop flash_tool.exe process {pid}: {e}")
-                    
-                    # Give processes time to terminate (non-blocking)
-                    # Note: Removed blocking sleep to improve startup performance
-                    
-                    silent_print(f"Stopped {len(flash_tool_processes)} flash_tool.exe processes")
-                else:
-                    silent_print("No flash_tool.exe processes found")
-            else:
-                silent_print("Could not check for flash_tool.exe processes")
-                
+            stop_sp_flash_tool_processes()
         except Exception as e:
-            silent_print(f"Error checking for flash_tool.exe processes: {e}")
+            silent_print(f"Error stopping SP Flash Tool processes: {e}")
 
     def stop_mtk_processes(self):
-        """Stop any running mtk.py processes to prevent libusb conflicts on Windows"""
-        if platform.system() != "Windows":
-            return  # Only needed on Windows
-            
+        """Stop orphan mtk.py / flash_tool sessions before a new install (all platforms)."""
         try:
-            # Use tasklist to find mtk.py processes
-            result = subprocess.run(
-                ["tasklist", "/FI", "IMAGENAME eq python.exe", "/FO", "CSV"],
-                capture_output=True,
-                text=True,
-                creationflags=subprocess.CREATE_NO_WINDOW
+            n = stop_install_competitor_processes(
+                release_serial_holders=is_linux_platform()
             )
-            
-            if result.returncode == 0:
-                lines = result.stdout.strip().split('\n')
-                mtk_processes = []
-                
-                for line in lines[1:]:  # Skip header line
-                    if 'mtk.py' in line:
-                        # Extract PID from CSV format
-                        parts = line.split(',')
-                        if len(parts) >= 2:
-                            pid = parts[1].strip('"')
-                            if pid.isdigit():
-                                mtk_processes.append(pid)
-                
-                if mtk_processes:
-                    self.status_label.setText(f"Found {len(mtk_processes)} mtk.py processes, stopping them...")
-                    
-                    # Stop each mtk.py process
-                    for pid in mtk_processes:
-                        try:
-                            subprocess.run(
-                                ["taskkill", "/PID", pid, "/F"],
-                                capture_output=True,
-                                creationflags=subprocess.CREATE_NO_WINDOW
-                            )
-                        except Exception as e:
-                            print(f"Failed to stop mtk.py process {pid}: {e}")
-                    
-                    # Give processes time to terminate
-                    import time
-                    time.sleep(1)
-                    
-                    self.status_label.setText(f"Stopped {len(mtk_processes)} mtk.py processes")
+            if hasattr(self, "status_label") and self.status_label is not None:
+                if n:
+                    self.status_label.setText(
+                        "Closed leftover flash tools so the next install can use the port…"
+                    )
                 else:
-                    self.status_label.setText("No mtk.py processes found")
-                    
+                    self.status_label.setText("No leftover flash tools found")
         except Exception as e:
-            self.status_label.setText(f"Error checking for mtk.py processes: {e}")
-            print(f"Error checking for mtk.py processes: {e}")
+            if hasattr(self, "status_label") and self.status_label is not None:
+                self.status_label.setText(f"Could not clear leftover flash tools: {e}")
+            silent_print(f"Error stopping mtk/flash_tool processes: {e}")
 
     def cleanup_libusb_state(self):
         """Clean up libusb state before starting new MTK operations (Windows only)
@@ -31313,25 +34411,71 @@ class FirmwareDownloaderGUI(QMainWindow):
                         "Please ensure you have extracted the firmware files to the current directory."
                     )
                     return
+
+                # Desparse system/cache/userdata before opening the terminal flash.
+                prep_dialog = QProgressDialog(
+                    "Preparing images for MTKClient (simg2img)…",
+                    None,
+                    0,
+                    100,
+                    self,
+                )
+                prep_dialog.setWindowTitle("Preparing firmware images")
+                prep_dialog.setWindowModality(Qt.WindowModal)
+                prep_dialog.setMinimumDuration(0)
+                prep_dialog.setValue(1)
+
+                def _prep_cb(msg, pct=None):
+                    prep_dialog.setLabelText(str(msg))
+                    if pct is not None:
+                        prep_dialog.setValue(max(0, min(100, int(pct))))
+                    QApplication.processEvents()
+
+                ok, prep_msg, _desparsed = prepare_mtkclient_images(
+                    install_dir=current_dir,
+                    progress_cb=_prep_cb,
+                )
+                prep_dialog.setValue(100)
+                prep_dialog.close()
+                if not ok:
+                    QMessageBox.warning(
+                        self,
+                        "Image preparation failed",
+                        prep_msg
+                        or "Could not desparse firmware images with simg2img.",
+                    )
+                    return
                 
                 device_model, install_zip, install_extracted = self.get_install_model_context()
-                device_label = "Y2" if is_y2_model(device_model) else "Y1"
+                if device_model:
+                    self.set_runtime_detected_device_model(device_model)
+                device_label = device_label_for_model(device_model)
                 mtk_cmd_parts = build_mtk_write_command(
                     device_model,
                     zip_path=install_zip,
                     extracted_files=install_extracted,
                 )
                 mtk_args = " ".join(shlex.quote(part) for part in mtk_cmd_parts[1:])
-                mtk_command = f"cd '{current_dir}' && python3 {mtk_args}"
+                scatter = resolve_mtk_scatter_path_for_install(current_dir)
+                scatter_export = (
+                    f"export INNIOASIS_MTK_SCATTER={shlex.quote(str(scatter))}; "
+                    f"export MTK_SCATTER={shlex.quote(str(scatter))}; "
+                    if scatter
+                    else ""
+                )
+                mtk_command = (
+                    f"cd {shlex.quote(str(current_dir))} && {scatter_export}"
+                    f"python3 {mtk_args}"
+                )
                 
                 if platform.system() == "Linux":
                     # Linux: Open terminal with MTK command in separate window
                     terminal_cmd = ["gnome-terminal", "--title=Innioasis Recovery", "--", "bash", "-c", f"{mtk_command}; exec bash"]
                     # Try alternative terminals if gnome-terminal fails
                     alternatives = [
-                        ["xterm", "-title", "Innioasis Recovery", "-e", f"bash -c '{mtk_command}; exec bash'"],
-                        ["konsole", "--title", "Innioasis Recovery", "-e", f"bash -c '{mtk_command}; exec bash'"],
-                        ["xfce4-terminal", "--title=Innioasis Recovery", "-e", f"bash -c '{mtk_command}; exec bash'"]
+                        ["xterm", "-title", "Innioasis Recovery", "-e", f"bash -c {shlex.quote(mtk_command + '; exec bash')}"],
+                        ["konsole", "--title", "Innioasis Recovery", "-e", f"bash -c {shlex.quote(mtk_command + '; exec bash')}"],
+                        ["xfce4-terminal", "--title=Innioasis Recovery", "-e", f"bash -c {shlex.quote(mtk_command + '; exec bash')}"]
                     ]
                     
                     success = False
@@ -31367,6 +34511,15 @@ cd '{current_dir}'
 if [ -f "{venv_path}/bin/activate" ]; then
     source "{venv_path}/bin/activate"
     echo "Virtual environment activated"
+fi
+
+# Scatter map for Y2 name→offset when GPT/PMT is empty (harmless on Y1)
+if [ -f "MT6582_Android_scatter.txt" ]; then
+    export INNIOASIS_MTK_SCATTER="$(pwd)/MT6582_Android_scatter.txt"
+    export MTK_SCATTER="$INNIOASIS_MTK_SCATTER"
+elif [ -f "MT6572_Android_scatter.txt" ]; then
+    export INNIOASIS_MTK_SCATTER="$(pwd)/MT6572_Android_scatter.txt"
+    export MTK_SCATTER="$INNIOASIS_MTK_SCATTER"
 fi
 
 echo "=========================================="
@@ -31441,7 +34594,10 @@ read -n 1
             )
 
     def check_drivers_and_architecture(self):
-        """Check driver availability and system architecture for Windows users"""
+        """Check driver availability and system architecture for Windows users.
+
+        Windows installation methods are SP Flash Tool only (no MTKClient).
+        """
         if platform.system() != "Windows":
             return {
                 'has_mtk_driver': True,
@@ -31456,7 +34612,7 @@ read -n 1
         try:
             machine = platform.machine().lower()
             is_arm64 = machine in ['arm64', 'aarch64']
-        except:
+        except Exception:
             pass
         
         # Check for MTK driver (SP Flash Tool driver)
@@ -31468,7 +34624,7 @@ read -n 1
         except Exception as e:
             silent_print(f"MTK driver check error: {e}")
         
-        # Check for UsbDk driver
+        # Check for UsbDk driver (legacy; no longer used to offer MTKClient on Windows)
         has_usbdk_driver = False
         try:
             usbdk_driver_file = Path("C:/Program Files/UsbDk Runtime Library/UsbDk.sys")
@@ -31477,38 +34633,23 @@ read -n 1
         except Exception as e:
             silent_print(f"UsbDk driver check error: {e}")
         
-        # Determine available methods based on drivers
+        # Windows: SP Flash Tool methods only — never guided/mtkclient.
         available_methods = []
         can_install_firmware = True
         
         if is_arm64:
-            # ARM64 Windows: Only allow firmware downloads, no installation methods
             available_methods = []
             can_install_firmware = False
-        elif has_mtk_driver and has_usbdk_driver:
-            # Both drivers available: All methods available (Windows order: SP Flash Tool first, then Guided/MTKclient)
-            available_methods = ['spflash', 'spflash4', 'guided', 'mtkclient']
-        elif has_mtk_driver and not has_usbdk_driver:
-            # Only MTK driver: Only SP Flash Tool methods available
-            available_methods = ['spflash', 'spflash4']
-            can_install_firmware = True
-        elif not has_mtk_driver and has_usbdk_driver:
-            # Only UsbDk driver: Provide guided as default, then mtkclient advanced
-            available_methods = ['guided', 'mtkclient']
-            can_install_firmware = True
         else:
-            # No drivers: Provide default fallback methods instead of blocking functionality
-            # Choose defaults based on what might work without specific drivers
-            available_methods = ['guided', 'mtkclient']
+            # Always offer SP Flash Tool paths; drivers improve reliability but do
+            # not gate MTKClient (MTKClient is not offered on Windows at all).
+            available_methods = ['spflash', 'spflash4', 'spflash_console']
             can_install_firmware = True
-            silent_print("No specific drivers detected, using default fallback methods: guided, mtkclient")
-        
-        # Summary of driver combinations:
-        # - Both drivers: All 5 methods available (SP Flash Tool first, then Guided/MTKclient)
-        # - MTK only: Method 1, 2, and 3 (Guided, SP Flash GUI, and SP Flash Console) only
-        # - UsbDk only: Method 1 (Guided default) and Method 2 (MTKclient advanced) available  
-        # - No drivers: Method 1 (Guided default) and Method 2 (MTKclient advanced) available
-        # - ARM64: No methods available (firmware download only)
+            if not has_mtk_driver:
+                silent_print(
+                    "Windows: MediaTek SP driver not detected — SP Flash Tool "
+                    "methods still offered (install drivers if flash fails)."
+                )
         
         result = {
             'has_mtk_driver': has_mtk_driver,
@@ -32278,7 +35419,18 @@ if __name__ == "__main__":
         
         # If -sp argument is provided, skip GUI entirely and launch flash_tool.exe
         if args.sp:
-            prepare_sp_flash_tool_files()
+            # Pin history.ini scatter to remembered/disk model before GUI launch
+            try:
+                remembered_model, remembered_zip, remembered_extracted = (
+                    load_remembered_install_device_model()
+                )
+            except Exception:
+                remembered_model, remembered_zip, remembered_extracted = None, None, None
+            prepare_sp_flash_tool_files(
+                remembered_model,
+                zip_path=remembered_zip,
+                extracted_files=remembered_extracted,
+            )
             current_dir = Path.cwd()
             flash_tool_exe = current_dir / "flash_tool.exe"
             
@@ -32334,8 +35486,29 @@ if __name__ == "__main__":
 
         # Let the macOS app wrapper handle the icon display
         # Removed custom icon setting to allow macOS app icon to shine through
-        QTimer.singleShot(0, prepare_sp_flash_tool_files)
+        def _startup_prepare_spft_history():
+            """Pin history.ini to remembered/selected model at launch."""
+            try:
+                model, zip_name, extracted = None, None, None
+                try:
+                    model, zip_name, extracted = load_remembered_install_device_model()
+                except Exception:
+                    pass
+                if window is not None:
+                    try:
+                        m2, z2, e2 = window.get_install_model_context()
+                        model = m2 or model or window.get_selected_device_model()
+                        zip_name = z2 or zip_name
+                        extracted = e2 or extracted
+                    except Exception:
+                        model = model or window.get_selected_device_model()
+                prepare_sp_flash_tool_files(
+                    model, zip_path=zip_name, extracted_files=extracted
+                )
+            except Exception as e:
+                silent_print(f"startup prepare_sp_flash_tool_files: {e}")
 
+        window = None
         if args.toolkit:
             # Show only the toolkit window
             window = FirmwareDownloaderGUI()
@@ -32345,6 +35518,8 @@ if __name__ == "__main__":
             window = FirmwareDownloaderGUI()
             window.show()
             QApplication.processEvents()
+
+        QTimer.singleShot(0, _startup_prepare_spft_history)
         
         # Clean up redundant files after GUI is shown (non-blocking, in background thread)
         from PySide6.QtCore import QTimer
