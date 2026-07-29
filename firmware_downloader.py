@@ -4251,17 +4251,13 @@ def prepare_linux_spflash_runtime(app_dir=None, ensure_package=True):
 
 def spflash_connect_status_text(device_label, device_model=None):
     """
-    Status-bar copy when SP Flash Tool reaches “Search usb”.
-
-    Community (r/innioasis) pattern: player must be fully off, plug only when
-    asked, paperclip/pin in the reset hole if the unit will not power off cleanly.
-    Y2 often shows as preloader; Y1 often as BROM — same physical steps for both.
+    Status-bar copy when installation tool is ready for device connection.
     """
     label = device_label or device_label_for_model(device_model) or "player"
     return (
         f"Ready for your {label}. Power it fully off "
-        f"(paperclip/pin in the small reset hole if it will not shut down), "
-        f"then plug in USB only now — leave other phones/players unplugged."
+        f"(use a paperclip/pin in the small reset hole if it will not shut down), "
+        f"then plug in the USB cable now. Please leave other phones/players unplugged."
     )
 
 
@@ -4275,23 +4271,20 @@ def spflash_success_status_text(device_label=None, device_model=None):
 
 
 def windows_spflash_com_port_fail_message(device_label=None):
-    """User-facing explanation when SP Flash Tool reports S_COM_PORT_OPEN_FAIL (1013) on Windows."""
+    """User-facing explanation when installation tool fails to open connection on Windows."""
     label = device_label or "player"
     return (
-        f"SP Flash Tool could not open the download connection to your {label} "
-        f"(error S_COM_PORT_OPEN_FAIL / 1013).\n\n"
-        "On Windows this almost always means the MediaTek USB drivers are missing, "
+        f"The installation tool could not connect to your {label}.\n\n"
+        "On Windows, this usually means the USB drivers are missing, "
         "outdated, or not fully loaded yet.\n\n"
         "What to do:\n"
-        "1. Install / reinstall the MediaTek VCOM / USB drivers from this app’s "
-        "driver setup (or the Toolkit driver package).\n"
-        "2. Reboot the PC once after installing drivers — Windows often needs a "
-        "restart before the ports show up correctly.\n"
-        f"3. Fully power off your {label}, unplug USB, start install again, and "
-        "plug in only when asked.\n"
-        "4. Use a short data-capable cable on a rear USB port (avoid hubs).\n\n"
-        "You do not need to browse for a scatter file — this app loads the correct "
-        "scatter for your model automatically."
+        "1. Install or reinstall the USB drivers from this app’s "
+        "driver setup.\n"
+        "2. Restart your PC after installing drivers.\n"
+        f"3. Fully power off your {label}, unplug the USB cable, start the install again, and "
+        "plug it in only when asked.\n"
+        "4. Use a short, high-quality USB cable directly connected to your computer (avoid hubs).\n\n"
+        "The configuration files for your model are loaded automatically."
     )
 
 
@@ -6899,6 +6892,7 @@ class SPFlashToolWorker(QThread):
     spflash_completed = Signal(bool, str)
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
+    show_try_again_dialog = Signal()  # Signal to prompt user for MTK fallback
 
     def __init__(self, install_xml_path=None, device_model=None, com_port=None,
                  zip_path=None, extracted_files=None):
@@ -7065,7 +7059,7 @@ class SPFlashToolWorker(QThread):
             return result
 
         silent_print(
-            f"Starting SP Flash Tool command (attempt {attempt}/{max_attempts}): "
+            f"Starting Installation Tool (attempt {attempt}/{max_attempts}): "
             f"{self.spflash_command}"
         )
         self.show_please_wait_image.emit()
@@ -7075,7 +7069,7 @@ class SPFlashToolWorker(QThread):
             )
         else:
             self.status_updated.emit(
-                f"Retrying SP Flash Tool ({attempt}/{max_attempts})…"
+                f"Retrying installation tool ({attempt}/{max_attempts})…"
             )
         if pinned_port:
             self.status_updated.emit(
@@ -7344,6 +7338,11 @@ class SPFlashToolWorker(QThread):
                 silent_print(f"SPFT log scan after early exit: {e}")
 
         result["completed"] = completed_phase
+        
+        # Treat any failure before installation actually begins as a connection failure
+        if reached_search_usb and not installing_phase and not completed_phase and not overlap_error:
+            com_port_open_fail = True
+            
         result["com_port_open_fail"] = com_port_open_fail and reached_search_usb
         result["saw_permission_hint"] = saw_permission_hint
         result["overlap"] = overlap_error
@@ -7356,9 +7355,9 @@ class SPFlashToolWorker(QThread):
             and not result["message"]
         ):
             result["message"] = (
-                f"SP Flash Tool quit while loading firmware images for your "
+                f"The installation tool stopped while preparing the files for your "
                 f"{self.device_label}, before waiting for USB.\n\n"
-                f"That is a scatter/config problem on this computer — not a cable "
+                f"There is a problem with the configuration on this computer. This is not a cable "
                 f"or plug-in issue. Try Install / Restore again (we will re-pin the "
                 f"correct Y1/Y2 scatter). If it keeps failing, re-extract the "
                 f"{self.device_label} firmware zip."
@@ -7448,7 +7447,7 @@ class SPFlashToolWorker(QThread):
                         False,
                         last.get("message")
                         or (
-                            f"SP Flash Tool could not load the firmware images for your "
+                            f"The installation tool could not load the files for your "
                             f"{self.device_label} (scatter/layout error).\n\n"
                             f"You do not need to plug the player in yet — this failed "
                             f"while preparing files on the computer.\n\n"
@@ -7513,11 +7512,25 @@ class SPFlashToolWorker(QThread):
                     "Flash Tool failed: COM port open "
                     f"({'Linux self-heal retries exhausted' if is_linux_platform() else 'Windows'})"
                 )
+                
+                can_fallback = False
+                is_y1 = is_y1_model(self.device_model)
+                if is_y1:
+                    can_fallback = True
+                elif is_windows_platform():
+                    can_fallback = True
+                
+                if can_fallback:
+                    silent_print("Prompting user for alternative installation method...")
+                    self.status_updated.emit("Primary installation tool failed to connect. Ready for alternative method.")
+                    self.show_try_again_dialog.emit()
+                    return
+                
                 if is_linux_platform():
                     msg = linux_spflash_com_port_fail_message(self.device_label)
                     msg += (
                         f"\n\nWe automatically retried {max_attempts} times "
-                        f"(closed leftover flash tools, cleared the port, refreshed USB rules, "
+                        f"(closed leftover sessions, cleared the connection, refreshed USB rules, "
                         f"and asked for a clean unplug/replug)."
                     )
                     msg += (
@@ -7656,7 +7669,7 @@ class MTKWorker(QThread):
         """
         self._clear_mtk_state(cwd, app_dir, Path.cwd())
         label = f"[{stage_name}] " if stage_name else ""
-        self.status_updated.emit(f"MTK: {label}starting…")
+        self.status_updated.emit(f"Installation: {label}starting…")
         self.show_initsteps_image.emit()
 
         process = subprocess.Popen(
@@ -7714,11 +7727,11 @@ class MTKWorker(QThread):
                 failed_write = True
             if "device detected" in lower:
                 self.show_please_wait_image.emit()
-            if "brom" in lower or "waiting for" in lower:
+            if "recovery mode" in lower or "brom" in lower or "waiting for" in lower:
                 self.status_updated.emit("Please wait…")
                 self.show_please_wait_image.emit()
             else:
-                self.status_updated.emit(f"MTK: {label}{fixed}")
+                self.status_updated.emit(f"Installation: {label}{fixed}")
 
         process.wait()
         ok = (process.returncode == 0 or saw_wrote) and not failed_write
@@ -8038,7 +8051,7 @@ class MTKWorker(QThread):
                     
                     # Show debug output in separate window if debug mode is enabled
                     if self.debug_mode and self.debug_window:
-                        self.debug_window.append_output(f"MTK: {fixed_line}")
+                        self.debug_window.append_output(f"Installation: {fixed_line}")
                     
                     # Check if this is empty status or dots (awaiting connection) and show installing.png
                     if device_detected and (fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == ""):
@@ -8108,8 +8121,8 @@ class MTKWorker(QThread):
                                     and any(kw in display_line.lower() for kw in _hint_keywords)):
                                 self.show_instructions_image.emit()
                             # Show latest output in status area (no extra whitespace)
-                            self.status_updated.emit(f"MTK: {display_line}")
-                            current_status = f"MTK: {display_line}"  # Track current status
+                            self.status_updated.emit(f"Installation: {display_line}")
+                            current_status = f"Installation: {display_line}"  # Track current status
                         # Reset initsteps timer when we get real output
                         initsteps_start_time = None
                         last_status_update = time.time()  # Update status time
@@ -8191,8 +8204,8 @@ class MTKWorker(QThread):
                             last_status_update = time.time()  # Update status time
                         else:
                             # Just "Preloader" without dots indicates freeze state
-                            self.status_updated.emit("MTK: Preloader")
-                            current_status = "MTK: Preloader"  # Track current status
+                            self.status_updated.emit("Installation: Preloader")
+                            current_status = "Installation: Preloader"  # Track current status
                             # Show initsteps image for instruction message - but not during active installation
                             if not active_installation_started:
                                 self.show_instructions_image.emit()
@@ -8234,8 +8247,8 @@ class MTKWorker(QThread):
                     if "progress" in line.lower() or line.lower().startswith("wrote"):
                         self.show_installing_image.emit()
                         # Display the actual mtk.py output in status field
-                        self.status_updated.emit(f"MTK: {fixed_line}")
-                        current_status = f"MTK: {fixed_line}"
+                        self.status_updated.emit(f"Installation: {fixed_line}")
+                        current_status = f"Installation: {fixed_line}"
                         last_status_update = time.time()
                         
                         # active_installation_started is now set immediately when progress/wrote is first detected above
@@ -8273,7 +8286,7 @@ class MTKWorker(QThread):
                         # Fix progress bar characters for platform compatibility
                         fixed_line = self.fix_progress_bar_chars(line)
                         # Show latest output in status area (no extra whitespace)
-                        self.status_updated.emit(f"MTK: {fixed_line}")
+                        self.status_updated.emit(f"Installation: {fixed_line}")
 
             # Wait for process to complete
             process.wait()
@@ -14845,26 +14858,26 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         if not message or message.strip() == "":
             self.status_label.setText(self.default_install_status_text())
-        elif message.strip() == "MTK: Preloader":
-            # Just "MTK: Preloader" indicates freeze state
+        elif message.strip() == "Installation: Preloader":
+            # Just "Installation: Preloader" indicates freeze state
             self.status_label.setText(
                 self.device_copy("Please disconnect your Y1 and restart the app")
             )
         elif message.startswith("MTK:") and (message.strip() == "MTK:" or 
                                               message.strip() == "MTK:..........." or 
-                                              message.strip() == "MTK: ..........." or
-                                              message.strip() == "MTK: .........." or
-                                              message.strip() == "MTK: ........" or
-                                              message.strip() == "MTK: ......." or
-                                              message.strip() == "MTK: ......" or
-                                              message.strip() == "MTK: ....." or
-                                              message.strip() == "MTK: ...." or
-                                              message.strip() == "MTK: ..." or
-                                              message.strip() == "MTK: .." or
-                                              message.strip() == "MTK: ." or
-                                              message.strip() == "MTK: " or  # Just "MTK: " with space
-                                              message.strip().startswith("MTK:...") or  # Lines beginning with dots
-                                              message.strip().startswith("MTK:  ") or  # Lines with just spaces
+                                              message.strip() == "Installation: ..........." or
+                                              message.strip() == "Installation: .........." or
+                                              message.strip() == "Installation: ........" or
+                                              message.strip() == "Installation: ......." or
+                                              message.strip() == "Installation: ......" or
+                                              message.strip() == "Installation: ....." or
+                                              message.strip() == "Installation: ...." or
+                                              message.strip() == "Installation: ..." or
+                                              message.strip() == "Installation: .." or
+                                              message.strip() == "Installation: ." or
+                                              message.strip() == "Installation: " or  # Just "Installation: " with space
+                                              message.strip().startswith("Installation:...") or  # Lines beginning with dots
+                                              message.strip().startswith("Installation:  ") or  # Lines with just spaces
                                               len(message.strip()) <= 10):  # Very short MTK messages likely indicate waiting
             # MTK is waiting for device connection or showing dots/spaces
             self.status_label.setText("Now please follow the instructions displayed below. Please force quit the app if not responding and restart it.")
@@ -15256,6 +15269,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
             self.spflash_worker.disable_update_button.connect(self.disable_update_button)
             self.spflash_worker.enable_update_button.connect(self.enable_update_button)
+            if hasattr(self, 'show_mtk_fallback_dialog'):
+                self.spflash_worker.show_try_again_dialog.connect(self.show_mtk_fallback_dialog)
             
             self.hide_inappropriate_buttons_for_spflash()
             self.hide_left_panel()
@@ -35378,6 +35393,76 @@ read -n 1
             # Restore original style after 500ms
             QTimer.singleShot(500, lambda: self.image_label.setStyleSheet(original_style))
 
+
+
+    def show_mtk_fallback_dialog(self):
+        """Prompt the user to try the alternative MTKclient method when SP Flash Tool fails."""
+        try:
+            reply = QMessageBox.question(self, 
+                "Alternative Installation", 
+                f"The primary installation tool is not working right now. Would you like to try the alternative method or a reboot?\n\n"
+                f"Sometimes rebooting can fix connection issues. "
+                f"(On Windows, installing the drivers from support.innioasis.com and rebooting can help too)",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.status_label.setText("Preparing alternative installation method...")
+                
+                # Cleanup the current worker
+                if hasattr(self, 'spflash_worker') and self.spflash_worker:
+                    self.spflash_worker.stop()
+                    self.spflash_worker.wait()
+                    self.spflash_worker = None
+                
+                # Setup parameters for MTKWorker
+                install_zip = getattr(self, '_last_install_zip_name', None)
+                install_extracted = getattr(self, '_last_install_extracted_files', None)
+                
+                # Instantiate MTKWorker
+                self.mtk_worker = MTKWorker(
+                    debug_mode=getattr(self, 'debug_mode', False),
+                    debug_window=getattr(self, 'debug_window', None),
+                    device_model=getattr(self, 'device_model', None),
+                    zip_path=install_zip,
+                    extracted_files=install_extracted
+                )
+                
+                # Connect signals
+                self.mtk_worker.status_updated.connect(self.status_label.setText)
+                self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+                self.mtk_worker.show_reconnect_image.connect(self.load_reconnect_image)
+                self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
+                self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
+                self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+                self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+                
+                # Additional error handlers usually connected to MTKWorker
+                if hasattr(self, 'handle_handshake_failed'):
+                    self.mtk_worker.handshake_failed.connect(self.handle_handshake_failed)
+                if hasattr(self, 'handle_errno2_error'):
+                    self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
+                if hasattr(self, 'handle_usb_io_error'):
+                    self.mtk_worker.usb_io_error_detected.connect(self.handle_usb_io_error)
+                if hasattr(self, 'handle_backend_error'):
+                    self.mtk_worker.backend_error_detected.connect(self.handle_backend_error)
+                if hasattr(self, 'handle_keyboard_interrupt'):
+                    self.mtk_worker.keyboard_interrupt_detected.connect(self.handle_keyboard_interrupt)
+                if hasattr(self, 'show_try_again_dialog'):
+                    self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
+                
+                # Start the MTK fallback
+                self.mtk_worker.start()
+            else:
+                self.revert_to_startup_state()
+                
+        except Exception as e:
+            silent_print(f"Error starting alternative method: {e}")
+            self.revert_to_startup_state()
+
     def show_try_again_dialog(self):
         """Show try again dialog when user spends too long in initsteps phase"""
         try:
@@ -35388,7 +35473,7 @@ read -n 1
                 self.mtk_worker = None
             
             # Show the try again dialog with specific instructions
-            reply = QMessageBox.question(self, self.device_copy("Connection Timeout"), self.device_copy("The device connection is taking too long. Please disconnect your Y1 and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?"),
+            reply = QMessageBox.question(self, self.device_copy("Connection Timeout"), self.device_copy("The device connection is taking too long. Please disconnect your {getattr(self, 'device_label', 'device')} and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?"),
                 QMessageBox.Yes | QMessageBox.No,
                 QMessageBox.Yes
             )
