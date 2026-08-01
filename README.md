@@ -1,5 +1,5 @@
 
-# Innioasis Updater is the stock firmware installation and modding tool for the Innioasis Y1 and Y2 audio players, built by the users, _for_ the users. You can use it to install the stock firmware and custom firmwares like Rockbox, JJ Launcher, Inniclassic, Y2Player, Solar, Koensayr and more on your Innioasis Y1 and Innioasis Y2.
+# [Innioasis Updater](https://innioasis.app) is the stock firmware installation and modding tool for the Innioasis Y1 and Y2 audio players, built by the users, _for_ the users. You can use it to install the stock firmware and custom firmwares like Rockbox([Y1](https://github.com/rockbox-y1/rockbox), [Y2](https://github.com/spycemagic/y2-rockbox), [JJ Launcher](https://github.com/ismileblue/y1_launcher), [Inniclassic](https://github.com/FabianZettl/inniclassic), [Y2Player](https://github.com/SchulzCode/Y2Player), [Solar](https://github.com/thesolarproject/solar), [Koensayr](https://github.com/SeanathanVT/koensayr) and more on your [Innioasis Y1](https://innioasis.com/pages/y1) and [Innioasis Y2](https://innioasis.com/pages/y2).
 
 # Came from an old Rockbox tutorial or guide? We've got a new, guided tool called Innioasis Updater, To get started with it, or if you're looking for firmware downloads or updates for another Innioasis device, please head to [innioasis.com/pages/download](https://innioasis.com/pages/download)
 
