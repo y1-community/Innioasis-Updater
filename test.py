@@ -57,7 +57,7 @@ if platform.system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "2.0.1"
+APP_VERSION = "2.0.3"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
@@ -2454,6 +2454,71 @@ def is_macos_platform():
     return platform.system() == "Darwin"
 
 
+# --------------------------------------------------------------------------- #
+# Y2-on-macOS manual install flow (temporary workaround)
+# --------------------------------------------------------------------------- #
+# Until Y2 mtkclient flashing is supported on macOS, Y2 firmware installs on a
+# Mac are handed to the manufacturer's manual DFU install tool. Updater downloads
+# that tool, helps the user save their firmware as rom_y2.zip, then steps aside.
+MANUFACTURER_TOOL_URL = (
+    "https://github.com/y1-community/supplemental-apks/releases/download/1.0/manufacturer_tool.dmg"
+)
+MANUFACTURER_TOOL_FILENAME = "manufacturer_tool.dmg"
+ROM_Y2_FILENAME = "rom_y2.zip"
+
+# Forced by --y2-mac-flow so the macOS Y2 manual-install flow can be exercised on
+# Windows/Linux (the developer machine is not a Mac).
+FORCE_Y2_MAC_FLOW = False
+
+
+def y2_mac_flow_active():
+    """True when the Y2-on-macOS manual-install flow should run.
+
+    Always active on real macOS; active elsewhere only with --y2-mac-flow (testing).
+    """
+    return is_macos_platform() or FORCE_Y2_MAC_FLOW
+
+
+def resolve_asset_model(asset_url):
+    """Infer Y1/Y2 from the GitHub asset URL a firmware was downloaded from.
+
+    The local zip filename can be misleading: Y2 downloads are saved under the
+    fallback-mapped repo name (e.g. y1-community_y1-stock-rom_3.1.7.zip), which
+    the zip-name detector reads as Y1. The asset URL keeps the real asset name
+    (e.g. .../3.1.7/rom_y2.zip), so it is reliable evidence for Y2.
+
+    Only the real asset filename is inspected — never on-disk evidence. A
+    neutral asset name (e.g. rom.zip) therefore returns None instead of being
+    misread as Y2 because a Y2 extraction once left residue in the app folder.
+    """
+    if not asset_url:
+        return None
+    try:
+        from urllib.parse import urlparse
+        basename = urlparse(str(asset_url)).path.rsplit("/", 1)[-1].lower()
+    except Exception:
+        return None
+    if not basename:
+        return None
+    if (
+        "_y2" in basename
+        or "rom_y2" in basename
+        or "y2-stock" in basename
+        or basename.startswith("y2")
+        or "6582" in basename
+        or "eastaeon" in basename
+    ):
+        return "Y2"
+    if (
+        "_y1" in basename
+        or "rom_y1" in basename
+        or "y1-stock" in basename
+        or basename.startswith("y1")
+    ):
+        return "Y1"
+    return None
+
+
 def linux_cpu_machine():
     """Normalized ``platform.machine()`` for Linux arch checks."""
     return (platform.machine() or "").lower().strip()
@@ -4251,17 +4316,13 @@ def prepare_linux_spflash_runtime(app_dir=None, ensure_package=True):
 
 def spflash_connect_status_text(device_label, device_model=None):
     """
-    Status-bar copy when SP Flash Tool reaches “Search usb”.
-
-    Community (r/innioasis) pattern: player must be fully off, plug only when
-    asked, paperclip/pin in the reset hole if the unit will not power off cleanly.
-    Y2 often shows as preloader; Y1 often as BROM — same physical steps for both.
+    Status-bar copy when installation tool is ready for device connection.
     """
     label = device_label or device_label_for_model(device_model) or "player"
     return (
         f"Ready for your {label}. Power it fully off "
-        f"(paperclip/pin in the small reset hole if it will not shut down), "
-        f"then plug in USB only now — leave other phones/players unplugged."
+        f"(use a paperclip/pin in the small reset hole if it will not shut down), "
+        f"then plug in the USB cable now. Please leave other phones/players unplugged."
     )
 
 
@@ -4275,23 +4336,20 @@ def spflash_success_status_text(device_label=None, device_model=None):
 
 
 def windows_spflash_com_port_fail_message(device_label=None):
-    """User-facing explanation when SP Flash Tool reports S_COM_PORT_OPEN_FAIL (1013) on Windows."""
+    """User-facing explanation when installation tool fails to open connection on Windows."""
     label = device_label or "player"
     return (
-        f"SP Flash Tool could not open the download connection to your {label} "
-        f"(error S_COM_PORT_OPEN_FAIL / 1013).\n\n"
-        "On Windows this almost always means the MediaTek USB drivers are missing, "
+        f"The installation tool could not connect to your {label}.\n\n"
+        "On Windows, this usually means the USB drivers are missing, "
         "outdated, or not fully loaded yet.\n\n"
         "What to do:\n"
-        "1. Install / reinstall the MediaTek VCOM / USB drivers from this app’s "
-        "driver setup (or the Toolkit driver package).\n"
-        "2. Reboot the PC once after installing drivers — Windows often needs a "
-        "restart before the ports show up correctly.\n"
-        f"3. Fully power off your {label}, unplug USB, start install again, and "
-        "plug in only when asked.\n"
-        "4. Use a short data-capable cable on a rear USB port (avoid hubs).\n\n"
-        "You do not need to browse for a scatter file — this app loads the correct "
-        "scatter for your model automatically."
+        "1. Install or reinstall the USB drivers from this app’s "
+        "driver setup.\n"
+        "2. Restart your PC after installing drivers.\n"
+        f"3. Fully power off your {label}, unplug the USB cable, start the install again, and "
+        "plug it in only when asked.\n"
+        "4. Use a short, high-quality USB cable directly connected to your computer (avoid hubs).\n\n"
+        "The configuration files for your model are loaded automatically."
     )
 
 
@@ -6899,6 +6957,7 @@ class SPFlashToolWorker(QThread):
     spflash_completed = Signal(bool, str)
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
+    show_try_again_dialog = Signal()  # Signal to prompt user for MTK fallback
 
     def __init__(self, install_xml_path=None, device_model=None, com_port=None,
                  zip_path=None, extracted_files=None):
@@ -7065,7 +7124,7 @@ class SPFlashToolWorker(QThread):
             return result
 
         silent_print(
-            f"Starting SP Flash Tool command (attempt {attempt}/{max_attempts}): "
+            f"Starting Installation Tool (attempt {attempt}/{max_attempts}): "
             f"{self.spflash_command}"
         )
         self.show_please_wait_image.emit()
@@ -7075,7 +7134,7 @@ class SPFlashToolWorker(QThread):
             )
         else:
             self.status_updated.emit(
-                f"Retrying SP Flash Tool ({attempt}/{max_attempts})…"
+                f"Retrying installation tool ({attempt}/{max_attempts})…"
             )
         if pinned_port:
             self.status_updated.emit(
@@ -7344,6 +7403,11 @@ class SPFlashToolWorker(QThread):
                 silent_print(f"SPFT log scan after early exit: {e}")
 
         result["completed"] = completed_phase
+        
+        # Treat any failure before installation actually begins as a connection failure
+        if reached_search_usb and not installing_phase and not completed_phase and not overlap_error:
+            com_port_open_fail = True
+            
         result["com_port_open_fail"] = com_port_open_fail and reached_search_usb
         result["saw_permission_hint"] = saw_permission_hint
         result["overlap"] = overlap_error
@@ -7356,9 +7420,9 @@ class SPFlashToolWorker(QThread):
             and not result["message"]
         ):
             result["message"] = (
-                f"SP Flash Tool quit while loading firmware images for your "
+                f"The installation tool stopped while preparing the files for your "
                 f"{self.device_label}, before waiting for USB.\n\n"
-                f"That is a scatter/config problem on this computer — not a cable "
+                f"There is a problem with the configuration on this computer. This is not a cable "
                 f"or plug-in issue. Try Install / Restore again (we will re-pin the "
                 f"correct Y1/Y2 scatter). If it keeps failing, re-extract the "
                 f"{self.device_label} firmware zip."
@@ -7448,7 +7512,7 @@ class SPFlashToolWorker(QThread):
                         False,
                         last.get("message")
                         or (
-                            f"SP Flash Tool could not load the firmware images for your "
+                            f"The installation tool could not load the files for your "
                             f"{self.device_label} (scatter/layout error).\n\n"
                             f"You do not need to plug the player in yet — this failed "
                             f"while preparing files on the computer.\n\n"
@@ -7513,11 +7577,25 @@ class SPFlashToolWorker(QThread):
                     "Flash Tool failed: COM port open "
                     f"({'Linux self-heal retries exhausted' if is_linux_platform() else 'Windows'})"
                 )
+                
+                can_fallback = False
+                is_y1 = is_y1_model(self.device_model)
+                if is_y1:
+                    can_fallback = True
+                elif is_windows_platform():
+                    can_fallback = True
+                
+                if can_fallback:
+                    silent_print("Prompting user for alternative installation method...")
+                    self.status_updated.emit("Primary installation tool failed to connect. Ready for alternative method.")
+                    self.show_try_again_dialog.emit()
+                    return
+                
                 if is_linux_platform():
                     msg = linux_spflash_com_port_fail_message(self.device_label)
                     msg += (
                         f"\n\nWe automatically retried {max_attempts} times "
-                        f"(closed leftover flash tools, cleared the port, refreshed USB rules, "
+                        f"(closed leftover sessions, cleared the connection, refreshed USB rules, "
                         f"and asked for a clean unplug/replug)."
                     )
                     msg += (
@@ -7656,7 +7734,7 @@ class MTKWorker(QThread):
         """
         self._clear_mtk_state(cwd, app_dir, Path.cwd())
         label = f"[{stage_name}] " if stage_name else ""
-        self.status_updated.emit(f"MTK: {label}starting…")
+        self.status_updated.emit(f"Installation: {label}starting…")
         self.show_initsteps_image.emit()
 
         process = subprocess.Popen(
@@ -7714,11 +7792,11 @@ class MTKWorker(QThread):
                 failed_write = True
             if "device detected" in lower:
                 self.show_please_wait_image.emit()
-            if "brom" in lower or "waiting for" in lower:
+            if "recovery mode" in lower or "brom" in lower or "waiting for" in lower:
                 self.status_updated.emit("Please wait…")
                 self.show_please_wait_image.emit()
             else:
-                self.status_updated.emit(f"MTK: {label}{fixed}")
+                self.status_updated.emit(f"Installation: {label}{fixed}")
 
         process.wait()
         ok = (process.returncode == 0 or saw_wrote) and not failed_write
@@ -8038,7 +8116,7 @@ class MTKWorker(QThread):
                     
                     # Show debug output in separate window if debug mode is enabled
                     if self.debug_mode and self.debug_window:
-                        self.debug_window.append_output(f"MTK: {fixed_line}")
+                        self.debug_window.append_output(f"Installation: {fixed_line}")
                     
                     # Check if this is empty status or dots (awaiting connection) and show installing.png
                     if device_detected and (fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == ""):
@@ -8108,8 +8186,8 @@ class MTKWorker(QThread):
                                     and any(kw in display_line.lower() for kw in _hint_keywords)):
                                 self.show_instructions_image.emit()
                             # Show latest output in status area (no extra whitespace)
-                            self.status_updated.emit(f"MTK: {display_line}")
-                            current_status = f"MTK: {display_line}"  # Track current status
+                            self.status_updated.emit(f"Installation: {display_line}")
+                            current_status = f"Installation: {display_line}"  # Track current status
                         # Reset initsteps timer when we get real output
                         initsteps_start_time = None
                         last_status_update = time.time()  # Update status time
@@ -8191,8 +8269,8 @@ class MTKWorker(QThread):
                             last_status_update = time.time()  # Update status time
                         else:
                             # Just "Preloader" without dots indicates freeze state
-                            self.status_updated.emit("MTK: Preloader")
-                            current_status = "MTK: Preloader"  # Track current status
+                            self.status_updated.emit("Installation: Preloader")
+                            current_status = "Installation: Preloader"  # Track current status
                             # Show initsteps image for instruction message - but not during active installation
                             if not active_installation_started:
                                 self.show_instructions_image.emit()
@@ -8234,8 +8312,8 @@ class MTKWorker(QThread):
                     if "progress" in line.lower() or line.lower().startswith("wrote"):
                         self.show_installing_image.emit()
                         # Display the actual mtk.py output in status field
-                        self.status_updated.emit(f"MTK: {fixed_line}")
-                        current_status = f"MTK: {fixed_line}"
+                        self.status_updated.emit(f"Installation: {fixed_line}")
+                        current_status = f"Installation: {fixed_line}"
                         last_status_update = time.time()
                         
                         # active_installation_started is now set immediately when progress/wrote is first detected above
@@ -8273,7 +8351,7 @@ class MTKWorker(QThread):
                         # Fix progress bar characters for platform compatibility
                         fixed_line = self.fix_progress_bar_chars(line)
                         # Show latest output in status area (no extra whitespace)
-                        self.status_updated.emit(f"MTK: {fixed_line}")
+                        self.status_updated.emit(f"Installation: {fixed_line}")
 
             # Wait for process to complete
             process.wait()
@@ -8485,6 +8563,11 @@ class DownloadWorker(QThread):
         try:
             self.status_updated.emit("Downloading...")
 
+            # Remember the GitHub asset URL — its real asset name is the only
+            # reliable Y1/Y2 evidence for fallback-mapped repos (see resolve_asset_model).
+            self.install_asset_url = self.download_url
+            asset_model = resolve_asset_model(self.download_url)
+
             # Download the file
             response = requests.get(self.download_url, stream=True, timeout=30)
             response.raise_for_status()
@@ -8529,6 +8612,29 @@ class DownloadWorker(QThread):
                                 status_msg = f"Downloading... {progress}% ({downloaded_mb:.1f}MB / {total_mb:.1f}MB) - ETA: {eta_str}"
                                 self.status_updated.emit(status_msg)
 
+            # Y2 firmware on macOS (or --y2-mac-flow test flag): no need to
+            # extract — the manufacturer's manual install tool consumes the zip
+            # directly, and extraction would only trigger the blocked MTKClient path.
+            # The asset URL is checked first because the local zip is saved under
+            # the fallback repo name and would be misread as Y1.
+            if y2_mac_flow_active() and is_y2_model(
+                asset_model
+                or resolve_device_model_for_install(None, zip_path=str(zip_path))
+            ):
+                self.resolved_install_model = "Y2"
+                self.install_zip_name = zip_path.name
+                self.install_extracted_files = None
+                remember_install_device_model(
+                    "Y2", zip_path=zip_path.name, extracted_files=None
+                )
+                self.status_updated.emit("Download complete — manual install required.")
+                self.download_completed.emit(
+                    True,
+                    "Y2 firmware downloaded. Your Mac will use the manufacturer's "
+                    "manual install tool to apply it.",
+                )
+                return
+
             self.status_updated.emit("Download completed. Extracting...")
 
             # Extract + prepare history.ini scatter for model (before and after)
@@ -8541,7 +8647,7 @@ class DownloadWorker(QThread):
 
             resolved_model = resolve_device_model_for_install(
                 self.device_model, zip_path=zip_path.name, extracted_files=extracted_files
-            ) or resolved_model
+            ) or resolved_model or asset_model
             # Stash install context on the worker so the UI can pick it up after download
             self.resolved_install_model = resolved_model
             self.install_zip_name = zip_path.name
@@ -8580,6 +8686,76 @@ class DownloadWorker(QThread):
 
         except Exception as e:
             self.download_completed.emit(False, f"Error: {str(e)}")
+
+
+class ManufacturerToolDownloadWorker(QThread):
+    """Worker thread that downloads the Y2 manufacturer manual-install tool DMG.
+
+    Streams MANUFACTURER_TOOL_URL to *dest_path* and reports progress so the UI
+    can show a live progress dialog (the Y2-on-macOS manual install flow).
+    """
+
+    progress_updated = Signal(int)
+    status_updated = Signal(str)
+    download_completed = Signal(bool, str)
+
+    def __init__(self, url, dest_path):
+        super().__init__()
+        self.url = url
+        self.dest_path = Path(dest_path)
+        self.should_stop = False
+
+    def stop(self):
+        """Request a graceful stop (used when the user cancels the progress dialog)."""
+        self.should_stop = True
+
+    def run(self):
+        try:
+            self.dest_path.parent.mkdir(parents=True, exist_ok=True)
+            tmp_path = self.dest_path.with_suffix(self.dest_path.suffix + ".part")
+            try:
+                if tmp_path.exists():
+                    tmp_path.unlink()
+            except Exception:
+                pass
+            self.status_updated.emit("Connecting…")
+            with requests.get(self.url, stream=True, timeout=30) as response:
+                response.raise_for_status()
+                total_size = int(response.headers.get("content-length", 0) or 0)
+                downloaded = 0
+                with open(tmp_path, "wb") as fh:
+                    for chunk in response.iter_content(chunk_size=65536):
+                        if self.should_stop:
+                            try:
+                                tmp_path.unlink()
+                            except Exception:
+                                pass
+                            self.download_completed.emit(False, "cancelled")
+                            return
+                        if chunk:
+                            fh.write(chunk)
+                            downloaded += len(chunk)
+                            if total_size > 0:
+                                pct = int((downloaded * 100) / total_size)
+                                self.progress_updated.emit(pct)
+                                self.status_updated.emit(
+                                    f"Downloading… {pct}% ({downloaded / (1024 * 1024):.1f} MB)"
+                                )
+            if self.should_stop:
+                try:
+                    tmp_path.unlink()
+                except Exception:
+                    pass
+                self.download_completed.emit(False, "cancelled")
+                return
+            if tmp_path.is_file() and tmp_path.stat().st_size > 0:
+                os.replace(str(tmp_path), str(self.dest_path))
+                self.status_updated.emit("Download complete")
+                self.download_completed.emit(True, str(self.dest_path))
+            else:
+                self.download_completed.emit(False, "The download produced an empty file.")
+        except Exception as e:
+            self.download_completed.emit(False, str(e))
 
 
 class ProgressiveReleaseWorker(QThread):
@@ -11639,6 +11815,14 @@ class DragDropStackedWidget(QStackedWidget):
         
         is_connected, is_fast_update = self._check_adb_status()
         
+        # Check for rom*.zip files — firmware installs never need ADB, so the
+        # drop overlay is always offered for them (the device may be off, or not
+        # connected / in DFU mode yet).
+        rom_zip_files = [f for f in files if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip')]
+        if rom_zip_files:
+            return "Drop to install firmware"
+        
+        # Everything else (APKs, themes, media, update zips) needs a live connection.
         if not is_connected:
             return None  # Don't show message if ADB not connected
         
@@ -11650,8 +11834,7 @@ class DragDropStackedWidget(QStackedWidget):
             # The new string prefixes Smart Drop (Beta) so users understand the capability is experimental.
             return "Smart Drop (Beta): Drop to install app"
         
-        # Check for rom*.zip or update*.zip files
-        rom_zip_files = [f for f in files if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip')]
+        # Check for update*.zip files
         update_zip_files = [f for f in files if fnmatch.fnmatch(Path(f).name.lower(), 'update*.zip')]
         
         if update_zip_files:
@@ -11660,8 +11843,6 @@ class DragDropStackedWidget(QStackedWidget):
             else:
                 # Don't show message for update.zip if Fast Update not available - will be blocked on drop
                 return None
-        elif rom_zip_files:
-            return "Smart Drop (Beta): Drop to install update"
         else:
             return "Smart Drop (Beta): Drop to transfer"
     
@@ -11755,16 +11936,19 @@ class DragDropStackedWidget(QStackedWidget):
                 self._hide_drag_overlay()
                 return
             
-            # Check ADB status
+            # Get files first so rom*.zip drops can be accepted without a device
+            urls = event.mimeData().urls()
+            files = [url.toLocalFile() for url in urls if url.isLocalFile()]
+            rom_zip_files = [f for f in files if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip')]
+            
+            # ADB is only required for content that transfers to a live device —
+            # rom*.zip firmware installs work with the device unplugged too.
             is_connected, _ = self._check_adb_status()
-            if not is_connected:
+            if not is_connected and not rom_zip_files:
                 event.ignore()
                 self._hide_drag_overlay()
                 return
             
-            # Get files and show appropriate message
-            urls = event.mimeData().urls()
-            files = [url.toLocalFile() for url in urls if url.isLocalFile()]
             message = self._get_drag_message(files)
             self._show_drag_overlay(message)
             
@@ -11786,9 +11970,13 @@ class DragDropStackedWidget(QStackedWidget):
                 self._hide_drag_overlay()
                 return
             
-            # Check ADB status
+            # rom*.zip drops are allowed without a device connection (firmware install)
+            urls = event.mimeData().urls()
+            files = [url.toLocalFile() for url in urls if url.isLocalFile()]
+            rom_zip_files = [f for f in files if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip')]
+            
             is_connected, _ = self._check_adb_status()
-            if not is_connected:
+            if not is_connected and not rom_zip_files:
                 event.ignore()
                 self._hide_drag_overlay()
                 return
@@ -11821,52 +12009,50 @@ class DragDropStackedWidget(QStackedWidget):
                 event.ignore()
                 return
             
-            # Check ADB status
-            is_connected, is_fast_update = self._check_adb_status()
-            if not is_connected:
-                QMessageBox.warning(
-                    self.parent_gui,
-                    "ADB Not Connected",
-                    "No ADB device is connected. Please connect your device via USB or wireless ADB."
-                )
-                event.ignore()
-                return
-            
             # Get dropped files/folders
             urls = event.mimeData().urls()
             files = [url.toLocalFile() for url in urls if url.isLocalFile()]
             
             if files:
-                # Check for rom*.zip or update*.zip files - process them specially (wildcard support)
-                zip_files = [
-                    f for f in files 
-                    if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip') or 
-                       fnmatch.fnmatch(Path(f).name.lower(), 'update*.zip')
+                rom_zip_files = [
+                    f for f in files
+                    if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip')
                 ]
-                if zip_files:
-                    # Check if fast update is available for update.zip files
-                    update_zips = [f for f in zip_files if fnmatch.fnmatch(Path(f).name.lower(), 'update*.zip')]
-                    if update_zips and not is_fast_update:
-                        QMessageBox.warning(
-                            self.parent_gui,
-                            "Fast Update Not Available",
-                            "Fast Update is not available for this device.\n\n"
-                            "To update your device, please use a full Install/Restore with a rom.zip file instead."
-                        )
-                        event.ignore()
-                        return
-                    
-                    # Process zip files as if they were selected via Install from zip
-                    for zip_file in zip_files:
-                        if hasattr(self.parent_gui, 'process_existing_zip'):
-                            # Get repo_name and version from the zip file if possible, or use defaults
-                            zip_path = Path(zip_file)
-                            repo_name = "rockbox-y1"  # Default
-                            version = zip_path.stem  # Use filename without extension as version
-                            self.parent_gui.process_existing_zip(str(zip_path), repo_name, version)
-                else:
-                    if hasattr(self.parent_gui, 'handle_smart_drop_payload'):
-                        self.parent_gui.handle_smart_drop_payload(files)
+                update_zip_files = [
+                    f for f in files
+                    if fnmatch.fnmatch(Path(f).name.lower(), 'update*.zip')
+                ]
+                non_rom_files = [f for f in files if f not in rom_zip_files]
+                
+                is_connected, is_fast_update = self._check_adb_status()
+                
+                # rom*.zip firmware installs are always allowed — they don't need a
+                # device connection. Everything else still requires a live device.
+                if non_rom_files and not is_connected:
+                    QMessageBox.warning(
+                        self.parent_gui,
+                        "ADB Not Connected",
+                        "No ADB device is connected. Please connect your device via USB or wireless ADB."
+                    )
+                    event.ignore()
+                    return
+                
+                # Fast Update still needs the device to support it
+                if update_zip_files and not is_fast_update:
+                    QMessageBox.warning(
+                        self.parent_gui,
+                        "Fast Update Not Available",
+                        "Fast Update is not available for this device.\n\n"
+                        "To update your device, please use a full Install/Restore with a rom.zip file instead."
+                    )
+                    event.ignore()
+                    return
+                
+                # Route everything through the shared Smart Drop handler — rom*.zip
+                # files become Install / Restore jobs, update*.zip files become Fast
+                # Updates, and themes/media/APKs transfer to the connected device.
+                if hasattr(self.parent_gui, 'handle_smart_drop_payload'):
+                    self.parent_gui.handle_smart_drop_payload(files)
             
             event.acceptProposedAction()
         else:
@@ -14845,26 +15031,26 @@ class FirmwareDownloaderGUI(QMainWindow):
         
         if not message or message.strip() == "":
             self.status_label.setText(self.default_install_status_text())
-        elif message.strip() == "MTK: Preloader":
-            # Just "MTK: Preloader" indicates freeze state
+        elif message.strip() == "Installation: Preloader":
+            # Just "Installation: Preloader" indicates freeze state
             self.status_label.setText(
                 self.device_copy("Please disconnect your Y1 and restart the app")
             )
         elif message.startswith("MTK:") and (message.strip() == "MTK:" or 
                                               message.strip() == "MTK:..........." or 
-                                              message.strip() == "MTK: ..........." or
-                                              message.strip() == "MTK: .........." or
-                                              message.strip() == "MTK: ........" or
-                                              message.strip() == "MTK: ......." or
-                                              message.strip() == "MTK: ......" or
-                                              message.strip() == "MTK: ....." or
-                                              message.strip() == "MTK: ...." or
-                                              message.strip() == "MTK: ..." or
-                                              message.strip() == "MTK: .." or
-                                              message.strip() == "MTK: ." or
-                                              message.strip() == "MTK: " or  # Just "MTK: " with space
-                                              message.strip().startswith("MTK:...") or  # Lines beginning with dots
-                                              message.strip().startswith("MTK:  ") or  # Lines with just spaces
+                                              message.strip() == "Installation: ..........." or
+                                              message.strip() == "Installation: .........." or
+                                              message.strip() == "Installation: ........" or
+                                              message.strip() == "Installation: ......." or
+                                              message.strip() == "Installation: ......" or
+                                              message.strip() == "Installation: ....." or
+                                              message.strip() == "Installation: ...." or
+                                              message.strip() == "Installation: ..." or
+                                              message.strip() == "Installation: .." or
+                                              message.strip() == "Installation: ." or
+                                              message.strip() == "Installation: " or  # Just "Installation: " with space
+                                              message.strip().startswith("Installation:...") or  # Lines beginning with dots
+                                              message.strip().startswith("Installation:  ") or  # Lines with just spaces
                                               len(message.strip()) <= 10):  # Very short MTK messages likely indicate waiting
             # MTK is waiting for device connection or showing dots/spaces
             self.status_label.setText("Now please follow the instructions displayed below. Please force quit the app if not responding and restart it.")
@@ -15256,6 +15442,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
             self.spflash_worker.disable_update_button.connect(self.disable_update_button)
             self.spflash_worker.enable_update_button.connect(self.enable_update_button)
+            if hasattr(self, 'show_mtk_fallback_dialog'):
+                self.spflash_worker.show_try_again_dialog.connect(self.show_mtk_fallback_dialog)
             
             self.hide_inappropriate_buttons_for_spflash()
             self.hide_left_panel()
@@ -19924,11 +20112,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             if device_model:
                 device_models.add(device_model)
 
-        # On macOS, Y2 MTKclient installs are disabled and SP Flash Tool is not
-        # available, so hide Y2 from the dropdown entirely to prevent confusion.
-        # Users are directed to Linux/Windows for Y2 ROM installation.
-        if is_macos_platform() and not Y2_MTKCLIENT_INSTALLS_ENABLED:
-            device_models = {m for m in device_models if not is_y2_model(m)}
 
         # Add device models to combo (sorted)
         for device_model in sorted(device_models):
@@ -24292,7 +24475,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             zip_path: Optional path to zip file. If None, opens file dialog.
         """
         from PySide6.QtWidgets import QFileDialog, QMessageBox
-        
+
+        # Browse / Smart Drop never carries a GitHub asset URL — clear any stale
+        # one from a previous in-app download so it can't divert this install.
+        self._last_install_asset_url = None
+
         # Check driver availability for Windows users
         if platform.system() == "Windows":
             driver_info = self.check_drivers_and_architecture()
@@ -24337,7 +24524,12 @@ class FirmwareDownloaderGUI(QMainWindow):
         if not zip_path.exists():
             QMessageBox.warning(self, "Error", "Selected file does not exist.")
             return
-        
+
+        # Remember the zip for the Y2-on-macOS flow even when the early name-based
+        # gate misses (e.g. a generically-named Y2 zip that is only detected after
+        # extraction) — so the user isn't re-asked to pick the file they just chose.
+        self._last_install_zip_path = str(zip_path)
+
         # Check if the file is named "update.zip" (case-insensitive)
         if zip_path.name.lower() == "update.zip":
             # This is a Fast Update - skip storage check (Fast Updates don't require 6GB)
@@ -24445,6 +24637,15 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.status_label.setText("Error copying update.zip")
             return
             
+        # Y2 firmware on macOS (or --y2-mac-flow test flag): skip extraction and
+        # hand the user to the manufacturer's manual install tool instead.
+        if y2_mac_flow_active() and is_y2_model(
+            resolve_device_model_for_install(None, zip_path=str(zip_path))
+        ):
+            self._last_install_zip_path = str(zip_path)
+            self._handle_y2_mac_install_flow()
+            return
+
         # Check storage space before processing rom.zip (full firmware install requires 6GB)
         has_enough_space, available_gb, error_message = self._check_storage_space(required_gb=6)
         if not has_enough_space:
@@ -33189,10 +33390,17 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self.status_label.setText("Fast Update isn't available for this release on Windows ARM64.")
                         return
             
-            # Zip already exists - automatically use it for seamless experience
+            # Zip already exists - automatically use it for seamless experience.
+            # Pass the asset URL so the real asset name (rom_y2.zip) is available
+            # for Y1/Y2 detection — the saved filename is mangled by repo fallbacks.
             silent_print(f"Using existing zip file: {zip_path.name}")
             self.status_label.setText("Using existing zip file. Extracting...")
-            self.process_existing_zip(zip_path, selected_repo, release_info['tag_name'])
+            self.process_existing_zip(
+                zip_path,
+                selected_repo,
+                release_info['tag_name'],
+                asset_url=release_info.get('download_url'),
+            )
             return
 
         # Check for Fast Update before starting regular download
@@ -33282,12 +33490,17 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         self.download_worker.start()
 
-    def process_existing_zip(self, zip_path, repo_name, version):
+    def process_existing_zip(self, zip_path, repo_name, version, asset_url=None):
         """Process an existing zip file (extract and prepare for installation)"""
         try:
             # Convert zip_path to Path object if it's a string
             if isinstance(zip_path, str):
                 zip_path = Path(zip_path)
+            # Remember the GitHub asset URL this zip came from — the real asset
+            # name is reliable Y1/Y2 evidence even when the local filename isn't
+            # (fallback-mapped repos save Y2 downloads under a Y1-looking name).
+            # Assigned unconditionally so a later call without one clears a stale value.
+            self._last_install_asset_url = asset_url
             
             # Check if ARM64 user is trying to do a full install (block it)
             if platform.system() == "Windows":
@@ -33298,6 +33511,18 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self.status_label.setText("Install / Restore isn't available on Windows ARM64. Please use Fast Update.")
                     return
             
+            # Y2 firmware on macOS (or --y2-mac-flow test flag): skip extraction
+            # and hand the user to the manufacturer's manual install tool instead.
+            # The asset URL is checked first because the local zip is saved under
+            # the fallback repo name and would be misread as Y1.
+            if y2_mac_flow_active() and is_y2_model(
+                resolve_asset_model(asset_url)
+                or resolve_device_model_for_install(None, zip_path=str(zip_path))
+            ):
+                self._last_install_zip_path = str(zip_path)
+                self._handle_y2_mac_install_flow()
+                return
+
             # Check storage space before extracting (full firmware install requires 6GB)
             has_enough_space, available_gb, error_message = self._check_storage_space(required_gb=6)
             if not has_enough_space:
@@ -33406,6 +33631,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self._last_install_zip_name = zip_from_download
             if extracted_from_download is not None:
                 self._last_install_extracted_files = list(extracted_from_download)
+            self._last_install_asset_url = getattr(
+                download_worker, 'install_asset_url', None
+            )
             detected = resolved_from_download or self.detect_device_model_from_install_files()
             if detected:
                 self.set_runtime_detected_device_model(detected)
@@ -33418,6 +33646,19 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Download and processing completed successfully")
             print("=== PROCESSING COMPLETED ===")
             print("Firmware files have been downloaded and extracted successfully.")
+
+            # Y2 firmware on macOS (or --y2-mac-flow test flag): skip the normal
+            # install path and hand the user to the manufacturer's manual tool.
+            # The asset URL is checked too — the saved zip name can be misread as Y1.
+            if y2_mac_flow_active() and is_y2_model(
+                resolve_asset_model(getattr(self, '_last_install_asset_url', None))
+                or detected
+            ):
+                self._last_install_zip_path = str(
+                    ZIP_STORAGE_DIR / zip_from_download
+                ) if zip_from_download else None
+                QTimer.singleShot(400, self._handle_y2_mac_install_flow)
+                return
 
             # Check if required files exist and handle installation based on selected method
             required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
@@ -33434,6 +33675,424 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         silent_print(output)
 
+    # ------------------------------------------------------------------ #
+    # Y2-on-macOS manual install flow (temporary workaround)
+    # ------------------------------------------------------------------ #
+    # Runs when a Y2 firmware would otherwise be installed on a Mac (or when
+    # --y2-mac-flow is passed for testing on Windows/Linux). The same journey
+    # plays out no matter how the firmware got here — Browse Files, Smart Drop,
+    # or an in-app download — with one small difference: in-app downloads are
+    # moved + renamed to rom_y2.zip, while files the user picked themselves are
+    # copied so their original stays put.
+
+    def _y2_mac_zip_source(self):
+        """Return the local zip behind the current Y2 install, or None."""
+        source = getattr(self, "_last_install_zip_path", None)
+        if source and Path(source).is_file():
+            return Path(source)
+        name = getattr(self, "_last_install_zip_name", None)
+        if name:
+            candidate = ZIP_STORAGE_DIR / Path(name).name
+            if candidate.is_file():
+                return candidate
+        return None
+
+    def _y2_mac_show_explainer(self):
+        """First dialog: explain the situation and offer the guided journey (Get Started)."""
+        from PySide6.QtWidgets import (
+            QDialog, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
+        )
+
+        dlg = QDialog(self)
+        dlg.setWindowTitle("Y2 Firmware on Mac")
+        dlg.setModal(True)
+        dlg.setMinimumWidth(480)
+        layout = QVBoxLayout(dlg)
+        layout.setContentsMargins(28, 24, 28, 22)
+        layout.setSpacing(14)
+
+        title = QLabel("Almost there — one small step")
+        title_font = title.font()
+        title_font.setPointSize(17)
+        title_font.setBold(True)
+        title.setFont(title_font)
+        title.setWordWrap(True)
+        layout.addWidget(title)
+
+        body = QLabel(
+            "To install this firmware from your Mac, we'll help you save the "
+            "<b>rom_y2.zip</b> file and help you download the manual installation "
+            "tool from Innioasis for this.<br><br>"
+            "Here's what happens next:<br>"
+            "1. You choose where to save your firmware as <b>rom_y2.zip</b>.<br>"
+            "2. Updater downloads the <b>Innioasis manual installation tool</b> "
+            "and saves it on your Mac.<br>"
+            "3. Updater steps aside, and the tool finishes the install.<br><br>"
+            "You don't need to do anything technical — just pick where things are "
+            "saved and click through."
+        )
+        body.setWordWrap(True)
+        body.setTextFormat(Qt.RichText)
+        body_font = body.font()
+        body_font.setPointSize(12)
+        body.setFont(body_font)
+        layout.addWidget(body)
+
+        layout.addSpacing(6)
+        buttons = QHBoxLayout()
+        buttons.addStretch(1)
+        not_now = QPushButton("Not Now")
+        not_now.setDefault(False)
+        not_now.setAutoDefault(False)
+        download_btn = QPushButton("Get Started")
+        download_btn.setDefault(True)
+        download_btn.setAutoDefault(True)
+        buttons.addWidget(not_now)
+        buttons.addWidget(download_btn)
+        layout.addLayout(buttons)
+
+        chosen = {"download": False}
+
+        def _on_not_now():
+            dlg.reject()
+
+        def _on_download():
+            chosen["download"] = True
+            dlg.accept()
+
+        not_now.clicked.connect(_on_not_now)
+        download_btn.clicked.connect(_on_download)
+        dlg.exec()
+        return chosen["download"]
+
+    def _download_manufacturer_tool(self, dmg_path):
+        """Download the manufacturer tool DMG to dmg_path.
+
+        Progress is shown in the main window's status area (no modal dialog) so
+        the user watches both files land before seeing the guidance prompts.
+
+        Returns True on success; False if the download failed or was cancelled.
+        """
+        worker = ManufacturerToolDownloadWorker(MANUFACTURER_TOOL_URL, dmg_path)
+
+        # Surface progress on the main window (status label + progress bar).
+        self.progress_bar.setRange(0, 100)
+        self.progress_bar.setValue(0)
+        self.progress_bar.setVisible(True)
+        self.status_label.setText("Downloading the Y2 Install Tool…")
+
+        worker.progress_updated.connect(self.progress_bar.setValue)
+        worker.status_updated.connect(self.status_label.setText)
+
+        result = {}
+
+        def _on_complete(ok, msg):
+            result["ok"] = ok
+            result["msg"] = msg
+
+        worker.download_completed.connect(_on_complete)
+        worker.start()
+
+        # Pump the event loop until the download finishes.
+        deadline = time.time() + 3600
+        while worker.isRunning() and time.time() < deadline:
+            QApplication.processEvents()
+            time.sleep(0.05)
+
+        # Drain any queued completion signal before deciding — the worker can
+        # finish between pump iterations, and without this a successful download
+        # would be misreported as cancelled.
+        for _ in range(25):
+            QApplication.processEvents()
+            time.sleep(0.02)
+            if result:
+                break
+
+        # Rare: the deadline elapsed while the network call is still stuck — stop
+        # the worker so it doesn't keep writing the .part file in the background.
+        if worker.isRunning():
+            worker.stop()
+            worker.wait(2000)
+
+        self.progress_bar.setVisible(False)
+
+        if result.get("ok"):
+            self.status_label.setText(f"Y2 Install Tool saved: {dmg_path}")
+            return True
+
+        msg = str(result.get("msg", ""))
+        if msg.lower() == "cancelled":
+            self.status_label.setText("Y2 Install Tool download cancelled.")
+            QMessageBox.information(
+                self,
+                "Download Cancelled",
+                "The Y2 Install Tool download was cancelled. You can start again "
+                "any time by choosing Install / Restore for a Y2 firmware.",
+            )
+        else:
+            self.status_label.setText("Y2 Install Tool download failed.")
+            QMessageBox.warning(
+                self,
+                "Download Failed",
+                "We couldn't download the Y2 Install Tool.\n\n"
+                f"{msg or 'Unknown error'}\n\n"
+                "You can also download it manually from:\n"
+                f"{MANUFACTURER_TOOL_URL}",
+            )
+        return False
+
+    def _y2_mac_ensure_rom_y2_zip(self, source):
+        """Make sure the firmware exists as rom_y2.zip; return its path or None.
+
+        - Already named rom_y2.zip (e.g. the exact file the user imported): just
+          confirm the location — the user will pick that same file in the tool.
+        - Anything else (in-app download, rom.zip, etc.): ask where to save it as
+          rom_y2.zip and copy/move it there.
+        """
+        if source is not None and source.name.lower() == ROM_Y2_FILENAME:
+            QMessageBox.information(
+                self,
+                "Your rom_y2.zip is Ready",
+                "We found the firmware file you'll use:\n\n"
+                f"{source}\n\n"
+                "That's the file you'll select in the Y2 Install Tool when it asks "
+                "for a firmware file.",
+            )
+            return str(source)
+
+        dest, _ = QFileDialog.getSaveFileName(
+            self,
+            "Save Your Firmware as rom_y2.zip",
+            str(Path.home() / "Downloads" / ROM_Y2_FILENAME),
+            "ZIP Archive (*.zip)",
+        )
+        if not dest:
+            return None
+        dest_path = Path(dest)
+        if dest_path.name.lower() != ROM_Y2_FILENAME:
+            dest_path = dest_path.with_name(ROM_Y2_FILENAME)
+
+        try:
+            dest_path.parent.mkdir(parents=True, exist_ok=True)
+            # Show progress in the status area while the firmware is saved.
+            self.status_label.setText("Saving rom_y2.zip…")
+            self.progress_bar.setRange(0, 0)  # busy indicator (indeterminate)
+            self.progress_bar.setVisible(True)
+            QApplication.processEvents()
+            if source is not None and source.is_file():
+                if source.resolve() == dest_path.resolve():
+                    self.progress_bar.setVisible(False)
+                    return str(dest_path)
+                # In-app downloads are moved (no duplicate left behind); files the
+                # user imported themselves are copied so their original stays put.
+                if source.resolve().parent == ZIP_STORAGE_DIR.resolve():
+                    shutil.move(str(source), str(dest_path))
+                else:
+                    shutil.copy2(str(source), str(dest_path))
+            else:
+                # No zip on hand (shouldn't happen) — let the user pick one.
+                picked, _ = QFileDialog.getOpenFileName(
+                    self,
+                    "Select Your rom_y2.zip",
+                    str(Path.home() / "Downloads"),
+                    "ZIP Archive (*.zip)",
+                )
+                if not picked:
+                    self.progress_bar.setVisible(False)
+                    return None
+                shutil.copy2(picked, str(dest_path))
+            self.progress_bar.setRange(0, 100)
+            self.progress_bar.setValue(100)
+            self.progress_bar.setVisible(False)
+            self.status_label.setText(f"rom_y2.zip saved: {dest_path}")
+            QMessageBox.information(
+                self,
+                "rom_y2.zip Saved",
+                "Your firmware is saved as:\n\n"
+                f"{dest_path}\n\n"
+                "You'll select this file in the Y2 Install Tool when it asks "
+                "for a firmware file.",
+            )
+            return str(dest_path)
+        except Exception as e:
+            self.progress_bar.setRange(0, 100)
+            self.progress_bar.setValue(0)
+            self.progress_bar.setVisible(False)
+            self.status_label.setText("Couldn't save rom_y2.zip.")
+            QMessageBox.warning(
+                self,
+                "Couldn't Save rom_y2.zip",
+                f"We couldn't save your firmware as rom_y2.zip:\n\n{e}",
+            )
+            return None
+
+    def _y2_mac_show_handoff(self, final_zip, dmg_path):
+        """Final dialog: tell the user what to do, then close Updater itself.
+
+        Styled to match the first explainer dialog (bold heading + friendly body)
+        so the journey bookends the same way.
+        """
+        from PySide6.QtWidgets import (
+            QDialog, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
+        )
+
+        shared_dir = str(Path(final_zip).parent)
+
+        # Platform-appropriate file-manager label (Finder on macOS, Explorer on
+        # Windows, file manager elsewhere) — mirrors manage_storage.py so the
+        # reveal action matches the OS even when --y2-mac-flow simulates macOS
+        # Y2 behaviour on Windows/Linux.
+        if platform.system() == "Darwin":
+            file_manager_name = "Finder"
+        elif os.name == "nt":
+            file_manager_name = "File Explorer"
+        else:
+            file_manager_name = "File Manager"
+
+        dlg = QDialog(self)
+        dlg.setWindowTitle("You're All Set")
+        dlg.setModal(True)
+        dlg.setMinimumWidth(520)
+        layout = QVBoxLayout(dlg)
+        layout.setContentsMargins(28, 24, 28, 22)
+        layout.setSpacing(14)
+
+        title = QLabel("Almost there — one last step")
+        title_font = title.font()
+        title_font.setPointSize(17)
+        title_font.setBold(True)
+        title.setFont(title_font)
+        title.setWordWrap(True)
+        layout.addWidget(title)
+
+        body = QLabel(
+            "Both files are saved in:<br>"
+            f"<b>{shared_dir}</b><br><br>"
+            "Now it's over to the <b>Y2 Install Tool</b>:<br>"
+            f"1. Double-click <b>{MANUFACTURER_TOOL_FILENAME}</b>, then drag the "
+            "app into <b>Applications</b> — or run it straight from the disk "
+            "image.<br>"
+            "2. Select <b>rom_y2.zip</b> when it asks for a firmware file.<br>"
+            "3. Power off your <b>Y2</b> (paperclip in the hole beside the "
+            "headphone jack if needed).<br>"
+            "4. Click <b>Start Flash</b>, then connect your Y2.<br><br>"
+            "Updater will close itself now — your Y2 does the rest!"
+        )
+        body.setWordWrap(True)
+        body.setTextFormat(Qt.RichText)
+        body_font = body.font()
+        body_font.setPointSize(12)
+        body.setFont(body_font)
+        layout.addWidget(body)
+
+        details = QLabel(
+            f"Y2 Install Tool:  {dmg_path}<br>"
+            f"rom_y2.zip:       {final_zip}<br><br>"
+            f"Show in {file_manager_name} reveals your files."
+        )
+        details.setWordWrap(True)
+        details.setTextFormat(Qt.RichText)
+        details_font = details.font()
+        details_font.setPointSize(10)
+        details.setFont(details_font)
+        layout.addWidget(details)
+
+        layout.addSpacing(6)
+        buttons = QHBoxLayout()
+        buttons.addStretch(1)
+        show_finder_btn = QPushButton(f"Show in {file_manager_name}")
+        show_finder_btn.setDefault(False)
+        show_finder_btn.setAutoDefault(False)
+        close_btn = QPushButton("Close Updater")
+        close_btn.setDefault(True)
+        close_btn.setAutoDefault(True)
+        buttons.addWidget(show_finder_btn)
+        buttons.addWidget(close_btn)
+        layout.addLayout(buttons)
+
+        def _open_in_file_manager():
+            """Open the folder in the OS-native file manager (cross-platform).
+
+            macOS/Windows reveal the file itself (selected); Linux opens the
+            folder, since xdg-open on a .dmg could launch the wrong handler.
+            """
+            try:
+                if os.name == "nt":
+                    # explorer /select returns non-zero even on success.
+                    subprocess.run(
+                        ["explorer", "/select,", str(dmg_path)],
+                        capture_output=True, text=True,
+                    )
+                    return True
+                if platform.system() == "Darwin":
+                    # -R reveals the file in Finder, selected.
+                    subprocess.run(["open", "-R", str(dmg_path)], check=True)
+                    return True
+                subprocess.run(["xdg-open", str(shared_dir)], check=True)
+                return True
+            except Exception as e:
+                silent_print(f"Y2 Mac flow: could not open file manager: {e}")
+                return False
+
+        def _on_show_finder():
+            if not _open_in_file_manager():
+                # Fallback: Qt's cross-platform open of the folder.
+                try:
+                    from PySide6.QtCore import QUrl
+                    from PySide6.QtGui import QDesktopServices
+                    QDesktopServices.openUrl(QUrl.fromLocalFile(shared_dir))
+                except Exception as e:
+                    silent_print(f"Y2 Mac flow: could not open folder: {e}")
+            dlg.accept()
+
+        def _on_close():
+            dlg.accept()
+
+        show_finder_btn.clicked.connect(_on_show_finder)
+        close_btn.clicked.connect(_on_close)
+        dlg.exec()
+
+        # Close Updater so the user can work with the manufacturer's tool.
+        self.status_label.setText("Y2 install handed off to the Y2 Install Tool — Updater closing…")
+        self.close()
+        QTimer.singleShot(150, lambda: QApplication.instance().quit())
+
+    def _handle_y2_mac_install_flow(self):
+        """Run the Y2-on-macOS manual-install journey (see module docstring)."""
+        try:
+            if not self._y2_mac_show_explainer():
+                self.status_label.setText(
+                    "Y2 install on Mac deferred — choose Install / Restore again when ready."
+                )
+                return
+
+            # 1) Save the firmware as rom_y2.zip first — the install tool needs it.
+            source = self._y2_mac_zip_source()
+            final_zip = self._y2_mac_ensure_rom_y2_zip(source)
+            if not final_zip:
+                return
+
+            # 2) The Y2 Install Tool is saved to the same folder as rom_y2.zip —
+            #    one location question covers both files, no second dialog.
+            dmg_path = str(Path(final_zip).parent / MANUFACTURER_TOOL_FILENAME)
+
+            # 3) Download it with live progress in the status area.
+            if not self._download_manufacturer_tool(dmg_path):
+                return
+
+            # 4) Hand off: close Updater, open the tool, pick rom_y2.zip.
+            self._y2_mac_show_handoff(final_zip, dmg_path)
+
+        except Exception as e:
+            silent_print(f"Y2 Mac flow error: {e}")
+            import traceback
+            traceback.print_exc()
+            QMessageBox.warning(
+                self,
+                "Something Went Wrong",
+                f"We hit a snag setting up your Y2 install:\n\n{e}",
+            )
+
     def handle_installation_method(self):
         """Handle installation based on the selected method in settings"""
         # Prefer model from the package just extracted (rom_y2.zip etc.) over the
@@ -33441,6 +34100,18 @@ class FirmwareDownloaderGUI(QMainWindow):
         resolved_model, install_zip, _ = self.get_install_model_context()
         if resolved_model:
             self.set_runtime_detected_device_model(resolved_model)
+
+        # Y2 firmware on macOS (or --y2-mac-flow test flag): installation isn't
+        # supported from this Mac yet — hand the user to the manufacturer's manual
+        # install tool instead of the MTKClient path (which is blocked for Y2).
+        # The asset URL is checked too — the saved zip name can be misread as Y1.
+        if y2_mac_flow_active() and is_y2_model(
+            resolve_asset_model(getattr(self, '_last_install_asset_url', None))
+            or resolved_model
+        ):
+            self._handle_y2_mac_install_flow()
+            return
+
         prepare_sp_flash_tool_files(resolved_model)
         silent_print(
             f"handle_installation_method model={resolved_model} "
@@ -35378,6 +36049,76 @@ read -n 1
             # Restore original style after 500ms
             QTimer.singleShot(500, lambda: self.image_label.setStyleSheet(original_style))
 
+
+
+    def show_mtk_fallback_dialog(self):
+        """Prompt the user to try the alternative MTKclient method when SP Flash Tool fails."""
+        try:
+            reply = QMessageBox.question(self, 
+                "Alternative Installation", 
+                f"The primary installation tool is not working right now. Would you like to try the alternative method or a reboot?\n\n"
+                f"Sometimes rebooting can fix connection issues. "
+                f"(On Windows, installing the drivers from support.innioasis.com and rebooting can help too)",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.status_label.setText("Preparing alternative installation method...")
+                
+                # Cleanup the current worker
+                if hasattr(self, 'spflash_worker') and self.spflash_worker:
+                    self.spflash_worker.stop()
+                    self.spflash_worker.wait()
+                    self.spflash_worker = None
+                
+                # Setup parameters for MTKWorker
+                install_zip = getattr(self, '_last_install_zip_name', None)
+                install_extracted = getattr(self, '_last_install_extracted_files', None)
+                
+                # Instantiate MTKWorker
+                self.mtk_worker = MTKWorker(
+                    debug_mode=getattr(self, 'debug_mode', False),
+                    debug_window=getattr(self, 'debug_window', None),
+                    device_model=getattr(self, 'device_model', None),
+                    zip_path=install_zip,
+                    extracted_files=install_extracted
+                )
+                
+                # Connect signals
+                self.mtk_worker.status_updated.connect(self.status_label.setText)
+                self.mtk_worker.show_installing_image.connect(self.load_installing_image)
+                self.mtk_worker.show_reconnect_image.connect(self.load_reconnect_image)
+                self.mtk_worker.show_presteps_image.connect(self.load_presteps_image)
+                self.mtk_worker.show_initsteps_image.connect(self.load_initsteps_image)
+                self.mtk_worker.show_please_wait_image.connect(self.load_please_wait_image)
+                self.mtk_worker.mtk_completed.connect(self.on_mtk_completed)
+                self.mtk_worker.disable_update_button.connect(self.disable_update_button)
+                self.mtk_worker.enable_update_button.connect(self.enable_update_button)
+                
+                # Additional error handlers usually connected to MTKWorker
+                if hasattr(self, 'handle_handshake_failed'):
+                    self.mtk_worker.handshake_failed.connect(self.handle_handshake_failed)
+                if hasattr(self, 'handle_errno2_error'):
+                    self.mtk_worker.errno2_detected.connect(self.handle_errno2_error)
+                if hasattr(self, 'handle_usb_io_error'):
+                    self.mtk_worker.usb_io_error_detected.connect(self.handle_usb_io_error)
+                if hasattr(self, 'handle_backend_error'):
+                    self.mtk_worker.backend_error_detected.connect(self.handle_backend_error)
+                if hasattr(self, 'handle_keyboard_interrupt'):
+                    self.mtk_worker.keyboard_interrupt_detected.connect(self.handle_keyboard_interrupt)
+                if hasattr(self, 'show_try_again_dialog'):
+                    self.mtk_worker.show_try_again_dialog.connect(self.show_try_again_dialog)
+                
+                # Start the MTK fallback
+                self.mtk_worker.start()
+            else:
+                self.revert_to_startup_state()
+                
+        except Exception as e:
+            silent_print(f"Error starting alternative method: {e}")
+            self.revert_to_startup_state()
+
     def show_try_again_dialog(self):
         """Show try again dialog when user spends too long in initsteps phase"""
         try:
@@ -35388,7 +36129,7 @@ read -n 1
                 self.mtk_worker = None
             
             # Show the try again dialog with specific instructions
-            reply = QMessageBox.question(self, self.device_copy("Connection Timeout"), self.device_copy("The device connection is taking too long. Please disconnect your Y1 and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?"),
+            reply = QMessageBox.question(self, self.device_copy("Connection Timeout"), self.device_copy("The device connection is taking too long. Please disconnect your {getattr(self, 'device_label', 'device')} and try again.\n\nThis usually means the device wasn't connected properly or the connection was lost.\n\nWould you like to try again?"),
                 QMessageBox.Yes | QMessageBox.No,
                 QMessageBox.Yes
             )
@@ -35415,7 +36156,13 @@ if __name__ == "__main__":
                           help="Open only the toolkit window")
         parser.add_argument("-sp", action="store_true",
                           help="Skip GUI and launch flash_tool.exe after updating history.ini")
+        parser.add_argument("--y2-mac-flow", action="store_true",
+                          help="Force-enable the Y2-on-macOS manual install flow "
+                               "(for testing this flow on Windows/Linux)")
         args = parser.parse_args()
+        # Module-level assignment (main() runs at module scope, so no `global`).
+        if args.y2_mac_flow:
+            FORCE_Y2_MAC_FLOW = True
         
         # If -sp argument is provided, skip GUI entirely and launch flash_tool.exe
         if args.sp:
