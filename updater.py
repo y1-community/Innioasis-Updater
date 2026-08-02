@@ -20112,11 +20112,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             if device_model:
                 device_models.add(device_model)
 
-        # On macOS, Y2 MTKclient installs are disabled and SP Flash Tool is not
-        # available, so hide Y2 from the dropdown entirely to prevent confusion.
-        # Users are directed to Linux/Windows for Y2 ROM installation.
-        if is_macos_platform() and not Y2_MTKCLIENT_INSTALLS_ENABLED:
-            device_models = {m for m in device_models if not is_y2_model(m)}
 
         # Add device models to combo (sorted)
         for device_model in sorted(device_models):
