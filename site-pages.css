@@ -76,5 +76,153 @@ body.site-themes-app.site-dock-mode section {
 }
 
 body.site-themes-app #nav-root {
-    display: none;
+    display: contents;
 }
+
+/* —— Firmware directory: bring the legacy downloader into the shared gallery chrome —— */
+body.site-themes-app .container {
+    width: min(var(--lumen-max), calc(100% - 2rem));
+    max-width: none;
+    margin-inline: auto;
+    padding: 1.25rem 0 7rem;
+}
+
+body.site-themes-app .header {
+    padding: 1.5rem 1.25rem 2rem;
+    color: var(--site-text);
+}
+
+body.site-themes-app .header h1 {
+    font-family: var(--site-font-display);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -.04em;
+    line-height: 1;
+}
+
+body.site-themes-app .header p,
+body.site-themes-app .collaboration-text {
+    color: var(--site-muted);
+}
+
+body.site-themes-app .header h1,
+body.site-themes-app .gradient-text {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--site-text);
+}
+
+body.site-themes-app .main-content {
+    padding: clamp(1rem, 3vw, 2rem);
+    background: var(--site-bg-card);
+    border: 1px solid var(--site-border);
+    border-radius: var(--site-radius-lg);
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+body.site-themes-app .main-content > div:first-child,
+body.site-themes-app .filters,
+body.site-themes-app .firmware-list,
+body.site-themes-app .info-box {
+    background: var(--site-bg-elevated) !important;
+    border-color: var(--site-border) !important;
+    color: var(--site-text);
+    box-shadow: none;
+}
+
+body.site-themes-app .filters {
+    padding: 1rem;
+    border-radius: var(--site-radius-md);
+}
+
+body.site-themes-app .filter-group label,
+body.site-themes-app .firmware-list h3,
+body.site-themes-app .info-box h2,
+body.site-themes-app .firmware-name {
+    color: var(--site-text);
+}
+
+body.site-themes-app .filter-group select {
+    background: #1a1e28;
+    border-color: var(--site-border);
+    color: var(--site-text);
+}
+
+body.site-themes-app .firmware-item,
+body.site-themes-app .checklist-item,
+body.site-themes-app .step-content {
+    background: rgba(255, 255, 255, .035) !important;
+    border-color: var(--site-border) !important;
+    color: var(--site-text);
+}
+
+body.site-themes-app .firmware-item:hover,
+body.site-themes-app .firmware-item.selected {
+    background: rgba(107, 159, 255, .1) !important;
+    border-color: rgba(107, 159, 255, .5) !important;
+}
+
+body.site-themes-app .detail-label,
+body.site-themes-app .detail-value,
+body.site-themes-app .info-box,
+body.site-themes-app .info-box p,
+body.site-themes-app .info-box li {
+    color: var(--site-muted);
+}
+
+body.site-themes-app .info-box {
+    border-radius: var(--site-radius-lg);
+}
+
+body.site-themes-app .info-box a,
+body.site-themes-app .tool-link,
+body.site-themes-app .get-updater-link,
+body.site-themes-app .method-link {
+    color: #a9c7ff;
+}
+
+body.site-themes-app .get-started-btn,
+body.site-themes-app .rom-download-btn,
+body.site-themes-app .update-download-btn,
+body.site-themes-app .notes-btn {
+    border-radius: var(--site-radius-pill);
+}
+
+@media (max-width: 700px) {
+    body.site-themes-app .header {
+        padding-inline: .5rem;
+    }
+    body.site-themes-app .info-boxes-container {
+        padding-inline: 0;
+    }
+}
+
+/* Lumen wins over legacy page rules while the remaining pages migrate. */
+body.site-themes-app #nav-root { display: contents; }
+/* site-theme.css forces `body.site-themes-app > main { width: 100% }`, which
+   beats the centered widths in lumen.css by specificity. Restore the home
+   page's centered column for guide and directory pages, mirroring the same
+   responsive breakpoints. No max-width here: lumen's own constraints (like
+   .lumen-developer-guide's 860px) must keep applying. */
+body.site-themes-app > main.lumen-guide,
+body.site-themes-app > main.lumen-directory {
+    width: min(var(--lumen-max), calc(100% - 2rem));
+    margin-inline: auto;
+}
+@media (max-width: 620px) {
+    body.site-themes-app > main.lumen-guide,
+    body.site-themes-app > main.lumen-directory { width: min(100% - 1.5rem, 560px); }
+}
+@media (min-width: 1600px) {
+    body.site-themes-app > main.lumen-guide,
+    body.site-themes-app > main.lumen-directory { width: min(1320px, calc(100% - 4rem)); }
+}
+body.site-themes-app .lumen-shot { max-width: min(100%, 640px); }
+body.site-themes-app .lumen-shot--wide { max-width: min(100%, 680px); }
+.lumen-visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.lumen-skip-link { position: fixed; z-index: 2000; top: .75rem; left: .75rem; transform: translateY(-180%); padding: .65rem .85rem; border-radius: 999px; background: var(--lumen-accent); color: var(--lumen-ink) !important; font-weight: 800; text-decoration: none; transition: transform .18s ease; }
+.lumen-skip-link:focus { transform: translateY(0); }
+body.site-themes-app .site-footer { position: relative; }
+body.site-themes-app .site-footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 620px) { body.site-themes-app .site-footer .footer-grid { grid-template-columns: 1fr; } }
