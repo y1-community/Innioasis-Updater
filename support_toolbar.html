@@ -1,160 +1,184 @@
-<!-- Unified bottom dock: themes, donate, discord — styled via site-toolbar.css -->
+<!-- Community shortcuts. The support panel opens when a visitor chooses Donate. -->
 <div id="support-toolbar-container">
-    <div class="y1-site-dock-wrap" id="y1-site-dock">
-        <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-labelledby="y1-donate-panel-title" aria-hidden="true">
-            <div class="y1-donate-panel-header">
-                <div>
-                    <p class="y1-donate-panel-title" id="y1-donate-panel-title">Expecting in December</p>
-                    <p class="y1-donate-panel-intro">
-                        Ryan and his partner are expecting a baby in December — your support would mean a lot right now.
-                        Donations also help cover hosting, the domain, and day-to-day running costs for this site.
-                    </p>
-                </div>
-                <button type="button" class="y1-donate-close" id="y1-donate-close" aria-label="Close donation panel" title="Close">×</button>
-            </div>
-            <div class="y1-donate-links">
-                <a href="https://ko-fi.com/teamslide" class="y1-dock-link" target="_blank" rel="noopener noreferrer">Ko-fi</a>
-                <a href="https://paypal.me/RyanSpecter282" class="y1-dock-link" target="_blank" rel="noopener noreferrer">PayPal</a>
-                <a href="https://revolut.me/rspecter" class="y1-dock-link" target="_blank" rel="noopener noreferrer">Revolut</a>
-            </div>
-            <div class="y1-donate-crypto">
-                <div class="y1-donate-crypto-item">
-                    <span class="y1-donate-crypto-label">Bitcoin <span class="y1-donate-crypto-hint">(tap to copy)</span></span>
-                    <code class="y1-donate-crypto-code" id="dock-btc-address" data-copy="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g">bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g</code>
-                </div>
-                <div class="y1-donate-crypto-item">
-                    <span class="y1-donate-crypto-label">SHIBA INU (ERC-20) <span class="y1-donate-crypto-hint">(tap to copy)</span></span>
-                    <code class="y1-donate-crypto-code" id="dock-shib-address" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
-                </div>
-                <div class="y1-donate-crypto-item">
-                    <span class="y1-donate-crypto-label">Ethereum <span class="y1-donate-crypto-hint">(Ethereum, Arbitrum, Optimism)</span></span>
-                    <code class="y1-donate-crypto-code" id="dock-eth-address" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code>
-                </div>
-            </div>
-        </div>
-        <nav class="y1-site-dock-bar" aria-label="Site shortcuts">
-            <a href="https://themes.innioasis.app/index.html" class="y1-dock-link">
-                <i class="fa-solid fa-palette" aria-hidden="true"></i> Themes
-            </a>
-            <span class="y1-dock-sep" aria-hidden="true">|</span>
-            <button type="button" class="y1-dock-link" id="donate-toggle" aria-expanded="false" aria-controls="y1-donate-panel">
-                <i class="fa-solid fa-heart" aria-hidden="true"></i> Donate
-            </button>
-            <span class="y1-dock-sep" aria-hidden="true">|</span>
-            <a href="https://discord.gg/u95pr8XfN" class="y1-dock-link" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-discord" aria-hidden="true"></i> Discord
-            </a>
-        </nav>
+  <div class="y1-dock-backdrop" data-dock-backdrop hidden></div>
+  <div class="y1-consent-banner" id="y1-consent-banner" role="region" aria-live="polite" aria-label="Privacy choices" hidden>
+    <div class="y1-consent-banner-copy">
+      <p class="y1-consent-banner-title"><strong>No cookies. No fingerprinting.</strong></p>
+      <p class="y1-consent-banner-text">Innioasis.app — the site for Updater Community Edition — does not use cookies or browser fingerprinting. We remember your site theme, and only the preferences you allow.</p>
     </div>
-    <script>
-        (function () {
-            const donateToggle = document.getElementById('donate-toggle');
-            const donatePanel = document.getElementById('y1-donate-panel');
-            const donateClose = document.getElementById('y1-donate-close');
-
-            function setDonateOpen(open) {
-                if (!donatePanel || !donateToggle) return;
-                donatePanel.classList.toggle('is-open', open);
-                donatePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
-                donateToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-            }
-
-            function openDonateOptions() {
-                setDonateOpen(true);
-            }
-
-            function closeDonateOptions() {
-                setDonateOpen(false);
-            }
-
-            if (donateToggle) {
-                donateToggle.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var opening = !donatePanel.classList.contains('is-open');
-                    setDonateOpen(opening);
-                });
-            }
-            if (donateClose) {
-                donateClose.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    closeDonateOptions();
-                });
-            }
-
-            document.addEventListener('click', function (e) {
-                const donateLink = e.target.closest('a[href="#donate"]');
-                if (donateLink) {
-                    e.preventDefault();
-                    openDonateOptions();
-                    return;
-                }
-                if (!e.target.closest('#support-toolbar-container')) {
-                    closeDonateOptions();
-                }
-            });
-
-            document.addEventListener("y1-close-donate-panel", closeDonateOptions);
-
-            if (window.location.hash === '#donate') {
-                openDonateOptions();
-            }
-
-            document.querySelectorAll('.y1-donate-crypto-code[data-copy]').forEach(function (el) {
-                el.addEventListener('click', function () {
-                    const text = el.getAttribute('data-copy') || el.textContent || '';
-                    if (!text) return;
-                    const done = function () {
-                        const orig = el.getAttribute('data-copy') || text;
-                        el.textContent = 'Copied!';
-                        el.classList.add('copied');
-                        setTimeout(function () {
-                            el.textContent = orig;
-                            el.classList.remove('copied');
-                        }, 2000);
-                    };
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(text).then(done).catch(function () {
-                            alert('Copy manually: ' + text);
-                        });
-                    } else {
-                        alert('Copy manually: ' + text);
-                    }
-                });
-            });
-
-            const VISIT_COUNT_KEY = 'y1_themes_visit_count';
-            const DONATE_AUTO_SESSION_KEY = 'y1_donate_panel_auto_shown';
-            function maybeAutoOpenForReturningVisitor() {
-                try {
-                    const prev = parseInt(localStorage.getItem(VISIT_COUNT_KEY) || '0', 10) || 0;
-                    localStorage.setItem(VISIT_COUNT_KEY, String(prev + 1));
-                    if (prev < 1) return;
-                    if (sessionStorage.getItem(DONATE_AUTO_SESSION_KEY) === '1') return;
-                    sessionStorage.setItem(DONATE_AUTO_SESSION_KEY, '1');
-                    setTimeout(openDonateOptions, 900);
-                } catch (_) {}
-            }
-            maybeAutoOpenForReturningVisitor();
-
-            function removeLegacyFooterCredits() {
-                const footerRoot = document.getElementById('footer-root');
-                if (!footerRoot) return;
-                footerRoot.querySelectorAll('.footer-col').forEach(function (col) {
-                    const title = (col.querySelector('h4')?.textContent || '').trim().toLowerCase();
-                    if (title === 'credits') col.remove();
-                });
-            }
-            removeLegacyFooterCredits();
-            setTimeout(removeLegacyFooterCredits, 500);
-
-            window.openY1DonatePanel = openDonateOptions;
-            window.closeY1DonatePanel = closeDonateOptions;
-
-            try {
-                window.dispatchEvent(new Event('y1-dock-slot-ready'));
-            } catch (_) {}
-        })();
-    </script>
+    <div class="y1-consent-banner-actions">
+      <button type="button" class="y1-consent-btn y1-consent-btn--accept" data-consent-accept>Accept all</button>
+      <button type="button" class="y1-consent-btn" data-consent-essential>Essential only</button>
+      <button type="button" class="y1-consent-btn y1-consent-btn--link" data-consent-manage>Manage</button>
+    </div>
+  </div>
+  <div class="y1-site-dock-wrap">
+    <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-modal="false" aria-labelledby="y1-donate-title" hidden>
+      <div class="y1-donate-panel-header">
+        <div>
+          <p class="y1-donate-panel-title">Support Updater and the Themes Gallery</p>
+          <h2 class="y1-donate-panel-hook" id="y1-donate-title">It takes <span>you</span>.</h2>
+          <p class="y1-donate-panel-intro"><strong>Innioasis Updater and the Themes Gallery are community hobbyist projects.</strong> Hosting, domain renewals, moderation, release work, and Cloudflare Workers create real costs. Your donation helps keep the tools, guides, and gallery available for the next Y1 or Y2 owner.</p>
+        </div>
+        <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options">×</button>
+      </div>
+      <div class="y1-donate-links" aria-label="Donation options">
+        <a class="y1-donate-method y1-donate-method--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">☕ Ko-fi</a>
+        <a class="y1-donate-method y1-donate-method--paypal" href="https://paypal.me/respectyarn" target="_blank" rel="noopener noreferrer">PayPal</a>
+        <a class="y1-donate-method y1-donate-method--revolut" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer">Revolut</a>
+        <a class="y1-donate-method y1-donate-method--patreon" href="https://www.patreon.com/teamslide" target="_blank" rel="noopener noreferrer">Patreon</a>
+      </div>
+      <p class="y1-donate-smallprint">Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, or Patreon. You can also help by sharing a fix, reviewing a guide, contributing code, or helping another Y1/Y2 owner in Discord.</p>
+    </div>
+    <div class="y1-privacy-panel" id="y1-privacy-panel" role="dialog" aria-modal="false" aria-labelledby="y1-privacy-title" hidden>
+      <div class="y1-donate-panel-header">
+        <div>
+          <p class="y1-donate-panel-title">Your privacy on Innioasis.app</p>
+          <h2 class="y1-donate-panel-hook" id="y1-privacy-title">No cookies. No fingerprinting.</h2>
+        </div>
+        <button class="y1-donate-close" type="button" data-privacy-close aria-label="Close privacy notice">×</button>
+      </div>
+      <div class="y1-privacy-body">
+        <p><strong data-i18n-skip>Innioasis.app — the site for Updater Community Edition — does not use cookies and does not do any browser fingerprinting.</strong> There are no trackers, no analytics beacons, and no third-party ads.</p>
+        <div class="y1-privacy-options" aria-label="What the site may remember">
+          <label class="y1-privacy-option">
+            <span class="y1-privacy-option-label"><strong>Remember my "was this useful?" answers</strong><small>Asked on the guide pages.</small></span>
+            <input type="checkbox" class="y1-privacy-toggle" data-privacy-feedback>
+          </label>
+          <label class="y1-privacy-option">
+            <span class="y1-privacy-option-label"><strong>Remember my nightly-builds choice</strong><small>Used on the firmware directory.</small></span>
+            <input type="checkbox" class="y1-privacy-toggle" data-privacy-nightly>
+          </label>
+        </div>
+        <p class="y1-privacy-note">Your site theme is always remembered — it is the look you chose. Links to GitHub, YouTube, Discord, Ko-fi, PayPal, Revolut, and Patreon open those sites' own pages, which have their own policies.</p>
+      </div>
+      <div class="y1-privacy-actions">
+        <button type="button" class="y1-privacy-save" data-privacy-save>Save choices</button>
+      </div>
+    </div>
+    <nav class="y1-site-dock-bar" aria-label="Site shortcuts">
+      <a class="y1-dock-link" href="https://discord.gg/u95pr8XfN" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C.53 9.05-.32 13.58.1 18.06c0 .02.01.04.03.05a19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.11 13 13 0 0 1-1.86-.89.08.08 0 0 1-.01-.13c.12-.09.25-.19.36-.29a.07.07 0 0 1 .08-.01c3.9 1.8 8.13 1.8 11.99 0a.07.07 0 0 1 .08.01c.12.1.24.2.37.29a.08.08 0 0 1 0 .13 12.5 12.5 0 0 1-1.87.88.08.08 0 0 0-.04.12c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.68-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42z"/></svg>Discord</a>
+      <span class="y1-dock-sep" aria-hidden="true">·</span>
+      <button class="y1-dock-link y1-donate-trigger" type="button" data-donate-open aria-expanded="false" aria-controls="y1-donate-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Donate</button>
+      <span class="y1-dock-sep" aria-hidden="true">·</span>
+      <button class="y1-dock-link y1-privacy-trigger" type="button" data-privacy-open aria-expanded="false" aria-controls="y1-privacy-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Privacy</button>
+    </nav>
+  </div>
 </div>
+<script>
+(function () {
+  "use strict";
+  var consent = window.INNIOASIS_PRIVACY;
+  var donatePanel = document.getElementById("y1-donate-panel");
+  var donateOpen = document.querySelector("[data-donate-open]");
+  var donateClose = document.querySelector("[data-donate-close]");
+  var privacyPanel = document.getElementById("y1-privacy-panel");
+  var privacyOpen = document.querySelector("[data-privacy-open]");
+  var privacyClose = document.querySelector("[data-privacy-close]");
+  var backdrop = document.querySelector("[data-dock-backdrop]");
+  var banner = document.getElementById("y1-consent-banner");
+  var feedbackToggle = document.querySelector("[data-privacy-feedback]");
+  var nightlyToggle = document.querySelector("[data-privacy-nightly]");
+  var privacySave = document.querySelector("[data-privacy-save]");
+  if (!donatePanel || !privacyPanel || !donateOpen || !privacyOpen) return;
+
+  function hasDecided() {
+    return !!(consent && consent.hasDecided());
+  }
+
+  function syncBackdrop() {
+    var anyOpen = !donatePanel.hidden || !privacyPanel.hidden;
+    if (backdrop) backdrop.hidden = !anyOpen;
+  }
+
+  function setPanel(panel, button, value, closeButton) {
+    panel.hidden = !value;
+    panel.classList.toggle("is-open", value);
+    panel.classList.toggle("y1-privacy-panel--open", value && panel === privacyPanel);
+    button.setAttribute("aria-expanded", value ? "true" : "false");
+    if (value && closeButton) closeButton.focus();
+    syncBackdrop();
+  }
+
+  function setBanner(value) {
+    if (!banner) return;
+    banner.hidden = !value;
+    document.body.classList.toggle("y1-consent-banner-open", value);
+    if (backdrop) backdrop.hidden = !(value || !donatePanel.hidden || !privacyPanel.hidden);
+  }
+
+  function prefillToggles() {
+    var prefs = (consent && consent.read) ? consent.read() : null;
+    /* Until a consent record exists, the switches stay unchecked: opt-in
+       must be a deliberate act, never a pre-ticked default. */
+    if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback : false;
+    if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly : false;
+  }
+
+  function saveFromPanel() {
+    if (consent && consent.save) {
+      consent.save({
+        feedback: feedbackToggle ? feedbackToggle.checked : true,
+        nightly: nightlyToggle ? nightlyToggle.checked : true
+      });
+    }
+    setPanel(privacyPanel, privacyOpen, false, null);
+    if (banner && !banner.hidden) setBanner(false);
+    if (privacyOpen) privacyOpen.focus();
+  }
+
+  donateOpen.addEventListener("click", function () {
+    var opening = donatePanel.hidden;
+    setPanel(privacyPanel, privacyOpen, false);
+    setPanel(donatePanel, donateOpen, opening, donateClose);
+  });
+  privacyOpen.addEventListener("click", function () {
+    var opening = privacyPanel.hidden;
+    setPanel(donatePanel, donateOpen, false);
+    if (opening) prefillToggles();
+    setPanel(privacyPanel, privacyOpen, opening, privacyClose);
+  });
+  if (donateClose) donateClose.addEventListener("click", function () { setPanel(donatePanel, donateOpen, false); donateOpen.focus(); });
+  if (privacyClose) privacyClose.addEventListener("click", function () { setPanel(privacyPanel, privacyOpen, false); privacyOpen.focus(); });
+  if (privacySave) privacySave.addEventListener("click", saveFromPanel);
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+    if (!donatePanel.hidden) { setPanel(donatePanel, donateOpen, false); donateOpen.focus(); }
+    if (!privacyPanel.hidden) { setPanel(privacyPanel, privacyOpen, false); privacyOpen.focus(); }
+  });
+  document.addEventListener("click", function (event) {
+    var dock = document.querySelector(".y1-site-dock-wrap");
+    if (!dock) return;
+    if (dock.contains(event.target)) return;
+    /* Clicks on the consent banner itself should not close open panels. */
+    if (banner && banner.contains(event.target)) return;
+    if (backdrop && event.target === backdrop) {
+      if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+      if (!privacyPanel.hidden) setPanel(privacyPanel, privacyOpen, false);
+      return;
+    }
+    if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+    if (!privacyPanel.hidden) setPanel(privacyPanel, privacyOpen, false);
+  });
+
+  var acceptAll = document.querySelector("[data-consent-accept]");
+  var essentialOnly = document.querySelector("[data-consent-essential]");
+  var manage = document.querySelector("[data-consent-manage]");
+  if (acceptAll) acceptAll.addEventListener("click", function () {
+    if (consent && consent.save) consent.save({ feedback: true, nightly: true });
+    setBanner(false);
+  });
+  if (essentialOnly) essentialOnly.addEventListener("click", function () {
+    if (consent && consent.save) consent.save({ feedback: false, nightly: false });
+    setBanner(false);
+  });
+  if (manage) manage.addEventListener("click", function () {
+    setPanel(donatePanel, donateOpen, false);
+    prefillToggles();
+    setPanel(privacyPanel, privacyOpen, true, privacyClose);
+  });
+
+  /* Show the consent banner on visits until a decision is stored. */
+  if (!hasDecided()) setBanner(true);
+})();
+</script>

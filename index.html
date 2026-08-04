@@ -1,610 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innioasis Updater - Install Firmware Updates and Rockbox on your Y1</title>
-
-    <meta name="description" content="Innioasis Y1 Updater lets you install Rockbox, manage stock firmware, and download the latest Y1 firmware releases easily.">
-    <meta name="keywords" content="Innioasis Y1, Innioasis updater, Rockbox Y1, Y1 firmware, Rockbox installer, Y1 stock firmware">
-    <meta name="author" content="Innioasis Community">
-
-    <link rel="canonical" href="https://innioasis.app/">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Innioasis Y1 Updater">
-    <meta property="og:description" content="Install Rockbox, manage firmware, and download the latest Innioasis Y1 releases.">
-    <meta property="og:url" content="https://innioasis.app/">
-    <meta property="og:image" content="https://innioasis.app/y1_illustration.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Innioasis Y1 Updater">
-    <meta name="twitter:description" content="The easiest way to install Rockbox and manage Innioasis Y1 firmware.">
-    <meta name="twitter:image" content="https://innioasis.app/y1_illustration.png">
-
-    <link rel="icon" href="y1_illustration.png">
-
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="site-theme.css?v=20260622">
-    <link rel="stylesheet" href="site-toolbar.css?v=20260622">
-    <link rel="stylesheet" href="site-pages.css?v=20260622">
-    <script src="site-init.js?v=20260622"></script>
-    <meta name="publisher" content="Luci Ltd" />
-    <link rel="author" href="https://www.luci.ltd" title="Luci Ltd — web hosting for Innioasis Y1 Themes" />
-    <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Innioasis Updater | Install or restore firmware on Y1 and Y2</title>
+  <meta name="description" content="Use Innioasis Updater to install Rockbox, Original Software, Solar, JJ Launcher, Inniclassic, Y2Player, or Koensayr on an Innioasis Y1 or Y2.">
+  <link rel="canonical" href="https://innioasis.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Innioasis Updater | Firmware for Y1 and Y2">
+  <meta property="og:description" content="A clear way to install custom firmware or restore Original Software on an Innioasis Y1 or Y2.">
+  <meta property="og:url" content="https://innioasis.app/">
+  <meta property="og:image" content="https://innioasis.app/y1_illustration.png">
+  <meta name="keywords" content="Innioasis Updater videos, Innioasis Y1 Rockbox tutorial, Innioasis Y2 Rockbox, stock firmware installation, Solar, JJ Launcher, firmware restore">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ItemList","name":"Get to know Updater videos","itemListElement":[{"@type":"ListItem","position":1,"name":"Dammit Jeff · Rockbox and Updater","url":"https://www.youtube.com/watch?v=3d2cATPt8Nk"},{"@type":"ListItem","position":2,"name":"Frawgeeys · Updater and Rockbox","url":"https://www.youtube.com/watch?v=Jzo8LNJNE5I"},{"@type":"ListItem","position":3,"name":"gravehounddeals · Rockbox on Y1","url":"https://www.tiktok.com/@gravehounddeals/video/7626447360062770445"},{"@type":"ListItem","position":4,"name":"Madmotchi · Original Software installation","url":"https://www.youtube.com/shorts/4qBnkXIB2Wo"},{"@type":"ListItem","position":5,"name":"TUXX Reviews · player use and Rockbox","url":"https://www.youtube.com/watch?v=woug0-zFQZI"},{"@type":"ListItem","position":6,"name":"Developer · general player use","url":"https://www.youtube.com/watch?v=dv9jZGXMcrI"},{"@type":"ListItem","position":7,"name":"veromarstars · Rockbox and themes","url":"https://www.youtube.com/watch?v=0AEtkc0gFhU"},{"@type":"ListItem","position":8,"name":"Catsteal3r · Updater and Rockbox","url":"https://www.tiktok.com/@catsteal3r/video/7572687586867612942"},{"@type":"ListItem","position":9,"name":"doitall · Rockbox","url":"https://www.tiktok.com/@lordgingerface/video/7648122542909082894"},{"@type":"ListItem","position":10,"name":"httpsbugeyed · Rockbox","url":"https://www.tiktok.com/@httpsbugeyed/video/7568131250658102559"},{"@type":"ListItem","position":11,"name":"Keaira’s Digital Archive · Rockbox","url":"https://www.tiktok.com/@keairasdigiarchive/video/7573615101484272926"}]},{"@type":"VideoObject","name":"Dammit Jeff · Rockbox and Updater","description":"A community video about Rockbox and using Innioasis Updater.","embedUrl":"https://www.youtube-nocookie.com/embed/3d2cATPt8Nk","url":"https://www.youtube.com/watch?v=3d2cATPt8Nk"},{"@type":"VideoObject","name":"Frawgeeys · Updater and Rockbox","description":"A community walkthrough of using Innioasis Updater to install Rockbox.","embedUrl":"https://www.youtube-nocookie.com/embed/Jzo8LNJNE5I","url":"https://www.youtube.com/watch?v=Jzo8LNJNE5I"},{"@type":"VideoObject","name":"gravehounddeals · Rockbox on Y1","description":"A community TikTok walkthrough of Rockbox on the Innioasis Y1 with Updater.","embedUrl":"https://www.tiktok.com/player/v1/7626447360062770445","url":"https://www.tiktok.com/@gravehounddeals/video/7626447360062770445"},{"@type":"VideoObject","name":"Madmotchi · Original Software installation","description":"A short community reference for installing Original Software on an Innioasis player.","embedUrl":"https://www.youtube-nocookie.com/embed/4qBnkXIB2Wo","url":"https://www.youtube.com/shorts/4qBnkXIB2Wo"},{"@type":"VideoObject","name":"TUXX Reviews · player use and Rockbox","description":"A broader community video about Innioasis player use and Rockbox.","embedUrl":"https://www.youtube-nocookie.com/embed/woug0-zFQZI","url":"https://www.youtube.com/watch?v=woug0-zFQZI"},{"@type":"VideoObject","name":"Developer · general player use","description":"A brief video about general Innioasis player use.","embedUrl":"https://www.youtube-nocookie.com/embed/dv9jZGXMcrI","url":"https://www.youtube.com/watch?v=dv9jZGXMcrI"},{"@type":"VideoObject","name":"veromarstars · Rockbox and themes","description":"A community tutorial about Rockbox and themes on an Innioasis player.","embedUrl":"https://www.youtube-nocookie.com/embed/0AEtkc0gFhU","url":"https://www.youtube.com/watch?v=0AEtkc0gFhU"},{"@type":"VideoObject","name":"Catsteal3r · Updater and Rockbox","description":"A short TikTok walkthrough of the Innioasis Updater Rockbox route.","embedUrl":"https://www.tiktok.com/player/v1/7572687586867612942","url":"https://www.tiktok.com/@catsteal3r/video/7572687586867612942"},{"@type":"VideoObject","name":"doitall · Rockbox","description":"A short community video about the Innioasis Rockbox route.","embedUrl":"https://www.tiktok.com/player/v1/7648122542909082894","url":"https://www.tiktok.com/@lordgingerface/video/7648122542909082894"},{"@type":"VideoObject","name":"httpsbugeyed · Rockbox","description":"A short community reference for setting up Rockbox on an Innioasis player.","embedUrl":"https://www.tiktok.com/player/v1/7568131250658102559","url":"https://www.tiktok.com/@httpsbugeyed/video/7568131250658102559"},{"@type":"VideoObject","name":"Keaira’s Digital Archive · Rockbox","description":"A short community video reference for the Innioasis Rockbox route.","embedUrl":"https://www.tiktok.com/player/v1/7573615101484272926","url":"https://www.tiktok.com/@keairasdigiarchive/video/7573615101484272926"}]}</script>
+  <link rel="preload" as="image" href="y1_illustration.png" fetchpriority="high">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20260823">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20260803">
+  <script src="site-init.js?v=20260803" defer></script>
 </head>
-
-<body class="site-themes-app site-dock-mode">
-    <div id="nav-root"></div>
-
-    <div class="hero" id="home">
-        <div class="hero-content">
-            <h1>Innioasis Updater</h1>
-            <p>The easiest tool for installing Rockbox, and managing the current firmware on your Innioasis Y1. Install, update, and customize.</p>
-            <div class="btn-group">
-                <a href="guide.html?install" id="getUpdater" class="btn btn-primary" style="font-weight: unset;">Get Updater</a>
-                <a href="#versions" class="btn btn-secondary" style="font-weight: normal;">See Versions</a>
-            </div>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-home">
+    <section class="lumen-hero" aria-labelledby="home-title">
+      <div>
+        <p class="lumen-kicker">Innioasis Updater</p>
+        <h1 id="home-title">Up to date and all <em>yours!</em></h1>
+        <p class="lumen-hero-lead">Innioasis Updater helps you keep your player up-to-date with updates from Innioasis, and also lets you change your experience completely with custom software options like Rockbox, JJ Launcher, Solar, Koensayr and Inniclassic (to name a few)</p>
+        <div class="lumen-actions">
+          <a class="lumen-button lumen-button--primary" href="guide.html#platform">Get Innioasis Updater</a>
+          <a class="lumen-button" href="firmware.html">Firmware Downloads</a><a class="lumen-button" href="firmware-faq.html">Firmware questions</a>
         </div>
-        <div class="hero-image" aria-hidden="true">
-            <img src="y1_illustration.png" alt="Innioasis Y1" />
-        </div>
-    </div>
-
-    <section id="features" class="with-flex">
+      </div>
+      <figure class="lumen-hero-art">
+        <img src="y1_illustration.png" width="1080" height="1080" alt="Illustration of an Innioasis music player" decoding="async">
+      </figure>
     </section>
 
-    <section id="versions" style="margin-top: 10%;">
-        <div class="section-div">
-            <h2>Y1 firmware releases</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-                Manually download rom ZIPs to install via the Updater app.
-            </p>
+    <section class="lumen-section" aria-labelledby="reviews-title">
+      <div class="lumen-section-head"><div><p class="lumen-kicker">Community videos</p><h2 id="reviews-title">Get to know Updater.</h2></div></div>
+      <div class="lumen-carousel" data-lumen-carousel role="region" aria-roledescription="carousel" aria-label="Get to know Updater videos" tabindex="0">
+        <div class="lumen-carousel-stage">
+          <article class="lumen-carousel-slide" data-carousel-fixed="true" data-carousel-order="1" data-video-key="dammit-jeff-rockbox" data-credit="Dammit Jeff" data-video-url="https://www.youtube.com/watch?v=3d2cATPt8Nk&t=477" aria-hidden="false">
+            <div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/3d2cATPt8Nk?rel=0&start=477" title="Video by Dammit Jeff: Rockbox and Innioasis Updater" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          </article>
+          <article class="lumen-carousel-slide" data-carousel-fixed="true" data-carousel-order="2" data-video-key="frawgeeys-updater-rockbox" data-credit="Frawgeeys" data-video-url="https://www.youtube.com/watch?v=Jzo8LNJNE5I" aria-hidden="true">
+            <div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/Jzo8LNJNE5I?rel=0" title="Video by Frawgeeys: using Innioasis Updater to install Rockbox on an Innioasis player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
-            <div id="recommendedContainer" style="margin-bottom: 3rem;"></div>
-
-            <hr>
-            <h3 style="text-align: center; margin: 2rem 0 1rem;">Find the latest release for you</h3>
-            <div class="versions-grid" id="versionsGrid"></div>
-
-            <div class="back-button" style="display: flex; justify-content: center;">
-                <a href="https://innioasis.app/firmware.html" class="btn-back" id="alv-btn">
-                    <i class="fas fa-code-branch" style="margin-top: 6rem; margin-right: 4px;"></i> All versions
-                </a>
-            </div>
+          </article>
+          <article class="lumen-carousel-slide" data-carousel-fixed="true" data-carousel-order="3" data-video-key="danieltgaming-updater-rockbox" data-credit="Daniel T. Gaming" data-video-url="https://www.youtube.com/watch?v=Go6MK-j4SHk&t=385" aria-hidden="true">
+            <div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/Go6MK-j4SHk?rel=0&start=385" title="Video by Daniel T. Gaming: I Hated Streaming, So I Got A Music Player - using Updater to install Rockbox on an Innioasis player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          </article>
+          <article class="lumen-carousel-slide" data-video-key="doitall-jjlauncher-troubleshooting" data-credit="doitall" data-video-url="https://www.youtube.com/shorts/wW7Vg_fb-JU" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/wW7Vg_fb-JU?rel=0" title="Video by doitall: installing JJ Launcher on an Innioasis Y1 and troubleshooting" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="gravehounddeals-rockbox" data-credit="gravehounddeals" data-video-url="https://www.tiktok.com/@gravehounddeals/video/7626447360062770445" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.tiktok.com/player/v1/7626447360062770445?description=1&music_info=1&rel=0" title="Video by gravehounddeals: Rockbox on an Innioasis Y1 with Updater" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="madmotchi-stock" data-credit="Madmotchi" data-video-url="https://www.youtube.com/shorts/4qBnkXIB2Wo" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/4qBnkXIB2Wo?rel=0" title="Video by Madmotchi: installing original firmware on an Innioasis player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="tuxx-rockbox" data-credit="TUXX Reviews" data-video-url="https://www.youtube.com/watch?v=woug0-zFQZI" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/woug0-zFQZI?rel=0" title="Video by TUXX Reviews: Innioasis Y1 use and Rockbox" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="developer-general-use" data-credit="the developer" data-video-url="https://www.youtube.com/watch?v=dv9jZGXMcrI" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/dv9jZGXMcrI?rel=0" title="Video by the developer: general Innioasis player use" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="veromarstars-rockbox-themes" data-credit="veromarstars" data-video-url="https://www.youtube.com/watch?v=0AEtkc0gFhU" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/0AEtkc0gFhU?rel=0" title="Video by veromarstars: Rockbox and themes on an Innioasis player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="catsteal3r-rockbox" data-credit="Catsteal3r" data-video-url="https://www.tiktok.com/@catsteal3r/video/7572687586867612942" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.tiktok.com/player/v1/7572687586867612942?description=1&music_info=1&rel=0" title="Video by Catsteal3r: using Innioasis Updater for Rockbox" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="doitall-rockbox" data-credit="doitall" data-video-url="https://www.tiktok.com/@lordgingerface/video/7648122542909082894" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.tiktok.com/player/v1/7648122542909082894?description=1&music_info=1&rel=0" title="Video by doitall: Rockbox on an Innioasis player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="httpsbugeyed-rockbox" data-credit="httpsbugeyed" data-video-url="https://www.tiktok.com/@httpsbugeyed/video/7568131250658102559" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.tiktok.com/player/v1/7568131250658102559?description=1&music_info=1&rel=0" title="Video by httpsbugeyed: Rockbox on an Innioasis player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen" allowfullscreen></iframe></div></article>
+          <article class="lumen-carousel-slide" data-video-key="keaira-rockbox" data-credit="Keaira's Digital Archive" data-video-url="https://www.tiktok.com/@keairasdigiarchive/video/7573615101484272926" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.tiktok.com/player/v1/7573615101484272926?description=1&music_info=1&rel=0" title="Video by Keaira's Digital Archive: Rockbox on an Innioasis player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen" allowfullscreen></iframe></div></article>
         </div>
+        <div class="lumen-carousel-controls"><button type="button" data-carousel-previous aria-label="Previous video">‹</button><span class="lumen-carousel-credit" aria-live="polite">Credit: <a data-carousel-credit-link href="https://www.youtube.com/watch?v=3d2cATPt8Nk&t=477" target="_blank" rel="noopener noreferrer">Dammit Jeff</a></span><button type="button" data-carousel-next aria-label="Next video">›</button></div>
+      </div>
+
+      <p class="lumen-meta" style="margin-top:.75rem">Prefer reading? The <a href="guide.html">written installation guide</a> covers <a href="guide.html#windows">Windows</a>, <a href="drivers.html#macos">macOS</a>, and <a href="guide.html#linux">Linux</a> before the firmware steps.</p>
     </section>
 
-    <section id="donate" style="margin-top: 5%;">
-        <div class="section-div">
-            <h2>Donate</h2>
-            <p id="donate-intro" style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-                Ryan and his partner are expecting a baby in December — your support would mean a lot. Donations also help keep Innioasis Updater and related tools online: hosting, the domain, and running costs.
-            </p>
-
-            <div class="donate-options">
-                <div class="donate-card">
-                    <h3>Ryan Specter</h3>
-                    <p>Help cover hosting, the domain, and running costs for Innioasis Updater and related community tools.</p>
-                    <div style="margin-top:.5rem; display: flex; justify-content: space-between; align-items: center;">
-                        <select id="ryanMethods" style="font-family: Inter; padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);">
-                            <option>PayPal</option>
-                            <option>Revolut</option>
-                            <option>Ko-fi</option>
-                            <option>Patreon</option>
-                            <option>Bitcoin</option>
-                            <option>SHIBA INU (ERC-20)</option>
-                            <option>Ethereum / Arbitrum / Optimism</option>
-                        </select>
-                        <div id="ryanMethodContent"></div>
-                    </div>
-                </div>
-
-                <div class="donate-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <div>
-                        <h3>Donate</h3>
-                        <p>Your support helps fund Innioasis Updater development, hosting, and related community tools.</p>
-                    </div>
-                    <div style="display: flex; justify-content: right;">
-                        <a href="https://www.ko-fi.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex; align-items: center; gap:.5rem;" target="_blank" rel="noopener noreferrer"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="" style="height:20px;" aria-hidden="true" />Donate on Ko-fi</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <section class="lumen-section" aria-labelledby="home-firmware-title">
+      <div class="lumen-section-head"><div><p class="lumen-kicker">Software for Y1 and Y2</p><h2 id="home-firmware-title">See what you can install.</h2></div><a class="lumen-button" href="firmware.html">Open the full release list</a></div>
+      <div class="lumen-table-wrap">
+        <table class="lumen-release-table">
+          <caption class="lumen-visually-hidden">Software available for the Innioasis Y1 and Y2, with release listings for each model</caption>
+          <thead><tr><th scope="col">Software</th><th scope="col">Releases</th></tr></thead>
+          <tbody id="lumen-home-firmware-table"></tbody>
+        </table>
+      </div>
+      <p class="lumen-meta">All software listed is from the <a href="firmware.html">Firmware Archive</a>. The <a href="firmware.html">full release directory</a> shows the releases for each model, with install guides, manual ZIP downloads, and the <a href="guide.html#platform">Updater setup route</a>.</p>
     </section>
 
-    <div id="footer-root"></div>
-    <div id="support-toolbar-slot"></div>
+    <section class="lumen-section" aria-labelledby="path-title">
+      <div class="lumen-section-head"><div><p class="lumen-kicker">Start here</p><h2 id="path-title">Using Innioasis Updater</h2></div></div>
+      <div class="lumen-grid">
+        <article class="lumen-card"><small>01</small><h3>Choose Y1 or Y2</h3><p>Use the model printed on the player. Y2 packages and install tools are different from Y1 packages.</p></article>
+        <article class="lumen-card"><small>02</small><h3>Choose your software</h3><p>Pick Original Software, Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, or Koensayr when it is listed for your model.</p></article>
+        <article class="lumen-card"><small>03</small><h3>Install / Restore</h3><p>Updater prepares the files, then tells you when to power off and connect the USB cable.</p></article>
+      </div>
+    </section>
 
-    <script src="nav.js"></script>
+    <section class="lumen-section" aria-labelledby="featured-title">
+      <div class="lumen-section-head"><div><p class="lumen-kicker">Choose a route</p><h2 id="featured-title">Common journeys</h2></div></div>
+      <div class="lumen-grid">
+        <article class="lumen-card"><h3>Install Rockbox on Y1</h3><p>Choose Y1, select Rockbox, pick a stable release, then connect only when Updater asks.</p><div class="lumen-actions"><a class="lumen-button" href="guides/rockbox-y1.html">Read Y1 steps</a></div></article>
+        <article class="lumen-card"><h3>Install Rockbox on Y2</h3><p>Choose Y2 first. The Y2 route uses a different package and must not be treated as a Y1 install.</p><div class="lumen-actions"><a class="lumen-button" href="guides/rockbox-y2.html">Read Y2 steps</a></div></article>
+        <article class="lumen-card"><h3>Restore Original Software</h3><p>Coming back from Rockbox or another custom firmware uses the same Updater flow: select your model, choose Original Software, and run Install / Restore.</p><div class="lumen-actions"><a class="lumen-button" href="guides/restore-original-y1.html">Y1 stock restore</a><a class="lumen-button" href="guides/restore-original-y2.html">Y2 stock restore</a></div><p class="lumen-meta">Works on Windows, macOS, or Linux after that computer’s Updater setup is ready.</p></article>
+      </div>
+    </section>
 
-    <script>
-
-        function copyAddress(inputId, btn) {
-            const input = document.getElementById(inputId);
-            const value = input.value || '';
-            if (!value) {
-                return;
-            }
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(value).then(() => {
-                    const orig = btn.textContent;
-                    btn.textContent = 'Copied';
-                    setTimeout(() => {
-                        btn.textContent = orig;
-                    }, 2000);
-                }).catch(() => {
-                    btn.textContent = 'Copy failed';
-                    setTimeout(() => btn.textContent = 'Copy', 1500);
-                });
-            } else {
-                input.select();
-                try {
-                    document.execCommand('copy');
-                    const orig = btn.textContent;
-                    btn.textContent = 'Copied';
-                    setTimeout(() => {
-                        btn.textContent = orig;
-                    }, 2000);
-                } catch (e) {
-                    btn.textContent = 'Copy not supported';
-                    setTimeout(() => btn.textContent = 'Copy', 1500);
-                }
-            }
-        }
-        (function() {
-            const btn = document.getElementById('getUpdater');
-            const wrong = document.getElementById('wrongOs');
-            const ua = navigator.userAgent || '';
-            let os = 'windows';
-            if (/Mac|iPhone|iPad|iPod/.test(ua)) os = 'mac';
-            else if (/Linux/.test(ua) && !/Android/.test(ua)) os = 'linux';
-
-            const icons = {
-                windows: '<i class="fab fa-windows" style="font-size: 20px; margin-right:.5rem"></i>',
-                mac: '<i class="fab fa-apple" style="font-size: 20px; margin-right:.5rem"></i>',
-                linux: '<i class="fas fa-linux" style="font-size: 20px; margin-right:.5rem"></i>'
-            };
-
-            const osnames = {
-                windows: 'Windows',
-                mac: 'macOS',
-                linux: 'Linux'
-            };
-
-            if (btn) btn.innerHTML = icons[os] + ' Get Updater for ' + osnames[os];
-            if (wrong) wrong.style.display = 'block';
-        })();
-        let apiTokens = []
-        let packages = []
-
-        async function loadConfigTokens() {
-            const res = await fetch('https://innioasis.app/config.ini')
-            if (!res.ok) return []
-            const text = await res.text()
-            return text.split('\n')
-                .map(l => l.trim())
-                .filter(l => l.startsWith('key_') && l.includes('='))
-                .map(l => l.split('=')[1].trim())
-                .filter(t => t.length > 10)
-        }
-
-        function updateRyanMethod() {
-            const sel = document.getElementById('ryanMethods');
-            const container = document.getElementById('ryanMethodContent');
-            if (!sel || !container) return;
-            const val = sel.value;
-            const inputStyle = 'font-family: monospace; flex:1;padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text-primary);';
-            if (val === 'Revolut') {
-                container.innerHTML = '<a href="https://revolut.me/rspecter" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://img.icons8.com/ios_filled/512/FFFFFF/revolut--v2.png" alt="Revolut" style="height:20px;"/><span>Donate via Revolut</span></a>';
-            } else if (val === 'Ko-fi') {
-                container.innerHTML = '<a href="https://ko-fi.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><img src="https://boost.space/wp-content/uploads/2025/02/ko-fi.png" alt="Ko-fi" style="height:20px;"/>Donate via Ko-fi</a>';
-            } else if (val === 'Patreon') {
-                container.innerHTML = '<a href="https://www.patreon.com/teamslide" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><span style="font-size: 16px;">🧡</span>Donate via Patreon</a>';
-            } else if (val === 'PayPal') {
-                container.innerHTML = '<a href="https://www.paypal.com/paypalme/RyanSpecter282" class="btn btn-primary" style="color: white; padding: 2px 15px; display:inline-flex;align-items:center;gap:.5rem;"><i class="fab fa-paypal"></i>Donate via PayPal</a>';
-            } else if (val === 'Bitcoin') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="btcAddr" readonly value="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g" style="' + inputStyle + '" /><button onclick="copyAddress(\'btcAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;">Copy</button></div>';
-            } else if (val === 'SHIBA INU (ERC-20)') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="shibAddr" readonly value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" style="' + inputStyle + '" /><button onclick="copyAddress(\'shibAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;">Copy</button></div>';
-            } else if (val === 'Ethereum / Arbitrum / Optimism') {
-                container.innerHTML = '<div style="display:flex;gap:.5rem;align-items:center;"><input id="ethAddr" readonly value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" style="' + inputStyle + '" /><button onclick="copyAddress(\'ethAddr\', this)" style="padding:.5rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:var(--bg-dark);color:var(--text-primary);cursor:pointer;">Copy</button></div>';
-            } else {
-                container.innerHTML = '';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const sel = document.getElementById('ryanMethods');
-            if (sel) {
-                sel.addEventListener('change', updateRyanMethod);
-                updateRyanMethod();
-            }
-        });
-
-        async function loadManifest() {
-            const res = await fetch('https://innioasis.app/slidia_manifest.xml')
-            if (!res.ok) throw new Error('manifest load failed')
-            const xml = await res.text()
-            const doc = new DOMParser().parseFromString(xml, 'text/xml')
-            return [...doc.getElementsByTagName('package')]
-                .filter(p => !p.getAttribute('device_type'))
-                .map(p => ({
-                    name: p.getAttribute('name'),
-                    repo: p.getAttribute('repo'),
-                    device: p.getAttribute('device')
-                }))
-        }
-
-        async function getReleases(repo) {
-            let res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100`)
-            if (res.status === 403) {
-                if (apiTokens.length) {
-                    res = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100`, {
-                        headers: {
-                            Authorization: `Bearer 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`,
-                            Accept: 'application/vnd.github.v3+json'
-                        }
-                    })
-                } else {
-                    return []
-                }
-            }
-            if (!res.ok) return []
-            const data = await res.json()
-
-            return data
-                .filter(r => r.assets?.some(a => {
-                    const n = (a.name || '').toLowerCase();
-                    return n === 'rom.zip' || n === 'rom_type_b.zip';
-                }))
-                .map(r => {
-                    const tag = r.tag_name.toLowerCase()
-                    const hasStable = tag.includes('stable')
-                    let prerelease = r.prerelease || r.draft || tag.includes('nightly') || tag.includes('beta')
-                    if (hasStable) prerelease = false
-
-                    const rom = r.assets.find(a => a.name.toLowerCase() === 'rom.zip')
-                    const romTypeB = r.assets.find(a => a.name.toLowerCase() === 'rom_type_b.zip')
-                    const update = r.assets.find(a => a.name.toLowerCase() === 'update.zip')
-                    const romVariants = []
-                    ;(r.assets || []).forEach(a => {
-                        const n = (a.name || '').toLowerCase()
-                        if (!n.startsWith('rom') || !n.endsWith('.zip')) return
-                        const type = n.includes('type_b') ? 'B' : 'A'
-                        let resolution = 'any'
-                        if (n.includes('360p')) resolution = '360p'
-                        else if (n.includes('240p')) resolution = '240p'
-                        romVariants.push({
-                            type,
-                            resolution,
-                            name: n,
-                            url: a.browser_download_url || null,
-                            download_count: a.download_count || 0
-                        })
-                    })
-                    const compatibility = [];
-                    if (rom) compatibility.push('A');
-                    if (romTypeB) compatibility.push('B');
-                    if (!compatibility.length) {
-                        if (romVariants.some(v => v.type === 'A')) compatibility.push('A')
-                        if (romVariants.some(v => v.type === 'B')) compatibility.push('B')
-                    }
-
-                    return {
-                        tag_name: r.tag_name,
-                        name: r.name || r.tag_name,
-                        body: r.body || '',
-                        published_at: r.published_at,
-                        html_url: r.html_url,
-                        prerelease,
-                        draft: r.draft || false,
-                        download_count: rom?.download_count || 0,
-                        total_downloads: r.assets.reduce((s, a) => s + (a.download_count || 0), 0),
-                        rom_url: rom?.browser_download_url || null,
-                        rom_type_b_url: romTypeB?.browser_download_url || null,
-                        has_update_zip: !!update,
-                        update_zip_url: update?.browser_download_url || null,
-                        compatibility,
-                        rom_variants: romVariants
-                    }
-                })
-        }
-
-        async function loadFirmware() {
-            apiTokens = await loadConfigTokens()
-            packages = await loadManifest()
-
-            const repoGroups = {}
-            packages.forEach(p => {
-                if (!repoGroups[p.repo]) repoGroups[p.repo] = []
-                repoGroups[p.repo].push(p)
-            })
-
-            const all = []
-
-            await Promise.all(Object.keys(repoGroups).map(async repo => {
-                const releases = await getReleases(repo)
-                releases.forEach(r => {
-                    repoGroups[repo].forEach(pkg => {
-                        all.push({
-                            ...r,
-                            software_name: pkg.name,
-                            device_model: pkg.device,
-                            device_type: (r.compatibility || []).join('/')
-                        })
-                    })
-                })
-            }))
-
-            all.sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
-            return all
-        }
-
-        loadFirmware().then(releases => {
-            const recommendedContainer = document.getElementById('recommendedContainer');
-            const grid = document.getElementById('versionsGrid');
-
-            function getResolution(tagName, repoName) {
-                if (tagName.includes('240')) return '240p';
-                if (tagName.includes('360')) return '360p';
-                if (repoName && repoName.includes('240')) return '240p';
-                if (repoName && repoName.includes('360')) return '360p';
-                return '240p';
-            }
-
-            function formatDate(dateStr) {
-                const d = new Date(dateStr);
-                return d.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                });
-            }
-
-            const enriched = releases.map(r => ({
-                ...r,
-                resolution: getResolution(r.tag_name.toLowerCase(), (r.software_name || '').toLowerCase()),
-                variant: r.prerelease ? 'Beta' : 'Stable',
-                software_type: (r.software_name || '').toLowerCase().includes('rockbox') ? 'Rockbox' : 'Original'
-            }));
-
-            function hasRomForType(release, type) {
-                const variants = Array.isArray(release.rom_variants) ? release.rom_variants : [];
-                return variants.some(v => v.type === type);
-            }
-
-            function hasRomForTypeAndResolution(release, type, resolution) {
-                const variants = Array.isArray(release.rom_variants) ? release.rom_variants : [];
-                return variants.some(v => v.type === type && (v.resolution === resolution || v.resolution === 'any'));
-            }
-
-            function pickRomDownload(release, type, resolution) {
-                const variants = (Array.isArray(release.rom_variants) ? release.rom_variants : []).filter(v => v.type === type && v.url);
-                if (!variants.length) return null;
-                if (!resolution) {
-                    return variants[0].url;
-                }
-                const exact = variants.find(v => v.resolution === resolution);
-                if (exact) return exact.url;
-                const preferred360 = variants.find(v => v.resolution === '360p');
-                if (preferred360) return preferred360.url;
-                const preferred240 = variants.find(v => v.resolution === '240p');
-                if (preferred240) return preferred240.url;
-                const any = variants.find(v => v.resolution === 'any');
-                return any ? any.url : variants[0].url;
-            }
-
-            const recommendations = [{
-                    device_type: 'A',
-                    software_type: 'Rockbox',
-                    resolution: '360p'
-                },
-                {
-                    device_type: 'A',
-                    software_type: 'Original'
-                },
-                {
-                    device_type: 'B',
-                    software_type: 'Original'
-                }
-            ];
-
-            const recWrapper = document.createElement('div');
-            recWrapper.style.background = 'rgba(16, 185, 129, 0.08)';
-            recWrapper.style.border = '1px solid rgba(16, 185, 129, 0.2)';
-            recWrapper.style.borderRadius = '10px';
-            recWrapper.style.padding = '1.5rem';
-            recWrapper.innerHTML = '<h3 style="color:var(--success);margin-bottom:1rem;">Recommended releases</h3>';
-
-            const recGrid = document.createElement('div');
-            recGrid.style.display = 'grid';
-            recGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))';
-            recGrid.style.gap = '1rem';
-
-            recommendations.forEach(rec => {
-                const filtered = enriched.filter(r =>
-                    hasRomForType(r, rec.device_type) &&
-                    r.software_type.toLowerCase() === (rec.software_type || '').toLowerCase() &&
-                    (!rec.resolution || hasRomForTypeAndResolution(r, rec.device_type, rec.resolution)) &&
-                    (rec.software_type === 'Rockbox' ? true : r.variant === 'Stable')
-                );
-
-                const latest = filtered[0];
-                if (!latest) return;
-
-                const recCard = document.createElement('div');
-                recCard.className = 'version-card vcentered';
-                recCard.style.background = 'rgba(16, 185, 129, 0.1)';
-                const title = rec.resolution ? `Type ${rec.device_type} ${rec.software_type} ${rec.resolution}` : `Type ${rec.device_type} ${rec.software_type}`;
-                const downloadUrl = pickRomDownload(latest, rec.device_type, rec.resolution || null);
-                recCard.innerHTML = `
-                <div>
-            <span class="version-badge badge-stable">Stable</span>
-            <h4 style="color:var(--success);margin:.5rem 0;">${title}</h4>
-            <p style="font-weight:600;margin-bottom:.25rem;">${latest.tag_name}</p>
-            <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:.75rem;">${formatDate(latest.published_at)}  •  ${latest.total_downloads} downloads</p>
-            </div>
-            ${downloadUrl ? `<a href="${downloadUrl}" class="btn btn-primary" download><i class="fa-solid fa-download" style="margin-right: 8px"></i>Download</a>` : ''}
-        `;
-                recGrid.appendChild(recCard);
-            });
-
-            const rockboxThemesCard = document.createElement('div');
-            rockboxThemesCard.className = 'version-card vcentered';
-            rockboxThemesCard.style.background = 'rgba(59, 130, 246, 0.12)';
-            rockboxThemesCard.innerHTML = `
-                <div>
-                    <span class="version-badge badge-latest">Recommended</span>
-                    <h4 style="color:var(--accent);margin:.5rem 0;">Rockbox 360p Themes</h4>
-                    <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:.75rem;">240p is being deprecated. Use latest 360p themes for the best compatibility.</p>
-                </div>
-                <a href="https://github.com/rockbox-y1/themes/releases/latest" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" style="margin-right:8px;"></i>Latest Themes</a>
-            `;
-            recGrid.appendChild(rockboxThemesCard);
-
-            recWrapper.appendChild(recGrid);
-            recommendedContainer.appendChild(recWrapper);
-
-            const filterContainer = document.createElement('div');
-            filterContainer.style.marginBottom = '2rem';
-            filterContainer.style.display = 'flex';
-            filterContainer.style.gap = '1rem';
-            filterContainer.style.flexWrap = 'wrap';
-            filterContainer.style.alignItems = 'center';
-
-            const selects = {};
-
-            function createSelect(labelText, opts) {
-                const label = document.createElement('label');
-                label.style.display = 'flex';
-                label.style.alignItems = 'center';
-                label.style.gap = '0.5rem';
-                label.style.fontSize = '0.9rem';
-                label.textContent = labelText + ':';
-
-                const select = document.createElement('select');
-                select.className = 'filter-dropdown';
-
-                opts.forEach(o => {
-                    const option = document.createElement('option');
-                    option.value = o;
-                    option.textContent = o;
-                    select.appendChild(option);
-                });
-
-                label.appendChild(select);
-                return {
-                    label,
-                    select
-                };
-            }
-
-            const typeSel = createSelect('Type', ['A', 'B']);
-            const firmwareSel = createSelect('Firmware', ['Rockbox', 'Original']);
-            const resolutionSel = createSelect('Resolution', ['240p', '360p']);
-            const versionSel = createSelect('Version', ['Stable', 'Beta']);
-
-            selects.type = typeSel.select;
-            selects.firmware = firmwareSel.select;
-            selects.resolution = resolutionSel.select;
-            selects.version = versionSel.select;
-
-            filterContainer.appendChild(typeSel.label);
-            filterContainer.appendChild(firmwareSel.label);
-            filterContainer.appendChild(resolutionSel.label);
-            filterContainer.appendChild(versionSel.label);
-
-            const resultContainer = document.createElement('div');
-            resultContainer.id = 'filterResult';
-            resultContainer.style.marginTop = '1.5rem';
-
-            function updateFilter() {
-                const filters = {
-                    type: selects.type.value,
-                    firmware: selects.firmware.value,
-                    resolution: selects.resolution.value,
-                    version: selects.version.value
-                };
-
-                let filtered = enriched.filter(r =>
-                    hasRomForType(r, filters.type) &&
-                    r.software_type.toLowerCase() === filters.firmware.toLowerCase() &&
-                    (filters.firmware === 'Original' ? true : hasRomForTypeAndResolution(r, filters.type, filters.resolution)) &&
-                    (filters.version === 'Stable' ? r.variant === 'Stable' : r.variant === 'Beta')
-                );
-
-                resultContainer.innerHTML = '';
-
-                if (filtered.length === 0) {
-                    resultContainer.innerHTML = '<p style="color:var(--text-secondary);text-align:center;">No releases match your filters.</p>';
-                    return;
-                }
-
-                const latest = filtered[0];
-                const card = document.createElement('div')
-                card.className = 'version-card'
-                card.style.margin = '0 auto'
-                const resolutionLine = (filters.firmware === 'Original') ? `<p class="meta">Resolution: 360p</p>` : `<p class="meta">Resolution: ${latest.resolution}</p>`;
-                const selectedDownloadUrl = pickRomDownload(
-                    latest,
-                    filters.type,
-                    filters.firmware === 'Rockbox' ? filters.resolution : null
-                );
-                card.innerHTML = `
-    <span class="version-badge badge-latest">Latest</span>
-
-    <div class="version-split">
-        <div class="version-left">
-            <h3 style="margin-top: 7px">${latest.tag_name}</h3>
-            <p class="meta">${formatDate(latest.published_at)}</p>
-            <p class="meta">${latest.total_downloads} downloads</p>
-            <p class="meta">Firmware: ${latest.software_type}</p>
-            <p class="meta">Compatible with Type ${Array.isArray(latest.compatibility) ? latest.compatibility.join(', ') : latest.device_type}</p>
-            ${resolutionLine}
-        </div>
-
-        <div class="version-right">
-            ${selectedDownloadUrl
-                ? `<a href="${selectedDownloadUrl}" class="btn btn-primary" download>Download</a>`
-                : `<button class="btn btn-secondary" disabled>No download</button>`
-            }
-        </div>
-    </div>
-`;
-
-                console.log(latest);
-                resultContainer.appendChild(card);
-            }
-
-            selects.firmware.addEventListener('change', () => {
-                const isOriginal = selects.firmware.value === 'Original';
-                selects.resolution.disabled = isOriginal;
-                selects.resolution.style.opacity = isOriginal ? '0.5' : '1';
-                selects.resolution.style.cursor = isOriginal ? 'not-allowed' : 'pointer';
-                if (isOriginal) {
-                    selects.resolution.value = '360p';
-                }
-                updateFilter();
-            });
-
-            Object.values(selects).forEach(s => {
-                if (s !== selects.firmware) s.addEventListener('change', updateFilter);
-            });
-
-            grid.parentElement.insertBefore(filterContainer, grid);
-            grid.parentElement.insertBefore(resultContainer, grid);
-            grid.style.display = 'none';
-
-            updateFilter();
-        })
-    </script>
-
-</body>
-
+    <section class="lumen-section" aria-labelledby="support-title">
+      <div class="lumen-callout"><h2 id="support-title">Support Updater and the Themes Gallery.</h2><p><strong>Innioasis Updater and the Themes Gallery are community hobbyist projects.</strong> They rely on people giving their time, plus real costs for hosting, domain renewals, moderation, release work, and Cloudflare Workers. If these tools helped you install or restore your player, support the work that keeps them available.</p><div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="support_devs.html#donations">Support Updater and the Themes Gallery</a></div></div>
+    </section>
+  </main>
+  <div id="footer-root"></div><div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20260822" defer></script><script src="firmware-catalog.js?v=20260803" defer></script><script src="lumen-site.js?v=20260817" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script></body>
 </html>

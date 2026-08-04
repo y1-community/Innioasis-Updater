@@ -1,0 +1,608 @@
+/* Hallmark · macrostructure: Workbench · tone: technical · anchor hue: blue */
+/* Lumen shared system. Keep page-specific CSS small and semantic. */
+
+:root {
+    --lumen-ink: oklch(13% .018 260);
+    --lumen-ink-soft: oklch(18% .022 260);
+    --lumen-panel: oklch(20% .025 258);
+    --lumen-panel-soft: oklch(24% .028 258);
+    --lumen-paper: oklch(96% .012 250);
+    --lumen-text: oklch(94% .014 250);
+    --lumen-muted: oklch(72% .026 250);
+    --lumen-faint: oklch(58% .025 250);
+    --lumen-accent: oklch(76% .115 245);
+    --lumen-accent-strong: oklch(68% .15 245);
+    --lumen-accent-wash: oklch(38% .07 245 / .32);
+    --lumen-green: oklch(78% .13 155);
+    --lumen-amber: oklch(82% .14 82);
+    --lumen-red: oklch(72% .15 25);
+    --lumen-line: oklch(100% 0 0 / .13);
+    --lumen-line-strong: oklch(100% 0 0 / .24);
+    --lumen-display: "Instrument Serif", Georgia, serif;
+    --lumen-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --lumen-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+    --lumen-max: 1180px;
+    --lumen-radius-sm: 10px;
+    --lumen-radius-md: 16px;
+    --lumen-radius-lg: 24px;
+    --lumen-pill: 999px;
+    --lumen-space-1: .25rem;
+    --lumen-space-2: .5rem;
+    --lumen-space-3: .75rem;
+    --lumen-space-4: 1rem;
+    --lumen-space-5: 1.5rem;
+    --lumen-space-6: 2rem;
+    --lumen-space-7: 3rem;
+    --lumen-space-8: 5rem;
+    --lumen-ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+html { overflow-x: clip; scroll-behavior: smooth; }
+html, body { min-width: 0; }
+body.site-themes-app { overflow-x: clip; background: var(--lumen-ink); color: var(--lumen-text); font-family: var(--lumen-body); }
+
+:root[data-lumen-theme="light"] {
+    --lumen-ink: oklch(98% .008 250);
+    --lumen-ink-soft: oklch(94% .012 250);
+    --lumen-panel: oklch(100% 0 0);
+    --lumen-panel-soft: oklch(96% .012 250);
+    --lumen-paper: oklch(18% .018 260);
+    --lumen-text: oklch(18% .018 260);
+    --lumen-muted: oklch(43% .03 250);
+    --lumen-faint: oklch(52% .025 250);
+    --lumen-accent: oklch(48% .16 245);
+    --lumen-accent-strong: oklch(54% .16 245);
+    --lumen-accent-wash: oklch(88% .06 245 / .72);
+    --lumen-line: oklch(20% .02 260 / .16);
+    --lumen-line-strong: oklch(20% .02 260 / .3);
+}
+
+:root[data-lumen-theme="dark"] {
+    color-scheme: dark;
+}
+
+:root[data-lumen-theme="high-contrast"] {
+    --lumen-ink: #000;
+    --lumen-ink-soft: #080808;
+    --lumen-panel: #000;
+    --lumen-panel-soft: #111;
+    --lumen-paper: #fff;
+    --lumen-text: #fff;
+    --lumen-muted: #f3f3f3;
+    --lumen-faint: #d6d6d6;
+    --lumen-accent: #73d7ff;
+    --lumen-accent-strong: #9ee6ff;
+    --lumen-accent-wash: #123747;
+    --lumen-line: #fff;
+    --lumen-line-strong: #fff;
+}
+
+/* Cyberpunk 2077 (Night City) theme */
+:root[data-lumen-theme="2077"] {
+    color-scheme: dark;
+    --lumen-ink: #06060b;
+    --lumen-ink-soft: #0c0d14;
+    --lumen-panel: #11131d;
+    --lumen-panel-soft: #181b28;
+    --lumen-paper: #e9f0f5;
+    --lumen-text: #e9f0f5;
+    --lumen-muted: #aab8c8;
+    --lumen-faint: #7e8b9c;
+    --lumen-accent: #ff1e3c;
+    --lumen-accent-strong: #ff3352;
+    --lumen-accent-wash: rgba(255, 30, 60, .18);
+    --lumen-green: #23e6e0;
+    --lumen-amber: #ffb500;
+    --lumen-red: #ff1e3c;
+    --lumen-line: rgba(35, 230, 224, .25);
+    --lumen-line-strong: rgba(35, 230, 224, .55);
+}
+
+:root[data-lumen-theme="2077"] body.site-themes-app { background: #0a0a0d; }
+:root[data-lumen-theme="2077"] ::selection { background: var(--lumen-accent); color: var(--lumen-ink); }
+
+/* Hard edges and red/cyan accents for the Night City look */
+:root[data-lumen-theme="2077"] .lumen-kicker { color: var(--lumen-accent); }
+:root[data-lumen-theme="2077"] .lumen-kicker::before { content: "▸ "; }
+:root[data-lumen-theme="2077"] :where(.lumen-card, .lumen-release-card, .lumen-callout, .lumen-carousel, .lumen-table-wrap, .lumen-updater-download details) { border-radius: 0; }
+:root[data-lumen-theme="2077"] :where(.lumen-button, .btn) { border-radius: 2px; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); }
+:root[data-lumen-theme="2077"] .lumen-button--primary { box-shadow: 0 0 18px rgba(255, 30, 60, .4); }
+
+/* Glitchy headline flourish: red and cyan, the menu accent pair */
+:root[data-lumen-theme="2077"] .lumen-hero h1,
+:root[data-lumen-theme="2077"] .lumen-guide h1,
+:root[data-lumen-theme="2077"] .lumen-directory h1 {
+    text-shadow: 2px 0 rgba(255, 30, 60, .6), -2px 0 rgba(35, 230, 224, .6);
+}
+
+/* Scanline overlay on the hero art, clipped to the funky blob outline */
+:root[data-lumen-theme="2077"] .lumen-hero-art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    background: repeating-linear-gradient(0deg, rgba(35, 230, 224, .05) 0 1px, transparent 1px 4px);
+}
+
+:root[data-lumen-theme="2077"] .lumen-hero-art img { filter: saturate(1.15) contrast(1.05); }
+
+/* Red underline chips on section heads */
+:root[data-lumen-theme="2077"] .lumen-section-head h2::after,
+:root[data-lumen-theme="2077"] .lumen-guide-section h2::after {
+    content: "";
+    display: block;
+    width: 2.6rem;
+    height: 3px;
+    margin-top: .5rem;
+    background: var(--lumen-accent);
+}
+
+:root[data-lumen-theme="2077"] .lumen-y2-pill { background: var(--lumen-ink); color: var(--lumen-accent); border-color: var(--lumen-accent); }
+
+@media (prefers-color-scheme: light) {
+    :root[data-lumen-theme="auto"] {
+        --lumen-ink: oklch(98% .008 250);
+        --lumen-ink-soft: oklch(94% .012 250);
+        --lumen-panel: oklch(100% 0 0);
+        --lumen-panel-soft: oklch(96% .012 250);
+        --lumen-paper: oklch(18% .018 260);
+        --lumen-text: oklch(18% .018 260);
+        --lumen-muted: oklch(43% .03 250);
+        --lumen-faint: oklch(52% .025 250);
+        --lumen-accent: oklch(48% .16 245);
+        --lumen-accent-strong: oklch(54% .16 245);
+        --lumen-accent-wash: oklch(88% .06 245 / .72);
+        --lumen-line: oklch(20% .02 260 / .16);
+        --lumen-line-strong: oklch(20% .02 260 / .3);
+    }
+}
+
+@media (forced-colors: active) {
+    :root[data-lumen-theme="high-contrast"], :root[data-lumen-theme="auto"] {
+        --lumen-line: CanvasText;
+        --lumen-line-strong: CanvasText;
+        --lumen-accent: LinkText;
+    }
+}
+body.site-themes-app *, body.site-themes-app *::before, body.site-themes-app *::after { box-sizing: border-box; }
+body.site-themes-app a { color: var(--lumen-accent); text-underline-offset: .18em; }
+body.site-themes-app a:hover { color: var(--lumen-paper); }
+body.site-themes-app :where(button, a, select, summary, input, textarea):focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 3px; }
+body.site-themes-app :where(h1, h2, h3, h4) { min-width: 0; overflow-wrap: anywhere; font-style: normal; }
+body.site-themes-app :where(p, li) { max-width: 70ch; }
+
+/* #nav-root must not box its child: the sticky nav sticks within its
+   containing block, so it needs the full-height body as parent. A 58px
+   wrapper leaves the nav no room to stick and it scrolls away (and pops
+   back in on the way up). */
+body.site-themes-app #nav-root { display: contents; }
+body.site-themes-app .nav-tools { display: flex; align-items: center; gap: .55rem; }
+body.site-themes-app .lumen-theme-control--fallback { position: fixed; top: .75rem; right: 1rem; z-index: 10000; padding: .3rem .45rem .3rem .6rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); box-shadow: 0 4px 18px color-mix(in oklab, var(--lumen-ink) 25%, transparent); }
+
+body.site-themes-app .lumen-theme-control { display: inline-flex; align-items: center; gap: .35rem; color: var(--lumen-muted); font-size: .72rem; font-weight: 700; }
+body.site-themes-app .lumen-theme-control select { min-height: 36px; padding: .35rem 1.7rem .35rem .55rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); font: 600 .78rem var(--lumen-body); }
+
+body.site-themes-app #nav-root nav { position: sticky; top: 0; z-index: 1000; background: color-mix(in oklab, var(--lumen-ink) 94%, transparent); border-bottom: 1px solid var(--lumen-line); backdrop-filter: blur(14px); }
+body.site-themes-app .nav-container { width: min(var(--lumen-max), calc(100% - 2rem)); min-height: 58px; margin: 0 auto; padding: .55rem 0; display: flex; align-items: center; justify-content: space-between; gap: var(--lumen-space-4); }
+body.site-themes-app .logo { display: inline-flex; align-items: center; }
+body.site-themes-app .logo > a:first-child { display: flex; align-items: center; color: var(--lumen-text); font-weight: 700; text-decoration: none; letter-spacing: -.02em; }
+body.site-themes-app .lumen-nav-icon { display: block; flex: 0 0 auto; width: 26px; height: 26px; margin-right: .5rem; border-radius: 7px; }
+body.site-themes-app .nav-links { display: flex; align-items: center; gap: .2rem; margin: 0; padding: 0; list-style: none; }
+body.site-themes-app .nav-links a { display: inline-flex; min-height: 42px; align-items: center; padding: .55rem .72rem; border-radius: var(--lumen-pill); color: var(--lumen-muted); font-size: .86rem; text-decoration: none; white-space: nowrap; }
+body.site-themes-app .nav-links a:hover { background: var(--lumen-accent-wash); color: var(--lumen-paper); }
+body.site-themes-app .hamburger { display: none; min-width: 44px; min-height: 44px; padding: .55rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: transparent; }
+body.site-themes-app .hamburger span { display: block; width: 22px; height: 2px; margin: 4px auto; background: var(--lumen-text); }
+
+body.site-themes-app :where(.lumen-button, .btn, .guide-actions a, .firmware-dialog-actions a, .firmware-dialog-actions button) { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: .7rem 1rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font: 600 .9rem/1.2 var(--lumen-body); text-decoration: none; cursor: pointer; transition: transform .18s var(--lumen-ease), background .18s var(--lumen-ease), border-color .18s var(--lumen-ease); }
+body.site-themes-app :where(.lumen-button, .btn, .guide-actions a, .firmware-dialog-actions a, .firmware-dialog-actions button):hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-paper); text-decoration: none; }
+body.site-themes-app .lumen-button--primary, body.site-themes-app .btn-primary { background: var(--lumen-accent-strong); border-color: var(--lumen-accent); color: var(--lumen-ink); }
+body.site-themes-app .lumen-button--primary:hover, body.site-themes-app .btn-primary:hover { background: var(--lumen-accent); color: var(--lumen-ink); }
+
+body.site-themes-app #footer-root { background: var(--lumen-ink-soft); border-top: 1px solid var(--lumen-line); }
+body.site-themes-app .site-footer { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; padding: var(--lumen-space-7) 0 var(--lumen-space-6); color: var(--lumen-muted); }
+body.site-themes-app .site-footer h4 { margin: 0 0 .7rem; color: var(--lumen-text); font: 1rem var(--lumen-body); }
+body.site-themes-app .site-footer .footer-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--lumen-space-7); }
+body.site-themes-app .site-footer .footer-col { display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; }
+body.site-themes-app .site-footer .footer-col a { color: var(--lumen-muted); }
+body.site-themes-app .site-footer .footer-col a:hover { color: var(--lumen-text); }
+body.site-themes-app .site-footer .footer-bottom { margin-top: var(--lumen-space-7); padding-top: var(--lumen-space-4); border-top: 1px solid var(--lumen-line); font-size: .82rem; }
+body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: var(--lumen-ink); color: var(--lumen-text); font-family: var(--lumen-mono); font-size: .9em; }
+
+.lumen-home { min-height: 100vh; }
+.lumen-hero, .lumen-section { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; }
+.lumen-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); align-items: start; gap: clamp(1.5rem, 3.5vw, 3.5rem); min-height: min(600px, calc(100vh - 58px)); padding: var(--lumen-space-8) 0; }
+.lumen-kicker { margin: 0 0 .8rem; color: var(--lumen-accent); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.lumen-hero h1 { margin: 0; max-width: 9ch; font: 400 clamp(3.4rem, 8vw, 7.3rem)/.89 var(--lumen-display); letter-spacing: -.055em; }
+.lumen-hero h1 em { color: var(--lumen-accent); font-style: normal; }
+.lumen-hero-lead { max-width: 46ch; margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: clamp(1rem, 1.8vw, 1.2rem); line-height: 1.55; }
+.lumen-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: var(--lumen-space-6); }
+.lumen-hero-art { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--lumen-line); border-radius: 36% 64% 48% 52% / 45% 38% 62% 55%; background: radial-gradient(circle at 55% 36%, var(--lumen-accent-wash), transparent 49%), var(--lumen-panel); overflow: visible; }
+.lumen-hero-art::after { content: ""; position: absolute; inset: 12%; z-index: 0; border: 1px solid var(--lumen-line); border-radius: 50%; transform: rotate(-18deg); pointer-events: none; }
+.lumen-hero-art img { position: relative; z-index: 1; width: min(72%, 320px); height: auto; aspect-ratio: 1; object-fit: contain; transform: translateX(4%); }
+.lumen-section { padding: var(--lumen-space-8) 0; }
+.lumen-section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--lumen-space-5); margin-bottom: var(--lumen-space-5); }
+/* Section titles run on one line whenever the viewport allows; the wrap
+   cap was removed so headings like "Using Innioasis Updater" are not
+   split mid-phrase on desktop. They only wrap when the screen is too
+   narrow to hold them, and flex-wrap drops a trailing button to its own
+   row rather than crowding the title. */
+.lumen-section-head h2 { margin: 0; font: 400 clamp(2rem, 4vw, 3.7rem)/.95 var(--lumen-display); letter-spacing: -.04em; }
+.lumen-section-head p { margin: 0; color: var(--lumen-muted); }
+.lumen-grid, .lumen-platform-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--lumen-space-3); }
+.lumen-card { min-width: 0; padding: var(--lumen-space-5); border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
+.lumen-card h3 { margin: 0 0 .45rem; font-size: 1rem; }
+.lumen-card p { margin: 0; color: var(--lumen-muted); font-size: .92rem; line-height: 1.55; }
+.lumen-card .lumen-button { margin-top: var(--lumen-space-5); }
+.lumen-card small, .lumen-meta { color: var(--lumen-faint); font-size: .78rem; }
+
+.lumen-carousel { border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-lg); background: var(--lumen-panel); overflow: hidden; }
+.lumen-carousel-stage { position: relative; width: 100%; max-width: calc(min(62vh, 680px) * 16 / 9); margin-inline: auto; aspect-ratio: 16 / 9; background: var(--lumen-ink); }
+.lumen-carousel-slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .2s var(--lumen-ease); }
+.lumen-carousel-slide[aria-hidden="false"] { opacity: 1; pointer-events: auto; }
+.lumen-video-embed { width: 100%; max-width: 760px; aspect-ratio: 16 / 9; margin: var(--lumen-space-5) auto 0; overflow: hidden; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-ink); }
+.lumen-video-embed iframe { display: block; width: 100%; height: 100%; border: 0; }
+.lumen-carousel-video { width: 100%; max-width: none; height: 100%; margin: 0; border: 0; border-radius: 0; }
+
+/* Desktop / tablet: arrows flank the video for discoverability. The
+   controls container is display: contents so its three children (prev,
+   credit, next) participate directly in the carousel grid: prev | stage
+   | next in one row, credit centered underneath. */
+.lumen-carousel { display: grid; grid-template-columns: auto minmax(0, calc(min(62vh, 680px) * 16 / 9)) auto; grid-template-areas: "prev stage next" "credit credit credit"; justify-content: center; align-items: center; column-gap: .9rem; row-gap: .35rem; }
+.lumen-carousel-stage { grid-area: stage; width: 100%; max-width: none; margin-inline: 0; }
+.lumen-carousel-controls { display: contents; }
+.lumen-carousel-controls [data-carousel-previous] { grid-area: prev; }
+.lumen-carousel-controls [data-carousel-next] { grid-area: next; }
+.lumen-carousel-controls button { min-width: 48px; min-height: 48px; border: 2px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font-size: 1.4rem; font-weight: 800; line-height: 1; cursor: pointer; transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-carousel-controls button:hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-paper); }
+.lumen-carousel-credit { grid-area: credit; justify-self: center; text-align: center; color: var(--lumen-muted); font-size: .82rem; }
+.lumen-carousel-credit a { color: var(--lumen-text); font-weight: 700; text-decoration: none; border-bottom: 1px dotted var(--lumen-line-strong); transition: color .18s var(--lumen-ease), border-color .18s var(--lumen-ease); }
+.lumen-carousel-credit a:hover, .lumen-carousel-credit a:focus-visible { color: var(--lumen-accent); border-bottom-style: solid; border-color: var(--lumen-accent); outline: none; }
+
+.lumen-directory { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; padding: var(--lumen-space-8) 0 calc(var(--lumen-space-8) + 4rem); }
+.lumen-directory-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .7fr); gap: var(--lumen-space-7); align-items: end; padding-bottom: var(--lumen-space-7); border-bottom: 1px solid var(--lumen-line); }
+.lumen-directory h1 { margin: 0; max-width: 10ch; font: 400 clamp(3rem, 7vw, 6.5rem)/.9 var(--lumen-display); letter-spacing: -.055em; }
+.lumen-directory-hero p { margin: 0; color: var(--lumen-muted); line-height: 1.6; }
+.lumen-filterbar { display: flex; flex-wrap: wrap; gap: .7rem; align-items: end; padding: var(--lumen-space-5) 0; }
+.lumen-field { display: grid; gap: .35rem; min-width: 150px; flex: 1 1 160px; }
+.lumen-field label { color: var(--lumen-muted); font-size: .78rem; font-weight: 700; }
+.lumen-field select { width: 100%; min-height: 44px; padding: .6rem .7rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); color: var(--lumen-text); font: .9rem var(--lumen-body); }
+.lumen-field-help { color: var(--lumen-faint); font-size: .76rem; }
+.lumen-model-control { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
+.lumen-model-control select { flex: 1 1 110px; }
+/* Nightly / pre-release filter checkbox, mirroring the Updater app's
+   "Show nightly builds" control. */
+.lumen-checkbox { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); color: var(--lumen-text); font: .9rem var(--lumen-body); cursor: pointer; transition: border-color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-checkbox:hover { border-color: var(--lumen-accent); background: var(--lumen-panel-soft); }
+.lumen-checkbox input { width: 18px; height: 18px; margin: 0; accent-color: var(--lumen-accent); cursor: pointer; }
+.lumen-field--check { justify-self: end; min-width: 0; }
+.lumen-field--check .lumen-checkbox { width: 100%; }
+.lumen-home-filter-row { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin: .15rem 0 .65rem; }
+.lumen-home-filter-row .lumen-checkbox { min-height: 38px; padding: .4rem .7rem; }
+.lumen-y2-pill { display: inline-flex; align-items: center; min-height: 26px; padding: .2rem .55rem; border: 1px solid color-mix(in oklab, var(--lumen-accent) 55%, var(--lumen-line-strong)); border-radius: var(--lumen-pill); background: var(--lumen-accent-wash); color: var(--lumen-accent); font-size: .7rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.lumen-y2-pill:hover { background: var(--lumen-accent); color: var(--lumen-ink); border-color: var(--lumen-accent); }
+.lumen-y2-pill[aria-hidden="true"] { display: none; }
+.lumen-y2-pill--nav { margin-left: .35rem; }
+/* A small badge shown to the left of a version number when the newest
+   build is a nightly (a project with no stable release yet). */
+.lumen-nightly-badge { display: inline-block; margin: 0 .3rem .1rem 0; padding: .1rem .45rem; border: 1px solid color-mix(in oklab, var(--lumen-warn, #f59f00) 55%, var(--lumen-line-strong)); border-radius: var(--lumen-pill); background: color-mix(in oklab, var(--lumen-warn, #f59f00) 14%, transparent); color: var(--lumen-warn, #f59f00); font-size: .65rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; vertical-align: .12em; }
+/* Compact model buttons inside the home table's Releases cell. */
+.lumen-button--model { min-height: 30px; padding: .3rem .6rem; font-size: .76rem; margin: 0 .3rem .25rem 0; }
+.lumen-release-status { min-height: 24px; margin: 0 0 var(--lumen-space-4); color: var(--lumen-muted); font-size: .85rem; }
+.lumen-table-wrap { width: 100%; overflow-x: auto; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); }
+.lumen-release-table { width: 100%; min-width: 720px; border-collapse: collapse; }
+.lumen-release-table th, .lumen-release-table td { padding: .9rem 1rem; border-bottom: 1px solid var(--lumen-line); text-align: left; vertical-align: top; }
+.lumen-release-table th { color: var(--lumen-muted); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; }
+.lumen-release-table td { color: var(--lumen-muted); font-size: .9rem; }
+.lumen-release-table tr:last-child td { border-bottom: 0; }
+.lumen-release-table strong { color: var(--lumen-text); }
+.lumen-release-table .lumen-actions { margin: 0; }
+.lumen-release-table .lumen-button { min-height: 38px; padding: .5rem .7rem; font-size: .8rem; }
+.lumen-updater-button { display: inline-flex; align-items: center; gap: .65rem; min-height: 48px; padding: .55rem .85rem .55rem .65rem; border: 1px solid color-mix(in oklab, var(--lumen-line-strong) 70%, var(--lumen-accent)); border-radius: 11px; background: var(--lumen-panel); color: var(--lumen-text); text-decoration: none; box-shadow: 0 2px 0 color-mix(in oklab, var(--lumen-ink) 28%, transparent); transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-updater-button:hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-text); text-decoration: none; }
+.lumen-updater-button img, .lumen-updater-summary img { display: block; flex: 0 0 auto; border-radius: 7px; }
+.lumen-updater-button span, .lumen-updater-summary span { display: grid; gap: .12rem; text-align: left; }
+.lumen-updater-button strong, .lumen-updater-summary strong { color: var(--lumen-text); font-size: .86rem; line-height: 1.15; }
+.lumen-updater-button small, .lumen-updater-summary small { color: var(--lumen-muted); font-size: .7rem; line-height: 1.2; }
+.lumen-updater-button--table { min-height: 40px; padding: .4rem .6rem .4rem .45rem; }
+.lumen-updater-button--table strong { font-size: .72rem; }
+.lumen-updater-button--table small { font-size: .64rem; }
+.lumen-directory-steps { display: grid; gap: .6rem; margin: 1rem 0; padding-left: 1.25rem; }
+.lumen-directory-steps li { padding-left: .25rem; }
+.lumen-release-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--lumen-space-3); }
+.lumen-release-card { display: flex; flex-direction: column; min-width: 0; min-height: 210px; padding: var(--lumen-space-5); border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
+.lumen-release-card:hover { border-color: var(--lumen-line-strong); }
+.lumen-release-card h2 { margin: .65rem 0 .4rem; font: 400 1.75rem/.98 var(--lumen-display); }
+.lumen-release-card p { margin: 0; color: var(--lumen-muted); line-height: 1.5; font-size: .9rem; }
+.lumen-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+.lumen-tag { display: inline-flex; align-items: center; min-height: 26px; padding: .25rem .55rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-pill); color: var(--lumen-muted); font-size: .72rem; }
+.lumen-release-card .lumen-actions { margin-top: auto; }
+.lumen-callout { margin-top: var(--lumen-space-7); padding: var(--lumen-space-5); border-left: 3px solid var(--lumen-accent); border-radius: 0 var(--lumen-radius-md) var(--lumen-radius-md) 0; background: var(--lumen-accent-wash); }
+.lumen-callout p { margin: 0; color: var(--lumen-muted); line-height: 1.6; }
+
+.lumen-guide { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; padding: var(--lumen-space-8) 0 calc(var(--lumen-space-8) + 4rem); }
+.lumen-guide > header { margin-bottom: var(--lumen-space-7); }
+.lumen-guide h1 { margin: 0; max-width: 12ch; font: 400 clamp(3rem, 7vw, 6rem)/.9 var(--lumen-display); letter-spacing: -.055em; }
+.lumen-guide .lead { margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: 1.08rem; line-height: 1.65; }
+.lumen-guide-section { margin: var(--lumen-space-7) 0; padding-top: var(--lumen-space-5); border-top: 1px solid var(--lumen-line); }
+.lumen-guide-section h2 { margin: 0 0 .75rem; font: 400 clamp(2rem, 4vw, 3.2rem)/.95 var(--lumen-display); }
+.lumen-guide-section h3 { margin: 0 0 .45rem; font-size: 1rem; }
+.lumen-guide-section p, .lumen-guide-section li { color: var(--lumen-muted); line-height: 1.7; }
+.lumen-guide-section strong { color: var(--lumen-text); }
+/* FAQ accordions: full-width, touch-friendly tap targets. The default
+   disclosure triangle is tiny and cursor-centric; these rows give the whole
+   summary a large padded hit area, a clear chevron that turns on open, and
+   hover/active feedback that works with a finger as well as a mouse. The
+   Updater download panel and the Troubleshooting table of contents are
+   separate components and are left untouched. */
+.lumen-guide-section details:not(#download-updater) {
+    margin: var(--lumen-space-3) 0;
+    border: 1px solid var(--lumen-line);
+    border-radius: var(--lumen-radius-sm);
+    background: var(--lumen-panel);
+    overflow: hidden;
+}
+.lumen-guide-section details:not(#download-updater) summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--lumen-space-4);
+    min-height: 48px;
+    padding: .8rem 1rem;
+    margin: 0;
+    color: var(--lumen-text);
+    font: 600 .95rem/1.35 var(--lumen-body);
+    cursor: pointer;
+    list-style: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .18s var(--lumen-ease), color .18s var(--lumen-ease);
+}
+.lumen-guide-section details:not(#download-updater) summary::-webkit-details-marker { display: none; }
+.lumen-guide-section details:not(#download-updater) summary::after {
+    content: "";
+    flex: 0 0 auto;
+    width: .6rem;
+    height: .6rem;
+    border-right: 2px solid var(--lumen-muted);
+    border-bottom: 2px solid var(--lumen-muted);
+    transform: rotate(-45deg);
+    margin-right: .15rem;
+    transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease);
+}
+.lumen-guide-section details:not(#download-updater)[open] summary::after { transform: rotate(45deg); }
+.lumen-guide-section details:not(#download-updater) summary:hover { background: var(--lumen-panel-soft); color: var(--lumen-paper); }
+.lumen-guide-section details:not(#download-updater) summary:active { background: var(--lumen-accent-wash); }
+.lumen-guide-section details:not(#download-updater) > :not(summary) {
+    margin: 0;
+    padding: 0 1rem 1rem;
+}
+/* Tap / hover hint modal (.lumen-tip): a small button that reveals a
+   popover on hover, focus, or tap. Used for tips like "how to show
+   dotfiles", so the same hint works with a mouse, a keyboard, and a
+   touch screen. The popover is positioned above the button and stays
+   within the guide column. */
+.lumen-tip {
+    display: inline-block;
+    position: relative;
+    margin: 0 .2rem;
+    vertical-align: middle;
+}
+.lumen-tip-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    min-height: 34px;
+    padding: .35rem .8rem;
+    border: 1px solid var(--lumen-line-strong);
+    border-radius: var(--lumen-pill);
+    background: var(--lumen-panel-soft);
+    color: var(--lumen-text);
+    font: 600 .82rem/1.2 var(--lumen-body);
+    cursor: pointer;
+    text-decoration: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .18s var(--lumen-ease), background .18s var(--lumen-ease), border-color .18s var(--lumen-ease), color .18s var(--lumen-ease);
+}
+.lumen-tip-toggle:hover {
+    transform: translateY(-1px);
+    border-color: var(--lumen-accent);
+    background: var(--lumen-accent-wash);
+    color: var(--lumen-paper);
+}
+.lumen-tip-icon {
+    flex: 0 0 auto;
+    color: var(--lumen-accent);
+}
+.lumen-tip-popover {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%);
+    width: min(82vw, 380px);
+    z-index: 90;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--lumen-line-strong);
+    border-radius: var(--lumen-radius-md);
+    background: var(--lumen-panel);
+    color: var(--lumen-text);
+    box-shadow: 0 18px 50px color-mix(in oklab, var(--lumen-ink) 45%, transparent);
+    font-size: .84rem;
+    line-height: 1.55;
+    text-align: left;
+}
+.lumen-tip-popover[hidden] { display: none; }
+.lumen-tip-popover strong { display: block; margin-bottom: .45rem; color: var(--lumen-paper); font-size: .86rem; }
+/* Popover rows are spans (not ul/li) so the tip stays valid inline
+   phrasing content even inside a <p>; CSS makes each row a block. */
+.lumen-tip-row { display: block; margin: .35rem 0 0; color: var(--lumen-muted); line-height: 1.5; }
+.lumen-tip-row:first-of-type { margin-top: 0; }
+.lumen-tip-popover kbd {
+    padding: .05rem .35rem;
+    border: 1px solid var(--lumen-line-strong);
+    border-radius: 5px;
+    background: var(--lumen-ink);
+    color: var(--lumen-text);
+    font-family: var(--lumen-mono);
+    font-size: .78em;
+}
+@media (max-width: 620px) {
+    .lumen-tip-popover {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        width: min(92vw, 420px);
+        max-height: 72vh;
+        overflow: auto;
+    }
+}
+.lumen-steps { display: grid; gap: .7rem; margin: var(--lumen-space-5) 0 0; padding: 0; list-style: none; counter-reset: lumen-step; }
+.lumen-steps[ start ] { counter-reset: lumen-step 2; }
+.lumen-steps li { position: relative; padding: 1rem 1rem 1rem 3.2rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); }
+.lumen-steps li::before { counter-increment: lumen-step; content: counter(lumen-step); position: absolute; left: 1rem; top: 1rem; display: grid; place-items: center; width: 1.55rem; height: 1.55rem; border-radius: 50%; background: var(--lumen-accent); color: var(--lumen-ink); font-size: .78rem; font-weight: 800; }
+/* Guide figures are left-aligned with the step boxes so screenshots sit
+   under the steps they illustrate instead of floating centered. */
+.lumen-guide figure { margin: 0; }
+figure.lumen-shot { display: block; width: min(100%, 640px); height: auto; margin: var(--lumen-space-5) 0; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); padding: .5rem; }
+figure.lumen-shot--compact { width: min(100%, 520px); }
+figure.lumen-shot--wide { width: min(100%, 680px); }
+/* Screenshots fit inside their frame, never upscale, and center. Images
+   carry natural width/height attributes, so width:auto keeps the source
+   pixels intact (no blur) while max-width reins in huge shots. */
+.lumen-shot img { display: block; width: auto; max-width: 100%; height: auto; margin-inline: auto; border-radius: calc(var(--lumen-radius-sm) - 2px); }
+img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); height: auto; margin: var(--lumen-space-5) 0 0; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); }
+.lumen-shot-caption { width: 100%; margin: .55rem auto 0; padding-inline: .15rem; color: var(--lumen-faint); font-size: .8rem; text-align: left; }
+.lumen-warning { margin: var(--lumen-space-5) 0; padding: 1rem; border-left: 3px solid var(--lumen-amber); background: color-mix(in oklab, var(--lumen-amber) 25%, transparent); color: var(--lumen-muted); }
+.lumen-feedback { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-top: var(--lumen-space-7); padding-top: var(--lumen-space-5); border-top: 1px solid var(--lumen-line); }
+.lumen-feedback p { width: 100%; margin: 0; color: var(--lumen-muted); }
+.lumen-feedback button { min-height: 44px; padding: .6rem .9rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: transparent; color: var(--lumen-text); cursor: pointer; }
+.lumen-feedback button:hover, .lumen-feedback button[aria-pressed="true"] { border-color: var(--lumen-accent); background: var(--lumen-accent-wash); }
+.lumen-feedback-support[hidden] { display: none; }
+.lumen-feedback-support { color: var(--lumen-accent); font-size: .88rem; }
+.lumen-donate-dialog { width: min(92vw, 460px); padding: 0; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-lg); background: var(--lumen-panel); color: var(--lumen-text); box-shadow: 0 30px 90px color-mix(in oklab, var(--lumen-ink) 45%, transparent); }
+.lumen-donate-dialog::backdrop { background: color-mix(in oklab, var(--lumen-ink) 62%, transparent); backdrop-filter: blur(3px); }
+.lumen-donate-card { padding: var(--lumen-space-6); }
+.lumen-donate-card h2 { margin: 0 0 .6rem; font: 400 clamp(1.9rem, 4vw, 2.6rem)/.95 var(--lumen-display); letter-spacing: -.03em; }
+.lumen-donate-intro { margin: 0 0 var(--lumen-space-5); color: var(--lumen-muted); line-height: 1.6; font-size: .94rem; }
+.lumen-donate-links { display: grid; gap: .55rem; }
+.lumen-donate-method { display: block; min-height: 46px; padding: .7rem .9rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font-weight: 700; text-align: center; text-decoration: none; transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-donate-method:hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-text); }
+.lumen-donate-method--paypal { border-color: color-mix(in oklab, var(--lumen-accent) 60%, var(--lumen-line-strong)); }
+.lumen-donate-close { display: block; width: 100%; min-height: 40px; margin-top: .9rem; border: 0; background: transparent; color: var(--lumen-muted); font: 600 .82rem var(--lumen-body); cursor: pointer; }
+.lumen-donate-close:hover { color: var(--lumen-text); }
+.lumen-muted-inline { color: var(--lumen-faint); font-size: .82rem; }
+.lumen-download-link { color: var(--lumen-accent); font-size: .82rem; white-space: nowrap; }
+.lumen-github-link { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); color: var(--lumen-muted); transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease), background .18s var(--lumen-ease), color .18s var(--lumen-ease); }
+.lumen-github-link:hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-paper); }
+:root[data-lumen-theme="high-contrast"] .lumen-github-link { color: var(--lumen-paper); border-color: var(--lumen-paper); }
+.lumen-release-details { margin-top: .6rem; font-size: .82rem; }
+.lumen-release-details summary { color: var(--lumen-muted); cursor: pointer; }
+.lumen-release-details p { margin: .45rem 0; }
+.lumen-release-details ul { margin: .25rem 0 0; padding-left: 1rem; }
+.lumen-updater-download details { margin-top: var(--lumen-space-5); border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
+.lumen-updater-download summary { display: block; padding: .8rem 1rem; color: var(--lumen-text); cursor: pointer; list-style: none; }
+.lumen-updater-download summary::-webkit-details-marker { display: none; }
+.lumen-updater-summary { display: inline-flex; align-items: center; gap: .65rem; }
+.lumen-download-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border-top: 1px solid var(--lumen-line); background: var(--lumen-line); }
+.lumen-download-options--single { grid-template-columns: minmax(0, 1fr); }
+.lumen-download-options [hidden] { display: none; }
+.lumen-download-option { min-width: 0; padding: 1rem; background: var(--lumen-panel-soft); }
+.lumen-download-option h3 { margin: 0 0 .4rem; color: var(--lumen-text); }
+.lumen-download-option p { margin: 0 0 .75rem; font-size: .86rem; }
+.lumen-download-option .lumen-button { width: 100%; }
+.lumen-another-platform { grid-column: 1 / -1; justify-self: center; margin: 1rem 0 .4rem; padding: .55rem 1.1rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: transparent; color: var(--lumen-text); font: 600 .82rem var(--lumen-body); cursor: pointer; transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-another-platform:hover, .lumen-another-platform:focus-visible { border-color: var(--lumen-accent); color: var(--lumen-accent); background: var(--lumen-accent-wash); outline: none; }
+.lumen-code-copy { display: flex; flex-direction: column; align-items: flex-end; gap: .4rem; margin: .25rem 0 .75rem; }
+.lumen-code-copy .lumen-code--compact { width: 100%; margin: 0; padding: .7rem; }
+.lumen-copy-button { padding: .32rem .6rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); font: 600 .7rem var(--lumen-body); cursor: pointer; transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-copy-button:hover, .lumen-copy-button:focus-visible { border-color: var(--lumen-accent); color: var(--lumen-accent); outline: none; }
+.lumen-copy-button.is-copied { border-color: var(--lumen-success, #2f9e44); color: var(--lumen-success, #2f9e44); background: color-mix(in oklab, #2f9e44 10%, var(--lumen-panel)); }
+.lumen-code.lumen-code--compact { font-size: .7rem; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
+
+/* Developer documentation */
+.lumen-developer-guide { max-width: 860px; margin-inline: auto; }
+.lumen-developer-guide .lumen-guide-section > p,
+.lumen-developer-guide .lumen-guide-section > ul,
+.lumen-developer-guide .lumen-guide-section > ol { max-width: 72ch; }
+.lumen-doc-table { width: 100%; min-width: 680px; border-collapse: collapse; }
+.lumen-doc-table th, .lumen-doc-table td { padding: .85rem .9rem; border-bottom: 1px solid var(--lumen-line); text-align: left; vertical-align: top; color: var(--lumen-muted); line-height: 1.5; }
+.lumen-doc-table thead th { color: var(--lumen-text); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; }
+.lumen-doc-table tbody th { color: var(--lumen-text); font-weight: 700; }
+.lumen-doc-table tr:last-child th, .lumen-doc-table tr:last-child td { border-bottom: 0; }
+.lumen-code { width: 100%; max-width: 100%; margin: var(--lumen-space-5) 0; padding: 1rem 1.1rem; overflow-x: auto; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: var(--lumen-ink); color: var(--lumen-text); font: .82rem/1.65 var(--lumen-mono); white-space: pre; tab-size: 2; }
+.lumen-code code { padding: 0; background: transparent; color: inherit; font: inherit; }
+.lumen-developer-guide .lumen-card ul { margin: .65rem 0 0; padding-left: 1.15rem; }
+.lumen-developer-guide .lumen-card li { margin: .35rem 0; color: var(--lumen-muted); line-height: 1.55; }
+
+@media (max-width: 900px) {
+    body.site-themes-app .nav-links { display: none; position: absolute; top: 58px; left: 1rem; right: 1rem; flex-direction: column; align-items: stretch; padding: .5rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); box-shadow: 0 18px 50px color-mix(in oklab, var(--lumen-ink) 35%, transparent); }
+    body.site-themes-app .nav-links.active { display: flex; }
+    body.site-themes-app .nav-links a { justify-content: flex-start; }
+    body.site-themes-app .hamburger { display: block; }
+    body.site-themes-app .lumen-theme-control span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* Keep the hero art in the whitespace right of the title on portrait
+       monitors and tablets; only the firmware directory hero collapses. */
+    .lumen-directory-hero { grid-template-columns: 1fr; }
+    .lumen-hero { min-height: auto; padding-top: var(--lumen-space-7); }
+    .lumen-hero { grid-template-columns: minmax(0, 1fr) minmax(180px, 230px); gap: clamp(1.1rem, 2.5vw, 2rem); }
+    .lumen-hero-art { width: min(100%, 230px); }
+    /* Compact hero buttons so the three CTAs share one line on narrow
+       monitors and tablets instead of stacking. */
+    .lumen-hero .lumen-button { padding: .5rem .7rem; font-size: .82rem; }
+    .lumen-hero-lead { font-size: .95rem; }
+    .lumen-hero h1 { font-size: clamp(2.9rem, 7.5vw, 5.6rem); }
+    .lumen-grid, .lumen-platform-grid, .lumen-release-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Mid-widths (portrait monitors with a sidebar, small tablets): the art
+   moves above the headline so the copy keeps the full width and the three
+   CTAs stay on one line instead of stacking in a starved column. */
+@media (max-width: 800px) {
+    .lumen-hero { grid-template-columns: 1fr; gap: 1.5rem; }
+    .lumen-hero-art { order: -1; width: min(100%, 240px); justify-self: start; }
+    .lumen-hero-lead { max-width: 52ch; font-size: 1.02rem; }
+}
+
+@media (max-width: 620px) {
+    .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(100% - 1.5rem, 560px); }
+    .lumen-hero h1, .lumen-directory h1, .lumen-guide h1 { max-width: 100%; font-size: clamp(3rem, 16vw, 5rem); }
+    .lumen-section-head { display: block; }
+    .lumen-section-head p { margin-top: .75rem; }
+    .lumen-grid, .lumen-platform-grid, .lumen-release-grid { grid-template-columns: 1fr; }
+    /* Phones: the hero is already single-column from the 800px tier;
+       here we keep the art above the headline and cap its size so the
+       copy and call-to-actions stay visible without a tall art column. */
+    .lumen-hero-art { order: -1; width: min(100%, 200px); }
+    /* Mobile: arrows return underneath the video for accessibility. */
+    .lumen-carousel { display: block; }
+    .lumen-carousel-stage { width: 100%; max-width: calc(54vh * 16 / 9); margin-inline: auto; }
+    .lumen-carousel-controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .55rem 1rem 1rem; }
+    .lumen-carousel-credit { flex: 1; text-align: center; }
+    .lumen-doc-table { min-width: 600px; }
+    .lumen-code { font-size: .76rem; }
+    .lumen-download-options { grid-template-columns: 1fr; }
+    .lumen-updater-button--table { max-width: 100%; }
+    .lumen-updater-button--table strong { white-space: normal; }
+    .lumen-model-control { gap: .4rem; }
+    .lumen-release-table { min-width: 0; }
+    .lumen-release-table th, .lumen-release-table td { padding: .75rem .65rem; }
+    /* Release | Install with Updater | GitHub releases icon */
+    .lumen-release-table th:nth-child(1) { width: 36%; }
+    .lumen-hero-art { margin-inline: .5rem; }
+    .lumen-hero-art img { width: min(82%, 330px); transform: none; }
+    body.site-themes-app .site-footer .footer-grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 1600px) {
+    .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(1320px, calc(100% - 4rem)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}

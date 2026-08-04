@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innioasis Updater Integration Snippet</title>
+    <title>Embed the Innioasis Updater install guide | Innioasis</title>
+    <meta name="description" content="Add the Innioasis Updater installation guide to another website with a responsive iframe embed and a copy-ready example.">
+    <link rel="stylesheet" href="lumen.css?v=20260823">
+    <link rel="stylesheet" href="site-theme.css?v=20260803">
+    <link rel="stylesheet" href="site-pages.css?v=20260818">
+    <link rel="stylesheet" href="site-toolbar.css?v=20260803">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -83,7 +88,10 @@
         }
     </style>
 </head>
-<body>
+<body class="site-themes-app lumen-legacy-page embed-tool-page">
+    <a class="lumen-skip-link" href="#main">Skip to content</a>
+    <div id="nav-root"></div>
+    <main id="main" class="embed-tool-main">
     <div class="container">
         <h1>🚀 Innioasis Updater - Embeddable Install Guide</h1>
         
@@ -244,6 +252,9 @@ window.InnioasisUpdater = {
             Made with ❤️ by the Innioasis team
         </p>
     </div>
+    </main>
+    <div id="footer-root"></div>
+    <div id="support-toolbar-slot"></div>
 
     <script>
         function copySnippet() {
@@ -309,5 +320,7 @@ window.InnioasisUpdater = {
             document.body.appendChild(closeBtn);
         }
     </script>
-</body>
+    <script src="nav.js?v=20260822" defer></script>
+    <script src="site-init.js?v=20260803" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script></body>
 </html>

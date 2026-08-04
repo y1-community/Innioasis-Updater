@@ -1,60 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    
-    <!-- Home Page - Highest Priority -->
-    <url>
-        <loc>https://innioasis.app/</loc>
-        <lastmod>2025-12-10</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://innioasis.app/index.html</loc>
-        <lastmod>2025-12-10</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <!-- Firmware Pages - High Priority (frequently updated) -->
-    <url>
-        <loc>https://innioasis.app/firmware.html</loc>
-        <lastmod>2025-12-10</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <url>
-        <loc>https://innioasis.app/rockbox.html</loc>
-        <lastmod>2025-12-10</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- Drivers and Guides - Medium-High Priority -->
-    <url>
-        <loc>https://innioasis.app/drivers.html</loc>
-        <lastmod>2025-12-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://innioasis.app/installguide.html</loc>
-        <lastmod>2025-12-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- Troubleshooting - Medium Priority -->
-    <url>
-        <loc>https://innioasis.app/troubleshooting.html</loc>
-        <lastmod>2025-12-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://innioasis.app/</loc><lastmod>2026-08-18</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://innioasis.app/guide.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://innioasis.app/firmware-guide.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/firmware.html</loc><lastmod>2026-08-18</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://innioasis.app/firmware-faq.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://innioasis.app/original-software-y1.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://innioasis.app/original-software-y2.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://innioasis.app/rockbox-y1-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://innioasis.app/rockbox-y2-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://innioasis.app/solar-y1-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/solar-y2-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/jj-launcher-y1-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/jj-launcher-y2-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/inniclassic-y1-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/y2player-y2-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/koensayr-y1-software.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/rockbox.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://innioasis.app/guides/rockbox-y1.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://innioasis.app/guides/rockbox-y2.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://innioasis.app/guides/restore-original-y1.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://innioasis.app/guides/restore-original-y2.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://innioasis.app/guides/solar-y1.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/guides/solar-y2.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/guides/jj-launcher.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/guides/jj-launcher-y1.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/guides/jj-launcher-y2.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/guides/inniclassic-y1.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/guides/y2player-y2.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/guides/koensayr-y1.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/sp-flash-tool.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://innioasis.app/drivers.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://innioasis.app/troubleshooting.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://innioasis.app/Troubleshooting/index.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/Troubleshooting/clean_install.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://innioasis.app/all_versions.html</loc><lastmod>2026-08-18</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://innioasis.app/theme_downloader.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://innioasis.app/support_devs.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://innioasis.app/developers.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://innioasis.app/installguide.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

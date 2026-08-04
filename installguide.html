@@ -1,47 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to Innioasis.com...</title>
-    
-    <meta http-equiv="refresh" content="0; url=https://innioasis.com/pages/download">
-    
-    <link rel="canonical" href="https://innioasis.com/pages/download">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Innioasis Updater installation guide</title>
+    <meta name="description" content="The simple Innioasis Updater installation guide for Windows, macOS, and Linux, including Y1 and Y2 firmware installation.">
+    <link rel="canonical" href="https://innioasis.app/guide.html">
+    <meta http-equiv="refresh" content="0; url=guide.html">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            padding: 20px;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+        body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; box-sizing: border-box; background: #0a0b0f; color: #f4f6fb; font: 16px/1.6 system-ui, sans-serif; text-align: center; }
+        a { color: #a9c7ff; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p>Redirecting you to the InniOasis download page...</p>
-        <p>If you are not redirected automatically, <a href="https://innioasis.com/pages/download">click here</a>.</p>
-    </div>
-
+    <main>
+        <p>Opening the simplified Innioasis Updater guide…</p>
+        <p><a href="guide.html">Continue to the installation guide</a></p>
+    </main>
     <script>
-        window.location.replace("https://innioasis.com/pages/download");
+        const destination = new URL('guide.html', window.location.href);
+        destination.search = window.location.search;
+        destination.hash = window.location.hash;
+        window.location.replace(destination.href);
     </script>
-</body>
+<script src="site-i18n.js?v=20260830" defer></script></body>
 </html>
