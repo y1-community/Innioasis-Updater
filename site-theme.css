@@ -1,5 +1,6 @@
 /* Innioasis Y1 Themes — fintech-grade typography & chrome (Gold Badge aesthetic) */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("lumen.css");
 
 :root {
     --site-bg: #0a0b0f;
@@ -15,6 +16,38 @@
     --site-radius-md: 12px;
     --site-radius-pill: 999px;
     --site-footer-luci-max-width: 165px;
+}
+
+:root[data-lumen-theme="light"] {
+    --site-bg: #f7f9fc;
+    --site-bg-elevated: #ffffff;
+    --site-bg-card: rgba(18, 28, 45, 0.045);
+    --site-text: #172238;
+    --site-muted: #52627a;
+    --site-accent: #155fc0;
+    --site-border: rgba(18, 28, 45, 0.18);
+}
+
+:root[data-lumen-theme="high-contrast"] {
+    --site-bg: #000;
+    --site-bg-elevated: #000;
+    --site-bg-card: #111;
+    --site-text: #fff;
+    --site-muted: #fff;
+    --site-accent: #73d7ff;
+    --site-border: #fff;
+}
+
+@media (prefers-color-scheme: light) {
+    :root[data-lumen-theme="auto"] {
+        --site-bg: #f7f9fc;
+        --site-bg-elevated: #fff;
+        --site-bg-card: rgba(18, 28, 45, 0.045);
+        --site-text: #172238;
+        --site-muted: #52627a;
+        --site-accent: #155fc0;
+        --site-border: rgba(18, 28, 45, 0.18);
+    }
 }
 
 html {
