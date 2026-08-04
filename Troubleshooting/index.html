@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innioasis Y1, Updater and Rockbox Help & Troubleshooting</title>
+    <link rel="stylesheet" href="../lumen.css?v=20260823">
+    <link rel="stylesheet" href="../site-theme.css?v=20260803">
+    <link rel="stylesheet" href="../site-pages.css?v=20260818">
+    <link rel="stylesheet" href="../site-toolbar.css?v=20260803">
     <style>
         :root {
             color-scheme: light;
@@ -49,7 +53,7 @@
         header,
         main,
         footer {
-            width: min(1080px, 92vw);
+            width: min(var(--lumen-max, 1180px), calc(100% - 2rem));
             margin: 0 auto;
         }
 
@@ -96,7 +100,7 @@
         }
 
         .layout {
-            width: min(1240px, 96vw);
+            width: min(var(--lumen-max, 1180px), calc(100% - 2rem));
             margin: 0 auto;
             display: grid;
             grid-template-columns: minmax(0, 1fr);
@@ -292,7 +296,9 @@
         }
     </style>
 </head>
-<body class="site-themes-app site-dock-mode" id="top">
+<body class="site-themes-app site-dock-mode lumen-legacy-page" id="top">
+    <a class="lumen-skip-link" href="#main">Skip to content</a>
+    <div id="nav-root"></div>
     <header>
         <span class="badge">Innioasis Updater · Everyday Guide</span>
         <h1>Help with Your Y1 and Updater</h1>
@@ -303,7 +309,7 @@
     </header>
 
     <div class="layout">
-        <main>
+        <main id="main">
             <details class="toc" aria-label="Jump to a Topic">
                 <summary><span>Jump to a Topic</span></summary>
                 <ul>
@@ -495,6 +501,7 @@
         <section id="still-need-help">
             <h2>Need a Hand?</h2>
             <p>Take a screenshot or jot down what happens, then reach out to the Innioasis community. Mention your operating system, Updater version, and any steps you’ve already tried. The more detail you share, the quicker the fix.</p>
+        </section>
         </main>
         <aside class="spine" aria-label="Section Navigator">
             <h3>Jump to a Topic</h3>
@@ -525,8 +532,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../site-theme.css?v=20260622">
     <link rel="stylesheet" href="../site-toolbar.css?v=20260622">
-    <script src="../site-init.js?v=20260622"></script>
+    <script src="../nav.js?v=20260822" defer></script>
+    <script src="../site-init.js?v=20260803" defer></script>
 
-</body>
+<script src="../site-i18n.js?v=20260830" defer></script></body>
 </html>
 
