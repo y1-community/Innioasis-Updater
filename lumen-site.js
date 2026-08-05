@@ -275,7 +275,7 @@
     var LUMEN_DONATE_METHODS = [
         { name: "Ko-fi", href: "https://ko-fi.com/teamslide" },
         { name: "PayPal", href: "https://paypal.me/respectyarn" },
-        { name: "Patreon", href: "https://www.patreon.com/teamslide" }
+        { name: "Patreon", href: "https://www.patreon.com/ryanspecter" }
     ];
 
     function showDialog(dialog) {

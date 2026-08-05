@@ -61,7 +61,7 @@ APP_VERSION = "2.0.3"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
-DISCORD_INVITE_URL = "https://discord.gg/zn42mRh32z"
+DISCORD_INVITE_URL = "https://discord.gg/zHrT2zrcek"
 SUBREDDIT_URL = "https://www.reddit.com/r/innioasismodders"
 SOLAR_PROJECT_URL = "https://www.github.com/thesolarproject/solar"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
