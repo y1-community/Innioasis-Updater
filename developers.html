@@ -44,52 +44,14 @@
     <header>
       <p class="lumen-kicker">For firmware developers</p>
       <h1>Add your firmware to Updater.</h1>
-      <p class="lead">Publish the firmware on GitHub, add two small entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve both Y1 and Y2.</p>
+      <p class="lead">Develop your custom firmware from a base ROM, publish it on GitHub with the correct release assets, add two small entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve both Y1 and Y2.</p>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater source</a>
         <a class="lumen-button" href="firmware.html">Browse Firmware Downloads</a>
       </div>
     </header>
 
-    <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, GitHub repository, model, and handler. When a user chooses that project, Updater checks the repository’s GitHub releases and looks for a <code>rom*.zip</code> asset.</p>
-      <div class="lumen-grid">
-        <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
-        </article>
-        <article class="lumen-card">
-          <h3>GitHub release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
-        </article>
-        <article class="lumen-card">
-          <h3>Updater install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the GitHub release assets, not only in the repository source tree.</p>
-      <div class="lumen-table-wrap">
-        <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
-          <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Hardware</th><th scope="col">Meaning</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
-    </section>
-
-    <section class="lumen-guide-section" aria-labelledby="base-roms-title">
+<section class="lumen-guide-section" aria-labelledby="base-roms-title">
       <h2 id="base-roms-title">Start from a base ROM</h2>
       <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. They keep the original factory radios too, so a custom build can use Wi-Fi, GPS, and FM alongside the Bluetooth and FM the players shipped with.</p>
       <div class="lumen-table-wrap">
@@ -108,7 +70,45 @@
       <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
     </section>
 
-    <section class="lumen-guide-section" aria-labelledby="steps-title">
+<section class="lumen-guide-section" aria-labelledby="packages-title">
+      <h2 id="packages-title">Use these release asset names</h2>
+      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the GitHub release assets, not only in the repository source tree.</p>
+      <div class="lumen-table-wrap">
+        <table class="lumen-doc-table">
+          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <thead>
+            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Hardware</th><th scope="col">Meaning</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="how-it-works-title">
+      <h2 id="how-it-works-title">How the connection works</h2>
+      <p>Updater reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, GitHub repository, model, and handler. When a user chooses that project, Updater checks the repository’s GitHub releases and looks for a <code>rom*.zip</code> asset.</p>
+      <div class="lumen-grid">
+        <article class="lumen-card">
+          <h3>Manifest</h3>
+          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>GitHub release</h3>
+          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>Updater install</h3>
+          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+        </article>
+      </div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="steps-title">
       <h2 id="steps-title">Publish a project in five steps</h2>
       <ol class="lumen-steps">
         <li><strong>Fork the Updater repository.</strong> Create your own GitHub fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
@@ -119,7 +119,7 @@
       </ol>
     </section>
 
-    <section class="lumen-guide-section" aria-labelledby="manifest-title">
+<section class="lumen-guide-section" aria-labelledby="manifest-title">
       <h2 id="manifest-title">Generate your manifest lines</h2>
       <p>Paste the URL of your public GitHub repository to create the two <code>&lt;package&gt;</code> lines for <code>slidia_manifest.xml</code> — one for Y1 and one for Y2. The generator reads the <code>owner/repository</code> from the URL, builds the project name from it, checks the latest copy of the manifest so the preview shows exactly where your lines belong, then walks you through opening a pull request with them.</p>
 
@@ -171,7 +171,7 @@
       <p class="lumen-meta">Keep <code>device="Y1"</code> and <code>device="Y2"</code> uppercase, use the exact URL of your public GitHub repository, and keep <code>type="img"</code> and <code>handler="Custom Firmware"</code> for a firmware entry.</p>
     </section>
 
-    <section class="lumen-guide-section" aria-labelledby="release-title">
+<section class="lumen-guide-section" aria-labelledby="release-title">
       <h2 id="release-title">Make the GitHub release easy to verify</h2>
       <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater uses to identify the install packages.</p>
       <div class="lumen-grid">
@@ -195,7 +195,7 @@
       </div>
     </section>
 
-    <section class="lumen-guide-section" aria-labelledby="flashing-title">
+<section class="lumen-guide-section" aria-labelledby="flashing-title">
       <h2 id="flashing-title">Why the model entries matter during flashing</h2>
       <p>The manifest is not just a download menu. After extraction, Updater uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
       <ul class="lumen-steps">
@@ -207,7 +207,7 @@
       <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
     </section>
 
-    <section class="lumen-guide-section" aria-labelledby="test-title">
+<section class="lumen-guide-section" aria-labelledby="test-title">
       <h2 id="test-title">Before you request a merge</h2>
       <ol class="lumen-steps">
         <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
@@ -221,7 +221,7 @@
       <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a GitHub release contains valid firmware or that a device is safe to flash.</p>
     </section>
 
-    <section class="lumen-guide-section" aria-labelledby="links-title">
+<section class="lumen-guide-section" aria-labelledby="links-title">
       <h2 id="links-title">Useful project links</h2>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater</a>
@@ -230,7 +230,8 @@
         <a class="lumen-button" href="troubleshooting.html">Troubleshooting</a>
       </div>
     </section>
-  </main>
+
+</main>
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
   <script src="nav.js?v=20260822" defer></script>
