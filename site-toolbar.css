@@ -250,13 +250,13 @@ body.site-themes-app .theme-card-buttons {
 }
 
 .y1-dock-link:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: color-mix(in oklab, var(--dock-ink) 10%, transparent);
     color: var(--lumen-paper, #fff);
     text-decoration: none;
 }
 
 .y1-dock-sep {
-    color: rgba(255, 255, 255, 0.28);
+    color: color-mix(in oklab, var(--dock-muted) 55%, transparent);
     user-select: none;
     padding: 0 2px;
 }
@@ -271,7 +271,7 @@ body.site-themes-app .theme-card-buttons {
 }
 
 .y1-privacy-trigger .y1-dock-icon {
-    color: #7ee787;
+    color: var(--lumen-green, #7ee787);
 }
 
 .y1-dock-link:hover .y1-privacy-trigger .y1-dock-icon,
@@ -297,7 +297,7 @@ body.site-themes-app .theme-card-buttons {
     box-shadow: none;
     font: inherit;
     font-weight: 600;
-    color: #eaf0ff;
+    color: var(--dock-ink);
     gap: 6px;
     display: inline-flex !important;
     visibility: visible !important;
@@ -310,7 +310,7 @@ body.site-themes-app .theme-card-buttons {
 }
 
 #y1-site-dock-privacy-slot #y1-privacy-settings-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: color-mix(in oklab, var(--dock-ink) 10%, transparent);
     border: none;
 }
 
@@ -394,10 +394,10 @@ body.site-themes-app .theme-card-buttons {
     flex-shrink: 0;
     width: 36px;
     height: 36px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--dock-line);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--lumen-paper, #fff);
+    background: color-mix(in oklab, var(--dock-ink) 8%, transparent);
+    color: var(--dock-ink);
     font-size: 1.35rem;
     line-height: 1;
     cursor: pointer;
@@ -512,7 +512,7 @@ body.site-themes-app .theme-card-buttons {
     padding: 11px 13px;
     border: 1px solid var(--lumen-line-strong, rgba(159, 193, 255, 0.28));
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: color-mix(in oklab, var(--dock-ink) 5%, transparent);
     cursor: pointer;
     transition: border-color 0.15s ease, background 0.15s ease;
 }
@@ -553,8 +553,8 @@ body.site-themes-app .theme-card-buttons {
     height: 25px;
     margin: 0;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid color-mix(in oklab, var(--dock-ink) 32%, transparent);
+    background: color-mix(in oklab, var(--dock-ink) 15%, transparent);
     cursor: pointer;
     transition: background 0.18s ease, border-color 0.18s ease;
 }
@@ -573,8 +573,8 @@ body.site-themes-app .theme-card-buttons {
 }
 
 .y1-privacy-toggle:checked {
-    background: rgba(74, 222, 128, 0.55);
-    border-color: rgba(74, 222, 128, 0.75);
+    background: color-mix(in oklab, var(--lumen-green, #4ade80) 62%, var(--dock-panel));
+    border-color: var(--lumen-green, #4ade80);
 }
 
 .y1-privacy-toggle:checked::after {
@@ -689,9 +689,9 @@ body.site-themes-app .theme-card-buttons {
     min-height: 38px;
     padding: 7px 16px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--lumen-paper, #fff);
+    border: 1px solid var(--dock-line);
+    background: color-mix(in oklab, var(--dock-ink) 8%, transparent);
+    color: var(--dock-ink);
     font: inherit;
     font-weight: 700;
     font-size: 0.82rem;
@@ -700,8 +700,8 @@ body.site-themes-app .theme-card-buttons {
 }
 
 .y1-consent-btn:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: color-mix(in oklab, var(--dock-ink) 16%, transparent);
+    border-color: var(--dock-line);
 }
 
 .y1-consent-btn--accept {
@@ -716,7 +716,7 @@ body.site-themes-app .theme-card-buttons {
 .y1-consent-btn--link {
     background: transparent;
     border-color: transparent;
-    color: var(--lumen-muted, #c4ccdc);
+    color: var(--dock-muted);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -838,15 +838,13 @@ body.site-dock-mode:has(#y1-site-dock-privacy-slot #y1-privacy-settings-btn) > #
 }
 
 /* Light theme switch contrast */
-:root[data-lumen-theme="light"] #support-toolbar-container .y1-privacy-toggle,
-:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-toggle {
-    border-color: rgba(0, 0, 0, 0.3);
-    background: rgba(0, 0, 0, 0.14);
+:root[data-lumen-theme="light"] #support-toolbar-container .y1-privacy-toggle {
+    border-color: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.12);
 }
 
-:root[data-lumen-theme="light"] #support-toolbar-container .y1-privacy-toggle:checked,
-:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-toggle:checked {
-    background: rgba(22, 138, 68, 0.8);
+:root[data-lumen-theme="light"] #support-toolbar-container .y1-privacy-toggle:checked {
+    background: rgba(22, 138, 68, 0.85);
     border-color: rgba(22, 138, 68, 0.9);
 }
 
@@ -860,4 +858,87 @@ body.site-dock-mode:has(#y1-site-dock-privacy-slot #y1-privacy-settings-btn) > #
 
 :root[data-lumen-theme="light"] #support-toolbar-container .y1-privacy-save {
     color: #fff;
+}
+
+/* High contrast: solid borders, strong hover fills, and a track that stays
+   visible on the black panel — accessibility over the decorative wash. */
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-dock-link:hover,
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-donate-close:hover,
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-consent-btn:hover {
+    background: #2a2a2a;
+    border-color: #fff;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-dock-sep {
+    color: #fff;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-trigger .y1-dock-icon {
+    color: #7dffa8;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-option {
+    background: #1c1c1c;
+    border-color: #fff;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-option:hover {
+    background: #2a2a2a;
+    border-color: #fff;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-toggle {
+    border-color: #fff;
+    background: #2a2a2a;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-toggle:checked {
+    background: #00c853;
+    border-color: #fff;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-consent-btn--accept {
+    background: #0a6bb8;
+    border-color: #fff;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-consent-btn--accept:hover {
+    background: #0f7fd6;
+}
+
+:root[data-lumen-theme="high-contrast"] #support-toolbar-container .y1-privacy-save {
+    background: #0a6bb8;
+    border-color: #fff;
+}
+
+/* Text size control in the bottom dock */
+.y1-font-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 2px;
+}
+
+.y1-font-btn {
+    min-width: 30px;
+    justify-content: center;
+    padding: 6px 7px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.y1-font-btn--small { font-size: .64rem; }
+.y1-font-btn--reset { font-size: .78rem; }
+.y1-font-btn--large { font-size: .94rem; }
+
+.y1-font-live {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
 }

@@ -37,7 +37,7 @@
     --lumen-ease: cubic-bezier(.2, .8, .2, 1);
 }
 
-html { overflow-x: clip; scroll-behavior: smooth; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 74px; }
 html, body { min-width: 0; }
 body.site-themes-app { overflow-x: clip; background: var(--lumen-ink); color: var(--lumen-text); font-family: var(--lumen-body); }
 
@@ -507,15 +507,28 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 .lumen-updater-download summary { display: block; padding: .8rem 1rem; color: var(--lumen-text); cursor: pointer; list-style: none; }
 .lumen-updater-download summary::-webkit-details-marker { display: none; }
 .lumen-updater-summary { display: inline-flex; align-items: center; gap: .65rem; }
-.lumen-download-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border-top: 1px solid var(--lumen-line); background: var(--lumen-line); }
+.lumen-download-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--lumen-line); }
 .lumen-download-options--single { grid-template-columns: minmax(0, 1fr); }
 .lumen-download-options [hidden] { display: none; }
-.lumen-download-option { min-width: 0; padding: 1rem; background: var(--lumen-panel-soft); }
+.lumen-download-option { min-width: 0; padding: 1rem; background: var(--lumen-panel-soft); border-left: 1px solid var(--lumen-line); }
+.lumen-download-option:first-child { border-left: 0; }
 .lumen-download-option h3 { margin: 0 0 .4rem; color: var(--lumen-text); }
 .lumen-download-option p { margin: 0 0 .75rem; font-size: .86rem; }
+.lumen-download-option .lumen-meta { margin: .75rem 0 0; font-size: .76rem; }
 .lumen-download-option .lumen-button { width: 100%; }
-.lumen-another-platform { grid-column: 1 / -1; justify-self: center; margin: 1rem 0 .4rem; padding: .55rem 1.1rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: transparent; color: var(--lumen-text); font: 600 .82rem var(--lumen-body); cursor: pointer; transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-another-platform { grid-column: 1 / -1; justify-self: center; margin: 1.1rem 0 .35rem; padding: .6rem 1.3rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); font: 700 .82rem var(--lumen-body); cursor: pointer; box-shadow: 0 1px 0 var(--lumen-line); transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
 .lumen-another-platform:hover, .lumen-another-platform:focus-visible { border-color: var(--lumen-accent); color: var(--lumen-accent); background: var(--lumen-accent-wash); outline: none; }
+.lumen-updater-download .lumen-download-options + .lumen-meta { margin: 0; padding: .8rem 1rem .95rem; }
+
+/* Benefits pages: model availability, lists, and community video links */
+.lumen-model-availability { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; }
+.lumen-button--unavailable { background: var(--lumen-panel-soft); border-style: dashed; color: var(--lumen-faint); cursor: not-allowed; pointer-events: none; }
+.lumen-button--unavailable:hover { transform: none; border-color: var(--lumen-line-strong); background: var(--lumen-panel-soft); color: var(--lumen-faint); }
+.lumen-benefits-list { margin: var(--lumen-space-4) 0 0; padding-left: 1.15rem; }
+.lumen-benefits-list li { margin: .4rem 0; color: var(--lumen-muted); line-height: 1.55; }
+.lumen-benefits-videos { margin: var(--lumen-space-4) 0 0; padding-left: 1.15rem; }
+.lumen-benefits-videos li { margin: .3rem 0; }
+.lumen-benefit-link { color: var(--lumen-accent); font-size: .82rem; text-decoration: underline; text-underline-offset: .18em; white-space: nowrap; }
 .lumen-code-copy { display: flex; flex-direction: column; align-items: flex-end; gap: .4rem; margin: .25rem 0 .75rem; }
 .lumen-code-copy .lumen-code--compact { width: 100%; margin: 0; padding: .7rem; }
 .lumen-copy-button { padding: .32rem .6rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); font: 600 .7rem var(--lumen-body); cursor: pointer; transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
@@ -569,7 +582,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 }
 
 @media (max-width: 620px) {
-    .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(100% - 1.5rem, 560px); }
+    body.site-themes-app .nav-container, .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(100% - 1.5rem, 560px); }
     .lumen-hero h1, .lumen-directory h1, .lumen-guide h1 { max-width: 100%; font-size: clamp(3rem, 16vw, 5rem); }
     .lumen-section-head { display: block; }
     .lumen-section-head p { margin-top: .75rem; }
@@ -586,6 +599,8 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
     .lumen-doc-table { min-width: 600px; }
     .lumen-code { font-size: .76rem; }
     .lumen-download-options { grid-template-columns: 1fr; }
+    .lumen-download-option { border-left: 0; border-top: 1px solid var(--lumen-line); }
+    .lumen-download-option:first-child { border-top: 0; }
     .lumen-updater-button--table { max-width: 100%; }
     .lumen-updater-button--table strong { white-space: normal; }
     .lumen-model-control { gap: .4rem; }
@@ -599,7 +614,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 }
 
 @media (min-width: 1600px) {
-    .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(1320px, calc(100% - 4rem)); }
+    body.site-themes-app .nav-container, .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(1320px, calc(100% - 4rem)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

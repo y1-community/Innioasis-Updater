@@ -13,6 +13,17 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20260803">
   <script src="site-init.js?v=20260803" defer></script>
+  <style>
+    .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
+    .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
+    .lumen-manifest-form input[type="text"], .lumen-manifest-form input[type="url"] { width: 100%; min-height: 44px; padding: .6rem .7rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-sm); background: var(--lumen-ink); color: var(--lumen-text); font: .9rem var(--lumen-body); }
+    .lumen-manifest-form input:focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 2px; }
+    .lumen-manifest-label { display: block; color: var(--lumen-muted); font-size: .78rem; font-weight: 700; margin-bottom: .35rem; }
+    .lumen-manifest-checks { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .lumen-manifest-form .lumen-code-copy { margin-top: .25rem; }
+    #manifest-preview pre { max-height: 420px; overflow: auto; }
+    :root[data-lumen-theme="2077"] .lumen-manifest-form { border-radius: 0; }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -109,9 +120,35 @@
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Add both model lines</h2>
-      <p>Use the same project name and repository when one GitHub project publishes both models. The two <code>device</code> values are still required because Updater filters packages by the user’s selected model.</p>
-      <pre class="lumen-code"><code>&lt;package name="Your Firmware"
+      <h2 id="manifest-title">Generate your manifest lines</h2>
+      <p>Fill in the fields below to create the two <code>&lt;package&gt;</code> lines for <code>slidia_manifest.xml</code> — one for Y1 and one for Y2. The generator checks the latest copy of the manifest so the preview shows exactly where your lines belong, then walks you through opening a pull request with them.</p>
+
+      <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
+        <div class="lumen-manifest-fields">
+          <div class="lumen-field">
+            <label for="manifest-name">Project name</label>
+            <input type="text" id="manifest-name" value="Your Firmware" autocomplete="off">
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-repo">GitHub repository</label>
+            <input type="text" id="manifest-repo" value="your-account/your-firmware" autocomplete="off">
+            <span class="lumen-field-help">The <code>owner/repository</code> that hosts the release.</span>
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-url">Project URL</label>
+            <input type="url" id="manifest-url" value="https://github.com/your-account/your-firmware" autocomplete="off">
+          </div>
+          <div class="lumen-field">
+            <span class="lumen-manifest-label">Devices</span>
+            <div class="lumen-manifest-checks">
+              <label class="lumen-checkbox" for="manifest-y1"><input type="checkbox" id="manifest-y1" checked><span>Y1</span></label>
+              <label class="lumen-checkbox" for="manifest-y2"><input type="checkbox" id="manifest-y2" checked><span>Y2</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="lumen-code-copy">
+          <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware"
          repo="your-account/your-firmware"
          device="Y1"
          url="https://github.com/your-account/your-firmware"
@@ -123,8 +160,33 @@
          url="https://github.com/your-account/your-firmware"
          type="img"
          handler="Custom Firmware" /&gt;</code></pre>
-      <p class="lumen-meta">Replace the example values. Keep <code>device="Y1"</code> and <code>device="Y2"</code> uppercase, use the exact GitHub owner/repository, and keep <code>type="img"</code> and <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+        </div>
+
+        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+
+        <details id="manifest-preview" hidden>
+          <summary>Preview the latest manifest with your lines added</summary>
+          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your two lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
+        </details>
+      </div>
+
       <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the GitHub release.</div>
+
+      <h3>Submit the lines as a pull request</h3>
+      <ol class="lumen-steps">
+        <li><strong>Copy the two lines above.</strong> The generator already matched the latest manifest format.</li>
+        <li><strong>Edit <code>slidia_manifest.xml</code> on GitHub.</strong> Use the edit link below; GitHub creates a fork and a branch for you automatically.</li>
+        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
+        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater repository.</li>
+        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+      </ol>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the manifest on GitHub</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+      </div>
+      <p class="lumen-meta">Keep <code>device="Y1"</code> and <code>device="Y2"</code> uppercase, use the exact GitHub owner/repository, and keep <code>type="img"</code> and <code>handler="Custom Firmware"</code> for a firmware entry.</p>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="release-title">
@@ -190,5 +252,140 @@
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
   <script src="nav.js?v=20260822" defer></script>
-<script src="site-i18n.js?v=20260830" defer></script></body>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("manifest-generator");
+  if (!form) return;
+  var nameEl = document.getElementById("manifest-name");
+  var repoEl = document.getElementById("manifest-repo");
+  var urlEl = document.getElementById("manifest-url");
+  var y1El = document.getElementById("manifest-y1");
+  var y2El = document.getElementById("manifest-y2");
+  var output = document.getElementById("manifest-output");
+  var outputCode = output ? output.querySelector("code") : null;
+  var copyBtn = document.getElementById("manifest-copy");
+  var statusEl = document.getElementById("manifest-status");
+  var previewDetails = document.getElementById("manifest-preview");
+  var previewOutput = document.getElementById("manifest-preview-output");
+
+  var MANIFEST_URL = "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/slidia_manifest.xml";
+  var latestManifestText = null;
+
+  function esc(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function values() {
+    var name = (nameEl.value || "").trim();
+    var repo = (repoEl.value || "").trim();
+    var url = (urlEl.value || "").trim();
+    return {
+      name: name || "Your Firmware",
+      repo: repo || "your-account/your-firmware",
+      url: url || "https://github.com/" + (repo || "your-account/your-firmware")
+    };
+  }
+
+  function buildLines() {
+    var v = values();
+    var out = [];
+    function line(device) {
+      return '<package name="' + esc(v.name) + '"\n' +
+        '         repo="' + esc(v.repo) + '"\n' +
+        '         device="' + device + '"\n' +
+        '         url="' + esc(v.url) + '"\n' +
+        '         type="img"\n' +
+        '         handler="Custom Firmware" />';
+    }
+    if (y1El.checked) out.push(line("Y1"));
+    if (y2El.checked) out.push(line("Y2"));
+    return out.join("\n");
+  }
+
+  function render() {
+    var text = buildLines();
+    if (outputCode) outputCode.textContent = text;
+    if (previewOutput && latestManifestText) {
+      var inserted = latestManifestText.replace("</slidia>", text + "\n</slidia>");
+      previewOutput.textContent = inserted;
+    }
+  }
+
+  function setStatus(message) {
+    if (!statusEl) return;
+    if (window.INNIOASIS_I18N && window.INNIOASIS_I18N.translate && window.INNIOASIS_I18N.isActive && window.INNIOASIS_I18N.isActive()) {
+      message = window.INNIOASIS_I18N.translate(message);
+    }
+    statusEl.textContent = message;
+  }
+
+  function loadManifest() {
+    if (!previewDetails) return;
+    setStatus("Loading the latest manifest…");
+    fetch(MANIFEST_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("http " + response.status);
+        return response.text();
+      })
+      .then(function (text) {
+        latestManifestText = text;
+        var count = (text.match(/<package\b/g) || []).length;
+        setStatus("Loaded " + count + " packages from the latest manifest. Your lines go just before </slidia>.");
+        previewDetails.hidden = false;
+        render();
+      })
+      .catch(function () {
+        setStatus("Could not load the latest manifest — the generator still works offline.");
+      });
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(confirmCopy, function () { fallbackCopy(text); confirmCopy(); });
+    } else {
+      fallbackCopy(text);
+      confirmCopy();
+    }
+  }
+
+  function fallbackCopy(text) {
+    var area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "absolute";
+    area.style.left = "-9999px";
+    document.body.appendChild(area);
+    area.select();
+    try { document.execCommand("copy"); } catch (_) {}
+    document.body.removeChild(area);
+  }
+
+  function confirmCopy() {
+    if (!copyBtn) return;
+    var original = copyBtn.textContent;
+    copyBtn.textContent = "Copied!";
+    copyBtn.classList.add("is-copied");
+    setTimeout(function () {
+      copyBtn.textContent = original;
+      copyBtn.classList.remove("is-copied");
+    }, 1600);
+  }
+
+  if (copyBtn) copyBtn.addEventListener("click", function () { copyText(buildLines()); });
+  [nameEl, repoEl, urlEl, y1El, y2El].forEach(function (el) {
+    if (el) {
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    }
+  });
+  render();
+  loadManifest();
+})();
+</script></body>
 </html>

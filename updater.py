@@ -24288,7 +24288,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         patreon_btn = QPushButton("🧡 Patreon")
         patreon_btn.setCursor(Qt.PointingHandCursor)
-        patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/teamslide"))
+        patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/ryanspecter"))
         layout.addWidget(patreon_btn)
 
         paypal_btn = QPushButton("💳 PayPal")

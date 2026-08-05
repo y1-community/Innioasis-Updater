@@ -588,7 +588,7 @@
         function render() {
             var items = matchingItems();
             if (!items.length) {
-                table.innerHTML = '<tr><td colspan="3">No firmware project is currently listed for this model and filter. Try another project or check the project release pages.</td></tr>';
+                table.innerHTML = '<tr><td colspan="3">No software project is currently listed for this model and filter. Try another project or check the project release pages.</td></tr>';
                 return;
             }
             var rows = [];
@@ -714,8 +714,9 @@
             var releaseButtons = group.items.map(function (item) {
                 return '<a class="lumen-button lumen-button--model" href="firmware.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug) + '" aria-label="' + escapeHtml(item.model) + ' releases">' + escapeHtml(item.model) + '</a>';
             }).join(" ");
+            var benefitLink = first.benefits ? '<a class="lumen-benefit-link" href="' + escapeHtml(first.benefits) + '">Why ' + escapeHtml(group.name) + '?</a>' : '';
             return "<tr>" +
-                '<td><a class="lumen-project-link" href="' + escapeHtml(first.seoPage || first.guide) + '"><strong>' + escapeHtml(group.name) + "</strong></a></td>" +
+                '<td><a class="lumen-project-link" href="' + escapeHtml(first.seoPage || first.guide) + '"><strong>' + escapeHtml(group.name) + "</strong></a>" + (benefitLink ? '<br>' + benefitLink : '') + "</td>" +
                 "<td>" + releaseButtons + "</td>" +
                 "</tr>";
         }).join("");

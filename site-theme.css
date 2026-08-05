@@ -51,7 +51,7 @@
 }
 
 html {
-    font-size: clamp(15px, 2.8vw, 17px);
+    font-size: calc(clamp(15px, 2.8vw, 17px) * var(--lumen-font-scale, 1));
 }
 
 html,

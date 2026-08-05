@@ -945,8 +945,8 @@ def _write_macos_askpass_helper():
         script = """#!/bin/bash
 osascript <<'APPLESCRIPT'
 Tell application "System Events" to display dialog \\
-  "Innioasis Updater needs your Mac password to install simg2img (required to prepare firmware for MTKClient)." \\
-  default answer "" with hidden answer with title "Innioasis Updater" buttons {"Cancel", "OK"} default button "OK"
+  "Innioasis Updater CE needs your Mac password to install simg2img (required to prepare firmware for MTKClient)." \\
+  default answer "" with hidden answer with title "Innioasis Updater CE" buttons {"Cancel", "OK"} default button "OK"
 text returned of result
 APPLESCRIPT
 """
@@ -965,7 +965,7 @@ def install_simg2img_macos(progress_cb=None):
     if not brew:
         return None, (
             "Homebrew was not found. Run run_mac.sh once to install Homebrew, "
-            "then restart Innioasis Updater."
+            "then restart Innioasis Updater CE."
         )
     askpass = _write_macos_askpass_helper()
     if askpass:
@@ -3288,15 +3288,15 @@ def _linux_find_askpass_helper():
 
     # Build a short-lived zenity/kdialog/yad/qarma askpass wrapper when needed.
     for tool, args in (
-        ("kdialog", ["--password", "Authentication Required — Innioasis Updater"]),
-        ("zenity", ["--password", "--title=Authentication Required — Innioasis Updater"]),
-        ("qarma", ["--password", "--title=Authentication Required — Innioasis Updater"]),
+        ("kdialog", ["--password", "Authentication Required — Innioasis Updater CE"]),
+        ("zenity", ["--password", "--title=Authentication Required — Innioasis Updater CE"]),
+        ("qarma", ["--password", "--title=Authentication Required — Innioasis Updater CE"]),
         (
             "yad",
             [
                 "--entry",
                 "--hide-text",
-                "--title=Authentication Required — Innioasis Updater",
+                "--title=Authentication Required — Innioasis Updater CE",
                 "--text=Administrator password:",
             ],
         ),
@@ -3309,7 +3309,7 @@ def _linux_find_askpass_helper():
             cmd = " ".join(shlex.quote(a) for a in [tool_path, *args])
             helper.write_text(
                 "#!/bin/sh\n"
-                "# Auto-generated askpass helper for Innioasis Updater SP Flash Tool setup\n"
+                "# Auto-generated askpass helper for Innioasis Updater CE SP Flash Tool setup\n"
                 f"exec {cmd}\n",
                 encoding="utf-8",
             )
@@ -3608,7 +3608,7 @@ def configure_linux_spflash_system(progress_cb=None, app_dir=None):
 
     Soft-fail friendly: returns (False, details) when admin auth is denied, but
     never raises — callers (installer path / app setup) may continue without
-    aborting the rest of Innioasis Updater.
+    aborting the rest of Innioasis Updater CE.
     """
     if not is_linux_platform():
         return True, "Not Linux"
@@ -4510,7 +4510,7 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
         if need_sys and not perm_ok:
             msg_parts.append(
                 "USB driver/permission setup did not fully succeed (skipped or denied). "
-                "You can re-run setup later; Innioasis Updater itself remains usable.\n"
+                "You can re-run setup later; Innioasis Updater CE itself remains usable.\n"
                 f"Details: {(perm_out or '').strip()[:500]}"
             )
         elif need_sys and perm_ok:
@@ -8195,7 +8195,7 @@ class MTKWorker(QThread):
                     # Check for errno2 error (e.g. "[Errno 2]" without "entity not found")
                     if ("errno 2" in line.lower() or "errno2" in line.lower()) and "entity not found" not in line.lower():
                         errno2_error_detected = True
-                        self.status_updated.emit("Errno2 detected - Innioasis Updater reinstall required")
+                        self.status_updated.emit("Errno2 detected - Innioasis Updater CE reinstall required")
 
                     # Check for USBError(5) - Input/Output Error (SP Flash Tool sparse images)
                     if "usberror(5" in line.lower() or "input/output error" in line.lower():
@@ -8423,7 +8423,7 @@ class MTKWorker(QThread):
         elif handshake_error_detected:
             self.mtk_completed.emit(False, "Handshake failed - driver setup required")
         elif errno2_error_detected:
-            self.mtk_completed.emit(False, "Errno2 error - Innioasis Updater reinstall required")
+            self.mtk_completed.emit(False, "Errno2 error - Innioasis Updater CE reinstall required")
         elif usb_io_error_detected:
             self.mtk_completed.emit(False, "USBError(5) - ROM incompatible with Method 1")
         elif backend_error_detected:
@@ -9175,7 +9175,7 @@ class ReleaseInstallWorker(QThread):
             extracted_dir = None
 
             if zip_url:
-                self.status_updated.emit(f"Downloading Innioasis Updater {self.version} from GitHub…")
+                self.status_updated.emit(f"Downloading Innioasis Updater CE {self.version} from GitHub…")
                 if self._download_release_zip(zip_url, zip_path):
                     extracted_dir = self._extract_zip(zip_path, temp_dir)
                 else:
@@ -9387,14 +9387,14 @@ class ReleaseInstallDialog(QDialog):
 
     def __init__(self, parent, version, release_data, download_token=None):
         super().__init__(parent)
-        self.setWindowTitle(f"Installing Innioasis Updater {version}")
+        self.setWindowTitle(f"Installing Innioasis Updater CE {version}")
         self.setModal(True)
         self.setFixedSize(520, 220)
         self.success = False
         self.error_message = ""
 
         layout = QVBoxLayout(self)
-        title = QLabel(f"Innioasis Updater {version}")
+        title = QLabel(f"Innioasis Updater CE {version}")
         title.setFont(QFont("Arial", 15, QFont.Bold))
         title.setAlignment(Qt.AlignCenter)
         layout.addWidget(title)
@@ -12359,7 +12359,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         box.setIcon(QMessageBox.Information)
         box.setWindowTitle("Administrator password required")
         box.setText(
-            "Innioasis Updater needs to install the underlying flash tool support and "
+            "Innioasis Updater CE needs to install the underlying flash tool support and "
             "USB device drivers so your computer can communicate with Y1 and Y2 players."
         )
         box.setInformativeText(
@@ -12793,7 +12793,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             solar_link = f"<a href='{SOLAR_PROJECT_URL}'>Solar</a>"
 
             body = QLabel(
-                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} is available in Innioasis Updater</h3>"
+                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} is available in Innioasis Updater CE</h3>"
                 f"<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
                 f"{solar_link} is a custom firmware for Y1 that turns on Wi-Fi and unlocks lots of new features. "
                 f"You can install it right here in Updater.</p>"
@@ -12971,10 +12971,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setIcon(QMessageBox.Warning)
             msg_box.setText("Flash tool(s) are currently running on your system.")
             msg_box.setInformativeText(
-                f"The following flash tool(s) must be closed before running Innioasis Updater "
+                f"The following flash tool(s) must be closed before running Innioasis Updater CE "
                 f"to prevent conflicts with USB device access and flashing operations:\n\n"
                 f"{process_list}\n\n"
-                f"Please close all flash tools completely and then restart Innioasis Updater."
+                f"Please close all flash tools completely and then restart Innioasis Updater CE."
             )
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.setDefaultButton(QMessageBox.Ok)
@@ -13157,7 +13157,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setWindowTitle("USB Development Kit Cleanup")
             msg_box.setText("USB Development Kit Driver Detected")
             msg_box.setInformativeText(
-                "The USB Development Kit (UsbDk) driver is no longer needed for Innioasis Updater.\n\n"
+                "The USB Development Kit (UsbDk) driver is no longer needed for Innioasis Updater CE.\n\n"
                 "Would you like to remove it to clean up your system?\n\n"
                 "This will:\n"
                 "• Uninstall the UsbDk driver\n"
@@ -13242,7 +13242,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setInformativeText(
                 "The UsbDk driver has been removed from your system.\n\n"
                 "Please restart your PC to complete the cleanup process.\n\n"
-                "When you return to Innioasis Updater, you'll have a fully working setup! 🎉"
+                "When you return to Innioasis Updater CE, you'll have a fully working setup! 🎉"
             )
             msg_box.setIcon(QMessageBox.Information)
 
@@ -13272,7 +13272,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             # Use Windows shutdown command to reboot
             subprocess.run(
-                ["shutdown", "/r", "/t", "10", "/c", "Innioasis Updater: Restarting to complete UsbDk cleanup"],
+                ["shutdown", "/r", "/t", "10", "/c", "Innioasis Updater CE: Restarting to complete UsbDk cleanup"],
                 creationflags=subprocess.CREATE_NO_WINDOW
             )
 
@@ -13290,8 +13290,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setText("Your PC will restart in 10 seconds...")
             msg_box.setInformativeText(
                 "The system is restarting to complete the UsbDk driver cleanup.\n\n"
-                "Innioasis Updater will close now.\n\n"
-                "Thank you for using Innioasis Updater! 🚀"
+                "Innioasis Updater CE will close now.\n\n"
+                "Thank you for using Innioasis Updater CE! 🚀"
             )
             msg_box.setIcon(QMessageBox.Information)
 
@@ -14275,7 +14275,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Add seasonal emoji to window title
         seasonal_emoji = get_seasonal_emoji()
         title_emoji = f" {seasonal_emoji}" if seasonal_emoji else ""
-        self.setWindowTitle(f"Innioasis Updater {APP_VERSION}{title_emoji}")
+        self.setWindowTitle(f"Innioasis Updater CE {APP_VERSION}{title_emoji}")
         self.setGeometry(100, 100, 1220, 574)
 
         # Set fixed window size to maintain layout
@@ -15200,7 +15200,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def handle_errno2_error(self):
         """Handle errno2 error"""
-        self.status_label.setText("Errno2 error - Innioasis Updater reinstall required")
+        self.status_label.setText("Errno2 error - Innioasis Updater CE reinstall required")
         self.load_process_ended_image()
         # Revert to startup state after showing error
         QTimer.singleShot(3000, self.revert_to_startup_state)
@@ -16829,7 +16829,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             app_name_label = QLabel(seasonal_message)
             app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px; color: #FF6B35;")  # Use seasonal color
         else:
-            app_name_label = QLabel("Innioasis Updater")
+            app_name_label = QLabel("Innioasis Updater Community Edition")
             app_name_label.setStyleSheet("font-size: 20px; font-weight: bold; margin: 18px 10px 10px 10px;")  # Default styling
         app_name_label.setAlignment(Qt.AlignCenter)
         about_layout.addWidget(app_name_label)
@@ -18071,7 +18071,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 latest_version = self._latest_app_version or ""
                 current_version = self.app_version or APP_VERSION
                 messages.append(
-                    f"Innioasis Updater {latest_version} is available. "
+                    f"Innioasis Updater CE {latest_version} is available. "
                     f"You're currently running {current_version}. Download the new release to stay up to date."
                 )
                 silent_print(f"_refresh_update_notice_label: Adding message for banner/label")
@@ -18189,9 +18189,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             button.setText("Download Selected Version")
         if self.has_update_available():
-            button.setToolTip(f"Install Innioasis Updater {self._latest_app_version}")
+            button.setToolTip(f"Install Innioasis Updater CE {self._latest_app_version}")
         else:
-            button.setToolTip("Download the selected Innioasis Updater release")
+            button.setToolTip("Download the selected Innioasis Updater CE release")
 
     def _maybe_auto_download_latest(self, settings_dialog=None):
         """Automatically download the latest release when prompted by the update dialog."""
@@ -18258,7 +18258,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             for btn in buttons:
                 if btn:
                     btn.setText(update_text)
-                    btn.setToolTip(f"Open update details for Innioasis Updater {latest_version}")
+                    btn.setToolTip(f"Open update details for Innioasis Updater CE {latest_version}")
             if getattr(self, 'discord_btn', None):
                 self._set_button_connection(self.discord_btn, self._open_updates_tab_from_cta)
             if getattr(self, 'about_btn', None):
@@ -18384,7 +18384,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             QMessageBox.information(
                 self,
                 "Restart required",
-                f"Innioasis Updater {version} has been installed.\nRestart the app to load the new version"
+                f"Innioasis Updater CE {version} has been installed.\nRestart the app to load the new version"
             )
             # 2025-11-09 18:45 UTC original restart logic kept for reference:
             # self.close()
@@ -24207,42 +24207,64 @@ class FirmwareDownloaderGUI(QMainWindow):
             traceback.print_exc()
 
     def _post_install_donation_nudge(self):
-        """Short, respectful support message for install-complete dialogs."""
+        """Short Wikipedia-style line for install-complete message boxes."""
         return (
-            "Innioasis Updater and the Themes Gallery cost about $100–150 every month "
-            "to host, maintain, and improve for around 100,000 monthly visitors. "
-            "Only a small number of people donate. If Updater helped you, please "
-            "give what you can via Ko-fi, Patreon, PayPal, or Revolut — every gift helps."
+            "Innioasis Updater, the Y1 Themes gallery, and our other mod projects "
+            "cost on average $100+ a month to keep online as the community grows. "
+            "If you can, please donate what you are able via Ko-fi, Patreon, PayPal, "
+            "Revolut, or crypto — every contribution helps."
         )
 
     def _pick_donation_support_blurb(self):
-        """Return a clear, varied funding appeal for the free community tools."""
-        blurbs = [
+        """Return a varied, Wikipedia-like funding appeal (costs + give what you can)."""
+        cost_blurbs = [
             (
-                "Innioasis Updater and the Themes Gallery are free for everyone. "
-                "Hosting and maintenance cost about $100–150 each month for around "
-                "100,000 visitors. If these tools helped you, please consider giving "
-                "what you can so they can stay available."
+                "Innioasis Updater, the Innioasis Y1 Themes gallery, and our other mod "
+                "projects cost on average more than $100 a month to run — hosting, "
+                "downloads, and tools for a growing community. We do not charge for "
+                "the software. If everyone who can spare a little does, we can keep "
+                "this free for everyone. Please give only what you can afford."
             ),
             (
-                "These tools are kept free by the people who use them. Around 100,000 "
-                "people visit each month, while only a small number donate. A small "
-                "gift helps cover hosting, downloads, and the work behind Updater and "
-                "the Themes Gallery."
+                "As more people use these tools, running costs have risen. On average "
+                "we spend $100+ each month on Innioasis Updater, the Y1 Themes gallery, "
+                "and related mod projects. Your donation — large or small — is optional "
+                "and deeply appreciated. Choose any method below that works for you."
             ),
             (
-                "If Innioasis Updater helped you install firmware, recover your player, "
-                "or find a theme, thank you for being here. Please consider a one-time "
-                "or monthly contribution — there is no required amount, and every gift "
-                "helps keep the tools online."
+                "These projects stay free for the whole community. Hosting and "
+                "infrastructure for Updater, the Y1 Themes gallery, and our mods "
+                "average over $100 per month, and that figure grows with popularity. "
+                "If this work has helped you, please consider donating what you can. "
+                "No amount is too small."
             ),
             (
-                "Running Updater and the Themes Gallery costs about $100–150 every month. "
-                "We do not charge for the software, so the community keeps it moving. "
-                "Please donate only what feels right for you through one of the options below."
+                "We rely on readers and users like you. Innioasis Updater, the Y1 "
+                "Themes gallery, and our other mod projects cost $100+ a month on "
+                "average to operate. If you value free firmware tools and themes, "
+                "please donate what you can through one of the options below. "
+                "Thank you for keeping the lights on."
             ),
         ]
-        return random.choice(blurbs)
+        # Occasional personal note (softer share than pure CTA)
+        baby_blurbs = [
+            (
+                "Innioasis Updater, the Y1 Themes gallery, and our mod projects cost "
+                "on average $100+ a month to run as the community grows. One of our "
+                "developers and his partner are also expecting a baby in December — "
+                "if you can donate what you are able, it helps both the projects and "
+                "the people who maintain them. Give only what feels right for you."
+            ),
+            (
+                "Operating costs for Updater, the Y1 Themes gallery, and related mods "
+                "average more than $100 monthly. We ask the same way Wikipedia does: "
+                "please donate what you can, when you can. A personal note: Ryan and "
+                "his partner are expecting a baby in December — every contribution "
+                "helps keep free tools available for everyone."
+            ),
+        ]
+        pool = cost_blurbs + (baby_blurbs if random.random() < 0.35 else [])
+        return random.choice(pool)
 
     def show_donation_dialog(self, context="general", software_name=None):
         """Show donation options matching the website support toolbar."""
@@ -24254,9 +24276,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         layout = QVBoxLayout(dialog)
 
         intro = QLabel(
-            "Innioasis Updater and the Themes Gallery are free to use. Hosting and "
-            "maintenance cost about $100–150 every month for around 100,000 monthly "
-            "visitors. If you can, please help keep them online with a donation below. "
+            "Innioasis Updater, the Y1 Themes gallery, and our other mod projects "
+            "are free to use. Hosting and infrastructure cost on average $100+ a "
+            "month as more people download firmware, themes, and tools.\n\n"
+            "If you can, please donate what you are able using any option below. "
             "There is no required amount — give what feels right for you."
         )
         intro.setWordWrap(True)
@@ -24288,7 +24311,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         patreon_btn = QPushButton("🧡 Patreon")
         patreon_btn.setCursor(Qt.PointingHandCursor)
-        patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/teamslide"))
+        patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/ryanspecter"))
         layout.addWidget(patreon_btn)
 
         paypal_btn = QPushButton("💳 PayPal")
@@ -24300,6 +24323,25 @@ class FirmwareDownloaderGUI(QMainWindow):
         revolut_btn.setCursor(Qt.PointingHandCursor)
         revolut_btn.clicked.connect(lambda: webbrowser.open("https://revolut.me/rspecter"))
         layout.addWidget(revolut_btn)
+
+        crypto_title = QLabel("Crypto donation addresses (click to copy):")
+        layout.addWidget(crypto_title)
+
+        crypto_rows = [
+            ("Bitcoin", "bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g"),
+            ("SHIBA INU (ERC-20)", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"),
+            ("Ethereum / Arbitrum / Optimism", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"),
+        ]
+
+        for label, value in crypto_rows:
+            row = QHBoxLayout()
+            row_label = QLabel(f"{label}:")
+            value_btn = QPushButton(value)
+            value_btn.setToolTip(f"Copy {label} address")
+            value_btn.clicked.connect(lambda _checked=False, l=label, v=value: self._copy_donation_value(l, v))
+            row.addWidget(row_label)
+            row.addWidget(value_btn, 1)
+            layout.addLayout(row)
 
         buttons = QDialogButtonBox(QDialogButtonBox.Close)
         buttons.rejected.connect(dialog.reject)
