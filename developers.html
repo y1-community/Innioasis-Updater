@@ -121,22 +121,14 @@
 
     <section class="lumen-guide-section" aria-labelledby="manifest-title">
       <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the fields below to create the two <code>&lt;package&gt;</code> lines for <code>slidia_manifest.xml</code> — one for Y1 and one for Y2. The generator checks the latest copy of the manifest so the preview shows exactly where your lines belong, then walks you through opening a pull request with them.</p>
+      <p>Paste the URL of your public GitHub repository to create the two <code>&lt;package&gt;</code> lines for <code>slidia_manifest.xml</code> — one for Y1 and one for Y2. The generator reads the <code>owner/repository</code> from the URL, builds the project name from it, checks the latest copy of the manifest so the preview shows exactly where your lines belong, then walks you through opening a pull request with them.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-name">Project name</label>
-            <input type="text" id="manifest-name" value="Your Firmware" autocomplete="off">
-          </div>
-          <div class="lumen-field">
-            <label for="manifest-repo">GitHub repository</label>
-            <input type="text" id="manifest-repo" value="your-account/your-firmware" autocomplete="off">
-            <span class="lumen-field-help">The <code>owner/repository</code> that hosts the release.</span>
-          </div>
-          <div class="lumen-field">
-            <label for="manifest-url">Project URL</label>
-            <input type="url" id="manifest-url" value="https://github.com/your-account/your-firmware" autocomplete="off">
+            <label for="manifest-repo-url">GitHub repository URL</label>
+            <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">The only field you need — the generator extracts the <code>owner/repository</code> from the URL.</span>
           </div>
           <div class="lumen-field">
             <span class="lumen-manifest-label">Devices</span>
@@ -148,18 +140,8 @@
         </div>
 
         <div class="lumen-code-copy">
-          <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware"
-         repo="your-account/your-firmware"
-         device="Y1"
-         url="https://github.com/your-account/your-firmware"
-         type="img"
-         handler="Custom Firmware" /&gt;
-&lt;package name="Your Firmware"
-         repo="your-account/your-firmware"
-         device="Y2"
-         url="https://github.com/your-account/your-firmware"
-         type="img"
-         handler="Custom Firmware" /&gt;</code></pre>
+          <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
+&lt;package name="Your Firmware" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
           <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
         </div>
 
@@ -186,7 +168,7 @@
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the manifest on GitHub</a>
         <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
       </div>
-      <p class="lumen-meta">Keep <code>device="Y1"</code> and <code>device="Y2"</code> uppercase, use the exact GitHub owner/repository, and keep <code>type="img"</code> and <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Keep <code>device="Y1"</code> and <code>device="Y2"</code> uppercase, use the exact URL of your public GitHub repository, and keep <code>type="img"</code> and <code>handler="Custom Firmware"</code> for a firmware entry.</p>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="release-title">
@@ -258,9 +240,7 @@
   "use strict";
   var form = document.getElementById("manifest-generator");
   if (!form) return;
-  var nameEl = document.getElementById("manifest-name");
-  var repoEl = document.getElementById("manifest-repo");
-  var urlEl = document.getElementById("manifest-url");
+  var urlEl = document.getElementById("manifest-repo-url");
   var y1El = document.getElementById("manifest-y1");
   var y2El = document.getElementById("manifest-y2");
   var output = document.getElementById("manifest-output");
@@ -281,14 +261,34 @@
       .replace(/"/g, "&quot;");
   }
 
+  function humanizeName(repo) {
+    return String(repo || "")
+      .replace(/[-_]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(/\b\w/g, function (c) { return c.toUpperCase(); }) || "Your Firmware";
+  }
+
+  function parseGitHub(input) {
+    var value = String(input || "").trim();
+    if (!value) return null;
+    // Accepts https://github.com/owner/repo, github.com/owner/repo, or owner/repo,
+    // with optional www., trailing slashes, and extra path segments (tree/, releases/...).
+    var m = value.match(/^(?:https?:\/\/)?(?:www\.)?github\.com\/([^/?#\s]+)\/([^/?#\s]+)/i);
+    if (m) return { owner: m[1], repo: m[2] };
+    m = value.match(/^([^/?#\s]+)\/([^/?#\s]+)$/);
+    if (m) return { owner: m[1], repo: m[2] };
+    return null;
+  }
+
   function values() {
-    var name = (nameEl.value || "").trim();
-    var repo = (repoEl.value || "").trim();
-    var url = (urlEl.value || "").trim();
+    var parsed = parseGitHub(urlEl.value);
+    var owner = parsed ? parsed.owner : "your-account";
+    var repo = parsed ? parsed.repo : "your-firmware";
     return {
-      name: name || "Your Firmware",
-      repo: repo || "your-account/your-firmware",
-      url: url || "https://github.com/" + (repo || "your-account/your-firmware")
+      name: humanizeName(repo),
+      repo: owner + "/" + repo,
+      url: "https://github.com/" + owner + "/" + repo
     };
   }
 
@@ -296,12 +296,9 @@
     var v = values();
     var out = [];
     function line(device) {
-      return '<package name="' + esc(v.name) + '"\n' +
-        '         repo="' + esc(v.repo) + '"\n' +
-        '         device="' + device + '"\n' +
-        '         url="' + esc(v.url) + '"\n' +
-        '         type="img"\n' +
-        '         handler="Custom Firmware" />';
+      return '<package name="' + esc(v.name) + '" repo="' + esc(v.repo) +
+        '" device="' + device + '" url="' + esc(v.url) +
+        '" type="img" handler="Custom Firmware" />';
     }
     if (y1El.checked) out.push(line("Y1"));
     if (y2El.checked) out.push(line("Y2"));
@@ -378,7 +375,7 @@
   }
 
   if (copyBtn) copyBtn.addEventListener("click", function () { copyText(buildLines()); });
-  [nameEl, repoEl, urlEl, y1El, y2El].forEach(function (el) {
+  [urlEl, y1El, y2El].forEach(function (el) {
     if (el) {
       el.addEventListener("input", render);
       el.addEventListener("change", render);
