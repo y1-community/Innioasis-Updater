@@ -21,14 +21,24 @@
     var MODEL_ZIPS = [
         { name: "rom.zip", label: "Y1 · Type A", title: "For Y1 players that shipped with software 2.0.0 or later" },
         { name: "rom_type_b.zip", label: "Y1 · Type B", title: "For Y1 players that shipped with an earlier software version" },
+        { name: "rom_240p.zip", label: "Y1 · Type A · 240p", title: "240p build for Y1 players that shipped with software 2.0.0 or later" },
+        { name: "rom_240p_type_b.zip", label: "Y1 · Type B · 240p", title: "240p build for Y1 players that shipped with an earlier software version" },
+        { name: "rom_360p.zip", label: "Y1 · Type A · 360p", title: "360p build for Y1 players that shipped with software 2.0.0 or later" },
+        { name: "rom_360p_type_b.zip", label: "Y1 · Type B · 360p", title: "360p build for Y1 players that shipped with an earlier software version" },
         { name: "rom_y2.zip", label: "Y2", title: "For Y2 players" }
     ];
 
     /* The packages a release may ship for an item. Y1 releases can use
-       rom.zip (Type A) or rom_type_b.zip (Type B); Y2 releases use rom_y2.zip. */
+       rom.zip (Type A) or rom_type_b.zip (Type B); Y2 releases use rom_y2.zip.
+       Rockbox-style Y1 releases split the package by screen resolution
+       (rom_240p.zip, rom_360p.zip) with the same Type A/B split, mirroring how
+       the Updater app treats any rom*.zip as a Y1 package. */
     function packageNamesFor(item) {
-        var names = [item.packageName.toLowerCase()];
-        if (names[0] === "rom.zip") names.push("rom_type_b.zip");
+        var name = item.packageName.toLowerCase();
+        var names = [name];
+        if (name === "rom.zip") {
+            names.push("rom_type_b.zip", "rom_240p.zip", "rom_240p_type_b.zip", "rom_360p.zip", "rom_360p_type_b.zip");
+        }
         return names;
     }
 
@@ -491,18 +501,21 @@
             });
         }
 
+        /* The Software filter always names one project, so a single row set
+           (never an "all software" view) is rendered. */
         function matchingItems() {
             var selectedModel = model ? model.value : "Y1";
-            var selectedSoftware = software ? software.value : "all";
+            var selectedSoftware = software ? software.value : "";
             return catalog.filter(function (item) {
-                return item.model === selectedModel &&
-                    (selectedSoftware === "all" || item.slug === selectedSoftware);
+                return item.model === selectedModel && item.slug === selectedSoftware;
             });
         }
 
+        /* The Software filter always names one project, so only that project's
+           repos are fetched. Shared repos (stock, Solar, JJ Launcher) hold
+           releases for both models, so per-item matching still applies. */
         function activeRepos() {
-            var selectedModel = model ? model.value : "Y1";
-            return Array.from(new Set(catalog.filter(function (item) { return item.model === selectedModel; }).map(function (item) { return item.repo; })));
+            return Array.from(new Set(matchingItems().map(function (item) { return item.repo; })));
         }
 
         /* A release belongs to an item only when it actually carries that
@@ -617,7 +630,7 @@
             var previous = software.value;
             var items = catalog.filter(function (item) { return !model || item.model === model.value; });
             var options = Array.from(new Map(items.map(function (item) { return [item.slug, item.name]; })).entries()).sort(function (a, b) { return a[1].localeCompare(b[1]); });
-            software.innerHTML = '<option value="all">All Software</option>' + options.map(function (entry) { return '<option value="' + escapeHtml(entry[0]) + '">' + escapeHtml(entry[1]) + '</option>'; }).join("");
+            software.innerHTML = options.map(function (entry) { return '<option value="' + escapeHtml(entry[0]) + '">' + escapeHtml(entry[1]) + '</option>'; }).join("");
             var requested = softwareParam && options.some(function (entry) { return entry[0] === softwareParam; }) ? softwareParam : previous;
             software.value = options.some(function (entry) { return entry[0] === requested; }) ? requested : originalSlug();
             if (y2Switch) {
@@ -637,9 +650,13 @@
 
         function refreshLive() {
             var repos = activeRepos();
-            var selectedModel = model ? model.value : "Y1";
+            var selectedItem = matchingItems()[0] || null;
+            var softwareName = selectedItem ? selectedItem.name : (software ? software.value : "");
             var pending = repos.filter(function (repo) { return !fetchedRepos[repo]; });
-            if (status) status.textContent = pending.length ? "Loading public release information for " + selectedModel + "…" : "Loading public release information…";
+            /* While the release feed is loading, the status line names the
+               software whose releases are being fetched instead of a generic
+               "loading releases" message. */
+            if (status && pending.length) status.textContent = "Loading " + softwareName + " releases…";
             if (table) table.setAttribute("aria-busy", "true");
             pending.forEach(function (repo) { releaseState[repo] = "loading"; });
             Promise.all(pending.map(function (repo) {
@@ -660,7 +677,7 @@
                 var loaded = repos.filter(function (repo) { return releaseState[repo] === "loaded" || releaseState[repo] === "partial"; }).length;
                 var failed = repos.filter(function (repo) { return releaseState[repo] === "failed"; }).length;
                 var partial = repos.filter(function (repo) { return releaseState[repo] === "partial"; }).length;
-                if (status) status.textContent = loaded ? ((failed || partial) ? "Release information for " + selectedModel + " loaded where available; some project histories may be incomplete." : "All public " + selectedModel + " releases are shown.") : "Release information is not available right now. The project links remain available.";
+                if (status) status.textContent = loaded ? ((failed || partial) ? "Release information for " + softwareName + " loaded where available; some project histories may be incomplete." : "All public " + softwareName + " releases are shown.") : "Release information is not available right now. The project links remain available.";
             });
         }
 
@@ -671,7 +688,7 @@
             var params = new URLSearchParams(window.location.search);
             if (model.value === "Y1" || model.value === "Y2") params.set("model", model.value);
             else params.delete("model");
-            if (software && software.value && software.value !== "all") params.set("software", software.value);
+            if (software && software.value) params.set("software", software.value);
             else params.delete("software");
             if (showNightly) params.set("nightly", "1");
             else params.delete("nightly");
@@ -680,7 +697,9 @@
         }
 
         if (model) model.addEventListener("change", function () { fillSoftwareFilter(); render(); refreshLive(); syncUrl(); });
-        if (software) software.addEventListener("change", function () { render(); syncUrl(); });
+        /* A new Software choice has its own repos to fetch (shared model repos
+           are no longer pre-loaded), so the live feed refreshes here too. */
+        if (software) software.addEventListener("change", function () { render(); refreshLive(); syncUrl(); });
         fillSoftwareFilter();
         render();
         refreshLive();

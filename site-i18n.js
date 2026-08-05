@@ -176,8 +176,7 @@
         ["From Software, select the software you want to run on that model.", "From Software, select the soft you want to run on that rig."],
         ["Select a release, click Install / Restore, then power off and connect the player only when Updater asks.", "Select a drop, click Install / Restore, then cut power and jack the rig in only when Updater asks."],
         ["Need the installer? Open the guide and expand the Updater download section.", "Need the installer? Open the run and expand the Updater drop section."],
-        ["All Software", "All Soft"],
-        ["Choose your software, or leave all Software visible.", "Choose your soft, or leave all soft visible."],
+        ["Choose the software you want to run.", "Choose the soft you want to run."],
         ["Show nightly builds", "Show nightly builds"],
         ["Show preview and nightly builds alongside stable releases.", "Show preview and nightly builds alongside stable drops."],
         ["No stable release yet", "No stable drop yet"],
@@ -381,7 +380,10 @@
         [/^That is the whole (.+) install on the (Y1|Y2)\. The download and computer setup sections below still apply if you need them\.$/, "That is the whole $1 flash on the $2. The drop and deck setup sections below still apply if you need them."],
         [/^That puts the (Y1|Y2) back on its original software\. The download and computer setup sections below still apply if you need them\.$/, "That puts the $1 back on stock. The drop and deck setup sections below still apply if you need them."],
         [/^Open the full (.+) (.+) tutorial$/, "Open the full $1 $2 run"],
-        [/^Open the full (.+) tutorial$/, "Open the full $1 run"]
+        [/^Open the full (.+) tutorial$/, "Open the full $1 run"],
+        [/^Loading (.+) releases…$/, "Pulling $1 drops…"],
+        [/^All public (.+) releases are shown\.$/, "All public $1 drops are on the board."],
+        [/^Release information for (.+) loaded where available; some project histories may be incomplete\.$/, "Drop intel for $1 loaded where available; some project histories may be incomplete."]
     ];
 
     function translate(text) {
