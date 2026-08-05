@@ -320,8 +320,7 @@
         ["Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.", "Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully live, so FM is on the board here too."],
         ["These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.", "These images are the stock Android base (AOSP) with the device wireless radios firing, so a custom soft can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below."],
         /* Support devs */
-        ["Community maintenance", "Night City upkeep"],
-        ["Good documentation is part of the tool.", "Good docs are part of the tool."],
+        ["We get by with a lil' help from our friends", "We get by with a lil' help from our choombas"],
         ["Innioasis Updater, the software directory, themes, and recovery notes are maintained by community contributors. This page explains the practical ways to help.", "Innioasis Updater, the soft directory, themes, and recovery notes are kept alive by community contributors. This page explains the practical ways to help."],
         ["Ways to contribute", "Ways to pull weight"],
         ["Report clearly", "File a clean report"],
