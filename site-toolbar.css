@@ -364,7 +364,7 @@ body.site-themes-app .theme-card-buttons {
     margin: 7px 0 0;
     color: var(--lumen-paper, #fff);
     font-family: var(--site-font-display, Georgia, serif);
-    font-size: clamp(1.55rem, 5vw, 2.25rem);
+    font-size: calc(clamp(1.55rem, 5vw, 2.25rem) * var(--lumen-font-scale, 1));
     font-weight: 400;
     letter-spacing: -0.035em;
     line-height: 1;
@@ -729,6 +729,18 @@ body.site-themes-app .theme-card-buttons {
 
 body.y1-consent-banner-open .y1-site-dock-wrap {
     bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
+
+/* The consent banner must never cover the dock controls: the dock moves
+   up when the banner opens, but the banner is wider and taller, so give
+   the dock a higher stacking layer while the banner is shown. */
+body.y1-consent-banner-open .y1-site-dock-wrap {
+    z-index: 10003;
+}
+
+body.y1-consent-banner-open .y1-donate-panel,
+body.y1-consent-banner-open .y1-privacy-panel {
+    z-index: 10004;
 }
 
 body.site-dock-mode #y1-privacy-panel {

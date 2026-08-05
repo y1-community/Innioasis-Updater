@@ -94,7 +94,7 @@ body.site-themes-app .header {
 
 body.site-themes-app .header h1 {
     font-family: var(--site-font-display);
-    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-size: calc(clamp(2.2rem, 5vw, 4rem) * var(--lumen-font-scale, 1));
     font-weight: 400;
     letter-spacing: -.04em;
     line-height: 1;

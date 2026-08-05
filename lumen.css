@@ -214,9 +214,9 @@ body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: 
 .lumen-hero, .lumen-section { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; }
 .lumen-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); align-items: start; gap: clamp(1.5rem, 3.5vw, 3.5rem); min-height: min(600px, calc(100vh - 58px)); padding: var(--lumen-space-8) 0; }
 .lumen-kicker { margin: 0 0 .8rem; color: var(--lumen-accent); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.lumen-hero h1 { margin: 0; max-width: 9ch; font: 400 clamp(3.4rem, 8vw, 7.3rem)/.89 var(--lumen-display); letter-spacing: -.055em; }
+.lumen-hero h1 { margin: 0; max-width: 9ch; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(3.4rem, 8vw, 7.3rem) * var(--lumen-font-scale, 1)); line-height: .89; letter-spacing: -.055em; }
 .lumen-hero h1 em { color: var(--lumen-accent); font-style: normal; }
-.lumen-hero-lead { max-width: 46ch; margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: clamp(1rem, 1.8vw, 1.2rem); line-height: 1.55; }
+.lumen-hero-lead { max-width: 46ch; margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: calc(clamp(1rem, 1.8vw, 1.2rem) * var(--lumen-font-scale, 1)); line-height: 1.55; }
 .lumen-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: var(--lumen-space-6); }
 .lumen-hero-art { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--lumen-line); border-radius: 36% 64% 48% 52% / 45% 38% 62% 55%; background: radial-gradient(circle at 55% 36%, var(--lumen-accent-wash), transparent 49%), var(--lumen-panel); overflow: visible; }
 .lumen-hero-art::after { content: ""; position: absolute; inset: 12%; z-index: 0; border: 1px solid var(--lumen-line); border-radius: 50%; transform: rotate(-18deg); pointer-events: none; }
@@ -228,7 +228,7 @@ body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: 
    split mid-phrase on desktop. They only wrap when the screen is too
    narrow to hold them, and flex-wrap drops a trailing button to its own
    row rather than crowding the title. */
-.lumen-section-head h2 { margin: 0; font: 400 clamp(2rem, 4vw, 3.7rem)/.95 var(--lumen-display); letter-spacing: -.04em; }
+.lumen-section-head h2 { margin: 0; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(2rem, 4vw, 3.7rem) * var(--lumen-font-scale, 1)); line-height: .95; letter-spacing: -.04em; }
 .lumen-section-head p { margin: 0; color: var(--lumen-muted); }
 .lumen-grid, .lumen-platform-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--lumen-space-3); }
 .lumen-card { min-width: 0; padding: var(--lumen-space-5); border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
@@ -262,7 +262,7 @@ body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: 
 
 .lumen-directory { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; padding: var(--lumen-space-8) 0 calc(var(--lumen-space-8) + 4rem); }
 .lumen-directory-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .7fr); gap: var(--lumen-space-7); align-items: end; padding-bottom: var(--lumen-space-7); border-bottom: 1px solid var(--lumen-line); }
-.lumen-directory h1 { margin: 0; max-width: 10ch; font: 400 clamp(3rem, 7vw, 6.5rem)/.9 var(--lumen-display); letter-spacing: -.055em; }
+.lumen-directory h1 { margin: 0; max-width: 10ch; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(3rem, 7vw, 6.5rem) * var(--lumen-font-scale, 1)); line-height: .9; letter-spacing: -.055em; }
 .lumen-directory-hero p { margin: 0; color: var(--lumen-muted); line-height: 1.6; }
 .lumen-filterbar { display: flex; flex-wrap: wrap; gap: .7rem; align-items: end; padding: var(--lumen-space-5) 0; }
 .lumen-field { display: grid; gap: .35rem; min-width: 150px; flex: 1 1 160px; }
@@ -323,10 +323,10 @@ body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: 
 
 .lumen-guide { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; padding: var(--lumen-space-8) 0 calc(var(--lumen-space-8) + 4rem); }
 .lumen-guide > header { margin-bottom: var(--lumen-space-7); }
-.lumen-guide h1 { margin: 0; max-width: 12ch; font: 400 clamp(3rem, 7vw, 6rem)/.9 var(--lumen-display); letter-spacing: -.055em; }
+.lumen-guide h1 { margin: 0; max-width: 12ch; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(3rem, 7vw, 6rem) * var(--lumen-font-scale, 1)); line-height: .9; letter-spacing: -.055em; }
 .lumen-guide .lead { margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: 1.08rem; line-height: 1.65; }
 .lumen-guide-section { margin: var(--lumen-space-7) 0; padding-top: var(--lumen-space-5); border-top: 1px solid var(--lumen-line); }
-.lumen-guide-section h2 { margin: 0 0 .75rem; font: 400 clamp(2rem, 4vw, 3.2rem)/.95 var(--lumen-display); }
+.lumen-guide-section h2 { margin: 0 0 .75rem; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(2rem, 4vw, 3.2rem) * var(--lumen-font-scale, 1)); line-height: .95; }
 .lumen-guide-section h3 { margin: 0 0 .45rem; font-size: 1rem; }
 .lumen-guide-section p, .lumen-guide-section li { color: var(--lumen-muted); line-height: 1.7; }
 .lumen-guide-section strong { color: var(--lumen-text); }
@@ -486,7 +486,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 .lumen-donate-dialog { width: min(92vw, 460px); padding: 0; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-lg); background: var(--lumen-panel); color: var(--lumen-text); box-shadow: 0 30px 90px color-mix(in oklab, var(--lumen-ink) 45%, transparent); }
 .lumen-donate-dialog::backdrop { background: color-mix(in oklab, var(--lumen-ink) 62%, transparent); backdrop-filter: blur(3px); }
 .lumen-donate-card { padding: var(--lumen-space-6); }
-.lumen-donate-card h2 { margin: 0 0 .6rem; font: 400 clamp(1.9rem, 4vw, 2.6rem)/.95 var(--lumen-display); letter-spacing: -.03em; }
+.lumen-donate-card h2 { margin: 0 0 .6rem; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(1.9rem, 4vw, 2.6rem) * var(--lumen-font-scale, 1)); line-height: .95; letter-spacing: -.03em; }
 .lumen-donate-intro { margin: 0 0 var(--lumen-space-5); color: var(--lumen-muted); line-height: 1.6; font-size: .94rem; }
 .lumen-donate-links { display: grid; gap: .55rem; }
 .lumen-donate-method { display: block; min-height: 46px; padding: .7rem .9rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font-weight: 700; text-align: center; text-decoration: none; transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
@@ -568,7 +568,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
        monitors and tablets instead of stacking. */
     .lumen-hero .lumen-button { padding: .5rem .7rem; font-size: .82rem; }
     .lumen-hero-lead { font-size: .95rem; }
-    .lumen-hero h1 { font-size: clamp(2.9rem, 7.5vw, 5.6rem); }
+    .lumen-hero h1 { font-size: calc(clamp(2.9rem, 7.5vw, 5.6rem) * var(--lumen-font-scale, 1)); }
     .lumen-grid, .lumen-platform-grid, .lumen-release-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -583,7 +583,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 
 @media (max-width: 620px) {
     body.site-themes-app .nav-container, .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(100% - 1.5rem, 560px); }
-    .lumen-hero h1, .lumen-directory h1, .lumen-guide h1 { max-width: 100%; font-size: clamp(3rem, 16vw, 5rem); }
+    .lumen-hero h1, .lumen-directory h1, .lumen-guide h1 { max-width: 100%; font-size: calc(clamp(3rem, 16vw, 5rem) * var(--lumen-font-scale, 1)); }
     .lumen-section-head { display: block; }
     .lumen-section-head p { margin-top: .75rem; }
     .lumen-grid, .lumen-platform-grid, .lumen-release-grid { grid-template-columns: 1fr; }

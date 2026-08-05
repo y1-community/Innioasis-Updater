@@ -132,7 +132,7 @@ header p,
 
 h2.section-display,
 .gold-section h2 {
-    font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+    font-size: calc(clamp(1.35rem, 3.2vw, 1.85rem) * var(--lumen-font-scale, 1));
 }
 
 /* —— Top bar —— */
@@ -305,7 +305,7 @@ body.site-themes-app .gallery-home-hero .y1-hero {
     border-radius: 7px;
     color: #aeb6c5;
     text-decoration: none;
-    font-size: clamp(0.82rem, 2.6vw, 0.95rem);
+    font-size: calc(clamp(0.82rem, 2.6vw, 0.95rem) * var(--lumen-font-scale, 1));
     font-weight: 600;
     font-family: var(--site-font);
     border: 1px solid transparent;
