@@ -273,7 +273,7 @@
         ["Move Updater into the Applications folder.", "Move Updater into the Applications folder."],
         ["Open Updater. If macOS warns about an unidentified developer, Control-click the app and choose Open.", "Open Updater. If macOS warns about an unidentified developer, Control-click the app and choose Open."],
         ["The first run installs the supporting packages Homebrew manages.", "The first run installs the supporting packages Homebrew manages."],
-        ["macOS Download", "macOS Download"],
+        ["Download Updater CE", "Grab Updater CE"],
         ["Cable and timing", "Datalink and timing"],
         ["Use a known USB data cable.", "Use a known datalink."],
         ["Avoid hubs while troubleshooting.", "Skip the hubs."],
