@@ -4,7 +4,7 @@ Firmware Downloader for Innioasis Updater
 Downloads firmware releases from XML manifest and installs them with:
   - Windows: SP Flash Tool only (no MTKClient methods)
   - Linux x86: SP Flash Tool default, MTKClient fallback (desparses images via simg2img)
-  - Linux non-x86 / macOS: MTKClient only (simg2img staged for sparse→raw before flash)
+  - Linux non-x86 / macOS: MTKClient only (simg2img staged for sparseraw before flash)
 """
 
 import sys
@@ -31,7 +31,7 @@ from xml.etree import ElementTree as ET
 from datetime import datetime, date
 import random
 # 2025-11-09 12:00:00 - original: PySide6.QtWidgets import did not include QListView, QTreeView, or QAbstractItemView which are now required for the transfer picker dialog.
-from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
+from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QGridLayout,
                                QWidget, QListWidget, QListWidgetItem, QListView, QPushButton, QTextEdit,
                                QLabel, QComboBox, QProgressBar, QMessageBox,
                                QGroupBox, QSplitter, QStackedWidget, QCheckBox, QProgressDialog,
@@ -64,6 +64,7 @@ REMOTE_FIRMWARE_DOWNLOADER_URL = (
 DISCORD_INVITE_URL = "https://discord.gg/zHrT2zrcek"
 SUBREDDIT_URL = "https://www.reddit.com/r/innioasismodders"
 SOLAR_PROJECT_URL = "https://www.github.com/thesolarproject/solar"
+HONEYGAIN_REFERRAL_URL = "https://join.honeygain.com/ITSRY2B5D7"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
@@ -111,14 +112,14 @@ FLASH_TOOL_LINUX_REQUIRED_FILES = (
 FLASH_TOOL_LINUX_UDEV_RULE = "99-innioasis-mediatek.rules"
 FLASH_TOOL_LINUX_UDEV_HELPER_RULE = "78-innioasis-mediatek-access.rules"
 FLASH_TOOL_LINUX_MM_BLACKLIST_RULE = "20-innioasis-mm-blacklist-mtk.rules"
-# Early MODE=0666 without ATTRS — defeats SP Flash Tool open-on-uevent race
+# Early MODE=0666 without ATTRS  defeats SP Flash Tool open-on-uevent race
 FLASH_TOOL_LINUX_UDEV_EARLY_RULE = "49-innioasis-ttyacm-mode.rules"
 # Community-standard unprivileged ttyACM/ttyUSB access:
 #   sudo install -m 644 99-ttyacms.rules /etc/udev/rules.d/99-ttyacms.rules
 #   sudo udevadm control --reload-rules && sudo udevadm trigger
 FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE = "99-ttyacms.rules"
 FLASH_TOOL_LINUX_LOG_DIR_NAME = "SP_FT_Logs"
-# Shared with run_linux.sh — single source of truth for privileged system prep.
+# Shared with run_linux.sh  single source of truth for privileged system prep.
 FLASH_TOOL_LINUX_SYSTEM_PREP_SCRIPT = "linux_spflash_system_prep.sh"
 # LD_PRELOAD that retries open() on /dev/ttyACM* (SP Flash Tool uevent race).
 FLASH_TOOL_LINUX_OPEN_RETRY_C = "spft_tty_open_retry.c"
@@ -379,37 +380,9 @@ def format_designations_text(designations):
     if not designations:
         return ""
 
-    # Map designations to emoji indicators
-    emoji_map = {
-        'Nightly': '🟠',
-        '360p': '🟡',
-        'Wi-Fi': '📶',
-        'with Rockbox ': '🔵',
-        'USB': '🔌',
-        'Ethernet': '🌐',
-        'HDMI': '📺',
-        'Audio': '🔊',
-        'Video': '🎥',
-        'Camera': '📷',
-        'GPS': '📍',
-        'NFC': '📱',
-        'LTE': '📡',
-        '5G': '📡',
-    }
-
     formatted_designations = []
     for designation in designations:
-        # Check for iPod themes variations
-        if 'iPod Themes' in designation:
-            formatted_designations.append(f"✅ {designation}")
-        else:
-            # Try to find a matching emoji, fallback to generic
-            emoji = '⚪'
-            for key, value in emoji_map.items():
-                if designation.startswith(key):
-                    emoji = value
-                    break
-            formatted_designations.append(f"{emoji} {designation}")
+        formatted_designations.append(designation)
 
     return " | ".join(formatted_designations)
 
@@ -425,7 +398,7 @@ SCATTER_TXT = "MT6572_Android_scatter.txt"
 Y2_SCATTER_TXT = "MT6582_Android_scatter.txt"
 Y1_SCATTER_TXT = "MT6572_Android_scatter.txt"
 
-# Known-bad or not-yet-published repos → working GitHub repo
+# Known-bad or not-yet-published repos  working GitHub repo
 FIRMWARE_REPO_FALLBACKS = {
     "y1-community/stock-rom": "y1-community/y1-stock-rom",
     "y1-community/y2-stock-rom": "y1-community/y1-stock-rom",
@@ -593,7 +566,7 @@ def _model_from_firmware_basenames(names):
     """
     Infer Y1/Y2 from a set of firmware basenames (case-insensitive).
 
-    Only uses names from the provided set — does not scan the install directory.
+    Only uses names from the provided set  does not scan the install directory.
     Prefer this for zip extract lists so bundled app files do not force a model.
     """
     if not names:
@@ -652,9 +625,9 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
     Returns 'Y1', 'Y2', or None when the platform cannot be determined.
 
     Priority (install correctness over UI filter state):
-      1. Zip name (rom_y2.zip / *_y2* / *_y1* / y1-stock) — definitive from package name
+      1. Zip name (rom_y2.zip / *_y2* / *_y1* / y1-stock)  definitive from package name
       2. Files from this extraction (not permanently bundled app assets)
-      3. On-disk system.img size (larger than Y1 ANDROID → Y2)
+      3. On-disk system.img size (larger than Y1 ANDROID  Y2)
       4. Explicit UI / caller model
       5. Residual install-directory / scatter markers
 
@@ -682,7 +655,7 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
         ):
             return "Y1"
 
-    # Only treat the caller's extract list as package evidence — do not expand it
+    # Only treat the caller's extract list as package evidence  do not expand it
     # with permanently-bundled app-dir files (both Y1 and Y2 preloaders ship here).
     if extracted_files:
         extracted_names = {Path(f).name for f in extracted_files}
@@ -709,7 +682,7 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
             return 'Y2'
 
     if 'preloader_eastaeon82_wet_kk.bin' in names:
-        # Only trust Y2 preloader when Y1 preloader is absent — both often ship in-app
+        # Only trust Y2 preloader when Y1 preloader is absent  both often ship in-app
         if 'preloader_g368_nyx.bin' not in names:
             return 'Y2'
 
@@ -737,8 +710,8 @@ def resolve_device_model_for_install(device_model=None, zip_path=None, extracted
     return detect_device_model_for_install(device_model, zip_path, extracted_files)
 
 
-# Y1/Y2 mtkclient — **stock mtkclient only** (same tree as
-# github.com/y1-community/Innioasis-Updater/mtkclient — no forks/patches).
+# Y1/Y2 mtkclient  **stock mtkclient only** (same tree as
+# github.com/y1-community/Innioasis-Updater/mtkclient  no forks/patches).
 #
 # Install == full-system unbrick (same package SP Flash Tool would download):
 #   - Windows: SP Flash Tool only (Format All + Download, full rom-list).
@@ -755,7 +728,7 @@ def resolve_device_model_for_install(device_model=None, zip_path=None, extracted
 #   - SP Flash Tool path also stages the entire downloadable package (preloader +
 #     all is_download images) so both methods are unbrick-capable.
 #
-# Fallback file→partition names when scatter is missing (user-area package images).
+# Fallback filepartition names when scatter is missing (user-area package images).
 # MBR/EBR* are omitted: stock packages ship them as empty placeholders; on a given
 # device those regions are device-resident and must not be overwritten with zeros.
 Y2_MTK_FLASH_PARTS_FALLBACK = (
@@ -841,7 +814,7 @@ def android_sparse_declared_raw_size(path):
     """
     Return the expanded raw size declared in an Android sparse header, or None.
 
-    Sparse on-disk size is much smaller than this value — never use st_size of a
+    Sparse on-disk size is much smaller than this value  never use st_size of a
     sparse file as mtk.py ``wo`` length (that under-writes and corrupts flash).
     """
     try:
@@ -866,7 +839,7 @@ def android_sparse_declared_raw_size(path):
 
 def raw_flash_length_for_wo(path, partition_size=None):
     """
-    Byte length for stock mtkclient ``wo`` — **raw file size only**.
+    Byte length for stock mtkclient ``wo``  **raw file size only**.
 
     - Refuses Android sparse images (caller must desparse first).
     - Uses st_size of the raw file (after simg2img), not partition_size and not
@@ -890,7 +863,7 @@ def raw_flash_length_for_wo(path, partition_size=None):
         )
     length = int(p.stat().st_size)
     if length <= 0:
-        raise ValueError(f"{p.name} is empty — cannot wo")
+        raise ValueError(f"{p.name} is empty  cannot wo")
     if partition_size is not None and int(partition_size) > 0:
         if length > int(partition_size):
             raise ValueError(
@@ -1109,7 +1082,7 @@ def ensure_simg2img_available(progress_cb=None):
     Locate simg2img, installing it on Linux/macOS when missing.
 
     Returns (path_or_None, error_message_or_None).
-    Windows always returns (None, reason) — SP Flash Tool does not need simg2img.
+    Windows always returns (None, reason)  SP Flash Tool does not need simg2img.
     """
     if is_windows_platform():
         return None, "simg2img is not used on Windows (SP Flash Tool only)"
@@ -1117,7 +1090,7 @@ def ensure_simg2img_available(progress_cb=None):
     if path:
         _simg2img_progress(progress_cb, f"simg2img found: {path}", 5)
         return path, None
-    _simg2img_progress(progress_cb, "simg2img not found — installing…", 2)
+    _simg2img_progress(progress_cb, "simg2img not found  installing…", 2)
     if is_macos_platform():
         return install_simg2img_macos(progress_cb=progress_cb)
     if is_linux_platform():
@@ -1138,7 +1111,7 @@ def desparse_one_image(image_path, simg2img_bin, progress_cb=None, progress_base
     if not is_android_sparse_image(image_path):
         _simg2img_progress(
             progress_cb,
-            f"{image_path.name}: already raw — skipping desparse",
+            f"{image_path.name}: already raw  skipping desparse",
             progress_base + progress_span,
         )
         return False, None
@@ -1174,11 +1147,11 @@ def desparse_one_image(image_path, simg2img_bin, progress_cb=None, progress_base
         os.replace(str(tmp_out), str(image_path))
         _simg2img_progress(
             progress_cb,
-            f"Desparsed {image_path.name} → {raw_mb:.1f} MB raw",
+            f"Desparsed {image_path.name}  {raw_mb:.1f} MB raw",
             progress_base + progress_span,
         )
         silent_print(
-            f"simg2img: {image_path.name} sparse→raw ({size_mb:.1f} MB → {raw_mb:.1f} MB)"
+            f"simg2img: {image_path.name} sparseraw ({size_mb:.1f} MB  {raw_mb:.1f} MB)"
         )
         return True, None
     except subprocess.TimeoutExpired:
@@ -1247,7 +1220,7 @@ def prepare_mtkclient_images(install_dir=None, progress_cb=None):
         if changed:
             desparsed.append(path.name)
 
-    # Hard fail if any target is still sparse — wo length must never use sparse size.
+    # Hard fail if any target is still sparse  wo length must never use sparse size.
     still_sparse = []
     for name in MTK_DESPARSE_IMAGES:
         for root in (install_root, Path.cwd()):
@@ -1364,7 +1337,7 @@ def _find_y1_scatter_path(install_dir=None):
     """
     Locate MT6572_Android_scatter.txt for optional name/file metadata only.
 
-    Does **not** fall back to MT6572_Android_scatter_def.txt — those def files
+    Does **not** fall back to MT6572_Android_scatter_def.txt  those def files
     often have zeroed physical addresses and must never drive flash offsets.
     Y1 installs use named ``w`` (on-device partition detection), not scatter addrs.
     """
@@ -1380,7 +1353,7 @@ def _find_y1_scatter_path(install_dir=None):
             )
             continue
         return candidate
-    # No def fallback — named w does not need a scatter file
+    # No def fallback  named w does not need a scatter file
     for base in _scatter_search_bases(install_dir):
         candidate = base / Y1_SCATTER_TXT
         if candidate.is_file():
@@ -1514,7 +1487,7 @@ def _mtk_named_write_plan(install_root=None, device_model=None):
 
     Addresses come from the **device** partition table, never from scatter_def
     physical/linear inventing. Scatter (if present and platform-correct) only
-    supplies partition_name ↔ file_name for user-area images.
+    supplies partition_name  file_name for user-area images.
     """
     install_root = Path(install_root or get_firmware_app_dir())
     model = device_model or resolve_device_model_for_install(None)
@@ -1548,7 +1521,7 @@ def _mtk_named_write_plan(install_root=None, device_model=None):
         # Named writes need raw images; sparse would write garbage via DA
         if is_android_sparse_image(path):
             raise ValueError(
-                f"{fname} is still Android sparse — desparse before mtk.py w "
+                f"{fname} is still Android sparse  desparse before mtk.py w "
                 f"(declared raw {android_sparse_declared_raw_size(path)})"
             )
         key = pname.lower()
@@ -1579,7 +1552,7 @@ def _mtk_named_write_plan(install_root=None, device_model=None):
             for filename, partition_name in Y2_MTK_FLASH_PARTS_FALLBACK:
                 _add(partition_name, filename)
     else:
-        # Y1 classic community named list — partitions detected on device
+        # Y1 classic community named list  partitions detected on device
         for part, fname in zip(MTK_W_PARTITIONS.split(","), MTK_W_FILES.split(",")):
             _add(part, fname)
 
@@ -1607,7 +1580,7 @@ def build_mtk_y2_install_script(install_dir=None):
 
 def _flash_file_is_empty_placeholder(path, sample_max=65536):
     """
-    True when *path* has no real payload — typical stock-package MBR/EBR stubs.
+    True when *path* has no real payload  typical stock-package MBR/EBR stubs.
 
     Stock Y1/Y2 zips often ship 512-byte MBR/EBR files that are all zeros except
     the classic 0x55AA boot signature. Writing those with mtkclient overwrites
@@ -1703,12 +1676,12 @@ def build_mtk_scatter_wo_plan(install_root=None, device_model="Y2"):
         if _flash_file_is_empty_placeholder(path):
             silent_print(
                 f"Unbrick plan: skip {name}/{fname} "
-                f"(all-zero placeholder — leave on-device content intact)"
+                f"(all-zero placeholder  leave on-device content intact)"
             )
             continue
         if is_android_sparse_image(path):
             raise ValueError(
-                f"{fname} is still Android sparse — desparse before unbrick write "
+                f"{fname} is still Android sparse  desparse before unbrick write "
                 f"(declared raw {android_sparse_declared_raw_size(path)})"
             )
         length = path.stat().st_size
@@ -1722,7 +1695,7 @@ def build_mtk_scatter_wo_plan(install_root=None, device_model="Y2"):
         if part_size > 0 and length > part_size:
             silent_print(
                 f"Unbrick plan: {fname} raw size 0x{length:x} exceeds scatter "
-                f"{name} size 0x{part_size:x} — writing file length anyway "
+                f"{name} size 0x{part_size:x}  writing file length anyway "
                 f"(matches SP Flash Tool image load behaviour)"
             )
         if _scatter_is_boot_region(entry, name):
@@ -1788,7 +1761,7 @@ def build_mtk_y2_unbrick_script(install_dir=None):
     return script_path, lines, plan, scatter_path
 
 
-# Y1 named-partition flash list — addresses from device GPT/PMT, not scatter_def.
+# Y1 named-partition flash list  addresses from device GPT/PMT, not scatter_def.
 MTK_W_PARTITIONS = "logo,uboot,bootimg,recovery,android,usrdata"
 MTK_W_FILES = "logo.bin,lk.bin,boot.img,recovery.img,system.img,userdata.img"
 MTK_FLASH_FILE_TO_SCATTER = (
@@ -1821,7 +1794,7 @@ def build_mtk_y1_install_script(install_dir=None):
 
 
 def resolve_mtk_scatter_path_for_install(install_dir=None):
-    """Scatter path for model/metadata only — never for invented write offsets."""
+    """Scatter path for model/metadata only  never for invented write offsets."""
     model = resolve_device_model_for_install(None)
     if is_y2_model(model):
         return _find_y2_scatter_path(install_dir)
@@ -1839,7 +1812,7 @@ def build_mtk_named_staged_commands(install_dir=None, device_model=None):
     Full-system mtkclient install stages (unbrick-capable).
 
     Y1: named ``w`` (device partition table).
-    Y2: scatter ``wo`` script (physical offsets) including preloader→boot1 —
+    Y2: scatter ``wo`` script (physical offsets) including preloaderboot1 
         blank eMMC has no partition names, so offsets are required.
     """
     install_root = Path(install_dir or get_firmware_app_dir())
@@ -1955,7 +1928,7 @@ def build_mtk_write_command(device_model=None, zip_path=None, extracted_files=No
     Y1::
         mtk.py w logo,uboot,… logo.bin,lk.bin,…
 
-    Y2 (blank PMT — offsets from package scatter)::
+    Y2 (blank PMT  offsets from package scatter)::
         mtk.py script y2_mtk_install.script --preloader … --loader …
     """
     _app_dir = Path(__file__).resolve().parent
@@ -2066,7 +2039,7 @@ def run_full_flash(device_model: str | None = None, debug: bool = False) -> dict
     Args:
         device_model: Optional model identifier; if ``None`` the resolver will try to
             infer the model from extracted files.
-        debug: If ``True`` the command is executed with ``--debugmode`` appended –
+        debug: If ``True`` the command is executed with ``--debugmode`` appended 
             useful for verbose output during development.
     """
     import subprocess
@@ -2181,180 +2154,11 @@ def is_thanksgiving_region():
     return True
 
 def get_seasonal_emoji():
-    """Get seasonal emoji based on current date - Christmas and Halloween easter eggs!"""
-    today = date.today()
-    month = today.month
-    day = today.day
-
-    # Christmas Season: December 25 - January 5 (12 days of Christmas)
-    if (month == 12 and day >= 25) or (month == 1 and day <= 5):
-        christmas_emojis = [
-            "🎄", "🎅", "🤶", "🎁", "❄️", "⛄", "🦌", "🔔", "🌟", "🎊", "🎉", "✨"
-        ]
-        # Use day to pick emoji (Dec 25 = first emoji, Jan 5 = last emoji)
-        if month == 12:
-            # December 25-31: days 25-31
-            emoji_index = (day - 25) % len(christmas_emojis)
-        else:
-            # January 1-5: days 1-5 (continue from December)
-            emoji_index = (day + 6) % len(christmas_emojis)  # +6 because Dec 25-31 = 7 days
-        return christmas_emojis[emoji_index]
-
-    # Halloween Season: October 25-31
-    elif month == 10 and 25 <= day <= 31:
-        halloween_emojis = [
-            "🎃", "👻", "🦇", "🕷️", "🕸️", "💀", "🧙‍♀️", "🧛‍♂️", "🦹‍♀️", "🎭", "⚰️", "🦴"
-        ]
-        # Use day of month to pick emoji (25th = first emoji, 31st = last emoji)
-        emoji_index = (day - 25) % len(halloween_emojis)
-        return halloween_emojis[emoji_index]
-
-    # Thanksgiving Season: November 20-30 - only for US/Canada
-    elif month == 11 and 20 <= day <= 30 and is_thanksgiving_region():
-        thanksgiving_emojis = [
-            "🦃", "🍗", "🥧", "🌽", "🍂", "🍁", "🦌", "🌾", "🏠", "👨‍👩‍👧‍👦", "🙏", "🍽️"
-        ]
-        emoji_index = (day - 20) % len(thanksgiving_emojis)
-        return thanksgiving_emojis[emoji_index]
-
-    # St. Patrick's Day: March 17
-    elif month == 3 and day == 17:
-        st_patricks_emojis = [
-            "🍀", "☘️", "🌈", "🍺", "🥃", "🇮🇪", "🧚‍♀️", "🪙", "🎩", "🎭", "🎪", "🎨"
-        ]
-        return random.choice(st_patricks_emojis)
-
-    # Valentine's Day: February 14
-    elif month == 2 and day == 14:
-        valentines_emojis = [
-            "💕", "💖", "💗", "💘", "💝", "💞", "💟", "❤️", "🧡", "💛", "💚", "💙"
-        ]
-        return random.choice(valentines_emojis)
-
-    # Easter Season: March 22 - April 25 (approximate range)
-    elif month == 3 and day >= 22:
-        easter_emojis = [
-            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
-        ]
-        emoji_index = (day - 22) % len(easter_emojis)
-        return easter_emojis[emoji_index]
-    elif month == 4 and day <= 25:
-        easter_emojis = [
-            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
-        ]
-        emoji_index = (day + 9) % len(easter_emojis)  # +9 because March 22-31 = 10 days
-        return easter_emojis[emoji_index]
-
-    # New Year's Day: January 1
-    elif month == 1 and day == 1:
-        new_year_emojis = [
-            "🎊", "🎉", "🥳", "🍾", "🥂", "🎆", "🎇", "✨", "🌟", "💫", "🎈", "🎁"
-        ]
-        return random.choice(new_year_emojis)
-
-    # Independence Day (US): July 4 - only for US users
-    elif month == 7 and day == 4 and is_us_user():
-        independence_emojis = [
-            "🇺🇸", "🎆", "🎇", "⭐", "🌟", "💥", "🎊", "🎉", "🏛️", "🗽", "🦅", "🎪"
-        ]
-        return random.choice(independence_emojis)
-
-    # Summer Solstice: June 20-22 (approximate)
-    elif month == 6 and 20 <= day <= 22:
-        summer_emojis = [
-            "☀️", "🌞", "🌻", "🌺", "🏖️", "🏝️", "🌊", "🏄‍♂️", "🏄‍♀️", "🌴", "🍉", "🍓"
-        ]
-        emoji_index = (day - 20) % len(summer_emojis)
-        return summer_emojis[emoji_index]
-
-    # Pride Month: June 1-30 (celebrated internationally, primarily in June)
-    elif month == 6:
-        pride_emojis = [
-            "🏳️‍🌈", "❤️", "🧡", "💛", "💚", "💙", "💜", "🌈", "✨", "💕", "🏳️‍⚧️", "🦄"
-        ]
-        # Cycle through emojis based on day of month
-        emoji_index = (day - 1) % len(pride_emojis)
-        return pride_emojis[emoji_index]
-
-    # No seasonal emoji
+    """Seasonal emojis disabled to prevent tofu display issues."""
     return ""
 
 def get_seasonal_emoji_random():
-    """Get a random seasonal emoji if in season, otherwise return empty string"""
-    today = date.today()
-    month = today.month
-    day = today.day
-
-    # Christmas Season: December 25 - January 5
-    if (month == 12 and day >= 25) or (month == 1 and day <= 5):
-        christmas_emojis = [
-            "🎄", "🎅", "🤶", "🎁", "❄️", "⛄", "🦌", "🔔", "🌟", "🎊", "🎉", "✨"
-        ]
-        return random.choice(christmas_emojis)
-
-    # Halloween Season: October 25-31
-    elif month == 10 and 25 <= day <= 31:
-        halloween_emojis = [
-            "🎃", "👻", "🦇", "🕷️", "🕸️", "💀", "🧙‍♀️", "🧛‍♂️", "🦹‍♀️", "🎭", "⚰️", "🦴"
-        ]
-        return random.choice(halloween_emojis)
-
-    # Thanksgiving Season: November 20-30 - only for US/Canada
-    elif month == 11 and 20 <= day <= 30 and is_thanksgiving_region():
-        thanksgiving_emojis = [
-            "🦃", "🍗", "🥧", "🌽", "🍂", "🍁", "🦌", "🌾", "🏠", "👨‍👩‍👧‍👦", "🙏", "🍽️"
-        ]
-        return random.choice(thanksgiving_emojis)
-
-    # St. Patrick's Day: March 17
-    elif month == 3 and day == 17:
-        st_patricks_emojis = [
-            "🍀", "☘️", "🌈", "🍺", "🥃", "🇮🇪", "🧚‍♀️", "🪙", "🎩", "🎭", "🎪", "🎨"
-        ]
-        return random.choice(st_patricks_emojis)
-
-    # Valentine's Day: February 14
-    elif month == 2 and day == 14:
-        valentines_emojis = [
-            "💕", "💖", "💗", "💘", "💝", "💞", "💟", "❤️", "🧡", "💛", "💚", "💙"
-        ]
-        return random.choice(valentines_emojis)
-
-    # Easter Season: March 22 - April 25
-    elif (month == 3 and day >= 22) or (month == 4 and day <= 25):
-        easter_emojis = [
-            "🐰", "🐣", "🥚", "🌷", "🌸", "🦋", "🐛", "🌱", "🌿", "🍃", "🌺", "🌼"
-        ]
-        return random.choice(easter_emojis)
-
-    # New Year's Day: January 1
-    elif month == 1 and day == 1:
-        new_year_emojis = [
-            "🎊", "🎉", "🥳", "🍾", "🥂", "🎆", "🎇", "✨", "🌟", "💫", "🎈", "🎁"
-        ]
-        return random.choice(new_year_emojis)
-
-    # Independence Day (US): July 4 - only for US users
-    elif month == 7 and day == 4 and is_us_user():
-        independence_emojis = [
-            "🇺🇸", "🎆", "🎇", "⭐", "🌟", "💥", "🎊", "🎉", "🏛️", "🗽", "🦅", "🎪"
-        ]
-        return random.choice(independence_emojis)
-
-    # Summer Solstice: June 20-22
-    elif month == 6 and 20 <= day <= 22:
-        summer_emojis = [
-            "☀️", "🌞", "🌻", "🌺", "🏖️", "🏝️", "🌊", "🏄‍♂️", "🏄‍♀️", "🌴", "🍉", "🍓"
-        ]
-        return random.choice(summer_emojis)
-
-    # Pride Month: June 1-30 (celebrated internationally, primarily in June)
-    elif month == 6:
-        pride_emojis = [
-            "🏳️‍🌈", "❤️", "🧡", "💛", "💚", "💙", "💜", "🌈", "✨", "💕", "🏳️‍⚧️", "🦄"
-        ]
-        return random.choice(pride_emojis)
-
+    """Seasonal emojis disabled to prevent tofu display issues."""
     return ""
 
 def is_christmas_season():
@@ -2487,7 +2291,7 @@ def resolve_asset_model(asset_url):
     the zip-name detector reads as Y1. The asset URL keeps the real asset name
     (e.g. .../3.1.7/rom_y2.zip), so it is reliable evidence for Y2.
 
-    Only the real asset filename is inspected — never on-disk evidence. A
+    Only the real asset filename is inspected  never on-disk evidence. A
     neutral asset name (e.g. rom.zip) therefore returns None instead of being
     misread as Y2 because a Y2 extraction once left residue in the app folder.
     """
@@ -2529,7 +2333,7 @@ def linux_spflash_arch_supported():
     True when this Linux CPU can run the bundled SP Flash Tool binary.
 
     Official Linux SP Flash Tool builds are x86/x86_64 only. On aarch64/armv7
-    (and other non-x86 arches) there is no SP Flash Tool — use MTKClient only.
+    (and other non-x86 arches) there is no SP Flash Tool  use MTKClient only.
     """
     if not is_linux_platform():
         return False
@@ -2557,7 +2361,7 @@ def default_installation_method(linux_spflash_ok=None):
 
     Windows: SP Flash Tool console XML (``spflash``).
     Linux x86/x86_64: ``spflash`` when staged; ``guided`` (MTKClient) as fallback.
-    Linux non-x86 (e.g. aarch64): always MTKClient (``guided``) — no SP Flash Tool.
+    Linux non-x86 (e.g. aarch64): always MTKClient (``guided``)  no SP Flash Tool.
     macOS: MTKClient guided (``guided``).
     """
     if is_windows_platform():
@@ -2754,7 +2558,7 @@ def _linux_cmdline_is_mtk_client(comm, cmd, argv):
         "main.py",
     ):
         if app_script in lower and "mtk.py" not in lower:
-            # Main app may appear as "python firmware_downloader.py" — skip
+            # Main app may appear as "python firmware_downloader.py"  skip
             if "mtk.py" not in lower and "mtk_gui.py" not in lower:
                 # If cmdline is only the app, skip. If it is mtk.py under python, fall through.
                 bases = [Path(a).name.lower() for a in (argv or [])]
@@ -2793,7 +2597,7 @@ def stop_sp_flash_tool_processes(exclude_pids=None):
     Linux: ``flash_tool`` (comm/cmdline match; SIGTERM then SIGKILL).
     macOS / other: no-op (no SP Flash Tool binary).
 
-    Same purpose as the long-standing Windows startup cleanup — GUI or console
+    Same purpose as the long-standing Windows startup cleanup  GUI or console
     leftovers hold /dev/ttyACM* or COM ports and break the next install.
 
     Returns number of processes signaled.
@@ -3110,7 +2914,7 @@ def stop_install_competitor_processes(exclude_pids=None, release_serial_holders=
 #   - Windows: SP Flash Tool only (no MTKClient)
 #   - Linux x86/x86_64: SP Flash Tool first, MTKClient fallback
 #   - Linux non-x86 + macOS: MTKClient only
-# Y2 MTKclient flash is not yet reliable — images brick devices.
+# Y2 MTKclient flash is not yet reliable  images brick devices.
 # Set True only once scatter-based raw-offset + desparse flow is validated.
 Y2_MTKCLIENT_INSTALLS_ENABLED = False
 
@@ -3119,7 +2923,7 @@ def linux_spflash_staged(app_dir=None):
     """
     True when Linux flash_tool *and* required package files (Qt/DA libs) are present.
 
-    Presence of flash_tool alone is not enough — missing lib/libQtWebKit.so.4 etc.
+    Presence of flash_tool alone is not enough  missing lib/libQtWebKit.so.4 etc.
     makes the binary fail at load time. Callers that need a runnable install should
     use this (or ensure_linux_sp_flash_tool which self-heals).
     """
@@ -3138,7 +2942,7 @@ def mtkclient_allowed_for_model(device_model):
     a Linux or Windows machine.
     """
     if is_y2_model(device_model) and not Y2_MTKCLIENT_INSTALLS_ENABLED:
-        return False  # Blocked on ALL platforms — including non-x86 Linux
+        return False  # Blocked on ALL platforms  including non-x86 Linux
     return True
 
 
@@ -3180,7 +2984,7 @@ def ensure_spft_open_retry_preload(app_dir=None, force_rebuild=False):
             return so_path if so_path.is_file() else None
         gcc = shutil.which("gcc") or shutil.which("cc")
         if not gcc:
-            silent_print("gcc not found — cannot build SP Flash Tool open-retry preload")
+            silent_print("gcc not found  cannot build SP Flash Tool open-retry preload")
             return so_path if so_path.is_file() else None
         cmd = [
             gcc,
@@ -3288,15 +3092,15 @@ def _linux_find_askpass_helper():
 
     # Build a short-lived zenity/kdialog/yad/qarma askpass wrapper when needed.
     for tool, args in (
-        ("kdialog", ["--password", "Authentication Required — Innioasis Updater CE"]),
-        ("zenity", ["--password", "--title=Authentication Required — Innioasis Updater CE"]),
-        ("qarma", ["--password", "--title=Authentication Required — Innioasis Updater CE"]),
+        ("kdialog", ["--password", "Authentication Required  Innioasis Updater CE"]),
+        ("zenity", ["--password", "--title=Authentication Required  Innioasis Updater CE"]),
+        ("qarma", ["--password", "--title=Authentication Required  Innioasis Updater CE"]),
         (
             "yad",
             [
                 "--entry",
                 "--hide-text",
-                "--title=Authentication Required — Innioasis Updater CE",
+                "--title=Authentication Required  Innioasis Updater CE",
                 "--text=Administrator password:",
             ],
         ),
@@ -3479,7 +3283,7 @@ def download_linux_flash_tool_zip(app_dir=None, progress_cb=None):
                 out.write(chunk)
                 written += len(chunk)
                 if progress_cb and total > 0:
-                    # Map download to 5–55%
+                    # Map download to 555%
                     pct = 5 + int(50 * (written / total))
                     progress_cb(
                         f"Downloading SP Flash Tool… {written // (1024 * 1024)} / "
@@ -3549,7 +3353,7 @@ def ensure_linux_spflash_package_files(app_dir=None, progress_cb=None, force_ree
     if progress_cb:
         progress_cb(
             f"SP Flash Tool missing files ({missing[0] if missing else 'repair'}) "
-            "— restoring package…",
+            " restoring package…",
             8,
         )
 
@@ -3607,7 +3411,7 @@ def configure_linux_spflash_system(progress_cb=None, app_dir=None):
     """Install runtime libs, udev rules, and USB groups for SP Flash Tool on Linux.
 
     Soft-fail friendly: returns (False, details) when admin auth is denied, but
-    never raises — callers (installer path / app setup) may continue without
+    never raises  callers (installer path / app setup) may continue without
     aborting the rest of Innioasis Updater CE.
     """
     if not is_linux_platform():
@@ -3617,7 +3421,7 @@ def configure_linux_spflash_system(progress_cb=None, app_dir=None):
         return False, "Could not determine current username for USB group setup."
     if progress_cb:
         progress_cb(
-            "Preparing system (packages, USB permissions — admin password may be required)…",
+            "Preparing system (packages, USB permissions  admin password may be required)…",
             80,
         )
     ok, out = _linux_run_privileged(
@@ -3990,7 +3794,7 @@ def diagnose_linux_spflash_port_access():
         lines.append(
             "this session is missing group(s): "
             + ", ".join(grp["missing_from_session"])
-            + " — log out and back in after setup (or reboot)"
+            + "  log out and back in after setup (or reboot)"
         )
     else:
         rec = grp.get("recommended") or "serial"
@@ -3999,12 +3803,12 @@ def diagnose_linux_spflash_port_access():
     early = Path("/etc/udev/rules.d") / FLASH_TOOL_LINUX_UDEV_EARLY_RULE
     lines.append(
         f"early tty MODE rule ({FLASH_TOOL_LINUX_UDEV_EARLY_RULE}): "
-        f"{'yes' if early.is_file() else 'NO — re-run setup'}"
+        f"{'yes' if early.is_file() else 'NO  re-run setup'}"
     )
     ttyacms = Path("/etc/udev/rules.d") / FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE
     lines.append(
         f"unprivileged ttyACM rule ({FLASH_TOOL_LINUX_UDEV_TTYACMS_RULE}): "
-        f"{'yes' if ttyacms.is_file() else 'NO — re-run setup '
+        f"{'yes' if ttyacms.is_file() else 'NO  re-run setup '
          '(sudo install -m 644 99-ttyacms.rules /etc/udev/rules.d/)'}"
     )
     mm = shutil.which("systemctl")
@@ -4109,7 +3913,7 @@ def linux_spflash_self_heal_port_access(
     actions.append("udevadm reload/trigger (best-effort)")
     # If udev rules are incomplete, try system prep once (may prompt via polkit/sudo).
     if not linux_spflash_system_prep_complete():
-        silent_print("Linux SPFT self-heal: system prep incomplete — attempting configure…")
+        silent_print("Linux SPFT self-heal: system prep incomplete  attempting configure…")
         try:
             ok, out = configure_linux_spflash_system(progress_cb=None, app_dir=app_dir)
             actions.append(f"system prep: {'ok' if ok else 'needs admin'}")
@@ -4117,7 +3921,7 @@ def linux_spflash_self_heal_port_access(
                 silent_print(str(out)[:500])
         except Exception as e:
             actions.append(f"system prep skipped: {e}")
-    # Package files (Qt libs) can also surface as odd launch failures — cheap check.
+    # Package files (Qt libs) can also surface as odd launch failures  cheap check.
     try:
         missing = linux_spflash_missing_files(app_dir)
         if missing:
@@ -4176,7 +3980,7 @@ def linux_spflash_wait_for_clean_reconnect(
     ports = list_mediatek_serial_ports()
     if require_unplug_if_present and ports:
         _emit(
-            "Port still present after COM open fail — fully unplug the player now "
+            "Port still present after COM open fail  fully unplug the player now "
             "(USB cable out) so we can take a clean connection…"
         )
         deadline = time.time() + unplug_timeout_s
@@ -4188,17 +3992,17 @@ def linux_spflash_wait_for_clean_reconnect(
                 stop_install_competitor_processes(release_serial_holders=True)
             ports = list_mediatek_serial_ports()
             if not ports and not list(Path("/dev").glob("ttyACM*")):
-                _emit("Device unplugged — good. Waiting a moment…")
+                _emit("Device unplugged  good. Waiting a moment…")
                 time.sleep(0.8)
                 break
             time.sleep(0.25)
         else:
             _emit(
-                "Still seeing a serial port after wait — continuing anyway "
+                "Still seeing a serial port after wait  continuing anyway "
                 "(will retry Search usb)."
             )
     else:
-        _emit("No MediaTek port present — waiting for you to plug in when prompted…")
+        _emit("No MediaTek port present  waiting for you to plug in when prompted…")
 
     stop_install_competitor_processes(release_serial_holders=True)
     _linux_chmod_mtk_tty_nodes_best_effort()
@@ -4226,7 +4030,7 @@ def linux_spflash_wait_for_clean_reconnect(
                 fd = open_linux_serial_port_with_retry(tty, timeout_s=2.5)
                 os.close(fd)
             except OSError:
-                _emit(f"Saw {tty} but cannot open yet — waiting…")
+                _emit(f"Saw {tty} but cannot open yet  waiting…")
                 time.sleep(0.2)
                 continue
             # Free any racer that grabbed it between our open and flash_tool start
@@ -4242,7 +4046,7 @@ def linux_spflash_wait_for_clean_reconnect(
             time.sleep(0.15)
             return True
         time.sleep(0.3)
-    _emit("Timed out waiting for a clean plug-in — retrying SP Flash Tool Search usb anyway.")
+    _emit("Timed out waiting for a clean plug-in  retrying SP Flash Tool Search usb anyway.")
     return False
 
 
@@ -4252,7 +4056,7 @@ def prepare_linux_spflash_runtime(app_dir=None, ensure_package=True):
 
     When ensure_package is True (default), self-heals missing flash_tool package
     files (Qt libs under lib/, DA/.so beside the binary) from the local zip or a
-    re-download — this fixes ``libQtWebKit.so.4: cannot open shared object file``
+    re-download  this fixes ``libQtWebKit.so.4: cannot open shared object file``
     when only the binary remained after a partial install.
 
     Also fixes option.ini paths, best-effort stops ModemManager/brltty, chmods
@@ -4327,7 +4131,7 @@ def spflash_connect_status_text(device_label, device_model=None):
 
 
 def spflash_success_status_text(device_label=None, device_model=None):
-    """Status after a successful flash — model-aware power-on button."""
+    """Status after a successful flash  model-aware power-on button."""
     model = device_model
     if not model and device_label:
         model = device_label  # "Y1" / "Y2" work with is_y*_model
@@ -4365,7 +4169,7 @@ def linux_spflash_com_port_fail_message(device_label=None):
     except Exception:
         holders = {}
 
-    # Hallmark-style error: what happened → why → what to do (community steps first).
+    # Hallmark-style error: what happened  why  what to do (community steps first).
     parts = [
         f"We found your {label} on USB, but the flash tool could not open "
         f"the download connection (S_COM_PORT_OPEN_FAIL / 1013).",
@@ -4380,7 +4184,7 @@ def linux_spflash_com_port_fail_message(device_label=None):
         "2. Close any other flash tools or terminal windows that might talk to the player.",
         "3. In this app, run SP Flash Tool setup once if you never have "
         "(installs USB permission rules; you may need your password).",
-        "4. Start install again — wait for the connect prompt, then power the "
+        "4. Start install again  wait for the connect prompt, then power the "
         f"{label} fully off and plug USB only then.",
         "5. Use a short, data-capable cable on a direct USB port "
         "(not a hub if you can avoid it).",
@@ -4401,9 +4205,9 @@ def linux_spflash_com_port_fail_message(device_label=None):
             [
                 "",
                 "Good news: this app can open the port right now. The flash tool "
-                "often tries a few milliseconds earlier than udev finishes — we "
-                "already lengthen that window and retry. A full unplug → wait for "
-                "the prompt → plug cycle is still the most reliable fix on Linux.",
+                "often tries a few milliseconds earlier than udev finishes  we "
+                "already lengthen that window and retry. A full unplug  wait for "
+                "the prompt  plug cycle is still the most reliable fix on Linux.",
             ]
         )
     if "ModemManager: active" in diag:
@@ -4448,10 +4252,10 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
                 if force_download:
                     progress_cb("Refreshing SP Flash Tool package…", 2)
                 elif not sp_flash_tool_binary_ready(app_dir):
-                    progress_cb("SP Flash Tool not found — starting first-time setup…", 2)
+                    progress_cb("SP Flash Tool not found  starting first-time setup…", 2)
                 else:
                     progress_cb(
-                        f"SP Flash Tool incomplete ({missing[0]}) — repairing…",
+                        f"SP Flash Tool incomplete ({missing[0]})  repairing…",
                         2,
                     )
             pkg_ok, pkg_msg = ensure_linux_spflash_package_files(
@@ -4463,7 +4267,7 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
                 return False, pkg_msg
         else:
             if progress_cb:
-                progress_cb("SP Flash Tool package complete — verifying permissions…", 50)
+                progress_cb("SP Flash Tool package complete  verifying permissions…", 50)
             ensure_sp_flash_tool_executable(app_dir)
 
         # Linux-only config hygiene (no root required)
@@ -4496,7 +4300,7 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
                 + ", ".join(still[:10])
             )
         ensure_sp_flash_tool_executable(app_dir)
-        # Skip package re-check inside prepare — just verified above.
+        # Skip package re-check inside prepare  just verified above.
         prepare_linux_spflash_runtime(app_dir, ensure_package=False)
         if progress_cb:
             progress_cb("SP Flash Tool setup complete", 100)
@@ -4542,7 +4346,7 @@ def open_linux_serial_port_with_retry(
     flags=None,
 ):
     """
-    Open a serial device the way SP Flash Tool needs to — with patience.
+    Open a serial device the way SP Flash Tool needs to  with patience.
 
     SPFT's stock open window is ~40ms; udev often applies MODE=0666 later, so
     the first open fails with EACCES even though a later open succeeds. This
@@ -4598,7 +4402,7 @@ def claim_mediatek_spflash_serial_port(
     The Updater can often open /dev/ttyACM* *after* SP Flash Tool has already
     failed: SPFT races the kernel uevent (~ms), while our open runs later when
     udev has set MODE=0666. SPFT "can open" in the GUI when the user is slower
-    (scatter load + click Download) — same race, more time.
+    (scatter load + click Download)  same race, more time.
 
     Strategy (same ability, used *before* flash_tool)::
 
@@ -4610,7 +4414,7 @@ def claim_mediatek_spflash_serial_port(
     Important: do **not** pin this path into SP Flash Tool's ``com-port=`` on Linux
     for the whole flash_tool run. Console mode then prints
     "searching user specified com port" and waits forever if the node
-    re-enumerates (ACM0→ACM1) or BROM drops after our open/close. Prefer
+    re-enumerates (ACM0ACM1) or BROM drops after our open/close. Prefer
     empty com-port (auto "Search usb") and LD_PRELOAD open-retry instead.
 
     Returns dict {tty, mode, vid, pid, ...} or None on timeout/cancel.
@@ -4655,7 +4459,7 @@ def claim_mediatek_spflash_serial_port(
             if tty not in seen:
                 seen.add(tty)
                 _emit(
-                    f"Found {tty} mode={info.get('mode')} pid={info.get('pid')} — "
+                    f"Found {tty} mode={info.get('mode')} pid={info.get('pid')}  "
                     "opening (retrying until udev allows access)…"
                 )
             try:
@@ -4665,10 +4469,10 @@ def claim_mediatek_spflash_serial_port(
             try:
                 fd = open_linux_serial_port_with_retry(tty, timeout_s=4.0)
             except OSError as e:
-                _emit(f"Still cannot open {tty}: {e} — waiting…")
+                _emit(f"Still cannot open {tty}: {e}  waiting…")
                 time.sleep(0.15)
                 continue
-            # Port is open — same moment SPFT needs. Settle + release for flash_tool.
+            # Port is open  same moment SPFT needs. Settle + release for flash_tool.
             try:
                 try:
                     os.chmod(tty, 0o666)
@@ -4686,7 +4490,7 @@ def claim_mediatek_spflash_serial_port(
                 fd2 = open_linux_serial_port_with_retry(tty, timeout_s=2.0)
                 os.close(fd2)
             except OSError as e:
-                _emit(f"Port {tty} opened once then failed re-check: {e} — retrying…")
+                _emit(f"Port {tty} opened once then failed re-check: {e}  retrying…")
                 time.sleep(0.1)
                 continue
             info = dict(info)
@@ -4696,7 +4500,7 @@ def claim_mediatek_spflash_serial_port(
             return info
         if not ports:
             _emit(
-                "No MediaTek port yet — power off the player and connect USB "
+                "No MediaTek port yet  power off the player and connect USB "
                 "(hold vol if needed for BROM)…"
             )
         time.sleep(0.2)
@@ -4879,7 +4683,7 @@ def build_spflash_rom_list_xml(scatter_path, app_dir=None):
     Build <rom-list>…</rom-list> from scatter SYS indices.
 
     SP Flash Tool rom index N maps to scatter partition_index SYSN. Y2's extra
-    EBR2/EXPDB shifts ANDROID/CACHE/USRDATA vs Y1 — hardcoding Y1 indices for Y2
+    EBR2/EXPDB shifts ANDROID/CACHE/USRDATA vs Y1  hardcoding Y1 indices for Y2
     maps cache.img onto ANDROID and aborts with S_DL_LOAD_REGION_IS_OVERLAP.
     """
     app_dir = Path(app_dir or get_firmware_app_dir())
@@ -4935,7 +4739,7 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
         else:
             errors.append(f"Missing scatter file: {scatter_path.name}")
             return False, errors, warnings
-    # Informational only — do not block install on chip-family notes
+    # Informational only  do not block install on chip-family notes
     family = _read_scatter_chip_family(scatter_path)
     if family and resolved:
         if (family == "Y1" and is_y2_model(resolved)) or (
@@ -4969,7 +4773,7 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
             msg = (
                 f"{part['file']} is {actual} bytes vs scatter {part['name']} "
                 f"{part['size']} bytes (0x{part['size']:x}) in {scatter_path.name} "
-                f"— continuing; SP Flash Tool will decide"
+                f" continuing; SP Flash Tool will decide"
             )
             warnings.append(msg)
             silent_print(f"SPFT preflight: {msg}")
@@ -4998,7 +4802,7 @@ def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_di
     resolved = resolve_device_model_for_install(device_model)
     config = get_flash_config(resolved)
     if not config:
-        raise FileNotFoundError("Unknown device model — cannot build SP Flash Tool XML")
+        raise FileNotFoundError("Unknown device model  cannot build SP Flash Tool XML")
     template = app_dir / config["install_rom_sp_xml"]
     if not template.is_file():
         raise FileNotFoundError(f"Missing install template: {template}")
@@ -5010,7 +4814,7 @@ def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_di
         text,
         count=1,
     )
-    # Rebuild rom-list from the scatter SYS indices (Y2 ≠ Y1 index map).
+    # Rebuild rom-list from the scatter SYS indices (Y2  Y1 index map).
     scatter_path = app_dir / config["scatter_txt"]
     try:
         rom_list_xml = build_spflash_rom_list_xml(scatter_path, app_dir=app_dir)
@@ -5050,7 +4854,7 @@ def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_di
             text,
             count=1,
         )
-    # Pin or clear com-port. Never pin a path that does not currently exist —
+    # Pin or clear com-port. Never pin a path that does not currently exist 
     # that skips auto-detect and can exit before the user can plug in.
     # Accept either a path string or a port dict from select_spflash_com_port().
     if isinstance(com_port, dict):
@@ -5069,7 +4873,7 @@ def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_di
     else:
         if com_port and not Path(com_port).exists():
             silent_print(
-                f"Ignoring stale com-port {com_port} (not present) — using auto-detect"
+                f"Ignoring stale com-port {com_port} (not present)  using auto-detect"
             )
         text = re.sub(r'com-port="[^"]*"', 'com-port=""', text, count=1)
         silent_print("SP Flash Tool runtime XML: auto-detect com-port (none pinned)")
@@ -5106,7 +4910,7 @@ def _write_history_ini_scatter(app_dir, scatter_txt):
                 if n:
                     history_ini_path.write_text(text2, encoding="utf-8")
                     return True
-            # Missing key — append under RecentOpenFile or create section
+            # Missing key  append under RecentOpenFile or create section
             if "[RecentOpenFile]" in text:
                 text2 = re.sub(
                     r"(?m)(\[RecentOpenFile\][^\[]*)",
@@ -5148,7 +4952,7 @@ def prepare_sp_flash_tool_files(device_model=None, zip_path=None, extracted_file
 
     Call before firmware zip extract, after extract, at app launch, and before
     opening the SP Flash Tool GUI so scatterHistory always matches the active
-    model (Y1 → MT6572_Android_scatter.txt, Y2 → MT6582_Android_scatter.txt).
+    model (Y1  MT6572_Android_scatter.txt, Y2  MT6582_Android_scatter.txt).
     Users should never need to browse for a scatter file.
     """
     try:
@@ -7013,7 +6817,7 @@ class SPFlashToolWorker(QThread):
         if not ok:
             msg = (
                 f"Cannot start SP Flash Tool for {self.device_label}: image/scatter "
-                f"check failed.\n\n" + "\n".join(f"• {e}" for e in errors)
+                f"check failed.\n\n" + "\n".join(f" {e}" for e in errors)
             )
             raise RuntimeError(msg)
 
@@ -7024,7 +6828,7 @@ class SPFlashToolWorker(QThread):
             # Never pin a single port on Linux console mode. Pinned com-port makes
             # flash_tool print "searching user specified com port" and hang if the
             # node re-enumerates or BROM drops (common after a probe open/close).
-            # Empty com-port → "Search usb" auto-detect + LD_PRELOAD open-retry.
+            # Empty com-port  "Search usb" auto-detect + LD_PRELOAD open-retry.
             if com_port:
                 silent_print(
                     f"Linux: not pinning com-port={com_port} "
@@ -7033,7 +6837,7 @@ class SPFlashToolWorker(QThread):
             com_port = None
             if len(ports) > 1:
                 silent_print(
-                    f"WARNING: {len(ports)} MediaTek serial ports present — "
+                    f"WARNING: {len(ports)} MediaTek serial ports present  "
                     "unplug devices you are not flashing"
                 )
         # Only pin if the node still exists (Windows / explicit request)
@@ -7063,7 +6867,7 @@ class SPFlashToolWorker(QThread):
         ports = list_mediatek_serial_ports()
         if not ports:
             silent_print(
-                "Linux: no MediaTek port yet — SP Flash Tool will Search usb "
+                "Linux: no MediaTek port yet  SP Flash Tool will Search usb "
                 "(auto-detect, no pin)"
             )
             self.status_updated.emit(
@@ -7072,7 +6876,7 @@ class SPFlashToolWorker(QThread):
             )
             return True, None
 
-        # Already plugged — free holders, warn; do not open/close the port.
+        # Already plugged  free holders, warn; do not open/close the port.
         holders = linux_list_serial_port_holder_pids()
         if holders:
             silent_print(f"Preflight: serial holders present: {holders}")
@@ -7081,7 +6885,7 @@ class SPFlashToolWorker(QThread):
             f"{p.get('tty')} ({p.get('mode')})" for p in ports[:4]
         )
         silent_print(
-            f"Linux: MediaTek port already present ({modes}) — "
+            f"Linux: MediaTek port already present ({modes})  "
             "not probing open (avoids BROM/preloader disrupt); Search usb"
         )
         self.status_updated.emit(
@@ -7108,7 +6912,7 @@ class SPFlashToolWorker(QThread):
             "message": "",
         }
         # Linux: settle permissions if a port is already up; never pin com-port
-        # (pinned path → "searching user specified com port" forever on re-enum).
+        # (pinned path  "searching user specified com port" forever on re-enum).
         if is_linux_platform():
             ok_prep, _ = self._prepare_linux_port_access_before_flash(attempt, max_attempts)
             if not ok_prep:
@@ -7205,7 +7009,7 @@ class SPFlashToolWorker(QThread):
                         linux_release_serial_port_holders(exclude_pids=exclude)
                         _linux_chmod_mtk_tty_nodes_best_effort()
                         self.status_updated.emit(
-                            "Could not open the download port — cleared other tools "
+                            "Could not open the download port  cleared other tools "
                             "holding the connection. Waiting for the flash tool to retry…"
                         )
                     except Exception as e:
@@ -7235,7 +7039,7 @@ class SPFlashToolWorker(QThread):
             if please_wait_phase and not line.startswith("Search usb"):
                 self.show_please_wait_image.emit()
                 self.status_updated.emit(
-                    f"Loading firmware for your {self.device_label} — please wait…"
+                    f"Loading firmware for your {self.device_label}  please wait…"
                 )
                 continue
 
@@ -7271,7 +7075,7 @@ class SPFlashToolWorker(QThread):
                     self.show_installing_image.emit()
                     self.disable_update_button.emit()
                     self.status_updated.emit(
-                        f"Writing firmware to your {self.device_label} — keep USB connected…"
+                        f"Writing firmware to your {self.device_label}  keep USB connected…"
                     )
                 else:
                     # Soften raw flash_tool chatter for waiting users
@@ -7303,7 +7107,7 @@ class SPFlashToolWorker(QThread):
                         self.status_updated.emit(line)
                     else:
                         self.status_updated.emit(
-                            f"Installing on your {self.device_label} — do not unplug…"
+                            f"Installing on your {self.device_label}  do not unplug…"
                         )
                 elif (
                     line.startswith("Disconnect!")
@@ -7326,7 +7130,7 @@ class SPFlashToolWorker(QThread):
                         )
                 else:
                     self.status_updated.emit(
-                        f"Installing on your {self.device_label} — do not unplug…"
+                        f"Installing on your {self.device_label}  do not unplug…"
                     )
             elif completed_phase:
                 if line.startswith("Disconnect!"):
@@ -7357,14 +7161,14 @@ class SPFlashToolWorker(QThread):
             pass
         if flash_pid and is_linux_platform():
             try:
-                # Kill siblings only — not this process (already exiting)
+                # Kill siblings only  not this process (already exiting)
                 stop_sp_flash_tool_processes(exclude_pids=[os.getpid()])
             except Exception:
                 pass
 
         process.wait()
         # If SPFT exited during LoadRoms (before Search usb), treat as load/config
-        # failure — never as "you forgot to plug in". Also scan recent SPFT logs
+        # failure  never as "you forgot to plug in". Also scan recent SPFT logs
         # for 5016 when stdout did not surface the overlap string.
         if not reached_search_usb and not completed_phase and not overlap_error:
             try:
@@ -7500,7 +7304,7 @@ class SPFlashToolWorker(QThread):
                     if should_flip:
                         silent_print(
                             f"SPFT load failed with model={self.device_model}; "
-                            f"system.img suggests {size_hint} — retrying once"
+                            f"system.img suggests {size_hint}  retrying once"
                         )
                         self._sync_device_label(size_hint)
                         prepare_sp_flash_tool_files(size_hint)
@@ -7514,7 +7318,7 @@ class SPFlashToolWorker(QThread):
                         or (
                             f"The installation tool could not load the files for your "
                             f"{self.device_label} (scatter/layout error).\n\n"
-                            f"You do not need to plug the player in yet — this failed "
+                            f"You do not need to plug the player in yet  this failed "
                             f"while preparing files on the computer.\n\n"
                             f"Select the correct Device Model (Y1 or Y2), re-extract "
                             f"that model’s firmware zip, and try Install / Restore again."
@@ -7522,7 +7326,7 @@ class SPFlashToolWorker(QThread):
                     )
                     return
                 if last.get("message") and not last.get("com_port_open_fail"):
-                    # Preflight / hard error — do not retry COM heal
+                    # Preflight / hard error  do not retry COM heal
                     if (
                         "Cannot start SP Flash Tool" in last["message"]
                         or "image/scatter" in last["message"]
@@ -7540,7 +7344,7 @@ class SPFlashToolWorker(QThread):
                 )
                 if can_retry:
                     silent_print(
-                        f"SP Flash Tool COM open fail on attempt {attempt} — self-healing…"
+                        f"SP Flash Tool COM open fail on attempt {attempt}  self-healing…"
                     )
                     self.show_please_wait_image.emit()
                     # Never leave a sticky pin for Linux console mode.
@@ -7694,8 +7498,8 @@ class MTKWorker(QThread):
             self.progress_empty = "-"
         else:
             # Linux/macOS: Use box drawing characters
-            self.progress_filled = "█"
-            self.progress_empty = "░"
+            self.progress_filled = ""
+            self.progress_empty = ""
 
     def stop(self):
         """Stop the MTK worker"""
@@ -7705,12 +7509,12 @@ class MTKWorker(QThread):
         """Fix progress bar characters for platform compatibility"""
         if platform.system() == "Windows":
             # Replace box drawing characters with ASCII equivalents on Windows
-            line = line.replace("█", self.progress_filled)
-            line = line.replace("░", self.progress_empty)
+            line = line.replace("", self.progress_filled)
+            line = line.replace("", self.progress_empty)
             # Also handle other common box drawing characters that might appear
-            line = line.replace("â-ª", self.progress_filled)  # Common mojibake
-            line = line.replace("â", self.progress_filled)    # Partial mojibake
-            line = line.replace("ª", self.progress_empty)     # Partial mojibake
+            line = line.replace("-", self.progress_filled)  # Common mojibake
+            line = line.replace("", self.progress_filled)    # Partial mojibake
+            line = line.replace("", self.progress_empty)     # Partial mojibake
         return line
 
     def _clear_mtk_state(self, *dirs):
@@ -7811,7 +7615,7 @@ class MTKWorker(QThread):
         return ok, last_line, saw_progress
 
     def _run_named_w_staged(self, stages, meta, app_dir, device_label="player"):
-        """Run named ``mtk.py w`` stage(s) — addresses from on-device partition table."""
+        """Run named ``mtk.py w`` stage(s)  addresses from on-device partition table."""
         install_root = Path((meta or {}).get("install_root") or app_dir)
         successful = True
         fail_msg = ""
@@ -7833,7 +7637,7 @@ class MTKWorker(QThread):
                     if self.should_stop:
                         break
                     self.status_updated.emit(
-                        f"{device_label} flash ({name}) try {attempt}/{retries} — "
+                        f"{device_label} flash ({name}) try {attempt}/{retries}  "
                         f"power off the player and connect USB when asked"
                     )
                     self.show_reconnect_image.emit()
@@ -7872,7 +7676,7 @@ class MTKWorker(QThread):
                         f"Optional stage {name} failed (continuing): {last_err}"
                     )
                     self.status_updated.emit(
-                        f"Optional stage {name} skipped after error — continuing"
+                        f"Optional stage {name} skipped after error  continuing"
                     )
         except Exception as e:
             successful = False
@@ -7891,7 +7695,7 @@ class MTKWorker(QThread):
             )
         else:
             self.mtk_completed.emit(
-                False, fail_msg or "Install process interrupted — please try again"
+                False, fail_msg or "Install process interrupted  please try again"
             )
 
     def _run_y2_staged(self, stages, meta, app_dir):
@@ -7899,7 +7703,7 @@ class MTKWorker(QThread):
         self._run_named_w_staged(stages, meta, app_dir, device_label="Y2")
 
     def _run_scatter_wo_staged(self, stages, meta, app_dir, device_label="player"):
-        """Deprecated alias — installs use named ``w``, not scatter offsets."""
+        """Deprecated alias  installs use named ``w``, not scatter offsets."""
         self._run_named_w_staged(stages, meta, app_dir, device_label=device_label)
 
     def run(self):
@@ -7941,10 +7745,10 @@ class MTKWorker(QThread):
         if desparsed:
             silent_print(f"MTK image prep desparsed: {desparsed}")
             self.status_updated.emit(
-                f"Prepared raw images ({', '.join(desparsed)}) — building flash plan…"
+                f"Prepared raw images ({', '.join(desparsed)})  building flash plan…"
             )
         else:
-            self.status_updated.emit("Images ready (raw) — building flash plan…")
+            self.status_updated.emit("Images ready (raw)  building flash plan…")
 
         try:
             cmd = build_mtk_write_command(
@@ -7979,15 +7783,15 @@ class MTKWorker(QThread):
         if mode == "scatter_wo_unbrick":
             self.status_updated.emit(
                 f"Full-system install for your {device_label} "
-                f"(scatter offsets + preloader — unbrick-capable)…"
+                f"(scatter offsets + preloader  unbrick-capable)…"
             )
         else:
             self.status_updated.emit(
                 f"Full-system install for your {device_label} "
-                f"(named partitions — unbrick-capable)…"
+                f"(named partitions  unbrick-capable)…"
             )
 
-        # Full package write (Y2 scatter wo / Y1 named w) — install doubles as unbrick
+        # Full package write (Y2 scatter wo / Y1 named w)  install doubles as unbrick
         if stages:
             self._run_named_w_staged(stages, meta, app_dir, device_label=device_label)
             return
@@ -8276,7 +8080,7 @@ class MTKWorker(QThread):
                                 self.show_instructions_image.emit()
                             last_status_update = time.time()  # Update status time
 
-                    # Check for BROM status (indicates waiting for device) —
+                    # Check for BROM status (indicates waiting for device) 
                     # show connection instructions so the user knows to use the
                     # paperclip/pin and plug in USB; not the please-wait spinner.
                     if "brom" in line.lower():
@@ -8563,7 +8367,7 @@ class DownloadWorker(QThread):
         try:
             self.status_updated.emit("Downloading...")
 
-            # Remember the GitHub asset URL — its real asset name is the only
+            # Remember the GitHub asset URL  its real asset name is the only
             # reliable Y1/Y2 evidence for fallback-mapped repos (see resolve_asset_model).
             self.install_asset_url = self.download_url
             asset_model = resolve_asset_model(self.download_url)
@@ -8613,7 +8417,7 @@ class DownloadWorker(QThread):
                                 self.status_updated.emit(status_msg)
 
             # Y2 firmware on macOS (or --y2-mac-flow test flag): no need to
-            # extract — the manufacturer's manual install tool consumes the zip
+            # extract  the manufacturer's manual install tool consumes the zip
             # directly, and extraction would only trigger the blocked MTKClient path.
             # The asset URL is checked first because the local zip is saved under
             # the fallback repo name and would be misread as Y1.
@@ -8627,7 +8431,7 @@ class DownloadWorker(QThread):
                 remember_install_device_model(
                     "Y2", zip_path=zip_path.name, extracted_files=None
                 )
-                self.status_updated.emit("Download complete — manual install required.")
+                self.status_updated.emit("Download complete  manual install required.")
                 self.download_completed.emit(
                     True,
                     "Y2 firmware downloaded. Your Mac will use the manufacturer's "
@@ -10128,19 +9932,19 @@ class ThemeInstallWorker(QThread):
 
                     if return_code == 0:
                         success_count += 1
-                        self.status_update.emit(f"✓ Theme '{theme_name}' installed successfully")
+                        self.status_update.emit(f"Theme '{theme_name}' installed successfully")
                     else:
                         error_msg = '\n'.join(push_output_lines) if push_output_lines else "Unknown error"
                         # Check for read-only file system error - indicates USB Storage mode is active
                         if "read-only file system" in error_msg.lower() or "Read-only file system" in error_msg:
                             silent_print(f"Read-only file system detected for theme '{theme_name}' - USB Storage mode likely active")
                             read_only_failed_themes.append(theme_folder_path)
-                            self.status_update.emit(f"✗ Theme '{theme_name}' failed (read-only), will retry via USB storage mode")
+                            self.status_update.emit(f"Theme '{theme_name}' failed (read-only), will retry via USB storage mode")
                         else:
-                            self.status_update.emit(f"✗ Failed to install theme '{theme_name}'")
+                            self.status_update.emit(f" Failed to install theme '{theme_name}'")
 
                 except Exception as e:
-                    self.status_update.emit(f"✗ Error installing theme: {str(e)[:100]}")
+                    self.status_update.emit(f" Error installing theme: {str(e)[:100]}")
                     silent_print(f"Error installing theme folder {theme_folder_path}: {e}")
 
             self.progress_update.emit(total, total)
@@ -11815,7 +11619,7 @@ class DragDropStackedWidget(QStackedWidget):
 
         is_connected, is_fast_update = self._check_adb_status()
 
-        # Check for rom*.zip files — firmware installs never need ADB, so the
+        # Check for rom*.zip files  firmware installs never need ADB, so the
         # drop overlay is always offered for them (the device may be off, or not
         # connected / in DFU mode yet).
         rom_zip_files = [f for f in files if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip')]
@@ -11897,8 +11701,8 @@ class DragDropStackedWidget(QStackedWidget):
     def show_operation_overlay(self, mode='smart_drop'):
         """Show persistent overlay indicating an in-progress Smart Drop or Fast Update."""
         messages = {
-            'fast_update': "⚡ Fast Update in progress…",
-            'fast_drop': "⚡ Fast Drop in progress…",
+            'fast_update': "Fast Update in progress…",
+            'fast_drop': "Fast Drop in progress…",
             'smart_drop': "Smart Drop in progress…"
         }
         self._operation_overlay_active = True
@@ -11941,7 +11745,7 @@ class DragDropStackedWidget(QStackedWidget):
             files = [url.toLocalFile() for url in urls if url.isLocalFile()]
             rom_zip_files = [f for f in files if fnmatch.fnmatch(Path(f).name.lower(), 'rom*.zip')]
 
-            # ADB is only required for content that transfers to a live device —
+            # ADB is only required for content that transfers to a live device 
             # rom*.zip firmware installs work with the device unplugged too.
             is_connected, _ = self._check_adb_status()
             if not is_connected and not rom_zip_files:
@@ -12026,7 +11830,7 @@ class DragDropStackedWidget(QStackedWidget):
 
                 is_connected, is_fast_update = self._check_adb_status()
 
-                # rom*.zip firmware installs are always allowed — they don't need a
+                # rom*.zip firmware installs are always allowed  they don't need a
                 # device connection. Everything else still requires a live device.
                 if non_rom_files and not is_connected:
                     QMessageBox.warning(
@@ -12048,7 +11852,7 @@ class DragDropStackedWidget(QStackedWidget):
                     event.ignore()
                     return
 
-                # Route everything through the shared Smart Drop handler — rom*.zip
+                # Route everything through the shared Smart Drop handler  rom*.zip
                 # files become Install / Restore jobs, update*.zip files become Fast
                 # Updates, and themes/media/APKs transfer to the connected device.
                 if hasattr(self.parent_gui, 'handle_smart_drop_payload'):
@@ -12205,7 +12009,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Safety net if the data loader never reports back
             QTimer.singleShot(8000, self._schedule_startup_notice)
 
-        # Linux/macOS: ensure simg2img is present for MTKClient sparse→raw prep.
+        # Linux/macOS: ensure simg2img is present for MTKClient sparseraw prep.
         if not is_windows_platform():
             QTimer.singleShot(400, self._ensure_simg2img_on_startup)
 
@@ -12309,18 +12113,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def _schedule_startup_notice(self):
         """Show the Solar notice once, after the first load pass yields the UI thread."""
-        # Never open Solar during Linux SPFT setup / admin-password explanation.
-        if self._linux_blocks_startup_notice():
-            self._startup_notice_pending_after_linux_setup = True
-            silent_print("Deferring Solar startup notice until Linux SP Flash Tool setup finishes")
-            return
-        if getattr(self, "_startup_notice_scheduled", False):
-            return
-        self._startup_notice_scheduled = True
-        self._startup_notice_pending_after_linux_setup = False
-        # Wait a beat so combos/lists can paint and any queued load work can finish.
-        # Non-modal notice must not open while is_online / USB scans are mid-flight.
-        QTimer.singleShot(1200, self._show_startup_notice)
+        return  # Solar startup notice disabled
 
     def linux_spflash_ready(self):
         """True when Linux SP Flash Tool is staged and not forced into MTK-only fallback."""
@@ -12364,17 +12157,17 @@ class FirmwareDownloaderGUI(QMainWindow):
         )
         box.setInformativeText(
             "You will be asked for your administrator (sudo) password to:\n\n"
-            "• Install udev rules so unprivileged users can open /dev/ttyACM* "
-            "(including the standard 99-ttyacms.rules — same as:\n"
+            " Install udev rules so unprivileged users can open /dev/ttyACM* "
+            "(including the standard 99-ttyacms.rules  same as:\n"
             "    sudo install -m 644 99-ttyacms.rules /etc/udev/rules.d/\n"
             "    sudo udevadm control --reload-rules && sudo udevadm trigger)\n"
-            "• Install MediaTek USB + serial access rules for BROM/preloader\n"
-            "• Blacklist ModemManager from MediaTek ports (common COM port open fail)\n"
-            "• Add your user to the right serial group (dialout on Ubuntu/Fedora, uucp on Arch)\n"
-            "• Install a few system libraries required by SP Flash Tool on this Linux distro\n\n"
+            " Install MediaTek USB + serial access rules for BROM/preloader\n"
+            " Blacklist ModemManager from MediaTek ports (common COM port open fail)\n"
+            " Add your user to the right serial group (dialout on Ubuntu/Fedora, uucp on Arch)\n"
+            " Install a few system libraries required by SP Flash Tool on this Linux distro\n\n"
             "What does not need root:\n"
-            "• Downloading SP Flash Tool into this app folder\n"
-            "• Extracting the tool files next to firmware_downloader.py\n\n"
+            " Downloading SP Flash Tool into this app folder\n"
+            " Extracting the tool files next to firmware_downloader.py\n\n"
             "Your password is entered only in your system’s secure password dialog "
             "(polkit or askpass). This app never sees or stores your password.\n\n"
             "If you cancel the password prompt, Y1 installs can still use MTKClient as a "
@@ -12442,7 +12235,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         model = resolve_device_model_for_install(device_model)
         mtk_methods = {"guided", "mtkclient"}
 
-        # Windows never offers MTKClient — force SP Flash Tool.
+        # Windows never offers MTKClient  force SP Flash Tool.
         if is_windows_platform() and method in mtk_methods:
             silent_print("Windows: redirecting MTKClient method to SP Flash Tool")
             self.installation_method = "spflash"
@@ -12450,11 +12243,11 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Non-x86 Linux never uses SP Flash Tool.
         if is_linux_platform() and not linux_spflash_arch_supported():
-            # Y2 MTKclient is blocked on all platforms — block before the early return.
+            # Y2 MTKclient is blocked on all platforms  block before the early return.
             if is_y2_model(model) and not mtkclient_allowed_for_model(model):
                 QMessageBox.warning(
                     self,
-                    "Y2 ROM — x86 Linux or Windows Required",
+                    "Y2 ROM  x86 Linux or Windows Required",
                     "Y2 ROM installation via MTKClient is temporarily unavailable on this architecture.\n\n"
                     "Please use an x86/x86_64 Linux or Windows computer with SP Flash Tool "
                     "(Guided or Terminal mode) to install the Y2 stock ROM.\n\n"
@@ -12479,7 +12272,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         # when the flag is off *and* SP Flash Tool cannot take over.
         if is_y2_model(model) and method in mtk_methods and not mtkclient_allowed_for_model(model):
             if is_linux_platform() and self.linux_spflash_ready():
-                silent_print("Y2 MTKClient disabled — redirecting to SP Flash Tool")
+                silent_print("Y2 MTKClient disabled  redirecting to SP Flash Tool")
                 self.installation_method = "spflash"
                 return True
             if is_windows_platform():
@@ -12489,7 +12282,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if is_macos_platform():
                 QMessageBox.warning(
                     self,
-                    "Y2 ROM — Linux or Windows Required",
+                    "Y2 ROM  Linux or Windows Required",
                     "Y2 ROM installation via MTKClient is temporarily unavailable.\n\n"
                     "To install a Y2 stock ROM please use a Linux or Windows "
                     "computer with SP Flash Tool (Guided or Terminal mode).\n\n"
@@ -12498,7 +12291,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 QMessageBox.warning(
                     self,
-                    "Y2 ROM — SP Flash Tool Required",
+                    "Y2 ROM  SP Flash Tool Required",
                     "Y2 ROM installation via MTKClient is temporarily disabled.\n\n"
                     "Please use SP Flash Tool (Guided or Terminal mode) to install "
                     "the Y2 stock ROM on this computer.",
@@ -12577,7 +12370,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"simg2img setup failed: {detail}")
                 try:
                     self.status_label.setText(
-                        "simg2img not installed — will retry before the next MTKClient flash"
+                        "simg2img not installed  will retry before the next MTKClient flash"
                     )
                 except Exception:
                     pass
@@ -12731,15 +12524,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             try:
                 QMessageBox.warning(
                     self,
-                    "SP Flash Tool setup incomplete — using MTKClient for Y1",
+                    "SP Flash Tool setup incomplete  using MTKClient for Y1",
                     "SP Flash Tool could not be fully set up on this system.\n\n"
                     f"{message}\n\n"
                     "What this means:\n"
-                    "• Y1 firmware installs will use MTKClient Guided as the default\n"
-                    "• Y2 firmware installs still need SP Flash Tool — the app will offer "
+                    " Y1 firmware installs will use MTKClient Guided as the default\n"
+                    " Y2 firmware installs still need SP Flash Tool  the app will offer "
                     "to run setup again if you try a Y2 install\n\n"
                     "You can retry SP Flash Tool setup any time by choosing an SP Flash Tool "
-                    "method in Settings → Installation, or by starting a Y2 install.\n\n"
+                    "method in Settings  Installation, or by starting a Y2 install.\n\n"
                     "Admin password was needed only for USB drivers/rules and system libraries; "
                     "the tool itself installs into this app folder.",
                 )
@@ -12754,93 +12547,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._schedule_startup_notice()
 
     def _show_startup_notice(self):
-        """Show Solar availability notice without freezing the app.
-
-        Fully non-modal (same pattern as the flash-tool warning). Window-modal
-        dialogs at startup blocked the main window while concurrent main-thread
-        work (network checks, USB scans) still ran, so users saw a frozen UI.
-        """
-        try:
-            # Critical: never open Solar over Linux admin-password / SPFT setup UI.
-            if self._linux_blocks_startup_notice():
-                self._startup_notice_scheduled = False
-                self._startup_notice_pending_after_linux_setup = True
-                silent_print("Skipping Solar notice while Linux SP Flash Tool setup is active")
-                return
-
-            existing = getattr(self, "_startup_notice_dialog", None)
-            if existing is not None:
-                try:
-                    if existing.isVisible():
-                        existing.raise_()
-                        return
-                except RuntimeError:
-                    # Dialog already deleted (WA_DeleteOnClose)
-                    self._startup_notice_dialog = None
-
-            # Don't steal focus / block the main window during remaining startup work.
-            dialog = QDialog(self)
-            dialog.setWindowTitle("Solar is available for Y1")
-            dialog.setMinimumWidth(500)
-            dialog.setWindowModality(Qt.NonModal)
-            dialog.setModal(False)
-            dialog.setAttribute(Qt.WA_DeleteOnClose, True)
-
-            layout = QVBoxLayout(dialog)
-            layout.setContentsMargins(16, 16, 16, 16)
-            layout.setSpacing(12)
-
-            solar_link = f"<a href='{SOLAR_PROJECT_URL}'>Solar</a>"
-
-            body = QLabel(
-                f"<h3 style='margin-top: 0; margin-bottom: 12px;'>{solar_link} is available in Innioasis Updater CE</h3>"
-                f"<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
-                f"{solar_link} is a custom firmware for Y1 that turns on Wi-Fi and unlocks lots of new features. "
-                f"You can install it right here in Updater.</p>"
-                "<p style='margin-top: 0; margin-bottom: 8px; line-height: 1.45;'>"
-                "<b>What Solar brings to the Y1</b></p>"
-                "<ul style='margin-top: 0; margin-bottom: 12px; padding-left: 20px; line-height: 1.5;'>"
-                "<li style='margin-bottom: 4px;'><b>YouTube</b> video and audio: stream or download offline, without ads</li>"
-                "<li style='margin-bottom: 4px;'><b>Deezer</b> streaming and downloads without ads</li>"
-                "<li style='margin-bottom: 4px;'><b>Soulseek</b> file sharing so you can find and download music</li>"
-                "<li style='margin-bottom: 4px;'><b>Navidrome</b> for your own music library</li>"
-                "<li style='margin-bottom: 4px;'><b>Flow</b>: Cover Flow-style album browsing on the device</li>"
-                "<li style='margin-bottom: 4px;'>Download <b>themes</b> straight onto the Y1</li>"
-                "<li style='margin-bottom: 4px;'><b>Updates over Wi-Fi</b> (no computer needed)</li>"
-                "<li style='margin-bottom: 0;'>Podcasts, Quick Access Menu, and more</li>"
-                "</ul>"
-                "<p style='margin-top: 0; margin-bottom: 12px; line-height: 1.45;'>"
-                "<i>Solar is still a work in progress and gets better all the time. Y2 support is coming soon.</i></p>"
-                "<p style='margin-top: 0; margin-bottom: 0; line-height: 1.45;'>"
-                "Pick <b>Solar</b> from the <b>Software</b> dropdown, then hit "
-                "<b>Install / Restore</b>.</p>"
-            )
-            body.setTextFormat(Qt.RichText)
-            body.setWordWrap(True)
-            body.setOpenExternalLinks(True)
-            body.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-            body.setTextInteractionFlags(Qt.TextBrowserInteraction)
-            layout.addWidget(body)
-
-            buttons = QDialogButtonBox()
-            ok_btn = buttons.addButton("OK", QDialogButtonBox.AcceptRole)
-            find_out_btn = buttons.addButton("Find Out More", QDialogButtonBox.ActionRole)
-            ok_btn.clicked.connect(dialog.close)
-            find_out_btn.clicked.connect(lambda: webbrowser.open(SOLAR_PROJECT_URL))
-            layout.addWidget(buttons)
-
-            def _clear_startup_notice_ref(*_args):
-                if getattr(self, "_startup_notice_dialog", None) is dialog:
-                    self._startup_notice_dialog = None
-
-            dialog.finished.connect(_clear_startup_notice_ref)
-            dialog.destroyed.connect(_clear_startup_notice_ref)
-            self._startup_notice_dialog = dialog
-            # show() only - never exec() - keeps the main event loop free
-            dialog.show()
-        except Exception as e:
-            silent_print(f"Error showing startup notice: {e}")
-            self._startup_notice_dialog = None
+        """Show Solar availability notice without freezing the app."""
+        return  # Solar startup notice disabled
 
     def update_creator_label(self):
         """Update the creator label text and styling based on theme."""
@@ -12965,7 +12673,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _show_flash_tool_warning(self, flash_processes):
         """Non-modal warning so startup stays responsive."""
         try:
-            process_list = '\n'.join(f"• {process}" for process in flash_processes)
+            process_list = '\n'.join(f" {process}" for process in flash_processes)
             msg_box = QMessageBox(self)
             msg_box.setWindowTitle("Flash Tool Detected")
             msg_box.setIcon(QMessageBox.Warning)
@@ -13160,9 +12868,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 "The USB Development Kit (UsbDk) driver is no longer needed for Innioasis Updater CE.\n\n"
                 "Would you like to remove it to clean up your system?\n\n"
                 "This will:\n"
-                "• Uninstall the UsbDk driver\n"
-                "• Remove the UsbDk Runtime Library directory\n"
-                "• Reboot your PC to complete the cleanup"
+                " Uninstall the UsbDk driver\n"
+                " Remove the UsbDk Runtime Library directory\n"
+                " Reboot your PC to complete the cleanup"
             )
             msg_box.setIcon(QMessageBox.Information)
 
@@ -13242,7 +12950,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setInformativeText(
                 "The UsbDk driver has been removed from your system.\n\n"
                 "Please restart your PC to complete the cleanup process.\n\n"
-                "When you return to Innioasis Updater CE, you'll have a fully working setup! 🎉"
+                "When you return to Innioasis Updater CE, you'll have a fully working setup! "
             )
             msg_box.setIcon(QMessageBox.Information)
 
@@ -13291,7 +12999,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setInformativeText(
                 "The system is restarting to complete the UsbDk driver cleanup.\n\n"
                 "Innioasis Updater CE will close now.\n\n"
-                "Thank you for using Innioasis Updater CE! 🚀"
+                "Thank you for using Innioasis Updater CE! "
             )
             msg_box.setIcon(QMessageBox.Information)
 
@@ -13782,36 +13490,36 @@ class FirmwareDownloaderGUI(QMainWindow):
             if desktop_items:
                 message += "Desktop:\n"
                 for item in desktop_items:
-                    message += f"• {Path(item).name}\n"
+                    message += f" {Path(item).name}\n"
                 message += "\n"
 
             if desktop_subfolder_items:
                 message += "Desktop Subfolders:\n"
                 for item in desktop_subfolder_items:
-                    message += f"• {Path(item).name}\n"
+                    message += f" {Path(item).name}\n"
                 message += "\n"
 
             if start_menu_items:
                 message += "Start Menu:\n"
                 for item in start_menu_items:
-                    message += f"• {Path(item).name}\n"
+                    message += f" {Path(item).name}\n"
                 message += "\n"
 
             if start_menu_subfolder_items:
                 message += "Start Menu Subfolders:\n"
                 for item in start_menu_subfolder_items:
-                    message += f"• {Path(item).name}\n"
+                    message += f" {Path(item).name}\n"
                 message += "\n"
 
             if start_menu_folders:
                 message += "Start Menu Folders (will be deleted):\n"
                 for item in start_menu_folders:
-                    message += f"• {Path(item).name}\n"
+                    message += f" {Path(item).name}\n"
                 message += "\n"
 
             message += "This will clean up all old Y1 Helper and related shortcuts and ensure you have:\n"
-            message += "• Innioasis Updater.lnk on desktop\n"
-            message += "• Innioasis Toolkit.lnk on desktop\n"
+            message += " Innioasis Updater.lnk on desktop\n"
+            message += " Innioasis Toolkit.lnk on desktop\n"
             silent_print(f"Found {len(old_shortcuts)} old shortcuts and folders, proceeding with cleanup...")
             self.perform_comprehensive_cleanup(old_shortcuts)
 
@@ -13856,10 +13564,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 silent_print(f"Successfully cleaned up {removed_count} old shortcuts and folders.")
                 silent_print("Your system now has:")
-                silent_print("• Innioasis Updater.lnk on desktop")
-                silent_print("• Innioasis Toolkit.lnk on desktop")
-                silent_print("• Innioasis Updater.lnk in Start Menu")
-                silent_print("• Innioasis Toolkit.lnk in Start Menu")
+                silent_print(" Innioasis Updater.lnk on desktop")
+                silent_print(" Innioasis Toolkit.lnk on desktop")
+                silent_print(" Innioasis Updater.lnk in Start Menu")
+                silent_print(" Innioasis Toolkit.lnk in Start Menu")
 
         except Exception as e:
             silent_print(f"Error during cleanup: {e}")
@@ -13936,20 +13644,20 @@ class FirmwareDownloaderGUI(QMainWindow):
             if desktop_items:
                 message += "Desktop:\n"
                 for item in desktop_items:
-                    message += f"• {Path(item).name}\n"
+                    message += f" {Path(item).name}\n"
                 message += "\n"
 
             if start_menu_items:
                 message += "Start Menu:\n"
                 for item in start_menu_items:
-                    message += f"• {Path(item).name}\n"
-                message += f"• {item}\n"
+                    message += f" {Path(item).name}\n"
+                message += f" {item}\n"
                 message += "\n"
 
             if start_menu_folders:
                 message += "Start Menu Folders (will be deleted):\n"
                 for item in start_menu_folders:
-                    message += f"• {item}\n"
+                    message += f" {item}\n"
                 message += "\n"
 
             silent_print(f"Found {len(y1_helper_shortcuts)} Y1 Helper shortcuts, replacing with Y1 Remote Control...")
@@ -14456,7 +14164,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.download_btn.hide()
 
         # Fast Update button - only shown for releases with update.zip
-        self.send_update_btn = QPushButton("⚡ Fast Update")
+        self.send_update_btn = QPushButton("Fast Update")
         self.send_update_btn.clicked.connect(self.send_update_to_y1)
         self.send_update_btn.setEnabled(False)
         self.send_update_btn.setVisible(False)  # Hidden by default
@@ -14487,7 +14195,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         coffee_layout.addWidget(creator_label)
         self.creator_label = creator_label
         self._creator_messages = [
-            "Made with 🩵 by the community, for the community.",
+            "Made with  by the community, for the community.",
             "Developer: Ryan Specter",
         ]
         self._creator_message_index = 0
@@ -14513,7 +14221,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             QTimer.singleShot(50, self.update_driver_dependent_ui)
         else:
             # On non-Windows systems, show "Browse Files" button immediately
-            self.install_zip_btn = QPushButton("📁 Browse Files")
+            self.install_zip_btn = QPushButton("Browse Files")
             # Use native styling - no custom stylesheet for automatic theme adaptation
             # Use default cursor for native OS feel
             self.install_zip_btn.clicked.connect(self.browse_files)
@@ -14558,9 +14266,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.about_btn.setCursor(Qt.PointingHandCursor)
         self.about_btn.clicked.connect(self.open_coffee_link)
         self._apply_random_support_cta_to_button()
-        self.support_cta_timer = QTimer(self)
-        self.support_cta_timer.timeout.connect(self._apply_random_support_cta_to_button)
-        self.support_cta_timer.start(90000)
         coffee_layout.addWidget(self.about_btn)
         self._top_right_update_mode = False
         # Removed: _refresh_top_right_update_cta - no longer modifying Discord/About buttons
@@ -14581,7 +14286,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """)
 
         # Status light indicator (circle) - can be green or orange
-        self.adb_status_light = QLabel("●")
+        self.adb_status_light = QLabel("")
         self.adb_status_light.setStyleSheet("""
             QLabel {
                 color: #00FF00;
@@ -14965,7 +14670,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def run_mtk_command(self):
         """Run the MTK command for firmware installation"""
         try:
-            # Windows: SP Flash Tool only — never start MTKClient.
+            # Windows: SP Flash Tool only  never start MTKClient.
             if is_windows_platform():
                 silent_print("Windows: MTKClient install redirected to SP Flash Tool")
                 self.installation_method = "spflash"
@@ -15328,7 +15033,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     "Firmware images do not match this device model",
                     "SP Flash Tool would quit before waiting for USB (image/scatter mismatch).\n\n"
-                    + "\n".join(f"• {e}" for e in img_errors)
+                    + "\n".join(f" {e}" for e in img_errors)
                     + "\n\nExtract the correct Y1 or Y2 firmware package and try again.",
                 )
                 return
@@ -15528,7 +15233,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "SP Flash Tool GUI will now launch.\n\n"
                     f"If it isn't already off, power off your {label}.\n"
                     "If it is connected, disconnect it, then press OK.\n\n"
-                    "The correct scatter file for your model is already selected — "
+                    "The correct scatter file for your model is already selected  "
                     "you do not need to browse for one.\n\n"
                     "Then follow the on-screen instructions in SP Flash Tool "
                     "(Download or Format All + Download as needed).\n\n"
@@ -15604,7 +15309,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     silent_print(f"SP Flash Tool GUI file prep (linux): {e}")
 
                 env = sp_flash_tool_process_env(app_dir)
-                # No -i → Qt GUI. ( -i is console mode. )
+                # No -i  Qt GUI. ( -i is console mode. )
                 # Prefer flash_tool.sh when present so LD_LIBRARY_PATH is set like the package expects.
                 # LD_PRELOAD (open-retry + TIOCCBRK soft-success) is inherited from env.
                 launcher = app_dir / "flash_tool.sh"
@@ -15634,7 +15339,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "SP Flash Tool GUI is starting.\n\n"
                     f"If it isn't already off, power off your {label}, then use "
                     "Download or Format All + Download in the tool as needed.\n\n"
-                    "The scatter for your model is already loaded — you do not need "
+                    "The scatter for your model is already loaded  you do not need "
                     "to browse for a scatter file."
                 ),
             )
@@ -15750,7 +15455,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Firmware images do not match this device model",
                         "SP Flash Tool would quit before waiting for USB:\n\n"
-                        + "\n".join(f"• {e}" for e in img_errors),
+                        + "\n".join(f" {e}" for e in img_errors),
                     )
                     return
 
@@ -16588,7 +16293,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if show_install_tab:
             if platform.system() == "Windows" and driver_info:
                 if not driver_info['can_install_firmware'] and not driver_info.get('has_mtk_driver') and not driver_info.get('has_usbdk_driver'):
-                    status_label = QLabel("⚠️ No Specific Drivers Detected")
+                    status_label = QLabel("No Specific Drivers Detected")
                     status_label.setStyleSheet("color: #FF6B35; font-weight: bold; margin: 2px;")
                     install_layout.addWidget(status_label)
 
@@ -16606,7 +16311,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.method_combo = QComboBox()
 
             if platform.system() == "Windows":
-                # Windows: SP Flash Tool only — no MTKClient methods.
+                # Windows: SP Flash Tool only  no MTKClient methods.
                 seasonal_emoji = get_seasonal_emoji_random()
                 method1_text = (
                     f"Method 1 - Guided (SP Flash Tool){seasonal_emoji}"
@@ -16641,8 +16346,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     )
                 else:
                     method1_text = (
-                        f"Method 1 - Guided (SP Flash Tool — setup required){seasonal_emoji}"
-                        if seasonal_emoji else "Method 1 - Guided (SP Flash Tool — setup required)"
+                        f"Method 1 - Guided (SP Flash Tool  setup required){seasonal_emoji}"
+                        if seasonal_emoji else "Method 1 - Guided (SP Flash Tool  setup required)"
                     )
                     method2_text = (
                         f"Method 2 - SP Flash Tool in Terminal (setup required){seasonal_emoji}"
@@ -16691,7 +16396,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             current_method = getattr(self, 'installation_method', default_installation_method())
             if platform.system() == "Windows":
-                # Windows is SP Flash Tool only — never select guided/mtkclient.
+                # Windows is SP Flash Tool only  never select guided/mtkclient.
                 if current_method in {"guided", "mtkclient", None}:
                     current_method = "spflash"
                     silent_print("Windows: defaulting installation method to SP Flash Tool")
@@ -16779,7 +16484,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 icon_label.setPixmap(scaled_pixmap)
             except Exception as e:
                 # Fallback to emoji if icon loading fails
-                icon_label.setText("📱")
+                icon_label.setText("")
                 icon_label.setStyleSheet("""
                     QLabel {
                         font-size: 80px;
@@ -16789,7 +16494,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 """)
         else:
             # Fallback to emoji if icon file doesn't exist
-            icon_label.setText("📱")
+            icon_label.setText("")
             icon_label.setStyleSheet("""
                 QLabel {
                     font-size: 64px;
@@ -16804,23 +16509,23 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Determine seasonal message
         if is_christmas_season():
-            seasonal_message = "🎄 Merry Christmas! 🎅"
+            seasonal_message = " Merry Christmas! "
         elif is_halloween_season():
-            seasonal_message = "🎃 Happy Halloween! 👻"
+            seasonal_message = " Happy Halloween! "
         elif is_thanksgiving_season() and is_thanksgiving_region():
-            seasonal_message = "🦃 Happy Thanksgiving! 🍗"
+            seasonal_message = " Happy Thanksgiving! "
         elif is_st_patricks_day():
-            seasonal_message = "🍀 Happy St. Patrick's Day! ☘️"
+            seasonal_message = " Happy St. Patrick's Day! "
         elif is_valentines_day():
-            seasonal_message = "💕 Happy Valentine's Day! 💖"
+            seasonal_message = " Happy Valentine's Day! "
         elif is_easter_season():
-            seasonal_message = "🐰 Happy Easter! 🐣"
+            seasonal_message = " Happy Easter! "
         elif is_new_years_day():
-            seasonal_message = "🎊 Happy New Year! 🎉"
+            seasonal_message = " Happy New Year! "
         elif is_independence_day() and is_us_user():
-            seasonal_message = "🇺🇸 Happy Independence Day! 🎆"
+            seasonal_message = " Happy Independence Day! "
         elif is_summer_solstice():
-            seasonal_message = "☀️ Happy Summer Solstice! 🌞"
+            seasonal_message = " Happy Summer Solstice! "
         else:
             seasonal_message = ""
 
@@ -16905,7 +16610,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Reddit button - using native styling
         seasonal_emoji = get_seasonal_emoji_random()
-        reddit_text = f"📱 r/innioasismodders{seasonal_emoji}" if seasonal_emoji else "📱 r/innioasismodders"
+        reddit_text = f"r/innioasismodders{seasonal_emoji}" if seasonal_emoji else "r/innioasismodders"
         reddit_btn = QPushButton(reddit_text)
         # Use completely native styling - no custom stylesheet
         reddit_btn.setCursor(Qt.PointingHandCursor)
@@ -17030,7 +16735,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         if is_wireless_connection:
                             host_part = unified_device_id.split(':')[0]
                             connection_method = "hostname" if host_part.startswith('android-') else "IP address"
-                            status_label.setText(f"✓ Wirelessly connected at {host_part}:5555 ({connection_method}) - not rooted")
+                            status_label.setText(f"Wirelessly connected at {host_part}:5555 ({connection_method}) - not rooted")
                             status_label.setStyleSheet("margin: 5px; color: #FFA500; font-weight: bold;")
                             if connect_btn:
                                 connect_btn.setText("Disconnect")
@@ -17075,7 +16780,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                             host_part = unified_device_id.split(':')[0]
                             connection_method = "hostname" if host_part.startswith('android-') else "IP address"
                             script_status = " (Fast Update ready)" if update_script_exists else " (preparing Fast Update)"
-                            status_label.setText(f"✓ Wirelessly connected at {host_part}:5555 ({connection_method}){script_status}")
+                            status_label.setText(f"Wirelessly connected at {host_part}:5555 ({connection_method}){script_status}")
                             status_label.setStyleSheet("margin: 5px; color: #00FF00; font-weight: bold;")
                             if connect_btn:
                                 connect_btn.setText("Disconnect")
@@ -17391,10 +17096,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         setup_layout.addWidget(setup_desc)
 
         # Install ADB Wi-Fi Reborn button
-        install_adb_wifi_btn = QPushButton("📱 Setup Wi-Fi ADB App")
+        install_adb_wifi_btn = QPushButton("Setup Wi-Fi ADB App")
         install_adb_wifi_btn.clicked.connect(lambda: self.install_adb_wifi_reborn())
 
-        wifi_settings_shortcut = QPushButton("📶 Y1 Wi-Fi Settings")
+        wifi_settings_shortcut = QPushButton("Y1 Wi-Fi Settings")
         wifi_settings_shortcut.clicked.connect(lambda: self.open_wireless_wifi_dialog())
 
         button_row = QHBoxLayout()
@@ -18573,7 +18278,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         storage_btn.clicked.connect(self.launch_storage_management_tool)
         tools_layout.addWidget(storage_btn)
 
-        # SP Flash Tool GUI — Windows + Linux x86/x86_64 only (not macOS; MTKClient only there)
+        # SP Flash Tool GUI  Windows + Linux x86/x86_64 only (not macOS; MTKClient only there)
         if is_windows_platform() or (
             is_linux_platform() and linux_spflash_arch_supported()
         ):
@@ -18728,7 +18433,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 start_index = 0
                 for idx, raw_line in enumerate(raw_lines):
                     sanitized = raw_line.strip().replace('’', "'")
-                    sanitized = sanitized.lstrip('#*_>-+• ').strip()
+                    sanitized = sanitized.lstrip('#*_>-+ ').strip()
                     sanitized = re.sub(r'^\d+[\.)]\s*', '', sanitized)
                     sanitized_lower = sanitized.lower()
                     if any(sanitized_lower.startswith(keyword) for keyword in strip_keywords):
@@ -19304,20 +19009,20 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             if not driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 # No drivers: Show "Install MediaTek & UsbDk Drivers" button
-                driver_btn = QPushButton("🔧 Install MediaTek & UsbDk Drivers")
+                driver_btn = QPushButton("Install MediaTek & UsbDk Drivers")
                 # Use default cursor for native OS feel
                 driver_btn.clicked.connect(self.open_driver_setup_link)
                 self.driver_buttons_layout.addWidget(driver_btn)
 
             elif driver_info['has_mtk_driver'] and not driver_info['has_usbdk_driver']:
                 # Only MTK driver: Show "Browse Files" button
-                install_zip_btn = QPushButton("📁 Browse Files")
+                install_zip_btn = QPushButton("Browse Files")
                 install_zip_btn.clicked.connect(self.browse_files)
                 self.driver_buttons_layout.addWidget(install_zip_btn)
 
             else:
                 # Both drivers available: Show "Browse Files" button
-                install_zip_btn = QPushButton("📁 Browse Files")
+                install_zip_btn = QPushButton("Browse Files")
                 install_zip_btn.clicked.connect(self.browse_files)
                 self.driver_buttons_layout.addWidget(install_zip_btn)
 
@@ -20229,7 +19934,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         Priority:
           1. Last extracted package (zip name / extract list / system.img size)
-          2. Device Model dropdown (user intent — must not lose to a stale runtime)
+          2. Device Model dropdown (user intent  must not lose to a stale runtime)
           3. Runtime / remembered model from a previous successful detect
           4. Residual markers on disk
         """
@@ -20258,7 +19963,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         if package_model:
             return package_model, zip_path, extracted_files
 
-        # Explicit dropdown next — never let a stale runtime force Y1 while UI says Y2
+        # Explicit dropdown next  never let a stale runtime force Y1 while UI says Y2
         if ui_model and (is_y1_model(ui_model) or is_y2_model(ui_model)):
             model = "Y2" if is_y2_model(ui_model) else "Y1"
             return model, zip_path, extracted_files
@@ -20334,7 +20039,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 f"Quick update: Downloads update.zip and places it in .rockbox folder on your {label}"
             )
         if hasattr(self, '_creator_messages') and self._creator_messages:
-            self._creator_messages[0] = "Made with 🩵 by the community, for the community."
+            self._creator_messages[0] = "Made with  by the community, for the community."
             self._creator_render_cache_key = None
             self.update_creator_label()
 
@@ -20812,7 +20517,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         run_id="post-fix",
                     )
                     # #endregion
-                    # Do not auto-jump to another software package — keep selection
+                    # Do not auto-jump to another software package  keep selection
                     # and show an empty state next to the still-visible dropdowns.
                     self._show_no_filter_results_message()
                 else:
@@ -21017,7 +20722,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Show message when releases were loaded but filters found no matching results.
 
         Leaves Type / Model / Software dropdowns visible so the user can adjust
-        filters (Hallmark empty state: name what’s empty → why → next step).
+        filters (Hallmark empty state: name what’s empty  why  next step).
         """
         try:
             selected_type = None
@@ -21028,7 +20733,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             self._ensure_filter_panel_visible()
             self._set_package_list_empty_state(
-                f"No releases for {selected_model} · {type_label}",
+                f"No releases for {selected_model}  {type_label}",
                 "Change Type, Software, or turn on Show nightly builds.",
             )
             body = [
@@ -21046,7 +20751,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error showing no filter results message: {e}")
 
     def _show_left_panel(self):
-        """Show left panel (filters + release list) — always safe to call after load."""
+        """Show left panel (filters + release list)  always safe to call after load."""
         try:
             if hasattr(self, 'left_panel'):
                 self.left_panel.setVisible(True)
@@ -21951,7 +21656,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.package_list.addItem(separator_item)
 
         # Add clickable link item
-        link_item = QListWidgetItem("📋 View Older Releases Online")
+        link_item = QListWidgetItem("View Older Releases Online")
         link_item.setData(Qt.UserRole, {'is_link': True, 'url': 'https://innioasis.app/firmware.html'})
         link_item.setToolTip("View complete release history online (showing 10 most recent)")
         self.package_list.addItem(link_item)
@@ -22042,7 +21747,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Failed to load releases from repositories: {failed_repos}")
 
             # Add helpful message to the list
-            help_item = QListWidgetItem("⚠️ No releases found\n\nThis could be due to:\n• GitHub API rate limiting\n• Network connectivity issues\n• Repository access restrictions\n\nTry using 'Browse Files' button instead")
+            help_item = QListWidgetItem("No releases found\n\nThis could be due to:\n GitHub API rate limiting\n Network connectivity issues\n Repository access restrictions\n\nTry using 'Browse Files' button instead")
             help_item.setFlags(help_item.flags() & ~Qt.ItemIsSelectable)  # Make it non-selectable
             help_item.setData(Qt.UserRole, None)  # No release data
             self.package_list.addItem(help_item)
@@ -22430,9 +22135,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                                             replacement_text = [
                                                 "Users can download update.zip files and place them on their device to update their player without needing to keep it plugged into a computer.",
                                                 "",
-                                                "These ⚡️ **Fast Updates** can be sent to your device from Innioasis Updater or downloaded directly from the web.",
+                                                "These  **Fast Updates** can be sent to your device from Innioasis Updater or downloaded directly from the web.",
                                                 "",
-                                                "In order to use ⚡️ **Fast Update** for the first time, you'll need to have first installed a ⚡️ **Fast Update** enabled update, using your computer."
+                                                "In order to use **Fast Update** for the first time, you'll need to have first installed a **Fast Update** enabled update, using your computer."
                                             ]
                                             # Replace the single line with multiple lines
                                             lines[i:i+1] = replacement_text
@@ -22613,7 +22318,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     def run_mtk_command_guided(self):
         """Run the MTK flash command with image display for guided installation"""
         try:
-            # Windows: SP Flash Tool only — never start MTKClient.
+            # Windows: SP Flash Tool only  never start MTKClient.
             if is_windows_platform():
                 silent_print("Windows: MTKClient guided install redirected to SP Flash Tool")
                 self.installation_method = "spflash"
@@ -22724,7 +22429,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
 
     def on_mtk_completed(self, success, message):
-        """Handle MTK command completion (legacy path — same as handle_mtk_completion)."""
+        """Handle MTK command completion (legacy path  same as handle_mtk_completion)."""
         # Stop the MTK worker to prevent it from continuing to run
         if self.mtk_worker:
             self.mtk_worker.stop()
@@ -22798,7 +22503,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             # Find the install from zip button in the layout
             if hasattr(self, 'central_widget'):
-                self.find_and_hide_button(self.central_widget, "📁 Browse Files")
+                self.find_and_hide_button(self.central_widget, "Browse Files")
         except Exception as e:
             silent_print(f"Error hiding install zip button: {e}")
 
@@ -22807,7 +22512,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             # Find the install from zip button in the layout
             if hasattr(self, 'central_widget'):
-                self.find_and_show_button(self.central_widget, "📁 Browse Files")
+                self.find_and_show_button(self.central_widget, "Browse Files")
         except Exception as e:
             silent_print(f"Error showing install zip button: {e}")
 
@@ -23005,9 +22710,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             "Backend Error - libusb Backend Issue",
             "A libusb backend error was detected, which indicates a system-level USB backend issue.\n\n"
             "This is typically caused by:\n"
-            "• Missing or incompatible libusb backend\n"
-            "• System USB driver conflicts\n"
-            "• Incompatible macOS version\n\n"
+            " Missing or incompatible libusb backend\n"
+            " System USB driver conflicts\n"
+            " Incompatible macOS version\n\n"
             "To resolve this issue:\n"
             "1. Install or update libusb: brew install libusb\n"
             "2. If using Homebrew, try: brew reinstall libusb\n"
@@ -23502,35 +23207,16 @@ class FirmwareDownloaderGUI(QMainWindow):
         return (now.month == 11 and now.day >= 20) or now.month == 12 or (now.month == 1 and now.day <= 5)
 
     def _pick_support_cta_text(self):
-        """Pick a random support CTA with seasonal and infrequent variants."""
-        base_ctas = [
-            "Donate What You Can",
-            "Support Free Tools",
-            "Help Cover Hosting",
-            "Support Development",
-            "Buy Us A Coffee",
-            "Keep Tools Free",
-        ]
-        holiday_ctas = [
-            "Holiday Donation",
-            "Holiday Support",
-            "Seasonal Cheer For Devs",
-            "A Little Holiday Help",
-        ]
-        ctas = list(base_ctas)
-        if self._is_holiday_period():
-            ctas.extend(holiday_ctas)
-        if random.random() < 0.08:
-            ctas.append("Help With $100+/mo Costs")
-        return random.choice(ctas)
+        """Return a simple, consistent support CTA label."""
+        return "Support Project"
 
     def _apply_random_support_cta_to_button(self):
-        """Apply a random CTA label to the top-right support button."""
+        """Apply a consistent label to the top-right support button without emoji."""
         if not hasattr(self, 'about_btn'):
             return
         label = self._pick_support_cta_text()
-        self.about_btn.setText(f"☕ {label}")
-        self.about_btn_base_text = f"☕ {label}"
+        self.about_btn.setText(label)
+        self.about_btn_base_text = label
 
     def open_reddit_link(self):
         """Open the r/innioasismodders subreddit in the default browser"""
@@ -23559,7 +23245,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         <p><strong>Team Slide:</strong><br/>
         Melody (u/wa-a-melyn) and Leonardo (u/allstar)</p>
         <p>Bklerler for developing MTKClient<br/>
-        <a href="https://github.com/bkerler" style="color: #007AFF; text-decoration: none;">@bkerler</a> •
+        <a href="https://github.com/bkerler" style="color: #007AFF; text-decoration: none;">@bkerler</a> 
         <a href="https://github.com/bkerler/mtkclient" style="color: #007AFF; text-decoration: none;">MTKClient</a></p>
         <p><a href="https://cursor.com" style="color: #007AFF; text-decoration: none;">Cursor.com</a></p>
         <p><a href="https://github.com/NoahDomingues" style="color: #007AFF; text-decoration: none;">NoahDomingues</a> for
@@ -24209,139 +23895,189 @@ class FirmwareDownloaderGUI(QMainWindow):
     def _post_install_donation_nudge(self):
         """Short Wikipedia-style line for install-complete message boxes."""
         return (
-            "Innioasis Updater, the Y1 Themes gallery, and our other mod projects "
-            "cost on average $100+ a month to keep online as the community grows. "
-            "If you can, please donate what you are able via Ko-fi, Patreon, PayPal, "
-            "Revolut, or crypto — every contribution helps."
+            "Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, or Patreon. "
+            "You can also help by joining Honeygain, sharing a fix, reviewing a guide, "
+            "contributing code, or helping another Y1/Y2 owner in Discord."
         )
 
     def _pick_donation_support_blurb(self):
-        """Return a varied, Wikipedia-like funding appeal (costs + give what you can)."""
-        cost_blurbs = [
-            (
-                "Innioasis Updater, the Innioasis Y1 Themes gallery, and our other mod "
-                "projects cost on average more than $100 a month to run — hosting, "
-                "downloads, and tools for a growing community. We do not charge for "
-                "the software. If everyone who can spare a little does, we can keep "
-                "this free for everyone. Please give only what you can afford."
-            ),
-            (
-                "As more people use these tools, running costs have risen. On average "
-                "we spend $100+ each month on Innioasis Updater, the Y1 Themes gallery, "
-                "and related mod projects. Your donation — large or small — is optional "
-                "and deeply appreciated. Choose any method below that works for you."
-            ),
-            (
-                "These projects stay free for the whole community. Hosting and "
-                "infrastructure for Updater, the Y1 Themes gallery, and our mods "
-                "average over $100 per month, and that figure grows with popularity. "
-                "If this work has helped you, please consider donating what you can. "
-                "No amount is too small."
-            ),
-            (
-                "We rely on readers and users like you. Innioasis Updater, the Y1 "
-                "Themes gallery, and our other mod projects cost $100+ a month on "
-                "average to operate. If you value free firmware tools and themes, "
-                "please donate what you can through one of the options below. "
-                "Thank you for keeping the lights on."
-            ),
-        ]
-        # Occasional personal note (softer share than pure CTA)
-        baby_blurbs = [
-            (
-                "Innioasis Updater, the Y1 Themes gallery, and our mod projects cost "
-                "on average $100+ a month to run as the community grows. One of our "
-                "developers and his partner are also expecting a baby in December — "
-                "if you can donate what you are able, it helps both the projects and "
-                "the people who maintain them. Give only what feels right for you."
-            ),
-            (
-                "Operating costs for Updater, the Y1 Themes gallery, and related mods "
-                "average more than $100 monthly. We ask the same way Wikipedia does: "
-                "please donate what you can, when you can. A personal note: Ryan and "
-                "his partner are expecting a baby in December — every contribution "
-                "helps keep free tools available for everyone."
-            ),
-        ]
-        pool = cost_blurbs + (baby_blurbs if random.random() < 0.35 else [])
-        return random.choice(pool)
+        """Return the standard donation call to action matching innioasis.app."""
+        return (
+            "Innioasis Updater and the Themes Gallery are community hobbyist projects. "
+            "Hosting, domain renewals, moderation, release work, and Cloudflare Workers create real costs. "
+            "Your donation helps keep the tools, guides, and gallery available for the next Y1 or Y2 owner."
+        )
 
     def show_donation_dialog(self, context="general", software_name=None):
-        """Show donation options matching the website support toolbar."""
+        """Show donation options matching the innioasis.app support call to action."""
         dialog = QDialog(self)
-        dialog.setWindowTitle("Please support free community tools")
+        dialog.setWindowTitle("Support Updater and the Themes Gallery")
         dialog.setModal(True)
-        dialog.resize(720, 600)
+        dialog.resize(680, 560)
 
         layout = QVBoxLayout(dialog)
+        layout.setContentsMargins(24, 20, 24, 20)
+        layout.setSpacing(12)
 
-        intro = QLabel(
-            "Innioasis Updater, the Y1 Themes gallery, and our other mod projects "
-            "are free to use. Hosting and infrastructure cost on average $100+ a "
-            "month as more people download firmware, themes, and tools.\n\n"
-            "If you can, please donate what you are able using any option below. "
-            "There is no required amount — give what feels right for you."
+        title = QLabel(
+            "<h2 style='margin: 0; font-size: 26px; font-weight: 800; color: #111827;'>"
+            "It takes <span style='color: #ff5252; text-decoration: underline;'>you</span>.</h2>"
         )
-        intro.setWordWrap(True)
-        intro.setStyleSheet("line-height: 1.45;")
-        layout.addWidget(intro)
-
-        support_note = QLabel(self._pick_donation_support_blurb())
-        support_note.setWordWrap(True)
-        support_note.setStyleSheet("margin: 8px 0 12px 0; line-height: 1.45;")
-        layout.addWidget(support_note)
+        title.setTextFormat(Qt.RichText)
+        layout.addWidget(title)
 
         if context == "install_success":
-            kind = self._format_firmware_kind_label(
-                software_name or self._get_selected_software_name()
+            model_name = self.get_effective_device_model() or "device"
+            
+            # Check if this was a manual browse install or generic selection versus dropdown package
+            is_manual = (
+                not software_name 
+                or software_name in ("firmware", "this firmware", "local", "browse")
+                or getattr(self, "_is_manual_browse", False)
             )
-            power_steps = install_power_on_steps(self.get_effective_device_model())
-            context_label = QLabel(
-                f"{kind} installation completed successfully.\n\n"
-                f"{power_steps}\n\n"
-                "Thank you for using the tools — and thank you if you can help fund them."
-            )
-            context_label.setWordWrap(True)
-            layout.addWidget(context_label)
 
-        kofi_btn = QPushButton("☕ Ko-Fi")
+            if is_manual:
+                install_msg = "Your software was installed."
+            else:
+                formatted_name = self._format_firmware_kind_label(software_name)
+                install_msg = f"The install of <b>{formatted_name}</b> on your <b>{model_name}</b> has finished."
+
+            intro_content = (
+                f"{install_msg} If you found this tool helpful, consider donating.<br><br>"
+                "Donations directly fund hosting, domain renewals, and the time-cost of human moderation, "
+                "archival, and preservation for <b>Innioasis Updater</b>, the "
+                "<a href='https://innioasis.app/firmware.html' style='color: #007AFF; text-decoration: none;'>Community Firmware Archive</a>, and the "
+                "<a href='https://themes.innioasis.app' style='color: #007AFF; text-decoration: none;'>Themes Gallery</a>."
+            )
+        else:
+            intro_content = (
+                "Donations directly fund hosting, domain renewals, and the time-cost of human moderation, "
+                "archival, and preservation for <b>Innioasis Updater</b>, the "
+                "<a href='https://innioasis.app/firmware.html' style='color: #007AFF; text-decoration: none;'>Community Firmware Archive</a>, and the "
+                "<a href='https://themes.innioasis.app' style='color: #007AFF; text-decoration: none;'>Themes Gallery</a>."
+            )
+
+        intro = QLabel(intro_content)
+        intro.setTextFormat(Qt.RichText)
+        intro.setOpenExternalLinks(True)
+        intro.setWordWrap(True)
+        intro.setStyleSheet("font-size: 14px; color: #374151; line-height: 1.5; margin-bottom: 4px;")
+        layout.addWidget(intro)
+
+        grid = QGridLayout()
+        grid.setSpacing(10)
+
+        kofi_btn = QPushButton("Ko-fi")
         kofi_btn.setCursor(Qt.PointingHandCursor)
+        kofi_btn.setStyleSheet(
+            "QPushButton { background-color: #ff5e5b; color: white; font-weight: bold; font-size: 15px; padding: 12px; border-radius: 10px; border: none; }"
+            "QPushButton:hover { background-color: #e04b48; }"
+        )
         kofi_btn.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/teamslide"))
-        layout.addWidget(kofi_btn)
+        grid.addWidget(kofi_btn, 0, 0)
 
-        patreon_btn = QPushButton("🧡 Patreon")
-        patreon_btn.setCursor(Qt.PointingHandCursor)
-        patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/ryanspecter"))
-        layout.addWidget(patreon_btn)
-
-        paypal_btn = QPushButton("💳 PayPal")
+        paypal_btn = QPushButton("PayPal")
         paypal_btn.setCursor(Qt.PointingHandCursor)
-        paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/RyanSpecter282"))
-        layout.addWidget(paypal_btn)
+        paypal_btn.setStyleSheet(
+            "QPushButton { background-color: #0070ba; color: white; font-weight: bold; font-size: 15px; padding: 12px; border-radius: 10px; border: none; }"
+            "QPushButton:hover { background-color: #005ea6; }"
+        )
+        paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/respectyarn"))
+        grid.addWidget(paypal_btn, 0, 1)
 
-        revolut_btn = QPushButton("💸 Revolut")
+        revolut_btn = QPushButton("Revolut")
         revolut_btn.setCursor(Qt.PointingHandCursor)
+        revolut_btn.setStyleSheet(
+            "QPushButton { background-color: #5850ec; color: white; font-weight: bold; font-size: 15px; padding: 12px; border-radius: 10px; border: none; }"
+            "QPushButton:hover { background-color: #4338ca; }"
+        )
         revolut_btn.clicked.connect(lambda: webbrowser.open("https://revolut.me/rspecter"))
-        layout.addWidget(revolut_btn)
+        grid.addWidget(revolut_btn, 1, 0)
 
-        crypto_title = QLabel("Crypto donation addresses (click to copy):")
-        layout.addWidget(crypto_title)
+        patreon_btn = QPushButton("Patreon")
+        patreon_btn.setCursor(Qt.PointingHandCursor)
+        patreon_btn.setStyleSheet(
+            "QPushButton { background-color: #e0533c; color: white; font-weight: bold; font-size: 15px; padding: 12px; border-radius: 10px; border: none; }"
+            "QPushButton:hover { background-color: #c9442e; }"
+        )
+        patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/ryanspecter"))
+        grid.addWidget(patreon_btn, 1, 1)
 
-        crypto_rows = [
-            ("Bitcoin", "bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g"),
-            ("SHIBA INU (ERC-20)", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"),
-            ("Ethereum / Arbitrum / Optimism", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"),
-        ]
+        layout.addLayout(grid)
 
-        for label, value in crypto_rows:
-            row = QHBoxLayout()
-            row_label = QLabel(f"{label}:")
-            value_btn = QPushButton(value)
-            value_btn.setToolTip(f"Copy {label} address")
-            value_btn.clicked.connect(lambda _checked=False, l=label, v=value: self._copy_donation_value(l, v))
-            row.addWidget(row_label)
-            row.addWidget(value_btn, 1)
-            layout.addLayout(row)
+        honeygain_btn = QPushButton("Contribute for free by joining Honeygain")
+        honeygain_btn.setCursor(Qt.PointingHandCursor)
+        honeygain_btn.setStyleSheet(
+            "QPushButton { background-color: #10b981; color: white; font-weight: bold; font-size: 14px; padding: 12px; border-radius: 10px; border: none; margin-top: 4px; }"
+            "QPushButton:hover { background-color: #059669; }"
+        )
+        honeygain_btn.clicked.connect(lambda: webbrowser.open(HONEYGAIN_REFERRAL_URL))
+        layout.addWidget(honeygain_btn)
+
+        footer_text = QLabel(
+            "Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, or Patreon. "
+            "You can also help by joining Honeygain, sharing a fix, reviewing a guide, "
+            "contributing code, or helping another Y1/Y2 owner in Discord."
+        )
+        footer_text.setWordWrap(True)
+        footer_text.setStyleSheet("font-size: 12px; color: #6b7280; line-height: 1.4; margin-top: 6px;")
+        layout.addWidget(footer_text)
+
+        # Toggle button for Crypto options
+        show_crypto_btn = QPushButton("Show Crypto Options")
+        show_crypto_btn.setCursor(Qt.PointingHandCursor)
+        show_crypto_btn.setStyleSheet(
+            "QPushButton { background-color: #f3f4f6; color: #374151; font-weight: 600; font-size: 13px; padding: 10px; border-radius: 10px; border: 1px solid #d1d5db; margin-top: 4px; }"
+            "QPushButton:hover { background-color: #e5e7eb; }"
+        )
+        layout.addWidget(show_crypto_btn)
+
+        # Hidden container for colourful Crypto options
+        crypto_container = QWidget()
+        crypto_layout = QVBoxLayout(crypto_container)
+        crypto_layout.setContentsMargins(0, 4, 0, 4)
+        crypto_layout.setSpacing(8)
+
+        crypto_grid = QGridLayout()
+        crypto_grid.setSpacing(8)
+
+        btc_btn = QPushButton("Bitcoin (BTC)")
+        btc_btn.setCursor(Qt.PointingHandCursor)
+        btc_btn.setStyleSheet(
+            "QPushButton { background-color: #f7931a; color: white; font-weight: bold; font-size: 13px; padding: 10px; border-radius: 8px; border: none; }"
+            "QPushButton:hover { background-color: #e08213; }"
+        )
+        btc_btn.clicked.connect(lambda: self._copy_donation_value("Bitcoin", "bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g"))
+        crypto_grid.addWidget(btc_btn, 0, 0)
+
+        eth_btn = QPushButton("Ethereum / Arbitrum / Optimism")
+        eth_btn.setCursor(Qt.PointingHandCursor)
+        eth_btn.setStyleSheet(
+            "QPushButton { background-color: #627eea; color: white; font-weight: bold; font-size: 13px; padding: 10px; border-radius: 8px; border: none; }"
+            "QPushButton:hover { background-color: #4b66d4; }"
+        )
+        eth_btn.clicked.connect(lambda: self._copy_donation_value("Ethereum", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"))
+        crypto_grid.addWidget(eth_btn, 0, 1)
+
+        shib_btn = QPushButton("SHIBA INU (ERC-20)")
+        shib_btn.setCursor(Qt.PointingHandCursor)
+        shib_btn.setStyleSheet(
+            "QPushButton { background-color: #e04130; color: white; font-weight: bold; font-size: 13px; padding: 10px; border-radius: 8px; border: none; }"
+            "QPushButton:hover { background-color: #c83222; }"
+        )
+        shib_btn.clicked.connect(lambda: self._copy_donation_value("SHIBA INU", "0x5E902083ee1B3A05dd39d824012B39cB10FB80D3"))
+        crypto_grid.addWidget(shib_btn, 1, 0, 1, 2)
+
+        crypto_layout.addLayout(crypto_grid)
+        crypto_container.setVisible(False)
+        layout.addWidget(crypto_container)
+
+        def toggle_crypto():
+            is_vis = not crypto_container.isVisible()
+            crypto_container.setVisible(is_vis)
+            show_crypto_btn.setText("Hide Crypto Options" if is_vis else "Show Crypto Options")
+
+        show_crypto_btn.clicked.connect(toggle_crypto)
 
         buttons = QDialogButtonBox(QDialogButtonBox.Close)
         buttons.rejected.connect(dialog.reject)
@@ -24378,7 +24114,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             msg_box.setWindowTitle("Driver Setup Required")
             msg_box.setIcon(QMessageBox.Information)
             msg_box.setText(f"To use all features of Innioasis Updater, you'll need to install:")
-            msg_box.setInformativeText(f"• {driver_names}\n\nWould you like help setting these up?")
+            msg_box.setInformativeText(f" {driver_names}\n\nWould you like help setting these up?")
             msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             msg_box.setDefaultButton(QMessageBox.Yes)
 
@@ -24476,7 +24212,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """
         from PySide6.QtWidgets import QFileDialog, QMessageBox
 
-        # Browse / Smart Drop never carries a GitHub asset URL — clear any stale
+        # Browse / Smart Drop never carries a GitHub asset URL  clear any stale
         # one from a previous in-app download so it can't divert this install.
         self._last_install_asset_url = None
 
@@ -24527,7 +24263,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Remember the zip for the Y2-on-macOS flow even when the early name-based
         # gate misses (e.g. a generically-named Y2 zip that is only detected after
-        # extraction) — so the user isn't re-asked to pick the file they just chose.
+        # extraction)  so the user isn't re-asked to pick the file they just chose.
         self._last_install_zip_path = str(zip_path)
 
         # Check if the file is named "update.zip" (case-insensitive)
@@ -24537,7 +24273,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             reply = QMessageBox.warning(
                 self,
                 "Quick Update File Detected",
-                "⚠️ The file you selected is named 'update.zip', which is a quick update file.\n\n"
+                " The file you selected is named 'update.zip', which is a quick update file.\n\n"
                 "This file must be copied to your Y1 player in USB Storage mode.\n\n"
                 "The application will now treat this as a Fast Update operation:\n"
                 "1. You'll be prompted to prepare your Y1\n"
@@ -24558,7 +24294,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self,
                 "Fast Update - USB Mode",
                 self.device_copy(
-                    "📱 Please prepare your Y1:\n\n"
+                    "Please prepare your Y1:\n\n"
                     "1. Power on your Y1\n"
                     "2. Connect it to your computer via USB\n"
                     "3. Make sure your Y1 is in USB Storage mode\n"
@@ -24606,8 +24342,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Complete",
                         self.device_copy(
-                            "✅ update.zip has been copied to your Y1.\n\n"
-                            "✅ Update script executed successfully via ADB.\n\n"
+                            "update.zip has been copied to your Y1.\n\n"
+                            "Update script executed successfully via ADB.\n\n"
                             "Your Y1 will restart and apply the update automatically."
                         ),
                     )
@@ -24616,7 +24352,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Copied Successfully",
                         self.device_copy(
-                            "✅ update.zip has been copied to your Y1.\n\n"
+                            "update.zip has been copied to your Y1.\n\n"
                             "Next steps:\n"
                             "1. Safely disconnect your Y1 from your computer\n"
                             "2. On your Y1, go to Main Menu > System\n"
@@ -24858,7 +24594,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             reply = QMessageBox.question(
                 self,
                 "Fast Update - ADB Mode",
-                "⚡ Automatic Update Available!\n\n"
+                "Automatic Update Available!\n\n"
                 "Your Y1 supports automatic updates via ADB.\n\n"
                 "The update will:\n"
                 "1. Download update.zip\n"
@@ -24988,9 +24724,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.device_copy(
                 "Y1 USB drive was not detected after waiting.\n\n"
                 "Please ensure:\n"
-                "• Your Y1 is powered on\n"
-                "• USB Storage Mode is enabled\n"
-                "• The USB cable is properly connected\n\n"
+                " Your Y1 is powered on\n"
+                " USB Storage Mode is enabled\n"
+                " The USB cable is properly connected\n\n"
                 "You can try again once your Y1 is connected."
             ),
         )
@@ -25518,9 +25254,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "Auto-Detection Failed",
                     "Could not automatically detect the device's IP address.\n\n"
                     "This may mean:\n"
-                    "• ADB Wi-Fi Reborn is not installed or configured on your device\n"
-                    "• The device is not connected to the same Wi-Fi network\n"
-                    "• The device's hostname cannot be resolved on your local network\n\n"
+                    " ADB Wi-Fi Reborn is not installed or configured on your device\n"
+                    " The device is not connected to the same Wi-Fi network\n"
+                    " The device's hostname cannot be resolved on your local network\n\n"
                     "Please manually enter the device's IP address or hostname."
                 )
                 return
@@ -25729,9 +25465,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     f"Address: {connection_target}\n"
                     f"Error: {error_msg}\n\n"
                     f"If using a hostname, ensure:\n"
-                    f"• ADB Wi-Fi Reborn is installed and configured\n"
-                    f"• The device is on the same Wi-Fi network\n"
-                    f"• The hostname can be resolved on your local network"
+                    f" ADB Wi-Fi Reborn is installed and configured\n"
+                    f" The device is on the same Wi-Fi network\n"
+                    f" The hostname can be resolved on your local network"
                 )
                 return
         except Exception as e:
@@ -26248,8 +25984,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         "The app will automatically use USB for ADB tasks when both connections are available (USB is more reliable).\n\n"
                         "You don't need the USB cable connected - you can disconnect it and use Wi-Fi only. All ADB features will work over Wi-Fi.\n\n"
                         "If you choose to keep both connections, the app will:\n"
-                        "• Use USB for all ADB operations (more reliable)\n"
-                        "• Allow you to disconnect USB at any time"
+                        " Use USB for all ADB operations (more reliable)\n"
+                        " Allow you to disconnect USB at any time"
                     )
                     msg_box.setStandardButtons(QMessageBox.Ok)
                     msg_box.exec()
@@ -26278,7 +26014,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Apply informative tooltip explaining ADB disconnected state"""
         tooltip_text = (
             "No Y1 connected via ADB. Regular Install/Updates are available. "
-            "Smart Drop (Beta) and ⚡️Fast Update become available when your Y1 is powered on "
+            "Smart Drop (Beta) and Fast Update become available when your Y1 is powered on "
             "and connected via ADB over USB or Wi-Fi. Click to refresh."
         )
         for attr in ('adb_status_widget', 'adb_status_label', 'adb_status_light'):
@@ -26338,9 +26074,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         message = (
             "Smart Drop (Beta) becomes available when your Y1 is powered on and connected via ADB over USB or Wi-Fi.\n\n"
             "Why you'll love it:\n"
-            "• Copy albums, playlists and other folders to your Y1 without finder metadata clutter.\n"
-            "• Drag rom.zip or update.zip files to kick off Install/Restore workflows without digging through folders.\n"
-            "• Install APKs instantly when the firmware allows it, so you can experiment with new apps effortlessly.\n\n"
+            " Copy albums, playlists and other folders to your Y1 without finder metadata clutter.\n"
+            " Drag rom.zip or update.zip files to kick off Install/Restore workflows without digging through folders.\n"
+            " Install APKs instantly when the firmware allows it, so you can experiment with new apps effortlessly.\n\n"
             "Certain firmwares unlock even more: the Original System software exposes ADB so Smart Drop is ready as soon as you connect, "
             "and custom firmwares like the Rockbox ROM layer in Fast Update so Smart Drop can deliver both media and firmware updates from one place.\n\n"
             "Note: Some advanced actions (such as removing or replacing system apps) still depend on firmware capabilities, so availability can vary."
@@ -27736,8 +27472,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Show completion message
                 QMessageBox.information(
                     self,
-                    "Update Complete! ✅",
-                    "⚡ Fast Update completed successfully via ADB!\n\n"
+                    "Update Complete!",
+                    "Fast Update completed successfully via ADB!\n\n"
                     "The update script has been executed on your Y1.\n"
                     "Your device will restart automatically to apply the update.\n\n"
                     "Please wait for your Y1 to reboot."
@@ -28148,8 +27884,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Complete",
                         self.device_copy(
-                            "✅ update*.zip has been pushed to your Y1.\n\n"
-                            "✅ Update script executed successfully via ADB.\n\n"
+                            "update*.zip has been pushed to your Y1.\n\n"
+                            "Update script executed successfully via ADB.\n\n"
                             "Your Y1 will restart and apply the update automatically."
                         ),
                     )
@@ -28159,7 +27895,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Pushed",
                         self.device_copy(
-                            "✅ update*.zip has been pushed to your Y1.\n\n"
+                            "update*.zip has been pushed to your Y1.\n\n"
                             "Next steps:\n"
                             "1. On your Y1, go to Main Menu > System\n"
                             "2. Select Firmware Update\n"
@@ -28217,8 +27953,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Complete",
                         self.device_copy(
-                            "✅ update*.zip has been copied to your Y1.\n\n"
-                            "✅ Update script executed successfully via ADB.\n\n"
+                            "update*.zip has been copied to your Y1.\n\n"
+                            "Update script executed successfully via ADB.\n\n"
                             "Your Y1 will restart and apply the update automatically."
                         ),
                     )
@@ -28227,7 +27963,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Copied",
                         self.device_copy(
-                            "✅ update*.zip has been copied to your Y1.\n\n"
+                            "update*.zip has been copied to your Y1.\n\n"
                             "Next steps:\n"
                             "1. Safely disconnect your Y1 from your computer\n"
                             "2. On your Y1, go to Main Menu > System\n"
@@ -28282,8 +28018,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Complete",
                         self.device_copy(
-                            "✅ update*.zip has been pushed to your Y1.\n\n"
-                            "✅ Update script executed successfully via ADB.\n\n"
+                            "update*.zip has been pushed to your Y1.\n\n"
+                            "Update script executed successfully via ADB.\n\n"
                             "Your Y1 will restart and apply the update automatically."
                         ),
                     )
@@ -28292,7 +28028,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self,
                         "Update Pushed",
                         self.device_copy(
-                            "✅ update*.zip has been pushed to your Y1.\n\n"
+                            "update*.zip has been pushed to your Y1.\n\n"
                             "Next steps:\n"
                             "1. On your Y1, go to Main Menu > System\n"
                             "2. Select Firmware Update\n"
@@ -29944,7 +29680,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 ]
                 if is_connected:
                     parts.append("Status: Connected")
-                display = " · ".join(part for part in parts if part)
+                display = "  ".join(part for part in parts if part)
                 identity = _network_identity(agg)
                 item = QListWidgetItem(display)
                 item.setData(Qt.UserRole, display_entry)
@@ -30440,7 +30176,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             warning = QLabel(
                 "The ADB Wi-Fi Reborn app should already be open on your Y1. "
-                "If you don’t see it, tap Rockbox Apps › ADB Wi-Fi. "
+                "If you don’t see it, tap Rockbox Apps  ADB Wi-Fi. "
                 "Accept any prompts before proceeding."
             )
         warning.setWordWrap(True)
@@ -32504,8 +32240,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 "Theme Installation Failed",
                 "Theme installation failed because the device storage is read-only.\n\n"
                 "Theme installation requires either:\n"
-                "• USB Storage Mode enabled, or\n"
-                "• ADB connection (USB or Wi-Fi)"
+                " USB Storage Mode enabled, or\n"
+                " ADB connection (USB or Wi-Fi)"
             )
 
     def _install_themes_via_usb(self, theme_folder_paths, usb_drive_path):
@@ -33050,9 +32786,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             if script_success:
                 QMessageBox.information(
                     self,
-                    "Update Complete! ✅",
-                    f"✅ {kind} update.zip has been sent to your Y1.\n\n"
-                    f"✅ Update script executed successfully via ADB.\n\n"
+                    "Update Complete!",
+                    f"{kind} update.zip has been sent to your Y1.\n\n"
+                    f"Update script executed successfully via ADB.\n\n"
                     f"Your Y1 will restart and apply the update automatically.\n\n"
                     f"After reboot, the app will automatically detect Fast Update capability.\n\n"
                     f"{self._post_install_donation_nudge()}"
@@ -33065,11 +32801,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Only show "IMPORTANT - PLEASE READ" dialog for USB Storage Mode transfers
                 QMessageBox.information(
                     self,
-                    "Update Sent Successfully! ✅",
-                    f"⚠️ IMPORTANT - PLEASE READ:\n\n"
+                    "Update Sent Successfully!",
+                    f"IMPORTANT - PLEASE READ:\n\n"
                     f"If this is the FIRST TIME you install {kind} on your Y1, if you don't see the Firmware Update option in Main Menu > System, you'll need to use a tool like Innioasis Updater (+ SP Flash Tool or MTKclient) to do this update the first time.\n\n"
-                    f"━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-                    f"📱 Installation Instructions:\n\n"
+                    f"----------------------------------------\n\n"
+                    f"Installation Instructions:\n\n"
                     f"1. Safely disconnect your Y1\n\n"
                     f"2. Go to Main Menu > System and click Firmware Update\n\n"
                     f"3. The update process will now run in the background and automatically restart the device once it is done\n\n"
@@ -33080,8 +32816,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # ADB transfer but script didn't run - show simple message
                 QMessageBox.information(
                     self,
-                    "Update Sent Successfully! ✅",
-                    f"✅ {kind} update.zip has been sent to your Y1.\n\n"
+                    "Update Sent Successfully!",
+                    f"{kind} update.zip has been sent to your Y1.\n\n"
                     f"Please check your device for update status.\n\n"
                     f"{self._post_install_donation_nudge()}"
                 )
@@ -33211,7 +32947,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             selected = self.get_selected_device_model()
             if selected and (is_y1_model(selected) or is_y2_model(selected)):
-                # Dropdown is authoritative when the user changes model — clear any
+                # Dropdown is authoritative when the user changes model  clear any
                 # stale runtime Y1/Y2 so install does not keep the previous path.
                 self.set_runtime_detected_device_model(
                     "Y2" if is_y2_model(selected) else "Y1"
@@ -33392,7 +33128,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             # Zip already exists - automatically use it for seamless experience.
             # Pass the asset URL so the real asset name (rom_y2.zip) is available
-            # for Y1/Y2 detection — the saved filename is mangled by repo fallbacks.
+            # for Y1/Y2 detection  the saved filename is mangled by repo fallbacks.
             silent_print(f"Using existing zip file: {zip_path.name}")
             self.status_label.setText("Using existing zip file. Extracting...")
             self.process_existing_zip(
@@ -33496,7 +33232,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Convert zip_path to Path object if it's a string
             if isinstance(zip_path, str):
                 zip_path = Path(zip_path)
-            # Remember the GitHub asset URL this zip came from — the real asset
+            # Remember the GitHub asset URL this zip came from  the real asset
             # name is reliable Y1/Y2 evidence even when the local filename isn't
             # (fallback-mapped repos save Y2 downloads under a Y1-looking name).
             # Assigned unconditionally so a later call without one clears a stale value.
@@ -33649,7 +33385,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             # Y2 firmware on macOS (or --y2-mac-flow test flag): skip the normal
             # install path and hand the user to the manufacturer's manual tool.
-            # The asset URL is checked too — the saved zip name can be misread as Y1.
+            # The asset URL is checked too  the saved zip name can be misread as Y1.
             if y2_mac_flow_active() and is_y2_model(
                 resolve_asset_model(getattr(self, '_last_install_asset_url', None))
                 or detected
@@ -33680,8 +33416,8 @@ class FirmwareDownloaderGUI(QMainWindow):
     # ------------------------------------------------------------------ #
     # Runs when a Y2 firmware would otherwise be installed on a Mac (or when
     # --y2-mac-flow is passed for testing on Windows/Linux). The same journey
-    # plays out no matter how the firmware got here — Browse Files, Smart Drop,
-    # or an in-app download — with one small difference: in-app downloads are
+    # plays out no matter how the firmware got here  Browse Files, Smart Drop,
+    # or an in-app download  with one small difference: in-app downloads are
     # moved + renamed to rom_y2.zip, while files the user picked themselves are
     # copied so their original stays put.
 
@@ -33711,7 +33447,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         layout.setContentsMargins(28, 24, 28, 22)
         layout.setSpacing(14)
 
-        title = QLabel("Almost there — one small step")
+        title = QLabel("Almost there  one small step")
         title_font = title.font()
         title_font.setPointSize(17)
         title_font.setBold(True)
@@ -33728,7 +33464,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             "2. Updater downloads the <b>Innioasis manual installation tool</b> "
             "and saves it on your Mac.<br>"
             "3. Updater steps aside, and the tool finishes the install.<br><br>"
-            "You don't need to do anything technical — just pick where things are "
+            "You don't need to do anything technical  just pick where things are "
             "saved and click through."
         )
         body.setWordWrap(True)
@@ -33799,7 +33535,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             QApplication.processEvents()
             time.sleep(0.05)
 
-        # Drain any queued completion signal before deciding — the worker can
+        # Drain any queued completion signal before deciding  the worker can
         # finish between pump iterations, and without this a successful download
         # would be misreported as cancelled.
         for _ in range(25):
@@ -33808,7 +33544,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if result:
                 break
 
-        # Rare: the deadline elapsed while the network call is still stuck — stop
+        # Rare: the deadline elapsed while the network call is still stuck  stop
         # the worker so it doesn't keep writing the .part file in the background.
         if worker.isRunning():
             worker.stop()
@@ -33845,7 +33581,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Make sure the firmware exists as rom_y2.zip; return its path or None.
 
         - Already named rom_y2.zip (e.g. the exact file the user imported): just
-          confirm the location — the user will pick that same file in the tool.
+          confirm the location  the user will pick that same file in the tool.
         - Anything else (in-app download, rom.zip, etc.): ask where to save it as
           rom_y2.zip and copy/move it there.
         """
@@ -33890,7 +33626,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 else:
                     shutil.copy2(str(source), str(dest_path))
             else:
-                # No zip on hand (shouldn't happen) — let the user pick one.
+                # No zip on hand (shouldn't happen)  let the user pick one.
                 picked, _ = QFileDialog.getOpenFileName(
                     self,
                     "Select Your rom_y2.zip",
@@ -33939,7 +33675,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         shared_dir = str(Path(final_zip).parent)
 
         # Platform-appropriate file-manager label (Finder on macOS, Explorer on
-        # Windows, file manager elsewhere) — mirrors manage_storage.py so the
+        # Windows, file manager elsewhere)  mirrors manage_storage.py so the
         # reveal action matches the OS even when --y2-mac-flow simulates macOS
         # Y2 behaviour on Windows/Linux.
         if platform.system() == "Darwin":
@@ -33957,7 +33693,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         layout.setContentsMargins(28, 24, 28, 22)
         layout.setSpacing(14)
 
-        title = QLabel("Almost there — one last step")
+        title = QLabel("Almost there  one last step")
         title_font = title.font()
         title_font.setPointSize(17)
         title_font.setBold(True)
@@ -33970,13 +33706,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             f"<b>{shared_dir}</b><br><br>"
             "Now it's over to the <b>Y2 Install Tool</b>:<br>"
             f"1. Double-click <b>{MANUFACTURER_TOOL_FILENAME}</b>, then drag the "
-            "app into <b>Applications</b> — or run it straight from the disk "
+            "app into <b>Applications</b>  or run it straight from the disk "
             "image.<br>"
             "2. Select <b>rom_y2.zip</b> when it asks for a firmware file.<br>"
             "3. Power off your <b>Y2</b> (paperclip in the hole beside the "
             "headphone jack if needed).<br>"
             "4. Click <b>Start Flash</b>, then connect your Y2.<br><br>"
-            "Updater will close itself now — your Y2 does the rest!"
+            "Updater will close itself now  your Y2 does the rest!"
         )
         body.setWordWrap(True)
         body.setTextFormat(Qt.RichText)
@@ -34053,7 +33789,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         dlg.exec()
 
         # Close Updater so the user can work with the manufacturer's tool.
-        self.status_label.setText("Y2 install handed off to the Y2 Install Tool — Updater closing…")
+        self.status_label.setText("Y2 install handed off to the Y2 Install Tool  Updater closing…")
         self.close()
         QTimer.singleShot(150, lambda: QApplication.instance().quit())
 
@@ -34062,17 +33798,17 @@ class FirmwareDownloaderGUI(QMainWindow):
         try:
             if not self._y2_mac_show_explainer():
                 self.status_label.setText(
-                    "Y2 install on Mac deferred — choose Install / Restore again when ready."
+                    "Y2 install on Mac deferred  choose Install / Restore again when ready."
                 )
                 return
 
-            # 1) Save the firmware as rom_y2.zip first — the install tool needs it.
+            # 1) Save the firmware as rom_y2.zip first  the install tool needs it.
             source = self._y2_mac_zip_source()
             final_zip = self._y2_mac_ensure_rom_y2_zip(source)
             if not final_zip:
                 return
 
-            # 2) The Y2 Install Tool is saved to the same folder as rom_y2.zip —
+            # 2) The Y2 Install Tool is saved to the same folder as rom_y2.zip 
             #    one location question covers both files, no second dialog.
             dmg_path = str(Path(final_zip).parent / MANUFACTURER_TOOL_FILENAME)
 
@@ -34102,9 +33838,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.set_runtime_detected_device_model(resolved_model)
 
         # Y2 firmware on macOS (or --y2-mac-flow test flag): installation isn't
-        # supported from this Mac yet — hand the user to the manufacturer's manual
+        # supported from this Mac yet  hand the user to the manufacturer's manual
         # install tool instead of the MTKClient path (which is blocked for Y2).
-        # The asset URL is checked too — the saved zip name can be misread as Y1.
+        # The asset URL is checked too  the saved zip name can be misread as Y1.
         if y2_mac_flow_active() and is_y2_model(
             resolve_asset_model(getattr(self, '_last_install_asset_url', None))
             or resolved_model
@@ -34144,7 +33880,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.installation_method = "spflash"
 
         # Gate Y2/MTK and offer Linux SPFT re-setup when needed. Do not silently
-        # rewrite an explicit SP Flash Tool selection — that path re-offers setup.
+        # rewrite an explicit SP Flash Tool selection  that path re-offers setup.
         if not self.ensure_install_path_for_model(resolved_model, preferred_method=method):
             return
         # Method may have been redirected (e.g. Y2 MTK -> SPFT)
@@ -34156,7 +33892,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.last_attempted_method = method
 
         if platform.system() == "Windows":
-            # Windows: SP Flash Tool methods only — never MTKClient.
+            # Windows: SP Flash Tool methods only  never MTKClient.
             windows_spft_methods = {"spflash", "spflash4", "spflash_console"}
             if method not in windows_spft_methods:
                 method = "spflash"
@@ -34798,11 +34534,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         msg_box = QMessageBox(self)
         msg_box.setWindowTitle("Installation Issue")
         msg_box.setText("The firmware installation encountered an issue. This could be due to:\n\n"
-                       "• USB cable was disconnected during installation\n"
-                       "• Connection issue between device and computer\n"
-                       "• Problem with the ROM file used\n"
-                       "• Driver issues or need to reboot PC after installing drivers\n"
-                       "• USB was connected too early during installation\n\n"
+                       " USB cable was disconnected during installation\n"
+                       " Connection issue between device and computer\n"
+                       " Problem with the ROM file used\n"
+                       " Driver issues or need to reboot PC after installing drivers\n"
+                       " USB was connected too early during installation\n\n"
                        "Would you like to try a different approach?")
         msg_box.setIcon(QMessageBox.Warning)
 
@@ -35184,7 +34920,7 @@ if [ -f "{venv_path}/bin/activate" ]; then
     echo "Virtual environment activated"
 fi
 
-# Scatter map for Y2 name→offset when GPT/PMT is empty (harmless on Y1)
+# Scatter map for Y2 nameoffset when GPT/PMT is empty (harmless on Y1)
 if [ -f "MT6582_Android_scatter.txt" ]; then
     export INNIOASIS_MTK_SCATTER="$(pwd)/MT6582_Android_scatter.txt"
     export MTK_SCATTER="$INNIOASIS_MTK_SCATTER"
@@ -35225,10 +34961,10 @@ echo "=========================================="
 echo "MTK command completed."
 echo ""
 if [ $? -eq 0 ]; then
-    echo "✓ Installation appears to have completed successfully!"
+    echo "Installation appears to have completed successfully!"
     echo "Your device should restart automatically."
 else
-    echo "⚠ Installation may have encountered issues."
+    echo "Installation may have encountered issues."
     echo "Please check the output above for error messages."
 fi
 echo ""
@@ -35304,7 +35040,7 @@ read -n 1
         except Exception as e:
             silent_print(f"UsbDk driver check error: {e}")
 
-        # Windows: SP Flash Tool methods only — never guided/mtkclient.
+        # Windows: SP Flash Tool methods only  never guided/mtkclient.
         available_methods = []
         can_install_firmware = True
 
@@ -35318,7 +35054,7 @@ read -n 1
             can_install_firmware = True
             if not has_mtk_driver:
                 silent_print(
-                    "Windows: MediaTek SP driver not detected — SP Flash Tool "
+                    "Windows: MediaTek SP driver not detected  SP Flash Tool "
                     "methods still offered (install drivers if flash fails)."
                 )
 
