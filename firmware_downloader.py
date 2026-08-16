@@ -3043,7 +3043,7 @@ def sp_flash_tool_process_env(app_dir=None, with_open_retry_preload=True):
 
 
 def ensure_sp_flash_tool_executable(app_dir=None):
-    """chmod +x flash_tool (+ launcher script) on Linux. No-op elsewhere."""
+    """chmod +x flash_tool (+ launcher script) and check libpng12 on Linux. No-op elsewhere."""
     if not is_linux_platform():
         return
     app_dir = Path(app_dir or get_firmware_app_dir())
@@ -3055,6 +3055,24 @@ def ensure_sp_flash_tool_executable(app_dir=None):
                 path.chmod(mode | 0o111)
             except Exception as e:
                 silent_print(f"Warning: could not chmod +x {path}: {e}")
+
+    # Ensure libpng12.so.0 exists in lib/ directory for legacy Qt4 SP Flash Tool
+    lib_dir = app_dir / "lib"
+    lib_dir.mkdir(parents=True, exist_ok=True)
+    target_libpng = lib_dir / "libpng12.so.0"
+    if not target_libpng.exists():
+        try:
+            import subprocess
+            res = subprocess.run(["ldconfig", "-p"], capture_output=True, text=True)
+            for line in res.stdout.splitlines():
+                if "libpng12.so.0" in line:
+                    sys_path = line.strip().split()[-1]
+                    if Path(sys_path).exists():
+                        target_libpng.symlink_to(sys_path)
+                        silent_print(f"Linked system libpng12 at {sys_path} -> {target_libpng}")
+                        break
+        except Exception as e:
+            silent_print(f"Could not check system libpng12: {e}")
 
 
 def _linux_find_askpass_helper():
@@ -7404,7 +7422,7 @@ class SPFlashToolWorker(QThread):
                     )
                     msg += (
                         f"\n\nFully unplug your {self.device_label} and try again. "
-                        f"If it still fails: troubleshooting.innioasis.app"
+                        f"If it still fails: https://innioasis.app/troubleshooting.html"
                     )
                 else:
                     msg = windows_spflash_com_port_fail_message(self.device_label)
@@ -23883,7 +23901,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         f"{message}\n\n"
                         f"Unplug your {label} completely, then try again. "
                         "Plug in only when the app asks you to connect. "
-                        "If it still fails: troubleshooting.innioasis.app"
+                        "If it still fails: https://innioasis.app/troubleshooting.html"
                     ),
                 )
                 self.revert_to_startup_state()
@@ -23910,21 +23928,45 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def show_donation_dialog(self, context="general", software_name=None):
         """Show donation options matching the innioasis.app support call to action."""
+        # Comprehensive dark mode detection across OSs / DEs
+        is_dark = False
+        try:
+            if callable(getattr(self, "is_dark_mode", None)) and self.is_dark_mode():
+                is_dark = True
+            elif callable(getattr(self, "detect_dark_mode", None)) and self.detect_dark_mode():
+                is_dark = True
+            else:
+                app_palette = QApplication.palette()
+                bg_color = app_palette.color(QPalette.ColorRole.Window)
+                if bg_color.lightness() < 128:
+                    is_dark = True
+        except Exception:
+            is_dark = False
+
         dialog = QDialog(self)
         dialog.setWindowTitle("Support Updater and the Themes Gallery")
         dialog.setModal(True)
         dialog.resize(680, 560)
 
+        if is_dark:
+            dialog.setStyleSheet("QDialog { background-color: #1f2937; color: #f9fafb; }")
+        else:
+            dialog.setStyleSheet("QDialog { background-color: #ffffff; color: #111827; }")
+
         layout = QVBoxLayout(dialog)
         layout.setContentsMargins(24, 20, 24, 20)
         layout.setSpacing(12)
 
+        title_color = "#f9fafb" if is_dark else "#111827"
         title = QLabel(
-            "<h2 style='margin: 0; font-size: 26px; font-weight: 800; color: #111827;'>"
+            f"<h2 style='margin: 0; font-size: 26px; font-weight: 800; color: {title_color};'>"
             "It takes <span style='color: #ff5252; text-decoration: underline;'>you</span>.</h2>"
         )
         title.setTextFormat(Qt.RichText)
         layout.addWidget(title)
+
+        link_color = "#60a5fa" if is_dark else "#007AFF"
+        intro_color = "#d1d5db" if is_dark else "#374151"
 
         if context == "install_success":
             model_name = self.get_effective_device_model() or "device"
@@ -23946,22 +23988,22 @@ class FirmwareDownloaderGUI(QMainWindow):
                 f"{install_msg} If you found this tool helpful, consider donating.<br><br>"
                 "Donations directly fund hosting, domain renewals, and the time-cost of human moderation, "
                 "archival, and preservation for <b>Innioasis Updater</b>, the "
-                "<a href='https://innioasis.app/firmware.html' style='color: #007AFF; text-decoration: none;'>Community Firmware Archive</a>, and the "
-                "<a href='https://themes.innioasis.app' style='color: #007AFF; text-decoration: none;'>Themes Gallery</a>."
+                f"<a href='https://innioasis.app/firmware.html' style='color: {link_color}; text-decoration: underline;'>Community Firmware Archive</a>, and the "
+                f"<a href='https://themes.innioasis.app' style='color: {link_color}; text-decoration: underline;'>Themes Gallery</a>."
             )
         else:
             intro_content = (
                 "Donations directly fund hosting, domain renewals, and the time-cost of human moderation, "
                 "archival, and preservation for <b>Innioasis Updater</b>, the "
-                "<a href='https://innioasis.app/firmware.html' style='color: #007AFF; text-decoration: none;'>Community Firmware Archive</a>, and the "
-                "<a href='https://themes.innioasis.app' style='color: #007AFF; text-decoration: none;'>Themes Gallery</a>."
+                f"<a href='https://innioasis.app/firmware.html' style='color: {link_color}; text-decoration: underline;'>Community Firmware Archive</a>, and the "
+                f"<a href='https://themes.innioasis.app' style='color: {link_color}; text-decoration: underline;'>Themes Gallery</a>."
             )
 
         intro = QLabel(intro_content)
         intro.setTextFormat(Qt.RichText)
         intro.setOpenExternalLinks(True)
         intro.setWordWrap(True)
-        intro.setStyleSheet("font-size: 14px; color: #374151; line-height: 1.5; margin-bottom: 4px;")
+        intro.setStyleSheet(f"font-size: 14px; color: {intro_color}; line-height: 1.5; margin-bottom: 4px;")
         layout.addWidget(intro)
 
         grid = QGridLayout()
@@ -24014,21 +24056,27 @@ class FirmwareDownloaderGUI(QMainWindow):
         honeygain_btn.clicked.connect(lambda: webbrowser.open(HONEYGAIN_REFERRAL_URL))
         layout.addWidget(honeygain_btn)
 
+        footer_color = "#9ca3af" if is_dark else "#6b7280"
         footer_text = QLabel(
             "Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, or Patreon. "
             "You can also help by joining Honeygain, sharing a fix, reviewing a guide, "
             "contributing code, or helping another Y1/Y2 owner in Discord."
         )
         footer_text.setWordWrap(True)
-        footer_text.setStyleSheet("font-size: 12px; color: #6b7280; line-height: 1.4; margin-top: 6px;")
+        footer_text.setStyleSheet(f"font-size: 12px; color: {footer_color}; line-height: 1.4; margin-top: 6px;")
         layout.addWidget(footer_text)
 
         # Toggle button for Crypto options
+        crypto_btn_bg = "#374151" if is_dark else "#f3f4f6"
+        crypto_btn_text = "#f9fafb" if is_dark else "#374151"
+        crypto_btn_border = "#4b5563" if is_dark else "#d1d5db"
+        crypto_btn_hover = "#4b5563" if is_dark else "#e5e7eb"
+
         show_crypto_btn = QPushButton("Show Crypto Options")
         show_crypto_btn.setCursor(Qt.PointingHandCursor)
         show_crypto_btn.setStyleSheet(
-            "QPushButton { background-color: #f3f4f6; color: #374151; font-weight: 600; font-size: 13px; padding: 10px; border-radius: 10px; border: 1px solid #d1d5db; margin-top: 4px; }"
-            "QPushButton:hover { background-color: #e5e7eb; }"
+            f"QPushButton {{ background-color: {crypto_btn_bg}; color: {crypto_btn_text}; font-weight: 600; font-size: 13px; padding: 10px; border-radius: 10px; border: 1px solid {crypto_btn_border}; margin-top: 4px; }}"
+            f"QPushButton:hover {{ background-color: {crypto_btn_hover}; }}"
         )
         layout.addWidget(show_crypto_btn)
 
@@ -24082,6 +24130,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         buttons = QDialogButtonBox(QDialogButtonBox.Close)
         buttons.rejected.connect(dialog.reject)
         buttons.accepted.connect(dialog.accept)
+        close_btn_bg = "#374151" if is_dark else "#e5e7eb"
+        close_btn_text = "#f9fafb" if is_dark else "#1f2937"
+        close_btn_hover = "#4b5563" if is_dark else "#d1d5db"
+        buttons.setStyleSheet(
+            f"QPushButton {{ background-color: {close_btn_bg}; color: {close_btn_text}; border-radius: 6px; padding: 6px 16px; border: none; font-weight: bold; }}"
+            f"QPushButton:hover {{ background-color: {close_btn_hover}; }}"
+        )
         layout.addWidget(buttons)
 
         dialog.exec()
