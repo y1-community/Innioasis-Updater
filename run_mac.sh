@@ -419,12 +419,11 @@ run_full_setup() {
     log_message "   Python version: $PYTHON_VERSION"
     log_message "   Python architecture: $PYTHON_ARCH"
     
-    # Check Tkinter compatibility
+    # Check Tkinter availability (informational only - PySide6 / Qt6 is used for main GUI)
     if "$PYTHON_EXEC" -c "import tkinter" 2>/dev/null; then
         log_message "   ✓ Tkinter support confirmed"
     else
-        warn_echo "   ⚠ Tkinter not available - GUI components may not work"
-        log_message "   This may be due to missing tkinter support in the Python installation"
+        log_message "   Note: Tkinter not found in Python (Main GUI uses PySide6 / Qt6)"
     fi
     
     if ! "$PYTHON_EXEC" -m venv "$VENV_DIR"; then
@@ -549,11 +548,31 @@ run_full_setup() {
 
 # Check if setup has been completed.
 if [ -f "$COMPLETION_MARKER" ]; then
-    # --- FAST PATH: Setup is complete, run the app silently ---
-    cd "$APP_DIR"
-    source "$VENV_DIR/bin/activate"
-    nohup python3 "$APP_DIR/firmware_downloader.py" >/dev/null 2>&1 &
-    exit 0
+    # --- FAST PATH: Setup is complete, run the app ---
+    cd "$APP_DIR" || exit 1
+    if [ -f "$VENV_DIR/bin/python" ]; then
+        source "$VENV_DIR/bin/activate"
+        PY_EXEC="$VENV_DIR/bin/python"
+    elif [ -f "$VENV_DIR/bin/python3" ]; then
+        source "$VENV_DIR/bin/activate"
+        PY_EXEC="$VENV_DIR/bin/python3"
+    else
+        PY_EXEC="python3"
+    fi
+    log_message "Launching Innioasis Updater (firmware_downloader.py)..."
+    "$PY_EXEC" "$APP_DIR/firmware_downloader.py" "$@" > "$APP_DIR/app_launch.log" 2>&1 &
+    LAUNCH_PID=$!
+    sleep 1
+    if kill -0 $LAUNCH_PID 2>/dev/null; then
+        log_message "Innioasis Updater started successfully (PID: $LAUNCH_PID)"
+        exit 0
+    else
+        warn_echo "Background launch did not stay active. Starting in foreground..."
+        if [ -f "$APP_DIR/app_launch.log" ]; then
+            cat "$APP_DIR/app_launch.log" 2>/dev/null || true
+        fi
+        exec "$PY_EXEC" "$APP_DIR/firmware_downloader.py" "$@"
+    fi
 else
     # --- FIRST RUN: Setup is needed ---
     if ! run_full_setup; then
@@ -568,8 +587,21 @@ else
     
     # After setup, launch the app for the first time.
     log_message "Launching firmware_downloader.py..."
-    cd "$APP_DIR"
+    cd "$APP_DIR" || exit 1
     source "$VENV_DIR/bin/activate"
-    nohup python3 "$APP_DIR/firmware_downloader.py" >/dev/null 2>&1 &
-    exit 0
+    if [ -f "$VENV_DIR/bin/python" ]; then
+        PY_EXEC="$VENV_DIR/bin/python"
+    else
+        PY_EXEC="python3"
+    fi
+    "$PY_EXEC" "$APP_DIR/firmware_downloader.py" "$@" > "$APP_DIR/app_launch.log" 2>&1 &
+    LAUNCH_PID=$!
+    sleep 1
+    if kill -0 $LAUNCH_PID 2>/dev/null; then
+        log_message "Innioasis Updater launched (PID: $LAUNCH_PID)"
+        exit 0
+    else
+        warn_echo "Background launch did not stay active. Starting in foreground..."
+        exec "$PY_EXEC" "$APP_DIR/firmware_downloader.py" "$@"
+    fi
 fi

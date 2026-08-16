@@ -1320,7 +1320,89 @@ install_generic_deps() {
         warning "Or: sudo pacman -S libusb (Arch) or sudo dnf install libusb1-devel (Fedora)"
     fi
     
+    ensure_linux_libpng12
     success "Generic dependencies installation completed"
+}
+
+# Ensure libpng12.so.0 is available for SP Flash Tool on Linux
+ensure_linux_libpng12() {
+    local lib_dir="$INSTALL_DIR/lib"
+    mkdir -p "$lib_dir"
+
+    if [ -f "$lib_dir/libpng12.so.0" ]; then
+        vlog "libpng12.so.0 already present in $lib_dir"
+        return 0
+    fi
+
+    # Check if libpng12 is already available in system library paths
+    local sys_libpng12
+    sys_libpng12=$(ldconfig -p 2>/dev/null | grep "libpng12.so.0" | awk '{print $NF}' | head -n 1)
+    if [ -n "$sys_libpng12" ] && [ -f "$sys_libpng12" ]; then
+        log "Found system libpng12 at $sys_libpng12, creating symlink in $lib_dir..."
+        ln -sf "$sys_libpng12" "$lib_dir/libpng12.so.0"
+        return 0
+    fi
+
+    vlog "libpng12.so.0 missing for SP Flash Tool. Attempting system package install..."
+    case "${DISTRO_ID:-generic}" in
+        ubuntu|linuxmint|pop|elementary|zorin|debian)
+            sudo apt-get update >/dev/null 2>&1 || true
+            sudo apt-get install -y libpng12-0 >/dev/null 2>&1 || true
+            ;;
+        arch|manjaro|endeavouros)
+            sudo pacman -S --noconfirm libpng12 >/dev/null 2>&1 || true
+            ;;
+        fedora|rhel|centos|almalinux|rocky)
+            local dnf_cmd
+            dnf_cmd=$(resolve_cmd dnf yum)
+            if [ -n "$dnf_cmd" ]; then
+                sudo "$dnf_cmd" install -y libpng12 >/dev/null 2>&1 || true
+            fi
+            ;;
+    esac
+
+    sys_libpng12=$(ldconfig -p 2>/dev/null | grep "libpng12.so.0" | awk '{print $NF}' | head -n 1)
+    if [ -n "$sys_libpng12" ] && [ -f "$sys_libpng12" ]; then
+        log "Found installed system libpng12 at $sys_libpng12, linking..."
+        ln -sf "$sys_libpng12" "$lib_dir/libpng12.so.0"
+        return 0
+    fi
+
+    log "Downloading compatible libpng12.so.0 into $lib_dir..."
+    local temp_deb="/tmp/libpng12_temp.deb"
+    local deb_url="http://archive.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb"
+    if curl -sSL -o "$temp_deb" "$deb_url" 2>/dev/null || wget -q -O "$temp_deb" "$deb_url" 2>/dev/null; then
+        if command -v dpkg-deb >/dev/null 2>&1; then
+            dpkg-deb -x "$temp_deb" /tmp/libpng12_extracted 2>/dev/null || true
+            if [ -f "/tmp/libpng12_extracted/lib/x86_64-linux-gnu/libpng12.so.0.54.0" ]; then
+                cp "/tmp/libpng12_extracted/lib/x86_64-linux-gnu/libpng12.so.0.54.0" "$lib_dir/"
+                ln -sf "$lib_dir/libpng12.so.0.54.0" "$lib_dir/libpng12.so.0"
+                success "Successfully installed libpng12.so.0 into $lib_dir"
+                rm -rf "$temp_deb" /tmp/libpng12_extracted
+                return 0
+            fi
+        elif command -v ar >/dev/null 2>&1 && command -v tar >/dev/null 2>&1; then
+            (
+                cd /tmp
+                ar x "$temp_deb" 2>/dev/null || true
+                if [ -f data.tar.xz ]; then
+                    tar -xf data.tar.xz 2>/dev/null || true
+                elif [ -f data.tar.gz ]; then
+                    tar -xf data.tar.gz 2>/dev/null || true
+                fi
+            )
+            if [ -f "/tmp/lib/x86_64-linux-gnu/libpng12.so.0.54.0" ]; then
+                cp "/tmp/lib/x86_64-linux-gnu/libpng12.so.0.54.0" "$lib_dir/"
+                ln -sf "$lib_dir/libpng12.so.0.54.0" "$lib_dir/libpng12.so.0"
+                success "Successfully installed libpng12.so.0 into $lib_dir"
+                rm -rf "$temp_deb" /tmp/lib /tmp/data.tar.*
+                return 0
+            fi
+        fi
+        rm -f "$temp_deb"
+    fi
+
+    warning "Could not automatically retrieve libpng12.so.0 for SP Flash Tool."
 }
 
 # Install Android Platform Tools as fallback
