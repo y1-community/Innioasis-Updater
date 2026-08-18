@@ -14,22 +14,81 @@
   </div>
   <div class="y1-site-dock-wrap">
     <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-modal="false" aria-labelledby="y1-donate-title" hidden>
-      <div class="y1-donate-panel-header">
-        <div>
-          <p class="y1-donate-panel-title">Support Updater and the Themes Gallery</p>
-          <h2 class="y1-donate-panel-hook" id="y1-donate-title">It takes <span>you</span>.</h2>
-          <p class="y1-donate-panel-intro"><strong>Innioasis Updater and the Themes Gallery are community hobbyist projects.</strong> Hosting, domain renewals, moderation, release work, and Cloudflare Workers create real costs. Your donation helps keep the tools, guides, and gallery available for the next Y1 or Y2 owner.</p>
+      <!-- Top Live Donors & Goal Stream Box -->
+      <div class="y1-contributor-stream-box" id="y1-contributor-stream-box" aria-live="polite" style="margin-bottom: 12px;">
+        <div class="y1-contributor-stream-line" id="y1-contributor-stream-line">Loading supporters...</div>
+      </div>
+
+      <!-- Developer Header: Avatar + Headline -->
+      <div class="y1-developer-profile-wrap" style="margin: 4px 0 10px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/mtkclient/gui/images/developer.png?v=20260830" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/mtkclient/gui/images/developer.png';this.onerror=null;}" alt="Ryan (Developer)" width="52" height="52" style="border-radius: 50%; border: 2px solid #10b981; display: block; object-fit: cover;">
+          <div>
+            <h2 class="y1-donate-panel-hook" id="y1-donate-title" style="margin: 0; font-size: 1.5rem;">It takes <span>you</span>.</h2>
+            <small style="color: var(--lumen-muted, #9aa3b5); font-weight: 600;">Ryan Specter &amp; Contributors</small>
+          </div>
         </div>
-        <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options">×</button>
+        <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options" style="position: static;">×</button>
       </div>
-      <div class="y1-donate-links" aria-label="Donation options">
-        <a class="y1-donate-method y1-donate-method--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">☕ Ko-fi</a>
-        <a class="y1-donate-method y1-donate-method--paypal" href="https://paypal.me/respectyarn" target="_blank" rel="noopener noreferrer">PayPal</a>
-        <a class="y1-donate-method y1-donate-method--revolut" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer">Revolut</a>
-        <a class="y1-donate-method y1-donate-method--patreon" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer">Patreon</a>
+
+      <p class="y1-donate-panel-intro" id="y1-donate-panel-intro" style="margin-top: 4px;">Hey! I'm Ryan, the developer behind <a href="https://innioasis.app" style="color: inherit; text-decoration: underline;">Innioasis Updater</a>, the <a href="https://innioasis.app/firmware.html" style="color: inherit; text-decoration: underline;">Community Firmware Archive</a>, and the <a href="https://themes.innioasis.app" style="color: inherit; text-decoration: underline;">Themes Gallery</a>. I pay for these hobby projects out of my own pocket with my own money to keep them free and accessible for everyone. Server hosting, firmware archive storage, domain renewals, and ongoing maintenance cost around $200 each month, so any support you can give is truly appreciated to help cover running costs!</p>
+
+      <!-- Quick Method Buttons -->
+      <div class="y1-donate-grid">
+        <a class="y1-donate-btn y1-donate-btn--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_kofi.png" width="20" height="20" alt="">
+          Ko-fi
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--paypal" href="https://paypal.me/respectyarn" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_paypal.png" width="20" height="20" alt="">
+          PayPal
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--revolut" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_revolut.png" width="20" height="20" alt="">
+          Revolut
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--patreon" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_patreon.png" width="20" height="20" alt="">
+          Patreon
+        </a>
       </div>
-      <p class="y1-donate-smallprint">Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, or Patreon. You can also help by sharing a fix, reviewing a guide, contributing code, or helping another Y1/Y2 owner in Discord.</p>
+
+      <!-- Honeygain Free Contribution -->
+      <a class="y1-donate-banner-btn" href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">
+        <svg class="y1-donate-btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
+        <span><strong>Contribute for free by joining Honeygain</strong><br><small style="opacity: 0.85; font-weight: normal;">Earn $5 bonus + support our running costs at zero expense to you</small></span>
+      </a>
+
+      <!-- Crypto Collapsible -->
+      <div class="y1-crypto-dropdown">
+        <button class="y1-crypto-toggle" type="button" data-crypto-toggle aria-expanded="false">
+          <span>Show Crypto Options (BTC, ETH, SHIB)</span>
+          <svg class="y1-crypto-toggle-arrow" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="y1-crypto-panel" id="y1-crypto-panel" hidden>
+          <div class="y1-crypto-row">
+            <span class="y1-crypto-label">Bitcoin (BTC)</span>
+            <input type="text" class="y1-crypto-input" value="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g" readonly>
+            <button type="button" class="y1-crypto-copy" data-copy="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g">Copy</button>
+          </div>
+          <div class="y1-crypto-row">
+            <span class="y1-crypto-label">Ethereum (ETH)</span>
+            <input type="text" class="y1-crypto-input" value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" readonly>
+            <button type="button" class="y1-crypto-copy" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">Copy</button>
+          </div>
+          <div class="y1-crypto-row">
+            <span class="y1-crypto-label">Shiba Inu (SHIB)</span>
+            <input type="text" class="y1-crypto-input" value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" readonly>
+            <button type="button" class="y1-crypto-copy" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">Copy</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <p class="y1-donate-smallprint" style="margin-top: 14px;">Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, Patreon, or Honeygain. <a href="credits.html" style="color: inherit; text-decoration: underline;">View our full public donor ledger &amp; money raised for community projects →</a></p>
     </div>
+
     <div class="y1-privacy-panel" id="y1-privacy-panel" role="dialog" aria-modal="false" aria-labelledby="y1-privacy-title" hidden>
       <div class="y1-donate-panel-header">
         <div>
@@ -56,20 +115,53 @@
         <button type="button" class="y1-privacy-save" data-privacy-save>Save choices</button>
       </div>
     </div>
-    <nav class="y1-site-dock-bar" aria-label="Site shortcuts">
-      <a class="y1-dock-link" href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C.53 9.05-.32 13.58.1 18.06c0 .02.01.04.03.05a19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.11 13 13 0 0 1-1.86-.89.08.08 0 0 1-.01-.13c.12-.09.25-.19.36-.29a.07.07 0 0 1 .08-.01c3.9 1.8 8.13 1.8 11.99 0a.07.07 0 0 1 .08.01c.12.1.24.2.37.29a.08.08 0 0 1 0 .13 12.5 12.5 0 0 1-1.87.88.08.08 0 0 0-.04.12c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.68-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42z"/></svg>Discord</a>
-      <span class="y1-dock-sep" aria-hidden="true">·</span>
-      <button class="y1-dock-link y1-donate-trigger" type="button" data-donate-open aria-expanded="false" aria-controls="y1-donate-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Donate</button>
-      <span class="y1-dock-sep" aria-hidden="true">·</span>
-      <button class="y1-dock-link y1-privacy-trigger" type="button" data-privacy-open aria-expanded="false" aria-controls="y1-privacy-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Privacy</button>
-      <span class="y1-dock-sep" aria-hidden="true">·</span>
-      <span class="y1-font-control" role="group" aria-label="Adjust text size">
-        <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Smaller text">A−</button>
-        <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Reset text size">A</button>
-        <button class="y1-dock-link y1-font-btn y1-font-btn--large" type="button" data-font-up aria-label="Larger text">A+</button>
-      </span>
-      <span class="y1-font-live" id="y1-font-live" aria-live="polite"></span>
+
+    <nav class="y1-site-dock-bar" id="y1-site-dock-bar" aria-label="Site shortcuts">
+      <!-- Button layer (visible normally, fades out when idle) -->
+      <div class="y1-dock-buttons-layer" id="y1-dock-buttons-layer">
+        <a class="y1-dock-link" href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C.53 9.05-.32 13.58.1 18.06c0 .02.01.04.03.05a19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.11 13 13 0 0 1-1.86-.89.08.08 0 0 1-.01-.13c.12-.09.25-.19.36-.29a.07.07 0 0 1 .08-.01c3.9 1.8 8.13 1.8 11.99 0a.07.07 0 0 1 .08.01c.12.1.24.2.37.29a.08.08 0 0 1 0 .13 12.5 12.5 0 0 1-1.87.88.08.08 0 0 0-.04.12c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.68-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42z"/></svg>Discord</a>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <button class="y1-dock-link y1-donate-trigger" type="button" data-donate-open aria-expanded="false" aria-controls="y1-donate-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Donate</button>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <button class="y1-dock-link y1-privacy-trigger" type="button" data-privacy-open aria-expanded="false" aria-controls="y1-privacy-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Privacy</button>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <button class="y1-dock-link y1-thank-you-trigger" type="button" data-toolbar-thank-you-open aria-expanded="false" aria-controls="y1-toolbar-thank-you-overlay">Thank You</button>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <!-- Dynamic Rotating Ticker Slot (inside button layer for non-idle) -->
+        <div class="y1-dock-ticker-wrap" id="y1-dock-ticker-wrap" title="Click to view our monthly goal &amp; support" role="button" tabindex="0">
+          <span class="y1-dock-ticker-text" id="y1-dock-ticker-text">
+            <span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Goal</span>
+            <span>$200/mo target</span>
+          </span>
+        </div>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <span class="y1-font-control" role="group" aria-label="Adjust text size">
+          <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Smaller text">A−</button>
+          <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Reset text size">A</button>
+          <button class="y1-dock-link y1-font-btn y1-font-btn--large" type="button" data-font-up aria-label="Larger text">A+</button>
+        </span>
+        <span class="y1-font-live" id="y1-font-live" aria-live="polite"></span>
+      </div>
+      <!-- Idle goal layer (fades in after 3s idle, crossfades over buttons) -->
+      <div class="y1-dock-goal-layer" id="y1-dock-goal-layer" aria-label="Monthly funding goal — click to support" role="button" tabindex="-1">
+        <span class="y1-dock-idle-heart" aria-hidden="true">Support</span>
+        <div class="y1-dock-goal-bar-wrap" aria-hidden="true">
+          <div class="y1-dock-goal-bar-fill" id="y1-dock-idle-bar-fill"></div>
+        </div>
+        <span class="y1-dock-goal-text" id="y1-dock-idle-goal-text">0% of $200/mo</span>
+        <span class="y1-dock-idle-ticker" id="y1-dock-idle-ticker-text">Loading...</span>
+      </div>
     </nav>
+  </div>
+  <div class="y1-toolbar-thank-you-overlay" id="y1-toolbar-thank-you-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="y1-toolbar-thank-you-title">
+    <div class="y1-toolbar-thank-you-stage">
+      <p class="y1-toolbar-thank-you-eyebrow">Innioasis Updater CE · Community credits</p>
+      <h2 id="y1-toolbar-thank-you-title">Thank you.</h2>
+      <p class="y1-toolbar-thank-you-subtitle">This project is here because people chose to help. Thank you for keeping the archive, the tools, and the community moving.</p>
+      <div class="y1-toolbar-thank-you-names" id="y1-toolbar-thank-you-names" aria-live="polite"><p>Loading supporters…</p></div>
+      <p class="y1-toolbar-thank-you-footer">Every contribution, big or small, matters.</p>
+      <button type="button" class="y1-toolbar-thank-you-close" data-toolbar-thank-you-close>Close</button>
+    </div>
   </div>
 </div>
 <script>
@@ -87,10 +179,146 @@
   var feedbackToggle = document.querySelector("[data-privacy-feedback]");
   var nightlyToggle = document.querySelector("[data-privacy-nightly]");
   var privacySave = document.querySelector("[data-privacy-save]");
+  var cryptoToggle = document.getElementById("y1-crypto-toggle");
+  var cryptoGrid = document.getElementById("y1-crypto-grid");
+  var thankYouOpen = document.querySelector("[data-toolbar-thank-you-open]");
+  var thankYouClose = document.querySelector("[data-toolbar-thank-you-close]");
+  var thankYouOverlay = document.getElementById("y1-toolbar-thank-you-overlay");
+  var thankYouNames = document.getElementById("y1-toolbar-thank-you-names");
+  var thankYouEntries = [];
+  var thankYouPageIndex = 0;
+  var thankYouPageTimer = null;
 
-  /* Text size — a plain readability preference, remembered locally like the
-     theme. It scales the root font size via --lumen-font-scale so every
-     page (and the 2077 theme) follows the user's choice. */
+  function toolbarThankYouLayout() {
+    return window.innerHeight > window.innerWidth
+      ? { columns: 2, rows: 7 }
+      : { columns: 5, rows: 4 };
+  }
+
+  function toolbarThankYouAmount(entry) {
+    if (entry.amountLabel) return entry.amountLabel;
+    var amount = "$" + (entry.total % 1 === 0 ? entry.total.toFixed(0) : entry.total.toFixed(2));
+    return amount + (entry.count > 1 ? " · " + entry.count + " contributions" : "");
+  }
+
+  function renderToolbarThankYouPage(pageIndex) {
+    if (!thankYouNames) return;
+    var layout = toolbarThankYouLayout();
+    var slots = layout.columns * layout.rows;
+    var pageCount = Math.max(1, Math.ceil(thankYouEntries.length / slots));
+    thankYouPageIndex = pageCount > 1 ? pageIndex % pageCount : 0;
+    thankYouNames.style.gridTemplateColumns = "repeat(" + layout.columns + ", minmax(0, 1fr))";
+    thankYouNames.style.gridTemplateRows = "repeat(" + layout.rows + ", minmax(0, 1fr))";
+    thankYouNames.style.opacity = "0";
+    thankYouNames.innerHTML = "";
+    var pageEntries = thankYouEntries.slice(thankYouPageIndex * slots, (thankYouPageIndex + 1) * slots);
+    if (!pageEntries.length) {
+      thankYouNames.innerHTML = "<p>The roll of honour is waiting for its first names.</p>";
+    } else {
+      pageEntries.forEach(function (entry) {
+        var item = document.createElement("div");
+        item.className = "y1-toolbar-thank-you-entry";
+        var name = document.createElement("span");
+        name.className = "y1-toolbar-thank-you-name";
+        name.textContent = entry.name;
+        var amount = document.createElement("span");
+        amount.className = "y1-toolbar-thank-you-amount";
+        amount.textContent = toolbarThankYouAmount(entry);
+        item.appendChild(name);
+        item.appendChild(amount);
+        thankYouNames.appendChild(item);
+      });
+    }
+    requestAnimationFrame(function () { thankYouNames.style.opacity = "1"; });
+  }
+
+  function startToolbarThankYouCycle() {
+    if (thankYouPageTimer) clearInterval(thankYouPageTimer);
+    renderToolbarThankYouPage(thankYouPageIndex);
+    var layout = toolbarThankYouLayout();
+    var pageCount = Math.max(1, Math.ceil(thankYouEntries.length / (layout.columns * layout.rows)));
+    if (pageCount > 1) {
+      thankYouPageTimer = setInterval(function () {
+        renderToolbarThankYouPage(thankYouPageIndex + 1);
+      }, 6000);
+    }
+  }
+
+  function stopToolbarThankYouCycle() {
+    if (thankYouPageTimer) clearInterval(thankYouPageTimer);
+    thankYouPageTimer = null;
+  }
+
+  function renderToolbarThankYou(donations) {
+    var groups = {};
+    var anonymousCount = 0;
+    donations.forEach(function (donation) {
+      var name = (donation.name || "").trim();
+      var lowerName = name.toLowerCase();
+      if (donation.amount <= 0 || lowerName === "innioasis" || lowerName.indexOf("innioasis") === 0) return;
+      if (isAnonymous(name)) {
+        anonymousCount += 1;
+        return;
+      }
+      var key = lowerName;
+      if (!groups[key]) groups[key] = { name: name, total: 0, count: 0 };
+      groups[key].total += donation.amount;
+      groups[key].count += 1;
+    });
+    thankYouEntries = Object.keys(groups).map(function (key) { return groups[key]; });
+    thankYouEntries.sort(function (a, b) { return b.total - a.total || a.name.localeCompare(b.name); });
+    if (anonymousCount) {
+      thankYouEntries.push({ name: "Anonymous supporters", amountLabel: anonymousCount + (anonymousCount === 1 ? " contribution" : " contributions") });
+    }
+    if (thankYouOverlay && !thankYouOverlay.hidden) startToolbarThankYouCycle();
+  }
+
+  var thankYouControlsHidden = false;
+
+  function setToolbarThankYouControlsHidden(hidden) {
+    thankYouControlsHidden = !!hidden;
+    document.body.classList.toggle(
+      "y1-toolbar-thank-you-controls-hidden",
+      thankYouControlsHidden
+    );
+  }
+
+  function closeToolbarThankYou() {
+    stopToolbarThankYouCycle();
+    if (thankYouOverlay) thankYouOverlay.hidden = true;
+    setToolbarThankYouControlsHidden(false);
+    document.body.classList.remove("y1-toolbar-thank-you-open");
+    if (thankYouOpen) {
+      thankYouOpen.setAttribute("aria-expanded", "false");
+      thankYouOpen.focus();
+    }
+  }
+
+  if (thankYouOpen && thankYouOverlay) {
+    thankYouOpen.addEventListener("click", function () {
+      setToolbarThankYouControlsHidden(false);
+      thankYouOverlay.hidden = false;
+      document.body.classList.add("y1-toolbar-thank-you-open");
+      thankYouOpen.setAttribute("aria-expanded", "true");
+      startToolbarThankYouCycle();
+      if (thankYouClose) thankYouClose.focus();
+    });
+    if (thankYouClose) thankYouClose.addEventListener("click", closeToolbarThankYou);
+    document.addEventListener("keydown", function (event) {
+      if (thankYouOverlay.hidden) return;
+      if (event.key === "Escape") {
+        closeToolbarThankYou();
+      } else if ((event.key || "").toLowerCase() === "h") {
+        setToolbarThankYouControlsHidden(!thankYouControlsHidden);
+        event.preventDefault();
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (!thankYouOverlay.hidden) startToolbarThankYouCycle();
+    });
+  }
+
+  /* Text size control */
   var FONT_KEY = "lumen-font-scale";
   var fontScale = 1;
   try {
@@ -122,7 +350,29 @@
     if (backdrop) backdrop.hidden = !anyOpen;
   }
 
+  function getRotatingAppealCopy() {
+    var r = Math.random();
+    if (r < 0.40) {
+      var familyChoices = [
+        "Hey! I'm Ryan, the developer behind <a href=\"https://innioasis.app\" style=\"color: inherit; text-decoration: underline;\">Innioasis Updater</a>, the <a href=\"https://innioasis.app/firmware.html\" style=\"color: inherit; text-decoration: underline;\">Community Firmware Archive</a>, and the <a href=\"https://themes.innioasis.app\" style=\"color: inherit; text-decoration: underline;\">Themes Gallery</a>. I pay for server hosting, firmware archive storage, and domain renewals out of my own pocket to keep everything free and open for the community.<br><br>Monthly upkeep comes to around $200. Any support you give not only keeps these resources alive for the next owner, but also directly helps my partner and me raise our family together. Thank you so much!",
+        "Hey there, I'm Ryan. I build and maintain <a href=\"https://innioasis.app\" style=\"color: inherit; text-decoration: underline;\">Innioasis Updater</a>, the Themes Gallery, and our firmware archives as hobby projects. I cover all our running costs—server bandwidth, storage, and domain renewals—with my own money so everyone has free access.<br><br>Your donations help cover our $200 monthly upkeep and directly support my partner and me as we raise our young family. Every contribution makes a real difference to us."
+      ];
+      return familyChoices[Math.floor(Math.random() * familyChoices.length)];
+    } else {
+      var standardChoices = [
+        "Hey! I'm Ryan, the developer behind <a href=\"https://innioasis.app\" style=\"color: inherit; text-decoration: underline;\">Innioasis Updater</a>, the <a href=\"https://innioasis.app/firmware.html\" style=\"color: inherit; text-decoration: underline;\">Community Firmware Archive</a>, and the <a href=\"https://themes.innioasis.app\" style=\"color: inherit; text-decoration: underline;\">Themes Gallery</a>. I pay for our server hosting, firmware archive storage, and domain renewals out of my own pocket with my own money to keep them free and accessible for everyone.<br><br>Keeping everything online costs around $200 each month, so any support you can share helps take the weight off and keeps the project thriving for the community.",
+        "Hey, I'm Ryan. I created <a href=\"https://innioasis.app\" style=\"color: inherit; text-decoration: underline;\">Innioasis Updater</a> and the Firmware Archive to ensure our devices always have access to working software, custom ROMs, and themes without paywalls or ads. I pay for the servers and domain costs myself each month.<br><br>If you've found the software useful, chipping in helps cover our monthly costs and keeps these archives preserved for everyone.",
+        "Hey! I'm Ryan, and I maintain <a href=\"https://innioasis.app\" style=\"color: inherit; text-decoration: underline;\">Innioasis Updater</a>, the Community Firmware Archive, and the Themes Gallery for the community. I fund the server infrastructure and maintenance out of my own pocket because I love this community and want to keep all tools accessible to everyone.<br><br>Monthly running costs come to about $200. Any contribution you make goes directly toward keeping these services online and maintained."
+      ];
+      return standardChoices[Math.floor(Math.random() * standardChoices.length)];
+    }
+  }
+
   function setPanel(panel, button, value, closeButton) {
+    if (value && panel === donatePanel) {
+      var introEl = document.getElementById("y1-donate-panel-intro");
+      if (introEl) introEl.innerHTML = getRotatingAppealCopy();
+    }
     panel.hidden = !value;
     panel.classList.toggle("is-open", value);
     panel.classList.toggle("y1-privacy-panel--open", value && panel === privacyPanel);
@@ -140,8 +390,6 @@
 
   function prefillToggles() {
     var prefs = (consent && consent.read) ? consent.read() : null;
-    /* Until a consent record exists, the switches stay unchecked: opt-in
-       must be a deliberate act, never a pre-ticked default. */
     if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback : false;
     if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly : false;
   }
@@ -158,8 +406,41 @@
     if (privacyOpen) privacyOpen.focus();
   }
 
+  var devAvatar = document.getElementById("y1-developer-avatar-img");
+  function rotateDeveloperAvatar() {
+    if (!devAvatar) return;
+    // Keep the human profile image stable: the second legacy image is not guaranteed
+    // to be published with every website build.
+    var isDev1 = true;
+    var filename = "developer.png";
+    var candidates = [
+      "/mtkclient/gui/images/" + filename,
+      "/developer.png",
+      "/developer_2.png",
+      "/assets/" + filename,
+      filename,
+      "mtkclient/gui/images/" + filename,
+      "assets/" + filename,
+      "https://innioasis.app/mtkclient/gui/images/" + filename,
+      "https://innioasis.app/developer.png",
+      "https://innioasis.app/developer_2.png"
+    ];
+    var testIdx = 0;
+    function tryNext() {
+      if (testIdx < candidates.length) {
+        devAvatar.src = candidates[testIdx++];
+      }
+    }
+    devAvatar.onerror = function () {
+      tryNext();
+    };
+    tryNext();
+  }
+  rotateDeveloperAvatar();
+
   donateOpen.addEventListener("click", function () {
     var opening = donatePanel.hidden;
+    if (opening) rotateDeveloperAvatar();
     setPanel(privacyPanel, privacyOpen, false);
     setPanel(donatePanel, donateOpen, opening, donateClose);
   });
@@ -169,20 +450,57 @@
     if (opening) prefillToggles();
     setPanel(privacyPanel, privacyOpen, opening, privacyClose);
   });
-  if (donateClose) donateClose.addEventListener("click", function () { setPanel(donatePanel, donateOpen, false); donateOpen.focus(); });
-  if (privacyClose) privacyClose.addEventListener("click", function () { setPanel(privacyPanel, privacyOpen, false); privacyOpen.focus(); });
+  if (donateClose) donateClose.addEventListener("click", function () { setPanel(donatePanel, donateOpen, false); });
+  if (privacyClose) privacyClose.addEventListener("click", function () { setPanel(privacyPanel, privacyOpen, false); });
   if (privacySave) privacySave.addEventListener("click", saveFromPanel);
-  document.addEventListener("keydown", function (event) {
-    if (event.key !== "Escape") return;
-    if (!donatePanel.hidden) { setPanel(donatePanel, donateOpen, false); donateOpen.focus(); }
-    if (!privacyPanel.hidden) { setPanel(privacyPanel, privacyOpen, false); privacyOpen.focus(); }
+
+  function setBanner(show) {
+    if (!banner) return;
+    banner.hidden = !show;
+    banner.setAttribute("aria-hidden", show ? "false" : "true");
+  }
+
+  function hasDecided() {
+    return !!(consent && consent.hasDecided && consent.hasDecided());
+  }
+
+  if (cryptoToggle && cryptoGrid) {
+    cryptoToggle.addEventListener("click", function () {
+      var isHidden = cryptoGrid.hidden;
+      cryptoGrid.hidden = !isHidden;
+      cryptoToggle.setAttribute("aria-expanded", isHidden ? "true" : "false");
+      var text = cryptoToggle.querySelector("span");
+      if (text) text.textContent = isHidden ? "Hide Crypto Options (BTC, ETH, SHIB)" : "Show Crypto Options (BTC, ETH, SHIB)";
+    });
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var val = btn.getAttribute("data-copy");
+      if (!val) return;
+      navigator.clipboard.writeText(val).then(function () {
+        var orig = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(function () { btn.textContent = orig; }, 2000);
+      }).catch(function () {});
+    });
   });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+      if (!privacyPanel.hidden) setPanel(privacyPanel, privacyOpen, false);
+    }
+  });
+
   document.addEventListener("click", function (event) {
-    var dock = document.querySelector(".y1-site-dock-wrap");
-    if (!dock) return;
-    if (dock.contains(event.target)) return;
-    /* Clicks on the consent banner itself should not close open panels. */
-    if (banner && banner.contains(event.target)) return;
+    var inside = (donatePanel && donatePanel.contains(event.target)) ||
+                 (privacyPanel && privacyPanel.contains(event.target)) ||
+                 (donateOpen && donateOpen.contains(event.target)) ||
+                 (privacyOpen && privacyOpen.contains(event.target)) ||
+                 (banner && banner.contains(event.target)) ||
+                 (event.target.closest && (event.target.closest("#y1-dock-ticker-wrap") || event.target.closest("#y1-dock-goal-layer")));
+    if (inside) return;
     if (backdrop && event.target === backdrop) {
       if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
       if (!privacyPanel.hidden) setPanel(privacyPanel, privacyOpen, false);
@@ -209,7 +527,620 @@
     setPanel(privacyPanel, privacyOpen, true, privacyClose);
   });
 
-  /* Show the consent banner on visits until a decision is stored. */
   if (!hasDecided()) setBanner(true);
+
+  /* ————— Dock Idle Crossfade: 3s idle → goal bar + ticker ————— */
+  (function () {
+    var dockBar = document.getElementById("y1-site-dock-bar");
+    var goalLayer = document.getElementById("y1-dock-goal-layer");
+    var idleBarFill = document.getElementById("y1-dock-idle-bar-fill");
+    var idleGoalText = document.getElementById("y1-dock-idle-goal-text");
+    var idleTickerEl = document.getElementById("y1-dock-idle-ticker-text");
+
+    var IDLE_DELAY = 3000;
+    var idleTimer = null;
+    var idleTickerInterval = null;
+    var isIdle = false;
+
+    function enterIdle() {
+      if (!dockBar) return;
+      isIdle = true;
+      dockBar.classList.add("is-idle");
+      if (goalLayer) goalLayer.setAttribute("tabindex", "0");
+    }
+
+    function exitIdle() {
+      if (!dockBar) return;
+      isIdle = false;
+      dockBar.classList.remove("is-idle");
+      if (goalLayer) goalLayer.setAttribute("tabindex", "-1");
+    }
+
+    function resetIdleTimer() {
+      if (idleTimer) clearTimeout(idleTimer);
+      if (isIdle) exitIdle();
+      // Never fade into the ticker while a modal is open.
+      if ((donatePanel && !donatePanel.hidden) || (privacyPanel && !privacyPanel.hidden)) return;
+      idleTimer = setTimeout(enterIdle, IDLE_DELAY);
+    }
+
+    // Wake up when user interacts. Hovering the dock is special: keep the
+    // shortcut buttons available while the pointer is over it.
+    ["mousemove", "keydown", "scroll", "touchstart", "pointerdown", "click"].forEach(function (evt) {
+      document.addEventListener(evt, resetIdleTimer, { passive: true });
+    });
+    var dockWrap = document.querySelector(".y1-site-dock-wrap");
+    if (dockWrap) {
+      dockWrap.addEventListener("mouseenter", function () {
+        if (isIdle) exitIdle();
+        if (idleTimer) clearTimeout(idleTimer);
+      });
+      dockWrap.addEventListener("mouseleave", resetIdleTimer);
+    }
+
+    // Clicking the idle goal bar or ticker opens the existing donation modal.
+    if (goalLayer) {
+      goalLayer.addEventListener("click", function (e) {
+        if (e.target && e.target.tagName && e.target.tagName.toLowerCase() === "a") return;
+        exitIdle();
+        if (idleTimer) clearTimeout(idleTimer);
+        var donateOpenBtn = document.querySelector("[data-donate-open]");
+        if (donateOpenBtn) donateOpenBtn.click();
+        // Give the modal time to be read before the idle cycle can return.
+        setTimeout(resetIdleTimer, 8000);
+      });
+      goalLayer.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goalLayer.click(); }
+      });
+    }
+
+    // Expose updater so renderGoalAndDonors can feed it live data
+    window._y1UpdateIdleBar = function (pct, raised, target, tickerHtml) {
+      if (idleBarFill) {
+        requestAnimationFrame(function () { idleBarFill.style.width = Math.min(100, pct).toFixed(1) + "%"; });
+      }
+      if (idleGoalText) {
+        var rStr = (raised % 1 === 0) ? raised.toFixed(0) : raised.toFixed(2);
+        idleGoalText.textContent = "$" + rStr + " of $" + target.toFixed(0) + "/mo";
+      }
+      if (idleTickerInterval) clearInterval(idleTickerInterval);
+      var donorLines = Array.isArray(tickerHtml) ? tickerHtml.filter(Boolean) : (tickerHtml ? [tickerHtml] : []);
+      var raisedLabel = (raised % 1 === 0) ? raised.toFixed(0) : raised.toFixed(2);
+      var goalLine = "Monthly goal: $" + raisedLabel + " of $" + target.toFixed(0) + "/mo";
+      var lines = [goalLine];
+      donorLines.forEach(function (line, index) {
+        if (index && index % 3 === 0) lines.push(goalLine);
+        lines.push(line);
+      });
+      if (idleTickerEl && lines.length) {
+        var lineIndex = 0;
+        function showIdleLine() {
+          idleTickerEl.style.opacity = "0";
+          setTimeout(function () {
+            idleTickerEl.innerHTML = lines[lineIndex % lines.length];
+            idleTickerEl.style.opacity = "1";
+            lineIndex += 1;
+          }, 550);
+        }
+        showIdleLine();
+        if (lines.length > 1) idleTickerInterval = setInterval(showIdleLine, 6500);
+      }
+    };
+
+    // Kick off idle timer on page load
+    resetIdleTimer();
+  })();
+
+  /* ————— Donors CSV Data & Monthly Goal Engine ————— */
+  var METHOD_URLS = {
+    "ko-fi": "https://ko-fi.com/teamslide",
+    "kofi": "https://ko-fi.com/teamslide",
+    "paypal": "https://paypal.me/respectyarn",
+    "revolut": "https://revolut.me/rspecter",
+    "revolut pay": "https://revolut.me/rspecter",
+    "patreon": "https://www.patreon.com/ryanspecter",
+    "boosty": "https://boosty.to",
+    "honeygain": "https://join.honeygain.com/ITSRY2B5D7",
+    "bitcoin": "https://www.blockchain.com/explorer/addresses/BTC/bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g",
+    "btc": "https://www.blockchain.com/explorer/addresses/BTC/bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g"
+  };
+
+  function parseDate(dateStr) {
+    if (!dateStr) return null;
+    var parts = dateStr.trim().split("/");
+    if (parts.length !== 3) return null;
+    var d = parseInt(parts[0], 10);
+    var m = parseInt(parts[1], 10) - 1;
+    var y = parseInt(parts[2], 10);
+    return new Date(y, m, d);
+  }
+
+  function getRelativeTime(dt) {
+    if (!dt) return "";
+    var now = new Date();
+    var diffMs = now.getTime() - dt.getTime();
+    var diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    if (diffDays <= 0) return "today";
+    if (diffDays === 1) return "yesterday";
+    if (diffDays < 7) return diffDays + " days ago";
+    if (diffDays < 14) return "1 week ago";
+    if (diffDays < 30) return Math.floor(diffDays / 7) + " weeks ago";
+    if (diffDays < 60) return "1 month ago";
+    if (diffDays < 365) return Math.floor(diffDays / 30) + " months ago";
+    if (diffDays < 730) return "1 year ago";
+    return Math.floor(diffDays / 365) + " years ago";
+  }
+
+  function formatAmount(amt) {
+    return (amt % 1 === 0) ? String(amt.toFixed(0)) : amt.toFixed(2);
+  }
+
+  function parseCSV(text) {
+    var lines = text.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean);
+    var records = [];
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      if (i === 0 && line.toLowerCase().indexOf("name") === 0) continue;
+      var cols = [];
+      var cur = "", inQuote = false;
+      for (var c = 0; c < line.length; c++) {
+        var char = line[c];
+        if (char === '"') { inQuote = !inQuote; }
+        else if (char === ',' && !inQuote) { cols.push(cur.trim()); cur = ""; }
+        else { cur += char; }
+      }
+      cols.push(cur.trim());
+      if (!cols[0] && !cols[1]) continue;
+      var name = cols[0] || "Supporter";
+      var amt = parseFloat((cols[1] || "0").replace(/[^0-9.]/g, "")) || 0;
+      var dateStr = cols[2] || "";
+      var url = cols[3] || "";
+      var method = cols[4] || "Donation";
+      var dt = parseDate(dateStr);
+      records.push({
+        name: name,
+        amount: amt,
+        dateStr: dateStr,
+        dt: dt,
+        url: url,
+        method: method
+      });
+    }
+    return records;
+  }
+
+  function isAnonymous(n) {
+    if (!n) return true;
+    var low = n.toLowerCase().trim();
+    return low === "supporter" || low === "someone" || low === "anonymous" || low === "anon" || low.indexOf("supporter") === 0 || low.indexOf("anonymous") === 0;
+  }
+
+  function buildCreditHTML(item, isRegular, totalAmt, methodCount, isRegularDonor) {
+    var rawName = (item.name || "Supporter").trim();
+    var isAnon = isAnonymous(rawName);
+    var amt = (isRegular && totalAmt !== undefined) ? totalAmt : (item.amount || 0);
+    var isOutgoing = (amt < 0);
+    var absAmt = Math.abs(amt);
+    var amtStr = "$" + formatAmount(absAmt);
+    var method = item.method || "Donation";
+    var mLower = method.toLowerCase().trim();
+    var url = item.url || "";
+    var relTime = getRelativeTime(item.dt);
+    var timePart = relTime ? " · " + relTime : "";
+
+    var defaultMethodUrl = METHOD_URLS[mLower] || METHOD_URLS[mLower.replace(" pay", "")] || "https://ko-fi.com/teamslide";
+    var methodUrl = ((mLower.indexOf("bitcoin") !== -1 || mLower.indexOf("btc") !== -1) && url && url.indexOf("http") === 0)
+      ? url
+      : defaultMethodUrl;
+
+    var targetUrl = (url && url.indexOf("http") === 0) ? url : methodUrl;
+
+    if (isOutgoing) {
+      var projHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawName + '</strong></a>';
+      var outAmtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
+      var outMethodHTML = '<a href="' + methodUrl + '" target="_blank" rel="noopener noreferrer">' + method + '</a>';
+      return "We donated " + outAmtHTML + " to " + projHTML + " on " + outMethodHTML + timePart;
+    }
+
+    var isInnioasis = rawName.toLowerCase() === "innioasis" || rawName.toLowerCase().indexOf("innioasis") === 0;
+    if (isInnioasis) {
+      var innHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>Innioasis</strong></a>';
+      var corpAmtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
+      return "Contribution of " + corpAmtHTML + " from " + innHTML + " (Corporate Sponsorship)" + timePart;
+    }
+
+    var showRegularPrefix = (isRegular || isRegularDonor) && !isAnon && !isOutgoing && !isInnioasis;
+
+    var supporterHTML;
+    if (isAnon) {
+      supporterHTML = "Someone";
+    } else {
+      supporterHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawName + '</strong></a>';
+    }
+
+    if (showRegularPrefix) {
+      supporterHTML = "Regular Supporter " + supporterHTML;
+    }
+
+    var amtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
+    var methodHTML = '<a href="' + methodUrl + '" target="_blank" rel="noopener noreferrer">' + method + '</a>';
+
+    if (isRegular) {
+      if (methodCount && methodCount > 1) {
+        return supporterHTML + " has donated " + amtHTML + timePart;
+      }
+      return supporterHTML + " donated " + amtHTML + " by " + methodHTML + timePart;
+    }
+
+    if (mLower === "honeygain") {
+      var hgUrl = METHOD_URLS["honeygain"];
+      return supporterHTML + ' contributed ' + amtHTML + ' for free by joining <a href="' + hgUrl + '" target="_blank" rel="noopener noreferrer">Honeygain</a>' + timePart;
+    } else if (mLower.indexOf("ko-fi") !== -1 || mLower.indexOf("kofi") !== -1) {
+      var coffees = Math.max(1, Math.round(absAmt));
+      var cWord = (coffees === 1) ? "a coffee" : (coffees + " coffees");
+      var coffeesHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + cWord + '</a>';
+      return supporterHTML + " bought us " + coffeesHTML + " on " + methodHTML + timePart;
+    } else {
+      return supporterHTML + " donated " + amtHTML + " by " + methodHTML + timePart;
+    }
+  }
+
+  function renderGoalAndDonors(donations) {
+    renderToolbarThankYou(donations);
+    var MONTHLY_TARGET = 200.0;
+    var now = new Date();
+    var curMonth = now.getMonth();
+    var curYear = now.getFullYear();
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var curMonthName = monthNames[curMonth];
+
+    var currentMonthTotal = 0;
+    var bySupporter = {};
+
+    for (var i = 0; i < donations.length; i++) {
+      var d = donations[i];
+      if (d.dt && d.dt.getMonth() === curMonth && d.dt.getFullYear() === curYear && d.amount > 0) {
+        currentMonthTotal += d.amount;
+      }
+      // Exclude Innioasis from community donor stream - it appears in financials only
+      var isCorpEntry = d.name && (d.name.toLowerCase().trim() === "innioasis" || d.name.toLowerCase().trim().indexOf("innioasis") === 0);
+      if (d.amount > 0 && !isAnonymous(d.name) && !isCorpEntry) {
+        var key = d.name.toLowerCase().trim();
+        if (!bySupporter[key]) bySupporter[key] = [];
+        bySupporter[key].push(d);
+      }
+    }
+
+    var raisedPct = Math.min(100, Math.max(0, (currentMonthTotal / MONTHLY_TARGET) * 100));
+    var remainingAmount = Math.max(0, MONTHLY_TARGET - currentMonthTotal);
+
+    /* Update Goal Bar elements with explicit calendar month */
+    var titleEl = document.getElementById("y1-goal-title");
+    var statsEl = document.getElementById("y1-goal-stats");
+    var raisedBar = document.getElementById("y1-goal-bar-raised");
+    var remBar = document.getElementById("y1-goal-bar-remaining");
+    var legRaised = document.getElementById("y1-goal-legend-raised");
+    var legRem = document.getElementById("y1-goal-legend-remaining");
+
+    var curAmtStr = (currentMonthTotal % 1 === 0) ? currentMonthTotal.toFixed(0) : currentMonthTotal.toFixed(2);
+    if (titleEl) titleEl.textContent = "Monthly Running Costs";
+    if (statsEl) statsEl.textContent = "You've helped us cover $" + curAmtStr + " of our $" + MONTHLY_TARGET.toFixed(0) + " costs for this month. All donations are appreciated.";
+    if (raisedBar) raisedBar.style.width = raisedPct + "%";
+    if (remBar) remBar.style.width = (100 - raisedPct) + "%";
+    if (legRaised) legRaised.textContent = "You've helped us cover $" + curAmtStr + " of our $" + MONTHLY_TARGET.toFixed(0) + " costs for this month.";
+    if (legRem) legRem.textContent = "";
+
+    var goalCardHTML = '<div class="y1-goal-header" style="margin-bottom: 4px;">' +
+      '<span class="y1-goal-stats" style="font-size: 0.76rem; font-weight: bold;">You\'ve helped us cover $' + curAmtStr + ' of our $' + MONTHLY_TARGET.toFixed(0) + ' costs for this month. All donations are appreciated.</span>' +
+      '</div>' +
+      '<div class="y1-goal-bar-wrap" role="progressbar" style="height: 6px; border-radius: 4px; overflow: hidden; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35);">' +
+      '<div class="y1-goal-segment--raised" data-target-width="' + raisedPct + '%" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
+      '</div>';
+
+    /* Populate Single-Line Rotating Contributor Stream inside panel */
+    var streamLine = document.getElementById("y1-contributor-stream-line");
+    var donorsCountEl = document.getElementById("y1-donors-count");
+    if (donorsCountEl) {
+      donorsCountEl.textContent = donations.length + " contributions";
+    }
+
+    var rawDonorLines = [];
+    var regularKeys = Object.keys(bySupporter).filter(function (k) { return bySupporter[k].length >= 2; });
+    regularKeys.forEach(function (k) {
+      var items = bySupporter[k];
+      var totalAmt = items.reduce(function (sum, item) { return sum + item.amount; }, 0);
+      var methods = Array.from(new Set(items.map(function (item) { return item.method; })));
+      rawDonorLines.push("Regular supporter: " + buildCreditHTML(items[items.length - 1], true, totalAmt, methods.length));
+    });
+
+    donations.slice().reverse().forEach(function (item) {
+      // Skip Innioasis from donor ticker stream
+      if (item.name && (item.name.toLowerCase().trim() === "innioasis" || item.name.toLowerCase().trim().indexOf("innioasis") === 0)) return;
+      var isAnon = isAnonymous(item.name);
+      var key = item.name ? item.name.toLowerCase().trim() : "";
+      var isRegDonor = !isAnon && bySupporter[key] && bySupporter[key].length >= 2;
+      rawDonorLines.push(buildCreditHTML(item, false, 0, 1, isRegDonor));
+    });
+
+    // Show the goal once, then three donation-from / donation-to lines before
+    // showing the goal again. This keeps the appeal visible without rushing the
+    // human stories past the reader.
+    var streamAlternatingItems = [goalCardHTML];
+    rawDonorLines.forEach(function (dLine, index) {
+      streamAlternatingItems.push(dLine);
+      if ((index + 1) % 3 === 0 && index + 1 < rawDonorLines.length) {
+        streamAlternatingItems.push(goalCardHTML);
+      }
+    });
+
+    if (streamLine && streamAlternatingItems.length > 0) {
+      if (window._y1StreamInterval) clearInterval(window._y1StreamInterval);
+      streamLine.innerHTML = streamAlternatingItems[0];
+      var initBar = streamLine.querySelector(".y1-goal-segment--raised");
+      if (initBar) {
+        setTimeout(function () {
+          initBar.style.width = initBar.getAttribute("data-target-width") || "0%";
+        }, 100);
+      }
+      var streamIdx = 0;
+      window._y1StreamInterval = setInterval(function () {
+        streamIdx = (streamIdx + 1) % streamAlternatingItems.length;
+        streamLine.style.opacity = "0";
+        streamLine.style.transform = "translateY(-4px)";
+        setTimeout(function () {
+          streamLine.innerHTML = streamAlternatingItems[streamIdx];
+          var bar = streamLine.querySelector(".y1-goal-segment--raised");
+          if (bar) {
+            requestAnimationFrame(function () {
+              bar.style.width = bar.getAttribute("data-target-width") || "0%";
+            });
+          }
+          streamLine.style.opacity = "1";
+          streamLine.style.transform = "translateY(0)";
+        }, 550);
+      }, 6500);
+    }
+
+    /* Start rotating dock ticker (alternates between Twitch/Wiki-style Goal Bar and single/multi donor lines) */
+    setupRotatingTicker(donations, currentMonthTotal, MONTHLY_TARGET, bySupporter, curMonthName, raisedPct, remainingAmount);
+
+    // Feed the idle goal bar with a rotating mix of supporters and projects
+    // the community has helped, so the appeal stays human rather than generic.
+    if (window._y1UpdateIdleBar) {
+      var idleTickerLines = rawDonorLines.slice();
+      donations.slice().reverse().forEach(function (item) {
+        var itemName = (item.name || "").toLowerCase().trim();
+        if (item.amount < 0 && itemName.indexOf("innioasis") !== 0) {
+            idleTickerLines.push(buildCreditHTML(item, false, 0, 1, false));
+          }
+      });
+      window._y1UpdateIdleBar(raisedPct, currentMonthTotal, MONTHLY_TARGET, idleTickerLines);
+    }
+  }
+
+  function setupRotatingTicker(donations, currentMonthTotal, target, bySupporter, monthName, raisedPct, remainingAmount) {
+    var tickerWrap = document.getElementById("y1-dock-ticker-wrap");
+    var tickerText = document.getElementById("y1-dock-ticker-text");
+    if (!tickerWrap || !tickerText) return;
+
+    if (window._y1DockTickerInterval) clearInterval(window._y1DockTickerInterval);
+
+    if (!tickerWrap._hasClickListener) {
+      tickerWrap._hasClickListener = true;
+      tickerWrap.addEventListener("click", function (event) {
+        if (event.target && (event.target.tagName.toLowerCase() === "a" || event.target.closest("a"))) {
+          return;
+        }
+        setPanel(privacyPanel, privacyOpen, false);
+        setPanel(donatePanel, donateOpen, true, donateClose);
+      });
+    }
+
+    var curAmtStr = (currentMonthTotal % 1 === 0) ? currentMonthTotal.toFixed(0) : currentMonthTotal.toFixed(2);
+    var goalItem = {
+      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Goal</span>' +
+            '<div class="y1-dock-mini-bar" title="' + Math.round(raisedPct) + '% covered" style="display: inline-block; width: 50px; height: 6px; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35); border-radius: 4px; overflow: hidden; vertical-align: middle; margin-right: 6px;">' +
+              '<div class="y1-dock-mini-raised" data-target-width="' + raisedPct + '%" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
+            '</div>' +
+            '<span>You\'ve helped us cover $' + curAmtStr + ' of our $' + target.toFixed(0) + ' costs for this month. All donations are appreciated</span>'
+    };
+
+    var donorItems = [];
+    /* Regular supporters summaries (multi-donations) */
+    var regularKeys = Object.keys(bySupporter).filter(function (k) { return bySupporter[k].length >= 2; });
+    regularKeys.forEach(function (k) {
+      var list = bySupporter[k];
+      var totalAmt = list.reduce(function (sum, item) { return sum + item.amount; }, 0);
+      var methods = Array.from(new Set(list.map(function (item) { return item.method; })));
+      donorItems.push({
+        html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Regular</span>' +
+              '<span>' + buildCreditHTML(list[list.length - 1], true, totalAmt, methods.length) + '</span>'
+      });
+    });
+
+    /* Individual single donations */
+    donations.slice(-15).forEach(function (item) {
+      var itemName = (item.name || "").toLowerCase().trim();
+      if (itemName === "innioasis" || itemName.indexOf("innioasis ") === 0) return;
+      var badgeClass = "y1-dock-ticker-badge";
+      var badgeText = item.method || "Supporter";
+      var mLow = (item.method || "").toLowerCase();
+      var extraStyle = "";
+      if (item.amount < 0) {
+        badgeText = "Community contribution";
+        extraStyle = ' style="background: rgba(239,68,68,0.25); color: #f87171; border-color: rgba(239,68,68,0.5);"';
+      } else if (mLow === "honeygain") {
+        badgeText = "Free contribution";
+        extraStyle = ' style="background: rgba(16,185,129,0.25); color: #10b981; border-color: rgba(16,185,129,0.5);"';
+      } else if (mLow.indexOf("ko-fi") !== -1 || mLow.indexOf("kofi") !== -1) {
+        badgeText = "Ko-fi";
+      }
+
+      var isAnon = isAnonymous(item.name);
+      var key = item.name ? item.name.toLowerCase().trim() : "";
+      var isRegDonor = !isAnon && bySupporter[key] && bySupporter[key].length >= 2;
+
+      donorItems.push({
+        html: '<span class="y1-dock-ticker-badge"' + extraStyle + '>' + badgeText + '</span>' +
+              '<span>' + buildCreditHTML(item, false, 0, 1, isRegDonor) + '</span>'
+      });
+    });
+
+    // Show the goal once, then three donation-from / donation-to lines before
+    // showing the goal again.
+    var items = [goalItem];
+    donorItems.forEach(function (dItem, index) {
+      items.push(dItem);
+      if ((index + 1) % 3 === 0 && index + 1 < donorItems.length) {
+        items.push(goalItem);
+      }
+    });
+
+    var tickerIdx = 0;
+    if (items.length > 0) {
+      tickerText.innerHTML = items[0].html;
+      var initMini = tickerText.querySelector(".y1-dock-mini-raised");
+      if (initMini) {
+        setTimeout(function () {
+          initMini.style.width = initMini.getAttribute("data-target-width") || "0%";
+        }, 100);
+      }
+    }
+
+    window._y1DockTickerInterval = setInterval(function () {
+      tickerIdx = (tickerIdx + 1) % items.length;
+      var cur = items[tickerIdx];
+      tickerText.style.opacity = "0";
+      tickerText.style.transform = "translateY(-4px)";
+      setTimeout(function () {
+        tickerText.innerHTML = cur.html;
+        var miniBar = tickerText.querySelector(".y1-dock-mini-raised");
+        if (miniBar) {
+          requestAnimationFrame(function () {
+            miniBar.style.width = miniBar.getAttribute("data-target-width") || "0%";
+          });
+        }
+        tickerText.style.opacity = "1";
+        tickerText.style.transform = "translateY(0)";
+      }, 550);
+    }, 6500);
+  }
+
+  function fetchDonors() {
+    var candidates = [
+      "donors.csv",
+      "/donors.csv",
+      "../donors.csv",
+      "../../donors.csv",
+      "https://innioasis.app/donors.csv"
+    ];
+    var candidateIndex = 0;
+
+    function tryNext() {
+      if (candidateIndex >= candidates.length) {
+        return;
+      }
+      var baseUrl = candidates[candidateIndex++];
+      var url = baseUrl + (baseUrl.indexOf("?") === -1 ? "?_t=" : "&_t=") + Date.now();
+      fetch(url, { cache: "no-cache" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.text();
+        })
+        .then(function (text) {
+          var donations = parseCSV(text);
+          if (donations && donations.length > 0) {
+            renderGoalAndDonors(donations);
+          }
+        })
+        .catch(function () {
+          tryNext();
+        });
+    }
+
+    tryNext();
+  }
+
+  fetchDonors();
+  setInterval(fetchDonors, 60000);
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  /* Keep the idle appeal alive even if an optional modal control is absent or
+     an older cached toolbar script stops before its donor loader runs. */
+  var dockBar = document.getElementById("y1-site-dock-bar");
+  var goalLayer = document.getElementById("y1-dock-goal-layer");
+  var ticker = document.getElementById("y1-dock-idle-ticker-text");
+  if (!dockBar || !goalLayer || window._y1IdleDonationFallback || window._y1UpdateIdleBar) return;
+  window._y1IdleDonationFallback = true;
+  var timer = null;
+  var lines = ["Thank you to everyone who supports the community"];
+  var lineIndex = 0;
+  var rotation = null;
+
+  function enterIdle() {
+    dockBar.classList.add("is-idle");
+    goalLayer.setAttribute("tabindex", "0");
+  }
+  function wake() {
+    dockBar.classList.remove("is-idle");
+    goalLayer.setAttribute("tabindex", "-1");
+    if (timer) clearTimeout(timer);
+  }
+  function schedule() {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(enterIdle, 3000);
+  }
+  function rotateLine() {
+    if (!ticker || !lines.length) return;
+    ticker.textContent = lines[lineIndex % lines.length];
+    lineIndex += 1;
+  }
+  function loadFallbackNames() {
+    fetch("donors.csv?_toolbar=" + Date.now(), { cache: "no-cache" })
+      .then(function (response) { if (!response.ok) throw new Error("Donor data unavailable"); return response.text(); })
+      .then(function (text) {
+        var nextLines = [];
+        var raised = 0;
+        var today = new Date();
+        text.split(/\r?\n/).slice(1).forEach(function (row) {
+          var fields = row.split(",");
+          var name = (fields[0] || "").trim();
+          var amount = parseFloat(fields[1] || "0");
+          var dateParts = (fields[2] || "").trim().split("/");
+          if (amount > 0 && dateParts.length === 3 && parseInt(dateParts[1], 10) - 1 === today.getMonth() && parseInt(dateParts[2], 10) === today.getFullYear()) raised += amount;
+          var lower = name.toLowerCase();
+          if (!name || lower === "innioasis" || lower.indexOf("innioasis ") === 0) return;
+          if (amount < 0) nextLines.push("We supported " + name);
+          else if (amount > 0) nextLines.push("Thank you to " + (lower === "supporter" || lower === "someone" ? "a supporter" : name));
+        });
+        var goalText = document.getElementById("y1-dock-idle-goal-text");
+        var goalFill = document.getElementById("y1-dock-idle-bar-fill");
+        var percentage = Math.min(100, Math.max(0, raised / 200 * 100));
+        if (goalText) goalText.textContent = "$" + (raised % 1 === 0 ? raised.toFixed(0) : raised.toFixed(2)) + " of $200/mo";
+        if (goalFill) goalFill.style.width = percentage.toFixed(1) + "%";
+        if (nextLines.length) {
+          lines = nextLines;
+          rotateLine();
+          if (rotation) clearInterval(rotation);
+          rotation = setInterval(rotateLine, 6500);
+        }
+      })
+      .catch(function () {});
+  }
+  ["keydown", "pointerdown", "touchstart"].forEach(function (eventName) {
+    document.addEventListener(eventName, wake, { passive: true });
+  });
+  document.addEventListener("mousemove", function (event) {
+    if (!dockBar.contains(event.target)) schedule();
+  }, { passive: true });
+  dockBar.addEventListener("mouseenter", wake);
+  dockBar.addEventListener("mouseleave", schedule);
+  goalLayer.addEventListener("click", wake);
+  rotateLine();
+  loadFallbackNames();
+  schedule();
 })();
 </script>

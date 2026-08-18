@@ -196,6 +196,133 @@ body.site-themes-app .theme-card-buttons {
 }
 
 /* —— Unified bottom dock —— */
+body.y1-toolbar-thank-you-open { overflow: hidden; }
+
+.y1-toolbar-thank-you-overlay[hidden] { display: none !important; }
+.y1-toolbar-thank-you-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+}
+
+.y1-toolbar-thank-you-stage {
+    box-sizing: border-box;
+    width: min(100%, 1680px);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 80px) clamp(20px, 5vw, 90px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.y1-toolbar-thank-you-eyebrow {
+    margin: 0 0 12px;
+    color: #10b981;
+    font-size: clamp(.8rem, 1.3vw, 1.1rem);
+    font-weight: 800;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+}
+
+.y1-toolbar-thank-you-stage h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.8rem, 7vw, 7rem);
+    line-height: .95;
+    letter-spacing: -.06em;
+}
+
+.y1-toolbar-thank-you-subtitle {
+    max-width: 800px;
+    margin: 24px auto 34px;
+    color: #b8bec9;
+    font-size: clamp(1rem, 1.8vw, 1.45rem);
+    line-height: 1.45;
+}
+
+.y1-toolbar-thank-you-names {
+    width: 100%;
+    max-width: 1420px;
+    height: min(48vh, 560px);
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    gap: clamp(8px, 1.4vw, 20px);
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity .45s ease;
+}
+
+.y1-toolbar-thank-you-entry {
+    min-width: 0;
+    min-height: 0;
+    padding: 8px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.y1-toolbar-thank-you-name {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    color: #fff;
+    font-size: clamp(1.1rem, 2.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.08;
+}
+
+.y1-toolbar-thank-you-amount {
+    color: #10b981;
+    font-size: clamp(.85rem, 1.2vw, 1.15rem);
+    font-weight: 600;
+}
+
+.y1-toolbar-thank-you-footer {
+    margin: 20px auto 0;
+    color: #8f98a8;
+    font-size: clamp(.85rem, 1.4vw, 1.1rem);
+}
+
+.y1-toolbar-thank-you-close {
+    min-height: 44px;
+    margin-top: 28px;
+    padding: 10px 22px;
+    border: 1px solid #3a414d;
+    border-radius: 999px;
+    background: #17191d;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+body.y1-toolbar-thank-you-controls-hidden .y1-toolbar-thank-you-close {
+    display: none;
+}
+
+.y1-toolbar-thank-you-close:hover, .y1-toolbar-thank-you-close:focus-visible {
+    border-color: #10b981;
+    background: #10b981;
+    color: #03140d;
+    outline: none;
+}
+
+.y1-donate-btn-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex: 0 0 20px;
+    display: inline-block;
+}
+
 #support-toolbar-container {
     font-family: var(--site-font, "DM Sans", system-ui, sans-serif);
     --dock-ink: var(--lumen-text, var(--site-text, #f4f6fb));
@@ -210,8 +337,109 @@ body.site-themes-app .theme-card-buttons {
     bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     transform: translateX(-50%);
     z-index: 10001;
-    width: min(92vw, 420px);
+    width: min(96vw, 680px);
     pointer-events: none;
+    transition: width 0.3s ease;
+}
+
+/* Dock bar idle state: crossfade to goal bar + ticker. The idle layer is
+   populated immediately with a readable fallback and refreshed from donors.csv. */
+.y1-site-dock-bar {
+    position: relative;
+}
+
+.y1-dock-buttons-layer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 8px;
+    width: 100%;
+    transition: opacity 0.5s ease;
+}
+
+.y1-dock-goal-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.y1-site-dock-bar.is-idle .y1-dock-buttons-layer {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.y1-site-dock-bar.is-idle .y1-dock-goal-layer {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* A mouse hovering the dock should always reveal its shortcuts again. */
+.y1-site-dock-wrap:hover .y1-site-dock-bar.is-idle .y1-dock-buttons-layer {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.y1-site-dock-wrap:hover .y1-site-dock-bar.is-idle .y1-dock-goal-layer {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.y1-dock-goal-bar-wrap {
+    flex-shrink: 0;
+    width: 72px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.y1-dock-goal-bar-fill {
+    height: 100%;
+    background: #10b981;
+    border-radius: 3px;
+    transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 0%;
+}
+
+.y1-dock-goal-text {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #10b981;
+    white-space: nowrap;
+}
+
+.y1-dock-idle-ticker {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 1.2em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--dock-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.y1-dock-idle-ticker a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.y1-dock-idle-heart {
+    flex-shrink: 0;
+    color: #f87171;
+    font-size: 0.9rem;
 }
 
 .y1-site-dock-wrap > * {
@@ -953,4 +1181,397 @@ body.site-dock-mode:has(#y1-site-dock-privacy-slot #y1-privacy-settings-btn) > #
     clip: rect(0 0 0 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* —— Developer Message & Donation Goals System —— */
+.y1-developer-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--dock-line, rgba(255, 255, 255, 0.12));
+}
+
+.y1-developer-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff736f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
+}
+
+.y1-developer-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.y1-developer-author {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ff8a87;
+}
+
+.y1-developer-role {
+    margin: 2px 0 0;
+    font-size: 0.74rem;
+    color: var(--lumen-muted, #9aa3b5);
+}
+
+/* Dual-Color $200 Monthly Goal Progress Bar */
+.y1-goal-card {
+    background: color-mix(in oklab, var(--dock-panel) 92%, var(--dock-ink) 8%);
+    border: 1px solid var(--dock-line, rgba(255, 255, 255, 0.15));
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin: 14px 0;
+}
+
+.y1-goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.y1-goal-title {
+    color: var(--lumen-paper, #fff);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.y1-goal-stats {
+    font-size: 0.76rem;
+    color: var(--lumen-muted, #9aa3b5);
+}
+
+.y1-goal-bar-wrap {
+    height: 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.y1-goal-segment--raised {
+    background: linear-gradient(90deg, #10b981, #34d399);
+    height: 100%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.y1-goal-segment--remaining {
+    background: linear-gradient(90deg, #f87171, #ef4444);
+    height: 100%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.y1-goal-legend {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.72rem;
+}
+
+.y1-goal-legend-raised {
+    color: #34d399;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.y1-goal-legend-raised::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+}
+
+.y1-goal-legend-remaining {
+    color: #f87171;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.y1-goal-legend-remaining::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+}
+
+/* Honeygain free contribution banner */
+.y1-honeygain-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    margin: 10px 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #059669, #10b981);
+    border: 1px solid #34d399;
+    color: #fff !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.y1-honeygain-cta:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    color: #fff !important;
+}
+
+/* Crypto options toggle and panel */
+.y1-crypto-toggle {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: color-mix(in oklab, var(--dock-ink) 8%, transparent);
+    border: 1px solid var(--dock-line, rgba(255, 255, 255, 0.15));
+    color: var(--dock-ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background 0.15s ease;
+}
+
+.y1-crypto-toggle:hover {
+    background: color-mix(in oklab, var(--dock-ink) 14%, transparent);
+}
+
+.y1-crypto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.y1-crypto-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.78rem;
+}
+
+.y1-crypto-item strong {
+    color: #f59e0b;
+}
+
+.y1-crypto-copy {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--dock-ink);
+    font-size: 0.72rem;
+    cursor: pointer;
+}
+
+.y1-crypto-copy:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Donors and Regular Supporters Feed */
+.y1-donors-section {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--dock-line, rgba(255, 255, 255, 0.12));
+}
+
+.y1-donors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.y1-donors-title {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--lumen-muted, #9aa3b5);
+}
+
+.y1-donors-feed {
+    max-height: 180px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 4px;
+}
+
+.y1-donors-feed::-webkit-scrollbar {
+    width: 5px;
+}
+
+.y1-donors-feed::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+}
+
+.y1-donor-entry {
+    font-size: 0.78rem;
+    line-height: 1.4;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--lumen-text, #d9e0ef);
+}
+
+.y1-donor-entry a {
+    color: #60a5fa !important;
+    text-decoration: underline;
+}
+
+.y1-donor-entry a:hover {
+    color: #93c5fd !important;
+}
+
+.y1-donor-entry--regular {
+    background: color-mix(in oklab, #f59e0b 10%, rgba(255, 255, 255, 0.04));
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* Single-line Contributor Crossfade Box (Twitch/Wikipedia Stream style) */
+.y1-contributor-stream-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.y1-contributor-stream-line {
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--lumen-text, #d9e0ef);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.y1-contributor-stream-line a {
+    color: inherit !important;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.y1-contributor-stream-line a:hover {
+    text-decoration: underline;
+}
+
+/* Dock Rotating Ticker with Twitch/Wikipedia Stream style Mini Goal Bar */
+.y1-dock-ticker-wrap {
+    display: inline-flex;
+    align-items: center;
+    max-width: 340px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+    cursor: pointer;
+}
+
+.y1-dock-ticker-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--dock-ink);
+    transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1), transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.y1-dock-ticker-text a {
+    color: inherit !important;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.y1-dock-ticker-text a:hover {
+    text-decoration: underline;
+}
+
+.y1-dock-ticker-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    flex-shrink: 0;
+}
+
+.y1-dock-ticker-badge--goal {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+.y1-dock-mini-bar {
+    display: inline-flex;
+    width: 44px;
+    height: 7px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(239, 68, 68, 0.85);
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.y1-dock-mini-raised {
+    background: #10b981;
+    height: 100%;
+    transition: width 0.4s ease;
+}
+
+.y1-dock-mini-remaining {
+    background: #ef4444;
+    height: 100%;
+    flex-grow: 1;
+}
+
+
+/* Single line dock at wide screens */
+@media (min-width: 600px) {
+    .y1-dock-buttons-layer {
+        flex-wrap: nowrap;
+    }
 }
