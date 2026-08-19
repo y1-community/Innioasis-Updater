@@ -16686,6 +16686,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         is_dark = self.is_dark_mode()
         title_color = "#f9fafb" if is_dark else "#111827"
         secondary_color = "#cbd5e1" if is_dark else "#4b5563"
+        link_color = "#60a5fa" if is_dark else "#007AFF"
 
         # App Title, Icon and Version Header
         app_header_layout = QHBoxLayout()
