@@ -498,6 +498,9 @@
     panel.hidden = !value;
     panel.classList.toggle("is-open", value);
     panel.classList.toggle("y1-privacy-panel--open", value && panel === privacyPanel);
+    // Keep the modal's donor stream as the only donation display while it is
+    // open; the dock appeal is hidden until the modal closes.
+    document.body.classList.toggle("y1-donate-panel-open", value && panel === donatePanel);
     button.setAttribute("aria-expanded", value ? "true" : "false");
     if (value && closeButton) closeButton.focus();
     syncBackdrop();
