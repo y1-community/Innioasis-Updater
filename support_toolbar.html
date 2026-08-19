@@ -1,4 +1,112 @@
 <!-- Community shortcuts. The support panel opens when a visitor chooses Donate. -->
+<style>
+  /* Keep the injected donation modal self-contained when a cached page has an
+     older site-toolbar.css. */
+  #support-toolbar-container .y1-donate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 16px 0 12px;
+  }
+  #support-toolbar-container .y1-donate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, .22) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    font: inherit;
+    font-weight: 750;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .16);
+  }
+  #support-toolbar-container .y1-donate-btn--kofi { background: #ff5e5b !important; }
+  #support-toolbar-container .y1-donate-btn--paypal { background: #0070ba !important; }
+  #support-toolbar-container .y1-donate-btn--revolut { background: #5850ec !important; }
+  #support-toolbar-container .y1-donate-btn--patreon { background: #e0533c !important; }
+  #support-toolbar-container .y1-donate-btn:hover,
+  #support-toolbar-container .y1-donate-btn:focus-visible {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    outline: none;
+  }
+  #support-toolbar-container .y1-crypto-dropdown {
+    margin-top: 6px;
+    text-align: center;
+  }
+  #support-toolbar-container .y1-crypto-toggle {
+    display: inline-flex;
+    width: auto;
+    min-height: 0;
+    padding: 3px 2px;
+    border: 0 !important;
+    border-radius: 0;
+    background: transparent !important;
+    color: var(--lumen-accent, #8db7ff);
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  #support-toolbar-container .y1-crypto-toggle:hover,
+  #support-toolbar-container .y1-crypto-toggle:focus-visible {
+    color: var(--lumen-paper, #fff);
+    outline: none;
+  }
+  #support-toolbar-container .y1-crypto-panel {
+    display: grid;
+    gap: 7px;
+    margin-top: 8px;
+    padding: 9px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .16);
+  }
+  #support-toolbar-container .y1-crypto-panel[hidden] { display: none !important; }
+  #support-toolbar-container .y1-crypto-row {
+    display: grid;
+    grid-template-columns: minmax(92px, auto) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 7px;
+  }
+  #support-toolbar-container .y1-crypto-label {
+    color: var(--lumen-text, #e5e7eb);
+    font-size: .74rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  #support-toolbar-container .y1-crypto-input {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 7px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, .2);
+    color: var(--lumen-text, #e5e7eb);
+    font: .68rem ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+  #support-toolbar-container .y1-crypto-copy {
+    min-height: 30px;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .2);
+    font-size: .72rem;
+  }
+  @media (max-width: 430px) {
+    #support-toolbar-container .y1-donate-grid { grid-template-columns: 1fr; }
+  }
+</style>
 <div id="support-toolbar-container">
   <div class="y1-dock-backdrop" data-dock-backdrop hidden></div>
   <div class="y1-consent-banner" id="y1-consent-banner" role="region" aria-live="polite" aria-label="Privacy choices" hidden>
@@ -22,10 +130,10 @@
       <!-- Developer Header: Avatar + Headline -->
       <div class="y1-developer-profile-wrap" style="margin: 4px 0 10px; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 12px;">
-          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/mtkclient/gui/images/developer.png?v=20260830" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/mtkclient/gui/images/developer.png';this.onerror=null;}" alt="Ryan (Developer)" width="52" height="52" style="border-radius: 50%; border: 2px solid #10b981; display: block; object-fit: cover;">
+          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/mtkclient/gui/images/developer.png';this.onerror=null;}" alt="Ryan (Developer)" width="72" height="72" style="border: 0; display: block; object-fit: contain;">
           <div>
             <h2 class="y1-donate-panel-hook" id="y1-donate-title" style="margin: 0; font-size: 1.5rem;">It takes <span>you</span>.</h2>
-            <small style="color: var(--lumen-muted, #9aa3b5); font-weight: 600;">Ryan Specter &amp; Contributors</small>
+            <small style="color: var(--lumen-muted, #9aa3b5); font-weight: 600;">Our projects rely on donations from the community</small>
           </div>
         </div>
         <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options" style="position: static;">×</button>
@@ -36,33 +144,33 @@
       <!-- Quick Method Buttons -->
       <div class="y1-donate-grid">
         <a class="y1-donate-btn y1-donate-btn--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_kofi.png" width="20" height="20" alt="">
+          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_kofi.png" data-method-icon="icon_kofi.png" width="20" height="20" alt="">
           Ko-fi
         </a>
         <a class="y1-donate-btn y1-donate-btn--paypal" href="https://paypal.me/respectyarn" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_paypal.png" width="20" height="20" alt="">
-          PayPal
+          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_paypal.png" data-method-icon="icon_paypal.png" width="20" height="20" alt="">
+          Donate by PayPal
         </a>
         <a class="y1-donate-btn y1-donate-btn--revolut" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_revolut.png" width="20" height="20" alt="">
-          Revolut
+          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_revolut.png" data-method-icon="icon_revolut.png" width="20" height="20" alt="">
+          Donate by Revolut
         </a>
         <a class="y1-donate-btn y1-donate-btn--patreon" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="/mtkclient/gui/images/icon_patreon.png" width="20" height="20" alt="">
-          Patreon
+          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_patreon.png" data-method-icon="icon_patreon.png" width="20" height="20" alt="">
+          Donate by Patreon
         </a>
       </div>
 
       <!-- Honeygain Free Contribution -->
       <a class="y1-donate-banner-btn" href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">
         <svg class="y1-donate-btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
-        <span><strong>Contribute for free by joining Honeygain</strong><br><small style="opacity: 0.85; font-weight: normal;">Earn $5 bonus + support our running costs at zero expense to you</small></span>
+        <span><strong>Contribute for free by joining Honeygain</strong><br><small style="opacity: 0.85; font-weight: normal;">Earn $3</small></span>
       </a>
 
       <!-- Crypto Collapsible -->
       <div class="y1-crypto-dropdown">
-        <button class="y1-crypto-toggle" type="button" data-crypto-toggle aria-expanded="false">
-          <span>Show Crypto Options (BTC, ETH, SHIB)</span>
+        <button class="y1-crypto-toggle" type="button" data-crypto-toggle aria-expanded="false" aria-controls="y1-crypto-panel">
+          <span>Show crypto options · BTC, ETH, SHIB</span>
           <svg class="y1-crypto-toggle-arrow" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
         <div class="y1-crypto-panel" id="y1-crypto-panel" hidden>
@@ -127,14 +235,6 @@
         <span class="y1-dock-sep" aria-hidden="true">·</span>
         <button class="y1-dock-link y1-thank-you-trigger" type="button" data-toolbar-thank-you-open aria-expanded="false" aria-controls="y1-toolbar-thank-you-overlay">Thank You</button>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
-        <!-- Dynamic Rotating Ticker Slot (inside button layer for non-idle) -->
-        <div class="y1-dock-ticker-wrap" id="y1-dock-ticker-wrap" title="Click to view our monthly goal &amp; support" role="button" tabindex="0">
-          <span class="y1-dock-ticker-text" id="y1-dock-ticker-text">
-            <span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Goal</span>
-            <span>$200/mo target</span>
-          </span>
-        </div>
-        <span class="y1-dock-sep" aria-hidden="true">·</span>
         <span class="y1-font-control" role="group" aria-label="Adjust text size">
           <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Smaller text">A−</button>
           <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Reset text size">A</button>
@@ -142,14 +242,28 @@
         </span>
         <span class="y1-font-live" id="y1-font-live" aria-live="polite"></span>
       </div>
-      <!-- Idle goal layer (fades in after 3s idle, crossfades over buttons) -->
-      <div class="y1-dock-goal-layer" id="y1-dock-goal-layer" aria-label="Monthly funding goal — click to support" role="button" tabindex="-1">
-        <span class="y1-dock-idle-heart" aria-hidden="true">Support</span>
-        <div class="y1-dock-goal-bar-wrap" aria-hidden="true">
-          <div class="y1-dock-goal-bar-fill" id="y1-dock-idle-bar-fill"></div>
+      <!-- A dedicated second line keeps the goal and supporter stories readable while the shortcuts remain available. -->
+      <div class="y1-dock-secondary-line" id="y1-dock-secondary-line" aria-label="Monthly support goal and community contributions — click to support" role="button" tabindex="0">
+        <div class="y1-dock-secondary-goal-view" id="y1-dock-secondary-goal-view">
+          <span class="y1-dock-secondary-text" id="y1-dock-secondary-text">You've helped us cover $0 of $200 costs for this month.</span>
+          <div class="y1-dock-secondary-bar-wrap" aria-hidden="true"><div class="y1-dock-secondary-bar-fill" id="y1-dock-secondary-bar-fill"></div></div>
         </div>
-        <span class="y1-dock-goal-text" id="y1-dock-idle-goal-text">0% of $200/mo</span>
-        <span class="y1-dock-idle-ticker" id="y1-dock-idle-ticker-text">Loading...</span>
+        <div class="y1-dock-secondary-ticker-view" id="y1-dock-secondary-ticker-view" hidden>
+          <span class="y1-dock-secondary-ticker" id="y1-dock-secondary-ticker-text">Loading supporters...</span>
+        </div>
+      </div>
+      <!-- Idle goal layer (fades in after 3s idle, crossfades over buttons) -->
+      <div class="y1-dock-goal-layer is-goal-view" id="y1-dock-goal-layer" aria-label="Help us raise our running costs for the month — click to support" role="button" tabindex="-1">
+        <div class="y1-dock-idle-goal-view" id="y1-dock-idle-goal-view">
+          <span class="y1-dock-idle-heart" id="y1-dock-idle-goal-heading">Help us raise our running costs for the month</span>
+          <div class="y1-dock-goal-bar-wrap" aria-hidden="true">
+            <div class="y1-dock-goal-bar-fill" id="y1-dock-idle-bar-fill"></div>
+          </div>
+          <span class="y1-dock-goal-text" id="y1-dock-idle-goal-text">You've helped us cover $0 of $200 costs for this month.</span>
+        </div>
+        <div class="y1-dock-idle-ticker-view" id="y1-dock-idle-ticker-view" aria-live="polite" hidden>
+          <span class="y1-dock-idle-ticker" id="y1-dock-idle-ticker-text">Loading...</span>
+        </div>
       </div>
     </nav>
   </div>
@@ -179,8 +293,8 @@
   var feedbackToggle = document.querySelector("[data-privacy-feedback]");
   var nightlyToggle = document.querySelector("[data-privacy-nightly]");
   var privacySave = document.querySelector("[data-privacy-save]");
-  var cryptoToggle = document.getElementById("y1-crypto-toggle");
-  var cryptoGrid = document.getElementById("y1-crypto-grid");
+  var cryptoToggle = document.querySelector("[data-crypto-toggle]");
+  var cryptoGrid = document.getElementById("y1-crypto-panel");
   var thankYouOpen = document.querySelector("[data-toolbar-thank-you-open]");
   var thankYouClose = document.querySelector("[data-toolbar-thank-you-close]");
   var thankYouOverlay = document.getElementById("y1-toolbar-thank-you-overlay");
@@ -249,13 +363,21 @@
     thankYouPageTimer = null;
   }
 
+  function isReceivedCommunityDonation(donation) {
+    var amount = Number(donation && donation.amount);
+    var name = cleanSupporterName(donation && donation.name).toLowerCase();
+    return isFinite(amount) && amount > 0 && name !== "innioasis" && name.indexOf("innioasis") !== 0;
+  }
+
   function renderToolbarThankYou(donations) {
     var groups = {};
     var anonymousCount = 0;
-    donations.forEach(function (donation) {
-      var name = (donation.name || "").trim();
+    // Thank You is exclusively for money received by this project. Keep the
+    // outgoing-project ledger out before grouping so recipients can never be
+    // turned into positive-looking credit entries by a later formatter.
+    donations.filter(isReceivedCommunityDonation).forEach(function (donation) {
+      var name = cleanSupporterName(donation.name);
       var lowerName = name.toLowerCase();
-      if (donation.amount <= 0 || lowerName === "innioasis" || lowerName.indexOf("innioasis") === 0) return;
       if (isAnonymous(name)) {
         anonymousCount += 1;
         return;
@@ -409,21 +531,22 @@
   var devAvatar = document.getElementById("y1-developer-avatar-img");
   function rotateDeveloperAvatar() {
     if (!devAvatar) return;
-    // Keep the human profile image stable: the second legacy image is not guaranteed
-    // to be published with every website build.
-    var isDev1 = true;
-    var filename = "developer.png";
+    // Choose either supplied profile photo for each visit, then fall back cleanly
+    // through the other copy and the published package paths if needed.
+    var filename = Math.random() < 0.5 ? "developer.png" : "developer_2.png";
+    var fallbackFilename = filename === "developer.png" ? "developer_2.png" : "developer.png";
     var candidates = [
-      "/mtkclient/gui/images/" + filename,
-      "/developer.png",
-      "/developer_2.png",
-      "/assets/" + filename,
-      filename,
-      "mtkclient/gui/images/" + filename,
-      "assets/" + filename,
-      "https://innioasis.app/mtkclient/gui/images/" + filename,
-      "https://innioasis.app/developer.png",
-      "https://innioasis.app/developer_2.png"
+      "/mtkclient/gui/images/" + filename + "?v=20260831",
+      "/" + filename + "?v=20260831",
+      "/assets/" + filename + "?v=20260831",
+      "mtkclient/gui/images/" + filename + "?v=20260831",
+      "assets/" + filename + "?v=20260831",
+      "https://innioasis.app/mtkclient/gui/images/" + filename + "?v=20260831",
+      "https://innioasis.app/" + filename + "?v=20260831",
+      "/mtkclient/gui/images/" + fallbackFilename + "?v=20260831",
+      "/" + fallbackFilename + "?v=20260831",
+      "/assets/" + fallbackFilename + "?v=20260831",
+      "https://innioasis.app/mtkclient/gui/images/" + fallbackFilename + "?v=20260831"
     ];
     var testIdx = 0;
     function tryNext() {
@@ -437,6 +560,37 @@
     tryNext();
   }
   rotateDeveloperAvatar();
+
+  function fallbackPaymentIcon(file) {
+    var fallbacks = {
+      "icon_kofi.png": "icon_kofi.svg",
+      "icon_paypal.png": "icon_paypal.svg",
+      "icon_revolut.png": "icon_revolut.svg",
+      "icon_patreon.png": "icon_patreon.svg"
+    };
+    return fallbacks[file] || "icon_kofi.svg";
+  }
+
+  document.querySelectorAll("img[data-method-icon]").forEach(function (img) {
+    var useFallback = function () {
+      var file = img.dataset.methodIcon;
+      var sources = [
+        "./mtkclient/gui/images/" + file,
+        "/mtkclient/gui/images/" + file,
+        "/assets/" + fallbackPaymentIcon(file),
+        "./assets/" + fallbackPaymentIcon(file)
+      ];
+      var next = parseInt(img.dataset.iconSourceIndex || "0", 10) + 1;
+      if (next >= sources.length) {
+        img.style.display = "none";
+        return;
+      }
+      img.dataset.iconSourceIndex = String(next);
+      img.src = sources[next];
+    };
+    img.addEventListener("error", useFallback);
+    if (img.complete && img.naturalWidth === 0) useFallback();
+  });
 
   donateOpen.addEventListener("click", function () {
     var opening = donatePanel.hidden;
@@ -465,12 +619,15 @@
   }
 
   if (cryptoToggle && cryptoGrid) {
-    cryptoToggle.addEventListener("click", function () {
+    cryptoToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
       var isHidden = cryptoGrid.hidden;
       cryptoGrid.hidden = !isHidden;
+      cryptoGrid.classList.toggle("is-open", isHidden);
       cryptoToggle.setAttribute("aria-expanded", isHidden ? "true" : "false");
       var text = cryptoToggle.querySelector("span");
-      if (text) text.textContent = isHidden ? "Hide Crypto Options (BTC, ETH, SHIB)" : "Show Crypto Options (BTC, ETH, SHIB)";
+      if (text) text.textContent = isHidden ? "Hide crypto options · BTC, ETH, SHIB" : "Show crypto options · BTC, ETH, SHIB";
     });
   }
 
@@ -535,7 +692,16 @@
     var goalLayer = document.getElementById("y1-dock-goal-layer");
     var idleBarFill = document.getElementById("y1-dock-idle-bar-fill");
     var idleGoalText = document.getElementById("y1-dock-idle-goal-text");
+    var idleGoalHeading = document.getElementById("y1-dock-idle-goal-heading");
     var idleTickerEl = document.getElementById("y1-dock-idle-ticker-text");
+    var idleGoalView = document.getElementById("y1-dock-idle-goal-view");
+    var idleTickerView = document.getElementById("y1-dock-idle-ticker-view");
+    var secondaryLine = document.getElementById("y1-dock-secondary-line");
+    var secondaryText = document.getElementById("y1-dock-secondary-text");
+    var secondaryBarFill = document.getElementById("y1-dock-secondary-bar-fill");
+    var secondaryGoalView = document.getElementById("y1-dock-secondary-goal-view");
+    var secondaryTickerView = document.getElementById("y1-dock-secondary-ticker-view");
+    var secondaryTickerEl = document.getElementById("y1-dock-secondary-ticker-text");
 
     var IDLE_DELAY = 3000;
     var idleTimer = null;
@@ -546,14 +712,20 @@
       if (!dockBar) return;
       isIdle = true;
       dockBar.classList.add("is-idle");
+      var dockWrap = document.querySelector(".y1-site-dock-wrap");
+      if (dockWrap) dockWrap.classList.add("is-idle");
       if (goalLayer) goalLayer.setAttribute("tabindex", "0");
+      if (secondaryLine) secondaryLine.setAttribute("tabindex", "-1");
     }
 
     function exitIdle() {
       if (!dockBar) return;
       isIdle = false;
       dockBar.classList.remove("is-idle");
+      var dockWrap = document.querySelector(".y1-site-dock-wrap");
+      if (dockWrap) dockWrap.classList.remove("is-idle");
       if (goalLayer) goalLayer.setAttribute("tabindex", "-1");
+      if (secondaryLine) secondaryLine.setAttribute("tabindex", "0");
     }
 
     function resetIdleTimer() {
@@ -564,13 +736,13 @@
       idleTimer = setTimeout(enterIdle, IDLE_DELAY);
     }
 
-    // Wake up when user interacts. Hovering the dock is special: keep the
-    // shortcut buttons available while the pointer is over it.
-    ["mousemove", "keydown", "scroll", "touchstart", "pointerdown", "click"].forEach(function (evt) {
-      document.addEventListener(evt, resetIdleTimer, { passive: true });
-    });
+    // Only activity on the toolbar may dismiss the full-width appeal. Page-wide
+    // mouse movement, scrolling, keyboard input, and clicks must not interrupt it.
     var dockWrap = document.querySelector(".y1-site-dock-wrap");
     if (dockWrap) {
+      ["pointerdown", "touchstart", "click"].forEach(function (evt) {
+        dockWrap.addEventListener(evt, resetIdleTimer, { passive: true });
+      });
       dockWrap.addEventListener("mouseenter", function () {
         if (isIdle) exitIdle();
         if (idleTimer) clearTimeout(idleTimer);
@@ -578,19 +750,32 @@
       dockWrap.addEventListener("mouseleave", resetIdleTimer);
     }
 
-    // Clicking the idle goal bar or ticker opens the existing donation modal.
+    // Clicking either appeal line opens the existing donation modal.
+    function openDonationFromAppeal() {
+      exitIdle();
+      if (idleTimer) clearTimeout(idleTimer);
+      var donateOpenBtn = document.querySelector("[data-donate-open]");
+      if (donateOpenBtn) donateOpenBtn.click();
+      // Give the modal time to be read before the idle cycle can return.
+      setTimeout(resetIdleTimer, 8000);
+    }
+
     if (goalLayer) {
       goalLayer.addEventListener("click", function (e) {
         if (e.target && e.target.tagName && e.target.tagName.toLowerCase() === "a") return;
-        exitIdle();
-        if (idleTimer) clearTimeout(idleTimer);
-        var donateOpenBtn = document.querySelector("[data-donate-open]");
-        if (donateOpenBtn) donateOpenBtn.click();
-        // Give the modal time to be read before the idle cycle can return.
-        setTimeout(resetIdleTimer, 8000);
+        openDonationFromAppeal();
       });
       goalLayer.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goalLayer.click(); }
+      });
+    }
+    if (secondaryLine) {
+      secondaryLine.addEventListener("click", function (e) {
+        if (e.target && e.target.closest && e.target.closest("a")) return;
+        openDonationFromAppeal();
+      });
+      secondaryLine.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDonationFromAppeal(); }
       });
     }
 
@@ -599,31 +784,56 @@
       if (idleBarFill) {
         requestAnimationFrame(function () { idleBarFill.style.width = Math.min(100, pct).toFixed(1) + "%"; });
       }
+      if (secondaryBarFill) {
+        requestAnimationFrame(function () { secondaryBarFill.style.width = Math.min(100, pct).toFixed(1) + "%"; });
+      }
+      if (idleGoalHeading) {
+        idleGoalHeading.textContent = "Help us raise our running costs for the month";
+      }
       if (idleGoalText) {
         var rStr = (raised % 1 === 0) ? raised.toFixed(0) : raised.toFixed(2);
-        idleGoalText.textContent = "$" + rStr + " of $" + target.toFixed(0) + "/mo";
+        idleGoalText.textContent = "You've helped us cover $" + rStr + " of $" + target.toFixed(0) + " costs for this month.";
       }
       if (idleTickerInterval) clearInterval(idleTickerInterval);
       var donorLines = Array.isArray(tickerHtml) ? tickerHtml.filter(Boolean) : (tickerHtml ? [tickerHtml] : []);
       var raisedLabel = (raised % 1 === 0) ? raised.toFixed(0) : raised.toFixed(2);
-      var goalLine = "Monthly goal: $" + raisedLabel + " of $" + target.toFixed(0) + "/mo";
-      var lines = [goalLine];
+      var goalLine = "Help us raise our running costs for the month · You've helped us cover $" + raisedLabel + " of $" + target.toFixed(0) + " costs for this month.";
+      var states = [{ type: "goal", html: goalLine }];
       donorLines.forEach(function (line, index) {
-        if (index && index % 3 === 0) lines.push(goalLine);
-        lines.push(line);
+        if (index && index % 3 === 0) states.push({ type: "goal", html: goalLine });
+        states.push({ type: "ticker", html: line });
       });
-      if (idleTickerEl && lines.length) {
-        var lineIndex = 0;
-        function showIdleLine() {
-          idleTickerEl.style.opacity = "0";
+      if (idleTickerEl && states.length) {
+        var stateIndex = 0;
+        function showIdleState() {
+          var state = states[stateIndex % states.length];
+          var showingGoal = state.type === "goal";
+          if (idleTickerEl) idleTickerEl.style.opacity = "0";
+          if (secondaryText) secondaryText.style.opacity = "0";
+          if (secondaryTickerEl) secondaryTickerEl.style.opacity = "0";
           setTimeout(function () {
-            idleTickerEl.innerHTML = lines[lineIndex % lines.length];
-            idleTickerEl.style.opacity = "1";
-            lineIndex += 1;
+            if (showingGoal) {
+              if (secondaryText) secondaryText.textContent = state.html;
+              if (secondaryGoalView) secondaryGoalView.hidden = false;
+              if (secondaryTickerView) secondaryTickerView.hidden = true;
+            } else {
+              if (secondaryTickerEl) secondaryTickerEl.innerHTML = state.html;
+              if (secondaryGoalView) secondaryGoalView.hidden = true;
+              if (secondaryTickerView) secondaryTickerView.hidden = false;
+            }
+            if (idleTickerEl) idleTickerEl.innerHTML = state.html;
+            if (idleGoalView) idleGoalView.hidden = !showingGoal;
+            if (idleTickerView) idleTickerView.hidden = showingGoal;
+            if (goalLayer) goalLayer.classList.toggle("is-ticker-view", !showingGoal);
+            if (goalLayer) goalLayer.classList.toggle("is-goal-view", showingGoal);
+            if (secondaryText) secondaryText.style.opacity = "1";
+            if (secondaryTickerEl) secondaryTickerEl.style.opacity = "1";
+            if (idleTickerEl) idleTickerEl.style.opacity = "1";
+            stateIndex += 1;
           }, 550);
         }
-        showIdleLine();
-        if (lines.length > 1) idleTickerInterval = setInterval(showIdleLine, 6500);
+        showIdleState();
+        if (states.length > 1) idleTickerInterval = setInterval(showIdleState, 6500);
       }
     };
 
@@ -691,8 +901,9 @@
       }
       cols.push(cur.trim());
       if (!cols[0] && !cols[1]) continue;
-      var name = cols[0] || "Supporter";
-      var amt = parseFloat((cols[1] || "0").replace(/[^0-9.]/g, "")) || 0;
+      var name = cleanSupporterName(cols[0] || "Supporter");
+      // Keep the minus sign: negative rows are project expenditure, not money raised.
+      var amt = parseFloat((cols[1] || "0").replace(/[$£€\s,]/g, "")) || 0;
       var dateStr = cols[2] || "";
       var url = cols[3] || "";
       var method = cols[4] || "Donation";
@@ -715,8 +926,52 @@
     return low === "supporter" || low === "someone" || low === "anonymous" || low === "anon" || low.indexOf("supporter") === 0 || low.indexOf("anonymous") === 0;
   }
 
+  function cleanSupporterName(name) {
+    var clean = String(name || "").trim();
+    clean = clean.replace(/^(?:(?:regular|top)\s+(?:supporters?|contributors?)\s*:?[\s-]*)+/i, "");
+    return clean || "Supporter";
+  }
+
+  function contributorLabel(name, top) {
+    var cleanName = cleanSupporterName(name);
+    var label = top ? "Top Supporter" : "Supporter";
+    return /(?:\band\b|[+&])/i.test(cleanName) ? label + "s" : label;
+  }
+
+  // Highlight repeat contributors and gifts at least twice the average without duplicating
+  // their individual entries in the ticker.
+  function getTopSupporterGroups(donations) {
+    var groups = {};
+    var amounts = [];
+    donations.forEach(function (d) {
+      var name = (d.name || "").trim();
+      var low = name.toLowerCase();
+      if (d.amount <= 0 || isAnonymous(name) || low === "innioasis" || low.indexOf("innioasis") === 0) return;
+      var key = low;
+      if (!groups[key]) groups[key] = { name: name, items: [], total: 0, latestDt: null };
+      groups[key].items.push(d);
+      groups[key].total += d.amount;
+      amounts.push(d.amount);
+      if (!groups[key].latestDt || (d.dt && d.dt > groups[key].latestDt)) groups[key].latestDt = d.dt;
+    });
+    var average = amounts.length ? amounts.reduce(function (sum, amount) { return sum + amount; }, 0) / amounts.length : 0;
+    return Object.keys(groups).map(function (key) {
+      var group = groups[key];
+      group.items.sort(function (a, b) {
+        return (a.dt ? a.dt.getTime() : 0) - (b.dt ? b.dt.getTime() : 0);
+      });
+      return group;
+    }).filter(function (group) {
+      return group.items.length >= 2 || group.items.some(function (item) { return item.amount >= average * 2; });
+    }).sort(function (a, b) {
+      var totalOrder = b.total - a.total;
+      if (totalOrder) return totalOrder;
+      return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0);
+    });
+  }
+
   function buildCreditHTML(item, isRegular, totalAmt, methodCount, isRegularDonor) {
-    var rawName = (item.name || "Supporter").trim();
+    var rawName = cleanSupporterName(item.name || "Supporter");
     var isAnon = isAnonymous(rawName);
     var amt = (isRegular && totalAmt !== undefined) ? totalAmt : (item.amount || 0);
     var isOutgoing = (amt < 0);
@@ -749,17 +1004,11 @@
       return "Contribution of " + corpAmtHTML + " from " + innHTML + " (Corporate Sponsorship)" + timePart;
     }
 
-    var showRegularPrefix = (isRegular || isRegularDonor) && !isAnon && !isOutgoing && !isInnioasis;
-
     var supporterHTML;
     if (isAnon) {
       supporterHTML = "Someone";
     } else {
       supporterHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawName + '</strong></a>';
-    }
-
-    if (showRegularPrefix) {
-      supporterHTML = "Regular Supporter " + supporterHTML;
     }
 
     var amtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
@@ -841,26 +1090,43 @@
     var streamLine = document.getElementById("y1-contributor-stream-line");
     var donorsCountEl = document.getElementById("y1-donors-count");
     if (donorsCountEl) {
-      donorsCountEl.textContent = donations.length + " contributions";
+      var receivedCount = donations.filter(function (donation) {
+        var name = (donation.name || "").trim().toLowerCase();
+        return donation.amount > 0 && name !== "innioasis" && name.indexOf("innioasis") !== 0;
+      }).length;
+      donorsCountEl.textContent = receivedCount + " contributions";
     }
 
     var rawDonorLines = [];
-    var regularKeys = Object.keys(bySupporter).filter(function (k) { return bySupporter[k].length >= 2; });
-    regularKeys.forEach(function (k) {
-      var items = bySupporter[k];
-      var totalAmt = items.reduce(function (sum, item) { return sum + item.amount; }, 0);
+    var topSupporterKeys = {};
+    getTopSupporterGroups(donations).forEach(function (group) {
+      topSupporterKeys[group.name.toLowerCase()] = true;
+      var items = group.items;
+      var lastItem = items[items.length - 1];
       var methods = Array.from(new Set(items.map(function (item) { return item.method; })));
-      rawDonorLines.push("Regular supporter: " + buildCreditHTML(items[items.length - 1], true, totalAmt, methods.length));
+      rawDonorLines.push(contributorLabel(lastItem.name, true) + " " + buildCreditHTML(lastItem, true, group.total, methods.length));
     });
 
-    donations.slice().reverse().forEach(function (item) {
-      // Skip Innioasis from donor ticker stream
-      if (item.name && (item.name.toLowerCase().trim() === "innioasis" || item.name.toLowerCase().trim().indexOf("innioasis") === 0)) return;
-      var isAnon = isAnonymous(item.name);
-      var key = item.name ? item.name.toLowerCase().trim() : "";
-      var isRegDonor = !isAnon && bySupporter[key] && bySupporter[key].length >= 2;
-      rawDonorLines.push(buildCreditHTML(item, false, 0, 1, isRegDonor));
+    donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
+      // Only received community donations belong in this stream. Outgoing
+      // project payments must never reach the credit formatter.
+      if (!isReceivedCommunityDonation(item)) return;
+      // Skip already summarised Top Supporters from the ticker.
+      var cleanItemName = cleanSupporterName(item.name);
+      var isAnon = isAnonymous(cleanItemName);
+      var key = cleanItemName.toLowerCase();
+      if (!isAnon && topSupporterKeys[key]) return;
+      rawDonorLines.push(buildCreditHTML(item, false, 0, 1, false));
     });
+
+    // The ranked sponsor table is intentionally separate from the live ticker.
+    // Shuffle this sampler so the same Top Supporter does not always lead.
+    for (var rawShuffleI = rawDonorLines.length - 1; rawShuffleI > 0; rawShuffleI--) {
+      var rawShuffleJ = Math.floor(Math.random() * (rawShuffleI + 1));
+      var rawShuffleValue = rawDonorLines[rawShuffleI];
+      rawDonorLines[rawShuffleI] = rawDonorLines[rawShuffleJ];
+      rawDonorLines[rawShuffleJ] = rawShuffleValue;
+    }
 
     // Show the goal once, then three donation-from / donation-to lines before
     // showing the goal again. This keeps the appeal visible without rushing the
@@ -908,11 +1174,8 @@
     // the community has helped, so the appeal stays human rather than generic.
     if (window._y1UpdateIdleBar) {
       var idleTickerLines = rawDonorLines.slice();
-      donations.slice().reverse().forEach(function (item) {
+      donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
         var itemName = (item.name || "").toLowerCase().trim();
-        if (item.amount < 0 && itemName.indexOf("innioasis") !== 0) {
-            idleTickerLines.push(buildCreditHTML(item, false, 0, 1, false));
-          }
       });
       window._y1UpdateIdleBar(raisedPct, currentMonthTotal, MONTHLY_TARGET, idleTickerLines);
     }
@@ -946,30 +1209,30 @@
     };
 
     var donorItems = [];
-    /* Regular supporters summaries (multi-donations) */
-    var regularKeys = Object.keys(bySupporter).filter(function (k) { return bySupporter[k].length >= 2; });
-    regularKeys.forEach(function (k) {
-      var list = bySupporter[k];
-      var totalAmt = list.reduce(function (sum, item) { return sum + item.amount; }, 0);
+    /* Top Supporters: largest total first, including gifts at least twice the average. */
+    var topSupporterKeys = {};
+    getTopSupporterGroups(donations).forEach(function (group) {
+      topSupporterKeys[group.name.toLowerCase()] = true;
+      var list = group.items;
       var methods = Array.from(new Set(list.map(function (item) { return item.method; })));
       donorItems.push({
-        html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Regular</span>' +
-              '<span>' + buildCreditHTML(list[list.length - 1], true, totalAmt, methods.length) + '</span>'
+        html:              '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">' + contributorLabel(list[list.length - 1].name, true) + '</span>' +
+              '<span>' + buildCreditHTML(list[list.length - 1], true, group.total, methods.length) + '</span>'
       });
     });
 
-    /* Individual single donations */
-    donations.slice(-15).forEach(function (item) {
+    /* Remaining individual credits, newest first. */
+    donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
       var itemName = (item.name || "").toLowerCase().trim();
       if (itemName === "innioasis" || itemName.indexOf("innioasis ") === 0) return;
+      // The global donor/Thank You display is for received contributions only.
+      if (item.amount <= 0) return;
+      if (!isAnonymous(item.name) && topSupporterKeys[itemName]) return;
       var badgeClass = "y1-dock-ticker-badge";
-      var badgeText = item.method || "Supporter";
+      var badgeText = item.method || contributorLabel(item.name, false);
       var mLow = (item.method || "").toLowerCase();
       var extraStyle = "";
-      if (item.amount < 0) {
-        badgeText = "Community contribution";
-        extraStyle = ' style="background: rgba(239,68,68,0.25); color: #f87171; border-color: rgba(239,68,68,0.5);"';
-      } else if (mLow === "honeygain") {
+      if (mLow === "honeygain") {
         badgeText = "Free contribution";
         extraStyle = ' style="background: rgba(16,185,129,0.25); color: #10b981; border-color: rgba(16,185,129,0.5);"';
       } else if (mLow.indexOf("ko-fi") !== -1 || mLow.indexOf("kofi") !== -1) {
@@ -977,14 +1240,21 @@
       }
 
       var isAnon = isAnonymous(item.name);
-      var key = item.name ? item.name.toLowerCase().trim() : "";
-      var isRegDonor = !isAnon && bySupporter[key] && bySupporter[key].length >= 2;
 
       donorItems.push({
         html: '<span class="y1-dock-ticker-badge"' + extraStyle + '>' + badgeText + '</span>' +
-              '<span>' + buildCreditHTML(item, false, 0, 1, isRegDonor) + '</span>'
+              '<span>' + buildCreditHTML(item, false, 0, 1, false) + '</span>'
       });
     });
+
+    // The supporter table is ranked; the live ticker is intentionally not.
+    // Shuffle the donor sampler so the same Top Supporter does not always lead.
+    for (var shuffleI = donorItems.length - 1; shuffleI > 0; shuffleI--) {
+      var shuffleJ = Math.floor(Math.random() * (shuffleI + 1));
+      var shuffleValue = donorItems[shuffleI];
+      donorItems[shuffleI] = donorItems[shuffleJ];
+      donorItems[shuffleJ] = shuffleValue;
+    }
 
     // Show the goal once, then three donation-from / donation-to lines before
     // showing the goal again.
@@ -1113,8 +1383,7 @@
           if (amount > 0 && dateParts.length === 3 && parseInt(dateParts[1], 10) - 1 === today.getMonth() && parseInt(dateParts[2], 10) === today.getFullYear()) raised += amount;
           var lower = name.toLowerCase();
           if (!name || lower === "innioasis" || lower.indexOf("innioasis ") === 0) return;
-          if (amount < 0) nextLines.push("We supported " + name);
-          else if (amount > 0) nextLines.push("Thank you to " + (lower === "supporter" || lower === "someone" ? "a supporter" : name));
+          if (amount > 0) nextLines.push("Thank you to " + (lower === "supporter" || lower === "someone" ? "a supporter" : name));
         });
         var goalText = document.getElementById("y1-dock-idle-goal-text");
         var goalFill = document.getElementById("y1-dock-idle-bar-fill");
@@ -1130,12 +1399,10 @@
       })
       .catch(function () {});
   }
-  ["keydown", "pointerdown", "touchstart"].forEach(function (eventName) {
-    document.addEventListener(eventName, wake, { passive: true });
+  // The fallback follows the same toolbar-only rule as the primary idle engine.
+  ["pointerdown", "touchstart", "click"].forEach(function (eventName) {
+    dockBar.addEventListener(eventName, wake, { passive: true });
   });
-  document.addEventListener("mousemove", function (event) {
-    if (!dockBar.contains(event.target)) schedule();
-  }, { passive: true });
   dockBar.addEventListener("mouseenter", wake);
   dockBar.addEventListener("mouseleave", schedule);
   goalLayer.addEventListener("click", wake);

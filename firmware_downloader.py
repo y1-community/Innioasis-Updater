@@ -9042,7 +9042,9 @@ class ReleaseInstallWorker(QThread):
     def run(self):
         temp_dir = None
         try:
-            current_dir = Path.cwd()
+            # Always update the directory containing the running app, not the process cwd.
+            # Shortcuts and GUI launches can use a different working directory.
+            current_dir = get_firmware_app_dir()
             temp_dir = Path(tempfile.mkdtemp(prefix="innioasis-release-"))
 
             normalized_tag = self._normalize_tag()
@@ -11980,8 +11982,14 @@ class ClickableTickerLabel(QLabel):
 class FirmwareDownloaderGUI(QMainWindow):
     """Main GUI window for the firmware downloader"""
 
+    developer_image_refresh_requested = Signal()
+
     def __init__(self):
         super().__init__()
+        self.developer_image_refresh_requested.connect(
+            self._refresh_developer_image_widgets,
+            Qt.ConnectionType.QueuedConnection,
+        )
         self.config_downloader = ConfigDownloader()
         self.github_api = None
         self.packages = []
@@ -12005,6 +12013,10 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.available_versions = []
         self.version_combo = None
         self.version_download_btn = None
+        self._version_tab_layout = None
+        self._version_tab_browser = None
+        self._version_tab_preferred_version = None
+        self._release_catalog_fetch_started = False
         self.suppress_update_notifications = False  # Global preference
         self.donation_ui_disabled = False  # Hide donor, Thank You, and donation UI
         self.donation_install_prompt_disabled = False  # Skip post-firmware donation prompts
@@ -13967,9 +13979,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.cleanup_libusb_state()
                 QTimer.singleShot(1000, self.run_mtk_command)
         elif clicked_button == settings_btn:
-            # Settings - clear marker and open settings dialog
+            # Defer Settings until the completion prompt has fully returned to
+            # the event loop; opening a second modal from the prompt callback can
+            # otherwise be ignored by some Qt platform plugins.
             remove_installation_marker()
-            self.show_settings_dialog()
+            self._schedule_settings_dialog()
         else:
             # Quit App - exit the application
             QApplication.quit()
@@ -14126,7 +14140,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Use native styling - no custom stylesheet for automatic theme adaptation
         # Use default cursor for native OS feel
         self.settings_btn.setToolTip("Settings and Tools - Installation method, shortcuts, and Y1 Remote Control")
-        self.settings_btn.clicked.connect(self.show_settings_dialog)
+        # Keep Qt's clicked(bool) payload out of the tab-selection API.
+        self.settings_btn.clicked.connect(self._open_settings_from_button)
         device_type_layout.addWidget(self.settings_btn)
         self.settings_badge = QLabel()
         self.settings_badge.setFixedSize(10, 10)
@@ -14151,7 +14166,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Use native styling - no custom stylesheet for automatic theme adaptation
         # Use default cursor for native OS feel
         self.toolkit_btn.setToolTip("Open Innioasis Toolkit - Access all utilities and tools")
-        self.toolkit_btn.clicked.connect(self.show_tools_dialog)
+        # Keep the toolkit entry point compatible with clicked(bool) on every Qt binding.
+        self.toolkit_btn.clicked.connect(self._open_tools_from_button)
         device_type_layout.addWidget(self.toolkit_btn)
 
         device_type_layout.addStretch()
@@ -15107,8 +15123,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
 
-            # Load please wait image initially
+            # Load please wait image initially, but update the status before the
+            # modal guidance so a waiting screen is never mistaken for a stuck extract.
             self.load_please_wait_image()
+            self.status_label.setText("Preparing the connection steps…")
+            QApplication.processEvents()
 
             device_model, _, _ = self.get_install_model_context()
             # Prefer evidence on disk (preloader/scatter) so a stale UI filter cannot
@@ -16272,23 +16291,36 @@ class FirmwareDownloaderGUI(QMainWindow):
             QMessageBox.warning(self, "Error", f"Error launching new features: {str(e)}")
 
     def open_toolkit_folder(self):
-        """Open the Innioasis Toolkit folder in File Explorer (Windows only)"""
+        """Open the installed Toolkit folder in Windows File Explorer."""
         try:
             if get_platform_system() != "Windows":
                 return
 
-            # Open the actual Toolkit folder in %LocalAppData%\Innioasis Updater\Toolkit
-            toolkit_path = Path.home() / "AppData" / "Local" / "Innioasis Updater" / "Toolkit"
+            # The script is replaced in the installed AppData directory. Resolve the
+            # Toolkit beside that script first so this never opens a project checkout.
+            toolkit_candidates = [get_firmware_app_dir() / "Toolkit"]
+            local_app_data = os.environ.get("LOCALAPPDATA", "").strip()
+            if local_app_data:
+                toolkit_candidates.append(Path(local_app_data) / "Innioasis Updater" / "Toolkit")
+            toolkit_path = next((candidate for candidate in toolkit_candidates if candidate.is_dir()), toolkit_candidates[0])
 
-            if toolkit_path.exists():
-                # Open the folder in File Explorer
-                subprocess.run(["explorer", str(toolkit_path)], check=True)
-                self.status_label.setText("Toolkit folder opened in File Explorer")
-            else:
-                QMessageBox.warning(self, "Toolkit Not Found",
-                                  f"Toolkit folder not found at:\n{toolkit_path}\n\nPlease ensure the toolkit is properly installed.")
-        except Exception as e:
-            QMessageBox.error(self, "Error", f"Failed to open toolkit folder: {e}")
+            if not toolkit_path.is_dir():
+                QMessageBox.warning(
+                    self,
+                    "Toolkit Not Found",
+                    f"Toolkit folder not found at:\n{toolkit_path}\n\nPlease ensure the installed Toolkit is present.",
+                )
+                return
+
+            # Do not wait for Explorer: it may reuse an existing Explorer process.
+            try:
+                os.startfile(str(toolkit_path))
+            except AttributeError:
+                subprocess.Popen(["explorer.exe", str(toolkit_path)])
+            self.status_label.setText("Toolkit folder opened in File Explorer")
+        except Exception as exc:
+            silent_print(f"Failed to open toolkit folder: {exc}")
+            QMessageBox.critical(self, "Toolkit", f"Failed to open the Toolkit folder:\n\n{exc}")
 
     def launch_240p_theme_downloader(self):
         """Launch the 240p theme downloader"""
@@ -16378,8 +16410,54 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             QMessageBox.error(self, "Error", f"Failed to launch Rockbox Utility: {e}")
 
+    def _schedule_settings_dialog(self, initial_tab="updates"):
+        """Open Settings after a QMessageBox callback has returned to Qt's event loop."""
+        def _open():
+            try:
+                self.show_settings_dialog(initial_tab)
+            except Exception as exc:
+                silent_print(f"Could not open Settings dialog: {exc}")
+                import traceback
+                traceback.print_exc()
+                QMessageBox.critical(self, "Settings", f"Could not open Settings:\n\n{exc}")
+
+        # Completion prompts are nested modal event loops; deferring this one turn
+        # prevents Qt from discarding the second modal on Windows and macOS.
+        QTimer.singleShot(0, _open)
+
+    def _open_settings_from_button(self, checked=False):
+        """Open Settings from the main button without blocking or double-opening it."""
+        active_dialog = getattr(self, '_active_settings_dialog', None)
+        if active_dialog is not None and active_dialog.isVisible():
+            active_dialog.raise_()
+            active_dialog.activateWindow()
+            return
+
+        def open_dialog():
+            try:
+                self.show_settings_dialog("updates")
+            except Exception as exc:
+                silent_print(f"Could not open Settings dialog: {exc}")
+                import traceback
+                traceback.print_exc()
+                QMessageBox.critical(self, "Settings", f"Could not open Settings:\n\n{exc}")
+
+        # Let the clicked signal finish before entering the modal event loop. This
+        # also keeps the action reliable on Windows when another Qt dialog just closed.
+        QTimer.singleShot(0, open_dialog)
+
+    def _open_tools_from_button(self, checked=False):
+        """Open the installed Toolkit folder on Windows and the tools dialog elsewhere."""
+        if get_platform_system() == "Windows":
+            self.open_toolkit_folder()
+        else:
+            self.show_tools_dialog()
+
     def show_settings_dialog(self, initial_tab="updates", auto_download_latest=False):
         """Show enhanced settings dialog with installation method and shortcut management."""
+        # QPushButton.clicked emits a bool; callers should use _open_settings_from_button.
+        if isinstance(initial_tab, bool):
+            initial_tab = "updates"
         # 2025-11-09 22:45 UTC original signature: def show_settings_dialog(self, initial_tab="about")
         # Updated default to open the Version tab first, matching the new UX requirement.
         silent_print(f"Opening settings dialog with initial_tab: {initial_tab}")
@@ -16647,7 +16725,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         desc_label = QLabel(
             "<b>Innioasis Updater Community Edition</b> is a community-made firmware update, recovery, and modification tool for the Innioasis Y1 and Innioasis Y2.<br><br>"
             "It is part of a community firmware archiving and preservation project to ensure that all firmwares—new, old, and custom builds—are permanently archived and made freely available to all, even when the manufacturer has removed their links to older firmwares from their site.<br><br>"
-            "This project runs entirely on donations alongside its sister projects: the <a href='https://innioasis.app/firmware.html' style='color: inherit; text-decoration: underline;'><b>Community Firmware Archive</b></a> and the <a href='https://themes.innioasis.app' style='color: inherit; text-decoration: underline;'><b>Themes Gallery</b></a>. "
+            f"This project runs entirely on donations alongside its sister projects: the <a href='https://innioasis.app/firmware.html' style='color: {link_color}; text-decoration: underline;'><b>Community Firmware Archive</b></a> and the <a href='https://themes.innioasis.app' style='color: {link_color}; text-decoration: underline;'><b>Themes Gallery</b></a>. "
             "Monthly server hosting, cloud archive storage, and domain renewals come to around $200, funded out of pocket to keep all tools and firmware downloads open and free for everyone."
         )
         desc_label.setStyleSheet(f"font-size: 11px; margin: 4px 8px; line-height: 1.45; color: {secondary_color};")
@@ -16680,7 +16758,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         goal_box = QGroupBox("Monthly Running Costs")
         goal_box.setStyleSheet(f"""
-            QGroupBox {
+            QGroupBox {{
                 font-size: 12px;
                 font-weight: bold;
                 border: 1px solid #4b5563;
@@ -16689,12 +16767,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 padding-top: 12px;
                 color: {title_color};
                 background: transparent;
-            }
-            QGroupBox::title {
+            }}
+            QGroupBox::title {{
                 subcontrol-origin: margin;
                 left: 14px;
                 padding: 0 4px;
-            }
+            }}
         """)
         goal_layout = QVBoxLayout(goal_box)
         goal_layout.setContentsMargins(12, 10, 12, 10)
@@ -17536,7 +17614,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     headers['Authorization'] = f'token {token}'
             possible_tags = [f"v{version}", version, f"V{version}"]
             response = requests.get(
-                "https://api.github.com/repos/ryan-specter/Innioasis-Updater/releases",
+                "https://api.github.com/repos/ryan-specter/Innioasis-Updater/releases?per_page=100",
                 headers=headers,
                 timeout=10
             )
@@ -17554,9 +17632,22 @@ class FirmwareDownloaderGUI(QMainWindow):
         return None
 
     def ensure_release_catalog(self):
-        """Ensure the release catalog has been fetched."""
-        if not self.available_versions:
-            self.get_latest_github_version()
+        """Start loading the release catalog without blocking the Settings dialog."""
+        if self.available_versions or getattr(self, '_release_catalog_fetch_started', False):
+            return
+
+        self._release_catalog_fetch_started = True
+
+        def fetch_catalog():
+            try:
+                # GitHub requests must not run on the Qt GUI thread.  A synchronous
+                # request here made Settings appear dead whenever the network was
+                # slow or unavailable.
+                self.get_latest_github_version()
+            finally:
+                self._release_catalog_fetch_started = False
+
+        threading.Thread(target=fetch_catalog, daemon=True).start()
 
     def populate_smart_drop_tab(self, layout):
         """Populate Smart Drop USB storage settings section (now part of Smart Drop tab)"""
@@ -17730,9 +17821,17 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def populate_version_tab(self, layout, browser, preferred_version=None):
         """Populate the version tab with selector and release notes."""
+        self._version_tab_layout = layout
+        self._version_tab_browser = browser
+        self._version_tab_preferred_version = preferred_version
         self.ensure_release_catalog()
         if not self.available_versions:
-            self.load_whats_new_release_notes(browser)
+            browser.setHtml(
+                "<p style='padding: 10px;'>Loading available Innioasis Updater CE releases…</p>"
+            )
+            # The catalog is fetched off the GUI thread. Rebuild this tab when it arrives
+            # instead of leaving the user with release notes and no selectable versions.
+            QTimer.singleShot(200, self._poll_release_catalog)
             return
 
         # 2025-11-09 21:41:00 UTC - original: Layout did not include an inline banner about the user's app version status.
@@ -17834,6 +17933,38 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.version_download_btn.clicked.connect(lambda: self.download_selected_version(self._active_settings_dialog))
         action_layout.addWidget(self.version_download_btn)
         layout.addLayout(action_layout)
+        self._refresh_version_download_cta()
+
+    def _poll_release_catalog(self):
+        """Populate the version selector after the background release request completes."""
+        if self.available_versions:
+            layout = getattr(self, '_version_tab_layout', None)
+            browser = getattr(self, '_version_tab_browser', None)
+            if layout is not None and browser is not None:
+                try:
+                    self.populate_version_tab(
+                        layout,
+                        browser,
+                        getattr(self, '_version_tab_preferred_version', None),
+                    )
+                except RuntimeError:
+                    # The Settings dialog may have been closed while GitHub loaded.
+                    pass
+            return
+
+        if getattr(self, '_release_catalog_fetch_started', False):
+            QTimer.singleShot(200, self._poll_release_catalog)
+            return
+
+        browser = getattr(self, '_version_tab_browser', None)
+        if browser is not None:
+            try:
+                browser.setHtml(
+                    "<p style='padding: 10px;'>Version information is temporarily unavailable. "
+                    "Please check your connection and reopen Settings.</p>"
+                )
+            except RuntimeError:
+                pass
 
     # 2025-11-09 21:41:00 UTC - original: Version tab checkbox toggles only changed state on save and the UI never refreshed inline.
     def _handle_update_notification_toggle(self, checked):
@@ -18079,7 +18210,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         release_notes = release.get('body', '')
         release_name = release.get('name', '') or release.get('tag_name', data.get('version', ''))
         self._format_release_notes_for_display(browser, release_notes, release_name, text_color)
-        # Removed: _refresh_version_download_cta - version download button handled in settings dialog
+        self._refresh_version_download_cta()
 
     def _handle_required_update(self, latest_version, current_version):
         """Handle forced manual updates that include required.txt."""
@@ -18283,17 +18414,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def show_tools_dialog(self):
         """Show Toolkit dialog with all tools and utilities"""
-        # For Windows users, check if Toolkit directory exists and open it directly
-        if get_platform_system() == "Windows":
-            current_dir = Path.cwd()
-            toolkit_dir = current_dir / "Toolkit"
-
-            if toolkit_dir.exists():
-                # Toolkit directory exists, open it directly in File Explorer and return
-                subprocess.run(["explorer", str(toolkit_dir)])
-                self.status_label.setText("Toolkit folder opened in File Explorer")
-                return  # Exit early, no need to show dialog
-
+        # The Tools button opens the in-app screen on every platform. The installed
+        # Toolkit folder is used by individual tool actions, not as a replacement for it.
         # Check if Y1 model is selected
         selected_model = self.device_model_combo.currentText()
         is_y1_model = "Y1" in selected_model.upper()
@@ -22461,6 +22583,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return
 
             # Confirm with user
+            self.status_label.setText("Preparing the connection steps…")
+            QApplication.processEvents()
             reply = QMessageBox.question(
                 self,
                 "Get Ready",
@@ -23317,7 +23441,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     @staticmethod
     def is_anonymous_donor(name):
-        """Check if donor name is anonymous / generic and should not be grouped as a regular supporter."""
+        """Check if donor name is anonymous / generic and should not be grouped as a top supporter."""
         if not name:
             return True
         low = str(name).lower().strip()
@@ -23328,10 +23452,47 @@ class FirmwareDownloaderGUI(QMainWindow):
         return False
 
     @staticmethod
+    def clean_supporter_name(name):
+        """Remove legacy recognition prefixes before a donor name is displayed or grouped."""
+        clean = re.sub(r"^(?:(?:regular|top)\s+(?:supporters?|contributors?)\s*:?[\s-]*)+", "", str(name or ""), flags=re.IGNORECASE).strip()
+        return clean or "Supporter"
+
+    @staticmethod
+    def supporter_label(name, top=False):
+        """Use Top Supporter recognition labels, pluralised for joined supporter names."""
+        clean_name = FirmwareDownloaderGUI.clean_supporter_name(name)
+        label = "Top Supporter" if top else "Supporter"
+        if re.search(r"(?:\band\b|[+&])", clean_name, flags=re.IGNORECASE):
+            return label + "s"
+        return label
+
+    @staticmethod
     def is_corporate_donor(name):
         """Identify manufacturer sponsorship records that must not appear in supporter credits."""
         low = str(name or "").strip().lower()
         return low == "innioasis" or low.startswith("innioasis ")
+
+    def get_top_supporter_groups(self, donations):
+        """Return repeat contributors or gifts at least twice the average, ordered by total received."""
+        groups = defaultdict(list)
+        amounts = []
+        for donation in donations or []:
+            amount = donation.get('amount', 0)
+            name = donation.get('name', '').strip()
+            if amount <= 0 or self.is_anonymous_donor(name) or self.is_corporate_donor(name):
+                continue
+            groups[name.lower()].append(donation)
+            amounts.append(amount)
+        average = (sum(amounts) / len(amounts)) if amounts else 0.0
+        top_groups = []
+        for key, items in groups.items():
+            total = sum(item.get('amount', 0) for item in items)
+            if len(items) < 2 and not any(item.get('amount', 0) >= average * 2 for item in items):
+                continue
+            ordered_items = sorted(items, key=lambda item: item.get('dt') or datetime.min)
+            top_groups.append((key, ordered_items, total))
+        top_groups.sort(key=lambda group: (-group[2], -(group[1][-1].get('dt').timestamp() if group[1] and group[1][-1].get('dt') else float('-inf'))))
+        return top_groups
 
     def update_bottom_ticker_theme(self):
         """Update bottom ticker and status styles for dark / light mode."""
@@ -23390,21 +23551,27 @@ class FirmwareDownloaderGUI(QMainWindow):
                     by_supporter[raw_name].append(d)
 
             donor_lines = []
-            for sname, items in by_supporter.items():
-                if len(items) >= 2:
-                    tot_amt = sum(x['amount'] for x in items)
-                    m_set = set(x['method'] for x in items)
-                    reg_html = self.format_donation_credit(items[-1], is_regular=True, total_amount=tot_amt, method_count=len(m_set), for_html=True, is_regular_donor=True)
-                    donor_lines.append(reg_html)
+            top_supporter_keys = set()
+            for key, items, total in self.get_top_supporter_groups(donations):
+                top_supporter_keys.add(key)
+                method_count = len(set(item.get('method', '') for item in items))
+                top_html = self.format_donation_credit(items[-1], is_regular=True, total_amount=total, method_count=method_count, for_html=True, is_regular_donor=True)
+                if top_html:
+                    donor_lines.append(f"{self.supporter_label(items[-1].get('name', ''), top=True)} {top_html}")
 
-            for item in reversed(donations):
+            for item in sorted(donations, key=lambda item: item.get('dt') or datetime.min, reverse=True):
                 raw_n = item.get('name', '').strip()
-                if self.is_corporate_donor(raw_n):
+                if item.get('amount', 0) <= 0 or self.is_corporate_donor(raw_n):
                     continue
-                is_reg = (not self.is_anonymous_donor(raw_n)) and (len(by_supporter[raw_n]) >= 2)
-                single_html = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=is_reg)
+                if raw_n.lower() in top_supporter_keys:
+                    continue
+                single_html = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=False)
                 if single_html:
                     donor_lines.append(single_html)
+
+            # The ranked supporter summary is for tables; ticker lines are a
+            # friendly random sampler so the same person does not always lead.
+            random.shuffle(donor_lines)
 
             # Keep each goal display long enough to introduce three donation-from
             # or donation-to lines before returning to the goal.
@@ -23462,7 +23629,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     continue
                 if i == 0 and row[0].strip().lower().startswith('name'):
                     continue
-                name = row[0].strip() or "Supporter"
+                name = self.clean_supporter_name(row[0].strip() or "Supporter")
                 if name.lower().startswith("total"):
                     continue
                 try:
@@ -23550,13 +23717,23 @@ class FirmwareDownloaderGUI(QMainWindow):
             except Exception as e:
                 logging.debug(f"Remote donors.csv fetch failed ({e})")
 
-            # Check and fetch developer pictures in background if missing locally
+            # Check and fetch developer pictures in background if missing locally.
+            # The package may be launched from AppData without the source image files,
+            # so try both the published package path and the site-root fallback.
             img_endpoints = [
-                ("developer.png", "https://innioasis.app/mtkclient/gui/images/developer.png"),
-                ("developer_2.png", "https://innioasis.app/mtkclient/gui/images/developer_2.png")
+                ("developer.png", [
+                    "https://innioasis.app/mtkclient/gui/images/developer.png",
+                    "https://innioasis.app/developer.png",
+                    "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/mtkclient/gui/images/developer.png"
+                ]),
+                ("developer_2.png", [
+                    "https://innioasis.app/mtkclient/gui/images/developer_2.png",
+                    "https://innioasis.app/developer_2.png",
+                    "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/mtkclient/gui/images/developer_2.png"
+                ])
             ]
             developer_images_downloaded = False
-            for img_name, img_url in img_endpoints:
+            for img_name, img_urls in img_endpoints:
                 dest_paths = [
                     base_dir / "mtkclient" / "gui" / "images" / img_name,
                     cwd_dir / "mtkclient" / "gui" / "images" / img_name,
@@ -23564,13 +23741,16 @@ class FirmwareDownloaderGUI(QMainWindow):
                     cwd_dir / img_name
                 ]
                 if not any(p.is_file() for p in dest_paths):
-                    try:
-                        primary_dest = dest_paths[0]
-                        primary_dest.parent.mkdir(parents=True, exist_ok=True)
-                        urllib.request.urlretrieve(f"{img_url}?_t={ts}", str(primary_dest))
-                        developer_images_downloaded = True
-                    except Exception as ie:
-                        logging.debug(f"Developer image fetch failed for {img_name}: {ie}")
+                    primary_dest = dest_paths[0]
+                    primary_dest.parent.mkdir(parents=True, exist_ok=True)
+                    for img_url in img_urls:
+                        try:
+                            urllib.request.urlretrieve(f"{img_url}?_t={ts}", str(primary_dest))
+                            if primary_dest.is_file() and primary_dest.stat().st_size > 0:
+                                developer_images_downloaded = True
+                                break
+                        except Exception as ie:
+                            logging.debug(f"Developer image fetch failed for {img_name} from {img_url}: {ie}")
 
             fresh_donations = None
             if fresh_csv and fresh_csv.strip():
@@ -23590,7 +23770,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self._is_fetching_donors = False
 
             if developer_images_downloaded:
-                QTimer.singleShot(0, self._refresh_developer_image_widgets)
+                # This worker has no Qt event loop of its own; emit a queued signal
+                # so the main GUI thread refreshes an already-open donation dialog.
+                self.developer_image_refresh_requested.emit()
 
             if fresh_donations is not None:
                 QTimer.singleShot(0, lambda: self._apply_refreshed_donations(fresh_donations))
@@ -23622,26 +23804,27 @@ class FirmwareDownloaderGUI(QMainWindow):
                 by_supporter[raw_name].append(d)
 
         donor_lines = []
-        for sname, items in by_supporter.items():
-            if len(items) >= 2:
-                tot_amt = sum(x['amount'] for x in items)
-                m_set = set(x['method'] for x in items)
-                reg_html = self.format_donation_credit(items[-1], is_regular=True, total_amount=tot_amt, method_count=len(m_set), for_html=True, is_regular_donor=True)
-                if reg_html:
-                    donor_lines.append(reg_html)
+        top_supporter_keys = set()
+        for key, items, total in self.get_top_supporter_groups(fresh_donations):
+            top_supporter_keys.add(key)
+            method_count = len(set(item.get('method', '') for item in items))
+            top_html = self.format_donation_credit(items[-1], is_regular=True, total_amount=total, method_count=method_count, for_html=True, is_regular_donor=True)
+            if top_html:
+                donor_lines.append(f"{self.supporter_label(items[-1].get('name', ''), top=True)} {top_html}")
 
-
-        for item in reversed(fresh_donations):
+        for item in sorted(fresh_donations, key=lambda item: item.get('dt') or datetime.min, reverse=True):
             raw_n = item.get('name', '').strip()
-            # Keep donation-to project lines in the same community ticker.
-            is_corp = self.is_corporate_donor(raw_n)
-            if is_corp:
+            # Keep only received, non-corporate credits in this supporter ticker.
+            if item.get('amount', 0) <= 0 or self.is_corporate_donor(raw_n):
                 continue
-            is_reg = (not self.is_anonymous_donor(raw_n)) and (len(by_supporter[raw_n]) >= 2)
-            single_html = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=is_reg)
+            if raw_n.lower() in top_supporter_keys:
+                continue
+            single_html = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=False)
             if single_html:
                 donor_lines.append(single_html)
 
+        # Refreshes should reshuffle the live ticker too, not restore ranked order.
+        random.shuffle(donor_lines)
         lines = [lines[0]]
         for index, d_line in enumerate(donor_lines):
             if index and index % 3 == 0:
@@ -23714,7 +23897,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             str(base_dir / "mtkclient" / "gui" / "developer_2.png")
         ]
 
-        chosen = cand_1 if random.random() < 0.75 else cand_2
+        # Give both profile photos an equal chance whenever both are available.
+        chosen = cand_1 if random.random() < 0.5 else cand_2
         img_path = None
         for p in chosen:
             if os.path.isfile(p):
@@ -23732,33 +23916,25 @@ class FirmwareDownloaderGUI(QMainWindow):
                 src_pm = QPixmap(img_path)
                 if not src_pm.isNull():
                     w, h = size
-                    circle_pm = QPixmap(w, h)
-                    circle_pm.fill(Qt.transparent)
-                    painter = QPainter(circle_pm)
-                    painter.setRenderHint(QPainter.Antialiasing, True)
-                    painter.setRenderHint(QPainter.SmoothPixmapTransform, True)
-                    path = QPainterPath()
-                    path.addEllipse(1, 1, w - 2, h - 2)
-                    painter.setClipPath(path)
-                    scaled_src = src_pm.scaled(w, h, Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
-                    # Center the crop
-                    ox = max(0, (scaled_src.width() - w) // 2)
-                    oy = max(0, (scaled_src.height() - h) // 2)
-                    painter.drawPixmap(0, 0, scaled_src, ox, oy, w, h)
-                    painter.setClipping(False)
-                    pen = QPen(QColor("#10b981"), 2)
-                    painter.setPen(pen)
-                    painter.setBrush(Qt.NoBrush)
-                    painter.drawEllipse(1, 1, w - 2, h - 2)
-                    painter.end()
-                    return circle_pm
+                    return src_pm.scaled(
+                        w, h, Qt.KeepAspectRatio, Qt.SmoothTransformation
+                    )
             except Exception:
                 pass
+        # If the installed package does not ship the profile files, start the
+        # background fetch now so the modal can refresh as soon as they arrive.
+        try:
+            self.fetch_remote_donors_async()
+        except Exception:
+            pass
         return None
 
     def format_donation_credit(self, item, is_regular=False, total_amount=None, method_count=1, for_html=True, is_regular_donor=False):
         """Format a donor record according to display rules."""
         raw_name = item.get('name', 'Supporter').strip()
+        # Older donor feeds sometimes stored the former display label in the
+        # donor name. Keep that legacy wording out of every visible credit.
+        raw_name = self.clean_supporter_name(item.get('name', 'Supporter'))
         if self.is_corporate_donor(raw_name):
             return ""
         amount = item.get('amount', 0.0)
@@ -23820,7 +23996,6 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         is_anon = self.is_anonymous_donor(raw_name)
         is_innioasis = raw_name.lower().strip() == "innioasis" or raw_name.lower().strip().startswith("innioasis")
-        show_regular_prefix = (is_regular or is_regular_donor) and not is_anon and not is_outgoing and not is_innioasis
         # Qt rich-text labels do not reliably resolve CSS `inherit` for nested
         # anchors/bold elements. Give every generated link an explicit theme
         # color so donor names, amounts, and methods remain readable.
@@ -23848,9 +24023,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 supporter_html = f'<a href="{target_url}" style="color: {rich_text_color}; text-decoration: none; font-weight: bold;"><b>{raw_name}</b></a>'
 
-            if show_regular_prefix:
-                supporter_html = f"Regular Supporter {supporter_html}"
-
             # Amount HTML: links directly to transaction URL or method URL
             amt_html = f'<a href="{target_url}" style="color: {rich_text_color}; text-decoration: none; font-weight: bold;"><b>{amt_str}</b></a>'
             method_html = f'<a href="{actual_method_url}" style="color: {rich_text_color}; text-decoration: none; font-weight: bold;"><b>{method}</b></a>'
@@ -23859,15 +24031,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 tot_val = total_amount if total_amount is not None else abs_amount
                 tot_str = f"${_fmt_amt(tot_val)}"
                 tot_html = f'<a href="{target_url}" style="color: {rich_text_color}; text-decoration: none; font-weight: bold;"><b>{tot_str}</b></a>'
-                if method_count > 1:
-                    return f"{supporter_html} has donated {tot_html}"
-                elif "ko-fi" in m_lower or "kofi" in m_lower:
-                    coffees = max(1, round(tot_val))
-                    cw = "a coffee" if coffees == 1 else f"{coffees} coffees"
-                    cw_html = f'<a href="{target_url}" style="color: {rich_text_color}; text-decoration: none; font-weight: bold;"><b>{cw}</b></a>'
-                    return f"{supporter_html} bought us {cw_html} on {method_html}"
-                else:
-                    return f"{supporter_html} donated {tot_html} by {method_html}"
+                # The caller supplies the single visible "Top Supporter" label.
+                return f"{supporter_html} donated {tot_html}"
 
             time_part = f" · {rel}" if rel else ""
             if "honeygain" in m_lower:
@@ -23886,20 +24051,10 @@ class FirmwareDownloaderGUI(QMainWindow):
                 time_part = f" ({rel})" if rel else ""
                 return f"We donated {amt_str} to {raw_name} on {method}{time_part}"
             name_plain = "Someone" if is_anon else raw_name
-            if show_regular_prefix:
-                name_plain = f"Regular Supporter {name_plain}"
-
             if is_regular:
                 tot_val = total_amount if total_amount is not None else abs_amount
                 tot_str = f"${_fmt_amt(tot_val)}"
-                if method_count > 1:
-                    return f"{name_plain} has donated {tot_str}"
-                elif "ko-fi" in m_lower or "kofi" in m_lower:
-                    coffees = max(1, round(tot_val))
-                    cw = "a coffee" if coffees == 1 else f"{coffees} coffees"
-                    return f"{name_plain} bought us {cw} on {method}"
-                else:
-                    return f"{name_plain} donated {tot_str} via {method}"
+                return f"{name_plain} donated {tot_str}"
 
             time_part = f" ({rel})" if rel else ""
             if "honeygain" in m_lower:
@@ -23953,19 +24108,22 @@ class FirmwareDownloaderGUI(QMainWindow):
                 continue
             by_supporter[d['name'].strip()].append(d)
 
-        for sname, items in by_supporter.items():
-            if len(items) >= 2:
-                tot_amt = sum(x['amount'] for x in items)
-                m_set = set(x['method'] for x in items)
-                credit_html = self.format_donation_credit(items[-1], is_regular=True, total_amount=tot_amt, method_count=len(m_set), for_html=True)
-                paragraphs.append(f"<p>{credit_html}</p>")
+        top_supporter_keys = set()
+        for key, items, total in self.get_top_supporter_groups(donations):
+            top_supporter_keys.add(key)
+            method_count = len(set(item.get('method', '') for item in items))
+            credit_html = self.format_donation_credit(items[-1], is_regular=True, total_amount=total, method_count=method_count, for_html=True)
+            if credit_html:
+                paragraphs.append(f"<p>{self.supporter_label(items[-1].get('name', ''), top=True)} {credit_html}</p>")
 
-        for item in reversed(donations):
+        for item in sorted(donations, key=lambda item: item.get('dt') or datetime.min, reverse=True):
             # Negative amounts are outgoing project support, not supporter credits.
-            if item.get('amount', 0) <= 0 or self.is_corporate_donor(item.get('name', '')):
+            raw_name = item.get('name', '').strip()
+            if item.get('amount', 0) <= 0 or self.is_corporate_donor(raw_name) or raw_name.lower() in top_supporter_keys:
                 continue
             credit_html = self.format_donation_credit(item, is_regular=False, for_html=True)
-            paragraphs.append(f"<p>{credit_html}</p>")
+            if credit_html:
+                paragraphs.append(f"<p>{credit_html}</p>")
 
         paragraphs.append("</div>")
         return "\n".join(paragraphs)
@@ -24036,22 +24194,25 @@ class FirmwareDownloaderGUI(QMainWindow):
                     by_supporter[raw_name].append(d)
 
             raw_donor_lines = []
-            for sname, items in by_supporter.items():
-                if len(items) >= 2:
-                    tot_amt = sum(x['amount'] for x in items)
-                    m_set = set(x['method'] for x in items)
-                    raw_donor_lines.append(f"{self.format_donation_credit(items[-1], is_regular=True, total_amount=tot_amt, method_count=len(m_set), for_html=True, is_regular_donor=True)}")
+            top_supporter_keys = set()
+            for key, items, total in self.get_top_supporter_groups(donations):
+                top_supporter_keys.add(key)
+                method_count = len(set(item.get('method', '') for item in items))
+                d_line = self.format_donation_credit(items[-1], is_regular=True, total_amount=total, method_count=method_count, for_html=True, is_regular_donor=True)
+                if d_line:
+                    raw_donor_lines.append(f"{self.supporter_label(items[-1].get('name', ''), top=True)} {d_line}")
 
-            for item in reversed(donations):
+            for item in sorted(donations, key=lambda item: item.get('dt') or datetime.min, reverse=True):
                 raw_n = item.get('name', '').strip()
                 # The in-app About/credits ticker is a received-supporter view.
-                if item.get('amount', 0) <= 0 or self.is_corporate_donor(raw_n):
+                if item.get('amount', 0) <= 0 or self.is_corporate_donor(raw_n) or raw_n.lower() in top_supporter_keys:
                     continue
-                is_reg = (not self.is_anonymous_donor(raw_n)) and (len(by_supporter[raw_n]) >= 2)
-                d_line = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=is_reg)
+                d_line = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=False)
                 if d_line:
                     raw_donor_lines.append(d_line)
 
+            # Credits ticker order is intentionally independent of the ranked table.
+            random.shuffle(raw_donor_lines)
             clean_lines.append(goal_text)
             for index, d_line in enumerate(raw_donor_lines):
                 if index and index % 3 == 0:
@@ -24496,14 +24657,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             checkbox.blockSignals(False)
 
     def _show_simplified_install_completion(self, software_name=None):
-        """Show a quiet completion notice after the user opts out of install donation prompts."""
+        """Show completion details without a donation request after the user opts out."""
         kind = self._format_firmware_kind_label(
             software_name or self._get_selected_software_name()
         )
+        model = device_label_for_model(self.get_effective_device_model())
         QMessageBox.information(
             self,
             "Installation complete",
-            f"{kind} installed successfully.\n\n"
+            f"{kind} has been installed on your {model}.\n\n"
             f"{install_power_on_steps(self.get_effective_device_model())}",
         )
 
@@ -24557,20 +24719,21 @@ class FirmwareDownloaderGUI(QMainWindow):
         return labels.get(software_name, software_name)
 
     def _should_show_post_install_donation(self, software_name):
-        """Skip donation after Original Software unless user already used firmware features."""
-        if software_name == "Original Software":
-            return self._has_completed_first_firmware_action()
+        """Return True for every successful guided install, including Original Software."""
         return True
 
     def _maybe_show_install_donation(self, software_name=None, record_firmware_action=True):
-        """Show donation dialog after firmware install when appropriate."""
+        """Show the post-install support dialog unless the user disabled it."""
         if software_name is None:
             software_name = self._get_selected_software_name()
-        if self._should_show_post_install_donation(software_name):
-            if self.donation_install_prompt_disabled:
-                self._show_simplified_install_completion(software_name)
-            elif not self._donation_ui_is_disabled():
-                self.show_donation_dialog("install_success", software_name=software_name)
+        if self._donation_ui_is_disabled():
+            if record_firmware_action:
+                self._mark_first_firmware_action_complete()
+            return
+        if getattr(self, "donation_install_prompt_disabled", False):
+            self._show_simplified_install_completion(software_name)
+        else:
+            self.show_donation_dialog("install_success", software_name=software_name)
         if record_firmware_action:
             self._mark_first_firmware_action_complete()
 
@@ -24600,6 +24763,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.download_btn.setEnabled(True)
 
             if success:
+                # Re-derive the model from the active install package before rendering
+                # completion copy; a previous session must not leave Y1 text on a Y2 install.
+                install_model, _, _ = self.get_install_model_context()
+                if install_model:
+                    self.set_runtime_detected_device_model(install_model)
                 software_name = self._get_selected_software_name()
                 self.status_label.setText(self._install_success_status_text(software_name))
                 self.load_installed_image()
@@ -24815,7 +24983,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             dialog._developer_avatar = dev_avatar
             dev_avatar.setFixedSize(72, 72)
             dev_avatar.setScaledContents(True)
-            dev_avatar.setStyleSheet("border-radius: 25px; border: 2px solid #10b981; background: transparent;")
+            dev_avatar.setStyleSheet("border: none; background: transparent;")
             dev_pixmap = self.get_developer_image_pixmap((72, 72))
             if dev_pixmap:
                 dev_avatar.setPixmap(dev_pixmap)
@@ -24828,7 +24996,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 "It takes <span style='color: #ff5252; text-decoration: underline;'>you</span>.</h2>"
             )
             title.setTextFormat(Qt.RichText)
-            sub_title = QLabel(f"<p style='margin: 0; font-size: 11px; font-weight: 600; color: {intro_color};'>Ryan Specter &amp; Community Contributors</p>")
+            sub_title = QLabel(f"<p style='margin: 0; font-size: 11px; font-weight: 600; color: {intro_color};'>Our projects rely on donations from the community</p>")
             sub_title.setTextFormat(Qt.RichText)
             title_box.addWidget(title)
             title_box.addWidget(sub_title)
@@ -24953,19 +25121,19 @@ class FirmwareDownloaderGUI(QMainWindow):
             kofi_btn.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/teamslide"))
             grid.addWidget(kofi_btn, 0, 0)
 
-            paypal_btn = QPushButton("PayPal")
+            paypal_btn = QPushButton("Donate by PayPal")
             paypal_btn.setCursor(Qt.PointingHandCursor)
             paypal_btn.setStyleSheet("QPushButton { background-color: #0070ba; color: white; font-weight: bold; font-size: 14px; padding: 10px; border-radius: 8px; border: none; } QPushButton:hover { background-color: #005ea6; }")
             paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/respectyarn"))
             grid.addWidget(paypal_btn, 0, 1)
 
-            revolut_btn = QPushButton("Revolut")
+            revolut_btn = QPushButton("Donate by Revolut")
             revolut_btn.setCursor(Qt.PointingHandCursor)
             revolut_btn.setStyleSheet("QPushButton { background-color: #5850ec; color: white; font-weight: bold; font-size: 14px; padding: 10px; border-radius: 8px; border: none; } QPushButton:hover { background-color: #4338ca; }")
             revolut_btn.clicked.connect(lambda: webbrowser.open("https://revolut.me/rspecter"))
             grid.addWidget(revolut_btn, 1, 0)
 
-            patreon_btn = QPushButton("Patreon")
+            patreon_btn = QPushButton("Donate by Patreon")
             patreon_btn.setCursor(Qt.PointingHandCursor)
             patreon_btn.setStyleSheet("QPushButton { background-color: #e0533c; color: white; font-weight: bold; font-size: 14px; padding: 10px; border-radius: 8px; border: none; } QPushButton:hover { background-color: #c9442e; }")
             patreon_btn.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/ryanspecter"))
@@ -25030,28 +25198,25 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             # Build list of donor lines to alternate with the goal bar
             raw_donor_lines = []
-            by_supporter = defaultdict(list)
-            for d in donations:
-                raw_name = d.get('name', '').strip()
-                if d.get('amount', 0) > 0 and not self.is_anonymous_donor(raw_name) and not self.is_corporate_donor(raw_name):
-                    by_supporter[raw_name].append(d)
+            top_supporter_keys = set()
+            for key, items, total in self.get_top_supporter_groups(donations):
+                top_supporter_keys.add(key)
+                method_count = len(set(item.get('method', '') for item in items))
+                d_line = self.format_donation_credit(items[-1], is_regular=True, total_amount=total, method_count=method_count, for_html=True, is_regular_donor=True)
+                if d_line:
+                    raw_donor_lines.append(f"{self.supporter_label(items[-1].get('name', ''), top=True)} {d_line}")
 
-            for sname, items in by_supporter.items():
-                if len(items) >= 2:
-                    tot_amt = sum(x['amount'] for x in items)
-                    m_set = set(x['method'] for x in items)
-                    reg_html = self.format_donation_credit(items[-1], is_regular=True, total_amount=tot_amt, method_count=len(m_set), for_html=True, is_regular_donor=True)
-                    raw_donor_lines.append(reg_html)
-
-            for item in reversed(donations):
+            for item in sorted(donations, key=lambda item: item.get('dt') or datetime.min, reverse=True):
                 raw_n = item.get('name', '').strip()
-                if self.is_corporate_donor(raw_n):
+                if item.get('amount', 0) <= 0 or self.is_corporate_donor(raw_n) or raw_n.lower() in top_supporter_keys:
                     continue
-                is_reg = (not self.is_anonymous_donor(raw_n)) and (len(by_supporter[raw_n]) >= 2)
-                single_html = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=is_reg)
+                single_html = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=False)
                 if single_html:
                     raw_donor_lines.append(single_html)
 
+            # The donation dialog ticker is a random sampler; the sponsor table
+            # remains ranked separately.
+            random.shuffle(raw_donor_lines)
             if not raw_donor_lines:
                 raw_donor_lines.append("Thanks to all our supporters &amp; contributors!")
 
@@ -25129,24 +25294,23 @@ class FirmwareDownloaderGUI(QMainWindow):
                     _trigger_goal_bar_animation()
 
                 new_donor_lines = []
-                by_s = defaultdict(list)
-                for d in new_donations:
-                    raw_name = d.get('name', '').strip()
-                    if d.get('amount', 0) > 0 and not self.is_anonymous_donor(raw_name) and not self.is_corporate_donor(raw_name):
-                        by_s[raw_name].append(d)
-                for sname, items in by_s.items():
-                    if len(items) >= 2:
-                        t_amt = sum(x['amount'] for x in items)
-                        m_s = set(x['method'] for x in items)
-                        reg_h = self.format_donation_credit(items[-1], is_regular=True, total_amount=t_amt, method_count=len(m_s), for_html=True, is_regular_donor=True)
-                        new_donor_lines.append(reg_h)
-                for item in reversed(new_donations):
+                top_supporter_keys = set()
+                for key, items, total in self.get_top_supporter_groups(new_donations):
+                    top_supporter_keys.add(key)
+                    method_count = len(set(item.get('method', '') for item in items))
+                    top_h = self.format_donation_credit(items[-1], is_regular=True, total_amount=total, method_count=method_count, for_html=True, is_regular_donor=True)
+                    if top_h:
+                        new_donor_lines.append(f"{self.supporter_label(items[-1].get('name', ''), top=True)} {top_h}")
+                for item in sorted(new_donations, key=lambda item: item.get('dt') or datetime.min, reverse=True):
                     raw_n = item.get('name', '').strip()
-                    is_reg = (not self.is_anonymous_donor(raw_n)) and (len(by_s[raw_n]) >= 2)
-                    s_h = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=is_reg)
-                    new_donor_lines.append(s_h)
+                    if item.get('amount', 0) <= 0 or self.is_corporate_donor(raw_n) or raw_n.lower() in top_supporter_keys:
+                        continue
+                    s_h = self.format_donation_credit(item, is_regular=False, for_html=True, is_regular_donor=False)
+                    if s_h:
+                        new_donor_lines.append(s_h)
 
                 if new_donor_lines:
+                    random.shuffle(new_donor_lines)
                     raw_donor_lines.clear()
                     raw_donor_lines.extend(new_donor_lines)
 
@@ -25542,9 +25706,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
 
-            # Handle installation based on selected method
-            self.status_label.setText("Starting installation in 3 seconds...")
-            QTimer.singleShot(3000, self.handle_installation_method)
+            # Keep the transition explicit: the extraction callback must hand control
+            # to the installer even when the release was chosen from Browse Files.
+            self._queue_installation_start(delay_ms=3000)
 
         except Exception as e:
             self.progress_bar.setVisible(False)
@@ -34451,8 +34615,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print("=== FIRMWARE FILES READY ===")
             silent_print(f"Selected installation method: {getattr(self, 'installation_method', 'guided')}")
 
-            # Use QTimer to delay the installation method execution slightly
-            QTimer.singleShot(2000, self.handle_installation_method)  # 2 second delay
+            # Use the same guarded transition as downloaded firmware so the UI cannot
+            # remain on the extraction screen if a timer callback raises an exception.
+            self._queue_installation_start(delay_ms=2000)
 
         except Exception as e:
             self.progress_bar.setVisible(False)
@@ -34464,6 +34629,35 @@ class FirmwareDownloaderGUI(QMainWindow):
         finally:
             # Hide progress bar after processing
             QTimer.singleShot(2000, lambda: self.progress_bar.setVisible(False))
+
+    def _queue_installation_start(self, delay_ms=0):
+        """Move from extraction into the selected installer without a silent dead end."""
+        if getattr(self, "_installation_transition_pending", False):
+            silent_print("Installation transition already queued; ignoring duplicate callback")
+            return
+
+        self._installation_transition_pending = True
+        self.status_label.setText("Preparing the installation tool…")
+        QApplication.processEvents()
+
+        def _start_installation():
+            self._installation_transition_pending = False
+            try:
+                self.status_label.setText("Starting the installation…")
+                QApplication.processEvents()
+                self.handle_installation_method()
+            except Exception as e:
+                silent_print(f"Installation transition failed: {e}")
+                self.show_appropriate_buttons_for_spflash()
+                self.show_left_panel()
+                self.status_label.setText("Could not start the installation.")
+                QMessageBox.critical(
+                    self,
+                    "Installation Error",
+                    f"The installation could not be started:\\n\\n{e}",
+                )
+
+        QTimer.singleShot(max(0, int(delay_ms)), _start_installation)
 
     def on_download_completed(self, success, output):
         """Handle download completion"""
@@ -34518,8 +34712,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 silent_print(f"Selected installation method: {getattr(self, 'installation_method', 'guided')}")
                 silent_print(f"Install model: {detected} (zip={zip_from_download})")
 
-                # Handle installation based on selected method
-                QTimer.singleShot(2000, self.handle_installation_method)  # 2 second delay
+                # Handle installation based on selected method through the guarded
+                # transition used by local and downloaded firmware.
+                self._queue_installation_start(delay_ms=2000)
         else:
             self.status_label.setText("Download or processing failed")
             silent_print("=== PROCESSING FAILED ===")
@@ -34946,6 +35141,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def handle_installation_method(self):
         """Handle installation based on the selected method in settings"""
+        self.status_label.setText("Checking the installation setup…")
+        QApplication.processEvents()
         # Prefer model from the package just extracted (rom_y2.zip etc.) over the
         # firmware-filter dropdown, which may still be set to Y1.
         resolved_model, install_zip, _ = self.get_install_model_context()
@@ -35684,7 +35881,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Settings - clear marker, revert to startup state, and open settings dialog
             remove_installation_marker()
             self.revert_to_startup_state()
-            self.show_settings_dialog()
+            self._schedule_settings_dialog()
         else:
             # Quit App - revert to startup state and exit the application
             self.revert_to_startup_state()
@@ -36616,7 +36813,7 @@ read -n 1
                     headers['Authorization'] = f'token {token}'
 
             response = requests.get(
-                'https://api.github.com/repos/ryan-specter/Innioasis-Updater/releases',
+                'https://api.github.com/repos/ryan-specter/Innioasis-Updater/releases?per_page=100',
                 headers=headers,
                 timeout=4
             )

@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="site-theme.css?v=20260803">
   <link rel="stylesheet" href="lumen.css?v=20260823">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
-  <link rel="stylesheet" href="site-toolbar.css?v=20260803">
+  <link rel="stylesheet" href="site-toolbar.css?v=20260901">
   <script src="site-init.js" defer></script>
   <style>
     .supported-projects-grid {
@@ -251,7 +251,7 @@
     }
     .donation-method-card:hover { transform: translateY(-2px); border-color: #10b981; background: rgba(16,185,129,.10); }
     .donation-method-card--primary { border-color: rgba(16,185,129,.65); background: linear-gradient(135deg, rgba(16,185,129,.18), rgba(16,185,129,.06)); }
-    .donation-method-card img { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
+    .donation-method-card img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 22px; }
     .donation-method-card span { display: flex; flex-direction: column; gap: 2px; }
     .donation-method-card strong { font-size: .92rem; }
     .donation-method-card small { color: var(--lumen-muted, #9aa3b5); font-size: .74rem; line-height: 1.25; }
@@ -264,17 +264,64 @@
     }
     .donation-impact-note strong { color: var(--lumen-text, #fff); }
     .donation-impact-note p { margin: 4px 0 0; color: var(--lumen-muted, #9aa3b5); }
-    .donor-credits-thanks {
-      border: 0;
-      padding: 0 4px;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: transform .18s ease, background .18s ease;
+    .financial-accounting-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
     }
-    .donor-credits-thanks:hover, .donor-credits-thanks:focus-visible { transform: scale(1.05); background: rgba(255,255,255,.08); outline: none; }
+    .financial-accounting-card {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-height: 126px;
+      padding: 16px;
+      border: 1px solid var(--lumen-card-border, rgba(255,255,255,.14));
+      border-radius: 12px;
+      background: var(--lumen-card-bg, rgba(255,255,255,.05));
+    }
+    .financial-accounting-card--total { border-color: rgba(16,185,129,.55); background: linear-gradient(135deg, rgba(16,185,129,.14), rgba(16,185,129,.04)); }
+    .financial-accounting-card strong { font-size: 1.35rem; color: var(--lumen-text, #fff); }
+    .financial-accounting-card small { color: var(--lumen-muted, #9aa3b5); line-height: 1.4; }
+    .financial-accounting-label { color: var(--lumen-muted, #9aa3b5); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+    .sponsorship-list { margin-top: 18px; }
+    .sponsorship-list h3 { margin-bottom: 6px; }
+    .donor-contributor-key {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin: 12px 0 6px;
+      padding: 7px 11px;
+      border: 1px solid var(--lumen-line, rgba(255,255,255,.14));
+      border-radius: 999px;
+      background: var(--lumen-panel, rgba(255,255,255,.04));
+      color: var(--lumen-muted, #9aa3b5);
+      font-size: .8rem;
+      font-weight: 600;
+    }
+    .contributor-star {
+      color: #f5b942;
+      font-size: 1rem;
+      line-height: 1;
+      text-shadow: 0 0 8px rgba(245,185,66,.35);
+    }
+    .donor-credits-thanks {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 18px;
+      border: 1px solid var(--lumen-line-strong, rgba(255,255,255,.24));
+      border-radius: 999px;
+      background: var(--lumen-panel, rgba(255,255,255,.08));
+      color: var(--lumen-text, #fff);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,.14);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .donor-credits-thanks:hover, .donor-credits-thanks:focus-visible { transform: translateY(-1px); background: var(--lumen-accent, #10b981); border-color: var(--lumen-accent, #10b981); color: var(--lumen-ink, #03140d); outline: none; }
     .donor-credits-hint { color: var(--lumen-muted, #9aa3b5); font-size: .82rem; }
     body.donor-credits-open { overflow: hidden; }
     .donor-credits-overlay { position: fixed; inset: 0; z-index: 10000; overflow: hidden; background: #000; color: #fff; }
@@ -321,16 +368,16 @@
     <!-- Unified Donation Appeal Section (Matching App UI) -->
     <section class="lumen-guide-section" id="donate" style="margin-top: 24px;">
       <!-- Top Live Goal Bar & Donors Stream Box -->
-      <div class="y1-contributor-stream-box" id="unified-donors-feed" style="min-height: 48px; max-width: 620px; margin-bottom: 16px;" aria-live="polite">
+      <div class="y1-contributor-stream-box" id="unified-donors-feed" style="min-height: 78px; padding: 16px 18px; max-width: 620px; margin-bottom: 16px;" aria-live="polite">
         <div class="y1-contributor-stream-line" id="unified-contributor-line">Loading supporters...</div>
       </div>
 
       <!-- Developer Header: Photo + Headline Side-by-Side -->
       <div class="y1-developer-profile-wrap" style="margin: 4px 0 10px; display: flex; align-items: center; gap: 14px;">
-        <img class="y1-developer-avatar" id="unified-dev-avatar" src="/mtkclient/gui/images/developer.png?v=20260830" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/mtkclient/gui/images/developer.png';this.onerror=null;}" alt="Ryan (Developer)" width="54" height="54" style="border-radius: 50%; border: 2px solid #10b981; display: block; object-fit: cover;">
+        <img class="y1-developer-avatar" id="unified-dev-avatar" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/mtkclient/gui/images/developer.png';this.onerror=null;}" alt="Ryan (Developer)" width="54" height="54" style="border: 0; display: block; object-fit: contain;">
         <div>
           <h2 class="y1-donate-panel-hook" style="margin: 0; font-size: 1.6rem;">It takes <span>you</span>.</h2>
-          <small style="color: var(--lumen-muted, #9aa3b5); font-weight: 600;">Ryan Specter &amp; Community Contributors</small>
+          <small style="color: var(--lumen-muted, #9aa3b5); font-weight: 600;">Our projects rely on donations from the community</small>
         </div>
       </div>
 
@@ -342,12 +389,12 @@
         <p>A coffee, a one-off gift, or simply joining Honeygain — it all adds up. Pick your favourite and you’ll be taken straight there.</p>
       </div>
       <div class="donation-method-grid" aria-label="Ways to make a contribution">
-        <a class="donation-method-card donation-method-card--primary" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer"><img src="/mtkclient/gui/images/icon_kofi.png" alt=""><span><strong>Buy us a coffee</strong><small>Support on Ko-fi</small></span></a>
-        <a class="donation-method-card" href="https://paypal.me/respectyarn" target="_blank" rel="noopener noreferrer"><img src="/mtkclient/gui/images/icon_paypal.png" alt=""><span><strong>Send a contribution</strong><small>PayPal</small></span></a>
-        <a class="donation-method-card" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer"><img src="/mtkclient/gui/images/icon_revolut.png" alt=""><span><strong>Send a little help</strong><small>Revolut</small></span></a>
-        <a class="donation-method-card" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer"><img src="/mtkclient/gui/images/icon_patreon.png" alt=""><span><strong>Join the community</strong><small>Patreon</small></span></a>
-        <a class="donation-method-card" href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer"><img src="/mtkclient/gui/images/icon_honeygain.svg" alt=""><span><strong>Help for free</strong><small>Join Honeygain</small></span></a>
-        <button type="button" class="donation-method-card" id="toggle-crypto-btn"><img src="/mtkclient/gui/images/icon_bitcoin.png" alt=""><span><strong>Use crypto</strong><small>BTC, ETH, or SHIB</small></span></button>
+        <a class="donation-method-card donation-method-card--primary" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer"><img src="./mtkclient/gui/images/icon_kofi.png" data-method-icon="icon_kofi.png" alt=""><span><strong>Buy us a coffee</strong><small>Support on Ko-fi</small></span></a>
+        <a class="donation-method-card" href="https://paypal.me/respectyarn" target="_blank" rel="noopener noreferrer"><img src="./mtkclient/gui/images/icon_paypal.png" data-method-icon="icon_paypal.png" alt=""><span><strong>Donate by PayPal</strong></span></a>
+        <a class="donation-method-card" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer"><img src="./mtkclient/gui/images/icon_revolut.png" data-method-icon="icon_revolut.png" alt=""><span><strong>Donate by Revolut</strong></span></a>
+        <a class="donation-method-card" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer"><img src="./mtkclient/gui/images/icon_patreon.png" data-method-icon="icon_patreon.png" alt=""><span><strong>Donate by Patreon</strong></span></a>
+        <a class="donation-method-card" href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer"><img src="./mtkclient/gui/images/icon_honeygain.svg" data-method-icon="icon_honeygain.svg" alt=""><span><strong>Help for free</strong><small>Join Honeygain</small></span></a>
+        <button type="button" class="donation-method-card" id="toggle-crypto-btn"><img src="./mtkclient/gui/images/icon_bitcoin.png" data-method-icon="icon_bitcoin.png" alt=""><span><strong>Use crypto</strong><small>BTC, ETH, or SHIB</small></span></button>
       </div>
 
       <!-- Collapsible Crypto Details -->
@@ -374,18 +421,18 @@
       <p>Your support doesn’t stop here. It also helps independent people build Rockbox, Solar, JJ Launcher, themes, and other brilliant little projects.</p>
       
       <div class="supported-projects-grid" id="supported-projects-grid">
-        <!-- Dynamically populated with our 3 sister projects and community grants from donors.csv -->
+        <!-- Dynamically populated with our sister projects and community grants -->
       </div>
     </section>
 
     <!-- Section 2: Donors & Supporter Roll of Honor -->
     <section class="lumen-guide-section" id="donors-honor-roll">
       <h2>A Thank You to all of our supporters</h2>
-      <p>A proper thank-you to everyone who has helped. Whether you bought one coffee or kept coming back, you’re part of the reason this is still here. Press <button type="button" class="donor-credits-thanks" id="open-donor-credits" aria-label="Open the full-screen community credits">Thanks</button> for a full-screen thank-you card you can use in a video or stream.</p>
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin: 12px 0 6px;">
-        <small style="color: var(--lumen-muted, #9aa3b5); font-size: 0.8rem; font-weight: 600;">
-          Regular Supporter (multiple contributions)
-        </small>
+      <p>A proper thank-you to everyone who has helped. Whether you bought one coffee or kept coming back, you’re part of the reason this is still here.</p>
+      <button type="button" class="donor-credits-thanks" id="open-donor-credits" aria-label="Open the full-screen community credits">Thanks</button>
+      <div class="donor-contributor-key" aria-label="Contributor legend">
+        <span class="contributor-star" aria-hidden="true">★</span>
+        <span>Top Supporter — more than one contribution or a gift at least twice the average</span>
       </div>
 
 
@@ -407,6 +454,17 @@
         </table>
       </div>
 
+      <div class="sponsorship-list" aria-labelledby="commercial-sponsorship-title">
+        <h3 id="commercial-sponsorship-title">Innioasis commercial sponsorship</h3>
+        <p class="lumen-meta">These contributions are shown separately from community support. They help the project, but they are not counted in the community total or supporter roll of honour.</p>
+        <div class="donations-table-wrap">
+          <table class="donations-table" aria-label="Innioasis commercial sponsorship ledger">
+            <thead><tr><th>Contribution</th><th>Date</th></tr></thead>
+            <tbody id="corporate-sponsorship-body"><tr><td colspan="2" style="text-align: center; color: var(--lumen-muted);">Loading sponsorship ledger...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
     </section>
 
     <!-- Section 3: Developer documentation & Ecosystem links -->
@@ -418,6 +476,20 @@
     <section class="lumen-guide-section">
       <h2>Project links</h2>
       <p><a href="https://github.com/rockbox-y1/rockbox" target="_blank" rel="noopener noreferrer">Rockbox Y1</a> · <a href="https://github.com/y1-community/rockbox-y2-rom" target="_blank" rel="noopener noreferrer">Rockbox Y2</a> · <a href="https://github.com/thesolarproject/solar" target="_blank" rel="noopener noreferrer">Solar</a> · <a href="https://themes.innioasis.app/" target="_blank" rel="noopener noreferrer">Themes Gallery</a></p>
+    </section>
+
+    <!-- Section 4: Financial accounting, kept at the bottom so the people and projects stay front and centre. -->
+    <section class="lumen-guide-section" id="financial-accounting">
+      <h2>Where the money goes</h2>
+      <p>Here’s the plain-English version of the running costs. The baseline is $200 for every calendar month since July 2025, plus the annual Apple Developer certification and a one-off Mac mini for platform testing on macOS. Community project donations are shown as expenditure, not as money raised.</p>
+      <div class="financial-accounting-grid" aria-label="Project financial summary">
+        <article class="financial-accounting-card financial-accounting-card--total"><span class="financial-accounting-label">Total accounted cost</span><strong id="financial-total-cost">$0</strong><small id="financial-total-cost-detail">Calculating the ledger...</small></article>
+        <article class="financial-accounting-card"><span class="financial-accounting-label">Community contributions</span><strong id="financial-community-raised">$0</strong><small>Received from community supporters. Commercial sponsorship is kept separate.</small></article>
+        <article class="financial-accounting-card"><span class="financial-accounting-label">Innioasis sponsorship</span><strong id="financial-corporate-raised">$0</strong><small>Commercial sponsorship received from Innioasis, listed separately below the community ledger.</small></article>
+        <article class="financial-accounting-card"><span class="financial-accounting-label">Community projects supported</span><strong id="financial-outgoing-cost">$0</strong><small>Money sent to other creators and projects, shown separately from community contributions.</small></article>
+        <article class="financial-accounting-card"><span class="financial-accounting-label">Apple Developer certification</span><strong id="financial-apple-cost">$0</strong><small>$99 per annual certification period.</small></article>
+        <article class="financial-accounting-card"><span class="financial-accounting-label">Mac mini testing hardware</span><strong id="financial-hardware-cost">$599</strong><small>One-off platform testing hardware for macOS.</small></article>
+      </div>
     </section>
   </main>
 
@@ -446,21 +518,22 @@
     // 1. Dynamic developer photo and intro
     var devImg = document.getElementById("unified-dev-avatar");
     if (devImg) {
-      // Keep the human profile image stable: the second legacy image is not guaranteed
-      // to be published with every website build.
-      var isDev1 = true;
-      var filename = "developer.png";
+      // Choose either supplied profile photo for each visit, then fall back cleanly
+      // through the other copy and the published package paths if needed.
+      var filename = Math.random() < 0.5 ? "developer.png" : "developer_2.png";
+      var fallbackFilename = filename === "developer.png" ? "developer_2.png" : "developer.png";
       var candidates = [
-        "/mtkclient/gui/images/" + filename,
-        "/developer.png",
-        "/developer_2.png",
-        "/assets/" + filename,
-        filename,
-        "mtkclient/gui/images/" + filename,
-        "assets/" + filename,
-        "https://innioasis.app/mtkclient/gui/images/" + filename,
-        "https://innioasis.app/developer.png",
-        "https://innioasis.app/developer_2.png"
+        "/mtkclient/gui/images/" + filename + "?v=20260831",
+        "/" + filename + "?v=20260831",
+        "/assets/" + filename + "?v=20260831",
+        "mtkclient/gui/images/" + filename + "?v=20260831",
+        "assets/" + filename + "?v=20260831",
+        "https://innioasis.app/mtkclient/gui/images/" + filename + "?v=20260831",
+        "https://innioasis.app/" + filename + "?v=20260831",
+        "/mtkclient/gui/images/" + fallbackFilename + "?v=20260831",
+        "/" + fallbackFilename + "?v=20260831",
+        "/assets/" + fallbackFilename + "?v=20260831",
+        "https://innioasis.app/mtkclient/gui/images/" + fallbackFilename + "?v=20260831"
       ];
       var testIdx = 0;
       function tryNext() {
@@ -545,9 +618,10 @@
         }
         parts.push(cur.trim());
         if (parts.length >= 5) {
-          var amt = parseFloat(parts[1]) || 0;
+          // Preserve negative values: they represent project expenditure.
+          var amt = parseFloat(parts[1].replace(/[$£€\s,]/g, "")) || 0;
           results.push({
-            name: parts[0],
+            name: cleanSupporterName(parts[0]),
             amount: amt,
             dateStr: parts[2],
             dt: parseDate(parts[2]),
@@ -570,6 +644,50 @@
       if (!n) return false;
       var low = n.toLowerCase().trim();
       return low === "innioasis" || low.indexOf("innioasis") === 0;
+    }
+
+    function cleanSupporterName(name) {
+      var clean = String(name || "").trim();
+      clean = clean.replace(/^(?:(?:regular|top)\s+(?:supporters?|contributors?)\s*:?[\s-]*)+/i, "");
+      return clean || "Supporter";
+    }
+
+    function contributorLabel(name, top) {
+      var cleanName = cleanSupporterName(name);
+      var label = top ? "Top Supporter" : "Supporter";
+      return /(?:\band\b|[+&])/i.test(cleanName) ? label + "s" : label;
+    }
+
+    // A Top Supporter is a repeat contributor or someone whose single gift is
+    // at least twice the average named community contribution. Standouts get the same
+    // prominent treatment as people who have returned more than once.
+    function getTopSupporterGroups(donations) {
+      var groups = {};
+      var amounts = [];
+      donations.forEach(function (d) {
+        var name = (d.name || "").trim();
+        if (d.amount <= 0 || isAnonymous(name) || isInnioasisCorporate(name)) return;
+        var key = name.toLowerCase();
+        if (!groups[key]) groups[key] = { name: name, items: [], total: 0, latestDt: null };
+        groups[key].items.push(d);
+        groups[key].total += d.amount;
+        amounts.push(d.amount);
+        if (!groups[key].latestDt || (d.dt && d.dt > groups[key].latestDt)) groups[key].latestDt = d.dt;
+      });
+      var average = amounts.length ? amounts.reduce(function (sum, amount) { return sum + amount; }, 0) / amounts.length : 0;
+      return Object.keys(groups).map(function (key) {
+        var group = groups[key];
+        group.items.sort(function (a, b) {
+          return (a.dt ? a.dt.getTime() : 0) - (b.dt ? b.dt.getTime() : 0);
+        });
+        return group;
+      }).filter(function (group) {
+        return group.items.length >= 2 || group.items.some(function (item) { return item.amount >= average * 2; });
+      }).sort(function (a, b) {
+        var totalOrder = b.total - a.total;
+        if (totalOrder) return totalOrder;
+        return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0);
+      });
     }
 
     var donorCreditsEntries = [];
@@ -661,13 +779,22 @@
           return;
         }
         var key = name.toLowerCase();
-        if (!groups[key]) groups[key] = { name: name, total: 0, count: 0 };
+        if (!groups[key]) groups[key] = { name: name, total: 0, count: 0, latestDt: null };
         groups[key].total += d.amount;
         groups[key].count += 1;
+        if (!groups[key].latestDt || (d.dt && d.dt > groups[key].latestDt)) groups[key].latestDt = d.dt;
       });
 
-      donorCreditsEntries = Object.keys(groups).map(function (key) { return groups[key]; });
-      donorCreditsEntries.sort(function (a, b) { return b.total - a.total || a.name.localeCompare(b.name); });
+      var topKeys = {};
+      getTopSupporterGroups(donations).forEach(function (group) { topKeys[group.name.toLowerCase()] = true; });
+      var allEntries = Object.keys(groups).map(function (key) { return groups[key]; });
+      var topEntries = allEntries.filter(function (entry) { return topKeys[entry.name.toLowerCase()]; });
+      var otherEntries = allEntries.filter(function (entry) { return !topKeys[entry.name.toLowerCase()]; });
+      topEntries.sort(function (a, b) { return b.total - a.total || a.name.localeCompare(b.name); });
+      otherEntries.sort(function (a, b) {
+        return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0);
+      });
+      donorCreditsEntries = topEntries.concat(otherEntries);
       if (anonymousCount) {
         donorCreditsEntries.push({
           name: "Anonymous supporters",
@@ -937,11 +1064,15 @@
       var curMonthRaised = 0;
       var bySupporter = {};
       var outgoingProjects = [];
-
+      var corporateSponsorships = [];
+      var totalCorporateRaised = 0;
+      var totalOutgoingSpent = 0;
 
       donations.forEach(function (d) {
         if (d.amount > 0) {
           if (isInnioasisCorporate(d.name)) {
+            totalCorporateRaised += d.amount;
+            corporateSponsorships.push(d);
             // Manufacturer contributions stay out of the community roll of honour.
           } else {
             totalCommunityRaised += d.amount;
@@ -957,6 +1088,7 @@
           }
         } else if (d.amount < 0) {
           outgoingProjects.push(d);
+          totalOutgoingSpent += Math.abs(d.amount);
         }
       });
 
@@ -978,32 +1110,30 @@
             '</div>' +
           '</div>';
 
-        // Build donor rotation items
+        // Build donor rotation items: Top Supporters by total, then remaining
+        // credits newest-to-oldest without repeating the highlighted summaries.
         var donorItems = [];
-        Object.keys(bySupporter).forEach(function (sname) {
-          var items = bySupporter[sname];
-          if (items.length >= 2) {
-            var tot = 0, mSet = {};
-            items.forEach(function (x) { tot += x.amount; mSet[x.method] = true; });
-            var lastItem = items[items.length - 1];
-            var totStr = "$" + (tot % 1 === 0 ? tot.toFixed(0) : tot.toFixed(2));
-            var tUrl = lastItem.url || METHOD_URLS[(lastItem.method || "").toLowerCase()] || "https://innioasis.app";
-            var sH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + lastItem.name + '</a>';
-            var totH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + totStr + '</a>';
-            if (Object.keys(mSet).length > 1) {
-              donorItems.push("Regular Supporter " + sH + " has donated " + totH);
-            } else {
-              donorItems.push("Regular Supporter " + sH + " donated " + totH + " by " + lastItem.method);
-            }
-          }
+        var topSupporterKeys = {};
+        getTopSupporterGroups(donations).forEach(function (group) {
+          topSupporterKeys[group.name.toLowerCase()] = true;
+          var items = group.items;
+          var lastItem = items[items.length - 1];
+          var totStr = "$" + (group.total % 1 === 0 ? group.total.toFixed(0) : group.total.toFixed(2));
+          var tUrl = lastItem.url || METHOD_URLS[(lastItem.method || "").toLowerCase()] || "https://innioasis.app";
+          var sH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + lastItem.name + '</a>';
+          var totH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + totStr + '</a>';
+          donorItems.push(contributorLabel(lastItem.name, true) + " " + sH + " donated " + totH);
         });
 
-        donations.slice().reverse().forEach(function (item) {
-          var rawN = (item.name || "").trim();
-          var isOut = item.amount < 0;
+        donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
+          // Keep received contributions and outgoing project payments in
+          // separate displays; recipients never enter this donor ticker.
+          if (item.amount <= 0 || isInnioasisCorporate(item.name)) return;
+          var rawN = cleanSupporterName(item.name);
+          var isOut = false;
           var isCorp = item.amount > 0 && isInnioasisCorporate(rawN);
           var isAn = isAnonymous(rawN);
-          var isReg = !isAn && !isCorp && bySupporter[rawN.toLowerCase()] && bySupporter[rawN.toLowerCase()].length >= 2;
+          var isReg = !isAn && !isCorp && !!topSupporterKeys[rawN.toLowerCase()];
           var absVal = Math.abs(item.amount);
           var aStr = "$" + (absVal % 1 === 0 ? absVal.toFixed(0) : absVal.toFixed(2));
           var tP = item.dt ? " · " + getRel(item.dt) : "";
@@ -1012,10 +1142,13 @@
           var tUrl = item.url || mUrl;
 
           if (isOut) {
-            var prH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawN + '</strong></a>';
-            var outAH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + aStr + '</strong></a>';
-            var outMH = '<a href="' + mUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + item.method + '</strong></a>';
-            donorItems.push("We donated " + outAH + " to " + prH + " on " + outMH + tP);
+            // Outgoing project support belongs in the project cards, not the
+            // supporter Thank You / credits stream.
+            return;
+          }
+
+          if (isCorp || (!isAn && topSupporterKeys[rawN.toLowerCase()])) {
+            // Top Supporters already have one merged summary above.
             return;
           }
 
@@ -1025,7 +1158,7 @@
           }
 
           var sH = isAn ? "Someone" : '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawN + '</strong></a>';
-          if (isReg) sH = "Regular Supporter " + sH;
+
           var aH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + aStr + '</strong></a>';
           var mH = '<a href="' + mUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + item.method + '</strong></a>';
 
@@ -1041,6 +1174,18 @@
           }
         });
 
+        // The ranked supporter table above is deliberately ordered. The live
+        // ticker is a sampler, so do not let Top Supporters always lead it.
+        function shuffleDonorTicker() {
+          for (var shuffleI = donorItems.length - 1; shuffleI > 0; shuffleI--) {
+            var shuffleJ = Math.floor(Math.random() * (shuffleI + 1));
+            var shuffleValue = donorItems[shuffleI];
+            donorItems[shuffleI] = donorItems[shuffleJ];
+            donorItems[shuffleJ] = shuffleValue;
+          }
+        }
+        shuffleDonorTicker();
+
         var showGoal = true;
         var donorIdx = 0;
         var donorLinesSinceGoal = 0;
@@ -1048,6 +1193,10 @@
           streamLine.style.opacity = "0";
           setTimeout(function () {
             if (showGoal || donorLinesSinceGoal >= 3) {
+              if (donorLinesSinceGoal >= 3 && donorItems.length > 1) {
+                shuffleDonorTicker();
+                donorIdx = 0;
+              }
               streamLine.innerHTML = goalBarHTML;
               streamLine.style.opacity = "1";
               setTimeout(function () {
@@ -1171,7 +1320,7 @@
         });
       }
 
-      // 4. Render Table — merged per-donor, regulars at top
+      // 4. Render Table — merged per-donor, Top Supporters first
       var tableBody = document.getElementById("donations-table-body");
       if (tableBody) {
         tableBody.innerHTML = "";
@@ -1230,20 +1379,22 @@
             }
           });
 
-          // Split into regulars (2+ donations) and one-timers
-          var regulars = [], oneTimers = [];
+          // Top Supporters include repeat contributors and gifts at least twice the average.
+          var topSupporters = [], otherContributors = [];
+          var topSupporterKeys = {};
+          getTopSupporterGroups(communityDonations).forEach(function (group) {
+            topSupporterKeys[group.name.toLowerCase()] = true;
+          });
           Object.keys(mergedMap).forEach(function (k) {
             var e = mergedMap[k];
-            if (e.count >= 2) regulars.push(e);
-            else oneTimers.push(e);
+            if (topSupporterKeys[k]) topSupporters.push(e);
+            else otherContributors.push(e);
           });
 
-          // Regulars: sorted by total desc
-          regulars.sort(function (a, b) { return b.total - a.total; });
-          // One-timers: sorted by latest date desc
-          oneTimers.sort(function (a, b) {
-            if (b.latestDt && a.latestDt) return b.latestDt - a.latestDt;
-            return 0;
+          // Top Supporters: largest total first; remaining credits: newest first.
+          topSupporters.sort(function (a, b) { return b.total - a.total || a.name.localeCompare(b.name); });
+          otherContributors.sort(function (a, b) {
+            return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0);
           });
           // Anonymous: sorted by date desc
           anonEntries.sort(function (a, b) {
@@ -1265,9 +1416,51 @@
           function buildMethodIcons(methods) {
             return methods.map(function (m) {
               var f = iconForMethod(m.lower);
-              return '<img class="method-icon-img" src="/mtkclient/gui/images/' + f + '" onerror="this.onerror=null;this.src=\'/' + f + '\'" alt="' + m.name + '" title="' + m.name + '">';
+              return '<img class="method-icon-img" data-method-icon="' + f + '" src="./mtkclient/gui/images/' + f + '" alt="' + m.name + '" title="' + m.name + '">';
             }).join("");
           }
+
+          // The public site may be served with the Python package directory omitted.
+          // Prefer the real PNGs in mtkclient, then fall back to the published SVG assets.
+          function fallbackIconFile(file) {
+            var fallbacks = {
+              "icon_bitcoin.png": "icon_bitcoin.svg",
+              "icon_kofi.png": "icon_kofi.svg",
+              "icon_paypal.png": "icon_paypal.svg",
+              "icon_patreon.png": "icon_patreon.svg",
+              "icon_revolut.png": "icon_revolut.svg",
+              "icon_honeygain.svg": "icon_honeygain.svg"
+            };
+            return fallbacks[file] || "icon_kofi.svg";
+          }
+
+          function wireIconFallbacks(root) {
+            var scope = root || document;
+            scope.querySelectorAll("img[data-method-icon]").forEach(function (img) {
+              if (img.dataset.iconFallbackBound === "1") return;
+              img.dataset.iconFallbackBound = "1";
+              var useFallback = function () {
+                var file = img.dataset.methodIcon;
+                var sources = [
+                  "./mtkclient/gui/images/" + file,
+                  "/mtkclient/gui/images/" + file,
+                  "/assets/" + fallbackIconFile(file),
+                  "./assets/" + fallbackIconFile(file)
+                ];
+                var next = parseInt(img.dataset.iconSourceIndex || "0", 10) + 1;
+                if (next >= sources.length) {
+                  img.style.display = "none";
+                  return;
+                }
+                img.dataset.iconSourceIndex = String(next);
+                img.src = sources[next];
+              };
+              img.addEventListener("error", useFallback);
+              if (img.complete && img.naturalWidth === 0) useFallback();
+            });
+          }
+
+          wireIconFallbacks(document);
 
           function renderMergedRow(entry, isReg) {
             var tr = document.createElement("tr");
@@ -1277,10 +1470,14 @@
 
             // Name column
             var nameCol;
+            var contributionCount = entry.count > 1
+              ? ' <small style="color: var(--lumen-muted); font-weight: 400;">(' + entry.count + ' contributions)</small>'
+              : '';
             if (isReg) {
-              nameCol = '<span class="regular-star" title="Regular Supporter (multiple contributions)" style="font-weight: bold; margin-right: 4px;">Regular supporter:</span>' +
+              nameCol = '<span class="contributor-star" aria-hidden="true">&#9733;</span>' +
+                        '<span class="lumen-visually-hidden">' + contributorLabel(entry.name, true) + ': </span>' +
                         '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + entry.name + '</a>' +
-                        ' <small style="color: var(--lumen-muted); font-weight: 400;">(' + entry.count + ' contributions)</small>';
+                        contributionCount;
             } else {
               nameCol = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + entry.name + '</a>';
             }
@@ -1312,34 +1509,74 @@
             var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + dateStr + '</span>';
 
             tr.innerHTML = '<td>' + nameCol + '</td><td>' + amtCol + '</td><td>' + dateCol + '</td>';
+            wireIconFallbacks(tr);
             return tr;
           }
 
-          // Render: regulars first, then one-timers, then anonymous
-          regulars.forEach(function (e) { tableBody.appendChild(renderMergedRow(e, true)); });
-          oneTimers.forEach(function (e) { tableBody.appendChild(renderMergedRow(e, false)); });
+          // Render: Top Supporters first, then remaining credits newest-to-oldest, then anonymous.
+          topSupporters.forEach(function (e) { tableBody.appendChild(renderMergedRow(e, true)); });
+          otherContributors.forEach(function (e) { tableBody.appendChild(renderMergedRow(e, false)); });
 
           // Anonymous rows (not merged — each is its own unknown person)
           anonEntries.forEach(function (d) {
             var tr = document.createElement("tr");
             var mLow = (d.method || "").toLowerCase();
             var f = iconForMethod(mLow);
-            var iconHtml = '<img class="method-icon-img" src="/mtkclient/gui/images/' + f + '" onerror="this.onerror=null;this.src=\'/' + f + '\'" alt="' + d.method + '" title="' + d.method + '">';
+            var iconHtml = '<img class="method-icon-img" data-method-icon="' + f + '" src="./mtkclient/gui/images/' + f + '" alt="' + d.method + '" title="' + d.method + '">';
             var absAmt = Math.abs(d.amount);
             var amtStr = "$" + (absAmt % 1 === 0 ? absAmt.toFixed(0) : absAmt.toFixed(2));
             var nameCol = '<span style="color: var(--lumen-muted, #9aa3b5);">Someone</span>';
             var amtCol = '<span class="contribution-amount-wrap">' + iconHtml + '<strong style="color: #10b981;">' + amtStr + '</strong></span>';
             var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + d.dateStr + '</span>';
             tr.innerHTML = '<td>' + nameCol + '</td><td>' + amtCol + '</td><td>' + dateCol + '</td>';
+            wireIconFallbacks(tr);
             tableBody.appendChild(tr);
           });
         }
       }
 
 
+      // Render commercial sponsorship separately from community support.
+      var sponsorshipBody = document.getElementById("corporate-sponsorship-body");
+      if (sponsorshipBody) {
+        sponsorshipBody.innerHTML = "";
+        if (!corporateSponsorships.length) {
+          sponsorshipBody.innerHTML = '<tr><td colspan="2" style="text-align: center; color: var(--lumen-muted);">No commercial sponsorship recorded yet.</td></tr>';
+        } else {
+          corporateSponsorships.slice().sort(function (a, b) { return (b.dt || 0) - (a.dt || 0); }).forEach(function (d) {
+            var amount = Math.abs(d.amount);
+            var amountText = "$" + (amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2));
+            var tr = document.createElement("tr");
+            tr.innerHTML = '<td><strong style="color: #60a5fa;">' + amountText + '</strong></td><td>' + (d.dateStr || "") + '</td>';
+            sponsorshipBody.appendChild(tr);
+          });
+        }
+      }
+
+      // Financial figures combine the community record with fixed planning costs.
+      var launchMonthIndex = 2025 * 12 + 6; // July 2025, inclusive.
+      var currentMonthIndex = curYear * 12 + curMonth;
+      var elapsedMonths = Math.max(1, currentMonthIndex - launchMonthIndex + 1);
+      var monthlyRunningCosts = elapsedMonths * 200;
+      var annualCertificationPeriods = Math.max(1, Math.ceil(elapsedMonths / 12));
+      var appleDeveloperCosts = annualCertificationPeriods * 99;
+      var macMiniTestingHardware = 599;
+      var totalAccountedCost = monthlyRunningCosts + appleDeveloperCosts + macMiniTestingHardware + totalOutgoingSpent;
+      function setMoney(id, amount) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = "$" + (amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2));
+      }
+      setMoney("financial-total-cost", totalAccountedCost);
+      setMoney("financial-community-raised", totalCommunityRaised);
+      setMoney("financial-corporate-raised", totalCorporateRaised);
+      setMoney("financial-outgoing-cost", totalOutgoingSpent);
+      setMoney("financial-apple-cost", appleDeveloperCosts);
+      var totalDetail = document.getElementById("financial-total-cost-detail");
+      if (totalDetail) totalDetail.textContent = "$200 × " + elapsedMonths + " calendar months + $" + appleDeveloperCosts.toFixed(0) + " Apple certification + $" + macMiniTestingHardware.toFixed(0) + " Mac mini + $" + totalOutgoingSpent.toFixed(2) + " project support.";
+
     }
 
-    // Fetch donors.csv
+    // Fetch the latest community support record
     var candidates = [
       "donors.csv",
       "/donors.csv",
