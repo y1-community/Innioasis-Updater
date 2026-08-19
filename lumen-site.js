@@ -297,28 +297,19 @@
     }
 
     function openDonateDialog() {
-        var existing = document.getElementById("lumen-donate-dialog");
-        if (existing) { showDialog(existing); return; }
-        var dialog = document.createElement("dialog");
-        dialog.id = "lumen-donate-dialog";
-        dialog.className = "lumen-donate-dialog";
-        dialog.setAttribute("aria-labelledby", "lumen-donate-title");
-        dialog.setAttribute("aria-describedby", "lumen-donate-intro");
-        dialog.innerHTML =
-            '<div class="lumen-donate-card">' +
-            '<p class="lumen-kicker">Support Updater and the Themes Gallery</p>' +
-            '<h2 id="lumen-donate-title">It takes you.</h2>' +
-            '<p class="lumen-donate-intro" id="lumen-donate-intro"><strong>Updater and the Themes Gallery are community hobbyist projects.</strong> Hosting, domain renewals, moderation, and release work have real costs. If this guide helped, a small donation keeps the tools available.</p>' +
-            '<div class="lumen-donate-links">' +
-            LUMEN_DONATE_METHODS.map(function (method) {
-                return '<a class="lumen-donate-method" href="' + escapeHtml(method.href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(method.name) + '</a>';
-            }).join("") +
-            '</div>' +
-            '<button class="lumen-donate-close" type="button" data-donate-close>Maybe later</button>' +
-            '</div>';
-        dialog.querySelector("[data-donate-close]").addEventListener("click", function () { closeDialog(dialog); });
-        document.body.appendChild(dialog);
-        showDialog(dialog);
+        var donateTrigger = document.querySelector("[data-donate-open]");
+        if (donateTrigger) {
+            donateTrigger.click();
+            return;
+        }
+        var donatePanel = document.getElementById("y1-donate-panel");
+        if (donatePanel) {
+            donatePanel.hidden = false;
+            var backdrop = document.querySelector("[data-dock-backdrop]");
+            if (backdrop) backdrop.hidden = false;
+            return;
+        }
+        window.location.href = "support_devs.html#donations";
     }
 
     function initFeedback(root) {

@@ -116,19 +116,38 @@
         } catch (_) {}
     }
 
+    function removeDuplicateSupportToolbars(slot) {
+        var toolbars = Array.from(document.querySelectorAll("#support-toolbar-container"));
+        var mounted = slot ? slot.querySelector("#support-toolbar-container") : null;
+        toolbars.forEach(function (toolbar) {
+            if (!mounted) {
+                mounted = toolbar;
+                return;
+            }
+            if (toolbar !== mounted) toolbar.remove();
+        });
+    }
+
     async function loadSupportToolbar() {
         var slot = document.getElementById("support-toolbar-slot");
-        if (!slot || slot.dataset.shellLoaded === "1") return;
-        for (var i = 0; i < toolbarCandidates().length; i++) {
-            try {
-                var res = await fetch(toolbarCandidates()[i], { cache: "no-cache" });
-                if (!res.ok) continue;
-                slot.innerHTML = await res.text();
-                executeInlineScripts(slot);
-                slot.dataset.shellLoaded = "1";
-                notifyDockReady();
-                return;
-            } catch (_) {}
+        if (!slot || slot.dataset.shellLoaded === "1" || slot.dataset.shellLoading === "1") return;
+        slot.dataset.shellLoading = "1";
+        removeDuplicateSupportToolbars(slot);
+        try {
+            for (var i = 0; i < toolbarCandidates().length; i++) {
+                try {
+                    var res = await fetch(toolbarCandidates()[i], { cache: "no-cache" });
+                    if (!res.ok) continue;
+                    slot.innerHTML = await res.text();
+                    executeInlineScripts(slot);
+                    removeDuplicateSupportToolbars(slot);
+                    slot.dataset.shellLoaded = "1";
+                    notifyDockReady();
+                    return;
+                } catch (_) {}
+            }
+        } finally {
+            delete slot.dataset.shellLoading;
         }
     }
 
