@@ -2,6 +2,30 @@
 <style>
   /* Keep the injected donation modal self-contained when a cached page has an
      older site-toolbar.css. */
+  #support-toolbar-container .y1-contributor-stream-box {
+    box-sizing: border-box;
+    width: 100%;
+  }
+  #support-toolbar-container .y1-contributor-stream-line {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  body.y1-donate-panel-open .y1-dock-secondary-line,
+  body.y1-donate-panel-open .y1-dock-goal-layer {
+    display: none !important;
+  }
+  /* The appeal is a permanent second toolbar line, never an idle takeover. */
+  #support-toolbar-container .y1-site-dock-wrap.is-idle {
+    width: min(96vw, 1040px) !important;
+  }
+  #support-toolbar-container .y1-site-dock-bar.is-idle .y1-dock-buttons-layer,
+  #support-toolbar-container .y1-site-dock-bar.is-idle .y1-dock-secondary-line {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  #support-toolbar-container .y1-dock-goal-layer {
+    display: none !important;
+  }
   #support-toolbar-container .y1-donate-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -225,7 +249,7 @@
     </div>
 
     <nav class="y1-site-dock-bar" id="y1-site-dock-bar" aria-label="Site shortcuts">
-      <!-- Button layer (visible normally, fades out when idle) -->
+      <!-- Shortcut layer remains visible above the permanent donation line. -->
       <div class="y1-dock-buttons-layer" id="y1-dock-buttons-layer">
         <a class="y1-dock-link" href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C.53 9.05-.32 13.58.1 18.06c0 .02.01.04.03.05a19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.11 13 13 0 0 1-1.86-.89.08.08 0 0 1-.01-.13c.12-.09.25-.19.36-.29a.07.07 0 0 1 .08-.01c3.9 1.8 8.13 1.8 11.99 0a.07.07 0 0 1 .08.01c.12.1.24.2.37.29a.08.08 0 0 1 0 .13 12.5 12.5 0 0 1-1.87.88.08.08 0 0 0-.04.12c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.68-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42z"/></svg>Discord</a>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
@@ -242,7 +266,7 @@
         </span>
         <span class="y1-font-live" id="y1-font-live" aria-live="polite"></span>
       </div>
-      <!-- A dedicated second line keeps the goal and supporter stories readable while the shortcuts remain available. -->
+      <!-- The donation appeal is always a calm, readable second line below the shortcuts. -->
       <div class="y1-dock-secondary-line" id="y1-dock-secondary-line" aria-label="Monthly support goal and community contributions — click to support" role="button" tabindex="0">
         <div class="y1-dock-secondary-goal-view" id="y1-dock-secondary-goal-view">
           <span class="y1-dock-secondary-text" id="y1-dock-secondary-text">You've helped us cover $0 of $200 costs for this month.</span>
@@ -252,8 +276,9 @@
           <span class="y1-dock-secondary-ticker" id="y1-dock-secondary-ticker-text">Loading supporters...</span>
         </div>
       </div>
-      <!-- Idle goal layer (fades in after 3s idle, crossfades over buttons) -->
-      <div class="y1-dock-goal-layer is-goal-view" id="y1-dock-goal-layer" aria-label="Help us raise our running costs for the month — click to support" role="button" tabindex="-1">
+      <!-- Retained as a compatibility shell for older scripts; the permanent
+           second-line appeal above is the only visible donation display. -->
+      <div class="y1-dock-goal-layer is-goal-view" id="y1-dock-goal-layer" aria-hidden="true" hidden tabindex="-1">
         <div class="y1-dock-idle-goal-view" id="y1-dock-idle-goal-view">
           <span class="y1-dock-idle-heart" id="y1-dock-idle-goal-heading">Help us raise our running costs for the month</span>
           <div class="y1-dock-goal-bar-wrap" aria-hidden="true">
@@ -689,16 +714,8 @@
 
   if (!hasDecided()) setBanner(true);
 
-  /* ————— Dock Idle Crossfade: 3s idle → goal bar + ticker ————— */
+  /* ————— Permanent second-line donation appeal ————— */
   (function () {
-    var dockBar = document.getElementById("y1-site-dock-bar");
-    var goalLayer = document.getElementById("y1-dock-goal-layer");
-    var idleBarFill = document.getElementById("y1-dock-idle-bar-fill");
-    var idleGoalText = document.getElementById("y1-dock-idle-goal-text");
-    var idleGoalHeading = document.getElementById("y1-dock-idle-goal-heading");
-    var idleTickerEl = document.getElementById("y1-dock-idle-ticker-text");
-    var idleGoalView = document.getElementById("y1-dock-idle-goal-view");
-    var idleTickerView = document.getElementById("y1-dock-idle-ticker-view");
     var secondaryLine = document.getElementById("y1-dock-secondary-line");
     var secondaryText = document.getElementById("y1-dock-secondary-text");
     var secondaryBarFill = document.getElementById("y1-dock-secondary-bar-fill");
@@ -706,71 +723,14 @@
     var secondaryTickerView = document.getElementById("y1-dock-secondary-ticker-view");
     var secondaryTickerEl = document.getElementById("y1-dock-secondary-ticker-text");
 
-    var IDLE_DELAY = 3000;
-    var idleTimer = null;
-    var idleTickerInterval = null;
-    var isIdle = false;
+    // The second line is permanent; this interval only controls its content
+    // crossfade and never hides or replaces the shortcut row.
+    var donationLineInterval = null;
 
-    function enterIdle() {
-      if (!dockBar) return;
-      isIdle = true;
-      dockBar.classList.add("is-idle");
-      var dockWrap = document.querySelector(".y1-site-dock-wrap");
-      if (dockWrap) dockWrap.classList.add("is-idle");
-      if (goalLayer) goalLayer.setAttribute("tabindex", "0");
-      if (secondaryLine) secondaryLine.setAttribute("tabindex", "-1");
-    }
-
-    function exitIdle() {
-      if (!dockBar) return;
-      isIdle = false;
-      dockBar.classList.remove("is-idle");
-      var dockWrap = document.querySelector(".y1-site-dock-wrap");
-      if (dockWrap) dockWrap.classList.remove("is-idle");
-      if (goalLayer) goalLayer.setAttribute("tabindex", "-1");
-      if (secondaryLine) secondaryLine.setAttribute("tabindex", "0");
-    }
-
-    function resetIdleTimer() {
-      if (idleTimer) clearTimeout(idleTimer);
-      if (isIdle) exitIdle();
-      // Never fade into the ticker while a modal is open.
-      if ((donatePanel && !donatePanel.hidden) || (privacyPanel && !privacyPanel.hidden)) return;
-      idleTimer = setTimeout(enterIdle, IDLE_DELAY);
-    }
-
-    // Only activity on the toolbar may dismiss the full-width appeal. Page-wide
-    // mouse movement, scrolling, keyboard input, and clicks must not interrupt it.
-    var dockWrap = document.querySelector(".y1-site-dock-wrap");
-    if (dockWrap) {
-      ["pointerdown", "touchstart", "click"].forEach(function (evt) {
-        dockWrap.addEventListener(evt, resetIdleTimer, { passive: true });
-      });
-      dockWrap.addEventListener("mouseenter", function () {
-        if (isIdle) exitIdle();
-        if (idleTimer) clearTimeout(idleTimer);
-      });
-      dockWrap.addEventListener("mouseleave", resetIdleTimer);
-    }
-
-    // Clicking either appeal line opens the existing donation modal.
+    // Clicking the permanent appeal line opens the existing donation modal.
     function openDonationFromAppeal() {
-      exitIdle();
-      if (idleTimer) clearTimeout(idleTimer);
       var donateOpenBtn = document.querySelector("[data-donate-open]");
       if (donateOpenBtn) donateOpenBtn.click();
-      // Give the modal time to be read before the idle cycle can return.
-      setTimeout(resetIdleTimer, 8000);
-    }
-
-    if (goalLayer) {
-      goalLayer.addEventListener("click", function (e) {
-        if (e.target && e.target.tagName && e.target.tagName.toLowerCase() === "a") return;
-        openDonationFromAppeal();
-      });
-      goalLayer.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goalLayer.click(); }
-      });
     }
     if (secondaryLine) {
       secondaryLine.addEventListener("click", function (e) {
@@ -782,22 +742,12 @@
       });
     }
 
-    // Expose updater so renderGoalAndDonors can feed it live data
-    window._y1UpdateIdleBar = function (pct, raised, target, tickerHtml) {
-      if (idleBarFill) {
-        requestAnimationFrame(function () { idleBarFill.style.width = Math.min(100, pct).toFixed(1) + "%"; });
-      }
+    // Expose updater so renderGoalAndDonors can feed the permanent line live data
+    window._y1UpdateDonationLine = function (pct, raised, target, tickerHtml) {
       if (secondaryBarFill) {
         requestAnimationFrame(function () { secondaryBarFill.style.width = Math.min(100, pct).toFixed(1) + "%"; });
       }
-      if (idleGoalHeading) {
-        idleGoalHeading.textContent = "Help us raise our running costs for the month";
-      }
-      if (idleGoalText) {
-        var rStr = (raised % 1 === 0) ? raised.toFixed(0) : raised.toFixed(2);
-        idleGoalText.textContent = "You've helped us cover $" + rStr + " of $" + target.toFixed(0) + " costs for this month.";
-      }
-      if (idleTickerInterval) clearInterval(idleTickerInterval);
+      if (donationLineInterval) clearInterval(donationLineInterval);
       var donorLines = Array.isArray(tickerHtml) ? tickerHtml.filter(Boolean) : (tickerHtml ? [tickerHtml] : []);
       var raisedLabel = (raised % 1 === 0) ? raised.toFixed(0) : raised.toFixed(2);
       var goalLine = "Help us raise our running costs for the month · You've helped us cover $" + raisedLabel + " of $" + target.toFixed(0) + " costs for this month.";
@@ -806,12 +756,11 @@
         if (index && index % 3 === 0) states.push({ type: "goal", html: goalLine });
         states.push({ type: "ticker", html: line });
       });
-      if (idleTickerEl && states.length) {
+      if (states.length) {
         var stateIndex = 0;
-        function showIdleState() {
+        function showDonationState() {
           var state = states[stateIndex % states.length];
           var showingGoal = state.type === "goal";
-          if (idleTickerEl) idleTickerEl.style.opacity = "0";
           if (secondaryText) secondaryText.style.opacity = "0";
           if (secondaryTickerEl) secondaryTickerEl.style.opacity = "0";
           setTimeout(function () {
@@ -824,24 +773,16 @@
               if (secondaryGoalView) secondaryGoalView.hidden = true;
               if (secondaryTickerView) secondaryTickerView.hidden = false;
             }
-            if (idleTickerEl) idleTickerEl.innerHTML = state.html;
-            if (idleGoalView) idleGoalView.hidden = !showingGoal;
-            if (idleTickerView) idleTickerView.hidden = showingGoal;
-            if (goalLayer) goalLayer.classList.toggle("is-ticker-view", !showingGoal);
-            if (goalLayer) goalLayer.classList.toggle("is-goal-view", showingGoal);
             if (secondaryText) secondaryText.style.opacity = "1";
             if (secondaryTickerEl) secondaryTickerEl.style.opacity = "1";
-            if (idleTickerEl) idleTickerEl.style.opacity = "1";
             stateIndex += 1;
           }, 550);
         }
-        showIdleState();
-        if (states.length > 1) idleTickerInterval = setInterval(showIdleState, 6500);
+        showDonationState();
+        if (states.length > 1) donationLineInterval = setInterval(showDonationState, 6500);
       }
     };
 
-    // Kick off idle timer on page load
-    resetIdleTimer();
   })();
 
   /* ————— Donors CSV Data & Monthly Goal Engine ————— */
@@ -1173,14 +1114,14 @@
     /* Start rotating dock ticker (alternates between Twitch/Wiki-style Goal Bar and single/multi donor lines) */
     setupRotatingTicker(donations, currentMonthTotal, MONTHLY_TARGET, bySupporter, curMonthName, raisedPct, remainingAmount);
 
-    // Feed the idle goal bar with a rotating mix of supporters and projects
-    // the community has helped, so the appeal stays human rather than generic.
-    if (window._y1UpdateIdleBar) {
-      var idleTickerLines = rawDonorLines.slice();
+    // Feed the permanent second line with a rotating mix of supporters and
+    // the monthly goal, keeping the appeal readable without changing layout.
+    if (window._y1UpdateDonationLine) {
+      var donorTickerLines = rawDonorLines.slice();
       donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
         var itemName = (item.name || "").toLowerCase().trim();
       });
-      window._y1UpdateIdleBar(raisedPct, currentMonthTotal, MONTHLY_TARGET, idleTickerLines);
+      window._y1UpdateDonationLine(raisedPct, currentMonthTotal, MONTHLY_TARGET, donorTickerLines);
     }
   }
 
@@ -1336,81 +1277,5 @@
 
   fetchDonors();
   setInterval(fetchDonors, 60000);
-})();
-</script>
-<script>
-(function () {
-  "use strict";
-  /* Keep the idle appeal alive even if an optional modal control is absent or
-     an older cached toolbar script stops before its donor loader runs. */
-  var dockBar = document.getElementById("y1-site-dock-bar");
-  var goalLayer = document.getElementById("y1-dock-goal-layer");
-  var ticker = document.getElementById("y1-dock-idle-ticker-text");
-  if (!dockBar || !goalLayer || window._y1IdleDonationFallback || window._y1UpdateIdleBar) return;
-  window._y1IdleDonationFallback = true;
-  var timer = null;
-  var lines = ["Thank you to everyone who supports the community"];
-  var lineIndex = 0;
-  var rotation = null;
-
-  function enterIdle() {
-    dockBar.classList.add("is-idle");
-    goalLayer.setAttribute("tabindex", "0");
-  }
-  function wake() {
-    dockBar.classList.remove("is-idle");
-    goalLayer.setAttribute("tabindex", "-1");
-    if (timer) clearTimeout(timer);
-  }
-  function schedule() {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(enterIdle, 3000);
-  }
-  function rotateLine() {
-    if (!ticker || !lines.length) return;
-    ticker.textContent = lines[lineIndex % lines.length];
-    lineIndex += 1;
-  }
-  function loadFallbackNames() {
-    fetch("donors.csv?_toolbar=" + Date.now(), { cache: "no-cache" })
-      .then(function (response) { if (!response.ok) throw new Error("Donor data unavailable"); return response.text(); })
-      .then(function (text) {
-        var nextLines = [];
-        var raised = 0;
-        var today = new Date();
-        text.split(/\r?\n/).slice(1).forEach(function (row) {
-          var fields = row.split(",");
-          var name = (fields[0] || "").trim();
-          var amount = parseFloat(fields[1] || "0");
-          var dateParts = (fields[2] || "").trim().split("/");
-          if (amount > 0 && dateParts.length === 3 && parseInt(dateParts[1], 10) - 1 === today.getMonth() && parseInt(dateParts[2], 10) === today.getFullYear()) raised += amount;
-          var lower = name.toLowerCase();
-          if (!name || lower === "innioasis" || lower.indexOf("innioasis ") === 0) return;
-          if (amount > 0) nextLines.push("Thank you to " + (lower === "supporter" || lower === "someone" ? "a supporter" : name));
-        });
-        var goalText = document.getElementById("y1-dock-idle-goal-text");
-        var goalFill = document.getElementById("y1-dock-idle-bar-fill");
-        var percentage = Math.min(100, Math.max(0, raised / 200 * 100));
-        if (goalText) goalText.textContent = "$" + (raised % 1 === 0 ? raised.toFixed(0) : raised.toFixed(2)) + " of $200/mo";
-        if (goalFill) goalFill.style.width = percentage.toFixed(1) + "%";
-        if (nextLines.length) {
-          lines = nextLines;
-          rotateLine();
-          if (rotation) clearInterval(rotation);
-          rotation = setInterval(rotateLine, 6500);
-        }
-      })
-      .catch(function () {});
-  }
-  // The fallback follows the same toolbar-only rule as the primary idle engine.
-  ["pointerdown", "touchstart", "click"].forEach(function (eventName) {
-    dockBar.addEventListener(eventName, wake, { passive: true });
-  });
-  dockBar.addEventListener("mouseenter", wake);
-  dockBar.addEventListener("mouseleave", schedule);
-  goalLayer.addEventListener("click", wake);
-  rotateLine();
-  loadFallbackNames();
-  schedule();
 })();
 </script>
