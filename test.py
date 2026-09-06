@@ -7474,6 +7474,7 @@ class SPFlashToolWorker(QThread):
         flash_pid = getattr(process, "pid", None)
         load_fail_hints = []
         stdout_eof = False
+        connect_prompt_emitted = False
         exit_observed_at = None
         stdout_drain_timeout = 5.0
         termination_reason = ""
@@ -7579,13 +7580,20 @@ class SPFlashToolWorker(QThread):
                 installing_phase = False
                 completed_phase = False
                 reached_search_usb = True
-                self.show_initsteps_image.emit()
-                self.status_updated.emit(
-                    ("While the Y2 remains unplugged, press and release pinhole once; then "
-                     "connect the powered-off Y2 directly without pressing buttons. "
-                     "Only this one write attempt is permitted.") if is_y2_model(self.device_model)
-                    else spflash_connect_status_text(self.device_label, device_model=self.device_model)
-                )
+                if exit_code is None:
+                    connect_prompt_emitted = True
+                    self.show_initsteps_image.emit()
+                    self.status_updated.emit(
+                        ("While the Y2 remains unplugged, press and release pinhole once; then "
+                         "connect the powered-off Y2 directly without pressing buttons. "
+                         "Only this one write attempt is permitted.") if is_y2_model(self.device_model)
+                        else spflash_connect_status_text(self.device_label, device_model=self.device_model)
+                    )
+                elif is_y2_model(self.device_model) and not termination_reason:
+                    termination_reason = (
+                        "Flash Tool's Search usb output was received only after the "
+                        "write process had exited; no physical connection was authorized"
+                    )
             elif instructions_phase and not installing_phase and not completed_phase:
                 if (
                     "Downloading" in line
@@ -7790,6 +7798,7 @@ class SPFlashToolWorker(QThread):
                 "started_utc":process_started_utc,"ended_utc":datetime.utcnow().isoformat()+"Z",
                 "exit_code":exit_code,"natural_completion":natural_completion,
                 "stdout_eof":stdout_eof,"forced_termination":forced_termination,
+                "connect_prompt_emitted":connect_prompt_emitted,
                 "termination_reason":termination_reason,
                 "retry_performed":False,"stdout":transcript}
             (self.app_dir/"Y2-write-completion.json").write_text(json.dumps(evidence,indent=2)+"\n",encoding="utf-8")

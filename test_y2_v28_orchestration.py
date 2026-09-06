@@ -73,11 +73,14 @@ class FakeSignal:
 
 
 class FakeFlashProcess:
-    def __init__(self, lines, exit_code=0):
+    def __init__(self, lines, exit_code=0, exit_after_polls=20):
         self.pid = 4242
         self._lines = list(lines)
         self._planned_exit = exit_code
         self._exit_code = None
+        self._stdout_finished = False
+        self._polls_after_stdout = 0
+        self._exit_after_polls = exit_after_polls
         self.terminate_calls = 0
         self.kill_calls = 0
         self.stdout = self
@@ -85,9 +88,13 @@ class FakeFlashProcess:
     def __iter__(self):
         for line in self._lines:
             yield line
-        self._exit_code = self._planned_exit
+        self._stdout_finished = True
 
     def poll(self):
+        if self._exit_code is None and self._stdout_finished:
+            self._polls_after_stdout += 1
+            if self._polls_after_stdout > self._exit_after_polls:
+                self._exit_code = self._planned_exit
         return self._exit_code
 
     def wait(self, timeout=None):
@@ -531,6 +538,101 @@ class CompletionLoopTests(unittest.TestCase):
             })
             with self.assertRaises(FileNotFoundError):
                 method(worker, 1, 1)
+
+    def _run_full_write_prompt_case(self, *, exit_code, exit_after_polls):
+        process = FakeFlashProcess(
+            [
+                "Search usb\n",
+                "Downloading\n",
+                "100% of image data has been sent\n",
+                "Download Succeeded\n",
+                "Disconnect!\n",
+            ],
+            exit_code=exit_code,
+            exit_after_polls=exit_after_polls,
+        )
+        with tempfile.TemporaryDirectory(prefix="v28-write-prompt-") as td:
+            app_dir = Path(td)
+            statuses = FakeSignal()
+            initsteps = FakeSignal()
+            worker = SimpleNamespace(
+                should_stop=False,
+                device_model="Y2",
+                device_label="Innioasis Y2",
+                app_dir=app_dir,
+                spflash_working_dir=app_dir,
+                spflash_command=["fake-flash-tool"],
+                requested_com_port=None,
+                y2_launch_snapshot=object(),
+                _build_runtime_command=lambda: (["fake-flash-tool"], None, []),
+                status_updated=statuses,
+                show_please_wait_image=FakeSignal(),
+                show_initsteps_image=initsteps,
+                show_installing_image=FakeSignal(),
+                show_installed_image=FakeSignal(),
+                disable_update_button=FakeSignal(),
+            )
+            method = production_method("_run_flash_tool_once", {
+                "is_linux_platform": lambda: False,
+                "is_y2_model": lambda _model: True,
+                "assert_y2_snapshot": lambda _snapshot: None,
+                "subprocess": SimpleNamespace(
+                    PIPE=object(), STDOUT=object(), Popen=lambda *_a, **_kw: process
+                ),
+                "threading": threading,
+                "queue": queue,
+                "time": time,
+                "datetime": datetime.datetime,
+                "json": json,
+                "os": os,
+                "silent_print": lambda *_values: None,
+                "sp_flash_tool_process_env": lambda _app: {},
+                "spflash_connect_status_text": lambda *_a, **_kw: "connect",
+                "spflash_success_status_text": lambda *_a, **_kw: "success",
+                "describe_mediatek_ports": lambda _ports: "none",
+                "stop_sp_flash_tool_processes": lambda **_kw: 0,
+                "evaluate_y2_write_completion": evaluate_write_completion,
+                "FLASH_TOOL_LINUX_LOG_DIR_NAME": "SP_FT_Logs",
+            })
+            result = method(worker, 1, 1)
+            evidence = json.loads(
+                (app_dir / "Y2-write-completion.json").read_text(encoding="utf-8")
+            )
+            physical = [
+                values[0]
+                for values in statuses.values
+                if values and "press and release pinhole" in values[0]
+            ]
+            return result, evidence, physical, initsteps
+
+    def test_write_worker_suppresses_late_prompt_after_zero_exit(self):
+        result, evidence, physical, initsteps = self._run_full_write_prompt_case(
+            exit_code=0, exit_after_polls=0
+        )
+        self.assertFalse(result["ok"])
+        self.assertFalse(evidence["connect_prompt_emitted"])
+        self.assertIn("only after", evidence["termination_reason"])
+        self.assertEqual(physical, [])
+        self.assertEqual(initsteps.values, [])
+
+    def test_write_worker_suppresses_late_prompt_after_nonzero_exit(self):
+        result, evidence, physical, initsteps = self._run_full_write_prompt_case(
+            exit_code=7, exit_after_polls=0
+        )
+        self.assertFalse(result["ok"])
+        self.assertEqual(evidence["exit_code"], 7)
+        self.assertFalse(evidence["connect_prompt_emitted"])
+        self.assertEqual(physical, [])
+        self.assertEqual(initsteps.values, [])
+
+    def test_write_worker_prompts_only_for_live_waiting_process(self):
+        result, evidence, physical, initsteps = self._run_full_write_prompt_case(
+            exit_code=0, exit_after_polls=20
+        )
+        self.assertTrue(result["ok"])
+        self.assertTrue(evidence["connect_prompt_emitted"])
+        self.assertEqual(len(physical), 1)
+        self.assertEqual(len(initsteps.values), 1)
 
 
 if __name__ == "__main__":
