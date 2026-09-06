@@ -5640,7 +5640,7 @@ def _parse_rom_asset_variant(asset, tag_name='', repo=''):
 
 def extract_rom_variants_from_assets(assets, tag_name='', repo=''):
     """Return a list of rom*.zip variants for a release, including type/resolution metadata."""
-    if (repo or '').lower() == 'y1-community/rockbox-y2-rom' and any(
+    if (repo or '').lower() == 'spycemagic/y2-rockbox' and any(
         str(a.get('name','')).lower() == 'rom_y2.zip' or a.get('name') == Y2_CLASS_A_ASSET_NAME
         for a in (assets or [])):
         # Do not swallow DeliveryBlocked or fall back to legacy Y2 firmware.
@@ -5654,7 +5654,7 @@ def extract_rom_variants_from_assets(assets, tag_name='', repo=''):
 
 def lock_y2_class_a_catalogue_releases(releases, repo):
     """Apply the same exact contract to live and cached catalogue data."""
-    if (repo or '').lower() != 'y1-community/rockbox-y2-rom': return releases
+    if (repo or '').lower() != 'spycemagic/y2-rockbox': return releases
     # Historical releases are intentionally ignored.  The one locked release,
     # when present, is validated before generic ROM parsing or UI exposure.
     matching=[r for r in (releases or []) if r.get('tag_name')=='v0.2.0-beta']
@@ -5914,7 +5914,7 @@ def package_supports_device_type(github_api, package, selected_type):
         silent_print(f"Cached release contract rejected for {repo}: {exc}")
         return False
     if not cached_releases:
-        if resolve_firmware_repo(repo).lower() == 'y1-community/rockbox-y2-rom':
+        if resolve_firmware_repo(repo).lower() == 'spycemagic/y2-rockbox':
             return False
         # Without release data, default to Original Software only for Type B
         if st == 'B':
@@ -6513,7 +6513,7 @@ class GitHubAPI:
             if response:
                 release_data = response.json()
                 locked = lock_y2_class_a_catalogue_releases([release_data], repo)
-                if (repo or '').lower() == 'y1-community/rockbox-y2-rom':
+                if (repo or '').lower() == 'spycemagic/y2-rockbox':
                     if not locked: return None
                     release_data = locked[0]
                 assets = release_data.get('assets', [])
@@ -6560,7 +6560,7 @@ class GitHubAPI:
             if response.status_code == 200:
                 release_data = response.json()
                 locked = lock_y2_class_a_catalogue_releases([release_data], repo)
-                if (repo or '').lower() == 'y1-community/rockbox-y2-rom':
+                if (repo or '').lower() == 'spycemagic/y2-rockbox':
                     if not locked: return None
                     release_data = locked[0]
                 assets = release_data.get('assets', [])

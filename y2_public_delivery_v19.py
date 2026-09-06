@@ -17,7 +17,7 @@ ASSET_SIZE = 361_774_260
 ASSET_SHA256 = "409ddb4d2d18111fb8c3ab619f10f04b916b6b2a3fc04d1d38011324563f326a"
 MODEL = "Y2"
 PLATFORM = "Windows"
-CATALOGUE_REPOSITORY = "y1-community/rockbox-y2-rom"
+CATALOGUE_REPOSITORY = "SPYCEMAGIC/Y2-Rockbox"
 RELEASE_TAG = "v0.2.0-beta"
 SUPPORTED_BASELINES = ("Stock 3.1.7", "Beta V2 P17 Centre Context V1")
 MBR_SIZE = 512
@@ -65,7 +65,7 @@ def classify_release_asset(asset: dict, platform_name: str) -> dict | None:
 
 def select_release_asset(release: dict, platform_name: str, selected_model: str,
                          repository: str = CATALOGUE_REPOSITORY) -> dict:
-    if repository.lower() != CATALOGUE_REPOSITORY:
+    if repository.lower() != CATALOGUE_REPOSITORY.lower():
         raise DeliveryBlocked("Y2 Class A asset came from an unapproved catalogue repository")
     if release.get("tag_name") != RELEASE_TAG:
         raise DeliveryBlocked("Y2 Class A release tag differs from the approved Beta V2 tag")

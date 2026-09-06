@@ -15,7 +15,15 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 
-from y2_public_delivery_v19 import DeliveryBlocked, evaluate_write_completion
+from y2_public_delivery_v19 import (
+    ASSET_NAME,
+    ASSET_SHA256,
+    ASSET_SIZE,
+    CATALOGUE_REPOSITORY,
+    DeliveryBlocked,
+    evaluate_write_completion,
+    select_release_asset,
+)
 
 
 ROOT = Path(__file__).resolve().parent
@@ -110,6 +118,42 @@ class FakeFlashProcess:
     def kill(self):
         self.kill_calls += 1
         self._exit_code = -9
+
+
+class PublicCatalogueRoutingTests(unittest.TestCase):
+    def _release(self):
+        return {
+            "tag_name": "v0.2.0-beta",
+            "assets": [{
+                "name": ASSET_NAME,
+                "size": ASSET_SIZE,
+                "digest": "sha256:" + ASSET_SHA256,
+                "browser_download_url": (
+                    "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/"
+                    "v0.2.0-beta/" + ASSET_NAME
+                ),
+            }],
+        }
+
+    def test_owned_repository_selects_only_exact_windows_asset(self):
+        selected = select_release_asset(
+            self._release(), "Windows", "Y2", CATALOGUE_REPOSITORY
+        )
+        self.assertEqual(CATALOGUE_REPOSITORY, "SPYCEMAGIC/Y2-Rockbox")
+        self.assertEqual(selected["asset"]["name"], ASSET_NAME)
+        self.assertEqual(selected["sha256"], ASSET_SHA256)
+
+    def test_retired_mirror_repository_is_rejected(self):
+        with self.assertRaisesRegex(DeliveryBlocked, "unapproved catalogue"):
+            select_release_asset(
+                self._release(), "Windows", "Y2", "y1-community/rockbox-y2-rom"
+            )
+
+    def test_legacy_rom_y2_name_is_not_accepted(self):
+        release = self._release()
+        release["assets"][0]["name"] = "rom_y2.zip"
+        with self.assertRaisesRegex(DeliveryBlocked, "exactly one approved"):
+            select_release_asset(release, "Windows", "Y2", CATALOGUE_REPOSITORY)
 
 
 def method_node(
