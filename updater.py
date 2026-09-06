@@ -7028,6 +7028,7 @@ class SPFlashToolWorker(QThread):
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
     show_try_again_dialog = Signal()  # Signal to prompt user for MTK fallback
+    request_y2_physical_disconnect = Signal(str, object)
 
     def __init__(self, install_xml_path=None, device_model=None, com_port=None,
                  zip_path=None, extracted_files=None, starting_baseline=None):
@@ -7088,11 +7089,33 @@ class SPFlashToolWorker(QThread):
             time.sleep(.2)
         raise RuntimeError(f"Timed out waiting for {purpose}")
 
+    def _require_y2_physical_disconnect(self, purpose, timeout=300):
+        """Require a GUI-thread acknowledgement of actual cable removal."""
+        token = {"event": threading.Event(), "accepted": False}
+        self.request_y2_physical_disconnect.emit(purpose, token)
+        deadline = time.monotonic() + timeout
+        while not token["event"].wait(.1):
+            if self.should_stop:
+                raise RuntimeError(
+                    f"Cancelled while waiting for physical Y2 disconnect after {purpose}"
+                )
+            if time.monotonic() >= deadline:
+                raise RuntimeError(
+                    f"Physical Y2 disconnect was not acknowledged after {purpose}; "
+                    "operation stopped with no retry"
+                )
+        if not token.get("accepted"):
+            raise RuntimeError(
+                f"Physical Y2 disconnect was cancelled after {purpose}; "
+                "operation stopped with no retry"
+            )
+
     def _run_y2_read_process(self, command, timeout, connect_text):
         """Poll live output so Search-usb ordering, cancel and timeout are behavioral."""
         process=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,
             bufsize=1,universal_newlines=True,cwd=str(self.app_dir),env=sp_flash_tool_process_env(self.app_dir))
         output_queue=queue.Queue(); lines=[]; saw_search=False
+        connect_prompt_emitted=False
         stdout_eof=False; exit_observed_at=None; drain_timeout=5.0
         def reader():
             try:
@@ -7110,12 +7133,14 @@ class SPFlashToolWorker(QThread):
                 if item is None:
                     stdout_eof=True
                     item=""
+                exit_code=process.poll()
                 if item:
                     lines.append(item)
                     if "Search usb" in item and not saw_search:
                         saw_search=True
-                        self.status_updated.emit(connect_text)
-                exit_code=process.poll()
+                        if exit_code is None:
+                            connect_prompt_emitted=True
+                            self.status_updated.emit(connect_text)
                 if exit_code is not None:
                     if exit_observed_at is None: exit_observed_at=time.monotonic()
                     if stdout_eof: break
@@ -7137,7 +7162,13 @@ class SPFlashToolWorker(QThread):
                 if process.poll() is None:
                     raise RuntimeError("Owned Flash Tool process could not be terminated")
             raise
-        if not saw_search: raise RuntimeError("Flash Tool exited before literal Search usb; operation blocked")
+        if not saw_search:
+            raise RuntimeError("Flash Tool exited before literal Search usb; operation blocked")
+        if not connect_prompt_emitted:
+            raise RuntimeError(
+                "Flash Tool's Search usb output was received only after the process "
+                "had exited; no physical connection was authorized"
+            )
         return process, ''.join(lines), code
 
     def _run_y2_prewrite_identity_probe(self):
@@ -7156,9 +7187,17 @@ class SPFlashToolWorker(QThread):
         (session / "prewrite-identity.json").write_text(
             json.dumps({**identity, "command":command, "exit_code":code,
                 "stdout":transcript, "writes_authorized":False}, indent=2)+"\n", encoding="utf-8")
-        self.status_updated.emit("Identity passed. Disconnect the Y2 now.")
+        self.status_updated.emit(
+            "Identity passed. A separate confirmation is required after the USB cable "
+            "has been physically removed."
+        )
+        self._require_y2_physical_disconnect("the read-only identity probe")
         self._wait_y2_usb_state(False,45,"post-probe disconnect")
-        self.status_updated.emit("Keep the Y2 unplugged. The write process must reach Search usb before reset/connect instructions appear.")
+        self.status_updated.emit(
+            "Cable removal was confirmed by the operator and MediaTek USB is absent. "
+            "Keep the Y2 unplugged. The write process must reach Search usb before "
+            "reset/connect instructions appear."
+        )
         return identity
 
     def stop(self):
@@ -7263,14 +7302,19 @@ class SPFlashToolWorker(QThread):
         self.status_updated.emit(
             "The write completed, but installation is not verified yet. The Y2 may "
             "restart automatically; disconnect it now without pressing buttons and do "
-            "not use or boot-test it. Readback will not start until disconnect is observed."
+            "not use or boot-test it. Confirm in the separate dialog only after the "
+            "cable is physically removed."
         )
-        # UNKNOWN never means absent; MULTIPLE aborts; ABSENT must repeat 3x.
+        self._require_y2_physical_disconnect("the firmware write")
+        # The acknowledgement proves the operator removed the cable. Enumeration
+        # is a separate cross-check: UNKNOWN never means absent, MULTIPLE aborts,
+        # and ABSENT must repeat three times.
         self._wait_y2_usb_state(False,120,"post-write disconnect")
         observations.extend({"connected":False,"state":"ABSENT","ordinal":i}
                             for i in range(1,4))
         self.status_updated.emit(
-            "Y2 disconnect confirmed. Keep it unplugged while verification controls load."
+            "Cable removal was confirmed by the operator and MediaTek USB is absent. "
+            "Keep the Y2 unplugged while verification controls load."
         )
         session_id=datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")+f"-{os.getpid():012x}"[-12:]
         session=self.app_dir/"Y2-evidence"/("Y2-Class-A-"+session_id)
@@ -15591,6 +15635,22 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error showing Method 2 instructions: {e}")
 
+    def confirm_y2_physical_disconnect(self, purpose, token):
+        """Collect the operator's physical-cable acknowledgement on the UI thread."""
+        try:
+            reply = QMessageBox.question(
+                self,
+                "Confirm Y2 cable removal",
+                f"Physically unplug the USB cable from the Y2 after {purpose}.\n\n"
+                "Click Yes only after the cable is completely removed. "
+                "Choose Cancel to stop safely. Do not press any Y2 buttons.",
+                QMessageBox.Yes | QMessageBox.Cancel,
+                QMessageBox.Cancel,
+            )
+            token["accepted"] = reply == QMessageBox.Yes
+        finally:
+            token["event"].set()
+
     def try_method_3(self):
         """Guided SP Flash Tool console-mode XML install (Windows + Linux)."""
         try:
@@ -15805,6 +15865,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
             self.spflash_worker.disable_update_button.connect(self.disable_update_button)
             self.spflash_worker.enable_update_button.connect(self.enable_update_button)
+            self.spflash_worker.request_y2_physical_disconnect.connect(
+                self.confirm_y2_physical_disconnect
+            )
             if hasattr(self, 'show_mtk_fallback_dialog'):
                 self.spflash_worker.show_try_again_dialog.connect(self.show_mtk_fallback_dialog)
 
