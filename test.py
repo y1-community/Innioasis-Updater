@@ -14,6 +14,7 @@ import re
 import zipfile
 import subprocess
 import threading
+import queue
 import requests
 import configparser
 import json
@@ -46,6 +47,33 @@ import logging
 from collections import defaultdict, deque
 import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from y2_update_only_guard import (
+    GuardError as Y2UpdateOnlyGuardError,
+    build_download_only_xml as build_y2_download_only_xml,
+    build_readback_xml as build_y2_readback_xml,
+    write_plan as write_y2_update_plan,
+    snapshot_inputs as snapshot_y2_inputs,
+    prepare_application_launch_dir as prepare_y2_application_launch_dir,
+    assert_snapshot as assert_y2_snapshot,
+    must_block_generic_tool as must_block_generic_y2_tool,
+    validate_candidate_archive as validate_y2_candidate_archive,
+    validate_stage_light as validate_y2_stage_light,
+    validate_stage as validate_y2_update_only_stage,
+    validate_storage_setting as validate_y2_storage_setting,
+    verify_post_write_readbacks as verify_y2_post_write_readbacks,
+    build_mbr_read_only_probe_xml as build_y2_mbr_probe_xml,
+)
+from y2_public_delivery_v19 import (
+    ASSET_NAME as Y2_CLASS_A_ASSET_NAME,
+    asset_name_from_url,
+    classify_release_asset as classify_y2_class_a_release_asset,
+    select_release_asset as select_y2_class_a_release_asset,
+    validate_download as validate_y2_class_a_download,
+    require_windows as require_y2_class_a_windows,
+    validate_prewrite_identity as validate_y2_prewrite_identity,
+    evaluate_write_completion as evaluate_y2_write_completion,
+    require_usb_cycle as require_y2_usb_cycle,
+)
 
 
 def get_platform_system():
@@ -4583,6 +4611,43 @@ def claim_mediatek_spflash_serial_port(
     return None
 
 
+def query_windows_mediatek_presence(run_command=None):
+    """Return an explicit Windows PnP state; errors are never absence."""
+    command = ["powershell.exe", "-NoProfile", "-Command",
+        "$ErrorActionPreference='Stop'; @(Get-PnpDevice -PresentOnly | "
+        "Where-Object {$_.InstanceId -match 'VID_0E8D'} | "
+        "Select-Object FriendlyName,Status,InstanceId,@{Name='Present';Expression={$true}}) | "
+        "ConvertTo-Json -Compress"]
+    runner = run_command or subprocess.run
+    try:
+        completed = runner(command, capture_output=True, text=True, timeout=10,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        if completed.returncode != 0:
+            return {"state":"UNKNOWN", "devices":[], "error":"PowerShell failed"}
+        rows = json.loads(completed.stdout or "[]")
+        if isinstance(rows, dict): rows = [rows]
+        if not isinstance(rows, list):
+            return {"state":"UNKNOWN", "devices":[], "error":"malformed JSON shape"}
+    except Exception as exc:
+        return {"state":"UNKNOWN", "devices":[], "error":str(exc)}
+    devices=[]
+    for row in rows:
+        if not isinstance(row, dict) or "Present" not in row:
+            return {"state":"UNKNOWN", "devices":[], "error":"presence unavailable"}
+        if row.get("Present") is not True: continue
+        pnp=str(row.get("InstanceId") or "").upper()
+        match=re.search(r"VID_0E8D&PID_([0-9A-F]{4})",pnp)
+        if not match or match.group(1) not in {"0003","2000","2001","2007"}: continue
+        if str(row.get("Status") or "").upper() != "OK": continue
+        pid=match.group(1).lower(); name=str(row.get("FriendlyName") or "")
+        com=re.search(r"\((COM\d+)\)",name,re.I)
+        devices.append({"tty":com.group(1).upper() if com else "", "vid":"0e8d", "pid":pid,
+            "product":name, "manufacturer":"MediaTek", "mode":"brom" if pid=="0003" else ("da" if pid=="2001" else "preloader"),
+            "openable":True, "pnp_device_id":pnp, "present":True})
+    return {"state":"CONNECTED" if len(devices)==1 else ("ABSENT" if not devices else "MULTIPLE"),
+            "devices":devices, "error":""}
+
+
 def list_mediatek_serial_ports():
     """
     Enumerate MediaTek (0e8d) serial ports currently visible on Linux.
@@ -4592,6 +4657,9 @@ def list_mediatek_serial_ports():
       openable (bool).
     Empty list on non-Linux or when none found.
     """
+    if is_windows_platform():
+        result=query_windows_mediatek_presence()
+        return result["devices"] if result["state"]=="CONNECTED" else []
     if not is_linux_platform():
         return []
     results = []
@@ -4782,7 +4850,16 @@ def build_spflash_rom_list_xml(scatter_path, app_dir=None):
     return "\n".join(lines) + "\n"
 
 
-def validate_spflash_images_for_model(device_model=None, app_dir=None):
+def required_firmware_files_for_model(device_model):
+    """Keep the Y2 Class A overlay distinct from legacy full-image installs."""
+    if is_y2_model(device_model):
+        return ["MT6582_Android_scatter.txt", "lk.bin", "boot.img", "recovery.img",
+                "logo.bin", "system.img", "UPDATE-MANIFEST.json", "SHA256SUMS.txt"]
+    return ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+
+
+def validate_spflash_images_for_model(device_model=None, app_dir=None, candidate_archive=None,
+                                      full_y2_validation=True, validated_report=None):
     """
     Light preflight before SP Flash Tool: required images present, scatter exists.
 
@@ -4802,6 +4879,16 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
     warnings = []
     if not config:
         return False, ["Unknown device model for SP Flash Tool validation."], warnings
+    if is_y2_model(resolved):
+        try:
+            if validated_report is None:
+                (validate_y2_update_only_stage if full_y2_validation else validate_y2_stage_light)(app_dir, candidate_archive)
+            return True, [], [
+                "Y2 Class A guard passed: exactly UBOOT, BOOTIMG, RECOVERY, "
+                "LOGO and ANDROID; no format or omitted-partition erase."
+            ]
+        except Y2UpdateOnlyGuardError as e:
+            return False, [f"Y2 Class A update refused: {e}"], warnings
     scatter_path = app_dir / config["scatter_txt"]
     if not scatter_path.is_file():
         def_path = app_dir / config["scatter_def_txt"]
@@ -4866,7 +4953,7 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
     return (len(errors) == 0), errors, warnings
 
 
-def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_dir=None):
+def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_dir=None, candidate_archive=None, validated_report=None):
     """
     Build a per-run install XML from the model template with Linux-friendly
     log path and an optional pinned com-port.
@@ -4878,6 +4965,18 @@ def prepare_spflash_runtime_install_xml(device_model=None, com_port=None, app_di
     config = get_flash_config(resolved)
     if not config:
         raise FileNotFoundError("Unknown device model  cannot build SP Flash Tool XML")
+    if is_y2_model(resolved):
+        out_path = app_dir / "install_rom_sp_y2.runtime.xml"
+        return build_y2_download_only_xml(
+            app_dir=app_dir,
+            candidate_archive=Path(candidate_archive) if candidate_archive else Path("__missing_candidate__"),
+            flash_tool=app_dir / "flash_tool.exe",
+            download_agent=app_dir / "MTK_AllInOne_DA.bin",
+            output=out_path,
+            log_dir=app_dir / "SP_FT_Logs",
+            com_port=str(com_port or ""),
+            validated_report=validated_report,
+        )
     template = app_dir / config["install_rom_sp_xml"]
     if not template.is_file():
         raise FileNotFoundError(f"Missing install template: {template}")
@@ -5100,10 +5199,15 @@ def prepare_sp_flash_tool_files(device_model=None, zip_path=None, extracted_file
         # Rewrite the on-disk install XML rom-list from the scatter so a GUI
         # export (which often keeps Y1 indices for Y2) cannot break console mode.
         try:
+            if is_y2_model(resolved_model):
+                # The worker builds Y2 XML after its final full validation. Avoid
+                # decoding the large sparse image on the GUI thread.
+                return
             prepare_spflash_runtime_install_xml(
                 device_model=resolved_model,
                 com_port=None,
                 app_dir=app_dir,
+                candidate_archive=zip_path,
             )
             # Also rewrite the template itself so `flash_tool -i install_rom_sp_y2.xml`
             # (terminal mode) uses correct indices without requiring .runtime.xml.
@@ -5148,14 +5252,14 @@ def extract_firmware_rom_zip(zip_path, device_model=None, extract_path="."):
     skip overwriting history.ini from the zip, then prepare again after extract
     once package files are known.
     """
-    zip_path = Path(zip_path)
+    zip_path = Path(zip_path).resolve(strict=True)
     extract_path = Path(extract_path)
-    pre_model = resolve_device_model_for_install(device_model, zip_path=zip_path.name)
+    pre_model = resolve_device_model_for_install(device_model, zip_path=str(zip_path))
     silent_print(
         f"Pre-extract SPFT prep for model={pre_model!r} "
         f"(zip={zip_path.name}, ui={device_model!r})"
     )
-    prepare_sp_flash_tool_files(pre_model or device_model, zip_path=zip_path.name)
+    prepare_sp_flash_tool_files(pre_model or device_model, zip_path=str(zip_path))
 
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         extracted_files = _safe_extractall_skip_history(
@@ -5163,11 +5267,11 @@ def extract_firmware_rom_zip(zip_path, device_model=None, extract_path="."):
         )
 
     post_model = resolve_device_model_for_install(
-        device_model, zip_path=zip_path.name, extracted_files=extracted_files
+        device_model, zip_path=str(zip_path), extracted_files=extracted_files
     )
     prepare_sp_flash_tool_files(
         post_model or pre_model or device_model,
-        zip_path=zip_path.name,
+        zip_path=str(zip_path),
         extracted_files=extracted_files,
     )
     silent_print(
@@ -5424,7 +5528,42 @@ def check_for_failed_installation():
 def get_zip_path(repo_name, version):
     """Get the path for a specific zip file"""
     safe_repo_name = repo_name.replace('/', '_')
-    return ZIP_STORAGE_DIR / f"{safe_repo_name}_{version}.zip"
+    return (ZIP_STORAGE_DIR / f"{safe_repo_name}_{version}.zip").resolve()
+
+
+def absolute_install_archive_path(zip_path):
+    """Preserve the original archive identity; never fall back to its basename."""
+    path = Path(zip_path)
+    if not path.is_absolute():
+        path = path.resolve()
+    path = path.resolve(strict=True)
+    if not path.is_file():
+        raise FileNotFoundError(f"Candidate archive does not exist: {path}")
+    return str(path)
+
+
+def bookkeep_install_archive(owner, zip_path, resolved_model, extracted_files, downloaded=False):
+    """Single real bookkeeping path for Browse Files and cached downloads."""
+    absolute = absolute_install_archive_path(zip_path)
+    files = list(extracted_files) if extracted_files is not None else None
+    if downloaded:
+        owner.install_zip_name = absolute
+        owner.install_extracted_files = files
+        owner.resolved_install_model = resolved_model
+    else:
+        owner._last_install_zip_name = absolute
+        owner._last_install_extracted_files = files
+    return absolute
+
+
+def adopt_downloaded_install_context(owner, download_worker):
+    """Transfer the exact cached archive path into the guided UI context."""
+    path = getattr(download_worker, "install_zip_name", None)
+    if path:
+        bookkeep_install_archive(owner, path,
+            getattr(download_worker, "resolved_install_model", None),
+            getattr(download_worker, "install_extracted_files", None), downloaded=False)
+    return path
 
 def _classify_variant_model(name, tag_name='', repo=''):
     """Classify a rom*.zip asset as Y1, Y2, or dual (eligible for both)."""
@@ -5464,6 +5603,8 @@ def _parse_rom_asset_variant(asset, tag_name='', repo=''):
     """
     try:
         name = asset.get('name', '')
+        if name == Y2_CLASS_A_ASSET_NAME:
+            return classify_y2_class_a_release_asset(asset, get_platform_system())
         lower = name.lower()
         # Only consider rom*.zip
         if not fnmatch.fnmatch(lower, 'rom*.zip'):
@@ -5499,12 +5640,30 @@ def _parse_rom_asset_variant(asset, tag_name='', repo=''):
 
 def extract_rom_variants_from_assets(assets, tag_name='', repo=''):
     """Return a list of rom*.zip variants for a release, including type/resolution metadata."""
+    if (repo or '').lower() == 'spycemagic/y2-rockbox' and any(
+        str(a.get('name','')).lower() == 'rom_y2.zip' or a.get('name') == Y2_CLASS_A_ASSET_NAME
+        for a in (assets or [])):
+        # Do not swallow DeliveryBlocked or fall back to legacy Y2 firmware.
+        return [select_y2_class_a_release_asset({'assets':assets,'tag_name':tag_name},get_platform_system(),'Y2',repo)]
     variants = []
     for asset in assets or []:
         variant = _parse_rom_asset_variant(asset, tag_name, repo)
         if variant:
             variants.append(variant)
     return variants
+
+def lock_y2_class_a_catalogue_releases(releases, repo):
+    """Apply the same exact contract to live and cached catalogue data."""
+    if (repo or '').lower() != 'spycemagic/y2-rockbox': return releases
+    # Historical releases are intentionally ignored.  The one locked release,
+    # when present, is validated before generic ROM parsing or UI exposure.
+    matching=[r for r in (releases or []) if r.get('tag_name')=='v0.2.0-beta']
+    if not matching: return []
+    if len(matching)!=1: raise RuntimeError("Catalogue contains duplicate v0.2.0-beta releases")
+    release=dict(matching[0]); chosen=select_y2_class_a_release_asset(
+        release,get_platform_system(),'Y2',repo)
+    release['rom_variants']=[chosen];release['download_url']=chosen['asset']['browser_download_url'];release['asset_name']=chosen['asset']['name']
+    return [release]
 
 def _resolution_priority(resolution):
     """
@@ -5534,6 +5693,12 @@ def select_preferred_rom_asset(variants, selected_type=None):
     """
     if not variants:
         return None
+
+    class_a_windows = [v for v in variants if v.get('contract') == 'y2-class-a-windows']
+    if class_a_windows:
+        if len(class_a_windows) != 1:
+            raise RuntimeError("Release contains ambiguous Y2 Class A Windows assets")
+        return class_a_windows[0]
 
     # Normalize type selection
     st = (selected_type or 'A').upper()
@@ -5741,7 +5906,16 @@ def package_supports_device_type(github_api, package, selected_type):
         return False
 
     cached_releases = github_api.get_cached_releases(repo)
+    try:
+        cached_releases = lock_y2_class_a_catalogue_releases(
+            cached_releases or [], resolve_firmware_repo(repo)
+        )
+    except Exception as exc:
+        silent_print(f"Cached release contract rejected for {repo}: {exc}")
+        return False
     if not cached_releases:
+        if resolve_firmware_repo(repo).lower() == 'spycemagic/y2-rockbox':
+            return False
         # Without release data, default to Original Software only for Type B
         if st == 'B':
             return 'original' in (package.get('name') or '').lower()
@@ -6338,6 +6512,10 @@ class GitHubAPI:
             response = self.make_authenticated_request(url, repo)
             if response:
                 release_data = response.json()
+                locked = lock_y2_class_a_catalogue_releases([release_data], repo)
+                if (repo or '').lower() == 'spycemagic/y2-rockbox':
+                    if not locked: return None
+                    release_data = locked[0]
                 assets = release_data.get('assets', [])
 
                 # Find firmware assets (rom*.zip, including new-style variants)
@@ -6369,7 +6547,9 @@ class GitHubAPI:
             # Try to get cached latest release if available
             cached_releases = self.get_cached_releases(repo)
             if cached_releases and len(cached_releases) > 0:
-                latest_cached = cached_releases[0]  # First one should be latest
+                locked=lock_y2_class_a_catalogue_releases(cached_releases,repo)
+                if not locked: return None
+                latest_cached = locked[0]
                 silent_print(f"Returning cached latest release for {repo}: {latest_cached.get('tag_name', 'Unknown')}")
                 return latest_cached
             return None
@@ -6379,6 +6559,10 @@ class GitHubAPI:
             response = self.session.get(url, timeout=REQUEST_TIMEOUT)
             if response.status_code == 200:
                 release_data = response.json()
+                locked = lock_y2_class_a_catalogue_releases([release_data], repo)
+                if (repo or '').lower() == 'spycemagic/y2-rockbox':
+                    if not locked: return None
+                    release_data = locked[0]
                 assets = release_data.get('assets', [])
 
                 # Find firmware assets (rom*.zip, including new-style variants)
@@ -6408,7 +6592,9 @@ class GitHubAPI:
                 # Try to get cached data if available
                 cached_releases = self.get_cached_releases(repo)
                 if cached_releases and len(cached_releases) > 0:
-                    latest_cached = cached_releases[0]
+                    locked=lock_y2_class_a_catalogue_releases(cached_releases,repo)
+                    if not locked: return None
+                    latest_cached = locked[0]
                     silent_print(f"Returning cached latest release for {repo}: {latest_cached.get('tag_name', 'Unknown')}")
                     return latest_cached
             else:
@@ -6422,7 +6608,9 @@ class GitHubAPI:
         # Final fallback: try to get cached data
         cached_releases = self.get_cached_releases(repo)
         if cached_releases and len(cached_releases) > 0:
-            latest_cached = cached_releases[0]
+            locked=lock_y2_class_a_catalogue_releases(cached_releases,repo)
+            if not locked: return None
+            latest_cached = locked[0]
             silent_print(f"Returning cached latest release for {repo}: {latest_cached.get('tag_name', 'Unknown')}")
             return latest_cached
 
@@ -6490,7 +6678,7 @@ class GitHubAPI:
         cached_releases = self.get_cached_releases(repo)
         if cached_releases:
             silent_print(f"Using {len(cached_releases)} cached releases for {repo} (instant load)")
-            return cached_releases[:100]  # Limit cached results to 100 most recent to include stable releases
+            return lock_y2_class_a_catalogue_releases(cached_releases[:100],repo)
 
         # Fetch more releases (100) to ensure Stable releases are included even if older than Nightly builds
         # This is important because if the first 30 releases are all pre-releases, stable releases won't be shown
@@ -6505,6 +6693,7 @@ class GitHubAPI:
                 if response.status_code == 200:
                     releases_data = response.json()
                     releases_data = self._ensure_latest_in_releases_data(releases_data, repo)
+                    releases_data = lock_y2_class_a_catalogue_releases(releases_data, repo)
                     silent_print(f"Found {len(releases_data)} total releases for {repo}")
                     releases = []
 
@@ -6541,7 +6730,7 @@ class GitHubAPI:
                             silent_print(f"Skipped release {tag_name} - no rom*.zip assets found")
 
                     silent_print(f"Returning {len(releases)} releases with rom*.zip assets")
-                    return releases
+                    return lock_y2_class_a_catalogue_releases(releases,repo)
 
         # Try unauthenticated as fallback (with rate limiting)
         if not self.can_make_unauth_request():
@@ -6550,7 +6739,7 @@ class GitHubAPI:
             cached_releases = self.get_cached_releases(repo)
             if cached_releases:
                 silent_print(f"Returning {len(cached_releases)} cached releases for {repo}")
-                return cached_releases
+                return lock_y2_class_a_catalogue_releases(cached_releases,repo)
 
             # If no cached data and rate limited, try to make one more request anyway
             # This helps when the rate limit is just about to reset
@@ -6561,6 +6750,7 @@ class GitHubAPI:
                     silent_print("Rate limit bypass successful!")
                     releases_data = response.json()
                     releases_data = self._ensure_latest_in_releases_data(releases_data, repo)
+                    releases_data = lock_y2_class_a_catalogue_releases(releases_data, repo)
                     releases = []
 
                     for release in releases_data:
@@ -6591,7 +6781,7 @@ class GitHubAPI:
 
                     if releases:
                         self.cache_releases(repo, releases)
-                        return releases
+                        return lock_y2_class_a_catalogue_releases(releases,repo)
             except (requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as e:
                 # Network error - offline or connection failed (non-blocking)
                 silent_print(f"Network error in rate limit bypass (offline?): {e}")
@@ -6609,6 +6799,7 @@ class GitHubAPI:
             if response.status_code == 200:
                 releases_data = response.json()
                 releases_data = self._ensure_latest_in_releases_data(releases_data, repo)
+                releases_data = lock_y2_class_a_catalogue_releases(releases_data, repo)
                 silent_print(f"Unauthenticated: Found {len(releases_data)} total releases for {repo}")
                 releases = []
 
@@ -6643,14 +6834,14 @@ class GitHubAPI:
                 silent_print(f"Unauthenticated: Returning {len(releases)} releases with rom*.zip assets")
                 # Cache the successful unauthenticated response
                 self.cache_releases(repo, releases)
-                return releases
+                return lock_y2_class_a_catalogue_releases(releases,repo)
             elif response.status_code == 403:
                 silent_print(f"Unauthenticated request rate limited for {repo}")
                 # Try to get cached data if available
                 cached_releases = self.get_cached_releases(repo)
                 if cached_releases:
                     silent_print(f"Returning {len(cached_releases)} cached releases for {repo}")
-                    return cached_releases
+                    return lock_y2_class_a_catalogue_releases(cached_releases,repo)
             else:
                 silent_print(f"Unauthenticated request failed for {repo}: {response.status_code}")
         except (requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as e:
@@ -6663,7 +6854,7 @@ class GitHubAPI:
         cached_releases = self.get_cached_releases(repo)
         if cached_releases:
             silent_print(f"Returning {len(cached_releases)} cached releases for {repo}")
-            return cached_releases
+            return lock_y2_class_a_catalogue_releases(cached_releases,repo)
 
         silent_print(f"No releases found for {repo} - returning empty list")
         return []
@@ -6837,14 +7028,16 @@ class SPFlashToolWorker(QThread):
     disable_update_button = Signal()  # Signal to disable update button during SP Flash Tool installation
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
     show_try_again_dialog = Signal()  # Signal to prompt user for MTK fallback
+    request_y2_physical_disconnect = Signal(str, object)
 
     def __init__(self, install_xml_path=None, device_model=None, com_port=None,
-                 zip_path=None, extracted_files=None):
+                 zip_path=None, extracted_files=None, starting_baseline=None):
         super().__init__()
         self.should_stop = False
         self.device_model = device_model
-        self.zip_path = zip_path
+        self.zip_path = str(validate_y2_candidate_archive(zip_path)) if is_y2_model(device_model) else zip_path
         self.extracted_files = extracted_files
+        self.starting_baseline = starting_baseline
         self.device_label = device_label_for_model(device_model)
         self.requested_com_port = com_port
         # Console-mode XML install: flash_tool(.exe) -i install_rom_sp(_y2).xml
@@ -6861,7 +7054,151 @@ class SPFlashToolWorker(QThread):
         if not isinstance(xml_name, Path):
             xml_name = app_dir / xml_name
         self.template_xml = xml_name
-        self.spflash_command = [str(binary), "-i", str(xml_name)]
+        self.spflash_command = [str(binary), "-r", "-i", str(xml_name)]
+
+    def _prepare_y2_prewrite_identity_probe(self):
+        """Create and audit controls separately from fresh readback output."""
+        stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+        session = self.app_dir / "Y2-evidence" / (stamp + "-prewrite-MBR")
+        controls=session/"controls"; readback=session/"readback"
+        controls.mkdir(parents=True,exist_ok=False); readback.mkdir()
+        output=readback/"MBR.bin"; xml=controls/"Y2-MBR-PREWRITE-READ-ONLY.xml"
+        build_y2_mbr_probe_xml(xml,self.app_dir/"MTK_AllInOne_DA.bin",
+            self.app_dir/"MT6582_Android_scatter.txt",output,self.app_dir/"SP_FT_Logs")
+        return session,xml,output
+
+    def _wait_y2_usb_state(self, connected, timeout, purpose):
+        deadline=time.monotonic()+timeout
+        absent_count=0
+        while time.monotonic()<deadline:
+            if self.should_stop: raise RuntimeError(f"Cancelled while waiting for {purpose}")
+            if is_windows_platform():
+                observed=query_windows_mediatek_presence()
+                if observed["state"]=="UNKNOWN":
+                    absent_count=0; time.sleep(.2); continue
+                if observed["state"]=="MULTIPLE": raise RuntimeError("Multiple approved MediaTek devices detected")
+                if connected and observed["state"]=="CONNECTED": return observed["devices"][0]
+                if not connected and observed["state"]=="ABSENT":
+                    absent_count += 1
+                    if absent_count >= 3: return None
+                else: absent_count=0
+            else:
+                ports=list_mediatek_serial_ports()
+                if len(ports)>1: raise RuntimeError("Multiple approved MediaTek devices detected")
+                if bool(ports)==connected: return ports[0] if ports else None
+            time.sleep(.2)
+        raise RuntimeError(f"Timed out waiting for {purpose}")
+
+    def _require_y2_physical_disconnect(self, purpose, timeout=300):
+        """Require a GUI-thread acknowledgement of actual cable removal."""
+        token = {"event": threading.Event(), "accepted": False}
+        self.request_y2_physical_disconnect.emit(purpose, token)
+        deadline = time.monotonic() + timeout
+        while not token["event"].wait(.1):
+            if self.should_stop:
+                raise RuntimeError(
+                    f"Cancelled while waiting for physical Y2 disconnect after {purpose}"
+                )
+            if time.monotonic() >= deadline:
+                raise RuntimeError(
+                    f"Physical Y2 disconnect was not acknowledged after {purpose}; "
+                    "operation stopped with no retry"
+                )
+        if not token.get("accepted"):
+            raise RuntimeError(
+                f"Physical Y2 disconnect was cancelled after {purpose}; "
+                "operation stopped with no retry"
+            )
+
+    def _run_y2_read_process(self, command, timeout, connect_text):
+        """Poll live output so Search-usb ordering, cancel and timeout are behavioral."""
+        process=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,
+            bufsize=1,universal_newlines=True,cwd=str(self.app_dir),env=sp_flash_tool_process_env(self.app_dir))
+        output_queue=queue.Queue(); lines=[]; saw_search=False
+        connect_prompt_emitted=False
+        stdout_eof=False; exit_observed_at=None; drain_timeout=5.0
+        def reader():
+            try:
+                for line in iter(process.stdout.readline, ''): output_queue.put(line)
+            finally: output_queue.put(None)
+        threading.Thread(target=reader,daemon=True).start()
+        deadline=time.monotonic()+timeout
+        try:
+            while True:
+                if self.should_stop: raise RuntimeError("Operation cancelled; no retry is permitted")
+                if process.poll() is None and time.monotonic()>=deadline:
+                    raise RuntimeError("Operation timed out; no retry is permitted")
+                try: item=output_queue.get(timeout=.1)
+                except queue.Empty: item=""
+                if item is None:
+                    stdout_eof=True
+                    item=""
+                exit_code=process.poll()
+                if item:
+                    lines.append(item)
+                    if "Search usb" in item and not saw_search:
+                        saw_search=True
+                        if exit_code is None:
+                            connect_prompt_emitted=True
+                            self.status_updated.emit(connect_text)
+                if exit_code is not None:
+                    if exit_observed_at is None: exit_observed_at=time.monotonic()
+                    if stdout_eof: break
+                    if time.monotonic()-exit_observed_at>=drain_timeout:
+                        raise RuntimeError(
+                            "Flash Tool exited but its output stream did not finish; "
+                            "operation blocked with no retry"
+                        )
+            code=process.wait(timeout=5)
+        except Exception:
+            if process.poll() is None:
+                try:
+                    killed=subprocess.run(["taskkill","/PID",str(process.pid),"/T","/F"],capture_output=True,timeout=10)
+                    if killed.returncode != 0 and process.poll() is None:
+                        process.kill()
+                except Exception:
+                    if process.poll() is None: process.kill()
+                process.wait(timeout=10)
+                if process.poll() is None:
+                    raise RuntimeError("Owned Flash Tool process could not be terminated")
+            raise
+        if not saw_search:
+            raise RuntimeError("Flash Tool exited before literal Search usb; operation blocked")
+        if not connect_prompt_emitted:
+            raise RuntimeError(
+                "Flash Tool's Search usb output was received only after the process "
+                "had exited; no physical connection was authorized"
+            )
+        return process, ''.join(lines), code
+
+    def _run_y2_prewrite_identity_probe(self):
+        """Perform the qualified 512-byte logical MBR read before any write."""
+        require_y2_class_a_windows(get_platform_system())
+        if self.starting_baseline not in ("Stock 3.1.7", "Beta V2 P17 Centre Context V1"):
+            raise RuntimeError("A supported Y2 starting baseline was not explicitly confirmed")
+        session,xml,output = self._prepare_y2_prewrite_identity_probe()
+        command = [str(self.binary), "-r", "-i", str(xml)]
+        self.status_updated.emit("Read-only identity controls are validated. Keep the Y2 unplugged while Flash Tool loads.")
+        process,transcript,code = self._run_y2_read_process(command,120,
+            "Connect the powered-off Y2 directly now. Do not press Power, Volume or pinhole.")
+        if code != 0 or "Readback Succeeded" not in transcript:
+            raise RuntimeError("Read-only Y2 identity probe failed; write remains blocked")
+        identity = validate_y2_prewrite_identity(output, self.starting_baseline)
+        (session / "prewrite-identity.json").write_text(
+            json.dumps({**identity, "command":command, "exit_code":code,
+                "stdout":transcript, "writes_authorized":False}, indent=2)+"\n", encoding="utf-8")
+        self.status_updated.emit(
+            "Identity passed. A separate confirmation is required after the USB cable "
+            "has been physically removed."
+        )
+        self._require_y2_physical_disconnect("the read-only identity probe")
+        self._wait_y2_usb_state(False,45,"post-probe disconnect")
+        self.status_updated.emit(
+            "Cable removal was confirmed by the operator and MediaTek USB is absent. "
+            "Keep the Y2 unplugged. The write process must reach Search usb before "
+            "reset/connect instructions appear."
+        )
+        return identity
 
     def stop(self):
         """Stop the SP Flash Tool worker"""
@@ -6884,9 +7221,16 @@ class SPFlashToolWorker(QThread):
         # Always resolve model from install context again so we never flash Y1
         # XML against Y2 images (that aborts during LoadRoms with 5016).
         resolved = self._sync_device_label()
-        prepare_sp_flash_tool_files(resolved)
+        prepare_sp_flash_tool_files(resolved, zip_path=self.zip_path)
 
-        ok, errors, warnings = validate_spflash_images_for_model(resolved, self.app_dir)
+        guarded = None
+        y2_source_stage = self.app_dir
+        if is_y2_model(resolved):
+            validate_y2_storage_setting(self.app_dir / "storage_setting.xml")
+            guarded = validate_y2_update_only_stage(self.app_dir, self.zip_path)
+
+        ok, errors, warnings = validate_spflash_images_for_model(
+            resolved, self.app_dir, self.zip_path, validated_report=guarded)
         for w in warnings:
             silent_print(f"SPFT preflight warning: {w}")
         if not ok:
@@ -6919,12 +7263,87 @@ class SPFlashToolWorker(QThread):
         if com_port and not Path(com_port).exists():
             silent_print(f"Not pinning missing com-port {com_port}")
             com_port = None
-        runtime_xml = prepare_spflash_runtime_install_xml(
-            device_model=resolved,
-            com_port=com_port,
-            app_dir=self.app_dir,
+        if is_y2_model(resolved):
+            guarded, runtime_xml, plan_path = prepare_y2_application_launch_dir(
+                y2_source_stage, self.app_dir, Path(self.zip_path), self.binary,
+                self.app_dir / "MTK_AllInOne_DA.bin", self.app_dir / "SP_FT_Logs",
+            )
+            self.spflash_working_dir = self.app_dir
+        else:
+            runtime_xml = prepare_spflash_runtime_install_xml(
+                device_model=resolved,
+                com_port=com_port,
+                app_dir=self.app_dir,
+                candidate_archive=self.zip_path,
+                validated_report=guarded,
+            )
+            self.spflash_working_dir = self.app_dir
+        self.y2_launch_snapshot = None
+        if is_y2_model(resolved):
+            readback_path = self.app_dir / "install_rom_sp_y2.readback.xml"
+            readback_dir = self.app_dir / "Y2-readback"
+            if readback_dir.exists() and any(readback_dir.iterdir()):
+                raise RuntimeError("Previous Y2 readback evidence exists; archive it before a new install")
+            readback_dir.mkdir(exist_ok=True)
+            build_y2_readback_xml(
+                guarded, readback_path, self.app_dir / "MTK_AllInOne_DA.bin",
+                readback_dir, self.app_dir / "SP_FT_Logs",
+            )
+            self.y2_launch_snapshot = snapshot_y2_inputs(
+                self.spflash_working_dir, Path(self.zip_path), self.binary,
+                self.app_dir / "MTK_AllInOne_DA.bin", runtime_xml, plan_path,
+                guarded, working_dir=self.spflash_working_dir,
+            )
+        return [str(self.binary), "-r", "-i", str(runtime_xml)], com_port, ports
+
+    def _run_y2_post_write_readback(self):
+        """Require a fresh USB cycle, then run one readback without repeating write."""
+        observations=[{"connected":True,"source":"successful-write-session"}]
+        self.status_updated.emit(
+            "The write completed, but installation is not verified yet. The Y2 may "
+            "restart automatically; disconnect it now without pressing buttons and do "
+            "not use or boot-test it. Confirm in the separate dialog only after the "
+            "cable is physically removed."
         )
-        return [str(self.binary), "-i", str(runtime_xml)], com_port, ports
+        self._require_y2_physical_disconnect("the firmware write")
+        # The acknowledgement proves the operator removed the cable. Enumeration
+        # is a separate cross-check: UNKNOWN never means absent, MULTIPLE aborts,
+        # and ABSENT must repeat three times.
+        self._wait_y2_usb_state(False,120,"post-write disconnect")
+        observations.extend({"connected":False,"state":"ABSENT","ordinal":i}
+                            for i in range(1,4))
+        self.status_updated.emit(
+            "Cable removal was confirmed by the operator and MediaTek USB is absent. "
+            "Keep the Y2 unplugged while verification controls load."
+        )
+        session_id=datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")+f"-{os.getpid():012x}"[-12:]
+        session=self.app_dir/"Y2-evidence"/("Y2-Class-A-"+session_id)
+        session.mkdir(parents=True,exist_ok=False)
+        readback_dir=session/"readback";readback_dir.mkdir()
+        readback_xml=session/"Y2-Class-A-READBACK.xml"
+        report=validate_y2_update_only_stage(self.app_dir,self.zip_path)
+        build_y2_readback_xml(report,readback_xml,self.app_dir/"MTK_AllInOne_DA.bin",readback_dir,self.app_dir/"SP_FT_Logs")
+        command=[str(self.binary),"-r","-i",str(readback_xml)]
+        started=datetime.utcnow().isoformat()+"Z"
+        process,text,code=self._run_y2_read_process(command,600,
+            "For verification only: while unplugged press/release pinhole once, then "
+            "connect the powered-off Y2 directly without buttons.")
+        output=[text]; succeeded="Readback Succeeded" in text
+        values=[int(v) for v in re.findall(r"(\d{1,3})%",text)]; progress=max(values or [0])
+        if re.search(r"(?i)Download Succeeded|Format|Erase|Firmware.Upgrade",text):
+            raise RuntimeError("Forbidden operation appeared during Y2 verification")
+        if code!=0 or not succeeded or progress!=100:
+            raise RuntimeError("Y2 readback did not complete naturally with positive 100% evidence")
+        completion={"schema":1,"status":"PASS-READBACK-COMPLETED","pid":getattr(process,"pid",None),
+            "command":command,"working_directory":str(self.app_dir),"started_utc":started,
+            "ended_utc":datetime.utcnow().isoformat()+"Z","exit_code":code,"natural_completion":True,
+            "positive_evidence":"Readback Succeeded","progress_max_percent":progress,
+            "retry_performed":False,"stdout":"".join(output)}
+        completion["usb_observations"]=observations
+        (session/"readback-completion.json").write_text(json.dumps(completion,indent=2)+"\n",encoding="utf-8")
+        verification=verify_y2_post_write_readbacks(report,readback_dir)
+        (session/"readback-verification.json").write_text(json.dumps(verification,indent=2)+"\n",encoding="utf-8")
+        return verification
 
     def _prepare_linux_port_access_before_flash(self, attempt, max_attempts):
         """
@@ -7024,6 +7443,10 @@ class SPFlashToolWorker(QThread):
             # Expected path: Search usb auto-detect
             pass
 
+        if is_y2_model(self.device_model):
+            if not self.y2_launch_snapshot:
+                raise RuntimeError("Y2 launch snapshot is missing")
+            assert_y2_snapshot(self.y2_launch_snapshot)
         process = subprocess.Popen(
             self.spflash_command,
             stdout=subprocess.PIPE,
@@ -7031,12 +7454,14 @@ class SPFlashToolWorker(QThread):
             text=True,
             bufsize=0,
             universal_newlines=True,
-            cwd=str(self.app_dir),
+            cwd=str(getattr(self, "spflash_working_dir", self.app_dir)),
             env=sp_flash_tool_process_env(self.app_dir),
         )
 
         process_timeout = 1800  # 30 minutes
-        process_start_time = time.time()
+        process_start_time = time.monotonic()
+        process_started_utc = datetime.utcnow().isoformat() + "Z"
+        captured_output = []
         please_wait_phase = True
         instructions_phase = False
         installing_phase = False
@@ -7048,24 +7473,55 @@ class SPFlashToolWorker(QThread):
         mid_run_heal_done = False
         flash_pid = getattr(process, "pid", None)
         load_fail_hints = []
+        stdout_eof = False
+        connect_prompt_emitted = False
+        exit_observed_at = None
+        stdout_drain_timeout = 5.0
+        termination_reason = ""
+        forced_termination = False
+        output_queue=queue.Queue()
+        def _read_flash_stdout():
+            try:
+                for value in process.stdout: output_queue.put(value)
+            finally: output_queue.put(None)
+        threading.Thread(target=_read_flash_stdout,daemon=True).start()
 
         while True:
             if self.should_stop:
+                termination_reason = "Operation cancelled; no retry is permitted"
                 if process.poll() is None:
+                    forced_termination = True
                     process.terminate()
                 break
-            if time.time() - process_start_time > process_timeout:
+            if process.poll() is None and time.monotonic() - process_start_time > process_timeout:
                 silent_print("SP Flash Tool process timeout - terminating")
+                termination_reason = "SP Flash Tool process timed out; no retry is permitted"
+                forced_termination = True
                 process.terminate()
                 break
 
-            output = process.stdout.readline()
-            if output == "" and process.poll() is not None:
-                break
+            try: output=output_queue.get(timeout=.2)
+            except queue.Empty: output=""
+            if output is None:
+                stdout_eof = True
+                output = ""
+            exit_code = process.poll()
+            if exit_code is not None:
+                if exit_observed_at is None:
+                    exit_observed_at = time.monotonic()
+                if stdout_eof:
+                    break
+                if time.monotonic() - exit_observed_at >= stdout_drain_timeout:
+                    termination_reason = (
+                        "Flash Tool exited but its output stream did not finish; "
+                        "completion evidence is incomplete and no retry is permitted"
+                    )
+                    break
             if not output:
                 continue
 
             line = output.strip()
+            captured_output.append(output)
             silent_print(f"{line}")
 
             if (
@@ -7124,12 +7580,20 @@ class SPFlashToolWorker(QThread):
                 installing_phase = False
                 completed_phase = False
                 reached_search_usb = True
-                self.show_initsteps_image.emit()
-                self.status_updated.emit(
-                    spflash_connect_status_text(
-                        self.device_label, device_model=self.device_model
+                if exit_code is None:
+                    connect_prompt_emitted = True
+                    self.show_initsteps_image.emit()
+                    self.status_updated.emit(
+                        ("While the Y2 remains unplugged, press and release pinhole once; then "
+                         "connect the powered-off Y2 directly without pressing buttons. "
+                         "Only this one write attempt is permitted.") if is_y2_model(self.device_model)
+                        else spflash_connect_status_text(self.device_label, device_model=self.device_model)
                     )
-                )
+                elif is_y2_model(self.device_model) and not termination_reason:
+                    termination_reason = (
+                        "Flash Tool's Search usb output was received only after the "
+                        "write process had exited; no physical connection was authorized"
+                    )
             elif instructions_phase and not installing_phase and not completed_phase:
                 if (
                     "Downloading" in line
@@ -7192,12 +7656,19 @@ class SPFlashToolWorker(QThread):
                     completed_phase = True
                     installing_phase = False
                     if line.startswith("Disconnect!"):
-                        self.show_installed_image.emit()
-                        self.status_updated.emit(
-                            spflash_success_status_text(
-                                self.device_label, device_model=self.device_model
+                        if is_y2_model(self.device_model):
+                            self.show_installing_image.emit()
+                            self.status_updated.emit(
+                                "The firmware write finished, but verification is still required. "
+                                "Wait for the updater's disconnect instruction."
                             )
-                        )
+                        else:
+                            self.show_installed_image.emit()
+                            self.status_updated.emit(
+                                spflash_success_status_text(
+                                    self.device_label, device_model=self.device_model
+                                )
+                            )
                     else:
                         self.show_installing_image.emit()
                         self.status_updated.emit(
@@ -7208,7 +7679,13 @@ class SPFlashToolWorker(QThread):
                         f"Installing on your {self.device_label}  do not unplug…"
                     )
             elif completed_phase:
-                if line.startswith("Disconnect!"):
+                if is_y2_model(self.device_model):
+                    self.show_installing_image.emit()
+                    self.status_updated.emit(
+                        "The firmware write finished, but verification is still required. "
+                        "Wait for the updater's disconnect instruction."
+                    )
+                elif line.startswith("Disconnect!"):
                     self.show_installed_image.emit()
                     self.status_updated.emit(
                         spflash_success_status_text(
@@ -7227,6 +7704,12 @@ class SPFlashToolWorker(QThread):
         # Ensure our flash_tool is not left as a zombie holding the port
         try:
             if process.poll() is None:
+                forced_termination = True
+                if not termination_reason:
+                    termination_reason = (
+                        "Flash Tool did not exit after its output loop; "
+                        "completion is not trusted"
+                    )
                 process.terminate()
                 try:
                     process.wait(timeout=2)
@@ -7281,17 +7764,46 @@ class SPFlashToolWorker(QThread):
             except Exception as e:
                 silent_print(f"SPFT log scan after early exit: {e}")
 
-        result["completed"] = completed_phase
+        exit_code = process.poll()
+        natural_completion = bool(
+            exit_code is not None
+            and not forced_termination
+            and not termination_reason
+            and stdout_eof
+        )
+        result["completed"] = bool(completed_phase and natural_completion)
 
         # Treat any failure before installation actually begins as a connection failure
-        if reached_search_usb and not installing_phase and not completed_phase and not overlap_error:
+        if reached_search_usb and not installing_phase and not result["completed"] and not overlap_error:
             com_port_open_fail = True
 
         result["com_port_open_fail"] = com_port_open_fail and reached_search_usb
         result["saw_permission_hint"] = saw_permission_hint
         result["overlap"] = overlap_error
         result["reached_search_usb"] = reached_search_usb
-        result["ok"] = completed_phase
+        result["ok"] = result["completed"]
+        if is_y2_model(self.device_model):
+            transcript = "".join(captured_output)
+            try:
+                proof = evaluate_y2_write_completion(
+                    transcript, exit_code, natural_completion
+                )
+                result["ok"] = result["completed"] = True
+            except Exception as completion_error:
+                proof = {"status":"FAIL", "reason":str(completion_error)}
+                result["ok"] = result["completed"] = False
+                result["message"] = termination_reason or str(completion_error)
+            evidence={"schema":2,**proof,
+                "pid":flash_pid,"command":self.spflash_command,"working_directory":str(self.spflash_working_dir),
+                "started_utc":process_started_utc,"ended_utc":datetime.utcnow().isoformat()+"Z",
+                "exit_code":exit_code,"natural_completion":natural_completion,
+                "stdout_eof":stdout_eof,"forced_termination":forced_termination,
+                "connect_prompt_emitted":connect_prompt_emitted,
+                "termination_reason":termination_reason,
+                "retry_performed":False,"stdout":transcript}
+            (self.app_dir/"Y2-write-completion.json").write_text(json.dumps(evidence,indent=2)+"\n",encoding="utf-8")
+        elif termination_reason and not result["message"]:
+            result["message"] = termination_reason
         if (
             not completed_phase
             and not reached_search_usb
@@ -7313,9 +7825,8 @@ class SPFlashToolWorker(QThread):
     def run(self):
         """Run SP Flash Tool; on Linux COM open fail, self-heal and retry."""
         tty_guardian = None
-        max_attempts = (
-            LINUX_FLASH_SELF_HEAL_MAX_ATTEMPTS if is_linux_platform() else 1
-        )
+        max_attempts = 1 if is_y2_model(self.device_model) else (
+            LINUX_FLASH_SELF_HEAL_MAX_ATTEMPTS if is_linux_platform() else 1)
         try:
             # Kill leftover flash_tool + mtk.py so only this install owns the session.
             try:
@@ -7338,6 +7849,11 @@ class SPFlashToolWorker(QThread):
             elif is_windows_platform():
                 stop_install_competitor_processes(release_serial_holders=False)
 
+            # The release-locked Y2 path has no write fallback: the qualified
+            # logical MBR/layout read and explicit baseline gate happen first.
+            if is_y2_model(self.device_model):
+                self._run_y2_prewrite_identity_probe()
+
             last = None
             for attempt in range(1, max_attempts + 1):
                 if self.should_stop:
@@ -7349,6 +7865,17 @@ class SPFlashToolWorker(QThread):
                 if last.get("ok") or last.get("completed"):
                     silent_print("Flash Tool completed successfully")
                     self._sync_device_label()
+                    if is_y2_model(self.device_model):
+                        try:
+                            self._run_y2_post_write_readback()
+                        except Exception as exc:
+                            self.spflash_completed.emit(False,f"Write completed but readback verification failed closed: {exc}")
+                            return
+                        self.spflash_completed.emit(
+                            True,
+                            "Firmware installed and sparse-aware five-range readback verified on your Y2.",
+                        )
+                        return
                     # UI shows status + donation screen; keep message minimal
                     self.spflash_completed.emit(
                         True,
@@ -7461,7 +7988,7 @@ class SPFlashToolWorker(QThread):
                 is_y1 = is_y1_model(self.device_model)
                 if is_y1:
                     can_fallback = True
-                elif is_windows_platform():
+                elif is_windows_platform() and not is_y2_model(self.device_model):
                     can_fallback = True
 
                 if can_fallback:
@@ -8446,6 +8973,9 @@ class DownloadWorker(QThread):
             # reliable Y1/Y2 evidence for fallback-mapped repos (see resolve_asset_model).
             self.install_asset_url = self.download_url
             asset_model = resolve_asset_model(self.download_url)
+            is_y2_class_a = asset_name_from_url(self.download_url) == Y2_CLASS_A_ASSET_NAME
+            if is_y2_class_a:
+                require_y2_class_a_windows(get_platform_system())
 
             # Download the file
             response = requests.get(self.download_url, stream=True, timeout=30)
@@ -8491,6 +9021,18 @@ class DownloadWorker(QThread):
                                 status_msg = f"Downloading... {progress}% ({downloaded_mb:.1f}MB / {total_mb:.1f}MB) - ETA: {eta_str}"
                                 self.status_updated.emit(status_msg)
 
+            if is_y2_class_a:
+                # Validate the exact downloaded bytes before extraction/bookkeeping.
+                # The public filename is intentionally not the legacy rom_y2.zip.
+                approved = Path(zip_path).resolve()
+                if approved.name != Y2_CLASS_A_ASSET_NAME:
+                    final_path = approved.with_name(Y2_CLASS_A_ASSET_NAME)
+                    if final_path.exists():
+                        raise RuntimeError("Approved Y2 asset destination already exists")
+                    approved.replace(final_path)
+                    zip_path = final_path
+                validate_y2_class_a_download(Path(zip_path), self.download_url)
+
             # Y2 firmware on macOS (or --y2-mac-flow test flag): no need to
             # extract  the manufacturer's manual install tool consumes the zip
             # directly, and extraction would only trigger the blocked MTKClient path.
@@ -8500,11 +9042,9 @@ class DownloadWorker(QThread):
                 asset_model
                 or resolve_device_model_for_install(None, zip_path=str(zip_path))
             ):
-                self.resolved_install_model = "Y2"
-                self.install_zip_name = zip_path.name
-                self.install_extracted_files = None
+                bookkeep_install_archive(self, zip_path, "Y2", None, downloaded=True)
                 remember_install_device_model(
-                    "Y2", zip_path=zip_path.name, extracted_files=None
+                    "Y2", zip_path=self.install_zip_name, extracted_files=None
                 )
                 self.status_updated.emit("Download complete  manual install required.")
                 self.download_completed.emit(
@@ -8525,20 +9065,18 @@ class DownloadWorker(QThread):
             log_extracted_files(extracted_files)
 
             resolved_model = resolve_device_model_for_install(
-                self.device_model, zip_path=zip_path.name, extracted_files=extracted_files
+                self.device_model, zip_path=str(zip_path.resolve(strict=True)), extracted_files=extracted_files
             ) or resolved_model or asset_model
             # Stash install context on the worker so the UI can pick it up after download
-            self.resolved_install_model = resolved_model
-            self.install_zip_name = zip_path.name
-            self.install_extracted_files = extracted_files
+            bookkeep_install_archive(self, zip_path, resolved_model, extracted_files, downloaded=True)
             remember_install_device_model(
-                resolved_model, zip_path=zip_path.name, extracted_files=extracted_files
+                resolved_model, zip_path=self.install_zip_name, extracted_files=extracted_files
             )
 
             self.status_updated.emit("Extraction completed. Files ready for MTK processing.")
 
             # Check if required files exist
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            required_files = required_firmware_files_for_model(resolved_model)
             missing_files = []
             for file in required_files:
                 if not Path(file).exists():
@@ -8712,6 +9250,8 @@ class ProgressiveReleaseWorker(QThread):
 
             releases_data = response.json()
             releases_data = self.github_api._ensure_latest_in_releases_data(releases_data, self.repo)
+            # Lock raw Y2 data before generic parsing, filters, signals or UI.
+            releases_data = lock_y2_class_a_catalogue_releases(releases_data, self.repo)
             silent_print(f"Fetched {len(releases_data)} releases from GitHub API")
 
             all_releases = []
@@ -15104,6 +15644,22 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error showing Method 2 instructions: {e}")
 
+    def confirm_y2_physical_disconnect(self, purpose, token):
+        """Collect the operator's physical-cable acknowledgement on the UI thread."""
+        try:
+            reply = QMessageBox.question(
+                self,
+                "Confirm Y2 cable removal",
+                f"Physically unplug the USB cable from the Y2 after {purpose}.\n\n"
+                "Click Yes only after the cable is completely removed. "
+                "Choose Cancel to stop safely. Do not press any Y2 buttons.",
+                QMessageBox.Yes | QMessageBox.Cancel,
+                QMessageBox.Cancel,
+            )
+            token["accepted"] = reply == QMessageBox.Yes
+        finally:
+            token["event"].set()
+
     def try_method_3(self):
         """Guided SP Flash Tool console-mode XML install (Windows + Linux)."""
         try:
@@ -15129,12 +15685,14 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Preparing the connection steps…")
             QApplication.processEvents()
 
-            device_model, _, _ = self.get_install_model_context()
+            device_model, install_zip, install_extracted = self.get_install_model_context()
+            if is_y2_model(device_model) or (install_zip and Path(str(install_zip)).name == Y2_CLASS_A_ASSET_NAME):
+                require_y2_class_a_windows(get_platform_system())
             # Prefer evidence on disk (preloader/scatter) so a stale UI filter cannot
             # launch Y1 XML against Y2 images (silent LoadRoms exit).
             disk_hint = detect_device_model_for_install(
-                zip_path=getattr(self, "_last_install_zip_name", None),
-                extracted_files=getattr(self, "_last_install_extracted_files", None),
+                zip_path=install_zip,
+                extracted_files=install_extracted,
             )
             if disk_hint and device_model and disk_hint != device_model:
                 silent_print(
@@ -15173,9 +15731,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.show_left_panel()
                 return
 
-            prepare_sp_flash_tool_files(device_model)
+            prepare_sp_flash_tool_files(device_model, zip_path=install_zip)
             ok_imgs, img_errors, img_warns = validate_spflash_images_for_model(
-                device_model, get_firmware_app_dir()
+                device_model, get_firmware_app_dir(), install_zip, full_y2_validation=False
             )
             if not ok_imgs:
                 self.show_appropriate_buttons_for_spflash()
@@ -15278,17 +15836,35 @@ class FirmwareDownloaderGUI(QMainWindow):
                             f"{pinned_com} ({describe_mediatek_ports(mtk_ports)})"
                         )
 
-            install_zip = getattr(self, "_last_install_zip_name", None)
-            install_extracted = getattr(self, "_last_install_extracted_files", None)
             # Keep UI model copy in sync for progress + completion donation text
             if device_model:
                 self.set_runtime_detected_device_model(device_model)
+            starting_baseline = None
+            if is_y2_model(device_model):
+                stock = QMessageBox.question(
+                    self, "Confirm supported Y2 baseline",
+                    "Is this Y2 currently running official Stock 3.1.7?\n\n"
+                    "Choose No only if it is the physically-qualified Beta V2 P17 Centre Context V1 state.",
+                    QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel, QMessageBox.Cancel)
+                if stock == QMessageBox.Cancel:
+                    raise RuntimeError("Y2 baseline confirmation cancelled; write remains blocked")
+                if stock == QMessageBox.Yes:
+                    starting_baseline = "Stock 3.1.7"
+                else:
+                    beta = QMessageBox.question(
+                        self, "Confirm qualified Beta V2 baseline",
+                        "Confirm this is exactly Beta V2 P17 Centre Context V1. Any other or unknown baseline is blocked.",
+                        QMessageBox.Yes | QMessageBox.Cancel, QMessageBox.Cancel)
+                    if beta != QMessageBox.Yes:
+                        raise RuntimeError("Unsupported or unknown Y2 baseline; write remains blocked")
+                    starting_baseline = "Beta V2 P17 Centre Context V1"
             self.spflash_worker = SPFlashToolWorker(
                 install_xml_path=install_rom_xml,
                 device_model=device_model,
                 com_port=pinned_com,
                 zip_path=install_zip,
                 extracted_files=install_extracted,
+                starting_baseline=starting_baseline,
             )
             self.spflash_worker.status_updated.connect(self.status_label.setText)
             self.spflash_worker.show_installing_image.connect(self.load_installing_image)
@@ -15298,6 +15874,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.spflash_worker.spflash_completed.connect(self.on_spflash_completed)
             self.spflash_worker.disable_update_button.connect(self.disable_update_button)
             self.spflash_worker.enable_update_button.connect(self.enable_update_button)
+            self.spflash_worker.request_y2_physical_disconnect.connect(
+                self.confirm_y2_physical_disconnect
+            )
             if hasattr(self, 'show_mtk_fallback_dialog'):
                 self.spflash_worker.show_try_again_dialog.connect(self.show_mtk_fallback_dialog)
 
@@ -15368,6 +15947,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             # so the GUI never asks the user to browse for a scatter file.
             try:
                 model, zip_name, extracted = self.get_install_model_context()
+                if must_block_generic_y2_tool(get_firmware_app_dir(), model or self.get_selected_device_model()):
+                    QMessageBox.warning(
+                        self,
+                        "Y2 guarded update only",
+                        "The unconfigured SP Flash Tool GUI is disabled for Y2. "
+                        "Use the guarded updater flow, which validates and freezes "
+                        "an exact five-partition Download Only plan.",
+                    )
+                    return False
                 prepare_sp_flash_tool_files(
                     model or self.get_selected_device_model(),
                     zip_path=zip_name,
@@ -15524,11 +16112,20 @@ class FirmwareDownloaderGUI(QMainWindow):
                 )
                 return
 
-            device_model, _, _ = self.get_install_model_context()
+            device_model, install_zip, install_extracted = self.get_install_model_context()
+            if must_block_generic_y2_tool(get_firmware_app_dir(), device_model or self.get_selected_device_model()):
+                QMessageBox.warning(
+                    self,
+                    "Y2 guarded update only",
+                    "The generic console shortcut is disabled for Y2 because it "
+                    "cannot bind the validated package to the active XML. Use the "
+                    "guarded updater flow instead.",
+                )
+                return
             if not device_model:
                 # Still allow launch; prepare_sp may no-op without model.
                 pass
-            prepare_sp_flash_tool_files(device_model)
+            prepare_sp_flash_tool_files(device_model, zip_path=install_zip)
 
             if is_windows_platform():
                 current_dir = Path.cwd()
@@ -15591,15 +16188,15 @@ class FirmwareDownloaderGUI(QMainWindow):
 
                 # Prefer disk evidence so Y2 packages never get Y1 rom indices.
                 disk_hint = detect_device_model_for_install(
-                    zip_path=getattr(self, "_last_install_zip_name", None),
-                    extracted_files=getattr(self, "_last_install_extracted_files", None),
+                    zip_path=install_zip,
+                    extracted_files=install_extracted,
                 )
                 if disk_hint:
                     device_model = disk_hint
                     self.set_runtime_detected_device_model(disk_hint)
-                prepare_sp_flash_tool_files(device_model)
+                prepare_sp_flash_tool_files(device_model, zip_path=install_zip)
                 ok_imgs, img_errors, _ = validate_spflash_images_for_model(
-                    device_model, app_dir
+                    device_model, app_dir, install_zip
                 )
                 if not ok_imgs:
                     QMessageBox.critical(
@@ -15618,6 +16215,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         device_model=device_model,
                         com_port=None,
                         app_dir=app_dir,
+                        candidate_archive=install_zip,
                     )
                 except Exception as e:
                     QMessageBox.critical(
@@ -15666,7 +16264,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         if preload
                         else ""
                     )
-                    + f"{shlex.quote(str(flash_tool_bin))} -i {shlex.quote(str(xml_path))}; "
+                    + f"{shlex.quote(str(flash_tool_bin))} -r -i {shlex.quote(str(xml_path))}; "
                     f"echo; echo 'SP Flash Tool exited. Press Enter to close.'; read _"
                 )
                 launched = False
@@ -20650,11 +21248,23 @@ class FirmwareDownloaderGUI(QMainWindow):
         is_online=True, selected_model=None
     ):
         """Display cached releases instantly (online mode only)"""
+        # Revoke all prior selectable state before touching untrusted cache data.
+        self.package_list.clear()
+        self.releases_loaded_count = 0
+        self.all_releases_loaded = []
+        self.download_btn.setEnabled(False)
         try:
-            # Clear the list first to ensure we start fresh with the new filter
-            self.package_list.clear()
-            self.releases_loaded_count = 0
-            self.all_releases_loaded = []
+            # Defence in depth for memory, disk, stale and refresh-fallback caches.
+            cached_releases = lock_y2_class_a_catalogue_releases(
+                cached_releases, resolve_firmware_repo(selected_repo)
+            )
+        except Exception as e:
+            silent_print(f"Cached release contract rejected for {selected_repo}: {e}")
+            self._show_repository_unavailable_message(selected_repo)
+            self._show_left_panel()
+            return False
+
+        try:
 
             # Keep pre-release checkbox visibility in sync with available releases.
             self._update_prerelease_checkbox_visibility(cached_releases, selected_type)
@@ -20786,6 +21396,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             silent_print(f"Error in _display_cached_releases: {e}")
             import traceback
             traceback.print_exc()
+            self.package_list.clear()
+            self.releases_loaded_count = 0
+            self.all_releases_loaded = []
+            self.download_btn.setEnabled(False)
+            self._show_repository_unavailable_message(selected_repo)
+            self._show_left_panel()
+            return False
 
     def _ensure_filter_panel_visible(self):
         """Keep Type / Model / Software dropdowns available (never hide on empty results)."""
@@ -22573,7 +23190,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return
 
             # Check if required files exist
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            required_files = required_firmware_files_for_model(install_model)
             missing_files = []
             for file in required_files:
                 if not Path(file).exists():
@@ -25517,9 +26134,25 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             zip_path = Path(zip_path)
 
-        if not zip_path.exists():
-            QMessageBox.warning(self, "Error", "Selected file does not exist.")
+        if not zip_path.is_file():
+            QMessageBox.warning(self, "Error", "Selected file does not exist or is not an ordinary file.")
             return
+
+        # Defence in depth: every local Class A entry point must validate the
+        # exact platform, filename, size and SHA-256 before extraction or staging.
+        if zip_path.name == Y2_CLASS_A_ASSET_NAME:
+            try:
+                require_y2_class_a_windows(get_platform_system())
+                zip_path = validate_y2_class_a_download(zip_path)
+            except Exception as exc:
+                silent_print(f"Y2 Class A local candidate refused: {exc}")
+                self.status_label.setText("Y2 Beta V2 candidate validation failed.")
+                QMessageBox.critical(
+                    self,
+                    "Y2 Beta V2 Candidate Refused",
+                    f"The selected update does not match the approved Windows Class A contract.\n\n{exc}",
+                )
+                return
 
         # Remember the zip for the Y2-on-macOS flow even when the early name-based
         # gate misses (e.g. a generically-named Y2 zip that is only detected after
@@ -25679,7 +26312,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Checking required files...")
 
             # Check if required files exist
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            required_files = required_firmware_files_for_model(resolved_model)
             missing_files = []
             for file in required_files:
                 if not Path(file).exists():
@@ -25689,11 +26322,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.progress_bar.setVisible(False)
                 error_msg = f"Missing required files: {', '.join(missing_files)}\n\n"
                 error_msg += "The zip file must contain:\n"
-                error_msg += "- lk.bin\n"
-                error_msg += "- boot.img\n"
-                error_msg += "- recovery.img\n"
-                error_msg += "- system.img\n"
-                error_msg += "- userdata.img\n\n"
+                error_msg += "\n".join(f"- {name}" for name in required_files) + "\n\n"
                 error_msg += "Please ensure your zip file contains all required firmware files."
 
                 QMessageBox.warning(self, "Missing Files", error_msg)
@@ -25701,8 +26330,11 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return
 
             resolved_model = resolve_device_model_for_install(
-                self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
+                self.get_selected_device_model(), zip_path=str(zip_path.resolve(strict=True)), extracted_files=extracted_files
             ) or resolved_model
+            bookkeep_install_archive(self, zip_path, resolved_model, extracted_files, downloaded=False)
+            remember_install_device_model(resolved_model, zip_path=self._last_install_zip_name,
+                                          extracted_files=extracted_files)
 
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -28828,8 +29460,42 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.information(self, "Smart Drop", "No files were available to process.")
                 return
 
+            # The release-locked Y2 Class A archive is firmware, not Smart Drop
+            # content.  It must be selected alone and validated before any USB
+            # connection prompt or install/extraction path is entered.  Also block
+            # case-only filename collisions instead of treating them as media.
+            class_a_named = [
+                path for path in paths
+                if path.name.lower() == Y2_CLASS_A_ASSET_NAME.lower()
+            ]
+            if class_a_named:
+                if (len(paths) != 1 or len(class_a_named) != 1
+                        or not class_a_named[0].is_file()
+                        or class_a_named[0].name != Y2_CLASS_A_ASSET_NAME):
+                    QMessageBox.critical(
+                        self,
+                        "Y2 Beta V2 Selection Refused",
+                        "Select exactly one ordinary file with the approved Y2 Beta V2 filename. "
+                        "Do not mix firmware with Smart Drop files.",
+                    )
+                    return
+                try:
+                    require_y2_class_a_windows(get_platform_system())
+                    approved = validate_y2_class_a_download(class_a_named[0])
+                except Exception as exc:
+                    silent_print(f"Y2 Class A Browse Files candidate refused: {exc}")
+                    self.status_label.setText("Y2 Beta V2 candidate validation failed.")
+                    QMessageBox.critical(
+                        self,
+                        "Y2 Beta V2 Candidate Refused",
+                        f"The selected update does not match the approved Windows Class A contract.\n\n{exc}",
+                    )
+                    return
+                self.install_from_zip(str(approved))
+                return
+
             # Check if we have USB Storage Mode or ADB connection - prompt if needed
-            # Separate rom*.zip files from other files first
+            # Separate legacy rom*.zip files from other files first
             rom_zip_files = []
             other_files = []
             for path in paths:
@@ -34512,6 +35178,12 @@ class FirmwareDownloaderGUI(QMainWindow):
             # Convert zip_path to Path object if it's a string
             if isinstance(zip_path, str):
                 zip_path = Path(zip_path)
+            zip_path = Path(absolute_install_archive_path(zip_path))
+            if not zip_path.is_file():
+                raise FileNotFoundError(f"Candidate archive does not exist: {zip_path}")
+            if zip_path.name == Y2_CLASS_A_ASSET_NAME:
+                require_y2_class_a_windows(get_platform_system())
+                validate_y2_class_a_download(zip_path)
             # Remember the GitHub asset URL this zip came from  the real asset
             # name is reliable Y1/Y2 evidence even when the local filename isn't
             # (fallback-mapped repos save Y2 downloads under a Y1-looking name).
@@ -34582,7 +35254,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Checking required files...")
 
             # Check if required files exist
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            required_files = required_firmware_files_for_model(resolved_model)
             missing_files = []
             for file in required_files:
                 if not Path(file).exists():
@@ -34596,17 +35268,16 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return
 
             resolved_model = resolve_device_model_for_install(
-                self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
+                self.get_selected_device_model(), zip_path=str(zip_path), extracted_files=extracted_files
             ) or resolved_model
             self.set_runtime_detected_device_model(resolved_model)
-            self._last_install_zip_name = zip_path.name
-            self._last_install_extracted_files = list(extracted_files) if extracted_files else None
+            bookkeep_install_archive(self, zip_path, resolved_model, extracted_files, downloaded=False)
             remember_install_device_model(
-                resolved_model, zip_path=zip_path.name, extracted_files=extracted_files
+                resolved_model, zip_path=str(zip_path), extracted_files=extracted_files
             )
             silent_print(
                 f"Install model resolved as {resolved_model} "
-                f"(zip={zip_path.name}, dropdown={self.get_selected_device_model()})"
+                f"(zip={zip_path}, dropdown={self.get_selected_device_model()})"
             )
 
             self.progress_bar.setValue(100)
@@ -34674,9 +35345,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             zip_from_download = getattr(download_worker, 'install_zip_name', None) if download_worker else None
             extracted_from_download = getattr(download_worker, 'install_extracted_files', None) if download_worker else None
             if zip_from_download:
-                self._last_install_zip_name = zip_from_download
-            if extracted_from_download is not None:
-                self._last_install_extracted_files = list(extracted_from_download)
+                adopt_downloaded_install_context(self, download_worker)
             self._last_install_asset_url = getattr(
                 download_worker, 'install_asset_url', None
             )
@@ -34700,14 +35369,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 resolve_asset_model(getattr(self, '_last_install_asset_url', None))
                 or detected
             ):
-                self._last_install_zip_path = str(
-                    ZIP_STORAGE_DIR / zip_from_download
-                ) if zip_from_download else None
+                self._last_install_zip_path = zip_from_download
                 QTimer.singleShot(400, self._handle_y2_mac_install_flow)
                 return
 
             # Check if required files exist and handle installation based on selected method
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+            required_files = required_firmware_files_for_model(detected)
             if all(Path(file).exists() for file in required_files):
                 silent_print("=== FIRMWARE FILES READY ===")
                 silent_print(f"Selected installation method: {getattr(self, 'installation_method', 'guided')}")
@@ -34734,14 +35401,12 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def _y2_mac_zip_source(self):
         """Return the local zip behind the current Y2 install, or None."""
-        source = getattr(self, "_last_install_zip_path", None)
-        if source and Path(source).is_file():
-            return Path(source)
-        name = getattr(self, "_last_install_zip_name", None)
-        if name:
-            candidate = ZIP_STORAGE_DIR / Path(name).name
-            if candidate.is_file():
-                return candidate
+        for value in (getattr(self, "_last_install_zip_path", None),
+                      getattr(self, "_last_install_zip_name", None)):
+            if value:
+                candidate = Path(value)
+                if candidate.is_absolute() and candidate.is_file():
+                    return candidate.resolve()
         return None
 
     def _y2_mac_show_explainer(self):
