@@ -61,16 +61,18 @@ class GuardError(RuntimeError):
     pass
 
 
-# ext4 fields observed changing normally across the physically qualified V16
-# write/V17 readback. Differences outside these bytes or sparse DONT_CARE chunks
-# fail closed. The list is offsets in the expanded ANDROID filesystem.
+# ext4 fields observed changing normally across the physically qualified V16/V17
+# and V28 Windows write/readbacks. V28 completed three previously partial
+# four-byte inode ctime_extra fields at 0x57A84, 0x57B84, and 0x61A84; every
+# filesystem path and file content still matched. Differences outside these
+# bytes or sparse DONT_CARE chunks fail closed. Offsets are in expanded ANDROID.
 ANDROID_EXT4_MUTABLE_OFFSETS = frozenset((1068,1069,1070,1071,1072,1073,1074,1075,
     1076,1088,1089,1090,1091,1376,1400,4124,4125,4126,4127,4156,4157,4158,4159,
     4188,4189,4190,4191,4220,4221,4222,4223,4252,4253,4254,4255,4284,4285,4286,
     4287,4316,4317,4318,4319,358912,358914,358915,358924,358925,358926,358927,
-    358936,358937,359045,359046,359047,359168,359180,359181,359182,359183,359301,
-    359302,359303,399872,399884,399885,399886,399887,399896,399897,400005,400006,
-    400007,2162715))
+    358936,358937,359044,359045,359046,359047,359168,359180,359181,359182,359183,
+    359300,359301,359302,359303,399872,399884,399885,399886,399887,399896,399897,
+    400004,400005,400006,400007,2162715))
 
 
 def verify_sparse_aware_android(sparse_path: Path, readback_path: Path) -> dict:
