@@ -168,19 +168,19 @@
       <!-- Quick Method Buttons -->
       <div class="y1-donate-grid">
         <a class="y1-donate-btn y1-donate-btn--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_kofi.png" data-method-icon="icon_kofi.png" width="20" height="20" alt="">
+          <img class="y1-donate-btn-icon" src="/assets/icon_kofi.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/mtkclient/gui/images/icon_kofi.png';" data-method-icon="icon_kofi.png" width="20" height="20" alt="">
           Ko-fi
         </a>
         <a class="y1-donate-btn y1-donate-btn--paypal" href="https://paypal.me/respectyarn" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_paypal.png" data-method-icon="icon_paypal.png" width="20" height="20" alt="">
+          <img class="y1-donate-btn-icon" src="/assets/icon_paypal.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/mtkclient/gui/images/icon_paypal.png';" data-method-icon="icon_paypal.png" width="20" height="20" alt="">
           Donate by PayPal
         </a>
         <a class="y1-donate-btn y1-donate-btn--revolut" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_revolut.png" data-method-icon="icon_revolut.png" width="20" height="20" alt="">
+          <img class="y1-donate-btn-icon" src="/assets/icon_revolut.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/mtkclient/gui/images/icon_revolut.png';" data-method-icon="icon_revolut.png" width="20" height="20" alt="">
           Donate by Revolut
         </a>
         <a class="y1-donate-btn y1-donate-btn--patreon" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer">
-          <img class="y1-donate-btn-icon" src="./mtkclient/gui/images/icon_patreon.png" data-method-icon="icon_patreon.png" width="20" height="20" alt="">
+          <img class="y1-donate-btn-icon" src="/assets/icon_patreon.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/mtkclient/gui/images/icon_patreon.png';" data-method-icon="icon_patreon.png" width="20" height="20" alt="">
           Donate by Patreon
         </a>
       </div>
@@ -603,6 +603,9 @@
     var useFallback = function () {
       var file = img.dataset.methodIcon;
       var sources = [
+        "/assets/" + file,
+        "./assets/" + file,
+        "https://innioasis.app/mtkclient/gui/images/" + file,
         "./mtkclient/gui/images/" + file,
         "/mtkclient/gui/images/" + file,
         "/assets/" + fallbackPaymentIcon(file),
