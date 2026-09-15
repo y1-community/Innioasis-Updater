@@ -16779,7 +16779,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         goal_layout.setContentsMargins(12, 10, 12, 10)
         goal_layout.setSpacing(6)
 
-        goal_stats_label = QLabel(f"You've helped us cover ${r_str} of our ${target_amt:.0f} costs for this month. All donations are appreciated.")
+        goal_msg = "We rely on your donations to keep running. Donate now" if raised_amt >= target_amt else f"You've helped us cover ${r_str} of our ${target_amt:.0f} costs for this month. All donations are appreciated."
+        goal_stats_label = QLabel(goal_msg)
         goal_stats_label.setAlignment(Qt.AlignCenter)
         goal_stats_label.setStyleSheet(f"font-size: 12px; font-weight: bold; color: {title_color};")
         goal_layout.addWidget(goal_stats_label)
@@ -23540,9 +23541,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         cur_month_name = now.strftime('%B')
 
         raised_str = f"{int(raised_amt)}" if raised_amt.is_integer() else f"{raised_amt:.2f}"
-        lines = [
-            f"You've helped us cover ${raised_str} of our ${target_amt:.0f} costs for this month. All donations are appreciated."
-        ]
+        goal_msg = "We rely on your donations to keep running. Donate now" if raised_amt >= target_amt else f"You've helped us cover ${raised_str} of our ${target_amt:.0f} costs for this month. All donations are appreciated."
+        lines = [goal_msg]
 
         if donations:
             by_supporter = defaultdict(list)
@@ -23792,9 +23792,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         cur_month_name = now.strftime('%B')
 
         raised_str = f"{int(raised_amt)}" if raised_amt.is_integer() else f"{raised_amt:.2f}"
-        lines = [
-            f"You've helped us cover ${raised_str} of our ${target_amt:.0f} costs for this month. All donations are appreciated."
-        ]
+        goal_msg = "We rely on your donations to keep running. Donate now" if raised_amt >= target_amt else f"You've helped us cover ${raised_str} of our ${target_amt:.0f} costs for this month. All donations are appreciated."
+        lines = [goal_msg]
 
         by_supporter = defaultdict(list)
         for d in fresh_donations:
@@ -24902,7 +24901,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             r_amt_val, r_rem_val, pct_val, tgt_val = self.get_monthly_goal_stats(donations)
             r_str_val = f"{int(r_amt_val)}" if r_amt_val.is_integer() else f"{r_amt_val:.2f}"
 
-            goal_header_lbl = QLabel(f"<b>You've helped us cover ${r_str_val} of our ${tgt_val:.0f} costs for this month. All donations are appreciated.</b>")
+            goal_hdr_msg = "We rely on your donations to keep running. Donate now" if r_amt_val >= tgt_val else f"You've helped us cover ${r_str_val} of our ${tgt_val:.0f} costs for this month. All donations are appreciated."
+            goal_header_lbl = QLabel(f"<b>{goal_hdr_msg}</b>")
             goal_header_lbl.setAlignment(Qt.AlignCenter)
             goal_header_lbl.setStyleSheet(f"font-size: 11px; color: {title_color}; background: transparent; border: none;")
             goal_view_layout.addWidget(goal_header_lbl)
@@ -25287,8 +25287,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     return
                 r_amt, r_rem, pct, tgt = self.get_monthly_goal_stats(new_donations)
                 r_str = f"{int(r_amt)}" if r_amt.is_integer() else f"{r_amt:.2f}"
+                goal_live_msg = "We rely on your donations to keep running. Donate now" if r_amt >= tgt else f"You've helped us cover ${r_str} of our ${tgt:.0f} costs for this month. All donations are appreciated."
                 goal_header_lbl.setText(
-                    f"<b>You've helped us cover ${r_str} of our ${tgt:.0f} costs for this month. All donations are appreciated.</b>"
+                    f"<b>{goal_live_msg}</b>"
                 )
                 target_val[0] = int(round(pct * 10))
                 if showing_goal[0]:

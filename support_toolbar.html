@@ -750,7 +750,9 @@
       if (donationLineInterval) clearInterval(donationLineInterval);
       var donorLines = Array.isArray(tickerHtml) ? tickerHtml.filter(Boolean) : (tickerHtml ? [tickerHtml] : []);
       var raisedLabel = (raised % 1 === 0) ? raised.toFixed(0) : raised.toFixed(2);
-      var goalLine = "Help us raise our running costs for the month · You've helped us cover $" + raisedLabel + " of $" + target.toFixed(0) + " costs for this month.";
+      var goalLine = (raised >= target)
+        ? "We rely on your donations to keep running. Donate now"
+        : "Help us raise our running costs for the month · You've helped us cover $" + raisedLabel + " of $" + target.toFixed(0) + " costs for this month.";
       var states = [{ type: "goal", html: goalLine }];
       donorLines.forEach(function (line, index) {
         if (index && index % 3 === 0) states.push({ type: "goal", html: goalLine });
@@ -1016,15 +1018,19 @@
     var legRem = document.getElementById("y1-goal-legend-remaining");
 
     var curAmtStr = (currentMonthTotal % 1 === 0) ? currentMonthTotal.toFixed(0) : currentMonthTotal.toFixed(2);
+    var isGoalMet = (currentMonthTotal >= MONTHLY_TARGET);
+    var goalMsg = isGoalMet
+      ? "We rely on your donations to keep running. Donate now"
+      : "You've helped us cover $" + curAmtStr + " of our $" + MONTHLY_TARGET.toFixed(0) + " costs for this month. All donations are appreciated.";
     if (titleEl) titleEl.textContent = "Monthly Running Costs";
-    if (statsEl) statsEl.textContent = "You've helped us cover $" + curAmtStr + " of our $" + MONTHLY_TARGET.toFixed(0) + " costs for this month. All donations are appreciated.";
+    if (statsEl) statsEl.textContent = goalMsg;
     if (raisedBar) raisedBar.style.width = raisedPct + "%";
     if (remBar) remBar.style.width = (100 - raisedPct) + "%";
-    if (legRaised) legRaised.textContent = "You've helped us cover $" + curAmtStr + " of our $" + MONTHLY_TARGET.toFixed(0) + " costs for this month.";
+    if (legRaised) legRaised.textContent = goalMsg;
     if (legRem) legRem.textContent = "";
 
     var goalCardHTML = '<div class="y1-goal-header" style="margin-bottom: 4px;">' +
-      '<span class="y1-goal-stats" style="font-size: 0.76rem; font-weight: bold;">You\'ve helped us cover $' + curAmtStr + ' of our $' + MONTHLY_TARGET.toFixed(0) + ' costs for this month. All donations are appreciated.</span>' +
+      '<span class="y1-goal-stats" style="font-size: 0.76rem; font-weight: bold;">' + goalMsg + '</span>' +
       '</div>' +
       '<div class="y1-goal-bar-wrap" role="progressbar" style="height: 6px; border-radius: 4px; overflow: hidden; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35);">' +
       '<div class="y1-goal-segment--raised" data-target-width="' + raisedPct + '%" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
@@ -1144,12 +1150,16 @@
     }
 
     var curAmtStr = (currentMonthTotal % 1 === 0) ? currentMonthTotal.toFixed(0) : currentMonthTotal.toFixed(2);
+    var isTickerGoalMet = (currentMonthTotal >= target);
+    var tickerGoalMsg = isTickerGoalMet
+      ? "We rely on your donations to keep running. Donate now"
+      : "You've helped us cover $" + curAmtStr + " of our $" + target.toFixed(0) + " costs for this month. All donations are appreciated";
     var goalItem = {
       html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Goal</span>' +
             '<div class="y1-dock-mini-bar" title="' + Math.round(raisedPct) + '% covered" style="display: inline-block; width: 50px; height: 6px; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35); border-radius: 4px; overflow: hidden; vertical-align: middle; margin-right: 6px;">' +
               '<div class="y1-dock-mini-raised" data-target-width="' + raisedPct + '%" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
             '</div>' +
-            '<span>You\'ve helped us cover $' + curAmtStr + ' of our $' + target.toFixed(0) + ' costs for this month. All donations are appreciated</span>'
+            '<span>' + tickerGoalMsg + '</span>'
     };
 
     var donorItems = [];
