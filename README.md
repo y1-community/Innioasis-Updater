@@ -3,4 +3,4 @@ Innioasis Updater can be used to automatically download firmware releases from t
 
 If you found this project helpful, [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V51JJ95H).
 
-You can contribute to this project for free by [joining Honeygain](https://join.honeygain.com/ITSRY2B5D7)
+You can contribute to this project for free by [sharing 100MB on Honeygain](https://join.honeygain.com/ITSRY2B5D7)

@@ -386,7 +386,7 @@
       <div class="donation-method-intro">
         <p class="lumen-kicker">Choose your way to help</p>
         <h3>Whatever works for you.</h3>
-        <p>A coffee, a one-off gift, or simply joining Honeygain — it all adds up. Pick your favourite and you’ll be taken straight there.</p>
+        <p>A coffee, a one-off gift, or simply sharing 100MB on Honeygain — it all adds up. Pick your favourite and you’ll be taken straight there.</p>
       </div>
       <div class="donation-method-grid" aria-label="Ways to make a contribution">
         <a class="donation-method-card donation-method-card--primary" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer"><img src="./mtkclient/gui/images/icon_kofi.png" data-method-icon="icon_kofi.png" alt=""><span><strong>Buy us a coffee</strong><small>Support on Ko-fi</small></span></a>
@@ -1163,7 +1163,7 @@
           var mH = '<a href="' + mUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + item.method + '</strong></a>';
 
           if (mL === "honeygain") {
-            donorItems.push(sH + ' contributed ' + aH + ' for free by joining <a href="' + METHOD_URLS["honeygain"] + '" target="_blank" rel="noopener noreferrer">Honeygain</a>' + tP);
+            donorItems.push(sH + ' contributed ' + aH + ' for free by sharing 100MB on <a href="' + METHOD_URLS["honeygain"] + '" target="_blank" rel="noopener noreferrer">Honeygain</a>' + tP);
           } else if (mL.indexOf("ko-fi") >= 0 || mL.indexOf("kofi") >= 0) {
             var coffees = Math.max(1, Math.round(absVal));
             var cWord = (coffees === 1 ? "a coffee" : coffees + " coffees");

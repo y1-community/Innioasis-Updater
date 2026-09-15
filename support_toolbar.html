@@ -2,6 +2,75 @@
 <style>
   /* Keep the injected donation modal self-contained when a cached page has an
      older site-toolbar.css. */
+    /* Resilient self-contained bottom dock layout */
+  #support-toolbar-container {
+    position: fixed !important;
+    bottom: 18px !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;
+    display: flex !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-site-dock-wrap {
+    pointer-events: auto !important;
+    margin: 0 auto !important;
+    max-width: min(96vw, 1040px) !important;
+    box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-site-dock-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    padding: 8px 14px 6px !important;
+    border-radius: 999px !important;
+    background: var(--lumen-panel, var(--site-bg-elevated, #12141c)) !important;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, 0.22)) !important;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.5) !important;
+    box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-dock-buttons-layer {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-dock-secondary-line {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 30px !important;
+    box-sizing: border-box !important;
+    padding: 6px 18px 8px !important;
+    border-top: 1px solid color-mix(in oklab, var(--dock-line, rgba(255, 255, 255, 0.15)) 55%, transparent) !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+  }
+  #support-toolbar-container .y1-dock-secondary-goal-view,
+  #support-toolbar-container .y1-dock-secondary-ticker-view {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Remove contributor stream box and goal bar on donation popup modal */
+  #support-toolbar-container .y1-contributor-stream-box,
+  .y1-donate-panel .y1-contributor-stream-box,
+  #y1-contributor-stream-box {
+    display: none !important;
+  }
   #support-toolbar-container .y1-contributor-stream-box {
     box-sizing: border-box;
     width: 100%;
@@ -146,21 +215,17 @@
   </div>
   <div class="y1-site-dock-wrap">
     <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-modal="false" aria-labelledby="y1-donate-title" hidden>
-      <!-- Top Live Donors & Goal Stream Box -->
-      <div class="y1-contributor-stream-box" id="y1-contributor-stream-box" aria-live="polite" style="margin-bottom: 12px;">
-        <div class="y1-contributor-stream-line" id="y1-contributor-stream-line">Loading supporters...</div>
-      </div>
 
       <!-- Developer Header: Avatar + Headline -->
-      <div class="y1-developer-profile-wrap" style="margin: 4px 0 10px; display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/mtkclient/gui/images/developer.png';this.onerror=null;}" alt="Ryan (Developer)" width="72" height="72" style="border: 0; display: block; object-fit: contain;">
-          <div>
-            <h2 class="y1-donate-panel-hook" id="y1-donate-title" style="margin: 0; font-size: 1.5rem;">It takes <span>you</span>.</h2>
-            <small style="color: var(--lumen-muted, #9aa3b5); font-weight: 600;">Our projects rely on donations from the community</small>
+      <div class="y1-developer-profile-wrap" style="margin: 0 0 12px; display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1;">
+          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/mtkclient/gui/images/developer.png';this.onerror=null;}" alt="Ryan (Developer)" width="64" height="64" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; display: block; border: 2px solid rgba(255, 255, 255, 0.2);">
+          <div style="display: flex; flex-direction: column; justify-content: center; min-width: 0;">
+            <h2 class="y1-donate-panel-hook" id="y1-donate-title" style="margin: 0 0 3px 0; font-size: 1.55rem; line-height: 1.15; font-weight: 700; max-width: none;">It takes <span>you</span>.</h2>
+            <small id="y1-donate-subhead" style="color: var(--lumen-muted, #9aa3b5); font-weight: 600; font-size: 0.85rem; line-height: 1.3;">Our projects rely on donations from the community</small>
           </div>
         </div>
-        <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options" style="position: static;">×</button>
+        <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options" style="position: static; flex-shrink: 0; margin-left: 8px;">×</button>
       </div>
 
       <p class="y1-donate-panel-intro" id="y1-donate-panel-intro" style="margin-top: 4px;">Hey! I'm Ryan, the developer behind <a href="https://innioasis.app" style="color: inherit; text-decoration: underline;">Innioasis Updater</a>, the <a href="https://innioasis.app/firmware.html" style="color: inherit; text-decoration: underline;">Community Firmware Archive</a>, and the <a href="https://themes.innioasis.app" style="color: inherit; text-decoration: underline;">Themes Gallery</a>. I pay for these hobby projects out of my own pocket with my own money to keep them free and accessible for everyone. Server hosting, firmware archive storage, domain renewals, and ongoing maintenance cost around $200 each month, so any support you can give is truly appreciated to help cover running costs!</p>
@@ -188,7 +253,7 @@
       <!-- Honeygain Free Contribution -->
       <a class="y1-donate-banner-btn" href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">
         <svg class="y1-donate-btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
-        <span><strong>Contribute for free by joining Honeygain</strong><br><small style="opacity: 0.85; font-weight: normal;">Earn $3</small></span>
+        <span><strong>Help us by sharing 100MB on Honeygain</strong><br><small style="opacity: 0.85; font-weight: normal;">Earn $3</small></span>
       </a>
 
       <!-- Crypto Collapsible -->
@@ -972,7 +1037,7 @@
 
     if (mLower === "honeygain") {
       var hgUrl = METHOD_URLS["honeygain"];
-      return supporterHTML + ' contributed ' + amtHTML + ' for free by joining <a href="' + hgUrl + '" target="_blank" rel="noopener noreferrer">Honeygain</a>' + timePart;
+      return supporterHTML + ' contributed ' + amtHTML + ' for free by sharing 100MB on <a href="' + hgUrl + '" target="_blank" rel="noopener noreferrer">Honeygain</a>' + timePart;
     } else if (mLower.indexOf("ko-fi") !== -1 || mLower.indexOf("kofi") !== -1) {
       var coffees = Math.max(1, Math.round(absAmt));
       var cWord = (coffees === 1) ? "a coffee" : (coffees + " coffees");
@@ -1032,12 +1097,6 @@
     if (legRaised) legRaised.textContent = goalMsg;
     if (legRem) legRem.textContent = "";
 
-    var goalCardHTML = '<div class="y1-goal-header" style="margin-bottom: 4px;">' +
-      '<span class="y1-goal-stats" style="font-size: 0.76rem; font-weight: bold;">' + goalMsg + '</span>' +
-      '</div>' +
-      '<div class="y1-goal-bar-wrap" role="progressbar" style="height: 6px; border-radius: 4px; overflow: hidden; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35);">' +
-      '<div class="y1-goal-segment--raised" data-target-width="' + raisedPct + '%" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
-      '</div>';
 
     /* Populate Single-Line Rotating Contributor Stream inside panel */
     var streamLine = document.getElementById("y1-contributor-stream-line");
@@ -1081,43 +1140,9 @@
       rawDonorLines[rawShuffleJ] = rawShuffleValue;
     }
 
-    // Show the goal once, then three donation-from / donation-to lines before
-    // showing the goal again. This keeps the appeal visible without rushing the
-    // human stories past the reader.
-    var streamAlternatingItems = [goalCardHTML];
-    rawDonorLines.forEach(function (dLine, index) {
-      streamAlternatingItems.push(dLine);
-      if ((index + 1) % 3 === 0 && index + 1 < rawDonorLines.length) {
-        streamAlternatingItems.push(goalCardHTML);
-      }
-    });
-
-    if (streamLine && streamAlternatingItems.length > 0) {
-      if (window._y1StreamInterval) clearInterval(window._y1StreamInterval);
-      streamLine.innerHTML = streamAlternatingItems[0];
-      var initBar = streamLine.querySelector(".y1-goal-segment--raised");
-      if (initBar) {
-        setTimeout(function () {
-          initBar.style.width = initBar.getAttribute("data-target-width") || "0%";
-        }, 100);
-      }
-      var streamIdx = 0;
-      window._y1StreamInterval = setInterval(function () {
-        streamIdx = (streamIdx + 1) % streamAlternatingItems.length;
-        streamLine.style.opacity = "0";
-        streamLine.style.transform = "translateY(-4px)";
-        setTimeout(function () {
-          streamLine.innerHTML = streamAlternatingItems[streamIdx];
-          var bar = streamLine.querySelector(".y1-goal-segment--raised");
-          if (bar) {
-            requestAnimationFrame(function () {
-              bar.style.width = bar.getAttribute("data-target-width") || "0%";
-            });
-          }
-          streamLine.style.opacity = "1";
-          streamLine.style.transform = "translateY(0)";
-        }, 550);
-      }, 6500);
+    if (window._y1StreamInterval) {
+      clearInterval(window._y1StreamInterval);
+      window._y1StreamInterval = null;
     }
 
     /* Start rotating dock ticker (alternates between Twitch/Wiki-style Goal Bar and single/multi donor lines) */

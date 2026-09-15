@@ -24038,7 +24038,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             if "honeygain" in m_lower:
                 hg_url = method_links.get("honeygain", "https://join.honeygain.com/ITSRY2B5D7")
                 hg_method_html = f'<a href="{hg_url}" style="color: {rich_text_color}; text-decoration: none; font-weight: bold;"><b>Honeygain</b></a>'
-                return f"{supporter_html} contributed {amt_html} for free by joining {hg_method_html}{time_part}"
+                return f"{supporter_html} contributed {amt_html} for free by sharing 100MB on {hg_method_html}{time_part}"
             elif "ko-fi" in m_lower or "kofi" in m_lower:
                 coffees = max(1, round(abs_amount))
                 cw = "a coffee" if coffees == 1 else f"{coffees} coffees"
@@ -24821,7 +24821,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Short Wikipedia-style line for install-complete message boxes."""
         return (
             "Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, or Patreon. "
-            "You can also help by joining Honeygain, sharing a fix, reviewing a guide, "
+            "You can also help by sharing 100MB on Honeygain, sharing a fix, reviewing a guide, "
             "contributing code, or helping another Y1/Y2 owner in Discord."
         )
 
@@ -25029,13 +25029,13 @@ class FirmwareDownloaderGUI(QMainWindow):
                         (
                             f"{install_header}<br><br>"
                             f"Hey! I'm Ryan, the developer behind Innioasis Updater, the Community Firmware Archive for {model_name}, and the Themes Gallery.<br><br>"
-                            "If you've found this community-made tool helpful, please consider donating or joining Honeygain for free to help cover our $200 monthly server and storage costs.<br><br>"
+                            "If you've found this community-made tool helpful, please consider donating or sharing 100MB on Honeygain for free to help cover our $200 monthly server and storage costs.<br><br>"
                             "Any support you give keeps these resources alive for everyone and directly helps my partner and me raise our family together. Thank you so much!"
                         ),
                         (
                             f"{install_header}<br><br>"
                             f"Hey there, I'm Ryan. I build and maintain Innioasis Updater, the Themes Gallery, and our firmware archives as hobby projects for the community.<br><br>"
-                            f"If this made upgrading your {model_name} effortless, please consider chipping in or joining Honeygain to help cover our monthly upkeep.<br><br>"
+                            f"If this made upgrading your {model_name} effortless, please consider chipping in or sharing 100MB on Honeygain to help cover our monthly upkeep.<br><br>"
                             "Every contribution keeps these tools open for the next owner and supports my partner and me as we raise our young family. It means the world to us."
                         )
                     ]
@@ -25045,18 +25045,18 @@ class FirmwareDownloaderGUI(QMainWindow):
                         (
                             f"{install_header}<br><br>"
                             f"Hey! I'm Ryan, the developer behind Innioasis Updater, the Community Firmware Archive for {model_name}, and the Themes Gallery.<br><br>"
-                            "If you've found this community-made tool helpful, please consider supporting the project or joining Honeygain for free to contribute toward our running costs.<br><br>"
+                            "If you've found this community-made tool helpful, please consider supporting the project or sharing 100MB on Honeygain for free to contribute toward our running costs.<br><br>"
                             "I pay for our $200 monthly server hosting, archive storage, and domain bills out of pocket to keep all tools free and open. Every bit of support takes the weight off and keeps everything thriving!"
                         ),
                         (
                             f"{install_header}<br><br>"
                             f"Hey, I'm Ryan. I created Innioasis Updater and the Firmware Archive to ensure our {model_name} devices always have access to working software, custom ROMs, and themes without paywalls or ads.<br><br>"
-                            "If you've found this update useful, please consider donating or joining Honeygain for free to help cover our $200 monthly costs and preserve these archives for the whole community."
+                            "If you've found this update useful, please consider donating or sharing 100MB on Honeygain for free to help cover our $200 monthly costs and preserve these archives for the whole community."
                         ),
                         (
                             f"{install_header}<br><br>"
                             f"Hey! I'm Ryan, and I maintain Innioasis Updater, the Community Firmware Archive, and the Themes Gallery.<br><br>"
-                            f"If this tool helped you today, chipping in or joining Honeygain goes directly toward our monthly hosting bills and ensures anyone can restore their {model_name} completely free."
+                            f"If this tool helped you today, chipping in or sharing 100MB on Honeygain goes directly toward our monthly hosting bills and ensures anyone can restore their {model_name} completely free."
                         )
                     ]
                     intro_content = random.choice(standard_options)
@@ -25084,7 +25084,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                         ),
                         (
                             f"Hey, I'm Ryan. I created Innioasis Updater and the Firmware Archive to ensure our {model_name} devices always have access to working software, custom ROMs, and themes without paywalls or ads.<br><br>"
-                            "If you've found the software useful, chipping in or joining Honeygain helps cover our monthly costs and keeps these archives preserved for everyone."
+                            "If you've found the software useful, chipping in or sharing 100MB on Honeygain helps cover our monthly costs and keeps these archives preserved for everyone."
                         ),
                         (
                             f"Hey! I'm Ryan, and I maintain Innioasis Updater, the Community Firmware Archive, and the Themes Gallery for the community.<br><br>"
@@ -25143,7 +25143,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             layout.addLayout(grid)
 
             # Honeygain free contribution
-            honeygain_btn = QPushButton("Contribute for free by joining Honeygain")
+            honeygain_btn = QPushButton("Help us by sharing 100MB on Honeygain")
             honeygain_btn.setCursor(Qt.PointingHandCursor)
             honeygain_btn.setStyleSheet("QPushButton { background-color: #10b981; color: white; font-weight: bold; font-size: 13px; padding: 10px; border-radius: 8px; border: none; } QPushButton:hover { background-color: #059669; }")
             honeygain_btn.clicked.connect(lambda: webbrowser.open(HONEYGAIN_REFERRAL_URL))

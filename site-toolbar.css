@@ -1910,3 +1910,10 @@ body.site-dock-mode:has(#y1-site-dock-privacy-slot #y1-privacy-settings-btn) > #
         flex-basis: 72px;
     }
 }
+
+/* Ensure contributor stream box and goal bar are not shown in donations popup modal */
+#support-toolbar-container .y1-contributor-stream-box,
+.y1-donate-panel .y1-contributor-stream-box,
+#y1-contributor-stream-box {
+    display: none !important;
+}
