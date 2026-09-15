@@ -45,6 +45,20 @@ vlog() {
     fi
 }
 
+# Privilege escalation command used throughout this script.
+# Prefers sudo when available (most distros), falls back to doas
+# (Alpine, some Artix/void/BSD-influenced setups, minimal installs).
+# Override by setting SUDO_CMD before running this script.
+if [ -n "$SUDO_CMD" ]; then
+    SUDO="$SUDO_CMD"
+elif command -v sudo >/dev/null 2>&1; then
+    SUDO="sudo"
+elif command -v doas >/dev/null 2>&1; then
+    SUDO="doas"
+else
+    SUDO=""
+fi
+
 run_cmd() {
     # Usage: run_cmd "description" "command"
     local description="$1"
@@ -125,22 +139,22 @@ ensure_pip_tools() {
 
     case "$DISTRO_ID" in
         ubuntu|linuxmint|pop|elementary|zorin|debian|raspbian)
-            sudo apt-get update >/dev/null 2>&1 || true
-            sudo apt-get install -y python3-pip python3-setuptools python3-venv >/dev/null 2>&1 || true
+            $SUDO apt-get update >/dev/null 2>&1 || true
+            $SUDO apt-get install -y python3-pip python3-setuptools python3-venv >/dev/null 2>&1 || true
             ;;
         arch|manjaro|endeavouros|cachyos|garuda|artix)
-            sudo pacman -Sy --noconfirm >/dev/null 2>&1 || true
-            sudo pacman -S --noconfirm python-pip python-setuptools >/dev/null 2>&1 || true
+            $SUDO pacman -Sy --noconfirm >/dev/null 2>&1 || true
+            $SUDO pacman -S --noconfirm python-pip python-setuptools >/dev/null 2>&1 || true
             ;;
         fedora|rhel|centos|almalinux|rocky|bazzite|ublue-os)
             local dnf_cmd
             dnf_cmd=$(resolve_cmd dnf yum)
             if [ -n "$dnf_cmd" ]; then
-                sudo "$dnf_cmd" install -y python3-pip python3-setuptools >/dev/null 2>&1 || true
+                $SUDO "$dnf_cmd" install -y python3-pip python3-setuptools >/dev/null 2>&1 || true
             fi
             ;;
         opensuse*|sles)
-            sudo zypper install -y python3-pip python3-setuptools >/dev/null 2>&1 || true
+            $SUDO zypper install -y python3-pip python3-setuptools >/dev/null 2>&1 || true
             ;;
     esac
 
@@ -276,7 +290,7 @@ ensure_safe_working_directory() {
 check_root() {
     if [ "$EUID" -eq 0 ]; then
         error "This script should not be run as root for security reasons."
-        error "Please run as a regular user. The script will use sudo when needed."
+        error "Please run as a regular user. The script will use sudo or doas when needed."
         return 1
     fi
     return 0
@@ -373,28 +387,37 @@ check_and_cleanup_partial_installation() {
     return 0
 }
 
-# Check if sudo is available
+# Check if a privilege escalation command (sudo or doas) is available
 check_sudo() {
-    if ! command -v sudo >/dev/null 2>&1; then
-        error "sudo is not available. Please install sudo or run as root (not recommended)."
+    if [ -z "$SUDO" ]; then
+        error "Neither sudo nor doas is available. Please install one of them or run as root (not recommended)."
         return 1
     fi
-    
-    # Request sudo permissions early
-    log "Requesting sudo permissions..."
+
+    # Request elevated permissions early
+    log "Requesting $SUDO permissions..."
     vlog "Needed for system packages and USB access rules"
-    
-    if ! sudo -v; then
-        error "Failed to obtain sudo permissions. Please ensure you have sudo access and try again."
-        return 1
+
+    if [ "$SUDO" = "sudo" ]; then
+        if ! $SUDO -v; then
+            error "Failed to obtain $SUDO permissions. Please ensure you have $SUDO access and try again."
+            return 1
+        fi
+
+        # Keep sudo session alive in background
+        while true; do
+            $SUDO -n true 2>/dev/null && sleep 60 || break
+        done &
+    else
+        # doas has no persistent session cache; just verify access up front.
+        # Later commands will each prompt for the password as needed.
+        if ! $SUDO true; then
+            error "Failed to obtain $SUDO permissions. Please ensure you have $SUDO access (see /etc/doas.conf) and try again."
+            return 1
+        fi
     fi
-    
-    # Keep sudo session alive in background
-    while true; do
-        sudo -n true 2>/dev/null && sleep 60 || break
-    done &
-    
-    success "Sudo permissions obtained successfully"
+
+    success "$SUDO permissions obtained successfully"
     return 0
 }
 
@@ -707,7 +730,7 @@ install_pycryptodome_fallback() {
     case "$DISTRO_ID" in
         ubuntu|linuxmint|pop|elementary|zorin|debian|raspbian)
             if command -v apt >/dev/null 2>&1; then
-                if sudo apt install -y python3-pycryptodome 2>/dev/null || sudo apt install -y python3-pycryptodomex 2>/dev/null; then
+                if $SUDO apt install -y python3-pycryptodome 2>/dev/null || $SUDO apt install -y python3-pycryptodomex 2>/dev/null; then
                     if verify_pycryptodome_installation "" 1; then
                         success "Installed pycryptodome package via apt"
                         if [ "$cache_scope" = "venv" ]; then
@@ -722,7 +745,7 @@ install_pycryptodome_fallback() {
             ;;
         arch|manjaro|endeavouros|cachyos|garuda|artix)
             if command -v pacman >/dev/null 2>&1; then
-                if sudo pacman -S --noconfirm --needed python-pycryptodome 2>/dev/null || sudo pacman -S --noconfirm --needed python-pycryptodomex 2>/dev/null; then
+                if $SUDO pacman -S --noconfirm --needed python-pycryptodome 2>/dev/null || $SUDO pacman -S --noconfirm --needed python-pycryptodomex 2>/dev/null; then
                     if verify_pycryptodome_installation "" 1; then
                         success "Installed pycryptodome package via pacman"
                         if [ "$cache_scope" = "venv" ]; then
@@ -739,7 +762,7 @@ install_pycryptodome_fallback() {
             local dnf_cmd
             dnf_cmd=$(resolve_cmd dnf yum)
             if [ -n "$dnf_cmd" ]; then
-                if sudo "$dnf_cmd" install -y python3-pycryptodome 2>/dev/null || sudo "$dnf_cmd" install -y python3-pycryptodomex 2>/dev/null; then
+                if $SUDO "$dnf_cmd" install -y python3-pycryptodome 2>/dev/null || $SUDO "$dnf_cmd" install -y python3-pycryptodomex 2>/dev/null; then
                     if verify_pycryptodome_installation "" 1; then
                         success "Installed pycryptodome package via $dnf_cmd"
                         if [ "$cache_scope" = "venv" ]; then
@@ -846,7 +869,7 @@ install_ubuntu_deps() {
     
     # Update package list
     log "Updating package list..."
-    if ! sudo apt-get update; then
+    if ! $SUDO apt-get update; then
         error "Failed to update package list. Please check your internet connection and try again."
         return 1
     fi
@@ -875,14 +898,14 @@ install_ubuntu_deps() {
             ;;
     esac
     
-    if ! sudo apt-get install -y $BASE_PACKAGES $ARCH_PACKAGES; then
+    if ! $SUDO apt-get install -y $BASE_PACKAGES $ARCH_PACKAGES; then
         error "Failed to install essential packages. Some packages may not be available."
         warning "Continuing with available packages..."
     fi
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
     log "Installing Python packages..."
-    if sudo apt-get install -y \
+    if $SUDO apt-get install -y \
         python3-pyside6.qtcore \
         python3-pyside6.qtgui \
         python3-pyside6.qtwidgets \
@@ -892,7 +915,7 @@ install_ubuntu_deps() {
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        if sudo apt-get install -y \
+        if $SUDO apt-get install -y \
             python3-pyside2.qtcore \
             python3-pyside2.qtgui \
             python3-pyside2.qtwidgets \
@@ -916,7 +939,7 @@ install_debian_deps() {
     log "Installing dependencies for Debian..."
     
     # Update package list
-    sudo apt-get update
+    $SUDO apt-get update
     
     # Base packages for all architectures
     BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils libxcb-cursor0"
@@ -934,10 +957,10 @@ install_debian_deps() {
             ;;
     esac
     
-    sudo apt-get install -y $BASE_PACKAGES $ARCH_PACKAGES
+    $SUDO apt-get install -y $BASE_PACKAGES $ARCH_PACKAGES
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if sudo apt-get install -y \
+    if $SUDO apt-get install -y \
         python3-pyside6.qtcore \
         python3-pyside6.qtgui \
         python3-pyside6.qtwidgets \
@@ -947,7 +970,7 @@ install_debian_deps() {
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        sudo apt-get install -y \
+        $SUDO apt-get install -y \
             python3-pyside2.qtcore \
             python3-pyside2.qtgui \
             python3-pyside2.qtwidgets \
@@ -964,7 +987,7 @@ install_raspbian_deps() {
     log "Installing dependencies for Raspberry Pi OS..."
     
     # Update package list
-    sudo apt-get update
+    $SUDO apt-get update
     
     # Base packages for Raspberry Pi
     BASE_PACKAGES="python3 python3-pip python3-venv python3-dev python3-setuptools pkg-config git curl wget unzip udev usbutils"
@@ -982,10 +1005,10 @@ install_raspbian_deps() {
             ;;
     esac
     
-    sudo apt-get install -y $BASE_PACKAGES $ARCH_PACKAGES
+    $SUDO apt-get install -y $BASE_PACKAGES $ARCH_PACKAGES
     
     # Install Python packages (Raspbian may not have PySide6, so try PySide2 first)
-    if sudo apt-get install -y \
+    if $SUDO apt-get install -y \
         python3-pyside2.qtcore \
         python3-pyside2.qtgui \
         python3-pyside2.qtwidgets \
@@ -1011,7 +1034,7 @@ install_arch_deps() {
     fi
 
     # Update package database
-    if ! run_cmd "Refreshing package database..." "sudo pacman -Sy"; then
+    if ! run_cmd "Refreshing package database..." "$SUDO pacman -Sy"; then
         warning "Could not refresh package database"
     fi
     
@@ -1032,16 +1055,16 @@ install_arch_deps() {
             ;;
     esac
     
-    if ! run_cmd "Installing system packages..." "sudo pacman -S --noconfirm --needed $BASE_PACKAGES $ARCH_PACKAGES"; then
+    if ! run_cmd "Installing system packages..." "$SUDO pacman -S --noconfirm --needed $BASE_PACKAGES $ARCH_PACKAGES"; then
         warning "Some Arch dependencies failed to install"
     fi
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if run_cmd "Installing optional GUI packages..." "sudo pacman -S --noconfirm --needed python-pyside6 python-requests python-lxml"; then
+    if run_cmd "Installing optional GUI packages..." "$SUDO pacman -S --noconfirm --needed python-pyside6 python-requests python-lxml"; then
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        run_cmd "Installing PySide2 fallback packages..." "sudo pacman -S --noconfirm --needed python-pyside2 python-requests python-lxml" || warning "PySide2 fallback package installation failed"
+        run_cmd "Installing PySide2 fallback packages..." "$SUDO pacman -S --noconfirm --needed python-pyside2 python-requests python-lxml" || warning "PySide2 fallback package installation failed"
     fi
     
     install_python_packages_via_pip
@@ -1067,7 +1090,7 @@ install_fedora_deps() {
     fi
 
     # Update package database
-    sudo "$dnf_cmd" update -y
+    $SUDO "$dnf_cmd" update -y
     
     # Base packages for all architectures
     # MTKClient requirements: fuse, fuse-devel, libusb1-devel
@@ -1086,17 +1109,17 @@ install_fedora_deps() {
             ;;
     esac
     
-    sudo "$dnf_cmd" install -y $BASE_PACKAGES $ARCH_PACKAGES || warning "Some Fedora/RHEL dependencies failed to install"
+    $SUDO "$dnf_cmd" install -y $BASE_PACKAGES $ARCH_PACKAGES || warning "Some Fedora/RHEL dependencies failed to install"
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if sudo "$dnf_cmd" install -y \
+    if $SUDO "$dnf_cmd" install -y \
         python3-PySide6 \
         python3-requests \
         python3-lxml 2>/dev/null; then
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        sudo "$dnf_cmd" install -y \
+        $SUDO "$dnf_cmd" install -y \
             python3-PySide2 \
             python3-requests \
             python3-lxml || warning "PySide2 fallback package installation failed"
@@ -1111,7 +1134,7 @@ install_opensuse_deps() {
     log "Installing dependencies for openSUSE..."
     
     # Update package database
-    sudo zypper refresh
+    $SUDO zypper refresh
     
     # Base packages for all architectures
     # MTKClient requirements: fuse, fuse-devel, libusb-1_0-devel
@@ -1130,17 +1153,17 @@ install_opensuse_deps() {
             ;;
     esac
     
-    sudo zypper install -y $BASE_PACKAGES $ARCH_PACKAGES
+    $SUDO zypper install -y $BASE_PACKAGES $ARCH_PACKAGES
     
     # Install Python packages (try PySide6 first, fallback to PySide2)
-    if sudo zypper install -y \
+    if $SUDO zypper install -y \
         python3-PySide6 \
         python3-requests \
         python3-lxml 2>/dev/null; then
         success "PySide6 packages installed successfully"
     else
         warning "PySide6 not available, trying PySide2..."
-        sudo zypper install -y \
+        $SUDO zypper install -y \
             python3-PySide2 \
             python3-requests \
             python3-lxml
@@ -1156,10 +1179,10 @@ install_steamos_deps() {
     # SteamOS uses pacman but may need special handling
     if command -v pacman >/dev/null 2>&1; then
         # Update package database
-        sudo pacman -Sy
+        $SUDO pacman -Sy
         
         # Install essential packages
-        sudo pacman -S --noconfirm \
+        $SUDO pacman -S --noconfirm \
             python \
             python-pip \
             python-virtualenv \
@@ -1191,10 +1214,10 @@ install_chromeos_deps() {
     # ChromeOS Linux uses apt but may have limited packages
     if command -v apt >/dev/null 2>&1; then
         # Update package list
-        sudo apt update
+        $SUDO apt update
         
         # Install essential packages (ChromeOS may have limited packages)
-        sudo apt install -y \
+        $SUDO apt install -y \
             python3 \
             python3-pip \
             python3-venv \
@@ -1229,7 +1252,7 @@ install_chromeos_deps() {
             liblzma-dev
         
         # Try to install android-tools, but don't fail if not available
-        sudo apt install -y android-tools-adb android-tools-fastboot 2>/dev/null || warning "Android tools not available in ChromeOS repos"
+        $SUDO apt install -y android-tools-adb android-tools-fastboot 2>/dev/null || warning "Android tools not available in ChromeOS repos"
         
         # Install Python packages via pip (ChromeOS may not have PySide6 in repos)
         python3 -m pip install --user --break-system-packages PySide6 requests lxml configparser colorama capstone usb pyusb libusb1 pyserial adbutils
@@ -1263,23 +1286,23 @@ install_generic_deps() {
     
     # Try different package managers
     if command -v apt >/dev/null 2>&1; then
-        sudo apt update 2>/dev/null || true
-        sudo apt install -y build-essential cmake pkg-config libusb-1.0-0-dev 2>/dev/null || warning "Could not install build tools via apt"
+        $SUDO apt update 2>/dev/null || true
+        $SUDO apt install -y build-essential cmake pkg-config libusb-1.0-0-dev 2>/dev/null || warning "Could not install build tools via apt"
     elif command -v pacman >/dev/null 2>&1; then
         if is_immutable_system; then
             warning "Immutable/ostree system detected; skipping pacman build tool install"
         else
-            sudo pacman -Sy 2>/dev/null || true
-            sudo pacman -S --noconfirm base-devel cmake pkgconf libusb 2>/dev/null || warning "Could not install build tools via pacman"
+            $SUDO pacman -Sy 2>/dev/null || true
+            $SUDO pacman -S --noconfirm base-devel cmake pkgconf libusb 2>/dev/null || warning "Could not install build tools via pacman"
         fi
     elif command -v dnf >/dev/null 2>&1 || command -v yum >/dev/null 2>&1; then
         local dnf_cmd
         dnf_cmd=$(resolve_cmd dnf yum)
-        sudo "$dnf_cmd" update -y 2>/dev/null || true
-        sudo "$dnf_cmd" install -y gcc gcc-c++ make cmake pkgconfig libusb1-devel 2>/dev/null || warning "Could not install build tools via $dnf_cmd"
+        $SUDO "$dnf_cmd" update -y 2>/dev/null || true
+        $SUDO "$dnf_cmd" install -y gcc gcc-c++ make cmake pkgconfig libusb1-devel 2>/dev/null || warning "Could not install build tools via $dnf_cmd"
     elif command -v zypper >/dev/null 2>&1; then
-        sudo zypper refresh 2>/dev/null || true
-        sudo zypper install -y gcc gcc-c++ make cmake pkg-config libusb-1_0-devel 2>/dev/null || warning "Could not install build tools via zypper"
+        $SUDO zypper refresh 2>/dev/null || true
+        $SUDO zypper install -y gcc gcc-c++ make cmake pkg-config libusb-1_0-devel 2>/dev/null || warning "Could not install build tools via zypper"
     fi
     
     # Install Python packages via pip
@@ -1346,17 +1369,17 @@ ensure_linux_libpng12() {
     vlog "libpng12.so.0 missing for SP Flash Tool. Attempting system package install..."
     case "${DISTRO_ID:-generic}" in
         ubuntu|linuxmint|pop|elementary|zorin|debian)
-            sudo apt-get update >/dev/null 2>&1 || true
-            sudo apt-get install -y libpng12-0 >/dev/null 2>&1 || true
+            $SUDO apt-get update >/dev/null 2>&1 || true
+            $SUDO apt-get install -y libpng12-0 >/dev/null 2>&1 || true
             ;;
         arch|manjaro|endeavouros)
-            sudo pacman -S --noconfirm libpng12 >/dev/null 2>&1 || true
+            $SUDO pacman -S --noconfirm libpng12 >/dev/null 2>&1 || true
             ;;
         fedora|rhel|centos|almalinux|rocky)
             local dnf_cmd
             dnf_cmd=$(resolve_cmd dnf yum)
             if [ -n "$dnf_cmd" ]; then
-                sudo "$dnf_cmd" install -y libpng12 >/dev/null 2>&1 || true
+                $SUDO "$dnf_cmd" install -y libpng12 >/dev/null 2>&1 || true
             fi
             ;;
     esac
@@ -1497,12 +1520,12 @@ setup_mtkclient_requirements() {
     # Ensure commonly-used USB/serial groups exist and add current user.
     # Arch/CachyOS often use uucp/lock and may not ship plugdev by default.
     if ! getent group plugdev >/dev/null 2>&1; then
-        sudo groupadd -f plugdev >/dev/null 2>&1 || true
+        $SUDO groupadd -f plugdev >/dev/null 2>&1 || true
     fi
     local mtk_groups=("plugdev" "dialout" "uucp" "lock")
     for grp in "${mtk_groups[@]}"; do
         if getent group "$grp" >/dev/null 2>&1; then
-            if sudo usermod -a -G "$grp" "$USER"; then
+            if $SUDO usermod -a -G "$grp" "$USER"; then
                 log "Added user $USER to $grp group"
             else
                 warning "Failed to add user to $grp group"
@@ -1514,7 +1537,7 @@ setup_mtkclient_requirements() {
     log "Checking for vendor interface 0xFF devices..."
     if [ -f "/etc/modprobe.d/blacklist.conf" ]; then
         if ! grep -q "blacklist qcaux" "/etc/modprobe.d/blacklist.conf" 2>/dev/null; then
-            if echo "blacklist qcaux" | sudo tee -a "/etc/modprobe.d/blacklist.conf" >/dev/null; then
+            if echo "blacklist qcaux" | $SUDO tee -a "/etc/modprobe.d/blacklist.conf" >/dev/null; then
                 log "Added qcaux blacklist for LG devices"
             else
                 warning "Failed to add qcaux blacklist"
@@ -1635,7 +1658,7 @@ setup_spflash_system_prep() {
     if prep_script="$(find_spflash_system_prep_script)"; then
         log "Using shared prep script: $prep_script"
         chmod +x "$prep_script" 2>/dev/null || true
-        if sudo bash "$prep_script" "$USER"; then
+        if $SUDO bash "$prep_script" "$USER"; then
             success "SP Flash Tool system prep finished"
             return 0
         fi
@@ -1653,13 +1676,13 @@ setup_spflash_system_prep() {
 setup_udev_rules() {
     log "Setting up udev rules for USB device access..."
 
-    if ! sudo mkdir -p /etc/udev/rules.d; then
+    if ! $SUDO mkdir -p /etc/udev/rules.d; then
         warning "Failed to create udev rules directory — skipping USB rules (install continues)"
         return 0
     fi
 
     # Broad MediaTek/vendor USB rules for MTKClient (best-effort; soft-fail)
-    if ! sudo tee /etc/udev/rules.d/99-mediatek.rules > /dev/null << 'EOF'
+    if ! $SUDO tee /etc/udev/rules.d/99-mediatek.rules > /dev/null << 'EOF'
 # MediaTek USB devices for MTKClient (installer; soft-fail safe)
 SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0666", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
 SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0666", GROUP="plugdev", TAG+="uaccess"
@@ -1675,8 +1698,8 @@ EOF
 
     # Best-effort udev reload
     if command -v udevadm >/dev/null 2>&1; then
-        sudo udevadm control --reload-rules >/dev/null 2>&1 || true
-        sudo udevadm trigger >/dev/null 2>&1 || true
+        $SUDO udevadm control --reload-rules >/dev/null 2>&1 || true
+        $SUDO udevadm trigger >/dev/null 2>&1 || true
     fi
 
     success "USB access setup finished (any failures were skipped)"
@@ -2289,7 +2312,7 @@ uninstall() {
     
     # Remove launcher scripts
     if [ -f "/usr/local/bin/innioasis-updater" ]; then
-        if sudo rm -f "/usr/local/bin/innioasis-updater"; then
+        if $SUDO rm -f "/usr/local/bin/innioasis-updater"; then
             success "Removed system launcher script"
         else
             warning "Failed to remove system launcher script"
@@ -2321,19 +2344,19 @@ uninstall() {
         99-ttyacms.rules
     do
         if [ -f "/etc/udev/rules.d/$rule" ]; then
-            if sudo rm -f "/etc/udev/rules.d/$rule"; then
+            if $SUDO rm -f "/etc/udev/rules.d/$rule"; then
                 success "Removed udev rules: /etc/udev/rules.d/$rule"
             else
                 warning "Failed to remove /etc/udev/rules.d/$rule"
             fi
         fi
     done
-    sudo udevadm control --reload-rules >/dev/null 2>&1 || true
-    sudo udevadm trigger >/dev/null 2>&1 || true
+    $SUDO udevadm control --reload-rules >/dev/null 2>&1 || true
+    $SUDO udevadm trigger >/dev/null 2>&1 || true
 
     # Remove qcaux blacklist line added by installer, if present
     if [ -f "/etc/modprobe.d/blacklist.conf" ] && grep -q '^blacklist qcaux$' "/etc/modprobe.d/blacklist.conf"; then
-        if sudo sed -i '/^blacklist qcaux$/d' "/etc/modprobe.d/blacklist.conf"; then
+        if $SUDO sed -i '/^blacklist qcaux$/d' "/etc/modprobe.d/blacklist.conf"; then
             success "Removed qcaux blacklist entry from /etc/modprobe.d/blacklist.conf"
         else
             warning "Failed to remove qcaux blacklist entry"
@@ -2373,21 +2396,21 @@ update() {
     
     # Backup current installation
     BACKUP_DIR="$INSTALL_DIR.backup.$(date +%Y%m%d_%H%M%S)"
-    if sudo mv "$INSTALL_DIR" "$BACKUP_DIR"; then
+    if $SUDO mv "$INSTALL_DIR" "$BACKUP_DIR"; then
         log "Backed up current installation to $BACKUP_DIR"
     else
         warning "Failed to backup current installation"
     fi
     
     # Create new installation directory
-    if ! sudo mkdir -p "$INSTALL_DIR"; then
+    if ! $SUDO mkdir -p "$INSTALL_DIR"; then
         error "Failed to create installation directory: $INSTALL_DIR"
         rm -rf "$(dirname "$DOWNLOAD_DIR")"
         return 1
     fi
     
     # Copy new files
-    if ! sudo cp -r "$DOWNLOAD_DIR"/* "$INSTALL_DIR/"; then
+    if ! $SUDO cp -r "$DOWNLOAD_DIR"/* "$INSTALL_DIR/"; then
         error "Failed to copy new files to installation directory"
         rm -rf "$(dirname "$DOWNLOAD_DIR")"
         return 1
@@ -2397,10 +2420,10 @@ update() {
     rm -rf "$(dirname "$DOWNLOAD_DIR")"
     
     # Set proper permissions
-    sudo chown -R root:root "$INSTALL_DIR"
-    sudo chmod -R 755 "$INSTALL_DIR"
-    sudo chmod +x "$INSTALL_DIR"/*.py 2>/dev/null || true
-    sudo chmod +x "$INSTALL_DIR"/*.sh 2>/dev/null || true
+    $SUDO chown -R root:root "$INSTALL_DIR"
+    $SUDO chmod -R 755 "$INSTALL_DIR"
+    $SUDO chmod +x "$INSTALL_DIR"/*.py 2>/dev/null || true
+    $SUDO chmod +x "$INSTALL_DIR"/*.sh 2>/dev/null || true
     
     success "Innioasis Updater updated successfully"
     
@@ -2409,7 +2432,7 @@ update() {
     read -p "Would you like to remove the backup directory ($BACKUP_DIR)? (y/n): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        sudo rm -rf "$BACKUP_DIR"
+        $SUDO rm -rf "$BACKUP_DIR"
         success "Backup directory removed"
     else
         log "Backup directory kept at: $BACKUP_DIR"
