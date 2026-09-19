@@ -56,14 +56,18 @@
     overflow: hidden !important;
     cursor: pointer !important;
   }
-  #support-toolbar-container .y1-dock-secondary-goal-view,
-  #support-toolbar-container .y1-dock-secondary-ticker-view {
+  #support-toolbar-container .y1-dock-secondary-goal-view:not([hidden]),
+  #support-toolbar-container .y1-dock-secondary-ticker-view:not([hidden]) {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 8px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-dock-secondary-goal-view[hidden],
+  #support-toolbar-container .y1-dock-secondary-ticker-view[hidden] {
+    display: none !important;
   }
   /* Remove contributor stream box and goal bar on donation popup modal */
   #support-toolbar-container .y1-contributor-stream-box,
@@ -836,12 +840,24 @@
           setTimeout(function () {
             if (showingGoal) {
               if (secondaryText) secondaryText.textContent = state.html;
-              if (secondaryGoalView) secondaryGoalView.hidden = false;
-              if (secondaryTickerView) secondaryTickerView.hidden = true;
+              if (secondaryGoalView) {
+                secondaryGoalView.hidden = false;
+                secondaryGoalView.style.display = "";
+              }
+              if (secondaryTickerView) {
+                secondaryTickerView.hidden = true;
+                secondaryTickerView.style.display = "none";
+              }
             } else {
               if (secondaryTickerEl) secondaryTickerEl.innerHTML = state.html;
-              if (secondaryGoalView) secondaryGoalView.hidden = true;
-              if (secondaryTickerView) secondaryTickerView.hidden = false;
+              if (secondaryGoalView) {
+                secondaryGoalView.hidden = true;
+                secondaryGoalView.style.display = "none";
+              }
+              if (secondaryTickerView) {
+                secondaryTickerView.hidden = false;
+                secondaryTickerView.style.display = "";
+              }
             }
             if (secondaryText) secondaryText.style.opacity = "1";
             if (secondaryTickerEl) secondaryTickerEl.style.opacity = "1";

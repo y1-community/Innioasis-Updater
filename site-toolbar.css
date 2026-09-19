@@ -486,7 +486,7 @@ body.y1-toolbar-thank-you-controls-hidden .y1-toolbar-thank-you-close {
 
 .y1-dock-secondary-goal-view[hidden],
 .y1-dock-secondary-ticker-view[hidden] {
-    display: none;
+    display: none !important;
 }
 
 .y1-dock-secondary-text,
