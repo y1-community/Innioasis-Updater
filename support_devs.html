@@ -1097,6 +1097,8 @@
       var streamLine = document.getElementById("unified-contributor-line");
       if (streamBox && streamLine) {
         var raisedStr = (curMonthRaised % 1 === 0) ? curMonthRaised.toFixed(0) : curMonthRaised.toFixed(2);
+        var targetStr = (MONTHLY_TARGET % 1 === 0) ? MONTHLY_TARGET.toFixed(0) : MONTHLY_TARGET.toFixed(2);
+        var pct = Math.min(100, Math.max(0, (curMonthRaised / MONTHLY_TARGET) * 100));
         var isGoalMet = (curMonthRaised >= MONTHLY_TARGET);
         var goalBarText = isGoalMet
           ? "We rely on your donations to keep running. Donate now"
@@ -1599,7 +1601,8 @@
             renderCreditsPage(data);
           }
         })
-        .catch(function () {
+        .catch(function (err) {
+          if (err) console.error("Credits fetch/render error:", err);
           tryFetch();
         });
     }
