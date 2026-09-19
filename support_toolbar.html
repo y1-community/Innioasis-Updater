@@ -19,6 +19,25 @@
     margin: 0 auto !important;
     max-width: min(96vw, 1040px) !important;
     box-sizing: border-box !important;
+    transition: bottom 0.25s ease, margin-bottom 0.25s ease !important;
+  }
+  #support-toolbar-container .y1-consent-banner {
+    pointer-events: auto !important;
+    z-index: 10005 !important;
+  }
+  #support-toolbar-container .y1-consent-banner * {
+    pointer-events: auto !important;
+  }
+  body.y1-consent-banner-open #support-toolbar-container .y1-site-dock-wrap {
+    bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+    margin-bottom: calc(105px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 10001 !important;
+  }
+  @media (max-width: 768px) {
+    body.y1-consent-banner-open #support-toolbar-container .y1-site-dock-wrap {
+      bottom: calc(185px + env(safe-area-inset-bottom, 0px)) !important;
+      margin-bottom: calc(170px + env(safe-area-inset-bottom, 0px)) !important;
+    }
   }
   #support-toolbar-container .y1-site-dock-bar {
     display: flex !important;
@@ -606,7 +625,8 @@
   function setBanner(value) {
     if (!banner) return;
     banner.hidden = !value;
-    document.body.classList.toggle("y1-consent-banner-open", value);
+    banner.setAttribute("aria-hidden", value ? "false" : "true");
+    document.body.classList.toggle("y1-consent-banner-open", !!value);
     if (backdrop) backdrop.hidden = !(value || !donatePanel.hidden || !privacyPanel.hidden);
   }
 
@@ -708,14 +728,11 @@
     setPanel(privacyPanel, privacyOpen, opening, privacyClose);
   });
   if (donateClose) donateClose.addEventListener("click", function () { setPanel(donatePanel, donateOpen, false); });
-  if (privacyClose) privacyClose.addEventListener("click", function () { setPanel(privacyPanel, privacyOpen, false); });
+  if (privacyClose) privacyClose.addEventListener("click", function () {
+    setPanel(privacyPanel, privacyOpen, false);
+    if (!hasDecided()) setBanner(true);
+  });
   if (privacySave) privacySave.addEventListener("click", saveFromPanel);
-
-  function setBanner(show) {
-    if (!banner) return;
-    banner.hidden = !show;
-    banner.setAttribute("aria-hidden", show ? "false" : "true");
-  }
 
   function hasDecided() {
     return !!(consent && consent.hasDecided && consent.hasDecided());
@@ -749,7 +766,10 @@
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
-      if (!privacyPanel.hidden) setPanel(privacyPanel, privacyOpen, false);
+      if (!privacyPanel.hidden) {
+        setPanel(privacyPanel, privacyOpen, false);
+        if (!hasDecided()) setBanner(true);
+      }
     }
   });
 
@@ -763,27 +783,40 @@
     if (inside) return;
     if (backdrop && event.target === backdrop) {
       if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
-      if (!privacyPanel.hidden) setPanel(privacyPanel, privacyOpen, false);
+      if (!privacyPanel.hidden) {
+        setPanel(privacyPanel, privacyOpen, false);
+        if (!hasDecided()) setBanner(true);
+      }
       return;
     }
     if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
-    if (!privacyPanel.hidden) setPanel(privacyPanel, privacyOpen, false);
+    if (!privacyPanel.hidden) {
+      setPanel(privacyPanel, privacyOpen, false);
+      if (!hasDecided()) setBanner(true);
+    }
   });
 
   var acceptAll = document.querySelector("[data-consent-accept]");
   var essentialOnly = document.querySelector("[data-consent-essential]");
   var manage = document.querySelector("[data-consent-manage]");
-  if (acceptAll) acceptAll.addEventListener("click", function () {
+  if (acceptAll) acceptAll.addEventListener("click", function (e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (typeof closeToolbarThankYou === "function") closeToolbarThankYou();
     if (consent && consent.save) consent.save({ feedback: true, nightly: true });
     setBanner(false);
   });
-  if (essentialOnly) essentialOnly.addEventListener("click", function () {
+  if (essentialOnly) essentialOnly.addEventListener("click", function (e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (typeof closeToolbarThankYou === "function") closeToolbarThankYou();
     if (consent && consent.save) consent.save({ feedback: false, nightly: false });
     setBanner(false);
   });
-  if (manage) manage.addEventListener("click", function () {
+  if (manage) manage.addEventListener("click", function (e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (typeof closeToolbarThankYou === "function") closeToolbarThankYou();
     setPanel(donatePanel, donateOpen, false);
     prefillToggles();
+    setBanner(false);
     setPanel(privacyPanel, privacyOpen, true, privacyClose);
   });
 

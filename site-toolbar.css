@@ -1099,7 +1099,8 @@ body.y1-donate-panel-open .y1-dock-goal-layer {
     left: 50%;
     bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     transform: translateX(-50%);
-    z-index: 10002;
+    z-index: 10005;
+    pointer-events: auto;
     width: min(96vw, 760px);
     display: flex;
     flex-wrap: wrap;
@@ -1146,6 +1147,7 @@ body.y1-donate-panel-open .y1-dock-goal-layer {
 }
 
 .y1-consent-btn {
+    pointer-events: auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1191,19 +1193,13 @@ body.y1-donate-panel-open .y1-dock-goal-layer {
 }
 
 body.y1-consent-banner-open .y1-site-dock-wrap {
-    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-}
-
-/* The consent banner must never cover the dock controls: the dock moves
-   up when the banner opens, but the banner is wider and taller, so give
-   the dock a higher stacking layer while the banner is shown. */
-body.y1-consent-banner-open .y1-site-dock-wrap {
-    z-index: 10003;
+    bottom: calc(118px + env(safe-area-inset-bottom, 0px));
+    z-index: 10001;
 }
 
 body.y1-consent-banner-open .y1-donate-panel,
 body.y1-consent-banner-open .y1-privacy-panel {
-    z-index: 10004;
+    z-index: 10006;
 }
 
 body.site-dock-mode #y1-privacy-panel {
@@ -1308,7 +1304,7 @@ body.site-dock-mode:has(#y1-site-dock-privacy-slot #y1-privacy-settings-btn) > #
     }
 
     body.y1-consent-banner-open .y1-site-dock-wrap {
-        bottom: calc(132px + env(safe-area-inset-bottom, 0px));
+        bottom: calc(185px + env(safe-area-inset-bottom, 0px));
     }
 }
 
