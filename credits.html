@@ -97,6 +97,7 @@
       padding: 12px 16px;
       border-bottom: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.07));
       color: var(--lumen-text, #fff);
+      vertical-align: top;
     }
     .donations-table tr:last-child td {
       border-bottom: none;
@@ -164,35 +165,44 @@
       font-size: 0.82rem;
       word-break: break-all;
     }
+    .donor-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .donor-name-line {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
     .donor-chat-bubble {
-      display: inline-flex;
+      display: flex;
       align-items: flex-start;
       gap: 6px;
       background: var(--lumen-card-bg, rgba(255, 255, 255, 0.06));
       border: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.12));
       border-radius: 8px;
       padding: 4px 8px;
-      margin-top: 5px;
-      max-width: 340px;
+      margin-top: 2px;
+      max-width: 420px;
+      width: fit-content;
       font-size: 0.78rem;
       color: var(--lumen-text, #e5e7eb);
       line-height: 1.35;
       position: relative;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .donor-chat-bubble::before {
       content: "";
       position: absolute;
-      top: -4px;
-      left: 12px;
-      border-width: 0 4px 4px 4px;
+      top: -5px;
+      left: 14px;
+      border-width: 0 5px 5px 5px;
       border-style: solid;
-      border-color: transparent transparent var(--lumen-card-border, rgba(255, 255, 255, 0.12)) transparent;
-    }
-    .donor-bubble-icon {
-      font-size: 0.75rem;
-      line-height: 1.35;
-      opacity: 0.85;
-      flex-shrink: 0;
+      border-color: transparent transparent var(--lumen-card-border, rgba(255, 255, 255, 0.25)) transparent;
     }
     .donor-bubble-text-wrap {
       max-height: 2.7em;
@@ -361,7 +371,7 @@
       <div class="lumen-actions" style="margin-top: 14px;">
         <a class="lumen-button lumen-button--primary" href="#donate">Make a contribution</a>
         <a class="lumen-button" href="#projects-supported">See the projects you’re helping</a>
-        <a class="lumen-button" href="#donors-honor-roll">Meet the supporters</a>
+        <a class="lumen-button" href="#supporters">Meet the supporters</a>
       </div>
     </header>
 
@@ -425,8 +435,9 @@
       </div>
     </section>
 
-    <!-- Section 2: Donors & Supporter Roll of Honor -->
-    <section class="lumen-guide-section" id="donors-honor-roll">
+    <!-- Section 2: Donors & Supporters -->
+    <section class="lumen-guide-section" id="supporters">
+      <a id="donors-honor-roll" style="display:none;" aria-hidden="true"></a>
       <h2>A Thank You to all of our supporters</h2>
       <p>A proper thank-you to everyone who has helped. Whether you bought one coffee or kept coming back, you’re part of the reason this is still here.</p>
       <button type="button" class="donor-credits-thanks" id="open-donor-credits" aria-label="Open the full-screen community credits">Thanks</button>
@@ -456,7 +467,6 @@
 
       <div class="sponsorship-list" aria-labelledby="commercial-sponsorship-title">
         <h3 id="commercial-sponsorship-title">Innioasis commercial sponsorship</h3>
-        <p class="lumen-meta">These contributions are shown separately from community support. They help the project, but they are not counted in the community total or supporter roll of honour.</p>
         <div class="donations-table-wrap">
           <table class="donations-table" aria-label="Innioasis commercial sponsorship ledger">
             <thead><tr><th>Contribution</th><th>Date</th></tr></thead>
@@ -498,7 +508,7 @@
       <p class="donor-credits-eyebrow">Innioasis Updater CE · Community credits</p>
       <h2 class="donor-credits-title" id="donor-credits-title">Thank you.</h2>
       <p class="donor-credits-subtitle">This project is here because people chose to help. To every supporter below: thank you for keeping the archive, the tools, and the community moving.</p>
-      <div class="donor-credits-names" id="donor-credits-names" aria-live="polite"><p>Loading the roll of honour…</p></div>
+      <div class="donor-credits-names" id="donor-credits-names" aria-live="polite"><p>Loading supporters…</p></div>
       <p class="donor-credits-footer">Made with care for the Innioasis Y1 and Y2 community. Every contribution, big or small, matters.<span class="donor-credits-page-indicator" id="donor-credits-page-indicator">Names cycle automatically</span></p>
       <div class="donor-credits-actions">
         <label class="donor-credits-optional"><span class="lumen-visually-hidden">Export formats</span><select id="donor-credits-export-format" aria-label="Export formats"><option value="both">Landscape + portrait</option><option value="landscape">Landscape only</option><option value="portrait">Portrait only</option></select></label>
@@ -725,7 +735,7 @@
 
       var pageEntries = donorCreditsEntries.slice(donorCreditsPageIndex * slots, (donorCreditsPageIndex + 1) * slots);
       if (!pageEntries.length) {
-        namesEl.innerHTML = '<p class="donor-credits-footer">The roll of honour is waiting for its first names.</p>';
+        namesEl.innerHTML = '<p class="donor-credits-footer">Waiting for supporters to appear.</p>';
       } else {
         pageEntries.forEach(function (entry) {
           var item = document.createElement("div");
@@ -1071,7 +1081,7 @@
           if (isInnioasisCorporate(d.name)) {
             totalCorporateRaised += d.amount;
             corporateSponsorships.push(d);
-            // Manufacturer contributions stay out of the community roll of honour.
+            // Manufacturer contributions stay out of the community credits.
           } else {
             totalCommunityRaised += d.amount;
             if (d.dt && d.dt.getMonth() === curMonth && d.dt.getFullYear() === curYear) {
@@ -1471,28 +1481,32 @@
             var targetUrl = entry.latestUrl || METHOD_URLS[(entry.methods[0] && entry.methods[0].lower) || ""] || "https://innioasis.app";
 
             // Name column
-            var nameCol;
+            var nameHeader;
             var contributionCount = entry.count > 1
               ? ' <small style="color: var(--lumen-muted); font-weight: 400;">(' + entry.count + ' contributions)</small>'
               : '';
             if (isReg) {
-              nameCol = '<span class="contributor-star" aria-hidden="true">&#9733;</span>' +
+              nameHeader = '<span class="contributor-star" aria-hidden="true">&#9733;</span>' +
                         '<span class="lumen-visually-hidden">' + contributorLabel(entry.name, true) + ': </span>' +
                         '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + entry.name + '</a>' +
                         contributionCount;
             } else {
-              nameCol = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + entry.name + '</a>';
+              nameHeader = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + entry.name + '</a>' +
+                        contributionCount;
             }
+            var nameCol = '<div class="donor-cell">' +
+              '<div class="donor-name-line">' + nameHeader + '</div>';
 
-            // Chat bubble — show most recent non-empty message
+            // Chat bubble — show most recent non-empty message below donor's name
             var msg = entry.messages.length > 0 ? entry.messages[entry.messages.length - 1] : "";
             if (msg) {
-              var cleanMsg = msg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              var cleanMsg = msg.replace(/^note\s*[:\-–—]?\s*/i, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
               var marqueeClass = cleanMsg.length > 60 ? " donor-bubble-marquee" : "";
               nameCol += '<div class="donor-chat-bubble">' +
                 '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '">' + cleanMsg + '</span></div>' +
                 '</div>';
             }
+            nameCol += '</div>';
 
             // Amount + method icons
             var icons = buildMethodIcons(entry.methods);
@@ -1526,7 +1540,16 @@
             var iconHtml = '<img class="method-icon-img" data-method-icon="' + f + '" src="./mtkclient/gui/images/' + f + '" alt="' + d.method + '" title="' + d.method + '">';
             var absAmt = Math.abs(d.amount);
             var amtStr = "$" + (absAmt % 1 === 0 ? absAmt.toFixed(0) : absAmt.toFixed(2));
-            var nameCol = '<span style="color: var(--lumen-muted, #9aa3b5);">Someone</span>';
+            var nameCol = '<div class="donor-cell">' +
+              '<div class="donor-name-line"><span style="color: var(--lumen-muted, #9aa3b5);">Someone</span></div>';
+            if (d.message && d.message.trim()) {
+              var cleanAnonMsg = d.message.trim().replace(/^note\s*[:\-–—]?\s*/i, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              var marqueeClass = cleanAnonMsg.length > 60 ? " donor-bubble-marquee" : "";
+              nameCol += '<div class="donor-chat-bubble">' +
+                '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '">' + cleanAnonMsg + '</span></div>' +
+                '</div>';
+            }
+            nameCol += '</div>';
             var amtCol = '<span class="contribution-amount-wrap">' + iconHtml + '<strong style="color: #10b981;">' + amtStr + '</strong></span>';
             var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + d.dateStr + '</span>';
             tr.innerHTML = '<td>' + nameCol + '</td><td>' + amtCol + '</td><td>' + dateCol + '</td>';

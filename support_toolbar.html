@@ -424,7 +424,7 @@
     thankYouNames.innerHTML = "";
     var pageEntries = thankYouEntries.slice(thankYouPageIndex * slots, (thankYouPageIndex + 1) * slots);
     if (!pageEntries.length) {
-      thankYouNames.innerHTML = "<p>The roll of honour is waiting for its first names.</p>";
+      thankYouNames.innerHTML = "<p>Waiting for supporters to appear.</p>";
     } else {
       pageEntries.forEach(function (entry) {
         var item = document.createElement("div");
