@@ -1490,7 +1490,6 @@
               var cleanMsg = msg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
               var marqueeClass = cleanMsg.length > 60 ? " donor-bubble-marquee" : "";
               nameCol += '<div class="donor-chat-bubble">' +
-                '<span class="donor-bubble-icon" aria-hidden="true">Note</span>' +
                 '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '">' + cleanMsg + '</span></div>' +
                 '</div>';
             }
