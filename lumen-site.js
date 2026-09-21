@@ -284,7 +284,7 @@
 
     var LUMEN_DONATE_METHODS = [
         { name: "Ko-fi", href: "https://ko-fi.com/teamslide" },
-        { name: "PayPal", href: "https://paypal.me/respectyarn" },
+        { name: "PayPal", href: "https://paypal.me/ryanspecter282" },
         { name: "Patreon", href: "https://www.patreon.com/ryanspecter" }
     ];
 
