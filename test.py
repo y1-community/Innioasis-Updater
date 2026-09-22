@@ -23575,13 +23575,18 @@ class FirmwareDownloaderGUI(QMainWindow):
             random.shuffle(donor_lines)
 
             # Keep each goal display long enough to introduce three donation-from
-            # or donation-to lines before returning to the goal.
+            # or donation-to lines before returning to the goal or annual appeal.
             goal_line = f"You've helped us cover ${raised_str} of our ${target_amt:.0f} costs for this month. All donations are appreciated."
+            annual_line = "If everyone visiting today donated, we'd be able to run for a year"
             lines = [goal_line]
+            appeal_idx = 1
             for index, d_line in enumerate(donor_lines):
                 if index and index % 3 == 0:
-                    lines.append(goal_line)
+                    lines.append(annual_line if appeal_idx % 2 == 1 else goal_line)
+                    appeal_idx += 1
                 lines.append(d_line)
+            if len(donor_lines) < 3:
+                lines.append(annual_line)
 
         self._bottom_ticker_lines = lines
         self._bottom_ticker_index = 0
@@ -23825,11 +23830,17 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         # Refreshes should reshuffle the live ticker too, not restore ranked order.
         random.shuffle(donor_lines)
-        lines = [lines[0]]
+        goal_line = lines[0]
+        annual_line = "If everyone visiting today donated, we'd be able to run for a year"
+        lines = [goal_line]
+        appeal_idx = 1
         for index, d_line in enumerate(donor_lines):
             if index and index % 3 == 0:
-                lines.append(lines[0])
+                lines.append(annual_line if appeal_idx % 2 == 1 else goal_line)
+                appeal_idx += 1
             lines.append(d_line)
+        if len(donor_lines) < 3:
+            lines.append(annual_line)
         self._bottom_ticker_lines = lines
         if hasattr(self, '_bottom_ticker_index'):
             self._bottom_ticker_index = self._bottom_ticker_index % len(lines)
@@ -25237,10 +25248,11 @@ class FirmwareDownloaderGUI(QMainWindow):
             fade_in.setEndValue(1.0)
             fade_in.setEasingCurve(QEasingCurve.InQuad)
 
-            # Alternation cycle: Goal Bar, then three donor/project lines, then Goal Bar.
+            # Alternation cycle: Goal Bar, then three donor/project lines, then Annual line / Goal Bar.
             donor_idx = [0]
             showing_goal = [True]
             donor_lines_since_goal = [0]
+            appeal_step = [0]
 
             def _next_dlg_step():
                 if showing_goal[0]:
@@ -25257,11 +25269,18 @@ class FirmwareDownloaderGUI(QMainWindow):
                     donors_label.setText(cur_line)
                     donor_idx[0] = (donor_idx[0] + 1) % len(raw_donor_lines)
                 else:
-                    showing_goal[0] = True
                     donor_lines_since_goal[0] = 0
-                    donor_view_widget.setVisible(False)
-                    goal_view_widget.setVisible(True)
-                    _trigger_goal_bar_animation()
+                    if appeal_step[0] % 2 == 0:
+                        showing_goal[0] = True
+                        donor_view_widget.setVisible(False)
+                        goal_view_widget.setVisible(True)
+                        _trigger_goal_bar_animation()
+                    else:
+                        showing_goal[0] = False
+                        donors_label.setText("<b>If everyone visiting today donated, we'd be able to run for a year</b>")
+                        goal_view_widget.setVisible(False)
+                        donor_view_widget.setVisible(True)
+                    appeal_step[0] += 1
                 fade_in.start()
 
             fade_out.finished.connect(_next_dlg_step)

@@ -861,11 +861,19 @@
       var goalLine = (raised >= target)
         ? "We rely on your donations to keep running. Donate now"
         : "Help us raise our running costs for the month · You've helped us cover $" + raisedLabel + " of $" + target.toFixed(0) + " costs for this month.";
+      var annualLine = "If everyone visiting today donated, we'd be able to run for a year";
       var states = [{ type: "goal", html: goalLine }];
+      var appealIndex = 1;
       donorLines.forEach(function (line, index) {
-        if (index && index % 3 === 0) states.push({ type: "goal", html: goalLine });
+        if (index && index % 3 === 0) {
+          states.push(appealIndex % 2 === 1 ? { type: "ticker", html: annualLine } : { type: "goal", html: goalLine });
+          appealIndex += 1;
+        }
         states.push({ type: "ticker", html: line });
       });
+      if (donorLines.length < 3) {
+        states.push({ type: "ticker", html: annualLine });
+      }
       if (states.length) {
         var stateIndex = 0;
         function showDonationState() {
@@ -1290,15 +1298,25 @@
       donorItems[shuffleJ] = shuffleValue;
     }
 
+    var annualItem = {
+      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Goal</span>' +
+            '<span>If everyone visiting today donated, we\'d be able to run for a year</span>'
+    };
+
     // Show the goal once, then three donation-from / donation-to lines before
-    // showing the goal again.
+    // alternating between the goal and annual running cost appeal.
     var items = [goalItem];
+    var appealIdx = 1;
     donorItems.forEach(function (dItem, index) {
-      items.push(dItem);
-      if ((index + 1) % 3 === 0 && index + 1 < donorItems.length) {
-        items.push(goalItem);
+      if (index && index % 3 === 0) {
+        items.push(appealIdx % 2 === 1 ? annualItem : goalItem);
+        appealIdx += 1;
       }
+      items.push(dItem);
     });
+    if (donorItems.length < 3) {
+      items.push(annualItem);
+    }
 
     var tickerIdx = 0;
     if (items.length > 0) {

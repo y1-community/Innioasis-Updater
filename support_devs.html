@@ -1203,6 +1203,13 @@
         var showGoal = true;
         var donorIdx = 0;
         var donorLinesSinceGoal = 0;
+        var appealStep = 0;
+        var annualBarHTML =
+          '<div style="width: 100%; display: flex; flex-direction: column; gap: 4px; align-items: center;">' +
+            '<div style="font-size: 0.8rem; font-weight: bold; color: var(--lumen-text, #fff); text-align: center;">' +
+              'If everyone visiting today donated, we\'d be able to run for a year' +
+            '</div>' +
+          '</div>';
         function updateFeed() {
           streamLine.style.opacity = "0";
           setTimeout(function () {
@@ -1211,12 +1218,16 @@
                 shuffleDonorTicker();
                 donorIdx = 0;
               }
-              streamLine.innerHTML = goalBarHTML;
-              streamLine.style.opacity = "1";
-              setTimeout(function () {
-                var fill = document.getElementById("unified-goal-fill");
-                if (fill) fill.style.width = pct.toFixed(1) + "%";
-              }, 50);
+              if (appealStep % 2 === 0) {
+                streamLine.innerHTML = goalBarHTML;
+                setTimeout(function () {
+                  var fill = document.getElementById("unified-goal-fill");
+                  if (fill) fill.style.width = pct.toFixed(1) + "%";
+                }, 50);
+              } else {
+                streamLine.innerHTML = annualBarHTML;
+              }
+              appealStep += 1;
               showGoal = false;
               donorLinesSinceGoal = 0;
             } else {
@@ -1225,8 +1236,8 @@
                 donorIdx = (donorIdx + 1) % donorItems.length;
                 donorLinesSinceGoal += 1;
               }
-              streamLine.style.opacity = "1";
             }
+            streamLine.style.opacity = "1";
           }, 550);
         }
 
