@@ -273,11 +273,8 @@
         </a>
       </div>
 
-      <!-- Honeygain Free Contribution -->
-      <a class="y1-donate-banner-btn" href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">
-        <svg class="y1-donate-btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
-        <span><strong>Help us by sharing 100MB on Honeygain</strong><br><small style="opacity: 0.85; font-weight: normal;">Earn $3</small></span>
-      </a>
+      <!-- Honeygain Free Contribution (de-emphasised small link) -->
+      <p class="y1-donate-alt-link">Or <a href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">help for free with Honeygain</a> (earn $3 by sharing 100MB of bandwidth)</p>
 
       <!-- Crypto Collapsible -->
       <div class="y1-crypto-dropdown">
@@ -306,7 +303,7 @@
 
 
 
-      <p class="y1-donate-smallprint" style="margin-top: 14px;">Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, Patreon, or Honeygain. <a href="credits.html" style="color: inherit; text-decoration: underline;">View our full public donor ledger &amp; money raised for community projects →</a></p>
+      <p class="y1-donate-smallprint" style="margin-top: 14px;">Support Updater and the Themes Gallery through Ko-fi, PayPal, Revolut, or Patreon. <a href="credits.html" style="color: inherit; text-decoration: underline;">View our full public donor ledger &amp; money raised for community projects →</a></p>
     </div>
 
     <div class="y1-privacy-panel" id="y1-privacy-panel" role="dialog" aria-modal="false" aria-labelledby="y1-privacy-title" hidden>
@@ -862,16 +859,16 @@
         ? "We rely on your donations to keep running. Donate now"
         : "Help us raise our running costs for the month · You've helped us cover $" + raisedLabel + " of $" + target.toFixed(0) + " costs for this month.";
       var annualLine = "If everyone visiting today donated, we'd be able to run for a year";
-      var states = [{ type: "goal", html: goalLine }];
+      var states = [{ type: "goal", html: goalLine }, { type: "ticker", html: annualLine }];
       var appealIndex = 1;
       donorLines.forEach(function (line, index) {
-        if (index && index % 3 === 0) {
+        if (index && index % 2 === 0) {
           states.push(appealIndex % 2 === 1 ? { type: "ticker", html: annualLine } : { type: "goal", html: goalLine });
           appealIndex += 1;
         }
         states.push({ type: "ticker", html: line });
       });
-      if (donorLines.length < 3) {
+      if (donorLines.length < 2) {
         states.push({ type: "ticker", html: annualLine });
       }
       if (states.length) {
@@ -1303,18 +1300,17 @@
             '<span>If everyone visiting today donated, we\'d be able to run for a year</span>'
     };
 
-    // Show the goal once, then three donation-from / donation-to lines before
-    // alternating between the goal and annual running cost appeal.
-    var items = [goalItem];
+    // Show the annual appeal every 2 donor items so it appears more frequently.
+    var items = [goalItem, annualItem];
     var appealIdx = 1;
     donorItems.forEach(function (dItem, index) {
-      if (index && index % 3 === 0) {
+      if (index && index % 2 === 0) {
         items.push(appealIdx % 2 === 1 ? annualItem : goalItem);
         appealIdx += 1;
       }
       items.push(dItem);
     });
-    if (donorItems.length < 3) {
+    if (donorItems.length < 2) {
       items.push(annualItem);
     }
 

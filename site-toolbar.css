@@ -401,6 +401,25 @@ body.y1-toolbar-thank-you-controls-hidden .y1-toolbar-thank-you-close {
     margin-top: 2px;
 }
 
+/* De-emphasised free option link — sits below the paid buttons */
+.y1-donate-alt-link {
+    margin: 8px 0 0;
+    font-size: 0.78rem;
+    color: var(--dock-muted, #9aa3b5);
+    text-align: center;
+    line-height: 1.5;
+}
+.y1-donate-alt-link a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+.y1-donate-alt-link a:hover {
+    opacity: 1;
+}
+
 @media (max-width: 430px) {
     .y1-donate-grid { grid-template-columns: 1fr; }
 }
