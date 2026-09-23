@@ -48,8 +48,21 @@ import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
+_SIMULATE_MACOS_FLAG = any(
+    arg in sys.argv for arg in ("--simulate-macos", "--simulate-mac", "--macos", "--mac")
+) or os.environ.get("INNIOASIS_SIMULATE_MACOS", "").lower() in ("1", "true", "yes")
+
+def is_simulating_macos():
+    return _SIMULATE_MACOS_FLAG
+
+def set_simulate_macos(val=True):
+    global _SIMULATE_MACOS_FLAG
+    _SIMULATE_MACOS_FLAG = bool(val)
+
 def get_platform_system():
     """Return the OS name without platform.system(), which can hang in the bundled Python runtime."""
+    if _SIMULATE_MACOS_FLAG:
+        return "Darwin"
     if sys.platform.startswith("win"):
         return "Windows"
     if sys.platform == "darwin":
@@ -80,7 +93,7 @@ if get_platform_system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "2.0.4"
+APP_VERSION = "2.0.5"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
@@ -97,6 +110,10 @@ LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
 FLASH_TOOL_LINUX_URL = (
     "https://github.com/y1-community/Innioasis-Updater/releases/download/flash_tool/flash_tool_linux.zip"
 )
+# Fallback mirror in case the primary release URL is unavailable
+FLASH_TOOL_LINUX_FALLBACK_URL = (
+    "https://github.com/y1-community/updater-ce-neo/releases/download/flash_tool/flash_tool_linux.zip"
+)
 FLASH_TOOL_LINUX_ZIP_NAME = "flash_tool_linux.zip"
 FLASH_TOOL_LINUX_BIN = "flash_tool"
 FLASH_TOOL_WIN_BIN = "flash_tool.exe"
@@ -106,6 +123,9 @@ FLASH_TOOL_LINUX_ZIP_MIN_BYTES = 10 * 1024 * 1024
 # not enough: Qt4 and DA libs ship under lib/ and the package root. If any of these
 # are missing, ensure_linux_sp_flash_tool / prepare_linux_spflash_runtime re-extract.
 # Keep in sync with the release zip layout (unzip -l flash_tool_linux.zip).
+# NOTE: lib/libpng12.so.0 is NOT inside the zip (modern distros dropped it). It is
+# staged separately by stage_linux_libpng12() which downloads a compatible build
+# from the Ubuntu archive when the system or Steam runtime don't provide it.
 FLASH_TOOL_LINUX_REQUIRED_FILES = (
     "flash_tool",
     "flash_tool.sh",
@@ -128,6 +148,17 @@ FLASH_TOOL_LINUX_REQUIRED_FILES = (
     # Qt plugins used by the GUI/console tooling
     "plugins/imageformats/libqjpeg.so",
     "plugins/sqldrivers/libqsqlite.so",
+    # libpng12.so.0: not in zip, staged by stage_linux_libpng12() below.
+    # SP Flash Tool (Qt4 build) hard-requires it; modern distros (Ubuntu 20+, Arch,
+    # Fedora, SUSE) dropped libpng12 from their repos. Tracking it here means
+    # missing_files() will catch a missing libpng12 and trigger re-setup.
+    "lib/libpng12.so.0",
+)
+# The subset of FLASH_TOOL_LINUX_REQUIRED_FILES that are expected to be inside the
+# release zip itself. libpng12.so.0 is staged from the host/download and must NOT
+# be checked when validating the zip archive.
+FLASH_TOOL_LINUX_ZIP_MEMBERS = tuple(
+    f for f in FLASH_TOOL_LINUX_REQUIRED_FILES if f != "lib/libpng12.so.0"
 )
 # udev rule filenames (order matters: low numbers run first)
 # 20-*: ModemManager blacklist early (community SPFT guides + freedesktop MM filters)
@@ -434,18 +465,25 @@ def resolve_firmware_repo(repo):
     return FIRMWARE_REPO_FALLBACKS.get(repo, repo)
 
 
+def is_a5_model(model):
+    """Return True when the selected device model is A5."""
+    return "A5" in (str(model) if model else "").upper()
+
+
 def is_y2_model(model):
     """Return True when the selected device model is Y2."""
-    return "Y2" in (model or "").upper()
+    return "Y2" in (str(model) if model else "").upper()
 
 
 def is_y1_model(model):
     """Return True when the selected device model is Y1."""
-    return "Y1" in (model or "").upper()
+    return "Y1" in (str(model) if model else "").upper()
 
 
 def device_label_for_model(model):
-    """Short device label (Y1, Y2, or fallback) for user-facing copy."""
+    """Short device label (A5, Y2, Y1, or fallback) for user-facing copy."""
+    if is_a5_model(model):
+        return "A5"
     if is_y2_model(model):
         return "Y2"
     if is_y1_model(model):
@@ -460,9 +498,12 @@ def power_on_button_for_model(model):
 
     Y1: hold the centre (select) button.
     Y2: hold the power/lock button on the side.
+    A5: hold the power button on the side.
     """
     if is_y2_model(model):
         return "power/lock button"
+    if is_a5_model(model):
+        return "power button"
     return "centre button"
 
 
@@ -476,75 +517,159 @@ def install_power_on_steps(model):
 def innioasis_name_for_model(model):
     """Marketing-style device name for UI strings."""
     label = device_label_for_model(model)
-    return f"Innioasis {label}" if label in ("Y1", "Y2") else label
+    return f"Innioasis {label}" if label in ("Y1", "Y2", "A5") else label
+
+
+def model_from_zip_name(name_or_url_or_path):
+    """
+    Determine device model ('A5', 'Y2', 'Y1', or None) from original zip filename or URL.
+    Checks user's original browsed name or asset name from URL:
+      - rom_a5.zip, *_a5*, *-a5*, a5-*, a5_* -> 'A5'
+      - rom_y2.zip, *_y2*, *-y2*, y2-*, y2_*, eastaeon, 6582 -> 'Y2'
+      - rom.zip, rom_type_b.zip, rom_type_a.zip, rom_240p*, rom_360p*, rom_y1.zip, *_y1*, *-y1*, y1-*, y1_* -> 'Y1'
+    """
+    if not name_or_url_or_path:
+        return None
+    try:
+        from urllib.parse import urlparse
+        raw = urlparse(str(name_or_url_or_path)).path.rsplit('/', 1)[-1].lower()
+    except Exception:
+        raw = str(name_or_url_or_path).lower().replace('\\', '/')
+        raw = raw.rsplit('/', 1)[-1]
+
+    base = raw.strip()
+    if not base:
+        return None
+
+    stem = Path(base).stem.lower()
+    parts = re.split(r'[-_.\s]+', stem)
+
+    # 1. A5 check (e.g. rom_a5.zip, rom-a5.zip, innioasis_a5.zip, etc.)
+    if (
+        base.startswith("rom_a5")
+        or base.startswith("rom-a5")
+        or "_a5" in base
+        or "-a5" in base
+        or "a5_" in base
+        or "a5-" in base
+        or "a5" in parts
+        or base.startswith("a5")
+    ):
+        return "A5"
+
+    # 2. Y2 check (e.g. rom_y2.zip, rom-y2.zip, eastaeon, 6582, etc.)
+    if (
+        base.startswith("rom_y2")
+        or base.startswith("rom-y2")
+        or "_y2" in base
+        or "-y2" in base
+        or "y2_" in base
+        or "y2-" in base
+        or "y2" in parts
+        or base.startswith("y2")
+        or "eastaeon" in base
+        or "6582" in base
+    ):
+        return "Y2"
+
+    # 3. Y1 check (e.g. rom.zip, rom_type_b.zip, rom_type_a.zip, rom_240p*, rom_360p*, rom_y1.zip, etc.)
+    if (
+        base in ("rom.zip", "rom_type_b.zip", "rom_type_a.zip")
+        or stem in ("rom", "rom_type_b", "rom_type_a")
+        or "rom_type_b" in base
+        or "rom_type_a" in base
+        or "240p" in base
+        or "360p" in base
+        or base.startswith("rom_y1")
+        or base.startswith("rom-y1")
+        or "_y1" in base
+        or "-y1" in base
+        or "y1_" in base
+        or "y1-" in base
+        or "y1" in parts
+        or base.startswith("y1")
+        or "g368" in base
+        or "6572" in base
+    ):
+        return "Y1"
+
+    return None
 
 
 def personalize_device_copy(text, model):
-    """Replace hardcoded Y1 phrasing with the active device model label."""
+    """Replace hardcoded Y1/Y2 phrasing with the active device model label."""
     if not text:
         return text
     label = device_label_for_model(model)
     innioasis = innioasis_name_for_model(model)
-    replacements = [
-        ("Innioasis Y1", innioasis),
-        ("Innioasis Y2", innioasis),
-        ("your Y1's", f"your {label}'s"),
-        ("Your Y1's", f"Your {label}'s"),
-        ("on your Y1's", f"on your {label}'s"),
-        ("On your Y1's", f"On your {label}'s"),
-        ("on your Y1", f"on your {label}"),
-        ("On your Y1", f"On your {label}"),
-        ("to your Y1", f"to your {label}"),
-        ("To your Y1", f"To your {label}"),
-        ("from your Y1", f"from your {label}"),
-        ("From your Y1", f"From your {label}"),
-        ("with your Y1", f"with your {label}"),
-        ("With your Y1", f"With your {label}"),
-        ("into your Y1", f"into your {label}"),
-        ("Into your Y1", f"Into your {label}"),
-        ("on the Y1", f"on the {label}"),
-        ("On the Y1", f"On the {label}"),
-        ("to the Y1", f"to the {label}"),
-        ("To the Y1", f"To the {label}"),
-        ("from the Y1", f"from the {label}"),
-        ("From the Y1", f"From the {label}"),
-        ("for the Y1", f"for the {label}"),
-        ("For the Y1", f"For the {label}"),
-        ("for Y1", f"for {label}"),
-        ("For Y1", f"For {label}"),
-        ("on Y1", f"on {label}"),
-        ("On Y1", f"On {label}"),
-        ("the Y1's", f"the {label}'s"),
-        ("The Y1's", f"The {label}'s"),
-        ("the Y1", f"the {label}"),
-        ("The Y1", f"The {label}"),
-        ("your Y1", f"your {label}"),
-        ("Your Y1", f"Your {label}"),
-        ("Y1's", f"{label}'s"),
-        ("Waiting for Y1", f"Waiting for {label}"),
-        ("waiting for Y1", f"waiting for {label}"),
-        ("Still waiting for Y1", f"Still waiting for {label}"),
-        ("Y1 USB drive", f"{label} USB drive"),
-        ("Y1 USB Drive", f"{label} USB Drive"),
-        ("Y1 drive", f"{label} drive"),
-        ("Y1 Drive", f"{label} Drive"),
-        ("Y1 device", f"{label} device"),
-        ("Y1 Device", f"{label} Device"),
-        ("Y1 player", f"{label} player"),
-        ("Y1 Player", f"{label} Player"),
-        ("Y1 Wi-Fi", f"{label} Wi-Fi"),
-        ("Y1 Wi-Fi Settings", f"{label} Wi-Fi Settings"),
-        ("Send to Y1", f"Send to {label}"),
-        ("Copying update.zip to Y1", f"Copying update.zip to {label}"),
-        ("copy to Y1", f"copy to {label}"),
-        ("Y1 Remote Control", f"{label} Remote Control"),
-        ("Original Y1 Menu Themes", f"Original {label} Menu Themes"),
-        ("Y1 (360p) Rockbox Themes", f"{label} (360p) Rockbox Themes"),
-        ("Tools for Innioasis Y1", f"Tools for Innioasis {label}"),
-    ]
+
     result = text
-    for old, new in replacements:
-        result = result.replace(old, new)
+    result = result.replace("Innioasis Y1", innioasis)
+    result = result.replace("Innioasis Y2", innioasis)
+    if label in ("Y1", "Y2", "A5"):
+        result = result.replace("Innioasis A5", innioasis)
+
+    for prefix in ("Y1", "Y2"):
+        if prefix == label:
+            continue
+        replacements = [
+            (f"your {prefix}'s", f"your {label}'s"),
+            (f"Your {prefix}'s", f"Your {label}'s"),
+            (f"on your {prefix}'s", f"on your {label}'s"),
+            (f"On your {prefix}'s", f"On your {label}'s"),
+            (f"on your {prefix}", f"on your {label}"),
+            (f"On your {prefix}", f"On your {label}"),
+            (f"to your {prefix}", f"to your {label}"),
+            (f"To your {prefix}", f"To your {label}"),
+            (f"from your {prefix}", f"from your {label}"),
+            (f"From your {prefix}", f"From your {label}"),
+            (f"with your {prefix}", f"with your {label}"),
+            (f"With your {prefix}", f"With your {label}"),
+            (f"into your {prefix}", f"into your {label}"),
+            (f"Into your {prefix}", f"Into your {label}"),
+            (f"on the {prefix}", f"on the {label}"),
+            (f"On the {prefix}", f"On the {label}"),
+            (f"to the {prefix}", f"to the {label}"),
+            (f"To the {prefix}", f"To the {label}"),
+            (f"from the {prefix}", f"from the {label}"),
+            (f"From the {prefix}", f"From the {label}"),
+            (f"for the {prefix}", f"for the {label}"),
+            (f"For the {prefix}", f"For the {label}"),
+            (f"for {prefix}", f"for {label}"),
+            (f"For {prefix}", f"For {label}"),
+            (f"on {prefix}", f"on {label}"),
+            (f"On {prefix}", f"On {label}"),
+            (f"the {prefix}'s", f"the {label}'s"),
+            (f"The {prefix}'s", f"The {label}'s"),
+            (f"the {prefix}", f"the {label}"),
+            (f"The {prefix}", f"The {label}"),
+            (f"your {prefix}", f"your {label}"),
+            (f"Your {prefix}", f"Your {label}"),
+            (f"{prefix}'s", f"{label}'s"),
+            (f"Waiting for {prefix}", f"Waiting for {label}"),
+            (f"waiting for {prefix}", f"waiting for {label}"),
+            (f"Still waiting for {prefix}", f"Still waiting for {label}"),
+            (f"{prefix} USB drive", f"{label} USB drive"),
+            (f"{prefix} USB Drive", f"{label} USB Drive"),
+            (f"{prefix} drive", f"{label} drive"),
+            (f"{prefix} Drive", f"{label} Drive"),
+            (f"{prefix} device", f"{label} device"),
+            (f"{prefix} Device", f"{label} Device"),
+            (f"{prefix} player", f"{label} player"),
+            (f"{prefix} Player", f"{label} Player"),
+            (f"{prefix} Wi-Fi", f"{label} Wi-Fi"),
+            (f"{prefix} Wi-Fi Settings", f"{label} Wi-Fi Settings"),
+            (f"Send to {prefix}", f"Send to {label}"),
+            (f"Copying update.zip to {prefix}", f"Copying update.zip to {label}"),
+            (f"copy to {prefix}", f"copy to {label}"),
+            (f"{prefix} Remote Control", f"{label} Remote Control"),
+            (f"Original {prefix} Menu Themes", f"Original {label} Menu Themes"),
+            (f"{prefix} (360p) Rockbox Themes", f"{label} (360p) Rockbox Themes"),
+            (f"Tools for Innioasis {prefix}", f"Tools for Innioasis {label}"),
+            (f"Tools for {prefix}", f"Tools for {label}"),
+        ]
+        for old, new in replacements:
+            result = result.replace(old, new)
     return result
 
 
@@ -626,8 +751,11 @@ def _model_from_firmware_basenames(names):
         'preloader_g368_nyx.bin',
         'mt6572_android_scatter.txt',
     }
+    has_a5 = any('rom_a5' in n or '_a5' in n or '-a5' in n or n.startswith('a5_') for n in lower)
     has_y2 = bool(lower & y2_markers) or any('eastaeon82' in n for n in lower)
     has_y1 = bool(lower & y1_markers) or any('g368_nyx' in n for n in lower)
+    if has_a5:
+        return 'A5'
     if has_y2:
         return 'Y2'
     if has_y1:
@@ -662,71 +790,75 @@ def _model_from_system_image_size(install_dir=None):
     return None
 
 
-def detect_device_model_for_install(device_model=None, zip_path=None, extracted_files=None):
+def detect_device_model_for_install(
+    device_model=None, zip_path=None, extracted_files=None, asset_url=None, original_filename=None
+):
     """
     Resolve device model for install prep.
 
-    Returns 'Y1', 'Y2', or None when the platform cannot be determined.
+    Returns 'A5', 'Y2', 'Y1', or None when the platform cannot be determined.
 
-    Priority (install correctness over UI filter state):
-      1. Zip name (rom_y2.zip / *_y2* / *_y1* / y1-stock)  definitive from package name
-      2. Files from this extraction (not permanently bundled app assets)
-      3. On-disk system.img size (larger than Y1 ANDROID  Y2)
-      4. Explicit UI / caller model
-      5. Residual install-directory / scatter markers
-
-    The dropdown filters which packages are listed; a rom_y2.zip install must still
-    use the Y2 DA/preloader path even if the model filter is still set to Y1.
+    Priority:
+      1. Original zip filename (user's browsed file name or asset filename from download URL)
+      2. Download asset URL
+      3. Zip path (if local browsed file or explicit rom_*.zip)
+      4. Files from this extraction (not permanently bundled app assets)
+      5. On-disk system.img size (larger than Y1 ANDROID -> Y2)
+      6. Explicit UI / caller model (dropdown)
+      7. Residual install-directory / scatter markers
     """
+    # 1. Original filename has highest priority (e.g. rom_a5.zip, rom_y2.zip, rom.zip, rom_type_b.zip)
+    if original_filename:
+        from_orig = model_from_zip_name(original_filename)
+        if from_orig:
+            return from_orig
+
+    # 2. Asset URL (e.g. https://.../releases/download/.../rom_a5.zip)
+    if asset_url:
+        from_url = model_from_zip_name(asset_url)
+        if from_url:
+            return from_url
+
+    # 3. Zip path
     if zip_path:
-        zip_lower = str(zip_path).lower().replace("\\", "/")
-        base = Path(zip_lower).name
-        # Y2 first so mixed names cannot win as Y1
-        stem = Path(base).stem.lower()
-        parts = re.split(r'[-_.\s]+', stem)
-        if (
-            "y2" in parts
-            or "_y2" in base
-            or "-y2" in base
-            or "rom_y2" in base
-            or "rom-y2" in base
-            or "y2-stock" in base
-            or "y2_stock" in base
-            or base.startswith("y2")
-            or "/y2" in zip_lower
-            or "\\y2" in zip_lower
-        ):
+        zip_str = str(zip_path).replace("\\", "/")
+        base = Path(zip_str).name
+        # If this is an explicit rom name (not just an internal cache name with repo org)
+        from_zip = model_from_zip_name(base)
+        if from_zip:
+            return from_zip
+        # For non-standard zip paths: check path tokens, but ignore generic repo names
+        zip_lower = zip_str.lower()
+        if "rom_a5" in zip_lower or "_a5" in zip_lower or "-a5" in zip_lower:
+            return "A5"
+        if "rom_y2" in zip_lower or "_y2" in zip_lower or "-y2" in zip_lower or "eastaeon" in zip_lower or "6582" in zip_lower:
             return "Y2"
         if (
-            "y1" in parts
-            or "_y1" in base
-            or "-y1" in base
-            or "rom_y1" in base
-            or "rom-y1" in base
-            or "y1-stock" in base
-            or "y1_stock" in base
-            or base.startswith("y1")
-            or "y1-community" in base
-            or "y1_community" in base
-            or "/y1" in zip_lower
-            or "\\y1" in zip_lower
+            base in ("rom.zip", "rom_type_b.zip", "rom_type_a.zip")
+            or "rom_y1" in zip_lower
+            or "_y1" in zip_lower
+            or "-y1" in zip_lower
+            or "g368" in zip_lower
+            or "6572" in zip_lower
         ):
             return "Y1"
 
-    # Only treat the caller's extract list as package evidence  do not expand it
-    # with permanently-bundled app-dir files (both Y1 and Y2 preloaders ship here).
+    # 4. Only treat the caller's extract list as package evidence
     if extracted_files:
         extracted_names = {Path(f).name for f in extracted_files}
         from_extract = _model_from_firmware_basenames(extracted_names)
         if from_extract:
             return from_extract
 
-    # Large system.img before residual Y1 scatter leftovers (common after mixed installs)
+    # 5. Large system.img before residual Y1 scatter leftovers
     from_size = _model_from_system_image_size()
     if from_size:
         return from_size
 
+    # 6. User's explicit UI / caller model from dropdown
     if device_model and str(device_model).strip():
+        if is_a5_model(device_model):
+            return 'A5'
         if is_y2_model(device_model):
             return 'Y2'
         if is_y1_model(device_model):
@@ -734,13 +866,12 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
 
     names = _firmware_file_names_in_install_root(None)
 
-    # Definitive Y2: MT6582 scatter shipped in the ROM zip / install folder
+    # 7. Definitive Y2: MT6582 scatter shipped in the ROM zip / install folder
     if Y2_SCATTER_TXT in names and Path(Y2_SCATTER_TXT).exists():
         if _read_scatter_chip_family(Path(Y2_SCATTER_TXT)) == 'Y2':
             return 'Y2'
 
     if 'preloader_eastaeon82_wet_kk.bin' in names:
-        # Only trust Y2 preloader when Y1 preloader is absent  both often ship in-app
         if 'preloader_g368_nyx.bin' not in names:
             return 'Y2'
 
@@ -752,20 +883,25 @@ def detect_device_model_for_install(device_model=None, zip_path=None, extracted_
     if y1_scatter.exists():
         family = _read_scatter_chip_family(y1_scatter)
         if family == 'Y2':
-            # MT6572-named scatter with MT6582/eastaeon content
             return 'Y2'
         if family == 'Y1':
             return 'Y1'
-        # Y2 ROMs may ship MT6572 scatter + preloader_g368_nyx.bin shims for legacy updaters;
-        # without MT6582 scatter or other Y2 markers, do not assume Y1.
         return None
 
     return None
 
 
-def resolve_device_model_for_install(device_model=None, zip_path=None, extracted_files=None):
+def resolve_device_model_for_install(
+    device_model=None, zip_path=None, extracted_files=None, asset_url=None, original_filename=None
+):
     """Resolve model for install from zip/extract evidence, then UI selection, then disk."""
-    return detect_device_model_for_install(device_model, zip_path, extracted_files)
+    return detect_device_model_for_install(
+        device_model=device_model,
+        zip_path=zip_path,
+        extracted_files=extracted_files,
+        asset_url=asset_url,
+        original_filename=original_filename,
+    )
 
 
 # Y1/Y2 mtkclient  **stock mtkclient only** (same tree as
@@ -1307,8 +1443,20 @@ def prepare_mtkclient_images(install_dir=None, progress_cb=None):
     return True, msg, desparsed
 
 
-def remember_install_device_model(model, zip_path=None, extracted_files=None):
-    """Persist the active install model so restarts still pick Y2 DA/preloader."""
+class RememberedInstall(tuple):
+    """3-tuple (model, zip_path, extracted) with .original_filename attribute for backwards compatibility."""
+    def __new__(cls, model=None, zip_path=None, extracted=None, original_filename=None):
+        return super().__new__(cls, (model, zip_path, extracted))
+
+    def __init__(self, model=None, zip_path=None, extracted=None, original_filename=None):
+        self.model = model
+        self.zip_path = zip_path
+        self.extracted = extracted
+        self.original_filename = original_filename
+
+
+def remember_install_device_model(model, zip_path=None, extracted_files=None, original_filename=None):
+    """Persist the active install model so restarts still pick correct DA/preloader/scatter."""
     if not model:
         return
     try:
@@ -1317,6 +1465,7 @@ def remember_install_device_model(model, zip_path=None, extracted_files=None):
         payload = {
             "model": str(model),
             "zip_path": str(zip_path) if zip_path else None,
+            "original_filename": str(original_filename) if original_filename else None,
             "extracted_files": [str(Path(f).name) for f in (extracted_files or [])][:64],
         }
         import json
@@ -1331,14 +1480,15 @@ def load_remembered_install_device_model():
         import json
         marker = get_firmware_app_dir() / INSTALL_MODEL_MARKER
         if not marker.exists():
-            return None, None, None
+            return RememberedInstall(None, None, None, None)
         data = json.loads(marker.read_text(encoding="utf-8"))
         model = data.get("model")
         zip_path = data.get("zip_path")
         extracted = data.get("extracted_files")
-        return model, zip_path, extracted
+        original_filename = data.get("original_filename")
+        return RememberedInstall(model, zip_path, extracted, original_filename)
     except Exception:
-        return None, None, None
+        return RememberedInstall(None, None, None, None)
 
 
 def _scatter_search_bases(install_dir=None):
@@ -2342,43 +2492,16 @@ def y2_mac_flow_active():
 
 
 def resolve_asset_model(asset_url):
-    """Infer Y1/Y2 from the GitHub asset URL a firmware was downloaded from.
+    """Infer A5/Y2/Y1 from the GitHub asset URL a firmware was downloaded from.
 
-    The local zip filename can be misleading: Y2 downloads are saved under the
+    The local zip filename can be misleading: downloads are saved under the
     fallback-mapped repo name (e.g. y1-community_y1-stock-rom_3.1.7.zip), which
-    the zip-name detector reads as Y1. The asset URL keeps the real asset name
-    (e.g. .../3.1.7/rom_y2.zip), so it is reliable evidence for Y2.
-
-    Only the real asset filename is inspected  never on-disk evidence. A
-    neutral asset name (e.g. rom.zip) therefore returns None instead of being
-    misread as Y2 because a Y2 extraction once left residue in the app folder.
+    an internal zip-name detector could misread. The asset URL keeps the real asset name
+    (e.g. .../3.1.7/rom_y2.zip, rom_a5.zip, rom.zip, rom_type_b.zip), so it is reliable evidence.
     """
     if not asset_url:
         return None
-    try:
-        from urllib.parse import urlparse
-        basename = urlparse(str(asset_url)).path.rsplit("/", 1)[-1].lower()
-    except Exception:
-        return None
-    if not basename:
-        return None
-    if (
-        "_y2" in basename
-        or "rom_y2" in basename
-        or "y2-stock" in basename
-        or basename.startswith("y2")
-        or "6582" in basename
-        or "eastaeon" in basename
-    ):
-        return "Y2"
-    if (
-        "_y1" in basename
-        or "rom_y1" in basename
-        or "y1-stock" in basename
-        or basename.startswith("y1")
-    ):
-        return "Y1"
-    return None
+    return model_from_zip_name(asset_url)
 
 
 def linux_cpu_machine():
@@ -2493,8 +2616,10 @@ def linux_spflash_local_zip_path(app_dir=None):
 
 def linux_spflash_zip_has_required_members(zip_path):
     """
-    True when zip_path is a readable zip that contains every required package file.
+    True when zip_path is a readable zip that contains every expected zip member.
 
+    Validates against FLASH_TOOL_LINUX_ZIP_MEMBERS (excludes lib/libpng12.so.0 which
+    is staged from the host/download separately and is NOT inside the release zip).
     Matches the release layout of flash_tool_linux.zip (flat members, forward slashes).
     """
     zip_path = Path(zip_path)
@@ -2509,8 +2634,9 @@ def linux_spflash_zip_has_required_members(zip_path):
                 if n.endswith("/"):
                     continue
                 names.add(n)
-        for rel in FLASH_TOOL_LINUX_REQUIRED_FILES:
+        for rel in FLASH_TOOL_LINUX_ZIP_MEMBERS:
             if rel not in names:
+                silent_print(f"linux_spflash_zip_has_required_members: missing member {rel!r}")
                 return False
         return True
     except Exception as e:
@@ -3100,8 +3226,240 @@ def sp_flash_tool_process_env(app_dir=None, with_open_retry_preload=True):
     return env
 
 
+def stage_linux_libpng12(app_dir=None):
+    """Ensure lib/libpng12.so.0 is present under app_dir so SP Flash Tool (Qt4) can start.
+
+    SP Flash Tool's bundled Qt4 requires libpng12.so.0 at load time. Modern Linux
+    distributions (Ubuntu 20+, Fedora 28+, Arch, CachyOS, openSUSE, etc.) no longer
+    ship libpng12 in their default repos. This function tries four strategies in order:
+
+    1. Already present (skip).
+    2. System library cache (ldconfig -p) — covers distros that still have it installed.
+    3. Well-known static paths: /usr/lib*, /lib/*, Steam runtime (SteamOS/Deck).
+    4. Try distro package managers silently (apt/pacman/dnf/zypper) without sudo;
+       only works when the caller already has root or pkexec context.
+    5. Download the Ubuntu Bionic libpng12-0 .deb, extract, and copy the .so — works
+       on ALL distros with curl/wget because it requires no root and no package manager.
+
+    Returns True when libpng12.so.0 is confirmed present and non-empty after staging.
+    """
+    if not is_linux_platform():
+        return True
+    app_dir = Path(app_dir or get_firmware_app_dir())
+    lib_dir = app_dir / "lib"
+    lib_dir.mkdir(parents=True, exist_ok=True)
+    target = lib_dir / "libpng12.so.0"
+
+    MIN_SIZE = 50 * 1024  # any real libpng12.so.0 is > 100 KB
+
+    def _confirm(p):
+        """True when p is a real, non-empty file (not a broken symlink)."""
+        try:
+            return p.is_file() and p.stat().st_size >= MIN_SIZE
+        except OSError:
+            return False
+
+    # 1. Already staged.
+    if _confirm(target):
+        return True
+
+    # 2. System library cache.
+    try:
+        res = subprocess.run(
+            ["ldconfig", "-p"], capture_output=True, text=True, timeout=15
+        )
+        for line in res.stdout.splitlines():
+            if "libpng12.so.0" in line:
+                sys_path = line.strip().split()[-1]
+                src = Path(sys_path)
+                if _confirm(src):
+                    try:
+                        shutil.copy2(src, target)
+                        silent_print(f"stage_linux_libpng12: copied from ldconfig path {src}")
+                        return True
+                    except Exception as e:
+                        silent_print(f"stage_linux_libpng12: copy from {src} failed: {e}")
+    except Exception as e:
+        silent_print(f"stage_linux_libpng12: ldconfig probe failed: {e}")
+
+    # 3. Well-known static search paths (includes Steam runtime on Deck/SteamOS).
+    static_candidates = [
+        Path("/usr/lib/x86_64-linux-gnu/libpng12.so.0"),
+        Path("/usr/lib/libpng12.so.0"),
+        Path("/usr/lib64/libpng12.so.0"),
+        Path("/lib/x86_64-linux-gnu/libpng12.so.0"),
+        Path("/lib/libpng12.so.0"),
+        # SteamOS / Steam Deck runtime (various Steam versions)
+        Path("/home/deck/.local/share/Steam/ubuntu12_32/steam-runtime/lib/x86_64-linux-gnu/libpng12.so.0.46.0"),
+        Path("/home/deck/.local/share/Steam/ubuntu12_32/steam-runtime/lib/x86_64-linux-gnu/libpng12.so.0"),
+        Path("/run/host/usr/lib/x86_64-linux-gnu/libpng12.so.0"),
+        Path("/run/pressure-vessel/overrides/lib/x86_64-linux-gnu/libpng12.so.0"),
+    ]
+    for src in static_candidates:
+        if _confirm(src):
+            try:
+                shutil.copy2(src, target)
+                silent_print(f"stage_linux_libpng12: copied from static path {src}")
+                return True
+            except Exception as e:
+                silent_print(f"stage_linux_libpng12: copy from {src} failed: {e}")
+
+    # 4. Try distro package managers (silent, best-effort, no pkexec/sudo).
+    try:
+        import importlib
+        # Detect distro
+        try:
+            raw_os = Path("/etc/os-release").read_text(encoding="utf-8", errors="replace").lower()
+        except Exception:
+            raw_os = ""
+        if any(k in raw_os for k in ("ubuntu", "debian", "linuxmint", "pop", "zorin", "elementary")):
+            subprocess.run(
+                ["apt-get", "install", "-y", "libpng12-0"],
+                capture_output=True, text=True, timeout=120,
+            )
+        elif any(k in raw_os for k in ("arch", "cachyos", "manjaro", "endeavouros", "steamos")):
+            subprocess.run(
+                ["pacman", "-S", "--noconfirm", "libpng12"],
+                capture_output=True, text=True, timeout=120,
+            )
+        elif any(k in raw_os for k in ("fedora", "rhel", "centos", "rocky", "almalinux", "nobara")):
+            dnf = shutil.which("dnf") or shutil.which("yum")
+            if dnf:
+                subprocess.run(
+                    [dnf, "install", "-y", "libpng12"],
+                    capture_output=True, text=True, timeout=120,
+                )
+        elif any(k in raw_os for k in ("suse", "opensuse")):
+            subprocess.run(
+                ["zypper", "install", "-y", "libpng12-0"],
+                capture_output=True, text=True, timeout=120,
+            )
+        elif "void" in raw_os:
+            subprocess.run(
+                ["xbps-install", "-Sy", "libpng12"],
+                capture_output=True, text=True, timeout=120,
+            )
+        elif "alpine" in raw_os:
+            subprocess.run(
+                ["apk", "add", "libpng-compat"],
+                capture_output=True, text=True, timeout=120,
+            )
+        # Re-check after package attempt
+        res2 = subprocess.run(["ldconfig", "-p"], capture_output=True, text=True, timeout=15)
+        for line in res2.stdout.splitlines():
+            if "libpng12.so.0" in line:
+                sys_path = line.strip().split()[-1]
+                src = Path(sys_path)
+                if _confirm(src):
+                    try:
+                        shutil.copy2(src, target)
+                        silent_print(f"stage_linux_libpng12: copied after package install from {src}")
+                        return True
+                    except Exception:
+                        pass
+    except Exception as e:
+        silent_print(f"stage_linux_libpng12: package-manager attempt failed: {e}")
+
+    # 5. Download libpng12.so.0 from Ubuntu archive .deb (no root required).
+    # This works on every Linux distro that has curl or wget, regardless of package
+    # manager. We extract only the .so from the deb and copy it to lib/.
+    deb_sources = [
+        # Ubuntu Focal amd64 (libpng12-0 1.2.54) — most widely compatible
+        "http://archive.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb",
+        # Mirror: Debian snapshot
+        "https://snapshot.debian.org/archive/debian/20180401T000000Z/pool/main/libp/libpng/libpng12-0_1.2.49-1+deb7u2_amd64.deb",
+    ]
+    try:
+        import tempfile
+        tmp_dir = Path(tempfile.mkdtemp(prefix="innioasis-libpng12-"))
+        tmp_deb = tmp_dir / "libpng12.deb"
+        extracted_dir = tmp_dir / "extracted"
+        extracted_dir.mkdir()
+        try:
+            for deb_url in deb_sources:
+                # Download
+                dl_ok = False
+                for dl_cmd in (
+                    ["curl", "-sSL", "-o", str(tmp_deb), deb_url],
+                    ["wget", "-q", "-O", str(tmp_deb), deb_url],
+                ):
+                    if not shutil.which(dl_cmd[0]):
+                        continue
+                    r = subprocess.run(dl_cmd, capture_output=True, timeout=120)
+                    if r.returncode == 0 and tmp_deb.is_file() and tmp_deb.stat().st_size > 50 * 1024:
+                        dl_ok = True
+                        break
+                if not dl_ok:
+                    continue
+                # Extract with dpkg-deb when available, fall back to ar+tar
+                so_names = [
+                    "libpng12.so.0.54.0",
+                    "libpng12.so.0.46.0",
+                    "libpng12.so.0",
+                ]
+                extracted_so = None
+                if shutil.which("dpkg-deb"):
+                    subprocess.run(
+                        ["dpkg-deb", "-x", str(tmp_deb), str(extracted_dir)],
+                        capture_output=True, timeout=60,
+                    )
+                else:
+                    # ar + tar fallback (works on Arch, Alpine, etc.)
+                    ar_ok = subprocess.run(
+                        ["ar", "x", str(tmp_deb)],
+                        capture_output=True, timeout=60, cwd=str(extracted_dir),
+                    )
+                    for tarball in ("data.tar.xz", "data.tar.gz", "data.tar.bz2", "data.tar.zst"):
+                        tb = extracted_dir / tarball
+                        if tb.is_file():
+                            subprocess.run(
+                                ["tar", "-xf", str(tb), "-C", str(extracted_dir)],
+                                capture_output=True, timeout=60,
+                            )
+                            break
+                # Find the .so anywhere under extracted_dir
+                for name in so_names:
+                    matches = list(extracted_dir.rglob(name))
+                    if matches:
+                        extracted_so = matches[0]
+                        break
+                if extracted_so is None:
+                    # Fallback: any file that looks like libpng12
+                    for p in extracted_dir.rglob("libpng12.so*"):
+                        if p.is_file() and p.stat().st_size >= MIN_SIZE:
+                            extracted_so = p
+                            break
+                if extracted_so and extracted_so.stat().st_size >= MIN_SIZE:
+                    # Copy the versioned file and create libpng12.so.0 as a real copy
+                    dest_versioned = lib_dir / extracted_so.name
+                    shutil.copy2(extracted_so, dest_versioned)
+                    dest_versioned.chmod(dest_versioned.stat().st_mode | 0o755)
+                    # Write target as a copy (not symlink) for maximum portability
+                    shutil.copy2(dest_versioned, target)
+                    target.chmod(target.stat().st_mode | 0o755)
+                    silent_print(
+                        f"stage_linux_libpng12: staged from Ubuntu deb ({deb_url}) -> {target}"
+                    )
+                    return True
+        finally:
+            try:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
+            except Exception:
+                pass
+    except Exception as e:
+        silent_print(f"stage_linux_libpng12: deb-download strategy failed: {e}")
+
+    silent_print(
+        "stage_linux_libpng12: WARNING — could not stage libpng12.so.0. "
+        "SP Flash Tool will fail with 'libpng12.so.0: cannot open shared object file'. "
+        "Install libpng12-0 manually (Ubuntu: sudo apt install libpng12-0, "
+        "Arch: yay -S libpng12, Fedora: sudo dnf install libpng12)."
+    )
+    return False
+
+
 def ensure_sp_flash_tool_executable(app_dir=None):
-    """chmod +x flash_tool (+ launcher script) and check libpng12 on Linux. No-op elsewhere."""
+    """chmod +x flash_tool, flash_tool.sh, and bin/assistant on Linux. No-op elsewhere."""
     if not is_linux_platform():
         return
     app_dir = Path(app_dir or get_firmware_app_dir())
@@ -3113,24 +3471,6 @@ def ensure_sp_flash_tool_executable(app_dir=None):
                 path.chmod(mode | 0o111)
             except Exception as e:
                 silent_print(f"Warning: could not chmod +x {path}: {e}")
-
-    # Ensure libpng12.so.0 exists in lib/ directory for legacy Qt4 SP Flash Tool
-    lib_dir = app_dir / "lib"
-    lib_dir.mkdir(parents=True, exist_ok=True)
-    target_libpng = lib_dir / "libpng12.so.0"
-    if not target_libpng.exists():
-        try:
-            import subprocess
-            res = subprocess.run(["ldconfig", "-p"], capture_output=True, text=True)
-            for line in res.stdout.splitlines():
-                if "libpng12.so.0" in line:
-                    sys_path = line.strip().split()[-1]
-                    if Path(sys_path).exists():
-                        target_libpng.symlink_to(sys_path)
-                        silent_print(f"Linked system libpng12 at {sys_path} -> {target_libpng}")
-                        break
-        except Exception as e:
-            silent_print(f"Could not check system libpng12: {e}")
 
 
 def _linux_find_askpass_helper():
@@ -3339,37 +3679,53 @@ exit 0
 
 
 def download_linux_flash_tool_zip(app_dir=None, progress_cb=None):
-    """Download flash_tool_linux.zip into app_dir. Returns zip Path."""
+    """Download flash_tool_linux.zip into app_dir, with primary + fallback URL. Returns zip Path."""
     app_dir = Path(app_dir or get_firmware_app_dir())
     app_dir.mkdir(parents=True, exist_ok=True)
     zip_path = app_dir / FLASH_TOOL_LINUX_ZIP_NAME
     if progress_cb:
         progress_cb("Downloading SP Flash Tool for Linux...", 5)
 
-    # Stream download with optional content-length progress.
-    with requests.get(FLASH_TOOL_LINUX_URL, stream=True, timeout=120) as resp:
-        resp.raise_for_status()
-        total = int(resp.headers.get("Content-Length") or 0)
-        written = 0
-        tmp_path = zip_path.with_suffix(".partial")
-        with open(tmp_path, "wb") as out:
-            for chunk in resp.iter_content(chunk_size=1024 * 256):
-                if not chunk:
-                    continue
-                out.write(chunk)
-                written += len(chunk)
-                if progress_cb and total > 0:
-                    # Map download to 555%
-                    pct = 5 + int(50 * (written / total))
+    urls = [FLASH_TOOL_LINUX_URL, FLASH_TOOL_LINUX_FALLBACK_URL]
+    last_err = None
+    for url_index, url in enumerate(urls):
+        try:
+            tmp_path = zip_path.with_suffix(".partial")
+            with requests.get(url, stream=True, timeout=120) as resp:
+                resp.raise_for_status()
+                total = int(resp.headers.get("Content-Length") or 0)
+                written = 0
+                with open(tmp_path, "wb") as out:
+                    for chunk in resp.iter_content(chunk_size=1024 * 256):
+                        if not chunk:
+                            continue
+                        out.write(chunk)
+                        written += len(chunk)
+                        if progress_cb and total > 0:
+                            # Map download progress to 5–55%
+                            pct = 5 + int(50 * (written / total))
+                            progress_cb(
+                                f"Downloading SP Flash Tool… {written // (1024 * 1024)} / "
+                                f"{total // (1024 * 1024)} MB",
+                                min(pct, 55),
+                            )
+            tmp_path.replace(zip_path)
+            if progress_cb:
+                progress_cb("Download complete", 55)
+            return zip_path
+        except Exception as e:
+            last_err = e
+            silent_print(
+                f"download_linux_flash_tool_zip: URL #{url_index + 1} failed ({url}): {e}"
+            )
+            if url_index + 1 < len(urls):
+                if progress_cb:
                     progress_cb(
-                        f"Downloading SP Flash Tool… {written // (1024 * 1024)} / "
-                        f"{total // (1024 * 1024)} MB",
-                        min(pct, 55),
+                        f"Primary download failed, trying mirror… ({e})", 5
                     )
-        tmp_path.replace(zip_path)
-    if progress_cb:
-        progress_cb("Download complete", 55)
-    return zip_path
+    raise RuntimeError(
+        f"All download URLs for {FLASH_TOOL_LINUX_ZIP_NAME} failed. Last error: {last_err}"
+    )
 
 
 def extract_linux_flash_tool_zip(zip_path, app_dir=None, progress_cb=None):
@@ -3382,6 +3738,8 @@ def extract_linux_flash_tool_zip(zip_path, app_dir=None, progress_cb=None):
         # extractall overwrites existing files by default for matching names.
         zf.extractall(path=app_dir)
     ensure_sp_flash_tool_executable(app_dir)
+    # libpng12.so.0 is not in the zip; stage it now so flash_tool can load Qt4.
+    stage_linux_libpng12(app_dir)
     if progress_cb:
         progress_cb("Extraction complete", 75)
     missing = linux_spflash_missing_files(app_dir)
@@ -4158,6 +4516,9 @@ def prepare_linux_spflash_runtime(app_dir=None, ensure_package=True):
                 notes.append(pkg_msg)
     fix_linux_spflash_option_ini(app_dir)
     ensure_sp_flash_tool_executable(app_dir)
+    # Ensure libpng12.so.0 is staged before every launch — it is not in the zip
+    # and can go missing on distros that don't package it (Ubuntu 20+, Arch, etc.)
+    stage_linux_libpng12(app_dir)
     ensure_spft_open_retry_preload(app_dir)
     # Only this install should own flash_tool / mtk.py / ttyACM*
     try:
@@ -4368,6 +4729,9 @@ def ensure_linux_sp_flash_tool(progress_cb=None, force_download=False, force_sys
             if progress_cb:
                 progress_cb("USB/serial access rules already installed", 85)
 
+        if not linux_spflash_files_ready(app_dir):
+            # libpng12.so.0 is not in the zip; attempt staging now before final check
+            stage_linux_libpng12(app_dir)
         if not linux_spflash_files_ready(app_dir):
             still = linux_spflash_missing_files(app_dir)
             return False, (
@@ -6839,13 +7203,15 @@ class SPFlashToolWorker(QThread):
     show_try_again_dialog = Signal()  # Signal to prompt user for MTK fallback
 
     def __init__(self, install_xml_path=None, device_model=None, com_port=None,
-                 zip_path=None, extracted_files=None):
+                 zip_path=None, extracted_files=None, original_filename=None, asset_url=None):
         super().__init__()
         self.should_stop = False
         self.device_model = device_model
         self.zip_path = zip_path
         self.extracted_files = extracted_files
-        self.device_label = device_label_for_model(device_model)
+        self.original_filename = original_filename
+        self.asset_url = asset_url
+        self._sync_device_label(device_model)
         self.requested_com_port = com_port
         # Console-mode XML install: flash_tool(.exe) -i install_rom_sp(_y2).xml
         app_dir = get_firmware_app_dir()
@@ -6873,6 +7239,8 @@ class SPFlashToolWorker(QThread):
             model if model is not None else self.device_model,
             zip_path=getattr(self, "zip_path", None),
             extracted_files=getattr(self, "extracted_files", None),
+            original_filename=getattr(self, "original_filename", None),
+            asset_url=getattr(self, "asset_url", None),
         )
         if resolved:
             self.device_model = resolved
@@ -7551,7 +7919,7 @@ class MTKWorker(QThread):
     enable_update_button = Signal()   # Signal to enable update button when returning to ready state
 
     def __init__(self, debug_mode=False, debug_window=None, device_model=None,
-                 zip_path=None, extracted_files=None):
+                 zip_path=None, extracted_files=None, original_filename=None, asset_url=None):
         super().__init__()
         self.should_stop = False
         self.debug_mode = debug_mode
@@ -7559,11 +7927,18 @@ class MTKWorker(QThread):
         self.device_model = device_model
         self.zip_path = zip_path
         self.extracted_files = extracted_files
-        self.device_label = device_label_for_model(
-            resolve_device_model_for_install(
-                device_model, zip_path=zip_path, extracted_files=extracted_files
-            )
+        self.original_filename = original_filename
+        self.asset_url = asset_url
+        resolved = resolve_device_model_for_install(
+            device_model,
+            zip_path=zip_path,
+            extracted_files=extracted_files,
+            original_filename=original_filename,
+            asset_url=asset_url,
         )
+        if resolved:
+            self.device_model = resolved
+        self.device_label = device_label_for_model(self.device_model)
         self.initsteps_timer = None  # Timer for 1.5 second delay fallback
 
         # Platform-specific progress bar characters
@@ -7613,7 +7988,10 @@ class MTKWorker(QThread):
         """
         self._clear_mtk_state(cwd, app_dir, Path.cwd())
         label = f"[{stage_name}] " if stage_name else ""
-        self.status_updated.emit(f"Installation: {label}starting…")
+        connect_status = spflash_connect_status_text(
+            self.device_label, device_model=self.device_model
+        )
+        self.status_updated.emit(connect_status)
         self.show_initsteps_image.emit()
 
         process = subprocess.Popen(
@@ -7630,6 +8008,8 @@ class MTKWorker(QThread):
         saw_progress = False
         saw_wrote = False
         failed_write = False
+        instructions_phase = True
+        device_detected = False
         deadline = time.time() + 900  # 15 min per stage
         while True:
             if self.should_stop:
@@ -7660,22 +8040,51 @@ class MTKWorker(QThread):
                 continue
             last_line = line
             fixed = self.fix_progress_bar_chars(line)
+            clean_line = line.lstrip(" .\t")
             lower = line.lower()
-            if "progress" in lower or line.lower().startswith("wrote"):
+
+            # When mtkclient outputs a line beginning with "Port - Device detected :)"
+            if clean_line.startswith("Port - Device detected :)") or "Port - Device detected :)" in line:
+                instructions_phase = False
+                device_detected = True
+                self.show_please_wait_image.emit()
+                self.status_updated.emit("Please wait...")
+
+            # When mtkclient outputs a line beginning with "Progress:"
+            if clean_line.startswith("Progress:") or line.strip().startswith("Progress:"):
                 saw_progress = True
+                instructions_phase = False
                 self.show_installing_image.emit()
                 self.disable_update_button.emit()
+                prog_display = fixed.strip()
+                if prog_display.startswith("Progress:"):
+                    prog_detail = prog_display[len("Progress:"):].strip()
+                    status_text = f"Install in Progress: {prog_detail}" if prog_detail else "Install in Progress"
+                else:
+                    status_text = f"Install in Progress: {prog_display}"
+                self.status_updated.emit(status_text)
+            elif ("progress" in lower or "%" in line) and not saw_progress:
+                saw_progress = True
+                instructions_phase = False
+                self.show_installing_image.emit()
+                self.disable_update_button.emit()
+                self.status_updated.emit(f"Install in Progress: {fixed.strip()}")
+            elif saw_progress and "%" in line:
+                self.show_installing_image.emit()
+                self.status_updated.emit(f"Install in Progress: {fixed.strip()}")
+
             if line.lower().startswith("wrote"):
                 saw_wrote = True
+                if saw_progress:
+                    self.show_installing_image.emit()
+                    self.status_updated.emit(f"Install in Progress: {fixed.strip()}")
+
             if "failed to write" in lower or "data ack failed" in lower:
                 failed_write = True
-            if "device detected" in lower:
-                self.show_please_wait_image.emit()
-            if "recovery mode" in lower or "brom" in lower or "waiting for" in lower:
-                self.status_updated.emit("Please wait…")
-                self.show_please_wait_image.emit()
-            else:
-                self.status_updated.emit(f"Installation: {label}{fixed}")
+
+            if instructions_phase and not saw_progress and not device_detected:
+                self.show_initsteps_image.emit()
+                self.status_updated.emit(connect_status)
 
         process.wait()
         ok = (process.returncode == 0 or saw_wrote) and not failed_write
@@ -7711,11 +8120,17 @@ class MTKWorker(QThread):
                 for attempt in range(1, retries + 1):
                     if self.should_stop:
                         break
-                    self.status_updated.emit(
-                        f"{device_label} flash ({name}) try {attempt}/{retries}  "
-                        f"power off the player and connect USB when asked"
+                    connect_status = spflash_connect_status_text(
+                        device_label, device_model=self.device_model
                     )
-                    self.show_reconnect_image.emit()
+                    if attempt > 1:
+                        self.status_updated.emit(
+                            f"Retrying {device_label} flash ({name}) try {attempt}/{retries}. {connect_status}"
+                        )
+                        self.show_reconnect_image.emit()
+                    else:
+                        self.status_updated.emit(connect_status)
+                        self.show_initsteps_image.emit()
                     ok, last_line, _ = self._run_one_mtk_cmd(
                         cmd, cwd, app_dir, stage_name=name
                     )
@@ -7943,7 +8358,7 @@ class MTKWorker(QThread):
                     # If no output for a while, emit empty status to trigger instruction message
                     # But only if we're not in a specific status state like "Please wait..." or active install
                     disconnect_restart = f"Please disconnect your {self.device_label} and restart the app"
-                    if current_status not in ["Please wait...", disconnect_restart] and not progress_detected and not active_installation_started:
+                    if current_status not in ["Please wait...", "Install in Progress", disconnect_restart] and not progress_detected and not active_installation_started:
                         self.status_updated.emit("")
                         self.show_instructions_image.emit()
                         last_status_update = current_time
@@ -8006,36 +8421,26 @@ class MTKWorker(QThread):
                         if initsteps_start_time is None:
                             initsteps_start_time = time.time()
 
-                    # Handle status message replacement for blank/dots output
-                    if fixed_line == "" or fixed_line.startswith(".") or fixed_line.strip() == "":
-                        # Only show instruction message if not in active installation
-                        if not active_installation_started:
-                            # When mtk.py only displays blank output or dots/periods, show instruction message
-                            install_instructions = (
-                                f"Please follow the instructions below to install the software on your {self.device_label}"
-                            )
-                            self.status_updated.emit(install_instructions)
-                            current_status = install_instructions
-                            # Only show initsteps image if we're not in an active install (no progress detected) AND not in active installation state
-                            if not progress_detected and not active_installation_started:
-                                self.show_instructions_image.emit()
-                            last_status_update = time.time()  # Update status time
+                    # Handle status message and image for connection waiting phase
+                    if not active_installation_started:
+                        connect_status = spflash_connect_status_text(
+                            self.device_label, device_model=self.device_model
+                        )
+                        _hint_keywords = (
+                            'power off', 'brom mode', 'preloader mode',
+                            'reset hole', 'paperclip', 'connect usb',
+                            'port - hint', 'hint:', 'waiting for', 'hold power',
+                            'search usb'
+                        )
+                        is_dot_or_blank = fixed_line == "" or set(fixed_line.strip()) <= {'.'} or fixed_line.strip().startswith(".")
+                        is_hint = any(kw in lower_line for kw in _hint_keywords)
 
-                        # Check if we've been in initsteps phase too long - but not during active installation
-                        if initsteps_start_time is not None and (time.time() - initsteps_start_time) > initsteps_timeout:
-                            # Do not terminate here; keep waiting for user/device connection.
-                            if not active_installation_started:
-                                if not waiting_notice_shown:
-                                    self.status_updated.emit(
-                                        f"Still waiting for {self.device_label} connection... "
-                                        "keep device unplugged until prompted, then connect it."
-                                    )
-                                    waiting_notice_shown = True
-                                initsteps_start_time = time.time()
-                            else:
-                                # During active installation, just reset the timer to prevent false termination
-                                initsteps_start_time = time.time()
-                                silent_print("Reset initsteps timer during active installation")
+                        if is_dot_or_blank or is_hint:
+                            self.show_initsteps_image.emit()
+                            self.status_updated.emit(connect_status)
+                            current_status = connect_status
+                            last_status_update = time.time()
+                            continue
                     else:
                         # DeviceClass - [Errno 2] Entity not found is a non-fatal USB
                         # reconnect warning emitted during stage-2 speed renegotiation.
@@ -8046,30 +8451,11 @@ class MTKWorker(QThread):
                             and "entity not found" in line.lower()
                         )
                         if not is_nonfatal_usb_reconnect:
-                            # Strip [module] tags (e.g. [flash], [lib], [warn]) and
-                            # replace mtkclient's generic power-hold tip with the
-                            # device-specific paperclip/pin reset instruction.
                             display_line = re.sub(r'^\[[^\]]+\]\s*', '', fixed_line)
-                            display_line = re.sub(
-                                r'hold power for \d+ seconds? to reset',
-                                'press a paperclip or pin into the reset hole to power off',
-                                display_line,
-                                flags=re.IGNORECASE,
-                            )
-                            # Show connection instructions image when we're still in the
-                            # "waiting for device" hint phase (not during active flash).
-                            _hint_keywords = ('power off', 'brom mode', 'preloader mode',
-                                              'reset hole', 'paperclip', 'connect usb',
-                                              'port - hint')
-                            if (not active_installation_started
-                                    and any(kw in display_line.lower() for kw in _hint_keywords)):
-                                self.show_instructions_image.emit()
-                            # Show latest output in status area (no extra whitespace)
                             self.status_updated.emit(f"Installation: {display_line}")
-                            current_status = f"Installation: {display_line}"  # Track current status
-                        # Reset initsteps timer when we get real output
+                            current_status = f"Installation: {display_line}"
                         initsteps_start_time = None
-                        last_status_update = time.time()  # Update status time
+                        last_status_update = time.time()
 
                     # Check for errno2 error (e.g. "[Errno 2]" without "entity not found")
                     if ("errno 2" in line.lower() or "errno2" in line.lower()) and "entity not found" not in line.lower():
@@ -8169,30 +8555,45 @@ class MTKWorker(QThread):
                         last_status_update = time.time()  # Update status time
                         # Don't treat this as an error, just continue
 
-                    if ".Port - Device detected :)" in line:
+                    clean_line = line.lstrip(" .\t")
+                    if clean_line.startswith("Port - Device detected :)") or "Port - Device detected :)" in line:
                         device_detected = True
-                        # Don't switch to installing.png yet - wait for proper timing
+                        current_status = "Please wait..."
+                        self.status_updated.emit("Please wait...")
+                        self.show_please_wait_image.emit()
+                        last_status_update = time.time()
 
                     # Check if flashing has started (look for write operations)
-                    if device_detected and ("Write" in line or "Progress:" in line) and not flashing_started:
+                    if device_detected and ("Write" in line or clean_line.startswith("Progress:")) and not flashing_started:
                         flashing_started = True
 
                     # Check for progress indicator and show installing.png
-                    if "progress" in line.lower():
+                    if clean_line.startswith("Progress:") or line.strip().startswith("Progress:"):
+                        flashing_started = True
+                        active_installation_started = True
+                        progress_detected = True
+                        last_progress_time = time.time()
                         self.show_installing_image.emit()
-                        # Disable update button when MTK installation starts
                         self.disable_update_button.emit()
-                    # Track progress for interruption detection
-                    progress_detected = True
-                    last_progress_time = time.time()
-                    # Don't emit status message - let MTK output be displayed clearly
-
-                    # Check for Progress or Wrote lines to show installing.png and display output in status
-                    if "progress" in line.lower() or line.lower().startswith("wrote"):
+                        prog_display = fixed_line.strip()
+                        if prog_display.startswith("Progress:"):
+                            prog_detail = prog_display[len("Progress:"):].strip()
+                            status_text = f"Install in Progress: {prog_detail}" if prog_detail else "Install in Progress"
+                        else:
+                            status_text = f"Install in Progress: {prog_display}"
+                        self.status_updated.emit(status_text)
+                        current_status = status_text
+                        last_status_update = time.time()
+                    elif "progress" in line.lower() or line.lower().startswith("wrote") or "%" in line:
+                        flashing_started = True
+                        active_installation_started = True
+                        progress_detected = True
+                        last_progress_time = time.time()
                         self.show_installing_image.emit()
-                        # Display the actual mtk.py output in status field
-                        self.status_updated.emit(f"Installation: {fixed_line}")
-                        current_status = f"Installation: {fixed_line}"
+                        self.disable_update_button.emit()
+                        status_text = f"Install in Progress: {fixed_line.strip()}"
+                        self.status_updated.emit(status_text)
+                        current_status = status_text
                         last_status_update = time.time()
 
                         # active_installation_started is now set immediately when progress/wrote is first detected above
@@ -8433,6 +8834,11 @@ class DownloadWorker(QThread):
         self.version = version
         self.device_model = device_model
         self.should_stop = False
+        try:
+            from urllib.parse import urlparse
+            self.original_asset_name = urlparse(str(download_url)).path.rsplit('/', 1)[-1]
+        except Exception:
+            self.original_asset_name = None
 
     def stop(self):
         """Stop the download worker"""
@@ -8442,8 +8848,8 @@ class DownloadWorker(QThread):
         try:
             self.status_updated.emit("Downloading...")
 
-            # Remember the GitHub asset URL  its real asset name is the only
-            # reliable Y1/Y2 evidence for fallback-mapped repos (see resolve_asset_model).
+            # Remember the GitHub asset URL  its real asset name is reliable
+            # evidence for the model (see resolve_asset_model / model_from_zip_name).
             self.install_asset_url = self.download_url
             asset_model = resolve_asset_model(self.download_url)
 
@@ -8498,7 +8904,12 @@ class DownloadWorker(QThread):
             # the fallback repo name and would be misread as Y1.
             if y2_mac_flow_active() and is_y2_model(
                 asset_model
-                or resolve_device_model_for_install(None, zip_path=str(zip_path))
+                or resolve_device_model_for_install(
+                    self.device_model,
+                    zip_path=str(zip_path),
+                    asset_url=self.download_url,
+                    original_filename=self.original_asset_name,
+                )
             ):
                 self.resolved_install_model = "Y2"
                 self.install_zip_name = zip_path.name
@@ -8525,8 +8936,12 @@ class DownloadWorker(QThread):
             log_extracted_files(extracted_files)
 
             resolved_model = resolve_device_model_for_install(
-                self.device_model, zip_path=zip_path.name, extracted_files=extracted_files
-            ) or resolved_model or asset_model
+                self.device_model,
+                zip_path=zip_path.name,
+                extracted_files=extracted_files,
+                asset_url=self.download_url,
+                original_filename=self.original_asset_name,
+            ) or asset_model or resolved_model
             # Stash install context on the worker so the UI can pick it up after download
             self.resolved_install_model = resolved_model
             self.install_zip_name = zip_path.name
@@ -11584,8 +11999,14 @@ class ThemeMonitor(QObject):
             import subprocess
             result = subprocess.run(['defaults', 'read', '-g', 'AppleInterfaceStyle'],
                                   capture_output=True, text=True, timeout=2)
-            return "dark" if result.returncode == 0 and result.stdout.strip() else "light"
+            if result.returncode == 0 and result.stdout.strip():
+                return "dark"
+            if is_simulating_macos():
+                return self._get_linux_theme()
+            return "light"
         except:
+            if is_simulating_macos():
+                return self._get_linux_theme()
             return "light"
 
     def _get_windows_theme(self):
@@ -12081,6 +12502,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.theme_monitor.theme_changed.connect(self.refresh_release_notes_on_theme_change)
         self.theme_monitor.theme_changed.connect(self.update_creator_label)
         self.theme_monitor.theme_changed.connect(self._refresh_update_notice_label)
+        self.theme_monitor.theme_changed.connect(self.update_bottom_ticker_theme)
         self.theme_monitor.start_monitoring()
 
         # Initialize UI first for immediate responsiveness
@@ -12650,7 +13072,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "SP Flash Tool could not be fully set up on this system.\n\n"
                     f"{message}\n\n"
                     "What this means:\n"
-                    " Y1 firmware installs will use MTKClient Guided as the default\n"
+                    " Y1 firmware installs will use Guided - MTKClient as the default\n"
                     " Y2 firmware installs still need SP Flash Tool  the app will offer "
                     "to run setup again if you try a Y2 install\n\n"
                     "You can retry SP Flash Tool setup any time by choosing an SP Flash Tool "
@@ -14558,7 +14980,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         # Middle: Rotating single-contributor crossfading live ticker
         self.bottom_donor_ticker_label = ClickableTickerLabel(on_label_click=self.show_donation_dialog)
         self.bottom_donor_ticker_label.setAlignment(Qt.AlignCenter)
-        self.bottom_donor_ticker_label.setStyleSheet("font-size: 11px; font-weight: 600; color: #6b7280;")
+        is_dark_init = self.is_dark_mode() if hasattr(self, 'is_dark_mode') else True
+        init_ticker_color = "#f3f4f6" if is_dark_init else "#1f2937"
+        self.bottom_donor_ticker_label.setStyleSheet(f"font-size: 11px; font-weight: 600; color: {init_ticker_color}; background: transparent;")
         bottom_layout.addWidget(self.bottom_donor_ticker_label, 4)
 
         bottom_layout.addStretch(1)
@@ -14844,6 +15268,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     device_model=install_model,
                     zip_path=install_zip,
                     extracted_files=install_extracted,
+                    original_filename=getattr(self, '_last_install_original_name', None),
+                    asset_url=getattr(self, '_last_install_asset_url', None),
                 )
                 self.mtk_worker.status_updated.connect(self.update_status)
                 self.mtk_worker.show_installing_image.connect(self.load_installing_image)
@@ -14909,9 +15335,18 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Now please follow the instructions displayed below. Please force quit the app if not responding and restart it.")
         else:
             self.status_label.setText(message)
+            if hasattr(self, 'progress_bar') and self.progress_bar:
+                pct_match = re.search(r'(\d+(?:\.\d+)?)%', message)
+                if pct_match:
+                    try:
+                        pct_val = int(float(pct_match.group(1)))
+                        self.progress_bar.setVisible(True)
+                        self.progress_bar.setValue(pct_val)
+                    except Exception:
+                        pass
             # Auto-clear status after timeout (unless it's a persistent message like MTK or installation progress)
             # Don't auto-clear if message indicates an active operation
-            persistent_keywords = ["MTK:", "Installing", "Downloading", "Preparing", "Starting", "Progress", "Please follow"]
+            persistent_keywords = ["MTK:", "Installing", "Downloading", "Preparing", "Starting", "Progress", "Please follow", "Please wait", "Install in Progress", "Writing firmware"]
             if auto_clear_seconds > 0 and not any(keyword in message for keyword in persistent_keywords):
                 self.status_clear_timer = QTimer()
                 self.status_clear_timer.setSingleShot(True)
@@ -15131,10 +15566,12 @@ class FirmwareDownloaderGUI(QMainWindow):
 
             device_model, _, _ = self.get_install_model_context()
             # Prefer evidence on disk (preloader/scatter) so a stale UI filter cannot
-            # launch Y1 XML against Y2 images (silent LoadRoms exit).
+            # launch mismatched XML against target images (silent LoadRoms exit).
             disk_hint = detect_device_model_for_install(
                 zip_path=getattr(self, "_last_install_zip_name", None),
                 extracted_files=getattr(self, "_last_install_extracted_files", None),
+                original_filename=getattr(self, "_last_install_original_name", None),
+                asset_url=getattr(self, "_last_install_asset_url", None),
             )
             if disk_hint and device_model and disk_hint != device_model:
                 silent_print(
@@ -15150,9 +15587,9 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self,
                     "Device Model Unknown",
                     self.device_copy(
-                        "Could not determine whether this firmware is for a Y1 or Y2 device.\n\n"
+                        "Could not determine the device model for this firmware.\n\n"
                         "Extract the firmware files first, select the correct device model, or use "
-                        "Browse Files with a rom_y2.zip / Y2 firmware package."
+                        "Browse Files with your firmware package (e.g., rom.zip, rom_y2.zip, rom_a5.zip)."
                     ),
                 )
                 self.show_appropriate_buttons_for_spflash()
@@ -15185,7 +15622,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     "Firmware images do not match this device model",
                     "SP Flash Tool would quit before waiting for USB (image/scatter mismatch).\n\n"
                     + "\n".join(f" {e}" for e in img_errors)
-                    + "\n\nExtract the correct Y1 or Y2 firmware package and try again.",
+                    + "\n\nExtract the correct firmware package for your device model and try again.",
                 )
                 return
 
@@ -15289,6 +15726,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 com_port=pinned_com,
                 zip_path=install_zip,
                 extracted_files=install_extracted,
+                original_filename=getattr(self, "_last_install_original_name", None),
+                asset_url=getattr(self, "_last_install_asset_url", None),
             )
             self.spflash_worker.status_updated.connect(self.status_label.setText)
             self.spflash_worker.show_installing_image.connect(self.load_installing_image)
@@ -15589,14 +16028,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                         self._start_linux_flash_tool_first_time_setup()
                     return
 
-                # Prefer disk evidence so Y2 packages never get Y1 rom indices.
-                disk_hint = detect_device_model_for_install(
-                    zip_path=getattr(self, "_last_install_zip_name", None),
-                    extracted_files=getattr(self, "_last_install_extracted_files", None),
-                )
-                if disk_hint:
-                    device_model = disk_hint
-                    self.set_runtime_detected_device_model(disk_hint)
+                # Prefer install model context (original filename / package / UI / disk)
+                ctx_model, ctx_zip, ctx_extracted = self.get_install_model_context()
+                if ctx_model:
+                    device_model = ctx_model
+                    self.set_runtime_detected_device_model(ctx_model)
+                else:
+                    disk_hint = detect_device_model_for_install(
+                        zip_path=getattr(self, "_last_install_zip_name", None),
+                        extracted_files=getattr(self, "_last_install_extracted_files", None),
+                        original_filename=getattr(self, "_last_install_original_name", None),
+                        asset_url=getattr(self, "_last_install_asset_url", None),
+                    )
+                    if disk_hint:
+                        device_model = disk_hint
+                        self.set_runtime_detected_device_model(disk_hint)
                 prepare_sp_flash_tool_files(device_model)
                 ok_imgs, img_errors, _ = validate_spflash_images_for_model(
                     device_model, app_dir
@@ -16524,16 +16970,16 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Windows: SP Flash Tool only  no MTKClient methods.
                 seasonal_emoji = get_seasonal_emoji_random()
                 method1_text = (
-                    f"Method 1 - Guided (SP Flash Tool){seasonal_emoji}"
-                    if seasonal_emoji else "Method 1 - Guided (SP Flash Tool)"
+                    f"Method 1 - Guided - SP Flash Tool{seasonal_emoji}"
+                    if seasonal_emoji else "Method 1 - Guided - SP Flash Tool"
                 )
                 method2_text = (
                     f"Method 2 - SP Flash Tool GUI{seasonal_emoji}"
                     if seasonal_emoji else "Method 2 - SP Flash Tool GUI"
                 )
                 method3_text = (
-                    f"Method 3 - SP Flash Tool Console Mode{seasonal_emoji}"
-                    if seasonal_emoji else "Method 3 - SP Flash Tool Console Mode"
+                    f"Method 3 - Terminal - SP Flash Tool{seasonal_emoji}"
+                    if seasonal_emoji else "Method 3 - Terminal - SP Flash Tool"
                 )
                 self.method_combo.addItem(method1_text, "spflash")
                 self.method_combo.addItem(method2_text, "spflash4")
@@ -16547,29 +16993,29 @@ class FirmwareDownloaderGUI(QMainWindow):
                     spft_ready = linux_spflash_staged()
                 if spft_ready:
                     method1_text = (
-                        f"Method 1 - Guided (SP Flash Tool){seasonal_emoji}"
-                        if seasonal_emoji else "Method 1 - Guided (SP Flash Tool)"
+                        f"Method 1 - Guided - SP Flash Tool{seasonal_emoji}"
+                        if seasonal_emoji else "Method 1 - Guided - SP Flash Tool"
                     )
                     method2_text = (
-                        f"Method 2 - SP Flash Tool in Terminal{seasonal_emoji}"
-                        if seasonal_emoji else "Method 2 - SP Flash Tool in Terminal"
+                        f"Method 2 - Terminal - SP Flash Tool{seasonal_emoji}"
+                        if seasonal_emoji else "Method 2 - Terminal - SP Flash Tool"
                     )
                 else:
                     method1_text = (
-                        f"Method 1 - Guided (SP Flash Tool  setup required){seasonal_emoji}"
-                        if seasonal_emoji else "Method 1 - Guided (SP Flash Tool  setup required)"
+                        f"Method 1 - Guided - SP Flash Tool (setup required){seasonal_emoji}"
+                        if seasonal_emoji else "Method 1 - Guided - SP Flash Tool (setup required)"
                     )
                     method2_text = (
-                        f"Method 2 - SP Flash Tool in Terminal (setup required){seasonal_emoji}"
-                        if seasonal_emoji else "Method 2 - SP Flash Tool in Terminal (setup required)"
+                        f"Method 2 - Terminal - SP Flash Tool (setup required){seasonal_emoji}"
+                        if seasonal_emoji else "Method 2 - Terminal - SP Flash Tool (setup required)"
                     )
                 method3_text = (
-                    f"Method 3 - MTKclient Guided{seasonal_emoji}"
-                    if seasonal_emoji else "Method 3 - MTKclient Guided"
+                    f"Method 3 - Guided - MTKClient{seasonal_emoji}"
+                    if seasonal_emoji else "Method 3 - Guided - MTKClient"
                 )
                 method4_text = (
-                    f"Method 4 - MTKclient in Terminal{seasonal_emoji}"
-                    if seasonal_emoji else "Method 4 - MTKclient in Terminal"
+                    f"Method 4 - Terminal - MTKClient{seasonal_emoji}"
+                    if seasonal_emoji else "Method 4 - Terminal - MTKClient"
                 )
                 self.method_combo.addItem(method1_text, "spflash")
                 self.method_combo.addItem(method2_text, "spflash_console")
@@ -16579,12 +17025,12 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # aarch64 / other non-x86: no SP Flash Tool binary exists
                 seasonal_emoji = get_seasonal_emoji_random()
                 method1_text = (
-                    f"Method 1 - Guided (MTKClient){seasonal_emoji}"
-                    if seasonal_emoji else "Method 1 - Guided (MTKClient)"
+                    f"Method 1 - Guided - MTKClient{seasonal_emoji}"
+                    if seasonal_emoji else "Method 1 - Guided - MTKClient"
                 )
                 method2_text = (
-                    f"Method 2 - MTKClient in Terminal{seasonal_emoji}"
-                    if seasonal_emoji else "Method 2 - MTKClient in Terminal"
+                    f"Method 2 - Terminal - MTKClient{seasonal_emoji}"
+                    if seasonal_emoji else "Method 2 - Terminal - MTKClient"
                 )
                 arch_note = QLabel(
                     linux_spflash_arch_unsupported_reason()
@@ -16598,8 +17044,14 @@ class FirmwareDownloaderGUI(QMainWindow):
             else:
                 # macOS / other: MTKClient only
                 seasonal_emoji = get_seasonal_emoji_random()
-                method1_text = f"Method 1 - Guided{seasonal_emoji}" if seasonal_emoji else "Method 1 - Guided"
-                method2_text = f"Method 2 - in Terminal{seasonal_emoji}" if seasonal_emoji else "Method 2 - in Terminal"
+                method1_text = (
+                    f"Method 1 - Guided - MTKClient{seasonal_emoji}"
+                    if seasonal_emoji else "Method 1 - Guided - MTKClient"
+                )
+                method2_text = (
+                    f"Method 2 - Terminal - MTKClient{seasonal_emoji}"
+                    if seasonal_emoji else "Method 2 - Terminal - MTKClient"
+                )
 
                 self.method_combo.addItem(method1_text, "guided")
                 self.method_combo.addItem(method2_text, "mtkclient")
@@ -16870,7 +17322,12 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         support_btn = QPushButton("Support The Devs / Donate")
         support_btn.setCursor(Qt.PointingHandCursor)
-        support_btn.clicked.connect(self.open_coffee_link)
+
+        def _on_about_support_clicked():
+            dialog.close()
+            QTimer.singleShot(100, lambda: self.show_donation_dialog("about"))
+
+        support_btn.clicked.connect(_on_about_support_clicked)
         buttons_layout.addWidget(support_btn)
         self.about_support_btn = support_btn
 
@@ -17310,9 +17767,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         wireless_layout.addWidget(ip_group)
 
-        # Check connection status immediately after UI is set up (non-blocking)
-        # This ensures the Connect button text is updated correctly
-        QTimer.singleShot(100, check_wireless_connection)
+        # Connection status check disabled since Smart Drop / Wireless settings tab is disabled
+        # QTimer.singleShot(100, check_wireless_connection)
 
         # ADB Wi-Fi Reborn Setup section (only shown if app is not installed)
 # 2025-11-09 12:00:00 - original: Setup group title read 'Setup Wireless ADB' without beta label.
@@ -17485,23 +17941,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             except:
                 QTimer.singleShot(0, lambda: setup_group.setVisible(False))
 
-        # Run check in background thread to prevent UI hang
-        import threading
-        check_thread = threading.Thread(target=check_in_background, daemon=True)
-        check_thread.start()
-
-        # Also check when wireless tab is shown (non-blocking)
-        def on_wireless_tab_shown():
-            # Refresh connection status when tab is shown
-            check_wireless_connection()
-
-        # Connect to tab change signal to re-check when tab is shown (non-blocking)
-        tab_widget.currentChanged.connect(lambda index: on_wireless_tab_shown() if tab_widget.tabText(index) == "Smart Drop & Wi-Fi" else None)
-
-        # Set up periodic refresh of connection status (every 5 seconds while dialog is open)
-        status_refresh_timer = QTimer()
-        status_refresh_timer.timeout.connect(check_wireless_connection)
-        status_refresh_timer.start(5000)  # Refresh every 5 seconds
+        # Smart Drop & Wi-Fi settings tab is disabled on all systems.
+        # Avoid running background ADB checks or periodic timers for the hidden tab.
+        # check_thread = threading.Thread(target=check_in_background, daemon=True)
+        # check_thread.start()
 
         wireless_layout.addWidget(setup_group)
 
@@ -17552,8 +17995,9 @@ class FirmwareDownloaderGUI(QMainWindow):
         if self.method_combo:
             installation_tab_index = tab_widget.addTab(install_tab, "Installation")
         shortcuts_tab_index = None
-# 2025-11-09 12:00:00 - original: Tab label was 'Wireless ADB' and did not indicate beta availability.
-        tab_widget.addTab(wireless_scroll, "Smart Drop & Wi-Fi")
+        # Smart Drop settings tab disabled on all systems per design request
+        # (Smart drop functionality in the main window stays active)
+        # tab_widget.addTab(wireless_scroll, "Smart Drop & Wi-Fi")
 
         self._apply_update_tab_badge(tab_widget, updates_tab_index, update_is_newer)
         if update_is_newer and self._latest_app_version:
@@ -20171,10 +20615,13 @@ class FirmwareDownloaderGUI(QMainWindow):
         extracted_files = getattr(self, '_last_install_extracted_files', None)
         runtime = getattr(self, '_runtime_detected_device_model', None)
         ui_model = self.get_selected_device_model()
+        asset_url = getattr(self, '_last_install_asset_url', None)
+        orig_name = getattr(self, '_last_install_original_name', None)
 
         # Restore extract context after app restart
         if not zip_path and not extracted_files and not runtime:
-            remembered_model, remembered_zip, remembered_extracted = load_remembered_install_device_model()
+            ctx = load_remembered_install_device_model()
+            remembered_model, remembered_zip, remembered_extracted = ctx
             if remembered_zip:
                 zip_path = remembered_zip
                 self._last_install_zip_name = remembered_zip
@@ -20184,34 +20631,47 @@ class FirmwareDownloaderGUI(QMainWindow):
             if remembered_model:
                 runtime = remembered_model
                 self._runtime_detected_device_model = remembered_model
+            if hasattr(ctx, 'original_filename') and ctx.original_filename:
+                orig_name = ctx.original_filename
+                self._last_install_original_name = ctx.original_filename
 
-        # Package / image evidence first (ignore UI so rom_y2.zip wins over Y1 filter)
+        # Package / image evidence first (original filename / asset URL / zip / extract)
         package_model = resolve_device_model_for_install(
-            None, zip_path=zip_path, extracted_files=extracted_files
+            None,
+            zip_path=zip_path,
+            extracted_files=extracted_files,
+            asset_url=asset_url,
+            original_filename=orig_name,
         )
         if package_model:
             return package_model, zip_path, extracted_files
 
-        # Explicit dropdown next  never let a stale runtime force Y1 while UI says Y2
-        if ui_model and (is_y1_model(ui_model) or is_y2_model(ui_model)):
-            model = "Y2" if is_y2_model(ui_model) else "Y1"
+        # Explicit dropdown next  never let a stale runtime override user intent
+        if ui_model:
+            model = device_label_for_model(ui_model)
             return model, zip_path, extracted_files
 
-        if runtime and (is_y1_model(runtime) or is_y2_model(runtime)):
-            model = "Y2" if is_y2_model(runtime) else "Y1"
+        if runtime:
+            model = device_label_for_model(runtime)
             return model, zip_path, extracted_files
 
         model = resolve_device_model_for_install(
-            None, zip_path=zip_path, extracted_files=extracted_files
+            None,
+            zip_path=zip_path,
+            extracted_files=extracted_files,
+            asset_url=asset_url,
+            original_filename=orig_name,
         )
-        return model, zip_path, extracted_files
+        return (model or "Y1"), zip_path, extracted_files
 
     def detect_device_model_from_install_files(self):
-        """Detect Y1/Y2 from the last extract context and residual install markers."""
+        """Detect model from the last extract context, original filename, asset URL and residual install markers."""
         try:
             return detect_device_model_for_install(
                 zip_path=getattr(self, '_last_install_zip_name', None),
                 extracted_files=getattr(self, '_last_install_extracted_files', None),
+                asset_url=getattr(self, '_last_install_asset_url', None),
+                original_filename=getattr(self, '_last_install_original_name', None),
             )
         except Exception:
             return None
@@ -20225,12 +20685,15 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Model for UI copy: runtime detection > install files > dropdown."""
         runtime = getattr(self, '_runtime_detected_device_model', None)
         if runtime:
-            return runtime
+            return device_label_for_model(runtime)
         from_files = self.detect_device_model_from_install_files()
         if from_files:
             self._runtime_detected_device_model = from_files
-            return from_files
-        return self.get_selected_device_model() or 'Y1'
+            return device_label_for_model(from_files)
+        selected = self.get_selected_device_model()
+        if selected:
+            return device_label_for_model(selected)
+        return 'Y1'
 
     def get_device_label(self):
         return device_label_for_model(self.get_effective_device_model())
@@ -22624,6 +23087,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                     device_model=install_model,
                     zip_path=install_zip,
                     extracted_files=install_extracted,
+                    original_filename=getattr(self, '_last_install_original_name', None),
+                    asset_url=getattr(self, '_last_install_asset_url', None),
                 )
                 # Use update_status instead of direct status_label.setText for proper status handling
                 self.mtk_worker.status_updated.connect(self.update_status)
@@ -22835,6 +23300,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 device_model=install_model,
                 zip_path=install_zip,
                 extracted_files=install_extracted,
+                original_filename=getattr(self, '_last_install_original_name', None),
+                asset_url=getattr(self, '_last_install_asset_url', None),
             )
             self.mtk_worker.status_updated.connect(self.update_status)
             self.mtk_worker.show_installing_image.connect(self.load_installing_image)
@@ -23142,8 +23609,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error preloading critical images: {e}")
 
-    def get_platform_image_path(self, base_name):
-        """Constructs a path to a platform-specific image, with a fallback to a generic one."""
+    def get_platform_image_path(self, base_name, device_model=None):
+        """Constructs a path to a platform-specific image, with model-aware and generic fallbacks."""
         system = get_platform_system()
         if system == "Windows":
             # Check driver status and architecture for Windows
@@ -23173,30 +23640,26 @@ class FirmwareDownloaderGUI(QMainWindow):
         else:
             suffix = ""
 
-        base_path = Path("mtkclient/gui/images")
+        model = (device_model or getattr(self, 'device_model', None) or "").strip().lower()
+        base_paths = [Path("mtkclient/gui/images"), Path("assets")]
 
-        # Try platform-specific path first
+        candidate_names = []
+        if model and suffix:
+            candidate_names.append(f"{base_name}_{model}{suffix}.png")
+        if model:
+            candidate_names.append(f"{base_name}_{model}.png")
         if suffix:
-            platform_specific_path = base_path / f"{base_name}{suffix}.png"
-            if platform_specific_path.exists():
-                return str(platform_specific_path)
-            else:
-                # Try to download from web if local file doesn't exist
-                web_path = f"mtkclient/gui/images/{base_name}{suffix}.png"
-                if self.download_image_from_web(web_path):
-                    return str(platform_specific_path)
+            candidate_names.append(f"{base_name}{suffix}.png")
+        candidate_names.append(f"{base_name}.png")
+
+        for bp in base_paths:
+            for name in candidate_names:
+                p = bp / name
+                if p.exists():
+                    return str(p)
 
         # Fallback to generic path
-        generic_path = base_path / f"{base_name}.png"
-        if generic_path.exists():
-            return str(generic_path)
-        else:
-            # Try to download from web if local file doesn't exist
-            web_path = f"mtkclient/gui/images/{base_name}.png"
-            if self.download_image_from_web(web_path):
-                return str(generic_path)
-
-        # If all else fails, return the generic path (will be handled by caller)
+        generic_path = Path("mtkclient/gui/images") / f"{base_name}.png"
         return str(generic_path)
 
     def load_presteps_image(self):
@@ -23273,24 +23736,22 @@ class FirmwareDownloaderGUI(QMainWindow):
         self.flash_image_border()
 
     def load_initsteps_image(self):
-        """Load initsteps image with lazy loading and platform fallback."""
-        if not hasattr(self, '_initsteps_pixmap'):
-            try:
-                image_path = self.get_platform_image_path("initsteps")
-                self._initsteps_pixmap = QPixmap(image_path)
-                if self._initsteps_pixmap.isNull():
-                    silent_print(f"Failed to load image from {image_path}")
-                    return
-            except Exception as e:
-                silent_print(f"Error loading initsteps image: {e}")
-                return
-
-        self._current_pixmap = self._initsteps_pixmap
-        self.set_image_with_aspect_ratio(self._initsteps_pixmap)
-        # Switch to image view (page 0) when showing installation images
-        self._switch_to_image_view()
-        # Flash border to highlight the new image
-        self.flash_image_border()
+        """Load initsteps image with model and platform fallback."""
+        model = getattr(self, 'device_model', None)
+        try:
+            image_path = self.get_platform_image_path("initsteps", device_model=model)
+            pixmap = QPixmap(image_path)
+            if pixmap.isNull():
+                silent_print(f"Failed to load image from {image_path}, trying default initsteps.png")
+                pixmap = QPixmap("mtkclient/gui/images/initsteps.png")
+            if not pixmap.isNull():
+                self._initsteps_pixmap = pixmap
+                self._current_pixmap = pixmap
+                self.set_image_with_aspect_ratio(pixmap)
+                self._switch_to_image_view()
+                self.flash_image_border()
+        except Exception as e:
+            silent_print(f"Error loading initsteps image: {e}")
 
     def load_installing_image(self):
         """Load installing image with lazy loading and web fallback"""
@@ -23500,22 +23961,24 @@ class FirmwareDownloaderGUI(QMainWindow):
         """Update bottom ticker and status styles for dark / light mode."""
         is_dark = False
         try:
-            if callable(getattr(self, "detect_dark_mode", None)):
-                is_dark = self.detect_dark_mode()
-            elif callable(getattr(self, "is_dark_mode", None)):
-                is_dark = self.is_dark_mode()
+            if callable(getattr(self, "is_dark_mode", None)) and self.is_dark_mode():
+                is_dark = True
+            elif callable(getattr(self, "detect_dark_mode", None)) and self.detect_dark_mode():
+                is_dark = True
             else:
-                is_dark = QApplication.palette().color(QPalette.ColorRole.Window).lightness() < 128
+                palette = self.palette() if hasattr(self, 'palette') else QApplication.palette()
+                is_dark = palette.color(palette.ColorRole.Window).lightness() < 128
         except Exception:
             is_dark = False
 
-        text_color = "#e5e7eb" if is_dark else "#1f2937"
+        text_color = "#f3f4f6" if is_dark else "#1f2937"
         hint_color = "#9ca3af" if is_dark else "#6b7280"
 
         if hasattr(self, 'bottom_donor_ticker_label') and self.bottom_donor_ticker_label:
             self.bottom_donor_ticker_label.setStyleSheet(f"""
                 QLabel {{
                     font-size: 11px;
+                    font-weight: 600;
                     color: {text_color};
                     background: transparent;
                 }}
@@ -24379,27 +24842,40 @@ class FirmwareDownloaderGUI(QMainWindow):
     def detect_dark_mode(self):
         """Detect if the system is in dark mode"""
         try:
+            palette = self.palette() if hasattr(self, 'palette') else QApplication.palette()
+            bg_color = palette.color(palette.ColorRole.Window)
+            if bg_color.isValid() and bg_color.lightness() < 128:
+                return True
+
+            if hasattr(self, 'is_dark_mode') and callable(self.is_dark_mode):
+                if self.is_dark_mode():
+                    return True
+
             if get_platform_system() == "Darwin":  # macOS
                 import subprocess
                 result = subprocess.run(['defaults', 'read', '-g', 'AppleInterfaceStyle'],
-                                      capture_output=True, text=True, timeout=5)
-                is_dark = result.stdout.strip() == 'Dark'
-                return is_dark
+                                      capture_output=True, text=True, timeout=2)
+                return result.stdout.strip() == 'Dark'
             elif get_platform_system() == "Windows":
                 import winreg
                 with winreg.OpenKey(winreg.HKEY_CURRENT_USER,
                                   r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize") as key:
                     value, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
-                    is_dark = value == 0
-                    return is_dark
+                    return value == 0
             else:  # Linux
-                # Try to detect dark mode from environment variables
                 import os
-                is_dark = os.environ.get('GTK_THEME', '').endswith(':dark') or \
-                         os.environ.get('COLORFGBG', '').endswith(';0')
-                return is_dark
-        except Exception as e:
-            # Fallback to light mode if detection fails
+                if os.environ.get('GTK_THEME', '').endswith(':dark') or os.environ.get('COLORFGBG', '').endswith(';0'):
+                    return True
+                try:
+                    import subprocess
+                    res = subprocess.run(['gsettings', 'get', 'org.gnome.desktop.interface', 'color-scheme'],
+                                         capture_output=True, text=True, timeout=1)
+                    if 'prefer-dark' in res.stdout:
+                        return True
+                except Exception:
+                    pass
+                return bg_color.lightness() < 128
+        except Exception:
             return False
 
     def get_theme_colors(self):
@@ -25366,10 +25842,15 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def open_coffee_link(self):
         """Open donation dialog with support options."""
+        if hasattr(self, '_active_settings_dialog') and self._active_settings_dialog:
+            try:
+                self._active_settings_dialog.close()
+            except Exception:
+                pass
         if self._donation_ui_is_disabled():
             return
         self._apply_random_support_cta_to_button()
-        self.show_donation_dialog("support_cta")
+        QTimer.singleShot(100, lambda: self.show_donation_dialog("support_cta"))
 
     def open_about_tab(self):
         """Open Settings dialog to About tab"""
@@ -25655,10 +26136,16 @@ class FirmwareDownloaderGUI(QMainWindow):
                 self.status_label.setText("Error copying update.zip")
             return
 
+        orig_name = Path(zip_path).name
+        self._last_install_original_name = orig_name
+        self._last_install_zip_path = str(zip_path)
+        self._last_install_zip_name = orig_name
+        self._last_install_asset_url = None
+
         # Y2 firmware on macOS (or --y2-mac-flow test flag): skip extraction and
         # hand the user to the manufacturer's manual install tool instead.
         if y2_mac_flow_active() and is_y2_model(
-            resolve_device_model_for_install(None, zip_path=str(zip_path))
+            resolve_device_model_for_install(None, zip_path=str(zip_path), original_filename=orig_name)
         ):
             self._last_install_zip_path = str(zip_path)
             self._handle_y2_mac_install_flow()
@@ -25721,8 +26208,25 @@ class FirmwareDownloaderGUI(QMainWindow):
                 return
 
             resolved_model = resolve_device_model_for_install(
-                self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
+                self.get_selected_device_model(),
+                zip_path=str(zip_path),
+                extracted_files=extracted_files,
+                original_filename=orig_name,
             ) or resolved_model
+            self.set_runtime_detected_device_model(resolved_model)
+            self._last_install_zip_name = orig_name
+            self._last_install_extracted_files = list(extracted_files) if extracted_files else None
+            remember_install_device_model(
+                resolved_model,
+                zip_path=str(zip_path),
+                extracted_files=extracted_files,
+                original_filename=orig_name,
+            )
+            self.refresh_device_aware_status_defaults()
+            silent_print(
+                f"Install model resolved as {resolved_model} "
+                f"(zip={orig_name}, dropdown={self.get_selected_device_model()})"
+            )
 
             self.progress_bar.setValue(100)
             self.status_label.setText("Extraction completed. Files ready for installation.")
@@ -27304,7 +27808,7 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def _set_adb_disconnected_tooltip(self):
         """Apply informative tooltip explaining ADB disconnected state"""
-        tooltip_text = (
+        tooltip_text = self.device_copy(
             "No Y1 connected via ADB. Regular Install/Updates are available. "
             "Smart Drop (Beta) and Fast Update become available when your Y1 is powered on "
             "and connected via ADB over USB or Wi-Fi. Click to refresh."
@@ -27363,7 +27867,7 @@ class FirmwareDownloaderGUI(QMainWindow):
     # 2025-11-09 12:33:00 - original: There was no dedicated helper to explain Smart Drop requirements and limitations.
     def show_smart_drop_info_dialog(self, _link=None):
         """Display Smart Drop beta requirements and capability details in a dialog."""
-        message = (
+        message = self.device_copy(
             "Smart Drop (Beta) becomes available when your Y1 is powered on and connected via ADB over USB or Wi-Fi.\n\n"
             "Why you'll love it:\n"
             " Copy albums, playlists and other folders to your Y1 without finder metadata clutter.\n"
@@ -27517,31 +28021,39 @@ class FirmwareDownloaderGUI(QMainWindow):
         if requirement == 'connected':
             QMessageBox.warning(
                 self,
-                "ADB Connection Required",
-                f"{feature_name} requires your Innioasis Y1 to be connected via ADB (USB or Wi-Fi).\n\n"
-                "Connect your device and try again."
+                self.device_copy("ADB Connection Required"),
+                self.device_copy(
+                    f"{feature_name} requires your Innioasis Y1 to be connected via ADB (USB or Wi-Fi).\n\n"
+                    "Connect your device and try again."
+                )
             )
         elif requirement == 'root':
             QMessageBox.warning(
                 self,
-                "Root Access Required",
-                f"{feature_name} needs root access on your Y1. Run 'Prepare Device for Fast Updates' or connect over USB "
-                "and allow the app to finish preparing your device before retrying."
+                self.device_copy("Root Access Required"),
+                self.device_copy(
+                    f"{feature_name} needs root access on your Y1. Run 'Prepare Device for Fast Updates' or connect over USB "
+                    "and allow the app to finish preparing your device before retrying."
+                )
             )
         elif requirement == 'fast_update_ready':
             marker_date = snapshot.get('fastupdate_marker_date')
             suffix = f" (last prepared {marker_date})" if marker_date else ""
             QMessageBox.warning(
                 self,
-                "Fast Update Preparation Needed",
-                f"{feature_name} needs the Fast Update helper files on your Y1{suffix}.\n\n"
-                "Use 'Prepare Device for Fast Updates' or connect over USB so the app can refresh the preparation."
+                self.device_copy("Fast Update Preparation Needed"),
+                self.device_copy(
+                    f"{feature_name} needs the Fast Update helper files on your Y1{suffix}.\n\n"
+                    "Use 'Prepare Device for Fast Updates' or connect over USB so the app can refresh the preparation."
+                )
             )
         else:
             QMessageBox.warning(
                 self,
-                "ADB Requirement Not Met",
-                f"{feature_name} cannot continue because the required ADB capability ({requirement}) is not currently available."
+                self.device_copy("ADB Requirement Not Met"),
+                self.device_copy(
+                    f"{feature_name} cannot continue because the required ADB capability ({requirement}) is not currently available."
+                )
             )
         return False, snapshot
 
@@ -34246,12 +34758,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         # SP Flash Tool GUI (Toolkit) always opens with the correct scatter.
         try:
             selected = self.get_selected_device_model()
-            if selected and (is_y1_model(selected) or is_y2_model(selected)):
+            if selected:
                 # Dropdown is authoritative when the user changes model  clear any
-                # stale runtime Y1/Y2 so install does not keep the previous path.
-                self.set_runtime_detected_device_model(
-                    "Y2" if is_y2_model(selected) else "Y1"
-                )
+                # stale runtime model so install and UI copy keep the user's intent.
+                label = device_label_for_model(selected)
+                self.set_runtime_detected_device_model(label)
                 prepare_sp_flash_tool_files(selected)
         except Exception as e:
             silent_print(f"history.ini prep on model change: {e}")
@@ -34615,15 +35126,32 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QMessageBox.warning(self, "Missing Files", error_msg)
                 return
 
+            orig_name = None
+            if asset_url:
+                try:
+                    from urllib.parse import urlparse
+                    orig_name = urlparse(str(asset_url)).path.rsplit('/', 1)[-1]
+                except Exception:
+                    orig_name = None
+            self._last_install_original_name = orig_name
+
             resolved_model = resolve_device_model_for_install(
-                self.get_selected_device_model(), zip_path=zip_path.name, extracted_files=extracted_files
-            ) or resolved_model
+                self.get_selected_device_model(),
+                zip_path=zip_path.name,
+                extracted_files=extracted_files,
+                asset_url=asset_url,
+                original_filename=orig_name,
+            ) or resolve_asset_model(asset_url) or resolved_model
             self.set_runtime_detected_device_model(resolved_model)
             self._last_install_zip_name = zip_path.name
             self._last_install_extracted_files = list(extracted_files) if extracted_files else None
             remember_install_device_model(
-                resolved_model, zip_path=zip_path.name, extracted_files=extracted_files
+                resolved_model,
+                zip_path=zip_path.name,
+                extracted_files=extracted_files,
+                original_filename=orig_name,
             )
+            self.refresh_device_aware_status_defaults()
             silent_print(
                 f"Install model resolved as {resolved_model} "
                 f"(zip={zip_path.name}, dropdown={self.get_selected_device_model()})"
@@ -34700,6 +35228,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             self._last_install_asset_url = getattr(
                 download_worker, 'install_asset_url', None
             )
+            self._last_install_original_name = getattr(
+                download_worker, 'original_asset_name', None
+            )
             detected = resolved_from_download or self.detect_device_model_from_install_files()
             if detected:
                 self.set_runtime_detected_device_model(detected)
@@ -34707,6 +35238,7 @@ class FirmwareDownloaderGUI(QMainWindow):
                     detected,
                     zip_path=zip_from_download,
                     extracted_files=extracted_from_download,
+                    original_filename=self._last_install_original_name,
                 )
                 self.refresh_device_aware_status_defaults()
             self.status_label.setText("Download and processing completed successfully")
@@ -35946,6 +36478,8 @@ class FirmwareDownloaderGUI(QMainWindow):
             device_model=install_model,
             zip_path=install_zip,
             extracted_files=install_extracted,
+            original_filename=getattr(self, '_last_install_original_name', None),
+            asset_url=getattr(self, '_last_install_asset_url', None),
         )
         self.mtk_worker.status_updated.connect(self.status_label.setText)
         self.mtk_worker.show_installing_image.connect(self.load_installing_image)
@@ -35986,16 +36520,21 @@ class FirmwareDownloaderGUI(QMainWindow):
                           "5. HOLD middle button to restart\n\n"
                           "This method shows technical installation details. If it fails, try Method 3 (SP Flash Tool Console Mode).")
         else:
-            # Non-Windows baseline Method 2 instructions
+            # Non-Windows baseline Terminal - MTKClient instructions
+            step3 = (
+                "3. If Linux says device config/permission failed, relog/reboot once so udev/group changes apply.\n\n"
+                if is_linux_platform()
+                else "3. If a permission prompt or USB error appears, grant access and reconnect directly.\n\n"
+            )
             instructions = ("We'll now take you to Terminal to show you what's happening under the hood:\n\n"
-                          "1. Keep Y1 disconnected until Terminal asks you to connect.\n"
+                          "1. Keep your device disconnected until Terminal asks you to connect.\n"
                           "2. Use a data-capable USB cable and connect directly (no hub).\n"
-                          "3. If Linux says device config/permission failed, relog/reboot once so udev/group changes apply.\n\n"
-                          "Method 2 guide: https://github.com/y1-community/Innioasis-Updater#readme\n\n"
+                          f"{step3}"
+                          "Terminal guide: https://github.com/y1-community/Innioasis-Updater#readme\n\n"
                           "If an old QR code appears in screenshots, ignore it and use the guide link above.\n")
 
         msg_box = QMessageBox(self)
-        msg_box.setWindowTitle("Troubleshooting Instructions - Method 2")
+        msg_box.setWindowTitle("Terminal - MTKClient Instructions")
         msg_box.setText(self.device_copy(instructions))
         msg_box.setIcon(QMessageBox.Information)
         msg_box.setStandardButtons(QMessageBox.Ok)
@@ -37148,16 +37687,17 @@ read -n 1
                     self.spflash_worker = None
 
                 # Setup parameters for MTKWorker
-                install_zip = getattr(self, '_last_install_zip_name', None)
-                install_extracted = getattr(self, '_last_install_extracted_files', None)
+                install_model, install_zip, install_extracted = self.get_install_model_context()
 
                 # Instantiate MTKWorker
                 self.mtk_worker = MTKWorker(
                     debug_mode=getattr(self, 'debug_mode', False),
                     debug_window=getattr(self, 'debug_window', None),
-                    device_model=getattr(self, 'device_model', None),
+                    device_model=install_model,
                     zip_path=install_zip,
-                    extracted_files=install_extracted
+                    extracted_files=install_extracted,
+                    original_filename=getattr(self, '_last_install_original_name', None),
+                    asset_url=getattr(self, '_last_install_asset_url', None),
                 )
 
                 # Connect signals
@@ -37305,10 +37845,16 @@ if __name__ == "__main__":
         parser.add_argument("--y2-mac-flow", action="store_true",
                           help="Force-enable the Y2-on-macOS manual install flow "
                                "(for testing this flow on Windows/Linux)")
+        parser.add_argument("--simulate-macos", "--simulate-mac", "--macos", "--mac", action="store_true",
+                          dest="simulate_macos",
+                          help="Simulate running on macOS for testing purposes (even on Linux)")
         args = parser.parse_args()
         # Module-level assignment (main() runs at module scope, so no `global`).
         if args.y2_mac_flow:
             FORCE_Y2_MAC_FLOW = True
+        if args.simulate_macos:
+            set_simulate_macos(True)
+            silent_print("Simulating macOS environment (--simulate-macos flag active)")
 
         # If -sp argument is provided, skip GUI entirely and launch flash_tool.exe
         if args.sp:
