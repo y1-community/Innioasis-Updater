@@ -19,4 +19,5 @@
 <package name="Android 4.2 (Dev)" repo="y1-community/y1-ata-rom" device="Y1" url="https://github.com/y1-community/y1-ata-rom" type="img" handler="Custom Firmware" />
 <package name="Android 4.4 (Dev)" repo="y1-community/y2-ata-rom" device="Y2" url="https://github.com/y1-community/y2-ata-rom" type="img" handler="Custom Firmware" />
 <package name="Linux for Y1 (Dev)" repo="y1-community/y1-ata-rom" device="Y1" url="https://github.com/y1-community/y1-linux-rom" type="img" handler="Custom Firmware" />
+<package name="Inniclassic Y2" repo="JonaszPotoniec/inniclassic-y2" device="Y2" url="https://github.com/JonaszPotoniec/inniclassic-y2" type="img" handler="Custom Firmware" />
 </slidia>
