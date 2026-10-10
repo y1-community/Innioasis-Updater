@@ -82,9 +82,10 @@ class FakeGh:
 def _source_zip(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(path, "w") as archive:
-        archive.writestr("MX2/MT6580_Android_scatter.txt", "platform: MT6580\n")
+        archive.writestr("MX2/MT6580_Android_scatter.txt", "platform: MT6582\n")
         archive.writestr("MX2/preloader_eastaeon80_wet_kk.bin", b"pre")
         archive.writestr("MX2/lk.bin", b"lk")
+        archive.writestr("MX2/pad.bin", b"A" * 8000)
         archive.writestr("__MACOSX/._junk", b"junk")
         archive.writestr(".DS_Store", b"store")
 
@@ -101,12 +102,13 @@ class RepackAndManifest(unittest.TestCase):
                 names = set(archive.namelist())
                 self.assertIn("MT6580_Android_scatter.txt", names)
                 self.assertIn("preloader_eastaeon80_wet_kk.bin", names)
+                self.assertIn("pad.bin", names)
                 self.assertFalse(any(name.startswith("__MACOSX") or name.endswith(".DS_Store") for name in names))
                 self.assertFalse(any("/" in name for name in names))
-                for info in archive.infolist():
-                    self.assertEqual(info.compress_type, zipfile.ZIP_DEFLATED)
-                    # Info-ZIP maximum deflate is level 9, flagged in the method's extra.
-                    self.assertGreaterEqual(info.compress_size, 0)
+                pad = archive.getinfo("pad.bin")
+                self.assertEqual(pad.compress_type, zipfile.ZIP_DEFLATED)
+                self.assertEqual(pad.extra, b"")
+                self.assertLess(pad.compress_size, pad.file_size)
             self.assertLess(dest.stat().st_size, fm.GITHUB_MAX_ASSET_BYTES)
 
     def test_github_limit_rejects_an_oversized_asset(self):

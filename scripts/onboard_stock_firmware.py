@@ -35,6 +35,7 @@ import urllib.request
 import zipfile
 from pathlib import Path
 from urllib.parse import urlparse
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -194,8 +195,7 @@ def upsert_manifest(manifest_path: Path, model: str, org: str = "y1-community") 
     text = path.read_text(encoding="utf-8")
     line = fm.manifest_package_line(model, org=org)
     device = fm.profile_for(model).id
-    root = __import__("xml.etree.ElementTree", fromlist=["ElementTree"]).ElementTree
-    parsed = root.fromstring(text)
+    parsed = ET.fromstring(text)
     existing = None
     for node in parsed.findall("package"):
         if node.get("device_type") is not None:

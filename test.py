@@ -224,6 +224,15 @@ class UpdateCheckEvent(QEvent):
 
 def parse_version_designations(version_name):
     """Parse version names and extract designations with flexible adjective handling"""
+    import firmware_models as _firmware_models
+    stock_variant = _firmware_models.stock_release_variant(version_name)
+    if stock_variant:
+        version, label = stock_variant
+        return {
+            'clean_version': version,
+            'designations': [label] if label else [],
+        }
+
     designations = []
 
     # Define adjectives that can modify their nearest neighbor
@@ -856,19 +865,37 @@ def detect_device_model_for_install(
         if from_url:
             return from_url
 
-    # 3. Zip path
+    # 3. Explicit rom_<model>.zip wins over every heuristic.
     if zip_path:
         zip_str = str(zip_path).replace("\\", "/")
         base = Path(zip_str).name
-        # If this is an explicit rom name (not just an internal cache name with repo org)
         from_zip = model_from_zip_name(base)
         if from_zip:
             return from_zip
-        # For non-standard zip paths: check path tokens, but ignore generic repo names
+    else:
+        zip_str = ""
+        base = ""
+
+    # A selected Q3/Q5/G1/… must win before a shared MT6582 token, image
+    # size, or scatter filename can relabel the package as Y1 or Y2.
+    import firmware_models as _firmware_models
+    ui_known = _firmware_models.canonical_model(device_model)
+    if ui_known and ui_known not in ("Y1", "Y2"):
+        return ui_known
+
+    # Loose Y1/Y2/A5 tokens, only when the dropdown is not another model.
+    # eastaeon80 is the Q3/Q5 preloader family. Only eastaeon82 means Y2.
+    if zip_path:
         zip_lower = zip_str.lower()
         if "rom_a5" in zip_lower or "_a5" in zip_lower or "-a5" in zip_lower:
             return "A5"
-        if "rom_y2" in zip_lower or "_y2" in zip_lower or "-y2" in zip_lower or "eastaeon" in zip_lower or "6582" in zip_lower:
+        if (
+            "rom_y2" in zip_lower
+            or "_y2" in zip_lower
+            or "-y2" in zip_lower
+            or "eastaeon82" in zip_lower
+            or "6582" in zip_lower
+        ):
             return "Y2"
         if (
             base in ("rom.zip", "rom_type_b.zip", "rom_type_a.zip")
@@ -879,13 +906,6 @@ def detect_device_model_for_install(
             or "6572" in zip_lower
         ):
             return "Y1"
-
-    # A selected Q5/G1/R1/… must win before image size or a shared MT65xx
-    # scatter filename can relabel the package as Y1 or Y2.
-    import firmware_models as _firmware_models
-    ui_known = _firmware_models.canonical_model(device_model)
-    if ui_known and ui_known not in ("Y1", "Y2"):
-        return ui_known
 
     # 4. Only treat the caller's extract list as package evidence
     if extracted_files:
@@ -1926,6 +1946,11 @@ def build_mtk_scatter_wo_plan(install_root=None, device_model="Y2"):
             continue
         path = install_root / fname
         if not path.is_file():
+            if generic_profile and generic_profile.flash == "generic_scatter":
+                raise FileNotFoundError(
+                    f"{generic_profile.id} is missing {fname} ({name}) in {install_root}. "
+                    "A Y1 or Y2 image will not be substituted."
+                )
             alt = get_firmware_app_dir() / fname
             if alt.is_file():
                 path = alt
@@ -22495,10 +22520,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             base_header = f"{display_version}\n"
             software_name = package_info.get('name', 'Unknown') if package_info else 'Unknown'
 
-            # Add designations as formatted text (nightly, 360p tag flag, etc.)
+            # Add designations as formatted text (nightly, 360p tag flag, language, etc.)
             if version_info.get('designations'):
                 designations_text = format_designations_text(version_info['designations'])
                 base_header += f"{designations_text}\n"
+
+            import firmware_models as _firmware_models
+            variant_warning = _firmware_models.release_variant_warning(selected_model, tag_name)
+            if variant_warning:
+                base_header += f"{variant_warning}\n"
 
             # Always show published date when available (including nightly builds)
             # Suppress if already shown at the top of the header (either "Released: ..." or datestamp "Today at HH:MM")

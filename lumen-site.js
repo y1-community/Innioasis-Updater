@@ -30,7 +30,7 @@
         { name: "rom_q5.zip", label: "Q5", title: "Stock firmware for the Timmkoo Q5" },
         { name: "rom_g1.zip", label: "G1", title: "Stock firmware for the Innioasis G1. Download only." },
         { name: "rom_g3.zip", label: "G3", title: "Stock firmware for the Innioasis G3. Download only." },
-        { name: "rom_g5.zip", label: "G5", title: "Stock firmware for the Innioasis G5. Download only, and only when the zip is under 2 GiB." },
+        { name: "rom_g5.zip", label: "G5", title: "Stock firmware for the Innioasis G5. Download only. The package contains super.img." },
         { name: "rom_r1.zip", label: "R1", title: "Stock firmware for the Innioasis R1 voice recorder" },
         { name: "rom_sr1.zip", label: "SR1", title: "Stock firmware for the Innioasis SR1 voice recorder" }
     ];

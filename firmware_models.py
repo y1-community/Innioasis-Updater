@@ -8,12 +8,17 @@ Flashing rules:
 
 * Y1 and Y2 keep their existing, tested install paths.
 * Q3, Q5, R1, and SR1 may use a generic scatter path, but only when the zip
-  name, the selected model, and the scatter chip all agree, the images are
-  unsigned, and there is no dynamic ``super`` partition. The package is
-  extracted into its own directory so it cannot replace the Y1/Y2 scatter.
+  name, the selected model, and the scatter's platform line all agree, the
+  images are unsigned, and there is no dynamic ``super`` partition. The
+  package is extracted into its own directory so it cannot replace the Y1/Y2
+  scatter. Q3 and Q5 packages ship a file named ``MT6580_Android_scatter.txt``
+  whose platform line is MT6582. That is the same chip family as the Y2. The
+  flash plan still comes from that package's own scatter and preloader, not
+  from the Y2 partition layout.
 * G1, G3, and G5 (and A5, which is recognised but has no tested profile) are
-  downloadable only. Their images are signed and/or use a secure-boot chip
-  this updater has not been shown to flash safely.
+  downloadable only. G1 and G3 images are signed. Their ``-en-wm`` releases
+  identify internally as S2 (G1) and S4 (G3) and are not interchangeable with
+  the other G1/G3 builds. G5 images are signed and use ``super.img``.
 
 Nothing in here opens a USB device or invokes SP Flash Tool.
 """
@@ -86,15 +91,20 @@ PROFILES = {
         "power button",
     ),
     "Q3": ModelProfile(
-        "Q3", "Timmkoo", "MT6580", "generic_scatter",
-        "Legacy MT6580 scatter package. Automatic flashing uses the preloader "
-        "and scatter inside the zip, and has not been run on Q3 hardware.",
+        "Q3", "Timmkoo", "MT6582", "generic_scatter",
+        "The scatter file is named MT6580_Android_scatter.txt, but its "
+        "platform line is MT6582 (same chip family as the Y2). Flashing uses "
+        "this package's scatter and preloader only, not the Y2 partition "
+        "layout. Q3 firmware identifies itself as Q3E. This path has not been "
+        "run on Q3 hardware.",
         "power button",
     ),
     "Q5": ModelProfile(
-        "Q5", "Timmkoo", "MT6580", "generic_scatter",
-        "Legacy MT6580 scatter package. Automatic flashing uses the preloader "
-        "and scatter inside the zip, and has not been run on Q5 hardware.",
+        "Q5", "Timmkoo", "MT6582", "generic_scatter",
+        "The scatter file is named MT6580_Android_scatter.txt, but its "
+        "platform line is MT6582 (same chip family as the Y2). Flashing uses "
+        "this package's scatter and preloader only, not the Y2 partition "
+        "layout. This path has not been run on Q5 hardware.",
         "power button",
     ),
     "R1": ModelProfile(
@@ -114,23 +124,42 @@ PROFILES = {
     "G1": ModelProfile(
         "G1", "Innioasis", "MT6753", "download_only",
         "G1 stock images are signed (secure boot, MT6753). Automatic flashing "
-        "is not supported yet.",
+        "is not supported yet. English WM releases (tags such as 5.01-en-wm) "
+        "identify internally as S2 and may be a different board from the other "
+        "G1 builds. They are not interchangeable.",
         "power button",
     ),
     "G3": ModelProfile(
         "G3", "Innioasis", "MT6753", "download_only",
         "G3 stock images are signed (secure boot, MT6753). Automatic flashing "
-        "is not supported yet.",
+        "is not supported yet. English WM releases (tags such as 6.01-en-wm) "
+        "identify internally as S4 and may be a different board from the other "
+        "G3 builds. They are not interchangeable.",
         "power button",
     ),
     "G5": ModelProfile(
         "G5", "Innioasis", "MT6765", "download_only",
-        "G5 stock images are signed, use dynamic partitions, and the chip is "
-        "secure-boot / SLA class (MT6765). Automatic flashing is not supported "
-        "yet. A repacked zip also has to stay under GitHub's 2 GiB asset limit "
-        "before a release can be published.",
+        "G5 stock images are signed and use a dynamic super.img (Android 12) "
+        "on a secure-boot MT6765. Automatic flashing is not supported yet. "
+        "The published zip is 2,049,171,366 bytes, under GitHub's 2 GiB limit.",
         "power button",
     ),
+}
+
+# Measured size of the repacked G5 stock zip. It is under the GitHub asset limit.
+G5_PUBLISHED_ZIP_BYTES = 2_049_171_366
+
+# Tags such as 3.27-en, 5.01-en-wm, 3.03-multi, 1.48.
+_STOCK_TAG = re.compile(
+    r"^(?P<ver>\d+(?:\.\d+)+)(?:-(?P<suffix>en-wm|multi|en|de|es))?$",
+    re.IGNORECASE,
+)
+_STOCK_TAG_LABELS = {
+    "en": "English",
+    "de": "German",
+    "es": "Spanish",
+    "multi": "Multi-language",
+    "en-wm": "English · WM",
 }
 
 # Models this change adds to the stock manifest. Y1/Y2 already have entries.
@@ -167,6 +196,39 @@ def canonical_model(model) -> str:
         return ""
     if text in PROFILES:
         return text
+    return ""
+
+
+def stock_release_variant(tag) -> Optional[tuple]:
+    """``(version, label)`` for a stock tag, or None.
+
+    ``3.27-en`` is ``("3.27", "English")``. ``1.48`` and ``1.11`` are
+    ``("1.48", "")`` and ``("1.11", "")``. Other tag shapes return None so
+    custom-firmware tags keep the existing parser.
+    """
+    match = _STOCK_TAG.match(str(tag or "").strip())
+    if not match:
+        return None
+    suffix = (match.group("suffix") or "").lower()
+    return match.group("ver"), _STOCK_TAG_LABELS.get(suffix, "")
+
+
+def release_variant_warning(model, tag) -> str:
+    """Extra list text when a regional build must not be mixed with another."""
+    parsed = stock_release_variant(tag)
+    if not parsed or parsed[1] != "English · WM":
+        return ""
+    key = canonical_model(model)
+    if key == "G1":
+        return (
+            "WM build. This package identifies internally as S2 and is not "
+            "interchangeable with the other G1 releases."
+        )
+    if key == "G3":
+        return (
+            "WM build. This package identifies internally as S4 and is not "
+            "interchangeable with the other G3 releases."
+        )
     return ""
 
 
@@ -300,6 +362,11 @@ def parse_scatter_platform(scatter_text: str) -> str:
     return match.group(1).upper() if match else ""
 
 
+def parse_scatter_project(scatter_text: str) -> str:
+    match = re.search(r"(?im)^\s*project:\s*(\S+)", scatter_text or "")
+    return match.group(1) if match else ""
+
+
 def parse_scatter_downloads(scatter_text: str) -> list:
     """Downloadable partitions: name, file, index, is_download."""
     parts = []
@@ -346,25 +413,25 @@ def is_dynamic_super_name(name: str) -> bool:
     return stem.startswith("super.") or stem.startswith("super-") or stem.startswith("super_")
 
 
-def find_scatter_file(directory, chip: str) -> Optional[Path]:
-    """Scatter at the payload root whose platform is ``chip``.
-
-    A nested scatter is ignored. Stock releases are flat; a top-level folder
-    would make SP Flash Tool load the wrong relative paths.
-    """
+def top_level_scatters(directory) -> list:
+    """Scatter files sitting at the payload root. Nested copies are ignored."""
     root = Path(directory)
     if not root.is_dir():
-        return None
+        return []
+    return sorted(path for path in root.glob("*scatter*.txt") if path.is_file())
+
+
+def find_scatter_file(directory, chip: str) -> Optional[Path]:
+    """Scatter at the payload root whose platform line is ``chip``.
+
+    The filename is not the chip. Q3 and Q5 ship ``MT6580_Android_scatter.txt``
+    while the platform line inside it is MT6582. A nested scatter is ignored.
+    Stock releases are flat; a top-level folder would make SP Flash Tool load
+    the wrong relative paths.
+    """
     chip = (chip or "").upper()
-    preferred = root / f"{chip}_Android_scatter.txt"
-    candidates = []
-    if preferred.is_file():
-        candidates.append(preferred)
-    for path in sorted(root.glob("*scatter*.txt")):
-        if path not in candidates:
-            candidates.append(path)
     matched = []
-    for path in candidates:
+    for path in top_level_scatters(directory):
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
         except OSError:
@@ -470,7 +537,28 @@ def assess_payload_dir(model, directory, zip_name=None, selected_model=None) -> 
             errors=["signed_or_super"],
         )
 
+    scatters = top_level_scatters(root)
     scatter = find_scatter_file(root, profile.chip)
+    if scatter is None and scatters:
+        described = []
+        for path in scatters:
+            try:
+                seen = parse_scatter_platform(path.read_text(encoding="utf-8", errors="ignore"))
+            except OSError:
+                seen = ""
+            described.append(f"{path.name} ({seen or 'unknown platform'})")
+        return FlashAssessment(
+            action="refuse",
+            model=profile.id,
+            chip=profile.chip,
+            message=(
+                f"Refusing to flash. {profile.product} must be {profile.chip}. "
+                f"The package scatter does not say that: {', '.join(described)}. "
+                "The filename is not used as the chip. "
+                "No data was sent to a device."
+            ),
+            errors=["chip_mismatch"],
+        )
     if scatter is None:
         nested = list(root.glob("*/*scatter*.txt")) if root.is_dir() else []
         extra = ""
@@ -481,9 +569,8 @@ def assess_payload_dir(model, directory, zip_name=None, selected_model=None) -> 
             model=profile.id,
             chip=profile.chip,
             message=(
-                f"Refusing to flash {profile.product}. Expected a flat "
-                f"{profile.chip}_Android_scatter.txt in the package and did not "
-                f"find one whose platform is {profile.chip}.{extra} "
+                f"Refusing to flash {profile.product}. Expected a flat scatter "
+                f"whose platform line is {profile.chip}.{extra} "
                 "No data was sent to a device."
             ),
             errors=["scatter_missing"],
@@ -501,6 +588,30 @@ def assess_payload_dir(model, directory, zip_name=None, selected_model=None) -> 
                 "No data was sent to a device."
             ),
             errors=["chip_mismatch"],
+        )
+    project = parse_scatter_project(text).upper()
+    if profile.id == "Q5" and project in {"Q3", "Q3E"}:
+        return FlashAssessment(
+            action="refuse",
+            model=profile.id,
+            chip=chip,
+            message=(
+                "Refusing to flash. This package identifies itself as "
+                f"{project}, which is Q3 firmware, but Q5 is selected. "
+                "No data was sent to a device."
+            ),
+            errors=["model_mismatch"],
+        )
+    if profile.id == "Q3" and project == "Q5":
+        return FlashAssessment(
+            action="refuse",
+            model=profile.id,
+            chip=chip,
+            message=(
+                "Refusing to flash. This package identifies itself as Q5, "
+                "but Q3 is selected. No data was sent to a device."
+            ),
+            errors=["model_mismatch"],
         )
     preloader = preloader_from_scatter(text)
     if not preloader or not (root / preloader).is_file():
@@ -540,7 +651,7 @@ def assess_payload_dir(model, directory, zip_name=None, selected_model=None) -> 
         chip=chip,
         preloader=preloader,
         scatter_name=scatter.name,
-        message=generic_confirm_text(profile),
+        message=generic_confirm_text(profile, project=parse_scatter_project(text)),
     )
 
 
@@ -559,7 +670,20 @@ def _download_only(profile: ModelProfile) -> FlashAssessment:
     )
 
 
-def generic_confirm_text(profile: ModelProfile) -> str:
+def generic_confirm_text(profile: ModelProfile, project: str = "") -> str:
+    detail = ""
+    if profile.id in ("Q3", "Q5"):
+        detail = (
+            "\n\nThe scatter file may be named MT6580_Android_scatter.txt. "
+            "Flashing follows the platform line inside it (MT6582) and the "
+            "preloader that scatter names. That is the same chip family as "
+            "the Y2. It is not the Y2 partition layout, and the Y2 preloader "
+            "is not substituted."
+        )
+        if profile.id == "Q3":
+            detail += " Q3 firmware identifies itself as Q3E."
+            if project.upper() == "Q3E":
+                detail += " This package's project name is Q3E."
     return (
         f"This will write {profile.product} firmware ({profile.chip}) using "
         f"the scatter file and preloader inside this package.\n\n"
@@ -569,6 +693,7 @@ def generic_confirm_text(profile: ModelProfile) -> str:
         "This is a full format-and-download, and it has not been tested on "
         f"every {profile.id} board. Continue only if this device is a "
         f"{profile.product}."
+        f"{detail}"
     )
 
 
@@ -695,7 +820,7 @@ Each GitHub release is one build:
 - `rom_{profile.id.lower()}.zip` — firmware images at the zip root, maximum deflate, no `__MACOSX` or `.DS_Store`
 - `updater.jpg` — release image shown by Innioasis Updater
 
-Tags look like `3.27-en` or `1.48` (version, then a lowercase variant suffix when the build is regional). The release title looks like `System Software <version> for {profile.product}`.
+Tags look like `3.27-en`, `5.01-en-wm`, or `1.48` (version, then a lowercase variant suffix when the build is regional). Each variant is its own release. Updater lists them all; GitHub's "latest" is only the newest English build. The release title looks like `System Software <version> for {profile.product}`.
 
 {install}
 

@@ -11,13 +11,13 @@ import firmware_models as fm
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def _scatter(chip, preloader, images):
+def _scatter(chip, preloader, images, project="test"):
     lines = [
         "- general: MTK_PLATFORM_CFG",
         "  info:",
         "    - config_version: V1.1.1",
         f"      platform: {chip}",
-        "      project: test",
+        f"      project: {project}",
         "      storage: EMMC",
         "",
     ]
@@ -74,13 +74,30 @@ class ModelNames(unittest.TestCase):
         self.assertEqual(fm.preferred_default_model(["G1", "Q5", "Y1", "Y2"]), "Y1")
         self.assertEqual(fm.preferred_default_model(["G5", "Q3"]), "G5")
 
+    def test_regional_tags_stay_distinguishable(self):
+        self.assertEqual(fm.stock_release_variant("3.27-en"), ("3.27", "English"))
+        self.assertEqual(fm.stock_release_variant("3.28-de"), ("3.28", "German"))
+        self.assertEqual(fm.stock_release_variant("5.02-es"), ("5.02", "Spanish"))
+        self.assertEqual(fm.stock_release_variant("3.03-multi"), ("3.03", "Multi-language"))
+        self.assertEqual(fm.stock_release_variant("5.01-en-wm"), ("5.01", "English · WM"))
+        self.assertEqual(fm.stock_release_variant("6.01-en-wm"), ("6.01", "English · WM"))
+        self.assertEqual(fm.stock_release_variant("1.11"), ("1.11", ""))
+        self.assertEqual(fm.stock_release_variant("1.48"), ("1.48", ""))
+        self.assertEqual(fm.stock_release_variant("2.05"), ("2.05", ""))
+        self.assertIsNone(fm.stock_release_variant("Stable-v0.3-ipod-theme-compatible"))
+        self.assertIn("S2", fm.release_variant_warning("G1", "5.01-en-wm"))
+        self.assertIn("S4", fm.release_variant_warning("G3", "6.01-en-wm"))
+        self.assertEqual(fm.release_variant_warning("G1", "3.03-multi"), "")
+        self.assertEqual(fm.release_variant_warning("Q5", "3.27-en"), "")
+        self.assertLess(fm.G5_PUBLISHED_ZIP_BYTES, fm.GITHUB_MAX_ASSET_BYTES)
+
 
 class FlashSafety(unittest.TestCase):
-    def _payload(self, chip, preloader, extra_files=()):
+    def _payload(self, chip, preloader, extra_files=(), scatter_name=None, project="test"):
         directory = Path(tempfile.mkdtemp())
         images = [("PRELOADER", preloader), ("UBOOT", "lk.bin")]
-        (directory / f"{chip}_Android_scatter.txt").write_text(
-            _scatter(chip, preloader, images), encoding="utf-8"
+        (directory / (scatter_name or f"{chip}_Android_scatter.txt")).write_text(
+            _scatter(chip, preloader, images, project=project), encoding="utf-8"
         )
         (directory / preloader).write_bytes(b"preloader-bytes")
         (directory / "lk.bin").write_bytes(b"lk")
@@ -88,20 +105,47 @@ class FlashSafety(unittest.TestCase):
             (directory / name).write_bytes(data)
         return directory
 
-    def test_q5_generic_when_chip_preloader_and_name_agree(self):
-        directory = self._payload("MT6580", "preloader_eastaeon80_wet_kk.bin")
+    def test_q5_uses_mt6582_platform_even_when_the_filename_says_mt6580(self):
+        directory = self._payload(
+            "MT6582",
+            "preloader_eastaeon80_wet_kk.bin",
+            scatter_name="MT6580_Android_scatter.txt",
+        )
         result = fm.assess_payload_dir(
             "Q5", directory, zip_name="rom_q5.zip", selected_model="Q5"
         )
         self.assertEqual(result.action, "generic")
-        self.assertEqual(result.chip, "MT6580")
+        self.assertEqual(result.chip, "MT6582")
+        self.assertEqual(result.scatter_name, "MT6580_Android_scatter.txt")
         self.assertEqual(result.preloader, "preloader_eastaeon80_wet_kk.bin")
+        self.assertIn("not the Y2 partition layout", result.message)
         xml = fm.write_generic_spflash_xml(directory, "Q5")
         text = xml.read_text(encoding="utf-8")
-        self.assertIn("<chip-name>MT6580</chip-name>", text)
+        self.assertIn("<chip-name>MT6582</chip-name>", text)
+        self.assertIn("MT6580_Android_scatter.txt", text)
         self.assertIn("preloader_eastaeon80_wet_kk.bin", text)
         self.assertNotIn("preloader_eastaeon82_wet_kk.bin", text)
         self.assertNotIn("preloader_g368_nyx.bin", text)
+
+    def test_q3_accepts_q3e_identity_and_q5_refuses_it(self):
+        q3 = self._payload(
+            "MT6582",
+            "preloader_eastaeon80_wet_kk.bin",
+            scatter_name="MT6580_Android_scatter.txt",
+            project="Q3E",
+        )
+        result = fm.assess_payload_dir("Q3", q3, zip_name="rom_q3.zip", selected_model="Q3")
+        self.assertEqual(result.action, "generic")
+        self.assertIn("Q3E", result.message)
+        q5 = self._payload(
+            "MT6582",
+            "preloader_eastaeon80_wet_kk.bin",
+            scatter_name="MT6580_Android_scatter.txt",
+            project="Q3E",
+        )
+        refused = fm.assess_payload_dir("Q5", q5, zip_name="rom_q5.zip", selected_model="Q5")
+        self.assertEqual(refused.action, "refuse")
+        self.assertIn("model_mismatch", refused.errors)
 
     def test_sr1_is_not_given_the_y2_preloader(self):
         directory = self._payload("MT6582", "preloader_j5052.bin")
@@ -112,7 +156,10 @@ class FlashSafety(unittest.TestCase):
         self.assertEqual(result.preloader, "preloader_j5052.bin")
 
     def test_name_mismatch_refuses(self):
-        directory = self._payload("MT6580", "preloader_eastaeon80_wet_kk.bin")
+        directory = self._payload(
+            "MT6582", "preloader_eastaeon80_wet_kk.bin",
+            scatter_name="MT6580_Android_scatter.txt",
+        )
         result = fm.assess_payload_dir(
             "Q5", directory, zip_name="rom_q3.zip", selected_model="Q5"
         )
@@ -129,7 +176,8 @@ class FlashSafety(unittest.TestCase):
 
     def test_signed_and_super_images_refuse(self):
         signed = self._payload(
-            "MT6580", "preloader_eastaeon80_wet_kk.bin",
+            "MT6582", "preloader_eastaeon80_wet_kk.bin",
+            scatter_name="MT6580_Android_scatter.txt",
             extra_files=(("boot-sign.img", b"sig"),),
         )
         result = fm.assess_payload_dir("Q5", signed, zip_name="rom_q5.zip", selected_model="Q5")
@@ -137,7 +185,8 @@ class FlashSafety(unittest.TestCase):
         self.assertIn("signed_or_super", result.errors)
 
         super_dir = self._payload(
-            "MT6580", "preloader_eastaeon80_wet_kk.bin",
+            "MT6582", "preloader_eastaeon80_wet_kk.bin",
+            scatter_name="MT6580_Android_scatter.txt",
             extra_files=(("super.img", b"super"),),
         )
         result = fm.assess_payload_dir("Q3", super_dir, zip_name="rom_q3.zip", selected_model="Q3")
@@ -154,7 +203,7 @@ class FlashSafety(unittest.TestCase):
         inner = directory / "MX2"
         inner.mkdir()
         (inner / "MT6580_Android_scatter.txt").write_text(
-            _scatter("MT6580", "preloader.bin", [("PRELOADER", "preloader.bin")]),
+            _scatter("MT6582", "preloader.bin", [("PRELOADER", "preloader.bin")]),
             encoding="utf-8",
         )
         result = fm.assess_payload_dir("Q5", directory, zip_name="rom_q5.zip", selected_model="Q5")
