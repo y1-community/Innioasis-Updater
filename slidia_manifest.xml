@@ -20,4 +20,12 @@
 <package name="Android 4.2 (Dev)" repo="y1-community/y1-ata-rom" device="Y1" url="https://github.com/y1-community/y1-ata-rom" type="img" handler="Custom Firmware" />
 <package name="Android 4.4 (Dev)" repo="y1-community/y2-ata-rom" device="Y2" url="https://github.com/y1-community/y2-ata-rom" type="img" handler="Custom Firmware" />
 <package name="Linux for Y1 (Dev)" repo="y1-community/y1-ata-rom" device="Y1" url="https://github.com/y1-community/y1-linux-rom" type="img" handler="Custom Firmware" />
+  <!-- Stock mirrors. One Original Software line per model. G5's published zip is under the 2 GiB GitHub asset limit. -->
+  <package name="Original Software" repo="y1-community/q3-stock-rom" device="Q3" url="https://github.com/y1-community/q3-stock-rom" type="img" handler="Custom Firmware" />
+  <package name="Original Software" repo="y1-community/q5-stock-rom" device="Q5" url="https://github.com/y1-community/q5-stock-rom" type="img" handler="Custom Firmware" />
+  <package name="Original Software" repo="y1-community/g1-stock-rom" device="G1" url="https://github.com/y1-community/g1-stock-rom" type="img" handler="Custom Firmware" />
+  <package name="Original Software" repo="y1-community/g3-stock-rom" device="G3" url="https://github.com/y1-community/g3-stock-rom" type="img" handler="Custom Firmware" />
+  <package name="Original Software" repo="y1-community/r1-stock-rom" device="R1" url="https://github.com/y1-community/r1-stock-rom" type="img" handler="Custom Firmware" />
+  <package name="Original Software" repo="y1-community/sr1-stock-rom" device="SR1" url="https://github.com/y1-community/sr1-stock-rom" type="img" handler="Custom Firmware" />
+  <package name="Original Software" repo="y1-community/g5-stock-rom" device="G5" url="https://github.com/y1-community/g5-stock-rom" type="img" handler="Custom Firmware" />
 </slidia>

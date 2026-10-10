@@ -224,6 +224,15 @@ class UpdateCheckEvent(QEvent):
 
 def parse_version_designations(version_name):
     """Parse version names and extract designations with flexible adjective handling"""
+    import firmware_models as _firmware_models
+    stock_variant = _firmware_models.stock_release_variant(version_name)
+    if stock_variant:
+        version, label = stock_variant
+        return {
+            'clean_version': version,
+            'designations': [label] if label else [],
+        }
+
     designations = []
 
     # Define adjectives that can modify their nearest neighbor
@@ -482,6 +491,9 @@ def is_y1_model(model):
 
 def device_label_for_model(model):
     """Short device label (A5, Y2, Y1, or fallback) for user-facing copy."""
+    import firmware_models as _firmware_models
+    if _firmware_models.profile_for(model):
+        return _firmware_models.device_label(model)
     if is_a5_model(model):
         return "A5"
     if is_y2_model(model):
@@ -500,6 +512,9 @@ def power_on_button_for_model(model):
     Y2: hold the power/lock button on the side.
     A5: hold the power button on the side.
     """
+    import firmware_models as _firmware_models
+    if _firmware_models.profile_for(model):
+        return _firmware_models.power_button(model)
     if is_y2_model(model):
         return "power/lock button"
     if is_a5_model(model):
@@ -516,6 +531,9 @@ def install_power_on_steps(model):
 
 def innioasis_name_for_model(model):
     """Marketing-style device name for UI strings."""
+    import firmware_models as _firmware_models
+    if _firmware_models.profile_for(model):
+        return _firmware_models.product_name(model)
     label = device_label_for_model(model)
     return f"Innioasis {label}" if label in ("Y1", "Y2", "A5") else label
 
@@ -528,6 +546,10 @@ def model_from_zip_name(name_or_url_or_path):
       - rom_y2.zip, *_y2*, *-y2*, y2-*, y2_*, eastaeon, 6582 -> 'Y2'
       - rom.zip, rom_type_b.zip, rom_type_a.zip, rom_240p*, rom_360p*, rom_y1.zip, *_y1*, *-y1*, y1-*, y1_* -> 'Y1'
     """
+    import firmware_models as _firmware_models
+    explicit = _firmware_models.model_from_zip_name(name_or_url_or_path)
+    if explicit:
+        return explicit
     if not name_or_url_or_path:
         return None
     try:
@@ -673,8 +695,32 @@ def personalize_device_copy(text, model):
     return result
 
 
+class FirmwareInstallBlocked(Exception):
+    """Raised when a package must not be written to a device."""
+
+    def __init__(self, assessment):
+        self.assessment = assessment
+        super().__init__(getattr(assessment, "message", "") or "Automatic flashing is not available.")
+
+
 def get_flash_config(device_model=None):
     """Return SP Flash Tool file names for a resolved device model, or None if unknown."""
+    import firmware_models as _firmware_models
+    profile = _firmware_models.profile_for(device_model)
+    if profile and profile.flash == "generic_scatter":
+        directory = _firmware_models.payload_directory(get_firmware_app_dir(), profile.id)
+        assessment = _firmware_models.assess_payload_dir(profile.id, directory)
+        return {
+            "generic": True,
+            "history_def_ini": "",
+            "scatter_def_txt": "",
+            "scatter_txt": assessment.scatter_name,
+            "install_rom_sp_xml": _firmware_models.GENERIC_SPFLASH_XML,
+            "preloader_bin": assessment.preloader,
+            "chip": profile.chip,
+        }
+    if profile and profile.flash == "download_only":
+        return None
     if is_y2_model(device_model):
         return {
             "history_def_ini": "history_y2_def.ini",
@@ -819,19 +865,37 @@ def detect_device_model_for_install(
         if from_url:
             return from_url
 
-    # 3. Zip path
+    # 3. Explicit rom_<model>.zip wins over every heuristic.
     if zip_path:
         zip_str = str(zip_path).replace("\\", "/")
         base = Path(zip_str).name
-        # If this is an explicit rom name (not just an internal cache name with repo org)
         from_zip = model_from_zip_name(base)
         if from_zip:
             return from_zip
-        # For non-standard zip paths: check path tokens, but ignore generic repo names
+    else:
+        zip_str = ""
+        base = ""
+
+    # A selected Q3/Q5/G1/… must win before a shared MT6582 token, image
+    # size, or scatter filename can relabel the package as Y1 or Y2.
+    import firmware_models as _firmware_models
+    ui_known = _firmware_models.canonical_model(device_model)
+    if ui_known and ui_known not in ("Y1", "Y2"):
+        return ui_known
+
+    # Loose Y1/Y2/A5 tokens, only when the dropdown is not another model.
+    # eastaeon80 is the Q3/Q5 preloader family. Only eastaeon82 means Y2.
+    if zip_path:
         zip_lower = zip_str.lower()
         if "rom_a5" in zip_lower or "_a5" in zip_lower or "-a5" in zip_lower:
             return "A5"
-        if "rom_y2" in zip_lower or "_y2" in zip_lower or "-y2" in zip_lower or "eastaeon" in zip_lower or "6582" in zip_lower:
+        if (
+            "rom_y2" in zip_lower
+            or "_y2" in zip_lower
+            or "-y2" in zip_lower
+            or "eastaeon82" in zip_lower
+            or "6582" in zip_lower
+        ):
             return "Y2"
         if (
             base in ("rom.zip", "rom_type_b.zip", "rom_type_a.zip")
@@ -1838,7 +1902,15 @@ def build_mtk_scatter_wo_plan(install_root=None, device_model="Y2"):
     ``physical_start_addr`` (eMMC user-area byte offset / boot1 offset).
     """
     install_root = Path(install_root or get_firmware_app_dir())
-    if is_y2_model(device_model):
+    import firmware_models as _firmware_models
+    generic_profile = _firmware_models.profile_for(device_model)
+    if generic_profile and generic_profile.flash == "generic_scatter":
+        scatter_path = _firmware_models.find_scatter_file(install_root, generic_profile.chip)
+        if not scatter_path or not Path(scatter_path).is_file():
+            raise FileNotFoundError(
+                f"No {generic_profile.chip} scatter for {generic_profile.id} under {install_root}"
+            )
+    elif is_y2_model(device_model):
         scatter_path = _find_y2_scatter_path(install_root)
     else:
         scatter_path = _find_y1_scatter_path(install_root)
@@ -1874,6 +1946,11 @@ def build_mtk_scatter_wo_plan(install_root=None, device_model="Y2"):
             continue
         path = install_root / fname
         if not path.is_file():
+            if generic_profile and generic_profile.flash == "generic_scatter":
+                raise FileNotFoundError(
+                    f"{generic_profile.id} is missing {fname} ({name}) in {install_root}. "
+                    "A Y1 or Y2 image will not be substituted."
+                )
             alt = get_firmware_app_dir() / fname
             if alt.is_file():
                 path = alt
@@ -1927,9 +2004,9 @@ def build_mtk_scatter_wo_plan(install_root=None, device_model="Y2"):
     return plan, Path(scatter_path)
 
 
-def build_mtk_y2_unbrick_script(install_dir=None):
+def build_mtk_y2_unbrick_script(install_dir=None, device_model="Y2"):
     """
-    Full Y2 system unbrick script: preloader (boot1) + firmware images from package.
+    Full system unbrick script: preloader (boot1) + firmware images from package.
 
     Skips empty MBR/EBR package stubs so on-device partition scaffolding is kept.
 
@@ -1939,7 +2016,7 @@ def build_mtk_y2_unbrick_script(install_dir=None):
     Lines use scatter physical offsets (``wo``), not named partition detection.
     """
     install_root = Path(install_dir or get_firmware_app_dir())
-    plan, scatter_path = build_mtk_scatter_wo_plan(install_root, device_model="Y2")
+    plan, scatter_path = build_mtk_scatter_wo_plan(install_root, device_model=device_model)
     lines = []
     for p in plan:
         if p["parttype"] == "boot1":
@@ -1948,8 +2025,10 @@ def build_mtk_y2_unbrick_script(install_dir=None):
             )
         else:
             lines.append(f"wo 0x{p['offset']:x} 0x{p['length']:x} {p['file']}")
-    # Primary script name used by the rest of the app
-    script_path = install_root / Y2_MTK_INSTALL_SCRIPT
+    # Primary script name used by the rest of the app. Generic models keep
+    # their script in the payload directory so it cannot replace the Y2 one.
+    script_name = Y2_MTK_INSTALL_SCRIPT if is_y2_model(device_model) else "generic_mtk_install.script"
+    script_path = install_root / script_name
     script_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     # Keep a clearly-named copy for debugging / manual one-liner use
     wo_copy = install_root / Y2_MTK_WO_INSTALL_SCRIPT
@@ -1958,7 +2037,7 @@ def build_mtk_y2_unbrick_script(install_dir=None):
     except Exception:
         pass
     silent_print(
-        f"Y2 full-system unbrick script ({len(plan)} images from {scatter_path.name}; "
+        f"{device_model} full-system unbrick script ({len(plan)} images from {scatter_path.name}; "
         f"MBR/EBR stubs skipped): {script_path.name}"
     )
     for p in plan:
@@ -2015,6 +2094,63 @@ def build_mtk_y2_install_script_from_scatter(install_dir=None):
     return script_path, lines
 
 
+def _build_mtk_generic_staged_commands(install_root, model, app_dir):
+    """Scatter-offset mtkclient install for Q3/Q5/R1/SR1.
+
+    The preloader is the file named by this package's scatter. The Y1 or Y2
+    preloader is never substituted.
+    """
+    import firmware_models as _firmware_models
+    assessment = _firmware_models.assess_payload_dir(model, install_root)
+    if assessment.action != "generic":
+        raise RuntimeError(assessment.message)
+    script_path, script_lines, wo_plan, scatter_path = build_mtk_y2_unbrick_script(
+        install_root, device_model=model
+    )
+    preloader_path = install_root / assessment.preloader
+    da_path = install_root / Y2_MTK_DA_DEFAULT
+    if not da_path.is_file():
+        da_path = app_dir / Y2_MTK_DA_DEFAULT
+    if not preloader_path.is_file() or not da_path.is_file():
+        raise FileNotFoundError(
+            f"{model} install needs the package preloader ({assessment.preloader}) "
+            f"and {Y2_MTK_DA_DEFAULT}"
+        )
+    cmd = [
+        sys.executable,
+        str(app_dir / "mtk.py"),
+        "script",
+        str(script_path.resolve()),
+        "--preloader",
+        str(preloader_path.resolve()),
+        "--loader",
+        str(da_path.resolve()),
+    ]
+    stages = [
+        {
+            "name": "unbrick",
+            "required": True,
+            "retries": 2,
+            "cwd": str(install_root),
+            "cmd": list(cmd),
+        }
+    ]
+    meta = {
+        "scatter": str(scatter_path),
+        "stages": ["unbrick"],
+        "install_root": str(install_root),
+        "full_script": str(script_path),
+        "full_lines": len(script_lines),
+        "wo_plan": wo_plan,
+        "oneshot_cmd": list(cmd),
+        "mode": "scatter_wo_unbrick",
+        "device_model": model,
+        "named_parts": ",".join(p["name"] for p in wo_plan),
+        "named_files": ",".join(p["file"] for p in wo_plan),
+    }
+    return stages, meta
+
+
 def build_mtk_named_staged_commands(install_dir=None, device_model=None):
     """
     Full-system mtkclient install stages (unbrick-capable).
@@ -2026,6 +2162,13 @@ def build_mtk_named_staged_commands(install_dir=None, device_model=None):
     install_root = Path(install_dir or get_firmware_app_dir())
     app_dir = get_firmware_app_dir()
     model = resolve_device_model_for_install(device_model)
+
+    import firmware_models as _firmware_models
+    generic_profile = _firmware_models.profile_for(model)
+    if generic_profile and generic_profile.flash == "generic_scatter":
+        return _build_mtk_generic_staged_commands(install_root, model, app_dir)
+    if generic_profile and generic_profile.flash == "download_only":
+        raise RuntimeError(_firmware_models.assess_named_package(model).message)
 
     if is_y2_model(model):
         script_path, script_lines, wo_plan, scatter_path = build_mtk_y2_unbrick_script(
@@ -2452,6 +2595,41 @@ def cleanup_firmware_files():
 def get_firmware_app_dir():
     """Directory containing firmware_downloader.py (SP Flash Tool install root)."""
     return _FIRMWARE_APP_DIR
+
+
+def firmware_dir_for_model(device_model, tool_dir=None):
+    """Where this model's images live.
+
+    Y1 and Y2 stay in the app directory. Other generic-scatter models use
+    firmware_payloads/<MODEL>/ so their scatter cannot replace MT6572/MT6582.
+    """
+    import firmware_models as _firmware_models
+    tool_dir = Path(tool_dir or get_firmware_app_dir())
+    if _firmware_models.uses_isolated_payload(device_model):
+        return _firmware_models.payload_directory(tool_dir, device_model)
+    return tool_dir
+
+
+def _prepare_generic_payload(model, install_dir=None):
+    """Write the generic SP Flash Tool config beside an extracted payload."""
+    import firmware_models as _firmware_models
+    root = Path(install_dir) if install_dir else firmware_dir_for_model(model)
+    root.mkdir(parents=True, exist_ok=True)
+    assessment = _firmware_models.assess_payload_dir(model, root)
+    if assessment.action != "generic":
+        silent_print(assessment.message)
+        return assessment
+    da_src = get_firmware_app_dir() / _firmware_models.DA_FILENAME
+    da_dest = root / _firmware_models.DA_FILENAME
+    if da_src.is_file() and da_src.resolve() != da_dest.resolve():
+        try:
+            shutil.copy2(da_src, da_dest)
+        except Exception as exc:
+            silent_print(f"Could not stage {da_dest.name}: {exc}")
+    _firmware_models.write_generic_spflash_xml(root, model)
+    if assessment.scatter_name:
+        _write_history_ini_scatter(root, assessment.scatter_name)
+    return assessment
 
 
 def is_linux_platform():
@@ -5159,6 +5337,10 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
     ``ok`` is False only for hard problems (unknown model, missing scatter after
     recovery attempt, missing downloadable image files).
     """
+    import firmware_models as _firmware_models
+    if _firmware_models.uses_isolated_payload(device_model):
+        directory = Path(app_dir) if app_dir else firmware_dir_for_model(device_model)
+        return _firmware_models.validate_generic_payload(device_model, directory)
     app_dir = Path(app_dir or get_firmware_app_dir())
     resolved = resolve_device_model_for_install(device_model)
     config = get_flash_config(resolved)
@@ -5385,7 +5567,7 @@ def _write_history_ini_scatter(app_dir, scatter_txt):
         return False
 
 
-def prepare_sp_flash_tool_files(device_model=None, zip_path=None, extracted_files=None):
+def prepare_sp_flash_tool_files(device_model=None, zip_path=None, extracted_files=None, install_dir=None):
     """
     Reset history.ini and ensure model-correct scatter file for SP Flash Tool.
 
@@ -5399,6 +5581,9 @@ def prepare_sp_flash_tool_files(device_model=None, zip_path=None, extracted_file
             device_model, zip_path=zip_path, extracted_files=extracted_files
         )
         config = get_flash_config(resolved_model)
+        if config and config.get("generic"):
+            _prepare_generic_payload(resolved_model, install_dir)
+            return
         if not config:
             silent_print(
                 "Device model unknown; skipping SP Flash Tool default file preparation "
@@ -5503,6 +5688,17 @@ def update_history_ini(device_model=None, zip_path=None, extracted_files=None):
     )
 
 
+def _reset_payload_dir(path):
+    """Remove a previous generic payload without touching the Y1/Y2 tree."""
+    path = Path(path)
+    path.mkdir(parents=True, exist_ok=True)
+    for child in path.iterdir():
+        if child.is_file() or child.is_symlink():
+            child.unlink()
+        elif child.is_dir():
+            shutil.rmtree(child, ignore_errors=True)
+
+
 def extract_firmware_rom_zip(zip_path, device_model=None, extract_path="."):
     """
     Extract a firmware ROM zip with model-correct history.ini scatter handling.
@@ -5512,14 +5708,27 @@ def extract_firmware_rom_zip(zip_path, device_model=None, extract_path="."):
     skip overwriting history.ini from the zip, then prepare again after extract
     once package files are known.
     """
+    import firmware_models as _firmware_models
     zip_path = Path(zip_path)
+    named = _firmware_models.assess_named_package(
+        device_model, zip_name=zip_path.name
+    )
+    if named.action in ("download_only", "refuse"):
+        raise FirmwareInstallBlocked(named)
+    if named.action == "generic":
+        extract_path = firmware_dir_for_model(named.model)
+        _reset_payload_dir(extract_path)
     extract_path = Path(extract_path)
     pre_model = resolve_device_model_for_install(device_model, zip_path=zip_path.name)
     silent_print(
         f"Pre-extract SPFT prep for model={pre_model!r} "
         f"(zip={zip_path.name}, ui={device_model!r})"
     )
-    prepare_sp_flash_tool_files(pre_model or device_model, zip_path=zip_path.name)
+    prepare_sp_flash_tool_files(
+        pre_model or device_model,
+        zip_path=zip_path.name,
+        install_dir=extract_path if named.action == "generic" else None,
+    )
 
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         extracted_files = _safe_extractall_skip_history(
@@ -5533,7 +5742,17 @@ def extract_firmware_rom_zip(zip_path, device_model=None, extract_path="."):
         post_model or pre_model or device_model,
         zip_path=zip_path.name,
         extracted_files=extracted_files,
+        install_dir=extract_path if named.action == "generic" else None,
     )
+    if named.action == "generic":
+        checked = _firmware_models.assess_payload_dir(
+            named.model,
+            extract_path,
+            zip_name=zip_path.name,
+            selected_model=device_model,
+        )
+        if checked.action != "generic":
+            raise FirmwareInstallBlocked(checked)
     silent_print(
         f"Post-extract SPFT prep for model={post_model!r} (zip={zip_path.name})"
     )
@@ -5791,25 +6010,9 @@ def get_zip_path(repo_name, version):
     return ZIP_STORAGE_DIR / f"{safe_repo_name}_{version}.zip"
 
 def _classify_variant_model(name, tag_name='', repo=''):
-    """Classify a rom*.zip asset as Y1, Y2, or dual (eligible for both)."""
-    lower = (name or '').lower()
-    tag_lower = (tag_name or '').lower()
-    repo_lower = (repo or '').lower()
-    repo_name = repo_lower.split('/')[-1] if '/' in repo_lower else repo_lower
-
-    if '_y2' in lower or lower.startswith('rom_y2'):
-        return 'Y2'
-    if any(token in lower for token in ('6582', 'eastaeon', 'mt6582')):
-        return 'Y2'
-    if any(token in tag_lower for token in ('6582', 'eastaeon', 'mt6582')):
-        return 'Y2'
-    if 'y2' in tag_lower and 'y1' not in tag_lower:
-        return 'Y2'
-
-    if 'y2' in repo_name and 'y1' not in repo_name.replace('y2', '', 1):
-        return 'Y2'
-
-    return 'dual'
+    """Classify a rom*.zip asset as a model id, Y2, or dual (legacy Y1)."""
+    import firmware_models as _firmware_models
+    return _firmware_models.classify_rom_asset(name, tag_name, repo)
 
 
 def _parse_rom_asset_variant(asset, tag_name='', repo=''):
@@ -5951,6 +6154,11 @@ def filter_rom_variants_for_model(variants, selected_model, package_device=None,
         model = variant.get('model') or _classify_variant_model(asset_name, tag_name, repo)
         enriched.append({**variant, 'model': model})
 
+    import firmware_models as _firmware_models
+    selected_known = _firmware_models.canonical_model(selected_model)
+    if selected_known and selected_known not in ("Y1", "Y2"):
+        return [variant for variant in enriched if variant.get("model") == selected_known]
+
     selecting_y2 = is_y2_model(selected_model)
     package_dev = (package_device or '').upper()
 
@@ -6011,6 +6219,18 @@ def release_supports_device_model(release, selected_model, package_device=None, 
     """Determine if a release has at least one ROM variant for the selected model."""
     if not selected_model:
         return True
+
+    import firmware_models as _firmware_models
+    known = _firmware_models.canonical_model(selected_model)
+    if known and known not in ("Y1", "Y2"):
+        tag_name = release.get('tag_name', '')
+        assets = release.get('assets', [])
+        variants = release.get('rom_variants') or extract_rom_variants_from_assets(assets, tag_name, repo)
+        if variants:
+            return len(filter_rom_variants_for_model(
+                variants, selected_model, package_device, repo, tag_name
+            )) > 0
+        return _firmware_models.canonical_model(package_device) == known
 
     tag_name = release.get('tag_name', '')
     assets = release.get('assets', [])
@@ -7252,9 +7472,11 @@ class SPFlashToolWorker(QThread):
         # Always resolve model from install context again so we never flash Y1
         # XML against Y2 images (that aborts during LoadRoms with 5016).
         resolved = self._sync_device_label()
-        prepare_sp_flash_tool_files(resolved)
+        fw_dir = firmware_dir_for_model(resolved)
+        self._run_cwd = fw_dir
+        prepare_sp_flash_tool_files(resolved, install_dir=fw_dir)
 
-        ok, errors, warnings = validate_spflash_images_for_model(resolved, self.app_dir)
+        ok, errors, warnings = validate_spflash_images_for_model(resolved, fw_dir)
         for w in warnings:
             silent_print(f"SPFT preflight warning: {w}")
         if not ok:
@@ -7290,7 +7512,7 @@ class SPFlashToolWorker(QThread):
         runtime_xml = prepare_spflash_runtime_install_xml(
             device_model=resolved,
             com_port=com_port,
-            app_dir=self.app_dir,
+            app_dir=fw_dir,
         )
         return [str(self.binary), "-i", str(runtime_xml)], com_port, ports
 
@@ -7399,7 +7621,7 @@ class SPFlashToolWorker(QThread):
             text=True,
             bufsize=0,
             universal_newlines=True,
-            cwd=str(self.app_dir),
+            cwd=str(getattr(self, "_run_cwd", None) or self.app_dir),
             env=sp_flash_tool_process_env(self.app_dir),
         )
 
@@ -8202,7 +8424,11 @@ class MTKWorker(QThread):
             zip_path=getattr(self, 'zip_path', None),
             extracted_files=getattr(self, 'extracted_files', None),
         )
-        app_dir = Path(__file__).resolve().parent
+        tool_dir = Path(__file__).resolve().parent
+        # Y1 and Y2 images stay beside the app. Q3, Q5, R1, and SR1 images
+        # live in firmware_payloads/<MODEL>/. mtk.py is still resolved from
+        # the app directory inside the staged command.
+        app_dir = firmware_dir_for_model(model, tool_dir)
         device_label = device_label_for_model(model)
 
         # Windows never uses MTKClient (SP Flash Tool only).
@@ -8925,12 +9151,35 @@ class DownloadWorker(QThread):
                 )
                 return
 
+            import firmware_models as _firmware_models
+            named = _firmware_models.assess_named_package(
+                self.device_model,
+                zip_name=self.original_asset_name,
+                asset_url=self.download_url,
+            )
+            if named.action in ("download_only", "refuse"):
+                self.flash_hold = named
+                self.resolved_install_model = named.model or self.device_model
+                self.install_zip_name = zip_path.name
+                self.install_extracted_files = None
+                self.status_updated.emit("Download complete. Automatic flashing is not available.")
+                self.download_completed.emit(True, named.message)
+                return
+
             self.status_updated.emit("Download completed. Extracting...")
 
             # Extract + prepare history.ini scatter for model (before and after)
-            extracted_files, resolved_model = extract_firmware_rom_zip(
-                zip_path, device_model=self.device_model, extract_path="."
-            )
+            try:
+                extracted_files, resolved_model = extract_firmware_rom_zip(
+                    zip_path, device_model=self.device_model, extract_path="."
+                )
+            except FirmwareInstallBlocked as blocked:
+                self.flash_hold = blocked.assessment
+                self.resolved_install_model = blocked.assessment.model or self.device_model
+                self.install_zip_name = zip_path.name
+                self.install_extracted_files = None
+                self.download_completed.emit(True, blocked.assessment.message)
+                return
 
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
@@ -8951,6 +9200,14 @@ class DownloadWorker(QThread):
             )
 
             self.status_updated.emit("Extraction completed. Files ready for MTK processing.")
+
+            if _firmware_models.uses_isolated_payload(resolved_model):
+                label = device_label_for_model(resolved_model)
+                self.download_completed.emit(
+                    True,
+                    f"{label} firmware passed the package checks and is ready to install.",
+                )
+                return
 
             # Check if required files exist
             required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
@@ -15574,19 +15831,42 @@ class FirmwareDownloaderGUI(QMainWindow):
                 asset_url=getattr(self, "_last_install_asset_url", None),
             )
             if disk_hint and device_model and disk_hint != device_model:
-                silent_print(
-                    f"Install model mismatch: context={device_model} disk={disk_hint}; using {disk_hint}"
-                )
-                device_model = disk_hint
-                self.set_runtime_detected_device_model(disk_hint)
+                pair = {str(disk_hint).upper(), str(device_model).upper()}
+                if pair <= {"Y1", "Y2"}:
+                    silent_print(
+                        f"Install model mismatch: context={device_model} disk={disk_hint}; using {disk_hint}"
+                    )
+                    device_model = disk_hint
+                    self.set_runtime_detected_device_model(disk_hint)
+                else:
+                    silent_print(
+                        f"Refusing flash: context={device_model} disk={disk_hint}"
+                    )
+                    QMessageBox.critical(
+                        self,
+                        "Firmware does not match the selected model",
+                        f"This package looks like {disk_hint} firmware, but the install "
+                        f"was started for {device_model}.\n\n"
+                        "Refusing to flash so the wrong model's firmware is not written.\n"
+                        "No data was sent to a device.",
+                    )
+                    self.show_appropriate_buttons_for_spflash()
+                    self.show_left_panel()
+                    return
             elif not device_model and disk_hint:
                 device_model = disk_hint
             flash_config = get_flash_config(device_model)
             if not flash_config:
+                import firmware_models as _firmware_models
+                blocked = _firmware_models.assess_named_package(
+                    device_model,
+                    zip_name=getattr(self, "_last_install_original_name", None),
+                    asset_url=getattr(self, "_last_install_asset_url", None),
+                )
                 QMessageBox.warning(
                     self,
-                    "Device Model Unknown",
-                    self.device_copy(
+                    "Automatic flashing is not available",
+                    blocked.message or self.device_copy(
                         "Could not determine the device model for this firmware.\n\n"
                         "Extract the firmware files first, select the correct device model, or use "
                         "Browse Files with your firmware package (e.g., rom.zip, rom_y2.zip, rom_a5.zip)."
@@ -20495,9 +20775,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         for device_model in sorted(device_models):
             self.device_model_combo.addItem(device_model, device_model)
 
-        # Set default to first available model if any exist
+        # Keep Y1 selected when it is in the catalogue. Alphabetical order
+        # would otherwise open on G1 once those models are listed.
         if len(device_models) > 0:
-            first_model = sorted(device_models)[0]
+            import firmware_models as _firmware_models
+            first_model = _firmware_models.preferred_default_model(device_models)
             self.device_model_combo.setCurrentText(first_model)
 
         # Update device type visibility based on selected model
@@ -22238,10 +22520,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             base_header = f"{display_version}\n"
             software_name = package_info.get('name', 'Unknown') if package_info else 'Unknown'
 
-            # Add designations as formatted text (nightly, 360p tag flag, etc.)
+            # Add designations as formatted text (nightly, 360p tag flag, language, etc.)
             if version_info.get('designations'):
                 designations_text = format_designations_text(version_info['designations'])
                 base_header += f"{designations_text}\n"
+
+            import firmware_models as _firmware_models
+            variant_warning = _firmware_models.release_variant_warning(selected_model, tag_name)
+            if variant_warning:
+                base_header += f"{variant_warning}\n"
 
             # Always show published date when available (including nightly builds)
             # Suppress if already shown at the top of the header (either "Released: ..." or datestamp "Today at HH:MM")
@@ -26173,11 +26460,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Extracting zip file...")
 
             # Extract + prepare history.ini scatter for model (before and after)
-            extracted_files, resolved_model = extract_firmware_rom_zip(
-                zip_path,
-                device_model=self.get_selected_device_model(),
-                extract_path=".",
-            )
+            try:
+                extracted_files, resolved_model = extract_firmware_rom_zip(
+                    zip_path,
+                    device_model=self.get_selected_device_model(),
+                    extract_path=".",
+                )
+            except FirmwareInstallBlocked as blocked:
+                self.progress_bar.setVisible(False)
+                self.status_label.setText("Automatic flashing is not available for this firmware.")
+                QMessageBox.warning(
+                    self,
+                    "Automatic flashing is not available",
+                    blocked.assessment.message,
+                )
+                return
 
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
@@ -26185,12 +26482,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.progress_bar.setValue(75)
             self.status_label.setText("Checking required files...")
 
-            # Check if required files exist
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
-            missing_files = []
-            for file in required_files:
-                if not Path(file).exists():
-                    missing_files.append(file)
+            import firmware_models as _firmware_models
+            if _firmware_models.uses_isolated_payload(resolved_model):
+                missing_files = []
+            else:
+                # Check if required files exist
+                required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+                missing_files = []
+                for file in required_files:
+                    if not Path(file).exists():
+                        missing_files.append(file)
 
             if missing_files:
                 self.progress_bar.setVisible(False)
@@ -35100,11 +35401,21 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.status_label.setText("Extracting existing zip file...")
 
             # Extract + prepare history.ini scatter for model (before and after)
-            extracted_files, resolved_model = extract_firmware_rom_zip(
-                zip_path,
-                device_model=self.get_selected_device_model(),
-                extract_path=".",
-            )
+            try:
+                extracted_files, resolved_model = extract_firmware_rom_zip(
+                    zip_path,
+                    device_model=self.get_selected_device_model(),
+                    extract_path=".",
+                )
+            except FirmwareInstallBlocked as blocked:
+                self.progress_bar.setVisible(False)
+                self.status_label.setText("Automatic flashing is not available for this firmware.")
+                QMessageBox.warning(
+                    self,
+                    "Automatic flashing is not available",
+                    blocked.assessment.message,
+                )
+                return
 
             # Log extracted files for cleanup
             log_extracted_files(extracted_files)
@@ -35112,12 +35423,16 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.progress_bar.setValue(75)
             self.status_label.setText("Checking required files...")
 
-            # Check if required files exist
-            required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
-            missing_files = []
-            for file in required_files:
-                if not Path(file).exists():
-                    missing_files.append(file)
+            import firmware_models as _firmware_models
+            if _firmware_models.uses_isolated_payload(resolved_model):
+                missing_files = []
+            else:
+                # Check if required files exist
+                required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
+                missing_files = []
+                for file in required_files:
+                    if not Path(file).exists():
+                        missing_files.append(file)
 
             if missing_files:
                 self.progress_bar.setVisible(False)
@@ -35231,6 +35546,15 @@ class FirmwareDownloaderGUI(QMainWindow):
             self._last_install_original_name = getattr(
                 download_worker, 'original_asset_name', None
             )
+            hold = getattr(download_worker, "flash_hold", None) if download_worker else None
+            if hold is not None:
+                self.status_label.setText("Automatic flashing is not available for this firmware.")
+                QMessageBox.warning(
+                    self,
+                    "Automatic flashing is not available",
+                    hold.message,
+                )
+                return
             detected = resolved_from_download or self.detect_device_model_from_install_files()
             if detected:
                 self.set_runtime_detected_device_model(detected)
@@ -35258,9 +35582,16 @@ class FirmwareDownloaderGUI(QMainWindow):
                 QTimer.singleShot(400, self._handle_y2_mac_install_flow)
                 return
 
-            # Check if required files exist and handle installation based on selected method
+            # Check if required files exist and handle installation based on selected method.
+            # Generic models keep images in firmware_payloads/<MODEL>/, not the Y1/Y2 root.
+            import firmware_models as _firmware_models
             required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
-            if all(Path(file).exists() for file in required_files):
+            payload_ready = False
+            if _firmware_models.uses_isolated_payload(detected):
+                payload_ready = _firmware_models.assess_payload_dir(
+                    detected, firmware_dir_for_model(detected)
+                ).action == "generic"
+            if payload_ready or all(Path(file).exists() for file in required_files):
                 silent_print("=== FIRMWARE FILES READY ===")
                 silent_print(f"Selected installation method: {getattr(self, 'installation_method', 'guided')}")
                 silent_print(f"Install model: {detected} (zip={zip_from_download})")
@@ -35701,6 +36032,52 @@ class FirmwareDownloaderGUI(QMainWindow):
         resolved_model, install_zip, _ = self.get_install_model_context()
         if resolved_model:
             self.set_runtime_detected_device_model(resolved_model)
+
+        import firmware_models as _firmware_models
+        gate = _firmware_models.assess_named_package(
+            resolved_model,
+            zip_name=getattr(self, "_last_install_original_name", None),
+            asset_url=getattr(self, "_last_install_asset_url", None),
+        )
+        if gate.action in ("download_only", "refuse"):
+            self.show_appropriate_buttons_for_spflash()
+            self.show_left_panel()
+            self.status_label.setText("Automatic flashing is not available for this firmware.")
+            QMessageBox.warning(
+                self,
+                "Automatic flashing is not available",
+                gate.message,
+            )
+            return
+        if gate.action == "generic":
+            payload = _firmware_models.assess_payload_dir(
+                gate.model,
+                firmware_dir_for_model(gate.model),
+                zip_name=getattr(self, "_last_install_original_name", None),
+                selected_model=resolved_model,
+            )
+            if payload.action != "generic":
+                self.show_appropriate_buttons_for_spflash()
+                self.show_left_panel()
+                self.status_label.setText("Firmware was not written to a device.")
+                QMessageBox.critical(
+                    self,
+                    "Firmware does not match the selected model",
+                    payload.message,
+                )
+                return
+            confirm = QMessageBox.question(
+                self,
+                f"Install {_firmware_models.product_name(gate.model)}",
+                payload.message,
+                QMessageBox.Ok | QMessageBox.Cancel,
+                QMessageBox.Cancel,
+            )
+            if confirm != QMessageBox.Ok:
+                self.status_label.setText("Install cancelled. No data was sent to a device.")
+                self.show_appropriate_buttons_for_spflash()
+                self.show_left_panel()
+                return
 
         # Y2 firmware on macOS (or --y2-mac-flow test flag): installation isn't
         # supported from this Mac yet  hand the user to the manufacturer's manual
