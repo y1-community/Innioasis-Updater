@@ -25,7 +25,14 @@
         { name: "rom_240p_type_b.zip", label: "Y1 · Type B · 240p", title: "240p build for Y1 players that shipped with an earlier software version" },
         { name: "rom_360p.zip", label: "Y1 · Type A · 360p", title: "360p build for Y1 players that shipped with software 2.0.0 or later" },
         { name: "rom_360p_type_b.zip", label: "Y1 · Type B · 360p", title: "360p build for Y1 players that shipped with an earlier software version" },
-        { name: "rom_y2.zip", label: "Y2", title: "For Y2 players" }
+        { name: "rom_y2.zip", label: "Y2", title: "For Y2 players" },
+        { name: "rom_q3.zip", label: "Q3", title: "Stock firmware for the Timmkoo Q3" },
+        { name: "rom_q5.zip", label: "Q5", title: "Stock firmware for the Timmkoo Q5" },
+        { name: "rom_g1.zip", label: "G1", title: "Stock firmware for the Innioasis G1. Download only." },
+        { name: "rom_g3.zip", label: "G3", title: "Stock firmware for the Innioasis G3. Download only." },
+        { name: "rom_g5.zip", label: "G5", title: "Stock firmware for the Innioasis G5. Download only, and only when the zip is under 2 GiB." },
+        { name: "rom_r1.zip", label: "R1", title: "Stock firmware for the Innioasis R1 voice recorder" },
+        { name: "rom_sr1.zip", label: "SR1", title: "Stock firmware for the Innioasis SR1 voice recorder" }
     ];
 
     /* The packages a release may ship for an item. Y1 releases can use
@@ -460,8 +467,16 @@
                 syncUrl();
             });
         }
+        function listedModel(value) {
+            if (!model || !value) return "";
+            var upper = String(value).toUpperCase();
+            var match = Array.prototype.some.call(model.options, function (option) {
+                return option.value.toUpperCase() === upper;
+            });
+            return match ? upper : "";
+        }
         var hashModel = (window.location.hash || "").slice(1).toUpperCase();
-        var wantedModel = (modelParam === "Y1" || modelParam === "Y2") ? modelParam : ((hashModel === "Y1" || hashModel === "Y2") ? hashModel : "");
+        var wantedModel = listedModel(modelParam) || listedModel(hashModel);
         if (model && wantedModel) {
             model.value = wantedModel;
             if (filterSection) window.setTimeout(function () { filterSection.scrollIntoView({ block: "start" }); }, 0);
@@ -477,7 +492,10 @@
         }
         /* Original Software is the default software filter for the page. */
         function originalSlug() {
-            return (model && model.value === "Y2") ? "original-y2" : "original-y1";
+            var selected = model ? String(model.value || "Y1").toLowerCase() : "y1";
+            var slug = "original-" + selected;
+            if (catalog.some(function (item) { return item.slug === slug; })) return slug;
+            return "original-y1";
         }
         if (y2Switch) {
             y2Switch.addEventListener("click", function (event) {
@@ -677,7 +695,7 @@
         function syncUrl() {
             if (!model) return;
             var params = new URLSearchParams(window.location.search);
-            if (model.value === "Y1" || model.value === "Y2") params.set("model", model.value);
+            if (listedModel(model.value)) params.set("model", listedModel(model.value));
             else params.delete("model");
             if (software && software.value) params.set("software", software.value);
             else params.delete("software");
@@ -745,17 +763,29 @@
         }
         if (!item) return;
         var restoring = /original/.test(item.slug);
+        var downloadOnly = item.install === "download";
         var name = item.name;
-        var heading = restoring ? "Restore Original Software on your " + model : "Install " + name + " on your " + model;
+        var heading = downloadOnly
+            ? "Download Original Software for your " + model
+            : restoring ? "Restore Original Software on your " + model : "Install " + name + " on your " + model;
         var kicker = section.querySelector("[data-personalised-kicker]");
-        if (kicker) kicker.textContent = restoring ? "Restore · " + model : name + " · " + model;
+        if (kicker) kicker.textContent = downloadOnly ? "Download · " + model : restoring ? "Restore · " + model : name + " · " + model;
         var headingEl = section.querySelector("[data-personalised-heading]");
         if (headingEl) headingEl.textContent = heading;
         var lead = section.querySelector("[data-personalised-lead]");
-        if (lead) lead.textContent = restoring
+        if (lead) lead.textContent = downloadOnly
+            ? "Updater can download Original Software for the " + model + ". It will not flash this model automatically."
+            : restoring
             ? "Follow these steps in Updater. The player you want to restore is the " + model + "."
             : "Follow these steps in Updater. You have the " + model + " and want " + name + " on it.";
-        var steps = [
+        var steps = downloadOnly ? [
+            "Open Updater on your computer, or install it first with the button below.",
+            "In Device Model, select " + model + ".",
+            "In Software, select Original Software.",
+            "Select a release shown for the " + model + ".",
+            "Click Install / Restore. Updater downloads the package and then tells you that automatic flashing is not available for this model.",
+            "Keep the downloaded zip. Do not connect a different model and ask Updater to write this package."
+        ] : [
             "Open Updater on your computer, or install it first with the button below.",
             "In Device Model, select " + model + ".",
             restoring ? "In Software, select Original Software." : "In Software, select " + name + ".",
@@ -774,8 +804,10 @@
             });
         }
         var note = section.querySelector("[data-personalised-note]");
-        if (note) note.textContent = restoring
-            ? "That puts the " + model + " back on its original software. The download and computer setup sections below still apply if you need them."
+        if (note) note.textContent = downloadOnly
+            ? "Updater saves the " + model + " stock package and stops. Automatic flashing is not available for this model yet. The download and computer setup sections below still apply if you need them."
+            : restoring
+            ? "That puts the " + model + " back on its original software. Updater checks that the package matches the model you selected. The download and computer setup sections below still apply if you need them."
             : "That is the whole " + name + " install on the " + model + ". The download and computer setup sections below still apply if you need them.";
         /* The generic firmware guide page fills its copy with the project
            name and model from the URL, so any listed firmware gets a
@@ -797,7 +829,7 @@
             }
         }
         var headerKicker = document.querySelector("#main > header .lumen-kicker");
-        if (headerKicker) headerKicker.textContent = (restoring ? "Restore " : "Install ") + name + " on " + model + " · beginner route";
+        if (headerKicker) headerKicker.textContent = (downloadOnly ? "Download " : restoring ? "Restore " : "Install ") + name + " on " + model + " · beginner route";
         var h1 = document.querySelector("#main > header h1");
         if (h1) h1.textContent = heading + ".";
         document.title = heading + " | Innioasis Updater";

@@ -1,12 +1,12 @@
 # Innioasis Updater
 
-> Innioasis Updater is the free, open-source community tool for installing and restoring software on the Innioasis Y1 and Y2 music players, running on Windows, macOS, and Linux. The site also hosts the Y1 Themes Gallery and plain-English guides for custom software projects such as Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, and Koensayr. Install flows always ask the user to pick the model first (Y1 or Y2) and to connect the powered-off player only when Updater prompts.
+> Innioasis Updater is the free, open-source community tool for installing and restoring software on Innioasis and Timmkoo players and recorders, running on Windows, macOS, and Linux. Y1 and Y2 have the tested install paths, including custom software such as Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, and Koensayr. Stock firmware is also catalogued for the Timmkoo Q3 and Q5 and the Innioasis G1, G3, G5, R1, and SR1. Updater can flash Q3, Q5, R1, and SR1 from the package scatter after confirmation. G1, G3, and G5 can be downloaded; automatic flashing is not supported for those yet, and a G5 zip is published only when it stays under GitHub's 2 GiB asset limit. Install flows ask the user to pick the model first and to connect a device only when Updater is actually flashing. The site also hosts the Y1 Themes Gallery.
 
 ## Key pages
 
 - [Home](https://innioasis.app/): Overview of Innioasis Updater, the software catalogue, community videos, and quick-start cards.
 - [Installation guide](https://innioasis.app/guide.html): Full Windows, macOS, and Linux setup plus the model-first install steps for Updater.
-- [Software downloads](https://innioasis.app/firmware.html): Browse releases for every software project by model, with guided Updater routes and manual ZIP links.
+- [Software downloads](https://innioasis.app/firmware.html): Browse releases for every software project by model, with guided Updater routes and manual ZIP links. Stock entries exist for Y1, Y2, Q3, Q5, G1, G3, G5, R1, and SR1. Custom software pages below are Y1 and Y2.
 - [Software FAQ](https://innioasis.app/firmware-faq.html): "Which software is right for you?" — plain-English comparisons of every project and the restore path.
 - [Rockbox guide](https://innioasis.app/rockbox.html): Installing Rockbox on the Y1 or Y2, themes, Type A and Type B notes, and returning to stock.
 - [Troubleshooting](https://innioasis.app/troubleshooting.html): Where an install stops and how to fix it — model, cable, driver, permissions, and timing.
