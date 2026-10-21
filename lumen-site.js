@@ -162,31 +162,48 @@
             .catch(function () { githubTokens = []; return githubTokens; });
     }
 
-    /* One page of releases for a repo, trying a random configured token per
-       attempt, then one unauthenticated request, then giving up. */
-    function fetchReleasesPage(repo, page) {
-        var url = "https://api.github.com/repos/" + repo + "/releases?per_page=100&page=" + page;
-        var tokens = githubTokens.slice();
-        for (var i = tokens.length - 1; i > 0; i -= 1) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var tmp = tokens[i]; tokens[i] = tokens[j]; tokens[j] = tmp;
-        }
-        function attempt(useAuth) {
-            var token = useAuth && tokens.length ? tokens.pop() : null;
+    /* Call GitHub API with token rotation, pruning invalid tokens on 401,
+       retrying on rate limits (403/429), and falling back to unauthenticated. */
+    function fetchGithubApi(url) {
+        var tried = [];
+        function attempt() {
+            var token = null;
+            if (githubTokens.length > 0) {
+                var available = githubTokens.filter(function (t) { return tried.indexOf(t) === -1; });
+                if (available.length > 0) {
+                    var idx = Math.floor(Math.random() * available.length);
+                    token = available[idx];
+                    tried.push(token);
+                }
+            }
             var headers = { Accept: "application/vnd.github+json" };
             if (token) headers.Authorization = "Bearer " + token;
+
             return fetch(url, { headers: headers })
                 .then(function (response) {
                     if (response.ok) return response;
-                    var retriable = response.status === 401 || response.status === 403 || response.status === 429;
-                    if (retriable && useAuth) {
-                        if (tokens.length) return attempt(true);
-                        return attempt(false);
+                    if (response.status === 401 && token) {
+                        var pIndex = githubTokens.indexOf(token);
+                        if (pIndex !== -1) githubTokens.splice(pIndex, 1);
+                        return attempt();
+                    }
+                    if ((response.status === 403 || response.status === 429) && token) {
+                        return attempt();
                     }
                     return response;
+                })
+                .catch(function (err) {
+                    if (token) return attempt();
+                    throw err;
                 });
         }
-        return attempt(githubTokens.length > 0);
+        return attempt();
+    }
+
+    /* One page of releases for a repo using token rotation and fallback. */
+    function fetchReleasesPage(repo, page) {
+        var url = "https://api.github.com/repos/" + repo + "/releases?per_page=100&page=" + page;
+        return fetchGithubApi(url);
     }
 
     function fetchAllReleases(repo, page, collected) {
@@ -421,6 +438,506 @@
         });
     }
 
+    function detectSystemArchitecture() {
+        var ua = navigator.userAgent || "";
+        var platform = navigator.platform || "";
+        var os = detectPlatform() || "unknown";
+
+        var arch = "x86-64";
+        if (/arm64|aarch64|armv8/i.test(ua) || /arm64|aarch64/i.test(platform)) {
+            arch = "arm64";
+        } else if (/riscv64|riscv/i.test(ua)) {
+            arch = "riscv";
+        }
+        return { os: os, arch: arch };
+    }
+
+    async function getFullPlatform() {
+        var p = detectSystemArchitecture();
+        if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === "function") {
+            try {
+                var data = await navigator.userAgentData.getHighEntropyValues(["architecture"]);
+                if (data && data.architecture) {
+                    var a = data.architecture.toLowerCase();
+                    if (a.includes("arm")) p.arch = "arm64";
+                    else if (a.includes("x86")) p.arch = "x86-64";
+                    else if (a.includes("riscv")) p.arch = "riscv";
+                }
+            } catch (_) {}
+        }
+        return p;
+    }
+
+    var cachedUpdaterNeoAssets = null;
+    async function fetchUpdaterNeoAssets() {
+        if (cachedUpdaterNeoAssets !== null) return cachedUpdaterNeoAssets;
+        var assets = [];
+        var seenNames = {};
+
+        function addAsset(a) {
+            if (a && a.name && !seenNames[a.name]) {
+                seenNames[a.name] = true;
+                assets.push(a);
+            }
+        }
+
+        // If running locally, check for local test assets first
+        if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+            try {
+                var localRes = await fetch("/api/local-portable-assets");
+                if (localRes.ok) {
+                    var localAssets = await localRes.json();
+                    if (Array.isArray(localAssets)) {
+                        localAssets.forEach(addAsset);
+                    }
+                }
+            } catch (_) {}
+        }
+
+        // Query GitHub API for latest release
+        var url = "https://api.github.com/repos/y1-community/updater-ce-neo/releases/latest";
+        try {
+            var res = await fetchGithubApi(url);
+            if (res.ok) {
+                var data = await res.json();
+                if (Array.isArray(data.assets)) data.assets.forEach(addAsset);
+            }
+        } catch (_) {}
+
+        // Also query recent releases to pick up platform assets uploaded across releases
+        try {
+            var allUrl = "https://api.github.com/repos/y1-community/updater-ce-neo/releases?per_page=10";
+            var allRes = await fetchGithubApi(allUrl);
+            if (allRes.ok) {
+                var list = await allRes.json();
+                if (Array.isArray(list)) {
+                    list.forEach(function (rel) {
+                        if (Array.isArray(rel.assets)) rel.assets.forEach(addAsset);
+                    });
+                }
+            }
+        } catch (_) {}
+
+        cachedUpdaterNeoAssets = assets;
+        return cachedUpdaterNeoAssets;
+    }
+
+    function findMatchingPortableAsset(assets, platform) {
+        if (!assets || !assets.length) return null;
+        var osPattern = platform.os;
+        var arch = platform.arch;
+
+        if (osPattern === "macos") {
+            return assets.find(function (a) {
+                var n = (a.name || "").toLowerCase();
+                if (!n.endsWith(".zip")) return false;
+                if (n.includes("mac") || n.includes("darwin") || n.includes("osx")) {
+                    if (arch === "arm64" && (n.includes("arm64") || n.includes("aarch64") || n.includes("apple-silicon") || n.includes("m1"))) return true;
+                    if (arch === "x86-64" && (n.includes("x86") || n.includes("intel"))) return true;
+                    if (!n.includes("arm64") && !n.includes("aarch64") && !n.includes("x86") && !n.includes("intel")) return true;
+                }
+                return false;
+            }) || null;
+        }
+
+        return assets.find(function (a) {
+            var n = (a.name || "").toLowerCase();
+            if (!n.endsWith(".zip")) return false;
+            var norm = n.replace(/[-_.]/g, "");
+            if (!norm.includes(osPattern)) return false;
+            if (!norm.includes("updater") && !norm.includes("portable")) return false;
+
+            if (arch === "arm64") {
+                return norm.includes("arm64") || norm.includes("aarch64");
+            } else if (arch === "riscv") {
+                return norm.includes("riscv");
+            } else {
+                return !norm.includes("arm64") && !norm.includes("aarch64") && !norm.includes("riscv");
+            }
+        }) || null;
+    }
+
+    function saveAsFile(blob, filename) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 1000);
+    }
+
+    async function streamDownload(url, onChunk) {
+        var tryUrls = [];
+        if (url.startsWith("/")) {
+            tryUrls.push(url);
+        } else {
+            if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+                tryUrls.push("/download-proxy?url=" + encodeURIComponent(url));
+            }
+            tryUrls.push(url);
+        }
+
+        var lastError = null;
+        for (var i = 0; i < tryUrls.length; i++) {
+            try {
+                var res = await fetch(tryUrls[i]);
+                if (res.ok && res.body && typeof res.body.getReader === "function") {
+                    var totalBytes = Number(res.headers.get("content-length")) || 0;
+                    var reader = res.body.getReader();
+                    var chunks = [];
+                    var loaded = 0;
+                    while (true) {
+                        var chunk = await reader.read();
+                        if (chunk.done) break;
+                        chunks.push(chunk.value);
+                        loaded += chunk.value.length;
+                        onChunk(loaded, totalBytes);
+                    }
+                    return new Blob(chunks);
+                }
+            } catch (e) {
+                lastError = e;
+            }
+        }
+        throw lastError || new Error("Failed to download file");
+    }
+
+    var downloadInProgress = false;
+
+    async function startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag) {
+        if (downloadInProgress) return;
+        downloadInProgress = true;
+
+        var wrap = document.getElementById("lumen-download-progress-wrap");
+        if (!wrap) {
+            wrap = document.createElement("div");
+            wrap.id = "lumen-download-progress-wrap";
+            wrap.className = "lumen-download-progress-wrap";
+            wrap.setAttribute("aria-live", "polite");
+            wrap.innerHTML =
+                '<div class="lumen-download-progress-box">' +
+                '  <div class="lumen-download-progress-header">' +
+                '    <span id="lumen-download-progress-label">Downloading…</span>' +
+                '    <div class="lumen-download-progress-actions">' +
+                '      <span id="lumen-download-progress-metrics">0%</span>' +
+                '      <button type="button" id="lumen-download-progress-dismiss" class="lumen-download-progress-dismiss" hidden aria-label="Dismiss notification">' +
+                '        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+                '          <polyline points="20 6 9 17 4 12"></polyline>' +
+                '        </svg>' +
+                '        <span>OK</span>' +
+                '      </button>' +
+                '    </div>' +
+                '  </div>' +
+                '  <div class="lumen-download-progress-bar-bg">' +
+                '    <div id="lumen-download-progress-bar" class="lumen-download-progress-bar-fill" style="width: 0%"></div>' +
+                '  </div>' +
+                '</div>';
+            var container = document.querySelector(".lumen-catalog-container") || document.querySelector("main") || document.body;
+            container.prepend(wrap);
+        }
+        var label = document.getElementById("lumen-download-progress-label");
+        var metrics = document.getElementById("lumen-download-progress-metrics");
+        var bar = document.getElementById("lumen-download-progress-bar");
+        var dismissBtn = document.getElementById("lumen-download-progress-dismiss");
+
+        if (wrap) wrap.hidden = false;
+        if (dismissBtn) dismissBtn.hidden = true;
+        if (label) label.textContent = "Finding the best server location…";
+        if (metrics) metrics.textContent = "";
+        if (bar) bar.style.width = "1%";
+
+        var startTime = Date.now();
+        var totalBytesLoaded = 0;
+        var lastMetricsUpdate = 0;
+
+        var introDone = false;
+        var introTimers = [];
+
+        function clearIntroTimers() {
+            introTimers.forEach(function (t) { clearTimeout(t); });
+            introTimers = [];
+        }
+
+        var introPromise = new Promise(function (resolve) {
+            var step = 1;
+            function nextStep() {
+                step += 1;
+                if (step <= 10) {
+                    if (bar) bar.style.width = step + "%";
+                    if (label) {
+                        if (step <= 5) label.textContent = "Finding the best server location…";
+                        else label.textContent = "Building your zip…";
+                    }
+                    if (metrics) metrics.textContent = "";
+                    var t = setTimeout(nextStep, 1000);
+                    introTimers.push(t);
+                } else {
+                    introDone = true;
+                    resolve();
+                }
+            }
+            var t0 = setTimeout(nextStep, 1000);
+            introTimers.push(t0);
+        });
+
+        var latestStreamPercent = 0;
+        function updateProgress(percent) {
+            latestStreamPercent = percent;
+            if (!introDone) return;
+            var now = Date.now();
+            if (now - lastMetricsUpdate < 80 && percent < 100) return;
+            lastMetricsUpdate = now;
+            var elapsedSec = (now - startTime) / 1000;
+            var speedMBs = elapsedSec > 0 ? (totalBytesLoaded / 1024 / 1024 / elapsedSec).toFixed(1) : "0.0";
+            var overallPct = Math.min(98, Math.max(10, 10 + Math.round((percent / 100) * 88)));
+            if (bar) bar.style.width = overallPct + "%";
+            if (label) label.textContent = "Downloading…";
+            if (metrics) metrics.textContent = overallPct + "% (" + speedMBs + " MB/s)";
+        }
+
+        introPromise.then(function () {
+            if (latestStreamPercent > 0) {
+                updateProgress(latestStreamPercent);
+            }
+        });
+
+        var isPackagingDone = false;
+        var finishTimers = [];
+
+        function clearFinishTimers() {
+            finishTimers.forEach(function (t) { clearTimeout(t); });
+            finishTimers = [];
+        }
+
+        function startFinishingStage() {
+            if (bar) bar.style.width = "99%";
+            if (label) label.textContent = "Downloading (Finishing up)";
+            if (metrics) metrics.textContent = "";
+
+            var t1 = setTimeout(function () {
+                if (isPackagingDone) return;
+                if (bar) bar.style.width = "100%";
+                var t2 = setTimeout(function () {
+                    if (isPackagingDone) return;
+                    if (label) label.textContent = "Saving to Downloads";
+                }, 1000);
+                finishTimers.push(t2);
+            }, 10000);
+            finishTimers.push(t1);
+        }
+
+        function markCompleted() {
+            isPackagingDone = true;
+            clearFinishTimers();
+            clearIntroTimers();
+            if (bar) bar.style.width = "100%";
+            if (label) label.textContent = "Saved to downloads";
+            if (metrics) metrics.textContent = "";
+            if (dismissBtn) {
+                dismissBtn.hidden = false;
+                dismissBtn.onclick = function () {
+                    if (wrap) wrap.hidden = true;
+                    dismissBtn.hidden = true;
+                    downloadInProgress = false;
+                };
+            }
+        }
+
+        try {
+            var platform = await getFullPlatform();
+            var neoAssets = await fetchUpdaterNeoAssets();
+            var matchingTool = findMatchingPortableAsset(neoAssets, platform);
+
+            var romBlob = null;
+            var toolBlob = null;
+
+            if (matchingTool && window.JSZip) {
+                var romLoaded = 0;
+                var toolLoaded = 0;
+                var romTotal = 0;
+                var toolTotal = 0;
+
+                romBlob = await streamDownload(zipUrl, function (loaded, total) {
+                    romLoaded = loaded;
+                    romTotal = total;
+                    totalBytesLoaded = romLoaded + toolLoaded;
+                    var pct = Math.round((romLoaded / (romTotal || romLoaded || 1)) * 49);
+                    updateProgress(pct);
+                });
+
+                toolBlob = await streamDownload(matchingTool.browser_download_url, function (loaded, total) {
+                    toolLoaded = loaded;
+                    toolTotal = total;
+                    totalBytesLoaded = romLoaded + toolLoaded;
+                    var pct = 49 + Math.round((toolLoaded / (toolTotal || toolLoaded || 1)) * 49);
+                    updateProgress(Math.min(98, pct));
+                });
+            } else {
+                romBlob = await streamDownload(zipUrl, function (loaded, total) {
+                    totalBytesLoaded = loaded;
+                    var pct = total > 0 ? Math.round((loaded / total) * 98) : 49;
+                    updateProgress(pct);
+                });
+            }
+
+            await introPromise;
+            startFinishingStage();
+
+            if (matchingTool && window.JSZip && toolBlob) {
+                if (platform.os === "windows" || platform.os === "linux") {
+                    var toolZip = await window.JSZip.loadAsync(toolBlob);
+                    var romZip = await window.JSZip.loadAsync(romBlob);
+
+                    var spPrefix = "";
+                    var spEntry = Object.keys(toolZip.files).find(function (f) {
+                        return /(^|\/)SP_Flash_Tool\//i.test(f);
+                    });
+                    if (spEntry) {
+                        var m = spEntry.match(/(.*?SP_Flash_Tool\/)/i);
+                        if (m) spPrefix = m[1];
+                    } else {
+                        spPrefix = "SP_Flash_Tool/";
+                    }
+
+                    var scatterFileName = "";
+                    var scatterPath = "";
+                    Object.keys(romZip.files).forEach(function (f) {
+                        if (!romZip.files[f].dir && /_scatter(\.txt)?$/i.test(f)) {
+                            scatterPath = f;
+                            scatterFileName = f.split("/").pop();
+                        }
+                    });
+                    if (!scatterFileName) {
+                        Object.keys(romZip.files).forEach(function (f) {
+                            if (!romZip.files[f].dir && /scatter.*\.txt$/i.test(f)) {
+                                scatterPath = f;
+                                scatterFileName = f.split("/").pop();
+                            }
+                        });
+                    }
+                    if (!scatterFileName) scatterFileName = "*_Android_scatter.txt";
+
+                    var romScatterDir = "";
+                    if (scatterPath && scatterPath.indexOf("/") !== -1) {
+                        romScatterDir = scatterPath.substring(0, scatterPath.lastIndexOf("/") + 1);
+                    }
+
+                    var romKeys = Object.keys(romZip.files);
+                    for (var r = 0; r < romKeys.length; r++) {
+                        var rKey = romKeys[r];
+                        var rObj = romZip.files[rKey];
+                        if (rObj.dir) continue;
+                        if (/history\.ini$/i.test(rKey)) continue;
+
+                        if (romScatterDir) {
+                            if (!rKey.startsWith(romScatterDir)) continue;
+                            var rel = rKey.substring(romScatterDir.length);
+                            if (rel.indexOf("/") !== -1) continue; // no subfolders
+                        } else {
+                            if (rKey.indexOf("/") !== -1) continue; // no subfolders
+                        }
+
+                        var targetName = rKey.split("/").pop();
+                        var rData = await rObj.async("uint8array");
+                        toolZip.file(spPrefix + targetName, rData);
+                    }
+
+                    var customHistoryIni =
+                        "[LastDAFilePath]\r\n" +
+                        "lastDir=MTK_AllInOne_DA.bin\r\n\r\n" +
+                        "[RecentOpenFile]\r\n" +
+                        "lastDir=\r\n" +
+                        "scatterHistory=" + scatterFileName + "\r\n" +
+                        "authHistory=@Invalid()\r\n";
+                    toolZip.file(spPrefix + "history.ini", customHistoryIni);
+
+                    var finalBlob = await toolZip.generateAsync({ type: "blob" });
+                    saveAsFile(finalBlob, zipName);
+                } else if (platform.os === "macos") {
+                    var macToolZip = await window.JSZip.loadAsync(toolBlob);
+                    var macOutZip = new window.JSZip();
+
+                    var macKeys = Object.keys(macToolZip.files);
+                    var appBase = "";
+                    for (var mk = 0; mk < macKeys.length; mk++) {
+                        var k = macKeys[mk];
+                        var idx = k.indexOf("Updater CE.app");
+                        if (idx !== -1) {
+                            appBase = k.substring(0, idx);
+                            break;
+                        }
+                    }
+                    if (!appBase) {
+                        for (var mk = 0; mk < macKeys.length; mk++) {
+                            var k = macKeys[mk];
+                            var idx = k.indexOf(".app");
+                            if (idx !== -1) {
+                                var slashBefore = k.lastIndexOf("/", idx);
+                                appBase = slashBefore !== -1 ? k.substring(0, slashBefore + 1) : "";
+                                break;
+                            }
+                        }
+                    }
+
+                    for (var mk = 0; mk < macKeys.length; mk++) {
+                        var mKey = macKeys[mk];
+                        var mObj = macToolZip.files[mKey];
+                        if (appBase ? mKey.startsWith(appBase) : (mKey.indexOf("Updater CE.app") !== -1 || mKey.indexOf(".app") !== -1)) {
+                            var targetPath = appBase ? mKey.substring(appBase.length) : mKey;
+                            if (mObj.dir) {
+                                macOutZip.folder(targetPath);
+                            } else {
+                                var mData = await mObj.async("uint8array");
+                                macOutZip.file(targetPath, mData);
+                            }
+                        }
+                    }
+
+                    var romBuffer = await romBlob.arrayBuffer();
+                    macOutZip.file(zipName, romBuffer);
+
+                    var macReadme =
+                        "Innioasis Updater CE & Firmware Bundle\n" +
+                        "=====================================\n\n" +
+                        "Quick Start Guide for macOS:\n" +
+                        "1. Drag \"Updater CE.app\" into your Applications folder.\n" +
+                        "2. If macOS prevents opening the app:\n" +
+                        "   Go to System Settings > Privacy & Security, scroll down to the Security section, and click \"Open Anyway\" (or \"Run Anyway\").\n" +
+                        "3. Launch Updater CE from Applications, and select the included \"" + zipName + "\" firmware file when prompted.\n";
+                    macOutZip.file("README.txt", macReadme);
+
+                    var macFinalBlob = await macOutZip.generateAsync({ type: "blob" });
+                    saveAsFile(macFinalBlob, zipName);
+                } else {
+                    saveAsFile(romBlob, zipName);
+                }
+            } else {
+                saveAsFile(romBlob, zipName);
+            }
+
+            markCompleted();
+        } catch (err) {
+            clearFinishTimers();
+            console.warn("Stream download encountered an issue, falling back to direct browser download:", err);
+            if (label) label.textContent = "Starting direct download in browser…";
+            if (bar) bar.style.width = "100%";
+            if (metrics) metrics.textContent = "";
+            var fallbackLink = document.createElement("a");
+            fallbackLink.href = zipUrl;
+            fallbackLink.download = zipName;
+            document.body.appendChild(fallbackLink);
+            fallbackLink.click();
+            setTimeout(function () {
+                document.body.removeChild(fallbackLink);
+                markCompleted();
+            }, 1000);
+        }
+    }
+
     function initFirmwareDirectory() {
         var table = document.getElementById("lumen-firmware-table");
         if (!table || !Array.isArray(window.INNIOASIS_FIRMWARE_CATALOG)) return;
@@ -433,6 +950,12 @@
         var releases = {};
         var releaseState = {};
         var fetchedRepos = {};
+        if (window.INNIOASIS_HARDCODED_RELEASES) {
+            Object.keys(window.INNIOASIS_HARDCODED_RELEASES).forEach(function (repo) {
+                releases[repo] = window.INNIOASIS_HARDCODED_RELEASES[repo].slice();
+                releaseState[repo] = "cached";
+            });
+        }
         /* URL filters: ?model=Y1|Y2 and ?software=slug preselect the dropdowns,
            so a link can point straight at one model's release list. The legacy
            #y1 / #y2 hash anchors still work for older links. */
@@ -460,8 +983,34 @@
                 syncUrl();
             });
         }
+        function fillModelFilter() {
+            if (!model) return;
+            var availableModels = [];
+            catalog.forEach(function (item) {
+                if (item.model && availableModels.indexOf(item.model) === -1) {
+                    availableModels.push(item.model);
+                }
+            });
+            if (availableModels.indexOf("Y1") === -1) availableModels.unshift("Y1");
+            if (availableModels.indexOf("Y2") === -1) {
+                var y1Idx = availableModels.indexOf("Y1");
+                availableModels.splice(y1Idx + 1, 0, "Y2");
+            }
+            var currentVal = model.value || "Y1";
+            model.innerHTML = availableModels.map(function (m) {
+                return '<option value="' + escapeHtml(m) + '">' + escapeHtml(m) + '</option>';
+            }).join("");
+            if (availableModels.indexOf(currentVal) !== -1) {
+                model.value = currentVal;
+            } else {
+                model.value = availableModels[0] || "Y1";
+            }
+        }
+        fillModelFilter();
+
+        var availableModels = Array.from(new Set(catalog.map(function (item) { return item.model; }).concat(["Y1", "Y2"])));
         var hashModel = (window.location.hash || "").slice(1).toUpperCase();
-        var wantedModel = (modelParam === "Y1" || modelParam === "Y2") ? modelParam : ((hashModel === "Y1" || hashModel === "Y2") ? hashModel : "");
+        var wantedModel = (availableModels.indexOf(modelParam) !== -1) ? modelParam : ((availableModels.indexOf(hashModel) !== -1) ? hashModel : "");
         if (model && wantedModel) {
             model.value = wantedModel;
             if (filterSection) window.setTimeout(function () { filterSection.scrollIntoView({ block: "start" }); }, 0);
@@ -477,7 +1026,12 @@
         }
         /* Original Software is the default software filter for the page. */
         function originalSlug() {
-            return (model && model.value === "Y2") ? "original-y2" : "original-y1";
+            var curModel = model ? model.value : "Y1";
+            var item = catalog.find(function (it) {
+                return it.model === curModel && it.type === "original";
+            });
+            if (item) return item.slug;
+            return (curModel === "Y2") ? "original-y2" : "original-y1";
         }
         if (y2Switch) {
             y2Switch.addEventListener("click", function (event) {
@@ -547,11 +1101,13 @@
             var names = packageNamesFor(item);
             var assets = zipAssets(release);
             var links = [];
-            MODEL_ZIPS.forEach(function (entry) {
-                if (names.indexOf(entry.name) === -1) return;
-                var asset = assets.find(function (candidate) { return candidate.name.toLowerCase() === entry.name; });
-                if (asset) {
-                    links.push('<li><a class="lumen-download-link" href="' + escapeHtml(asset.browser_download_url) + '" download title="' + entry.title + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + entry.label + '</span></a></li>');
+            assets.forEach(function (asset) {
+                var aName = (asset.name || "").toLowerCase();
+                if (names.indexOf(aName) !== -1 || aName === (item.packageName || "").toLowerCase() || aName.indexOf(item.model.toLowerCase()) !== -1) {
+                    var entry = MODEL_ZIPS.find(function (candidate) { return candidate.name === aName; });
+                    var label = entry ? entry.label : (item.model + " package");
+                    var title = entry ? entry.title : ("For " + item.model + " players");
+                    links.push('<li><a class="lumen-download-link" href="' + escapeHtml(asset.browser_download_url) + '" download title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
                 }
             });
             var assetLinks = links.length ? links.join("") : '<li>No ZIP asset was found in this release.</li>';
@@ -572,6 +1128,33 @@
             var hint = release ? '' : state === "filtered-stable" ? '<span class="lumen-muted-inline">Tick the nightly-builds option to see previews</span>' : '';
             var guideUrl = 'guide.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug);
             var updater = '<a class="lumen-updater-button lumen-updater-button--table" href="' + guideUrl + '" aria-label="Get ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' on Innioasis Updater"><img src="mtkclient/gui/images/icon.png" width="28" height="28" alt=""><span><strong>Get it on Updater</strong><small>with guided install</small></span></a>';
+
+            var zipBtn = '';
+            if (release) {
+                var names = packageNamesFor(item);
+                var assets = zipAssets(release);
+                var primaryAsset = null;
+                for (var z = 0; z < MODEL_ZIPS.length; z++) {
+                    var entry = MODEL_ZIPS[z];
+                    if (names.indexOf(entry.name) !== -1) {
+                        var found = assets.find(function (a) { return a.name && a.name.toLowerCase() === entry.name; });
+                        if (found) { primaryAsset = found; break; }
+                    }
+                }
+                if (!primaryAsset && assets.length) {
+                    primaryAsset = assets.find(function (a) {
+                        var an = (a.name || "").toLowerCase();
+                        return names.indexOf(an) !== -1 || an === (item.packageName || "").toLowerCase() || an.indexOf(item.model.toLowerCase()) !== -1;
+                    }) || assets[0];
+                }
+                if (primaryAsset) {
+                    zipBtn = ' <button type="button" class="lumen-zip-download-button lumen-zip-download-button--table" data-zip-url="' + escapeHtml(primaryAsset.browser_download_url) + '" data-zip-name="' + escapeHtml(primaryAsset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "release") + '" data-item-name="' + escapeHtml(item.name) + '" data-item-model="' + escapeHtml(item.model) + '" aria-label="Download standalone ' + escapeHtml(primaryAsset.name) + ' ZIP package">' +
+                        '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16h12M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5"/></svg>' +
+                        '<span><strong>Download ZIP</strong><small>standalone package</small></span>' +
+                        '</button>';
+                }
+            }
+
             /* The Software name is not shown here: the software filter above
                already sets the project, so every row belongs to it. */
             /* The GitHub link goes straight to this release's own page when
@@ -584,7 +1167,7 @@
                 '<td>' + versionHtml + (release && release.published_at ? '<br><span class="lumen-meta">' + escapeHtml(release.published_at.slice(0, 10)) + '</span>' : '') + '</td>' +
                 /* The package is not shown: the Release details expander lists
                    the rom zips this release is packaged in. */
-                '<td><div class="lumen-actions">' + updater + hint + '</div>' + releaseDetails(release, item) + '</td>' +
+                '<td><div class="lumen-actions">' + updater + zipBtn + hint + '</div>' + releaseDetails(release, item) + '</td>' +
                 '<td><a class="lumen-github-link" href="' + githubUrl + '" target="_blank" rel="noopener noreferrer" aria-label="Open ' + escapeHtml(release && release.tag_name ? release.tag_name : item.name) + ' on GitHub"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></td>' +
                 '</tr>';
         }
@@ -644,31 +1227,52 @@
             var selectedItem = matchingItems()[0] || null;
             var softwareName = selectedItem ? selectedItem.name : (software ? software.value : "");
             var pending = repos.filter(function (repo) { return !fetchedRepos[repo]; });
-            /* While the release feed is loading, the status line names the
-               software whose releases are being fetched instead of a generic
-               "loading releases" message. */
-            if (status && pending.length) status.textContent = "Loading " + softwareName + " releases…";
+            var hasCached = repos.some(function (repo) { return releases[repo] && releases[repo].length > 0; });
+            if (status) {
+                if (hasCached) {
+                    status.textContent = "Showing " + softwareName + " releases from catalogue · Checking for live updates…";
+                } else if (pending.length) {
+                    status.textContent = "Loading " + softwareName + " releases…";
+                }
+            }
             if (table) table.setAttribute("aria-busy", "true");
-            pending.forEach(function (repo) { releaseState[repo] = "loading"; });
+            pending.forEach(function (repo) {
+                if (!releases[repo] || !releases[repo].length) {
+                    releaseState[repo] = "loading";
+                }
+            });
             Promise.all(pending.map(function (repo) {
                 return fetchAllReleases(repo, 1, [])
                     .then(function (result) {
                         fetchedRepos[repo] = true;
-                        if (result && Array.isArray(result.releases)) {
+                        if (result && Array.isArray(result.releases) && result.releases.length > 0) {
                             releases[repo] = result.releases;
-                            releaseState[repo] = result.releases.length ? (result.complete ? "loaded" : "partial") : "empty";
-                        } else {
+                            releaseState[repo] = result.complete ? "loaded" : "partial";
+                            render();
+                        } else if (!releases[repo] || !releases[repo].length) {
                             releaseState[repo] = "failed";
                         }
                     })
-                    .catch(function () { fetchedRepos[repo] = true; releaseState[repo] = "failed"; });
+                    .catch(function () {
+                        fetchedRepos[repo] = true;
+                        if (!releases[repo] || !releases[repo].length) {
+                            releaseState[repo] = "failed";
+                        }
+                    });
             })).then(function () {
                 render();
                 if (table) table.setAttribute("aria-busy", "false");
-                var loaded = repos.filter(function (repo) { return releaseState[repo] === "loaded" || releaseState[repo] === "partial"; }).length;
-                var failed = repos.filter(function (repo) { return releaseState[repo] === "failed"; }).length;
-                var partial = repos.filter(function (repo) { return releaseState[repo] === "partial"; }).length;
-                if (status) status.textContent = loaded ? ((failed || partial) ? "Release information for " + softwareName + " loaded where available; some project histories may be incomplete." : "All public " + softwareName + " releases are shown.") : "Release information is not available right now. The project links remain available.";
+                var liveLoaded = repos.filter(function (repo) { return releaseState[repo] === "loaded" || releaseState[repo] === "partial"; }).length;
+                var cachedActive = repos.filter(function (repo) { return releaseState[repo] === "cached"; }).length;
+                if (status) {
+                    if (liveLoaded) {
+                        status.textContent = "All public " + softwareName + " releases loaded live from GitHub.";
+                    } else if (cachedActive) {
+                        status.textContent = "Showing " + softwareName + " releases from catalogue archive (live GitHub API unavailable).";
+                    } else {
+                        status.textContent = "Release information is not available right now. The project links remain available.";
+                    }
+                }
             });
         }
 
@@ -677,7 +1281,7 @@
         function syncUrl() {
             if (!model) return;
             var params = new URLSearchParams(window.location.search);
-            if (model.value === "Y1" || model.value === "Y2") params.set("model", model.value);
+            if (model.value) params.set("model", model.value);
             else params.delete("model");
             if (software && software.value) params.set("software", software.value);
             else params.delete("software");
@@ -686,6 +1290,18 @@
             var qs = params.toString();
             try { history.replaceState(null, "", "?" + qs + window.location.hash); } catch (_) {}
         }
+
+        table.addEventListener("click", function (event) {
+            var btn = event.target.closest(".lumen-zip-download-button");
+            if (!btn) return;
+            event.preventDefault();
+            var zipUrl = btn.getAttribute("data-zip-url");
+            var zipName = btn.getAttribute("data-zip-name") || "rom.zip";
+            var itemName = btn.getAttribute("data-item-name") || "Software";
+            var itemModel = btn.getAttribute("data-item-model") || "Y1";
+            var releaseTag = btn.getAttribute("data-release-tag") || "release";
+            startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag);
+        });
 
         if (model) model.addEventListener("change", function () { fillSoftwareFilter(); render(); refreshLive(); syncUrl(); });
         /* A new Software choice has its own repos to fetch (shared model repos
@@ -904,7 +1520,11 @@
         initDownloadConfirm();
         initLumenTips();
         /* The release directory is authenticated against GitHub rate limits
-           with tokens from config.ini, so wait for those before fetching. */
-        loadGithubTokens().then(function () { initFirmwareDirectory(); });
+           with tokens from config.ini, so load those, then init directory. */
+        loadGithubTokens().then(function () {
+            initFirmwareDirectory();
+        }).catch(function () {
+            initFirmwareDirectory();
+        });
     });
 })();

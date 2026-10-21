@@ -3,11 +3,12 @@ import puppeteer from 'puppeteer';
 (async () => {
   let browser;
   try {
-    browser = await puppeteer.launch({ 
-      headless: true, 
-      executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome-stable',
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'] 
-    });
+    const launchOpts = {
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+    };
+    if (process.env.CHROME_PATH) launchOpts.executablePath = process.env.CHROME_PATH;
+    browser = await puppeteer.launch(launchOpts);
   } catch (e) {
     console.log("Puppeteer launch failed:", e.message);
     process.exit(0);
@@ -15,8 +16,8 @@ import puppeteer from 'puppeteer';
   const page = await browser.newPage();
   
   // Test desktop width
-  await page.setViewport({ width: 1280, height: 800 });
-  await page.goto('http://localhost:8080/firmware.html', { waitUntil: 'networkidle0' });
+  const port = process.env.PORT || 8000;
+  await page.goto(`http://localhost:${port}/firmware.html`, { waitUntil: 'networkidle0' });
   
   const results = {};
   
