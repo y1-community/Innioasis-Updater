@@ -93,7 +93,7 @@ if get_platform_system() == "Darwin":
 # Global silent mode flag - controls terminal output
 SILENT_MODE = True
 
-APP_VERSION = "2.0.6"
+APP_VERSION = "2.0.7"
 REMOTE_FIRMWARE_DOWNLOADER_URL = (
     "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/refs/heads/main/firmware_downloader.py"
 )
@@ -105,6 +105,60 @@ THANK_YOU_BROWSER_URL = "https://innioasis.app/credits.html?thank-you=1"
 UPDATE_SCRIPT_PATH = "/data/data/update/update.sh"
 FASTUPDATE_MARKER_PATH = "/storage/sdcard0/.fastupdate"
 LEGACY_FASTUPDATE_MARKER_PATH = "/data/data/update/.fastupdate"
+
+# Notice text for an available app update. The upgrade-to-rewrite offer uses this
+# exact wording too, so the notification above the software list is identical to
+# the innioasis-updater one; only the journey taken when the user acts on it differs.
+UPDATE_NOTICE_TEMPLATE = (
+    "Innioasis Updater CE {version} is available. "
+    "You're currently running {current}. Download the new release to stay up to date."
+)
+
+# ---------------------------------------------------------------------------
+# Upgrade to the rewritten app (y1-community/updater-ce-neo)
+# ---------------------------------------------------------------------------
+# The rewrite is published at y1-community/updater-ce-neo. When its latest
+# release has a version newer than the running app *and* ships an asset for this
+# OS, users are offered the upgrade-to-rewrite journey instead of the
+# innioasis-updater update. The innioasis-updater check and its zip-download
+# update journey stay untouched; they simply take a back seat while a rewrite
+# upgrade applies.
+REWRITE_UPDATE_REPO = "y1-community/updater-ce-neo"
+REWRITE_UPDATE_LATEST_RELEASE_URL = (
+    f"https://api.github.com/repos/{REWRITE_UPDATE_REPO}/releases/latest"
+)
+REWRITE_UPDATE_GUIDE_URL = "https://innioasis.app/guide.html"
+# Per-OS assets that signal "the rewrite has shipped for this platform".
+REWRITE_UPDATE_ASSETS = {
+    "Windows": ("installer.exe",),
+    "Darwin": ("Innioasis.Updater.for.Mac.dmg",),
+    "Linux": ("UpdaterCE.appimage", "run_linux.sh"),
+}
+
+
+def rewrite_update_asset_names(platform_name=None):
+    """Asset filenames that count as a rewrite release for this OS."""
+    return REWRITE_UPDATE_ASSETS.get(platform_name or get_platform_system(), ())
+
+
+def find_rewrite_update_asset(release, platform_name=None):
+    """Return (asset_name, download_url) for this OS, or (None, None).
+
+    A rewrite release only counts for a platform once it publishes that
+    platform's asset, so users are never offered an upgrade they cannot run.
+    """
+    if not isinstance(release, dict):
+        return (None, None)
+    wanted = {name.lower() for name in rewrite_update_asset_names(platform_name)}
+    if not wanted:
+        return (None, None)
+    for asset in release.get("assets") or []:
+        name = (asset.get("name") or "").strip()
+        url = asset.get("browser_download_url") or ""
+        if name.lower() in wanted and url:
+            return (name, url)
+    return (None, None)
+
 
 # Linux SP Flash Tool package (console-mode binary + Qt4/DA libs)
 FLASH_TOOL_LINUX_URL = (
@@ -221,6 +275,21 @@ class UpdateCheckEvent(QEvent):
         super().__init__(UpdateCheckEvent.EventType)
         self.latest_version = latest_version
         self.current_version = current_version
+
+
+class RewriteUpdateEvent(QEvent):
+    """Carries an upgrade-to-rewrite result from the update check worker.
+
+    ``info`` is the rewrite release dict when the rewritten app is available for
+    this OS, or None when a previous rewrite offer no longer applies. Delivered
+    with QApplication.postEvent so it is handled on the GUI thread.
+    """
+    EventType = QEvent.Type(QEvent.registerEventType())
+
+    def __init__(self, info):
+        super().__init__(RewriteUpdateEvent.EventType)
+        self.info = info
+
 
 def parse_version_designations(version_name):
     """Parse version names and extract designations with flexible adjective handling"""
@@ -2466,31 +2535,6 @@ def is_macos_platform():
     return get_platform_system() == "Darwin"
 
 
-# --------------------------------------------------------------------------- #
-# Y2-on-macOS manual install flow (temporary workaround)
-# --------------------------------------------------------------------------- #
-# Until Y2 mtkclient flashing is supported on macOS, Y2 firmware installs on a
-# Mac are handed to the manufacturer's manual DFU install tool. Updater downloads
-# that tool, helps the user save their firmware as rom_y2.zip, then steps aside.
-MANUFACTURER_TOOL_URL = (
-    "https://github.com/y1-community/supplemental-apks/releases/download/1.0/manufacturer_tool.dmg"
-)
-MANUFACTURER_TOOL_FILENAME = "manufacturer_tool.dmg"
-ROM_Y2_FILENAME = "rom_y2.zip"
-
-# Forced by --y2-mac-flow so the macOS Y2 manual-install flow can be exercised on
-# Windows/Linux (the developer machine is not a Mac).
-FORCE_Y2_MAC_FLOW = False
-
-
-def y2_mac_flow_active():
-    """True when the Y2-on-macOS manual-install flow should run.
-
-    Always active on real macOS; active elsewhere only with --y2-mac-flow (testing).
-    """
-    return is_macos_platform() or FORCE_Y2_MAC_FLOW
-
-
 def resolve_asset_model(asset_url):
     """Infer A5/Y2/Y1 from the GitHub asset URL a firmware was downloaded from.
 
@@ -3100,6 +3144,8 @@ def stop_install_competitor_processes(exclude_pids=None, release_serial_holders=
 #   - Linux non-x86 + macOS: MTKClient only
 # Y2 MTKclient flash is not yet reliable  images brick devices.
 # Set True only once scatter-based raw-offset + desparse flow is validated.
+# macOS is the exception: no SP Flash Tool exists there, so Y2 MTKClient
+# installs are allowed (see mtkclient_allowed_for_model).
 Y2_MTKCLIENT_INSTALLS_ENABLED = False
 
 
@@ -3119,14 +3165,14 @@ def linux_spflash_staged(app_dir=None):
 def mtkclient_allowed_for_model(device_model):
     """Whether MTKClient may be used for this device model right now.
 
-    Y2 MTKclient installs brick devices (sparse system/cache images written raw;
-    userdata not wiped).  Blocked on every platform until the scatter-based
-    desparse + raw-offset flash path is validated.  On Linux/Windows the caller
-    automatically redirects to SP Flash Tool; on macOS the user is told to use
-    a Linux or Windows machine.
+    Y2 MTKclient installs are still gated on Windows and Linux (sparse
+    system/cache images written raw; userdata not wiped), where SP Flash Tool
+    takes over. macOS has no SP Flash Tool build, so MTKClient is the only
+    install path there and is allowed for every model, Y2 included, using the
+    same guided/terminal MTKClient install flow as Linux.
     """
     if is_y2_model(device_model) and not Y2_MTKCLIENT_INSTALLS_ENABLED:
-        return False  # Blocked on ALL platforms  including non-x86 Linux
+        return is_macos_platform()
     return True
 
 
@@ -8903,34 +8949,6 @@ class DownloadWorker(QThread):
                                 status_msg = f"Downloading... {progress}% ({downloaded_mb:.1f}MB / {total_mb:.1f}MB) - ETA: {eta_str}"
                                 self.status_updated.emit(status_msg)
 
-            # Y2 firmware on macOS (or --y2-mac-flow test flag): no need to
-            # extract  the manufacturer's manual install tool consumes the zip
-            # directly, and extraction would only trigger the blocked MTKClient path.
-            # The asset URL is checked first because the local zip is saved under
-            # the fallback repo name and would be misread as Y1.
-            if y2_mac_flow_active() and is_y2_model(
-                asset_model
-                or resolve_device_model_for_install(
-                    self.device_model,
-                    zip_path=str(zip_path),
-                    asset_url=self.download_url,
-                    original_filename=self.original_asset_name,
-                )
-            ):
-                self.resolved_install_model = "Y2"
-                self.install_zip_name = zip_path.name
-                self.install_extracted_files = None
-                remember_install_device_model(
-                    "Y2", zip_path=zip_path.name, extracted_files=None
-                )
-                self.status_updated.emit("Download complete  manual install required.")
-                self.download_completed.emit(
-                    True,
-                    "Y2 firmware downloaded. Your Mac will use the manufacturer's "
-                    "manual install tool to apply it.",
-                )
-                return
-
             self.status_updated.emit("Download completed. Extracting...")
 
             # Extract + prepare history.ini scatter for model (before and after)
@@ -8988,12 +9006,8 @@ class DownloadWorker(QThread):
             self.download_completed.emit(False, f"Error: {str(e)}")
 
 
-class ManufacturerToolDownloadWorker(QThread):
-    """Worker thread that downloads the Y2 manufacturer manual-install tool DMG.
-
-    Streams MANUFACTURER_TOOL_URL to *dest_path* and reports progress so the UI
-    can show a live progress dialog (the Y2-on-macOS manual install flow).
-    """
+class RewriteAssetDownloadWorker(QThread):
+    """Streams a rewrite release asset (installer/DMG) to disk with progress."""
 
     progress_updated = Signal(int)
     status_updated = Signal(str)
@@ -9006,55 +9020,48 @@ class ManufacturerToolDownloadWorker(QThread):
         self.should_stop = False
 
     def stop(self):
-        """Request a graceful stop (used when the user cancels the progress dialog)."""
+        """Request a graceful stop (used when the progress dialog is cancelled)."""
         self.should_stop = True
 
     def run(self):
+        tmp_path = self.dest_path.with_name(self.dest_path.name + ".part")
         try:
             self.dest_path.parent.mkdir(parents=True, exist_ok=True)
-            tmp_path = self.dest_path.with_suffix(self.dest_path.suffix + ".part")
-            try:
-                if tmp_path.exists():
-                    tmp_path.unlink()
-            except Exception:
-                pass
-            self.status_updated.emit("Connecting…")
-            with requests.get(self.url, stream=True, timeout=30) as response:
+            self.status_updated.emit(f"Downloading {self.dest_path.name}...")
+            with requests.get(self.url, stream=True, timeout=60) as response:
                 response.raise_for_status()
                 total_size = int(response.headers.get("content-length", 0) or 0)
                 downloaded = 0
                 with open(tmp_path, "wb") as fh:
                     for chunk in response.iter_content(chunk_size=65536):
                         if self.should_stop:
-                            try:
-                                tmp_path.unlink()
-                            except Exception:
-                                pass
-                            self.download_completed.emit(False, "cancelled")
-                            return
-                        if chunk:
-                            fh.write(chunk)
-                            downloaded += len(chunk)
-                            if total_size > 0:
-                                pct = int((downloaded * 100) / total_size)
-                                self.progress_updated.emit(pct)
-                                self.status_updated.emit(
-                                    f"Downloading… {pct}% ({downloaded / (1024 * 1024):.1f} MB)"
-                                )
+                            break
+                        if not chunk:
+                            continue
+                        fh.write(chunk)
+                        downloaded += len(chunk)
+                        if total_size > 0:
+                            pct = int((downloaded * 100) / total_size)
+                            self.progress_updated.emit(pct)
+                            self.status_updated.emit(
+                                f"Downloading {self.dest_path.name}... {pct}% "
+                                f"({downloaded / (1024 * 1024):.1f} MB)"
+                            )
             if self.should_stop:
-                try:
-                    tmp_path.unlink()
-                except Exception:
-                    pass
+                tmp_path.unlink(missing_ok=True)
                 self.download_completed.emit(False, "cancelled")
                 return
             if tmp_path.is_file() and tmp_path.stat().st_size > 0:
                 os.replace(str(tmp_path), str(self.dest_path))
-                self.status_updated.emit("Download complete")
                 self.download_completed.emit(True, str(self.dest_path))
             else:
+                tmp_path.unlink(missing_ok=True)
                 self.download_completed.emit(False, "The download produced an empty file.")
         except Exception as e:
+            try:
+                tmp_path.unlink(missing_ok=True)
+            except Exception:
+                pass
             self.download_completed.emit(False, str(e))
 
 
@@ -12445,6 +12452,11 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._version_tab_preferred_version = None
         self._release_catalog_fetch_started = False
         self.suppress_update_notifications = False  # Global preference
+        # Upgrade-to-rewrite state (y1-community/updater-ce-neo). While populated,
+        # the rewrite journey replaces the innioasis-updater update notice.
+        self._rewrite_update_info = None
+        self._rewrite_update_available = False
+        self._rewrite_download_worker = None
         self.donation_ui_disabled = False  # Hide donor, Thank You, and donation UI
         self.donation_install_prompt_disabled = False  # Skip post-firmware donation prompts
         self.app_version = self._load_app_version()
@@ -12776,7 +12788,8 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         - Windows: SP Flash Tool only (MTKClient methods redirected)
         - Non-x86 Linux: MTKClient only (no SP Flash Tool binary exists)
-        - Y2 + MTKClient: blocked until Y2_MTKCLIENT_INSTALLS_ENABLED (except non-x86)
+        - macOS: MTKClient for every model (no SP Flash Tool exists there)
+        - Y2 + MTKClient: blocked on Windows/Linux until Y2_MTKCLIENT_INSTALLS_ENABLED
         - Linux x86 Y2 without staged SPFT: offer setup again
         - Linux Y1 without SPFT: allow MTKClient guided fallback
         Returns True if the caller may proceed.
@@ -12828,24 +12841,13 @@ class FirmwareDownloaderGUI(QMainWindow):
             if is_windows_platform():
                 self.installation_method = "spflash"
                 return True
-            # macOS (and other non-SP-Flash-Tool platforms): inform clearly.
-            if is_macos_platform():
-                QMessageBox.warning(
-                    self,
-                    "Y2 ROM  Linux or Windows Required",
-                    "Y2 ROM installation via MTKClient is temporarily unavailable.\n\n"
-                    "To install a Y2 stock ROM please use a Linux or Windows "
-                    "computer with SP Flash Tool (Guided or Terminal mode).\n\n"
-                    "Y1 ROMs can still be installed on this Mac using MTKClient.",
-                )
-            else:
-                QMessageBox.warning(
-                    self,
-                    "Y2 ROM  SP Flash Tool Required",
-                    "Y2 ROM installation via MTKClient is temporarily disabled.\n\n"
-                    "Please use SP Flash Tool (Guided or Terminal mode) to install "
-                    "the Y2 stock ROM on this computer.",
-                )
+            QMessageBox.warning(
+                self,
+                "Y2 ROM \u2014 SP Flash Tool Required",
+                "Y2 ROM installation via MTKClient is temporarily disabled.\n\n"
+                "Please use SP Flash Tool (Guided or Terminal mode) to install "
+                "the Y2 stock ROM on this computer.",
+            )
             return False
 
         if is_linux_platform() and method in {"spflash", "spflash_console"}:
@@ -18438,12 +18440,30 @@ class FirmwareDownloaderGUI(QMainWindow):
             suppress = self.suppress_update_notifications
             silent_print(f"_refresh_update_notice_label: has_update={has_update}, suppress={suppress}, _latest_app_version={getattr(self, '_latest_app_version', None)}")
 
-            if has_update and not suppress:
+            rewrite_info = (
+                getattr(self, '_rewrite_update_info', None)
+                if getattr(self, '_rewrite_update_available', False)
+                else None
+            )
+
+            if rewrite_info and not suppress:
+                # Same notice text as an innioasis-updater update; the click journey
+                # is what differs (upgrade to the rewritten app).
+                messages.append(
+                    UPDATE_NOTICE_TEMPLATE.format(
+                        version=rewrite_info.get('version') or "",
+                        current=self.app_version or APP_VERSION,
+                    )
+                )
+                silent_print("_refresh_update_notice_label: Adding rewrite upgrade message")
+            elif has_update and not suppress:
                 latest_version = self._latest_app_version or ""
                 current_version = self.app_version or APP_VERSION
                 messages.append(
-                    f"Innioasis Updater CE {latest_version} is available. "
-                    f"You're currently running {current_version}. Download the new release to stay up to date."
+                    UPDATE_NOTICE_TEMPLATE.format(
+                        version=latest_version,
+                        current=current_version,
+                    )
                 )
                 silent_print(f"_refresh_update_notice_label: Adding message for banner/label")
 
@@ -18540,7 +18560,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def _on_update_banner_clicked(self, event):
         """Handle clicks on the main-window update banner."""
-        if self.has_update_available() and not self.suppress_update_notifications:
+        if self.has_rewrite_update_available() and not self.suppress_update_notifications:
+            self._start_rewrite_upgrade()
+        elif self.has_update_available() and not self.suppress_update_notifications:
             self._launch_auto_update_download()
         else:
             self.show_settings_dialog("updates")
@@ -18599,6 +18621,274 @@ class FirmwareDownloaderGUI(QMainWindow):
             self.show_settings_dialog("updates")
             return
         QTimer.singleShot(0, lambda: self.show_settings_dialog("updates", auto_download_latest=True))
+
+    # ------------------------------------------------------------------ #
+    # Upgrade to the rewritten app (y1-community/updater-ce-neo)
+    # ------------------------------------------------------------------ #
+
+    def has_rewrite_update_available(self):
+        """True when a rewrite release with an asset for this OS is available."""
+        return bool(
+            getattr(self, "_rewrite_update_available", False)
+            and getattr(self, "_rewrite_update_info", None)
+        )
+
+    def get_rewrite_update_info(self, current_version):
+        """Check updater-ce-neo for a newer rewrite release for this OS.
+
+        Runs in a worker thread (network I/O). Returns a dict describing the
+        release when the rewrite has shipped for this platform and is newer than
+        *current_version*, otherwise None.
+        """
+        if not rewrite_update_asset_names():
+            silent_print(f"Rewrite check: no rewrite asset defined for {get_platform_system()}")
+            return None
+        try:
+            headers = {'Accept': 'application/vnd.github.v3+json'}
+            if hasattr(self, 'github_api') and getattr(self.github_api, 'tokens', None):
+                token = self.github_api.get_next_token()
+                if token:
+                    headers['Authorization'] = f'token {token}'
+
+            response = requests.get(
+                REWRITE_UPDATE_LATEST_RELEASE_URL,
+                headers=headers,
+                timeout=6
+            )
+            if response.status_code != 200:
+                silent_print(f"Rewrite check: GitHub API returned status {response.status_code}")
+                return None
+
+            release = response.json()
+            if release.get('draft'):
+                return None
+
+            tag = (release.get('tag_name') or '').strip()
+            version = tag.lstrip('vV')
+            if not version or self._parse_semver(version) is None:
+                silent_print(f"Rewrite check: skipping non-semver rewrite tag {tag!r}")
+                return None
+            if self.compare_versions(version, current_version) <= 0:
+                silent_print(
+                    f"Rewrite check: {version} is not newer than {current_version}"
+                )
+                return None
+
+            asset_name, download_url = find_rewrite_update_asset(release)
+            if not download_url:
+                silent_print(
+                    f"Rewrite check: {version} ships no rewrite asset for "
+                    f"{get_platform_system()}"
+                )
+                return None
+
+            return {
+                'version': version,
+                'tag': tag,
+                'asset_name': asset_name,
+                'download_url': download_url,
+            }
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as e:
+            silent_print(f"Network error checking rewrite release (offline?): {e}")
+            return None
+        except Exception as e:
+            silent_print(f"Error checking rewrite release: {e}")
+            return None
+
+    def _apply_rewrite_update(self, info):
+        """Store rewrite update state on the main thread and refresh the notice."""
+        try:
+            if getattr(self, '_gui_closing', False):
+                return
+            self._rewrite_update_info = info
+            self._rewrite_update_available = True
+            # The rewrite supersedes any innioasis-updater update: hide that notice.
+            self.app_update_available = False
+            self._latest_app_version = None
+            silent_print(
+                f"Rewrite update available: {info.get('version')} "
+                f"({info.get('asset_name')}) for {get_platform_system()}"
+            )
+            self.update_update_badges()
+            self._refresh_update_notice_label()
+        except (RuntimeError, AttributeError) as e:
+            silent_print(f"Rewrite update state skipped (GUI closing?): {e}")
+
+    def _clear_rewrite_update(self):
+        """Forget a previous rewrite update when none applies any more."""
+        try:
+            if getattr(self, '_gui_closing', False):
+                return
+            if not getattr(self, '_rewrite_update_available', False):
+                return
+            self._rewrite_update_available = False
+            self._rewrite_update_info = None
+            self._refresh_update_notice_label()
+        except (RuntimeError, AttributeError) as e:
+            silent_print(f"Rewrite update clear skipped (GUI closing?): {e}")
+
+    def _start_rewrite_upgrade(self):
+        """Run the upgrade-to-rewrite journey for this platform."""
+        info = getattr(self, '_rewrite_update_info', None)
+        if not info or not info.get('download_url'):
+            return
+        platform_name = get_platform_system()
+        silent_print(
+            f"Rewrite upgrade: starting {platform_name} journey with "
+            f"{info.get('asset_name')} ({info.get('version')})"
+        )
+        if platform_name == "Windows":
+            self._rewrite_upgrade_windows(info)
+        elif platform_name == "Darwin":
+            self._rewrite_upgrade_macos(info)
+        else:
+            self._rewrite_upgrade_linux()
+
+    def _rewrite_download_dir(self):
+        """Where downloaded rewrite assets are saved."""
+        downloads = Path.home() / "Downloads"
+        return downloads if downloads.is_dir() else Path(get_firmware_app_dir())
+
+    def _download_rewrite_asset(self, info, dialog_title):
+        """Download a rewrite asset, showing progress in a dialog.
+
+        Returns the saved path, or None when the download failed or was cancelled.
+        """
+        dest_path = self._rewrite_download_dir() / info['asset_name']
+        worker = RewriteAssetDownloadWorker(info['download_url'], str(dest_path))
+        self._rewrite_download_worker = worker
+
+        dialog = QProgressDialog(
+            f"Downloading {info['asset_name']}\u2026", "Cancel", 0, 100, self
+        )
+        dialog.setWindowTitle(dialog_title)
+        dialog.setWindowModality(Qt.WindowModal)
+        dialog.setMinimumDuration(0)
+        dialog.setAutoClose(False)
+        dialog.setAutoReset(False)
+        dialog.setValue(0)
+
+        result = {}
+
+        def _on_progress(pct):
+            dialog.setValue(pct)
+            dialog.setLabelText(f"Downloading {info['asset_name']}\u2026 {pct}%")
+
+        def _on_status(msg):
+            dialog.setLabelText(msg)
+
+        def _on_complete(ok, msg):
+            result['ok'] = ok
+            result['msg'] = msg
+
+        worker.progress_updated.connect(_on_progress)
+        worker.status_updated.connect(_on_status)
+        worker.download_completed.connect(_on_complete)
+        dialog.canceled.connect(worker.stop)
+        worker.start()
+
+        while worker.isRunning():
+            QApplication.processEvents()
+            if dialog.wasCanceled():
+                worker.stop()
+            if getattr(self, '_gui_closing', False):
+                silent_print("Rewrite upgrade: window closing, stopping download")
+                worker.stop()
+                break
+            time.sleep(0.02)
+
+        # Drain the completion signal that may still be queued from the worker.
+        for _ in range(50):
+            QApplication.processEvents()
+            if result:
+                break
+            time.sleep(0.02)
+
+        # Never leave the QThread running (or the dialog touching a closed window).
+        if worker.isRunning():
+            worker.stop()
+            worker.wait(2000)
+        try:
+            dialog.close()
+        except RuntimeError:
+            pass
+        self._rewrite_download_worker = None
+
+        if result.get('ok') and dest_path.is_file():
+            return dest_path
+
+        message = str(result.get('msg') or '')
+        if 'cancel' not in message.lower():
+            QMessageBox.warning(
+                self,
+                "Download Failed",
+                "The rewritten app could not be downloaded.\n\n"
+                f"{message or 'Unknown error'}",
+            )
+        return None
+
+    def _rewrite_upgrade_windows(self, info):
+        """Windows: download installer.exe, run it, then close the app."""
+        installer = self._download_rewrite_asset(info, "Upgrade to the rewritten app")
+        if not installer:
+            return
+        try:
+            self.status_label.setText("Starting the rewritten app's installer\u2026")
+            os.startfile(str(installer))
+        except Exception as e:
+            silent_print(f"Rewrite upgrade: could not start installer: {e}")
+            QMessageBox.warning(
+                self,
+                "Couldn't Start Installer",
+                f"The installer was downloaded to:\n{installer}\n\n"
+                "Please run it manually to finish the upgrade.",
+            )
+            return
+        silent_print("Rewrite upgrade: installer started, closing Updater.")
+        QTimer.singleShot(300, self._close_for_rewrite_upgrade)
+
+    def _close_for_rewrite_upgrade(self):
+        """Close Updater so the rewrite installer can replace it."""
+        try:
+            self.close()
+        except Exception:
+            pass
+        app = QApplication.instance()
+        if app is not None:
+            QTimer.singleShot(150, app.quit)
+
+    def _rewrite_upgrade_macos(self, info):
+        """macOS: download the DMG with progress, then reveal it in Finder."""
+        dmg_path = self._download_rewrite_asset(info, "Upgrade to the rewritten app")
+        if not dmg_path:
+            return
+        try:
+            subprocess.run(["open", "-R", str(dmg_path)], check=True)
+        except Exception:
+            try:
+                from PySide6.QtCore import QUrl
+                from PySide6.QtGui import QDesktopServices
+                QDesktopServices.openUrl(QUrl.fromLocalFile(str(dmg_path.parent)))
+            except Exception as e:
+                silent_print(f"Rewrite upgrade: could not reveal DMG: {e}")
+        self.status_label.setText(f"Rewritten app saved: {dmg_path}")
+
+    def _rewrite_upgrade_linux(self):
+        """Linux: send the user to the download guide for the rewritten app."""
+        opened = False
+        try:
+            opened = bool(webbrowser.open(REWRITE_UPDATE_GUIDE_URL, new=2))
+        except Exception as e:
+            silent_print(f"Rewrite upgrade: could not open guide: {e}")
+        if opened:
+            return
+        # No usable browser (headless/minimal desktop): show the link instead.
+        QMessageBox.information(
+            self,
+            "Download the rewritten app",
+            f"Open {REWRITE_UPDATE_GUIDE_URL} in your browser to download "
+            "the rewritten app.",
+        )
 
     def _set_button_connection(self, button, slot):
         """Utility to safely replace a button's clicked connection."""
@@ -20823,7 +21113,9 @@ class FirmwareDownloaderGUI(QMainWindow):
 
     def update_package_group_title(self, firmware_name):
         """Update the package group title based on selected software"""
-        has_gui_update = self.has_update_available() and not self.suppress_update_notifications
+        has_gui_update = (
+            self.has_update_available() or self.has_rewrite_update_available()
+        ) and not self.suppress_update_notifications
         if has_gui_update:
             self.package_group.setTitle("Update Available")
         elif firmware_name:
@@ -26178,15 +26470,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._last_install_zip_path = str(zip_path)
         self._last_install_zip_name = orig_name
         self._last_install_asset_url = None
-
-        # Y2 firmware on macOS (or --y2-mac-flow test flag): skip extraction and
-        # hand the user to the manufacturer's manual install tool instead.
-        if y2_mac_flow_active() and is_y2_model(
-            resolve_device_model_for_install(None, zip_path=str(zip_path), original_filename=orig_name)
-        ):
-            self._last_install_zip_path = str(zip_path)
-            self._handle_y2_mac_install_flow()
-            return
 
         # Check storage space before processing rom.zip (full firmware install requires 6GB)
         has_enough_space, available_gb, error_message = self._check_storage_space(required_gb=6)
@@ -35095,18 +35378,6 @@ class FirmwareDownloaderGUI(QMainWindow):
                     self.status_label.setText("Install / Restore isn't available on Windows ARM64. Please use Fast Update.")
                     return
 
-            # Y2 firmware on macOS (or --y2-mac-flow test flag): skip extraction
-            # and hand the user to the manufacturer's manual install tool instead.
-            # The asset URL is checked first because the local zip is saved under
-            # the fallback repo name and would be misread as Y1.
-            if y2_mac_flow_active() and is_y2_model(
-                resolve_asset_model(asset_url)
-                or resolve_device_model_for_install(None, zip_path=str(zip_path))
-            ):
-                self._last_install_zip_path = str(zip_path)
-                self._handle_y2_mac_install_flow()
-                return
-
             # Check storage space before extracting (full firmware install requires 6GB)
             has_enough_space, available_gb, error_message = self._check_storage_space(required_gb=6)
             if not has_enough_space:
@@ -35282,19 +35553,6 @@ class FirmwareDownloaderGUI(QMainWindow):
             print("=== PROCESSING COMPLETED ===")
             print("Firmware files have been downloaded and extracted successfully.")
 
-            # Y2 firmware on macOS (or --y2-mac-flow test flag): skip the normal
-            # install path and hand the user to the manufacturer's manual tool.
-            # The asset URL is checked too  the saved zip name can be misread as Y1.
-            if y2_mac_flow_active() and is_y2_model(
-                resolve_asset_model(getattr(self, '_last_install_asset_url', None))
-                or detected
-            ):
-                self._last_install_zip_path = str(
-                    ZIP_STORAGE_DIR / zip_from_download
-                ) if zip_from_download else None
-                QTimer.singleShot(400, self._handle_y2_mac_install_flow)
-                return
-
             # Check if required files exist and handle installation based on selected method
             required_files = ["lk.bin", "boot.img", "recovery.img", "system.img", "userdata.img"]
             if all(Path(file).exists() for file in required_files):
@@ -35311,424 +35569,6 @@ class FirmwareDownloaderGUI(QMainWindow):
 
         silent_print(output)
 
-    # ------------------------------------------------------------------ #
-    # Y2-on-macOS manual install flow (temporary workaround)
-    # ------------------------------------------------------------------ #
-    # Runs when a Y2 firmware would otherwise be installed on a Mac (or when
-    # --y2-mac-flow is passed for testing on Windows/Linux). The same journey
-    # plays out no matter how the firmware got here  Browse Files, Smart Drop,
-    # or an in-app download  with one small difference: in-app downloads are
-    # moved + renamed to rom_y2.zip, while files the user picked themselves are
-    # copied so their original stays put.
-
-    def _y2_mac_zip_source(self):
-        """Return the local zip behind the current Y2 install, or None."""
-        source = getattr(self, "_last_install_zip_path", None)
-        if source and Path(source).is_file():
-            return Path(source)
-        name = getattr(self, "_last_install_zip_name", None)
-        if name:
-            candidate = ZIP_STORAGE_DIR / Path(name).name
-            if candidate.is_file():
-                return candidate
-        return None
-
-    def _y2_mac_show_explainer(self):
-        """First dialog: explain the situation and offer the guided journey (Get Started)."""
-        from PySide6.QtWidgets import (
-            QDialog, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
-        )
-
-        dlg = QDialog(self)
-        dlg.setWindowTitle("Y2 Firmware on Mac")
-        dlg.setModal(True)
-        dlg.setMinimumWidth(480)
-        layout = QVBoxLayout(dlg)
-        layout.setContentsMargins(28, 24, 28, 22)
-        layout.setSpacing(14)
-
-        title = QLabel("Almost there  one small step")
-        title_font = title.font()
-        title_font.setPointSize(17)
-        title_font.setBold(True)
-        title.setFont(title_font)
-        title.setWordWrap(True)
-        layout.addWidget(title)
-
-        body = QLabel(
-            "To install this firmware from your Mac, we'll help you save the "
-            "<b>rom_y2.zip</b> file and help you download the manual installation "
-            "tool from Innioasis for this.<br><br>"
-            "Here's what happens next:<br>"
-            "1. You choose where to save your firmware as <b>rom_y2.zip</b>.<br>"
-            "2. Updater downloads the <b>Innioasis manual installation tool</b> "
-            "and saves it on your Mac.<br>"
-            "3. Updater steps aside, and the tool finishes the install.<br><br>"
-            "You don't need to do anything technical  just pick where things are "
-            "saved and click through."
-        )
-        body.setWordWrap(True)
-        body.setTextFormat(Qt.RichText)
-        body_font = body.font()
-        body_font.setPointSize(12)
-        body.setFont(body_font)
-        layout.addWidget(body)
-
-        layout.addSpacing(6)
-        buttons = QHBoxLayout()
-        buttons.addStretch(1)
-        not_now = QPushButton("Not Now")
-        not_now.setDefault(False)
-        not_now.setAutoDefault(False)
-        download_btn = QPushButton("Get Started")
-        download_btn.setDefault(True)
-        download_btn.setAutoDefault(True)
-        buttons.addWidget(not_now)
-        buttons.addWidget(download_btn)
-        layout.addLayout(buttons)
-
-        chosen = {"download": False}
-
-        def _on_not_now():
-            dlg.reject()
-
-        def _on_download():
-            chosen["download"] = True
-            dlg.accept()
-
-        not_now.clicked.connect(_on_not_now)
-        download_btn.clicked.connect(_on_download)
-        dlg.exec()
-        return chosen["download"]
-
-    def _download_manufacturer_tool(self, dmg_path):
-        """Download the manufacturer tool DMG to dmg_path.
-
-        Progress is shown in the main window's status area (no modal dialog) so
-        the user watches both files land before seeing the guidance prompts.
-
-        Returns True on success; False if the download failed or was cancelled.
-        """
-        worker = ManufacturerToolDownloadWorker(MANUFACTURER_TOOL_URL, dmg_path)
-
-        # Surface progress on the main window (status label + progress bar).
-        self.progress_bar.setRange(0, 100)
-        self.progress_bar.setValue(0)
-        self.progress_bar.setVisible(True)
-        self.status_label.setText("Downloading the Y2 Install Tool…")
-
-        worker.progress_updated.connect(self.progress_bar.setValue)
-        worker.status_updated.connect(self.status_label.setText)
-
-        result = {}
-
-        def _on_complete(ok, msg):
-            result["ok"] = ok
-            result["msg"] = msg
-
-        worker.download_completed.connect(_on_complete)
-        worker.start()
-
-        # Pump the event loop until the download finishes.
-        deadline = time.time() + 3600
-        while worker.isRunning() and time.time() < deadline:
-            QApplication.processEvents()
-            time.sleep(0.05)
-
-        # Drain any queued completion signal before deciding  the worker can
-        # finish between pump iterations, and without this a successful download
-        # would be misreported as cancelled.
-        for _ in range(25):
-            QApplication.processEvents()
-            time.sleep(0.02)
-            if result:
-                break
-
-        # Rare: the deadline elapsed while the network call is still stuck  stop
-        # the worker so it doesn't keep writing the .part file in the background.
-        if worker.isRunning():
-            worker.stop()
-            worker.wait(2000)
-
-        self.progress_bar.setVisible(False)
-
-        if result.get("ok"):
-            self.status_label.setText(f"Y2 Install Tool saved: {dmg_path}")
-            return True
-
-        msg = str(result.get("msg", ""))
-        if msg.lower() == "cancelled":
-            self.status_label.setText("Y2 Install Tool download cancelled.")
-            QMessageBox.information(
-                self,
-                "Download Cancelled",
-                "The Y2 Install Tool download was cancelled. You can start again "
-                "any time by choosing Install / Restore for a Y2 firmware.",
-            )
-        else:
-            self.status_label.setText("Y2 Install Tool download failed.")
-            QMessageBox.warning(
-                self,
-                "Download Failed",
-                "We couldn't download the Y2 Install Tool.\n\n"
-                f"{msg or 'Unknown error'}\n\n"
-                "You can also download it manually from:\n"
-                f"{MANUFACTURER_TOOL_URL}",
-            )
-        return False
-
-    def _y2_mac_ensure_rom_y2_zip(self, source):
-        """Make sure the firmware exists as rom_y2.zip; return its path or None.
-
-        - Already named rom_y2.zip (e.g. the exact file the user imported): just
-          confirm the location  the user will pick that same file in the tool.
-        - Anything else (in-app download, rom.zip, etc.): ask where to save it as
-          rom_y2.zip and copy/move it there.
-        """
-        if source is not None and source.name.lower() == ROM_Y2_FILENAME:
-            QMessageBox.information(
-                self,
-                "Your rom_y2.zip is Ready",
-                "We found the firmware file you'll use:\n\n"
-                f"{source}\n\n"
-                "That's the file you'll select in the Y2 Install Tool when it asks "
-                "for a firmware file.",
-            )
-            return str(source)
-
-        dest, _ = QFileDialog.getSaveFileName(
-            self,
-            "Save Your Firmware as rom_y2.zip",
-            str(Path.home() / "Downloads" / ROM_Y2_FILENAME),
-            "ZIP Archive (*.zip)",
-        )
-        if not dest:
-            return None
-        dest_path = Path(dest)
-        if dest_path.name.lower() != ROM_Y2_FILENAME:
-            dest_path = dest_path.with_name(ROM_Y2_FILENAME)
-
-        try:
-            dest_path.parent.mkdir(parents=True, exist_ok=True)
-            # Show progress in the status area while the firmware is saved.
-            self.status_label.setText("Saving rom_y2.zip…")
-            self.progress_bar.setRange(0, 0)  # busy indicator (indeterminate)
-            self.progress_bar.setVisible(True)
-            QApplication.processEvents()
-            if source is not None and source.is_file():
-                if source.resolve() == dest_path.resolve():
-                    self.progress_bar.setVisible(False)
-                    return str(dest_path)
-                # In-app downloads are moved (no duplicate left behind); files the
-                # user imported themselves are copied so their original stays put.
-                if source.resolve().parent == ZIP_STORAGE_DIR.resolve():
-                    shutil.move(str(source), str(dest_path))
-                else:
-                    shutil.copy2(str(source), str(dest_path))
-            else:
-                # No zip on hand (shouldn't happen)  let the user pick one.
-                picked, _ = QFileDialog.getOpenFileName(
-                    self,
-                    "Select Your rom_y2.zip",
-                    str(Path.home() / "Downloads"),
-                    "ZIP Archive (*.zip)",
-                )
-                if not picked:
-                    self.progress_bar.setVisible(False)
-                    return None
-                shutil.copy2(picked, str(dest_path))
-            self.progress_bar.setRange(0, 100)
-            self.progress_bar.setValue(100)
-            self.progress_bar.setVisible(False)
-            self.status_label.setText(f"rom_y2.zip saved: {dest_path}")
-            QMessageBox.information(
-                self,
-                "rom_y2.zip Saved",
-                "Your firmware is saved as:\n\n"
-                f"{dest_path}\n\n"
-                "You'll select this file in the Y2 Install Tool when it asks "
-                "for a firmware file.",
-            )
-            return str(dest_path)
-        except Exception as e:
-            self.progress_bar.setRange(0, 100)
-            self.progress_bar.setValue(0)
-            self.progress_bar.setVisible(False)
-            self.status_label.setText("Couldn't save rom_y2.zip.")
-            QMessageBox.warning(
-                self,
-                "Couldn't Save rom_y2.zip",
-                f"We couldn't save your firmware as rom_y2.zip:\n\n{e}",
-            )
-            return None
-
-    def _y2_mac_show_handoff(self, final_zip, dmg_path):
-        """Final dialog: tell the user what to do, then close Updater itself.
-
-        Styled to match the first explainer dialog (bold heading + friendly body)
-        so the journey bookends the same way.
-        """
-        from PySide6.QtWidgets import (
-            QDialog, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
-        )
-
-        shared_dir = str(Path(final_zip).parent)
-
-        # Platform-appropriate file-manager label (Finder on macOS, Explorer on
-        # Windows, file manager elsewhere)  mirrors manage_storage.py so the
-        # reveal action matches the OS even when --y2-mac-flow simulates macOS
-        # Y2 behaviour on Windows/Linux.
-        if get_platform_system() == "Darwin":
-            file_manager_name = "Finder"
-        elif os.name == "nt":
-            file_manager_name = "File Explorer"
-        else:
-            file_manager_name = "File Manager"
-
-        dlg = QDialog(self)
-        dlg.setWindowTitle("You're All Set")
-        dlg.setModal(True)
-        dlg.setMinimumWidth(520)
-        layout = QVBoxLayout(dlg)
-        layout.setContentsMargins(28, 24, 28, 22)
-        layout.setSpacing(14)
-
-        title = QLabel("Almost there  one last step")
-        title_font = title.font()
-        title_font.setPointSize(17)
-        title_font.setBold(True)
-        title.setFont(title_font)
-        title.setWordWrap(True)
-        layout.addWidget(title)
-
-        body = QLabel(
-            "Both files are saved in:<br>"
-            f"<b>{shared_dir}</b><br><br>"
-            "Now it's over to the <b>Y2 Install Tool</b>:<br>"
-            f"1. Double-click <b>{MANUFACTURER_TOOL_FILENAME}</b>, then drag the "
-            "app into <b>Applications</b>  or run it straight from the disk "
-            "image.<br>"
-            "2. Select <b>rom_y2.zip</b> when it asks for a firmware file.<br>"
-            "3. Power off your <b>Y2</b> (paperclip in the hole beside the "
-            "headphone jack if needed).<br>"
-            "4. Click <b>Start Flash</b>, then connect your Y2.<br><br>"
-            "Updater will close itself now  your Y2 does the rest!"
-        )
-        body.setWordWrap(True)
-        body.setTextFormat(Qt.RichText)
-        body_font = body.font()
-        body_font.setPointSize(12)
-        body.setFont(body_font)
-        layout.addWidget(body)
-
-        details = QLabel(
-            f"Y2 Install Tool:  {dmg_path}<br>"
-            f"rom_y2.zip:       {final_zip}<br><br>"
-            f"Show in {file_manager_name} reveals your files."
-        )
-        details.setWordWrap(True)
-        details.setTextFormat(Qt.RichText)
-        details_font = details.font()
-        details_font.setPointSize(10)
-        details.setFont(details_font)
-        layout.addWidget(details)
-
-        layout.addSpacing(6)
-        buttons = QHBoxLayout()
-        buttons.addStretch(1)
-        show_finder_btn = QPushButton(f"Show in {file_manager_name}")
-        show_finder_btn.setDefault(False)
-        show_finder_btn.setAutoDefault(False)
-        close_btn = QPushButton("Close Updater")
-        close_btn.setDefault(True)
-        close_btn.setAutoDefault(True)
-        buttons.addWidget(show_finder_btn)
-        buttons.addWidget(close_btn)
-        layout.addLayout(buttons)
-
-        def _open_in_file_manager():
-            """Open the folder in the OS-native file manager (cross-platform).
-
-            macOS/Windows reveal the file itself (selected); Linux opens the
-            folder, since xdg-open on a .dmg could launch the wrong handler.
-            """
-            try:
-                if os.name == "nt":
-                    # explorer /select returns non-zero even on success.
-                    subprocess.run(
-                        ["explorer", "/select,", str(dmg_path)],
-                        capture_output=True, text=True,
-                    )
-                    return True
-                if get_platform_system() == "Darwin":
-                    # -R reveals the file in Finder, selected.
-                    subprocess.run(["open", "-R", str(dmg_path)], check=True)
-                    return True
-                subprocess.run(["xdg-open", str(shared_dir)], check=True)
-                return True
-            except Exception as e:
-                silent_print(f"Y2 Mac flow: could not open file manager: {e}")
-                return False
-
-        def _on_show_finder():
-            if not _open_in_file_manager():
-                # Fallback: Qt's cross-platform open of the folder.
-                try:
-                    from PySide6.QtCore import QUrl
-                    from PySide6.QtGui import QDesktopServices
-                    QDesktopServices.openUrl(QUrl.fromLocalFile(shared_dir))
-                except Exception as e:
-                    silent_print(f"Y2 Mac flow: could not open folder: {e}")
-            dlg.accept()
-
-        def _on_close():
-            dlg.accept()
-
-        show_finder_btn.clicked.connect(_on_show_finder)
-        close_btn.clicked.connect(_on_close)
-        dlg.exec()
-
-        # Close Updater so the user can work with the manufacturer's tool.
-        self.status_label.setText("Y2 install handed off to the Y2 Install Tool  Updater closing…")
-        self.close()
-        QTimer.singleShot(150, lambda: QApplication.instance().quit())
-
-    def _handle_y2_mac_install_flow(self):
-        """Run the Y2-on-macOS manual-install journey (see module docstring)."""
-        try:
-            if not self._y2_mac_show_explainer():
-                self.status_label.setText(
-                    "Y2 install on Mac deferred  choose Install / Restore again when ready."
-                )
-                return
-
-            # 1) Save the firmware as rom_y2.zip first  the install tool needs it.
-            source = self._y2_mac_zip_source()
-            final_zip = self._y2_mac_ensure_rom_y2_zip(source)
-            if not final_zip:
-                return
-
-            # 2) The Y2 Install Tool is saved to the same folder as rom_y2.zip 
-            #    one location question covers both files, no second dialog.
-            dmg_path = str(Path(final_zip).parent / MANUFACTURER_TOOL_FILENAME)
-
-            # 3) Download it with live progress in the status area.
-            if not self._download_manufacturer_tool(dmg_path):
-                return
-
-            # 4) Hand off: close Updater, open the tool, pick rom_y2.zip.
-            self._y2_mac_show_handoff(final_zip, dmg_path)
-
-        except Exception as e:
-            silent_print(f"Y2 Mac flow error: {e}")
-            import traceback
-            traceback.print_exc()
-            QMessageBox.warning(
-                self,
-                "Something Went Wrong",
-                f"We hit a snag setting up your Y2 install:\n\n{e}",
-            )
-
     def handle_installation_method(self):
         """Handle installation based on the selected method in settings"""
         self.status_label.setText("Checking the installation setup…")
@@ -35738,17 +35578,6 @@ class FirmwareDownloaderGUI(QMainWindow):
         resolved_model, install_zip, _ = self.get_install_model_context()
         if resolved_model:
             self.set_runtime_detected_device_model(resolved_model)
-
-        # Y2 firmware on macOS (or --y2-mac-flow test flag): installation isn't
-        # supported from this Mac yet  hand the user to the manufacturer's manual
-        # install tool instead of the MTKClient path (which is blocked for Y2).
-        # The asset URL is checked too  the saved zip name can be misread as Y1.
-        if y2_mac_flow_active() and is_y2_model(
-            resolve_asset_model(getattr(self, '_last_install_asset_url', None))
-            or resolved_model
-        ):
-            self._handle_y2_mac_install_flow()
-            return
 
         prepare_sp_flash_tool_files(resolved_model)
         silent_print(
@@ -37104,6 +36933,25 @@ read -n 1
                         latest_version = candidate
                         version_source = source
 
+                # The rewritten app supersedes the innioasis-updater update: when its
+                # release is newer and ships this OS's asset, offer the rewrite
+                # upgrade and ignore any innioasis-updater update.
+                # Local import: this worker also imports QApplication further down,
+                # which would otherwise shadow the module-level name here.
+                from PySide6.QtWidgets import QApplication as _QtApp
+                rewrite_info = self.get_rewrite_update_info(current_version)
+                if rewrite_info:
+                    silent_print(
+                        f"Update check: rewrite release {rewrite_info['version']} "
+                        f"({rewrite_info['asset_name']}) supersedes innioasis-updater"
+                    )
+                    _QtApp.postEvent(self, RewriteUpdateEvent(rewrite_info))
+                    self._update_check_attempts = self._max_update_check_attempts
+                    return
+                # No rewrite for this OS: drop any stale rewrite offer and let the
+                # existing innioasis-updater update handling continue untouched.
+                _QtApp.postEvent(self, RewriteUpdateEvent(None))
+
                 # Check again after potentially long-running operation
                 if getattr(self, '_gui_closing', False):
                     silent_print("Update check: GUI closing after API call, skipping")
@@ -37234,7 +37082,17 @@ read -n 1
 
     def customEvent(self, event):
         """Handle custom events from worker threads"""
-        if isinstance(event, UpdateCheckEvent):
+        if isinstance(event, RewriteUpdateEvent):
+            try:
+                if getattr(self, '_gui_closing', False):
+                    return
+                if event.info:
+                    self._apply_rewrite_update(event.info)
+                else:
+                    self._clear_rewrite_update()
+            except Exception as e:
+                silent_print(f"Error handling RewriteUpdateEvent: {e}")
+        elif isinstance(event, UpdateCheckEvent):
             try:
                 silent_print(f"customEvent received: latest={event.latest_version}, current={event.current_version}")
                 # #region agent log
@@ -37879,16 +37737,10 @@ if __name__ == "__main__":
                           help="Open only the toolkit window")
         parser.add_argument("-sp", action="store_true",
                           help="Skip GUI and launch flash_tool.exe after updating history.ini")
-        parser.add_argument("--y2-mac-flow", action="store_true",
-                          help="Force-enable the Y2-on-macOS manual install flow "
-                               "(for testing this flow on Windows/Linux)")
         parser.add_argument("--simulate-macos", "--simulate-mac", "--macos", "--mac", action="store_true",
                           dest="simulate_macos",
                           help="Simulate running on macOS for testing purposes (even on Linux)")
         args = parser.parse_args()
-        # Module-level assignment (main() runs at module scope, so no `global`).
-        if args.y2_mac_flow:
-            FORCE_Y2_MAC_FLOW = True
         if args.simulate_macos:
             set_simulate_macos(True)
             silent_print("Simulating macOS environment (--simulate-macos flag active)")
