@@ -141,17 +141,6 @@ window.INNIOASIS_FIRMWARE_CATALOG = [
         "description": "Stock launcher, but better: metadata track numbers, artist/genre tag splitting, disc numbers, interactive Now Playing controls, proper caching, and 3.1.2 foundation."
     },
     {
-        "slug": "y2reborn-y2",
-        "name": "Y2Reborn",
-        "model": "Y2",
-        "repo": "y1-community/y2reborn",
-        "packageName": "rom_y2.zip",
-        "benefits": "y2reborn-benefits.html",
-        "guide": "guides/y2reborn-y2.html",
-        "seoPage": "y2reborn-y2-software.html",
-        "description": "Native Y2 Linux & Rust player by Schulzcode: 60 FPS GPU graphics, Wi-Fi Internet Radio, Last.fm scrobbling, AutoEQ, and OTA updates."
-    },
-    {
         "slug": "android-4-2-y1",
         "name": "Android 4.2 (Dev)",
         "model": "Y1",
@@ -2521,20 +2510,4 @@ window.INNIOASIS_HARDCODED_RELEASES = {
         }
       ]
     }
-  ],
-  "y1-community/y2reborn": [
-    {
-      "tag_name": "v1.0.0-beta.8.11",
-      "name": "Y2Reborn 1.0 Beta 8.11 (Baseline 106)",
-      "published_at": "2026-10-20T00:00:00Z",
-      "prerelease": false,
-      "body": "Ready to install full system image of Y2Reborn Linux for Innioasis Y2 by Schulzcode.\n\n### Highlights\n- Native Rust music player running on Y2Linux (Kernel + Buildroot)\n- OpenGL ES GPU acceleration (DRM + Lima) delivering 60 FPS motion, gliding focus, and waveform visuals\n- Full audio engine powered by FFmpeg 9.0.2: plays MP3, AAC, ALAC, FLAC, WAV, AIFF, Ogg Vorbis, and Opus\n- Automatic Bluetooth codec negotiation: LDAC, AAC (high-rate 256kbit/s for AirPods), and SBC XQ\n- Wi-Fi Internet Radio via radio-browser.info directory + custom .m3u/.pls streams\n- Last.fm scrobbling with QR code sign-in from your phone and offline queue\n- 47 AutoEQ headphone correction profiles, 5-band EQ, gapless playback, and crossfade\n- 16 built-in themes/skins and full click-wheel button navigation\n- Built-in Wi-Fi OTA software updates",
-      "assets": [
-        {
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/y1-community/y2reborn/releases/download/v1.0.0-beta.8.11/rom_y2.zip"
-        }
-      ]
-    }
-  ]
-};
+  ]};

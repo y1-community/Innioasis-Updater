@@ -8062,6 +8062,12 @@ class MTKWorker(QThread):
                     status_text = f"Install in Progress: {prog_detail}" if prog_detail else "Install in Progress"
                 else:
                     status_text = f"Install in Progress: {prog_display}"
+
+                # Show battery reminder banner during install progress
+                if not hasattr(self, "_battery_banner_shown"):
+                    self._battery_banner_shown = True
+                    self._show_battery_reminder()
+
                 self.status_updated.emit(status_text)
             elif ("progress" in lower or "%" in line) and not saw_progress:
                 saw_progress = True
@@ -21450,6 +21456,37 @@ class FirmwareDownloaderGUI(QMainWindow):
         except Exception as e:
             silent_print(f"Error showing left panel: {e}")
 
+    def _show_battery_reminder(self):
+        """Show a battery reminder banner during install progress."""
+        if not hasattr(self, "_battery_banner_shown") or not self._battery_banner_shown:
+            self._battery_banner_shown = True
+            label = self.get_device_label() or "Y1"
+            banner_text = f"Before using this on your {label}, make sure the battery is charged."
+            # Create a banner similar to the install progress banner
+            banner = QLabel(banner_text)
+            banner.setStyleSheet("font-size: 12px; color: #666; margin: 8px 0; padding: 4px; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;")
+            banner.setAlignment(Qt.AlignCenter)
+            # Insert the banner into the status layout after the progress text
+            if hasattr(self, "partProgressText"):
+                # Insert after partProgressText in the main layout
+                layout_idx = self.Main.indexOf(self.partProgressText)
+                if layout_idx >= 0:
+                    # Get the parent widget and insert after it
+                    parent = self.Main.parentWidget()
+                    if parent:
+                        # Find the index of partProgressText in the parent's layout
+                        parent_layout = parent.layout()
+                        if parent_layout:
+                            insert_idx = parent_layout.indexOf(self.partProgressText) + 1
+                            if insert_idx >= 0:
+                                parent_layout.insertWidget(insert_idx, banner)
+            elif hasattr(self, "connectInfo"):
+                # Insert into connectInfo layout
+                if hasattr(self, "verticalLayout_6"):
+                    insert_idx = self.verticalLayout_6.indexOf(self.partProgressText) + 1 if hasattr(self, "partProgressText") else 0
+                    if insert_idx >= 0:
+                        self.verticalLayout_6.insertWidget(insert_idx, banner)
+
     def _start_background_refresh(
         self, selected_repo, selected_type, show_prereleases,
         selected_model=None, manifest_repo=None
@@ -24452,7 +24489,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         method_links = {
             'ko-fi': 'https://ko-fi.com/teamslide',
             'kofi': 'https://ko-fi.com/teamslide',
-            'paypal': 'https://paypal.me/respectyarn',
+            'paypal': 'https://paypal.me/RyanSpecter282',
             'revolut': 'https://revolut.me/rspecter',
             'revolut pay': 'https://revolut.me/rspecter',
             'patreon': 'https://www.patreon.com/ryanspecter',
@@ -25344,7 +25381,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             dialog.setWindowTitle("Support Innioasis Updater & Themes Gallery")
             dialog.setModal(True)
             dialog.setMinimumWidth(540)
-            dialog.resize(560, 520)
+            dialog.adjustSize()
 
             if is_dark:
                 dialog.setStyleSheet("QDialog, QWidget { background-color: #1f2937; color: #f9fafb; } QLabel, QCheckBox, QGroupBox { color: #f9fafb; } QLineEdit { background-color: #111827; color: #f9fafb; border: 1px solid #4b5563; }")
@@ -25612,7 +25649,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             paypal_btn = QPushButton("Donate by PayPal")
             paypal_btn.setCursor(Qt.PointingHandCursor)
             paypal_btn.setStyleSheet("QPushButton { background-color: #0070ba; color: white; font-weight: bold; font-size: 14px; padding: 10px; border-radius: 8px; border: none; } QPushButton:hover { background-color: #005ea6; }")
-            paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/respectyarn"))
+            paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/RyanSpecter282"))
             grid.addWidget(paypal_btn, 0, 1)
 
             revolut_btn = QPushButton("Donate by Revolut")
@@ -37922,6 +37959,35 @@ if __name__ == "__main__":
 
         # Create the application
         app = QApplication(sys.argv)
+
+        # Auto-detect system language and install translator
+        import locale
+        import os
+        from PySide6.QtCore import QLocale, QTranslator
+
+        system_locale = locale.getdefaultlocale()[0]
+        if system_locale:
+            lang_name = system_locale.split("@")[0]
+            translator = QTranslator(app)
+            i18n_dir = os.path.dirname(__file__)
+            lang_path = f"i18n/{lang_name}"
+            if translator.load(lang_path, i18n_dir):
+                app.installTranslator(translator)
+            from PySide6.QtCore import QLibraryInfo
+            base_translator = QTranslator(app)
+            qt_translations_dir = QLibraryInfo.location(QLibraryInfo.TranslationsPath)
+            if not base_translator.load(QLocale.system(), "qtbase", "_", qt_translations_dir):
+                if translator.load("en_US", i18n_dir):
+                    app.installTranslator(translator)
+                elif base_translator.load(QLocale.system(), "qtbase", "_", qt_translations_dir):
+                    app.installTranslator(base_translator)
+            else:
+                app.installTranslator(translator)
+        else:
+            translator = QTranslator(app)
+            i18n_dir = os.path.dirname(__file__)
+            if translator.load("en_US", i18n_dir):
+                app.installTranslator(translator)
 
         # On first startup for Windows users with 8+ minutes uptime, prompt reboot and eject
         if get_platform_system() == "Windows":

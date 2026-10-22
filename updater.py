@@ -24452,7 +24452,7 @@ class FirmwareDownloaderGUI(QMainWindow):
         method_links = {
             'ko-fi': 'https://ko-fi.com/teamslide',
             'kofi': 'https://ko-fi.com/teamslide',
-            'paypal': 'https://paypal.me/respectyarn',
+            'paypal': 'https://paypal.me/RyanSpecter282',
             'revolut': 'https://revolut.me/rspecter',
             'revolut pay': 'https://revolut.me/rspecter',
             'patreon': 'https://www.patreon.com/ryanspecter',
@@ -25344,7 +25344,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             dialog.setWindowTitle("Support Innioasis Updater & Themes Gallery")
             dialog.setModal(True)
             dialog.setMinimumWidth(540)
-            dialog.resize(560, 520)
+            dialog.adjustSize()
 
             if is_dark:
                 dialog.setStyleSheet("QDialog, QWidget { background-color: #1f2937; color: #f9fafb; } QLabel, QCheckBox, QGroupBox { color: #f9fafb; } QLineEdit { background-color: #111827; color: #f9fafb; border: 1px solid #4b5563; }")
@@ -25612,7 +25612,7 @@ class FirmwareDownloaderGUI(QMainWindow):
             paypal_btn = QPushButton("Donate by PayPal")
             paypal_btn.setCursor(Qt.PointingHandCursor)
             paypal_btn.setStyleSheet("QPushButton { background-color: #0070ba; color: white; font-weight: bold; font-size: 14px; padding: 10px; border-radius: 8px; border: none; } QPushButton:hover { background-color: #005ea6; }")
-            paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/respectyarn"))
+            paypal_btn.clicked.connect(lambda: webbrowser.open("https://paypal.me/RyanSpecter282"))
             grid.addWidget(paypal_btn, 0, 1)
 
             revolut_btn = QPushButton("Donate by Revolut")

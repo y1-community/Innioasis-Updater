@@ -1225,7 +1225,7 @@
         function refreshLive() {
             var repos = activeRepos();
             var selectedItem = matchingItems()[0] || null;
-            var softwareName = selectedItem ? selectedItem.name : (software ? software.value : "");
+            var softwareName = selectedItem ? selectedItem.name : (software && software.options && software.options.length ? software.options[software.selectedIndex].textContent : "");
             var pending = repos.filter(function (repo) { return !fetchedRepos[repo]; });
             var hasCached = repos.some(function (repo) { return releases[repo] && releases[repo].length > 0; });
             if (status) {

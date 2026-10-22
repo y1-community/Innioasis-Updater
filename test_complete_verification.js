@@ -26,7 +26,6 @@ import puppeteer from 'puppeteer';
     return { text, links };
   });
   report.announcement = announcementInfo;
-  if (!announcementInfo || !announcementInfo.text.includes('Y2Reborn by @SchulzCode')) {
     throw new Error('Homepage announcement banner missing or missing expected copy');
   }
 
@@ -46,12 +45,6 @@ import puppeteer from 'puppeteer';
   // Verify Inniclassic has both Y1 and Y2 buttons
   const inniclassicRow = homeRows.find(r => r.name === 'Inniclassic');
   report.inniclassicBothModelsOnHome = inniclassicRow ? (inniclassicRow.models.includes('Y1') && inniclassicRow.models.includes('Y2')) : false;
-
-  // Verify Y2Reborn in home firmware table
-  const y2rebornRow = homeRows.find(r => r.name === 'Y2Reborn');
-  report.y2rebornOnHome = y2rebornRow ? y2rebornRow.models.includes('Y2') : false;
-  report.y2rebornBenefitLink = y2rebornRow?.benefitLink;
-
   // Verify Better-Y has benefit link
   const betterYRow = homeRows.find(r => r.name === 'Better-Y');
   report.betterYBenefitLink = betterYRow?.benefitLink;
@@ -96,7 +89,6 @@ import puppeteer from 'puppeteer';
   });
   report.y2SoftwareOptions = y2SoftwareOptions;
   report.y2HasInniclassic = y2SoftwareOptions.includes('Inniclassic');
-  report.y2HasY2Reborn = y2SoftwareOptions.includes('Y2Reborn');
   report.y2HasAndroid44 = y2SoftwareOptions.includes('Android 4.4 (Dev)');
   report.y1HasAndroid42 = y1SoftwareOptions.includes('Android 4.2 (Dev)');
 
@@ -107,9 +99,6 @@ import puppeteer from 'puppeteer';
     '/guides/better-y-y1.html',
     '/better-y-y1-software.html',
     '/better-y-benefits.html',
-    '/guides/y2reborn-y2.html',
-    '/y2reborn-y2-software.html',
-    '/y2reborn-benefits.html',
     '/guides/android-4-2-y1.html',
     '/android-4-2-y1-software.html',
     '/guides/android-4-4-y2.html',
@@ -191,7 +180,6 @@ import puppeteer from 'puppeteer';
     '/guides/solar-y1.html',
     '/guides/solar-y2.html',
     '/guides/y2player-y2.html',
-    '/guides/y2reborn-y2.html'
   ];
 
   const allSoftwarePages = [
@@ -211,7 +199,6 @@ import puppeteer from 'puppeteer';
     '/solar-y1-software.html',
     '/solar-y2-software.html',
     '/y2player-y2-software.html',
-    '/y2reborn-y2-software.html'
   ];
 
   for (const g of allGuides) {
