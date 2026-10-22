@@ -413,6 +413,42 @@
         });
     }
 
+    function openEdgeKeepModal() {
+        var modal = document.getElementById("edge-keep-modal");
+        if (!modal) return;
+        modal.hidden = false;
+        modal.setAttribute("aria-hidden", "false");
+        var close = modal.querySelector("[data-edge-keep-close]");
+        if (close) close.focus();
+    }
+
+    function closeEdgeKeepModal() {
+        var modal = document.getElementById("edge-keep-modal");
+        if (!modal) return;
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+    }
+
+    function initEdgeKeepHelp() {
+        document.querySelectorAll("[data-edge-keep-hint]").forEach(function (btn) {
+            btn.addEventListener("click", function (event) {
+                event.preventDefault();
+                openEdgeKeepModal();
+            });
+        });
+        var modal = document.getElementById("edge-keep-modal");
+        if (modal) {
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) closeEdgeKeepModal();
+            });
+            modal.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" || event.key === "Esc") closeEdgeKeepModal();
+            });
+            var closeButton = modal.querySelector("[data-edge-keep-close]");
+            if (closeButton) closeButton.addEventListener("click", closeEdgeKeepModal);
+        }
+    }
+
     function initCopyButtons() {
         document.querySelectorAll("[data-copy-target]").forEach(function (button) {
             button.addEventListener("click", function () {
@@ -1518,6 +1554,7 @@
         initPlatformReveal();
         initCopyButtons();
         initDownloadConfirm();
+        initEdgeKeepHelp();
         initLumenTips();
         /* The release directory is authenticated against GitHub rate limits
            with tokens from config.ini, so load those, then init directory. */
