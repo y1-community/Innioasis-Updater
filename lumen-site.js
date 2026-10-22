@@ -430,7 +430,8 @@
     }
 
     function initEdgeKeepHelp() {
-        document.querySelectorAll("[data-edge-keep-hint]").forEach(function (btn) {
+        var openers = document.querySelectorAll("[data-edge-keep-hint], .lumen-edge-help-text");
+        openers.forEach(function (btn) {
             btn.addEventListener("click", function (event) {
                 event.preventDefault();
                 openEdgeKeepModal();
@@ -449,41 +450,6 @@
         }
     }
 
-    function openEdgeKeepScreenshotModal() {
-        var modal = document.getElementById("edge-keep-screenshot-modal");
-        if (!modal) return;
-        modal.hidden = false;
-        modal.setAttribute("aria-hidden", "false");
-        var close = modal.querySelector("[data-edge-keep-screenshot-close]");
-        if (close) close.focus();
-    }
-
-    function closeEdgeKeepScreenshotModal() {
-        var modal = document.getElementById("edge-keep-screenshot-modal");
-        if (!modal) return;
-        modal.hidden = true;
-        modal.setAttribute("aria-hidden", "true");
-    }
-
-    function initEdgeKeepScreenshotHelp() {
-        document.querySelectorAll("[data-edge-keep-screenshot-hint], .lumen-edge-help-link").forEach(function (btn) {
-            btn.addEventListener("click", function (event) {
-                event.preventDefault();
-                openEdgeKeepScreenshotModal();
-            });
-        });
-        var modal = document.getElementById("edge-keep-screenshot-modal");
-        if (modal) {
-            modal.addEventListener("click", function (event) {
-                if (event.target === modal) closeEdgeKeepScreenshotModal();
-            });
-            modal.addEventListener("keydown", function (event) {
-                if (event.key === "Escape" || event.key === "Esc") closeEdgeKeepScreenshotModal();
-            });
-            var closeButton = modal.querySelector("[data-edge-keep-screenshot-close]");
-            if (closeButton) closeButton.addEventListener("click", closeEdgeKeepScreenshotModal);
-        }
-    }
 
     function initCopyButtons() {
         document.querySelectorAll("[data-copy-target]").forEach(function (button) {
@@ -1591,7 +1557,6 @@
         initCopyButtons();
         initDownloadConfirm();
         initEdgeKeepHelp();
-        initEdgeKeepScreenshotHelp();
         initLumenTips();
         /* The release directory is authenticated against GitHub rate limits
            with tokens from config.ini, so load those, then init directory. */

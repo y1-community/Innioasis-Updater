@@ -569,42 +569,22 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 .lumen-button--secondary:hover, .lumen-button--secondary:focus-visible { border-color: var(--lumen-accent); color: var(--lumen-accent); background: var(--lumen-accent-wash); }
 .lumen-updater-download .lumen-download-options + .lumen-meta { margin: 0; padding: .8rem 1rem .95rem; }
 
-.lumen-edge-help-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: .6rem;
-  padding: .55rem .7rem;
-  border: 1px solid var(--lumen-line-strong);
+.lumen-edge-help-text {
+  display: inline-block;
+  margin-left: .6rem;
+  padding: .3rem .5rem;
   border-radius: var(--lumen-pill);
-  background: var(--lumen-panel);
-  color: var(--lumen-text);
-  font: 600 .78rem var(--lumen-body);
-  cursor: pointer;
-  text-decoration: none;
-  transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease);
-}
-.lumen-edge-help-link:hover, .lumen-edge-help-link:focus-visible {
-  border-color: var(--lumen-accent);
   color: var(--lumen-accent);
+  font: 600 .78rem var(--lumen-body);
+  text-decoration: none;
+  vertical-align: middle;
+}
+.lumen-edge-help-text:hover, .lumen-edge-help-text:focus-visible {
+  text-decoration: underline;
   outline: none;
 }
-.lumen-edge-help-link img {
-  display: block;
-  width: 100%;
-  max-width: 74px;
-  height: auto;
-  border-radius: 4px;
-}
-@media (min-width: 760px) {
-  .lumen-edge-help-link {
-    width: auto;
-    padding: .4rem .55rem;
-  }
-  .lumen-edge-help-link img {
-    width: 64px;
-  }
+.lumen-actions .lumen-edge-help-text {
+  margin-left: .5rem;
 }
 
 /* Benefits pages: model availability, lists, and community video links */
