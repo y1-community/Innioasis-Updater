@@ -1638,6 +1638,92 @@ def _find_y1_scatter_path(install_dir=None):
     return None
 
 
+class FirmwarePlatformMismatchError(RuntimeError):
+    """The firmware package is built for a different chip than the device."""
+
+
+# Device Model the user picked in the dropdown for a release download. Install
+# routes resolve the *package* model from file names and contents; this keeps the
+# *device* side so a package for the other chip is refused before any write.
+# None for Browse Files / drag-and-drop installs (the dropdown is not used there).
+_install_target_device_model = None
+
+
+def set_install_target_device_model(model):
+    """Record (or clear with None) the Device Model the current install is for."""
+    global _install_target_device_model
+    _install_target_device_model = model or None
+
+
+def package_scatter_family(extracted_files=None, install_dir=None):
+    """
+    Return 'Y2' (MT6582), 'Y1' (MT6572) or None for the firmware package itself.
+
+    Reads ``platform:`` from the scatter that came out of the package zip, never
+    from other scatters on disk: an MT6582 scatter left by an earlier install can
+    sit next to a freshly extracted MT6572 package.
+    """
+    if extracted_files is None:
+        extracted_files = load_remembered_install_device_model().extracted
+    names = [Path(str(f)).name for f in (extracted_files or [])]
+    for name in names:
+        if not name.lower().endswith("_android_scatter.txt"):
+            continue
+        for base in _scatter_search_bases(install_dir):
+            candidate = base / name
+            if not candidate.is_file():
+                continue
+            chip = _scatter_platform_chip(candidate)
+            if chip == "MT6582":
+                return "Y2"
+            if chip == "MT6572":
+                return "Y1"
+            break
+    lower = [n.lower() for n in names]
+    if any("eastaeon82" in n for n in lower):
+        return "Y2"
+    if any("g368_nyx" in n for n in lower):
+        return "Y1"
+    return None
+
+
+def check_package_matches_device(device_model=None, extracted_files=None, install_dir=None):
+    """
+    Refuse to flash a package built for the other chip (MT6572 Y1 vs MT6582 Y2).
+
+    Compares the package scatter platform with the Device Model picked for a
+    release download and with ``device_model`` (the model the write plan uses).
+    The connected device's hwcode is not available here: mtkclient reads it only
+    inside the write session, and SP Flash Tool checks the chip itself.
+
+    Returns the package family ('Y1', 'Y2' or None when unknown).
+    Raises FirmwarePlatformMismatchError on a mismatch.
+    """
+    package = package_scatter_family(extracted_files, install_dir)
+    if not package:
+        return None
+    chips = {"Y1": "MT6572", "Y2": "MT6582"}
+    for source, model in (
+        ("the selected Device Model is", _install_target_device_model),
+        ("the install plan is for the", device_model),
+    ):
+        if is_y2_model(model):
+            family = "Y2"
+        elif is_y1_model(model):
+            family = "Y1"
+        else:
+            continue
+        if family != package:
+            raise FirmwarePlatformMismatchError(
+                f"Firmware package does not match device. The package is for the "
+                f"{package} ({chips[package]}), but {source} {family} "
+                f"({chips[family]}). Nothing was written to the device.\n\n"
+                f"Make sure the Device Model is correct, then download the {family} "
+                f"package of this software."
+            )
+    return package
+
+
 def parse_scatter_physical_addresses(scatter_path):
     """Parse scatter partition rows keyed by partition_name (scatter order preserved).
 
@@ -2084,17 +2170,22 @@ def build_mtk_y2_install_script_from_scatter(install_dir=None):
     return script_path, lines
 
 
-def build_mtk_named_staged_commands(install_dir=None, device_model=None):
+def build_mtk_named_staged_commands(install_dir=None, device_model=None, extracted_files=None):
     """
     Full-system mtkclient install stages (unbrick-capable).
 
     Y1: named ``w`` (device partition table).
     Y2: scatter ``wo`` script (physical offsets) including preloaderboot1 
         blank eMMC has no partition names, so offsets are required.
+
+    Raises FirmwarePlatformMismatchError when the package is for the other chip.
     """
     install_root = Path(install_dir or get_firmware_app_dir())
     app_dir = get_firmware_app_dir()
     model = resolve_device_model_for_install(device_model)
+    check_package_matches_device(
+        model, extracted_files=extracted_files, install_dir=install_root
+    )
 
     if is_y2_model(model):
         script_path, script_lines, wo_plan, scatter_path = build_mtk_y2_unbrick_script(
@@ -2225,7 +2316,7 @@ def build_mtk_write_command(device_model=None, zip_path=None, extracted_files=No
             resolved = "Y2"
 
     stages, meta = build_mtk_named_staged_commands(
-        install_dir=_install, device_model=resolved
+        install_dir=_install, device_model=resolved, extracted_files=extracted_files
     )
     cmd = list(meta.get("oneshot_cmd") or stages[0]["cmd"])
     build_mtk_write_command._y2_stages = stages if is_y2_model(resolved) else None
@@ -5192,7 +5283,7 @@ def build_spflash_rom_list_xml(scatter_path, app_dir=None):
     return "\n".join(lines) + "\n"
 
 
-def validate_spflash_images_for_model(device_model=None, app_dir=None):
+def validate_spflash_images_for_model(device_model=None, app_dir=None, extracted_files=None):
     """
     Light preflight before SP Flash Tool: required images present, scatter exists.
 
@@ -5202,8 +5293,9 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
     blocked valid installs.
 
     Returns (ok: bool, errors: list[str], warnings: list[str]).
-    ``ok`` is False only for hard problems (unknown model, missing scatter after
-    recovery attempt, missing downloadable image files).
+    ``ok`` is False only for hard problems (unknown model, package built for the
+    other chip, missing scatter after recovery attempt, missing downloadable
+    image files).
     """
     app_dir = Path(app_dir or get_firmware_app_dir())
     resolved = resolve_device_model_for_install(device_model)
@@ -5212,6 +5304,12 @@ def validate_spflash_images_for_model(device_model=None, app_dir=None):
     warnings = []
     if not config:
         return False, ["Unknown device model for SP Flash Tool validation."], warnings
+    try:
+        check_package_matches_device(
+            resolved, extracted_files=extracted_files, install_dir=app_dir
+        )
+    except FirmwarePlatformMismatchError as e:
+        return False, [str(e)], warnings
     scatter_path = app_dir / config["scatter_txt"]
     if not scatter_path.is_file():
         def_path = app_dir / config["scatter_def_txt"]
@@ -6003,6 +6101,12 @@ def filter_rom_variants_for_model(variants, selected_model, package_device=None,
     def variant_ok(variant):
         model = variant.get('model', 'dual')
         if selecting_y2:
+            # Never offer a Y2 user an asset that install-time resolution
+            # (model_from_zip_name) treats as another device: rom.zip,
+            # rom_type_b.zip and rom_y1_*.zip are Y1 packages even when the repo
+            # name contains "y2" (e.g. JonaszPotoniec/inniclassic-y2).
+            if model_from_zip_name(variant.get('asset', {}).get('name', '')) in ('Y1', 'A5'):
+                return False
             # Y2-specific ROM assets (rom_y2.zip) always match when Y2 is selected
             if model == 'Y2':
                 return True
@@ -7300,7 +7404,9 @@ class SPFlashToolWorker(QThread):
         resolved = self._sync_device_label()
         prepare_sp_flash_tool_files(resolved)
 
-        ok, errors, warnings = validate_spflash_images_for_model(resolved, self.app_dir)
+        ok, errors, warnings = validate_spflash_images_for_model(
+            resolved, self.app_dir, extracted_files=self.extracted_files
+        )
         for w in warnings:
             silent_print(f"SPFT preflight warning: {w}")
         if not ok:
@@ -8299,6 +8405,10 @@ class MTKWorker(QThread):
                 extracted_files=getattr(self, 'extracted_files', None),
                 install_dir=app_dir,
             )
+        except FirmwarePlatformMismatchError as e:
+            silent_print(f"Refusing MTKClient install: {e}")
+            self.mtk_completed.emit(False, str(e))
+            return
         except Exception as e:
             silent_print(f"build_mtk_write_command failed: {e}")
             self.mtk_completed.emit(
@@ -15956,6 +16066,19 @@ class FirmwareDownloaderGUI(QMainWindow):
             )
             return False
 
+    def _refuse_mismatched_package(self, device_model):
+        """Show an error and return True when the package is for the other chip."""
+        try:
+            check_package_matches_device(
+                device_model,
+                extracted_files=getattr(self, "_last_install_extracted_files", None),
+            )
+        except FirmwarePlatformMismatchError as e:
+            silent_print(f"Refusing install: {e}")
+            QMessageBox.critical(self, "Firmware package does not match device", str(e))
+            return True
+        return False
+
     def try_method_4(self):
         """Installation-method entry: SP Flash Tool GUI (Windows + Linux x86)."""
         self.launch_sp_flash_tool_gui()
@@ -15976,6 +16099,8 @@ class FirmwareDownloaderGUI(QMainWindow):
                 # Still allow launch; prepare_sp may no-op without model.
                 pass
             prepare_sp_flash_tool_files(device_model)
+            if self._refuse_mismatched_package(device_model):
+                return
 
             if is_windows_platform():
                 current_dir = Path.cwd()
@@ -26470,6 +26595,8 @@ class FirmwareDownloaderGUI(QMainWindow):
         self._last_install_zip_path = str(zip_path)
         self._last_install_zip_name = orig_name
         self._last_install_asset_url = None
+        # Browse Files: the Device Model dropdown did not pick this package.
+        set_install_target_device_model(None)
 
         # Check storage space before processing rom.zip (full firmware install requires 6GB)
         has_enough_space, available_gb, error_message = self._check_storage_space(required_gb=6)
@@ -35190,6 +35317,10 @@ class FirmwareDownloaderGUI(QMainWindow):
             QMessageBox.warning(self, "Error", error_msg)
             return
 
+        # The release list was filtered by the Device Model dropdown: keep it as
+        # the device side for check_package_matches_device before any write.
+        set_install_target_device_model(self.get_selected_device_model())
+
         # Check if zip file already exists locally
         zip_path = get_zip_path(selected_repo, release_info['tag_name'])
         if zip_path.exists():
@@ -35368,6 +35499,9 @@ class FirmwareDownloaderGUI(QMainWindow):
             # (fallback-mapped repos save Y2 downloads under a Y1-looking name).
             # Assigned unconditionally so a later call without one clears a stale value.
             self._last_install_asset_url = asset_url
+            if not asset_url:
+                # Local / dropped zip: the Device Model dropdown did not pick it.
+                set_install_target_device_model(None)
 
             # Check if ARM64 user is trying to do a full install (block it)
             if get_platform_system() == "Windows":
