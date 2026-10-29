@@ -93,37 +93,31 @@ def main() -> None:
         "Edge keep modal close button (firmware guide)",
     )
 
-    # 4) Both pages still keep the macOS/Linux download buttons and the
-    #    “Another platform?” toggle, so we only changed the Windows line.
-    assert_contains(
-        GUIDE,
-        '<a class="lumen-button" href="https://github.com/Homebrew/brew/releases/latest/download/Homebrew.pkg" download data-download-confirm="Download started">Download Homebrew</a>',
-        "macOS Homebrew button still present",
+    # 4) The macOS card explains Open Anyway instead of Homebrew, Linux
+    #    ships the AppImage button instead of the curl command, and the
+    #    “Another platform?” toggle is untouched.
+    APPIMAGE_URL = (
+        "https://github.com/y1-community/innioasis-updater/releases/latest/"
+        "download/UpdaterCE.AppImage"
     )
-    assert_contains(
-        GUIDE,
-        'Download Updater CE</a>',
-        "macOS Updater CE button still present",
-    )
-    assert_contains(
-        GUIDE,
-        "curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash",
-        "Linux install command still present",
-    )
-    assert_contains(GUIDE, "data-another-platform", "Another platform toggle still present")
-    assert_contains(
-        GUIDE_FIRMWARE,
-        '<a class="lumen-button" href="https://github.com/Homebrew/brew/releases/latest/download/Homebrew.pkg" download data-download-confirm="Download started">Download Homebrew</a>',
-        "macOS Homebrew button still present (firmware guide)",
-    )
-    assert_contains(
-        GUIDE_FIRMWARE,
-        "curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash",
-        "Linux install command still present (firmware guide)",
-    )
-    assert_contains(
-        GUIDE_FIRMWARE, "data-another-platform", "Another platform toggle still present (firmware guide)"
-    )
+    for path in (GUIDE, GUIDE_FIRMWARE):
+        assert_not_contains(path, "Homebrew", "Homebrew mention")
+        assert_not_contains(path, "run_linux.sh", "old Linux install command")
+        assert_contains(
+            path,
+            '<a class="lumen-button lumen-button--primary" href="'
+            + APPIMAGE_URL
+            + '" download data-download-confirm="Download started">'
+            "Download AppImage for Intel/AMD</a>",
+            "Download AppImage for Intel/AMD button",
+        )
+        assert_contains(
+            path,
+            "https://support.apple.com/en-gb/102445#openanyway",
+            "Open Anyway support link",
+        )
+        assert_contains(path, "Download Updater CE</a>", "macOS Updater CE button")
+        assert_contains(path, "data-another-platform", "Another platform toggle")
 
     # 5) JavaScript now wires the Edge keep modal open/close paths.
     assert_contains(

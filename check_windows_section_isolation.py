@@ -45,10 +45,14 @@ def main() -> None:
             )
 
     for label, mac_block in ((GUIDE, guide_mac), (GUIDE_FIRMWARE, firmware_mac)):
-        if "Download Homebrew" not in mac_block:
-            raise SystemExit(f"{label} macOS card must still contain Download Homebrew")
+        if "Homebrew" in mac_block:
+            raise SystemExit(f"{label} macOS card must no longer mention Homebrew")
         if "Download Updater CE</a>" not in mac_block:
             raise SystemExit(f"{label} macOS card must still contain Download Updater CE")
+        if "https://support.apple.com/en-gb/102445#openanyway" not in mac_block:
+            raise SystemExit(
+                f"{label} macOS card must link to the Apple Open Anyway notes"
+            )
 
     for page in (GUIDE, GUIDE_FIRMWARE):
         body = Path(page).read_text("utf-8", "ignore")
@@ -56,7 +60,7 @@ def main() -> None:
             raise SystemExit(f"{page} must still contain {ANOTHER_PLATFORM!r}")
 
     required_mac_urls = (
-        "https://github.com/Homebrew/brew/releases/latest/download/Homebrew.pkg",
+        "https://support.apple.com/en-gb/102445#openanyway",
         "https://github.com/y1-community/Innioasis-Updater/releases/latest/download/Innioasis.Updater.for.Mac.dmg",
     )
     for url in required_mac_urls:
@@ -66,9 +70,9 @@ def main() -> None:
             raise SystemExit(f"firmware-guide.html must still include {url!r}")
 
     required_linux_strings = (
-        "curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash",
+        "https://github.com/y1-community/innioasis-updater/releases/latest/download/UpdaterCE.AppImage",
+        "Download AppImage for Intel/AMD",
         "Linux setup notes",
-        "data-copy-target=\"linux-install-command\"",
     )
     for s in required_linux_strings:
         if s not in Path(GUIDE).read_text("utf-8", "ignore"):
@@ -76,15 +80,22 @@ def main() -> None:
         if s not in Path(GUIDE_FIRMWARE).read_text("utf-8", "ignore"):
             raise SystemExit(f"firmware-guide.html must still include {s!r}")
 
+    for page in (GUIDE, GUIDE_FIRMWARE):
+        body = Path(page).read_text("utf-8", "ignore")
+        if "run_linux.sh" in body:
+            raise SystemExit(f"{page} must no longer ship the curl install command")
+        if "Homebrew" in body:
+            raise SystemExit(f"{page} must no longer mention Homebrew")
+
     # These two names are intentionally reused in the check file body; keep the
     # message read-only so the stdout encoding does not explode in cp1252 shells.
     Path("_windows_section_isolation_stdout.txt").write_text(
-        "OK: only the Windows download card was changed; macOS, Linux, and the "
-        "Another platform toggle are untouched.",
+        "OK: macOS no longer mentions Homebrew and Linux ships the AppImage "
+        "button; the Windows card and the Another platform toggle are intact.",
         "utf-8",
     )
-    print("OK: only the Windows download card was changed; macOS, Linux, and the "
-          "Another platform toggle are untouched.")
+    print("OK: macOS no longer mentions Homebrew and Linux ships the AppImage "
+          "button; the Windows card and the Another platform toggle are intact.")
 
 
 DRIVER_BUTTON_HTML = (
