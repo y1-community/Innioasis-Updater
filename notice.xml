@@ -29,8 +29,8 @@
 
   <!-- Example 1: Non-persistent advisory (can be dismissed without returning at next app run) -->
   <notice id="2026-10-25-firmware-advisory" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" models="Y1,Y2">
-    <title>Original Software 3.2.1 Available</title>
-    <content>An updated firmware release for Y2 players is now available in the community catalogue.</content>
+    <title>Announcements in Updater CE</title>
+    <content>You'll get important alerts about issues reported by the community here.</content>
     <link>https://innioasis.app</link>
   </notice>
 
