@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Innioasis Updater CE Notice Feed Markup Specification
+  Hosted at: https://innioasis.app/notice.xml
+
+  Displays on-screen hint toast announcements to users of the app.
+  
+  Fields:
+  - id: required, unique string identifier for the notice.
+  - persistent: boolean ("true" | "false", default: "false").
+      * "false" (or omitted): Non-persistent notice. When dismissed by the user,
+        it is permanently dismissed and will not return on the next app run.
+      * "true": Persistent notice. It will return on every app launch, even if
+        dismissed during a prior run.
+      * CACHE INVALIDATION: If the remote notice.xml contents change from the
+        locally cached file on the user's computer, the new file is automatically
+        loaded and the updated notice is shown, even if previously dismissed.
+  - severity: "info" | "warning" | "critical" (default: "info").
+  - from: optional ISO date YYYY-MM-DD. Shown on or after this date.
+  - until: optional ISO date YYYY-MM-DD. Shown on or before this date.
+  - models: optional comma-separated list of target models (e.g. "Y1,Y2"). Omit for all models.
+
+  Child elements:
+  - <title>: required, headline of the notice.
+  - <content>: required, description/body text (also supports <body>).
+  - <link>: optional URL opened when the user clicks the action button.
+-->
+<notices updated="2026-10-25">
+
+  <!-- Example 1: Non-persistent advisory (can be dismissed without returning at next app run) -->
+  <notice id="2026-10-25-firmware-advisory" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" models="Y1,Y2">
+    <title>Original Software 3.2.1 Available</title>
+    <content>An updated firmware release for Y2 players is now available in the community catalogue.</content>
+    <link>https://innioasis.app</link>
+  </notice>
+
+  <!-- Example 2: Persistent critical notice (returns on every app launch until expired/removed) -->
+  <notice id="2026-10-20-battery-check" persistent="true" severity="warning" from="2026-10-20" until="2026-11-30">
+    <title>Charge Battery Before Flashing</title>
+    <content>Please ensure your device is charged to at least 50% battery before initiating firmware installation.</content>
+  </notice>
+
+</notices>
