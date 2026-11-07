@@ -68,7 +68,12 @@
     <full_content>We're aware an issue where Microsoft Endpoint Protection and Smart App Control are blocking launches of our app. This has been reported to Microsoft asa false-positive and we are awaiting registration with SignPath so we can sign our builds and avoid these false-positives in the future.
       
     A temporary workaround is to Open Settings > Privacy & Security > Windows Security > App and Browser control > Smart App Control > Evaluation. This will allow you to open the app.
-      Do not set Smart App Control to "off" as you will not be able to turn it back "on" without re-installing Windows.We're hoping this will be resolved as rapidly as the false-positive was applied to our application.</full_content>
+      Do not set Smart App Control to "off" as you will not be able to turn it back "on" without re-installing Windows. We're hoping this will be resolved as rapidly as the false-positive was applied to our application.
+      
+      
+    </full_content>
+  
+    
     <link>https://innioasis.app</link>
   </notice>
 
