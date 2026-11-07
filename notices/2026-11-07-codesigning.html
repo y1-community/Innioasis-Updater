@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="author" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Windows 10/11 app launch issues reported - Innioasis Updater</title>
-  <meta name="description" content="Users are reporting that they are unable to launch the app - find out more here.">
+  <title>Windows 10/11 app launch issues fixed - Innioasis Updater</title>
+  <meta name="description" content="We&#x27;ve resolved the issues some users were having launching the windows app.">
   <link rel="canonical" href="https://innioasis.app/notices/2026-11-07-codesigning.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Windows 10/11 app launch issues reported - Innioasis Updater">
-  <meta property="og:description" content="Users are reporting that they are unable to launch the app - find out more here.">
+  <meta property="og:title" content="Windows 10/11 app launch issues fixed - Innioasis Updater">
+  <meta property="og:description" content="We&#x27;ve resolved the issues some users were having launching the windows app.">
   <meta property="og:url" content="https://innioasis.app/notices/2026-11-07-codesigning.html">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Windows 10/11 app launch issues reported - Innioasis Updater">
-  <meta name="twitter:description" content="Users are reporting that they are unable to launch the app - find out more here.">
+  <meta name="twitter:title" content="Windows 10/11 app launch issues fixed - Innioasis Updater">
+  <meta name="twitter:description" content="We&#x27;ve resolved the issues some users were having launching the windows app.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
@@ -25,15 +25,10 @@
 </head>
 <body class="site-themes-app"><a class="lumen-skip-link" href="#main">Skip to content</a><div id="nav-root"></div>
 <main id="main" class="lumen-guide">
-<header><p class="lumen-kicker">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p><h1>Windows 10/11 app launch issues reported</h1><p class="lead">Users are reporting that they are unable to launch the app - find out more here.</p><p class="lumen-meta">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p></header>
-<section class="lumen-guide-section lumen-notice-body"><p>We're aware an issue where Microsoft Endpoint Protection and Smart App Control are blocking launches of our app. This has been reported to Microsoft asa false-positive and we are awaiting registration with SignPath so we can sign our builds and avoid these false-positives in the future.</p>
-<p>A temporary workaround is to Open Settings &gt; Privacy and Security &gt; Windows Security &gt; App and Browser control &gt; Smart App Control &gt; Off. This will allow you to open the app.</p>
-<p>If Windows or Edge don't let you download Updater CE, simply click more options then Keep, if you have time, can you please <a href="https://feedback.smartscreen.microsoft.com/feedback.aspx?url=https%3A%2F%2Frelease-assets.githubusercontent.com%2Fgithub-production-release-asset%2F1039151510%2F96311574-ecdc-465c-a387-1d0c130bd8cd%3Fsp%3Dr%26sv%3D2018-11-09%26sr%3Db%26spr%3Dhttps%26se%3D2026-11-07T20%253A16%253A26Z%26rscd%3Dattachment%253B%2Bfilename%253Dinstaller.exe%26rsct%3Dapplication%252Foctet-stream%26skoid%3D96c2d410-5711-43a1-aedd-ab1947aa7ab0%26sktid%3D398a6654-997b-47e9-b12b-9515b896b4de%26skt%3D2026-11-07T19%253A15%253A55Z%26ske%3D2026-11-07T20%253A16%253A26Z%26sks%3Db%26skv%3D2018-11-09%26sig%3DdmAF6%252BUVEHkd5PYp3yuY5Cjbz3t7luq8B10aZME5h58%253D%26jwt%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5NDA4Mzc2NiwibmJmIjoxNzk0MDgwMTY2LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.0iFFB5PDmMYvwpT5_urLq69d9gqJXaYwAgiR8AvAW4o%26response-content-disposition%3Dattachment%253B%2520filename%253Dinstaller.exe%26response-content-type%3Dapplication%252Foctet-stream">Report the download as safe to Microsoft</a></p>
-<p>When we're not being blocked by Microsoft anymore (we'll let you know via the app and this website) you can (and should) re-enable Smart App Control when this is resolved and we're no longer being blocked by Microsoft you'll need to follow these steps:</p>
-<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy (Note: On some systems, the folder may be named Policies instead of Policy)</p>
-<p>• 1 = On (Enforced) • 2 = Evaluation Mode</p>
-<ol><li>Press Windows Key + R, type regedit, and press Enter to open the Registry Editor as an administrator.</li><li>Navigate to the following path by pasting it into the top address bar:</li><li>Locate the value named VerifiedAndReputablePolicyState in the right-hand pane.</li><li>Double-click VerifiedAndReputablePolicyState and change its Value data to:</li><li>Click OK, close the Registry Editor, and restart your computer.</li></ol></section>
-<p class="lumen-actions"><a class="lumen-button lumen-button--primary" href="https://feedback.smartscreen.microsoft.com/feedback.aspx?url=https%3A%2F%2Frelease-assets.githubusercontent.com%2Fgithub-production-release-asset%2F1039151510%2F96311574-ecdc-465c-a387-1d0c130bd8cd%3Fsp%3Dr%26sv%3D2018-11-09%26sr%3Db%26spr%3Dhttps%26se%3D2026-11-07T20%253A16%253A26Z%26rscd%3Dattachment%253B%2Bfilename%253Dinstaller.exe%26rsct%3Dapplication%252Foctet-stream%26skoid%3D96c2d410-5711-43a1-aedd-ab1947aa7ab0%26sktid%3D398a6654-997b-47e9-b12b-9515b896b4de%26skt%3D2026-11-07T19%253A15%253A55Z%26ske%3D2026-11-07T20%253A16%253A26Z%26sks%3Db%26skv%3D2018-11-09%26sig%3DdmAF6%252BUVEHkd5PYp3yuY5Cjbz3t7luq8B10aZME5h58%253D%26jwt%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5NDA4Mzc2NiwibmJmIjoxNzk0MDgwMTY2LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.0iFFB5PDmMYvwpT5_urLq69d9gqJXaYwAgiR8AvAW4o%26response-content-disposition%3Dattachment%253B%2520filename%253Dinstaller.exe%26response-content-type%3Dapplication%252Foctet-stream" rel="noopener">Open the linked page</a></p>
+<header><p class="lumen-kicker">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p><h1>Windows 10/11 app launch issues fixed</h1><p class="lead">We&#x27;ve resolved the issues some users were having launching the windows app.</p><p class="lumen-meta">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p></header>
+<section class="lumen-guide-section lumen-notice-body"><p>Users had reported issues launching the application around 7PM UTC on Windows systems, where neither new installs or existing would run on Windows 11/10 with Smart App Control enabled. This has now been resolved and apps should run as normal. False-positive reports were submitted to Microsoft and have now been actioned.</p>
+<p><a href="https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd">see the installer.exe report to Microsoft</a> <a href="https://www.microsoft.com/en-us/wdsi/submission/1aef842b-3fda-44e7-bcfb-1a64af3ea661">see the InnioasisUpdater.exe (main app) report to Microsoft</a></p></section>
+<p class="lumen-actions"><a class="lumen-button lumen-button--primary" href="https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd" rel="noopener">Open the linked page</a></p>
 <p class="lumen-notice-back"><a href="index.html">← All notices</a></p>
 </main>
 <div id="footer-root"></div><div id="support-toolbar-slot"></div>
