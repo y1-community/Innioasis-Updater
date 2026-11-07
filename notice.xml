@@ -60,18 +60,12 @@
       its own page instead.
   - <link>: optional URL alias for backwards compatibility with earlier builds.
 -->
-<notices updated="2026-11-05">
+<notices updated="2026-11-07">
 
-  <notice id="2026-10-25-firmware-advisory" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" models="Y1,Y2">
-    <title>About Notices in Updater CE</title>
-    <content>You'll get important alerts about device safety issues reported by the community here, such as when devices are being bricked by certain firmware.</content>
-    <full_content>Notices are how the community warns about device safety issues, firmware that should not be installed on a particular hardware revision, and new software releases.
-
-- **Each notice has its own page** on this site, so a warning can be read in full instead of being cut down to one line.
-- **The app shows the same text**, with the notice's detail opening from the banner.
-- **A notice without a specific page** simply opens its own page here; a link to the bare site root is ignored.
-
-Use the bell icon to see the current notices at any time.</full_content>
+  <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" models="Y1,Y2">
+    <title>Mindows 10/11 app launch issues reported</title>
+    <content>some users are reporting that they can't launch the Updater installer on Windows 10/11.</content>
+    <full_content>We arre currently looking into reports that Windows 10 and 11 is blocking our app, we're aiming to have this resolves ASAP with a signed package, in the meantime, try one of the portable zips from the website, these should work fine..</full_content>
     <link>https://innioasis.app</link>
   </notice>
 
