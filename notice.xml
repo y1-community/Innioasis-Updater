@@ -63,9 +63,9 @@
 <notices updated="2026-11-07">
 
   <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" models="Y1,Y2">
-    <title>Mindows 10/11 app launch issues reported</title>
+    <title>Windows 10/11 app launch issues reported</title>
     <content>some users are reporting that they can't launch the Updater installer on Windows 10/11.</content>
-    <full_content>We arre currently looking into reports that Windows 10 and 11 is blocking our app, we're aiming to have this resolves ASAP with a signed package, in the meantime, try one of the portable zips from the website, these should work fine..</full_content>
+    <full_content>We arre currently looking into reports that Windows 10 and 11 is blocking our app, we're aiming to have this resolved ASAP with a signed package, in the meantime, try one of the portable zips from the website, these should work fine..</full_content>
     <link>https://innioasis.app</link>
   </notice>
 
