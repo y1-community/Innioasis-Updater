@@ -12,8 +12,8 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y1 and 360p Rockbox Theme Downloader - Innioasis Updater</title>
-    <meta name="description" content="Browse Y1 and 360p Rockbox themes, download theme bundles, and follow the manual installation steps for your player.">
+    <title>Y1 i 360p Rockbox Narzędzie do pobierania motywów - Innioasis Aktualizacja</title>
+    <meta name="description" content="Przeglądaj motywy Y1 i 360p Rockbox, pobieraj pakiety motywów i postępuj zgodnie z instrukcjami ręcznej instalacji odtwarzacza.">
     <link rel="canonical" href="https://innioasis.app/theme_downloader_pl.html">
     <link rel="stylesheet" href="lumen.css?v=20261114video">
     <link rel="stylesheet" href="site-theme.css?v=20260803">
@@ -422,36 +422,36 @@
     <main id="main" class="theme-tool-page">
     <div class="container">
         <div class="header">
-            <h1>🎨 Y1 and 360p Rockbox Theme Downloader</h1>
-            <p>Download and install themes for your Y1 device directly in your browser</p>
+            <h1>🎨 Y1 i 360p Rockbox Narzędzie do pobierania motywów</h1>
+            <p>Pobierz i zainstaluj motywy na swoje urządzenie Y1 bezpośrednio w przeglądarce</p>
         </div>
 
         <div class="content">
             <!-- Device Information -->
             <div class="device-info">
-                <h3>📱 Device Setup</h3>
-                <p><strong>Y1 Device:</strong> Power on your Y1, connect via USB, and enable USB Storage Mode</p>
-                <p><strong>Computer:</strong> Your Y1 should appear as a removable drive (usually named "Y1" or similar)</p>
-                <p><strong>Theme Location:</strong> Look for a folder named <code>.rockbox</code> na urządzeniu Y1</p>
+                <h3>📱 Konfiguracja urządzenia</h3>
+                <p><strong>Y1 Urządzenie:</strong> Włącz Y1, połącz się przez USB i włącz USB tryb przechowywania</p>
+                <p><strong>Komputer:</strong> Twój Y1 powinien pojawić się jako dysk wymienny (zwykle o nazwie „Y1” lub podobnej)</p>
+                <p><strong>Lokalizacja motywu:</strong> Poszukaj folderu o nazwie <code>.rockbox</code> na urządzeniu Y1</p>
             </div>
 
             <!-- Tabs -->
             <div class="tabs">
-                <button class="tab active" onclick="switchTab('y1')">🎯 Y1 Themes</button>
-                <button class="tab" onclick="switchTab('rockbox')">🎨 Rockbox Themes</button>
+                <button class="tab active" onclick="switchTab('y1')">🎯 Y1 Motywy</button>
+                <button class="tab" onclick="switchTab('rockbox')">🎨 Rockbox Motywy</button>
             </div>
 
             <!-- Y1 Themes Tab -->
             <div id="y1-tab" class="tab-content active">
                 <div class="controls">
                     <button class="btn btn-primary" onclick="selectAllThemes('y1')">
-                        ☑️ Select All Y1 Themes
+                        ☑️ Wybierz wszystkie Y1 motywy
                     </button>
                     <button class="btn btn-secondary" onclick="selectNoneThemes('y1')">
-                        ☐ Select None
+                        ☐ Wybierz Brak
                     </button>
                     <button class="btn btn-primary" onclick="downloadSelectedThemes('y1')" id="download-y1-btn">
-                        📥 Download Selected Y1 Themes
+                        📥 Pobierz wybrane Y1 motywy
                     </button>
                 </div>
 
@@ -468,16 +468,16 @@
             <div id="rockbox-tab" class="tab-content">
                 <div class="controls">
                     <button class="btn btn-primary" onclick="selectAllThemes('rockbox')">
-                        ☑️ Select All Rockbox Themes
+                        ☑️ Wybierz wszystkie Rockbox motywy
                     </button>
                     <button class="btn btn-secondary" onclick="selectNoneThemes('rockbox')">
-                        ☐ Select None
+                        ☐ Wybierz Brak
                     </button>
                     <button class="btn btn-primary" onclick="downloadSelectedThemes('rockbox')" id="download-rockbox-btn">
-                        📥 Download Selected Rockbox Themes
+                        📥 Pobierz wybrane Rockbox motywy
                     </button>
                     <button class="btn btn-danger" onclick="resetRockboxFolder()">
-                        🗑️ Reset Rockbox Folder
+                        🗑️ Zresetuj Rockbox Folder
                     </button>
                 </div>
 
@@ -492,90 +492,72 @@
 
             <!-- Status Messages -->
             <div id="status" class="status info" style="display: none;">
-                Ready to download themes
+                Gotowe do pobrania motywów
             </div>
 
             <!-- Installation Instructions -->
             <div class="instructions">
-                <h3>📋 Manual Installation Instructions</h3>
+                <h3>📋 Instrukcja instalacji ręcznej</h3>
                 
                 <div class="highlight">
-                    <strong>⚠️ Important:</strong> After downloading themes, you need to manually copy them to your Y1 device. The browser cannot directly access your device's file system.
+                    <strong>⚠️ Ważne:</strong> Po pobraniu motywów musisz ręcznie skopiować je na urządzenie Y1. Przeglądarka nie może uzyskać bezpośredniego dostępu do systemu plików Twojego urządzenia.
                 </div>
 
-                <h4>🎯 For Y1 Themes:</h4>
+                <h4>🎯 Dla Y1 motywów:</h4>
                 <ol>
-                    <li>Download the selected Y1 themes using the button above</li>
-                    <li>Extract the downloaded ZIP file to a temporary folder</li>
-                    <li>Connect your Y1 device via USB and enable USB Storage Mode</li>
-                    <li>Navigate to your Y1 device in your file manager</li>
-                    <li>Create a folder named <code>Themes</code> in the root of your Y1 device (if it doesn't exist)</li>
-                    <li>For each theme, copy the theme folder to <code>Themes/</code> na urządzeniu Y1</li>
-                    <li>Each theme should be in its own subfolder: <code>Themes/ThemeName/</code></li>
-                    <li>Theme files should be placed directly inside the theme subfolder (not nested deeper)</li>
+                    <li>Pobierz wybrane Y1 motywy za pomocą przycisku powyżej</li>
+                    <li>Wyodrębnij pobrany plik ZIP do folderu tymczasowego</li>
+                    <li>Podłącz swoje urządzenie Y1 przez USB i włącz USB tryb przechowywania</li>
+                    <li>Przejdź do swojego urządzenia Y1 w menedżerze plików</li>
+                    <li>Utwórz folder o nazwie <code>Themes</code> w katalogu głównym Twojego urządzenia Y1 (jeśli nie istnieje)</li>
+                    <li>Dla każdego motywu skopiuj folder motywu do <code>Themes/</code> na urządzeniu Y1</li>
+                    <li>Każdy motyw powinien znajdować się w osobnym podfolderze: <code>Themes/ThemeName/</code></li>
+                    <li>Pliki motywu należy umieścić bezpośrednio w podfolderze motywu (nie zagnieżdżać głębiej)</li>
                 </ol>
 
                 <div class="code">
-                    Y1 Device/
-                    ├── .rockbox/
-                    ├── Themes/
-                    │   ├── Theme1/
-                    │   │   ├── theme.wps
-                    │   │   ├── theme.sbs
-                    │   │   └── ...
-                    │   ├── Theme2/
-                    │   │   ├── theme.wps
-                    │   │   └── ...
-                    │   └── ...
-                    └── ...
+                    Y1 Urządzenie/ ├── .rockbox/ ├── Motywy/ │ ├── Motyw1/ │ │ ├── motyw.wps │ │ ├── motyw.sbs │ │ └── ... │ ├── Motyw2/ │ │ ├── motyw.wps │ │ └── ... │ └── ... └── ...
                 </div>
 
-                <h4>🎨 For Rockbox 360p Themes:</h4>
+                <h4>🎨 Dla Rockbox motywów 360p:</h4>
                 <ol>
-                    <li>Download the selected Rockbox themes using the button above</li>
-                    <li>Extract the downloaded ZIP file to a temporary folder</li>
-                    <li>Connect your Y1 device via USB and enable USB Storage Mode</li>
-                    <li>Navigate to your Y1 device in your file manager</li>
-                    <li>Find the <code>.rockbox</code> folder on your Y1 device</li>
-                    <li>For each theme, open the theme's <code>.rockbox</code> folder</li>
-                    <li>Copy all files from the theme's <code>.rockbox</code> folder directly into your Y1's <code>.rockbox</code> folder</li>
-                    <li>Overwrite existing files when prompted (this is normal for theme installation)</li>
+                    <li>Pobierz wybrane Rockbox motywy za pomocą przycisku powyżej</li>
+                    <li>Wyodrębnij pobrany plik ZIP do folderu tymczasowego</li>
+                    <li>Podłącz swoje urządzenie Y1 przez USB i włącz USB tryb przechowywania</li>
+                    <li>Przejdź do swojego urządzenia Y1 w menedżerze plików</li>
+                    <li>Znajdź <code>.rockbox</code> folder na urządzeniu Y1.</li>
+                    <li>Dla każdego motywu otwórz plik motywu <code>.rockbox</code> falcówka</li>
+                    <li>Skopiuj wszystkie pliki z motywu <code>.rockbox</code> folder bezpośrednio do twoich Y1. <code>.rockbox</code> falcówka</li>
+                    <li>Po wyświetleniu monitu zastąp istniejące pliki (jest to normalne w przypadku instalacji motywu)</li>
                 </ol>
 
                 <div class="code">
-                    Y1 Device/
-                    ├── .rockbox/
-                    │   ├── themes/
-                    │   ├── fonts/
-                    │   ├── wps/
-                    │   ├── (theme files merged here)
-                    │   └── ...
-                    └── ...
+                    Y1 Urządzenie/ ├── .rockbox/ │ ├── motywy/ │ ├── czcionki/ │ ├── wps/ │ ├── (tutaj scalone pliki motywów) │ └── ... └── ...
                 </div>
 
                 <div class="highlight">
-                    <strong>💡 Pro Tip:</strong> You can select multiple themes and download them all at once. Each theme will be in its own folder in the downloaded ZIP file.
+                    <strong>💡 Wskazówka profesjonalna:</strong> Możesz wybrać wiele motywów i pobrać je wszystkie na raz. Każdy motyw będzie znajdował się w osobnym folderze w pobranym pliku ZIP.
                 </div>
 
-                <h4>🔄 After Installation:</h4>
+                <h4>🔄 Po instalacji:</h4>
                 <ol>
-                    <li>Safely eject your Y1 device from your computer</li>
-                    <li>Disconnect the USB cable</li>
-                    <li>On your Y1 device, go to <strong>Settings → Themes</strong></li>
-                    <li>Select your newly installed theme from the list</li>
-                    <li>Enjoy your new theme!</li>
+                    <li>Bezpiecznie odłącz urządzenie Y1 od komputera</li>
+                    <li>Odłącz kabel USB.</li>
+                    <li>Na urządzeniu Y1 przejdź do <strong>Ustawienia → Motywy</strong></li>
+                    <li>Wybierz nowo zainstalowany motyw z listy</li>
+                    <li>Ciesz się nowym motywem!</li>
                 </ol>
 
-                <h4>🗑️ Removing Themes:</h4>
+                <h4>🗑️ Usuwanie motywów:</h4>
                 <ol>
-                    <li>For Y1 Themes: Delete the theme folder from <code>Themes/</code> na urządzeniu Y1</li>
-                    <li>For Rockbox Themes: Use the "Reset Rockbox Folder" button above to remove all non-360p themes</li>
+                    <li>Dla motywów Y1: Usuń folder motywów <code>Themes/</code> na urządzeniu Y1</li>
+                    <li>W przypadku motywów Rockbox: użyj przycisku „Resetuj folder Rockbox” powyżej, aby usunąć wszystkie motywy inne niż 360p</li>
                 </ol>
             </div>
 
             <div class="credits">
-                <p>Special thanks to the Rockbox Y1 community for creating these amazing themes! 🎨</p>
-                <p>Theme credits are available in each theme's folder after download.</p>
+                <p>Specjalne podziękowania dla społeczności Rockbox Y1 za stworzenie tych niesamowitych motywów! 🎨</p>
+                <p>Autorzy motywów są dostępni po pobraniu w folderze każdego motywu.</p>
             </div>
         </div>
     </div>
