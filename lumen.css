@@ -295,7 +295,30 @@ body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: 
 /* Compact model buttons inside the home table's Releases cell. */
 .lumen-button--model { min-height: 30px; padding: .3rem .6rem; font-size: .76rem; margin: 0 .3rem .25rem 0; }
 .lumen-release-status { min-height: 24px; margin: 0 0 var(--lumen-space-4); color: var(--lumen-muted); font-size: .85rem; }
+/* Column widths used to be decided by whatever rows happened to be rendered,
+   so the header reflowed when the catalogue arrived. Fix the track widths so
+   the header geometry is identical before and after the rows land. */
+.lumen-release-table { table-layout: fixed; }
+.lumen-release-table > thead > tr > th:nth-child(1) { width: 52%; }
+.lumen-release-table > thead > tr > th:nth-child(2) { width: 32%; }
+.lumen-release-table > thead > tr > th:nth-child(3) { width: 16%; }
+.lumen-release-table td { overflow-wrap: anywhere; }
+
 .lumen-table-wrap { width: 100%; overflow-x: auto; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); }
+/* The release table is filled from the catalogue after load. Its settled height
+   is two rows plus the header (259px wide, 221px at 480, 359px at 344 where the
+   cells wrap), so reserve that height on the wrapper: the rows land in space
+   that is already there instead of pushing every section below it. */
+.lumen-table-wrap { min-height: 259px; }
+
+@media (max-width: 600px) {
+    .lumen-table-wrap { min-height: 221px; }
+}
+
+@media (max-width: 420px) {
+    .lumen-table-wrap { min-height: 359px; }
+}
+
 .lumen-release-table { width: 100%; min-width: 720px; border-collapse: collapse; }
 .lumen-release-table th, .lumen-release-table td { padding: .9rem 1rem; border-bottom: 1px solid var(--lumen-line); text-align: left; vertical-align: top; }
 .lumen-release-table th { color: var(--lumen-muted); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; }
