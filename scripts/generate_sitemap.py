@@ -118,7 +118,8 @@ def build(today: str | None = None) -> tuple[str, list[str], list[str]]:
     today = today or dt.date.today().isoformat()
     text = SITEMAP.read_text(encoding="utf-8") if SITEMAP.exists() else (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n</urlset>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n</urlset>\n'
     )
     existing: dict[str, str] = {}
     for block in URL_RE.findall(text):
@@ -146,7 +147,8 @@ def build(today: str | None = None) -> tuple[str, list[str], list[str]]:
     body.extend(entry_for(rel, today) for rel in added)
     out = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
         + "\n".join(body)
         + "\n</urlset>\n"
     )
