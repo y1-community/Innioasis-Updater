@@ -395,6 +395,10 @@
     function directDownload(href, saveName, label) {
         var link = document.createElement("a");
         link.href = href;
+        /* Mark it so the delegated handler below does not claim this anchor by
+           accident: without the marker a release URL ending in .zip is
+           intercepted again and the fallback re-enters itself forever. */
+        link.setAttribute("data-direct-download", "1");
         if (saveName) link.download = saveName;
         link.rel = "noopener";
         document.body.appendChild(link);
@@ -449,6 +453,7 @@
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
         if (!link || link.hasAttribute("data-save-as") || link.target) return;
+        if (link.hasAttribute("data-direct-download")) return;
 
         var href = link.getAttribute("href") || "";
         var declaredSource = link.getAttribute("data-zip-url") || "";

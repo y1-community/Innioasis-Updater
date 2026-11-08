@@ -1322,6 +1322,9 @@
         function startDirectDownload(href, saveName, osLabel) {
             var link = document.createElement("a");
             link.href = href;
+            /* Keep this anchor out of the table's delegated download handler,
+               or a .zip release URL would be intercepted again on its way out. */
+            link.setAttribute("data-direct-download", "1");
             if (saveName) link.download = saveName;
             link.rel = "noopener";
             document.body.appendChild(link);
@@ -2317,7 +2320,7 @@
 
         table.addEventListener("click", function (event) {
             var btn = event.target.closest(".lumen-zip-download-button, .lumen-zip-text-link, a[data-zip-url]");
-            if (!btn) return;
+            if (!btn || btn.hasAttribute("data-direct-download")) return;
             event.preventDefault();
             var zipUrl = btn.getAttribute("data-zip-url");
             var zipName = btn.getAttribute("data-zip-name") || "rom.zip";
