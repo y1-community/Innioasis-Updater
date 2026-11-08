@@ -1170,7 +1170,9 @@
         var meta = document.querySelector('meta[name="innioasis-download-proxy"]');
         var value = meta ? (meta.getAttribute("content") || "").trim() : "";
         if (value) return value;
-        if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return "/download-proxy";
+        /* The site owns this path; probe it before use so an undeployed
+           Worker still falls back to the direct release URL. */
+        if (/^https?:$/.test(window.location.protocol)) return "/download-proxy";
         return "";
     }
 
