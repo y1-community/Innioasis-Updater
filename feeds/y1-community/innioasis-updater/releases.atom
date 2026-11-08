@@ -13,9 +13,9 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/Innioasis-Updater/releases/tag/2.5.3"/>
     <innioasis:tag_name>2.5.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="319339000" type="application/vnd.appimage" innioasis:download_count="49" innioasis:asset_id="719980052"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="148283609" type="application/x-msdownload" innioasis:download_count="79" innioasis:asset_id="722043025"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119863064" type="application/x-diskcopy" innioasis:download_count="55" innioasis:asset_id="722096166"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="319339000" type="application/vnd.appimage" innioasis:download_count="60" innioasis:asset_id="719980052"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="148283609" type="application/x-msdownload" innioasis:download_count="116" innioasis:asset_id="722043025"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119787348" type="application/x-apple-diskimage" innioasis:download_count="24" innioasis:asset_id="724733963"/>
     <content type="text">In this release changes include:
 
 Keep Settings and Media - Retains your player&#x27;s settings and personal files/media where the firmware you&#x27;re installing is compatible with your existing firmware*
@@ -48,7 +48,7 @@ Support for the full Innioasis and Timmkoo product line in Updater CE and Firmwa
     <innioasis:tag_name>2.0.7</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.7/installer.exe" title="installer.exe" length="173282764" type="application/x-msdownload" innioasis:download_count="708" innioasis:asset_id="688792855"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.7/UpdaterCE.AppImage" title="UpdaterCE.AppImage" length="300337656" type="application/octet-stream" innioasis:download_count="195" innioasis:asset_id="688949138"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.7/UpdaterCE.AppImage" title="UpdaterCE.AppImage" length="300337656" type="application/octet-stream" innioasis:download_count="196" innioasis:asset_id="688949138"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.7/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="154209498" type="application/x-diskcopy" innioasis:download_count="276" innioasis:asset_id="689639023"/>
     <content type="text">New rewritten Updater with features including:
 
@@ -292,7 +292,7 @@ curl -fsSL https://innioasis.app/run_linux.sh | bash
     <innioasis:tag_name>1.9.10</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.10/run_linux.sh" title="run_linux.sh" length="91280" type="text/x-shellscript" innioasis:download_count="179" innioasis:asset_id="478780314"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.10/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="1389069" type="application/octet-stream" innioasis:download_count="270" innioasis:asset_id="478781742"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.10/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="1389069" type="application/octet-stream" innioasis:download_count="271" innioasis:asset_id="478781742"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/1.9.10/installer.exe" title="installer.exe" length="264870688" type="application/x-msdownload" innioasis:download_count="1293" innioasis:asset_id="478782149"/>
     <content type="text">**This release improves datestamp handling on firmware versions**
 
