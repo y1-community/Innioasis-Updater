@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
   <meta charset="utf-8">
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
@@ -61,6 +68,10 @@
         <div class="lumen-field" id="lumen-type-field"><label for="lumen-type-filter">Device type</label><select id="lumen-type-filter" aria-describedby="type-help"><option value="A" selected>Type A</option><option value="B">Type B</option></select><span id="type-help" class="lumen-field-help">Y1 only. Type A players shipped with software 2.0.0 or later; Type B players shipped with an earlier version.</span></div>
         <div class="lumen-field"><label for="lumen-software-filter">Software</label><select id="lumen-software-filter" aria-describedby="software-help"></select><span id="software-help" class="lumen-field-help">Choose the software you want to run.</span></div>
         <div class="lumen-field lumen-field--check"><label class="lumen-checkbox" for="lumen-nightly-filter"><input type="checkbox" id="lumen-nightly-filter" aria-describedby="nightly-help"><span>Show nightly builds</span></label><span class="lumen-field-help" id="nightly-help">Show preview and nightly builds alongside stable releases.</span></div>
+      </div>
+      <div id="lumen-legacy-warning" class="lumen-warning" role="alert" hidden>
+        <strong data-legacy-warning-title></strong>
+        <p data-legacy-warning-body style="margin: 0.35rem 0 0;"></p>
       </div>
       <div id="lumen-context-notice" class="lumen-context-notice-slot" aria-live="polite" aria-label="Community notice"></div>
       <p class="lumen-release-status" id="lumen-release-status" role="status" aria-live="polite">Loading Original Software releases…</p>

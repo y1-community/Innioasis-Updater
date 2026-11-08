@@ -1150,6 +1150,12 @@ def markdown_to_html(markdown: str, ctx: dict | None = None) -> str:
 HEAD = """<!doctype html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
   <meta charset="utf-8">
   <meta name="author" content="Ryan Specter &amp; Innioasis Community">
   <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
@@ -1410,6 +1416,43 @@ def release_downloads_html(item: dict, release: dict, portable: list[tuple[dict,
     )
 
 
+def release_compat_warning(item: dict, release: dict) -> str:
+    """Warn on a static release page that the build is hidden by the legacy filter."""
+    if str(item.get("model") or "").upper() != "Y1":
+        return ""
+    slug = str(item.get("slug") or "")
+    label = (str(release.get("tag_name") or "") + " " + str(release.get("name") or "")).lower()
+    if "type-b" in label or "type_b" in label:
+        return ""
+    version = release_version(release)
+    match = re.match(r"^v?(\d+(?:\.\d+)*)$", version.strip(), re.I)
+    if not match:
+        return ""
+    parts = tuple(int(part) for part in match.group(1).split("."))
+
+    def below(floor):
+        width = max(len(parts), len(floor))
+        return parts + (0,) * (width - len(parts)) < floor + (0,) * (width - len(floor))
+
+    if slug == "rockbox-y1" and below((0, 5)):
+        return (
+            '<div class="lumen-warning lumen-release-compat-warning" role="note">'
+            "<strong>Rockbox Compatibility Warning</strong>"
+            "<p>This Rockbox-Y1 release predates 0.5. It is not compatible with Y1 units sold "
+            "after March 2026 with Innioasis OS 3.0.7 pre-installed; flashing it on those devices "
+            "will prevent booting.</p></div>"
+        )
+    if slug.startswith("original-") and below((3, 0, 7)):
+        return (
+            '<div class="lumen-warning lumen-release-compat-warning" role="note">'
+            "<strong>Original Software Compatibility Warning</strong>"
+            "<p>This Original Software release predates 3.0.7. It is not compatible with Y1 units "
+            "sold with Innioasis OS 3.0.7; flashing it on those units will prevent booting until a "
+            "newer version is reinstalled.</p></div>"
+        )
+    return ""
+
+
 def release_page(item: dict, release: dict, siblings: list[dict], portable: list[tuple[dict, list[dict]]]) -> str:
     up = "../../"
     name = software_label(item)
@@ -1501,6 +1544,7 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
         '<a class="lumen-button" href="%sfirmware.html?model=%s&amp;software=%s">Firmware Downloads</a>'
         % (up, esc(model), esc(item["slug"])),
         "</div></header>",
+        release_compat_warning(item, release),
         release_downloads_html(item, release, portable),
         '<article class="lumen-doc-body lumen-release-body">%s</article>' % notes,
     ]

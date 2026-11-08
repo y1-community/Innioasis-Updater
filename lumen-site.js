@@ -142,13 +142,21 @@
             version: [0, 5],
             label: "Show pre-0.5 Rockbox / nightly builds",
             help: "Rockbox Y1 builds older than 0.5 and nightly builds are hidden by default. Tick to include them.",
-            hint: "Tick the pre-0.5 Rockbox / nightly-builds option to see older builds"
+            hint: "Tick the pre-0.5 Rockbox / nightly-builds option to see older builds",
+            warning: {
+                title: "Rockbox Compatibility Warning",
+                body: "Releases of Rockbox-Y1 before 0.5 are not compatible with Y1 units sold after March 2026 with Innioasis OS 3.0.7 pre-installed.\n\nFlashing an older build on these devices will prevent booting.\n\nAre you sure you want to show older Rockbox builds?"
+            }
         },
         stockY1: {
             version: [3, 0, 7],
             label: "Show pre-3.0.7 stock firmware / nightly builds",
             help: "Y1 stock firmware older than 3.0.7 and nightly builds are hidden by default. Tick to include them.",
-            hint: "Tick the pre-3.0.7 stock firmware / nightly-builds option to see older builds"
+            hint: "Tick the pre-3.0.7 stock firmware / nightly-builds option to see older builds",
+            warning: {
+                title: "Original Software Compatibility Warning",
+                body: "Original Software releases older than 3.0.7 are not compatible with Y1 units sold with Innioasis OS 3.0.7. Flashing an older build on these units will prevent them from booting until a newer version is reinstalled.\n\nAre you sure you want to show Original Software releases older than 3.0.7?"
+            }
         }
     };
 
@@ -1474,16 +1482,48 @@
             var copy = (function (first) { return legacyFilterFor(first, typeForItem(first)); })(matchingItems()[0] || null) || GENERIC_FILTER_COPY;
             if (nightlyCopy && nightlyCopy.textContent !== copy.label) nightlyCopy.textContent = copy.label;
             if (nightlyHelp && nightlyHelp.textContent !== copy.help) nightlyHelp.textContent = copy.help;
+            syncLegacyWarning();
+        }
+        /* Keep the compatibility warning visible for as long as the filter
+           that reveals legacy builds is on, including ?nightly=1 deep links. */
+        function syncLegacyWarning() {
+            var box = document.getElementById("lumen-legacy-warning");
+            if (!box) return;
+            var first = matchingItems()[0] || null;
+            var legacy = legacyFilterFor(first, typeForItem(first));
+            var warning = legacy && legacy.warning;
+            if (!showNightly || !warning) {
+                box.hidden = true;
+                return;
+            }
+            var title = box.querySelector("[data-legacy-warning-title]");
+            var body = box.querySelector("[data-legacy-warning-body]");
+            if (title) title.textContent = warning.title;
+            if (body) body.textContent = warning.body.replace(/\n\n/g, " ");
+            box.hidden = false;
         }
         if (nightly) {
             nightly.checked = showNightly;
             nightly.addEventListener("change", function () {
+                if (nightly.checked) {
+                    var first = matchingItems()[0] || null;
+                    var legacy = legacyFilterFor(first, typeForItem(first));
+                    if (legacy && legacy.warning && !window.confirm(legacy.warning.body)) {
+                        nightly.checked = false;
+                        showNightly = false;
+                        render();
+                        syncUrl();
+                        syncLegacyWarning();
+                        return;
+                    }
+                }
                 showNightly = nightly.checked;
                 if (!window.INNIOASIS_PRIVACY || window.INNIOASIS_PRIVACY.allows("nightly")) {
                     try { localStorage.setItem("innioasis-show-nightly", showNightly ? "1" : "0"); } catch (_) {}
                 }
                 render();
                 syncUrl();
+                syncLegacyWarning();
             });
             /* Saving the privacy panel must reach this page: once the visitor
                withdraws the nightly preference the remembered filter is gone,
@@ -1498,6 +1538,7 @@
                 nightly.checked = false;
                 render();
                 syncUrl();
+                syncLegacyWarning();
             });
         }
         /* Blocked builds come from the Updater app's release_blocklist.csv.

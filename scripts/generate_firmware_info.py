@@ -321,6 +321,12 @@ def readme_page(entry: dict, markdown_html: str, snapshot: dict, readme_name: st
 def page_document(title: str, description: str, canonical: str, main: str, slug: str) -> str:
     return (
         '<!doctype html>\n<html lang="en"><head>\n'
+        '<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>\n'
+        '<script>\n'
+        '  window.dataLayer = window.dataLayer || [];\n'
+        '  function gtag(){dataLayer.push(arguments);}\n'
+        "  gtag('js', new Date());\n"
+        '</script>\n'
         '  <meta charset="utf-8">\n'
         '  <meta name="author" content="Ryan Specter &amp; Innioasis Community">\n'
         '  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">\n'
