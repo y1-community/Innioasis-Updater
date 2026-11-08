@@ -69,6 +69,14 @@ REJECT_FRAGMENTS = (
 )
 
 
+# nav.js and lumen-site.js build their markup by string concatenation, so their
+# copy sits in literals such as '">Installation Guide</a>'. Those fail the prose
+# test on the tag punctuation alone, which is how the whole navigation and
+# footer stayed English while the page body translated. The visible text runs
+# are tested on their own instead.
+MARKUP_RUN_RE = re.compile(r">([^<>]{2,240})<")
+
+
 def looks_like_prose(value: str) -> bool:
     text = value.strip()
     if len(text) < 6 or len(text) > 220:
@@ -222,9 +230,13 @@ KNOWN_TOOLBAR_STRINGS = [
 def collect(source: str, origin: str, found: dict[str, list[str]]) -> None:
     for match in LITERAL_RE.finditer(source):
         value = match.group(2)
-        if not looks_like_prose(value):
+        if looks_like_prose(value):
+            found.setdefault(value.strip(), []).append(origin)
             continue
-        found.setdefault(value.strip(), []).append(origin)
+        for run in MARKUP_RUN_RE.findall(value):
+            run = run.strip()
+            if looks_like_prose(run):
+                found.setdefault(run, []).append(origin)
 
 
 def main() -> int:

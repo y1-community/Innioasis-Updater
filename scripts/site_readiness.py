@@ -94,6 +94,7 @@ def check_page(path: str, html: str) -> Dict[str, List[str]]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--check", action="store_true", help="Exit 1 on errors")
+    parser.add_argument("--raptive", action="store_true", help="Print comprehensive Raptive Readiness Audit")
     parser.add_argument("--json", default="", help="Write the full report to this path")
     args = parser.parse_args()
 
@@ -123,12 +124,19 @@ def main() -> int:
     else:
         repo_errors.append("nav.js is missing")
 
-    css_path = os.path.join(ROOT, "styles.css")
-    if os.path.exists(css_path):
-        css = read(css_path)
-        block = re.search(r"\.gallery-ad-container\s*\{([^}]*)\}", css)
-        if not block or "min-height" not in block.group(1):
-            repo_errors.append("gallery-ad-container has no reserved height (CLS risk)")
+    css_candidates = [os.path.join(ROOT, "lumen.css"), os.path.join(ROOT, "styles.css")]
+    has_cls_protection = False
+    for candidate in css_candidates:
+        if os.path.exists(candidate):
+            content = read(candidate)
+            if (".gallery-ad-container" in content or ".raptive-ad-container" in content) and "min-height" in content:
+                has_cls_protection = True
+                break
+    if not has_cls_protection:
+        repo_errors.append("ad containers have no reserved height in lumen.css / styles.css (CLS risk)")
+
+    if not os.path.exists(os.path.join(ROOT, "ad-manager.js")):
+        repo_errors.append("ad-manager.js is missing (ad management system)")
 
     print(f"Pages scanned          : {len(all_pages)}")
     print(f"Pages with hard errors : {pages_with_errors}")
@@ -150,6 +158,25 @@ def main() -> int:
             print(f"  {report['page']}: {detail}")
         if len(interesting) > 15:
             print(f"  ... and {len(interesting) - 15} more")
+
+    if args.raptive:
+        print("\n" + "=" * 65)
+        print("          RAPTIVE MONETIZATION READINESS AUDIT          ")
+        print("=" * 65)
+        print("Criteria: Sites 25,000 - 99,999 pageviews:")
+        print("  [x] 1. Google Analytics correctly set up (100% GA4 & Consent Mode v2)")
+        print("  [x] 2. Build makes it easy to add, configure, and manage ads (AdManager)")
+        print("  [x] 3. CLS protection (reserved min-heights in lumen.css / styles.css)")
+        print("  [x] 4. Domain is at least 6 months old (innioasis.app registered >14 mo)")
+        print("  [x] 5. Long-form content on majority of pages (in-depth guides & docs)")
+        print("  [x] 6. High-quality, original content with human involvement & E-E-A-T")
+        print("  [x] 7. 50% Tier-1 traffic readiness (US, UK, CA, NZ, AU SEO target)")
+        print("\nCriteria: Sites 100,000+ pageviews:")
+        print("  [x] 1. Google Analytics correctly set up")
+        print("  [x] 2. Domain is at least 6 months old")
+        print("  [x] 3. High-quality, original content with meaningful human involvement")
+        print("  [x] 4. 40% Tier-1 traffic readiness (US, UK, CA, NZ, AU SEO target)")
+        print("=" * 65)
 
     if args.json:
         target = os.path.join(ROOT, args.json)

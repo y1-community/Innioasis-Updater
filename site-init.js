@@ -293,6 +293,15 @@
         }
     }
 
+    function loadAdManager() {
+        if (global.AdManager || document.getElementById("raptive-ad-manager-script")) return;
+        var s = document.createElement("script");
+        s.id = "raptive-ad-manager-script";
+        s.src = "/ad-manager.js?v=20261108raptive";
+        s.defer = true;
+        (document.head || document.documentElement).appendChild(s);
+    }
+
     async function init() {
         if (document.documentElement) {
             document.documentElement.classList.add("site-themes-html");
@@ -305,6 +314,7 @@
             document.body.classList.add("site-dock-mode");
             addThemeFallback();
         }
+        loadAdManager();
     }
 
     if (document.readyState === "loading") {

@@ -58,7 +58,20 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
     )
     classes = "site-themes-app install-page" + ((" " + body_class) if body_class else "")
     return f"""<!doctype html>
-<html lang="en"><head><script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<html lang="en"><head><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('consent', 'default', {{
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  }});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){{dataLayer.push(arguments);}}

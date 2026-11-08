@@ -21,6 +21,19 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 
 CONTAINER = os.environ.get("INNIOASIS_GTM_ID", "GTM-TNDGC37L")
 SNIPPET = (
+    '<script>\n'
+    '  window.dataLayer = window.dataLayer || [];\n'
+    '  function gtag(){dataLayer.push(arguments);}\n'
+    '  gtag(\'consent\', \'default\', {\n'
+    '    ad_storage: \'denied\',\n'
+    '    ad_user_data: \'denied\',\n'
+    '    ad_personalization: \'denied\',\n'
+    '    analytics_storage: \'granted\',\n'
+    '    functionality_storage: \'granted\',\n'
+    '    security_storage: \'granted\',\n'
+    '    wait_for_update: 500\n'
+    '  });\n'
+    '</script>\n'
     '<script async src="https://www.googletagmanager.com/gtm.js?id=' + CONTAINER + '"></script>\n'
     '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
     'gtag("js",new Date());</script>\n'

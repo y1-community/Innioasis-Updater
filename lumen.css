@@ -789,3 +789,49 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 .lumen-release-table tbody tr.lumen-row-new{animation:lumen-release-row-in .45s ease-out both}
 @keyframes lumen-release-row-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){.lumen-release-table tbody tr.lumen-row-new{animation:none}}
+
+/* Raptive & Gallery Ad Placement Containers (Strict CLS Protection) */
+.gallery-ad-container,
+.raptive-ad-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  box-sizing: border-box;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+  transition: min-height 0.2s ease;
+  text-align: center;
+}
+
+.gallery-ad--top,
+.raptive-ad--leaderboard {
+  min-height: 90px;
+  margin: 16px auto;
+}
+
+.gallery-ad--infeed,
+.raptive-ad--incontent {
+  min-height: 250px;
+  margin: 20px auto;
+}
+
+.gallery-ad--bottom,
+.raptive-ad--bottom {
+  min-height: 90px;
+  margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+  .gallery-ad--top,
+  .gallery-ad--bottom,
+  .raptive-ad--leaderboard {
+    min-height: 50px;
+  }
+  .gallery-ad--infeed,
+  .raptive-ad--incontent {
+    min-height: 250px;
+  }
+}
+
