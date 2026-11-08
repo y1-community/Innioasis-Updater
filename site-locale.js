@@ -1599,7 +1599,9 @@
                reports ready. */
             global.addEventListener("y1-dock-slot-ready", function () {
                 mountToggle();
-                if (bindExistingToggle()) applyLanguage();
+                bindExistingToggle();
+                updateDockLabel();
+                applyLanguage();
             });
             document.addEventListener("click", function (event) {
                 var trigger = event.target.closest && event.target.closest("[data-locale-open]");
@@ -1614,10 +1616,112 @@
             }, true);
             document.documentElement.setAttribute("data-locale-ready", "1");
             trackPageView();
+            offerLanguageSwitchIfNeeded();
         }).catch(function () {
             /* A failed boot must leave an English page, never a blank one. */
             document.documentElement.setAttribute("data-locale-ready", "1");
         });
+    }
+
+    var OFFER_COPY = {
+        de: { prompt: "Diese Seite ist auch auf Deutsch verfügbar.", switchBtn: "Zu Deutsch wechseln" },
+        fr: { prompt: "Cette page est également disponible en français.", switchBtn: "Passer en français" },
+        es: { prompt: "Esta página también está disponible en español.", switchBtn: "Cambiar a español" },
+        it: { prompt: "Questa pagina è disponibile anche in italiano.", switchBtn: "Passa all'italiano" },
+        ja: { prompt: "このページは日本語でもご覧いただけます。", switchBtn: "日本語に切り替える" },
+        ko: { prompt: "이ページ는 한국어로도 제공됩니다.", switchBtn: "한국어로 전환" },
+        zh: { prompt: "此页面也提供中文版本。", switchBtn: "切换至中文" },
+        "zh-cn": { prompt: "此页面也提供简体中文版本。", switchBtn: "切换至中文" },
+        "zh-tw": { prompt: "此頁面亦提供繁體中文版本。", switchBtn: "切換至繁體中文" },
+        pt: { prompt: "Esta página também está disponível em português.", switchBtn: "Mudar para português" },
+        "pt-br": { prompt: "Esta página também está disponível em português.", switchBtn: "Mudar para português" },
+        ru: { prompt: "Эта страница также доступна на русском языке.", switchBtn: "Переключить на русский" },
+        pl: { prompt: "Ta strona jest dostępna również w języku polskim.", switchBtn: "Przełącz na polski" },
+        nl: { prompt: "Deze pagina is ook beschikbaar in het Nederlands.", switchBtn: "Overschakelen naar Nederlands" },
+        tr: { prompt: "Bu sayfa Türkçe olarak da mevcuttur.", switchBtn: "Türkçe'ye geç" },
+        ar: { prompt: "هذه الصفحة متاحة أيضًا باللغة العربية.", switchBtn: "التبديل إلى العربية" },
+        uk: { prompt: "Ця сторінка також доступна українською мовою.", switchBtn: "Перейти на українську" }
+    };
+
+    function offerLanguageSwitchIfNeeded() {
+        try {
+            var map = localeIndex();
+            var pageLang = pathLocale() || (document.documentElement && document.documentElement.lang) || "en";
+            var browserLang = matchBrowserLocale(map);
+            if (!browserLang) return;
+            var browserBase = baseOfLocale(browserLang);
+            var pageBase = baseOfLocale(pageLang);
+            if (browserBase === pageBase) return;
+
+            var dismissed = null;
+            try { dismissed = sessionStorage.getItem("innioasis-offer-dismissed"); } catch (_) {}
+            if (dismissed === browserLang || dismissed === browserBase || dismissed === "all") return;
+
+            /* If the visitor explicitly set a preference in local storage that matches this page, respect it */
+            var storedPref = normalizeTag(readStorage(STORAGE_LOCALE));
+            if (storedPref && baseOfLocale(storedPref) === pageBase) return;
+
+            var copyKey = normalizeTag(browserLang);
+            var copy = OFFER_COPY[copyKey] || OFFER_COPY[copyKey.split("-")[0]];
+            if (!copy) {
+                var langName = labelFor(browserLang) || browserLang;
+                copy = {
+                    prompt: "This page is available in " + langName + ".",
+                    switchBtn: "Switch to " + langName
+                };
+            }
+
+            if (document.getElementById("site-locale-offer")) return;
+            var banner = document.createElement("div");
+            banner.id = "site-locale-offer";
+            banner.className = "site-locale-offer";
+            banner.setAttribute("role", "status");
+            banner.setAttribute("aria-live", "polite");
+
+            var icon = document.createElement("span");
+            icon.className = "site-locale-offer-icon";
+            icon.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>';
+
+            var text = document.createElement("span");
+            text.className = "site-locale-offer-text";
+            text.textContent = copy.prompt;
+
+            var actions = document.createElement("div");
+            actions.className = "site-locale-offer-actions";
+
+            var switchBtn = document.createElement("button");
+            switchBtn.type = "button";
+            switchBtn.className = "site-locale-offer-btn site-locale-offer-btn--switch";
+            switchBtn.textContent = copy.switchBtn;
+            switchBtn.addEventListener("click", function () {
+                try { sessionStorage.setItem("innioasis-offer-dismissed", "all"); } catch (_) {}
+                banner.classList.remove("is-visible");
+                setTimeout(function () { banner.remove(); }, 300);
+                setLocale(browserLang);
+            });
+
+            var dismissBtn = document.createElement("button");
+            dismissBtn.type = "button";
+            dismissBtn.className = "site-locale-offer-btn site-locale-offer-btn--dismiss";
+            dismissBtn.setAttribute("aria-label", "Dismiss");
+            dismissBtn.innerHTML = "&times;";
+            dismissBtn.addEventListener("click", function () {
+                try { sessionStorage.setItem("innioasis-offer-dismissed", browserLang); } catch (_) {}
+                banner.classList.remove("is-visible");
+                setTimeout(function () { banner.remove(); }, 300);
+            });
+
+            actions.appendChild(switchBtn);
+            actions.appendChild(dismissBtn);
+            banner.appendChild(icon);
+            banner.appendChild(text);
+            banner.appendChild(actions);
+
+            document.body.appendChild(banner);
+            requestAnimationFrame(function () {
+                banner.classList.add("is-visible");
+            });
+        } catch (_) {}
     }
 
     function baseOfLocale(code) {
