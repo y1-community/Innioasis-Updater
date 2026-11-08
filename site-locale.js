@@ -238,6 +238,13 @@
             if (map[requested]) return map[requested].code;
             if (/^[a-z]{2,3}(-[a-z0-9]{2,4})?$/.test(requested)) return requested;
         }
+        var fromHtml = normalizeTag((document.documentElement && (document.documentElement.getAttribute("data-locale") || document.documentElement.lang)) || "");
+        if (fromHtml && fromHtml !== "en") {
+            if (map[fromHtml]) return map[fromHtml].code;
+            if (fromHtml === "jp" && map["ja"]) return map["ja"].code;
+            if (fromHtml === "zh" && map["zh-cn"]) return map["zh-cn"].code;
+            if (/^[a-z]{2,3}(-[a-z0-9]{2,4})?$/.test(fromHtml)) return fromHtml;
+        }
         var fromPath = pathLocale();
         if (fromPath) return fromPath;
         var stored = normalizeTag(readStorage(STORAGE_LOCALE));
@@ -837,9 +844,7 @@
         root.setAttribute("dir", state.dir);
         root.setAttribute("data-locale", state.locale);
         /* Keep the dock label in the reader's language, wherever it is. */
-        Array.prototype.forEach.call(document.querySelectorAll("[data-locale-open] .site-locale-toggle-label"), function (label) {
-            label.textContent = labelFor(state.locale);
-        });
+        updateDockLabel();
 
         if (state.locale === DEFAULT_LOCALE && !Object.keys(state.regionCopy).length) {
             translateHead();
@@ -1208,11 +1213,67 @@
         else closePanel();
     }
 
+    var COMMON_NATIVE_NAMES = {
+        "en": "English",
+        "en-gb": "English (UK)",
+        "en-us": "English (US)",
+        "de": "Deutsch",
+        "ja": "日本語",
+        "jp": "日本語",
+        "es": "Español",
+        "fr": "Français",
+        "it": "Italiano",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "zh-cn": "简体中文",
+        "zh-tw": "繁體中文",
+        "zh": "简体中文",
+        "ko": "한국어",
+        "kr": "한국어",
+        "ar": "العربية",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "vi": "Tiếng Việt",
+        "th": "ไทย",
+        "id": "Bahasa Indonesia",
+        "he": "עברית",
+        "hi": "हिन्दी",
+        "cs": "Čeština",
+        "el": "Ελληνικά",
+        "sv": "Svenska",
+        "fa": "فارسی",
+        "da": "Dansk",
+        "fi": "Suomi",
+        "hu": "Magyar",
+        "no": "Norsk",
+        "ro": "Română"
+    };
+
     function labelFor(code) {
+        var clean = normalizeTag(code);
         for (var i = 0; i < state.locales.length; i += 1) {
-            if (state.locales[i].code === code) return state.locales[i].native || state.locales[i].name;
+            if (normalizeTag(state.locales[i].code) === clean) {
+                return state.locales[i].native || state.locales[i].name;
+            }
         }
+        if (COMMON_NATIVE_NAMES[clean]) return COMMON_NATIVE_NAMES[clean];
+        var base = clean.split("-")[0];
+        if (COMMON_NATIVE_NAMES[base]) return COMMON_NATIVE_NAMES[base];
         return "English";
+    }
+
+    function updateDockLabel() {
+        var text = labelFor(state.locale);
+        Array.prototype.forEach.call(document.querySelectorAll("[data-locale-open] .site-locale-toggle-label"), function (label) {
+            label.textContent = text;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll("[data-locale-open]"), function (button) {
+            button.title = t("language");
+            button.setAttribute("aria-label", t("language") + ": " + text);
+        });
     }
 
     /* GA4 / GTM. Every page already ships the Google Tag Manager container;
@@ -1495,6 +1556,9 @@
         }).then(function () {
             state.region = resolveRegion();
             state.locale = resolveLocale();
+            writeStorage(STORAGE_LOCALE, state.locale);
+            setSharedCookie(STORAGE_LOCALE, state.locale);
+            updateDockLabel();
             var map = localeIndex();
             var entry = map[normalizeTag(state.locale)] || {};
             state.dir = entry.dir || "ltr";
