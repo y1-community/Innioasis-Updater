@@ -326,7 +326,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
           "size": 30612,
-          "download_count": 1187,
+          "download_count": 1190,
           "content_type": "image/jpeg"
         }
       ]
@@ -363,7 +363,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 881,
+          "download_count": 884,
           "content_type": "image/jpeg"
         }
       ]
@@ -392,7 +392,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
           "size": 30612,
-          "download_count": 682,
+          "download_count": 684,
           "content_type": "image/jpeg"
         }
       ]
@@ -413,7 +413,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
           "size": 250125316,
-          "download_count": 7814,
+          "download_count": 7818,
           "content_type": "application/zip"
         },
         {
@@ -421,7 +421,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 3206,
+          "download_count": 3211,
           "content_type": "image/jpeg"
         }
       ]
@@ -450,7 +450,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 2951,
+          "download_count": 2955,
           "content_type": "image/jpeg"
         }
       ]
@@ -8438,7 +8438,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png",
           "size": 12952,
-          "download_count": 74,
+          "download_count": 75,
           "content_type": "image/png"
         }
       ]
@@ -8506,7 +8506,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom.zip",
           "size": 588795445,
-          "download_count": 356,
+          "download_count": 359,
           "content_type": "application/zip"
         },
         {
@@ -9821,7 +9821,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-v2.5-release-square.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
           "size": 1585171,
-          "download_count": 327,
+          "download_count": 328,
           "content_type": "image/png"
         },
         {
@@ -9829,7 +9829,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
           "size": 361644736,
-          "download_count": 717,
+          "download_count": 719,
           "content_type": "application/zip"
         },
         {
@@ -10015,7 +10015,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/rom_y2.zip",
           "size": 366781486,
-          "download_count": 685,
+          "download_count": 686,
           "content_type": "application/zip"
         },
         {
@@ -10194,7 +10194,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom_y2.zip",
           "size": 635849224,
-          "download_count": 192,
+          "download_count": 193,
           "content_type": "application/zip"
         }
       ]
@@ -10458,7 +10458,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/app-release.apk",
           "size": 11915313,
-          "download_count": 6,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10466,7 +10466,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom.zip",
           "size": 454762803,
-          "download_count": 11,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -10474,7 +10474,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom_type_b.zip",
           "size": 406224357,
-          "download_count": 6,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10495,7 +10495,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/app-release.apk",
           "size": 11914912,
-          "download_count": 6,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10503,7 +10503,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom.zip",
           "size": 454750046,
-          "download_count": 8,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -10511,7 +10511,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom_type_b.zip",
           "size": 406555908,
-          "download_count": 7,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -10532,7 +10532,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/app-release.apk",
           "size": 11914613,
-          "download_count": 6,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10540,7 +10540,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom.zip",
           "size": 454766683,
-          "download_count": 8,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -10548,7 +10548,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom_type_b.zip",
           "size": 411180005,
-          "download_count": 6,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -13426,7 +13426,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Classy-20261107-v2.apk",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/Classy-20261107-v2.apk",
           "size": 24544653,
-          "download_count": 4,
+          "download_count": 5,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -13434,7 +13434,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "index.html",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/index.html",
           "size": 37652,
-          "download_count": 3,
+          "download_count": 4,
           "content_type": "text/html"
         },
         {
@@ -13442,7 +13442,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom.zip",
           "size": 439947905,
-          "download_count": 3,
+          "download_count": 4,
           "content_type": "application/zip"
         },
         {
@@ -13450,7 +13450,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_type_b.zip",
           "size": 436987850,
-          "download_count": 2,
+          "download_count": 3,
           "content_type": "application/zip"
         },
         {
@@ -13458,7 +13458,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y1_type_a.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y1_type_a.zip",
           "size": 439947905,
-          "download_count": 2,
+          "download_count": 3,
           "content_type": "application/zip"
         },
         {
@@ -13466,7 +13466,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y1_type_b.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y1_type_b.zip",
           "size": 436987850,
-          "download_count": 3,
+          "download_count": 4,
           "content_type": "application/zip"
         },
         {
@@ -13474,7 +13474,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip",
           "size": 482216428,
-          "download_count": 23,
+          "download_count": 24,
           "content_type": "application/zip"
         },
         {
@@ -13482,7 +13482,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.txt",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/SHA256SUMS.txt",
           "size": 489,
-          "download_count": 3,
+          "download_count": 4,
           "content_type": "text/plain"
         },
         {
@@ -13490,7 +13490,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.json",
           "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/update.json",
           "size": 288,
-          "download_count": 8,
+          "download_count": 9,
           "content_type": "application/json"
         }
       ]
@@ -14776,7 +14776,7 @@ window.INNIOASIS_RELEASE_ICONS = {
 
 window.INNIOASIS_REPO_STATS = {
   "classyplayer/classy": {
-    "downloads": 1933,
+    "downloads": 1942,
     "forks": 1,
     "release_count": 17,
     "stars": 9,
@@ -14797,7 +14797,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-02T14:49:32Z"
   },
   "jarvissax/rondo": {
-    "downloads": 444,
+    "downloads": 445,
     "forks": 1,
     "release_count": 3,
     "stars": 1,
@@ -14818,7 +14818,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-10-05T06:12:33Z"
   },
   "rockbox-y1/rockbox": {
-    "downloads": 51168,
+    "downloads": 51171,
     "forks": 22,
     "release_count": 29,
     "stars": 85,
@@ -14846,14 +14846,14 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-08T02:31:34Z"
   },
   "spycemagic/y2-rockbox": {
-    "downloads": 3386,
+    "downloads": 3390,
     "forks": 1,
     "release_count": 3,
     "stars": 15,
     "updated_at": "2026-11-08T02:25:53Z"
   },
   "thesolarproject/solar": {
-    "downloads": 3974,
+    "downloads": 3984,
     "forks": 9,
     "release_count": 48,
     "stars": 31,
@@ -14909,11 +14909,11 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-06T21:04:24Z"
   },
   "y1-community/innioasis-updater": {
-    "downloads": 68631,
+    "downloads": 68635,
     "forks": 13,
     "release_count": 74,
     "stars": 55,
-    "updated_at": "2026-11-08T22:14:41Z"
+    "updated_at": "2026-11-08T22:26:10Z"
   },
   "y1-community/koensayr-auto-mirror": {
     "downloads": 4,
@@ -15028,7 +15028,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-08T19:56:53Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 48278,
+    "downloads": 48299,
     "forks": 0,
     "release_count": 9,
     "stars": 6,
@@ -15070,7 +15070,7 @@ window.INNIOASIS_REPO_STATS = {
     "updated_at": "2026-11-08T20:03:07Z"
   },
   "y1-community/y2linux-mirror": {
-    "downloads": 927,
+    "downloads": 1002,
     "forks": 0,
     "release_count": 88,
     "stars": 0,
