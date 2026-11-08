@@ -60,12 +60,17 @@
         availability: {},
         regionCopy: {},
         applied: 0,
-        panel: null
+        panel: null,
+        copies: []
     };
 
     var observer = null;
     var applying = false;
     var baseUrl = "/";
+    /* Text this runtime already replaced from a catalog. Without this, the API
+       fallback would see German text, treat it as English source and translate
+       it a second time. */
+    var catalogApplied = typeof WeakSet === "function" ? new WeakSet() : null;
 
     /* ---------------------------------------------------------------- */
     /* Utilities                                                        */
@@ -293,6 +298,7 @@
             if (next !== root.nodeValue) {
                 root.nodeValue = next;
                 state.applied += 1;
+                if (catalogApplied) catalogApplied.add(root);
             }
             return;
         }
@@ -307,6 +313,7 @@
                 if (value !== node.nodeValue) {
                     node.nodeValue = value;
                     state.applied += 1;
+                    if (catalogApplied) catalogApplied.add(node);
                 }
             } else if (node.nodeType === 1) {
                 translateTree(node);
@@ -361,6 +368,7 @@
     var DYNAMIC_CONCURRENCY = 2;
     var dynamicCache = null;
     var dynamicSeen = typeof WeakSet === "function" ? new WeakSet() : null;
+    var dynamicAttrSeen = typeof WeakSet === "function" ? new WeakSet() : new Map();
     var dynamicQueue = [];
     var dynamicPending = {};
     var dynamicInFlight = 0;
@@ -515,8 +523,9 @@
             );
         }
         containers.forEach(function (container) {
-            if (container.getAttribute("data-i18n-dynamic-state") === "done") return;
-            container.setAttribute("data-i18n-dynamic-state", "loading");
+            var wholePage = container === document.body;
+            if (!wholePage && container.getAttribute("data-i18n-dynamic-state") === "done") return;
+            if (!wholePage) container.setAttribute("data-i18n-dynamic-state", "loading");
             if (typeof document.createTreeWalker !== "function") return;
             var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
                 acceptNode: function (node) {
@@ -526,9 +535,15 @@
                         return NodeFilter.FILTER_REJECT;
                     }
                     if (parent.closest("[data-i18n-skip]")) return NodeFilter.FILTER_REJECT;
+                    if (parent.closest("[data-locale-panel]")) return NodeFilter.FILTER_REJECT;
+                    if (catalogApplied && catalogApplied.has(node)) return NodeFilter.FILTER_REJECT;
                     if (dynamicSeen && dynamicSeen.has(node)) return NodeFilter.FILTER_REJECT;
                     var value = normalise(node.nodeValue);
                     if (value.length < 4 || !/[A-Za-z]{2}/.test(value)) return NodeFilter.FILTER_REJECT;
+                    /* Sizes, versions, paths and code are not prose. */
+                    if (/^\d+([.,]\d+)?\s?(MB|GB|KB|TB|MBps)$/i.test(value)) return NodeFilter.FILTER_REJECT;
+                    if (/^(https?:\/\/|mailto:|www\.)/i.test(value)) return NodeFilter.FILTER_REJECT;
+                    if (/^[\d\s.,:%+\-–—/()×]+$/.test(value)) return NodeFilter.FILTER_REJECT;
                     /* Already covered by the catalog translateTree pass. */
                     if (state.strings[value]) return NodeFilter.FILTER_REJECT;
                     return NodeFilter.FILTER_ACCEPT;
@@ -547,8 +562,42 @@
                     });
                 }(node));
             }
-            container.setAttribute("data-i18n-dynamic-state", "done");
+            if (!wholePage) container.setAttribute("data-i18n-dynamic-state", "done");
         });
+
+        /* Attribute copy (aria-label, title, alt, placeholder) needs the same
+           treatment; the catalog pass only handles what it was given. */
+        if (root.querySelectorAll) {
+            Array.prototype.forEach.call(
+                root.querySelectorAll("[title],[alt],[placeholder],[aria-label],[aria-description]"),
+                function (element) {
+                    if (element.closest("[data-locale-panel]")) return;
+                    if (element.closest("[data-i18n-skip]")) return;
+                    if (dynamicAttrSeen.has(element)) return;
+                    dynamicAttrSeen.add(element);
+                    ATTRIBUTES.forEach(function (name) {
+                        var raw = element.getAttribute(name);
+                        if (!raw) return;
+                        var text = normalise(raw);
+                        if (text.length < 4 || !/[A-Za-z]{2}/.test(text)) return;
+                        if (state.strings[text]) return;
+                        queueDynamicText(text, function (translated) {
+                            element.setAttribute(name, translated);
+                        });
+                    });
+                }
+            );
+        }
+    }
+
+    var dynamicScanTimer = null;
+
+    function scheduleDynamicScan() {
+        if (dynamicScanTimer) return;
+        dynamicScanTimer = setTimeout(function () {
+            dynamicScanTimer = null;
+            queueDynamic(document.body);
+        }, 400);
     }
 
     function applyLanguage() {
@@ -573,7 +622,7 @@
         } finally {
             applying = false;
         }
-        queueDynamic(document.body);
+        scheduleDynamicScan();
         translateHead();
     }
 
@@ -593,7 +642,7 @@
                             else if (added.nodeType === 1 && !added.hasAttribute("data-locale-panel")) {
                                 translateTree(added);
                                 /* Release notes, READMEs and notices land here. */
-                                queueDynamic(added);
+                                scheduleDynamicScan();
                             }
                         }
                     } else if (record.type === "characterData" && record.target) {
@@ -986,6 +1035,41 @@
         global.location.href = url.pathname + url.search + url.hash;
     }
 
+    /* Two routes to the same page in another language, because the hosting may
+       serve pre-rendered copies or only the English tree:
+         1. a copy at /<locale>/<page> when the build published one (best: the
+            text is translated in the HTML, with hreflang),
+         2. ?lang=<locale> on the current page otherwise (always available).
+       The copy list is written by prerender.py, so a site that never ran it
+       simply never sees route 1. */
+    function copyPathFor(code) {
+        var map = localeIndex();
+        var segments = global.location.pathname.split("/").filter(Boolean);
+        if (segments.length && map[normalizeTag(segments[0])]) segments.shift();
+        if (code === DEFAULT_LOCALE) return "/" + segments.join("/");
+        return "/" + code + (segments.length ? "/" + segments.join("/") : "/");
+    }
+
+    function hasCopy(code) {
+        if (!state.copies || !state.copies.length) return false;
+        return state.copies.indexOf(code) >= 0;
+    }
+
+    function goToCopy(code) {
+        var target = copyPathFor(code);
+        var fallback = function () { navigate({ lang: code, region: state.region }); };
+        try {
+            fetch(target, { method: "HEAD", cache: "no-store" })
+                .then(function (response) {
+                    if (response.ok) global.location.href = target + (global.location.hash || "");
+                    else fallback();
+                })
+                .catch(fallback);
+        } catch (_) {
+            fallback();
+        }
+    }
+
     function setLocale(code) {
         if (!code || code === state.locale) {
             closePanel();
@@ -994,19 +1078,14 @@
         writeStorage(STORAGE_LOCALE, code);
         track("site_language_change", { language_chosen: code });
 
-        var segments = global.location.pathname.split("/");
-        var first = segments[1] ? normalizeTag(segments[1]) : "";
         var map = localeIndex();
-        var onCopy = !!map[first];
+        var onCopy = !!map[normalizeTag(global.location.pathname.split("/").filter(Boolean)[0] || "")];
 
-        if (onCopy) {
-            /* Keep the visitor on the same page, in the new copy. */
-            if (code === DEFAULT_LOCALE) segments.splice(1, 1);
-            else segments[1] = code;
-            var path = segments.join("/") || "/";
-            global.location.href = path + (global.location.search || "");
+        if (hasCopy(code) || onCopy) {
+            goToCopy(code);
             return;
         }
+        /* No pre-rendered copies shipped: the URL variable is the switch. */
         navigate({ lang: code, region: state.region });
     }
 
@@ -1058,10 +1137,12 @@
 
         Promise.all([
             fetchJson("i18n/site-locales.json", 6000).catch(function () { return { locales: [] }; }),
-            fetchJson("i18n/regions.json", 6000).catch(function () { return null; })
+            fetchJson("i18n/regions.json", 6000).catch(function () { return null; }),
+            fetchJson("i18n/prerendered.json", 6000).catch(function () { return null; })
         ]).then(function (results) {
             state.locales = (results[0] && results[0].locales) || [];
             state.regions = results[1];
+            state.copies = (results[2] && results[2].locales) || [];
             return confirmCountry();
         }).then(function () {
             state.region = resolveRegion();
@@ -1106,7 +1187,14 @@
             });
             document.addEventListener("click", function (event) {
                 var trigger = event.target.closest && event.target.closest("[data-locale-open]");
-                if (trigger) bindExistingToggle();
+                if (!trigger) return;
+                if (trigger.dataset.localeBound !== "1") {
+                    /* The first click on an injected dock button must open the
+                       panel, not merely bind the listener for a second click. */
+                    bindExistingToggle();
+                    event.preventDefault();
+                    togglePanel();
+                }
             }, true);
             document.documentElement.setAttribute("data-locale-ready", "1");
             trackPageView();

@@ -274,6 +274,23 @@ def main() -> int:
         print(f"[{position}/{len(shipping)}] {code:<8} {len(pages):>4} pages, {replaced_total:>6} strings, region {region_id}")
 
     write_sitemap(output_root, pages, codes, origin, config)
+
+    # The browser runtime reads this to decide whether a language change can
+    # navigate to a real /<locale>/ copy or must fall back to ?lang=. It is
+    # written next to the catalogs so a deploy that includes the copies serves
+    # it at /i18n/prerendered.json too.
+    manifest = {
+        "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "locales": codes,
+        "pages": len(pages),
+    }
+    for target_root in {ROOT, output_root}:
+        manifest_path = os.path.join(target_root, "i18n", "prerendered.json")
+        os.makedirs(os.path.dirname(manifest_path), exist_ok=True)
+        with open(manifest_path, "w", encoding="utf-8", newline="\n") as handle:
+            json.dump(manifest, handle, ensure_ascii=False, indent=1)
+            handle.write("\n")
+
     print(f"\nWrote {total_written} pages to {os.path.relpath(output_root, ROOT)}")
     return 0
 
