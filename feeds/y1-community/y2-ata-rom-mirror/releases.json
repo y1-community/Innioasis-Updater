@@ -3,7 +3,7 @@
     "id": 432887263,
     "tag_name": "y2-ata",
     "name": "Portable Flashing Package: Engineering Firmware for Innioasis Y2 (Android 4.4 AOSP base - MT6582))",
-    "body": "# This is a bare android firmware for modifications to the Innioasis Y2 - it includes flash_tool.exe to install it from Windows systems\r\n# This is not suitable for everyday use - the original firmware is [available here](https://github.com/y1-community/y1-stock-rom/releases/tag/3.1.7)\r\nDisconnect your Y2 from USB, fully power it off using a paper clip or pin between the headphone jack and charging port\r\n\r\nRun flash_tool.exe\r\n\r\nSelect Format All + Download from the dropdown that reads \"Download\"\r\n\r\nClick Download (green arrow)\r\n\r\nConnect your Y2 and wait for install to finish.\n\n<!-- portable-mirror:{\"assets\":[{\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b963384eda1b06ab5b30f3b1b1289f04823fe22c2972787c96122c7c89323d24\",\"size\":823659033,\"source_asset\":\"rom_y2.zip\"},{\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"6fb6ebe20bb50a97b732a032506309da78cec562e1fac468103c833ac0c342d7\",\"size\":1000518195,\"source_asset\":\"rom_y2.zip\"},{\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"a9f2e08e639121778389eb84bb4824f2cedaafb9aff60821dcaa909c546008e5\",\"size\":839422983,\"source_asset\":\"rom_y2.zip\"}],\"built_at\":\"2026-11-03T21:16:12Z\",\"failures\":[],\"fingerprint\":\"f6f8ed90a0979fb8f0d31349ad4fd64e38c2073c809385a9f87a97e5109a9914\",\"original_assets\":[\"rom_y2.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom_y2-linux.zip\":1,\"rom_y2-macos.zip\":2,\"rom_y2-windows.zip\":1,\"rom_y2.zip\":3},\"generated_at\":\"2026-11-03T21:16:12Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.zip\",\"size\":187914366,\"tag\":\"2.5.1\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":236551244,\"tag\":\"2.5.1\"}},\"v\":3} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fy2-ata-rom&amp;tag=y2-ata#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-ata-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-ata-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-ata-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2-ata-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# This is a bare android firmware for modifications to the Innioasis Y2 - it includes flash_tool.exe to install it from Windows systems\r\n# This is not suitable for everyday use - the original firmware is [available here](https://github.com/y1-community/y1-stock-rom/releases/tag/3.1.7)\r\nDisconnect your Y2 from USB, fully power it off using a paper clip or pin between the headphone jack and charging port\r\n\r\nRun flash_tool.exe\r\n\r\nSelect Format All + Download from the dropdown that reads \"Download\"\r\n\r\nClick Download (green arrow)\r\n\r\nConnect your Y2 and wait for install to finish.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"rom_y2-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e57d4ebf56ac14712bc1229cad94e91415843d40cf578c6ad151338d1790ddea\",\"size\":680265217,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-macos.zip\",\"platform\":\"macos\",\"sha256\":\"399e1755e5625566eb4b7e2a3577ca87d8d5ef15eb88a4c3bf6a6cad2f140c09\",\"size\":414308198,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"rom_y2-windows.zip\",\"platform\":\"windows\",\"sha256\":\"6c128083c5a19f2ce1d0c89a348ba3120f4157bdeb39bdac0c87cde5b79882bb\",\"size\":498776235,\"source_asset\":\"rom_y2.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T00:54:36Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"f01e99f0d5100d7b3ba552b32644c67c9424653ccfea695245f5c9126eb3814f\",\"original_assets\":[\"rom_y2.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"rom_y2-linux.zip\":1,\"rom_y2-macos.zip\":2,\"rom_y2-windows.zip\":1,\"rom_y2.zip\":7},\"generated_at\":\"2026-11-08T00:54:36Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:34:42Z",
@@ -13,37 +13,37 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 707122387,
+        "id": 722443191,
         "name": "rom_y2-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-linux.zip",
-        "size": 1000518195,
+        "size": 680265217,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-03T21:16:17Z",
-        "updated_at": "2026-11-03T21:16:41Z",
-        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/707122387"
+        "created_at": "2026-11-08T00:54:39Z",
+        "updated_at": "2026-11-08T00:55:05Z",
+        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/722443191"
       },
       {
-        "id": 707122386,
+        "id": 722443193,
         "name": "rom_y2-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-macos.zip",
-        "size": 839422983,
+        "size": 414308198,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-03T21:16:17Z",
-        "updated_at": "2026-11-03T21:16:50Z",
-        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/707122386"
+        "created_at": "2026-11-08T00:54:39Z",
+        "updated_at": "2026-11-08T00:54:54Z",
+        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/722443193"
       },
       {
-        "id": 707122403,
+        "id": 722443195,
         "name": "rom_y2-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/rom_y2-windows.zip",
-        "size": 823659033,
+        "size": 498776235,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-03T21:16:17Z",
-        "updated_at": "2026-11-03T21:16:46Z",
-        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/707122403"
+        "created_at": "2026-11-08T00:54:39Z",
+        "updated_at": "2026-11-08T00:54:58Z",
+        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/722443195"
       },
       {
         "id": 706115409,
@@ -57,15 +57,15 @@
         "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/706115409"
       },
       {
-        "id": 707807382,
+        "id": 723635636,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2-ata-rom-mirror/releases/download/y2-ata/stats.txt",
-        "size": 2040,
+        "size": 2041,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-04T01:37:42Z",
-        "updated_at": "2026-11-04T01:37:42Z",
-        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/707807382"
+        "created_at": "2026-11-08T10:44:06Z",
+        "updated_at": "2026-11-08T10:44:06Z",
+        "url": "https://api.github.com/repos/y1-community/y2-ata-rom-mirror/releases/assets/723635636"
       }
     ]
   }

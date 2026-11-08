@@ -7,23 +7,22 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 </script>
-
   <meta charset="utf-8">
   <meta name="author" content="Ryan Specter &amp; Innioasis Community">
   <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current Reborn state on the Y2 - Innioasis Updater</title>
-  <meta name="description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.16 — Y2Linux 1.0 Beta 9.3.16 Baseline 224, 2026-11-06: steady Bluetooth published Published as baseline-224 Reborn ceb4824 ;">
+  <meta name="description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.17 — Y2Linux 1.0 Beta 9.3.17 Baseline 225, 2026-11-08: covers, Bluetooth first connect, Cover Flow published Published as ba">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-current_reborn_state.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta property="og:title" content="Current Reborn state on the Y2 - Innioasis Updater">
-  <meta property="og:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.16 — Y2Linux 1.0 Beta 9.3.16 Baseline 224, 2026-11-06: steady Bluetooth published Published as baseline-224 Reborn ceb4824 ;">
+  <meta property="og:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.17 — Y2Linux 1.0 Beta 9.3.17 Baseline 225, 2026-11-08: covers, Bluetooth first connect, Cover Flow published Published as ba">
   <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2reborn-docs-current_reborn_state.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Current Reborn state on the Y2 - Innioasis Updater">
-  <meta name="twitter:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.16 — Y2Linux 1.0 Beta 9.3.16 Baseline 224, 2026-11-06: steady Bluetooth published Published as baseline-224 Reborn ceb4824 ;">
+  <meta name="twitter:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.17 — Y2Linux 1.0 Beta 9.3.17 Baseline 225, 2026-11-08: covers, Bluetooth first connect, Cover Flow published Published as ba">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
   <link rel="stylesheet" href="../lumen.css?v=20261105hero">
@@ -37,6 +36,8 @@
 <a class="lumen-skip-link" href="#main">Skip to content</a>
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Y2Reborn</p><h1>Current Reborn state on the Y2</h1><p class="lumen-lead">Documentation published by SchulzCode/Y2Reborn.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="current-reborn-state-on-the-y2">Current Reborn state on the Y2</h1>
+<h2 id="100-beta9317--y2linux-10-beta-9317-baseline-225-2026-11-08-covers-bluetooth-first-connect-cover-flow-published">1.0.0-beta.9.3.17 — Y2Linux 1.0 Beta 9.3.17 (Baseline 225), 2026-11-08: covers, Bluetooth first connect, Cover Flow (published)</h2>
+<p>Published as <code>baseline-225</code> (Reborn <code>e14b17b</code>; work <code>0978fb4</code>, <code>e9f72a0</code>, <code>0f09caa</code>). Fixes written to hold for every format and headset (owner 2026-11-08). <code>decode.rs</code>: <code>Unsettled::due</code> settles a song (cover, media state, gapless preopen of the next) once ≥ 250 ms are queued or <code>SETTLE_WAIT</code> 500 ms after its first block; 9.3.16&#x27;s cushion was unreachable with MP3/AAC/Opus blocks (8 per channel, 190–210 ms) and their covers came at the song&#x27;s end (Y2Reborn #102, Y2Linux #98). Fixtures <code>cover-3s.{mp3,m4a,opus,ogg,flac}</code> (<code>tools/build/fixtures.py --covers</code>), test <code>every_codec_gets_its_cover_early_in_the_song_and_after_a_gapless_boundary</code>. <code>outputs.rs</code>: <code>AutoOutput</code> is ready on <code>playback_rate</code> (stereo, rate known) and retries a failed switch (<code>AUTO_OUTPUT_RETRY</code> 2 s, <code>AUTO_OUTPUT_TRIES</code> 5; Y2Reborn #103). <code>artwork.rs</code>: thumbnail cache name carries <code>Key::folder_revision</code> (folder cover candidates&#x27; names, sizes, mtimes), prefix <code>thumb4-</code> (Y2Reborn #105). Y2Linux side: uMTP patch 0007, every file name copies (#88) (<a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.17.md">Beta 9.3.17 report</a>).</p>
 <h2 id="100-beta9316--y2linux-10-beta-9316-baseline-224-2026-11-06-steady-bluetooth-published">1.0.0-beta.9.3.16 — Y2Linux 1.0 Beta 9.3.16 (Baseline 224), 2026-11-06: steady Bluetooth (published)</h2>
 <p>Published as <code>baseline-224</code> (Reborn <code>ceb4824</code>; work <code>0ed544c</code>, <code>d4298f2</code>, contract <code>e209e30</code>). A playing Bluetooth PCM is never left to run dry (F69, Y2Linux #96, Y2Reborn #99): <code>SinkWorker::bridge</code> tops a Bluetooth sink up to <code>BRIDGE_MS</code> 100 ms of silence whenever no music is written, also while it is the kept sink between two streams (<code>Playing::idle_wait</code> 10 ms, <code>receive</code> does not wait without a sink); a Bluetooth song end is <code>drained</code> once its music is written (no drain to empty); BlueALSA PCMs open with 8 × 1024 frames (<code>rb_sink_open</code>, wired 8 × 512). A Bluetooth pause holds in place (no device pause, silence) and <code>Runtime::hold_limit</code> releases it after <code>BLUETOOTH_HOLD_LIMIT</code> 3 s. <code>AlsaSink::plan_bluetooth</code> builds the spec from the observed transport without opening the PCM. Metric <code>bluetooth_xruns</code>. <code>decode.rs</code> <code>settle</code>: a song&#x27;s artwork, media state and the next song&#x27;s preopen wait until ≥ 250 ms of its audio is queued (or its end). Click stream 2048 frames. Tests <code>playback/stream_continuity_tests.rs</code> (real-time fake sink counting underruns). Y2Linux side: BlueALSA 0005/0007/0008 dropped, SBC/AAC fixed rate by default (<a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.16.md">Beta 9.3.16 report</a>).</p>
 <h2 id="100-beta937--y2linux-10-beta-937-baseline-215-2026-11-03-bluetooth-as-a-client-of-the-radio-daemon-published">1.0.0-beta.9.3.7 — Y2Linux 1.0 Beta 9.3.7 (Baseline 215), 2026-11-03: Bluetooth as a client of the radio daemon (published)</h2>
@@ -266,6 +267,7 @@
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
 <script src="../portable-zip-links.js?v=20261106direct" defer></script>
 <script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>
@@ -274,5 +276,5 @@ document.addEventListener("DOMContentLoaded", function () {
   if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
 });
 </script>
-<script src="../site-locale.js?v=20261108c" defer></script></body></html>
+</body></html>
 

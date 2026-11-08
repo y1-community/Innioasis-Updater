@@ -318,7 +318,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/rom_y2.zip",
           "size": 355560849,
-          "download_count": 1719,
+          "download_count": 1844,
           "content_type": "application/zip"
         },
         {
@@ -326,7 +326,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.1/updater.jpg",
           "size": 30612,
-          "download_count": 837,
+          "download_count": 1151,
           "content_type": "image/jpeg"
         }
       ]
@@ -347,7 +347,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/rom_y2.zip",
           "size": 355558382,
-          "download_count": 518,
+          "download_count": 548,
           "content_type": "application/zip"
         },
         {
@@ -355,7 +355,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img",
           "size": 859826928,
-          "download_count": 30,
+          "download_count": 66,
           "content_type": "application/x-apple-diskimage"
         },
         {
@@ -363,7 +363,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/updater.jpg",
           "size": 30612,
-          "download_count": 573,
+          "download_count": 852,
           "content_type": "image/jpeg"
         }
       ]
@@ -384,7 +384,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/rom_y2.zip",
           "size": 354780496,
-          "download_count": 1412,
+          "download_count": 1422,
           "content_type": "application/zip"
         },
         {
@@ -392,7 +392,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.7/updater.jpg",
           "size": 30612,
-          "download_count": 433,
+          "download_count": 662,
           "content_type": "image/jpeg"
         }
       ]
@@ -413,7 +413,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/rom.zip",
           "size": 250125316,
-          "download_count": 7583,
+          "download_count": 7769,
           "content_type": "application/zip"
         },
         {
@@ -421,7 +421,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.1.2/updater.jpg",
           "size": 30612,
-          "download_count": 2204,
+          "download_count": 3052,
           "content_type": "image/jpeg"
         }
       ]
@@ -442,7 +442,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/rom.zip",
           "size": 249544334,
-          "download_count": 7796,
+          "download_count": 7818,
           "content_type": "application/x-zip-compressed"
         },
         {
@@ -450,7 +450,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.7/updater.jpg",
           "size": 30612,
-          "download_count": 2019,
+          "download_count": 2806,
           "content_type": "image/jpeg"
         }
       ]
@@ -471,7 +471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/rom.zip",
           "size": 259502414,
-          "download_count": 11081,
+          "download_count": 11087,
           "content_type": "application/x-zip-compressed"
         },
         {
@@ -479,7 +479,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/3.0.2/updater.jpg",
           "size": 30612,
-          "download_count": 316,
+          "download_count": 359,
           "content_type": "image/jpeg"
         }
       ]
@@ -500,7 +500,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/rom.zip",
           "size": 234564048,
-          "download_count": 4944,
+          "download_count": 4949,
           "content_type": "application/zip"
         },
         {
@@ -508,7 +508,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/2.8.2/updater.jpg",
           "size": 30612,
-          "download_count": 310,
+          "download_count": 352,
           "content_type": "image/jpeg"
         }
       ]
@@ -529,7 +529,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/rom_type_b.zip",
           "size": 176318503,
-          "download_count": 1037,
+          "download_count": 1049,
           "content_type": "application/zip"
         },
         {
@@ -537,7 +537,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/type-b-1.7.6/updater.jpg",
           "size": 30612,
-          "download_count": 105,
+          "download_count": 137,
           "content_type": "image/jpeg"
         }
       ]
@@ -558,7 +558,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "com.innioasis.y1_2.1.9.apk",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/com.innioasis.y1_2.1.9.apk",
           "size": 50514056,
-          "download_count": 37,
+          "download_count": 42,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -566,7 +566,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/rom.zip",
           "size": 241163025,
-          "download_count": 1492,
+          "download_count": 1498,
           "content_type": "application/zip"
         },
         {
@@ -574,7 +574,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.jpg",
           "browser_download_url": "https://github.com/y1-community/y1-stock-rom/releases/download/ADB-2.1.9/updater.jpg",
           "size": 30612,
-          "download_count": 296,
+          "download_count": 336,
           "content_type": "image/jpeg"
         }
       ]
@@ -597,7 +597,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1.zip",
           "size": 1645800503,
-          "download_count": 6,
+          "download_count": 29,
           "content_type": "application/octet-stream"
         },
         {
@@ -605,7 +605,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.01-20260805/SHA256SUMS.MX3-G1-EN-WM-V5.01-20260805",
           "size": 78,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -626,7 +626,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/rom_g1.zip",
           "size": 1645759451,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         },
         {
@@ -634,7 +634,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-G1-EN-WM-V5.00-20260722/SHA256SUMS.MX3-G1-EN-WM-V5.00-20260722",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -655,7 +655,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1.zip",
           "size": 1573225707,
-          "download_count": 1,
+          "download_count": 7,
           "content_type": "application/octet-stream"
         },
         {
@@ -663,7 +663,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.03-20260826/SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826",
           "size": 78,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -684,7 +684,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1.zip",
           "size": 1573232640,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         },
         {
@@ -692,7 +692,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_G1_MULTI-V3.01-20260720/SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720",
           "size": 78,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         }
       ]
@@ -713,7 +713,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/rom_g1.zip",
           "size": 1645347061,
-          "download_count": 1,
+          "download_count": 7,
           "content_type": "application/octet-stream"
         },
         {
@@ -721,7 +721,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_EN-V1.04-20260805",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.04-20260805/SHA256SUMS.MX3-9_EN-V1.04-20260805",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -742,7 +742,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g1.zip",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/rom_g1.zip",
           "size": 1645380249,
-          "download_count": 2,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -750,7 +750,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_EN-V1.03-20260707",
           "browser_download_url": "https://github.com/y1-community/g1-stock-rom/releases/download/MX3-9_EN-V1.03-20260707/SHA256SUMS.MX3-9_EN-V1.03-20260707",
           "size": 78,
-          "download_count": 2,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -773,7 +773,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g3.zip",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/rom_g3.zip",
           "size": 1646117102,
-          "download_count": 2,
+          "download_count": 7,
           "content_type": "application/octet-stream"
         },
         {
@@ -781,7 +781,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-G3-EN-WM-V6.01-20260805",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.01-20260805/SHA256SUMS.MX3-G3-EN-WM-V6.01-20260805",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -802,7 +802,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g3.zip",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/rom_g3.zip",
           "size": 1646115909,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         },
         {
@@ -810,7 +810,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-G3-EN-WM-V6.00-20260722",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-G3-EN-WM-V6.00-20260722/SHA256SUMS.MX3-G3-EN-WM-V6.00-20260722",
           "size": 78,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -831,7 +831,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g3.zip",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/rom_g3.zip",
           "size": 1573503257,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         },
         {
@@ -839,7 +839,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_G3_MULTI-V4.03-20260826",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.03-20260826/SHA256SUMS.MX3-9_G3_MULTI-V4.03-20260826",
           "size": 78,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         }
       ]
@@ -860,7 +860,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g3.zip",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.02-20260720/rom_g3.zip",
           "size": 1573498618,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         },
         {
@@ -868,7 +868,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_G3_MULTI-V4.02-20260720",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_G3_MULTI-V4.02-20260720/SHA256SUMS.MX3-9_G3_MULTI-V4.02-20260720",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -889,7 +889,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g3.zip",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.04-20260805/rom_g3.zip",
           "size": 1645622491,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         },
         {
@@ -897,7 +897,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_EN_G3-V2.04-20260805",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.04-20260805/SHA256SUMS.MX3-9_EN_G3-V2.04-20260805",
           "size": 78,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         }
       ]
@@ -918,7 +918,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g3.zip",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/rom_g3.zip",
           "size": 1645637673,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         },
         {
@@ -926,7 +926,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX3-9_EN_G3-V2.03-20260709",
           "browser_download_url": "https://github.com/y1-community/g3-stock-rom/releases/download/MX3-9_EN_G3-V2.03-20260709/SHA256SUMS.MX3-9_EN_G3-V2.03-20260709",
           "size": 78,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -949,7 +949,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_g5.zip",
           "browser_download_url": "https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/rom_g5.zip",
           "size": 2048654340,
-          "download_count": 2,
+          "download_count": 23,
           "content_type": "application/octet-stream"
         },
         {
@@ -957,7 +957,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX4_EN-V1.11-20260727",
           "browser_download_url": "https://github.com/y1-community/g5-stock-rom/releases/download/MX4_EN-V1.11-20260727/SHA256SUMS.MX4_EN-V1.11-20260727",
           "size": 78,
-          "download_count": 1,
+          "download_count": 8,
           "content_type": "application/octet-stream"
         }
       ]
@@ -980,7 +980,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_r1.zip",
           "browser_download_url": "https://github.com/y1-community/r1-stock-rom/releases/download/R1_V1.48.20250425/rom_r1.zip",
           "size": 527923763,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         },
         {
@@ -988,7 +988,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.R1_V1.48.20250425",
           "browser_download_url": "https://github.com/y1-community/r1-stock-rom/releases/download/R1_V1.48.20250425/SHA256SUMS.R1_V1.48.20250425",
           "size": 78,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -1011,7 +1011,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_pr1.zip",
           "browser_download_url": "https://github.com/y1-community/pr1-stock-rom/releases/download/R2-V1.34-20260208/rom_pr1.zip",
           "size": 754108851,
-          "download_count": 2,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -1066,7 +1066,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_sr1.zip",
           "browser_download_url": "https://github.com/y1-community/sr1-stock-rom/releases/download/R1P_V2-V2.05.20251011/rom_sr1.zip",
           "size": 979140328,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         },
         {
@@ -1074,7 +1074,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.R1P_V2-V2.05.20251011",
           "browser_download_url": "https://github.com/y1-community/sr1-stock-rom/releases/download/R1P_V2-V2.05.20251011/SHA256SUMS.R1P_V2-V2.05.20251011",
           "size": 79,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -1097,7 +1097,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_q3.zip",
           "browser_download_url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2E-WVGA_TM-WV3.23-20250528/rom_q3.zip",
           "size": 286142520,
-          "download_count": 1,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         },
         {
@@ -1105,7 +1105,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528",
           "browser_download_url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2E-WVGA_TM-WV3.23-20250528/SHA256SUMS.MX2E-WVGA_TM-WV3.23-20250528",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -1126,7 +1126,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_q3.zip",
           "browser_download_url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2D-WVGA_TM-WV3.20-20250618/rom_q3.zip",
           "size": 280175608,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         },
         {
@@ -1134,7 +1134,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618",
           "browser_download_url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2D-WVGA_TM-WV3.20-20250618/SHA256SUMS.MX2D-WVGA_TM-WV3.20-20250618",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -1155,7 +1155,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_q3.zip",
           "browser_download_url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2-ES-WV4.01-20250619/rom_q3.zip",
           "size": 282112139,
-          "download_count": 2,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         },
         {
@@ -1163,7 +1163,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX2-ES-WV4.01-20250619",
           "browser_download_url": "https://github.com/y1-community/q3-stock-rom/releases/download/MX2-ES-WV4.01-20250619/SHA256SUMS.MX2-ES-WV4.01-20250619",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
@@ -1186,7 +1186,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_q5.zip",
           "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/rom_q5.zip",
           "size": 337730694,
-          "download_count": 3,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -1194,7 +1194,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX2D_Q5D-WV3.28-20250619",
           "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2D_Q5D-WV3.28-20250619/SHA256SUMS.MX2D_Q5D-WV3.28-20250619",
           "size": 78,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -1215,7 +1215,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_q5.zip",
           "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-WVGA_TM-WV3.27-20250528/rom_q5.zip",
           "size": 344107791,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         },
         {
@@ -1223,7 +1223,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528",
           "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-WVGA_TM-WV3.27-20250528/SHA256SUMS.MX2-WVGA_TM-WV3.27-20250528",
           "size": 78,
-          "download_count": 1,
+          "download_count": 5,
           "content_type": "application/octet-stream"
         }
       ]
@@ -1244,7 +1244,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_q5.zip",
           "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-ES_Q5-WV5.02-20250619/rom_q5.zip",
           "size": 344010052,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         },
         {
@@ -1252,13 +1252,175 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.MX2-ES_Q5-WV5.02-20250619",
           "browser_download_url": "https://github.com/y1-community/q5-stock-rom/releases/download/MX2-ES_Q5-WV5.02-20250619/SHA256SUMS.MX2-ES_Q5-WV5.02-20250619",
           "size": 78,
-          "download_count": 1,
+          "download_count": 4,
           "content_type": "application/octet-stream"
         }
       ]
     }
   ],
   "schulzcode/y2linux": [
+    {
+      "id": 438306009,
+      "tag_name": "baseline-225",
+      "name": "Y2Linux 1.0 Beta 9.3.17",
+      "published_at": "2026-11-08T14:41:27Z",
+      "prerelease": false,
+      "html_url": "https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-225",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "**Y2Linux 1.0 Beta 9.3.17: covers, file names, Bluetooth first connect.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now** (on Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**).\n\n## What changed\n- **Covers are back on Now Playing and the Home screen for MP3 and AAC songs** (Y2Reborn #102, #98). Beta 9.3.16 held a song's cover back until enough music was ready, an amount these formats never reached; now the cover comes within half a second of the song's start, for every format.\n- **Files with dots, emoji or ';' in their names copy over USB** (#88): \"I Still....m4a\", Coldplay's \ud83c\udf0e and \ud83e\ude90 titles and \"Memphis; The Blues\" copy as they are. ';' is no longer changed to '_', so MusicBee stops copying such files again on every sync. Emoji names on the card show whole on the computer, and long Chinese, Japanese or Korean names are no longer cut.\n- **Bluetooth headphones get the music on the first connect** (Y2Reborn #103). The player switched a moment before the headphones' stream was set up and the music stayed on the jack until a reconnect; it now waits for the stream and tries again if a switch fails.\n- **Cover Flow follows a folder cover that was deleted, added or replaced** (Y2Reborn #105). Cover Flow pictures are made once more after the update, as you scroll.\n\nBefore release: the error reports named in these issues read, new tests for each fix (covers in MP3, M4A, Opus, Ogg and FLAC; the issue's file names sent the way Windows sends them; a Bluetooth stream that is not ready yet; a folder cover deleted and added), the platform's full check, Reborn's workspace tests and the tests of the release images. Installed by update on the developer's player.\n\nWhat changed and why, in plain words: **[Beta 9.3.17 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.17.md)**.\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.17-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## Known issues (beta)\n- After a sleep (a pause longer than 15 minutes, or the Power button) the Bluetooth link ends; the player reconnects within a few seconds of waking. Buds that have gone back to a phone meanwhile must be picked again in Settings \u2192 Bluetooth.\n- WPA3-only and Enhanced Open Wi-Fi networks can't be joined (hardware); ask for \"WPA2/WPA3 mixed\" where you can. A router that keeps refusing the player (#83) is still being worked on.\n- Everything listed for Beta 9.0 still applies. If anything behaves differently from 9.3.16, send an error report (Settings \u2192 System \u2192 Error Reports); **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) goes back to the version you had, with your data kept.\n- Battery life in sleep: about 2 mA overnight on the developer's player (estimated from the battery voltage); stock is about 1.3 mA.\n- Sony WH-1000XM4 on LDAC with Wi-Fi on can still drop out (Y2Reborn #87), and a soundbar stutters with Wi-Fi on (#99); AAC or Wi-Fi off is steadier. Reports help.\n- File names longer than 255 bytes (about 85 Chinese or Japanese characters) fit on the SD card but not on Internal Storage. Bluetooth headphones that offer only mono sound cannot play yet.\n- Some players turned off by themselves during playback; the cause is not found yet. If yours does, start it again and send a report.\n- The speaker uses the same volume as the headphones; its loudest step is the stock speaker's. Start low the first time.\n- BBC radio stations stream only in HLS, which the player does not play yet. FM radio is in the works for a later beta.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.17-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 15000).\n- `Y2Linux-1.0.0-beta.9.3.17-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-225`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1. Details: [Beta 9.3.17 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.17.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-2f565b901c03.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-sources-third-party-2f565b901c03.tar) (attached to `baseline-224`), SHA-256 `2f565b901c03b7e6dc431c7a48656a356e4687bc2844ec0724464ad5480c8f79`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
+      "assets": [
+        {
+          "id": 724214127,
+          "name": "bootimg.img.gz",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/bootimg.img.gz",
+          "size": 7539226,
+          "download_count": 18,
+          "content_type": "application/gzip"
+        },
+        {
+          "id": 724214126,
+          "name": "manifest.json",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/manifest.json",
+          "size": 4238,
+          "download_count": 28,
+          "content_type": "application/json"
+        },
+        {
+          "id": 724214163,
+          "name": "manifest.sig",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/manifest.sig",
+          "size": 64,
+          "download_count": 30,
+          "content_type": "application/pgp-signature"
+        },
+        {
+          "id": 724214215,
+          "name": "recovery.img.gz",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/recovery.img.gz",
+          "size": 7539244,
+          "download_count": 17,
+          "content_type": "application/gzip"
+        },
+        {
+          "id": 724214227,
+          "name": "rootfs.ext4.gz",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/rootfs.ext4.gz",
+          "size": 51517451,
+          "download_count": 17,
+          "content_type": "application/gzip"
+        },
+        {
+          "id": 724214129,
+          "name": "SHA256SUMS",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/SHA256SUMS",
+          "size": 945,
+          "download_count": 2,
+          "content_type": "application/octet-stream"
+        },
+        {
+          "id": 724214131,
+          "name": "Y2Linux-1.0.0-beta.9.3.17-first-install.zip",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-first-install.zip",
+          "size": 67579994,
+          "download_count": 7,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 724214132,
+          "name": "Y2Linux-1.0.0-beta.9.3.17-sources-buildroot-legal-info.tar",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-225/Y2Linux-1.0.0-beta.9.3.17-sources-buildroot-legal-info.tar",
+          "size": 19302400,
+          "download_count": 2,
+          "content_type": "application/x-tar"
+        }
+      ]
+    },
+    {
+      "id": 436747393,
+      "tag_name": "baseline-224",
+      "name": "Y2Linux 1.0 Beta 9.3.16",
+      "published_at": "2026-11-06T16:44:23Z",
+      "prerelease": false,
+      "html_url": "https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-224",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "**Y2Linux 1.0 Beta 9.3.16: steady Bluetooth.** Linux 6.18 and the native Reborn music player for the Innioasis Y2.\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now** (on Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**).\n\n## What changed\n**Bluetooth headphones no longer go silent after a skip, a seek or the end of a song** (#96, Y2Reborn #99, part of Y2Reborn #87). From Play until you pause, the player now keeps a steady stream going to the headphones, as a phone does: music when there is music, silence while the next song gets ready. Before, the stream could run empty for a split second between songs, and AirPods and some other earbuds stayed silent until you paused and played again.\n\n- **Pause:** silence for 3 seconds, then the stream stops. Play within 3 s continues at once.\n- **Play** starts the headphones' stream once (it used to start, stop and start it again).\n- **One rate for every headset:** 44.1 kHz, and SBC and AAC at one fixed bit rate by default. Codec settings you changed in the maintenance menu stay as you set them.\n- **Headphones that drop right after connecting** (for example after pairing them with another device) are no longer reconnected over and over: after three quick drops the player asks you to pair them again.\n- Wheel clicks with no music no longer stutter; gapless song changes no longer run the output empty.\n- A skip, seek or pause is heard up to about 0.2 s later on Bluetooth than before; that small reserve keeps the stream full.\n\nBefore release: all Bluetooth events in 28 error reports read, the platform's full check, Reborn's workspace tests (new: a simulated pair of headphones that consumes the stream at real time; the old code ran it empty on skips and song ends, the new code never does), a new radio test for headphones that keep dropping, and the 552 tests of the release images. Installed by update on the developer's player.\n\nWhat changed and why, in plain words: **[Beta 9.3.16 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.16.md)**.\n\n## Install (from stock)\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.16-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## Known issues (beta)\n- After a sleep (a pause longer than 15 minutes, or the Power button) the Bluetooth link ends; the player reconnects within a few seconds of waking. Buds that have gone back to a phone meanwhile must be picked again in Settings \u2192 Bluetooth.\n- WPA3-only and Enhanced Open Wi-Fi networks can't be joined (hardware); ask for \"WPA2/WPA3 mixed\" where you can. A router that keeps refusing the player (#83) is still being worked on.\n- Everything listed for Beta 9.0 still applies. If anything behaves differently from 9.3.15, send an error report (Settings \u2192 System \u2192 Error Reports); **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) goes back to the version you had, with your data kept.\n- Battery life in sleep: about 2 mA overnight on the developer's player (estimated from the battery voltage); stock is about 1.3 mA.\n- Sony WH-1000XM4 on LDAC with Wi-Fi on can still drop out (Y2Reborn #87); AAC or Wi-Fi off is steadier. A report from 9.3.16 helps.\n- Some players turned off by themselves during playback; the cause is not found yet. If yours does, start it again and send a report.\n- The speaker uses the same volume as the headphones; its loudest step is the stock speaker's. Start low the first time.\n- BBC radio stations stream only in HLS, which the player does not play yet. FM radio is in the works for a later beta.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.16-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 14900).\n- `Y2Linux-1.0.0-beta.9.3.16-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-224`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1. Details: [Beta 9.3.16 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.16.md).\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n",
+      "assets": [
+        {
+          "id": 717812211,
+          "name": "bootimg.img.gz",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/bootimg.img.gz",
+          "size": 7539418,
+          "download_count": 101,
+          "content_type": "application/gzip"
+        },
+        {
+          "id": 717812298,
+          "name": "manifest.json",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/manifest.json",
+          "size": 4239,
+          "download_count": 361,
+          "content_type": "application/json"
+        },
+        {
+          "id": 717812367,
+          "name": "manifest.sig",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/manifest.sig",
+          "size": 64,
+          "download_count": 352,
+          "content_type": "application/pgp-signature"
+        },
+        {
+          "id": 717812449,
+          "name": "recovery.img.gz",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/recovery.img.gz",
+          "size": 7539418,
+          "download_count": 97,
+          "content_type": "application/gzip"
+        },
+        {
+          "id": 717812698,
+          "name": "rootfs.ext4.gz",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/rootfs.ext4.gz",
+          "size": 51341475,
+          "download_count": 97,
+          "content_type": "application/gzip"
+        },
+        {
+          "id": 717812217,
+          "name": "SHA256SUMS",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/SHA256SUMS",
+          "size": 945,
+          "download_count": 6,
+          "content_type": "application/octet-stream"
+        },
+        {
+          "id": 717812214,
+          "name": "Y2Linux-1.0.0-beta.9.3.16-first-install.zip",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install.zip",
+          "size": 67428817,
+          "download_count": 90,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 717812206,
+          "name": "Y2Linux-1.0.0-beta.9.3.16-sources-buildroot-legal-info.tar",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-sources-buildroot-legal-info.tar",
+          "size": 19292160,
+          "download_count": 6,
+          "content_type": "application/x-tar"
+        },
+        {
+          "id": 717812207,
+          "name": "Y2Linux-sources-third-party-2f565b901c03.tar",
+          "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-sources-third-party-2f565b901c03.tar",
+          "size": 381644800,
+          "download_count": 8,
+          "content_type": "application/x-tar"
+        }
+      ]
+    },
     {
       "id": 435462665,
       "tag_name": "baseline-223",
@@ -1275,7 +1437,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/bootimg.img.gz",
           "size": 7539026,
-          "download_count": 55,
+          "download_count": 68,
           "content_type": "application/gzip"
         },
         {
@@ -1283,7 +1445,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/manifest.json",
           "size": 4239,
-          "download_count": 139,
+          "download_count": 183,
           "content_type": "application/json"
         },
         {
@@ -1291,7 +1453,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/manifest.sig",
           "size": 64,
-          "download_count": 141,
+          "download_count": 183,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1299,7 +1461,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/recovery.img.gz",
           "size": 7539047,
-          "download_count": 58,
+          "download_count": 69,
           "content_type": "application/gzip"
         },
         {
@@ -1307,7 +1469,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/rootfs.ext4.gz",
           "size": 51358772,
-          "download_count": 56,
+          "download_count": 67,
           "content_type": "application/gzip"
         },
         {
@@ -1315,7 +1477,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/SHA256SUMS",
           "size": 945,
-          "download_count": 3,
+          "download_count": 7,
           "content_type": "application/octet-stream"
         },
         {
@@ -1323,7 +1485,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.15-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-first-install.zip",
           "size": 67428062,
-          "download_count": 24,
+          "download_count": 45,
           "content_type": "application/zip"
         },
         {
@@ -1331,7 +1493,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.15-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-223/Y2Linux-1.0.0-beta.9.3.15-sources-buildroot-legal-info.tar",
           "size": 19292160,
-          "download_count": 3,
+          "download_count": 7,
           "content_type": "application/x-tar"
         }
       ]
@@ -1352,7 +1514,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/bootimg.img.gz",
           "size": 7539304,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -1360,7 +1522,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/manifest.json",
           "size": 4238,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/json"
         },
         {
@@ -1368,7 +1530,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/manifest.sig",
           "size": 64,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1376,7 +1538,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/recovery.img.gz",
           "size": 7539312,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -1384,7 +1546,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/rootfs.ext4.gz",
           "size": 51333471,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -1392,7 +1554,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/SHA256SUMS",
           "size": 945,
-          "download_count": 2,
+          "download_count": 6,
           "content_type": "application/octet-stream"
         },
         {
@@ -1400,7 +1562,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.13-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-first-install.zip",
           "size": 67418385,
-          "download_count": 5,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -1408,7 +1570,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.13-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-221/Y2Linux-1.0.0-beta.9.3.13-sources-buildroot-legal-info.tar",
           "size": 19292160,
-          "download_count": 3,
+          "download_count": 7,
           "content_type": "application/x-tar"
         }
       ]
@@ -1429,7 +1591,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/bootimg.img.gz",
           "size": 7539259,
-          "download_count": 53,
+          "download_count": 57,
           "content_type": "application/gzip"
         },
         {
@@ -1437,7 +1599,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/manifest.json",
           "size": 4239,
-          "download_count": 151,
+          "download_count": 155,
           "content_type": "application/json"
         },
         {
@@ -1445,7 +1607,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/manifest.sig",
           "size": 64,
-          "download_count": 151,
+          "download_count": 155,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1453,7 +1615,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/recovery.img.gz",
           "size": 7539285,
-          "download_count": 53,
+          "download_count": 57,
           "content_type": "application/gzip"
         },
         {
@@ -1461,7 +1623,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/rootfs.ext4.gz",
           "size": 51334920,
-          "download_count": 52,
+          "download_count": 56,
           "content_type": "application/gzip"
         },
         {
@@ -1469,7 +1631,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/SHA256SUMS",
           "size": 945,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -1477,7 +1639,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.12-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-first-install.zip",
           "size": 67418534,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/zip"
         },
         {
@@ -1485,7 +1647,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.12-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/Y2Linux-1.0.0-beta.9.3.12-sources-buildroot-legal-info.tar",
           "size": 19292160,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         },
         {
@@ -1493,7 +1655,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-third-party-d665a5f06500.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-220/Y2Linux-sources-third-party-d665a5f06500.tar",
           "size": 381655040,
-          "download_count": 3,
+          "download_count": 7,
           "content_type": "application/x-tar"
         }
       ]
@@ -1514,7 +1676,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/bootimg.img.gz",
           "size": 7539267,
-          "download_count": 72,
+          "download_count": 76,
           "content_type": "application/gzip"
         },
         {
@@ -1522,7 +1684,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/manifest.json",
           "size": 4236,
-          "download_count": 242,
+          "download_count": 246,
           "content_type": "application/json"
         },
         {
@@ -1530,7 +1692,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/manifest.sig",
           "size": 64,
-          "download_count": 234,
+          "download_count": 238,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1538,7 +1700,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/recovery.img.gz",
           "size": 7539271,
-          "download_count": 69,
+          "download_count": 73,
           "content_type": "application/gzip"
         },
         {
@@ -1546,7 +1708,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/rootfs.ext4.gz",
           "size": 51326456,
-          "download_count": 70,
+          "download_count": 74,
           "content_type": "application/gzip"
         },
         {
@@ -1554,7 +1716,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/SHA256SUMS",
           "size": 943,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/octet-stream"
         },
         {
@@ -1562,7 +1724,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.7-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-first-install.zip",
           "size": 67410276,
-          "download_count": 30,
+          "download_count": 36,
           "content_type": "application/zip"
         },
         {
@@ -1570,7 +1732,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.3.7-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/Y2Linux-1.0.0-beta.9.3.7-sources-buildroot-legal-info.tar",
           "size": 19292160,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/x-tar"
         },
         {
@@ -1578,7 +1740,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-third-party-b8e3f53ae105.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-215/Y2Linux-sources-third-party-b8e3f53ae105.tar",
           "size": 381644800,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/x-tar"
         }
       ]
@@ -1599,7 +1761,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/bootimg.img.gz",
           "size": 7539258,
-          "download_count": 93,
+          "download_count": 97,
           "content_type": "application/gzip"
         },
         {
@@ -1607,7 +1769,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/manifest.json",
           "size": 4237,
-          "download_count": 406,
+          "download_count": 410,
           "content_type": "application/json"
         },
         {
@@ -1615,7 +1777,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/manifest.sig",
           "size": 64,
-          "download_count": 403,
+          "download_count": 407,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1623,7 +1785,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/recovery.img.gz",
           "size": 7539258,
-          "download_count": 90,
+          "download_count": 94,
           "content_type": "application/gzip"
         },
         {
@@ -1631,7 +1793,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/rootfs.ext4.gz",
           "size": 50776843,
-          "download_count": 91,
+          "download_count": 95,
           "content_type": "application/gzip"
         },
         {
@@ -1639,7 +1801,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/SHA256SUMS",
           "size": 945,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/octet-stream"
         },
         {
@@ -1647,7 +1809,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.16-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/Y2Linux-1.0.0-beta.9.2.16-first-install.zip",
           "size": 66846231,
-          "download_count": 74,
+          "download_count": 79,
           "content_type": "application/zip"
         },
         {
@@ -1655,7 +1817,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.16-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/Y2Linux-1.0.0-beta.9.2.16-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/x-tar"
         },
         {
@@ -1663,7 +1825,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-third-party-16db0acea92d.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-207/Y2Linux-sources-third-party-16db0acea92d.tar",
           "size": 381634560,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/x-tar"
         }
       ]
@@ -1684,7 +1846,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/bootimg.img.gz",
           "size": 7539324,
-          "download_count": 38,
+          "download_count": 42,
           "content_type": "application/gzip"
         },
         {
@@ -1692,7 +1854,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/manifest.json",
           "size": 4237,
-          "download_count": 73,
+          "download_count": 77,
           "content_type": "application/json"
         },
         {
@@ -1700,7 +1862,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/manifest.sig",
           "size": 64,
-          "download_count": 74,
+          "download_count": 78,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1708,7 +1870,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/recovery.img.gz",
           "size": 7539337,
-          "download_count": 39,
+          "download_count": 43,
           "content_type": "application/gzip"
         },
         {
@@ -1716,7 +1878,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/rootfs.ext4.gz",
           "size": 50759038,
-          "download_count": 38,
+          "download_count": 42,
           "content_type": "application/gzip"
         },
         {
@@ -1724,7 +1886,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/SHA256SUMS",
           "size": 945,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/octet-stream"
         },
         {
@@ -1732,7 +1894,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.15-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-first-install.zip",
           "size": 66842575,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         },
         {
@@ -1740,7 +1902,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.15-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-206/Y2Linux-1.0.0-beta.9.2.15-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 9,
+          "download_count": 12,
           "content_type": "application/x-tar"
         }
       ]
@@ -1761,7 +1923,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/bootimg.img.gz",
           "size": 7539358,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -1769,7 +1931,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/manifest.json",
           "size": 4237,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/json"
         },
         {
@@ -1777,7 +1939,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/manifest.sig",
           "size": 64,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1785,7 +1947,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/recovery.img.gz",
           "size": 7539381,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -1793,7 +1955,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/rootfs.ext4.gz",
           "size": 50769612,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -1801,7 +1963,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/SHA256SUMS",
           "size": 945,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/octet-stream"
         },
         {
@@ -1809,7 +1971,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.14-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-first-install.zip",
           "size": 66843837,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/zip"
         },
         {
@@ -1817,7 +1979,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.14-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-205/Y2Linux-1.0.0-beta.9.2.14-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/x-tar"
         }
       ]
@@ -1838,7 +2000,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/bootimg.img.gz",
           "size": 7539163,
-          "download_count": 49,
+          "download_count": 53,
           "content_type": "application/gzip"
         },
         {
@@ -1846,7 +2008,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/manifest.json",
           "size": 4237,
-          "download_count": 92,
+          "download_count": 96,
           "content_type": "application/json"
         },
         {
@@ -1854,7 +2016,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/manifest.sig",
           "size": 64,
-          "download_count": 92,
+          "download_count": 96,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1862,7 +2024,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/recovery.img.gz",
           "size": 7539182,
-          "download_count": 49,
+          "download_count": 53,
           "content_type": "application/gzip"
         },
         {
@@ -1870,7 +2032,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/rootfs.ext4.gz",
           "size": 50763744,
-          "download_count": 49,
+          "download_count": 53,
           "content_type": "application/gzip"
         },
         {
@@ -1878,7 +2040,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/SHA256SUMS",
           "size": 945,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/octet-stream"
         },
         {
@@ -1886,7 +2048,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.13-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/Y2Linux-1.0.0-beta.9.2.13-first-install.zip",
           "size": 66844118,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         },
         {
@@ -1894,7 +2056,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.13-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-204/Y2Linux-1.0.0-beta.9.2.13-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/x-tar"
         }
       ]
@@ -1915,7 +2077,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/bootimg.img.gz",
           "size": 7539241,
-          "download_count": 50,
+          "download_count": 54,
           "content_type": "application/gzip"
         },
         {
@@ -1923,7 +2085,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/manifest.json",
           "size": 4237,
-          "download_count": 118,
+          "download_count": 122,
           "content_type": "application/json"
         },
         {
@@ -1931,7 +2093,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/manifest.sig",
           "size": 64,
-          "download_count": 115,
+          "download_count": 119,
           "content_type": "application/pgp-signature"
         },
         {
@@ -1939,7 +2101,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/recovery.img.gz",
           "size": 7539253,
-          "download_count": 49,
+          "download_count": 53,
           "content_type": "application/gzip"
         },
         {
@@ -1947,7 +2109,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/rootfs.ext4.gz",
           "size": 50771454,
-          "download_count": 49,
+          "download_count": 53,
           "content_type": "application/gzip"
         },
         {
@@ -1955,7 +2117,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/SHA256SUMS",
           "size": 945,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/octet-stream"
         },
         {
@@ -1963,7 +2125,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.12-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/Y2Linux-1.0.0-beta.9.2.12-first-install.zip",
           "size": 66838497,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         },
         {
@@ -1971,7 +2133,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.12-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-203/Y2Linux-1.0.0-beta.9.2.12-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/x-tar"
         }
       ]
@@ -1992,7 +2154,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/bootimg.img.gz",
           "size": 7539383,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -2000,7 +2162,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/manifest.json",
           "size": 4235,
-          "download_count": 46,
+          "download_count": 50,
           "content_type": "application/json"
         },
         {
@@ -2008,7 +2170,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/manifest.sig",
           "size": 64,
-          "download_count": 45,
+          "download_count": 49,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2016,7 +2178,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/recovery.img.gz",
           "size": 7539402,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -2024,7 +2186,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/rootfs.ext4.gz",
           "size": 50770661,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -2032,7 +2194,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/SHA256SUMS",
           "size": 945,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/octet-stream"
         },
         {
@@ -2040,7 +2202,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.11-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/Y2Linux-1.0.0-beta.9.2.11-first-install.zip",
           "size": 66840579,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -2048,7 +2210,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.11-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-202/Y2Linux-1.0.0-beta.9.2.11-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/x-tar"
         }
       ]
@@ -2069,7 +2231,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/bootimg.img.gz",
           "size": 7539312,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/gzip"
         },
         {
@@ -2077,7 +2239,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/manifest.json",
           "size": 4236,
-          "download_count": 26,
+          "download_count": 30,
           "content_type": "application/json"
         },
         {
@@ -2085,7 +2247,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/manifest.sig",
           "size": 64,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2093,7 +2255,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/recovery.img.gz",
           "size": 7539330,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/gzip"
         },
         {
@@ -2101,7 +2263,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/rootfs.ext4.gz",
           "size": 50756682,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/gzip"
         },
         {
@@ -2109,7 +2271,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/SHA256SUMS",
           "size": 945,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/octet-stream"
         },
         {
@@ -2117,7 +2279,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.10-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-first-install.zip",
           "size": 66832560,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -2125,7 +2287,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.10-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-201/Y2Linux-1.0.0-beta.9.2.10-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/x-tar"
         }
       ]
@@ -2146,7 +2308,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/bootimg.img.gz",
           "size": 7539185,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/gzip"
         },
         {
@@ -2154,7 +2316,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/manifest.json",
           "size": 4234,
-          "download_count": 27,
+          "download_count": 31,
           "content_type": "application/json"
         },
         {
@@ -2162,7 +2324,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/manifest.sig",
           "size": 64,
-          "download_count": 27,
+          "download_count": 31,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2170,7 +2332,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/recovery.img.gz",
           "size": 7539199,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/gzip"
         },
         {
@@ -2178,7 +2340,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/rootfs.ext4.gz",
           "size": 50747412,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/gzip"
         },
         {
@@ -2186,7 +2348,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/SHA256SUMS",
           "size": 943,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/octet-stream"
         },
         {
@@ -2194,7 +2356,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.8-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-first-install.zip",
           "size": 66827278,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -2202,7 +2364,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.8-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/x-tar"
         }
       ]
@@ -2223,7 +2385,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/bootimg.img.gz",
           "size": 7539147,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -2231,7 +2393,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/manifest.json",
           "size": 4234,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/json"
         },
         {
@@ -2239,7 +2401,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/manifest.sig",
           "size": 64,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2247,7 +2409,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/recovery.img.gz",
           "size": 7539153,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -2255,7 +2417,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/rootfs.ext4.gz",
           "size": 50749126,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -2263,7 +2425,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/SHA256SUMS",
           "size": 943,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -2271,7 +2433,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.7-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/Y2Linux-1.0.0-beta.9.2.7-first-install.zip",
           "size": 66826617,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -2279,7 +2441,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.7-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-198/Y2Linux-1.0.0-beta.9.2.7-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -2300,7 +2462,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/bootimg.img.gz",
           "size": 7539208,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -2308,7 +2470,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/manifest.json",
           "size": 4234,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/json"
         },
         {
@@ -2316,7 +2478,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/manifest.sig",
           "size": 64,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2324,7 +2486,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/recovery.img.gz",
           "size": 7539225,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -2332,7 +2494,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/rootfs.ext4.gz",
           "size": 50754034,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -2340,7 +2502,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/SHA256SUMS",
           "size": 943,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -2348,7 +2510,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.6-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/Y2Linux-1.0.0-beta.9.2.6-first-install.zip",
           "size": 66831164,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -2356,7 +2518,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.6-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-197/Y2Linux-1.0.0-beta.9.2.6-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -2377,7 +2539,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/bootimg.img.gz",
           "size": 7539288,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/gzip"
         },
         {
@@ -2385,7 +2547,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/manifest.json",
           "size": 4234,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/json"
         },
         {
@@ -2393,7 +2555,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/manifest.sig",
           "size": 64,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2401,7 +2563,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/recovery.img.gz",
           "size": 7539307,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/gzip"
         },
         {
@@ -2409,7 +2571,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/rootfs.ext4.gz",
           "size": 50753489,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/gzip"
         },
         {
@@ -2417,7 +2579,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/SHA256SUMS",
           "size": 943,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -2425,7 +2587,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.5-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-first-install.zip",
           "size": 66828720,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -2433,7 +2595,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.5-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-196/Y2Linux-1.0.0-beta.9.2.5-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -2454,7 +2616,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/bootimg.img.gz",
           "size": 7539043,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/gzip"
         },
         {
@@ -2462,7 +2624,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/manifest.json",
           "size": 4234,
-          "download_count": 29,
+          "download_count": 33,
           "content_type": "application/json"
         },
         {
@@ -2470,7 +2632,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/manifest.sig",
           "size": 64,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2478,7 +2640,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/recovery.img.gz",
           "size": 7539057,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/gzip"
         },
         {
@@ -2486,7 +2648,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/rootfs.ext4.gz",
           "size": 50748230,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/gzip"
         },
         {
@@ -2494,7 +2656,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/SHA256SUMS",
           "size": 943,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -2502,7 +2664,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.4-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/Y2Linux-1.0.0-beta.9.2.4-first-install.zip",
           "size": 66832236,
-          "download_count": 8,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -2510,7 +2672,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.4-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-195/Y2Linux-1.0.0-beta.9.2.4-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -2531,7 +2693,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/bootimg.img.gz",
           "size": 7539251,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/gzip"
         },
         {
@@ -2539,7 +2701,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/manifest.json",
           "size": 4234,
-          "download_count": 34,
+          "download_count": 38,
           "content_type": "application/json"
         },
         {
@@ -2547,7 +2709,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/manifest.sig",
           "size": 64,
-          "download_count": 31,
+          "download_count": 35,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2555,7 +2717,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/recovery.img.gz",
           "size": 7539267,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/gzip"
         },
         {
@@ -2563,7 +2725,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/rootfs.ext4.gz",
           "size": 50745520,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/gzip"
         },
         {
@@ -2571,7 +2733,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/SHA256SUMS",
           "size": 943,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -2579,7 +2741,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.3-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/Y2Linux-1.0.0-beta.9.2.3-first-install.zip",
           "size": 66818468,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -2587,7 +2749,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.3-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-194/Y2Linux-1.0.0-beta.9.2.3-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -2608,7 +2770,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/bootimg.img.gz",
           "size": 7539252,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/gzip"
         },
         {
@@ -2616,7 +2778,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/manifest.json",
           "size": 4234,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/json"
         },
         {
@@ -2624,7 +2786,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/manifest.sig",
           "size": 64,
-          "download_count": 29,
+          "download_count": 33,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2632,7 +2794,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/recovery.img.gz",
           "size": 7539269,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/gzip"
         },
         {
@@ -2640,7 +2802,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/rootfs.ext4.gz",
           "size": 50706795,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/gzip"
         },
         {
@@ -2648,7 +2810,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/SHA256SUMS",
           "size": 943,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -2656,7 +2818,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.2-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/Y2Linux-1.0.0-beta.9.2.2-first-install.zip",
           "size": 66792308,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/zip"
         },
         {
@@ -2664,7 +2826,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2.2-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-193/Y2Linux-1.0.0-beta.9.2.2-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -2685,7 +2847,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/bootimg.img.gz",
           "size": 7538896,
-          "download_count": 34,
+          "download_count": 38,
           "content_type": "application/gzip"
         },
         {
@@ -2693,7 +2855,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/manifest.json",
           "size": 4228,
-          "download_count": 91,
+          "download_count": 95,
           "content_type": "application/json"
         },
         {
@@ -2701,7 +2863,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/manifest.sig",
           "size": 64,
-          "download_count": 90,
+          "download_count": 94,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2709,7 +2871,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/recovery.img.gz",
           "size": 7538908,
-          "download_count": 34,
+          "download_count": 38,
           "content_type": "application/gzip"
         },
         {
@@ -2717,7 +2879,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/rootfs.ext4.gz",
           "size": 50714430,
-          "download_count": 33,
+          "download_count": 37,
           "content_type": "application/gzip"
         },
         {
@@ -2725,7 +2887,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/SHA256SUMS",
           "size": 939,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -2733,7 +2895,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-first-install.zip",
           "size": 66784621,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         },
         {
@@ -2741,7 +2903,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.2-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -2762,7 +2924,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/bootimg.img.gz",
           "size": 7538850,
-          "download_count": 27,
+          "download_count": 31,
           "content_type": "application/gzip"
         },
         {
@@ -2770,7 +2932,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/manifest.json",
           "size": 4228,
-          "download_count": 46,
+          "download_count": 50,
           "content_type": "application/json"
         },
         {
@@ -2778,7 +2940,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/manifest.sig",
           "size": 64,
-          "download_count": 45,
+          "download_count": 49,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2786,7 +2948,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/recovery.img.gz",
           "size": 7538873,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/gzip"
         },
         {
@@ -2794,7 +2956,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/rootfs.ext4.gz",
           "size": 50706062,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/gzip"
         },
         {
@@ -2802,7 +2964,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/SHA256SUMS",
           "size": 939,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -2810,7 +2972,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.1-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/Y2Linux-1.0.0-beta.9.1-first-install.zip",
           "size": 66774509,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -2818,7 +2980,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.1-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-189/Y2Linux-1.0.0-beta.9.1-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -2839,7 +3001,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/bootimg.img.gz",
           "size": 7538915,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/gzip"
         },
         {
@@ -2847,7 +3009,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/manifest.json",
           "size": 4225,
-          "download_count": 63,
+          "download_count": 67,
           "content_type": "application/json"
         },
         {
@@ -2855,7 +3017,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/manifest.sig",
           "size": 64,
-          "download_count": 63,
+          "download_count": 67,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2863,7 +3025,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/recovery.img.gz",
           "size": 7538932,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/gzip"
         },
         {
@@ -2871,7 +3033,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/rootfs.ext4.gz",
           "size": 50566529,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/gzip"
         },
         {
@@ -2879,7 +3041,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/SHA256SUMS",
           "size": 939,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -2887,7 +3049,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.0-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/Y2Linux-1.0.0-beta.9.0-first-install.zip",
           "size": 66646885,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -2895,7 +3057,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.9.0-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/Y2Linux-1.0.0-beta.9.0-sources-buildroot-legal-info.tar",
           "size": 19302400,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         },
         {
@@ -2903,7 +3065,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-third-party-a6aaa039273c.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-186/Y2Linux-sources-third-party-a6aaa039273c.tar",
           "size": 381624320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -2924,7 +3086,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/bootimg.img.gz",
           "size": 7538235,
-          "download_count": 74,
+          "download_count": 78,
           "content_type": "application/gzip"
         },
         {
@@ -2932,7 +3094,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/manifest.json",
           "size": 4266,
-          "download_count": 353,
+          "download_count": 357,
           "content_type": "application/json"
         },
         {
@@ -2940,7 +3102,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/manifest.sig",
           "size": 64,
-          "download_count": 353,
+          "download_count": 357,
           "content_type": "application/pgp-signature"
         },
         {
@@ -2948,7 +3110,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/recovery.img.gz",
           "size": 7538246,
-          "download_count": 73,
+          "download_count": 77,
           "content_type": "application/gzip"
         },
         {
@@ -2956,7 +3118,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/rootfs.ext4.gz",
           "size": 56369921,
-          "download_count": 73,
+          "download_count": 77,
           "content_type": "application/gzip"
         },
         {
@@ -2964,7 +3126,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/SHA256SUMS",
           "size": 941,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/octet-stream"
         },
         {
@@ -2972,7 +3134,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.43-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-first-install.zip",
           "size": 72459225,
-          "download_count": 30,
+          "download_count": 34,
           "content_type": "application/zip"
         },
         {
@@ -2980,7 +3142,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.43-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-164/Y2Linux-1.0.0-beta.8.43-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -3001,7 +3163,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/bootimg.img.gz",
           "size": 7538303,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -3009,7 +3171,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/manifest.json",
           "size": 4267,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/json"
         },
         {
@@ -3017,7 +3179,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/manifest.sig",
           "size": 64,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3025,7 +3187,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/recovery.img.gz",
           "size": 7538350,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -3033,7 +3195,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/rootfs.ext4.gz",
           "size": 56346137,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -3041,7 +3203,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -3049,7 +3211,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.42-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/Y2Linux-1.0.0-beta.8.42-first-install.zip",
           "size": 72427989,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -3057,7 +3219,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.42-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-163/Y2Linux-1.0.0-beta.8.42-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -3078,7 +3240,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/bootimg.img.gz",
           "size": 7535944,
-          "download_count": 60,
+          "download_count": 64,
           "content_type": "application/gzip"
         },
         {
@@ -3086,7 +3248,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/manifest.json",
           "size": 4266,
-          "download_count": 208,
+          "download_count": 212,
           "content_type": "application/json"
         },
         {
@@ -3094,7 +3256,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/manifest.sig",
           "size": 64,
-          "download_count": 210,
+          "download_count": 214,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3102,7 +3264,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/recovery.img.gz",
           "size": 7535966,
-          "download_count": 57,
+          "download_count": 61,
           "content_type": "application/gzip"
         },
         {
@@ -3110,7 +3272,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/rootfs.ext4.gz",
           "size": 56288180,
-          "download_count": 56,
+          "download_count": 60,
           "content_type": "application/gzip"
         },
         {
@@ -3118,7 +3280,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3126,7 +3288,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.41-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/Y2Linux-1.0.0-beta.8.41-first-install.zip",
           "size": 72371527,
-          "download_count": 26,
+          "download_count": 30,
           "content_type": "application/zip"
         },
         {
@@ -3134,7 +3296,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.41-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-159/Y2Linux-1.0.0-beta.8.41-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3155,7 +3317,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/bootimg.img.gz",
           "size": 7529891,
-          "download_count": 43,
+          "download_count": 47,
           "content_type": "application/gzip"
         },
         {
@@ -3163,7 +3325,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/manifest.json",
           "size": 4266,
-          "download_count": 155,
+          "download_count": 159,
           "content_type": "application/json"
         },
         {
@@ -3171,7 +3333,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/manifest.sig",
           "size": 64,
-          "download_count": 153,
+          "download_count": 157,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3179,7 +3341,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/recovery.img.gz",
           "size": 7529912,
-          "download_count": 41,
+          "download_count": 45,
           "content_type": "application/gzip"
         },
         {
@@ -3187,7 +3349,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/rootfs.ext4.gz",
           "size": 56288100,
-          "download_count": 41,
+          "download_count": 45,
           "content_type": "application/gzip"
         },
         {
@@ -3195,7 +3357,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3203,7 +3365,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.40-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/Y2Linux-1.0.0-beta.8.40-first-install.zip",
           "size": 72348593,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/zip"
         },
         {
@@ -3211,7 +3373,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.40-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-154/Y2Linux-1.0.0-beta.8.40-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3232,7 +3394,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/bootimg.img.gz",
           "size": 7529528,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/gzip"
         },
         {
@@ -3240,7 +3402,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/manifest.json",
           "size": 4267,
-          "download_count": 47,
+          "download_count": 51,
           "content_type": "application/json"
         },
         {
@@ -3248,7 +3410,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/manifest.sig",
           "size": 64,
-          "download_count": 42,
+          "download_count": 46,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3256,7 +3418,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/recovery.img.gz",
           "size": 7529555,
-          "download_count": 24,
+          "download_count": 28,
           "content_type": "application/gzip"
         },
         {
@@ -3264,7 +3426,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/rootfs.ext4.gz",
           "size": 56284288,
-          "download_count": 24,
+          "download_count": 28,
           "content_type": "application/gzip"
         },
         {
@@ -3272,7 +3434,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3280,7 +3442,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.39-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/Y2Linux-1.0.0-beta.8.39-first-install.zip",
           "size": 72348761,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -3288,7 +3450,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.39-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-153/Y2Linux-1.0.0-beta.8.39-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3309,7 +3471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/bootimg.img.gz",
           "size": 7529403,
-          "download_count": 62,
+          "download_count": 66,
           "content_type": "application/gzip"
         },
         {
@@ -3317,7 +3479,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/manifest.json",
           "size": 4266,
-          "download_count": 244,
+          "download_count": 248,
           "content_type": "application/json"
         },
         {
@@ -3325,7 +3487,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/manifest.sig",
           "size": 64,
-          "download_count": 241,
+          "download_count": 245,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3333,7 +3495,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/recovery.img.gz",
           "size": 7529418,
-          "download_count": 59,
+          "download_count": 63,
           "content_type": "application/gzip"
         },
         {
@@ -3341,7 +3503,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/rootfs.ext4.gz",
           "size": 56200976,
-          "download_count": 60,
+          "download_count": 64,
           "content_type": "application/gzip"
         },
         {
@@ -3349,7 +3511,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3357,7 +3519,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.38-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/Y2Linux-1.0.0-beta.8.38-first-install.zip",
           "size": 72264258,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -3365,7 +3527,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.38-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-146/Y2Linux-1.0.0-beta.8.38-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3386,7 +3548,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/bootimg.img.gz",
           "size": 7529414,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -3394,7 +3556,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/manifest.json",
           "size": 4266,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/json"
         },
         {
@@ -3402,7 +3564,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/manifest.sig",
           "size": 64,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3410,7 +3572,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/recovery.img.gz",
           "size": 7529433,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -3418,7 +3580,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/rootfs.ext4.gz",
           "size": 56193682,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -3426,7 +3588,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3434,7 +3596,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.37-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/Y2Linux-1.0.0-beta.8.37-first-install.zip",
           "size": 72260771,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -3442,7 +3604,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.37-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-144/Y2Linux-1.0.0-beta.8.37-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3463,7 +3625,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/bootimg.img.gz",
           "size": 7529921,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -3471,7 +3633,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/manifest.json",
           "size": 4266,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/json"
         },
         {
@@ -3479,7 +3641,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/manifest.sig",
           "size": 64,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3487,7 +3649,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/recovery.img.gz",
           "size": 7529938,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -3495,7 +3657,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/rootfs.ext4.gz",
           "size": 56178671,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -3503,7 +3665,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3511,7 +3673,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.36-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/Y2Linux-1.0.0-beta.8.36-first-install.zip",
           "size": 72245626,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -3519,7 +3681,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.36-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-138/Y2Linux-1.0.0-beta.8.36-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3540,7 +3702,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/bootimg.img.gz",
           "size": 7529643,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/gzip"
         },
         {
@@ -3548,7 +3710,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/manifest.json",
           "size": 4265,
-          "download_count": 100,
+          "download_count": 104,
           "content_type": "application/json"
         },
         {
@@ -3556,7 +3718,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/manifest.sig",
           "size": 64,
-          "download_count": 98,
+          "download_count": 102,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3564,7 +3726,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/recovery.img.gz",
           "size": 7529654,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/gzip"
         },
         {
@@ -3572,7 +3734,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/rootfs.ext4.gz",
           "size": 56164949,
-          "download_count": 36,
+          "download_count": 40,
           "content_type": "application/gzip"
         },
         {
@@ -3580,7 +3742,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3588,7 +3750,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.35-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/Y2Linux-1.0.0-beta.8.35-first-install.zip",
           "size": 72238776,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -3596,7 +3758,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.35-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-136/Y2Linux-1.0.0-beta.8.35-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3617,7 +3779,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/bootimg.img.gz",
           "size": 7529663,
-          "download_count": 24,
+          "download_count": 28,
           "content_type": "application/gzip"
         },
         {
@@ -3625,7 +3787,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/manifest.json",
           "size": 4265,
-          "download_count": 57,
+          "download_count": 61,
           "content_type": "application/json"
         },
         {
@@ -3633,7 +3795,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/manifest.sig",
           "size": 64,
-          "download_count": 56,
+          "download_count": 60,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3641,7 +3803,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/recovery.img.gz",
           "size": 7529692,
-          "download_count": 24,
+          "download_count": 28,
           "content_type": "application/gzip"
         },
         {
@@ -3649,7 +3811,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/rootfs.ext4.gz",
           "size": 56164659,
-          "download_count": 24,
+          "download_count": 28,
           "content_type": "application/gzip"
         },
         {
@@ -3657,7 +3819,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3665,7 +3827,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.34-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/Y2Linux-1.0.0-beta.8.34-first-install.zip",
           "size": 72232232,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -3673,7 +3835,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.34-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-135/Y2Linux-1.0.0-beta.8.34-sources-buildroot-legal-info.tar",
           "size": 19394560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -3694,7 +3856,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/bootimg.img.gz",
           "size": 7529652,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -3702,7 +3864,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/manifest.json",
           "size": 4265,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/json"
         },
         {
@@ -3710,7 +3872,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/manifest.sig",
           "size": 64,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3718,7 +3880,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/recovery.img.gz",
           "size": 7529677,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -3726,7 +3888,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/rootfs.ext4.gz",
           "size": 56167619,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -3734,7 +3896,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -3742,7 +3904,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.33-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/Y2Linux-1.0.0-beta.8.33-first-install.zip",
           "size": 72232419,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -3750,7 +3912,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.33-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-134/Y2Linux-1.0.0-beta.8.33-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -3771,7 +3933,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/bootimg.img.gz",
           "size": 7529487,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -3779,7 +3941,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/manifest.json",
           "size": 4263,
-          "download_count": 64,
+          "download_count": 68,
           "content_type": "application/json"
         },
         {
@@ -3787,7 +3949,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/manifest.sig",
           "size": 64,
-          "download_count": 59,
+          "download_count": 63,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3795,7 +3957,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/recovery.img.gz",
           "size": 7529502,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -3803,7 +3965,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/rootfs.ext4.gz",
           "size": 56053953,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -3811,7 +3973,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -3819,7 +3981,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.31-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-first-install.zip",
           "size": 72127992,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -3827,7 +3989,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.31-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -3848,7 +4010,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/bootimg.img.gz",
           "size": 7529435,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -3856,7 +4018,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/manifest.json",
           "size": 4265,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -3864,7 +4026,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3872,7 +4034,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/recovery.img.gz",
           "size": 7529451,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -3880,7 +4042,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/rootfs.ext4.gz",
           "size": 56063438,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -3888,7 +4050,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -3896,7 +4058,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.30-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/Y2Linux-1.0.0-beta.8.30-first-install.zip",
           "size": 72120231,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -3904,7 +4066,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.30-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-129/Y2Linux-1.0.0-beta.8.30-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -3925,7 +4087,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/bootimg.img.gz",
           "size": 7529617,
-          "download_count": 31,
+          "download_count": 35,
           "content_type": "application/gzip"
         },
         {
@@ -3933,7 +4095,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/manifest.json",
           "size": 4264,
-          "download_count": 68,
+          "download_count": 72,
           "content_type": "application/json"
         },
         {
@@ -3941,7 +4103,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/manifest.sig",
           "size": 64,
-          "download_count": 66,
+          "download_count": 70,
           "content_type": "application/pgp-signature"
         },
         {
@@ -3949,7 +4111,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/recovery.img.gz",
           "size": 7529637,
-          "download_count": 30,
+          "download_count": 34,
           "content_type": "application/gzip"
         },
         {
@@ -3957,7 +4119,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/rootfs.ext4.gz",
           "size": 56039270,
-          "download_count": 29,
+          "download_count": 33,
           "content_type": "application/gzip"
         },
         {
@@ -3965,7 +4127,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -3973,7 +4135,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.29-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/Y2Linux-1.0.0-beta.8.29-first-install.zip",
           "size": 72114148,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -3981,7 +4143,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.29-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-128/Y2Linux-1.0.0-beta.8.29-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4002,7 +4164,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/bootimg.img.gz",
           "size": 7529604,
-          "download_count": 29,
+          "download_count": 33,
           "content_type": "application/gzip"
         },
         {
@@ -4010,7 +4172,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/manifest.json",
           "size": 4264,
-          "download_count": 56,
+          "download_count": 60,
           "content_type": "application/json"
         },
         {
@@ -4018,7 +4180,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/manifest.sig",
           "size": 64,
-          "download_count": 55,
+          "download_count": 59,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4026,7 +4188,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/recovery.img.gz",
           "size": 7529623,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -4034,7 +4196,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/rootfs.ext4.gz",
           "size": 56038617,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/gzip"
         },
         {
@@ -4042,7 +4204,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4050,7 +4212,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.28-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/Y2Linux-1.0.0-beta.8.28-first-install.zip",
           "size": 72108024,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/zip"
         },
         {
@@ -4058,7 +4220,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.28-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-127/Y2Linux-1.0.0-beta.8.28-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4079,7 +4241,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/bootimg.img.gz",
           "size": 7529579,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -4087,7 +4249,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/manifest.json",
           "size": 4263,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/json"
         },
         {
@@ -4095,7 +4257,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/manifest.sig",
           "size": 64,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4103,7 +4265,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/recovery.img.gz",
           "size": 7529595,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -4111,7 +4273,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/rootfs.ext4.gz",
           "size": 56026519,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -4119,7 +4281,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4127,7 +4289,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.27-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-first-install.zip",
           "size": 72099968,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -4135,7 +4297,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.27-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4156,7 +4318,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/bootimg.img.gz",
           "size": 7529575,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/gzip"
         },
         {
@@ -4164,7 +4326,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/manifest.json",
           "size": 4264,
-          "download_count": 26,
+          "download_count": 30,
           "content_type": "application/json"
         },
         {
@@ -4172,7 +4334,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/manifest.sig",
           "size": 64,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4180,7 +4342,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/recovery.img.gz",
           "size": 7529591,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/gzip"
         },
         {
@@ -4188,7 +4350,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/rootfs.ext4.gz",
           "size": 56009819,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/gzip"
         },
         {
@@ -4196,7 +4358,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4204,7 +4366,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.26-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install.zip",
           "size": 72090076,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -4212,7 +4374,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.26-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4233,7 +4395,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/bootimg.img.gz",
           "size": 7529386,
-          "download_count": 34,
+          "download_count": 38,
           "content_type": "application/gzip"
         },
         {
@@ -4241,7 +4403,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/manifest.json",
           "size": 4264,
-          "download_count": 130,
+          "download_count": 134,
           "content_type": "application/json"
         },
         {
@@ -4249,7 +4411,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/manifest.sig",
           "size": 64,
-          "download_count": 128,
+          "download_count": 132,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4257,7 +4419,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/recovery.img.gz",
           "size": 7529404,
-          "download_count": 33,
+          "download_count": 37,
           "content_type": "application/gzip"
         },
         {
@@ -4265,7 +4427,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/rootfs.ext4.gz",
           "size": 56013639,
-          "download_count": 34,
+          "download_count": 38,
           "content_type": "application/gzip"
         },
         {
@@ -4273,7 +4435,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/SHA256SUMS",
           "size": 941,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -4281,7 +4443,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.25-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install.zip",
           "size": 72085369,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         },
         {
@@ -4289,7 +4451,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.25-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -4310,7 +4472,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/bootimg.img.gz",
           "size": 7528765,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -4318,7 +4480,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/manifest.json",
           "size": 4263,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/json"
         },
         {
@@ -4326,7 +4488,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/manifest.sig",
           "size": 64,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4334,7 +4496,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/recovery.img.gz",
           "size": 7528794,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -4342,7 +4504,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/rootfs.ext4.gz",
           "size": 56018375,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/gzip"
         },
         {
@@ -4350,7 +4512,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4358,7 +4520,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.24-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install.zip",
           "size": 72084721,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -4366,7 +4528,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.24-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4387,7 +4549,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/bootimg.img.gz",
           "size": 7527744,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -4395,7 +4557,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/manifest.json",
           "size": 4264,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/json"
         },
         {
@@ -4403,7 +4565,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/manifest.sig",
           "size": 64,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4411,7 +4573,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/recovery.img.gz",
           "size": 7527796,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -4419,7 +4581,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/rootfs.ext4.gz",
           "size": 56011595,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -4427,7 +4589,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4435,7 +4597,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.23-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install.zip",
           "size": 72092025,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -4443,7 +4605,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.23-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4464,7 +4626,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/bootimg.img.gz",
           "size": 7526777,
-          "download_count": 21,
+          "download_count": 25,
           "content_type": "application/gzip"
         },
         {
@@ -4472,7 +4634,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/manifest.json",
           "size": 4263,
-          "download_count": 42,
+          "download_count": 46,
           "content_type": "application/json"
         },
         {
@@ -4480,7 +4642,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/manifest.sig",
           "size": 64,
-          "download_count": 40,
+          "download_count": 44,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4488,7 +4650,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/recovery.img.gz",
           "size": 7526784,
-          "download_count": 21,
+          "download_count": 25,
           "content_type": "application/gzip"
         },
         {
@@ -4496,7 +4658,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/rootfs.ext4.gz",
           "size": 56014268,
-          "download_count": 23,
+          "download_count": 27,
           "content_type": "application/gzip"
         },
         {
@@ -4504,7 +4666,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/SHA256SUMS",
           "size": 941,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -4512,7 +4674,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.22-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install.zip",
           "size": 72072349,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/zip"
         },
         {
@@ -4520,7 +4682,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.22-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -4541,7 +4703,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/bootimg.img.gz",
           "size": 7525542,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/gzip"
         },
         {
@@ -4549,7 +4711,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "linux-6.18.56.tar.xz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz",
           "size": 154807564,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-xz"
         },
         {
@@ -4557,7 +4719,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/manifest.json",
           "size": 4264,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/json"
         },
         {
@@ -4565,7 +4727,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/manifest.sig",
           "size": 64,
-          "download_count": 27,
+          "download_count": 31,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4573,7 +4735,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/recovery.img.gz",
           "size": 7525571,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/gzip"
         },
         {
@@ -4581,7 +4743,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/rootfs.ext4.gz",
           "size": 56013134,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/gzip"
         },
         {
@@ -4589,7 +4751,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/SHA256SUMS",
           "size": 941,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -4597,7 +4759,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.21-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install.zip",
           "size": 72049852,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/zip"
         },
         {
@@ -4605,7 +4767,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.21-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         },
         {
@@ -4613,7 +4775,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-third-party-b24c80bffef1.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-third-party-b24c80bffef1.tar",
           "size": 381634560,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         },
         {
@@ -4621,7 +4783,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-toolchain-f7cda4c7d213.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar",
           "size": 142807040,
-          "download_count": 10,
+          "download_count": 13,
           "content_type": "application/x-tar"
         }
       ]
@@ -4642,7 +4804,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/bootimg.img.gz",
           "size": 7525625,
-          "download_count": 31,
+          "download_count": 35,
           "content_type": "application/gzip"
         },
         {
@@ -4650,7 +4812,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/manifest.json",
           "size": 4263,
-          "download_count": 96,
+          "download_count": 100,
           "content_type": "application/json"
         },
         {
@@ -4658,7 +4820,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/manifest.sig",
           "size": 64,
-          "download_count": 96,
+          "download_count": 100,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4666,7 +4828,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/recovery.img.gz",
           "size": 7525656,
-          "download_count": 30,
+          "download_count": 34,
           "content_type": "application/gzip"
         },
         {
@@ -4674,7 +4836,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/rootfs.ext4.gz",
           "size": 56009482,
-          "download_count": 30,
+          "download_count": 34,
           "content_type": "application/gzip"
         },
         {
@@ -4682,7 +4844,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4690,7 +4852,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.20-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install.zip",
           "size": 72048532,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/zip"
         },
         {
@@ -4698,7 +4860,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.20-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4719,7 +4881,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/bootimg.img.gz",
           "size": 7525344,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -4727,7 +4889,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/manifest.json",
           "size": 4264,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/json"
         },
         {
@@ -4735,7 +4897,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/manifest.sig",
           "size": 64,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4743,7 +4905,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/recovery.img.gz",
           "size": 7525362,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -4751,7 +4913,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/rootfs.ext4.gz",
           "size": 56010699,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -4759,7 +4921,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4767,7 +4929,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.19-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install.zip",
           "size": 72050803,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/zip"
         },
         {
@@ -4775,7 +4937,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.19-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4796,7 +4958,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/bootimg.img.gz",
           "size": 7525471,
-          "download_count": 32,
+          "download_count": 36,
           "content_type": "application/gzip"
         },
         {
@@ -4804,7 +4966,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/manifest.json",
           "size": 4264,
-          "download_count": 74,
+          "download_count": 78,
           "content_type": "application/json"
         },
         {
@@ -4812,7 +4974,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/manifest.sig",
           "size": 64,
-          "download_count": 72,
+          "download_count": 76,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4820,7 +4982,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/recovery.img.gz",
           "size": 7525490,
-          "download_count": 30,
+          "download_count": 34,
           "content_type": "application/gzip"
         },
         {
@@ -4828,7 +4990,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/rootfs.ext4.gz",
           "size": 55778759,
-          "download_count": 30,
+          "download_count": 34,
           "content_type": "application/gzip"
         },
         {
@@ -4836,7 +4998,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4844,7 +5006,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.17-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install.zip",
           "size": 71834725,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -4852,7 +5014,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.17-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         },
         {
@@ -4860,7 +5022,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-third-party-b24c80bffef1.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-114/Y2Linux-sources-third-party-b24c80bffef1.tar",
           "size": 381634560,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -4881,7 +5043,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/bootimg.img.gz",
           "size": 7521647,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/gzip"
         },
         {
@@ -4889,7 +5051,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/manifest.json",
           "size": 4264,
-          "download_count": 80,
+          "download_count": 84,
           "content_type": "application/json"
         },
         {
@@ -4897,7 +5059,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/manifest.sig",
           "size": 64,
-          "download_count": 79,
+          "download_count": 83,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4905,7 +5067,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/recovery.img.gz",
           "size": 7521670,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/gzip"
         },
         {
@@ -4913,7 +5075,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/rootfs.ext4.gz",
           "size": 55769421,
-          "download_count": 34,
+          "download_count": 38,
           "content_type": "application/gzip"
         },
         {
@@ -4921,7 +5083,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -4929,7 +5091,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.16-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install.zip",
           "size": 71812986,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -4937,7 +5099,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.16-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -4958,7 +5120,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/bootimg.img.gz",
           "size": 7523448,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -4966,7 +5128,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/manifest.json",
           "size": 4263,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/json"
         },
         {
@@ -4974,7 +5136,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/manifest.sig",
           "size": 64,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/pgp-signature"
         },
         {
@@ -4982,7 +5144,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/recovery.img.gz",
           "size": 7523469,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -4990,7 +5152,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/rootfs.ext4.gz",
           "size": 55749741,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -4998,7 +5160,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -5006,7 +5168,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.15-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install.zip",
           "size": 71796612,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -5014,7 +5176,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.15-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-sources-buildroot-legal-info.tar",
           "size": 19384320,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -5035,7 +5197,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/bootimg.img.gz",
           "size": 7521530,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -5043,7 +5205,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/manifest.json",
           "size": 4231,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/json"
         },
         {
@@ -5051,7 +5213,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/manifest.sig",
           "size": 64,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5059,7 +5221,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/recovery.img.gz",
           "size": 7521552,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -5067,7 +5229,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/rootfs.ext4.gz",
           "size": 42059539,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -5075,7 +5237,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/SHA256SUMS",
           "size": 941,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -5083,7 +5245,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.14-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install.zip",
           "size": 58079904,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -5091,7 +5253,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.14-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-sources-buildroot-legal-info.tar",
           "size": 2897920,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -5112,7 +5274,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/bootimg.img.gz",
           "size": 7523186,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/gzip"
         },
         {
@@ -5120,7 +5282,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/manifest.json",
           "size": 4232,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/json"
         },
         {
@@ -5128,7 +5290,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/manifest.sig",
           "size": 64,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5136,7 +5298,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/recovery.img.gz",
           "size": 7523196,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/gzip"
         },
         {
@@ -5144,7 +5306,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/rootfs.ext4.gz",
           "size": 42058462,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/gzip"
         },
         {
@@ -5152,7 +5314,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/SHA256SUMS",
           "size": 941,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/octet-stream"
         },
         {
@@ -5160,7 +5322,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.13-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install.zip",
           "size": 58087021,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -5168,7 +5330,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.13-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-sources-buildroot-legal-info.tar",
           "size": 2897920,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/x-tar"
         }
       ]
@@ -5189,7 +5351,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/bootimg.img.gz",
           "size": 7521740,
-          "download_count": 23,
+          "download_count": 27,
           "content_type": "application/gzip"
         },
         {
@@ -5197,7 +5359,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/manifest.json",
           "size": 4231,
-          "download_count": 47,
+          "download_count": 51,
           "content_type": "application/json"
         },
         {
@@ -5205,7 +5367,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/manifest.sig",
           "size": 64,
-          "download_count": 43,
+          "download_count": 47,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5213,7 +5375,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/recovery.img.gz",
           "size": 7521774,
-          "download_count": 23,
+          "download_count": 27,
           "content_type": "application/gzip"
         },
         {
@@ -5221,7 +5383,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/rootfs.ext4.gz",
           "size": 42068355,
-          "download_count": 23,
+          "download_count": 27,
           "content_type": "application/gzip"
         },
         {
@@ -5229,7 +5391,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/SHA256SUMS",
           "size": 941,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -5237,7 +5399,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.12-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install.zip",
           "size": 58076863,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/zip"
         },
         {
@@ -5245,7 +5407,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.12-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5266,7 +5428,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/bootimg.img.gz",
           "size": 7521336,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/gzip"
         },
         {
@@ -5274,7 +5436,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/manifest.json",
           "size": 4232,
-          "download_count": 48,
+          "download_count": 52,
           "content_type": "application/json"
         },
         {
@@ -5282,7 +5444,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/manifest.sig",
           "size": 64,
-          "download_count": 49,
+          "download_count": 53,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5290,7 +5452,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/recovery.img.gz",
           "size": 7521354,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/gzip"
         },
         {
@@ -5298,7 +5460,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/rootfs.ext4.gz",
           "size": 42053572,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/gzip"
         },
         {
@@ -5306,7 +5468,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/SHA256SUMS",
           "size": 941,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -5314,7 +5476,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.11-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install.zip",
           "size": 58070969,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -5322,7 +5484,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.11-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5343,7 +5505,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/bootimg.img.gz",
           "size": 7520753,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -5351,7 +5513,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/manifest.json",
           "size": 4232,
-          "download_count": 23,
+          "download_count": 27,
           "content_type": "application/json"
         },
         {
@@ -5359,7 +5521,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/manifest.sig",
           "size": 64,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5367,7 +5529,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/recovery.img.gz",
           "size": 7520790,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/gzip"
         },
         {
@@ -5375,7 +5537,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/rootfs.ext4.gz",
           "size": 42048725,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/gzip"
         },
         {
@@ -5383,7 +5545,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/SHA256SUMS",
           "size": 941,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/octet-stream"
         },
         {
@@ -5391,7 +5553,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.10-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install.zip",
           "size": 58064909,
-          "download_count": 71,
+          "download_count": 75,
           "content_type": "application/zip"
         },
         {
@@ -5399,7 +5561,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.10-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/x-tar"
         }
       ]
@@ -5420,7 +5582,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/bootimg.img.gz",
           "size": 7521461,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -5428,7 +5590,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/manifest.json",
           "size": 4229,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -5436,7 +5598,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5444,7 +5606,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/recovery.img.gz",
           "size": 7521474,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -5452,7 +5614,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/rootfs.ext4.gz",
           "size": 42041520,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5460,7 +5622,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/SHA256SUMS",
           "size": 939,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -5468,7 +5630,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.8-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install.zip",
           "size": 58059059,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -5476,7 +5638,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.8-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5497,7 +5659,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/bootimg.img.gz",
           "size": 7521329,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -5505,7 +5667,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/manifest.json",
           "size": 4229,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/json"
         },
         {
@@ -5513,7 +5675,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/manifest.sig",
           "size": 64,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5521,7 +5683,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/recovery.img.gz",
           "size": 7521339,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5529,7 +5691,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/rootfs.ext4.gz",
           "size": 42008981,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -5537,7 +5699,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/SHA256SUMS",
           "size": 939,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/octet-stream"
         },
         {
@@ -5545,7 +5707,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.7-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-first-install.zip",
           "size": 58029037,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -5553,7 +5715,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.7-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-95/Y2Linux-1.0.0-beta.8.7-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5574,7 +5736,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/bootimg.img.gz",
           "size": 7521417,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5582,7 +5744,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/manifest.json",
           "size": 4229,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/json"
         },
         {
@@ -5590,7 +5752,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/manifest.sig",
           "size": 64,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5598,7 +5760,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/recovery.img.gz",
           "size": 7521443,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5606,7 +5768,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/rootfs.ext4.gz",
           "size": 42015645,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5614,7 +5776,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/SHA256SUMS",
           "size": 939,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -5622,7 +5784,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.6-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-first-install.zip",
           "size": 58029257,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -5630,7 +5792,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.6-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-94/Y2Linux-1.0.0-beta.8.6-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5651,7 +5813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/bootimg.img.gz",
           "size": 7521143,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -5659,7 +5821,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/manifest.json",
           "size": 4227,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/json"
         },
         {
@@ -5667,7 +5829,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/manifest.sig",
           "size": 64,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5675,7 +5837,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/recovery.img.gz",
           "size": 7521156,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/gzip"
         },
         {
@@ -5683,7 +5845,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/rootfs.ext4.gz",
           "size": 41881080,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -5691,7 +5853,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/SHA256SUMS",
           "size": 939,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -5699,7 +5861,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.5-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-first-install.zip",
           "size": 57889842,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -5707,7 +5869,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.5-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-93/Y2Linux-1.0.0-beta.8.5-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5728,7 +5890,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/bootimg.img.gz",
           "size": 7522443,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5736,7 +5898,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/manifest.json",
           "size": 4227,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -5744,7 +5906,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/manifest.sig",
           "size": 64,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5752,7 +5914,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/recovery.img.gz",
           "size": 7522486,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5760,7 +5922,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/rootfs.ext4.gz",
           "size": 41839924,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -5768,7 +5930,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/SHA256SUMS",
           "size": 939,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -5776,7 +5938,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.4-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-first-install.zip",
           "size": 57845925,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -5784,7 +5946,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.4-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-90/Y2Linux-1.0.0-beta.8.4-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -5805,7 +5967,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/bootimg.img.gz",
           "size": 7522110,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -5813,7 +5975,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/manifest.json",
           "size": 4227,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/json"
         },
         {
@@ -5821,7 +5983,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/manifest.sig",
           "size": 64,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5829,7 +5991,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/recovery.img.gz",
           "size": 7522133,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -5837,7 +5999,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/rootfs.ext4.gz",
           "size": 41844042,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -5845,7 +6007,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/SHA256SUMS",
           "size": 939,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -5853,7 +6015,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.3-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-first-install.zip",
           "size": 57842641,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -5861,7 +6023,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.3-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-89/Y2Linux-1.0.0-beta.8.3-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5882,7 +6044,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/bootimg.img.gz",
           "size": 7519121,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -5890,7 +6052,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/manifest.json",
           "size": 4225,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/json"
         },
         {
@@ -5898,7 +6060,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/manifest.sig",
           "size": 64,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5906,7 +6068,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/recovery.img.gz",
           "size": 7519130,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/gzip"
         },
         {
@@ -5914,7 +6076,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/rootfs.ext4.gz",
           "size": 41826989,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -5922,7 +6084,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/SHA256SUMS",
           "size": 939,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -5930,7 +6092,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.2-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-first-install.zip",
           "size": 57834676,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -5938,7 +6100,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.2-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-88/Y2Linux-1.0.0-beta.8.2-sources-buildroot-legal-info.tar",
           "size": 2867200,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -5959,7 +6121,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/bootimg.img.gz",
           "size": 7513212,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5967,7 +6129,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/manifest.json",
           "size": 1397,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/json"
         },
         {
@@ -5975,7 +6137,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -5983,7 +6145,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/recovery.img.gz",
           "size": 7513218,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -5991,7 +6153,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/rootfs.ext4.gz",
           "size": 41624239,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -5999,7 +6161,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/SHA256SUMS",
           "size": 939,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/octet-stream"
         },
         {
@@ -6007,7 +6169,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.1-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-first-install.zip",
           "size": 57818670,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -6015,7 +6177,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.1-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-86/Y2Linux-1.0.0-beta.8.1-sources-buildroot-legal-info.tar",
           "size": 2856960,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6036,7 +6198,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/bootimg.img.gz",
           "size": 7509162,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -6044,7 +6206,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/manifest.json",
           "size": 1397,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/json"
         },
         {
@@ -6052,7 +6214,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/manifest.sig",
           "size": 64,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6060,7 +6222,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/recovery.img.gz",
           "size": 7509168,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -6068,7 +6230,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/rootfs.ext4.gz",
           "size": 41624008,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -6076,7 +6238,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/SHA256SUMS",
           "size": 939,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6084,7 +6246,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.0-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-first-install.zip",
           "size": 57809446,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -6092,7 +6254,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.8.0-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-1.0.0-beta.8.0-sources-buildroot-legal-info.tar",
           "size": 2856960,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         },
         {
@@ -6100,7 +6262,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-toolchain-f7cda4c7d213.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-75/Y2Linux-sources-toolchain-f7cda4c7d213.tar",
           "size": 142807040,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/x-tar"
         }
       ]
@@ -6121,7 +6283,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/bootimg.img.gz",
           "size": 7509150,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/gzip"
         },
         {
@@ -6129,7 +6291,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/manifest.json",
           "size": 1400,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -6137,7 +6299,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6145,7 +6307,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/recovery.img.gz",
           "size": 7509174,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/gzip"
         },
         {
@@ -6153,7 +6315,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/rootfs.ext4.gz",
           "size": 41597396,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/gzip"
         },
         {
@@ -6161,7 +6323,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/SHA256SUMS",
           "size": 832,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6169,7 +6331,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.11-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-first-install.zip",
           "size": 57783491,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/zip"
         },
         {
@@ -6177,7 +6339,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.11-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-74/Y2Linux-1.0.0-beta.7.11-sources-buildroot-legal-info.tar",
           "size": 2856960,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6198,7 +6360,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/bootimg.img.gz",
           "size": 7507077,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6206,7 +6368,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/manifest.json",
           "size": 1400,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/json"
         },
         {
@@ -6214,7 +6376,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/manifest.sig",
           "size": 64,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6222,7 +6384,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/recovery.img.gz",
           "size": 7507093,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6230,7 +6392,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/rootfs.ext4.gz",
           "size": 41595986,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6238,7 +6400,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/SHA256SUMS",
           "size": 832,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6246,7 +6408,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.10-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install.zip",
           "size": 57780565,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -6254,7 +6416,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.10-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-sources-buildroot-legal-info.tar",
           "size": 2856960,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -6275,7 +6437,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/bootimg.img.gz",
           "size": 7507447,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6283,7 +6445,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/manifest.json",
           "size": 1397,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -6291,7 +6453,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/manifest.sig",
           "size": 64,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6299,7 +6461,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/recovery.img.gz",
           "size": 7507469,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -6307,7 +6469,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/rootfs.ext4.gz",
           "size": 41594700,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -6315,7 +6477,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/SHA256SUMS",
           "size": 830,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -6323,7 +6485,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.9-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-first-install.zip",
           "size": 57781135,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -6331,7 +6493,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.9-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-72/Y2Linux-1.0.0-beta.7.9-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -6352,7 +6514,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/bootimg.img.gz",
           "size": 7506039,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6360,7 +6522,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/manifest.json",
           "size": 1396,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/json"
         },
         {
@@ -6368,7 +6530,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/manifest.sig",
           "size": 64,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6376,7 +6538,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/recovery.img.gz",
           "size": 7506066,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6384,7 +6546,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/rootfs.ext4.gz",
           "size": 41586591,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6392,7 +6554,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6400,7 +6562,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.8-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-first-install.zip",
           "size": 57761921,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -6408,7 +6570,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.8-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-71/Y2Linux-1.0.0-beta.7.8-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6429,7 +6591,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/bootimg.img.gz",
           "size": 7505962,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6437,7 +6599,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/manifest.json",
           "size": 1508,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/json"
         },
         {
@@ -6445,7 +6607,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/manifest.sig",
           "size": 64,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6453,7 +6615,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/recovery.img.gz",
           "size": 7505984,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6461,7 +6623,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/rootfs.ext4.gz",
           "size": 41584433,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -6469,7 +6631,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6477,7 +6639,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.7-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-first-install.zip",
           "size": 57765360,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -6485,7 +6647,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.7-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-70/Y2Linux-1.0.0-beta.7.7-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6506,7 +6668,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/bootimg.img.gz",
           "size": 7505721,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6514,7 +6676,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/manifest.json",
           "size": 1396,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/json"
         },
         {
@@ -6522,7 +6684,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/manifest.sig",
           "size": 64,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6530,7 +6692,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/recovery.img.gz",
           "size": 7505733,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6538,7 +6700,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/rootfs.ext4.gz",
           "size": 41513158,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6546,7 +6708,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6554,7 +6716,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.6-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-first-install.zip",
           "size": 57702525,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -6562,7 +6724,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.6-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-67/Y2Linux-1.0.0-beta.7.6-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6583,7 +6745,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/bootimg.img.gz",
           "size": 7505713,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6591,7 +6753,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -6599,7 +6761,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6607,7 +6769,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/recovery.img.gz",
           "size": 7505734,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6615,7 +6777,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/rootfs.ext4.gz",
           "size": 41512708,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6623,7 +6785,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6631,7 +6793,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.5-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-first-install.zip",
           "size": 57702359,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -6639,7 +6801,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.5-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-66/Y2Linux-1.0.0-beta.7.5-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6660,7 +6822,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/bootimg.img.gz",
           "size": 7505239,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6668,7 +6830,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -6676,7 +6838,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6684,7 +6846,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/recovery.img.gz",
           "size": 7505287,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6692,7 +6854,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/rootfs.ext4.gz",
           "size": 41513008,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6700,7 +6862,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6708,7 +6870,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.4-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-first-install.zip",
           "size": 57698632,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -6716,7 +6878,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.4-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-65/Y2Linux-1.0.0-beta.7.4-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6737,7 +6899,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/bootimg.img.gz",
           "size": 7505951,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -6745,7 +6907,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -6753,7 +6915,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/manifest.sig",
           "size": 64,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6761,7 +6923,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/recovery.img.gz",
           "size": 7505973,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6769,7 +6931,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/rootfs.ext4.gz",
           "size": 41515281,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -6777,7 +6939,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/SHA256SUMS",
           "size": 830,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/octet-stream"
         },
         {
@@ -6785,7 +6947,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.3-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-first-install.zip",
           "size": 57699968,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -6793,7 +6955,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.3-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-64/Y2Linux-1.0.0-beta.7.3-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -6814,7 +6976,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/bootimg.img.gz",
           "size": 7505624,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6822,7 +6984,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -6830,7 +6992,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6838,7 +7000,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/recovery.img.gz",
           "size": 7505649,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6846,7 +7008,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/rootfs.ext4.gz",
           "size": 41512543,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6854,7 +7016,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6862,7 +7024,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.2-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-first-install.zip",
           "size": 57698498,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -6870,7 +7032,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.2-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-63/Y2Linux-1.0.0-beta.7.2-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6891,7 +7053,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/bootimg.img.gz",
           "size": 7505999,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6899,7 +7061,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -6907,7 +7069,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6915,7 +7077,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/recovery.img.gz",
           "size": 7506007,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6923,7 +7085,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/rootfs.ext4.gz",
           "size": 41489971,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6931,7 +7093,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -6939,7 +7101,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.1-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-first-install.zip",
           "size": 57675732,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -6947,7 +7109,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7.1-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-62/Y2Linux-1.0.0-beta.7.1-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -6968,7 +7130,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/bootimg.img.gz",
           "size": 7505777,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -6976,7 +7138,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/manifest.json",
           "size": 1390,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/json"
         },
         {
@@ -6984,7 +7146,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/manifest.sig",
           "size": 64,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/pgp-signature"
         },
         {
@@ -6992,7 +7154,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/recovery.img.gz",
           "size": 7505799,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7000,7 +7162,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/rootfs.ext4.gz",
           "size": 41447699,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7008,7 +7170,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/SHA256SUMS",
           "size": 826,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7016,7 +7178,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-first-install.zip",
           "size": 57627297,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7024,7 +7186,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.7-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-61/Y2Linux-1.0.0-beta.7-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7045,7 +7207,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/bootimg.img.gz",
           "size": 7505005,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -7053,7 +7215,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/manifest.json",
           "size": 1396,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/json"
         },
         {
@@ -7061,7 +7223,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/manifest.sig",
           "size": 64,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7069,7 +7231,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/recovery.img.gz",
           "size": 7505023,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -7077,7 +7239,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/rootfs.ext4.gz",
           "size": 41444718,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -7085,7 +7247,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7093,7 +7255,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6.3-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-first-install.zip",
           "size": 57619094,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7101,7 +7263,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6.3-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-60/Y2Linux-1.0.0-beta.6.3-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7122,7 +7284,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/bootimg.img.gz",
           "size": 7505163,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7130,7 +7292,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7138,7 +7300,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7146,7 +7308,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/recovery.img.gz",
           "size": 7505170,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7154,7 +7316,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/rootfs.ext4.gz",
           "size": 41442052,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7162,7 +7324,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7170,7 +7332,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6.2-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-first-install.zip",
           "size": 57619098,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7178,7 +7340,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6.2-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-59/Y2Linux-1.0.0-beta.6.2-sources-buildroot-legal-info.tar",
           "size": 2836480,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7199,7 +7361,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/bootimg.img.gz",
           "size": 7505053,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7207,7 +7369,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7215,7 +7377,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/manifest.sig",
           "size": 64,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7223,7 +7385,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/recovery.img.gz",
           "size": 7505079,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7231,7 +7393,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/rootfs.ext4.gz",
           "size": 41309976,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7239,7 +7401,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7247,7 +7409,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6.1-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-first-install.zip",
           "size": 57490578,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7255,7 +7417,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6.1-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-58/Y2Linux-1.0.0-beta.6.1-sources-buildroot-legal-info.tar",
           "size": 2826240,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7276,7 +7438,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/bootimg.img.gz",
           "size": 7504965,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7284,7 +7446,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/manifest.json",
           "size": 1390,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7292,7 +7454,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7300,7 +7462,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/recovery.img.gz",
           "size": 7505000,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7308,7 +7470,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/rootfs.ext4.gz",
           "size": 41310413,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7316,7 +7478,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/SHA256SUMS",
           "size": 826,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7324,7 +7486,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install.zip",
           "size": 57485396,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7332,7 +7494,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.6-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-sources-buildroot-legal-info.tar",
           "size": 2826240,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7353,7 +7515,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/bootimg.img.gz",
           "size": 7505227,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7361,7 +7523,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7369,7 +7531,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7377,7 +7539,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/recovery.img.gz",
           "size": 7505244,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7385,7 +7547,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/rootfs.ext4.gz",
           "size": 41199442,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7393,7 +7555,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7401,7 +7563,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.5.1-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-first-install.zip",
           "size": 57376311,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7409,7 +7571,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.5.1-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-56/Y2Linux-1.0.0-beta.5.1-sources-buildroot-legal-info.tar",
           "size": 2826240,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7430,7 +7592,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/bootimg.img.gz",
           "size": 7504910,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7438,7 +7600,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/manifest.json",
           "size": 1390,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7446,7 +7608,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7454,7 +7616,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/recovery.img.gz",
           "size": 7504930,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7462,7 +7624,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/rootfs.ext4.gz",
           "size": 41130541,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7470,7 +7632,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/SHA256SUMS",
           "size": 826,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7478,7 +7640,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.5-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install.zip",
           "size": 57309186,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7486,7 +7648,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.5-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-sources-buildroot-legal-info.tar",
           "size": 2826240,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         }
       ]
@@ -7507,7 +7669,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/bootimg.img.gz",
           "size": 7505316,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7515,7 +7677,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/manifest.json",
           "size": 1396,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7523,7 +7685,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7531,7 +7693,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/recovery.img.gz",
           "size": 7505330,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7539,7 +7701,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/rootfs.ext4.gz",
           "size": 41080074,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -7547,7 +7709,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/SHA256SUMS",
           "size": 830,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7555,7 +7717,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.4.1-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-first-install.zip",
           "size": 57264038,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7563,7 +7725,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.4.1-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-54/Y2Linux-1.0.0-beta.4.1-sources-buildroot-legal-info.tar",
           "size": 2826240,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7584,7 +7746,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/bootimg.img.gz",
           "size": 7505087,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7592,7 +7754,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/manifest.json",
           "size": 1425,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7600,7 +7762,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7608,7 +7770,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/recovery.img.gz",
           "size": 7505093,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7616,7 +7778,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/rootfs.ext4.gz",
           "size": 41080075,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7624,7 +7786,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/SHA256SUMS",
           "size": 826,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7632,7 +7794,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.4-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install.zip",
           "size": 57268103,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7640,7 +7802,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.4-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-sources-buildroot-legal-info.tar",
           "size": 2826240,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         }
       ]
@@ -7661,7 +7823,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/bootimg.img.gz",
           "size": 7505015,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7669,7 +7831,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "linux-6.18.56.tar.xz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/linux-6.18.56.tar.xz",
           "size": 154807564,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/x-xz"
         },
         {
@@ -7677,7 +7839,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/manifest.json",
           "size": 1442,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/json"
         },
         {
@@ -7685,7 +7847,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7693,7 +7855,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/recovery.img.gz",
           "size": 7505034,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7701,7 +7863,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/rootfs.ext4.gz",
           "size": 41012484,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7709,7 +7871,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/SHA256SUMS",
           "size": 826,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7717,7 +7879,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.3-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-first-install.zip",
           "size": 57195020,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7725,7 +7887,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.3-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/Y2Linux-1.0.0-beta.3-sources-buildroot-legal-info.tar",
           "size": 2826240,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         },
         {
@@ -7733,7 +7895,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-sources-third-party-dce38ffdd9e0.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-52/Y2Linux-sources-third-party-dce38ffdd9e0.tar",
           "size": 381624320,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/x-tar"
         }
       ]
@@ -7754,7 +7916,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/bootimg.img.gz",
           "size": 7505227,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7762,7 +7924,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/manifest.json",
           "size": 1460,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/json"
         },
         {
@@ -7770,7 +7932,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/manifest.sig",
           "size": 64,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7778,7 +7940,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/recovery.img.gz",
           "size": 7505246,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7786,7 +7948,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/rootfs.ext4.gz",
           "size": 41029511,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7794,7 +7956,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/SHA256SUMS",
           "size": 744,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7802,7 +7964,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.2-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-first-install.zip",
           "size": 57042092,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -7810,7 +7972,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.2-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-sources-buildroot-legal-info.tar",
           "size": 379750400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         },
         {
@@ -7818,7 +7980,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.2-sources-linux-6.18.56.tar.xz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-51/Y2Linux-1.0.0-beta.2-sources-linux-6.18.56.tar.xz",
           "size": 154807564,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-xz"
         }
       ]
@@ -7839,7 +8001,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/bootimg.img.gz",
           "size": 7505186,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -7847,7 +8009,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/manifest.json",
           "size": 1432,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/json"
         },
         {
@@ -7855,7 +8017,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/manifest.sig",
           "size": 64,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7863,7 +8025,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/recovery.img.gz",
           "size": 7505214,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -7871,7 +8033,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/rootfs.ext4.gz",
           "size": 41026452,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/gzip"
         },
         {
@@ -7879,7 +8041,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/SHA256SUMS",
           "size": 744,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7887,7 +8049,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.1-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-first-install.zip",
           "size": 57044451,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -7895,7 +8057,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.1-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-sources-buildroot-legal-info.tar",
           "size": 379750400,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-tar"
         },
         {
@@ -7903,7 +8065,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-1.0.0-beta.1-sources-linux-6.18.56.tar.xz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-50/Y2Linux-1.0.0-beta.1-sources-linux-6.18.56.tar.xz",
           "size": 154807564,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-xz"
         }
       ]
@@ -7924,7 +8086,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "bootimg.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/bootimg.img.gz",
           "size": 7505279,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -7932,7 +8094,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.json",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/manifest.json",
           "size": 1545,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/json"
         },
         {
@@ -7940,7 +8102,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "manifest.sig",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/manifest.sig",
           "size": 64,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/pgp-signature"
         },
         {
@@ -7948,7 +8110,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "recovery.img.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/recovery.img.gz",
           "size": 7505294,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -7956,7 +8118,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rootfs.ext4.gz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/rootfs.ext4.gz",
           "size": 41025287,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -7964,7 +8126,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/SHA256SUMS",
           "size": 714,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/octet-stream"
         },
         {
@@ -7972,7 +8134,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-49-first-install.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/Y2Linux-49-first-install.zip",
           "size": 57037227,
-          "download_count": 7,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -7980,7 +8142,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-49-sources-buildroot-legal-info.tar",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/Y2Linux-49-sources-buildroot-legal-info.tar",
           "size": 379750400,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/x-tar"
         },
         {
@@ -7988,7 +8150,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2Linux-49-sources-linux-6.18.56.tar.xz",
           "browser_download_url": "https://github.com/SchulzCode/Y2Linux/releases/download/baseline-49/Y2Linux-49-sources-linux-6.18.56.tar.xz",
           "size": 154807564,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/x-xz"
         }
       ]
@@ -8146,7 +8308,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/rom.zip",
           "size": 528028371,
-          "download_count": 23,
+          "download_count": 43,
           "content_type": "application/zip"
         },
         {
@@ -8154,7 +8316,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rondo-1.0.2.apk",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/rondo-1.0.2.apk",
           "size": 6423022,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8162,7 +8324,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.2/updater.png",
           "size": 12952,
-          "download_count": 78,
+          "download_count": 133,
           "content_type": "image/png"
         }
       ]
@@ -8183,7 +8345,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/rom.zip",
           "size": 528031354,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -8191,7 +8353,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rondo-1.0.1.apk",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/rondo-1.0.1.apk",
           "size": 6423015,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8199,7 +8361,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.1/updater.png",
           "size": 12952,
-          "download_count": 41,
+          "download_count": 70,
           "content_type": "image/png"
         }
       ]
@@ -8220,7 +8382,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/rom.zip",
           "size": 528038771,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -8228,7 +8390,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rondo-1.0.0.apk",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/rondo-1.0.0.apk",
           "size": 6421197,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8236,7 +8398,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "updater.png",
           "browser_download_url": "https://github.com/jarvissax/rondo/releases/download/v1.0.0/updater.png",
           "size": 12952,
-          "download_count": 67,
+          "download_count": 107,
           "content_type": "image/png"
         }
       ]
@@ -8259,7 +8421,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rockbox.apk",
           "size": 16537976,
-          "download_count": 13,
+          "download_count": 20,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8267,7 +8429,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom.zip",
           "size": 588795445,
-          "download_count": 54,
+          "download_count": 295,
           "content_type": "application/zip"
         },
         {
@@ -8275,7 +8437,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/rom_type_b.zip",
           "size": 502333716,
-          "download_count": 9,
+          "download_count": 23,
           "content_type": "application/zip"
         },
         {
@@ -8283,7 +8445,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.6/update.zip",
           "size": 99371269,
-          "download_count": 19,
+          "download_count": 26,
           "content_type": "application/zip"
         }
       ]
@@ -8304,7 +8466,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rockbox.apk",
           "size": 16476536,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8312,7 +8474,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom.zip",
           "size": 584666672,
-          "download_count": 27,
+          "download_count": 33,
           "content_type": "application/zip"
         },
         {
@@ -8320,7 +8482,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/rom_type_b.zip",
           "size": 499243368,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -8328,7 +8490,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9c92b93a5d582b3819a119162a14ad0b4178d2cd/update.zip",
           "size": 99241893,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         }
       ]
@@ -8349,7 +8511,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rockbox.apk",
           "size": 16476536,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8357,7 +8519,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom.zip",
           "size": 533108576,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -8365,7 +8527,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/rom_type_b.zip",
           "size": 442359999,
-          "download_count": 4,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -8373,7 +8535,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-11d9072b8ae950dfe76b8d867f67ff1a048a8c24/update.zip",
           "size": 98341687,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         }
       ]
@@ -8394,7 +8556,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rockbox.apk",
           "size": 16476536,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8402,7 +8564,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom.zip",
           "size": 537868454,
-          "download_count": 49,
+          "download_count": 53,
           "content_type": "application/zip"
         },
         {
@@ -8410,7 +8572,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/rom_type_b.zip",
           "size": 445484013,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -8418,7 +8580,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-9733397325a7c3239cac067d86ca7682b11136b2/update.zip",
           "size": 98336154,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/zip"
         }
       ]
@@ -8439,7 +8601,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rockbox.apk",
           "size": 16451893,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8447,7 +8609,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom.zip",
           "size": 533260668,
-          "download_count": 101,
+          "download_count": 105,
           "content_type": "application/zip"
         },
         {
@@ -8455,7 +8617,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/rom_type_b.zip",
           "size": 449565981,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/zip"
         },
         {
@@ -8463,7 +8625,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e879e4813d025c07d66dd89e17065fdedd3ba5c5/update.zip",
           "size": 98300851,
-          "download_count": 21,
+          "download_count": 25,
           "content_type": "application/zip"
         }
       ]
@@ -8484,7 +8646,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rockbox.apk",
           "size": 16439605,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8492,7 +8654,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom.zip",
           "size": 535153959,
-          "download_count": 73,
+          "download_count": 77,
           "content_type": "application/zip"
         },
         {
@@ -8500,7 +8662,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/rom_type_b.zip",
           "size": 442648964,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -8508,7 +8670,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-107480ccb359ec26a8f9d161d4e86efd3d6b1144/update.zip",
           "size": 98277748,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         }
       ]
@@ -8529,7 +8691,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rockbox.apk",
           "size": 16439605,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8537,7 +8699,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom.zip",
           "size": 535140170,
-          "download_count": 129,
+          "download_count": 133,
           "content_type": "application/zip"
         },
         {
@@ -8545,7 +8707,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/rom_type_b.zip",
           "size": 451220956,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -8553,7 +8715,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e8b9dbab0ab4ab93c28dcb325fbcc032d07cf87b/update.zip",
           "size": 98277218,
-          "download_count": 21,
+          "download_count": 25,
           "content_type": "application/zip"
         }
       ]
@@ -8574,7 +8736,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rockbox.apk",
           "size": 16439605,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8582,7 +8744,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom.zip",
           "size": 534355449,
-          "download_count": 153,
+          "download_count": 157,
           "content_type": "application/zip"
         },
         {
@@ -8590,7 +8752,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/rom_type_b.zip",
           "size": 450325466,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -8598,7 +8760,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-f588b0f654632913a2bbb9f832e7ddf4571b7c40/update.zip",
           "size": 98278096,
-          "download_count": 22,
+          "download_count": 26,
           "content_type": "application/zip"
         }
       ]
@@ -8619,7 +8781,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rockbox.apk",
           "size": 16410933,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8627,7 +8789,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom.zip",
           "size": 533121549,
-          "download_count": 280,
+          "download_count": 284,
           "content_type": "application/zip"
         },
         {
@@ -8635,7 +8797,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/rom_type_b.zip",
           "size": 451061510,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/zip"
         },
         {
@@ -8643,7 +8805,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-ec32a663dfb8396080227de03846c30f07dc258d/update.zip",
           "size": 98180643,
-          "download_count": 33,
+          "download_count": 37,
           "content_type": "application/zip"
         }
       ]
@@ -8664,7 +8826,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rockbox.apk",
           "size": 16410933,
-          "download_count": 17,
+          "download_count": 21,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8672,7 +8834,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom.zip",
           "size": 535072637,
-          "download_count": 482,
+          "download_count": 486,
           "content_type": "application/zip"
         },
         {
@@ -8680,7 +8842,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/rom_type_b.zip",
           "size": 443210525,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/zip"
         },
         {
@@ -8688,7 +8850,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-12f5649748fb4f0a31e385c65ec6e2933bca9fef/update.zip",
           "size": 98176945,
-          "download_count": 44,
+          "download_count": 48,
           "content_type": "application/zip"
         }
       ]
@@ -8709,7 +8871,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rockbox.apk",
           "size": 16406837,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8717,7 +8879,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom.zip",
           "size": 534340490,
-          "download_count": 68,
+          "download_count": 72,
           "content_type": "application/zip"
         },
         {
@@ -8725,7 +8887,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/rom_type_b.zip",
           "size": 443191253,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -8733,7 +8895,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-1a8c1fcd2e7a3e7eae0673030c9e173805d4636f/update.zip",
           "size": 98175799,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/zip"
         }
       ]
@@ -8754,7 +8916,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "libbluetoothdrv.so",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/airpods-2-fix/libbluetoothdrv.so",
           "size": 8736,
-          "download_count": 19,
+          "download_count": 27,
           "content_type": "application/x-sharedlib"
         },
         {
@@ -8762,7 +8924,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "libbluetoothdrv_real.so",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/airpods-2-fix/libbluetoothdrv_real.so",
           "size": 9280,
-          "download_count": 19,
+          "download_count": 27,
           "content_type": "application/x-sharedlib"
         }
       ]
@@ -8783,7 +8945,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rockbox.apk",
           "size": 16406837,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8791,7 +8953,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom.zip",
           "size": 534319225,
-          "download_count": 97,
+          "download_count": 101,
           "content_type": "application/zip"
         },
         {
@@ -8799,7 +8961,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/rom_type_b.zip",
           "size": 451143977,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -8807,7 +8969,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-abc6ac2fc4700171a3402d41714d618321895ce9/update.zip",
           "size": 98169257,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         }
       ]
@@ -8828,7 +8990,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rockbox.apk",
           "size": 16402741,
-          "download_count": 142,
+          "download_count": 146,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8836,7 +8998,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom.zip",
           "size": 534484127,
-          "download_count": 12615,
+          "download_count": 12635,
           "content_type": "application/zip"
         },
         {
@@ -8844,7 +9006,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/rom_type_b.zip",
           "size": 442208156,
-          "download_count": 240,
+          "download_count": 245,
           "content_type": "application/zip"
         },
         {
@@ -8852,7 +9014,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.5/update.zip",
           "size": 98160230,
-          "download_count": 1239,
+          "download_count": 1243,
           "content_type": "application/zip"
         }
       ]
@@ -8873,7 +9035,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rockbox.apk",
           "size": 16402741,
-          "download_count": 25,
+          "download_count": 29,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8881,7 +9043,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom.zip",
           "size": 535108830,
-          "download_count": 1883,
+          "download_count": 1888,
           "content_type": "application/zip"
         },
         {
@@ -8889,7 +9051,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/rom_type_b.zip",
           "size": 443151244,
-          "download_count": 35,
+          "download_count": 39,
           "content_type": "application/zip"
         },
         {
@@ -8897,7 +9059,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-051dece4e43d9ec5c35ab2809d28cfa3b9251e0d/update.zip",
           "size": 98161403,
-          "download_count": 181,
+          "download_count": 185,
           "content_type": "application/zip"
         }
       ]
@@ -8918,7 +9080,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rockbox.apk",
           "size": 16304437,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8926,7 +9088,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom.zip",
           "size": 473838040,
-          "download_count": 210,
+          "download_count": 214,
           "content_type": "application/zip"
         },
         {
@@ -8934,7 +9096,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-e76215b31d9d9106a461383ae1ec4f378db6d2d8/rom_type_b.zip",
           "size": 441474494,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/zip"
         }
       ]
@@ -8955,7 +9117,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_240p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rockbox_240p.apk",
           "size": 8124725,
-          "download_count": 39,
+          "download_count": 43,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8963,7 +9125,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_360p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rockbox_360p.apk",
           "size": 8489269,
-          "download_count": 42,
+          "download_count": 46,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -8971,7 +9133,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_240p.zip",
           "size": 460680702,
-          "download_count": 6923,
+          "download_count": 6927,
           "content_type": "application/zip"
         },
         {
@@ -8979,7 +9141,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_240p_type_b.zip",
           "size": 425619194,
-          "download_count": 82,
+          "download_count": 86,
           "content_type": "application/zip"
         },
         {
@@ -8987,7 +9149,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_360p.zip",
           "size": 462537562,
-          "download_count": 3344,
+          "download_count": 3348,
           "content_type": "application/zip"
         },
         {
@@ -8995,7 +9157,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/rom_360p_type_b.zip",
           "size": 427897125,
-          "download_count": 76,
+          "download_count": 80,
           "content_type": "application/zip"
         },
         {
@@ -9003,7 +9165,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/update_240p.zip",
           "size": 91413335,
-          "download_count": 45,
+          "download_count": 49,
           "content_type": "application/zip"
         },
         {
@@ -9011,7 +9173,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/update_360p.zip",
           "size": 92139133,
-          "download_count": 68,
+          "download_count": 72,
           "content_type": "application/zip"
         },
         {
@@ -9019,7 +9181,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "voices.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.4/voices.zip",
           "size": 76500020,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/zip"
         }
       ]
@@ -9040,7 +9202,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_240p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rockbox_240p.apk",
           "size": 8124725,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9048,7 +9210,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_360p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rockbox_360p.apk",
           "size": 8489269,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9056,7 +9218,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p.zip",
           "size": 460372220,
-          "download_count": 594,
+          "download_count": 599,
           "content_type": "application/zip"
         },
         {
@@ -9064,7 +9226,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_240p_type_b.zip",
           "size": 428608375,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/zip"
         },
         {
@@ -9072,7 +9234,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p.zip",
           "size": 462332873,
-          "download_count": 141,
+          "download_count": 145,
           "content_type": "application/zip"
         },
         {
@@ -9080,7 +9242,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/rom_360p_type_b.zip",
           "size": 427983824,
-          "download_count": 11,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -9088,7 +9250,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_240p.zip",
           "size": 91412803,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -9096,7 +9258,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-785381002f50cb58b32990a69df3e0cce5c8a90e/update_360p.zip",
           "size": 92138649,
-          "download_count": 42,
+          "download_count": 46,
           "content_type": "application/zip"
         }
       ]
@@ -9117,7 +9279,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_240p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rockbox_240p.apk",
           "size": 8124725,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9125,7 +9287,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_360p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rockbox_360p.apk",
           "size": 8489269,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9133,7 +9295,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p.zip",
           "size": 459816683,
-          "download_count": 133,
+          "download_count": 138,
           "content_type": "application/zip"
         },
         {
@@ -9141,7 +9303,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_240p_type_b.zip",
           "size": 426700751,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -9149,7 +9311,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p.zip",
           "size": 462064783,
-          "download_count": 31,
+          "download_count": 35,
           "content_type": "application/zip"
         },
         {
@@ -9157,7 +9319,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/rom_360p_type_b.zip",
           "size": 436481176,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -9165,7 +9327,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_240p.zip",
           "size": 91412789,
-          "download_count": 8,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -9173,7 +9335,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-0368abe5a5de2e8b8c2995038f49661ec57e827d/update_360p.zip",
           "size": 92139068,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/zip"
         }
       ]
@@ -9194,7 +9356,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_240p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rockbox_240p.apk",
           "size": 8124725,
-          "download_count": 14,
+          "download_count": 18,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9202,7 +9364,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_360p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rockbox_360p.apk",
           "size": 8489269,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9210,7 +9372,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p.zip",
           "size": 458279585,
-          "download_count": 119,
+          "download_count": 123,
           "content_type": "application/zip"
         },
         {
@@ -9218,7 +9380,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_240p_type_b.zip",
           "size": 428315001,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/zip"
         },
         {
@@ -9226,7 +9388,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p.zip",
           "size": 463344014,
-          "download_count": 50,
+          "download_count": 54,
           "content_type": "application/zip"
         },
         {
@@ -9234,7 +9396,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/rom_360p_type_b.zip",
           "size": 427867790,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/zip"
         },
         {
@@ -9242,7 +9404,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_240p.zip",
           "size": 91413275,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -9250,7 +9412,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "update_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/nightly-35e926bd6ea663ab0aacb2f138c7f71ae744971f/update_360p.zip",
           "size": 92139719,
-          "download_count": 39,
+          "download_count": 43,
           "content_type": "application/zip"
         }
       ]
@@ -9292,7 +9454,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "libs_240p.tar.gz",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/libs_240p.tar.gz",
           "size": 4595114,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/gzip"
         },
         {
@@ -9300,7 +9462,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "libs_360p.tar.gz",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/libs_360p.tar.gz",
           "size": 4657244,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/gzip"
         },
         {
@@ -9308,7 +9470,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_240p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rockbox_240p.apk",
           "size": 4790581,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9316,7 +9478,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox_360p.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rockbox_360p.apk",
           "size": 4856117,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9324,7 +9486,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p.zip",
           "size": 432580131,
-          "download_count": 1439,
+          "download_count": 1444,
           "content_type": "application/zip"
         },
         {
@@ -9332,7 +9494,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_240p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_240p_type_b.zip",
           "size": 400796233,
-          "download_count": 43,
+          "download_count": 47,
           "content_type": "application/zip"
         },
         {
@@ -9340,7 +9502,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p.zip",
           "size": 434614251,
-          "download_count": 1067,
+          "download_count": 1071,
           "content_type": "application/zip"
         },
         {
@@ -9348,7 +9510,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_360p_type_b.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stable-v0.3/rom_360p_type_b.zip",
           "size": 401143742,
-          "download_count": 28,
+          "download_count": 33,
           "content_type": "application/zip"
         }
       ]
@@ -9369,7 +9531,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-a-base/rom.zip",
           "size": 456613744,
-          "download_count": 8248,
+          "download_count": 8330,
           "content_type": "application/zip"
         }
       ]
@@ -9390,7 +9552,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/type-b-base/rom.zip",
           "size": 399460715,
-          "download_count": 8018,
+          "download_count": 8098,
           "content_type": "application/zip"
         }
       ]
@@ -9411,7 +9573,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "better-Y_3.1.2_v1.1.0-dev1_patched.apk",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/stock-menu/better-Y_3.1.2_v1.1.0-dev1_patched.apk",
           "size": 60200797,
-          "download_count": 8,
+          "download_count": 23,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9448,7 +9610,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "libs.zip",
           "browser_download_url": "https://github.com/rockbox-y1/rockbox/releases/download/16761617720/libs.zip",
           "size": 3996666,
-          "download_count": 58,
+          "download_count": 61,
           "content_type": "application/zip"
         },
         {
@@ -9542,7 +9704,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "INSTALL-GUIDE.md",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/INSTALL-GUIDE.md",
           "size": 4237,
-          "download_count": 71,
+          "download_count": 75,
           "content_type": "application/octet-stream"
         },
         {
@@ -9550,7 +9712,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "LICENSE.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/LICENSE.txt",
           "size": 15127,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9558,7 +9720,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "NOTICE.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/NOTICE.txt",
           "size": 1010,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9566,7 +9728,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "README-FIRST.md",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/README-FIRST.md",
           "size": 1061,
-          "download_count": 38,
+          "download_count": 42,
           "content_type": "application/octet-stream"
         },
         {
@@ -9574,7 +9736,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "RELEASE-NOTES.md",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/RELEASE-NOTES.md",
           "size": 2108,
-          "download_count": 20,
+          "download_count": 24,
           "content_type": "application/octet-stream"
         },
         {
@@ -9582,7 +9744,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-v2.5-release-square.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rockbox-y2-v2.5-release-square.png",
           "size": 1585171,
-          "download_count": 236,
+          "download_count": 311,
           "content_type": "image/png"
         },
         {
@@ -9590,7 +9752,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/rom_y2.zip",
           "size": 361644736,
-          "download_count": 562,
+          "download_count": 688,
           "content_type": "application/zip"
         },
         {
@@ -9598,7 +9760,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/SHA256SUMS.txt",
           "size": 674,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9606,7 +9768,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-V2.5-Source.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.5-beta/Y2-Rockbox-V2.5-Source.zip",
           "size": 72256082,
-          "download_count": 28,
+          "download_count": 32,
           "content_type": "application/zip"
         }
       ]
@@ -9627,7 +9789,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "INSTALL-GUIDE.md",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/INSTALL-GUIDE.md",
           "size": 2008,
-          "download_count": 158,
+          "download_count": 162,
           "content_type": "application/octet-stream"
         },
         {
@@ -9635,7 +9797,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "LICENSE.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/LICENSE.txt",
           "size": 15127,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9643,7 +9805,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "NOTICE.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/NOTICE.txt",
           "size": 1010,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9651,7 +9813,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "README-FIRST.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/README-FIRST.txt",
           "size": 925,
-          "download_count": 78,
+          "download_count": 82,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9659,7 +9821,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "RELEASE-NOTES.md",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/RELEASE-NOTES.md",
           "size": 1345,
-          "download_count": 15,
+          "download_count": 19,
           "content_type": "application/octet-stream"
         },
         {
@@ -9667,7 +9829,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-beta-v2-release-portrait.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/rockbox-y2-beta-v2-release-portrait.png",
           "size": 2135412,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "image/png"
         },
         {
@@ -9675,7 +9837,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rockbox-y2-beta-v2-release-square.png",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/rockbox-y2-beta-v2-release-square.png",
           "size": 1758566,
-          "download_count": 27,
+          "download_count": 31,
           "content_type": "image/png"
         },
         {
@@ -9683,7 +9845,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/SHA256SUMS.txt",
           "size": 1109,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9691,7 +9853,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "UPDATE-ONLY-MANIFEST.json",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/UPDATE-ONLY-MANIFEST.json",
           "size": 1304,
-          "download_count": 19,
+          "download_count": 23,
           "content_type": "application/json"
         },
         {
@@ -9699,7 +9861,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "UPDATER-FORMATS.md",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/UPDATER-FORMATS.md",
           "size": 1095,
-          "download_count": 39,
+          "download_count": 43,
           "content_type": "application/octet-stream"
         },
         {
@@ -9707,7 +9869,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-Beta-v0.2.0-Source.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Source.zip",
           "size": 72561786,
-          "download_count": 38,
+          "download_count": 42,
           "content_type": "application/zip"
         },
         {
@@ -9715,7 +9877,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip",
           "size": 361774260,
-          "download_count": 75,
+          "download_count": 79,
           "content_type": "application/zip"
         },
         {
@@ -9723,7 +9885,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.2.0-beta/Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip",
           "size": 361774260,
-          "download_count": 125,
+          "download_count": 130,
           "content_type": "application/zip"
         }
       ]
@@ -9744,7 +9906,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "InnioasisUpdater_Setup_1.1.2.exe",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/InnioasisUpdater_Setup_1.1.2.exe",
           "size": 76812094,
-          "download_count": 125,
+          "download_count": 129,
           "content_type": "application/x-msdownload"
         },
         {
@@ -9752,7 +9914,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "LICENSE.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/LICENSE.txt",
           "size": 15407,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9760,7 +9922,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "NOTICE.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/NOTICE.txt",
           "size": 1010,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9768,7 +9930,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "README-FIRST.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/README-FIRST.txt",
           "size": 3453,
-          "download_count": 76,
+          "download_count": 80,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9776,7 +9938,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/rom_y2.zip",
           "size": 366781486,
-          "download_count": 662,
+          "download_count": 680,
           "content_type": "application/zip"
         },
         {
@@ -9784,7 +9946,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "SHA256SUMS.txt",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/SHA256SUMS.txt",
           "size": 650,
-          "download_count": 37,
+          "download_count": 41,
           "content_type": "text/plain; charset=utf-8"
         },
         {
@@ -9792,7 +9954,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-Beta-v0.1.0-Guide.pdf",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-Guide.pdf",
           "size": 1061516,
-          "download_count": 107,
+          "download_count": 111,
           "content_type": "application/pdf"
         },
         {
@@ -9800,7 +9962,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-Beta-v0.1.0-Source.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-Source.zip",
           "size": 68049228,
-          "download_count": 57,
+          "download_count": 61,
           "content_type": "application/zip"
         },
         {
@@ -9808,7 +9970,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
           "browser_download_url": "https://github.com/SPYCEMAGIC/Y2-Rockbox/releases/download/v0.1.0-beta/Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip",
           "size": 366781486,
-          "download_count": 260,
+          "download_count": 265,
           "content_type": "application/zip"
         }
       ]
@@ -9831,7 +9993,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/y2-release/rom_y2.zip",
           "size": 443599332,
-          "download_count": 38,
+          "download_count": 44,
           "content_type": "application/zip"
         }
       ]
@@ -9852,7 +10014,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/app-release.apk",
           "size": 20001162,
-          "download_count": 97,
+          "download_count": 100,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9860,7 +10022,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom.zip",
           "size": 981474469,
-          "download_count": 895,
+          "download_count": 909,
           "content_type": "application/zip"
         },
         {
@@ -9868,7 +10030,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_a5.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_a5.zip",
           "size": 293722213,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/zip"
         },
         {
@@ -9876,7 +10038,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260819-0956/rom_type_b.zip",
           "size": 488296019,
-          "download_count": 18,
+          "download_count": 22,
           "content_type": "application/zip"
         }
       ]
@@ -9897,7 +10059,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/y2-base/rom_y2.zip",
           "size": 635849224,
-          "download_count": 39,
+          "download_count": 42,
           "content_type": "application/zip"
         }
       ]
@@ -9918,7 +10080,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/type-a-base/rom.zip",
           "size": 981273156,
-          "download_count": 62,
+          "download_count": 65,
           "content_type": "application/zip"
         }
       ]
@@ -9939,7 +10101,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom.zip",
           "size": 543852409,
-          "download_count": 808,
+          "download_count": 812,
           "content_type": "application/zip"
         },
         {
@@ -9947,7 +10109,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom_type_b.zip",
           "size": 544709464,
-          "download_count": 21,
+          "download_count": 24,
           "content_type": "application/zip"
         },
         {
@@ -9955,7 +10117,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260716-0131/rom_y2.zip",
           "size": 635849224,
-          "download_count": 184,
+          "download_count": 192,
           "content_type": "application/zip"
         }
       ]
@@ -9976,7 +10138,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260702-1521/app-release.apk",
           "size": 12079527,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -9984,7 +10146,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260702-1521/rom.zip",
           "size": 454799946,
-          "download_count": 298,
+          "download_count": 302,
           "content_type": "application/zip"
         },
         {
@@ -9992,7 +10154,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260702-1521/rom_type_b.zip",
           "size": 407592425,
-          "download_count": 9,
+          "download_count": 12,
           "content_type": "application/zip"
         }
       ]
@@ -10034,7 +10196,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260702-1512/app-release.apk",
           "size": 12079451,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10042,7 +10204,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260702-1512/rom.zip",
           "size": 454787990,
-          "download_count": 58,
+          "download_count": 61,
           "content_type": "application/zip"
         },
         {
@@ -10050,7 +10212,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260702-1512/rom_type_b.zip",
           "size": 406268804,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10071,7 +10233,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260701-1453/app-release.apk",
           "size": 12051734,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10079,7 +10241,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260701-1453/rom.zip",
           "size": 454747067,
-          "download_count": 111,
+          "download_count": 114,
           "content_type": "application/zip"
         },
         {
@@ -10087,7 +10249,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260701-1453/rom_type_b.zip",
           "size": 406261233,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/zip"
         }
       ]
@@ -10108,7 +10270,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260701-1454/app-release.apk",
           "size": 12051745,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10116,7 +10278,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260701-1454/rom.zip",
           "size": 454788528,
-          "download_count": 9,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -10124,7 +10286,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260701-1454/rom_type_b.zip",
           "size": 407429266,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10145,7 +10307,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1236/app-release.apk",
           "size": 11917815,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10153,7 +10315,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1236/rom.zip",
           "size": 454811715,
-          "download_count": 106,
+          "download_count": 110,
           "content_type": "application/zip"
         },
         {
@@ -10161,7 +10323,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1236/rom_type_b.zip",
           "size": 406503923,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10182,7 +10344,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1125/app-release.apk",
           "size": 11915122,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10190,7 +10352,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1125/rom.zip",
           "size": 454745977,
-          "download_count": 10,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -10198,7 +10360,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1125/rom_type_b.zip",
           "size": 406236815,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10219,7 +10381,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/app-release.apk",
           "size": 11915313,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10227,7 +10389,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom.zip",
           "size": 454762803,
-          "download_count": 8,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -10235,7 +10397,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1120/rom_type_b.zip",
           "size": 406224357,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10256,7 +10418,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/app-release.apk",
           "size": 11914912,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10264,7 +10426,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom.zip",
           "size": 454750046,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -10272,7 +10434,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1110/rom_type_b.zip",
           "size": 406555908,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10293,7 +10455,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/app-release.apk",
           "size": 11914613,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10301,7 +10463,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom.zip",
           "size": 454766683,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -10309,7 +10471,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1102/rom_type_b.zip",
           "size": 411180005,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10330,7 +10492,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1023/app-release.apk",
           "size": 11914022,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10338,7 +10500,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1023/rom.zip",
           "size": 454766711,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         },
         {
@@ -10346,7 +10508,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1023/rom_type_b.zip",
           "size": 406239262,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10367,7 +10529,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/app-release.apk",
           "size": 11913472,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10375,7 +10537,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom.zip",
           "size": 454750593,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         },
         {
@@ -10383,7 +10545,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-1005/rom_type_b.zip",
           "size": 410355530,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10404,7 +10566,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/app-release.apk",
           "size": 11913474,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10412,7 +10574,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom.zip",
           "size": 454786607,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         },
         {
@@ -10420,7 +10582,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0956/rom_type_b.zip",
           "size": 407483884,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10441,7 +10603,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0636/app-release.apk",
           "size": 11908438,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10449,7 +10611,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0636/rom.zip",
           "size": 454823470,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -10457,7 +10619,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0636/rom_type_b.zip",
           "size": 410330989,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10478,7 +10640,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0550/app-release.apk",
           "size": 11906829,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10486,7 +10648,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0550/rom.zip",
           "size": 454788812,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         },
         {
@@ -10494,7 +10656,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260630-0550/rom_type_b.zip",
           "size": 407516967,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10515,7 +10677,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1236/app-release.apk",
           "size": 11917788,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10523,7 +10685,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1236/rom.zip",
           "size": 454826338,
-          "download_count": 8,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -10531,7 +10693,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1236/rom_type_b.zip",
           "size": 407522307,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10552,7 +10714,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1125/app-release.apk",
           "size": 11915115,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10560,7 +10722,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1125/rom.zip",
           "size": 454808459,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         },
         {
@@ -10568,7 +10730,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1125/rom_type_b.zip",
           "size": 407497685,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10589,7 +10751,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/app-release.apk",
           "size": 11915334,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10597,7 +10759,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/rom.zip",
           "size": 454809965,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         },
         {
@@ -10605,7 +10767,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1120/rom_type_b.zip",
           "size": 407470325,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10626,7 +10788,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1110/app-release.apk",
           "size": 11915009,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10634,7 +10796,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1110/rom.zip",
           "size": 454784579,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         },
         {
@@ -10642,7 +10804,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1110/rom_type_b.zip",
           "size": 407593003,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10663,7 +10825,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/app-release.apk",
           "size": 11914620,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10671,7 +10833,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom.zip",
           "size": 454737470,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         },
         {
@@ -10679,7 +10841,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1102/rom_type_b.zip",
           "size": 406537124,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10700,7 +10862,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1035/app-release.apk",
           "size": 11914277,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10708,7 +10870,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1035/rom.zip",
           "size": 454865325,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         },
         {
@@ -10716,7 +10878,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1035/rom_type_b.zip",
           "size": 411187212,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/zip"
         }
       ]
@@ -10737,7 +10899,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1024/app-release.apk",
           "size": 11914103,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10745,7 +10907,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1024/rom.zip",
           "size": 454738152,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         },
         {
@@ -10753,7 +10915,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1024/rom_type_b.zip",
           "size": 407541607,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10774,7 +10936,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1005/app-release.apk",
           "size": 11913510,
-          "download_count": 3,
+          "download_count": 6,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10782,7 +10944,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1005/rom.zip",
           "size": 456316899,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         },
         {
@@ -10790,7 +10952,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-1005/rom_type_b.zip",
           "size": 406194763,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10811,7 +10973,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0957/app-release.apk",
           "size": 11913516,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10819,7 +10981,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0957/rom.zip",
           "size": 454748168,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         },
         {
@@ -10827,7 +10989,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0957/rom_type_b.zip",
           "size": 399998206,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10848,7 +11010,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/app-release.apk",
           "size": 11908449,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10856,7 +11018,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/rom.zip",
           "size": 456326463,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -10864,7 +11026,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0636/rom_type_b.zip",
           "size": 406305936,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10885,7 +11047,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/app-release.apk",
           "size": 11906835,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10893,7 +11055,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/rom.zip",
           "size": 454771254,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         },
         {
@@ -10901,7 +11063,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260630-0549/rom_type_b.zip",
           "size": 406484375,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10922,7 +11084,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1615/app-release.apk",
           "size": 11855694,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10930,7 +11092,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1615/rom.zip",
           "size": 454726051,
-          "download_count": 63,
+          "download_count": 66,
           "content_type": "application/zip"
         },
         {
@@ -10938,7 +11100,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1615/rom_type_b.zip",
           "size": 410292538,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10959,7 +11121,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1610/app-release.apk",
           "size": 11855693,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -10967,7 +11129,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1610/rom.zip",
           "size": 454770853,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -10975,7 +11137,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1610/rom_type_b.zip",
           "size": 407467592,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -10996,7 +11158,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1444/app-release.apk",
           "size": 11855650,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11004,7 +11166,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1444/rom.zip",
           "size": 454768809,
-          "download_count": 21,
+          "download_count": 24,
           "content_type": "application/zip"
         },
         {
@@ -11012,7 +11174,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-1444/rom_type_b.zip",
           "size": 406299468,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -11033,7 +11195,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-0955/app-release.apk",
           "size": 11849739,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11041,7 +11203,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-0955/rom.zip",
           "size": 454768720,
-          "download_count": 18,
+          "download_count": 21,
           "content_type": "application/zip"
         },
         {
@@ -11049,7 +11211,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-0955/rom_type_b.zip",
           "size": 407476085,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -11070,7 +11232,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-0057/app-release.apk",
           "size": 11839226,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11078,7 +11240,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-0057/rom.zip",
           "size": 454783983,
-          "download_count": 8,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -11086,7 +11248,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260629-0057/rom_type_b.zip",
           "size": 406532147,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -11107,7 +11269,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1616/app-release.apk",
           "size": 11855666,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11115,7 +11277,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1616/rom.zip",
           "size": 454793599,
-          "download_count": 16,
+          "download_count": 19,
           "content_type": "application/zip"
         },
         {
@@ -11123,7 +11285,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1616/rom_type_b.zip",
           "size": 407502082,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11144,7 +11306,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1609/app-release.apk",
           "size": 11855675,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11152,7 +11314,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1609/rom.zip",
           "size": 456316867,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -11160,7 +11322,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1609/rom_type_b.zip",
           "size": 406514637,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -11181,7 +11343,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1444/app-release.apk",
           "size": 11855679,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11189,7 +11351,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1444/rom.zip",
           "size": 454796914,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -11197,7 +11359,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-1444/rom_type_b.zip",
           "size": 407471648,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11218,7 +11380,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0955/app-release.apk",
           "size": 11849735,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11226,7 +11388,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0955/rom.zip",
           "size": 456310239,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -11234,7 +11396,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0955/rom_type_b.zip",
           "size": 407526348,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11255,7 +11417,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/app-release.apk",
           "size": 11849728,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11263,7 +11425,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/rom.zip",
           "size": 454818619,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -11271,7 +11433,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0926/rom_type_b.zip",
           "size": 410283882,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11292,7 +11454,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0057/app-release.apk",
           "size": 11839341,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11300,7 +11462,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0057/rom.zip",
           "size": 454795463,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         },
         {
@@ -11308,7 +11470,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260629-0057/rom_type_b.zip",
           "size": 407490265,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11329,7 +11491,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/app-release.apk",
           "size": 11821525,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11337,7 +11499,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/rom.zip",
           "size": 454771450,
-          "download_count": 16,
+          "download_count": 19,
           "content_type": "application/zip"
         },
         {
@@ -11345,7 +11507,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1907/rom_type_b.zip",
           "size": 407432917,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11366,7 +11528,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1014/app-release.apk",
           "size": 11815214,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11374,7 +11536,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1014/rom.zip",
           "size": 454727674,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -11382,7 +11544,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260628-1014/rom_type_b.zip",
           "size": 409809472,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11403,7 +11565,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260628-1014/app-release.apk",
           "size": 11815142,
-          "download_count": 7,
+          "download_count": 10,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11411,7 +11573,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260628-1014/rom.zip",
           "size": 454747885,
-          "download_count": 15,
+          "download_count": 18,
           "content_type": "application/zip"
         },
         {
@@ -11419,7 +11581,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260628-1014/rom_type_b.zip",
           "size": 407576004,
-          "download_count": 8,
+          "download_count": 11,
           "content_type": "application/zip"
         }
       ]
@@ -11440,7 +11602,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/app-release.apk",
           "size": 11815148,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11448,7 +11610,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/rom.zip",
           "size": 454835631,
-          "download_count": 22,
+          "download_count": 25,
           "content_type": "application/zip"
         },
         {
@@ -11456,7 +11618,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/20260627-0304/rom_type_b.zip",
           "size": 407466709,
-          "download_count": 7,
+          "download_count": 10,
           "content_type": "application/zip"
         }
       ]
@@ -11477,7 +11639,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0304/app-release.apk",
           "size": 11815258,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11485,7 +11647,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0304/rom.zip",
           "size": 454756660,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/zip"
         },
         {
@@ -11493,7 +11655,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0304/rom_type_b.zip",
           "size": 407535818,
-          "download_count": 6,
+          "download_count": 9,
           "content_type": "application/zip"
         }
       ]
@@ -11514,7 +11676,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "app-release.apk",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0209/app-release.apk",
           "size": 11815179,
-          "download_count": 5,
+          "download_count": 8,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -11522,7 +11684,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0209/rom.zip",
           "size": 457157099,
-          "download_count": 7,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -11530,7 +11692,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/thesolarproject/solar/releases/download/nightly-20260627-0209/rom_type_b.zip",
           "size": 409500889,
-          "download_count": 4,
+          "download_count": 7,
           "content_type": "application/zip"
         }
       ]
@@ -11574,7 +11736,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom.zip",
           "size": 456284202,
-          "download_count": 46,
+          "download_count": 56,
           "content_type": "application/zip"
         },
         {
@@ -11582,7 +11744,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom_type_b.zip",
           "size": 399793497,
-          "download_count": 12,
+          "download_count": 16,
           "content_type": "application/zip"
         },
         {
@@ -11590,7 +11752,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6hotfix4/rom_y2.zip",
           "size": 443402625,
-          "download_count": 96,
+          "download_count": 105,
           "content_type": "application/zip"
         }
       ]
@@ -11632,7 +11794,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom.zip",
           "size": 456271826,
-          "download_count": 478,
+          "download_count": 497,
           "content_type": "application/zip"
         },
         {
@@ -11640,7 +11802,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_type_b.zip",
           "size": 399777849,
-          "download_count": 9,
+          "download_count": 13,
           "content_type": "application/zip"
         },
         {
@@ -11648,7 +11810,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.6/rom_y2.zip",
           "size": 443395091,
-          "download_count": 414,
+          "download_count": 439,
           "content_type": "application/zip"
         }
       ]
@@ -11690,7 +11852,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom.zip",
           "size": 456271507,
-          "download_count": 26,
+          "download_count": 31,
           "content_type": "application/zip"
         },
         {
@@ -11698,7 +11860,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom_type_b.zip",
           "size": 399797081,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -11706,7 +11868,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.5/rom_y2.zip",
           "size": 443389547,
-          "download_count": 26,
+          "download_count": 34,
           "content_type": "application/zip"
         }
       ]
@@ -11727,7 +11889,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.9/rom.zip",
           "size": 456604912,
-          "download_count": 6,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -11735,7 +11897,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.9/rom_type_b.zip",
           "size": 399539309,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/zip"
         }
       ]
@@ -11756,7 +11918,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.8/rom.zip",
           "size": 456604601,
-          "download_count": 6,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -11764,7 +11926,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.8/rom_type_b.zip",
           "size": 399538066,
-          "download_count": 5,
+          "download_count": 9,
           "content_type": "application/zip"
         }
       ]
@@ -11785,7 +11947,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.6/rom.zip",
           "size": 456567803,
-          "download_count": 7,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -11793,7 +11955,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.6/rom_type_b.zip",
           "size": 399667887,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         }
       ]
@@ -11814,7 +11976,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.5/rom.zip",
           "size": 456603017,
-          "download_count": 6,
+          "download_count": 11,
           "content_type": "application/zip"
         },
         {
@@ -11822,7 +11984,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.5/rom_type_b.zip",
           "size": 399658877,
-          "download_count": 4,
+          "download_count": 8,
           "content_type": "application/zip"
         }
       ]
@@ -11843,7 +12005,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.3/rom.zip",
           "size": 456569905,
-          "download_count": 7,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -11851,7 +12013,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.3/rom_type_b.zip",
           "size": 399645569,
-          "download_count": 7,
+          "download_count": 11,
           "content_type": "application/zip"
         }
       ]
@@ -11872,7 +12034,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom.zip",
           "size": 456287678,
-          "download_count": 17,
+          "download_count": 22,
           "content_type": "application/zip"
         },
         {
@@ -11880,7 +12042,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_type_b.zip",
           "size": 399771390,
-          "download_count": 5,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -11888,7 +12050,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.4/rom_y2.zip",
           "size": 443266446,
-          "download_count": 16,
+          "download_count": 21,
           "content_type": "application/zip"
         }
       ]
@@ -11909,7 +12071,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.1/rom.zip",
           "size": 457073002,
-          "download_count": 13,
+          "download_count": 17,
           "content_type": "application/zip"
         },
         {
@@ -11917,7 +12079,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11.1/rom_type_b.zip",
           "size": 404526855,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         }
       ]
@@ -11938,7 +12100,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11/rom.zip",
           "size": 457083507,
-          "download_count": 7,
+          "download_count": 12,
           "content_type": "application/zip"
         },
         {
@@ -11946,7 +12108,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.11/rom_type_b.zip",
           "size": 404522629,
-          "download_count": 6,
+          "download_count": 11,
           "content_type": "application/zip"
         }
       ]
@@ -11967,7 +12129,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10.1/rom.zip",
           "size": 457535838,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         },
         {
@@ -11975,7 +12137,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10.1/rom_type_b.zip",
           "size": 399512608,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         }
       ]
@@ -11996,7 +12158,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10/rom.zip",
           "size": 457534242,
-          "download_count": 10,
+          "download_count": 15,
           "content_type": "application/zip"
         },
         {
@@ -12004,7 +12166,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.10/rom_type_b.zip",
           "size": 399499884,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         }
       ]
@@ -12025,7 +12187,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.1/rom.zip",
           "size": 456596207,
-          "download_count": 10,
+          "download_count": 14,
           "content_type": "application/zip"
         },
         {
@@ -12033,7 +12195,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/ismileblue/y1_launcher/releases/download/launcher-v0.1/rom_type_b.zip",
           "size": 399646396,
-          "download_count": 6,
+          "download_count": 10,
           "content_type": "application/zip"
         }
       ]
@@ -12327,1098 +12489,412 @@ window.INNIOASIS_HARDCODED_RELEASES = {
       ]
     }
   ],
-  "JonaszPotoniec/inniclassic-y2": [
+  "FabianZettl/inniclassic": [
     {
-      "id": 435320574,
-      "tag_name": "20261105",
-      "name": "InniClassic 20261105",
-      "published_at": "2026-11-05T14:40:14Z",
+      "id": 399111592,
+      "tag_name": "v1.4.5",
+      "name": "InniClassic 1.4.5",
+      "published_at": "2026-09-29T12:12:13Z",
       "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261105",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.5",
+      "icon_url": "",
       "icon_dark_url": "",
-      "body": "### InniClassic Release\n\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\n\n#### \ud83d\udce6 Release Assets\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`InniClassic-20261105.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| **`update.json`** | All Devices | OTA update metadata for in-app updater |\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\n| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\n\n#### \u26a1 Flashing Instructions (SP Flash Tool)\n1. Extract the corresponding zip file for your device.\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\n4. Select **Firmware Upgrade** or **Download Only**.\n5. Power off the device completely, click **Download**, and connect the USB cable.\n\n---\n\n\n## What's Changed\n* fix(battery): show the battery level from the voltage on the Y2, warn at 10 % and 3 %, and shut down before the cut-off by @ferrolho in https://github.com/JonaszPotoniec/inniclassic-y2/pull/41\n* feat(navigation): navigate like the iPod: one back stack, menu slides, and list screens in place of dialogs by @ferrolho in https://github.com/JonaszPotoniec/inniclassic-y2/pull/42\n* refactor(ui): remove the App Drawer and Screen Recorder screens, which nothing can open by @ferrolho in https://github.com/JonaszPotoniec/inniclassic-y2/pull/44\n\n\n**Full Changelog**: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261104...20261105",
+      "body": "### Fixed\n- **Theme could silently revert to the default after connecting the device as USB Mass Storage** \u2014 the selected theme was persisted only as a numeric index into the SD card's theme folder listing, and that listing's order isn't guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme's name is now saved alongside the index and resolved by name on startup \u2014 independent of scan order \u2014 with the old index kept only as a fallback for upgrades.\n- **`.scrobbler.log` declared its timestamps as `#TZ/UNKNOWN`** even though they're genuinely UTC (`System.currentTimeMillis()` is always UTC epoch time, regardless of the device's local timezone setting). Now correctly declared as `#TZ/UTC`, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files \u2014 an existing `.scrobbler.log`'s header isn't rewritten.\n- **On-screen keyboard was missing common punctuation**, making some Wi-Fi passwords (and anything else typed through it \u2014 podcast search, Last.fm login, etc.) impossible to enter. Added `; : , / \\ ( ) [ ] { } < > ' ~` `` ` `` and `|`.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.5.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.5.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
       "assets": [
         {
-          "id": 713717422,
-          "name": "index.html",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/index.html",
-          "size": 32699,
-          "download_count": 2,
-          "content_type": "text/html"
-        },
-        {
-          "id": 713717420,
-          "name": "InniClassic-20261105.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/InniClassic-20261105.apk",
-          "size": 24532442,
-          "download_count": 2,
+          "id": 598138137,
+          "name": "InniClassic-1.4.5.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/InniClassic-1.4.5.apk",
+          "size": 30017796,
+          "download_count": 68,
           "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 713717416,
+          "id": 598138138,
           "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/rom.zip",
-          "size": 455463136,
-          "download_count": 9,
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
+          "size": 463531481,
+          "download_count": 515,
           "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 399100768,
+      "tag_name": "v1.4.4",
+      "name": "InniClassic 1.4.4",
+      "published_at": "2026-09-29T11:57:38Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.4",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "A hardware-input overhaul: a real Hold/lock switch, a proper video/music handoff, and a round of Now Playing and Videos polish.\n\n### Added\n- **Hold (key lock)** \u2014 hold Center for 0.8s to lock the wheel/buttons (and physically turn the display off); hold Center again to unlock. This is the real fix for \"screen wakes up randomly in my pocket\": instead of guessing which button presses are accidental, you can now lock input entirely, matching the real iPod Classic's Hold switch.\n- **Toggle Favorite is back in the Now Playing hold-menu** (long-press Play/Pause) \u2014 caught and fixed before release: the redesigned Center gesture handling below removed the old \"double-click Center\" favorite shortcut without anywhere else to reach it.\n\n### Fixed\n- **Video Play/Pause was starting music instead of pausing the video.** Two compounding bugs: the hardware media-button receiver didn't know about video and would call the music player regardless of what was on screen (with \"Screen Off Control\" enabled), and opening a video didn't stop any music that was already playing. Both fixed.\n- **Videos list ignored the wheel/Center** in some cases \u2014 the screen was unconditionally swallowing every key before the shared list-navigation code could see it.\n- **Now Playing wheel seeking** is now a real preview-then-confirm: turning the wheel in Seek mode moves a pending position in 5-second steps without touching actual playback, applied only once you press Center again. The preview no longer gets silently overwritten by the background progress update.\n- Center-button handling is now centralized in one place \u2014 fixes a hold sometimes also registering as a select, and holding Center no longer opens the song menu or toggles video seek mode (that's long Play/Pause and short Center respectively now).\n- Pausing on the Classic theme no longer dims the album artwork or leaves a leftover audio-format overlay on screen; the selected Now Playing bottom-bar mode survives a pause/resume.\n- Removed a duplicate progress-callback registration.\n\n### Changed\n- More compact Now Playing progress/volume bars, fixed-width time labels, and evenly spaced rating marks.\n- Video now seeks via Previous/Next (\u00b110s); the wheel is volume-only during video playback.\n- Classic Videos list shares the same background/row styling as every other list.\n\nFull engineering write-up: [`docs/release-review-1.4.4.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.4.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.4.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.4.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 598101369,
+          "name": "InniClassic-1.4.4.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/InniClassic-1.4.4.apk",
+          "size": 30000629,
+          "download_count": 11,
+          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 713717414,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/rom_type_b.zip",
-          "size": 422464888,
-          "download_count": 2,
+          "id": 598101368,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
+          "size": 463523953,
+          "download_count": 24,
           "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 394052904,
+      "tag_name": "v1.4.3",
+      "name": "InniClassic 1.4.3",
+      "published_at": "2026-09-22T19:31:04Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.3",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "A theme-consistency pass plus a round of real correctness/security fixes underneath, including a Last.fm crash and a Wireless PC Upload path-traversal issue.\n\n### Changed\n- **Classic themes tightened up**: edge-to-edge, tighter main-menu rows; consistent 21dp bold list type; saturated blue selection gradient shared by both the dynamic menus and library lists; silver status-bar gradient, darker secondary text, and more compact chevrons.\n- Battery silhouette is more rectangular, and battery percentage is now clamped to 0\u2013100.\n- Main Menu, Cover Flow, Wi-Fi and equalizer views now use generated Android view IDs with a stable logical-key mapping instead of ad hoc constants.\n\n### Fixed\n- **Last.fm scrobbling could crash its background worker outright** \u2014 the pending-scrobble queue called `JSONArray.remove(int)`, which doesn't exist on the Y1's Android API 17 (added in API 19). Also, Last.fm can return HTTP 200 with an API-level error payload, which was previously treated as a successful scrobble and silently dropped instead of retried.\n- **Wireless PC Upload (the web server) had a path-traversal weakness** \u2014 file operations now canonicalize and confine paths to the shared root, reject cross-origin writes, and render filenames as plain text. Interrupted uploads now write to a temp file and atomically replace the target only once complete, so a dropped connection can no longer corrupt an existing file. Server connections now have timeouts and a bounded worker pool; shutdown properly closes active sockets.\n- Recycled album rows in the library list could show a stale cover thumbnail if an in-flight request finished after the row was recycled for a different album.\n- Removed a duplicate broadcast-receiver registration and duplicate manifest permission entries; added the newer Android receiver-flags overload with an API 17 fallback and additional Bluetooth/location permission checks.\n- Sound Check no longer calls an API-19-only method unguarded on this API-17 device.\n- Launcher icons switched from WebP to PNG for reliable API 17 rendering; fixed a malformed vector icon path.\n- Audiobook bookmark saving now checks the playlist index is still valid before writing.\n\nFull engineering write-up: [`docs/release-review-1.4.3.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.3.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.3.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.3.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 582091804,
+          "name": "InniClassic-1.4.3.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/InniClassic-1.4.3.apk",
+          "size": 29869268,
+          "download_count": 34,
+          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 713717412,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/rom_y1_type_a.zip",
-          "size": 455463136,
-          "download_count": 2,
+          "id": 582091803,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/rom.zip",
+          "size": 463538077,
+          "download_count": 146,
           "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 381130813,
+      "tag_name": "v1.4.2",
+      "name": "InniClassic 1.4.2",
+      "published_at": "2026-09-02T09:40:27Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.2",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "Theme-consistency and Podcasts fixes from user feedback.\n\n### Fixed\n- **Status bar headphone/Bluetooth icons were hardcoded white**, making them nearly invisible on the light iPod Classic theme's light gray status bar. Now use the theme's own text color like the rest of the status bar.\n- **On-screen keyboard's selected character was unreadable on the light theme** \u2014 pure white text on a barely-tinted overlay meant it could blend into a light background almost completely. The keyboard panel's backdrop is now solidly dark so the white text always has real contrast, regardless of theme.\n- **Podcast episode loading always said \"No internet connection\"** even when the real problem was something else entirely (a bad feed URL, a server error, an expired certificate, malformed XML, etc.) \u2014 the actual error was being silently discarded. The toast now shows the real failure reason so it's actually possible to diagnose.\n\n### Added\n- **[`tools/airpods_fix/`](https://github.com/FabianZettl/inniclassic/tree/master/tools/airpods_fix)** \u2014 an experimental, opt-in fix for AirPods Pro 2 connecting over Bluetooth but staying silent, ported from [Semy0nBu/y1-airpods-rtpfix](https://github.com/Semy0nBu/y1-airpods-rtpfix) (all credit for the original fix goes there). Not bundled into the ROM or APK \u2014 it replaces a system-level Bluetooth driver, which is riskier and affects all Bluetooth devices, not just AirPods, so it ships as a separate, clearly-documented install/uninstall script pair instead of being forced on everyone. Read its README for the exact risk tradeoffs before using it.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.2.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.2.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 540948765,
+          "name": "InniClassic-1.4.2.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/InniClassic-1.4.2.apk",
+          "size": 27225340,
+          "download_count": 38,
+          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 713717421,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/rom_y1_type_b.zip",
-          "size": 422464888,
+          "id": 540948764,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/rom.zip",
+          "size": 463673525,
+          "download_count": 270,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 378604464,
+      "tag_name": "v1.4.1",
+      "name": "InniClassic 1.4.1",
+      "published_at": "2026-08-28T16:06:23Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.1",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "Video feature catch-up, a new boot logo, and another round of Reddit-reported fixes.\n\n### Added\n- **Video thumbnails** \u2014 the Videos list shows a real frame from each file instead of a generic icon, loaded in the background.\n- **Video resume-position** \u2014 playback remembers where you left off and jumps back there next time you open that file.\n- **Fill Video Screen** setting \u2014 Settings \u2192 Fill Video Screen lets you choose between the original aspect ratio (letterboxed) or filling the whole screen. Direct response to a GitHub issue request.\n- **New boot logo** \u2014 replaces the Rockbox-branded splash the ROM's `LOGO` partition had carried over since this project's very first release with a plain black screen showing \"InniClassic\".\n\n### Changed\n- **Larger list/settings text** \u2014 Songs/Albums/Artists/Genres/Composers rows, folder browsing, and every Settings row are a bit bigger.\n- **Cover Flow now groups by artist** \u2014 previously sorted purely alphabetically by album title; now sorted by artist first, album second, matching the real iPod Classic.\n\n### Fixed\n- **Folders with many files lagged noticeably when opened** \u2014 rows now build in chunks instead of all at once, so the screen stays responsive.\n- **Screen could randomly wake up in a pocket while listening to music** \u2014 only the Center button now wakes the real display back up (was any key before, which pocket pressure on the wheel could trigger).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.1.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.1.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 534032002,
+          "name": "InniClassic-1.4.1.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/InniClassic-1.4.1.apk",
+          "size": 27225053,
+          "download_count": 24,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 534032001,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/rom.zip",
+          "size": 463673952,
+          "download_count": 145,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 372998177,
+      "tag_name": "v1.3.2",
+      "name": "InniClassic 1.3.2",
+      "published_at": "2026-08-19T11:33:34Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.3.2",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "Small follow-up polish release.\n\n### Fixed\n- **Videos screen looked out of place** compared to every other menu (Settings, Bluetooth, Wi-Fi) \u2014 it was missing the uppercase title header those screens have. Added, matching the existing look exactly.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.2.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.2.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 520762401,
+          "name": "InniClassic-1.3.2.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/InniClassic-1.3.2.apk",
+          "size": 27222719,
+          "download_count": 25,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 520762400,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/rom.zip",
+          "size": 463770674,
+          "download_count": 170,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 364388580,
+      "tag_name": "v1.3.1",
+      "name": "InniClassic 1.3.1",
+      "published_at": "2026-08-03T17:38:17Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.3.1",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "Another round of Reddit-reported bugs, mostly around the Music library screens.\n\n### Fixed\n- **\"Albums\" was completely broken** \u2014 tapping into it either showed a black screen, froze, or silently bounced back to the Music menu. The row renderer was doing a full library scan plus a synchronous `MediaMetadataRetriever` lookup on the UI thread for every row, every time it scrolled into view \u2014 fine for a handful of albums, but an ANR/freeze risk for a real-sized library. Cover art lookup now runs on a background thread (placeholder shown immediately, real art swapped in once ready), and the per-album file lookup is precomputed once instead of rescanning the whole library per row.\n- **Videos screen: nothing could be selected or played** \u2014 rows were added to the list but never given initial focus, so spinning the wheel had no \"current\" row to move from (you'd hear the click sound but nothing would highlight or respond). Now the first row gets focus like every other list in the app.\n- **Some FLAC albums showed no cover art in \"Albums\"** (but did show it correctly on Now Playing/Cover Flow) \u2014 the Albums screen's cover lookup skipped embedded art entirely for FLAC files with no fallback, so only albums with a folder `cover.jpg`/`folder.jpg` showed anything. It now uses the same dedicated FLAC metadata parser Now Playing already relies on.\n- **Confusion around Last.fm scrobbling / \"where's my .scrobbler.log?\"** \u2014 the local scrobble log was silently gated behind the \"Scrobble to Last.fm\" toggle (off by default) even though it's just a private text file that needs no account. It's now written automatically for every played track, no setup required; the Settings toggle (renamed **Sync Scrobbles to Last.fm**) now only controls whether scrobbles are *also* sent to a real Last.fm account. Also documented in the README that `.scrobbler.log` is a dotfile and hidden by default in most file managers.\n- **Cover art looking noticeably blurry/soft while panning** on the Main Menu and Music menu \u2014 cover art was always decoded at half resolution regardless of its actual size, which compounded badly for anyone using smaller (e.g. 300\u00d7300) cover images against a pan panel rendered near full screen height. Downsampling now only kicks in for genuinely large source images; small covers are decoded at full resolution. README now recommends 600\u00d7600 minimum, 1000\u00d71000+ ideally.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.1.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.1.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 500343480,
+          "name": "InniClassic-1.3.1.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/InniClassic-1.3.1.apk",
+          "size": 27222661,
+          "download_count": 17,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 500343475,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/rom.zip",
+          "size": 463770936,
+          "download_count": 254,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 361554822,
+      "tag_name": "v1.3.0",
+      "name": "InniClassic 1.3.0",
+      "published_at": "2026-07-29T06:55:01Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.3.0",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "A Music Quiz overhaul, a Now Playing polish pass, and another batch of Reddit-reported bugs \u2014 mostly sleep/wake and audio.\n\n### Added\n- **Music Quiz: five new question types** \u2014 alongside \"What song is playing?\", it can now ask which artist released a track, which album it's from, what year it came out, and what genre it is (each only offered when your library actually has enough distinct values to make a fair question). Also new: a visual question type showing 3 album covers side by side to pick from instead of text answers.\n- **Music Quiz: all 4 answers now fit on screen at once**, no more scrolling to see the other options.\n\n### Changed\n- **Now Playing**: the album cover sits slightly lower, spacing between Title/Artist/Album is now perfectly consistent, the star rating moved between Album and the track counter, and the \"X of Y\" track counter is bold at the same size as the rest of the info block.\n- Documented the existing (but easy-to-miss) **synced lyrics** support: drop a `.lrc` file next to a song (same filename) or embed lyrics in ID3/FLAC/ALAC tags, then long-press Center on Now Playing \u2192 Toggle Visualizer to see them scroll in sync with playback.\n\n### Fixed\n- **Screen never came back on after the backlight timer put it to sleep** \u2014 two separate bugs:\n  - The \"virtual\" sleep used while FM Radio or the web server is running (so the CPU stays alive) never had any code path that turned it back off. Once triggered, the screen stayed black forever (vibration/click feedback still worked) until a full reboot.\n  - The \"real\" sleep used during ordinary music playback simulates a power-button press to turn the display off, but nothing ever simulated a second press to turn it back on.\n- **Full device lockup (required a paperclip reset) playing FM Radio through wired headphones for a few minutes** \u2014 the backlight timer's \"virtual sleep\" path was also toggling Wi-Fi off while the FM tuner was active. On this chipset, FM/Wi-Fi/Bluetooth share the same combo radio hardware; killing Wi-Fi mid-session could wedge it badly enough to need a hard reset. Wi-Fi is now left alone whenever the radio is on.\n- **Screen dimming during active use** \u2014 the default Backlight Timer was 10 seconds. Now 1 minute (still adjustable down to 10s in Settings).\n- **Bluetooth headphones (reported with AirPods) noticeably quiet** \u2014 a known AVRCP \"absolute volume\" quirk. Absolute volume is now disabled on connect, so headphones use their own physical volume control.\n- **Some FLAC files failed with \"Legacy Player Error: 262\"** \u2014 failing files now automatically retry once through ExoPlayer's FLAC extension instead of giving up outright.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.0.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 493714047,
+          "name": "InniClassic-1.3.0.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/InniClassic-1.3.0.apk",
+          "size": 27221900,
+          "download_count": 21,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 493714045,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
+          "size": 463775055,
+          "download_count": 185,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 360635995,
+      "tag_name": "v1.2.0",
+      "name": "InniClassic 1.2.0",
+      "published_at": "2026-07-27T18:44:11Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.2.0",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "Video playback, gapless playback, and a full visual consistency pass across every screen.\n\n### Added\n- **Video playback** - new \"Videos\" entry in the Main Menu, its own folder on the SD card (`/storage/sdcard0/Videos`), full-screen player with wheel-driven volume/seek. **Now powered by libVLC instead of ExoPlayer** - ExoPlayer's precise frame-timing API only exists from Android API 21 onward, and its fallback for older devices turned out to be broken on the Y1's API 17 (audio and the position clock stayed correct, but picture played back several times faster than real time). libVLC brings its own native AV-sync engine independent of that Android API, giving stable, correctly-synced playback. Audio-only playback is untouched and still runs on ExoPlayer. Thumbnails in the video list and resume-position are still unaddressed for now - see `tools/handbrake_y1_preset.json` for a ready-to-import HandBrake preset tuned for smooth playback on the Y1's chip.\n- **Gapless playback** - automatically kicks in for albums/playlists of 15 tracks or fewer, with shuffle off and no FLAC in the queue. Track transitions inside a gapless queue no longer stop and reload.\n- **Favorites are always visible now** on Now Playing - hollow heart normally, filled red heart when favorited, instead of nothing at all unless already a favorite.\n\n### Changed\n- Unified font sizes, left alignment, and row spacing across every menu (Main Menu, Music menu, Artists, Albums, Songs, Settings/Bluetooth/Wi-Fi).\n- Right-arrow indicator now only shows on the focused row, everywhere.\n- Thinner status bar matching real iPod proportions; narrows to the left column on both Main Menu and Music menu so the album cover bleeds behind it.\n- Main Menu and Music menu covers now share the exact same slow \"Ken Burns\" panning animation.\n- Bigger Now Playing album cover, bolder track counter, marquee-scrolling long titles, glass-look progress bar.\n- Larger album cover thumbnails in the Albums list.\n\n### Fixed\n- Focus arrow color was theme-dependent instead of fixed white.\n- A recycled list row's blue focused background could get incorrectly reset regardless of actual focus state.\n- Now Playing's progress ticker and the clock/widget refresh loop kept doing full work every 0.5-1s even when not visible (or during virtual screen-off) - both now sit idle unless actually needed. Should help battery life.\n\n### Install\n- **`rom.zip`** - flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.2.0.apk`** - install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.2.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 491900121,
+          "name": "InniClassic-1.2.0.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/InniClassic-1.2.0.apk",
+          "size": 31349729,
+          "download_count": 19,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 491900122,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
+          "size": 463513542,
+          "download_count": 108,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 360134623,
+      "tag_name": "v1.1.2",
+      "name": "InniClassic 1.1.2",
+      "published_at": "2026-07-26T22:45:12Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.2",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "Bug-fix release based on more Reddit feedback from multiple users.\n\n### Fixed\n- **Crash browsing Artists, Album Artists, Albums, Songs, or Genres** - songs with a missing artist/album tag could carry a `null` value that crashed the launcher wherever it was later compared. Every song now always gets a safe \"Unknown Artist\"/\"Unknown Album\" fallback.\n- **FLAC files stuck at 0:00** - the fallback engine that FLAC was supposed to use was never actually being switched on.\n- **Screen turning off during active use** - spinning the wheel now correctly resets the auto-lock timer.\n- **Charging indicator** - the battery icon now actually draws a lightning bolt while charging (the code for it existed but was never enabled).\n- Long album/track names no longer overlap the battery/Bluetooth icons in the status bar.\n\n### Added\n- **Shuffle** row at the top of All Songs, matching the stock Y1 firmware.\n- **FM Radio** is back in the Main Menu (it had quietly disappeared from the theme config).\n\n### Install\n- **rom.zip** - flash via the Innioasis Updater, no ADB required. Must keep the filename exactly rom.zip. Ships the latest Y1 Firmware 3.1.2 with InniClassic pre-installed.\n- **InniClassic-1.1.2.apk** - install over an existing JJ Launcher / InniClassic install via adb install InniClassic-1.1.2.apk.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "assets": [
+        {
+          "id": 490752766,
+          "name": "InniClassic-1.1.2.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/InniClassic-1.1.2.apk",
+          "size": 7020639,
+          "download_count": 12,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 490752767,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
+          "size": 457809513,
+          "download_count": 38,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 358990913,
+      "tag_name": "v1.1.1",
+      "name": "v1.1.1 - InniClassic: now flashable via Innioasis Updater",
+      "published_at": "2026-07-23T22:38:48Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.1",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "The project is now named **InniClassic** (still based on and credited to [JJ Launcher](https://github.com/ismileblue/y1_launcher) \u2014 see README). Same 1.1.1 build as before, no functional version bump for the rename itself.\n\n### \ud83c\udd95 Now installable as a full ROM\n`rom.zip` flashes directly via the [Innioasis Updater](https://www.innioasis.com/pages/download) \u2014 no ADB, no manual uninstall step. It ships the latest **Y1 Firmware 3.1.2** with InniClassic pre-installed as the system launcher. Just select the zip in the Updater and follow the prompts (the Updater expects this exact filename, so don't rename it after downloading).\n\nThe APK (`InniClassic-1.1.1.apk`) is still available too, for updating an existing JJ Launcher-based install via ADB \u2014 see the README's Method 2.\n\n### Also in this build\n- New **iPod Classic (Dark)** theme\n- iPod Classic is now the true first-launch default theme\n- Fixed Bluetooth A2DP `connect()` failing on some speakers (missing `BLUETOOTH_PRIVILEGED`/`WRITE_SECURE_SETTINGS`, now self-granted at startup)\n- New **Album Cover Tilt** setting to turn off the Now Playing 3D tilt\n- Fixed track titles sometimes showing their file extension (`.ogg`, `.wav`, etc.)\n- Music menu: split \"Artists\" into **Artists** (track artist) and **Album Artists** (album artist), matching real iPod Classic\n- Music Quiz restructured into 5 rounds of 8 questions, with round-complete and victory screens\n- A PC-side script ([`tools/build_library_cache.py`](https://github.com/FabianZettl/inniclassic/blob/master/tools/build_library_cache.py)) to pre-build the library scan cache for large libraries, so the device doesn't have to re-tag everything on next boot\n- Plus the two Reddit-reported fixes from the original 1.1.1 (invisible web server text, wheel active while locked) \u2014 see below\n\n### Fixed (original 1.1.1 fixes)\n- Wireless PC Upload (web server) status text was hardcoded white, invisible against the iPod Classic theme's white background. Same issue fixed on the Bluetooth/Wi-Fi/Brightness/Storage/Settings screen titles.\n- The wheel stayed active while the device was locked (screen off) and could still change the volume \u2014 the guard for this existed but lived in a method that never actually ran on this device; moved to where it's effective.\n\nFull changelog: [CHANGELOG.md](https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md)\n\n> [!WARNING]\n> Updating from an older APK install? Uninstall it first (`adb uninstall com.themoon.y1` or `adb shell pm uninstall --user 0 com.themoon.y1`) \u2014 see the README's Installation section. The ROM method doesn't need this.",
+      "assets": [
+        {
+          "id": 489365718,
+          "name": "InniClassic-1.1.1.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/InniClassic-1.1.1.apk",
+          "size": 8795490,
+          "download_count": 19,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 489512937,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip",
+          "size": 457676727,
+          "download_count": 46,
+          "content_type": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": 358514731,
+      "tag_name": "v1.1.0",
+      "name": "v1.1.0 - Now Playing sub-menus, star ratings, On-The-Go, Main Menu cleanup",
+      "published_at": "2026-07-23T07:20:00Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.0",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "Focused on getting closer to the real iPod Classic experience \u2014 especially a proper depth to the Now Playing screen, plus a cleanup pass on the Main Menu and some visual consistency fixes.\n\n### Added\n- **Now Playing sub-menus**: a center-click on the Now Playing screen now cycles through four states, exactly like a real iPod Classic \u2014 Progress bar \u2192 Seek (scrub bar with a diamond thumb, wheel jumps the track \u00b15s) \u2192 Shuffle & Repeat (quick toggle, wheel cycles each) \u2192 Rating (wheel sets 1-5 stars) \u2192 back to Progress. The wheel reverts to volume control outside of these states, same as on a real device.\n- **Star ratings**: rate any track 1-5 stars from the Now Playing Rating state above; shown as \u2605\u2605\u2605\u2606\u2606 under the track counter.\n- **On-The-Go playlist**: the classic always-available instant playlist. Reachable as a one-tap \"Add to On-The-Go\" action from the Now Playing hold-menu, or as a pinned entry in the full Add to Playlist dialog.\n- **Now Playing hold-menu**: long-press Center on Now Playing for Add to On-The-Go, Browse Album, Browse Artist, and Cancel \u2014 matching the real iPod's menu, plus a Toggle Visualizer entry for this fork's bonus spectrum/lyrics view.\n- **Composers** grouping in the Music menu, alongside the existing Artists/Albums/Genres/Years grouping.\n- **Fast-scroll letter jump**: spin the wheel quickly through an alphabetized list (Artists/Albums/Songs/Genres/Composers/Search) to jump straight to the next first-letter group, with an on-screen letter overlay while jumping \u2014 tuned so it triggers reliably without being overly twitchy on a quick spin.\n- Status bar now shows the current screen's name (Music/Now Playing/Settings/etc.) instead of a clock, matching the real iPod's title bar.\n\n### Changed\n- **Main Menu cleanup**: Cover Flow, Audiobooks, Folders, Years, Recently Added, and My Favorites have moved out of the Main Menu and into the Music menu where they belong on a real iPod. Main Menu is back down to Now Playing, Music, Music Quiz, Podcasts, Bluetooth, Wi-Fi, Settings, and Web Server.\n- The Main Menu's split-view album cover now genuinely fills the entire remaining screen edge-to-edge (computed from the real screen size) instead of a fixed-size box, so it bleeds above the status bar the same way the Music menu's cover panel already did.\n\n### Fixed\n- Menu text size was inconsistent between screens: Music-menu-style rows (Artists/Albums/Composers/Songs/Settings) were sized in `sp` while the Main Menu's buttons were sized in raw pixels \u2014 same nominal number, different unit, so they never quite matched. Everything now renders at the exact same size.\n\nFull changelog: [CHANGELOG.md](https://github.com/FabianZettl/jj-launcher-classic/blob/master/CHANGELOG.md)\n\n> [!WARNING]\n> If you have an older version installed, uninstall it first (`adb uninstall com.themoon.y1` or `adb shell pm uninstall --user 0 com.themoon.y1`) before installing this APK \u2014 see the README's Installation section for the full mandatory step-by-step (including replacing the stock JJ Launcher).",
+      "assets": [
+        {
+          "id": 486895523,
+          "name": "JJLauncherClassic-1.1.0.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.0/JJLauncherClassic-1.1.0.apk",
+          "size": 6891463,
+          "download_count": 22,
+          "content_type": "application/vnd.android.package-archive"
+        }
+      ]
+    },
+    {
+      "id": 357260931,
+      "tag_name": "v1.0.0",
+      "name": "JJ Launcher Classic Version 1.0.0",
+      "published_at": "2026-07-21T10:23:15Z",
+      "prerelease": false,
+      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.0.0",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "First public release. Based on JJ Launcher 0.11.\n\n## Added\n- Bundled \"iPod Classic\" theme: two-pane Main Menu and Music menu with a full-bleed panning album cover, angled Now Playing cover with reflection, redesigned Artist/Album lists (icon-free, large covers, \"All Songs\" per artist), a text search screen, and system-wide bold Nimbus Sans typography\n- Last.fm scrobbling: local Rockbox-style `.scrobbler.log` + live API scrobbling with browser-based login\n- Music Quiz: first version of the classic iPod Music Quiz mini-game, styled after the original's \"Fruitiger Aero\" look\n- OGG Vorbis playback and library support (including auto-detection of Opus-encoded files mislabeled as `.ogg`)\n- Main Menu shortcuts for Music Quiz, Podcasts, Audiobooks, Folders, Years, Recently Added, My Favorites\n\n## Fixed\n- Duplicate songs in album track lists after interrupted scans\n- Missing album art in Artist -> Albums lists (folder cover.jpg/folder.jpg fallback)\n- OGG files not appearing in the library\n- OOM crash loop scanning large libraries\n- Album art forced to true 1:1 crop\n\n## Notes\n- Currently only tested/available for the **Innioasis Y1**, on System Software 2.1.9\n- **Prerequisite:** device must already be running JJ Launcher (installed via the [Innioasis Updater](https://www.innioasis.com/pages/download)) - this release replaces the launcher app itself, not the device firmware\n- Install with `adb install -r JJLauncherClassic-1.0.0.apk`\n- This APK is debug-signed (no production keystore has been set up yet for this fork)\n\nSee [CHANGELOG.md](https://github.com/FabianZettl/jj-launcher-classic/blob/master/CHANGELOG.md) for the full list.",
+      "assets": [
+        {
+          "id": 484543796,
+          "name": "JJLauncherClassic-1.0.0.apk",
+          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.0.0/JJLauncherClassic-1.0.0.apk",
+          "size": 6872425,
+          "download_count": 31,
+          "content_type": "application/vnd.android.package-archive"
+        }
+      ]
+    }
+  ],
+  "JonaszPotoniec/inniclassic-y2": [
+    {
+      "id": 436703977,
+      "tag_name": "20261105",
+      "name": "InniClassic 20261105",
+      "published_at": "2026-11-06T16:00:30Z",
+      "prerelease": false,
+      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261105",
+      "icon_url": "",
+      "icon_dark_url": "",
+      "body": "> **Final InniClassic release.** Development continues as **Classy** at [ClassyPlayer/Classy](https://github.com/ClassyPlayer/Classy). This fork is kept as the OTA endpoint for devices running the InniClassic builds, and as an archive of the last release published under that name.\n>\n> Mirror of [20261105 on ClassyPlayer/Classy](https://github.com/ClassyPlayer/Classy/releases/tag/20261105). Only the launcher APK and the OTA metadata are copied here; the flashable ROMs (~2.1 GB) stay on the Classy repository.\n\n### InniClassic Release\n\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\n\n#### \ud83d\udce6 Release Assets\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`InniClassic-20261105.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| **`update.json`** | All Devices | OTA update metadata for in-app updater |\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\n\nThe flashable ROMs are **not** mirrored here \u2014 download them from [ClassyPlayer/Classy 20261105](https://github.com/ClassyPlayer/Classy/releases/tag/20261105):\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\n| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\n\n#### \u26a1 Flashing Instructions (SP Flash Tool)\n1. Extract the corresponding zip file for your device.\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\n4. Select **Firmware Upgrade** or **Download Only**.\n5. Power off the device completely, click **Download**, and connect the USB cable.\n\n---\n\n\n## What's Changed\n* fix(battery): show the battery level from the voltage on the Y2, warn at 10 % and 3 %, and shut down before the cut-off by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/41\n* feat(navigation): navigate like the iPod: one back stack, menu slides, and list screens in place of dialogs by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/42\n* refactor(ui): remove the App Drawer and Screen Recorder screens, which nothing can open by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/44\n\n\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261104...20261105\n",
+      "assets": [
+        {
+          "id": 717691074,
+          "name": "index.html",
+          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/index.html",
+          "size": 32699,
           "download_count": 1,
-          "content_type": "application/zip"
+          "content_type": "text/html; charset=utf-8"
         },
         {
-          "id": 713717408,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/rom_y2.zip",
-          "size": 465902259,
-          "download_count": 8,
-          "content_type": "application/zip"
+          "id": 717691070,
+          "name": "InniClassic-20261105.apk",
+          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/InniClassic-20261105.apk",
+          "size": 24532442,
+          "download_count": 1,
+          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 713717415,
+          "id": 717691077,
           "name": "SHA256SUMS.txt",
           "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/SHA256SUMS.txt",
           "size": 491,
-          "download_count": 1,
-          "content_type": "text/plain"
+          "download_count": 2,
+          "content_type": "text/plain; charset=utf-8"
         },
         {
-          "id": 713717407,
+          "id": 717691076,
           "name": "update.json",
           "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261105/update.json",
           "size": 299,
           "download_count": 3,
           "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 434408829,
-      "tag_name": "20261104",
-      "name": "InniClassic 20261104",
-      "published_at": "2026-11-04T20:21:02Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261104",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "Thanks @ferrolho for making this release possible!\r\n\r\nmany bug fixes\r\n\r\n- The volume curve uses thirty equal 2 dB steps (-58 dB to 0 dB) saved independently for each output, and volume buttons step once when clicked with the screen off. Wheel clicks have a dedicated Click Volume setting (Low, Medium, High), equalizer and audio effects run only when custom values are active, and graphic equalizer adjustments apply immediately while editing.\r\n- Only one audio source plays at a time: starting a track pauses the FM radio, opening a video pauses playback, and starting USB Mass Storage stops the radio. The FM radio remains controllable with media buttons from any screen while active or paused.\r\n- Long-pressing the center button opens an in-place track menu for playlist actions and album browsing. A single center press toggles a full-width lyrics overlay with edge fades, and a new Lyrics Keep Screen On setting prevents the display from sleeping during playback while lyrics are visible. Holding Play/Pause stops playback and rewinds to the beginning, while holding Next or Previous seeks up to 120x speed.\r\n- The audio spectrum visualizer draws in the dominant album artwork color, stays visible at low volume levels, and stops its capture thread whenever the screen turns off or another screen is shown. Track times format in the classic style (`2:08`, `-0:34`, `1:02:08`), with a Total Time toggle to display total track length in place of remaining time.\r\n- Physical button presses now register on release instead of initial push down, preventing duplicate inputs and ensuring held actions trigger cleanly. Hardware and Bluetooth remote controls continue to handle playback when the screen is dark, the on-screen keyboard standardizes on the QWERTY layout, and wheel scrolling loops consistently across Wi-Fi, Bluetooth, Music Quiz, and playlist screens.\r\n- Cellular modem services stay permanently disabled on the Y2 to conserve battery. Bluetooth pairing accepts numeric comparison requests without requiring a touch screen, a Discoverable toggle makes the player visible to cars and external devices for two minutes, and track metadata transmits over AVRCP to in-vehicle displays. Music automatically pauses on Bluetooth disconnect or headphone removal and resumes if reconnected within four hours.\r\n- Media scans compare file modification timestamps and sizes, re-reading only altered tracks and speeding up subsequent library rescans. Folder browsing defaults to secondary storage (`/storage/sdcard1/Music`), supports upward navigation (`..`), and lets you switch between storage volumes. Multi-genre tags are cataloged individually across FLAC, Opus, Ogg Vorbis, and ALAC files.\r\n- Music menus include new options for Compilations, Shuffle Songs, and Group Albums (by Title or Title and Artist). iPod-style smart playlists for Recently Played and Top 25 Most Played tracks replace the legacy album history tracker.\r\n- Cover Flow sorts albums by artist and then title, positions the artist name below the album cover, and jumps letter by letter during rapid wheel rotation. Fast wheel turns in song and album lists also jump alphabetically.\r\n- Classic themes use the iPod Classic split-screen layout with slow cover motion, menu drop shadows, and matching zoom transitions. A low-battery warning banner appears at 10% battery with a \"Please charge\" screen at 2%. In the Y2 ROM, Android's stock battery dialog and low-power audio alert are disabled.\r\n- A long press on the power button opens a dedicated iPod-style Power screen with Restart and Power Off options. Destructive actions like Reset Settings, Clear Album Art, Last.fm Log Out, and Settings Import now confirm on dedicated action screens where Back cancels.\r\n- Settings are arranged into iPod-style categories with options to export and import settings backups, show On/Off toggles as switches (`Toggle Style`), and fade the top and bottom edges of long lists (`List Edges`). Themes can be switched without restarting the launcher, including an Auto theme that tracks local sunrise and sunset.\r\n- Connecting storage switches the USB gadget mode to `mass_storage` before sharing partitions so partitions mount cleanly on host systems. The USB device name advertises Innioasis with the model number rather than generic MediaTek defaults, release builds stop on APIs newer than KitKat (API 19), and continuous integration checks verify 100% translation coverage across all seven languages.\r\n\r\n#### Release assets\r\n\r\n| File | Target device | Notes |\r\n| :--- | :--- | :--- |\r\n| `InniClassic-20261104.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\r\n| `update.json` | All devices | OTA update metadata for in-app updater |\r\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\r\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\r\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\r\n\r\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261017...20261104",
-      "assets": [
-        {
-          "id": 710801195,
-          "name": "index.html",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/index.html",
-          "size": 30965,
-          "download_count": 3,
-          "content_type": "text/html"
-        },
-        {
-          "id": 710801198,
-          "name": "InniClassic-20261104.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/InniClassic-20261104.apk",
-          "size": 24527493,
-          "download_count": 3,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 710801202,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/rom.zip",
-          "size": 455462943,
-          "download_count": 15,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 710801190,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/rom_type_b.zip",
-          "size": 422466574,
-          "download_count": 3,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 710801196,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/rom_y1_type_a.zip",
-          "size": 455462943,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 710801197,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/rom_y1_type_b.zip",
-          "size": 422466574,
-          "download_count": 2,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 710801191,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/rom_y2.zip",
-          "size": 465901262,
-          "download_count": 22,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 710801194,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 4,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 710801193,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261104/update.json",
-          "size": 299,
-          "download_count": 3,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 415758741,
-      "tag_name": "20261017",
-      "name": "InniClassic 20261017",
-      "published_at": "2026-10-17T11:12:49Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261017",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "The Biggest Release!\r\n\r\n- The entire application codebase has been rewritten from Java to 100% Kotlin, decomposing the monolithic main activity into dedicated domain managers, screen controllers, and an input router, backed by 16 regression test suites running in CI.\r\n- Audiobooks is now a dedicated top-level section on the main menu, with hierarchical Jellyfin sync (Author -> Book -> Chapter), cover art downloads, continuous bookmark persistence across reboots, full chapter playlist resume, and a unified split-screen layout.\r\n- The Videos section now provides a hierarchical browser for Movies, TV Series (with seasons and episodes), and raw directories, split-screen poster previews, Jellyfin video and thumbnail sync, and an automatic directory migration for existing files.\r\n- Music Quiz transitions to an endless survival mode with six questions per round, speed scaling down to five seconds, a between-round pause screen with a heart shop, a persistent top 10 leaderboard, and tiered year question distractors.\r\n- A new Recently Played Albums menu item beneath Cover Flow tracks up to 50 recently played albums with cover art, track counts, track-number-ordered browsing, and an option to clear playback history.\r\n- Device shutdown now saves the active queue and playback position, automatically restoring the player in a paused state at the exact track and timestamp after rebooting.\r\n- Playback cleanly pauses and rewinds to the first track when finishing an album with repeat turned off, while the library scanner now skips files smaller than 1KB and logs corrupt audio files.\r\n- Back navigation now preserves selected row focus and scroll position across the main menu, settings, playlists, and browser lists instead of resetting to the top item.\r\n- Split-screen pages in Music, Videos, and Audiobooks now share a unified 242dp status bar width matching the left navigation pane, while video browsing fixes eliminate poster clipping, top gaps, and double padding.\r\n- Now Playing album art now reliably updates on the main menu and music split panes during playback.\r\n- The theme catalog has been streamlined to Classic Light and Classic Dark, automatically cleaning up leftover assets from legacy themes during startup.\r\n- Physical buttons and wheel haptic feedback are now completely muted while the screen is off when Screen-Off Control is disabled, and the idle backlight sleep timer now stays synchronized with system settings.\r\n\r\n#### Release assets\r\n\r\n| File | Target device | Notes |\r\n| :--- | :--- | :--- |\r\n| `InniClassic-20261017.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\r\n| `update.json` | All devices | OTA update metadata for in-app updater |\r\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\r\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\r\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\r\n\r\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261013...20261017",
-      "assets": [
-        {
-          "id": 650267207,
-          "name": "index.html",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/index.html",
-          "size": 11442,
-          "download_count": 11,
-          "content_type": "text/html"
-        },
-        {
-          "id": 650267213,
-          "name": "InniClassic-20261017.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/InniClassic-20261017.apk",
-          "size": 24451136,
-          "download_count": 24,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 650267212,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/rom.zip",
-          "size": 455460055,
-          "download_count": 206,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 650267209,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/rom_type_b.zip",
-          "size": 422390294,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 650267214,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/rom_y1_type_a.zip",
-          "size": 455460055,
-          "download_count": 8,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 650267215,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/rom_y1_type_b.zip",
-          "size": 422390294,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 650267210,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/rom_y2.zip",
-          "size": 458640295,
-          "download_count": 114,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 650267211,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 11,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 650267206,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261017/update.json",
-          "size": 299,
-          "download_count": 14,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 411532401,
-      "tag_name": "20261013",
-      "name": "InniClassic 20261013",
-      "published_at": "2026-10-13T10:03:37Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261013",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- Improve Jellyfin sync\r\n\r\n#### Release assets\r\n\r\n| File | Target device | Notes |\r\n| :--- | :--- | :--- |\r\n| `InniClassic-20261012.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\r\n| `update.json` | All devices | OTA update metadata for in-app updater |\r\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\r\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\r\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\r\n\r\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261011...20261012\r\n",
-      "assets": [
-        {
-          "id": 636618066,
-          "name": "InniClassic-20261013.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/InniClassic-20261013.apk",
-          "size": 25302210,
-          "download_count": 10,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 636618069,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/rom.zip",
-          "size": 455407982,
-          "download_count": 75,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 636618071,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/rom_type_b.zip",
-          "size": 423125776,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 636618070,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/rom_y1_type_a.zip",
-          "size": 455407982,
-          "download_count": 4,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 636618072,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/rom_y1_type_b.zip",
-          "size": 423125776,
-          "download_count": 4,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 636618061,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/rom_y2.zip",
-          "size": 459507925,
-          "download_count": 30,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 636618063,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 7,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 636618058,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261013/update.json",
-          "size": 299,
-          "download_count": 10,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 411020250,
-      "tag_name": "20261012",
-      "name": "InniClassic 20261012",
-      "published_at": "2026-10-12T21:45:07Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261012",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- Added Jellyfin sync so you can download music and videos directly from your Jellyfin server over Wi-Fi. You can sign in using QuickConnect (with an on-screen pairing code), username and password, or an API token, then sync all libraries or browse and pick specific folders. Sync options let you download album artwork, transcode videos for playback on the player, and remove local files that were deleted on the server, followed by an automatic library rescan when downloads finish.\n- Fixed four Bluetooth issues on the Y2:\n  - Toggling Bluetooth on now starts the MediaTek Bluetooth daemon (`mtkbt`) automatically (and starts it at boot in the ROM), fixing the bug where Bluetooth refused to turn back on or reconnect to paired headphones after being turned off.\n  - Turning Bluetooth off now stays off across reboots instead of turning itself back on at startup.\n  - \"Delete Device\" now verifies that unpairing succeeded before showing a confirmation message and refreshes the paired list cleanly.\n  - \"Connect Audio\" and \"Delete Device\" options are now visually indented beneath the selected device row.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261012.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261011...20261012\n",
-      "assets": [
-        {
-          "id": 635077116,
-          "name": "InniClassic-20261012.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/InniClassic-20261012.apk",
-          "size": 25287379,
-          "download_count": 5,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 635077122,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/rom.zip",
-          "size": 455407537,
-          "download_count": 26,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 635077118,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/rom_type_b.zip",
-          "size": 423165422,
-          "download_count": 3,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 635077123,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/rom_y1_type_a.zip",
-          "size": 455407537,
-          "download_count": 3,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 635077119,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/rom_y1_type_b.zip",
-          "size": 423165422,
-          "download_count": 3,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 635077117,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/rom_y2.zip",
-          "size": 459484049,
-          "download_count": 9,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 635077120,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 3,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 635077113,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261012/update.json",
-          "size": 299,
-          "download_count": 5,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 409907549,
-      "tag_name": "20261011",
-      "name": "InniClassic 20261011",
-      "published_at": "2026-10-11T20:36:19Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261011",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- The About screen now uses a scrollable two-column iPod Classic layout showing song, video, album, and artist counts, software version, model number, and separate capacity and free space rows for both internal flash and the microSD card.\n- A new \"Battery Percentage\" setting draws the exact percentage and a compact charging bolt inside the battery icon, with contrasting text colors across the filled and empty parts of the indicator.\n- Genre browsing now follows the classic iPod hierarchy (`Genre -> Artists / All Songs -> Albums / All Songs -> Songs`), and song lists have a Shuffle banner with a song counter at the top. Returning from Now Playing also highlights the playing track, fast scrolling no longer crashes on lists with header rows, and the wheel no longer gets stuck at list edges.\n- FM Radio now remembers your last tuned frequency and saved station presets across restarts, tunes smoothly with the wheel without screen flicker, supports hardware station seek, and routes audio directly to the 3.5mm headphone jack after pausing any playing music.\n- Factory OEM demo tracks in `custom_media` (such as *Despacito* and *Panama*) are no longer scanned, and an automatic cleanup migration removes them from existing libraries while stripping them from newly built ROMs.\n- Both button presses and touch events now reset the screen backlight sleep timer, and the screen stays awake automatically during library scans, radio scans, podcast downloads, video playback, and USB storage mode.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261011.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261008...20261011\n",
-      "assets": [
-        {
-          "id": 631746387,
-          "name": "InniClassic-20261011.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/InniClassic-20261011.apk",
-          "size": 25249278,
-          "download_count": 12,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 631746385,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/rom.zip",
-          "size": 455407764,
-          "download_count": 26,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 631746386,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/rom_type_b.zip",
-          "size": 423133957,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 631746382,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/rom_y1_type_a.zip",
-          "size": 455407764,
-          "download_count": 9,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 631746384,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/rom_y1_type_b.zip",
-          "size": 423133957,
-          "download_count": 8,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 631746379,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/rom_y2.zip",
-          "size": 459449940,
-          "download_count": 11,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 631746380,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 8,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 631746378,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261011/update.json",
-          "size": 299,
-          "download_count": 10,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 406186220,
-      "tag_name": "20261008",
-      "name": "InniClassic 20261008",
-      "published_at": "2026-10-07T21:40:39Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261008",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- The in-app Software Update screen now shows clearer status feedback, waits automatically while Wi-Fi finishes connecting, and lets you reinstall the current build if you are already up to date.\n- Over-the-air updates now install properly when InniClassic runs as a system ROM app (`/system/app`) by copying the new APK into `/system/app` and rebooting. Version checks also handle same-day revision tags (`YYYYMMDD-vN`).\n- Status bar icons are darker on the light theme so they stay readable against the silver bar, and the Wi-Fi indicator now uses a sharper Tabler icon.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261008.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261007...20261008\n",
-      "assets": [
-        {
-          "id": 619886904,
-          "name": "InniClassic-20261008.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/InniClassic-20261008.apk",
-          "size": 25241731,
-          "download_count": 10,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 619886910,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/rom.zip",
-          "size": 455440329,
-          "download_count": 14,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619886906,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/rom_type_b.zip",
-          "size": 423114074,
-          "download_count": 4,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619886908,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/rom_y1_type_a.zip",
-          "size": 455440329,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619886911,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/rom_y1_type_b.zip",
-          "size": 423114074,
-          "download_count": 4,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619886903,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/rom_y2.zip",
-          "size": 459436324,
-          "download_count": 26,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619886909,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 6,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 619886902,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261008/update.json",
-          "size": 299,
-          "download_count": 12,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 406053561,
-      "tag_name": "20261007",
-      "name": "InniClassic 20261007",
-      "published_at": "2026-10-07T18:39:54Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261007",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- Fixed a bug where tracks with the same title across different albums (such as live recordings, greatest hits, or deluxe editions) were treated as duplicates and hidden from your library except for the single highest-bitrate copy.\n- Added an automatic versioned migration system that runs an incremental media scan on first launch after updating, restoring any previously skipped songs to your albums without resetting your existing library cache.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261007.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261006...20261007\n",
-      "assets": [
-        {
-          "id": 619490459,
-          "name": "InniClassic-20261007.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/InniClassic-20261007.apk",
-          "size": 25234954,
-          "download_count": 8,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 619490463,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/rom.zip",
-          "size": 455436338,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619490460,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/rom_type_b.zip",
-          "size": 423114974,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619490457,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/rom_y1_type_a.zip",
-          "size": 455436338,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619490454,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/rom_y1_type_b.zip",
-          "size": 423114974,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619490458,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/rom_y2.zip",
-          "size": 459463641,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 619490456,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 6,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 619490455,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261007/update.json",
-          "size": 299,
-          "download_count": 17,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 404639179,
-      "tag_name": "20261006",
-      "name": "InniClassic 20261006",
-      "published_at": "2026-10-06T11:39:02Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261006",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- Added native USB Mass Storage support for the microSD card when plugging the player into a computer. A prompt asks whether to \"Connect as Storage\" or \"Charge Only\" (which can be toggled under Settings -> Ask on USB Connect). While connected, the player shows an iPod-style \"Connected - Eject before disconnecting\" screen where pressing Center safely ejects the drive and automatically rescans your library for newly added music.\n- Translated the new keyboard settings, \"Add to Favorites\", equalizer headers, screen recorder prompts, and error toasts across all 7 supported languages, and replaced leftover Korean internal keys in the screen recorder menus with English text.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261006.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261001...20261006\n",
-      "assets": [
-        {
-          "id": 615345407,
-          "name": "InniClassic-20261006.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/InniClassic-20261006.apk",
-          "size": 25233311,
-          "download_count": 12,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 615345410,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/rom.zip",
-          "size": 455437962,
-          "download_count": 9,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 615345409,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/rom_type_b.zip",
-          "size": 423114161,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 615345414,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/rom_y1_type_a.zip",
-          "size": 455437962,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 615345411,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/rom_y1_type_b.zip",
-          "size": 423114161,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 615345413,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/rom_y2.zip",
-          "size": 459424649,
-          "download_count": 42,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 615345412,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 6,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 615345408,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261006/update.json",
-          "size": 299,
-          "download_count": 9,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 400766905,
-      "tag_name": "20261001",
-      "name": "InniClassic 20261001",
-      "published_at": "2026-10-01T08:19:21Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20261001",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- Volume now uses a 30-step virtual scale with an iPod-style overlay across all screens instead of the stock Android popup. It works across music, video playback, FM radio, and Music Quiz, and includes six extra-quiet digital sub-steps at the bottom of the scale (down to -28 dBFS) for sensitive earphones.\n- A full QWERTY on-screen keyboard is now available in Settings alongside the original grid layout. It includes a symbol layer, column memory when moving vertically across the spacebar, lighter 10ms key vibration, and full punctuation (`; : , / \\ ( ) [ ] { } < > ' ~ \\`` and `|`) for Wi-Fi passwords and search queries.\n- Cover Flow and album lists use a 9-slot buffered layout and a 256x256 disk and RAM thumbnail cache (`.y1_thumbs_cache`), eliminating card pop-in and lag when spinning the wheel fast or reversing direction.\n- Holding the Center button for 0.8 seconds now locks all buttons and turns the screen off (Hold mode, from upstream 1.4.4). Hold Center again to unlock.\n- On Now Playing, wheel seeking previews the target time in 5-second steps until you press Center to jump, and pausing in the Classic theme keeps album art bright while remembering your active bottom bar mode. Starting a video also pauses active music so the Play/Pause button controls the video.\n- Custom themes no longer reset to the default theme after unplugging from USB Mass Storage because the selected theme is now saved by name instead of folder scan order. Newly created `.scrobbler.log` files also declare `#TZ/UTC` so scrobble importers read their timestamps as UTC.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261001.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260929...20261001\n",
-      "assets": [
-        {
-          "id": 602779246,
-          "name": "InniClassic-20261001.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/InniClassic-20261001.apk",
-          "size": 25225302,
-          "download_count": 7,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 602779252,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/rom.zip",
-          "size": 455436434,
-          "download_count": 10,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 602779251,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/rom_type_b.zip",
-          "size": 423113479,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 602779250,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/rom_y1_type_a.zip",
-          "size": 455436434,
-          "download_count": 8,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 602779247,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/rom_y1_type_b.zip",
-          "size": 423113479,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 602779248,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/rom_y2.zip",
-          "size": 459439768,
-          "download_count": 17,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 602779245,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 7,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 602779244,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20261001/update.json",
-          "size": 299,
-          "download_count": 10,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 399563074,
-      "tag_name": "20260929",
-      "name": "InniClassic 20260929",
-      "published_at": "2026-09-29T22:06:40Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20260929",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- Muted wheel clicks, system touch sounds, and vibration when the screen is off and \"Screen Off Control\" is disabled in Settings. Accidental touches in your pocket no longer make noise, buzz, or reset the backlight timer to wake the screen, and feedback turns back on as soon as you wake the display.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260929.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928-build.6...20260929\n",
-      "assets": [
-        {
-          "id": 599337236,
-          "name": "InniClassic-20260929.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/InniClassic-20260929.apk",
-          "size": 25200732,
-          "download_count": 6,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 599337241,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/rom.zip",
-          "size": 455397679,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 599337235,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/rom_type_b.zip",
-          "size": 423111794,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 599337239,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/rom_y1_type_a.zip",
-          "size": 455397679,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 599337238,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/rom_y1_type_b.zip",
-          "size": 423111794,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 599337234,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/rom_y2.zip",
-          "size": 459397798,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 599337237,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 7,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 599337233,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260929/update.json",
-          "size": 299,
-          "download_count": 8,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 398056774,
-      "tag_name": "20260928",
-      "name": "InniClassic 20260928",
-      "published_at": "2026-09-28T08:15:18Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20260928",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- The Y2 headphone volume curve in `libaudiocustparam.so` is tuned lower at the bottom of the range, so sensitive earphones can be used comfortably in quiet rooms where step 1 was previously too loud.\n- Over-the-air (OTA) updates now download directly from GitHub Releases (`update.json`) using OkHttp, which follows GitHub redirects reliably and checks the downloaded file size before installing.\n- In Music Quiz, the visual album cover round now sizes tiles properly on the Y2 screen and extracts artwork from `.m4a`/ALAC files, manual cover files, and scaled folder images without running out of memory.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260928.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260927...20260928\n",
-      "assets": [
-        {
-          "id": 594881463,
-          "name": "InniClassic-20260928.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/InniClassic-20260928.apk",
-          "size": 25186866,
-          "download_count": 6,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 594881465,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/rom.zip",
-          "size": 456594638,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 594881461,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/rom_type_b.zip",
-          "size": 416333879,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 594881462,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/rom_y1_type_a.zip",
-          "size": 456594638,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 594881466,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/rom_y1_type_b.zip",
-          "size": 416333879,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 594881460,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/rom_y2.zip",
-          "size": 444691351,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 594881469,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 7,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 594881467,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928/update.json",
-          "size": 299,
-          "download_count": 9,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 398692823,
-      "tag_name": "20260928-build.6",
-      "name": "InniClassic 20260928 (Build 6)",
-      "published_at": "2026-09-28T23:04:31Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20260928-build.6",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "- Removed Android's Safe Media Volume cap in both the app and the ROM so headphone volume can reach 100% without stopping at the system warning limit. You can also tap or drag the on-screen volume bar to change the volume directly.\n- Added a full Polish translation and improved how bundled language files load on startup.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260928-build.6.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928...20260928-build.6\n",
-      "assets": [
-        {
-          "id": 596631161,
-          "name": "InniClassic-20260928-build.6.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/InniClassic-20260928-build.6.apk",
-          "size": 25200586,
-          "download_count": 6,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 596631156,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/rom.zip",
-          "size": 455402613,
-          "download_count": 8,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 596631160,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/rom_type_b.zip",
-          "size": 423124101,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 596631163,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/rom_y1_type_a.zip",
-          "size": 455402613,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 596631158,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/rom_y1_type_b.zip",
-          "size": 423124101,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 596631162,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/rom_y2.zip",
-          "size": 459402216,
-          "download_count": 8,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 596631159,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/SHA256SUMS.txt",
-          "size": 499,
-          "download_count": 7,
-          "content_type": "text/plain"
-        },
-        {
-          "id": 596631154,
-          "name": "update.json",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260928-build.6/update.json",
-          "size": 341,
-          "download_count": 10,
-          "content_type": "application/json"
-        }
-      ]
-    },
-    {
-      "id": 397758170,
-      "tag_name": "20260927",
-      "name": "InniClassic 20260927",
-      "published_at": "2026-09-27T18:17:40Z",
-      "prerelease": false,
-      "html_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/tag/20260927",
-      "icon_url": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
-      "icon_dark_url": "",
-      "body": "First release with support for the Innioasis Y2 alongside the Innioasis Y1 (Type A and Type B).\n\n- Music, audiobooks, and videos are now indexed across both internal storage (`/storage/sdcard0`) and the removable microSD card (`/storage/sdcard1`).\n- A background SD card monitor watches for unexpected microSD disconnects, such as after unplugging from USB, and remounts the card automatically before refreshing your library. This also fixes a crash loop during media indexing and stops the monitor from touching internal storage.\n- The Y2 capacitive click wheel (`mtk-tpd-kpd`) is mapped to standard left and right scroll navigation across all menus and lists.\n- FM radio now works on the Y2. Opening the radio sets tuner device permissions, stops background stock radio apps that would otherwise lock `/dev/fm`, and keeps Airplane Mode from blocking the tuner.\n- Automated builds produce flashable ROM packages for the Y2, Y1 Type A, and Y1 Type B, along with a standalone APK.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260927.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/v1.5.0...20260927\n",
-      "assets": [
-        {
-          "id": 593488151,
-          "name": "InniClassic-20260927.apk",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260927/InniClassic-20260927.apk",
-          "size": 25186490,
-          "download_count": 6,
-          "content_type": "application/vnd.android.package-archive"
-        },
-        {
-          "id": 593488159,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260927/rom.zip",
-          "size": 456599763,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 593488160,
-          "name": "rom_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260927/rom_type_b.zip",
-          "size": 424305181,
-          "download_count": 5,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 593488154,
-          "name": "rom_y1_type_a.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260927/rom_y1_type_a.zip",
-          "size": 456599763,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 593488152,
-          "name": "rom_y1_type_b.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260927/rom_y1_type_b.zip",
-          "size": 424305181,
-          "download_count": 6,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 593488157,
-          "name": "rom_y2.zip",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260927/rom_y2.zip",
-          "size": 444712441,
-          "download_count": 7,
-          "content_type": "application/zip"
-        },
-        {
-          "id": 593488153,
-          "name": "SHA256SUMS.txt",
-          "browser_download_url": "https://github.com/JonaszPotoniec/inniclassic-y2/releases/download/20260927/SHA256SUMS.txt",
-          "size": 491,
-          "download_count": 7,
-          "content_type": "text/plain"
         }
       ]
     }
@@ -13440,7 +12916,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/rom_y2.zip",
           "size": 296365314,
-          "download_count": 995,
+          "download_count": 1033,
           "content_type": "application/zip"
         },
         {
@@ -13448,7 +12924,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/Release2.5/system.img",
           "size": 369235868,
-          "download_count": 56,
+          "download_count": 61,
           "content_type": "application/octet-stream"
         }
       ]
@@ -13469,7 +12945,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/rom_y2.zip",
           "size": 296556198,
-          "download_count": 316,
+          "download_count": 321,
           "content_type": "application/x-zip-compressed"
         },
         {
@@ -13477,7 +12953,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.3/system.img",
           "size": 369211292,
-          "download_count": 40,
+          "download_count": 45,
           "content_type": "application/octet-stream"
         }
       ]
@@ -13498,7 +12974,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/rom_y2.zip",
           "size": 296538727,
-          "download_count": 74,
+          "download_count": 78,
           "content_type": "application/x-zip-compressed"
         },
         {
@@ -13506,7 +12982,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/RealeaseV2.2.2/system.zip",
           "size": 225531225,
-          "download_count": 27,
+          "download_count": 31,
           "content_type": "application/x-zip-compressed"
         }
       ]
@@ -13527,7 +13003,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/rom_y2.zip",
           "size": 296506638,
-          "download_count": 88,
+          "download_count": 92,
           "content_type": "application/x-zip-compressed"
         },
         {
@@ -13535,7 +13011,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.img.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV2.2.1/system.img.zip",
           "size": 225498405,
-          "download_count": 32,
+          "download_count": 36,
           "content_type": "application/x-zip-compressed"
         }
       ]
@@ -13640,7 +13116,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "system.zip",
           "browser_download_url": "https://github.com/SchulzCode/Y2Player/releases/download/ReleaseV1.1/system.zip",
           "size": 330412470,
-          "download_count": 7,
+          "download_count": 8,
           "content_type": "application/x-zip-compressed"
         }
       ]
@@ -13684,7 +13160,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "build-manifest.json",
           "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/build-manifest.json",
           "size": 545,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/json"
         },
         {
@@ -13692,7 +13168,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.7/rom.zip",
           "size": 309074505,
-          "download_count": 883,
+          "download_count": 889,
           "content_type": "application/zip"
         }
       ]
@@ -13713,7 +13189,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "build-manifest.json",
           "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/build-manifest.json",
           "size": 538,
-          "download_count": 16,
+          "download_count": 20,
           "content_type": "application/json"
         },
         {
@@ -13721,7 +13197,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/ryan-specter/koensayr-auto/releases/download/2.4.0-koensayr-3.0.2/rom.zip",
           "size": 329013283,
-          "download_count": 168,
+          "download_count": 175,
           "content_type": "application/zip"
         }
       ]
@@ -13744,7 +13220,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "better-Y_3.1.2_v1.1.0.apk",
           "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/better-Y_3.1.2_v1.1.0.apk",
           "size": 60200797,
-          "download_count": 21,
+          "download_count": 25,
           "content_type": "application/vnd.android.package-archive"
         },
         {
@@ -13752,7 +13228,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.1.0/rom.zip",
           "size": 181243963,
-          "download_count": 349,
+          "download_count": 381,
           "content_type": "application/x-zip-compressed"
         }
       ]
@@ -13773,7 +13249,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/Leska1337/better-Y/releases/download/v1.0.0/rom.zip",
           "size": 181072948,
-          "download_count": 179,
+          "download_count": 183,
           "content_type": "application/x-zip-compressed"
         }
       ]
@@ -13796,7 +13272,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip",
           "size": 533410269,
-          "download_count": 396,
+          "download_count": 406,
           "content_type": "application/zip"
         },
         {
@@ -13804,7 +13280,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_type_b.zip",
           "browser_download_url": "https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip",
           "size": 475393744,
-          "download_count": 248,
+          "download_count": 254,
           "content_type": "application/zip"
         }
       ]
@@ -13827,7 +13303,7 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom_y2.zip",
           "browser_download_url": "https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip",
           "size": 662798399,
-          "download_count": 214,
+          "download_count": 223,
           "content_type": "application/zip"
         }
       ]
@@ -13850,371 +13326,1359 @@ window.INNIOASIS_HARDCODED_RELEASES = {
           "name": "rom.zip",
           "browser_download_url": "https://github.com/y1-community/y1-linux-rom/releases/download/0.0.1/rom.zip",
           "size": 270175226,
-          "download_count": 38,
+          "download_count": 42,
           "content_type": "application/zip"
         }
       ]
     }
   ],
-  "FabianZettl/inniclassic": [
+  "ClassyPlayer/Classy": [
     {
-      "id": 399111592,
-      "tag_name": "v1.4.5",
-      "name": "InniClassic 1.4.5",
-      "published_at": "2026-09-29T12:12:13Z",
+      "id": 437609316,
+      "tag_name": "20261107-v2",
+      "name": "Classy 20261107 (v2)",
+      "published_at": "2026-11-07T13:57:11Z",
       "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.5",
-      "icon_url": "",
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261107-v2",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
-      "body": "### Fixed\n- **Theme could silently revert to the default after connecting the device as USB Mass Storage** \u2014 the selected theme was persisted only as a numeric index into the SD card's theme folder listing, and that listing's order isn't guaranteed stable across a mount/unmount cycle (common FAT32 behavior). The saved index could end up pointing at a completely different theme once the card was reconnected. The theme's name is now saved alongside the index and resolved by name on startup \u2014 independent of scan order \u2014 with the old index kept only as a fallback for upgrades.\n- **`.scrobbler.log` declared its timestamps as `#TZ/UNKNOWN`** even though they're genuinely UTC (`System.currentTimeMillis()` is always UTC epoch time, regardless of the device's local timezone setting). Now correctly declared as `#TZ/UTC`, so any tool that imports the log trusts the timestamps instead of asking or guessing. Only affects newly created log files \u2014 an existing `.scrobbler.log`'s header isn't rewritten.\n- **On-screen keyboard was missing common punctuation**, making some Wi-Fi passwords (and anything else typed through it \u2014 podcast search, Last.fm login, etc.) impossible to enter. Added `; : , / \\ ( ) [ ] { } < > ' ~` `` ` `` and `|`.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.5.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.5.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "body": "### Classy Release\n\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\n\n#### \ud83d\udce6 Release Assets\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`Classy-20261107-v2.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| **`update.json`** | All Devices | OTA update metadata for in-app updater |\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\n| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\n\n#### \u26a1 Flashing Instructions (SP Flash Tool)\n1. Extract the corresponding zip file for your device.\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\n4. Select **Firmware Upgrade** or **Download Only**.\n5. Power off the device completely, click **Download**, and connect the USB cable.\n\n---\n\n\n## What's Changed\n* feat(video): hide the overlay while the video plays, and open scrub mode with the centre button by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/69\n\n\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261107...20261107-v2",
       "assets": [
         {
-          "id": 598138137,
-          "name": "InniClassic-1.4.5.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/InniClassic-1.4.5.apk",
-          "size": 30017796,
-          "download_count": 62,
+          "id": 720855025,
+          "name": "Classy-20261107-v2.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/Classy-20261107-v2.apk",
+          "size": 24544653,
+          "download_count": 4,
           "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 598138138,
+          "id": 720855026,
+          "name": "index.html",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/index.html",
+          "size": 37652,
+          "download_count": 3,
+          "content_type": "text/html"
+        },
+        {
+          "id": 720855019,
           "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.5/rom.zip",
-          "size": 463531481,
-          "download_count": 494,
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom.zip",
+          "size": 439947905,
+          "download_count": 3,
           "content_type": "application/zip"
+        },
+        {
+          "id": 720855024,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_type_b.zip",
+          "size": 436987850,
+          "download_count": 2,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720855021,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y1_type_a.zip",
+          "size": 439947905,
+          "download_count": 2,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720855022,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y1_type_b.zip",
+          "size": 436987850,
+          "download_count": 3,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720855023,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/rom_y2.zip",
+          "size": 482216428,
+          "download_count": 17,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720855028,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/SHA256SUMS.txt",
+          "size": 489,
+          "download_count": 3,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 720855017,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/update.json",
+          "size": 288,
+          "download_count": 8,
+          "content_type": "application/json"
         }
       ]
     },
     {
-      "id": 399100768,
-      "tag_name": "v1.4.4",
-      "name": "InniClassic 1.4.4",
-      "published_at": "2026-09-29T11:57:38Z",
+      "id": 437477353,
+      "tag_name": "20261107",
+      "name": "Classy 20261107",
+      "published_at": "2026-11-07T09:43:54Z",
       "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.4",
-      "icon_url": "",
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261107",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
-      "body": "A hardware-input overhaul: a real Hold/lock switch, a proper video/music handoff, and a round of Now Playing and Videos polish.\n\n### Added\n- **Hold (key lock)** \u2014 hold Center for 0.8s to lock the wheel/buttons (and physically turn the display off); hold Center again to unlock. This is the real fix for \"screen wakes up randomly in my pocket\": instead of guessing which button presses are accidental, you can now lock input entirely, matching the real iPod Classic's Hold switch.\n- **Toggle Favorite is back in the Now Playing hold-menu** (long-press Play/Pause) \u2014 caught and fixed before release: the redesigned Center gesture handling below removed the old \"double-click Center\" favorite shortcut without anywhere else to reach it.\n\n### Fixed\n- **Video Play/Pause was starting music instead of pausing the video.** Two compounding bugs: the hardware media-button receiver didn't know about video and would call the music player regardless of what was on screen (with \"Screen Off Control\" enabled), and opening a video didn't stop any music that was already playing. Both fixed.\n- **Videos list ignored the wheel/Center** in some cases \u2014 the screen was unconditionally swallowing every key before the shared list-navigation code could see it.\n- **Now Playing wheel seeking** is now a real preview-then-confirm: turning the wheel in Seek mode moves a pending position in 5-second steps without touching actual playback, applied only once you press Center again. The preview no longer gets silently overwritten by the background progress update.\n- Center-button handling is now centralized in one place \u2014 fixes a hold sometimes also registering as a select, and holding Center no longer opens the song menu or toggles video seek mode (that's long Play/Pause and short Center respectively now).\n- Pausing on the Classic theme no longer dims the album artwork or leaves a leftover audio-format overlay on screen; the selected Now Playing bottom-bar mode survives a pause/resume.\n- Removed a duplicate progress-callback registration.\n\n### Changed\n- More compact Now Playing progress/volume bars, fixed-width time labels, and evenly spaced rating marks.\n- Video now seeks via Previous/Next (\u00b110s); the wheel is volume-only during video playback.\n- Classic Videos list shares the same background/row styling as every other list.\n\nFull engineering write-up: [`docs/release-review-1.4.4.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.4.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.4.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.4.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "body": "### Classy Release\n\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\n\n#### \ud83d\udce6 Release Assets\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`Classy-20261107.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| **`update.json`** | All Devices | OTA update metadata for in-app updater |\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\n| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\n\n#### \u26a1 Flashing Instructions (SP Flash Tool)\n1. Extract the corresponding zip file for your device.\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\n4. Select **Firmware Upgrade** or **Download Only**.\n5. Power off the device completely, click **Download**, and connect the USB cable.\n\n---\n\n\n## What's Changed\n* refactor(settings): remove Settings \u2192 Appearance \u2192 Background and the hidden blurred background views by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/61\n* fix(rom): install the launcher's native libraries in /system/lib, so that videos play by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/62\n* docs: add Play On, romanised lyrics and Settings \u2192 Battery to the site and README by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/60\n* fix(usb): share the microSD card at once or say why not, keep the app alive, and add the USB Drive setting by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/64\n* fix(ui): hide Android's notification icons and tickers while the app is in front by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/65\n* fix(library): remove \"Do not turn off the screen.\" from the scan progress text by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/66\n\n\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261106...20261107",
       "assets": [
         {
-          "id": 598101369,
-          "name": "InniClassic-1.4.4.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/InniClassic-1.4.4.apk",
-          "size": 30000629,
+          "id": 720263962,
+          "name": "Classy-20261107.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/Classy-20261107.apk",
+          "size": 24542812,
+          "download_count": 3,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 720263967,
+          "name": "index.html",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/index.html",
+          "size": 36957,
+          "download_count": 3,
+          "content_type": "text/html"
+        },
+        {
+          "id": 720263959,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom.zip",
+          "size": 439954614,
+          "download_count": 3,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720263965,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_type_b.zip",
+          "size": 436969414,
+          "download_count": 2,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720263970,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y1_type_a.zip",
+          "size": 439954614,
+          "download_count": 3,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720263963,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y1_type_b.zip",
+          "size": 436969414,
+          "download_count": 3,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720263966,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/rom_y2.zip",
+          "size": 482232373,
+          "download_count": 9,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 720263961,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/SHA256SUMS.txt",
+          "size": 486,
+          "download_count": 3,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 720263964,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107/update.json",
+          "size": 269,
+          "download_count": 3,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 436702150,
+      "tag_name": "20261106",
+      "name": "Classy 20261106",
+      "published_at": "2026-11-06T15:58:50Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261106",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "### Classy Release\n\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\n\n#### \ud83d\udce6 Release Assets\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`Classy-20261106.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| **`update.json`** | All Devices | OTA update metadata for in-app updater |\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\n| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\n\n#### \u26a1 Flashing Instructions (SP Flash Tool)\n1. Extract the corresponding zip file for your device.\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\n4. Select **Firmware Upgrade** or **Download Only**.\n5. Power off the device completely, click **Download**, and connect the USB cable.\n\n---\n\n\n## What's Changed\n* refactor(lists): one model for the list screens and the Settings rows by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/45\n* fix(settings): end the menu reorder before new rows replace the Main Menu Items rows by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/48\n* fix(library): keep the CPU awake while the media library scan runs by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/53\n* docs(site): add a product page and a GitHub Pages workflow by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/52\n* feat(settings): add Settings \u2192 Battery, with the battery level and the screen time of the last 24 hours or 10 days by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/55\n* feat(cast): Play On: play the music on a Sonos, DLNA or Google Cast speaker of the Wi-Fi by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/56\n* docs(site): install the firmware with Innioasis Updater CE from innioasis.app by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/57\n* feat(player): show romanised lyrics (pinyin, romaji), or both lines, from a .romanised.lrc file by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/54\n* Rebrand project from InniClassic to Classy by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/46\n* fix(scripts): find the repo root without assuming the directory name by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/58\n* feat(boot-logo): generate and package Classy boot logo by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/47\n* fix: point repository links at ClassyPlayer/Classy by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/59\n\n\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261105...20261106",
+      "assets": [
+        {
+          "id": 717685988,
+          "name": "Classy-20261106.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/Classy-20261106.apk",
+          "size": 24606606,
+          "download_count": 2,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 717685986,
+          "name": "index.html",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/index.html",
+          "size": 35988,
+          "download_count": 2,
+          "content_type": "text/html"
+        },
+        {
+          "id": 717685992,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom.zip",
+          "size": 455546831,
+          "download_count": 2,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 717685990,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_type_b.zip",
+          "size": 415427715,
+          "download_count": 3,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 717685989,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y1_type_a.zip",
+          "size": 455546831,
+          "download_count": 4,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 717685995,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y1_type_b.zip",
+          "size": 415427715,
+          "download_count": 3,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 717686002,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/rom_y2.zip",
+          "size": 465983256,
+          "download_count": 3,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 717685985,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/SHA256SUMS.txt",
+          "size": 486,
+          "download_count": 2,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 717685982,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261106/update.json",
+          "size": 269,
+          "download_count": 2,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 435320574,
+      "tag_name": "20261105",
+      "name": "InniClassic 20261105",
+      "published_at": "2026-11-05T14:40:14Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261105",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "### InniClassic Release\n\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\n\n#### \ud83d\udce6 Release Assets\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`InniClassic-20261105.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| **`update.json`** | All Devices | OTA update metadata for in-app updater |\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\n| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\n\n#### \u26a1 Flashing Instructions (SP Flash Tool)\n1. Extract the corresponding zip file for your device.\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\n4. Select **Firmware Upgrade** or **Download Only**.\n5. Power off the device completely, click **Download**, and connect the USB cable.\n\n---\n\n\n## What's Changed\n* fix(battery): show the battery level from the voltage on the Y2, warn at 10 % and 3 %, and shut down before the cut-off by @ferrolho in https://github.com/JonaszPotoniec/inniclassic-y2/pull/41\n* feat(navigation): navigate like the iPod: one back stack, menu slides, and list screens in place of dialogs by @ferrolho in https://github.com/JonaszPotoniec/inniclassic-y2/pull/42\n* refactor(ui): remove the App Drawer and Screen Recorder screens, which nothing can open by @ferrolho in https://github.com/JonaszPotoniec/inniclassic-y2/pull/44\n\n\n**Full Changelog**: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261104...20261105",
+      "assets": [
+        {
+          "id": 713717422,
+          "name": "index.html",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/index.html",
+          "size": 32699,
+          "download_count": 5,
+          "content_type": "text/html"
+        },
+        {
+          "id": 713717420,
+          "name": "InniClassic-20261105.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/InniClassic-20261105.apk",
+          "size": 24532442,
+          "download_count": 5,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 713717416,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom.zip",
+          "size": 455463136,
+          "download_count": 12,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 713717414,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_type_b.zip",
+          "size": 422464888,
+          "download_count": 5,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 713717412,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y1_type_a.zip",
+          "size": 455463136,
+          "download_count": 5,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 713717421,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y1_type_b.zip",
+          "size": 422464888,
+          "download_count": 4,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 713717408,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/rom_y2.zip",
+          "size": 465902259,
+          "download_count": 14,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 713717415,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 4,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 713717407,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261105/update.json",
+          "size": 299,
+          "download_count": 8,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 434408829,
+      "tag_name": "20261104",
+      "name": "InniClassic 20261104",
+      "published_at": "2026-11-04T20:21:02Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261104",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "Thanks @ferrolho for making this release possible!\r\n\r\nmany bug fixes\r\n\r\n- The volume curve uses thirty equal 2 dB steps (-58 dB to 0 dB) saved independently for each output, and volume buttons step once when clicked with the screen off. Wheel clicks have a dedicated Click Volume setting (Low, Medium, High), equalizer and audio effects run only when custom values are active, and graphic equalizer adjustments apply immediately while editing.\r\n- Only one audio source plays at a time: starting a track pauses the FM radio, opening a video pauses playback, and starting USB Mass Storage stops the radio. The FM radio remains controllable with media buttons from any screen while active or paused.\r\n- Long-pressing the center button opens an in-place track menu for playlist actions and album browsing. A single center press toggles a full-width lyrics overlay with edge fades, and a new Lyrics Keep Screen On setting prevents the display from sleeping during playback while lyrics are visible. Holding Play/Pause stops playback and rewinds to the beginning, while holding Next or Previous seeks up to 120x speed.\r\n- The audio spectrum visualizer draws in the dominant album artwork color, stays visible at low volume levels, and stops its capture thread whenever the screen turns off or another screen is shown. Track times format in the classic style (`2:08`, `-0:34`, `1:02:08`), with a Total Time toggle to display total track length in place of remaining time.\r\n- Physical button presses now register on release instead of initial push down, preventing duplicate inputs and ensuring held actions trigger cleanly. Hardware and Bluetooth remote controls continue to handle playback when the screen is dark, the on-screen keyboard standardizes on the QWERTY layout, and wheel scrolling loops consistently across Wi-Fi, Bluetooth, Music Quiz, and playlist screens.\r\n- Cellular modem services stay permanently disabled on the Y2 to conserve battery. Bluetooth pairing accepts numeric comparison requests without requiring a touch screen, a Discoverable toggle makes the player visible to cars and external devices for two minutes, and track metadata transmits over AVRCP to in-vehicle displays. Music automatically pauses on Bluetooth disconnect or headphone removal and resumes if reconnected within four hours.\r\n- Media scans compare file modification timestamps and sizes, re-reading only altered tracks and speeding up subsequent library rescans. Folder browsing defaults to secondary storage (`/storage/sdcard1/Music`), supports upward navigation (`..`), and lets you switch between storage volumes. Multi-genre tags are cataloged individually across FLAC, Opus, Ogg Vorbis, and ALAC files.\r\n- Music menus include new options for Compilations, Shuffle Songs, and Group Albums (by Title or Title and Artist). iPod-style smart playlists for Recently Played and Top 25 Most Played tracks replace the legacy album history tracker.\r\n- Cover Flow sorts albums by artist and then title, positions the artist name below the album cover, and jumps letter by letter during rapid wheel rotation. Fast wheel turns in song and album lists also jump alphabetically.\r\n- Classic themes use the iPod Classic split-screen layout with slow cover motion, menu drop shadows, and matching zoom transitions. A low-battery warning banner appears at 10% battery with a \"Please charge\" screen at 2%. In the Y2 ROM, Android's stock battery dialog and low-power audio alert are disabled.\r\n- A long press on the power button opens a dedicated iPod-style Power screen with Restart and Power Off options. Destructive actions like Reset Settings, Clear Album Art, Last.fm Log Out, and Settings Import now confirm on dedicated action screens where Back cancels.\r\n- Settings are arranged into iPod-style categories with options to export and import settings backups, show On/Off toggles as switches (`Toggle Style`), and fade the top and bottom edges of long lists (`List Edges`). Themes can be switched without restarting the launcher, including an Auto theme that tracks local sunrise and sunset.\r\n- Connecting storage switches the USB gadget mode to `mass_storage` before sharing partitions so partitions mount cleanly on host systems. The USB device name advertises Innioasis with the model number rather than generic MediaTek defaults, release builds stop on APIs newer than KitKat (API 19), and continuous integration checks verify 100% translation coverage across all seven languages.\r\n\r\n#### Release assets\r\n\r\n| File | Target device | Notes |\r\n| :--- | :--- | :--- |\r\n| `InniClassic-20261104.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\r\n| `update.json` | All devices | OTA update metadata for in-app updater |\r\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\r\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\r\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\r\n\r\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261017...20261104",
+      "assets": [
+        {
+          "id": 710801195,
+          "name": "index.html",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/index.html",
+          "size": 30965,
+          "download_count": 7,
+          "content_type": "text/html"
+        },
+        {
+          "id": 710801198,
+          "name": "InniClassic-20261104.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/InniClassic-20261104.apk",
+          "size": 24527493,
           "download_count": 7,
           "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 598101368,
+          "id": 710801202,
           "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.4/rom.zip",
-          "size": 463523953,
-          "download_count": 20,
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom.zip",
+          "size": 455462943,
+          "download_count": 18,
           "content_type": "application/zip"
-        }
-      ]
-    },
-    {
-      "id": 394052904,
-      "tag_name": "v1.4.3",
-      "name": "InniClassic 1.4.3",
-      "published_at": "2026-09-22T19:31:04Z",
-      "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.3",
-      "icon_url": "",
-      "icon_dark_url": "",
-      "body": "A theme-consistency pass plus a round of real correctness/security fixes underneath, including a Last.fm crash and a Wireless PC Upload path-traversal issue.\n\n### Changed\n- **Classic themes tightened up**: edge-to-edge, tighter main-menu rows; consistent 21dp bold list type; saturated blue selection gradient shared by both the dynamic menus and library lists; silver status-bar gradient, darker secondary text, and more compact chevrons.\n- Battery silhouette is more rectangular, and battery percentage is now clamped to 0\u2013100.\n- Main Menu, Cover Flow, Wi-Fi and equalizer views now use generated Android view IDs with a stable logical-key mapping instead of ad hoc constants.\n\n### Fixed\n- **Last.fm scrobbling could crash its background worker outright** \u2014 the pending-scrobble queue called `JSONArray.remove(int)`, which doesn't exist on the Y1's Android API 17 (added in API 19). Also, Last.fm can return HTTP 200 with an API-level error payload, which was previously treated as a successful scrobble and silently dropped instead of retried.\n- **Wireless PC Upload (the web server) had a path-traversal weakness** \u2014 file operations now canonicalize and confine paths to the shared root, reject cross-origin writes, and render filenames as plain text. Interrupted uploads now write to a temp file and atomically replace the target only once complete, so a dropped connection can no longer corrupt an existing file. Server connections now have timeouts and a bounded worker pool; shutdown properly closes active sockets.\n- Recycled album rows in the library list could show a stale cover thumbnail if an in-flight request finished after the row was recycled for a different album.\n- Removed a duplicate broadcast-receiver registration and duplicate manifest permission entries; added the newer Android receiver-flags overload with an API 17 fallback and additional Bluetooth/location permission checks.\n- Sound Check no longer calls an API-19-only method unguarded on this API-17 device.\n- Launcher icons switched from WebP to PNG for reliable API 17 rendering; fixed a malformed vector icon path.\n- Audiobook bookmark saving now checks the playlist index is still valid before writing.\n\nFull engineering write-up: [`docs/release-review-1.4.3.md`](https://github.com/FabianZettl/inniclassic/blob/master/docs/release-review-1.4.3.md).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.3.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.3.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "assets": [
-        {
-          "id": 582091804,
-          "name": "InniClassic-1.4.3.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/InniClassic-1.4.3.apk",
-          "size": 29869268,
-          "download_count": 29,
-          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 582091803,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.3/rom.zip",
-          "size": 463538077,
-          "download_count": 141,
+          "id": 710801190,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_type_b.zip",
+          "size": 422466574,
+          "download_count": 6,
           "content_type": "application/zip"
-        }
-      ]
-    },
-    {
-      "id": 381130813,
-      "tag_name": "v1.4.2",
-      "name": "InniClassic 1.4.2",
-      "published_at": "2026-09-02T09:40:27Z",
-      "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.2",
-      "icon_url": "",
-      "icon_dark_url": "",
-      "body": "Theme-consistency and Podcasts fixes from user feedback.\n\n### Fixed\n- **Status bar headphone/Bluetooth icons were hardcoded white**, making them nearly invisible on the light iPod Classic theme's light gray status bar. Now use the theme's own text color like the rest of the status bar.\n- **On-screen keyboard's selected character was unreadable on the light theme** \u2014 pure white text on a barely-tinted overlay meant it could blend into a light background almost completely. The keyboard panel's backdrop is now solidly dark so the white text always has real contrast, regardless of theme.\n- **Podcast episode loading always said \"No internet connection\"** even when the real problem was something else entirely (a bad feed URL, a server error, an expired certificate, malformed XML, etc.) \u2014 the actual error was being silently discarded. The toast now shows the real failure reason so it's actually possible to diagnose.\n\n### Added\n- **[`tools/airpods_fix/`](https://github.com/FabianZettl/inniclassic/tree/master/tools/airpods_fix)** \u2014 an experimental, opt-in fix for AirPods Pro 2 connecting over Bluetooth but staying silent, ported from [Semy0nBu/y1-airpods-rtpfix](https://github.com/Semy0nBu/y1-airpods-rtpfix) (all credit for the original fix goes there). Not bundled into the ROM or APK \u2014 it replaces a system-level Bluetooth driver, which is riskier and affects all Bluetooth devices, not just AirPods, so it ships as a separate, clearly-documented install/uninstall script pair instead of being forced on everyone. Read its README for the exact risk tradeoffs before using it.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.2.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.2.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "assets": [
-        {
-          "id": 540948765,
-          "name": "InniClassic-1.4.2.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/InniClassic-1.4.2.apk",
-          "size": 27225340,
-          "download_count": 34,
-          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 540948764,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.2/rom.zip",
-          "size": 463673525,
-          "download_count": 266,
+          "id": 710801196,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y1_type_a.zip",
+          "size": 455462943,
+          "download_count": 10,
           "content_type": "application/zip"
-        }
-      ]
-    },
-    {
-      "id": 378604464,
-      "tag_name": "v1.4.1",
-      "name": "InniClassic 1.4.1",
-      "published_at": "2026-08-28T16:06:23Z",
-      "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.4.1",
-      "icon_url": "",
-      "icon_dark_url": "",
-      "body": "Video feature catch-up, a new boot logo, and another round of Reddit-reported fixes.\n\n### Added\n- **Video thumbnails** \u2014 the Videos list shows a real frame from each file instead of a generic icon, loaded in the background.\n- **Video resume-position** \u2014 playback remembers where you left off and jumps back there next time you open that file.\n- **Fill Video Screen** setting \u2014 Settings \u2192 Fill Video Screen lets you choose between the original aspect ratio (letterboxed) or filling the whole screen. Direct response to a GitHub issue request.\n- **New boot logo** \u2014 replaces the Rockbox-branded splash the ROM's `LOGO` partition had carried over since this project's very first release with a plain black screen showing \"InniClassic\".\n\n### Changed\n- **Larger list/settings text** \u2014 Songs/Albums/Artists/Genres/Composers rows, folder browsing, and every Settings row are a bit bigger.\n- **Cover Flow now groups by artist** \u2014 previously sorted purely alphabetically by album title; now sorted by artist first, album second, matching the real iPod Classic.\n\n### Fixed\n- **Folders with many files lagged noticeably when opened** \u2014 rows now build in chunks instead of all at once, so the screen stays responsive.\n- **Screen could randomly wake up in a pocket while listening to music** \u2014 only the Center button now wakes the real display back up (was any key before, which pocket pressure on the wheel could trigger).\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.4.1.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.4.1.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "assets": [
-        {
-          "id": 534032002,
-          "name": "InniClassic-1.4.1.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/InniClassic-1.4.1.apk",
-          "size": 27225053,
-          "download_count": 20,
-          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 534032001,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.4.1/rom.zip",
-          "size": 463673952,
-          "download_count": 141,
+          "id": 710801197,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y1_type_b.zip",
+          "size": 422466574,
+          "download_count": 5,
           "content_type": "application/zip"
-        }
-      ]
-    },
-    {
-      "id": 372998177,
-      "tag_name": "v1.3.2",
-      "name": "InniClassic 1.3.2",
-      "published_at": "2026-08-19T11:33:34Z",
-      "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.3.2",
-      "icon_url": "",
-      "icon_dark_url": "",
-      "body": "Small follow-up polish release.\n\n### Fixed\n- **Videos screen looked out of place** compared to every other menu (Settings, Bluetooth, Wi-Fi) \u2014 it was missing the uppercase title header those screens have. Added, matching the existing look exactly.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.2.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.2.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "assets": [
-        {
-          "id": 520762401,
-          "name": "InniClassic-1.3.2.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/InniClassic-1.3.2.apk",
-          "size": 27222719,
-          "download_count": 21,
-          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 520762400,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.2/rom.zip",
-          "size": 463770674,
-          "download_count": 166,
+          "id": 710801191,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/rom_y2.zip",
+          "size": 465901262,
+          "download_count": 25,
           "content_type": "application/zip"
-        }
-      ]
-    },
-    {
-      "id": 364388580,
-      "tag_name": "v1.3.1",
-      "name": "InniClassic 1.3.1",
-      "published_at": "2026-08-03T17:38:17Z",
-      "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.3.1",
-      "icon_url": "",
-      "icon_dark_url": "",
-      "body": "Another round of Reddit-reported bugs, mostly around the Music library screens.\n\n### Fixed\n- **\"Albums\" was completely broken** \u2014 tapping into it either showed a black screen, froze, or silently bounced back to the Music menu. The row renderer was doing a full library scan plus a synchronous `MediaMetadataRetriever` lookup on the UI thread for every row, every time it scrolled into view \u2014 fine for a handful of albums, but an ANR/freeze risk for a real-sized library. Cover art lookup now runs on a background thread (placeholder shown immediately, real art swapped in once ready), and the per-album file lookup is precomputed once instead of rescanning the whole library per row.\n- **Videos screen: nothing could be selected or played** \u2014 rows were added to the list but never given initial focus, so spinning the wheel had no \"current\" row to move from (you'd hear the click sound but nothing would highlight or respond). Now the first row gets focus like every other list in the app.\n- **Some FLAC albums showed no cover art in \"Albums\"** (but did show it correctly on Now Playing/Cover Flow) \u2014 the Albums screen's cover lookup skipped embedded art entirely for FLAC files with no fallback, so only albums with a folder `cover.jpg`/`folder.jpg` showed anything. It now uses the same dedicated FLAC metadata parser Now Playing already relies on.\n- **Confusion around Last.fm scrobbling / \"where's my .scrobbler.log?\"** \u2014 the local scrobble log was silently gated behind the \"Scrobble to Last.fm\" toggle (off by default) even though it's just a private text file that needs no account. It's now written automatically for every played track, no setup required; the Settings toggle (renamed **Sync Scrobbles to Last.fm**) now only controls whether scrobbles are *also* sent to a real Last.fm account. Also documented in the README that `.scrobbler.log` is a dotfile and hidden by default in most file managers.\n- **Cover art looking noticeably blurry/soft while panning** on the Main Menu and Music menu \u2014 cover art was always decoded at half resolution regardless of its actual size, which compounded badly for anyone using smaller (e.g. 300\u00d7300) cover images against a pan panel rendered near full screen height. Downsampling now only kicks in for genuinely large source images; small covers are decoded at full resolution. README now recommends 600\u00d7600 minimum, 1000\u00d71000+ ideally.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.1.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.1.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "assets": [
-        {
-          "id": 500343480,
-          "name": "InniClassic-1.3.1.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/InniClassic-1.3.1.apk",
-          "size": 27222661,
-          "download_count": 13,
-          "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 500343475,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.1/rom.zip",
-          "size": 463770936,
-          "download_count": 250,
-          "content_type": "application/zip"
-        }
-      ]
-    },
-    {
-      "id": 361554822,
-      "tag_name": "v1.3.0",
-      "name": "InniClassic 1.3.0",
-      "published_at": "2026-07-29T06:55:01Z",
-      "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.3.0",
-      "icon_url": "",
-      "icon_dark_url": "",
-      "body": "A Music Quiz overhaul, a Now Playing polish pass, and another batch of Reddit-reported bugs \u2014 mostly sleep/wake and audio.\n\n### Added\n- **Music Quiz: five new question types** \u2014 alongside \"What song is playing?\", it can now ask which artist released a track, which album it's from, what year it came out, and what genre it is (each only offered when your library actually has enough distinct values to make a fair question). Also new: a visual question type showing 3 album covers side by side to pick from instead of text answers.\n- **Music Quiz: all 4 answers now fit on screen at once**, no more scrolling to see the other options.\n\n### Changed\n- **Now Playing**: the album cover sits slightly lower, spacing between Title/Artist/Album is now perfectly consistent, the star rating moved between Album and the track counter, and the \"X of Y\" track counter is bold at the same size as the rest of the info block.\n- Documented the existing (but easy-to-miss) **synced lyrics** support: drop a `.lrc` file next to a song (same filename) or embed lyrics in ID3/FLAC/ALAC tags, then long-press Center on Now Playing \u2192 Toggle Visualizer to see them scroll in sync with playback.\n\n### Fixed\n- **Screen never came back on after the backlight timer put it to sleep** \u2014 two separate bugs:\n  - The \"virtual\" sleep used while FM Radio or the web server is running (so the CPU stays alive) never had any code path that turned it back off. Once triggered, the screen stayed black forever (vibration/click feedback still worked) until a full reboot.\n  - The \"real\" sleep used during ordinary music playback simulates a power-button press to turn the display off, but nothing ever simulated a second press to turn it back on.\n- **Full device lockup (required a paperclip reset) playing FM Radio through wired headphones for a few minutes** \u2014 the backlight timer's \"virtual sleep\" path was also toggling Wi-Fi off while the FM tuner was active. On this chipset, FM/Wi-Fi/Bluetooth share the same combo radio hardware; killing Wi-Fi mid-session could wedge it badly enough to need a hard reset. Wi-Fi is now left alone whenever the radio is on.\n- **Screen dimming during active use** \u2014 the default Backlight Timer was 10 seconds. Now 1 minute (still adjustable down to 10s in Settings).\n- **Bluetooth headphones (reported with AirPods) noticeably quiet** \u2014 a known AVRCP \"absolute volume\" quirk. Absolute volume is now disabled on connect, so headphones use their own physical volume control.\n- **Some FLAC files failed with \"Legacy Player Error: 262\"** \u2014 failing files now automatically retry once through ExoPlayer's FLAC extension instead of giving up outright.\n\n### Install\n- **`rom.zip`** \u2014 flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.3.0.apk`** \u2014 install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.3.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
-      "assets": [
-        {
-          "id": 493714047,
-          "name": "InniClassic-1.3.0.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/InniClassic-1.3.0.apk",
-          "size": 27221900,
-          "download_count": 17,
-          "content_type": "application/vnd.android.package-archive"
+          "id": 710801194,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 7,
+          "content_type": "text/plain"
         },
         {
-          "id": 493714045,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.3.0/rom.zip",
-          "size": 463775055,
-          "download_count": 181,
-          "content_type": "application/zip"
+          "id": 710801193,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261104/update.json",
+          "size": 299,
+          "download_count": 6,
+          "content_type": "application/json"
         }
       ]
     },
     {
-      "id": 360635995,
-      "tag_name": "v1.2.0",
-      "name": "InniClassic 1.2.0",
-      "published_at": "2026-07-27T18:44:11Z",
+      "id": 415758741,
+      "tag_name": "20261017",
+      "name": "InniClassic 20261017",
+      "published_at": "2026-10-17T11:12:49Z",
       "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.2.0",
-      "icon_url": "",
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261017",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
-      "body": "Video playback, gapless playback, and a full visual consistency pass across every screen.\n\n### Added\n- **Video playback** - new \"Videos\" entry in the Main Menu, its own folder on the SD card (`/storage/sdcard0/Videos`), full-screen player with wheel-driven volume/seek. **Now powered by libVLC instead of ExoPlayer** - ExoPlayer's precise frame-timing API only exists from Android API 21 onward, and its fallback for older devices turned out to be broken on the Y1's API 17 (audio and the position clock stayed correct, but picture played back several times faster than real time). libVLC brings its own native AV-sync engine independent of that Android API, giving stable, correctly-synced playback. Audio-only playback is untouched and still runs on ExoPlayer. Thumbnails in the video list and resume-position are still unaddressed for now - see `tools/handbrake_y1_preset.json` for a ready-to-import HandBrake preset tuned for smooth playback on the Y1's chip.\n- **Gapless playback** - automatically kicks in for albums/playlists of 15 tracks or fewer, with shuffle off and no FLAC in the queue. Track transitions inside a gapless queue no longer stop and reload.\n- **Favorites are always visible now** on Now Playing - hollow heart normally, filled red heart when favorited, instead of nothing at all unless already a favorite.\n\n### Changed\n- Unified font sizes, left alignment, and row spacing across every menu (Main Menu, Music menu, Artists, Albums, Songs, Settings/Bluetooth/Wi-Fi).\n- Right-arrow indicator now only shows on the focused row, everywhere.\n- Thinner status bar matching real iPod proportions; narrows to the left column on both Main Menu and Music menu so the album cover bleeds behind it.\n- Main Menu and Music menu covers now share the exact same slow \"Ken Burns\" panning animation.\n- Bigger Now Playing album cover, bolder track counter, marquee-scrolling long titles, glass-look progress bar.\n- Larger album cover thumbnails in the Albums list.\n\n### Fixed\n- Focus arrow color was theme-dependent instead of fixed white.\n- A recycled list row's blue focused background could get incorrectly reset regardless of actual focus state.\n- Now Playing's progress ticker and the clock/widget refresh loop kept doing full work every 0.5-1s even when not visible (or during virtual screen-off) - both now sit idle unless actually needed. Should help battery life.\n\n### Install\n- **`rom.zip`** - flash via the [Innioasis Updater](https://www.innioasis.com/pages/download), no ADB required. Must keep the filename exactly `rom.zip`.\n- **`InniClassic-1.2.0.apk`** - install over an existing JJ Launcher / InniClassic install via `adb install InniClassic-1.2.0.apk`.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "body": "The Biggest Release!\r\n\r\n- The entire application codebase has been rewritten from Java to 100% Kotlin, decomposing the monolithic main activity into dedicated domain managers, screen controllers, and an input router, backed by 16 regression test suites running in CI.\r\n- Audiobooks is now a dedicated top-level section on the main menu, with hierarchical Jellyfin sync (Author -> Book -> Chapter), cover art downloads, continuous bookmark persistence across reboots, full chapter playlist resume, and a unified split-screen layout.\r\n- The Videos section now provides a hierarchical browser for Movies, TV Series (with seasons and episodes), and raw directories, split-screen poster previews, Jellyfin video and thumbnail sync, and an automatic directory migration for existing files.\r\n- Music Quiz transitions to an endless survival mode with six questions per round, speed scaling down to five seconds, a between-round pause screen with a heart shop, a persistent top 10 leaderboard, and tiered year question distractors.\r\n- A new Recently Played Albums menu item beneath Cover Flow tracks up to 50 recently played albums with cover art, track counts, track-number-ordered browsing, and an option to clear playback history.\r\n- Device shutdown now saves the active queue and playback position, automatically restoring the player in a paused state at the exact track and timestamp after rebooting.\r\n- Playback cleanly pauses and rewinds to the first track when finishing an album with repeat turned off, while the library scanner now skips files smaller than 1KB and logs corrupt audio files.\r\n- Back navigation now preserves selected row focus and scroll position across the main menu, settings, playlists, and browser lists instead of resetting to the top item.\r\n- Split-screen pages in Music, Videos, and Audiobooks now share a unified 242dp status bar width matching the left navigation pane, while video browsing fixes eliminate poster clipping, top gaps, and double padding.\r\n- Now Playing album art now reliably updates on the main menu and music split panes during playback.\r\n- The theme catalog has been streamlined to Classic Light and Classic Dark, automatically cleaning up leftover assets from legacy themes during startup.\r\n- Physical buttons and wheel haptic feedback are now completely muted while the screen is off when Screen-Off Control is disabled, and the idle backlight sleep timer now stays synchronized with system settings.\r\n\r\n#### Release assets\r\n\r\n| File | Target device | Notes |\r\n| :--- | :--- | :--- |\r\n| `InniClassic-20261017.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\r\n| `update.json` | All devices | OTA update metadata for in-app updater |\r\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\r\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\r\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\r\n\r\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261013...20261017",
       "assets": [
         {
-          "id": 491900121,
-          "name": "InniClassic-1.2.0.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/InniClassic-1.2.0.apk",
-          "size": 31349729,
+          "id": 650267207,
+          "name": "index.html",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/index.html",
+          "size": 11442,
           "download_count": 15,
+          "content_type": "text/html"
+        },
+        {
+          "id": 650267213,
+          "name": "InniClassic-20261017.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/InniClassic-20261017.apk",
+          "size": 24451136,
+          "download_count": 28,
           "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 491900122,
+          "id": 650267212,
           "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.2.0/rom.zip",
-          "size": 463513542,
-          "download_count": 104,
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom.zip",
+          "size": 455460055,
+          "download_count": 210,
           "content_type": "application/zip"
+        },
+        {
+          "id": 650267209,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_type_b.zip",
+          "size": 422390294,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 650267214,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y1_type_a.zip",
+          "size": 455460055,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 650267215,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y1_type_b.zip",
+          "size": 422390294,
+          "download_count": 9,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 650267210,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/rom_y2.zip",
+          "size": 458640295,
+          "download_count": 118,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 650267211,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 14,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 650267206,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261017/update.json",
+          "size": 299,
+          "download_count": 18,
+          "content_type": "application/json"
         }
       ]
     },
     {
-      "id": 360134623,
-      "tag_name": "v1.1.2",
-      "name": "InniClassic 1.1.2",
-      "published_at": "2026-07-26T22:45:12Z",
+      "id": 411532401,
+      "tag_name": "20261013",
+      "name": "InniClassic 20261013",
+      "published_at": "2026-10-13T10:03:37Z",
       "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.2",
-      "icon_url": "",
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261013",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
-      "body": "Bug-fix release based on more Reddit feedback from multiple users.\n\n### Fixed\n- **Crash browsing Artists, Album Artists, Albums, Songs, or Genres** - songs with a missing artist/album tag could carry a `null` value that crashed the launcher wherever it was later compared. Every song now always gets a safe \"Unknown Artist\"/\"Unknown Album\" fallback.\n- **FLAC files stuck at 0:00** - the fallback engine that FLAC was supposed to use was never actually being switched on.\n- **Screen turning off during active use** - spinning the wheel now correctly resets the auto-lock timer.\n- **Charging indicator** - the battery icon now actually draws a lightning bolt while charging (the code for it existed but was never enabled).\n- Long album/track names no longer overlap the battery/Bluetooth icons in the status bar.\n\n### Added\n- **Shuffle** row at the top of All Songs, matching the stock Y1 firmware.\n- **FM Radio** is back in the Main Menu (it had quietly disappeared from the theme config).\n\n### Install\n- **rom.zip** - flash via the Innioasis Updater, no ADB required. Must keep the filename exactly rom.zip. Ships the latest Y1 Firmware 3.1.2 with InniClassic pre-installed.\n- **InniClassic-1.1.2.apk** - install over an existing JJ Launcher / InniClassic install via adb install InniClassic-1.1.2.apk.\n\nFull changelog: https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md\n",
+      "body": "- Improve Jellyfin sync\r\n\r\n#### Release assets\r\n\r\n| File | Target device | Notes |\r\n| :--- | :--- | :--- |\r\n| `InniClassic-20261012.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\r\n| `update.json` | All devices | OTA update metadata for in-app updater |\r\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\r\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\r\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\r\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\r\n\r\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261011...20261012\r\n",
       "assets": [
         {
-          "id": 490752766,
-          "name": "InniClassic-1.1.2.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/InniClassic-1.1.2.apk",
-          "size": 7020639,
+          "id": 636618066,
+          "name": "InniClassic-20261013.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/InniClassic-20261013.apk",
+          "size": 25302210,
+          "download_count": 14,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 636618069,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom.zip",
+          "size": 455407982,
+          "download_count": 78,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 636618071,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_type_b.zip",
+          "size": 423125776,
           "download_count": 8,
-          "content_type": "application/vnd.android.package-archive"
+          "content_type": "application/zip"
         },
         {
-          "id": 490752767,
-          "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.2/rom.zip",
-          "size": 457809513,
+          "id": 636618070,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y1_type_a.zip",
+          "size": 455407982,
+          "download_count": 7,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 636618072,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y1_type_b.zip",
+          "size": 423125776,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 636618061,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/rom_y2.zip",
+          "size": 459507925,
           "download_count": 34,
           "content_type": "application/zip"
+        },
+        {
+          "id": 636618063,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 11,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 636618058,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261013/update.json",
+          "size": 299,
+          "download_count": 13,
+          "content_type": "application/json"
         }
       ]
     },
     {
-      "id": 358990913,
-      "tag_name": "v1.1.1",
-      "name": "v1.1.1 - InniClassic: now flashable via Innioasis Updater",
-      "published_at": "2026-07-23T22:38:48Z",
+      "id": 411020250,
+      "tag_name": "20261012",
+      "name": "InniClassic 20261012",
+      "published_at": "2026-10-12T21:45:07Z",
       "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.1",
-      "icon_url": "",
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261012",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
-      "body": "The project is now named **InniClassic** (still based on and credited to [JJ Launcher](https://github.com/ismileblue/y1_launcher) \u2014 see README). Same 1.1.1 build as before, no functional version bump for the rename itself.\n\n### \ud83c\udd95 Now installable as a full ROM\n`rom.zip` flashes directly via the [Innioasis Updater](https://www.innioasis.com/pages/download) \u2014 no ADB, no manual uninstall step. It ships the latest **Y1 Firmware 3.1.2** with InniClassic pre-installed as the system launcher. Just select the zip in the Updater and follow the prompts (the Updater expects this exact filename, so don't rename it after downloading).\n\nThe APK (`InniClassic-1.1.1.apk`) is still available too, for updating an existing JJ Launcher-based install via ADB \u2014 see the README's Method 2.\n\n### Also in this build\n- New **iPod Classic (Dark)** theme\n- iPod Classic is now the true first-launch default theme\n- Fixed Bluetooth A2DP `connect()` failing on some speakers (missing `BLUETOOTH_PRIVILEGED`/`WRITE_SECURE_SETTINGS`, now self-granted at startup)\n- New **Album Cover Tilt** setting to turn off the Now Playing 3D tilt\n- Fixed track titles sometimes showing their file extension (`.ogg`, `.wav`, etc.)\n- Music menu: split \"Artists\" into **Artists** (track artist) and **Album Artists** (album artist), matching real iPod Classic\n- Music Quiz restructured into 5 rounds of 8 questions, with round-complete and victory screens\n- A PC-side script ([`tools/build_library_cache.py`](https://github.com/FabianZettl/inniclassic/blob/master/tools/build_library_cache.py)) to pre-build the library scan cache for large libraries, so the device doesn't have to re-tag everything on next boot\n- Plus the two Reddit-reported fixes from the original 1.1.1 (invisible web server text, wheel active while locked) \u2014 see below\n\n### Fixed (original 1.1.1 fixes)\n- Wireless PC Upload (web server) status text was hardcoded white, invisible against the iPod Classic theme's white background. Same issue fixed on the Bluetooth/Wi-Fi/Brightness/Storage/Settings screen titles.\n- The wheel stayed active while the device was locked (screen off) and could still change the volume \u2014 the guard for this existed but lived in a method that never actually ran on this device; moved to where it's effective.\n\nFull changelog: [CHANGELOG.md](https://github.com/FabianZettl/inniclassic/blob/master/CHANGELOG.md)\n\n> [!WARNING]\n> Updating from an older APK install? Uninstall it first (`adb uninstall com.themoon.y1` or `adb shell pm uninstall --user 0 com.themoon.y1`) \u2014 see the README's Installation section. The ROM method doesn't need this.",
+      "body": "- Added Jellyfin sync so you can download music and videos directly from your Jellyfin server over Wi-Fi. You can sign in using QuickConnect (with an on-screen pairing code), username and password, or an API token, then sync all libraries or browse and pick specific folders. Sync options let you download album artwork, transcode videos for playback on the player, and remove local files that were deleted on the server, followed by an automatic library rescan when downloads finish.\n- Fixed four Bluetooth issues on the Y2:\n  - Toggling Bluetooth on now starts the MediaTek Bluetooth daemon (`mtkbt`) automatically (and starts it at boot in the ROM), fixing the bug where Bluetooth refused to turn back on or reconnect to paired headphones after being turned off.\n  - Turning Bluetooth off now stays off across reboots instead of turning itself back on at startup.\n  - \"Delete Device\" now verifies that unpairing succeeded before showing a confirmation message and refreshes the paired list cleanly.\n  - \"Connect Audio\" and \"Delete Device\" options are now visually indented beneath the selected device row.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261012.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261011...20261012\n",
       "assets": [
         {
-          "id": 489365718,
-          "name": "InniClassic-1.1.1.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/InniClassic-1.1.1.apk",
-          "size": 8795490,
-          "download_count": 15,
+          "id": 635077116,
+          "name": "InniClassic-20261012.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/InniClassic-20261012.apk",
+          "size": 25287379,
+          "download_count": 9,
           "content_type": "application/vnd.android.package-archive"
         },
         {
-          "id": 489512937,
+          "id": 635077122,
           "name": "rom.zip",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.1/rom.zip",
-          "size": 457676727,
-          "download_count": 42,
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom.zip",
+          "size": 455407537,
+          "download_count": 30,
           "content_type": "application/zip"
+        },
+        {
+          "id": 635077118,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_type_b.zip",
+          "size": 423165422,
+          "download_count": 6,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 635077123,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y1_type_a.zip",
+          "size": 455407537,
+          "download_count": 6,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 635077119,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y1_type_b.zip",
+          "size": 423165422,
+          "download_count": 6,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 635077117,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/rom_y2.zip",
+          "size": 459484049,
+          "download_count": 13,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 635077120,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 6,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 635077113,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261012/update.json",
+          "size": 299,
+          "download_count": 9,
+          "content_type": "application/json"
         }
       ]
     },
     {
-      "id": 358514731,
-      "tag_name": "v1.1.0",
-      "name": "v1.1.0 - Now Playing sub-menus, star ratings, On-The-Go, Main Menu cleanup",
-      "published_at": "2026-07-23T07:20:00Z",
+      "id": 409907549,
+      "tag_name": "20261011",
+      "name": "InniClassic 20261011",
+      "published_at": "2026-10-11T20:36:19Z",
       "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.1.0",
-      "icon_url": "",
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261011",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
-      "body": "Focused on getting closer to the real iPod Classic experience \u2014 especially a proper depth to the Now Playing screen, plus a cleanup pass on the Main Menu and some visual consistency fixes.\n\n### Added\n- **Now Playing sub-menus**: a center-click on the Now Playing screen now cycles through four states, exactly like a real iPod Classic \u2014 Progress bar \u2192 Seek (scrub bar with a diamond thumb, wheel jumps the track \u00b15s) \u2192 Shuffle & Repeat (quick toggle, wheel cycles each) \u2192 Rating (wheel sets 1-5 stars) \u2192 back to Progress. The wheel reverts to volume control outside of these states, same as on a real device.\n- **Star ratings**: rate any track 1-5 stars from the Now Playing Rating state above; shown as \u2605\u2605\u2605\u2606\u2606 under the track counter.\n- **On-The-Go playlist**: the classic always-available instant playlist. Reachable as a one-tap \"Add to On-The-Go\" action from the Now Playing hold-menu, or as a pinned entry in the full Add to Playlist dialog.\n- **Now Playing hold-menu**: long-press Center on Now Playing for Add to On-The-Go, Browse Album, Browse Artist, and Cancel \u2014 matching the real iPod's menu, plus a Toggle Visualizer entry for this fork's bonus spectrum/lyrics view.\n- **Composers** grouping in the Music menu, alongside the existing Artists/Albums/Genres/Years grouping.\n- **Fast-scroll letter jump**: spin the wheel quickly through an alphabetized list (Artists/Albums/Songs/Genres/Composers/Search) to jump straight to the next first-letter group, with an on-screen letter overlay while jumping \u2014 tuned so it triggers reliably without being overly twitchy on a quick spin.\n- Status bar now shows the current screen's name (Music/Now Playing/Settings/etc.) instead of a clock, matching the real iPod's title bar.\n\n### Changed\n- **Main Menu cleanup**: Cover Flow, Audiobooks, Folders, Years, Recently Added, and My Favorites have moved out of the Main Menu and into the Music menu where they belong on a real iPod. Main Menu is back down to Now Playing, Music, Music Quiz, Podcasts, Bluetooth, Wi-Fi, Settings, and Web Server.\n- The Main Menu's split-view album cover now genuinely fills the entire remaining screen edge-to-edge (computed from the real screen size) instead of a fixed-size box, so it bleeds above the status bar the same way the Music menu's cover panel already did.\n\n### Fixed\n- Menu text size was inconsistent between screens: Music-menu-style rows (Artists/Albums/Composers/Songs/Settings) were sized in `sp` while the Main Menu's buttons were sized in raw pixels \u2014 same nominal number, different unit, so they never quite matched. Everything now renders at the exact same size.\n\nFull changelog: [CHANGELOG.md](https://github.com/FabianZettl/jj-launcher-classic/blob/master/CHANGELOG.md)\n\n> [!WARNING]\n> If you have an older version installed, uninstall it first (`adb uninstall com.themoon.y1` or `adb shell pm uninstall --user 0 com.themoon.y1`) before installing this APK \u2014 see the README's Installation section for the full mandatory step-by-step (including replacing the stock JJ Launcher).",
+      "body": "- The About screen now uses a scrollable two-column iPod Classic layout showing song, video, album, and artist counts, software version, model number, and separate capacity and free space rows for both internal flash and the microSD card.\n- A new \"Battery Percentage\" setting draws the exact percentage and a compact charging bolt inside the battery icon, with contrasting text colors across the filled and empty parts of the indicator.\n- Genre browsing now follows the classic iPod hierarchy (`Genre -> Artists / All Songs -> Albums / All Songs -> Songs`), and song lists have a Shuffle banner with a song counter at the top. Returning from Now Playing also highlights the playing track, fast scrolling no longer crashes on lists with header rows, and the wheel no longer gets stuck at list edges.\n- FM Radio now remembers your last tuned frequency and saved station presets across restarts, tunes smoothly with the wheel without screen flicker, supports hardware station seek, and routes audio directly to the 3.5mm headphone jack after pausing any playing music.\n- Factory OEM demo tracks in `custom_media` (such as *Despacito* and *Panama*) are no longer scanned, and an automatic cleanup migration removes them from existing libraries while stripping them from newly built ROMs.\n- Both button presses and touch events now reset the screen backlight sleep timer, and the screen stays awake automatically during library scans, radio scans, podcast downloads, video playback, and USB storage mode.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261011.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261008...20261011\n",
       "assets": [
         {
-          "id": 486895523,
-          "name": "JJLauncherClassic-1.1.0.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.1.0/JJLauncherClassic-1.1.0.apk",
-          "size": 6891463,
-          "download_count": 22,
+          "id": 631746387,
+          "name": "InniClassic-20261011.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/InniClassic-20261011.apk",
+          "size": 25249278,
+          "download_count": 16,
           "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 631746385,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom.zip",
+          "size": 455407764,
+          "download_count": 29,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 631746386,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_type_b.zip",
+          "size": 423133957,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 631746382,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y1_type_a.zip",
+          "size": 455407764,
+          "download_count": 13,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 631746384,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y1_type_b.zip",
+          "size": 423133957,
+          "download_count": 12,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 631746379,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/rom_y2.zip",
+          "size": 459449940,
+          "download_count": 14,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 631746380,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 12,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 631746378,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261011/update.json",
+          "size": 299,
+          "download_count": 14,
+          "content_type": "application/json"
         }
       ]
     },
     {
-      "id": 357260931,
-      "tag_name": "v1.0.0",
-      "name": "JJ Launcher Classic Version 1.0.0",
-      "published_at": "2026-07-21T10:23:15Z",
+      "id": 406186220,
+      "tag_name": "20261008",
+      "name": "InniClassic 20261008",
+      "published_at": "2026-10-07T21:40:39Z",
       "prerelease": false,
-      "html_url": "https://github.com/FabianZettl/inniclassic/releases/tag/v1.0.0",
-      "icon_url": "",
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261008",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
       "icon_dark_url": "",
-      "body": "First public release. Based on JJ Launcher 0.11.\n\n## Added\n- Bundled \"iPod Classic\" theme: two-pane Main Menu and Music menu with a full-bleed panning album cover, angled Now Playing cover with reflection, redesigned Artist/Album lists (icon-free, large covers, \"All Songs\" per artist), a text search screen, and system-wide bold Nimbus Sans typography\n- Last.fm scrobbling: local Rockbox-style `.scrobbler.log` + live API scrobbling with browser-based login\n- Music Quiz: first version of the classic iPod Music Quiz mini-game, styled after the original's \"Fruitiger Aero\" look\n- OGG Vorbis playback and library support (including auto-detection of Opus-encoded files mislabeled as `.ogg`)\n- Main Menu shortcuts for Music Quiz, Podcasts, Audiobooks, Folders, Years, Recently Added, My Favorites\n\n## Fixed\n- Duplicate songs in album track lists after interrupted scans\n- Missing album art in Artist -> Albums lists (folder cover.jpg/folder.jpg fallback)\n- OGG files not appearing in the library\n- OOM crash loop scanning large libraries\n- Album art forced to true 1:1 crop\n\n## Notes\n- Currently only tested/available for the **Innioasis Y1**, on System Software 2.1.9\n- **Prerequisite:** device must already be running JJ Launcher (installed via the [Innioasis Updater](https://www.innioasis.com/pages/download)) - this release replaces the launcher app itself, not the device firmware\n- Install with `adb install -r JJLauncherClassic-1.0.0.apk`\n- This APK is debug-signed (no production keystore has been set up yet for this fork)\n\nSee [CHANGELOG.md](https://github.com/FabianZettl/jj-launcher-classic/blob/master/CHANGELOG.md) for the full list.",
+      "body": "- The in-app Software Update screen now shows clearer status feedback, waits automatically while Wi-Fi finishes connecting, and lets you reinstall the current build if you are already up to date.\n- Over-the-air updates now install properly when InniClassic runs as a system ROM app (`/system/app`) by copying the new APK into `/system/app` and rebooting. Version checks also handle same-day revision tags (`YYYYMMDD-vN`).\n- Status bar icons are darker on the light theme so they stay readable against the silver bar, and the Wi-Fi indicator now uses a sharper Tabler icon.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261008.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261007...20261008\n",
       "assets": [
         {
-          "id": 484543796,
-          "name": "JJLauncherClassic-1.0.0.apk",
-          "browser_download_url": "https://github.com/FabianZettl/inniclassic/releases/download/v1.0.0/JJLauncherClassic-1.0.0.apk",
-          "size": 6872425,
-          "download_count": 31,
+          "id": 619886904,
+          "name": "InniClassic-20261008.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/InniClassic-20261008.apk",
+          "size": 25241731,
+          "download_count": 14,
           "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 619886910,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom.zip",
+          "size": 455440329,
+          "download_count": 17,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619886906,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_type_b.zip",
+          "size": 423114074,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619886908,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y1_type_a.zip",
+          "size": 455440329,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619886911,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y1_type_b.zip",
+          "size": 423114074,
+          "download_count": 7,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619886903,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/rom_y2.zip",
+          "size": 459436324,
+          "download_count": 29,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619886909,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 10,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 619886902,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261008/update.json",
+          "size": 299,
+          "download_count": 15,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 406053561,
+      "tag_name": "20261007",
+      "name": "InniClassic 20261007",
+      "published_at": "2026-10-07T18:39:54Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261007",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "- Fixed a bug where tracks with the same title across different albums (such as live recordings, greatest hits, or deluxe editions) were treated as duplicates and hidden from your library except for the single highest-bitrate copy.\n- Added an automatic versioned migration system that runs an incremental media scan on first launch after updating, restoring any previously skipped songs to your albums without resetting your existing library cache.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261007.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261006...20261007\n",
+      "assets": [
+        {
+          "id": 619490459,
+          "name": "InniClassic-20261007.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/InniClassic-20261007.apk",
+          "size": 25234954,
+          "download_count": 12,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 619490463,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom.zip",
+          "size": 455436338,
+          "download_count": 9,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619490460,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_type_b.zip",
+          "size": 423114974,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619490457,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y1_type_a.zip",
+          "size": 455436338,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619490454,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y1_type_b.zip",
+          "size": 423114974,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619490458,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/rom_y2.zip",
+          "size": 459463641,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 619490456,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 10,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 619490455,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261007/update.json",
+          "size": 299,
+          "download_count": 21,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 404639179,
+      "tag_name": "20261006",
+      "name": "InniClassic 20261006",
+      "published_at": "2026-10-06T11:39:02Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261006",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "- Added native USB Mass Storage support for the microSD card when plugging the player into a computer. A prompt asks whether to \"Connect as Storage\" or \"Charge Only\" (which can be toggled under Settings -> Ask on USB Connect). While connected, the player shows an iPod-style \"Connected - Eject before disconnecting\" screen where pressing Center safely ejects the drive and automatically rescans your library for newly added music.\n- Translated the new keyboard settings, \"Add to Favorites\", equalizer headers, screen recorder prompts, and error toasts across all 7 supported languages, and replaced leftover Korean internal keys in the screen recorder menus with English text.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261006.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20261001...20261006\n",
+      "assets": [
+        {
+          "id": 615345407,
+          "name": "InniClassic-20261006.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/InniClassic-20261006.apk",
+          "size": 25233311,
+          "download_count": 16,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 615345410,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom.zip",
+          "size": 455437962,
+          "download_count": 13,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 615345409,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_type_b.zip",
+          "size": 423114161,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 615345414,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y1_type_a.zip",
+          "size": 455437962,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 615345411,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y1_type_b.zip",
+          "size": 423114161,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 615345413,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/rom_y2.zip",
+          "size": 459424649,
+          "download_count": 46,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 615345412,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 10,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 615345408,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261006/update.json",
+          "size": 299,
+          "download_count": 13,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 400766905,
+      "tag_name": "20261001",
+      "name": "InniClassic 20261001",
+      "published_at": "2026-10-01T08:19:21Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261001",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "- Volume now uses a 30-step virtual scale with an iPod-style overlay across all screens instead of the stock Android popup. It works across music, video playback, FM radio, and Music Quiz, and includes six extra-quiet digital sub-steps at the bottom of the scale (down to -28 dBFS) for sensitive earphones.\n- A full QWERTY on-screen keyboard is now available in Settings alongside the original grid layout. It includes a symbol layer, column memory when moving vertically across the spacebar, lighter 10ms key vibration, and full punctuation (`; : , / \\ ( ) [ ] { } < > ' ~ \\`` and `|`) for Wi-Fi passwords and search queries.\n- Cover Flow and album lists use a 9-slot buffered layout and a 256x256 disk and RAM thumbnail cache (`.y1_thumbs_cache`), eliminating card pop-in and lag when spinning the wheel fast or reversing direction.\n- Holding the Center button for 0.8 seconds now locks all buttons and turns the screen off (Hold mode, from upstream 1.4.4). Hold Center again to unlock.\n- On Now Playing, wheel seeking previews the target time in 5-second steps until you press Center to jump, and pausing in the Classic theme keeps album art bright while remembering your active bottom bar mode. Starting a video also pauses active music so the Play/Pause button controls the video.\n- Custom themes no longer reset to the default theme after unplugging from USB Mass Storage because the selected theme is now saved by name instead of folder scan order. Newly created `.scrobbler.log` files also declare `#TZ/UTC` so scrobble importers read their timestamps as UTC.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20261001.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260929...20261001\n",
+      "assets": [
+        {
+          "id": 602779246,
+          "name": "InniClassic-20261001.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/InniClassic-20261001.apk",
+          "size": 25225302,
+          "download_count": 11,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 602779252,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom.zip",
+          "size": 455436434,
+          "download_count": 13,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 602779251,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_type_b.zip",
+          "size": 423113479,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 602779250,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y1_type_a.zip",
+          "size": 455436434,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 602779247,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y1_type_b.zip",
+          "size": 423113479,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 602779248,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/rom_y2.zip",
+          "size": 459439768,
+          "download_count": 21,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 602779245,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 10,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 602779244,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261001/update.json",
+          "size": 299,
+          "download_count": 14,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 399563074,
+      "tag_name": "20260929",
+      "name": "InniClassic 20260929",
+      "published_at": "2026-09-29T22:06:40Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20260929",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "- Muted wheel clicks, system touch sounds, and vibration when the screen is off and \"Screen Off Control\" is disabled in Settings. Accidental touches in your pocket no longer make noise, buzz, or reset the backlight timer to wake the screen, and feedback turns back on as soon as you wake the display.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260929.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928-build.6...20260929\n",
+      "assets": [
+        {
+          "id": 599337236,
+          "name": "InniClassic-20260929.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/InniClassic-20260929.apk",
+          "size": 25200732,
+          "download_count": 9,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 599337241,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom.zip",
+          "size": 455397679,
+          "download_count": 9,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 599337235,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_type_b.zip",
+          "size": 423111794,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 599337239,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y1_type_a.zip",
+          "size": 455397679,
+          "download_count": 9,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 599337238,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y1_type_b.zip",
+          "size": 423111794,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 599337234,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/rom_y2.zip",
+          "size": 459397798,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 599337237,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 11,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 599337233,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260929/update.json",
+          "size": 299,
+          "download_count": 11,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 398056774,
+      "tag_name": "20260928",
+      "name": "InniClassic 20260928",
+      "published_at": "2026-09-28T08:15:18Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20260928",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "- The Y2 headphone volume curve in `libaudiocustparam.so` is tuned lower at the bottom of the range, so sensitive earphones can be used comfortably in quiet rooms where step 1 was previously too loud.\n- Over-the-air (OTA) updates now download directly from GitHub Releases (`update.json`) using OkHttp, which follows GitHub redirects reliably and checks the downloaded file size before installing.\n- In Music Quiz, the visual album cover round now sizes tiles properly on the Y2 screen and extracts artwork from `.m4a`/ALAC files, manual cover files, and scaled folder images without running out of memory.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260928.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260927...20260928\n",
+      "assets": [
+        {
+          "id": 594881463,
+          "name": "InniClassic-20260928.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/InniClassic-20260928.apk",
+          "size": 25186866,
+          "download_count": 9,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 594881465,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom.zip",
+          "size": 456594638,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 594881461,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_type_b.zip",
+          "size": 416333879,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 594881462,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y1_type_a.zip",
+          "size": 456594638,
+          "download_count": 9,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 594881466,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y1_type_b.zip",
+          "size": 416333879,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 594881460,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/rom_y2.zip",
+          "size": 444691351,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 594881469,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 11,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 594881467,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928/update.json",
+          "size": 299,
+          "download_count": 13,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 398692823,
+      "tag_name": "20260928-build.6",
+      "name": "InniClassic 20260928 (Build 6)",
+      "published_at": "2026-09-28T23:04:31Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20260928-build.6",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "- Removed Android's Safe Media Volume cap in both the app and the ROM so headphone volume can reach 100% without stopping at the system warning limit. You can also tap or drag the on-screen volume bar to change the volume directly.\n- Added a full Polish translation and improved how bundled language files load on startup.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260928-build.6.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `update.json` | All devices | OTA update metadata for in-app updater |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/20260928...20260928-build.6\n",
+      "assets": [
+        {
+          "id": 596631161,
+          "name": "InniClassic-20260928-build.6.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/InniClassic-20260928-build.6.apk",
+          "size": 25200586,
+          "download_count": 9,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 596631156,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom.zip",
+          "size": 455402613,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 596631160,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_type_b.zip",
+          "size": 423124101,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 596631163,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y1_type_a.zip",
+          "size": 455402613,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 596631158,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y1_type_b.zip",
+          "size": 423124101,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 596631162,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/rom_y2.zip",
+          "size": 459402216,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 596631159,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/SHA256SUMS.txt",
+          "size": 499,
+          "download_count": 11,
+          "content_type": "text/plain"
+        },
+        {
+          "id": 596631154,
+          "name": "update.json",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260928-build.6/update.json",
+          "size": 341,
+          "download_count": 13,
+          "content_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": 397758170,
+      "tag_name": "20260927",
+      "name": "InniClassic 20260927",
+      "published_at": "2026-09-27T18:17:40Z",
+      "prerelease": false,
+      "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20260927",
+      "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+      "icon_dark_url": "",
+      "body": "First release with support for the Innioasis Y2 alongside the Innioasis Y1 (Type A and Type B).\n\n- Music, audiobooks, and videos are now indexed across both internal storage (`/storage/sdcard0`) and the removable microSD card (`/storage/sdcard1`).\n- A background SD card monitor watches for unexpected microSD disconnects, such as after unplugging from USB, and remounts the card automatically before refreshing your library. This also fixes a crash loop during media indexing and stops the monitor from touching internal storage.\n- The Y2 capacitive click wheel (`mtk-tpd-kpd`) is mapped to standard left and right scroll navigation across all menus and lists.\n- FM radio now works on the Y2. Opening the radio sets tuner device permissions, stops background stock radio apps that would otherwise lock `/dev/fm`, and keeps Airplane Mode from blocking the tuner.\n- Automated builds produce flashable ROM packages for the Y2, Y1 Type A, and Y1 Type B, along with a standalone APK.\n\n#### Release assets\n\n| File | Target device | Notes |\n| :--- | :--- | :--- |\n| `InniClassic-20260927.apk` | All devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| `rom_y2.zip` | Innioasis Y2 (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| `rom_y1_type_a.zip` (`rom.zip`) | Innioasis Y1 (Type A) | Flashable ROM for Y1 players with original firmware 2.0.0 or higher |\n| `rom_y1_type_b.zip` (`rom_type_b.zip`) | Innioasis Y1 (Type B) | Flashable ROM for Y1 players with original firmware below 2.0.0 |\n| `SHA256SUMS.txt` | All files | SHA-256 integrity checksums |\n\nFull changelog: https://github.com/JonaszPotoniec/inniclassic-y2/compare/v1.5.0...20260927\n",
+      "assets": [
+        {
+          "id": 593488151,
+          "name": "InniClassic-20260927.apk",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/InniClassic-20260927.apk",
+          "size": 25186490,
+          "download_count": 10,
+          "content_type": "application/vnd.android.package-archive"
+        },
+        {
+          "id": 593488159,
+          "name": "rom.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom.zip",
+          "size": 456599763,
+          "download_count": 9,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 593488160,
+          "name": "rom_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_type_b.zip",
+          "size": 424305181,
+          "download_count": 8,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 593488154,
+          "name": "rom_y1_type_a.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y1_type_a.zip",
+          "size": 456599763,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 593488152,
+          "name": "rom_y1_type_b.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y1_type_b.zip",
+          "size": 424305181,
+          "download_count": 10,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 593488157,
+          "name": "rom_y2.zip",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/rom_y2.zip",
+          "size": 444712441,
+          "download_count": 11,
+          "content_type": "application/zip"
+        },
+        {
+          "id": 593488153,
+          "name": "SHA256SUMS.txt",
+          "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20260927/SHA256SUMS.txt",
+          "size": 491,
+          "download_count": 11,
+          "content_type": "text/plain"
         }
       ]
     }
@@ -14222,8 +14686,8 @@ window.INNIOASIS_HARDCODED_RELEASES = {
 };
 
 window.INNIOASIS_RELEASE_ICONS = {
+  "classyplayer/classy": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
   "jarvissax/rondo": "https://innioasis.app/assets/rondo_icon.jpg",
-  "jonaszpotoniec/inniclassic-y2": "https://github.com/JonaszPotoniec/inniclassic-y2/raw/main/docs/icons/icon.png",
   "leska1337/better-y": "https://github.com/Leska1337/better-Y/raw/main/screenshots/plus_logo.png",
   "rockbox-y1/rockbox": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
   "spycemagic/y2-rockbox": "https://sc.filehippo.net/images/t_app-icon-l/p/c9b4d9fa-9b65-11e6-a6e7-00163ec9f5fa/2907264561/rockbox-icon.png",
@@ -14234,78 +14698,85 @@ window.INNIOASIS_RELEASE_ICONS = {
 };
 
 window.INNIOASIS_REPO_STATS = {
+  "classyplayer/classy": {
+    "downloads": 1795,
+    "forks": 1,
+    "release_count": 17,
+    "stars": 9,
+    "updated_at": "2026-11-08T12:29:49Z"
+  },
   "fabianzettl/inniclassic": {
-    "downloads": 2133,
-    "forks": 8,
+    "downloads": 2242,
+    "forks": 6,
     "release_count": 13,
     "stars": 18,
     "updated_at": "2026-11-01T09:49:06Z"
   },
   "ismileblue/y1_launcher": {
-    "downloads": 24350,
+    "downloads": 24542,
     "forks": 5,
     "release_count": 30,
     "stars": 23,
     "updated_at": "2026-11-02T14:49:32Z"
   },
   "jarvissax/rondo": {
-    "downloads": 253,
+    "downloads": 417,
     "forks": 1,
     "release_count": 3,
-    "stars": 0,
-    "updated_at": "2026-11-03T08:50:53Z"
+    "stars": 1,
+    "updated_at": "2026-11-07T22:38:49Z"
   },
   "jonaszpotoniec/inniclassic-y2": {
-    "downloads": 1293,
-    "forks": 1,
-    "release_count": 14,
-    "stars": 8,
-    "updated_at": "2026-11-05T22:52:31Z"
+    "downloads": 7,
+    "forks": 0,
+    "release_count": 1,
+    "stars": 0,
+    "updated_at": "2026-11-06T15:59:50Z"
   },
   "leska1337/better-y": {
-    "downloads": 549,
+    "downloads": 589,
     "forks": 1,
     "release_count": 2,
     "stars": 8,
     "updated_at": "2026-10-05T06:12:33Z"
   },
   "rockbox-y1/rockbox": {
-    "downloads": 50120,
-    "forks": 20,
+    "downloads": 50993,
+    "forks": 22,
     "release_count": 29,
     "stars": 85,
     "updated_at": "2026-11-05T05:55:02Z"
   },
   "ryan-specter/koensayr-auto": {
-    "downloads": 1083,
+    "downloads": 1104,
     "forks": 0,
     "release_count": 2,
     "stars": 1,
     "updated_at": "2026-10-15T03:03:06Z"
   },
   "schulzcode/y2linux": {
-    "downloads": 15699,
-    "forks": 6,
-    "release_count": 89,
-    "stars": 21,
-    "updated_at": "2026-11-06T09:01:50Z"
+    "downloads": 19870,
+    "forks": 7,
+    "release_count": 91,
+    "stars": 23,
+    "updated_at": "2026-11-08T14:40:58Z"
   },
   "schulzcode/y2player": {
-    "downloads": 1791,
+    "downloads": 1861,
     "forks": 4,
     "release_count": 10,
-    "stars": 28,
-    "updated_at": "2026-11-01T20:29:55Z"
+    "stars": 29,
+    "updated_at": "2026-11-08T02:31:34Z"
   },
   "spycemagic/y2-rockbox": {
-    "downloads": 2975,
+    "downloads": 3308,
     "forks": 1,
     "release_count": 3,
-    "stars": 14,
-    "updated_at": "2026-10-27T15:45:45Z"
+    "stars": 15,
+    "updated_at": "2026-11-08T02:25:53Z"
   },
   "thesolarproject/solar": {
-    "downloads": 3434,
+    "downloads": 3866,
     "forks": 9,
     "release_count": 48,
     "stars": 31,
@@ -14316,122 +14787,157 @@ window.INNIOASIS_REPO_STATS = {
     "forks": 0,
     "release_count": 2,
     "stars": 0,
-    "updated_at": "2026-11-06T01:47:51Z"
+    "updated_at": "2026-11-08T10:45:05Z"
   },
   "y1-community/g1-stock-rom": {
-    "downloads": 19,
+    "downloads": 93,
     "forks": 0,
     "release_count": 6,
     "stars": 0,
     "updated_at": "2026-11-05T04:24:49Z"
   },
+  "y1-community/g1-stock-rom-mirror": {
+    "downloads": 18,
+    "forks": 0,
+    "release_count": 6,
+    "stars": 0,
+    "updated_at": "2026-11-08T01:37:18Z"
+  },
   "y1-community/g3-stock-rom": {
-    "downloads": 13,
+    "downloads": 61,
     "forks": 0,
     "release_count": 6,
     "stars": 0,
     "updated_at": "2026-11-05T05:08:00Z"
   },
+  "y1-community/g3-stock-rom-mirror": {
+    "downloads": 7,
+    "forks": 0,
+    "release_count": 6,
+    "stars": 0,
+    "updated_at": "2026-11-08T01:30:45Z"
+  },
   "y1-community/g5-stock-rom": {
-    "downloads": 3,
+    "downloads": 31,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
     "updated_at": "2026-11-05T04:15:40Z"
   },
+  "y1-community/g5-stock-rom-mirror": {
+    "downloads": 0,
+    "forks": 0,
+    "release_count": 0,
+    "stars": 0,
+    "updated_at": "2026-11-06T21:04:24Z"
+  },
   "y1-community/innioasis-updater": {
-    "downloads": 68367,
-    "forks": 14,
-    "release_count": 72,
+    "downloads": 68587,
+    "forks": 13,
+    "release_count": 74,
     "stars": 55,
-    "updated_at": "2026-11-06T08:44:48Z"
+    "updated_at": "2026-11-08T16:07:00Z"
   },
   "y1-community/koensayr-auto-mirror": {
     "downloads": 4,
     "forks": 0,
     "release_count": 2,
     "stars": 0,
-    "updated_at": "2026-11-05T11:32:53Z"
+    "updated_at": "2026-11-08T00:57:25Z"
   },
   "y1-community/pr1-stock-rom": {
-    "downloads": 5,
+    "downloads": 14,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
     "updated_at": "2026-11-05T06:28:10Z"
   },
   "y1-community/q3-stock-rom": {
-    "downloads": 7,
+    "downloads": 27,
     "forks": 0,
     "release_count": 3,
     "stars": 0,
     "updated_at": "2026-11-05T06:43:53Z"
   },
+  "y1-community/q3-stock-rom-mirror": {
+    "downloads": 4,
+    "forks": 0,
+    "release_count": 3,
+    "stars": 0,
+    "updated_at": "2026-11-08T00:56:53Z"
+  },
   "y1-community/q5-stock-rom": {
-    "downloads": 8,
+    "downloads": 32,
     "forks": 0,
     "release_count": 3,
     "stars": 0,
     "updated_at": "2026-11-05T06:44:00Z"
   },
+  "y1-community/q5-stock-rom-mirror": {
+    "downloads": 6,
+    "forks": 0,
+    "release_count": 3,
+    "stars": 0,
+    "updated_at": "2026-11-08T00:59:07Z"
+  },
   "y1-community/r1-stock-rom": {
-    "downloads": 2,
+    "downloads": 11,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
     "updated_at": "2026-11-05T04:10:35Z"
   },
   "y1-community/rockbox-mirror": {
-    "downloads": 284,
+    "downloads": 117,
     "forks": 0,
     "release_count": 23,
     "stars": 0,
-    "updated_at": "2026-11-06T01:53:59Z"
+    "updated_at": "2026-11-08T02:38:13Z"
   },
   "y1-community/rondo-mirror": {
-    "downloads": 15,
+    "downloads": 8,
     "forks": 0,
     "release_count": 3,
     "stars": 0,
-    "updated_at": "2026-11-05T11:35:27Z"
+    "updated_at": "2026-11-08T00:59:56Z"
   },
   "y1-community/solar-mirror": {
-    "downloads": 409,
+    "downloads": 142,
     "forks": 0,
     "release_count": 47,
     "stars": 0,
-    "updated_at": "2026-11-05T14:22:32Z"
+    "updated_at": "2026-11-08T02:00:42Z"
   },
   "y1-community/sr1-stock-rom": {
-    "downloads": 2,
+    "downloads": 10,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
     "updated_at": "2026-11-05T04:11:50Z"
   },
   "y1-community/updater-ce-neo": {
-    "downloads": 793,
+    "downloads": 777,
     "forks": 0,
     "release_count": 4,
     "stars": 0,
-    "updated_at": "2026-11-06T09:24:33Z"
+    "updated_at": "2026-11-07T20:35:04Z"
   },
   "y1-community/y1-ata-rom": {
-    "downloads": 644,
+    "downloads": 660,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
     "updated_at": "2026-07-28T16:12:03Z"
   },
   "y1-community/y1-ata-rom-mirror": {
-    "downloads": 2,
+    "downloads": 11,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
-    "updated_at": "2026-11-05T11:32:43Z"
+    "updated_at": "2026-11-08T00:58:01Z"
   },
   "y1-community/y1-linux-rom": {
-    "downloads": 38,
+    "downloads": 42,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
@@ -14442,31 +14948,31 @@ window.INNIOASIS_REPO_STATS = {
     "forks": 0,
     "release_count": 1,
     "stars": 0,
-    "updated_at": "2026-11-05T11:29:28Z"
+    "updated_at": "2026-11-08T00:54:19Z"
   },
   "y1-community/y1-stock-rom": {
-    "downloads": 44742,
+    "downloads": 47799,
     "forks": 0,
     "release_count": 9,
     "stars": 6,
     "updated_at": "2026-10-27T10:14:24Z"
   },
   "y1-community/y1-stock-rom-mirror": {
-    "downloads": 13,
+    "downloads": 39,
     "forks": 0,
     "release_count": 9,
     "stars": 0,
-    "updated_at": "2026-11-05T11:40:20Z"
+    "updated_at": "2026-11-08T00:54:54Z"
   },
   "y1-community/y1_launcher-mirror": {
-    "downloads": 32,
+    "downloads": 43,
     "forks": 0,
     "release_count": 14,
     "stars": 0,
-    "updated_at": "2026-11-05T12:30:16Z"
+    "updated_at": "2026-11-08T11:29:54Z"
   },
   "y1-community/y2-ata-rom": {
-    "downloads": 214,
+    "downloads": 223,
     "forks": 0,
     "release_count": 1,
     "stars": 0,
@@ -14477,24 +14983,24 @@ window.INNIOASIS_REPO_STATS = {
     "forks": 0,
     "release_count": 1,
     "stars": 0,
-    "updated_at": "2026-11-06T01:46:57Z"
+    "updated_at": "2026-11-08T10:44:07Z"
   },
   "y1-community/y2-rockbox-mirror": {
-    "downloads": 34,
+    "downloads": 37,
     "forks": 0,
     "release_count": 3,
     "stars": 0,
-    "updated_at": "2026-11-05T11:37:14Z"
+    "updated_at": "2026-11-08T01:01:32Z"
   },
   "y1-community/y2linux-mirror": {
-    "downloads": 962,
+    "downloads": 708,
     "forks": 0,
-    "release_count": 86,
+    "release_count": 87,
     "stars": 0,
-    "updated_at": "2026-11-06T01:47:31Z"
+    "updated_at": "2026-11-08T10:45:13Z"
   },
   "y1-community/y2player-mirror": {
-    "downloads": 18,
+    "downloads": 8,
     "forks": 0,
     "release_count": 4,
     "stars": 0,
