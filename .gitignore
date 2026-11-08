@@ -20,3 +20,6 @@ i18n/cache/
 i18n/translate.log
 i18n/http.log
 .verify/
+
+# Responsive audit output (screenshots, reports)
+.responsive/
