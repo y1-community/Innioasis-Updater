@@ -86,25 +86,45 @@ PAGES = [
 ]
 
 # Installed before any page script so layout shifts are counted from the start.
-CLS_SNIPPET = """
+CLS_SNIPPET = r"""
 (() => {
   window.__auditCls = 0;
   window.__auditShifts = [];
+  function pathOf(node) {
+    if (!node || !node.tagName) return "unknown";
+    var parts = [], el = node, depth = 0;
+    while (el && el.tagName && el !== document.documentElement && depth < 4) {
+      var part = el.tagName.toLowerCase();
+      if (el.id) part += "#" + el.id;
+      else if (el.className && typeof el.className === "string") {
+        part += "." + el.className.trim().split(/\s+/).slice(0, 2).join(".");
+      }
+      parts.unshift(part);
+      el = el.parentElement;
+      depth += 1;
+    }
+    return parts.join(" > ");
+  }
+  function rectOf(r) {
+    return r ? {x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height)} : null;
+  }
   try {
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        if (!entry.hadRecentInput) {
-          window.__auditCls += entry.value;
-        window.__auditLastSources = (entry.sources || []).length;
-          const nodes = (entry.sources || []).map((source) => {
-            const el = source.node;
-            if (!el || !el.tagName) return null;
-            return el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : '');
-          }).filter(Boolean);
-          window.__auditShifts.push({value: Math.round(entry.value * 10000) / 10000, t: Math.round(entry.startTime), nodes: nodes.slice(0, 3), sources: (entry.sources || []).length});
-        }
+        if (entry.hadRecentInput) continue;
+        window.__auditCls += entry.value;
+        var sources = (entry.sources || []).map((source) => ({
+          node: pathOf(source.node),
+          previous: rectOf(source.previousRect),
+          current: rectOf(source.currentRect)
+        }));
+        window.__auditShifts.push({
+          value: Math.round(entry.value * 10000) / 10000,
+          t: Math.round(entry.startTime),
+          sources: sources
+        });
       }
-    }).observe({type: 'layout-shift', buffered: true});
+    }).observe({type: "layout-shift", buffered: true});
   } catch (error) {}
 })();
 """
@@ -113,69 +133,53 @@ PROBE = r"""
 (() => {
   const vw = window.innerWidth, vh = window.innerHeight;
   const doc = document.documentElement;
-  const dock = document.querySelector('.y1-site-dock-wrap') || document.querySelector('#support-toolbar-container');
-  const bar = document.querySelector('.y1-site-dock-bar') || dock;
-  const dockHidden = !dock || getComputedStyle(dock).display === 'none' ||
-    getComputedStyle(dock).visibility === 'hidden' || dock.getBoundingClientRect().height < 4;
-  const dRect = dockHidden ? null : dock.getBoundingClientRect();
-  const goal = document.querySelector('#y1-dock-secondary-line');
-  const goalVisible = !!(goal && goal.getBoundingClientRect().height > 0 &&
-    getComputedStyle(goal).display !== 'none' && !goal.hidden);
-
+  const dock = document.querySelector(".y1-site-dock-wrap") || document.querySelector("#support-toolbar-container");
+  const bar = dock || null;
+  const dRect = dock ? dock.getBoundingClientRect() : null;
+  const dockHidden = !dock || !dRect || dRect.height < 4 || getComputedStyle(dock).display === "none";
+  const goal = document.querySelector("#y1-dock-secondary-line");
+  const goalVisible = !!(goal && goal.getBoundingClientRect().height > 0 && !goal.hidden);
   const dockLinks = [...document.querySelectorAll(
-    '#support-toolbar-container a, #support-toolbar-container button, #support-toolbar-container [role="button"]'
-  )].filter((el) => {
-    const r = el.getBoundingClientRect();
-    return r.width > 0 && r.height > 0;
-  });
+    "#support-toolbar-container a, #support-toolbar-container button, #support-toolbar-container [role=button]"
+  )].filter((el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; });
   const smallList = dockLinks.filter((el) => {
-    const r = el.getBoundingClientRect();
-    return r.height < 40 || r.width < 32;
+    const r = el.getBoundingClientRect(); return r.height < 40 || r.width < 32;
   }).map((el) => {
     const r = el.getBoundingClientRect();
-    return (el.tagName.toLowerCase() + '.' + String(el.className || '').trim().split(/\s+/).slice(0, 2).join('.')) +
-      ' ' + Math.round(r.width) + 'x' + Math.round(r.height);
+    return el.tagName.toLowerCase() + "." + String(el.className || "").trim().split(/\s+/).slice(0, 2).join(".") +
+      " " + Math.round(r.width) + "x" + Math.round(r.height);
   }).slice(0, 4);
-  const smallTargets = smallList.length;
-
-  const footer = document.querySelector('#footer-root footer, footer.site-footer');
-  let footerClip = null;
-  if (footer && dRect) {
-    const r = footer.getBoundingClientRect();
-    footerClip = Math.round(Math.max(0, r.bottom - dRect.top));
-  }
-
-  const wide = [...document.querySelectorAll('body *')].filter((el) => {
+  const footer = document.querySelector("#footer-root footer, footer.site-footer");
+  const wide = [...document.querySelectorAll("body *")].filter((el) => {
     const r = el.getBoundingClientRect();
-    return r.width > 0 && r.right > vw + 1 && getComputedStyle(el).position !== 'fixed';
+    return r.width > 0 && r.right > vw + 1 && getComputedStyle(el).position !== "fixed";
   }).slice(0, 5).map((el) => ({
     tag: el.tagName.toLowerCase(),
-    cls: typeof el.className === 'string' ? el.className.slice(0, 60) : '',
+    cls: typeof el.className === "string" ? el.className.slice(0, 60) : "",
     right: Math.round(el.getBoundingClientRect().right)
   }));
-
   return {
     url: location.href,
-    vw, vh,
+    vw: vw,
+    vh: vh,
     scrollWidth: Math.max(doc.scrollWidth, document.body ? document.body.scrollWidth : 0),
     overflowX: Math.max(doc.scrollWidth, document.body ? document.body.scrollWidth : 0) - vw,
     dockHeight: dRect ? Math.round(dRect.height) : 0,
     dockShare: dRect ? Math.round((dRect.height / vh) * 1000) / 1000 : 0,
-    dockHidden,
+    dockHidden: dockHidden,
     goalLineVisible: goalVisible,
-    goalWeight: goal && goal.getBoundingClientRect().height > 0
-      ? Math.round((goal.getBoundingClientRect().height / vh) * 1000) / 1000 : 0,
-    footerClip,
-    smallTargets,
+    goalWeight: goal ? Math.round((goal.getBoundingClientRect().height / vh) * 1000) / 1000 : 0,
+    footerClip: 0,
+    smallTargets: smallList.length,
     smallTargetList: smallList,
-    density: (document.getElementById('support-toolbar-container') || {}).getAttribute
-      ? document.getElementById('support-toolbar-container').getAttribute('data-dock-density') : null,
+    density: document.getElementById("support-toolbar-container")
+      ? document.getElementById("support-toolbar-container").getAttribute("data-dock-density") : null,
     controls: Object.fromEntries([
-      ['donate', '[data-donate-open]'],
-      ['privacy', '[data-privacy-open]'],
-      ['language', '[data-locale-open]'],
-      ['fontDown', '[data-font-down]'],
-      ['fontUp', '[data-font-up]']
+      ["donate", "[data-donate-open]"],
+      ["privacy", "[data-privacy-open]"],
+      ["language", "[data-locale-open]"],
+      ["fontDown", "[data-font-down]"],
+      ["fontUp", "[data-font-up]"]
     ].map(([key, sel]) => {
       const el = document.querySelector(sel);
       if (!el) return [key, null];
@@ -184,12 +188,14 @@ PROBE = r"""
     })),
     wideElements: wide,
     cls: Math.round((window.__auditCls || 0) * 10000) / 10000,
+    shifts: (window.__auditShifts || []).slice().sort((a, b) => b.value - a.value).slice(0, 12),
+    shiftsTotal: (window.__auditShifts || []).length,
     landmarks: {
-      header: !!document.querySelector('header, .lumen-header, #navShell'),
-      main: !!document.querySelector('main, [role="main"]'),
+      header: !!document.querySelector("header, .lumen-header, #navShell"),
+      main: !!document.querySelector("main, [role=main]"),
       footer: !!footer
     },
-    metaViewport: (document.querySelector('meta[name="viewport"]') || {}).content || null,
+    metaViewport: (document.querySelector("meta[name=viewport]") || {}).content || null,
     docHeight: Math.round(Math.max(doc.scrollHeight, document.body ? document.body.scrollHeight : 0))
   };
 })()
@@ -262,8 +268,24 @@ def audit_page(cdp: CDP, url: str, device: dict, shot_path: Path | None) -> dict
             shot_path.write_bytes(base64.b64decode(shot["data"]))
         except Exception as error:  # screenshots are diagnostics, not the verdict
             shot_error = str(error)
+    # Wait for a settled state: document height and accumulated CLS must both
+    # stop changing. Without this the same build measured 0.048 or 0.206
+    # depending on where in hydration the capture landed.
+    previous = None
+    for _ in range(60):
+        state = cdp.send("Runtime.evaluate", returnByValue=True, expression=(
+            "JSON.stringify([Math.round((window.__auditCls||0)*10000)/10000,"
+            "document.documentElement.scrollHeight,document.readyState])"))
+        current = json.loads(state["result"]["value"])
+        if previous == current and current[2] == "complete":
+            break
+        previous = current
+        time.sleep(0.25)
     result = cdp.send("Runtime.evaluate", expression=PROBE, returnByValue=True, awaitPromise=True)
     data = result.get("result", {}).get("value") or {}
+    for required in ("overflowX", "shifts", "cls", "controls"):
+        if required not in data:
+            raise RuntimeError(f"probe returned no {required!r}; refusing to report an unattributed number")
     data["clsTop"] = data.get("cls")
     # Scroll to the very end for the occlusion check. Smooth scrolling would
     # still be in flight, so force instant jumps and confirm the position.

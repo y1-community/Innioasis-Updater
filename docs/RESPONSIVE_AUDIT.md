@@ -51,21 +51,31 @@ found. Reports and screenshots land in `.responsive/` (gitignored).
 - Gallery skeleton ships in `index.html` markup (24 cards) instead of being
   injected after paint, and the grid rows are pinned at 392px (360px narrow).
 
-## Open items
+## CLS evidence (measured with per-shift sources)
 
-- Themes gallery CLS stays 0.13-0.21 on desktop, measured at top-of-page.
-  Shift entries show `.theme-grid` moving down 87px when the filter bar is
-  inserted, then `.wrap` and the banner moving up 8px, plus skeleton-card row
-  heights changing on swap. Static skeleton cards, pinned grid rows and 87px /
-  41px reservations for `.gallery-controls` and `.site-compat-banner` did not
-  reduce the score, so the dominant moving region is still unidentified.
-  Next step: capture `entry.sources` with full rects on every entry and diff the
-  first 1500ms; do not add more min-heights until that is done.
-  Owner: Antigravity.
-- Firmware archive at 1440x1440: CLS 0.0601, 0.01 over the band. Same method.
-  Owner: Antigravity.
-- `viewport-fit=cover` is appended at runtime by the dock; it belongs in the
-  static viewport meta of generated pages.
+The harness now records every layout-shift entry with `sources` ranked by
+score, each carrying a selector path and `previousRect`/`currentRect`, and it
+waits until accumulated CLS and document height are both stable before
+capturing. `main()` raises if a row lacks `shifts` or `overflowX`, so an
+unattributed number can no longer be reported.
+
+Themes, 1440x900, two consecutive runs: 0.0490 and 0.0542, with the same
+dominant entry (0.0459 at ~330ms). Sources: `div.wrap` y 150 -> 143 and height
+750 -> 758, two `div.theme-card.theme-card--skeleton` y 697 -> 689 / height
+203 -> 211, `aside#site-compat-banner` y 69 -> 61. The header area shrinks by
+8px after first paint, so everything below moves up; the score is the 8px move,
+not the card grid.
+
+Firmware, 1440x1440, two consecutive runs: 0.2802 and 0.2801, identical
+entries. 0.1851 at ~210ms with `section.lumen-section` y 772 -> 766 / height
+434 -> 447 and `div.lumen-table-wrap` y 723 -> 715; 0.0601 at ~240ms with two
+`.lumen-section` blocks moving y 766 -> 974 and 1213 -> 1421 (a ~200px
+insertion above `#firmware-filters`), and `thead th` width 744 -> 538 from
+filter-bar reflow; 0.0349 with `main#main` y 8 -> 70.
+
+So the run-to-run swing was hydration timing, not code: with the settle wait
+the two runs agree to within 0.005 (themes) and 0.0001 (firmware). The
+remaining work is layout, not measurement.
 
 ## Behaviours re-verified after the fixes
 
