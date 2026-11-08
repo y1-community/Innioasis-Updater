@@ -1424,17 +1424,18 @@ def release_compat_warning(item: dict, release: dict) -> str:
     label = (str(release.get("tag_name") or "") + " " + str(release.get("name") or "")).lower()
     if "type-b" in label or "type_b" in label:
         return ""
+    is_nightly = bool(release.get("prerelease")) or "nightly" in label
     version = release_version(release)
     match = re.match(r"^v?(\d+(?:\.\d+)*)$", version.strip(), re.I)
-    if not match:
+    if not match and not is_nightly:
         return ""
-    parts = tuple(int(part) for part in match.group(1).split("."))
+    parts = tuple(int(part) for part in match.group(1).split(".")) if match else ()
 
     def below(floor):
         width = max(len(parts), len(floor))
         return parts + (0,) * (width - len(parts)) < floor + (0,) * (width - len(floor))
 
-    if slug == "rockbox-y1" and below((0, 5)):
+    if slug == "rockbox-y1" and (is_nightly or below((0, 5))):
         return (
             '<div class="lumen-warning lumen-release-compat-warning" role="note">'
             "<strong>Rockbox Compatibility Warning</strong>"
@@ -1442,7 +1443,7 @@ def release_compat_warning(item: dict, release: dict) -> str:
             "after March 2026 with Innioasis OS 3.0.7 pre-installed; flashing it on those devices "
             "will prevent booting.</p></div>"
         )
-    if slug.startswith("original-") and below((3, 0, 7)):
+    if slug.startswith("original-") and (is_nightly or below((3, 0, 7))):
         return (
             '<div class="lumen-warning lumen-release-compat-warning" role="note">'
             "<strong>Original Software Compatibility Warning</strong>"
