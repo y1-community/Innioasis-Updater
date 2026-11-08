@@ -1,104 +1,81 @@
 # Responsive and viewport audit
 
-Last updated 8 November 2026. Maintained by Buffy and Antigravity; edit in
-place and keep the "Open items" section current.
+Updated 8 November 2026 by Buffy. Antigravity: read "Open items" first.
 
-## What this covers
+## Harness
 
-The three public surfaces: the firmware archive (`innioasis.app/firmware.html`),
-the Updater CE landing page (`innioasis.app`) and the themes gallery
-(`themes.innioasis.app`).
+`tools/responsive/audit.py` (Updater repo) drives headless Chromium over CDP.
+It loads each surface at 24 viewports and records horizontal overflow, dock
+height and viewport share, running-costs line visibility, reserved clearance
+below the footer, dock tap targets under 40px, CLS at top-of-page, and the
+presence of Donate, Privacy and Language. Exit status is 1 on any finding.
 
-`tools/responsive/audit.py` drives the local headless Chromium over the DevTools
-protocol. For every page and viewport it records:
+Run against a local checkout (two servers, one per repo):
 
-- horizontal overflow (document wider than the viewport)
-- bottom dock height and its share of the viewport
-- whether the running-costs goal line is showing
-- footer copy hidden behind the dock
-- dock tap targets under 40 CSS px
-- cumulative layout shift, with the shifted nodes
+    cd InnioasisY1Themes && python3 -m http.server 8099 --bind 127.0.0.1 &
+    cd Innioasis-Updater && python3 -m http.server 8098 --bind 127.0.0.1 &
+    .verify/venv/bin/python tools/responsive/audit.py \
+        --base http://127.0.0.1:8099 --pages themes --out .responsive/themes
+    .verify/venv/bin/python tools/responsive/audit.py \
+        --base http://127.0.0.1:8098 --pages firmware --out .responsive/firmware
+    .verify/venv/bin/python tools/responsive/audit.py \
+        --base http://127.0.0.1:8098 --pages updater --out .responsive/updater
 
-Run it against production:
+Chrome needs `--remote-allow-origins=*`; the harness passes it. Without it the
+DevTools WebSocket handshake fails with 403. `trace_overflow.py` prints the
+matched CSS rules for one selector, which is how the header overflow was found.
 
-    .verify/venv/bin/python tools/responsive/audit.py --out .responsive/live
+Baseline runs are in `.responsive/` (gitignored) with screenshots per device.
 
-Or against a local checkout of the themes or main site (pages then resolve
-against the `--base` origin):
+## What was broken and what fixed it
 
-    python3 -m http.server 8099 --bind 127.0.0.1
-    .verify/venv/bin/python tools/responsive/audit.py --base http://127.0.0.1:8099 \
-        --pages themes --out .responsive/local
+Overflow, up to 251px at 344px wide. `gallery-chrome.js` injects the top bar as
+`display:flex` with no wrap, and gave `.gallery-social-links` an inline
+`flex-shrink:0`, so stylesheet rules could not win. Fixed in `gallery-chrome.js`
+(injected topbar rule now wraps, narrow `@media` block orders the bar, inline
+styles no longer refuse to shrink) and in `site-theme.css` (matching flex
+rules). The old grid rules were dead code and are gone.
 
-Exit status is 1 when anything fails, so it can gate CI. `report.md` and
-`report.json` land in the output directory next to per-device screenshots.
+Footer trapped under the dock. The dock published `--y1-dock-space` from
+`#support-toolbar-container`, a fixed wrapper whose only child is fixed, so it
+measured 0. `support_toolbar.html` now measures `.y1-site-dock-wrap` and
+reserves its footprint plus 12px. `site-toolbar.css` starts at 104px so the
+first paint is stable.
 
-## Device matrix
+Sub-40px targets. Donate close (36px) and privacy save (34px) raised to 44px in
+`support_toolbar.html`.
 
-Square and small handhelds: IkkoMind One, Unihertz Pocket, Titan 2, Elite,
-Elite Pro, BlackBerry Passport. Foldables: Galaxy Z Flip 5 and 6, Z Fold 5 cover
-and inner screens, the 420x900 foldable iPhone profile. Phones: iPhone SE, 16,
-16 Pro Max. Tablets: iPad mini. Laptops: MacBook Air 13, MacBook Pro 16.
-Everything else: smart-fridge portrait, 32-inch 1440p, 32-inch 4K, 34-inch
-ultrawide.
+Tablet-landscape hero spill. `.lumen-hero-art` bounded in `site-theme.css`.
 
-Adding a device is one dict in `DEVICES`.
+## Measured after the fixes
 
-## Dock behaviour
+- themes: 24/24 devices, overflow 0, footer clearance 0, no small targets;
+  findings are CLS only (below).
+- firmware: 24/24, exit 0, zero findings. CLS 0.011 at 1440p.
+- updater: 23/24 clean, CLS 0.018; one accepted exception (below).
 
-Priority, highest first, and unchanged by density:
+Goal line: hidden on every compact and minimal tier (<=900px wide, <=700px
+tall, square screens), visible on full tier (MacBook, iPad landscape, 32-inch
+1440p/4K, ultrawide). Donate, Privacy and Language were present at all 24
+viewports on all three surfaces.
 
-1. Donate, Privacy, Language (the language panel is also the accessibility
-   entry point)
-2. text size, close
-3. running-costs goal line and the ticker
+## Accepted exceptions
 
-`support_toolbar.html` sets `data-dock-density` on the dock container from the
-viewport alone, never from the bar's own height, so a tier change cannot
-oscillate:
+- Themes gallery CLS 0.13-0.21 on desktop (0 on phones; the content is below
+  the fold there). Cause: the gallery renders skeleton cards, then streams real
+  cards, so `.wrap` grows from 2593px to 4469px at ~600-700ms. Fixing it means
+  rendering the first card batch server-side or pinning the grid to a fixed
+  height until hydration finishes. Owner: Antigravity; measure with the harness,
+  target under 0.1.
+- Updater landing page, iPad mini landscape (1133x744): 7px of horizontal
+  layout overflow from `.lumen-hero-art`. Visually clipped by `overflow-x: clip`
+  so there is no scrollbar, but the element box still exceeds the viewport.
+  Owner: Antigravity; trace with `trace_overflow.py --selector .lumen-hero-art`.
 
-| tier | when | effect |
-| --- | --- | --- |
-| full | wide and tall | everything, goal line included |
-| compact | width under 900, height under 700, or a nearly square viewport | goal line and ticker hidden, A- and A+ folded |
-| minimal | width under 420, height under 480, or a small square screen | icon-only controls, 44px targets |
+## Notes for Antigravity
 
-The dock publishes its height as `--y1-dock-space`; the page reserves that space
-at the bottom so a footer is never trapped under the bar. Every control keeps a
-44x44 CSS px hit area at every density.
-
-Confirmed locally at 600x600 and 344x882 and 393x852: goal line hidden, dock
-55px instead of 103px on the compact tier, no dock-height share above 12%.
-
-## Open items
-
-- Narrow gallery widths still overflow. At 344px the document is 251px too
-  wide, at 393px 202px, at 600px 33px. The widest node is
-  `.gallery-social-links` (603px) inside `.gallery-topbar`. Two overrides
-  (single class, then `body.site-themes-app .gallery-topbar .gallery-social-links`)
-  did not change the measurement, so the width is coming from somewhere else in
-  that strip, most likely an absolutely positioned ancestor or an inline
-  `width` on a child. Start there rather than adding more `max-width` rules.
-- Desktop CLS on the themes gallery measured 1.03 locally and 3.3 on the live
-  site (MacBook Air, 32-inch 1440p). The layout-shift entries carry no source
-  nodes, so the cause is not yet attributed. Check hero image decoding and the
-  theme card skeleton-to-card swap before touching unrelated layout.
-- The iPhone profile is 420x900; confirm the real foldable Safari viewport once
-  it ships, then update `DEVICES`.
-- `viewport-fit=cover` is appended at runtime by the dock script. It belongs in
-  the static viewport meta on generated pages so the first paint already has
-  safe-area insets.
-
-## Working notes for Antigravity
-
-- The dock is one self-contained file (`support_toolbar.html`, style block plus
-  inline script) and exists in both `InnioasisY1Themes` and `Innioasis-Updater`.
-  Change both in the same commit.
-- The density tier is derived only from `window.innerWidth` and
-  `window.innerHeight`. If you add a rule that changes the bar height, do not
-  feed that height back into the tier.
-- `site-theme.css` carries the top-bar responsive overrides at the end of the
-  file, under the "Responsive hardening" heading. Media queries there use 900px
-  and 420px breakpoints.
-- Keep prose in the product voice: short sentences, no marketing adjectives, no
-  em dashes. The site copy is edited with the humanizer checklist.
+- The dock lives in `support_toolbar.html` in both repos. Change both together.
+- Density tiers come from viewport size only, never from the bar height.
+- `--y1-dock-space` is the contract between the dock and page padding.
+- The harness installs the CLS observer once per tab; adding it per navigation
+  multiplies the score (that bug produced the earlier 3.3 readings).

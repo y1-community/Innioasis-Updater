@@ -1,3 +1,10 @@
+/* Reserved footprint of the bottom dock. The dock script refines this
+   value to the measured bar height; starting from the tallest tier
+   keeps the first paint stable (no CLS from the late injection). */
+:root {
+    --y1-dock-space: 104px;
+}
+
 /* Lumen site shortcuts and legacy compatibility chrome */
 
 body.site-themes-app {

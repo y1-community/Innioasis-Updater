@@ -920,6 +920,36 @@ body.site-themes-app .site-footer--updater .footer-logo.footer-logo-luci,
     text-decoration: underline;
 }
 
+.site-footer .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem 1rem;
+}
+
+.site-footer .footer-bottom .footer-legal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.site-footer .footer-bottom .footer-legal a,
+.site-footer .footer-bottom .footer-privacy-button {
+    color: var(--site-text);
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.site-footer .footer-bottom .footer-legal a:hover,
+.site-footer .footer-bottom .footer-privacy-button:hover {
+    color: var(--site-accent);
+}
+
 body.site-themes-app .cast-div {
     padding: 1.25rem 1.5rem;
     border-radius: var(--site-radius-lg);
@@ -979,3 +1009,18 @@ body.site-themes-app .bulk-update-panel {
 }
 
 /* Footer credit line: site creator + community */
+
+/* No stray horizontal scroll from a few pixels of subpixel rounding. */
+html, body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* The hero art is an oversized figure; at tablet-landscape widths it stuck out
+   of the viewport by a few pixels. */
+.lumen-hero-art,
+.lumen-hero-art img,
+.lumen-hero-art svg {
+    max-width: 100%;
+    height: auto;
+}

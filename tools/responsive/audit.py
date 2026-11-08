@@ -72,6 +72,9 @@ DEVICES = [
     {"name": "fridge-portrait", "label": "Smart fridge (portrait)", "width": 800, "height": 1280, "mobile": True},
     {"name": "monitor-32-1440p", "label": '32" 1440p', "width": 2560, "height": 1440},
     {"name": "monitor-4k", "label": '32" 4K', "width": 3840, "height": 2160},
+    {"name": "square-1440", "label": "Square 1440 (Passport-equivalent)", "width": 1440, "height": 1440},
+    {"name": "iphone-safari-mini", "label": "iPhone Safari (320 window)", "width": 320, "height": 568, "mobile": True},
+    {"name": "ipad-mini-landscape", "label": "iPad mini (landscape)", "width": 1133, "height": 744, "mobile": True},
     {"name": "monitor-ultrawide", "label": '34" ultrawide', "width": 3440, "height": 1440},
 ]
 
@@ -92,12 +95,13 @@ CLS_SNIPPET = """
       for (const entry of list.getEntries()) {
         if (!entry.hadRecentInput) {
           window.__auditCls += entry.value;
+        window.__auditLastSources = (entry.sources || []).length;
           const nodes = (entry.sources || []).map((source) => {
             const el = source.node;
             if (!el || !el.tagName) return null;
             return el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : '');
           }).filter(Boolean);
-          window.__auditShifts.push({value: Math.round(entry.value * 10000) / 10000, t: Math.round(entry.startTime), nodes: nodes.slice(0, 3)});
+          window.__auditShifts.push({value: Math.round(entry.value * 10000) / 10000, t: Math.round(entry.startTime), nodes: nodes.slice(0, 3), sources: (entry.sources || []).length});
         }
       }
     }).observe({type: 'layout-shift', buffered: true});
@@ -124,10 +128,15 @@ PROBE = r"""
     const r = el.getBoundingClientRect();
     return r.width > 0 && r.height > 0;
   });
-  const smallTargets = dockLinks.filter((el) => {
+  const smallList = dockLinks.filter((el) => {
     const r = el.getBoundingClientRect();
     return r.height < 40 || r.width < 32;
-  }).length;
+  }).map((el) => {
+    const r = el.getBoundingClientRect();
+    return (el.tagName.toLowerCase() + '.' + String(el.className || '').trim().split(/\s+/).slice(0, 2).join('.')) +
+      ' ' + Math.round(r.width) + 'x' + Math.round(r.height);
+  }).slice(0, 4);
+  const smallTargets = smallList.length;
 
   const footer = document.querySelector('#footer-root footer, footer.site-footer');
   let footerClip = null;
@@ -158,6 +167,21 @@ PROBE = r"""
       ? Math.round((goal.getBoundingClientRect().height / vh) * 1000) / 1000 : 0,
     footerClip,
     smallTargets,
+    smallTargetList: smallList,
+    density: (document.getElementById('support-toolbar-container') || {}).getAttribute
+      ? document.getElementById('support-toolbar-container').getAttribute('data-dock-density') : null,
+    controls: Object.fromEntries([
+      ['donate', '[data-donate-open]'],
+      ['privacy', '[data-privacy-open]'],
+      ['language', '[data-locale-open]'],
+      ['fontDown', '[data-font-down]'],
+      ['fontUp', '[data-font-up]']
+    ].map(([key, sel]) => {
+      const el = document.querySelector(sel);
+      if (!el) return [key, null];
+      const r = el.getBoundingClientRect();
+      return [key, r.width > 0 && r.height > 0];
+    })),
     wideElements: wide,
     cls: Math.round((window.__auditCls || 0) * 10000) / 10000,
     landmarks: {
@@ -220,7 +244,9 @@ def audit_page(cdp: CDP, url: str, device: dict, shot_path: Path | None) -> dict
              width=device["width"], height=device["height"],
              deviceScaleFactor=device.get("dpr", 1), mobile=bool(device.get("mobile")))
     cdp.send("Emulation.setTouchEmulationEnabled", enabled=bool(device.get("mobile")), maxTouchPoints=5)
-    cdp.send("Page.addScriptToEvaluateOnNewDocument", source=CLS_SNIPPET)
+    if not getattr(cdp, "_cls_installed", False):
+        cdp.send("Page.addScriptToEvaluateOnNewDocument", source=CLS_SNIPPET)
+        cdp._cls_installed = True
     cdp.send("Page.navigate", url=url)
     # Wait for the load event, then give the dock injection and fonts a moment.
     deadline = time.time() + 25
@@ -230,17 +256,41 @@ def audit_page(cdp: CDP, url: str, device: dict, shot_path: Path | None) -> dict
             break
         time.sleep(0.2)
     time.sleep(1.6)
-    result = cdp.send("Runtime.evaluate", expression=PROBE, returnByValue=True, awaitPromise=True)
-    data = result.get("result", {}).get("value") or {}
-    data["device"] = device["name"]
-    data["deviceLabel"] = device["label"]
     if shot_path is not None:
         try:
             shot = cdp.send("Page.captureScreenshot", format="jpeg", quality=55, captureBeyondViewport=False)
             shot_path.write_bytes(base64.b64decode(shot["data"]))
-            data["screenshot"] = str(shot_path)
         except Exception as error:  # screenshots are diagnostics, not the verdict
-            data["screenshotError"] = str(error)
+            shot_error = str(error)
+    result = cdp.send("Runtime.evaluate", expression=PROBE, returnByValue=True, awaitPromise=True)
+    data = result.get("result", {}).get("value") or {}
+    data["clsTop"] = data.get("cls")
+    # Scroll to the very end for the occlusion check. Smooth scrolling would
+    # still be in flight, so force instant jumps and confirm the position.
+    cdp.send("Runtime.evaluate", expression=(
+        "document.documentElement.style.scrollBehavior='auto';"
+        "document.body.style.scrollBehavior='auto';"
+        "window.scrollTo(0, document.documentElement.scrollHeight);"), returnByValue=True)
+    # The gallery streams cards while scrolling, so "are we at the bottom" is
+    # not a stable question. What matters structurally is whether the space the
+    # page reserves below its content covers the dock's footprint. If it does,
+    # no footer can ever sit under the bar.
+    occlusion = cdp.send("Runtime.evaluate", returnByValue=True, expression=r"""(() => {
+      const footer = document.querySelector('#footer-root footer, footer.site-footer');
+      const dock = document.querySelector('.y1-site-dock-wrap') || document.querySelector('#support-toolbar-container');
+      if (!footer || !dock) return 0;
+      const bar = dock.querySelector ? (dock.querySelector('.y1-site-dock-wrap') || dock) : dock;
+      const r = bar.getBoundingClientRect();
+      if (r.height < 4 || getComputedStyle(bar).display === 'none') return 0;
+      const footprint = Math.round(innerHeight - r.top);
+      const reserved = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
+      return Math.max(0, footprint - Math.round(reserved));
+    })()""")
+    data["footerClip"] = occlusion.get("result", {}).get("value") or 0
+    data["device"] = device["name"]
+    data["deviceLabel"] = device["label"]
+    if shot_path is not None:
+        data["screenshot"] = str(shot_path)
     return data
 
 
@@ -303,6 +353,14 @@ def main() -> int:
                     checks.append(f"footer hidden behind the dock by {row['footerClip']}px")
                 if row["smallTargets"] > 0:
                     checks.append(f"{row['smallTargets']} dock targets under 40px")
+                for control in ("donate", "privacy", "language"):
+                    if row.get("controls", {}).get(control) is False:
+                        checks.append(f"{control} control not reachable")
+                expected_goal = row.get("density") == "full"
+                if expected_goal and not row.get("goalLineVisible"):
+                    checks.append(f"goal line missing on the {row.get('density')} tier")
+                if not expected_goal and row.get("goalLineVisible"):
+                    checks.append(f"goal line still shown on the {row.get('density')} tier")
                 if row["cls"] > 0.1:
                     checks.append(f"CLS {row['cls']}")
                 if checks:

@@ -74,6 +74,14 @@
     width: 100% !important;
     box-sizing: border-box !important;
   }
+  #support-toolbar-container .y1-privacy-save,
+  #support-toolbar-container .y1-donate-close {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
   #support-toolbar-container .y1-dock-secondary-line {
     display: flex !important;
     flex-direction: row !important;
@@ -433,6 +441,20 @@
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-close-btn {
     min-width: 44px;
     min-height: 44px;
+  }
+
+  /* Every density keeps finger-sized hit areas. The goal line is a clickable
+     row too, so it needs the same 40px minimum as the buttons. */
+  #support-toolbar-container .y1-dock-secondary-line {
+    min-height: 40px !important;
+    padding-block: 4px !important;
+  }
+  #support-toolbar-container .y1-dock-close-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   /* Every density keeps finger-sized hit areas (WCAG 2.5.8 asks for 24px,
@@ -2651,7 +2673,13 @@
       root.style.setProperty("--y1-dock-space", "0px");
       return;
     }
-    var height = dock.getBoundingClientRect().height;
+    /* #support-toolbar-container is a fixed wrapper whose only child is also
+       fixed, so it measures 0. Reserve the real bar's height instead. */
+    var bar = dock.querySelector(".y1-site-dock-wrap") || dock;
+    /* Clear the bar's real footprint: its top edge to the viewport bottom,
+       plus breathing room. Using the rect handles the bar's own bottom offset. */
+    var rect = bar.getBoundingClientRect();
+    var height = Math.max(0, window.innerHeight - rect.top) + 12;
     if (height > 0) {
       var bottomGap = parseFloat(getComputedStyle(dock).marginBottom) || 0;
       root.style.setProperty("--y1-dock-space", Math.ceil(height + bottomGap + 8) + "px");
