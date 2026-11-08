@@ -92,3 +92,19 @@ Arabic, `dir="rtl"` on `<html>`, and `dataLayer` contains `site_language_view`.
 If you add a page, add it in English, run extraction and translation, and tick a
 line here. Do not edit `i18n/catalogs/*.json` by hand unless you are reviewing a
 translation; the pipeline treats them as its cache.
+
+## Status 2026-11-08
+
+- [x] Runtime API fallback for anything a catalog lacks (text nodes and
+      aria-label/title/alt/placeholder), cached per language, capped per page,
+      English kept if a request fails.
+- [x] Privacy and donation modals translated in every catalog language, and the
+      two paragraphs that were marked `data-i18n-skip` are translated now.
+- [x] The dock language control opens on the first click, goes to a
+      `/<locale>/<page>` copy when the build published one, and otherwise sets
+      `?lang=` and reloads. Both routes verified in a browser.
+- [x] `prerender.py` writes `i18n/prerendered.json` so the runtime knows which
+      copies actually exist before it tries to navigate to one.
+- [ ] Remaining: deepen pre-translated catalogs beyond the shell and the modals.
+      6,344 source strings exist; the API fallback covers the rest at runtime,
+      but pre-translation is cheaper and does not depend on the network.
