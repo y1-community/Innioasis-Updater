@@ -6,14 +6,16 @@
  "source": "en",
  "provider": "reviewed",
  "reviewed": true,
- "generated": "2026-11-05T04:18:27+00:00",
- "count": 28,
+ "generated": "2026-11-08T11:01:51+00:00",
+ "count": 36,
  "strings": {
   "All languages": "Todos os idiomas",
   "Browse firmware": "Explorar o firmware",
   "Close": "Fechar",
   "Connect only at the live prompt.": "Conecte apenas quando o aviso aparecer.",
-  "Device Model": "Modelo do dispositivo",
+  "Device Model": "Modelo do aparelho",
+  "Donate": "Doar",
+  "Download": "Baixar",
   "Download ZIP": "Baixar ZIP",
   "Edition": "Edição",
   "FAQs": "Perguntas frequentes",
@@ -25,6 +27,8 @@
   "Install / Restore": "Instalar / Restaurar",
   "Language": "Idioma",
   "Original Software": "Software original",
+  "Privacy": "Privacidade",
+  "Release notes": "Notas da versão",
   "Search languages": "Pesquisar idiomas",
   "See what you can install.": "Veja o que você pode instalar.",
   "Set Device Model to Y1.": "Defina o modelo do dispositivo como Y1.",
@@ -33,9 +37,13 @@
   "Software": "Software",
   "Software Updates and Firmware": "Atualizações de software e firmware",
   "Support Updater and the Themes Gallery.": "Apoie o Updater e a galeria de temas.",
+  "Thank You": "Obrigado",
   "The edition changes what this site offers, not just the language.": "A edição muda o que o site oferece, não apenas o idioma.",
   "The safe way back": "O caminho seguro de volta",
+  "Theme": "Tema",
   "Troubleshooting": "Solução de problemas",
-  "Updater connection instructions": "Instruções de conexão com o Updater"
+  "Updater connection instructions": "Instruções de conexão com o Updater",
+  "Windows 10/11 app launch issues fixed": "Problemas de inicialização de aplicativos do Windows 10/11 corrigidos",
+  "We've resolved the issues some users were having launching the windows app.": "Resolvemos os problemas que alguns usuários enfrentavam ao iniciar o aplicativo Windows."
  }
 }

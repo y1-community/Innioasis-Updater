@@ -443,7 +443,23 @@ def main() -> int:
     parser.add_argument("--provider", default="google-web", choices=sorted(PROVIDERS))
     parser.add_argument("--locales", default="core", help="'all', 'core', or a comma-separated list")
     parser.add_argument("--limit", type=int, default=0, help="Translate at most N strings per locale")
+    parser.add_argument(
+        "--top",
+        type=int,
+        default=0,
+        help="Only the N most frequently used source strings (best value per request)",
+    )
+    parser.add_argument(
+        "--strings-from",
+        default="",
+        help="JSON worklist (a list, or {\"strings\": [...]}) limiting what is translated",
+    )
     parser.add_argument("--check", action="store_true", help="Report coverage and exit")
+    parser.add_argument(
+        "--index-only",
+        action="store_true",
+        help="Only rebuild i18n/site-locales.json from the catalogs on disk",
+    )
     parser.add_argument("--force", action="store_true", help="Ignore the cache and redo every string")
     args = parser.parse_args()
 
@@ -458,13 +474,36 @@ def main() -> int:
     if args.check:
         return coverage(strings_file, catalog_dir, bases)
 
+    if args.index_only:
+        write_locale_index(bases, variants, catalog_dir)
+        print("Rebuilt i18n/site-locales.json from the catalogs on disk.")
+        return 0
+
     if not os.path.exists(strings_file):
         print("No source catalog. Run: python scripts/i18n/extract_strings.py", file=sys.stderr)
         return 2
 
     source = load_json(strings_file)["strings"]
+    if args.top:
+        # The strings that appear on the most pages buy the most translated
+        # interface per request. Ties keep the shortest first so a batch is
+        # cheap, then batched longest-last below.
+        ranked = sorted(
+            source.keys(),
+            key=lambda text: (-source[text].get("n", 0), len(text)),
+        )
+        texts = ranked[: args.top]
+    else:
+        texts = list(source.keys())
+
+    if args.strings_from:
+        with open(args.strings_from, "r", encoding="utf-8") as handle:
+            worklist = json.load(handle)
+        wanted = set(worklist if isinstance(worklist, list) else worklist.get("strings", []))
+        texts = [text for text in texts if text in wanted]
+        print(f"Worklist : {len(texts)} of {len(wanted)} requested strings are in the source catalog")
     # Longest strings last so a batch fails small rather than with a huge tail.
-    texts = sorted(source.keys(), key=len)
+    texts = sorted(texts, key=len)
     if args.limit:
         texts = texts[: args.limit]
 

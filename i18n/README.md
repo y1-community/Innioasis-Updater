@@ -1,10 +1,11 @@
 # Site locales and region editions
 
-> **Status: the locale runtime is disabled for now.** Pages are served in
-> English only: no page loads `site-locale.js`, and the China edition
-> (`cn-region.js`, `cn-region.css`) has been removed. The pipeline below is
-> kept so real translations can be dropped in later — set `ENABLED = True` in
-> `scripts/i18n/install_runtime.py` and re-run it to bring the picker back.
+> **Status: the locale runtime is live.** Every page loads `site-locale.js`, the
+> language control sits in the bottom support dock, and the catalogs are topped
+> up by `.github/workflows/update-translations.yml`. The China edition is
+> expressed through `i18n/regions.json`, not a separate stylesheet. See the
+> repository root `I18N.md` for the operational guide and `I18N_TODO.md` for the
+> current work list.
 
 The site is written in English and ships in every language Google Translate
 supports. Two things are independent:

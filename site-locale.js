@@ -197,9 +197,14 @@
         if (fromPath) return fromPath;
         var stored = normalizeTag(readStorage(STORAGE_LOCALE));
         if (stored && map[stored]) return stored;
+        /* The browser's own languages are a stronger signal than a country's
+           default. A German visitor on an English-region machine must get
+           German, not English with a German country code. */
+        var fromBrowser = matchBrowserLocale(map);
+        if (fromBrowser) return fromBrowser;
         var fromRegion = normalizeTag(regionDefaultLocale());
         if (fromRegion && map[fromRegion]) return fromRegion;
-        return matchBrowserLocale(map) || DEFAULT_LOCALE;
+        return DEFAULT_LOCALE;
     }
 
     /* ---------------------------------------------------------------- */
@@ -333,6 +338,10 @@
         root.setAttribute("lang", state.locale);
         root.setAttribute("dir", state.dir);
         root.setAttribute("data-locale", state.locale);
+        /* Keep the dock label in the reader's language, wherever it is. */
+        Array.prototype.forEach.call(document.querySelectorAll("[data-locale-open] .site-locale-toggle-label"), function (label) {
+            label.textContent = labelFor(state.locale);
+        });
 
         if (state.locale === DEFAULT_LOCALE && !Object.keys(state.regionCopy).length) {
             translateHead();
@@ -447,6 +456,7 @@
 
         var panel = document.createElement("div");
         panel.className = "site-locale-panel";
+        panel.id = "site-locale-panel";
         panel.setAttribute("data-locale-panel", "1");
         panel.setAttribute("role", "dialog");
         panel.setAttribute("aria-modal", "true");
@@ -602,29 +612,144 @@
         return "English";
     }
 
-    function mountToggle() {
-        if (document.querySelector(".site-locale-toggle")) return;
-        var tools = document.querySelector("#nav-root .nav-tools") || document.querySelector(".nav-tools");
+    /* GA4 / GTM. Every page already ships the Google Tag Manager container;
+       these events tell GA4 which language the visitor is actually reading,
+       which a page URL alone cannot (the runtime swaps language in place).
+       A site may also set a direct GA4 measurement id with
+       <meta name="ga4-measurement-id" content="G-..."> or
+       window.INNIOASIS_GA4_ID; in that case gtag.js is loaded once with
+       manual page views so a language switch is a counted page view rather
+       than a silent text swap. */
+    var analyticsReady = false;
+
+    function ga4MeasurementId() {
+        var meta = document.querySelector('meta[name="ga4-measurement-id"]');
+        var id = (meta && meta.getAttribute("content")) || global.INNIOASIS_GA4_ID || "";
+        return /^G-[A-Z0-9]{4,}$/i.test(id) ? id : "";
+    }
+
+    function initAnalytics() {
+        if (analyticsReady) return;
+        analyticsReady = true;
+        global.dataLayer = global.dataLayer || [];
+        var id = ga4MeasurementId();
+        if (!id) return;
+        if (!global.gtag) {
+            global.gtag = function () { global.dataLayer.push(arguments); };
+        }
+        if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+            var tag = document.createElement("script");
+            tag.async = true;
+            tag.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+            document.head.appendChild(tag);
+        }
+        global.gtag("js", new Date());
+        global.gtag("config", id, { send_page_view: false });
+        global.gtag("set", { user_properties: { site_language: state.locale || DEFAULT_LOCALE } });
+    }
+
+    function track(event, params) {
+        initAnalytics();
+        var payload = {
+            event: event,
+            site_language: state.locale || DEFAULT_LOCALE,
+            site_locale_label: labelFor(state.locale || DEFAULT_LOCALE),
+            site_region: state.region || "intl",
+            page_path: global.location.pathname + global.location.search
+        };
+        Object.keys(params || {}).forEach(function (key) {
+            payload[key] = params[key];
+        });
+        global.dataLayer.push(payload);
+        if (global.gtag && ga4MeasurementId()) {
+            global.gtag("event", event, payload);
+        }
+    }
+
+    function trackPageView() {
+        if (!ga4MeasurementId()) {
+            track("site_language_view");
+            return;
+        }
+        track("page_view", {
+            page_title: document.title,
+            page_location: global.location.href,
+            language: state.locale || DEFAULT_LOCALE
+        });
+    }
+
+    /* The language control lives in the bottom support dock, which every page
+       mounts (support_toolbar.html). The static button is bound when it
+       arrives; when a page has no dock, the old nav/floating control is
+       created so the picker is never unreachable. */
+    function markToggle(button) {
+        var label = button.querySelector(".site-locale-toggle-label");
+        var text = labelFor(state.locale);
+        if (label) label.textContent = text;
+        button.title = t("language");
+        button.setAttribute("aria-label", t("language") + ": " + text);
+        button.setAttribute("aria-haspopup", "dialog");
+        button.classList.add("site-locale-toggle");
+    }
+
+    function bindExistingToggle() {
+        var buttons = document.querySelectorAll("[data-locale-open]");
+        var bound = 0;
+        Array.prototype.forEach.call(buttons, function (button) {
+            markToggle(button);
+            bound += 1;
+            if (button.dataset.localeBound === "1") return;
+            button.dataset.localeBound = "1";
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                togglePanel();
+            });
+        });
+        return bound;
+    }
+
+    function createToggle(host) {
         var button = document.createElement("button");
         button.type = "button";
         button.className = "site-locale-toggle";
-        button.setAttribute("aria-haspopup", "dialog");
-        button.title = t("language");
+        button.setAttribute("data-locale-open", "1");
         button.innerHTML =
             '<span class="site-locale-globe" aria-hidden="true">' +
             '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8">' +
             '<circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path>' +
             "</svg></span>" +
             '<span class="site-locale-toggle-label"></span>';
-        button.querySelector(".site-locale-toggle-label").textContent = labelFor(state.locale);
+        markToggle(button);
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            togglePanel();
+        });
+        button.dataset.localeBound = "1";
 
-        if (tools) {
-            tools.insertBefore(button, tools.firstChild);
+        if (host) {
+            if (host.id === "nav-root" || host.classList.contains("nav-tools")) {
+                host.insertBefore(button, host.firstChild);
+            } else {
+                host.appendChild(button);
+            }
         } else {
             button.classList.add("site-locale-toggle--floating");
             document.body.appendChild(button);
         }
-        button.addEventListener("click", togglePanel);
+        return button;
+    }
+
+    function mountToggle() {
+        if (bindExistingToggle()) return;
+        if (document.querySelector(".site-locale-toggle")) return;
+        /* site-init.js injects support_toolbar.html after DOMContentLoaded.
+           Wait for it instead of adding a second, floating control that the
+           dock button would then duplicate. */
+        var slot = document.getElementById("support-toolbar-slot");
+        if (slot && slot.dataset.shellLoaded !== "1") return;
+        var dock = document.getElementById("y1-dock-buttons-layer");
+        var tools = document.querySelector("#nav-root .nav-tools") || document.querySelector(".nav-tools");
+        createToggle(dock || tools);
     }
 
     /* ---------------------------------------------------------------- */
@@ -645,6 +770,7 @@
             return;
         }
         writeStorage(STORAGE_LOCALE, code);
+        track("site_language_change", { language_chosen: code });
 
         var segments = global.location.pathname.split("/");
         var first = segments[1] ? normalizeTag(segments[1]) : "";
@@ -749,7 +875,19 @@
             watch();
             if (document.body) mountToggle();
             else document.addEventListener("DOMContentLoaded", mountToggle);
+            /* The dock is injected after DOMContentLoaded by site-init.js, so
+               bind its language button when it lands and when the toolbar
+               reports ready. */
+            global.addEventListener("y1-dock-slot-ready", function () {
+                mountToggle();
+                if (bindExistingToggle()) applyLanguage();
+            });
+            document.addEventListener("click", function (event) {
+                var trigger = event.target.closest && event.target.closest("[data-locale-open]");
+                if (trigger) bindExistingToggle();
+            }, true);
             document.documentElement.setAttribute("data-locale-ready", "1");
+            trackPageView();
         }).catch(function () {
             /* A failed boot must leave an English page, never a blank one. */
             document.documentElement.setAttribute("data-locale-ready", "1");
@@ -773,7 +911,18 @@
         set: setLocale,
         setRegion: setRegion,
         open: openPanel,
-        close: closePanel
+        close: closePanel,
+        /* Re-run translation over content a page rendered after boot (release
+           notes, READMEs, firmware lists). The MutationObserver covers most
+           of it; this is the explicit hook for a page that replaces a large
+           subtree in one write. */
+        refresh: applyLanguage,
+        translate: function (text) {
+            var source = normalise(text);
+            if (!source) return text;
+            return translateValue(source);
+        },
+        label: labelFor
     };
 
     if (document.readyState === "loading") {

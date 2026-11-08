@@ -97,6 +97,7 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 </main>
 <div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-locale.js?v=20261108a" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 <script src="../site-platform.js?v=20261106" defer></script>
 </body></html>

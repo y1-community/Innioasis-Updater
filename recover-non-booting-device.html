@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>How to Recover a Non-Booting MediaTek Player After MTKclient Failure · Innioasis Community</title>
+  <meta name="description" content="Step-by-step guide to unbrick and recover non-booting Innioasis Y1, Y2, G1, Timmkoo, and MediaTek players after MTKclient interrupted flashes on Linux or macOS.">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Troubleshooting & Device Recovery</p>
+      <h1>Recovering a Non-Booting Device After MTKclient Flashing</h1>
+      <p class="lead">If your Innioasis Y1, Y2, or MediaTek device fails to power on or shows a black screen after flashing with MTKclient on macOS or Linux, do not panic. The hardware BootROM (BROM) is permanent and cannot be destroyed.</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>Why MTKclient May Stall or Leave a Black Screen</h2>
+      <p>MTKclient relies on software exploit payloads (kamakiri / amonet) to bypass DA authentication and raw USB communication via libusb. On macOS and Linux ARM64 systems:</p>
+      <ul class="lumen-benefits-list">
+        <li>USB handshake latency or port timeouts on macOS can stall DA payload injection mid-transfer.</li>
+        <li>Missing or incomplete partition headers leave the bootloader (preloader / lk) in a non-responsive state.</li>
+        <li>The player appears completely dead—no LED, no charging icon, no screen backlight.</li>
+      </ul>
+      <p>Even in this state, the MediaTek chipset drops back into <strong>BROM Mode</strong> (USB VID 0e8d, PID 0003), ready for official low-level recovery.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>The Definitive Recovery Method: SP Flash Tool Engine in Updater CE</h2>
+      <p>The safest, most reliable way to recover your bricked player is using <strong>Updater CE</strong> configured with the official <strong>SP Flash Tool</strong> backend.</p>
+      
+      <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
+        <h3>Exact Steps in Updater CE:</h3>
+        <ol class="lumen-steps" style="margin-top: 10px;">
+          <li>Open <strong>Updater CE</strong>.</li>
+          <li>Click <strong>Settings</strong> in the left navigation sidebar.</li>
+          <li>Scroll down to the Advanced section and enable <strong>Show Advanced Settings</strong>.</li>
+          <li>Under <strong>Install Method</strong> (or <em>Flashing Engine for MediaTek installer</em>), locate the <strong>Flash Method</strong> dropdown.</li>
+          <li>Change the selection from <em>Auto (recommended)</em> or <em>MTKClient</em> to <strong>SP Flash Tool</strong>.</li>
+          <li>Confirm the prompt and return to the main install flow.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Platform Architecture & OS Requirements for SP Flash Tool</h2>
+      <p>MediaTek's official <code>SP Flash Tool</code> binary is compiled natively as an <strong>x86_64 ELF binary for Linux</strong> and a <strong>PE32+ executable for Windows x64</strong>.</p>
+      <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
+        <strong>Important Hardware Note for macOS and ARM64 Linux Users:</strong><br>
+        Because MediaTek does not compile SP Flash Tool for macOS (Darwin) or Linux ARM64 (aarch64), macOS users and ARM64 Linux users (such as Raspberry Pi or Apple Silicon running Asahi Linux) experiencing a brick must connect their player to:
+        <ul style="margin: 8px 0 0 20px;">
+          <li>An <strong>x64 Windows PC</strong> (Windows 10 / 11 64-bit), or</li>
+          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64-bit).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Step-by-Step Hardware Unbricking Process</h2>
+      <ol class="lumen-steps">
+        <li><strong>Disconnect the Player:</strong> Unplug the USB cable from the player and PC completely.</li>
+        <li><strong>Hard Power Off:</strong> Hold the Power button (or Power + Volume Down) for 15 seconds to ensure the chipset is fully powered down and not stuck in a low-power USB loop.</li>
+        <li><strong>Launch Updater CE with SP Flash Tool Mode:</strong> Select your device model (e.g. <em>Innioasis Y1</em> or <em>Innioasis Y2</em>) and choose <em>Original Software</em> to restore stock partitions.</li>
+        <li><strong>Initiate Install / Restore:</strong> Click <em>Install / Restore</em> in Updater CE. Wait until the status prompt says <em>Waiting for player...</em></li>
+        <li><strong>Insert USB Cable to Trigger BROM:</strong> While the device is OFF, plug in the USB cable directly to a high-speed motherboard USB port (avoid unpowered USB hubs).</li>
+        <li>The system will detect the MediaTek VCOM port, push the Download Agent (DA), rewrite partition tables, and restore all firmware images cleanly.</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Permutations by Model and Operating System</h2>
+      <div style="overflow-x: auto;">
+        <table class="lumen-release-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Failed Platform</th>
+              <th>Recommended Recovery Setup</th>
+              <th>Engine &amp; Mode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>macOS (Apple Silicon / Intel)</td>
+              <td>Windows x64 / Linux x86_64 PC</td>
+              <td>SP Flash Tool + Y1 Stock ROM</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>Linux ARM64 / x86_64</td>
+              <td>Linux x86_64 or Windows x64 PC</td>
+              <td>SP Flash Tool + Community DA</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y2</strong></td>
+              <td>macOS (MTKclient stalled)</td>
+              <td>Windows x64 / Linux x86_64 PC</td>
+              <td>SP Flash Tool + Y2 Scatter Recovery</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis G1 / G3 / G5</strong></td>
+              <td>macOS / Linux MTKclient</td>
+              <td>Windows x64 PC with VCOM Drivers</td>
+              <td>SP Flash Tool + Factory Firmware</td>
+            </tr>
+            <tr>
+              <td><strong>Mechen H1 / Timmkoo A5</strong></td>
+              <td>Any platform</td>
+              <td>Windows x64 or Linux x86_64 PC</td>
+              <td>SP Flash Tool + Scatter file</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261105b" defer></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+name: Update site translations
+
+# Keeps every supported language current without anyone running a script.
+#
+# Triggers:
+#   push              any page, shell or generator change (humans, AI agents and
+#                     the generate-doc-pages / generate-notice-pages workflows all
+#                     land as a push)
+#   schedule          daily top-up for the long tail of the 270+ languages
+#   repository_dispatch  firmware-release / content-published from another repo
+#   workflow_dispatch an operator forcing a language or publishing the static site
+#
+# What it does: harvest the shell copy, extract every page (including generated
+# release notes, READMEs and firmware listings), merge the hand-reviewed bundle,
+# translate only strings that are still missing, rebuild the picker index, and
+# pre-render static locale copies for crawlers as a build artifact.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "site-locale.js"
+      - "site-i18n.js"
+      - "support_toolbar.html"
+      - "firmware-catalog.js"
+      - "scripts/generate_*.py"
+      - "i18n/**"
+      - "scripts/i18n/**"
+      - ".github/workflows/update-translations.yml"
+  schedule:
+    - cron: "23 2 * * *"
+  workflow_dispatch:
+    inputs:
+      locales:
+        description: "'all', 'core', or a comma-separated list (de,fr,ja)"
+        default: "all"
+      top:
+        description: "Only the N most-used strings (0 = every missing string)"
+        default: "0"
+      deploy_pages:
+        description: "Publish English + pre-rendered locale pages to GitHub Pages"
+        type: boolean
+        default: false
+  repository_dispatch:
+    types: [content-published, firmware-release]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-translations
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Harvest strings rendered by the JavaScript shell
+        run: python3 scripts/i18n/harvest_ui_strings.py
+
+      - name: Extract every page, including generated notes and READMEs
+        run: python3 scripts/i18n/extract_strings.py --tiers core,full
+
+      - name: Merge hand-reviewed copy
+        run: python3 scripts/i18n/seed_catalogs.py
+
+      # Google's public endpoint needs no key. A keyed provider can be swapped
+      # in with --provider google-cloud and GOOGLE_TRANSLATE_API_KEY; the cache
+      # and catalogs are the same either way.
+      - name: Translate strings that are still missing
+        continue-on-error: true
+        env:
+          LOCALES: ${{ github.event.inputs.locales || 'all' }}
+          TOP: ${{ github.event.inputs.top || '0' }}
+        run: |
+          ARGS=""
+          if [ "$TOP" != "0" ]; then ARGS="--top $TOP"; fi
+          python3 scripts/i18n/translate.py --provider google-web --locales "$LOCALES" $ARGS
+
+      # A catalog can exist without being in the picker; this is what makes a
+      # newly translated language selectable straight away.
+      - name: Rebuild the language picker index
+        run: python3 scripts/i18n/translate.py --index-only
+
+      - name: Report coverage
+        continue-on-error: true
+        run: |
+          python3 scripts/i18n/translate.py --check > coverage.txt || true
+          {
+            echo "### Translation coverage"
+            echo
+            echo '```'
+            head -1 coverage.txt
+            tail -3 coverage.txt
+            echo '```'
+            echo
+            echo "Full report: \`coverage.txt\` in the run artifact."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Static copies are what search engines and archives index. They are
+      # generated, never committed: 270+ languages x every page would bloat the
+      # repository for no benefit.
+      - name: Pre-render static locale copies
+        continue-on-error: true
+        run: python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
+
+      - name: Upload the pre-rendered site and coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: i18n-site
+          path: |
+            dist/
+            coverage.txt
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Commit updated catalogs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add i18n/catalogs i18n/strings i18n/site-locales.json i18n/reviewed
+          if git diff --cached --quiet; then
+            echo "No translation changes."
+          else
+            git commit -m "Update site translations across supported languages"
+            git push
+          fi
+
+  # Opt-in: build the English site plus every locale copy and publish it. Only
+  # a manual dispatch can run this, so a normal translation commit never
+  # changes how the live site is hosted.
+  publish:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_pages == 'true'
+    needs: translate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build the multilingual site
+        run: |
+          python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
+          rsync -a \
+            --exclude ".git" \
+            --exclude "dist" \
+            --exclude "i18n/cache" \
+            --exclude "scripts" \
+            --exclude ".github" \
+            ./ dist/
+          test -f dist/index.html
+          test -f dist/de/index.html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

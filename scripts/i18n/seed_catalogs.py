@@ -253,13 +253,48 @@ REVIEWED: dict[str, dict[str, str]] = {
 }
 
 
+REVIEWED_DIR = os.path.join(ROOT, "i18n", "reviewed")
+
+
+def load_reviewed() -> dict[str, dict[str, str]]:
+    """Inline REVIEWED plus every i18n/reviewed/*.json bundle.
+
+    Keeping the growing table in JSON lets other agents (and the Themes site)
+    reuse the same reviewed copy without editing Python. A JSON value wins
+    over the inline table for the same language, so a correction can be made
+    in one place without deleting the original entry.
+    """
+    merged: dict[str, dict[str, str]] = {
+        source: dict(by_locale) for source, by_locale in REVIEWED.items()
+    }
+    if os.path.isdir(REVIEWED_DIR):
+        for name in sorted(os.listdir(REVIEWED_DIR)):
+            if not name.endswith(".json"):
+                continue
+            path = os.path.join(REVIEWED_DIR, name)
+            with open(path, "r", encoding="utf-8") as handle:
+                bundle = json.load(handle)
+            for source, by_locale in (bundle.get("strings") or {}).items():
+                if not isinstance(by_locale, dict):
+                    continue
+                values = {
+                    code: text
+                    for code, text in by_locale.items()
+                    if isinstance(text, str) and text.strip()
+                }
+                if values:
+                    merged.setdefault(source, {}).update(values)
+    return merged
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--list", action="store_true", help="Print the reviewed pairs and exit")
     args = parser.parse_args()
 
+    reviewed = load_reviewed()
     if args.list:
-        for source, by_locale in REVIEWED.items():
+        for source, by_locale in reviewed.items():
             print(f"{source}\n  " + "\n  ".join(f"{code}: {text}" for code, text in by_locale.items()))
         return 0
 
@@ -268,7 +303,7 @@ def main() -> int:
         registry = json.load(handle)
     meta = {entry["code"]: entry for entry in registry["locales"] + registry.get("variants", [])}
 
-    languages = sorted({code for by_locale in REVIEWED.values() for code in by_locale})
+    languages = sorted({code for by_locale in reviewed.values() for code in by_locale})
     catalog_dir = os.path.join(ROOT, "i18n", "catalogs")
     os.makedirs(catalog_dir, exist_ok=True)
 
@@ -280,7 +315,7 @@ def main() -> int:
                 catalog = json.load(handle)
         strings = catalog.get("strings", {})
         added = 0
-        for source, by_locale in REVIEWED.items():
+        for source, by_locale in reviewed.items():
             value = by_locale.get(code)
             if not value or strings.get(source) == value:
                 continue

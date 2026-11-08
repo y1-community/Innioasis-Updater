@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-08T09:50:08+00:00",
+ "generated": "2026-11-08T11:10:15+00:00",
  "tiers": [
   "core"
  ],
- "pages": 121,
- "occurrences": 12548,
- "count": 6223,
+ "pages": 124,
+ "occurrences": 12800,
+ "count": 6344,
  "strings": {
   "Skip to content": {
-   "n": 116,
-   "pages": 116
+   "n": 119,
+   "pages": 119
   },
   "Innioasis Software Updates": {
    "n": 87,
@@ -22,8 +22,8 @@
    "script": true
   },
   "Install / Restore": {
-   "n": 67,
-   "pages": 57
+   "n": 69,
+   "pages": 59
   },
   "Choose": {
    "n": 55,
@@ -32,6 +32,11 @@
   "Device Model": {
    "n": 51,
    "pages": 50
+  },
+  "Original Software": {
+   "n": 62,
+   "pages": 44,
+   "script": true
   },
   "Every version has the platform setup, Updater CE steps and the way back to stock.": {
    "n": 44,
@@ -57,26 +62,21 @@
    "n": 44,
    "pages": 44
   },
-  "Original Software": {
-   "n": 60,
-   "pages": 42,
-   "script": true
+  "Click": {
+   "n": 41,
+   "pages": 39
   },
   "Software": {
    "n": 38,
    "pages": 37
   },
-  "Click": {
+  "to": {
    "n": 37,
    "pages": 37
   },
   "in": {
    "n": 49,
    "pages": 36
-  },
-  "to": {
-   "n": 35,
-   "pages": 35
   },
   "Get this in Updater CE": {
    "n": 49,
@@ -108,15 +108,15 @@
    "n": 20,
    "pages": 20
   },
+  "Open": {
+   "n": 19,
+   "pages": 19
+  },
   "Questions people ask": {
    "n": 18,
    "pages": 18
   },
   "FAQs": {
-   "n": 17,
-   "pages": 17
-  },
-  "Open": {
    "n": 17,
    "pages": 17
   },
@@ -180,6 +180,10 @@
    "n": 12,
    "pages": 12
   },
+  "Settings": {
+   "n": 12,
+   "pages": 12
+  },
   "The": {
    "n": 12,
    "pages": 12
@@ -187,6 +191,10 @@
   "troubleshooting guide": {
    "n": 12,
    "pages": 12
+  },
+  "or": {
+   "n": 14,
+   "pages": 11
   },
   "troubleshooting": {
    "n": 11,
@@ -300,10 +308,6 @@
    "n": 10,
    "pages": 10
   },
-  "Settings": {
-   "n": 10,
-   "pages": 10
-  },
   "The normal route": {
    "n": 10,
    "pages": 10
@@ -356,7 +360,19 @@
    "n": 10,
    "pages": 9
   },
+  "Innioasis Y1": {
+   "n": 13,
+   "pages": 8
+  },
   "Inniclassic": {
+   "n": 11,
+   "pages": 8
+  },
+  "Innioasis Y2": {
+   "n": 11,
+   "pages": 8
+  },
+  "Updater CE": {
    "n": 11,
    "pages": 8
   },
@@ -380,10 +396,6 @@
    "n": 9,
    "pages": 8
   },
-  "or": {
-   "n": 9,
-   "pages": 8
-  },
   "Download Only": {
    "n": 8,
    "pages": 8
@@ -404,6 +416,10 @@
   },
   "JJ Launcher": {
    "n": 10,
+   "pages": 7
+  },
+  "SP Flash Tool": {
+   "n": 9,
    "pages": 7
   },
   "Which tool should I use?": {
@@ -703,14 +719,6 @@
    "n": 7,
    "pages": 7
   },
-  "Innioasis Y1": {
-   "n": 7,
-   "pages": 6
-  },
-  "Innioasis Y2": {
-   "n": 7,
-   "pages": 6
-  },
   "Y2Player": {
    "n": 7,
    "pages": 6
@@ -788,14 +796,6 @@
    "n": 5,
    "pages": 5,
    "script": true
-  },
-  "SP Flash Tool": {
-   "n": 5,
-   "pages": 5
-  },
-  "Updater CE": {
-   "n": 5,
-   "pages": 5
   },
   "Use Y1": {
    "n": 5,
@@ -1153,6 +1153,10 @@
    "n": 3,
    "pages": 3
   },
+  "MTKClient": {
+   "n": 3,
+   "pages": 3
+  },
   "More help": {
    "n": 3,
    "pages": 3
@@ -1296,6 +1300,10 @@
    "n": 5,
    "pages": 2
   },
+  "An": {
+   "n": 4,
+   "pages": 2
+  },
   "Contribution": {
    "n": 4,
    "pages": 2
@@ -1305,6 +1313,10 @@
    "pages": 2
   },
   "Export formats": {
+   "n": 4,
+   "pages": 2
+  },
+  "Windows x64 / Linux x86_64 PC": {
    "n": 4,
    "pages": 2
   },
@@ -1344,7 +1356,23 @@
    "n": 2,
    "pages": 2
   },
+  "(USB VID 0e8d, PID 0003), ready for official low-level recovery.": {
+   "n": 2,
+   "pages": 2
+  },
+  "(Ubuntu, Debian, Fedora, Arch 64-bit).": {
+   "n": 2,
+   "pages": 2
+  },
+  "(Windows 10 / 11 64-bit), or": {
+   "n": 2,
+   "pages": 2
+  },
   "(and": {
+   "n": 2,
+   "pages": 2
+  },
+  "(or": {
    "n": 2,
    "pages": 2
   },
@@ -1352,7 +1380,15 @@
    "n": 2,
    "pages": 2
   },
+  ") and choose": {
+   "n": 2,
+   "pages": 2
+  },
   ") and set": {
+   "n": 2,
+   "pages": 2
+  },
+  "), locate the": {
    "n": 2,
    "pages": 2
   },
@@ -1440,7 +1476,15 @@
    "n": 2,
    "pages": 2
   },
+  "Any platform": {
+   "n": 2,
+   "pages": 2
+  },
   "Apple Developer certification": {
+   "n": 2,
+   "pages": 2
+  },
+  "Auto (recommended)": {
    "n": 2,
    "pages": 2
   },
@@ -1448,7 +1492,15 @@
    "n": 2,
    "pages": 2
   },
+  "BROM Mode": {
+   "n": 2,
+   "pages": 2
+  },
   "BTC, ETH, or SHIB": {
+   "n": 2,
+   "pages": 2
+  },
+  "Because MediaTek does not compile SP Flash Tool for macOS (Darwin) or Linux ARM64 (aarch64), macOS users and ARM64 Linux users (such as Raspberry Pi or Apple Silicon running Asahi Linux) experiencing a brick must connect their player to:": {
    "n": 2,
    "pages": 2
   },
@@ -1485,6 +1537,10 @@
    "pages": 2
   },
   "Can I restore the stock Y2 software?": {
+   "n": 2,
+   "pages": 2
+  },
+  "Change the selection from": {
    "n": 2,
    "pages": 2
   },
@@ -1545,6 +1601,10 @@
    "n": 2,
    "pages": 2
   },
+  "Confirm the prompt and return to the main install flow.": {
+   "n": 2,
+   "pages": 2
+  },
   "Connect the USB data cable only at the live prompt.": {
    "n": 2,
    "pages": 2
@@ -1589,6 +1649,10 @@
    "n": 2,
    "pages": 2
   },
+  "Disconnect the Player:": {
+   "n": 2,
+   "pages": 2
+  },
   "Discord community": {
    "n": 2,
    "pages": 2,
@@ -1622,6 +1686,10 @@
    "n": 2,
    "pages": 2
   },
+  "Engine & Mode": {
+   "n": 2,
+   "pages": 2
+  },
   "Enter fullscreen": {
    "n": 2,
    "pages": 2
@@ -1630,7 +1698,19 @@
    "n": 2,
    "pages": 2
   },
+  "Even in this state, the MediaTek chipset drops back into": {
+   "n": 2,
+   "pages": 2
+  },
   "Every contribution helps someone find a working firmware, try a new project, or keep an old player alive a little longer. Thank you for being part of it.": {
+   "n": 2,
+   "pages": 2
+  },
+  "Exact Steps in Updater CE:": {
+   "n": 2,
+   "pages": 2
+  },
+  "Failed Platform": {
    "n": 2,
    "pages": 2
   },
@@ -1647,6 +1727,14 @@
    "pages": 2
   },
   "Firmware releases": {
+   "n": 2,
+   "pages": 2
+  },
+  "Flash Method": {
+   "n": 2,
+   "pages": 2
+  },
+  "Flashing Engine for MediaTek installer": {
    "n": 2,
    "pages": 2
   },
@@ -1698,11 +1786,19 @@
    "n": 2,
    "pages": 2
   },
+  "Hard Power Off:": {
+   "n": 2,
+   "pages": 2
+  },
   "Help me choose": {
    "n": 2,
    "pages": 2
   },
   "Hi, I'm Ryan.": {
+   "n": 2,
+   "pages": 2
+  },
+  "Hold the Power button (or Power + Volume Down) for 15 seconds to ensure the chipset is fully powered down and not stuck in a low-power USB loop.": {
    "n": 2,
    "pages": 2
   },
@@ -1719,6 +1815,10 @@
    "pages": 2
   },
   "How the Y1 and Y2 Rockbox builds differ.": {
+   "n": 2,
+   "pages": 2
+  },
+  "How to Recover a Non-Booting MediaTek Player After MTKclient Failure · Innioasis Community": {
    "n": 2,
    "pages": 2
   },
@@ -1742,11 +1842,23 @@
    "n": 2,
    "pages": 2
   },
+  "If your Innioasis Y1, Y2, or MediaTek device fails to power on or shows a black screen after flashing with MTKclient on macOS or Linux, do not panic. The hardware BootROM (BROM) is permanent and cannot be destroyed.": {
+   "n": 2,
+   "pages": 2
+  },
+  "Important Hardware Note for macOS and ARM64 Linux Users:": {
+   "n": 2,
+   "pages": 2
+  },
   "In Russia, Boosty is the way to support the project.": {
    "n": 2,
    "pages": 2
   },
   "In Updater": {
+   "n": 2,
+   "pages": 2
+  },
+  "Initiate Install / Restore:": {
    "n": 2,
    "pages": 2
   },
@@ -1759,6 +1871,10 @@
    "pages": 2
   },
   "Innioasis & Timmkoo Firmware Archive": {
+   "n": 2,
+   "pages": 2
+  },
+  "Innioasis G1 / G3 / G5": {
    "n": 2,
    "pages": 2
   },
@@ -1798,6 +1914,10 @@
    "n": 2,
    "pages": 2
   },
+  "Insert USB Cable to Trigger BROM:": {
+   "n": 2,
+   "pages": 2
+  },
   "Install Android development ROM on your Y1 with your computer": {
    "n": 2,
    "pages": 2
@@ -1831,6 +1951,10 @@
    "pages": 2
   },
   "Install Linux for Y1 (Dev) on your Y1 with your computer": {
+   "n": 2,
+   "pages": 2
+  },
+  "Install Method": {
    "n": 2,
    "pages": 2
   },
@@ -1931,6 +2055,10 @@
    "n": 2,
    "pages": 2
   },
+  "Launch Updater CE with SP Flash Tool Mode:": {
+   "n": 2,
+   "pages": 2
+  },
   "Leave it connected for 30 to 60 minutes and watch for a charging icon or backlight.": {
    "n": 2,
    "pages": 2
@@ -1943,7 +2071,15 @@
    "n": 2,
    "pages": 2
   },
+  "Linux ARM64 / x86_64": {
+   "n": 2,
+   "pages": 2
+  },
   "Linux setup notes": {
+   "n": 2,
+   "pages": 2
+  },
+  "Linux x86_64 or Windows x64 PC": {
    "n": 2,
    "pages": 2
   },
@@ -1952,6 +2088,10 @@
    "pages": 2
   },
   "Loading sponsorship ledger...": {
+   "n": 2,
+   "pages": 2
+  },
+  "MTKclient relies on software exploit payloads (kamakiri / amonet) to bypass DA authentication and raw USB communication via libusb. On macOS and Linux ARM64 systems:": {
    "n": 2,
    "pages": 2
   },
@@ -1975,7 +2115,23 @@
    "n": 2,
    "pages": 2
   },
+  "Mechen H1 / Timmkoo A5": {
+   "n": 2,
+   "pages": 2
+  },
+  "MediaTek's official": {
+   "n": 2,
+   "pages": 2
+  },
   "Meet the supporters": {
+   "n": 2,
+   "pages": 2
+  },
+  "Missing or incomplete partition headers leave the bootloader (preloader / lk) in a non-responsive state.": {
+   "n": 2,
+   "pages": 2
+  },
+  "Model": {
    "n": 2,
    "pages": 2
   },
@@ -2044,6 +2200,10 @@
    "n": 2,
    "pages": 2
   },
+  "PE32+ executable for Windows x64": {
+   "n": 2,
+   "pages": 2
+  },
   "PR1": {
    "n": 2,
    "pages": 2
@@ -2057,6 +2217,14 @@
    "pages": 2
   },
   "People and projects your support reaches": {
+   "n": 2,
+   "pages": 2
+  },
+  "Permutations by Model and Operating System": {
+   "n": 2,
+   "pages": 2
+  },
+  "Platform Architecture & OS Requirements for SP Flash Tool": {
    "n": 2,
    "pages": 2
   },
@@ -2164,6 +2332,14 @@
    "n": 2,
    "pages": 2
   },
+  "Recommended Recovery Setup": {
+   "n": 2,
+   "pages": 2
+  },
+  "Recovering a Non-Booting Device After MTKclient Flashing": {
+   "n": 2,
+   "pages": 2
+  },
   "Redirecting to": {
    "n": 2,
    "pages": 2
@@ -2260,6 +2436,26 @@
    "n": 2,
    "pages": 2
   },
+  "SP Flash Tool + Community DA": {
+   "n": 2,
+   "pages": 2
+  },
+  "SP Flash Tool + Factory Firmware": {
+   "n": 2,
+   "pages": 2
+  },
+  "SP Flash Tool + Scatter file": {
+   "n": 2,
+   "pages": 2
+  },
+  "SP Flash Tool + Y1 Stock ROM": {
+   "n": 2,
+   "pages": 2
+  },
+  "SP Flash Tool + Y2 Scatter Recovery": {
+   "n": 2,
+   "pages": 2
+  },
   "SR1": {
    "n": 2,
    "pages": 2
@@ -2272,11 +2468,23 @@
    "n": 2,
    "pages": 2
   },
+  "Scroll down to the Advanced section and enable": {
+   "n": 2,
+   "pages": 2
+  },
   "See the projects you’re helping": {
    "n": 2,
    "pages": 2
   },
+  "Select your device model (e.g.": {
+   "n": 2,
+   "pages": 2
+  },
   "Set up Wi-Fi, Bluetooth & FM radio": {
+   "n": 2,
+   "pages": 2
+  },
+  "Show Advanced Settings": {
    "n": 2,
    "pages": 2
   },
@@ -2334,6 +2542,14 @@
    "n": 2,
    "pages": 2
   },
+  "Step-by-Step Hardware Unbricking Process": {
+   "n": 2,
+   "pages": 2
+  },
+  "Step-by-step guide to unbrick and recover non-booting Innioasis Y1, Y2, G1, Timmkoo, and MediaTek players after MTKclient interrupted flashes on Linux or macOS.": {
+   "n": 2,
+   "pages": 2
+  },
   "Step-by-step installation": {
    "n": 2,
    "pages": 2
@@ -2386,7 +2602,23 @@
    "n": 2,
    "pages": 2
   },
+  "The Definitive Recovery Method: SP Flash Tool Engine in Updater CE": {
+   "n": 2,
+   "pages": 2
+  },
   "The figures above count the regular bills. They do not count the test players: those are bought per release, and some are lost to failed flashes while a build is being checked. Counting them, community support is about 15% of what the project actually costs.": {
+   "n": 2,
+   "pages": 2
+  },
+  "The player appears completely dead—no LED, no charging icon, no screen backlight.": {
+   "n": 2,
+   "pages": 2
+  },
+  "The safest, most reliable way to recover your bricked player is using": {
+   "n": 2,
+   "pages": 2
+  },
+  "The system will detect the MediaTek VCOM port, push the Download Agent (DA), rewrite partition tables, and restore all firmware images cleanly.": {
    "n": 2,
    "pages": 2
   },
@@ -2426,6 +2658,10 @@
    "n": 2,
    "pages": 2
   },
+  "Troubleshooting & Device Recovery": {
+   "n": 2,
+   "pages": 2
+  },
   "Try a second cable and charger before moving on.": {
    "n": 2,
    "pages": 2
@@ -2439,6 +2675,18 @@
    "pages": 2
   },
   "Type B": {
+   "n": 2,
+   "pages": 2
+  },
+  "USB handshake latency or port timeouts on macOS can stall DA payload injection mid-transfer.": {
+   "n": 2,
+   "pages": 2
+  },
+  "Under": {
+   "n": 2,
+   "pages": 2
+  },
+  "Unplug the USB cable from the player and PC completely.": {
    "n": 2,
    "pages": 2
   },
@@ -2487,6 +2735,10 @@
    "pages": 2,
    "script": true
   },
+  "Waiting for player...": {
+   "n": 2,
+   "pages": 2
+  },
   "Watch the Rockbox route": {
    "n": 2,
    "pages": 2
@@ -2507,6 +2759,14 @@
    "n": 2,
    "pages": 2
   },
+  "While the device is OFF, plug in the USB cable directly to a high-speed motherboard USB port (avoid unpowered USB hubs).": {
+   "n": 2,
+   "pages": 2
+  },
+  "Why MTKclient May Stall or Leave a Black Screen": {
+   "n": 2,
+   "pages": 2
+  },
   "Why Rondo?": {
    "n": 2,
    "pages": 2
@@ -2516,6 +2776,14 @@
    "pages": 2
   },
   "Windows 10/11 app launch issues fixed": {
+   "n": 2,
+   "pages": 2
+  },
+  "Windows x64 PC with VCOM Drivers": {
+   "n": 2,
+   "pages": 2
+  },
+  "Windows x64 or Linux x86_64 PC": {
    "n": 2,
    "pages": 2
   },
@@ -2588,6 +2856,10 @@
    "n": 2,
    "pages": 2
   },
+  "and a": {
+   "n": 2,
+   "pages": 2
+  },
   "and pick a stable Y1 release — the manual package is": {
    "n": 2,
    "pages": 2
@@ -2600,11 +2872,23 @@
    "n": 2,
    "pages": 2
   },
+  "backend.": {
+   "n": 2,
+   "pages": 2
+  },
+  "binary is compiled natively as an": {
+   "n": 2,
+   "pages": 2
+  },
   "cable, not a charge-only cable.": {
    "n": 2,
    "pages": 2
   },
   "can help identify a service route.": {
+   "n": 2,
+   "pages": 2
+  },
+  "configured with the official": {
    "n": 2,
    "pages": 2
   },
@@ -2628,6 +2912,10 @@
    "n": 2,
    "pages": 2
   },
+  "dropdown.": {
+   "n": 2,
+   "pages": 2
+  },
   "firmware fault.": {
    "n": 2,
    "pages": 2
@@ -2636,7 +2924,15 @@
    "n": 2,
    "pages": 2
   },
+  "in Updater CE. Wait until the status prompt says": {
+   "n": 2,
+   "pages": 2
+  },
   "in the Device Model dropdown.": {
+   "n": 2,
+   "pages": 2
+  },
+  "in the left navigation sidebar.": {
    "n": 2,
    "pages": 2
   },
@@ -2649,6 +2945,18 @@
    "pages": 2
   },
   "is bundled on Windows and Linux x86, and the MTKClient route covers macOS. Both need a model-matched firmware package from the": {
+   "n": 2,
+   "pages": 2
+  },
+  "macOS (Apple Silicon / Intel)": {
+   "n": 2,
+   "pages": 2
+  },
+  "macOS (MTKclient stalled)": {
+   "n": 2,
+   "pages": 2
+  },
+  "macOS / Linux MTKclient": {
    "n": 2,
    "pages": 2
   },
@@ -2708,6 +3016,10 @@
    "n": 2,
    "pages": 2
   },
+  "to restore stock partitions.": {
+   "n": 2,
+   "pages": 2
+  },
   "to the player once. Reborn does the rest.": {
    "n": 2,
    "pages": 2
@@ -2721,6 +3033,18 @@
    "pages": 2
   },
   "wheel, ribbon, or board.": {
+   "n": 2,
+   "pages": 2
+  },
+  "x64 Windows PC": {
+   "n": 2,
+   "pages": 2
+  },
+  "x86_64 ELF binary for Linux": {
+   "n": 2,
+   "pages": 2
+  },
+  "x86_64 Linux PC": {
    "n": 2,
    "pages": 2
   },
@@ -3905,6 +4229,10 @@
    "pages": 1
   },
   "Koensayr patches the stock Y1 firmware: Artist to Album navigation and AVRCP 1.3 Bluetooth metadata and controls for car stereos, without changing the interface.": {
+   "n": 3,
+   "pages": 1
+  },
+  "Language": {
    "n": 3,
    "pages": 1
   },
@@ -5675,6 +6003,10 @@
    "n": 2,
    "pages": 1
   },
+  "Switch language": {
+   "n": 2,
+   "pages": 1
+  },
   "System Software 3.0.2": {
    "n": 2,
    "pages": 1,
@@ -6138,6 +6470,14 @@
    "n": 1,
    "pages": 1
   },
+  ") or extract its folder containing the": {
+   "n": 1,
+   "pages": 1
+  },
+  ") or firmware zip package.": {
+   "n": 1,
+   "pages": 1
+  },
   "), and the developers themselves are solely responsible for listing their software releases in Updater CE.": {
    "n": 1,
    "pages": 1
@@ -6191,6 +6531,10 @@
    "pages": 1
   },
   ", and confirm the build shows": {
+   "n": 1,
+   "pages": 1
+  },
+  ", and flash the factory scatter package.": {
    "n": 1,
    "pages": 1
   },
@@ -6403,6 +6747,10 @@
    "pages": 1
   },
   ". The model selection in Updater is the safer way to choose files.": {
+   "n": 1,
+   "pages": 1
+  },
+  ". The tool has only ever existed as a 32-bit/64-bit Windows application and an x86_64 Linux binary. Emulating SP Flash Tool on macOS through Wine or CrossOver fails because macOS kernel USB extensions do not allow USB serial pass-through at the precision required during BROM boot handshakes.": {
    "n": 1,
    "pages": 1
   },
@@ -7627,6 +7975,10 @@
    "n": 1,
    "pages": 1
   },
+  "Browse Files…": {
+   "n": 1,
+   "pages": 1
+  },
   "Browse G1 Downloads": {
    "n": 1,
    "pages": 1
@@ -8728,6 +9080,10 @@
    "n": 1,
    "pages": 1
   },
+  "Devices running MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753, and MT8163.": {
+   "n": 1,
+   "pages": 1
+  },
   "Diagnostic tooling for investigating Bluetooth behaviour on real hardware": {
    "n": 1,
    "pages": 1
@@ -8902,6 +9258,10 @@
    "pages": 1,
    "script": true
   },
+  "Does official MediaTek SP Flash Tool run on macOS? Here is the exact status, how": {
+   "n": 1,
+   "pages": 1
+  },
   "Don't show donation appeals again": {
    "n": 1,
    "pages": 1
@@ -9011,6 +9371,10 @@
    "pages": 1
   },
   "Download the desktop app for your system": {
+   "n": 1,
+   "pages": 1
+  },
+  "Download the factory firmware archive (": {
    "n": 1,
    "pages": 1
   },
@@ -9486,6 +9850,10 @@
    "n": 1,
    "pages": 1
   },
+  "Flashing Any MediaTek Device with 'Install from File' (Scatter Browser)": {
+   "n": 1,
+   "pages": 1
+  },
   "Flashing Software Guide": {
    "n": 1,
    "pages": 1
@@ -9539,6 +9907,10 @@
    "pages": 1
   },
   "Follow the model-specific Y2 route and keep the Y2 package selected.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Follow the on-screen live prompt: power down the device and connect the USB cable to flash.": {
    "n": 1,
    "pages": 1
   },
@@ -9992,6 +10364,10 @@
    "n": 1,
    "pages": 1
   },
+  "How to Load Custom Scatter Files in Updater CE:": {
+   "n": 1,
+   "pages": 1
+  },
   "How to Update or Restore Your Innioasis G5": {
    "n": 1,
    "pages": 1
@@ -10073,6 +10449,10 @@
    "pages": 1
   },
   "How to transfer themes to the Innioasis Y1 with Updater CE (automatic push when available or guided step-by-step transfer after an MTKClient flash on macOS and Linux), plus 240p vs 360p compatibility and applying a theme.": {
+   "n": 1,
+   "pages": 1
+  },
+  "How to use SP Flash Tool on Mac using Updater CE and browse scatter files to flash MediaTek devices like Mechen H1, Innioasis Y1/Y2, Timmkoo, and MT6580/MT6572 MP3 players and phones.": {
    "n": 1,
    "pages": 1
   },
@@ -10201,6 +10581,10 @@
    "n": 1,
    "pages": 1
   },
+  "If you encounter error stalls on Mac, switch to a 64-bit Windows PC or x86_64 Linux workstation, select": {
+   "n": 1,
+   "pages": 1
+  },
   "If you ever want to revert from a custom firmware experiment or recover a player that will not boot, Updater CE restores Original Software in a single guided step.": {
    "n": 1,
    "pages": 1
@@ -10266,6 +10650,10 @@
    "pages": 1
   },
   "In Innioasis Updater CE, this firmware is listed as": {
+   "n": 1,
+   "pages": 1
+  },
+  "In Updater CE, choose": {
    "n": 1,
    "pages": 1
   },
@@ -11342,6 +11730,10 @@
    "n": 1,
    "pages": 1
   },
+  "Legacy MediaTek Smartphones & Feature Phones:": {
+   "n": 1,
+   "pages": 1
+  },
   "Legacy names are still read for compatibility:": {
    "n": 1,
    "pages": 1
@@ -11488,11 +11880,11 @@
    "n": 1,
    "pages": 1
   },
-  "MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.": {
+  "MT6580 portable HiFi Android players.": {
    "n": 1,
    "pages": 1
   },
-  "MTKClient": {
+  "MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.": {
    "n": 1,
    "pages": 1
   },
@@ -11609,6 +12001,26 @@
    "pages": 1
   },
   "Meaning": {
+   "n": 1,
+   "pages": 1
+  },
+  "Mechen H1 & H11:": {
+   "n": 1,
+   "pages": 1
+  },
+  "MediaTek MT6572 / MT6582 music players.": {
+   "n": 1,
+   "pages": 1
+  },
+  "MediaTek Tools & Cross-Platform Flashing": {
+   "n": 1,
+   "pages": 1
+  },
+  "MediaTek never released an official macOS build of": {
+   "n": 1,
+   "pages": 1
+  },
+  "MediaTek touchscreen digital audio players.": {
    "n": 1,
    "pages": 1
   },
@@ -11945,6 +12357,10 @@
    "pages": 1
   },
   "Often yes. If a computer still detects the MediaTek device, reinstall the Y2 Original Software package with Updater CE. If it is not detected, use the SP Flash Tool or MTKClient recovery included with Updater CE and a model-matched Y2 firmware file.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Oilsky, Phueut, Luoran:": {
    "n": 1,
    "pages": 1
   },
@@ -13635,11 +14051,23 @@
    "n": 1,
    "pages": 1
   },
+  "SP Flash Tool for Mac · MediaTek Scatter Flashing Guide & Alternatives": {
+   "n": 1,
+   "pages": 1
+  },
+  "SP Flash Tool for Mac: The Complete Guide & Scatter Browser": {
+   "n": 1,
+   "pages": 1
+  },
   "SP Flash Tool is not bundled on macOS. Updater uses the MTKClient route there instead. Use the": {
    "n": 1,
    "pages": 1
   },
   "SP Flash Tool ships with the Updater install folder, not as a separate download. Open it from there when you need it.": {
+   "n": 1,
+   "pages": 1
+  },
+  "SP Flash Tool v5 or earlier": {
    "n": 1,
    "pages": 1
   },
@@ -13791,6 +14219,10 @@
    "n": 1,
    "pages": 1
   },
+  "Select the scatter text file (e.g.,": {
+   "n": 1,
+   "pages": 1
+  },
   "Select your model in Updater CE, choose Solar, and pick the release listed for your player. The written guides cover the network setup steps in order.": {
    "n": 1,
    "pages": 1
@@ -13836,6 +14268,10 @@
    "pages": 1
   },
   "Setting up storage": {
+   "n": 1,
+   "pages": 1
+  },
+  "Settings > Show Advanced Settings > Flash Method > SP Flash Tool": {
    "n": 1,
    "pages": 1
   },
@@ -13957,6 +14393,10 @@
    "pages": 1
   },
   "Smart Drop": {
+   "n": 1,
+   "pages": 1
+  },
+  "Smart Phone Flash Tool (SP Flash Tool)": {
    "n": 1,
    "pages": 1
   },
@@ -14430,6 +14870,14 @@
    "pages": 1
   },
   "The Q3 entry covers the Q3 and Q3E alike. Updater picks the matching files from the package the project publishes.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The Solution:": {
+   "n": 1,
+   "pages": 1
+  },
+  "The Truth About SP Flash Tool on macOS": {
    "n": 1,
    "pages": 1
   },
@@ -14942,6 +15390,10 @@
    "n": 1,
    "pages": 1
   },
+  "Timmkoo Q3, Q5, G1, A5:": {
+   "n": 1,
+   "pages": 1
+  },
   "Timmkoo Q5 & Q3": {
    "n": 1,
    "pages": 1
@@ -15167,7 +15619,15 @@
    "n": 1,
    "pages": 1
   },
+  "Updater CE is not restricted to Innioasis players. You can use it as a powerful universal MediaTek scatter flasher for any device requiring": {
+   "n": 1,
+   "pages": 1
+  },
   "Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to": {
+   "n": 1,
+   "pages": 1
+  },
+  "Updater CE parses memory offsets, partition addresses (preloader, boot, recovery, system, userdata), and verifies scatter integrity.": {
    "n": 1,
    "pages": 1
   },
@@ -15753,6 +16213,10 @@
    "n": 1,
    "pages": 1
   },
+  "When You Need an x64 Computer for Unbricking": {
+   "n": 1,
+   "pages": 1
+  },
   "When asking for help, include the model, operating system, exact Updater message, whether the player was detected, and the package/project you selected. Do not post private tokens or unrelated system files.": {
    "n": 1,
    "pages": 1
@@ -15865,6 +16329,10 @@
    "pages": 1
   },
   "Which tool should I use? Updater CE vs Universal Flash Tool - Innioasis Updater": {
+   "n": 1,
+   "pages": 1
+  },
+  "While macOS handles standard flashing and custom ROM installs cleanly via MTKclient, recovering from deep bootloop failures (where the preloader partition was wiped or mismatched) requires SP Flash Tool's full partition table rebuild.": {
    "n": 1,
    "pages": 1
   },
@@ -17882,6 +18350,10 @@
    "n": 1,
    "pages": 1
   },
+  "bridges this gap by bundling native Apple Silicon and Intel macOS flashing libraries (via MTKclient low-level protocol engine) alongside automated scatter discovery!": {
+   "n": 1,
+   "pages": 1
+  },
   "brings a clean, responsive Debian-based Linux foundation and purpose-built clickwheel interface to the Innioasis Y2. It succeeds the earlier Y2Player project and solves long-standing Y2 Bluetooth headphone and library navigation quirks.": {
    "n": 1,
    "pages": 1
@@ -17951,6 +18423,10 @@
    "pages": 1
   },
   "file to your web server": {
+   "n": 1,
+   "pages": 1
+  },
+  "file.": {
    "n": 1,
    "pages": 1
   },
@@ -18558,6 +19034,10 @@
    "n": 1,
    "pages": 1
   },
+  "on the firmware selection screen.": {
+   "n": 1,
+   "pages": 1
+  },
   "on the same release when they belong to the same version.": {
    "n": 1,
    "pages": 1
@@ -18623,6 +19103,10 @@
    "pages": 1
   },
   "project with the package name": {
+   "n": 1,
+   "pages": 1
+  },
+  "provides native MediaTek flashing on Mac, and how to flash any scatter-based MediaTek MP3 player or smartphone.": {
    "n": 1,
    "pages": 1
   },

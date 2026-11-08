@@ -23,11 +23,11 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 
-# The i18n runtime is off site-wide until the translations are real. The
-# scaffolding (catalogs, extractor, translator, prerenderer) stays in place.
-ENABLED = False
+# On: every page loads the locale runtime, so the language picker in the
+# bottom dock works everywhere from the first byte of the catalog.
+ENABLED = True
 
-VERSION = "20261105b"
+VERSION = "20261108a"
 MARKER = "site-locale.js"
 TAG = '<script src="{up}site-locale.js?v=' + VERSION + '" defer></script>'
 

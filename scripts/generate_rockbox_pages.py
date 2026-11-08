@@ -235,6 +235,7 @@ FOOT = """<div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="{up}docs-viewer.js?v=20261104cite" defer></script>
 <script src="{up}portable-zip-links.js?v=20261106direct" defer></script>
 <script src="{up}nav.js?v=20261103brand" defer></script>
+<script src="{up}site-locale.js?v=20261108a" defer></script>
 <script src="{up}site-i18n.js?v=20260830" defer></script>
 </body></html>
 """
