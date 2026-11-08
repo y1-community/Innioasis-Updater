@@ -1,5 +1,5 @@
 {
- "count": 760,
+ "count": 765,
  "dir": "ltr",
  "generated": "2026-11-08T11:11:47+00:00",
  "locale": "uk",
@@ -759,14 +759,19 @@
   "Browse Files…": "Огляд файлів…",
   "Waiting for the player…": "Чекаємо на гравця…",
   "Innioasis Updater CE": "Інніоазис Оновлення CE",
-  "Innioasis Updater": "Оновлення Innioasis",
-  "Solar": "Сонячна",
+  "Innioasis Updater": "Innioasis Updater",
+  "Solar": "Solar",
   "Innioasis Y1": "Ініоз Y1",
   "Innioasis Y2": "Ініоз Y2",
-  "Updater CE": "Оновлення CE",
-  "Innioasis": "Ініоз",
-  "Better-Y": "Краще-Y",
-  "Rondo": "Рондо",
-  "Koensayr": "Коенсайр"
+  "Updater CE": "Updater CE",
+  "Innioasis": "Innioasis",
+  "Better-Y": "Better-Y",
+  "Rondo": "Rondo",
+  "Koensayr": "Koensayr",
+  "Windows 10/11 app launch issues fixed": "Виправлено проблеми із запуском програми Windows 10/11",
+  "Rockbox Y1 Compatibility Warning": "Попередження про сумісність Rockbox Y1",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "Ця версія Rockbox-Y1 передує 0.5 і не сумісна з пристроями Y1, які поставляються з мікропрограмою 3.0.7 або новішої версії. Перепрошивка завадить завантаженню.",
+  "Original Software Y1 Compatibility Warning": "Попередження про сумісність оригінального програмного забезпечення Y1",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "Цей випуск оригінального програмного забезпечення передує версії 3.0.7 і запобігатиме завантаженню на новішому обладнанні Y1, доки не буде встановлено сумісну збірку."
  }
 }

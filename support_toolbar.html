@@ -454,26 +454,25 @@
         </div>
         <button class="y1-donate-close" type="button" data-privacy-close aria-label="Close privacy notice">×</button>
       </div>
-      <div class="y1-privacy-body">
-        <p><strong>Innioasis.app  -  the site for Updater Community Edition  -  uses Google Tag Manager with Google Analytics, and Cloudflare, to measure and optimise how the site performs and to protect it from attacks.</strong> Google Analytics may set first-party cookies that tell one browser apart from another; Cloudflare's analytics are cookieless. We do not sell your data, and this project is solely self- and donations-funded.</p>
-        <p>Cloudflare also processes request data, including IP addresses, to optimise delivery, keep the site online, absorb traffic spikes, and block abusive or automated attacks. Google receives measurement data under its own privacy terms.</p>
-        <p>You choose what this browser remembers. Nothing below is stored until you save, and anything you leave unticked stays off.</p>
+            <div class="y1-privacy-body" style="max-height: 60vh; overflow-y: auto;">
+        <p><strong>Innioasis.app uses Cloudflare and Google Analytics (GTM) to optimize performance, protect against attacks, and measure site usage.</strong> Analytics cookies are optional. We never sell your personal data.</p>
+        <p>Manage your saved preferences:</p>
         <div class="y1-privacy-options" aria-label="What the site may remember">
           <label class="y1-privacy-option">
-            <span class="y1-privacy-option-label"><strong>Remember my "was this useful?" answers</strong><small>Asked on the guide pages. Turning this off forgets your saved answers.</small></span>
+            <span class="y1-privacy-option-label"><strong>Remember guide feedback answers</strong><small>Saves your "was this useful?" feedback on guides.</small></span>
             <input type="checkbox" class="y1-privacy-toggle" data-privacy-feedback>
           </label>
           <label class="y1-privacy-option">
-            <span class="y1-privacy-option-label"><strong>Remember my nightly-builds choice</strong><small>Used on the software directory. Off shows stable releases only.</small></span>
+            <span class="y1-privacy-option-label"><strong>Remember nightly builds selection</strong><small>Shows pre-release and nightly builds in the firmware list.</small></span>
             <input type="checkbox" class="y1-privacy-toggle" data-privacy-nightly>
           </label>
           <label class="y1-privacy-option" data-privacy-donations-row hidden>
-            <span class="y1-privacy-option-label"><strong>Show donation appeals and running costs</strong><small>Only shown because you turned donations off. Tick this and save to bring them back.</small></span>
+            <span class="y1-privacy-option-label"><strong>Show community support & running costs</strong><small>Brings back toolbar goals and donation links.</small></span>
             <input type="checkbox" class="y1-privacy-toggle" data-privacy-donations>
           </label>
         </div>
         <p class="y1-privacy-status" data-privacy-status role="status" aria-live="polite"></p>
-        <p class="y1-privacy-note">Your site theme and text size are always remembered  -  they are the look and readability you chose. Links to YouTube, Discord, Ko-fi, Buy Me a Coffee, PayPal, Revolut, Patreon, and Boosty open those sites' own pages, which have their own policies.</p>
+        <p class="y1-privacy-note" style="font-size: 0.78rem; opacity: 0.8; margin-top: 8px;">Theme, font size, and language preferences are stored locally in your browser. External links to community platforms operate under their respective policies.</p>
       </div>
       <div class="y1-privacy-actions">
         <button type="button" class="y1-privacy-save" data-privacy-save>Save choices</button>
@@ -2475,6 +2474,47 @@
     });
 
     loadLocales();
+  })();
+
+
+  /* Ad / content blocker detection - gently display support modal on visit without mentioning ads */
+  (function initBlockerSupportCheck() {
+    function detectBlocker(callback) {
+      var testAd = document.createElement("div");
+      testAd.innerHTML = "&nbsp;";
+      testAd.className = "adsbox pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links";
+      testAd.style.position = "absolute";
+      testAd.style.left = "-9999px";
+      testAd.style.top = "-9999px";
+      testAd.style.width = "1px";
+      testAd.style.height = "1px";
+      document.body.appendChild(testAd);
+      window.setTimeout(function () {
+        var isBlocked = (testAd.offsetHeight === 0 || testAd.clientHeight === 0 || window.getComputedStyle(testAd).display === "none");
+        if (testAd.parentNode) testAd.parentNode.removeChild(testAd);
+        callback(isBlocked);
+      }, 350);
+    }
+
+    window.addEventListener("load", function () {
+      try {
+        if (sessionStorage.getItem("y1-support-prompted")) return;
+        detectBlocker(function (blocked) {
+          if (blocked) {
+            sessionStorage.setItem("y1-support-prompted", "1");
+            var donateTrigger = document.querySelector("[data-donate-open]");
+            if (donateTrigger && !document.querySelector("[data-donations-optout]:checked")) {
+              window.setTimeout(function () {
+                var donatePanel = document.getElementById("y1-donate-panel");
+                if (donatePanel && donatePanel.hidden) {
+                  donateTrigger.click();
+                }
+              }, 1200);
+            }
+          }
+        });
+      } catch (_) {}
+    });
   })();
 
 </script>

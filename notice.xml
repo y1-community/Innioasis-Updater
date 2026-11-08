@@ -1,65 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Innioasis Updater CE Notice Feed Markup Specification
-  Hosted at: https://innioasis.app/notice.xml
-
-  Displays on-screen hint toast announcements to users of the app.
-  
-  Fields:
-  - id: required, unique string identifier for the notice.
-  - persistent: boolean ("true" | "false", default: "false").
-      * "false" (or omitted): Non-persistent notice. When dismissed by the user,
-        it is permanently dismissed and will not return on the next app run.
-      * "true": Persistent notice. It will return on every app launch, even if
-        dismissed during a prior run.
-      * CACHE INVALIDATION: If the remote notice.xml contents change from the
-        locally cached file on the user's computer, the new file is automatically
-        loaded and the updated notice is shown, even if previously dismissed.
-  - severity: "info" | "warning" | "critical" (default: "info").
-  - from: optional ISO date YYYY-MM-DD. Shown on or after this date.
-  - until: optional ISO date YYYY-MM-DD. Shown on or before this date.
-  - models: optional comma-separated list of target models (e.g. "Y1,Y2"). Omit for all models.
-  - platform: optional comma-separated list (mac,windows,linux). Omitted means all.
-
-  Contextual targeting (all optional; every attribute set must match):
-  - device_type: comma-separated hardware revisions, e.g. "A" or "B" ("Type A"
-      is accepted). Y1 is the only model with revisions today.
-  - firmware_repo: the repository the notice is about, written exactly as in
-      slidia_manifest.xml, e.g. "rockbox-y1/rockbox". Full GitHub URLs are
-      accepted and * wildcards work.
-  - firmware_version: comma-separated release tags, e.g. "v3.2.0", "v3.2.*"
-      or "*" for any release of that repository. The leading "v" is optional.
-
-  A notice with none of these is for EVERYONE. In Updater CE the Select
-  Software card shows one notice at a time, ordered by how specific the match
-  is (firmware_repo, firmware_version, device_type, models, everyone) and
-  cycles through the rest of what applies; a reader's contexts are the current
-  selection plus every device logged for update reminders. Here on the site,
-  notices.html?repo=<repo>&model=<Y1|Y2>&type=<A|B>&version=<tag> lists notices
-  about that firmware first while keeping everyone's notices in the same list.
-  The app's Notices list, pop-out list and notification tray always show every
-  active notice, with no contextual narrowing.
-
-  The inline card above the release list on firmware.html is narrower still:
-  it only shows a notice whose severity is warning, severe, alert or critical
-  AND that sets firmware_repo or firmware_version, so the list is interrupted
-  only by a problem that names the build on screen. Every other notice stays
-  in the bell tray and on notices.html.
-
-  Child elements:
-  - <title>: required, headline of the notice.
-  - <content>: required, short banner description/body text (also supports <body>).
-  - <full_content>: optional, the extended body. Markdown is supported: headings,
-      bullet/numbered lists, **bold**, *italic*, `code`, fenced code blocks,
-      quotes and horizontal rules, [links](https://example.com) and images such as
-      ![a screenshot](https://example.com/screenshot.png). It is shown on the
-      notice's own page (notices.html?notice=<id>) and in the app's notices list.
-      Falls back to <content> when omitted.
-  - <url>: optional page for the notice. A URL that is only the bare site root
-      (https://innioasis.app with no page) is ignored, and the notice links to
-      its own page instead.
-  - <link>: optional URL alias for backwards compatibility with earlier builds.
--->
+<?xml version='1.0' encoding='UTF-8'?>
 <notices updated="2026-11-07">
 
   <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" models="Y1,Y2">
@@ -77,4 +16,4 @@
     <link>https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd</link>
   </notice>
 
-</notices>
+<notice id="notice-y1-rockbox-legacy" persistent="true" severity="warning" models="Y1" firmware_repo="rockbox-y1/rockbox" max_version="0.5" firmware_version="v0.4.*,0.4.*,v0.3.*,0.3.*,v0.2.*,0.2.*,v0.1.*,0.1.*"><title>Rockbox Y1 Compatibility Warning</title><content>This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.</content><full_content>This Rockbox-Y1 release predates version 0.5. It is not compatible with Innioasis Y1 hardware shipped after March 2026 with Innioasis OS 3.0.7 pre-installed. Flashing this legacy build on those devices will prevent booting until restored via SP Flash Tool.</full_content><url>https://innioasis.app/Troubleshooting/recover-non-booting-device.html</url></notice><notice id="notice-y1-stock-legacy" persistent="true" severity="warning" models="Y1" firmware_repo="y1-community/y1-stock-rom,y1-community/y1-stock-rom-mirror" max_version="3.0.7" firmware_version="v3.0.0,3.0.0,v3.0.1,3.0.1,v3.0.2,3.0.2,v3.0.3,3.0.3,v3.0.4,3.0.4,v3.0.5,3.0.5,v3.0.6,3.0.6,v2.*,2.*,v1.*,1.*"><title>Original Software Y1 Compatibility Warning</title><content>This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.</content><full_content>This Original Software release predates 3.0.7. It is not compatible with Y1 units manufactured with Innioasis OS 3.0.7 or later. Flashing it will leave the device in a non-booting state until 3.0.7 or higher is installed using SP Flash Tool.</full_content><url>https://innioasis.app/Troubleshooting/recover-non-booting-device.html</url></notice></notices>

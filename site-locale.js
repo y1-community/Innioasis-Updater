@@ -757,10 +757,8 @@
         list.setAttribute("role", "listbox");
         panel.appendChild(list);
 
-        var editions = document.createElement("div");
-        editions.className = "site-locale-editions";
-        panel.appendChild(editions);
-
+        /* No edition picker: the market is decided by geography, not by a
+           visitor choosing it next to the language. */
         document.body.appendChild(panel);
         state.panel = panel;
 
@@ -775,7 +773,6 @@
             if (event.key === "Escape" && !panel.hidden) closePanel();
         });
 
-        renderEditions(editions);
         renderList(list, "");
         return panel;
     }
@@ -825,6 +822,8 @@
     }
 
     function renderEditions(container) {
+        container.hidden = true;
+        return;
         var regions = state.regions && state.regions.regions ? state.regions.regions : {};
         var codes = Object.keys(regions);
         if (codes.length < 2) {
@@ -1061,7 +1060,7 @@
 
     function goToCopy(code) {
         var target = copyPathFor(code);
-        var fallback = function () { navigate({ lang: code, region: state.region }); };
+        var fallback = function () { navigate({ lang: code }); };
         try {
             fetch(target, { method: "HEAD", cache: "no-store" })
                 .then(function (response) {
@@ -1090,7 +1089,7 @@
             return;
         }
         /* No pre-rendered copies shipped: the URL variable is the switch. */
-        navigate({ lang: code, region: state.region });
+        navigate({ lang: code });
     }
 
     function setRegion(code) {

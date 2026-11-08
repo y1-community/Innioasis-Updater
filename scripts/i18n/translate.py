@@ -82,8 +82,16 @@ class Masker:
     def __init__(self, terms: Sequence[str]):
         # Longest first so "Innioasis Updater" wins over "Innioasis".
         self.terms = sorted({term for term in terms if term}, key=len, reverse=True)
+        # Whole words only: "Solar" must not match inside "solarium", and
+        # "Y2" must not match inside "Y2Reborn" (longest term wins above).
         self.pattern = (
-            re.compile("|".join(re.escape(term) for term in self.terms)) if self.terms else None
+            re.compile(
+                r"(?<![A-Za-z0-9])(?:"
+                + "|".join(re.escape(term) for term in self.terms)
+                + r")(?![A-Za-z0-9])"
+            )
+            if self.terms
+            else None
         )
         self.token_re = re.compile(r"\[\[\s*(\d+)\s*\]\]")
 
@@ -104,6 +112,11 @@ class Masker:
             return found[index] if 0 <= index < len(found) else match.group(0)
 
         return self.token_re.sub(swap, text)
+
+    def survives(self, text: str, found: Sequence[str]) -> bool:
+        """Every masked brand must come back exactly as it went in. A service
+        that drops or rewrites a token would otherwise ship "Inniose Y2"."""
+        return all(term in text for term in found)
 
 
 def http_post(url: str, data: bytes, headers: Dict[str, str], timeout: int = 30) -> bytes:

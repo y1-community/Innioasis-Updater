@@ -1,5 +1,5 @@
 {
- "count": 1701,
+ "count": 1706,
  "dir": "ltr",
  "generated": "2026-11-08T11:14:10+00:00",
  "locale": "cs",
@@ -1699,15 +1699,20 @@
   "Auto (recommended)": "Auto (doporučeno)",
   "Browse Files…": "Procházet soubory…",
   "Waiting for the player…": "Čekání na hráče…",
-  "Innioasis Updater": "Aktualizátor Innioázy",
+  "Innioasis Updater": "Innioasis Updater",
   "). Set": "). Soubor",
   "Set": "Soubor",
-  "Solar": "Sluneční",
+  "Solar": "Solar",
   "Innioasis Y1": "Innioáza Y1",
   "Innioasis Y2": "Innióza Y2",
-  "Updater CE": "Aktualizátor CE",
-  "Innioasis": "Innioáza",
-  "Better-Y": "Lepší-Y",
-  "Y2Player": "Y2 Player"
+  "Updater CE": "Updater CE",
+  "Innioasis": "Innioasis",
+  "Better-Y": "Better-Y",
+  "Y2Player": "Y2Player",
+  "Windows 10/11 app launch issues fixed": "Opraveny problémy se spouštěním aplikace Windows 10/11",
+  "Rockbox Y1 Compatibility Warning": "Upozornění na kompatibilitu Rockbox Y1",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "Toto vydání Rockbox-Y1 je starší než 0.5 a není kompatibilní s jednotkami Y1 dodávanými s firmwarem 3.0.7 nebo novějším. Blikání zabrání bootování.",
+  "Original Software Y1 Compatibility Warning": "Upozornění na kompatibilitu originálního softwaru Y1",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "Toto původní vydání softwaru je starší než 3.0.7 a zabrání spuštění na novějším hardwaru Y1, dokud nebude nainstalováno kompatibilní sestavení."
  }
 }

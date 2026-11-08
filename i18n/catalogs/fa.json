@@ -1,5 +1,5 @@
 {
- "count": 1788,
+ "count": 1793,
  "dir": "rtl",
  "generated": "2026-11-08T11:13:51+00:00",
  "locale": "fa",
@@ -1786,15 +1786,20 @@
   "Auto (recommended)": "خودکار (توصیه می شود)",
   "Browse Files…": "مرور فایل ها…",
   "Waiting for the player…": "در انتظار بازیکن…",
-  "Rockbox": "راک باکس",
-  "Solar": "خورشیدی",
-  "Inniclassic": "غیرکلاسیک",
+  "Rockbox": "Rockbox",
+  "Solar": "Solar",
+  "Inniclassic": "Inniclassic",
   "Innioasis Y2": "ایننیوز Y2",
-  "Updater CE": "به روز رسانی CE",
-  "JJ Launcher": "لانچر جی جی",
-  "Innioasis": "اینیوازیس",
-  "Better-Y": "بهتر-Y",
-  "Rondo": "روندو",
-  "Koensayr": "کوئنسایر"
+  "Updater CE": "Updater CE",
+  "JJ Launcher": "JJ Launcher",
+  "Innioasis": "Innioasis",
+  "Better-Y": "Better-Y",
+  "Rondo": "Rondo",
+  "Koensayr": "Koensayr",
+  "Windows 10/11 app launch issues fixed": "مشکلات راه اندازی برنامه ویندوز 10/11 برطرف شد",
+  "Rockbox Y1 Compatibility Warning": "هشدار سازگاری Rockbox Y1",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "این نسخه Rockbox-Y1 مربوط به نسخه 0.5 است و با واحدهای Y1 که با سیستم عامل 3.0.7 یا بالاتر عرضه شده اند سازگار نیست. فلش زدن از بوت شدن جلوگیری می کند.",
+  "Original Software Y1 Compatibility Warning": "هشدار سازگاری نرم افزار اصلی Y1",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "این نسخه نرم‌افزار اصلی مربوط به نسخه 3.0.7 است و از راه‌اندازی سخت‌افزار جدیدتر Y1 تا زمانی که یک بیلد سازگار نصب نشود، جلوگیری می‌کند."
  }
 }

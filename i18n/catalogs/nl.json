@@ -1,5 +1,5 @@
 {
- "count": 746,
+ "count": 751,
  "dir": "ltr",
  "generated": "2026-11-08T11:13:49+00:00",
  "locale": "nl",
@@ -743,16 +743,21 @@
   "Show Advanced Settings": "Toon geavanceerde instellingen",
   "Install Method": "Installatiemethode",
   "Flash Method": "Flash-methode",
-  "SP Flash Tool": "SP Flash-tool",
+  "SP Flash Tool": "SP Flash Tool",
   "MTKClient": "MTKClient",
   "Auto (recommended)": "Automatisch (aanbevolen)",
   "Browse Files…": "Blader door bestanden...",
   "Waiting for the player…": "Wachten op de speler...",
-  "Innioasis Updater": "Innioasis-updater",
-  "Solar": "Zonne",
-  "Inniclassic": "Inniklassiek",
-  "JJ Launcher": "JJ-lanceerder",
-  "Innioasis": "Innioase",
-  "Better-Y": "Beter-Y"
+  "Innioasis Updater": "Innioasis Updater",
+  "Solar": "Solar",
+  "Inniclassic": "Inniclassic",
+  "JJ Launcher": "JJ Launcher",
+  "Innioasis": "Innioasis",
+  "Better-Y": "Better-Y",
+  "Windows 10/11 app launch issues fixed": "Problemen met het starten van Windows 10/11-apps zijn opgelost",
+  "Rockbox Y1 Compatibility Warning": "Rockbox Y1 Compatibiliteitswaarschuwing",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "Deze Rockbox-Y1-release dateert van vóór 0.5 en is niet compatibel met Y1-eenheden die worden geleverd met firmware 3.0.7 of hoger. Knipperen verhindert het opstarten.",
+  "Original Software Y1 Compatibility Warning": "Originele software Y1 Compatibiliteitswaarschuwing",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "Deze originele softwareversie dateert van vóór 3.0.7 en verhindert het opstarten op nieuwere Y1-hardware totdat een compatibele build is geïnstalleerd."
  }
 }

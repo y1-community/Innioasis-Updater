@@ -1,5 +1,5 @@
 {
- "count": 1687,
+ "count": 1692,
  "dir": "ltr",
  "generated": "2026-11-08T11:13:48+00:00",
  "locale": "de",
@@ -1689,11 +1689,16 @@
   "← All notices": "← Alle Mitteilungen",
   "← Firmware Downloads": "← Firmware-Downloads",
   "in": "In",
-  "Innioasis Updater": "Innioasis-Updater",
+  "Innioasis Updater": "Innioasis Updater",
   "). Set": "). Satz",
   "Set": "Satz",
   "Innioasis Y2": "Inniose Y2",
-  "Innioasis": "Innioase",
-  "Better-Y": "Besser-Y"
+  "Innioasis": "Innioasis",
+  "Better-Y": "Better-Y",
+  "Windows 10/11 app launch issues fixed": "Probleme beim Starten der Windows 10/11-App behoben",
+  "Rockbox Y1 Compatibility Warning": "Rockbox Y1-Kompatibilitätswarnung",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "Diese Rockbox-Y1-Version ist älter als 0.5 und ist nicht mit Y1-Geräten kompatibel, die mit Firmware 3.0.7 oder höher geliefert werden. Durch das Flashen wird das Booten verhindert.",
+  "Original Software Y1 Compatibility Warning": "Warnung zur Kompatibilität der Originalsoftware Y1",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "Diese Originalsoftwareversion ist älter als 3.0.7 und verhindert das Booten auf neuerer Y1-Hardware, bis ein kompatibler Build installiert ist."
  }
 }

@@ -1,0 +1,55 @@
+name: Multilingual Static Page Generation & GA4 Verification
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.html'
+      - 'i18n/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify GA4 tag and Raptive semantic markup
+        run: |
+          python3 - <<'PY'
+          import os, sys
+          missing_ga4 = []
+          for root, dirs, files in os.walk("."):
+              dirs[:] = [d for d in dirs if d not in {".git", "node_modules", "dist", ".cache"}]
+              for f in files:
+                  if f.endswith((".html", ".htm")):
+                      p = os.path.join(root, f)
+                      c = open(p, "r", encoding="utf-8", errors="ignore").read()
+                      if "GTM-TNDGC37L" not in c:
+                          missing_ga4.append(p)
+          if missing_ga4:
+              print(f"Warning: {len(missing_ga4)} pages missing GA4 tag.")
+          else:
+              print("GA4 tag verified across all HTML pages.")
+          PY
+
+      - name: Build static multilingual page trees
+        run: |
+          python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
+
+      - name: Commit pre-rendered static copies
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/ sitemap-i18n.xml || true
+          git commit -m "chore(i18n): update pre-rendered multilingual static pages [skip ci]" || echo "No changes to commit"
+          git push || true

@@ -1,5 +1,5 @@
 {
- "count": 1758,
+ "count": 1763,
  "dir": "ltr",
  "generated": "2026-11-08T11:13:48+00:00",
  "locale": "es",
@@ -1755,16 +1755,21 @@
   "← All notices": "← Todos los avisos",
   "← Firmware Downloads": "← Descargas de firmware",
   "Innioasis Updater CE": "Actualizador CE de Innioasis",
-  "Innioasis Updater": "Actualizador de Innioasis",
-  "Rockbox": "caja de rock",
+  "Innioasis Updater": "Innioasis Updater",
+  "Rockbox": "Rockbox",
   "Innioasis Y1": "Inniasis Y1",
-  "Inniclassic": "Inniclasico",
+  "Inniclassic": "Inniclassic",
   "Innioasis Y2": "Inniosis Y2",
-  "Updater CE": "Actualizador CE",
-  "JJ Launcher": "Lanzador J.J.",
-  "Innioasis": "innioasis",
-  "Better-Y": "Mejor-Y",
-  "Rondo": "Rondó",
-  "SP Flash Tool": "Herramienta Flash SP"
+  "Updater CE": "Updater CE",
+  "JJ Launcher": "JJ Launcher",
+  "Innioasis": "Innioasis",
+  "Better-Y": "Better-Y",
+  "Rondo": "Rondo",
+  "SP Flash Tool": "SP Flash Tool",
+  "Windows 10/11 app launch issues fixed": "Problemas de inicio de aplicaciones de Windows 10/11 solucionados",
+  "Rockbox Y1 Compatibility Warning": "Advertencia de compatibilidad de Rockbox Y1",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "Esta versión de Rockbox-Y1 es anterior a la 0.5 y no es compatible con las unidades Y1 enviadas con firmware 3.0.7 o posterior. El flasheo impedirá el arranque.",
+  "Original Software Y1 Compatibility Warning": "Advertencia de compatibilidad del software original Y1",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "Esta versión del software original es anterior a la 3.0.7 y evitará el arranque en hardware Y1 más nuevo hasta que se instale una versión compatible."
  }
 }

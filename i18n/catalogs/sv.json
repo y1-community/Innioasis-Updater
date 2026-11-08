@@ -1,5 +1,5 @@
 {
- "count": 670,
+ "count": 675,
  "dir": "ltr",
  "generated": "2026-11-08T11:14:05+00:00",
  "locale": "sv",
@@ -667,16 +667,21 @@
   "Show Advanced Settings": "Visa avancerade inställningar",
   "Install Method": "Installationsmetod",
   "Flash Method": "Flash-metod",
-  "SP Flash Tool": "SP Flash-verktyg",
+  "SP Flash Tool": "SP Flash Tool",
   "MTKClient": "MTKClient",
   "Auto (recommended)": "Auto (rekommenderas)",
   "Browse Files…": "Bläddra bland filer...",
   "Waiting for the player…": "Väntar på spelaren...",
   "in": "i",
-  "Solar": "Sol",
-  "Inniclassic": "Inniklassisk",
+  "Solar": "Solar",
+  "Inniclassic": "Inniclassic",
   "Innioasis Y2": "Inniosis Y2",
-  "Updater CE": "Uppdaterare CE",
-  "Better-Y": "Bättre-Y"
+  "Updater CE": "Updater CE",
+  "Better-Y": "Better-Y",
+  "Windows 10/11 app launch issues fixed": "Windows 10/11 appstartsproblem fixade",
+  "Rockbox Y1 Compatibility Warning": "Rockbox Y1 kompatibilitetsvarning",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "Denna Rockbox-Y1-utgåva är före 0.5 och är inte kompatibel med Y1-enheter som levereras med firmware 3.0.7 eller senare. Blinkande förhindrar uppstart.",
+  "Original Software Y1 Compatibility Warning": "Varning för originalprogramvara Y1-kompatibilitet",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "Denna originalprogramvaruversion är före 3.0.7 och kommer att förhindra uppstart på nyare Y1-hårdvara tills en kompatibel version har installerats."
  }
 }

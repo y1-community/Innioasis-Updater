@@ -1,5 +1,5 @@
 {
- "count": 1328,
+ "count": 1332,
  "dir": "ltr",
  "generated": "2026-11-08T11:15:33+00:00",
  "locale": "el",
@@ -1188,7 +1188,7 @@
   "Set": "Σειρά",
   "or": "ή",
   "Updater connection instructions": "Οδηγίες σύνδεσης ενημερώσεων",
-  "Solar": "Ηλιακός",
+  "Solar": "Solar",
   "y1-community": "y1-κοινότητα",
   "(or launch with": "(ή εκκίνηση με",
   "). Select": "). Επιλέγω",
@@ -1200,7 +1200,7 @@
   "2026-06-29 · preview build": "2026-06-29 · κατασκευή προεπισκόπησης",
   "troubleshooting": "αντιμετώπιση προβλημάτων",
   "Innioasis Y2": "Ινίωση Υ2",
-  "Updater CE": "Ενημερωτής CE",
+  "Updater CE": "Updater CE",
   "A clear reset that keeps the good files and removes the problem. This page covers the Settings route, the frozen-player route, and the one case where a reset is the wrong fix.": "Μια καθαρή επαναφορά που διατηρεί τα καλά αρχεία και αφαιρεί το πρόβλημα. Αυτή η σελίδα καλύπτει τη διαδρομή Ρυθμίσεις, τη διαδρομή του παγωμένου προγράμματος αναπαραγωγής και τη μία περίπτωση όπου η επαναφορά είναι λάθος λύση.",
   "A factory reset erases the player's internal storage.": "Η επαναφορά εργοστασιακών ρυθμίσεων διαγράφει τον εσωτερικό χώρο αποθήκευσης της συσκευής αναπαραγωγής.",
   "A few minutes. If it has not restarted after ten, charge it and try the power button; if it still does not respond, use the recovery guide.": "Λίγα λεπτά. Εάν δεν έχει επανεκκινηθεί μετά τις δέκα, φορτίστε το και δοκιμάστε το κουμπί λειτουργίας. εάν εξακολουθεί να μην ανταποκρίνεται, χρησιμοποιήστε τον οδηγό ανάκτησης.",
@@ -1237,10 +1237,10 @@
   "Install": "Εγκαθιστώ",
   "Select": "Επιλέγω",
   "Firmware Downloads": "Λήψεις υλικολογισμικού",
-  "Innioasis": "Ινιόασις",
+  "Innioasis": "Innioasis",
   "Every listed release for this model, with the original download URL and the portable packages built for each computer.": "Κάθε καταχωρημένη έκδοση για αυτό το μοντέλο, με την αρχική διεύθυνση URL λήψης και τα φορητά πακέτα που έχουν δημιουργηθεί για κάθε υπολογιστή.",
-  "Better-Y": "Καλύτερα-Υ",
-  "Rondo": "Ρόντο",
+  "Better-Y": "Better-Y",
+  "Rondo": "Rondo",
   "Release notes for type-a-base": "Σημειώσεις έκδοσης για βάση τύπου-α",
   "Release notes for v1.0.0": "Σημειώσεις έκδοσης για την έκδοση 1.0.0",
   "Download Only": "Μόνο λήψη",
@@ -1335,6 +1335,10 @@
   "covers the return path.": "καλύπτει τη διαδρομή της επιστροφής.",
   "for the restore path.": "για τη διαδρομή επαναφοράς.",
   "on Windows, macOS, or Linux before connecting your player.": "σε Windows, macOS ή Linux πριν συνδέσετε τη συσκευή σας.",
-  "A friendly place to support Updater CE, see the community projects it helps, and thank the people who keep it going.": "Ένα φιλικό μέρος για να υποστηρίξετε το Updater CE, να δείτε τα κοινοτικά έργα που βοηθά και να ευχαριστήσετε τους ανθρώπους που το συνεχίζουν."
+  "A friendly place to support Updater CE, see the community projects it helps, and thank the people who keep it going.": "Ένα φιλικό μέρος για να υποστηρίξετε το Updater CE, να δείτε τα κοινοτικά έργα που βοηθά και να ευχαριστήσετε τους ανθρώπους που το συνεχίζουν.",
+  "Rockbox Y1 Compatibility Warning": "Προειδοποίηση συμβατότητας Rockbox Y1",
+  "This Rockbox-Y1 release predates 0.5 and is not compatible with Y1 units shipped with firmware 3.0.7 or later. Flashing will prevent booting.": "Αυτή η κυκλοφορία του Rockbox-Y1 είναι προγενέστερη του 0.5 και δεν είναι συμβατή με μονάδες Y1 που αποστέλλονται με υλικολογισμικό 3.0.7 ή νεότερη έκδοση. Το φλας θα αποτρέψει την εκκίνηση.",
+  "Original Software Y1 Compatibility Warning": "Προειδοποίηση συμβατότητας πρωτότυπου λογισμικού Y1",
+  "This Original Software release predates 3.0.7 and will prevent booting on newer Y1 hardware until a compatible build is installed.": "Αυτή η έκδοση του Αρχικού Λογισμικού προηγείται της 3.0.7 και θα αποτρέψει την εκκίνηση σε νεότερο υλικό Y1 μέχρι να εγκατασταθεί μια συμβατή έκδοση."
  }
 }

@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-08T11:10:15+00:00",
+ "generated": "2026-11-08T11:25:00+00:00",
  "tiers": [
   "core"
  ],
  "pages": 124,
  "occurrences": 12800,
- "count": 6344,
+ "count": 6346,
  "strings": {
   "Skip to content": {
    "n": 119,
@@ -1125,10 +1125,6 @@
    "n": 3,
    "pages": 3
   },
-  "It takes": {
-   "n": 3,
-   "pages": 3
-  },
   "JJ Launcher on Y1": {
    "n": 3,
    "pages": 3
@@ -1261,10 +1257,6 @@
    "pages": 3
   },
   "page.": {
-   "n": 3,
-   "pages": 3
-  },
-  "you": {
    "n": 3,
    "pages": 3
   },
@@ -2018,6 +2010,10 @@
    "n": 2,
    "pages": 2,
    "script": true
+  },
+  "It takes": {
+   "n": 2,
+   "pages": 2
   },
   "JJ Launcher does not change the route back to the stock interface. Once Updater is set up for your computer, open it on Windows, macOS, or Linux and select": {
    "n": 2,
@@ -3045,6 +3041,10 @@
    "pages": 2
   },
   "x86_64 Linux PC": {
+   "n": 2,
+   "pages": 2
+  },
+  "you": {
    "n": 2,
    "pages": 2
   },
@@ -7653,6 +7653,10 @@
    "n": 1,
    "pages": 1
   },
+  "Analytics cookies are optional. We never sell your personal data.": {
+   "n": 1,
+   "pages": 1
+  },
   "Android": {
    "n": 1,
    "pages": 1
@@ -7752,10 +7756,6 @@
    "pages": 1
   },
   "Ask for help": {
-   "n": 1,
-   "pages": 1
-  },
-  "Asked on the guide pages. Turning this off forgets your saved answers.": {
    "n": 1,
    "pages": 1
   },
@@ -7956,6 +7956,10 @@
    "pages": 1
   },
   "Both tools flash a player, so the difference is what happens around the flash. Updater CE is the flash tool for Innioasis and Timmkoo players when you want your music, settings and Bluetooth pairings left alone: it chooses the package for the model, runs the install, and warns you before an incompatible file is used. The Universal Flash Tool is the recovery-first option, and it wipes the player.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Brings back toolbar goals and donation links.": {
    "n": 1,
    "pages": 1
   },
@@ -10222,10 +10226,6 @@
    "n": 1,
    "pages": 1
   },
-  "Google Analytics may set first-party cookies that tell one browser apart from another; Cloudflare's analytics are cookieless. We do not sell your data, and this project is solely self- and donations-funded.": {
-   "n": 1,
-   "pages": 1
-  },
   "Grab the release you want from": {
    "n": 1,
    "pages": 1
@@ -11183,6 +11183,10 @@
    "n": 1,
    "pages": 1
   },
+  "Innioasis.app uses Cloudflare and Google Analytics (GTM) to optimize performance, protect against attacks, and measure site usage.": {
+   "n": 1,
+   "pages": 1
+  },
   "Input and power faults need different steps from a failed flash. These guides cover the common Y1 and Y2 cases.": {
    "n": 1,
    "pages": 1
@@ -11505,6 +11509,10 @@
    "pages": 1
   },
   "It stopped before the USB prompt": {
+   "n": 1,
+   "pages": 1
+  },
+  "It takes you.": {
    "n": 1,
    "pages": 1
   },
@@ -11969,6 +11977,10 @@
    "pages": 1
   },
   "Make the release easy to verify": {
+   "n": 1,
+   "pages": 1
+  },
+  "Manage your saved preferences:": {
    "n": 1,
    "pages": 1
   },
@@ -12453,10 +12465,6 @@
    "pages": 1
   },
   "One-click installs": {
-   "n": 1,
-   "pages": 1
-  },
-  "Only shown because you turned donations off. Tick this and save to bring them back.": {
    "n": 1,
    "pages": 1
   },
@@ -13349,11 +13357,11 @@
    "n": 1,
    "pages": 1
   },
-  "Remember my \"was this useful?\" answers": {
+  "Remember guide feedback answers": {
    "n": 1,
    "pages": 1
   },
-  "Remember my nightly-builds choice": {
+  "Remember nightly builds selection": {
    "n": 1,
    "pages": 1
   },
@@ -14099,6 +14107,10 @@
    "n": 1,
    "pages": 1
   },
+  "Saves your \"was this useful?\" feedback on guides.": {
+   "n": 1,
+   "pages": 1
+  },
   "Scrobbling to Last.fm, ListenBrainz, or Maloja": {
    "n": 1,
    "pages": 1
@@ -14311,14 +14323,14 @@
    "n": 1,
    "pages": 1
   },
+  "Show community support & running costs": {
+   "n": 1,
+   "pages": 1
+  },
   "Show crypto options · BTC, ETH, SHIB": {
    "n": 1,
    "pages": 1,
    "script": true
-  },
-  "Show donation appeals and running costs": {
-   "n": 1,
-   "pages": 1
   },
   "Show hidden files on your computer so the folder is visible.": {
    "n": 1,
@@ -14339,6 +14351,10 @@
    "pages": 1
   },
   "Shows platform-specific installation guides": {
+   "n": 1,
+   "pages": 1
+  },
+  "Shows pre-release and nightly builds in the firmware list.": {
    "n": 1,
    "pages": 1
   },
@@ -15201,6 +15217,10 @@
    "n": 1,
    "pages": 1
   },
+  "Theme, font size, and language preferences are stored locally in your browser. External links to community platforms operate under their respective policies.": {
+   "n": 1,
+   "pages": 1
+  },
   "Themes are files on the MicroSD card, inside the": {
    "n": 1,
    "pages": 1
@@ -15844,10 +15864,6 @@
    "pages": 1
   },
   "Use this when you want to leave a custom software, recover a player that does not start, or simply return to the stock interface.": {
-   "n": 1,
-   "pages": 1
-  },
-  "Used on the software directory. Off shows stable releases only.": {
    "n": 1,
    "pages": 1
   },
@@ -17774,10 +17790,6 @@
    "n": 1,
    "pages": 1
   },
-  "You choose what this browser remembers. Nothing below is stored until you save, and anything you leave unticked stays off.": {
-   "n": 1,
-   "pages": 1
-  },
   "You might need to tell your Mac it's okay to run this app. The exact steps depend on your macOS version:": {
    "n": 1,
    "pages": 1
@@ -17807,10 +17819,6 @@
    "pages": 1
   },
   "Your privacy on Innioasis.app": {
-   "n": 1,
-   "pages": 1
-  },
-  "Your site theme and text size are always remembered - they are the look and readability you chose. Links to YouTube, Discord, Ko-fi, Buy Me a Coffee, PayPal, Revolut, Patreon, and Boosty open those sites' own pages, which have their own policies.": {
    "n": 1,
    "pages": 1
   },
