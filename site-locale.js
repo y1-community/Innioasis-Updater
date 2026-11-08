@@ -273,6 +273,24 @@
         return parts[1] + translated + parts[3];
     }
 
+    /* Values this locale already has from its catalog. After the catalog pass a
+       node holds the translated value, not the English key, so looking only for
+       keys sent already-translated copy to the API again and put a spinner on
+       text the reader could already read in their own language. */
+    var catalogValues = null;
+
+    function catalogValueSet() {
+        if (catalogValues) return catalogValues;
+        catalogValues = typeof Set === "function" ? new Set() : null;
+        if (!catalogValues || !state.strings) return catalogValues;
+        for (var key in state.strings) {
+            if (!Object.prototype.hasOwnProperty.call(state.strings, key)) continue;
+            var value = state.strings[key];
+            if (value && value !== key) catalogValues.add(normalise(value));
+        }
+        return catalogValues;
+    }
+
     function shouldSkip(element) {
         if (!element) return false;
         if (SKIP_TAGS[element.tagName]) return true;
@@ -788,6 +806,8 @@
                        leaves untouched); that still needs the API. */
                     var known = state.strings[value];
                     if (known && known !== value) return NodeFilter.FILTER_REJECT;
+                    var seenValues = catalogValueSet();
+                    if (seenValues && seenValues.has(value)) return NodeFilter.FILTER_REJECT;
                     /* A label that is only a brand name stays as written. */
                     if (isBrandOnly(value)) return NodeFilter.FILTER_REJECT;
                     return NodeFilter.FILTER_ACCEPT;
@@ -828,6 +848,8 @@
                         if (text.length < 4 || !/[A-Za-z]{2}/.test(text)) return;
                         var known = state.strings[text];
                         if (known && known !== text) return;
+                        var seenAttrValues = catalogValueSet();
+                        if (seenAttrValues && seenAttrValues.has(text)) return;
                         if (isBrandOnly(text)) return;
                         queueDynamicText(text, function (translated) {
                             element.setAttribute(name, translated);
@@ -1421,6 +1443,7 @@
         }).then(function (catalog) {
             if (catalog) {
                 state.strings = catalog;
+                catalogValues = null;
                 applyLanguage();
             }
             watch();
