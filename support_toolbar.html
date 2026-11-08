@@ -381,6 +381,74 @@
   @media (prefers-reduced-motion: reduce) {
     .site-locale-throbber { animation: none; opacity: .6; }
   }
+
+  /* =====================================================================
+     Adaptive dock density (2026-11 responsive pass)
+
+     The bottom dock is a fixed bar whose height comes out of the viewport.
+     On square handhelds (BlackBerry Passport, Unihertz Titan/Elite, folding
+     flip phones) and short browser windows a full two-line dock can eat a
+     fifth of the screen, so density steps down in this order:
+
+       full    every control, including the running-costs goal line
+       compact goal line off, small/large text buttons folded, tighter rows
+       minimal icon-only Donate/Privacy/Language, goal line off
+
+     Priority is fixed: Donate, Privacy and Language stay reachable at every
+     density. Keep this list in sync with docs/RESPONSIVE_AUDIT.md; Antigravity
+     and Buffy both edit this block.
+     ===================================================================== */
+  #support-toolbar-container .y1-site-dock-bar {
+    padding-top: 6px !important;
+    padding-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)) !important;
+  }
+
+  /* compact: the running-costs line and the two extra text-size steps go. */
+  #support-toolbar-container[data-dock-density="compact"] .y1-dock-secondary-line,
+  #support-toolbar-container[data-dock-density="compact"] .y1-dock-goal-layer,
+  #support-toolbar-container[data-dock-density="compact"] .y1-font-btn--small,
+  #support-toolbar-container[data-dock-density="compact"] .y1-font-btn--large,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-secondary-line,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-goal-layer {
+    display: none !important;
+  }
+
+  /* minimal: icons only, so three priority controls fit a 320px row. */
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-buttons-layer {
+    gap: 2px 4px !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn,
+  #support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
+    font-size: 0 !important;
+    padding: 8px 10px !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link .y1-dock-icon,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-close-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Every density keeps finger-sized hit areas (WCAG 2.5.8 asks for 24px,
+     Apple and Material both recommend 44px). */
+  #support-toolbar-container .y1-dock-link,
+  #support-toolbar-container .y1-font-btn,
+  #support-toolbar-container .site-locale-dock-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reserve the dock's height so page footers never sit underneath it and no
+     scroll jump appears when the density tier changes. */
+  body:not(.y1-dock-closed) {
+    padding-bottom: var(--y1-dock-space, 0px);
+  }
 </style>
 <div id="support-toolbar-container">
   <div class="y1-dock-backdrop" data-dock-backdrop hidden></div>
@@ -2535,4 +2603,99 @@
     });
   })();
 
+</script>
+
+<script id="y1-dock-density">
+(function () {
+  "use strict";
+  /* Bottom dock density controller.
+     Reads the viewport (never the dock's own height) so the tier cannot
+     oscillate when a tier change shrinks the bar. Publishes the bar height as
+     --y1-dock-space so the page can keep its footer clear of the dock. */
+  var DOCK_ID = "support-toolbar-container";
+
+  function tierFor(vw, vh) {
+    var shortest = Math.min(vw, vh);
+    var ratio = vw / Math.max(vh, 1);
+    var square = ratio > 0.82 && ratio < 1.22;
+    if (vw <= 420 || vh <= 480 || (square && shortest <= 640)) return "minimal";
+    if (vw <= 900 || vh <= 700 || square) return "compact";
+    return "full";
+  }
+
+  function apply() {
+    var dock = document.getElementById(DOCK_ID);
+    if (!dock) return false;
+    if (!dock.getAttribute("data-dock-density-ready")) {
+      dock.setAttribute("data-dock-density-ready", "1");
+      var observer = window.ResizeObserver ? new ResizeObserver(publishSpace) : null;
+      if (observer) observer.observe(dock);
+      window.addEventListener("resize", schedule, { passive: true });
+      window.addEventListener("orientationchange", schedule, { passive: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(publishSpace, function () {});
+    }
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var next = tierFor(vw, vh);
+    if (dock.getAttribute("data-dock-density") !== next) {
+      dock.setAttribute("data-dock-density", next);
+      publishSpace();
+    }
+    return true;
+  }
+
+  function publishSpace() {
+    var dock = document.getElementById(DOCK_ID);
+    var root = document.documentElement;
+    if (!dock || dock.classList.contains("y1-toolbar-hidden")) {
+      root.style.setProperty("--y1-dock-space", "0px");
+      return;
+    }
+    var height = dock.getBoundingClientRect().height;
+    if (height > 0) {
+      var bottomGap = parseFloat(getComputedStyle(dock).marginBottom) || 0;
+      root.style.setProperty("--y1-dock-space", Math.ceil(height + bottomGap + 8) + "px");
+    }
+  }
+
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function () {
+      queued = false;
+      apply();
+      publishSpace();
+    });
+  }
+
+  /* viewport-fit=cover unlocks env(safe-area-inset-*) on iOS. Pages that
+     already declare it are left alone. */
+  function ensureViewportFit() {
+    var meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) return;
+    if (!/viewport-fit/.test(meta.content)) {
+      meta.content = meta.content + ", viewport-fit=cover";
+    }
+  }
+
+  function boot() {
+    ensureViewportFit();
+    if (apply()) return;
+    /* The toolbar is injected after DOMContentLoaded; wait for it, but never
+       poll forever on pages that have no dock. */
+    var attempts = 0;
+    var timer = window.setInterval(function () {
+      attempts += 1;
+      if (apply() || attempts > 100) window.clearInterval(timer);
+    }, 100);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot, { once: true });
+  } else {
+    boot();
+  }
+  window.addEventListener("load", schedule, { once: true });
+})();
 </script>
