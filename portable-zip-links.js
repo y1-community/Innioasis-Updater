@@ -392,12 +392,31 @@
         return true;
     }
 
+    /* Navigate a hidden frame to the asset. A scripted anchor click can be
+       dropped by the browser's automatic-download guard, and such an anchor is
+       also claimed by the zip click interceptor below, which sent the fallback
+       back into itself. A frame navigation downloads on every path. */
+    function downloadFrame() {
+        var frame = document.getElementById("innioasis-download-frame");
+        if (!frame) {
+            frame = document.createElement("iframe");
+            frame.id = "innioasis-download-frame";
+            frame.setAttribute("aria-hidden", "true");
+            frame.tabIndex = -1;
+            frame.style.cssText = "display:none;width:0;height:0;border:0;";
+            document.body.appendChild(frame);
+        }
+        return frame;
+    }
+
     function directDownload(href, saveName, label) {
+        if (/^https?:/i.test(href)) {
+            downloadFrame().src = href;
+            toastDone(saveName, label, false);
+            return;
+        }
         var link = document.createElement("a");
         link.href = href;
-        /* Mark it so the delegated handler below does not claim this anchor by
-           accident: without the marker a release URL ending in .zip is
-           intercepted again and the fallback re-enters itself forever. */
         link.setAttribute("data-direct-download", "1");
         if (saveName) link.download = saveName;
         link.rel = "noopener";
