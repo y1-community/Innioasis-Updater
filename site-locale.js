@@ -385,6 +385,10 @@
     var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations";
     var DYNAMIC_MAX_REQUESTS = 800;
     var DYNAMIC_CONCURRENCY = 2;
+    /* gtx answers without CORS headers once it rate limits, which is a failed
+       fetch rather than a status. Remember it and go straight to the endpoint
+       that does work, so the spinner is not held open by a dead hop. */
+    var gtxBlocked = false;
     var dynamicCache = null;
     var dynamicSeen = typeof WeakSet === "function" ? new WeakSet() : null;
     var dynamicAttrSeen = typeof WeakSet === "function" ? new WeakSet() : new Map();
@@ -445,7 +449,6 @@
        Sentences that mention a brand are still translated; the name is
        masked out and restored afterwards. */
     var DYNAMIC_BRANDS = [
-        "Innioasis Updater CE", "Innioasis Updater", "Updater Community Edition", "Updater CE",
         "Innioasis Universal Flash Tool", "Universal Flash Tool", "SP Flash Tool", "SP Flash",
         "MTKClient", "MediaTek", "Innioasis Y1", "Innioasis Y2", "Innioasis",
         "Timmkoo", "Mechen H11", "Mechen H1", "Mechen",
@@ -511,6 +514,7 @@
             encodeURIComponent(hidden) + "&langpair=en|" + encodeURIComponent(target);
 
         function tryGTX() {
+            if (gtxBlocked) return Promise.reject(new Error("gtx unavailable"));
             return fetch(gtxUrl, { method: "GET", mode: "cors" })
                 .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
                 .then(function (data) {
@@ -521,6 +525,10 @@
                     }
                     if (!translated) throw new Error();
                     return translated;
+                })
+                .catch(function (error) {
+                    gtxBlocked = true;
+                    throw error;
                 });
         }
 
