@@ -183,6 +183,18 @@
         }
     })();
 
+    /* The archive has no consent panel of its own, so the footer control
+       sends visitors to the part of the privacy page that explains and changes
+       the setting. The gallery mounts its own panel, and that handler runs
+       first; leave its click alone. */
+    document.addEventListener("click", function (event) {
+        var trigger = event.target && event.target.closest ? event.target.closest("[data-privacy-open]") : null;
+        if (!trigger) return;
+        if (document.getElementById("y1-privacy-panel")) return;
+        event.preventDefault();
+        global.location.href = "/privacy.html#choices";
+    });
+
     global.INNIOASIS_PRIVACY = {
         read: readConsent,
         save: writeConsent,

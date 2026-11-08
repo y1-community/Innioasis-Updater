@@ -38,6 +38,9 @@ def pages() -> list[str]:
     for base, dirs, files in os.walk(ROOT):
         dirs[:] = [name for name in dirs if name not in SKIP_DIRS]
         for name in files:
+            # support_toolbar*.html are injected fragments, not standalone pages.
+            if name.startswith("support_toolbar"):
+                continue
             if name.endswith(".html"):
                 found.append(os.path.join(base, name))
     return found

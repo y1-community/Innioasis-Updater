@@ -40,6 +40,7 @@ REGIONS_PATH = os.path.join(ROOT, "i18n", "regions.json")
 # Target core pages to generate static language versions for (if present in repo)
 CORE_PAGE_STEMS = [
     "index",
+    "privacy",
     "firmware",
     "guide",
     "firmware-guide",
@@ -53,7 +54,6 @@ CORE_PAGE_STEMS = [
     "credits",
     "support_devs",
     "notices",
-    "theme_downloader",
     "universal-flash-tool",
     "sp-flash-tool",
     "sp-flash-tool-mac",
