@@ -1024,3 +1024,20 @@ html, body {
     max-width: 100%;
     height: auto;
 }
+
+/* The hero grid let the fixed-width art column and the copy column overflow at
+   tablet-landscape widths (art ended 15px past a 1133px viewport). Both tracks
+   may shrink now, and the art is capped by its container. */
+body.site-themes-app .lumen-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    column-gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+body.site-themes-app .lumen-hero > * {
+    min-width: 0;
+}
+
+body.site-themes-app .lumen-hero-art {
+    max-width: min(340px, 100%);
+    justify-self: end;
+}

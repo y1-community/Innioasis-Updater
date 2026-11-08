@@ -361,7 +361,7 @@ def main() -> int:
                     checks.append(f"goal line missing on the {row.get('density')} tier")
                 if not expected_goal and row.get("goalLineVisible"):
                     checks.append(f"goal line still shown on the {row.get('density')} tier")
-                if row["cls"] > 0.1:
+                if row["cls"] > 0.05:
                     checks.append(f"CLS {row['cls']}")
                 if checks:
                     defects.append(f"{page['name']}/{device['name']} ({device['width']}x{device['height']}): " + "; ".join(checks))
