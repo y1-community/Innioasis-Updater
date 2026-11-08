@@ -51,12 +51,13 @@ CONFIG_PATH = os.path.join(ROOT, "i18n", "config.json")
 TECHNICAL_TOKEN = re.compile(
     r"^(?:"
     r"v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*"
-    r"|[a-z]+-v?\d+(?:\.\d+)*"
-    r"|[\w.-]+\.(?:zip|apk|img|bin|tar|gz|md|txt|json)"
+    r"|[A-Za-z0-9]+-v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*"
+    r"|[A-Z0-9]+(?:[-_.][A-Z0-9]+)+"
+    r"|[\w.-]+\.(?i:zip|apk|img|bin|tar|gz|md|txt|json|rar|7z|iso)"
     r"|[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+"
     r"|[A-Z]{1,3}\d+[A-Za-z]?"
-    r")$",
-    re.IGNORECASE,
+    r"|Type[- ][AB]"
+    r")$"
 )
 LOCALES_PATH = os.path.join(ROOT, "i18n", "locales.json")
 
@@ -108,7 +109,7 @@ class Masker:
             if self.terms
             else None
         )
-        self.token_re = re.compile(r"\[\[\s*(\d+)\s*\]\]")
+        self.token_re = re.compile(r"\[{1,2}\s*(\d+)\s*\]{1,2}")
 
     def mask(self, text: str) -> Tuple[str, List[str]]:
         if not self.pattern:
@@ -194,16 +195,22 @@ class GoogleWeb(Provider):
     def translate(self, texts: Sequence[str], target: str) -> List[str]:
         # GET only. A POST to this endpoint answers 302 and urllib turns that
         # into an HTML body, which looks like a failed batch on every retry.
-        query = urllib.parse.urlencode(
-            {"client": "gtx", "sl": "en", "tl": target, "dt": "t", "q": "\n".join(texts)}
-        )
-        raw = http_get(f"{self.endpoint}?{query}")
-        payload = json.loads(raw.decode("utf-8"))
-        segments = payload[0] if payload else []
-        joined = "".join(
-            segment[0] for segment in segments if isinstance(segment, list) and segment and segment[0]
-        )
-        return [joined]
+        try:
+            query = urllib.parse.urlencode(
+                {"client": "gtx", "sl": "en", "tl": target, "dt": "t", "q": "\n".join(texts)}
+            )
+            raw = http_get(f"{self.endpoint}?{query}")
+            payload = json.loads(raw.decode("utf-8"))
+            segments = payload[0] if payload else []
+            joined = "".join(
+                segment[0] for segment in segments if isinstance(segment, list) and segment and segment[0]
+            )
+            if not joined:
+                raise ValueError("empty translation")
+            return [joined]
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError):
+            # Rate limited or blocked: the batched endpoint still answers.
+            return Clients5({}).translate(texts, target)
 
 
 class GoogleCloud(Provider):
@@ -279,7 +286,40 @@ class LibreTranslate(Provider):
         return [item["translatedText"] for item in payload.get("translations", [])]
 
 
+class Clients5(Provider):
+    """clients5.google.com/translate_a/t: repeated q parameters, one request
+    carries a whole batch. This endpoint keeps answering when the
+    translate_a/single endpoint rate-limits the IP, so google-web falls back
+    to it and the backfill can finish instead of stopping at a 429."""
+
+    name = "clients5"
+    endpoint = "https://clients5.google.com/translate_a/t"
+
+    def __init__(self, config: dict):
+        self.max_chars = int(config.get("clients5MaxChars", 1800))
+        self.sleep = float(config.get("clients5SleepSeconds", 0.15))
+        self.endpoint = config.get("clients5Endpoint", self.endpoint)
+
+    def translate(self, texts: Sequence[str], target: str) -> List[str]:
+        params = [("client", "dict-chrome-ex"), ("sl", "en"), ("tl", target)]
+        params += [("q", text) for text in texts]
+        raw = http_get(f"{self.endpoint}?{urllib.parse.urlencode(params)}")
+        payload = json.loads(raw.decode("utf-8"))
+        if isinstance(payload, str):
+            payload = [payload]
+        out: List[str] = []
+        for item in payload:
+            if isinstance(item, str):
+                out.append(item)
+            elif isinstance(item, list) and item:
+                out.append(item[0] if isinstance(item[0], str) else "")
+            else:
+                out.append("")
+        return out
+
+
 PROVIDERS = {
+    "clients5": Clients5,
     "google-web": GoogleWeb,
     "google-cloud": GoogleCloud,
     "deepl": DeepL,

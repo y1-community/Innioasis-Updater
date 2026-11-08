@@ -418,13 +418,21 @@
        Sentences that mention a brand are still translated; the name is
        masked out and restored afterwards. */
     var DYNAMIC_BRANDS = [
-        "Innioasis Updater", "Innioasis Y1", "Innioasis Y2", "Innioasis", "Updater CE",
-        "Y2Reborn", "Y2Player", "Inniclassic", "Y2Linux", "Better-Y", "Koensayr",
-        "JJ Launcher", "SP Flash Tool", "MTKClient", "MediaTek", "Rockbox", "Timmkoo",
-        "Buy Me a Coffee", "Honeygain", "Cloudflare", "Google Analytics",
-        "Google Tag Manager", "GitHub", "Discord", "Ko-fi", "PayPal", "Patreon",
-        "Revolut", "Boosty", "Bitcoin", "YouTube", "Reddit", "TikTok", "Rondo",
-        "Solar", "Y1", "Y2"
+        "Innioasis Updater CE", "Innioasis Updater", "Updater Community Edition", "Updater CE",
+        "Innioasis Universal Flash Tool", "Universal Flash Tool", "SP Flash Tool", "SP Flash",
+        "MTKClient", "MediaTek", "Innioasis Y1", "Innioasis Y2", "Innioasis",
+        "Timmkoo", "Mechen H11", "Mechen H1", "Mechen",
+        "Rockbox-Y1", "Rockbox-Y2", "Rockbox",
+        "Better-Y", "Y2Linux", "Y2Player", "Y2Reborn", "Reborn",
+        "Inniclassic", "JJ Launcher", "Koensayr", "Rondo", "Solar", "Lithium",
+        "Type A", "Type B", "Type-A", "Type-B",
+        "Y1", "Y2", "G1", "G3", "G5", "PR1", "R1", "D1", "Q3", "Q5", "A5", "SR1", "Q3E", "Q8",
+        "rom.zip", "rom_y2.zip", "rom_type_b.zip", "rom_g1.zip", "rom_g3.zip", "rom_g5.zip",
+        "rom_pr1.zip", "rom_q3.zip", "rom_q5.zip", "rom_r1.zip", "rom_sr1.zip", "system.zip",
+        "scatter.txt", "MicroSD", "microSD", "SD Card", "SD card", "APK", "ROM", "USB",
+        "Buy Me a Coffee", "Honeygain", "Cloudflare", "Google Analytics", "Google Tag Manager",
+        "GitHub", "Discord", "Ko-fi", "PayPal", "Patreon", "Revolut", "Boosty", "YouTube", "Reddit", "TikTok",
+        "Bitcoin (BTC)", "Bitcoin", "BTC", "Ethereum (ETH)", "Ethereum", "ETH", "Shiba Inu (SHIB)", "Shiba Inu", "SHIB"
     ];
     var dynamicBrandPattern = new RegExp(
         "(^|[^A-Za-z0-9])(" + DYNAMIC_BRANDS.slice().sort(function (a, b) {
@@ -459,7 +467,7 @@
         var value = String(text).trim();
         /* Release tags, versions, package names, repos and model codes are
            identifiers, not prose: 0.5, stable-v0.5, rom.zip, owner/repo, Y1. */
-        if (/^(?:v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[a-z]+-v?\d+(?:\.\d+)*|[\w.-]+\.(?:zip|apk|img|bin|tar|gz|md|txt|json)|[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+|[A-Z]{1,3}\d+[A-Za-z]?)$/i.test(value)) return true;
+        if (/^(?:v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[a-z0-9]+-v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[A-Z0-9]+(?:[-_.][A-Z0-9]+)+|[\w.-]+\.(?:zip|apk|img|bin|tar|gz|md|txt|json|rar|7z|iso)|[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+|[A-Z]{1,3}\d+[A-Za-z]?|Type[- ][AB])$/i.test(value)) return true;
         var stripped = value.replace(dynamicBrandPattern, "$1");
         return !/[A-Za-z\u00C0-\u024F\u0400-\u04FF]/.test(stripped);
     }
