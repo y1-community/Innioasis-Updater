@@ -1286,12 +1286,25 @@
         return proxyProbeCache[href] ? href : assetUrl;
     }
 
-    var downloadInProgress = false;
+    var downloadPanelHideTimer = null;
+
+    function hideDownloadPanel() {
+        if (downloadPanelHideTimer) {
+            clearTimeout(downloadPanelHideTimer);
+            downloadPanelHideTimer = null;
+        }
+        var panel = document.getElementById("lumen-download-progress-wrap");
+        if (panel) panel.hidden = true;
+        var button = document.getElementById("lumen-download-progress-dismiss");
+        if (button) button.hidden = true;
+    }
 
     async function startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips) {
-        if (downloadInProgress) return;
         zipName = releaseFileName(zipName, "rom.zip");
-        downloadInProgress = true;
+        /* A second click (another portable package, or the project's own zip
+           when this computer has no portable build) restarts the panel for the
+           new file instead of being dropped. */
+        hideDownloadPanel();
 
         var wrap = document.getElementById("lumen-download-progress-wrap");
         if (!wrap) {
@@ -1327,6 +1340,15 @@
 
         if (wrap) wrap.hidden = false;
         if (dismissBtn) dismissBtn.hidden = true;
+        /* The release table runs long, so bring the panel into view: the reader
+           clicked a row in the middle of it and should see its progress. */
+        if (wrap && typeof wrap.scrollIntoView === "function") {
+            try {
+                wrap.scrollIntoView({ behavior: "smooth", block: "center" });
+            } catch (_) {
+                wrap.scrollIntoView();
+            }
+        }
         if (label) label.textContent = "Preparing your download…";
         if (metrics) metrics.textContent = "";
         if (bar) bar.style.width = "2%";
@@ -1360,24 +1382,15 @@
         function markCompleted(saveName, osLabel, streamed) {
             isPackagingDone = true;
             if (bar) bar.style.width = "100%";
-            if (label) {
-                label.textContent = streamed
-                    ? "Saved to Downloads as " + saveName
-                    : "Download started";
-            }
-            if (metrics) {
-                metrics.textContent = streamed
-                    ? (osLabel ? "Portable package for " + osLabel : "")
-                    : (osLabel ? "Portable package for " + osLabel : "Check your Downloads folder");
-            }
+            if (label) label.textContent = "Firmware zip downloaded";
+            if (metrics) metrics.textContent = streamed && saveName ? saveName : "Check your Downloads folder";
             if (dismissBtn) {
                 dismissBtn.hidden = false;
-                dismissBtn.onclick = function () {
-                    if (wrap) wrap.hidden = true;
-                    dismissBtn.hidden = true;
-                    downloadInProgress = false;
-                };
+                dismissBtn.onclick = hideDownloadPanel;
             }
+            /* Fade out on its own; a new download cancels this timer. */
+            if (downloadPanelHideTimer) clearTimeout(downloadPanelHideTimer);
+            downloadPanelHideTimer = setTimeout(hideDownloadPanel, 10000);
         }
 
         function osLabelFor(key) {

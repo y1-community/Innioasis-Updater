@@ -331,8 +331,18 @@
             '</div>';
         document.body.appendChild(toast);
         var dismiss = toast.querySelector("[data-toast-dismiss]");
-        dismiss.addEventListener("click", function () { toast.style.display = "none"; });
+        dismiss.addEventListener("click", hideToast);
         return toast;
+    }
+
+    /* The finished notice dismisses itself so it cannot sit over the page, and
+       a new download (portable or the project's own zip) replaces it. */
+    function hideToast() {
+        if (toastTimer) {
+            clearTimeout(toastTimer);
+            toastTimer = null;
+        }
+        if (toast) toast.style.display = "none";
     }
 
     function toastNodes() {
@@ -362,15 +372,20 @@
         var nodes = toastNodes();
         nodes.root.style.display = "block";
         nodes.bar.style.width = "100%";
-        nodes.label.textContent = streamed ? "Saved to Downloads as " + saveName : "Download started";
-        nodes.meta.textContent = streamed
-            ? (osLabel ? "Portable package for " + osLabel : "")
-            : (osLabel ? "Portable package for " + osLabel : "Check your Downloads folder");
+        nodes.label.textContent = "Firmware zip downloaded";
+        /* Only the proxied path can force the release's own filename; a direct
+           browser download keeps whatever name the mirror published. */
+        nodes.meta.textContent = streamed && saveName ? "Saved as " + saveName : "Check your Downloads folder";
         nodes.dismiss.style.display = "inline-block";
         if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(hideToast, 10000);
     }
 
     function startToast() {
+        if (toastTimer) {
+            clearTimeout(toastTimer);
+            toastTimer = null;
+        }
         var nodes = toastNodes();
         nodes.root.style.display = "block";
         nodes.label.textContent = "Preparing your download…";

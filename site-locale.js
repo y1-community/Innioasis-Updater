@@ -31,11 +31,11 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261108hero";
+    var RUNTIME_VERSION = "20261109i18n";
     /* Catalogs are re-fetched under a new URL when their content changes.
        Without this a returning visitor keeps the copy they cached, so a
        language whose catalog was just completed still reads as English. */
-    var CATALOG_VERSION = "20261108shell2";
+    var CATALOG_VERSION = "20261109i18n";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";

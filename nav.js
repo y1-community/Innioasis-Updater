@@ -186,6 +186,20 @@
     return null;
   }
 
+  /* A visitor whose browser reports de-AT, fr-CA or nl-BE still reads German,
+     French or Dutch, and those pages exist as _de/_fr/_nl.html. Matching the
+     raw tag against the core list missed every regional variant, so links fell
+     back to the English page and only the runtime translated it. */
+  function baseLocaleCode(code) {
+    var clean = String(code || "").toLowerCase().trim();
+    if (!clean) return "";
+    var base = clean.split("-")[0];
+    if (base === "zh") {
+      return /-(tw|hk|mo)$/.test(clean) ? "zh-TW" : "zh-CN";
+    }
+    return base;
+  }
+
   function decorateLinkUrl(rawHref) {
     if (!rawHref) return rawHref;
     var raw = String(rawHref).trim();
@@ -225,8 +239,12 @@
       var path = url.pathname;
       var coreLocales = ["de", "es", "fr", "it", "ja", "ko", "nl", "pl", "pt", "ru", "tr", "uk", "zh-CN", "zh-TW", "ar"];
       var isCore = coreLocales.some(function (c) { return c.toLowerCase() === loc.toLowerCase(); });
+      var suffixCode = baseLocaleCode(loc);
+      if (!isCore && suffixCode) {
+        isCore = coreLocales.some(function (c) { return c.toLowerCase() === suffixCode.toLowerCase(); });
+      }
       if (isCore) {
-        var baseCode = loc.toLowerCase() === "ja" ? "ja" : loc;
+        var baseCode = suffixCode || loc;
         if (path === "/" || path === "") {
           url.pathname = "/index_" + baseCode + ".html";
         } else {

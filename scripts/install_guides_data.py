@@ -67,7 +67,7 @@ OS_PROFILES = {
             "The player disconnects during the install: use a direct port, keep the Mac awake, and avoid hubs or adapters. Reconnect only when Updater CE asks.",
             "SP Flash Tool is not available on macOS. Updater CE uses the MTKClient route on a Mac; for manual SP Flash Tool recovery, use a Windows or Linux computer.",
         ],
-        "note": "Intel and Apple Silicon Macs are supported. The current guide targets macOS Ventura or later.",
+        "note": "Intel and Apple Silicon Macs are supported. The current guide targets macOS Monterey (12.0) or later.",
         "driver_link": "drivers.html#macos",
         "dl_label": "Download Updater CE for macOS",
         "driver_label": "macOS setup notes",

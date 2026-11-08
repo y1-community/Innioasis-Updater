@@ -59,6 +59,53 @@ def glob_to_regex(pattern: str) -> "re.Pattern[str]":
     return re.compile("^" + "".join(out) + "$")
 
 
+def locale_codes() -> Set[str]:
+    """Every locale code the site ships, including aliases.
+
+    Pre-rendered copies of a page are stored beside the source as
+    ``<page>_<locale>.html`` (``index_de.html``, ``404_ar.html``). They are
+    output, not source: extracting them treated German, Portuguese and Japanese
+    prose as English and inflated the work list by an order of magnitude, so
+    the catalogs were never able to cover the real English pages.
+    """
+    codes: Set[str] = {"en"}
+    for relative in ("i18n/locales.json", "i18n/site-locales.json"):
+        path = os.path.join(ROOT, relative)
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path, "r", encoding="utf-8") as handle:
+                data = json.load(handle)
+        except (OSError, ValueError):
+            continue
+        for key in ("locales", "variants"):
+            for entry in data.get(key) or []:
+                if not isinstance(entry, dict):
+                    continue
+                for field in ("code", "base"):
+                    value = str(entry.get(field) or "").strip().lower()
+                    if value:
+                        codes.add(value)
+                for alias in entry.get("aliases") or []:
+                    alias = str(alias or "").strip().lower()
+                    if alias:
+                        codes.add(alias)
+    return codes
+
+
+LOCALE_COPY_RE = re.compile(r"_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html?$", re.IGNORECASE)
+
+
+def is_locale_copy(relative: str, codes: Set[str]) -> bool:
+    match = LOCALE_COPY_RE.search(relative)
+    if not match:
+        return False
+    tag = match.group(1).lower()
+    if tag in codes:
+        return True
+    return tag.split("-")[0] in codes
+
+
 def candidate_pages(config: dict) -> List[str]:
     """Return repo-relative HTML paths for every configured page."""
     tiers = config["tiers"]
@@ -71,6 +118,7 @@ def candidate_pages(config: dict) -> List[str]:
     include_re = [glob_to_regex(pattern) for pattern in include]
     exclude_re = [glob_to_regex(pattern) for pattern in exclude]
 
+    codes = locale_codes()
     selected: Set[str] = set()
     for directory, dirnames, filenames in os.walk(ROOT):
         dirnames[:] = [
@@ -83,6 +131,8 @@ def candidate_pages(config: dict) -> List[str]:
                 continue
             absolute = os.path.join(directory, filename)
             relative = os.path.relpath(absolute, ROOT).replace(os.sep, "/")
+            if is_locale_copy(relative, codes):
+                continue
             if any(pattern.match(relative) for pattern in exclude_re):
                 continue
             if any(pattern.match(relative) for pattern in include_re):
@@ -97,6 +147,69 @@ def load_ui_strings() -> Dict[str, str]:
         return {}
     with open(path, "r", encoding="utf-8") as handle:
         return json.load(handle).get("strings", {})
+
+
+# Units rendered as their own text node beside a live number (theme cards and
+# theme pages). They are shorter than the harvester's literal floor, so they
+# would otherwise never reach a catalog and every card would cost an API call.
+EXTRA_UI_STRINGS = ["views", "downloads"]
+
+
+SHELL_MARKUP_FILES = ["nav.js", "gallery-chrome.js", "site-init.js"]
+LITERAL_RE = re.compile(r"""(['"])((?:\\.|(?!\1)[^\\\n]){4,400}?)\1""")
+TAG_RE = re.compile(r"<[^>]*>")
+ENTITY_MAP = {"&amp;": "&", "&rarr;": "\u2192", "&larr;": "\u2190", "&mdash;": "\u2014", "&ndash;": "\u2013", "&nbsp;": " ", "&quot;": '"', "&#39;": "'", "&lt;": "<", "&gt;": ">"}
+
+
+def load_shell_markup_strings() -> Dict[str, str]:
+    """Visible text inside the HTML fragments nav.js builds its chrome from.
+
+    Those literals contain tags, so the plain literal harvester drops them and
+    the dock/notices labels never reached a catalog; every page load then asked
+    a translation API for "Auto" or "All notices " again.
+    """
+    out: Dict[str, str] = {}
+    for name in SHELL_MARKUP_FILES:
+        path = os.path.join(ROOT, name)
+        if not os.path.exists(path):
+            continue
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            source = handle.read()
+        for match in LITERAL_RE.finditer(source):
+            literal = match.group(2)
+            if "<" not in literal or ">" not in literal:
+                continue
+            text = TAG_RE.sub("\n", literal)
+            for key, value in ENTITY_MAP.items():
+                text = text.replace(key, value)
+            for segment in text.split("\n"):
+                line = " ".join(segment.split())
+                if len(line) < 3 or not re.search(r"[A-Za-z]{2}", line):
+                    continue
+                if any(token in line for token in ("=", "{", "}", "//", "\\")):
+                    continue
+                out[line] = name
+    return out
+
+
+def load_theme_strings() -> Dict[str, str]:
+    """Theme names and descriptions live in themes.json, not in page markup,
+    so extraction never saw them and no catalog could cover a card."""
+    path = os.path.join(ROOT, "themes.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, "r", encoding="utf-8") as handle:
+        data = json.load(handle)
+    themes = data.get("themes") if isinstance(data, dict) else data
+    out: Dict[str, str] = {}
+    for theme in themes or []:
+        if not isinstance(theme, dict):
+            continue
+        for field in ("name", "description", "author"):
+            value = " ".join(str(theme.get(field) or "").split())
+            if value:
+                out[value] = field
+    return out
 
 
 def main() -> int:
@@ -159,6 +272,28 @@ def main() -> int:
             ordered[text] = {"n": 1, "pages": max(1, len(files)), "script": True}
         else:
             entry["script"] = True
+
+    for text in EXTRA_UI_STRINGS:
+        entry = ordered.get(text)
+        if entry is None:
+            ordered[text] = {"n": 1, "pages": 1, "script": True}
+        else:
+            entry["script"] = True
+
+    for text in load_shell_markup_strings():
+        entry = ordered.get(text)
+        if entry is None:
+            ordered[text] = {"n": 1, "pages": 1, "script": True}
+        else:
+            entry["script"] = True
+
+    # Theme names and descriptions are rendered by the gallery from themes.json.
+    for text in load_theme_strings():
+        entry = ordered.get(text)
+        if entry is None:
+            ordered[text] = {"n": 1, "pages": 1, "theme": True}
+        else:
+            entry["theme"] = True
 
     output = {
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
