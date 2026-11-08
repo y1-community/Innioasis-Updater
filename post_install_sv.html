@@ -327,6 +327,9 @@
                 (duplicate.textContent.trim().toLowerCase() === heading.toLowerCase())) {
               duplicate.remove();
             }
+            if (window.InnioasisLocale && typeof window.InnioasisLocale.translateDynamic === "function") {
+              window.InnioasisLocale.translateDynamic(body);
+            }
           }
 
           setActions(state, item, ctx);

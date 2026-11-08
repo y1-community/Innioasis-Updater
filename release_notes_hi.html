@@ -369,11 +369,17 @@
           var published = String((release && release.body) || "").trim();
           if (published) {
             body.innerHTML = D.markdownToHtml(published, ctx);
+            if (window.InnioasisLocale && typeof window.InnioasisLocale.translateDynamic === "function") {
+              window.InnioasisLocale.translateDynamic(body);
+            }
           } else {
             body.innerHTML = '<p class="lumen-doc-status">Loading the notes from the project…</p>';
             D.releaseNotesMarkdown(state.repo, state.tag).then(function (found) {
               if (found && found.markdown) {
                 body.innerHTML = D.markdownToHtml(found.markdown, ctx);
+                if (window.InnioasisLocale && typeof window.InnioasisLocale.translateDynamic === "function") {
+                  window.InnioasisLocale.translateDynamic(body);
+                }
               } else {
                 noNotes();
               }

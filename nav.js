@@ -193,12 +193,22 @@
     // 3. Language preference
     var loc = getActiveLocale();
     if (loc && loc !== "en") {
+      url.searchParams.set("lang", loc);
       var path = url.pathname;
-      var fileMatch = path.match(/\/([^/]+)\.html$/i);
-      if (fileMatch && !path.match(/_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i)) {
-        url.searchParams.set("lang", loc);
-      } else {
-        url.searchParams.set("lang", loc);
+      var coreLocales = ["de", "es", "fr", "it", "ja", "ko", "nl", "pl", "pt", "ru", "tr", "uk", "zh-CN", "zh-TW", "ar"];
+      var isCore = coreLocales.some(function (c) { return c.toLowerCase() === loc.toLowerCase(); });
+      if (isCore) {
+        var baseCode = loc.toLowerCase() === "ja" ? "ja" : loc;
+        if (path === "/" || path === "") {
+          url.pathname = "/index_" + baseCode + ".html";
+        } else {
+          var htmlMatch = path.match(/^(.+?\/)?([a-zA-Z0-9_-]+)\.html$/i);
+          if (htmlMatch && !/_[a-zA-Z0-9_-]+$/i.test(htmlMatch[2])) {
+            var dir = htmlMatch[1] || "";
+            var name = htmlMatch[2];
+            url.pathname = dir + name + "_" + baseCode + ".html";
+          }
+        }
       }
     }
 
