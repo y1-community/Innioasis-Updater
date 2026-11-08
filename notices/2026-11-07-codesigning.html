@@ -10,17 +10,17 @@
   <meta charset="utf-8">
   <meta name="author" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Windows 10/11 app launch issues fixed - Innioasis Updater</title>
-  <meta name="description" content="We&#x27;ve resolved the issues some users were having launching the windows app.">
+  <title>Windows 10/11 app launch issues &amp; Smart App Control workaround - Innioasis Updater</title>
+  <meta name="description" content="If Windows 10/11 or Smart App Control stops you from launching the app, follow the workaround here.">
   <link rel="canonical" href="https://innioasis.app/notices/2026-11-07-codesigning.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Windows 10/11 app launch issues fixed - Innioasis Updater">
-  <meta property="og:description" content="We&#x27;ve resolved the issues some users were having launching the windows app.">
+  <meta property="og:title" content="Windows 10/11 app launch issues &amp; Smart App Control workaround - Innioasis Updater">
+  <meta property="og:description" content="If Windows 10/11 or Smart App Control stops you from launching the app, follow the workaround here.">
   <meta property="og:url" content="https://innioasis.app/notices/2026-11-07-codesigning.html">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Windows 10/11 app launch issues fixed - Innioasis Updater">
-  <meta name="twitter:description" content="We&#x27;ve resolved the issues some users were having launching the windows app.">
+  <meta name="twitter:title" content="Windows 10/11 app launch issues &amp; Smart App Control workaround - Innioasis Updater">
+  <meta name="twitter:description" content="If Windows 10/11 or Smart App Control stops you from launching the app, follow the workaround here.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
@@ -31,10 +31,18 @@
 </head>
 <body class="site-themes-app"><a class="lumen-skip-link" href="#main">Skip to content</a><div id="nav-root"></div>
 <main id="main" class="lumen-guide">
-<header><p class="lumen-kicker">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p><h1>Windows 10/11 app launch issues fixed</h1><p class="lead">We&#x27;ve resolved the issues some users were having launching the windows app.</p><p class="lumen-meta">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p></header>
-<section class="lumen-guide-section lumen-notice-body"><p>Users had reported issues launching the application around 7PM UTC on Windows systems, where neither new installs or existing would run on Windows 11/10 with Smart App Control enabled. This has now been resolved and apps should run as normal. False-positive reports were submitted to Microsoft and have now been actioned.</p>
-<p><a href="https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd">see the installer.exe report to Microsoft</a> <a href="https://www.microsoft.com/en-us/wdsi/submission/1aef842b-3fda-44e7-bcfb-1a64af3ea661">see the InnioasisUpdater.exe (main app) report to Microsoft</a></p></section>
-<p class="lumen-actions"><a class="lumen-button lumen-button--primary" href="https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd" rel="noopener">Open the linked page</a></p>
+<header><p class="lumen-kicker">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p><h1>Windows 10/11 app launch issues &amp; Smart App Control workaround</h1><p class="lead">If Windows 10/11 or Smart App Control stops you from launching the app, follow the workaround here.</p><p class="lumen-meta">From 2026-10-25 · until 2026-12-31 · Models: Y1,Y2</p></header>
+<section class="lumen-guide-section lumen-notice-body"><p>False-positive reports were submitted to Microsoft for <code>installer.exe</code> and <code>InnioasisUpdater.exe</code> and actioned, but if Windows Endpoint Protection or Smart App Control is still blocking the application on your computer, use this workaround:</p>
+<h3>Temporary Workaround: Turn Smart App Control Off</h3>
+<ol><li>Open Windows <strong>Settings</strong> (press <code>Win + I</code>).</li><li>Go to <strong>Privacy &amp; security</strong> &gt; <strong>Windows Security</strong> &gt; <strong>App &amp; browser control</strong>.</li><li>Under <strong>Smart App Control</strong>, click <strong>Smart App Control settings</strong>.</li><li>Set Smart App Control to <strong>Off</strong>. This immediately allows the app to open and run.</li></ol>
+<p>If Windows or Edge prevents you from downloading Updater CE, click more options (<strong>…</strong>) then <strong>Keep</strong> &gt; <strong>Show more</strong> &gt; <strong>Keep anyway</strong>.</p>
+<h3>Re-enabling Smart App Control</h3>
+<p>When false-positive definitions finish updating on your computer, you can re-enable Smart App Control via the Windows Registry:</p>
+<ol><li>Press <strong>Windows Key + R</strong>, type <code>regedit</code>, and press Enter to open Registry Editor as administrator.</li><li>Navigate to: <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy</code> (or <code>Policies</code>).</li><li>Locate <code>VerifiedAndReputablePolicyState</code> in the right-hand pane.</li><li>Double-click <code>VerifiedAndReputablePolicyState</code> and change its Value data to:</li></ol>
+<ul><li><code>1</code> = On (Enforced)</li><li><code>2</code> = Evaluation Mode</li></ul>
+<ol><li>Click OK, close the Registry Editor, and restart your computer.</li></ol>
+<p><a href="https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd">See the installer.exe report to Microsoft</a> <a href="https://www.microsoft.com/en-us/wdsi/submission/1aef842b-3fda-44e7-bcfb-1a64af3ea661">See the InnioasisUpdater.exe report to Microsoft</a></p></section>
+<p class="lumen-actions"><a class="lumen-button lumen-button--primary" href="https://innioasis.app/notices.html" rel="noopener">Open the linked page</a></p>
 <p class="lumen-notice-back"><a href="index.html">← All notices</a></p>
 </main>
 <div id="footer-root"></div><div id="support-toolbar-slot"></div>

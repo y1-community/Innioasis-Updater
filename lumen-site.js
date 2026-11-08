@@ -945,6 +945,75 @@
         }
     }
 
+    function openSmartAppControlModal() {
+        var modal = document.getElementById("smart-app-control-modal");
+        if (!modal) {
+            modal = document.createElement("div");
+            modal.id = "smart-app-control-modal";
+            modal.className = "smart-app-control-modal edge-keep-modal";
+            modal.setAttribute("role", "dialog");
+            modal.setAttribute("aria-labelledby", "sac-modal-title");
+            modal.innerHTML =
+                '<div class="edge-keep-modal__card">' +
+                '<h3 id="sac-modal-title" class="edge-keep-modal__heading">Windows won\'t launch the app? How to turn off Smart App Control</h3>' +
+                '<p class="edge-keep-modal__body">Windows Defender SmartScreen or Smart App Control can sometimes block newly released community apps as an unrecognized app false-positive. Turning Smart App Control off allows Updater CE to open and run normally.</p>' +
+                '<ol class="edge-keep-modal__steps">' +
+                '<li>Open <strong>Settings</strong> on your Windows PC (press <kbd>Win</kbd> + <kbd>I</kbd>).</li>' +
+                '<li>Click <strong>Privacy &amp; security</strong> in the left sidebar, then click <strong>Windows Security</strong>.</li>' +
+                '<li>Click <strong>App &amp; browser control</strong>.</li>' +
+                '<li>Under <em>Smart App Control</em>, click <strong>Smart App Control settings</strong>.</li>' +
+                '<li>Set the toggle to <strong>Off</strong> to allow Updater CE to launch.</li>' +
+                '</ol>' +
+                '<p class="edge-keep-modal__hint"><strong>Blocked by Edge?</strong> If Microsoft Edge blocks the download itself, click the More options button (<strong>…</strong>) &rarr; <strong>Keep</strong> &rarr; <strong>Show more</strong> &rarr; <strong>Keep anyway</strong>.</p>' +
+                '<p class="edge-keep-modal__hint" style="margin-top:0.6rem;font-size:0.84rem;color:var(--lumen-muted);"><strong>Re-enabling Smart App Control later:</strong> You can re-enable Smart App Control at any time via the Windows Registry under <code>HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CI\\Policy</code> by setting <code>VerifiedAndReputablePolicyState</code> to <code>1</code> (On) or <code>2</code> (Evaluation Mode) and restarting.</p>' +
+                '<button type="button" class="lumen-button lumen-button--primary edge-keep-modal__close" data-smart-app-control-close>Close help</button>' +
+                '</div>';
+            document.body.appendChild(modal);
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) closeSmartAppControlModal();
+            });
+            var closeBtn = modal.querySelector("[data-smart-app-control-close]");
+            if (closeBtn) closeBtn.addEventListener("click", closeSmartAppControlModal);
+        }
+        modal.hidden = false;
+        modal.setAttribute("aria-hidden", "false");
+        var close = modal.querySelector("[data-smart-app-control-close]");
+        if (close) close.focus();
+    }
+
+    function closeSmartAppControlModal() {
+        var modal = document.getElementById("smart-app-control-modal");
+        if (!modal) return;
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+    }
+
+    function initSmartAppControlHelp() {
+        var openers = document.querySelectorAll("[data-smart-app-control-hint], .lumen-smart-app-control-help");
+        openers.forEach(function (btn) {
+            btn.addEventListener("click", function (event) {
+                event.preventDefault();
+                openSmartAppControlModal();
+            });
+        });
+        var modal = document.getElementById("smart-app-control-modal");
+        if (modal) {
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) closeSmartAppControlModal();
+            });
+            modal.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" || event.key === "Esc") closeSmartAppControlModal();
+            });
+            var closeButton = modal.querySelector("[data-smart-app-control-close]");
+            if (closeButton) closeButton.addEventListener("click", closeSmartAppControlModal);
+        }
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" || event.key === "Esc") {
+                closeSmartAppControlModal();
+            }
+        });
+    }
+
 
     function initCopyButtons() {
         document.querySelectorAll("[data-copy-target]").forEach(function (button) {
@@ -2990,6 +3059,7 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
         initCopyButtons();
         initDownloadConfirm();
         initEdgeKeepHelp();
+        initSmartAppControlHelp();
         initLumenTips();
 
         loadAndMergeManifest().then(function () {

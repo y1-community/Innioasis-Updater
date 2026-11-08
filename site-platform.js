@@ -24,7 +24,7 @@
                 "Run <code>DriverInstall.exe</code>, then restart the PC so the MediaTek driver is active.",
                 "Use a data cable and a USB port on the PC itself. When Updater CE asks, power the player off and connect it."
             ],
-            note: "If SmartScreen blocks the download, choose <strong>More info</strong> then <strong>Run anyway</strong> for the official file."
+            note: "If SmartScreen blocks the download, choose <strong>More info</strong> then <strong>Run anyway</strong>. If Windows won't launch the app, open Settings &rarr; Privacy &amp; security &rarr; Windows Security &rarr; App &amp; browser control and turn Smart App Control off. <a href='#smart-app-control' class='lumen-smart-app-control-help' data-smart-app-control-hint>Windows won't launch the app? Help</a>"
         },
         macos: {
             heading: "Install Updater CE on your Mac",

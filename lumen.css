@@ -603,6 +603,17 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
   margin-left: .5rem;
 }
 
+.lumen-smart-app-control-help {
+  color: var(--lumen-accent);
+  text-decoration: underline;
+  text-underline-offset: .18em;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lumen-smart-app-control-help:hover, .lumen-smart-app-control-help:focus-visible {
+  color: var(--lumen-paper, #ffffff);
+}
+
 /* Benefits pages: model availability, lists, and community video links */
 .lumen-model-availability { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; }
 .lumen-button--unavailable { background: var(--lumen-panel-soft); border-style: dashed; color: var(--lumen-faint); cursor: not-allowed; pointer-events: none; }
