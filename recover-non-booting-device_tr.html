@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>How to Recover a Non-Booting MediaTek Player After MTKclient Failure · Innioasis Community</title>
-  <meta name="description" content="Step-by-step guide to unbrick and recover non-booting Innioasis Y1, Y2, G1, Timmkoo, and MediaTek players after MTKclient interrupted flashes on Linux or macOS.">
+  <title>MTKclient Arızasından Sonra Önyükleme Yapamayan MediaTek Oyuncu Nasıl Kurtarılır · Innioasis Topluluk</title>
+  <meta name="description" content="Linux veya macOS&#39;ta MTKclient kesintiye uğrayan flaşlardan sonra önyükleme yapmayan Innioasis Y1, Y2, G1, Timmkoo ve MediaTek oynatıcıların engellemesini kaldırmak ve kurtarmak için adım adım kılavuz.">
   <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_tr.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
@@ -62,106 +62,106 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Troubleshooting & Device Recovery</p>
-      <h1>Recovering a Non-Booting Device After MTKclient Flashing</h1>
-      <p class="lead">If your Innioasis Y1, Y2, or MediaTek device fails to power on or shows a black screen after flashing with MTKclient on macOS or Linux, do not panic. The hardware BootROM (BROM) is permanent and cannot be destroyed.</p>
+      <p class="lumen-kicker">Sorun Giderme ve Cihaz Kurtarma</p>
+      <h1>MTKclient Flashlamasından Sonra Önyüklemeyen Bir Aygıtın Kurtarılması</h1>
+      <p class="lead">Innioasis Y1, Y2 veya MediaTek cihazınız açılmıyorsa veya macOS veya Linux'ta MTKclient ile yanıp söndükten sonra siyah ekran gösteriyorsa paniğe kapılmayın. Donanım BootROM'u (BROM) kalıcıdır ve yok edilemez.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>Why MTKclient May Stall or Leave a Black Screen</h2>
-      <p>MTKclient relies on software exploit payloads (kamakiri / amonet) to bypass DA authentication and raw USB communication via libusb. On macOS and Linux ARM64 systems:</p>
+      <h2>MTKclient Neden Durabilir veya Siyah Ekran Bırakabilir?</h2>
+      <p>MTKclient, DA kimlik doğrulamasını ve libusb aracılığıyla ham USB iletişimi atlamak için yazılımdan yararlanma yüklerine (kamakiri / amonet) güvenir. MacOS ve Linux ARM64 sistemlerinde:</p>
       <ul class="lumen-benefits-list">
-        <li>USB handshake latency or port timeouts on macOS can stall DA payload injection mid-transfer.</li>
-        <li>Missing or incomplete partition headers leave the bootloader (preloader / lk) in a non-responsive state.</li>
-        <li>The player appears completely dead—no LED, no charging icon, no screen backlight.</li>
+        <li>MacOS'ta USB el sıkışma gecikmesi veya bağlantı noktası zaman aşımları, aktarım sırasında DA verisi enjeksiyonunu durdurabilir.</li>
+        <li>Eksik veya tamamlanmamış bölüm başlıkları, önyükleyiciyi (önyükleyici / lk) yanıt vermeyen bir durumda bırakır.</li>
+        <li>Oynatıcı tamamen ölü görünüyor; LED yok, şarj simgesi yok, ekran arka ışığı yok.</li>
       </ul>
-      <p>Even in this state, the MediaTek chipset drops back into <strong>BROM Mode</strong> (USB VID 0e8d, PID 0003), ready for official low-level recovery.</p>
+      <p>Bu durumda bile, MediaTek yonga seti tekrar <strong>BROM Modu</strong> (USB VID 0e8d, PID 0003), resmi düşük seviyeli kurtarma için hazır.</p>
     </section>
 
     <section class="lumen-guide-section" id="sp-flash-tool-engine">
-      <h2>The Definitive Recovery Method: SP Flash Tool Engine in Updater CE</h2>
-      <p>The safest, most reliable way to recover your bricked player is using <strong>Güncelleyici CE</strong> configured with the official <strong>SP Flash Tool</strong> backend.</p>
+      <h2>Kesin Kurtarma Yöntemi: Güncelleyici CE'deki SP Flash Tool Motor</h2>
+      <p>Tuğlalanmış oynatıcınızı kurtarmanın en güvenli, en güvenilir yolu kullanmaktır. <strong>Güncelleyici CE</strong> yetkili ile yapılandırılmış <strong>SP Flash Tool</strong> arka uç.</p>
       
       <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
-        <h3>Exact Steps in Updater CE:</h3>
+        <h3>Güncelleyici CE'deki Tam Adımlar:</h3>
         <ol class="lumen-steps" style="margin-top: 10px;">
           <li>Açık <strong>Güncelleyici CE</strong>.</li>
-          <li>Tıklamak <strong>Ayarlar</strong> in the left navigation sidebar.</li>
-          <li>Scroll down to the Advanced section and enable <strong>Show Advanced Settings</strong>.</li>
-          <li>Under <strong>Install Method</strong> (or <em>Flashing Engine for MediaTek installer</em>), locate the <strong>Flash Method</strong> dropdown.</li>
-          <li>Change the selection from <em>Auto (recommended)</em> veya <em>MTKClient</em> ile <strong>SP Flash Tool</strong>.</li>
+          <li>Tıklamak <strong>Ayarlar</strong> sol gezinme kenar çubuğunda.</li>
+          <li>Gelişmiş bölümüne ilerleyin ve etkinleştirin <strong>Gelişmiş Ayarları Göster</strong>.</li>
+          <li>Altında <strong>Kurulum Yöntemi</strong> (veya <em>MediaTek yükleyici için Yanıp Sönen Motor</em>), yerini bulun <strong>Flaş Yöntemi</strong> yıkılmak.</li>
+          <li>Seçimi şu şekilde değiştir: <em>Otomatik (önerilen)</em> veya <em>MTKClient</em> ile <strong>SP Flash Tool</strong>.</li>
           <li>Confirm the prompt and return to the main install flow.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Platform Architecture & OS Requirements for SP Flash Tool</h2>
-      <p>MediaTek's official <code>SP Flash Tool</code> binary is compiled natively as an <strong>x86_64 ELF binary for Linux</strong> and a <strong>PE32+ executable for Windows x64</strong>.</p>
+      <h2>SP Flash Tool İçin Platform Mimarisi ve İşletim Sistemi Gereksinimleri</h2>
+      <p>MediaTek'ın yetkilisi <code>SP Flash Tool</code> ikili dosya yerel olarak derlenir <strong>Linux için x86_64 ELF ikili dosyası</strong> ve bir <strong>Windows x64 için PE32+ yürütülebilir dosyası</strong>.</p>
       <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
-        <strong>Important Hardware Note for macOS and ARM64 Linux Users:</strong><br>
-        Because MediaTek does not compile SP Flash Tool for macOS (Darwin) or Linux ARM64 (aarch64), macOS users and ARM64 Linux users (such as Raspberry Pi or Apple Silicon running Asahi Linux) experiencing a brick must connect their player to:
+        <strong>macOS ve ARM64 Linux Kullanıcıları için Önemli Donanım Notu:</strong><br>
+        MediaTek, SP Flash Tool'i macOS (Darwin) veya Linux ARM64 (aarch64) için derlemediğinden, tuğla sorunu yaşayan macOS kullanıcıları ve ARM64 Linux kullanıcılarının (Asahi Linux çalıştıran Raspberry Pi veya Apple Silicon gibi) oynatıcılarını aşağıdakilere bağlaması gerekir:
         <ul style="margin: 8px 0 0 20px;">
-          <li>An <strong>x64 Windows PC</strong> (Windows 10 / 11 64-bit), or</li>
-          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64-bit).</li>
+          <li>Bir <strong>x64 Windows PC</strong> (Windows 10/11 64 bit) veya</li>
+          <li>Bir <strong>x86_64 Linux bilgisayarı</strong> (Ubuntu, Debian, Fedora, Arch 64 bit).</li>
         </ul>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Step-by-Step Hardware Unbricking Process</h2>
+      <h2>Adım Adım Donanım Engelleme İşlemi</h2>
       <ol class="lumen-steps">
-        <li><strong>Disconnect the Player:</strong> Unplug the USB cable from the player and PC completely.</li>
-        <li><strong>Hard Power Off:</strong> Hold the Power button (or Power + Volume Down) for 15 seconds to ensure the chipset is fully powered down and not stuck in a low-power USB loop.</li>
-        <li><strong>Launch Updater CE with SP Flash Tool Mode:</strong> Select your device model (e.g. <em>Innioasis Y1</em> veya <em>Innioasis Y2</em>) and choose <em>Orijinal yazılım</em> to restore stock partitions.</li>
-        <li><strong>Initiate Install / Restore:</strong> Tıklamak <em>Yükle / Geri yükle</em> in Updater CE. Wait until the status prompt says <em>Waiting for player...</em></li>
-        <li><strong>Insert USB Cable to Trigger BROM:</strong> While the device is OFF, plug in the USB cable directly to a high-speed motherboard USB port (avoid unpowered USB hubs).</li>
-        <li>The system will detect the MediaTek VCOM port, push the Download Agent (DA), rewrite partition tables, and restore all firmware images cleanly.</li>
+        <li><strong>Oynatıcının bağlantısını kesin:</strong> USB kablosunu oynatıcıdan ve bilgisayardan tamamen çıkarın.</li>
+        <li><strong>Sert Güç Kapatma:</strong> Yonga setinin tamamen kapatıldığından ve düşük güç USB döngüsünde sıkışıp kalmadığından emin olmak için Güç düğmesini (veya Güç + Sesi Kısma) 15 saniye basılı tutun.</li>
+        <li><strong>Güncelleyici CE'yi SP Flash Tool Moduyla başlatın:</strong> Cihazınızın modelini seçin (ör. <em>Innioasis Y1</em> veya <em>Innioasis Y2</em>) ve seçin <em>Orijinal yazılım</em> stok bölümlerini geri yüklemek için.</li>
+        <li><strong>Kurulumu / Geri Yüklemeyi başlatın:</strong> Tıklamak <em>Yükle / Geri yükle</em> Güncelleyici CE'de. Durum istemi şunu söyleyene kadar bekleyin <em>Oyuncu bekleniyor...</em></li>
+        <li><strong>BROM'u Tetiklemek için USB Kabloyu Takın:</strong> Cihaz KAPALI iken, USB kablosunu doğrudan yüksek hızlı anakart USB bağlantı noktasına takın (güçsüz USB hub'lardan kaçının).</li>
+        <li>Sistem MediaTek VCOM bağlantı noktasını algılayacak, İndirme Aracısını (DA) gönderecek, bölüm tablolarını yeniden yazacak ve tüm ürün yazılımı görüntülerini temiz bir şekilde geri yükleyecektir.</li>
       </ol>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Permutations by Model and Operating System</h2>
+      <h2>Modele ve İşletim Sistemine Göre Permütasyonlar</h2>
       <div style="overflow-x: auto;">
         <table class="lumen-release-table">
           <thead>
             <tr>
-              <th>Model</th>
-              <th>Failed Platform</th>
-              <th>Recommended Recovery Setup</th>
-              <th>Engine &amp; Mode</th>
+              <th>Modeli</th>
+              <th>Başarısız Platform</th>
+              <th>Önerilen Kurtarma Kurulumu</th>
+              <th>Motor ve Mod</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
-              <td>macOS (Apple Silicon / Intel)</td>
+              <td>macOS (Apple Silikon / Intel)</td>
               <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y1 Stock ROM</td>
+              <td>SP Flash Tool + Y1 Hisse senedi ROM</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
               <td>Linux ARM64 / x86_64</td>
-              <td>Linux x86_64 or Windows x64 PC</td>
-              <td>SP Flash Tool + Community DA</td>
+              <td>Linux x86_64 veya Windows x64 PC</td>
+              <td>SP Flash Tool + Topluluk DA'sı</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y2</strong></td>
-              <td>macOS (MTKclient stalled)</td>
+              <td>macOS (MTKclient durdu)</td>
               <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y2 Scatter Recovery</td>
+              <td>SP Flash Tool + Y2 Dağılım Kurtarma</td>
             </tr>
             <tr>
               <td><strong>Innioasis G1 / G3 / G5</strong></td>
-              <td>macOS / Linux MTKclient</td>
-              <td>Windows x64 PC with VCOM Drivers</td>
-              <td>SP Flash Tool + Factory Firmware</td>
+              <td>macOS / Linux MTK istemcisi</td>
+              <td>VCOM Sürücülerine sahip Windows x64 PC</td>
+              <td>SP Flash Tool + Fabrika Aygıt Yazılımı</td>
             </tr>
             <tr>
               <td><strong>Mechen H1 / Timmkoo A5</strong></td>
-              <td>Any platform</td>
-              <td>Windows x64 or Linux x86_64 PC</td>
-              <td>SP Flash Tool + Scatter file</td>
+              <td>Herhangi bir platform</td>
+              <td>Windows x64 veya Linux x86_64 PC</td>
+              <td>SP Flash Tool + Dağılım dosyası</td>
             </tr>
           </tbody>
         </table>

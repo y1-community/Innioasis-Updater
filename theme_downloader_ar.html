@@ -12,8 +12,8 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y1 and 360p Rockbox Theme Downloader - Innioasis Updater</title>
-    <meta name="description" content="Browse Y1 and 360p Rockbox themes, download theme bundles, and follow the manual installation steps for your player.">
+    <title>Y1 و 360 بكسل Rockbox أداة تنزيل السمات - Innioasis محدث</title>
+    <meta name="description" content="تصفح سمات Y1 و360 بكسل Rockbox، وقم بتنزيل حزم السمات، واتبع خطوات التثبيت اليدوي للمشغل الخاص بك.">
     <link rel="canonical" href="https://innioasis.app/theme_downloader_ar.html">
     <link rel="stylesheet" href="lumen.css?v=20261114video">
     <link rel="stylesheet" href="site-theme.css?v=20260803">
@@ -422,36 +422,36 @@
     <main id="main" class="theme-tool-page">
     <div class="container">
         <div class="header">
-            <h1>🎨 Y1 and 360p Rockbox Theme Downloader</h1>
-            <p>Download and install themes for your Y1 device directly in your browser</p>
+            <h1>🎨 Y1 و 360p Rockbox أداة تنزيل السمات</h1>
+            <p>قم بتنزيل وتثبيت السمات لجهاز Y1 الخاص بك مباشرةً في متصفحك</p>
         </div>
 
         <div class="content">
             <!-- Device Information -->
             <div class="device-info">
-                <h3>📱 Device Setup</h3>
-                <p><strong>Y1 Device:</strong> Power on your Y1, connect via USB, and enable USB Storage Mode</p>
-                <p><strong>Computer:</strong> Your Y1 should appear as a removable drive (usually named "Y1" or similar)</p>
-                <p><strong>Theme Location:</strong> Look for a folder named <code>.rockbox</code> على جهازك Y1</p>
+                <h3>📱 إعداد الجهاز</h3>
+                <p><strong>Y1 الجهاز:</strong> قم بتشغيل Y1، وقم بالاتصال عبر USB، وقم بتمكين وضع التخزين USB</p>
+                <p><strong>حاسوب:</strong> يجب أن يظهر Y1 كمحرك أقراص قابل للإزالة (يُسمى عادةً "Y1" أو ما شابه ذلك)</p>
+                <p><strong>موقع الموضوع:</strong> ابحث عن مجلد اسمه <code>.rockbox</code> على جهازك Y1</p>
             </div>
 
             <!-- Tabs -->
             <div class="tabs">
-                <button class="tab active" onclick="switchTab('y1')">🎯 Y1 Themes</button>
-                <button class="tab" onclick="switchTab('rockbox')">🎨 Rockbox Themes</button>
+                <button class="tab active" onclick="switchTab('y1')">🎯 Y1 المواضيع</button>
+                <button class="tab" onclick="switchTab('rockbox')">🎨 Rockbox المواضيع</button>
             </div>
 
             <!-- Y1 Themes Tab -->
             <div id="y1-tab" class="tab-content active">
                 <div class="controls">
                     <button class="btn btn-primary" onclick="selectAllThemes('y1')">
-                        ☑️ Select All Y1 Themes
+                        ☑️ حدد جميع السمات Y1
                     </button>
                     <button class="btn btn-secondary" onclick="selectNoneThemes('y1')">
-                        ☐ Select None
+                        ☐ حدد لا شيء
                     </button>
                     <button class="btn btn-primary" onclick="downloadSelectedThemes('y1')" id="download-y1-btn">
-                        📥 Download Selected Y1 Themes
+                        📥 تنزيل الثيمات المختارة Y1
                     </button>
                 </div>
 
@@ -468,16 +468,16 @@
             <div id="rockbox-tab" class="tab-content">
                 <div class="controls">
                     <button class="btn btn-primary" onclick="selectAllThemes('rockbox')">
-                        ☑️ Select All Rockbox Themes
+                        ☑️ حدد جميع السمات Rockbox
                     </button>
                     <button class="btn btn-secondary" onclick="selectNoneThemes('rockbox')">
-                        ☐ Select None
+                        ☐ حدد لا شيء
                     </button>
                     <button class="btn btn-primary" onclick="downloadSelectedThemes('rockbox')" id="download-rockbox-btn">
-                        📥 Download Selected Rockbox Themes
+                        📥 تنزيل الثيمات المختارة Rockbox
                     </button>
                     <button class="btn btn-danger" onclick="resetRockboxFolder()">
-                        🗑️ Reset Rockbox Folder
+                        🗑️ إعادة تعيين Rockbox المجلد
                     </button>
                 </div>
 
@@ -492,90 +492,72 @@
 
             <!-- Status Messages -->
             <div id="status" class="status info" style="display: none;">
-                Ready to download themes
+                جاهز لتحميل المواضيع
             </div>
 
             <!-- Installation Instructions -->
             <div class="instructions">
-                <h3>📋 Manual Installation Instructions</h3>
+                <h3>📋 تعليمات التثبيت اليدوية</h3>
                 
                 <div class="highlight">
-                    <strong>⚠️ Important:</strong> After downloading themes, you need to manually copy them to your Y1 device. The browser cannot directly access your device's file system.
+                    <strong>⚠️ هام:</strong> بعد تنزيل السمات، يتعين عليك نسخها يدويًا إلى جهازك Y1. لا يمكن للمتصفح الوصول مباشرة إلى نظام الملفات بجهازك.
                 </div>
 
-                <h4>🎯 For Y1 Themes:</h4>
+                <h4>🎯 بالنسبة إلى Y1 السمات:</h4>
                 <ol>
-                    <li>Download the selected Y1 themes using the button above</li>
-                    <li>Extract the downloaded ZIP file to a temporary folder</li>
-                    <li>Connect your Y1 device via USB and enable USB Storage Mode</li>
-                    <li>Navigate to your Y1 device in your file manager</li>
-                    <li>Create a folder named <code>Themes</code> in the root of your Y1 device (if it doesn't exist)</li>
-                    <li>For each theme, copy the theme folder to <code>Themes/</code> على جهازك Y1</li>
-                    <li>Each theme should be in its own subfolder: <code>Themes/ThemeName/</code></li>
-                    <li>Theme files should be placed directly inside the theme subfolder (not nested deeper)</li>
+                    <li>قم بتنزيل السمات Y1 المحددة باستخدام الزر أعلاه</li>
+                    <li>قم باستخراج ملف ZIP الذي تم تنزيله إلى مجلد مؤقت</li>
+                    <li>قم بتوصيل جهازك Y1 عبر USB وقم بتمكين وضع التخزين USB</li>
+                    <li>انتقل إلى جهازك Y1 في مدير الملفات لديك</li>
+                    <li>قم بإنشاء مجلد باسم <code>Themes</code> في جذر جهازك Y1 (إذا لم يكن موجودًا)</li>
+                    <li>لكل سمة، انسخ مجلد السمة إلى <code>Themes/</code> على جهازك Y1</li>
+                    <li>يجب أن يكون كل موضوع في مجلد فرعي خاص به: <code>Themes/ThemeName/</code></li>
+                    <li>يجب وضع ملفات السمات مباشرة داخل المجلد الفرعي للموضوع (غير متداخلة بشكل أعمق)</li>
                 </ol>
 
                 <div class="code">
-                    Y1 Device/
-                    ├── .rockbox/
-                    ├── Themes/
-                    │   ├── Theme1/
-                    │   │   ├── theme.wps
-                    │   │   ├── theme.sbs
-                    │   │   └── ...
-                    │   ├── Theme2/
-                    │   │   ├── theme.wps
-                    │   │   └── ...
-                    │   └── ...
-                    └── ...
+                    Y1 الجهاز/ ├── .rockbox/ ├── Themes/ │ ├── Theme1/ │ │ ├── theme.wps │ │ ├── theme.sbs │ │ └── ... │ ├── Theme2/ │ │ ├── theme.wps │ │ └── ... │ └── ... └── ...
                 </div>
 
-                <h4>🎨 For Rockbox 360p Themes:</h4>
+                <h4>🎨 بالنسبة إلى Rockbox سمات 360 بكسل:</h4>
                 <ol>
-                    <li>Download the selected Rockbox themes using the button above</li>
-                    <li>Extract the downloaded ZIP file to a temporary folder</li>
-                    <li>Connect your Y1 device via USB and enable USB Storage Mode</li>
-                    <li>Navigate to your Y1 device in your file manager</li>
-                    <li>Find the <code>.rockbox</code> folder on your Y1 device</li>
-                    <li>For each theme, open the theme's <code>.rockbox</code> folder</li>
-                    <li>Copy all files from the theme's <code>.rockbox</code> folder directly into your Y1's <code>.rockbox</code> folder</li>
-                    <li>Overwrite existing files when prompted (this is normal for theme installation)</li>
+                    <li>قم بتنزيل السمات Rockbox المحددة باستخدام الزر أعلاه</li>
+                    <li>قم باستخراج ملف ZIP الذي تم تنزيله إلى مجلد مؤقت</li>
+                    <li>قم بتوصيل جهازك Y1 عبر USB وقم بتمكين وضع التخزين USB</li>
+                    <li>انتقل إلى جهازك Y1 في مدير الملفات لديك</li>
+                    <li>ابحث عن <code>.rockbox</code> المجلد الموجود على جهازك Y1</li>
+                    <li>لكل سمة، افتح السمة <code>.rockbox</code> المجلد</li>
+                    <li>انسخ جميع الملفات من السمة <code>.rockbox</code> المجلد مباشرة في مجلدات Y1 الخاصة بك <code>.rockbox</code> المجلد</li>
+                    <li>الكتابة فوق الملفات الموجودة عند المطالبة (وهذا أمر طبيعي لتثبيت السمة)</li>
                 </ol>
 
                 <div class="code">
-                    Y1 Device/
-                    ├── .rockbox/
-                    │   ├── themes/
-                    │   ├── fonts/
-                    │   ├── wps/
-                    │   ├── (theme files merged here)
-                    │   └── ...
-                    └── ...
+                    Y1 الجهاز/ ├── .rockbox/ │ ├── المواضيع/ │ ├── الخطوط/ │ ├── wps/ │ ├── (تم دمج ملفات السمات هنا) │ └── ... └── ...
                 </div>
 
                 <div class="highlight">
-                    <strong>💡 Pro Tip:</strong> You can select multiple themes and download them all at once. Each theme will be in its own folder in the downloaded ZIP file.
+                    <strong>💡 نصيحة احترافية:</strong> يمكنك تحديد سمات متعددة وتنزيلها جميعًا مرة واحدة. سيكون كل سمة في المجلد الخاص بها في ملف ZIP الذي تم تنزيله.
                 </div>
 
-                <h4>🔄 After Installation:</h4>
+                <h4>🔄 بعد التثبيت:</h4>
                 <ol>
-                    <li>Safely eject your Y1 device from your computer</li>
-                    <li>Disconnect the USB cable</li>
-                    <li>On your Y1 device, go to <strong>Settings → Themes</strong></li>
-                    <li>Select your newly installed theme from the list</li>
-                    <li>Enjoy your new theme!</li>
+                    <li>قم بإخراج جهازك Y1 بأمان من جهاز الكمبيوتر الخاص بك</li>
+                    <li>افصل الكابل USB.</li>
+                    <li>على جهازك Y1، انتقل إلى <strong>الإعدادات → السمات</strong></li>
+                    <li>حدد السمة المثبتة حديثًا من القائمة</li>
+                    <li>استمتع بموضوعك الجديد!</li>
                 </ol>
 
-                <h4>🗑️ Removing Themes:</h4>
+                <h4>🗑️ إزالة السمات:</h4>
                 <ol>
-                    <li>For Y1 Themes: Delete the theme folder from <code>Themes/</code> على جهازك Y1</li>
-                    <li>For Rockbox Themes: Use the "Reset Rockbox Folder" button above to remove all non-360p themes</li>
+                    <li>بالنسبة إلى Y1 السمات: احذف مجلد السمات من <code>Themes/</code> على جهازك Y1</li>
+                    <li>بالنسبة إلى السمات Rockbox: استخدم زر "إعادة تعيين المجلد Rockbox" أعلاه لإزالة جميع السمات التي لا تنتمي إلى نطاق 360 بكسل</li>
                 </ol>
             </div>
 
             <div class="credits">
-                <p>Special thanks to the Rockbox Y1 community for creating these amazing themes! 🎨</p>
-                <p>Theme credits are available in each theme's folder after download.</p>
+                <p>شكر خاص لمجتمع Rockbox Y1 لإنشاء هذه السمات الرائعة! 🎨</p>
+                <p>تتوفر أرصدة السمات في مجلد كل سمة بعد التنزيل.</p>
             </div>
         </div>
     </div>

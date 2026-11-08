@@ -12,8 +12,8 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y1 and 360p Rockbox Theme Downloader - Innioasis Updater</title>
-    <meta name="description" content="Browse Y1 and 360p Rockbox themes, download theme bundles, and follow the manual installation steps for your player.">
+    <title>Y1 ve 360p Rockbox Tema İndirici - Innioasis Güncelleyici</title>
+    <meta name="description" content="Y1 ve 360p Rockbox temalarına göz atın, tema paketlerini indirin ve oynatıcınız için manuel kurulum adımlarını izleyin.">
     <link rel="canonical" href="https://innioasis.app/theme_downloader_tr.html">
     <link rel="stylesheet" href="lumen.css?v=20261114video">
     <link rel="stylesheet" href="site-theme.css?v=20260803">
@@ -422,36 +422,36 @@
     <main id="main" class="theme-tool-page">
     <div class="container">
         <div class="header">
-            <h1>🎨 Y1 and 360p Rockbox Theme Downloader</h1>
-            <p>Download and install themes for your Y1 device directly in your browser</p>
+            <h1>🎨 Y1 ve 360p Rockbox Tema İndirici</h1>
+            <p>Y1 cihazınız için temaları doğrudan tarayıcınıza indirin ve yükleyin</p>
         </div>
 
         <div class="content">
             <!-- Device Information -->
             <div class="device-info">
-                <h3>📱 Device Setup</h3>
-                <p><strong>Y1 Device:</strong> Power on your Y1, connect via USB, and enable USB Storage Mode</p>
-                <p><strong>Computer:</strong> Your Y1 should appear as a removable drive (usually named "Y1" or similar)</p>
-                <p><strong>Theme Location:</strong> Look for a folder named <code>.rockbox</code> on your Y1 device</p>
+                <h3>📱 Cihaz Kurulumu</h3>
+                <p><strong>Y1 Cihaz:</strong> Y1 cihazınızı açın, USB aracılığıyla bağlanın ve USB Depolama Modunu etkinleştirin</p>
+                <p><strong>Bilgisayar:</strong> Y1 cihazınız çıkarılabilir bir sürücü olarak görünmelidir (genellikle "Y1" veya benzeri bir adla adlandırılır)</p>
+                <p><strong>Tema Konumu:</strong> Adlı bir klasör arayın <code>.rockbox</code> Y1 cihazınızda</p>
             </div>
 
             <!-- Tabs -->
             <div class="tabs">
-                <button class="tab active" onclick="switchTab('y1')">🎯 Y1 Themes</button>
-                <button class="tab" onclick="switchTab('rockbox')">🎨 Rockbox Themes</button>
+                <button class="tab active" onclick="switchTab('y1')">🎯 Y1 Temalar</button>
+                <button class="tab" onclick="switchTab('rockbox')">🎨 Rockbox Temalar</button>
             </div>
 
             <!-- Y1 Themes Tab -->
             <div id="y1-tab" class="tab-content active">
                 <div class="controls">
                     <button class="btn btn-primary" onclick="selectAllThemes('y1')">
-                        ☑️ Select All Y1 Themes
+                        ☑️ Tüm Y1 Temaları Seç
                     </button>
                     <button class="btn btn-secondary" onclick="selectNoneThemes('y1')">
-                        ☐ Select None
+                        ☐ Hiçbiri'ni seçin
                     </button>
                     <button class="btn btn-primary" onclick="downloadSelectedThemes('y1')" id="download-y1-btn">
-                        📥 Download Selected Y1 Themes
+                        📥 Seçilen Y1 Temaları İndir
                     </button>
                 </div>
 
@@ -468,16 +468,16 @@
             <div id="rockbox-tab" class="tab-content">
                 <div class="controls">
                     <button class="btn btn-primary" onclick="selectAllThemes('rockbox')">
-                        ☑️ Select All Rockbox Themes
+                        ☑️ Tüm Rockbox Temaları Seç
                     </button>
                     <button class="btn btn-secondary" onclick="selectNoneThemes('rockbox')">
-                        ☐ Select None
+                        ☐ Hiçbiri'ni seçin
                     </button>
                     <button class="btn btn-primary" onclick="downloadSelectedThemes('rockbox')" id="download-rockbox-btn">
-                        📥 Download Selected Rockbox Themes
+                        📥 Seçilen Rockbox Temaları İndir
                     </button>
                     <button class="btn btn-danger" onclick="resetRockboxFolder()">
-                        🗑️ Reset Rockbox Folder
+                        🗑️ Rockbox Klasörünü Sıfırla
                     </button>
                 </div>
 
@@ -492,90 +492,72 @@
 
             <!-- Status Messages -->
             <div id="status" class="status info" style="display: none;">
-                Ready to download themes
+                Temaları indirmeye hazır
             </div>
 
             <!-- Installation Instructions -->
             <div class="instructions">
-                <h3>📋 Manual Installation Instructions</h3>
+                <h3>📋 Manuel Kurulum Talimatları</h3>
                 
                 <div class="highlight">
-                    <strong>⚠️ Important:</strong> After downloading themes, you need to manually copy them to your Y1 device. The browser cannot directly access your device's file system.
+                    <strong>⚠️ Önemli:</strong> Temaları indirdikten sonra bunları Y1 cihazınıza manuel olarak kopyalamanız gerekir. Tarayıcı, cihazınızın dosya sistemine doğrudan erişemez.
                 </div>
 
-                <h4>🎯 For Y1 Themes:</h4>
+                <h4>🎯 Y1 Temalar için:</h4>
                 <ol>
-                    <li>Download the selected Y1 themes using the button above</li>
-                    <li>Extract the downloaded ZIP file to a temporary folder</li>
-                    <li>Connect your Y1 device via USB and enable USB Storage Mode</li>
-                    <li>Navigate to your Y1 device in your file manager</li>
-                    <li>Create a folder named <code>Themes</code> in the root of your Y1 device (if it doesn't exist)</li>
-                    <li>For each theme, copy the theme folder to <code>Themes/</code> on your Y1 device</li>
-                    <li>Each theme should be in its own subfolder: <code>Themes/ThemeName/</code></li>
-                    <li>Theme files should be placed directly inside the theme subfolder (not nested deeper)</li>
+                    <li>Yukarıdaki düğmeyi kullanarak seçilen Y1 temaları indirin</li>
+                    <li>İndirilen ZIP dosyasını geçici bir klasöre çıkarın</li>
+                    <li>Y1 cihazınızı USB aracılığıyla bağlayın ve USB Depolama Modunu etkinleştirin</li>
+                    <li>Dosya yöneticinizde Y1 cihazınıza gidin</li>
+                    <li>Adlı bir klasör oluşturun <code>Themes</code> Y1 cihazınızın kök dizininde (eğer mevcut değilse)</li>
+                    <li>Her tema için tema klasörünü şuraya kopyalayın: <code>Themes/</code> Y1 cihazınızda</li>
+                    <li>Her tema kendi alt klasöründe olmalıdır: <code>Themes/ThemeName/</code></li>
+                    <li>Tema dosyaları doğrudan tema alt klasörünün içine yerleştirilmelidir (daha derine yerleştirilmemelidir)</li>
                 </ol>
 
                 <div class="code">
-                    Y1 Device/
-                    ├── .rockbox/
-                    ├── Themes/
-                    │   ├── Theme1/
-                    │   │   ├── theme.wps
-                    │   │   ├── theme.sbs
-                    │   │   └── ...
-                    │   ├── Theme2/
-                    │   │   ├── theme.wps
-                    │   │   └── ...
-                    │   └── ...
-                    └── ...
+                    Y1 Cihaz/ ├── .rockbox/ ├── Temalar/ │ ├── Tema1/ │ │ ├── theme.wps │ │ ├── theme.sbs │ │ └── ... │ ├── Tema2/ │ │ ├── theme.wps │ │ └── ... │ └── ... └── ...
                 </div>
 
-                <h4>🎨 For Rockbox 360p Themes:</h4>
+                <h4>🎨 Rockbox 360p Temalar için:</h4>
                 <ol>
-                    <li>Download the selected Rockbox themes using the button above</li>
-                    <li>Extract the downloaded ZIP file to a temporary folder</li>
-                    <li>Connect your Y1 device via USB and enable USB Storage Mode</li>
-                    <li>Navigate to your Y1 device in your file manager</li>
-                    <li>Find the <code>.rockbox</code> folder on your Y1 device</li>
-                    <li>For each theme, open the theme's <code>.rockbox</code> folder</li>
-                    <li>Copy all files from the theme's <code>.rockbox</code> folder directly into your Y1's <code>.rockbox</code> folder</li>
-                    <li>Overwrite existing files when prompted (this is normal for theme installation)</li>
+                    <li>Yukarıdaki düğmeyi kullanarak seçilen Rockbox temaları indirin</li>
+                    <li>İndirilen ZIP dosyasını geçici bir klasöre çıkarın</li>
+                    <li>Y1 cihazınızı USB aracılığıyla bağlayın ve USB Depolama Modunu etkinleştirin</li>
+                    <li>Dosya yöneticinizde Y1 cihazınıza gidin</li>
+                    <li>Bul <code>.rockbox</code> Y1 cihazınızdaki klasör</li>
+                    <li>Her tema için temanın <code>.rockbox</code> dosya</li>
+                    <li>Temadaki tüm dosyaları kopyalayın <code>.rockbox</code> klasörü doğrudan Y1'ınızın içine koyun <code>.rockbox</code> dosya</li>
+                    <li>İstendiğinde mevcut dosyaların üzerine yazın (tema kurulumu için bu normaldir)</li>
                 </ol>
 
                 <div class="code">
-                    Y1 Device/
-                    ├── .rockbox/
-                    │   ├── themes/
-                    │   ├── fonts/
-                    │   ├── wps/
-                    │   ├── (theme files merged here)
-                    │   └── ...
-                    └── ...
+                    Y1 Cihaz/ ├── .rockbox/ │ ├── theme/ │ ├── fonts/ │ ├── wps/ │ ├── (tema dosyaları burada birleştirildi) │ └── ... └── ...
                 </div>
 
                 <div class="highlight">
-                    <strong>💡 Pro Tip:</strong> You can select multiple themes and download them all at once. Each theme will be in its own folder in the downloaded ZIP file.
+                    <strong>💡 Profesyonel İpucu:</strong> Birden fazla tema seçip hepsini aynı anda indirebilirsiniz. İndirilen ZIP dosyasında her tema kendi klasöründe olacaktır.
                 </div>
 
-                <h4>🔄 After Installation:</h4>
+                <h4>🔄 Kurulumdan Sonra:</h4>
                 <ol>
-                    <li>Safely eject your Y1 device from your computer</li>
-                    <li>Disconnect the USB cable</li>
-                    <li>On your Y1 device, go to <strong>Settings → Themes</strong></li>
-                    <li>Select your newly installed theme from the list</li>
-                    <li>Enjoy your new theme!</li>
+                    <li>Y1 cihazınızı bilgisayarınızdan güvenle çıkarın</li>
+                    <li>USB kablosunu çıkarın</li>
+                    <li>Y1 cihazınızda şu adrese gidin: <strong>Ayarlar → Temalar</strong></li>
+                    <li>Listeden yeni yüklediğiniz temayı seçin</li>
+                    <li>Yeni temanızın tadını çıkarın!</li>
                 </ol>
 
-                <h4>🗑️ Removing Themes:</h4>
+                <h4>🗑️ Temaları Kaldırma:</h4>
                 <ol>
-                    <li>For Y1 Themes: Delete the theme folder from <code>Themes/</code> on your Y1 device</li>
-                    <li>For Rockbox Themes: Use the "Reset Rockbox Folder" button above to remove all non-360p themes</li>
+                    <li>Y1 Temalar için: Tema klasörünü şuradan silin: <code>Themes/</code> Y1 cihazınızda</li>
+                    <li>Rockbox Temalar için: 360p olmayan tüm temaları kaldırmak için yukarıdaki "Rockbox Klasörünü Sıfırla" düğmesini kullanın</li>
                 </ol>
             </div>
 
             <div class="credits">
-                <p>Special thanks to the Rockbox Y1 community for creating these amazing themes! 🎨</p>
-                <p>Theme credits are available in each theme's folder after download.</p>
+                <p>Bu harika temaları yarattığı için Rockbox Y1 topluluğuna özellikle teşekkürler! 🎨</p>
+                <p>Tema kredileri, indirme sonrasında her temanın klasöründe mevcuttur.</p>
             </div>
         </div>
     </div>
