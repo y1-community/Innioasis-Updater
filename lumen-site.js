@@ -1827,7 +1827,7 @@
                     var entry = MODEL_ZIPS.find(function (candidate) { return candidate.name === aName; });
                     var label = entry ? entry.label : (assetType ? item.model + " · Type " + assetType : item.model + " package");
                     var title = entry ? entry.title : ("For " + item.model + " players" + (assetType ? " · Type " + assetType : ""));
-                    links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(item.portable_zips || "") + '" title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
+                    links.push('<li><a class="lumen-download-link lumen-zip-text-link" href="' + escapeHtml(asset.browser_download_url) + '" download="' + escapeHtml(asset.name) + '" data-zip-url="' + escapeHtml(asset.browser_download_url) + '" data-zip-name="' + escapeHtml(asset.name) + '" data-release-tag="' + escapeHtml(release.tag_name || release.name || "") + '" data-portable-zips="' + escapeHtml(manifestPortableZips(item)) + '" data-item-name="' + escapeHtml(item.name || "") + '" data-item-model="' + escapeHtml(item.model || "") + '" title="' + escapeHtml(title) + '">' + escapeHtml(asset.name) + ' <span class="lumen-meta">' + escapeHtml(label) + '</span></a></li>');
                 }
             });
             var assetLinks = links.length ? links.join("") : '<li>No ZIP asset was found in this release.</li>';
@@ -1964,7 +1964,9 @@
                 : '';
 
             var zipBtn = '';
-            if (release) {
+            /* If Get on Updater is available, omit the rectangular zip button;
+               the zip is accessible via the release details dropdown instead. */
+            if (release && !listedInManifest) {
                 var rowType = typeForItem(item);
                 var names = packageNamesFor(item, rowType);
                 var assets = zipAssets(release);
