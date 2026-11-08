@@ -1405,7 +1405,8 @@
         }
 
         function startDirectDownload(href, saveName, osLabel) {
-            if (/^https?:/i.test(href)) {
+            var isCrossOrigin = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
+            if (isCrossOrigin) {
                 downloadFrame().src = href;
                 markCompleted(saveName, osLabel, false);
                 return;

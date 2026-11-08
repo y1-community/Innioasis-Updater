@@ -6002,6 +6002,14 @@
   "🚀 Slidia": "🚀 สลิเดีย",
   "🛠️ Developer Friendly": "🛠️ เป็นมิตรกับนักพัฒนา",
   "🪟 Windows ARM64": "🪟 วินโดว์ ARM64",
-  "🪟 Windows Installation": "🪟 การติดตั้งวินโดวส์"
+  "🪟 Windows Installation": "🪟 การติดตั้งวินโดวส์",
+  "Analytics & performance telemetry": "การวิเคราะห์และการวัดประสิทธิภาพทางไกล",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "เรารวบรวมเฉพาะข้อมูลสำคัญเท่านั้น (เพิ่มประสิทธิภาพการรับส่งข้อมูลและเส้นทาง โดยไม่สนใจข้อมูลเอง) — เลือกเฉพาะข้อมูลสำคัญเท่านั้นหรือปิด",
+  "Essential Only": "จำเป็นเท่านั้น",
+  "Off": "ปิด",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "Windows Defender SmartScreen หรือ Smart App Control สามารถบล็อกแอปพลิเคชันชุมชนที่ดาวน์โหลดใหม่ก่อนที่จะเผยแพร่ชื่อเสียงของลายเซ็น ขณะนี้การควบคุมแอปอัจฉริยะกำลังส่งผลกระทบต่อแอปพลิเคชันยอดนิยม เช่น Epic Overlay Service (ใช้โดย Fortnite) — Updater CE ปลอดภัยและตรวจสอบแล้วว่าใช้งานได้ การปิดการควบคุมแอปอัจฉริยะทำให้ Updater CE สามารถเปิดและทำงานได้ตามปกติ",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "หาก Mac ของคุณขัดขวางไม่ให้คุณเรียกใช้แอพเป็นครั้งแรก โปรดเปิดการตั้งค่าระบบ คลิกความเป็นส่วนตัวและความปลอดภัย เลื่อนลงไปที่ความปลอดภัยแล้วคลิกเปิดต่อไป คุณยังสามารถกดปุ่ม Control ค้างไว้แล้วคลิก (หรือคลิกขวา) แอพใน Finder แล้วเลือกเปิด",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "ขณะนี้การควบคุมแอปอัจฉริยะกำลังส่งผลกระทบต่อแอปพลิเคชันยอดนิยม เช่น Epic Overlay Service (ใช้โดย Fortnite) — Updater CE ปลอดภัยและตรวจสอบแล้วว่าใช้งานได้",
+  "Windows won't launch the app? Help": "Windows จะไม่เปิดแอปใช่ไหม ช่วย"
  }
 }

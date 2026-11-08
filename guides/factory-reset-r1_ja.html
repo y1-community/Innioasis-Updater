@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja" dir="ltr" data-locale="ja"><head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Innioasis R1 を出荷時設定にリセット: 安全な手順、削除される内容</title>
+<meta name="description" content="Innioasis R1 を安全に出荷時設定にリセットする方法。リセットによって削除されるもの、最初にバックアップする方法、フリーズしたプレーヤーのリセット ピン、およびソフトウェアを再インストールする方が良い解決策である場合。">
+<link rel="canonical" href="https://innioasis.app/guides/factory-reset-r1_ja.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Innioasis R1 を出荷時設定にリセット: 安全な手順、削除される内容">
+<meta property="og:description" content="Innioasis R1 を安全に出荷時設定にリセットする方法。リセットによって削除されるもの、最初にバックアップする方法、フリーズしたプレーヤーのリセット ピン、およびソフトウェアを再インストールする方が良い解決策である場合。">
+<meta property="og:url" content="https://innioasis.app/guides/factory-reset-r1_ja.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../lumen.css?v=20261105hero">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<script src="../site-init.js?v=20260803" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Factory reset an Innioasis R1", "description": "How to factory reset an Innioasis R1 safely. What a reset deletes, how to back up first, the frozen-player reset pin, and when reinstalling the software is the better fix.", "totalTime": "PT5M", "step": [{"@type": "HowToStep", "name": "Back up your files", "text": "Copy music and recordings to a computer; a factory reset erases internal storage."}, {"@type": "HowToStep", "name": "Open Settings", "text": "Open Settings on the Innioasis R1 and choose Factory reset."}, {"@type": "HowToStep", "name": "Confirm and wait", "text": "Confirm the reset and wait for the player to restart without unplugging it."}], "tool": [{"@type": "HowToTool", "name": "Innioasis Updater CE (only if the player will not boot)"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://innioasis.app/"}, {"@type": "ListItem", "position": 2, "name": "Player manuals", "item": "https://innioasis.app/manuals/index.html"}, {"@type": "ListItem", "position": 3, "name": "Innioasis R1 manual", "item": "https://innioasis.app/manuals/r1.html"}, {"@type": "ListItem", "position": 4, "name": "Innioasis R1 factory reset", "item": "https://innioasis.app/guides/factory-reset-r1.html"}]}</script>
+<meta property="og:site_name" content="Innioasis ソフトウェアのアップデート">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/factory-reset-r1.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/factory-reset-r1.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/factory-reset-r1_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/factory-reset-r1_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/factory-reset-r1_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/factory-reset-r1_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/factory-reset-r1_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/factory-reset-r1_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/factory-reset-r1_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/factory-reset-r1_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/factory-reset-r1_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/factory-reset-r1_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/factory-reset-r1_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/factory-reset-r1_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/factory-reset-r1_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/factory-reset-r1_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/factory-reset-r1_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/factory-reset-r1_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">本文へスキップ</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+
+<header>
+  <p class="lumen-kicker">出荷時設定にリセット · Innioasis R1</p>
+  <h1>Innioasis R1 を出荷時設定にリセットする方法</h1>
+  <p class="lead">正常なファイルを保持し、問題を取り除く明確なリセット。このページでは、設定ルート、プレイヤーの凍結ルート、およびリセットが間違った修正である 1 つのケースについて説明します。</p>
+  <div class="lumen-actions">
+    <a class="lumen-button lumen-button--primary" href="../manuals/r1.html">R1 マニュアル</a>
+    <a class="lumen-button" href="../guides/restore-original-r1_ja.html">ソフトウェアを再インストールする</a>
+    <a class="lumen-button" href="../firmware_ja.html?model=R1">R1 ダウンロード数</a>
+  </div>
+</header>
+
+<section class="lumen-guide-section"><h2>始める前に</h2>
+<p><strong>出荷時設定にリセットすると、プレーヤーの内部ストレージが消去されます。</strong> 設定、アカウント、プレイリスト、および microSD カードではなくプレーヤーに保存されているファイルが削除されます。まず音楽と録音をコンピュータにコピーします。遅いメニューだけを修正したい場合は、次を使用します。 <strong>キャッシュをクリアする</strong> 代わりに。ファイルはそのままになります。</p>
+<div class="lumen-warning"><strong>リセットホールは工場出荷時の状態にリセットされません。</strong>
+小さいモデルの場合 <em>リセット</em> ピンを押すと、プレーヤーがフリーズしているときにのみ強制的にシャットダウンされます。データは消去されず、工場出荷時の設定も復元されません。</div></section>
+
+<section class="lumen-guide-section"><h2>通常ルート</h2>
+<ol class="lumen-steps">
+  <li>まず録音をコンピュータにコピーします。内部ストレージの録画は消去されます。</li>
+  <li>レコーダーを少なくとも半分まで充電します。</li>
+  <li>開く <strong>設定</strong> そして選択してください <strong>工場出荷時設定にリセット</strong>.</li>
+  <li>確認してレコーダーが再起動するまで待ちます。</li>
+</ol>
+<p>戻ったら、言語を選択し、Wi-Fi または Bluetooth を使用している場合は再度接続します。 microSD カードは通常放置されますが、信頼する前に確認してください。</p></section>
+
+<section class="lumen-guide-section"><h2>プレイヤーがフリーズした場合</h2>
+<ol class="lumen-steps">
+  <li>約10秒間電源を入れ続けてください。ほとんどのプレイヤーは強制的にシャットダウンします。</li>
+  <li>それでも何も起こらない場合は、小さいボタンを押してください <strong>リセット</strong> ピンまたはペーパークリップで穴を開けます。</li>
+  <li>1 時間充電してから電源を入れ、設定ルートをもう一度試してください。</li>
+</ol>
+<p>ピンは実行中のプレーヤーに戻るだけです。ソフトウェアはリセットされません。設定ルートはそうします。</p></section>
+
+<section class="lumen-guide-section"><h2>プレーヤーがまったく起動しない場合</h2>
+<p>ホーム画面に到達しないプレーヤーではリセットを実行できません。それは設定の問題ではなく、ソフトウェアの問題です。使用する
+<a href="../guide_ja.html">Innioasis アップデーター CE</a> R1 の元のソフトウェアを復元するには、次の手順に従います。 <a href="../guides/restore-original-r1_ja.html">R1 復元ガイド</a> 手動 SP Flash Tool ルートの場合。プレーヤーが完全に応答しない場合は、以下をお読みください。 <a href="../guides/recovery_ja.html">リカバリーガイド</a>
+まず。</p></section>
+
+<section class="lumen-guide-section"><h2>出荷時設定にリセットするか、再インストールしますか?</h2>
+<div class="lumen-grid">
+  <article class="lumen-card"><h3>工場出荷時設定にリセット</h3><p>インストールされたソフトウェアは保持し、データは消去します。プレーヤーは動作するが、動作が不安定、遅い、または間違った設定のままになっていると感じる場合に使用してください。</p></article>
+  <article class="lumen-card"><h3>ソフトウェアを再インストールする</h3><p>システム自体を置き換えます。プレーヤーが起動しない場合、アップデートが失敗した場合、またはカスタム システムを終了して元のソフトウェアに戻りたい場合に使用します。</p></article>
+</div></section>
+
+<section class="lumen-guide-section"><h2>人々が尋ねる質問</h2>
+<h3>リセットすると microSD カードは削除されますか?</h3>
+<p>通常はそうではありません。工場出荷時設定へのリセットは内部ストレージを対象とします。確実にしたい場合は、リセットする前にカードを取り外してください。</p>
+<h3>カスタムファームウェアは削除されますか?</h3>
+<p>いいえ。工場出荷時設定にリセットすると、現在のシステム内のデータが消去されます。 Rockbox または別のカスタム システムを削除するには、代わりに元のソフトウェアを再インストールしてください。</p>
+<h3>どのくらい時間がかかりますか?</h3>
+<p>数分。 10 時を過ぎても再起動しない場合は、充電して電源ボタンを試してください。それでも応答しない場合は、リカバリ ガイドを使用してください。</p>
+</section>
+
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script></body></html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru" dir="ltr" data-locale="ru"><head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Восстановление оригинального программного обеспечения на Innioasis PR1 — шаг за шагом</title>
+<meta name="description" content="Как восстановить официальное оригинальное программное обеспечение на Innioasis PR1 с помощью Innioasis Updater CE или SP Flash Tool с использованием проверенного пакета rom_pr1.zip.">
+<link rel="canonical" href="https://innioasis.app/guides/restore-original-pr1_ru.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Восстановление оригинального программного обеспечения на Innioasis PR1 — шаг за шагом">
+<meta property="og:description" content="Как восстановить официальное оригинальное программное обеспечение на Innioasis PR1 с помощью Innioasis Updater CE или SP Flash Tool с использованием проверенного пакета rom_pr1.zip.">
+<meta property="og:url" content="https://innioasis.app/guides/restore-original-pr1_ru.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../lumen.css?v=20261105hero">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<script src="../site-init.js?v=20260803" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Restore Original Software on Innioasis PR1", "description": "How to restore official Original Software on an Innioasis PR1 with Innioasis Updater CE or SP Flash Tool, using the verified rom_pr1.zip package.", "totalTime": "PT20M", "step": [{"@type": "HowToStep", "name": "Back up and charge", "text": "Copy files to a computer and charge the player."}, {"@type": "HowToStep", "name": "Choose the model", "text": "Open Updater CE and set Device Model to PR1."}, {"@type": "HowToStep", "name": "Choose Original Software", "text": "Select Original Software and the rom_pr1.zip release."}, {"@type": "HowToStep", "name": "Install at the prompt", "text": "Press Install / Restore, power the player off, and connect USB only when asked."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://innioasis.app/"}, {"@type": "ListItem", "position": 2, "name": "Player manuals", "item": "https://innioasis.app/manuals/index.html"}, {"@type": "ListItem", "position": 3, "name": "Innioasis PR1 manual", "item": "https://innioasis.app/manuals/pr1.html"}, {"@type": "ListItem", "position": 4, "name": "Restore Innioasis PR1", "item": "https://innioasis.app/guides/restore-original-pr1.html"}]}</script>
+<meta property="og:site_name" content="Innioasis Обновления программного обеспечения"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-pr1.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-pr1.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-pr1_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-pr1_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-pr1_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-pr1_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-pr1_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-pr1_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-pr1_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-pr1_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-pr1_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-pr1_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-pr1_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-pr1_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-pr1_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-pr1_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-pr1_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-pr1_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">Перейти к содержимому</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+
+<header>
+  <p class="lumen-kicker">Руководство по восстановлению · Innioasis PR1</p>
+  <h1>Восстановить исходное программное обеспечение на Innioasis PR1</h1>
+  <p class="lead">Полный возврат к программному обеспечению, с которым поставляется плеер. Используйте его после неудачного обновления, перед продажей плеера или всякий раз, когда кастомная система вам не подходит.</p>
+  <div class="lumen-actions">
+    <a class="lumen-button lumen-button--primary" href="../guide_ru.html#platform">Скачать Updater CE</a>
+    <a class="lumen-button" href="../firmware_ru.html?model=PR1">PR1 скачиваний</a>
+    <a class="lumen-button" href="../manuals/pr1.html">PR1 инструкция</a>
+  </div>
+</header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">Руководство по установке для вашего компьютера</p><h2>Восстановите оригинальное программное обеспечение на вашем PR1 с помощью компьютера.</h2><p>Выберите руководство для компьютера, который вы используете. <span data-os-strip-note>В каждой версии есть настройка платформы, Updater CE шагов и возврат к стоку.</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-pr1-windows.html">Руководство по Windows</a><a class="lumen-button" data-os-guide="macos" href="../install/original-pr1-mac.html">руководство по macOS</a><a class="lumen-button" data-os-guide="linux" href="../install/original-pr1-linux.html">Руководство по Linux</a></div><p class="lumen-meta"><a href="../install/pr1.html">Все руководства Innioasis PR1</a> · <a href="../install/original-software.html">Все руководства по оригинальному программному обеспечению</a></p></section>
+
+<section class="lumen-guide-section"><h2>Что вам нужно</h2>
+<ul>
+  <li>Компьютер под управлением Windows, macOS или Linux. Updater CE работает на всех трёх.</li>
+  <li>USB-кабель для передачи данных, входящий в комплект поставки плеера. Кабели только для зарядки не подойдут.</li>
+  <li>Официальный <code>rom_pr1.zip</code> пакет, который Updater скачает для вас, или копию из <a href="../firmware_ru.html?model=PR1">PR1 архив</a> если вы предпочитаете прошивать вручную.</li>
+  <li>Зарядите плеер. Восстановление, при котором теряется мощность, — единственный распространенный способ усугубить плохую ситуацию.</li>
+</ul>
+<p><strong>Это заменяет систему и стирает внутреннюю память.</strong> Сначала скопируйте музыку, записи и фотографии на компьютер.</p></section>
+
+<section class="lumen-guide-section"><h2>Маршрут A: Updater CE (рекомендуется)</h2>
+<ol class="lumen-steps">
+  <li>Установить <a href="../guide_ru.html#platform">Innioasis Программа обновления CE</a> и откройте его.</li>
+  <li>Набор <strong>Модель устройства</strong> в адрес <strong>PR1</strong>. Модель должна точно соответствовать плееру.</li>
+  <li>Выбирать <strong>Заводское ПО</strong> в списке Программное обеспечение.</li>
+  <li>Выберите релиз. Новейшая стабильная сборка является безопасной по умолчанию.</li>
+  <li>Нажимать <strong>Установить / Восстановить</strong> и подождите, пока пакет загрузится и распакуется.</li>
+  <li>Полностью выключите плеер, затем подключайте USB-кабель только по запросу программы обновлений.</li>
+  <li>Не прикасайтесь к плееру или кабелю до появления сообщения об успехе. Отключите и запустите плеер.</li>
+</ol>
+<div class="lumen-warning"><strong>Никогда не выбирайте другую модель, чтобы «заставить ее работать».</strong> Для PR1 требуется пакет PR1. Из-за смешивания моделей игрокам в конечном итоге требуется восстановление вручную.</div></section>
+
+<section class="lumen-guide-section"><h2>Маршрут B: SP Flash Tool (вручную)</h2>
+<p>Используйте это, когда компьютер не может запустить Updater CE или если у вас уже есть пакет и вы предпочитаете классический инструмент.</p>
+<ol class="lumen-steps">
+  <li>Скачать <code>rom_pr1.zip</code> из
+  <a href="../firmware_ru.html?model=PR1">PR1 архив</a> и разархивируйте его.</li>
+  <li>Сохраните scatter-файл рядом с изображениями. Не переименовывайте и не перемещайте изображения.</li>
+  <li>Откройте SP Flash Tool, выберите <strong>Только скачать</strong>и загрузите скаттер-файл.</li>
+  <li>Выключите плеер, нажмите <strong>Скачать</strong>, затем подключите кабель.</li>
+  <li>Прежде чем отключиться, дождитесь зеленой отметки успеха.</li>
+</ol>
+<p>The <a href="../sp-flash-tool_ru.html">SP Flash Tool руководство</a> более подробно описаны драйверы и подсказки Windows. В Linux и macOS Updater CE — более простой путь, поскольку он обеспечивает собственную обработку USB.</p></section>
+
+<section class="lumen-guide-section"><h2>После восстановления</h2>
+<ol class="lumen-steps">
+  <li>Отключите плеер и дайте ему запуститься самостоятельно.</li>
+  <li>Выберите язык и установите часы.</li>
+  <li>Повторно подключитесь к Wi-Fi или Bluetooth, если вы ими пользуетесь.</li>
+  <li>Скопируйте свою музыку обратно. <a href="../manuals/transfer-music.html">руководство по трансферу</a> имеет имена папок.</li>
+</ol>
+<p>Если плеер запускается, но экран, колесо или кнопки по-прежнему работают неправильно, восстановление сработало; это вопрос аппаратного обеспечения или настройки, а не программного обеспечения.
+<a href="../troubleshooting_ru.html">руководство по устранению неполадок</a> Следующая остановка.</p>
+</section>
+
+<section class="lumen-guide-section"><h2>Если это не работает</h2>
+<div class="lumen-grid">
+  <article class="lumen-card"><h3>Программа обновления никогда не видит плеер</h3><p>Меняем кабель, затем порт USB. Избегайте хабов. В Windows установите драйвер MediaTek из папки <a href="../drivers_ru.html">страница драйвера</a>.</p></article>
+  <article class="lumen-card"><h3>Вспышка останавливается раньше времени</h3><p>Переподключитесь, зарядите плеер и начните заново. Не переходите на пакет другой модели.</p></article>
+  <article class="lumen-card"><h3>Игрок остается черным</h3><p>Заряжайте в течение часа, затем удерживайте питание в течение десяти секунд. Если он все еще мертв, прочтите
+  <a href="../guides/recovery_ru.html">руководство по восстановлению</a> прежде чем попытаться еще раз.</p></article>
+</div></section>
+
+<section class="lumen-guide-section"><h2>Вопросы, которые задают люди</h2>
+<h3>Удалит ли это мою музыку?</h3>
+<p>Да, внутренняя память удалена. Файлы на карте microSD обычно сохраняются, но сначала скопируйте их в безопасное место.</p>
+<h3>Могу ли я потом вернуться в Rockbox?</h3>
+<p>Да. Восстановление оригинального программного обеспечения — это не дверь с односторонним движением; на странице специального программного обеспечения для вашей модели можно установить его снова.</p>
+<h3>Нужна ли мне настройка Type A / Type B?</h3>
+<p>Только Y1 имеет такой выбор и только для оригинального программного обеспечения. Все остальные модели используют один пакет.</p>
+</section>
+
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body></html>

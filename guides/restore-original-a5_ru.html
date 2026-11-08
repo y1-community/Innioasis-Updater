@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru" dir="ltr" data-locale="ru">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Восстановите оригинальное программное обеспечение при загрузке прошивки Innioasis A5 — Innioasis</title>
+  <meta name="description" content="Пошаговое руководство по восстановлению официального оригинального программного обеспечения на проигрывателях Innioasis A5 и Timmkoo A5 с помощью Innioasis Updater CE и rom_a5.zip.">
+  <link rel="canonical" href="https://innioasis.app/guides/restore-original-a5_ru.html">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20260803">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+  <script src="../site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Restore Original Software on Innioasis A5",
+    "description": "How to restore factory firmware on an Innioasis A5 or Timmkoo A5 player using Innioasis Updater CE.",
+    "step": [
+      { "@type": "HowToStep", "text": "Open Innioasis Updater CE on your computer." },
+      { "@type": "HowToStep", "text": "Set Device Model to A5." },
+      { "@type": "HowToStep", "text": "Select Original Software (rom_a5.zip)." },
+      { "@type": "HowToStep", "text": "Click Install / Restore and connect your powered-off A5 via USB when prompted." }
+    ]
+  }
+  </script>
+<meta property="og:site_name" content="Innioasis Обновления программного обеспечения">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-a5.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-a5.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-a5_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-a5_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-a5_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-a5_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-a5_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-a5_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-a5_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-a5_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-a5_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-a5_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-a5_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-a5_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-a5_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-a5_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-a5_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-a5_jp.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Перейти к содержимому</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Руководство по восстановлению · Модель A5</p>
+      <h1>Восстановите исходное программное обеспечение на Innioasis и Timmkoo A5</h1>
+      <p class="lead">Следуйте этому руководству, чтобы восстановить официальное заводское программное обеспечение на вашем проигрывателе Innioasis A5 или Timmkoo A5 с помощью проверенных пакетов из Innioasis архива прошивки.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../guide_ru.html#platform">Скачать Updater CE</a>
+        <a class="lumen-button" href="../firmware_ru.html?model=A5">Посмотреть A5 загрузок</a>
+      </div>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>Шаг 1. Настройка в Updater CE</h2>
+      <ol class="lumen-steps">
+        <li>Запуск <strong>Innioasis Программа обновления CE</strong> на вашем компьютере с Windows, macOS или Linux.</li>
+        <li>Набор <strong>Модель устройства</strong> в адрес <strong>A5</strong>.</li>
+        <li>Выбирать <strong>Заводское ПО</strong>. Updater CE скачивает официальную <code>rom_a5.zip</code> выпустить пакет напрямую.</li>
+        <li>Нажмите <strong>Установить / Восстановить</strong> и дождитесь завершения подготовки.</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Шаг 2. Подключитесь по запросу</h2>
+      <ol class="lumen-steps">
+        <li>Полностью выключите устройство A5.</li>
+        <li>Прежде чем подключать кабель для передачи данных USB, дождитесь сообщения на экране компьютера.</li>
+        <li>Позвольте процессу перепрошивки завершиться без перерыва.</li>
+        <li>Отключите и перезагрузите только что восстановленный A5 плеер.</li>
+      </ol>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../firmware_ru.html">Просмотр архива прошивок</a>
+        <a class="lumen-button" href="../troubleshooting_ru.html">Руководство по устранению неполадок</a>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="../nav.js?v=20261105copyleft" defer></script>
+  <script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script></body>
+</html>

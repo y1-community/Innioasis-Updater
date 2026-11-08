@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" data-locale="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+    <meta charset="UTF-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリーン インストールで Innioasis Updater および Y1 ヘルパーを修正 - Innioasis Updater</title>
+    <meta name="description" content="Innioasis Updater と Y1 ヘルパーの段階的なクリーン インストール: 残ったファイルを削除し、再インストールして、ファームウェアのフラッシュに戻ります。">
+    <link rel="canonical" href="https://innioasis.app/Troubleshooting/clean_install_ja.html">
+    <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+    <link rel="stylesheet" href="../site-theme.css?v=20260803">
+    <link rel="stylesheet" href="../site-pages.css?v=20260818">
+    <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #0f172a;
+            --bg-panel: #111c33;
+            --bg-panel-alt: #12203b;
+            --bg-highlight: #1f2d4d;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5f5;
+            --accent: #3b82f6;
+            --accent-alt: #8b5cf6;
+            --success: #22c55e;
+            --warning: #facc15;
+            --border: rgba(148, 163, 184, 0.25);
+            --shadow: 0 30px 60px rgba(15, 23, 42, 0.45);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(140deg, #070b16, #0f172a 45%, #172546 85%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        a:hover,
+        a:focus {
+            color: #60a5fa;
+        }
+
+        header,
+        main,
+        footer {
+            width: min(var(--lumen-max, 1180px), calc(100% - 2rem));
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 72px 0 40px;
+            text-align: center;
+        }
+
+        .top-strip {
+            background: rgba(59, 130, 246, 0.18);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 0 0 18px 18px;
+            margin: 0 auto 20px;
+            padding: 14px 20px;
+            width: min(var(--lumen-max, 1180px), calc(100% - 2rem));
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .top-strip a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .badge::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-top: 22px;
+            margin-bottom: 16px;
+        }
+
+        .intro {
+            margin: 0 auto;
+            max-width: 720px;
+            color: var(--text-secondary);
+        }
+
+        .callouts {
+            display: grid;
+            gap: 16px;
+            margin-top: 36px;
+            text-align: left;
+        }
+
+        .callout {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.12));
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 18px;
+            padding: 20px 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .callout strong {
+            color: #e0eaff;
+        }
+
+        main {
+            display: grid;
+            gap: 32px;
+            padding-bottom: 72px;
+        }
+
+        section {
+            background: var(--bg-panel);
+            border-radius: 24px;
+            padding: clamp(28px, 3vw, 40px);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        section h2 {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            margin-bottom: 20px;
+        }
+
+        section h3 {
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            margin-bottom: 16px;
+        }
+
+        p + p {
+            margin-top: 12px;
+        }
+
+        ul,
+        ol {
+            margin-top: 16px;
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        li + li {
+            margin-top: 10px;
+        }
+
+        .symptom-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 24px;
+            list-style: none;
+        }
+
+        .symptom-list li {
+            background: var(--bg-panel-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .symptom-list li::before {
+            content: "•";
+            font-size: 26px;
+            line-height: 1;
+            color: var(--accent);
+            margin-top: -2px;
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 24px;
+            padding: 15px 26px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+            color: white;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-decoration: none;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.35);
+        }
+
+        .cta:hover {
+            transform: translateY(-1px);
+        }
+
+        .step-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .step-card {
+            background: var(--bg-panel-alt);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px 20px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .step-label {
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        figure {
+            margin: 28px 0 0;
+            border-radius: 18px;
+            overflow: hidden;
+            background: var(--bg-highlight);
+            border: 1px solid var(--border);
+        }
+
+        figure img {
+            width: 100%;
+            display: block;
+        }
+
+        figcaption {
+            padding: 16px 18px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            background: rgba(15, 23, 42, 0.65);
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 16px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(94, 234, 212, 0.35);
+            background: rgba(13, 148, 136, 0.12);
+            color: #ccfbf1;
+        }
+
+        .warning-note {
+            border-color: rgba(250, 204, 21, 0.35);
+            background: rgba(250, 204, 21, 0.16);
+            color: #fef9c3;
+        }
+
+        .features-list {
+            display: grid;
+            gap: 12px;
+            list-style: none;
+            margin: 24px 0 0;
+        }
+
+        .features-list li {
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: var(--bg-panel-alt);
+            border: 1px solid var(--border);
+        }
+
+        footer {
+            padding: 32px 0 48px;
+            text-align: center;
+            color: rgba(148, 163, 184, 0.8);
+        }
+
+        @media (min-width: 860px) {
+            .two-column {
+                display: grid;
+                grid-template-columns: 1.05fr 0.95fr;
+                gap: 28px;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 720px) {
+            header {
+                padding-top: 56px;
+            }
+
+            section {
+                padding: 24px 22px;
+            }
+        }
+    </style>
+<meta property="og:site_name" content="Innioasis アップデーター">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/Troubleshooting/clean_install.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/Troubleshooting/clean_install.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/Troubleshooting/clean_install_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/Troubleshooting/clean_install_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/Troubleshooting/clean_install_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/Troubleshooting/clean_install_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/Troubleshooting/clean_install_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/Troubleshooting/clean_install_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/Troubleshooting/clean_install_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/Troubleshooting/clean_install_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/Troubleshooting/clean_install_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/Troubleshooting/clean_install_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/Troubleshooting/clean_install_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/Troubleshooting/clean_install_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/Troubleshooting/clean_install_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/Troubleshooting/clean_install_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/Troubleshooting/clean_install_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/Troubleshooting/clean_install_jp.html">
+</head>
+<body class="site-themes-app site-dock-mode lumen-legacy-page">
+    <a class="lumen-skip-link" href="#main">本文へスキップ</a>
+    <div id="nav-root"></div>
+    <header>
+        <div class="top-strip">
+            <p>このガイドは現在の状況に役立ちます <a href="https://innioasis.app/installguide.html">Innioasis アップデーター</a> ユーザーはインストールを更新します。 Y1 は初めてですか?から開始 <a href="https://innioasis.app">イニオアシス.app</a> 完全なセットアップのために。</p>
+        </div>
+        <span class="badge">手動アップデート アドバイザリ · リリース 1.8.2.8</span>
+        <h1>クリーン インストールで Innioasis Updater および Y1 ヘルパーの問題を修正する</h1>
+        <p class="intro">
+            アップデーターの起動が遅い、古いリリースで止まっている、またはまだ Y1 ヘルパーを使用していますか?クリーンインストールすれば直ります。これらの手順は Windows と macOS を対象としています。</p>
+        <div class="callouts">
+            <div class="callout">
+                <strong>Windows および macOS ユーザー:</strong> Updater が最近更新されていない場合、古いビルドが残っている場合、または数秒以内に起動できない場合は、このクリーン インストールを実行してください。
+            </div>
+            <div class="callout warning-note">
+                長期間休止状態にあったインストールの中には、自動更新されないものもあります。新たにインストーラーを実行するのが、正常に動作するインストールに戻す最も速い方法です。
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section id="symptoms">
+            <h2>クリーン インストールが必要であることを確認する</h2>
+            <p>次のいずれかの症状が発生した場合は、手動で再インストールすることをお勧めします。</p>
+            <ul class="symptom-list">
+                <li>アップデーターの起動に数分かかるか、アップデートの確認中に停止します。</li>
+                <li>新しいリリースが存在する場合でも、アップデートは受信されなくなります。</li>
+                <li>デバイスのファームウェアのアップデートが利用可能であっても、ダウンロードまたは適用に失敗します。</li>
+                <li>複数のリリースをスキップし、長い間アップデーターを使用していませんでした。</li>
+            </ul>
+            <!--
+            <figure>
+                <img src="https://i.redd.it/jbaadpt4us0g1.png" alt="Manual update advisory for Innioasis Updater 1.8.2.8">
+                <figcaption>Reminder: 1.8.2.8 is the minimum version required to receive the latest feature set.</figcaption>
+            </figure>
+            -->
+        </section>
+
+        <section id="windows">
+            <h2>Windows: クリーン再インストールを実行する</h2>
+            <p>Windows 10 または Windows 11 (64 ビット) でアップデータを更新するには、公式 Windows インストーラーを使用します。これにより、古いビルドが完全に置き換えられ、自己更新チャネルが復元されます。</p>
+            <p class="note">インストーラーを実行する前に、 <em>設定 › アプリ › インストールされているアプリ</em> (または遺産 <em>プログラムの追加と削除</em> パネル))、Innioasis Updater の既存のコピーをアンインストールします。クリーンを開始すると、ファイルの競合が防止されます。</p>
+            <a class="cta" href="https://github.com/y1-community/supplemental-apks/releases/download/1.0/installer.exe">
+                Windows 用クリーン インストーラーをダウンロード
+            </a>
+            <div class="step-grid">
+                <article class="step-card">
+                    <span class="step-label">ステップ1</span>
+                    <h3>最新のインストーラーをダウンロードする</h3>
+                    <p>インストーラーをダウンロード フォルダーに保存します。現在実行中の場合は Innioasis Updater を閉じます。</p>
+                </article>
+                <article class="step-card">
+                    <span class="step-label">ステップ2</span>
+                    <h3>既存のインストールを削除する</h3>
+                    <p>開く <em>設定 › アプリ › インストールされているアプリ</em> (または遺産 <em>コントロール パネル › プログラムの追加と削除</em>) し、Innioasis Updater をアンインストールして、再インストールが白紙の状態から開始されるようにします。</p>
+                </article>
+                <article class="step-card">
+                    <span class="step-label">ステップ3</span>
+                    <h3>インストールして再起動する</h3>
+                    <p>ダウンロードしたインストーラーを実行します。Windows は許可を求めるプロンプトを表示します。セットアップが完了したら、Innioasis Updater を起動します。これで、1.8.2.8 が自動的に検出され、アップデートが再度取得されるはずです。</p>
+                </article>
+            </div>
+            <!--
+            <figure>
+                <img src="https://i.redd.it/f9zfmxrkxs0g1.png" alt="Windows users may need a manual update to get back on the current release">
+                <figcaption>Users returning after a long break may be stranded on older builds—reinstalling reconnects you to feature updates.</figcaption>
+            </figure>
+            -->
+            <p class="note">
+                これにより、起動の遅さも修正され、アップデーターが開発者から直接ファームウェア リリースを取得できるようになります。
+            </p>
+        </section>
+
+        <section id="mac">
+            <h2>macOS: DMG インストーラーを使用して更新する</h2>
+            <div class="two-column">
+                <div>
+                    <p>macOS インストーラーは古いファイルを削除し、1.8.2.8 をインストールします。</p>
+                    <a class="cta" href="https://github.com/y1-community/supplemental-apks/releases/download/1.0/Innioasis.Updater.for.Mac.dmg">
+                        Innioasis Updater DMG をダウンロード
+                    </a>
+                    <ol>
+                        <li>ダウンロードした DMG を開き、Finder ウィンドウを展開して、 <strong>再インストール</strong> オプション。</li>
+                        <li>再インストール コマンドを実行して、アップデーターの既存のコピーを更新します。これにより、新機能をブロックする可能性のある古いヘルパー ファイルが削除されます。</li>
+                        <li>アプリケーションからInnioasis Updaterを再度起動します。バージョン情報パネルリストのバージョンを確認する <strong>1.8.2.8</strong>.</li>
+                    </ol>
+                </div>
+                <div>
+                    <!--
+                    <figure>
+                        <img src="https://i.redd.it/c928j8eyat0g1.png" alt="macOS DMG includes a reinstall option">
+                        <figcaption>The macOS disk image exposes Reinstall and Uninstall commands to clean up outdated components.</figcaption>
+                    </figure>
+                    -->
+                </div>
+            </div>
+            <!--
+            <figure>
+                <img src="https://i.redd.it/5fuyy0lnxs0g1.png" alt="macOS reinstall restarts the Innioasis Updater setup process">
+                <figcaption>Allow the setup process to finish. It lays down the newest helper services for a faster launch experience.</figcaption>
+            </figure>
+            -->
+            <div class="note warning-note">
+                再インストール後に「Innioasis Updater を開けません」と表示される場合は、次の手順に進みます。 <em>システム設定 › プライバシーとセキュリティ</em> そして選択してください <strong>とにかく開く</strong> アプリを承認します。
+            </div>
+            <!--
+            <figure>
+                <img src="https://i.redd.it/j4l4k3inkt0g1.png" alt="macOS security prompt for Innioasis Updater">
+                <figcaption>macOS may block newly reinstalled apps until you explicitly allow them.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://preview.redd.it/psa-manual-update-needed-for-windows-and-mac-users-v0-5gs3cpzfkt0g1.png?width=640&crop=smart&auto=webp&s=ea2d22b65169767fde4b428caa647b338977ab4e" alt="macOS Open Anyway control in Privacy & Security settings">
+                <figcaption>Scroll to the bottom of Privacy &amp; Security after the launch attempt, then click <strong>Open Anyway</strong>.</figcaption>
+            </figure>
+            -->
+        </section>
+
+        <section id="after">
+            <h2>1.8.2.8 にアップデートした後</h2>
+            <p>最新バージョンを使用すると、以下の機能にアクセスできるようになります。これらは現在のビルドでのみ利用可能です。</p>
+            <ul class="features-list">
+                <li><strong>ワンクリックでインストール</strong> オリジナルのファームウェア、コミュニティ リリース、および開発者のリリースから直接ダウンロードされた Rockbox ビルドの場合。</li>
+                <li><strong>ガイド付きの手順を明確にする</strong> これにより、プレーヤーを接続するタイミングと、プラグを抜いても安全なタイミングがわかります。</li>
+                <li>両方のプラットフォームで全体的な安定性が向上し、起動時間が大幅に短縮されました。</li>
+            </ul>
+            <p class="note">
+                バージョンを確認するためにサポートが必要ですか? Innioasis Updater を開き、選択します <strong>ヘルプ › 概要</strong>、ビルドが表示されることを確認します <strong>1.8.2.8</strong>.
+            </p>
+        </section>
+
+        <section id="support">
+            <h2>まだサポートが必要ですか?</h2>
+            <p>クリーン インストールが失敗した場合は、エラー メッセージをキャプチャし、Innioasis コミュニティ サポート チャネルに連絡してください。 OS のバージョン、アップデーターのビルド (利用可能な場合)、およびすでに試した手順を含めてください。</p>
+            <p>インストールを最新の状態に保つことで、展開時に常に最新のファームウェア パッケージとツールを受け取ることができます。</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><em>追伸古典的な Y1 ヘルパーのリモコン、スクリーンショット、その他の機能が、 <a href="https://innioasis.app/installguide.html">アップデーター</a> 再インストール後のツールキット。</em></p>
+        <p>コピーレフト - ライアン・スペクターと Innioasis コミュニティ</p>
+        <p>このクリーン インストール ガイドはオープン ソースです。 <a href="https://github.com/y1-community/Innioasis-Updater/blob/main/Troubleshooting/clean_install.html">ソースリポジトリ</a>.</p>
+        <p><a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer">Discord</a></p>
+    </footer>
+
+    <div id="support-toolbar-slot"></div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../site-theme.css?v=20260622">
+    <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+    <script src="../nav.js?v=20261103brand" defer></script>
+    <script src="../site-init.js?v=20260803" defer></script>
+
+<script src="../site-i18n.js?v=20260830" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body>
+</html>

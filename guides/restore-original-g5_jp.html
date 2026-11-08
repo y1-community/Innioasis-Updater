@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja" dir="ltr" data-locale="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Innioasis G5 - Innioasis ファームウェアのダウンロードで元のソフトウェアを復元します</title>
+  <meta name="description" content="Innioasis Updater CE および rom_g5.zip を使用して Innioasis G5 オーディオ プレーヤーで公式のオリジナル ソフトウェアを復元するためのステップバイステップのチュートリアル。">
+  <link rel="canonical" href="https://innioasis.app/guides/restore-original-g5_jp.html">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20260803">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+  <script src="../site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Restore Original Software on Innioasis G5",
+    "description": "How to restore factory firmware on an Innioasis G5 player using Innioasis Updater CE.",
+    "step": [
+      { "@type": "HowToStep", "text": "Open Innioasis Updater CE on your computer." },
+      { "@type": "HowToStep", "text": "Set Device Model to G5." },
+      { "@type": "HowToStep", "text": "Select Original Software (rom_g5.zip)." },
+      { "@type": "HowToStep", "text": "Click Install / Restore and connect your powered-off G5 via USB when prompted." }
+    ]
+  }
+  </script>
+<meta property="og:site_name" content="Innioasis ソフトウェアのアップデート"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-g5.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-g5.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-g5_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-g5_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-g5_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-g5_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-g5_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-g5_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-g5_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-g5_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-g5_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-g5_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-g5_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-g5_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-g5_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-g5_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-g5_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-g5_jp.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">本文へスキップ</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">復元ガイド · Innioasis G5</p>
+      <h1>Innioasis G5 で元のソフトウェアを復元します</h1>
+      <p class="lead">応答しない G5 を回復する必要がある場合、システムを工場出荷時の状態に更新する必要がある場合、またはクリーンな公式ファームウェア アップデートをインストールする必要がある場合は、このガイド付きチュートリアルを使用してください。</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../guide_jp.html#platform">Updater CE を入手</a>
+        <a class="lumen-button" href="../firmware_jp.html?model=G5">G5 ダウンロードを表示</a>
+      </div>
+    </header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">お使いのコンピューターのインストールガイド</p><h2>コンピュータを使用して G5 上の元のソフトウェアを復元します</h2><p>使用しているコンピュータのガイドを選択してください。 <span data-os-strip-note>すべてのバージョンには、プラットフォームのセットアップ、Updater CE の手順、および在庫に戻る方法が含まれています。</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-g5-windows.html">Windowsガイド</a><a class="lumen-button" data-os-guide="macos" href="../install/original-g5-mac.html">macOS ガイド</a><a class="lumen-button" data-os-guide="linux" href="../install/original-g5-linux.html">Linuxガイド</a></div><p class="lumen-meta"><a href="../install/g5.html">すべての Innioasis G5 ガイド</a> · <a href="../install/original-software.html">すべてのオリジナル ソフトウェア ガイド</a></p></section>
+
+    <section class="lumen-guide-section">
+      <h2>ステップ 1: コンピューターを準備する</h2>
+      <p>Innioasis Updater CE は、複雑な点滅ハーネスを必要とせずに、Windows、macOS、Linux 上でネイティブに実行されます。</p>
+      <ol class="lumen-steps">
+        <li>打ち上げ <strong>Innioasis アップデーター CE</strong> デスクトップまたはラップトップ上で。</li>
+        <li>セット <strong>デバイスモデル</strong> 支援先: <strong>G5</strong>.</li>
+        <li>選択 <strong>純正ソフトウェア</strong> ソフトウェアのドロップダウンで。 Updater CE は公式を自動的にダウンロードします <code>rom_g5.zip</code> パッケージを直接リリースします。</li>
+        <li>クリック <strong>インストール / 復元</strong> 準備を始めます。</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>ステップ 2: プロンプトで G5 を接続します</h2>
+      <p>アプリケーションが次のメッセージを表示するまでは、プレーヤーを接続しないでください。</p>
+      <ol class="lumen-steps">
+        <li>Innioasis G5 の電源が完全にオフになっていることを確認してください。</li>
+        <li>アップデーターに USB 接続プロンプトが表示されたら、USB-C データ ケーブルをコンピューターとプレーヤーに接続します。</li>
+        <li>点滅中はケーブルや電源ボタンに触れないでください。</li>
+        <li>成功の確認が表示されたら、USB ケーブルを抜き、G5 の電源を入れます。</li>
+      </ol>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../firmware_jp.html">ファームウェアアーカイブを参照</a>
+        <a class="lumen-button" href="../troubleshooting_jp.html">トラブルシューティングのヘルプ</a>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="../nav.js?v=20261105copyleft" defer></script>
+  <script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body>
+</html>

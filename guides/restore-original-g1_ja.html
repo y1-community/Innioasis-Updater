@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ja" dir="ltr" data-locale="ja"><head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Innioasis G1 で元のソフトウェアを復元する - ステップバイステップ</title>
+<meta name="description" content="検証済みの rom_g1.zip パッケージを使用して、Innioasis Updater CE または SP Flash Tool を含む Innioasis G1 上の公式のオリジナル ソフトウェアを復元する方法。">
+<link rel="canonical" href="https://innioasis.app/guides/restore-original-g1_ja.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Innioasis G1 で元のソフトウェアを復元する - ステップバイステップ">
+<meta property="og:description" content="検証済みの rom_g1.zip パッケージを使用して、Innioasis Updater CE または SP Flash Tool を含む Innioasis G1 上の公式のオリジナル ソフトウェアを復元する方法。">
+<meta property="og:url" content="https://innioasis.app/guides/restore-original-g1_ja.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../lumen.css?v=20261105hero">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<script src="../site-init.js?v=20260803" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Restore Original Software on Innioasis G1", "description": "How to restore official Original Software on an Innioasis G1 with Innioasis Updater CE or SP Flash Tool, using the verified rom_g1.zip package.", "totalTime": "PT20M", "step": [{"@type": "HowToStep", "name": "Back up and charge", "text": "Copy files to a computer and charge the player."}, {"@type": "HowToStep", "name": "Choose the model", "text": "Open Updater CE and set Device Model to G1."}, {"@type": "HowToStep", "name": "Choose Original Software", "text": "Select Original Software and the rom_g1.zip release."}, {"@type": "HowToStep", "name": "Install at the prompt", "text": "Press Install / Restore, power the player off, and connect USB only when asked."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://innioasis.app/"}, {"@type": "ListItem", "position": 2, "name": "Player manuals", "item": "https://innioasis.app/manuals/index.html"}, {"@type": "ListItem", "position": 3, "name": "Innioasis G1 manual", "item": "https://innioasis.app/manuals/g1.html"}, {"@type": "ListItem", "position": 4, "name": "Restore Innioasis G1", "item": "https://innioasis.app/guides/restore-original-g1.html"}]}</script>
+<meta property="og:site_name" content="Innioasis ソフトウェアのアップデート"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-g1.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-g1.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-g1_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-g1_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-g1_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-g1_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-g1_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-g1_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-g1_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-g1_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-g1_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-g1_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-g1_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-g1_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-g1_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-g1_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-g1_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-g1_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">本文へスキップ</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+
+<header>
+  <p class="lumen-kicker">復元ガイド · Innioasis G1</p>
+  <h1>Innioasis G1 で元のソフトウェアを復元します</h1>
+  <p class="lead">プレーヤーに同梱されていたソフトウェアに完全に戻りました。アップデートに失敗した後、プレーヤーを販売する前、またはカスタム システムが自分に合わないときはいつでも、これを使用してください。</p>
+  <div class="lumen-actions">
+    <a class="lumen-button lumen-button--primary" href="../guide_ja.html#platform">Updater CE を入手</a>
+    <a class="lumen-button" href="../firmware_ja.html?model=G1">G1 ダウンロード数</a>
+    <a class="lumen-button" href="../manuals/g1.html">G1 マニュアル</a>
+  </div>
+</header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">お使いのコンピューターのインストールガイド</p><h2>コンピュータを使用して G1 上の元のソフトウェアを復元します</h2><p>使用しているコンピュータのガイドを選択してください。 <span data-os-strip-note>すべてのバージョンには、プラットフォームのセットアップ、Updater CE の手順、および在庫に戻る方法が含まれています。</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-g1-windows.html">Windowsガイド</a><a class="lumen-button" data-os-guide="macos" href="../install/original-g1-mac.html">macOS ガイド</a><a class="lumen-button" data-os-guide="linux" href="../install/original-g1-linux.html">Linuxガイド</a></div><p class="lumen-meta"><a href="../install/g1.html">すべての Innioasis G1 ガイド</a> · <a href="../install/original-software.html">すべてのオリジナル ソフトウェア ガイド</a></p></section>
+
+<section class="lumen-guide-section"><h2>必要なもの</h2>
+<ul>
+  <li>Windows、macOS、または Linux コンピューター。 Updater CE は 3 つすべてで実行されます。</li>
+  <li>プレーヤーに付属の USB データ ケーブル。充電専用ケーブルは動作しません。</li>
+  <li>役人 <code>rom_g1.zip</code> アップデータがダウンロードするパッケージ、または <a href="../firmware_ja.html?model=G1">G1 アーカイブ</a> 手動でフラッシュしたい場合。</li>
+  <li>プレーヤーに充電します。電源を失った状態での復元は、悪い状況をさらに悪化させる唯一の一般的な方法です。</li>
+</ul>
+<p><strong>これにより、システムが置き換えられ、内部ストレージが消去されます。</strong> まず音楽、録音、写真をコンピュータにコピーします。</p></section>
+
+<section class="lumen-guide-section"><h2>ルートA: Updater CE (推奨)</h2>
+<ol class="lumen-steps">
+  <li>インストール <a href="../guide_ja.html#platform">Innioasis アップデーター CE</a> そしてそれを開きます。</li>
+  <li>セット <strong>デバイスモデル</strong> 支援先: <strong>G1</strong>。モデルはプレーヤーと正確に一致する必要があります。</li>
+  <li>選択してください <strong>純正ソフトウェア</strong> ソフトウェアリストにある。</li>
+  <li>リリースを選択します。最新の安定したビルドが安全なデフォルトです。</li>
+  <li>プレス <strong>インストール / 復元</strong> パッケージがダウンロードされて解凍されるまで待ちます。</li>
+  <li>プレーヤーの電源を完全にオフにし、アップデーターが要求した場合にのみ USB ケーブルを接続します。</li>
+  <li>成功メッセージが表示されるまで、プレーヤーやケーブルに触れないでください。接続を外してプレーヤーを起動します。</li>
+</ol>
+<div class="lumen-warning"><strong>「動作させる」ために別のモデルを選択しないでください。</strong> G1 には G1 パッケージが必要です。モデルを混合すると、プレイヤーは手動での回復が必要になります。</div></section>
+
+<section class="lumen-guide-section"><h2>ルートB: SP Flash Tool (手動)</h2>
+<p>コンピューターで Updater CE を実行できない場合、または既にパッケージを持っていて従来のツールを使用したい場合に、これを使用します。</p>
+<ol class="lumen-steps">
+  <li>ダウンロード <code>rom_g1.zip</code> からの
+  <a href="../firmware_ja.html?model=G1">G1 アーカイブ</a> そしてそれを解凍します。</li>
+  <li>スキャッタファイルを画像の隣に置いてください。画像の名前を変更したり、移動したりしないでください。</li>
+  <li>SP Flash Tool を開き、選択します <strong>ダウンロードのみ</strong>をクリックして、スキャッタ ファイルをロードします。</li>
+  <li>プレーヤーの電源を切り、 を押します <strong>ダウンロード</strong>を選択し、ケーブルを接続します。</li>
+  <li>切断する前に、緑色の成功マークが点灯するまで待ちます。</li>
+</ol>
+<p>の <a href="../sp-flash-tool_ja.html">SP Flash Tool ガイド</a> ドライバーと Windows プロンプトについて詳しく説明します。 Linux および macOS では、Updater CE が独自の USB 処理を行うため、より簡単なルートです。</p></section>
+
+<section class="lumen-guide-section"><h2>復元後</h2>
+<ol class="lumen-steps">
+  <li>プレーヤーを切断し、自動的に起動できるようにします。</li>
+  <li>言語を選択し、時計を設定します。</li>
+  <li>Wi-Fi または Bluetooth を使用している場合は、それらに再接続します。</li>
+  <li>音楽をコピーして戻します。の <a href="../manuals/transfer-music.html">乗換案内</a> フォルダ名が付いています。</li>
+</ol>
+<p>プレーヤーは起動しても、画面、ホイール、またはボタンの動作がまだ正しくない場合は、復元は機能しています。それはハードウェアまたはセットアップの問題であり、ソフトウェアの問題ではありません。の
+<a href="../troubleshooting_ja.html">トラブルシューティングガイド</a> 次の停留所です。</p>
+</section>
+
+<section class="lumen-guide-section"><h2>うまくいかない場合</h2>
+<div class="lumen-grid">
+  <article class="lumen-card"><h3>アップデーターはプレーヤーを決して認識しません</h3><p>ケーブルを変更し、次に USB ポートを変更します。ハブは避けてください。 Windows では、MediaTek ドライバーを次の場所からインストールします。 <a href="../drivers_ja.html">ドライバーページ</a>.</p></article>
+  <article class="lumen-card"><h3>フラッシュが早く止まる</h3><p>再接続し、プレーヤーを充電して、もう一度開始してください。別のモデルのパッケージに切り替えないでください。</p></article>
+  <article class="lumen-card"><h3>プレイヤーは黒のままです</h3><p>1 時間充電してから、10 秒間電源を保持します。まだ死んでいる場合は、以下をお読みください。
+  <a href="../guides/recovery_ja.html">リカバリーガイド</a> もう一度試す前に。</p></article>
+</div></section>
+
+<section class="lumen-guide-section"><h2>人々が尋ねる質問</h2>
+<h3>これにより私の音楽は削除されますか?</h3>
+<p>はい、内部ストレージは消去されます。通常、microSD カード上のファイルは残りますが、最初に安全な場所にコピーしてください。</p>
+<h3>その後 Rockbox に戻ることはできますか?</h3>
+<p>はい。元のソフトウェアの復元は一方通行ではありません。ご使用のモデルのカスタム ソフトウェア ページから再度インストールできます。</p>
+<h3>Type A / Type B の設定は必要ですか?</h3>
+<p>その選択肢があるのは Y1 だけであり、オリジナル ソフトウェアのみです。他のすべてのモデルは単一のパッケージを使用します。</p>
+</section>
+
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body></html>

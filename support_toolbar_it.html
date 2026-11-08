@@ -1,0 +1,2522 @@
+<!-- Google Tag Manager (GA4) -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+<!-- Community shortcuts. The support panel opens when a visitor chooses Donate. -->
+<style>
+  /* Keep the injected donation modal self-contained when a cached page has an
+     older site-toolbar.css. */
+    /* Resilient self-contained bottom dock layout */
+  #support-toolbar-container {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;
+    display: flex !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+  }
+  /* The close button must beat the !important flex layout above. */
+  #support-toolbar-container.y1-toolbar-hidden,
+  #support-toolbar-container.y1-toolbar-hidden .y1-site-dock-wrap {
+    display: none !important;
+  }
+  #support-toolbar-container .y1-site-dock-wrap {
+    pointer-events: auto !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    transform: none !important;
+    z-index: 10001 !important;
+    box-sizing: border-box !important;
+    transition: bottom 0.25s ease, margin-bottom 0.25s ease !important;
+  }
+  .y1-dock-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 10000 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    pointer-events: auto !important;
+  }
+  .y1-dock-backdrop[hidden] {
+    display: none !important;
+  }
+  #support-toolbar-container .y1-site-dock-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 4px 16px max(4px, env(safe-area-inset-bottom, 4px)) 16px !important;
+    border-radius: 0 !important;
+    border: none !important;
+    border-top: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, 0.16)) !important;
+    background: var(--lumen-panel, var(--site-bg-elevated, #12141c)) !important;
+    box-shadow: 0 -2px 14px rgba(0, 0, 0, 0.25) !important;
+    box-sizing: border-box !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+  }
+  #support-toolbar-container .y1-dock-buttons-layer {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-dock-secondary-line {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 30px !important;
+    box-sizing: border-box !important;
+    padding: 6px 18px 8px !important;
+    border-top: 1px solid color-mix(in oklab, var(--dock-line, rgba(255, 255, 255, 0.15)) 55%, transparent) !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+  }
+  #support-toolbar-container .y1-dock-secondary-goal-view:not([hidden]),
+  #support-toolbar-container .y1-dock-secondary-ticker-view:not([hidden]) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #support-toolbar-container .y1-dock-secondary-goal-view[hidden],
+  #support-toolbar-container .y1-dock-secondary-ticker-view[hidden],
+  #support-toolbar-container .y1-dock-secondary-bar-wrap[hidden] {
+    display: none !important;
+  }
+  #support-toolbar-container .y1-dock-text-desktop {
+    display: inline !important;
+  }
+  #support-toolbar-container .y1-dock-text-mobile {
+    display: none !important;
+  }
+  @media (max-width: 600px) {
+    #support-toolbar-container .y1-dock-text-desktop {
+      display: none !important;
+    }
+    #support-toolbar-container .y1-dock-text-mobile {
+      display: inline !important;
+    }
+  }
+  /* Remove contributor stream box and goal bar on donation popup modal */
+  #support-toolbar-container .y1-contributor-stream-box,
+  .y1-donate-panel .y1-contributor-stream-box,
+  #y1-contributor-stream-box {
+    display: none !important;
+  }
+  #support-toolbar-container .y1-donate-panel,
+  #support-toolbar-container .y1-privacy-panel,
+  .y1-donate-panel,
+  .y1-privacy-panel {
+    position: fixed !important;
+    left: 50% !important;
+    top: 12px !important;
+    bottom: auto !important;
+    transform: translateX(-50%) !important;
+    width: min(94vw, 520px) !important;
+    max-width: calc(100vw - 20px) !important;
+    max-height: calc(100vh - 96px) !important;
+    max-height: calc(100dvh - 96px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    z-index: 10006 !important;
+    box-sizing: border-box !important;
+  }
+  @media (min-height: 740px) {
+    #support-toolbar-container .y1-donate-panel,
+    #support-toolbar-container .y1-privacy-panel,
+    .y1-donate-panel,
+    .y1-privacy-panel {
+      top: 50% !important;
+      transform: translate(-50%, calc(-50% - 35px)) !important;
+      max-height: calc(100vh - 130px) !important;
+      max-height: calc(100dvh - 130px) !important;
+    }
+  }
+  #support-toolbar-container .y1-contributor-stream-box {
+    box-sizing: border-box;
+    width: 100%;
+  }
+  #support-toolbar-container .y1-contributor-stream-line {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  body.y1-donate-panel-open .y1-dock-secondary-line,
+  body.y1-donate-panel-open .y1-dock-goal-layer {
+    display: none !important;
+  }
+  /* The appeal is a permanent second toolbar line, never an idle takeover. */
+  #support-toolbar-container .y1-site-dock-wrap.is-idle {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  #support-toolbar-container .y1-site-dock-bar.is-idle .y1-dock-buttons-layer,
+  #support-toolbar-container .y1-site-dock-bar.is-idle .y1-dock-secondary-line {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  #support-toolbar-container .y1-dock-goal-layer {
+    display: none !important;
+  }
+  #support-toolbar-container .y1-donate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 16px 0 12px;
+  }
+  #support-toolbar-container .y1-donate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, .22) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    font: inherit;
+    font-weight: 750;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .16);
+  }
+  #support-toolbar-container .y1-donate-btn--kofi { background: #ff5e5b !important; }
+  #support-toolbar-container .y1-donate-btn--bmac { background: #ffdd00 !important; color: #0d0c22 !important; }
+  #support-toolbar-container .y1-donate-btn--paypal { background: #0070ba !important; }
+  #support-toolbar-container .y1-donate-btn--revolut { background: #5850ec !important; }
+  #support-toolbar-container .y1-donate-btn--patreon { background: #e0533c !important; }
+  #support-toolbar-container .y1-donate-btn--boosty { background: #f15f2c !important; grid-column: 1 / -1; }
+  #support-toolbar-container .y1-donate-btn[hidden] { display: none !important; }
+  html.y1-region-ru #support-toolbar-container .y1-donate-btn:not(.y1-donate-btn--boosty),
+  html.y1-region-ru #support-toolbar-container .y1-donate-alt-link,
+  html.y1-region-ru #support-toolbar-container .y1-crypto-dropdown {
+    display: none !important;
+  }
+  html.y1-region-ru #support-toolbar-container .y1-donate-btn--boosty {
+    display: inline-flex !important;
+  }
+  #support-toolbar-container .y1-donate-btn:hover,
+  #support-toolbar-container .y1-donate-btn:focus-visible {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    outline: none;
+  }
+  #support-toolbar-container .y1-crypto-dropdown {
+    margin-top: 6px;
+    text-align: center;
+  }
+  #support-toolbar-container .y1-crypto-toggle {
+    display: inline-flex;
+    width: auto;
+    min-height: 0;
+    padding: 3px 2px;
+    border: 0 !important;
+    border-radius: 0;
+    background: transparent !important;
+    color: var(--lumen-accent, #8db7ff);
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  #support-toolbar-container .y1-crypto-toggle:hover,
+  #support-toolbar-container .y1-crypto-toggle:focus-visible {
+    color: var(--lumen-paper, #fff);
+    outline: none;
+  }
+  #support-toolbar-container .y1-crypto-panel {
+    display: grid;
+    gap: 7px;
+    margin-top: 8px;
+    padding: 9px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .16);
+  }
+  #support-toolbar-container .y1-crypto-panel[hidden] { display: none !important; }
+  #support-toolbar-container .y1-crypto-row {
+    display: grid;
+    grid-template-columns: minmax(92px, auto) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 7px;
+  }
+  #support-toolbar-container .y1-crypto-label {
+    color: var(--lumen-text, #e5e7eb);
+    font-size: .74rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  #support-toolbar-container .y1-crypto-input {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 7px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, .2);
+    color: var(--lumen-text, #e5e7eb);
+    font: .68rem ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+  #support-toolbar-container .y1-crypto-copy {
+    min-height: 30px;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .2);
+    font-size: .72rem;
+  }
+  @media (max-width: 430px) {
+    #support-toolbar-container .y1-donate-grid { grid-template-columns: 1fr; }
+  }
+
+  /* A visitor who turned donation appeals off (?donations=false or "Don't
+     show donation appeals again") gets no ask, no funding goal line, and no
+     donor names in the dock or its panels. */
+  html.y1-donations-off #y1-dock-secondary-line,
+  html.y1-donations-off #y1-dock-goal-layer,
+  html.y1-donations-off .y1-donate-trigger,
+  html.y1-donations-off #y1-donate-panel,
+  html.y1-donations-off .y1-contributor-stream-box,
+  html.y1-donations-off [data-toolbar-thank-you-open],
+  html.y1-donations-off #y1-toolbar-thank-you-overlay {
+    display: none !important;
+  }
+  #support-toolbar-container .y1-donate-optout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 0;
+    font-size: .82rem;
+    color: var(--lumen-muted, #9aa3b5);
+    cursor: pointer;
+  }
+  #support-toolbar-container .y1-donate-optout input {
+    width: 15px;
+    height: 15px;
+    accent-color: #10b981;
+    cursor: pointer;
+  }
+  /* Heart button that brings the dock back after the cross hides it. It sits
+     outside #support-toolbar-container so the hidden-container rule cannot
+     take it with it. */
+  .y1-dock-reopen {
+    position: fixed !important;
+    right: 16px !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 10001 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, 0.16)) !important;
+    border-radius: 50% !important;
+    background: var(--lumen-panel, var(--site-bg-elevated, #12141c)) !important;
+    color: var(--lumen-text, var(--site-text, #f4f6fb)) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32) !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    transition: transform 0.15s ease, opacity 0.15s ease !important;
+  }
+  .y1-dock-reopen[hidden] {
+    display: none !important;
+  }
+  .y1-dock-reopen:hover,
+  .y1-dock-reopen:focus-visible {
+    transform: translateY(-1px) !important;
+    outline: none !important;
+  }
+  .y1-dock-reopen:focus-visible {
+    box-shadow: 0 0 0 3px rgba(141, 183, 255, 0.55), 0 4px 16px rgba(0, 0, 0, 0.32) !important;
+  }
+  .y1-dock-reopen-icon {
+    display: block !important;
+    color: #ff5e5b !important;
+  }
+  .site-locale-throbber {
+    display: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    border-top-color: transparent;
+    box-sizing: border-box;
+    animation: site-locale-spin 0.8s linear infinite;
+    margin-inline-start: 4px;
+    vertical-align: middle;
+    flex: none;
+  }
+  [data-locale-open].is-translating .site-locale-throbber,
+  .site-locale-dock-btn.is-translating .site-locale-throbber {
+    display: inline-block !important;
+  }
+  @keyframes site-locale-spin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-locale-throbber { animation: none; opacity: .6; }
+  }
+</style>
+<div id="support-toolbar-container">
+  <div class="y1-dock-backdrop" data-dock-backdrop hidden></div>
+  <div class="y1-site-dock-wrap">
+    <div class="y1-donate-panel" id="y1-donate-panel" role="dialog" aria-modal="false" aria-labelledby="y1-donate-title" hidden>
+
+      <!-- Developer Header: Avatar + Headline -->
+      <div class="y1-developer-profile-wrap" style="margin: 0 0 12px; display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1;">
+          <img class="y1-developer-avatar" id="y1-developer-avatar-img" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/assets/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/assets/developer.png';this.onerror=null;}" alt="Ryan (sviluppatore)" width="64" height="64" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; display: block; border: 2px solid rgba(255, 255, 255, 0.2);">
+          <div style="display: flex; flex-direction: column; justify-content: center; min-width: 0;">
+            <h2 class="y1-donate-panel-hook" id="y1-donate-title" style="margin: 0 0 3px 0; font-size: 1.55rem; line-height: 1.15; font-weight: 700; max-width: none;"><span>Ti prende.</span></h2>
+            <small id="y1-donate-subhead" style="color: var(--lumen-muted, #9aa3b5); font-weight: 600; font-size: 0.85rem; line-height: 1.3;">I nostri progetti dipendono dalle donazioni</small>
+          </div>
+        </div>
+        <button class="y1-donate-close" type="button" data-donate-close aria-label="Chiudi le opzioni di donazione" style="position: static; flex-shrink: 0; margin-left: 8px;">×</button>
+      </div>
+
+      <p class="y1-donate-panel-intro" id="y1-donate-panel-intro" data-i18n-skip="true" translate="no">Hi, I'm Ryan. I build Innioasis Updater CE, this firmware archive, and the Themes Gallery. I pay for them myself so they stay free for everyone.</p>
+
+      <div class="y1-donate-grid">
+        <a class="y1-donate-btn y1-donate-btn--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/assets/icon_kofi.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_kofi.png';" data-method-icon="icon_kofi.png" width="20" height="20" alt="">
+          Fai una donazione su Ko-fi
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--bmac" href="https://buymeacoffee.com/ryanspecter" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/assets/icon_kofi.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_kofi.png';" data-method-icon="icon_kofi.png" width="20" height="20" alt="">
+          Buy Me a Coffee
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--paypal" href="https://paypal.me/ryanspecter282" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/assets/icon_paypal.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_paypal.png';" data-method-icon="icon_paypal.png" width="20" height="20" alt="">
+          Fai una donazione tramite PayPal
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--revolut" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/assets/icon_revolut.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_revolut.png';" data-method-icon="icon_revolut.png" width="20" height="20" alt="">
+          Fai una donazione tramite Revolut
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--patreon" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer">
+          <img class="y1-donate-btn-icon" src="/assets/icon_patreon.png" onerror="if(this.src.indexOf('https://')===-1)this.src='https://innioasis.app/assets/icon_patreon.png';" data-method-icon="icon_patreon.png" width="20" height="20" alt="">
+          Fai una donazione tramite Patreon
+        </a>
+        <a class="y1-donate-btn y1-donate-btn--boosty" href="https://boosty.to/ryanspecter" target="_blank" rel="noopener noreferrer" hidden>
+          Fai una donazione su Boosty
+        </a>
+      </div>
+
+      <!-- Honeygain Free Contribution (de-emphasised small link) -->
+      <p class="y1-donate-alt-link">Oppure <a href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">aiuto gratuito con Honeygain</a> (guadagna $ 3 condividendo 100 MB di larghezza di banda)</p>
+
+      <!-- Crypto Collapsible -->
+      <div class="y1-crypto-dropdown">
+        <button class="y1-crypto-toggle" type="button" data-crypto-toggle aria-expanded="false" aria-controls="y1-crypto-panel">
+          <span>Mostra opzioni crittografiche · BTC, ETH, SHIB</span>
+          <svg class="y1-crypto-toggle-arrow" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="y1-crypto-panel" id="y1-crypto-panel" hidden>
+          <div class="y1-crypto-row">
+            <span class="y1-crypto-label">Bitcoin (BTC)</span>
+            <input type="text" class="y1-crypto-input" value="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g" readonly>
+            <button type="button" class="y1-crypto-copy" data-copy="bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g">Copia</button>
+          </div>
+          <div class="y1-crypto-row">
+            <span class="y1-crypto-label">Ethereum (ETH)</span>
+            <input type="text" class="y1-crypto-input" value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" readonly>
+            <button type="button" class="y1-crypto-copy" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">Copia</button>
+          </div>
+          <div class="y1-crypto-row">
+            <span class="y1-crypto-label">Shiba Inu (SHIB)</span>
+            <input type="text" class="y1-crypto-input" value="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3" readonly>
+            <button type="button" class="y1-crypto-copy" data-copy="0x5E902083ee1B3A05dd39d824012B39cB10FB80D3">Copia</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div style="margin: 14px 0 6px; text-align: center;">
+        <button type="button" class="y1-donate-btn y1-donate-supporters-btn" data-toolbar-thank-you-open style="width: 100%; justify-content: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.9rem; font-weight: 600; padding: 9px 12px; border-radius: 8px; cursor: pointer; color: inherit; display: inline-flex; align-items: center; gap: 8px;">
+          <span>❤️</span>
+          <span>Grazie ai nostri sostenitori</span>
+        </button>
+      </div>
+
+      <label class="y1-donate-optout"><input type="checkbox" data-donations-optout><span>Non mostrare più gli appelli di donazione</span></label>
+      <p class="y1-donate-smallprint" style="margin-top: 14px;">Supporta Updater e la Galleria dei temi tramite Ko-fi, Buy Me a Coffee, PayPal, Revolut o Patreon. <a href="credits_it.html" style="color: inherit; text-decoration: underline;">Visualizza il registro completo dei donatori pubblici e il denaro raccolto →</a></p>
+    </div>
+
+    <div class="y1-privacy-panel" id="y1-privacy-panel" role="dialog" aria-modal="false" aria-labelledby="y1-privacy-title" hidden>
+      <div class="y1-donate-panel-header">
+        <div>
+          <p class="y1-donate-panel-title">La tua privacy su Innioasis.app</p>
+          <h2 class="y1-donate-panel-hook" id="y1-privacy-title">Analisi e privacy</h2>
+        </div>
+        <button class="y1-donate-close" type="button" data-privacy-close aria-label="Chiudi l&#39;informativa sulla privacy">×</button>
+      </div>
+            <div class="y1-privacy-body" style="max-height: 60vh; overflow-y: auto;">
+        <p><strong>Innioasis.app utilizza Cloudflare e Google Analytics (GTM) per ottimizzare le prestazioni, proteggersi dagli attacchi e misurare l'utilizzo del sito.</strong> I cookie analitici sono facoltativi. Non vendiamo mai i tuoi dati personali.</p>
+        <p>Gestisci le tue preferenze salvate:</p>
+        <div class="y1-privacy-options" aria-label="Cosa potrebbe ricordare il sito">
+          <label class="y1-privacy-option">
+            <span class="y1-privacy-option-label"><strong>Ricorda le risposte di feedback della guida</strong><small>Salva il tuo "è stato utile?" feedback sulle guide.</small></span>
+            <input type="checkbox" class="y1-privacy-toggle" data-privacy-feedback>
+          </label>
+          <label class="y1-privacy-option">
+            <span class="y1-privacy-option-label"><strong>Ricorda la selezione delle build notturne</strong><small>Mostra le build pre-release e notturne nell'elenco dei firmware.</small></span>
+            <input type="checkbox" class="y1-privacy-toggle" data-privacy-nightly>
+          </label>
+          <label class="y1-privacy-option" data-privacy-donations-row hidden>
+            <span class="y1-privacy-option-label"><strong>Mostra supporto della community e costi di gestione</strong><small>Ripristina gli obiettivi e i link per le donazioni.</small></span>
+            <input type="checkbox" class="y1-privacy-toggle" data-privacy-donations>
+          </label>
+        </div>
+        <p class="y1-privacy-status" data-privacy-status role="status" aria-live="polite"></p>
+        <p class="y1-privacy-note" style="font-size: 0.78rem; opacity: 0.8; margin-top: 8px;">Il tema, la dimensione del carattere e le preferenze della lingua vengono memorizzati localmente nel tuo browser. I collegamenti esterni alle piattaforme della community operano secondo le rispettive politiche.</p>
+      </div>
+      <div class="y1-privacy-actions">
+        <button type="button" class="y1-privacy-save" data-privacy-save>Salva le scelte</button>
+      </div>
+    </div>
+
+    <nav class="y1-site-dock-bar" id="y1-site-dock-bar" aria-label="Scorciatoie del sito">
+      <div class="y1-dock-buttons-layer" id="y1-dock-buttons-layer">
+        <a class="y1-dock-link" href="https://reddit.com/r/innioasis" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>Reddit</a>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <a class="y1-dock-link" href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C.53 9.05-.32 13.58.1 18.06c0 .02.01.04.03.05a19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.11 13 13 0 0 1-1.86-.89.08.08 0 0 1-.01-.13c.12-.09.25-.19.36-.29a.07.07 0 0 1 .08-.01c3.9 1.8 8.13 1.8 11.99 0a.07.07 0 0 1 .08.01c.12.1.24.2.37.29a.08.08 0 0 1 0 .13 12.5 12.5 0 0 1-1.87.88.08.08 0 0 0-.04.12c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.68-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42z"/></svg>Discord</a>
+        <span class="y1-dock-sep" aria-hidden="true" data-donations-appeal>·</span>
+        <button class="y1-dock-link y1-donate-trigger" type="button" data-donate-open aria-expanded="false" aria-controls="y1-donate-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Dona</button>
+        <span class="y1-dock-sep" aria-hidden="true" data-donations-appeal>·</span>
+        <button class="y1-dock-link y1-privacy-trigger" type="button" data-privacy-open aria-expanded="false" aria-controls="y1-privacy-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Privacy</button>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <button class="y1-dock-link site-locale-dock-btn" type="button" data-locale-open aria-haspopup="dialog" aria-controls="site-locale-panel" title="Lingua"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg><span class="site-locale-toggle-label">Lingua</span><span class="site-locale-throbber" aria-hidden="true"></span></button>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <span class="y1-font-control" role="group" aria-label="Regola la dimensione del testo">
+          <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Testo più piccolo">A-</button>
+          <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Reimposta la dimensione del testo">A</button>
+          <button class="y1-dock-link y1-font-btn y1-font-btn--large" type="button" data-font-up aria-label="Testo più grande">A+</button>
+        </span>
+        <span class="y1-dock-sep" aria-hidden="true">·</span>
+        <button class="y1-dock-link y1-dock-close-btn" type="button" data-dock-close aria-label="Chiudi la barra degli strumenti inferiore" title="Chiudi la barra degli strumenti" style="font-size: 1.25rem; line-height: 1; padding: 0 5px; cursor: pointer; background: transparent; border: none; color: inherit; opacity: 0.72; transition: opacity 0.15s ease;">&times;</button>
+        <span class="y1-font-live" id="y1-font-live" aria-live="polite"></span>
+      </div>
+      <div class="y1-dock-secondary-line" id="y1-dock-secondary-line" aria-label="Costi di gestione e contributi della community - clicca per supportare" role="button" tabindex="0">
+        <div class="y1-dock-secondary-goal-view" id="y1-dock-secondary-goal-view">
+          <span class="y1-dock-secondary-text" id="y1-dock-secondary-text" data-i18n-skip="true" translate="no">
+            <span class="y1-dock-text-desktop">You've helped us raise $0 of our $10 costs for today.</span>
+            <span class="y1-dock-text-mobile">Ci hai aiutato a raccogliere $ 0 dei nostri $ 10 costi per oggi.</span>
+          </span>
+          <div class="y1-dock-secondary-bar-wrap" id="y1-dock-secondary-bar-wrap" aria-hidden="true"><div class="y1-dock-secondary-bar-fill" id="y1-dock-secondary-bar-fill"></div></div>
+        </div>
+        <div class="y1-dock-secondary-ticker-view" id="y1-dock-secondary-ticker-view" hidden>
+          <span class="y1-dock-secondary-ticker" id="y1-dock-secondary-ticker-text" data-i18n-skip="true" translate="no">Loading supporters...</span>
+        </div>
+      </div>
+      <div class="y1-dock-goal-layer is-goal-view" id="y1-dock-goal-layer" aria-hidden="true" hidden tabindex="-1">
+        <div class="y1-dock-idle-goal-view" id="y1-dock-idle-goal-view">
+          <span class="y1-dock-idle-heart" id="y1-dock-idle-goal-heading">Aiutaci a coprire i costi di oggi</span>
+          <div class="y1-dock-goal-bar-wrap" aria-hidden="true">
+            <div class="y1-dock-goal-bar-fill" id="y1-dock-idle-bar-fill"></div>
+          </div>
+          <span class="y1-dock-goal-text" id="y1-dock-idle-goal-text" data-i18n-skip="true" translate="no">You've helped us raise $0 of our $10 costs for today.</span>
+        </div>
+        <div class="y1-dock-idle-ticker-view" id="y1-dock-idle-ticker-view" aria-live="polite" hidden>
+          <span class="y1-dock-idle-ticker" id="y1-dock-idle-ticker-text" data-i18n-skip="true" translate="no">Loading...</span>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="y1-toolbar-thank-you-overlay" id="y1-toolbar-thank-you-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="y1-toolbar-thank-you-title">
+    <div class="y1-toolbar-thank-you-stage">
+      <p class="y1-toolbar-thank-you-eyebrow"><a href="credits_it.html" style="color: inherit; text-decoration: underline;">Innioasis Updater CE · Crediti</a></p>
+      <h2 id="y1-toolbar-thank-you-title">Grazie.</h2>
+      <p class="y1-toolbar-thank-you-subtitle">Questo progetto è qui perché le persone hanno scelto di aiutare. Grazie per aver mantenuto in movimento l'archivio, gli strumenti e la comunità.</p>
+      <div class="y1-toolbar-thank-you-names" id="y1-toolbar-thank-you-names" aria-live="polite" data-i18n-skip="true" translate="no"><p>Loading supporters…</p></div>
+      <p class="y1-toolbar-thank-you-footer">Ogni contributo, grande o piccolo, conta.</p>
+      <div style="display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap;">
+        <a href="credits_it.html" class="y1-toolbar-thank-you-close" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; background: #10b981; color: #03140d; border-color: #10b981;">Crediti e registro completi →</a>
+        <button type="button" class="y1-toolbar-thank-you-close" data-toolbar-thank-you-close>Chiudi</button>
+      </div>    </div>
+  </div>
+</div>
+<button class="y1-dock-reopen" id="y1-dock-reopen" type="button" data-dock-reopen aria-controls="support-toolbar-container" aria-label="Apri la barra degli strumenti del sito" title="Apri la barra degli strumenti del sito" hidden><svg class="y1-dock-reopen-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+<script>
+
+(function () {
+  "use strict"; 
+
+  function _interpolate(str, params) {
+    if (!str || !params) return str;
+    return String(str).replace(/\{([A-Za-z0-9_]+)\}/g, function (match, key) {
+      return Object.prototype.hasOwnProperty.call(params, key) ? params[key] : match;
+    });
+  }
+
+  function _t(str, params) {
+    if (!str) return "";
+    var res = str;
+    if (window.InnioasisLocale && typeof window.InnioasisLocale.translate === "function") {
+      var tr = window.InnioasisLocale.translate(str);
+      if (tr !== undefined && tr !== null && tr !== "") res = tr;
+    }
+    return params ? _interpolate(res, params) : res;
+  }
+
+  var consent = window.INNIOASIS_PRIVACY;
+
+  function donationsOff() {
+    return typeof window.isY1DonationsDisabled === "function" ? window.isY1DonationsDisabled() : false;
+  }
+
+  var RU_TIMEZONES = {
+    "europe/moscow": true,
+    "europe/kaliningrad": true,
+    "europe/samara": true,
+    "asia/yekaterinburg": true,
+    "asia/omsk": true,
+    "asia/novosibirsk": true,
+    "asia/krasnoyarsk": true,
+    "asia/irkutsk": true,
+    "asia/yakutsk": true,
+    "asia/vladivostok": true,
+    "asia/magadan": true,
+    "asia/kamchatka": true,
+    "europe/volgograd": true,
+    "europe/kirov": true,
+    "europe/saratov": true,
+    "europe/astrakhan": true,
+    "europe/ulyanovsk": true,
+    "europe/simferopol": true,
+    "asia/tomsk": true,
+    "asia/barnaul": true,
+    "asia/novokuznetsk": true,
+    "asia/chita": true,
+    "asia/sakhalin": true,
+    "asia/srednekolymsk": true,
+    "asia/ust-nera": true,
+    "asia/khandyga": true
+  };
+
+  function detectTerritory() {
+    var locales = [];
+    try {
+      if (navigator.languages && navigator.languages.length) {
+        locales = locales.concat(Array.prototype.slice.call(navigator.languages));
+      }
+      if (navigator.language) locales.push(navigator.language);
+      if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+        var resolved = Intl.DateTimeFormat().resolvedOptions();
+        if (resolved && resolved.locale) locales.push(resolved.locale);
+      }
+    } catch (_) {}
+    for (var i = 0; i < locales.length; i++) {
+      var loc = String(locales[i] || "").replace(/_/g, "-").trim();
+      var parts = loc.split("-");
+      for (var j = 1; j < parts.length; j++) {
+        var sub = parts[j].toUpperCase();
+        if (sub.length === 2 && /^[A-Z]{2}$/.test(sub)) return sub;
+      }
+    }
+    try {
+      if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+        var tz = String((Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || "").toLowerCase();
+        if (RU_TIMEZONES[tz]) return "RU";
+      }
+    } catch (_) {}
+    return "";
+  }
+
+  function isRussianVisitor() {
+    if (detectTerritory() === "RU") return true;
+    try {
+      if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+        var tz = String((Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || "").toLowerCase();
+        if (RU_TIMEZONES[tz]) return true;
+      }
+    } catch (_) {}
+    return false;
+  }
+
+  function applyRegionalRouting() {
+    if (!isRussianVisitor()) return;
+    document.documentElement.classList.add("y1-region-ru");
+    var boostyBtn = document.querySelector(".y1-donate-btn--boosty");
+    if (boostyBtn) boostyBtn.hidden = false;
+    document.querySelectorAll("#y1-donate-panel .y1-donate-btn:not(.y1-donate-btn--boosty)").forEach(function (el) {
+      el.hidden = true;
+    });
+    document.querySelectorAll("#y1-donate-panel .y1-donate-sep").forEach(function (el) {
+      el.hidden = true;
+    });
+    var cToggle = document.querySelector("[data-crypto-toggle]");
+    var cGrid = document.getElementById("y1-crypto-panel");
+    if (cToggle) cToggle.hidden = true;
+    if (cGrid) cGrid.hidden = true;
+    var smallprint = document.querySelector("#y1-donate-panel .y1-donate-smallprint");
+    if (smallprint) smallprint.textContent = "Donations are processed through Boosty";
+  }
+
+  applyRegionalRouting();
+
+  function makeTable(text, asFloat) {
+    var parts = String(text || "").trim().split(/\s+/);
+    var map = {};
+    for (var i = 0; i < parts.length - 1; i += 2) {
+      map[parts[i]] = asFloat ? parseFloat(parts[i + 1]) : parts[i + 1];
+    }
+    return map;
+  }
+
+  var FX_BAKED = makeTable(
+    "USD 1.000 EUR 0.8934 GBP 0.7454 JPY 158.4 CNY 6.684 INR 94.83 AUD 1.434 CAD 1.399 " +
+    "CHF 0.8200 SEK 9.791 NOK 9.281 DKK 6.680 PLN 3.945 CZK 21.76 HUF 325.9 RON 4.772 " +
+    "BGN 1.748 TRY 50.04 BRL 5.486 MXN 18.74 ARS 1550 CLP 978.1 COP 3221 PEN 3.465 " +
+    "ZAR 16.62 NGN 1346 KES 130.0 EGP 55.37 ILS 3.164 AED 3.6725 SAR 3.750 QAR 3.640 " +
+    "KWD 0.3112 BHD 0.3760 OMR 0.3845 JOD 0.7090 HKD 7.846 SGD 1.281 TWD 32.77 " +
+    "KRW 1344 THB 33.76 MYR 4.077 IDR 18140 PHP 63.52 VND 25769 PKR 276.5 BDT 124.5 " +
+    "LKR 332.4 NPR 151.7 UAH 45.68 RUB 81.42 KZT 452.7 UZS 11911 GEL 2.595 AMD 360.2 " +
+    "AZN 1.701 MAD 9.823 TND 3.004 DZD 136.0 GHS 11.68 TZS 2640 UGX 4092 RWF 1479 " +
+    "ETB 161.7 MZN 63.75 ZMW 20.26 BWP 14.09 MUR 47.58 ISK 121.7 HRK 6.732 RSD 108.0 " +
+    "BAM 1.748 MKD 61.50 ALL 92.50 MDL 17.80 BYN 3.200 XPF 119.3 XOF 655.96 XAF 655.96 " +
+    "CDF 2900 AOA 950.0 GMD 73.00 GNF 8700 SLE 22.80 LRD 200.0 SDG 600.0 LYD 6.600 " +
+    "SOS 570.0 NAD 16.62 LSL 16.62 SZL 16.62 MWK 1750 MGA 4600 SCR 14.50 CVE 100.4 " +
+    "BTN 94.83 MMK 2100 KHR 4075 LAK 21500 MNT 3400 MOP 8.080 BND 1.281 MVR 15.40 " +
+    "AFN 65.00 PGK 4.200 FJD 2.240 SBD 8.500 VUV 120.0 WST 2.700 TOP 2.350 BOB 6.900 " +
+    "PYG 7300 UYU 40.00 VES 60.00 CRC 500.0 PAB 1.000 GTQ 7.700 HNL 25.00 NIO 36.80 " +
+    "DOP 60.00 CUP 24.00 JMD 157.0 TTD 6.800 BBD 2.000 BSD 1.000 BZD 2.000 GYD 209.0 " +
+    "SRD 36.00 HTG 130.0 IRR 42000 IQD 1310 LBP 89500 SYP 13000 YER 250.0 TMT 3.500 " +
+    "KGS 87.00 TJS 10.80 ZWL 360.0 ERN 15.00 DJF 178.0 BIF 2900 KMF 440.0 MRU 39.60 " +
+    "STN 22.00 SSP 1300 XCD 2.700 AWG 1.790 ANG 1.800 BMD 1.000 KYD 0.830 FKP 0.7454 " +
+    "GIP 0.7454",
+    true
+  );
+
+  var FX_ZERO = {};
+  "JPY KRW VND IDR CLP ISK HUF PYG UGX RWF XAF XOF XPF KMF DJF GNF BIF VUV MGA".split(" ").forEach(function (c) {
+    FX_ZERO[c] = true;
+  });
+
+  var FX_SYM = makeTable(
+    "USD $ EUR € GBP £ JPY ¥ CNY ¥ INR ₹ AUD A$ CAD CA$ CHF CHF SEK kr NOK kr DKK kr " +
+    "PLN zł CZK Kč HUF Ft RON lei BGN лв TRY ₺ BRL R$ MXN MX$ ARS AR$ CLP CL$ COP COL$ " +
+    "PEN S/ ZAR R NGN ₦ KES KSh EGP E£ ILS ₪ AED د.إ SAR ﷼ QAR ﷼ KWD د.ك BHD د.ب " +
+    "OMR ﷼ JOD د.ا HKD HK$ SGD S$ TWD NT$ KRW ₩ THB ฿ MYR RM IDR Rp PHP ₱ VND ₫ " +
+    "PKR Rs BDT ৳ LKR Rs NPR Rs UAH ₴ RUB ₽ KZT ₸ UZS soʻm GEL ₾ AMD ֏ AZN ₼ MAD DH " +
+    "TND DT DZD DA GHS ₵ TZS TSh UGX USh RWF FRw ETB Br MZN MT ZMW ZK BWP P MUR Rs " +
+    "ISK kr HRK € RSD дин BAM KM MKD ден ALL L MDL L BYN Br XPF F XOF FCFA XAF FCFA " +
+    "CDF FC AOA Kz GMD D GNF FG SLE Le LRD L$ SDG ج.س LYD ل.د SOS Sh NAD N$ LSL L " +
+    "SZL E MWK MK MGA Ar SCR ₨ CVE Esc BTN Nu. MMK K KHR ៛ LAK ₭ MNT ₮ MOP MOP$ " +
+    "BND B$ MVR Rf AFN ؋ PGK K FJD FJ$ SBD SI$ VUV VT WST WS$ TOP T$ BOB Bs PYG ₲ " +
+    "UYU $U VES Bs. CRC ₡ PAB B/. GTQ Q HNL L NIO C$ DOP RD$ CUP $ JMD J$ TTD TT$ " +
+    "BBD Bds$ BSD B$ BZD BZ$ GYD G$ SRD Sr$ HTG G IQD ع.د LBP ل.ل SYP £ YER ﷼ " +
+    "TMT m KGS сом TJS SM ZWL Z$ ERN Nfk DJF Fdj BIF FBu KMF CF MRU UM STN Db " +
+    "SSP £ XCD EC$ AWG ƒ ANG ƒ KYD CI$ FKP £ GIP £",
+    false
+  );
+
+  var FX_REGION = makeTable(
+    "US USD GB GBP IE EUR FR EUR DE EUR AT EUR BE EUR NL EUR LU EUR ES EUR PT EUR IT EUR " +
+    "GR EUR FI EUR EE EUR LV EUR LT EUR CY EUR MT EUR SK EUR SI EUR HR EUR AD EUR MC EUR " +
+    "SM EUR VA EUR XK EUR ME EUR NO NOK SE SEK DK DKK IS ISK CH CHF LI CHF PL PLN CZ CZK " +
+    "HU HUF RO RON BG BGN RS RSD BA BAM MK MKD AL ALL MD MDL UA UAH BY BYN RU RUB TR TRY " +
+    "GE GEL AM AMD AZ AZN KZ KZT UZ UZS KG KGS TJ TJS TM TMT CA CAD MX MXN BR BRL AR ARS " +
+    "CL CLP CO COP PE PEN UY UYU PY PYG BO BOB VE VES EC USD SV USD PA PAB GT GTQ HN HNL " +
+    "NI NIO CR CRC DO DOP CU CUP JM JMD TT TTD BB BBD BS BSD BZ BZD GY GYD SR SRD HT HTG " +
+    "PR USD IL ILS PS ILS AE AED SA SAR QA QAR KW KWD BH BHD OM OMR JO JOD LB LBP IQ IQD " +
+    "IR IRR SY SYP YE YER EG EGP MA MAD TN TND DZ DZD LY LYD SD SDG ET ETB ER ERN DJ DJF " +
+    "SO SOS KE KES TZ TZS UG UGX RW RWF BI BIF CD CDF CG XAF GA XAF CM XAF CF XAF TD XAF " +
+    "NE XOF ML XOF BF XOF SN XOF CI XOF TG XOF BJ XOF GW XOF GM GMD GN GNF SL SLE LR LRD " +
+    "GH GHS NG NGN ZA ZAR NA NAD BW BWP LS LSL SZ SZL ZW ZWL MZ MZN ZM ZMW MW MWK MU MUR " +
+    "SC SCR MG MGA KM KMF AO AOA CV CVE ST STN MR MRU SS SSP JP JPY CN CNY HK HKD MO MOP " +
+    "TW TWD KR KRW SG SGD MY MYR TH THB ID IDR PH PHP VN VND IN INR PK PKR BD BDT LK LKR " +
+    "NP NPR BT BTN MM MMK KH KHR LA LAK MN MNT BN BND MV MVR AU AUD NZ NZD PG PGK FJ FJD " +
+    "SB SBD VU VUV WS WST TO TOP NC XPF PF XPF",
+    false
+  );
+
+  var FX_CACHE_KEY = "y1_fx_rates_v1";
+  var FX_TTL_MS = 43200000;
+  var FX_FEEDS = [
+    "https://open.er-api.com/v6/latest/USD",
+    "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",
+    "https://api.frankfurter.dev/v1/latest?base=USD"
+  ];
+  var fxState = { rates: {}, at: 0, warm: false, busy: false };
+  var lastDonations = null;
+
+  function warmFxCache() {
+    if (fxState.warm) return;
+    fxState.warm = true;
+    try {
+      var raw = localStorage.getItem(FX_CACHE_KEY);
+      if (!raw) return;
+      var parsed = JSON.parse(raw);
+      if (parsed && parsed.rates && typeof parsed.rates === "object") {
+        fxState.rates = parsed.rates;
+        fxState.at = Number(parsed.at) || 0;
+      }
+    } catch (_) {}
+  }
+
+  function parseFxPayload(blob) {
+    if (!blob || typeof blob !== "object") return null;
+    var keys = ["rates", "usd"];
+    for (var i = 0; i < keys.length; i++) {
+      var inner = blob[keys[i]];
+      if (!inner || typeof inner !== "object") continue;
+      var out = {};
+      Object.keys(inner).forEach(function (k) {
+        var val = Number(inner[k]);
+        if (isFinite(val) && val > 0) out[String(k).toUpperCase()] = val;
+      });
+      if (out.USD) return out;
+    }
+    return null;
+  }
+
+  function refreshFxRates(onReady) {
+    warmFxCache();
+    if (fxState.busy) return;
+    if (Date.now() - fxState.at < FX_TTL_MS && Object.keys(fxState.rates).length > 0) return;
+    fxState.busy = true;
+    var idx = 0;
+    function tryNextFeed() {
+      if (idx >= FX_FEEDS.length) {
+        fxState.busy = false;
+        return;
+      }
+      var url = FX_FEEDS[idx++];
+      fetch(url, { cache: "no-store" })
+        .then(function (r) {
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          return r.json();
+        })
+        .then(function (json) {
+          var rates = parseFxPayload(json);
+          if (!rates) throw new Error("Unusable FX payload");
+          fxState.rates = rates;
+          fxState.at = Date.now();
+          fxState.busy = false;
+          try {
+            localStorage.setItem(FX_CACHE_KEY, JSON.stringify({ at: fxState.at, rates: rates }));
+          } catch (_) {}
+          if (typeof onReady === "function") onReady();
+        })
+        .catch(function () {
+          tryNextFeed();
+        });
+    }
+    tryNextFeed();
+  }
+
+  function detectCurrencyCode() {
+    var region = detectTerritory();
+    if (region && FX_REGION[region]) return FX_REGION[region];
+    try {
+      if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+        var tz = String((Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || "").toLowerCase();
+        if (tz.indexOf("tokyo") !== -1) return "JPY";
+        if (tz.indexOf("london") !== -1) return "GBP";
+        if (tz.indexOf("berlin") !== -1 || tz.indexOf("paris") !== -1 || tz.indexOf("rome") !== -1 || tz.indexOf("madrid") !== -1 || tz.indexOf("amsterdam") !== -1) return "EUR";
+      }
+    } catch (_) {}
+    return "USD";
+  }
+
+  function fxSymbol(code) {
+    code = String(code || "USD").toUpperCase();
+    return FX_SYM[code] || (code + "\u00a0");
+  }
+
+  function fxRate(code) {
+    warmFxCache();
+    code = String(code || "USD").toUpperCase();
+    var r = Number(fxState.rates[code] || FX_BAKED[code] || 1.0);
+    return (isFinite(r) && r > 0) ? r : 1.0;
+  }
+
+  function fxUnit(code) {
+    code = String(code || "USD").toUpperCase();
+    var r = fxRate(code);
+    if (FX_ZERO[code] || r >= 10) return 1.0;
+    return 0.01;
+  }
+
+  function fxLocal(usd, code) {
+    var q = fxUnit(code);
+    return Math.round((Number(usd || 0) * fxRate(code)) / q) * q;
+  }
+
+  function fxGoal(usd, code) {
+    var r = fxRate(code);
+    var value = Number(usd || 0) * r;
+    if (r >= 10) return Math.round(value);
+    return Math.round(value * 100) / 100;
+  }
+
+  function fxShare(raised, target) {
+    if (!(target > 0)) return 0.0;
+    return Math.min(100.0, Math.max(0.0, (Number(raised) / Number(target)) * 100.0));
+  }
+
+  var donatePanel = document.getElementById("y1-donate-panel");
+  var donateOpen = document.querySelector("[data-donate-open]");
+  var donateClose = document.querySelector("[data-donate-close]");
+  var privacyPanel = document.getElementById("y1-privacy-panel");
+  var privacyOpen = document.querySelector("[data-privacy-open]");
+  var privacyClose = document.querySelector("[data-privacy-close]");
+  var backdrop = document.querySelector("[data-dock-backdrop]");
+  var feedbackToggle = document.querySelector("[data-privacy-feedback]");
+  var nightlyToggle = document.querySelector("[data-privacy-nightly]");
+  var donationsToggle = document.querySelector("[data-privacy-donations]");
+  var donationsOptOut = document.querySelector("[data-donations-optout]");
+  var donationsOptionRow = document.querySelector("[data-privacy-donations-row]");
+  var privacySave = document.querySelector("[data-privacy-save]");
+  var privacyStatus = document.querySelector("[data-privacy-status]");
+  var cryptoToggle = document.querySelector("[data-crypto-toggle]");
+  var cryptoGrid = document.getElementById("y1-crypto-panel");
+  var thankYouTriggers = Array.from(document.querySelectorAll("[data-toolbar-thank-you-open]"));
+  var thankYouClose = document.querySelector("[data-toolbar-thank-you-close]");
+  var thankYouOverlay = document.getElementById("y1-toolbar-thank-you-overlay");
+  var thankYouNames = document.getElementById("y1-toolbar-thank-you-names");
+  var thankYouEntries = [];
+  var thankYouPageIndex = 0;
+  var thankYouPageTimer = null;
+
+  function toolbarThankYouLayout() {
+    return window.innerHeight > window.innerWidth
+      ? { columns: 2, rows: 7 }
+      : { columns: 5, rows: 4 };
+  }
+
+  function toolbarThankYouAmount(entry) {
+    if (entry.amountLabel) return entry.amountLabel;
+    var amount = "$" + (entry.total % 1 === 0 ? entry.total.toFixed(0) : entry.total.toFixed(2));
+    return amount + (entry.count > 1 ? " · " + entry.count + " " + _t("contributions") : "");
+  }
+
+  function renderToolbarThankYouPage(pageIndex) {
+    if (!thankYouNames) return;
+    var layout = toolbarThankYouLayout();
+    var slots = layout.columns * layout.rows;
+    var pageCount = Math.max(1, Math.ceil(thankYouEntries.length / slots));
+    thankYouPageIndex = pageCount > 1 ? pageIndex % pageCount : 0;
+    thankYouNames.style.gridTemplateColumns = "repeat(" + layout.columns + ", minmax(0, 1fr))";
+    thankYouNames.style.gridTemplateRows = "repeat(" + layout.rows + ", minmax(0, 1fr))";
+    thankYouNames.style.opacity = "0";
+    thankYouNames.innerHTML = "";
+    var pageEntries = thankYouEntries.slice(thankYouPageIndex * slots, (thankYouPageIndex + 1) * slots);
+    if (!pageEntries.length) {
+      thankYouNames.innerHTML = "<p>" + _t("Waiting for supporters to appear.") + "</p>";
+    } else {
+      pageEntries.forEach(function (entry) {
+        var item = document.createElement("div");
+        item.className = "y1-toolbar-thank-you-entry";
+        var name = document.createElement("span");
+        name.className = "y1-toolbar-thank-you-name";
+        name.textContent = entry.name;
+        var amount = document.createElement("span");
+        amount.className = "y1-toolbar-thank-you-amount";
+        amount.textContent = toolbarThankYouAmount(entry);
+        item.appendChild(name);
+        item.appendChild(amount);
+        thankYouNames.appendChild(item);
+      });
+    }
+    requestAnimationFrame(function () { thankYouNames.style.opacity = "1"; });
+  }
+
+  function startToolbarThankYouCycle() {
+    if (thankYouPageTimer) clearInterval(thankYouPageTimer);
+    renderToolbarThankYouPage(thankYouPageIndex);
+    var layout = toolbarThankYouLayout();
+    var pageCount = Math.max(1, Math.ceil(thankYouEntries.length / (layout.columns * layout.rows)));
+    if (pageCount > 1) {
+      thankYouPageTimer = setInterval(function () {
+        renderToolbarThankYouPage(thankYouPageIndex + 1);
+      }, 6000);
+    }
+  }
+
+  function stopToolbarThankYouCycle() {
+    if (thankYouPageTimer) clearInterval(thankYouPageTimer);
+    thankYouPageTimer = null;
+  }
+
+  function isReceivedCommunityDonation(donation) {
+    var amount = Number(donation && donation.amount);
+    var name = String((donation && donation.name) || "").toLowerCase().trim();
+    return isFinite(amount) && amount > 0 && name !== "innioasis" && name.indexOf("innioasis") !== 0;
+  }
+
+  function renderToolbarThankYou(donations) {
+    var groups = {};
+    var anonymousSeen = 0;
+    donations.filter(isReceivedCommunityDonation).forEach(function (donation) {
+      var rawName = String((donation && donation.name) || "").trim();
+      if (isAnonymous(rawName)) {
+        anonymousSeen += 1;
+        groups["__anonymous_" + anonymousSeen] = {
+          name: cleanSupporterName(rawName),
+          total: donation.amount,
+          count: 1
+        };
+        return;
+      }
+      var key = rawName.toLowerCase();
+      if (!groups[key]) groups[key] = { name: cleanSupporterName(rawName), total: 0, count: 0 };
+      groups[key].total += donation.amount;
+      groups[key].count += 1;
+    });
+    thankYouEntries = Object.keys(groups).map(function (key) { return groups[key]; });
+    thankYouEntries.sort(function (a, b) { return b.total - a.total || a.name.localeCompare(b.name); });
+    if (thankYouOverlay && !thankYouOverlay.hidden) startToolbarThankYouCycle();
+  }
+
+  var thankYouControlsHidden = false;
+
+  function setToolbarThankYouControlsHidden(hidden) {
+    thankYouControlsHidden = !!hidden;
+    document.body.classList.toggle(
+      "y1-toolbar-thank-you-controls-hidden",
+      thankYouControlsHidden
+    );
+  }
+
+  function closeToolbarThankYou() {
+    stopToolbarThankYouCycle();
+    if (thankYouOverlay) thankYouOverlay.hidden = true;
+    setToolbarThankYouControlsHidden(false);
+    document.body.classList.remove("y1-toolbar-thank-you-open");
+    thankYouTriggers.forEach(function (trigger) {
+      trigger.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  if (thankYouTriggers.length && thankYouOverlay) {
+    thankYouTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        if (typeof closeDonatePanel === "function") {
+          closeDonatePanel();
+        }
+        setToolbarThankYouControlsHidden(false);
+        thankYouOverlay.hidden = false;
+        document.body.classList.add("y1-toolbar-thank-you-open");
+        trigger.setAttribute("aria-expanded", "true");
+        startToolbarThankYouCycle();
+        if (thankYouClose) thankYouClose.focus();
+      });
+    });
+    if (thankYouClose) thankYouClose.addEventListener("click", closeToolbarThankYou);
+    document.addEventListener("keydown", function (event) {
+      if (thankYouOverlay.hidden) return;
+      if (event.key === "Escape") {
+        closeToolbarThankYou();
+      } else if ((event.key || "").toLowerCase() === "h") {
+        setToolbarThankYouControlsHidden(!thankYouControlsHidden);
+        event.preventDefault();
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (!thankYouOverlay.hidden) startToolbarThankYouCycle();
+    });
+  }
+
+  var FONT_KEY = "lumen-font-scale";
+  var fontScale = 1;
+  try {
+    var storedScale = parseFloat(localStorage.getItem(FONT_KEY) || "");
+    if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = storedScale;
+  } catch (_) {}
+  function applyFontScale() {
+    document.documentElement.style.setProperty("--lumen-font-scale", String(fontScale));
+    try { localStorage.setItem(FONT_KEY, String(fontScale)); } catch (_) {}
+    var live = document.getElementById("y1-font-live");
+    if (live) live.textContent = "Text size " + Math.round(fontScale * 100) + "%";
+  }
+  var fontDown = document.querySelector("[data-font-down]");
+  var fontReset = document.querySelector("[data-font-reset]");
+  var fontUp = document.querySelector("[data-font-up]");
+  if (fontDown) fontDown.addEventListener("click", function () { fontScale = Math.max(0.7, +(fontScale - 0.1).toFixed(2)); applyFontScale(); });
+  if (fontReset) fontReset.addEventListener("click", function () { fontScale = 1; applyFontScale(); });
+  if (fontUp) fontUp.addEventListener("click", function () { fontScale = Math.min(1.6, +(fontScale + 0.1).toFixed(2)); applyFontScale(); });
+  applyFontScale();
+
+  if (!donatePanel || !privacyPanel || !donateOpen || !privacyOpen) return;
+
+  function hasDecided() {
+    return !!(consent && consent.hasDecided && consent.hasDecided());
+  }
+
+  function syncBackdrop() {
+    var anyOpen = !donatePanel.hidden || !privacyPanel.hidden;
+    if (backdrop) backdrop.hidden = !anyOpen;
+  }
+
+  var GENERAL_APPEAL_POOL = [
+    "Donations directly help me support my family and fund the test devices that make this free service possible for everyone. If this tool saved you time or rescued your player today, please consider a small donation, it truly means the world to us.",
+    "The servers behind the downloads are paid for out of pocket. A coffee keeps them online for the next owner.",
+    "Every release here is built in evenings and weekends. A small donation buys more of that time.",
+    "Solely self- and donations-funded, with no paid tier. Mostly paid for out of pocket, with help from people this helped.",
+    "Donations buy the test players and cables used to check each release before anyone installs it.",
+    "Thousands of downloads go out every month. Donations pay for the servers that deliver them.",
+    "Donations pay the running costs of Updater CE, the Themes Gallery and the community firmware archive. Whatever you can add helps.",
+    "A few dollars goes a long way here: it covers hundreds of downloads.",
+    "Bugs get fixed because someone stayed up testing your exact model. A donation keeps that going.",
+    "No company behind this, just one developer, a workbench and a donation page. Everything goes to running costs.",
+    "The tools, the guides and the archive are all free. A tip funds the next feature.",
+    "If this worked for you, pass the kindness on. It keeps the project free for whoever comes next.",
+    "Some of the players this supports were written off as broken. A donation keeps the rescue service running.",
+    "No subscription, no deadline, just a page like this one. Give only if it helped.",
+    "One person answers the questions, writes the guides and pays the bills. Donations make that sustainable.",
+    "Files vanish when a hosting company shuts down. Donations keep the copies that rescued your player online.",
+    "One coffee roughly covers the cost of a download. It keeps the next fix within reach."
+  ];
+
+  var FAMILY_APPEAL_POOL = [
+    "Ryan and his partner are expecting a baby. Donations towards the project's running costs and our new family are massively appreciated.",
+    "There's a new arrival on the way in Ryan's house. Every donation towards the servers and our growing family means a great deal.",
+    "Ryan and his partner are getting ready for their child. If this tool has been useful, a donation for the running costs and our growing family would help more than you know."
+  ];
+
+  var FAMILY_COHORT_STORAGE_KEY = "y1_family_appeal_cohort";
+  var recentAppeals = [];
+
+  function formatBoldLead(text) {
+    if (!text) return "";
+    if (text.indexOf("<b>") !== -1) return text;
+    var m = text.match(/^([^.:]+[.:])\s*(.*)$/);
+    if (m) {
+      return "<b>" + m[1] + "</b> " + m[2];
+    }
+    return text;
+  }
+
+  function inFamilyCohort() {
+    try {
+      var raw = localStorage.getItem(FAMILY_COHORT_STORAGE_KEY);
+      if (raw === null) {
+        var chosen = Math.random() < 0.30;
+        localStorage.setItem(FAMILY_COHORT_STORAGE_KEY, chosen ? "1" : "0");
+        return chosen;
+      }
+      return raw === "1";
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function familyWindowOpen(now) {
+    now = now || new Date();
+    var cutoff = new Date(2027, 3, 17, 23, 59, 59, 999);
+    return now.getTime() <= cutoff.getTime();
+  }
+
+  function hasDonationToday(donations, now) {
+    now = now || new Date();
+    var y = now.getFullYear();
+    var m = now.getMonth();
+    var d = now.getDate();
+    var list = donations || [];
+    for (var i = 0; i < list.length; i++) {
+      var row = list[i];
+      if (!row || !row.dt || !(row.amount > 0)) continue;
+      if (row.dt.getFullYear() === y && row.dt.getMonth() === m && row.dt.getDate() === d) return true;
+    }
+    return false;
+  }
+
+  function pickFromPool(pool) {
+    var fresh = pool.filter(function (item) { return recentAppeals.indexOf(item) === -1; });
+    var source = fresh.length ? fresh : pool;
+    var chosen = source[Math.floor(Math.random() * source.length)];
+    recentAppeals.push(chosen);
+    if (recentAppeals.length > 4) recentAppeals.splice(0, recentAppeals.length - 4);
+    return formatBoldLead(_t(chosen));
+  }
+
+  function getRotatingAppealCopy() {
+    var now = new Date();
+    var donations = lastDonations || [];
+    var weight = 0;
+    if (familyWindowOpen(now) && inFamilyCohort()) {
+      weight = 3.0;
+      if (!hasDonationToday(donations, now)) weight *= 2.0;
+      var goal = fundingGoalView(donations, 0, now);
+      if (goal && (goal.scope === "daily" || goal.scope === "weekly")) weight *= 1.8;
+    }
+    if (weight > 0 && Math.random() < (weight / (weight + GENERAL_APPEAL_POOL.length))) {
+      return pickFromPool(FAMILY_APPEAL_POOL);
+    }
+    return pickFromPool(GENERAL_APPEAL_POOL);
+  }
+
+  function setPanel(panel, button, value, closeButton) {
+    if (value && panel === donatePanel && donationsOff()) return;
+    if (value && panel === donatePanel) {
+      var introEl = document.getElementById("y1-donate-panel-intro");
+      if (introEl) introEl.innerHTML = getRotatingAppealCopy();
+    }
+    panel.hidden = !value;
+    panel.classList.toggle("is-open", value);
+    panel.classList.toggle("y1-privacy-panel--open", value && panel === privacyPanel);
+    if (value) {
+      panel.scrollTop = 0;
+    }
+    document.body.classList.toggle("y1-donate-panel-open", value && panel === donatePanel);
+    button.setAttribute("aria-expanded", value ? "true" : "false");
+    if (value && closeButton) closeButton.focus();
+    syncBackdrop();
+  }
+
+  function prefillToggles() {
+    var prefs = (consent && consent.read) ? consent.read() : null;
+    if (privacyStatus) privacyStatus.textContent = "";
+    if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback : false;
+    if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly : false;
+    if (donationsToggle) donationsToggle.checked = !donationsOff();
+  }
+
+  function hasDonationsPreference() {
+    return typeof window.hasY1DonationsPreference === "function" && window.hasY1DonationsPreference();
+  }
+
+  /* The donation switch only belongs here once the visitor has already opted
+     out, because that is the only way back. On a first visit they have not
+     seen the project yet, so the option is not shown and nothing about
+     donations is written. */
+  function syncDonationsOption() {
+    if (donationsOptionRow) donationsOptionRow.hidden = !hasDonationsPreference();
+    if (donationsToggle) donationsToggle.checked = hasDonationsPreference() ? !donationsOff() : true;
+  }
+
+  function openPrivacyNotice() {
+    prefillToggles();
+    syncDonationsOption();
+    setPanel(privacyPanel, privacyOpen, true, privacyClose);
+  }
+
+  /* Re-enabling donations reloads the page with ?donations=true set alongside
+     whatever parameters are already there, so every part of the page comes
+     back with the appeals switched on. */
+  function reloadWithDonationsEnabled() {
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set("donations", "true");
+      window.location.replace(url.toString());
+    } catch (_) {
+      window.location.reload();
+    }
+  }
+
+  function saveFromPanel() {
+    var reenabledDonations = false;
+    if (hasDonationsPreference() && donationsToggle && typeof window.setY1DonationsDisabled === "function") {
+      var disableDonations = !donationsToggle.checked;
+      reenabledDonations = donationsOff() && !disableDonations;
+      window.setY1DonationsDisabled(disableDonations);
+    }
+    if (consent && consent.save) {
+      consent.save({
+        feedback: feedbackToggle ? feedbackToggle.checked : true,
+        nightly: nightlyToggle ? nightlyToggle.checked : true
+      });
+    }
+    /* Say so, rather than silently closing and leaving the visitor to guess
+       whether anything happened. The panel closes a beat later so the
+       confirmation is readable and announced. */
+    if (privacyStatus) privacyStatus.textContent = "Saved. Your choices apply from now on.";
+    window.setTimeout(function () {
+      setPanel(privacyPanel, privacyOpen, false, null);
+      if (privacyStatus) privacyStatus.textContent = "";
+      if (reenabledDonations) {
+        reloadWithDonationsEnabled();
+        return;
+      }
+      if (privacyOpen) privacyOpen.focus();
+    }, 900);
+  }
+
+  var devAvatar = document.getElementById("y1-developer-avatar-img");
+  function rotateDeveloperAvatar() {
+    if (!devAvatar) return;
+    var filename = Math.random() < 0.5 ? "developer.png" : "developer_2.png";
+    var fallbackFilename = filename === "developer.png" ? "developer_2.png" : "developer.png";
+    var candidates = [
+      "/assets/" + filename + "?v=20260831",
+      "/" + filename + "?v=20260831",
+      "/assets/" + filename + "?v=20260831",
+      "assets/" + filename + "?v=20260831",
+      "assets/" + filename + "?v=20260831",
+      "https://innioasis.app/assets/" + filename + "?v=20260831",
+      "https://innioasis.app/" + filename + "?v=20260831",
+      "/assets/" + fallbackFilename + "?v=20260831",
+      "/" + fallbackFilename + "?v=20260831",
+      "/assets/" + fallbackFilename + "?v=20260831",
+      "https://innioasis.app/assets/" + fallbackFilename + "?v=20260831"
+    ];
+    var testIdx = 0;
+    function tryNext() {
+      if (testIdx < candidates.length) {
+        devAvatar.src = candidates[testIdx++];
+      }
+    }
+    devAvatar.onerror = function () {
+      tryNext();
+    };
+    tryNext();
+  }
+  rotateDeveloperAvatar();
+
+  function fallbackPaymentIcon(file) {
+    var fallbacks = {
+      "icon_kofi.png": "icon_kofi.svg",
+      "icon_paypal.png": "icon_paypal.svg",
+      "icon_revolut.png": "icon_revolut.svg",
+      "icon_patreon.png": "icon_patreon.svg"
+    };
+    return fallbacks[file] || "icon_kofi.svg";
+  }
+
+  document.querySelectorAll("img[data-method-icon]").forEach(function (img) {
+    var useFallback = function () {
+      var file = img.dataset.methodIcon;
+      var sources = [
+        "/assets/" + file,
+        "./assets/" + file,
+        "https://innioasis.app/assets/" + file,
+        "./assets/" + file,
+        "/assets/" + file,
+        "/assets/" + fallbackPaymentIcon(file),
+        "./assets/" + fallbackPaymentIcon(file)
+      ];
+      var next = parseInt(img.dataset.iconSourceIndex || "0", 10) + 1;
+      if (next >= sources.length) {
+        img.style.display = "none";
+        return;
+      }
+      img.dataset.iconSourceIndex = String(next);
+      img.src = sources[next];
+    };
+    img.addEventListener("error", useFallback);
+    if (img.complete && img.naturalWidth === 0) useFallback();
+  });
+
+  donateOpen.addEventListener("click", function () {
+    var opening = donatePanel.hidden;
+    if (opening) rotateDeveloperAvatar();
+    setPanel(privacyPanel, privacyOpen, false);
+    setPanel(donatePanel, donateOpen, opening, donateClose);
+  });
+  privacyOpen.addEventListener("click", function () {
+    var opening = privacyPanel.hidden;
+    setPanel(donatePanel, donateOpen, false);
+    if (opening) { prefillToggles(); syncDonationsOption(); }
+    setPanel(privacyPanel, privacyOpen, opening, privacyClose);
+  });
+  if (donateClose) donateClose.addEventListener("click", function () { setPanel(donatePanel, donateOpen, false); });
+  if (donationsOptOut) {
+    donationsOptOut.addEventListener("change", function () {
+      if (!donationsOptOut.checked) return;
+      if (typeof window.setY1DonationsDisabled === "function") window.setY1DonationsDisabled(true);
+      else document.documentElement.classList.add("y1-donations-off");
+      setPanel(donatePanel, donateOpen, false);
+    });
+  }
+  if (privacyClose) privacyClose.addEventListener("click", function () {
+    setPanel(privacyPanel, privacyOpen, false);
+  });
+  if (privacySave) privacySave.addEventListener("click", saveFromPanel);
+
+  if (cryptoToggle && cryptoGrid) {
+    cryptoToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      var isHidden = cryptoGrid.hidden;
+      cryptoGrid.hidden = !isHidden;
+      cryptoGrid.classList.toggle("is-open", isHidden);
+      cryptoToggle.setAttribute("aria-expanded", isHidden ? "true" : "false");
+      var text = cryptoToggle.querySelector("span");
+      if (text) text.textContent = isHidden ? "Hide crypto options · BTC, ETH, SHIB" : "Show crypto options · BTC, ETH, SHIB";
+    });
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var val = btn.getAttribute("data-copy");
+      if (!val) return;
+      navigator.clipboard.writeText(val).then(function () {
+        var orig = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(function () { btn.textContent = orig; }, 2000);
+      }).catch(function () {});
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+      if (!privacyPanel.hidden) {
+        setPanel(privacyPanel, privacyOpen, false);
+      }
+    }
+  });
+
+  document.addEventListener("click", function (event) {
+    var inside = (donatePanel && donatePanel.contains(event.target)) ||
+                 (privacyPanel && privacyPanel.contains(event.target)) ||
+                 (donateOpen && donateOpen.contains(event.target)) ||
+                 (privacyOpen && privacyOpen.contains(event.target)) ||
+                 (event.target.closest && (event.target.closest("#y1-dock-ticker-wrap") || event.target.closest("#y1-dock-goal-layer")));
+    if (inside) return;
+    if (backdrop && event.target === backdrop) {
+      if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+      if (!privacyPanel.hidden) {
+        setPanel(privacyPanel, privacyOpen, false);
+      }
+      return;
+    }
+    if (!donatePanel.hidden) setPanel(donatePanel, donateOpen, false);
+    if (!privacyPanel.hidden) {
+      setPanel(privacyPanel, privacyOpen, false);
+    }
+  });
+
+  if (!hasDecided()) openPrivacyNotice();
+
+  var dockReopenBtn = document.querySelector("[data-dock-reopen]");
+
+  function setDockReopenVisible(visible) {
+    if (!dockReopenBtn) return;
+    dockReopenBtn.hidden = !visible;
+  }
+
+  function hideSupportToolbar() {
+    var container = document.getElementById("support-toolbar-container");
+    if (!container) return;
+    container.classList.add("y1-toolbar-hidden");
+    container.style.setProperty("display", "none", "important");
+    container.setAttribute("aria-hidden", "true");
+    setDockReopenVisible(true);
+  }
+
+  function showSupportToolbar() {
+    var container = document.getElementById("support-toolbar-container");
+    if (!container) return;
+    container.classList.remove("y1-toolbar-hidden");
+    container.style.removeProperty("display");
+    container.removeAttribute("aria-hidden");
+    setDockReopenVisible(false);
+    try { sessionStorage.removeItem("y1-dock-dismissed"); } catch (_) {}
+    var closeBtn = document.querySelector("[data-dock-close]");
+    if (closeBtn && typeof closeBtn.focus === "function") closeBtn.focus();
+  }
+
+  var dockCloseBtn = document.querySelector("[data-dock-close]");
+  if (dockCloseBtn) {
+    dockCloseBtn.addEventListener("click", function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      hideSupportToolbar();
+      try { sessionStorage.setItem("y1-dock-dismissed", "1"); } catch (_) {}
+      if (dockReopenBtn && typeof dockReopenBtn.focus === "function") dockReopenBtn.focus();
+    });
+  }
+  if (dockReopenBtn) {
+    dockReopenBtn.addEventListener("click", function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      showSupportToolbar();
+    });
+  }
+  try {
+    if (sessionStorage.getItem("y1-dock-dismissed") === "1") {
+      hideSupportToolbar();
+    }
+  } catch (_) {
+  }
+
+  (function () {
+    var secondaryLine = document.getElementById("y1-dock-secondary-line");
+    var secondaryText = document.getElementById("y1-dock-secondary-text");
+    var secondaryBarFill = document.getElementById("y1-dock-secondary-bar-fill");
+    var secondaryGoalView = document.getElementById("y1-dock-secondary-goal-view");
+    var secondaryTickerView = document.getElementById("y1-dock-secondary-ticker-view");
+    var secondaryTickerEl = document.getElementById("y1-dock-secondary-ticker-text");
+
+    var donationLineInterval = null;
+
+    function openDonationFromAppeal() {
+      var donateOpenBtn = document.querySelector("[data-donate-open]");
+      if (donateOpenBtn) donateOpenBtn.click();
+    }
+    if (secondaryLine) {
+      secondaryLine.addEventListener("click", function (e) {
+        if (e.target && e.target.closest && e.target.closest("a")) return;
+        openDonationFromAppeal();
+      });
+      secondaryLine.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDonationFromAppeal(); }
+      });
+    }
+
+    window._y1UpdateDonationLine = function (goal, tickerHtml) {
+      if (secondaryBarFill) {
+        requestAnimationFrame(function () { secondaryBarFill.style.width = Math.min(100, goal.pct).toFixed(1) + "%"; });
+      }
+      if (donationLineInterval) clearInterval(donationLineInterval);
+      var donorLines = Array.isArray(tickerHtml) ? tickerHtml.filter(Boolean) : (tickerHtml ? [tickerHtml] : []);
+      var remLabel = (goal.remaining % 1 === 0) ? goal.remaining.toFixed(0) : goal.remaining.toFixed(2);
+      var secondaryBarWrap = document.getElementById("y1-dock-secondary-bar-wrap") || (secondaryBarFill ? secondaryBarFill.parentElement : null);
+
+      function makeGoalState(phraseObj) {
+        return {
+          type: "goal",
+          desktop: phraseObj.desktop,
+          mobile: phraseObj.mobile,
+          isTarget: Boolean(phraseObj.isTarget)
+        };
+      }
+
+      var targetPhrase = goal.met
+        ? null
+        : {
+            desktop: fundingGoalText(goal, false),
+            mobile: fundingGoalText(goal, false),
+            isTarget: true
+          };
+
+      var now = new Date();
+      var weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7));
+      var todayNames = {};
+      var weekNames = {};
+      (lastDonations || []).forEach(function (d) {
+        if (!d || !d.dt || !(d.amount > 0)) return;
+        if (String(d.name || "").toLowerCase().indexOf("innioasis") === 0) return;
+        if (d.dt < weekStart || d.dt > now) return;
+        var key = String(d.name || "supporter").toLowerCase().trim();
+        weekNames[key] = true;
+        if (d.dt.getFullYear() === now.getFullYear() && d.dt.getMonth() === now.getMonth() && d.dt.getDate() === now.getDate()) todayNames[key] = true;
+      });
+      var todayCount = Object.keys(todayNames).length;
+      var weekCount = Object.keys(weekNames).length;
+      var supporterPhrase = todayCount === 0
+        ? {
+            desktop: _t("No one has donated today, will you be the first?"),
+            mobile: _t("No one has donated today, will you be the first?"),
+            isTarget: false
+          }
+        : {
+            desktop: weekCount === 1
+              ? _t("{count} supporter has helped us this week  -  join them to keep downloads free for everyone.", { count: 1 })
+              : _t("{count} supporters have helped us this week  -  join them to keep downloads free for everyone.", { count: weekCount }),
+            mobile: weekCount === 1
+              ? _t("{count} supporter helped us this week  -  join them", { count: 1 })
+              : _t("{count} supporters helped us this week  -  join them", { count: weekCount }),
+            isTarget: false
+          };
+
+      var generalPhrases = goal.met
+        ? [
+            {
+              desktop: _t("Solely self- and donations-funded, and still mostly paid for out of pocket  -  thank you to everyone who chipped in!"),
+              mobile: _t("Solely self- and donations-funded  -  thank you!"),
+              isTarget: false
+            },
+            {
+              desktop: _t("Every extra coffee funds future tool mirrors and development."),
+              mobile: _t("Extra donations fund future mirrors & development"),
+              isTarget: false
+            }
+          ]
+        : [
+            targetPhrase,
+            {
+              desktop: (goal.scope === "weekly")
+                ? _t("Only {amount} left to raise for this week's costs.", { amount: goal.symbol + remLabel })
+                : (goal.scope === "daily")
+                  ? _t("Only {amount} left to raise for today's costs.", { amount: goal.symbol + remLabel })
+                  : _t("Only {amount} left to raise for this month's costs.", { amount: goal.symbol + remLabel }),
+              mobile: (goal.scope === "weekly")
+                ? _t("Only {amount} left to raise for this week's costs.", { amount: goal.symbol + remLabel })
+                : (goal.scope === "daily")
+                  ? _t("Only {amount} left to raise for today's costs.", { amount: goal.symbol + remLabel })
+                  : _t("Only {amount} left to raise for this month's costs.", { amount: goal.symbol + remLabel }),
+              isTarget: true
+            },
+            {
+              desktop: _t("Small gifts of $3 to $5 cover about 15% of what this project really costs; most of the rest goes on players bought to test."),
+              mobile: _t("Small $3–$5 gifts cover about 15% of real costs"),
+              isTarget: false
+            },
+            {
+              desktop: _t("Saved your player with a free firmware download? Consider buying us a coffee."),
+              mobile: _t("Saved your player? Buy us a coffee to keep us online"),
+              isTarget: false
+            },
+            {
+              desktop: _t("The price of a coffee or two keeps our download servers online this month."),
+              mobile: _t("A coffee or two keeps our servers online this month"),
+              isTarget: false
+            },
+            {
+              desktop: _t("Solely self- and donations-funded, with no paywalls  -  chip in $3 towards test players and servers."),
+              mobile: _t("Self- and donations-funded  -  chip in $3 to support us"),
+              isTarget: false
+            },
+            supporterPhrase,
+            {
+              desktop: _t("If 1 in 50 visitors bought us a coffee, we'd cover most of a test player this month."),
+              mobile: _t("If 1 in 50 visitors bought a coffee, we'd cover a test player"),
+              isTarget: false
+            }
+          ];
+
+      var rotatingPhrases = generalPhrases.slice();
+      for (var pi = rotatingPhrases.length - 1; pi > 0; pi--) {
+        var pj = Math.floor(Math.random() * (pi + 1));
+        var pTmp = rotatingPhrases[pi];
+        rotatingPhrases[pi] = rotatingPhrases[pj];
+        rotatingPhrases[pj] = pTmp;
+      }
+
+      var states = [];
+      var phraseIdx = 0;
+      function nextPhrase() {
+        var p = rotatingPhrases[phraseIdx % rotatingPhrases.length];
+        phraseIdx++;
+        return makeGoalState(p);
+      }
+
+      if (targetPhrase) states.push(makeGoalState(targetPhrase));
+      donorLines.forEach(function (line, index) {
+        if (index > 0 && index % 2 === 0) {
+          states.push(nextPhrase());
+        }
+        states.push({ type: "ticker", html: line });
+      });
+      if (donorLines.length < 2) {
+        states.push(nextPhrase());
+      }
+      if (states.length) {
+        var stateIndex = 0;
+        function showDonationState() {
+          var state = states[stateIndex % states.length];
+          var showingGoal = state.type === "goal";
+          if (secondaryText) secondaryText.style.opacity = "0";
+          if (secondaryTickerEl) secondaryTickerEl.style.opacity = "0";
+          setTimeout(function () {
+            if (showingGoal) {
+              if (secondaryText) {
+                if (state.desktop && state.mobile) {
+                  secondaryText.innerHTML = '<span class="y1-dock-text-desktop">' + state.desktop + '</span>' +
+                                            '<span class="y1-dock-text-mobile">' + state.mobile + '</span>';
+                } else {
+                  secondaryText.textContent = state.desktop || state.html || "";
+                }
+              }
+              if (secondaryBarWrap) {
+                if (state.isTarget) {
+                  secondaryBarWrap.hidden = false;
+                  secondaryBarWrap.style.display = "";
+                } else {
+                  secondaryBarWrap.hidden = true;
+                  secondaryBarWrap.style.display = "none";
+                }
+              }
+              if (secondaryGoalView) {
+                secondaryGoalView.hidden = false;
+                secondaryGoalView.style.display = "";
+              }
+              if (secondaryTickerView) {
+                secondaryTickerView.hidden = true;
+                secondaryTickerView.style.display = "none";
+              }
+            } else {
+              if (secondaryTickerEl) secondaryTickerEl.innerHTML = state.html;
+              if (secondaryGoalView) {
+                secondaryGoalView.hidden = true;
+                secondaryGoalView.style.display = "none";
+              }
+              if (secondaryTickerView) {
+                secondaryTickerView.hidden = false;
+                secondaryTickerView.style.display = "";
+              }
+            }
+            if (secondaryText) secondaryText.style.opacity = "1";
+            if (secondaryTickerEl) secondaryTickerEl.style.opacity = "1";
+            stateIndex += 1;
+          }, 550);
+        }
+        showDonationState();
+        if (states.length > 1) donationLineInterval = setInterval(showDonationState, 6500);
+      }
+    };
+
+  })();
+
+  var METHOD_URLS = {
+    "ko-fi": "https://ko-fi.com/teamslide",
+    "kofi": "https://ko-fi.com/teamslide",
+    "bmac": "https://buymeacoffee.com/ryanspecter",
+    "buymeacoffee": "https://buymeacoffee.com/ryanspecter",
+    "buy me a coffee": "https://buymeacoffee.com/ryanspecter",
+    "paypal": "https://paypal.me/ryanspecter282",
+    "revolut": "https://revolut.me/rspecter",
+    "revolut pay": "https://revolut.me/rspecter",
+    "patreon": "https://www.patreon.com/ryanspecter",
+    "boosty": "https://boosty.to/ryanspecter",
+    "honeygain": "https://join.honeygain.com/ITSRY2B5D7",
+    "bitcoin": "https://www.blockchain.com/explorer/addresses/BTC/bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g",
+    "btc": "https://www.blockchain.com/explorer/addresses/BTC/bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g"
+  };
+
+  function coffeeMethod(method) {
+    var low = String(method || "").toLowerCase().replace(/\s+/g, " ").trim();
+    if (low.indexOf("bmac") !== -1 || low.indexOf("buymeacoffee") !== -1 || low.indexOf("buy me a coffee") !== -1) return "bmac";
+    if (low.indexOf("ko-fi") !== -1 || low.indexOf("kofi") !== -1 || low.indexOf("ko fi") !== -1) return "kofi";
+    return "";
+  }
+
+  function parseDate(dateStr) {
+    if (!dateStr) return null;
+    var parts = dateStr.trim().split("/");
+    if (parts.length !== 3) return null;
+    var d = parseInt(parts[0], 10);
+    var m = parseInt(parts[1], 10) - 1;
+    var y = parseInt(parts[2], 10);
+    return new Date(y, m, d);
+  }
+
+  function getRelativeTime(dt) {
+    if (!dt) return "";
+    var now = new Date();
+    var diffMs = now.getTime() - dt.getTime();
+    var diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    if (diffDays <= 0) return _t("today");
+    if (diffDays === 1) return _t("yesterday");
+    if (diffDays < 7) {
+      return diffDays === 1 ? _t("1 day ago") : _t("{count} days ago", { count: diffDays });
+    }
+    if (diffDays < 14) return _t("1 week ago");
+    if (diffDays < 30) {
+      var w = Math.floor(diffDays / 7);
+      return w === 1 ? _t("1 week ago") : _t("{count} weeks ago", { count: w });
+    }
+    if (diffDays < 60) return _t("1 month ago");
+    if (diffDays < 365) {
+      var m = Math.floor(diffDays / 30);
+      return m === 1 ? _t("1 month ago") : _t("{count} months ago", { count: m });
+    }
+    if (diffDays < 730) return _t("1 year ago");
+    var y = Math.floor(diffDays / 365);
+    return y === 1 ? _t("1 year ago") : _t("{count} years ago", { count: y });
+  }
+
+  function formatAmount(amt) {
+    return (amt % 1 === 0) ? String(amt.toFixed(0)) : amt.toFixed(2);
+  }
+
+  function parseCSV(text) {
+    var lines = text.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean);
+    var records = [];
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      if (i === 0 && line.toLowerCase().indexOf("name") === 0) continue;
+      var cols = [];
+      var cur = "", inQuote = false;
+      for (var c = 0; c < line.length; c++) {
+        var char = line[c];
+        if (char === '"') { inQuote = !inQuote; }
+        else if (char === ',' && !inQuote) { cols.push(cur.trim()); cur = ""; }
+        else { cur += char; }
+      }
+      cols.push(cur.trim());
+      if (!cols[0] && !cols[1]) continue;
+      var name = (cols[0] || "").trim();
+      var amt = parseFloat((cols[1] || "0").replace(/[$£€\s,]/g, "")) || 0;
+      var dateStr = cols[2] || "";
+      var url = cols[3] || "";
+      var method = cols[4] || "Donation";
+      var dt = parseDate(dateStr);
+      records.push({
+        name: name,
+        amount: amt,
+        dateStr: dateStr,
+        dt: dt,
+        url: url,
+        method: method
+      });
+    }
+    return records;
+  }
+
+  var ANONYMOUS_SUPPORTER_NAMES = { "": true, "supporter": true, "supporters": true, "a supporter": true, "top supporter": true, "a top supporter": true, "someone": true, "anonymous": true, "anon": true, "none": true, "n/a": true, "unknown": true, "null": true };
+  function isAnonymous(n) {
+    var low = String(n == null ? "" : n).toLowerCase().replace(/\s+/g, " ").trim();
+    if (ANONYMOUS_SUPPORTER_NAMES[low]) return true;
+    return low.indexOf("supporter") === 0 || low.indexOf("anonymous") === 0 || low.indexOf("someone") === 0;
+  }
+
+  function cleanSupporterName(name, isTop) {
+    var raw = String(name || "").trim();
+    var clean = raw.replace(/^(?:(?:regular|top)\s+(?:supporters?|contributors?)\s*:?[\s-]*)+/i, "").trim();
+    if (isAnonymous(clean)) {
+      return isTop ? _t("A top supporter") : _t("A supporter");
+    }
+    return clean || (isTop ? _t("A top supporter") : _t("A supporter"));
+  }
+
+  function contributorLabel(name, top) {
+    var cleanName = cleanSupporterName(name, top);
+    var label = top ? _t("Top Supporter") : _t("Supporter");
+    return /(?:\band\b|[+&])/i.test(cleanName) ? (top ? _t("Top Supporters") : _t("Supporters")) : label;
+  }
+
+  function getTopSupporterGroups(donations) {
+    var groups = {};
+    var amounts = [];
+    donations.forEach(function (d) {
+      var name = (d.name || "").trim();
+      var low = name.toLowerCase();
+      if (d.amount <= 0 || isAnonymous(name) || low === "innioasis" || low.indexOf("innioasis") === 0) return;
+      var key = low;
+      if (!groups[key]) groups[key] = { name: name, items: [], total: 0, latestDt: null };
+      groups[key].items.push(d);
+      groups[key].total += d.amount;
+      amounts.push(d.amount);
+      if (!groups[key].latestDt || (d.dt && d.dt > groups[key].latestDt)) groups[key].latestDt = d.dt;
+    });
+    var average = amounts.length ? amounts.reduce(function (sum, amount) { return sum + amount; }, 0) / amounts.length : 0;
+    return Object.keys(groups).map(function (key) {
+      var group = groups[key];
+      group.items.sort(function (a, b) {
+        return (a.dt ? a.dt.getTime() : 0) - (b.dt ? b.dt.getTime() : 0);
+      });
+      return group;
+    }).filter(function (group) {
+      return group.items.length >= 2 || group.items.some(function (item) { return item.amount >= average * 2; });
+    }).sort(function (a, b) {
+      var totalOrder = b.total - a.total;
+      if (totalOrder) return totalOrder;
+      return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0);
+    });
+  }
+
+  function buildCreditHTML(item, isRegular, totalAmt, methodCount, isRegularDonor) {
+    var isTop = Boolean(isRegular || isRegularDonor);
+    var rawName = cleanSupporterName(item.name || "Supporter", isTop);
+    var isAnon = isAnonymous(item.name);
+    var amt = (isRegular && totalAmt !== undefined) ? totalAmt : (item.amount || 0);
+    var isOutgoing = (amt < 0);
+    var absAmt = Math.abs(amt);
+    var amtStr = "$" + formatAmount(absAmt);
+    var method = item.method || "Donation";
+    var mLower = method.toLowerCase().trim();
+    var cKind = coffeeMethod(method);
+    var displayMethod = cKind === "bmac" ? "Buy Me a Coffee" : (cKind === "kofi" ? "Ko-fi" : method);
+    var url = item.url || "";
+    var relTime = getRelativeTime(item.dt);
+    var timePart = relTime ? " · " + relTime : "";
+
+    var defaultMethodUrl = METHOD_URLS[mLower] || METHOD_URLS[cKind] || METHOD_URLS[mLower.replace(" pay", "")] || "https://ko-fi.com/teamslide";
+    var methodUrl = ((mLower.indexOf("bitcoin") !== -1 || mLower.indexOf("btc") !== -1) && url && url.indexOf("http") === 0)
+      ? url
+      : defaultMethodUrl;
+
+    var targetUrl = (url && url.indexOf("http") === 0) ? url : methodUrl;
+
+    if (isOutgoing) {
+      var projHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawName + '</strong></a>';
+      var outAmtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
+      var outMethodHTML = '<a href="' + methodUrl + '" target="_blank" rel="noopener noreferrer">' + displayMethod + '</a>';
+      return _t("We donated {amount} to {project} on {method}{time}", {
+        amount: outAmtHTML,
+        project: projHTML,
+        method: outMethodHTML,
+        time: timePart
+      });
+    }
+
+    var isInnioasis = rawName.toLowerCase() === "innioasis" || rawName.toLowerCase().indexOf("innioasis") === 0;
+    if (isInnioasis) {
+      var innHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>Innioasis</strong></a>';
+      var corpAmtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
+      return _t("Contribution of {amount} from {innioasis} (Corporate Sponsorship){time}", {
+        amount: corpAmtHTML,
+        innioasis: innHTML,
+        time: timePart
+      });
+    }
+
+    var supporterHTML;
+    if (isAnon) {
+      supporterHTML = isTop ? "<strong>" + _t("A top supporter") + "</strong>" : "<strong>" + _t("A supporter") + "</strong>";
+    } else {
+      supporterHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawName + '</strong></a>';
+    }
+
+    var amtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
+    var methodHTML = '<a href="' + methodUrl + '" target="_blank" rel="noopener noreferrer">' + displayMethod + '</a>';
+
+    if (isRegular) {
+      if (methodCount && methodCount > 1) {
+        return _t("{supporter} has donated {amount}{time}", {
+          supporter: supporterHTML,
+          amount: amtHTML,
+          time: timePart
+        });
+      }
+      if (cKind) {
+        var regCoffees = Math.max(1, Math.round(absAmt));
+        var regWord = (regCoffees === 1)
+          ? (cKind === "kofi" ? _t("a coffee on Ko-Fi") : _t("a coffee"))
+          : (cKind === "kofi" ? _t("{count} coffees on Ko-Fi", { count: regCoffees }) : _t("{count} coffees", { count: regCoffees }));
+        var regCoffeesHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + regWord + '</a>';
+        return _t("{supporter} bought us {coffees}{time}", {
+          supporter: supporterHTML,
+          coffees: regCoffeesHTML,
+          time: timePart
+        });
+      }
+      return _t("{supporter} donated {amount} by {method}{time}", {
+        supporter: supporterHTML,
+        amount: amtHTML,
+        method: methodHTML,
+        time: timePart
+      });
+    }
+
+    if (mLower === "honeygain") {
+      var hgUrl = METHOD_URLS["honeygain"];
+      return _t("{supporter} contributed {amount} for free by sharing 100MB on Honeygain{time}", {
+        supporter: supporterHTML,
+        amount: amtHTML,
+        time: timePart
+      });
+    } else if (cKind) {
+      var coffees = Math.max(1, Math.round(absAmt));
+      var cWord = (coffees === 1)
+        ? (cKind === "kofi" ? _t("a coffee on Ko-Fi") : _t("a coffee"))
+        : (cKind === "kofi" ? _t("{count} coffees on Ko-Fi", { count: coffees }) : _t("{count} coffees", { count: coffees }));
+      var coffeesHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + cWord + '</a>';
+      return _t("{supporter} bought us {coffees}{time}", {
+        supporter: supporterHTML,
+        coffees: coffeesHTML,
+        time: timePart
+      });
+    } else {
+      return _t("{supporter} donated {amount} by {method}{time}", {
+        supporter: supporterHTML,
+        amount: amtHTML,
+        method: methodHTML,
+        time: timePart
+      });
+    }
+  }
+
+  var MONTHLY_TARGET = 200.0;
+  var WEEKLY_TARGET = MONTHLY_TARGET / 4;
+  var DAILY_TARGET = MONTHLY_TARGET / 20;
+  /* The ladder is written in the currency the reader sees: a £50 weekly goal is
+     reached at £50, however many dollars that is today. Currencies whose unit
+     sits close to the dollar (euro, pound, franc, Canadian and Australian
+     dollars, the dollar pegs) use those same round rungs. An inflated,
+     non-decimal or far-pegged currency keeps the dollar ladder converted at the
+     live rate, because "10 of them" would be a few pence there. */
+  var LADDER_COMPACT_MIN_RATE = 0.5;
+  var LADDER_COMPACT_MAX_RATE = 1.6;
+
+  function fundingTargets(code) {
+    code = String(code || "USD").toUpperCase();
+    var rate = fxRate(code);
+    if (!FX_ZERO[code] && rate >= LADDER_COMPACT_MIN_RATE && rate <= LADDER_COMPACT_MAX_RATE) {
+      return { daily: DAILY_TARGET, weekly: WEEKLY_TARGET, monthly: MONTHLY_TARGET, compact: true };
+    }
+    return {
+      daily: fxGoal(DAILY_TARGET, code),
+      weekly: fxGoal(WEEKLY_TARGET, code),
+      monthly: fxGoal(MONTHLY_TARGET, code),
+      compact: false
+    };
+  }
+
+  function fundingGoalView(donations, monthTotal, now) {
+    now = now || new Date();
+    var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    var dayOfMonth = now.getDate();
+    var starts = {
+      monthly: new Date(now.getFullYear(), now.getMonth(), 1),
+      weekly: new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7)),
+      daily: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+      rolling: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6)
+    };
+    function raisedSince(start) {
+      var total = 0;
+      (donations || []).forEach(function (d) {
+        if (!d || !d.dt || !(d.amount > 0)) return;
+        if (d.dt >= start && d.dt <= now) total += d.amount;
+      });
+      return total;
+    }
+    var monthRaised = Math.max(monthTotal || 0, raisedSince(starts.monthly));
+    var raisedBy = { monthly: monthRaised, weekly: raisedSince(starts.weekly), daily: raisedSince(starts.daily) };
+    var code = detectCurrencyCode();
+    var targets = fundingTargets(code);
+    /* Compare the figures the reader can see. Converting the rungs to dollars
+       instead let a £37.27 week count as "target met" while the page promised
+       a £50 one, so UK and euro readers lost the weekly line early. */
+    var shownBy = {
+      monthly: fxLocal(raisedBy.monthly, code),
+      weekly: fxLocal(raisedBy.weekly, code),
+      daily: fxLocal(raisedBy.daily, code)
+    };
+    var scope = null;
+    var metScope = null;
+    var dailyMet = shownBy.daily >= targets.daily;
+    var weeklyMet = shownBy.weekly >= targets.weekly;
+    /* The month's own figure is forced on the first day, when the month has
+       just started, and on the last three days when something came in today.
+       A closing day with no donations falls back to the daily rung, which is
+       measured against today alone. Every other day starts at the daily rung,
+       however much the month has already raised. */
+    var monthSummary = dayOfMonth === 1 ||
+      (dayOfMonth > daysInMonth - 3 && raisedBy.daily > 0);
+    /* A quiet day leads with the daily rung even when the month is already
+       covered, because it is measured against today's donations alone. The
+       month summary only wins on the first day and on closing days that
+       brought something in today. */
+    if (monthSummary) {
+      if (shownBy.monthly >= targets.monthly) metScope = "monthly";
+      else scope = "monthly";
+    } else if (!dailyMet) {
+      scope = "daily";
+    } else if (shownBy.monthly >= targets.monthly) {
+      metScope = "monthly";
+    } else if (!weeklyMet) {
+      scope = "weekly";
+    } else {
+      scope = "monthly";
+    }
+    var symbol = fxSymbol(code);
+    if (!scope) {
+      return {
+        scope: null, covered: true, met: true, metScope: metScope, periodWord: "", periodPhrase: "", periodSuffix: "", periodAdjective: "",
+        raised: 0, target: 0, pct: 0, remaining: 0, symbol: symbol, code: code
+      };
+    }
+    var usdRaised = raisedBy[scope];
+    var shownRaised = shownBy[scope];
+    var shownTarget = targets[scope];
+    var usdTarget = fxRate(code) > 0 ? shownTarget / fxRate(code) : 0;
+    var words = { monthly: "month", weekly: "week", daily: "day" };
+    var adjectives = { monthly: "monthly", weekly: "weekly", daily: "daily" };
+    var phrases = { monthly: "this month", weekly: "this week", daily: "today" };
+    var suffixes = { monthly: "for this month", weekly: "for this week", daily: "for today" };
+    return {
+      scope: scope, covered: false,
+      periodWord: words[scope], periodPhrase: phrases[scope], periodSuffix: suffixes[scope], periodAdjective: adjectives[scope],
+      raised: shownRaised, target: shownTarget,
+      usdRaised: usdRaised, usdTarget: usdTarget,
+      pct: fxShare(shownRaised, shownTarget),
+      remaining: Math.max(0, shownTarget - shownRaised),
+      met: false,
+      symbol: symbol,
+      code: code
+    };
+  }
+
+  function moneyLabel(value) {
+    var n = Number(value || 0);
+    return (n % 1 === 0) ? n.toFixed(0) : n.toFixed(2);
+  }
+
+  function fundingGoalText(goal, withEncouragement) {
+    if (goal && goal.covered) {
+      var metWords = {
+        monthly: _t("This month's costs are covered - thank you!"),
+        weekly: _t("This week's costs are covered - thank you!"),
+        daily: _t("Today's costs are covered - thank you!")
+      };
+      var metLabel = metWords[goal.metScope];
+      if (metLabel) return metLabel;
+    }
+    if (!goal || !goal.scope) {
+      return _t("We rely on your donations to keep running. Donate now");
+    }
+    var periodSuffix = goal.periodSuffix ? _t(goal.periodSuffix) : (_t("for this ") + _t(goal.periodWord));
+    var raisedStr = goal.symbol + moneyLabel(goal.raised);
+    var targetStr = goal.symbol + moneyLabel(goal.target);
+    return withEncouragement
+      ? _t("You've helped us raise {raised} of our {target} costs {period}. All donations are appreciated.", {
+          raised: raisedStr,
+          target: targetStr,
+          period: periodSuffix
+        })
+      : _t("You've helped us raise {raised} of our {target} costs {period}.", {
+          raised: raisedStr,
+          target: targetStr,
+          period: periodSuffix
+        });
+  }
+
+  function renderGoalAndDonors(donations) {
+    lastDonations = donations;
+    renderToolbarThankYou(donations);
+    var now = new Date();
+    var curMonth = now.getMonth();
+    var curYear = now.getFullYear();
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var curMonthName = monthNames[curMonth];
+
+    var currentMonthTotal = 0;
+    var bySupporter = {};
+
+    for (var i = 0; i < donations.length; i++) {
+      var d = donations[i];
+      if (d.dt && d.dt.getMonth() === curMonth && d.dt.getFullYear() === curYear && d.amount > 0) {
+        currentMonthTotal += d.amount;
+      }
+      var isCorpEntry = d.name && (d.name.toLowerCase().trim() === "innioasis" || d.name.toLowerCase().trim().indexOf("innioasis") === 0);
+      if (d.amount > 0 && !isAnonymous(d.name) && !isCorpEntry) {
+        var key = d.name.toLowerCase().trim();
+        if (!bySupporter[key]) bySupporter[key] = [];
+        bySupporter[key].push(d);
+      }
+    }
+
+    var goal = fundingGoalView(donations, currentMonthTotal, now);
+    var raisedPct = goal.pct;
+
+    var titleEl = document.getElementById("y1-goal-title");
+    var statsEl = document.getElementById("y1-goal-stats");
+    var raisedBar = document.getElementById("y1-goal-bar-raised");
+    var remBar = document.getElementById("y1-goal-bar-remaining");
+    var legRaised = document.getElementById("y1-goal-legend-raised");
+    var legRem = document.getElementById("y1-goal-legend-remaining");
+
+    var goalMsg = fundingGoalText(goal, true);
+    [titleEl, statsEl, legRaised, legRem,
+     raisedBar && raisedBar.parentElement, remBar && remBar.parentElement].forEach(function (el) {
+      if (el) el.style.display = goal.covered ? "none" : "";
+    });
+    if (titleEl) {
+      titleEl.textContent = (goal.scope === "weekly")
+        ? _t("Weekly Running Costs")
+        : (goal.scope === "daily")
+          ? _t("Daily Running Costs")
+          : _t("Monthly Running Costs");
+    }
+    if (statsEl) statsEl.textContent = goalMsg;
+    if (raisedBar) raisedBar.style.width = raisedPct + "%";
+    if (remBar) remBar.style.width = (100 - raisedPct) + "%";
+    if (legRaised) legRaised.textContent = goalMsg;
+    if (legRem) legRem.textContent = "";
+
+    /* The dock sentence is otherwise only rewritten by the rotating line's
+       timer, so a slow or repeated fetch could leave the pre-data "$0" on
+       screen after the real figure had arrived. Write it as soon as the goal
+       is known; the rotation then takes over. */
+    var dockDesktop = document.querySelector("#y1-dock-secondary-text .y1-dock-text-desktop");
+    var dockMobile = document.querySelector("#y1-dock-secondary-text .y1-dock-text-mobile");
+    if (dockDesktop) dockDesktop.textContent = fundingGoalText(goal, false);
+    if (dockMobile) dockMobile.textContent = fundingGoalText(goal, false);
+
+    /* The idle layer carries its own copy of the sentence. Keep it in step so
+       no stale "$0 for today" can outlive a ladder that has moved on. */
+    var idleText = document.getElementById("y1-dock-idle-goal-text");
+    if (idleText) idleText.textContent = goalMsg;
+    var idleBar = document.getElementById("y1-dock-idle-bar-fill");
+    if (idleBar) idleBar.style.width = raisedPct + "%";
+    var idleHeading = document.getElementById("y1-dock-idle-goal-heading");
+    if (idleHeading) {
+      idleHeading.textContent = goal.covered
+        ? _t("Thank you - this month's costs are covered")
+        : (goal.scope === "weekly"
+            ? _t("Help us cover this week's running costs")
+            : (goal.scope === "daily"
+                ? _t("Help us cover today's running costs")
+                : _t("Help us cover this month's running costs")));
+    }
+
+    var donorsCountEl = document.getElementById("y1-donors-count");
+    if (donorsCountEl) {
+      var receivedCount = donations.filter(function (donation) {
+        var name = (donation.name || "").trim().toLowerCase();
+        return donation.amount > 0 && name !== "innioasis" && name.indexOf("innioasis") !== 0;
+      }).length;
+      donorsCountEl.textContent = (receivedCount === 1)
+        ? _t("1 contribution")
+        : _t("{count} contributions", { count: receivedCount });
+    }
+
+    var rawDonorLines = [];
+    var topSupporterKeys = {};
+    getTopSupporterGroups(donations).forEach(function (group) {
+      topSupporterKeys[group.name.toLowerCase()] = true;
+      var items = group.items;
+      var lastItem = items[items.length - 1];
+      var methods = Array.from(new Set(items.map(function (item) { return item.method; })));
+      rawDonorLines.push(contributorLabel(lastItem.name, true) + " " + buildCreditHTML(lastItem, true, group.total, methods.length));
+    });
+
+    donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
+      if (!isReceivedCommunityDonation(item)) return;
+      var isAnon = isAnonymous(item.name);
+      var key = String(item.name || "").toLowerCase().trim();
+      if (!isAnon && topSupporterKeys[key]) return;
+      rawDonorLines.push(buildCreditHTML(item, false, 0, 1, false));
+    });
+
+    for (var rawShuffleI = rawDonorLines.length - 1; rawShuffleI > 0; rawShuffleI--) {
+      var rawShuffleJ = Math.floor(Math.random() * (rawShuffleI + 1));
+      var rawShuffleValue = rawDonorLines[rawShuffleI];
+      rawDonorLines[rawShuffleI] = rawDonorLines[rawShuffleJ];
+      rawDonorLines[rawShuffleJ] = rawShuffleValue;
+    }
+
+    if (window._y1StreamInterval) {
+      clearInterval(window._y1StreamInterval);
+      window._y1StreamInterval = null;
+    }
+
+    setupRotatingTicker(donations, goal, bySupporter, curMonthName);
+
+    if (window._y1UpdateDonationLine) {
+      var donorTickerLines = rawDonorLines.slice();
+      window._y1UpdateDonationLine(goal, donorTickerLines);
+    }
+  }
+
+  function setupRotatingTicker(donations, goal, bySupporter, monthName) {
+    var tickerWrap = document.getElementById("y1-dock-ticker-wrap");
+    var tickerText = document.getElementById("y1-dock-ticker-text");
+    if (!tickerWrap || !tickerText) return;
+
+    if (window._y1DockTickerInterval) clearInterval(window._y1DockTickerInterval);
+
+    if (!tickerWrap._hasClickListener) {
+      tickerWrap._hasClickListener = true;
+      tickerWrap.addEventListener("click", function (event) {
+        if (event.target && (event.target.tagName.toLowerCase() === "a" || event.target.closest("a"))) {
+          return;
+        }
+        setPanel(privacyPanel, privacyOpen, false);
+        setPanel(donatePanel, donateOpen, true, donateClose);
+      });
+    }
+
+    var raisedPct = goal.pct;
+    var tickerGoalMsg = fundingGoalText(goal, false);
+    var goalItem = {
+      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">' + _t("Costs") + '</span>' +
+            '<div class="y1-dock-mini-bar" title="' + Math.round(raisedPct) + '% ' + _t("covered") + '" style="display: inline-block; width: 50px; height: 6px; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35); border-radius: 4px; overflow: hidden; vertical-align: middle; margin-right: 6px;">' +
+              '<div class="y1-dock-mini-raised" data-target-width="' + raisedPct + '%" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
+            '</div>' +
+            '<span>' + tickerGoalMsg + '</span>'
+    };
+
+    var donorItems = [];
+    var topSupporterKeys = {};
+    getTopSupporterGroups(donations).forEach(function (group) {
+      topSupporterKeys[group.name.toLowerCase()] = true;
+      var list = group.items;
+      var methods = Array.from(new Set(list.map(function (item) { return item.method; })));
+      donorItems.push({
+        html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">' + contributorLabel(list[list.length - 1].name, true) + '</span>' +
+              '<span>' + buildCreditHTML(list[list.length - 1], true, group.total, methods.length) + '</span>'
+      });
+    });
+
+    donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
+      var itemName = (item.name || "").toLowerCase().trim();
+      if (itemName === "innioasis" || itemName.indexOf("innioasis ") === 0) return;
+      if (item.amount <= 0) return;
+      if (!isAnonymous(item.name) && topSupporterKeys[itemName]) return;
+      var badgeText = item.method || contributorLabel(item.name, false);
+      var mLow = (item.method || "").toLowerCase();
+      var cKind = coffeeMethod(item.method);
+      var extraStyle = "";
+      if (mLow === "honeygain") {
+        badgeText = _t("Free contribution");
+        extraStyle = ' style="background: rgba(16,185,129,0.25); color: #10b981; border-color: rgba(16,185,129,0.5);"';
+      } else if (cKind === "bmac") {
+        badgeText = "Buy Me a Coffee";
+      } else if (cKind === "kofi") {
+        badgeText = "Ko-fi";
+      }
+
+      donorItems.push({
+        html: '<span class="y1-dock-ticker-badge"' + extraStyle + '>' + badgeText + '</span>' +
+              '<span>' + buildCreditHTML(item, false, 0, 1, false) + '</span>'
+      });
+    });
+
+    for (var shuffleI = donorItems.length - 1; shuffleI > 0; shuffleI--) {
+      var shuffleJ = Math.floor(Math.random() * (shuffleI + 1));
+      var shuffleValue = donorItems[shuffleI];
+      donorItems[shuffleI] = donorItems[shuffleJ];
+      donorItems[shuffleJ] = shuffleValue;
+    }
+
+    var annualItem = {
+      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">' + _t("Costs") + '</span>' +
+            '<span>' + _t("If everyone visiting today donated, we'd be able to run for a year") + '</span>'
+    };
+
+    var items = goal.covered ? [annualItem] : [goalItem, annualItem];
+    var appealIdx = 1;
+    donorItems.forEach(function (dItem, index) {
+      if (index && index % 2 === 0) {
+        items.push((goal.covered || appealIdx % 2 === 1) ? annualItem : goalItem);
+        appealIdx += 1;
+      }
+      items.push(dItem);
+    });
+    if (donorItems.length < 2) {
+      items.push(annualItem);
+    }
+
+    var tickerIdx = 0;
+    if (items.length > 0) {
+      tickerText.innerHTML = items[0].html;
+      var initMini = tickerText.querySelector(".y1-dock-mini-raised");
+      if (initMini) {
+        setTimeout(function () {
+          initMini.style.width = initMini.getAttribute("data-target-width") || "0%";
+        }, 100);
+      }
+    }
+
+    window._y1DockTickerInterval = setInterval(function () {
+      tickerIdx = (tickerIdx + 1) % items.length;
+      var cur = items[tickerIdx];
+      tickerText.style.opacity = "0";
+      tickerText.style.transform = "translateY(-4px)";
+      setTimeout(function () {
+        tickerText.innerHTML = cur.html;
+        var miniBar = tickerText.querySelector(".y1-dock-mini-raised");
+        if (miniBar) {
+          requestAnimationFrame(function () {
+            miniBar.style.width = miniBar.getAttribute("data-target-width") || "0%";
+          });
+        }
+        tickerText.style.opacity = "1";
+        tickerText.style.transform = "translateY(0)";
+      }, 550);
+    }, 6500);
+  }
+
+  /* donors.csv is a small static file that changes a few times a day, so it
+     does not need downloading on every page view, let alone every minute.
+     Three things keep the request count down: the first path that works is
+     remembered (a sub-directory page used to probe guides/donors.csv and take
+     a 404 first), one download is reused for a few minutes across pages in the
+     same tab, and the refresh timer only fires while the page is visible. */
+  var DONORS_URL_KEY = "innioasis-donors-url";
+  var DONORS_CACHE_KEY = "innioasis-donors-cache";
+  var DONORS_TTL_MS = 5 * 60 * 1000;
+  var DONORS_POLL_MS = 10 * 60 * 1000;
+  var donorsText = "";
+  var donorsAt = 0;
+  var donorsBusy = false;
+
+  /* GitHub first, the site's own paths only as fallback: this file is read on
+     every page view, and serving it from the repository keeps those requests
+     off the domain's own traffic figures. */
+  var DONORS_GITHUB_URL = "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/donors.csv";
+
+  function donorsSources() {
+    var remembered = null;
+    try { remembered = localStorage.getItem(DONORS_URL_KEY); } catch (_) {}
+    var bases = [
+      DONORS_GITHUB_URL,
+      "/donors.csv",
+      "donors.csv",
+      "../donors.csv",
+      "../../donors.csv",
+      "https://innioasis.app/donors.csv"
+    ];
+    if (!remembered) return bases;
+    var others = bases.filter(function (base) { return base !== remembered; });
+    return [remembered].concat(others);
+  }
+
+  function applyDonorsText(text, at) {
+    if (!text) return false;
+    donorsAt = Number(at) || Date.now();
+    if (text === donorsText) return true;
+    var donations = parseCSV(text);
+    if (!donations || !donations.length) return false;
+    donorsText = text;
+    renderGoalAndDonors(donations);
+    return true;
+  }
+
+  function readDonorsCache() {
+    try {
+      var raw = sessionStorage.getItem(DONORS_CACHE_KEY);
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      var at = Number(data && data.at) || 0;
+      if (!data || typeof data.text !== "string") return null;
+      if (Date.now() - at > DONORS_TTL_MS) return null;
+      return { text: data.text, at: at };
+    } catch (_) {}
+    return null;
+  }
+
+  function writeDonorsCache(text, at) {
+    try { sessionStorage.setItem(DONORS_CACHE_KEY, JSON.stringify({ text: text, at: at })); } catch (_) {}
+  }
+
+  function fetchDonors(options) {
+    if (donorsBusy) return;
+    if (!(options && options.force)) {
+      var cached = readDonorsCache();
+      if (cached && applyDonorsText(cached.text, cached.at)) return;
+    }
+    var candidates = donorsSources();
+    var candidateIndex = 0;
+    donorsBusy = true;
+
+    function finish() {
+      donorsBusy = false;
+    }
+
+    function tryNext() {
+      if (candidateIndex >= candidates.length) {
+        finish();
+        return;
+      }
+      var baseUrl = candidates[candidateIndex++];
+      /* No cache-busting query: this file is allowed to be cached by the
+         browser and the CDN, which is the difference between one request and
+         one request per navigation. */
+      fetch(baseUrl, { cache: "default" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.text();
+        })
+        .then(function (text) {
+          if (!applyDonorsText(text, Date.now())) throw new Error("Unusable donors.csv");
+          try { localStorage.setItem(DONORS_URL_KEY, new URL(baseUrl, window.location.href).href); } catch (_) {}
+          writeDonorsCache(text, donorsAt);
+          finish();
+        })
+        .catch(function () {
+          tryNext();
+        });
+    }
+
+    tryNext();
+  }
+
+  /* A one-minute tick only decides whether a download is due, so a tab left
+     open costs nothing; the file is re-read at most every ten minutes and
+     never while the tab is in the background. */
+  setInterval(function () {
+    if (document.hidden) return;
+    if (Date.now() - donorsAt < DONORS_POLL_MS) return;
+    fetchDonors({ force: true });
+  }, 60000);
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) return;
+    if (Date.now() - donorsAt >= DONORS_POLL_MS) fetchDonors({ force: true });
+  });
+
+  (function paintInitialGoal() {
+    var goal = fundingGoalView([], 0, new Date());
+    var desktop = document.querySelector("#y1-dock-secondary-text .y1-dock-text-desktop");
+    var mobile = document.querySelector("#y1-dock-secondary-text .y1-dock-text-mobile");
+    if (desktop) desktop.textContent = fundingGoalText(goal, true);
+    if (mobile) mobile.textContent = fundingGoalText(goal, false);
+  })();
+
+  refreshFxRates(function () {
+    if (lastDonations && lastDonations.length) {
+      renderGoalAndDonors(lastDonations);
+    }
+  });
+  fetchDonors();
+
+  ["site-locale-ready", "site-locale-change", "y1-locale-change"].forEach(function (evName) {
+    window.addEventListener(evName, function () {
+      if (lastDonations && lastDonations.length) {
+        renderGoalAndDonors(lastDonations);
+      }
+    });
+  });
+})();
+</script>
+<script>
+  /* Ad / content blocker detection - gently display support modal on visit without mentioning ads */
+  (function initBlockerSupportCheck() {
+    function detectBlocker(callback) {
+      var testAd = document.createElement("div");
+      testAd.innerHTML = "&nbsp;";
+      testAd.className = "adsbox pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links";
+      testAd.style.position = "absolute";
+      testAd.style.left = "-9999px";
+      testAd.style.top = "-9999px";
+      testAd.style.width = "1px";
+      testAd.style.height = "1px";
+      document.body.appendChild(testAd);
+      window.setTimeout(function () {
+        var isBlocked = (testAd.offsetHeight === 0 || testAd.clientHeight === 0 || window.getComputedStyle(testAd).display === "none");
+        if (testAd.parentNode) testAd.parentNode.removeChild(testAd);
+        callback(isBlocked);
+      }, 350);
+    }
+
+    window.addEventListener("load", function () {
+      try {
+        if (sessionStorage.getItem("y1-support-prompted")) return;
+        detectBlocker(function (blocked) {
+          if (blocked) {
+            sessionStorage.setItem("y1-support-prompted", "1");
+            var donateTrigger = document.querySelector("[data-donate-open]");
+            if (donateTrigger && !document.querySelector("[data-donations-optout]:checked")) {
+              window.setTimeout(function () {
+                var donatePanel = document.getElementById("y1-donate-panel");
+                if (donatePanel && donatePanel.hidden) {
+                  donateTrigger.click();
+                }
+              }, 1200);
+            }
+          }
+        });
+      } catch (_) {}
+    });
+  })();
+
+</script>

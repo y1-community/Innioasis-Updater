@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" data-locale="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>MTKclient 障害後に起動しない MediaTek プレーヤーを回復する方法 · Innioasis コミュニティ</title>
+  <meta name="description" content="Linux または macOS で MTKclient がフラッシュを中断した後、起動していない Innioasis Y1、Y2、G1、Timmkoo、および MediaTek プレーヤーをブロック解除して回復するためのステップバイステップ ガイド。">
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/Troubleshooting/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/Troubleshooting/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_jp.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">本文へスキップ</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">トラブルシューティングとデバイスの回復</p>
+      <h1>MTKclient フラッシュ後の非起動デバイスの回復</h1>
+      <p class="lead">Innioasis Y1、Y2、または MediaTek デバイスの電源が入らなかったり、macOS または Linux 上の MTKclient でフラッシュした後に黒い画面が表示されたりしても、パニックに陥る必要はありません。ハードウェア BootROM (BROM) は永続的であり、破壊することはできません。</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>MTKclient が停止したり黒い画面のままになる理由</h2>
+      <p>MTKclient は、ソフトウェア エクスプロイト ペイロード (カマキリ / アモネット) に依存して、DA 認証と libusb 経由の raw USB 通信をバイパスします。 macOS および Linux ARM64 システムの場合:</p>
+      <ul class="lumen-benefits-list">
+        <li>macOS 上の USB ハンドシェイク レイテンシーまたはポート タイムアウトにより、転送中に DA ペイロード インジェクションが停止する可能性があります。</li>
+        <li>パーティション ヘッダーが欠落しているか不完全であると、ブートローダー (プリローダー / lk) が応答しない状態になります。</li>
+        <li>LED も充電アイコンも画面のバックライトもなくなり、プレーヤーは完全に機能しなくなったように見えます。</li>
+      </ul>
+      <p>この状態でも、MediaTek チップセットは次の状態に戻ります。 <strong>BROMモード</strong> (USB VID 0e8d、PID 0003)、正式な低レベルのリカバリの準備が整いました。</p>
+    </section>
+
+    <section class="lumen-guide-section" id="sp-flash-tool-engine">
+      <h2>決定的な回復方法: Updater CE の SP Flash Tool エンジン</h2>
+      <p>レンガになったプレイヤーを回復する最も安全で信頼性の高い方法は、 <strong>アップデーター CE</strong> 公式で設定した <strong>SP Flash Tool</strong> バックエンド。</p>
+      
+      <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
+        <h3>Updater CE の正確なステップ:</h3>
+        <ol class="lumen-steps" style="margin-top: 10px;">
+          <li>開く <strong>アップデーター CE</strong>.</li>
+          <li>クリック <strong>設定</strong> 左側のナビゲーションサイドバーにあります。</li>
+          <li>「詳細設定」セクションまで下にスクロールして有効にします。 <strong>詳細設定を表示</strong>.</li>
+          <li>下 <strong>インストール方法</strong> （または <em>MediaTek インストーラーのフラッシュ エンジン</em>)、 <strong>フラッシュ方式</strong> 落ちる。</li>
+          <li>選択範囲を次から変更します <em>自動 (推奨)</em> または <em>MTKClient</em> 支援先: <strong>SP Flash Tool</strong>.</li>
+          <li>プロンプトを確認し、メインのインストール フローに戻ります。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>SP Flash Tool のプラットフォーム アーキテクチャと OS 要件</h2>
+      <p>MediaTek の公式 <code>SP Flash Tool</code> バイナリはネイティブにコンパイルされます <strong>Linux 用の x86_64 ELF バイナリ</strong> そして <strong>Windows x64 用の PE32+ 実行可能ファイル</strong>.</p>
+      <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
+        <strong>macOS および ARM64 Linux ユーザー向けのハードウェアに関する重要な注意事項:</strong><br>
+        MediaTek は macOS (Darwin) または Linux ARM64 (aarch64) 用に SP Flash Tool をコンパイルしないため、ブリックが発生している macOS ユーザーおよび ARM64 Linux ユーザー (Asahi Linux を実行している Raspberry Pi または Apple Silicon) は、プレーヤーを以下に接続する必要があります。
+        <ul style="margin: 8px 0 0 20px;">
+          <li>アン <strong>x64 Windows PC</strong> (Windows 10 / 11 64ビット)、または</li>
+          <li>アン <strong>x86_64 Linux PC</strong> (Ubuntu、Debian、Fedora、Arch 64 ビット)。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>段階的なハードウェアのブロック解除プロセス</h2>
+      <ol class="lumen-steps">
+        <li><strong>プレーヤーを切断します。</strong> USB ケーブルをプレーヤーと PC から完全に抜きます。</li>
+        <li><strong>ハード電源オフ:</strong> 電源ボタン (または電源 + 音量ダウン) を 15 秒間押し続けて、チップセットの電源が完全にオフになり、低電力 USB ループに陥っていないことを確認します。</li>
+        <li><strong>SP Flash Tool モードで Updater CE を起動します。</strong> デバイスのモデルを選択します (例: <em>Innioasis Y1</em> または <em>Innioasis Y2</em>) を選択してください <em>純正ソフトウェア</em> ストックパーティションを復元します。</li>
+        <li><strong>インストール/復元を開始します。</strong> クリック <em>インストール / 復元</em> Updater CE で。ステータス プロンプトに次のメッセージが表示されるまで待ちます。 <em>プレイヤーを待っています...</em></li>
+        <li><strong>USB ケーブルを挿入して BROM をトリガーします。</strong> デバイスがオフのときに、USB ケーブルを高速マザーボードの USB ポートに直接接続します (電力が供給されていない USB ハブは避けてください)。</li>
+        <li>システムは MediaTek VCOM ポートを検出し、ダウンロード エージェント (DA) をプッシュし、パーティション テーブルを書き換えて、すべてのファームウェア イメージをクリーンに復元します。</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>モデルおよびオペレーティング システム別の順列</h2>
+      <div style="overflow-x: auto;">
+        <table class="lumen-release-table">
+          <thead>
+            <tr>
+              <th>モデル</th>
+              <th>失敗したプラットフォーム</th>
+              <th>推奨される回復セットアップ</th>
+              <th>エンジンとモード</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>macOS（Appleシリコン/インテル）</td>
+              <td>Windows x64 / Linux x86_64 PC</td>
+              <td>SP Flash Tool + Y1 在庫 ROM</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>Linux ARM64 / x86_64</td>
+              <td>Linux x86_64 または Windows x64 PC</td>
+              <td>SP Flash Tool + コミュニティ DA</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y2</strong></td>
+              <td>macOS (MTKclient が停止した)</td>
+              <td>Windows x64 / Linux x86_64 PC</td>
+              <td>SP Flash Tool + Y2 散乱回復</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis G1 / G3 / G5</strong></td>
+              <td>macOS / Linux MTKクライアント</td>
+              <td>VCOM ドライバーを備えた Windows x64 PC</td>
+              <td>SP Flash Tool + 工場出荷時のファームウェア</td>
+            </tr>
+            <tr>
+              <td><strong>Mechen H1 / Timmkoo A5</strong></td>
+              <td>あらゆるプラットフォーム</td>
+              <td>Windows x64 または Linux x86_64 PC</td>
+              <td>SP Flash Tool + スキャッタ ファイル</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261108c" defer></script>
+</body>
+</html>

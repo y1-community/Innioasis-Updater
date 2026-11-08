@@ -84,10 +84,11 @@
             var raw = global.localStorage.getItem(CONSENT_KEY);
             if (raw) {
                 var data = JSON.parse(raw);
-                if (data && typeof data === "object" &&
-                    typeof data.feedback === "boolean" &&
-                    typeof data.nightly === "boolean") {
-                    return { feedback: data.feedback, nightly: data.nightly };
+                if (data && typeof data === "object") {
+                    var fb = typeof data.feedback === "boolean" ? data.feedback : true;
+                    var nl = typeof data.nightly === "boolean" ? data.nightly : true;
+                    var an = data.analytics === "off" ? "off" : "essential";
+                    return { feedback: fb, nightly: nl, analytics: an };
                 }
             }
         } catch (_) {}
@@ -97,11 +98,13 @@
             var fromCookie = getSharedCookie(CONSENT_KEY);
             if (fromCookie) {
                 var cookieData = JSON.parse(fromCookie);
-                if (cookieData && typeof cookieData === "object" &&
-                    typeof cookieData.feedback === "boolean" &&
-                    typeof cookieData.nightly === "boolean") {
-                    try { global.localStorage.setItem(CONSENT_KEY, JSON.stringify(cookieData)); } catch (_) {}
-                    return { feedback: cookieData.feedback, nightly: cookieData.nightly };
+                if (cookieData && typeof cookieData === "object") {
+                    var cfb = typeof cookieData.feedback === "boolean" ? cookieData.feedback : true;
+                    var cnl = typeof cookieData.nightly === "boolean" ? cookieData.nightly : true;
+                    var can = cookieData.analytics === "off" ? "off" : "essential";
+                    var parsed = { feedback: cfb, nightly: cnl, analytics: can };
+                    try { global.localStorage.setItem(CONSENT_KEY, JSON.stringify(parsed)); } catch (_) {}
+                    return parsed;
                 }
             }
         } catch (_) {}
@@ -109,13 +112,39 @@
         return null;
     }
 
+    function applyAnalyticsConsent(mode) {
+        var isOff = mode === "off";
+        global["ga-disable-GTM-TNDGC37L"] = isOff;
+        if (typeof global.gtag === "function") {
+            try {
+                global.gtag("consent", "update", {
+                    analytics_storage: isOff ? "denied" : "granted",
+                    ad_storage: "denied"
+                });
+            } catch (_) {}
+        }
+        if (global.ThemeAnalytics && typeof global.ThemeAnalytics.setConsent === "function") {
+            try {
+                global.ThemeAnalytics.setConsent({ analytics: !isOff });
+            } catch (_) {}
+        }
+    }
+
     function writeConsent(prefs) {
-        var next = { feedback: prefs.feedback !== false, nightly: prefs.nightly !== false };
+        var anMode = (prefs && prefs.analytics === "off") ? "off" : "essential";
+        var next = {
+            feedback: prefs.feedback !== false,
+            nightly: prefs.nightly !== false,
+            analytics: anMode
+        };
         try {
             global.localStorage.setItem(CONSENT_KEY, JSON.stringify(next));
         } catch (_) {}
         setSharedCookie(CONSENT_KEY, JSON.stringify(next));
         setSharedCookie("innioasis-privacy", next.feedback && next.nightly ? "all" : (!next.feedback && !next.nightly ? "none" : (next.feedback ? "feedback" : "nightly")));
+        setSharedCookie("innioasis-privacy-analytics", anMode);
+
+        applyAnalyticsConsent(anMode);
 
         if (!next.feedback) {
             try {
@@ -149,6 +178,7 @@
             var existing = readConsent();
             if (existing !== null) {
                 setSharedCookie(CONSENT_KEY, JSON.stringify(existing));
+                applyAnalyticsConsent(existing.analytics);
             }
         }
     })();
@@ -162,7 +192,9 @@
         allows: function (feature) {
             if (feature === "theme") return true;
             var prefs = readConsent();
-            return !!prefs && prefs[feature] === true;
+            if (!prefs) return false;
+            if (feature === "analytics") return prefs.analytics !== "off";
+            return prefs[feature] === true;
         }
     };
     global.setSharedCookie = setSharedCookie;

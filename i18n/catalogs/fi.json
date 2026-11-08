@@ -1868,6 +1868,14 @@
   "— the same checks for the Y2": "— samat tarkastukset Y2:lle",
   "— what a failed flash looks like": "- miltä epäonnistunut salama näyttää",
   "← All notices": "← Kaikki ilmoitukset",
-  "← Firmware Downloads": "← Laiteohjelmiston lataukset"
+  "← Firmware Downloads": "← Laiteohjelmiston lataukset",
+  "Analytics & performance telemetry": "Analyysi ja suorituskyvyn telemetria",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "Keräämme vain välttämättömiä asioita (optimoimalla liikennettä ja reittejä; emme ole kiinnostuneita tiedoista) – valitse Vain olennaiset tai Pois.",
+  "Essential Only": "Vain välttämätön",
+  "Off": "Pois",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "Windows Defender SmartScreen tai Smart App Control voivat estää äskettäin ladatut yhteisösovellukset ennen kuin allekirjoituksen maine leviää. Smart App Control vaikuttaa tällä hetkellä suosittuihin sovelluksiin, kuten Epic Overlay Service (Fortniten käyttämä) – Updater CE on turvallinen ja varmennettu käytettäväksi. Smart App Controlin kytkeminen pois päältä sallii Updater CE:n avautua ja toimia normaalisti.",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "Jos Mac-tietokoneesi estää sinua suorittamasta sovellusta ensimmäistä kertaa, avaa Järjestelmäasetukset, napsauta Tietosuoja ja suojaus, vieritä alas kohtaan Suojaus ja napsauta Avaa silti. Voit myös Ctrl-napsauttaa (tai napsauttaa hiiren kakkospainikkeella) sovellusta Finderissa ja valita Avaa.",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "Smart App Control vaikuttaa tällä hetkellä suosittuihin sovelluksiin, kuten Epic Overlay Service (Fortniten käyttämä) – Updater CE on turvallinen ja varmennettu käytettäväksi.",
+  "Windows won't launch the app? Help": "Windows ei käynnistä sovellusta? Auttaa"
  }
 }

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-TW" dir="ltr" data-locale="zh-TW">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>在 Innioasis G5 - Innioasis 韌體下載上恢復原始軟體</title>
+  <meta name="description" content="使用 Innioasis 更新程式 CE 和 rom_g5.zip 在 Innioasis G5 音訊播放器上恢復官方原始軟體的逐步教學。">
+  <link rel="canonical" href="https://innioasis.app/guides/restore-original-g5_zh-TW.html">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20260803">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+  <script src="../site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Restore Original Software on Innioasis G5",
+    "description": "How to restore factory firmware on an Innioasis G5 player using Innioasis Updater CE.",
+    "step": [
+      { "@type": "HowToStep", "text": "Open Innioasis Updater CE on your computer." },
+      { "@type": "HowToStep", "text": "Set Device Model to G5." },
+      { "@type": "HowToStep", "text": "Select Original Software (rom_g5.zip)." },
+      { "@type": "HowToStep", "text": "Click Install / Restore and connect your powered-off G5 via USB when prompted." }
+    ]
+  }
+  </script>
+<meta property="og:site_name" content="Innioasis 軟體更新"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-g5.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-g5.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-g5_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-g5_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-g5_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-g5_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-g5_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-g5_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-g5_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-g5_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-g5_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-g5_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-g5_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-g5_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-g5_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-g5_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-g5_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-g5_jp.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">跳至主要內容</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">恢復指南·InnioasisG5</p>
+      <h1>恢復 Innioasis G5 上的原始軟體</h1>
+      <p class="lead">當您需要恢復無回應的 G5、將系統刷新至出廠狀態或安裝乾淨的官方韌體更新時，請使用本指導教學。</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../guide_zh-TW.html#platform">取得 Updater CE</a>
+        <a class="lumen-button" href="../firmware_zh-TW.html?model=G5">查看 G5 下載</a>
+      </div>
+    </header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">適用於您的電腦的安裝指南</p><h2>使用電腦復原 G5 上的原始軟體</h2><p>選擇適合您正在使用的計算機的指南。 <span data-os-strip-note>每個版本都有平台設定、Updater CE步驟和返回庫存的方式。</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-g5-windows.html">Windows 指南</a><a class="lumen-button" data-os-guide="macos" href="../install/original-g5-mac.html">macOS 指南</a><a class="lumen-button" data-os-guide="linux" href="../install/original-g5-linux.html">Linux指南</a></div><p class="lumen-meta"><a href="../install/g5.html">所有 Innioasis G5 指南</a> · <a href="../install/original-software.html">所有原始軟體指南</a></p></section>
+
+    <section class="lumen-guide-section">
+      <h2>第 1 步：準備您的計算機</h2>
+      <p>Innioasis 更新程式 CE 在 Windows、macOS 和 Linux 上本機運行，無需複雜的刷新工具：</p>
+      <ol class="lumen-steps">
+        <li>發射 <strong>Innioasis 更新程式 CE</strong> 在您的桌上型電腦或筆記型電腦上。</li>
+        <li>套裝 <strong>裝置型號</strong> 到 <strong>G5</strong>.</li>
+        <li>選擇 <strong>原廠軟體</strong> 在軟體下拉選單中。 Updater CE自動下載官方 <code>rom_g5.zip</code> 直接發布包。</li>
+        <li>點選 <strong>安裝 / 還原</strong> 開始準備。</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>第 2 步：根據提示連接 G5</h2>
+      <p>在應用程式提示您之前，切勿連接您的播放器：</p>
+      <ol class="lumen-steps">
+        <li>確保您的 Innioasis G5 已完全斷電。</li>
+        <li>當更新程式顯示 USB 連線提示時，將 USB-C 線插入電腦和播放器。</li>
+        <li>閃爍期間請勿觸摸電纜或電源按鈕。</li>
+        <li>出現成功確認訊息後，請拔下 USB 電纜並開啟 G5 電源。</li>
+      </ol>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../firmware_zh-TW.html">瀏覽韌體存檔</a>
+        <a class="lumen-button" href="../troubleshooting_zh-TW.html">故障排除幫助</a>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="../nav.js?v=20261105copyleft" defer></script>
+  <script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body>
+</html>

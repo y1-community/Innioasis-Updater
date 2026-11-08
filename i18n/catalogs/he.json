@@ -895,6 +895,14 @@
   "— the same checks for the Y2": "- אותם המחאות עבור ה-Y2",
   "— what a failed flash looks like": "- איך נראה הבזק כושל",
   "← All notices": "← כל ההודעות",
-  "← Firmware Downloads": "← הורדות קושחה"
+  "← Firmware Downloads": "← הורדות קושחה",
+  "Analytics & performance telemetry": "אנליטיקה וטלמטריית ביצועים",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "אנו אוספים רק דברים חיוניים (אופטימיזציה של תנועה ומסלולים; לא מתעניינים בנתונים) - בחר חיוני בלבד או כבוי.",
+  "Essential Only": "חיוני בלבד",
+  "Off": "כבוי",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "Windows Defender SmartScreen או Smart App Control יכולים לחסום יישומי קהילה שהורדו לאחרונה לפני שהמוניטין החתימה יתפשט. בקרת אפליקציות חכמה משפיעה כעת על יישומים פופולריים כמו שירות ה-Epic Overlay (בשימוש על ידי Fortnite) - Updater CE בטוח ומאומת לשימוש. כיבוי Smart App Control מאפשר ל-Update CE להיפתח ולהפעיל כרגיל.",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "אם ה-Mac שלך מונע ממך להפעיל את האפליקציה בפעם הראשונה, פתח את הגדרות מערכת, לחץ על פרטיות ואבטחה, גלול מטה אל אבטחה ולחץ על פתח בכל מקרה. אתה יכול גם ללחוץ על האפליקציה ב-Finder ולבחור פתח (או ללחוץ לחיצה ימנית).",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "בקרת אפליקציות חכמה משפיעה כעת על יישומים פופולריים כמו שירות ה-Epic Overlay (בשימוש על ידי Fortnite) - Updater CE בטוח ומאומת לשימוש.",
+  "Windows won't launch the app? Help": "Windows לא יפעיל את האפליקציה? עֶזרָה"
  }
 }

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="nl" dir="ltr" data-locale="nl"><head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herstel originele software op Timmkoo SR1 - stap voor stap</title>
+<meta name="description" content="Hoe u de officiële originele software kunt herstellen op een Timmkoo SR1 met Innioasis Updater CE of SP Flash Tool, met behulp van het geverifieerde rom_sr1.zip-pakket.">
+<link rel="canonical" href="https://innioasis.app/guides/restore-original-sr1_nl.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Herstel originele software op Timmkoo SR1 - stap voor stap">
+<meta property="og:description" content="Hoe u de officiële originele software kunt herstellen op een Timmkoo SR1 met Innioasis Updater CE of SP Flash Tool, met behulp van het geverifieerde rom_sr1.zip-pakket.">
+<meta property="og:url" content="https://innioasis.app/guides/restore-original-sr1_nl.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../lumen.css?v=20261105hero">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<script src="../site-init.js?v=20260803" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Restore Original Software on Timmkoo SR1", "description": "How to restore official Original Software on an Timmkoo SR1 with Innioasis Updater CE or SP Flash Tool, using the verified rom_sr1.zip package.", "totalTime": "PT20M", "step": [{"@type": "HowToStep", "name": "Back up and charge", "text": "Copy files to a computer and charge the player."}, {"@type": "HowToStep", "name": "Choose the model", "text": "Open Updater CE and set Device Model to SR1."}, {"@type": "HowToStep", "name": "Choose Original Software", "text": "Select Original Software and the rom_sr1.zip release."}, {"@type": "HowToStep", "name": "Install at the prompt", "text": "Press Install / Restore, power the player off, and connect USB only when asked."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://innioasis.app/"}, {"@type": "ListItem", "position": 2, "name": "Player manuals", "item": "https://innioasis.app/manuals/index.html"}, {"@type": "ListItem", "position": 3, "name": "Timmkoo SR1 manual", "item": "https://innioasis.app/manuals/sr1.html"}, {"@type": "ListItem", "position": 4, "name": "Restore Timmkoo SR1", "item": "https://innioasis.app/guides/restore-original-sr1.html"}]}</script>
+<meta property="og:site_name" content="Innioasis Software-updates"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-sr1.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-sr1.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-sr1_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-sr1_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-sr1_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-sr1_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-sr1_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-sr1_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-sr1_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-sr1_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-sr1_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-sr1_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-sr1_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-sr1_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-sr1_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-sr1_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-sr1_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-sr1_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">Naar de inhoud</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+
+<header>
+  <p class="lumen-kicker">Herstelgids · Timmkoo SR1</p>
+  <h1>Originele software herstellen op Timmkoo SR1</h1>
+  <p class="lead">Een schone terugkeer naar de software waarmee de speler is geleverd. Gebruik het na een mislukte update, voordat u de speler verkoopt of wanneer een aangepast systeem niets voor u is.</p>
+  <div class="lumen-actions">
+    <a class="lumen-button lumen-button--primary" href="../guide_nl.html#platform">Updater CE downloaden</a>
+    <a class="lumen-button" href="../firmware_nl.html?model=SR1">SR1 downloads</a>
+    <a class="lumen-button" href="../manuals/sr1.html">SR1 handleiding</a>
+  </div>
+</header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">Installatiehandleiding voor uw computer</p><h2>Herstel originele software op uw SR1 met uw computer</h2><p>Kies de handleiding voor de computer die u gebruikt. <span data-os-strip-note>Elke versie heeft de platformconfiguratie, Updater CE stappen en de weg terug naar de voorraad.</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-sr1-windows.html">Windows-gids</a><a class="lumen-button" data-os-guide="macos" href="../install/original-sr1-mac.html">macOS-gids</a><a class="lumen-button" data-os-guide="linux" href="../install/original-sr1-linux.html">Linux-gids</a></div><p class="lumen-meta"><a href="../install/sr1.html">Alle Timmkoo SR1 gidsen</a> · <a href="../install/original-software.html">Alle originele softwarehandleidingen</a></p></section>
+
+<section class="lumen-guide-section"><h2>Wat je nodig hebt</h2>
+<ul>
+  <li>Een Windows-, macOS- of Linux-computer. Updater CE draait op alle drie.</li>
+  <li>De USB-datakabel die bij de speler is geleverd. Alleen-oplaadkabels zullen niet werken.</li>
+  <li>De ambtenaar <code>rom_sr1.zip</code> pakket dat Updater voor u downloadt, of een kopie van het <a href="../firmware_nl.html?model=SR1">SR1 archief</a> als u liever met de hand flitst.</li>
+  <li>Laad de speler op. Een herstel waarbij stroom verloren gaat, is de enige gebruikelijke manier om een slechte situatie nog erger te maken.</li>
+</ul>
+<p><strong>Hiermee wordt het systeem vervangen en de interne opslag gewist.</strong> Kopieer muziek, opnames en foto's eerst naar een computer.</p></section>
+
+<section class="lumen-guide-section"><h2>Route A: Updater CE (aanbevolen)</h2>
+<ol class="lumen-steps">
+  <li>Installeren <a href="../guide_nl.html#platform">Innioasis Updater CE</a> en open het.</li>
+  <li>Instellen <strong>Apparaatmodel</strong> aan <strong>SR1</strong>. Het model moet exact bij de speler passen.</li>
+  <li>Kies <strong>Originele software</strong> in de Softwarelijst.</li>
+  <li>Kies een uitgave. De nieuwste stabiele build is de veilige standaard.</li>
+  <li>Druk op <strong>Installeren / Herstellen</strong> en wacht terwijl het pakket wordt gedownload en uitgepakt.</li>
+  <li>Schakel de speler volledig uit en sluit de USB-kabel alleen aan als Updater daarom vraagt.</li>
+  <li>Raak de speler of de kabel niet aan totdat het succesbericht verschijnt. Koppel de speler los en start deze.</li>
+</ol>
+<div class="lumen-warning"><strong>Kies nooit een ander model om ‘het te laten werken’.</strong> Een SR1 heeft een SR1-pakket nodig. Door modellen te mixen hebben spelers uiteindelijk een handmatig herstel nodig.</div></section>
+
+<section class="lumen-guide-section"><h2>Route B: SP Flash Tool (handmatig)</h2>
+<p>Gebruik dit wanneer een computer Updater CE niet kan uitvoeren, of wanneer u het pakket al heeft en de voorkeur geeft aan de klassieke tool.</p>
+<ol class="lumen-steps">
+  <li>Downloaden <code>rom_sr1.zip</code> van de
+  <a href="../firmware_nl.html?model=SR1">SR1 archief</a> en rits het uit.</li>
+  <li>Bewaar het spreidingsbestand naast de afbeeldingen. Hernoem of verplaats de afbeeldingen niet.</li>
+  <li>Open SP Flash Tool, kies <strong>Alleen downloaden</strong>en laad het verspreidingsbestand.</li>
+  <li>Schakel de speler uit, druk op <strong>Downloaden</strong>en sluit vervolgens de kabel aan.</li>
+  <li>Wacht op het groene succesteken voordat u de verbinding verbreekt.</li>
+</ol>
+<p>De <a href="../sp-flash-tool_nl.html">SP Flash Tool gids</a> behandelt stuurprogramma's en de Windows-prompts in meer detail. Op Linux en macOS is Updater CE de gemakkelijkere route omdat het zijn eigen USB-verwerking met zich meebrengt.</p></section>
+
+<section class="lumen-guide-section"><h2>Na het herstel</h2>
+<ol class="lumen-steps">
+  <li>Koppel de speler los en laat hem zelfstandig opstarten.</li>
+  <li>Kies uw taal en stel de klok in.</li>
+  <li>Maak opnieuw verbinding met Wi-Fi of Bluetooth als u deze gebruikt.</li>
+  <li>Kopieer je muziek terug. De <a href="../manuals/transfer-music.html">overdracht gids</a> heeft de mapnamen.</li>
+</ol>
+<p>Als de speler start maar het scherm, het wiel of de knoppen zich nog steeds niet goed gedragen, heeft het herstel gewerkt; dat is een hardware- of installatievraag, geen softwarevraag. De
+<a href="../troubleshooting_nl.html">gids voor probleemoplossing</a> is de volgende halte.</p>
+</section>
+
+<section class="lumen-guide-section"><h2>Als het niet werkt</h2>
+<div class="lumen-grid">
+  <article class="lumen-card"><h3>Updater ziet de speler nooit</h3><p>Vervang de kabel en vervolgens de USB-poort. Vermijd hubs. In Windows installeert u het stuurprogramma MediaTek vanaf het <a href="../drivers_nl.html">chauffeurspagina</a>.</p></article>
+  <article class="lumen-card"><h3>De flits stopt vroeg</h3><p>Sluit opnieuw aan, laad de speler op en begin opnieuw. Stap niet over op een pakket van een ander model.</p></article>
+  <article class="lumen-card"><h3>De speler blijft zwart</h3><p>Laad een uur op en houd de stroom vervolgens tien seconden vast. Als het nog steeds dood is, lees dan de
+  <a href="../guides/recovery_nl.html">herstel gids</a> voordat u het opnieuw probeert.</p></article>
+</div></section>
+
+<section class="lumen-guide-section"><h2>Vragen die mensen stellen</h2>
+<h3>Zal dit mijn muziek verwijderen?</h3>
+<p>Ja, de interne opslag is gewist. Bestanden op een microSD-kaart overleven meestal, maar kopieer ze eerst naar een veilige plek.</p>
+<h3>Kan ik daarna teruggaan naar Rockbox?</h3>
+<p>Ja. Het herstellen van originele software is geen eenrichtingsverkeer; de aangepaste softwarepagina voor uw model kunt deze opnieuw installeren.</p>
+<h3>Heb ik de instelling Type A/Type B nodig?</h3>
+<p>Alleen de Y1 heeft die keuze, en alleen voor Originele Software. Elk ander model gebruikt één pakket.</p>
+</section>
+
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body></html>

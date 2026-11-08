@@ -1910,6 +1910,14 @@
   "— the same checks for the Y2": "— Y2 के लिए भी वही जाँच",
   "— what a failed flash looks like": "- एक असफल फ्लैश कैसा दिखता है",
   "← All notices": "← सभी सूचनाएं",
-  "← Firmware Downloads": "← फ़र्मवेयर डाउनलोड"
+  "← Firmware Downloads": "← फ़र्मवेयर डाउनलोड",
+  "Analytics & performance telemetry": "विश्लेषिकी और प्रदर्शन टेलीमेट्री",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "हम केवल आवश्यक चीजें एकत्र करते हैं (यातायात और मार्गों का अनुकूलन; डेटा में स्वयं की रुचि नहीं) - केवल आवश्यक या बंद चुनें।",
+  "Essential Only": "केवल आवश्यक",
+  "Off": "बंद",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "विंडोज डिफेंडर स्मार्टस्क्रीन या स्मार्ट ऐप कंट्रोल, हस्ताक्षर प्रतिष्ठा के प्रचार से पहले नए डाउनलोड किए गए सामुदायिक एप्लिकेशन को ब्लॉक कर सकता है। स्मार्ट ऐप कंट्रोल वर्तमान में एपिक ओवरले सर्विस (फोर्टनाइट द्वारा प्रयुक्त) जैसे लोकप्रिय एप्लिकेशन को प्रभावित कर रहा है - अपडेटर सीई सुरक्षित और उपयोग के लिए सत्यापित है। स्मार्ट ऐप कंट्रोल को बंद करने से अपडेटर सीई सामान्य रूप से खुलने और चलने की अनुमति देता है।",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "यदि आपका मैक आपको पहली बार ऐप चलाने से रोकता है, तो कृपया सिस्टम सेटिंग्स खोलें, गोपनीयता और सुरक्षा पर क्लिक करें, सुरक्षा तक नीचे स्क्रॉल करें और वैसे भी खोलें पर क्लिक करें। आप फाइंडर में ऐप को कंट्रोल-क्लिक (या राइट-क्लिक) भी कर सकते हैं और ओपन चुन सकते हैं।",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "स्मार्ट ऐप कंट्रोल वर्तमान में एपिक ओवरले सर्विस (फोर्टनाइट द्वारा प्रयुक्त) जैसे लोकप्रिय एप्लिकेशन को प्रभावित कर रहा है - अपडेटर सीई सुरक्षित और उपयोग के लिए सत्यापित है।",
+  "Windows won't launch the app? Help": "विंडोज़ ऐप लॉन्च नहीं करेगा? मदद"
  }
 }

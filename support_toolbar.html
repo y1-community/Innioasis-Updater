@@ -1,11 +1,3 @@
-<!-- Google Tag Manager (GA4) -->
-<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
-
 <!-- Community shortcuts. The support panel opens when a visitor chooses Donate. -->
 <style>
   /* Keep the injected donation modal self-contained when a cached page has an
@@ -488,6 +480,13 @@
         <p><strong>Innioasis.app uses Cloudflare and Google Analytics (GTM) to optimize performance, protect against attacks, and measure site usage.</strong> Analytics cookies are optional. We never sell your personal data.</p>
         <p>Manage your saved preferences:</p>
         <div class="y1-privacy-options" aria-label="What the site may remember">
+          <label class="y1-privacy-option" data-privacy-analytics-row>
+            <span class="y1-privacy-option-label"><strong>Analytics &amp; performance telemetry</strong><small>We only collect essentials (optimizing traffic &amp; routes; not self-interested in data) — choose Essential Only or Off.</small></span>
+            <select class="y1-privacy-select" data-privacy-analytics aria-label="Analytics preferences" style="background:rgba(255,255,255,0.08); color:inherit; border:1px solid rgba(255,255,255,0.22); border-radius:8px; padding:0.35rem 0.6rem; font-size:0.85rem; font-weight:600; cursor:pointer;">
+              <option value="essential">Essential Only</option>
+              <option value="off">Off</option>
+            </select>
+          </label>
           <label class="y1-privacy-option">
             <span class="y1-privacy-option-label"><strong>Remember guide feedback answers</strong><small>Saves your "was this useful?" feedback on guides.</small></span>
             <input type="checkbox" class="y1-privacy-toggle" data-privacy-feedback>
@@ -519,12 +518,11 @@
         <span class="y1-dock-sep" aria-hidden="true" data-donations-appeal>·</span>
         <button class="y1-dock-link y1-privacy-trigger" type="button" data-privacy-open aria-expanded="false" aria-controls="y1-privacy-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Privacy</button>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
-        <button class="y1-dock-link site-locale-dock-btn" type="button" data-locale-open aria-haspopup="dialog" aria-controls="site-locale-panel" title="Language"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg><span class="site-locale-toggle-label">Language</span><span class="site-locale-throbber" aria-hidden="true"></span></button>
-        <span class="y1-dock-sep" aria-hidden="true">·</span>
-        <span class="y1-font-control" role="group" aria-label="Adjust text size">
+        <span class="y1-font-control" role="group" aria-label="Adjust text size and language">
           <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Smaller text">A−</button>
           <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Reset text size">A</button>
           <button class="y1-dock-link y1-font-btn y1-font-btn--large" type="button" data-font-up aria-label="Larger text">A+</button>
+          <button class="y1-dock-link site-locale-dock-btn" type="button" data-locale-open aria-haspopup="dialog" aria-controls="site-locale-panel" title="Language" style="margin-inline-start: 4px;"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg><span class="site-locale-toggle-label">Language</span><span class="site-locale-throbber" aria-hidden="true"></span></button>
         </span>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
         <button class="y1-dock-link y1-dock-close-btn" type="button" data-dock-close aria-label="Close bottom toolbar" title="Close toolbar" style="font-size: 1.25rem; line-height: 1; padding: 0 5px; cursor: pointer; background: transparent; border: none; color: inherit; opacity: 0.72; transition: opacity 0.15s ease;">&times;</button>
@@ -945,11 +943,7 @@
         var name = document.createElement("span");
         name.className = "y1-toolbar-thank-you-name";
         name.textContent = entry.name;
-        var amount = document.createElement("span");
-        amount.className = "y1-toolbar-thank-you-amount";
-        amount.textContent = toolbarThankYouAmount(entry);
         item.appendChild(name);
-        item.appendChild(amount);
         thankYouNames.appendChild(item);
       });
     }
@@ -1202,6 +1196,11 @@
   function prefillToggles() {
     var prefs = (consent && consent.read) ? consent.read() : null;
     if (privacyStatus) privacyStatus.textContent = "";
+    var analyticsSelect = document.querySelector("[data-privacy-analytics]");
+    if (analyticsSelect) {
+      var isOff = prefs && (prefs.analytics === false || prefs.analytics === "off");
+      analyticsSelect.value = isOff ? "off" : "essential";
+    }
     if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback : false;
     if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly : false;
     if (donationsToggle) donationsToggle.checked = !donationsOff();
@@ -1246,11 +1245,28 @@
       reenabledDonations = donationsOff() && !disableDonations;
       window.setY1DonationsDisabled(disableDonations);
     }
+    var analyticsSelect = document.querySelector("[data-privacy-analytics]");
+    var analyticsVal = analyticsSelect ? analyticsSelect.value : "essential";
+    var analyticsActive = analyticsVal !== "off";
     if (consent && consent.save) {
       consent.save({
         feedback: feedbackToggle ? feedbackToggle.checked : true,
-        nightly: nightlyToggle ? nightlyToggle.checked : true
+        nightly: nightlyToggle ? nightlyToggle.checked : true,
+        analytics: analyticsActive ? "essential" : "off"
       });
+    }
+    if (!analyticsActive) {
+      try {
+        window['ga-disable-GTM-TNDGC37L'] = true;
+        if (typeof window.gtag === 'function') {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+      } catch (_) {}
     }
     /* Say so, rather than silently closing and leaving the visitor to guess
        whether anything happened. The panel closes a beat later so the

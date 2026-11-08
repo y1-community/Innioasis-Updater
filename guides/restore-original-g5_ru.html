@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru" dir="ltr" data-locale="ru">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Восстановите исходное программное обеспечение при загрузке прошивки Innioasis G5 — Innioasis</title>
+  <meta name="description" content="Пошаговое руководство по восстановлению официального оригинального программного обеспечения на аудиоплеере Innioasis G5 с помощью Innioasis Updater CE и rom_g5.zip.">
+  <link rel="canonical" href="https://innioasis.app/guides/restore-original-g5_ru.html">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20260803">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+  <script src="../site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Restore Original Software on Innioasis G5",
+    "description": "How to restore factory firmware on an Innioasis G5 player using Innioasis Updater CE.",
+    "step": [
+      { "@type": "HowToStep", "text": "Open Innioasis Updater CE on your computer." },
+      { "@type": "HowToStep", "text": "Set Device Model to G5." },
+      { "@type": "HowToStep", "text": "Select Original Software (rom_g5.zip)." },
+      { "@type": "HowToStep", "text": "Click Install / Restore and connect your powered-off G5 via USB when prompted." }
+    ]
+  }
+  </script>
+<meta property="og:site_name" content="Innioasis Обновления программного обеспечения"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-g5.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-g5.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-g5_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-g5_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-g5_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-g5_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-g5_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-g5_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-g5_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-g5_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-g5_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-g5_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-g5_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-g5_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-g5_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-g5_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-g5_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-g5_jp.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Перейти к содержимому</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Руководство по восстановлению · Innioasis G5</p>
+      <h1>Восстановить исходное программное обеспечение на Innioasis G5</h1>
+      <p class="lead">Используйте это руководство, если вам нужно восстановить не отвечающую G5, обновить систему до заводского состояния или установить чистые официальные обновления прошивки.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../guide_ru.html#platform">Скачать Updater CE</a>
+        <a class="lumen-button" href="../firmware_ru.html?model=G5">Посмотреть G5 загрузок</a>
+      </div>
+    </header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">Руководство по установке для вашего компьютера</p><h2>Восстановите оригинальное программное обеспечение на вашем G5 с помощью компьютера.</h2><p>Выберите руководство для компьютера, который вы используете. <span data-os-strip-note>В каждой версии есть настройка платформы, Updater CE шагов и возврат к стоку.</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-g5-windows.html">Руководство по Windows</a><a class="lumen-button" data-os-guide="macos" href="../install/original-g5-mac.html">руководство по macOS</a><a class="lumen-button" data-os-guide="linux" href="../install/original-g5-linux.html">Руководство по Linux</a></div><p class="lumen-meta"><a href="../install/g5.html">Все руководства Innioasis G5</a> · <a href="../install/original-software.html">Все руководства по оригинальному программному обеспечению</a></p></section>
+
+    <section class="lumen-guide-section">
+      <h2>Шаг 1. Подготовьте свой компьютер</h2>
+      <p>Innioasis Updater CE изначально работает на Windows, macOS и Linux, не требуя сложных средств перепрошивки:</p>
+      <ol class="lumen-steps">
+        <li>Запуск <strong>Innioasis Программа обновления CE</strong> на вашем настольном компьютере или ноутбуке.</li>
+        <li>Набор <strong>Модель устройства</strong> в адрес <strong>G5</strong>.</li>
+        <li>Выбирать <strong>Заводское ПО</strong> в раскрывающемся списке программного обеспечения. Программа обновлений CE автоматически загружает официальную <code>rom_g5.zip</code> выпустить пакет напрямую.</li>
+        <li>Нажмите <strong>Установить / Восстановить</strong> начать подготовку.</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Шаг 2. Подключите G5 в командной строке</h2>
+      <p>Никогда не подключайте плеер до того, как приложение предложит вам:</p>
+      <ol class="lumen-steps">
+        <li>Убедитесь, что ваш Innioasis G5 полностью выключен.</li>
+        <li>Когда программа обновлений отобразит запрос на подключение USB, подключите кабель для передачи данных USB-C к компьютеру и плееру.</li>
+        <li>Не прикасайтесь к кабелю или кнопкам питания во время прошивки.</li>
+        <li>Как только появится подтверждение успеха, отсоедините кабель USB и включите питание G5.</li>
+      </ol>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="../firmware_ru.html">Просмотр архива прошивок</a>
+        <a class="lumen-button" href="../troubleshooting_ru.html">Помощь по устранению неполадок</a>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="../nav.js?v=20261105copyleft" defer></script>
+  <script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body>
+</html>

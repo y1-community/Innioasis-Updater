@@ -78,10 +78,10 @@
 
     /* Only the two installer pages use the in-page progress UI. Every
        generated release-notes, guide and content page follows its anchor's
-       direct GitHub URL instead. */
+       direct GitHub URL instead. Supports all language variations (e.g. firmware_de.html, firmware-list_jp.html). */
     function isFirmwareDownloadPage() {
         var path = String(window.location.pathname || "").replace(/\/+$/, "");
-        return /\/firmware\.html$/i.test(path) || /\/firmware-list\.html$/i.test(path);
+        return /\/firmware(-list)?(_[a-zA-Z0-9_-]+)?\.html$/i.test(path) || document.querySelector("[data-firmware-page]") !== null || document.getElementById("lumen-firmware-table") !== null;
     }
 
     /* The mirror publishes x86-64 and arm64 builds plus one universal macOS
@@ -388,7 +388,17 @@
        it into a Blob first would hold the whole 500-600 MB file in memory and
        only offer the save once the last byte had arrived. */
     async function streamToDownloads(href, saveName, label) {
-        directDownload(href, saveName, label);
+        var link = document.createElement("a");
+        link.href = href;
+        link.setAttribute("data-direct-download", "1");
+        if (saveName) link.download = saveName;
+        link.rel = "noopener";
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(function () {
+            if (link.parentNode) link.parentNode.removeChild(link);
+        }, 1000);
+        toastDone(saveName, label, true);
         return true;
     }
 
@@ -410,7 +420,8 @@
     }
 
     function directDownload(href, saveName, label) {
-        if (/^https?:/i.test(href)) {
+        var isCrossOrigin = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
+        if (isCrossOrigin) {
             downloadFrame().src = href;
             toastDone(saveName, label, false);
             return;
@@ -432,7 +443,10 @@
         var href = link.getAttribute("href") || "";
         var sourceUrl = link.getAttribute("data-zip-url") || href;
         var parts = parseAssetUrl(sourceUrl);
-        var saveName = releaseFileName(link.getAttribute("data-zip-name") || (parts ? parts.name : ""), "rom.zip");
+        var displayedName = (link.textContent || "").trim();
+        var linkDeclaredName = link.getAttribute("data-zip-name");
+        var chosenName = linkDeclaredName || (isFirmwareZip(displayedName) ? displayedName : (parts ? parts.name : ""));
+        var saveName = releaseFileName(chosenName, "rom.zip");
         var explicitPlatform = link.getAttribute("data-platform") || "";
         if (!isFirmwareZip(saveName)) return false;
 

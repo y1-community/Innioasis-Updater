@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pl" dir="ltr" data-locale="pl">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problemy z uruchamianiem aplikacji w systemie Windows 10/11 i obejście Smart App Control — Innioasis Aktualizator</title>
+  <meta name="description" content="Jeśli system Windows 10/11 lub funkcja Smart App Control uniemożliwia uruchomienie aplikacji, skorzystaj z rozwiązania opisanego tutaj.">
+  <link rel="canonical" href="https://innioasis.app/notices/2026-11-07-codesigning_pl.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Problemy z uruchamianiem aplikacji w systemie Windows 10/11 i obejście Smart App Control — Innioasis Aktualizator">
+  <meta property="og:description" content="Jeśli system Windows 10/11 lub funkcja Smart App Control uniemożliwia uruchomienie aplikacji, skorzystaj z rozwiązania opisanego tutaj.">
+  <meta property="og:url" content="https://innioasis.app/notices/2026-11-07-codesigning_pl.html">
+  <meta property="og:site_name" content="Innioasis Aktualizator">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Problemy z uruchamianiem aplikacji w systemie Windows 10/11 i obejście Smart App Control — Innioasis Aktualizator">
+  <meta name="twitter:description" content="Jeśli system Windows 10/11 lub funkcja Smart App Control uniemożliwia uruchomienie aplikacji, skorzystaj z rozwiązania opisanego tutaj.">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20260803">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+  <script src="../site-init.js?v=20260803" defer></script>
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/notices/2026-11-07-codesigning.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/notices/2026-11-07-codesigning.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/notices/2026-11-07-codesigning_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/notices/2026-11-07-codesigning_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/notices/2026-11-07-codesigning_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/notices/2026-11-07-codesigning_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/notices/2026-11-07-codesigning_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/notices/2026-11-07-codesigning_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/notices/2026-11-07-codesigning_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/notices/2026-11-07-codesigning_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/notices/2026-11-07-codesigning_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/notices/2026-11-07-codesigning_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/notices/2026-11-07-codesigning_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/notices/2026-11-07-codesigning_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/notices/2026-11-07-codesigning_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/notices/2026-11-07-codesigning_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/notices/2026-11-07-codesigning_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/notices/2026-11-07-codesigning_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">Przejdź do treści</a><div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+<header><p class="lumen-kicker">Od 25.10.2026 · do 31.12.2026 · Modele: Y1,Y2</p><h1>Problemy z uruchamianiem aplikacji w systemie Windows 10/11 i obejście Smart App Control</h1><p class="lead">Jeśli system Windows 10/11 lub funkcja Smart App Control uniemożliwia uruchomienie aplikacji, skorzystaj z rozwiązania opisanego tutaj.</p><p class="lumen-meta">Od 25.10.2026 · do 31.12.2026 · Modele: Y1,Y2</p></header>
+<section class="lumen-guide-section lumen-notice-body"><p>Fałszywie pozytywne raporty zostały przesłane do firmy Microsoft w sprawie <code>installer.exe</code> i <code>InnioasisUpdater.exe</code> i podjęto odpowiednie działania, ale jeśli funkcja Windows Endpoint Protection lub Smart App Control nadal blokuje aplikację na komputerze, użyj tego obejścia:</p>
+<h3>Tymczasowe rozwiązanie: wyłącz inteligentną kontrolę aplikacji</h3>
+<ol><li>Otwórz system Windows <strong>Ustawienia</strong> (naciskać <code>Win + I</code>).</li><li>Idź do <strong>Prywatność i bezpieczeństwo</strong> &gt; <strong>Bezpieczeństwo systemu Windows</strong> &gt; <strong>Kontrola aplikacji i przeglądarki</strong>.</li><li>Pod <strong>Inteligentna kontrola aplikacji</strong>, kliknij <strong>Ustawienia inteligentnej kontroli aplikacji</strong>.</li><li>Ustaw Inteligentną kontrolę aplikacji na <strong>Wyłączony</strong>. Dzięki temu aplikacja natychmiast się otworzy i uruchomi.</li></ol>
+<p>Jeśli system Windows lub Edge uniemożliwia pobranie narzędzia Updater CE, kliknij więcej opcji (<strong>…</strong>) Następnie <strong>Trzymać</strong> &gt; <strong>Pokaż więcej</strong> &gt; <strong>Mimo to zachowaj</strong>.</p>
+<h3>Ponowne włączenie inteligentnej kontroli aplikacji</h3>
+<p>Kiedy aktualizacja fałszywych definicji na komputerze zakończy się, możesz ponownie włączyć funkcję Smart App Control za pośrednictwem rejestru systemu Windows:</p>
+<ol><li>Naciśnij <strong>Klawisz Windows + R</strong>, typ <code>regedit</code>i naciśnij klawisz Enter, aby otworzyć Edytor rejestru jako administrator.</li><li>Przejdź do: <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy</code> (Lub <code>Policies</code>).</li><li>Lokalizować <code>VerifiedAndReputablePolicyState</code> w prawym panelu.</li><li>Kliknij dwukrotnie <code>VerifiedAndReputablePolicyState</code> i zmień jego dane wartości na:</li></ol>
+<ul><li><code>1</code> = Włączone (wymuszone)</li><li><code>2</code> = Tryb oceny</li></ul>
+<ol><li>Kliknij OK, zamknij Edytor rejestru i uruchom ponownie komputer.</li></ol>
+<p><a href="https://www.microsoft.com/en-us/wdsi/submission/45d25b9c-0dd6-4d01-afd2-f0ea6b224dfd">Zobacz raport installer.exe dla firmy Microsoft</a> <a href="https://www.microsoft.com/en-us/wdsi/submission/1aef842b-3fda-44e7-bcfb-1a64af3ea661">Zobacz raport InnioasisUpdater.exe dla firmy Microsoft</a></p></section>
+<p class="lumen-actions"><a class="lumen-button lumen-button--primary" href="https://innioasis.app/notices.html" rel="noopener">Otwórz połączoną stronę</a></p>
+<p class="lumen-notice-back"><a href="index_pl.html">← Wszystkie powiadomienia</a></p>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../lumen-site.js?v=20261105savename" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+</body></html>

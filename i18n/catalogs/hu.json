@@ -1242,6 +1242,14 @@
   "{supporter} contributed {amount} for free by sharing 100MB on Honeygain{time}": "{supporter} ingyenesen hozzájárult {amount} 100 MB megosztásával a Honeygain{time} oldalon",
   "{supporter} donated {amount}": "{supporter} adományozta {amount}",
   "{supporter} donated {amount} by {method}{time}": "{supporter} adományozta {amount} {method}{time}",
-  "{supporter} has donated {amount}{time}": "{supporter} adományozta {amount}{time}"
+  "{supporter} has donated {amount}{time}": "{supporter} adományozta {amount}{time}",
+  "Analytics & performance telemetry": "Analitika és teljesítmény telemetria",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "Csak az alapvető információkat gyűjtjük (a forgalom és az útvonalak optimalizálása; nem érdekli az adatokat) – válassza a Csak alapvető fontosságú vagy a Ki lehetőséget.",
+  "Essential Only": "Csak alapvető",
+  "Off": "Le",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "A Windows Defender SmartScreen vagy a Smart App Control blokkolhatja az újonnan letöltött közösségi alkalmazásokat, mielőtt az aláírás hírneve elterjedne. Az intelligens alkalmazásvezérlés jelenleg olyan népszerű alkalmazásokat érint, mint az Epic Overlay Service (a Fortnite által használt) – Az Updater CE biztonságos és ellenőrzött használata. A Smart App Control kikapcsolása lehetővé teszi az Updater CE normál megnyitását és futtatását.",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "Ha a Mac számítógépen nem tudja először futtatni az alkalmazást, nyissa meg a Rendszerbeállításokat, kattintson az Adatvédelem és biztonság elemre, görgessen le a Biztonság elemhez, és kattintson a Megnyitás gombra. Azt is megteheti, hogy a Ctrl billentyűt lenyomva tartva (vagy jobb gombbal) az alkalmazásra kattint a Finderben, és válassza a Megnyitás lehetőséget.",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "Az intelligens alkalmazásvezérlés jelenleg olyan népszerű alkalmazásokat érint, mint az Epic Overlay Service (a Fortnite által használt) – Az Updater CE biztonságos és ellenőrzött használata.",
+  "Windows won't launch the app? Help": "A Windows nem indítja el az alkalmazást? Segítség"
  }
 }

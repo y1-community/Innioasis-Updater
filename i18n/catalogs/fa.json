@@ -1905,6 +1905,14 @@
   "— the same checks for the Y2": "- همان بررسی برای Y2",
   "— what a failed flash looks like": "- یک فلاش شکست خورده چگونه به نظر می رسد",
   "← All notices": "← همه اطلاعیه ها",
-  "← Firmware Downloads": "← بارگیری سیستم عامل"
+  "← Firmware Downloads": "← بارگیری سیستم عامل",
+  "Analytics & performance telemetry": "تجزیه و تحلیل و تله متری عملکرد",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "ما فقط موارد ضروری را جمع‌آوری می‌کنیم (بهینه‌سازی ترافیک و مسیرها؛ نه علاقه‌مند به داده‌ها) - Essential Only یا Off را انتخاب کنید.",
+  "Essential Only": "فقط ضروری است",
+  "Off": "خاموش",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "Windows Defender SmartScreen یا Smart App Control می‌تواند برنامه‌های تازه دانلود شده انجمن را قبل از انتشار شهرت امضا مسدود کند. Smart App Control در حال حاضر روی برنامه‌های محبوبی مانند Epic Overlay Service (که توسط Fortnite استفاده می‌شود) تأثیر می‌گذارد - Updater CE ایمن و تأیید شده برای استفاده است. خاموش کردن Smart App Control به Updater CE اجازه می دهد تا به طور عادی باز و اجرا شود.",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "اگر مک شما برای اولین بار مانع از اجرای برنامه شد، لطفاً تنظیمات سیستم را باز کنید، روی Privacy & Security کلیک کنید، به پایین بروید به Security و روی Open Anyway کلیک کنید. همچنین می توانید روی برنامه در Finder کلیک کنید (یا راست کلیک کنید) و Open را انتخاب کنید.",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "Smart App Control در حال حاضر روی برنامه‌های محبوبی مانند Epic Overlay Service (که توسط Fortnite استفاده می‌شود) تأثیر می‌گذارد - Updater CE ایمن و تأیید شده برای استفاده است.",
+  "Windows won't launch the app? Help": "ویندوز برنامه را راه اندازی نمی کند؟ کمک کنید"
  }
 }

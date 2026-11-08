@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-TW" dir="ltr" data-locale="zh-TW"><head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>恢復 Timmkoo Q3 上的原始軟體 - 逐步</title>
+<meta name="description" content="如何使用經過驗證的 rom_q3.zip 軟體包，使用 Innioasis 更新程式 CE 或 SP Flash Tool 在 Timmkoo Q3 上恢復官方原始軟體。">
+<link rel="canonical" href="https://innioasis.app/guides/restore-original-q3_zh-TW.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="恢復 Timmkoo Q3 上的原始軟體 - 逐步">
+<meta property="og:description" content="如何使用經過驗證的 rom_q3.zip 軟體包，使用 Innioasis 更新程式 CE 或 SP Flash Tool 在 Timmkoo Q3 上恢復官方原始軟體。">
+<meta property="og:url" content="https://innioasis.app/guides/restore-original-q3_zh-TW.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../lumen.css?v=20261105hero">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<script src="../site-init.js?v=20260803" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Restore Original Software on Timmkoo Q3", "description": "How to restore official Original Software on an Timmkoo Q3 with Innioasis Updater CE or SP Flash Tool, using the verified rom_q3.zip package.", "totalTime": "PT20M", "step": [{"@type": "HowToStep", "name": "Back up and charge", "text": "Copy files to a computer and charge the player."}, {"@type": "HowToStep", "name": "Choose the model", "text": "Open Updater CE and set Device Model to Q3."}, {"@type": "HowToStep", "name": "Choose Original Software", "text": "Select Original Software and the rom_q3.zip release."}, {"@type": "HowToStep", "name": "Install at the prompt", "text": "Press Install / Restore, power the player off, and connect USB only when asked."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://innioasis.app/"}, {"@type": "ListItem", "position": 2, "name": "Player manuals", "item": "https://innioasis.app/manuals/index.html"}, {"@type": "ListItem", "position": 3, "name": "Timmkoo Q3 manual", "item": "https://innioasis.app/manuals/q3.html"}, {"@type": "ListItem", "position": 4, "name": "Restore Timmkoo Q3", "item": "https://innioasis.app/guides/restore-original-q3.html"}]}</script>
+<meta property="og:site_name" content="Innioasis 軟體更新"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-q3.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-q3.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-q3_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-q3_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-q3_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-q3_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-q3_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-q3_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-q3_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-q3_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-q3_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-q3_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-q3_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-q3_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-q3_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-q3_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-q3_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-q3_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">跳至主要內容</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+
+<header>
+  <p class="lumen-kicker">恢復指南·TimmkooQ3</p>
+  <h1>恢復 Timmkoo Q3 上的原始軟體</h1>
+  <p class="lead">完全回歸播放器附帶的軟體。在更新失敗後、出售播放器之前或自訂系統不適合您時使用它。</p>
+  <div class="lumen-actions">
+    <a class="lumen-button lumen-button--primary" href="../guide_zh-TW.html#platform">取得 Updater CE</a>
+    <a class="lumen-button" href="../firmware_zh-TW.html?model=Q3">Q3下載</a>
+    <a class="lumen-button" href="../manuals/q3.html">Q3 手冊</a>
+  </div>
+</header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">適用於您的電腦的安裝指南</p><h2>使用電腦復原 Q3 上的原始軟體</h2><p>選擇適合您正在使用的計算機的指南。 <span data-os-strip-note>每個版本都有平台設定、Updater CE步驟和返回庫存的方式。</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-q3-windows.html">Windows 指南</a><a class="lumen-button" data-os-guide="macos" href="../install/original-q3-mac.html">macOS 指南</a><a class="lumen-button" data-os-guide="linux" href="../install/original-q3-linux.html">Linux指南</a></div><p class="lumen-meta"><a href="../install/q3.html">所有 Timmkoo Q3 指南</a> · <a href="../install/original-software.html">所有原始軟體指南</a></p></section>
+
+<section class="lumen-guide-section"><h2>你需要什麼</h2>
+<ul>
+  <li>Windows、macOS 或 Linux 電腦。 Updater CE 在所有三個上運行。</li>
+  <li>播放器隨附的USB線。僅充電電纜將不起作用。</li>
+  <li>官方 <code>rom_q3.zip</code> 包，更新程式為您下載，或從 <a href="../firmware_zh-TW.html?model=Q3">Q3 存檔</a> 如果您喜歡手動閃光。</li>
+  <li>在播放器中充電。斷電恢復是使糟糕情況變得更糟的唯一常見方法。</li>
+</ul>
+<p><strong>這會替換系統並擦除內部儲存。</strong> 首先將音樂、錄音和照片複製到電腦上。</p></section>
+
+<section class="lumen-guide-section"><h2>路線A：Updater CE（建議）</h2>
+<ol class="lumen-steps">
+  <li>安裝 <a href="../guide_zh-TW.html#platform">Innioasis 更新程式 CE</a> 並打開它。</li>
+  <li>套裝 <strong>裝置型號</strong> 到 <strong>Q3</strong>。該模型必須與玩家完全匹配。</li>
+  <li>選擇 <strong>原廠軟體</strong> 在軟體清單中。</li>
+  <li>選擇一個版本。最新的穩定版本是安全的預設版本。</li>
+  <li>新聞 <strong>安裝 / 還原</strong> 並等待包下載和解壓。</li>
+  <li>完全關閉播放器電源，然後僅在更新程式要求時連接 USB 連接線。</li>
+  <li>在出現成功訊息之前，請勿觸摸播放器或電纜。斷開連線並啟動播放器。</li>
+</ol>
+<div class="lumen-warning"><strong>切勿選擇不同的模型來「使其發揮作用」。</strong> Q3 需要 Q3 包。混合模型是玩家最終需要手動恢復的原因。</div></section>
+
+<section class="lumen-guide-section"><h2>路線 B：SP Flash Tool（手動）</h2>
+<p>當電腦無法運作 Updater CE 時，或當您已經擁有該軟體包並且更喜歡經典工具時，請使用此選項。</p>
+<ol class="lumen-steps">
+  <li>下載 <code>rom_q3.zip</code> 從
+  <a href="../firmware_zh-TW.html?model=Q3">Q3 存檔</a> 並解壓縮它。</li>
+  <li>將分散檔案保留在影像旁邊。請勿重新命名或移動影像。</li>
+  <li>開啟SP Flash Tool，選擇 <strong>僅供下載</strong>，並載入分散文件。</li>
+  <li>關閉播放器電源，按 <strong>下載</strong>，然後連接電纜。</li>
+  <li>等待綠色成功標記後再斷開連線。</li>
+</ol>
+<p>的 <a href="../sp-flash-tool_zh-TW.html">SP Flash Tool 指南</a> 更詳細地介紹了驅動程式和 Windows 提示。在 Linux 和 macOS 上，Updater CE 是更簡單的路線，因為它帶來了自己的 USB 處理。</p></section>
+
+<section class="lumen-guide-section"><h2>恢復後</h2>
+<ol class="lumen-steps">
+  <li>斷開播放器並讓它自行啟動。</li>
+  <li>選擇您的語言並設定時鐘。</li>
+  <li>如果您使用 Wi-Fi 或藍牙，請重新連接它們。</li>
+  <li>將您的音樂複製回來。的 <a href="../manuals/transfer-music.html">轉乘指南</a> 有資料夾名稱。</li>
+</ol>
+<p>如果播放器啟動但螢幕、滾輪或按鈕仍出現故障，則恢復成功；這是硬體或設定問題，而不是軟體問題。的
+<a href="../troubleshooting_zh-TW.html">故障排除指南</a> 是下一站。</p>
+</section>
+
+<section class="lumen-guide-section"><h2>如果不起作用</h2>
+<div class="lumen-grid">
+  <article class="lumen-card"><h3>更新者永遠看不到玩家</h3><p>更換電纜，然後更換 USB 連接埠。避免樞紐。在 Windows 上，從下列位置安裝 MediaTek 驅動程式 <a href="../drivers_zh-TW.html">驅動程式頁面</a>.</p></article>
+  <article class="lumen-card"><h3>閃光燈提前停止</h3><p>重新連接，為播放器充電，然後重新開始。請勿切換至不同型號的封裝。</p></article>
+  <article class="lumen-card"><h3>玩家保持黑色</h3><p>充電一小時，然後維持電量十秒鐘。如果它仍然死了，請閱讀
+  <a href="../guides/recovery_zh-TW.html">恢復指南</a> 再次嘗試之前。</p></article>
+</div></section>
+
+<section class="lumen-guide-section"><h2>人們提出的問題</h2>
+<h3>這會刪除我的音樂嗎？</h3>
+<p>是的，內部儲存已被刪除。 microSD 卡上的文件通常會保留下來，但首先將它們複製到安全的地方。</p>
+<h3>之後我可以返回Rockbox嗎？</h3>
+<p>是的。恢復原始軟體不是一扇單向門；而是一扇單向門。您的型號的自訂軟體頁面可以再次安裝。</p>
+<h3>我需要 Type A / Type B 設定嗎？</h3>
+<p>只有 Y1 有這樣的選擇，並且僅限於原始軟體。所有其他型號都使用單一套件。</p>
+</section>
+
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body></html>

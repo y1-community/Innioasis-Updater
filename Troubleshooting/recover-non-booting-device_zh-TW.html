@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-TW" dir="ltr" data-locale="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>MTKclient 失敗後如何恢復無法啟動的 MediaTek 播放器 · Innioasis 社區</title>
+  <meta name="description" content="在 Linux 或 macOS 上 MTKclient 中斷刷新後，解壓縮和恢復非啟動 Innioasis Y1、Y2、G1、Timmkoo 和 MediaTek 播放器的逐步指南。">
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/Troubleshooting/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/Troubleshooting/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_jp.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">跳至主要內容</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">故障排除和設備恢復</p>
+      <h1>MTKclient 刷機後恢復非啟動設備</h1>
+      <p class="lead">如果您的 Innioasis Y1、Y2 或 MediaTek 裝置在 macOS 或 Linux 上使用 MTKclient 刷機後無法開機或顯示黑屏，請不要驚慌。硬體BootROM（BROM）是永久性的，不能被破壞。</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>為什麼 MTKclient 可能會停止運作或黑屏</h2>
+      <p>MTKclient 依靠軟體漏洞有效負載（kamakiri / amonet）來繞過 DA 身份驗證和通過 libusb 的原始 USB 通訊。在 macOS 和 Linux ARM64 系統上：</p>
+      <ul class="lumen-benefits-list">
+        <li>USB macOS 上的握手延遲或連接埠逾時可能會在傳輸過程中阻止 DA 有效負載注入。</li>
+        <li>遺失或不完整的分區標頭會使引導程式（預先載入程式/lk）處於無回應狀態。</li>
+        <li>播放器看起來完全死機了——沒有 LED、沒有充電圖示、沒有螢幕背光。</li>
+      </ul>
+      <p>即使在這種狀態下，MediaTek 晶片組也會回落到 <strong>唯讀記憶體模式</strong> (USB VID 0e8d, PID 0003)，準備進行官方低階復原。</p>
+    </section>
+
+    <section class="lumen-guide-section" id="sp-flash-tool-engine">
+      <h2>最終恢復方法：更新程式 CE 中的 SP Flash Tool 引擎</h2>
+      <p>恢復變磚的播放器的最安全、最可靠的方法是使用 <strong>更新程式 CE</strong> 按照官方配置的 <strong>SP Flash Tool</strong> 後端。</p>
+      
+      <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
+        <h3>更新程式 CE 中的確切步驟：</h3>
+        <ol class="lumen-steps" style="margin-top: 10px;">
+          <li>打開 <strong>更新程式 CE</strong>.</li>
+          <li>點選 <strong>設定</strong> 在左側導覽列中。</li>
+          <li>向下捲動至高級部分並啟用 <strong>顯示進階設定</strong>.</li>
+          <li>在下面 <strong>安裝方法</strong> （或者 <em>MediaTek 安裝程式的刷新引擎</em>），找到 <strong>閃光法</strong> 下拉式選單。</li>
+          <li>更改選擇 <em>自動（建議）</em> 或 <em>MTKClient</em> 到 <strong>SP Flash Tool</strong>.</li>
+          <li>確認提示並返回主安裝流程。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>SP Flash Tool 的平台架構和作業系統需求</h2>
+      <p>MediaTek 的官方 <code>SP Flash Tool</code> 二進位檔案被本地編譯為 <strong>適用於 Linux 的 x86_64 ELF 二進位文件</strong> 和一個 <strong>適用於 Windows x64 的 PE32+ 執行檔</strong>.</p>
+      <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
+        <strong>針對 macOS 和 ARM64 Linux 用戶的重要硬體說明：</strong><br>
+        由於 MediaTek 無法為 macOS (Darwin) 或 Linux ARM64 (aarch64) 編譯 SP Flash Tool，因此遇到磚塊的 macOS 用戶和 ARM64 Linux 用戶（例如運行 Asahi Linux 的 Raspberry Pi 或 Apple Silicon）必須將其播放器連接到：
+        <ul style="margin: 8px 0 0 20px;">
+          <li>一個 <strong>x64 Windows 電腦</strong> （Windows 10 / 11 64 位元），或</li>
+          <li>一個 <strong>x86_64 Linux 電腦</strong> （Ubuntu、Debian、Fedora、Arch 64 位元）。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>逐步硬體解鎖過程</h2>
+      <ol class="lumen-steps">
+        <li><strong>斷開播放器連線：</strong> 將 USB 電纜從播放器和 PC 上完全拔掉。</li>
+        <li><strong>硬關機：</strong> 按住電源按鈕（或電源 + 音量調低）15 秒，以確保晶片組完全斷電且不會陷入低功耗 USB 循環。</li>
+        <li><strong>使用 SP Flash Tool 模式啟動 Updater CE：</strong> 選擇您的設備型號（例如 <em>Innioasis Y1</em> 或 <em>Innioasis Y2</em>）並選擇 <em>原廠軟體</em> 恢復庫存分區。</li>
+        <li><strong>啟動安裝/恢復：</strong> 點選 <em>安裝 / 還原</em> 在更新程式 CE 中。等到狀態提示說 <em>等待玩家...</em></li>
+        <li><strong>插入 USB 電纜以觸發 BROM：</strong> 當設備關閉時，將 USB 電纜直接插入高速主機板 USB 連接埠（避免使用未通電的 USB 集線器）。</li>
+        <li>系統將檢測MediaTek VCOM端口，推送下載代理（DA），重寫分區表，並乾淨地恢復所有韌體映像。</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>按型號和作業系統排列</h2>
+      <div style="overflow-x: auto;">
+        <table class="lumen-release-table">
+          <thead>
+            <tr>
+              <th>模型</th>
+              <th>失敗的平台</th>
+              <th>建議的恢復設置</th>
+              <th>引擎與模式</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>macOS（蘋果晶片/英特爾）</td>
+              <td>Windows x64 / Linux x86_64 電腦</td>
+              <td>SP Flash Tool + Y1 庫存 ROM</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>Linux ARM64 / x86_64</td>
+              <td>Linux x86_64 或 Windows x64 PC</td>
+              <td>SP Flash Tool + 社區 DA</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y2</strong></td>
+              <td>macOS（MTK 用戶端停止）</td>
+              <td>Windows x64 / Linux x86_64 電腦</td>
+              <td>SP Flash Tool + Y2 分散恢復</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis G1 / G3 / G5</strong></td>
+              <td>macOS / Linux MTK 用戶端</td>
+              <td>帶有 VCOM 驅動程式的 Windows x64 PC</td>
+              <td>SP Flash Tool + 工廠韌體</td>
+            </tr>
+            <tr>
+              <td><strong>Mechen H1 / Timmkoo A5</strong></td>
+              <td>任何平台</td>
+              <td>Windows x64 或 Linux x86_64 PC</td>
+              <td>SP Flash Tool + 分散文件</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261108c" defer></script>
+</body>
+</html>

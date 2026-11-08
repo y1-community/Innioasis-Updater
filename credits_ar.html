@@ -377,38 +377,25 @@
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/credits.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/credits.html">
   <link rel="alternate" hreflang="de" href="https://innioasis.app/credits_de.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/credits_fr.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/credits_es.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/credits_it.html">
   <link rel="alternate" hreflang="ja" href="https://innioasis.app/credits_ja.html">
   <link rel="alternate" hreflang="jp" href="https://innioasis.app/credits_jp.html">
-  <link rel="alternate" hreflang="es" href="https://innioasis.app/credits_es.html">
-  <link rel="alternate" hreflang="fr" href="https://innioasis.app/credits_fr.html">
-  <link rel="alternate" hreflang="it" href="https://innioasis.app/credits_it.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/credits_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/credits_kr.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/credits_pt.html">
   <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/credits_pt-BR.html">
   <link rel="alternate" hreflang="pt" href="https://innioasis.app/credits_pt.html">
   <link rel="alternate" hreflang="ru" href="https://innioasis.app/credits_ru.html">
   <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/credits_zh-CN.html">
   <link rel="alternate" hreflang="zh" href="https://innioasis.app/credits_zh.html">
   <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/credits_zh-TW.html">
-  <link rel="alternate" hreflang="ko" href="https://innioasis.app/credits_ko.html">
-  <link rel="alternate" hreflang="kr" href="https://innioasis.app/credits_kr.html">
-  <link rel="alternate" hreflang="ar" href="https://innioasis.app/credits_ar.html">
   <link rel="alternate" hreflang="nl" href="https://innioasis.app/credits_nl.html">
   <link rel="alternate" hreflang="pl" href="https://innioasis.app/credits_pl.html">
   <link rel="alternate" hreflang="tr" href="https://innioasis.app/credits_tr.html">
   <link rel="alternate" hreflang="uk" href="https://innioasis.app/credits_uk.html">
-  <link rel="alternate" hreflang="vi" href="https://innioasis.app/credits_vi.html">
-  <link rel="alternate" hreflang="th" href="https://innioasis.app/credits_th.html">
-  <link rel="alternate" hreflang="id" href="https://innioasis.app/credits_id.html">
-  <link rel="alternate" hreflang="he" href="https://innioasis.app/credits_he.html">
-  <link rel="alternate" hreflang="hi" href="https://innioasis.app/credits_hi.html">
-  <link rel="alternate" hreflang="cs" href="https://innioasis.app/credits_cs.html">
-  <link rel="alternate" hreflang="el" href="https://innioasis.app/credits_el.html">
-  <link rel="alternate" hreflang="sv" href="https://innioasis.app/credits_sv.html">
-  <link rel="alternate" hreflang="fa" href="https://innioasis.app/credits_fa.html">
-  <link rel="alternate" hreflang="da" href="https://innioasis.app/credits_da.html">
-  <link rel="alternate" hreflang="fi" href="https://innioasis.app/credits_fi.html">
-  <link rel="alternate" hreflang="hu" href="https://innioasis.app/credits_hu.html">
-  <link rel="alternate" hreflang="no" href="https://innioasis.app/credits_no.html">
-  <link rel="alternate" hreflang="ro" href="https://innioasis.app/credits_ro.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/credits_ar.html">
   <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
@@ -1055,19 +1042,14 @@
           ctx.font = "700 " + nameFontSize + "px Arial, sans-serif";
         }
         var nameLines = wrapCanvasText(ctx, entry.name, columnWidth * .82);
-        var amountFontSize = portrait ? 23 : 25;
         var nameLineHeight = nameFontSize * 1.08;
-        var amountLineHeight = amountFontSize * 1.2;
-        var totalHeight = nameLines.length * nameLineHeight + amountLineHeight + 8;
+        var totalHeight = nameLines.length * nameLineHeight;
         var firstBaseline = centerY - totalHeight / 2 + nameFontSize;
         ctx.fillStyle = "#fff";
         ctx.font = "700 " + nameFontSize + "px Arial, sans-serif";
         nameLines.forEach(function (line, lineIndex) {
           ctx.fillText(line, centerX, firstBaseline + lineIndex * nameLineHeight);
         });
-        ctx.fillStyle = "#10b981";
-        ctx.font = "600 " + amountFontSize + "px Arial, sans-serif";
-        ctx.fillText(donorCreditsAmount(entry), centerX, firstBaseline + nameLines.length * nameLineHeight + amountLineHeight);
       });
 
       ctx.fillStyle = "#8f98a8";
@@ -1946,16 +1928,11 @@
             if (msg) {
               var cleanMsg = msg.replace(/^note\s*[:\-–—]?\s*/i, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
               var marqueeClass = cleanMsg.length > 60 ? " donor-bubble-marquee" : "";
-              nameCol += '<div class="donor-chat-bubble">' +
-                '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '">' + cleanMsg + '</span></div>' +
+              nameCol += '<div class="donor-chat-bubble" data-i18n-dynamic>' +
+                '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '" data-i18n-dynamic>' + cleanMsg + '</span></div>' +
                 '</div>';
             }
             nameCol += '</div>';
-
-            var icons = buildMethodIcons(entry.methods);
-            var amtCol = '<span class="contribution-amount-wrap">' + icons + '<strong style="color: #10b981;">' + amtStr + '</strong>';
-            if (entry.count > 1) amtCol += ' <small style="color: var(--lumen-muted); margin-left: 2px;">total</small>';
-            amtCol += '</span>';
 
             var dateStr;
             if (isReg && entry.firstDate && entry.firstDate !== entry.latestDate) {
@@ -1965,7 +1942,7 @@
             }
             var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + dateStr + '</span>';
 
-            tr.innerHTML = '<td>' + nameCol + '</td><td>' + amtCol + '</td><td>' + dateCol + '</td>';
+            tr.innerHTML = '<td>' + nameCol + '</td><td>' + dateCol + '</td>';
             wireIconFallbacks(tr);
             return tr;
           }
@@ -1976,27 +1953,25 @@
 
           anonEntries.forEach(function (d) {
             var tr = document.createElement("tr");
-            var mLow = (d.method || "").toLowerCase();
-            var f = iconForMethod(mLow);
-            var iconHtml = '<img class="method-icon-img" data-method-icon="' + f + '" src="./assets/' + f + '" alt="' + d.method + '" title="' + d.method + '">';
-            var absAmt = Math.abs(d.amount);
-            var amtStr = "$" + (absAmt % 1 === 0 ? absAmt.toFixed(0) : absAmt.toFixed(2));
             var nameCol = '<div class="donor-cell">' +
               '<div class="donor-name-line"><span style="color: var(--lumen-muted, #9aa3b5);">A supporter</span></div>';
             if (d.message && d.message.trim()) {
               var cleanAnonMsg = d.message.trim().replace(/^note\s*[:\-–—]?\s*/i, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
               var marqueeClass = cleanAnonMsg.length > 60 ? " donor-bubble-marquee" : "";
-              nameCol += '<div class="donor-chat-bubble">' +
-                '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '">' + cleanAnonMsg + '</span></div>' +
+              nameCol += '<div class="donor-chat-bubble" data-i18n-dynamic>' +
+                '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '" data-i18n-dynamic>' + cleanAnonMsg + '</span></div>' +
                 '</div>';
             }
             nameCol += '</div>';
-            var amtCol = '<span class="contribution-amount-wrap">' + iconHtml + '<strong style="color: #10b981;">' + amtStr + '</strong></span>';
             var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + d.dateStr + '</span>';
-            tr.innerHTML = '<td>' + nameCol + '</td><td>' + amtCol + '</td><td>' + dateCol + '</td>';
+            tr.innerHTML = '<td>' + nameCol + '</td><td>' + dateCol + '</td>';
             wireIconFallbacks(tr);
             tableBody.appendChild(tr);
           });
+
+          if (window.InnioasisLocale && typeof window.InnioasisLocale.translateDynamic === "function") {
+            window.InnioasisLocale.translateDynamic(tableBody);
+          }
         }
       }
 

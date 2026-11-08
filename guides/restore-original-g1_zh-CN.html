@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr" data-locale="zh-CN"><head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>恢复 Innioasis G1 上的原始软件 - 分步</title>
+<meta name="description" content="如何使用经过验证的 rom_g1.zip 软件包，使用 Innioasis 更新程序 CE 或 SP Flash Tool 在 Innioasis G1 上恢复官方原始软件。">
+<link rel="canonical" href="https://innioasis.app/guides/restore-original-g1_zh-CN.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="恢复 Innioasis G1 上的原始软件 - 分步">
+<meta property="og:description" content="如何使用经过验证的 rom_g1.zip 软件包，使用 Innioasis 更新程序 CE 或 SP Flash Tool 在 Innioasis G1 上恢复官方原始软件。">
+<meta property="og:url" content="https://innioasis.app/guides/restore-original-g1_zh-CN.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../lumen.css?v=20261105hero">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<script src="../site-init.js?v=20260803" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Restore Original Software on Innioasis G1", "description": "How to restore official Original Software on an Innioasis G1 with Innioasis Updater CE or SP Flash Tool, using the verified rom_g1.zip package.", "totalTime": "PT20M", "step": [{"@type": "HowToStep", "name": "Back up and charge", "text": "Copy files to a computer and charge the player."}, {"@type": "HowToStep", "name": "Choose the model", "text": "Open Updater CE and set Device Model to G1."}, {"@type": "HowToStep", "name": "Choose Original Software", "text": "Select Original Software and the rom_g1.zip release."}, {"@type": "HowToStep", "name": "Install at the prompt", "text": "Press Install / Restore, power the player off, and connect USB only when asked."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://innioasis.app/"}, {"@type": "ListItem", "position": 2, "name": "Player manuals", "item": "https://innioasis.app/manuals/index.html"}, {"@type": "ListItem", "position": 3, "name": "Innioasis G1 manual", "item": "https://innioasis.app/manuals/g1.html"}, {"@type": "ListItem", "position": 4, "name": "Restore Innioasis G1", "item": "https://innioasis.app/guides/restore-original-g1.html"}]}</script>
+<meta property="og:site_name" content="Innioasis 软件更新"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-g1.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-g1.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-g1_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-g1_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-g1_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-g1_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-g1_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-g1_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-g1_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-g1_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-g1_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-g1_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-g1_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-g1_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-g1_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-g1_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-g1_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-g1_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">跳到主要内容</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+
+<header>
+  <p class="lumen-kicker">恢复指南·InnioasisG1</p>
+  <h1>恢复 Innioasis G1 上的原始软件</h1>
+  <p class="lead">完全回归播放器附带的软件。在更新失败后、出售播放器之前或自定义系统不适合您时使用它。</p>
+  <div class="lumen-actions">
+    <a class="lumen-button lumen-button--primary" href="../guide_zh-CN.html#platform">获取 Updater CE</a>
+    <a class="lumen-button" href="../firmware_zh-CN.html?model=G1">G1下载</a>
+    <a class="lumen-button" href="../manuals/g1.html">G1 手册</a>
+  </div>
+</header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">适用于您的计算机的安装指南</p><h2>使用计算机恢复 G1 上的原始软件</h2><p>选择适合您正在使用的计算机的指南。 <span data-os-strip-note>每个版本都有平台设置、Updater CE步骤和返回库存的方式。</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-g1-windows.html">Windows 指南</a><a class="lumen-button" data-os-guide="macos" href="../install/original-g1-mac.html">macOS 指南</a><a class="lumen-button" data-os-guide="linux" href="../install/original-g1-linux.html">Linux指南</a></div><p class="lumen-meta"><a href="../install/g1.html">所有 Innioasis G1 指南</a> · <a href="../install/original-software.html">所有原始软件指南</a></p></section>
+
+<section class="lumen-guide-section"><h2>你需要什么</h2>
+<ul>
+  <li>Windows、macOS 或 Linux 计算机。 Updater CE 在所有三个上运行。</li>
+  <li>播放器附带的USB数据线。仅充电电缆将不起作用。</li>
+  <li>官方 <code>rom_g1.zip</code> 包，更新程序为您下载，或从 <a href="../firmware_zh-CN.html?model=G1">G1 存档</a> 如果您喜欢手动闪光。</li>
+  <li>在播放器中充电。断电恢复是使糟糕情况变得更糟的唯一常见方法。</li>
+</ul>
+<p><strong>这会替换系统并擦除内部存储。</strong> 首先将音乐、录音和照片复制到计算机上。</p></section>
+
+<section class="lumen-guide-section"><h2>路线A：Updater CE（推荐）</h2>
+<ol class="lumen-steps">
+  <li>安装 <a href="../guide_zh-CN.html#platform">Innioasis 更新程序 CE</a> 并打开它。</li>
+  <li>套装 <strong>设备型号</strong> 至 <strong>G1</strong>。该模型必须与玩家完全匹配。</li>
+  <li>选择 <strong>原厂软件</strong> 在软件列表中。</li>
+  <li>选择一个版本。最新的稳定版本是安全的默认版本。</li>
+  <li>新闻 <strong>安装 / 恢复</strong> 并等待包下载和解压。</li>
+  <li>完全关闭播放器电源，然后仅在更新程序要求时连接 USB 电缆。</li>
+  <li>在出现成功消息之前，请勿触摸播放器或电缆。断开连接并启动播放器。</li>
+</ol>
+<div class="lumen-warning"><strong>切勿选择不同的模型来“使其发挥作用”。</strong> G1 需要 G1 包。混合模型是玩家最终需要手动恢复的原因。</div></section>
+
+<section class="lumen-guide-section"><h2>路线 B：SP Flash Tool（手动）</h2>
+<p>当计算机无法运行 Updater CE 时，或者当您已经拥有该软件包并且更喜欢经典工具时，请使用此选项。</p>
+<ol class="lumen-steps">
+  <li>下载 <code>rom_g1.zip</code> 从
+  <a href="../firmware_zh-CN.html?model=G1">G1 存档</a> 并解压它。</li>
+  <li>将分散文件保留在图像旁边。请勿重命名或移动图像。</li>
+  <li>打开SP Flash Tool，选择 <strong>仅供下载</strong>，并加载分散文件。</li>
+  <li>关闭播放器电源，按 <strong>下载</strong>，然后连接电缆。</li>
+  <li>等待绿色成功标记后再断开连接。</li>
+</ol>
+<p>的 <a href="../sp-flash-tool_zh-CN.html">SP Flash Tool 指南</a> 更详细地介绍了驱动程序和 Windows 提示。在 Linux 和 macOS 上，Updater CE 是更简单的路线，因为它带来了自己的 USB 处理。</p></section>
+
+<section class="lumen-guide-section"><h2>恢复后</h2>
+<ol class="lumen-steps">
+  <li>断开播放器并让它自行启动。</li>
+  <li>选择您的语言并设置时钟。</li>
+  <li>如果您使用 Wi-Fi 或蓝牙，请重新连接它们。</li>
+  <li>将您的音乐复制回来。的 <a href="../manuals/transfer-music.html">转乘指南</a> 有文件夹名称。</li>
+</ol>
+<p>如果播放器启动但屏幕、滚轮或按钮仍然出现故障，则恢复成功；这是硬件或设置问题，而不是软件问题。的
+<a href="../troubleshooting_zh-CN.html">故障排除指南</a> 是下一站。</p>
+</section>
+
+<section class="lumen-guide-section"><h2>如果不起作用</h2>
+<div class="lumen-grid">
+  <article class="lumen-card"><h3>更新者永远看不到玩家</h3><p>更换电缆，然后更换 USB 端口。避免枢纽。在 Windows 上，从以下位置安装 MediaTek 驱动程序 <a href="../drivers_zh-CN.html">驱动程序页面</a>.</p></article>
+  <article class="lumen-card"><h3>闪光灯提前停止</h3><p>重新连接，为播放器充电，然后重新开始。请勿切换至不同型号的封装。</p></article>
+  <article class="lumen-card"><h3>玩家保持黑色</h3><p>充电一小时，然后保持电量十秒钟。如果它仍然死了，请阅读
+  <a href="../guides/recovery_zh-CN.html">恢复指南</a> 再次尝试之前。</p></article>
+</div></section>
+
+<section class="lumen-guide-section"><h2>人们提出的问题</h2>
+<h3>这会删除我的音乐吗？</h3>
+<p>是的，内部存储已被删除。 microSD 卡上的文件通常会保留下来，但首先将它们复制到安全的地方。</p>
+<h3>之后我可以返回Rockbox吗？</h3>
+<p>是的。恢复原始软件不是一扇单向门；而是一扇单向门。您的型号的自定义软件页面可以再次安装。</p>
+<h3>我需要 Type A / Type B 设置吗？</h3>
+<p>只有 Y1 有这样的选择，并且仅限于原始软件。所有其他模型都使用单个包。</p>
+</section>
+
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body></html>

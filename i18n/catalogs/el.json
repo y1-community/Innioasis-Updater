@@ -1460,6 +1460,14 @@
   "{supporter} donated {amount}": "{supporter} δώρισε {amount}",
   "{supporter} donated {amount} by {method}{time}": "{supporter} δωρεά {amount} από {method}{time}",
   "{supporter} has donated {amount}{time}": "Ο {supporter} έχει δωρίσει {amount}{time}",
-  "← Firmware Downloads": "← Λήψεις υλικολογισμικού"
+  "← Firmware Downloads": "← Λήψεις υλικολογισμικού",
+  "Analytics & performance telemetry": "Analytics & τηλεμετρία απόδοσης",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "Συλλέγουμε μόνο βασικά στοιχεία (βελτιστοποίηση της κυκλοφορίας και των διαδρομών, όχι για προσωπικά συμφέροντα στα δεδομένα) — επιλέξτε Essential Only ή Off.",
+  "Essential Only": "Απαραίτητο μόνο",
+  "Off": "Μακριά από",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "Το Windows Defender SmartScreen ή το Smart App Control μπορεί να αποκλείσει τις εφαρμογές κοινότητας που λήφθηκαν πρόσφατα πριν από τη διάδοση της φήμης της υπογραφής. Ο Έξυπνος Έλεγχος εφαρμογών επηρεάζει επί του παρόντος δημοφιλείς εφαρμογές όπως η υπηρεσία Epic Overlay (που χρησιμοποιείται από το Fortnite) — Το Updater CE είναι ασφαλές και επαληθευμένο για χρήση. Η απενεργοποίηση του Smart App Control επιτρέπει στο Updater CE να ανοίγει και να λειτουργεί κανονικά.",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "Εάν το Mac σας εμποδίσει να εκτελέσετε την εφαρμογή για πρώτη φορά, ανοίξτε τις Ρυθμίσεις συστήματος, κάντε κλικ στην επιλογή Απόρρητο και ασφάλεια, κάντε κύλιση προς τα κάτω στην επιλογή Ασφάλεια και κάντε κλικ στο Άνοιγμα ούτως ή άλλως. Μπορείτε επίσης να κάνετε Control-κλικ (ή δεξί κλικ) στην εφαρμογή στο Finder και να επιλέξετε Άνοιγμα.",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "Ο Έξυπνος Έλεγχος εφαρμογών επηρεάζει επί του παρόντος δημοφιλείς εφαρμογές όπως η υπηρεσία Epic Overlay (που χρησιμοποιείται από το Fortnite) — Το Updater CE είναι ασφαλές και επαληθευμένο για χρήση.",
+  "Windows won't launch the app? Help": "Τα Windows δεν θα εκκινήσουν την εφαρμογή; Βοήθεια"
  }
 }

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt" dir="ltr" data-locale="pt"><head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaure o software original em Innioasis G3 - passo a passo</title>
+<meta name="description" content="Como restaurar o software original oficial em um Innioasis G3 com Innioasis Updater CE ou SP Flash Tool, usando o pacote verificado rom_g3.zip.">
+<link rel="canonical" href="https://innioasis.app/guides/restore-original-g3_pt.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Restaure o software original em Innioasis G3 - passo a passo">
+<meta property="og:description" content="Como restaurar o software original oficial em um Innioasis G3 com Innioasis Updater CE ou SP Flash Tool, usando o pacote verificado rom_g3.zip.">
+<meta property="og:url" content="https://innioasis.app/guides/restore-original-g3_pt.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20260803">
+<link rel="stylesheet" href="../lumen.css?v=20261105hero">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<script src="../site-init.js?v=20260803" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Restore Original Software on Innioasis G3", "description": "How to restore official Original Software on an Innioasis G3 with Innioasis Updater CE or SP Flash Tool, using the verified rom_g3.zip package.", "totalTime": "PT20M", "step": [{"@type": "HowToStep", "name": "Back up and charge", "text": "Copy files to a computer and charge the player."}, {"@type": "HowToStep", "name": "Choose the model", "text": "Open Updater CE and set Device Model to G3."}, {"@type": "HowToStep", "name": "Choose Original Software", "text": "Select Original Software and the rom_g3.zip release."}, {"@type": "HowToStep", "name": "Install at the prompt", "text": "Press Install / Restore, power the player off, and connect USB only when asked."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://innioasis.app/"}, {"@type": "ListItem", "position": 2, "name": "Player manuals", "item": "https://innioasis.app/manuals/index.html"}, {"@type": "ListItem", "position": 3, "name": "Innioasis G3 manual", "item": "https://innioasis.app/manuals/g3.html"}, {"@type": "ListItem", "position": 4, "name": "Restore Innioasis G3", "item": "https://innioasis.app/guides/restore-original-g3.html"}]}</script>
+<meta property="og:site_name" content="Innioasis Atualizações de software"><link rel="stylesheet" href="../install.css?v=20261106">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/guides/restore-original-g3.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/guides/restore-original-g3.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/guides/restore-original-g3_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/guides/restore-original-g3_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/guides/restore-original-g3_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/guides/restore-original-g3_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/guides/restore-original-g3_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/guides/restore-original-g3_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/guides/restore-original-g3_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/guides/restore-original-g3_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/guides/restore-original-g3_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/guides/restore-original-g3_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/guides/restore-original-g3_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/guides/restore-original-g3_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/guides/restore-original-g3_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/guides/restore-original-g3_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/guides/restore-original-g3_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/guides/restore-original-g3_jp.html">
+</head>
+<body class="site-themes-app"><a class="lumen-skip-link" href="#main">Pular para o conteúdo</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+
+<header>
+  <p class="lumen-kicker">Guia de restauração · Innioasis G3</p>
+  <h1>Restaure o software original em Innioasis G3</h1>
+  <p class="lead">Um retorno limpo ao software que acompanha o player. Use-o após uma falha na atualização, antes de vender o player ou sempre que um sistema personalizado não for adequado para você.</p>
+  <div class="lumen-actions">
+    <a class="lumen-button lumen-button--primary" href="../guide_pt.html#platform">Obtenha o atualizador CE</a>
+    <a class="lumen-button" href="../firmware_pt.html?model=G3">G3 downloads</a>
+    <a class="lumen-button" href="../manuals/g3.html">G3 manual</a>
+  </div>
+</header>
+<section class="lumen-guide-section install-os-strip" data-os-install-strip><p class="lumen-kicker">Guia de instalação para o seu computador</p><h2>Restaure o software original em seu G3 com seu computador</h2><p>Escolha o guia para o computador que você está usando. <span data-os-strip-note>Cada versão possui a configuração da plataforma, Updater CE etapas e o caminho de volta ao estoque.</span></p><div class="lumen-actions install-os-actions"><a class="lumen-button" data-os-guide="windows" href="../install/original-g3-windows.html">Guia do Windows</a><a class="lumen-button" data-os-guide="macos" href="../install/original-g3-mac.html">guia macOS</a><a class="lumen-button" data-os-guide="linux" href="../install/original-g3-linux.html">Guia Linux</a></div><p class="lumen-meta"><a href="../install/g3.html">Todos Innioasis G3 guias</a> · <a href="../install/original-software.html">Todos os guias de software original</a></p></section>
+
+<section class="lumen-guide-section"><h2>O que você precisa</h2>
+<ul>
+  <li>Um computador Windows, macOS ou Linux. Updater CE é executado em todos os três.</li>
+  <li>O cabo de dados USB que acompanha o player. Cabos somente para carga não funcionarão.</li>
+  <li>O oficial <code>rom_g3.zip</code> pacote, que o Updater baixa para você, ou uma cópia do <a href="../firmware_pt.html?model=G3">G3 arquivo</a> se você preferir piscar manualmente.</li>
+  <li>Carregue no player. Uma restauração que perde energia é a única maneira comum de piorar uma situação ruim.</li>
+</ul>
+<p><strong>Isso substitui o sistema e apaga o armazenamento interno.</strong> Copie músicas, gravações e fotos primeiro para um computador.</p></section>
+
+<section class="lumen-guide-section"><h2>Rota A: Updater CE (recomendado)</h2>
+<ol class="lumen-steps">
+  <li>Instalar <a href="../guide_pt.html#platform">Innioasis Atualizador CE</a> e abra-o.</li>
+  <li>Definir <strong>Modelo do dispositivo</strong> para <strong>G3</strong>. O modelo deve corresponder exatamente ao jogador.</li>
+  <li>Escolher <strong>Software Original</strong> na lista Software.</li>
+  <li>Escolha um lançamento. A versão estável mais recente é o padrão seguro.</li>
+  <li>Imprensa <strong>Instalar / Restaurar</strong> e espere enquanto o pacote é baixado e extraído.</li>
+  <li>Desligue o player totalmente e conecte o cabo USB somente quando o Updater solicitar.</li>
+  <li>Não toque no player ou no cabo até aparecer a mensagem de sucesso. Desconecte e inicie o player.</li>
+</ol>
+<div class="lumen-warning"><strong>Nunca escolha um modelo diferente para “fazer funcionar”.</strong> Um G3 precisa de um pacote G3. Misturar modelos é como os jogadores acabam precisando de uma recuperação manual.</div></section>
+
+<section class="lumen-guide-section"><h2>Rota B: SP Flash Tool (manual)</h2>
+<p>Use isto quando um computador não consegue executar Updater CE, ou quando você já possui o pacote e prefere a ferramenta clássica.</p>
+<ol class="lumen-steps">
+  <li>Download <code>rom_g3.zip</code> do
+  <a href="../firmware_pt.html?model=G3">G3 arquivo</a> e descompacte-o.</li>
+  <li>Mantenha o arquivo scatter próximo às imagens. Não renomeie ou mova as imagens.</li>
+  <li>Abra SP Flash Tool, escolha <strong>Baixar apenas</strong>e carregue o arquivo scatter.</li>
+  <li>Desligue o player, pressione <strong>Download</strong>e conecte o cabo.</li>
+  <li>Aguarde a marca verde de sucesso antes de desconectar.</li>
+</ol>
+<p>O <a href="../sp-flash-tool_pt.html">SP Flash Tool guia</a> aborda os drivers e os prompts do Windows com mais detalhes. No Linux e no macOS, Updater CE é o caminho mais fácil porque traz seu próprio tratamento USB.</p></section>
+
+<section class="lumen-guide-section"><h2>Após a restauração</h2>
+<ol class="lumen-steps">
+  <li>Desconecte o player e deixe-o iniciar sozinho.</li>
+  <li>Escolha o seu idioma e acerte o relógio.</li>
+  <li>Reconecte-se ao Wi-Fi ou Bluetooth se você os usar.</li>
+  <li>Copie sua música de volta. O <a href="../manuals/transfer-music.html">guia de transferência</a> tem os nomes das pastas.</li>
+</ol>
+<p>Se o player iniciar, mas a tela, a roda ou os botões ainda funcionarem mal, a restauração funcionou; essa é uma questão de hardware ou configuração, não de software. O
+<a href="../troubleshooting_pt.html">guia de solução de problemas</a> A próxima parada é.</p>
+</section>
+
+<section class="lumen-guide-section"><h2>Se não funcionar</h2>
+<div class="lumen-grid">
+  <article class="lumen-card"><h3>O atualizador nunca vê o player</h3><p>Troque o cabo e depois a porta USB. Evite hubs. No Windows, instale o driver MediaTek do <a href="../drivers_pt.html">página do motorista</a>.</p></article>
+  <article class="lumen-card"><h3>O flash para mais cedo</h3><p>Reconecte, carregue o player e comece novamente. Não mude para um pacote de modelo diferente.</p></article>
+  <article class="lumen-card"><h3>O jogador permanece preto</h3><p>Carregue por uma hora e mantenha a energia por dez segundos. Se ainda estiver morto, leia o
+  <a href="../guides/recovery_pt.html">guia de recuperação</a> antes de tentar novamente.</p></article>
+</div></section>
+
+<section class="lumen-guide-section"><h2>Perguntas que as pessoas fazem</h2>
+<h3>Isso excluirá minha música?</h3>
+<p>Sim, o armazenamento interno foi apagado. Os arquivos em um cartão microSD geralmente sobrevivem, mas primeiro copie-os para algum lugar seguro.</p>
+<h3>Posso voltar para Rockbox depois?</h3>
+<p>Sim. A restauração do software original não é uma porta de mão única; a página do software personalizado para o seu modelo pode instalá-lo novamente.</p>
+<h3>Preciso da configuração Type A / Type B?</h3>
+<p>Somente Y1 tem essa escolha, e apenas para Software Original. Todos os outros modelos usam um único pacote.</p>
+</section>
+
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script><script src="../site-locale.js?v=20261108c" defer></script></body></html>

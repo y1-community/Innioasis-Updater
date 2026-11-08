@@ -862,6 +862,14 @@
   "— the same checks for the Y2": "- các kiểm tra tương tự cho Y2",
   "— what a failed flash looks like": "— đèn flash bị hỏng trông như thế nào",
   "← All notices": "← Tất cả thông báo",
-  "← Firmware Downloads": "← Tải xuống chương trình cơ sở"
+  "← Firmware Downloads": "← Tải xuống chương trình cơ sở",
+  "Analytics & performance telemetry": "Phân tích và đo lường hiệu suất từ ​​xa",
+  "We only collect essentials (optimizing traffic & routes; not self-interested in data) — choose Essential Only or Off.": "Chúng tôi chỉ thu thập những thông tin cần thiết (tối ưu hóa giao thông và tuyến đường; không quan tâm đến dữ liệu) — chọn Chỉ cần thiết hoặc Tắt.",
+  "Essential Only": "Chỉ cần thiết",
+  "Off": "Tắt",
+  "Windows Defender SmartScreen or Smart App Control can block newly downloaded community applications before signature reputations propagate. Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. Turning Smart App Control off allows Updater CE to open and run normally.": "Windows Defender SmartScreen hoặc Smart App Control có thể chặn các ứng dụng cộng đồng mới tải xuống trước khi danh tiếng chữ ký lan truyền. Kiểm soát ứng dụng thông minh hiện đang tác động đến các ứng dụng phổ biến như Dịch vụ lớp phủ sử thi (được sử dụng bởi Fortnite) - Trình cập nhật CE an toàn và đã được xác minh để sử dụng. Tắt Smart App Control cho phép Updater CE mở và chạy bình thường.",
+  "If your Mac stops you from running the app for the first time, please open System Settings, click Privacy & Security, scroll down to Security and click Open Anyway. You can also Control-click (or right-click) the app in Finder and choose Open.": "Nếu máy Mac của bạn ngăn bạn chạy ứng dụng lần đầu tiên, vui lòng mở Cài đặt hệ thống, nhấp vào Quyền riêng tư & bảo mật, cuộn xuống Bảo mật và nhấp vào Vẫn mở. Bạn cũng có thể giữ Control khi bấm (hoặc bấm chuột phải) vào ứng dụng trong Finder và chọn Mở.",
+  "Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use.": "Kiểm soát ứng dụng thông minh hiện đang tác động đến các ứng dụng phổ biến như Dịch vụ lớp phủ sử thi (được sử dụng bởi Fortnite) - Trình cập nhật CE an toàn và đã được xác minh để sử dụng.",
+  "Windows won't launch the app? Help": "Windows sẽ không khởi chạy ứng dụng? Giúp đỡ"
  }
 }

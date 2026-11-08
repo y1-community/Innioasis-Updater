@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-locale="ar">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>كيفية استرداد لاعب MediaTek غير قابل للتشغيل بعد فشل عميل MTK · مجتمع Innioasis</title>
+  <meta name="description" content="دليل خطوة بخطوة لفك واستعادة مشغلات Innioasis Y1، Y2، G1، Timmkoo، و MediaTek بعد مقاطعة MTKclient للوميض على Linux أو macOS.">
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/Troubleshooting/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/Troubleshooting/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ar.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_de.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_it.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ja.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ko.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_pl.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_ru.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_uk.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_zh-TW.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/Troubleshooting/recover-non-booting-device_jp.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">انتقل إلى المحتوى</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">استكشاف الأخطاء وإصلاحها واسترداد الجهاز</p>
+      <h1>استعادة جهاز غير قابل للتمهيد بعد وميض MTKclient</h1>
+      <p class="lead">إذا فشل جهازك Innioasis Y1 أو Y2 أو MediaTek في التشغيل أو أظهر شاشة سوداء بعد وميضه باستخدام MTKclient على نظام التشغيل macOS أو Linux، فلا داعي للذعر. يعتبر BootROM (BROM) الخاص بالجهاز دائمًا ولا يمكن تدميره.</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>لماذا قد يتوقف عميل MTK أو يترك شاشة سوداء</h2>
+      <p>يعتمد MTKclient على حمولات البرمجيات المستغلة (kamakiri / amonet) لتجاوز مصادقة DA والاتصال الأولي USB عبر libusb. على أنظمة macOS وLinux ARM64:</p>
+      <ul class="lumen-benefits-list">
+        <li>USB يمكن أن يؤدي زمن استجابة المصافحة أو مهلة المنفذ على نظام التشغيل macOS إلى إيقاف نقل حمولة DA النافعة في منتصف النقل.</li>
+        <li>تترك رؤوس الأقسام المفقودة أو غير المكتملة أداة تحميل التشغيل (أداة التحميل المسبق / lk) في حالة غير مستجيبة.</li>
+        <li>يبدو المشغل ميتًا تمامًا — لا يوجد مؤشر LED ولا أيقونة شحن ولا إضاءة خلفية للشاشة.</li>
+      </ul>
+      <p>حتى في هذه الحالة، تعود مجموعة الشرائح MediaTek إلى وضعها الطبيعي <strong>وضع بروم</strong> (USB VID 0e8d, PID 0003)، جاهز للاسترداد الرسمي منخفض المستوى.</p>
+    </section>
+
+    <section class="lumen-guide-section" id="sp-flash-tool-engine">
+      <h2>طريقة الاسترداد النهائية: SP Flash Tool المحرك في Updater CE</h2>
+      <p>الطريقة الأكثر أمانًا والأكثر موثوقية لاستعادة لاعبك المصاب بالطوب هي استخدام <strong>برنامج التحديث CE</strong> تكوين مع المسؤول <strong>SP Flash Tool</strong> الخلفية.</p>
+      
+      <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
+        <h3>الخطوات الدقيقة في Updater CE:</h3>
+        <ol class="lumen-steps" style="margin-top: 10px;">
+          <li>مفتوح <strong>برنامج التحديث CE</strong>.</li>
+          <li>انقر <strong>الإعدادات</strong> في الشريط الجانبي للتنقل الأيسر.</li>
+          <li>قم بالتمرير لأسفل إلى القسم "متقدم" وقم بتمكينه <strong>إظهار الإعدادات المتقدمة</strong>.</li>
+          <li>تحت <strong>طريقة التثبيت</strong> (أو <em>محرك وامض لمثبت MediaTek</em>)، تحديد موقع <strong>طريقة الفلاش</strong> اسقاط.</li>
+          <li>تغيير التحديد من <em>تلقائي (مستحسن)</em> أو <em>MTKClient</em> ل <strong>SP Flash Tool</strong>.</li>
+          <li>Confirm the prompt and return to the main install flow.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>بنية النظام الأساسي ومتطلبات نظام التشغيل لـ SP Flash Tool</h2>
+      <p>MediaTek الرسمية <code>SP Flash Tool</code> يتم تجميع الملف الثنائي أصلاً باعتباره ملفًا <strong>x86_64 ELF ثنائي لنظام التشغيل Linux</strong> و أ <strong>PE32+ قابل للتنفيذ لنظام التشغيل Windows x64</strong>.</p>
+      <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
+        <strong>ملاحظة هامة حول الأجهزة لمستخدمي macOS وARM64 Linux:</strong><br>
+        نظرًا لأن MediaTek لا يقوم بتجميع SP Flash Tool لنظام التشغيل macOS (Darwin) أو Linux ARM64 (aarch64)، يجب على مستخدمي macOS ومستخدمي ARM64 Linux (مثل Raspberry Pi أو Apple Silicon الذي يعمل بنظام Asahi Linux) الذين يعانون من الطوب توصيل المشغل الخاص بهم بما يلي:
+        <ul style="margin: 8px 0 0 20px;">
+          <li>ان <strong>كمبيوتر ويندوز x64</strong> (ويندوز 10 / 11 64 بت)، أو</li>
+          <li>ان <strong>كمبيوتر لينكس x86_64</strong> (أوبونتو، ديبيان، فيدورا، آرتش 64 بت).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>عملية فك قطع الأجهزة خطوة بخطوة</h2>
+      <ol class="lumen-steps">
+        <li><strong>افصل المشغل:</strong> افصل كابل USB من المشغل والكمبيوتر الشخصي تمامًا.</li>
+        <li><strong>إيقاف تشغيل الطاقة الصلبة:</strong> استمر في الضغط على زر الطاقة (أو زر الطاقة + خفض مستوى الصوت) لمدة 15 ثانية للتأكد من إيقاف تشغيل مجموعة الشرائح بالكامل وعدم عالقتها في حلقة منخفضة الطاقة USB.</li>
+        <li><strong>قم بتشغيل Updater CE مع الوضع SP Flash Tool:</strong> حدد طراز جهازك (على سبيل المثال. <em>Innioasis Y1</em> أو <em>Innioasis Y2</em>) واختر <em>البرنامج الأصلي</em> لاستعادة أقسام المخزون.</li>
+        <li><strong>بدء التثبيت/الاستعادة:</strong> انقر <em>تثبيت / استعادة</em> في المحدث CE. انتظر حتى تظهر رسالة الحالة <em>في انتظار اللاعب...</em></li>
+        <li><strong>أدخل كابل USB لتشغيل BROM:</strong> عندما يكون الجهاز في وضع إيقاف التشغيل، قم بتوصيل كابل USB مباشرة بمنفذ USB للوحة الأم عالية السرعة (تجنب لوحات الوصل USB غير المزودة بالطاقة).</li>
+        <li>سيكتشف النظام منفذ VCOM MediaTek، ويدفع وكيل التنزيل (DA)، ويعيد كتابة جداول الأقسام، ويستعيد جميع صور البرامج الثابتة بشكل نظيف.</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>التباديل حسب النموذج ونظام التشغيل</h2>
+      <div style="overflow-x: auto;">
+        <table class="lumen-release-table">
+          <thead>
+            <tr>
+              <th>نموذج</th>
+              <th>منصة فاشلة</th>
+              <th>إعداد الاسترداد الموصى به</th>
+              <th>المحرك والوضع</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>نظام التشغيل MacOS (أبل سيليكون / إنتل)</td>
+              <td>ويندوز x64 / لينكس x86_64 جهاز كمبيوتر</td>
+              <td>SP Flash Tool + Y1 المخزون ROM</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>لينكس ARM64 / x86_64</td>
+              <td>Linux x86_64 أو Windows x64 PC</td>
+              <td>SP Flash Tool + المجتمع دا</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y2</strong></td>
+              <td>macOS (توقف عميل MTK)</td>
+              <td>ويندوز x64 / لينكس x86_64 جهاز كمبيوتر</td>
+              <td>SP Flash Tool + Y2 استعادة التشتت</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis G1 / G3 / G5</strong></td>
+              <td>ماك / لينكس MTKclient</td>
+              <td>جهاز كمبيوتر يعمل بنظام Windows x64 مع برامج تشغيل VCOM</td>
+              <td>SP Flash Tool + البرامج الثابتة للمصنع</td>
+            </tr>
+            <tr>
+              <td><strong>Mechen H1 / Timmkoo A5</strong></td>
+              <td>أي منصة</td>
+              <td>جهاز كمبيوتر يعمل بنظام Windows x64 أو Linux x86_64</td>
+              <td>SP Flash Tool + ملف مبعثر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261108c" defer></script>
+</body>
+</html>
