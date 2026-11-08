@@ -15,7 +15,7 @@
   "All donations are appreciated.": "అన్ని విరాళాలు ప్రశంసించబడ్డాయి.",
   "Analytics and privacy": "విశ్లేషణలు మరియు గోప్యత",
   "Asked on the guide pages. Turning this off forgets your saved answers.": "గైడ్ పేజీల్లో అడిగారు. దీన్ని ఆఫ్ చేయడం వలన మీరు సేవ్ చేసిన సమాధానాలు మరచిపోతాయి.",
-  "Buy Me a Coffee": "నాకు ఒక కాఫీ కొనండి",
+  "Buy Me a Coffee": "Buy Me a Coffee",
   "Close": "మూసివేయి",
   "Close bottom toolbar": "దిగువ టూల్‌బార్‌ను మూసివేయండి",
   "Close donation options": "విరాళాల ఎంపికలను మూసివేయండి",
@@ -35,7 +35,6 @@
   "Extra donations fund future mirrors & development": "అదనపు విరాళాలు భవిష్యత్తు అద్దాలు & అభివృద్ధికి నిధులు",
   "Free contribution": "ఉచిత సహకారం",
   "Full Credits & Ledger →": "పూర్తి క్రెడిట్‌లు & లెడ్జర్ →",
-  "Google Analytics may set first-party cookies that tell one browser apart from another; Cloudflare's analytics are cookieless. We do not sell your data, and this project is solely self- and donations-funded.": "Google Analytics మొదటి-పక్షం కుక్కీలను సెట్ చేయవచ్చు, ఇది ఒక బ్రౌజర్ నుండి మరొక బ్రౌజర్‌ను వేరు చేస్తుంది; క్లౌడ్‌ఫ్లేర్ యొక్క విశ్లేషణలు కుక్కీలు లేనివి. మేము మీ డేటాను విక్రయించము మరియు ఈ ప్రాజెక్ట్ పూర్తిగా స్వీయ మరియు విరాళాల-నిధులతో నిర్వహించబడుతుంది.",
   "Help us cover": "కవర్ చేయడానికి మాకు సహాయం చేయండి",
   "Help us cover today's running costs": "నేటి నిర్వహణ ఖర్చులను కవర్ చేయడంలో మాకు సహాయం చేయండి",
   "Hi, I'm Ryan. I build Innioasis Updater CE, this firmware archive, and the Themes Gallery. I pay for them myself so they stay free for everyone.": "హాయ్, నేను ర్యాన్. నేను Innioasis Updater CE, ఈ ఫర్మ్‌వేర్ ఆర్కైవ్ మరియు థీమ్స్ గ్యాలరీని నిర్మించాను. వాటి కోసం నేనే చెల్లిస్తాను కాబట్టి అవి అందరికీ ఉచితం.",
@@ -55,7 +54,7 @@
   "Or": "లేదా",
   "Our projects rely on donations": "మా ప్రాజెక్టులు విరాళాలపై ఆధారపడి ఉంటాయి",
   "Privacy": "గోప్యత",
-  "Reddit": "రెడ్డిట్",
+  "Reddit": "Reddit",
   "Remember my \"was this useful?\" answers": "నా \"ఇది ఉపయోగకరంగా ఉందా?\" అని గుర్తుంచుకోండి. సమాధానాలు",
   "Remember my nightly-builds choice": "నా నైట్లీ బిల్డ్స్ ఎంపికను గుర్తుంచుకో",
   "Reset text size": "వచన పరిమాణాన్ని రీసెట్ చేయండి",
@@ -75,7 +74,6 @@
   "Solely self- and donations-funded  -  thank you!": "కేవలం స్వీయ- మరియు విరాళాల-నిధులతో - ధన్యవాదాలు!",
   "Solely self- and donations-funded, and still mostly paid for out of pocket  -  thank you to everyone who chipped in!": "కేవలం స్వీయ- మరియు విరాళాల-నిధులు, మరియు ఇప్పటికీ చాలా వరకు జేబులో నుండి చెల్లించబడతాయి - చిప్ చేసిన ప్రతి ఒక్కరికీ ధన్యవాదాలు!",
   "Solely self- and donations-funded, with no paywalls  -  chip in $3 towards test players and servers.": "పేవాల్‌లు లేకుండా కేవలం స్వీయ మరియు విరాళాల నిధులతో - టెస్ట్ ప్లేయర్‌లు మరియు సర్వర్‌ల కోసం $3 చిప్ చేయండి.",
-  "Support Updater and the Themes Gallery through Ko-fi, Buy Me a Coffee, PayPal, Revolut, or Patreon.": "Ko-fi, బై మి ఎ కాఫీ, PayPal, Revolut లేదా Patreon ద్వారా అప్‌డేటర్ మరియు థీమ్స్ గ్యాలరీకి మద్దతు ఇవ్వండి.",
   "Switch language": "భాష మారండి",
   "Text size": "వచన పరిమాణం",
   "Thank You": "ధన్యవాదాలు",
@@ -96,8 +94,6 @@
   "You've helped us raise": "మీరు మాకు పెంచడంలో సహాయం చేసారు",
   "You've helped us raise $0 of our $10 costs for today.": "ఈరోజు మా $10 ఖర్చులలో $0ని పెంచడంలో మీరు మాకు సహాయం చేసారు.",
   "Your privacy on Innioasis.app": "Innioasis.యాప్‌లో మీ గోప్యత",
-  "Your site theme and text size are always remembered - they are the look and readability you chose. Links to YouTube, Discord, Ko-fi, Buy Me a Coffee, PayPal, Revolut, Patreon, and Boosty open those sites' own pages, which have their own policies.": "మీ సైట్ థీమ్ మరియు వచన పరిమాణం ఎల్లప్పుడూ గుర్తుంచుకోబడతాయి - అవి మీరు ఎంచుకున్న రూపాన్ని మరియు చదవగలిగేవి. YouTube, Discord, Ko-fi, నాకు కాఫీ కొనండి, PayPal, Revolut, Patreon, మరియు Boosty లింక్‌లు తమ స్వంత విధానాలను కలిగి ఉన్న ఆ సైట్‌ల స్వంత పేజీలను తెరవండి.",
-  "help for free with Honeygain": "హనీగెయిన్‌తో ఉచితంగా సహాయం చేయండి",
   "you": "మీరు"
  }
 }

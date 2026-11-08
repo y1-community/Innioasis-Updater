@@ -89,6 +89,9 @@ jobs:
 
       # A catalog can exist without being in the picker; this is what makes a
       # newly translated language selectable straight away.
+      - name: Keep brand and model names as written
+        run: python3 scripts/i18n/repair_brands.py --write
+
       - name: Rebuild the language picker index
         run: python3 scripts/i18n/translate.py --index-only
 
@@ -110,9 +113,14 @@ jobs:
       # Static copies are what search engines and archives index. They are
       # generated, never committed: 270+ languages x every page would bloat the
       # repository for no benefit.
+      - name: Verify the analytics tag on every page
+        run: python3 scripts/i18n/check_ga.py --check
+
+      # Raptive / AdSense (future): set RAPTIVE_SITE_ID and the ad loader in
+      # site-ads.js reads it at runtime. No ad request is made until it is set.
       - name: Pre-render static locale copies
         continue-on-error: true
-        run: python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
+        run: python3 scripts/i18n/prerender.py --locales all --tiers core,full --out dist
 
       - name: Upload the pre-rendered site and coverage report
         if: always()
@@ -162,7 +170,7 @@ jobs:
 
       - name: Build the multilingual site
         run: |
-          python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
+          python3 scripts/i18n/prerender.py --locales all --tiers core,full --out dist
           rsync -a \
             --exclude ".git" \
             --exclude "dist" \

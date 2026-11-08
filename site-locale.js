@@ -413,14 +413,67 @@
         return state.locale + "|" + text;
     }
 
+    /* Brand and product names stay as written: a service that translates
+       "Discord" returns the German word for strife, and "Y1" becomes "J1".
+       Sentences that mention a brand are still translated; the name is
+       masked out and restored afterwards. */
+    var DYNAMIC_BRANDS = [
+        "Innioasis Updater", "Innioasis Y1", "Innioasis Y2", "Innioasis", "Updater CE",
+        "Y2Reborn", "Y2Player", "Inniclassic", "Y2Linux", "Better-Y", "Koensayr",
+        "JJ Launcher", "SP Flash Tool", "MTKClient", "MediaTek", "Rockbox", "Timmkoo",
+        "Buy Me a Coffee", "Honeygain", "Cloudflare", "Google Analytics",
+        "Google Tag Manager", "GitHub", "Discord", "Ko-fi", "PayPal", "Patreon",
+        "Revolut", "Boosty", "Bitcoin", "YouTube", "Reddit", "TikTok", "Rondo",
+        "Solar", "Y1", "Y2"
+    ];
+    var dynamicBrandPattern = new RegExp(
+        "(^|[^A-Za-z0-9])(" + DYNAMIC_BRANDS.slice().sort(function (a, b) {
+            return b.length - a.length;
+        }).map(function (term) {
+            return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        }).join("|") + ")(?![A-Za-z0-9])",
+        "g"
+    );
+
+    function maskBrands(text) {
+        var found = [];
+        var masked = String(text).replace(dynamicBrandPattern, function (match, prefix, brand) {
+            found.push(brand);
+            return prefix + "[[" + (found.length - 1) + "]]";
+        });
+        return { text: masked, found: found };
+    }
+
+    function restoreBrands(text, found) {
+        var restored = String(text).replace(/\[\[\s*(\d+)\s*\]\]/g, function (match, index) {
+            var value = found[Number(index)];
+            return value === undefined ? match : value;
+        });
+        for (var i = 0; i < found.length; i += 1) {
+            if (restored.indexOf(found[i]) === -1) return "";
+        }
+        return restored;
+    }
+
+    function isBrandOnly(text) {
+        var value = String(text).trim();
+        /* Release tags, versions, package names, repos and model codes are
+           identifiers, not prose: 0.5, stable-v0.5, rom.zip, owner/repo, Y1. */
+        if (/^(?:v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[a-z]+-v?\d+(?:\.\d+)*|[\w.-]+\.(?:zip|apk|img|bin|tar|gz|md|txt|json)|[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+|[A-Z]{1,3}\d+[A-Za-z]?)$/i.test(value)) return true;
+        var stripped = value.replace(dynamicBrandPattern, "$1");
+        return !/[A-Za-z\u00C0-\u024F\u0400-\u04FF]/.test(stripped);
+    }
+
     function requestDynamic(text) {
+        var masked = maskBrands(text);
+        var hidden = masked.text;
         var target = dynamicTarget();
         var gtxUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
-            encodeURIComponent(target) + "&dt=t&q=" + encodeURIComponent(text);
+            encodeURIComponent(target) + "&dt=t&q=" + encodeURIComponent(hidden);
         var clients5Url = "https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=" +
-            encodeURIComponent(target) + "&q=" + encodeURIComponent(text);
+            encodeURIComponent(target) + "&q=" + encodeURIComponent(hidden);
         var mymemoryUrl = "https://api.mymemory.translated.net/get?q=" +
-            encodeURIComponent(text) + "&langpair=en|" + encodeURIComponent(target);
+            encodeURIComponent(hidden) + "&langpair=en|" + encodeURIComponent(target);
 
         function tryGTX() {
             return fetch(gtxUrl, { method: "GET", mode: "cors" })
@@ -463,12 +516,12 @@
             .catch(tryClients5)
             .catch(tryMyMemory)
             .then(function (translated) {
-                if (translated && translated.trim()) {
-                    loadDynamicCache()[dynamicKey(text)] = translated.trim();
-                    persistDynamicCache();
-                    return translated.trim();
-                }
-                return "";
+                if (!translated || !translated.trim()) return "";
+                var value = restoreBrands(translated.trim(), masked.found);
+                if (!value) return "";
+                loadDynamicCache()[dynamicKey(text)] = value;
+                persistDynamicCache();
+                return value;
             })
             .catch(function () {
                 return "";
@@ -549,6 +602,8 @@
                        leaves untouched); that still needs the API. */
                     var known = state.strings[value];
                     if (known && known !== value) return NodeFilter.FILTER_REJECT;
+                    /* A label that is only a brand name stays as written. */
+                    if (isBrandOnly(value)) return NodeFilter.FILTER_REJECT;
                     return NodeFilter.FILTER_ACCEPT;
                 }
             });
@@ -585,6 +640,7 @@
                         if (text.length < 4 || !/[A-Za-z]{2}/.test(text)) return;
                         var known = state.strings[text];
                         if (known && known !== text) return;
+                        if (isBrandOnly(text)) return;
                         queueDynamicText(text, function (translated) {
                             element.setAttribute(name, translated);
                         });

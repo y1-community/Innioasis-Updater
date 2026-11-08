@@ -43,6 +43,21 @@ sys.path.insert(0, HERE)
 from i18n_core import base_of, load_locales  # noqa: E402
 
 CONFIG_PATH = os.path.join(ROOT, "i18n", "config.json")
+
+# Strings that must never be translated: release tags (stable-v0.5), versions
+# (3.0.7), package names (rom.zip), repos (owner/repo) and model codes (Y1,
+# G5, PR1, A5). A sentence that contains one is still translated, with the
+# token masked, so "Install rom.zip" becomes "Installez rom.zip".
+TECHNICAL_TOKEN = re.compile(
+    r"^(?:"
+    r"v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*"
+    r"|[a-z]+-v?\d+(?:\.\d+)*"
+    r"|[\w.-]+\.(?:zip|apk|img|bin|tar|gz|md|txt|json)"
+    r"|[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+"
+    r"|[A-Z]{1,3}\d+[A-Za-z]?"
+    r")$",
+    re.IGNORECASE,
+)
 LOCALES_PATH = os.path.join(ROOT, "i18n", "locales.json")
 
 # A practical launch set: the audiences the firmware archive actually hears
@@ -117,6 +132,19 @@ class Masker:
         """Every masked brand must come back exactly as it went in. A service
         that drops or rewrites a token would otherwise ship "Inniose Y2"."""
         return all(term in text for term in found)
+
+    def is_brand_only(self, text: str) -> bool:
+        """True when nothing but brand names, punctuation and symbols is left.
+
+        A button labelled only "Discord" must never be sent: the dictionary
+        word for discord is "Zwietracht" in German, and "Solar" would become
+        the sun. Sentences that merely mention a brand are still translated."""
+        if TECHNICAL_TOKEN.match(str(text).strip()):
+            return True
+        if not self.pattern:
+            return False
+        stripped = self.pattern.sub(" ", text)
+        return not re.search(r"[^\W\d_]", stripped, re.UNICODE)
 
 
 def http_post(url: str, data: bytes, headers: Dict[str, str], timeout: int = 30) -> bytes:
@@ -295,6 +323,12 @@ def translate_texts(
     total_batches = 0
     failed = 0
     consecutive_failures = 0
+
+    # Brand-only labels stay in the source language everywhere. Phrases that
+    # contain a brand are still translated, with the name masked above.
+    brand_only = [text for text in texts if masker.is_brand_only(text)]
+    if brand_only:
+        texts = [text for text in texts if text not in brand_only]
 
     for batch in chunk(texts, provider.max_chars):
         total_batches += 1

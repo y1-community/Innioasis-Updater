@@ -16,7 +16,7 @@
   "Analytics and privacy": "ਵਿਸ਼ਲੇਸ਼ਣ ਅਤੇ ਗੋਪਨੀਯਤਾ",
   "Asked on the guide pages. Turning this off forgets your saved answers.": "ਗਾਈਡ ਪੰਨਿਆਂ 'ਤੇ ਪੁੱਛਿਆ ਗਿਆ. ਇਸਨੂੰ ਬੰਦ ਕਰਨ ਨਾਲ ਤੁਹਾਡੇ ਸੁਰੱਖਿਅਤ ਕੀਤੇ ਜਵਾਬ ਭੁੱਲ ਜਾਂਦੇ ਹਨ।",
   "A−": "A-",
-  "Buy Me a Coffee": "ਮੈਨੂੰ ਇੱਕ ਕੌਫੀ ਖਰੀਦੋ",
+  "Buy Me a Coffee": "Buy Me a Coffee",
   "Close": "ਬੰਦ ਕਰੋ",
   "Close bottom toolbar": "ਹੇਠਲੀ ਟੂਲਬਾਰ ਬੰਦ ਕਰੋ",
   "Close donation options": "ਦਾਨ ਦੇ ਵਿਕਲਪ ਬੰਦ ਕਰੋ",
@@ -37,7 +37,6 @@
   "Extra donations fund future mirrors & development": "ਵਾਧੂ ਦਾਨ ਭਵਿੱਖ ਦੇ ਸ਼ੀਸ਼ੇ ਅਤੇ ਵਿਕਾਸ ਲਈ ਫੰਡ ਦਿੰਦੇ ਹਨ",
   "Free contribution": "ਮੁਫ਼ਤ ਯੋਗਦਾਨ",
   "Full Credits & Ledger →": "ਪੂਰੇ ਕ੍ਰੈਡਿਟ ਅਤੇ ਲੇਜ਼ਰ →",
-  "Google Analytics may set first-party cookies that tell one browser apart from another; Cloudflare's analytics are cookieless. We do not sell your data, and this project is solely self- and donations-funded.": "Google ਵਿਸ਼ਲੇਸ਼ਣ ਪਹਿਲੀ-ਪਾਰਟੀ ਕੂਕੀਜ਼ ਸੈੱਟ ਕਰ ਸਕਦਾ ਹੈ ਜੋ ਇੱਕ ਬ੍ਰਾਊਜ਼ਰ ਨੂੰ ਦੂਜੇ ਬ੍ਰਾਊਜ਼ਰ ਤੋਂ ਵੱਖ ਦੱਸਦੀਆਂ ਹਨ; ਕਲਾਉਡਫਲੇਅਰ ਦੇ ਵਿਸ਼ਲੇਸ਼ਣ ਕੁਕੀਲੈੱਸ ਹਨ। ਅਸੀਂ ਤੁਹਾਡਾ ਡੇਟਾ ਨਹੀਂ ਵੇਚਦੇ, ਅਤੇ ਇਹ ਪ੍ਰੋਜੈਕਟ ਸਿਰਫ ਸਵੈ- ਅਤੇ ਦਾਨ-ਫੰਡਿਡ ਹੈ।",
   "Help us cover": "ਕਵਰ ਕਰਨ ਵਿੱਚ ਸਾਡੀ ਮਦਦ ਕਰੋ",
   "Help us cover today's running costs": "ਅੱਜ ਦੇ ਚੱਲ ਰਹੇ ਖਰਚਿਆਂ ਨੂੰ ਪੂਰਾ ਕਰਨ ਵਿੱਚ ਸਾਡੀ ਮਦਦ ਕਰੋ",
   "Hi, I'm Ryan. I build Innioasis Updater CE, this firmware archive, and the Themes Gallery. I pay for them myself so they stay free for everyone.": "ਹੈਲੋ, ਮੈਂ ਰਿਆਨ ਹਾਂ। ਮੈਂ Innioasis Updater CE, ਇਹ ਫਰਮਵੇਅਰ ਆਰਕਾਈਵ, ਅਤੇ ਥੀਮ ਗੈਲਰੀ ਬਣਾਉਂਦਾ ਹਾਂ। ਮੈਂ ਉਹਨਾਂ ਲਈ ਖੁਦ ਭੁਗਤਾਨ ਕਰਦਾ ਹਾਂ ਤਾਂ ਜੋ ਉਹ ਹਰ ਕਿਸੇ ਲਈ ਮੁਫਤ ਰਹਿਣ।",
@@ -98,7 +97,6 @@
   "You've helped us raise $0 of our $10 costs for today.": "ਤੁਸੀਂ ਅੱਜ ਲਈ ਸਾਡੀਆਂ $10 ਲਾਗਤਾਂ ਵਿੱਚੋਂ $0 ਇਕੱਠਾ ਕਰਨ ਵਿੱਚ ਸਾਡੀ ਮਦਦ ਕੀਤੀ ਹੈ।",
   "Your privacy on Innioasis.app": "Innioasis.app 'ਤੇ ਤੁਹਾਡੀ ਗੋਪਨੀਯਤਾ",
   "Your site theme and text size are always remembered - they are the look and readability you chose. Links to YouTube, Discord, Ko-fi, Buy Me a Coffee, PayPal, Revolut, Patreon, and Boosty open those sites' own pages, which have their own policies.": "ਤੁਹਾਡੀ ਸਾਈਟ ਥੀਮ ਅਤੇ ਟੈਕਸਟ ਦਾ ਆਕਾਰ ਹਮੇਸ਼ਾ ਯਾਦ ਰੱਖਿਆ ਜਾਂਦਾ ਹੈ - ਉਹ ਤੁਹਾਡੇ ਦੁਆਰਾ ਚੁਣੀ ਗਈ ਦਿੱਖ ਅਤੇ ਪੜ੍ਹਨਯੋਗਤਾ ਹਨ। YouTube, Discord, Ko-fi, Buy Me a Coffee, PayPal, Revolut, Patreon, Patreon, ਅਤੇ Boosty ਦੇ ਲਿੰਕ ਉਹਨਾਂ ਸਾਈਟਾਂ ਦੇ ਆਪਣੇ ਪੰਨੇ ਖੋਲ੍ਹਦੇ ਹਨ, ਜਿਹਨਾਂ ਦੀਆਂ ਆਪਣੀਆਂ ਨੀਤੀਆਂ ਹਨ।",
-  "help for free with Honeygain": "ਹਨੀਗੇਨ ਨਾਲ ਮੁਫ਼ਤ ਵਿੱਚ ਮਦਦ ਕਰੋ",
   "you": "ਤੁਸੀਂ"
  }
 }
