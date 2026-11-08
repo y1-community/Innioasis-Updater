@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="fr" dir="ltr" data-locale="fr">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Développeurs | Ajouter un micrologiciel personnalisé aux téléchargements de micrologiciels Innioasis Updater CE - Innioasis</title>
+  <meta name="description" content="Documentation du développeur pour ajouter un micrologiciel Innioasis Y1 ou Y2 personnalisé à Updater CE : forkez le référentiel, publiez les ressources rom.zip, modifiez slidia_manifest.xml, testez et ouvrez une demande d&#39;extraction.">
+  <meta name="keywords" content="Innioasis Updater guide du développeur, slidia_manifest.xml, micrologiciel personnalisé, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, ressources de version">
+  <link rel="canonical" href="https://innioasis.app/developers_fr.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Développeurs | Ajouter un micrologiciel personnalisé aux téléchargements de micrologiciels Innioasis Updater CE - Innioasis">
+  <meta property="og:description" content="Documentation du développeur pour ajouter un micrologiciel Innioasis Y1 ou Y2 personnalisé à Updater CE : forkez le référentiel, publiez les ressources rom.zip, modifiez slidia_manifest.xml, testez et ouvrez une demande d&#39;extraction.">
+  <meta property="og:url" content="https://innioasis.app/developers_fr.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Développeurs | Ajouter un micrologiciel personnalisé aux téléchargements de micrologiciels Innioasis Updater CE - Innioasis">
+  <meta name="twitter:description" content="Documentation du développeur pour ajouter un micrologiciel Innioasis Y1 ou Y2 personnalisé à Updater CE : forkez le référentiel, publiez les ressources rom.zip, modifiez slidia_manifest.xml, testez et ouvrez une demande d&#39;extraction.">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <style>
+    .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
+    .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
+    .lumen-manifest-form input[type="text"], .lumen-manifest-form input[type="url"] { width: 100%; min-height: 44px; padding: .6rem .7rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-sm); background: var(--lumen-ink); color: var(--lumen-text); font: .9rem var(--lumen-body); }
+    .lumen-manifest-form input:focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 2px; }
+    .lumen-manifest-label { display: block; color: var(--lumen-muted); font-size: .78rem; font-weight: 700; margin-bottom: .35rem; }
+    .lumen-manifest-checks { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .lumen-manifest-form .lumen-code-copy { margin-top: .25rem; }
+    #manifest-preview pre { max-height: 420px; overflow: auto; }
+    :root[data-lumen-theme="2077"] .lumen-manifest-form { border-radius: 0; }
+    .lumen-manifest-form fieldset.lumen-manifest-group { margin: 0; padding: .9rem 1rem 1rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); }
+    .lumen-manifest-form legend { padding: 0 .4rem; color: var(--lumen-muted); font-size: .78rem; font-weight: 700; }
+    .lumen-manifest-form .lumen-manifest-group .lumen-meta { font-weight: 400; }
+    .lumen-manifest-form input[type="file"] { width: 100%; color: var(--lumen-muted); font: .85rem var(--lumen-body); }
+    .lumen-manifest-subgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
+    .lumen-manifest-advanced { border-top: 1px solid var(--lumen-line); padding-top: .9rem; }
+    .lumen-manifest-advanced summary { cursor: pointer; font-weight: 700; }
+    .lumen-manifest-advanced summary:focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 3px; }
+    .lumen-manifest-advanced h4 { margin: 1.1rem 0 .55rem; color: var(--lumen-muted); font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .lumen-manifest-checks--stack { flex-direction: column; align-items: flex-start; gap: .55rem; }
+    .lumen-manifest-checks--stack .lumen-checkbox { align-items: flex-start; }
+    .lumen-manifest-icon-preview { margin-top: .2rem; }
+    .lumen-manifest-icon-preview img { width: 56px; height: 56px; border: 1px solid var(--lumen-line-strong); border-radius: 12px; background: var(--lumen-ink); object-fit: cover; display: block; }
+    .lumen-manifest-other-device { max-width: 340px; margin-top: .8rem; }
+    .lumen-manifest-validation { margin: .2rem 0 0; }
+    .lumen-manifest-validation.is-ok { color: var(--lumen-accent); }
+    .lumen-manifest-validation.is-error { color: #fca5a5; }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Add custom firmware to Innioasis Updater CE",
+    "description": "How developers publish Y1 and Y2 firmware releases and add model entries to slidia_manifest.xml.",
+    "url": "https://innioasis.app/developers.html",
+    "author": {"@type": "Organization", "name": "Innioasis Community"},
+    "programmingLanguage": "XML",
+    "about": ["Innioasis Updater CE", "Innioasis Y1", "Innioasis Y2", "custom firmware"]
+  }
+  </script>
+<meta property="og:site_name" content="Innioasis Mises à jour du logiciel">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/developers.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/developers.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/developers_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/developers_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/developers_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/developers_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/developers_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/developers_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/developers_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/developers_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/developers_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/developers_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/developers_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/developers_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/developers_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/developers_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/developers_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/developers_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/developers_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/developers_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/developers_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/developers_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/developers_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/developers_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/developers_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/developers_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/developers_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/developers_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/developers_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/developers_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/developers_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/developers_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/developers_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/developers_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/developers_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Aller au contenu</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide lumen-developer-guide">
+    <header>
+      <p class="lumen-kicker">Pour les développeurs de firmware</p>
+      <h1>Ajoutez votre micrologiciel à Updater CE.</h1>
+      <p class="lead">Updater CE est le catalogue communautaire et le programme d'installation du micrologiciel personnalisé. Développez votre projet à partir d'une base ROM, publiez-le en tant que référentiel public avec les ressources de version appropriées, ajoutez les entrées de modèle à <code>slidia_manifest.xml</code>, testez les filtres du modèle et ouvrez une pull request. Un référentiel peut servir tous les modèles qu'il prend en charge.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Afficher la source Updater CE</a>
+        <a class="lumen-button" href="firmware_fr.html">Parcourir les téléchargements de logiciels</a>
+      </div>
+    </header>
+
+<section class="lumen-guide-section" aria-labelledby="base-roms-title">
+      <h2 id="base-roms-title">Partir d'une base ROM</h2>
+      <p>Les ROM de base offrent aux développeurs de micrologiciels personnalisés une base Android propre avec les puces radio sans fil activées. Sur le Y1, ils activent le Wi-Fi et le GPS aux côtés du Bluetooth et de la FM d'usine&nbsp;; sur le Y2, ils activent le Wi-Fi, le GPS et la FM aux côtés du Bluetooth d'usine.</p>
+      <div class="lumen-table-wrap">
+        <table class="lumen-doc-table">
+          <caption class="lumen-visually-hidden">Téléchargements de base ROM pour le développement de micrologiciels personnalisés, avec la version Android et les fonctionnalités sans fil que chacun permet</caption>
+          <thead>
+            <tr><th scope="col">Télécharger</th><th scope="col">Appareil</th><th scope="col">Androïde</th><th scope="col">Fonctionnalités sans fil</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Ajoute le Wi-Fi et le GPS au Bluetooth et à la FM d'usine (FM fonctionne déjà sur le Y1 de l'usine). Pour les lecteurs Y1 livrés avec OS 2.0.0 ou version ultérieure.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Ajoute le Wi-Fi et le GPS au Bluetooth et à la FM d'usine (FM fonctionne déjà sur le Y1 de l'usine). Pour les lecteurs Y1 livrés avec un système d'exploitation antérieur à 2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Ajoute le Wi-Fi, le GPS et la FM au Bluetooth d'usine. La puce radio Y2 est entièrement activée, donc la FM est également disponible ici.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lumen-meta">Ces images représentent la base Android d'origine (AOSP) avec les radios sans fil de l'appareil activées, de sorte qu'un micrologiciel personnalisé peut ajouter des fonctionnalités réseau au lieu de remplacer la pile radio. Ils constituent le point de départ pratique des étapes de publication ci-dessous.</p>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="packages-title">
+      <h2 id="packages-title">Utilisez ces noms d'éléments de version</h2>
+      <p>Le nom de fichier fait partie du signal de compatibilité. Gardez les noms exacts et placez les fichiers ZIP dans les ressources de version du projet, pas seulement dans l'arborescence des sources du référentiel.</p>
+      <div class="lumen-table-wrap">
+        <table class="lumen-doc-table">
+          <caption class="lumen-visually-hidden">Noms des actifs ZIP du micrologiciel et appareils pris en charge</caption>
+          <thead>
+            <tr><th scope="col">Actif</th><th scope="col">Appareil</th><th scope="col">Matériel</th><th scope="col">Signification</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 appareils livrés avec OS 2.0.0 ou version ultérieure.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 appareils livrés avec un système d'exploitation antérieur à 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Le package d'installation complète Y2. Gardez-le séparé des actifs de Y1.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lumen-warning"><strong>Ne renommez pas un package pour l’adapter à un autre modèle.</strong> Y1 et Y2 utilisent des fichiers de plate-forme MediaTek et une configuration clignotante différents. Publiez le package pour le matériel qu’il prend réellement en charge.</div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="how-it-works-title">
+      <h2 id="how-it-works-title">Comment fonctionne la connexion</h2>
+      <p>Updater CE lit le manifeste comme son catalogue. Chaque <code>&lt;package&gt;</code> La ligne lui indique le nom du projet, le référentiel, le modèle et le gestionnaire. Lorsqu'un utilisateur choisit ce projet, Updater vérifie les versions publiées du référentiel et recherche un <code>rom*.zip</code> actif.</p>
+      <div class="lumen-grid">
+        <article class="lumen-card">
+          <h3>Manifeste</h3>
+          <p>Nomme le projet et le mappe à un modèle. Y1 et Y2 nécessitent des lignes distinctes, même lorsqu'ils partagent un référentiel.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>Version publiée</h3>
+          <p>Contient les ressources ZIP installables. Une seule version peut contenir les packages Y1 Type A, Y1 Type B et Y2 ensemble.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>Updater CE installer</h3>
+          <p>Utilise le modèle sélectionné pour choisir le package correspondant et le chemin de clignotement spécifique au modèle. L'utilisateur ne devrait pas avoir à deviner le nom d'un fichier.</p>
+        </article>
+      </div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="steps-title">
+      <h2 id="steps-title">Publier un projet en cinq étapes</h2>
+      <ol class="lumen-steps">
+        <li><strong>Forkez le référentiel Updater CE.</strong> Créez votre propre fourchette de <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, puis clonez votre fork localement.</li>
+        <li><strong>Préparez un référentiel public de micrologiciels.</strong> Assurez-vous que le référentiel est public et que sa version contient les ressources ZIP appropriées. Vous pouvez mettre <code>rom.zip</code>, <code>rom_type_b.zip</code>, et <code>rom_y2.zip</code> sur la même release lorsqu'ils appartiennent à la même version.</li>
+        <li><strong>Modifiez le manifeste.</strong> Ouvert <code>slidia_manifest.xml</code> à la racine de votre fourchette Updater CE. Ajoutez une ligne pour chaque modèle pris en charge par la version (Y1 et Y2 sont la paire commune). Le <code>repo</code> la valeur est celle du référentiel <code>owner/repository</code>; <code>url</code> est la page publique du projet.</li>
+        <li><strong>Testez le catalogue.</strong> Exécutez Updater à partir de la caisse modifiée. Sélectionnez Y1 et confirmez que le projet affiche les actifs Y1. Sélectionnez Y2 et confirmez qu'il affiche la version Y2. Cochez Type A et Type B séparément lorsque les deux sont publiés.</li>
+        <li><strong>Ouvrez une pull request.</strong> Envoyez la modification du manifeste vers votre fork et ouvrez une demande d'extraction sur le référentiel Updater CE en amont. Incluez le lien du projet, les modèles pris en charge, la balise de version, les noms des actifs et les appareils que vous avez testés.</li>
+      </ol>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="manifest-title">
+      <h2 id="manifest-title">Générez vos lignes de manifeste</h2>
+      <p>Remplissez le référentiel et cochez chaque modèle pris en charge par la version. Le générateur en écrit un <code>&lt;package&gt;</code> ligne par modèle et inclut uniquement les attributs que vous avez définis, de sorte que le résultat correspond au courant <code>slidia_manifest.xml</code> format. Chaque attribut Updater CE lu est disponible ci-dessous — les facultatifs sont sous <strong>Plus d'options</strong>.</p>
+
+      <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
+        <div class="lumen-manifest-fields">
+          <div class="lumen-field">
+            <label for="manifest-repo-url">URL du référentiel</label>
+            <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Le référentiel public GitHub. Le générateur extrait <code>owner/repository</code> à partir de l'URL.</span>
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-name">Nom du logiciel</label>
+            <input type="text" id="manifest-name" placeholder="Par défaut, le nom du référentiel" autocomplete="off">
+            <span class="lumen-field-help">Affiché dans l'application et le catalogue du site.</span>
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-project-url">URL du projet</label>
+            <input type="url" id="manifest-project-url" placeholder="La valeur par défaut est l&#39;URL du référentiel" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Page destinée aux humains pour le projet ou ses notes de version.</span>
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-brand">Marque</label>
+            <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
+            <datalist id="manifest-brand-suggestions">
+              <option value="Innioasis"></option>
+              <option value="Timmkoo"></option>
+            </datalist>
+            <span class="lumen-field-help">Décochez cette option pour utiliser la marque par défaut du modèle. SR1, Q3, Q5 et Q3e sont des modèles Timmkoo.</span>
+          </div>
+        </div>
+
+        <fieldset class="lumen-manifest-group">
+          <legend>Appareils (une ligne chacun)</legend>
+          <div class="lumen-manifest-checks">
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="A5"><span>A5</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="G1"><span>G1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="G3"><span>G3</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="G5"><span>G5</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="R1"><span>R1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="PR1"><span>PR1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="SR1"><span>SR1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3"><span>Q3</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q5"><span>Q5</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
+          </div>
+          <div class="lumen-field lumen-manifest-other-device">
+            <label for="manifest-other-devices">Autres modèles</label>
+            <input type="text" id="manifest-other-devices" placeholder="Séparés par des virgules, par ex. X1, X2" autocomplete="off">
+            <span class="lumen-field-help">Pour un modèle qui n'est pas répertorié ci-dessus. Les modèles connus conservent l'orthographe de leur catalogue.</span>
+          </div>
+        </fieldset>
+
+        <fieldset class="lumen-manifest-group">
+          <legend>Drapeaux</legend>
+          <div class="lumen-manifest-checks lumen-manifest-checks--stack">
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> - ne proposez jamais Keep Data pour ce firmware</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Construit à partir du logiciel original — ajoute <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+          </div>
+          <p class="lumen-field-help">Keep Data n'est proposé que lorsque le firmware entrant et le firmware installé sont identiques ou partagent un <code>derivative</code> racine. Utilisez l'indicateur uniquement lorsque les données utilisateur ne peuvent réellement pas être transférées.</p>
+        </fieldset>
+
+        <details class="lumen-manifest-advanced">
+          <summary>Plus d'options&nbsp;: icône, illustration, ressources de version, post-installation et miroirs</summary>
+
+          <h4>Icône et oeuvre d'art</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-icon-file">Fichier d'icône</label>
+              <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+              <span class="lumen-field-help">Choisissez l'image que vous allez valider dans le référentiel. Cela le prévisualise et construit son URL brute&nbsp;; il ne télécharge rien.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-icon-path">Chemin de l'icône dans le référentiel</label>
+              <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Chemin d'accès à l'image validée, par rapport à la racine du référentiel.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-icon-branch">Branche d'icône</label>
+              <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-icon-url">URL de l'icône</label>
+              <input type="url" id="manifest-icon-url" placeholder="Rempli à partir du chemin du fichier" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Une URL d’image directe. Lorsqu'elle est vide, l'application utilise la version <code>updater.png</code> ou une icône générée.</span>
+            </div>
+          </div>
+          <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
+            <img alt="Aperçu de l&#39;icône sélectionnée">
+          </div>
+          <p class="lumen-meta" id="manifest-icon-resolved"></p>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-icon-dark-url">URL de l'icône du mode sombre</label>
+              <input type="url" id="manifest-icon-dark-url" placeholder="icône_dark" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Icône de thème sombre en option. <code>image_dark</code> est un pseudonyme accepté.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-image-url">URL de l'illustration lumineuse</label>
+              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Illustration secondaire, essayée après la sortie de l'image et <code>icon</code>.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-image-dark-url">URL de l'illustration sombre</label>
+              <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+
+          <h4>Libérer des ressources</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-package-name">Nom de l'élément de version</label>
+              <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Un nom pour chaque modèle sélectionné. Laisser vide pour pouvoir l'utiliser <code>rom.zip</code> le Y1 et <code>rom_&lt;model&gt;.zip</code> autre part.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-asset-pattern">Modèle d'actif</label>
+              <input type="text" id="manifest-asset-pattern" placeholder="mon-firmware-*.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Glob utilisé lorsque les zips de la version ne sont pas nommés <code>rom*.zip</code>.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-type-a-asset">Type A élément</label>
+              <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Glob pour le package Y1 Type A lorsque son nom ne le dit pas.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-type-b-asset">Type B élément</label>
+              <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Glob pour le package Y1 Type B lorsque son nom ne le dit pas.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-min-version">Version minimale de l'application</label>
+              <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Masquez l’entrée des anciennes versions de Updater CE.</span>
+            </div>
+          </div>
+
+          <h4>Liens, miroirs et famille Keep Data</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-post-install">Page de post-installation</label>
+              <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Ouvert après une installation réussie.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-post-install2">Deuxième page post-installation</label>
+              <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Deuxième étape facultative pour un guide de configuration de plusieurs pages.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-portable-zips">Miroirs zippés portables</label>
+              <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Séparés par des virgules <code>*-mirror</code> référentiels qui créent des packages Portable Flashing Zip.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-derivative">Dépôt dérivé</label>
+              <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Le firmware à partir duquel cette version est construite. Les firmwares associés partagent une partition de données, ce que Keep Data vérifie.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-info-repo">Référentiel d'informations</label>
+              <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Dépôt d'applications dont les versions décrivent les applications de ce firmware. Il a également besoin d'une page post-installation.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-apk-repo">APK dépôt</label>
+              <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Dépôt d'application dont APK l'application télécharge et installe après le firmware.</span>
+            </div>
+          </div>
+
+          <h4>Extras du catalogue</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-slug">Limace</label>
+              <input type="text" id="manifest-slug" placeholder="Généré à partir du nom et du modèle" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Identifiant stable pour les liens et les enregistrements d'installation enregistrés. Le modèle est ajouté automatiquement lorsque plusieurs modèles sont sélectionnés.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-description">Description</label>
+              <input type="text" id="manifest-description" placeholder="Une brève description du catalogue" autocomplete="off">
+            </div>
+          </div>
+        </details>
+
+        <div class="lumen-code-copy">
+          <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
+&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Copier des lignes</button>
+        </div>
+
+        <p class="lumen-meta" id="manifest-status">Chargement du dernier manifeste…</p>
+
+        <details id="manifest-preview" hidden>
+          <summary>Prévisualisez le dernier manifeste avec vos lignes ajoutées</summary>
+          <p>Le générateur récupérait le courant <code>slidia_manifest.xml</code> depuis ce référentiel et inséré vos lignes générées juste avant <code>&lt;/slidia&gt;</code>.</p>
+          <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
+          <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
+        </details>
+      </div>
+
+      <div class="lumen-warning"><strong>Une ligne ne suffit pas pour un référentiel partagé.</strong> Si la ligne Y2 est manquante, les utilisateurs Y2 n'obtiendront pas d'entrée correspondant au modèle même si <code>rom_y2.zip</code> existe dans la version du projet. La même chose est vraie pour tous les autres modèles pris en charge par votre version.</div>
+
+      <h3 id="manifest-attributes-title">Chaque attribut lu par le manifeste</h3>
+      <p>Ce sont les attributs que les builds actuels de Updater CE comprennent. Le générateur écrit uniquement ceux que vous remplissez ; l'application revient à des valeurs par défaut raisonnables pour le reste.</p>
+      <div class="lumen-table-wrap">
+        <table class="lumen-doc-table">
+          <caption class="lumen-visually-hidden">Attributs du package slidia_manifest.xml et leur signification</caption>
+          <thead>
+            <tr><th scope="col">Attribut</th><th scope="col">Nécessaire</th><th scope="col">Ce que ça fait</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><code>name</code></th><td>Oui</td><td>Nom du logiciel indiqué dans le catalogue et sur les cartes d'installation.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>Oui</td><td><code>owner/repo</code>. L'application lit les versions GitHub de ce référentiel.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Oui</td><td>Modèle cible, majuscule (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>,…). Gardez une entrée par modèle.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Recommandé</td><td>Page du projet ou notes de version ouvertes à partir du catalogue.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Oui en pratique</td><td><code>type="img"</code> et <code>handler="Custom Firmware"</code>. Les autres types et gestionnaires non micrologiciels sont ignorés.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Facultatif</td><td>Marque du catalogue (<code>Innioasis</code>, <code>Timmkoo</code>). Empty utilise la marque par défaut du modèle.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Facultatif</td><td>Libérer le nom du fichier de ressource. La valeur par défaut est <code>rom.zip</code> le Y1 et <code>rom_&lt;model&gt;.zip</code> sur d'autres modèles.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Facultatif</td><td>Globe insensible à la casse pour les versions dont les zips du micrologiciel ne sont pas nommés <code>rom*.zip</code> (Par exemple <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Facultatif</td><td>Globs qui identifient les zips Y1 Type A et Type B lorsque leurs noms de fichiers ne contiennent pas les marqueurs habituels.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Facultatif</td><td>URL du logo. Utilisé après la propre version <code>updater.png</code> / <code>updater.jpg</code>, et comme solution de secours pour chaque version.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Facultatif</td><td>Logo sur le thème sombre. <code>image_dark</code> est un pseudonyme accepté.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Facultatif</td><td>Illustration de lumière secondaire, essayée après <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Facultatif</td><td>Page(s) ouverte(s) après une installation réussie. Le second couvre un guide en plusieurs étapes.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Facultatif</td><td>Séparés par des virgules <code>*-mirror</code> les dépôts qui publient des packages portables prêts à être exécutés.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Facultatif</td><td>Référentiel à partir duquel le firmware est construit. Un micrologiciel avec la même racine dérivée peut conserver les données utilisateur.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Facultatif</td><td>Référentiel d'applications dont les versions décrivent ce que le firmware déploie. Nécessite <code>post_install</code> ou <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Facultatif</td><td>Référentiel d'applications dont APK l'application installe après le firmware.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Facultatif</td><td>Masquez l'entrée lorsque Updater CE est plus ancien que cette version.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Facultatif</td><td><code>true</code> (aussi <code>1</code> / <code>yes</code>) bloque complètement Keep Data pour ce firmware.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Facultatif</td><td>Identifiant stable pour les liens et les enregistrements d'installation enregistrés. Généré à partir du nom et du modèle lorsqu'il est vide.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Facultatif</td><td>Brève description du catalogue. Il peut s'agir de la valeur de l'attribut ou du texte de l'élément.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lumen-meta">Les anciens noms sont toujours lus pour des raisons de compatibilité&nbsp;: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> et <code>image_dark</code>. Les nouvelles entrées doivent utiliser les noms actuels ci-dessus.</p>
+
+      <h3>Soumettez les lignes sous forme de pull request</h3>
+      <ol class="lumen-steps">
+        <li><strong>Copiez les lignes générées ci-dessus.</strong> Ils correspondent déjà au dernier format de manifeste.</li>
+        <li><strong>Modifier <code>slidia_manifest.xml</code> dans le référentiel.</strong> Utilisez le lien de modification ci-dessous&nbsp;; l'hôte du référentiel crée automatiquement un fork et une branche pour vous.</li>
+        <li><strong>Collez les lignes juste avant <code>&lt;/slidia&gt;</code>,</strong> en gardant les entrées existantes inchangées.</li>
+        <li><strong>S'engager dans une nouvelle branche</strong> (Par exemple <code>add-your-firmware</code>), puis ouvrez une pull request sur le référentiel Updater CE.</li>
+        <li><strong>Dans le PR, incluez</strong> le lien du projet, les modèles pris en charge, la balise de version, les noms des actifs et les appareils que vous avez testés.</li>
+      </ol>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Modifier le manifeste Updater CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Voir le dernier manifeste</a>
+      </div>
+      <p class="lumen-meta">Gardez les noms de modèles en majuscules, utilisez l'URL exacte de votre référentiel public et conservez <code>type="img"</code> et <code>handler="Custom Firmware"</code> pour une entrée de firmware.</p>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="release-title">
+      <h2 id="release-title">Rendre la version facile à vérifier</h2>
+      <p>Donnez à la version une étiquette claire et une note de version. La balise est utile aux gens, mais les noms des actifs ZIP sont ce que Updater CE utilise pour identifier les packages d'installation.</p>
+      <div class="lumen-grid">
+        <article class="lumen-card">
+          <h3>Liste de contrôle de sortie</h3>
+          <ul>
+            <li>Publier le communiqué publiquement.</li>
+            <li>Joignez les fichiers ZIP en tant qu'actifs de version.</li>
+            <li>Indiquez le modèle pris en charge et Type A ou Type B dans les notes.</li>
+            <li>Énumérez toute préparation requise ou limites connues.</li>
+          </ul>
+        </article>
+        <article class="lumen-card">
+          <h3>Une version, trois atouts</h3>
+          <p>Une version partagée peut contenir <code>rom.zip</code>, <code>rom_type_b.zip</code>, et <code>rom_y2.zip</code>. Updater les classe séparément et choisit parmi les filtres de modèle et de matériel.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>Ne regroupez pas les suppositions</h3>
+          <p>N'incluez pas de package Y1 sous le nom de fichier Y2, et n'ajoutez pas de données scatter, préchargement ou partition non testées simplement pour faire apparaître un actif.</p>
+        </article>
+      </div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="flashing-title">
+      <h2 id="flashing-title">Pourquoi les entrées de modèle sont importantes pendant le flashage</h2>
+      <p>Le manifeste n'est pas seulement un menu de téléchargement. Après l'extraction, Updater CE utilise le modèle résolu pour préparer le chemin d'installation correspondant. Y1 et Y2 ont des fichiers de plate-forme, des préchargeurs, une configuration scatter et des dispositions de périphérique différents.</p>
+      <ul class="lumen-steps">
+        <li><strong>Y1:</strong> le programme de mise à jour prépare le chemin Y1 et utilise les partitions nommées du périphérique lorsque MTKClient est utilisé.</li>
+        <li><strong>Y2:</strong> le programme de mise à jour prépare le chemin Y2 et utilise la configuration Y2 MT6582. La récupération complète peut utiliser les adresses physiques des données de dispersion correctes du modèle.</li>
+        <li><strong>Prise en charge multiplateforme&nbsp;:</strong> Updater CE gère le flash natif directement sur Windows, Linux et macOS (prenant en charge les Mac Intel et Apple Silicon) sans outils de flash supplémentaires.</li>
+      </ul>
+      <div class="lumen-warning"><strong>Les contributeurs doivent fournir des fichiers de firmware corrects, et non des décalages flash.</strong> Ne modifiez pas les adresses scatter, les préchargeurs, les fichiers DA ou les commandes de partition pour contourner un package défectueux. Corrigez l’actif de version et testez sur le modèle prévu.</div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="test-title">
+      <h2 id="test-title">Avant de demander une fusion</h2>
+      <ol class="lumen-steps">
+        <li>Validez le XML avec un analyseur XML. Une citation ou une clôture manquante <code>/&gt;</code> peut masquer chaque entrée après.</li>
+        <li>Lancez le programme de mise à jour depuis votre caisse afin qu'il charge le manifeste local avant l'actualisation à distance.</li>
+        <li>Vérifiez Y1 et Y2 indépendamment. Confirmez que le projet apparaît uniquement là où son package est pris en charge.</li>
+        <li>Consultez la liste des versions pour <code>rom.zip</code>, <code>rom_type_b.zip</code>, et <code>rom_y2.zip</code> le cas échéant.</li>
+        <li>Testez l'installation réelle sur l'appareil prévu, avec un câble de données USB fiable et un plan de récupération pour revenir au logiciel d'origine.</li>
+        <li>Dans la pull request, expliquez ce que vous avez testé. Ne décrivez pas un modèle non testé comme pris en charge.</li>
+      </ol>
+      <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
+      <p>Pour une vérification locale, exécutez cette commande à partir de la racine du référentiel. Il vérifie uniquement la syntaxe XML&nbsp;; cela ne prouve pas qu'une version contient un micrologiciel valide ou qu'un périphérique peut flasher en toute sécurité.</p>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="links-title">
+      <h2 id="links-title">Liens utiles vers le projet</h2>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fourchette Updater CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Voir le manifeste</a>
+        <a class="lumen-button" href="support_devs_fr.html">Notes de contribution communautaire</a>
+        <a class="lumen-button" href="troubleshooting_fr.html">Dépannage</a>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="skills-title">
+      <h2 id="skills-title">Compétences de modding pour les agents IA</h2>
+      <p>Le référentiel <code>skills/</code> L'annuaire est une base de connaissances basée sur la source pour les agents travaillant sur le matériel, le micrologiciel, les thèmes et les applications Y1 et Y2. Chaque compétence nomme les fichiers de projet d'où proviennent ses revendications, afin qu'un agent puisse vérifier un fait avant de changer d'appareil.</p>
+      <div class="lumen-grid">
+        <article class="lumen-card">
+          <small>Commencez ici</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Index des compétences et règles de sécurité</a></h3>
+          <p>Comment charger une compétence, à quel modèle un fait s'applique et aux partitions qu'aucun paquet ne doit écrire.</p>
+        </article>
+        <article class="lumen-card">
+          <small>Matériel</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 matériel</a></h3>
+          <p>MT6572, la roue comme événements clés, affichage 480x360, chemins FM/audio, stockage et carte de partition Type A/B.</p>
+        </article>
+        <article class="lumen-card">
+          <small>Matériel</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 matériel</a></h3>
+          <p>Carte MT6582, arborescence des périphériques, panneaux GC9503V/ST7701S, rails PMIC/DAC, partitions et image de démarrage.</p>
+        </article>
+        <article class="lumen-card">
+          <small>Micrologiciel</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Paquets de micrologiciels</a></h3>
+          <p>rom.zip anatomie, fichiers scatter, contrats de mise à jour de classe A et liste de contrôle de publication.</p>
+        </article>
+        <article class="lumen-card">
+          <small>Thèmes</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Création de thèmes et de skins</a></h3>
+          <p>Y1 thèmes config.json, Rockbox WPS/SBS, Reborn skins et Y2Player format de skin v2.</p>
+        </article>
+        <article class="lumen-card">
+          <small>Toutes les compétences</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Parcourez le dossier des compétences</a></h3>
+          <p>Rockbox Y1/Y2, ROM Android en stock, Y2Linux, applications Android, lanceurs, notes de version et publication de sites.</p>
+        </article>
+      </div>
+    </section>
+
+</main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script src="portable-zip-links.js?v=20261106direct" defer></script>
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("manifest-generator");
+  if (!form) return;
+
+  var repoEl = document.getElementById("manifest-repo-url");
+  var nameEl = document.getElementById("manifest-name");
+  var projectUrlEl = document.getElementById("manifest-project-url");
+  var brandEl = document.getElementById("manifest-brand");
+  var otherDevicesEl = document.getElementById("manifest-other-devices");
+  var deviceEls = Array.prototype.slice.call(form.querySelectorAll('input[name="manifest-device"]'));
+  var doNotKeepDataEl = document.getElementById("manifest-do-not-keep-data");
+  var derivativeOriginalEl = document.getElementById("manifest-derivative-original");
+  var derivativeEl = document.getElementById("manifest-derivative");
+  var iconFileEl = document.getElementById("manifest-icon-file");
+  var iconPathEl = document.getElementById("manifest-icon-path");
+  var iconBranchEl = document.getElementById("manifest-icon-branch");
+  var iconUrlEl = document.getElementById("manifest-icon-url");
+  var iconPreviewEl = document.getElementById("manifest-icon-preview");
+  var iconResolvedEl = document.getElementById("manifest-icon-resolved");
+  var iconDarkEl = document.getElementById("manifest-icon-dark-url");
+  var imageEl = document.getElementById("manifest-image-url");
+  var imageDarkEl = document.getElementById("manifest-image-dark-url");
+  var packageNameEl = document.getElementById("manifest-package-name");
+  var assetPatternEl = document.getElementById("manifest-asset-pattern");
+  var typeAAssetEl = document.getElementById("manifest-type-a-asset");
+  var typeBAssetEl = document.getElementById("manifest-type-b-asset");
+  var minVersionEl = document.getElementById("manifest-min-version");
+  var postInstallEl = document.getElementById("manifest-post-install");
+  var postInstall2El = document.getElementById("manifest-post-install2");
+  var portableZipsEl = document.getElementById("manifest-portable-zips");
+  var infoRepoEl = document.getElementById("manifest-info-repo");
+  var apkRepoEl = document.getElementById("manifest-apk-repo");
+  var slugEl = document.getElementById("manifest-slug");
+  var descriptionEl = document.getElementById("manifest-description");
+  var output = document.getElementById("manifest-output");
+  var outputCode = output ? output.querySelector("code") : null;
+  var copyBtn = document.getElementById("manifest-copy");
+  var statusEl = document.getElementById("manifest-status");
+  var previewDetails = document.getElementById("manifest-preview");
+  var previewOutput = document.getElementById("manifest-preview-output");
+  var validationEl = document.getElementById("manifest-validation");
+
+  var MANIFEST_URL = "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/slidia_manifest.xml";
+  var ORIGINAL_DERIVATIVE = "y1-community/y1-stock-rom";
+  var MODEL_NAMES = { Y1: "Y1", Y2: "Y2", A5: "A5", G1: "G1", G3: "G3", G5: "G5", R1: "R1", PR1: "PR1", SR1: "SR1", Q3: "Q3", Q5: "Q5", Q3E: "Q3e" };
+  var latestManifestText = null;
+  var iconUrlAuto = true;
+  var iconObjectUrl = null;
+
+  function esc(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function attr(name, value) {
+    var text = String(value == null ? "" : value).trim();
+    return text ? " " + name + '="' + esc(text) + '"' : "";
+  }
+
+  function humanizeName(repo) {
+    return String(repo || "")
+      .replace(/[-_]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(/\b\w/g, function (c) { return c.toUpperCase(); }) || "Your Firmware";
+  }
+
+  function parseGitHub(input) {
+    var value = String(input || "").trim();
+    if (!value) return null;
+    // Accepts https://github.com/owner/repo, github.com/owner/repo, or owner/repo,
+    // with optional www., trailing slashes, .git, and extra path segments.
+    var m = value.match(/^(?:https?:\/\/)?(?:www\.)?github\.com\/([^/?#\s]+)\/([^/?#\s]+)/i);
+    if (m) return { owner: m[1], repo: m[2].replace(/\.git$/i, "") };
+    m = value.match(/^([^/?#\s]+)\/([^/?#\s]+)$/);
+    if (!m) return null;
+    return { owner: m[1], repo: m[2].replace(/\.git$/i, "") };
+  }
+
+  function selectedDevices() {
+    var out = [];
+    var seen = {};
+    function add(raw) {
+      var upper = String(raw || "").trim().toUpperCase();
+      if (!upper || !/^[A-Z0-9][A-Z0-9._-]{0,15}$/.test(upper) || seen[upper]) return;
+      seen[upper] = true;
+      out.push(MODEL_NAMES[upper] || upper);
+    }
+    deviceEls.forEach(function (el) {
+      if (el.checked) add(el.value);
+    });
+    String(otherDevicesEl && otherDevicesEl.value || "").split(/[\s,]+/).forEach(add);
+    return out;
+  }
+
+  function values() {
+    var parsed = parseGitHub(repoEl.value);
+    var owner = parsed ? parsed.owner : "your-account";
+    var repo = parsed ? parsed.repo : "your-firmware";
+    var repoValue = owner + "/" + repo;
+    return {
+      name: nameEl.value.trim() || humanizeName(repo),
+      brand: brandEl.value.trim(),
+      repo: repoValue,
+      url: projectUrlEl.value.trim() || "https://github.com/" + repoValue,
+      packageName: packageNameEl.value.trim(),
+      assetPattern: assetPatternEl.value.trim(),
+      typeAAsset: typeAAssetEl.value.trim(),
+      typeBAsset: typeBAssetEl.value.trim(),
+      icon: iconUrlEl.value.trim(),
+      iconDark: iconDarkEl.value.trim(),
+      image: imageEl.value.trim(),
+      imageDark: imageDarkEl.value.trim(),
+      postInstall: postInstallEl.value.trim(),
+      postInstall2: postInstall2El.value.trim(),
+      portableZips: portableZipsEl.value.trim(),
+      derivative: derivativeEl.value.trim(),
+      infoRepo: infoRepoEl.value.trim(),
+      apkRepo: apkRepoEl.value.trim(),
+      minVersion: minVersionEl.value.trim(),
+      doNotKeepData: !!(doNotKeepDataEl && doNotKeepDataEl.checked),
+      slug: slugEl.value.trim(),
+      description: descriptionEl.value.trim().replace(/\s+/g, " ")
+    };
+  }
+
+  function buildLine(v, device, slug) {
+    var line = "<package" +
+      attr("name", v.name) +
+      attr("brand", v.brand) +
+      attr("repo", v.repo) +
+      attr("device", device) +
+      attr("url", v.url) +
+      ' type="img" handler="Custom Firmware"';
+    line += attr("package_name", v.packageName);
+    line += attr("asset_pattern", v.assetPattern);
+    line += attr("type_a_asset", v.typeAAsset);
+    line += attr("type_b_asset", v.typeBAsset);
+    line += attr("icon", v.icon);
+    line += attr("icon_dark", v.iconDark);
+    line += attr("image", v.image);
+    line += attr("image_dark", v.imageDark);
+    line += attr("post_install", v.postInstall);
+    line += attr("post_install2", v.postInstall2);
+    line += attr("portable_zips", v.portableZips);
+    line += attr("derivative", v.derivative);
+    line += attr("info_repo", v.infoRepo);
+    line += attr("apk_repo", v.apkRepo);
+    line += attr("min_version", v.minVersion);
+    if (v.doNotKeepData) line += ' do_not_keep_data="true"';
+    line += attr("slug", slug);
+    line += attr("description", v.description);
+    return line + " />";
+  }
+
+  function buildLines() {
+    var v = values();
+    var devices = selectedDevices();
+    if (!devices.length) return "";
+    return devices.map(function (device) {
+      var slug = v.slug && devices.length > 1 ? v.slug + "-" + device.toLowerCase() : v.slug;
+      return buildLine(v, device, slug);
+    }).join("\n");
+  }
+
+  function buildIconUrl() {
+    var parsed = parseGitHub(repoEl.value);
+    var branch = iconBranchEl.value.trim() || "main";
+    var path = iconPathEl.value.trim().replace(/^\/+/, "");
+    if (!parsed || !path) return "";
+    return "https://raw.githubusercontent.com/" + parsed.owner + "/" + parsed.repo + "/" +
+      encodeURIComponent(branch) + "/" +
+      path.split("/").map(encodeURIComponent).join("/");
+  }
+
+  function xmlError(text) {
+    try {
+      var doc = new DOMParser().parseFromString(text, "application/xml");
+      var err = doc.querySelector("parsererror");
+      return err ? (err.textContent || "XML parse error") : "";
+    } catch (e) {
+      return String(e && e.message || e);
+    }
+  }
+
+  function clip(text, limit) {
+    var value = String(text || "").replace(/\s+/g, " ").trim();
+    return value.length > limit ? value.slice(0, limit - 1) + "…" : value;
+  }
+
+  function setValidation(message, state) {
+    if (!validationEl) return;
+    validationEl.textContent = message;
+    validationEl.className = "lumen-meta lumen-manifest-validation" + (state ? " is-" + state : "");
+  }
+
+  function updatePreview(lines) {
+    if (!previewOutput || !validationEl) return;
+    var idx = latestManifestText.lastIndexOf("</slidia>");
+    if (idx === -1) {
+      previewOutput.textContent = latestManifestText;
+      setValidation("The fetched manifest has no closing </slidia> tag.", "error");
+      return;
+    }
+    var inserted = latestManifestText.slice(0, idx) + (lines ? lines + "\n" : "") + latestManifestText.slice(idx);
+    previewOutput.textContent = inserted;
+
+    var ownError = lines ? xmlError("<slidia>" + lines + "</slidia>") : "";
+    var baseError = xmlError(latestManifestText);
+    var combinedError = xmlError(inserted);
+    if (ownError) {
+      setValidation("The generated lines are not valid XML: " + clip(ownError, 220), "error");
+    } else if (baseError) {
+      setValidation("The fetched manifest already has an XML problem, so the combined preview cannot parse. Your generated lines are valid on their own.", "error");
+    } else if (combinedError) {
+      setValidation("The combined preview does not parse: " + clip(combinedError, 220), "error");
+    } else {
+      var count = (inserted.replace(/<!--[\s\S]*?-->/g, "").match(/<package\b/g) || []).length;
+      setValidation("Preview XML is valid — " + count + " package entries.", "ok");
+    }
+  }
+
+  function render() {
+    if (iconUrlAuto && iconFileEl && iconFileEl.files && iconFileEl.files.length) {
+      iconUrlEl.value = buildIconUrl();
+    }
+    var text = buildLines();
+    if (outputCode) outputCode.textContent = text || "(select at least one device)";
+    if (copyBtn) copyBtn.disabled = !text;
+    if (iconResolvedEl) {
+      if (iconFileEl && iconFileEl.files && iconFileEl.files.length) {
+        var resolved = iconUrlEl.value.trim();
+        iconResolvedEl.textContent = resolved
+          ? "Manifest icon URL: " + resolved
+          : "Set a GitHub repository URL and icon path to build the public icon URL.";
+      } else {
+        iconResolvedEl.textContent = "";
+      }
+    }
+    if (latestManifestText) updatePreview(text);
+  }
+
+  function setStatus(message) {
+    if (!statusEl) return;
+    if (window.INNIOASIS_I18N && window.INNIOASIS_I18N.translate && window.INNIOASIS_I18N.isActive && window.INNIOASIS_I18N.isActive()) {
+      message = window.INNIOASIS_I18N.translate(message);
+    }
+    statusEl.textContent = message;
+  }
+
+  function loadManifest() {
+    if (!previewDetails) return;
+    setStatus("Loading the latest manifest…");
+    fetch(MANIFEST_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("http " + response.status);
+        return response.text();
+      })
+      .then(function (text) {
+        latestManifestText = text;
+        var count = (text.replace(/<!--[\s\S]*?-->/g, "").match(/<package\b/g) || []).length;
+        setStatus("Loaded " + count + " packages from the latest manifest. Your lines go just before </slidia>.");
+        previewDetails.hidden = false;
+        render();
+      })
+      .catch(function () {
+        setStatus("Could not load the latest manifest — the generator still works offline.");
+      });
+  }
+
+  function handleIconFile() {
+    if (iconObjectUrl) {
+      URL.revokeObjectURL(iconObjectUrl);
+      iconObjectUrl = null;
+    }
+    var file = iconFileEl.files && iconFileEl.files[0];
+    var img = iconPreviewEl ? iconPreviewEl.querySelector("img") : null;
+    if (!file) {
+      if (iconPreviewEl) iconPreviewEl.hidden = true;
+      if (img) img.removeAttribute("src");
+      iconUrlAuto = true;
+      render();
+      return;
+    }
+    if (file.type && !/^image\//.test(file.type)) {
+      setStatus("The icon must be a PNG, JPEG, WebP or SVG image.");
+      iconFileEl.value = "";
+      return;
+    }
+    iconObjectUrl = URL.createObjectURL(file);
+    if (img) {
+      img.src = iconObjectUrl;
+      img.alt = "Preview of " + file.name;
+    }
+    if (iconPreviewEl) iconPreviewEl.hidden = false;
+    iconUrlAuto = true;
+    render();
+  }
+
+  function syncDerivative() {
+    if (!derivativeEl || !derivativeOriginalEl) return;
+    if (derivativeOriginalEl.checked) {
+      if (!derivativeEl.value.trim()) derivativeEl.value = ORIGINAL_DERIVATIVE;
+      derivativeEl.disabled = true;
+    } else {
+      derivativeEl.disabled = false;
+      if (derivativeEl.value.trim() === ORIGINAL_DERIVATIVE) derivativeEl.value = "";
+    }
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(confirmCopy, function () { fallbackCopy(text); confirmCopy(); });
+    } else {
+      fallbackCopy(text);
+      confirmCopy();
+    }
+  }
+
+  function fallbackCopy(text) {
+    var area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "absolute";
+    area.style.left = "-9999px";
+    document.body.appendChild(area);
+    area.select();
+    try { document.execCommand("copy"); } catch (_) {}
+    document.body.removeChild(area);
+  }
+
+  function confirmCopy() {
+    if (!copyBtn) return;
+    var original = copyBtn.textContent;
+    copyBtn.textContent = "Copied!";
+    copyBtn.classList.add("is-copied");
+    setTimeout(function () {
+      copyBtn.textContent = original;
+      copyBtn.classList.remove("is-copied");
+    }, 1600);
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var text = buildLines();
+      if (text) copyText(text);
+    });
+  }
+  if (iconFileEl) iconFileEl.addEventListener("change", handleIconFile);
+  form.addEventListener("input", function (event) {
+    if (event.target === iconUrlEl) iconUrlAuto = false;
+    if (event.target === iconFileEl) return;
+    render();
+  });
+  form.addEventListener("change", function (event) {
+    if (event.target === derivativeOriginalEl) syncDerivative();
+    render();
+  });
+
+  render();
+  loadManifest();
+})();
+</script><script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

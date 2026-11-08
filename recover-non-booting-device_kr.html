@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr" data-locale="kr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>MTKclient 실패 후 부팅되지 않는 MediaTek 플레이어를 복구하는 방법 · Innioasis 커뮤니티</title>
+  <meta name="description" content="MTKclient가 Linux 또는 macOS에서 플래시를 중단한 후 부팅되지 않는 Innioasis Y1, Y2, G1, Timmkoo 및 MediaTek 플레이어의 브릭을 해제하고 복구하는 단계별 가이드입니다.">
+  <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_kr.html">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/recover-non-booting-device_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/recover-non-booting-device_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/recover-non-booting-device_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/recover-non-booting-device_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/recover-non-booting-device_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/recover-non-booting-device_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/recover-non-booting-device_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/recover-non-booting-device_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/recover-non-booting-device_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/recover-non-booting-device_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/recover-non-booting-device_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/recover-non-booting-device_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/recover-non-booting-device_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/recover-non-booting-device_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/recover-non-booting-device_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/recover-non-booting-device_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/recover-non-booting-device_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/recover-non-booting-device_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/recover-non-booting-device_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/recover-non-booting-device_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/recover-non-booting-device_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/recover-non-booting-device_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/recover-non-booting-device_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/recover-non-booting-device_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/recover-non-booting-device_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/recover-non-booting-device_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/recover-non-booting-device_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/recover-non-booting-device_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/recover-non-booting-device_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/recover-non-booting-device_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/recover-non-booting-device_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/recover-non-booting-device_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/recover-non-booting-device_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">본문으로 건너뛰기</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">문제 해결 및 장치 복구</p>
+      <h1>MTKclient 플래싱 후 부팅되지 않는 장치 복구</h1>
+      <p class="lead">Innioasis Y1, Y2 또는 MediaTek 장치의 전원이 켜지지 않거나 macOS 또는 Linux에서 MTKclient로 플래시한 후 검은색 화면이 표시되는 경우 당황하지 마십시오. 하드웨어 BootROM(BROM)은 영구적이며 파괴할 수 없습니다.</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>MTKclient가 멈추거나 검은색 화면을 남길 수 있는 이유</h2>
+      <p>MTKclient는 소프트웨어 익스플로잇 페이로드(kamakiri / amonet)를 사용하여 DA 인증과 libusb를 통한 원시 USB 통신을 우회합니다. macOS 및 Linux ARM64 시스템의 경우:</p>
+      <ul class="lumen-benefits-list">
+        <li>USB macOS의 핸드셰이크 대기 시간 또는 포트 시간 초과로 인해 전송 중에 DA 페이로드 주입이 중단될 수 있습니다.</li>
+        <li>누락되거나 불완전한 파티션 헤더로 인해 부트로더(프리로더/lk)가 응답하지 않는 상태가 됩니다.</li>
+        <li>플레이어가 완전히 작동하지 않은 것처럼 보입니다. LED도 없고, 충전 아이콘도 없고, 화면 백라이트도 없습니다.</li>
+      </ul>
+      <p>이 상태에서도 MediaTek 칩셋은 다시 <strong>브롬 모드</strong> (USB VID 0e8d, PID 0003), 공식적인 하위 수준 복구 준비가 완료되었습니다.</p>
+    </section>
+
+    <section class="lumen-guide-section" id="sp-flash-tool-engine">
+      <h2>최종 복구 방법: 업데이터 CE의 SP Flash Tool 엔진</h2>
+      <p>벽돌이 된 플레이어를 복구하는 가장 안전하고 신뢰할 수 있는 방법은 다음을 사용하는 것입니다. <strong>업데이터 CE</strong> 공식으로 구성 <strong>SP Flash Tool</strong> 백엔드.</p>
+      
+      <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
+        <h3>업데이터 CE의 정확한 단계:</h3>
+        <ol class="lumen-steps" style="margin-top: 10px;">
+          <li>열기 <strong>업데이터 CE</strong>.</li>
+          <li>클릭 <strong>설정</strong> 왼쪽 탐색 사이드바에 있습니다.</li>
+          <li>고급 섹션까지 아래로 스크롤하여 활성화합니다. <strong>고급 설정 표시</strong>.</li>
+          <li>아래에 <strong>설치 방법</strong> (또는 <em>MediaTek 설치 프로그램용 플래싱 엔진</em>), <strong>플래시 방식</strong> 드롭다운.</li>
+          <li>선택 항목을 다음에서 변경하세요. <em>자동(권장)</em> 또는 <em>MTKClient</em> 에 <strong>SP Flash Tool</strong>.</li>
+          <li>프롬프트를 확인하고 기본 설치 흐름으로 돌아갑니다.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>SP Flash Tool에 대한 플랫폼 아키텍처 및 OS 요구 사항</h2>
+      <p>MediaTek 공식 <code>SP Flash Tool</code> 바이너리는 기본적으로 다음과 같이 컴파일됩니다. <strong>Linux용 x86_64 ELF 바이너리</strong> 그리고 <strong>Windows x64용 PE32+ 실행 파일</strong>.</p>
+      <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
+        <strong>macOS 및 ARM64 Linux 사용자를 위한 중요한 하드웨어 참고 사항:</strong><br>
+        MediaTek은 macOS(Darwin) 또는 Linux ARM64(aarch64)용으로 SP Flash Tool을 컴파일하지 않기 때문에 브릭을 경험하는 macOS 사용자 및 ARM64 Linux 사용자(예: Asahi Linux를 실행하는 Raspberry Pi 또는 Apple Silicon)는 플레이어를 다음에 연결해야 합니다.
+        <ul style="margin: 8px 0 0 20px;">
+          <li>안 <strong>x64 윈도우 PC</strong> (Windows 10/11 64비트) 또는</li>
+          <li>안 <strong>x86_64 리눅스 PC</strong> (Ubuntu, Debian, Fedora, Arch 64비트).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>단계별 하드웨어 언브릭킹 프로세스</h2>
+      <ol class="lumen-steps">
+        <li><strong>플레이어 연결을 끊습니다.</strong> 플레이어와 PC에서 USB 케이블을 완전히 분리하세요.</li>
+        <li><strong>하드 전원 끄기:</strong> 칩셋의 전원이 완전히 꺼지고 저전력 USB 루프에 빠지지 않도록 전원 버튼(또는 전원 + 볼륨 작게)을 15초 동안 누르세요.</li>
+        <li><strong>SP Flash Tool 모드로 업데이터 CE 실행:</strong> 기기 모델을 선택하세요(예: <em>Innioasis Y1</em> 또는 <em>Innioasis Y2</em>) 그리고 선택 <em>원본 소프트웨어</em> 재고 파티션을 복원합니다.</li>
+        <li><strong>설치/복원 시작:</strong> 클릭 <em>설치 / 복원</em> 업데이터 CE에서. 상태 프롬프트가 나타날 때까지 기다리십시오. <em>플레이어를 기다리는 중...</em></li>
+        <li><strong>BROM을 트리거할 USB 케이블 삽입:</strong> 장치가 꺼져 있는 동안 USB 케이블을 고속 마더보드 USB 포트에 직접 연결하십시오(전원이 꺼진 USB 허브는 피하십시오).</li>
+        <li>시스템은 MediaTek VCOM 포트를 감지하고, 다운로드 에이전트(DA)를 푸시하고, 파티션 테이블을 다시 쓰고, 모든 펌웨어 이미지를 깔끔하게 복원합니다.</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>모델 및 운영 체제별 순열</h2>
+      <div style="overflow-x: auto;">
+        <table class="lumen-release-table">
+          <thead>
+            <tr>
+              <th>모델</th>
+              <th>실패한 플랫폼</th>
+              <th>권장 복구 설정</th>
+              <th>엔진 및 모드</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>macOS(애플 실리콘/인텔)</td>
+              <td>윈도우 x64 / 리눅스 x86_64 PC</td>
+              <td>SP Flash Tool + Y1 재고 ROM</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>리눅스 ARM64 / x86_64</td>
+              <td>Linux x86_64 또는 Windows x64 PC</td>
+              <td>SP Flash Tool + 커뮤니티 DA</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y2</strong></td>
+              <td>macOS(MTK클라이언트 중단됨)</td>
+              <td>윈도우 x64 / 리눅스 x86_64 PC</td>
+              <td>SP Flash Tool + Y2 분산 복구</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis G1 / G3 / G5</strong></td>
+              <td>macOS/Linux MTK클라이언트</td>
+              <td>VCOM 드라이버가 포함된 Windows x64 PC</td>
+              <td>SP Flash Tool + 공장 펌웨어</td>
+            </tr>
+            <tr>
+              <td><strong>Mechen H1 / Timmkoo A5</strong></td>
+              <td>모든 플랫폼</td>
+              <td>Windows x64 또는 Linux x86_64 PC</td>
+              <td>SP Flash Tool + 분산형 파일</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261108c" defer></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="jp" dir="ltr" data-locale="jp">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2 (Rockbox-Y2) の Rockbox: 概要、ビルド、インストール ガイド</title>
+  <meta name="description" content="Y2、Rockbox-Y2、および Rockbox-y2 の Rockbox は、Innioasis Y2 のコミュニティ Rockbox ファームウェア ポートを参照します。これに含まれるものと、Innioasis Updater CE を使用してインストールする方法を学びます。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://innioasis.app/rockbox-for-y2_jp.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Y2 (Rockbox-Y2) の Rockbox: 概要、ビルド、インストール ガイド">
+  <meta property="og:description" content="Y2、Rockbox-Y2、および Rockbox-y2 の Rockbox は、Innioasis Y2 のコミュニティ Rockbox ファームウェア ポートを参照します。これに含まれるものと、Innioasis Updater CE を使用してインストールする方法を学びます。">
+  <meta property="og:url" content="https://innioasis.app/rockbox-for-y2_jp.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta property="og:site_name" content="Innioasis アップデーター">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2 (Rockbox-Y2) の Rockbox: 概要、ビルド、インストール ガイド">
+  <meta name="twitter:description" content="Y2、Rockbox-Y2、および Rockbox-y2 の Rockbox は、Innioasis Y2 のコミュニティ Rockbox ファームウェア ポートを参照します。これに含まれるものと、Innioasis Updater CE を使用してインストールする方法を学びます。">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rockbox for Y2 (Rockbox-Y2): overview, builds and install guide","description":"Rockbox for Y2, Rockbox-Y2 and rockbox-y2 refer to the community Rockbox firmware port for the Innioasis Y2.","image":"https://innioasis.app/assets/og-image.png","author":{"@type":"Organization","name":"Innioasis Community"},"mainEntityOfPage":"https://innioasis.app/rockbox-for-y2.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Firmware Downloads","item":"https://innioasis.app/firmware.html"},{"@type":"ListItem","position":3,"name":"Rockbox for Y2","item":"https://innioasis.app/rockbox-for-y2.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Rockbox for Y2 the same as Rockbox-Y2?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rockbox, Rockbox-Y2, Rockbox for Y2 and rockbox-y2 all refer to the community Rockbox port for the Innioasis Y2."}},{"@type":"Question","name":"Can I use the Y1 Rockbox package on a Y2?","acceptedAnswer":{"@type":"Answer","text":"No. The Y2 uses a separate Rockbox build (rom_y2.zip). Always select Y2 in Innioasis Updater CE."}},{"@type":"Question","name":"Where does Updater CE download Rockbox-Y2 from?","acceptedAnswer":{"@type":"Answer","text":"Innioasis Updater CE always downloads firmware packages directly from the community firmware developers (spycemagic/y2-rockbox), who are solely responsible for listing their releases in Updater CE."}}]}</script>
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/rockbox-for-y2.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/rockbox-for-y2.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-for-y2_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-for-y2_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/rockbox-for-y2_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-for-y2_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-for-y2_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-for-y2_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-for-y2_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-for-y2_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-for-y2_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-for-y2_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/rockbox-for-y2_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-for-y2_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-for-y2_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/rockbox-for-y2_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/rockbox-for-y2_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-for-y2_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-for-y2_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-for-y2_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-for-y2_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-for-y2_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-for-y2_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-for-y2_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-for-y2_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-for-y2_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-for-y2_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-for-y2_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-for-y2_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-for-y2_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-for-y2_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-for-y2_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-for-y2_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-for-y2_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-for-y2_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">本文へスキップ</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+  <p class="lumen-doc-back"><a href="firmware_ja.html?model=Y2&amp;software=rockbox-y2">← ファームウェアのダウンロード</a></p>
+  <header>
+    <p class="lumen-kicker">Rockbox-Y2 · Innioasis Y2</p>
+    <h1>Y2 の Rockbox (Rockbox-Y2)</h1>
+    <p class="lead">Rockbox-Y2 (Y2 の Rockbox とも呼ばれます) は、Innioasis Y2 の専用コミュニティ Rockbox ファームウェア ポートです。独自の ROM パッケージを使用します (<code>rom_y2.zip</code>) であり、Innioasis Updater CE を通じて直接インストールされます。</p>
+    <div class="lumen-actions">
+      <a class="lumen-button lumen-button--primary" href="rockbox-y2/install.html">Rockbox-Y2 をインストールします</a>
+      <a class="lumen-button" href="rockbox-y2/download.html">ROM をダウンロードします</a>
+      <a class="lumen-button" href="guides/rockbox-y2.html">書かれたチュートリアル</a>
+      <a class="lumen-button" href="rockbox-y2/">Rockbox-Y2 ハブ</a>
+    </div>
+  </header>
+
+  <section class="lumen-guide-section">
+    <h2>Innioasis Y2 専用に構築</h2>
+    <p>Innioasis Updater CE では、このファームウェアは次のようにリストされます。 <strong>Rockbox</strong> いつ <strong>Y2</strong> が選択されます。そのリリースは、 <a href="firmware_ja.html?model=Y2&amp;software=rockbox-y2">spycemagic/y2-rockbox</a> パッケージ名のプロジェクト <code>rom_y2.zip</code>.</p>
+    <p>Y1 ファームウェア パッケージを Y2 にインストールしないでください。選択中 <strong>Y2</strong> Updater CE では、リリース リストが Y2 と互換性のあるビルドのみに自動的にフィルターされます。</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Rockbox-Y2 が提供するもの</h2>
+    <ul class="lumen-benefits-list">
+      <li><strong>タグベースの音楽ライブラリ</strong> — オーディオ ファイルのタグからアルバム、アーティスト、ジャンルを参照するか、フォルダーを直接参照します。</li>
+      <li><strong>再生コントロール</strong> — ギャップレス再生、クロスフェード、リプレイゲイン、イコライザー設定。</li>
+      <li><strong>カスタムテーマ</strong> — Rockbox-Y2 ビルドと互換性のあるテーマをインストールします (<a href="rockbox-y2-themes.html">Y2 テーマ ガイド</a>).</li>
+      <li><strong>100%オフライン</strong> — アカウントやサブスクリプションなしで MicroSD カードからローカル ファイルを再生します。</li>
+      <li><strong>簡単な工場出荷時の復元</strong> — Updater CEでいつでもY2の元のソフトウェアに戻ります。</li>
+    </ul>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Rockbox-Y2 リリースの選択</h2>
+    <ul class="lumen-benefits-list">
+      <li>常に選択する <strong>Y2</strong> で <strong>デバイスモデル</strong> まず。</li>
+      <li>特定のバージョンをテストする場合を除き、最新のリリースを選択してください。</li>
+      <li>読んでください <a href="release-notes/rockbox-y2/index_ja.html">Rockbox-Y2 リリースノート</a> 各ビルドで何が変更されたかを確認します。</li>
+    </ul>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>コミュニティ開発者からの直接ダウンロード</h2>
+    <p>Innioasis Updater CE は常にコミュニティ ファームウェア開発者からファームウェア パッケージを直接ダウンロードします (<a href="firmware_ja.html?model=Y2&amp;software=rockbox-y2">spycemagic/y2-rockbox</a>)、これらの開発者はソフトウェア リリースを Updater CE にリストする責任を単独で負います。</p>
+    <p>Updater CE をダウンロードしてフラッシュすることができます <code>rom_y2.zip</code> 自動的にパッケージをダウンロードするか、弊社からパッケージをダウンロードします。 <a href="rockbox-y2/download.html">Rockbox-Y2 ダウンロード ページ</a> そして <a href="rockbox-rom-download_ja.html">Rockbox ROM ダウンロード ページ</a>.</p>
+    <div class="lumen-actions">
+      <a class="lumen-button" href="rockbox-y2/download.html">Rockbox-Y2 ダウンロード数</a>
+      <a class="lumen-button" href="rockbox-y2/portable-zip.html">ローカル ZIP からインストールする</a>
+    </div>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Rockbox-Y2 のインストール方法</h2>
+    <ol class="lumen-steps">
+      <li>Innioasis Updater CEを開いて設定します <strong>デバイスモデル</strong> 支援先: <strong>Y2</strong>.</li>
+      <li>選択 <strong>Rockbox</strong> で <strong>ソフトウェア</strong>.</li>
+      <li>リストから Y2 リリースを選択します。</li>
+      <li>クリック <strong>インストール / 復元</strong> したがって、Updater CE は開発者からパッケージを直接ダウンロードします。</li>
+      <li>Updater CE の要求に応じて、Y2 の電源を完全にオフにし、USB データ ケーブルで接続します。</li>
+      <li>完了メッセージが表示されるまで待ってから、プラグを抜き、Y2 の電源を入れます。</li>
+    </ol>
+    <p>完全なステップバイステップのチュートリアルについては、「 <a href="guides/rockbox-y2.html">Rockbox-Y2 チュートリアル</a>.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>元の Y2 ソフトウェアの復元</h2>
+    <p>工場出荷時のファームウェアに戻すには、次を選択します。 <strong>Y2</strong> そして <strong>純正ソフトウェア</strong> Updater CE で安定したリリースを選択し、 <strong>インストール / 復元</strong>。を参照してください。 <a href="rockbox-y2/restore-stock.html">復元ガイド</a> そして <a href="original-software-y2_ja.html">Y2 オリジナル ソフトウェア ページ</a>.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>よくある質問</h2>
+    <details>
+      <summary>Updater CE は Rockbox-Y2 をどこからダウンロードしますか?</summary>
+      <p>Updater CE は常に、コミュニティ ファームウェア開発者自身のリリースからファームウェア パッケージを直接ダウンロードします (<code>spycemagic/y2-rockbox</code>）。開発者は、ソフトウェア リリースを Updater CE にリストすることに単独で責任を負います。</p>
+    </details>
+    <details>
+      <summary>パッケージの名前が rom_y2.zip なのはなぜですか?</summary>
+      <p>開発者は Y2 ファームウェア アーカイブに名前を付けます <code>rom_y2.zip</code> したがって、Y1 と混同することはできません <code>rom.zip</code>.</p>
+    </details>
+    <details>
+      <summary>Y1 テーマは Y2 で動作しますか?</summary>
+      <p>いつもではありません。 Y2 ビルドのリリース ノートを確認し、 <a href="rockbox-y2-themes.html">Rockbox-Y2 テーマ ガイド</a>.</p>
+    </details>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>関連ガイド</h2>
+    <div class="lumen-grid">
+      <article class="lumen-card"><h3><a href="rockbox-y2/">Rockbox-Y2 ハブ</a></h3><p>すべての Y2 ガイド: インストール、ダウンロード、テーマ、復元、デュアル ブート、トラブルシューティング。</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-y1-vs-y2.html">Rockbox-Y1 対 Rockbox-Y2</a></h3><p>Y1 ビルドと Y2 Rockbox ビルドの違い。</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-y2-themes.html">Rockbox-Y2 テーマ</a></h3><p>Rockbox-Y2 にテーマをインストールしてリセットしています。</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-for-y1_ja.html">Y1 の Rockbox</a></h3><p>Innioasis Y1 ポートの概要とインストール ガイド。</p></article>
+    </div>
+  </section>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="nav.js?v=20261103brand" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

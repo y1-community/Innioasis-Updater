@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr" data-locale="kr">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+    <meta charset="UTF-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬리디아 | Innioasis Y1 펌웨어 리소스 - Innioasis 펌웨어 다운로드</title>
+    <meta name="description" content="Slidia가 Innioasis Y1 펌웨어 패키지, 테마 및 개발자 리소스를 구성하는 방법을 알아보세요. 프로젝트 저장소 및 관련 업데이터 가이드를 찾아보세요.">
+    <link rel="canonical" href="https://innioasis.app/slidia_kr.html">
+    <link rel="stylesheet" href="lumen.css?v=20261114video">
+    <link rel="stylesheet" href="site-theme.css?v=20260803">
+    <link rel="stylesheet" href="site-pages.css?v=20260818">
+    <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: min(var(--lumen-max, 1180px), calc(100% - 2rem));
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .header-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Hero Banner Section */
+        .hero-banner {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 35px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-banner .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-banner .features {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 18px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 180px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .feature-item .icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #3498db;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .cta-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.6);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .download-btn .icon {
+            margin-right: 10px;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 22px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            color: white;
+            opacity: 0.8;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            opacity: 1;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            max-width: 240px;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-banner.fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .cta-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+
+        .cta-banner h3 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-banner p {
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .cta-banner .cta-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-banner .cta-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .cta-banner .close-btn {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 11px;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .cta-banner .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Platform-specific dialog styles */
+        .platform-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 2000;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            display: none;
+        }
+
+        .platform-dialog.show {
+            display: block;
+        }
+
+        .platform-dialog h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .platform-dialog p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .platform-dialog .btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .platform-dialog .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .platform-dialog .btn-secondary {
+            background: #6c757d;
+        }
+
+        .platform-dialog .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .dialog-overlay.show {
+            display: block;
+        }
+
+        /* Command box styles */
+        .command-box {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .command-box code {
+            background: var(--bg-primary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-secondary);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            flex: 1;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-1px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cta-banner {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                border-radius: 20px;
+            }
+            
+            .hero-banner h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-banner .subtitle {
+                font-size: 1rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-item {
+                min-width: auto;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-banner h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-banner .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            .container {
+                padding: 8px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .hero-banner {
+                padding: 25px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+<meta property="og:site_name" content="Innioasis 소프트웨어 업데이트">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/slidia.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/slidia.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/slidia_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/slidia_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/slidia_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/slidia_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/slidia_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/slidia_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/slidia_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/slidia_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/slidia_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/slidia_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/slidia_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/slidia_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/slidia_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/slidia_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/slidia_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/slidia_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/slidia_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/slidia_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/slidia_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/slidia_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/slidia_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/slidia_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/slidia_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/slidia_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/slidia_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/slidia_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/slidia_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/slidia_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/slidia_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/slidia_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/slidia_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/slidia_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/slidia_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app lumen-legacy-page slidia-page">
+    <a class="lumen-skip-link" href="#main">본문으로 건너뛰기</a>
+    <div id="nav-root"></div>
+    <main id="main" class="slidia-tool-page">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="assets/icon.ico" alt="Innioasis 아이콘" class="header-icon">
+            <div class="header-text">
+                <h1>슬리디아</h1>
+                <p>Innioasis Y1 장치에 대한 고급 펌웨어 관리</p>
+            </div>
+        </div>
+
+        <!-- Hero Banner Section -->
+        <div class="hero-banner">
+            <h1>🚀 슬리디아</h1>
+            <p class="subtitle">전문가급 펌웨어 관리 플랫폼</p>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <span class="icon">📦</span>
+                    <h3>패키지 관리</h3>
+                    <p>펌웨어, 테마, 사용자 정의를 위한 종합 패키지 관리 시스템</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="icon">🔧</span>
+                    <h3>고급 도구</h3>
+                    <p>개발자와 고급 사용자를 위한 전문가급 도구</p>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="icon">🌐</span>
+                    <h3>리포지토리 시스템</h3>
+                    <p>모든 Y1 리소스에 쉽게 액세스할 수 있는 중앙 집중식 저장소 시스템</p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <a href="https://github.com/team-slide/slidia" target="_blank" class="download-btn">
+                    <span class="icon">📚</span>
+                    Slidi 저장소 보기
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <h2 class="section-title">슬리디아란 무엇인가요?</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📋 매니페스트 시스템</h3>
+                    <p>Slidia는 Y1 장치에 사용 가능한 모든 펌웨어 패키지, 테마 및 도구를 카탈로그화하는 포괄적인 XML 매니페스트 시스템을 제공합니다. 이러한 중앙 집중식 접근 방식을 사용하면 리소스를 쉽게 검색하고 관리할 수 있습니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🔗 리포지토리 통합</h3>
+                    <p>프로젝트 저장소와 원활하게 통합되어 최신 펌웨어 릴리스, 업데이트 및 커뮤니티 기여에 대한 실시간 액세스를 제공합니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>📱 장치 호환성</h3>
+                    <p>포괄적인 장치 유형 및 모델 지원을 통해 Y1 장치용으로 특별히 제작되어 모든 Y1 변형에 대한 호환성을 보장합니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>⚡ 성능 최적화</h3>
+                    <p>최적의 릴리스 피드를 위한 지능형 캐싱 및 속도 제한을 통한 고성능 패키지 검색 및 관리입니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🌍 크로스 플랫폼</h3>
+                    <p>Windows, macOS, Linux 시스템 전반에서 원활하게 작동하는 플랫폼 독립적인 디자인입니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🛠️ 개발자 친화적</h3>
+                    <p>깔끔한 API와 잘 문서화된 구조를 통해 개발자는 자신의 도구 및 애플리케이션을 쉽게 확장하고 통합할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>작성자가 ❤️로 작성함 <a href="https://github.com/team-slide" target="_blank" rel="noopener noreferrer">라이언 스펙터와 팀 슬라이드</a> ·
+               <a href="https://reddit.com/r/innioasis" target="_blank" rel="noopener noreferrer">r/Innioasis</a> ·
+               <a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer">Discord</a></p>
+        </div>
+    </div>
+    </main>
+    <div id="footer-root"></div>
+    <div id="support-toolbar-slot"></div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner" id="ctaBanner">
+        <button class="close-btn" onclick="closeCTABanner()">×</button>
+        <h3>🚀 Innioasis 업데이터 받기</h3>
+        <p>시스템에 맞는 데스크톱 앱을 다운로드하세요.</p>
+        <button onclick="downloadForPlatform()" class="cta-btn">지금 다운로드</button>
+    </div>
+
+    <!-- Platform-specific dialogs -->
+    <div class="dialog-overlay" id="dialogOverlay"></div>
+    
+    <!-- Windows Dialog -->
+    <div class="platform-dialog" id="windowsDialog">
+        <h3>🪟 윈도우 설치</h3>
+        <p>Windows 설치 프로그램을 다운로드하고 설치 지침을 따르십시오. 설치 후에는 적절한 장치 통신을 위해 MTK 드라이버를 설치해야 합니다.</p>
+        <button class="btn" onclick="downloadWindows()">Windows 설치 프로그램 다운로드</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">닫기</button>
+    </div>
+
+    <!-- macOS Dialog -->
+    <div class="platform-dialog" id="macDialog">
+        <h3>🍎 macOS 설치</h3>
+        <p>이 명령을 복사하여 터미널에 붙여넣고 Enter를 누르세요.</p>
+        <div class="command-box">
+            <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/run_mac.sh)"</code>
+            <button class="copy-btn" onclick="copyMacCommand()">📋 복사</button>
+        </div>
+        <p><em>그러면 필요한 모든 것이 자동으로 설정됩니다!</em></p>
+        <p>처음 실행한 후 동일한 명령을 다시 사용하여 나중에 사용할 수 있도록 앱을 시작할 수 있습니다.</p>
+        <p><strong>메모:</strong> 이것은 임시 미리보기 릴리스입니다. 터미널 창이 필요하지 않은 설치 프로그램이 곧 출시될 예정입니다.</p>
+        <button class="btn" onclick="openMacInstructions()">매뉴얼 지침 보기</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">닫기</button>
+    </div>
+
+    <!-- Linux Dialog -->
+    <div class="platform-dialog" id="linuxDialog">
+        <h3>🐧 리눅스 설치</h3>
+        <p>최상의 경험을 위해서는 Ubuntu가 권장되지만 다른 배포판도 작동해야 합니다.</p>
+        <p>터미널에서 다음 한 줄 설치 명령을 실행하세요.</p>
+        <pre style="background:#f4f4f5;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:0.85rem;user-select:all;white-space:pre-wrap;word-break:break-all;margin:12px 0;">curl -sL https://github.com/y1-community/Innioasis-Updater/releases/latest/download/run_linux.sh | bash</pre>
+        <p>종속성 세부정보 및 문제 해결을 보려면 전체 가이드를 열어보세요.</p>
+        <button class="btn" onclick="openLinuxInstructions()">전체 가이드 열기</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">닫기</button>
+    </div>
+
+    <!-- ChromeOS/FydeOS Dialog -->
+    <div class="platform-dialog" id="chromeosDialog">
+        <h3>🖥️ ChromeOS/FydeOS</h3>
+        <p>Linux 모드에서 Innioasis 업데이터를 실행할 수 있지만 이 구성은 테스트하지 않았습니다. 새 탭의 Linux 지침을 따르고 Linux 환경에서 실행해 보세요.</p>
+        <p><em>참고: 이는 실험적이므로 예상대로 작동하지 않을 수 있습니다.</em></p>
+        <button class="btn" onclick="openLinuxInstructions()">Linux 지침 보기</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">닫기</button>
+    </div>
+
+    <!-- Windows ARM64 Dialog -->
+    <div class="platform-dialog" id="windowsArmDialog">
+        <h3>🪟 윈도우 ARM64</h3>
+        <p>Windows ARM64 사용자의 경우 고급 사용자는 Python, Libusb, android-platform-tools, USBIPD-win 및 WSLg를 사용하여 Linux 버전을 실행할 수 있습니다. 우분투를 권장합니다.</p>
+        <button class="btn" onclick="openLinuxInstructions()">Linux 지침 보기</button>
+        <button class="btn btn-secondary" onclick="closeDialog()">닫기</button>
+    </div>
+
+    <script>
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Detect user's operating system and update CTA banner
+            detectUserOS();
+            checkBannerPreference();
+            
+            // Add scroll listener for banner fade-out
+            window.addEventListener('scroll', checkDownloadButtonVisibility);
+            // Check initially
+            checkDownloadButtonVisibility();
+            
+            // Add smooth scrolling for any anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add hover effects for feature items
+            const featureItems = document.querySelectorAll('.feature-item');
+            featureItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add click tracking for the repository button
+            const repoBtn = document.querySelector('.download-btn');
+            if (repoBtn) {
+                repoBtn.addEventListener('click', function() {
+                    console.log('Repository button clicked');
+                });
+            }
+        });
+
+        // Add some visual feedback for the repository button
+        document.addEventListener('DOMContentLoaded', function() {
+            const repoBtn = document.querySelector('.download-btn');
+            if (repoBtn) {
+                repoBtn.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(-1px)';
+                });
+                
+                repoBtn.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+            }
+        });
+
+        // Detect user's operating system and update CTA banner
+        function detectUserOS() {
+            const userAgent = navigator.userAgent;
+            let os = 'Windows';
+            let downloadText = 'Download for Windows';
+            let isArm64 = false;
+            
+            if (userAgent.includes('Mac')) {
+                os = 'macOS';
+                downloadText = 'Setup on Mac';
+            } else if (userAgent.includes('Linux')) {
+                os = 'Linux';
+                downloadText = 'Download for Linux';
+            } else if (userAgent.includes('CrOS') || userAgent.includes('FydeOS')) {
+                os = 'ChromeOS/FydeOS';
+                downloadText = 'Linux Mode Setup';
+            }
+            
+            // Check for Windows ARM64
+            if (userAgent.includes('Windows') && (userAgent.includes('ARM64') || userAgent.includes('ARM'))) {
+                isArm64 = true;
+                downloadText = 'Download for Windows ARM64';
+            }
+            
+            // Store platform info globally
+            window.userPlatform = { os, isArm64 };
+            
+            // Update CTA banner text
+            const ctaTitle = document.querySelector('#ctaBanner h3');
+            const ctaDesc = document.querySelector('#ctaBanner p');
+            const ctaBtn = document.querySelector('#ctaBanner .cta-btn');
+            
+            if (ctaTitle && ctaDesc && ctaBtn) {
+                ctaTitle.textContent = `🚀 Get Innioasis Updater`;
+                ctaDesc.textContent = `Download the desktop app for ${os}`;
+                ctaBtn.textContent = downloadText;
+            }
+        }
+
+        // Close CTA banner
+        function closeCTABanner() {
+            const banner = document.getElementById('ctaBanner');
+            if (banner) {
+                banner.style.display = 'none';
+                // Store preference in localStorage
+                localStorage.setItem('ctaBannerClosed', 'true');
+            }
+        }
+
+        // Check if banner was previously closed
+        function checkBannerPreference() {
+            if (localStorage.getItem('ctaBannerClosed') === 'true') {
+                const banner = document.getElementById('ctaBanner');
+                if (banner) {
+                    banner.style.display = 'none';
+                }
+            }
+        }
+
+        // Check if download button is visible and fade out banner
+        function checkDownloadButtonVisibility() {
+            const downloadBtn = document.querySelector('.download-btn');
+            const banner = document.getElementById('ctaBanner');
+            
+            if (downloadBtn && banner) {
+                const rect = downloadBtn.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    banner.classList.add('fade-out');
+                } else {
+                    banner.classList.remove('fade-out');
+                }
+            }
+        }
+
+        // Platform-specific download functions
+        function downloadForPlatform() {
+            const platform = window.userPlatform;
+            
+            if (platform.isArm64) {
+                showDialog('windowsArmDialog');
+            } else if (platform.os === 'Windows') {
+                showDialog('windowsDialog');
+            } else if (platform.os === 'macOS') {
+                showDialog('macDialog');
+            } else if (platform.os === 'Linux') {
+                showDialog('linuxDialog');
+            } else if (platform.os === 'ChromeOS/FydeOS') {
+                showDialog('chromeosDialog');
+            }
+        }
+
+        function downloadWindows() {
+            // Download Windows installer
+            const link = document.createElement('a');
+            link.href = 'https://github.com/team-slide/Innioasis-Updater/releases/download/1.0.0/InnioasisUpdater-Windows.exe';
+            link.download = 'InnioasisUpdater-Windows.exe';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show driver download popup
+            setTimeout(() => {
+                alert('🎉 Download started! After installation, please download the required drivers from drivers.innioasis.app for proper device communication.');
+            }, 1000);
+            
+            closeDialog();
+        }
+
+        function openMacInstructions() {
+            window.open('https://github.com/team-slide/Innioasis-Updater#manual-setup', '_blank');
+        }
+
+        function copyMacCommand() {
+            const command = '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/team-slide/Innioasis-Updater/main/run_mac.sh)"';
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                // Use modern clipboard API
+                navigator.clipboard.writeText(command).then(() => {
+                    showCopySuccess();
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(command);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopyTextToClipboard(command);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess();
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess() {
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = '✅ Copied!';
+            copyBtn.style.background = 'var(--accent-success)';
+            
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = 'var(--accent-primary)';
+            }, 2000);
+        }
+
+        function openLinuxInstructions() {
+            window.open('https://github.com/team-slide/Innioasis-Updater#linux---ubuntu-recommended', '_blank');
+        }
+
+        function showDialog(dialogId) {
+            document.getElementById('dialogOverlay').classList.add('show');
+            document.getElementById(dialogId).classList.add('show');
+        }
+
+        function closeDialog() {
+            document.getElementById('dialogOverlay').classList.remove('show');
+            document.querySelectorAll('.platform-dialog').forEach(dialog => {
+                dialog.classList.remove('show');
+            });
+        }
+
+        // Close dialog when clicking overlay
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('dialogOverlay').addEventListener('click', closeDialog);
+        });
+    </script>
+    <script src="nav.js?v=20261105copyleft" defer></script>
+    <script src="site-init.js?v=20260803" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script><script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

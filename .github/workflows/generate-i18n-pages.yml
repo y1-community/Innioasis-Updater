@@ -72,6 +72,7 @@ jobs:
 
       - name: Build static multilingual page trees & sitemap
         run: |
+          python3 scripts/i18n/generate_multilingual_static_pages.py
           python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
 
       - name: Upload static page artifact
@@ -81,18 +82,19 @@ jobs:
           name: i18n-static-pages
           path: |
             dist/
+            sitemap.xml
             sitemap-i18n.xml
           if-no-files-found: ignore
           retention-days: 14
 
-      - name: Commit updated catalogs, picker index and sitemaps
+      - name: Commit updated catalogs, picker index, static pages and sitemaps
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add i18n/catalogs/ i18n/strings/ i18n/site-locales.json i18n/reviewed/ i18n/prerendered.json sitemap-i18n.xml || true
+          git add i18n/catalogs/ i18n/strings/ i18n/site-locales.json i18n/reviewed/ i18n/prerendered.json sitemap.xml sitemap-i18n.xml *.html || true
           if git diff --cached --quiet; then
             echo "No translation or catalog changes to commit."
           else
-            git commit -m "chore(i18n): update translations and pre-rendered sitemap [skip ci]"
+            git commit -m "chore(i18n): update translations, literal static pages, and sitemaps [skip ci]"
             git push
           fi

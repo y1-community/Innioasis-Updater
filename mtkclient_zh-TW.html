@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-TW" dir="ltr" data-locale="zh-TW">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MTKClient 和低階復原指南 - Innioasis 和 Timmkoo - Innioasis 韌體下載</title>
+  <meta name="description" content="使用 MTKClient 和 SP Flash Tool 為 Innioasis 和 Timmkoo 播放器提供低階 MediaTek 復原、引導程式 unbrick 指令以及驅動程式診斷。">
+  <link rel="canonical" href="https://innioasis.app/mtkclient_zh-TW.html">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261019d">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20261019d">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20261019d" defer></script>
+<meta property="og:site_name" content="Innioasis 軟體更新">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/mtkclient.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/mtkclient.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/mtkclient_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/mtkclient_ja.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/mtkclient_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/mtkclient_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/mtkclient_es.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/mtkclient_es-419.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/mtkclient_fr.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/mtkclient_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/mtkclient_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/mtkclient_zh-TW.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/mtkclient_ru.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/mtkclient_pt.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/mtkclient_pt-BR.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/mtkclient_it.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/mtkclient_ko.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/mtkclient_ar.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/mtkclient_hi.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/mtkclient_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/mtkclient_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/mtkclient_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/mtkclient_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/mtkclient_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/mtkclient_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/mtkclient_id.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/mtkclient_sv.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/mtkclient_no.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/mtkclient_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/mtkclient_fi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/mtkclient_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/mtkclient_el.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/mtkclient_hu.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/mtkclient_ro.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/mtkclient_he.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/mtkclient_bn.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/mtkclient_fa.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/mtkclient_ms.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">跳至主要內容</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">進階診斷·MediaTek</p>
+      <h1>MTKClient &amp; Unbrick 診斷</h1>
+      <p class="lead">MTKClient 是 Innioasis Updater CE 使用的底層開源 MediaTek 刷新引擎。如果播放器變得無回應或標準刷新失敗，請使用這些復原診斷。</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="troubleshooting_zh-TW.html">一般故障排除</a>
+        <a class="lumen-button" href="drivers_zh-TW.html">驅動程式設定注意事項</a>
+      </div>
+    </header><section class="lumen-guide-section"><div class="lumen-callout"><p class="lumen-kicker">以 Innioasis Updater 開頭</p><h2>在低級別路線之前先嘗試引導路線</h2><p>更新程序一次性完成此操作。選擇軟體，依照螢幕上的步驟操作，即可完成。它還會告訴您修復或新版本何時發布。</p></div></section>
+
+    <section class="lumen-guide-section" aria-labelledby="brom-title">
+      <h2 id="brom-title">了解 BootROM (BROM) 模式</h2>
+      <p>當完全斷電時，MediaTek MT6572 / MT6580 處理器會在載入主引導程式之前在 USB 總線上偵聽握手封包。如果發生損壞的閃存，BROM 模式允許完全恢復重寫。</p>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

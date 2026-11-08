@@ -1,13 +1,34 @@
 (function () {
   "use strict";
 
-  /* Donation appeals. A link can turn every request for support off with
-     ?donations=false, and the donation panel's "Don't show donation appeals
-     again" box stores the same choice. The choice is remembered per site, so
-     the site switcher and footer links pass the flag on to the other
-     Innioasis sites (different origins keep their own copy). ?donations=true
-     turns the appeals back on. */
+  /* Donation appeals and cross-subdomain / inter-page preference persistence.
+     Carries language, donation, and privacy preferences between pages and between
+     innioasis.app and themes.innioasis.app subdomains via URL query parameters
+     and shared cookies (.innioasis.app). */
   var DONATIONS_KEY = "innioasis-donations-off";
+
+  function setSharedCookie(name, value, days) {
+    try {
+      var d = new Date();
+      d.setTime(d.getTime() + ((days || 365) * 24 * 60 * 60 * 1000));
+      var expires = "; expires=" + d.toUTCString();
+      var host = window.location.hostname || "";
+      var domain = /(^|\.)innioasis\.app$/i.test(host) ? "; domain=.innioasis.app" : "";
+      document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/" + domain + "; SameSite=Lax";
+    } catch (_) {}
+  }
+
+  function getSharedCookie(name) {
+    try {
+      var prefix = name + "=";
+      var parts = (document.cookie || "").split(";");
+      for (var i = 0; i < parts.length; i++) {
+        var item = parts[i].trim();
+        if (item.indexOf(prefix) === 0) return decodeURIComponent(item.substring(prefix.length));
+      }
+    } catch (_) {}
+    return null;
+  }
 
   function donationsParam() {
     try {
@@ -21,7 +42,12 @@
   }
 
   function donationsStored() {
-    try { return window.localStorage.getItem(DONATIONS_KEY) === "1"; } catch (_) {}
+    try {
+      if (window.localStorage.getItem(DONATIONS_KEY) === "1") return true;
+    } catch (_) {}
+    try {
+      if (getSharedCookie(DONATIONS_KEY) === "1") return true;
+    } catch (_) {}
     return false;
   }
 
@@ -46,46 +72,193 @@
   }
 
   window.isY1DonationsDisabled = isY1DonationsDisabled;
-  /* Whether this browser has actually stored a donation choice. The privacy
-     panel only offers the switch to visitors who already opted out, so the
-     first-visit copy cannot talk someone out of donating before they have
-     seen the site. */
   window.hasY1DonationsPreference = donationsStored;
+
   window.setY1DonationsDisabled = function (disabled) {
     try {
-      if (disabled) window.localStorage.setItem(DONATIONS_KEY, "1");
-      else window.localStorage.removeItem(DONATIONS_KEY);
+      if (disabled) {
+        window.localStorage.setItem(DONATIONS_KEY, "1");
+        setSharedCookie(DONATIONS_KEY, "1");
+      } else {
+        window.localStorage.removeItem(DONATIONS_KEY);
+        setSharedCookie(DONATIONS_KEY, "0");
+      }
     } catch (_) {}
     applyDonationsState();
     try {
       window.dispatchEvent(new CustomEvent("y1-donations-change", { detail: { disabled: !!disabled } }));
     } catch (_) {}
+    if (typeof window.y1DecorateLinks === "function") {
+      window.y1DecorateLinks();
+    }
   };
 
   (function rememberDonationChoiceFromUrl() {
     var fromUrl = donationsParam();
-    if (fromUrl === null) return;
-    try {
-      if (fromUrl) window.localStorage.removeItem(DONATIONS_KEY);
-      else window.localStorage.setItem(DONATIONS_KEY, "1");
-    } catch (_) {}
+    if (fromUrl !== null) {
+      try {
+        if (fromUrl) {
+          window.localStorage.removeItem(DONATIONS_KEY);
+          setSharedCookie(DONATIONS_KEY, "0");
+        } else {
+          window.localStorage.setItem(DONATIONS_KEY, "1");
+          setSharedCookie(DONATIONS_KEY, "1");
+        }
+      } catch (_) {}
+    } else {
+      var cookieVal = getSharedCookie(DONATIONS_KEY);
+      if (cookieVal === "1") {
+        try { window.localStorage.setItem(DONATIONS_KEY, "1"); } catch (_) {}
+      }
+    }
   })();
 
   applyDonationsState();
-  /* The other Innioasis site is a different origin and cannot read this
-     site's remembered choice, so links to it carry the flag along. This
-     covers menu, footer, and in-page links, including ones added later. */
-  document.addEventListener("click", function (event) {
-    if (!isY1DonationsDisabled()) return;
+
+  /* ---------------------------------------------------------------- */
+  /* Cross-Subdomain & Inter-Page Preference URL Decoration           */
+  /* ---------------------------------------------------------------- */
+
+  function getActiveLocale() {
+    try {
+      if (window.InnioasisLocale && window.InnioasisLocale.locale) {
+        var loc = String(window.InnioasisLocale.locale).toLowerCase();
+        return loc === "jp" ? "ja" : loc;
+      }
+      var match = (window.location.pathname || "").match(/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i);
+      if (match) {
+        var m = match[1].toLowerCase();
+        return m === "jp" ? "ja" : m;
+      }
+      var param = new URLSearchParams(window.location.search).get("lang");
+      if (param) {
+        var p = param.toLowerCase();
+        return p === "jp" ? "ja" : p;
+      }
+      var stored = window.localStorage.getItem("innioasis-locale");
+      if (stored) return stored.toLowerCase();
+      var cookie = getSharedCookie("innioasis-locale");
+      if (cookie) return cookie.toLowerCase();
+    } catch (_) {}
+    return "en";
+  }
+
+  function getPrivacyParam() {
+    try {
+      var raw = new URLSearchParams(window.location.search).get("privacy");
+      if (raw) return raw;
+      if (window.INNIOASIS_PRIVACY && window.INNIOASIS_PRIVACY.hasDecided()) {
+        var prefs = window.INNIOASIS_PRIVACY.read();
+        if (prefs) {
+          if (prefs.feedback && prefs.nightly) return "all";
+          if (!prefs.feedback && !prefs.nightly) return "none";
+          if (prefs.feedback && !prefs.nightly) return "feedback";
+          if (!prefs.feedback && prefs.nightly) return "nightly";
+        }
+      }
+      var cookie = getSharedCookie("innioasis-privacy");
+      if (cookie) return cookie;
+    } catch (_) {}
+    return null;
+  }
+
+  function decorateLinkUrl(rawHref) {
+    if (!rawHref) return rawHref;
+    var raw = String(rawHref).trim();
+    if (!raw || /^(mailto:|tel:|javascript:|#|blob:|data:)/i.test(raw)) return raw;
+    var url;
+    try {
+      url = new URL(raw, window.location.origin);
+    } catch (_) {
+      return raw;
+    }
+
+    var isSameHost = url.hostname === window.location.hostname;
+    var isSubdomain = /(^|\.)innioasis\.app$/i.test(url.hostname);
+    if (!isSameHost && !isSubdomain) return raw;
+
+    // 1. Donations preference
+    if (isY1DonationsDisabled()) {
+      url.searchParams.set("donations", "false");
+    } else if (donationsParam() === true) {
+      url.searchParams.set("donations", "true");
+    }
+
+    // 2. Privacy preference
+    var priv = getPrivacyParam();
+    if (priv) {
+      url.searchParams.set("privacy", priv);
+    }
+
+    // 3. Language preference
+    var loc = getActiveLocale();
+    if (loc && loc !== "en") {
+      var path = url.pathname;
+      var fileMatch = path.match(/\/([^/]+)\.html$/i);
+      if (fileMatch && !path.match(/_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i)) {
+        url.searchParams.set("lang", loc);
+      } else {
+        url.searchParams.set("lang", loc);
+      }
+    }
+
+    if (!isSameHost || /^[a-z]+:\/\//i.test(raw) || raw.indexOf("//") === 0) {
+      return url.toString();
+    }
+    if (raw.charAt(0) === "/") {
+      var isAbsolute = /^[a-z]+:\/\//i.test(raw) || raw.indexOf("//") === 0;
+    if (isAbsolute || !isSameHost) {
+      return url.toString();
+    }
+    return url.pathname + url.search + url.hash;
+    }
+    var rel = url.pathname.replace(/^\//, "");
+    return (rel || ".") + url.search + url.hash;
+  }
+
+  function handleLinkClick(event) {
     var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
     if (!link) return;
-    var url;
-    try { url = new URL(link.getAttribute("href"), window.location.origin); } catch (_) { return; }
-    if (url.origin === window.location.origin) return;
-    if (!/(^|\.)innioasis\.app$/i.test(url.hostname)) return;
-    url.searchParams.set("donations", "false");
-    link.href = url.toString();
-  }, true);
+    var href = link.getAttribute("href");
+    if (!href) return;
+    var decorated = decorateLinkUrl(href);
+    if (decorated && decorated !== href) {
+      link.href = decorated;
+    }
+  }
+
+  document.addEventListener("click", handleLinkClick, true);
+  document.addEventListener("auxclick", handleLinkClick, true);
+
+  function decorateAllDocumentLinks() {
+    try {
+      var links = document.querySelectorAll("a[href]");
+      for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        var href = link.getAttribute("href");
+        if (!href) continue;
+        var decorated = decorateLinkUrl(href);
+        if (decorated && decorated !== href) {
+          link.href = decorated;
+        }
+      }
+    } catch (_) {}
+  }
+
+  window.y1DecorateLinks = decorateAllDocumentLinks;
+  window.y1DecorateUrl = decorateLinkUrl;
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", decorateAllDocumentLinks);
+  } else {
+    decorateAllDocumentLinks();
+  }
+
+  window.addEventListener("y1-dock-slot-ready", decorateAllDocumentLinks);
+  window.addEventListener("site-locale-ready", decorateAllDocumentLinks);
+  window.addEventListener("site-locale-change", decorateAllDocumentLinks);
+  window.addEventListener("y1-donations-change", decorateAllDocumentLinks);
+  window.addEventListener("innioasis-privacy-change", decorateAllDocumentLinks);
 
 
   function detectPersona() {
@@ -107,14 +280,7 @@
 
   function decorateCrossDomainHref(href) {
     if (!href) return href;
-    try {
-      var u = new URL(href, window.location.origin);
-      if (window.isY1DonationsDisabled && window.isY1DonationsDisabled()) {
-        u.searchParams.set("donations", "false");
-      }
-      return u.toString();
-    } catch (_) {}
-    return href;
+    return decorateLinkUrl(href);
   }
 
   var isThemesSite = (window.location.hostname === "themes.innioasis.app") || (window.location.port === "8081") || !!document.querySelector(".gallery-topbar");
@@ -125,9 +291,9 @@
       var base = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
         ? (window.location.protocol + "//" + window.location.hostname + ":8080")
         : "https://innioasis.app";
-      return decorateCrossDomainHref(base + path);
+      return decorateLinkUrl(base + path);
     }
-    return decorateCrossDomainHref(path);
+    return decorateLinkUrl(path);
   }
 
   var persona = detectPersona();

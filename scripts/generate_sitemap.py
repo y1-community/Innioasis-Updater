@@ -61,7 +61,7 @@ def page_files() -> list[pathlib.Path]:
         parts = rel.split("/")
         if any(part in SKIP_DIRS for part in parts[:-1]):
             continue
-        if rel in SKIP_FILES or parts[0].startswith("."):
+        if rel in SKIP_FILES or rel.startswith("404") or parts[0].startswith("."):
             continue
         pages.append(path)
     return sorted(pages, key=rel_for)

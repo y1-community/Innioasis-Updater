@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" data-locale="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reborn (Y2Linux) - Innioasis 업데이터에 대한 Wi-Fi, Bluetooth 및 FM 라디오 설정</title>
+  <meta name="description" content="Innioasis Y2의 Reborn (Y2Linux / Y2Reborn)에 대한 간단한 설치 후 안내: system.img를 복사한 다음 Wi-Fi, Bluetooth 및 FM 라디오를 설정하세요.">
+  <meta name="keywords" content="Y2Reborn Wi-Fi 설정, Y2Linux 블루투스 가이드, Innioasis Y2 라디오 펌웨어, system.img 다운로드, Y2Reborn 설치 후, Innioasis 업데이터 CE, 사용자 정의 펌웨어">
+  <link rel="canonical" href="https://innioasis.app/y2reborn_wifibt_ko.html">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261019d">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20261019d">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20261019d" defer></script>
+<meta property="og:site_name" content="Innioasis 업데이터">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/y2reborn_wifibt.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/y2reborn_wifibt.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/y2reborn_wifibt_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/y2reborn_wifibt_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/y2reborn_wifibt_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/y2reborn_wifibt_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/y2reborn_wifibt_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/y2reborn_wifibt_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/y2reborn_wifibt_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/y2reborn_wifibt_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/y2reborn_wifibt_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/y2reborn_wifibt_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/y2reborn_wifibt_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/y2reborn_wifibt_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/y2reborn_wifibt_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/y2reborn_wifibt_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/y2reborn_wifibt_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/y2reborn_wifibt_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/y2reborn_wifibt_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/y2reborn_wifibt_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/y2reborn_wifibt_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/y2reborn_wifibt_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/y2reborn_wifibt_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/y2reborn_wifibt_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/y2reborn_wifibt_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/y2reborn_wifibt_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/y2reborn_wifibt_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/y2reborn_wifibt_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/y2reborn_wifibt_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/y2reborn_wifibt_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/y2reborn_wifibt_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/y2reborn_wifibt_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/y2reborn_wifibt_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/y2reborn_wifibt_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/y2reborn_wifibt_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">본문으로 건너뛰기</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Innioasis Y2 · Reborn 설치 후</p>
+      <h1>Wi-Fi, 블루투스, FM 라디오를 설정하세요.</h1>
+      <p class="lead">파일 하나를 플레이어에 복사하세요. Reborn이 나머지를 처리합니다.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>system.img 다운로드(860MB)</a>
+        <a class="lumen-button" href="guides/reborn-y2linux-y2.html">설치 가이드</a>
+        <a class="lumen-button" href="reborn-y2linux-benefits_ko.html">왜 Y2Reborn인가요?</a>
+      </div>
+    </header>
+
+    <section class="lumen-guide-section" aria-labelledby="why-radio-fw">
+      <h2 id="why-radio-fw">왜 이 파일인가요?</h2>
+      <div class="lumen-callout">
+        <p>Wi-Fi, Bluetooth 및 FM 라디오에는 Reborn 배송할 수 없는 5개의 MediaTek 펌웨어 모듈이 필요합니다. 공식 Y2 내부에 있습니다. <code>system.img</code>. Reborn 한번 추출해서 확인한 후 파일을 삭제합니다.</p>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="step-by-step">
+      <h2 id="step-by-step">설정</h2>
+      <ol class="lumen-steps">
+        <li>
+          <strong>system.img 다운로드</strong>
+          <p>v3.2.0 FM 다운로드 <code>system.img</code> 당신의 컴퓨터에.</p>
+          <div style="margin: 12px 0;">
+            <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              system.img 다운로드
+            </a>
+          </div>
+        </li>
+
+        <li>
+          <strong>Reborn을 한 번 부팅</strong>
+          <p>플레이어를 켜십시오. 기다려 <em>저장소 설정</em> 완료한 다음 한 번 다시 시작하세요.</p>
+        </li>
+
+        <li>
+          <strong>컴퓨터에 연결</strong>
+          <p>USB 데이터 케이블을 사용하세요. 플레이어가 다음과 같이 나타납니다. <strong>내부 저장소</strong>.</p>
+          <div class="lumen-callout" style="border-left-color: #38bdf8; margin: 10px 0;">
+            <strong>Mac에서?</strong>
+            <p style="margin-top: 4px;">설치 <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener noreferrer"><strong>오픈MTP</strong></a> 플레이어를 탐색합니다. Windows 및 Linux에서는 자동으로 마운트됩니다.</p>
+          </div>
+        </li>
+
+        <li>
+          <strong>system.img를 펌웨어에 복사</strong>
+          <p>라는 폴더를 만듭니다. <code>Firmware</code> 내부 저장소의 루트에 있습니다. 복사 <code>system.img</code> 그것에.</p>
+        </li>
+
+        <li>
+          <strong>설정이 완료될 때까지 기다리세요</strong>
+          <p>Reborn 라디오 펌웨어를 자동으로 설치하고 삭제합니다. <code>system.img</code>. 이 작업은 약 10~20초 정도 소요됩니다. 기다려 <em>Wi-Fi와 블루투스가 준비되었습니다.</em>.</p>
+        </li>
+
+        <li>
+          <strong>Wi-Fi, Bluetooth, FM 라디오 연결</strong>
+          <ul style="margin: 8px 0 0 20px; line-height: 1.6;">
+            <li><strong>Wi-Fi:</strong> 설정 → 시스템 → 네트워크 → Wi-Fi. 2.4GHz 네트워크를 선택하세요.</li>
+            <li><strong>블루투스:</strong> 헤드폰을 페어링 모드로 전환하세요. 설정 → 블루투스 → 선택하세요.</li>
+            <li><strong>FM 라디오:</strong> 유선 헤드폰을 안테나로 연결한 다음 FM 라디오를 엽니다.</li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>Wi-Fi를 통한 업데이트</strong>
+          <p>향후 Reborn 업데이트는 설정 → 시스템 → 소프트웨어 업데이트에서 설치됩니다. 라디오 펌웨어는 그대로 유지됩니다.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="helpfulness-section" style="border-top: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.12)); padding-top: 24px;">
+      <h2 id="helpfulness-section">이 가이드가 도움이 되었나요?</h2>
+      <div id="guide-feedback-wrap" style="background: var(--lumen-panel-soft, rgba(255, 255, 255, 0.04)); border: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.1)); border-radius: 12px; padding: 18px 20px;">
+        <p id="guide-feedback-prompt" style="margin: 0 0 12px; font-weight: 600; font-size: 0.96rem;">이 설치 후 설정 가이드가 도움이 되었나요?</p>
+        <div id="guide-feedback-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button type="button" id="guide-feedback-yes" class="lumen-button lumen-button--primary" style="cursor: pointer;">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/></svg>
+            네, 도움이 됐어요!
+          </button>
+          <a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer" class="lumen-button" style="cursor: pointer;">
+            Discord에 대한 도움이 필요합니다
+          </a>
+        </div>
+        <div id="guide-feedback-thankyou" hidden style="margin-top: 12px; color: #10b981; font-weight: 600;">
+          피드백을 보내주셔서 감사합니다! Y2Reborn에서 무선 청취를 즐겨보세요.
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261103brand" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var yesBtn = document.getElementById("guide-feedback-yes");
+      var actions = document.getElementById("guide-feedback-actions");
+      var prompt = document.getElementById("guide-feedback-prompt");
+      var thankyou = document.getElementById("guide-feedback-thankyou");
+
+      if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+          if (actions) actions.style.display = "none";
+          if (prompt) prompt.textContent = "Glad this guide helped you get set up!";
+          if (thankyou) thankyou.hidden = false;
+
+          // Check if user has donations disabled
+          var donationsDisabled = false;
+          try {
+            if (typeof window.isY1DonationsDisabled === "function" && window.isY1DonationsDisabled()) {
+              donationsDisabled = true;
+            }
+            var u = new URL(window.location.href);
+            if (u.searchParams.get("donations") === "false") {
+              donationsDisabled = true;
+            }
+          } catch (_) {}
+
+          if (!donationsDisabled) {
+            setTimeout(function () {
+              if (typeof window.openY1DonatePanel === "function") {
+                window.openY1DonatePanel();
+              } else {
+                var donateBtn = document.querySelector("[data-donate-open]");
+                if (donateBtn) donateBtn.click();
+              }
+            }, 600);
+          }
+        });
+      }
+    });
+  </script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

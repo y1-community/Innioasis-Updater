@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="it" dir="ltr" data-locale="it">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rockbox-Y2 temi: installazione e reimpostazione dei temi su Y2</title>
+  <meta name="description" content="Come installare, gestire e reimpostare i temi Rockbox-Y2 su Innioasis Y2: dove risiedono i temi nella cartella .rockbox e come verificare la compatibilità delle build.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://innioasis.app/rockbox-y2-themes_it.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rockbox-Y2 temi: installazione e reimpostazione dei temi su Y2">
+  <meta property="og:description" content="Come installare, gestire e reimpostare i temi Rockbox-Y2 su Innioasis Y2: dove risiedono i temi nella cartella .rockbox e come verificare la compatibilità delle build.">
+  <meta property="og:url" content="https://innioasis.app/rockbox-y2-themes_it.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta property="og:site_name" content="Innioasis Programma di aggiornamento">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rockbox-Y2 temi: installazione e reimpostazione dei temi su Y2">
+  <meta name="twitter:description" content="Come installare, gestire e reimpostare i temi Rockbox-Y2 su Innioasis Y2: dove risiedono i temi nella cartella .rockbox e come verificare la compatibilità delle build.">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rockbox-Y2 themes: installing and resetting themes on the Y2","description":"How to install, manage, and reset Rockbox-Y2 themes on the Innioasis Y2.","image":"https://innioasis.app/assets/og-image.png","author":{"@type":"Organization","name":"Innioasis Community"},"mainEntityOfPage":"https://innioasis.app/rockbox-y2-themes.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Firmware Downloads","item":"https://innioasis.app/firmware.html"},{"@type":"ListItem","position":3,"name":"Rockbox-Y2 themes","item":"https://innioasis.app/rockbox-y2-themes.html"}]}</script>
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/rockbox-y2-themes.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/rockbox-y2-themes.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-y2-themes_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-y2-themes_ja.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/rockbox-y2-themes_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/rockbox-y2-themes_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-y2-themes_es.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/rockbox-y2-themes_es-419.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-y2-themes_fr.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-y2-themes_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/rockbox-y2-themes_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-y2-themes_zh-TW.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-y2-themes_ru.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-y2-themes_pt.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-y2-themes_pt-BR.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-y2-themes_it.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-y2-themes_ko.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/rockbox-y2-themes_ar.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-y2-themes_hi.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-y2-themes_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-y2-themes_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-y2-themes_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-y2-themes_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-y2-themes_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-y2-themes_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-y2-themes_id.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-y2-themes_sv.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-y2-themes_no.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-y2-themes_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-y2-themes_fi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-y2-themes_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-y2-themes_el.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-y2-themes_hu.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-y2-themes_ro.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-y2-themes_he.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/rockbox-y2-themes_bn.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-y2-themes_fa.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/rockbox-y2-themes_ms.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Vai al contenuto</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+  <p class="lumen-doc-back"><a href="rockbox-y2/">← Rockbox-Y2mozzo</a></p>
+  <header>
+    <p class="lumen-kicker">Rockbox-Y2 · temi</p>
+    <h1>Rockbox-Y2 temi</h1>
+    <p class="lead">Come installare i temi su Rockbox-Y2, verificare la compatibilità del tema con la build installata e reimpostare un tema se non viene visualizzato correttamente.</p>
+    <div class="lumen-actions">
+      <a class="lumen-button lumen-button--primary" href="release-notes/rockbox-y2/index.html">Rockbox-Y2 note sulla versione</a>
+      <a class="lumen-button" href="theme_downloader_it.html">Strumenti a tema</a>
+      <a class="lumen-button" href="rockbox-y2/install.html">Installa Rockbox-Y2</a>
+    </div>
+  </header>
+
+  <section class="lumen-guide-section">
+    <h2>Verifica la compatibilità del tema per la tua build</h2>
+    <p>Rockbox-Y2 è sviluppato separatamente dal port Y1, quindi la compatibilità del tema segue la versione build Y2 installata. Controlla il <a href="release-notes/rockbox-y2/index.html">Rockbox-Y2 note sulla versione</a> per la tua versione prima di installare un pacchetto di temi.</p>
+    <p>Vedere <a href="rockbox-y1-vs-y2_it.html">Rockbox-Y1 contro Rockbox-Y2</a> per un confronto completo tra i due porti.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Come installare i temi su Y2</h2>
+    <p>I temi sono memorizzati sulla tua scheda MicroSD all'interno della sezione nascosta <code>.rockbox</code> cartella.</p>
+    <ol class="lumen-steps">
+      <li>Avvia Rockbox-Y2 almeno una volta in modo da creare il file <code>.rockbox</code> cartella sulla tua carta MicroSD.</li>
+      <li>Estrai o copia i file del tema in <code>.rockbox/</code> (COSÌ <code>themes</code>, <code>wps</code>, <code>fonts</code>, e <code>backdrops</code> fondersi in <code>.rockbox/</code>).</li>
+      <li>Sul lettore, apri <strong>Impostazioni → Impostazioni tema → Sfoglia file tema</strong> e seleziona il tuo tema.</li>
+    </ol>
+    <p>Per visualizzare le cartelle nascoste sul computer: premere <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd> su macOS, abilita <strong>Visualizza → Oggetti nascosti</strong> su Windows oppure premere <kbd>Ctrl</kbd>+<kbd>H</kbd> su Linux.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Come resettare un tema rotto</h2>
+    <p>Se un tema rende difficile la lettura dello schermo, rinomina o elimina il file <code>.rockbox</code> cartella sulla scheda MicroSD e riavviare il lettore. Rockbox-Y2 creerà un file fresh <code>.rockbox</code> cartella con il tema predefinito mantenendo intatta la tua musica.</p>
+    <div class="lumen-actions">
+      <a class="lumen-button" href="rockbox-y2/sd-card.html">La cartella .rockbox</a>
+      <a class="lumen-button" href="rockbox-y2/update.html">Aggiornamento Rockbox-Y2</a>
+      <a class="lumen-button" href="rockbox-y2/resolution.html">Rockbox-Y2 crea note</a>
+    </div>
+  </section>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="nav.js?v=20261103brand" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

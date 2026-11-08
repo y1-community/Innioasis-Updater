@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr" data-locale="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>Como recuperar um player que não inicializa MediaTek após falha no MTKclient · Innioasis Comunidade</title>
+  <meta name="description" content="Guia passo a passo para desbloquear e recuperar jogadores Innioasis Y1, Y2, G1, Timmkoo e MediaTek que não inicializam após MTKclient interromper flashes no Linux ou macOS.">
+  <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_pt-BR.html">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/recover-non-booting-device_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/recover-non-booting-device_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/recover-non-booting-device_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/recover-non-booting-device_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/recover-non-booting-device_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/recover-non-booting-device_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/recover-non-booting-device_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/recover-non-booting-device_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/recover-non-booting-device_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/recover-non-booting-device_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/recover-non-booting-device_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/recover-non-booting-device_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/recover-non-booting-device_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/recover-non-booting-device_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/recover-non-booting-device_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/recover-non-booting-device_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/recover-non-booting-device_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/recover-non-booting-device_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/recover-non-booting-device_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/recover-non-booting-device_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/recover-non-booting-device_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/recover-non-booting-device_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/recover-non-booting-device_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/recover-non-booting-device_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/recover-non-booting-device_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/recover-non-booting-device_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/recover-non-booting-device_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/recover-non-booting-device_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/recover-non-booting-device_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/recover-non-booting-device_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/recover-non-booting-device_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/recover-non-booting-device_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/recover-non-booting-device_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Ir para o conteúdo</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Solução de problemas e recuperação de dispositivos</p>
+      <h1>Recuperando um dispositivo que não inicializa após atualização do MTKclient</h1>
+      <p class="lead">Se o seu dispositivo Innioasis Y1, Y2 ou MediaTek não ligar ou mostrar uma tela preta após piscar com MTKclient no macOS ou Linux, não entre em pânico. O BootROM de hardware (BROM) é permanente e não pode ser destruído.</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>Por que o MTKclient pode travar ou deixar uma tela preta</h2>
+      <p>MTKclient depende de cargas úteis de exploração de software (kamakiri / amonet) para ignorar a autenticação DA e a comunicação USB bruta via libusb. Em sistemas macOS e Linux ARM64:</p>
+      <ul class="lumen-benefits-list">
+        <li>USB latência de handshake ou tempos limite de porta no macOS podem interromper a injeção de carga útil do DA no meio da transferência.</li>
+        <li>Cabeçalhos de partição ausentes ou incompletos deixam o bootloader (pré-carregador/lk) em um estado sem resposta.</li>
+        <li>O player parece completamente morto – sem LED, sem ícone de carregamento, sem luz de fundo da tela.</li>
+      </ul>
+      <p>Mesmo neste estado, o chipset MediaTek volta para <strong>Modo BROM</strong> (USB VID 0e8d, PID 0003), pronto para recuperação oficial de baixo nível.</p>
+    </section>
+
+    <section class="lumen-guide-section" id="sp-flash-tool-engine">
+      <h2>O Método de Recuperação Definitivo: SP Flash Tool Motor em Updater CE</h2>
+      <p>A maneira mais segura e confiável de recuperar seu player bloqueado é usar <strong>Atualizador CE</strong> configurado com o oficial <strong>SP Flash Tool</strong> back-end.</p>
+      
+      <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
+        <h3>Etapas exatas em Updater CE:</h3>
+        <ol class="lumen-steps" style="margin-top: 10px;">
+          <li>Abrir <strong>Atualizador CE</strong>.</li>
+          <li>Clique <strong>Configurações</strong> na barra lateral de navegação esquerda.</li>
+          <li>Role para baixo até a seção Avançado e ative <strong>Mostrar configurações avançadas</strong>.</li>
+          <li>Sob <strong>Método de instalação</strong> (ou <em>Mecanismo intermitente para instalador MediaTek</em>), localize o <strong>Método Flash</strong> suspenso.</li>
+          <li>Alterar a seleção de <em>Automático (recomendado)</em> ou <em>MTKClient</em> para <strong>SP Flash Tool</strong>.</li>
+          <li>Confirme o prompt e retorne ao fluxo de instalação principal.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Arquitetura de plataforma e requisitos de sistema operacional para SP Flash Tool</h2>
+      <p>MediaTek oficial <code>SP Flash Tool</code> binário é compilado nativamente como um <strong>Binário ELF x86_64 para Linux</strong> e um <strong>Executável PE32+ para Windows x64</strong>.</p>
+      <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
+        <strong>Nota importante sobre hardware para usuários macOS e ARM64 Linux:</strong><br>
+        Como MediaTek não compila SP Flash Tool para macOS (Darwin) ou Linux ARM64 (aarch64), usuários de macOS e usuários de ARM64 Linux (como Raspberry Pi ou Apple Silicon executando Asahi Linux) que experimentam um tijolo devem conectar seu player a:
+        <ul style="margin: 8px 0 0 20px;">
+          <li>Um <strong>PC com Windows x64</strong> (Windows 10/11 de 64 bits) ou</li>
+          <li>Um <strong>PC Linux x86_64</strong> (Ubuntu, Debian, Fedora, Arch 64 bits).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Processo passo a passo de desbloqueio de hardware</h2>
+      <ol class="lumen-steps">
+        <li><strong>Desconecte o reprodutor:</strong> Desconecte completamente o cabo USB do player e do PC.</li>
+        <li><strong>Desligamento total:</strong> Segure o botão Power (ou Power + Volume Down) por 15 segundos para garantir que o chipset esteja totalmente desligado e não preso em um loop de baixa potência USB.</li>
+        <li><strong>Inicie Updater CE com o modo SP Flash Tool:</strong> Selecione o modelo do seu dispositivo (por exemplo, <em>Innioasis Y1</em> ou <em>Innioasis Y2</em>) e escolha <em>Software original</em> para restaurar partições de estoque.</li>
+        <li><strong>Iniciar instalação/restauração:</strong> Clique <em>Instalar / Restaurar</em> em Updater CE. Aguarde até que o prompt de status diga <em>Esperando pelo jogador...</em></li>
+        <li><strong>Insira o cabo USB para disparar o BROM:</strong> Enquanto o dispositivo estiver desligado, conecte o cabo USB diretamente a uma porta USB da placa-mãe de alta velocidade (evite hubs USB sem alimentação).</li>
+        <li>O sistema detectará a porta MediaTek VCOM, enviará o Agente de Download (DA), reescreverá as tabelas de partição e restaurará todas as imagens de firmware de forma limpa.</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>Permutações por modelo e sistema operacional</h2>
+      <div style="overflow-x: auto;">
+        <table class="lumen-release-table">
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Plataforma com falha</th>
+              <th>Configuração de recuperação recomendada</th>
+              <th>Motor e modo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>macOS (Apple Silicon/Intel)</td>
+              <td>PC com Windows x64/Linux x86_64</td>
+              <td>SP Flash Tool + Y1 Estoque ROM</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>Linux ARM64/x86_64</td>
+              <td>PC Linux x86_64 ou Windows x64</td>
+              <td>SP Flash Tool + DA da comunidade</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y2</strong></td>
+              <td>macOS (MTKclient parado)</td>
+              <td>PC com Windows x64/Linux x86_64</td>
+              <td>SP Flash Tool + Y2 Recuperação de dispersão</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis G1 / G3 / G5</strong></td>
+              <td>cliente MTK macOS / Linux</td>
+              <td>PC Windows x64 com drivers VCOM</td>
+              <td>SP Flash Tool + Firmware de fábrica</td>
+            </tr>
+            <tr>
+              <td><strong>Mechen H1 / Timmkoo A5</strong></td>
+              <td>Qualquer plataforma</td>
+              <td>Computador Windows x64 ou Linux x86_64</td>
+              <td>SP Flash Tool + arquivo de dispersão</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261108c" defer></script>
+</body>
+</html>

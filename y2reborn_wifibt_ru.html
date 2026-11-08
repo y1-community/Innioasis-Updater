@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" data-locale="ru">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Настройка Wi-Fi, Bluetooth и FM-радио для Reborn (Y2Linux) - Innioasis Updater</title>
+  <meta name="description" content="Краткое руководство после установки для Reborn (Y2Linux / Y2Reborn) на Innioasis Y2: скопируйте system.img, затем настройте Wi-Fi, Bluetooth и FM-радио.">
+  <meta name="keywords" content="Y2Reborn Настройка Wi-Fi, Y2Linux Руководство по Bluetooth, Innioasis Y2 прошивка радио, загрузка system.img, Y2Reborn после установки, Innioasis Updater CE, кастомная прошивка">
+  <link rel="canonical" href="https://innioasis.app/y2reborn_wifibt_ru.html">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261019d">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20261019d">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20261019d" defer></script>
+<meta property="og:site_name" content="Innioasis Программа обновления">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/y2reborn_wifibt.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/y2reborn_wifibt.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/y2reborn_wifibt_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/y2reborn_wifibt_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/y2reborn_wifibt_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/y2reborn_wifibt_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/y2reborn_wifibt_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/y2reborn_wifibt_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/y2reborn_wifibt_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/y2reborn_wifibt_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/y2reborn_wifibt_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/y2reborn_wifibt_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/y2reborn_wifibt_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/y2reborn_wifibt_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/y2reborn_wifibt_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/y2reborn_wifibt_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/y2reborn_wifibt_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/y2reborn_wifibt_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/y2reborn_wifibt_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/y2reborn_wifibt_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/y2reborn_wifibt_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/y2reborn_wifibt_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/y2reborn_wifibt_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/y2reborn_wifibt_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/y2reborn_wifibt_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/y2reborn_wifibt_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/y2reborn_wifibt_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/y2reborn_wifibt_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/y2reborn_wifibt_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/y2reborn_wifibt_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/y2reborn_wifibt_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/y2reborn_wifibt_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/y2reborn_wifibt_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/y2reborn_wifibt_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/y2reborn_wifibt_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Перейти к содержимому</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Innioasis Y2 · Reborn После установки</p>
+      <h1>Настройте Wi-Fi, Bluetooth и FM-радио.</h1>
+      <p class="lead">Скопируйте один файл в плеер. Reborn обрабатывает все остальное.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>Скачать system.img (860 МБ)</a>
+        <a class="lumen-button" href="guides/reborn-y2linux-y2.html">Руководство по установке</a>
+        <a class="lumen-button" href="reborn-y2linux-benefits_ru.html">Почему Y2Reborn?</a>
+      </div>
+    </header>
+
+    <section class="lumen-guide-section" aria-labelledby="why-radio-fw">
+      <h2 id="why-radio-fw">Почему этот файл?</h2>
+      <div class="lumen-callout">
+        <p>Для Wi-Fi, Bluetooth и FM-радио требуется пять MediaTek модулей прошивки, которые Reborn не могут быть поставлены. Они внутри официального Y2 <code>system.img</code>. Reborn извлекает их один раз, проверяет и удаляет файл.</p>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="step-by-step">
+      <h2 id="step-by-step">Настраивать</h2>
+      <ol class="lumen-steps">
+        <li>
+          <strong>Скачать system.img</strong>
+          <p>Загрузите v3.2.0 FM <code>system.img</code> к вашему компьютеру.</p>
+          <div style="margin: 12px 0;">
+            <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              Скачать system.img
+            </a>
+          </div>
+        </li>
+
+        <li>
+          <strong>Загрузите Reborn один раз</strong>
+          <p>Включите плеер. Подождите <em>Настройка хранилища</em> чтобы закончить, затем перезапустите его один раз.</p>
+        </li>
+
+        <li>
+          <strong>Подключитесь к компьютеру</strong>
+          <p>Используйте кабель для передачи данных USB. Игрок выглядит как <strong>Внутреннее хранилище</strong>.</p>
+          <div class="lumen-callout" style="border-left-color: #38bdf8; margin: 10px 0;">
+            <strong>На Маке?</strong>
+            <p style="margin-top: 4px;">Установить <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener noreferrer"><strong>OpenMTP</strong></a> для просмотра плеера. Windows и Linux монтируют его автоматически.</p>
+          </div>
+        </li>
+
+        <li>
+          <strong>Копируем system.img в прошивку</strong>
+          <p>Создайте папку с названием <code>Firmware</code> в корне внутреннего хранилища. Копировать <code>system.img</code> в это.</p>
+        </li>
+
+        <li>
+          <strong>Дождитесь завершения настройки</strong>
+          <p>Reborn автоматически устанавливает прошивку радио и удаляет <code>system.img</code>. Это занимает около 10–20 секунд. Подождите <em>Wi-Fi и Bluetooth готовы.</em>.</p>
+        </li>
+
+        <li>
+          <strong>Подключите Wi-Fi, Bluetooth и FM-радио.</strong>
+          <ul style="margin: 8px 0 0 20px; line-height: 1.6;">
+            <li><strong>Wi-Fi:</strong> Настройки → Система → Сеть → Wi-Fi. Выберите свою сеть 2,4 ГГц.</li>
+            <li><strong>Bluetooth:</strong> Переведите наушники в режим сопряжения. Настройки → Bluetooth → выберите их.</li>
+            <li><strong>FM-радио:</strong> Подключите проводные наушники в качестве антенны, затем откройте FM-радио.</li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>Обновление через Wi-Fi</strong>
+          <p>Будущие Reborn обновления устанавливаются из меню «Настройки» → «Система» → «Обновление программного обеспечения». Прошивка радио остается прежней.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="helpfulness-section" style="border-top: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.12)); padding-top: 24px;">
+      <h2 id="helpfulness-section">Было ли это руководство полезным?</h2>
+      <div id="guide-feedback-wrap" style="background: var(--lumen-panel-soft, rgba(255, 255, 255, 0.04)); border: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.1)); border-radius: 12px; padding: 18px 20px;">
+        <p id="guide-feedback-prompt" style="margin: 0 0 12px; font-weight: 600; font-size: 0.96rem;">Считаете ли вы это руководство по настройке после установки полезным?</p>
+        <div id="guide-feedback-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button type="button" id="guide-feedback-yes" class="lumen-button lumen-button--primary" style="cursor: pointer;">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/></svg>
+            Да, это помогло!
+          </button>
+          <a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer" class="lumen-button" style="cursor: pointer;">
+            Нужна помощь по Discord
+          </a>
+        </div>
+        <div id="guide-feedback-thankyou" hidden style="margin-top: 12px; color: #10b981; font-weight: 600;">
+          Спасибо за ваш отзыв! Наслаждайтесь беспроводным прослушиванием на Y2Reborn.
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261103brand" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var yesBtn = document.getElementById("guide-feedback-yes");
+      var actions = document.getElementById("guide-feedback-actions");
+      var prompt = document.getElementById("guide-feedback-prompt");
+      var thankyou = document.getElementById("guide-feedback-thankyou");
+
+      if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+          if (actions) actions.style.display = "none";
+          if (prompt) prompt.textContent = "Glad this guide helped you get set up!";
+          if (thankyou) thankyou.hidden = false;
+
+          // Check if user has donations disabled
+          var donationsDisabled = false;
+          try {
+            if (typeof window.isY1DonationsDisabled === "function" && window.isY1DonationsDisabled()) {
+              donationsDisabled = true;
+            }
+            var u = new URL(window.location.href);
+            if (u.searchParams.get("donations") === "false") {
+              donationsDisabled = true;
+            }
+          } catch (_) {}
+
+          if (!donationsDisabled) {
+            setTimeout(function () {
+              if (typeof window.openY1DonatePanel === "function") {
+                window.openY1DonatePanel();
+              } else {
+                var donateBtn = document.querySelector("[data-donate-open]");
+                if (donateBtn) donateBtn.click();
+              }
+            }, 600);
+          }
+        });
+      }
+    });
+  </script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

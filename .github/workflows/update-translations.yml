@@ -118,9 +118,11 @@ jobs:
 
       # Raptive / AdSense (future): set RAPTIVE_SITE_ID and the ad loader in
       # site-ads.js reads it at runtime. No ad request is made until it is set.
-      - name: Pre-render static locale copies
+      - name: Generate literal static language pages & pre-render copies
         continue-on-error: true
-        run: python3 scripts/i18n/prerender.py --locales all --tiers core,full --out dist
+        run: |
+          python3 scripts/i18n/generate_multilingual_static_pages.py
+          python3 scripts/i18n/prerender.py --locales all --tiers core,full --out dist
 
       - name: Upload the pre-rendered site and coverage report
         if: always()
@@ -129,19 +131,21 @@ jobs:
           name: i18n-site
           path: |
             dist/
+            sitemap.xml
+            sitemap-i18n.xml
             coverage.txt
           if-no-files-found: ignore
           retention-days: 14
 
-      - name: Commit updated catalogs
+      - name: Commit updated catalogs, literal static pages, and sitemaps
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add i18n/catalogs i18n/strings i18n/site-locales.json i18n/reviewed i18n/prerendered.json sitemap-i18n.xml || true
+          git add i18n/catalogs i18n/strings i18n/site-locales.json i18n/reviewed i18n/prerendered.json sitemap.xml sitemap-i18n.xml *.html || true
           if git diff --cached --quiet; then
             echo "No translation changes."
           else
-            git commit -m "Update site translations across supported languages"
+            git commit -m "Update site translations and literal static language pages across supported languages"
             git push
           fi
 

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="th" dir="ltr" data-locale="th">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ธีม Rockbox-Y1: ถ่ายโอนธีมด้วย Updater CE, 240p เทียบกับ 360p &amp; การใช้ธีม</title>
+  <meta name="description" content="วิธีถ่ายโอนธีมไปยัง Innioasis Y1 ด้วย Updater CE (การพุชอัตโนมัติเมื่อมีให้ใช้งาน หรือการถ่ายโอนทีละขั้นตอนพร้อมคำแนะนำหลังจาก MTKClient แฟลชบน macOS และ Linux) รวมถึงความเข้ากันได้ 240p กับ 360p และการใช้ธีม">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://innioasis.app/rockbox-y1-themes_th.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ธีม Rockbox-Y1: ถ่ายโอนธีมด้วย Updater CE, 240p เทียบกับ 360p &amp; การใช้ธีม">
+  <meta property="og:description" content="วิธีที่ Updater CE ถ่ายโอนธีมไปยัง Y1 ของคุณโดยอัตโนมัติเมื่อทำได้ และแนะนำคุณทีละขั้นตอนเมื่อไม่สามารถทำได้ (เช่น หลังจาก MTKClient แฟลชบน macOS หรือ Linux) รวมถึงความเข้ากันได้ของ 240p และ 360p">
+  <meta property="og:url" content="https://innioasis.app/rockbox-y1-themes_th.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta property="og:site_name" content="Innioasis ตัวอัพเดต">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ธีม Rockbox-Y1: ถ่ายโอนธีมด้วย Updater CE, 240p เทียบกับ 360p &amp; การใช้ธีม">
+  <meta name="twitter:description" content="วิธีที่ Updater CE ถ่ายโอนธีมไปยัง Y1 ของคุณโดยอัตโนมัติเมื่อทำได้ และแนะนำคุณทีละขั้นตอนเมื่อไม่สามารถทำได้ (เช่น หลังจาก MTKClient แฟลชบน macOS หรือ Linux) รวมถึงความเข้ากันได้ของ 240p และ 360p">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rockbox-Y1 themes: transferring themes with Updater CE, 240p vs 360p & applying a theme","description":"How to use Updater CE to transfer Rockbox-Y1 themes automatically or via guided post-install setup (including after MTKClient installs on macOS and Linux), plus 240p vs 360p theme compatibility.","image":"https://innioasis.app/assets/og-image.png","author":{"@type":"Organization","name":"Innioasis Community"},"mainEntityOfPage":"https://innioasis.app/rockbox-y1-themes.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Firmware Downloads","item":"https://innioasis.app/firmware.html"},{"@type":"ListItem","position":3,"name":"Rockbox-Y1 themes","item":"https://innioasis.app/rockbox-y1-themes.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I transfer themes to the Innioasis Y1 with Updater CE?","acceptedAnswer":{"@type":"Answer","text":"Updater CE transfers themes and fonts to your Y1 automatically whenever it can reach the player over ADB or as a mounted USB drive. When an unattended transfer is not possible during the flash itself (for example, when using an MTKClient install method on macOS or Linux while the player is powered off), Updater CE immediately launches a guided step-by-step assistant that waits for the Y1 to boot into Rockbox or walks you through connecting USB storage and selecting the .rockbox folder."}},{"@type":"Question","name":"Why does a Rockbox-Y1 theme look wrong after installing?","acceptedAnswer":{"@type":"Answer","text":"Theme and build must share a resolution path. A theme written for 240p builds will not render correctly on a 360p build, and the reverse is also true. Match the theme label to the build label."}},{"@type":"Question","name":"Where do Rockbox-Y1 themes go on the card?","acceptedAnswer":{"@type":"Answer","text":"Inside the .rockbox folder on the MicroSD card, in its themes folder. Copy the theme's folder there, then pick it in the player's theme settings."}},{"@type":"Question","name":"How do I undo a broken theme?","acceptedAnswer":{"@type":"Answer","text":"Select a different theme from the player's theme settings. If the interface is unusable, rename or delete the .rockbox folder on the card and the build recreates it with defaults on the next boot."}}]}</script>
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/rockbox-y1-themes.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/rockbox-y1-themes.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-y1-themes_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-y1-themes_ja.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/rockbox-y1-themes_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/rockbox-y1-themes_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-y1-themes_es.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/rockbox-y1-themes_es-419.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-y1-themes_fr.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-y1-themes_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/rockbox-y1-themes_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-y1-themes_zh-TW.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-y1-themes_ru.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-y1-themes_pt.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-y1-themes_pt-BR.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-y1-themes_it.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-y1-themes_ko.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/rockbox-y1-themes_ar.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-y1-themes_hi.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-y1-themes_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-y1-themes_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-y1-themes_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-y1-themes_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-y1-themes_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-y1-themes_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-y1-themes_id.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-y1-themes_sv.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-y1-themes_no.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-y1-themes_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-y1-themes_fi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-y1-themes_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-y1-themes_el.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-y1-themes_hu.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-y1-themes_ro.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-y1-themes_he.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/rockbox-y1-themes_bn.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-y1-themes_fa.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/rockbox-y1-themes_ms.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">ไปที่เนื้อหา</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+  <p class="lumen-doc-back"><a href="rockbox-y1/">← Rockbox-Y1 ฮับ</a></p>
+  <header>
+    <p class="lumen-kicker">Rockbox-Y1 · ธีม &amp; Updater CE</p>
+    <h1>ธีม Rockbox-Y1: ถ่ายโอนด้วย Updater CE เลือกโครงสร้าง จากนั้นเลือกรูปลักษณ์</h1>
+    <p class="lead">Updater CE จัดการ Rockbox-Y1 ธีมและแบบอักษรให้กับคุณ — ถ่ายโอนไปยัง Y1 โดยอัตโนมัติทุกครั้งที่ทำได้ และแนะนำคุณตลอดขั้นตอนการถ่ายโอนเมื่อไม่สามารถเกิดขึ้นโดยไม่ได้ตั้งใจ (เช่น หลังจากติดตั้งเฟิร์มแวร์ MTKClient บน macOS หรือ Linux)</p>
+    <div class="lumen-actions">
+      <a class="lumen-button lumen-button--primary" href="guides/rockbox-y1.html">รับ Rockbox &amp; Updater CE</a>
+      <a class="lumen-button" href="https://themes.innioasis.app/" target="_blank" rel="noopener noreferrer">เรียกดูธีมชุมชน</a>
+      <a class="lumen-button" href="theme_downloader_th.html">เครื่องมือธีม</a>
+      <a class="lumen-button" href="rockbox-y1/resolution.html">240p กับ 360p</a>
+    </div>
+  </header>
+
+  <section class="lumen-guide-section" id="updater-ce-themes">
+    <h2>การถ่ายโอนธีมไปยัง Y1 ด้วย Updater CE</h2>
+    <p>Rockbox เก็บเฟิร์มแวร์ไว้ในแฟลชภายในของ Y1 ในขณะที่ธีม แบบอักษร และการตั้งค่าผู้ใช้จะอยู่ภายในส่วนที่ซ่อนอยู่ <code>.rockbox</code> โฟลเดอร์บนที่เก็บข้อมูลของผู้เล่น (MicroSD การ์ด) เนื่องจากการแฟลช ROM และการคัดลอกไฟล์ไปยังที่เก็บข้อมูลใช้การเชื่อมต่อที่แตกต่างกันสองแบบ <strong>ตัวอัพเดต CE</strong> ปรับให้เข้ากับระบบปฏิบัติการของคุณโดยอัตโนมัติและวิธีการติดตั้ง:</p>
+    <ul class="lumen-benefits-list">
+      <li><strong>ถ่ายโอนอัตโนมัติเมื่อ Updater CE สามารถเข้าถึงผู้เล่น:</strong> เมื่อคุณติดตั้งบิวด์ 360p Rockbox-Y1 (หรือเปิดใช้งานการซิงค์ธีมอัตโนมัติในการตั้งค่า) Updater CE จะดาวน์โหลดและรวมธีม 360p และชุดฟอนต์ที่ได้รับการดูแลจัดการในเบื้องหลัง ทันทีที่ Y1 สามารถเข้าถึงได้ <strong>เอดีบี</strong> (Android Debug Bridge) หรือติดตั้งเป็น <strong>USB ขับ</strong> ด้วย <code>.rockbox</code> โฟลเดอร์ Updater CE จะพุชธีมและแบบอักษรตรงไปยังเครื่องเล่นสำหรับคุณโดยไม่จำเป็นต้องแตกไฟล์ zip ด้วยตนเอง</li>
+      <li><strong>การถ่ายโอนทีละขั้นตอนที่แนะนำเมื่อไม่สามารถเกิดขึ้นได้โดยไม่ต้องดูแล (เช่น MTKClient บน macOS และ Linux):</strong> เมื่อคุณแฟลช Rockbox โดยใช้ <strong>MTKClient</strong> วิธีการติดตั้งบน macOS หรือ Linux แฟลชจะเกิดขึ้นในขณะที่ Y1 ถูกปิดในโหมด Preloader/BROM ระดับต่ำ - ก่อนที่ Rockbox จะบูตเป็นครั้งแรกเพื่อสร้าง <code>.rockbox</code> และก่อนที่จะติดตั้งที่เก็บข้อมูลของผู้เล่นบนคอมพิวเตอร์ของคุณ เมื่อใดก็ตามที่ Updater CE ไม่สามารถถ่ายโอนให้เสร็จสิ้นโดยไม่มีใครดูแลในระหว่างที่ใช้แฟลชได้ ระบบจะเปิดขึ้นมาโดยอัตโนมัติ <strong>ผู้ช่วยธีมและแบบอักษรหลังการติดตั้ง</strong> และนำคุณไปสู่การเสร็จสิ้น:
+        <ol class="lumen-steps">
+          <li><strong>บูต Rockbox ก่อน:</strong> Updater CE แจ้งให้คุณถอดสายเคเบิล USB หากจำเป็น และเปิดเครื่อง Y1 ดังนั้น Rockbox บูตหนึ่งครั้งและเริ่มต้น <code>.rockbox</code> โฟลเดอร์บนการ์ด</li>
+          <li><strong>เชื่อมต่อใหม่ผ่าน USB:</strong> เสียบ Y1 กลับเข้าไปใน Mac หรือ Linux PC ของคุณ หาก ADB พร้อมใช้งาน Updater CE จะตรวจจับเครื่องเล่นที่บูตแล้วและพุชธีมและชุดแบบอักษรโดยอัตโนมัติ</li>
+          <li><strong>หรือใช้โหมดการจัดเก็บ USB ด้วยตัวเลือกโฟลเดอร์ที่แนะนำ:</strong> หาก ADB ไม่ทำงานหรือคุณต้องการถ่ายโอนที่เก็บข้อมูลโดยตรง Updater CE จะแนะนำให้คุณเข้าสู่โหมดที่เก็บข้อมูล USB บน Y1 จากนั้นคลิก <strong>เลือกโฟลเดอร์ .rockbox</strong>เปิดเผยโฟลเดอร์ที่ซ่อนอยู่ (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd> ในกล่องโต้ตอบไฟล์ macOS หรือ <kbd>Ctrl</kbd>+<kbd>H</kbd> บน Linux) และเลือก <code>.rockbox</code> บนไดรฟ์ Y1 — จากนั้น Updater CE จะรวมธีมและแบบอักษรทั้งหมดเข้าที่สำหรับคุณ</li>
+        </ol>
+      </li>
+      <li><strong>Add or refresh themes anytime on demand:</strong> คุณสามารถเรียกใช้การถ่ายโอนแบบอัตโนมัติหรือแบบมีไกด์เดียวกันได้ตลอดเวลาโดยไม่ต้องรีแฟลชเฟิร์มแวร์ — เปิด Updater CE และเลือก <strong>การตั้งค่า → ติดตั้ง Rockbox ธีม 360p</strong> (<kbd>Cmd</kbd>+<kbd>T</kbd> บน macOS <kbd>Ctrl</kbd>+<kbd>T</kbd> บน Windows และ Linux) หรือลากแต่ละธีม <code>.zip</code> แพ็คลงบนของ Updater CE <strong>สมาร์ทดรอป</strong> หน้าต่าง.</li>
+    </ul>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>240p, 360p และเหตุใดจึงมีป้ายกำกับอยู่บนบิลด์</h2>
+    <p>Y1 งานสร้างชุมชนได้รับการเผยแพร่โดยมีป้ายกำกับความละเอียด และคอลเลกชันธีมมีป้ายกำกับเดียวกัน รุ่น 240p มีความเข้ากันได้ในวงกว้างที่สุดกับชุดรูปแบบเก่า การสร้าง 360p ถูกสร้างขึ้นสำหรับเส้นทางธีม Y1 ที่ใหม่กว่า การติดตั้งอันหนึ่งแล้วใช้อันอื่นไม่เป็นอันตราย แค่ดูผิด มีข้อความถูกตัด องค์ประกอบขาดหายไป หรือมีอินเทอร์เฟซที่คุณไม่สามารถอ่านได้</p>
+    <p>หากคุณยังไม่มีการตั้งค่าธีม ให้ใช้เวอร์ชันเสถียรที่ใหม่กว่าและธีมเริ่มต้น จากนั้นเลือกธีมที่ตรงกับป้ายกำกับ ที่ <a href="rockbox-y1/resolution.html">หน้าความละเอียด</a> ลึกลงไป; หลักการง่ายๆ นั้นง่ายมาก: ป้ายกำกับการสร้างและป้ายกำกับธีมจะต้องสอดคล้องกัน</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>ธีมอยู่ที่ไหน</h2>
+    <p>ธีมคือไฟล์ในการ์ด MicroSD ซึ่งอยู่ภายใน <code>.rockbox</code> โฟลเดอร์ — โฟลเดอร์เดียวกับที่เก็บการตั้งค่าและแคช เฟิร์มแวร์นั้นอยู่ในแฟลชภายใน ดังนั้นการเพิ่ม การเปลี่ยนแปลง หรือการลบธีมจึงไม่จำเป็นต้องทำการแฟลชใหม่</p>
+    <ul class="lumen-benefits-list">
+      <li>คัดลอกโฟลเดอร์ของธีมลงไป <code>.rockbox/themes</code> บนการ์ด</li>
+      <li>จากนั้นเลือกในการตั้งค่าธีมของผู้เล่นและรีบูตเพื่อดูว่ามีการใช้หรือไม่</li>
+      <li>เก็บสำเนาของธีมที่คุณต้องการไว้ก่อนที่จะอัปเดตบิลด์ ซึ่งเป็นไฟล์ ไม่ใช่การติดตั้ง</li>
+    </ul>
+    <p>เปิดไฟล์ที่ซ่อนก่อนหากคุณไม่เห็นโฟลเดอร์: macOS <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>, Windows View → รายการที่ซ่อนอยู่, Linux <kbd>Ctrl</kbd>+<kbd>H</kbd>.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>การใช้ธีมตามลำดับ</h2>
+    <ol class="lumen-steps">
+      <li>ติดตั้งและบูต Rockbox-Y1 ก่อน ธีมต้องการบิลด์ที่ทำงานอยู่</li>
+      <li>คัดลอกโฟลเดอร์ธีมไปที่ <code>.rockbox/themes</code> บนการ์ด</li>
+      <li>เปิดการตั้งค่าธีมและเลือกธีม</li>
+      <li>รีบูตเพื่อให้อินเทอร์เฟซทั้งหมด — ไม่ใช่แค่เมนู — หยิบมันขึ้นมา</li>
+      <li>หากดูใช้งานไม่ได้ ให้เลือกธีมอื่น ไฟล์จะยังคงอยู่หากคุณต้องการลองอีกครั้งในภายหลัง</li>
+    </ol>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>เลิกทำธีมที่ทำให้อินเทอร์เฟซเสียหาย</h2>
+    <p>หากเครื่องเล่นบูทเข้าสู่สิ่งที่ใช้ไม่ได้ คุณไม่จำเป็นต้องติดตั้งเฟิร์มแวร์ใหม่ เปลี่ยนชื่อหรือลบ <code>.rockbox</code> โฟลเดอร์บนการ์ดและเริ่มเครื่องเล่น: บิลด์จะสร้างโฟลเดอร์ขึ้นใหม่ด้วยการตั้งค่าเริ่มต้นและธีมเริ่มต้น เพลงของคุณไม่ถูกแตะต้อง และคุณสามารถคัดลอกธีมที่คุณต้องการกลับมาได้ในภายหลัง</p>
+    <div class="lumen-actions">
+      <a class="lumen-button" href="rockbox-y1/sd-card.html">โฟลเดอร์ .rockbox</a>
+      <a class="lumen-button" href="rockbox-y1/first-start.html">เริ่มแรก</a>
+      <a class="lumen-button" href="rockbox-y1/update.html">กำลังอัปเดตการสร้าง</a>
+    </div>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>คำถามที่ผู้คนถาม</h2>
+    <details>
+      <summary>เหตุใด Updater CE จึงแนะนำฉันเกี่ยวกับการถ่ายโอนธีมหลังจากติดตั้ง MTKClient บน macOS หรือ Linux</summary>
+      <p>MTKClient กะพริบ Rockbox ROM ไปยังที่จัดเก็บข้อมูลภายในในขณะที่ Y1 ของคุณปิดอยู่ในโหมด Preloader/BROM ระดับต่ำ ก่อนที่ Rockbox จะบู๊ตเพื่อเริ่มต้น <code>.rockbox</code> โฟลเดอร์และก่อนที่จะติดตั้งการ์ด MicroSD บนคอมพิวเตอร์ของคุณ เมื่อใดก็ตามที่ Updater CE สามารถเข้าถึงเครื่องเล่นที่บูทไว้ได้โดยตรง (ผ่าน ADB หรือไดรฟ์ USB ที่ติดตั้งอยู่) มันจะถ่ายโอนธีมโดยอัตโนมัติ เมื่อไม่สามารถทำสิ่งนั้นได้โดยไม่มีใครดูแลในระหว่างที่แฟลช จะเปิดขั้นตอนธีมและแบบอักษรที่แนะนำทันทีหลังจากการกะพริบ เพื่อช่วยคุณเปิด Y1 และทำการถ่ายโอนให้เสร็จสิ้นผ่าน ADB หรือโหมดที่เก็บข้อมูล USB</p>
+    </details>
+    <details>
+      <summary>ธีม Y2 จะใช้งานได้บน Y1 หรือไม่</summary>
+      <p>ไม่ พอร์ตต่างๆ แยกจากกัน และการรองรับธีมบน Y2 จะเป็นไปตามรุ่นเบต้า ดู <a href="rockbox-y2-themes_th.html">Rockbox-Y2 ธีม</a>.</p>
+    </details>
+    <details>
+      <summary>ธีมจะมีการอัปเดตต่อไปหรือไม่</summary>
+      <p>โดยปกติแล้วจะใช่ เนื่องจากพวกมันอยู่บนการ์ดและแฟลชเขียน ROM หากบิลด์ใหม่เปลี่ยนเส้นทางของธีม ให้นำธีมที่ตรงกับป้ายกำกับไปใช้ใหม่</p>
+    </details>
+    <details>
+      <summary>เหตุใดจึงใช้ธีมเพียงครึ่งเดียว</summary>
+      <p>โดยปกติแล้วการรีบูตจะช่วยแก้ปัญหาได้ หากไม่เป็นเช่นนั้น ไฟล์ของธีมจะไม่สมบูรณ์ ให้คัดลอกโฟลเดอร์ใหม่แทนที่จะแก้ไขแต่ละไฟล์</p>
+    </details>
+  </section>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="nav.js?v=20261103brand" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

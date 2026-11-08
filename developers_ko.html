@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="ko" dir="ltr" data-locale="ko">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>개발자 | Innioasis 업데이터 CE에 사용자 정의 펌웨어 추가 - Innioasis 펌웨어 다운로드</title>
+  <meta name="description" content="Updater CE에 사용자 정의 Innioasis Y1 또는 Y2 펌웨어를 추가하기 위한 개발자 문서: 저장소 포크, rom.zip 자산 게시, slidia_manifest.xml 편집, 테스트 및 끌어오기 요청 열기.">
+  <meta name="keywords" content="Innioasis 업데이터 개발자 가이드, slidia_manifest.xml, 사용자 정의 펌웨어, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, 릴리스 자산">
+  <link rel="canonical" href="https://innioasis.app/developers_ko.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="개발자 | Innioasis 업데이터 CE에 사용자 정의 펌웨어 추가 - Innioasis 펌웨어 다운로드">
+  <meta property="og:description" content="Updater CE에 사용자 정의 Innioasis Y1 또는 Y2 펌웨어를 추가하기 위한 개발자 문서: 저장소 포크, rom.zip 자산 게시, slidia_manifest.xml 편집, 테스트 및 끌어오기 요청 열기.">
+  <meta property="og:url" content="https://innioasis.app/developers_ko.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="개발자 | Innioasis 업데이터 CE에 사용자 정의 펌웨어 추가 - Innioasis 펌웨어 다운로드">
+  <meta name="twitter:description" content="Updater CE에 사용자 정의 Innioasis Y1 또는 Y2 펌웨어를 추가하기 위한 개발자 문서: 저장소 포크, rom.zip 자산 게시, slidia_manifest.xml 편집, 테스트 및 끌어오기 요청 열기.">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <style>
+    .lumen-manifest-form { display: grid; gap: 1rem; margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); }
+    .lumen-manifest-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
+    .lumen-manifest-form input[type="text"], .lumen-manifest-form input[type="url"] { width: 100%; min-height: 44px; padding: .6rem .7rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-sm); background: var(--lumen-ink); color: var(--lumen-text); font: .9rem var(--lumen-body); }
+    .lumen-manifest-form input:focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 2px; }
+    .lumen-manifest-label { display: block; color: var(--lumen-muted); font-size: .78rem; font-weight: 700; margin-bottom: .35rem; }
+    .lumen-manifest-checks { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .lumen-manifest-form .lumen-code-copy { margin-top: .25rem; }
+    #manifest-preview pre { max-height: 420px; overflow: auto; }
+    :root[data-lumen-theme="2077"] .lumen-manifest-form { border-radius: 0; }
+    .lumen-manifest-form fieldset.lumen-manifest-group { margin: 0; padding: .9rem 1rem 1rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); }
+    .lumen-manifest-form legend { padding: 0 .4rem; color: var(--lumen-muted); font-size: .78rem; font-weight: 700; }
+    .lumen-manifest-form .lumen-manifest-group .lumen-meta { font-weight: 400; }
+    .lumen-manifest-form input[type="file"] { width: 100%; color: var(--lumen-muted); font: .85rem var(--lumen-body); }
+    .lumen-manifest-subgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .9rem; }
+    .lumen-manifest-advanced { border-top: 1px solid var(--lumen-line); padding-top: .9rem; }
+    .lumen-manifest-advanced summary { cursor: pointer; font-weight: 700; }
+    .lumen-manifest-advanced summary:focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 3px; }
+    .lumen-manifest-advanced h4 { margin: 1.1rem 0 .55rem; color: var(--lumen-muted); font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .lumen-manifest-checks--stack { flex-direction: column; align-items: flex-start; gap: .55rem; }
+    .lumen-manifest-checks--stack .lumen-checkbox { align-items: flex-start; }
+    .lumen-manifest-icon-preview { margin-top: .2rem; }
+    .lumen-manifest-icon-preview img { width: 56px; height: 56px; border: 1px solid var(--lumen-line-strong); border-radius: 12px; background: var(--lumen-ink); object-fit: cover; display: block; }
+    .lumen-manifest-other-device { max-width: 340px; margin-top: .8rem; }
+    .lumen-manifest-validation { margin: .2rem 0 0; }
+    .lumen-manifest-validation.is-ok { color: var(--lumen-accent); }
+    .lumen-manifest-validation.is-error { color: #fca5a5; }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Add custom firmware to Innioasis Updater CE",
+    "description": "How developers publish Y1 and Y2 firmware releases and add model entries to slidia_manifest.xml.",
+    "url": "https://innioasis.app/developers.html",
+    "author": {"@type": "Organization", "name": "Innioasis Community"},
+    "programmingLanguage": "XML",
+    "about": ["Innioasis Updater CE", "Innioasis Y1", "Innioasis Y2", "custom firmware"]
+  }
+  </script>
+<meta property="og:site_name" content="Innioasis 소프트웨어 업데이트">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/developers.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/developers.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/developers_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/developers_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/developers_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/developers_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/developers_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/developers_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/developers_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/developers_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/developers_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/developers_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/developers_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/developers_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/developers_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/developers_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/developers_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/developers_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/developers_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/developers_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/developers_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/developers_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/developers_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/developers_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/developers_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/developers_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/developers_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/developers_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/developers_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/developers_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/developers_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/developers_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/developers_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/developers_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/developers_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">본문으로 건너뛰기</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide lumen-developer-guide">
+    <header>
+      <p class="lumen-kicker">펌웨어 개발자용</p>
+      <h1>Updater CE에 펌웨어를 추가하세요.</h1>
+      <p class="lead">Updater CE는 맞춤형 펌웨어를 위한 커뮤니티 카탈로그이자 설치 프로그램입니다. 기본 ROM에서 프로젝트를 개발하고 이를 올바른 릴리스 자산과 함께 공개 저장소로 게시하고 모델 항목을 <code>slidia_manifest.xml</code>, 모델 필터를 테스트하고 끌어오기 요청을 엽니다. 하나의 저장소가 지원하는 모든 모델을 제공할 수 있습니다.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">업데이터 CE 소스 보기</a>
+        <a class="lumen-button" href="firmware_ko.html">소프트웨어 다운로드 찾아보기</a>
+      </div>
+    </header>
+
+<section class="lumen-guide-section" aria-labelledby="base-roms-title">
+      <h2 id="base-roms-title">베이스 ROM에서 시작</h2>
+      <p>기본 ROM은 맞춤형 펌웨어 개발자에게 무선 라디오 칩이 활성화된 깔끔한 Android 기반을 제공합니다. Y1에서는 공장 블루투스 및 FM과 함께 Wi-Fi 및 GPS를 활성화합니다. Y2에서는 공장 Bluetooth와 함께 Wi-Fi, GPS 및 FM을 활성화합니다.</p>
+      <div class="lumen-table-wrap">
+        <table class="lumen-doc-table">
+          <caption class="lumen-visually-hidden">맞춤형 펌웨어 개발을 위한 기본 ROM 다운로드(각각 활성화되는 Android 버전 및 무선 기능 포함)</caption>
+          <thead>
+            <tr><th scope="col">다운로드</th><th scope="col">장치</th><th scope="col">기계적 인조 인간</th><th scope="col">무선 기능</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>안드로이드 4.2.2</td><td>공장 Bluetooth 및 FM에 Wi-Fi 및 GPS를 추가합니다(FM은 공장에서 이미 Y1에서 작동합니다). OS 2.0.0 이상과 함께 출시된 Y1 플레이어의 경우.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>안드로이드 4.2.2</td><td>공장 Bluetooth 및 FM에 Wi-Fi 및 GPS를 추가합니다(FM은 공장에서 이미 Y1에서 작동합니다). 2.0.0 이전 OS와 함께 출시된 Y1 플레이어의 경우.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>안드로이드 4.4.2</td><td>공장 블루투스에 Wi-Fi, GPS, FM을 추가합니다. Y2 라디오 칩이 완전히 활성화되었으므로 여기에서도 FM을 사용할 수 있습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lumen-meta">이러한 이미지는 기기 무선 라디오가 활성화된 기본 Android 기반(AOSP)이므로 맞춤 펌웨어는 라디오 스택을 교체하는 대신 네트워크 기능을 추가할 수 있습니다. 이는 아래 게시 단계의 실질적인 시작점입니다.</p>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="packages-title">
+      <h2 id="packages-title">다음 릴리스 자산 이름을 사용하세요.</h2>
+      <p>파일 이름은 호환성 신호의 일부입니다. 이름을 정확하게 유지하고 저장소 소스 트리뿐만 아니라 프로젝트의 릴리스 자산에 ZIP 파일을 넣으세요.</p>
+      <div class="lumen-table-wrap">
+        <table class="lumen-doc-table">
+          <caption class="lumen-visually-hidden">펌웨어 ZIP 자산 이름 및 지원 장치</caption>
+          <thead>
+            <tr><th scope="col">유산</th><th scope="col">장치</th><th scope="col">하드웨어</th><th scope="col">의미</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 OS 2.0.0 이상이 설치된 장치.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 2.0.0 이전 OS와 함께 제공되는 장치입니다.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Y2 전체 설치 패키지. Y1 자산과 별도로 유지하세요.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lumen-warning"><strong>다른 모델에 맞게 패키지 이름을 바꾸지 마십시오.</strong> Y1과 Y2은 서로 다른 MediaTek 플랫폼 파일과 플래싱 구성을 사용합니다. 실제로 지원하는 하드웨어용 패키지를 게시합니다.</div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="how-it-works-title">
+      <h2 id="how-it-works-title">연결 작동 방식</h2>
+      <p>업데이터 CE는 매니페스트를 카탈로그로 읽습니다. 각 <code>&lt;package&gt;</code> 줄은 프로젝트 이름, 저장소, 모델 및 처리기를 알려줍니다. 사용자가 해당 프로젝트를 선택하면 업데이터는 저장소의 게시된 릴리스를 확인하고 <code>rom*.zip</code> 유산.</p>
+      <div class="lumen-grid">
+        <article class="lumen-card">
+          <h3>명백한</h3>
+          <p>프로젝트 이름을 지정하고 모델에 매핑합니다. Y1과 Y2은 저장소를 공유하는 경우에도 별도의 줄이 필요합니다.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>출판된 릴리스</h3>
+          <p>설치 가능한 ZIP 자산이 포함되어 있습니다. 단일 릴리스에는 Y1 Type A, Y1 Type B 및 Y2 패키지가 함께 포함될 수 있습니다.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>업데이터 CE 설치</h3>
+          <p>선택한 모델을 사용하여 일치하는 패키지와 모델별 플래싱 경로를 선택합니다. 사용자는 파일 이름을 추측할 필요가 없습니다.</p>
+        </article>
+      </div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="steps-title">
+      <h2 id="steps-title">5단계로 프로젝트 게시</h2>
+      <ol class="lumen-steps">
+        <li><strong>Updater CE 저장소를 포크합니다.</strong> 나만의 포크 만들기 <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>을 클릭한 다음 포크를 로컬로 복제하세요.</li>
+        <li><strong>공개 펌웨어 저장소를 준비합니다.</strong> 저장소가 공개되어 있고 해당 릴리스에 올바른 ZIP 자산이 포함되어 있는지 확인하세요. 당신은 넣을 수 있습니다 <code>rom.zip</code>, <code>rom_type_b.zip</code>, 그리고 <code>rom_y2.zip</code> 동일한 버전에 속하면 동일한 릴리스에 있어야 합니다.</li>
+        <li><strong>매니페스트를 편집합니다.</strong> 열기 <code>slidia_manifest.xml</code> Updater CE 포크의 루트에 있습니다. 릴리스가 지원하는 각 모델에 대해 한 줄을 추가합니다(Y1 및 Y2은 공통 쌍입니다). 그만큼 <code>repo</code> 값은 저장소의 <code>owner/repository</code>; <code>url</code> 공개 프로젝트 페이지입니다.</li>
+        <li><strong>카탈로그를 테스트해 보세요.</strong> 편집된 체크아웃에서 Updater를 실행합니다. Y1을 선택하고 프로젝트에 Y1 자산이 표시되는지 확인합니다. Y2를 선택하고 Y2 릴리스가 표시되는지 확인합니다. 둘 다 게시되면 Type A와 Type B를 별도로 확인하세요.</li>
+        <li><strong>끌어오기 요청을 엽니다.</strong> 매니페스트 변경 사항을 포크로 푸시하고 업스트림 업데이터 CE 저장소에 대한 풀 요청을 엽니다. 프로젝트 링크, 지원되는 모델, 릴리스 태그, 자산 이름, 테스트한 장치를 포함하세요.</li>
+      </ol>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="manifest-title">
+      <h2 id="manifest-title">매니페스트 라인 생성</h2>
+      <p>저장소를 채우고 릴리스가 지원하는 모든 모델을 선택하십시오. 생성기는 하나를 씁니다. <code>&lt;package&gt;</code> 모델별로 라인이 표시되며 사용자가 설정한 속성만 포함되므로 결과는 현재와 일치합니다. <code>slidia_manifest.xml</code> 체재. Updater CE가 읽는 모든 속성은 아래에서 사용할 수 있습니다. 선택적인 속성은 아래에 있습니다. <strong>추가 옵션</strong>.</p>
+
+      <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
+        <div class="lumen-manifest-fields">
+          <div class="lumen-field">
+            <label for="manifest-repo-url">저장소 URL</label>
+            <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">공개 GitHub 저장소. 발전기가 추출합니다. <code>owner/repository</code> URL에서.</span>
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-name">소프트웨어 이름</label>
+            <input type="text" id="manifest-name" placeholder="기본값은 저장소 이름입니다." autocomplete="off">
+            <span class="lumen-field-help">앱과 사이트 카탈로그에 표시됩니다.</span>
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-project-url">프로젝트 URL</label>
+            <input type="url" id="manifest-project-url" placeholder="기본값은 저장소 URL입니다." autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">프로젝트 또는 릴리스 노트에 대한 사람을 향한 페이지입니다.</span>
+          </div>
+          <div class="lumen-field">
+            <label for="manifest-brand">상표</label>
+            <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
+            <datalist id="manifest-brand-suggestions">
+              <option value="Innioasis"></option>
+              <option value="Timmkoo"></option>
+            </datalist>
+            <span class="lumen-field-help">모델의 기본 브랜드를 사용하려면 이 항목을 선택 취소하세요. SR1, Q3, Q5 및 Q3e는 Timmkoo 모델입니다.</span>
+          </div>
+        </div>
+
+        <fieldset class="lumen-manifest-group">
+          <legend>장치(각각 한 줄)</legend>
+          <div class="lumen-manifest-checks">
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="A5"><span>A5</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="G1"><span>G1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="G3"><span>G3</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="G5"><span>G5</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="R1"><span>R1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="PR1"><span>PR1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="SR1"><span>SR1</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3"><span>Q3</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q5"><span>Q5</span></label>
+            <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
+          </div>
+          <div class="lumen-field lumen-manifest-other-device">
+            <label for="manifest-other-devices">다른 모델</label>
+            <input type="text" id="manifest-other-devices" placeholder="쉼표로 구분됨(예: X1, X2" autocomplete="off">
+            <span class="lumen-field-help">위에 나열되지 않은 모델의 경우. 알려진 모델은 카탈로그 철자를 유지합니다.</span>
+          </div>
+        </fieldset>
+
+        <fieldset class="lumen-manifest-group">
+          <legend>플래그</legend>
+          <div class="lumen-manifest-checks lumen-manifest-checks--stack">
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — 이 펌웨어에 대해 Keep Data를 제공하지 마십시오.</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>원본 소프트웨어로 제작 — 추가 <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+          </div>
+          <p class="lumen-field-help">데이터 유지는 수신 펌웨어와 설치된 펌웨어가 동일하거나 공유하는 경우에만 제공됩니다. <code>derivative</code> 뿌리. 사용자 데이터가 실제로 전달될 수 없는 경우에만 플래그를 사용하십시오.</p>
+        </fieldset>
+
+        <details class="lumen-manifest-advanced">
+          <summary>추가 옵션: 아이콘, 아트웍, 릴리스 자산, 설치 후 및 미러</summary>
+
+          <h4>아이콘과 아트워크</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-icon-file">아이콘 파일</label>
+              <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+              <span class="lumen-field-help">저장소에 커밋할 이미지를 선택합니다. 그러면 이를 미리 보고 원시 URL을 구축합니다. 아무것도 업로드하지 않습니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-icon-path">저장소의 아이콘 경로</label>
+              <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">저장소 루트를 기준으로 커밋된 이미지의 경로입니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-icon-branch">아이콘 지점</label>
+              <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-icon-url">아이콘 URL</label>
+              <input type="url" id="manifest-icon-url" placeholder="파일 경로에서 채워짐" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">직접 이미지 URL. 비어 있으면 앱은 릴리스의 <code>updater.png</code> 또는 생성된 아이콘.</span>
+            </div>
+          </div>
+          <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
+            <img alt="선택한 아이콘 미리보기">
+          </div>
+          <p class="lumen-meta" id="manifest-icon-resolved"></p>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-icon-dark-url">다크 모드 아이콘 URL</label>
+              <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">선택적 어두운 테마 아이콘. <code>image_dark</code> 허용되는 별칭입니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-image-url">라이트 아트웍 URL</label>
+              <input type="url" id="manifest-image-url" placeholder="영상" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">2차 아트워크, 출시 후 시도한 이미지 및 <code>icon</code>.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-image-dark-url">어두운 작품 URL</label>
+              <input type="url" id="manifest-image-dark-url" placeholder="이미지_어두운" autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+
+          <h4>자산 출시</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-package-name">릴리스 자산 이름</label>
+              <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">선택한 모든 모델에 대해 하나의 이름이 있습니다. 사용하려면 비워두세요. <code>rom.zip</code> Y1에 그리고 <code>rom_&lt;model&gt;.zip</code> 다른 곳.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-asset-pattern">자산 패턴</label>
+              <input type="text" id="manifest-asset-pattern" placeholder="내-펌웨어-*.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">릴리스의 zip 이름이 지정되지 않은 경우 사용되는 Glob <code>rom*.zip</code>.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-type-a-asset">Type A 자산</label>
+              <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Y1 Type A 패키지 이름에 해당 패키지가 명시되지 않은 경우 Glob입니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-type-b-asset">Type B 자산</label>
+              <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Y1 Type B 패키지 이름에 해당 패키지가 명시되지 않은 경우 Glob입니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-min-version">최소 앱 버전</label>
+              <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">이전 Updater CE 빌드에서 항목을 숨깁니다.</span>
+            </div>
+          </div>
+
+          <h4>링크, 미러 및 Keep Data 제품군</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-post-install">설치 후 페이지</label>
+              <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">성공적으로 설치한 후 열었습니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-post-install2">설치 후 두 번째 페이지</label>
+              <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">여러 페이지로 구성된 설정 가이드를 위한 선택적 두 번째 단계입니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-portable-zips">휴대용 지퍼 거울</label>
+              <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">쉼표로 구분 <code>*-mirror</code> Portable Flashing Zip 패키지를 빌드하는 저장소.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-derivative">파생 저장소</label>
+              <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">이 릴리스의 기반이 되는 펌웨어입니다. 관련 펌웨어는 데이터 파티션을 공유하는데, 이는 Keep Data가 확인하는 것입니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-info-repo">정보 저장소</label>
+              <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">이 펌웨어의 앱을 설명하는 릴리스의 앱 저장소입니다. 또한 설치 후 페이지가 필요합니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-apk-repo">APK 저장소</label>
+              <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">APK 앱이 펌웨어 이후에 다운로드 및 설치되는 앱 저장소입니다.</span>
+            </div>
+          </div>
+
+          <h4>카탈로그 추가사항</h4>
+          <div class="lumen-manifest-subgrid">
+            <div class="lumen-field">
+              <label for="manifest-slug">강타</label>
+              <input type="text" id="manifest-slug" placeholder="이름과 모델에서 생성됨" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">링크 및 저장된 설치 기록에 대한 안정적인 식별자입니다. 여러 모델을 선택하면 해당 모델이 자동으로 추가됩니다.</span>
+            </div>
+            <div class="lumen-field">
+              <label for="manifest-description">설명</label>
+              <input type="text" id="manifest-description" placeholder="간단한 카탈로그 설명" autocomplete="off">
+            </div>
+          </div>
+        </details>
+
+        <div class="lumen-code-copy">
+          <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
+&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">라인 복사</button>
+        </div>
+
+        <p class="lumen-meta" id="manifest-status">최신 매니페스트 로드 중…</p>
+
+        <details id="manifest-preview" hidden>
+          <summary>라인이 추가된 최신 매니페스트를 미리 봅니다.</summary>
+          <p>발전기가 전류를 가져왔습니다. <code>slidia_manifest.xml</code> 이 저장소에서 바로 직전에 생성된 라인을 삽입했습니다. <code>&lt;/slidia&gt;</code>.</p>
+          <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
+          <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
+        </details>
+      </div>
+
+      <div class="lumen-warning"><strong>공유 저장소에는 한 줄로는 충분하지 않습니다.</strong> Y2 줄이 누락된 경우 Y2 사용자는 다음과 같은 경우에도 모델과 일치하는 항목을 얻지 못합니다. <code>rom_y2.zip</code> 프로젝트 릴리스에 존재합니다. 릴리스가 지원하는 다른 모든 모델에서도 마찬가지입니다.</div>
+
+      <h3 id="manifest-attributes-title">매니페스트가 읽는 모든 속성</h3>
+      <p>이는 현재 Updater CE 빌드가 이해하는 특성입니다. 생성기는 사용자가 입력한 항목만 작성합니다. 앱은 나머지 부분에 대해 합리적인 기본값으로 돌아갑니다.</p>
+      <div class="lumen-table-wrap">
+        <table class="lumen-doc-table">
+          <caption class="lumen-visually-hidden">slidia_manifest.xml 패키지 속성 및 의미</caption>
+          <thead>
+            <tr><th scope="col">기인하다</th><th scope="col">필요</th><th scope="col">기능</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><code>name</code></th><td>예</td><td>카탈로그와 설치 카드에 표시된 소프트웨어 이름입니다.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>예</td><td><code>owner/repo</code>. 앱은 해당 저장소의 GitHub 릴리스를 읽습니다.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>예</td><td>대상 모델, 대문자(<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). 모델당 하나의 항목을 유지합니다.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>추천</td><td>카탈로그에서 프로젝트 페이지 또는 릴리스 노트가 열립니다.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>예, 실제로는</td><td><code>type="img"</code> 그리고 <code>handler="Custom Firmware"</code>. 다른 유형 및 비펌웨어 처리기는 건너뜁니다.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>선택사항</td><td>카탈로그 브랜드(<code>Innioasis</code>, <code>Timmkoo</code>). 비어 있음은 모델의 기본 브랜드를 사용합니다.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>선택사항</td><td>릴리스 자산 파일 이름. 기본값은 <code>rom.zip</code> Y1에 그리고 <code>rom_&lt;model&gt;.zip</code> 다른 모델에서는.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>선택사항</td><td>펌웨어 zip 이름이 지정되지 않은 릴리스의 경우 대소문자를 구분하지 않는 glob <code>rom*.zip</code> (예를 들어 <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>선택사항</td><td>파일 이름에 일반적인 마커가 포함되지 않은 경우 Y1 Type A 및 Type B zip을 식별하는 글로브입니다.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>선택사항</td><td>로고 URL. 릴리스 자체 이후에 사용됨 <code>updater.png</code> / <code>updater.jpg</code>, 그리고 모든 릴리스에 대한 대체 수단으로 사용됩니다.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>선택사항</td><td>어두운 테마 로고. <code>image_dark</code> 허용되는 별칭입니다.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>선택사항</td><td>보조 조명 아트웍, 이후 시도 <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>선택사항</td><td>성공적인 설치 후 페이지가 열렸습니다. 두 번째는 다단계 가이드를 다룹니다.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>선택사항</td><td>쉼표로 구분 <code>*-mirror</code> 즉시 실행 가능한 휴대용 패키지를 게시하는 저장소입니다.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>선택사항</td><td>펌웨어가 빌드된 리포지토리입니다. 동일한 파생 루트를 가진 펌웨어는 사용자 데이터를 유지할 수 있습니다.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>선택사항</td><td>펌웨어가 배포하는 내용을 설명하는 릴리스가 있는 앱 저장소입니다. 필요하다 <code>post_install</code> 또는 <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>선택사항</td><td>펌웨어 이후에 앱이 설치되는 APK 앱 저장소입니다.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>선택사항</td><td>Updater CE가 이 버전보다 오래된 경우 항목을 숨깁니다.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>선택사항</td><td><code>true</code> (또한 <code>1</code> / <code>yes</code>)는 이 펌웨어에 대해 데이터를 완전히 유지하는 것을 차단합니다.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>선택사항</td><td>링크 및 저장된 설치 기록에 대한 안정적인 식별자입니다. 비어 있으면 이름과 모델에서 생성됩니다.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>선택사항</td><td>짧은 카탈로그 설명. 속성 값 또는 요소의 텍스트일 수 있습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lumen-meta">호환성을 위해 기존 이름을 계속 읽습니다. <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> 그리고 <code>image_dark</code>. 새 항목은 위의 현재 이름을 사용해야 합니다.</p>
+
+      <h3>풀 요청으로 라인 제출</h3>
+      <ol class="lumen-steps">
+        <li><strong>위에서 생성된 줄을 복사합니다.</strong> 이미 최신 매니페스트 형식과 일치합니다.</li>
+        <li><strong>편집하다 <code>slidia_manifest.xml</code> 저장소에 있습니다.</strong> 아래의 편집 링크를 사용하세요. 저장소 호스트는 자동으로 포크와 분기를 생성합니다.</li>
+        <li><strong>바로 앞에 줄을 붙여넣으세요. <code>&lt;/slidia&gt;</code>,</strong> 기존 항목을 변경하지 않고 유지합니다.</li>
+        <li><strong>새로운 브랜치에 커밋</strong> (예를 들어 <code>add-your-firmware</code>), 그런 다음 Updater CE 저장소에 대한 풀 요청을 엽니다.</li>
+        <li><strong>PR에는 다음을 포함합니다.</strong> 프로젝트 링크, 지원되는 모델, 릴리스 태그, 자산 이름 및 테스트한 장치.</li>
+      </ol>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">업데이터 CE 매니페스트 편집</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">최신 매니페스트 보기</a>
+      </div>
+      <p class="lumen-meta">모델 이름은 대문자로 유지하고, 공개 저장소의 정확한 URL을 사용하고, <code>type="img"</code> 그리고 <code>handler="Custom Firmware"</code> 펌웨어 항목의 경우.</p>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="release-title">
+      <h2 id="release-title">릴리스를 쉽게 확인할 수 있도록 하세요.</h2>
+      <p>릴리스에 명확한 태그와 릴리스 노트를 제공하십시오. 태그는 사람들에게 유용하지만 ZIP 자산 이름은 Updater CE가 설치 패키지를 식별하는 데 사용하는 것입니다.</p>
+      <div class="lumen-grid">
+        <article class="lumen-card">
+          <h3>릴리스 체크리스트</h3>
+          <ul>
+            <li>릴리스를 공개적으로 게시합니다.</li>
+            <li>ZIP 파일을 릴리스 자산으로 첨부합니다.</li>
+            <li>메모에 지원되는 모델과 Type A 또는 Type B을 명시하십시오.</li>
+            <li>필요한 준비 사항이나 알려진 제한 사항을 나열하십시오.</li>
+          </ul>
+        </article>
+        <article class="lumen-card">
+          <h3>하나의 릴리스, 세 가지 자산</h3>
+          <p>공유 릴리스에는 다음이 포함될 수 있습니다. <code>rom.zip</code>, <code>rom_type_b.zip</code>, 그리고 <code>rom_y2.zip</code>. 업데이터는 이를 별도로 분류하고 모델 및 하드웨어 필터 중에서 선택합니다.</p>
+        </article>
+        <article class="lumen-card">
+          <h3>추측을 묶지 마세요</h3>
+          <p>Y2 파일 이름 아래에 Y1 패키지를 포함하거나 테스트되지 않은 스캐터, 프리로더 또는 파티션 데이터를 추가하여 자산을 표시하지 마십시오.</p>
+        </article>
+      </div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="flashing-title">
+      <h2 id="flashing-title">플래싱 중에 모델 항목이 중요한 이유</h2>
+      <p>매니페스트는 단순한 다운로드 메뉴가 아닙니다. 추출 후 Updater CE는 확인된 모델을 사용하여 일치하는 설치 경로를 준비합니다. Y1과 Y2에는 서로 다른 플랫폼 파일, 프리로더, 스캐터 구성 및 장치 레이아웃이 있습니다.</p>
+      <ul class="lumen-steps">
+        <li><strong>Y1:</strong> 업데이트 프로그램은 Y1 경로를 준비하고 MTKClient이 사용될 때 장치의 명명된 파티션을 사용합니다.</li>
+        <li><strong>Y2:</strong> 업데이트 프로그램은 Y2 경로를 준비하고 Y2 MT6582 구성을 사용합니다. 전체 복구는 모델에 맞는 분산 데이터의 물리적 주소를 사용할 수 있습니다.</li>
+        <li><strong>크로스 플랫폼 지원:</strong> Updater CE는 추가 플래싱 도구 없이 Windows, Linux 및 macOS(Intel 및 Apple Silicon Mac 모두 지원)에서 직접 기본 플래싱을 처리합니다.</li>
+      </ul>
+      <div class="lumen-warning"><strong>기여자는 플래시 오프셋이 아닌 올바른 펌웨어 파일을 제공해야 합니다.</strong> 잘못된 패키지를 해결하기 위해 분산 주소, 프리로더, DA 파일 또는 파티션 명령을 편집하지 마십시오. 릴리스 자산을 수정하고 의도한 모델에서 테스트합니다.</div>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="test-title">
+      <h2 id="test-title">병합을 요청하기 전에</h2>
+      <ol class="lumen-steps">
+        <li>XML 파서를 사용하여 XML의 유효성을 검사합니다. 누락된 인용문 또는 마무리 <code>/&gt;</code> 그 이후의 모든 항목을 숨길 수 있습니다.</li>
+        <li>원격 새로 고침 전에 로컬 매니페스트를 로드하도록 결제에서 업데이트 프로그램을 실행하세요.</li>
+        <li>Y1과 Y2을 독립적으로 확인합니다. 프로젝트가 해당 패키지가 지원되는 위치에만 나타나는지 확인하세요.</li>
+        <li>릴리스 목록을 확인하세요. <code>rom.zip</code>, <code>rom_type_b.zip</code>, 그리고 <code>rom_y2.zip</code> 적용 가능합니다.</li>
+        <li>안정적인 USB 데이터 케이블과 원래 소프트웨어로 돌아가기 위한 복구 계획을 사용하여 의도한 장치에 실제 설치를 테스트합니다.</li>
+        <li>풀 요청에서 테스트한 내용을 설명하세요. 테스트되지 않은 모델을 지원되는 것으로 설명하지 마십시오.</li>
+      </ol>
+      <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
+      <p>로컬 확인을 위해서는 리포지토리 루트에서 해당 명령을 실행하세요. XML 구문만 확인합니다. 이는 릴리스에 유효한 펌웨어가 포함되어 있거나 장치가 플래시해도 안전하다는 것을 증명하지 않습니다.</p>
+    </section>
+
+<section class="lumen-guide-section" aria-labelledby="links-title">
+      <h2 id="links-title">유용한 프로젝트 링크</h2>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">포크 업데이터 CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">매니페스트 보기</a>
+        <a class="lumen-button" href="support_devs_ko.html">지역 사회 기여 메모</a>
+        <a class="lumen-button" href="troubleshooting_ko.html">문제 해결</a>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="skills-title">
+      <h2 id="skills-title">AI 에이전트를 위한 모딩 기술</h2>
+      <p>저장소의 <code>skills/</code> 디렉토리는 Y1 및 Y2 하드웨어, 펌웨어, 테마 및 앱을 작업하는 에이전트를 위한 소스 기반 지식 기반입니다. 각 기술은 청구가 발생한 프로젝트 파일의 이름을 지정하므로 상담원은 장치를 변경하기 전에 사실을 확인할 수 있습니다.</p>
+      <div class="lumen-grid">
+        <article class="lumen-card">
+          <small>여기서 시작하세요</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">기술 지수 및 안전 규칙</a></h3>
+          <p>기술을 로드하는 방법, 사실이 적용되는 모델, 패키지가 작성해서는 안 되는 파티션.</p>
+        </article>
+        <article class="lumen-card">
+          <small>하드웨어</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 하드웨어</a></h3>
+          <p>MT6572, 주요 이벤트로서의 휠, 480x360 디스플레이, FM/오디오 경로, 스토리지 및 Type A/B 파티션 맵.</p>
+        </article>
+        <article class="lumen-card">
+          <small>하드웨어</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 하드웨어</a></h3>
+          <p>MT6582 보드, 장치 트리, GC9503V/ST7701S 패널, PMIC/DAC 레일, 파티션 및 부팅 이미지.</p>
+        </article>
+        <article class="lumen-card">
+          <small>펌웨어</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">펌웨어 패키지</a></h3>
+          <p>rom.zip 해부학, 분산 파일, 클래스 A 업데이트 계약 및 릴리스 체크리스트.</p>
+        </article>
+        <article class="lumen-card">
+          <small>테마</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">테마 및 스킨 제작</a></h3>
+          <p>Y1 config.json 테마, Rockbox WPS/SBS, Reborn 스킨 및 Y2Player 스킨 형식 v2.</p>
+        </article>
+        <article class="lumen-card">
+          <small>모든 기술</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">스킬 폴더 찾아보기</a></h3>
+          <p>Rockbox Y1/Y2, 기본 Android ROM, Y2Linux, Android 앱, 실행 프로그램, 릴리스 노트 및 사이트 게시.</p>
+        </article>
+      </div>
+    </section>
+
+</main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script src="portable-zip-links.js?v=20261106direct" defer></script>
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("manifest-generator");
+  if (!form) return;
+
+  var repoEl = document.getElementById("manifest-repo-url");
+  var nameEl = document.getElementById("manifest-name");
+  var projectUrlEl = document.getElementById("manifest-project-url");
+  var brandEl = document.getElementById("manifest-brand");
+  var otherDevicesEl = document.getElementById("manifest-other-devices");
+  var deviceEls = Array.prototype.slice.call(form.querySelectorAll('input[name="manifest-device"]'));
+  var doNotKeepDataEl = document.getElementById("manifest-do-not-keep-data");
+  var derivativeOriginalEl = document.getElementById("manifest-derivative-original");
+  var derivativeEl = document.getElementById("manifest-derivative");
+  var iconFileEl = document.getElementById("manifest-icon-file");
+  var iconPathEl = document.getElementById("manifest-icon-path");
+  var iconBranchEl = document.getElementById("manifest-icon-branch");
+  var iconUrlEl = document.getElementById("manifest-icon-url");
+  var iconPreviewEl = document.getElementById("manifest-icon-preview");
+  var iconResolvedEl = document.getElementById("manifest-icon-resolved");
+  var iconDarkEl = document.getElementById("manifest-icon-dark-url");
+  var imageEl = document.getElementById("manifest-image-url");
+  var imageDarkEl = document.getElementById("manifest-image-dark-url");
+  var packageNameEl = document.getElementById("manifest-package-name");
+  var assetPatternEl = document.getElementById("manifest-asset-pattern");
+  var typeAAssetEl = document.getElementById("manifest-type-a-asset");
+  var typeBAssetEl = document.getElementById("manifest-type-b-asset");
+  var minVersionEl = document.getElementById("manifest-min-version");
+  var postInstallEl = document.getElementById("manifest-post-install");
+  var postInstall2El = document.getElementById("manifest-post-install2");
+  var portableZipsEl = document.getElementById("manifest-portable-zips");
+  var infoRepoEl = document.getElementById("manifest-info-repo");
+  var apkRepoEl = document.getElementById("manifest-apk-repo");
+  var slugEl = document.getElementById("manifest-slug");
+  var descriptionEl = document.getElementById("manifest-description");
+  var output = document.getElementById("manifest-output");
+  var outputCode = output ? output.querySelector("code") : null;
+  var copyBtn = document.getElementById("manifest-copy");
+  var statusEl = document.getElementById("manifest-status");
+  var previewDetails = document.getElementById("manifest-preview");
+  var previewOutput = document.getElementById("manifest-preview-output");
+  var validationEl = document.getElementById("manifest-validation");
+
+  var MANIFEST_URL = "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/slidia_manifest.xml";
+  var ORIGINAL_DERIVATIVE = "y1-community/y1-stock-rom";
+  var MODEL_NAMES = { Y1: "Y1", Y2: "Y2", A5: "A5", G1: "G1", G3: "G3", G5: "G5", R1: "R1", PR1: "PR1", SR1: "SR1", Q3: "Q3", Q5: "Q5", Q3E: "Q3e" };
+  var latestManifestText = null;
+  var iconUrlAuto = true;
+  var iconObjectUrl = null;
+
+  function esc(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function attr(name, value) {
+    var text = String(value == null ? "" : value).trim();
+    return text ? " " + name + '="' + esc(text) + '"' : "";
+  }
+
+  function humanizeName(repo) {
+    return String(repo || "")
+      .replace(/[-_]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(/\b\w/g, function (c) { return c.toUpperCase(); }) || "Your Firmware";
+  }
+
+  function parseGitHub(input) {
+    var value = String(input || "").trim();
+    if (!value) return null;
+    // Accepts https://github.com/owner/repo, github.com/owner/repo, or owner/repo,
+    // with optional www., trailing slashes, .git, and extra path segments.
+    var m = value.match(/^(?:https?:\/\/)?(?:www\.)?github\.com\/([^/?#\s]+)\/([^/?#\s]+)/i);
+    if (m) return { owner: m[1], repo: m[2].replace(/\.git$/i, "") };
+    m = value.match(/^([^/?#\s]+)\/([^/?#\s]+)$/);
+    if (!m) return null;
+    return { owner: m[1], repo: m[2].replace(/\.git$/i, "") };
+  }
+
+  function selectedDevices() {
+    var out = [];
+    var seen = {};
+    function add(raw) {
+      var upper = String(raw || "").trim().toUpperCase();
+      if (!upper || !/^[A-Z0-9][A-Z0-9._-]{0,15}$/.test(upper) || seen[upper]) return;
+      seen[upper] = true;
+      out.push(MODEL_NAMES[upper] || upper);
+    }
+    deviceEls.forEach(function (el) {
+      if (el.checked) add(el.value);
+    });
+    String(otherDevicesEl && otherDevicesEl.value || "").split(/[\s,]+/).forEach(add);
+    return out;
+  }
+
+  function values() {
+    var parsed = parseGitHub(repoEl.value);
+    var owner = parsed ? parsed.owner : "your-account";
+    var repo = parsed ? parsed.repo : "your-firmware";
+    var repoValue = owner + "/" + repo;
+    return {
+      name: nameEl.value.trim() || humanizeName(repo),
+      brand: brandEl.value.trim(),
+      repo: repoValue,
+      url: projectUrlEl.value.trim() || "https://github.com/" + repoValue,
+      packageName: packageNameEl.value.trim(),
+      assetPattern: assetPatternEl.value.trim(),
+      typeAAsset: typeAAssetEl.value.trim(),
+      typeBAsset: typeBAssetEl.value.trim(),
+      icon: iconUrlEl.value.trim(),
+      iconDark: iconDarkEl.value.trim(),
+      image: imageEl.value.trim(),
+      imageDark: imageDarkEl.value.trim(),
+      postInstall: postInstallEl.value.trim(),
+      postInstall2: postInstall2El.value.trim(),
+      portableZips: portableZipsEl.value.trim(),
+      derivative: derivativeEl.value.trim(),
+      infoRepo: infoRepoEl.value.trim(),
+      apkRepo: apkRepoEl.value.trim(),
+      minVersion: minVersionEl.value.trim(),
+      doNotKeepData: !!(doNotKeepDataEl && doNotKeepDataEl.checked),
+      slug: slugEl.value.trim(),
+      description: descriptionEl.value.trim().replace(/\s+/g, " ")
+    };
+  }
+
+  function buildLine(v, device, slug) {
+    var line = "<package" +
+      attr("name", v.name) +
+      attr("brand", v.brand) +
+      attr("repo", v.repo) +
+      attr("device", device) +
+      attr("url", v.url) +
+      ' type="img" handler="Custom Firmware"';
+    line += attr("package_name", v.packageName);
+    line += attr("asset_pattern", v.assetPattern);
+    line += attr("type_a_asset", v.typeAAsset);
+    line += attr("type_b_asset", v.typeBAsset);
+    line += attr("icon", v.icon);
+    line += attr("icon_dark", v.iconDark);
+    line += attr("image", v.image);
+    line += attr("image_dark", v.imageDark);
+    line += attr("post_install", v.postInstall);
+    line += attr("post_install2", v.postInstall2);
+    line += attr("portable_zips", v.portableZips);
+    line += attr("derivative", v.derivative);
+    line += attr("info_repo", v.infoRepo);
+    line += attr("apk_repo", v.apkRepo);
+    line += attr("min_version", v.minVersion);
+    if (v.doNotKeepData) line += ' do_not_keep_data="true"';
+    line += attr("slug", slug);
+    line += attr("description", v.description);
+    return line + " />";
+  }
+
+  function buildLines() {
+    var v = values();
+    var devices = selectedDevices();
+    if (!devices.length) return "";
+    return devices.map(function (device) {
+      var slug = v.slug && devices.length > 1 ? v.slug + "-" + device.toLowerCase() : v.slug;
+      return buildLine(v, device, slug);
+    }).join("\n");
+  }
+
+  function buildIconUrl() {
+    var parsed = parseGitHub(repoEl.value);
+    var branch = iconBranchEl.value.trim() || "main";
+    var path = iconPathEl.value.trim().replace(/^\/+/, "");
+    if (!parsed || !path) return "";
+    return "https://raw.githubusercontent.com/" + parsed.owner + "/" + parsed.repo + "/" +
+      encodeURIComponent(branch) + "/" +
+      path.split("/").map(encodeURIComponent).join("/");
+  }
+
+  function xmlError(text) {
+    try {
+      var doc = new DOMParser().parseFromString(text, "application/xml");
+      var err = doc.querySelector("parsererror");
+      return err ? (err.textContent || "XML parse error") : "";
+    } catch (e) {
+      return String(e && e.message || e);
+    }
+  }
+
+  function clip(text, limit) {
+    var value = String(text || "").replace(/\s+/g, " ").trim();
+    return value.length > limit ? value.slice(0, limit - 1) + "…" : value;
+  }
+
+  function setValidation(message, state) {
+    if (!validationEl) return;
+    validationEl.textContent = message;
+    validationEl.className = "lumen-meta lumen-manifest-validation" + (state ? " is-" + state : "");
+  }
+
+  function updatePreview(lines) {
+    if (!previewOutput || !validationEl) return;
+    var idx = latestManifestText.lastIndexOf("</slidia>");
+    if (idx === -1) {
+      previewOutput.textContent = latestManifestText;
+      setValidation("The fetched manifest has no closing </slidia> tag.", "error");
+      return;
+    }
+    var inserted = latestManifestText.slice(0, idx) + (lines ? lines + "\n" : "") + latestManifestText.slice(idx);
+    previewOutput.textContent = inserted;
+
+    var ownError = lines ? xmlError("<slidia>" + lines + "</slidia>") : "";
+    var baseError = xmlError(latestManifestText);
+    var combinedError = xmlError(inserted);
+    if (ownError) {
+      setValidation("The generated lines are not valid XML: " + clip(ownError, 220), "error");
+    } else if (baseError) {
+      setValidation("The fetched manifest already has an XML problem, so the combined preview cannot parse. Your generated lines are valid on their own.", "error");
+    } else if (combinedError) {
+      setValidation("The combined preview does not parse: " + clip(combinedError, 220), "error");
+    } else {
+      var count = (inserted.replace(/<!--[\s\S]*?-->/g, "").match(/<package\b/g) || []).length;
+      setValidation("Preview XML is valid — " + count + " package entries.", "ok");
+    }
+  }
+
+  function render() {
+    if (iconUrlAuto && iconFileEl && iconFileEl.files && iconFileEl.files.length) {
+      iconUrlEl.value = buildIconUrl();
+    }
+    var text = buildLines();
+    if (outputCode) outputCode.textContent = text || "(select at least one device)";
+    if (copyBtn) copyBtn.disabled = !text;
+    if (iconResolvedEl) {
+      if (iconFileEl && iconFileEl.files && iconFileEl.files.length) {
+        var resolved = iconUrlEl.value.trim();
+        iconResolvedEl.textContent = resolved
+          ? "Manifest icon URL: " + resolved
+          : "Set a GitHub repository URL and icon path to build the public icon URL.";
+      } else {
+        iconResolvedEl.textContent = "";
+      }
+    }
+    if (latestManifestText) updatePreview(text);
+  }
+
+  function setStatus(message) {
+    if (!statusEl) return;
+    if (window.INNIOASIS_I18N && window.INNIOASIS_I18N.translate && window.INNIOASIS_I18N.isActive && window.INNIOASIS_I18N.isActive()) {
+      message = window.INNIOASIS_I18N.translate(message);
+    }
+    statusEl.textContent = message;
+  }
+
+  function loadManifest() {
+    if (!previewDetails) return;
+    setStatus("Loading the latest manifest…");
+    fetch(MANIFEST_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("http " + response.status);
+        return response.text();
+      })
+      .then(function (text) {
+        latestManifestText = text;
+        var count = (text.replace(/<!--[\s\S]*?-->/g, "").match(/<package\b/g) || []).length;
+        setStatus("Loaded " + count + " packages from the latest manifest. Your lines go just before </slidia>.");
+        previewDetails.hidden = false;
+        render();
+      })
+      .catch(function () {
+        setStatus("Could not load the latest manifest — the generator still works offline.");
+      });
+  }
+
+  function handleIconFile() {
+    if (iconObjectUrl) {
+      URL.revokeObjectURL(iconObjectUrl);
+      iconObjectUrl = null;
+    }
+    var file = iconFileEl.files && iconFileEl.files[0];
+    var img = iconPreviewEl ? iconPreviewEl.querySelector("img") : null;
+    if (!file) {
+      if (iconPreviewEl) iconPreviewEl.hidden = true;
+      if (img) img.removeAttribute("src");
+      iconUrlAuto = true;
+      render();
+      return;
+    }
+    if (file.type && !/^image\//.test(file.type)) {
+      setStatus("The icon must be a PNG, JPEG, WebP or SVG image.");
+      iconFileEl.value = "";
+      return;
+    }
+    iconObjectUrl = URL.createObjectURL(file);
+    if (img) {
+      img.src = iconObjectUrl;
+      img.alt = "Preview of " + file.name;
+    }
+    if (iconPreviewEl) iconPreviewEl.hidden = false;
+    iconUrlAuto = true;
+    render();
+  }
+
+  function syncDerivative() {
+    if (!derivativeEl || !derivativeOriginalEl) return;
+    if (derivativeOriginalEl.checked) {
+      if (!derivativeEl.value.trim()) derivativeEl.value = ORIGINAL_DERIVATIVE;
+      derivativeEl.disabled = true;
+    } else {
+      derivativeEl.disabled = false;
+      if (derivativeEl.value.trim() === ORIGINAL_DERIVATIVE) derivativeEl.value = "";
+    }
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(confirmCopy, function () { fallbackCopy(text); confirmCopy(); });
+    } else {
+      fallbackCopy(text);
+      confirmCopy();
+    }
+  }
+
+  function fallbackCopy(text) {
+    var area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "absolute";
+    area.style.left = "-9999px";
+    document.body.appendChild(area);
+    area.select();
+    try { document.execCommand("copy"); } catch (_) {}
+    document.body.removeChild(area);
+  }
+
+  function confirmCopy() {
+    if (!copyBtn) return;
+    var original = copyBtn.textContent;
+    copyBtn.textContent = "Copied!";
+    copyBtn.classList.add("is-copied");
+    setTimeout(function () {
+      copyBtn.textContent = original;
+      copyBtn.classList.remove("is-copied");
+    }, 1600);
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var text = buildLines();
+      if (text) copyText(text);
+    });
+  }
+  if (iconFileEl) iconFileEl.addEventListener("change", handleIconFile);
+  form.addEventListener("input", function (event) {
+    if (event.target === iconUrlEl) iconUrlAuto = false;
+    if (event.target === iconFileEl) return;
+    render();
+  });
+  form.addEventListener("change", function (event) {
+    if (event.target === derivativeOriginalEl) syncDerivative();
+    render();
+  });
+
+  render();
+  loadManifest();
+})();
+</script><script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

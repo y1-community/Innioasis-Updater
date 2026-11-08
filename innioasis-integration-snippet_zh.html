@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr" data-locale="zh-CN">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+    <meta charset="UTF-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌入 Innioasis 更新程序安装指南 - Innioasis 更新程序</title>
+    <meta name="description" content="将 Innioasis 更新程序安装指南添加到另一个具有响应式 iframe 嵌入和复制就绪示例的网站。">
+    <link rel="canonical" href="https://innioasis.app/innioasis-integration-snippet_zh.html">
+    <link rel="stylesheet" href="lumen.css?v=20261114video">
+    <link rel="stylesheet" href="site-theme.css?v=20260803">
+    <link rel="stylesheet" href="site-pages.css?v=20260818">
+    <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .snippet-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+        .demo-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .demo-btn:hover {
+            background: #218838;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .feature h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+    </style>
+<meta property="og:site_name" content="Innioasis 更新程序">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/innioasis-integration-snippet.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/innioasis-integration-snippet.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/innioasis-integration-snippet_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/innioasis-integration-snippet_ja.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/innioasis-integration-snippet_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/innioasis-integration-snippet_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/innioasis-integration-snippet_es.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/innioasis-integration-snippet_es-419.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/innioasis-integration-snippet_fr.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/innioasis-integration-snippet_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/innioasis-integration-snippet_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/innioasis-integration-snippet_zh-TW.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/innioasis-integration-snippet_ru.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/innioasis-integration-snippet_pt.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/innioasis-integration-snippet_pt-BR.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/innioasis-integration-snippet_it.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/innioasis-integration-snippet_ko.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/innioasis-integration-snippet_ar.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/innioasis-integration-snippet_hi.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/innioasis-integration-snippet_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/innioasis-integration-snippet_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/innioasis-integration-snippet_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/innioasis-integration-snippet_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/innioasis-integration-snippet_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/innioasis-integration-snippet_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/innioasis-integration-snippet_id.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/innioasis-integration-snippet_sv.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/innioasis-integration-snippet_no.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/innioasis-integration-snippet_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/innioasis-integration-snippet_fi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/innioasis-integration-snippet_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/innioasis-integration-snippet_el.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/innioasis-integration-snippet_hu.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/innioasis-integration-snippet_ro.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/innioasis-integration-snippet_he.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/innioasis-integration-snippet_bn.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/innioasis-integration-snippet_fa.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/innioasis-integration-snippet_ms.html">
+</head>
+<body class="site-themes-app lumen-legacy-page embed-tool-page">
+    <a class="lumen-skip-link" href="#main">跳到主要内容</a>
+    <div id="nav-root"></div>
+    <main id="main" class="embed-tool-main">
+    <div class="container">
+        <h1>🚀 Innioasis 更新程序 - 可嵌入安装指南</h1>
+        
+        <p>这是一个完整的、可嵌入的安装指南小部件，可以轻松集成到任何网站中。它具有一个很酷的右下角弹出式 CTA，可以为 Windows、macOS 和 Linux 用户打开全面的安装指南。</p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🎨 美丽的设计</h3>
+                <p>现代、响应式设计，适用于所有支持深色模式的设备</p>
+            </div>
+            <div class="feature">
+                <h3>📱 跨平台</h3>
+                <p>适用于 Windows、macOS 和 Linux 的完整安装指南以及分步说明</p>
+            </div>
+            <div class="feature">
+                <h3>🔧 轻松集成</h3>
+                <p>只需复制并粘贴代码片段 - 无需依赖项或复杂的设置</p>
+            </div>
+            <div class="feature">
+                <h3>💾 智能存储</h3>
+                <p>记住用户是否关闭了横幅以避免打扰</p>
+            </div>
+        </div>
+
+        <h2>📋 集成说明</h2>
+        
+        <p>要将 Innioasis 更新程序安装指南添加到您的网站，只需将此代码片段复制并粘贴到您的 HTML 中：</p>
+
+        <div class="snippet-box" id="integrationSnippet">
+&lt;!-- Innioasis 更新程序安装指南小部件 --&gt; &lt;script&gt; (function() { // 创建并注入小部件 const script = document.createElement('script'); script.src = 'https://your-domain.com/innioasis-embed.html'; script.async = true; // 替代方案：从本地文件加载 // script.src = './innoasis-embed.html'; document.head.appendChild(script); // 创建 iframe 容器 const iframe = document.createElement('iframe'); iframe.style.cssText = ` 位置: 20px; 宽度: 400px; 边框: 无; 999999; // 使 iframe 交互 iframe.onload = function() { iframe.style.pointerEvents = 'auto'; }; &lt;/脚本&gt;
+        </div>
+
+        <button class="copy-btn" onclick="copySnippet()">📋复制集成代码</button>
+
+        <h2>🎯替代方案：直接嵌入方法</h2>
+        
+        <p>为了更简单的集成，您可以使用 iframe 直接嵌入小部件：</p>
+
+        <div class="snippet-box" id="iframeSnippet">
+&lt;!-- 直接 iframe 嵌入 --&gt; &lt;iframe src="https://your-domain.com/innioasis-embed.html" width="400" height="200" frameborder="0" style="position: 固定; 底部: 20px; 右: 20px; z-index: 999999; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);"允许透明度=“true”&gt; &lt;/iframe&gt;
+        </div>
+
+        <button class="copy-btn" onclick="copyIframeSnippet()">📋 复制 iframe 代码</button>
+
+        <h2>🔧 定制选项</h2>
+        
+        <p>您可以通过修改以下参数来自定义小部件：</p>
+
+        <div class="snippet-box">
+// 自定义 CTA 横幅 window.InnioasisUpdater = { // 更改横幅文本 ctaTitle: "🚀 Get Innioasis Updater", ctaDescription: "下载适合您平台的桌面应用程序", ctaButtonText: "Get Started", // 更改位置position: "bottom-right", // 或 "bottom-left", "top-right", "top-left" // 自动显示延迟（以毫秒为单位） showDelay: 3000, // 3 秒后显示 // 自定义样式 customCSS: ` .cta-banner { background: Linear-gradient(135deg, #your-color1, #your-color2); } ` };
+        </div>
+
+        <h2>📱 演示</h2>
+        
+        <div class="demo-section">
+            <p>单击下面的按钮查看正在运行的小部件：</p>
+            <button class="demo-btn" onclick="showDemo()">🎯 显示演示小部件</button>
+        </div>
+
+        <h2>📚 包含的功能</h2>
+        
+        <ul>
+            <li><strong>智能 CTA 横幅：</strong> 以流畅的动画显示在右下角</li>
+            <li><strong>平台检测：</strong> 自动检测用户的操作系统</li>
+            <li><strong>分步指南：</strong> 适用于 Windows、macOS 和 Linux 的完整安装说明</li>
+            <li><strong>进度跟踪：</strong> 多步骤安装的可视进度条</li>
+            <li><strong>下载集成：</strong> 所有必需文件的直接下载链接</li>
+            <li><strong>响应式设计：</strong> 在台式机、平板电脑和移动设备上完美运行</li>
+            <li><strong>深色模式支持：</strong> 自动适应用户的系统偏好</li>
+            <li><strong>用户偏好：</strong> 记住用户是否关闭了横幅</li>
+            <li><strong>辅助功能：</strong> 键盘导航和屏幕阅读器友好</li>
+        </ul>
+
+        <h2>🌐 托管要求</h2>
+        
+        <p>要在您的网站上使用此小部件，您需要：</p>
+        
+        <ol>
+            <li>上传 <code>innioasis-embed.html</code> 文件到您的网络服务器</li>
+            <li>更新集成代码段中的 URL 以指向您的服务器</li>
+            <li>确保您的服务器支持 HTTPS（现代浏览器必需）</li>
+            <li>在您的网站上测试小部件以确保其正常工作</li>
+        </ol>
+
+        <h2>🆘 支持</h2>
+        
+        <p>如果您需要集成此小部件的帮助或有疑问，请：</p>
+        
+        <ul>
+            <li>检查浏览器控制台是否有任何错误消息</li>
+            <li>确保所有文件都正确上传到您的服务器</li>
+            <li>验证集成代码中的 URL 是否正确</li>
+            <li>在不同浏览器和设备上测试</li>
+        </ul>
+
+        <p style="text-align: center; margin-top: 40px; color: #666;">
+            由 Innioasis 团队使用 ❤️ 制作
+        </p>
+    </div>
+    </main>
+    <div id="footer-root"></div>
+    <div id="support-toolbar-slot"></div>
+
+    <script>
+        function copySnippet() {
+            const snippet = document.getElementById('integrationSnippet').textContent;
+            navigator.clipboard.writeText(snippet).then(function() {
+                alert('✅ Integration code copied to clipboard!');
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('❌ Failed to copy. Please select and copy manually.');
+            });
+        }
+
+        function copyIframeSnippet() {
+            const snippet = document.getElementById('iframeSnippet').textContent;
+            navigator.clipboard.writeText(snippet).then(function() {
+                alert('✅ Iframe code copied to clipboard!');
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('❌ Failed to copy. Please select and copy manually.');
+            });
+        }
+
+        function showDemo() {
+            // Create demo iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = './innioasis-embed.html';
+            iframe.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 400px;
+                height: 200px;
+                border: none;
+                z-index: 999999;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            `;
+            
+            // Add close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = `
+                position: fixed;
+                bottom: 220px;
+                right: 20px;
+                width: 30px;
+                height: 30px;
+                border: none;
+                background: #dc3545;
+                color: white;
+                border-radius: 50%;
+                cursor: pointer;
+                z-index: 1000000;
+                font-size: 16px;
+                font-weight: bold;
+            `;
+            closeBtn.onclick = function() {
+                document.body.removeChild(iframe);
+                document.body.removeChild(closeBtn);
+            };
+            
+            document.body.appendChild(iframe);
+            document.body.appendChild(closeBtn);
+        }
+    </script>
+    <script src="nav.js?v=20261103brand" defer></script>
+    <script src="site-init.js?v=20260803" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script><script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

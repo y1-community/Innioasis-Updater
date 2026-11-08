@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt" dir="ltr" data-locale="pt">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rockbox-Y1 vs Rockbox-Y2: qual build pertence ao seu player</title>
+  <meta name="description" content="Compare Rockbox-Y1 e Rockbox-Y2 para Innioasis Y1 e Y2: repositórios de desenvolvedores, ROM nomes de pacotes, opções de construção, temas e caminhos de restauração de fábrica.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://innioasis.app/rockbox-y1-vs-y2_pt.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rockbox-Y1 vs Rockbox-Y2: qual build pertence ao seu player">
+  <meta property="og:description" content="Compare Rockbox-Y1 e Rockbox-Y2 para Innioasis Y1 e Y2: repositórios de desenvolvedores, ROM nomes de pacotes, opções de construção, temas e caminhos de restauração de fábrica.">
+  <meta property="og:url" content="https://innioasis.app/rockbox-y1-vs-y2_pt.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta property="og:site_name" content="Innioasis Atualizador">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rockbox-Y1 vs Rockbox-Y2: qual build pertence ao seu player">
+  <meta name="twitter:description" content="Compare Rockbox-Y1 e Rockbox-Y2 para Innioasis Y1 e Y2: repositórios de desenvolvedores, ROM nomes de pacotes, opções de construção, temas e caminhos de restauração de fábrica.">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rockbox-Y1 vs Rockbox-Y2: which build belongs on your player","description":"Compare Rockbox-Y1 and Rockbox-Y2 for the Innioasis Y1 and Y2: developer repositories, ROM package names, build options, and restore paths.","image":"https://innioasis.app/assets/og-image.png","author":{"@type":"Organization","name":"Innioasis Community"},"mainEntityOfPage":"https://innioasis.app/rockbox-y1-vs-y2.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Firmware Downloads","item":"https://innioasis.app/firmware.html"},{"@type":"ListItem","position":3,"name":"Rockbox-Y1 vs Rockbox-Y2","item":"https://innioasis.app/rockbox-y1-vs-y2.html"}]}</script>
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/rockbox-y1-vs-y2.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/rockbox-y1-vs-y2.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-y1-vs-y2_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-y1-vs-y2_ja.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/rockbox-y1-vs-y2_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/rockbox-y1-vs-y2_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-y1-vs-y2_es.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/rockbox-y1-vs-y2_es-419.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-y1-vs-y2_fr.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-y1-vs-y2_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/rockbox-y1-vs-y2_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-y1-vs-y2_zh-TW.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-y1-vs-y2_ru.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-y1-vs-y2_pt.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-y1-vs-y2_pt-BR.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-y1-vs-y2_it.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-y1-vs-y2_ko.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/rockbox-y1-vs-y2_ar.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-y1-vs-y2_hi.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-y1-vs-y2_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-y1-vs-y2_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-y1-vs-y2_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-y1-vs-y2_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-y1-vs-y2_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-y1-vs-y2_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-y1-vs-y2_id.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-y1-vs-y2_sv.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-y1-vs-y2_no.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-y1-vs-y2_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-y1-vs-y2_fi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-y1-vs-y2_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-y1-vs-y2_el.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-y1-vs-y2_hu.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-y1-vs-y2_ro.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-y1-vs-y2_he.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/rockbox-y1-vs-y2_bn.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-y1-vs-y2_fa.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/rockbox-y1-vs-y2_ms.html">
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Pular para o conteúdo</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+  <p class="lumen-doc-back"><a href="firmware_pt.html?software=rockbox-y1">← Downloads de firmware</a></p>
+  <header>
+    <p class="lumen-kicker">Rockbox-Y1 · Rockbox-Y2</p>
+    <h1>Rockbox-Y1 versus Rockbox-Y2</h1>
+    <p class="lead">Rockbox-Y1 e Rockbox-Y2 são compilações de firmware separadas criadas para reprodutores diferentes. Sempre combine a construção com o modelo impresso no seu player.</p>
+    <div class="lumen-actions">
+      <a class="lumen-button lumen-button--primary" href="rockbox-y1/install.html">Rockbox-Y1 instalar</a>
+      <a class="lumen-button" href="rockbox-y2/install.html">Rockbox-Y2 instalar</a>
+      <a class="lumen-button" href="rockbox-rom-download_pt.html">Ambos ROM downloads</a>
+    </div>
+  </header>
+
+  <section class="lumen-guide-section">
+    <h2>Comparação lado a lado</h2>
+    <table class="lumen-table">
+      <thead><tr><th>Detalhe</th><th>Rockbox-Y1</th><th>Rockbox-Y2</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Modelo de jogador</th><td>Innioasis <code>Y1</code></td><td>Innioasis <code>Y2</code></td></tr>
+        <tr><th scope="row">Projeto de desenvolvedor</th><td><a href="firmware_pt.html?model=Y1&amp;software=rockbox-y1"><code>rockbox-y1/rockbox</code></a></td><td><a href="firmware_pt.html?model=Y2&amp;software=rockbox-y2"><code>spycemagic/y2-rockbox</code></a></td></tr>
+        <tr><th scope="row">Pacote de desenvolvedor ROM</th><td><code>rom.zip</code> (e <code>rom_type_b.zip</code>)</td><td><code>rom_y2.zip</code></td></tr>
+        <tr><th scope="row">Updater CE fonte de download</th><td>Diretamente dos lançamentos do desenvolvedor</td><td>Diretamente dos lançamentos do desenvolvedor</td></tr>
+        <tr><th scope="row">Opções de construção</th><td>240p / 360p, Type A / Type B, estável e noturno</td><td>Versões beta versionadas</td></tr>
+        <tr><th scope="row">Temas</th><td>Coleções temáticas de 240p e 360p</td><td>Temas correspondentes à compilação Y2 instalada</td></tr>
+        <tr><th scope="row">Restauração de fábrica</th><td>Y1 Software original em Updater CE</td><td>Y2 Software original em Updater CE</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Por que selecionar seu modelo primeiro é importante</h2>
+    <p>Embora ambas as compilações executem Rockbox, Innioasis Y1 e Y2 têm hardware e layouts de partição diferentes. Nunca pisque um Y1 ROM em um Y2 ou um Y2 ROM em um Y1.</p>
+    <p>Innioasis Updater CE evita incompatibilidades filtrando o software disponível assim que você escolher <strong>Y1</strong> ou <strong>Y2</strong> em <strong>Modelo do dispositivo</strong>. Updater CE sempre baixa o pacote selecionado diretamente do lançamento do desenvolvedor do firmware da comunidade (os desenvolvedores são os únicos responsáveis ​​por listar seus lançamentos em Updater CE).</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Qual guia você precisa?</h2>
+    <ul class="lumen-benefits-list">
+      <li><strong>Innioasis Y1</strong> — Vá para o <a href="rockbox-y1/">Rockbox-Y1 central</a>. Escolha Type A (para jogadores lançados com 2.0.0+) ou Type B (para unidades mais antigas) e, em seguida, escolha uma versão 240p ou 360p.</li>
+      <li><strong>Innioasis Y2</strong> — Vá para o <a href="rockbox-y2/">Rockbox-Y2 central</a>. Selecione Y2 em Updater CE e escolha a versão mais recente Y2.</li>
+    </ul>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>O que ambas as portas compartilham</h2>
+    <p>Ambos trazem o banco de dados de música baseado em tags do Rockbox, reprodução contínua, equalizador, temas personalizados e audição 100% offline em seu player. Ler <a href="rockbox-benefits_pt.html">Por que Rockbox</a> para ver o que Rockbox adiciona ao software de fábrica.</p>
+    <div class="lumen-actions">
+      <a class="lumen-button" href="rockbox-for-y1_pt.html">Rockbox para Y1</a>
+      <a class="lumen-button" href="rockbox-for-y2_pt.html">Rockbox para Y2</a>
+      <a class="lumen-button" href="rockbox_pt.html">Rockbox visão geral</a>
+    </div>
+  </section>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="nav.js?v=20261103brand" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

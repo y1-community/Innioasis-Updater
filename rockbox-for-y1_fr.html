@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr" dir="ltr" data-locale="fr">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rockbox pour Y1 (Rockbox-Y1) : présentation, builds et guide d'installation</title>
+  <meta name="description" content="Rockbox pour Y1, Rockbox-Y1 et rockbox-y1 font tous référence au micrologiciel communautaire Rockbox pour le Innioasis Y1. Découvrez ce qu&#39;il ajoute, quelle version choisir et comment l&#39;installer avec Innioasis Updater CE.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://innioasis.app/rockbox-for-y1_fr.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rockbox pour Y1 (Rockbox-Y1) : présentation, builds et guide d&#39;installation">
+  <meta property="og:description" content="Rockbox pour Y1, Rockbox-Y1 et rockbox-y1 font tous référence au micrologiciel communautaire Rockbox pour le Innioasis Y1. Découvrez ce qu&#39;il ajoute, quelle version choisir et comment l&#39;installer avec Innioasis Updater CE.">
+  <meta property="og:url" content="https://innioasis.app/rockbox-for-y1_fr.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta property="og:site_name" content="Innioasis Programme de mise à jour">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rockbox pour Y1 (Rockbox-Y1) : présentation, builds et guide d&#39;installation">
+  <meta name="twitter:description" content="Rockbox pour Y1, Rockbox-Y1 et rockbox-y1 font tous référence au micrologiciel communautaire Rockbox pour le Innioasis Y1. Découvrez ce qu&#39;il ajoute, quelle version choisir et comment l&#39;installer avec Innioasis Updater CE.">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Rockbox for Y1 (Rockbox-Y1): overview, builds and install guide","description":"Rockbox for Y1, Rockbox-Y1 and rockbox-y1 all refer to the community Rockbox firmware for the Innioasis Y1.","image":"https://innioasis.app/assets/og-image.png","author":{"@type":"Organization","name":"Innioasis Community"},"mainEntityOfPage":"https://innioasis.app/rockbox-for-y1.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Firmware Downloads","item":"https://innioasis.app/firmware.html"},{"@type":"ListItem","position":3,"name":"Rockbox for Y1","item":"https://innioasis.app/rockbox-for-y1.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Rockbox for Y1 the same as Rockbox-Y1?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rockbox, Rockbox-Y1, Rockbox for Y1 and rockbox-y1 all refer to the community Rockbox firmware for the Innioasis Y1."}},{"@type":"Question","name":"Can I install Rockbox-Y1 on an Innioasis Y2?","acceptedAnswer":{"@type":"Answer","text":"No. The Y2 uses different hardware and has its own separate Rockbox port (Rockbox-Y2). Always select your exact player model in Innioasis Updater CE."}},{"@type":"Question","name":"Where does Updater CE download Rockbox-Y1 from?","acceptedAnswer":{"@type":"Answer","text":"Innioasis Updater CE always downloads firmware packages directly from the community firmware developers (rockbox-y1/rockbox), who are solely responsible for listing their releases in Updater CE."}}]}</script>
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/rockbox-for-y1.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/rockbox-for-y1.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/rockbox-for-y1_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/rockbox-for-y1_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/rockbox-for-y1_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/rockbox-for-y1_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/rockbox-for-y1_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/rockbox-for-y1_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/rockbox-for-y1_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/rockbox-for-y1_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/rockbox-for-y1_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/rockbox-for-y1_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/rockbox-for-y1_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/rockbox-for-y1_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/rockbox-for-y1_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/rockbox-for-y1_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/rockbox-for-y1_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/rockbox-for-y1_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/rockbox-for-y1_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/rockbox-for-y1_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/rockbox-for-y1_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/rockbox-for-y1_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/rockbox-for-y1_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/rockbox-for-y1_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/rockbox-for-y1_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/rockbox-for-y1_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/rockbox-for-y1_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/rockbox-for-y1_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/rockbox-for-y1_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/rockbox-for-y1_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/rockbox-for-y1_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/rockbox-for-y1_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/rockbox-for-y1_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/rockbox-for-y1_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/rockbox-for-y1_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Aller au contenu</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide">
+  <p class="lumen-doc-back"><a href="firmware_fr.html?model=Y1&amp;software=rockbox-y1">← Téléchargements de micrologiciels</a></p>
+  <header>
+    <p class="lumen-kicker">Rockbox-Y1 · Innioasis Y1</p>
+    <h1>Rockbox pour Y1 (Rockbox-Y1)</h1>
+    <p class="lead">« Rockbox », « Rockbox-Y1 » et « Rockbox pour Y1 » font tous référence au même firmware communautaire Rockbox pour le Innioasis Y1. Voici ce qu'il ajoute à votre lecteur, quelle build choisir et comment l'installer avec Innioasis Updater CE.</p>
+    <div class="lumen-actions">
+      <a class="lumen-button lumen-button--primary" href="rockbox-y1/install.html">Installer Rockbox-Y1</a>
+      <a class="lumen-button" href="rockbox-y1/download.html">Téléchargez le ROM</a>
+      <a class="lumen-button" href="guides/rockbox-y1.html">Tutoriel écrit</a>
+      <a class="lumen-button" href="rockbox-y1/">Rockbox-Y1 centre</a>
+    </div>
+  </header>
+
+  <section class="lumen-guide-section">
+    <h2>Un firmware, plusieurs noms</h2>
+    <p>Dans Innioasis Updater CE, ce firmware apparaît comme <strong>Rockbox</strong> lorsque vous sélectionnez le modèle de l'appareil <strong>Y1</strong>. Les guides, vidéos et notes de version l'appellent également <strong>Rockbox-Y1</strong> ou <strong>Rockbox pour Y1</strong> il est donc clair que la construction est pour le Y1 et non pour le Y2.</p>
+    <p>Vérifiez toujours le modèle imprimé sur votre lecteur avant l'installation&nbsp;: les packages de micrologiciels Y1 et Y2 ne sont pas interchangeables.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Ce que Rockbox-Y1 ajoute à votre Y1</h2>
+    <p>Rockbox-Y1 est un port communautaire du micrologiciel du lecteur de musique open source Rockbox pour le Innioasis Y1&nbsp;:</p>
+    <ul class="lumen-benefits-list">
+      <li><strong>Bibliothèque musicale basée sur des tags</strong> - parcourez par artiste, album, genre et année à l'aide de balises audio, ou parcourez directement les dossiers.</li>
+      <li><strong>Lecture audio avancée</strong> - lecture sans interruption, fondu enchaîné, ReplayGain et un égaliseur complet.</li>
+      <li><strong>Thèmes personnalisés</strong> - choisissez parmi des centaines de thèmes communautaires 240p et 360p, y compris des mises en page classiques de style iPod.</li>
+      <li><strong>Radio FM</strong> — prise en charge radio FM intégrée.</li>
+      <li><strong>Suppléments optionnels</strong> - téléchargements de podcasts via Wi-Fi et Last.fm / ListenBrainz / Maloja scrobbling sur les versions prises en charge.</li>
+      <li><strong>Double démarrage</strong> - revenez au logiciel d'origine d'usine sans reflasher sur les versions prises en charge.</li>
+    </ul>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Quelle version Y1 dois-je choisir&nbsp;?</h2>
+    <ul class="lumen-benefits-list">
+      <li><strong>240p contre 360p</strong> — Les builds 240p fonctionnent avec les thèmes classiques 320×240 Rockbox&nbsp;; Les versions 360p utilisent des thèmes 480×360 Y1 plus nets. Faites correspondre la résolution de build aux thèmes que vous souhaitez utiliser (<a href="rockbox-y1/resolution.html">Guide 240p contre 360p</a>).</li>
+      <li><strong>Type A contre Type B</strong> — Type A concerne les lecteurs Y1 livrés avec le logiciel d'usine 2.0.0 ou plus récent&nbsp;; Type B concerne les unités Y1 antérieures. Choisissez Type A sauf si vous savez que votre Y1 est Type B.</li>
+      <li><strong>Stable ou nocturne</strong> — Choisissez une version stable pour une écoute quotidienne ou une version nocturne pour tester les dernières modifications.</li>
+    </ul>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Téléchargements directs des développeurs de la communauté</h2>
+    <p>Innioasis Updater CE télécharge toujours les packages de micrologiciels directement auprès des développeurs de micrologiciels de la communauté (<a href="firmware_fr.html?model=Y1&amp;software=rockbox-y1">rockbox-y1/rockbox</a>), et les développeurs eux-mêmes sont seuls responsables de répertorier leurs versions logicielles dans Updater CE.</p>
+    <p>Vous pouvez laisser Updater CE télécharger et installer le micrologiciel automatiquement, ou télécharger les packages ROM depuis notre <a href="rockbox-y1/download.html">Rockbox-Y1 page de téléchargement</a> et <a href="rockbox-rom-download_fr.html">Rockbox ROM page de téléchargement</a>.</p>
+    <div class="lumen-actions">
+      <a class="lumen-button" href="rockbox-y1/download.html">Rockbox-Y1 téléchargements</a>
+      <a class="lumen-button" href="rockbox-y1/portable-zip.html">Installer à partir d'un ZIP local</a>
+    </div>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Comment installer Rockbox-Y1</h2>
+    <ol class="lumen-steps">
+      <li>Ouvrez Innioasis Updater CE et définissez <strong>Modèle d'appareil</strong> à <strong>Y1</strong>.</li>
+      <li>Sélectionnez <strong>Rockbox</strong> dans <strong>Logiciel</strong>.</li>
+      <li>Choisissez une version stable (ou activez les builds nocturnes pour tester un aperçu).</li>
+      <li>Cliquez <strong>Installer / Restaurer</strong> donc Updater CE télécharge le package directement depuis le développeur.</li>
+      <li>Éteignez complètement le Y1 et connectez-le avec un câble de données USB lorsque Updater CE vous y invite.</li>
+      <li>Attendez le message de fin, puis déconnectez et allumez votre lecteur.</li>
+    </ol>
+    <p>Pour des captures d'écran et des conseils de configuration détaillés, lisez le <a href="guides/rockbox-y1.html">tutoriel Rockbox-Y1 complet</a>.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Restauration du logiciel Y1 d'origine</h2>
+    <p>Vous pouvez revenir au logiciel d'usine à tout moment&nbsp;: sélectionnez <strong>Y1</strong> et <strong>Logiciel d'origine</strong> dans Updater CE, choisissez une version stable et cliquez sur <strong>Installer / Restaurer</strong>. Votre musique sur la carte MicroSD est préservée. Voir le <a href="rockbox-y1/restore-stock.html">guide de restauration</a> et <a href="original-software-y1_fr.html">Y1 Page du logiciel d'origine</a>.</p>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Questions fréquemment posées</h2>
+    <details>
+      <summary>Rockbox pour Y1 est-il identique à Rockbox-Y1&nbsp;?</summary>
+      <p>Oui. Rockbox, Rockbox-Y1, Rockbox pour Y1 et <code>rockbox-y1</code> tous font référence au même port de communauté Rockbox pour le Innioasis Y1.</p>
+    </details>
+    <details>
+      <summary>D'où Updater CE télécharge-t-il Rockbox-Y1&nbsp;?</summary>
+      <p>Updater CE télécharge toujours les packages de micrologiciels directement à partir des propres versions des développeurs de micrologiciels de la communauté (<code>rockbox-y1/rockbox</code>). Les développeurs sont seuls responsables de répertorier leurs versions logicielles dans Updater CE.</p>
+    </details>
+    <details>
+      <summary>Puis-je installer Rockbox-Y1 sur un Y2&nbsp;?</summary>
+      <p>Non. Le Y2 possède sa propre version de micrologiciel distincte. Utiliser <a href="rockbox-for-y2_fr.html">Rockbox pour Y2</a> plutôt.</p>
+    </details>
+    <details>
+      <summary>L'installation de Rockbox-Y1 effacera-t-elle ma musique&nbsp;?</summary>
+      <p>Non. La musique est stockée sur la carte MicroSD et n'est pas affectée lors du flashage du micrologiciel interne du lecteur.</p>
+    </details>
+  </section>
+
+  <section class="lumen-guide-section">
+    <h2>Guides associés</h2>
+    <div class="lumen-grid">
+      <article class="lumen-card"><h3><a href="rockbox-y1/">Rockbox-Y1 centre</a></h3><p>Tous les guides Y1&nbsp;: installation, téléchargements, thèmes, restauration, double démarrage et dépannage.</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-y1-vs-y2.html">Rockbox-Y1 contre Rockbox-Y2</a></h3><p>En quoi les builds Y1 et Y2 Rockbox diffèrent.</p></article>
+      <article class="lumen-card"><h3><a href="rockbox-y1-themes.html">Rockbox-Y1 thèmes</a></h3><p>Comment transférer des thèmes 240p et 360p avec Updater CE.</p></article>
+      <article class="lumen-card"><h3><a href="rockbox_fr.html">Rockbox aperçu</a></h3><p>Introduction à Rockbox sur les joueurs Innioasis Y1 et Y2.</p></article>
+    </div>
+  </section>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="nav.js?v=20261103brand" defer></script>
+<script src="site-i18n.js?v=20260830" defer></script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

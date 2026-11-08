@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr" data-locale="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>MTKclient 失败后如何恢复无法启动的 MediaTek 播放器 · Innioasis 社区</title>
+  <meta name="description" content="在 Linux 或 macOS 上 MTKclient 中断刷新后，解压和恢复非启动 Innioasis Y1、Y2、G1、Timmkoo 和 MediaTek 播放器的分步指南。">
+  <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_zh-CN.html">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/recover-non-booting-device.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/recover-non-booting-device_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/recover-non-booting-device_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/recover-non-booting-device_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/recover-non-booting-device_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/recover-non-booting-device_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/recover-non-booting-device_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/recover-non-booting-device_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/recover-non-booting-device_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/recover-non-booting-device_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/recover-non-booting-device_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/recover-non-booting-device_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/recover-non-booting-device_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/recover-non-booting-device_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/recover-non-booting-device_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/recover-non-booting-device_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/recover-non-booting-device_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/recover-non-booting-device_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/recover-non-booting-device_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/recover-non-booting-device_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/recover-non-booting-device_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/recover-non-booting-device_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/recover-non-booting-device_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/recover-non-booting-device_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/recover-non-booting-device_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/recover-non-booting-device_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/recover-non-booting-device_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/recover-non-booting-device_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/recover-non-booting-device_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/recover-non-booting-device_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/recover-non-booting-device_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/recover-non-booting-device_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/recover-non-booting-device_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/recover-non-booting-device_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">跳到主要内容</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">故障排除和设备恢复</p>
+      <h1>MTKclient 刷机后恢复非启动设备</h1>
+      <p class="lead">如果您的 Innioasis Y1、Y2 或 MediaTek 设备在 macOS 或 Linux 上使用 MTKclient 刷机后无法开机或显示黑屏，请不要惊慌。硬件BootROM（BROM）是永久性的，不能被破坏。</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>为什么 MTKclient 可能会停止运行或黑屏</h2>
+      <p>MTKclient 依靠软件漏洞有效负载（kamakiri / amonet）来绕过 DA 身份验证和通过 libusb 的原始 USB 通信。在 macOS 和 Linux ARM64 系统上：</p>
+      <ul class="lumen-benefits-list">
+        <li>USB macOS 上的握手延迟或端口超时可能会在传输过程中阻止 DA 有效负载注入。</li>
+        <li>丢失或不完整的分区标头会使引导加载程序（预加载程序/lk）处于无响应状态。</li>
+        <li>播放器看起来完全死机了——没有 LED、没有充电图标、没有屏幕背光。</li>
+      </ul>
+      <p>即使在这种状态下，MediaTek 芯片组也会回落到 <strong>只读存储器模式</strong> (USB VID 0e8d, PID 0003)，准备进行官方低级恢复。</p>
+    </section>
+
+    <section class="lumen-guide-section" id="sp-flash-tool-engine">
+      <h2>最终恢复方法：更新程序 CE 中的 SP Flash Tool 引擎</h2>
+      <p>恢复变砖的播放器的最安全、最可靠的方法是使用 <strong>更新程序 CE</strong> 按照官方配置的 <strong>SP Flash Tool</strong> 后端。</p>
+      
+      <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
+        <h3>更新程序 CE 中的确切步骤：</h3>
+        <ol class="lumen-steps" style="margin-top: 10px;">
+          <li>打开 <strong>更新程序 CE</strong>.</li>
+          <li>点击 <strong>设置</strong> 在左侧导航栏中。</li>
+          <li>向下滚动到高级部分并启用 <strong>显示高级设置</strong>.</li>
+          <li>在下面 <strong>安装方法</strong> （或者 <em>MediaTek 安装程序的刷新引擎</em>），找到 <strong>闪光法</strong> 下拉菜单。</li>
+          <li>更改选择 <em>自动（推荐）</em> 或 <em>MTKClient</em> 至 <strong>SP Flash Tool</strong>.</li>
+          <li>确认提示并返回主安装流程。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>SP Flash Tool 的平台架构和操作系统要求</h2>
+      <p>MediaTek 的官方 <code>SP Flash Tool</code> 二进制文件被本地编译为 <strong>适用于 Linux 的 x86_64 ELF 二进制文件</strong> 和一个 <strong>适用于 Windows x64 的 PE32+ 可执行文件</strong>.</p>
+      <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
+        <strong>针对 macOS 和 ARM64 Linux 用户的重要硬件说明：</strong><br>
+        由于 MediaTek 无法为 macOS (Darwin) 或 Linux ARM64 (aarch64) 编译 SP Flash Tool，因此遇到砖块的 macOS 用户和 ARM64 Linux 用户（例如运行 Asahi Linux 的 Raspberry Pi 或 Apple Silicon）必须将其播放器连接到：
+        <ul style="margin: 8px 0 0 20px;">
+          <li>一个 <strong>x64 Windows 电脑</strong> （Windows 10 / 11 64 位），或</li>
+          <li>一个 <strong>x86_64 Linux 电脑</strong> （Ubuntu、Debian、Fedora、Arch 64 位）。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>分步硬件解锁过程</h2>
+      <ol class="lumen-steps">
+        <li><strong>断开播放器连接：</strong> 将 USB 电缆从播放器和 PC 上完全拔掉。</li>
+        <li><strong>硬关机：</strong> 按住电源按钮（或电源 + 音量调低）15 秒，以确保芯片组完全断电并且不会陷入低功耗 USB 循环。</li>
+        <li><strong>使用 SP Flash Tool 模式启动 Updater CE：</strong> 选择您的设备型号（例如 <em>Innioasis Y1</em> 或 <em>Innioasis Y2</em>）并选择 <em>原厂软件</em> 恢复库存分区。</li>
+        <li><strong>启动安装/恢复：</strong> 点击 <em>安装 / 恢复</em> 在更新程序 CE 中。等到状态提示说 <em>等待玩家...</em></li>
+        <li><strong>插入 USB 电缆以触发 BROM：</strong> 当设备关闭时，将 USB 电缆直接插入高速主板 USB 端口（避免使用未通电的 USB 集线器）。</li>
+        <li>系统将检测MediaTek VCOM端口，推送下载代理（DA），重写分区表，并干净地恢复所有固件映像。</li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>按型号和操作系统排列</h2>
+      <div style="overflow-x: auto;">
+        <table class="lumen-release-table">
+          <thead>
+            <tr>
+              <th>模型</th>
+              <th>失败的平台</th>
+              <th>推荐的恢复设置</th>
+              <th>引擎与模式</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>macOS（苹果芯片/英特尔）</td>
+              <td>Windows x64 / Linux x86_64 电脑</td>
+              <td>SP Flash Tool + Y1 库存 ROM</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y1</strong></td>
+              <td>Linux ARM64 / x86_64</td>
+              <td>Linux x86_64 或 Windows x64 PC</td>
+              <td>SP Flash Tool + 社区 DA</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis Y2</strong></td>
+              <td>macOS（MTK 客户端停止）</td>
+              <td>Windows x64 / Linux x86_64 电脑</td>
+              <td>SP Flash Tool + Y2 分散恢复</td>
+            </tr>
+            <tr>
+              <td><strong>Innioasis G1 / G3 / G5</strong></td>
+              <td>macOS / Linux MTK 客户端</td>
+              <td>带有 VCOM 驱动程序的 Windows x64 PC</td>
+              <td>SP Flash Tool + 工厂固件</td>
+            </tr>
+            <tr>
+              <td><strong>Mechen H1 / Timmkoo A5</strong></td>
+              <td>任何平台</td>
+              <td>Windows x64 或 Linux x86_64 PC</td>
+              <td>SP Flash Tool + 分散文件</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261108c" defer></script>
+</body>
+</html>

@@ -22,7 +22,45 @@
   <link rel="icon" href="y1_illustration.png">
   <link rel="stylesheet" href="site-theme.css?v=20260803"><link rel="stylesheet" href="lumen.css?v=20261114video"><link rel="stylesheet" href="site-pages.css?v=20260818"><link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose"><script src="site-init.js?v=20260803" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Flash an Innioasis Y1 or Y2 with SP Flash Tool","description":"Set up the SP Flash Tool bundled with Innioasis Updater, extract the firmware ZIP, load the scatter file, and flash a Y1 or Y2.","tool":[{"@type":"HowToTool","name":"Computer with Innioasis Updater installed"},{"@type":"HowToTool","name":"USB data cable"}],"step":[{"@type":"HowToStep","name":"Open SP Flash Tool from the Updater install","text":"On Windows open flash_tool.exe, or on Linux x86 run the bundled flash_tool."},{"@type":"HowToStep","name":"Extract the firmware ZIP","text":"Extract rom.zip for a Y1 or rom_y2.zip for a Y2 to a folder."},{"@type":"HowToStep","name":"Load the matching scatter file","text":"Select MT6572_Android_scatter.txt for a Y1 or MT6582_Android_scatter_def.txt for a Y2."},{"@type":"HowToStep","name":"Flash the player","text":"Power the player off, connect USB when the tool is ready, and wait for the green check."}]}</script>
-<meta property="og:site_name" content="Innioasis Software Updates"></head>
+<meta property="og:site_name" content="Innioasis Software Updates">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/sp-flash-tool.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/sp-flash-tool.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/sp-flash-tool_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/sp-flash-tool_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/sp-flash-tool_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/sp-flash-tool_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/sp-flash-tool_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/sp-flash-tool_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/sp-flash-tool_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/sp-flash-tool_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/sp-flash-tool_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/sp-flash-tool_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/sp-flash-tool_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/sp-flash-tool_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/sp-flash-tool_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/sp-flash-tool_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/sp-flash-tool_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/sp-flash-tool_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/sp-flash-tool_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/sp-flash-tool_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/sp-flash-tool_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/sp-flash-tool_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/sp-flash-tool_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/sp-flash-tool_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/sp-flash-tool_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/sp-flash-tool_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/sp-flash-tool_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/sp-flash-tool_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/sp-flash-tool_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/sp-flash-tool_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/sp-flash-tool_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/sp-flash-tool_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/sp-flash-tool_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/sp-flash-tool_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/sp-flash-tool_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
 <body class="site-themes-app"><a class="lumen-skip-link" href="#main">Skip to content</a><div id="nav-root"></div>
 <main id="main" class="lumen-guide">
   <header><p class="lumen-kicker">Manual flashing</p><h1>Flash Tool for Innioasis and Timmkoo Players</h1><p class="lead">SP Flash Tool comes inside Innioasis Updater on <a href="drivers.html#windows">Windows</a> and <a href="drivers.html#linux">Linux</a>. You already have it. This guide shows the safe way to use it on an Innioasis Y1 or Y2, and the Updater route for Timmkoo players.</p><div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="guide.html">Return to the Updater guide</a><a class="lumen-button" href="firmware.html">Firmware Downloads</a><a class="lumen-button" href="troubleshooting.html">Troubleshooting</a></div></header><section class="lumen-guide-section"><div class="lumen-callout"><p class="lumen-kicker">Start with Innioasis Updater</p><h2>Updater does the whole job in one pass</h2><p>Updater does most installs in one pass. Pick the software, follow the steps, and you are done. It also tells you when a fix or a new release lands. SP Flash Tool is inside Updater's Toolkit for the rare cases Updater cannot finish. The steps below are the exception.</p></div></section>

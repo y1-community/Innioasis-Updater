@@ -20,34 +20,103 @@
 
     applyStoredTheme();
 
+    /* Shared cross-subdomain cookie helper (.innioasis.app) */
+    function setSharedCookie(name, value, days) {
+        try {
+            var d = new Date();
+            d.setTime(d.getTime() + ((days || 365) * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + d.toUTCString();
+            var host = (global.location && global.location.hostname) || "";
+            var domain = /(^|\.)innioasis\.app$/i.test(host) ? "; domain=.innioasis.app" : "";
+            document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/" + domain + "; SameSite=Lax";
+        } catch (_) {}
+    }
+
+    function getSharedCookie(name) {
+        try {
+            var prefix = name + "=";
+            var parts = (document.cookie || "").split(";");
+            for (var i = 0; i < parts.length; i++) {
+                var item = parts[i].trim();
+                if (item.indexOf(prefix) === 0) return decodeURIComponent(item.substring(prefix.length));
+            }
+        } catch (_) {}
+        return null;
+    }
+
     /* Privacy consent. The site uses Google Analytics (via Google Tag Manager)
        and Cloudflare to measure and optimise performance and protect the site
        from attacks. Local storage remembers the visitor's own theme choice
        (always remembered — it is the look they picked) plus, only when allowed,
        their answers to the "was this useful?" prompts and their
        nightly-builds preference. The consent record itself is kept so the
-       privacy panel does not open on every visit. */
+       privacy panel does not open on every visit.
+       URL variables (?privacy=all, ?privacy=none, etc.) and cross-subdomain
+       cookies carry consent between innioasis.app and themes.innioasis.app. */
     var CONSENT_KEY = "innioasis-consent";
 
-    function readConsent() {
+    function parsePrivacyParam() {
         try {
-            var raw = global.localStorage.getItem(CONSENT_KEY);
-            if (!raw) return null;
-            var data = JSON.parse(raw);
-            /* A record is only valid when both booleans are present, so a
-               partial or corrupt value never counts as consent. */
-            if (data && typeof data === "object" &&
-                typeof data.feedback === "boolean" &&
-                typeof data.nightly === "boolean") {
-                return { feedback: data.feedback, nightly: data.nightly };
+            var search = (global.location && global.location.search) || "";
+            var params = new URLSearchParams(search);
+            var raw = params.get("privacy");
+            if (raw) {
+                var v = String(raw).trim().toLowerCase();
+                if (v === "all" || v === "1" || v === "true" || v === "yes") return { feedback: true, nightly: true };
+                if (v === "none" || v === "0" || v === "false" || v === "no") return { feedback: false, nightly: false };
+                if (v === "feedback") return { feedback: true, nightly: false };
+                if (v === "nightly") return { feedback: false, nightly: true };
+            }
+            var pf = params.get("privacy_feedback");
+            var pn = params.get("privacy_nightly");
+            if (pf !== null || pn !== null) {
+                return {
+                    feedback: pf === "1" || pf === "true" || pf === "yes",
+                    nightly: pn === "1" || pn === "true" || pn === "yes"
+                };
             }
         } catch (_) {}
         return null;
     }
 
+    function readConsent() {
+        try {
+            var raw = global.localStorage.getItem(CONSENT_KEY);
+            if (raw) {
+                var data = JSON.parse(raw);
+                if (data && typeof data === "object" &&
+                    typeof data.feedback === "boolean" &&
+                    typeof data.nightly === "boolean") {
+                    return { feedback: data.feedback, nightly: data.nightly };
+                }
+            }
+        } catch (_) {}
+
+        // Fallback to shared cross-subdomain cookie if available
+        try {
+            var fromCookie = getSharedCookie(CONSENT_KEY);
+            if (fromCookie) {
+                var cookieData = JSON.parse(fromCookie);
+                if (cookieData && typeof cookieData === "object" &&
+                    typeof cookieData.feedback === "boolean" &&
+                    typeof cookieData.nightly === "boolean") {
+                    try { global.localStorage.setItem(CONSENT_KEY, JSON.stringify(cookieData)); } catch (_) {}
+                    return { feedback: cookieData.feedback, nightly: cookieData.nightly };
+                }
+            }
+        } catch (_) {}
+
+        return null;
+    }
+
     function writeConsent(prefs) {
         var next = { feedback: prefs.feedback !== false, nightly: prefs.nightly !== false };
-        try { global.localStorage.setItem(CONSENT_KEY, JSON.stringify(next)); } catch (_) {}
+        try {
+            global.localStorage.setItem(CONSENT_KEY, JSON.stringify(next));
+        } catch (_) {}
+        setSharedCookie(CONSENT_KEY, JSON.stringify(next));
+        setSharedCookie("innioasis-privacy", next.feedback && next.nightly ? "all" : (!next.feedback && !next.nightly ? "none" : (next.feedback ? "feedback" : "nightly")));
+
         if (!next.feedback) {
             try {
                 var doomed = [];
@@ -66,8 +135,23 @@
         try {
             global.dispatchEvent(new CustomEvent("innioasis-privacy-change", { detail: next }));
         } catch (_) {}
+        if (typeof global.y1DecorateLinks === "function") {
+            try { global.y1DecorateLinks(); } catch (_) {}
+        }
         return next;
     }
+
+    (function initPrivacyFromUrlOrCookie() {
+        var fromUrl = parsePrivacyParam();
+        if (fromUrl !== null) {
+            writeConsent(fromUrl);
+        } else {
+            var existing = readConsent();
+            if (existing !== null) {
+                setSharedCookie(CONSENT_KEY, JSON.stringify(existing));
+            }
+        }
+    })();
 
     global.INNIOASIS_PRIVACY = {
         read: readConsent,
@@ -81,6 +165,8 @@
             return !!prefs && prefs[feature] === true;
         }
     };
+    global.setSharedCookie = setSharedCookie;
+    global.getSharedCookie = getSharedCookie;
 
     function executeInlineScripts(container) {
         if (!container) return;

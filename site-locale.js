@@ -31,7 +31,7 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261108c";
+    var RUNTIME_VERSION = "20261108e";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -95,6 +95,29 @@
         try { global.localStorage.setItem(key, value); } catch (_) {}
     }
 
+    function setSharedCookie(name, value, days) {
+        try {
+            var d = new Date();
+            d.setTime(d.getTime() + ((days || 365) * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + d.toUTCString();
+            var host = (global.location && global.location.hostname) || "";
+            var domain = /(^|\.)innioasis\.app$/i.test(host) ? "; domain=.innioasis.app" : "";
+            document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/" + domain + "; SameSite=Lax";
+        } catch (_) {}
+    }
+
+    function getSharedCookie(name) {
+        try {
+            var prefix = name + "=";
+            var parts = (document.cookie || "").split(";");
+            for (var i = 0; i < parts.length; i++) {
+                var item = parts[i].trim();
+                if (item.indexOf(prefix) === 0) return decodeURIComponent(item.substring(prefix.length));
+            }
+        } catch (_) {}
+        return null;
+    }
+
     function normalise(text) {
         return String(text == null ? "" : text).replace(/\s+/g, " ").trim();
     }
@@ -106,7 +129,7 @@
             timer = setTimeout(function () { controller.abort(); }, timeoutMs);
         }
         return fetch(baseUrl + path, {
-            cache: "no-cache",
+            cache: "default",
             signal: controller ? controller.signal : undefined
         }).then(function (response) {
             if (timer) clearTimeout(timer);
@@ -119,7 +142,10 @@
     }
 
     function normalizeTag(value) {
-        return String(value || "").toLowerCase().replace(/_/g, "-");
+        var tag = String(value || "").toLowerCase().replace(/_/g, "-");
+        if (tag === "jp") return "ja";
+        if (tag === "zh") return "zh-cn";
+        return tag;
     }
 
     /* ---------------------------------------------------------------- */
@@ -128,16 +154,32 @@
 
     function localeIndex() {
         var map = {};
-        state.locales.forEach(function (entry) { map[entry.code.toLowerCase()] = entry; });
+        state.locales.forEach(function (entry) {
+            var c = entry.code.toLowerCase();
+            map[c] = entry;
+            if (c === "ja") map["jp"] = entry;
+            if (c === "zh-cn") map["zh"] = entry;
+        });
         return map;
     }
 
     function pathLocale() {
-        var segments = global.location.pathname.split("/").filter(Boolean);
+        var pathname = (global.location && global.location.pathname) || "";
+        // Detect literal static file pattern: <page>_<lang>.html (e.g. index_de.html, index_jp.html)
+        var fileMatch = pathname.match(/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i);
+        var map = localeIndex();
+        if (fileMatch) {
+            var fileTag = normalizeTag(fileMatch[1]);
+            if (map[fileTag]) return map[fileTag].code;
+            if (fileTag === "jp" && map["ja"]) return map["ja"].code;
+        }
+
+        var segments = pathname.split("/").filter(Boolean);
         if (!segments.length) return "";
         var candidate = normalizeTag(segments[0]);
-        var map = localeIndex();
-        return map[candidate] ? map[candidate].code : "";
+        if (map[candidate]) return map[candidate].code;
+        if (candidate === "jp" && map["ja"]) return map["ja"].code;
+        return "";
     }
 
     function param(name) {
@@ -194,15 +236,14 @@
         var requested = normalizeTag(param("lang"));
         if (requested) {
             if (map[requested]) return map[requested].code;
-            /* The picker list can be missing on a partial deploy; an explicit
-               ?lang= is still the visitor's instruction, so honour it and let
-               the catalog fetch decide whether the language exists. */
             if (/^[a-z]{2,3}(-[a-z0-9]{2,4})?$/.test(requested)) return requested;
         }
         var fromPath = pathLocale();
         if (fromPath) return fromPath;
         var stored = normalizeTag(readStorage(STORAGE_LOCALE));
         if (stored && map[stored]) return stored;
+        var fromCookie = normalizeTag(getSharedCookie(STORAGE_LOCALE));
+        if (fromCookie && map[fromCookie]) return fromCookie;
         /* The browser's own languages are a stronger signal than a country's
            default. A German visitor on an English-region machine must get
            German, not English with a German country code. */
@@ -369,8 +410,6 @@
        place if the request fails. Only explicitly marked content areas are
        sent, never the whole document. */
     var DYNAMIC_CONTAINERS = [
-        "body",
-        "html",
         "[data-i18n-dynamic]",
         "#release-body",
         "#doc-body",
@@ -378,7 +417,6 @@
         "#lumen-notices-tray-body",
         ".lumen-notice-body",
         "[data-doc-view]",
-        "main",
         "article.lumen-doc-body",
         ".lumen-notice-view"
     ].join(", ");
@@ -710,6 +748,11 @@
                     }
                     if (parent.closest("[data-i18n-skip]") || parent.closest("[translate='no']")) return NodeFilter.FILTER_REJECT;
                     if (parent.closest("[data-locale-panel]")) return NodeFilter.FILTER_REJECT;
+                    /* Collapsed trays and closed dialogs hold fetched notices and
+                       markdown that no catalog can carry. Translating them on
+                       load spends hundreds of API calls on copy nobody is
+                       reading yet; the observer rescans when they open. */
+                    if (parent.closest("[hidden], [aria-hidden='true'], dialog:not([open])")) return NodeFilter.FILTER_REJECT;
                     if (catalogApplied && catalogApplied.has(node)) return NodeFilter.FILTER_REJECT;
                     if (dynamicSeen && dynamicSeen.has(node)) return NodeFilter.FILTER_REJECT;
                     var value = normalise(node.nodeValue);
@@ -840,6 +883,8 @@
                                 scheduleDynamicScan();
                             }
                         }
+                    } else if (record.type === "attributes") {
+                        scheduleDynamicScan();
                     } else if (record.type === "characterData" && record.target) {
                         var value = translateValue(record.target.nodeValue);
                         if (value !== record.target.nodeValue) record.target.nodeValue = value;
@@ -849,7 +894,15 @@
                 applying = false;
             }
         });
-        observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: true,
+            /* Opening a tray flips hidden/aria-hidden instead of adding nodes,
+               so the scan has to hear about that to translate what appeared. */
+            attributes: true,
+            attributeFilter: ["hidden", "aria-hidden"]
+        });
     }
 
     /* ---------------------------------------------------------------- */
@@ -1328,39 +1381,36 @@
         global.location.href = url.pathname + url.search + url.hash;
     }
 
-    /* Two routes to the same page in another language, because the hosting may
-       serve pre-rendered copies or only the English tree:
-         1. a copy at /<locale>/<page> when the build published one (best: the
-            text is translated in the HTML, with hreflang),
-         2. ?lang=<locale> on the current page otherwise (always available).
-       The copy list is written by prerender.py, so a site that never ran it
-       simply never sees route 1. */
-    function copyPathFor(code) {
-        var map = localeIndex();
-        var segments = global.location.pathname.split("/").filter(Boolean);
-        if (segments.length && map[normalizeTag(segments[0])]) segments.shift();
-        if (code === DEFAULT_LOCALE) return "/" + segments.join("/");
-        return "/" + code + (segments.length ? "/" + segments.join("/") : "/");
-    }
+    function literalPathFor(code) {
+        var pathname = (global.location && global.location.pathname) || "/";
+        var fileName = pathname.split("/").pop() || "index.html";
+        if (!fileName || !fileName.endsWith(".html")) fileName = "index.html";
+        
+        var baseName = fileName.replace(/_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i, "");
+        if (baseName.endsWith(".html")) baseName = baseName.slice(0, -5);
+        if (!baseName) baseName = "index";
 
-    function hasCopy(code) {
-        if (!state.copies || !state.copies.length) return false;
-        return state.copies.indexOf(code) >= 0;
-    }
-
-    function goToCopy(code) {
-        var target = copyPathFor(code);
-        var fallback = function () { navigate({ lang: code }); };
-        try {
-            fetch(target, { method: "HEAD", cache: "no-store" })
-                .then(function (response) {
-                    if (response.ok) global.location.href = target + (global.location.hash || "");
-                    else fallback();
-                })
-                .catch(fallback);
-        } catch (_) {
-            fallback();
+        var cleanCode = normalizeTag(code);
+        if (cleanCode === DEFAULT_LOCALE) {
+            return baseName + ".html";
         }
+        return baseName + "_" + cleanCode + ".html";
+    }
+
+    function navigateToLiteral(targetFile, code) {
+        var url = new URL(global.location.href);
+        var dir = url.pathname.substring(0, url.pathname.lastIndexOf("/") + 1);
+        url.pathname = dir + targetFile;
+        if (code === DEFAULT_LOCALE) {
+            url.searchParams.delete("lang");
+        } else {
+            url.searchParams.set("lang", code);
+        }
+        var target = url.pathname + url.search + url.hash;
+        if (typeof global.y1DecorateUrl === "function") {
+            try { target = global.y1DecorateUrl(target); } catch (_) {}
+        }
+        global.location.href = target;
     }
 
     function setLocale(code) {
@@ -1369,16 +1419,21 @@
             return;
         }
         writeStorage(STORAGE_LOCALE, code);
+        setSharedCookie(STORAGE_LOCALE, code);
         track("site_language_change", { language_chosen: code });
 
-        var map = localeIndex();
-        var onCopy = !!map[normalizeTag(global.location.pathname.split("/").filter(Boolean)[0] || "")];
+        if (typeof global.y1DecorateLinks === "function") {
+            try { global.y1DecorateLinks(); } catch (_) {}
+        }
 
-        if (hasCopy(code) || onCopy) {
-            goToCopy(code);
+        var url = new URL(global.location.href);
+        var isStaticCandidate = /_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i.test(url.pathname) || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
+        if (isStaticCandidate) {
+            var targetFile = literalPathFor(code);
+            navigateToLiteral(targetFile, code);
             return;
         }
-        /* No pre-rendered copies shipped: the URL variable is the switch. */
+
         navigate({ lang: code });
     }
 

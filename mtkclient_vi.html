@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi" dir="ltr" data-locale="vi">
+<head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MTKClient &amp; Low-Level Recovery Guide - Innioasis &amp; Timmkoo - Innioasis Firmware Downloads</title>
+  <meta name="description" content="Low-level MediaTek recovery, bootloader unbrick instructions, and driver diagnostics for Innioasis and Timmkoo players using MTKClient and SP Flash Tool.">
+  <link rel="canonical" href="https://innioasis.app/mtkclient_vi.html">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261019d">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20261019d">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20261019d" defer></script>
+<meta property="og:site_name" content="Innioasis Cập nhật phần mềm">  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/mtkclient.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/mtkclient.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/mtkclient_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/mtkclient_ja.html">
+  <link rel="alternate" hreflang="ja-JP" href="https://innioasis.app/mtkclient_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/mtkclient_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/mtkclient_es.html">
+  <link rel="alternate" hreflang="es-419" href="https://innioasis.app/mtkclient_es-419.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/mtkclient_fr.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/mtkclient_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/mtkclient_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/mtkclient_zh-TW.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/mtkclient_ru.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/mtkclient_pt.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/mtkclient_pt-BR.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/mtkclient_it.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/mtkclient_ko.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/mtkclient_ar.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/mtkclient_hi.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/mtkclient_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/mtkclient_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/mtkclient_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/mtkclient_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/mtkclient_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/mtkclient_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/mtkclient_id.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/mtkclient_sv.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/mtkclient_no.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/mtkclient_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/mtkclient_fi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/mtkclient_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/mtkclient_el.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/mtkclient_hu.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/mtkclient_ro.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/mtkclient_he.html">
+  <link rel="alternate" hreflang="bn" href="https://innioasis.app/mtkclient_bn.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/mtkclient_fa.html">
+  <link rel="alternate" hreflang="ms" href="https://innioasis.app/mtkclient_ms.html">
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Chuyển đến nội dung</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Advanced Diagnostics · MediaTek</p>
+      <h1>MTKClient &amp; Unbrick Diagnostics</h1>
+      <p class="lead">MTKClient is the underlying open-source MediaTek flashing engine used by Innioasis Updater CE. If a player becomes unresponsive or fails standard flashing, use these recovery diagnostics.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="troubleshooting_vi.html">General Troubleshooting</a>
+        <a class="lumen-button" href="drivers_vi.html">Driver Setup Notes</a>
+      </div>
+    </header><section class="lumen-guide-section"><div class="lumen-callout"><p class="lumen-kicker">Bắt đầu với Innioasis Updater</p><h2>Try the guided route before the low-level one</h2><p>Updater does it in one pass. Pick the software, follow the steps on screen, and you are done. It also tells you when a fix or a new release lands.</p></div></section>
+
+    <section class="lumen-guide-section" aria-labelledby="brom-title">
+      <h2 id="brom-title">Understanding BootROM (BROM) Mode</h2>
+      <p>When powered completely down, the MediaTek MT6572 / MT6580 processor listens on the USB bus for a handshake packet before loading the primary bootloader. If a corrupted flash occurs, BROM mode allows a full recovery rewrite.</p>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+<script src="site-locale.js?v=20261108c" defer></script></body>
+</html>

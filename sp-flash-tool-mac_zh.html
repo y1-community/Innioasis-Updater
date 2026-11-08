@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" data-locale="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20260803">
+  <link rel="stylesheet" href="lumen.css?v=20261114video">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose">
+  <script src="site-init.js?v=20260803" defer></script>
+  <title>SP Flash Tool for Mac · MediaTek 分散闪烁指南和替代方案</title>
+  <meta name="description" content="如何使用 Updater CE 在 Mac 上使用 SP Flash Tool 并浏览分散文件以刷新 MediaTek 设备，例如 Mechen H1、Innioasis Y1/Y2、Timmkoo 和 MT6580/MT6572 MP3 播放器和手机。">
+  <link rel="canonical" href="https://innioasis.app/sp-flash-tool-mac_zh.html">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/sp-flash-tool-mac.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/sp-flash-tool-mac.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/sp-flash-tool-mac_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/sp-flash-tool-mac_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/sp-flash-tool-mac_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/sp-flash-tool-mac_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/sp-flash-tool-mac_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/sp-flash-tool-mac_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/sp-flash-tool-mac_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/sp-flash-tool-mac_pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/sp-flash-tool-mac_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/sp-flash-tool-mac_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/sp-flash-tool-mac_zh.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/sp-flash-tool-mac_zh-TW.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/sp-flash-tool-mac_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/sp-flash-tool-mac_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/sp-flash-tool-mac_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/sp-flash-tool-mac_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/sp-flash-tool-mac_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/sp-flash-tool-mac_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/sp-flash-tool-mac_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/sp-flash-tool-mac_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/sp-flash-tool-mac_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/sp-flash-tool-mac_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/sp-flash-tool-mac_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/sp-flash-tool-mac_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/sp-flash-tool-mac_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/sp-flash-tool-mac_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/sp-flash-tool-mac_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/sp-flash-tool-mac_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/sp-flash-tool-mac_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/sp-flash-tool-mac_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/sp-flash-tool-mac_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/sp-flash-tool-mac_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/sp-flash-tool-mac_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">跳到主要内容</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">MediaTek 工具和跨平台刷机</p>
+      <h1>SP Flash Tool Mac 版：完整指南和 Scatter 浏览器</h1>
+      <p class="lead">官方 MediaTek SP Flash Tool 可以在 macOS 上运行吗？这是确切的状态，如何 <strong>更新程序 CE</strong> 提供 Mac 上的本机 MediaTek 刷新，以及如何刷新任何基于分散的 MediaTek MP3 播放器或智能手机。</p>
+    </header>
+
+    <section class="lumen-guide-section">
+      <h2>macOS 上 SP Flash Tool 的真相</h2>
+      <p>MediaTek 从未发布过官方 macOS 版本 <strong>智能手机刷机工具 (SP Flash Tool)</strong>。该工具仅作为 32 位/64 位 Windows 应用程序和 x86_64 Linux 二进制文件存在。通过 Wine 或 CrossOver 在 macOS 上模拟 SP Flash Tool 失败，因为 macOS 内核 USB 扩展不允许 USB 以 BROM 引导握手期间所需的精度进行串行传递。</p>
+      <p><strong>解决方案：</strong> <strong>更新程序 CE</strong> 通过捆绑原生 Apple Silicon 和 Intel macOS 闪存库（通过 MTKclient 低级协议引擎）以及自动分散发现来弥补这一差距！</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>使用“从文件安装”刷新任何 MediaTek 设备（Scatter 浏览器）</h2>
+      <p>更新者 CE 不限于 Innioasis 玩家。您可以将其用作功能强大的通用 MediaTek 分散闪光器，适用于任何需要的设备 <strong>SP Flash Tool v5 或更早版本</strong>:</p>
+      <ul class="lumen-benefits-list">
+        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 便携式 HiFi Android 播放器。</li>
+        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek 触摸屏数字音频播放器。</li>
+        <li><strong>Oilsky、Phuut、洛然：</strong> MediaTek MT6572 / MT6582 音乐播放器。</li>
+        <li><strong>旧版 MediaTek 智能手机和功能手机：</strong> 运行 MT6572、MT6580、MT6582、MT6735、MT6737、MT6739、MT6753 和 MT8163 的设备。</li>
+      </ul>
+      <div class="lumen-callout">
+        <h3>如何在 Updater CE 中加载自定义分散文件：</h3>
+        <ol class="lumen-steps">
+          <li>下载工厂固件存档（<code>.zip</code> 或 <code>.rar</code>）或提取其包含的文件夹 <code>*scatter*.txt</code> 文件。</li>
+          <li>在 Updater CE 中，选择 <strong>浏览文件...</strong> 在固件选择屏幕上。</li>
+          <li>选择分散文本文件（例如， <code>MT6580_Android_scatter.txt</code>）或固件 zip 包。</li>
+          <li>更新程序CE解析内存偏移量、分区地址（预加载器、引导、恢复、系统、用户数据），并验证分散完整性。</li>
+          <li>按照屏幕上的实时提示操作：关闭设备电源并将 USB 电缆连接到闪光灯。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>当您需要 x64 计算机进行解锁时</h2>
+      <p>虽然 macOS 通过 MTKclient 干净地处理标准刷新和自定义 ROM 安装，但从深度引导循环故障（预加载器分区被擦除或不匹配）中恢复需要 SP Flash Tool 的完整分区表重建。</p>
+      <p>如果您在 Mac 上遇到错误停止，请切换到 64 位 Windows PC 或 x86_64 Linux 工作站，选择 <strong>设置 &gt; 显示高级设置 &gt; 闪光方法 &gt; SP Flash Tool</strong>，并刷入工厂散包。</p>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261105copyleft" defer></script>
+  <script src="site-locale.js?v=20261108c" defer></script>
+</body>
+</html>
