@@ -1174,6 +1174,15 @@
         return "";
     }
 
+    /* The reader clicked rom.zip; a mirror bundle is rom-macos.zip. Keep
+       the release's own filename in Downloads on every path. */
+    function releaseFileName(name, fallback) {
+        var base = String(name || fallback || "rom.zip").split(/[?#]/)[0].split("/").pop();
+        base = base.replace(/-(macos|windows|linux|android|windows-arm64|linux-arm64)(?=\.zip$)/i, "");
+        if (!/\.zip$/i.test(base)) base = fallback || "rom.zip";
+        return base;
+    }
+
     function downloadHref(assetUrl, filename) {
         var proxy = downloadProxyUrl();
         if (!proxy) return assetUrl;
@@ -1210,6 +1219,7 @@
 
     async function startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips) {
         if (downloadInProgress) return;
+        zipName = releaseFileName(zipName, "rom.zip");
         downloadInProgress = true;
 
         var wrap = document.getElementById("lumen-download-progress-wrap");

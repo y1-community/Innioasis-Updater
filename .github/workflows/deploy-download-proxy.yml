@@ -1,0 +1,61 @@
+name: Deploy download proxy
+
+# The portable bundle for a platform is named rom-macos.zip in the mirror, but
+# the reader clicked rom.zip. A browser ignores the download attribute on a
+# cross-origin asset, so the only way to keep the clicked name is this
+# same-origin Worker, which answers with Content-Disposition: rom.zip.
+#
+# Requires repository secrets:
+#   CLOUDFLARE_API_TOKEN  - Workers Scripts:Edit and Zone:Edit for innioasis.app
+#   CLOUDFLARE_ACCOUNT_ID
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "download-proxy-worker.js"
+      - "wrangler.toml"
+      - ".github/workflows/deploy-download-proxy.yml"
+
+concurrency:
+  group: deploy-download-proxy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the Cloudflare credentials are present
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$TOKEN" ] || [ -z "$ACCOUNT" ]; then
+            echo "CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are required to deploy the download proxy." >&2
+            exit 1
+          fi
+
+      - name: Deploy the Worker and its route
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --config wrangler.toml
+
+      - name: Verify the proxy answers with the ROM filename
+        run: |
+          set -euo pipefail
+          URL="https://innioasis.app/download-proxy?url=https%3A%2F%2Fgithub.com%2Fy1-community%2Fy1_launcher-mirror%2Freleases%2Fdownload%2Flauncher-v0.9%2From-macos.zip&filename=rom-macos.zip"
+          for attempt in 1 2 3 4 5; do
+            HEADERS=$(curl -sS -o /dev/null -D - -m 30 "$URL" || true)
+            if printf '%s' "$HEADERS" | grep -qi 'content-disposition'; then break; fi
+            sleep 6
+          done
+          printf '%s\n' "$HEADERS" | grep -i 'content-disposition' | tee /tmp/cd.txt
+          grep -qi 'filename="rom.zip"' /tmp/cd.txt

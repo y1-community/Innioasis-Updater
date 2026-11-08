@@ -49,14 +49,19 @@ function corsHeaders(request, env) {
   };
 }
 
+const PLATFORM_SUFFIX = /-(macos|windows|linux|android|windows-arm64|linux-arm64|mac|win)(?=\.zip$)/i;
+
 function safeFilename(name) {
   const base = String(name || "")
     .split(/[\\/]/)
     .pop();
-  const cleaned = base
+  let cleaned = base
     .replace(/[^A-Za-z0-9._ +()-]/g, "_")
     .replace(/^\.+/, "")
     .trim();
+  /* A mirror bundle is named rom-macos.zip, but the reader clicked rom.zip.
+     Save it under the release's own name so Downloads matches the link. */
+  cleaned = cleaned.replace(PLATFORM_SUFFIX, "");
   return (cleaned || "firmware.zip").slice(0, MAX_FILENAME);
 }
 
