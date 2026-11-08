@@ -121,19 +121,28 @@
 
   function getActiveLocale() {
     try {
-      if (window.InnioasisLocale && window.InnioasisLocale.locale) {
-        var loc = String(window.InnioasisLocale.locale).toLowerCase();
-        return loc === "jp" ? "ja" : loc;
+      var param = new URLSearchParams(window.location.search).get("lang");
+      if (param) {
+        var p = param.toLowerCase();
+        return p === "jp" ? "ja" : (p === "zh" ? "zh-cn" : p);
+      }
+      var htmlLocale = (document.documentElement && (document.documentElement.getAttribute("data-locale") || document.documentElement.lang)) || "";
+      if (htmlLocale && htmlLocale !== "en") {
+        var h = htmlLocale.toLowerCase();
+        return h === "jp" ? "ja" : (h === "zh" ? "zh-cn" : h);
       }
       var match = (window.location.pathname || "").match(/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i);
       if (match) {
         var m = match[1].toLowerCase();
-        return m === "jp" ? "ja" : m;
+        return m === "jp" ? "ja" : (m === "zh" ? "zh-cn" : m);
       }
-      var param = new URLSearchParams(window.location.search).get("lang");
-      if (param) {
-        var p = param.toLowerCase();
-        return p === "jp" ? "ja" : p;
+      if (window.SiteLocale && typeof window.SiteLocale.locale === "function") {
+        var sl = String(window.SiteLocale.locale()).toLowerCase();
+        if (sl && sl !== "en") return sl === "jp" ? "ja" : sl;
+      }
+      if (window.InnioasisLocale && window.InnioasisLocale.locale) {
+        var loc = String(window.InnioasisLocale.locale).toLowerCase();
+        return loc === "jp" ? "ja" : loc;
       }
       var stored = window.localStorage.getItem("innioasis-locale");
       if (stored) return stored.toLowerCase();
@@ -141,6 +150,21 @@
       if (cookie) return cookie.toLowerCase();
     } catch (_) {}
     return "en";
+  }
+
+  function getPrivacyAnalyticsParam() {
+    try {
+      var raw = new URLSearchParams(window.location.search).get("privacy_analytics");
+      if (raw) return raw;
+      if (window.INNIOASIS_PRIVACY && window.INNIOASIS_PRIVACY.read) {
+        var prefs = window.INNIOASIS_PRIVACY.read();
+        if (prefs && (prefs.analytics === false || prefs.analytics === "off")) return "off";
+        if (prefs && prefs.analytics === "essential") return "essential";
+      }
+      var cookie = getSharedCookie("innioasis-privacy-analytics");
+      if (cookie) return cookie;
+    } catch (_) {}
+    return null;
   }
 
   function getPrivacyParam() {
@@ -188,6 +212,10 @@
     var priv = getPrivacyParam();
     if (priv) {
       url.searchParams.set("privacy", priv);
+    }
+    var privAn = getPrivacyAnalyticsParam();
+    if (privAn) {
+      url.searchParams.set("privacy_analytics", privAn);
     }
 
     // 3. Language preference
