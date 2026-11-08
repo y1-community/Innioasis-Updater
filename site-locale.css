@@ -301,6 +301,10 @@
   vertical-align: middle;
   color: currentColor;
   opacity: .68;
+  font-size: .85em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
 }
 .site-i18n-globe { flex: none; width: 13px; height: 13px; }
 .site-i18n-spinner {

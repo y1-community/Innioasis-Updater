@@ -398,9 +398,17 @@
         return map[normalizeTag(state.locale)] || {};
     }
 
+    function isEnglishLocale(code) {
+        if (!code) return true;
+        var tag = String(code).toLowerCase().replace(/_/g, "-").trim();
+        return tag === "en" || tag.indexOf("en-") === 0;
+    }
+
     function dynamicEnabled() {
+        if (isEnglishLocale(state.locale)) return false;
         var entry = dynamicEntry();
         var base = entry.base || entry.code || normalizeTag(state.locale);
+        if (isEnglishLocale(base)) return false;
         return String(base).toLowerCase() !== DEFAULT_LOCALE;
     }
 
@@ -467,7 +475,7 @@
         var value = String(text).trim();
         /* Release tags, versions, package names, repos and model codes are
            identifiers, not prose: 0.5, stable-v0.5, rom.zip, owner/repo, Y1. */
-        if (/^(?:v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[a-z0-9]+-v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[A-Z0-9]+(?:[-_.][A-Z0-9]+)+|[\w.-]+\.(?:zip|apk|img|bin|tar|gz|md|txt|json|rar|7z|iso)|[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+|[A-Z]{1,3}\d+[A-Za-z]?|Type[- ][AB])$/i.test(value)) return true;
+        if (/^(?:v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[a-z0-9]+-v?\d+(?:\.\d+)*(?:[-._][A-Za-z0-9]+)*|[A-Z0-9]+(?:[-_.][A-Z0-9]+)+|[\w.-]+\.(?:zip|apk|img|bin|tar|gz|md|txt|json|rar|7z|iso)|[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+|[A-Z]{1,3}\d+[A-Za-z]?|Type[- ][AB])$/.test(value)) return true;
         var stripped = value.replace(dynamicBrandPattern, "$1");
         return !/[A-Za-z\u00C0-\u024F\u0400-\u04FF]/.test(stripped);
     }
@@ -585,7 +593,75 @@
         (document.head || document.documentElement).appendChild(style);
     }
 
+    /* Loading throbbers are attached on a pragmatic basis: near paragraphs and
+       copywriting specifically. Never shown in English languages, and never on
+       interactive UI controls, buttons, table cells, or compact navigation. */
+    function isCopywritingElement(element) {
+        if (!element || element.nodeType !== 1) return false;
+        var tag = (element.tagName || "").toUpperCase();
+
+        // 1. Exclude interactive controls, inputs, headers, navigation, table cells, code
+        if (/^(BUTTON|INPUT|SELECT|TEXTAREA|NAV|HEADER|FOOTER|THEAD|TBODY|TR|TH|TD|H1|H2|H3|H4|H5|H6|CODE|PRE|KBD|SAMP)$/.test(tag)) {
+            return false;
+        }
+        if (element.closest && element.closest("button, [role='button'], input, select, textarea, nav, .nav, .y1-dock, .site-locale-panel, [data-locale-panel], table, th, td")) {
+            return false;
+        }
+
+        // 2. Direct paragraph and blockquote elements
+        if (tag === "P" || tag === "BLOCKQUOTE" || tag === "DD") {
+            // Exclude kickers / eyebrows (e.g. <p class="lumen-kicker">Videos</p>)
+            if (element.classList && (element.classList.contains("lumen-kicker") || element.classList.contains("kicker"))) {
+                return false;
+            }
+            return true;
+        }
+
+        // 3. Recognized copywriting / prose containers
+        if (element.classList) {
+            if (element.classList.contains("prose") ||
+                element.classList.contains("upload-prose") ||
+                element.classList.contains("lumen-notice-body") ||
+                element.classList.contains("notice-body") ||
+                element.classList.contains("markdown-body") ||
+                element.classList.contains("description") ||
+                element.classList.contains("error-description") ||
+                element.classList.contains("copywriting")) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function getCopywritingContainer(node) {
+        if (!node) return null;
+        if (isEnglishLocale(state.locale)) return null;
+
+        var text = normalise(node.nodeValue);
+        // Only trigger throbber for substantial prose / sentence copywriting
+        if (text.length < 20 && !/[.!?]/.test(text)) {
+            return null;
+        }
+
+        var curr = node.parentElement;
+        while (curr && curr !== document.body && curr !== document.documentElement) {
+            if (isCopywritingElement(curr)) {
+                var blockText = (curr.textContent || "").trim();
+                if (blockText.length >= 20) {
+                    return curr;
+                }
+            }
+            if (/^(BUTTON|NAV|TABLE|DIALOG)$/.test(curr.tagName)) {
+                return null;
+            }
+            curr = curr.parentElement;
+        }
+        return null;
+    }
+
     function showTranslatingBadge(element) {
+        if (isEnglishLocale(state.locale)) return;
         if (!element || !pendingByElement || !element.appendChild) return;
         ensureBadgeStyles();
         var count = pendingByElement.get(element) || 0;
@@ -613,18 +689,26 @@
             return;
         }
         pendingByElement.delete(element);
-        var badge = null;
-        for (var i = 0; i < element.children.length; i += 1) {
-            if (element.children[i].classList && element.children[i].classList.contains("site-i18n-badge")) {
-                badge = element.children[i];
-                break;
+        var badges = element.querySelectorAll ? element.querySelectorAll(".site-i18n-badge") : [];
+        if (badges.length) {
+            for (var i = 0; i < badges.length; i += 1) {
+                var badge = badges[i];
+                if (badge.getAttribute("data-i18n-timeout")) {
+                    clearTimeout(Number(badge.getAttribute("data-i18n-timeout")));
+                }
+                badge.remove();
+            }
+        } else if (element.children) {
+            for (var j = element.children.length - 1; j >= 0; j -= 1) {
+                var child = element.children[j];
+                if (child.classList && child.classList.contains("site-i18n-badge")) {
+                    if (child.getAttribute("data-i18n-timeout")) {
+                        clearTimeout(Number(child.getAttribute("data-i18n-timeout")));
+                    }
+                    child.remove();
+                }
             }
         }
-        if (!badge) return;
-        if (badge.getAttribute("data-i18n-timeout")) {
-            clearTimeout(Number(badge.getAttribute("data-i18n-timeout")));
-        }
-        badge.remove();
     }
 
     function queueDynamicText(text, apply, element) {
@@ -704,9 +788,10 @@
                     var prefix = /^\s*/.exec(raw)[0];
                     var suffix = /\s*$/.exec(raw)[0];
                     var text = normalise(raw);
+                    var badgeTarget = getCopywritingContainer(target);
                     queueDynamicText(text, function (translated) {
                         target.nodeValue = prefix + translated + suffix;
-                    }, target.parentElement);
+                    }, badgeTarget);
                 }(node));
             }
             if (!wholePage) container.setAttribute("data-i18n-dynamic-state", "done");
@@ -1354,10 +1439,12 @@
     }
 
     function baseOfLocale(code) {
+        if (isEnglishLocale(code)) return DEFAULT_LOCALE;
         var map = localeIndex();
         var entry = map[normalizeTag(code)];
         if (!entry) return normalizeTag(code).split("-")[0];
-        return normalizeTag(entry.base || entry.code);
+        var base = normalizeTag(entry.base || entry.code);
+        return isEnglishLocale(base) ? DEFAULT_LOCALE : base;
     }
 
     global.InnioasisLocale = {
