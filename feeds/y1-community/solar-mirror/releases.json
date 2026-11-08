@@ -1713,7 +1713,7 @@
     "id": 432999801,
     "tag_name": "nightly-20260630-0549",
     "name": "Portable Flashing Package: Solar nightly-20260630-0549 (b374289)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=nightly-20260630-0549#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0a214f1ea92fda35317b26820da60c87ecf607a377d9c8b054a0bc6b386957f4\",\"size\":842220491,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"fd639f6686569083375d04e7817d8975b7b18e3d6199bb3ffc172d34bd35d8b5\",\"size\":574462882,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"c8b1a68efb82edd07e66fa71c39e8edc0cd34159f1bc2f3ccac7de0eefc295ac\",\"size\":660731509,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"90521a136a40ef7d6257809ad0089e8f928f3e0b95dce29af39f71ee3cfa3bc9\",\"size\":793970554,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"388996a16f448cb67c9fcc239d428fac9dfc8f51937d894c1b8346199e9c6d96\",\"size\":526212951,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"fe11e9286a461143bfa2925a3335601101e398d8ce6cc984b720ddb9504badec\",\"size\":612481572,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:56:07Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"9f43257757341339e9d3d09b46c74c4db8aebdb3931f4aab5c859da89ec29e2b\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":5,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":5,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":6},\"generated_at\":\"2026-11-07T23:56:07Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=nightly-20260630-0549#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- b374289 Flow mode, LCD art filter, playlist move window, and misc improvements\n- 8479e8b Bump nightly version for next release.\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"ccce5e40d2eeaffa8d1a0f797c48565d8873a2f3f1d425e56a05f69a07bcef04\",\"size\":842220491,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"eb621d27f4f691dc23ad23a0b81308601ba9cd70b4b1cccd0773d89fcf91b83c\",\"size\":574387166,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"4dcf75ac2b3d6e286496f2a8367c04a6c4bc32e965bf07e377f176f685898e8d\",\"size\":660731509,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"453415e8083fddb7da9e078e2327bb10ab25e2dbc356ce854a8867ad1c54f0bd\",\"size\":793970554,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"57149f983cd761efaea87ce7fd4224a15fb274fe7b92b7043c1c3bc6996bd589\",\"size\":526137235,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"58c2bb019ba945d2a6a3bc3775f494306100553901aa541658ba5382ddfb6929\",\"size\":612481572,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T21:07:36Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"67193cb0f45c1341b90e32e332dc1a5fb82050d0d0037e8cd8eba58120e99c29\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":6,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":6,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-08T21:07:36Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -1734,37 +1734,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706435741"
       },
       {
-        "id": 722328721,
+        "id": 725197166,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-linux.zip",
         "size": 842220491,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:56:11Z",
-        "updated_at": "2026-11-07T23:56:53Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722328721"
+        "created_at": "2026-11-08T21:07:40Z",
+        "updated_at": "2026-11-08T21:08:04Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725197166"
       },
       {
-        "id": 722328720,
+        "id": 725197147,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-macos.zip",
-        "size": 574462882,
+        "size": 574387166,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:56:11Z",
-        "updated_at": "2026-11-07T23:56:36Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722328720"
+        "created_at": "2026-11-08T21:07:40Z",
+        "updated_at": "2026-11-08T21:07:58Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725197147"
       },
       {
-        "id": 722328727,
+        "id": 725197164,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom-windows.zip",
         "size": 660731509,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:56:11Z",
-        "updated_at": "2026-11-07T23:56:37Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722328727"
+        "created_at": "2026-11-08T21:07:40Z",
+        "updated_at": "2026-11-08T21:07:58Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725197164"
       },
       {
         "id": 706435801,
@@ -1778,37 +1778,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706435801"
       },
       {
-        "id": 722328725,
+        "id": 725197154,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-linux.zip",
         "size": 793970554,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:56:11Z",
-        "updated_at": "2026-11-07T23:56:49Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722328725"
+        "created_at": "2026-11-08T21:07:40Z",
+        "updated_at": "2026-11-08T21:08:03Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725197154"
       },
       {
-        "id": 722328729,
+        "id": 725197148,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-macos.zip",
-        "size": 526212951,
+        "size": 526137235,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:56:11Z",
-        "updated_at": "2026-11-07T23:56:30Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722328729"
+        "created_at": "2026-11-08T21:07:40Z",
+        "updated_at": "2026-11-08T21:07:58Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725197148"
       },
       {
-        "id": 722329418,
+        "id": 725197936,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/rom_type_b-windows.zip",
         "size": 612481572,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:56:31Z",
-        "updated_at": "2026-11-07T23:56:55Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722329418"
+        "created_at": "2026-11-08T21:07:58Z",
+        "updated_at": "2026-11-08T21:08:17Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725197936"
       },
       {
         "id": 706435958,
@@ -1822,15 +1822,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706435958"
       },
       {
-        "id": 723639737,
+        "id": 725197956,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260630-0549/stats.txt",
         "size": 2475,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:16Z",
-        "updated_at": "2026-11-08T10:46:17Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639737"
+        "created_at": "2026-11-08T21:07:59Z",
+        "updated_at": "2026-11-08T21:07:59Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725197956"
       }
     ]
   },
@@ -1838,7 +1838,7 @@
     "id": 432970064,
     "tag_name": "nightly-20260629-1616",
     "name": "Portable Flashing Package: Solar nightly-20260629-1616 (8ed4902)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=nightly-20260629-1616#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"ed9852bce0c8cb267d4e095fc3b8e8a48708868e214e95ad5b95c1b0716d2da6\",\"size\":842241063,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"345c4a5188832104e9a9a44b88d9d3d7f249a0598a7f74d04d7a436fca9f3bb7\",\"size\":574483456,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"a084198edacf354de8540caba929a79c872356f530287bc3736a86d719237f90\",\"size\":660752081,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"8f7ddd6613ee1581d76015684aa9c8237f0a90fea5edc0353c38204d134c5e9e\",\"size\":794986749,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"904b67381fd6510f4b9230903fb407b569d0fa396fed4ed983bd91bc13fdc629\",\"size\":527229148,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"6c57de7570fff7da53d192982be896594691ab427e08653b2ba04f5af3f6869e\",\"size\":613497767,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:33:07Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"41e148ea663cd5f5777b65826b0279a54e10cc380cc96a3018b0169fc581f776\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":7,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":4,\"rom.zip\":7,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":2,\"rom_type_b-windows.zip\":4,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-07T23:33:07Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=nightly-20260629-1616#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 8ed4902 Bump nightly version for next release.\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f5149414c8c8c9c0e282d8e4cccb6d89bcc9dee65ec89081e20948afd475d471\",\"size\":842241063,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"96283d3cc8afa9e6a2c3c2288e90de96f10a5f5dc7880c3dcd61dbfb4cfdd168\",\"size\":574407740,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"a8bd5d2890ff195f3b31e22c7ce98317ea7929e47577814582eaa628520fd3b1\",\"size\":660752081,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"88b3df398e954aad1fa882633dc26e8bdd6441486a88b36d5cadb2be3644512e\",\"size\":794986749,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"7bf6d8d2767625db576dd448ae1cfab54a502c54f504d2df4627ef1ed98c3b03\",\"size\":527153432,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"177074c438d97dbacf32f0e6b58dc38fe2c185df207bb8b0525980096838c67a\",\"size\":613497767,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T20:44:02Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"ccb443c701bee0a6f7647442006c8075f1b91e4a32f2545dfcac6033f71897ba\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":8,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":4,\"rom.zip\":8,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":2,\"rom_type_b-windows.zip\":4,\"rom_type_b.zip\":8},\"generated_at\":\"2026-11-08T20:44:02Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -1859,37 +1859,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706351883"
       },
       {
-        "id": 722281978,
+        "id": 725142758,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-linux.zip",
         "size": 842241063,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:33:12Z",
-        "updated_at": "2026-11-07T23:34:05Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722281978"
+        "created_at": "2026-11-08T20:44:07Z",
+        "updated_at": "2026-11-08T20:44:36Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725142758"
       },
       {
-        "id": 722281970,
+        "id": 725142744,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-macos.zip",
-        "size": 574483456,
+        "size": 574407740,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:33:11Z",
-        "updated_at": "2026-11-07T23:33:55Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722281970"
+        "created_at": "2026-11-08T20:44:07Z",
+        "updated_at": "2026-11-08T20:44:21Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725142744"
       },
       {
-        "id": 722281976,
+        "id": 725142743,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom-windows.zip",
         "size": 660752081,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:33:12Z",
-        "updated_at": "2026-11-07T23:33:53Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722281976"
+        "created_at": "2026-11-08T20:44:07Z",
+        "updated_at": "2026-11-08T20:44:32Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725142743"
       },
       {
         "id": 706351994,
@@ -1903,37 +1903,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706351994"
       },
       {
-        "id": 722281974,
+        "id": 725142750,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-linux.zip",
         "size": 794986749,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:33:12Z",
-        "updated_at": "2026-11-07T23:33:56Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722281974"
+        "created_at": "2026-11-08T20:44:07Z",
+        "updated_at": "2026-11-08T20:44:31Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725142750"
       },
       {
-        "id": 722281973,
+        "id": 725142740,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-macos.zip",
-        "size": 527229148,
+        "size": 527153432,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:33:12Z",
-        "updated_at": "2026-11-07T23:33:45Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722281973"
+        "created_at": "2026-11-08T20:44:07Z",
+        "updated_at": "2026-11-08T20:44:24Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725142740"
       },
       {
-        "id": 722283194,
+        "id": 725143225,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/rom_type_b-windows.zip",
         "size": 613497767,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:33:46Z",
-        "updated_at": "2026-11-07T23:34:05Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722283194"
+        "created_at": "2026-11-08T20:44:22Z",
+        "updated_at": "2026-11-08T20:44:42Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725143225"
       },
       {
         "id": 706352033,
@@ -1947,15 +1947,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706352033"
       },
       {
-        "id": 723639434,
+        "id": 725143325,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1616/stats.txt",
         "size": 2475,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:06Z",
-        "updated_at": "2026-11-08T10:46:06Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639434"
+        "created_at": "2026-11-08T20:44:25Z",
+        "updated_at": "2026-11-08T20:44:25Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725143325"
       }
     ]
   },
@@ -1963,7 +1963,7 @@
     "id": 432965242,
     "tag_name": "nightly-20260629-1609",
     "name": "Portable Flashing Package: Solar nightly-20260629-1609 (027faf4)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=nightly-20260629-1609#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- 83eb519 Bump nightly version for next release.\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"b8ae4170dabbcd8e7f6b4f1d6ea51761c486d9e4dcdd904d47833cd6ed1c61e7\",\"size\":843774023,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"e6d54b1dfdb9edf5516ed18e6b265b06b6d6bfc50d31039639fe063f850a5dba\",\"size\":576016415,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"47a8c2bfff4fdc8c3f331c1d1c0c5c005d787cc2a4e051d5c26700d165360f94\",\"size\":662285041,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"5da155772360731c68471d78536b6d1e1a15164b6ff5eb08c8ef52b73f69393c\",\"size\":793992235,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"6f3d02902935ce9e2f97f4ebbee83ee08d1d5c6aac9e67479fedf3a0f014fd56\",\"size\":526234633,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b9e3efce365272d9d62147c391d5d454d12cd270d5af8d116da4093d553f6e41\",\"size\":612503253,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:28:11Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"c330a18378bc3ace732a014023007e1332f5e0fda222518681dc195b9779441d\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":7,\"rom-linux.zip\":3,\"rom-macos.zip\":5,\"rom-windows.zip\":4,\"rom.zip\":7,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":4,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-07T23:28:11Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=nightly-20260629-1609#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- 83eb519 Bump nightly version for next release.\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"86ad2e60187405f02280cdd8937114100496325d29b944f2ff3d7d86c9b0b97c\",\"size\":843774023,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"8361d56d0ed25e6f3b44f1786ada382734ce24cd65fc76baa2dad021d9f43519\",\"size\":575940699,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b662c2ebca303eca65aa3811f0553eb0e245781c4070a179a1108c65ca2ae8ff\",\"size\":662285041,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f7f8f665b60673f00c572dff8ea1447c0fc4e2d882bde5026dc73e37674e9816\",\"size\":793992235,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"96b3316e3a87a874223a043c12741e39759fd123e9b4a73375b245402c5527bc\",\"size\":526158917,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"4c80ce92c301493b786a1b9b2c71a67fbd4ac8653558808bad691ad30a2e614d\",\"size\":612503253,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T20:40:03Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"cf5f8f9c85613d6dc42f2091f7a7968ced763a6564a5d5f3302ff146ccb0e2fb\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":8,\"rom-linux.zip\":3,\"rom-macos.zip\":5,\"rom-windows.zip\":4,\"rom.zip\":8,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":4,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":8},\"generated_at\":\"2026-11-08T20:40:03Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -1984,37 +1984,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706340043"
       },
       {
-        "id": 722271888,
+        "id": 725134379,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-linux.zip",
         "size": 843774023,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:28:15Z",
-        "updated_at": "2026-11-07T23:30:18Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722271888"
+        "created_at": "2026-11-08T20:40:08Z",
+        "updated_at": "2026-11-08T20:40:36Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725134379"
       },
       {
-        "id": 722271884,
+        "id": 725134376,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-macos.zip",
-        "size": 576016415,
+        "size": 575940699,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:28:15Z",
-        "updated_at": "2026-11-07T23:29:46Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722271884"
+        "created_at": "2026-11-08T20:40:08Z",
+        "updated_at": "2026-11-08T20:40:31Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725134376"
       },
       {
-        "id": 722271887,
+        "id": 725134372,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom-windows.zip",
         "size": 662285041,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:28:15Z",
-        "updated_at": "2026-11-07T23:30:06Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722271887"
+        "created_at": "2026-11-08T20:40:08Z",
+        "updated_at": "2026-11-08T20:40:29Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725134372"
       },
       {
         "id": 706340123,
@@ -2028,37 +2028,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706340123"
       },
       {
-        "id": 722271894,
+        "id": 725134373,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-linux.zip",
         "size": 793992235,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:28:15Z",
-        "updated_at": "2026-11-07T23:29:12Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722271894"
+        "created_at": "2026-11-08T20:40:08Z",
+        "updated_at": "2026-11-08T20:40:36Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725134373"
       },
       {
-        "id": 722271891,
+        "id": 725134374,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-macos.zip",
-        "size": 526234633,
+        "size": 526158917,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:28:15Z",
-        "updated_at": "2026-11-07T23:29:37Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722271891"
+        "created_at": "2026-11-08T20:40:08Z",
+        "updated_at": "2026-11-08T20:40:26Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725134374"
       },
       {
-        "id": 722273652,
+        "id": 725134942,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/rom_type_b-windows.zip",
         "size": 612503253,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:29:13Z",
-        "updated_at": "2026-11-07T23:30:03Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722273652"
+        "created_at": "2026-11-08T20:40:27Z",
+        "updated_at": "2026-11-08T20:40:42Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725134942"
       },
       {
         "id": 706340136,
@@ -2072,15 +2072,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706340136"
       },
       {
-        "id": 723639388,
+        "id": 725135034,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/nightly-20260629-1609/stats.txt",
         "size": 2475,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:04Z",
-        "updated_at": "2026-11-08T10:46:04Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639388"
+        "created_at": "2026-11-08T20:40:29Z",
+        "updated_at": "2026-11-08T20:40:30Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725135034"
       }
     ]
   },
@@ -4915,7 +4915,7 @@
     "id": 432996097,
     "tag_name": "20260629-1615",
     "name": "Portable Flashing Package: Solar 20260629-1615 (5772329)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-1615#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"944f357c0f9b86437ca0e6fc5de842c19f354c2ed880104bf4eaedd354b35060\",\"size\":842181498,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"ec4c14fbab7b55e3659de6c4bcb3e68e7b42a26ddbb42879f486c1a0ebff7666\",\"size\":574423897,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"b18dd04bed18ed4d129243339c4fae7d1a58f01c0ffab60f53dce2230f350434\",\"size\":660692516,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"581126db8e3637192f6d494100409eb9c32cc696585f468699d0aefa8611f990\",\"size\":797771531,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"05f98563046e550a43af968a2a272fb2e4c03a3533cdd79d888c747e2ed32fac\",\"size\":530013936,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"1143a7e9c2659d297a519cc8b8a21caa1bc0bdaa03f4674e14cd666aee7fc7e1\",\"size\":616282549,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:51:43Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"50f792d1a1dc1d5bba9fc6c098dee9a894a9fe7d4df460b40e8ef1b072713529\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":6,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":6,\"rom_type_b-linux.zip\":4,\"rom_type_b-macos.zip\":4,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":6},\"generated_at\":\"2026-11-07T23:51:43Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-1615#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 5772329 Fix OTA catalog versionCode for timestamp release tags.\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"61b529b36243897cc341949ea383f7ac150a90c2e87faeb350641ddbc0580a5f\",\"size\":842181498,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"788e28a66aa1e388e9e54075b1b7add3b7c32f6bb5ad2b2fa7677592a313e640\",\"size\":574348181,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"edfc41901bf571a2b6d25e698177978a99278dfac2ffcaa537da8a61c4e4136c\",\"size\":660692516,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"b5ecf07db53e32f9c01d23d88317f685ba1e8b154d0aa550e6cac56381ca7df3\",\"size\":797771531,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"fcd223591e92494a0f4b3ca3470fb7b9fa1ca3aa37793ae58a133044687c9821\",\"size\":529938220,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"320fc33ef76ce1c0e5088f7ddad137502f2d1adddff1f3e5546ef5b29ba35bce\",\"size\":616282549,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T21:03:43Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"0634fe652459927360eb35e4fe28ec44049f4784013448844b92be8520f39767\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":7,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":7,\"rom_type_b-linux.zip\":4,\"rom_type_b-macos.zip\":4,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-08T21:03:43Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -4936,37 +4936,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706424328"
       },
       {
-        "id": 722320004,
+        "id": 725188346,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-linux.zip",
         "size": 842181498,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:51:47Z",
-        "updated_at": "2026-11-07T23:52:47Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722320004"
+        "created_at": "2026-11-08T21:03:47Z",
+        "updated_at": "2026-11-08T21:04:11Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725188346"
       },
       {
-        "id": 722319998,
+        "id": 725188354,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-macos.zip",
-        "size": 574423897,
+        "size": 574348181,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:51:47Z",
-        "updated_at": "2026-11-07T23:53:06Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722319998"
+        "created_at": "2026-11-08T21:03:47Z",
+        "updated_at": "2026-11-08T21:04:07Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725188354"
       },
       {
-        "id": 722320000,
+        "id": 725188351,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom-windows.zip",
         "size": 660692516,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:51:47Z",
-        "updated_at": "2026-11-07T23:52:26Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722320000"
+        "created_at": "2026-11-08T21:03:47Z",
+        "updated_at": "2026-11-08T21:04:08Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725188351"
       },
       {
         "id": 706424406,
@@ -4980,37 +4980,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706424406"
       },
       {
-        "id": 722320003,
+        "id": 725188350,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-linux.zip",
         "size": 797771531,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:51:47Z",
-        "updated_at": "2026-11-07T23:53:18Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722320003"
+        "created_at": "2026-11-08T21:03:47Z",
+        "updated_at": "2026-11-08T21:04:05Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725188350"
       },
       {
-        "id": 722319999,
+        "id": 725188353,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-macos.zip",
-        "size": 530013936,
+        "size": 529938220,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:51:47Z",
-        "updated_at": "2026-11-07T23:53:12Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722319999"
+        "created_at": "2026-11-08T21:03:47Z",
+        "updated_at": "2026-11-08T21:04:07Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725188353"
       },
       {
-        "id": 722321060,
+        "id": 725189019,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/rom_type_b-windows.zip",
         "size": 616282549,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:52:26Z",
-        "updated_at": "2026-11-07T23:53:09Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722321060"
+        "created_at": "2026-11-08T21:04:06Z",
+        "updated_at": "2026-11-08T21:04:18Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725189019"
       },
       {
         "id": 706424757,
@@ -5024,15 +5024,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706424757"
       },
       {
-        "id": 723639695,
+        "id": 725189057,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1615/stats.txt",
         "size": 2468,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:15Z",
-        "updated_at": "2026-11-08T10:46:15Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639695"
+        "created_at": "2026-11-08T21:04:07Z",
+        "updated_at": "2026-11-08T21:04:07Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725189057"
       }
     ]
   },
@@ -5040,7 +5040,7 @@
     "id": 432992629,
     "tag_name": "20260629-1610",
     "name": "Portable Flashing Package: Solar 20260629-1610 (adc9502)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-1610#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"af9ef666015d914fe4ccb68dea13946eed7bc93b55dcb2a2ff6de8713bd3f038\",\"size\":842227965,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"ec81c2b2b1500b1d0f9530f1760e4fdfaf7404d1336fcedd9f045a4b1c3b7f4f\",\"size\":574470365,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"8a1ddee6d0e9bb7e9cab028f04a2ea44aded1d8fa3d9eb25c9ac4c6283fd9066\",\"size\":660738983,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"edb0699ad3db53e175fbe051148ea4a5048e4ca933263fa512ba44ca241d27a4\",\"size\":794941206,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"8ba15fa0845f271091cbfeb85c0fd7e617d490423be296775e585f735209f3a4\",\"size\":527183612,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"56b35366a2cd2e4ab099f3e0339c2a2f0361c7f883752bfd7732f733b2534a99\",\"size\":613452224,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:48:00Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"c24ae3f3a4110a3e67e5c6fbe310d7cd608ed28dd813385eb36181dd729b9579\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":6,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":6,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":6},\"generated_at\":\"2026-11-07T23:48:00Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-1610#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- adc9502 Merge nightly: timestamp main release tags.\n- 027faf4 Use timestamp tags for main releases matching nightly builds.\n- baf4083 Bump stable version for next release.\n- 83eb519 Bump nightly version for next release.\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"dc3aff90244233884afb9924f7b2f72db1c28187fe0eac632f4ef935f2a42665\",\"size\":842227965,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"ceac03521a8ddc7ef3b1ae76fead930c6fb51b837acad16f33f6b49dd8271aad\",\"size\":574394649,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"f8a59bd6cca1c067964b11782b93dc2b30034151ffe5192635b20ca7cb02f956\",\"size\":660738983,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"b7c5fde4280bac17ed65884728000cb7ff14f0ce34e5dabc91e1b267a2d37e3d\",\"size\":794941206,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"587e5086eac42b0537eca8ffae8e6ace915be4f2a5d458e893f682a1bd84c1d4\",\"size\":527107896,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"45316c4d5eebe957b0a23e1932c98b3fcbcc62bd6b7b77fa4988f5133281c498\",\"size\":613452224,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T20:59:46Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"b8b0381e7fb9768d58dbefc1d47e5cc0e00841ba0130c5638913a4975173c7b0\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":7,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":7,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-08T20:59:46Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -5061,37 +5061,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706414505"
       },
       {
-        "id": 722313110,
+        "id": 725179101,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-linux.zip",
         "size": 842227965,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:48:04Z",
-        "updated_at": "2026-11-07T23:48:44Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722313110"
+        "created_at": "2026-11-08T20:59:50Z",
+        "updated_at": "2026-11-08T21:00:10Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725179101"
       },
       {
-        "id": 722313108,
+        "id": 725179099,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-macos.zip",
-        "size": 574470365,
+        "size": 574394649,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:48:04Z",
-        "updated_at": "2026-11-07T23:48:29Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722313108"
+        "created_at": "2026-11-08T20:59:50Z",
+        "updated_at": "2026-11-08T21:00:09Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725179099"
       },
       {
-        "id": 722313109,
+        "id": 725179100,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom-windows.zip",
         "size": 660738983,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:48:04Z",
-        "updated_at": "2026-11-07T23:48:31Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722313109"
+        "created_at": "2026-11-08T20:59:50Z",
+        "updated_at": "2026-11-08T21:00:13Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725179100"
       },
       {
         "id": 706414523,
@@ -5105,37 +5105,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706414523"
       },
       {
-        "id": 722313113,
+        "id": 725179103,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-linux.zip",
         "size": 794941206,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:48:04Z",
-        "updated_at": "2026-11-07T23:48:33Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722313113"
+        "created_at": "2026-11-08T20:59:50Z",
+        "updated_at": "2026-11-08T21:00:15Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725179103"
       },
       {
-        "id": 722313107,
+        "id": 725179102,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-macos.zip",
-        "size": 527183612,
+        "size": 527107896,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:48:04Z",
-        "updated_at": "2026-11-07T23:48:29Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722313107"
+        "created_at": "2026-11-08T20:59:50Z",
+        "updated_at": "2026-11-08T21:00:06Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725179102"
       },
       {
-        "id": 722313844,
+        "id": 725179819,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/rom_type_b-windows.zip",
         "size": 613452224,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:48:30Z",
-        "updated_at": "2026-11-07T23:48:52Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722313844"
+        "created_at": "2026-11-08T21:00:07Z",
+        "updated_at": "2026-11-08T21:00:25Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725179819"
       },
       {
         "id": 706414569,
@@ -5149,15 +5149,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706414569"
       },
       {
-        "id": 723639647,
+        "id": 725179973,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1610/stats.txt",
         "size": 2467,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:13Z",
-        "updated_at": "2026-11-08T10:46:13Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639647"
+        "created_at": "2026-11-08T21:00:10Z",
+        "updated_at": "2026-11-08T21:00:10Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725179973"
       }
     ]
   },
@@ -5165,7 +5165,7 @@
     "id": 432982664,
     "tag_name": "20260629-1444",
     "name": "Portable Flashing Package: Solar 20260629-1444 (d4880a6)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-1444#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Solar 0.6 (d4880a6) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n- 106051f Merge branch 'nightly' into main\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- 2d8a415 Bump stable version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"0f9abb9ab5f644f83be48e8a1d4eec853efccb409077e690dd9d4b0afaf2fa52\",\"size\":842225321,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"a665adbed6b380b3eae6ceedc557d715dc917880f4444def59dbb9e59efcca31\",\"size\":574467720,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"764839346407293933a6867562d7707b352516c5e2944f65325a2362712d9d68\",\"size\":660736339,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"b939b1149a26c1cac115c1c2197bfe0f92d6be2ca03358e36bfb2654513ae3e3\",\"size\":793777747,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"b846289b79a7ffe1f0be05813880660aa9da17f109ec42b71d47829bab69e49d\",\"size\":526020152,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"9b715dcf8ff355d94d9380c30565cd172a37f714212cbed4a239aed05374464d\",\"size\":612288765,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:44:15Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"1dfe2b998121e48c46e68df48ba647d26514093cbce3689abb8299ed78043c05\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":6,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":6,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":6},\"generated_at\":\"2026-11-07T23:44:15Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-1444#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Solar 0.6 (d4880a6) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- d4880a6 Merge branch 'nightly' into main\n- 6c0453f Match queue-style playlist reorder UX and fix Deezer playlist save.\n- f3909d7 Clarify local playlist creation in Library \u2192 Playlists.\n- b78f65f Bump stable version for next release.\n- 0b3ef24 Bump nightly version for next release.\n- b16a7fe Trigger nightly CI build after main merge.\n- 106051f Merge branch 'nightly' into main\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- 2d8a415 Bump stable version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"443bbd90425a6dbeec43660a51dc09fa7160a4e8203e43ae67586e9b5f637515\",\"size\":842225321,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"6cca9c4caeff899b2fb86ba4b035c137fb606372a198ed035f3fe5e241d63a14\",\"size\":574392004,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"cf1135675d73004349a80d6941448b37cb7b5d9a367f6455e3c19e21c808ae90\",\"size\":660736339,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"b9fe91f37b5fa137be01da56ac0222ea9809973c26e310e69ce3aad5c524aa87\",\"size\":793777747,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"d56d2edc02a6426aacb17295883a93e152f14cc48772597d02a6045d6851a455\",\"size\":525944436,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"72e947ae1b7c3fac57d64ee2210d562530a175f55649c2e2641d73957ba8d4a3\",\"size\":612288765,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T20:55:50Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"35b6ea042251ad0864d0f95e17f00473cdc1ad5533f015fb1aa2b1528b6bfa3a\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":7,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":7,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-08T20:55:50Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -5186,37 +5186,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706393517"
       },
       {
-        "id": 722304964,
+        "id": 725170460,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-linux.zip",
         "size": 842225321,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:44:19Z",
-        "updated_at": "2026-11-07T23:45:10Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722304964"
+        "created_at": "2026-11-08T20:55:55Z",
+        "updated_at": "2026-11-08T20:56:18Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725170460"
       },
       {
-        "id": 722304967,
+        "id": 725170469,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-macos.zip",
-        "size": 574467720,
+        "size": 574392004,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:44:19Z",
-        "updated_at": "2026-11-07T23:44:47Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722304967"
+        "created_at": "2026-11-08T20:55:55Z",
+        "updated_at": "2026-11-08T20:56:11Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725170469"
       },
       {
-        "id": 722304968,
+        "id": 725170462,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom-windows.zip",
         "size": 660736339,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:44:19Z",
-        "updated_at": "2026-11-07T23:44:46Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722304968"
+        "created_at": "2026-11-08T20:55:55Z",
+        "updated_at": "2026-11-08T20:56:13Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725170462"
       },
       {
         "id": 706393571,
@@ -5230,37 +5230,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706393571"
       },
       {
-        "id": 722304965,
+        "id": 725170471,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-linux.zip",
         "size": 793777747,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:44:19Z",
-        "updated_at": "2026-11-07T23:45:10Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722304965"
+        "created_at": "2026-11-08T20:55:55Z",
+        "updated_at": "2026-11-08T20:56:18Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725170471"
       },
       {
-        "id": 722304969,
+        "id": 725170463,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-macos.zip",
-        "size": 526020152,
+        "size": 525944436,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:44:19Z",
-        "updated_at": "2026-11-07T23:44:36Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722304969"
+        "created_at": "2026-11-08T20:55:55Z",
+        "updated_at": "2026-11-08T20:56:15Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725170463"
       },
       {
-        "id": 722305575,
+        "id": 725171107,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/rom_type_b-windows.zip",
         "size": 612288765,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:44:37Z",
-        "updated_at": "2026-11-07T23:45:01Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722305575"
+        "created_at": "2026-11-08T20:56:11Z",
+        "updated_at": "2026-11-08T20:56:27Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725171107"
       },
       {
         "id": 706393582,
@@ -5274,15 +5274,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706393582"
       },
       {
-        "id": 723639571,
+        "id": 725171212,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-1444/stats.txt",
         "size": 2467,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:11Z",
-        "updated_at": "2026-11-08T10:46:11Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639571"
+        "created_at": "2026-11-08T20:56:14Z",
+        "updated_at": "2026-11-08T20:56:14Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725171212"
       }
     ]
   },
@@ -5290,7 +5290,7 @@
     "id": 432978566,
     "tag_name": "20260629-0955",
     "name": "Portable Flashing Package: Solar 20260629-0955 (106051f)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-0955#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Solar 0.5 (106051f) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 106051f Merge branch 'nightly' into main\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- 2d8a415 Bump stable version for next release.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n- f14f0e3 Merge origin/nightly: integrate remote nightly version bump.\n- 119bbee Bump stable version for next release.\n- b618ab0 Merge origin/main: integrate remote stable version bump.\n- ca827ee Bump nightly version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"2ac936dfffab63ce2351b6370f2b504dec466bba0fd05bbb087678394f35e8dc\",\"size\":842222911,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"0c88b9c5892aabbdcdaeca119a2047ffbdde55844b73b965bcc5e4fff76db9a6\",\"size\":574465311,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"95343b36a8280bf7769afdf88e64572e4406bd25b66b47c441397d0e714769ff\",\"size\":660733929,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"195626029327409df8ee235c51d9643dbe1a06e760996faa0c6c311e36e03d99\",\"size\":794955121,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"b77468cd518950159bccd979a5cbedd768b72c70c291aab90ae029c6d4ae3a68\",\"size\":527197527,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"d6989a75b0c4b614770198c88253772b382c671fc952182d45841753095ec57f\",\"size\":613466139,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:40:33Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"02cad6e8374e8a7b8b929bf1deaa44cd77ee6f4cb3bfb5c980ddcbaeb6524f0a\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":6,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":6,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":6},\"generated_at\":\"2026-11-07T23:40:33Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-0955#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Solar 0.5 (106051f) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 106051f Merge branch 'nightly' into main\n- 19b3a51 Bump nightly version for next release.\n- 5e70de5 Add playlist picker, Deezer queue/fallback ARL, and fix home menu rebuild race.\n- 2d8a415 Bump stable version for next release.\n- b308ec3 Bump nightly version for next release.\n- 41a0b76 Bump nightly version for next release.\n- f14f0e3 Merge origin/nightly: integrate remote nightly version bump.\n- 119bbee Bump stable version for next release.\n- b618ab0 Merge origin/main: integrate remote stable version bump.\n- ca827ee Bump nightly version for next release.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"3ec5b923dfd7ab81394c5faa67710013003fb731aeb147d7919e0039f51028fd\",\"size\":842222911,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"4ef6a9bb51816a6e9866dab8ad5661c516edbc4b20fe3725098f5cf22ef1a2c9\",\"size\":574389595,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"7d817513d1f00b86dbaddd99fd04a81dbcc7a3964fc941b3efc4bc14086dd697\",\"size\":660733929,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"ddd024b7f833f9ac984baac1e500d2c437f044f1e754eee730b36506587f6c88\",\"size\":794955121,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"669a40748ade054288aae12b0d01ac39bc1b5a89410bcd780e61bb14f6e73278\",\"size\":527121811,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"4a39d3b04e3dcc19c93ce6a949c17f16e2da18cdb31de1d1c808f0232da1b265\",\"size\":613466139,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T20:51:54Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"c5aa4884bfd78a11b421f401ef9c6abe4904e5528011270981a6d0f8c2aa1ef2\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":7,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":7,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-08T20:51:54Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -5311,37 +5311,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706376082"
       },
       {
-        "id": 722297767,
+        "id": 725162624,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-linux.zip",
         "size": 842222911,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:40:37Z",
-        "updated_at": "2026-11-07T23:41:10Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722297767"
+        "created_at": "2026-11-08T20:51:59Z",
+        "updated_at": "2026-11-08T20:52:22Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725162624"
       },
       {
-        "id": 722297770,
+        "id": 725162632,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-macos.zip",
-        "size": 574465311,
+        "size": 574389595,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:40:37Z",
-        "updated_at": "2026-11-07T23:41:11Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722297770"
+        "created_at": "2026-11-08T20:51:59Z",
+        "updated_at": "2026-11-08T20:52:15Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725162632"
       },
       {
-        "id": 722297768,
+        "id": 725162626,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom-windows.zip",
         "size": 660733929,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:40:37Z",
-        "updated_at": "2026-11-07T23:41:05Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722297768"
+        "created_at": "2026-11-08T20:51:59Z",
+        "updated_at": "2026-11-08T20:52:20Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725162626"
       },
       {
         "id": 706376135,
@@ -5355,37 +5355,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706376135"
       },
       {
-        "id": 722297766,
+        "id": 725162629,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-linux.zip",
         "size": 794955121,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:40:37Z",
-        "updated_at": "2026-11-07T23:41:07Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722297766"
+        "created_at": "2026-11-08T20:51:59Z",
+        "updated_at": "2026-11-08T20:52:22Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725162629"
       },
       {
-        "id": 722297765,
+        "id": 725162630,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-macos.zip",
-        "size": 527197527,
+        "size": 527121811,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:40:37Z",
-        "updated_at": "2026-11-07T23:40:59Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722297765"
+        "created_at": "2026-11-08T20:51:59Z",
+        "updated_at": "2026-11-08T20:52:13Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725162630"
       },
       {
-        "id": 722298740,
+        "id": 725163061,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/rom_type_b-windows.zip",
         "size": 613466139,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:41:00Z",
-        "updated_at": "2026-11-07T23:41:26Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722298740"
+        "created_at": "2026-11-08T20:52:13Z",
+        "updated_at": "2026-11-08T20:52:32Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725163061"
       },
       {
         "id": 706376220,
@@ -5399,15 +5399,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706376220"
       },
       {
-        "id": 723639529,
+        "id": 725163135,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0955/stats.txt",
         "size": 2467,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:10Z",
-        "updated_at": "2026-11-08T10:46:10Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639529"
+        "created_at": "2026-11-08T20:52:16Z",
+        "updated_at": "2026-11-08T20:52:16Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725163135"
       }
     ]
   },
@@ -5415,7 +5415,7 @@
     "id": 432974426,
     "tag_name": "20260629-0057",
     "name": "Portable Flashing Package: Solar 20260629-0057 (119bbee)",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-0057#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Solar 0.4 (119bbee) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 119bbee Bump stable version for next release.\n- b618ab0 Merge origin/main: integrate remote stable version bump.\n- e50ff5b Bump stable version for next release.\n- 4acbf04 Merge main into nightly: align stable version bumps and repo cleanup.\n- ad966c9 Move chat room mode toggles into scrollable list headers; default status bar match off.\n- c72c963 Nightly: default Match Status Bar off and fix Reach wheel navigation.\n- 5d8f10b Nightly: Reach browse fixes, library perf, and Y1 input polish.\n- 9d462f8 Bump stable version for next release.\n- 0bd5aa2 Merge nightly: Y1 prev/next keymap and Rockbox first-boot disable.\n- 9ede623 Fix Y1 prev/next keymap and disable Rockbox on Solar ROM first boot.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"741e24a33df5d1ab67042d35ecced24d0169a0b2f97082086439160599f60af1\",\"size\":842250803,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"ad54456c86c55bd3feb52b83a9a5e25bb950dfddba61a62d4ab1910d73fe8ed9\",\"size\":574493203,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"df6252412047d169d78c3c48a5404da9f0344bcf542bcfa7414c1844b5c48652\",\"size\":660761821,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"d9ca729b1f1e8fb68a4ace5a55381276a3674c9779edc04b60b21189274cb574\",\"size\":794006191,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"df678e7d4b54fe3c57dc22a416ca43471e2d113a1e94ac7df95225258492ab69\",\"size\":526248597,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"7e740ab03c09a02c5f77bacdfef4400294ed6a42b54ff93f907d270e7495f77c\",\"size\":612517209,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-07T23:36:53Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"5a872b2cfb260ae071285c8efa592dabddbccb240e91cfbf0151dd083cad572f\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":6,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":6,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":6},\"generated_at\":\"2026-11-07T23:36:53Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119863064,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=thesolarproject%2Fsolar&amp;tag=20260629-0057#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n#### Y1 \u00b7 Type A\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type A - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type A - Intel + Apple silicon\"></a>\n</p>\n\n#### Y1 \u00b7 Type B\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y1 \u00b7 Type B - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/solar-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y1 \u00b7 Type B - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n# Solar 0.4 (119bbee) \u2014 stable\n\n> **Solar** is a custom firmware and launcher for the [Innioasis Y1](https://github.com/y1-community/InnioasisY1Themes) \u2014 a full interface replacement with podcast downloads, a global quick menu, **Reach** (Deezer + Soulseek), Y1 theme support, and **Rockbox-Y1** on the same ROM (switch without reboot).\n\n### Features\n\n- \ud83c\udfb5 **Reach** \u2014 search, play and download music from Deezer and Soulseek\n- \ud83c\udf99\ufe0f **Podcasts** \u2014 search and download episodes to your Y1 over the internet\n- \u26a1 **Quick menu** \u2014 global context menu for playback, queue, Wi\u2011Fi, Bluetooth, and more\n- \ud83c\udfa8 **Y1 themes** \u2014 install and apply themes from the original Y1 firmware\n- \ud83d\udd0a **Rockbox-Y1** \u2014 co-installed; switch launchers from Settings (no reboot)\n\n\n\n## Assets\n\n- `app-release.apk` \u2014 signed Solar launcher\n- `rom.zip` \u2014 Y1 type A firmware (2.0.0+, MT6572)\n- `rom_type_b.zip` \u2014 Y1 type B firmware (before 2.0.0, MT6572)\n\n## Recent commits\n\n- 119bbee Bump stable version for next release.\n- b618ab0 Merge origin/main: integrate remote stable version bump.\n- e50ff5b Bump stable version for next release.\n- 4acbf04 Merge main into nightly: align stable version bumps and repo cleanup.\n- ad966c9 Move chat room mode toggles into scrollable list headers; default status bar match off.\n- c72c963 Nightly: default Match Status Bar off and fix Reach wheel navigation.\n- 5d8f10b Nightly: Reach browse fixes, library perf, and Y1 input polish.\n- 9d462f8 Bump stable version for next release.\n- 0bd5aa2 Merge nightly: Y1 prev/next keymap and Rockbox first-boot disable.\n- 9ede623 Fix Y1 prev/next keymap and disable Rockbox on Solar ROM first boot.\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y1\",\"name\":\"rom-linux.zip\",\"platform\":\"linux\",\"sha256\":\"051d41e8caf5d1c7c953593144eb32de8cb947dc0d5c44ba6045bc7cabded78e\",\"size\":842250803,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-macos.zip\",\"platform\":\"macos\",\"sha256\":\"27bbe18c291731bea9b43db6a2ca1127d0c36ed4a512a95b4a64be78a47b049d\",\"size\":574417487,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom-windows.zip\",\"platform\":\"windows\",\"sha256\":\"f6bd2acee40edb138f4afe336fcf4064f7bb696cccbb13637fd3d6ecfa7dfd2e\",\"size\":660761821,\"source_asset\":\"rom.zip\",\"type\":\"Type A\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-linux.zip\",\"platform\":\"linux\",\"sha256\":\"ab607a39404df221194e445cff88df5341c8159b14e16cd6cfe565a43a28d167\",\"size\":794006191,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-macos.zip\",\"platform\":\"macos\",\"sha256\":\"4557f07b5a08ba6fab39249bbac11ad37bf260e6b3b45870124d125b8c692937\",\"size\":526172881,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"},{\"model\":\"Y1\",\"name\":\"rom_type_b-windows.zip\",\"platform\":\"windows\",\"sha256\":\"cb41ee18407bf8bcae734f3e65a2ed2d9072ca9877935ffc09d577943426383a\",\"size\":612517209,\"source_asset\":\"rom_type_b.zip\",\"type\":\"Type B\"}],\"built_at\":\"2026-11-08T20:48:00Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"69c6d6bd4c4441d665531a514a39790bd33b47547a7a938e902de88e46487efe\",\"original_assets\":[\"app-release.apk\",\"rom.zip\",\"rom_type_b.zip\"],\"skipped\":[],\"stats\":{\"baseline\":{\"app-release.apk\":7,\"rom-linux.zip\":3,\"rom-macos.zip\":3,\"rom-windows.zip\":3,\"rom.zip\":7,\"rom_type_b-linux.zip\":3,\"rom_type_b-macos.zip\":3,\"rom_type_b-windows.zip\":3,\"rom_type_b.zip\":7},\"generated_at\":\"2026-11-08T20:48:00Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-03T15:37:26Z",
@@ -5436,37 +5436,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706363959"
       },
       {
-        "id": 722289501,
+        "id": 725152812,
         "name": "rom-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-linux.zip",
         "size": 842250803,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:36:57Z",
-        "updated_at": "2026-11-07T23:37:35Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722289501"
+        "created_at": "2026-11-08T20:48:04Z",
+        "updated_at": "2026-11-08T20:48:32Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725152812"
       },
       {
-        "id": 722289503,
+        "id": 725152805,
         "name": "rom-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-macos.zip",
-        "size": 574493203,
+        "size": 574417487,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:36:57Z",
-        "updated_at": "2026-11-07T23:37:20Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722289503"
+        "created_at": "2026-11-08T20:48:04Z",
+        "updated_at": "2026-11-08T20:48:18Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725152805"
       },
       {
-        "id": 722289502,
+        "id": 725152806,
         "name": "rom-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom-windows.zip",
         "size": 660761821,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:36:57Z",
-        "updated_at": "2026-11-07T23:37:24Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722289502"
+        "created_at": "2026-11-08T20:48:04Z",
+        "updated_at": "2026-11-08T20:48:24Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725152806"
       },
       {
         "id": 706363992,
@@ -5480,37 +5480,37 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706363992"
       },
       {
-        "id": 722289498,
+        "id": 725152802,
         "name": "rom_type_b-linux.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-linux.zip",
         "size": 794006191,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:36:57Z",
-        "updated_at": "2026-11-07T23:37:32Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722289498"
+        "created_at": "2026-11-08T20:48:04Z",
+        "updated_at": "2026-11-08T20:48:33Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725152802"
       },
       {
-        "id": 722289497,
+        "id": 725152804,
         "name": "rom_type_b-macos.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-macos.zip",
-        "size": 526248597,
+        "size": 526172881,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:36:57Z",
-        "updated_at": "2026-11-07T23:37:21Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722289497"
+        "created_at": "2026-11-08T20:48:04Z",
+        "updated_at": "2026-11-08T20:48:23Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725152804"
       },
       {
-        "id": 722290249,
+        "id": 725153354,
         "name": "rom_type_b-windows.zip",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/rom_type_b-windows.zip",
         "size": 612517209,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-07T23:37:21Z",
-        "updated_at": "2026-11-07T23:37:44Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/722290249"
+        "created_at": "2026-11-08T20:48:18Z",
+        "updated_at": "2026-11-08T20:48:38Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725153354"
       },
       {
         "id": 706364011,
@@ -5524,15 +5524,15 @@
         "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/706364011"
       },
       {
-        "id": 723639485,
+        "id": 725153668,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/solar-mirror/releases/download/20260629-0057/stats.txt",
         "size": 2467,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T10:46:08Z",
-        "updated_at": "2026-11-08T10:46:08Z",
-        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/723639485"
+        "created_at": "2026-11-08T20:48:24Z",
+        "updated_at": "2026-11-08T20:48:24Z",
+        "url": "https://api.github.com/repos/y1-community/solar-mirror/releases/assets/725153668"
       }
     ]
   },
