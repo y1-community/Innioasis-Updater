@@ -1337,35 +1337,15 @@
            attribute cannot rename a cross-origin response, so when the
            same-origin proxy is available the bytes are streamed with real
            progress, then written to Downloads under the release's name. */
-        /* The proxy answers with Content-Disposition: filename="rom.zip", so
-           pointing the browser at it streams the bundle straight to disk under
-           the release's own name. Buffering it into a Blob first held the whole
-           500-600 MB file in memory and only prompted once it had all arrived. */
-        async function streamDownload(href, saveName, osLabel) {
-            startDirectDownload(href, saveName, osLabel);
-        }
-
         try {
             var portableZip = await resolvePortableZip(portableZips, releaseTag, zipName);
             var chosenUrl = portableZip ? portableZip.url : zipUrl;
             var chosenPlatform = portableZip ? portableZip.platform : "";
-            var href = chosenUrl;
-            if (portableZip) {
-                href = portableZip.proxied ? downloadHref(chosenUrl, zipName) : chosenUrl;
-            } else {
-                /* No portable build for this system, so the release's own
-                   asset is the download. The proxy still lets it save under
-                   the release's name when it is deployed. */
-                href = await proxyHrefIfUsable(zipUrl, zipName);
-            }
-            if (href !== chosenUrl) {
-                try {
-                    await streamDownload(href, zipName, osLabelFor(chosenPlatform));
-                    return;
-                } catch (streamError) {
-                    console.warn("Streaming download failed, using the browser download instead:", streamError);
-                }
-            }
+            /* Route through the proxy only when it answers for this asset. If
+               it is missing or broken, fall back to the release URL itself:
+               reusing the dead proxy link would leave the reader with an error
+               page instead of a download. */
+            var href = await proxyHrefIfUsable(chosenUrl, zipName);
             if (portableZip && label) label.textContent = "Starting portable package download…";
             startDirectDownload(href, zipName, osLabelFor(chosenPlatform));
         } catch (err) {
