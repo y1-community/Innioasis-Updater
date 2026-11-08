@@ -1629,7 +1629,7 @@
         es: { prompt: "Esta página también está disponible en español.", switchBtn: "Cambiar a español" },
         it: { prompt: "Questa pagina è disponibile anche in italiano.", switchBtn: "Passa all'italiano" },
         ja: { prompt: "このページは日本語でもご覧いただけます。", switchBtn: "日本語に切り替える" },
-        ko: { prompt: "이ページ는 한국어로도 제공됩니다.", switchBtn: "한국어로 전환" },
+        ko: { prompt: "이 페이지는 한국어로도 제공됩니다.", switchBtn: "한국어로 전환" },
         zh: { prompt: "此页面也提供中文版本。", switchBtn: "切换至中文" },
         "zh-cn": { prompt: "此页面也提供简体中文版本。", switchBtn: "切换至中文" },
         "zh-tw": { prompt: "此頁面亦提供繁體中文版本。", switchBtn: "切換至繁體中文" },
