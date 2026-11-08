@@ -394,8 +394,8 @@
     </header>
 
     <section class="lumen-guide-section" id="donate" style="margin-top: 24px;" data-donations-appeal>
-      <div class="y1-contributor-stream-box" id="unified-donors-feed" style="min-height: 78px; padding: 16px 18px; max-width: 620px; margin-bottom: 16px;" aria-live="polite">
-        <div class="y1-contributor-stream-line" id="unified-contributor-line">Loading supporters...</div>
+      <div class="y1-contributor-stream-box" id="unified-donors-feed" style="min-height: 78px; padding: 16px 18px; max-width: 620px; margin-bottom: 16px;" aria-live="polite" data-i18n-skip="true" translate="no">
+        <div class="y1-contributor-stream-line" id="unified-contributor-line" data-i18n-skip="true" translate="no">Loading supporters...</div>
       </div>
 
       <div class="y1-developer-profile-wrap" style="margin: 4px 0 10px; display: flex; align-items: center; gap: 14px;">
@@ -474,7 +474,7 @@
               <th>Date</th>
             </tr>
           </thead>
-          <tbody id="donations-table-body">
+          <tbody id="donations-table-body" data-i18n-skip="true" translate="no">
             <tr>
               <td colspan="3" style="text-align: center; color: var(--lumen-muted);">Loading ledger...</td>
             </tr>
@@ -487,7 +487,7 @@
         <div class="donations-table-wrap">
           <table class="donations-table" aria-label="Innioasis commercial sponsorship ledger">
             <thead><tr><th>Contribution</th><th>Date</th></tr></thead>
-            <tbody id="corporate-sponsorship-body"><tr><td colspan="2" style="text-align: center; color: var(--lumen-muted);">Loading sponsorship ledger...</td></tr></tbody>
+            <tbody id="corporate-sponsorship-body" data-i18n-skip="true" translate="no"><tr><td colspan="2" style="text-align: center; color: var(--lumen-muted);">Loading sponsorship ledger...</td></tr></tbody>
           </table>
         </div>
       </div>
@@ -544,6 +544,22 @@
   <script>
 
   (function () {
+    function _interpolate(str, params) {
+      if (!str || !params) return str;
+      return String(str).replace(/\{([A-Za-z0-9_]+)\}/g, function (match, key) {
+        return Object.prototype.hasOwnProperty.call(params, key) ? params[key] : match;
+      });
+    }
+
+    function _t(str, params) {
+      if (!str) return "";
+      var res = str;
+      if (window.InnioasisLocale && typeof window.InnioasisLocale.translate === "function") {
+        var tr = window.InnioasisLocale.translate(str);
+        if (tr !== undefined && tr !== null && tr !== "") res = tr;
+      }
+      return params ? _interpolate(res, params) : res;
+    }
     var RU_TIMEZONES = {
       "europe/moscow": true,
       "europe/kaliningrad": true,
@@ -710,10 +726,22 @@
     function getRel(dt) {
       if (!dt) return "";
       var d = Math.floor((new Date() - dt) / 86400000);
-      if (d <= 0) return "today"; if (d === 1) return "yesterday"; if (d < 7) return d + " days ago";
-      if (d < 14) return "1 week ago"; if (d < 30) return Math.floor(d/7) + " weeks ago";
-      if (d < 60) return "1 month ago"; if (d < 365) return Math.floor(d/30) + " months ago";
-      if (d < 730) return "1 year ago"; return Math.floor(d/365) + " years ago";
+      if (d <= 0) return _t("today");
+      if (d === 1) return _t("yesterday");
+      if (d < 7) return d === 1 ? _t("1 day ago") : _t("{count} days ago", { count: d });
+      if (d < 14) return _t("1 week ago");
+      if (d < 30) {
+        var w = Math.floor(d / 7);
+        return w === 1 ? _t("1 week ago") : _t("{count} weeks ago", { count: w });
+      }
+      if (d < 60) return _t("1 month ago");
+      if (d < 365) {
+        var m = Math.floor(d / 30);
+        return m === 1 ? _t("1 month ago") : _t("{count} months ago", { count: m });
+      }
+      if (d < 730) return _t("1 year ago");
+      var y = Math.floor(d / 365);
+      return y === 1 ? _t("1 year ago") : _t("{count} years ago", { count: y });
     }
 
     function parseCSV(text) {
@@ -1418,16 +1446,31 @@
 
     function fundingGoalText(goal, withEncouragement) {
       if (goal && goal.covered) {
-        var metWords = { monthly: "This month's", weekly: "This week's", daily: "Today's" };
+        var metWords = {
+          monthly: _t("This month's costs are covered - thank you!"),
+          weekly: _t("This week's costs are covered - thank you!"),
+          daily: _t("Today's costs are covered - thank you!")
+        };
         var metLabel = metWords[goal.metScope];
-        if (metLabel) return metLabel + " costs are covered - thank you!";
+        if (metLabel) return metLabel;
       }
       if (!goal || !goal.scope) {
-        return "We rely on your donations to keep running. Donate now";
+        return _t("We rely on your donations to keep running. Donate now");
       }
-      var text = "You've helped us raise " + goal.symbol + moneyLabel(goal.raised) +
-        " of our " + goal.symbol + moneyLabel(goal.target) + " costs " + (goal.periodSuffix || ("for this " + goal.periodWord)) + ".";
-      return withEncouragement ? text + " All donations are appreciated." : text;
+      var periodSuffix = goal.periodSuffix ? _t(goal.periodSuffix) : (_t("for this ") + _t(goal.periodWord));
+      var raisedStr = goal.symbol + moneyLabel(goal.raised);
+      var targetStr = goal.symbol + moneyLabel(goal.target);
+      return withEncouragement
+        ? _t("You've helped us raise {raised} of our {target} costs {period}. All donations are appreciated.", {
+            raised: raisedStr,
+            target: targetStr,
+            period: periodSuffix
+          })
+        : _t("You've helped us raise {raised} of our {target} costs {period}.", {
+            raised: raisedStr,
+            target: targetStr,
+            period: periodSuffix
+          });
     }
 
     function renderCreditsPage(donations) {
@@ -1495,7 +1538,10 @@
           var tUrl = lastItem.url || METHOD_URLS[(lastItem.method || "").toLowerCase()] || "https://innioasis.app";
           var sH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + lastItem.name + '</a>';
           var totH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + totStr + '</a>';
-          donorItems.push(contributorLabel(lastItem.name, true) + " " + sH + " donated " + totH);
+          donorItems.push(_t("{supporter} donated {amount}", {
+            supporter: contributorLabel(lastItem.name, true) + " " + sH,
+            amount: totH
+          }));
         });
 
         donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
@@ -1515,20 +1561,35 @@
             return;
           }
 
-          var sH = isAn ? "<strong>A supporter</strong>" : '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawN + '</strong></a>';
+          var sH = isAn ? "<strong>" + _t("A supporter") + "</strong>" : '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawN + '</strong></a>';
 
           var aH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + aStr + '</strong></a>';
           var mH = '<a href="' + mUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + item.method + '</strong></a>';
 
           if (mL === "honeygain") {
-            donorItems.push(sH + ' contributed ' + aH + ' for free by sharing 100MB on <a href="' + METHOD_URLS["honeygain"] + '" target="_blank" rel="noopener noreferrer">Honeygain</a>' + tP);
+            donorItems.push(_t("{supporter} contributed {amount} for free by sharing 100MB on Honeygain{time}", {
+              supporter: sH,
+              amount: aH,
+              time: tP
+            }));
           } else if (cKind) {
             var coffees = Math.max(1, Math.round(absVal));
-            var cWord = (coffees === 1 ? "a coffee" : coffees + " coffees") + (cKind === "kofi" ? " on Ko-Fi" : "");
+            var cWord = (coffees === 1)
+              ? (cKind === "kofi" ? _t("a coffee on Ko-Fi") : _t("a coffee"))
+              : (cKind === "kofi" ? _t("{count} coffees on Ko-Fi", { count: coffees }) : _t("{count} coffees", { count: coffees }));
             var cHTML = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + cWord + '</strong></a>';
-            donorItems.push(sH + " bought us " + cHTML + tP);
+            donorItems.push(_t("{supporter} bought us {coffees}{time}", {
+              supporter: sH,
+              coffees: cHTML,
+              time: tP
+            }));
           } else {
-            donorItems.push(sH + " donated " + aH + " by " + mH + tP);
+            donorItems.push(_t("{supporter} donated {amount} by {method}{time}", {
+              supporter: sH,
+              amount: aH,
+              method: mH,
+              time: tP
+            }));
           }
         });
 
@@ -1968,6 +2029,7 @@
         .then(function (txt) {
           var data = parseCSV(txt);
           if (data && data.length > 0) {
+            window._lastCreditsDonations = data;
             renderCreditsPage(data);
             try { localStorage.setItem(DONORS_URL_KEY, new URL(u, window.location.href).href); } catch (_) {}
           }
@@ -1978,6 +2040,14 @@
         });
     }
     tryFetch();
+
+    ["site-locale-ready", "site-locale-change", "y1-locale-change"].forEach(function (evName) {
+      window.addEventListener(evName, function () {
+        if (window._lastCreditsDonations && window._lastCreditsDonations.length) {
+          renderCreditsPage(window._lastCreditsDonations);
+        }
+      });
+    });
   })();
   
 </script>

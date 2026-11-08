@@ -366,6 +366,29 @@
     display: block !important;
     color: #ff5e5b !important;
   }
+  .site-locale-throbber {
+    display: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    border-top-color: transparent;
+    box-sizing: border-box;
+    animation: site-locale-spin 0.8s linear infinite;
+    margin-inline-start: 4px;
+    vertical-align: middle;
+    flex: none;
+  }
+  [data-locale-open].is-translating .site-locale-throbber,
+  .site-locale-dock-btn.is-translating .site-locale-throbber {
+    display: inline-block !important;
+  }
+  @keyframes site-locale-spin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-locale-throbber { animation: none; opacity: .6; }
+  }
 </style>
 <div id="support-toolbar-container">
   <div class="y1-dock-backdrop" data-dock-backdrop hidden></div>
@@ -384,7 +407,7 @@
         <button class="y1-donate-close" type="button" data-donate-close aria-label="Close donation options" style="position: static; flex-shrink: 0; margin-left: 8px;">×</button>
       </div>
 
-      <p class="y1-donate-panel-intro" id="y1-donate-panel-intro">Hi, I'm Ryan. I build Innioasis Updater CE, this firmware archive, and the Themes Gallery. I pay for them myself so they stay free for everyone.</p>
+      <p class="y1-donate-panel-intro" id="y1-donate-panel-intro" data-i18n-skip="true" translate="no">Hi, I'm Ryan. I build Innioasis Updater CE, this firmware archive, and the Themes Gallery. I pay for them myself so they stay free for everyone.</p>
 
       <div class="y1-donate-grid">
         <a class="y1-donate-btn y1-donate-btn--kofi" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer">
@@ -442,6 +465,13 @@
 
 
 
+      <div style="margin: 14px 0 6px; text-align: center;">
+        <button type="button" class="y1-donate-btn y1-donate-supporters-btn" data-toolbar-thank-you-open style="width: 100%; justify-content: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.9rem; font-weight: 600; padding: 9px 12px; border-radius: 8px; cursor: pointer; color: inherit; display: inline-flex; align-items: center; gap: 8px;">
+          <span>❤️</span>
+          <span>Thank you to our Supporters</span>
+        </button>
+      </div>
+
       <label class="y1-donate-optout"><input type="checkbox" data-donations-optout><span>Don't show donation appeals again</span></label>
       <p class="y1-donate-smallprint" style="margin-top: 14px;">Support Updater and the Themes Gallery through Ko-fi, Buy Me a Coffee, PayPal, Revolut, or Patreon. <a href="credits.html" style="color: inherit; text-decoration: underline;">View our full public donor ledger &amp; money raised →</a></p>
     </div>
@@ -485,16 +515,12 @@
         <span class="y1-dock-sep" aria-hidden="true">·</span>
         <a class="y1-dock-link" href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C.53 9.05-.32 13.58.1 18.06c0 .02.01.04.03.05a19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.11 13 13 0 0 1-1.86-.89.08.08 0 0 1-.01-.13c.12-.09.25-.19.36-.29a.07.07 0 0 1 .08-.01c3.9 1.8 8.13 1.8 11.99 0a.07.07 0 0 1 .08.01c.12.1.24.2.37.29a.08.08 0 0 1 0 .13 12.5 12.5 0 0 1-1.87.88.08.08 0 0 0-.04.12c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.68-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42z"/></svg>Discord</a>
         <span class="y1-dock-sep" aria-hidden="true" data-donations-appeal>·</span>
-        <button class="y1-dock-link site-locale-dock-btn" type="button" data-locale-open aria-haspopup="dialog" aria-controls="site-locale-panel" title="Language"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg><span class="site-locale-toggle-label">Language</span></button>
-        <span class="y1-dock-sep" aria-hidden="true">·</span>
         <button class="y1-dock-link y1-donate-trigger" type="button" data-donate-open aria-expanded="false" aria-controls="y1-donate-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Donate</button>
         <span class="y1-dock-sep" aria-hidden="true" data-donations-appeal>·</span>
         <button class="y1-dock-link y1-privacy-trigger" type="button" data-privacy-open aria-expanded="false" aria-controls="y1-privacy-panel"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Privacy</button>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
-        <button class="y1-dock-link y1-thank-you-trigger" type="button" data-toolbar-thank-you-open aria-expanded="false" aria-controls="y1-toolbar-thank-you-overlay">Thank You</button>
+        <button class="y1-dock-link site-locale-dock-btn" type="button" data-locale-open aria-haspopup="dialog" aria-controls="site-locale-panel" title="Language"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg><span class="site-locale-toggle-label">Language</span><span class="site-locale-throbber" aria-hidden="true"></span></button>
         <span class="y1-dock-sep" aria-hidden="true">·</span>
-                <span class="y1-dock-sep" aria-hidden="true">·</span>
-        <button class="y1-dock-link y1-lang-trigger" type="button" data-lang-open aria-expanded="false" aria-controls="y1-lang-panel" title="Switch language" aria-label="Switch language"><svg class="y1-dock-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12.87 15.07l-2.54-2.51.03-.08c1.74-1.94 2.98-4.17 3.71-6.48H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span class="y1-lang-current-label">Language</span></button>
         <span class="y1-font-control" role="group" aria-label="Adjust text size">
           <button class="y1-dock-link y1-font-btn y1-font-btn--small" type="button" data-font-down aria-label="Smaller text">A−</button>
           <button class="y1-dock-link y1-font-btn y1-font-btn--reset" type="button" data-font-reset aria-label="Reset text size">A</button>
@@ -506,14 +532,14 @@
       </div>
       <div class="y1-dock-secondary-line" id="y1-dock-secondary-line" aria-label="Running costs and community contributions - click to support" role="button" tabindex="0">
         <div class="y1-dock-secondary-goal-view" id="y1-dock-secondary-goal-view">
-          <span class="y1-dock-secondary-text" id="y1-dock-secondary-text">
+          <span class="y1-dock-secondary-text" id="y1-dock-secondary-text" data-i18n-skip="true" translate="no">
             <span class="y1-dock-text-desktop">You've helped us raise $0 of our $10 costs for today.</span>
             <span class="y1-dock-text-mobile">You've helped us raise $0 of our $10 costs for today.</span>
           </span>
           <div class="y1-dock-secondary-bar-wrap" id="y1-dock-secondary-bar-wrap" aria-hidden="true"><div class="y1-dock-secondary-bar-fill" id="y1-dock-secondary-bar-fill"></div></div>
         </div>
         <div class="y1-dock-secondary-ticker-view" id="y1-dock-secondary-ticker-view" hidden>
-          <span class="y1-dock-secondary-ticker" id="y1-dock-secondary-ticker-text">Loading supporters...</span>
+          <span class="y1-dock-secondary-ticker" id="y1-dock-secondary-ticker-text" data-i18n-skip="true" translate="no">Loading supporters...</span>
         </div>
       </div>
       <div class="y1-dock-goal-layer is-goal-view" id="y1-dock-goal-layer" aria-hidden="true" hidden tabindex="-1">
@@ -522,10 +548,10 @@
           <div class="y1-dock-goal-bar-wrap" aria-hidden="true">
             <div class="y1-dock-goal-bar-fill" id="y1-dock-idle-bar-fill"></div>
           </div>
-          <span class="y1-dock-goal-text" id="y1-dock-idle-goal-text">You've helped us raise $0 of our $10 costs for today.</span>
+          <span class="y1-dock-goal-text" id="y1-dock-idle-goal-text" data-i18n-skip="true" translate="no">You've helped us raise $0 of our $10 costs for today.</span>
         </div>
         <div class="y1-dock-idle-ticker-view" id="y1-dock-idle-ticker-view" aria-live="polite" hidden>
-          <span class="y1-dock-idle-ticker" id="y1-dock-idle-ticker-text">Loading...</span>
+          <span class="y1-dock-idle-ticker" id="y1-dock-idle-ticker-text" data-i18n-skip="true" translate="no">Loading...</span>
         </div>
       </div>
     </nav>
@@ -535,7 +561,7 @@
       <p class="y1-toolbar-thank-you-eyebrow"><a href="credits.html" style="color: inherit; text-decoration: underline;">Innioasis Updater CE · Credits</a></p>
       <h2 id="y1-toolbar-thank-you-title">Thank you.</h2>
       <p class="y1-toolbar-thank-you-subtitle">This project is here because people chose to help. Thank you for keeping the archive, the tools, and the community moving.</p>
-      <div class="y1-toolbar-thank-you-names" id="y1-toolbar-thank-you-names" aria-live="polite"><p>Loading supporters…</p></div>
+      <div class="y1-toolbar-thank-you-names" id="y1-toolbar-thank-you-names" aria-live="polite" data-i18n-skip="true" translate="no"><p>Loading supporters…</p></div>
       <p class="y1-toolbar-thank-you-footer">Every contribution, big or small, matters.</p>
       <div style="display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap;">
         <a href="credits.html" class="y1-toolbar-thank-you-close" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; background: #10b981; color: #03140d; border-color: #10b981;">Full Credits &amp; Ledger →</a>
@@ -548,6 +574,24 @@
 
 (function () {
   "use strict"; 
+
+  function _interpolate(str, params) {
+    if (!str || !params) return str;
+    return String(str).replace(/\{([A-Za-z0-9_]+)\}/g, function (match, key) {
+      return Object.prototype.hasOwnProperty.call(params, key) ? params[key] : match;
+    });
+  }
+
+  function _t(str, params) {
+    if (!str) return "";
+    var res = str;
+    if (window.InnioasisLocale && typeof window.InnioasisLocale.translate === "function") {
+      var tr = window.InnioasisLocale.translate(str);
+      if (tr !== undefined && tr !== null && tr !== "") res = tr;
+    }
+    return params ? _interpolate(res, params) : res;
+  }
+
   var consent = window.INNIOASIS_PRIVACY;
 
   function donationsOff() {
@@ -861,7 +905,7 @@
   var privacyStatus = document.querySelector("[data-privacy-status]");
   var cryptoToggle = document.querySelector("[data-crypto-toggle]");
   var cryptoGrid = document.getElementById("y1-crypto-panel");
-  var thankYouOpen = document.querySelector("[data-toolbar-thank-you-open]");
+  var thankYouTriggers = Array.from(document.querySelectorAll("[data-toolbar-thank-you-open]"));
   var thankYouClose = document.querySelector("[data-toolbar-thank-you-close]");
   var thankYouOverlay = document.getElementById("y1-toolbar-thank-you-overlay");
   var thankYouNames = document.getElementById("y1-toolbar-thank-you-names");
@@ -878,7 +922,7 @@
   function toolbarThankYouAmount(entry) {
     if (entry.amountLabel) return entry.amountLabel;
     var amount = "$" + (entry.total % 1 === 0 ? entry.total.toFixed(0) : entry.total.toFixed(2));
-    return amount + (entry.count > 1 ? " · " + entry.count + " contributions" : "");
+    return amount + (entry.count > 1 ? " · " + entry.count + " " + _t("contributions") : "");
   }
 
   function renderToolbarThankYouPage(pageIndex) {
@@ -893,7 +937,7 @@
     thankYouNames.innerHTML = "";
     var pageEntries = thankYouEntries.slice(thankYouPageIndex * slots, (thankYouPageIndex + 1) * slots);
     if (!pageEntries.length) {
-      thankYouNames.innerHTML = "<p>Waiting for supporters to appear.</p>";
+      thankYouNames.innerHTML = "<p>" + _t("Waiting for supporters to appear.") + "</p>";
     } else {
       pageEntries.forEach(function (entry) {
         var item = document.createElement("div");
@@ -974,20 +1018,24 @@
     if (thankYouOverlay) thankYouOverlay.hidden = true;
     setToolbarThankYouControlsHidden(false);
     document.body.classList.remove("y1-toolbar-thank-you-open");
-    if (thankYouOpen) {
-      thankYouOpen.setAttribute("aria-expanded", "false");
-      thankYouOpen.focus();
-    }
+    thankYouTriggers.forEach(function (trigger) {
+      trigger.setAttribute("aria-expanded", "false");
+    });
   }
 
-  if (thankYouOpen && thankYouOverlay) {
-    thankYouOpen.addEventListener("click", function () {
-      setToolbarThankYouControlsHidden(false);
-      thankYouOverlay.hidden = false;
-      document.body.classList.add("y1-toolbar-thank-you-open");
-      thankYouOpen.setAttribute("aria-expanded", "true");
-      startToolbarThankYouCycle();
-      if (thankYouClose) thankYouClose.focus();
+  if (thankYouTriggers.length && thankYouOverlay) {
+    thankYouTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        if (typeof closeDonatePanel === "function") {
+          closeDonatePanel();
+        }
+        setToolbarThankYouControlsHidden(false);
+        thankYouOverlay.hidden = false;
+        document.body.classList.add("y1-toolbar-thank-you-open");
+        trigger.setAttribute("aria-expanded", "true");
+        startToolbarThankYouCycle();
+        if (thankYouClose) thankYouClose.focus();
+      });
     });
     if (thankYouClose) thankYouClose.addEventListener("click", closeToolbarThankYou);
     document.addEventListener("keydown", function (event) {
@@ -1036,33 +1084,43 @@
   }
 
   var GENERAL_APPEAL_POOL = [
-    "<b>Donations directly help me support my family and fund the test devices</b> that make this free service possible for everyone. If this tool saved you time or rescued your player today, please consider a small donation, it truly means the world to us.",
-    "<b>The servers behind the downloads are paid for out of pocket.</b> A coffee keeps them online for the next owner.",
-    "<b>Every release here is built in evenings and weekends.</b> A small donation buys more of that time.",
-    "<b>Solely self- and donations-funded, with no paid tier.</b> Mostly paid for out of pocket, with help from people this helped.",
-    "<b>Donations buy the test players and cables</b> used to check each release before anyone installs it.",
-    "<b>Thousands of downloads go out every month.</b> Donations pay for the servers that deliver them.",
-    "<b>Donations pay the running costs of Updater CE, the Themes Gallery and the community firmware archive.</b> Whatever you can add helps.",
-    "<b>A few dollars goes a long way here:</b> it covers hundreds of downloads.",
-    "<b>Bugs get fixed because someone stayed up testing your exact model.</b> A donation keeps that going.",
-    "<b>No company behind this, just one developer, a workbench and a donation page.</b> Everything goes to running costs.",
-    "<b>The tools, the guides and the archive are all free.</b> A tip funds the next feature.",
-    "<b>If this worked for you, pass the kindness on.</b> It keeps the project free for whoever comes next.",
-    "<b>Some of the players this supports were written off as broken.</b> A donation keeps the rescue service running.",
-    "<b>No subscription, no deadline, just a page like this one.</b> Give only if it helped.",
-    "<b>One person answers the questions, writes the guides and pays the bills.</b> Donations make that sustainable.",
-    "<b>Files vanish when a hosting company shuts down.</b> Donations keep the copies that rescued your player online.",
-    "<b>One coffee roughly covers the cost of a download.</b> It keeps the next fix within reach."
+    "Donations directly help me support my family and fund the test devices that make this free service possible for everyone. If this tool saved you time or rescued your player today, please consider a small donation, it truly means the world to us.",
+    "The servers behind the downloads are paid for out of pocket. A coffee keeps them online for the next owner.",
+    "Every release here is built in evenings and weekends. A small donation buys more of that time.",
+    "Solely self- and donations-funded, with no paid tier. Mostly paid for out of pocket, with help from people this helped.",
+    "Donations buy the test players and cables used to check each release before anyone installs it.",
+    "Thousands of downloads go out every month. Donations pay for the servers that deliver them.",
+    "Donations pay the running costs of Updater CE, the Themes Gallery and the community firmware archive. Whatever you can add helps.",
+    "A few dollars goes a long way here: it covers hundreds of downloads.",
+    "Bugs get fixed because someone stayed up testing your exact model. A donation keeps that going.",
+    "No company behind this, just one developer, a workbench and a donation page. Everything goes to running costs.",
+    "The tools, the guides and the archive are all free. A tip funds the next feature.",
+    "If this worked for you, pass the kindness on. It keeps the project free for whoever comes next.",
+    "Some of the players this supports were written off as broken. A donation keeps the rescue service running.",
+    "No subscription, no deadline, just a page like this one. Give only if it helped.",
+    "One person answers the questions, writes the guides and pays the bills. Donations make that sustainable.",
+    "Files vanish when a hosting company shuts down. Donations keep the copies that rescued your player online.",
+    "One coffee roughly covers the cost of a download. It keeps the next fix within reach."
   ];
 
   var FAMILY_APPEAL_POOL = [
-    "<b>Ryan and his partner are expecting a baby.</b> Donations towards the project's running costs and our new family are massively appreciated.",
-    "<b>There's a new arrival on the way in Ryan's house.</b> Every donation towards the servers and our growing family means a great deal.",
-    "<b>Ryan and his partner are getting ready for their child.</b> If this tool has been useful, a donation for the running costs and our growing family would help more than you know."
+    "Ryan and his partner are expecting a baby. Donations towards the project's running costs and our new family are massively appreciated.",
+    "There's a new arrival on the way in Ryan's house. Every donation towards the servers and our growing family means a great deal.",
+    "Ryan and his partner are getting ready for their child. If this tool has been useful, a donation for the running costs and our growing family would help more than you know."
   ];
 
   var FAMILY_COHORT_STORAGE_KEY = "y1_family_appeal_cohort";
   var recentAppeals = [];
+
+  function formatBoldLead(text) {
+    if (!text) return "";
+    if (text.indexOf("<b>") !== -1) return text;
+    var m = text.match(/^([^.:]+[.:])\s*(.*)$/);
+    if (m) {
+      return "<b>" + m[1] + "</b> " + m[2];
+    }
+    return text;
+  }
 
   function inFamilyCohort() {
     try {
@@ -1104,7 +1162,7 @@
     var chosen = source[Math.floor(Math.random() * source.length)];
     recentAppeals.push(chosen);
     if (recentAppeals.length > 4) recentAppeals.splice(0, recentAppeals.length - 4);
-    return chosen;
+    return formatBoldLead(_t(chosen));
   }
 
   function getRotatingAppealCopy() {
@@ -1472,60 +1530,72 @@
       var weekCount = Object.keys(weekNames).length;
       var supporterPhrase = todayCount === 0
         ? {
-            desktop: "No one has donated today, will you be the first?",
-            mobile: "No one has donated today, will you be the first?",
+            desktop: _t("No one has donated today, will you be the first?"),
+            mobile: _t("No one has donated today, will you be the first?"),
             isTarget: false
           }
         : {
-            desktop: weekCount + (weekCount === 1 ? " supporter has helped us this week" : " supporters have helped us this week") + "  -  join them to keep downloads free for everyone.",
-            mobile: weekCount + (weekCount === 1 ? " supporter helped us this week  -  join them" : " supporters helped us this week  -  join them"),
+            desktop: weekCount === 1
+              ? _t("{count} supporter has helped us this week  -  join them to keep downloads free for everyone.", { count: 1 })
+              : _t("{count} supporters have helped us this week  -  join them to keep downloads free for everyone.", { count: weekCount }),
+            mobile: weekCount === 1
+              ? _t("{count} supporter helped us this week  -  join them", { count: 1 })
+              : _t("{count} supporters helped us this week  -  join them", { count: weekCount }),
             isTarget: false
           };
 
       var generalPhrases = goal.met
         ? [
             {
-              desktop: "Solely self- and donations-funded, and still mostly paid for out of pocket  -  thank you to everyone who chipped in!",
-              mobile: "Solely self- and donations-funded  -  thank you!",
+              desktop: _t("Solely self- and donations-funded, and still mostly paid for out of pocket  -  thank you to everyone who chipped in!"),
+              mobile: _t("Solely self- and donations-funded  -  thank you!"),
               isTarget: false
             },
             {
-              desktop: "Every extra coffee funds future tool mirrors and development.",
-              mobile: "Extra donations fund future mirrors & development",
+              desktop: _t("Every extra coffee funds future tool mirrors and development."),
+              mobile: _t("Extra donations fund future mirrors & development"),
               isTarget: false
             }
           ]
         : [
             targetPhrase,
             {
-              desktop: "Only " + goal.symbol + remLabel + " left to raise for " + (goal.periodPhrase || ("this " + goal.periodWord)) + "'s costs.",
-              mobile: "Only " + goal.symbol + remLabel + " left to raise for " + (goal.periodPhrase || ("this " + goal.periodWord)) + "'s costs.",
+              desktop: (goal.scope === "weekly")
+                ? _t("Only {amount} left to raise for this week's costs.", { amount: goal.symbol + remLabel })
+                : (goal.scope === "daily")
+                  ? _t("Only {amount} left to raise for today's costs.", { amount: goal.symbol + remLabel })
+                  : _t("Only {amount} left to raise for this month's costs.", { amount: goal.symbol + remLabel }),
+              mobile: (goal.scope === "weekly")
+                ? _t("Only {amount} left to raise for this week's costs.", { amount: goal.symbol + remLabel })
+                : (goal.scope === "daily")
+                  ? _t("Only {amount} left to raise for today's costs.", { amount: goal.symbol + remLabel })
+                  : _t("Only {amount} left to raise for this month's costs.", { amount: goal.symbol + remLabel }),
               isTarget: true
             },
             {
-              desktop: "Small gifts of $3 to $5 cover about 15% of what this project really costs; most of the rest goes on players bought to test.",
-              mobile: "Small $3–$5 gifts cover about 15% of real costs",
+              desktop: _t("Small gifts of $3 to $5 cover about 15% of what this project really costs; most of the rest goes on players bought to test."),
+              mobile: _t("Small $3–$5 gifts cover about 15% of real costs"),
               isTarget: false
             },
             {
-              desktop: "Saved your player with a free firmware download? Consider buying us a coffee.",
-              mobile: "Saved your player? Buy us a coffee to keep us online",
+              desktop: _t("Saved your player with a free firmware download? Consider buying us a coffee."),
+              mobile: _t("Saved your player? Buy us a coffee to keep us online"),
               isTarget: false
             },
             {
-              desktop: "The price of a coffee or two keeps our download servers online this month.",
-              mobile: "A coffee or two keeps our servers online this month",
+              desktop: _t("The price of a coffee or two keeps our download servers online this month."),
+              mobile: _t("A coffee or two keeps our servers online this month"),
               isTarget: false
             },
             {
-              desktop: "Solely self- and donations-funded, with no paywalls  -  chip in $3 towards test players and servers.",
-              mobile: "Self- and donations-funded  -  chip in $3 to support us",
+              desktop: _t("Solely self- and donations-funded, with no paywalls  -  chip in $3 towards test players and servers."),
+              mobile: _t("Self- and donations-funded  -  chip in $3 to support us"),
               isTarget: false
             },
             supporterPhrase,
             {
-              desktop: "If 1 in 50 visitors bought us a coffee, we'd cover most of a test player this month.",
-              mobile: "If 1 in 50 visitors bought a coffee, we'd cover a test player",
+              desktop: _t("If 1 in 50 visitors bought us a coffee, we'd cover most of a test player this month."),
+              mobile: _t("If 1 in 50 visitors bought a coffee, we'd cover a test player"),
               isTarget: false
             }
           ];
@@ -1651,15 +1721,24 @@
     var now = new Date();
     var diffMs = now.getTime() - dt.getTime();
     var diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    if (diffDays <= 0) return "today";
-    if (diffDays === 1) return "yesterday";
-    if (diffDays < 7) return diffDays + " days ago";
-    if (diffDays < 14) return "1 week ago";
-    if (diffDays < 30) return Math.floor(diffDays / 7) + " weeks ago";
-    if (diffDays < 60) return "1 month ago";
-    if (diffDays < 365) return Math.floor(diffDays / 30) + " months ago";
-    if (diffDays < 730) return "1 year ago";
-    return Math.floor(diffDays / 365) + " years ago";
+    if (diffDays <= 0) return _t("today");
+    if (diffDays === 1) return _t("yesterday");
+    if (diffDays < 7) {
+      return diffDays === 1 ? _t("1 day ago") : _t("{count} days ago", { count: diffDays });
+    }
+    if (diffDays < 14) return _t("1 week ago");
+    if (diffDays < 30) {
+      var w = Math.floor(diffDays / 7);
+      return w === 1 ? _t("1 week ago") : _t("{count} weeks ago", { count: w });
+    }
+    if (diffDays < 60) return _t("1 month ago");
+    if (diffDays < 365) {
+      var m = Math.floor(diffDays / 30);
+      return m === 1 ? _t("1 month ago") : _t("{count} months ago", { count: m });
+    }
+    if (diffDays < 730) return _t("1 year ago");
+    var y = Math.floor(diffDays / 365);
+    return y === 1 ? _t("1 year ago") : _t("{count} years ago", { count: y });
   }
 
   function formatAmount(amt) {
@@ -1711,15 +1790,15 @@
     var raw = String(name || "").trim();
     var clean = raw.replace(/^(?:(?:regular|top)\s+(?:supporters?|contributors?)\s*:?[\s-]*)+/i, "").trim();
     if (isAnonymous(clean)) {
-      return isTop ? "A top supporter" : "A supporter";
+      return isTop ? _t("A top supporter") : _t("A supporter");
     }
-    return clean || (isTop ? "A top supporter" : "A supporter");
+    return clean || (isTop ? _t("A top supporter") : _t("A supporter"));
   }
 
   function contributorLabel(name, top) {
     var cleanName = cleanSupporterName(name, top);
-    var label = top ? "Top Supporter" : "Supporter";
-    return /(?:\band\b|[+&])/i.test(cleanName) ? label + "s" : label;
+    var label = top ? _t("Top Supporter") : _t("Supporter");
+    return /(?:\band\b|[+&])/i.test(cleanName) ? (top ? _t("Top Supporters") : _t("Supporters")) : label;
   }
 
   function getTopSupporterGroups(donations) {
@@ -1779,19 +1858,28 @@
       var projHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawName + '</strong></a>';
       var outAmtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
       var outMethodHTML = '<a href="' + methodUrl + '" target="_blank" rel="noopener noreferrer">' + displayMethod + '</a>';
-      return "We donated " + outAmtHTML + " to " + projHTML + " on " + outMethodHTML + timePart;
+      return _t("We donated {amount} to {project} on {method}{time}", {
+        amount: outAmtHTML,
+        project: projHTML,
+        method: outMethodHTML,
+        time: timePart
+      });
     }
 
     var isInnioasis = rawName.toLowerCase() === "innioasis" || rawName.toLowerCase().indexOf("innioasis") === 0;
     if (isInnioasis) {
       var innHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>Innioasis</strong></a>';
       var corpAmtHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + amtStr + '</a>';
-      return "Contribution of " + corpAmtHTML + " from " + innHTML + " (Corporate Sponsorship)" + timePart;
+      return _t("Contribution of {amount} from {innioasis} (Corporate Sponsorship){time}", {
+        amount: corpAmtHTML,
+        innioasis: innHTML,
+        time: timePart
+      });
     }
 
     var supporterHTML;
     if (isAnon) {
-      supporterHTML = isTop ? "<strong>A top supporter</strong>" : "<strong>A supporter</strong>";
+      supporterHTML = isTop ? "<strong>" + _t("A top supporter") + "</strong>" : "<strong>" + _t("A supporter") + "</strong>";
     } else {
       supporterHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawName + '</strong></a>';
     }
@@ -1801,27 +1889,57 @@
 
     if (isRegular) {
       if (methodCount && methodCount > 1) {
-        return supporterHTML + " has donated " + amtHTML + timePart;
+        return _t("{supporter} has donated {amount}{time}", {
+          supporter: supporterHTML,
+          amount: amtHTML,
+          time: timePart
+        });
       }
       if (cKind) {
         var regCoffees = Math.max(1, Math.round(absAmt));
-        var regWord = ((regCoffees === 1) ? "a coffee" : (regCoffees + " coffees")) + (cKind === "kofi" ? " on Ko-Fi" : "");
+        var regWord = (regCoffees === 1)
+          ? (cKind === "kofi" ? _t("a coffee on Ko-Fi") : _t("a coffee"))
+          : (cKind === "kofi" ? _t("{count} coffees on Ko-Fi", { count: regCoffees }) : _t("{count} coffees", { count: regCoffees }));
         var regCoffeesHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + regWord + '</a>';
-        return supporterHTML + " bought us " + regCoffeesHTML + timePart;
+        return _t("{supporter} bought us {coffees}{time}", {
+          supporter: supporterHTML,
+          coffees: regCoffeesHTML,
+          time: timePart
+        });
       }
-      return supporterHTML + " donated " + amtHTML + " by " + methodHTML + timePart;
+      return _t("{supporter} donated {amount} by {method}{time}", {
+        supporter: supporterHTML,
+        amount: amtHTML,
+        method: methodHTML,
+        time: timePart
+      });
     }
 
     if (mLower === "honeygain") {
       var hgUrl = METHOD_URLS["honeygain"];
-      return supporterHTML + ' contributed ' + amtHTML + ' for free by sharing 100MB on <a href="' + hgUrl + '" target="_blank" rel="noopener noreferrer">Honeygain</a>' + timePart;
+      return _t("{supporter} contributed {amount} for free by sharing 100MB on Honeygain{time}", {
+        supporter: supporterHTML,
+        amount: amtHTML,
+        time: timePart
+      });
     } else if (cKind) {
       var coffees = Math.max(1, Math.round(absAmt));
-      var cWord = ((coffees === 1) ? "a coffee" : (coffees + " coffees")) + (cKind === "kofi" ? " on Ko-Fi" : "");
+      var cWord = (coffees === 1)
+        ? (cKind === "kofi" ? _t("a coffee on Ko-Fi") : _t("a coffee"))
+        : (cKind === "kofi" ? _t("{count} coffees on Ko-Fi", { count: coffees }) : _t("{count} coffees", { count: coffees }));
       var coffeesHTML = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer">' + cWord + '</a>';
-      return supporterHTML + " bought us " + coffeesHTML + timePart;
+      return _t("{supporter} bought us {coffees}{time}", {
+        supporter: supporterHTML,
+        coffees: coffeesHTML,
+        time: timePart
+      });
     } else {
-      return supporterHTML + " donated " + amtHTML + " by " + methodHTML + timePart;
+      return _t("{supporter} donated {amount} by {method}{time}", {
+        supporter: supporterHTML,
+        amount: amtHTML,
+        method: methodHTML,
+        time: timePart
+      });
     }
   }
 
@@ -1943,16 +2061,31 @@
 
   function fundingGoalText(goal, withEncouragement) {
     if (goal && goal.covered) {
-      var metWords = { monthly: "This month's", weekly: "This week's", daily: "Today's" };
+      var metWords = {
+        monthly: _t("This month's costs are covered - thank you!"),
+        weekly: _t("This week's costs are covered - thank you!"),
+        daily: _t("Today's costs are covered - thank you!")
+      };
       var metLabel = metWords[goal.metScope];
-      if (metLabel) return metLabel + " costs are covered - thank you!";
+      if (metLabel) return metLabel;
     }
     if (!goal || !goal.scope) {
-      return "We rely on your donations to keep running. Donate now";
+      return _t("We rely on your donations to keep running. Donate now");
     }
-    var text = "You've helped us raise " + goal.symbol + moneyLabel(goal.raised) +
-      " of our " + goal.symbol + moneyLabel(goal.target) + " costs " + (goal.periodSuffix || ("for this " + goal.periodWord)) + ".";
-    return withEncouragement ? text + " All donations are appreciated." : text;
+    var periodSuffix = goal.periodSuffix ? _t(goal.periodSuffix) : (_t("for this ") + _t(goal.periodWord));
+    var raisedStr = goal.symbol + moneyLabel(goal.raised);
+    var targetStr = goal.symbol + moneyLabel(goal.target);
+    return withEncouragement
+      ? _t("You've helped us raise {raised} of our {target} costs {period}. All donations are appreciated.", {
+          raised: raisedStr,
+          target: targetStr,
+          period: periodSuffix
+        })
+      : _t("You've helped us raise {raised} of our {target} costs {period}.", {
+          raised: raisedStr,
+          target: targetStr,
+          period: periodSuffix
+        });
   }
 
   function renderGoalAndDonors(donations) {
@@ -1995,7 +2128,13 @@
      raisedBar && raisedBar.parentElement, remBar && remBar.parentElement].forEach(function (el) {
       if (el) el.style.display = goal.covered ? "none" : "";
     });
-    if (titleEl) titleEl.textContent = (goal.scope === "weekly" ? "Weekly" : goal.scope === "daily" ? "Daily" : "Monthly") + " Running Costs";
+    if (titleEl) {
+      titleEl.textContent = (goal.scope === "weekly")
+        ? _t("Weekly Running Costs")
+        : (goal.scope === "daily")
+          ? _t("Daily Running Costs")
+          : _t("Monthly Running Costs");
+    }
     if (statsEl) statsEl.textContent = goalMsg;
     if (raisedBar) raisedBar.style.width = raisedPct + "%";
     if (remBar) remBar.style.width = (100 - raisedPct) + "%";
@@ -2020,8 +2159,12 @@
     var idleHeading = document.getElementById("y1-dock-idle-goal-heading");
     if (idleHeading) {
       idleHeading.textContent = goal.covered
-        ? "Thank you - this month's costs are covered"
-        : "Help us cover " + (goal.periodPhrase || "this month") + "'s running costs";
+        ? _t("Thank you - this month's costs are covered")
+        : (goal.scope === "weekly"
+            ? _t("Help us cover this week's running costs")
+            : (goal.scope === "daily"
+                ? _t("Help us cover today's running costs")
+                : _t("Help us cover this month's running costs")));
     }
 
     var donorsCountEl = document.getElementById("y1-donors-count");
@@ -2030,7 +2173,9 @@
         var name = (donation.name || "").trim().toLowerCase();
         return donation.amount > 0 && name !== "innioasis" && name.indexOf("innioasis") !== 0;
       }).length;
-      donorsCountEl.textContent = receivedCount + " contributions";
+      donorsCountEl.textContent = (receivedCount === 1)
+        ? _t("1 contribution")
+        : _t("{count} contributions", { count: receivedCount });
     }
 
     var rawDonorLines = [];
@@ -2092,8 +2237,8 @@
     var raisedPct = goal.pct;
     var tickerGoalMsg = fundingGoalText(goal, false);
     var goalItem = {
-      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Costs</span>' +
-            '<div class="y1-dock-mini-bar" title="' + Math.round(raisedPct) + '% covered" style="display: inline-block; width: 50px; height: 6px; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35); border-radius: 4px; overflow: hidden; vertical-align: middle; margin-right: 6px;">' +
+      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">' + _t("Costs") + '</span>' +
+            '<div class="y1-dock-mini-bar" title="' + Math.round(raisedPct) + '% ' + _t("covered") + '" style="display: inline-block; width: 50px; height: 6px; background: rgba(156,163,175,0.2); border: 1px solid rgba(156,163,175,0.35); border-radius: 4px; overflow: hidden; vertical-align: middle; margin-right: 6px;">' +
               '<div class="y1-dock-mini-raised" data-target-width="' + raisedPct + '%" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
             '</div>' +
             '<span>' + tickerGoalMsg + '</span>'
@@ -2121,7 +2266,7 @@
       var cKind = coffeeMethod(item.method);
       var extraStyle = "";
       if (mLow === "honeygain") {
-        badgeText = "Free contribution";
+        badgeText = _t("Free contribution");
         extraStyle = ' style="background: rgba(16,185,129,0.25); color: #10b981; border-color: rgba(16,185,129,0.5);"';
       } else if (cKind === "bmac") {
         badgeText = "Buy Me a Coffee";
@@ -2143,8 +2288,8 @@
     }
 
     var annualItem = {
-      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">Costs</span>' +
-            '<span>If everyone visiting today donated, we\'d be able to run for a year</span>'
+      html: '<span class="y1-dock-ticker-badge y1-dock-ticker-badge--goal">' + _t("Costs") + '</span>' +
+            '<span>' + _t("If everyone visiting today donated, we'd be able to run for a year") + '</span>'
     };
 
     var items = goal.covered ? [annualItem] : [goalItem, annualItem];
@@ -2323,160 +2468,17 @@
     }
   });
   fetchDonors();
+
+  ["site-locale-ready", "site-locale-change", "y1-locale-change"].forEach(function (evName) {
+    window.addEventListener(evName, function () {
+      if (lastDonations && lastDonations.length) {
+        renderGoalAndDonors(lastDonations);
+      }
+    });
+  });
 })();
 </script>
-<script src="site-locale.js?v=20261108c" defer>
-  /* ------------------------------------------------------------- */
-  /* Language Picker Controller                                    */
-  /* ------------------------------------------------------------- */
-  (function initLanguagePicker() {
-    var trigger = document.querySelector("[data-lang-open]");
-    var panel = document.getElementById("y1-lang-panel");
-    var closeBtn = document.querySelector("[data-lang-close]");
-    var searchInput = document.getElementById("y1-lang-search-input");
-    var listContainer = document.getElementById("y1-lang-options-list");
-    var currentLabel = document.querySelector(".y1-lang-current-label");
-    if (!trigger || !panel) return;
-
-    var localesData = [];
-
-    function getBaseUrl() {
-      var depth = (window.location.pathname.match(/\//g) || []).length - 1;
-      var up = "";
-      for (var i = 0; i < depth; i++) {
-        // adjust if in subdirs
-      }
-      return "/";
-    }
-
-    function loadLocales() {
-      if (localesData.length) return;
-      var candidates = [
-        "i18n/site-locales.json",
-        "/i18n/site-locales.json",
-        "../i18n/site-locales.json",
-        "../../i18n/site-locales.json",
-        "https://innioasis.app/i18n/site-locales.json"
-      ];
-      function tryNext(idx) {
-        if (idx >= candidates.length) return;
-        fetch(candidates[idx])
-          .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
-          .then(function(data) {
-            localesData = data.locales || [];
-            renderLocales("");
-            updateCurrentDisplay();
-          })
-          .catch(function() { tryNext(idx + 1); });
-      }
-      tryNext(0);
-    }
-
-    function renderLocales(filter) {
-      if (!listContainer) return;
-      var q = (filter || "").toLowerCase().trim();
-      var html = "";
-      var currentLocale = (localStorage.getItem("innioasis-locale") || "en").toLowerCase();
-
-      for (var i = 0; i < localesData.length; i++) {
-        var loc = localesData[i];
-        var code = loc.code;
-        var name = loc.name || code;
-        var native = loc.native || name;
-        if (q && code.toLowerCase().indexOf(q) === -1 && name.toLowerCase().indexOf(q) === -1 && native.toLowerCase().indexOf(q) === -1) {
-          continue;
-        }
-        var activeClass = (code.toLowerCase() === currentLocale) ? " font-weight: bold; border-color: #3b82f6; background: rgba(59,130,246,0.15);" : "";
-        html += '<button type="button" data-lang-code="' + code + '" class="y1-dock-link" style="padding: 6px 10px; text-align: left; border: 1px solid rgba(156,163,175,0.25); border-radius: 6px; font-size: 0.85rem; cursor: pointer; display: flex; flex-direction: column; gap: 2px;' + activeClass + '">' +
-                '<span style="font-weight: 600;">' + native + '</span>' +
-                '<span style="font-size: 0.75rem; opacity: 0.75;">' + name + ' (' + code + ')</span>' +
-                '</button>';
-      }
-      if (!html) {
-        html = '<div style="grid-column: 1/-1; padding: 12px; text-align: center; opacity: 0.7;">No languages match your search.</div>';
-      }
-      listContainer.innerHTML = html;
-
-      var buttons = listContainer.querySelectorAll("[data-lang-code]");
-      for (var j = 0; j < buttons.length; j++) {
-        buttons[j].addEventListener("click", function() {
-          var targetCode = this.getAttribute("data-lang-code");
-          selectLanguage(targetCode);
-        });
-      }
-    }
-
-    function selectLanguage(code) {
-      if (!code) return;
-      try {
-        localStorage.setItem("innioasis-locale", code);
-      } catch (_) {}
-
-      if (window.InnioasisLocale && typeof window.InnioasisLocale.set === "function") {
-        window.InnioasisLocale.set(code);
-      } else if (window.SiteLocale && typeof window.SiteLocale.setLocale === "function") {
-        window.SiteLocale.setLocale(code);
-      } else {
-        var url = new URL(window.location.href);
-        url.searchParams.set("lang", code);
-        window.location.href = url.href;
-      }
-      closePanel();
-    }
-
-    function updateCurrentDisplay() {
-      var currentLocale = (localStorage.getItem("innioasis-locale") || "en").toLowerCase();
-      var found = null;
-      for (var i = 0; i < localesData.length; i++) {
-        if (localesData[i].code.toLowerCase() === currentLocale) {
-          found = localesData[i];
-          break;
-        }
-      }
-      if (found && currentLabel) {
-        currentLabel.textContent = found.native || found.name || currentLocale.toUpperCase();
-      }
-    }
-
-    function openPanel() {
-      panel.hidden = false;
-      panel.setAttribute("aria-modal", "true");
-      trigger.setAttribute("aria-expanded", "true");
-      loadLocales();
-      if (searchInput) {
-        searchInput.value = "";
-        searchInput.focus();
-      }
-    }
-
-    function closePanel() {
-      panel.hidden = true;
-      trigger.setAttribute("aria-expanded", "false");
-    }
-
-    trigger.addEventListener("click", function(e) {
-      e.stopPropagation();
-      if (panel.hidden) openPanel(); else closePanel();
-    });
-
-    if (closeBtn) closeBtn.addEventListener("click", closePanel);
-
-    if (searchInput) {
-      searchInput.addEventListener("input", function() {
-        renderLocales(this.value);
-      });
-    }
-
-    document.addEventListener("click", function(e) {
-      if (!panel.hidden && !panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
-        closePanel();
-      }
-    });
-
-    loadLocales();
-  })();
-
-
+<script>
   /* Ad / content blocker detection - gently display support modal on visit without mentioning ads */
   (function initBlockerSupportCheck() {
     function detectBlocker(callback) {

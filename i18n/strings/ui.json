@@ -1,6 +1,18 @@
 {
  "note": "Strings rendered by the JS shell. Merged into the source catalog by extract_strings.py.",
  "strings": {
+  "'s costs.": [
+   "support_toolbar.html"
+  ],
+  "1 month ago": [
+   "support_toolbar.html"
+  ],
+  "1 week ago": [
+   "support_toolbar.html"
+  ],
+  "1 year ago": [
+   "support_toolbar.html"
+  ],
   "A Spanish-language walkthrough of installing Rockbox on an Innioasis Y1 with Updater CE.": [
    "index.html"
   ],
@@ -232,6 +244,9 @@
   "A short video installing JJ Launcher on an Innioasis Y1 and troubleshooting.": [
    "index.html"
   ],
+  "A supporter": [
+   "support_toolbar.html"
+  ],
   "A top supporter": [
    "credits.html",
    "support_devs.html",
@@ -293,6 +308,9 @@
   ],
   "All public": [
    "lumen-site.js"
+  ],
+  "Analytics and privacy": [
+   "support_toolbar.html"
   ],
   "Android 4.2 development ROM for Innioasis Y1.": [
    "firmware-catalog.js"
@@ -399,10 +417,17 @@
   "Better-Y on Innioasis Y1 macOS": [
    "install/better-y-mac.html"
   ],
+  "Bitcoin (BTC)": [
+   "support_toolbar.html"
+  ],
   "Bluetooth is for listening, not for transferring files. Pair once, and the player remembers the device.": [
    "manuals/bluetooth.html"
   ],
+  "Brings back toolbar goals and donation links.": [
+   "support_toolbar.html"
+  ],
   "Buy Me a Coffee": [
+   "site-locale.js",
    "support_toolbar.html"
   ],
   "CDF FC AOA Kz GMD D GNF FG SLE Le LRD L$ SDG ج.س LYD ل.د SOS Sh NAD N$ LSL L": [
@@ -1207,6 +1232,12 @@
   "Connect the player only when Updater says it is ready.": [
    "lumen-site.js"
   ],
+  "Contribution of": [
+   "support_toolbar.html"
+  ],
+  "Copy": [
+   "support_toolbar.html"
+  ],
   "Copy files to a computer and charge the player.": [
    "guides/restore-original-g1.html",
    "guides/restore-original-g3.html",
@@ -1215,6 +1246,12 @@
    "guides/restore-original-q5.html",
    "guides/restore-original-r1.html",
    "guides/restore-original-sr1.html"
+  ],
+  "Corporate Sponsorship": [
+   "support_toolbar.html"
+  ],
+  "Costs": [
+   "support_toolbar.html"
   ],
   "Could not load the latest manifest — the generator still works offline.": [
    "developers.html"
@@ -1619,6 +1656,24 @@
   "Does the player need Wi-Fi to install Rockbox-Y2?": [
    "rockbox-y2/requirements.html"
   ],
+  "Don't show donation appeals again": [
+   "support_toolbar.html"
+  ],
+  "Donate by Patreon": [
+   "support_toolbar.html"
+  ],
+  "Donate by PayPal": [
+   "support_toolbar.html"
+  ],
+  "Donate by Revolut": [
+   "support_toolbar.html"
+  ],
+  "Donate on Boosty": [
+   "support_toolbar.html"
+  ],
+  "Donate on Ko-fi": [
+   "support_toolbar.html"
+  ],
   "Donations are processed through Boosty": [
    "support_toolbar.html"
   ],
@@ -1663,11 +1718,17 @@
   "Error loading themes:": [
    "theme_downloader.html"
   ],
+  "Ethereum (ETH)": [
+   "support_toolbar.html"
+  ],
   "Every Inniclassic install guide for Innioasis and Timmkoo players, by model and by computer. An iPod Classic-style interface for the Innioasis Y1 and Y2. Choose Windows, macOS or Linux, then follow the Updater CE steps.": [
    "install/inniclassic.html"
   ],
   "Every Y2Player install guide for Innioasis and Timmkoo players, by model and by computer. A music-first home screen for the Innioasis Y2. Choose Windows, macOS or Linux, then follow the Updater CE steps.": [
    "install/y2player.html"
+  ],
+  "Every contribution, big or small, matters.": [
+   "support_toolbar.html"
   ],
   "Every extra coffee funds future tool mirrors and development.": [
    "support_toolbar.html"
@@ -1925,6 +1986,9 @@
   "Full Changelog": [
    "docs-viewer.js"
   ],
+  "Full Credits & Ledger →": [
+   "support_toolbar.html"
+  ],
   "General performance and stability improvements": [
    "firmware-catalog.js"
   ],
@@ -2044,7 +2108,16 @@
   "Glad this guide helped you get set up!": [
    "y2reborn_wifibt.html"
   ],
+  "Google Analytics": [
+   "site-locale.js"
+  ],
+  "Google Tag Manager": [
+   "site-locale.js"
+  ],
   "Help us cover": [
+   "support_toolbar.html"
+  ],
+  "Help us cover today's running costs": [
    "support_toolbar.html"
   ],
   "Hide Crypto Options": [
@@ -2523,6 +2596,9 @@
   "If Device Manager does not show the MediaTek port, reinstall the driver.": [
    "lumen-site.js"
   ],
+  "If everyone visiting today donated, we'd be able to run for a year": [
+   "support_toolbar.html"
+  ],
   "If the wheel stopped after an update, it is usually a firmware mismatch. Reinstall the model-matched Original Software and test again. If the wheel is dead in every firmware, treat it as a hardware fault.": [
    "guides/recovery.html"
   ],
@@ -2881,6 +2957,9 @@
   ],
   "Innioasis Themes Gallery - Y1 and Y2 Rockbox themes": [
    "nav.js"
+  ],
+  "Innioasis Universal Flash Tool": [
+   "site-locale.js"
   ],
   "Innioasis Updater": [
    "firmware-list.html",
@@ -4130,6 +4209,12 @@
   "Load the matching scatter file": [
    "sp-flash-tool.html"
   ],
+  "Loading supporters...": [
+   "support_toolbar.html"
+  ],
+  "Loading supporters…": [
+   "support_toolbar.html"
+  ],
   "Loading the latest manifest…": [
    "developers.html"
   ],
@@ -4362,6 +4447,9 @@
   "One-click installer for Windows, macOS & Linux": [
    "nav.js"
   ],
+  "Only": [
+   "support_toolbar.html"
+  ],
   "Open Innioasis Updater CE and select Y1.": [
    "rockbox-y1/portable-zip.html"
   ],
@@ -4471,6 +4559,9 @@
   "Open-source cross-platform updater, brick recovery tool, and driver installer for Innioasis Y1 & Y2 hardware. Maintained by Ryan Specter.": [
    "credits.html",
    "support_devs.html"
+  ],
+  "Or help for free with Honeygain (earn $3 by sharing 100MB of bandwidth)": [
+   "support_toolbar.html"
   ],
   "Original Software": [
    "firmware-catalog.js",
@@ -4701,6 +4792,9 @@
   "Original stock firmware for Innioasis Y2": [
    "original-software-y2.html"
   ],
+  "Our projects rely on donations": [
+   "support_toolbar.html"
+  ],
   "Paid to Sipped when they sent in a pull request with a full redesign of the Firmware Archive and Updater site.": [
    "credits.html",
    "support_devs.html"
@@ -4822,6 +4916,12 @@
   ],
   "Release information is not available right now. The project links remain available.": [
    "lumen-site.js"
+  ],
+  "Remember guide feedback answers": [
+   "support_toolbar.html"
+  ],
+  "Remember nightly builds selection": [
+   "support_toolbar.html"
   ],
   "Remove Rockbox-Y1 or reset it to defaults": [
    "rockbox-y1/uninstall.html"
@@ -5298,6 +5398,9 @@
   "Running costs and community contributions - click to support": [
    "support_toolbar.html"
   ],
+  "SP Flash Tool": [
+   "site-locale.js"
+  ],
   "Sample 360p theme": [
    "theme_downloader.html"
   ],
@@ -5306,6 +5409,9 @@
   ],
   "Sample Y1 Theme": [
    "theme_downloader.html"
+  ],
+  "Save choices": [
+   "support_toolbar.html"
   ],
   "Saved to Downloads as": [
    "lumen-site.js",
@@ -5320,9 +5426,8 @@
   "Saved. Your choices apply from now on.": [
    "support_toolbar.html"
   ],
-  "Saving to Downloads…": [
-   "lumen-site.js",
-   "portable-zip-links.js"
+  "Saves your \"was this useful?\" feedback on guides.": [
+   "support_toolbar.html"
   ],
   "Search languages": [
    "site-locale.js"
@@ -5508,6 +5613,15 @@
   "Setup on Mac": [
    "slidia.html"
   ],
+  "Shiba Inu": [
+   "site-locale.js"
+  ],
+  "Shiba Inu (SHIB)": [
+   "support_toolbar.html"
+  ],
+  "Show community support & running costs": [
+   "support_toolbar.html"
+  ],
   "Show crypto options · BTC, ETH, SHIB": [
    "support_toolbar.html"
   ],
@@ -5517,7 +5631,16 @@
   "Show preview and nightly builds alongside stable releases.": [
    "lumen-site.js"
   ],
+  "Shows pre-release and nightly builds in the firmware list.": [
+   "support_toolbar.html"
+  ],
   "Site shortcuts": [
+   "support_toolbar.html"
+  ],
+  "Small $3–$5 gifts cover about 15% of real costs": [
+   "support_toolbar.html"
+  ],
+  "Small gifts of $3 to $5 cover about 15% of what this project really costs; most of the rest goes on players bought to test.": [
    "support_toolbar.html"
   ],
   "Smaller text": [
@@ -5680,8 +5803,14 @@
   "Storage, microSD cards and finding files again": [
    "manuals/storage-and-sd-cards.html"
   ],
-  "Streaming download failed, using the browser download instead:": [
-   "lumen-site.js"
+  "Support Updater and the Themes Gallery through Ko-fi, Buy Me a Coffee, PayPal, Revolut, or Patreon.": [
+   "support_toolbar.html"
+  ],
+  "Supporter": [
+   "support_toolbar.html"
+  ],
+  "Supporters": [
+   "support_toolbar.html"
   ],
   "System Software 3.0.2": [
    "firmware-catalog.js"
@@ -5717,7 +5846,8 @@
   ],
   "Thank you.": [
    "credits.html",
-   "support_devs.html"
+   "support_devs.html",
+   "support_toolbar.html"
   ],
   "That is the whole": [
    "lumen-site.js"
@@ -5838,7 +5968,9 @@
   ],
   "This month's": [
    "credits.html",
-   "support_devs.html",
+   "support_devs.html"
+  ],
+  "This month's costs are covered - thank you!": [
    "support_toolbar.html"
   ],
   "This patch fixes the error that could occur during the update process. Please update to this version to ensure a smooth installation.": [
@@ -5849,7 +5981,8 @@
   ],
   "This project is here because people chose to help. Thank you for keeping the archive, the tools, and the community moving.": [
    "credits.html",
-   "support_devs.html"
+   "support_devs.html",
+   "support_toolbar.html"
   ],
   "This project is listed for Innioasis Y1, Innioasis Y2. Open the model card for the exact guide.": [
    "install/android-dev-linux.html",
@@ -5951,7 +6084,9 @@
   ],
   "This week's": [
    "credits.html",
-   "support_devs.html",
+   "support_devs.html"
+  ],
+  "This week's costs are covered - thank you!": [
    "support_toolbar.html"
   ],
   "Tick the nightly-builds option to see previews": [
@@ -5999,9 +6134,15 @@
   "Timmkoo SR1 software and firmware install guides": [
    "install/sr1.html"
   ],
+  "Today's costs are covered - thank you!": [
+   "support_toolbar.html"
+  ],
   "Top Supporter": [
    "credits.html",
    "support_devs.html",
+   "support_toolbar.html"
+  ],
+  "Top Supporters": [
    "support_toolbar.html"
   ],
   "USB data cable": [
@@ -6020,6 +6161,9 @@
   ],
   "Undo Rockbox-Y2: restore the original Y2 software": [
    "rockbox-y2/restore-stock.html"
+  ],
+  "Universal Flash Tool": [
+   "site-locale.js"
   ],
   "Unusable FX payload": [
    "support_toolbar.html"
@@ -6080,6 +6224,9 @@
   "View on GitHub": [
    "release_notes.html"
   ],
+  "View our full public donor ledger & money raised →": [
+   "support_toolbar.html"
+  ],
   "Visit Updater Website →": [
    "credits.html",
    "support_devs.html"
@@ -6094,8 +6241,14 @@
   "Wait for the success message, then disconnect and start the player.": [
    "lumen-site.js"
   ],
+  "Waiting for supporters to appear.": [
+   "support_toolbar.html"
+  ],
   "Watch the video": [
    "docs-viewer.js"
+  ],
+  "We donated": [
+   "support_toolbar.html"
   ],
   "We rely on your donations to keep running. Donate now": [
    "credits.html",
@@ -7302,6 +7455,129 @@
   ],
   "Your player behaves like a USB drive with a screen. Copy files into the right folder and it finds them.": [
    "manuals/transfer-music.html"
+  ],
+  "Your privacy on Innioasis.app": [
+   "support_toolbar.html"
+  ],
+  "a coffee": [
+   "support_toolbar.html"
+  ],
+  "bought us": [
+   "support_toolbar.html"
+  ],
+  "coffees": [
+   "support_toolbar.html"
+  ],
+  "contributed": [
+   "support_toolbar.html"
+  ],
+  "contributions": [
+   "support_toolbar.html"
+  ],
+  "costs": [
+   "support_toolbar.html"
+  ],
+  "covered": [
+   "support_toolbar.html"
+  ],
+  "daily": [
+   "support_toolbar.html"
+  ],
+  "day": [
+   "support_toolbar.html"
+  ],
+  "day ago": [
+   "support_toolbar.html"
+  ],
+  "days ago": [
+   "support_toolbar.html"
+  ],
+  "donated": [
+   "support_toolbar.html"
+  ],
+  "for free by sharing 100MB on": [
+   "support_toolbar.html"
+  ],
+  "for this month": [
+   "support_toolbar.html"
+  ],
+  "for this week": [
+   "support_toolbar.html"
+  ],
+  "for today": [
+   "support_toolbar.html"
+  ],
+  "has donated": [
+   "support_toolbar.html"
+  ],
+  "join them": [
+   "support_toolbar.html"
+  ],
+  "join them to keep downloads free for everyone.": [
+   "support_toolbar.html"
+  ],
+  "left to raise for": [
+   "support_toolbar.html"
+  ],
+  "month": [
+   "support_toolbar.html"
+  ],
+  "month ago": [
+   "support_toolbar.html"
+  ],
+  "monthly": [
+   "support_toolbar.html"
+  ],
+  "months ago": [
+   "support_toolbar.html"
+  ],
+  "of our": [
+   "support_toolbar.html"
+  ],
+  "on Ko-Fi": [
+   "support_toolbar.html"
+  ],
+  "supporter has helped us this week": [
+   "support_toolbar.html"
+  ],
+  "supporter helped us this week": [
+   "support_toolbar.html"
+  ],
+  "supporters have helped us this week": [
+   "support_toolbar.html"
+  ],
+  "supporters helped us this week": [
+   "support_toolbar.html"
+  ],
+  "this month": [
+   "support_toolbar.html"
+  ],
+  "this week": [
+   "support_toolbar.html"
+  ],
+  "today": [
+   "support_toolbar.html"
+  ],
+  "week": [
+   "support_toolbar.html"
+  ],
+  "week ago": [
+   "support_toolbar.html"
+  ],
+  "weekly": [
+   "support_toolbar.html"
+  ],
+  "weeks ago": [
+   "support_toolbar.html"
+  ],
+  "year ago": [
+   "support_toolbar.html"
+  ],
+  "years ago": [
+   "support_toolbar.html"
+  ],
+  "yesterday": [
+   "support_toolbar.html"
   ]
  }
 }

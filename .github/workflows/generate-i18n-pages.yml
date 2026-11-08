@@ -4,16 +4,24 @@ on:
   push:
     branches: [ main ]
     paths:
-      - '**.html'
+      - '**/*.html'
+      - 'site-locale.js'
+      - 'support_toolbar.html'
       - 'i18n/**'
+      - 'scripts/i18n/**'
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: generate-i18n-pages
+  cancel-in-progress: false
+
 jobs:
   build-and-verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 180
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,6 +30,26 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Harvest strings rendered by the JavaScript shell
+        run: python3 scripts/i18n/harvest_ui_strings.py
+
+      - name: Extract strings from pages including newly added pages
+        run: python3 scripts/i18n/extract_strings.py --tiers core,full
+
+      - name: Merge hand-reviewed copy and pre-translated assets
+        run: python3 scripts/i18n/seed_catalogs.py
+
+      - name: Fetch translations for missing non-English strings
+        continue-on-error: true
+        run: |
+          python3 scripts/i18n/translate.py --provider google-web --locales all --top 500
+
+      - name: Protect and repair brand terms and model names
+        run: python3 scripts/i18n/repair_brands.py --write
+
+      - name: Rebuild language picker index with demographic prioritization
+        run: python3 scripts/i18n/translate.py --index-only
 
       - name: Verify GA4 tag and Raptive semantic markup
         run: |
@@ -42,14 +70,29 @@ jobs:
               print("GA4 tag verified across all HTML pages.")
           PY
 
-      - name: Build static multilingual page trees
+      - name: Build static multilingual page trees & sitemap
         run: |
           python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
 
-      - name: Commit pre-rendered static copies
+      - name: Upload static page artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: i18n-static-pages
+          path: |
+            dist/
+            sitemap-i18n.xml
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Commit updated catalogs, picker index and sitemaps
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/ sitemap-i18n.xml || true
-          git commit -m "chore(i18n): update pre-rendered multilingual static pages [skip ci]" || echo "No changes to commit"
-          git push || true
+          git add i18n/catalogs/ i18n/strings/ i18n/site-locales.json i18n/reviewed/ i18n/prerendered.json sitemap-i18n.xml || true
+          if git diff --cached --quiet; then
+            echo "No translation or catalog changes to commit."
+          else
+            git commit -m "chore(i18n): update translations and pre-rendered sitemap [skip ci]"
+            git push
+          fi

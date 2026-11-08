@@ -462,6 +462,7 @@
         "scatter.txt", "MicroSD", "microSD", "SD Card", "SD card", "APK", "ROM", "USB",
         "Buy Me a Coffee", "Honeygain", "Cloudflare", "Google Analytics", "Google Tag Manager",
         "GitHub", "Discord", "Ko-fi", "PayPal", "Patreon", "Revolut", "Boosty", "YouTube", "Reddit", "TikTok",
+        "Linux", "Windows", "macOS", "Android", "iOS", "FAQ",
         "Bitcoin (BTC)", "Bitcoin", "BTC", "Ethereum (ETH)", "Ethereum", "ETH", "Shiba Inu (SHIB)", "Shiba Inu", "SHIB"
     ];
     var dynamicBrandPattern = new RegExp(
@@ -576,189 +577,97 @@
             var item = dynamicQueue.shift();
             dynamicInFlight += 1;
             dynamicRequests += 1;
+            updateToolbarTranslatingState();
             requestDynamic(item.text).then(function (key) {
                 return function (translated) {
                     dynamicInFlight -= 1;
                     var waiters = dynamicPending[key] || [];
                     delete dynamicPending[key];
-                    /* Null on failure so the badge is removed even when no
-                       translation arrived. */
                     waiters.forEach(function (apply) { apply(translated || null); });
+                    updateToolbarTranslatingState();
                     drainDynamic();
                 };
             }(item.key));
         }
+        updateToolbarTranslatingState();
     }
 
     /* ---------------------------------------------------------------- */
-    /* Pending-translation indicator                                     */
+    /* Toolbar loading throbber for pending remote translations         */
     /* ---------------------------------------------------------------- */
-    /* Text that is still being fetched is original-language copy, so the
-       reader gets a small globe and a spinner beside it until the translated
-       text replaces it. One badge per element, counted, and removed on both
-       success and failure (a failed request leaves the English text, not a
-       spinner that never stops). */
-    var pendingByElement = typeof WeakMap === "function" ? new WeakMap() : null;
-    var BADGE_HTML = '<svg class="site-i18n-globe" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.7 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.7-3.7-9S9.5 5.6 12 3z"/></svg><span class="site-i18n-spinner" aria-hidden="true"></span>';
+    /* When dynamic translation is fetching strings remotely, a single
+       loading throbber is displayed directly on the toolbar language
+       picker button until all items finish translating. No intrusive
+       per-element spinners are placed in the page content. */
+    var toolbarTranslatingTimer = null;
 
-    /* Most pages do not link site-locale.css, so the badge carries its own
-       styles. One <style> element, injected the first time it is needed. */
     function ensureBadgeStyles() {
         if (document.getElementById("site-i18n-badge-styles")) return;
         var style = document.createElement("style");
         style.id = "site-i18n-badge-styles";
         style.textContent = [
-            ".site-i18n-badge{display:inline-flex;align-items:center;gap:4px;",
-            "margin-inline-start:6px;vertical-align:middle;color:currentColor;opacity:.68;",
-            "pointer-events:none;user-select:none;font-size:.85em;line-height:1;}",
-            "html[lang^=\"en\"] .site-i18n-badge,html:not([lang]) .site-i18n-badge,[lang^=\"en\"] .site-i18n-badge,[data-locale^=\"en\"] .site-i18n-badge{display:none!important;}",
-            "button .site-i18n-badge,[role=\"button\"] .site-i18n-badge,a .site-i18n-badge,.btn .site-i18n-badge,.button .site-i18n-badge,nav .site-i18n-badge,.nav .site-i18n-badge,.y1-dock .site-i18n-badge,table .site-i18n-badge,th .site-i18n-badge,td .site-i18n-badge,h1 .site-i18n-badge,h2 .site-i18n-badge,h3 .site-i18n-badge,h4 .site-i18n-badge,h5 .site-i18n-badge,h6 .site-i18n-badge,.kicker .site-i18n-badge,.lumen-kicker .site-i18n-badge,.chip .site-i18n-badge,.badge .site-i18n-badge{display:none!important;}",
-            ".site-i18n-globe{flex:none;width:13px;height:13px;}",
-            ".site-i18n-spinner{flex:none;width:10px;height:10px;border-radius:50%;",
-            "border:1.5px solid currentColor;border-top-color:transparent;",
-            "animation:site-i18n-spin .8s linear infinite;}",
-            "@keyframes site-i18n-spin{to{transform:rotate(360deg);}}",
-            "@media (prefers-reduced-motion:reduce){.site-i18n-spinner{animation:none;opacity:.6;}}"
+            ".site-i18n-badge{display:none!important;}",
+            ".site-locale-throbber{display:none;width:12px;height:12px;border-radius:50%;",
+            "border:1.5px solid currentColor;border-top-color:transparent;box-sizing:border-box;",
+            "animation:site-locale-spin .8s linear infinite;margin-inline-start:6px;vertical-align:middle;flex:none;}",
+            "[data-locale-open].is-translating .site-locale-throbber,",
+            ".site-locale-toggle.is-translating .site-locale-throbber,",
+            ".site-locale-dock-btn.is-translating .site-locale-throbber{display:inline-block!important;}",
+            "@keyframes site-locale-spin{to{transform:rotate(360deg);}}",
+            "@media (prefers-reduced-motion:reduce){.site-locale-throbber{animation:none;opacity:.6;}}"
         ].join("");
         (document.head || document.documentElement).appendChild(style);
     }
 
-    /* Loading throbbers are attached on a pragmatic basis: near paragraphs and
-       copywriting specifically. Never shown in English languages, and never on
-       interactive UI controls, buttons, table cells, or compact navigation. */
-    function isCopywritingElement(element) {
-        if (!element || element.nodeType !== 1) return false;
-        var tag = (element.tagName || "").toUpperCase();
-
-        // 1. Exclude interactive controls, inputs, headers, navigation, table cells, code
-        if (/^(BUTTON|A|INPUT|SELECT|TEXTAREA|NAV|HEADER|FOOTER|THEAD|TBODY|TR|TH|TD|H1|H2|H3|H4|H5|H6|CODE|PRE|KBD|SAMP)$/.test(tag)) {
-            return false;
-        }
-        if (element.closest && element.closest("button, [role='button'], a, .btn, .button, input, select, textarea, nav, .nav, .y1-dock, .site-locale-panel, [data-locale-panel], table, th, td, ul, ol, li, .chip, .badge, h1, h2, h3, h4, h5, h6, dialog, [role='dialog'], [role='menu'], [role='toolbar'], [role='tab']")) {
-            return false;
-        }
-
-        // 2. Direct paragraph and blockquote elements
-        if (tag === "P" || tag === "BLOCKQUOTE" || tag === "DD") {
-            // Exclude kickers / eyebrows (e.g. <p class="lumen-kicker">Videos</p>)
-            if (element.classList && (element.classList.contains("lumen-kicker") || element.classList.contains("kicker"))) {
-                return false;
-            }
-            return true;
-        }
-
-        // 3. Recognized copywriting / prose containers
-        if (element.classList) {
-            if (element.classList.contains("prose") ||
-                element.classList.contains("upload-prose") ||
-                element.classList.contains("lumen-notice-body") ||
-                element.classList.contains("notice-body") ||
-                element.classList.contains("markdown-body") ||
-                element.classList.contains("copywriting")) {
-                return true;
-            }
-        }
-
-        return false;
+    function isTranslatingActive() {
+        if (isEnglishLocale(state.locale)) return false;
+        return dynamicInFlight > 0 || dynamicQueue.length > 0;
     }
 
-    function getCopywritingContainer(node) {
-        if (!node || node.nodeType !== 3) return null;
-        if (isEnglishLocale(state.locale)) return null;
-
-        var text = normalise(node.nodeValue);
-        // Only trigger throbber for substantial prose / sentence copywriting
-        if (text.length < 25 || !/[.!?]/.test(text)) {
-            return null;
-        }
-
-        var parent = node.parentElement;
-        if (!parent) return null;
-
-        // Strictly reject if inside any interactive control, button, anchor, nav, dock, table, dialog, header
-        if (parent.closest && parent.closest("button, [role='button'], a, input, select, textarea, nav, .nav, .y1-dock, .site-locale-panel, [data-locale-panel], table, th, td, h1, h2, h3, h4, h5, h6, dialog, [role='dialog'], [role='toolbar'], [role='menu'], [role='tab'], .chip, .badge, .lumen-kicker, .kicker, .btn, .button")) {
-            return null;
-        }
-
-        var curr = parent;
-        while (curr && curr !== document.body && curr !== document.documentElement) {
-            if (/^(BUTTON|A|NAV|TABLE|DIALOG|HEADER|FOOTER|H1|H2|H3|H4|H5|H6)$/.test(curr.tagName)) {
-                return null;
-            }
-            if (isCopywritingElement(curr)) {
-                var blockText = (curr.textContent || "").trim();
-                if (blockText.length >= 25) {
-                    return curr;
-                }
-            }
-            curr = curr.parentElement;
-        }
-        return null;
+    function ensureThrobber(button) {
+        if (!button || button.querySelector(".site-locale-throbber")) return;
+        var throbber = document.createElement("span");
+        throbber.className = "site-locale-throbber";
+        throbber.setAttribute("aria-hidden", "true");
+        button.appendChild(throbber);
     }
 
-    function showTranslatingBadge(element) {
-        if (isEnglishLocale(state.locale)) return;
-        if (!element || !pendingByElement || !element.appendChild) return;
-        if (element.closest && element.closest("button, [role='button'], a, nav, .nav, .y1-dock, table, td, th, h1, h2, h3, h4, h5, h6, dialog")) {
-            return;
+    function setToolbarTranslating(active) {
+        if (toolbarTranslatingTimer) {
+            clearTimeout(toolbarTranslatingTimer);
+            toolbarTranslatingTimer = null;
         }
         ensureBadgeStyles();
-        var count = pendingByElement.get(element) || 0;
-        pendingByElement.set(element, count + 1);
-        if (count > 0) return;
-        var badge = document.createElement("span");
-        badge.className = "site-i18n-badge";
-        badge.setAttribute("data-i18n-skip", "");
-        badge.setAttribute("translate", "no");
-        badge.setAttribute("role", "status");
-        badge.setAttribute("aria-label", "Translating");
-        badge.innerHTML = BADGE_HTML;
-        /* A stuck request must not leave a permanent spinner behind. */
-        badge.setAttribute("data-i18n-timeout", String(setTimeout(function () {
-            hideTranslatingBadge(element);
-        }, 30000)));
-        element.appendChild(badge);
-    }
-
-    function hideTranslatingBadge(element) {
-        if (!element || !pendingByElement) return;
-        var count = (pendingByElement.get(element) || 0) - 1;
-        if (count > 0) {
-            pendingByElement.set(element, count);
-            return;
-        }
-        pendingByElement.delete(element);
-        var badges = element.querySelectorAll ? element.querySelectorAll(".site-i18n-badge") : [];
-        if (badges.length) {
-            for (var i = 0; i < badges.length; i += 1) {
-                var badge = badges[i];
-                if (badge.getAttribute("data-i18n-timeout")) {
-                    clearTimeout(Number(badge.getAttribute("data-i18n-timeout")));
-                }
-                badge.remove();
-            }
-        } else if (element.children) {
-            for (var j = element.children.length - 1; j >= 0; j -= 1) {
-                var child = element.children[j];
-                if (child.classList && child.classList.contains("site-i18n-badge")) {
-                    if (child.getAttribute("data-i18n-timeout")) {
-                        clearTimeout(Number(child.getAttribute("data-i18n-timeout")));
-                    }
-                    child.remove();
+        var buttons = document.querySelectorAll("[data-locale-open]");
+        if (buttons.length) {
+            for (var i = 0; i < buttons.length; i += 1) {
+                var button = buttons[i];
+                ensureThrobber(button);
+                if (active) {
+                    button.classList.add("is-translating");
+                    button.setAttribute("aria-busy", "true");
+                } else {
+                    button.classList.remove("is-translating");
+                    button.removeAttribute("aria-busy");
                 }
             }
         }
+        if (active) {
+            toolbarTranslatingTimer = setTimeout(function () {
+                setToolbarTranslating(false);
+            }, 30000);
+        }
     }
 
-    function queueDynamicText(text, apply, element) {
+    function updateToolbarTranslatingState() {
+        setToolbarTranslating(isTranslatingActive());
+    }
+
+    function queueDynamicText(text, apply) {
         var cache = loadDynamicCache();
         var key = dynamicKey(text);
         var waiter = function (value) {
-            try {
-                if (value) apply(value);
-            } finally {
-                hideTranslatingBadge(element);
-            }
+            if (value) apply(value);
         };
         if (cache[key]) {
             waiter(cache[key]);
@@ -766,13 +675,13 @@
         }
         if (dynamicPending[key]) {
             dynamicPending[key].push(waiter);
-            if (element) showTranslatingBadge(element);
+            updateToolbarTranslatingState();
             return;
         }
         if (dynamicRequests >= DYNAMIC_MAX_REQUESTS) return;
         dynamicPending[key] = [waiter];
-        if (element) showTranslatingBadge(element);
         dynamicQueue.push({ key: key, text: text });
+        updateToolbarTranslatingState();
         drainDynamic();
     }
 
@@ -799,7 +708,7 @@
                     if (/^(SCRIPT|STYLE|PRE|CODE|KBD|SAMP|TEXTAREA)$/.test(parent.tagName)) {
                         return NodeFilter.FILTER_REJECT;
                     }
-                    if (parent.closest("[data-i18n-skip]")) return NodeFilter.FILTER_REJECT;
+                    if (parent.closest("[data-i18n-skip]") || parent.closest("[translate='no']")) return NodeFilter.FILTER_REJECT;
                     if (parent.closest("[data-locale-panel]")) return NodeFilter.FILTER_REJECT;
                     if (catalogApplied && catalogApplied.has(node)) return NodeFilter.FILTER_REJECT;
                     if (dynamicSeen && dynamicSeen.has(node)) return NodeFilter.FILTER_REJECT;
@@ -829,10 +738,9 @@
                     var prefix = /^\s*/.exec(raw)[0];
                     var suffix = /\s*$/.exec(raw)[0];
                     var text = normalise(raw);
-                    var badgeTarget = getCopywritingContainer(target);
                     queueDynamicText(text, function (translated) {
                         target.nodeValue = prefix + translated + suffix;
-                    }, badgeTarget);
+                    });
                 }(node));
             }
             if (!wholePage) container.setAttribute("data-i18n-dynamic-state", "done");
@@ -892,6 +800,10 @@
 
         if (state.locale === DEFAULT_LOCALE && !Object.keys(state.regionCopy).length) {
             translateHead();
+            try {
+                global.dispatchEvent(new CustomEvent("site-locale-change", { detail: { locale: state.locale } }));
+                global.dispatchEvent(new CustomEvent("y1-locale-change", { detail: { locale: state.locale } }));
+            } catch (_) {}
             return;
         }
         if (!document.body) return;
@@ -903,6 +815,10 @@
         }
         scheduleDynamicScan();
         translateHead();
+        try {
+            global.dispatchEvent(new CustomEvent("site-locale-change", { detail: { locale: state.locale } }));
+            global.dispatchEvent(new CustomEvent("y1-locale-change", { detail: { locale: state.locale } }));
+        } catch (_) {}
     }
 
     function watch() {
@@ -993,8 +909,24 @@
         close: "Close",
         allLanguages: "All languages",
         editionNote: "The edition changes what this site offers, not just the language.",
-        english: "English (original)"
+        english: "English (original)",
+        suggested: "Suggested for you (US, UK & Europe)",
+        globalRegions: "Americas & Asia-Pacific",
+        allLanguagesAlpha: "All Languages (A–Z)",
+        noMatches: "No matching languages found"
     };
+
+    var SUGGESTED_CODES = [
+        "en-US", "en-GB", "en",
+        "de", "fr", "es", "it", "nl", "pl",
+        "pt-PT", "pt", "ru", "uk", "sv", "no", "da", "fi", "cs", "el", "hu", "ro", "tr"
+    ];
+
+    var AMERICAS_APAC_CODES = [
+        "es-419", "es-MX", "pt-BR",
+        "ja", "ko", "zh-CN", "zh-TW", "zh-HK",
+        "vi", "th", "id", "hi", "ar", "he"
+    ];
 
     function t(key) {
         if (!state.strings) return STRINGS[key];
@@ -1016,7 +948,7 @@
         var header = document.createElement("div");
         header.className = "site-locale-panel-head";
         header.innerHTML =
-            '<strong class="site-locale-panel-title"></strong>' +
+            '<strong class="site-locale-panel-title">' + escapeHtml(t("language")) + '</strong>' +
             '<button type="button" class="site-locale-close" aria-label="' + escapeHtml(t("close")) + '">×</button>';
         panel.appendChild(header);
 
@@ -1058,42 +990,111 @@
         });
     }
 
+    function renderItem(entry, container) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "site-locale-item";
+        button.setAttribute("role", "option");
+        button.setAttribute("data-code", entry.code);
+        if (entry.code === state.locale) {
+            button.classList.add("is-current");
+            button.setAttribute("aria-selected", "true");
+        }
+        var native = document.createElement("span");
+        native.className = "site-locale-native";
+        native.setAttribute("lang", entry.code);
+        native.setAttribute("dir", entry.dir || "ltr");
+        native.textContent = entry.native || entry.name;
+        var english = document.createElement("span");
+        english.className = "site-locale-english";
+        english.textContent = entry.name;
+        button.appendChild(native);
+        button.appendChild(english);
+        button.addEventListener("click", function () { setLocale(entry.code); });
+        container.appendChild(button);
+    }
+
     function renderList(container, query) {
         var needle = normalise(query).toLowerCase();
         container.innerHTML = "";
 
-        var entries = state.locales.filter(function (entry) {
-            if (!needle) return true;
-            return (entry.code + " " + entry.name + " " + entry.native).toLowerCase().indexOf(needle) >= 0;
-        });
-
-        if (!entries.some(function (entry) { return entry.code === DEFAULT_LOCALE; })) {
-            entries.unshift({ code: DEFAULT_LOCALE, name: "English", native: "English", dir: "ltr" });
+        var allEntries = state.locales.slice();
+        if (!allEntries.some(function (entry) { return entry.code === DEFAULT_LOCALE; })) {
+            allEntries.unshift({ code: DEFAULT_LOCALE, name: "English", native: "English", dir: "ltr" });
         }
 
-        entries.forEach(function (entry) {
-            var button = document.createElement("button");
-            button.type = "button";
-            button.className = "site-locale-item";
-            button.setAttribute("role", "option");
-            button.setAttribute("data-code", entry.code);
-            if (entry.code === state.locale) {
-                button.classList.add("is-current");
-                button.setAttribute("aria-selected", "true");
+        var seen = {};
+        var entries = [];
+        for (var i = 0; i < allEntries.length; i += 1) {
+            var item = allEntries[i];
+            if (!seen[item.code]) {
+                seen[item.code] = true;
+                entries.push(item);
             }
-            var native = document.createElement("span");
-            native.className = "site-locale-native";
-            native.setAttribute("lang", entry.code);
-            native.setAttribute("dir", entry.dir || "ltr");
-            native.textContent = entry.native || entry.name;
-            var english = document.createElement("span");
-            english.className = "site-locale-english";
-            english.textContent = entry.name;
-            button.appendChild(native);
-            button.appendChild(english);
-            button.addEventListener("click", function () { setLocale(entry.code); });
-            container.appendChild(button);
+        }
+
+        if (needle) {
+            var filtered = entries.filter(function (entry) {
+                return (entry.code + " " + entry.name + " " + (entry.native || "")).toLowerCase().indexOf(needle) >= 0;
+            });
+            if (!filtered.length) {
+                var empty = document.createElement("div");
+                empty.className = "site-locale-empty";
+                empty.textContent = t("noMatches");
+                container.appendChild(empty);
+                return;
+            }
+            filtered.forEach(function (entry) {
+                renderItem(entry, container);
+            });
+            return;
+        }
+
+        var entryMap = {};
+        entries.forEach(function (e) {
+            entryMap[e.code.toLowerCase()] = e;
         });
+
+        var used = {};
+        var suggested = [];
+        SUGGESTED_CODES.forEach(function (code) {
+            var key = code.toLowerCase();
+            if (entryMap[key] && !used[key]) {
+                used[key] = true;
+                suggested.push(entryMap[key]);
+            }
+        });
+
+        var americasApac = [];
+        AMERICAS_APAC_CODES.forEach(function (code) {
+            var key = code.toLowerCase();
+            if (entryMap[key] && !used[key]) {
+                used[key] = true;
+                americasApac.push(entryMap[key]);
+            }
+        });
+
+        var remaining = entries.filter(function (e) {
+            return !used[e.code.toLowerCase()];
+        });
+        remaining.sort(function (a, b) {
+            return (a.name || a.code).localeCompare(b.name || b.code);
+        });
+
+        function renderSection(title, list) {
+            if (!list.length) return;
+            var header = document.createElement("div");
+            header.className = "site-locale-section-title";
+            header.textContent = title;
+            container.appendChild(header);
+            list.forEach(function (entry) {
+                renderItem(entry, container);
+            });
+        }
+
+        renderSection(t("suggested"), suggested);
+        renderSection(t("globalRegions"), americasApac);
+        renderSection(t("allLanguagesAlpha"), remaining);
     }
 
     function renderEditions(container) {
@@ -1232,6 +1233,8 @@
        arrives; when a page has no dock, the old nav/floating control is
        created so the picker is never unreachable. */
     function markToggle(button) {
+        ensureBadgeStyles();
+        ensureThrobber(button);
         var label = button.querySelector(".site-locale-toggle-label");
         var text = labelFor(state.locale);
         if (label) label.textContent = text;
@@ -1239,6 +1242,13 @@
         button.setAttribute("aria-label", t("language") + ": " + text);
         button.setAttribute("aria-haspopup", "dialog");
         button.classList.add("site-locale-toggle");
+        if (isTranslatingActive()) {
+            button.classList.add("is-translating");
+            button.setAttribute("aria-busy", "true");
+        } else {
+            button.classList.remove("is-translating");
+            button.removeAttribute("aria-busy");
+        }
     }
 
     function bindExistingToggle() {
@@ -1258,6 +1268,9 @@
     }
 
     function createToggle(host) {
+        if (document.querySelector("[data-locale-open]") || document.querySelector(".site-locale-toggle")) {
+            return null;
+        }
         var button = document.createElement("button");
         button.type = "button";
         button.className = "site-locale-toggle";
@@ -1267,7 +1280,8 @@
             '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8">' +
             '<circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path>' +
             "</svg></span>" +
-            '<span class="site-locale-toggle-label"></span>';
+            '<span class="site-locale-toggle-label"></span>' +
+            '<span class="site-locale-throbber" aria-hidden="true"></span>';
         markToggle(button);
         button.addEventListener("click", function (event) {
             event.preventDefault();
@@ -1290,15 +1304,16 @@
 
     function mountToggle() {
         if (bindExistingToggle()) return;
-        if (document.querySelector(".site-locale-toggle")) return;
+        if (document.querySelector(".site-locale-toggle") || document.querySelector("[data-locale-open]")) return;
         /* site-init.js injects support_toolbar.html after DOMContentLoaded.
            Wait for it instead of adding a second, floating control that the
            dock button would then duplicate. */
         var slot = document.getElementById("support-toolbar-slot");
         if (slot && slot.dataset.shellLoaded !== "1") return;
         var dock = document.getElementById("y1-dock-buttons-layer");
+        if (dock) return;
         var tools = document.querySelector("#nav-root .nav-tools") || document.querySelector(".nav-tools");
-        createToggle(dock || tools);
+        createToggle(tools);
     }
 
     /* ---------------------------------------------------------------- */
@@ -1453,6 +1468,9 @@
                 state.strings = catalog;
                 catalogValues = null;
                 applyLanguage();
+                try {
+                    global.dispatchEvent(new CustomEvent("site-locale-ready", { detail: { locale: state.locale } }));
+                } catch (_) {}
             }
             watch();
             if (document.body) mountToggle();
