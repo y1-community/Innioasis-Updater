@@ -1606,6 +1606,43 @@
       });
   }
 
+  /* A project can mark parts of its release text as meant for its GitHub
+     release page only, such as install steps for a flashing tool the updater
+     replaces, or the list of attached files:
+
+       <!-- github-only -->
+       ...
+       <!-- /github-only -->
+
+     Each marker sits on a line of its own. GitHub hides the comments; the
+     updater leaves out what is between them. Text without markers comes back
+     as it is, and so does text whose markers do not pair up, so a mistake in
+     a project's notes never hides anything. */
+  var GITHUB_ONLY_OPEN = /^[ \t]*<!--\s*github-only\s*-->[ \t]*$/;
+  var GITHUB_ONLY_CLOSE = /^[ \t]*<!--\s*\/github-only\s*-->[ \t]*$/;
+
+  function withoutGithubOnly(markdown) {
+    var text = String(markdown || "");
+    if (text.indexOf("github-only") === -1) return text;
+    var lines = text.split("\n");
+    var kept = [];
+    var hiding = false;
+    for (var i = 0; i < lines.length; i += 1) {
+      var line = lines[i].replace(/\r$/, "");
+      if (GITHUB_ONLY_OPEN.test(line)) {
+        if (hiding) return text;
+        hiding = true;
+      } else if (GITHUB_ONLY_CLOSE.test(line)) {
+        if (!hiding) return text;
+        hiding = false;
+      } else if (!hiding) {
+        kept.push(lines[i]);
+      }
+    }
+    if (hiding) return text;
+    return kept.join("\n").replace(/(\r?\n){3,}/g, "\n\n");
+  }
+
   /**
    * The notes for one release. The release's own Markdown body wins when it
    * has one; otherwise the first readable notes file is pulled in: a Markdown
@@ -1616,7 +1653,7 @@
   function releaseNotesMarkdown(repo, tag) {
     if (!repo || !tag) return Promise.reject(new Error("no-release"));
     return fetchRelease(repo, tag).then(function (release) {
-      var body = String((release && release.body) || "").trim();
+      var body = withoutGithubOnly(release && release.body).trim();
       if (body) {
         return {
           markdown: body,
@@ -1807,7 +1844,7 @@
   /** Release notes written in Markdown, or a sensible one-line summary. */
   function releaseBody(release) {
     if (!release) return "";
-    var body = (release.body || "").trim();
+    var body = withoutGithubOnly(release.body).trim();
     if (body) return body;
     if (release.name) return "_" + release.name + " has no published notes yet._";
     return "_This release has no published notes yet._";
