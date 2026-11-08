@@ -12,6 +12,8 @@ Read `I18N.md` first; this file is only the work list and its state.
 
 - [Buffy] Runtime enabled site-wide: `install_runtime.py` `ENABLED = True`, tag on
   all 1,345 Updater pages and all gallery pages.
+- [Buffy] Theme browser page retired in favour of
+  https://themes.innioasis.app/; its generated copies and runtime were removed.
 - [Buffy] Language control added to the bottom support dock on both sites
   (`data-locale-open`), with late-binding to the injected dock and a nav/floating
   fallback.
@@ -66,8 +68,6 @@ Read `I18N.md` first; this file is only the work list and its state.
   belong on the site should be dropped rather than translated twice.
 - [ ] RTL visual pass on Arabic, Hebrew, Persian and Urdu (dock order, panel
   scrollbar, icon mirroring).
-- [ ] Themes gallery: decide whether theme *tags/categories* (community taxonomy,
-  not creator prose) should be translated. Currently excluded.
 - [ ] Add a `repository_dispatch` sender to the Updater doc-pages workflow so a
   firmware release triggers translation immediately instead of waiting for the
   daily run.
@@ -105,6 +105,8 @@ translation; the pipeline treats them as its cache.
       `?lang=` and reloads. Both routes verified in a browser.
 - [x] `prerender.py` writes `i18n/prerendered.json` so the runtime knows which
       copies actually exist before it tries to navigate to one.
+- [x] Theme downloader page retired; theme browsing now lives at
+      https://themes.innioasis.app/.
 - [ ] Remaining: deepen pre-translated catalogs beyond the shell and the modals.
       6,344 source strings exist; the API fallback covers the rest at runtime,
       but pre-translation is cheaper and does not depend on the network.

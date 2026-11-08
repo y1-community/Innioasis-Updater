@@ -5,6 +5,12 @@
     --y1-dock-space: 104px;
 }
 
+@media (max-width: 560px) {
+    :root {
+        --y1-dock-space: 52px;
+    }
+}
+
 /* Lumen site shortcuts and legacy compatibility chrome */
 
 body.site-themes-app {
@@ -1822,7 +1828,44 @@ body.site-dock-mode:has(#y1-site-dock-privacy-slot #y1-privacy-settings-btn) > #
     }
 }
 
+#support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--small,
+#support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--large,
+#support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--reset,
+#support-toolbar-container[data-dock-density="minimal"] .y1-dock-sep {
+    display: none !important;
+}
+
+#support-toolbar-container[data-dock-density="minimal"] .y1-dock-buttons-layer {
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: 2px 4px !important;
+    width: auto !important;
+    max-width: 100% !important;
+}
+
+#support-toolbar-container[data-dock-density="minimal"] .y1-dock-link,
+#support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn,
+#support-toolbar-container[data-dock-density="minimal"] .y1-dock-close-btn {
+    font-size: 0 !important;
+    padding: 6px 8px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+#support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
+    margin-inline-start: 0 !important;
+}
+
 @media (max-width: 560px) {
+    .y1-site-dock-bar {
+        border-radius: 14px;
+        padding: 4px 8px max(4px, env(safe-area-inset-bottom, 4px)) 8px !important;
+    }
+
     .y1-dock-secondary-goal-view {
         gap: 5px;
     }

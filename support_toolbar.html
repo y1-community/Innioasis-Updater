@@ -417,21 +417,41 @@
   #support-toolbar-container[data-dock-density="compact"] .y1-font-btn--small,
   #support-toolbar-container[data-dock-density="compact"] .y1-font-btn--large,
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-secondary-line,
-  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-goal-layer {
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-goal-layer,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--small,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--large,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--reset,
+  #support-toolbar-container[data-dock-density="minimal"] .y1-dock-sep {
     display: none !important;
   }
 
-  /* minimal: icons only, so three priority controls fit a 320px row. */
+  /* minimal: icons only, so priority controls and community links fit a single row on any smartphone. */
+  #support-toolbar-container[data-dock-density="minimal"] .y1-site-dock-bar {
+    padding-top: 4px !important;
+    padding-bottom: max(4px, env(safe-area-inset-bottom, 4px)) !important;
+    padding-inline: max(8px, env(safe-area-inset-left, 8px)) max(8px, env(safe-area-inset-right, 8px)) !important;
+  }
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-buttons-layer {
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
     gap: 2px 4px !important;
+    width: auto !important;
+    max-width: 100% !important;
   }
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link,
   #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn,
   #support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
     font-size: 0 !important;
-    padding: 8px 10px !important;
-    min-width: 44px;
-    min-height: 44px;
+    padding: 6px 8px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
+    margin-inline-start: 0 !important;
   }
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link .y1-dock-icon,
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link svg {
@@ -439,8 +459,12 @@
     height: 20px !important;
   }
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-close-btn {
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
   }
 
   /* Every density keeps finger-sized hit areas. The goal line is a clickable
@@ -2640,7 +2664,7 @@
     var shortest = Math.min(vw, vh);
     var ratio = vw / Math.max(vh, 1);
     var square = ratio > 0.82 && ratio < 1.22;
-    if (vw <= 420 || vh <= 480 || (square && shortest <= 640)) return "minimal";
+    if (vw <= 560 || vh <= 480 || (square && shortest <= 640)) return "minimal";
     if (vw <= 900 || vh <= 700 || square) return "compact";
     return "full";
   }

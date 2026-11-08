@@ -63,6 +63,9 @@ def page_files() -> list[pathlib.Path]:
             continue
         if rel in SKIP_FILES or rel.startswith("404") or parts[0].startswith("."):
             continue
+        # Legacy theme-downloader URLs are redirect stubs, not indexable pages.
+        if path.name.startswith("theme_downloader"):
+            continue
         pages.append(path)
     return sorted(pages, key=rel_for)
 

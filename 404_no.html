@@ -21,7 +21,21 @@
 <meta charset="utf-8">
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Page not found - Innioasis Updater</title><meta name="robots" content="noindex"><link rel="stylesheet" href="site-theme.css?v=20260803"><link rel="stylesheet" href="lumen.css?v=20261114video"><link rel="stylesheet" href="site-pages.css?v=20260818"><link rel="stylesheet" href="site-toolbar.css?v=20261105dockclose"><script src="site-init.js" defer></script><meta property="og:site_name" content="Innioasis Oppdaterer">
-  <script>(function(){var m=/\/release-notes\/([a-z0-9][a-z0-9._-]*)\/[a-z0-9][a-z0-9._-]*\.html$/i.exec(location.pathname||"");if(m){location.replace("/release_notes.html?software="+encodeURIComponent(m[1].toLowerCase()));}})();</script>  <link rel="canonical" href="https://innioasis.app/404_no.html">
+  <script>(function(){
+    var path = location.pathname || "";
+    var m = /\/release-notes\/([a-z0-9][a-z0-9._-]*)\/[a-z0-9][a-z0-9._-]*\.html$/i.exec(path);
+    if (m) {
+      location.replace("/release_notes.html?software=" + encodeURIComponent(m[1].toLowerCase()));
+      return;
+    }
+    var langMatch = /\/([a-z0-9_-]+?)_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i.exec(path);
+    if (langMatch && langMatch[1] !== "404") {
+      var base = langMatch[1];
+      var lang = langMatch[2];
+      var search = location.search ? location.search + "&lang=" + encodeURIComponent(lang) : "?lang=" + encodeURIComponent(lang);
+      location.replace("/" + base + ".html" + search + location.hash);
+    }
+  })();</script>  <link rel="canonical" href="https://innioasis.app/404_no.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/404.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/404.html">
@@ -33,10 +47,15 @@
   <link rel="alternate" hreflang="it" href="https://innioasis.app/404_it.html">
   <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/404_pt-BR.html">
   <link rel="alternate" hreflang="pt" href="https://innioasis.app/404_pt.html">
+  <link rel="alternate" hreflang="pt-br" href="https://innioasis.app/404_pt-br.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/404_pt-PT.html">
+  <link rel="alternate" hreflang="pt-pt" href="https://innioasis.app/404_pt-pt.html">
   <link rel="alternate" hreflang="ru" href="https://innioasis.app/404_ru.html">
   <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/404_zh-CN.html">
   <link rel="alternate" hreflang="zh" href="https://innioasis.app/404_zh.html">
+  <link rel="alternate" hreflang="zh-cn" href="https://innioasis.app/404_zh-cn.html">
   <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/404_zh-TW.html">
+  <link rel="alternate" hreflang="zh-tw" href="https://innioasis.app/404_zh-tw.html">
   <link rel="alternate" hreflang="ko" href="https://innioasis.app/404_ko.html">
   <link rel="alternate" hreflang="kr" href="https://innioasis.app/404_kr.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/404_ar.html">

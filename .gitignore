@@ -23,3 +23,6 @@ i18n/http.log
 
 # Responsive audit output (screenshots, reports)
 .responsive/
+
+# Local agent coordination notes (never commit)
+.coord/

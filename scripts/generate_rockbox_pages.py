@@ -848,7 +848,7 @@ def topic_body(m, slug: str, release) -> tuple[str, str, list, list, list]:
             "Pick the build resolution that matches the themes you want to use.",
             "If you want the widest library of classic Rockbox themes, 240p builds have the broadest compatibility.",
             "If you want sharper text and newer Y1-specific themes, choose a 360p build.",
-        ]) + actions(("Browse themes", "../theme_downloader.html"), ("%s theme guide" % label, m["themes"]))))
+        ]) + actions(("Browse themes", "https://themes.innioasis.app/"), ("%s theme guide" % label, m["themes"]))))
         faqs += [
             ("Can installing the wrong resolution harm my player?",
              "No. Both are safe for the hardware; you just need themes that match the build resolution you installed."),

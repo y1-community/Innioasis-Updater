@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08T16:50:18+00:00",
+  "generated": "2026-11-08T21:07:46+00:00",
   "locales": [
     "de",
     "ja",
@@ -7,6 +7,7 @@
     "fr",
     "it",
     "pt-BR",
+    "pt-PT",
     "ru",
     "zh-CN",
     "zh-TW",
@@ -36,10 +37,18 @@
       "jp"
     ],
     "zh-CN": [
-      "zh"
+      "zh",
+      "zh-cn"
+    ],
+    "zh-TW": [
+      "zh-tw"
     ],
     "pt-BR": [
-      "pt"
+      "pt",
+      "pt-br"
+    ],
+    "pt-PT": [
+      "pt-pt"
     ],
     "ko": [
       "kr"
@@ -72,6 +81,7 @@
     "original-software-y1",
     "original-software-y2",
     "post_install",
+    "privacy",
     "reborn-y2linux-benefits",
     "reborn-y2linux-y2-software",
     "recover-non-booting-device",
@@ -92,7 +102,6 @@
     "sp-flash-tool",
     "sp-flash-tool-mac",
     "support_devs",
-    "theme_downloader",
     "troubleshooting",
     "universal-flash-tool",
     "updater-comparison",

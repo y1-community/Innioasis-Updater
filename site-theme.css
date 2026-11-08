@@ -1029,7 +1029,7 @@ html, body {
    tablet-landscape widths (art ended 15px past a 1133px viewport). Both tracks
    may shrink now, and the art is capped by its container. */
 body.site-themes-app .lumen-hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
     column-gap: clamp(1rem, 3vw, 2.5rem);
 }
 

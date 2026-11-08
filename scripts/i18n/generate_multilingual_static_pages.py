@@ -102,7 +102,7 @@ CORE_PAGE_STEMS = [
 
 # Major global locales to generate literal static pages for
 DEFAULT_STATIC_LOCALES = [
-    "de", "ja", "es", "fr", "it", "pt-BR", "ru", "zh-CN", "zh-TW",
+    "de", "ja", "es", "fr", "it", "pt-BR", "pt-PT", "ru", "zh-CN", "zh-TW",
     "ko", "ar", "nl", "pl", "tr", "uk", "vi", "th", "id", "he",
     "hi", "cs", "el", "sv", "fa", "da", "fi", "hu", "no", "ro"
 ]
@@ -111,8 +111,10 @@ DEFAULT_STATIC_LOCALES = [
 # e.g. "jp" is universally recognized for Japanese alongside "ja"
 LOCALE_ALIASES = {
     "ja": ["jp"],
-    "zh-CN": ["zh"],
-    "pt-BR": ["pt"],
+    "zh-CN": ["zh", "zh-cn"],
+    "zh-TW": ["zh-tw"],
+    "pt-BR": ["pt", "pt-br"],
+    "pt-PT": ["pt-pt"],
     "ko": ["kr"],
 }
 

@@ -31,7 +31,7 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261108e";
+    var RUNTIME_VERSION = "20261108g";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -337,6 +337,22 @@
             if (value && value !== key) catalogValues.add(normalise(value));
         }
         return catalogValues;
+    }
+
+    /* A rendered label often carries an emoji or a trailing count that the
+       catalog entry does not, so an exact lookup says "not translated" and the
+       API receives German copy with a new icon in front of it. Strip the
+       decoration before deciding. */
+    function catalogHasValue(value) {
+        var seen = catalogValueSet();
+        if (!seen) return false;
+        if (seen.has(value)) return true;
+        var letters = "0-9A-Za-z\\u00C0-\\u024F\\u0370-\\u03FF\\u0400-\\u04FF\\u0590-\\u05FF\\u0600-\\u06FF\\u0900-\\u097F\\u0E00-\\u0E7F\\u3040-\\u30FF\\u3400-\\u9FFF\\uAC00-\\uD7AF";
+        var trimmed = value
+            .replace(new RegExp("^[^" + letters + "]+"), "")
+            .replace(new RegExp("[^" + letters + "]+$"), "")
+            .trim();
+        return trimmed !== value && seen.has(trimmed);
     }
 
     function shouldSkip(element) {
@@ -773,8 +789,7 @@
                        leaves untouched); that still needs the API. */
                     var known = state.strings[value];
                     if (known && known !== value) return NodeFilter.FILTER_REJECT;
-                    var seenValues = catalogValueSet();
-                    if (seenValues && seenValues.has(value)) return NodeFilter.FILTER_REJECT;
+                    if (catalogHasValue(value)) return NodeFilter.FILTER_REJECT;
                     /* A label that is only a brand name stays as written. */
                     if (isBrandOnly(value)) return NodeFilter.FILTER_REJECT;
                     return NodeFilter.FILTER_ACCEPT;
@@ -814,8 +829,7 @@
                         if (text.length < 4 || !/[A-Za-z]{2}/.test(text)) return;
                         var known = state.strings[text];
                         if (known && known !== text) return;
-                        var seenAttrValues = catalogValueSet();
-                        if (seenAttrValues && seenAttrValues.has(text)) return;
+                        if (catalogHasValue(text)) return;
                         if (isBrandOnly(text)) return;
                         queueDynamicText(text, function (translated) {
                             element.setAttribute(name, translated);
@@ -1467,12 +1481,10 @@
         } else {
             url.searchParams.set("lang", code);
         }
-        var target = url.pathname + url.search + url.hash;
-        if (typeof global.y1DecorateUrl === "function") {
-            try { target = global.y1DecorateUrl(target); } catch (_) {}
-        }
-        global.location.href = target;
+        global.location.href = url.pathname + url.search + url.hash;
     }
+
+    var localeNavAbort = null;
 
     function setLocale(code) {
         if (!code || code === state.locale) {
@@ -1488,14 +1500,97 @@
         }
 
         var url = new URL(global.location.href);
-        var isStaticCandidate = /_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i.test(url.pathname) || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
-        if (isStaticCandidate) {
-            var targetFile = literalPathFor(code);
-            navigateToLiteral(targetFile, code);
+        var pathname = (global.location && global.location.pathname) || "/";
+        var fileName = pathname.split("/").pop() || "index.html";
+        if (!fileName || !fileName.endsWith(".html")) fileName = "index.html";
+
+        var baseName = fileName.replace(/_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i, "");
+        if (baseName.endsWith(".html")) baseName = baseName.slice(0, -5);
+        if (!baseName) baseName = "index";
+
+        var dir = url.pathname.substring(0, url.pathname.lastIndexOf("/") + 1);
+        var cleanCode = normalizeTag(code);
+
+        function fallbackToParam() {
+            var fallbackUrl = new URL(global.location.href);
+            var curFile = fallbackUrl.pathname.split("/").pop() || "";
+            if (/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i.test(curFile)) {
+                fallbackUrl.pathname = dir + baseName + ".html";
+            }
+            if (cleanCode === DEFAULT_LOCALE) {
+                fallbackUrl.searchParams.delete("lang");
+            } else {
+                fallbackUrl.searchParams.set("lang", code);
+            }
+            global.location.href = fallbackUrl.pathname + fallbackUrl.search + fallbackUrl.hash;
+        }
+
+        // Switching back to default (English): return to canonical base file without ?lang=
+        if (cleanCode === DEFAULT_LOCALE) {
+            var enUrl = new URL(global.location.href);
+            enUrl.pathname = dir + baseName + ".html";
+            enUrl.searchParams.delete("lang");
+            global.location.href = enUrl.pathname + enUrl.search + enUrl.hash;
             return;
         }
 
-        navigate({ lang: code });
+        var isStaticCandidate = /_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i.test(url.pathname) || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
+        if (!isStaticCandidate) {
+            fallbackToParam();
+            return;
+        }
+
+        // Check if candidate static file exists on server before navigating to avoid 404
+        var map = localeIndex();
+        var entry = map[cleanCode] || {};
+        var exactCode = entry.code || code;
+        var candidateFiles = [];
+        if (exactCode) {
+            candidateFiles.push(baseName + "_" + exactCode + ".html");
+        }
+        if (cleanCode && cleanCode !== exactCode) {
+            candidateFiles.push(baseName + "_" + cleanCode + ".html");
+        }
+
+        if (typeof fetch === "function" && /^https?:/.test(global.location.protocol)) {
+            if (localeNavAbort) {
+                try { localeNavAbort.abort(); } catch (_) {}
+            }
+            var controller = typeof AbortController === "function" ? new AbortController() : null;
+            localeNavAbort = controller;
+
+            var timer = setTimeout(function () {
+                if (controller) controller.abort();
+                fallbackToParam();
+            }, 1800);
+
+            function checkCandidate(index) {
+                if (index >= candidateFiles.length) {
+                    clearTimeout(timer);
+                    fallbackToParam();
+                    return;
+                }
+                var testFile = candidateFiles[index];
+                var testUrl = dir + testFile;
+                fetch(testUrl, { method: "HEAD", signal: controller ? controller.signal : undefined })
+                    .then(function (res) {
+                        if (res.ok) {
+                            clearTimeout(timer);
+                            navigateToLiteral(testFile, code);
+                        } else {
+                            checkCandidate(index + 1);
+                        }
+                    })
+                    .catch(function () {
+                        checkCandidate(index + 1);
+                    });
+            }
+
+            checkCandidate(0);
+            return;
+        }
+
+        fallbackToParam();
     }
 
     function setRegion(code) {
@@ -1510,24 +1605,28 @@
 
     function loadCatalog(code) {
         var map = localeIndex();
-        var entry = map[normalizeTag(code)] || {};
+        var clean = normalizeTag(code);
+        var entry = map[clean] || {};
+        var specific = entry.code || code;
         var base = entry.base || code;
-        return fetchJson("i18n/catalogs/" + base + ".json", 6000)
-            .then(function (catalog) {
-                state.dir = catalog.dir || entry.dir || "ltr";
-                return catalog.strings || {};
+        return fetchJson("i18n/catalogs/" + specific + ".json", 6000)
+            .catch(function () {
+                if (base && base !== specific) {
+                    return fetchJson("i18n/catalogs/" + base + ".json", 6000);
+                }
+                throw new Error("No catalog found");
             })
             .catch(function () {
-                if (base !== code && base.indexOf("-") > 0) {
-                    var language = base.split("-")[0];
-                    return fetchJson("i18n/catalogs/" + language + ".json", 6000)
-                        .then(function (catalog) {
-                            state.dir = catalog.dir || entry.dir || "ltr";
-                            return catalog.strings || {};
-                        })
-                        .catch(function () { return null; });
+                var langPart = specific.split("-")[0];
+                if (langPart && langPart !== specific && langPart !== base) {
+                    return fetchJson("i18n/catalogs/" + langPart + ".json", 6000);
                 }
                 return null;
+            })
+            .then(function (catalog) {
+                if (!catalog) return null;
+                state.dir = catalog.dir || entry.dir || "ltr";
+                return catalog.strings || {};
             });
     }
 
@@ -1750,6 +1849,29 @@
            subtree in one write. */
         refresh: applyLanguage,
         translateDynamic: queueDynamic,
+        /* Translate one string that a page rendered itself (theme cards, list
+           rows). Resolves to "" when the locale is English, the request is
+           over the page cap, or the provider has nothing to add, so callers
+           can keep their own English copy. */
+        translateRemote: function (text) {
+            var source = normalise(text);
+            if (!source || !dynamicEnabled()) return Promise.resolve("");
+            if (dynamicRequests >= DYNAMIC_MAX_REQUESTS) return Promise.resolve("");
+            if (typeof Promise !== "function") return Promise.resolve("");
+            return new Promise(function (resolve) {
+                var settled = false;
+                function finish(value) {
+                    if (settled) return;
+                    settled = true;
+                    resolve(value || "");
+                }
+                var timer = setTimeout(function () { finish(""); }, 20000);
+                queueDynamicText(source, function (translated) {
+                    clearTimeout(timer);
+                    finish(translated);
+                });
+            });
+        },
         translate: function (text) {
             var source = normalise(text);
             if (!source) return text;

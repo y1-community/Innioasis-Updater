@@ -130,7 +130,8 @@
       "exclude": [
         "i18n/**",
         "dist/**",
-        "assets/**"
+        "assets/**",
+        "theme_downloader*.html"
       ]
     },
     "full": {
@@ -144,7 +145,8 @@
         "assets/**",
         "node_modules/**",
         ".git/**",
-        ".cache/**"
+        ".cache/**",
+        "**/theme_downloader*.html"
       ]
     }
   },

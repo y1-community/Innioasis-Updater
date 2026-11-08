@@ -220,9 +220,13 @@ def main() -> int:
         print("No pages selected.", file=sys.stderr)
         return 2
 
+    CORE_LOCALES = {"de", "fr", "es", "it", "nl", "pl", "pt", "pt-BR", "ru", "uk", "tr", "ja", "ko", "zh-CN", "zh-TW", "ar"}
     shipping = available_locales(catalog_dir, bases, variants)
-    if args.locales.strip().lower() != "all":
-        wanted = [code.strip() for code in args.locales.split(",") if code.strip()]
+    if args.locales.strip().lower() == "core":
+        wanted = CORE_LOCALES
+        shipping = [entry for entry in shipping if entry["code"] in wanted or entry["code"] == "en"]
+    elif args.locales.strip().lower() != "all":
+        wanted = set(code.strip() for code in args.locales.split(",") if code.strip())
         shipping = [entry for entry in shipping if entry["code"] in wanted or entry["code"] == "en"]
 
     shipping = [entry for entry in shipping if entry["code"] != "en"]
