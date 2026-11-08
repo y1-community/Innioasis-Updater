@@ -31,7 +31,7 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261108g";
+    var RUNTIME_VERSION = "20261108hero";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -62,7 +62,8 @@
         regionCopy: {},
         applied: 0,
         panel: null,
-        copies: []
+        copies: [],
+        prerendered: null
     };
 
     var observer = null;
@@ -154,6 +155,9 @@
 
     function localeIndex() {
         var map = {};
+        map[DEFAULT_LOCALE] = { code: DEFAULT_LOCALE, name: "English", native: "English", dir: "ltr" };
+        map["en-us"] = { code: "en-US", base: "en", name: "English (United States)", native: "English (US)", dir: "ltr" };
+        map["en-gb"] = { code: "en-GB", base: "en", name: "English (United Kingdom)", native: "English (UK)", dir: "ltr" };
         state.locales.forEach(function (entry) {
             var c = entry.code.toLowerCase();
             map[c] = entry;
@@ -1484,6 +1488,32 @@
         global.location.href = url.pathname + url.search + url.hash;
     }
 
+    function getPrerenderedTarget(baseName, code) {
+        if (!state.prerendered || !state.prerendered.pages || !state.prerendered.locales) return null;
+        var pages = state.prerendered.pages;
+        var locales = state.prerendered.locales;
+        var aliases = state.prerendered.aliases || {};
+
+        if (pages.indexOf(baseName) === -1) return null;
+
+        var clean = normalizeTag(code);
+        for (var i = 0; i < locales.length; i++) {
+            if (locales[i].toLowerCase() === clean) {
+                return baseName + "_" + locales[i] + ".html";
+            }
+        }
+        for (var primary in aliases) {
+            if (!Object.prototype.hasOwnProperty.call(aliases, primary)) continue;
+            var list = aliases[primary] || [];
+            for (var j = 0; j < list.length; j++) {
+                if (list[j].toLowerCase() === clean) {
+                    return baseName + "_" + primary + ".html";
+                }
+            }
+        }
+        return null;
+    }
+
     var localeNavAbort = null;
 
     function setLocale(code) {
@@ -1491,6 +1521,7 @@
             closePanel();
             return;
         }
+        closePanel();
         writeStorage(STORAGE_LOCALE, code);
         setSharedCookie(STORAGE_LOCALE, code);
         track("site_language_change", { language_chosen: code });
@@ -1514,8 +1545,8 @@
         function fallbackToParam() {
             var fallbackUrl = new URL(global.location.href);
             var curFile = fallbackUrl.pathname.split("/").pop() || "";
-            if (/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i.test(curFile)) {
-                fallbackUrl.pathname = dir + baseName + ".html";
+            if (/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i.test(curFile) || !curFile.endsWith(".html")) {
+                fallbackUrl.pathname = dir + (baseName || "index") + ".html";
             }
             if (cleanCode === DEFAULT_LOCALE) {
                 fallbackUrl.searchParams.delete("lang");
@@ -1531,6 +1562,13 @@
             enUrl.pathname = dir + baseName + ".html";
             enUrl.searchParams.delete("lang");
             global.location.href = enUrl.pathname + enUrl.search + enUrl.hash;
+            return;
+        }
+
+        // Instant navigation if pre-rendered target file is in manifest
+        var prerenderedFile = getPrerenderedTarget(baseName, code);
+        if (prerenderedFile) {
+            navigateToLiteral(prerenderedFile, code);
             return;
         }
 
@@ -1562,7 +1600,7 @@
             var timer = setTimeout(function () {
                 if (controller) controller.abort();
                 fallbackToParam();
-            }, 1800);
+            }, 600);
 
             function checkCandidate(index) {
                 if (index >= candidateFiles.length) {
@@ -1608,25 +1646,39 @@
         var clean = normalizeTag(code);
         var entry = map[clean] || {};
         var specific = entry.code || code;
-        var base = entry.base || code;
-        return fetchJson("i18n/catalogs/" + specific + ".json", 6000)
-            .catch(function () {
-                if (base && base !== specific) {
-                    return fetchJson("i18n/catalogs/" + base + ".json", 6000);
+        var base = entry.base || (clean.indexOf("-") > 0 ? clean.split("-")[0] : code);
+
+        function fetchOne(catName) {
+            return fetchJson("i18n/catalogs/" + catName + ".json", 6000).catch(function () { return null; });
+        }
+
+        var isVariant = base && base.toLowerCase() !== specific.toLowerCase();
+        if (isVariant) {
+            return Promise.all([fetchOne(base), fetchOne(specific)])
+                .then(function (results) {
+                    var baseCat = results[0];
+                    var specCat = results[1];
+                    if (!baseCat && !specCat) return null;
+                    state.dir = (specCat && specCat.dir) || (baseCat && baseCat.dir) || entry.dir || "ltr";
+                    var merged = Object.assign({}, (baseCat && baseCat.strings) || {}, (specCat && specCat.strings) || {});
+                    return merged;
+                });
+        }
+
+        return fetchOne(specific)
+            .then(function (cat) {
+                if (cat) {
+                    state.dir = cat.dir || entry.dir || "ltr";
+                    return cat.strings || {};
                 }
-                throw new Error("No catalog found");
-            })
-            .catch(function () {
-                var langPart = specific.split("-")[0];
-                if (langPart && langPart !== specific && langPart !== base) {
-                    return fetchJson("i18n/catalogs/" + langPart + ".json", 6000);
+                if (base && base !== specific) {
+                    return fetchOne(base).then(function (bcat) {
+                        if (!bcat) return null;
+                        state.dir = bcat.dir || entry.dir || "ltr";
+                        return bcat.strings || {};
+                    });
                 }
                 return null;
-            })
-            .then(function (catalog) {
-                if (!catalog) return null;
-                state.dir = catalog.dir || entry.dir || "ltr";
-                return catalog.strings || {};
             });
     }
 
@@ -1650,6 +1702,7 @@
         ]).then(function (results) {
             state.locales = (results[0] && results[0].locales) || [];
             state.regions = results[1];
+            state.prerendered = results[2];
             state.copies = (results[2] && results[2].locales) || [];
             return confirmCountry();
         }).then(function () {

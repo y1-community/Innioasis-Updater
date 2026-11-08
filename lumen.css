@@ -152,7 +152,7 @@ body.site-themes-app *, body.site-themes-app *::before, body.site-themes-app *::
 body.site-themes-app a { color: var(--lumen-accent); text-underline-offset: .18em; }
 body.site-themes-app a:hover { color: var(--lumen-paper); }
 body.site-themes-app :where(button, a, select, summary, input, textarea):focus-visible { outline: 3px solid var(--lumen-accent); outline-offset: 3px; }
-body.site-themes-app :where(h1, h2, h3, h4) { min-width: 0; overflow-wrap: anywhere; font-style: normal; }
+body.site-themes-app :where(h1, h2, h3, h4) { min-width: 0; overflow-wrap: break-word; font-style: normal; }
 body.site-themes-app :where(p, li) { max-width: 70ch; }
 
 /* #nav-root must not box its child: the sticky nav sticks within its
@@ -215,14 +215,15 @@ body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: 
 .lumen-home { min-height: 100vh; }
 .lumen-hero, .lumen-section { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; }
 .lumen-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); align-items: start; gap: clamp(1.5rem, 3.5vw, 3.5rem); min-height: min(600px, calc(100vh - 58px)); padding: var(--lumen-space-8) 0; }
+.lumen-hero > * { min-width: 0; }
 .lumen-kicker { margin: 0 0 .8rem; color: var(--lumen-accent); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.lumen-hero h1 { margin: 0; max-width: 9ch; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(3.4rem, 8vw, 7.3rem) * var(--lumen-font-scale, 1)); line-height: .89; letter-spacing: -.055em; }
+.lumen-hero h1 { margin: 0; max-width: 100%; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(2.4rem, 5.2vw, 4.4rem) * var(--lumen-font-scale, 1)); line-height: 1.05; letter-spacing: -.035em; overflow-wrap: break-word; }
 .lumen-hero h1 em { color: var(--lumen-accent); font-style: normal; }
-.lumen-hero-lead { max-width: 46ch; margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: calc(clamp(1rem, 1.8vw, 1.2rem) * var(--lumen-font-scale, 1)); line-height: 1.55; }
+.lumen-hero-lead { max-width: 52ch; margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: calc(clamp(1rem, 1.8vw, 1.2rem) * var(--lumen-font-scale, 1)); line-height: 1.55; overflow-wrap: break-word; }
 .lumen-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: var(--lumen-space-6); }
-.lumen-hero-art { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--lumen-line); border-radius: 36% 64% 48% 52% / 45% 38% 62% 55%; background: radial-gradient(circle at 55% 36%, var(--lumen-accent-wash), transparent 49%), var(--lumen-panel); overflow: visible; }
+.lumen-hero-art { position: relative; width: 100%; max-width: 340px; min-width: 0; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--lumen-line); border-radius: 36% 64% 48% 52% / 45% 38% 62% 55%; background: radial-gradient(circle at 55% 36%, var(--lumen-accent-wash), transparent 49%), var(--lumen-panel); overflow: visible; }
 .lumen-hero-art::after { content: ""; position: absolute; inset: 12%; z-index: 0; border: 1px solid var(--lumen-line); border-radius: 50%; transform: rotate(-18deg); pointer-events: none; }
-.lumen-hero-art img { position: relative; z-index: 1; width: min(72%, 320px); height: auto; aspect-ratio: 1; object-fit: contain; transform: translateX(4%); }
+.lumen-hero-art img { position: relative; z-index: 1; width: min(72%, 320px); max-width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; transform: translateX(4%); }
 .lumen-section { padding: var(--lumen-space-8) 0; }
 .lumen-section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--lumen-space-5); margin-bottom: var(--lumen-space-5); }
 /* Section titles run on one line whenever the viewport allows; the wrap
@@ -685,7 +686,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
        monitors and tablets instead of stacking. */
     .lumen-hero .lumen-button { padding: .5rem .7rem; font-size: .82rem; }
     .lumen-hero-lead { font-size: .95rem; }
-    .lumen-hero h1 { font-size: calc(clamp(2.9rem, 7.5vw, 5.6rem) * var(--lumen-font-scale, 1)); }
+    .lumen-hero h1 { font-size: calc(clamp(2.2rem, 5vw, 3.8rem) * var(--lumen-font-scale, 1)); }
     .lumen-grid, .lumen-platform-grid, .lumen-release-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -700,7 +701,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 
 @media (max-width: 620px) {
     body.site-themes-app .nav-container, .lumen-hero, .lumen-section, .lumen-directory, .lumen-guide { width: min(100% - 1.5rem, 560px); }
-    .lumen-hero h1, .lumen-directory h1, .lumen-guide h1 { max-width: 100%; font-size: calc(clamp(3rem, 16vw, 5rem) * var(--lumen-font-scale, 1)); }
+    .lumen-hero h1, .lumen-directory h1, .lumen-guide h1 { max-width: 100%; font-size: calc(clamp(2rem, 8vw, 3.2rem) * var(--lumen-font-scale, 1)); }
     .lumen-section-head { display: block; }
     .lumen-section-head p { margin-top: .75rem; }
     .lumen-grid, .lumen-platform-grid, .lumen-release-grid { grid-template-columns: 1fr; }
