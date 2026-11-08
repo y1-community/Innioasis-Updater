@@ -332,6 +332,225 @@
         });
     }
 
+    /* ---------------------------------------------------------------- */
+    /* Dynamic content                                                  */
+    /* ---------------------------------------------------------------- */
+    /* Release notes, READMEs, notices and parsed markdown are fetched and
+       rendered after the catalog was built, so no catalog can contain them.
+       This translates those containers on demand through the same keyless
+       public endpoint the Updater app uses, caches the result per language
+       (so a second page view costs nothing), and leaves the English text in
+       place if the request fails. Only explicitly marked content areas are
+       sent, never the whole document. */
+    var DYNAMIC_CONTAINERS = [
+        "body",
+        "html",
+        "[data-i18n-dynamic]",
+        "#release-body",
+        "#doc-body",
+        "#notices-list",
+        "#lumen-notices-tray-body",
+        ".lumen-notice-body",
+        "[data-doc-view]",
+        "main",
+        "article.lumen-doc-body",
+        ".lumen-notice-view"
+    ].join(", ");
+    var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations";
+    var DYNAMIC_MAX_REQUESTS = 800;
+    var DYNAMIC_CONCURRENCY = 2;
+    var dynamicCache = null;
+    var dynamicSeen = typeof WeakSet === "function" ? new WeakSet() : null;
+    var dynamicQueue = [];
+    var dynamicPending = {};
+    var dynamicInFlight = 0;
+    var dynamicRequests = 0;
+
+    function loadDynamicCache() {
+        if (dynamicCache) return dynamicCache;
+        try {
+            dynamicCache = JSON.parse(global.localStorage.getItem(DYNAMIC_CACHE_KEY) || "{}") || {};
+        } catch (_) {
+            dynamicCache = {};
+        }
+        return dynamicCache;
+    }
+
+    function persistDynamicCache() {
+        var cache = loadDynamicCache();
+        var keys = Object.keys(cache);
+        if (keys.length > 800) {
+            keys.slice(0, keys.length - 800).forEach(function (key) { delete cache[key]; });
+        }
+        try { global.localStorage.setItem(DYNAMIC_CACHE_KEY, JSON.stringify(cache)); } catch (_) {}
+    }
+
+    function dynamicEntry() {
+        var map = localeIndex();
+        return map[normalizeTag(state.locale)] || {};
+    }
+
+    function dynamicEnabled() {
+        var entry = dynamicEntry();
+        var base = entry.base || entry.code || normalizeTag(state.locale);
+        return String(base).toLowerCase() !== DEFAULT_LOCALE;
+    }
+
+    function dynamicTarget() {
+        var entry = dynamicEntry();
+        return entry.google || state.locale;
+    }
+
+    function dynamicKey(text) {
+        return state.locale + "|" + text;
+    }
+
+    function requestDynamic(text) {
+        var target = dynamicTarget();
+        var gtxUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
+            encodeURIComponent(target) + "&dt=t&q=" + encodeURIComponent(text);
+        var clients5Url = "https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=" +
+            encodeURIComponent(target) + "&q=" + encodeURIComponent(text);
+        var mymemoryUrl = "https://api.mymemory.translated.net/get?q=" +
+            encodeURIComponent(text) + "&langpair=en|" + encodeURIComponent(target);
+
+        function tryGTX() {
+            return fetch(gtxUrl, { method: "GET", mode: "cors" })
+                .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+                .then(function (data) {
+                    var segments = (data && data[0]) || [];
+                    var translated = "";
+                    for (var i = 0; i < segments.length; i += 1) {
+                        if (segments[i] && segments[i][0]) translated += segments[i][0];
+                    }
+                    if (!translated) throw new Error();
+                    return translated;
+                });
+        }
+
+        function tryClients5() {
+            return fetch(clients5Url, { method: "GET", mode: "cors" })
+                .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+                .then(function (data) {
+                    if (Array.isArray(data) && data.length) {
+                        var first = data[0];
+                        if (Array.isArray(first) && first.length) return String(first[0]).trim();
+                        if (typeof first === "string") return first.trim();
+                    }
+                    throw new Error();
+                });
+        }
+
+        function tryMyMemory() {
+            return fetch(mymemoryUrl, { method: "GET", mode: "cors" })
+                .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+                .then(function (data) {
+                    var match = data && data.responseData && data.responseData.translatedText;
+                    if (match && match.trim()) return match.trim();
+                    throw new Error();
+                });
+        }
+
+        return tryGTX()
+            .catch(tryClients5)
+            .catch(tryMyMemory)
+            .then(function (translated) {
+                if (translated && translated.trim()) {
+                    loadDynamicCache()[dynamicKey(text)] = translated.trim();
+                    persistDynamicCache();
+                    return translated.trim();
+                }
+                return "";
+            })
+            .catch(function () {
+                return "";
+            });
+    }
+
+    function drainDynamic() {
+        while (dynamicInFlight < DYNAMIC_CONCURRENCY && dynamicQueue.length) {
+            var item = dynamicQueue.shift();
+            dynamicInFlight += 1;
+            dynamicRequests += 1;
+            requestDynamic(item.text).then(function (key) {
+                return function (translated) {
+                    dynamicInFlight -= 1;
+                    var waiters = dynamicPending[key] || [];
+                    delete dynamicPending[key];
+                    if (translated) {
+                        waiters.forEach(function (apply) { apply(translated); });
+                    }
+                    drainDynamic();
+                };
+            }(item.key));
+        }
+    }
+
+    function queueDynamicText(text, apply) {
+        var cache = loadDynamicCache();
+        var key = dynamicKey(text);
+        if (cache[key]) {
+            apply(cache[key]);
+            return;
+        }
+        if (dynamicPending[key]) {
+            dynamicPending[key].push(apply);
+            return;
+        }
+        if (dynamicRequests >= DYNAMIC_MAX_REQUESTS) return;
+        dynamicPending[key] = [apply];
+        dynamicQueue.push({ key: key, text: text });
+        drainDynamic();
+    }
+
+    function queueDynamic(root) {
+        if (!dynamicEnabled() || !root) return;
+        var containers = [];
+        if (root.nodeType === 1 && root.matches && root.matches(DYNAMIC_CONTAINERS)) {
+            containers.push(root);
+        }
+        if (root.querySelectorAll) {
+            containers = containers.concat(
+                Array.prototype.slice.call(root.querySelectorAll(DYNAMIC_CONTAINERS))
+            );
+        }
+        containers.forEach(function (container) {
+            if (container.getAttribute("data-i18n-dynamic-state") === "done") return;
+            container.setAttribute("data-i18n-dynamic-state", "loading");
+            if (typeof document.createTreeWalker !== "function") return;
+            var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+                acceptNode: function (node) {
+                    var parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    if (/^(SCRIPT|STYLE|PRE|CODE|KBD|SAMP|TEXTAREA)$/.test(parent.tagName)) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    if (parent.closest("[data-i18n-skip]")) return NodeFilter.FILTER_REJECT;
+                    if (dynamicSeen && dynamicSeen.has(node)) return NodeFilter.FILTER_REJECT;
+                    var value = normalise(node.nodeValue);
+                    if (value.length < 4 || !/[A-Za-z]{2}/.test(value)) return NodeFilter.FILTER_REJECT;
+                    /* Already covered by the catalog translateTree pass. */
+                    if (state.strings[value]) return NodeFilter.FILTER_REJECT;
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+            var node;
+            while ((node = walker.nextNode())) {
+                if (dynamicSeen) dynamicSeen.add(node);
+                (function (target) {
+                    var raw = target.nodeValue;
+                    var prefix = /^\s*/.exec(raw)[0];
+                    var suffix = /\s*$/.exec(raw)[0];
+                    var text = normalise(raw);
+                    queueDynamicText(text, function (translated) {
+                        target.nodeValue = prefix + translated + suffix;
+                    });
+                }(node));
+            }
+            container.setAttribute("data-i18n-dynamic-state", "done");
+        });
+    }
+
     function applyLanguage() {
         var root = document.documentElement;
         if (!root) return;
@@ -354,6 +573,7 @@
         } finally {
             applying = false;
         }
+        queueDynamic(document.body);
         translateHead();
     }
 
@@ -372,6 +592,8 @@
                             if (added.nodeType === 3) translateTree(added);
                             else if (added.nodeType === 1 && !added.hasAttribute("data-locale-panel")) {
                                 translateTree(added);
+                                /* Release notes, READMEs and notices land here. */
+                                queueDynamic(added);
                             }
                         }
                     } else if (record.type === "characterData" && record.target) {
@@ -917,6 +1139,7 @@
            of it; this is the explicit hook for a page that replaces a large
            subtree in one write. */
         refresh: applyLanguage,
+        translateDynamic: queueDynamic,
         translate: function (text) {
             var source = normalise(text);
             if (!source) return text;

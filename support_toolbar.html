@@ -2408,15 +2408,16 @@
     }
 
     function selectLanguage(code) {
+      if (!code) return;
       try {
         localStorage.setItem("innioasis-locale", code);
       } catch (_) {}
 
-      // If site-locale runtime is present, use its public API if available
-      if (window.SiteLocale && typeof window.SiteLocale.setLocale === "function") {
+      if (window.InnioasisLocale && typeof window.InnioasisLocale.set === "function") {
+        window.InnioasisLocale.set(code);
+      } else if (window.SiteLocale && typeof window.SiteLocale.setLocale === "function") {
         window.SiteLocale.setLocale(code);
       } else {
-        // Update URL query parameter or reload
         var url = new URL(window.location.href);
         url.searchParams.set("lang", code);
         window.location.href = url.href;
