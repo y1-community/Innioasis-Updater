@@ -306,6 +306,38 @@
   pointer-events: none;
   user-select: none;
 }
+/* Completely suppress loading throbber in English locales */
+html[lang^="en"] .site-i18n-badge,
+html:not([lang]) .site-i18n-badge,
+[lang^="en"] .site-i18n-badge,
+[data-locale^="en"] .site-i18n-badge {
+  display: none !important;
+}
+/* Pragmatic restriction: never display throbbers on buttons, links, navigation, docks, tables, headers, or compact UI */
+button .site-i18n-badge,
+[role="button"] .site-i18n-badge,
+.btn .site-i18n-badge,
+.button .site-i18n-badge,
+a .site-i18n-badge,
+nav .site-i18n-badge,
+.nav .site-i18n-badge,
+.y1-dock .site-i18n-badge,
+.site-locale-panel .site-i18n-badge,
+table .site-i18n-badge,
+th .site-i18n-badge,
+td .site-i18n-badge,
+h1 .site-i18n-badge,
+h2 .site-i18n-badge,
+h3 .site-i18n-badge,
+h4 .site-i18n-badge,
+h5 .site-i18n-badge,
+h6 .site-i18n-badge,
+.kicker .site-i18n-badge,
+.lumen-kicker .site-i18n-badge,
+.chip .site-i18n-badge,
+.badge .site-i18n-badge {
+  display: none !important;
+}
 .site-i18n-globe { flex: none; width: 13px; height: 13px; }
 .site-i18n-spinner {
   flex: none;

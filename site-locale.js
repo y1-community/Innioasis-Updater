@@ -31,6 +31,7 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
+    var RUNTIME_VERSION = "20261108b";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -582,13 +583,16 @@
         style.id = "site-i18n-badge-styles";
         style.textContent = [
             ".site-i18n-badge{display:inline-flex;align-items:center;gap:4px;",
-            "margin-inline-start:6px;vertical-align:middle;color:currentColor;opacity:.68}",
-            ".site-i18n-globe{flex:none;width:13px;height:13px}",
+            "margin-inline-start:6px;vertical-align:middle;color:currentColor;opacity:.68;",
+            "pointer-events:none;user-select:none;font-size:.85em;line-height:1;}",
+            "html[lang^=\"en\"] .site-i18n-badge,html:not([lang]) .site-i18n-badge,[lang^=\"en\"] .site-i18n-badge,[data-locale^=\"en\"] .site-i18n-badge{display:none!important;}",
+            "button .site-i18n-badge,[role=\"button\"] .site-i18n-badge,a .site-i18n-badge,.btn .site-i18n-badge,.button .site-i18n-badge,nav .site-i18n-badge,.nav .site-i18n-badge,.y1-dock .site-i18n-badge,table .site-i18n-badge,th .site-i18n-badge,td .site-i18n-badge,h1 .site-i18n-badge,h2 .site-i18n-badge,h3 .site-i18n-badge,h4 .site-i18n-badge,h5 .site-i18n-badge,h6 .site-i18n-badge,.kicker .site-i18n-badge,.lumen-kicker .site-i18n-badge,.chip .site-i18n-badge,.badge .site-i18n-badge{display:none!important;}",
+            ".site-i18n-globe{flex:none;width:13px;height:13px;}",
             ".site-i18n-spinner{flex:none;width:10px;height:10px;border-radius:50%;",
             "border:1.5px solid currentColor;border-top-color:transparent;",
-            "animation:site-i18n-spin .8s linear infinite}",
-            "@keyframes site-i18n-spin{to{transform:rotate(360deg)}}",
-            "@media (prefers-reduced-motion:reduce){.site-i18n-spinner{animation:none;opacity:.6}}"
+            "animation:site-i18n-spin .8s linear infinite;}",
+            "@keyframes site-i18n-spin{to{transform:rotate(360deg);}}",
+            "@media (prefers-reduced-motion:reduce){.site-i18n-spinner{animation:none;opacity:.6;}}"
         ].join("");
         (document.head || document.documentElement).appendChild(style);
     }
@@ -601,10 +605,10 @@
         var tag = (element.tagName || "").toUpperCase();
 
         // 1. Exclude interactive controls, inputs, headers, navigation, table cells, code
-        if (/^(BUTTON|INPUT|SELECT|TEXTAREA|NAV|HEADER|FOOTER|THEAD|TBODY|TR|TH|TD|H1|H2|H3|H4|H5|H6|CODE|PRE|KBD|SAMP)$/.test(tag)) {
+        if (/^(BUTTON|A|INPUT|SELECT|TEXTAREA|NAV|HEADER|FOOTER|THEAD|TBODY|TR|TH|TD|H1|H2|H3|H4|H5|H6|CODE|PRE|KBD|SAMP)$/.test(tag)) {
             return false;
         }
-        if (element.closest && element.closest("button, [role='button'], input, select, textarea, nav, .nav, .y1-dock, .site-locale-panel, [data-locale-panel], table, th, td")) {
+        if (element.closest && element.closest("button, [role='button'], a, .btn, .button, input, select, textarea, nav, .nav, .y1-dock, .site-locale-panel, [data-locale-panel], table, th, td, ul, ol, li, .chip, .badge, h1, h2, h3, h4, h5, h6, dialog, [role='dialog'], [role='menu'], [role='toolbar'], [role='tab']")) {
             return false;
         }
 
@@ -624,8 +628,6 @@
                 element.classList.contains("lumen-notice-body") ||
                 element.classList.contains("notice-body") ||
                 element.classList.contains("markdown-body") ||
-                element.classList.contains("description") ||
-                element.classList.contains("error-description") ||
                 element.classList.contains("copywriting")) {
                 return true;
             }
@@ -635,25 +637,33 @@
     }
 
     function getCopywritingContainer(node) {
-        if (!node) return null;
+        if (!node || node.nodeType !== 3) return null;
         if (isEnglishLocale(state.locale)) return null;
 
         var text = normalise(node.nodeValue);
         // Only trigger throbber for substantial prose / sentence copywriting
-        if (text.length < 20 && !/[.!?]/.test(text)) {
+        if (text.length < 25 || !/[.!?]/.test(text)) {
             return null;
         }
 
-        var curr = node.parentElement;
+        var parent = node.parentElement;
+        if (!parent) return null;
+
+        // Strictly reject if inside any interactive control, button, anchor, nav, dock, table, dialog, header
+        if (parent.closest && parent.closest("button, [role='button'], a, input, select, textarea, nav, .nav, .y1-dock, .site-locale-panel, [data-locale-panel], table, th, td, h1, h2, h3, h4, h5, h6, dialog, [role='dialog'], [role='toolbar'], [role='menu'], [role='tab'], .chip, .badge, .lumen-kicker, .kicker, .btn, .button")) {
+            return null;
+        }
+
+        var curr = parent;
         while (curr && curr !== document.body && curr !== document.documentElement) {
+            if (/^(BUTTON|A|NAV|TABLE|DIALOG|HEADER|FOOTER|H1|H2|H3|H4|H5|H6)$/.test(curr.tagName)) {
+                return null;
+            }
             if (isCopywritingElement(curr)) {
                 var blockText = (curr.textContent || "").trim();
-                if (blockText.length >= 20) {
+                if (blockText.length >= 25) {
                     return curr;
                 }
-            }
-            if (/^(BUTTON|NAV|TABLE|DIALOG)$/.test(curr.tagName)) {
-                return null;
             }
             curr = curr.parentElement;
         }
@@ -663,6 +673,9 @@
     function showTranslatingBadge(element) {
         if (isEnglishLocale(state.locale)) return;
         if (!element || !pendingByElement || !element.appendChild) return;
+        if (element.closest && element.closest("button, [role='button'], a, nav, .nav, .y1-dock, table, td, th, h1, h2, h3, h4, h5, h6, dialog")) {
+            return;
+        }
         ensureBadgeStyles();
         var count = pendingByElement.get(element) || 0;
         pendingByElement.set(element, count + 1);
@@ -828,6 +841,7 @@
     var dynamicScanTimer = null;
 
     function scheduleDynamicScan() {
+        if (!dynamicEnabled()) return;
         if (dynamicScanTimer) return;
         dynamicScanTimer = setTimeout(function () {
             dynamicScanTimer = null;
@@ -1361,7 +1375,7 @@
         var link = document.createElement("link");
         link.id = "site-locale-styles";
         link.rel = "stylesheet";
-        link.href = baseUrl + "site-locale.css";
+        link.href = baseUrl + "site-locale.css?v=" + RUNTIME_VERSION;
         document.head.appendChild(link);
     }
 

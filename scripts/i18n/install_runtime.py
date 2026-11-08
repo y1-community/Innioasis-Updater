@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -27,7 +28,7 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 # bottom dock works everywhere from the first byte of the catalog.
 ENABLED = True
 
-VERSION = "20261108a"
+VERSION = "20261108b"
 MARKER = "site-locale.js"
 TAG = '<script src="{up}site-locale.js?v=' + VERSION + '" defer></script>'
 
@@ -67,6 +68,16 @@ def main() -> int:
             markup = handle.read()
 
         if MARKER in markup:
+            updated_markup = re.sub(
+                r'site-locale\.js(?:\?v=[a-zA-Z0-9_-]+)?',
+                f'site-locale.js?v={VERSION}',
+                markup
+            )
+            if updated_markup != markup:
+                if not args.check:
+                    with open(path, "w", encoding="utf-8", newline="\n") as handle:
+                        handle.write(updated_markup)
+                written += 1
             continue
         missing.append(os.path.relpath(path, ROOT).replace(os.sep, "/"))
         if args.check:
