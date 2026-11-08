@@ -31,7 +31,7 @@
     "use strict";
 
     var DEFAULT_LOCALE = "en";
-    var RUNTIME_VERSION = "20261108b";
+    var RUNTIME_VERSION = "20261108c";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
