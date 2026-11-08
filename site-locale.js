@@ -538,28 +538,109 @@
                     dynamicInFlight -= 1;
                     var waiters = dynamicPending[key] || [];
                     delete dynamicPending[key];
-                    if (translated) {
-                        waiters.forEach(function (apply) { apply(translated); });
-                    }
+                    /* Null on failure so the badge is removed even when no
+                       translation arrived. */
+                    waiters.forEach(function (apply) { apply(translated || null); });
                     drainDynamic();
                 };
             }(item.key));
         }
     }
 
-    function queueDynamicText(text, apply) {
+    /* ---------------------------------------------------------------- */
+    /* Pending-translation indicator                                     */
+    /* ---------------------------------------------------------------- */
+    /* Text that is still being fetched is original-language copy, so the
+       reader gets a small globe and a spinner beside it until the translated
+       text replaces it. One badge per element, counted, and removed on both
+       success and failure (a failed request leaves the English text, not a
+       spinner that never stops). */
+    var pendingByElement = typeof WeakMap === "function" ? new WeakMap() : null;
+    var BADGE_HTML = '<svg class="site-i18n-globe" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.7 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.7-3.7-9S9.5 5.6 12 3z"/></svg><span class="site-i18n-spinner" aria-hidden="true"></span>';
+
+    /* Most pages do not link site-locale.css, so the badge carries its own
+       styles. One <style> element, injected the first time it is needed. */
+    function ensureBadgeStyles() {
+        if (document.getElementById("site-i18n-badge-styles")) return;
+        var style = document.createElement("style");
+        style.id = "site-i18n-badge-styles";
+        style.textContent = [
+            ".site-i18n-badge{display:inline-flex;align-items:center;gap:4px;",
+            "margin-inline-start:6px;vertical-align:middle;color:currentColor;opacity:.68}",
+            ".site-i18n-globe{flex:none;width:13px;height:13px}",
+            ".site-i18n-spinner{flex:none;width:10px;height:10px;border-radius:50%;",
+            "border:1.5px solid currentColor;border-top-color:transparent;",
+            "animation:site-i18n-spin .8s linear infinite}",
+            "@keyframes site-i18n-spin{to{transform:rotate(360deg)}}",
+            "@media (prefers-reduced-motion:reduce){.site-i18n-spinner{animation:none;opacity:.6}}"
+        ].join("");
+        (document.head || document.documentElement).appendChild(style);
+    }
+
+    function showTranslatingBadge(element) {
+        if (!element || !pendingByElement || !element.appendChild) return;
+        ensureBadgeStyles();
+        var count = pendingByElement.get(element) || 0;
+        pendingByElement.set(element, count + 1);
+        if (count > 0) return;
+        var badge = document.createElement("span");
+        badge.className = "site-i18n-badge";
+        badge.setAttribute("data-i18n-skip", "");
+        badge.setAttribute("translate", "no");
+        badge.setAttribute("role", "status");
+        badge.setAttribute("aria-label", "Translating");
+        badge.innerHTML = BADGE_HTML;
+        /* A stuck request must not leave a permanent spinner behind. */
+        badge.setAttribute("data-i18n-timeout", String(setTimeout(function () {
+            hideTranslatingBadge(element);
+        }, 30000)));
+        element.appendChild(badge);
+    }
+
+    function hideTranslatingBadge(element) {
+        if (!element || !pendingByElement) return;
+        var count = (pendingByElement.get(element) || 0) - 1;
+        if (count > 0) {
+            pendingByElement.set(element, count);
+            return;
+        }
+        pendingByElement.delete(element);
+        var badge = null;
+        for (var i = 0; i < element.children.length; i += 1) {
+            if (element.children[i].classList && element.children[i].classList.contains("site-i18n-badge")) {
+                badge = element.children[i];
+                break;
+            }
+        }
+        if (!badge) return;
+        if (badge.getAttribute("data-i18n-timeout")) {
+            clearTimeout(Number(badge.getAttribute("data-i18n-timeout")));
+        }
+        badge.remove();
+    }
+
+    function queueDynamicText(text, apply, element) {
         var cache = loadDynamicCache();
         var key = dynamicKey(text);
+        var waiter = function (value) {
+            try {
+                if (value) apply(value);
+            } finally {
+                hideTranslatingBadge(element);
+            }
+        };
         if (cache[key]) {
-            apply(cache[key]);
+            waiter(cache[key]);
             return;
         }
         if (dynamicPending[key]) {
-            dynamicPending[key].push(apply);
+            dynamicPending[key].push(waiter);
+            if (element) showTranslatingBadge(element);
             return;
         }
         if (dynamicRequests >= DYNAMIC_MAX_REQUESTS) return;
-        dynamicPending[key] = [apply];
+        dynamicPending[key] = [waiter];
+        if (element) showTranslatingBadge(element);
         dynamicQueue.push({ key: key, text: text });
         drainDynamic();
     }
@@ -617,7 +698,7 @@
                     var text = normalise(raw);
                     queueDynamicText(text, function (translated) {
                         target.nodeValue = prefix + translated + suffix;
-                    });
+                    }, target.parentElement);
                 }(node));
             }
             if (!wholePage) container.setAttribute("data-i18n-dynamic-state", "done");
@@ -631,6 +712,7 @@
                 function (element) {
                     if (element.closest("[data-locale-panel]")) return;
                     if (element.closest("[data-i18n-skip]")) return;
+                    if (element.closest(".site-i18n-badge")) return;
                     if (dynamicAttrSeen.has(element)) return;
                     dynamicAttrSeen.add(element);
                     ATTRIBUTES.forEach(function (name) {
@@ -643,7 +725,7 @@
                         if (isBrandOnly(text)) return;
                         queueDynamicText(text, function (translated) {
                             element.setAttribute(name, translated);
-                        });
+                        }, null);
                     });
                 }
             );
