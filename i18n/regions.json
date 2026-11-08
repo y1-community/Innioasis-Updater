@@ -205,9 +205,9 @@
         "bitcoin": true
       },
       "copy": {
-        "No cookies. No fingerprinting.": {
-          "en": "No cookies. No fingerprinting. GDPR rights honoured.",
-          "zh-CN": "不使用 Cookie，不进行浏览器指纹识别，保障 GDPR 权利。"
+        "Analytics and privacy": {
+          "en": "Analytics and privacy (GDPR rights honoured)",
+          "zh-CN": "分析与隐私（保障 GDPR 权利）"
         }
       }
     }

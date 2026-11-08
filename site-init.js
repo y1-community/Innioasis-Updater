@@ -20,9 +20,10 @@
 
     applyStoredTheme();
 
-    /* Privacy consent. The site sets no cookies and does no fingerprinting.
-       The only local storage is the visitor's own theme choice (always
-       remembered — it is the look they picked) plus, only when allowed,
+    /* Privacy consent. The site uses Google Analytics (via Google Tag Manager)
+       and Cloudflare to measure and optimise performance and protect the site
+       from attacks. Local storage remembers the visitor's own theme choice
+       (always remembered — it is the look they picked) plus, only when allowed,
        their answers to the "was this useful?" prompts and their
        nightly-builds preference. The consent record itself is kept so the
        privacy panel does not open on every visit. */
