@@ -1,22 +1,21 @@
-name: Sync donors.csv to the Themes Gallery
+name: Sync donors.csv and notice.xml to the Themes Gallery
 
-# donors.csv is the public supporter list. The Updater site (innioasis.app) owns
-# it; the Themes Gallery (themes.innioasis.app) shows the same names.
+# donors.csv and notice.xml are owned canonically by this repository
+# (innioasis.app). The Themes Gallery (themes.innioasis.app) displays the exact
+# same supporter list and announcements.
 #
-# This workflow is the canonical direction: Updater -> Themes. The reverse
-# workflow in the Themes repo only reads the canonical file, so the two can
-# never overwrite each other or loop.
+# This workflow normalises line endings in this repository and, when a cross-repo
+# token (DONORS_SYNC_TOKEN or THEMES_SYNC_TOKEN) is configured, immediately mirrors
+# both files to y1-community/InnioasisY1Themes and triggers a dispatch event.
 #
-# Cross-repo writes need a token that can write to y1-community/InnioasisY1Themes;
-# the workflow's own GITHUB_TOKEN cannot. Add a fine-grained PAT as the
-# repository secret DONORS_SYNC_TOKEN (Contents: read and write on both repos).
-# Without it the workflow normalises and commits this repo's file and warns,
-# leaving the Themes copy to be updated by hand or by its own scheduled pull.
+# If no cross-repo token is set, the Themes repository pulls updates automatically
+# via its own scheduled and on-demand sync workflow.
 
 on:
   push:
     paths:
       - donors.csv
+      - notice.xml
       - .github/workflows/sync-donors.yml
   schedule:
     - cron: "17 6 * * *"
@@ -26,12 +25,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: donors-sync
+  group: upstream-asset-sync
   cancel-in-progress: false
 
 jobs:
   sync:
-    # Never act on the bot's own commits, or a normalise commit would re-trigger.
+    # Never act on the bot's own commits to prevent loops
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -42,55 +41,65 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          path = Path("donors.csv")
-          text = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
-          if text and not text.endswith(b"\n"):
-              text += b"\n"
-          if path.read_bytes() != text:
-              path.write_bytes(text)
-              print("Normalised donors.csv to LF.")
-          else:
-              print("donors.csv already uses LF.")
+          for name in ("donors.csv", "notice.xml"):
+              path = Path(name)
+              if not path.exists():
+                  continue
+              text = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+              if text and not text.endswith(b"\n"):
+                  text += b"\n"
+              if path.read_bytes() != text:
+                  path.write_bytes(text)
+                  print(f"Normalised {name} to LF.")
+              else:
+                  print(f"{name} already uses LF.")
           PY
 
-      - name: Commit the normalised list here
+      - name: Commit normalised files here
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add donors.csv
+          git add donors.csv notice.xml
           if git diff --cached --quiet; then
-            echo "No change to this repo's donors.csv."
+            echo "No changes to local assets."
           else
-            git commit -m "Normalise donors.csv line endings"
+            git commit -m "Normalise donors.csv and notice.xml line endings"
             git push
           fi
 
       - name: Check for a cross-repo token
         id: token
         env:
-          TOKEN: ${{ secrets.DONORS_SYNC_TOKEN }}
+          TOKEN: ${{ secrets.DONORS_SYNC_TOKEN || secrets.THEMES_SYNC_TOKEN }}
         run: |
           if [ -z "$TOKEN" ]; then
             echo "available=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::DONORS_SYNC_TOKEN is not set, so the Themes copy was not updated. Add a fine-grained PAT with Contents write on y1-community/InnioasisY1Themes."
+            echo "::notice::DONORS_SYNC_TOKEN is not set; Themes repository will pull canonical copies via its scheduled/dispatch workflow."
           else
             echo "available=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Mirror donors.csv to the Themes Gallery
+      - name: Mirror assets to the Themes Gallery
         if: steps.token.outputs.available == 'true'
         env:
-          TOKEN: ${{ secrets.DONORS_SYNC_TOKEN }}
+          TOKEN: ${{ secrets.DONORS_SYNC_TOKEN || secrets.THEMES_SYNC_TOKEN }}
         run: |
           git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/y1-community/InnioasisY1Themes.git" themes
           cp donors.csv themes/donors.csv
+          cp notice.xml themes/notice.xml
           cd themes
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add donors.csv
+          git add donors.csv notice.xml
           if git diff --cached --quiet; then
-            echo "Themes donors.csv is already in sync."
+            echo "Themes assets are already in sync."
           else
-            git commit -m "Sync donors.csv from Innioasis-Updater"
+            git commit -m "Sync donors.csv and notice.xml from Innioasis-Updater [skip ci]"
             git push
           fi
+          # Also dispatch event to notify Themes repo
+          curl -s -X POST \
+            -H "Authorization: token ${TOKEN}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/y1-community/InnioasisY1Themes/dispatches \
+            -d '{"event_type": "sync-assets"}' || true
