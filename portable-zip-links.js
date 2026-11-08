@@ -383,35 +383,13 @@
         return PLATFORM_LABELS[key] || "";
     }
 
+    /* The proxy already answers with Content-Disposition: filename="rom.zip",
+       so pointing the browser at it streams the bundle straight to disk. Reading
+       it into a Blob first would hold the whole 500-600 MB file in memory and
+       only offer the save once the last byte had arrived. */
     async function streamToDownloads(href, saveName, label) {
-        var res = await fetch(href, { cache: "no-store" });
-        if (!res.ok || !res.body) throw new Error("HTTP " + res.status);
-        var total = Number(res.headers.get("Content-Length") || 0);
-        var reader = res.body.getReader();
-        var chunks = [];
-        var loaded = 0;
-        for (;;) {
-            var step = await reader.read();
-            if (step.done) break;
-            chunks.push(step.value);
-            loaded += step.value.length;
-            toastProgress(loaded, total);
-        }
-        toastProgress(loaded, total || loaded);
-        var nodes = toastNodes();
-        nodes.label.textContent = "Saving to Downloads…";
-        var blob = new Blob(chunks, { type: "application/octet-stream" });
-        var objectUrl = URL.createObjectURL(blob);
-        var link = document.createElement("a");
-        link.href = objectUrl;
-        link.download = saveName || "rom.zip";
-        document.body.appendChild(link);
-        link.click();
-        setTimeout(function () {
-            if (link.parentNode) link.parentNode.removeChild(link);
-            URL.revokeObjectURL(objectUrl);
-        }, 2000);
-        toastDone(saveName || "rom.zip", label, true);
+        directDownload(href, saveName, label);
+        return true;
     }
 
     function directDownload(href, saveName, label) {

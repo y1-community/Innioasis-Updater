@@ -1337,34 +1337,12 @@
            attribute cannot rename a cross-origin response, so when the
            same-origin proxy is available the bytes are streamed with real
            progress, then written to Downloads under the release's name. */
+        /* The proxy answers with Content-Disposition: filename="rom.zip", so
+           pointing the browser at it streams the bundle straight to disk under
+           the release's own name. Buffering it into a Blob first held the whole
+           500-600 MB file in memory and only prompted once it had all arrived. */
         async function streamDownload(href, saveName, osLabel) {
-            var res = await fetch(href, { cache: "no-store" });
-            if (!res.ok || !res.body) throw new Error("HTTP " + res.status);
-            var total = Number(res.headers.get("Content-Length") || 0);
-            var reader = res.body.getReader();
-            var chunks = [];
-            var loaded = 0;
-            for (;;) {
-                var step = await reader.read();
-                if (step.done) break;
-                chunks.push(step.value);
-                loaded += step.value.length;
-                updateProgress(loaded, total);
-            }
-            updateProgress(loaded, total || loaded);
-            if (label) label.textContent = "Saving to Downloads…";
-            var blob = new Blob(chunks, { type: "application/octet-stream" });
-            var objectUrl = URL.createObjectURL(blob);
-            var link = document.createElement("a");
-            link.href = objectUrl;
-            link.download = saveName || "rom.zip";
-            document.body.appendChild(link);
-            link.click();
-            setTimeout(function () {
-                if (link.parentNode) link.parentNode.removeChild(link);
-                URL.revokeObjectURL(objectUrl);
-            }, 2000);
-            markCompleted(saveName || "rom.zip", osLabel, true);
+            startDirectDownload(href, saveName, osLabel);
         }
 
         try {
