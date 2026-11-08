@@ -77,6 +77,23 @@ So the run-to-run swing was hydration timing, not code: with the settle wait
 the two runs agree to within 0.005 (themes) and 0.0001 (firmware). The
 remaining work is layout, not measurement.
 
+## Open items (not fixed)
+
+- Themes header shrinks 8px after first paint (`aside#site-compat-banner` 69 -> 61,
+  `div.wrap` 150 -> 143), which moves the skeleton cards 697 -> 689. Themes CLS
+  measured 0.0490 and 0.0542 in consecutive runs; the dominant entry is 0.0459.
+  Needs the header/banner height pinned before the body class swap. Owner:
+  Antigravity.
+- Firmware, 1440x1440: 0.2802 / 0.2801 reproducible. Named movers: a ~200px
+  insertion above `#firmware-filters` (two `.lumen-section` blocks 766 -> 974 and
+  1213 -> 1421), `thead th` 744 -> 538 from filter reflow, and `main#main`
+  8 -> 70. Needs space reserved for the late block and stable filter widths.
+  Owner: Antigravity.
+- Interaction checks (nav, filter, search, donation) at narrowest and widest
+  viewports have not been run.
+- `viewport-fit=cover` is still appended at runtime by the dock rather than
+  being in the static viewport meta of generated pages.
+
 ## Behaviours re-verified after the fixes
 
 Goal line hidden on every compact and minimal tier (<=900px wide, <=700px tall,
