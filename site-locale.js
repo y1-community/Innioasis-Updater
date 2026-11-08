@@ -544,8 +544,11 @@
                     if (/^\d+([.,]\d+)?\s?(MB|GB|KB|TB|MBps)$/i.test(value)) return NodeFilter.FILTER_REJECT;
                     if (/^(https?:\/\/|mailto:|www\.)/i.test(value)) return NodeFilter.FILTER_REJECT;
                     if (/^[\d\s.,:%+\-–—/()×]+$/.test(value)) return NodeFilter.FILTER_REJECT;
-                    /* Already covered by the catalog translateTree pass. */
-                    if (state.strings[value]) return NodeFilter.FILTER_REJECT;
+                    /* Covered by the catalog, unless the entry only repeats the
+                       English text (what the provider returns for copy it
+                       leaves untouched); that still needs the API. */
+                    var known = state.strings[value];
+                    if (known && known !== value) return NodeFilter.FILTER_REJECT;
                     return NodeFilter.FILTER_ACCEPT;
                 }
             });
@@ -580,7 +583,8 @@
                         if (!raw) return;
                         var text = normalise(raw);
                         if (text.length < 4 || !/[A-Za-z]{2}/.test(text)) return;
-                        if (state.strings[text]) return;
+                        var known = state.strings[text];
+                        if (known && known !== text) return;
                         queueDynamicText(text, function (translated) {
                             element.setAttribute(name, translated);
                         });
