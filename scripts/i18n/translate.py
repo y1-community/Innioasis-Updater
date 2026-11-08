@@ -25,6 +25,7 @@ Brand names are masked before a string is sent so a translator cannot turn
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import re
@@ -503,8 +504,93 @@ AMERICAS_APAC_CODES = [
 ]
 
 
+# The picker used to list every catalog on disk. Hundreds of those were
+# seeded with a couple of hundred strings and nothing else, so choosing one
+# left the page in English and looked broken. A language is offered only when
+# its catalog actually translates the shell copy the visitor sees first.
+MIN_SHELL_COVERAGE = 0.5
+
+# Nav and dock copy alone is not proof a language works: a catalog can read
+# perfectly in the shell and still leave every heading and paragraph English.
+# A language is offered only when it also covers the text a visitor lands on.
+MIN_PAGE_COVERAGE = 0.5
+
+
+def shell_strings() -> List[str]:
+    path = os.path.join(ROOT, "i18n", "strings", "ui.json")
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            return list(json.load(handle).get("strings", {}))
+    except (OSError, ValueError):
+        return []
+
+
+def catalog_coverage(catalog_path: str, texts: List[str]) -> float:
+    if not texts or not os.path.exists(catalog_path):
+        return 0.0
+    try:
+        with open(catalog_path, "r", encoding="utf-8") as handle:
+            strings = json.load(handle).get("strings", {})
+    except (OSError, ValueError):
+        return 0.0
+    translated = sum(1 for text in texts if strings.get(text) and strings[text] != text)
+    return translated / len(texts)
+
+
+def shell_coverage(catalog_path: str, shell: List[str]) -> float:
+    return catalog_coverage(catalog_path, shell)
+
+
+def page_strings() -> List[str]:
+    """The translatable text visible on the pages the site actually ships."""
+    manifest_path = os.path.join(ROOT, "i18n", "prerendered.json")
+    source_path = os.path.join(ROOT, "i18n", "strings", "en.json")
+    if not (os.path.exists(manifest_path) and os.path.exists(source_path)):
+        return []
+    try:
+        with open(manifest_path, "r", encoding="utf-8") as handle:
+            names = json.load(handle).get("pages", [])
+        with open(source_path, "r", encoding="utf-8") as handle:
+            known = json.load(handle).get("strings", {})
+    except (OSError, ValueError):
+        return []
+
+    found: List[str] = []
+    seen = set()
+    for name in names:
+        relative = name if str(name).endswith(".html") else str(name) + ".html"
+        path = os.path.join(ROOT, relative)
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path, "r", encoding="utf-8", errors="replace") as handle:
+                markup = handle.read()
+        except OSError:
+            continue
+        markup = re.sub(r"(?is)<script.*?</script>|<style.*?</style>", "", markup)
+        for run in re.findall(r">([^<>]{2,300})<", markup):
+            text = html.unescape(re.sub(r"\s+", " ", run)).strip()
+            if text and text in known and text not in seen:
+                seen.add(text)
+                found.append(text)
+    return found
+
+
 def write_locale_index(locales: List[dict], variants: List[dict], catalog_dir: str) -> None:
     """A small file the browser shell fetches to build its language picker."""
+    shell = shell_strings()
+    pages = page_strings()
+    skipped: List[str] = []
+
+    def unreadable(path: str) -> bool:
+        """True when a catalog cannot translate enough of the visible page."""
+        if shell and shell_coverage(path, shell) < MIN_SHELL_COVERAGE:
+            return True
+        if pages and catalog_coverage(path, pages) < MIN_PAGE_COVERAGE:
+            return True
+        return False
     available = []
     seen_codes = set()
     for entry in locales:
@@ -513,6 +599,9 @@ def write_locale_index(locales: List[dict], variants: List[dict], catalog_dir: s
             continue
         path = os.path.join(catalog_dir, code + ".json")
         if not os.path.exists(path):
+            continue
+        if code != "en" and unreadable(path):
+            skipped.append(code)
             continue
         seen_codes.add(code)
         available.append(
@@ -530,6 +619,9 @@ def write_locale_index(locales: List[dict], variants: List[dict], catalog_dir: s
         base = entry.get("base", "")
         base_path = os.path.join(catalog_dir, base + ".json")
         if base != "en" and not os.path.exists(base_path) and not any(a["code"] == base for a in available):
+            continue
+        if base != "en" and os.path.exists(base_path) and unreadable(base_path):
+            skipped.append(code)
             continue
         seen_codes.add(code)
         available.append(
@@ -558,6 +650,13 @@ def write_locale_index(locales: List[dict], variants: List[dict], catalog_dir: s
         os.path.join(ROOT, "i18n", "site-locales.json"),
         {"generated": datetime.now(timezone.utc).isoformat(timespec="seconds"), "locales": available},
     )
+    if skipped:
+        print(
+            f"Offered {len(available)} languages; held back {len(skipped)} whose catalogs "
+            f"cover less than {int(MIN_SHELL_COVERAGE * 100)}% of the shell copy or "
+            f"{int(MIN_PAGE_COVERAGE * 100)}% of the page copy "
+            f"({', '.join(sorted(skipped)[:8])}{', ...' if len(skipped) > 8 else ''})."
+        )
 
 
 def main() -> int:
@@ -655,11 +754,15 @@ def main() -> int:
 
         cache_path = os.path.join(ROOT, config["cacheDir"], f"{code}.json")
         catalog_path = os.path.join(catalog_dir, code + ".json")
+        # Seed from the catalog as well as the cache. Reading only the cache
+        # file used to drop every string the cache had never recorded, so a
+        # partial cache rewrote a full catalog with fewer strings.
         cache: Dict[str, str] = {}
-        if os.path.exists(cache_path) and not args.force:
-            cache = load_json(cache_path).get("strings", {})
-        elif os.path.exists(catalog_path) and not args.force:
-            cache = load_json(catalog_path).get("strings", {})
+        if not args.force:
+            if os.path.exists(catalog_path):
+                cache = load_json(catalog_path).get("strings", {})
+            if os.path.exists(cache_path):
+                cache.update(load_json(cache_path).get("strings", {}))
 
         pending = [text for text in texts if text not in cache]
         print(f"[{position}/{len(selected)}] {code:<8} {len(cache):>5} cached, {len(pending):>5} to go", flush=True)

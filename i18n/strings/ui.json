@@ -953,6 +953,9 @@
    "index_zh-TW.html",
    "index_zh.html"
   ],
+  "About & Editorial": [
+   "nav.js"
+  ],
   "About Innioasis Updater CE & Editorial Standards": [
    "about.html"
   ],
@@ -1064,6 +1067,9 @@
   "All languages": [
    "site-locale.js"
   ],
+  "All notices →": [
+   "nav.js"
+  ],
   "All public": [
    "lumen-site.js"
   ],
@@ -1161,6 +1167,9 @@
   "Android development ROM on Innioasis Y2 macOS": [
    "install/android-dev-mac.html"
   ],
+  "App & browser control": [
+   "lumen-site.js"
+  ],
   "Apple certification + $": [
    "credits.html",
    "credits_ar.html",
@@ -1244,6 +1253,10 @@
   ],
   "Are Rockbox, Rockbox-Y2, and Rockbox for Y2 the same thing?": [
    "rockbox-y2/faq.html"
+  ],
+  "Auto": [
+   "nav.js",
+   "site-init.js"
   ],
   "Back to Firmware Downloads": [
    "post_install.html",
@@ -3778,6 +3791,9 @@
    "guide_zh-TW.html",
    "guide_zh.html"
   ],
+  "Click": [
+   "lumen-site.js"
+  ],
   "Close bottom toolbar": [
    "support_toolbar.html"
   ],
@@ -4723,6 +4739,9 @@
    "developers_zh-TW.html",
    "developers_zh.html"
   ],
+  "Credits": [
+   "nav.js"
+  ],
   "Cristian Plaza · Rockbox on the Y1": [
    "index.html",
    "index_ar.html",
@@ -4868,8 +4887,15 @@
    "index_zh-TW.html",
    "index_zh.html"
   ],
+  "Dark": [
+   "nav.js",
+   "site-init.js"
+  ],
   "Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.": [
    "firmware-catalog.js"
+  ],
+  "Developer Guide & Tooling": [
+   "nav.js"
   ],
   "Developer · general player use": [
    "index.html",
@@ -4910,6 +4936,9 @@
    "index_zh-CN.html",
    "index_zh-TW.html",
    "index_zh.html"
+  ],
+  "Developers": [
+   "nav.js"
   ],
   "Deze pagina is ook beschikbaar in het Nederlands.": [
    "site-locale.js"
@@ -5594,6 +5623,46 @@
   "Download the ROM ZIP to your computer.": [
    "rockbox-y1/portable-zip.html",
    "rockbox-y2/portable-zip.html"
+  ],
+  "Draft": [
+   "release_notes.html",
+   "release_notes_ar.html",
+   "release_notes_bn.html",
+   "release_notes_cs.html",
+   "release_notes_da.html",
+   "release_notes_de.html",
+   "release_notes_el.html",
+   "release_notes_es-419.html",
+   "release_notes_es.html",
+   "release_notes_fa.html",
+   "release_notes_fi.html",
+   "release_notes_fr.html",
+   "release_notes_he.html",
+   "release_notes_hi.html",
+   "release_notes_hu.html",
+   "release_notes_id.html",
+   "release_notes_it.html",
+   "release_notes_ja.html",
+   "release_notes_jp.html",
+   "release_notes_ko.html",
+   "release_notes_kr.html",
+   "release_notes_ms.html",
+   "release_notes_nl.html",
+   "release_notes_no.html",
+   "release_notes_pl.html",
+   "release_notes_pt-BR.html",
+   "release_notes_pt-PT.html",
+   "release_notes_pt.html",
+   "release_notes_ro.html",
+   "release_notes_ru.html",
+   "release_notes_sv.html",
+   "release_notes_th.html",
+   "release_notes_tr.html",
+   "release_notes_uk.html",
+   "release_notes_vi.html",
+   "release_notes_zh-CN.html",
+   "release_notes_zh-TW.html",
+   "release_notes_zh.html"
   ],
   "Editorial standards, hardware testing methodology, team background, and independence disclosure for the Innioasis Updater project.": [
    "about.html"
@@ -9307,6 +9376,25 @@
   ],
   "Inniclassic on Innioasis Y2 macOS": [
    "install/inniclassic-mac.html"
+  ],
+  "Innioasis": [
+   "support_toolbar.html",
+   "support_toolbar_ar.html",
+   "support_toolbar_de.html",
+   "support_toolbar_es.html",
+   "support_toolbar_fr.html",
+   "support_toolbar_it.html",
+   "support_toolbar_ja.html",
+   "support_toolbar_jp.html",
+   "support_toolbar_ko.html",
+   "support_toolbar_nl.html",
+   "support_toolbar_pl.html",
+   "support_toolbar_pt.html",
+   "support_toolbar_ru.html",
+   "support_toolbar_tr.html",
+   "support_toolbar_uk.html",
+   "support_toolbar_zh-CN.html",
+   "support_toolbar_zh-TW.html"
   ],
   "Innioasis & Timmkoo Firmware Downloads": [
    "lumen-site.js"
@@ -13613,6 +13701,9 @@
   "Koensayr on Innioasis Y1 macOS": [
    "install/koensayr-mac.html"
   ],
+  "Language": [
+   "support_toolbar.html"
+  ],
   "Larger text": [
    "support_toolbar.html"
   ],
@@ -13716,6 +13807,9 @@
    "install/original-y2-linux.html",
    "install/original-y2-mac.html",
    "install/original-y2-windows.html"
+  ],
+  "Linux": [
+   "lumen-site.js"
   ],
   "Linux Mode Setup": [
    "slidia.html",
@@ -14622,6 +14716,9 @@
   "Not available right now": [
    "lumen-site.js"
   ],
+  "Notices": [
+   "nav.js"
+  ],
   "Notices about": [
    "notices.html",
    "notices_ar.html",
@@ -14661,6 +14758,9 @@
    "notices_zh-CN.html",
    "notices_zh-TW.html",
    "notices_zh.html"
+  ],
+  "Off": [
+   "lumen-site.js"
   ],
   "Official factory restore firmware and software updates for the Innioasis G5 digital audio player.": [
    "innioasis-g5-firmware.html",
@@ -14747,6 +14847,9 @@
   ],
   "Only": [
    "support_toolbar.html"
+  ],
+  "Open": [
+   "lumen-site.js"
   ],
   "Open Innioasis Updater CE and select Y1.": [
    "rockbox-y1/portable-zip.html"
@@ -17893,6 +17996,12 @@
    "release_notes_zh-TW.html",
    "release_notes_zh.html"
   ],
+  "Privacy": [
+   "nav.js"
+  ],
+  "Privacy & security": [
+   "lumen-site.js"
+  ],
   "Privacy settings": [
    "nav.js"
   ],
@@ -17947,6 +18056,9 @@
    "notices_zh-CN.html",
    "notices_zh-TW.html",
    "notices_zh.html"
+  ],
+  "Read more →": [
+   "nav.js"
   ],
   "Read the": [
    "lumen-site.js"
@@ -21016,6 +21128,9 @@
    "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh.html"
   ],
+  "Settings": [
+   "lumen-site.js"
+  ],
   "Setup on Mac": [
    "slidia.html",
    "slidia_ar.html",
@@ -21110,6 +21225,9 @@
   ],
   "Smart App Control settings": [
    "lumen-site.js"
+  ],
+  "Software & Guides": [
+   "nav.js"
   ],
   "Software Updates": [
    "nav.js"
@@ -22517,6 +22635,9 @@
    "support_toolbar_zh-CN.html",
    "support_toolbar_zh-TW.html"
   ],
+  "Theme": [
+   "site-init.js"
+  ],
   "Theme and build must share a resolution path. A theme written for 240p builds will not render correctly on a 360p build, and the reverse is also true. Match the theme label to the build label.": [
    "rockbox-y1-themes.html",
    "rockbox-y1-themes_ar.html",
@@ -22554,6 +22675,9 @@
    "rockbox-y1-themes_zh-CN.html",
    "rockbox-y1-themes_zh-TW.html",
    "rockbox-y1-themes_zh.html"
+  ],
+  "Themes": [
+   "nav.js"
   ],
   "Themes Gallery": [
    "credits.html",
@@ -23625,6 +23749,9 @@
    "support_toolbar_zh-CN.html",
    "support_toolbar_zh-TW.html"
   ],
+  "Troubleshooting": [
+   "nav.js"
+  ],
   "Try again": [
    "release_notes.html",
    "release_notes_ar.html",
@@ -23857,6 +23984,9 @@
    "sp-flash-tool_zh-CN.html",
    "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh.html"
+  ],
+  "Under": [
+   "lumen-site.js"
   ],
   "Understanding 240p and 360p Rockbox-Y1 builds on the Innioasis Y1 and how to choose the right build for your themes.": [
    "rockbox-y1/resolution.html"
@@ -25630,6 +25760,12 @@
    "install/y2player-y2-linux.html",
    "install/y2player-y2-mac.html",
    "install/y2player-y2-windows.html"
+  ],
+  "Win": [
+   "lumen-site.js"
+  ],
+  "Windows": [
+   "lumen-site.js"
   ],
   "Windows Security": [
    "lumen-site.js"

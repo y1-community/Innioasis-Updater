@@ -17,6 +17,7 @@ that slips through is still visible in ui.json and can be dropped by hand.
 
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -75,6 +76,11 @@ REJECT_FRAGMENTS = (
 # footer stayed English while the page body translated. The visible text runs
 # are tested on their own instead.
 MARKUP_RUN_RE = re.compile(r">([^<>]{2,240})<")
+
+# Nav and footer links are often a single word - "Themes", "Credits",
+# "Reddit" - which the two-word prose rule rejects. Inside a tag boundary the
+# run is already known to be text, so a lone capitalised word is a label.
+SINGLE_WORD_RE = re.compile(r"^[A-Z][A-Za-z'\u2019-]{2,29}$")
 
 
 def looks_like_prose(value: str) -> bool:
@@ -227,15 +233,29 @@ KNOWN_TOOLBAR_STRINGS = [
 ]
 
 
+def looks_like_label(value: str) -> bool:
+    text = value.strip()
+    if not SINGLE_WORD_RE.match(text):
+        return False
+    if text.upper() == text:
+        return False
+    if any(fragment in text for fragment in REJECT_FRAGMENTS):
+        return False
+    return True
+
+
 def collect(source: str, origin: str, found: dict[str, list[str]]) -> None:
     for match in LITERAL_RE.finditer(source):
-        value = match.group(2)
+        # Markup carries entities - 'All notices &rarr;', 'Developer Guide &amp;
+        # Tooling' - and the browser shows them decoded, so the catalog key has
+        # to be the decoded text or the lookup misses and the label stays English.
+        value = html.unescape(match.group(2))
         if looks_like_prose(value):
             found.setdefault(value.strip(), []).append(origin)
             continue
         for run in MARKUP_RUN_RE.findall(value):
-            run = run.strip()
-            if looks_like_prose(run):
+            run = html.unescape(run).strip()
+            if looks_like_prose(run) or looks_like_label(run):
                 found.setdefault(run, []).append(origin)
 
 

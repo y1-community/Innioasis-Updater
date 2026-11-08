@@ -28,7 +28,7 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 # bottom dock works everywhere from the first byte of the catalog.
 ENABLED = True
 
-VERSION = "20261108c"
+VERSION = "20261108shell2"
 MARKER = "site-locale.js"
 TAG = '<script src="{up}site-locale.js?v=' + VERSION + '" defer></script>'
 

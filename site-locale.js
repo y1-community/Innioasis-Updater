@@ -32,6 +32,10 @@
 
     var DEFAULT_LOCALE = "en";
     var RUNTIME_VERSION = "20261108hero";
+    /* Catalogs are re-fetched under a new URL when their content changes.
+       Without this a returning visitor keeps the copy they cached, so a
+       language whose catalog was just completed still reads as English. */
+    var CATALOG_VERSION = "20261108shell2";
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -1649,7 +1653,8 @@
         var base = entry.base || (clean.indexOf("-") > 0 ? clean.split("-")[0] : code);
 
         function fetchOne(catName) {
-            return fetchJson("i18n/catalogs/" + catName + ".json", 6000).catch(function () { return null; });
+            return fetchJson("i18n/catalogs/" + catName + ".json?v=" + CATALOG_VERSION, 6000)
+                .catch(function () { return null; });
         }
 
         var isVariant = base && base.toLowerCase() !== specific.toLowerCase();
@@ -1696,9 +1701,9 @@
         injectStylesheet();
 
         Promise.all([
-            fetchJson("i18n/site-locales.json", 6000).catch(function () { return { locales: [] }; }),
-            fetchJson("i18n/regions.json", 6000).catch(function () { return null; }),
-            fetchJson("i18n/prerendered.json", 6000).catch(function () { return null; })
+            fetchJson("i18n/site-locales.json?v=" + CATALOG_VERSION, 6000).catch(function () { return { locales: [] }; }),
+            fetchJson("i18n/regions.json?v=" + CATALOG_VERSION, 6000).catch(function () { return null; }),
+            fetchJson("i18n/prerendered.json?v=" + CATALOG_VERSION, 6000).catch(function () { return null; })
         ]).then(function (results) {
             state.locales = (results[0] && results[0].locales) || [];
             state.regions = results[1];
