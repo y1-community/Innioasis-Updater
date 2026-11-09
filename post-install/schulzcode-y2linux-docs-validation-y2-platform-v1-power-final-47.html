@@ -39,12 +39,12 @@
   <meta name="twitter:description" content="POWER-FINAL-47 — DSI register read lag: keep DCM off for DSI/DPI Status: PUBLISHED as GitHub release baseline-47 ; its fix confirmed on 48 archive 20261016/151 . Package">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
-  <link rel="stylesheet" href="../lumen.css?v=20261109stack">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261109accent" defer></script>
+  <script src="../site-init.js?v=20260803" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -60,9 +60,9 @@
 <ul><li><strong>48&#x27;s own install (over Wi-Fi from the release): recovery screen lit</strong> (vblank 16 → 219, no read lag, 53 s),<p><code>Acknowledged</code>. DCM group 1 reads <code>0x1400012c = 0000000f</code> in the recovery and the running system.</p></li><li><strong>Five restart-entered recovery probes (owner-approved): all five recovery screens produced frames</strong> (vblank 16–17<p>at 1.2 s, OVL irq <code>0x10</code>, RDMA irq <code>0x27</code>, no vblank/flip timeouts), all five returned on their own in 20–35 s, every return boot lit. Logs <code>probe1..5-recovery.log</code> and <code>probe1..5-return-dmesg.txt</code> in the archive.</p></li><li><strong>The read lag itself is not DCM:</strong> probes 4 and 5 still read the DSI one register late with <code>dcm1=0000000f</code><p>(44&#x27;s three power cycles again did not clear it). But unlike every lagged boot before (143, 150: OVL irq 0, RDMA <code>0x24</code>, vblank 1), the pipeline ran. So far the evidence says DSI DCM turned the lag into a dark screen; the lag&#x27;s own cause is unknown (2 of 5 restart entries). 44&#x27;s power-cycle retry is useless and costs ~75 ms when it fires.</p></li><li>Visual confirmation of each probe screen by the owner: pending.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261109live" defer></script>
-<script src="../nav.js?v=20261109accent" defer></script>
-<script src="../site-locale.js?v=20261109stack" defer></script>
+<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

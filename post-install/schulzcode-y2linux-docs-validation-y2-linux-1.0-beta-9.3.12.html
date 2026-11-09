@@ -39,12 +39,12 @@
   <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.12: Bluetooth pauses and skips like a phone Release 1.0.0-beta.9.3.12 , Y2Reborn 1.0.0-beta.9.3.12 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.12 , updat">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
-  <link rel="stylesheet" href="../lumen.css?v=20261109stack">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261109accent" defer></script>
+  <script src="../site-init.js?v=20260803" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -67,9 +67,9 @@
 <ul><li><code>y2-radiod</code> starts <code>bluealsad --keep-alive=0</code> again (<code>bt/supervise.rs</code>). 9.3.7–9.3.11 used 900 s because a Suspend<p>sent 10 s into an idle stream had gone unanswered one time in three (2026-11-03); the stream kept started without packets is what muted the AirPods (F43 in Beta 6 was the same effect) and made them stop answering the baseband 2 s into a pause (supervision timeout 0x08 20 s later).</p></li><li>Reborn: <code>platform::headset_hold_since</code> (hold from <code>paused_at</code>, cleared while playing; F68 in the report ledger);<p><code>playback/sink.rs keep_sink</code> keeps a Bluetooth sink&#x27;s queued audio and <code>reuse_kept</code> prepares it again on reuse; <code>output.rs hold()</code> does no device pause on a Bluetooth sink (that was a drain, a gap). F66: <code>bt/settle.rs</code> <code>SWITCH_QUIET</code> 3 s after the link came up, <code>Codecs::kept</code> across reconnects, <code>Record::unset_since</code> for the half-connected rule.</p></li><li>BlueALSA patches 0007 (RTP timestamp on real time across a gap) and 0008 (refill up to 200 ms after a gap).<p>0008 can only send what the ALSA plugin&#x27;s io thread has delivered, which it paces per period; it is not what fixed the skips.</p></li><li>Linux <code>31d3987e</code> (built), Reborn <code>d52589a</code> (built); work commits <code>75b6fad2</code>, <code>756c5e53</code>, <code>b13c1fbb</code>, <code>7bd63437</code><p>(Linux) and <code>33ee726</code>, <code>8136838</code>, <code>5fa7e23</code> (Reborn).</p></li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261109live" defer></script>
-<script src="../nav.js?v=20261109accent" defer></script>
-<script src="../site-locale.js?v=20261109stack" defer></script>
+<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>
