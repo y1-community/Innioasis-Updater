@@ -167,21 +167,24 @@
     return null;
   }
 
+  /* Only a decision the visitor actually made travels. The shell fills in
+     permissive defaults for a first visit (feedback and nightly on), and
+     handing those to the other site asserted consent nobody gave. */
   function getPrivacyParam() {
     try {
       var raw = new URLSearchParams(window.location.search).get("privacy");
       if (raw) return raw;
-      if (window.INNIOASIS_PRIVACY && window.INNIOASIS_PRIVACY.hasDecided()) {
-        var prefs = window.INNIOASIS_PRIVACY.read();
-        if (prefs) {
-          if (prefs.feedback && prefs.nightly) return "all";
-          if (!prefs.feedback && !prefs.nightly) return "none";
-          if (prefs.feedback && !prefs.nightly) return "feedback";
-          if (!prefs.feedback && prefs.nightly) return "nightly";
-        }
-      }
       var cookie = getSharedCookie("innioasis-privacy");
       if (cookie) return cookie;
+      var stored = window.localStorage.getItem("innioasis-consent");
+      if (!stored) return null;
+      var data = JSON.parse(stored);
+      if (!data || typeof data !== "object" || typeof data.feedback !== "boolean") return null;
+      var feedback = data.feedback !== false;
+      var nightly = data.nightly !== false;
+      if (feedback && nightly) return "all";
+      if (!feedback && !nightly) return "none";
+      return feedback ? "feedback" : "nightly";
     } catch (_) {}
     return null;
   }
@@ -408,9 +411,10 @@
       }
     }
 
-    /* Language preference: route to pre-rendered static path if appropriate without query bloat */
+    /* A prerendered _de.html exists only on this host. Rewriting the other
+       site's path sends the reader to a page that site may not have. */
     var loc = getActiveLocale();
-    if (loc && loc !== "en") {
+    if (isSameHost && loc && loc !== "en") {
       var path = url.pathname;
       var dir = "";
       var name = "";
@@ -437,29 +441,23 @@
        paints correctly before its own shell has read storage. */
     if (!isSameHost || isAbsoluteInput) {
       if (url.origin !== window.location.origin) {
+        /* Appearance always travels as site_theme. On the gallery, theme
+           is a theme's name, so an appearance put there is read as a theme. */
         var curTheme = getActiveTheme();
-        if (curTheme) {
-          if (/theme(?:_[a-zA-Z0-9_-]+)?\.html$/i.test(url.pathname)) {
-            url.searchParams.set("site_theme", curTheme);
-          } else {
-            url.searchParams.set("theme", curTheme);
-          }
-        }
+        if (curTheme) url.searchParams.set("site_theme", curTheme);
         var curA11y = getActiveAccessibility();
         if (curA11y) url.searchParams.set("accessibility", curA11y);
         var curFs = getActiveFontScale();
-        if (curFs && curFs !== 0.8) url.searchParams.set("fontSize", String(curFs));
-        /* The visitor's accent, and whether the app handed it over, travel
-           with links to the other Innioasis site so its header and its
-           "Match my PC's theme colours" choice agree with this one. */
+        if (curFs) url.searchParams.set("fontSize", String(curFs));
         var curAccent = getActiveAccent();
         if (curAccent) url.searchParams.set("accent", curAccent);
         if (hasCeAccent()) url.searchParams.set("ce", "true");
-        var handoffLang = getActiveLocale();
-        if (handoffLang && handoffLang !== "en") url.searchParams.set("lang", handoffLang);
+        url.searchParams.set("lang", loc || "en");
         url.searchParams.set("donations", isY1DonationsDisabled() ? "false" : "true");
         var handoffPrivacy = getPrivacyParam();
         if (handoffPrivacy) url.searchParams.set("privacy", handoffPrivacy);
+        var handoffAnalytics = getPrivacyAnalyticsParam();
+        if (handoffAnalytics) url.searchParams.set("privacy_analytics", handoffAnalytics);
       }
       return url.toString();
     }

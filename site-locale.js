@@ -858,6 +858,38 @@
        cannot write the wrong translation into the page. */
     function requestDynamicBatch(items) {
         var target = dynamicTarget();
+        /* Our own endpoint caches every translated string at the edge, so a
+           repeated string — from this reader's next page or from anyone else
+           reading the same language — never reaches a provider again, and a
+           whole batch arrives in one same-origin round trip. The public
+           endpoints below stay as the fallback for a site where the function
+           is not deployed. */
+        function viaCache() {
+            if (typeof fetch !== "function") return Promise.reject(new Error("no fetch"));
+            return fetch("/i18n-translate", {
+                method: "POST",
+                mode: "cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    locale: target,
+                    strings: items.map(function (item) { return item.hidden; })
+                })
+            }).then(function (response) {
+                if (!response.ok) throw new Error("HTTP " + response.status);
+                return response.json();
+            }).then(function (data) {
+                var list = data && data.translations;
+                if (!Array.isArray(list) || list.length !== items.length) throw new Error("unaligned");
+                return list;
+            });
+        }
+        return viaCache().catch(function () {
+            return directBatch(items);
+        });
+    }
+
+    function directBatch(items) {
+        var target = dynamicTarget();
         var query = items.map(function (item) {
             return "q=" + encodeURIComponent(item.hidden);
         }).join("&");
