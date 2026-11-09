@@ -1443,7 +1443,7 @@ def release_downloads_html(item: dict, release: dict, portable: list[tuple[dict,
             buttons.append(
                 '<a class="lumen-button" href="%s" download="%s" rel="nofollow" '
                 'data-zip-url="%s" data-zip-name="%s" data-release-tag="%s" '
-                'data-portable-zips="%s" data-platform="%s">%s '
+                'data-portable-zips="%s" data-platform="%s"><span translate="no" class="notranslate" data-i18n-skip>%s</span> '
                 '<span class="lumen-meta">portable · %s</span></a>'
                 % (esc(package["url"]), esc(name), esc(url), esc(name), esc(tag),
                    esc(mirrors), esc(package["platform"]), esc(package["label"]),

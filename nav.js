@@ -565,7 +565,7 @@
   var platformLabel = detectUserPlatformLabel();
   var ctaLabel = platformLabel ? "Get Updater" : "Get Updater CE";
   var ctaPlatformHtml = platformLabel
-    ? '<span class="lumen-nav-install-cta-platform"> · ' + escapeHtml(platformLabel) + "</span>"
+    ? '<span class="lumen-nav-install-cta-platform" translate="no" class="notranslate" data-i18n-skip> · ' + escapeHtml(platformLabel) + "</span>"
     : "";
 
   var brandIconHtml = isFirmwarePersona

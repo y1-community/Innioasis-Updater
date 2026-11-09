@@ -320,14 +320,30 @@
         var core = normalise(parts[2]);
         if (!core) return value;
 
+        /* OS proper nouns must never be translated into dictionary words */
+        if (/^(Windows|macOS|Linux|Android|iOS|Windows on ARM|Linux on ARM)$/i.test(core)) {
+            if (/^windows$/i.test(core)) return parts[1] + "Windows" + parts[3];
+            if (/^macos$/i.test(core)) return parts[1] + "macOS" + parts[3];
+            if (/^linux$/i.test(core)) return parts[1] + "Linux" + parts[3];
+            if (/^android$/i.test(core)) return parts[1] + "Android" + parts[3];
+            if (/^ios$/i.test(core)) return parts[1] + "iOS" + parts[3];
+            if (/^windows on arm$/i.test(core)) return parts[1] + "Windows on ARM" + parts[3];
+            if (/^linux on arm$/i.test(core)) return parts[1] + "Linux on ARM" + parts[3];
+        }
+
         var regional = regionValue(core);
         if (regional) return parts[1] + regional + parts[3];
 
         if (!state.strings) return value;
         var translated = state.strings[core];
         if (translated === undefined) return value;
-        if (typeof translated === "string" && translated.indexOf("Spectre") !== -1) {
-            translated = translated.replace(/\bRyan Spectre\b/g, "Ryan Specter").replace(/\bSpectre\b/g, "Specter");
+        if (typeof translated === "string") {
+            if (translated.indexOf("Spectre") !== -1) {
+                translated = translated.replace(/\bRyan Spectre\b/g, "Ryan Specter").replace(/\bSpectre\b/g, "Specter");
+            }
+            if (/\bWindows\b/.test(core) && !/\b(window|finder window|terminal window)\b/i.test(core)) {
+                translated = translated.replace(/\b(jendela|ventanas|fenêtres|finestre|fenster|okna)\b/gi, "Windows");
+            }
         }
         return parts[1] + translated + parts[3];
     }

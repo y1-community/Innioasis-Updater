@@ -384,7 +384,7 @@ def software_section(item: dict, releases: list[dict], mirrors: list[dict], feed
                 '<a class="lumen-zip-download-button lumen-zip-download-button--table" href="%s" download="%s"'
                 ' data-zip-url="%s" data-zip-name="%s" data-release-tag="%s"'
                 ' data-portable-zips="%s" data-platform="%s" rel="nofollow">'
-                '<strong>%s</strong><small>%s</small></a>'
+                '<strong translate="no" class="notranslate" data-i18n-skip>%s</strong><small>%s</small></a>'
                 % (esc(p["url"]), esc(str(asset.get("name") or "rom.zip")),
                    esc(asset_url), esc(str(asset.get("name") or "")), esc(tag),
                    esc(mirror_repos), esc(p["platform"]),
