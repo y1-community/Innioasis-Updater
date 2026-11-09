@@ -13,14 +13,14 @@
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-228"/>
     <innioasis:tag_name>baseline-228</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/bootimg.img.gz" title="bootimg.img.gz" length="7539688" type="application/gzip" innioasis:download_count="33" innioasis:asset_id="725447744"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/manifest.json" title="manifest.json" length="4238" type="application/json" innioasis:download_count="68" innioasis:asset_id="725447741"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/manifest.sig" title="manifest.sig" length="64" type="application/pgp-signature" innioasis:download_count="65" innioasis:asset_id="725447780"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/recovery.img.gz" title="recovery.img.gz" length="7539705" type="application/gzip" innioasis:download_count="32" innioasis:asset_id="725447786"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51653922" type="application/gzip" innioasis:download_count="32" innioasis:asset_id="725447831"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="3" innioasis:asset_id="725447743"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.19-first-install.zip" length="67734753" type="application/zip" innioasis:download_count="20" innioasis:asset_id="725447740"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar" length="19312640" type="application/x-tar" innioasis:download_count="3" innioasis:asset_id="725447739"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/bootimg.img.gz" title="bootimg.img.gz" length="7539688" type="application/gzip" innioasis:download_count="44" innioasis:asset_id="725447744"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/manifest.json" title="manifest.json" length="4238" type="application/json" innioasis:download_count="103" innioasis:asset_id="725447741"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/manifest.sig" title="manifest.sig" length="64" type="application/pgp-signature" innioasis:download_count="99" innioasis:asset_id="725447780"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/recovery.img.gz" title="recovery.img.gz" length="7539705" type="application/gzip" innioasis:download_count="43" innioasis:asset_id="725447786"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51653922" type="application/gzip" innioasis:download_count="42" innioasis:asset_id="725447831"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="5" innioasis:asset_id="725447743"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.19-first-install.zip" length="67734753" type="application/zip" innioasis:download_count="25" innioasis:asset_id="725447740"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar" length="19312640" type="application/x-tar" innioasis:download_count="4" innioasis:asset_id="725447739"/>
     <content type="text">**Y2Linux 1.0 Beta 9.3.19**: update notifications, if you want them.
 
 ## What&#x27;s new
