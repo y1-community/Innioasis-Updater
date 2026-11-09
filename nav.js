@@ -313,6 +313,18 @@
     return null;
   }
 
+  /* Pages that only innioasis.app serves (release view, Rockbox pages) need
+     an absolute address when the link is drawn on themes.innioasis.app. */
+  function mainSitePath(path) {
+    var host = window.location.hostname;
+    var onThemes = host === "themes.innioasis.app" || window.location.port === "8081";
+    if (!onThemes) return path;
+    if (host === "localhost" || host === "127.0.0.1") {
+      return window.location.protocol + "//" + host + ":8080" + path;
+    }
+    return "https://innioasis.app" + path;
+  }
+
   function decorateLinkUrl(rawHref) {
     if (!rawHref) return rawHref;
     var raw = String(rawHref).trim();
@@ -328,11 +340,16 @@
     /* A GitHub releases page is served by our own release view: the same
        releases, plus the portable builds for this computer, on our site. */
     if (/(^|\.)github\.com$/i.test(url.hostname)) {
+      /* The Y1 Rockbox theme collection has its own page with download
+         buttons, so its GitHub releases and archives never leave the site. */
+      if (/^\/rockbox-y1\/themes(?:\/(?!releases\/download\/)|$)/i.test(url.pathname)) {
+        return mainSitePath("/rockbox-y1-themes.html");
+      }
       var ghRelease = url.pathname.match(/^\/([^/]+)\/([^/]+)\/releases(?:\/tag\/([^/]+))?\/?$/i);
       if (ghRelease) {
         var viewQuery = "repo=" + encodeURIComponent(ghRelease[1] + "/" + ghRelease[2]);
         if (ghRelease[3]) viewQuery += "&tag=" + encodeURIComponent(decodeURIComponent(ghRelease[3]));
-        return "/release_view.html?" + viewQuery;
+        return mainSitePath("/release_view.html?" + viewQuery);
       }
     }
 
@@ -452,6 +469,64 @@
   window.y1DecorateLinks = decorateAllDocumentLinks;
   window.y1DecorateUrl = decorateLinkUrl;
 
+  /* Download analytics live in site-downloads.js, which loads only when a
+     download starts or the visit arrived with the Updater CE link contract
+     (?what= or ?client=), so ordinary page views fetch nothing extra. */
+  var downloadsQueue = [];
+  var downloadsLoading = false;
+  function loadDownloadsScript() {
+    if (window.InnioasisDownloads || downloadsLoading) return;
+    downloadsLoading = true;
+    var script = document.createElement("script");
+    script.src = "/site-downloads.js?v=20261109";
+    script.async = true;
+    script.onload = function () {
+      var pending = downloadsQueue.splice(0);
+      pending.forEach(function (params) {
+        try { window.InnioasisDownloads.track(params); } catch (_) {}
+      });
+    };
+    (document.head || document.documentElement).appendChild(script);
+  }
+  window.y1TrackDownload = function (params) {
+    if (window.InnioasisDownloads) {
+      try { return window.InnioasisDownloads.track(params || {}); } catch (_) { return null; }
+    }
+    downloadsQueue.push(params || {});
+    loadDownloadsScript();
+    return null;
+  };
+  if (/[?&](?:what|client)=/.test(window.location.search || "")) loadDownloadsScript();
+
+  /* Plain download links: the Updater CE installers on the guide, and any
+     link that names its download with data-download-* attributes (Rockbox
+     theme packs, fonts). Firmware table buttons record their own event. */
+  var APP_FILE_RE = /\/(?:installer\.exe|[^/?#]*\.dmg|[^/?#]*\.AppImage|[^/?#]*\.msi)(?:[?#]|$)/i;
+  document.addEventListener("click", function (event) {
+    if (event.button !== 0) return;
+    var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!link || link.hasAttribute("data-zip-url")) return;
+    var href = link.getAttribute("href") || "";
+    var what = link.getAttribute("data-download-what");
+    if (!what && APP_FILE_RE.test(href)) what = "app";
+    if (!what) return;
+    var fileMatch = href.split(/[?#]/)[0].match(/[^/]+$/);
+    var params = {
+      what: what,
+      software: link.getAttribute("data-download-software") || (what === "app" ? "Updater CE" : ""),
+      version: link.getAttribute("data-download-version") || (/\/releases\/latest\//.test(href) ? "latest" : ""),
+      model: link.getAttribute("data-download-model") || "",
+      brand: link.getAttribute("data-download-brand") || "",
+      type: link.getAttribute("data-download-type") || "",
+      resolution: link.getAttribute("data-download-resolution") || "",
+      id: link.getAttribute("data-download-id") || "",
+      action: "open",
+      file_name: link.getAttribute("data-download-file") || (fileMatch ? decodeURIComponent(fileMatch[0]) : ""),
+      download_method: link.getAttribute("data-download-method") || "direct"
+    };
+    window.y1TrackDownload(params);
+  }, true);
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", decorateAllDocumentLinks);
   } else {
@@ -512,7 +587,7 @@
     return decorateLinkUrl(path);
   }
 
-  var persona = detectPersona();
+  var persona = isThemesSite ? "themes" : detectPersona();
   var isFirmwarePersona = persona === "firmware";
   var activeTitle = isThemesSite ? "Themes Gallery" : (isFirmwarePersona ? "Firmware Archive" : "Updater CE");
   var activeHomeHref = isFirmwarePersona ? "/firmware.html" : "/";
@@ -555,7 +630,7 @@
       title: "Updater CE",
       subtitle: "One-click installer for Windows, macOS & Linux",
       href: "/",
-      icon: '<span class="lumen-app-icon lumen-app-icon--updater" aria-hidden="true"><img src="/assets/icon.ico" width="34" height="34" alt="" aria-hidden="true"></span>'
+      icon: '<span class="lumen-app-icon lumen-app-icon--updater" aria-hidden="true"><img src="' + mainSitePath("/assets/icon.ico") + '" width="34" height="34" alt="" aria-hidden="true"></span>'
     },
     {
       id: "themes",
@@ -612,7 +687,9 @@
     ? '<span class="lumen-nav-install-cta-platform" translate="no" class="notranslate" data-i18n-skip> · ' + escapeHtml(platformLabel) + "</span>"
     : "";
 
-  var brandIconHtml = isFirmwarePersona
+  var brandIconHtml = persona === "themes"
+    ? '<span class="lumen-brand-icon lumen-brand-icon--themes" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-2 0-.5-.2-1-.5-1.3-.4-.4-.6-.9-.6-1.4 0-1.2 1-2.1 2.1-2.1H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3zm-4.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></span>'
+    : isFirmwarePersona
     ? '<span class="lumen-brand-icon lumen-brand-icon--firmware" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg></span>'
     : '<span class="lumen-brand-icon lumen-brand-icon--updater" aria-hidden="true"><img src="/assets/icon.ico" width="38" height="38" alt="" aria-hidden="true"></span>';
 
@@ -666,9 +743,10 @@
       '</nav>';
   }
 
-  /* One sticky header per page: the gallery bar wins where it exists. */
+  /* One sticky header per page, the same on every Innioasis site. The
+     themes gallery's search strip scrolls with its content. */
   var stickyNav = root ? root.querySelector("nav") : null;
-  if (stickyNav && !document.querySelector(".gallery-topbar")) stickyNav.classList.add("site-sticky");
+  if (stickyNav) stickyNav.classList.add("site-sticky");
 
   /* Site Switcher Dropdown Logic */
   var switcherToggle = document.getElementById("lumen-site-switcher-toggle");
@@ -1595,12 +1673,11 @@
       '<h4>Software &amp; Guides</h4>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '">Installation Guide</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/manuals/index.html")) + '">Player manuals</a>' +
-      (isThemesSite
-        ? '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html")) + '">Player Updates and Firmware</a>'
-        : '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=software")) + '">Software Updates</a>' +
-          '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Custom Firmware Downloads</a>'
-      ) +
+      '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=software")) + '">Software Updates</a>' +
+      '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Custom Firmware Downloads</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/rockbox-benefits.html")) + '">Rockbox on Innioasis</a>' +
+      '<a href="' + escapeHtml(decorateMainSiteHref("/rockbox-y1-themes.html")) + '">Rockbox-Y1 themes</a>' +
+      '<a href="' + escapeHtml(decorateMainSiteHref("/rockbox-tutorials/")) + '">Rockbox tutorials</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/reborn-y2linux-benefits.html")) + '">Reborn (Y2Linux) for Y2</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/rondo-benefits.html")) + '">Rondo for Y1</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/updater-comparison.html")) + '">Which tool should I use?</a>' +
