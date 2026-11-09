@@ -1249,7 +1249,8 @@
        the release's own filename in Downloads on every path. */
     function releaseFileName(name, fallback) {
         var base = String(name || fallback || "rom.zip").split(/[?#]/)[0].split("/").pop();
-        base = base.replace(/-(macos|windows|linux|android|windows-arm64|linux-arm64)(?=\.zip$)/i, "");
+        base = base.replace(/[-_](?:windows|win|macos|mac|linux|android|darwin)(?:[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64))?(?=\.zip$)/i, "");
+        base = base.replace(/[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64)(?=\.zip$)/i, "");
         if (!/\.zip$/i.test(base)) base = fallback || "rom.zip";
         return base;
     }

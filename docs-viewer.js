@@ -560,13 +560,31 @@
      download attribute for cross-origin files, so read the file here and hand
      it over as a blob; when the mirror does not allow that, the ordinary link
      still downloads it. */
+  /* GitHub release assets answer without CORS headers and name themselves in
+     Content-Disposition, so a bare fetch fails and a plain navigation saves
+     rom_y2-windows.zip. The same-origin download proxy streams the same bytes
+     with the package's own filename, which is the name the reader clicked. */
+  function proxyDownloadHref(assetUrl, filename) {
+    if (!/^https:\/\/github\.com\/[^/]+\/[^/]+\/releases\/download\//i.test(assetUrl || "")) return "";
+    var meta = document.querySelector('meta[name="innioasis-download-proxy"]');
+    var proxy = meta ? (meta.getAttribute("content") || "").trim() : "";
+    if (!proxy) {
+      if (!/^https?:$/.test(window.location.protocol)) return "";
+      proxy = "/download-proxy";
+    }
+    return proxy + (proxy.indexOf("?") === -1 ? "?" : "&") +
+      "url=" + encodeURIComponent(assetUrl) +
+      "&filename=" + encodeURIComponent(filename || "firmware.zip");
+  }
+
   function saveDownload(link) {
     var name = link.getAttribute("data-save-as") || "";
     var href = link.getAttribute("href") || "";
     if (!name || !href) return false;
     if (link.getAttribute("data-save-busy") === "1") return false;
+    var proxied = proxyDownloadHref(href, name);
     link.setAttribute("data-save-busy", "1");
-    fetch(href, { credentials: "omit" }).then(function (res) {
+    fetch(proxied || href, { credentials: "omit" }).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.blob();
     }).then(function (blob) {
