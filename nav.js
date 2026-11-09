@@ -200,6 +200,68 @@
     return base;
   }
 
+  var prerenderedData = null;
+  function getPrerenderedData() {
+    if (prerenderedData) return prerenderedData;
+    if (window.__y1Prerendered && window.__y1Prerendered.pages) {
+      prerenderedData = window.__y1Prerendered;
+      return prerenderedData;
+    }
+    return null;
+  }
+  try {
+    var pUrl = (window.location && window.location.origin ? window.location.origin : "") + "/i18n/prerendered.json";
+    fetch(pUrl).then(function (r) {
+      if (r.ok) return r.json();
+    }).then(function (data) {
+      if (data && data.pages) {
+        prerenderedData = data;
+        window.__y1Prerendered = data;
+      }
+    }).catch(function () {});
+  } catch (_) {}
+
+  function resolveStaticLocaleCode(loc, data) {
+    if (!loc || loc === "en") return null;
+    var clean = String(loc).toLowerCase().trim().replace(/_/g, "-");
+    var locales = (data && data.locales) || [];
+    var aliases = (data && data.aliases) || {};
+
+    for (var i = 0; i < locales.length; i++) {
+      if (locales[i].toLowerCase() === clean) return locales[i];
+    }
+    for (var primary in aliases) {
+      if (!Object.prototype.hasOwnProperty.call(aliases, primary)) continue;
+      var list = aliases[primary] || [];
+      for (var j = 0; j < list.length; j++) {
+        if (list[j].toLowerCase() === clean) return primary;
+      }
+    }
+    var base = baseLocaleCode(loc);
+    if (base && base.toLowerCase() !== clean) {
+      for (var k = 0; k < locales.length; k++) {
+        if (locales[k].toLowerCase() === base.toLowerCase()) return locales[k];
+      }
+    }
+    return null;
+  }
+
+  function getPrerenderedStaticPath(dir, name, loc) {
+    var data = getPrerenderedData();
+    var cleanDir = (dir || "").replace(/^\/+/, "").replace(/\/+$/, "");
+    var targetPage = cleanDir ? (cleanDir + "/" + name) : name;
+    if (data && data.pages) {
+      if (data.pages.indexOf(targetPage) === -1 && data.pages.indexOf(name) === -1) {
+        return null;
+      }
+    }
+    var matchedCode = resolveStaticLocaleCode(loc, data);
+    if (!matchedCode) return null;
+    var d = dir || "";
+    if (d && !d.endsWith("/")) d += "/";
+    return d + name + "_" + matchedCode + ".html";
+  }
+
   function decorateLinkUrl(rawHref) {
     if (!rawHref) return rawHref;
     var raw = String(rawHref).trim();
@@ -237,23 +299,22 @@
     if (loc && loc !== "en") {
       url.searchParams.set("lang", loc);
       var path = url.pathname;
-      var coreLocales = ["de", "es", "fr", "it", "ja", "ko", "nl", "pl", "pt", "ru", "tr", "uk", "zh-CN", "zh-TW", "ar"];
-      var isCore = coreLocales.some(function (c) { return c.toLowerCase() === loc.toLowerCase(); });
-      var suffixCode = baseLocaleCode(loc);
-      if (!isCore && suffixCode) {
-        isCore = coreLocales.some(function (c) { return c.toLowerCase() === suffixCode.toLowerCase(); });
+      var dir = "";
+      var name = "";
+      if (path === "/" || path === "") {
+        dir = "/";
+        name = "index";
+      } else {
+        var htmlMatch = path.match(/^(.+?\/)?([a-zA-Z0-9_-]+)\.html$/i);
+        if (htmlMatch && !/_[a-zA-Z0-9_-]+$/i.test(htmlMatch[2])) {
+          dir = htmlMatch[1] || "";
+          name = htmlMatch[2];
+        }
       }
-      if (isCore) {
-        var baseCode = suffixCode || loc;
-        if (path === "/" || path === "") {
-          url.pathname = "/index_" + baseCode + ".html";
-        } else {
-          var htmlMatch = path.match(/^(.+?\/)?([a-zA-Z0-9_-]+)\.html$/i);
-          if (htmlMatch && !/_[a-zA-Z0-9_-]+$/i.test(htmlMatch[2])) {
-            var dir = htmlMatch[1] || "";
-            var name = htmlMatch[2];
-            url.pathname = dir + name + "_" + baseCode + ".html";
-          }
+      if (name) {
+        var staticPath = getPrerenderedStaticPath(dir, name, loc);
+        if (staticPath) {
+          url.pathname = staticPath.charAt(0) === "/" ? staticPath : ("/" + staticPath);
         }
       }
     }
@@ -433,13 +494,21 @@
   function detectUserPlatformLabel() {
     var ua = (typeof navigator !== "undefined" && (navigator.userAgentData && navigator.userAgentData.platform) || navigator.userAgent || "").toLowerCase();
     if (/android|iphone|ipad|ipod|ipados|mobile|tablet|cros|chrome os|chromeos|kindle|silk|iemobile/i.test(ua)) return "";
-    if (/mac/i.test(ua)) return "for macOS";
-    if (/win/i.test(ua)) return "for Windows";
-    if (/linux|x11/i.test(ua)) return "for Linux";
+    if (/mac/i.test(ua)) return "macOS";
+    if (/win/i.test(ua)) return "Windows";
+    if (/linux|x11/i.test(ua)) return "Linux";
     return "";
   }
-  var platformSuffix = detectUserPlatformLabel();
-  var ctaLabel = platformSuffix ? ("Get Updater " + platformSuffix) : "Get Updater CE";
+  /* The button is translated like every other label, but the product name in
+     it is not: "Get Updater for macOS" was one opaque string no catalog could
+     hold, so it stayed English on every non-English page. Keeping the wording
+     and the platform in separate nodes leaves "Get Updater" a catalog key and
+     the platform a proper noun. */
+  var platformLabel = detectUserPlatformLabel();
+  var ctaLabel = platformLabel ? "Get Updater" : "Get Updater CE";
+  var ctaPlatformHtml = platformLabel
+    ? '<span class="lumen-nav-install-cta-platform"> · ' + escapeHtml(platformLabel) + "</span>"
+    : "";
 
   var brandIconHtml = isFirmwarePersona
     ? '<span class="lumen-brand-icon lumen-brand-icon--firmware" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#141721;border:1px solid rgba(255,255,255,0.14);box-shadow:0 1px 4px rgba(0,0,0,0.3);font-size:16px;line-height:1;margin-right:8px;flex-shrink:0;" aria-hidden="true">📚</span>'
@@ -668,7 +737,7 @@
       '<button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '</div>' +
       '<ul class="nav-links" id="navLinks">' +
-      '<li><a class="lumen-nav-install-cta" id="lumen-nav-install-cta" href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '">' + escapeHtml(ctaLabel) + '</a></li>' +
+      '<li><a class="lumen-nav-install-cta" id="lumen-nav-install-cta" href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '"><span class="lumen-nav-install-cta-label">' + escapeHtml(ctaLabel) + '</span>' + ctaPlatformHtml + '</a></li>' +
       '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=software")) + '">Software Updates</a></li>' +
       '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Firmware Downloads</a></li>' +
       '<li><a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">Themes</a></li>' +
