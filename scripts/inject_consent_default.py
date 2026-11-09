@@ -38,6 +38,7 @@ SNIPPET = """<script>
     security_storage: 'granted',
     wait_for_update: 500
   });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
 </script>
 """
 

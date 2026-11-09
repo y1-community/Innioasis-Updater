@@ -205,6 +205,7 @@ def head(title: str, description: str, canonical: str, up: str) -> str:
     security_storage: 'granted',
     wait_for_update: 500
   }});
+  dataLayer.push({{'gtm.start': new Date().getTime(), event: 'gtm.js'}});
 </script>
 <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
 <script>

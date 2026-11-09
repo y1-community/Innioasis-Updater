@@ -33,6 +33,7 @@ SNIPPET = (
     '    security_storage: \'granted\',\n'
     '    wait_for_update: 500\n'
     '  });\n'
+    '  dataLayer.push({\'gtm.start\': new Date().getTime(), event: \'gtm.js\'});\n'
     '</script>\n'
     '<script async src="https://www.googletagmanager.com/gtm.js?id=' + CONTAINER + '"></script>\n'
     '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'

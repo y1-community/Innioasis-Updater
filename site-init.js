@@ -294,10 +294,10 @@
     }
 
     function loadAdManager() {
-        if (global.AdManager || document.getElementById("raptive-ad-manager-script")) return;
+        if (global.AdManager || document.getElementById("ad-manager-script")) return;
         var s = document.createElement("script");
-        s.id = "raptive-ad-manager-script";
-        s.src = "/ad-manager.js?v=20261108raptive";
+        s.id = "ad-manager-script";
+        s.src = "/ad-manager.js?v=20261109";
         s.defer = true;
         (document.head || document.documentElement).appendChild(s);
     }

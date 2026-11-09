@@ -1451,7 +1451,7 @@
                reusing the dead proxy link would leave the reader with an error
                page instead of a download. */
             var href = await proxyHrefIfUsable(chosenUrl, zipName);
-            if (portableZip && label) label.textContent = "Starting portable package download…";
+            if (label) label.textContent = "Downloading…";
             startDirectDownload(href, zipName, osLabelFor(chosenPlatform));
         } catch (err) {
             console.warn("Download preparation failed, using the original release:", err);
@@ -2420,18 +2420,24 @@
             try { history.replaceState(null, "", "?" + qs + window.location.hash); } catch (_) {}
         }
 
-        table.addEventListener("click", function (event) {
-            var btn = event.target.closest(".lumen-zip-download-button, .lumen-zip-text-link, a[data-zip-url]");
+        function handleZipDownloadClick(event) {
+            if (event.defaultPrevented || event.button !== 0) return;
+            var btn = event.target && event.target.closest ? event.target.closest(".lumen-zip-download-button, .lumen-zip-text-link, a[data-zip-url], a[href*='rom.zip'], a[href$='.zip']") : null;
             if (!btn || btn.hasAttribute("data-direct-download")) return;
+            var href = btn.getAttribute("href") || "";
+            var zipUrl = btn.getAttribute("data-zip-url") || href;
+            if (!zipUrl || !/\.zip/i.test(zipUrl)) return;
             event.preventDefault();
-            var zipUrl = btn.getAttribute("data-zip-url");
-            var zipName = btn.getAttribute("data-zip-name") || "rom.zip";
+            var zipName = btn.getAttribute("data-zip-name") || (zipUrl.match(/[^/?#]+\.zip/i) ? zipUrl.match(/[^/?#]+\.zip/i)[0] : "rom.zip");
             var itemName = btn.getAttribute("data-item-name") || "Software";
             var itemModel = btn.getAttribute("data-item-model") || "Y1";
             var releaseTag = btn.getAttribute("data-release-tag") || "release";
             var portableZips = btn.getAttribute("data-portable-zips") || "";
             startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips);
-        });
+        }
+
+        table.addEventListener("click", handleZipDownloadClick);
+        document.addEventListener("click", handleZipDownloadClick);
 
         /* Opening a release's details means the visitor is reading about that
            exact version, so version-targeted notices apply from then on. */

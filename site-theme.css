@@ -136,6 +136,7 @@ h2.section-display,
     padding: 8px 14px;
     background: rgba(10, 11, 15, 0.94);
     border-bottom: 1px solid var(--site-border);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
 }
 

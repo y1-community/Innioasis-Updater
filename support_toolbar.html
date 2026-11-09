@@ -2133,28 +2133,25 @@
     var metScope = null;
     var dailyMet = shownBy.daily >= targets.daily;
     var weeklyMet = shownBy.weekly >= targets.weekly;
-    /* The month's own figure is forced on the first day, when the month has
-       just started, and on the last three days when something came in today.
-       A closing day with no donations falls back to the daily rung, which is
-       measured against today alone. Every other day starts at the daily rung,
-       however much the month has already raised. */
-    var monthSummary = dayOfMonth === 1 ||
-      (dayOfMonth > daysInMonth - 3 && raisedBy.daily > 0);
-    /* A quiet day leads with the daily rung even when the month is already
-       covered, because it is measured against today's donations alone. The
-       month summary only wins on the first day and on closing days that
-       brought something in today. */
-    if (monthSummary) {
-      if (shownBy.monthly >= targets.monthly) metScope = "monthly";
-      else scope = "monthly";
-    } else if (!dailyMet) {
+    var monthlyMet = shownBy.monthly >= targets.monthly;
+    /* On days where there are less than $10 in donations (or local currency equivalent),
+       always display the daily costs target as it has not been met, even when weekly
+       or monthly costs targets have been met.
+       When $10 or more has been raised today, users are shown the weekly or monthly goal
+       if they have not been met. */
+    if (!dailyMet) {
       scope = "daily";
-    } else if (shownBy.monthly >= targets.monthly) {
-      metScope = "monthly";
-    } else if (!weeklyMet) {
-      scope = "weekly";
     } else {
-      scope = "monthly";
+      var monthSummary = dayOfMonth === 1 || dayOfMonth > daysInMonth - 3;
+      if (monthSummary && !monthlyMet) {
+        scope = "monthly";
+      } else if (!weeklyMet) {
+        scope = "weekly";
+      } else if (!monthlyMet) {
+        scope = "monthly";
+      } else {
+        metScope = "monthly";
+      }
     }
     var symbol = fxSymbol(code);
     if (!scope) {

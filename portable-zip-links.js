@@ -392,6 +392,13 @@
         nodes.bar.style.width = "2%";
         nodes.meta.textContent = "";
         nodes.dismiss.style.display = "none";
+        if (nodes.root && typeof nodes.root.scrollIntoView === "function") {
+            try {
+                nodes.root.scrollIntoView({ behavior: "smooth", block: "center" });
+            } catch (_) {
+                nodes.root.scrollIntoView();
+            }
+        }
     }
 
     function osLabel(key) {

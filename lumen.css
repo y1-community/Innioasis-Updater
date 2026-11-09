@@ -166,7 +166,13 @@ body.site-themes-app .lumen-theme-control--fallback { position: fixed; top: .75r
 body.site-themes-app .lumen-theme-control { display: inline-flex; align-items: center; gap: .35rem; color: var(--lumen-muted); font-size: .72rem; font-weight: 700; }
 body.site-themes-app .lumen-theme-control select { min-height: 36px; padding: .35rem 1.7rem .35rem .55rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); font: 600 .78rem var(--lumen-body); }
 
-body.site-themes-app #nav-root nav { position: sticky; top: 0; z-index: 1000; background: color-mix(in oklab, var(--lumen-ink) 94%, transparent); border-bottom: 1px solid var(--lumen-line); backdrop-filter: blur(14px); }
+/* Safari on macOS Monterey (15.x, and 16.0/16.1) has no color-mix(): the
+   declaration was dropped entirely and the sticky header painted nothing at
+   all, so page text scrolled visibly through it. The plain value first is the
+   fallback for those browsers; anything with color-mix support overrides it.
+   The unprefixed backdrop-filter only arrived in Safari 18, hence the prefix. */
+body.site-themes-app #nav-root nav { position: sticky; top: 0; z-index: 1000; background: #0c0e14; background: color-mix(in oklab, var(--lumen-ink) 94%, transparent); border-bottom: 1px solid var(--lumen-line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+:root[data-lumen-theme="light"] body.site-themes-app #nav-root nav { background: #ffffff; background: color-mix(in oklab, var(--lumen-ink) 94%, transparent); }
 body.site-themes-app .nav-container { width: min(var(--lumen-max), calc(100% - 2rem)); min-height: 58px; margin: 0 auto; padding: .55rem 0; display: flex; align-items: center; justify-content: space-between; gap: var(--lumen-space-4); }
 body.site-themes-app .logo { display: inline-flex; align-items: center; }
 body.site-themes-app .logo > a:first-child,

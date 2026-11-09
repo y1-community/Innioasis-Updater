@@ -333,6 +333,7 @@ def page_document(title: str, description: str, canonical: str, main: str, slug:
         '    security_storage: \'granted\',\n'
         '    wait_for_update: 500\n'
         '  });\n'
+        "  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});\n"
         '</script>\n'
         '<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>\n'
         '<script>\n'
