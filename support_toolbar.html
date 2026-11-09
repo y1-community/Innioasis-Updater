@@ -1176,7 +1176,8 @@
   }
 
   var FONT_KEY = "lumen-font-scale";
-  var fontScale = 1;
+  var DEFAULT_FONT_SCALE = 0.8;
+  var fontScale = DEFAULT_FONT_SCALE;
   try {
     var p = new URLSearchParams(window.location.search);
     var urlFs = p.get("fontSize") || p.get("fontScale") || p.get("font-scale") || p.get("fs") || p.get("lumen-font-scale");
@@ -1186,7 +1187,10 @@
       if (v >= 0.7 && v <= 1.6) fontScale = +(v.toFixed(2));
     } else {
       var storedScale = parseFloat(localStorage.getItem(FONT_KEY) || "");
-      if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = +(storedScale.toFixed(2));
+      if (storedScale >= 0.7 && storedScale <= 1.6) {
+        if (storedScale === 1 && localStorage.getItem("lumen-font-scale-default-80") !== "1") storedScale = DEFAULT_FONT_SCALE;
+        fontScale = +(storedScale.toFixed(2));
+      }
     }
   } catch (_) {}
   function applyFontScale() {
@@ -1207,15 +1211,17 @@
     try {
       if (window.history && window.history.replaceState) {
         var u = new URL(window.location.href);
-        if (fontScale !== 1) {
-          u.searchParams.set("fontSize", String(fontScale));
-        } else {
-          u.searchParams.delete("fontSize");
-          u.searchParams.delete("fontScale");
-          u.searchParams.delete("font-scale");
-          u.searchParams.delete("fs");
+        var changed = false;
+        ["fontSize", "fontScale", "font-scale", "fs", "lumen-font-scale"].forEach(function(k) {
+          if (u.searchParams.has(k)) {
+            u.searchParams.delete(k);
+            changed = true;
+          }
+        });
+        if (changed) {
+          var qs = u.searchParams.toString();
+          window.history.replaceState(null, "", u.pathname + (qs ? "?" + qs : "") + u.hash);
         }
-        window.history.replaceState(null, "", u.toString());
       }
     } catch (_) {}
   }
@@ -1224,8 +1230,8 @@
   var fontUp = document.querySelector("[data-font-up]");
   if (fontDown) fontDown.addEventListener("click", function () { fontScale = Math.max(0.7, +(fontScale - 0.1).toFixed(2)); applyFontScale(); });
   if (fontReset) fontReset.addEventListener("click", function () {
-    if (fontScale === 1) fontScale = 1.2;
-    else fontScale = 1;
+    if (fontScale === DEFAULT_FONT_SCALE) fontScale = 1.2;
+    else fontScale = DEFAULT_FONT_SCALE;
     applyFontScale();
   });
   if (fontUp) fontUp.addEventListener("click", function () { fontScale = Math.min(1.6, +(fontScale + 0.1).toFixed(2)); applyFontScale(); });

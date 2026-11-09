@@ -1073,7 +1073,8 @@
   }
 
   var FONT_KEY = "lumen-font-scale";
-  var fontScale = 1;
+  var DEFAULT_FONT_SCALE = 0.8;
+  var fontScale = DEFAULT_FONT_SCALE;
   try {
     var storedScale = parseFloat(localStorage.getItem(FONT_KEY) || "");
     if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = storedScale;
