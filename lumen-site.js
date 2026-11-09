@@ -1288,6 +1288,12 @@
     }
 
     var downloadPanelHideTimer = null;
+    var panelHiddenLinks = [];
+
+    function restorePanelLinks() {
+        panelHiddenLinks.forEach(function (node) { node.hidden = false; });
+        panelHiddenLinks = [];
+    }
 
     function hideDownloadPanel() {
         if (downloadPanelHideTimer) {
@@ -1298,9 +1304,29 @@
         if (panel) panel.hidden = true;
         var button = document.getElementById("lumen-download-progress-dismiss");
         if (button) button.hidden = true;
+        restorePanelLinks();
     }
 
-    async function startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips) {
+    /* Progress belongs to the release that was clicked: put the box in that
+       row and move the row's zip links aside instead of scrolling the page. */
+    function mountDownloadPanel(wrap, trigger) {
+        restorePanelLinks();
+        var host = trigger && trigger.isConnected
+            ? (trigger.closest("td, .lumen-release-card, li, .lumen-actions") || trigger.parentElement)
+            : null;
+        if (!host) {
+            var container = document.querySelector(".lumen-catalog-container") || document.querySelector("main") || document.body;
+            container.prepend(wrap);
+            return;
+        }
+        host.appendChild(wrap);
+        Array.prototype.forEach.call(host.querySelectorAll("a[data-zip-url], a[href*='.zip']"), function (node) {
+            node.hidden = true;
+            panelHiddenLinks.push(node);
+        });
+    }
+
+    async function startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips, trigger) {
         zipName = releaseFileName(zipName, "rom.zip");
         /* A second click (another portable package, or the project's own zip
            when this computer has no portable build) restarts the panel for the
@@ -1331,25 +1357,16 @@
                 '    <div id="lumen-download-progress-bar" class="lumen-download-progress-bar-fill" style="width: 0%"></div>' +
                 '  </div>' +
                 '</div>';
-            var container = document.querySelector(".lumen-catalog-container") || document.querySelector("main") || document.body;
-            container.prepend(wrap);
+        }
+        if (wrap) {
+            mountDownloadPanel(wrap, trigger);
+            wrap.hidden = false;
         }
         var label = document.getElementById("lumen-download-progress-label");
         var metrics = document.getElementById("lumen-download-progress-metrics");
         var bar = document.getElementById("lumen-download-progress-bar");
         var dismissBtn = document.getElementById("lumen-download-progress-dismiss");
-
-        if (wrap) wrap.hidden = false;
         if (dismissBtn) dismissBtn.hidden = true;
-        /* The release table runs long, so bring the panel into view: the reader
-           clicked a row in the middle of it and should see its progress. */
-        if (wrap && typeof wrap.scrollIntoView === "function") {
-            try {
-                wrap.scrollIntoView({ behavior: "smooth", block: "center" });
-            } catch (_) {
-                wrap.scrollIntoView();
-            }
-        }
         if (label) label.textContent = "Preparing your download…";
         if (metrics) metrics.textContent = "";
         if (bar) bar.style.width = "2%";
@@ -2434,7 +2451,7 @@
             var itemModel = btn.getAttribute("data-item-model") || "Y1";
             var releaseTag = btn.getAttribute("data-release-tag") || "release";
             var portableZips = btn.getAttribute("data-portable-zips") || "";
-            startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips);
+            startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips, btn);
         }
 
         table.addEventListener("click", handleZipDownloadClick);

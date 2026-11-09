@@ -392,21 +392,69 @@
         return false;
     }
 
-    function translateAttributes(element) {
+    /* The English (or recovered) source stays on the node. A later language
+       choice translates that source again, so the reader does not have to
+       reload to leave the language already on screen. */
+    function recoverSource(text, reverse) {
+        var raw = String(text == null ? "" : text);
+        if (!reverse) return raw;
+        var parts = /^(\s*)([\s\S]*?)(\s*)$/.exec(raw);
+        if (!parts) return raw;
+        var key = reverse[normalise(parts[2])];
+        return key ? parts[1] + key + parts[3] : raw;
+    }
+
+    function catalogReverse(strings) {
+        var map = {};
+        if (!strings) return map;
+        for (var key in strings) {
+            if (!Object.prototype.hasOwnProperty.call(strings, key)) continue;
+            var value = strings[key];
+            if (typeof value !== "string" || !value || value === key) continue;
+            var norm = normalise(value);
+            if (norm && !map[norm]) map[norm] = key;
+        }
+        return map;
+    }
+
+    function textSource(node, reverse) {
+        if (node.__y1Source == null) {
+            var current = node.nodeValue;
+            /* A prerendered _de.html is already translated. Recording that
+               text as the source would make every later language look German.
+               stampSources passes a reverse map for that case. */
+            if (reverse) node.__y1Source = recoverSource(current, reverse);
+            else if (!pathLocale()) node.__y1Source = current;
+            else return current;
+        }
+        return node.__y1Source == null ? node.nodeValue : node.__y1Source;
+    }
+
+    function translateAttributes(element, reverse) {
         if (!element.getAttribute) return;
+        if (!element.__y1Attrs) element.__y1Attrs = {};
         for (var i = 0; i < ATTRIBUTES.length; i += 1) {
             var name = ATTRIBUTES[i];
-            if (!element.hasAttribute(name)) continue;
-            var value = element.getAttribute(name);
-            var next = translateValue(value);
-            if (next !== value) element.setAttribute(name, next);
+            if (element.__y1Attrs[name] == null) {
+                if (!element.hasAttribute(name)) continue;
+                if (reverse) element.__y1Attrs[name] = recoverSource(element.getAttribute(name), reverse);
+                else if (!pathLocale()) element.__y1Attrs[name] = element.getAttribute(name);
+                else {
+                    var live = element.getAttribute(name);
+                    var liveNext = translateValue(live);
+                    if (liveNext !== live) element.setAttribute(name, liveNext);
+                    continue;
+                }
+            }
+            var next = translateValue(element.__y1Attrs[name]);
+            if (next !== element.getAttribute(name)) element.setAttribute(name, next);
         }
     }
 
-    function translateTree(root) {
+    function translateTree(root, reverse) {
         if (!root) return;
         if (root.nodeType === 3) {
-            var next = translateValue(root.nodeValue);
+            var next = translateValue(textSource(root, reverse));
             if (next !== root.nodeValue) {
                 root.nodeValue = next;
                 state.applied += 1;
@@ -417,27 +465,31 @@
         if (root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
         if (root.nodeType === 1 && shouldSkip(root)) return;
 
-        if (root.nodeType === 1) translateAttributes(root);
+        if (root.nodeType === 1) translateAttributes(root, reverse);
 
         for (var node = root.firstChild; node; node = node.nextSibling) {
             if (node.nodeType === 3) {
-                var value = translateValue(node.nodeValue);
+                var value = translateValue(textSource(node, reverse));
                 if (value !== node.nodeValue) {
                     node.nodeValue = value;
                     state.applied += 1;
                     if (catalogApplied) catalogApplied.add(node);
                 }
             } else if (node.nodeType === 1) {
-                translateTree(node);
+                translateTree(node, reverse);
             }
         }
     }
 
     function translateHead() {
-        if (!state.strings && !Object.keys(state.regionCopy).length) return;
-        var title = document.title;
-        var nextTitle = translateValue(title);
-        if (nextTitle !== title) document.title = nextTitle;
+        if (document.__y1Title == null && !pathLocale()) document.__y1Title = document.title;
+        var titleSource = document.__y1Title == null ? document.title : document.__y1Title;
+        if (!state.strings && !Object.keys(state.regionCopy).length) {
+            if (document.__y1Title != null && document.title !== document.__y1Title) document.title = document.__y1Title;
+        } else {
+            var nextTitle = translateValue(titleSource);
+            if (nextTitle !== document.title) document.title = nextTitle;
+        }
 
         var metas = document.querySelectorAll(
             'meta[name="description"], meta[name="keywords"], meta[property^="og:"], meta[name^="twitter:"]'
@@ -445,9 +497,12 @@
         Array.prototype.forEach.call(metas, function (meta) {
             var key = (meta.getAttribute("name") || meta.getAttribute("property") || "").toLowerCase();
             if (!META_NAMES[key]) return;
-            var content = meta.getAttribute("content") || "";
-            var next = translateValue(content);
-            if (next !== content) meta.setAttribute("content", next);
+            if (meta.__y1Content == null && !pathLocale()) meta.__y1Content = meta.getAttribute("content") || "";
+            var metaSource = meta.__y1Content == null ? (meta.getAttribute("content") || "") : meta.__y1Content;
+            var next = (state.strings || Object.keys(state.regionCopy).length)
+                ? translateValue(metaSource)
+                : (meta.__y1Content == null ? meta.getAttribute("content") || "" : meta.__y1Content);
+            if (next !== meta.getAttribute("content")) meta.setAttribute("content", next);
         });
     }
 
@@ -474,11 +529,16 @@
     ].join(", ");
     var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations";
     var DYNAMIC_MAX_REQUESTS = 800;
-    var DYNAMIC_CONCURRENCY = 2;
+    /* Missing strings share a request. One batch is in flight at a time so a
+       page in another language does not open hundreds of connections. */
+    var DYNAMIC_BATCH_MAX = 32;
+    var DYNAMIC_BATCH_URL = 6000;
     /* gtx answers without CORS headers once it rate limits, which is a failed
        fetch rather than a status. Remember it and go straight to the endpoint
        that does work, so the spinner is not held open by a dead hop. */
     var gtxBlocked = false;
+    var dynamicDrainTimer = null;
+    var dynamicCacheTimer = null;
     var dynamicCache = null;
     var dynamicSeen = typeof WeakSet === "function" ? new WeakSet() : null;
     var dynamicAttrSeen = typeof WeakSet === "function" ? new WeakSet() : new Map();
@@ -595,93 +655,171 @@
         return !/[A-Za-z\u00C0-\u024F\u0400-\u04FF]/.test(stripped);
     }
 
-    function requestDynamic(text) {
-        var masked = maskBrands(text);
-        var hidden = masked.text;
-        var target = dynamicTarget();
-        var gtxUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
-            encodeURIComponent(target) + "&dt=t&q=" + encodeURIComponent(hidden);
-        var clients5Url = "https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=" +
-            encodeURIComponent(target) + "&q=" + encodeURIComponent(hidden);
-        var mymemoryUrl = "https://api.mymemory.translated.net/get?q=" +
-            encodeURIComponent(hidden) + "&langpair=en|" + encodeURIComponent(target);
-
-        function tryGTX() {
-            if (gtxBlocked) return Promise.reject(new Error("gtx unavailable"));
-            return fetch(gtxUrl, { method: "GET", mode: "cors" })
-                .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
-                .then(function (data) {
-                    var segments = (data && data[0]) || [];
-                    var translated = "";
-                    for (var i = 0; i < segments.length; i += 1) {
-                        if (segments[i] && segments[i][0]) translated += segments[i][0];
-                    }
-                    if (!translated) throw new Error();
-                    return translated;
-                })
-                .catch(function (error) {
-                    gtxBlocked = true;
-                    throw error;
-                });
+    function parseClients5List(data, count) {
+        if (count === 1) {
+            if (typeof data === "string" && data.trim()) return [data.trim()];
+            if (Array.isArray(data) && typeof data[0] === "string") return [String(data[0]).trim()];
+            if (Array.isArray(data) && Array.isArray(data[0]) && data[0][0]) return [String(data[0][0]).trim()];
         }
-
-        function tryClients5() {
-            return fetch(clients5Url, { method: "GET", mode: "cors" })
-                .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
-                .then(function (data) {
-                    if (Array.isArray(data) && data.length) {
-                        var first = data[0];
-                        if (Array.isArray(first) && first.length) return String(first[0]).trim();
-                        if (typeof first === "string") return first.trim();
-                    }
-                    throw new Error();
-                });
+        if (!Array.isArray(data) || data.length !== count) return null;
+        var out = [];
+        if (typeof data[0] === "string") {
+            for (var i = 0; i < data.length; i += 1) out.push(String(data[i] || "").trim());
+            return out;
         }
-
-        function tryMyMemory() {
-            return fetch(mymemoryUrl, { method: "GET", mode: "cors" })
-                .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
-                .then(function (data) {
-                    var match = data && data.responseData && data.responseData.translatedText;
-                    if (match && match.trim()) return match.trim();
-                    throw new Error();
-                });
+        if (Array.isArray(data[0])) {
+            for (var j = 0; j < data.length; j += 1) {
+                var row = data[j];
+                var cell = Array.isArray(row) ? row[0] : "";
+                out.push(cell ? String(cell).trim() : "");
+            }
+            return out;
         }
+        return null;
+    }
 
-        return tryClients5()
-            .catch(tryGTX)
-            .catch(tryMyMemory)
-            .then(function (translated) {
-                if (!translated || !translated.trim()) return "";
-                var value = restoreBrands(translated.trim(), masked.found);
-                if (!value) return "";
-                loadDynamicCache()[dynamicKey(text)] = value;
-                persistDynamicCache();
-                return value;
+    function parseGtxList(data, count) {
+        var segments = data && data[0];
+        if (!Array.isArray(segments) || segments.length !== count) return null;
+        var out = [];
+        for (var i = 0; i < segments.length; i += 1) {
+            out.push(segments[i] && segments[i][0] ? String(segments[i][0]).trim() : "");
+        }
+        return out;
+    }
+
+    function fetchDynamicJson(url) {
+        var ctrl = typeof AbortController === "function" ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 8000) : null;
+        return fetch(url, { method: "GET", mode: "cors", signal: ctrl ? ctrl.signal : undefined })
+            .then(function (response) {
+                if (timer) clearTimeout(timer);
+                if (!response.ok) throw new Error("HTTP " + response.status);
+                return response.json();
             })
-            .catch(function () {
-                return "";
+            .catch(function (error) {
+                if (timer) clearTimeout(timer);
+                throw error;
             });
     }
 
-    function drainDynamic() {
-        while (dynamicInFlight < DYNAMIC_CONCURRENCY && dynamicQueue.length) {
-            var item = dynamicQueue.shift();
-            dynamicInFlight += 1;
-            dynamicRequests += 1;
-            updateToolbarTranslatingState();
-            requestDynamic(item.text).then(function (key) {
-                return function (translated) {
-                    dynamicInFlight -= 1;
-                    var waiters = dynamicPending[key] || [];
-                    delete dynamicPending[key];
-                    waiters.forEach(function (apply) { apply(translated || null); });
-                    updateToolbarTranslatingState();
-                    drainDynamic();
-                };
-            }(item.key));
+    /* One request, many `q` values. A result is used only when it lines up
+       with the strings that were sent, so a provider that splits sentences
+       cannot write the wrong translation into the page. */
+    function requestDynamicBatch(items) {
+        var target = dynamicTarget();
+        var query = items.map(function (item) {
+            return "q=" + encodeURIComponent(item.hidden);
+        }).join("&");
+        var clients5Url = "https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=" +
+            encodeURIComponent(target) + "&" + query;
+        var gtxUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
+            encodeURIComponent(target) + "&dt=t&" + query;
+        return fetchDynamicJson(clients5Url).then(function (data) {
+            var list = parseClients5List(data, items.length);
+            if (list) return list;
+            throw new Error("unaligned");
+        }).catch(function () {
+            if (gtxBlocked) throw new Error("unavailable");
+            return fetchDynamicJson(gtxUrl).then(function (data) {
+                var list = parseGtxList(data, items.length);
+                if (list) return list;
+                var missed = new Error("unaligned");
+                missed.align = true;
+                throw missed;
+            }).catch(function (error) {
+                if (error && error.align) throw error;
+                gtxBlocked = true;
+                throw error;
+            });
+        });
+    }
+
+    function rememberDynamic(text, translated) {
+        if (!translated) return;
+        loadDynamicCache()[dynamicKey(text)] = translated;
+        if (dynamicCacheTimer) return;
+        dynamicCacheTimer = setTimeout(function () {
+            dynamicCacheTimer = null;
+            persistDynamicCache();
+        }, 400);
+    }
+
+    function settleDynamic(item, translated) {
+        var waiters = dynamicPending[item.key] || [];
+        delete dynamicPending[item.key];
+        waiters.forEach(function (apply) { apply(translated || null); });
+    }
+
+    function takeDynamicBatch() {
+        var batch = [];
+        var urlLen = 120;
+        while (dynamicQueue.length && batch.length < DYNAMIC_BATCH_MAX) {
+            var next = dynamicQueue[0];
+            var add = encodeURIComponent(next.text).length + 3;
+            if (batch.length && urlLen + add > DYNAMIC_BATCH_URL) break;
+            dynamicQueue.shift();
+            batch.push(next);
+            urlLen += add;
+            if (urlLen > DYNAMIC_BATCH_URL) break;
         }
+        return batch;
+    }
+
+    function scheduleDynamicDrain() {
+        if (dynamicInFlight || dynamicDrainTimer || !dynamicQueue.length) return;
+        var run = function () {
+            dynamicDrainTimer = null;
+            drainDynamic();
+        };
+        if (typeof global.requestIdleCallback === "function") {
+            dynamicDrainTimer = global.requestIdleCallback(run, { timeout: 200 });
+        } else {
+            dynamicDrainTimer = setTimeout(run, 40);
+        }
+    }
+
+    function drainDynamic() {
+        if (dynamicInFlight || !dynamicQueue.length) {
+            updateToolbarTranslatingState();
+            return;
+        }
+        if (dynamicRequests >= DYNAMIC_MAX_REQUESTS) {
+            var dropped = dynamicQueue.splice(0);
+            dropped.forEach(function (item) { settleDynamic(item, ""); });
+            updateToolbarTranslatingState();
+            return;
+        }
+        var batch = takeDynamicBatch();
+        var prepared = batch.map(function (item) {
+            var masked = maskBrands(item.text);
+            return { key: item.key, text: item.text, hidden: masked.text, found: masked.found };
+        });
+        dynamicInFlight = 1;
+        dynamicRequests += prepared.length;
         updateToolbarTranslatingState();
+        requestDynamicBatch(prepared).then(function (list) {
+            prepared.forEach(function (item, index) {
+                var raw = list && list[index] ? String(list[index]).trim() : "";
+                var value = raw ? restoreBrands(raw, item.found) : "";
+                if (value) rememberDynamic(item.text, value);
+                settleDynamic(item, value);
+            });
+        }).catch(function (error) {
+            if (error && error.align && prepared.length > 1) {
+                var mid = Math.ceil(prepared.length / 2);
+                var right = batch.slice(mid);
+                var left = batch.slice(0, mid);
+                for (var i = right.length - 1; i >= 0; i -= 1) dynamicQueue.unshift(right[i]);
+                for (var j = left.length - 1; j >= 0; j -= 1) dynamicQueue.unshift(left[j]);
+                return;
+            }
+            prepared.forEach(function (item) { settleDynamic(item, ""); });
+        }).then(function () {
+            dynamicInFlight = 0;
+            updateToolbarTranslatingState();
+            if (dynamicQueue.length) scheduleDynamicDrain();
+        });
     }
 
     /* ---------------------------------------------------------------- */
@@ -782,7 +920,7 @@
         dynamicPending[key] = [waiter];
         dynamicQueue.push({ key: key, text: text });
         updateToolbarTranslatingState();
-        drainDynamic();
+        scheduleDynamicDrain();
     }
 
     function queueDynamic(root) {
@@ -809,6 +947,8 @@
                         return NodeFilter.FILTER_REJECT;
                     }
                     if (parent.closest("[data-i18n-skip]") || parent.closest("[translate='no']")) return NodeFilter.FILTER_REJECT;
+                    /* Theme cards are translated by themes-i18n, in viewport batches. */
+                    if (parent.closest(".theme-card")) return NodeFilter.FILTER_REJECT;
                     if (parent.closest("[data-locale-panel]")) return NodeFilter.FILTER_REJECT;
                     /* Collapsed trays and closed dialogs hold fetched notices and
                        markdown that no catalog can carry. Translating them on
@@ -859,6 +999,7 @@
                     if (element.closest("[data-locale-panel]")) return;
                     if (element.closest("[data-i18n-skip]")) return;
                     if (element.closest(".site-i18n-badge")) return;
+                    if (element.closest(".theme-card")) return;
                     if (dynamicAttrSeen.has(element)) return;
                     dynamicAttrSeen.add(element);
                     ATTRIBUTES.forEach(function (name) {
@@ -901,6 +1042,11 @@
 
         if (state.locale === DEFAULT_LOCALE && !Object.keys(state.regionCopy).length) {
             translateHead();
+            /* Back to English: put the remembered source text on screen. */
+            if (document.body && sourcesReady()) {
+                applying = true;
+                try { translateTree(document.body); } finally { applying = false; }
+            }
             try {
                 global.dispatchEvent(new CustomEvent("site-locale-change", { detail: { locale: state.locale } }));
                 global.dispatchEvent(new CustomEvent("y1-locale-change", { detail: { locale: state.locale } }));
@@ -1515,11 +1661,7 @@
         var url = new URL(global.location.href);
         var dir = url.pathname.substring(0, url.pathname.lastIndexOf("/") + 1);
         url.pathname = dir + targetFile;
-        if (code === DEFAULT_LOCALE) {
-            url.searchParams.delete("lang");
-        } else {
-            url.searchParams.set("lang", code);
-        }
+        url.searchParams.delete("lang");
         global.location.href = url.pathname + url.search + url.hash;
     }
 
@@ -1549,121 +1691,95 @@
         return null;
     }
 
-    var localeNavAbort = null;
+    /* A prerendered firmware_de.html is already German, so the English source
+       has to be recovered from the catalog before another language can be painted. */
+    function stampSources(reverse) {
+        if (document.body) translateTree(document.body, reverse);
+        if (document.__y1Title == null) document.__y1Title = recoverSource(document.title, reverse);
+        var metas = document.querySelectorAll(
+            'meta[name="description"], meta[name="keywords"], meta[property^="og:"], meta[name^="twitter:"]'
+        );
+        Array.prototype.forEach.call(metas, function (meta) {
+            if (meta.__y1Content != null) return;
+            var key = (meta.getAttribute("name") || meta.getAttribute("property") || "").toLowerCase();
+            if (!META_NAMES[key]) return;
+            meta.__y1Content = recoverSource(meta.getAttribute("content") || "", reverse);
+        });
+        if (document.documentElement) document.documentElement.setAttribute("data-i18n-sources", "1");
+    }
+
+    function sourcesReady() {
+        return document.documentElement && document.documentElement.getAttribute("data-i18n-sources") === "1";
+    }
+
+    /* Leave the shareable filters in the address bar and drop a language that
+       was encoded in the filename. replaceState does not reload the page. */
+    function canonicaliseLocalePath() {
+        if (!global.location || !global.history || !global.history.replaceState) return;
+        try {
+            var url = new URL(global.location.href);
+            var file = url.pathname.split("/").pop() || "";
+            var match = /^(.*)_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i.exec(file);
+            if (match) {
+                var dir = url.pathname.slice(0, url.pathname.lastIndexOf("/") + 1);
+                url.pathname = dir + (match[1] || "index") + ".html";
+            }
+            url.searchParams.delete("lang");
+            var search = url.searchParams.toString();
+            global.history.replaceState(global.history.state, document.title, url.pathname + (search ? "?" + search : "") + url.hash);
+        } catch (_) {}
+        if (typeof global.y1ClearPreferencesFromUrl === "function") {
+            try { global.y1ClearPreferencesFromUrl(); } catch (_) {}
+        }
+    }
 
     function setLocale(code) {
-        if (!code || code === state.locale) {
+        if (!code) {
+            closePanel();
+            return;
+        }
+        var map = localeIndex();
+        var clean = normalizeTag(code);
+        var resolved = (map[clean] && map[clean].code) || code;
+        if (normalizeTag(resolved) === normalizeTag(state.locale)) {
             closePanel();
             return;
         }
         closePanel();
-        writeStorage(STORAGE_LOCALE, code);
-        setSharedCookie(STORAGE_LOCALE, code);
-        track("site_language_change", { language_chosen: code });
+        writeStorage(STORAGE_LOCALE, resolved);
+        setSharedCookie(STORAGE_LOCALE, resolved);
+        track("site_language_change", { language_chosen: resolved });
 
-        if (typeof global.y1DecorateLinks === "function") {
-            try { global.y1DecorateLinks(); } catch (_) {}
+        if (!sourcesReady()) {
+            var reverse = (state.strings && baseOfLocale(state.locale) !== DEFAULT_LOCALE)
+                ? catalogReverse(state.strings)
+                : null;
+            stampSources(reverse);
         }
 
-        var url = new URL(global.location.href);
-        var pathname = (global.location && global.location.pathname) || "/";
-        var fileName = pathname.split("/").pop() || "index.html";
-        if (!fileName || !fileName.endsWith(".html")) fileName = "index.html";
+        state.locale = resolved;
+        var entry = map[normalizeTag(resolved)] || {};
+        state.dir = entry.dir || "ltr";
 
-        var baseName = fileName.replace(/_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i, "");
-        if (baseName.endsWith(".html")) baseName = baseName.slice(0, -5);
-        if (!baseName) baseName = "index";
-
-        var dir = url.pathname.substring(0, url.pathname.lastIndexOf("/") + 1);
-        var cleanCode = normalizeTag(code);
-
-        function fallbackToParam() {
-            var fallbackUrl = new URL(global.location.href);
-            var curFile = fallbackUrl.pathname.split("/").pop() || "";
-            if (/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i.test(curFile) || !curFile.endsWith(".html")) {
-                fallbackUrl.pathname = dir + (baseName || "index") + ".html";
+        function paint(catalog) {
+            state.strings = catalog;
+            catalogValues = null;
+            applyLanguage();
+            canonicaliseLocalePath();
+            if (typeof global.y1DecorateLinks === "function") {
+                try { global.y1DecorateLinks(); } catch (_) {}
             }
-            if (cleanCode === DEFAULT_LOCALE) {
-                fallbackUrl.searchParams.delete("lang");
-            } else {
-                fallbackUrl.searchParams.set("lang", code);
-            }
-            global.location.href = fallbackUrl.pathname + fallbackUrl.search + fallbackUrl.hash;
         }
 
-        // Switching back to default (English): return to canonical base file without ?lang=
-        if (cleanCode === DEFAULT_LOCALE) {
-            var enUrl = new URL(global.location.href);
-            enUrl.pathname = dir + baseName + ".html";
-            enUrl.searchParams.delete("lang");
-            global.location.href = enUrl.pathname + enUrl.search + enUrl.hash;
+        if (baseOfLocale(resolved) === DEFAULT_LOCALE) {
+            paint(null);
             return;
         }
-
-        // Instant navigation if pre-rendered target file is in manifest
-        var prerenderedFile = getPrerenderedTarget(baseName, code);
-        if (prerenderedFile) {
-            navigateToLiteral(prerenderedFile, code);
-            return;
-        }
-
-        var isStaticCandidate = /_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i.test(url.pathname) || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
-        if (!isStaticCandidate) {
-            fallbackToParam();
-            return;
-        }
-
-        // Check if candidate static file exists on server before navigating to avoid 404
-        var map = localeIndex();
-        var entry = map[cleanCode] || {};
-        var exactCode = entry.code || code;
-        var candidateFiles = [];
-        if (exactCode) {
-            candidateFiles.push(baseName + "_" + exactCode + ".html");
-        }
-        if (cleanCode && cleanCode !== exactCode) {
-            candidateFiles.push(baseName + "_" + cleanCode + ".html");
-        }
-
-        if (typeof fetch === "function" && /^https?:/.test(global.location.protocol)) {
-            if (localeNavAbort) {
-                try { localeNavAbort.abort(); } catch (_) {}
-            }
-            var controller = typeof AbortController === "function" ? new AbortController() : null;
-            localeNavAbort = controller;
-
-            var timer = setTimeout(function () {
-                if (controller) controller.abort();
-                fallbackToParam();
-            }, 600);
-
-            function checkCandidate(index) {
-                if (index >= candidateFiles.length) {
-                    clearTimeout(timer);
-                    fallbackToParam();
-                    return;
-                }
-                var testFile = candidateFiles[index];
-                var testUrl = dir + testFile;
-                fetch(testUrl, { method: "HEAD", signal: controller ? controller.signal : undefined })
-                    .then(function (res) {
-                        if (res.ok) {
-                            clearTimeout(timer);
-                            navigateToLiteral(testFile, code);
-                        } else {
-                            checkCandidate(index + 1);
-                        }
-                    })
-                    .catch(function () {
-                        checkCandidate(index + 1);
-                    });
-            }
-
-            checkCandidate(0);
-            return;
-        }
-
-        fallbackToParam();
+        loadCatalog(resolved).then(function (catalog) {
+            paint(catalog || {});
+        }).catch(function () {
+            paint(null);
+        });
     }
 
     function setRegion(code) {

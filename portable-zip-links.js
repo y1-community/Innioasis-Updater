@@ -308,46 +308,93 @@
         return proxyCache[href].then(function (usable) { return usable ? href : ""; });
     }
 
-    /* --------------------------------------------------------------- toast */
+    /* ----------------------------------------------------- inline progress */
 
-    var toast = null;
-    var toastTimer = null;
+    var panel = null;
+    var panelTimer = null;
+    var hiddenLinks = [];
 
-    function ensureToast() {
-        if (toast && document.body.contains(toast)) return toast;
-        toast = document.createElement("div");
-        toast.id = "innioasis-download-toast";
-        toast.setAttribute("role", "status");
-        toast.setAttribute("aria-live", "polite");
-        toast.innerHTML =
-            '<div data-toast-box style="position:fixed;right:18px;bottom:18px;z-index:2147483000;width:min(340px,calc(100vw - 36px));padding:14px 15px;border:1px solid #4f46e5;border-radius:12px;background:#171a23;color:#f8fafc;box-shadow:0 12px 34px rgba(0,0,0,.38);font:14px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;">' +
-            '  <div style="display:flex;justify-content:space-between;gap:10px;align-items:start;">' +
-            '    <strong data-toast-label style="font-size:.9rem;">Preparing your download…</strong>' +
-            '    <button type="button" data-toast-dismiss aria-label="Dismiss" style="display:none;border:1px solid #4f46e5;background:#4f46e5;color:#fff;border-radius:99px;padding:2px 9px;font-size:.75rem;cursor:pointer;">OK</button>' +
-            '  </div>' +
-            '  <div style="margin:9px 0 6px;height:7px;border-radius:99px;background:#2c3140;overflow:hidden;">' +
-            '    <div data-toast-bar style="width:2%;height:100%;border-radius:99px;background:#6366f1;transition:width .15s ease-out;"></div>' +
-            '  </div>' +
-            '  <div data-toast-meta style="font-size:.76rem;color:#a5b0c2;"></div>' +
-            '</div>';
-        document.body.appendChild(toast);
-        var dismiss = toast.querySelector("[data-toast-dismiss]");
-        dismiss.addEventListener("click", hideToast);
-        return toast;
+    /* The tightest container holding the clicked release's zip links. */
+    function releaseScope(link) {
+        var row = link.closest("tr, .lumen-release-card");
+        if (row) return row;
+        var scope = link.closest(".lumen-actions, .lumen-release-details, .firmware-list-actions, ul, ol");
+        if (scope) return scope;
+        var holder = link.parentElement;
+        while (holder && holder !== document.body) {
+            if (holder.querySelectorAll("a[data-zip-url], a[href*='.zip']").length > 1) return holder;
+            holder = holder.parentElement;
+        }
+        return link.parentElement || link;
     }
 
-    /* The finished notice dismisses itself so it cannot sit over the page, and
-       a new download (portable or the project's own zip) replaces it. */
-    function hideToast() {
-        if (toastTimer) {
-            clearTimeout(toastTimer);
-            toastTimer = null;
+    function restoreLinks() {
+        hiddenLinks.forEach(function (node) { node.hidden = false; });
+        hiddenLinks = [];
+    }
+
+    function hideReleaseLinks(link) {
+        restoreLinks();
+        var scope = releaseScope(link);
+        if (!scope || !scope.querySelectorAll) return;
+        Array.prototype.forEach.call(scope.querySelectorAll("a[data-zip-url], a[href*='.zip']"), function (node) {
+            node.hidden = true;
+            hiddenLinks.push(node);
+        });
+    }
+
+    function ensurePanel() {
+        if (panel && panel.isConnected) return panel;
+        panel = document.createElement("div");
+        panel.className = "lumen-download-progress lumen-download-progress--inline";
+        panel.setAttribute("role", "status");
+        panel.setAttribute("aria-live", "polite");
+        panel.innerHTML =
+            '<div class="lumen-download-progress-row">' +
+            '  <span class="lumen-download-progress-text" data-toast-label>Preparing your download…</span>' +
+            '  <div class="lumen-download-progress-actions">' +
+            '    <span class="lumen-download-progress-pct" data-toast-meta></span>' +
+            '    <button type="button" class="lumen-download-progress-dismiss" data-toast-dismiss hidden aria-label="Dismiss">' +
+            '      <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>' +
+            '    </button>' +
+            '  </div>' +
+            '</div>' +
+            '<div class="lumen-download-progress-bar-bg"><div class="lumen-download-progress-bar-fill" data-toast-bar style="width:2%"></div></div>';
+        panel.querySelector("[data-toast-dismiss]").addEventListener("click", hideToast);
+        return panel;
+    }
+
+    /* The box takes the clicked link's place. No scrollIntoView: the reader
+       is already looking at the release they chose. */
+    function mountPanel(link) {
+        var root = ensurePanel();
+        var anchor = link.closest("li") || link.closest("p") || link;
+        if (!anchor.parentNode) return root;
+        var holder = root.parentNode;
+        if (holder && holder.classList && holder.classList.contains("lumen-download-progress-item")) holder.remove();
+        if (anchor.tagName === "LI" && /^(UL|OL)$/.test(anchor.parentNode.tagName)) {
+            var item = document.createElement("li");
+            item.className = "lumen-download-progress-item";
+            item.appendChild(root);
+            anchor.parentNode.insertBefore(item, anchor.nextSibling);
+        } else {
+            anchor.parentNode.insertBefore(root, anchor.nextSibling);
         }
-        if (toast) toast.style.display = "none";
+        return root;
+    }
+
+    function hideToast() {
+        if (panelTimer) { clearTimeout(panelTimer); panelTimer = null; }
+        if (panel && panel.isConnected) {
+            var holder = panel.parentNode;
+            panel.remove();
+            if (holder && holder.classList && holder.classList.contains("lumen-download-progress-item")) holder.remove();
+        }
+        restoreLinks();
     }
 
     function toastNodes() {
-        var root = ensureToast();
+        var root = ensurePanel();
         return {
             root: root,
             label: root.querySelector("[data-toast-label]"),
@@ -358,7 +405,7 @@
     }
 
     function toastProgress(loaded, total) {
-        if (!toast) return;
+        if (!panel || !panel.isConnected) return;
         var nodes = toastNodes();
         var pct = total > 0 ? Math.min(99, Math.round((loaded / total) * 100)) : 0;
         nodes.bar.style.width = pct + "%";
@@ -369,37 +416,25 @@
     }
 
     function toastDone(saveName, osLabel, streamed) {
-        if (!toast) return;
+        if (!panel || !panel.isConnected) return;
         var nodes = toastNodes();
-        nodes.root.style.display = "block";
         nodes.bar.style.width = "100%";
         nodes.label.textContent = "Firmware zip downloaded";
-        /* Only the proxied path can force the release's own filename; a direct
-           browser download keeps whatever name the mirror published. */
         nodes.meta.textContent = streamed && saveName ? "Saved as " + saveName : "Check your Downloads folder";
-        nodes.dismiss.style.display = "inline-block";
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(hideToast, 10000);
+        nodes.dismiss.hidden = false;
+        if (panelTimer) clearTimeout(panelTimer);
+        panelTimer = setTimeout(hideToast, 10000);
     }
 
-    function startToast() {
-        if (toastTimer) {
-            clearTimeout(toastTimer);
-            toastTimer = null;
-        }
+    function startToast(link) {
+        if (panelTimer) { clearTimeout(panelTimer); panelTimer = null; }
+        mountPanel(link);
+        hideReleaseLinks(link);
         var nodes = toastNodes();
-        nodes.root.style.display = "block";
         nodes.label.textContent = "Preparing your download…";
         nodes.bar.style.width = "2%";
         nodes.meta.textContent = "";
-        nodes.dismiss.style.display = "none";
-        if (nodes.root && typeof nodes.root.scrollIntoView === "function") {
-            try {
-                nodes.root.scrollIntoView({ behavior: "smooth", block: "center" });
-            } catch (_) {
-                nodes.root.scrollIntoView();
-            }
-        }
+        nodes.dismiss.hidden = true;
     }
 
     function osLabel(key) {
@@ -473,7 +508,7 @@
         var explicitPlatform = link.getAttribute("data-platform") || "";
         if (!isFirmwareZip(saveName)) return false;
 
-        startToast();
+        startToast(link);
         var label = osLabel(explicitPlatform);
         var target = null;
         if (explicitPlatform && parseAssetUrl(href)) {
@@ -521,6 +556,7 @@
 
         event.preventDefault();
         downloadLink(link).catch(function () {
+            hideToast();
             window.location.href = href;
         });
     }, false);

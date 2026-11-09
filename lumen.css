@@ -210,15 +210,69 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 
 .lumen-button--model { min-height: 30px; padding: .3rem .6rem; font-size: .76rem; margin: 0 .3rem .25rem 0; }
 .lumen-release-status { min-height: 24px; margin: 0 0 var(--lumen-space-4); color: var(--lumen-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
-.lumen-release-table { table-layout: fixed; width: 100%; border-collapse: collapse; }
-.lumen-release-table > thead > tr > th:nth-child(1) { width: 52%; }
-.lumen-release-table > thead > tr > th:nth-child(2) { width: 32%; }
-.lumen-release-table > thead > tr > th:nth-child(3) { width: 16%; }
-.lumen-release-table td { overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
-.lumen-table-wrap { min-height: 259px; }
+/* The homepage summary, the firmware directory and the static firmware list
+   all render .lumen-release-table inside .lumen-table-wrap. The design
+   replacement kept the column geometry but dropped the frame, header and row
+   rules, so those tables fell back to bare browser defaults. */
+.lumen-table-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 259px;
+    overflow-x: auto;
+    border: 1px solid var(--lumen-line-strong);
+    border-radius: var(--lumen-radius-md);
+    background: var(--lumen-panel);
+    box-shadow: 0 10px 28px color-mix(in oklab, var(--lumen-ink) 28%, transparent);
+}
 @media (max-width: 600px) {
     .lumen-table-wrap { min-height: 221px; }
 }
+.lumen-release-table { table-layout: fixed; width: 100%; min-width: 720px; border-collapse: collapse; }
+.lumen-release-table > thead > tr > th:nth-child(1) { width: 52%; }
+.lumen-release-table > thead > tr > th:nth-child(2) { width: 32%; }
+.lumen-release-table > thead > tr > th:nth-child(3) { width: 16%; }
+/* Two-column tables (the homepage summary) share the row 52/48. */
+.lumen-release-table > thead > tr > th:nth-child(2):last-child { width: 48%; }
+/* Four-column tables (the static firmware list and the recovery matrix) are a
+   Release / Package / Download / Notes grid. Fixed layout only divides what
+   the specified tracks leave over, so setting just 52% + 32% + 16% squeezed
+   the download and notes columns into the leftover 0%. Every track needs a
+   width, with the download cell getting the largest so its portable-package
+   buttons wrap into two rows instead of a column of single words. */
+.lumen-release-table:has(> thead > tr > th:nth-child(4)) > thead > tr > th:nth-child(1) { width: 30%; }
+.lumen-release-table:has(> thead > tr > th:nth-child(4)) > thead > tr > th:nth-child(2) { width: 24%; }
+.lumen-release-table:has(> thead > tr > th:nth-child(4)) > thead > tr > th:nth-child(3) { width: 32%; }
+.lumen-release-table:has(> thead > tr > th:nth-child(4)) > thead > tr > th:nth-child(4) { width: 14%; }
+.lumen-release-table caption {
+    padding: .8rem 1rem;
+    border-bottom: 1px solid var(--lumen-line);
+    color: var(--lumen-muted);
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: left;
+}
+.lumen-release-table th,
+.lumen-release-table td { padding: .9rem 1rem; border-bottom: 1px solid var(--lumen-line); text-align: left; vertical-align: top; }
+.lumen-release-table thead th { background: var(--lumen-panel-soft); color: var(--lumen-muted); font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.lumen-release-table tbody th { color: var(--lumen-text); font-weight: 700; }
+.lumen-release-table td { overflow-wrap: anywhere; color: var(--lumen-muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.lumen-release-table tbody tr:last-child th,
+.lumen-release-table tbody tr:last-child td { border-bottom: 0; }
+.lumen-release-table tbody tr:hover { background: color-mix(in oklab, var(--lumen-text) 3%, transparent); }
+/* Guide pages put a release table in their own scroll container instead of the
+   shared wrapper, so give those tables the same framed panel rather than
+   decorations that stop at the last row. */
+.lumen-release-table:not(.lumen-table-wrap > *) {
+    border: 1px solid var(--lumen-line);
+    border-radius: var(--lumen-radius-md);
+    background: var(--lumen-panel);
+}
+.lumen-release-table strong { color: var(--lumen-text); }
+.lumen-release-table .lumen-actions { margin: 0; }
+.lumen-release-table .lumen-button { min-height: 38px; padding: .5rem .7rem; font-size: .8rem; }
+.lumen-release-table .lumen-project-link { color: var(--lumen-text); font-weight: 700; text-decoration: none; }
+.lumen-release-table .lumen-project-link:hover,
+.lumen-release-table .lumen-project-link:focus-visible { color: var(--lumen-accent); text-decoration: underline; text-underline-offset: 2px; }
 
 .lumen-download-progress { display: grid; gap: .6rem; padding: var(--lumen-space-4); border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-md); background: var(--lumen-panel-soft); margin-bottom: var(--lumen-space-5); }
 .lumen-download-progress[hidden] { display: none !important; }
@@ -440,6 +494,111 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 .lumen-download-option p { margin: 0 0 .75rem; font-size: .86rem; }
 .lumen-download-option .lumen-meta { margin: .75rem 0 0; font-size: .76rem; }
 .lumen-download-option .lumen-button { width: 100%; }
+
+/* ------------------------------------------------------------- widgets
+The installer table builds these controls in JS. The design replacement
+swapped lumen.css and dropped their rules, so the "Get it on Updater" badge,
+the portable ZIP buttons and the nightly checkbox rendered as bare text.
+Restored on the same tokens as every other control on the site. */
+/* App Store badge pair. The site default is dark, so the badge is the white
+   one; light mode uses the black one. Specificity beats the global anchor
+   colour, which was turning these into ordinary accent links. */
+body.site-themes-app a.lumen-updater-button,
+a.lumen-updater-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    min-height: 46px;
+    padding: .32rem .85rem .32rem .4rem;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background: #fff;
+    color: #000 !important;
+    text-decoration: none !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .35);
+    transition: transform .18s var(--lumen-ease), filter .18s var(--lumen-ease);
+}
+body.site-themes-app a.lumen-updater-button:hover,
+a.lumen-updater-button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    color: #000 !important;
+    text-decoration: none !important;
+    background: #fff;
+}
+.lumen-updater-button img, .lumen-updater-summary img { display: block; flex: 0 0 auto; width: 26px; height: 26px; border-radius: 6px; }
+.lumen-updater-button span, .lumen-updater-summary span { display: grid; gap: .05rem; text-align: left; }
+body.site-themes-app a.lumen-updater-button strong,
+.lumen-updater-button strong, .lumen-updater-summary strong { color: #000 !important; font-size: .92rem; font-weight: 700; line-height: 1.05; letter-spacing: -.02em; }
+body.site-themes-app a.lumen-updater-button small,
+.lumen-updater-button small, .lumen-updater-summary small { color: rgba(0, 0, 0, .62) !important; font-size: .62rem; font-weight: 500; line-height: 1.1; letter-spacing: .01em; }
+:root[data-theme="light"] body.site-themes-app a.lumen-updater-button,
+:root[data-lumen-theme="light"] body.site-themes-app a.lumen-updater-button,
+:root[data-theme="light"] a.lumen-updater-button,
+:root[data-lumen-theme="light"] a.lumen-updater-button {
+    background: #000;
+    border-color: #000;
+    color: #fff !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+}
+:root[data-theme="light"] body.site-themes-app a.lumen-updater-button:hover,
+:root[data-lumen-theme="light"] a.lumen-updater-button:hover {
+    background: #000;
+    color: #fff !important;
+    filter: brightness(1.15);
+}
+:root[data-theme="light"] body.site-themes-app a.lumen-updater-button strong,
+:root[data-lumen-theme="light"] a.lumen-updater-button strong { color: #fff !important; }
+:root[data-theme="light"] body.site-themes-app a.lumen-updater-button small,
+:root[data-lumen-theme="light"] a.lumen-updater-button small { color: rgba(255, 255, 255, .78) !important; }
+.lumen-updater-button--table { min-height: 40px; padding: .28rem .62rem .28rem .32rem; }
+.lumen-updater-button--table strong { font-size: .78rem; }
+.lumen-updater-button--table small { font-size: .58rem; }
+.lumen-zip-download-button { display: inline-flex; align-items: center; gap: .65rem; min-height: 48px; padding: .55rem .85rem .55rem .65rem; border: 1px solid color-mix(in oklab, var(--lumen-line-strong) 70%, var(--lumen-accent)); border-radius: 11px; background: var(--lumen-panel); color: var(--lumen-text); text-decoration: none; cursor: pointer; font: inherit; box-shadow: 0 2px 0 color-mix(in oklab, var(--lumen-ink) 28%, transparent); transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-zip-download-button:hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-text); text-decoration: none; }
+.lumen-zip-download-button svg { display: block; flex: 0 0 auto; color: var(--lumen-accent); }
+.lumen-zip-download-button span { display: grid; gap: .12rem; text-align: left; }
+.lumen-zip-download-button strong { color: var(--lumen-text); font-size: .86rem; line-height: 1.15; }
+.lumen-zip-download-button small { color: var(--lumen-muted); font-size: .7rem; line-height: 1.2; }
+.lumen-zip-download-button--table { min-height: 40px; padding: .4rem .6rem .4rem .55rem; }
+.lumen-zip-download-button--table strong { font-size: .72rem; }
+.lumen-zip-download-button--table small { font-size: .64rem; }
+.lumen-download-progress--inline { margin: 0; padding: .6rem .7rem; gap: .5rem; background: var(--lumen-panel); }
+.lumen-download-progress--inline .lumen-download-progress-row { font-size: .82rem; }
+.lumen-download-progress--inline .lumen-download-progress-text { white-space: normal; }
+.lumen-download-progress-item { list-style: none; margin: .35rem 0 0; padding: 0; }
+.lumen-download-progress-wrap { display: block; margin: .5rem 0 0; padding: .85rem 1rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-md); background: var(--lumen-panel-soft); }
+.lumen-download-progress-wrap[hidden] { display: none !important; }
+.lumen-download-progress-box { display: grid; gap: .5rem; }
+.lumen-download-progress-header { display: flex; justify-content: space-between; align-items: center; gap: .75rem; font-size: .88rem; font-weight: 500; color: var(--lumen-text); }
+.lumen-carousel-credit { grid-area: credit; justify-self: center; text-align: center; color: var(--lumen-muted); font-size: .82rem; }
+.lumen-carousel-credit a { color: var(--lumen-text); font-weight: 700; text-decoration: none; border-bottom: 1px dotted var(--lumen-line-strong); transition: color .18s var(--lumen-ease), border-color .18s var(--lumen-ease); }
+.lumen-carousel-credit a:hover, .lumen-carousel-credit a:focus-visible { color: var(--lumen-accent); border-bottom-style: solid; border-color: var(--lumen-accent); outline: none; }
+.lumen-checkbox { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); color: var(--lumen-text); font: .9rem var(--lumen-body); cursor: pointer; transition: border-color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
+.lumen-checkbox:hover { border-color: var(--lumen-accent); background: var(--lumen-panel-soft); }
+.lumen-checkbox input { width: 18px; height: 18px; margin: 0; accent-color: var(--lumen-accent); cursor: pointer; }
+.lumen-field--check { justify-self: end; min-width: 0; }
+.lumen-field--check .lumen-checkbox { width: 100%; }
+
+/* Widgets the generated pages use that never had a rule in lumen.css. They
+   are styled from the same tokens as everything else so a content table, a
+   release version link and the guide's download panel stop rendering as
+   default browser output. */
+.lumen-table { width: 100%; margin: 1rem 0; border-collapse: collapse; font-size: .9rem; }
+.lumen-table th, .lumen-table td { padding: .55rem .7rem; border-bottom: 1px solid var(--lumen-line); text-align: left; vertical-align: top; }
+.lumen-table thead th { background: var(--lumen-panel-soft); color: var(--lumen-muted); font-size: .76rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.lumen-table tbody th { color: var(--lumen-text); font-weight: 700; }
+.lumen-table tbody tr:last-child th, .lumen-table tbody tr:last-child td { border-bottom: 0; }
+.lumen-table code { font-size: .84rem; }
+.lumen-version-link { color: var(--lumen-text); text-decoration: none; }
+.lumen-version-link:hover, .lumen-version-link:focus-visible { color: var(--lumen-accent); text-decoration: underline; text-underline-offset: 2px; }
+.lumen-version-link em { color: var(--lumen-muted); font-style: normal; font-size: .8rem; }
+.lumen-portable-downloads { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .5rem; }
+.lumen-platform-panel { border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-md); background: var(--lumen-panel); overflow: hidden; }
+.lumen-platforms, .lumen-personalised, .firmware-list-software, .lumen-release-page { scroll-margin-top: 5rem; }
+.lumen-context-notice-slot:empty { display: none; }
+.lumen-legacy-page { background: var(--lumen-paper); }
+.smart-app-control-modal { z-index: 1001; }
 .lumen-another-platform { grid-column: 1 / -1; justify-self: center; margin: 1.1rem 0 .35rem; padding: .6rem 1.3rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); font: 700 .82rem var(--lumen-body); cursor: pointer; box-shadow: 0 1px 0 var(--lumen-line); transition: border-color .18s var(--lumen-ease), color .18s var(--lumen-ease), background .18s var(--lumen-ease); }
 .lumen-another-platform:hover, .lumen-another-platform:focus-visible { border-color: var(--lumen-accent); color: var(--lumen-accent); background: var(--lumen-accent-wash); outline: none; }
 .lumen-download-notice { padding: 1.1rem; background: var(--lumen-panel); }
@@ -565,6 +724,10 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
     .lumen-updater-button--table strong { white-space: normal; }
     .lumen-model-control { gap: .4rem; }
     .lumen-release-table { min-width: 0; }
+    /* Three- and four-column release tables cannot fold into a phone width
+       without crushing the install/download column; let the panel scroll
+       sideways instead. The two-column homepage summary still fits. */
+    .lumen-release-table:has(> thead > tr > th:nth-child(3)) { min-width: 640px; }
     .lumen-release-table th, .lumen-release-table td { padding: .75rem .65rem; }
     .lumen-release-table th:nth-child(1) { width: 36%; }
     .lumen-hero-art { margin-inline: .5rem; }
@@ -890,3 +1053,80 @@ body.site-themes-app .lumen-theme-control,
 /* Exactly one header sticks: the shell gives the class to whichever header a
    page actually shows, so a nav and a gallery bar never stack. */
 .site-sticky { position: sticky; top: var(--site-sticky-top, 0); z-index: 1200; }
+
+/* Accent colour picker. One swatch in the header shows the accent in use; the
+   tray holds the picker, a few presets and -- only after Updater CE has handed
+   a colour over -- "Match my PC's theme colours". */
+.lumen-accent-wrap { position: relative; display: inline-flex; align-items: center; }
+.lumen-accent-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 34px; min-height: 34px; padding: 0 .5rem;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
+    border-radius: var(--lumen-pill, 999px);
+    background: var(--lumen-panel, rgba(255, 255, 255, .04));
+    cursor: pointer;
+    transition: border-color .15s var(--lumen-ease, ease);
+}
+.lumen-accent-toggle:hover { border-color: var(--lumen-accent, #4f8cff); }
+.lumen-accent-toggle:focus-visible { outline: 2px solid var(--lumen-accent, #4f8cff); outline-offset: 2px; }
+.lumen-accent-dot {
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--lumen-accent, #4f8cff);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--lumen-text, #fff) 35%, transparent);
+}
+.lumen-accent-tray {
+    position: absolute; z-index: 10004; top: calc(100% + 8px); right: 0;
+    box-sizing: border-box; width: 246px; max-width: calc(100vw - 1.5rem);
+    padding: .75rem;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
+    border-radius: var(--lumen-radius-md, 14px);
+    background: var(--lumen-panel, #14161c);
+    color: var(--lumen-text, #f3f5f9);
+    box-shadow: var(--lumen-shadow, 0 18px 40px rgba(0, 0, 0, .45));
+}
+.lumen-accent-tray[hidden] { display: none; }
+.lumen-accent-heading {
+    margin: 0 0 .5rem; font-family: var(--lumen-body, system-ui, sans-serif);
+    font-size: .82rem; font-weight: 700; color: var(--lumen-text, #f3f5f9);
+}
+.lumen-accent-row {
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+    margin: 0 0 .5rem; font-family: var(--lumen-body, system-ui, sans-serif);
+    font-size: .78rem; font-weight: 600; color: var(--lumen-muted, #a8b0bf);
+}
+.lumen-accent-row input[type="color"] {
+    width: 48px; height: 30px; padding: 2px; margin-left: auto;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
+    border-radius: 8px; background: var(--lumen-panel-soft, rgba(255, 255, 255, .06)); cursor: pointer;
+}
+.lumen-accent-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .3rem; margin: 0 0 .5rem; }
+.lumen-accent-swatch {
+    width: 100%; aspect-ratio: 1; padding: 0;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
+    border-radius: 8px; background: var(--swatch); cursor: pointer;
+}
+.lumen-accent-swatch[aria-pressed="true"] { outline: 2px solid var(--lumen-text, #f3f5f9); outline-offset: 2px; }
+.lumen-accent-match {
+    display: flex; align-items: flex-start; gap: .45rem;
+    margin: .5rem 0; padding-top: .5rem;
+    border-top: 1px solid var(--lumen-line, rgba(255, 255, 255, .1));
+    font-family: var(--lumen-body, system-ui, sans-serif);
+    font-size: .78rem; font-weight: 600; line-height: 1.35;
+    color: var(--lumen-text, #f3f5f9); cursor: pointer;
+}
+.lumen-accent-match[hidden] { display: none; }
+.lumen-accent-match input { margin: .1rem 0 0; accent-color: var(--lumen-accent, #4f8cff); }
+.lumen-accent-reset {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 100%; min-height: 32px; padding: .35rem .5rem;
+    border: 1px solid var(--lumen-line, rgba(255, 255, 255, .1));
+    border-radius: var(--lumen-pill, 999px);
+    background: var(--lumen-panel-soft, rgba(255, 255, 255, .06));
+    color: var(--lumen-muted, #a8b0bf); cursor: pointer;
+    font-family: var(--lumen-body, system-ui, sans-serif);
+    font-size: .76rem; font-weight: 600;
+}
+.lumen-accent-reset:hover { color: var(--lumen-text, #f3f5f9); border-color: var(--lumen-accent, #4f8cff); }
+.lumen-accent-reset[disabled] { opacity: .55; cursor: default; }
+@media (max-width: 640px) { .lumen-accent-tray { right: auto; left: 0; } }
+@media (prefers-reduced-motion: reduce) { .lumen-accent-toggle { transition: none; } }
