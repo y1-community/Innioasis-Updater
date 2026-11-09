@@ -468,6 +468,7 @@
             body.style.setProperty("--accent", hex);
             body.style.setProperty("--primary", hex);
             body.style.setProperty("--primary-dark", "color-mix(in oklab, " + hex + " 84%, black)");
+            body.style.setProperty("--lumen-on-accent", accentInk(hex));
         } else {
             body.style.removeProperty("--accent");
             body.style.removeProperty("--primary");
@@ -610,8 +611,10 @@
         return Math.round(hue < 0 ? hue + 360 : hue);
     }
 
-    /* Text drawn on the accent: dark ink on light colours, white on dark
-       ones, by relative luminance rather than by guesswork. */
+    /* Text drawn on the accent. Both candidates are measured: white and near
+       black, each against the accent's WCAG contrast ratio, and the higher one
+       wins. The crossover is luminance 0.179, not the midpoint of the scale -
+       a mid yellow (L about 0.42) takes black at 9:1, where white manages 2:1. */
     function accentInk(hex) {
         var value = String(hex || "").replace("#", "");
         if (value.length !== 6) return "#ffffff";
@@ -620,7 +623,9 @@
             return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
         };
         var luminance = 0.2126 * channel(0) + 0.7152 * channel(2) + 0.0722 * channel(4);
-        return luminance > 0.45 ? "#0a0b0f" : "#ffffff";
+        var onWhite = 1.05 / (luminance + 0.05);
+        var onBlack = (luminance + 0.05) / 0.05;
+        return onBlack >= onWhite ? "#0a0b0f" : "#ffffff";
     }
 
     /* Browsers expose no API for the OS accent, but the CSS AccentColor

@@ -50,7 +50,7 @@ body.site-themes-app:has(#support-toolbar-container.y1-toolbar-hidden) #footer-r
 :root[data-theme="2077"] body.site-themes-app,
 :root[data-lumen-theme="2077"] body.site-themes-app { background: var(--lumen-ink); }
 :root[data-theme="2077"] ::selection,
-:root[data-lumen-theme="2077"] ::selection { background: var(--lumen-accent); color: var(--lumen-ink); }
+:root[data-lumen-theme="2077"] ::selection { background: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)); }
 
 /* Hard edges and red/cyan accents for the Night City look */
 :root[data-theme="2077"] .lumen-kicker,
@@ -175,8 +175,8 @@ body.site-themes-app .hamburger { display: none; background: transparent; border
 body.site-themes-app .hamburger span { display: block; width: 18px; height: 2px; margin: 3px 0; border-radius: 2px; background: var(--lumen-accent); }
 body.site-themes-app .lumen-button, .btn, .guide-action-btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 44px; padding: .65rem 1.25rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font: 700 .9rem var(--lumen-body); text-decoration: none; cursor: pointer; transition: transform .18s var(--lumen-ease), background .18s var(--lumen-ease), border-color .18s var(--lumen-ease), color .18s var(--lumen-ease); }
 body.site-themes-app .lumen-button:hover, .btn:hover, .guide-action-btn:hover { transform: translateY(-1px); border-color: var(--lumen-accent); color: var(--lumen-paper); background: var(--lumen-accent-wash); }
-body.site-themes-app .lumen-button--primary, .btn-primary { background: var(--lumen-accent); color: var(--lumen-ink) !important; border-color: var(--lumen-accent); }
-body.site-themes-app .lumen-button--primary:hover, .btn-primary:hover { background: var(--lumen-accent-strong); border-color: var(--lumen-accent-strong); color: var(--lumen-ink) !important; }
+body.site-themes-app .lumen-button--primary, .btn-primary { background: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)) !important; border-color: var(--lumen-accent); }
+body.site-themes-app .lumen-button--primary:hover, .btn-primary:hover { background: var(--lumen-accent-strong); border-color: var(--lumen-accent-strong); color: var(--lumen-on-accent, var(--lumen-ink)) !important; }
 body.site-themes-app .lumen-button--secondary,
 body.site-themes-app .lumen-secondary-action { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 44px; padding: .65rem 1.25rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: transparent !important; color: var(--lumen-text); font: 700 .9rem var(--lumen-body); text-decoration: none; cursor: pointer; transition: transform .18s var(--lumen-ease), background .18s var(--lumen-ease), border-color .18s var(--lumen-ease), color .18s var(--lumen-ease); }
 body.site-themes-app .lumen-button--secondary:hover,
@@ -341,15 +341,15 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 .lumen-callout { margin-top: var(--lumen-space-7); padding: var(--lumen-space-5); border: 1px solid var(--lumen-line); border-left: 3px solid var(--lumen-accent); border-radius: 0 var(--lumen-radius-md) var(--lumen-radius-md) 0; background: var(--lumen-accent-wash); color: var(--lumen-text); }
 .lumen-announcement-strip { width: 100%; background: color-mix(in oklab, var(--lumen-accent) 14%, var(--lumen-ink)); border-bottom: 1px solid color-mix(in oklab, var(--lumen-accent) 28%, var(--lumen-line)); padding: .65rem 1rem; box-sizing: border-box; }
 .lumen-announcement-content { width: min(var(--lumen-max, 1200px), calc(100% - 2rem)); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: .85rem; font-size: .92rem; line-height: 1.4; color: var(--lumen-text); flex-wrap: wrap; text-align: center; }
-.lumen-announcement-badge { display: inline-flex; align-items: center; padding: .22rem .65rem; font-size: .74rem; font-weight: 700; text-transform: none; letter-spacing: normal; background: var(--lumen-accent); color: var(--lumen-ink) !important; border-radius: 999px; flex: 0 0 auto; box-shadow: 0 1px 3px color-mix(in oklab, var(--lumen-ink) 25%, transparent); }
+.lumen-announcement-badge { display: inline-flex; align-items: center; padding: .22rem .65rem; font-size: .74rem; font-weight: 700; text-transform: none; letter-spacing: normal; background: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)) !important; border-radius: 999px; flex: 0 0 auto; box-shadow: 0 1px 3px color-mix(in oklab, var(--lumen-ink) 25%, transparent); }
 .lumen-announcement-text { flex: 0 1 auto; color: var(--lumen-text); }
 .lumen-announcement-text strong { color: var(--lumen-text); font-weight: 700; }
 .lumen-announcement-text a { color: var(--lumen-accent) !important; font-weight: 600; text-decoration: underline !important; text-underline-offset: 3px; }
 .lumen-announcement-links { display: inline-flex; align-items: center; gap: .5rem; flex: 0 0 auto; }
 .lumen-announcement-cta { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .8rem; font-size: .82rem; font-weight: 600; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--lumen-accent) 40%, var(--lumen-line)); background: color-mix(in oklab, var(--lumen-panel) 80%, var(--lumen-accent-wash)); color: var(--lumen-text) !important; text-decoration: none !important; transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease; }
-.lumen-announcement-cta:hover { border-color: var(--lumen-accent); background: var(--lumen-accent); color: var(--lumen-ink) !important; transform: translateY(-1px); }
-.lumen-announcement-cta--install { background: var(--lumen-accent); border-color: var(--lumen-accent); color: var(--lumen-ink) !important; box-shadow: 0 1px 3px color-mix(in oklab, var(--lumen-ink) 20%, transparent); }
-.lumen-announcement-cta--install:hover { opacity: .92; color: var(--lumen-ink) !important; background: var(--lumen-accent); transform: translateY(-1px); }
+.lumen-announcement-cta:hover { border-color: var(--lumen-accent); background: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)) !important; transform: translateY(-1px); }
+.lumen-announcement-cta--install { background: var(--lumen-accent); border-color: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)) !important; box-shadow: 0 1px 3px color-mix(in oklab, var(--lumen-ink) 20%, transparent); }
+.lumen-announcement-cta--install:hover { opacity: .92; color: var(--lumen-on-accent, var(--lumen-ink)) !important; background: var(--lumen-accent); transform: translateY(-1px); }
 @media (max-width: 840px) { .lumen-announcement-content { flex-direction: column; gap: .45rem; text-align: center; } }
 .lumen-callout h3 { margin: 0 0 .4rem; font-size: 1.15rem; color: var(--lumen-text); font-weight: 600; }
 .lumen-callout p { margin: 0; color: var(--lumen-muted); line-height: 1.6; }
@@ -662,7 +662,7 @@ body.site-themes-app a.lumen-updater-button small,
 .edge-keep-modal__hint { margin-top: .7rem; }
 .edge-keep-modal__hint strong { color: var(--lumen-accent); }
 .edge-keep-modal__close { margin-top: 1rem; width: 100%; }
-.edge-keep-modal__close.lumen-button--primary { background: var(--lumen-accent); color: var(--lumen-ink); border-color: var(--lumen-accent); }
+.edge-keep-modal__close.lumen-button--primary { background: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)); border-color: var(--lumen-accent); }
 .lumen-button--secondary { background: var(--lumen-panel); color: var(--lumen-text); border: 1px solid var(--lumen-line-strong); }
 .lumen-button--secondary:hover, .lumen-button--secondary:focus-visible { border-color: var(--lumen-accent); color: var(--lumen-accent); background: var(--lumen-accent-wash); }
 .lumen-updater-download .lumen-download-options + .lumen-meta { margin: 0; padding: .8rem 1rem .95rem; }
@@ -1097,6 +1097,7 @@ body.site-themes-app .nav-tools, #nav-root nav, #nav-root .nav-container { overf
 /* Exactly one header sticks: the shell gives the class to whichever header a
    page actually shows, so a nav and a gallery bar never stack. */
 .site-sticky { position: sticky; top: var(--site-sticky-top, 0); z-index: 1200; }
+body.site-themes-app #nav-root nav { position: sticky; top: 0; width: 100%; }
 
 /* Accent colour picker. One swatch in the header shows the accent in use; the
    tray holds the picker, a few presets and -- only after Updater CE has handed

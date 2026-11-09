@@ -39,7 +39,7 @@
     --lumen-space-7: 3rem;
     --lumen-space-8: 5rem;
     --lumen-ease: cubic-bezier(.2, .8, .2, 1);
-    --lumen-on-accent: oklch(13% .018 260);
+    --lumen-on-accent: oklch(99% .004 250);
     --lumen-scrim: oklch(8% .012 260 / .72);
     --lumen-shadow: 0 18px 50px oklch(6% .01 260 / .55);
     --lumen-gold: #e8c56a;
