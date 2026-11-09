@@ -1,0 +1,22 @@
+---
+title: "找不到页面 - Innioasis 更新程序"
+description: ""
+language: "zh-cn"
+source: "https://innioasis.app/404_zh-cn.html"
+---
+
+# 找不到页面 - Innioasis 更新程序
+
+404
+
+# 该页面不在这里。
+
+尝试指南、软件目录或故障排除路线。[打开指南](guide_zh-CN.html)[浏览软件](firmware_zh-CN.html)[故障排除](troubleshooting_zh-CN.html)
+
+## Community support
+
+This page is part of the Innioasis Community Projects.
+
+Support the development at https://www.ko-fi.com/teamslide
+
+Help from the developers of the community projects and the stock firmware for the players is at https://ko-fi.com/teamslide and on the Innioasis Community Discord: https://discord.gg/zHrT2zrcek

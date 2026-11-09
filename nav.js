@@ -1682,6 +1682,7 @@
       '<a href="' + escapeHtml(decorateMainSiteHref("/rondo-benefits.html")) + '">Rondo for Y1</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/updater-comparison.html")) + '">Which tool should I use?</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/troubleshooting.html")) + '">Troubleshooting</a>' +
+      '<a href="' + escapeHtml(decorateMainSiteHref("/sp-flash-tool.html")) + '">SP Flash Tool on Mac, Windows and Linux</a>' +
       '</div>' +
       '<div class="footer-col">' +
       '<h4>Developers</h4>' +

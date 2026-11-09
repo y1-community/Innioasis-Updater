@@ -1,0 +1,62 @@
+---
+title: "دعم Innioasis المحدث وأرصدة المجتمع - Innioasis المحدث"
+description: "مكان ودود لدعم Updater CE، والاطلاع على المشاريع المجتمعية التي يساعدها، وشكر الأشخاص الذين يحافظون على استمرارها."
+language: "ar"
+source: "https://innioasis.app/support_devs_ar.html"
+---
+
+# دعم Innioasis المحدث وأرصدة المجتمع - Innioasis المحدث
+
+القليل من المساعدة يقطع شوطا طويلا
+
+# حافظ على الأشياء الجيدة مستمرة.
+
+برنامج التحديث CE مجاني. تم بناؤه من قبل الأشخاص الذين يريدون أن يظل اللاعبون Innioasis و Timmkoo مفيدين. يدفع دعمك مقابل الأرشيف والخوادم والوقت.
+
+## هذا مشروع مدعوم من الناس.
+
+تساعد كل مساهمة شخصًا ما في العثور على برنامج ثابت فعال، أو تجربة مشروع جديد، أو إبقاء لاعب قديم على قيد الحياة لفترة أطول قليلاً. شكرا لكونك جزءا منه.[تقديم مساهمة](#donate)[شاهد المشاريع التي تساعدها](#projects-supported)[تعرف على الداعمين](#supporters)Loading supporters...ريان (مطور)
+
+## يستغرق أنت.مشاريعنا تعتمد على التبرعات
+
+مرحبًا، أنا رايان. بالتعاون مع Innioasis، أعتني بمُحدِّث Innioasis CE وأرشيف البرامج الثابتة هذا ومعرض السمات. أنا أدفع ثمنها بنفسي حتى تبقى مجانية للجميع. تشغيل الثلاثة منهم يكلف حوالي $200 شهر، واللاعبون الذين أشتريهم لاختبار كل إصدار يأتي علاوة على ذلك، لذا فإن أي دعم يساعد.
+
+اختر طريقك للمساعدة
+
+### كل ما يناسبك.
+
+قهوة، أو هدية لمرة واحدة، أو ببساطة مشاركة 100 ميجابايت على Honeygain - كل ذلك يضيف قيمة. اختر ما تفضله وسيتم نقلك مباشرة إلى هناك.
+
+في روسيا، Boosty هي الطريقة لدعم المشروع.[التبرع على Ko-fiالدعم على Ko-fi](https://ko-fi.com/teamslide)[☕Buy Me a Coffeeدعم في BMAC](https://buymeacoffee.com/ryanspecter)[التبرع على Boostyالدعم على Boosty](https://boosty.to/ryanspecter)[التبرع بواسطة PayPal](https://paypal.me/RyanSpecter282)[التبرع بواسطة Revolut](https://revolut.me/rspecter)[التبرع بواسطة Patreon](https://www.patreon.com/ryanspecter)استخدم التشفيرBTC، ETH، أو SHIB
+
+أو [مساعدة مجانية مع Honeygain](https://join.honeygain.com/ITSRY2B5D7) - اربح 3 دولارات من خلال مشاركة 100 ميجابايت من النطاق الترددي غير المستخدم.Bitcoin (BTC):`bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g`Ethereum / التحكيم / التفاؤل :`0x5E902083ee1B3A05dd39d824012B39cB10FB80D3`شيبا اينو (ERC-20):`0x5E902083ee1B3A05dd39d824012B39cB10FB80D3`المساهمات الصغيرة تحدث فرقا حقيقيا.
+
+إنهم يحتفظون بالأرشيف عبر الإنترنت، ويساعدون في شحن المشاريع، ويجعلون من الممكن الاستمرار في مشاركة هذا العمل بدون نظام حظر الاشتراك غير المدفوع.
+
+## الناس والمشاريع دعمكم يصل
+
+دعمكم لا يتوقف هنا. كما أنه يساعد الأشخاص المستقلين على بناء Rockbox، Solar، JJ Launcher، والموضوعات، وغيرها من المشاريع الصغيرة الرائعة.[
+
+## شكرا لجميع الداعمين لنا
+
+الشكر المناسب لكل من ساعد. سواء اشتريت قهوة واحدة أو واصلت العودة إليها، فأنت جزء من السبب وراء استمرار وجودها هنا.شكرًا★كبار الداعمين — أكثر من مساهمة واحدة أو هدية على الأقل ضعف المتوسط
+
+| مؤيد | التاريخ |
+| --- | --- |
+| Loading ledger... |  |
+
+## وثائق المطور
+
+نشر البرامج المخصصة؟ اقرأ [دليل المطور لإضافة إصدارات Y1 وY2 إلى المحدث](developers_ar.html).
+
+## روابط المشروع
+
+[Rockbox Y1](https://github.com/rockbox-y1/rockbox) · [Rockbox Y2](https://github.com/y1-community/rockbox-y2-rom) · [Solar](https://github.com/thesolarproject/solar) · [معرض المواضيع](https://themes.innioasis.app/?lang=ar)
+
+## Community support
+
+This page is part of the Innioasis Community Projects.
+
+Support the development at https://www.ko-fi.com/teamslide
+
+Help from the developers of the community projects and the stock firmware for the players is at https://ko-fi.com/teamslide and on the Innioasis Community Discord: https://discord.gg/zHrT2zrcek
