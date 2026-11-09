@@ -552,6 +552,22 @@ def page_strings() -> List[str]:
     try:
         with open(manifest_path, "r", encoding="utf-8") as handle:
             names = json.load(handle).get("pages", [])
+        # The manifest ships a page count once the build has pruned the
+        # list; walk the catalogue instead of iterating an int.
+        if not isinstance(names, list):
+            names = []
+        if not names:
+            # An empty list used to switch the page-coverage gate off without
+            # saying so: `write_locale_index` skips a gate whose text set is
+            # empty, so a catalog that translated only the nav was offered and
+            # its article copy stayed English. Walk the shipped top-level pages
+            # instead, which is what the gate is meant to measure.
+            try:
+                names = sorted(
+                    entry for entry in os.listdir(ROOT) if entry.endswith(".html")
+                )
+            except OSError:
+                names = []
         with open(source_path, "r", encoding="utf-8") as handle:
             known = json.load(handle).get("strings", {})
     except (OSError, ValueError):
