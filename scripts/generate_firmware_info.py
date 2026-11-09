@@ -371,7 +371,7 @@ def page_document(title: str, description: str, canonical: str, main: str, slug:
         '<script src="../docs-viewer.js?v=20261104cite" defer></script>\n'
         '<script src="../firmware-info.js?v=20261104cite" defer></script>\n'
         '<script src="../nav.js?v=20261115shared" defer></script>\n'
-        '<script src="../site-locale.js?v=20261108c" defer></script>\n'
+        '<script src="../site-locale.js?v=20261115lang" defer></script>\n'
         '<script src="../site-i18n.js?v=20261113blocklist" defer></script>\n'
         '</body></html>\n'
     ) % {

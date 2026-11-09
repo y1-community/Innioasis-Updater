@@ -1234,7 +1234,7 @@ FOOT = """<div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="{up}docs-viewer.js?v=20261104cite" defer></script>
 <script src="{up}portable-zip-links.js?v=20261106direct" defer></script>
 <script src="{up}nav.js?v=20261115shared" defer></script>
-<script src="{up}site-locale.js?v=20261108c" defer></script>
+<script src="{up}site-locale.js?v=20261115lang" defer></script>
 <script src="{up}site-i18n.js?v=20260830" defer></script>
 </body></html>
 """

@@ -1552,7 +1552,7 @@
     var localeNavAbort = null;
 
     function setLocale(code) {
-        if (!code || code === state.locale) {
+        if (!code) {
             closePanel();
             return;
         }
@@ -1577,93 +1577,22 @@
         var dir = url.pathname.substring(0, url.pathname.lastIndexOf("/") + 1);
         var cleanCode = normalizeTag(code);
 
-        function fallbackToParam() {
-            var fallbackUrl = new URL(global.location.href);
-            var curFile = fallbackUrl.pathname.split("/").pop() || "";
-            if (/_([a-z]{2,3}(?:-[a-z0-9]{2,4})?)\.html$/i.test(curFile) || !curFile.endsWith(".html")) {
-                fallbackUrl.pathname = dir + (baseName || "index") + ".html";
-            }
-            if (cleanCode === DEFAULT_LOCALE) {
-                fallbackUrl.searchParams.delete("lang");
-            } else {
-                fallbackUrl.searchParams.set("lang", code);
-            }
-            global.location.href = fallbackUrl.pathname + fallbackUrl.search + fallbackUrl.hash;
-        }
-
-        // Switching back to default (English): return to canonical base file without ?lang=
-        if (cleanCode === DEFAULT_LOCALE) {
-            var enUrl = new URL(global.location.href);
-            enUrl.pathname = dir + baseName + ".html";
-            enUrl.searchParams.delete("lang");
-            global.location.href = enUrl.pathname + enUrl.search + enUrl.hash;
-            return;
-        }
-
-        // Instant navigation if pre-rendered target file is in manifest
-        var prerenderedFile = getPrerenderedTarget(baseName, code);
-        if (prerenderedFile) {
-            navigateToLiteral(prerenderedFile, code);
-            return;
-        }
-
-        var isStaticCandidate = /_[a-z]{2,3}(?:-[a-z0-9]{2,4})?\.html$/i.test(url.pathname) || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
-        if (!isStaticCandidate) {
-            fallbackToParam();
-            return;
-        }
-
-        // Check if candidate static file exists on server before navigating to avoid 404
+        /* Load the translated page itself. A query-string swap left the
+           English text on screen, and a full load is what ad slots and
+           analytics need in order to run for the language the visitor chose. */
         var map = localeIndex();
         var entry = map[cleanCode] || {};
         var exactCode = entry.code || code;
-        var candidateFiles = [];
-        if (exactCode) {
-            candidateFiles.push(baseName + "_" + exactCode + ".html");
-        }
-        if (cleanCode && cleanCode !== exactCode) {
-            candidateFiles.push(baseName + "_" + cleanCode + ".html");
-        }
-
-        if (typeof fetch === "function" && /^https?:/.test(global.location.protocol)) {
-            if (localeNavAbort) {
-                try { localeNavAbort.abort(); } catch (_) {}
-            }
-            var controller = typeof AbortController === "function" ? new AbortController() : null;
-            localeNavAbort = controller;
-
-            var timer = setTimeout(function () {
-                if (controller) controller.abort();
-                fallbackToParam();
-            }, 600);
-
-            function checkCandidate(index) {
-                if (index >= candidateFiles.length) {
-                    clearTimeout(timer);
-                    fallbackToParam();
-                    return;
-                }
-                var testFile = candidateFiles[index];
-                var testUrl = dir + testFile;
-                fetch(testUrl, { method: "HEAD", signal: controller ? controller.signal : undefined })
-                    .then(function (res) {
-                        if (res.ok) {
-                            clearTimeout(timer);
-                            navigateToLiteral(testFile, code);
-                        } else {
-                            checkCandidate(index + 1);
-                        }
-                    })
-                    .catch(function () {
-                        checkCandidate(index + 1);
-                    });
-            }
-
-            checkCandidate(0);
+        var prerenderedFile = cleanCode === DEFAULT_LOCALE ? null : getPrerenderedTarget(baseName, code);
+        var targetFile = prerenderedFile || (cleanCode === DEFAULT_LOCALE
+            ? baseName + ".html"
+            : baseName + "_" + exactCode + ".html");
+        var here = (url.pathname.split("/").pop() || "index.html").toLowerCase();
+        if (here === targetFile.toLowerCase()) {
+            global.location.reload();
             return;
         }
-
-        fallbackToParam();
+        navigateToLiteral(targetFile, cleanCode === DEFAULT_LOCALE ? DEFAULT_LOCALE : code);
     }
 
     function setRegion(code) {
