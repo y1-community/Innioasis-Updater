@@ -1,0 +1,18 @@
+---
+title: "Special Thanks &amp; Credits - Innioasis Updater"
+description: ""
+language: "bn"
+source: "https://innioasis.app/special-thanks_bn.html"
+---
+
+# Special Thanks &amp; Credits - Innioasis Updater
+
+Redirecting to [Special Thanks, Credits & Supported Projects](credits_bn.html)...Created by Innioasis and [রায়ান স্পেকটার](https://ko-fi.com/teamslide).
+
+## Community support
+
+This page is part of the Innioasis Community Projects.
+
+Support the development at https://www.ko-fi.com/teamslide
+
+Help from the developers of the community projects and the stock firmware for the players is at https://ko-fi.com/teamslide and on the Innioasis Community Discord: https://discord.gg/zHrT2zrcek

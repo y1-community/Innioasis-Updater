@@ -1,0 +1,100 @@
+---
+title: "Platform V1 Baseline01 installed physical qualification - Innioasis Updater"
+description: "Platform V1 Baseline01 installed physical qualification Status: PARTIAL / INTERRUPTED , not full integrated physical qualification. Owner confirmed preserving installatio"
+language: "en"
+source: "https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-platform-v1-baseline-physical.html"
+---
+
+# Platform V1 Baseline01 installed physical qualification - Innioasis Updater
+
+[← Firmware Downloads](../firmware.html?model=Y2&software=reborn-y2linux-y2)
+
+Post-install setup · Reborn (Y2Linux) · Y2
+
+# Platform V1 Baseline01 installed physical qualification
+
+Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.
+
+Instructions published by the project, shown here word for word.[Firmware Downloads →](../firmware.html?model=Y2&software=reborn-y2linux-y2)[Install guide](../guide.html?model=Y2&software=reborn-y2linux-y2)
+
+# Platform V1 Baseline01 installed physical qualification
+
+Status: PARTIAL / INTERRUPTED, not full integrated physical qualification. Owner confirmed preserving installation and requested tests on 2026-10-04. No flash, reboot command, push, main merge, protected-partition write or public-distribution promotion is performed by this session.
+
+## Exact installed image
+
+Build `Y2LINUX-PLATFORM-V1-BASELINE-01`; Linux `98daf3f0220f4a1580bb4893094ee9f0e02362a5`, Reborn `9cd12baeeb70b204e08299bd4c91c8c35604c304`; kernel `6.18.0-y2linux-platform-v1-baseline-01`; root `2025.02.18-platform-v1.24`. Admission boot `ef2c8f2f-56d9-418a-b8a8-2dfd329d0973`, kernel taint 0. The sealed package and image hashes remain unchanged; physical receipts live separately in the owner's restricted `out/platform-v1-physical/` directory.
+
+## Smoke and harness admission
+
+Pinned USB SSH required a temporary host static IPv4 profile: the new composite interface name differed from the historical profile, while the automatically created profile requested DHCP. This is host reachability, not firmware failure. Owner explicitly confirmed wheel, display, audible local track and normal battery display. Root/DATA geometry/UUID/ext4, Reborn process and dmesg, Wi-Fi association/DNS and CPU0 state availability/policy passed the machine smoke. All three smoke directories retain the same source pair and boot.
+
+The initial CPU preflight refused a paused queue before hardware mutation. Normal `rebornctl stop` cleared it without deleting owner media. The second CPU run passed C1, 18 normal hotplug transitions and all five OPP readbacks, then stopped at the obsolete Power-as-screen-toggle assumption. On the new product, short Power when stopped requests separately guarded full-system sleep; that request correctly refuses physical_qualification_required. It is not a firmware screen failure. No C2/C3/full-suspend entry occurred, no boot change, taint or filesystem fault occurred. Cleanup also reported that same obsolete screen assumption; every failure receipt is retained.
+
+The host-only `cpu_idle_completion_device.py` correction waits for existing normal Reborn automatic screen timeout, without changing settings, forcing blanking, bypassing sleep, or changing installed firmware. Short Power is used only to wake an already blanked display. Ten targeted host tests passed, including bounded timeout rejection and no Power/policy writes. Commit `3f35bc6` records this helper and the admission audit; compiled image remains Linux `98daf3f`. A separately recorded same-boot, zero-entry/zero-fault guard restored the original automatic boot C3 controls after the harness-only failure. That restored runtime state is not presented as an additional cold-boot observation: the original admission already captured Enabled/-1/disable0 before any mutation.
+
+The third run uses this corrected host helper and the original owner observations bound to the unchanged boot. Natural parking is awaited through the real kernel coordinator; no secondary power, clock, frequency or topology guard is bypassed.
+
+## Current bounded results
+
+| Gate | Result and scope |
+| --- | --- |
+| Installed pair / kernel / root / boot | PASS exact baseline |
+| Root/DATA geometry, mounted ext4 / SD | PASS smoke; media replacement/endurance open |
+| Kernel and Reborn | PASS initial smoke, taint 0 / no BUG/Oops |
+| Wheel / display / basic audio / battery display | PASS explicit owner observation, not counted/fidelity qualification |
+| Wi-Fi / USB ECM | PASS readiness and authenticated USB; MTP not yet tested |
+| C3 boot policy | PASS original boot Enabled/-1/disable0; recovered boot policy Skipped after DRM warning |
+| C1 WFI | PASS all four CPUs, bounded timer wakes |
+| Normal hotplug | PASS 18 transitions; secondary power copies match |
+| OPP/PWRAP | PASS 598 / 747.5 / 1040 / 1196 / 1300 MHz with admitted voltages |
+| Natural parking / C2 | PASS CPU0-only/mask 0xe; 4,857 C2 entries, 51,321,595 us in 60.05534 s (85.4572%); zero clock restore failures |
+| Storage after C2 | PASS eight fsynced 128 KiB scratch hash rounds per DATA and installed SD, same boot/taint 0 |
+| C3 reset+return | NOT_QUALIFIED / INTERRUPTED during topology wait; no recorded C3 entry or armed cycle |
+| Broader transfer / suspend | NOT_RUN pending CPU gate |
+| Power full wake | NOT_RUN, separate from RTC |
+| RTC full wake | NOT_RUN new image; historical Baseline02 watchdog FAIL remains unresolved |
+| Endurance / electrical battery benefit | NOT_RUN; no current sensor, SOC voltage estimate only |
+| Public distribution | NOT_READY; firmware/optional codec/source/collector limits unchanged |
+
+## USB loss, owner restart and recovered boot
+
+The corrected third job deliberately set USB role to `none` at 18:54:16 UTC after `sync`, while radios were already off-runtime. Its C3 prerequisite loop then waited too long for natural core parking. Unplug/replug cannot override that explicitly disabled role. The owner reports restarting the player because USB would not return. Host enumeration resumes at 19:05:55 UTC and the observer detects boot `9d4d0245-f1f0-45ef-abc9-f43234ae30de` at 19:06 UTC.
+
+The last durable topology record is approximately 19:05:25 UTC: online `0-3`, parked mask 0, new 480-second post-load hold, dormant budget 0, zero dormant entries/resumes/successes and zero UART attempts. No `c3_armed`, completed cycle or initial admission record exists. Recovery reports previous journal invalid, device ring absent and RGU reset status 0 / `none_reported`. This is an owner-interrupted campaign with no demonstrated C3 entry/restore failure. The initial host error "Device reset" correctly rejected the changed boot; it does not diagnose the reset cause. Preserve all failed/raw captures. Historical UART01 remains valid on its own exact image. Do not launch further C3 or suspend trials from this partial receipt.
+
+Recovery dmesg contains a DRM vblank timeout WARNING during boot, followed by flip/commit timeouts. The automatic C3 boot policy reports `Skipped` with reason `kernel_tainted_or_unknown`. This separate graphics/boot gate needs diagnosis; never force C3 on despite that refusal. An attempted recovery quarantine command did not run because a separate wired-audio session held the shared device lock. No device command is issued across that ownership boundary.
+
+The owner also reports USB problems after flashing, before this CPU test. That earlier report remains open and is not explained away by this deliberate test detach. Host evidence does independently show the new composite ECM name `enp8s0f3u2i1` replacing the historical `enp8s0f3u2`; the automatically selected profile attempted DHCP and repeatedly failed, while firmware uses static 10.42.0.1/24. A verified Y2 VID/PID/serial/MAC profile now uses static 10.42.0.2/24, never-default, autoconnect and MAC matching rather than interface name. It auto-connected on the observed return and is now saved persistently. This corrects host network reachability; it does not prove all firmware USB or MTP reconnect behavior works. No descriptor/enumeration error appears in the captured host kernel interval. Current-image MTP/physical reconnect remains unqualified.
+
+## Localized harness correction
+
+The host helper now awaits the real parking owner with USB still attached before the C3 offline window. After detach, topology is bounded to 60 seconds and each admission wait to 30 seconds; an independent userspace alarm caps the entire offline window at 180 seconds. Its cleanup disables C3/zeroes budget/backstop, restores the original USB role and allows eight seconds for enumeration, even when prerequisite admission fails. An existing alarm or non-device original role refuses detach. The real-entry kernel backstop and all C3 acceptance predicates remain unchanged. No hardware re-run is implied by this correction.
+
+Host-only commit `7b80f3ec3bb910278742b87be3d7ae61a6ece76e` records the USB outage and host reconnect corrections. It does not alter compiled source or firmware.
+
+Targeted software validation: **16 CPU harness tests + 14 integration coordinator tests PASS**. New fault injection covers long parking with USB attached, offline timeout, failed quarantine cleanup still attempting USB restore and an existing timer rejecting detach. Sealed firmware/build/software counts remain unchanged.
+
+Next smallest gate is exclusive, read-only recovered-boot USB/graphics diagnosis after the wired-audio session releases its lease. No stress, full sleep, firmware replacement, main promotion, issue closure or public release follows from these partial successes. Power and RTC wake remain separately NOT_RUN on this image.
+
+## Evidence
+
+Restricted raw origin (contains owner status/media/radio details; do not publish):
+  - `out/platform-v1-physical/baseline-01-admission-20261004T183512Z/`
+  - `out/platform-v1-physical/baseline-01-smoke/` (paused precondition)
+  - `out/platform-v1-physical/baseline-01-smoke-02/` (obsolete screen gesture)
+  - `out/platform-v1-physical/baseline-01-smoke-03/` (corrected current run)
+
+Preserve [UART01's historical exact-image CPU record](https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-CPU-C3-UART-PHYSICAL.md) and [the separate Power/RTC campaign gates](https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Frelease%2FY2-PLATFORM-V1-PHYSICAL-QUALIFICATION.md).
+
+These are Reborn (Y2Linux)'s own instructions, shown here word for word.
+
+Published by the [schulzcode/y2linux](https://innioasis.app/firmware.html?model=Y2&software=reborn-y2linux-y2) project [[1]](https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&software=reborn-y2linux-y2)[[3]](https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode)
+
+## Community support
+
+This page is part of the Innioasis Community Projects.
+
+Support the development at https://www.ko-fi.com/teamslide
+
+Help from the developers of the community projects and the stock firmware for the players is at https://ko-fi.com/teamslide and on the Innioasis Community Discord: https://discord.gg/zHrT2zrcek

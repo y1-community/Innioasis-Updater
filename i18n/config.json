@@ -135,13 +135,17 @@
         "guides/**/*.html",
         "notices/**/*.html",
         "Troubleshooting/**/*.html",
-        "404.html"
+        "404.html",
+        "rockbox-tutorials/**/*.html"
       ],
       "exclude": [
         "i18n/**",
         "dist/**",
         "assets/**",
-        "theme_downloader*.html"
+        "theme_downloader*.html",
+        "analytics-handoff.html",
+        "innioasis-a5-firmware.html",
+        "guides/restore-original-a5.html"
       ]
     },
     "full": {

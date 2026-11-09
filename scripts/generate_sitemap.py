@@ -45,7 +45,10 @@ SKIP_DIRS = {
 # 404 is not a page to index, support_toolbar.html is an HTML fragment that is
 # injected into other pages, firmware_info.html is noindex and innioasis-embed.html
 # is the bare widget that other sites iframe. None of them belong in a sitemap.
-SKIP_FILES = {"404.html", "support_toolbar.html", "firmware_info.html", "innioasis-embed.html"}
+SKIP_FILES = {"404.html", "support_toolbar.html", "firmware_info.html", "innioasis-embed.html", "analytics-handoff.html"}
+# A page that asks robots not to index it (a model with no released firmware
+# yet, a tracking frame) stays out of the sitemap until that changes.
+NOINDEX_RE = re.compile(r'<meta\s+name="robots"\s+content="[^"]*noindex', re.I)
 
 URL_RE = re.compile(r"\s*<url>.*?</url>", re.S)
 
@@ -65,6 +68,12 @@ def page_files() -> list[pathlib.Path]:
             continue
         # Legacy theme-downloader URLs are redirect stubs, not indexable pages.
         if path.name.startswith("theme_downloader"):
+            continue
+        try:
+            head = path.read_text(encoding="utf-8", errors="ignore")[:8000]
+        except OSError:
+            continue
+        if NOINDEX_RE.search(head):
             continue
         pages.append(path)
     return sorted(pages, key=rel_for)

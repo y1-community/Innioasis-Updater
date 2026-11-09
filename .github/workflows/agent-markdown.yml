@@ -1,0 +1,39 @@
+name: Agent Markdown
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'scripts/build_agent_markdown.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agent-markdown
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build Markdown twins of every page
+        run: python3 scripts/build_agent_markdown.py --origin https://innioasis.app
+      - name: Commit the Markdown
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add agent-markdown
+          if git diff --cached --quiet; then
+            echo "Markdown already matches the pages."
+          else
+            git commit -m "chore(agents): refresh Markdown copies of the site [skip ci]"
+            git push
+          fi

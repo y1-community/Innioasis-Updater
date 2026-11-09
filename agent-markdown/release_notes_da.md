@@ -1,0 +1,28 @@
+---
+title: "Firmware release notes - Innioasis Updater"
+description: "Udgivelsesbemærkninger til community-firmware på Innioasis Y1 og Y2-spillere med direkte downloads fra udviklerne og installation med et enkelt klik gennem Innioasis Updater CE."
+language: "da"
+source: "https://innioasis.app/release_notes_da.html"
+---
+
+# Firmware release notes - Innioasis Updater
+
+[← Firmware-downloads](firmware_da.html)
+
+Firmware-udgivelse
+
+# Udgivelsesbemærkninger
+
+Hvad er ændret i denne udgivelse, og hvordan man installerer det.
+
+[Hent det i Updater CE](guide_da.html)[Firmware downloads](firmware_da.html)
+
+Indlæser udgivelsesbemærkninger...
+
+## Community support
+
+This page is part of the Innioasis Community Projects.
+
+Support the development at https://www.ko-fi.com/teamslide
+
+Help from the developers of the community projects and the stock firmware for the players is at https://ko-fi.com/teamslide and on the Innioasis Community Discord: https://discord.gg/zHrT2zrcek
