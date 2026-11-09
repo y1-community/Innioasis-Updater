@@ -378,11 +378,9 @@ def main() -> int:
                 for control in ("donate", "privacy", "language"):
                     if row.get("controls", {}).get(control) is False:
                         checks.append(f"{control} control not reachable")
-                expected_goal = row.get("density") == "full"
-                if expected_goal and not row.get("goalLineVisible"):
+                expected_goal = True
+                if not row.get("goalLineVisible"):
                     checks.append(f"goal line missing on the {row.get('density')} tier")
-                if not expected_goal and row.get("goalLineVisible"):
-                    checks.append(f"goal line still shown on the {row.get('density')} tier")
                 if row["cls"] > 0.05:
                     checks.append(f"CLS {row['cls']}")
                 if checks:
