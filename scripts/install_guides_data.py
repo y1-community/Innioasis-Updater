@@ -221,7 +221,7 @@ FAMILIES = {
         "summary": "A stock-derived Y1 patch that adds Artist-to-Album navigation and root while keeping the stock feel.",
         "why": "Koensayr improves the stock Y1 software instead of replacing it: Artist-to-Album navigation, a root option and a small set of audio patches.",
         "preinstall": "Koensayr is a Y1 build based on stock firmware. Check the supported stock version in the release notes before you start.",
-        "post": "Open the post-install notes for the extra patch options and the first-start checks.",
+        "post": "Open the after-install notes for the extra patch options and the first-start checks.",
         "restore": "Restore Original Software for Y1 if you want the untouched stock software back.",
         "source": "https://github.com/ryan-specter/koensayr-auto",
         "source_label": "ryan-specter/koensayr-auto",

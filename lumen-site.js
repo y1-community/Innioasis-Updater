@@ -2678,15 +2678,15 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
                 var postLi = document.createElement("li");
                 postLi.setAttribute("data-post-install-step", "1");
                 postLi.setAttribute("data-slug", item.slug);
-                var titleText = "Complete post-install setup";
-                var descText = "Some features on your player require post-install setup. Follow along with our post-install guide to finish setting up your player.";
-                var buttonText = "Post-Install Setup Guide \u2192";
+                var titleText = "Complete setup after install";
+                var descText = "Some features on your player require setup after install. Follow along with our after-install guide to finish setting up your player.";
+                var buttonText = "After-Install Setup Guide \u2192";
                 if (item.slug === "reborn-y2linux-y2" || /reborn|y2linux/i.test(item.name)) {
                     titleText = "Complete final setup for Wi-Fi, FM radio & Bluetooth";
-                    descText = "There are some final setup steps needed to get Wi-Fi, FM radio, and Bluetooth working on your Y2 using system.img. Follow along with our post-install guide to finish setting up your player.";
+                    descText = "There are some final setup steps needed to get Wi-Fi, FM radio, and Bluetooth working on your Y2 using system.img. Follow along with our after-install guide to finish setting up your player.";
                 } else if (item.slug === "rondo-y1" || /rondo/i.test(item.name)) {
-                    titleText = "Complete post-install setup";
-                    descText = "Follow along with the setup guide to complete post-install setup on your Y1.";
+                    titleText = "Complete setup after install";
+                    descText = "Follow along with the setup guide to complete setup after install on your Y1.";
                     buttonText = "View Guide";
                 }
                 postLi.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;width:100%;">' +

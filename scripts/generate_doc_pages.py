@@ -1547,7 +1547,7 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
     if source:
         related.append(
             '<li><a href="%spost_install.html?software=%s" data-post-install-link data-slug="%s"%s>'
-            "<strong>Post-install setup</strong>"
+            "<strong>Setup after install</strong>"
             "<small>The steps to finish after this firmware is installed</small></a></li>"
             % (
                 up, esc(item["slug"]), esc(item["slug"]),
@@ -1679,7 +1679,7 @@ def master_index_page(software: list[dict], release_counts: dict[str, int], post
     post_cards = []
     for item, source in post_install_items:
         post_cards.append(
-            '<article class="lumen-card"><small>%s</small><h3><a href="../post_install.html?software=%s">%s post-install</a></h3>'
+            '<article class="lumen-card"><small>%s</small><h3><a href="../post_install.html?software=%s">%s after-install guide</a></h3>'
             '<p>Setup steps published by the project, shown here in the site style.</p></article>'
             % (esc(item.get("model", "")), esc(item["slug"]), esc(software_label(item)))
         )
@@ -1800,7 +1800,7 @@ def manifest_post_install_cards(manifest: list[dict], software: list[dict]) -> l
             params["repo"] = repo
         href = "../post_install.html?" + urllib.parse.urlencode(params)
         cards.append(
-            '<article class="lumen-card"><small>%s</small><h3><a href="%s">%s post-install</a></h3>'
+            '<article class="lumen-card"><small>%s</small><h3><a href="%s">%s after-install guide</a></h3>'
             "<p>Setup steps for %s on the Innioasis %s.</p></article>"
             % (esc(model), esc(href), esc(name), esc(name), esc(model))
         )
@@ -1813,8 +1813,8 @@ def post_install_directory_section(manifest: list[dict], software: list[dict]) -
         return ""
     return (
         '<section class="lumen-guide-section" id="firmware-post-install">'
-        "<h2>Post-install instructions by firmware</h2>"
-        '<p class="lumen-meta">These are the post-install guides Updater CE links for each firmware. '
+        "<h2>After-install instructions by firmware</h2>"
+        '<p class="lumen-meta">These are the after-install guides Updater CE links for each firmware. '
         "Pick your firmware to open its setup steps.</p>"
         '<div class="lumen-grid">%s</div></section>' % "".join(cards)
     )
@@ -1825,10 +1825,10 @@ def post_install_index_page(entries: list[dict], manifest: list[dict], software:
     cards = "".join(entries) or '<p class="lumen-doc-status">No other documentation has been imported yet.</p>'
     directory = post_install_directory_section(manifest, software)
     main = (
-        '<main id="main" class="lumen-guide"><header><p class="lumen-kicker">Post-install guides</p>'
+        '<main id="main" class="lumen-guide"><header><p class="lumen-kicker">After-install guides</p>'
         "<h1>Documentation and notes for community firmwares</h1>"
         '<p class="lead">Guides and notes published by community firmware projects, imported here and shown in the site style. '
-        "Start with your firmware's post-install steps.</p>"
+        "Start with your firmware's after-install steps.</p>"
         '<div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="%sfirmware.html">Firmware Downloads</a>'
         '</div></header>'
         "%s"
