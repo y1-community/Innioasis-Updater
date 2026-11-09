@@ -280,6 +280,32 @@
     return "dark";
   }
 
+  /* The accent the header picked (or the app handed over), read from the same
+     places the shell writes it, so cross-site links can carry it. */
+  function getActiveAccent() {
+    try {
+      if (typeof window.y1GetAccent === "function") {
+        var live = window.y1GetAccent();
+        if (live) return live;
+      }
+      var stored = window.localStorage.getItem("lumen-accent");
+      if (stored && /^#[0-9a-f]{6}$/i.test(stored)) return stored;
+      var cookie = getSharedCookie("innioasis-accent");
+      if (cookie && /^#[0-9a-f]{6}$/i.test(cookie)) return cookie;
+      var attr = document.documentElement && document.documentElement.getAttribute("data-accent");
+      if (attr && /^#[0-9a-f]{6}$/i.test(attr)) return attr;
+    } catch (_) {}
+    return null;
+  }
+
+  function hasCeAccent() {
+    try {
+      if (typeof window.y1HasPcAccent === "function") return Boolean(window.y1HasPcAccent());
+      return Boolean(window.localStorage.getItem("innioasis-pc-accent") || getSharedCookie("innioasis-pc-accent"));
+    } catch (_) {}
+    return false;
+  }
+
   function getActiveAccessibility() {
     try {
       var stored = window.localStorage.getItem("innioasis-accessibility");
@@ -344,10 +370,18 @@
     var prefKeys = [
       "donations",
       "privacy",
+      "analytics",
+      "telemetry",
       "privacy_analytics",
       "privacy_feedback",
       "privacy_nightly",
       "site_theme",
+      "accent",
+      "accent_color",
+      "accent-color",
+      "accentColor",
+      "accentColour",
+      "ce",
       "accessibility",
       "a11y",
       "fontSize",
@@ -410,6 +444,17 @@
         if (curA11y) url.searchParams.set("accessibility", curA11y);
         var curFs = getActiveFontScale();
         if (curFs && curFs !== 0.8) url.searchParams.set("fontSize", String(curFs));
+        /* The visitor's accent, and whether the app handed it over, travel
+           with links to the other Innioasis site so its header and its
+           "Match my PC's theme colours" choice agree with this one. */
+        var curAccent = getActiveAccent();
+        if (curAccent) url.searchParams.set("accent", curAccent);
+        if (hasCeAccent()) url.searchParams.set("ce", "true");
+        var handoffLang = getActiveLocale();
+        if (handoffLang && handoffLang !== "en") url.searchParams.set("lang", handoffLang);
+        url.searchParams.set("donations", isY1DonationsDisabled() ? "false" : "true");
+        var handoffPrivacy = getPrivacyParam();
+        if (handoffPrivacy) url.searchParams.set("privacy", handoffPrivacy);
       }
       return url.toString();
     }
