@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Innioasis download handoff</title>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  /* themes.innioasis.app opens this page in a hidden frame when a theme
+     download starts there, with the Updater CE link contract in the URL.
+     It records the same download under innioasis.app, then does nothing. */
+  (function () {
+    var keys = ["what", "software", "version", "model", "brand", "type", "resolution", "id", "action",
+      "client", "client_version", "utm_source", "utm_medium", "utm_campaign", "ref",
+      "file_name", "download_method"];
+    var params;
+    try { params = new URLSearchParams(window.location.search); } catch (_) { return; }
+    if (!params.get("what")) return;
+    var payload = { event: "innioasis_download", download_site: "themes.innioasis.app", handoff: "themes" };
+    keys.forEach(function (key) {
+      var value = (params.get(key) || "").trim().slice(0, 100);
+      if (value) payload[key] = value;
+    });
+    window.dataLayer.push(payload);
+  })();
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+</head>
+<body></body>
+</html>
