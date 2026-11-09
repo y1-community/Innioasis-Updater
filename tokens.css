@@ -38,6 +38,15 @@
     --lumen-space-7: 3rem;
     --lumen-space-8: 5rem;
     --lumen-ease: cubic-bezier(.2, .8, .2, 1);
+    --lumen-on-accent: oklch(13% .018 260);
+    --lumen-scrim: oklch(8% .012 260 / .72);
+    --lumen-shadow: 0 18px 50px oklch(6% .01 260 / .55);
+    --lumen-gold: #e8c56a;
+    --lumen-gold-deep: #b8891e;
+    --lumen-gold-ink: #1a1206;
+    --lumen-brand-reddit: #ff4500;
+    --lumen-brand-discord: #5865f2;
+    --lumen-theme-color: #0a0b0f;
 
     /* Legacy site tokens mapped to Lumen */
     --site-bg: #0a0b0f;
@@ -81,6 +90,15 @@
     --lumen-red: oklch(48% .19 25);
     --lumen-line: oklch(20% .02 260 / .14);
     --lumen-line-strong: oklch(20% .02 260 / .28);
+    --lumen-on-accent: oklch(99% .004 250);
+    --lumen-scrim: oklch(98% .006 250 / .82);
+    --lumen-shadow: 0 18px 50px oklch(20% .02 260 / .16);
+    --lumen-gold: #8a610f;
+    --lumen-gold-deep: #6b4a08;
+    --lumen-gold-ink: #fffaf0;
+    --lumen-brand-reddit: #d93a00;
+    --lumen-brand-discord: #4752c4;
+    --lumen-theme-color: #f8fafc;
 
     --site-bg: #f8fafc;
     --site-bg-elevated: #ffffff;
@@ -116,6 +134,15 @@
     --lumen-red: #f87171;
     --lumen-line: #ffffff;
     --lumen-line-strong: #ffffff;
+    --lumen-on-accent: #000000;
+    --lumen-scrim: #000000;
+    --lumen-shadow: none;
+    --lumen-gold: #fde047;
+    --lumen-gold-deep: #fde047;
+    --lumen-gold-ink: #000000;
+    --lumen-brand-reddit: #ff4500;
+    --lumen-brand-discord: #5865f2;
+    --lumen-theme-color: #000000;
 
     --site-bg: #000000;
     --site-bg-elevated: #080808;
@@ -151,6 +178,15 @@
     --lumen-red: #ff1e3c;
     --lumen-line: rgba(35, 230, 224, .25);
     --lumen-line-strong: rgba(35, 230, 224, .55);
+    --lumen-on-accent: #06060b;
+    --lumen-scrim: rgba(6, 6, 11, .82);
+    --lumen-shadow: 0 0 18px rgba(255, 30, 60, .35);
+    --lumen-gold: #ffb500;
+    --lumen-gold-deep: #ff8a00;
+    --lumen-gold-ink: #06060b;
+    --lumen-brand-reddit: #ff4500;
+    --lumen-brand-discord: #23e6e0;
+    --lumen-theme-color: #06060b;
 
     --site-bg: #06060b;
     --site-bg-elevated: #0c0d14;

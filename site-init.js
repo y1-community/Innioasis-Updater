@@ -4,46 +4,90 @@
 (function (global) {
     "use strict";
 
+    /* ---- Appearance -------------------------------------------------------
+       One choice, four palettes. The preference is kept locally, mirrored to
+       the shared .innioasis.app cookie so it follows the visitor between
+       innioasis.app and themes.innioasis.app, and applied as data-theme /
+       data-lumen-theme — the attributes tokens.css keys every palette off.
+       "Auto" follows the operating system and re-applies when it changes. */
+    var APPEARANCE_KEY = "lumen-theme";
+    var APPEARANCES = ["auto", "dark", "light", "high-contrast", "2077"];
+
+    function systemAppearance() {
+        try {
+            if (global.matchMedia && global.matchMedia("(prefers-color-scheme: light)").matches) return "light";
+        } catch (_) {}
+        return "dark";
+    }
+
     function resolveEffectiveTheme(theme) {
-        if (!theme || theme === "auto") {
-            try {
-                if (global.matchMedia && global.matchMedia("(prefers-color-scheme: light)").matches) {
-                    return "light";
-                }
-            } catch (_) {}
-            return "dark";
+        if (!theme || theme === "auto" || APPEARANCES.indexOf(theme) < 0) return systemAppearance();
+        return theme;
+    }
+
+    function storedAppearance() {
+        var value = null;
+        try { value = global.localStorage.getItem(APPEARANCE_KEY); } catch (_) {}
+        if (APPEARANCES.indexOf(value) < 0) value = getSharedCookie("innioasis-theme");
+        return APPEARANCES.indexOf(value) >= 0 ? value : "auto";
+    }
+
+    function applyAppearance(theme, persist) {
+        if (APPEARANCES.indexOf(theme) < 0) theme = "auto";
+        var effective = resolveEffectiveTheme(theme);
+        var root = document.documentElement;
+        if (root) {
+            root.setAttribute("data-theme", effective);
+            root.setAttribute("data-lumen-theme", effective);
+            root.setAttribute("data-appearance", theme);
         }
-        return (theme === "light" || theme === "high-contrast" || theme === "2077" || theme === "dark") ? theme : "dark";
+        if (persist) {
+            try { global.localStorage.setItem(APPEARANCE_KEY, theme); } catch (_) {}
+            setSharedCookie("innioasis-theme", theme);
+        }
+        var selects = document.querySelectorAll("#lumen-theme-select");
+        for (var i = 0; i < selects.length; i++) {
+            if (selects[i].value !== theme) selects[i].value = theme;
+        }
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta && root) {
+            var colour = "";
+            try { colour = global.getComputedStyle(root).getPropertyValue("--lumen-theme-color").trim(); } catch (_) {}
+            if (colour) meta.setAttribute("content", colour);
+        }
+        return effective;
     }
 
     function applyStoredTheme() {
-        var allowed = ["auto", "dark", "light", "high-contrast", "2077"];
-        var stored = null;
-        try { stored = global.localStorage.getItem("lumen-theme"); } catch (_) {}
+        var theme = storedAppearance();
         var urlTheme = null;
         try {
-            var search = (global.location && global.location.search) || "";
-            var p = new URLSearchParams(search);
+            var p = new URLSearchParams((global.location && global.location.search) || "");
             urlTheme = p.get("site_theme") || p.get("theme");
             if (urlTheme) {
                 urlTheme = urlTheme.toLowerCase().trim();
-                if (allowed.indexOf(urlTheme) < 0) urlTheme = null;
+                if (APPEARANCES.indexOf(urlTheme) < 0) urlTheme = null;
             }
         } catch (_) {}
-        var theme = urlTheme || (allowed.indexOf(stored) >= 0 ? stored : "auto");
-        if (urlTheme) {
-            try { global.localStorage.setItem("lumen-theme", urlTheme); } catch (_) {}
-            setSharedCookie("innioasis-theme", urlTheme);
-        }
-        var effective = resolveEffectiveTheme(theme);
-        if (document.documentElement) {
-            document.documentElement.setAttribute("data-lumen-theme", effective);
-            document.documentElement.setAttribute("data-theme", effective);
-        }
+        if (urlTheme) theme = urlTheme;
+        applyAppearance(theme, Boolean(urlTheme));
         return theme;
     }
 
     applyStoredTheme();
+
+    /* Follow the OS while the visitor is on Auto, without a reload. */
+    (function watchSystemAppearance() {
+        try {
+            var mq = global.matchMedia ? global.matchMedia("(prefers-color-scheme: light)") : null;
+            if (!mq) return;
+            var onChange = function () {
+                if (storedAppearance() === "auto") applyAppearance("auto", false);
+            };
+            if (typeof mq.addEventListener === "function") mq.addEventListener("change", onChange);
+            else if (typeof mq.addListener === "function") mq.addListener(onChange);
+        } catch (_) {}
+    })();
 
     /* Accessibility preference (e.g. reduce-motion) */
     function applyAccessibility() {
@@ -342,6 +386,8 @@
     };
     global.setSharedCookie = setSharedCookie;
     global.getSharedCookie = getSharedCookie;
+    global.y1ApplyAppearance = applyAppearance;
+    global.y1GetAppearance = storedAppearance;
 
     function clearPreferenceParamsFromUrl() {
         if (!global.location || !global.history || !global.history.replaceState) return;
@@ -361,7 +407,12 @@
                 "a11y",
                 "reduce-motion",
                 "reduce_motion",
-                "lang"
+                "lang",
+                "fontSize",
+                "fontScale",
+                "font-scale",
+                "fs",
+                "lumen-font-scale"
             ];
 
             if (params.has("theme")) {
@@ -432,15 +483,8 @@
         control.className = "lumen-theme-control lumen-theme-control--fallback";
         control.innerHTML = '<span>Theme</span><select aria-label="Choose site colour theme"><option value="auto">Auto</option><option value="dark">Dark</option><option value="light">Light</option><option value="high-contrast">High contrast</option><option value="2077">2077</option></select>';
         var select = control.querySelector("select");
-        var stored = "auto";
-        try { stored = global.localStorage.getItem("lumen-theme") || "auto"; } catch (_) {}
-        select.value = ["auto", "dark", "light", "high-contrast", "2077"].indexOf(stored) >= 0 ? stored : "auto";
-        select.addEventListener("change", function () {
-            var effective = resolveEffectiveTheme(select.value);
-            document.documentElement.setAttribute("data-lumen-theme", effective);
-            document.documentElement.setAttribute("data-theme", effective);
-            try { global.localStorage.setItem("lumen-theme", select.value); } catch (_) {}
-        });
+        select.value = storedAppearance();
+        select.addEventListener("change", function () { applyAppearance(select.value, true); });
         document.body.appendChild(control);
     }
 

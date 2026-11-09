@@ -530,14 +530,14 @@
       title: "Innioasis Firmware Archive",
       subtitle: "Original Software, custom ROMs & guides",
       href: "/firmware.html",
-      icon: '<span class="lumen-app-icon lumen-app-icon--firmware" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#181a24;border:1px solid rgba(255,255,255,0.14);box-shadow:0 2px 6px rgba(0,0,0,0.35);font-size:16px;line-height:1;flex-shrink:0;" aria-hidden="true">📚</span>'
+      icon: '<span class="lumen-app-icon lumen-app-icon--firmware" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5 3h10a3 3 0 0 1 3 3v15H7a3 3 0 0 1-3-3V3zm2 2v13c0 .6.4 1 1 1h8V6a1 1 0 0 0-1-1H7z"/></svg></span>'
     },
     {
       id: "updater",
       title: "Updater CE",
       subtitle: "One-click installer for Windows, macOS & Linux",
       href: "/",
-      icon: '<span class="lumen-app-icon lumen-app-icon--updater" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#181a24;border:1px solid rgba(255,255,255,0.14);box-shadow:0 2px 6px rgba(0,0,0,0.35);overflow:hidden;flex-shrink:0;" aria-hidden="true"><img src="/assets/icon.ico" width="34" height="34" style="width:34px;height:34px;max-width:none;display:block;margin:-3px;" alt="" aria-hidden="true"></span>'
+      icon: '<span class="lumen-app-icon lumen-app-icon--updater" aria-hidden="true"><img src="/assets/icon.ico" width="34" height="34" alt="" aria-hidden="true"></span>'
     },
     {
       id: "themes",
@@ -545,7 +545,7 @@
       subtitle: "Themes for Innioasis Y1 & Y2 players",
       href: "https://themes.innioasis.app/",
       external: true,
-      icon: '<span class="lumen-app-icon lumen-app-icon--themes" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#181a24;border:1px solid rgba(255,255,255,0.14);box-shadow:0 2px 6px rgba(0,0,0,0.35);font-size:16px;line-height:1;flex-shrink:0;" aria-hidden="true">🎨</span>'
+      icon: '<span class="lumen-app-icon lumen-app-icon--themes" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-2 0-.5-.2-1-.5-1.3-.4-.4-.6-.9-.6-1.4 0-1.2 1-2.1 2.1-2.1H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3zm-4.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></span>'
     }
   ];
 
@@ -592,191 +592,9 @@
     : "";
 
   var brandIconHtml = isFirmwarePersona
-    ? '<span class="lumen-brand-icon lumen-brand-icon--firmware" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#141721;border:1px solid rgba(255,255,255,0.14);box-shadow:0 1px 4px rgba(0,0,0,0.3);font-size:16px;line-height:1;margin-right:8px;flex-shrink:0;" aria-hidden="true">📚</span>'
-    : '<span class="lumen-brand-icon lumen-brand-icon--updater" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#141721;border:1px solid rgba(255,255,255,0.14);box-shadow:0 1px 4px rgba(0,0,0,0.3);overflow:hidden;margin-right:8px;flex-shrink:0;" aria-hidden="true"><img src="/assets/icon.ico" width="38" height="38" style="width:38px;height:38px;max-width:none;display:block;margin:-5px;" alt="" aria-hidden="true"></span>';
+    ? '<span class="lumen-brand-icon lumen-brand-icon--firmware" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5 3h10a3 3 0 0 1 3 3v15H7a3 3 0 0 1-3-3V3zm2 2v13c0 .6.4 1 1 1h8V6a1 1 0 0 0-1-1H7z"/></svg></span>'
+    : '<span class="lumen-brand-icon lumen-brand-icon--updater" aria-hidden="true"><img src="/assets/icon.ico" width="38" height="38" alt="" aria-hidden="true"></span>';
 
-  (function ensureNavStyles() {
-    if (document.getElementById("lumen-nav-styles")) return;
-    var style = document.createElement("style");
-    style.id = "lumen-nav-styles";
-    style.textContent =
-      '.logo { flex-shrink: 0 !important; white-space: nowrap !important; }' +
-      '.lumen-brand-switcher-wrap { position: relative; display: inline-flex; align-items: center; flex-shrink: 0 !important; white-space: nowrap !important; }' +
-      '.lumen-brand-bar { display: inline-flex; align-items: center; flex-shrink: 0 !important; white-space: nowrap !important; }' +
-      '.lumen-brand-home { display: inline-flex; align-items: center; text-decoration: none !important; color: var(--lumen-text, #f8fafc) !important; flex-shrink: 0 !important; white-space: nowrap !important; }' +
-      '.lumen-brand-title { color: var(--lumen-text, #f8fafc) !important; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; }' +
-      ':root[data-lumen-theme="light"] .lumen-brand-title, :root[data-lumen-theme="light"] .lumen-brand-home { color: #0f172a !important; }' +
-      ':root[data-lumen-theme="dark"] .lumen-brand-title, :root[data-lumen-theme="dark"] .lumen-brand-home { color: #f8fafc !important; }' +
-      ':root[data-lumen-theme="2077"] .lumen-brand-title, :root[data-lumen-theme="2077"] .lumen-brand-home { color: #00f0ff !important; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-brand-title, :root[data-lumen-theme="high-contrast"] .lumen-brand-home { color: #ffffff !important; }' +
-      '.lumen-site-switcher-toggle { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-left: 6px; padding: 0; border-radius: 6px; border: 1px solid var(--lumen-line, rgba(255,255,255,0.14)); background: var(--lumen-panel-soft, rgba(255,255,255,0.06)); color: var(--lumen-muted, #94a3b8); cursor: pointer; transition: all 0.15s ease; flex-shrink: 0 !important; }' +
-      '.lumen-site-switcher-toggle:hover { background: var(--lumen-accent-wash, rgba(99,102,241,0.15)); color: var(--lumen-paper, #fff); border-color: var(--lumen-accent, #6366f1); }' +
-      ':root[data-lumen-theme="light"] .lumen-site-switcher-toggle { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.12); color: #475569; }' +
-      ':root[data-lumen-theme="light"] .lumen-site-switcher-toggle:hover { background: rgba(0,0,0,0.08); color: #0f172a; }' +
-      ':root[data-lumen-theme="2077"] .lumen-site-switcher-toggle { background: rgba(35,230,224,0.08); border-color: rgba(35,230,224,0.3); color: #23e6e0; }' +
-      ':root[data-lumen-theme="2077"] .lumen-site-switcher-toggle:hover { background: rgba(255,30,60,0.18); border-color: #ff1e3c; color: #ff1e3c; }' +
-      '.lumen-site-switcher-tray { position: absolute; top: calc(100% + 8px); left: 0; width: 360px; max-width: calc(100vw - 24px); white-space: normal; background: var(--lumen-panel, #12141c); border: 1px solid var(--lumen-line-strong, rgba(255,255,255,0.18)); border-radius: 14px; padding: 12px; box-shadow: 0 12px 36px rgba(0,0,0,0.45); z-index: 10002; box-sizing: border-box; }' +
-      ':root[data-lumen-theme="light"] .lumen-site-switcher-tray { background: #ffffff; border-color: rgba(0,0,0,0.12); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }' +
-      ':root[data-lumen-theme="2077"] .lumen-site-switcher-tray { background: #0c0d14; border-color: rgba(35,230,224,0.45); box-shadow: 0 12px 36px rgba(0,0,0,0.65), 0 0 16px rgba(35,230,224,0.2); }' +
-      '.lumen-site-switcher-heading { margin: 0 0 8px 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--lumen-muted, #94a3b8); }' +
-      ':root[data-lumen-theme="light"] .lumen-site-switcher-heading { color: #64748b; }' +
-      ':root[data-lumen-theme="2077"] .lumen-site-switcher-heading { color: #ff1e3c; }' +
-      '.lumen-site-switcher-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }' +
-      '.lumen-site-switcher-item { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: 9px; text-decoration: none; background: transparent; border: 1px solid transparent; transition: all 0.15s ease; }' +
-      '.lumen-site-switcher-item:hover { background: var(--lumen-accent-wash, rgba(99,102,241,0.1)); border-color: var(--lumen-line, rgba(255,255,255,0.1)); }' +
-      ':root[data-lumen-theme="light"] .lumen-site-switcher-item:hover { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }' +
-      '.lumen-site-switcher-item-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }' +
-      '.lumen-site-switcher-item-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }' +
-      '.lumen-site-switcher-item-copy strong { font-size: 0.92rem; font-weight: 700; color: var(--lumen-text, #f8fafc); line-height: 1.2; }' +
-      '.lumen-site-switcher-item-copy small { display: block; font-size: 0.78rem; color: var(--lumen-muted, #94a3b8); line-height: 1.3; white-space: normal; overflow-wrap: break-word; }' +
-      ':root[data-lumen-theme="light"] .lumen-site-switcher-item-copy strong { color: #0f172a; }' +
-      ':root[data-lumen-theme="light"] .lumen-site-switcher-item-copy small { color: #64748b; }' +
-      ':root[data-lumen-theme="2077"] .lumen-site-switcher-item-copy strong { color: #e9f0f5; }' +
-      ':root[data-lumen-theme="2077"] .lumen-site-switcher-item-copy small { color: #aab8c8; }' +
-      '.lumen-nav-install-cta { display: inline-flex !important; align-items: center !important; justify-content: center !important; padding: 6px 14px !important; border-radius: 9999px !important; font-weight: 700 !important; font-size: 0.85rem !important; line-height: 1.2 !important; text-decoration: none !important; background: linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(99, 102, 241, 0.36)) !important; border: 1px solid rgba(56, 189, 248, 0.55) !important; color: #f0f9ff !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important; transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important; flex-shrink: 0 !important; }' +
-      '.lumen-nav-install-cta:hover { transform: translateY(-1px) !important; background: linear-gradient(135deg, rgba(56, 189, 248, 0.42), rgba(99, 102, 241, 0.52)) !important; border-color: rgba(56, 189, 248, 0.8) !important; color: #ffffff !important; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35) !important; }' +
-      ':root[data-lumen-theme="light"] .lumen-nav-install-cta { background: linear-gradient(135deg, #0284c7, #4f46e5) !important; border-color: #0284c7 !important; color: #ffffff !important; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25) !important; }' +
-      ':root[data-lumen-theme="light"] .lumen-nav-install-cta:hover { background: linear-gradient(135deg, #0369a1, #4338ca) !important; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4) !important; }' +
-      ':root[data-lumen-theme="2077"] .lumen-nav-install-cta { background: rgba(255, 30, 60, 0.18) !important; border-color: #ff1e3c !important; color: #ff1e3c !important; box-shadow: 0 0 10px rgba(255, 30, 60, 0.35) !important; }' +
-      ':root[data-lumen-theme="2077"] .lumen-nav-install-cta:hover { background: #ff1e3c !important; color: #0d0e15 !important; box-shadow: 0 0 18px rgba(255, 30, 60, 0.7) !important; }' +
-      '.lumen-notices-wrap { position: relative; display: inline-flex; align-items: center; }' +
-      '.lumen-notices-btn { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--lumen-line, rgba(255,255,255,0.14)); background: var(--lumen-panel-soft, rgba(255,255,255,0.06)); color: var(--lumen-text, #f8fafc); cursor: pointer; position: relative; transition: all 0.15s ease; }' +
-      '.lumen-notices-btn:hover { background: rgba(255,255,255,0.12); color: var(--lumen-text, #fff); }' +
-      ':root[data-lumen-theme="light"] .lumen-notices-btn { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.12); color: #0f172a; }' +
-      ':root[data-lumen-theme="light"] .lumen-notices-btn:hover { background: rgba(0,0,0,0.08); color: #0f172a; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notices-btn { background: rgba(35,230,224,0.08); border-color: rgba(35,230,224,0.35); color: #23e6e0; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notices-btn:hover { background: rgba(255,30,60,0.18); border-color: #ff1e3c; color: #ff1e3c; }' +
-      '.lumen-notices-badge { position: absolute; top: -3px; right: -3px; min-width: 16px; height: 16px; border-radius: 9999px; background: #ef4444; color: #fff; font-size: 0.68rem; font-weight: 800; display: flex; align-items: center; justify-content: center; padding: 0 4px; box-sizing: border-box; pointer-events: none; }' +
-      '.lumen-notices-badge[hidden] { display: none !important; }' +
-      '.lumen-notices-tray { position: fixed; z-index: 10003; box-sizing: border-box; width: 350px; max-width: calc(100vw - 24px); max-height: calc(100vh - 170px); max-height: calc(100dvh - 170px); overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--lumen-panel, #12141c); border: 1px solid var(--lumen-line-strong, rgba(255,255,255,0.18)); border-radius: 14px; padding: 14px; box-shadow: 0 16px 48px rgba(0,0,0,0.6); font-family: inherit; }' +
-      '@media (max-width: 640px) { .lumen-notices-tray { left: 12px !important; right: 12px !important; width: auto !important; max-width: calc(100vw - 24px) !important; } }' +
-      ':root[data-lumen-theme="light"] .lumen-notices-tray { background: #ffffff; border-color: rgba(0,0,0,0.12); box-shadow: 0 16px 48px rgba(0,0,0,0.18); color: #0f172a; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notices-tray { background: #0c0d14; border-color: #23e6e0; box-shadow: 0 16px 48px rgba(0,0,0,0.8), 0 0 18px rgba(35,230,224,0.3); color: #e9f0f5; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notices-tray { background: #000000; border-color: #ffffff; color: #ffffff; box-shadow: 0 0 0 2px #ffffff; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notices-tray-header strong { color: #ffffff; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notices-all-link { color: #ffff00; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notice-card { background: #000000; border-color: #ffffff; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notice-type { background: #ffffff; color: #000000; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notice-title { color: #ffffff; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notice-summary { color: #e2e8f0; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notice-link { color: #ffff00; }' +
-      '.lumen-notices-tray-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--lumen-line, rgba(255,255,255,0.1)); }' +
-      '.lumen-notices-tray-header strong { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.01em; color: var(--lumen-text, #f8fafc); }' +
-      ':root[data-lumen-theme="light"] .lumen-notices-tray-header strong { color: #0f172a; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notices-tray-header strong { color: #23e6e0; }' +
-      '.lumen-notices-all-link { font-size: 0.78rem; font-weight: 600; text-decoration: none; color: var(--lumen-accent, #6366f1); }' +
-      ':root[data-lumen-theme="2077"] .lumen-notices-all-link { color: #ff1e3c; }' +
-      '.lumen-notice-card { border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); text-align: left; }' +
-      ':root[data-lumen-theme="light"] .lumen-notice-card { background: #f8fafc; border-color: #e2e8f0; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notice-card { background: rgba(35,230,224,0.04); border-color: rgba(35,230,224,0.22); }' +
-      '.lumen-notice-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; font-size: 0.7rem; }' +
-      '.lumen-notice-type { font-weight: 800; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(59,130,246,0.18); color: #60a5fa; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notice-type { background: rgba(35,230,224,0.15); color: #23e6e0; }' +
-      '.lumen-notice-models { font-weight: 600; color: var(--lumen-muted, #94a3b8); }' +
-      '.lumen-notice-date { color: var(--lumen-muted, #94a3b8); margin-left: auto; }' +
-      '.lumen-notice-title { margin: 4px 0 3px 0; font-size: 0.86rem; font-weight: 700; line-height: 1.3; color: var(--lumen-text, #f8fafc); }' +
-      ':root[data-lumen-theme="light"] .lumen-notice-title { color: #0f172a; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notice-title { color: #e9f0f5; }' +
-      '.lumen-notice-summary { margin: 0 0 6px 0; font-size: 0.78rem; line-height: 1.4; color: var(--lumen-muted, #94a3b8); }' +
-      ':root[data-lumen-theme="light"] .lumen-notice-summary { color: #475569; }' +
-      ':root[data-lumen-theme="2077"] .lumen-notice-summary { color: #aab8c8; }' +
-      '.lumen-notice-full { max-height: 190px; overflow-y: auto; -webkit-overflow-scrolling: touch; margin: 2px 0 8px; padding-right: 4px; font-size: 0.8rem; line-height: 1.5; color: var(--lumen-muted, #94a3b8); }' +
-      '.lumen-notice-full > :first-child { margin-top: 0; }' +
-      '.lumen-notice-full p { margin: 0 0 8px; }' +
-      '.lumen-notice-full ul, .lumen-notice-full ol { margin: 0 0 8px; padding-left: 18px; }' +
-      '.lumen-notice-full li { margin: 3px 0; }' +
-      '.lumen-notice-full h2, .lumen-notice-full h3, .lumen-notice-full h4 { margin: 10px 0 4px; font-size: 0.86rem; line-height: 1.3; color: var(--lumen-text, #f8fafc); }' +
-      '.lumen-notice-full a { color: var(--lumen-accent, #6366f1); text-decoration: underline; }' +
-      '.lumen-notice-full code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92em; background: rgba(255,255,255,.08); padding: 1px 4px; border-radius: 4px; }' +
-      '.lumen-notice-full pre { background: rgba(255,255,255,.06); padding: 8px 10px; border-radius: 8px; overflow-x: auto; }' +
-      '.lumen-notice-full pre code { background: none; padding: 0; }' +
-      '.lumen-notice-full blockquote { margin: 0 0 8px; padding-left: 10px; border-left: 2px solid var(--lumen-line-strong, rgba(255,255,255,.2)); }' +
-      '.lumen-notice-full img { display: block; max-width: 100%; height: auto; margin: 8px 0; border-radius: 8px; }' +
-      '.lumen-notice-full hr { border: none; border-top: 1px solid var(--lumen-line, rgba(255,255,255,.12)); margin: 10px 0; }' +
-      ':root[data-lumen-theme="light"] .lumen-notice-full { color: #475569; }' +
-      ':root[data-lumen-theme="light"] .lumen-notice-full h2, :root[data-lumen-theme="light"] .lumen-notice-full h3, :root[data-lumen-theme="light"] .lumen-notice-full h4 { color: #0f172a; }' +
-      '.lumen-notice-actions { display: flex; align-items: center; gap: 10px; }' +
-      '.lumen-notice-open { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--lumen-line, rgba(255,255,255,0.16)); color: var(--lumen-muted, #94a3b8); text-decoration: none; transition: color .15s ease, border-color .15s ease, background .15s ease; }' +
-      '.lumen-notice-open:hover { color: var(--lumen-text, #fff); border-color: var(--lumen-line-strong, rgba(255,255,255,0.3)); background: rgba(255,255,255,0.08); }' +
-      '.lumen-notice-open svg { width: 15px; height: 15px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-notice-open { border-color: #ffffff; color: #ffffff; }' +
-      '.lumen-notice-link { font-size: 0.76rem; font-weight: 600; text-decoration: none; color: var(--lumen-accent, #6366f1); }' +
-      ':root[data-lumen-theme="2077"] .lumen-notice-link { color: #ff1e3c; }' +
-      /* Contextual notice card: mounted by a page that knows what the visitor
-         is looking at (firmware.html). One notice at a time, rotating through
-         the eligible set. The tray beside the bell always lists every notice. */
-      '.lumen-context-notice-slot:empty { display: none; }' +
-      '.lumen-context-notice { display: block; margin: 0 0 14px; padding: 11px 14px 10px; border-radius: 12px; border: 1px solid var(--lumen-line, rgba(255,255,255,0.12)); border-left: 3px solid var(--lumen-accent, #6366f1); background: var(--lumen-panel-soft, rgba(255,255,255,0.04)); transition: opacity .16s ease; }' +
-      '.lumen-context-notice.is-fading { opacity: 0; }' +
-      '.lumen-context-notice[data-severity="warning"] { border-left-color: #f59e0b; }' +
-      '.lumen-context-notice[data-severity="critical"] { border-left-color: #ef4444; }' +
-      '.lumen-context-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: .72rem; }' +
-      '.lumen-context-kicker { font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--lumen-muted, #94a3b8); }' +
-      '.lumen-context-severity { font-weight: 800; font-size: .64rem; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: .05em; background: rgba(59,130,246,0.16); color: #60a5fa; }' +
-      '.lumen-context-notice[data-severity="warning"] .lumen-context-severity { background: rgba(245,158,11,0.18); color: #fbbf24; }' +
-      '.lumen-context-notice[data-severity="critical"] .lumen-context-severity { background: rgba(239,68,68,0.18); color: #f87171; }' +
-      '.lumen-context-target { color: var(--lumen-muted, #94a3b8); font-weight: 600; }' +
-      ':root[data-lumen-theme="light"] .lumen-context-kicker, :root[data-lumen-theme="light"] .lumen-context-target { color: #64748b; }' +
-      ':root[data-lumen-theme="2077"] .lumen-context-kicker { color: #23e6e0; }' +
-      '.lumen-context-all { margin-left: auto; font-weight: 600; color: var(--lumen-accent, #6366f1); text-decoration: none; }' +
-      ':root[data-lumen-theme="2077"] .lumen-context-all { color: #ff1e3c; }' +
-      '.lumen-context-title { margin: 6px 0 3px; font-size: .95rem; font-weight: 700; line-height: 1.3; color: var(--lumen-text, #f8fafc); }' +
-      ':root[data-lumen-theme="light"] .lumen-context-title { color: #0f172a; }' +
-      '.lumen-context-title a { color: inherit; text-decoration: none; }' +
-      '.lumen-context-title a:hover { text-decoration: underline; }' +
-      '.lumen-context-summary { margin: 0; font-size: .82rem; line-height: 1.45; color: var(--lumen-muted, #94a3b8); }' +
-      ':root[data-lumen-theme="light"] .lumen-context-summary { color: #475569; }' +
-      '.lumen-context-foot { display: flex; align-items: center; gap: 10px; margin-top: 8px; }' +
-      '.lumen-context-dots { display: flex; align-items: center; gap: 2px; }' +
-      '.lumen-context-dot { position: relative; width: 28px; height: 28px; padding: 0; border: none; border-radius: 50%; background: transparent; cursor: pointer; }' +
-      '.lumen-context-dot::before { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: var(--lumen-line-strong, rgba(255,255,255,.25)); transition: background .15s ease, transform .15s ease; }' +
-      '.lumen-context-dot.is-active::before { background: var(--lumen-accent, #6366f1); transform: scale(1.3); }' +
-      '.lumen-context-dot:hover::before { background: var(--lumen-text, #fff); }' +
-      '.lumen-context-dot:focus-visible { outline: 2px solid var(--lumen-accent, #6366f1); outline-offset: 2px; }' +
-      ':root[data-lumen-theme="2077"] .lumen-context-dot.is-active::before { background: #23e6e0; }' +
-      ':root[data-lumen-theme="high-contrast"] .lumen-context-dot::before { background: #ffffff; }' +
-      '.lumen-context-link { margin-left: auto; font-size: .76rem; font-weight: 600; color: var(--lumen-accent, #6366f1); text-decoration: none; }' +
-      ':root[data-lumen-theme="2077"] .lumen-context-link { color: #ff1e3c; }' +
-      '@media (prefers-reduced-motion: reduce) { .lumen-context-notice { transition: none; } .lumen-context-dot::before { transition: none; } }' +
-      '.lumen-nav-social-btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; width: auto !important; height: auto !important; min-width: 0 !important; min-height: 0 !important; padding: 4px 6px !important; background: transparent !important; border: none !important; box-shadow: none !important; border-radius: 0 !important; text-decoration: none !important; transition: transform 0.15s ease, opacity 0.15s ease, color 0.15s ease !important; flex-shrink: 0 !important; cursor: pointer !important; opacity: 0.88 !important; }' +
-      '.lumen-nav-social-btn:hover { opacity: 1 !important; transform: scale(1.15) !important; background: transparent !important; border: none !important; box-shadow: none !important; }' +
-      '.lumen-nav-social-btn--reddit { color: #ff4500 !important; }' +
-      '.lumen-nav-social-btn--reddit:hover { color: #ff5722 !important; filter: drop-shadow(0 0 6px rgba(255, 69, 0, 0.5)) !important; }' +
-      '.lumen-nav-social-btn--discord { color: #5865f2 !important; }' +
-      '.lumen-nav-social-btn--discord:hover { color: #7289da !important; filter: drop-shadow(0 0 6px rgba(88, 101, 242, 0.5)) !important; }' +
-      '.lumen-nav-social-btn svg { display: block !important; width: 22px !important; height: 22px !important; }' +
-      '@media (max-width: 1040px) { body.site-themes-app .nav-links a { padding: 0.4rem 0.45rem; font-size: 0.82rem; } .nav-container { padding: 0.5rem 1rem; gap: 0.35rem; } }' +
-      /* The header collapses into the hamburger only when nav.js decides the
-         inline links no longer fit, so links are never squeezed out of the bar. */
-      '.nav-container.nav-compact { position: relative !important; }' +
-      '.nav-container.nav-compact .nav-links { display: none !important; position: fixed; top: 72px; right: 12px; left: auto; margin: 0 !important; padding: .5rem !important; list-style: none; flex-flow: row wrap !important; align-items: stretch !important; align-content: flex-start !important; gap: .15rem !important; width: min(300px, calc(100vw - 1.5rem)); max-height: min(72vh, 520px); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; border: 1px solid var(--lumen-line-strong, rgba(255,255,255,0.18)); border-radius: 14px; background: var(--lumen-panel, #12141c); box-shadow: 0 18px 50px rgba(0,0,0,0.55); z-index: 10002; box-sizing: border-box; }' +
-      '.nav-container.nav-compact .nav-links.active { display: flex !important; }' +
-      '.nav-container.nav-compact .nav-links li { flex: 1 0 100%; width: 100%; margin: 0 !important; padding: 0 !important; list-style: none; }' +
-      '.nav-container.nav-compact .nav-links a { display: flex !important; width: 100%; min-height: 0 !important; height: auto !important; align-items: center; justify-content: flex-start !important; padding: .7rem .8rem !important; border-radius: 10px; white-space: nowrap; font-size: .92rem; line-height: 1.3; }' +
-      '.nav-container.nav-compact .nav-links a:hover, .nav-container.nav-compact .nav-links a:focus-visible { background: rgba(255,255,255,0.07) !important; }' +
-      '.nav-container.nav-compact .nav-links .lumen-nav-install-cta { justify-content: center !important; padding: .75rem 1rem !important; }' +
-      /* The two social icons share one row instead of taking a row each. */
-      '.nav-container.nav-compact .nav-links li:has(> .lumen-nav-social-btn) { flex: 0 0 auto; width: auto; }' +
-      '.nav-container.nav-compact .nav-links a.lumen-nav-social-btn { width: 44px !important; min-height: 44px !important; justify-content: center !important; padding: 0 !important; }' +
-      /* The icon is three stacked bars; switching it on must not line them up. */
-      '.nav-container.nav-compact .hamburger { display: inline-flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; gap: 4px !important; }' +
-      '.nav-container.nav-compact .hamburger span { width: 20px !important; height: 2px !important; margin: 0 !important; border-radius: 2px; transition: transform .2s ease, opacity .15s ease; }' +
-      '.nav-container.nav-compact .hamburger.is-active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }' +
-      '.nav-container.nav-compact .hamburger.is-active span:nth-child(2) { opacity: 0; }' +
-      '.nav-container.nav-compact .hamburger.is-active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }' +
-      /* A phone header must fit its own width: the brand gives way, the theme
-         select stops claiming a wide box, and the menu button stays reachable. */
-      '@media (max-width: 640px) {' +
-      '  #nav-root .nav-container { padding: .5rem .7rem !important; gap: .45rem !important; }' +
-      '  #nav-root .nav-container .lumen-brand-switcher-wrap { flex: 1 1 auto !important; min-width: 0 !important; }' +
-      '  #nav-root .nav-container .lumen-brand-bar { min-width: 0 !important; }' +
-      '  #nav-root .nav-container .lumen-brand-title { font-size: .95rem !important; min-width: 0 !important; overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; }' +
-      '  #nav-root .nav-container .nav-tools { gap: .3rem !important; flex: 0 0 auto !important; }' +
-      '  #nav-root .nav-container .lumen-theme-control { min-width: 0 !important; }' +
-      '  #nav-root .nav-container .lumen-theme-control select { max-width: 84px !important; padding-left: .4rem !important; }' +
-      '}';
-    document.head.appendChild(style);
-  })();
 
   var root = document.getElementById("nav-root");
   if (root) {
@@ -828,6 +646,10 @@
       '</div>' +
       '</nav>';
   }
+
+  /* One sticky header per page: the gallery bar wins where it exists. */
+  var stickyNav = root ? root.querySelector("nav") : null;
+  if (stickyNav && !document.querySelector(".gallery-topbar")) stickyNav.classList.add("site-sticky");
 
   /* Site Switcher Dropdown Logic */
   var switcherToggle = document.getElementById("lumen-site-switcher-toggle");
@@ -1526,40 +1348,36 @@
     }
   });
 
-  /* Theme Switcher Logic */
+  /* Appearance control. The shell owns storage, the shared cookie and the
+     system-preference listener; this wires the header select to it. */
   var themeSelect = document.getElementById("lumen-theme-select");
-  var SITE_THEMES = ["auto", "dark", "light", "high-contrast", "2077"];
   function resolveEffectiveTheme(theme) {
     if (!theme || theme === "auto") {
       try {
-        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-          return "light";
-        }
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) return "light";
       } catch (_) {}
       return "dark";
     }
     return (theme === "light" || theme === "high-contrast" || theme === "2077" || theme === "dark") ? theme : "dark";
   }
-  var storedTheme = "auto";
-  try {
-    storedTheme = localStorage.getItem("lumen-theme") || "auto";
-  } catch (_) {}
-  if (SITE_THEMES.indexOf(storedTheme) < 0) storedTheme = "auto";
-  var effectiveTheme = resolveEffectiveTheme(storedTheme);
-  document.documentElement.setAttribute("data-lumen-theme", effectiveTheme);
-  document.documentElement.setAttribute("data-theme", effectiveTheme);
+  function setAppearance(theme) {
+    if (typeof window.y1ApplyAppearance === "function") {
+      window.y1ApplyAppearance(theme, true);
+    } else {
+      var effective = resolveEffectiveTheme(theme);
+      document.documentElement.setAttribute("data-lumen-theme", effective);
+      document.documentElement.setAttribute("data-theme", effective);
+      try { localStorage.setItem("lumen-theme", theme); } catch (_) {}
+      setSharedCookie("innioasis-theme", theme);
+    }
+    /* Links already on the page carry the old preference in their URL. */
+    if (typeof window.y1DecorateLinks === "function") {
+      try { window.y1DecorateLinks(); } catch (_) {}
+    }
+  }
   if (themeSelect) {
-    themeSelect.value = storedTheme;
-    themeSelect.addEventListener("change", function () {
-      var value = themeSelect.value;
-      var eff = resolveEffectiveTheme(value);
-      document.documentElement.setAttribute("data-lumen-theme", eff);
-      document.documentElement.setAttribute("data-theme", eff);
-      try {
-        localStorage.setItem("lumen-theme", value);
-      } catch (_) {}
-      setSharedCookie("innioasis-theme", value);
-    });
+    if (typeof window.y1GetAppearance === "function") themeSelect.value = window.y1GetAppearance();
+    themeSelect.addEventListener("change", function () { setAppearance(themeSelect.value); });
   }
 
   /* Hamburger Toggle for Mobile */
