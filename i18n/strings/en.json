@@ -1,20 +1,20 @@
 {
- "generated": "2026-11-09T15:09:28+00:00",
+ "generated": "2026-11-09T23:03:17+00:00",
  "tiers": [
   "core",
   "full"
  ],
- "pages": 1574,
- "occurrences": 177958,
- "count": 83398,
+ "pages": 1575,
+ "occurrences": 177971,
+ "count": 83413,
  "strings": {
   "Skip to content": {
-   "n": 1332,
-   "pages": 1332
+   "n": 1333,
+   "pages": 1333
   },
   "Innioasis Updater": {
-   "n": 1068,
-   "pages": 1043,
+   "n": 1069,
+   "pages": 1044,
    "script": true
   },
   "Project README": {
@@ -22,8 +22,8 @@
    "pages": 947
   },
   "← Firmware Downloads": {
-   "n": 920,
-   "pages": 920
+   "n": 921,
+   "pages": 921
   },
   "Published by the": {
    "n": 914,
@@ -43,8 +43,8 @@
    "script": true
   },
   "Get it in Updater CE": {
-   "n": 507,
-   "pages": 503,
+   "n": 508,
+   "pages": 504,
    "script": true
   },
   "Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.": {
@@ -5361,6 +5361,10 @@
    "n": 12,
    "pages": 7
   },
+  "Releases": {
+   "n": 12,
+   "pages": 7
+  },
   "Suspend": {
    "n": 12,
    "pages": 7
@@ -5913,10 +5917,6 @@
    "pages": 6
   },
   "Function": {
-   "n": 11,
-   "pages": 6
-  },
-  "Releases": {
    "n": 11,
    "pages": 6
   },
@@ -13416,6 +13416,11 @@
    "n": 3,
    "pages": 3
   },
+  "Firmware releases": {
+   "n": 3,
+   "pages": 3,
+   "script": true
+  },
   "First release with support for the Innioasis Y2 alongside the Innioasis Y1 (Type A and Type B).": {
    "n": 3,
    "pages": 3
@@ -16429,6 +16434,10 @@
    "pages": 2
   },
   "KEEP": {
+   "n": 28,
+   "pages": 2
+  },
+  "Project page": {
    "n": 28,
    "pages": 2
   },
@@ -24647,8 +24656,7 @@
   },
   "Discord community": {
    "n": 2,
-   "pages": 2,
-   "script": true
+   "pages": 2
   },
   "Display/INFRA owner fixes": {
    "n": 2,
@@ -25173,10 +25181,6 @@
    "pages": 2
   },
   "Firmware release notes · Original Software · SR1": {
-   "n": 2,
-   "pages": 2
-  },
-  "Firmware releases": {
    "n": 2,
    "pages": 2
   },
@@ -34988,10 +34992,6 @@
    "pages": 1
   },
   "By": {
-   "n": 27,
-   "pages": 1
-  },
-  "Project page": {
    "n": 27,
    "pages": 1
   },
@@ -48242,6 +48242,11 @@
    "pages": 1
   },
   "Firmware release notes - Innioasis Updater": {
+   "n": 2,
+   "pages": 1,
+   "script": true
+  },
+  "Firmware releases - Innioasis Updater": {
    "n": 2,
    "pages": 1,
    "script": true
@@ -152498,6 +152503,10 @@
    "n": 1,
    "pages": 1
   },
+  "Every published release, with the portable build for your computer and the original file from the developer.": {
+   "n": 1,
+   "pages": 1
+  },
   "Every question costs half a second.": {
    "n": 1,
    "pages": 1
@@ -152527,6 +152536,14 @@
    "pages": 1
   },
   "Every release listed for every model, in plain HTML. Each entry names the software, its author, the device model, the original package and the portable build for Windows, macOS and Linux.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Every release of a community firmware project, with the portable build for your computer and the original release file, without leaving Innioasis.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Every release of a community firmware project, with the portable build for your computer and the original release file.": {
    "n": 1,
    "pages": 1
   },
@@ -179450,6 +179467,10 @@
    "pages": 1
   },
   "Loading release notes…": {
+   "n": 1,
+   "pages": 1
+  },
+  "Loading releases…": {
    "n": 1,
    "pages": 1
   },
@@ -331479,12 +331500,12 @@
   },
   "A Spanish-language walkthrough of installing Rockbox on an Innioasis Y1 with Updater CE.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A TikTok walkthrough of Rockbox on the Innioasis Y1 with Updater.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A USB data cable": {
@@ -331494,7 +331515,7 @@
   },
   "A brief video about general Innioasis player use.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A coffee or two keeps our servers online this month": {
@@ -331514,27 +331535,27 @@
   },
   "A model-aware Rockbox installation reference for Innioasis Updater.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A reference for installing Original Software on an Innioasis player.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A reference for setting up Rockbox on an Innioasis player.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A short TikTok walkthrough of the Innioasis Updater CE Rockbox route.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A short video installing JJ Launcher on an Innioasis Y1 and troubleshooting.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A supporter": {
@@ -331544,42 +331565,42 @@
   },
   "A top supporter": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "A tutorial about Rockbox and themes on an Innioasis player.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A video about Innioasis player use and Rockbox.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A video about Rockbox and using Innioasis Updater CE.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A video about the Innioasis Rockbox route.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A video reference for the Innioasis Rockbox route.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A video using Updater CE to install Rockbox on an Innioasis player.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "A walkthrough of using Innioasis Updater to install Rockbox.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "About & Editorial": {
@@ -331594,12 +331615,17 @@
   },
   "About this release": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
+   "script": true
+  },
+  "Accent colour": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Add custom firmware to Innioasis Updater CE": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "All donations are appreciated.": {
@@ -331659,12 +331685,12 @@
   },
   "Apple certification + $": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Back to Firmware Downloads": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Back up and charge": {
@@ -331689,12 +331715,12 @@
   },
   "Better-Y firmware for Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Better-Y for Innioasis Y1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Better-Y has no Type B package. Use Rockbox-Y1 for Type B - choose Rockbox in Software.": {
@@ -331734,7 +331760,7 @@
   },
   "CDF FC AOA Kz GMD D GNF FG SLE Le LRD L$ SDG ج.س LYD ل.د SOS Sh NAD N$ LSL L": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "Cambiar a español": {
@@ -331744,27 +331770,27 @@
   },
   "Can I install Y1 firmware on Y2?": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Can I return from a custom firmware to original software?": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Can I use the Y1 Rockbox package on a Y2?": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Can Innioasis Updater CE restore stock firmware?": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Catsteal3r · Updater and Rockbox": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Cette page est également disponible en français.": {
@@ -331779,7 +331805,7 @@
   },
   "Check and install Solar on Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Check lsusb for the MediaTek ID 0e8d if it does not appear.": {
@@ -331819,7 +331845,7 @@
   },
   "Choose Better-Y and a Y1 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Inniclassic": {
@@ -331829,12 +331855,12 @@
   },
   "Choose Inniclassic and a Y1 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Inniclassic and a Y2 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose JJ Launcher": {
@@ -331864,12 +331890,12 @@
   },
   "Choose Original Software and a Y1 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Original Software and a Y2 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Rockbox": {
@@ -331879,12 +331905,12 @@
   },
   "Choose Rockbox and a Y1 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Rockbox and a Y2 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Rondo": {
@@ -331899,12 +331925,12 @@
   },
   "Choose Solar and a Y1 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Y1 or Y2, then choose a firmware project in Updater CE.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose Y2Player": {
@@ -331914,17 +331940,22 @@
   },
   "Choose Y2Player and a Y2 release.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
+   "script": true
+  },
+  "Choose a project to see its releases.": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Choose a release": {
    "n": 1,
-   "pages": 154,
+   "pages": 162,
    "script": true
   },
   "Choose a stable release for the selected model and project.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose site colour theme": {
@@ -331939,12 +331970,12 @@
   },
   "Choose the model and software": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Choose your model and software": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Close navigation menu": {
@@ -331954,7 +331985,7 @@
   },
   "Community Project": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Community firmware package for the": {
@@ -331964,12 +331995,12 @@
   },
   "Community project donation ·": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Community theme directory, artwork archive, and documentation hub for Rockbox and stock player customizations. Maintained by Ryan Specter.": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Compare Rockbox-Y1 and Rockbox-Y2 for the Innioasis Y1 and Y2: developer repositories, ROM package names, build options, and restore paths.": {
@@ -331984,12 +332015,12 @@
   },
   "Computer with Innioasis Updater CE": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Computer with Innioasis Updater installed": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Confirm and wait": {
@@ -332044,12 +332075,12 @@
   },
   "Could not load notices feed.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Could not load the latest manifest — the generator still works offline.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Credits": {
@@ -332059,7 +332090,7 @@
   },
   "Cristian Plaza · Rockbox on the Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Custom Firmware": {
@@ -332079,12 +332110,12 @@
   },
   "Dammit Jeff · Rockbox and Updater CE": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Daniel T. Gaming · Updater and Rockbox": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Dark": {
@@ -332099,7 +332130,7 @@
   },
   "Developer · general player use": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Deze pagina is ook beschikbaar in het Nederlands.": {
@@ -332149,7 +332180,7 @@
   },
   "Download Innioasis Updater CE for Windows, macOS, or Linux.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Download ZIP": {
@@ -332164,17 +332195,17 @@
   },
   "Download for Linux": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Download for Windows": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Download for Windows ARM64": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Download preparation failed, using the original release:": {
@@ -332194,7 +332225,7 @@
   },
   "Draft": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Editorial standards, team background, and independence disclosure for the Innioasis Updater project.": {
@@ -332222,6 +332253,11 @@
    "pages": 17,
    "script": true
   },
+  "Every published release of": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Every release here is built in evenings and weekends. A small donation buys more of that time.": {
    "n": 1,
    "pages": 17,
@@ -332229,12 +332265,12 @@
   },
   "Every software option in the Innioasis Firmware Archive, its author, its current version, its download URL and its portable packages.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Explore Themes Gallery →": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Extra donations fund future mirrors & development": {
@@ -332244,7 +332280,7 @@
   },
   "Extract the firmware ZIP": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Factory firmware restore packages and software updates for Innioasis A5 and Timmkoo A5 digital audio players.": {
@@ -332309,7 +332345,7 @@
   },
   "Fallback: Oops, unable to copy": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Files vanish when a hosting company shuts down. Donations keep the copies that rescued your player online.": {
@@ -332329,27 +332365,27 @@
   },
   "Firmware downloads for the Innioasis Y1, including stock software and custom builds.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Firmware downloads for the Innioasis Y2, including stock software and custom builds.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Firmware list": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Firmware list - every Innioasis and Timmkoo release": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Firmware release notes ·": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Firmware zip downloaded": {
@@ -332359,12 +332395,12 @@
   },
   "Flash an Innioasis Y1 or Y2 with SP Flash Tool": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Flash the player": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Follow along with the setup guide to complete post-install setup on your Y1.": {
@@ -332414,7 +332450,7 @@
   },
   "Get and use Innioasis Updater CE to discover, install, or restore firmware on an Innioasis Y1 or Y2.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Get it in Updater": {
@@ -332427,14 +332463,19 @@
    "pages": 1,
    "script": true
   },
+  "GitHub releases": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Glad this guide helped you get set up!": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Go to Firmware Downloads": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Google Analytics": {
@@ -332464,7 +332505,7 @@
   },
   "Hide Crypto Options": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Hide crypto options · BTC, ETH, SHIB": {
@@ -332534,7 +332575,7 @@
   },
   "How to install Rockbox on your Innioasis Y1 or Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "How to install Rockbox on your Innioasis Y2": {
@@ -332574,7 +332615,7 @@
   },
   "INNIOASIS UPDATER CE · CREDITS": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "If 1 in 50 visitors bought a coffee, we'd cover a test player": {
@@ -332674,27 +332715,27 @@
   },
   "In Updater CE, select the model printed on your player, then select the software or stock restore package for that model.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Inniclassic firmware for Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Inniclassic firmware for Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Inniclassic for Innioasis Y1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Inniclassic for Innioasis Y2": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Inniclassic on Innioasis Y1 Linux": {
@@ -332734,12 +332775,12 @@
   },
   "Innioasis Community": {
    "n": 1,
-   "pages": 416,
+   "pages": 444,
    "script": true
   },
   "Innioasis Firmware Archive": {
    "n": 1,
-   "pages": 229,
+   "pages": 253,
    "script": true
   },
   "Innioasis G1 factory reset": {
@@ -332844,7 +332885,7 @@
   },
   "Innioasis Y1 Firmware Downloads and Custom ROMs": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Innioasis Y1 Scroll Wheel Not Working After Update | Innioasis Firmware Archive": {
@@ -332879,7 +332920,7 @@
   },
   "Innioasis Y2 Firmware Downloads and Custom ROMs": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Innioasis Y2 Scroll Wheel Not Working After Update | Innioasis Firmware Archive": {
@@ -332909,27 +332950,27 @@
   },
   "Innioasis and Timmkoo Firmware Archive": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Innioasis and Timmkoo firmware by software and model": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Innioasis and Timmkoo software by model": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Innioasis firmware releases": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Innioasis player": {
    "n": 1,
-   "pages": 70,
+   "pages": 74,
    "script": true
   },
   "Inside the .rockbox folder on the MicroSD card, in its themes folder. Copy the theme's folder there, then pick it in the player's theme settings.": {
@@ -332939,17 +332980,17 @@
   },
   "Install Better-Y on Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install Inniclassic on Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install Inniclassic on Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install JJ Launcher on Innioasis Y1": {
@@ -332989,12 +333030,12 @@
   },
   "Install Rockbox firmware on Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install Rockbox firmware on Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install Rockbox on a Y1 with Innioasis Updater.": {
@@ -333014,7 +333055,7 @@
   },
   "Install Solar firmware on Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install Solar on a Y2 with Innioasis Updater.": {
@@ -333029,7 +333070,7 @@
   },
   "Install Y2Player on Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install at the prompt": {
@@ -333039,17 +333080,17 @@
   },
   "Install or restore firmware on your player": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install or restore the Y1 stock firmware with Innioasis Updater.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install or restore the Y2 stock firmware with Innioasis Updater.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Install the Y2 Rockbox build with Innioasis Updater.": {
@@ -333064,7 +333105,7 @@
   },
   "Is Rockbox for Y2 the same as Rockbox-Y2?": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "It is available for": {
@@ -333074,12 +333115,12 @@
   },
   "JJ Launcher for Innioasis Y1": {
    "n": 1,
-   "pages": 112,
+   "pages": 120,
    "script": true
   },
   "JJ Launcher for Innioasis Y2": {
    "n": 1,
-   "pages": 112,
+   "pages": 120,
    "script": true
   },
   "JJ Launcher on Innioasis Y1 Linux": {
@@ -333112,14 +333153,9 @@
    "pages": 1,
    "script": true
   },
-  "Join our Discord": {
-   "n": 1,
-   "pages": 1,
-   "script": true
-  },
   "Keaira’s Digital Archive · Rockbox": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Keep the way back": {
@@ -333134,7 +333170,7 @@
   },
   "Koensayr for Innioasis Y1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Koensayr on Innioasis Y1 Linux": {
@@ -333169,7 +333205,7 @@
   },
   "Linux Mode Setup": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Linux on ARM": {
@@ -333189,7 +333225,7 @@
   },
   "Load the matching scatter file": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Loading notices...": {
@@ -333204,22 +333240,27 @@
   },
   "Loading the notes from the project…": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Machine-readable release data for every catalogue repository, used by Updater CE when GitHub is unreachable.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Madmotchi · Original Software installation": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Manifest icon URL:": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
+   "script": true
+  },
+  "Match my PC's theme colours": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "MediaTek SoC Bootrom Flashing": {
@@ -333244,7 +333285,7 @@
   },
   "No commercial sponsorship recorded yet.": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "No company behind this, just one developer, a workbench and a donation page. Everything goes to running costs.": {
@@ -333254,7 +333295,7 @@
   },
   "No contributions recorded yet.": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "No matching languages found": {
@@ -333274,7 +333315,7 @@
   },
   "No post-install document is linked for this software.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "No proprietary driver is needed, but your user needs the udev permission rule for vendor ID 0e8d before Updater CE can open the player.": {
@@ -333293,6 +333334,11 @@
    "script": true
   },
   "No release with": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "No releases were found for": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -333344,7 +333390,7 @@
   },
   "No. Y1 and Y2 packages are separate. Select the correct model and never substitute a package from the other model.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "None of the": {
@@ -333359,7 +333405,7 @@
   },
   "Notices about": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Official factory restore firmware and software updates for the Innioasis G5 digital audio player.": {
@@ -333414,7 +333460,7 @@
   },
   "Open SP Flash Tool from the Updater install": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Open Settings": {
@@ -333539,7 +333585,7 @@
   },
   "Open-source cross-platform updater, brick recovery tool, and driver installer for Innioasis Y1 & Y2 hardware. Maintained by Ryan Specter.": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Or help for free with Honeygain (earn $3 by sharing 100MB of bandwidth)": {
@@ -333549,67 +333595,67 @@
   },
   "Original Software for Innioasis G1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Innioasis G3": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Innioasis G5": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Innioasis PR1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Innioasis R1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Innioasis Y1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Innioasis Y2": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Timmkoo Q3": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Timmkoo Q5": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software for Timmkoo SR1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Original Software on Innioasis G1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Original Software on Innioasis G3": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Original Software on Innioasis G5": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Original Software on Innioasis PR1 Linux": {
@@ -333689,17 +333735,17 @@
   },
   "Original Software on Timmkoo Q3": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Original Software on Timmkoo Q5": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Original Software on Timmkoo SR1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Original Software, custom ROMs & guides": {
@@ -333707,14 +333753,19 @@
    "pages": 1,
    "script": true
   },
+  "Original release file": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Original stock firmware for Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Original stock firmware for Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Overschakelen naar Nederlands": {
@@ -333724,7 +333775,7 @@
   },
   "Paid to Sipped when they sent in a pull request with a full redesign of the Firmware Archive and Updater site.": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Passa all'italiano": {
@@ -333739,7 +333790,7 @@
   },
   "Pick a project to read the notes for its released builds.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Player Updates and Firmware": {
@@ -333747,29 +333798,34 @@
    "pages": 1,
    "script": true
   },
+  "Portable build for your computer": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Portable package for Linux": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Portable package for Windows": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Portable package for macOS": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Post-install setup for": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Post-install setup ·": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Power off and connect the Y1 when Updater asks.": {
@@ -333784,7 +333840,7 @@
   },
   "Power the player off, connect USB when the tool is ready, and wait for the green check.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Preparing your download…": {
@@ -333794,12 +333850,12 @@
   },
   "Preserving and archiving all stock, legacy, and custom ROM firmware packages on high-bandwidth edge mirrors. Maintained by Ryan Specter.": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Preview XML is valid —": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Privacy settings": {
@@ -333824,7 +333880,7 @@
   },
   "Read more": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Read more →": {
@@ -333834,7 +333890,7 @@
   },
   "Read the current Solar release note for Y2.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Read the current release entry for Y2.": {
@@ -333859,7 +333915,7 @@
   },
   "Repository button clicked": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Restore Innioasis G1": {
@@ -334044,22 +334100,22 @@
   },
   "Rockbox firmware for Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Rockbox firmware for Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Rockbox for Y1, Rockbox-Y1 and rockbox-y1 all refer to the community Rockbox firmware for the Innioasis Y1.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Rockbox for Y2, Rockbox-Y2 and rockbox-y2 refer to the community Rockbox firmware port for the Innioasis Y2.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Rockbox on Innioasis": {
@@ -334104,7 +334160,7 @@
   },
   "Rockbox-Y1 for Innioasis Y1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Rockbox-Y2 ROM package": {
@@ -334114,7 +334170,7 @@
   },
   "Rockbox-Y2 for Innioasis Y2": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Rondo for Y1": {
@@ -334254,7 +334310,7 @@
   },
   "Select a stable release shown for that model and software.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Select a stable release shown for the": {
@@ -334279,7 +334335,7 @@
   },
   "Set Device Model to Y1.": {
    "n": 1,
-   "pages": 334,
+   "pages": 354,
    "script": true
   },
   "Set Device Model to Y2 and confirm JJ Launcher is listed.": {
@@ -334289,27 +334345,27 @@
   },
   "Set Device Model to Y2 and confirm Solar is listed.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Set Device Model to Y2.": {
    "n": 1,
-   "pages": 188,
+   "pages": 204,
    "script": true
   },
   "Set a GitHub repository URL and icon path to build the public icon URL.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Set up the SP Flash Tool bundled with Innioasis Updater, extract the firmware ZIP, load the scatter file, and flash a Y1 or Y2.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Setup on Mac": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Shiba Inu": {
@@ -334339,22 +334395,22 @@
   },
   "Solar firmware for Innioasis Y1": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Solar firmware for Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Solar for Innioasis Y1": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Solar for Innioasis Y2": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Solar on Innioasis Y1 Linux": {
@@ -334449,12 +334505,12 @@
   },
   "TMT m KGS сом TJS SM ZWL Z$ ERN Nfk DJF Fdj BIF FBu KMF CF MRU UM STN Db": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "TUXX Reviews · player use and Rockbox": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Ta strona jest dostępna również w języku polskim.": {
@@ -334479,7 +334535,7 @@
   },
   "That notice is no longer published. Here is everything that is current.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "That puts the": {
@@ -334489,12 +334545,12 @@
   },
   "The combined preview does not parse:": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The document viewer could not start.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The edition changes what this site offers, not just the language.": {
@@ -334504,22 +334560,22 @@
   },
   "The fetched manifest already has an XML problem, so the combined preview cannot parse. Your generated lines are valid on their own.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The generated lines are not valid XML:": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The icon must be a PNG, JPEG, WebP or SVG image.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The notes could not be fetched just now. Try again in a moment, or open the firmware list.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The price of a coffee or two keeps our download servers online this month.": {
@@ -334529,17 +334585,27 @@
   },
   "The project's file may have moved, or the browser could not reach it.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The release notes for this version could not be loaded.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "The release notes viewer could not start.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
+   "script": true
+  },
+  "The release reader could not load.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "The releases for": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "The servers behind the downloads are paid for out of pocket. A coffee keeps them online for the next owner.": {
@@ -334579,7 +334645,7 @@
   },
   "These instructions could not be loaded here.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "These projects are listed in": {
@@ -334604,7 +334670,7 @@
   },
   "This month's costs are covered - thank you!": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "This page is available in": {
@@ -334614,17 +334680,17 @@
   },
   "This project has no public releases yet.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "This release has no published notes yet.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "This week's costs are covered - thank you!": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "Thousands of downloads go out every month. Donations pay for the servers that deliver them.": {
@@ -334684,12 +334750,12 @@
   },
   "Today's costs are covered - thank you!": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "Top Supporter": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "Top Supporters": {
@@ -334699,7 +334765,7 @@
   },
   "Turn analytics on": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Type B Rockbox guide": {
@@ -334709,7 +334775,7 @@
   },
   "USB data cable": {
    "n": 1,
-   "pages": 114,
+   "pages": 126,
    "script": true
   },
   "Universal Flash Tool": {
@@ -334744,7 +334810,7 @@
   },
   "Use Innioasis Updater CE to install custom firmware or restore official stock firmware on Innioasis and Timmkoo players.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Use Innioasis Updater to restore Y2 stock firmware.": {
@@ -334762,24 +334828,29 @@
    "pages": 1,
    "script": true
   },
+  "Use the site default": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Version details and downloads for this firmware": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "View Firmware Archive →": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "View on GitHub": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Visit Updater Website →": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Wait for the success message, then disconnect and start the player.": {
@@ -334789,7 +334860,7 @@
   },
   "Waiting for supporters to appear.": {
    "n": 1,
-   "pages": 77,
+   "pages": 85,
    "script": true
   },
   "We donated": {
@@ -334799,7 +334870,7 @@
   },
   "We rely on your donations to keep running. Donate now": {
    "n": 1,
-   "pages": 93,
+   "pages": 101,
    "script": true
   },
   "Weekly Running Costs": {
@@ -334809,7 +334880,7 @@
   },
   "Where can I find stock firmware or original restore packages to unbrick my player?": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Where do Rockbox-Y1 themes go on the card?": {
@@ -334819,7 +334890,7 @@
   },
   "Which devices does the Innioasis Firmware Archive host firmwares for?": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Why Better-Y is Type A only": {
@@ -334834,12 +334905,12 @@
   },
   "Why Rockbox for your Innioasis Y1 or Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Why Solar for your Innioasis Y1 or Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Why does a Rockbox-Y1 theme look wrong after installing?": {
@@ -334859,7 +334930,7 @@
   },
   "XML parse error": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Y1 stock firmware older than 3.0.7 and nightly builds are hidden by default. Tick to include them.": {
@@ -334869,12 +334940,12 @@
   },
   "Y2Player firmware for Innioasis Y2": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Y2Player for Innioasis Y2": {
    "n": 1,
-   "pages": 76,
+   "pages": 84,
    "script": true
   },
   "Y2Player on Innioasis Y2 Linux": {
@@ -334904,17 +334975,17 @@
   },
   "Yes. Rockbox, Rockbox-Y1, Rockbox for Y1 and rockbox-y1 all refer to the community Rockbox firmware for the Innioasis Y1.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Yes. Rockbox, Rockbox-Y2, Rockbox for Y2 and rockbox-y2 all refer to the community Rockbox port for the Innioasis Y2.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Yes. Use the same model-matched Updater CE flow and choose Original Software instead of the community project.": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "You can still download the file now and copy it to a computer.": {
@@ -334929,7 +335000,7 @@
   },
   "Your Firmware": {
    "n": 1,
-   "pages": 38,
+   "pages": 42,
    "script": true
   },
   "Zu Deutsch wechseln": {

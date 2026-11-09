@@ -1,7 +1,7 @@
 {
- "count": 6222,
+ "count": 6223,
  "dir": "ltr",
- "generated": "2026-11-09T15:09:47+00:00",
+ "generated": "2026-11-09T23:03:30+00:00",
  "locale": "tr",
  "name": "Turkish",
  "native": "Türkçe",
@@ -5670,6 +5670,7 @@
   "developers in release": "sürümdeki geliştiriciler",
   "device": "cihaz",
   "directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.": "dizin, Y1 ve Y2 donanım, aygıt yazılımı, temalar ve uygulamalar üzerinde çalışan aracılar için kaynak temelli bir bilgi tabanıdır. Her beceri, iddiaların geldiği proje dosyalarını adlandırır, böylece aracı, cihazı değiştirmeden önce bir gerçeği kontrol edebilir.",
+  "docs/validation/Y2-CPU-FINAL-FIX02-PHYSICAL-QUALIFICATION.md": "docs/validation/Y2-CPU-FINAL-FIX02-PHYSICAL-QALIFICATION.md",
   "docs/validation/Y2-STORAGE-CEILING.md": "docs/validation/Y2-DEPOLAMA-TAVAN.md",
   "does not uninstall Rockbox and does not touch your music — the folder holds settings, themes, and caches, and is rebuilt automatically. If you want to keep your themes, copy the folder out of": "Rockbox dosyasını kaldırmaz ve müziğinize dokunmaz; klasör; ayarları, temaları ve önbellekleri barındırır ve otomatik olarak yeniden oluşturulur. Temalarınızı korumak istiyorsanız klasörü kopyalayın.",
   "doitall · JJ Launcher install and troubleshooting": "doitall · JJ Launcher yükleme ve sorun giderme",
