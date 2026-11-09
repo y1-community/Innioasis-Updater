@@ -362,7 +362,10 @@
       }
     }
 
-    var isSameHost = url.hostname === window.location.hostname;
+    /* Origin, not hostname: a dev server on port 8081 and the main site on
+       8080 are two sites, and the handoff has to reach the other one there
+       too. On the real domains the two tests are the same. */
+    var isSameHost = url.origin === window.location.origin;
     var isSubdomain = /(^|\.)innioasis\.app$/i.test(url.hostname) || url.hostname === "localhost" || url.hostname === "127.0.0.1";
     if (!isSameHost && !isSubdomain) return raw;
 
