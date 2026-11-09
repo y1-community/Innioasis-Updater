@@ -221,17 +221,18 @@ body.site-themes-app code { padding: .1em .3em; border-radius: 4px; background: 
 
 .lumen-home { min-height: 100vh; }
 .lumen-hero, .lumen-section { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; }
-.lumen-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); align-items: start; gap: clamp(1.5rem, 3.5vw, 3.5rem); min-height: min(600px, calc(100vh - 58px)); padding: var(--lumen-space-8) 0; }
+.lumen-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 260px); align-items: center; gap: clamp(1.5rem, 3.5vw, 3rem); min-height: auto; padding: clamp(1.75rem, 3.5vw, 2.75rem) 0 clamp(0.75rem, 1.5vw, 1.25rem); }
 .lumen-hero > * { min-width: 0; }
 .lumen-kicker { margin: 0 0 .8rem; color: var(--lumen-accent); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .lumen-hero h1 { margin: 0; max-width: 100%; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(2.4rem, 5.2vw, 4.4rem) * var(--lumen-font-scale, 1)); line-height: 1.05; letter-spacing: -.035em; overflow-wrap: break-word; }
 .lumen-hero h1 em { color: var(--lumen-accent); font-style: normal; }
 .lumen-hero-lead { max-width: 52ch; margin: var(--lumen-space-5) 0 0; color: var(--lumen-muted); font-size: calc(clamp(1rem, 1.8vw, 1.2rem) * var(--lumen-font-scale, 1)); line-height: 1.55; overflow-wrap: break-word; }
 .lumen-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: var(--lumen-space-6); }
-.lumen-hero-art { position: relative; width: 100%; max-width: 340px; min-width: 0; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--lumen-line); border-radius: 36% 64% 48% 52% / 45% 38% 62% 55%; background: radial-gradient(circle at 55% 36%, var(--lumen-accent-wash), transparent 49%), var(--lumen-panel); overflow: visible; }
+.lumen-hero-art { position: relative; width: 100%; max-width: 250px; min-width: 0; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--lumen-line); border-radius: 36% 64% 48% 52% / 45% 38% 62% 55%; background: radial-gradient(circle at 55% 36%, var(--lumen-accent-wash), transparent 49%), var(--lumen-panel); overflow: visible; }
 .lumen-hero-art::after { content: ""; position: absolute; inset: 12%; z-index: 0; border: 1px solid var(--lumen-line); border-radius: 50%; transform: rotate(-18deg); pointer-events: none; }
-.lumen-hero-art img { position: relative; z-index: 1; width: min(72%, 320px); max-width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; transform: translateX(4%); }
-.lumen-section { padding: var(--lumen-space-8) 0; }
+.lumen-hero-art img { position: relative; z-index: 1; width: min(72%, 210px); max-width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; transform: translateX(4%); }
+.lumen-section { padding: clamp(2rem, 4vw, 3.5rem) 0; }
+.lumen-hero + .lumen-section { padding-top: clamp(1rem, 2vw, 1.75rem); }
 .lumen-section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--lumen-space-5); margin-bottom: var(--lumen-space-5); }
 /* Section titles run on one line whenever the viewport allows; the wrap
    cap was removed so headings like "Using Innioasis Updater" are not
