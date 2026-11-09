@@ -285,18 +285,26 @@
 
   /* The accent the header picked (or the app handed over), read from the same
      places the shell writes it, so cross-site links can carry it. */
+  function readAccentValue(value) {
+    return value && /^#[0-9a-f]{6}$/i.test(value) ? value : null;
+  }
+
   function getActiveAccent() {
     try {
+      /* The colour on this page, then the cookie the other Innioasis site can
+         read. This origin's own storage is last: it can still hold a colour
+         from before the shared accent was updated. */
       if (typeof window.y1GetAccent === "function") {
-        var live = window.y1GetAccent();
+        var live = readAccentValue(window.y1GetAccent());
         if (live) return live;
       }
-      var stored = window.localStorage.getItem("lumen-accent");
-      if (stored && /^#[0-9a-f]{6}$/i.test(stored)) return stored;
-      var cookie = getSharedCookie("innioasis-accent");
-      if (cookie && /^#[0-9a-f]{6}$/i.test(cookie)) return cookie;
-      var attr = document.documentElement && document.documentElement.getAttribute("data-accent");
-      if (attr && /^#[0-9a-f]{6}$/i.test(attr)) return attr;
+      var painted = document.documentElement && document.documentElement.getAttribute("data-accent");
+      painted = readAccentValue(painted);
+      if (painted) return painted;
+      var cookie = readAccentValue(getSharedCookie("innioasis-accent"));
+      if (cookie) return cookie;
+      var stored = readAccentValue(window.localStorage.getItem("lumen-accent"));
+      if (stored) return stored;
     } catch (_) {}
     return null;
   }
