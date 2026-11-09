@@ -759,6 +759,65 @@
         applyAccent(accentRead(ACCENT_KEY, ACCENT_COOKIE), false);
     }
 
+    var pickerHsv = { h: 220, s: 0.72, v: 1 };
+
+    function hexToHsv(hex) {
+        var n = normalizeAccent(hex);
+        if (!n) return null;
+        var r = parseInt(n.slice(1, 3), 16) / 255;
+        var g = parseInt(n.slice(3, 5), 16) / 255;
+        var b = parseInt(n.slice(5, 7), 16) / 255;
+        var max = Math.max(r, g, b);
+        var min = Math.min(r, g, b);
+        var d = max - min;
+        var h = 0;
+        if (d) {
+            if (max === r) h = ((g - b) / d) % 6;
+            else if (max === g) h = (b - r) / d + 2;
+            else h = (r - g) / d + 4;
+            h *= 60;
+            if (h < 0) h += 360;
+        }
+        return { h: h, s: max ? d / max : 0, v: max };
+    }
+
+    function hsvToHex(h, s, v) {
+        var c = v * s;
+        var x = c * (1 - Math.abs((h / 60) % 2 - 1));
+        var m = v - c;
+        var r = 0;
+        var g = 0;
+        var b = 0;
+        if (h < 60) { r = c; g = x; }
+        else if (h < 120) { r = x; g = c; }
+        else if (h < 180) { g = c; b = x; }
+        else if (h < 240) { g = x; b = c; }
+        else if (h < 300) { r = x; b = c; }
+        else { r = c; b = x; }
+        function byte(channel) {
+            var value = Math.max(0, Math.min(255, Math.round((channel + m) * 255)));
+            var text = value.toString(16);
+            return text.length < 2 ? "0" + text : text;
+        }
+        return "#" + byte(r) + byte(g) + byte(b);
+    }
+
+    function paintSpectrum(hex) {
+        var hsv = hexToHsv(hex || currentAccent() || "#4f8cff");
+        if (!hsv) return;
+        pickerHsv = hsv;
+        var pad = document.getElementById("lumen-accent-pad");
+        var thumb = document.getElementById("lumen-accent-pad-thumb");
+        var hue = document.getElementById("lumen-accent-hue");
+        if (pad) pad.style.setProperty("--hue", hsvToHex(hsv.h, 1, 1));
+        if (thumb) {
+            thumb.style.left = (hsv.s * 100) + "%";
+            thumb.style.top = ((1 - hsv.v) * 100) + "%";
+            thumb.style.background = normalizeAccent(hex) || hsvToHex(hsv.h, hsv.s, hsv.v);
+        }
+        if (hue && document.activeElement !== hue) hue.value = String(Math.round(hsv.h));
+    }
+
     function accentPickerMarkup() {
         var swatches = "";
         for (var i = 0; i < ACCENT_SWATCHES.length; i++) {
@@ -773,6 +832,10 @@
             '</button>' +
             '<div class="lumen-accent-tray" id="lumen-accent-tray" hidden>' +
             '<p class="lumen-accent-heading">Accent colour</p>' +
+            '<div class="lumen-accent-pad" id="lumen-accent-pad" role="slider" aria-label="Saturation and brightness" aria-valuemin="0" aria-valuemax="100">' +
+            '<span class="lumen-accent-pad-thumb" id="lumen-accent-pad-thumb"></span></div>' +
+            '<label class="lumen-accent-row">Hue' +
+            '<input type="range" id="lumen-accent-hue" class="lumen-accent-hue" min="0" max="360" step="1" value="220" aria-label="Hue"></label>' +
             '<label class="lumen-accent-row">Hex' +
             '<input type="text" id="lumen-accent-hex" class="lumen-accent-hex" value="" placeholder="#4f8cff" spellcheck="false" autocapitalize="off" maxlength="9" aria-label="Accent hex code" inputmode="text"></label>' +
             '<label class="lumen-accent-row">' +
@@ -822,6 +885,7 @@
         }
         var reset = document.getElementById("lumen-accent-reset");
         if (reset) reset.disabled = !accent;
+        paintSpectrum(accent);
     }
 
     function wireAccentPicker() {
@@ -855,11 +919,29 @@
             });
         }
 
+        function placeTray() {
+            if (!tray || !toggle || tray.hidden) return;
+            if (tray.parentNode !== document.body) document.body.appendChild(tray);
+            var rect = toggle.getBoundingClientRect();
+            var width = tray.offsetWidth || 280;
+            var height = tray.offsetHeight || 360;
+            var left = rect.right - width;
+            if (left < 8) left = 8;
+            if (left + width > window.innerWidth - 8) left = Math.max(8, window.innerWidth - width - 8);
+            var top = rect.bottom + 8;
+            if (top + height > window.innerHeight - 8) top = Math.max(8, rect.top - height - 8);
+            tray.style.top = Math.round(top) + "px";
+            tray.style.left = Math.round(left) + "px";
+            tray.style.right = "auto";
+        }
         function setOpen(open) {
             if (!tray) return;
             tray.hidden = !open;
             if (toggle) toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            if (open) placeTray();
         }
+        window.addEventListener("resize", placeTray);
+        window.addEventListener("scroll", placeTray, true);
         if (toggle) {
             toggle.addEventListener("click", function (event) {
                 event.preventDefault();
@@ -890,6 +972,38 @@
                 if (event.key !== "Enter") return;
                 event.preventDefault();
                 commitHex();
+            });
+        }
+        var pad = document.getElementById("lumen-accent-pad");
+        var hue = document.getElementById("lumen-accent-hue");
+        function fromPad(event, persist) {
+            if (!pad) return;
+            var rect = pad.getBoundingClientRect();
+            pickerHsv.s = Math.min(1, Math.max(0, (event.clientX - rect.left) / Math.max(1, rect.width)));
+            pickerHsv.v = Math.min(1, Math.max(0, 1 - (event.clientY - rect.top) / Math.max(1, rect.height)));
+            var next = hsvToHex(pickerHsv.h, pickerHsv.s, pickerHsv.v);
+            if (persist) setMatchPcTheme(false);
+            applyAccent(next, persist);
+        }
+        if (pad) {
+            pad.addEventListener("pointerdown", function (event) {
+                if (pad.setPointerCapture) pad.setPointerCapture(event.pointerId);
+                fromPad(event, false);
+            });
+            pad.addEventListener("pointermove", function (event) {
+                if (pad.hasPointerCapture && !pad.hasPointerCapture(event.pointerId)) return;
+                fromPad(event, false);
+            });
+            pad.addEventListener("pointerup", function (event) { fromPad(event, true); });
+        }
+        if (hue) {
+            hue.addEventListener("input", function () {
+                pickerHsv.h = Number(hue.value) || 0;
+                applyAccent(hsvToHex(pickerHsv.h, pickerHsv.s, pickerHsv.v), false);
+            });
+            hue.addEventListener("change", function () {
+                setMatchPcTheme(false);
+                applyAccent(hsvToHex(pickerHsv.h, pickerHsv.s, pickerHsv.v), true);
             });
         }
         picker.addEventListener("click", function (event) {
