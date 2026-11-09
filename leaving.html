@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-lumen-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>You are leaving Innioasis - Innioasis</title>
+<link rel="stylesheet" href="tokens.css?v=20261110ink">
+<link rel="stylesheet" href="lumen.css?v=20261110ink">
+<link rel="stylesheet" href="site-theme.css?v=20261110ink">
+<style>
+  .interstitial-main { max-width: 34rem; margin: 0 auto; padding: 4rem 1.25rem 5rem; text-align: center; }
+  .interstitial-mark { display: inline-grid; place-items: center; width: 56px; height: 56px; margin-bottom: 1rem; border-radius: 50%; background: var(--lumen-accent-wash, rgba(79,140,255,.18)); color: var(--lumen-accent, #4f8cff); font-size: 1.5rem; }
+  .interstitial-main h1 { margin: 0 0 .6rem; font-size: clamp(1.6rem, 4vw, 2.1rem); }
+  .interstitial-main p { margin: 0 0 .9rem; color: var(--lumen-muted, #a8b0bf); line-height: 1.55; }
+  .interstitial-host { font-weight: 700; color: var(--lumen-text, #f3f5f9); word-break: break-all; }
+  .interstitial-actions { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.4rem; }
+</style>
+</head>
+<body class="site-themes-app" data-interstitial="leaving">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="interstitial-main">
+  <span class="interstitial-mark" aria-hidden="true">&#8599;</span>
+  <h1>You are leaving Innioasis</h1>
+  <p>This link opens <span class="interstitial-host" id="interstitial-host"></span>, a site we do not run. Your language, accent and privacy choices stay here.</p>
+  <div class="interstitial-actions">
+    <a id="interstitial-continue" class="lumen-button lumen-button--primary" href="#">Continue to the site</a>
+    <button id="interstitial-cancel" class="lumen-button lumen-button--secondary" type="button" onclick="history.length > 1 ? history.back() : location.assign(\"index.html\")">Stay on Innioasis</button>
+  </div>
+  <p id="interstitial-fallback" hidden>No destination was supplied. <a href="index.html">Return home</a>.</p>
+</main>
+<div id="footer-root"></div>
+<div id="support-toolbar-slot"></div>
+<script src="site-init.js?v=20261110ink" defer></script>
+<script src="nav.js?v=20261109accent" defer></script>
+<script src="site-locale.js?v=20261109live" defer></script>
+<script src="interstitial.js?v=20261110a" defer></script>
+</body>
+</html>

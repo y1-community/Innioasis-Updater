@@ -684,7 +684,7 @@
       brandIconHtml +
       '<span class="lumen-brand-title" id="lumen-brand-title">' + escapeHtml(activeTitle) + '</span>' +
       '</a>' +
-      '<button type="button" class="lumen-site-switcher-toggle" id="lumen-site-switcher-toggle" aria-expanded="false" aria-controls="lumen-site-switcher-tray" aria-label="Switch Innioasis site persona" title="Switch site">' +
+      '<button type="button" class="lumen-site-switcher-toggle" id="lumen-site-switcher-toggle" aria-expanded="false" aria-controls="lumen-site-switcher-tray" aria-label="Switch site" title="Switch site">' +
       '<svg class="lumen-site-switcher-glyph" viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/></svg>' +
       '</button>' +
       '</div>' +
@@ -705,7 +705,7 @@
       '<a href="' + escapeHtml(decorateMainSiteHref("/notices.html")) + '" class="lumen-notices-all-link">All notices &rarr;</a>' +
       '</div>' +
       '<div class="lumen-notices-tray-body" id="lumen-notices-tray-body">' +
-      '<p class="lumen-notices-empty">Loading notices...</p>' +
+      '<p class="lumen-notices-empty">Loading notices</p>' +
       '</div>' +
       '</div>' +
       '</div>' +
@@ -722,9 +722,14 @@
       '</nav>';
   }
 
-  /* One sticky header per page: the gallery bar wins where it exists. */
+  /* One sticky header, the same bar the gallery uses. */
   var stickyNav = root ? root.querySelector("nav") : null;
-  if (stickyNav && !document.querySelector(".gallery-topbar")) stickyNav.classList.add("site-sticky");
+  if (stickyNav) {
+    stickyNav.classList.add("site-sticky");
+    stickyNav.style.position = "sticky";
+    stickyNav.style.top = "0";
+    stickyNav.style.width = "100%";
+  }
 
   /* Site Switcher Dropdown Logic */
   var switcherToggle = document.getElementById("lumen-site-switcher-toggle");
@@ -1687,4 +1692,19 @@
     div.textContent = text == null ? "" : String(text);
     return div.innerHTML;
   }
+})();
+
+/* Outbound links go through leaving.html (or donate.html for a donation
+   host) so preferences travel and the visitor sees where they are going.
+   interstitial.js is loaded here rather than in every page's markup. */
+(function () {
+  try {
+    if (document.body && document.body.hasAttribute("data-interstitial")) return;
+    var me = document.querySelector('script[src*="nav.js"]');
+    var base = me && me.src ? me.src.replace(/[^\/]*$/, "") : "";
+    var s = document.createElement("script");
+    s.src = base + "interstitial.js?v=20261110a";
+    s.defer = true;
+    document.head.appendChild(s);
+  } catch (_) {}
 })();
