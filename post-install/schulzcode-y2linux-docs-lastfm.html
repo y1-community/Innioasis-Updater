@@ -39,7 +39,7 @@
   <meta name="twitter:description" content="Last.fm scrobbling Since Y2Linux 1.0 Beta 7.7 the Reborn player can send the songs you listen to to your Last.fm https://www.last.fm profile "scrobbling", straight from t">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
-  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../lumen.css?v=20261109live">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
@@ -85,9 +85,9 @@
 <p><a href="https://www.last.fm/api/account/create" target="_blank" rel="noopener noreferrer">https://www.last.fm/api/account/create</a> (use your own application name), then put the key and secret into <code>~/.local/share/y2linux/lastfm-api.json</code> as <code>{&quot;api_key&quot;: &quot;…&quot;, &quot;shared_secret&quot;: &quot;…&quot;}</code> and run <code>chmod 600</code> on it. The build checks the format and the permissions and installs it as <code>/usr/share/reborn/lastfm-api.json</code> (root, mode 0600). Never commit this file. Details: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2FBUILDING.md">BUILDING</a>; design and evidence: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fplanning%2FLASTFM-SCROBBLE-PLAN.md">Last.fm plan</a> and the <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-7.7.md">Beta 7.7</a> and <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-7.8.md">Beta 7.8</a> reports. The code is in Y2Reborn: <code>crates/reborn-core/src/scrobble.rs</code> (rules), <code>crates/reborn-platform/src/scrobble.rs</code> (queue and log), <code>crates/reborn-platform/src/lastfm.rs</code> (Last.fm API) and <code>app/reborn/src/scrobbling.rs</code>.</p></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../portable-zip-links.js?v=20261109live" defer></script>
 <script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-locale.js?v=20261109live" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>
