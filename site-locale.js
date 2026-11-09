@@ -338,7 +338,10 @@
 
         if (!state.strings) return value;
         var translated = state.strings[core];
-        if (translated === undefined) return value;
+        if (translated === undefined) {
+            noteMissingSource(core);
+            return value;
+        }
         if (typeof translated === "string") {
             if (translated.indexOf("Spectre") !== -1) {
                 translated = translated.replace(/\bRyan Spectre\b/g, "Ryan Specter").replace(/\bSpectre\b/g, "Specter");
@@ -349,6 +352,153 @@
         }
         return parts[1] + translated + parts[3];
     }
+
+    /* ---- Missing-source collector ---------------------------------------
+       A catalog is never complete on the day a page ships, so this is the
+       feedback loop that closes the gap instead of waiting for someone to
+       notice: when a non-English page finds no catalog entry for a source
+       string, the reader sees English, and that string is collected.
+
+       Batches go to /i18n-missing, where a translation run picks them up
+       (scripts/i18n/drain_missing.py). Only strings from our own source
+       catalogue survive that run, so author-written theme and app
+       descriptions are dropped rather than translated.
+
+       Nothing about the reader is sent: no identifier, no typed text, and the
+       endpoint keeps no IP or user agent. The queue is deduplicated, capped,
+       honours the analytics choice and Do Not Track, and is attempted once per
+       page so a broken endpoint cannot become a request loop. */
+    var MISSING_KEY = "innioasis-i18n-misses";
+    var MISSING_ENDPOINT = "/i18n-missing";
+    var MISSING_MAX_QUEUE = 200;
+    var MISSING_MAX_SEND = 40;
+    var MISSING_MAX_TEXT = 300;
+    var missingQueue = null;
+    var missingSent = 0;
+    var missingTimer = null;
+
+    function missingRead() {
+        if (missingQueue) return missingQueue;
+        missingQueue = [];
+        try {
+            var raw = global.localStorage.getItem(MISSING_KEY);
+            var parsed = raw ? JSON.parse(raw) : null;
+            if (parsed && parsed.length) missingQueue = parsed.slice(0, MISSING_MAX_QUEUE);
+        } catch (_) {}
+        return missingQueue;
+    }
+
+    function missingWrite() {
+        try {
+            global.localStorage.setItem(MISSING_KEY, JSON.stringify(missingQueue.slice(0, MISSING_MAX_QUEUE)));
+        } catch (_) {}
+    }
+
+    /* English pages have nothing to collect, and neither do the English
+       regional variants: they inherit the source by design. */
+    function missingAllowed() {
+        var base = baseOfLocale(state.locale || "");
+        if (!base || base.toLowerCase() === DEFAULT_LOCALE) return false;
+        try {
+            if (
+                global.INNIOASIS_PRIVACY &&
+                typeof global.INNIOASIS_PRIVACY.allows === "function" &&
+                !global.INNIOASIS_PRIVACY.allows("analytics")
+            ) {
+                return false;
+            }
+        } catch (_) {}
+        try {
+            if (navigator.doNotTrack === "1" || navigator.globalPrivacyControl === true) return false;
+        } catch (_) {}
+        return true;
+    }
+
+    function noteMissingSource(text) {
+        var value = normalise(text);
+        if (!value || value.length < 4 || value.length > MISSING_MAX_TEXT) return;
+        if (!/[A-Za-z]{2}/.test(value)) return;
+        if (!missingAllowed()) return;
+        /* A language switch re-translates text that is already in the target
+           language; that copy is not a missing source. */
+        if (catalogHasValue(value)) return;
+        var queue = missingRead();
+        if (queue.indexOf(value) !== -1) return;
+        if (queue.length >= MISSING_MAX_QUEUE) return;
+        queue.push(value);
+        missingWrite();
+        if (!missingTimer && typeof setTimeout === "function") {
+            missingTimer = setTimeout(function () {
+                missingTimer = null;
+                flushMissingSources(false);
+            }, 12000);
+        }
+    }
+
+    function flushMissingSources(useBeacon) {
+        var queue = missingRead();
+        if (!queue.length || !missingAllowed()) return;
+        if (missingSent >= MISSING_MAX_QUEUE) return;
+        var batch = queue.slice(0, MISSING_MAX_SEND);
+        var body = JSON.stringify({
+            locale: state.locale,
+            base: baseOfLocale(state.locale || ""),
+            page: (global.location && global.location.pathname) || "/",
+            strings: batch
+        });
+
+        function done() {
+            missingSent += batch.length;
+            var sent = {};
+            for (var i = 0; i < batch.length; i += 1) sent[batch[i]] = 1;
+            missingQueue = missingRead().filter(function (item) {
+                return !sent[item];
+            });
+            missingWrite();
+        }
+
+        try {
+            if (
+                useBeacon &&
+                navigator.sendBeacon &&
+                navigator.sendBeacon(MISSING_ENDPOINT, new Blob([body], { type: "application/json" }))
+            ) {
+                done();
+                return;
+            }
+        } catch (_) {}
+        try {
+            if (global.fetch) {
+                global
+                    .fetch(MISSING_ENDPOINT, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: body,
+                        keepalive: true,
+                        mode: "cors"
+                    })
+                    .then(done)
+                    .catch(function () {});
+                return;
+            }
+        } catch (_) {}
+        try {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", MISSING_ENDPOINT, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = done;
+            xhr.send(body);
+        } catch (_) {}
+    }
+
+    try {
+        global.addEventListener("pagehide", function () {
+            flushMissingSources(true);
+        });
+        global.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === "hidden") flushMissingSources(true);
+        });
+    } catch (_) {}
 
     /* Values this locale already has from its catalog. After the catalog pass a
        node holds the translated value, not the English key, so looking only for
