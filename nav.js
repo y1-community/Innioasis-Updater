@@ -326,30 +326,41 @@
     }
 
     var isSameHost = url.hostname === window.location.hostname;
-    var isSubdomain = /(^|\.)innioasis\.app$/i.test(url.hostname);
+    var isSubdomain = /(^|\.)innioasis\.app$/i.test(url.hostname) || url.hostname === "localhost" || url.hostname === "127.0.0.1";
     if (!isSameHost && !isSubdomain) return raw;
 
-    // 1. Donations preference
-    if (isY1DonationsDisabled()) {
-      url.searchParams.set("donations", "false");
-    } else if (donationsParam() === true) {
-      url.searchParams.set("donations", "true");
+    /* Clean all preference parameters from link targets so users share clean, scary-free URLs */
+    var prefKeys = [
+      "donations",
+      "privacy",
+      "privacy_analytics",
+      "privacy_feedback",
+      "privacy_nightly",
+      "site_theme",
+      "accessibility",
+      "a11y",
+      "fontSize",
+      "fontScale",
+      "font-scale",
+      "fs",
+      "lumen-font-scale",
+      "lang"
+    ];
+    prefKeys.forEach(function (k) {
+      url.searchParams.delete(k);
+    });
+    if (url.searchParams.has("theme")) {
+      var tVal = (url.searchParams.get("theme") || "").toLowerCase().trim();
+      var isSiteTheme = ["auto", "dark", "high-contrast", "2077", "light"].indexOf(tVal) >= 0;
+      var isThemeGalleryDetail = /theme(?:_[a-zA-Z0-9_-]+)?\.html$/i.test(url.pathname);
+      if (isSiteTheme || !isThemeGalleryDetail) {
+        url.searchParams.delete("theme");
+      }
     }
 
-    // 2. Privacy preference
-    var priv = getPrivacyParam();
-    if (priv) {
-      url.searchParams.set("privacy", priv);
-    }
-    var privAn = getPrivacyAnalyticsParam();
-    if (privAn) {
-      url.searchParams.set("privacy_analytics", privAn);
-    }
-
-    // 3. Language preference
+    /* Language preference: route to pre-rendered static path if appropriate without query bloat */
     var loc = getActiveLocale();
     if (loc && loc !== "en") {
-      url.searchParams.set("lang", loc);
       var path = url.pathname;
       var dir = "";
       var name = "";
@@ -371,32 +382,28 @@
       }
     }
 
-    // 4. Theme preference
-    var curTheme = getActiveTheme();
-    if (curTheme) {
-      if (url.searchParams.has("theme") && /theme(?:_[a-zA-Z0-9_-]+)?\.html$/i.test(url.pathname)) {
-        url.searchParams.set("site_theme", curTheme);
-      } else {
-        url.searchParams.set("theme", curTheme);
-      }
-    }
-
-    // 5. Accessibility preference
-    var curA11y = getActiveAccessibility();
-    if (curA11y) {
-      url.searchParams.set("accessibility", curA11y);
-    }
-
-    // 6. Accessibility font size preference
-    var curFs = getActiveFontScale();
-    if (curFs && curFs !== 1) {
-      url.searchParams.set("fontSize", String(curFs));
-    }
-
+    /* Same-origin links stay clean. A link to the other Innioasis site
+       carries the visitor's appearance and text size so the destination
+       paints correctly before its own shell has read storage. */
     if (!isSameHost || isAbsoluteInput) {
+      if (url.origin !== window.location.origin) {
+        var curTheme = getActiveTheme();
+        if (curTheme) {
+          if (/theme(?:_[a-zA-Z0-9_-]+)?\.html$/i.test(url.pathname)) {
+            url.searchParams.set("site_theme", curTheme);
+          } else {
+            url.searchParams.set("theme", curTheme);
+          }
+        }
+        var curA11y = getActiveAccessibility();
+        if (curA11y) url.searchParams.set("accessibility", curA11y);
+        var curFs = getActiveFontScale();
+        if (curFs && curFs !== 0.8) url.searchParams.set("fontSize", String(curFs));
+      }
       return url.toString();
     }
-    return url.pathname + url.search + url.hash;
+    var query = url.searchParams.toString();
+    return url.pathname + (query ? ("?" + query) : "") + url.hash;
   }
 
   function handleLinkClick(event) {
@@ -555,10 +562,13 @@
       return item.id !== persona;
     })
     .map(function (item) {
-      var href = item.external ? decorateCrossDomainHref(item.href) : item.href;
+      var crossSite = !!item.external || isThemesSite;
+      var href = item.external
+        ? decorateCrossDomainHref(item.href)
+        : (isThemesSite ? decorateMainSiteHref(item.href) : item.href);
       return (
         '<li>' +
-        '<a class="lumen-site-switcher-item" href="' + escapeHtml(href) + '"' + (item.external ? ' data-cross-site-link="1"' : '') + '>' +
+        '<a class="lumen-site-switcher-item" href="' + escapeHtml(href) + '"' + (crossSite ? ' data-cross-site-link="1"' : '') + '>' +
         '<span class="lumen-site-switcher-item-icon">' + item.icon + '</span>' +
         '<span class="lumen-site-switcher-item-copy">' +
         '<strong>' + escapeHtml(item.title) + '</strong>' +
@@ -662,6 +672,31 @@
     }
     switcherTray.hidden = !open;
     switcherToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) adjustSwitcherTrayPosition();
+  }
+
+  /* The switcher tray is absolutely positioned inside the sticky nav. Place
+     it from the toggle's real rectangle so a long translated brand name can
+     never push the tray past the viewport edge. */
+  function adjustSwitcherTrayPosition() {
+    if (!switcherTray || !switcherToggle) return;
+    var navEl = switcherToggle.closest("nav");
+    if (!navEl) return;
+    var navRect = navEl.getBoundingClientRect();
+    var rect = switcherToggle.getBoundingClientRect();
+    var viewportW = window.innerWidth || document.documentElement.clientWidth || 320;
+    var width = Math.min(352, viewportW - 24);
+    var left = Math.round(rect.left - navRect.left - 12);
+    left = Math.max(8, Math.min(left, navEl.clientWidth - width - 8));
+    var top = Math.round(rect.bottom - navRect.top + 8);
+    switcherTray.style.position = "absolute";
+    switcherTray.style.top = top + "px";
+    switcherTray.style.left = left + "px";
+    switcherTray.style.right = "auto";
+    switcherTray.style.width = width + "px";
+    switcherTray.style.maxWidth = "calc(100vw - 24px)";
+    switcherTray.style.maxHeight = Math.max(160, window.innerHeight - rect.bottom - 24) + "px";
+    switcherTray.style.overflowY = "auto";
   }
   if (switcherToggle && switcherTray) {
     switcherToggle.addEventListener("click", function (e) {
@@ -677,6 +712,13 @@
   var noticesTray = document.getElementById("lumen-notices-tray");
   var noticesBadge = document.getElementById("lumen-notices-badge");
   var noticesBody = document.getElementById("lumen-notices-tray-body");
+
+  /* The nav uses backdrop-filter, which makes it the containing block for
+     position: fixed descendants. Move the notices tray to the body so its
+     viewport coordinates (set below) mean what they say. */
+  if (noticesTray && noticesTray.parentNode !== document.body) {
+    document.body.appendChild(noticesTray);
+  }
 
   function adjustNoticesTrayPosition() {
     if (!noticesTray || !noticesBtn) return;
@@ -741,9 +783,11 @@
 
   window.addEventListener("resize", function () {
     if (noticesTray && !noticesTray.hidden) adjustNoticesTrayPosition();
+    if (switcherTray && !switcherTray.hidden) adjustSwitcherTrayPosition();
   });
   window.addEventListener("scroll", function () {
     if (noticesTray && !noticesTray.hidden) adjustNoticesTrayPosition();
+    if (switcherTray && !switcherTray.hidden) adjustSwitcherTrayPosition();
   }, { passive: true });
 
   if (noticesBtn && noticesTray) {
@@ -1451,7 +1495,10 @@
     var styles = window.getComputedStyle(shell);
     var space = shell.clientWidth - (parseFloat(styles.paddingLeft) || 0) - (parseFloat(styles.paddingRight) || 0);
     var gaps = (parseFloat(styles.columnGap) || 0) * 2;
-    var needed = brand.getBoundingClientRect().width + tools.getBoundingClientRect().width + links.scrollWidth + gaps;
+    /* scrollWidth measures the intrinsic label widths even while the flex
+       row is squeezing the anchors, so translated strings that no longer fit
+       are caught instead of wrapping silently. */
+    var needed = brand.scrollWidth + tools.scrollWidth + links.scrollWidth + gaps;
     return needed <= space + 1;
   }
   function syncNavCompact() {
@@ -1475,6 +1522,18 @@
   window.addEventListener("resize", queueNavSync);
   window.addEventListener("orientationchange", queueNavSync);
   window.addEventListener("load", queueNavSync);
+  window.addEventListener("site-locale-ready", queueNavSync);
+  window.addEventListener("site-locale-change", queueNavSync);
+  window.addEventListener("y1-locale-change", queueNavSync);
+  /* Translations replace text nodes in place, which does not resize the
+     shell. Watch the header text too, so a longer locale still collapses. */
+  if (typeof window.MutationObserver === "function" && navShell) {
+    new window.MutationObserver(queueNavSync).observe(navShell, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  }
   if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === "function") {
     document.fonts.ready.then(queueNavSync, function () {});
   }

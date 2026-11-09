@@ -134,25 +134,39 @@
             var p = new URLSearchParams(search);
             raw = p.get("fontSize") || p.get("fontScale") || p.get("font-scale") || p.get("fs") || p.get("lumen-font-scale");
         } catch (_) {}
-        var fontScale = 1;
-        var hasUrlScale = false;
+        var fontScale = 0.8;
+        var hasScale = false;
         if (raw) {
             var cleaned = String(raw).trim().replace("%", "");
             var val = parseFloat(cleaned);
             if (val > 10) val = val / 100;
             if (val >= 0.7 && val <= 1.6) {
                 fontScale = +(val.toFixed(2));
-                hasUrlScale = true;
+                hasScale = true;
+                try { global.localStorage.setItem("lumen-font-scale-default-80", "1"); } catch (_) {}
             }
         }
-        if (!hasUrlScale) {
+        if (!hasScale) {
             try {
                 var storedScale = parseFloat(global.localStorage.getItem("lumen-font-scale") || "");
-                if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = +(storedScale.toFixed(2));
+                if (storedScale >= 0.7 && storedScale <= 1.6) {
+                    if (storedScale === 1 && global.localStorage.getItem("lumen-font-scale-default-80") !== "1") {
+                        storedScale = 0.8;
+                        global.localStorage.setItem("lumen-font-scale-default-80", "1");
+                    }
+                    fontScale = +(storedScale.toFixed(2));
+                    hasScale = true;
+                }
             } catch (_) {}
-            if (fontScale === 1) {
-                var cookieScale = parseFloat(getSharedCookie("lumen-font-scale") || "");
-                if (cookieScale >= 0.7 && cookieScale <= 1.6) fontScale = +(cookieScale.toFixed(2));
+        }
+        if (!hasScale) {
+            var cookieScale = parseFloat(getSharedCookie("lumen-font-scale") || "");
+            if (cookieScale >= 0.7 && cookieScale <= 1.6) {
+                if (cookieScale === 1 && global.localStorage.getItem("lumen-font-scale-default-80") !== "1") {
+                    cookieScale = 0.8;
+                    try { global.localStorage.setItem("lumen-font-scale-default-80", "1"); } catch (_) {}
+                }
+                fontScale = +(cookieScale.toFixed(2));
             }
         }
         if (document.documentElement) {
@@ -412,7 +426,15 @@
                 "fontScale",
                 "font-scale",
                 "fs",
-                "lumen-font-scale"
+                "lumen-font-scale",
+                "utm_source",
+                "utm_medium",
+                "utm_campaign",
+                "utm_term",
+                "utm_content",
+                "ref",
+                "fbclid",
+                "gclid"
             ];
 
             if (params.has("theme")) {
@@ -441,6 +463,8 @@
     }
 
     global.y1ClearPreferencesFromUrl = clearPreferenceParamsFromUrl;
+    /* Run immediately synchronously so address bar transforms before first paint */
+    clearPreferenceParamsFromUrl();
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", clearPreferenceParamsFromUrl);
