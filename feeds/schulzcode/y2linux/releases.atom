@@ -4,7 +4,90 @@
   <title>Release notes from schulzcode/y2linux</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/schulzcode/y2linux/releases.atom"/>
-  <updated>2026-11-08T20:50:17Z</updated>
+  <updated>2026-11-08T22:50:06Z</updated>
+  <entry>
+    <id>tag:innioasis.app,2026:schulzcode/y2linux/baseline-228</id>
+    <updated>2026-11-08T22:50:06Z</updated>
+    <published>2026-11-08T22:50:06Z</published>
+    <title>Y2Linux 1.0 Beta 9.3.19</title>
+    <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-228"/>
+    <innioasis:tag_name>baseline-228</innioasis:tag_name>
+    <innioasis:prerelease>false</innioasis:prerelease>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/bootimg.img.gz" title="bootimg.img.gz" length="7539688" type="application/gzip" innioasis:download_count="14" innioasis:asset_id="725447744"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/manifest.json" title="manifest.json" length="4238" type="application/json" innioasis:download_count="22" innioasis:asset_id="725447741"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/manifest.sig" title="manifest.sig" length="64" type="application/pgp-signature" innioasis:download_count="22" innioasis:asset_id="725447780"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/recovery.img.gz" title="recovery.img.gz" length="7539705" type="application/gzip" innioasis:download_count="14" innioasis:asset_id="725447786"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51653922" type="application/gzip" innioasis:download_count="14" innioasis:asset_id="725447831"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="2" innioasis:asset_id="725447743"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.19-first-install.zip" length="67734753" type="application/zip" innioasis:download_count="8" innioasis:asset_id="725447740"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar" length="19312640" type="application/x-tar" innioasis:download_count="2" innioasis:asset_id="725447739"/>
+    <content type="text">**Y2Linux 1.0 Beta 9.3.19**: update notifications, if you want them.
+
+## What&#x27;s new
+- **Update Notifications**: Settings → System → Software Update → **Update Notifications**. Turn it on and the player tells you once when a new version is out, on whatever screen you are on. It&#x27;s off by default, so nothing changes if you&#x27;d rather not be told.
+
+## Fixed
+- **&quot;Software update available&quot; never showed**: the player kept checking for new versions, but the message only came if you happened to open Settings. With Update Notifications on, it now comes by itself, once for each new version.
+
+## Known issues
+- A charge-only USB cable only charges. If your computer doesn&#x27;t see the player, try a cable that transfers data with a phone.
+- Skins with their own fonts (Luna XP, Winamp and others) show boxes instead of Chinese, Japanese and Korean titles.
+- After a sleep, Bluetooth headphones reconnect within a few seconds of waking. Headphones that went back to a phone meanwhile must be picked again in Settings → Bluetooth.
+- WPA3-only Wi-Fi networks can&#x27;t be joined; a &quot;WPA2/WPA3 mixed&quot; setting on the router works.
+- Some players turned off by themselves during playback; the cause isn&#x27;t found yet.
+- Something wrong? Send an error report (Settings → System → Error Reports). **Restore Previous System** (Settings → System → About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.
+
+More details in plain words: **[Beta 9.3.19 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.19.md)**.
+
+&lt;!-- github-only --&gt;
+
+## Already running Y2Linux
+Settings → System → Software Update → **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings → About &amp; Updates → Check for Updates → **Update Now**.)
+
+## Install with the Innioasis Updater (easiest)
+The community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.
+
+1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.
+2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.
+3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.
+4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.
+
+Step-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.
+
+## Install with SP Flash Tool
+You need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.19-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).
+
+1. Unpack both.
+2. SP Flash Tool → **Download Only** → load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.
+3. Click Download and connect the switched-off Y2; wait for the green tick.
+4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.
+5. Connect the Y2 to the computer and **copy** (don&#x27;t move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.
+
+Full guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) · How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) · Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) · [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) · Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) · [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) · Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)
+
+## How it was tested
+On the developer&#x27;s player, a check result offering a newer version was placed while the Music screen showed: with the switch off no message came; with it on, a version already named stayed quiet and a new one was announced (screenshot). New tests cover when the message is shown, kept quiet or recorded. The platform&#x27;s full check, Reborn&#x27;s workspace tests and the tests of the release images passed. Installed by update on the developer&#x27;s player.
+
+## Files
+- `Y2Linux-1.0.0-beta.9.3.19-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).
+- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 15300).
+- `Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar` (licences, manifests, this project&#x27;s packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-228`. The speaker amplifier driver is Chris Hendrickson&#x27;s GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.
+- `SHA256SUMS` for the attached files.
+
+Beta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.
+
+&lt;!-- /github-only --&gt;
+
+&lt;!-- github-only --&gt;
+
+## Sources unchanged since an earlier release
+- [`Y2Linux-sources-third-party-2f565b901c03.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-sources-third-party-2f565b901c03.tar) (attached to `baseline-224`), SHA-256 `2f565b901c03b7e6dc431c7a48656a356e4687bc2844ec0724464ad5480c8f79`
+- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`
+- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`
+
+&lt;!-- /github-only --&gt;
+</content>
+  </entry>
   <entry>
     <id>tag:innioasis.app,2026:schulzcode/y2linux/baseline-227</id>
     <updated>2026-11-08T20:50:17Z</updated>
@@ -13,13 +96,13 @@
     <link rel="alternate" type="text/html" href="https://github.com/SchulzCode/Y2Linux/releases/tag/baseline-227"/>
     <innioasis:tag_name>baseline-227</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/bootimg.img.gz" title="bootimg.img.gz" length="7539745" type="application/gzip" innioasis:download_count="18" innioasis:asset_id="725157336"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/manifest.json" title="manifest.json" length="4240" type="application/json" innioasis:download_count="32" innioasis:asset_id="725157333"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/manifest.sig" title="manifest.sig" length="64" type="application/pgp-signature" innioasis:download_count="30" innioasis:asset_id="725157371"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/recovery.img.gz" title="recovery.img.gz" length="7539768" type="application/gzip" innioasis:download_count="19" innioasis:asset_id="725157375"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51660739" type="application/gzip" innioasis:download_count="18" innioasis:asset_id="725157409"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/bootimg.img.gz" title="bootimg.img.gz" length="7539745" type="application/gzip" innioasis:download_count="19" innioasis:asset_id="725157336"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/manifest.json" title="manifest.json" length="4240" type="application/json" innioasis:download_count="35" innioasis:asset_id="725157333"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/manifest.sig" title="manifest.sig" length="64" type="application/pgp-signature" innioasis:download_count="33" innioasis:asset_id="725157371"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/recovery.img.gz" title="recovery.img.gz" length="7539768" type="application/gzip" innioasis:download_count="20" innioasis:asset_id="725157375"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/rootfs.ext4.gz" title="rootfs.ext4.gz" length="51660739" type="application/gzip" innioasis:download_count="19" innioasis:asset_id="725157409"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/SHA256SUMS" title="SHA256SUMS" length="945" type="application/octet-stream" innioasis:download_count="2" innioasis:asset_id="725157335"/>
-    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.18-first-install.zip" length="67730309" type="application/zip" innioasis:download_count="5" innioasis:asset_id="725157331"/>
+    <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install.zip" title="Y2Linux-1.0.0-beta.9.3.18-first-install.zip" length="67730309" type="application/zip" innioasis:download_count="7" innioasis:asset_id="725157331"/>
     <link rel="enclosure" href="https://github.com/SchulzCode/Y2Linux/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-sources-buildroot-legal-info.tar" title="Y2Linux-1.0.0-beta.9.3.18-sources-buildroot-legal-info.tar" length="19312640" type="application/x-tar" innioasis:download_count="2" innioasis:asset_id="725157334"/>
     <content type="text">**Y2Linux 1.0 Beta 9.3.18**: USB that always reconnects, a new skin and quicker settings.
 

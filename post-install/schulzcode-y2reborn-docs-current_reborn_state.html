@@ -26,17 +26,17 @@
   <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current Reborn state on the Y2 - Innioasis Updater</title>
-  <meta name="description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.18 — Y2Linux 1.0 Beta 9.3.18 Baseline 227, 2026-11-08: Luna XP, bitrate, Cover Flow follows the skin published Published as">
+  <meta name="description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.19 — Y2Linux 1.0 Beta 9.3.19 Baseline 228, 2026-11-08: update notifications published Published as baseline-228 Reborn 520c4">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2reborn-docs-current_reborn_state.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta property="og:title" content="Current Reborn state on the Y2 - Innioasis Updater">
-  <meta property="og:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.18 — Y2Linux 1.0 Beta 9.3.18 Baseline 227, 2026-11-08: Luna XP, bitrate, Cover Flow follows the skin published Published as">
+  <meta property="og:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.19 — Y2Linux 1.0 Beta 9.3.19 Baseline 228, 2026-11-08: update notifications published Published as baseline-228 Reborn 520c4">
   <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2reborn-docs-current_reborn_state.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Current Reborn state on the Y2 - Innioasis Updater">
-  <meta name="twitter:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.18 — Y2Linux 1.0 Beta 9.3.18 Baseline 227, 2026-11-08: Luna XP, bitrate, Cover Flow follows the skin published Published as">
+  <meta name="twitter:description" content="Current Reborn state on the Y2 1.0.0-beta.9.3.19 — Y2Linux 1.0 Beta 9.3.19 Baseline 228, 2026-11-08: update notifications published Published as baseline-228 Reborn 520c4">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
   <link rel="stylesheet" href="../lumen.css?v=20261105hero">
@@ -50,6 +50,8 @@
 <a class="lumen-skip-link" href="#main">Skip to content</a>
 <div id="nav-root"></div>
 <main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../post-install/index.html">← All documentation</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Y2Reborn</p><h1>Current Reborn state on the Y2</h1><p class="lumen-lead">Documentation published by SchulzCode/Y2Reborn.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../post-install/index.html">All documentation →</a><a class="lumen-button" href="../post-install/index.html">All documentation</a></div></header><article class="lumen-doc-body"><h1 id="current-reborn-state-on-the-y2">Current Reborn state on the Y2</h1>
+<h2 id="100-beta9319--y2linux-10-beta-9319-baseline-228-2026-11-08-update-notifications-published">1.0.0-beta.9.3.19 — Y2Linux 1.0 Beta 9.3.19 (Baseline 228), 2026-11-08: update notifications (published)</h2>
+<p>Published as <code>baseline-228</code> (Reborn <code>520c4b8</code>; work <code>e989efb</code>). Update Notifications (Y2Reborn #97): toggle on Software Update (<code>Settings.update_notifications</code>, default off). With it on, <code>update_watch_due</code> lets any screen observe the platform every <code>UPDATE_WATCH</code> 120 s while online and lit (before: only <code>platform_backed</code> screens, so the daily check&#x27;s answer arrived only in Settings); <code>update_notice</code> names each version once (<code>update_announced</code> persisted), no toast on Software Update itself (<a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.19.md">Beta 9.3.19 report</a>).</p>
 <h2 id="100-beta9318--y2linux-10-beta-9318-baseline-227-2026-11-08-luna-xp-bitrate-cover-flow-follows-the-skin-published">1.0.0-beta.9.3.18 — Y2Linux 1.0 Beta 9.3.18 (Baseline 227), 2026-11-08: Luna XP, bitrate, Cover Flow follows the skin (published)</h2>
 <p>Published as <code>baseline-227</code> (Reborn <code>56298e9</code>; work <code>dba53bf</code>). Luna XP skin (eNKay; fonts subset, adapted to the shipped-skin rules; seventeen skins). <code>views_playing::bitrate_label</code> in skin var <code>{bitrate}</code> and Song Info&#x27;s Format line (Y2Linux #87; average only, no CBR/VBR; Song Info has had no menu entry since UI v3 <code>ceaae31</code>). <code>Ui::online()</code>: the update page shows &quot;Connect to Wi-Fi&quot; offline (#96). <code>quick_menu_hold</code>: holding Select on the Wi-Fi/Bluetooth/Brightness tile opens its settings (#101). <code>ArtistAlbums</code> Oldest First/Newest First/A to Z in Customize → Browsing, <code>catalog::within_artist</code> (#75). Skin <code>cover_shape</code> + <code>Ui::round_covers()</code> (covers rounded at upload), native <code>&quot;captions&quot;: false</code> with <code>{flow_title}</code> <code>{flow_artist}</code> <code>{flow_detail}</code>, generator <code>add_cover_flow</code> (#100). <code>reborn-library/src/unplayable.rs</code>: audio without a decoder counted per type and folder (<code>scan_folder_unplayable</code>, valid while the folder mtime matches) and named in Settings → Library (#104). Y2Linux side: USB stays a peripheral after every disconnect (#102) (<a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2FSchulzCode%2FY2Linux%2Fblob%2Fmain%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.18.md">Beta 9.3.18 report</a>).</p>
 <h2 id="100-beta9317--y2linux-10-beta-9317-baseline-225-2026-11-08-covers-bluetooth-first-connect-cover-flow-published">1.0.0-beta.9.3.17 — Y2Linux 1.0 Beta 9.3.17 (Baseline 225), 2026-11-08: covers, Bluetooth first connect, Cover Flow (published)</h2>
@@ -283,7 +285,7 @@
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
 <script src="../portable-zip-links.js?v=20261106direct" defer></script>
 <script src="../nav.js?v=20261103brand" defer></script>
-<script src="../site-locale.js?v=20261109i18n" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>
