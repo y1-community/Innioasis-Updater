@@ -5,7 +5,7 @@
  ],
  "pages": 324,
  "occurrences": 13000,
- "count": 6495,
+ "count": 6498,
  "strings": {
   "Skip to content": {
    "n": 120,
@@ -27623,6 +27623,18 @@
    "n": 1,
    "pages": 1,
    "script": true
+  },
+  "Learn about Innioasis Updater CE, lead maintainer Ryan Specter, editorial standards, and commitment to human-verified firmware guides.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Our mission, editorial ethics, and unwavering commitment to original, human-verified engineering.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Innioasis Updater CE and this firmware archive are authored and maintained by Ryan Specter:": {
+   "n": 1,
+   "pages": 1
   }
  }
 }

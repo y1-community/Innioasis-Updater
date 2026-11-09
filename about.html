@@ -28,18 +28,18 @@
   <meta name="publisher" content="Luci Ltd">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Us &amp; Editorial Standards | Innioasis Updater Community</title>
-  <meta name="description" content="Learn about Innioasis Updater CE, lead maintainer Ryan Specter, our hardware testing lab, editorial standards, and commitment to human-verified firmware guides.">
+  <meta name="description" content="Learn about Innioasis Updater CE, lead maintainer Ryan Specter, editorial standards, and commitment to human-verified firmware guides.">
   <link rel="canonical" href="https://innioasis.app/about.html">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Innioasis Updater">
   <meta property="og:title" content="About Us &amp; Editorial Standards | Innioasis Updater Community">
-  <meta property="og:description" content="Learn about Innioasis Updater CE, lead maintainer Ryan Specter, our hardware testing lab, editorial standards, and commitment to human-verified firmware guides.">
+  <meta property="og:description" content="Learn about Innioasis Updater CE, lead maintainer Ryan Specter, editorial standards, and commitment to human-verified firmware guides.">
   <meta property="og:url" content="https://innioasis.app/about.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="About Us &amp; Editorial Standards | Innioasis Updater Community">
-  <meta name="twitter:description" content="Learn about Innioasis Updater CE, lead maintainer Ryan Specter, our hardware testing lab, editorial standards, and commitment to human-verified firmware guides.">
+  <meta name="twitter:description" content="Learn about Innioasis Updater CE, lead maintainer Ryan Specter, editorial standards, and commitment to human-verified firmware guides.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -56,7 +56,7 @@
     "@type": "AboutPage",
     "name": "About Innioasis Updater CE & Editorial Standards",
     "url": "https://innioasis.app/about.html",
-    "description": "Editorial standards, hardware testing methodology, team background, and independence disclosure for the Innioasis Updater project.",
+    "description": "Editorial standards, team background, and independence disclosure for the Innioasis Updater project.",
     "mainEntity": {
       "@type": "Organization",
       "name": "Innioasis Updater Community",
@@ -108,7 +108,7 @@
   <main class="about-wrap" id="main">
     <header class="about-hero">
       <h1>About Us &amp; Editorial Standards</h1>
-      <p class="about-lead">Our mission, hardware testing laboratory, editorial ethics, and unwavering commitment to original, human-verified engineering.</p>
+      <p class="about-lead">Our mission, editorial ethics, and unwavering commitment to original, human-verified engineering.</p>
     </header>
 
     <section class="about-section">
@@ -123,49 +123,14 @@
     </section>
 
     <section class="about-section">
-      <h2><i class="fa-solid fa-microchip"></i> Physical Hardware Testing Lab</h2>
-      <p>Unlike generic technical aggregators or automated scraping sites, <strong>every tutorial, partition guide, driver procedure, and ROM on innioasis.app is tested on real, physical hardware</strong>. Our testing laboratory maintains operational bench units of every major revision released across the product families:</p>
-
-      <div class="about-card">
-        <h3>Laboratory Hardware Bench Inventory</h3>
-        <ul>
-          <li><strong>Innioasis Y1 (Revision Type-A):</strong> MediaTek MT6572 Dual-Core Cortex-A7 SoC, 512MB RAM, 8GB eMMC flash, 240&times;320 TFT display, standard USB Type-C pinout. Tested with official stock firmware builds v1.0.8 through v2.4.0 and Rockbox-Y1.</li>
-          <li><strong>Innioasis Y1 (Revision Type-B):</strong> Updated board layout with alternate power management IC (PMIC) and revised USB charging handshake. Used to verify driver enumeration across Windows 10/11 and Linux udev rules.</li>
-          <li><strong>Innioasis Y2 (Flagship Touchscreen):</strong> MediaTek MT6580 Quad-Core SoC, 1GB RAM, 16GB storage, 360&times;480 capacitive touch screen, Bluetooth 5.0, 2.4GHz Wi-Fi. Verified for Android 4.4 stock restoration, Reborn Linux, and Rockbox-Y2 builds.</li>
-          <li><strong>Innioasis G1, G3 &amp; G5:</strong> Smart Android-based media players running modified Android 8.1 / 9.0 GO builds with side-loading capabilities for Spotify and Audible.</li>
-          <li><strong>Timmkoo A5, Q3, &amp; Q5:</strong> High-volume budget MP3/MP4 players sharing MediaTek MTK and Rockchip platform architectures. Bench tested for partition backups, factory scatter recovery, and battery longevity.</li>
-        </ul>
-      </div>
-
-      <p>Before any new firmware version is added to our manifest or recommended to visitors, it undergoes a rigorous 5-step bench verification protocol:</p>
-      <ol>
-        <li><strong>Cryptographic Checksum Verification:</strong> The raw ROM package is hashed via SHA-256 and matched against verified factory dumps to prevent corrupted downloads.</li>
-        <li><strong>Bootrom Handshake Testing:</strong> We physically connect the device in BROM / Preloader mode across Windows 11, macOS Sequoia, and Ubuntu 24.04 LTS to verify that the USB VID/PID (`0E8D:0003` / `0E8D:2000`) registers without driver kernel panics.</li>
-        <li><strong>Partition Integrity &amp; Scatter Check:</strong> Scatter maps are analyzed to ensure critical calibration partitions (`NVRAM`, `PRO_INFO`, `SEC_RO`) are preserved, preventing accidental loss of serial numbers or Bluetooth MAC addresses.</li>
-        <li><strong>Audio Playback &amp; Codec Stability:</strong> We verify gapless FLAC (24-bit/96kHz), ALAC, MP3, AAC, and Ogg Vorbis decoding on headphone output and Bluetooth A2DP audio streams.</li>
-        <li><strong>Battery &amp; Sleep Power Draw:</strong> Quiescent current draw in deep sleep is metered with an inline USB power analyzer to confirm the firmware does not exhibit battery-draining wake locks.</li>
-      </ol>
-    </section>
-
-    <section class="about-section">
       <h2><i class="fa-solid fa-users"></i> Core Team &amp; Maintainers</h2>
-      <p>Innioasis Updater CE is authored and maintained by experienced software engineers with deep backgrounds in low-level Android/Linux systems and audio engineering:</p>
+      <p>Innioasis Updater CE and this firmware archive are authored and maintained by Ryan Specter:</p>
 
       <div class="team-grid">
         <div class="team-member">
           <h4>Ryan Specter</h4>
           <span class="team-role">Lead Maintainer &amp; Architect</span>
           <p class="team-bio">Creator of Innioasis Updater CE, the automated multi-platform desktop client, and maintainer of innioasis.app. Oversees hardware reverse engineering, USB flasher communication protocols, and cross-platform GUI architecture.</p>
-        </div>
-        <div class="team-member">
-          <h4>SchulzCode</h4>
-          <span class="team-role">Kernel &amp; OS Specialist</span>
-          <p class="team-bio">Principal developer behind the Y2Linux and Reborn OS initiatives. Specializes in MediaTek device trees, Linux kernel porting, display controller timing, and power management optimization for the Y2 platform.</p>
-        </div>
-        <div class="team-member">
-          <h4>SpyceMagic</h4>
-          <span class="team-role">Rockbox Port Engineer</span>
-          <p class="team-bio">Audio DSP developer specializing in the Rockbox digital audio player operating system. Maintains the official Rockbox-Y2 port, custom audio decoders, and UI touchscreen rendering drivers.</p>
         </div>
       </div>
     </section>
@@ -196,7 +161,7 @@
   <div id="footer-root"></div>
   <div id="support-toolbar-slot"></div>
 
-  <script src="nav.js?v=20261103brand" defer></script>
+  <script src="nav.js?v=20261109cta" defer></script>
   <script src="lumen-site.js?v=20261108downloadpanel" defer></script>
   <script src="site-locale.js?v=20261109i18n" defer></script>
 </body>
