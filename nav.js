@@ -387,6 +387,8 @@
       "ce",
       "accessibility",
       "a11y",
+      "reduce-motion",
+      "reduce_motion",
       "fontSize",
       "fontScale",
       "font-scale",
