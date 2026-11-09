@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>Fejlesztők | Adjon hozzá egyéni firmware-t a Innioasis Updater CE-hez – Innioasis Firmware letöltések</title>
+  <meta name="description" content="Fejlesztői dokumentáció egyéni Innioasis Y1 vagy Y2 firmware hozzáadásához az Updater CE-hez: forgassa el a tárat, tegye közzé rom.zip eszközöket, szerkessze a slidia_manifest.xml fájlt, tesztelje és nyissa meg a lekérést.">
+  <meta name="keywords" content="Innioasis Frissítő fejlesztői útmutató, slidia_manifest.xml, egyéni firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, kiadási eszközök">
   <link rel="canonical" href="https://innioasis.app/developers_hu.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="Fejlesztők | Adjon hozzá egyéni firmware-t a Innioasis Updater CE-hez – Innioasis Firmware letöltések">
+  <meta property="og:description" content="Fejlesztői dokumentáció egyéni Innioasis Y1 vagy Y2 firmware hozzáadásához az Updater CE-hez: forgassa el a tárat, tegye közzé rom.zip eszközöket, szerkessze a slidia_manifest.xml fájlt, tesztelje és nyissa meg a lekérést.">
   <meta property="og:url" content="https://innioasis.app/developers_hu.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="Fejlesztők | Adjon hozzá egyéni firmware-t a Innioasis Updater CE-hez – Innioasis Firmware letöltések">
+  <meta name="twitter:description" content="Fejlesztői dokumentáció egyéni Innioasis Y1 vagy Y2 firmware hozzáadásához az Updater CE-hez: forgassa el a tárat, tegye közzé rom.zip eszközöket, szerkessze a slidia_manifest.xml fájlt, tesztelje és nyissa meg a lekérést.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -87,7 +87,7 @@
     "about": ["Innioasis Updater CE", "Innioasis Y1", "Innioasis Y2", "custom firmware"]
   }
   </script>
-<meta property="og:site_name" content="Innioasis Software Updates">
+<meta property="og:site_name" content="Innioasis Szoftverfrissítések">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/developers.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/developers.html">
@@ -132,121 +132,121 @@
   <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
-  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <a class="lumen-skip-link" href="#main">Ugrás a tartalomhoz</a>
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">Firmware fejlesztőknek</p>
+      <h1>Adja hozzá firmware-jét az Updater CE-hez.</h1>
+      <p class="lead">Az Updater CE az egyéni firmware közösségi katalógusa és telepítője. Fejlessze projektjét ROM alapból, tegye közzé nyilvános adattárként a megfelelő kiadási eszközökkel, adja hozzá a modellbejegyzéseket a <code>slidia_manifest.xml</code>, tesztelje a modellszűrőket, és nyissa meg a lehívási kérelmet. Egy adattár kiszolgálhat minden általa támogatott modellt.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
-        <a class="lumen-button" href="firmware_hu.html">Browse Software Downloads</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Tekintse meg az Updater CE forrását</a>
+        <a class="lumen-button" href="firmware_hu.html">Böngésszen a szoftverletöltések között</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">Kezdje egy alapról ROM</h2>
+      <p>Az alap ROM-ok az egyéni firmware-fejlesztőknek tiszta Android-alapot biztosítanak a vezeték nélküli rádióchipek engedélyezésével. A Y1-on engedélyezik a Wi-Fi-t és a GPS-t a gyári Bluetooth és FM mellett; a Y2-on a gyári Bluetooth mellett engedélyezik a Wi-Fi-t, a GPS-t és az FM-et.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">Az egyéni firmware-fejlesztéshez szükséges alapletöltések ROM Android-verziója és a vezeték nélküli funkciók mindegyike lehetővé teszi</caption>
           <thead>
-            <tr><th scope="col">Download</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">Letöltés</th><th scope="col">Eszköz</th><th scope="col">Android</th><th scope="col">Vezeték nélküli funkciók</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Hozzáadja a Wi-Fi-t és a GPS-t a gyári Bluetooth-hoz és FM-hez (az FM gyárilag működik a Y1-on). Az OS 2.0.0 vagy újabb verzióval szállított Y1 lejátszókhoz.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Hozzáadja a Wi-Fi-t és a GPS-t a gyári Bluetooth-hoz és FM-hez (az FM gyárilag működik a Y1-on). Y1 lejátszókhoz, amelyeket 2.0.0-nál korábbi operációs rendszerrel szállítottak.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Hozzáadja a Wi-Fi-t, a GPS-t és az FM-et a gyári Bluetooth-hoz. A Y2 rádióchip teljesen engedélyezett, így az FM itt is elérhető.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">Ezek a képek az Android alapja (AOSP), amelyen az eszköz vezeték nélküli rádiói is engedélyezettek, így az egyéni firmware a rádióverem cseréje helyett hálózati funkciókat adhat hozzá. Ezek jelentik az alábbi közzétételi lépések gyakorlati kiindulópontját.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">Használja ezeket a kiadási elemneveket</h2>
+      <p>A fájlnév a kompatibilitási jel része. Tartsa pontosan a neveket, és helyezze el a ZIP-fájlokat a projekt kiadási eszközei között, ne csak a lerakat forrásfájában.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">Firmware ZIP eszköznevek és támogatott eszközök</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Hardware</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">Eszköz</th><th scope="col">Eszköz</th><th scope="col">Hardver</th><th scope="col">Jelentése</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 olyan eszközök, amelyeket OS 2.0.0 vagy újabb verzióval szállítottak.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 olyan eszköz, amelyet 2.0.0-nál korábbi operációs rendszerrel szállítottak.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>A Y2 teljes telepítési csomag. Tartsa elkülönítve Y1 eszközöktől.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>Ne nevezzen át egy csomagot, hogy egy másik modellhez illeszkedjen.</strong> A Y1 és a Y2 különböző MediaTek platformfájlokat és villogó konfigurációt használ. Tegye közzé a ténylegesen támogatott hardver csomagját.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">Hogyan működik a kapcsolat</h2>
+      <p>Az Updater CE a jegyzéket katalógusaként olvassa be. Mindegyik <code>&lt;package&gt;</code> sor közli vele a projekt nevét, tárolóját, modelljét és kezelőjét. Amikor egy felhasználó ezt a projektet választja, az Updater ellenőrzi a lerakat közzétett kiadásait, és megkeresi a <code>rom*.zip</code> eszköz.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <h3>Nyilvánvaló</h3>
+          <p>Elnevezi a projektet, és leképezi egy modellre. A Y1-nak és Y2-nek külön sorra van szüksége, még akkor is, ha egy adattáron osztoznak.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>Megjelent kiadás</h3>
+          <p>Tartalmazza a telepíthető ZIP eszközöket. Egyetlen kiadás tartalmazhatja a Y1 Type A, Y1 Type B és Y2 csomagokat együtt.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>Frissítő CE telepítés</h3>
+          <p>A kiválasztott modellt használja a megfelelő csomag és a modellspecifikus villogási útvonal kiválasztásához. A felhasználónak nem kell fájlnevet kitalálnia.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">Tegyen közzé egy projektet öt lépésben</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>, and <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> Open <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Forgassa el az Updater CE adattárat.</strong> Készítse el saját villáját <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, majd klónozzuk helyileg a villát.</li>
+        <li><strong>Készítsen nyilvános firmware-tárat.</strong> Győződjön meg arról, hogy a tár nyilvános, és a kiadása tartalmazza a megfelelő ZIP-elemeket. Felteheted <code>rom.zip</code>, <code>rom_type_b.zip</code>, és <code>rom_y2.zip</code> ugyanazon a kiadáson, ha ugyanahhoz a verzióhoz tartoznak.</li>
+        <li><strong>Szerkessze a jegyzéket.</strong> Nyissa meg <code>slidia_manifest.xml</code> az Updater CE villájának gyökerében. Adjon hozzá egy sort minden egyes modellhez, amelyet a kiadás támogat (Y1 és Y2 a közös pár). A <code>repo</code> az érték az adattáré <code>owner/repository</code>; <code>url</code> a projekt nyilvános oldala.</li>
+        <li><strong>Tesztelje a katalógust.</strong> Futtassa az Updater programot a szerkesztett pénztárból. Válassza a Y1 lehetőséget, és ellenőrizze, hogy a projekt megjeleníti az Y1 eszközöket. Válassza a Y2 lehetőséget, és erősítse meg, hogy megjelenik a Y2 kiadás. Ha mindkettő megjelent, ellenőrizze külön a Type A-et és a Type B-ot.</li>
+        <li><strong>Nyisson meg egy lehívási kérelmet.</strong> Tolja el a jegyzékmódosítást a villájára, és nyissa meg a lekérési kérelmet az upstream Updater CE-lerakatára vonatkozóan. Adja meg a projekt hivatkozását, a támogatott modelleket, a kiadási címkét, az eszközneveket és a tesztelt eszközöket.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">Készítse elő manifeszt sorait</h2>
+      <p>Töltse ki a tárat, és jelölje be a kiadás által támogatott minden modellt. A generátor ír egyet <code>&lt;package&gt;</code> sort modellenként, és csak az Ön által beállított attribútumokat tartalmazza, így az eredmény megegyezik az aktuális értékkel <code>slidia_manifest.xml</code> formátum. Az Updater CE által beolvasott összes attribútum elérhető alább – az opcionálisak alatt találhatók <strong>További lehetőségek</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">Adattár URL-je</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">A nyilvános GitHub adattár. A generátor kivonat <code>owner/repository</code> az URL-ből.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">Szoftvernév</label>
+            <input type="text" id="manifest-name" placeholder="Alapértelmezés szerint a lerakat neve" autocomplete="off">
+            <span class="lumen-field-help">Megjelenik az alkalmazásban és a webhely katalógusában.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">Projekt URL</label>
+            <input type="url" id="manifest-project-url" placeholder="Alapértelmezés szerint a tárhely URL-je" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Emberekre néző oldal a projekthez vagy a kiadási megjegyzésekhez.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">Márka</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">Törölje ezt a modell alapértelmezett márkájának használatához. SR1, Q3, Q5 és Q3e Timmkoo modellek.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>Eszközök (egy-egy sor)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">Egyéb modellek</label>
+            <input type="text" id="manifest-other-devices" placeholder="Vesszővel elválasztva, pl. X1, X2" autocomplete="off">
+            <span class="lumen-field-help">A fenti listán nem szereplő modellhez. Az ismert modellek megtartják katalógusuk helyesírását.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>Zászlók</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> – soha ne kínáljon Keep Datat ehhez a firmware-hez</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Eredeti szoftverből épült – teszi hozzá <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">A Keep Data szolgáltatást csak akkor ajánljuk fel, ha a bejövő firmware és a telepített firmware megegyezik, vagy megosztja a <code>derivative</code> gyökér. Csak akkor használja a jelzőt, ha a felhasználói adatok valóban nem vihetők át.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>További lehetőségek: ikon, grafika, kiadási eszközök, telepítés utáni és tükrök</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>Ikon és műalkotás</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">Ikon fájl</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">Válassza ki azt a képet, amelyet az adattárba helyez. Ez megtekinti az előnézetet, és létrehozza a nyers URL-t; nem tölt fel semmit.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">Ikon elérési útja az adattárban</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">A véglegesített kép elérési útja a tároló gyökérhez viszonyítva.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">Ikon ág</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">Ikon URL</label>
+              <input type="url" id="manifest-icon-url" placeholder="A fájl elérési útjából kitöltve" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">A kép közvetlen URL-je. Ha üres, az alkalmazás a kiadást használja <code>updater.png</code> vagy egy generált ikon.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="A kiválasztott ikon előnézete">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
+              <label for="manifest-icon-dark-url">Sötét mód ikon URL-je</label>
               <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <span class="lumen-field-help">Opcionális sötét témájú ikon. <code>image_dark</code> egy elfogadott álnév.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">Könnyű műalkotás URL-je</label>
+              <input type="url" id="manifest-image-url" placeholder="kép" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Másodlagos műalkotás, kipróbálva a kiadás után kép és <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
+              <label for="manifest-image-dark-url">Sötét grafika URL-je</label>
               <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>Eszközök felszabadítása</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">Tartalomnév kiadása</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">Minden kiválasztott modellhez egy név. Hagyja üresen a használathoz <code>rom.zip</code> Y1 és <code>rom_&lt;model&gt;.zip</code> máshol.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
+              <label for="manifest-asset-pattern">Eszköz minta</label>
               <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <span class="lumen-field-help">Glob akkor használatos, ha a kiadás zipjei nincsenek megnevezve <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A eszköz</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob a Y1 Type A csomaghoz, ha a neve nem ezt mondja.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B eszköz</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob a Y1 Type B csomaghoz, ha a neve nem ezt mondja.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">Az alkalmazás minimális verziója</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">A bejegyzés elrejtése a régebbi Updater CE buildekből.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>Linkek, tükrök és Keep Data család</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">Telepítés utáni oldal</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">Sikeres telepítés után megnyílt.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">Második telepítés utáni oldal</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">Választható második lépés a többoldalas beállítási útmutatóhoz.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">Hordozható cipzáras tükrök</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">Vesszővel elválasztva <code>*-mirror</code> Portable Flashing Zip csomagokat építő adattárak.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">Származékos adattár</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">A firmware, amelyből ez a kiadás épül. A kapcsolódó firmware-ek megosztanak egy adatpartíciót, amelyet a Keep Data ellenőrzi.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">Infotár</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">Alkalmazástár, amelynek kiadásai leírják az ebben a firmware-ben lévő alkalmazásokat. Telepítés utáni oldal is kell hozzá.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK adattár</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">App repo, amelynek APK az alkalmazás letölti és telepíti a firmware után.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>Katalógus extrák</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">Meztelen csiga</label>
+              <input type="text" id="manifest-slug" placeholder="A név és a modell alapján generált" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Stabil azonosító a hivatkozásokhoz és a mentett telepítési rekordokhoz. A modell automatikusan hozzáfűződik, ha több modellt választ ki.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">Leírás</label>
+              <input type="text" id="manifest-description" placeholder="Rövid katalógus leírás" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Vonalak másolása</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">A legújabb jegyzék betöltése…</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>Tekintse meg a legújabb jegyzék előnézetét a soraival együtt</summary>
+          <p>A generátor levette az áramot <code>slidia_manifest.xml</code> ebből a tárolóból, és közvetlenül előtte szúrta be a generált sorokat <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>Egy sor nem elég egy megosztott tárolóhoz.</strong> Ha a Y2 sor hiányzik, a Y2 felhasználók akkor sem kapnak modellegyező bejegyzést, ha <code>rom_y2.zip</code> létezik a projekt kiadásában. Ugyanez igaz minden más modellre, amelyet a kiadása támogat.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">A jegyzék minden attribútuma beolvas</h3>
+      <p>Ezeket az attribútumokat a jelenlegi Updater CE buildek megértik. A generátor csak azokat írja, amelyeket Ön kitölt; az alkalmazás a többinél visszaáll az ésszerű alapértelmezett értékekre.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">slidia_manifest.xml csomagattribútumok és jelentésük</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">Attribútum</th><th scope="col">Szükséges</th><th scope="col">Mit csinál</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>Yes</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>Yes</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>Yes</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> and <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>Optional</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>Optional</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>Optional</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Optional</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>Optional</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>Optional</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>Optional</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Optional</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Optional</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>Optional</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>Optional</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> or <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>Optional</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>Optional</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Optional</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>Optional</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>Optional</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Igen</td><td>A katalógusban és a telepítési kártyákon látható szoftvernév.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>Igen</td><td><code>owner/repo</code>. Az alkalmazás beolvassa az adattár GitHub kiadásait.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Igen</td><td>Célmodell, nagybetűs (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Modellenként egy bejegyzés maradjon.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Ajánlott</td><td>A katalógusból megnyitott projektoldal vagy kiadási megjegyzések.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>A gyakorlatban igen</td><td><code>type="img"</code> és <code>handler="Custom Firmware"</code>. Más típusok és nem firmware-kezelők kimaradnak.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Választható</td><td>Katalógus márka (<code>Innioasis</code>, <code>Timmkoo</code>). Az Empty a modell alapértelmezett márkáját használja.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Választható</td><td>Tartalomfájlnév kiadása. Alapértelmezés szerint <code>rom.zip</code> Y1 és <code>rom_&lt;model&gt;.zip</code> más modelleken.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Választható</td><td>A kis- és nagybetűk nem megkülönböztetik az olyan kiadásokat, amelyek firmware-zipjei nincsenek megnevezve <code>rom*.zip</code> (például <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Választható</td><td>Globák, amelyek azonosítják a Y1 Type A és Type B zipeket, ha a fájlneveik nem tartalmazzák a szokásos jelölőket.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Választható</td><td>Logo URL. A saját megjelenése után használták <code>updater.png</code> / <code>updater.jpg</code>, és minden kiadás tartalékaként.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Választható</td><td>Sötét témájú logó. <code>image_dark</code> egy elfogadott álnév.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Választható</td><td>Másodlagos könnyű alkotás, utána próbált <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Választható</td><td>Sikeres telepítés után megnyitott oldal(ok). A második egy többlépcsős útmutatót takar.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Választható</td><td>Vesszővel elválasztva <code>*-mirror</code> repók, amelyek futtatásra kész hordozható csomagokat tesznek közzé.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Választható</td><td>Repository, amelyből a firmware épül. Az azonos származékos gyökérrel rendelkező firmware tárolhatja a felhasználói adatokat.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Választható</td><td>Alkalmazástár, amelynek kiadásai leírják, hogy mit telepít a firmware. Megköveteli <code>post_install</code> vagy <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Választható</td><td>Alkalmazástár, amelynek APK a firmware után telepíti az alkalmazást.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Választható</td><td>A bejegyzés elrejtése, ha az Updater CE régebbi ennél a verziónál.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Választható</td><td><code>true</code> (szintén <code>1</code> / <code>yes</code>) blokkolja az adatok teljes megőrzését ehhez a firmware-hez.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Választható</td><td>Stabil azonosító a hivatkozásokhoz és a mentett telepítési rekordokhoz. Üres állapotban a név és a modell alapján generálódik.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Választható</td><td>Rövid katalógus leírás. Ez lehet az attribútum értéke vagy az elem szövege.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> and <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">A kompatibilitás érdekében a régi neveket továbbra is olvassák: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> és <code>image_dark</code>. Az új bejegyzéseknél a fenti jelenlegi neveket kell használni.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Küldje el a sorokat lehívási kérelemként</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Másolja ki a fenti generált sorokat.</strong> Már megfelelnek a legújabb jegyzékformátumnak.</li>
+        <li><strong>Szerkesztés <code>slidia_manifest.xml</code> az adattárban.</strong> Használja az alábbi szerkesztési linket; a tároló gazdagép automatikusan létrehoz egy elágazást és egy elágazást.</li>
+        <li><strong>Illessze be a vonalakat közvetlenül előtte <code>&lt;/slidia&gt;</code>,</strong> a meglévő bejegyzések változatlan megőrzése.</li>
+        <li><strong>Köteleződjön el egy új ágon</strong> (például <code>add-your-firmware</code>), majd nyissa meg a lehívási kérelmet az Updater CE lerakatában.</li>
+        <li><strong>A PR-ben szerepeljen</strong> a projekt hivatkozását, a támogatott modelleket, a kiadási címkét, az eszközneveket és a tesztelt eszközöket.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Szerkessze az Updater CE jegyzékét</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Tekintse meg a legújabb manifestet</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> and <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Tartsa a modellneveket nagybetűkkel, használja a nyilvános tárhely pontos URL-címét, és tartsa meg <code>type="img"</code> és <code>handler="Custom Firmware"</code> firmware bejegyzéshez.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">Tegye könnyen ellenőrizhetővé a kiadást</h2>
+      <p>Adjon a kiadásnak egyértelmű címkét és kiadási megjegyzést. A címke hasznos az emberek számára, de az Updater CE a ZIP-eszközneveket használja a telepítőcsomagok azonosítására.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>Feloldási ellenőrzőlista</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>Tegye közzé a kiadást nyilvánosan.</li>
+            <li>Csatolja a ZIP-fájlokat kiadási eszközökként.</li>
+            <li>Adja meg a támogatott modellt és Type A vagy Type B a megjegyzésekben.</li>
+            <li>Sorolja fel a szükséges előkészületeket vagy ismert határértékeket.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>, and <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>Egy kiadás, három eszköz</h3>
+          <p>A megosztott kiadás tartalmazhat <code>rom.zip</code>, <code>rom_type_b.zip</code>, és <code>rom_y2.zip</code>. Az Updater külön osztályozza őket, és a modell- és hardverszűrők közül választ.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>Ne kapcsolja össze a találgatásokat</h3>
+          <p>Ne adjon meg Y1 csomagot a Y2 fájlnév alatt, és ne adjon hozzá nem tesztelt szóró-, előbetöltő- vagy partíciós adatokat csak azért, hogy egy eszköz megjelenjen.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">Miért számítanak a modellbejegyzések villogás közben?</h2>
+      <p>A jegyzék nem csak egy letöltési menü. A kibontás után az Updater CE a feloldott modellt használja a megfelelő telepítési útvonal előkészítéséhez. A Y1 és Y2 különböző platformfájlokkal, előtöltőkkel, szórt konfigurációval és eszközelrendezéssel rendelkezik.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> a frissítő előkészíti a Y1 elérési utat, és az eszköz elnevezett partícióit használja az MTKClient használatakor.</li>
+        <li><strong>Y2:</strong> a frissítő előkészíti a Y2 elérési utat és az Y2 MT6582 konfigurációt használja. A teljes helyreállítás fizikai címeket használhat a modellnek megfelelő szórt adatokból.</li>
+        <li><strong>Platformok közötti támogatás:</strong> Az Updater CE közvetlenül kezeli a natív flashinget Windowson, Linuxon és macOS-en (mind az Intel, mind az Apple Silicon Mac-eket támogatja), további flash-eszközök nélkül.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>A közreműködőknek megfelelő firmware fájlokat kell megadniuk, nem flash offseteket.</strong> Ne szerkessze a szórt címeket, előbetöltőket, DA fájlokat vagy partíciós parancsokat a rossz csomagok megkerülésére. Javítsa ki a kiadási eszközt, és tesztelje a kívánt modellt.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">Mielőtt egyesítést kérne</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>, and <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>Érvényesítse az XML-t egy XML-elemzővel. Hiányzó idézet vagy zárás <code>/&gt;</code> minden bejegyzést elrejthet utána.</li>
+        <li>Indítsa el a frissítőt a pénztárból, hogy a távoli frissítés előtt betöltse a helyi jegyzéket.</li>
+        <li>Ellenőrizze egymástól függetlenül a Y1 és Y2 elemet. Győződjön meg arról, hogy a projekt csak ott jelenik meg, ahol a csomagja támogatott.</li>
+        <li>Ellenőrizze a kiadási listát <code>rom.zip</code>, <code>rom_type_b.zip</code>, és <code>rom_y2.zip</code> értelemszerűen.</li>
+        <li>Tesztelje a tényleges telepítést a tervezett eszközön egy megbízható USB adatkábellel és egy helyreállítási tervvel az eredeti szoftverhez való visszatéréshez.</li>
+        <li>A lehívási kérelemben magyarázza el, mit tesztelt. Ne írjon le nem tesztelt modellt támogatottként.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>Helyi ellenőrzéshez futtassa a parancsot a lerakat gyökérből. Csak az XML szintaxist ellenőrzi; nem bizonyítja, hogy egy kiadás érvényes firmware-t tartalmaz, vagy hogy egy eszköz biztonságosan villoghat.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">Hasznos projekt linkek</h2>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_hu.html">Community contribution notes</a>
-        <a class="lumen-button" href="troubleshooting_hu.html">Troubleshooting</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Lásd a manifestet</a>
+        <a class="lumen-button" href="support_devs_hu.html">közösségi hozzájárulással kapcsolatos megjegyzések</a>
+        <a class="lumen-button" href="troubleshooting_hu.html">Hibaelhárítás</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">Moding készségek AI ügynökök számára</h2>
+      <p>Az adattáré <code>skills/</code> A könyvtár egy forrásalapú tudásbázis a Y1 és Y2 hardveren, firmware-en, témákon és alkalmazásokon dolgozó ügynökök számára. Minden képesség elnevezi azokat a projektfájlokat, amelyekből a követelései származnak, így az ügynök ellenőrizheti a tényt, mielőtt eszközt cserél.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>Kezdje itt</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Képességmutató és biztonsági szabályok</a></h3>
+          <p>Hogyan töltsünk be egy képességet, melyik modellre vonatkozik egy tény, és milyen partíciókat nem írhat a csomag.</p>
         </article>
         <article class="lumen-card">
-          <small>Hardware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <small>Hardver</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardver</a></h3>
+          <p>MT6572, a kerék, mint legfontosabb események, 480x360-as kijelző, FM/audio útvonalak, tárhely és a Type A/B partíciótérkép.</p>
         </article>
         <article class="lumen-card">
-          <small>Hardware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <small>Hardver</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardver</a></h3>
+          <p>MT6582 kártya, eszközfa, GC9503V/ST7701S panelek, PMIC/DAC sínek, partíciók és a rendszerindító kép.</p>
         </article>
         <article class="lumen-card">
           <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware csomagok</a></h3>
+          <p>rom.zip anatómia, szórt fájlok, A osztályú frissítési szerződések és a kiadási ellenőrzőlista.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>Témák</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Téma és skin szerzői</a></h3>
+          <p>Y1 config.json témák, Rockbox WPS/SBS, Reborn felszínek és Y2Player skin formátum v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>Minden készség</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Böngésszen a készségek mappájában</a></h3>
+          <p>Rockbox Y1/Y2, készlet Android ROM-ok, Y2Linux, Android-alkalmazások, indítók, kibocsátási megjegyzések és webhelyek közzététele.</p>
         </article>
       </div>
     </section>

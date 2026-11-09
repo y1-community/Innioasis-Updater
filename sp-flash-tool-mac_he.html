@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>SP Flash Tool for Mac · MediaTek Scatter Flashing Guide & Alternatives</title>
-  <meta name="description" content="How to use SP Flash Tool on Mac using Updater CE and browse scatter files to flash MediaTek devices like Mechen H1, Innioasis Y1/Y2, Timmkoo, and MT6580/MT6572 MP3 players and phones.">
+  <title>SP Flash Tool עבור Mac · MediaTek מדריך מהבהב לפיזור וחלופות</title>
+  <meta name="description" content="כיצד להשתמש ב-SP Flash Tool ב-Mac באמצעות Updater CE ולעיין בקבצי פיזור כדי להבהב MediaTek מכשירים כמו Mechen H1, Innioasis Y1/Y2, Timmkoo, ו-MT6580/MT6572 נגני וטלפונים MP3.">
   <link rel="canonical" href="https://innioasis.app/sp-flash-tool-mac_he.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/sp-flash-tool-mac.html">
@@ -81,42 +81,42 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">MediaTek Tools & Cross-Platform Flashing</p>
-      <h1>SP Flash Tool עבור Mac: המדריך המלא ודפדפן הפיזור</h1>
-      <p class="lead">Does official MediaTek SP Flash Tool run on macOS? Here is the exact status, how <strong>עדכון CE</strong> provides native MediaTek flashing on Mac, and how to flash any scatter-based MediaTek MP3 player or smartphone.</p>
+      <p class="lumen-kicker">MediaTek כלים והבהב בין פלטפורמות</p>
+      <h1>SP Flash Tool עבור Mac: המדריך השלם ודפדפן הפיזור</h1>
+      <p class="lead">האם הרשמי MediaTek SP Flash Tool פועל ב-macOS? הנה הסטטוס המדויק, איך <strong>עדכון CE</strong> מספק מהבהב מקורי MediaTek ב-Mac, וכיצד להבהב כל נגן MP3 או סמארטפון המבוסס על פיזור MediaTek.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>The Truth About SP Flash Tool on macOS</h2>
-      <p>MediaTek never released an official macOS build of <strong>Smart Phone Flash Tool (SP Flash Tool)</strong>. The tool has only ever existed as a 32-bit/64-bit Windows application and an x86_64 Linux binary. Emulating SP Flash Tool on macOS through Wine or CrossOver fails because macOS kernel USB extensions do not allow USB serial pass-through at the precision required during BROM boot handshakes.</p>
-      <p><strong>The Solution:</strong> <strong>עדכון CE</strong> bridges this gap by bundling native Apple Silicon and Intel macOS flashing libraries (via MTKclient low-level protocol engine) alongside automated scatter discovery!</p>
+      <h2>האמת על SP Flash Tool ב-macOS</h2>
+      <p>MediaTek מעולם לא הוציא גרסה רשמית של macOS <strong>כלי פלאש לטלפון חכם (SP Flash Tool)</strong>. הכלי היה קיים רק כיישום Windows של 32 סיביות/64 סיביות ובינארי x86_64 Linux. הדמיית SP Flash Tool ב-macOS דרך Wine או CrossOver נכשלת מכיוון שהרחבות ליבת macOS USB אינן מאפשרות מעבר סדרתי של USB בדיוק הנדרש במהלך לחיצות ידיים לאתחול BROM.</p>
+      <p><strong>הפתרון:</strong> <strong>עדכון CE</strong> מגשר על הפער הזה על ידי שילוב ספריות מהבהבות מקוריות של Apple Silicon ו-Intel macOS (באמצעות מנוע פרוטוקול MTKclient ברמה נמוכה) לצד גילוי פיזור אוטומטי!</p>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Flashing Any MediaTek Device with 'Install from File' (Scatter Browser)</h2>
-      <p>Updater CE is not restricted to Innioasis players. You can use it as a powerful universal MediaTek scatter flasher for any device requiring <strong>SP Flash Tool v5 or earlier</strong>:</p>
+      <h2>מהבהב כל מכשיר MediaTek עם 'התקן מקובץ' (דפדפן פיזור)</h2>
+      <p>Updater CE אינו מוגבל לשחקנים Innioasis. אתה יכול להשתמש בו בתור מהבהב פיזור אוניברסלי חזק MediaTek עבור כל מכשיר שדורש <strong>SP Flash Tool v5 או קודם לכן</strong>:</p>
       <ul class="lumen-benefits-list">
-        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 portable HiFi Android players.</li>
-        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek touchscreen digital audio players.</li>
-        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek MT6572 / MT6582 music players.</li>
-        <li><strong>Legacy MediaTek Smartphones &amp; Feature Phones:</strong> Devices running MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753, and MT8163.</li>
+        <li><strong>Mechen H1 &amp; H11:</strong> נגני אנדרואיד HiFi ניידים MT6580.</li>
+        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek נגני אודיו דיגיטליים עם מסך מגע.</li>
+        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek נגני מוזיקה MT6572 / MT6582.</li>
+        <li><strong>טלפונים חכמים וטלפונים מדור קודם MediaTek:</strong> מכשירים עם MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753 ו-MT8163.</li>
       </ul>
       <div class="lumen-callout">
-        <h3>How to Load Custom Scatter Files in Updater CE:</h3>
+        <h3>כיצד לטעון קבצי פיזור מותאמים אישית בעדכון CE:</h3>
         <ol class="lumen-steps">
-          <li>Download the factory firmware archive (<code>.zip</code> או <code>.rar</code>) or extract its folder containing the <code>*scatter*.txt</code> file.</li>
-          <li>In Updater CE, choose <strong>עיין בקבצים...</strong> on the firmware selection screen.</li>
-          <li>Select the scatter text file (e.g., <code>MT6580_Android_scatter.txt</code>) or firmware zip package.</li>
-          <li>Updater CE parses memory offsets, partition addresses (preloader, boot, recovery, system, userdata), and verifies scatter integrity.</li>
-          <li>Follow the on-screen live prompt: power down the device and connect the USB cable to flash.</li>
+          <li>הורד את ארכיון הקושחה של היצרן (<code>.zip</code> או <code>.rar</code>) או לחלץ את התיקיה שלו המכילה את <code>*scatter*.txt</code> קובץ.</li>
+          <li>בעדכון CE, בחר <strong>עיין בקבצים...</strong> במסך בחירת הקושחה.</li>
+          <li>בחר את קובץ הטקסט הפיזור (למשל, <code>MT6580_Android_scatter.txt</code>) או חבילת zip של קושחה.</li>
+          <li>Updater CE מנתח קיזוז זיכרון, כתובות מחיצות (טוען מראש, אתחול, שחזור, מערכת, נתוני משתמש), ומאמת את שלמות הפיזור.</li>
+          <li>עקוב אחר ההנחיה החיה על המסך: כבה את המכשיר וחבר את הכבל USB להבהב.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>When You Need an x64 Computer for Unbricking</h2>
-      <p>While macOS handles standard flashing and custom ROM installs cleanly via MTKclient, recovering from deep bootloop failures (where the preloader partition was wiped or mismatched) requires SP Flash Tool's full partition table rebuild.</p>
-      <p>If you encounter error stalls on Mac, switch to a 64-bit Windows PC or x86_64 Linux workstation, select <strong>Settings &gt; Show Advanced Settings &gt; Flash Method &gt; SP Flash Tool</strong>, and flash the factory scatter package.</p>
+      <h2>כאשר אתה צריך מחשב x64 לביטול הלבנים</h2>
+      <p>בעוד ש-macOS מטפל בהבהוב סטנדרטי ובהתקנות מותאמות אישית של ROM בצורה נקייה דרך MTKclient, התאוששות מתקלות אתחול עמוקות (שם המחיצה המקדימה נמחקה או לא תואמת) דורשת בנייה מחדש של טבלת המחיצות המלאה של SP Flash Tool.</p>
+      <p>אם אתה נתקל בתקלות שגיאה ב-Mac, עבור למחשב 64 סיביות של Windows או x86_64 Linux, בחר <strong>הגדרות &gt; הצג הגדרות מתקדמות &gt; שיטת הבזק &gt; SP Flash Tool</strong>, והבהב את חבילת הפיזור של היצרן.</p>
     </section>
   </main>
   <div id="footer-root"></div>

@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>Nhà phát triển | Thêm chương trình cơ sở tùy chỉnh vào Innioasis Trình cập nhật CE - Innioasis Tải xuống chương trình cơ sở</title>
+  <meta name="description" content="Tài liệu dành cho nhà phát triển về cách thêm chương trình cơ sở Innioasis Y1 hoặc Y2 tùy chỉnh vào Trình cập nhật CE: phân nhánh kho lưu trữ, xuất bản nội dung rom.zip, chỉnh sửa slideia_manifest.xml, kiểm tra và mở yêu cầu kéo.">
+  <meta name="keywords" content="Innioasis Hướng dẫn dành cho nhà phát triển trình cập nhật, slideia_manifest.xml, chương trình cơ sở tùy chỉnh, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, phát hành nội dung">
   <link rel="canonical" href="https://innioasis.app/developers_vi.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="Nhà phát triển | Thêm chương trình cơ sở tùy chỉnh vào Innioasis Trình cập nhật CE - Innioasis Tải xuống chương trình cơ sở">
+  <meta property="og:description" content="Tài liệu dành cho nhà phát triển về cách thêm chương trình cơ sở Innioasis Y1 hoặc Y2 tùy chỉnh vào Trình cập nhật CE: phân nhánh kho lưu trữ, xuất bản nội dung rom.zip, chỉnh sửa slideia_manifest.xml, kiểm tra và mở yêu cầu kéo.">
   <meta property="og:url" content="https://innioasis.app/developers_vi.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="Nhà phát triển | Thêm chương trình cơ sở tùy chỉnh vào Innioasis Trình cập nhật CE - Innioasis Tải xuống chương trình cơ sở">
+  <meta name="twitter:description" content="Tài liệu dành cho nhà phát triển về cách thêm chương trình cơ sở Innioasis Y1 hoặc Y2 tùy chỉnh vào Trình cập nhật CE: phân nhánh kho lưu trữ, xuất bản nội dung rom.zip, chỉnh sửa slideia_manifest.xml, kiểm tra và mở yêu cầu kéo.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">Dành cho nhà phát triển phần mềm cơ sở</p>
+      <h1>Thêm chương trình cơ sở của bạn vào Updater CE.</h1>
+      <p class="lead">Updater CE là danh mục cộng đồng và trình cài đặt cho chương trình cơ sở tùy chỉnh. Phát triển dự án của bạn từ cơ sở ROM, xuất bản nó dưới dạng kho lưu trữ công cộng với nội dung phát hành chính xác, thêm các mục mô hình vào <code>slidia_manifest.xml</code>, kiểm tra bộ lọc mô hình và mở yêu cầu kéo. Một kho lưu trữ có thể phục vụ mọi mô hình mà nó hỗ trợ.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Xem nguồn CE của Trình cập nhật</a>
         <a class="lumen-button" href="firmware_vi.html">Duyệt tải xuống phần mềm</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">Bắt đầu từ cơ sở ROM</h2>
+      <p>ROM cơ sở cung cấp cho các nhà phát triển chương trình cơ sở tùy chỉnh một nền tảng Android sạch có bật chip vô tuyến không dây. Trên Y1, họ kích hoạt Wi-Fi và GPS cùng với Bluetooth và FM của nhà máy; trên Y2 họ kích hoạt Wi-Fi, GPS và FM cùng với Bluetooth của nhà máy.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">Bản tải xuống cơ sở ROM để phát triển chương trình cơ sở tùy chỉnh, với phiên bản Android và các tính năng không dây mà mỗi phiên bản đều kích hoạt</caption>
           <thead>
-            <tr><th scope="col">Tải xuống</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">Tải xuống</th><th scope="col">Thiết bị</th><th scope="col">Android</th><th scope="col">Tính năng không dây</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Thêm Wi-Fi và GPS vào Bluetooth và FM của nhà máy (FM đã hoạt động trên Y1 từ nhà máy). Dành cho Y1 người chơi cài đặt OS 2.0.0 trở lên.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Thêm Wi-Fi và GPS vào Bluetooth và FM của nhà máy (FM đã hoạt động trên Y1 từ nhà máy). Dành cho Y1 người chơi cài đặt hệ điều hành cũ hơn 2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Thêm Wi-Fi, GPS và FM vào Bluetooth gốc. Chip vô tuyến Y2 được kích hoạt hoàn toàn nên FM cũng có sẵn ở đây.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">Những hình ảnh này là nền tảng Android gốc (AOSP) đã bật sóng không dây của thiết bị, vì vậy chương trình cơ sở tùy chỉnh có thể thêm các tính năng mạng thay vì thay thế ngăn xếp sóng. Chúng là điểm khởi đầu thực tế cho các bước xuất bản dưới đây.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">Sử dụng các tên nội dung phát hành này</h2>
+      <p>Tên tập tin là một phần của tín hiệu tương thích. Giữ tên chính xác và đặt các tệp ZIP vào nội dung phát hành của dự án, không chỉ trong cây nguồn kho lưu trữ.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">Tên nội dung ZIP của chương trình cơ sở và các thiết bị được hỗ trợ</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Phần cứng</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">Tài sản</th><th scope="col">Thiết bị</th><th scope="col">Phần cứng</th><th scope="col">Ý nghĩa</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 thiết bị đi kèm với OS 2.0.0 trở lên.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 thiết bị đi kèm hệ điều hành cũ hơn 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Gói cài đặt đầy đủ Y2. Giữ nó tách biệt với nội dung Y1.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>Không đổi tên gói để phù hợp với mô hình khác.</strong> Y1 và Y2 sử dụng các tệp nền tảng MediaTek khác nhau và cấu hình flash. Xuất bản gói cho phần cứng mà nó thực sự hỗ trợ.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">Cách kết nối hoạt động</h2>
+      <p>Trình cập nhật CE đọc bảng kê khai dưới dạng danh mục của nó. Mỗi <code>&lt;package&gt;</code> dòng cho nó biết tên dự án, kho lưu trữ, mô hình và trình xử lý. Khi người dùng chọn dự án đó, Trình cập nhật sẽ kiểm tra các bản phát hành đã xuất bản của kho lưu trữ và tìm kiếm <code>rom*.zip</code> tài sản.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <h3>Bản kê khai</h3>
+          <p>Đặt tên cho dự án và ánh xạ nó tới một mô hình. Y1 và Y2 cần các dòng riêng biệt, ngay cả khi chúng chia sẻ kho lưu trữ.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>Bản phát hành đã xuất bản</h3>
+          <p>Chứa nội dung ZIP có thể cài đặt. Một bản phát hành có thể chứa các gói Y1 Type A, Y1 Type B và Y2 cùng nhau.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>Cài đặt bản cập nhật CE</h3>
+          <p>Sử dụng mô hình đã chọn để chọn gói phù hợp và đường dẫn nhấp nháy dành riêng cho mô hình. Người dùng không cần phải đoán tên tệp.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">Xuất bản một dự án trong năm bước</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>và <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> Mở <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Phân nhánh kho lưu trữ Updater CE.</strong> Tạo nhánh của riêng bạn <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, sau đó sao chép ngã ba của bạn cục bộ.</li>
+        <li><strong>Chuẩn bị một kho lưu trữ phần mềm công cộng.</strong> Đảm bảo kho lưu trữ ở chế độ công khai và bản phát hành của nó chứa đúng nội dung ZIP. Bạn có thể đặt <code>rom.zip</code>, <code>rom_type_b.zip</code>và <code>rom_y2.zip</code> trên cùng một bản phát hành khi chúng thuộc cùng một phiên bản.</li>
+        <li><strong>Chỉnh sửa bảng kê khai.</strong> Mở <code>slidia_manifest.xml</code> trong thư mục gốc của nhánh Updater CE của bạn. Thêm một dòng cho mỗi kiểu máy mà bản phát hành hỗ trợ (Y1 và Y2 là cặp chung). các <code>repo</code> giá trị là của kho lưu trữ <code>owner/repository</code>; <code>url</code> là trang dự án công cộng.</li>
+        <li><strong>Kiểm tra danh mục.</strong> Chạy Trình cập nhật từ thanh toán đã chỉnh sửa. Chọn Y1 và xác nhận dự án hiển thị nội dung Y1. Chọn Y2 và xác nhận nó hiển thị bản phát hành Y2. Kiểm tra riêng Type A và Type B khi cả hai đều được xuất bản.</li>
+        <li><strong>Mở một yêu cầu kéo.</strong> Đẩy thay đổi tệp kê khai tới nhánh của bạn và mở yêu cầu kéo đối với kho lưu trữ CE của Trình cập nhật ngược dòng. Bao gồm liên kết dự án, kiểu máy được hỗ trợ, thẻ phát hành, tên nội dung và thiết bị bạn đã thử nghiệm.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">Tạo dòng kê khai của bạn</h2>
+      <p>Điền vào kho lưu trữ và đánh dấu vào mọi mô hình mà bản phát hành hỗ trợ. Trình tạo ghi một <code>&lt;package&gt;</code> dòng trên mỗi mô hình và chỉ bao gồm các thuộc tính bạn đặt, do đó kết quả khớp với hiện tại <code>slidia_manifest.xml</code> định dạng. Mọi thuộc tính mà Trình cập nhật CE đọc đều có sẵn bên dưới - các thuộc tính tùy chọn nằm bên dưới <strong>Nhiều lựa chọn hơn</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">URL kho lưu trữ</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">Kho lưu trữ GitHub công khai. Máy phát điện chiết xuất <code>owner/repository</code> từ URL.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">Tên phần mềm</label>
+            <input type="text" id="manifest-name" placeholder="Mặc định là tên kho lưu trữ" autocomplete="off">
+            <span class="lumen-field-help">Hiển thị trong ứng dụng và danh mục trang web.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">URL dự án</label>
+            <input type="url" id="manifest-project-url" placeholder="Mặc định là URL kho lưu trữ" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Trang hướng tới con người dành cho dự án hoặc ghi chú phát hành của dự án.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">Thương hiệu</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">Xóa mục này để sử dụng nhãn hiệu mặc định của mô hình. SR1, Q3, Q5 và Q3e là các mẫu Timmkoo.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>Thiết bị (mỗi dòng một dòng)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">Các mô hình khác</label>
+            <input type="text" id="manifest-other-devices" placeholder="Được phân tách bằng dấu phẩy, ví dụ: X1, X2" autocomplete="off">
+            <span class="lumen-field-help">Đối với một mô hình không được liệt kê ở trên. Các mô hình đã biết giữ nguyên chính tả danh mục của họ.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>Cờ</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> - không bao giờ cung cấp Keep Data cho phần sụn này</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Được xây dựng từ phần mềm gốc - bổ sung <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">Keep Data chỉ được cung cấp khi chương trình cơ sở đến và chương trình cơ sở đã cài đặt giống nhau hoặc dùng chung một <code>derivative</code> gốc. Chỉ sử dụng cờ khi dữ liệu người dùng thực sự không thể được chuyển sang.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>Tùy chọn khác: biểu tượng, tác phẩm nghệ thuật, nội dung phát hành, cài đặt sau và phản chiếu</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>Biểu tượng và tác phẩm nghệ thuật</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">Tệp biểu tượng</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">Chọn hình ảnh bạn sẽ cam kết với kho lưu trữ. Điều này xem trước nó và xây dựng URL thô của nó; nó không tải lên bất cứ điều gì.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">Đường dẫn biểu tượng trong kho lưu trữ</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">Đường dẫn đến hình ảnh đã cam kết, liên quan đến thư mục gốc của kho lưu trữ.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">nhánh biểu tượng</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">URL biểu tượng</label>
+              <input type="url" id="manifest-icon-url" placeholder="Điền từ đường dẫn tập tin" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">URL hình ảnh trực tiếp. Khi trống, ứng dụng sẽ sử dụng bản phát hành <code>updater.png</code> hoặc một biểu tượng được tạo.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="Xem trước biểu tượng đã chọn">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
+              <label for="manifest-icon-dark-url">URL biểu tượng chế độ tối</label>
               <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <span class="lumen-field-help">Biểu tượng chủ đề tối tùy chọn. <code>image_dark</code> là bí danh được chấp nhận.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">URL tác phẩm nghệ thuật nhẹ nhàng</label>
+              <input type="url" id="manifest-image-url" placeholder="hình ảnh" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Tác phẩm nghệ thuật thứ cấp, đã thử sau khi phát hành hình ảnh và <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
-              <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
+              <label for="manifest-image-dark-url">URL tác phẩm nghệ thuật tối</label>
+              <input type="url" id="manifest-image-dark-url" placeholder="hình ảnh tối" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>Phát hành tài sản</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">Phát hành tên tài sản</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">Một tên cho mỗi mô hình được chọn. Để trống để sử dụng <code>rom.zip</code> trên Y1 và <code>rom_&lt;model&gt;.zip</code> ở nơi khác.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
+              <label for="manifest-asset-pattern">Mẫu nội dung</label>
               <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <span class="lumen-field-help">Glob được sử dụng khi các zip của bản phát hành không được đặt tên <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A nội dung</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob cho gói Y1 Type A khi tên của nó không nói như vậy.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B nội dung</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob cho gói Y1 Type B khi tên của nó không nói như vậy.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">Phiên bản ứng dụng tối thiểu</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">Ẩn mục nhập khỏi các bản dựng Updater CE cũ hơn.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>Liên kết, nhân bản và nhóm Keep Data</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">Trang sau cài đặt</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">Đã mở sau khi cài đặt thành công.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">Trang sau cài đặt thứ hai</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">Bước thứ hai tùy chọn để có hướng dẫn thiết lập nhiều trang.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">Gương zip di động</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">Được phân tách bằng dấu phẩy <code>*-mirror</code> kho lưu trữ xây dựng các gói Zip nhấp nháy di động.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">Kho phái sinh</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">Phần sụn mà bản phát hành này được xây dựng từ đó. Các chương trình cơ sở liên quan chia sẻ một phân vùng dữ liệu, đây là điều mà Keep Data sẽ kiểm tra.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">Kho thông tin</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">Kho ứng dụng có bản phát hành mô tả các ứng dụng trong chương trình cơ sở này. Nó cũng cần một trang cài đặt sau.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">kho lưu trữ APK</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">Kho ứng dụng có APK ứng dụng tải xuống và cài đặt sau chương trình cơ sở.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>Danh mục bổ sung</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">sên</label>
+              <input type="text" id="manifest-slug" placeholder="Được tạo từ tên và mô hình" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Giá trị nhận dạng ổn định cho các liên kết và bản ghi cài đặt đã lưu. Mô hình được tự động thêm vào khi một số mô hình được chọn.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">Mô tả</label>
+              <input type="text" id="manifest-description" placeholder="Mô tả danh mục ngắn gọn" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Sao chép dòng</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">Đang tải bản kê khai mới nhất…</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>Xem trước tệp kê khai mới nhất có dòng của bạn được thêm vào</summary>
+          <p>Máy phát điện đã lấy dòng điện <code>slidia_manifest.xml</code> từ kho lưu trữ này và chèn các dòng đã tạo của bạn ngay trước đó <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>Một dòng là không đủ cho một kho lưu trữ được chia sẻ.</strong> Nếu thiếu dòng Y2, người dùng Y2 sẽ không nhận được mục nhập khớp với mô hình ngay cả khi <code>rom_y2.zip</code> tồn tại trong bản phát hành của dự án. Điều này cũng đúng với mọi mô hình khác mà bản phát hành của bạn hỗ trợ.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">Mọi thuộc tính mà bảng kê khai đọc</h3>
+      <p>Đây là những thuộc tính mà các bản dựng Updater CE hiện tại hiểu được. Trình tạo chỉ ghi những cái bạn điền vào; ứng dụng sẽ quay trở lại các giá trị mặc định hợp lý cho phần còn lại.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">Các thuộc tính của gói slideia_manifest.xml và ý nghĩa của chúng</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">Thuộc tính</th><th scope="col">Cần thiết</th><th scope="col">Nó làm gì</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>Có</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>Có</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>Có</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> và <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>Tùy chọn</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>Tùy chọn</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>Tùy chọn</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Tùy chọn</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>Tùy chọn</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>Tùy chọn</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>Tùy chọn</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Tùy chọn</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Tùy chọn</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>Tùy chọn</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>Tùy chọn</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> hoặc <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>Tùy chọn</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>Tùy chọn</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Tùy chọn</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>Tùy chọn</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>Tùy chọn</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Có</td><td>Tên phần mềm hiển thị trong danh mục và trên thẻ cài đặt.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>Có</td><td><code>owner/repo</code>. Ứng dụng đọc các bản phát hành GitHub của kho lưu trữ đó.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Có</td><td>Mô hình mục tiêu, chữ hoa (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>,…). Giữ một mục cho mỗi mô hình.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Được đề xuất</td><td>Trang dự án hoặc ghi chú phát hành được mở từ danh mục.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Có trong thực tế</td><td><code>type="img"</code> và <code>handler="Custom Firmware"</code>. Các loại khác và trình xử lý không phải phần sụn bị bỏ qua.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Tùy chọn</td><td>Danh mục thương hiệu (<code>Innioasis</code>, <code>Timmkoo</code>). Empty sử dụng nhãn hiệu mặc định của mô hình.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Tùy chọn</td><td>Phát hành tên tệp tài sản. Mặc định là <code>rom.zip</code> trên Y1 và <code>rom_&lt;model&gt;.zip</code> trên các mô hình khác.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Tùy chọn</td><td>Toàn cầu không phân biệt chữ hoa chữ thường đối với các bản phát hành có khóa phần sụn không được đặt tên <code>rom*.zip</code> (ví dụ <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Tùy chọn</td><td>Quả cầu xác định các khóa kéo Y1 Type A và Type B khi tên tệp của chúng không chứa các dấu hiệu thông thường.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Tùy chọn</td><td>URL biểu tượng. Được sử dụng sau khi phát hành riêng <code>updater.png</code> / <code>updater.jpg</code>và làm dự phòng cho mỗi bản phát hành.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Tùy chọn</td><td>Logo chủ đề tối. <code>image_dark</code> là bí danh được chấp nhận.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Tùy chọn</td><td>Tác phẩm nghệ thuật ánh sáng phụ, đã thử sau <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Tùy chọn</td><td>(Các) trang được mở sau khi cài đặt thành công. Phần thứ hai bao gồm một hướng dẫn gồm nhiều bước.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Tùy chọn</td><td>Được phân tách bằng dấu phẩy <code>*-mirror</code> repos xuất bản các gói di động sẵn sàng để chạy.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Tùy chọn</td><td>Kho lưu trữ phần sụn được xây dựng từ đó. Firmware có cùng gốc phái sinh có thể lưu giữ dữ liệu người dùng.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Tùy chọn</td><td>Kho ứng dụng có bản phát hành mô tả những gì chương trình cơ sở triển khai. Yêu cầu <code>post_install</code> hoặc <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Tùy chọn</td><td>Kho ứng dụng có APK ứng dụng cài đặt sau chương trình cơ sở.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Tùy chọn</td><td>Ẩn mục nhập khi Updater CE cũ hơn phiên bản này.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Tùy chọn</td><td><code>true</code> (cũng <code>1</code> / <code>yes</code>) chặn hoàn toàn Keep Data cho phần sụn này.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Tùy chọn</td><td>Giá trị nhận dạng ổn định cho các liên kết và bản ghi cài đặt đã lưu. Được tạo từ tên và kiểu máy khi trống.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Tùy chọn</td><td>Mô tả danh mục ngắn gọn. Nó có thể là giá trị thuộc tính hoặc văn bản của phần tử.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> và <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">Tên kế thừa vẫn được đọc để tương thích: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> và <code>image_dark</code>. Các mục mới nên sử dụng tên hiện tại ở trên.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Gửi các dòng dưới dạng yêu cầu kéo</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Sao chép các dòng được tạo ở trên.</strong> Chúng đã khớp với định dạng tệp kê khai mới nhất.</li>
+        <li><strong>Chỉnh sửa <code>slidia_manifest.xml</code> trong kho lưu trữ.</strong> Sử dụng liên kết chỉnh sửa bên dưới; máy chủ lưu trữ tự động tạo một nhánh và một nhánh cho bạn.</li>
+        <li><strong>Dán các dòng ngay trước <code>&lt;/slidia&gt;</code>,</strong> giữ nguyên các mục hiện có không thay đổi.</li>
+        <li><strong>Cam kết chi nhánh mới</strong> (ví dụ <code>add-your-firmware</code>), sau đó mở yêu cầu kéo đối với kho lưu trữ của Trình cập nhật CE.</li>
+        <li><strong>Trong PR, bao gồm</strong> liên kết dự án, kiểu máy được hỗ trợ, thẻ phát hành, tên nội dung và thiết bị bạn đã thử nghiệm.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Chỉnh sửa bảng kê khai CE của Trình cập nhật</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Xem bản kê khai mới nhất</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> và <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Giữ tên mô hình viết hoa, sử dụng URL chính xác của kho lưu trữ công cộng của bạn và giữ <code>type="img"</code> và <code>handler="Custom Firmware"</code> để nhập phần mềm cơ sở.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">Làm cho bản phát hành dễ dàng được xác minh</h2>
+      <p>Cung cấp cho bản phát hành một thẻ rõ ràng và ghi chú phát hành. Thẻ này hữu ích với mọi người nhưng tên tài sản ZIP là tên mà Trình cập nhật CE sử dụng để xác định các gói cài đặt.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>Danh sách kiểm tra phát hành</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>Xuất bản bản phát hành một cách công khai.</li>
+            <li>Đính kèm tệp ZIP dưới dạng nội dung phát hành.</li>
+            <li>Nêu rõ model được hỗ trợ và Type A hoặc Type B trong ghi chú.</li>
+            <li>Liệt kê mọi sự chuẩn bị cần thiết hoặc những giới hạn đã biết.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>và <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>Một bản phát hành, ba nội dung</h3>
+          <p>Một bản phát hành chia sẻ có thể chứa <code>rom.zip</code>, <code>rom_type_b.zip</code>và <code>rom_y2.zip</code>. Trình cập nhật phân loại chúng một cách riêng biệt và chọn từ các bộ lọc mô hình và phần cứng.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>Đừng gộp các dự đoán</h3>
+          <p>Không bao gồm gói Y1 dưới tên tệp Y2 hoặc thêm dữ liệu phân tán, trình tải trước hoặc phân vùng chưa được kiểm tra chỉ để làm cho nội dung xuất hiện.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">Tại sao các mục mô hình lại quan trọng trong quá trình nhấp nháy</h2>
+      <p>Tệp kê khai không chỉ là một menu tải xuống. Sau khi trích xuất, Updater CE sử dụng mô hình đã giải quyết để chuẩn bị đường dẫn cài đặt phù hợp. Y1 và Y2 có các tệp nền tảng, trình tải trước, cấu hình phân tán và bố cục thiết bị khác nhau.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> trình cập nhật chuẩn bị đường dẫn Y1 và sử dụng các phân vùng được đặt tên của thiết bị khi MTKClient được sử dụng.</li>
+        <li><strong>Y2:</strong> trình cập nhật chuẩn bị đường dẫn Y2 và sử dụng cấu hình Y2 MT6582. Khôi phục hoàn toàn có thể sử dụng địa chỉ vật lý từ dữ liệu phân tán phù hợp với mô hình.</li>
+        <li><strong>Hỗ trợ đa nền tảng:</strong> Trình cập nhật CE xử lý quá trình flash gốc trực tiếp trên Windows, Linux và macOS (hỗ trợ cả máy Mac Intel và Apple Silicon) mà không cần thêm công cụ flash.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>Những người đóng góp nên cung cấp các tập tin chương trình cơ sở chính xác, không phải các bản flash flash.</strong> Không chỉnh sửa địa chỉ phân tán, trình tải trước, tệp DA hoặc lệnh phân vùng để xử lý gói xấu. Sửa nội dung phát hành và thử nghiệm trên mô hình dự định.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">Trước khi bạn yêu cầu hợp nhất</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>và <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>Xác thực XML bằng trình phân tích cú pháp XML. Thiếu trích dẫn hoặc kết thúc <code>/&gt;</code> có thể ẩn mọi mục sau nó.</li>
+        <li>Khởi chạy trình cập nhật từ quá trình thanh toán của bạn để nó tải tệp kê khai cục bộ trước khi làm mới từ xa.</li>
+        <li>Kiểm tra Y1 và Y2 một cách độc lập. Xác nhận rằng dự án chỉ xuất hiện ở nơi gói của nó được hỗ trợ.</li>
+        <li>Kiểm tra danh sách phát hành cho <code>rom.zip</code>, <code>rom_type_b.zip</code>và <code>rom_y2.zip</code> như có thể áp dụng.</li>
+        <li>Kiểm tra quá trình cài đặt thực tế trên thiết bị dự định bằng cáp dữ liệu USB đáng tin cậy và kế hoạch khôi phục để quay lại Phần mềm gốc.</li>
+        <li>Trong yêu cầu kéo, hãy giải thích những gì bạn đã thử nghiệm. Không mô tả một mô hình chưa được kiểm tra là được hỗ trợ.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>Để kiểm tra cục bộ, hãy chạy lệnh đó từ thư mục gốc của kho lưu trữ. Nó chỉ xác minh cú pháp XML; nó không chứng minh rằng bản phát hành có chứa chương trình cơ sở hợp lệ hoặc thiết bị an toàn để flash.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">Liên kết dự án hữu ích</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_vi.html">Community contribution notes</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Trình cập nhật ngã ba CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Xem bảng kê khai</a>
+        <a class="lumen-button" href="support_devs_vi.html">Ghi chú đóng góp của cộng đồng</a>
         <a class="lumen-button" href="troubleshooting_vi.html">Khắc phục sự cố</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">Kỹ năng sửa đổi cho các tác nhân AI</h2>
+      <p>Kho lưu trữ <code>skills/</code> thư mục là cơ sở kiến ​​thức dựa trên nguồn dành cho các tác nhân làm việc trên phần cứng, chương trình cơ sở, chủ đề và ứng dụng Y1 và Y2. Mỗi kỹ năng đặt tên cho các tệp dự án mà các tuyên bố của nó xuất phát từ đó, vì vậy nhân viên có thể kiểm tra thông tin thực tế trước khi thay đổi thiết bị.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>Bắt đầu ở đây</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Chỉ số kỹ năng và quy tắc an toàn</a></h3>
+          <p>Cách tải một kỹ năng, thực tế áp dụng cho mô hình nào và các phân vùng mà không gói nào nên ghi.</p>
         </article>
         <article class="lumen-card">
           <small>Phần cứng</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 phần cứng</a></h3>
+          <p>MT6572, bánh xe là sự kiện quan trọng, màn hình 480x360, đường dẫn FM/âm thanh, bộ lưu trữ và bản đồ phân vùng Type A/B.</p>
         </article>
         <article class="lumen-card">
           <small>Phần cứng</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 phần cứng</a></h3>
+          <p>Bảng MT6582, cây thiết bị, bảng GC9503V/ST7701S, đường ray PMIC/DAC, phân vùng và hình ảnh khởi động.</p>
         </article>
         <article class="lumen-card">
-          <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <small>Phần sụn</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Gói phần mềm</a></h3>
+          <p>rom.zip giải phẫu, tệp phân tán, hợp đồng cập nhật Loại A và danh sách kiểm tra phát hành.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>Chủ đề</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Sáng tác chủ đề và giao diện</a></h3>
+          <p>Y1 chủ đề config.json, Rockbox WPS/SBS, Reborn giao diện và định dạng giao diện Y2Player v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>Tất cả các kỹ năng</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Duyệt thư mục kỹ năng</a></h3>
+          <p>Rockbox Y1/Y2, ROM Android gốc, Y2Linux, ứng dụng Android, trình khởi chạy, ghi chú phát hành và xuất bản trang web.</p>
         </article>
       </div>
     </section>

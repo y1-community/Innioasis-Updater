@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>डेवलपर्स | Innioasis अपडेटर सीई - Innioasis फ़र्मवेयर डाउनलोड में कस्टम फ़र्मवेयर जोड़ें</title>
+  <meta name="description" content="अपडेटर सीई में एक कस्टम Innioasis Y1 या Y2 फर्मवेयर जोड़ने के लिए डेवलपर दस्तावेज़: रिपॉजिटरी को फोर्क करें, rom.zip संपत्तियों को प्रकाशित करें, slidia_manifest.xml को संपादित करें, परीक्षण करें और एक पुल अनुरोध खोलें।">
+  <meta name="keywords" content="Innioasis अपडेटर डेवलपर गाइड, slidia_manifest.xml, कस्टम फ़र्मवेयर, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, संपत्ति जारी करें">
   <link rel="canonical" href="https://innioasis.app/developers_hi.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="डेवलपर्स | Innioasis अपडेटर सीई - Innioasis फ़र्मवेयर डाउनलोड में कस्टम फ़र्मवेयर जोड़ें">
+  <meta property="og:description" content="अपडेटर सीई में एक कस्टम Innioasis Y1 या Y2 फर्मवेयर जोड़ने के लिए डेवलपर दस्तावेज़: रिपॉजिटरी को फोर्क करें, rom.zip संपत्तियों को प्रकाशित करें, slidia_manifest.xml को संपादित करें, परीक्षण करें और एक पुल अनुरोध खोलें।">
   <meta property="og:url" content="https://innioasis.app/developers_hi.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="डेवलपर्स | Innioasis अपडेटर सीई - Innioasis फ़र्मवेयर डाउनलोड में कस्टम फ़र्मवेयर जोड़ें">
+  <meta name="twitter:description" content="अपडेटर सीई में एक कस्टम Innioasis Y1 या Y2 फर्मवेयर जोड़ने के लिए डेवलपर दस्तावेज़: रिपॉजिटरी को फोर्क करें, rom.zip संपत्तियों को प्रकाशित करें, slidia_manifest.xml को संपादित करें, परीक्षण करें और एक पुल अनुरोध खोलें।">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">फर्मवेयर डेवलपर्स के लिए</p>
+      <h1>अपने फर्मवेयर को अपडेटर सीई में जोड़ें।</h1>
+      <p class="lead">अपडेटर सीई कस्टम फर्मवेयर के लिए सामुदायिक कैटलॉग और इंस्टॉलर है। अपने प्रोजेक्ट को एक आधार से विकसित करें ROM, इसे सही रिलीज़ संपत्तियों के साथ एक सार्वजनिक भंडार के रूप में प्रकाशित करें, मॉडल प्रविष्टियाँ जोड़ें <code>slidia_manifest.xml</code>, मॉडल फ़िल्टर का परीक्षण करें, और एक पुल अनुरोध खोलें। एक रिपॉजिटरी अपने द्वारा समर्थित प्रत्येक मॉडल की सेवा कर सकती है।</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">अपडेटर सीई स्रोत देखें</a>
         <a class="lumen-button" href="firmware_hi.html">सॉफ़्टवेयर डाउनलोड ब्राउज़ करें</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">आधार से प्रारंभ करें ROM</h2>
+      <p>बेस रोम कस्टम फ़र्मवेयर डेवलपर्स को वायरलेस रेडियो चिप्स सक्षम होने के साथ एक साफ़ एंड्रॉइड फ़ाउंडेशन देते हैं। Y1 पर वे फ़ैक्टरी ब्लूटूथ और एफएम के साथ-साथ वाई-फ़ाई और जीपीएस सक्षम करते हैं; Y2 पर वे फ़ैक्टरी ब्लूटूथ के साथ-साथ वाई-फ़ाई, जीपीएस और एफएम सक्षम करते हैं।</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">आधार ROM कस्टम फ़र्मवेयर विकास के लिए डाउनलोड, एंड्रॉइड संस्करण और वायरलेस सुविधाओं के साथ जो हर एक को सक्षम करता है</caption>
           <thead>
-            <tr><th scope="col">डाउनलोड</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">डाउनलोड</th><th scope="col">युक्ति</th><th scope="col">Android</th><th scope="col">वायरलेस सुविधाएँ</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>फ़ैक्टरी ब्लूटूथ और एफएम में वाई-फाई और जीपीएस जोड़ता है (एफएम पहले से ही फ़ैक्टरी से Y1 पर काम करता है)। Y1 खिलाड़ियों के लिए जो ओएस 2.0.0 या उसके बाद के संस्करण के साथ भेजे गए हैं।</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>फ़ैक्टरी ब्लूटूथ और एफएम में वाई-फाई और जीपीएस जोड़ता है (एफएम पहले से ही फ़ैक्टरी से Y1 पर काम करता है)। Y1 खिलाड़ियों के लिए जो 2.0.0 से पहले के ओएस के साथ भेजे गए थे।</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>फ़ैक्टरी ब्लूटूथ में वाई-फाई, जीपीएस और एफएम जोड़ता है। Y2 रेडियो चिप पूरी तरह से सक्षम है, इसलिए एफएम यहां भी उपलब्ध है।</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">ये छवियां स्टॉक एंड्रॉइड बेस (एओएसपी) हैं जिसमें डिवाइस वायरलेस रेडियो सक्षम है, इसलिए एक कस्टम फर्मवेयर रेडियो स्टैक को बदलने के बजाय नेटवर्क सुविधाएं जोड़ सकता है। वे नीचे दिए गए प्रकाशन चरणों के लिए व्यावहारिक प्रारंभिक बिंदु हैं।</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">इन रिलीज़ परिसंपत्ति नामों का उपयोग करें</h2>
+      <p>फ़ाइल नाम संगतता संकेत का हिस्सा है. नाम सटीक रखें और ज़िप फ़ाइलों को प्रोजेक्ट की रिलीज़ संपत्तियों में रखें, न कि केवल रिपॉजिटरी सोर्स ट्री में।</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">फ़र्मवेयर ज़िप संपत्ति के नाम और समर्थित डिवाइस</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">हार्डवेयर</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">संपत्ति</th><th scope="col">युक्ति</th><th scope="col">हार्डवेयर</th><th scope="col">मतलब</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 डिवाइस जो ओएस 2.0.0 या उसके बाद के संस्करण के साथ भेजे गए हैं।</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 डिवाइस जो 2.0.0 से पहले के ओएस के साथ भेजे गए थे।</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Y2 पूर्ण-इंस्टॉल पैकेज। इसे Y1 संपत्तियों से अलग रखें।</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>किसी पैकेज को किसी अन्य मॉडल में फिट करने के लिए उसका नाम न बदलें।</strong> Y1 और Y2 अलग-अलग MediaTek प्लेटफ़ॉर्म फ़ाइलों और फ़्लैशिंग कॉन्फ़िगरेशन का उपयोग करते हैं। उस हार्डवेयर के लिए पैकेज प्रकाशित करें जिसका वह वास्तव में समर्थन करता है।</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">कनेक्शन कैसे काम करता है</h2>
+      <p>अपडेटर सीई मैनिफ़ेस्ट को उसके कैटलॉग के रूप में पढ़ता है। प्रत्येक <code>&lt;package&gt;</code> लाइन इसे प्रोजेक्ट का नाम, रिपॉजिटरी, मॉडल और हैंडलर बताती है। जब कोई उपयोगकर्ता उस प्रोजेक्ट को चुनता है, तो अपडेटर रिपॉजिटरी की प्रकाशित रिलीज़ की जाँच करता है और एक की तलाश करता है <code>rom*.zip</code> संपत्ति.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <h3>प्रकट</h3>
+          <p>प्रोजेक्ट को नाम दें और इसे एक मॉडल पर मैप करें। Y1 और Y2 को अलग-अलग पंक्तियों की आवश्यकता होती है, भले ही वे एक रिपॉजिटरी साझा करते हों।</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>प्रकाशित विज्ञप्ति</h3>
+          <p>इंस्टॉल करने योग्य ज़िप संपत्तियां शामिल हैं। एक एकल रिलीज़ में Y1 Type A, Y1 Type B, और Y2 पैकेज एक साथ हो सकते हैं।</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>अद्यतनकर्ता सीई स्थापित करें</h3>
+          <p>मिलान पैकेज और मॉडल-विशिष्ट फ़्लैशिंग पथ चुनने के लिए चयनित मॉडल का उपयोग करता है। उपयोगकर्ता को फ़ाइल नाम का अनुमान नहीं लगाना चाहिए.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">किसी प्रोजेक्ट को पाँच चरणों में प्रकाशित करें</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>, और <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> खुला <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>अपडेटर सीई रिपॉजिटरी को फोर्क करें।</strong> अपना खुद का कांटा बनाएं <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, फिर अपने कांटे को स्थानीय रूप से क्लोन करें।</li>
+        <li><strong>एक सार्वजनिक फ़र्मवेयर रिपोजिटरी तैयार करें.</strong> सुनिश्चित करें कि रिपॉजिटरी सार्वजनिक है और इसकी रिलीज़ में सही ज़िप संपत्तियाँ हैं। आप डाल सकते हैं <code>rom.zip</code>, <code>rom_type_b.zip</code>, और <code>rom_y2.zip</code> एक ही रिलीज़ पर जब वे एक ही संस्करण से संबंधित हों।</li>
+        <li><strong>मैनिफ़ेस्ट संपादित करें.</strong> खुला <code>slidia_manifest.xml</code> आपके अपडेटर सीई फोर्क की जड़ में। रिलीज़ द्वारा समर्थित प्रत्येक मॉडल के लिए एक पंक्ति जोड़ें (Y1 और Y2 सामान्य जोड़ी हैं)। द <code>repo</code> मूल्य भंडार का है <code>owner/repository</code>; <code>url</code> सार्वजनिक परियोजना पृष्ठ है.</li>
+        <li><strong>कैटलॉग का परीक्षण करें.</strong> संपादित चेकआउट से अपडेटर चलाएँ। Y1 चुनें और पुष्टि करें कि प्रोजेक्ट Y1 संपत्ति दिखाता है। Y2 चुनें और पुष्टि करें कि यह Y2 रिलीज़ दिखाता है। जब दोनों प्रकाशित हों तो Type A और Type B को अलग-अलग जांचें।</li>
+        <li><strong>पुल अनुरोध खोलें.</strong> मेनिफेस्ट परिवर्तन को अपने फोर्क में पुश करें और अपस्ट्रीम अपडेटर सीई रिपॉजिटरी के खिलाफ एक पुल अनुरोध खोलें। प्रोजेक्ट लिंक, समर्थित मॉडल, रिलीज़ टैग, परिसंपत्ति नाम और आपके द्वारा परीक्षण किए गए डिवाइस शामिल करें।</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">अपनी प्रकट पंक्तियाँ उत्पन्न करें</h2>
+      <p>रिपॉजिटरी भरें और रिलीज़ द्वारा समर्थित प्रत्येक मॉडल पर टिक करें। जनरेटर एक लिखता है <code>&lt;package&gt;</code> प्रति मॉडल पंक्ति और केवल आपके द्वारा निर्धारित विशेषताएँ शामिल हैं, इसलिए परिणाम वर्तमान से मेल खाता है <code>slidia_manifest.xml</code> प्रारूप। प्रत्येक विशेषता अपडेटर सीई पढ़ता है नीचे उपलब्ध है - वैकल्पिक नीचे हैं <strong>अधिक विकल्प</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">रिपोजिटरी यूआरएल</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">सार्वजनिक GitHub भंडार। जनरेटर निकालता है <code>owner/repository</code> यूआरएल से.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">सॉफ़्टवेयर का नाम</label>
+            <input type="text" id="manifest-name" placeholder="रिपॉजिटरी नाम पर डिफ़ॉल्ट" autocomplete="off">
+            <span class="lumen-field-help">ऐप और साइट कैटलॉग में दिखाया गया है।</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">प्रोजेक्ट यूआरएल</label>
+            <input type="url" id="manifest-project-url" placeholder="रिपॉजिटरी URL पर डिफ़ॉल्ट" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">परियोजना या उसके रिलीज़ नोट्स के लिए मानव-सामना करने वाला पृष्ठ।</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">ब्रांड</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">मॉडल के डिफ़ॉल्ट ब्रांड का उपयोग करने के लिए इसे साफ़ करें। SR1, Q3, Q5 और क्यू3ई Timmkoo मॉडल हैं।</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>उपकरण (प्रत्येक एक पंक्ति)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">अन्य मॉडल</label>
+            <input type="text" id="manifest-other-devices" placeholder="अल्पविराम से अलग किया गया, उदा. एक्स1, एक्स2" autocomplete="off">
+            <span class="lumen-field-help">ऐसे मॉडल के लिए जो ऊपर सूचीबद्ध नहीं है. ज्ञात मॉडल अपनी कैटलॉग वर्तनी रखते हैं।</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>झंडे</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> - इस फर्मवेयर के लिए कभी भी कीप डेटा की पेशकश न करें</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>मूल सॉफ्टवेयर से निर्मित - जोड़ता है <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">कीप डेटा केवल तभी पेश किया जाता है जब आने वाला फ़र्मवेयर और इंस्टॉल किया गया फ़र्मवेयर समान हो या साझा हो <code>derivative</code> जड़. ध्वज का उपयोग केवल तभी करें जब उपयोगकर्ता का डेटा वास्तव में आगे नहीं ले जाया जा सके।</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>अधिक विकल्प: आइकन, कलाकृति, रिलीज संपत्ति, पोस्ट-इंस्टॉल और दर्पण</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>चिह्न और कलाकृति</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">चिह्न फ़ाइल</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">वह छवि चुनें जिसे आप रिपॉजिटरी के लिए प्रतिबद्ध करेंगे। यह इसका पूर्वावलोकन करता है और इसका कच्चा URL बनाता है; यह कुछ भी अपलोड नहीं करता है.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">भंडार में चिह्न पथ</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">रिपॉजिटरी रूट के सापेक्ष प्रतिबद्ध छवि का पथ।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">चिह्न शाखा</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">चिह्न यूआरएल</label>
+              <input type="url" id="manifest-icon-url" placeholder="फ़ाइल पथ से भरा गया" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">एक सीधा छवि यूआरएल. खाली होने पर, ऐप रिलीज़ का उपयोग करता है <code>updater.png</code> या एक जनरेट किया गया आइकन.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="चयनित आइकन पूर्वावलोकन">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
-              <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <label for="manifest-icon-dark-url">डार्क-मोड आइकन यूआरएल</label>
+              <input type="url" id="manifest-icon-dark-url" placeholder="आइकन_डार्क" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">वैकल्पिक डार्क-थीम आइकन. <code>image_dark</code> एक स्वीकृत उपनाम है.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">हल्की कलाकृति यूआरएल</label>
+              <input type="url" id="manifest-image-url" placeholder="छवि" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">द्वितीयक कलाकृति, रिलीज़ छवि के बाद आज़माई गई और <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
-              <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
+              <label for="manifest-image-dark-url">डार्क आर्टवर्क यूआरएल</label>
+              <input type="url" id="manifest-image-dark-url" placeholder="छवि_अंधेरा" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>संपत्ति जारी करें</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">संपत्ति का नाम जारी करें</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">प्रत्येक चयनित मॉडल के लिए एक नाम. उपयोग के लिए खाली छोड़ दें <code>rom.zip</code> Y1 पर और <code>rom_&lt;model&gt;.zip</code> अन्यत्र.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
-              <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <label for="manifest-asset-pattern">संपत्ति पैटर्न</label>
+              <input type="text" id="manifest-asset-pattern" placeholder="मेरा-फर्मवेयर-*.ज़िप" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">ग्लोब का उपयोग तब किया जाता है जब रिलीज़ के ज़िप का नाम नहीं दिया जाता है <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A संपत्ति</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Y1 Type A पैकेज के लिए ग्लोब, जबकि इसके नाम में ऐसा नहीं लिखा है।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B संपत्ति</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Y1 Type B पैकेज के लिए ग्लोब, जबकि इसके नाम में ऐसा नहीं लिखा है।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">न्यूनतम ऐप संस्करण</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">पुराने अपडेटर सीई बिल्ड से प्रविष्टि छुपाएं।</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>लिंक, दर्पण और डेटा परिवार रखें</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">पोस्ट-इंस्टॉल पेज</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">सफल इंस्टालेशन के बाद खोला गया.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">दूसरा पोस्ट-इंस्टॉल पेज</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">बहु-पृष्ठ सेटअप मार्गदर्शिका के लिए वैकल्पिक दूसरा चरण।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">पोर्टेबल ज़िप दर्पण</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">अल्पविराम से अलग किया गया <code>*-mirror</code> रिपॉजिटरी जो पोर्टेबल फ्लैशिंग ज़िप पैकेज बनाती हैं।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">व्युत्पन्न भंडार</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">यह रिलीज़ जिस फर्मवेयर से बनाया गया है। संबंधित फ़र्मवेयर एक डेटा विभाजन साझा करते हैं, जिसे Keep Data जाँचता है।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">जानकारी भंडार</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">ऐप रेपो जिसकी रिलीज़ इस फ़र्मवेयर में ऐप्स का वर्णन करती है। इसे एक पोस्ट-इंस्टॉल पेज की भी आवश्यकता है।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK भंडार</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">ऐप रेपो जिसका APK फर्मवेयर के बाद ऐप डाउनलोड और इंस्टॉल होता है।</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>कैटलॉग अतिरिक्त</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">स्लग</label>
+              <input type="text" id="manifest-slug" placeholder="नाम और मॉडल से उत्पन्न" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">लिंक और सहेजे गए इंस्टॉल रिकॉर्ड के लिए स्थिर पहचानकर्ता। जब कई मॉडल चुने जाते हैं तो मॉडल स्वचालित रूप से जुड़ जाता है।</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">विवरण</label>
+              <input type="text" id="manifest-description" placeholder="एक संक्षिप्त सूची विवरण" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">पंक्तियाँ कॉपी करें</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">नवीनतम मैनिफ़ेस्ट लोड हो रहा है...</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>अपनी जोड़ी गई पंक्तियों के साथ नवीनतम मेनिफ़ेस्ट का पूर्वावलोकन करें</summary>
+          <p>जेनरेटर से करंट आ गया <code>slidia_manifest.xml</code> इस रिपॉजिटरी से और ठीक पहले अपनी जेनरेट की गई लाइनें डालीं <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>साझा भंडार के लिए एक पंक्ति पर्याप्त नहीं है।</strong> यदि Y2 लाइन गायब है, तो Y2 उपयोगकर्ताओं को तब भी मॉडल-मिलान वाली प्रविष्टि नहीं मिलेगी <code>rom_y2.zip</code> प्रोजेक्ट की रिलीज़ में मौजूद है। आपके रिलीज़ द्वारा समर्थित हर दूसरे मॉडल के लिए भी यही सच है।</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">मेनिफेस्ट में प्रत्येक विशेषता पढ़ी जाती है</h3>
+      <p>ये वे विशेषताएँ हैं जिन्हें वर्तमान अपडेटर CE बिल्ड समझता है। जेनरेटर केवल वही लिखता है जो आप भरते हैं; ऐप बाकी के लिए समझदार डिफ़ॉल्ट पर वापस आ जाता है।</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">slidia_manifest.xml पैकेज विशेषताएँ और उनके अर्थ</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">विशेषता</th><th scope="col">जरूरत है</th><th scope="col">यह क्या करता है</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>हाँ</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>हाँ</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>हाँ</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> और <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>वैकल्पिक</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>वैकल्पिक</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>वैकल्पिक</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>वैकल्पिक</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>वैकल्पिक</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>वैकल्पिक</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>वैकल्पिक</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>वैकल्पिक</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>वैकल्पिक</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>वैकल्पिक</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>वैकल्पिक</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> या <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>वैकल्पिक</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>वैकल्पिक</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>वैकल्पिक</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>वैकल्पिक</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>वैकल्पिक</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>हाँ</td><td>सॉफ़्टवेयर का नाम कैटलॉग और इंस्टॉल कार्ड पर दिखाया गया है।</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>हाँ</td><td><code>owner/repo</code>. ऐप उस रिपॉजिटरी की GitHub रिलीज़ को पढ़ता है।</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>हाँ</td><td>लक्ष्य मॉडल, अपरकेस (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>,…). प्रति मॉडल एक प्रविष्टि रखें.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>अनुशंसित</td><td>प्रोजेक्ट पेज या रिलीज़ नोट्स कैटलॉग से खोले गए।</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>हाँ व्यवहार में</td><td><code>type="img"</code> और <code>handler="Custom Firmware"</code>. अन्य प्रकार और गैर-फर्मवेयर हैंडलर छोड़ दिए गए हैं।</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>वैकल्पिक</td><td>कैटलॉग ब्रांड (<code>Innioasis</code>, <code>Timmkoo</code>). Empty मॉडल के डिफ़ॉल्ट ब्रांड का उपयोग करता है।</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>वैकल्पिक</td><td>संपत्ति फ़ाइल नाम जारी करें. के लिए डिफ़ॉल्ट <code>rom.zip</code> Y1 पर और <code>rom_&lt;model&gt;.zip</code> अन्य मॉडलों पर.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>वैकल्पिक</td><td>रिलीज़ के लिए केस-असंवेदनशील ग्लोब जिनके फ़र्मवेयर ज़िप का नाम नहीं है <code>rom*.zip</code> (उदाहरण के लिए <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>वैकल्पिक</td><td>ग्लब्स जो Y1 Type A और Type B ज़िप की पहचान करते हैं जब उनके फ़ाइल नाम में सामान्य मार्कर नहीं होते हैं।</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>वैकल्पिक</td><td>लोगो यूआरएल. रिलीज़ के बाद स्वयं का उपयोग किया जाता है <code>updater.png</code> / <code>updater.jpg</code>, और प्रत्येक रिलीज़ के लिए फ़ॉलबैक के रूप में।</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>वैकल्पिक</td><td>डार्क-थीम लोगो. <code>image_dark</code> एक स्वीकृत उपनाम है.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>वैकल्पिक</td><td>द्वितीयक प्रकाश कलाकृति, बाद में आज़माई गई <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>वैकल्पिक</td><td>सफल इंस्टालेशन के बाद पेज खुले। दूसरे में बहु-चरणीय मार्गदर्शिका शामिल है।</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>वैकल्पिक</td><td>अल्पविराम से अलग किया गया <code>*-mirror</code> रिपोज़ जो रेडी-टू-रन पोर्टेबल पैकेज प्रकाशित करते हैं।</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>वैकल्पिक</td><td>फर्मवेयर रिपोजिटरी से बनाया गया है। समान व्युत्पन्न रूट वाला फर्मवेयर उपयोगकर्ता डेटा रख सकता है।</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>वैकल्पिक</td><td>ऐप रिपॉजिटरी जिसकी रिलीज़ बताती है कि फ़र्मवेयर क्या तैनात करता है। आवश्यकता है <code>post_install</code> या <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>वैकल्पिक</td><td>ऐप रिपॉजिटरी जिसका APK फर्मवेयर के बाद ऐप इंस्टॉल होता है।</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>वैकल्पिक</td><td>जब अपडेटर CE इस संस्करण से पुराना हो तो प्रविष्टि छुपाएं।</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>वैकल्पिक</td><td><code>true</code> (भी <code>1</code> / <code>yes</code>) इस फर्मवेयर के लिए कीप डेटा को पूरी तरह से ब्लॉक कर देता है।</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>वैकल्पिक</td><td>लिंक और सहेजे गए इंस्टॉल रिकॉर्ड के लिए स्थिर पहचानकर्ता। खाली होने पर नाम और मॉडल से उत्पन्न।</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>वैकल्पिक</td><td>संक्षिप्त सूची विवरण. यह विशेषता मान या तत्व का पाठ हो सकता है।</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> और <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">अनुकूलता के लिए विरासती नाम अभी भी पढ़े जाते हैं: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> और <code>image_dark</code>. नई प्रविष्टियों को उपरोक्त मौजूदा नामों का उपयोग करना चाहिए।</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>पुल अनुरोध के रूप में पंक्तियाँ सबमिट करें</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>ऊपर उत्पन्न पंक्तियों को कॉपी करें।</strong> वे पहले से ही नवीनतम मैनिफ़ेस्ट प्रारूप से मेल खाते हैं।</li>
+        <li><strong>संपादित करें <code>slidia_manifest.xml</code> भंडार में.</strong> नीचे दिए गए संपादन लिंक का उपयोग करें; रिपॉजिटरी होस्ट स्वचालित रूप से आपके लिए एक कांटा और एक शाखा बनाता है।</li>
+        <li><strong>पंक्तियाँ ठीक पहले चिपकाएँ <code>&lt;/slidia&gt;</code>,</strong> मौजूदा प्रविष्टियों को अपरिवर्तित रखते हुए।</li>
+        <li><strong>एक नई शाखा के लिए प्रतिबद्ध</strong> (उदाहरण के लिए <code>add-your-firmware</code>), फिर अपडेटर सीई रिपॉजिटरी के विरुद्ध एक पुल अनुरोध खोलें।</li>
+        <li><strong>पीआर में शामिल करें</strong> प्रोजेक्ट लिंक, समर्थित मॉडल, रिलीज़ टैग, परिसंपत्ति नाम और आपके द्वारा परीक्षण किए गए डिवाइस।</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">अपडेटर सीई मेनिफ़ेस्ट संपादित करें</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">नवीनतम मैनिफ़ेस्ट देखें</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> और <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">मॉडल नामों को बड़े अक्षरों में रखें, अपने सार्वजनिक भंडार के सटीक यूआरएल का उपयोग करें और रखें <code>type="img"</code> और <code>handler="Custom Firmware"</code> फ़र्मवेयर प्रविष्टि के लिए.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">रिलीज़ को सत्यापित करना आसान बनाएं</h2>
+      <p>रिलीज़ को एक स्पष्ट टैग और रिलीज़ नोट दें। टैग लोगों के लिए उपयोगी है, लेकिन ज़िप परिसंपत्ति नाम वे हैं जिनका उपयोग अपडेटर सीई इंस्टॉल पैकेजों की पहचान करने के लिए करता है।</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>चेकलिस्ट जारी करें</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>विज्ञप्ति को सार्वजनिक रूप से प्रकाशित करें.</li>
+            <li>ज़िप फ़ाइलों को रिलीज़ संपत्तियों के रूप में संलग्न करें।</li>
+            <li>नोट्स में समर्थित मॉडल और Type A या Type B बताएं।</li>
+            <li>किसी भी आवश्यक तैयारी या ज्ञात सीमा की सूची बनाएं।</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>, और <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>एक रिलीज़, तीन संपत्तियाँ</h3>
+          <p>एक साझा रिलीज़ में शामिल हो सकते हैं <code>rom.zip</code>, <code>rom_type_b.zip</code>, और <code>rom_y2.zip</code>. अपडेटर उन्हें अलग से वर्गीकृत करता है और मॉडल और हार्डवेयर फ़िल्टर में से चुनता है।</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>अनुमानों को बंडल न करें</h3>
+          <p>Y2 फ़ाइल नाम के अंतर्गत एक Y1 पैकेज शामिल न करें, या केवल एक संपत्ति दिखाने के लिए परीक्षण न किया गया स्कैटर, प्रीलोडर, या विभाजन डेटा न जोड़ें।</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">फ़्लैशिंग के दौरान मॉडल प्रविष्टियाँ क्यों मायने रखती हैं?</h2>
+      <p>मेनिफेस्ट केवल एक डाउनलोड मेनू नहीं है. निष्कर्षण के बाद, अपडेटर सीई मिलान इंस्टॉल पथ तैयार करने के लिए हल किए गए मॉडल का उपयोग करता है। Y1 और Y2 में अलग-अलग प्लेटफ़ॉर्म फ़ाइलें, प्रीलोडर, स्कैटर कॉन्फ़िगरेशन और डिवाइस लेआउट हैं।</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> अद्यतनकर्ता Y1 पथ तैयार करता है और MTKClient का उपयोग होने पर डिवाइस के नामित विभाजन का उपयोग करता है।</li>
+        <li><strong>Y2:</strong> अद्यतनकर्ता Y2 पथ तैयार करता है और Y2 एमटी6582 कॉन्फ़िगरेशन का उपयोग करता है। पूर्ण पुनर्प्राप्ति मॉडल-सही स्कैटर डेटा से भौतिक पते का उपयोग कर सकती है।</li>
+        <li><strong>क्रॉस-प्लेटफ़ॉर्म समर्थन:</strong> अपडेटर सीई अतिरिक्त फ्लैशिंग टूल के बिना सीधे विंडोज, लिनक्स और मैकओएस (इंटेल और ऐप्पल सिलिकॉन मैक दोनों का समर्थन) में देशी फ्लैशिंग को संभालता है।</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>योगदानकर्ताओं को सही फ़र्मवेयर फ़ाइलें प्रदान करनी चाहिए, फ़्लैश ऑफ़सेट नहीं।</strong> खराब पैकेज के आसपास काम करने के लिए स्कैटर पते, प्रीलोडर, डीए फ़ाइलें या विभाजन कमांड को संपादित न करें। रिलीज़ एसेट को ठीक करें और इच्छित मॉडल पर परीक्षण करें।</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">इससे पहले कि आप मर्ज का अनुरोध करें</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>, और <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>XML को XML पार्सर से सत्यापित करें। एक गुम उद्धरण या समापन <code>/&gt;</code> इसके बाद की प्रत्येक प्रविष्टि को छुपा सकते हैं।</li>
+        <li>अपने चेकआउट से अपडेटर लॉन्च करें ताकि यह रिमोट रिफ्रेश से पहले स्थानीय मैनिफ़ेस्ट को लोड कर सके।</li>
+        <li>Y1 और Y2 को स्वतंत्र रूप से जांचें। पुष्टि करें कि प्रोजेक्ट केवल वहीं दिखाई देता है जहां इसका पैकेज समर्थित है।</li>
+        <li>के लिए रिलीज़ सूची की जाँच करें <code>rom.zip</code>, <code>rom_type_b.zip</code>, और <code>rom_y2.zip</code> जैसा लागू हो.</li>
+        <li>एक विश्वसनीय USB डेटा केबल और मूल सॉफ़्टवेयर पर लौटने के लिए एक पुनर्प्राप्ति योजना के साथ, इच्छित डिवाइस पर वास्तविक इंस्टॉल का परीक्षण करें।</li>
+        <li>पुल अनुरोध में, बताएं कि आपने क्या परीक्षण किया। किसी परीक्षण न किए गए मॉडल को समर्थित के रूप में वर्णित न करें.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>स्थानीय जाँच के लिए, उस कमांड को रिपॉजिटरी रूट से चलाएँ। यह केवल XML सिंटैक्स को सत्यापित करता है; यह साबित नहीं करता है कि रिलीज़ में वैध फ़र्मवेयर है या डिवाइस फ़्लैश करना सुरक्षित है।</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">उपयोगी परियोजना लिंक</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_hi.html">Community contribution notes</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">फोर्क अपडेटर सीई</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">मैनिफ़ेस्ट देखें</a>
+        <a class="lumen-button" href="support_devs_hi.html">सामुदायिक योगदान नोट्स</a>
         <a class="lumen-button" href="troubleshooting_hi.html">समस्या निवारण</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">एआई एजेंटों के लिए मॉडिफाईंग कौशल</h2>
+      <p>भण्डार का <code>skills/</code> निर्देशिका Y1 और Y2 हार्डवेयर, फ़र्मवेयर, थीम और ऐप्स पर काम करने वाले एजेंटों के लिए एक स्रोत-आधारित ज्ञान का आधार है। प्रत्येक कौशल उस परियोजना फ़ाइल को नाम देता है जिससे उसके दावे आते हैं, इसलिए एक एजेंट किसी उपकरण को बदलने से पहले एक तथ्य की जांच कर सकता है।</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>यहां से प्रारंभ करें</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">कौशल सूचकांक और सुरक्षा नियम</a></h3>
+          <p>किसी कौशल को कैसे लोड किया जाए, कोई तथ्य किस मॉडल पर लागू होता है, और किसी पैकेज को कौन से विभाजन नहीं लिखने चाहिए।</p>
         </article>
         <article class="lumen-card">
           <small>हार्डवेयर</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 हार्डवेयर</a></h3>
+          <p>MT6572, मुख्य घटनाओं के रूप में पहिया, 480x360 डिस्प्ले, एफएम/ऑडियो पथ, भंडारण और Type A/बी विभाजन मानचित्र।</p>
         </article>
         <article class="lumen-card">
           <small>हार्डवेयर</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 हार्डवेयर</a></h3>
+          <p>MT6582 बोर्ड, डिवाइस ट्री, GC9503V/ST7701S पैनल, PMIC/DAC रेल, विभाजन और बूट छवि।</p>
         </article>
         <article class="lumen-card">
-          <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <small>फ़र्मवेयर</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">फ़र्मवेयर पैकेज</a></h3>
+          <p>rom.zip एनाटॉमी, स्कैटर फ़ाइलें, क्लास ए अपडेट अनुबंध और रिलीज़ चेकलिस्ट।</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>थीम्स</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">थीम और त्वचा संलेखन</a></h3>
+          <p>Y1 config.json थीम्स, Rockbox WPS/SBS, Reborn स्किन और Y2Player स्किन फॉर्मेट v2।</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>सभी कौशल</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">कौशल फ़ोल्डर ब्राउज़ करें</a></h3>
+          <p>Rockbox Y1/Y2, स्टॉक एंड्रॉइड रोम, Y2Linux, एंड्रॉइड ऐप्स, लॉन्चर, रिलीज नोट्स और साइट प्रकाशन।</p>
         </article>
       </div>
     </section>

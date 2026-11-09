@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>How to Recover a Non-Booting MediaTek Player After MTKclient Failure · Innioasis Community</title>
-  <meta name="description" content="Step-by-step guide to unbrick and recover non-booting Innioasis Y1, Y2, G1, Timmkoo, and MediaTek players after MTKclient interrupted flashes on Linux or macOS.">
+  <title>Käynnistymättömän MediaTek-soittimen palauttaminen MTKclient-vian jälkeen · Innioasis Yhteisö</title>
+  <meta name="description" content="Vaiheittainen opas ei-käynnistyvien Innioasis Y1-, Y2-, G1-, Timmkoo- ja MediaTek-soittimien poistamiseen ja palauttamiseen sen jälkeen, kun MTKclient keskeytti flash-osion Linuxissa tai macOS:ssä.">
   <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_fi.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
@@ -81,74 +81,74 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Troubleshooting & Device Recovery</p>
-      <h1>Recovering a Non-Booting Device After MTKclient Flashing</h1>
-      <p class="lead">If your Innioasis Y1, Y2, or MediaTek device fails to power on or shows a black screen after flashing with MTKclient on macOS or Linux, do not panic. The hardware BootROM (BROM) is permanent and cannot be destroyed.</p>
+      <p class="lumen-kicker">Vianetsintä ja laitteen palautus</p>
+      <h1>Käynnistymättömän laitteen palauttaminen MTKclientin vilkkumisen jälkeen</h1>
+      <p class="lead">Jos Innioasis Y1-, Y2- tai MediaTek-laitteesi ei käynnisty tai näyttää mustan näytön vilkkuttuaan MTKclientin kanssa macOS- tai Linux-käyttöjärjestelmässä, älä panikoi. Laitteiston BootROM (BROM) on pysyvä, eikä sitä voi tuhota.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>Why MTKclient May Stall or Leave a Black Screen</h2>
-      <p>MTKclient relies on software exploit payloads (kamakiri / amonet) to bypass DA authentication and raw USB communication via libusb. On macOS and Linux ARM64 systems:</p>
+      <h2>Miksi MTKclient voi pysähtyä tai jättää mustan näytön?</h2>
+      <p>MTKclient luottaa ohjelmiston hyötykuormiin (kamakiri / amonet) ohittaakseen DA-todennuksen ja raaka USB-viestinnän libusbin kautta. MacOS- ja Linux ARM64 -järjestelmissä:</p>
       <ul class="lumen-benefits-list">
-        <li>USB handshake latency or port timeouts on macOS can stall DA payload injection mid-transfer.</li>
-        <li>Missing or incomplete partition headers leave the bootloader (preloader / lk) in a non-responsive state.</li>
-        <li>The player appears completely dead—no LED, no charging icon, no screen backlight.</li>
+        <li>USB kättelyn viive tai portin aikakatkaisut macOS:ssä voivat keskeyttää DA:n hyötykuorman lisäyksen kesken siirron.</li>
+        <li>Puuttuvat tai epätäydelliset osion otsikot jättävät käynnistyslataimen (preloader / lk) reagoimattomaan tilaan.</li>
+        <li>Soitin näyttää täysin kuolleelta – ei LEDiä, ei latauskuvaketta, ei näytön taustavaloa.</li>
       </ul>
-      <p>Even in this state, the MediaTek chipset drops back into <strong>BROM Mode</strong> (USB VID 0e8d, PID 0003), ready for official low-level recovery.</p>
+      <p>Jopa tässä tilassa MediaTek-piirisarja putoaa takaisin <strong>BROM-tila</strong> (USB VID 0e8d, PID 0003), valmis viralliseen matalan tason palautukseen.</p>
     </section>
 
     <section class="lumen-guide-section" id="sp-flash-tool-engine">
-      <h2>The Definitive Recovery Method: SP Flash Tool Engine in Updater CE</h2>
-      <p>The safest, most reliable way to recover your bricked player is using <strong>Päivittäjä CE</strong> configured with the official <strong>SP Flash Tool</strong> backend.</p>
+      <h2>Lopullinen palautusmenetelmä: SP Flash Tool Moottori Updater CE:ssä</h2>
+      <p>Turvallisin ja luotettavin tapa palauttaa muurattu soitin on käyttää <strong>Päivittäjä CE</strong> virkamiehen kanssa määritettynä <strong>SP Flash Tool</strong> tausta.</p>
       
       <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
-        <h3>Exact Steps in Updater CE:</h3>
+        <h3>Tarkat vaiheet Updater CE:ssä:</h3>
         <ol class="lumen-steps" style="margin-top: 10px;">
           <li>Avaa <strong>Päivittäjä CE</strong>.</li>
-          <li>Napsauta <strong>Asetukset</strong> in the left navigation sidebar.</li>
-          <li>Scroll down to the Advanced section and enable <strong>Show Advanced Settings</strong>.</li>
-          <li>Under <strong>Install Method</strong> (or <em>Flashing Engine for MediaTek installer</em>), locate the <strong>Flash Method</strong> dropdown.</li>
-          <li>Change the selection from <em>Auto (recommended)</em> tai <em>MTKClient</em> to <strong>SP Flash Tool</strong>.</li>
-          <li>Confirm the prompt and return to the main install flow.</li>
+          <li>Napsauta <strong>Asetukset</strong> vasemmassa navigointisivupalkissa.</li>
+          <li>Vieritä alas Lisäasetukset-osioon ja ota se käyttöön <strong>Näytä lisäasetukset</strong>.</li>
+          <li>Under <strong>Asennusmenetelmä</strong> (tai <em>Vilkkuu moottori MediaTek asentajalle</em>), etsi <strong>Flash-menetelmä</strong> pudotusvalikosta.</li>
+          <li>Muuta valintaa <em>Automaattinen (suositus)</em> tai <em>MTKClient</em> to <strong>SP Flash Tool</strong>.</li>
+          <li>Vahvista kehote ja palaa pääasennusprosessiin.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Platform Architecture & OS Requirements for SP Flash Tool</h2>
-      <p>MediaTek's official <code>SP Flash Tool</code> binary is compiled natively as an <strong>x86_64 ELF binary for Linux</strong> and a <strong>PE32+ executable for Windows x64</strong>.</p>
+      <h2>Alustan arkkitehtuuri ja käyttöjärjestelmävaatimukset SP Flash Tool</h2>
+      <p>MediaTek:n virkamies <code>SP Flash Tool</code> binääri on käännetty natiivimuodossa an <strong>x86_64 ELF-binaari Linuxille</strong> ja a <strong>PE32+ suoritettava Windows x64:lle</strong>.</p>
       <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
-        <strong>Important Hardware Note for macOS and ARM64 Linux Users:</strong><br>
-        Because MediaTek does not compile SP Flash Tool for macOS (Darwin) or Linux ARM64 (aarch64), macOS users and ARM64 Linux users (such as Raspberry Pi or Apple Silicon running Asahi Linux) experiencing a brick must connect their player to:
+        <strong>Tärkeä laitteistohuomautus macOS- ja ARM64 Linux -käyttäjille:</strong><br>
+        Koska MediaTek ei käännä SP Flash Tool macOS:lle (Darwin) tai Linux ARM64:lle (aarch64), macOS-käyttäjien ja ARM64 Linux -käyttäjien (kuten Raspberry Pi tai Apple Silicon, jossa on Asahi Linux) täytyy yhdistää soitin:
         <ul style="margin: 8px 0 0 20px;">
-          <li>An <strong>x64 Windows PC</strong> (Windows 10 / 11 64-bit), or</li>
-          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64-bit).</li>
+          <li>An <strong>x64 Windows PC</strong> (Windows 10/11 64-bittinen) tai</li>
+          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64-bittinen).</li>
         </ul>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Step-by-Step Hardware Unbricking Process</h2>
+      <h2>Vaiheittainen laitteiston poistamisprosessi</h2>
       <ol class="lumen-steps">
-        <li><strong>Disconnect the Player:</strong> Unplug the USB cable from the player and PC completely.</li>
-        <li><strong>Hard Power Off:</strong> Hold the Power button (or Power + Volume Down) for 15 seconds to ensure the chipset is fully powered down and not stuck in a low-power USB loop.</li>
-        <li><strong>Launch Updater CE with SP Flash Tool Mode:</strong> Select your device model (e.g. <em>Innioasis Y1</em> tai <em>Innioasis Y2</em>) and choose <em>Alkuperäinen ohjelmisto</em> to restore stock partitions.</li>
-        <li><strong>Initiate Install / Restore:</strong> Napsauta <em>Asenna / Palauta</em> in Updater CE. Wait until the status prompt says <em>Waiting for player...</em></li>
-        <li><strong>Insert USB Cable to Trigger BROM:</strong> While the device is OFF, plug in the USB cable directly to a high-speed motherboard USB port (avoid unpowered USB hubs).</li>
-        <li>The system will detect the MediaTek VCOM port, push the Download Agent (DA), rewrite partition tables, and restore all firmware images cleanly.</li>
+        <li><strong>Irrota soitin:</strong> Irrota USB-kaapeli soittimesta ja tietokoneesta kokonaan.</li>
+        <li><strong>Kova virrankatkaisu:</strong> Pidä virtapainiketta (tai virtapainiketta + äänenvoimakkuuden vähennyspainiketta) painettuna 15 sekuntia varmistaaksesi, että piirisarjan virta on katkaistu kokonaan eikä se juuttunut vähätehoiseen USB-silmukkaan.</li>
+        <li><strong>Käynnistä Updater CE SP Flash Tool-tilassa:</strong> Valitse laitteesi malli (esim. <em>Innioasis Y1</em> tai <em>Innioasis Y2</em>) ja valitse <em>Alkuperäinen ohjelmisto</em> palauttaaksesi varastoosioita.</li>
+        <li><strong>Aloita asennus/palautus:</strong> Napsauta <em>Asenna / Palauta</em> Updater CE:ssä. Odota, kunnes tilakehote sanoo <em>Pelaajaa odotellessa...</em></li>
+        <li><strong>Liitä USB kaapeli käynnistämään BROM:in:</strong> Kun laite on pois päältä, kytke USB-kaapeli suoraan nopeaan emolevyn USB-porttiin (vältä virrattomia USB-keskittimiä).</li>
+        <li>Järjestelmä tunnistaa MediaTek VCOM-portin, työntää latausagentin (DA), kirjoittaa uudelleen osiotaulukot ja palauttaa kaikki laiteohjelmistokuvat puhtaasti.</li>
       </ol>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Permutations by Model and Operating System</h2>
+      <h2>Permutaatiot mallin ja käyttöjärjestelmän mukaan</h2>
       <div style="overflow-x: auto;">
         <table class="lumen-release-table">
           <thead>
             <tr>
-              <th>Model</th>
-              <th>Failed Platform</th>
-              <th>Recommended Recovery Setup</th>
-              <th>Engine &amp; Mode</th>
+              <th>Malli</th>
+              <th>Epäonnistunut alusta</th>
+              <th>Suositeltu palautusasetus</th>
+              <th>Moottori ja tila</th>
             </tr>
           </thead>
           <tbody>
@@ -156,31 +156,31 @@
               <td><strong>Innioasis Y1</strong></td>
               <td>macOS (Apple Silicon / Intel)</td>
               <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y1 Stock ROM</td>
+              <td>SP Flash Tool + Y1 Osake ROM</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
               <td>Linux ARM64 / x86_64</td>
-              <td>Linux x86_64 or Windows x64 PC</td>
-              <td>SP Flash Tool + Community DA</td>
+              <td>Linux x86_64 tai Windows x64 PC</td>
+              <td>SP Flash Tool + Yhteisön DA</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y2</strong></td>
-              <td>macOS (MTKclient stalled)</td>
+              <td>macOS (MTK-asiakas pysähtynyt)</td>
               <td>Windows x64 / Linux x86_64 PC</td>
               <td>SP Flash Tool + Y2 Scatter Recovery</td>
             </tr>
             <tr>
               <td><strong>Innioasis G1 / G3 / G5</strong></td>
               <td>macOS / Linux MTKclient</td>
-              <td>Windows x64 PC with VCOM Drivers</td>
-              <td>SP Flash Tool + Factory Firmware</td>
+              <td>Windows x64 PC VCOM-ajureilla</td>
+              <td>SP Flash Tool + Tehdasohjelmisto</td>
             </tr>
             <tr>
               <td><strong>Mechen H1 / Timmkoo A5</strong></td>
-              <td>Any platform</td>
-              <td>Windows x64 or Linux x86_64 PC</td>
-              <td>SP Flash Tool + Scatter file</td>
+              <td>Mikä tahansa alusta</td>
+              <td>Windows x64 tai Linux x86_64 PC</td>
+              <td>SP Flash Tool + Scatter-tiedosto</td>
             </tr>
           </tbody>
         </table>

@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>Розробники | Додайте спеціальну мікропрограму до Innioasis Updater CE - Innioasis Завантаження мікропрограми</title>
+  <meta name="description" content="Документація розробника для додавання спеціальної мікропрограми Innioasis Y1 або Y2 до Updater CE: форк репозиторію, публікація rom.zip активів, редагування slidia_manifest.xml, тестування та відкриття запиту на отримання.">
+  <meta name="keywords" content="Innioasis Посібник розробника програми оновлення, slidia_manifest.xml, спеціальне мікропрограмне забезпечення, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, реліз активів">
   <link rel="canonical" href="https://innioasis.app/developers_uk.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="Розробники | Додайте спеціальну мікропрограму до Innioasis Updater CE - Innioasis Завантаження мікропрограми">
+  <meta property="og:description" content="Документація розробника для додавання спеціальної мікропрограми Innioasis Y1 або Y2 до Updater CE: форк репозиторію, публікація rom.zip активів, редагування slidia_manifest.xml, тестування та відкриття запиту на отримання.">
   <meta property="og:url" content="https://innioasis.app/developers_uk.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="Розробники | Додайте спеціальну мікропрограму до Innioasis Updater CE - Innioasis Завантаження мікропрограми">
+  <meta name="twitter:description" content="Документація розробника для додавання спеціальної мікропрограми Innioasis Y1 або Y2 до Updater CE: форк репозиторію, публікація rom.zip активів, редагування slidia_manifest.xml, тестування та відкриття запиту на отримання.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">Для розробників прошивки</p>
+      <h1>Додайте мікропрограму до Updater CE.</h1>
+      <p class="lead">Updater CE — це каталог спільноти та інсталятор для спеціального мікропрограмного забезпечення. Розробіть свій проект із бази ROM, опублікуйте його як загальнодоступне сховище з правильними ресурсами випуску, додайте записи моделі до <code>slidia_manifest.xml</code>, протестуйте модельні фільтри та відкрийте запит на отримання. Один репозиторій може обслуговувати кожну модель, яку він підтримує.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Перегляньте джерело Updater CE</a>
         <a class="lumen-button" href="firmware_uk.html">Перегляньте завантажені програми</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">Почніть з бази ROM</h2>
+      <p>Базові ПЗУ дають розробникам спеціального мікропрограмного забезпечення чисту основу Android із увімкненими мікросхемами бездротового радіо. На Y1 вони ввімкнули Wi-Fi і GPS разом із заводськими Bluetooth і FM; на Y2 вони включають Wi-Fi, GPS і FM разом із заводським Bluetooth.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">База ROM завантажень для розробки нестандартної мікропрограми з версією Android і функціями бездротового зв’язку</caption>
           <thead>
-            <tr><th scope="col">Завантажити</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">Завантажити</th><th scope="col">пристрій</th><th scope="col">Android</th><th scope="col">Бездротові функції</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Додає Wi-Fi та GPS до заводських Bluetooth та FM (FM уже працює на Y1 із заводу). Для Y1 програвачів, які поставляються з ОС 2.0.0 або новішої версії.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Додає Wi-Fi та GPS до заводських Bluetooth та FM (FM уже працює на Y1 із заводу). Для Y1 гравців, які поставляються з ОС, ранішою за 2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Додає Wi-Fi, GPS і FM до заводського Bluetooth. Радіочіп Y2 повністю ввімкнуто, тому FM також доступний тут.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">Ці зображення є стандартною версією Android (AOSP) із увімкненим бездротовим радіозв’язком пристрою, тому спеціальне програмне забезпечення може додавати мережеві функції замість заміни стеку радіозв’язку. Вони є практичною відправною точкою для наведених нижче кроків публікації.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">Використовуйте ці назви ресурсів випуску</h2>
+      <p>Назва файлу є частиною сигналу сумісності. Зберігайте точні назви та розміщуйте ZIP-файли в ресурсах випуску проекту, а не лише в дереві вихідних кодів сховища.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">Назви ZIP-файлів прошивки та підтримувані пристрої</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Обладнання</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">Актив</th><th scope="col">пристрій</th><th scope="col">Обладнання</th><th scope="col">Значення</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 пристроїв, які постачаються з ОС 2.0.0 або новішої версії.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 пристроїв, які поставляються з ОС, ранішою за 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Пакет повної інсталяції Y2. Тримайте його окремо від активів Y1.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>Не перейменовуйте пакет, щоб він відповідав іншій моделі.</strong> Y1 і Y2 використовують різні MediaTek файли платформи та миготливу конфігурацію. Опублікуйте пакет для обладнання, яке він фактично підтримує.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">Як працює підключення</h2>
+      <p>Програма оновлення CE читає маніфест як свій каталог. Кожен <code>&lt;package&gt;</code> рядок повідомляє йому назву проекту, репозиторій, модель і обробник. Коли користувач вибирає цей проект, Updater перевіряє опубліковані випуски сховища та шукає <code>rom*.zip</code> актив.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <h3>Маніфест</h3>
+          <p>Дає назву проекту та відображає його на моделі. Для Y1 і Y2 потрібні окремі рядки, навіть якщо вони мають спільний репозиторій.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>Опублікований випуск</h3>
+          <p>Містить ресурси ZIP, які можна встановити. Один випуск може містити пакети Y1 Type A, Y1 Type B і Y2 разом.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>Інсталяція програми оновлення CE</h3>
+          <p>Використовує вибрану модель для вибору відповідного пакета та шляху флешування для конкретної моделі. Користувачеві не потрібно вгадувати назву файлу.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">Опублікуйте проект у п’ять кроків</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>, і <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> відкритий <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Форк репозиторію Updater CE.</strong> Створіть власну вилку <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, потім клонуйте свій форк локально.</li>
+        <li><strong>Підготуйте загальнодоступне сховище мікропрограм.</strong> Переконайтеся, що репозиторій є загальнодоступним, а його випуск містить правильні ресурси ZIP. Можна поставити <code>rom.zip</code>, <code>rom_type_b.zip</code>, і <code>rom_y2.zip</code> в одному випуску, якщо вони належать до однієї версії.</li>
+        <li><strong>Відредагуйте маніфест.</strong> відкритий <code>slidia_manifest.xml</code> у кореневому каталозі вашого оновлення CE. Додайте один рядок для кожної моделі, яку підтримує реліз (Y1 і Y2 — загальна пара). The <code>repo</code> значення є сховищем <code>owner/repository</code>; <code>url</code> є публічною сторінкою проекту.</li>
+        <li><strong>Тестуйте каталог.</strong> Запустіть Updater з відредагованої каси. Виберіть Y1 і підтвердьте, що проект показує активи Y1. Виберіть Y2 і підтвердьте, що відображається випуск Y2. Перевірте Type A і Type B окремо, коли обидва опубліковані.</li>
+        <li><strong>Відкрийте запит на отримання.</strong> Надішліть зміну маніфесту у свій форк і відкрийте запит на отримання до репозиторію CE Updater. Додайте посилання на проект, підтримувані моделі, тег випуску, назви активів і пристрої, які ви тестували.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">Створіть свої рядки маніфесту</h2>
+      <p>Заповніть репозиторій і відзначте кожну модель, яку підтримує випуск. Генератор записує один <code>&lt;package&gt;</code> рядок на модель та включає лише встановлені вами атрибути, тому результат відповідає поточному <code>slidia_manifest.xml</code> формат. Усі атрибути, які зчитує Updater CE, доступні нижче — необов’язкові — нижче <strong>Більше варіантів</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">URL-адреса сховища</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">Публічне сховище GitHub. Генератор витягує <code>owner/repository</code> з URL-адреси.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">Назва програмного забезпечення</label>
+            <input type="text" id="manifest-name" placeholder="За замовчуванням ім’я сховища" autocomplete="off">
+            <span class="lumen-field-help">Показано в додатку та каталозі сайту.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">URL проекту</label>
+            <input type="url" id="manifest-project-url" placeholder="За замовчуванням URL-адреса сховища" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Сторінка проекту або приміток до його випуску, орієнтована на людину.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">Бренд</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">Зніміть цей прапорець, щоб використовувати марку моделі за замовчуванням. SR1, Q3, Q5 і Q3e — це Timmkoo моделі.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>Пристрої (по одному рядку)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">Інші моделі</label>
+            <input type="text" id="manifest-other-devices" placeholder="Розділені комами, напр. X1, X2" autocomplete="off">
+            <span class="lumen-field-help">Для моделі, яка не вказана вище. Відомі моделі зберігають каталожне написання.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>Прапори</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — ніколи не пропонуйте Keep Data для цієї мікропрограми</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Створено з оригінального програмного забезпечення — додає <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">Зберігати дані пропонується, лише якщо вхідне мікропрограмне забезпечення та встановлене мікропрограмне забезпечення однакові або мають спільний доступ <code>derivative</code> корінь. Використовуйте цей прапор лише тоді, коли дані користувача справді неможливо перенести.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>Додаткові параметри: значок, ілюстрація, реліз ресурсів, постінсталяція та дзеркала</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>Ікона та мистецтво</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">Файл значка</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">Виберіть зображення, яке ви додасте до сховища. Це попередньо переглядає його та створює необроблену URL-адресу; він нічого не завантажує.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">Шлях значка в сховищі</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">Шлях до зафіксованого образу відносно кореня сховища.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">Ікона гілка</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">URL-адреса значка</label>
+              <input type="url" id="manifest-icon-url" placeholder="Заповнюється з шляху до файлу" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Пряма URL-адреса зображення. Якщо пусто, програма використовує випуски <code>updater.png</code> або згенерований значок.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="Попередній перегляд вибраного значка">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
+              <label for="manifest-icon-dark-url">URL-адреса значка темного режиму</label>
               <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <span class="lumen-field-help">Додатковий значок темної теми. <code>image_dark</code> є прийнятним псевдонімом.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">URL-адреса світлого твору мистецтва</label>
+              <input type="url" id="manifest-image-url" placeholder="зображення" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Другорядне зображення, випробуване після випуску зображення та <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
+              <label for="manifest-image-dark-url">URL-адреса темного зображення</label>
               <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>Звільнити активи</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">Назва активу випуску</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">Одна назва для кожної обраної моделі. Залиште порожнім для використання <code>rom.zip</code> на Y1 і <code>rom_&lt;model&gt;.zip</code> в іншому місці.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
-              <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <label for="manifest-asset-pattern">Шаблон активу</label>
+              <input type="text" id="manifest-asset-pattern" placeholder="моя прошивка-*.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Glob використовується, коли архіви випуску не називаються <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A ресурс</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob для пакета Y1 Type A, якщо це не вказано в назві.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B ресурс</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob для пакета Y1 Type B, якщо це не вказано в назві.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">Мінімальна версія програми</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">Приховати запис із старіших збірок Updater CE.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>Посилання, дзеркала та сімейство Keep Data</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">Сторінка після встановлення</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">Відкрито після успішного встановлення.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">Друга сторінка після встановлення</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">Додатковий другий крок для багатосторінкового посібника з налаштування.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">Портативні дзеркала на блискавці</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">Через кому <code>*-mirror</code> репозиторії, які створюють пакети Portable Flashing Zip.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">Репозиторій похідних</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">Прошивка, на основі якої створено цей випуск. Пов’язані мікропрограми спільно використовують розділ даних, який і перевіряє Keep Data.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">Інформаційне сховище</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">Репозиторій додатків, випуски якого описують програми в цій мікропрограмі. Також потрібна сторінка після встановлення.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK репозиторій</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">Репозиторій програми, APK яку програма завантажує та встановлює після прошивки.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>Додатки до каталогу</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">Слимак</label>
+              <input type="text" id="manifest-slug" placeholder="Створено з назви та моделі" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Стабільний ідентифікатор для посилань і збережених записів встановлення. Модель додається автоматично, якщо вибрано кілька моделей.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">опис</label>
+              <input type="text" id="manifest-description" placeholder="Короткий опис каталогу" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Копіювати рядки</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">Завантаження останнього маніфесту…</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>Перегляньте останній маніфест із доданими вашими рядками</summary>
+          <p>Генератор брав струм <code>slidia_manifest.xml</code> із цього сховища та вставив згенеровані рядки безпосередньо перед цим <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>Для спільного сховища недостатньо одного рядка.</strong> Якщо рядок Y2 відсутній, користувачі Y2 не отримають запис, що відповідає моделі, навіть якщо <code>rom_y2.zip</code> існує у випуску проекту. Те саме стосується будь-якої іншої моделі, яку підтримує ваш випуск.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">Кожен атрибут, який читає маніфест</h3>
+      <p>Це атрибути, які розуміють поточні збірки Updater CE. Генератор записує лише ті, які ви заповнюєте; програма повертається до розумних налаштувань за замовчуванням для решти.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">атрибути пакета slidia_manifest.xml та їх значення</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">Атрибут</th><th scope="col">Потрібний</th><th scope="col">Що воно робить</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>так</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>так</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>так</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> і <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>Додатково</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>Додатково</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>Додатково</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Додатково</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>Додатково</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>Додатково</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>Додатково</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Додатково</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Додатково</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>Додатково</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>Додатково</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> або <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>Додатково</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>Додатково</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Додатково</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>Додатково</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>Додатково</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>так</td><td>Назва програмного забезпечення вказана в каталозі та на картках встановлення.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>так</td><td><code>owner/repo</code>. Додаток читає випуски GitHub цього сховища.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>так</td><td>Цільова модель, верхній регістр (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Зберігайте один запис для кожної моделі.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Рекомендовано</td><td>Сторінка проекту або примітки до випуску відкриті з каталогу.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Так на практиці</td><td><code>type="img"</code> і <code>handler="Custom Firmware"</code>. Інші типи та обробники, не пов’язані з вбудованим програмним забезпеченням, пропускаються.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Додатково</td><td>Каталог бренду (<code>Innioasis</code>, <code>Timmkoo</code>). Empty використовує марку моделі за замовчуванням.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Додатково</td><td>Назва файлу ресурсу випуску. За замовчуванням <code>rom.zip</code> на Y1 і <code>rom_&lt;model&gt;.zip</code> на інших моделях.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Додатково</td><td>Незалежний від регістру глобус для випусків, архіви прошивки яких не мають імен <code>rom*.zip</code> (наприклад <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Додатково</td><td>Глоби, які ідентифікують архіви Y1 Type A і Type B, коли їхні назви файлів не містять звичайних маркерів.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Додатково</td><td>URL-адреса логотипу. Використовується після власного випуску <code>updater.png</code> / <code>updater.jpg</code>і як запасний варіант для кожного випуску.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Додатково</td><td>Темний логотип. <code>image_dark</code> є прийнятним псевдонімом.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Додатково</td><td>Вторинний світлий твір, випробуваний після <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Додатково</td><td>Сторінки, відкриті після успішного встановлення. Другий охоплює багатоетапний посібник.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Додатково</td><td>Через кому <code>*-mirror</code> сховища, які публікують готові до запуску переносні пакети.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Додатково</td><td>Репозиторій, з якого створено прошивку. Прошивка з тим же похідним коренем може зберігати дані користувача.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Додатково</td><td>Репозиторій додатків, випуски якого описують, що розгортає мікропрограма. Вимагає <code>post_install</code> або <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Додатково</td><td>Репозиторій додатків, APK якого додаток встановлюється після прошивки.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Додатково</td><td>Приховати запис, якщо Updater CE старіша за цю версію.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Додатково</td><td><code>true</code> (також <code>1</code> / <code>yes</code>) повністю блокує збереження даних для цієї прошивки.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Додатково</td><td>Стабільний ідентифікатор для посилань і збережених записів встановлення. Створюється з назви та моделі, якщо порожній.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Додатково</td><td>Короткий опис каталогу. Це може бути значення атрибута або текст елемента.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> і <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">Застарілі імена все ще читаються для сумісності: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> і <code>image_dark</code>. Нові записи повинні використовувати поточні назви вище.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Надішліть рядки як запит на отримання</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Скопіюйте згенеровані вище рядки.</strong> Вони вже відповідають останньому формату маніфесту.</li>
+        <li><strong>Редагувати <code>slidia_manifest.xml</code> в репозиторії.</strong> Скористайтеся посиланням для редагування нижче; хост репозиторію автоматично створює для вас розгалуження та розгалуження.</li>
+        <li><strong>Вставте рядки безпосередньо перед цим <code>&lt;/slidia&gt;</code>,</strong> збереження існуючих записів без змін.</li>
+        <li><strong>Створити нову гілку</strong> (наприклад <code>add-your-firmware</code>), а потім відкрийте запит на отримання до репозиторію Updater CE.</li>
+        <li><strong>В ПР включити</strong> посилання на проект, підтримувані моделі, тег випуску, назви активів і пристрої, які ви протестували.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Відредагуйте маніфест Updater CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Перегляньте останній маніфест</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> і <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Зберігайте назви моделей у верхньому регістрі, використовуйте точну URL-адресу вашого загальнодоступного сховища та зберігайте <code>type="img"</code> і <code>handler="Custom Firmware"</code> для запису прошивки.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">Зробіть реліз легким для перевірки</h2>
+      <p>Надайте випуску чіткий тег і примітку до випуску. Тег корисний для людей, але назви ресурсів ZIP – це те, що Updater CE використовує для ідентифікації інсталяційних пакетів.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>Контрольний список випуску</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>Публікуйте реліз публічно.</li>
+            <li>Додайте ZIP-файли як ресурси випуску.</li>
+            <li>Вкажіть підтримувану модель і Type A або Type B у примітках.</li>
+            <li>Перелічіть будь-яку необхідну підготовку або відомі обмеження.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>, і <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>Один реліз, три активи</h3>
+          <p>Спільний випуск може містити <code>rom.zip</code>, <code>rom_type_b.zip</code>, і <code>rom_y2.zip</code>. Оновлення класифікує їх окремо та вибирає з фільтрів моделі та обладнання.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>Не збирайте припущення</h3>
+          <p>Не включайте пакет Y1 під ім’ям файлу Y2 і не додавайте неперевірені дані розкиду, попереднього завантажувача чи розділу лише для того, щоб з’явився ресурс.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">Чому записи моделі мають значення під час перепрошивання</h2>
+      <p>Маніфест — це не просто меню завантаження. Після вилучення Updater CE використовує розв’язану модель для підготовки відповідного шляху встановлення. Y1 і Y2 мають різні файли платформи, попередні завантажувачі, конфігурацію розкиду та макети пристроїв.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> програма оновлення готує шлях Y1 і використовує названі розділи пристрою, коли використовується MTKClient.</li>
+        <li><strong>Y2:</strong> програма оновлення готує шлях Y2 і використовує конфігурацію Y2 MT6582. Повне відновлення може використовувати фізичні адреси з правильних для моделі даних розкиду.</li>
+        <li><strong>Підтримка між платформами:</strong> Updater CE обробляє вбудоване флешування безпосередньо в Windows, Linux і macOS (підтримує Intel і Apple Silicon Mac) без додаткових інструментів флешування.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>Учасники повинні надавати правильні файли прошивки, а не флеш-зміщення.</strong> Не редагуйте адреси розкиду, програми попереднього завантаження, файли DA або команди розділу, щоб обійти поганий пакет. Виправте ресурс випуску та протестуйте на запланованій моделі.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">Перш ніж надсилати запит на об’єднання</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>, і <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>Перевірте XML за допомогою аналізатора XML. Відсутня цитата або закриття <code>/&gt;</code> може приховати кожен запис після нього.</li>
+        <li>Запустіть програму оновлення з каси, щоб вона завантажувала локальний маніфест перед дистанційним оновленням.</li>
+        <li>Перевірте Y1 і Y2 окремо. Переконайтеся, що проект відображається лише там, де підтримується його пакет.</li>
+        <li>Перевірте список випусків <code>rom.zip</code>, <code>rom_type_b.zip</code>, і <code>rom_y2.zip</code> як застосовно.</li>
+        <li>Перевірте фактичну інсталяцію на призначеному пристрої за допомогою надійного кабелю передачі даних USB і плану відновлення для повернення до оригінального програмного забезпечення.</li>
+        <li>У запиті на отримання поясніть, що ви тестували. Не описуйте неперевірену модель як підтримувану.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>Для локальної перевірки запустіть цю команду з кореня сховища. Він перевіряє лише синтаксис XML; це не доводить, що випуск містить дійсне мікропрограмне забезпечення або що пристрій безпечно прошивати.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">Корисні посилання на проект</h2>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_uk.html">Community contribution notes</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Перегляньте маніфест</a>
+        <a class="lumen-button" href="support_devs_uk.html">Нотатки про внесок спільноти</a>
         <a class="lumen-button" href="troubleshooting_uk.html">Усунення несправностей</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">Навички моддингу для агентів ШІ</h2>
+      <p>Сховище <code>skills/</code> каталог — це база знань, заснована на джерелах, для агентів, які працюють над Y1 і Y2 обладнанням, мікропрограмою, темами та програмами. Кожен навик називає файли проекту, звідки походять його претензії, тому агент може перевірити факт перед зміною пристрою.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>Почніть тут</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Індекс кваліфікації та правила техніки безпеки</a></h3>
+          <p>Як завантажити навичку, до якої моделі відноситься той чи інший факт, а також розділи, які жоден пакет не повинен записувати.</p>
         </article>
         <article class="lumen-card">
           <small>Обладнання</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 обладнання</a></h3>
+          <p>MT6572, колесо як ключові події, дисплей 480x360, FM/аудіошляхи, пам’ять і карта розділів Type A/B.</p>
         </article>
         <article class="lumen-card">
           <small>Обладнання</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 обладнання</a></h3>
+          <p>Плата MT6582, дерево пристроїв, панелі GC9503V/ST7701S, шини PMIC/DAC, розділи та образ завантаження.</p>
         </article>
         <article class="lumen-card">
-          <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <small>Прошивка</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Пакети мікропрограм</a></h3>
+          <p>rom.zip анатомія, файли розкиду, контракти на оновлення класу A та контрольний список випуску.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>Теми</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Авторство теми та скіна</a></h3>
+          <p>Y1 теми config.json, Rockbox WPS/SBS, Reborn скіни та Y2Player скіни у форматі v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>Всі навички</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Перегляньте папку навичок</a></h3>
+          <p>Rockbox Y1/Y2, стандартні ПЗУ для Android, Y2Linux, програми для Android, програми запуску, примітки до випуску та публікація на сайті.</p>
         </article>
       </div>
     </section>

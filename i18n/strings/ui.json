@@ -3584,7 +3584,8 @@
    "guide_zh.html"
   ],
   "Choose site colour theme": [
-   "nav.js"
+   "nav.js",
+   "site-init.js"
   ],
   "Choose the latest stable release for everyday use. Nightly builds are preview releases for testing new changes.": [
    "rockbox-y1/install.html",
@@ -4091,6 +4092,9 @@
    "lumen-site.js"
   ],
   "Complete post-install setup": [
+   "lumen-site.js"
+  ],
+  "Complete setup after install": [
    "lumen-site.js"
   ],
   "Computer with Innioasis Updater CE": [
@@ -4650,8 +4654,11 @@
    "guides/restore-original-sr1_zh-CN.html",
    "guides/restore-original-sr1_zh-TW.html"
   ],
-  "Copyleft - Innioasis and Ryan Specter": [
+  "Copyleft - Innioasis and": [
    "nav.js"
+  ],
+  "Copyleft - Innioasis and Ryan Specter": [
+   "site-locale.js"
   ],
   "Corporate Sponsorship": [
    "support_toolbar.html"
@@ -5311,7 +5318,6 @@
    "install/y2player-y2-windows.html"
   ],
   "Does a Y1 need to be charged before flashing?": [
-   "guides/y1-wont-turn-on.html",
    "guides/y1-wont-turn-on_ar.html",
    "guides/y1-wont-turn-on_de.html",
    "guides/y1-wont-turn-on_es.html",
@@ -5329,8 +5335,10 @@
    "guides/y1-wont-turn-on_zh-CN.html",
    "guides/y1-wont-turn-on_zh-TW.html"
   ],
+  "Does a Y1 need to be charged before installing?": [
+   "guides/y1-wont-turn-on.html"
+  ],
   "Does a Y2 need to be charged before flashing?": [
-   "guides/y2-wont-turn-on.html",
    "guides/y2-wont-turn-on_ar.html",
    "guides/y2-wont-turn-on_de.html",
    "guides/y2-wont-turn-on_es.html",
@@ -5347,6 +5355,9 @@
    "guides/y2-wont-turn-on_uk.html",
    "guides/y2-wont-turn-on_zh-CN.html",
    "guides/y2-wont-turn-on_zh-TW.html"
+  ],
+  "Does a Y2 need to be charged before installing?": [
+   "guides/y2-wont-turn-on.html"
   ],
   "Does deleting .rockbox uninstall the firmware?": [
    "rockbox-y1/uninstall.html",
@@ -5617,8 +5628,7 @@
    "lumen-site.js"
   ],
   "Download started": [
-   "lumen-site.js",
-   "portable-zip-links.js"
+   "lumen-site.js"
   ],
   "Download the ROM ZIP to your computer.": [
    "rockbox-y1/portable-zip.html",
@@ -5664,7 +5674,7 @@
    "release_notes_zh-TW.html",
    "release_notes_zh.html"
   ],
-  "Editorial standards, hardware testing methodology, team background, and independence disclosure for the Innioasis Updater project.": [
+  "Editorial standards, team background, and independence disclosure for the Innioasis Updater project.": [
    "about.html"
   ],
   "Embedded Linux Firmware": [
@@ -6952,6 +6962,10 @@
    "release_notes_zh-TW.html",
    "release_notes_zh.html"
   ],
+  "Firmware zip downloaded": [
+   "lumen-site.js",
+   "portable-zip-links.js"
+  ],
   "First start: charge, power on and pick a language": [
    "manuals/first-start.html"
   ],
@@ -7049,6 +7063,9 @@
    "rockbox-y2/sd-card.html"
   ],
   "Follow along with the setup guide to complete post-install setup on your Y1.": [
+   "lumen-site.js"
+  ],
+  "Follow along with the setup guide to complete setup after install on your Y1.": [
    "lumen-site.js"
   ],
   "Follow the 6-step install guide in Innioasis Updater CE.": [
@@ -7254,6 +7271,9 @@
    "install/y2player-y2-linux.html",
    "install/y2player-y2-mac.html",
    "install/y2player-y2-windows.html"
+  ],
+  "Get Updater for macOS": [
+   "nav.js"
   ],
   "Get and use Innioasis Updater CE to discover, install, or restore firmware on an Innioasis Y1 or Y2.": [
    "guide.html",
@@ -10586,7 +10606,8 @@
    "rockbox-y2/troubleshooting.html",
    "rockbox-y2/uninstall.html",
    "rockbox-y2/update.html",
-   "rockbox-y2/vs-stock.html"
+   "rockbox-y2/vs-stock.html",
+   "site-locale.js"
   ],
   "Innioasis Updater CE": [
    "credits.html",
@@ -10707,6 +10728,7 @@
    "rockbox-y1/portable-zip.html",
    "rockbox-y2/install.html",
    "rockbox-y2/portable-zip.html",
+   "site-locale.js",
    "support_devs.html",
    "support_devs_ar.html",
    "support_devs_bn.html",
@@ -13755,7 +13777,7 @@
    "install/rockbox-y2-mac.html",
    "install/rockbox-y2-windows.html"
   ],
-  "Leave the player and cable alone until Updater CE shows success. Open the post-install notes for the extra patch options and the first-start checks.": [
+  "Leave the player and cable alone until Updater CE shows success. Open the after-install notes for the extra patch options and the first-start checks.": [
    "install/koensayr-y1-linux.html",
    "install/koensayr-y1-mac.html",
    "install/koensayr-y1-windows.html"
@@ -13808,6 +13830,10 @@
    "install/original-y2-mac.html",
    "install/original-y2-windows.html"
   ],
+  "Light": [
+   "nav.js",
+   "site-init.js"
+  ],
   "Linux": [
    "lumen-site.js"
   ],
@@ -13856,7 +13882,8 @@
   ],
   "Linux on ARM": [
    "lumen-site.js",
-   "portable-zip-links.js"
+   "portable-zip-links.js",
+   "site-locale.js"
   ],
   "Listed firmware with no installable release": [
    "lumen-site.js"
@@ -17434,10 +17461,6 @@
    "manuals/y2.html",
    "nav.js"
   ],
-  "Portable package for": [
-   "lumen-site.js",
-   "portable-zip-links.js"
-  ],
   "Portable package for Linux": [
    "firmware-list.html",
    "firmware-list_ar.html",
@@ -19925,7 +19948,12 @@
    "support_toolbar.html"
   ],
   "Ryan Specter": [
-   "about.html"
+   "about.html",
+   "nav.js",
+   "site-locale.js"
+  ],
+  "Ryan Specter and Team Slide": [
+   "site-locale.js"
   ],
   "Ryan and his partner are expecting a baby. Donations towards the project's running costs and our new family are massively appreciated.": [
    "support_toolbar.html",
@@ -19970,10 +19998,6 @@
   ],
   "Save choices": [
    "support_toolbar.html"
-  ],
-  "Saved to Downloads as": [
-   "lumen-site.js",
-   "portable-zip-links.js"
   ],
   "Saved your player with a free firmware download? Consider buying us a coffee.": [
    "support_toolbar.html",
@@ -21656,6 +21680,9 @@
   "Some features on your player require post-install setup. Follow along with our post-install guide to finish setting up your player.": [
    "lumen-site.js"
   ],
+  "Some features on your player require setup after install. Follow along with our after-install guide to finish setting up your player.": [
+   "lumen-site.js"
+  ],
   "Some of the players this supports were written off as broken. A donation keeps the rescue service running.": [
    "support_toolbar.html",
    "support_toolbar_ar.html",
@@ -21758,9 +21785,6 @@
    "install/solar-y1-mac.html",
    "install/solar-y2-mac.html",
    "install/y2player-y2-mac.html"
-  ],
-  "Starting portable package download…": [
-   "lumen-site.js"
   ],
   "Stock App": [
    "firmware-catalog.js"
@@ -22635,9 +22659,6 @@
    "support_toolbar_zh-CN.html",
    "support_toolbar_zh-TW.html"
   ],
-  "Theme": [
-   "site-init.js"
-  ],
   "Theme and build must share a resolution path. A theme written for 240p builds will not render correctly on a 360p build, and the reverse is also true. Match the theme label to the build label.": [
    "rockbox-y1-themes.html",
    "rockbox-y1-themes_ar.html",
@@ -22760,6 +22781,9 @@
   ],
   "Themes for Innioasis Y1 & Y2 players": [
    "nav.js"
+  ],
+  "There are some final setup steps needed to get Wi-Fi, FM radio, and Bluetooth working on your Y2 using system.img. Follow along with our after-install guide to finish setting up your player.": [
+   "lumen-site.js"
   ],
   "There are some final setup steps needed to get Wi-Fi, FM radio, and Bluetooth working on your Y2 using system.img. Follow along with our post-install guide to finish setting up your player.": [
    "lumen-site.js"
@@ -24079,6 +24103,9 @@
   "Updater CE transfers Rockbox themes for you when it can, and walks you through copying them when manual transfer is needed. See the theme guide.": [
    "rockbox-y1/first-start.html",
    "rockbox-y2/first-start.html"
+  ],
+  "Updater Community Edition": [
+   "site-locale.js"
   ],
   "Use Innioasis Updater CE to install custom firmware or restore official stock firmware on Innioasis and Timmkoo players.": [
    "firmware-guide.html",
@@ -25772,7 +25799,8 @@
   ],
   "Windows on ARM": [
    "lumen-site.js",
-   "portable-zip-links.js"
+   "portable-zip-links.js",
+   "site-locale.js"
   ],
   "XML parse error": [
    "developers.html",
@@ -26093,7 +26121,6 @@
    "install/y2-mac.html"
   ],
   "Yes. A flash that loses power can leave the player unusable. Charge it first and connect it directly to the computer rather than through a hub.": [
-   "guides/y1-wont-turn-on.html",
    "guides/y1-wont-turn-on_ar.html",
    "guides/y1-wont-turn-on_de.html",
    "guides/y1-wont-turn-on_es.html",
@@ -26110,7 +26137,6 @@
    "guides/y1-wont-turn-on_uk.html",
    "guides/y1-wont-turn-on_zh-CN.html",
    "guides/y1-wont-turn-on_zh-TW.html",
-   "guides/y2-wont-turn-on.html",
    "guides/y2-wont-turn-on_ar.html",
    "guides/y2-wont-turn-on_de.html",
    "guides/y2-wont-turn-on_es.html",
@@ -26127,6 +26153,10 @@
    "guides/y2-wont-turn-on_uk.html",
    "guides/y2-wont-turn-on_zh-CN.html",
    "guides/y2-wont-turn-on_zh-TW.html"
+  ],
+  "Yes. An installation that loses power can leave the player unusable. Charge it first and connect it directly to the computer rather than through a hub.": [
+   "guides/y1-wont-turn-on.html",
+   "guides/y2-wont-turn-on.html"
   ],
   "Yes. Android 4.2 is one of the names people use for Android development ROM. This guide covers the same project on the Innioasis Y1.": [
    "install/android-4-2-y1-linux.html",

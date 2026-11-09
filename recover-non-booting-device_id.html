@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>How to Recover a Non-Booting MediaTek Player After MTKclient Failure · Innioasis Community</title>
-  <meta name="description" content="Step-by-step guide to unbrick and recover non-booting Innioasis Y1, Y2, G1, Timmkoo, and MediaTek players after MTKclient interrupted flashes on Linux or macOS.">
+  <title>Cara Memulihkan Pemain yang Non-Booting MediaTek Setelah Kegagalan Klien MTK · Innioasis Komunitas</title>
+  <meta name="description" content="Panduan langkah demi langkah untuk membatalkan pemasangan dan memulihkan pemutar Innioasis Y1, Y2, G1, Timmkoo, dan MediaTek yang tidak melakukan booting setelah klien MTK menghentikan flash di Linux atau macOS.">
   <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_id.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
@@ -81,106 +81,106 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Troubleshooting & Device Recovery</p>
-      <h1>Recovering a Non-Booting Device After MTKclient Flashing</h1>
-      <p class="lead">If your Innioasis Y1, Y2, or MediaTek device fails to power on or shows a black screen after flashing with MTKclient on macOS or Linux, do not panic. The hardware BootROM (BROM) is permanent and cannot be destroyed.</p>
+      <p class="lumen-kicker">Pemecahan Masalah &amp; Pemulihan Perangkat</p>
+      <h1>Memulihkan Perangkat Non-Boot Setelah Klien MTK Berkedip</h1>
+      <p class="lead">Jika perangkat Innioasis Y1, Y2, atau MediaTek Anda gagal menyala atau menampilkan layar hitam setelah melakukan flashing dengan klien MTK di macOS atau Linux, jangan panik. BootROM perangkat keras (BROM) bersifat permanen dan tidak dapat dimusnahkan.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>Why MTKclient May Stall or Leave a Black Screen</h2>
-      <p>MTKclient relies on software exploit payloads (kamakiri / amonet) to bypass DA authentication and raw USB communication via libusb. On macOS and Linux ARM64 systems:</p>
+      <h2>Mengapa Klien MTK Mungkin Menghentikan atau Meninggalkan Layar Hitam</h2>
+      <p>Klien MTK mengandalkan muatan eksploitasi perangkat lunak (kamakiri / amonet) untuk melewati otentikasi DA dan komunikasi mentah USB melalui libusb. Pada sistem macOS dan Linux ARM64:</p>
       <ul class="lumen-benefits-list">
-        <li>USB handshake latency or port timeouts on macOS can stall DA payload injection mid-transfer.</li>
-        <li>Missing or incomplete partition headers leave the bootloader (preloader / lk) in a non-responsive state.</li>
-        <li>The player appears completely dead—no LED, no charging icon, no screen backlight.</li>
+        <li>USB latensi jabat tangan atau batas waktu port pada macOS dapat menghentikan injeksi muatan DA di tengah transfer.</li>
+        <li>Header partisi yang hilang atau tidak lengkap membuat bootloader (preloader/lk) dalam keadaan tidak responsif.</li>
+        <li>Pemutar tampak mati total—tidak ada LED, tidak ada ikon pengisian daya, tidak ada lampu latar layar.</li>
       </ul>
-      <p>Even in this state, the MediaTek chipset drops back into <strong>BROM Mode</strong> (USB VID 0e8d, PID 0003), ready for official low-level recovery.</p>
+      <p>Bahkan dalam keadaan ini, chipset MediaTek turun kembali <strong>Modus BROM</strong> (USB VID 0e8d, PID 0003), siap untuk pemulihan resmi tingkat rendah.</p>
     </section>
 
     <section class="lumen-guide-section" id="sp-flash-tool-engine">
-      <h2>The Definitive Recovery Method: SP Flash Tool Engine in Updater CE</h2>
-      <p>The safest, most reliable way to recover your bricked player is using <strong>Pembaru CE</strong> configured with the official <strong>SP Flash Tool</strong> backend.</p>
+      <h2>Metode Pemulihan Definitif: SP Flash Tool Mesin di Updater CE</h2>
+      <p>Cara teraman dan paling andal untuk memulihkan pemain Anda yang terkena brick adalah dengan menggunakan <strong>Pembaruan CE</strong> dikonfigurasi dengan resmi <strong>SP Flash Tool</strong> bagian belakang.</p>
       
       <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
-        <h3>Exact Steps in Updater CE:</h3>
+        <h3>Langkah Tepat di Updater CE:</h3>
         <ol class="lumen-steps" style="margin-top: 10px;">
-          <li>Buka <strong>Pembaru CE</strong>.</li>
-          <li>Klik <strong>Pengaturan</strong> in the left navigation sidebar.</li>
-          <li>Scroll down to the Advanced section and enable <strong>Tampilkan Pengaturan Lanjutan</strong>.</li>
-          <li>Under <strong>Metode Instalasi</strong> (or <em>Flashing Engine for MediaTek installer</em>), locate the <strong>Metode Flash</strong> dropdown.</li>
-          <li>Change the selection from <em>Otomatis (disarankan)</em> atau <em>MTKClient</em> untuk <strong>SP Flash Tool</strong>.</li>
-          <li>Confirm the prompt and return to the main install flow.</li>
+          <li>Buka <strong>Pembaruan CE</strong>.</li>
+          <li>Klik <strong>Pengaturan</strong> di sidebar navigasi kiri.</li>
+          <li>Gulir ke bawah ke bagian Lanjutan dan aktifkan <strong>Tampilkan Pengaturan Lanjutan</strong>.</li>
+          <li>Di bawah <strong>Metode Instalasi</strong> (atau <em>Mesin Berkedip untuk penginstal MediaTek</em>), temukan <strong>Metode Flash</strong> tarik-turun.</li>
+          <li>Ubah pilihan dari <em>Otomatis (disarankan)</em> atau <em>MTKClient</em> untuk <strong>SP Flash Tool</strong>.</li>
+          <li>Konfirmasikan perintah tersebut dan kembali ke alur instalasi utama.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Platform Architecture & OS Requirements for SP Flash Tool</h2>
-      <p>MediaTek's official <code>SP Flash Tool</code> binary is compiled natively as an <strong>x86_64 ELF binary for Linux</strong> and a <strong>PE32+ executable for Windows x64</strong>.</p>
+      <h2>Arsitektur Platform &amp; Persyaratan OS untuk SP Flash Tool</h2>
+      <p>MediaTek resmi <code>SP Flash Tool</code> biner dikompilasi secara asli sebagai <strong>x86_64 biner ELF untuk Linux</strong> dan sebuah <strong>PE32+ dapat dieksekusi untuk Windows x64</strong>.</p>
       <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
-        <strong>Important Hardware Note for macOS and ARM64 Linux Users:</strong><br>
-        Because MediaTek does not compile SP Flash Tool for macOS (Darwin) or Linux ARM64 (aarch64), macOS users and ARM64 Linux users (such as Raspberry Pi or Apple Silicon running Asahi Linux) experiencing a brick must connect their player to:
+        <strong>Catatan Perangkat Keras Penting untuk Pengguna macOS dan ARM64 Linux:</strong><br>
+        Karena MediaTek tidak mengkompilasi SP Flash Tool untuk macOS (Darwin) atau Linux ARM64 (aarch64), pengguna macOS dan pengguna Linux ARM64 (seperti Raspberry Pi atau Apple Silicon yang menjalankan Asahi Linux) yang mengalami brick harus menghubungkan pemutar mereka ke:
         <ul style="margin: 8px 0 0 20px;">
-          <li>An <strong>x64 Windows PC</strong> (Windows 10 / 11 64-bit), or</li>
-          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64-bit).</li>
+          <li>Sebuah <strong>x64 PC Windows</strong> (Windows 10/11 64-bit), atau</li>
+          <li>Sebuah <strong>x86_64 PC Linux</strong> (Ubuntu, Debian, Fedora, Lengkungan 64-bit).</li>
         </ul>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Step-by-Step Hardware Unbricking Process</h2>
+      <h2>Proses Pembongkaran Perangkat Keras Langkah-demi-Langkah</h2>
       <ol class="lumen-steps">
-        <li><strong>Disconnect the Player:</strong> Unplug the USB cable from the player and PC completely.</li>
-        <li><strong>Hard Power Off:</strong> Hold the Power button (or Power + Volume Down) for 15 seconds to ensure the chipset is fully powered down and not stuck in a low-power USB loop.</li>
-        <li><strong>Launch Updater CE with SP Flash Tool Mode:</strong> Select your device model (e.g. <em>Innioasis Y1</em> atau <em>Innioasis Y2</em>) and choose <em>Perangkat lunak asli</em> to restore stock partitions.</li>
-        <li><strong>Initiate Install / Restore:</strong> Klik <em>Pasang / Pulihkan</em> in Updater CE. Wait until the status prompt says <em>Waiting for player...</em></li>
-        <li><strong>Insert USB Cable to Trigger BROM:</strong> While the device is OFF, plug in the USB cable directly to a high-speed motherboard USB port (avoid unpowered USB hubs).</li>
-        <li>The system will detect the MediaTek VCOM port, push the Download Agent (DA), rewrite partition tables, and restore all firmware images cleanly.</li>
+        <li><strong>Putuskan Sambungan Pemutar:</strong> Cabut sepenuhnya kabel USB dari player dan PC.</li>
+        <li><strong>Matikan Keras:</strong> Tahan tombol Daya (atau Daya + Volume Turun) selama 15 detik untuk memastikan chipset dimatikan sepenuhnya dan tidak terjebak dalam loop USB berdaya rendah.</li>
+        <li><strong>Luncurkan Updater CE dengan Mode SP Flash Tool:</strong> Pilih model perangkat Anda (mis. <em>Innioasis Y1</em> atau <em>Innioasis Y2</em>) dan pilih <em>Perangkat lunak asli</em> untuk memulihkan partisi stok.</li>
+        <li><strong>Memulai Instal/Pulihkan:</strong> Klik <em>Pasang / Pulihkan</em> di Pembaruan CE. Tunggu hingga pesan status berbunyi <em>Menunggu pemain...</em></li>
+        <li><strong>Masukkan Kabel USB untuk Memicu BROM:</strong> Saat perangkat MATI, colokkan kabel USB langsung ke port USB motherboard berkecepatan tinggi (hindari hub USB yang tidak memiliki daya).</li>
+        <li>Sistem akan mendeteksi port VCOM MediaTek, mendorong Download Agent (DA), menulis ulang tabel partisi, dan memulihkan semua image firmware dengan bersih.</li>
       </ol>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Permutations by Model and Operating System</h2>
+      <h2>Permutasi berdasarkan Model dan Sistem Operasi</h2>
       <div style="overflow-x: auto;">
         <table class="lumen-release-table">
           <thead>
             <tr>
               <th>Model</th>
-              <th>Failed Platform</th>
-              <th>Recommended Recovery Setup</th>
-              <th>Engine &amp; Mode</th>
+              <th>Platform Gagal</th>
+              <th>Pengaturan Pemulihan yang Direkomendasikan</th>
+              <th>Mesin &amp; Mode</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
-              <td>macOS (Apple Silicon / Intel)</td>
-              <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y1 Stock ROM</td>
+              <td>MacOS (Apple Silicon/Intel)</td>
+              <td>Windows x64/Linux x86_64 PC</td>
+              <td>SP Flash Tool + Y1 Stok ROM</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
-              <td>Linux ARM64 / x86_64</td>
-              <td>Linux x86_64 or Windows x64 PC</td>
-              <td>SP Flash Tool + Community DA</td>
+              <td>Linux ARM64/x86_64</td>
+              <td>Linux x86_64 atau PC Windows x64</td>
+              <td>SP Flash Tool + DA Komunitas</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y2</strong></td>
-              <td>macOS (MTKclient stalled)</td>
-              <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y2 Scatter Recovery</td>
+              <td>macOS (klien MTK terhenti)</td>
+              <td>Windows x64/Linux x86_64 PC</td>
+              <td>SP Flash Tool + Y2 Pemulihan Sebaran</td>
             </tr>
             <tr>
               <td><strong>Innioasis G1 / G3 / G5</strong></td>
-              <td>macOS / Linux MTKclient</td>
-              <td>Windows x64 PC with VCOM Drivers</td>
-              <td>SP Flash Tool + Factory Firmware</td>
+              <td>klien macOS / Linux MTK</td>
+              <td>PC Windows x64 dengan Driver VCOM</td>
+              <td>SP Flash Tool + Firmware Pabrik</td>
             </tr>
             <tr>
               <td><strong>Mechen H1 / Timmkoo A5</strong></td>
-              <td>Any platform</td>
-              <td>Windows x64 or Linux x86_64 PC</td>
-              <td>SP Flash Tool + Scatter file</td>
+              <td>Platform apa pun</td>
+              <td>PC Windows x64 atau Linux x86_64</td>
+              <td>SP Flash Tool + File sebar</td>
             </tr>
           </tbody>
         </table>

@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>SP Flash Tool for Mac · MediaTek Scatter Flashing Guide & Alternatives</title>
-  <meta name="description" content="How to use SP Flash Tool on Mac using Updater CE and browse scatter files to flash MediaTek devices like Mechen H1, Innioasis Y1/Y2, Timmkoo, and MT6580/MT6572 MP3 players and phones.">
+  <title>SP Flash Tool για Mac · MediaTek Scatter που αναβοσβήνει Οδηγός &amp; εναλλακτικές λύσεις</title>
+  <meta name="description" content="Πώς να χρησιμοποιήσετε το SP Flash Tool σε Mac χρησιμοποιώντας το Updater CE και να περιηγηθείτε σε αρχεία scatter σε συσκευές αναπαραγωγής MediaTek flash όπως Mechen H1, Innioasis Y1/Y2, Timmkoo και MT6580/MT6572 MP3 player και τηλέφωνα.">
   <link rel="canonical" href="https://innioasis.app/sp-flash-tool-mac_el.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/sp-flash-tool-mac.html">
@@ -81,42 +81,42 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">MediaTek Tools & Cross-Platform Flashing</p>
+      <p class="lumen-kicker">MediaTek Εργαλεία και αναβοσβήνει μεταξύ πλατφορμών</p>
       <h1>SP Flash Tool for Mac: The Complete Guide &amp; Scatter Browser</h1>
-      <p class="lead">Does official MediaTek SP Flash Tool run on macOS? Here is the exact status, how <strong>Ενημερωτής CE</strong> provides native MediaTek flashing on Mac, and how to flash any scatter-based MediaTek MP3 player or smartphone.</p>
+      <p class="lead">Το επίσημο MediaTek SP Flash Tool εκτελείται σε macOS; Εδώ είναι η ακριβής κατάσταση, πώς <strong>Ενημερωτής CE</strong> παρέχει εγγενές MediaTek που αναβοσβήνει σε Mac και πώς να αναβοσβήνει οποιοδήποτε πρόγραμμα αναπαραγωγής MP3 ή smartphone που βασίζεται σε MediaTek.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>The Truth About SP Flash Tool on macOS</h2>
-      <p>MediaTek never released an official macOS build of <strong>Smart Phone Flash Tool (SP Flash Tool)</strong>. The tool has only ever existed as a 32-bit/64-bit Windows application and an x86_64 Linux binary. Emulating SP Flash Tool on macOS through Wine or CrossOver fails because macOS kernel USB extensions do not allow USB serial pass-through at the precision required during BROM boot handshakes.</p>
-      <p><strong>The Solution:</strong> <strong>Ενημερωτής CE</strong> bridges this gap by bundling native Apple Silicon and Intel macOS flashing libraries (via MTKclient low-level protocol engine) alongside automated scatter discovery!</p>
+      <h2>Η αλήθεια για το SP Flash Tool στο macOS</h2>
+      <p>MediaTek δεν κυκλοφόρησε ποτέ επίσημη έκδοση του macOS <strong>Εργαλείο Flash Smart Phone (SP Flash Tool)</strong>. Το εργαλείο υπήρχε μόνο ως εφαρμογή Windows 32-bit/64-bit και δυαδικό x86_64 Linux. Η εξομοίωση SP Flash Tool στο macOS μέσω του Wine ή του CrossOver αποτυγχάνει επειδή οι επεκτάσεις του πυρήνα macOS USB δεν επιτρέπουν τη σειριακή διέλευση USB με την ακρίβεια που απαιτείται κατά τις χειραψίες εκκίνησης BROM.</p>
+      <p><strong>Η Λύση:</strong> <strong>Ενημερωτής CE</strong> γεφυρώνει αυτό το χάσμα συνδυάζοντας εγγενείς βιβλιοθήκες Apple Silicon και Intel macOS που αναβοσβήνουν (μέσω της μηχανής πρωτοκόλλου χαμηλού επιπέδου MTKclient) παράλληλα με την αυτοματοποιημένη ανακάλυψη διασποράς!</p>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Flashing Any MediaTek Device with 'Install from File' (Scatter Browser)</h2>
-      <p>Updater CE is not restricted to Innioasis players. You can use it as a powerful universal MediaTek scatter flasher for any device requiring <strong>SP Flash Tool v5 or earlier</strong>:</p>
+      <h2>Αναβοσβήνει οποιαδήποτε συσκευή MediaTek με "Εγκατάσταση από αρχείο" (Scatter Browser)</h2>
+      <p>Το Updater CE δεν περιορίζεται σε Innioasis παίκτες. Μπορείτε να το χρησιμοποιήσετε ως ισχυρό γενικό φλας διασποράς MediaTek για οποιαδήποτε συσκευή χρειάζεται <strong>SP Flash Tool v5 ή παλαιότερη</strong>:</p>
       <ul class="lumen-benefits-list">
-        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 portable HiFi Android players.</li>
-        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek touchscreen digital audio players.</li>
-        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek MT6572 / MT6582 music players.</li>
-        <li><strong>Legacy MediaTek Smartphones &amp; Feature Phones:</strong> Devices running MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753, and MT8163.</li>
+        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 φορητές συσκευές αναπαραγωγής HiFi Android.</li>
+        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek συσκευές αναπαραγωγής ψηφιακού ήχου με οθόνη αφής.</li>
+        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek Μουσικές συσκευές αναπαραγωγής MT6572 / MT6582.</li>
+        <li><strong>Παλαιού τύπου MediaTek Smartphone &amp; Feature Phone:</strong> Συσκευές με MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753 και MT8163.</li>
       </ul>
       <div class="lumen-callout">
-        <h3>How to Load Custom Scatter Files in Updater CE:</h3>
+        <h3>Πώς να φορτώσετε προσαρμοσμένα αρχεία Scatter στο Updater CE:</h3>
         <ol class="lumen-steps">
-          <li>Download the factory firmware archive (<code>.zip</code> ή <code>.rar</code>) or extract its folder containing the <code>*scatter*.txt</code> file.</li>
-          <li>In Updater CE, choose <strong>Περιήγηση αρχείων…</strong> on the firmware selection screen.</li>
-          <li>Select the scatter text file (e.g., <code>MT6580_Android_scatter.txt</code>) or firmware zip package.</li>
-          <li>Updater CE parses memory offsets, partition addresses (preloader, boot, recovery, system, userdata), and verifies scatter integrity.</li>
-          <li>Follow the on-screen live prompt: power down the device and connect the USB cable to flash.</li>
+          <li>Κάντε λήψη του αρχείου εργοστασιακού υλικολογισμικού (<code>.zip</code> ή <code>.rar</code>) ή εξαγάγετε το φάκελό του που περιέχει το <code>*scatter*.txt</code> αρχείο.</li>
+          <li>Στο Updater CE, επιλέξτε <strong>Περιήγηση αρχείων…</strong> στην οθόνη επιλογής υλικολογισμικού.</li>
+          <li>Επιλέξτε το αρχείο κειμένου scatter (π.χ. <code>MT6580_Android_scatter.txt</code>) ή πακέτο φερμουάρ υλικολογισμικού.</li>
+          <li>Το Updater CE αναλύει τις μετατοπίσεις μνήμης, τις διευθύνσεις διαμερισμάτων (προφόρτωση, εκκίνηση, ανάκτηση, σύστημα, δεδομένα χρήστη) και επαληθεύει την ακεραιότητα του scatter.</li>
+          <li>Ακολουθήστε τη ζωντανή προτροπή στην οθόνη: απενεργοποιήστε τη συσκευή και συνδέστε το καλώδιο USB για να αναβοσβήσει.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>When You Need an x64 Computer for Unbricking</h2>
-      <p>While macOS handles standard flashing and custom ROM installs cleanly via MTKclient, recovering from deep bootloop failures (where the preloader partition was wiped or mismatched) requires SP Flash Tool's full partition table rebuild.</p>
-      <p>If you encounter error stalls on Mac, switch to a 64-bit Windows PC or x86_64 Linux workstation, select <strong>Settings &gt; Show Advanced Settings &gt; Flash Method &gt; SP Flash Tool</strong>, and flash the factory scatter package.</p>
+      <h2>Όταν χρειάζεστε έναν υπολογιστή x64 για Unbricking</h2>
+      <p>Ενώ το macOS χειρίζεται το τυπικό αναβοσβήσιμο και τις προσαρμοσμένες ROM εγκαταστάσεις καθαρά μέσω του MTKclient, η ανάκτηση από αποτυχίες βαθιάς εκκίνησης (όπου το διαμέρισμα προφόρτωσης διαγράφηκε ή δεν ταιριάστηκε) απαιτεί την πλήρη αναδόμηση του πίνακα κατατμήσεων του SP Flash Tool.</p>
+      <p>Εάν αντιμετωπίσετε διακοπή σφαλμάτων σε Mac, μεταβείτε σε έναν υπολογιστή Windows 64-bit ή σταθμό εργασίας x86_64 Linux, επιλέξτε <strong>Ρυθμίσεις &gt; Εμφάνιση σύνθετων ρυθμίσεων &gt; Μέθοδος Flash &gt; SP Flash Tool</strong>και αναβοσβήνουν το εργοστασιακό πακέτο scatter.</p>
     </section>
   </main>
   <div id="footer-root"></div>

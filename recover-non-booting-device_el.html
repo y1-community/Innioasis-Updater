@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>How to Recover a Non-Booting MediaTek Player After MTKclient Failure · Innioasis Community</title>
-  <meta name="description" content="Step-by-step guide to unbrick and recover non-booting Innioasis Y1, Y2, G1, Timmkoo, and MediaTek players after MTKclient interrupted flashes on Linux or macOS.">
+  <title>Πώς να ανακτήσετε έναν παίκτη χωρίς εκκίνηση MediaTek μετά από αποτυχία MTKclient · Innioasis Κοινότητα</title>
+  <meta name="description" content="Βήμα-βήμα οδηγός για ξεμπουκώματα και ανάκτηση μη εκκίνησης Innioasis Y1, Y2, G1, Timmkoo και MediaTek παικτών μετά από διακοπή αναβοσβήνεις του MTKclient σε Linux ή macOS.">
   <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_el.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
@@ -81,106 +81,106 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Troubleshooting & Device Recovery</p>
-      <h1>Recovering a Non-Booting Device After MTKclient Flashing</h1>
-      <p class="lead">If your Innioasis Y1, Y2, or MediaTek device fails to power on or shows a black screen after flashing with MTKclient on macOS or Linux, do not panic. The hardware BootROM (BROM) is permanent and cannot be destroyed.</p>
+      <p class="lumen-kicker">Αντιμετώπιση προβλημάτων &amp; αποκατάσταση συσκευής</p>
+      <h1>Ανάκτηση μιας συσκευής που δεν εκκινεί μετά το MTKclient που αναβοσβήνει</h1>
+      <p class="lead">Εάν η συσκευή σας Innioasis Y1, Y2 ή MediaTek δεν ενεργοποιηθεί ή εμφανίσει μαύρη οθόνη αφού αναβοσβήνει με το MTKclient σε macOS ή Linux, μην πανικοβληθείτε. Το υλικό BootROM (BROM) είναι μόνιμο και δεν μπορεί να καταστραφεί.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>Why MTKclient May Stall or Leave a Black Screen</h2>
-      <p>MTKclient relies on software exploit payloads (kamakiri / amonet) to bypass DA authentication and raw USB communication via libusb. On macOS and Linux ARM64 systems:</p>
+      <h2>Γιατί το MTKclient μπορεί να σταματήσει ή να αφήσει μια μαύρη οθόνη</h2>
+      <p>Το MTKclient βασίζεται σε ωφέλιμα φορτία εκμετάλλευσης λογισμικού (kamakiri / amonet) για να παρακάμψει τον έλεγχο ταυτότητας DA και την ακατέργαστη USB επικοινωνία μέσω libusb. Σε συστήματα macOS και Linux ARM64:</p>
       <ul class="lumen-benefits-list">
-        <li>USB handshake latency or port timeouts on macOS can stall DA payload injection mid-transfer.</li>
-        <li>Missing or incomplete partition headers leave the bootloader (preloader / lk) in a non-responsive state.</li>
-        <li>The player appears completely dead—no LED, no charging icon, no screen backlight.</li>
+        <li>USB Ο λανθάνοντας χρόνος χειραψίας ή τα χρονικά όρια θυρών στο macOS μπορούν να σταματήσουν την έγχυση ωφέλιμου φορτίου DA κατά τη διάρκεια της μεταφοράς.</li>
+        <li>Οι κεφαλίδες διαμερισμάτων που λείπουν ή δεν είναι ολοκληρωμένες αφήνουν τον bootloader (preloader / lk) σε κατάσταση μη απόκρισης.</li>
+        <li>Η συσκευή αναπαραγωγής εμφανίζεται εντελώς νεκρή—χωρίς LED, κανένα εικονίδιο φόρτισης, χωρίς οπίσθιο φωτισμό οθόνης.</li>
       </ul>
-      <p>Even in this state, the MediaTek chipset drops back into <strong>BROM Mode</strong> (USB VID 0e8d, PID 0003), ready for official low-level recovery.</p>
+      <p>Ακόμη και σε αυτήν την κατάσταση, το MediaTek chipset επανέρχεται <strong>Λειτουργία BROM</strong> (USB VID 0e8d, PID 0003), έτοιμο για επίσημη ανάκτηση χαμηλού επιπέδου.</p>
     </section>
 
     <section class="lumen-guide-section" id="sp-flash-tool-engine">
-      <h2>The Definitive Recovery Method: SP Flash Tool Engine in Updater CE</h2>
-      <p>The safest, most reliable way to recover your bricked player is using <strong>Ενημερωτής CE</strong> configured with the official <strong>SP Flash Tool</strong> backend.</p>
+      <h2>Η οριστική μέθοδος ανάκτησης: SP Flash Tool Κινητήρας στο Updater CE</h2>
+      <p>Ο ασφαλέστερος, πιο αξιόπιστος τρόπος για να ανακτήσετε το bricked player σας είναι να χρησιμοποιήσετε <strong>Ενημερωτής CE</strong> έχει ρυθμιστεί με τον επίσημο <strong>SP Flash Tool</strong> backend.</p>
       
       <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
-        <h3>Exact Steps in Updater CE:</h3>
+        <h3>Ακριβή βήματα στο Updater CE:</h3>
         <ol class="lumen-steps" style="margin-top: 10px;">
-          <li>Ανοιχτό <strong>Ενημερωτής CE</strong>.</li>
-          <li>Κλικ <strong>Ρυθμίσεις</strong> in the left navigation sidebar.</li>
-          <li>Scroll down to the Advanced section and enable <strong>Εμφάνιση σύνθετων ρυθμίσεων</strong>.</li>
-          <li>Under <strong>Μέθοδος εγκατάστασης</strong> (or <em>Flashing Engine for MediaTek installer</em>), locate the <strong>Μέθοδος Flash</strong> dropdown.</li>
-          <li>Change the selection from <em>Αυτόματο (συνιστάται)</em> ή <em>MTKClient</em> να <strong>SP Flash Tool</strong>.</li>
-          <li>Confirm the prompt and return to the main install flow.</li>
+          <li>Ανοίξτε <strong>Ενημερωτής CE</strong>.</li>
+          <li>Κάντε κλικ <strong>Ρυθμίσεις</strong> στην αριστερή πλαϊνή γραμμή πλοήγησης.</li>
+          <li>Κάντε κύλιση προς τα κάτω στην ενότητα Για προχωρημένους και ενεργοποιήστε το <strong>Εμφάνιση σύνθετων ρυθμίσεων</strong>.</li>
+          <li>Κάτω <strong>Μέθοδος εγκατάστασης</strong> (ή <em>Flashing Engine για πρόγραμμα εγκατάστασης MediaTek</em>), εντοπίστε το <strong>Μέθοδος Flash</strong> αναπτυσσόμενη λίστα.</li>
+          <li>Αλλάξτε την επιλογή από <em>Αυτόματο (συνιστάται)</em> ή <em>MTKClient</em> να <strong>SP Flash Tool</strong>.</li>
+          <li>Επιβεβαιώστε την προτροπή και επιστρέψτε στην κύρια ροή εγκατάστασης.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Platform Architecture & OS Requirements for SP Flash Tool</h2>
-      <p>MediaTek's official <code>SP Flash Tool</code> binary is compiled natively as an <strong>x86_64 ELF binary for Linux</strong> and a <strong>PE32+ executable for Windows x64</strong>.</p>
+      <h2>Απαιτήσεις αρχιτεκτονικής πλατφόρμας και λειτουργικού συστήματος για SP Flash Tool</h2>
+      <p>επίσημος του MediaTek <code>SP Flash Tool</code> Το δυαδικό μεταγλωττίζεται εγγενώς ως ένα <strong>x86_64 ELF binary για Linux</strong> και α <strong>PE32+ εκτελέσιμο για Windows x64</strong>.</p>
       <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
-        <strong>Important Hardware Note for macOS and ARM64 Linux Users:</strong><br>
-        Because MediaTek does not compile SP Flash Tool for macOS (Darwin) or Linux ARM64 (aarch64), macOS users and ARM64 Linux users (such as Raspberry Pi or Apple Silicon running Asahi Linux) experiencing a brick must connect their player to:
+        <strong>Σημαντική σημείωση υλικού για χρήστες macOS και ARM64 Linux:</strong><br>
+        Επειδή το MediaTek δεν μεταγλωττίζει το SP Flash Tool για macOS (Darwin) ή Linux ARM64 (aarch64), οι χρήστες macOS και οι χρήστες Linux ARM64 (όπως το Raspberry Pi ή το Apple Silicon με Asahi Linux) που αντιμετωπίζουν ένα τούβλο πρέπει να συνδέσουν τη συσκευή αναπαραγωγής τους με:
         <ul style="margin: 8px 0 0 20px;">
-          <li>An <strong>x64 Windows PC</strong> (Windows 10 / 11 64-bit), or</li>
-          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64-bit).</li>
+          <li>Αν <strong>x64 Υπολογιστής με Windows</strong> (Windows 10 / 11 64-bit) ή</li>
+          <li>Αν <strong>x86_64 Υπολογιστής Linux</strong> (Ubuntu, Debian, Fedora, Arch 64-bit).</li>
         </ul>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Step-by-Step Hardware Unbricking Process</h2>
+      <h2>Βήμα προς βήμα Διαδικασία Unbricking Hardware</h2>
       <ol class="lumen-steps">
-        <li><strong>Disconnect the Player:</strong> Unplug the USB cable from the player and PC completely.</li>
-        <li><strong>Hard Power Off:</strong> Hold the Power button (or Power + Volume Down) for 15 seconds to ensure the chipset is fully powered down and not stuck in a low-power USB loop.</li>
-        <li><strong>Launch Updater CE with SP Flash Tool Mode:</strong> Select your device model (e.g. <em>Innioasis Y1</em> ή <em>Innioasis Y2</em>) and choose <em>Πρωτότυπο λογισμικό</em> to restore stock partitions.</li>
-        <li><strong>Initiate Install / Restore:</strong> Κλικ <em>Εγκατάσταση / Επαναφορά</em> in Updater CE. Wait until the status prompt says <em>Waiting for player...</em></li>
-        <li><strong>Insert USB Cable to Trigger BROM:</strong> While the device is OFF, plug in the USB cable directly to a high-speed motherboard USB port (avoid unpowered USB hubs).</li>
-        <li>The system will detect the MediaTek VCOM port, push the Download Agent (DA), rewrite partition tables, and restore all firmware images cleanly.</li>
+        <li><strong>Αποσυνδέστε τη συσκευή αναπαραγωγής:</strong> Αποσυνδέστε τελείως το καλώδιο USB από τη συσκευή αναπαραγωγής και τον υπολογιστή.</li>
+        <li><strong>Σκληρή απενεργοποίηση:</strong> Κρατήστε πατημένο το κουμπί λειτουργίας (ή Power + Volume Down) για 15 δευτερόλεπτα για να βεβαιωθείτε ότι το chipset είναι πλήρως απενεργοποιημένο και δεν έχει κολλήσει σε βρόχο χαμηλής κατανάλωσης USB.</li>
+        <li><strong>Εκκίνηση του Updater CE με λειτουργία SP Flash Tool:</strong> Επιλέξτε το μοντέλο της συσκευής σας (π.χ. <em>Innioasis Y1</em> ή <em>Innioasis Y2</em>) και επιλέξτε <em>Πρωτότυπο λογισμικό</em> για την επαναφορά των κατατμήσεων στοκ.</li>
+        <li><strong>Έναρξη εγκατάστασης / επαναφοράς:</strong> Κάντε κλικ <em>Εγκατάσταση / Επαναφορά</em> στο Updater CE. Περιμένετε μέχρι να εμφανιστεί η προτροπή κατάστασης <em>Αναμονή για παίκτη...</em></li>
+        <li><strong>Εισαγάγετε το καλώδιο USB για να ενεργοποιήσετε το BROM:</strong> Ενώ η συσκευή είναι απενεργοποιημένη, συνδέστε το καλώδιο USB απευθείας σε μια θύρα μητρικής πλακέτας υψηλής ταχύτητας USB (αποφύγετε τους διανομείς USB που δεν τροφοδοτούνται).</li>
+        <li>Το σύστημα θα εντοπίσει τη θύρα MediaTek VCOM, θα πιέσει το Download Agent (DA), θα ξαναγράψει πίνακες διαμερισμάτων και θα επαναφέρει όλες τις εικόνες υλικολογισμικού καθαρά.</li>
       </ol>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Permutations by Model and Operating System</h2>
+      <h2>Μεταθέσεις ανά μοντέλο και λειτουργικό σύστημα</h2>
       <div style="overflow-x: auto;">
         <table class="lumen-release-table">
           <thead>
             <tr>
-              <th>Model</th>
-              <th>Failed Platform</th>
-              <th>Recommended Recovery Setup</th>
-              <th>Engine &amp; Mode</th>
+              <th>Μοντέλο</th>
+              <th>Αποτυχία πλατφόρμας</th>
+              <th>Συνιστώμενη ρύθμιση ανάκτησης</th>
+              <th>Κινητήρας &amp; Λειτουργία</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
               <td>macOS (Apple Silicon / Intel)</td>
-              <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y1 Stock ROM</td>
+              <td>Υπολογιστής Windows x64 / Linux x86_64</td>
+              <td>SP Flash Tool + Y1 Μετοχή ROM</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
               <td>Linux ARM64 / x86_64</td>
-              <td>Linux x86_64 or Windows x64 PC</td>
-              <td>SP Flash Tool + Community DA</td>
+              <td>Υπολογιστής Linux x86_64 ή Windows x64</td>
+              <td>SP Flash Tool + DA κοινότητας</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y2</strong></td>
-              <td>macOS (MTKclient stalled)</td>
-              <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y2 Scatter Recovery</td>
+              <td>macOS (MTKclient έχει σταματήσει)</td>
+              <td>Υπολογιστής Windows x64 / Linux x86_64</td>
+              <td>SP Flash Tool + Y2 Ανάκτηση Scatter</td>
             </tr>
             <tr>
               <td><strong>Innioasis G1 / G3 / G5</strong></td>
               <td>macOS / Linux MTKclient</td>
-              <td>Windows x64 PC with VCOM Drivers</td>
-              <td>SP Flash Tool + Factory Firmware</td>
+              <td>Υπολογιστής Windows x64 με προγράμματα οδήγησης VCOM</td>
+              <td>SP Flash Tool + Εργοστασιακό υλικολογισμικό</td>
             </tr>
             <tr>
               <td><strong>Mechen H1 / Timmkoo A5</strong></td>
-              <td>Any platform</td>
-              <td>Windows x64 or Linux x86_64 PC</td>
-              <td>SP Flash Tool + Scatter file</td>
+              <td>Οποιαδήποτε πλατφόρμα</td>
+              <td>Υπολογιστής Windows x64 ή Linux x86_64</td>
+              <td>SP Flash Tool + Αρχείο Scatter</td>
             </tr>
           </tbody>
         </table>

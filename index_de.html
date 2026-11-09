@@ -50,7 +50,7 @@
   <style>
     .lumen-announcement-strip {
       width: 100%;
-      background: color-mix(in oklab, var(--lumen-accent) 15%, var(--lumen-bg, #080c14));
+      background: color-mix(in oklab, var(--lumen-accent) 15%, var(--lumen-panel));
       border-bottom: 1px solid color-mix(in oklab, var(--lumen-accent) 35%, var(--lumen-line));
       padding: 0.65rem 1rem;
       box-sizing: border-box;
@@ -75,14 +75,12 @@
       align-items: center;
       padding: 0.22rem 0.65rem;
       font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: normal;
       background: var(--lumen-accent);
-      color: #ffffff !important;
+      color: var(--lumen-ink) !important;
       border-radius: 999px;
       flex: 0 0 auto;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     }
     .lumen-announcement-text {
       flex: 0 1 auto;
@@ -113,27 +111,26 @@
       font-weight: 600;
       border-radius: 999px;
       border: 1px solid color-mix(in oklab, var(--lumen-accent) 40%, var(--lumen-line));
-      background: color-mix(in oklab, var(--lumen-panel, #121824) 80%, var(--lumen-accent-wash));
+      background: color-mix(in oklab, var(--lumen-panel) 80%, var(--lumen-accent-wash));
       color: var(--lumen-text) !important;
       text-decoration: none !important;
-      transition: all 0.18s ease;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, color 0.18s ease;
     }
     .lumen-announcement-cta:hover {
       border-color: var(--lumen-accent);
       background: var(--lumen-accent);
-      color: #ffffff !important;
+      color: var(--lumen-ink) !important;
       transform: translateY(-1px);
     }
     .lumen-announcement-cta--install {
       background: var(--lumen-accent);
       border-color: var(--lumen-accent);
-      color: #ffffff !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      color: var(--lumen-ink) !important;
     }
     .lumen-announcement-cta--install:hover {
       opacity: 0.92;
-      color: #ffffff !important;
-      background: var(--lumen-accent);
+      color: var(--lumen-ink) !important;
+      background: var(--lumen-accent-strong);
       transform: translateY(-1px);
     }
     @media (max-width: 840px) {
@@ -198,11 +195,11 @@
     <section class="lumen-hero" aria-labelledby="home-title">
       <div>
         <h1 id="home-title">Software-Updates und Firmware</h1>
-        <p class="lumen-hero-lead">Unterstützt alle Innioasis und Timmkoo Spieler, ob neu oder alt. Offizielle Software, Updates und Wiederherstellungsdateien sowie Community-Software wie <a href="rockbox-benefits_de.html">Rockbox</a>, <a href="better-y-benefits_de.html">Better-Y</a>, <a href="reborn-y2linux-benefits_de.html">Reborn</a>, <a href="rondo-benefits_de.html">Rondo</a>, <a href="jj-launcher-benefits.html">JJ Launcher</a>, <a href="inniclassic-benefits_de.html">Inniclassic</a> und <a href="y2player-benefits_de.html">Y2Player</a>. <a href="firmware_de.html?brand=Innioasis">Innioasis</a> <strong>Y1, Y2, G1, G3, G5, R1, PR1</strong> und <a href="firmware_de.html?brand=Timmkoo">Timmkoo</a> A5, Q5, Q3. Updater CE installiert auch die Updates von Timmkoo.</p>
+        <p class="lumen-hero-lead">Official restore packages, factory firmware, and community operating systems for portable players.</p>
         <div class="lumen-actions">
           <a class="lumen-button lumen-button--primary" href="firmware_de.html">Firmware durchsuchen</a>
-          <a class="lumen-button" data-availability="updater" href="guide_de.html#platform">Updater CE holen</a>
-          <a class="lumen-button" href="firmware-faq_de.html">Bei der Auswahl helfen</a>
+          <a class="lumen-secondary-action" data-availability="updater" href="guide_de.html#platform">Updater CE holen</a>
+          <a class="lumen-secondary-action" href="firmware-faq_de.html">Bei der Auswahl helfen</a>
         </div>
       </div>
       <figure class="lumen-hero-art">
@@ -211,7 +208,7 @@
     </section>
 
     <section class="lumen-section" aria-labelledby="reviews-title">
-      <div class="lumen-section-head"><div><p class="lumen-kicker">Videos</p><h2 id="reviews-title">Lernen Sie Innioasis Updater kennen</h2></div></div>
+      <div class="lumen-section-head"><div><h2 id="reviews-title">Community walkthroughs and guides</h2></div></div>
       <div class="lumen-carousel" data-lumen-carousel role="region" aria-roledescription="carousel" aria-label="Lernen Sie Innioasis Updater Videos kennen" tabindex="0">
         <div class="lumen-carousel-stage">
           <article class="lumen-carousel-slide" data-carousel-fixed="true" data-carousel-order="1" data-video-key="dammit-jeff-rockbox" data-credit="Dammit Jeff" data-video-url="https://www.youtube.com/watch?v=3d2cATPt8Nk&t=477" aria-hidden="false">
@@ -236,14 +233,14 @@
           <article class="lumen-carousel-slide" data-video-key="keaira-rockbox" data-credit="Keaira's Digital Archive" data-video-url="https://www.tiktok.com/@keairasdigiarchive/video/7573615101484272926" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.tiktok.com/player/v1/7573615101484272926?description=1&music_info=1&rel=0" title="Video von Keaira&#39;s Digital Archive: Rockbox auf einem Innioasis-Player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen" allowfullscreen></iframe></div></article>
           <article class="lumen-carousel-slide" data-video-key="cristian-plaza-rockbox" data-video-lang="es" data-carousel-last="true" data-credit="Cristian Plaza" data-video-url="https://www.youtube.com/watch?v=cdp5mpLhGkI&t=305" aria-hidden="true"><div class="lumen-video-embed lumen-carousel-video"><iframe src="https://www.youtube-nocookie.com/embed/cdp5mpLhGkI?rel=0&start=305" title="Video von Cristian Plaza: Installation von Rockbox auf dem Innioasis Y1 (Spanisch)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
         </div>
-        <div class="lumen-carousel-controls"><button type="button" data-carousel-previous aria-label="Vorheriges Video">‹</button><span class="lumen-carousel-credit" aria-live="polite">Kredit: <a data-carousel-credit-link href="https://www.youtube.com/watch?v=3d2cATPt8Nk&t=477" target="_blank" rel="noopener noreferrer">Verdammt, Jeff</a></span><button type="button" data-carousel-next aria-label="Nächstes Video">›</button></div>
+        <div class="lumen-carousel-controls"><button type="button" data-carousel-previous aria-label="Vorheriges Video">Previous</button><span class="lumen-carousel-credit" aria-live="polite">Kredit: <a data-carousel-credit-link href="https://www.youtube.com/watch?v=3d2cATPt8Nk&t=477" target="_blank" rel="noopener noreferrer">Verdammt, Jeff</a></span><button type="button" data-carousel-next aria-label="Nächstes Video">Next</button></div>
       </div>
 
       <p class="lumen-meta" style="margin-top:.75rem">Lesen Sie lieber? Der <a href="guide_de.html">schriftliche Installationsanleitung</a> Abdeckungen <a href="guide_de.html#windows">Windows</a>, <a href="guide_de.html#macos">macOS</a>, und <a href="guide_de.html#linux">Linux</a> vor den Softwareschritten.</p>
     </section>
 
     <section class="lumen-section" aria-labelledby="home-firmware-title">
-      <div class="lumen-section-head"><div><p class="lumen-kicker">Software für jeden Innioasis und Timmkoo Spieler</p><h2 id="home-firmware-title">Sehen Sie, was Sie installieren können.</h2></div><a class="lumen-button" href="firmware_de.html">Öffnen Sie die vollständige Release-Liste</a></div>
+      <div class="lumen-section-head"><div><h2 id="home-firmware-title">Available software releases</h2></div><a class="lumen-button" href="firmware_de.html">Open release directory</a></div>
       <div class="lumen-table-wrap">
         <table class="lumen-release-table">
           <caption class="lumen-visually-hidden">Software für jeden Innioasis- und Timmkoo-Player verfügbar, mit Release-Listen für jedes Modell</caption>
@@ -251,7 +248,7 @@
           <tbody id="lumen-home-firmware-table"></tbody>
         </table>
       </div>
-      <p class="lumen-meta">Die gesamte aufgeführte Software stammt von <a href="firmware_de.html">Software-Archiv</a>. Der <a href="firmware_de.html">Vollständiges Release-Verzeichnis</a> Zeigt die Versionen für jedes Modell mit Installationsanleitungen, manuellen ZIP-Downloads usw. an <a href="guide_de.html#platform">Updater-Setup-Route</a>.</p>
+      <p class="lumen-meta">Die gesamte aufgeführte Software stammt von <a href="firmware_de.html">Software-Archiv</a> with verified ZIP downloads, install guides, and <a href="guide_de.html#platform">Updater setup instructions</a>.</p>
       
     </section>
 
@@ -261,25 +258,24 @@
 
     <section class="lumen-section" aria-labelledby="origin-title">
       <div class="lumen-callout">
-        <p class="lumen-kicker">Für Sie gebaut</p>
         <h2 id="origin-title">Was ist Innioasis Updater CE?</h2>
-        <p><strong>Innioasis Updater CE</strong> ist die einfache Möglichkeit, Ihren Player zu aktualisieren. Die Nutzung ist kostenlos. Es ist das Tool, das die Entwickler zuerst empfehlen.</p>
-        <p>Es behält Ihre Musik, Videos und Bluetooth-Kopplungen bei. Es sagt Ihnen, wann Updates bereit sind. Es zeigt jeden Schritt auf dem Bildschirm an. Es läuft unter Windows, macOS und Linux.</p>
+        <p><strong>Innioasis Updater CE</strong> is an open-source tool that simplifies updating and restoring your player across Windows, macOS, and Linux.</p>
+        <p>Flashing through Updater CE preserves your music library, video collection, and Bluetooth pairings while guiding each step on screen.</p>
         <div class="lumen-actions">
           <a class="lumen-button lumen-button--primary" data-availability="updater" href="guide_de.html#platform">Updater CE holen</a>
-          <a class="lumen-button" href="updater-comparison_de.html">Welches Werkzeug soll ich verwenden?</a>
+          <a class="lumen-button" href="updater-comparison_de.html">Compare flashing tools</a>
           <a class="lumen-button" href="firmware_de.html">Durchsuchen Sie Software</a>
         </div>
       </div>
     </section>
 
     <section class="lumen-section" id="supported-models" aria-labelledby="supported-models-title">
-      <div class="lumen-section-head"><div><p class="lumen-kicker">Geräteabdeckung</p><h2 id="supported-models-title">Innioasis &amp; Timmkoo Firmware-Downloads: Unterstützte Modelle</h2></div><a class="lumen-button" href="firmware_de.html">Durchsuchen Sie alle Downloads</a></div>
+      <div class="lumen-section-head"><div><h2 id="supported-models-title">Supported device models</h2></div><a class="lumen-button" href="firmware_de.html">Durchsuchen Sie alle Downloads</a></div>
       <div class="lumen-grid">
         <article class="lumen-card">
           <small>Innioasis</small>
           <h3>Innioasis Y1 &amp; Y2</h3>
-          <p>Offizielle Software, Wiederherstellungsdateien und benutzerdefinierte Systeme. Rockbox, Better-Y, Solar und mehr.</p>
+          <p>Official software, restore files, and custom systems including Rockbox, Better-Y, and Solar.</p>
           <div class="lumen-actions">
             <a class="lumen-button" href="firmware_de.html?model=Y1">Y1 Firmware</a>
             <a class="lumen-button" href="firmware_de.html?model=Y2">Y2 Firmware</a>
@@ -288,51 +284,51 @@
         <article class="lumen-card">
           <small>Innioasis</small>
           <h3>Innioasis G1, G3 &amp; G5</h3>
-          <p>Offizielle Software und Wiederherstellungsdateien für die Touchscreen-Player. Werks-Apps wiederherstellen oder Brick aufheben.</p>
+          <p>Official software and recovery files for touchscreen models. Restore factory apps or unbrick.</p>
           <div class="lumen-actions">
-            <a class="lumen-button" href="firmware_de.html?brand=Innioasis">Finden Sie ROMs der G-Serie</a>
+            <a class="lumen-button" href="firmware_de.html?brand=Innioasis">G-Series ROMs</a>
           </div>
         </article>
         <article class="lumen-card">
           <small>Innioasis</small>
           <h3>Innioasis R1 &amp; PR1</h3>
-          <p>Originalsoftware und Wiederherstellungsdateien für die Audioplayer.</p>
+          <p>Original firmware and recovery images for dedicated audio players.</p>
           <div class="lumen-actions">
-            <a class="lumen-button" href="firmware_de.html?brand=Innioasis">Finden Sie Q &amp; R-ROMs</a>
+            <a class="lumen-button" href="firmware_de.html?brand=Innioasis">R-Series ROMs</a>
           </div>
         </article>
         <article class="lumen-card">
           <small>Timmkoo</small>
           <h3>Timmkoo A5, Q5 &amp; Q3</h3>
-          <p>Updater CE installiert die Dateien, die Timmkoo bereitstellt. Gehostete Downloads sind in Vorbereitung.</p>
+          <p>Updater CE supports packages provided for Timmkoo players.</p>
           <div class="lumen-actions">
-            <a class="lumen-button" href="firmware-faq_de.html">So funktioniert die Timmkoo-Unterstützung</a>
+            <a class="lumen-button" href="firmware-faq_de.html">Timmkoo guide</a>
           </div>
         </article>
       </div>
-      <p class="lumen-meta" style="margin-top:1rem">Jedes Paket hier wird getestet, bevor es veröffentlicht wird. Neue Builds und Modelle erscheinen, sobald sie fertig sind.</p>
+      <p class="lumen-meta" style="margin-top:1rem">Every package is verified before publication. New builds appear as soon as they are tested.</p>
     </section>
 
     <section class="lumen-section" aria-labelledby="path-title">
-      <div class="lumen-section-head"><div><p class="lumen-kicker">Beginnen Sie hier</p><h2 id="path-title">Verwendung von Innioasis Updater</h2></div></div>
+      <div class="lumen-section-head"><div><h2 id="path-title">Verwendung von Innioasis Updater</h2></div></div>
       <div class="lumen-grid">
-        <article class="lumen-card"><small>01</small><h3>Wählen Sie Y1 oder Y2</h3><p>Verwenden Sie das auf dem Player aufgedruckte Modell. Y1- und Y2-Dateien sind unterschiedlich.</p></article>
-        <article class="lumen-card"><small>02</small><h3>Wählen Sie Ihre Software</h3><p>Wählen Sie das gewünschte System aus. Es werden nur diejenigen für Ihr Modell angezeigt.</p></article>
-        <article class="lumen-card"><small>03</small><h3>Installieren / Wiederherstellen</h3><p>Der Updater bereitet die Dateien vor. Es sagt Ihnen, wann Sie einstecken müssen.</p></article>
+        <article class="lumen-card"><small>01</small><h3>Check your model</h3><p>Verify the model printed on the back of your device. Y1 and Y2 packages differ.</p></article>
+        <article class="lumen-card"><small>02</small><h3>Select firmware</h3><p>Choose the build you want from the catalog for your hardware revision.</p></article>
+        <article class="lumen-card"><small>03</small><h3>Installieren oder wiederherstellen</h3><p>Updater prepares the archive and prompts you when to connect your player.</p></article>
       </div>
     </section>
 
     <section class="lumen-section" aria-labelledby="featured-title">
-      <div class="lumen-section-head"><div><p class="lumen-kicker">Wählen Sie eine Route</p><h2 id="featured-title">Erste Schritte mit Rockbox auf Ihrem Innioasis</h2></div></div>
+      <div class="lumen-section-head"><div><h2 id="featured-title">Getting started with Rockbox</h2></div></div>
       <div class="lumen-grid">
-        <article class="lumen-card"><h3>Installieren Sie Rockbox auf Y1</h3><p>Wählen Sie Y1, wählen Sie Rockbox, wählen Sie eine stabile Version und stellen Sie dann nur dann eine Verbindung her, wenn der Updater Sie dazu auffordert.</p><div class="lumen-actions"><a class="lumen-button" href="guides/rockbox-y1.html">Lesen Sie Y1 Schritte</a><a class="lumen-benefit-link" href="rockbox-benefits_de.html">Warum Rockbox?</a></div></article>
-        <article class="lumen-card"><h3>Installieren Sie Rockbox auf Y2</h3><p>Wählen Sie zuerst Y2. Die Y2-Route verwendet ein anderes Paket und darf nicht als Y1-Installation behandelt werden.</p><div class="lumen-actions"><a class="lumen-button" href="guides/rockbox-y2.html">Lesen Sie Y2 Schritte</a><a class="lumen-benefit-link" href="rockbox-benefits_de.html">Warum Rockbox?</a></div></article>
-        <article class="lumen-card"><h3>Originalsoftware wiederherstellen</h3><p>Wenn Sie von Rockbox oder einer anderen benutzerdefinierten Software zurückkehren, wird derselbe Updater-Ablauf verwendet: Wählen Sie Ihr Modell aus, wählen Sie „Originalsoftware“ und führen Sie „Installieren/Wiederherstellen“ aus.</p><div class="lumen-actions"><a class="lumen-button" href="guides/restore-original-y1.html">Y1 Bestandswiederherstellung</a><a class="lumen-button" href="guides/restore-original-y2.html">Y2 Bestandswiederherstellung</a></div><p class="lumen-meta">Funktioniert unter Windows, macOS oder Linux, nachdem das Updater-Setup dieses Computers fertig ist.</p></article>
+        <article class="lumen-card"><h3>Installieren Sie Rockbox auf Y1</h3><p>Select Y1, choose Rockbox stable, and connect only when prompted.</p><div class="lumen-actions"><a class="lumen-button" href="guides/rockbox-y1.html">Y1 instructions</a><a class="lumen-benefit-link" href="rockbox-benefits_de.html">Warum Rockbox?</a></div></article>
+        <article class="lumen-card"><h3>Installieren Sie Rockbox auf Y2</h3><p>Select Y2 in the tool. The Y2 route uses hardware-specific binaries.</p><div class="lumen-actions"><a class="lumen-button" href="guides/rockbox-y2.html">Y2 instructions</a><a class="lumen-benefit-link" href="rockbox-benefits_de.html">Warum Rockbox?</a></div></article>
+        <article class="lumen-card"><h3>Restore factory software</h3><p>Returning to factory software uses the same flow: select your model and choose Original Software.</p><div class="lumen-actions"><a class="lumen-button" href="guides/restore-original-y1.html">Y1 factory restore</a><a class="lumen-button" href="guides/restore-original-y2.html">Y2 factory restore</a></div><p class="lumen-meta">Compatible with Windows, macOS, and Linux.</p></article>
       </div>
     </section>
 
     <section class="lumen-section" aria-labelledby="support-title" data-donations-appeal>
-      <div class="lumen-callout"><h2 id="support-title">Unterstützen Sie Updater und die Themen-Galerie.</h2><p><strong>Innioasis Updater und die Themengalerie sind unabhängige Projekte.</strong> Sie werden von einem Entwickler und der Community am Laufen gehalten und es kostet echtes Geld, online und auf dem neuesten Stand zu bleiben. Wenn sie Ihnen geholfen haben, unterstützen Sie die Arbeit.</p><div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="support_devs_de.html#donations">Unterstützen Sie Updater und die Themes-Galerie</a></div></div>
+      <div class="lumen-callout"><h2 id="support-title">Unterstützen Sie Updater und die Themes-Galerie</h2><p><strong>Innioasis Updater and the Themes Gallery are independent projects</strong> maintained by the community and a solo developer. If these tools helped your player, consider supporting server hosting and maintenance.</p><div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="support_devs_de.html#donations">Support the projects</a></div></div>
     </section>
   </main>
   <div id="footer-root"></div><div id="support-toolbar-slot"></div>

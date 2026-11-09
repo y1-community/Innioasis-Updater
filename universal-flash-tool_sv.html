@@ -26,8 +26,8 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Innioasis Universal Flash Tool (Shared Flash Tool) vs Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="In-depth guide comparing the Innioasis Universal Flash Tool (Shared Flash Tool) and Innioasis Updater CE. Discover why Updater CE is the installer for Windows, macOS, and Linux.">
+  <title>Innioasis Universal Flash Tool (Delat Flash-verktyg) vs Updater CE - Innioasis nedladdningar av fast programvara</title>
+  <meta name="description" content="Fördjupad guide som jämför Innioasis Universal Flash Tool (Shared Flash Tool) och Innioasis Updater CE. Upptäck varför Updater CE är installationsprogrammet för Windows, macOS och Linux.">
   <meta name="keywords" content="Innioasis Universal Flash Tool, Shared Flash Tool, Innioasis Flash Tool, Universal Flashing Tool, Innioasis Updater CE, Firmware Archive, flash tool comparison, Y1 flash tool, Y2 flash tool">
   <link rel="canonical" href="https://innioasis.app/universal-flash-tool_sv.html">
   <link rel="icon" href="y1_illustration.png">
@@ -99,56 +99,56 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Flashing Software Guide</p>
+      <p class="lumen-kicker">Blinkande programvaruguide</p>
       <h1>Innioasis Universal Flash Tool vs Updater CE</h1>
-      <p class="lead">Two tools can flash your player. The Innioasis Universal Flash Tool still exists for service-centre recovery. <strong>Innioasis Updater 2.5.1</strong> is what the community uses every day. Here is the difference.</p>
+      <p class="lead">Två verktyg kan flasha din spelare. Innioasis Universal Flash Tool finns fortfarande för återställning av servicecenter. <strong>Innioasis Uppdaterare 2.5.1</strong> är vad samhället använder varje dag. Här är skillnaden.</p>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="guide_sv.html#platform">Skaffa Innioasis Updater CE</a>
         <a class="lumen-button" href="firmware_sv.html">Bläddra i firmware-arkiv</a>
         <a class="lumen-button" href="updater-comparison_sv.html">Vilket verktyg ska jag använda?</a>
       </div>
-    </header><section class="lumen-guide-section"><div class="lumen-callout"><p class="lumen-kicker">Börja med Innioasis Updater</p><h2>The simpler route runs inside Updater</h2><p>Updater does the whole job. Pick the software, follow the steps on screen, and you are done. It also tells you when updates arrive. Its tool has no guidance and wipes your storage. Below is what it is, and when you actually need it.</p></div></section>
+    </header><section class="lumen-guide-section"><div class="lumen-callout"><p class="lumen-kicker">Börja med Innioasis Updater</p><h2>Den enklare rutten körs inuti Updater</h2><p>Updater gör hela jobbet. Välj programvaran, följ stegen på skärmen och du är klar. Den talar också om när uppdateringar kommer. Dess verktyg har ingen vägledning och torkar din förvaring. Nedan är vad det är och när du faktiskt behöver det.</p></div></section>
 
     <section class="lumen-guide-section" aria-labelledby="history-title">
-      <h2 id="history-title">The Community Edition Collaboration</h2>
-      <p><strong>Innioasis Uppdaterare</strong> began with Ryan Specter and a group of audio fans, working alongside Innioasis. It has grown ever since: <strong>Innioasis Uppdaterare CE</strong>.</p>
-      <p>Creators recommend Updater CE because it is built with the people who make custom software. It keeps your music, videos and Bluetooth pairings. It tells you when updates are ready. It runs on old and new computers, on Windows, macOS and Linux.</p>
+      <h2 id="history-title">Community Edition-samarbete</h2>
+      <p><strong>Innioasis Uppdaterare</strong> började med Ryan Specter och en grupp ljudfans som arbetade tillsammans med Innioasis. Det har vuxit sedan dess: <strong>Innioasis Uppdaterare CE</strong>.</p>
+      <p>Skapare rekommenderar Updater CE eftersom den är byggd med människorna som gör anpassad programvara. Den behåller din musik, videor och Bluetooth-parningar. Den talar om när uppdateringar är klara. Den körs på gamla och nya datorer, på Windows, macOS och Linux.</p>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="flash-tool-title">
-      <h2 id="flash-tool-title">What is the Innioasis Universal Flash Tool / Shared Flash Tool?</h2>
-      <p>Den <strong>Innioasis Universal Flash Tool</strong>, also called the <strong>Shared Flash Tool</strong> (v5.0.2), is the factory utility. It works for service centres. For most owners it is harder than it needs to be:</p>
+      <h2 id="flash-tool-title">Vad är verktyget Innioasis Universal Flash Tool / Shared Flash?</h2>
+      <p>Den <strong>Innioasis Universal Flash Tool</strong>, även kallad <strong>Delat Flash-verktyg</strong> (v5.0.2), är fabriksverktyget. Det fungerar för servicecenter. För de flesta ägare är det svårare än det behöver vara:</p>
       <ul>
-        <li><strong>Wipes Internal Storage:</strong> Flashing with the shared/universal flash tool wipes internal storage on devices completely. This means you must reconnect your Bluetooth audio devices and replace all your music and videos after updates. (Media stored on microSD cards is not affected by either tool.)</li>
-        <li><strong>No Update Notifications:</strong> An offline-only utility with no mechanism to alert you when new updates or improvements are released for your player.</li>
-        <li><strong>No guidance:</strong> nothing explains the steps in the app. You have to watch outside videos and read PDFs just to get the player ready. Updater CE shows you each step instead.</li>
-        <li><strong>Limited Mac support:</strong> Its Mac build needs an Apple Silicon Mac on macOS 15 or later. Intel Macs are left out; Updater CE runs on both, from macOS 10.15 up.</li>
-        <li><strong>No Linux or ARM64 Windows build:</strong> The Universal Flash Tool has no Linux build or Windows on ARM support, while Updater CE provides an official AppImage for Linux and active ARM64 Windows support.</li>
-        <li><strong>Offline only:</strong> you find the <code>.zip</code> eller <code>.rar</code> package yourself. Updater CE downloads it for you.</li>
-        <li><strong>Factory software only:</strong> The Universal Flash Tool cannot install custom systems like Rockbox, Better-Y, Solar, Koensayr, Rondo, or Reborn (Y2Linux).</li>
+        <li><strong>Wipes intern förvaring:</strong> Att blinka med det delade/universella blixtverktyget torkar intern lagring på enheter helt. Det betyder att du måste återansluta dina Bluetooth-ljudenheter och byta ut all din musik och alla videor efter uppdateringar. (Media lagrad på microSD-kort påverkas inte av något av verktygen.)</li>
+        <li><strong>Inga uppdateringsmeddelanden:</strong> Ett verktyg som endast är offline utan mekanism för att varna dig när nya uppdateringar eller förbättringar släpps för din spelare.</li>
+        <li><strong>Ingen vägledning:</strong> ingenting förklarar stegen i appen. Du måste titta på externa videor och läsa PDF-filer bara för att göra spelaren redo. Updater CE visar dig varje steg istället.</li>
+        <li><strong>Begränsat Mac-stöd:</strong> Dess Mac-version behöver en Apple Silicon Mac på macOS 15 eller senare. Intel Mac-datorer utelämnas; Updater CE körs på båda, från macOS 10.15 och uppåt.</li>
+        <li><strong>Inget Linux- eller ARM64 Windows-bygge:</strong> Universal Flash Tool har ingen Linux-build eller Windows på ARM-stöd, medan Updater CE tillhandahåller en officiell AppImage för Linux och aktivt ARM64 Windows-stöd.</li>
+        <li><strong>Endast offline:</strong> du hittar <code>.zip</code> eller <code>.rar</code> paketera själv. Updater CE laddar ner det åt dig.</li>
+        <li><strong>Endast fabriksprogramvara:</strong> Universal Flash Tool kan inte installera anpassade system som Rockbox, Better-Y, Solar, Koensayr, Rondo eller Reborn (Y2Linux).</li>
       </ul>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="updater-ce-advantages-title">
-      <h2 id="updater-ce-advantages-title">Why Creators &amp; the Community Recommend Innioasis Updater CE</h2>
-      <p><strong>Innioasis Uppdaterare CE</strong> is purpose-built for player owners and enthusiasts. It offers:</p>
+      <h2 id="updater-ce-advantages-title">Varför Creators &amp; the Community rekommenderar Innioasis Updater CE</h2>
+      <p><strong>Innioasis Uppdaterare CE</strong> är specialbyggd för spelarägare och entusiaster. Här erbjuds:</p>
       <ol class="lumen-steps">
-        <li><strong>Updates Without Wiping:</strong> Updates your player without wiping internal storage—preserving your Bluetooth audio pairings, sound settings, and onboard music and videos (microSD stored media is unaffected by either tool).</li>
-        <li><strong>Active Update Notifications:</strong> Actively alerts you on your computer when new software releases or patches are published for your device.</li>
-        <li><strong>Co-developed With Custom Project Creators:</strong> Built with the original software and developed alongside custom software creators for Innioasis and Timmkoo players (Rockbox, Better-Y, Solar, JJ Launcher, Inniclassic, Y2Player, Koensayr).</li>
-        <li><strong>Support for Older &amp; More Computers:</strong> Full native support across older and newer machines—macOS (both Apple Silicon &amp; Intel Macs), Linux, and Windows 10/11.</li>
-        <li><strong>Direct developer downloads:</strong> pulls the right firmware package directly from the community firmware developers' releases — no separate downloads to hunt down.</li>
-        <li><strong>Easy stock restores:</strong> go back to Original Software whenever you want.</li>
+        <li><strong>Uppdateringar utan att torka:</strong> Uppdaterar din spelare utan att torka internt minne – bevarar dina Bluetooth-ljudparningar, ljudinställningar och inbyggd musik och videor (microSD lagrade media påverkas inte av något av verktygen).</li>
+        <li><strong>Aviseringar om aktiva uppdateringar:</strong> Varnar dig aktivt på din dator när nya programvaruversioner eller patchar publiceras för din enhet.</li>
+        <li><strong>Samutvecklat med anpassade projektskapare:</strong> Byggd med originalprogramvaran och utvecklad tillsammans med skräddarsydda mjukvaruskapare för Innioasis och Timmkoo spelare (Rockbox, Better-Y, Solar, JJ Launcher, Inniclassic, Y2Player, Koensayr).</li>
+        <li><strong>Stöd för äldre och fler datorer:</strong> Fullständigt inbyggt stöd för äldre och nyare maskiner – macOS (både Apple Silicon och Intel Macs), Linux och Windows 10/11.</li>
+        <li><strong>Direktnedladdningar för utvecklare:</strong> hämtar rätt firmware-paket direkt från community-firmware-utvecklarnas utgåvor — inga separata nedladdningar att leta efter.</li>
+        <li><strong>Enkla lageråterställningar:</strong> gå tillbaka till originalprogramvaran när du vill.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="guide_sv.html">Install Updater CE for Your Computer</a>
-        <a class="lumen-button" href="firmware_sv.html">Browse the Firmware Archive</a>
+        <a class="lumen-button lumen-button--primary" href="guide_sv.html">Installera Updater CE för din dator</a>
+        <a class="lumen-button" href="firmware_sv.html">Bläddra i firmware-arkivet</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="summary-title">
-      <h2 id="summary-title">Summary: Which Tool Should I Use?</h2>
-      <p>If you were sent a raw recovery image and you have a Windows PC, the Universal Flash Tool can write it. For everyday updates and custom installs, use <strong>Innioasis Uppdaterare CE</strong>. It is the route creators recommend.</p>
+      <h2 id="summary-title">Sammanfattning: Vilket verktyg ska jag använda?</h2>
+      <p>Om du fick en rå återställningsbild och du har en Windows-dator kan Universal Flash Tool skriva den. För dagliga uppdateringar och anpassade installationer, använd <strong>Innioasis Uppdaterare CE</strong>. Det är ruttskaparna rekommenderar.</p>
     </section>
   </main>
   <div id="footer-root"></div>

@@ -26,9 +26,9 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wi-Fi, Bluetooth &amp; FM Radio Setup for Reborn (Y2Linux) - Innioasis Updater</title>
-  <meta name="description" content="Short post-install guide for Reborn (Y2Linux / Y2Reborn) on Innioasis Y2: copy system.img, then set up Wi-Fi, Bluetooth and FM radio.">
-  <meta name="keywords" content="Y2Reborn Wi-Fi setup, Y2Linux Bluetooth guide, Innioasis Y2 radio firmware, system.img download, Y2Reborn post install, Innioasis Updater CE, custom firmware">
+  <title>Nastavení Wi-Fi, Bluetooth a FM rádia pro Reborn (Y2Linux) - Innioasis Updater</title>
+  <meta name="description" content="Krátký průvodce po instalaci pro Reborn (Y2Linux / Y2Reborn) na Innioasis Y2: zkopírujte system.img, poté nastavte Wi-Fi, Bluetooth a FM rádio.">
+  <meta name="keywords" content="Y2Reborn Nastavení Wi-Fi, Y2Linux Průvodce Bluetooth, Innioasis Y2 firmware rádia, stažení system.img, Y2Reborn po instalaci, Innioasis Updater CE, vlastní firmware">
   <link rel="canonical" href="https://innioasis.app/y2reborn_wifibt_cs.html">
   <link rel="icon" href="y1_illustration.png">
   <link rel="stylesheet" href="site-theme.css?v=20261108headerfix">
@@ -85,92 +85,92 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Innioasis Y2 · Reborn Post-Install</p>
-      <h1>Set up Wi-Fi, Bluetooth &amp; FM radio.</h1>
-      <p class="lead">Copy one file to your player. Reborn handles the rest.</p>
+      <p class="lumen-kicker">Innioasis Y2 · Reborn Po instalaci</p>
+      <h1>Nastavte Wi-Fi, Bluetooth a FM rádio.</h1>
+      <p class="lead">Zkopírujte jeden soubor do přehrávače. Reborn se postará o zbytek.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>Download system.img (860 MB)</a>
-        <a class="lumen-button" href="guides/reborn-y2linux-y2.html">Install Guide</a>
-        <a class="lumen-button" href="reborn-y2linux-benefits_cs.html">Why Y2Reborn?</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>Stáhnout system.img (860 MB)</a>
+        <a class="lumen-button" href="guides/reborn-y2linux-y2.html">Průvodce instalací</a>
+        <a class="lumen-button" href="reborn-y2linux-benefits_cs.html">Proč Y2Reborn?</a>
       </div>
     </header>
 
     <section class="lumen-guide-section" aria-labelledby="why-radio-fw">
-      <h2 id="why-radio-fw">Why this file?</h2>
+      <h2 id="why-radio-fw">Proč tento soubor?</h2>
       <div class="lumen-callout">
-        <p>Wi-Fi, Bluetooth and FM radio need five MediaTek firmware modules that Reborn cannot ship. They are inside the official Y2 <code>system.img</code>. Reborn extracts them once, checks them, and deletes the file.</p>
+        <p>Wi-Fi, Bluetooth a FM rádio potřebují pět MediaTek modulů firmwaru, které Reborn nelze dodat. Jsou uvnitř oficiální Y2 <code>system.img</code>. Reborn je jednou extrahuje, zkontroluje a smaže soubor.</p>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="step-by-step">
-      <h2 id="step-by-step">Setup</h2>
+      <h2 id="step-by-step">Nastavení</h2>
       <ol class="lumen-steps">
         <li>
-          <strong>Download system.img</strong>
-          <p>Download the v3.2.0 FM <code>system.img</code> to your computer.</p>
+          <strong>Stáhněte si system.img</strong>
+          <p>Stáhněte si v3.2.0 FM <code>system.img</code> do vašeho počítače.</p>
           <div style="margin: 12px 0;">
             <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>
               <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-              Download system.img
+              Stáhněte si system.img
             </a>
           </div>
         </li>
 
         <li>
-          <strong>Boot Reborn once</strong>
-          <p>Turn the player on. Wait for <em>Setting up storage</em> to finish, then restart it once.</p>
+          <strong>Spusťte Reborn jednou</strong>
+          <p>Zapněte přehrávač. Počkejte <em>Nastavení úložiště</em> dokončit, pak jej jednou restartujte.</p>
         </li>
 
         <li>
-          <strong>Connect to your computer</strong>
-          <p>Use a USB data cable. The player appears as <strong>Internal Storage</strong>.</p>
+          <strong>Připojte se k počítači</strong>
+          <p>Použijte datový kabel USB. Přehrávač se zobrazí jako <strong>Interní úložiště</strong>.</p>
           <div class="lumen-callout" style="border-left-color: #38bdf8; margin: 10px 0;">
-            <strong>On a Mac?</strong>
-            <p style="margin-top: 4px;">Instalovat <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener noreferrer"><strong>OpenMTP</strong></a> to browse the player. Windows and Linux mount it automatically.</p>
+            <strong>Na Macu?</strong>
+            <p style="margin-top: 4px;">Instalovat <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener noreferrer"><strong>OpenMTP</strong></a> pro procházení přehrávače. Windows a Linux jej připojí automaticky.</p>
           </div>
         </li>
 
         <li>
-          <strong>Copy system.img to Firmware</strong>
-          <p>Create a folder called <code>Firmware</code> at the root of Internal Storage. Copy <code>system.img</code> into it.</p>
+          <strong>Zkopírujte system.img do Firmware</strong>
+          <p>Vytvořte složku s názvem <code>Firmware</code> v kořenovém adresáři Interního úložiště. Kopírovat <code>system.img</code> do toho.</p>
         </li>
 
         <li>
-          <strong>Wait for setup to finish</strong>
-          <p>Reborn installs the radio firmware automatically and deletes <code>system.img</code>. This takes about 10–20 seconds. Wait for <em>Wi-Fi and Bluetooth are ready</em>.</p>
+          <strong>Počkejte na dokončení nastavení</strong>
+          <p>Reborn automaticky nainstaluje firmware rádia a smaže <code>system.img</code>. To trvá asi 10–20 sekund. Počkejte <em>Wi-Fi a Bluetooth jsou připraveny</em>.</p>
         </li>
 
         <li>
-          <strong>Connect Wi-Fi, Bluetooth and FM radio</strong>
+          <strong>Připojte Wi-Fi, Bluetooth a FM rádio</strong>
           <ul style="margin: 8px 0 0 20px; line-height: 1.6;">
-            <li><strong>Wi-Fi:</strong> Settings → System → Network → Wi-Fi. Choose your 2.4 GHz network.</li>
-            <li><strong>Bluetooth:</strong> Put your headphones in pairing mode. Settings → Bluetooth → select them.</li>
-            <li><strong>FM radio:</strong> Plug in wired headphones as the antenna, then open FM Radio.</li>
+            <li><strong>Wi-Fi:</strong> Nastavení → Systém → Síť → Wi-Fi. Vyberte si svou 2,4 GHz síť.</li>
+            <li><strong>Bluetooth:</strong> Přepněte sluchátka do režimu párování. Nastavení → Bluetooth → vyberte je.</li>
+            <li><strong>FM rádio:</strong> Zapojte kabelová sluchátka jako anténu a poté otevřete FM rádio.</li>
           </ul>
         </li>
 
         <li>
-          <strong>Update over Wi-Fi</strong>
-          <p>Future Reborn updates install from Settings → System → Software Update. Your radio firmware stays put.</p>
+          <strong>Aktualizace přes Wi-Fi</strong>
+          <p>Budoucí aktualizace Reborn se instalují z Nastavení → Systém → Aktualizace softwaru. Firmware vašeho rádia zůstane zachován.</p>
         </li>
       </ol>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="helpfulness-section" style="border-top: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.12)); padding-top: 24px;">
-      <h2 id="helpfulness-section">Was this guide helpful?</h2>
+      <h2 id="helpfulness-section">Byl tento průvodce užitečný?</h2>
       <div id="guide-feedback-wrap" style="background: var(--lumen-panel-soft, rgba(255, 255, 255, 0.04)); border: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.1)); border-radius: 12px; padding: 18px 20px;">
-        <p id="guide-feedback-prompt" style="margin: 0 0 12px; font-weight: 600; font-size: 0.96rem;">Did you find this post-install setup guide helpful?</p>
+        <p id="guide-feedback-prompt" style="margin: 0 0 12px; font-weight: 600; font-size: 0.96rem;">Pomohl vám tento průvodce nastavením po instalaci?</p>
         <div id="guide-feedback-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
           <button type="button" id="guide-feedback-yes" class="lumen-button lumen-button--primary" style="cursor: pointer;">
             <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/></svg>
-            Yes, it helped!
+            Ano, pomohlo!
           </button>
           <a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer" class="lumen-button" style="cursor: pointer;">
-            Need help on Discord
+            Potřebujete pomoc na Discord
           </a>
         </div>
         <div id="guide-feedback-thankyou" hidden style="margin-top: 12px; color: #10b981; font-weight: 600;">
-          Thank you for your feedback! Enjoy your wireless listening on Y2Reborn.
+          Děkujeme za vaši zpětnou vazbu! Užijte si bezdrátový poslech na Y2Reborn.
         </div>
       </div>
     </section>

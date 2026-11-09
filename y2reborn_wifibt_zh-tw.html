@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr" data-locale="zh-tw">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reborn (Y2Linux) - Innioasis 更新程式的 Wi-Fi、藍牙和 FM 收音機設置</title>
+  <meta name="description" content="Innioasis Y2 上的 Reborn (Y2Linux / Y2Reborn) 的簡短安裝後指南：複製 system.img，然後設定 Wi-Fi、藍牙和 FM 收音機。">
+  <meta name="keywords" content="Y2Reborn Wi-Fi 設定、Y2Linux 藍牙指南、Innioasis Y2 無線電韌體、system.img 下載、Y2Reborn 安裝後、Innioasis 更新程式 CE、自訂韌體">
+  <link rel="canonical" href="https://innioasis.app/y2reborn_wifibt_zh-tw.html">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261108headerfix">
+  <link rel="stylesheet" href="lumen.css?v=20261108headerfix">
+  <link rel="stylesheet" href="site-pages.css?v=20261019d">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
+  <script src="site-init.js?v=20261019d" defer></script>
+<meta property="og:site_name" content="Innioasis 更新程序">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/y2reborn_wifibt.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/y2reborn_wifibt.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/y2reborn_wifibt_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/y2reborn_wifibt_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/y2reborn_wifibt_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/y2reborn_wifibt_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/y2reborn_wifibt_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/y2reborn_wifibt_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/y2reborn_wifibt_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/y2reborn_wifibt_pt.html">
+  <link rel="alternate" hreflang="pt-br" href="https://innioasis.app/y2reborn_wifibt_pt-br.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/y2reborn_wifibt_pt-PT.html">
+  <link rel="alternate" hreflang="pt-pt" href="https://innioasis.app/y2reborn_wifibt_pt-pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/y2reborn_wifibt_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/y2reborn_wifibt_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/y2reborn_wifibt_zh.html">
+  <link rel="alternate" hreflang="zh-cn" href="https://innioasis.app/y2reborn_wifibt_zh-cn.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/y2reborn_wifibt_zh-TW.html">
+  <link rel="alternate" hreflang="zh-tw" href="https://innioasis.app/y2reborn_wifibt_zh-tw.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/y2reborn_wifibt_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/y2reborn_wifibt_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/y2reborn_wifibt_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/y2reborn_wifibt_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/y2reborn_wifibt_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/y2reborn_wifibt_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/y2reborn_wifibt_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/y2reborn_wifibt_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/y2reborn_wifibt_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/y2reborn_wifibt_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/y2reborn_wifibt_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/y2reborn_wifibt_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/y2reborn_wifibt_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/y2reborn_wifibt_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/y2reborn_wifibt_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/y2reborn_wifibt_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/y2reborn_wifibt_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/y2reborn_wifibt_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/y2reborn_wifibt_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/y2reborn_wifibt_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/y2reborn_wifibt_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">跳至主要內容</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">Innioasis Y2 · Reborn 安裝後</p>
+      <h1>設定 Wi-Fi、藍牙和 FM 收音機。</h1>
+      <p class="lead">將一個檔案複製到您的播放器。 Reborn 處理剩下的事情。</p>
+      <div class="lumen-actions">
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>下載系統.img (860 MB)</a>
+        <a class="lumen-button" href="guides/reborn-y2linux-y2.html">安裝指南</a>
+        <a class="lumen-button" href="reborn-y2linux-benefits_zh-TW.html">為什麼是Y2Reborn？</a>
+      </div>
+    </header>
+
+    <section class="lumen-guide-section" aria-labelledby="why-radio-fw">
+      <h2 id="why-radio-fw">為什麼是這個文件？</h2>
+      <div class="lumen-callout">
+        <p>Wi-Fi、藍牙和 FM 收音機需要五個 MediaTek 韌體模組，Reborn 無法出貨。他們在官方內部 Y2 <code>system.img</code>。 Reborn 提取它們一次，檢查它們，然後刪除檔案。</p>
+      </div>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="step-by-step">
+      <h2 id="step-by-step">設定</h2>
+      <ol class="lumen-steps">
+        <li>
+          <strong>下載系統.img</strong>
+          <p>下載v3.2.0 FM <code>system.img</code> 到您的計算機。</p>
+          <div style="margin: 12px 0;">
+            <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/y1-stock-rom/releases/download/3.2.0-fm/system.img" download>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              下載系統.img
+            </a>
+          </div>
+        </li>
+
+        <li>
+          <strong>啟動 Reborn 一次</strong>
+          <p>打開播放器。等待 <em>設定儲存</em> 完成，然後重新啟動一次。</p>
+        </li>
+
+        <li>
+          <strong>連接到您的計算機</strong>
+          <p>使用 USB 數據線。播放器顯示為 <strong>內部儲存</strong>.</p>
+          <div class="lumen-callout" style="border-left-color: #38bdf8; margin: 10px 0;">
+            <strong>在 Mac 上？</strong>
+            <p style="margin-top: 4px;">安裝 <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener noreferrer"><strong>開放MTP</strong></a> 瀏覽播放器。 Windows 和 Linux 會自動掛載它。</p>
+          </div>
+        </li>
+
+        <li>
+          <strong>將 system.img 複製到韌體</strong>
+          <p>建立一個名為的資料夾 <code>Firmware</code> 在內部儲存的根目錄下。複製 <code>system.img</code> 進入其中。</p>
+        </li>
+
+        <li>
+          <strong>等待設定完成</strong>
+          <p>Reborn 自動安裝無線電韌體並刪除 <code>system.img</code>。這大約需要 10-20 秒。等待 <em>Wi-Fi 和藍牙已準備就緒</em>.</p>
+        </li>
+
+        <li>
+          <strong>連接 Wi-Fi、藍牙和 FM 收音機</strong>
+          <ul style="margin: 8px 0 0 20px; line-height: 1.6;">
+            <li><strong>無線上網：</strong> 設定→系統→網路→Wi-Fi。選擇您的 2.4 GHz 網路。</li>
+            <li><strong>藍牙：</strong> 將耳機置於配對模式。設定 → 藍牙 → 選擇它們。</li>
+            <li><strong>調頻收音機：</strong> 插入有線耳機作為天線，然後開啟 FM 收音機。</li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>透過 Wi-Fi 更新</strong>
+          <p>未來的 Reborn 更新從設定 → 系統 → 軟體更新安裝。您的無線電韌體保持不變。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="helpfulness-section" style="border-top: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.12)); padding-top: 24px;">
+      <h2 id="helpfulness-section">本指南有幫助嗎？</h2>
+      <div id="guide-feedback-wrap" style="background: var(--lumen-panel-soft, rgba(255, 255, 255, 0.04)); border: 1px solid var(--lumen-line, rgba(255, 255, 255, 0.1)); border-radius: 12px; padding: 18px 20px;">
+        <p id="guide-feedback-prompt" style="margin: 0 0 12px; font-weight: 600; font-size: 0.96rem;">您覺得這個安裝後設定指南有幫助嗎？</p>
+        <div id="guide-feedback-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button type="button" id="guide-feedback-yes" class="lumen-button lumen-button--primary" style="cursor: pointer;">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right: 6px;" aria-hidden="true"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/></svg>
+            是的，有幫助！
+          </button>
+          <a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer" class="lumen-button" style="cursor: pointer;">
+            需要有關 Discord 的幫助
+          </a>
+        </div>
+        <div id="guide-feedback-thankyou" hidden style="margin-top: 12px; color: #10b981; font-weight: 600;">
+          感謝您的回饋！在 Y2Reborn 上享受無線聆聽。
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261113cepersona" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var yesBtn = document.getElementById("guide-feedback-yes");
+      var actions = document.getElementById("guide-feedback-actions");
+      var prompt = document.getElementById("guide-feedback-prompt");
+      var thankyou = document.getElementById("guide-feedback-thankyou");
+
+      if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+          if (actions) actions.style.display = "none";
+          if (prompt) prompt.textContent = "Glad this guide helped you get set up!";
+          if (thankyou) thankyou.hidden = false;
+
+          // Check if user has donations disabled
+          var donationsDisabled = false;
+          try {
+            if (typeof window.isY1DonationsDisabled === "function" && window.isY1DonationsDisabled()) {
+              donationsDisabled = true;
+            }
+            var u = new URL(window.location.href);
+            if (u.searchParams.get("donations") === "false") {
+              donationsDisabled = true;
+            }
+          } catch (_) {}
+
+          if (!donationsDisabled) {
+            setTimeout(function () {
+              if (typeof window.openY1DonatePanel === "function") {
+                window.openY1DonatePanel();
+              } else {
+                var donateBtn = document.querySelector("[data-donate-open]");
+                if (donateBtn) donateBtn.click();
+              }
+            }, 600);
+          }
+        });
+      }
+    });
+  </script>
+<script src="site-locale.js?v=20261109i18n" defer></script></body>
+</html>

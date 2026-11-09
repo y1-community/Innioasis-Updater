@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>Vývojáři | Přidejte vlastní firmware do Innioasis Updater CE - Innioasis Firmware Downloads</title>
+  <meta name="description" content="Vývojářská dokumentace pro přidání vlastního Innioasis Y1 nebo Y2 firmwaru do Updater CE: rozvětvete repozitář, publikujte rom.zip položky, upravte soubor slidia_manifest.xml, otestujte a otevřete požadavek na stažení.">
+  <meta name="keywords" content="Innioasis Průvodce vývojářem Updater, slidia_manifest.xml, vlastní firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, aktiva vydání">
   <link rel="canonical" href="https://innioasis.app/developers_cs.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="Vývojáři | Přidejte vlastní firmware do Innioasis Updater CE - Innioasis Firmware Downloads">
+  <meta property="og:description" content="Vývojářská dokumentace pro přidání vlastního Innioasis Y1 nebo Y2 firmwaru do Updater CE: rozvětvete repozitář, publikujte rom.zip položky, upravte soubor slidia_manifest.xml, otestujte a otevřete požadavek na stažení.">
   <meta property="og:url" content="https://innioasis.app/developers_cs.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="Vývojáři | Přidejte vlastní firmware do Innioasis Updater CE - Innioasis Firmware Downloads">
+  <meta name="twitter:description" content="Vývojářská dokumentace pro přidání vlastního Innioasis Y1 nebo Y2 firmwaru do Updater CE: rozvětvete repozitář, publikujte rom.zip položky, upravte soubor slidia_manifest.xml, otestujte a otevřete požadavek na stažení.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">Pro vývojáře firmwaru</p>
+      <h1>Přidejte svůj firmware do Updater CE.</h1>
+      <p class="lead">Updater CE je komunitní katalog a instalační program pro vlastní firmware. Vyvíjejte svůj projekt ze základny ROM, publikujte jej jako veřejné úložiště se správnými prostředky vydání, přidejte položky modelu do <code>slidia_manifest.xml</code>, otestujte filtry modelu a otevřete požadavek na stažení. Jedno úložiště může obsluhovat každý model, který podporuje.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Zobrazit zdroj Updater CE</a>
         <a class="lumen-button" href="firmware_cs.html">Procházet software ke stažení</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">Začít od základny ROM</h2>
+      <p>Základní paměti ROM poskytují vývojářům vlastního firmwaru čistý základ pro Android s povolenými bezdrátovými rádiovými čipy. Na Y1 umožňují Wi-Fi a GPS spolu s továrním Bluetooth a FM; na Y2 umožňují Wi-Fi, GPS a FM spolu s továrním Bluetooth.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">Základní ROM stahování pro vlastní vývoj firmwaru s verzí Androidu a bezdrátovými funkcemi, které každý umožňuje</caption>
           <thead>
-            <tr><th scope="col">Stáhnout</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">Stáhnout</th><th scope="col">Zařízení</th><th scope="col">Android</th><th scope="col">Bezdrátové funkce</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Přidá Wi-Fi a GPS k továrnímu Bluetooth a FM (FM již funguje na Y1 z výroby). Pro Y1 přehrávače dodávané s OS 2.0.0 nebo novějším.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Přidá Wi-Fi a GPS k továrnímu Bluetooth a FM (FM již funguje na Y1 z výroby). Pro Y1 přehrávače, které byly dodány s OS starším než 2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Přidá Wi-Fi, GPS a FM k továrnímu Bluetooth. Rádiový čip Y2 je plně povolen, takže FM je k dispozici i zde.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">Tyto obrázky jsou základním systémem Android (AOSP) s povolenými bezdrátovými rádii zařízení, takže vlastní firmware může přidat síťové funkce namísto výměny rádiového zásobníku. Jsou praktickým výchozím bodem pro níže uvedené kroky publikování.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">Použijte tyto názvy aktiv vydání</h2>
+      <p>Název souboru je součástí signálu kompatibility. Udržujte přesné názvy a umístěte soubory ZIP do prostředků vydání projektu, nikoli pouze do stromu zdroje úložiště.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">Firmware ZIP názvy aktiv a podporovaná zařízení</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Hardware</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">Aktiva</th><th scope="col">Zařízení</th><th scope="col">Železářské zboží</th><th scope="col">Význam</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 zařízení dodávaná s OS 2.0.0 nebo novějším.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 zařízení dodávaná s operačním systémem starším než 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Balíček plné instalace Y2. Udržujte jej odděleně od Y1 aktiv.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>Nepřejmenovávejte balíček, aby vyhovoval jinému modelu.</strong> Y1 a Y2 používají různé soubory platformy MediaTek a flashovou konfiguraci. Zveřejněte balíček pro hardware, který skutečně podporuje.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">Jak funguje připojení</h2>
+      <p>Updater CE čte manifest jako svůj katalog. Každý <code>&lt;package&gt;</code> řádek mu říká název projektu, úložiště, model a handler. Když uživatel zvolí tento projekt, Updater zkontroluje publikovaná vydání úložiště a vyhledá a <code>rom*.zip</code> aktiva.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
           <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <p>Pojmenuje projekt a namapuje jej na model. Y1 a Y2 potřebují samostatné řádky, i když sdílejí úložiště.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>Zveřejněné vydání</h3>
+          <p>Obsahuje instalovatelné zdroje ZIP. Jedno vydání může obsahovat balíčky Y1 Type A, Y1 Type B a Y2 společně.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>Instalace aktualizace CE</h3>
+          <p>Použije vybraný model k výběru odpovídajícího balíčku a trasy blikání specifického pro model. Uživatel by neměl hádat název souboru.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">Publikování projektu v pěti krocích</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>a <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> Otevřít <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Rozvětvete úložiště Updater CE.</strong> Vytvořte si vlastní vidličku <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>a poté lokálně naklonujte vidlici.</li>
+        <li><strong>Připravte si veřejné úložiště firmwaru.</strong> Ujistěte se, že je úložiště veřejné a jeho vydání obsahuje správné zdroje ZIP. Můžete dát <code>rom.zip</code>, <code>rom_type_b.zip</code>a <code>rom_y2.zip</code> na stejném vydání, pokud patří ke stejné verzi.</li>
+        <li><strong>Upravte manifest.</strong> Otevřít <code>slidia_manifest.xml</code> v kořenovém adresáři vaší vidlice Updater CE. Přidejte jeden řádek pro každý model, který verze podporuje (Y1 a Y2 jsou společný pár). The <code>repo</code> hodnota je úložiště <code>owner/repository</code>; <code>url</code> je veřejná stránka projektu.</li>
+        <li><strong>Vyzkoušejte katalog.</strong> Spusťte Updater z upravené pokladny. Vyberte Y1 a potvrďte, že projekt zobrazuje aktiva Y1. Vyberte Y2 a potvrďte, že se zobrazí uvolnění Y2. Když jsou obě publikovány, zaškrtněte samostatně Type A a Type B.</li>
+        <li><strong>Otevřete žádost o stažení.</strong> Odešlete změnu manifestu do své vidlice a otevřete žádost o stažení proti upstream úložišti Updater CE. Zahrňte odkaz na projekt, podporované modely, značku vydání, názvy prostředků a zařízení, která jste testovali.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">Vygenerujte řádky manifestu</h2>
+      <p>Vyplňte úložiště a zaškrtněte každý model, který vydání podporuje. Generátor píše jeden <code>&lt;package&gt;</code> řádek na model a zahrnuje pouze atributy, které jste nastavili, takže výsledek odpovídá aktuálnímu <code>slidia_manifest.xml</code> formát. Každý atribut, který Updater CE čte, je dostupný níže – volitelné jsou níže <strong>Více možností</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">Adresa URL úložiště</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">Veřejné GitHub úložiště. Generátor extrahuje <code>owner/repository</code> z adresy URL.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">Název softwaru</label>
+            <input type="text" id="manifest-name" placeholder="Výchozí název úložiště" autocomplete="off">
+            <span class="lumen-field-help">Zobrazeno v aplikaci a katalogu stránek.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">Adresa URL projektu</label>
+            <input type="url" id="manifest-project-url" placeholder="Výchozí je adresa URL úložiště" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Lidská stránka projektu nebo jeho poznámky k vydání.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">Značka</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">Zrušte toto zaškrtnutí, chcete-li použít výchozí značku modelu. SR1, Q3, Q5 a Q3e jsou Timmkoo modely.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>Zařízení (každý jeden řádek)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">Jiné modely</label>
+            <input type="text" id="manifest-other-devices" placeholder="Čárkou oddělenou, např. X1, X2" autocomplete="off">
+            <span class="lumen-field-help">Pro model, který není uveden výše. Známé modely zachovávají svůj katalogový pravopis.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>Vlajky</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — nikdy nenabízejte Keep Data pro tento firmware</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Postaveno z původního softwaru – dodává <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">Keep Data se nabízí pouze v případě, že příchozí firmware a nainstalovaný firmware jsou stejné nebo sdílejí a <code>derivative</code> kořen. Příznak použijte pouze v případě, že uživatelská data skutečně nelze přenést.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>Další možnosti: ikona, kresba, vydání aktiv, po instalaci a zrcadlení</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>Ikona a umělecká díla</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">Soubor ikony</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">Vyberte obrázek, který odevzdáte do úložiště. Tím se zobrazí jeho náhled a vytvoří se jeho nezpracovaná adresa URL; nic nenahrává.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">Cesta ikony v úložišti</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">Cesta k potvrzenému obrazu vzhledem ke kořenovému adresáři úložiště.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">Ikona větev</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">Adresa URL ikony</label>
+              <input type="url" id="manifest-icon-url" placeholder="Vyplněno z cesty k souboru" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Přímá adresa URL obrázku. Když je prázdný, aplikace použije vydání <code>updater.png</code> nebo vygenerovaná ikona.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="Náhled vybrané ikony">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
-              <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <label for="manifest-icon-dark-url">Adresa URL ikony tmavého režimu</label>
+              <input type="url" id="manifest-icon-dark-url" placeholder="ikona_tmavá" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Volitelná ikona tmavého motivu. <code>image_dark</code> je akceptovaný alias.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">Adresa URL světelného uměleckého díla</label>
+              <input type="url" id="manifest-image-url" placeholder="obrázek" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Sekundární předloha, vyzkoušená po vydání obrázku a <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
+              <label for="manifest-image-dark-url">Adresa URL tmavé kresby</label>
               <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>Uvolněte aktiva</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">Uvolnit název díla</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">Jedno jméno pro každý vybraný model. Nechte prázdné k použití <code>rom.zip</code> dne Y1 a <code>rom_&lt;model&gt;.zip</code> jinde.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
-              <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <label for="manifest-asset-pattern">Vzor aktiv</label>
+              <input type="text" id="manifest-asset-pattern" placeholder="můj-firmware-*.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Glob se používá, když zipy vydání nejsou pojmenovány <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A aktiva</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob pro balíček Y1 Type A, pokud to jeho název neříká.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B aktiva</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob pro balíček Y1 Type B, pokud to jeho název neříká.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">Minimální verze aplikace</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">Skryjte záznam ze starších sestavení Updater CE.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>Linky, zrcadla a rodina Keep Data</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">Stránka po instalaci</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">Otevřeno po úspěšné instalaci.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">Druhá stránka po instalaci</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">Volitelný druhý krok pro vícestránkový průvodce nastavením.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">Přenosná zrcadla na zip</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">Oddělené čárkou <code>*-mirror</code> repozitáře, které vytvářejí balíčky Portable Flashing Zip.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">Derivační úložiště</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">Firmware, ze kterého je toto vydání sestaveno. Související firmwary sdílejí datový oddíl, což Keep Data kontroluje.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">Úložiště informací</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">Úložiště aplikací, jehož vydání popisují aplikace v tomto firmwaru. Potřebuje také stránku po instalaci.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK úložiště</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">Úložiště aplikace, jehož APK aplikace stáhne a nainstaluje po firmwaru.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>Katalogové doplňky</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">Slimák</label>
+              <input type="text" id="manifest-slug" placeholder="Generováno z názvu a modelu" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Stabilní identifikátor pro odkazy a uložené záznamy o instalaci. Model se automaticky přidá, když je vybráno několik modelů.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">Popis</label>
+              <input type="text" id="manifest-description" placeholder="Krátký popis katalogu" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Kopírovat řádky</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">Načítání nejnovějšího manifestu…</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>Prohlédněte si nejnovější manifest s přidanými řádky</summary>
+          <p>Generátor nabral proud <code>slidia_manifest.xml</code> z tohoto úložiště a vložili vygenerované řádky těsně předtím <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>Jeden řádek pro sdílené úložiště nestačí.</strong> Pokud řádek Y2 chybí, uživatelé Y2 neobdrží záznam odpovídající modelu, i když <code>rom_y2.zip</code> existuje ve verzi projektu. Totéž platí pro každý další model, který vaše vydání podporuje.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">Každý atribut, který manifest čte</h3>
+      <p>To jsou atributy, kterým rozumí současná sestavení Updater CE. Generátor zapisuje pouze ty, které vyplníte; u zbytku se aplikace vrátí k rozumným výchozím nastavením.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">atributy balíčku slide_manifest.xml a jejich význam</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">Atribut</th><th scope="col">Potřebné</th><th scope="col">Co to dělá</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>Ano</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>Ano</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>Ano</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> a <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>Volitelné</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>Volitelné</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>Volitelné</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Volitelné</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>Volitelné</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>Volitelné</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>Volitelné</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Volitelné</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Volitelné</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>Volitelné</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>Volitelné</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> nebo <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>Volitelné</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>Volitelné</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Volitelné</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>Volitelné</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>Volitelné</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Ano</td><td>Název softwaru uvedený v katalogu a na instalačních kartách.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>Ano</td><td><code>owner/repo</code>. Aplikace čte vydání GitHub daného úložiště.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Ano</td><td>Cílový model, velká písmena (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). U každého modelu si ponechte jeden záznam.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Doporučeno</td><td>Stránka projektu nebo poznámky k verzi otevřeny z katalogu.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>V praxi ano</td><td><code>type="img"</code> a <code>handler="Custom Firmware"</code>. Ostatní typy a nefirmwarové obslužné programy jsou přeskočeny.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Volitelné</td><td>Katalogová značka (<code>Innioasis</code>, <code>Timmkoo</code>). Prázdný používá výchozí značku modelu.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Volitelné</td><td>Uvolněte název souboru podkladu. Výchozí na <code>rom.zip</code> dne Y1 a <code>rom_&lt;model&gt;.zip</code> na jiných modelech.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Volitelné</td><td>U verzí, jejichž zipy firmwaru nejsou pojmenovány, se nerozlišují malá a velká písmena <code>rom*.zip</code> (například <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Volitelné</td><td>Globy, které identifikují Y1 Type A a Type B zipy, když jejich názvy souborů neobsahují obvyklé značky.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Volitelné</td><td>Adresa URL loga. Použito po vlastním vydání <code>updater.png</code> / <code>updater.jpg</code>a jako záložní pro každé vydání.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Volitelné</td><td>Logo s tmavým motivem. <code>image_dark</code> je akceptovaný alias.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Volitelné</td><td>Sekundární světelné umělecké dílo, vyzkoušeno <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Volitelné</td><td>Stránky se otevřely po úspěšné instalaci. Druhý obsahuje vícekrokového průvodce.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Volitelné</td><td>Oddělené čárkou <code>*-mirror</code> repozitáře, které publikují přenosné balíčky připravené ke spuštění.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Volitelné</td><td>Úložiště, ze kterého je sestaven firmware. Firmware se stejným odvozeným kořenem může uchovávat uživatelská data.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Volitelné</td><td>Úložiště aplikací, jehož verze popisují, co firmware nasazuje. Vyžaduje <code>post_install</code> nebo <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Volitelné</td><td>Úložiště aplikací, jehož APK aplikace nainstaluje po firmwaru.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Volitelné</td><td>Skrýt záznam, když je Updater CE starší než tato verze.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Volitelné</td><td><code>true</code> (také <code>1</code> / <code>yes</code>) pro tento firmware zcela blokuje Keep Data.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Volitelné</td><td>Stabilní identifikátor pro odkazy a uložené záznamy o instalaci. Vygenerováno z názvu a modelu, když je prázdné.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Volitelné</td><td>Krátký popis katalogu. Může to být hodnota atributu nebo text prvku.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> a <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">Kvůli kompatibilitě se stále čtou starší názvy: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> a <code>image_dark</code>. Nové položky by měly používat aktuální názvy výše.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Odešlete řádky jako požadavek na stažení</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Zkopírujte vygenerované řádky výše.</strong> Již odpovídají nejnovějšímu formátu manifestu.</li>
+        <li><strong>Upravit <code>slidia_manifest.xml</code> v úložišti.</strong> Použijte níže uvedený odkaz pro úpravy; hostitel úložiště pro vás automaticky vytvoří větev a větev.</li>
+        <li><strong>Vložte řádky těsně předtím <code>&lt;/slidia&gt;</code>,</strong> zachování stávajících položek beze změny.</li>
+        <li><strong>Zavázat se k nové pobočce</strong> (například <code>add-your-firmware</code>), poté otevřete požadavek na stažení proti úložišti Updater CE.</li>
+        <li><strong>V PR zahrňte</strong> odkaz na projekt, podporované modely, značku vydání, názvy prostředků a zařízení, která jste testovali.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Upravte manifest Updater CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Podívejte se na nejnovější manifest</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> a <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Ponechte názvy modelů velkými písmeny, použijte přesnou adresu URL svého veřejného úložiště a ponechte <code>type="img"</code> a <code>handler="Custom Firmware"</code> pro záznam firmwaru.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">Usnadněte ověření vydání</h2>
+      <p>Dejte vydání jasný štítek a poznámku k vydání. Značka je pro lidi užitečná, ale k identifikaci instalačních balíčků používá Updater CE názvy aktiv ZIP.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>Kontrolní seznam vydání</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>Publikovat vydání veřejně.</li>
+            <li>Připojte soubory ZIP jako podklady k vydání.</li>
+            <li>Do poznámek uveďte podporovaný model a Type A nebo Type B.</li>
+            <li>Uveďte všechny požadované přípravky nebo známé limity.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>a <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>Jedno vydání, tři aktiva</h3>
+          <p>Sdílené vydání může obsahovat <code>rom.zip</code>, <code>rom_type_b.zip</code>a <code>rom_y2.zip</code>. Updater je klasifikuje samostatně a vybírá z modelových a hardwarových filtrů.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>Nesdružujte odhady</h3>
+          <p>Nezahrnujte balíček Y1 pod název souboru Y2 ani nepřidávejte nevyzkoušená data rozptylu, předběžného načítání nebo oddílu jen proto, aby se aktiva objevila.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">Proč záleží na zadání modelu během blikání</h2>
+      <p>Manifest není jen nabídka stahování. Po extrakci Updater CE použije vyřešený model k přípravě odpovídající instalační cesty. Y1 a Y2 mají různé soubory platformy, preloadery, konfiguraci rozptylu a rozložení zařízení.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> aktualizátor připraví cestu Y1 a při použití MTKClient použije pojmenované oddíly zařízení.</li>
+        <li><strong>Y2:</strong> aktualizátor připraví cestu Y2 a použije konfiguraci Y2 MT6582. Úplná obnova může používat fyzické adresy z modelově správných rozptylových dat.</li>
+        <li><strong>Podpora napříč platformami:</strong> Updater CE zvládá nativní flashování přímo ve Windows, Linuxu a macOS (podporuje Intel i Apple Silicon Mac) bez dalších flashovacích nástrojů.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>Přispěvatelé by měli poskytovat správné soubory firmwaru, nikoli offsety flash.</strong> Neupravujte rozptylové adresy, preloadery, soubory DA nebo příkazy oddílů, abyste obešli špatný balíček. Opravte aktivum vydání a otestujte jej na zamýšleném modelu.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">Než požádáte o sloučení</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>a <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>Ověřte XML pomocí analyzátoru XML. Chybějící citace nebo uzávěrka <code>/&gt;</code> může skrýt každý záznam po něm.</li>
+        <li>Spusťte aktualizátor z pokladny, aby před vzdálenou aktualizací načetl místní manifest.</li>
+        <li>Nezávisle zkontrolujte Y1 a Y2. Potvrďte, že se projekt zobrazuje pouze tam, kde je podporován jeho balíček.</li>
+        <li>Podívejte se na seznam vydání <code>rom.zip</code>, <code>rom_type_b.zip</code>a <code>rom_y2.zip</code> podle potřeby.</li>
+        <li>Otestujte skutečnou instalaci na zamýšleném zařízení pomocí spolehlivého datového kabelu USB a plánu obnovy pro návrat k původnímu softwaru.</li>
+        <li>V žádosti o stažení vysvětlete, co jste testovali. Nepopisujte netestovaný model jako podporovaný.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>Pro místní kontrolu spusťte tento příkaz z kořenového adresáře úložiště. Ověřuje pouze syntaxi XML; neprokazuje, že vydání obsahuje platný firmware nebo že je zařízení bezpečné pro flashování.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">Užitečné odkazy na projekty</h2>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_cs.html">Community contribution notes</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Viz manifest</a>
+        <a class="lumen-button" href="support_devs_cs.html">Poznámky k příspěvku komunity</a>
         <a class="lumen-button" href="troubleshooting_cs.html">Řešení problémů</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">Modovací dovednosti pro agenty AI</h2>
+      <p>Úložiště <code>skills/</code> adresář je znalostní báze založená na zdroji pro agenty pracující na Y1 a Y2 hardwaru, firmwaru, motivech a aplikacích. Každá dovednost pojmenovává soubory projektu, ze kterých pocházejí její nároky, takže agent si může ověřit fakt před změnou zařízení.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>Začněte zde</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Index dovedností a pravidla bezpečnosti</a></h3>
+          <p>Jak načíst dovednost, na který model se daná skutečnost vztahuje a na oblasti, které by žádný balíček neměl zapisovat.</p>
         </article>
         <article class="lumen-card">
-          <small>Hardware</small>
+          <small>Železářské zboží</small>
           <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <p>MT6572, kolo jako klíčové události, displej 480x360, FM/audio cesty, úložiště a mapa oddílu Type A/B.</p>
         </article>
         <article class="lumen-card">
-          <small>Hardware</small>
+          <small>Železářské zboží</small>
           <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <p>Deska MT6582, strom zařízení, panely GC9503V/ST7701S, kolejnice PMIC/DAC, oddíly a zaváděcí obraz.</p>
         </article>
         <article class="lumen-card">
           <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmwarové balíčky</a></h3>
+          <p>rom.zip anatomie, rozptylové soubory, smlouvy o aktualizaci třídy A a kontrolní seznam vydání.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>Témata</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Tvorba motivu a vzhledu</a></h3>
+          <p>Y1 témata config.json, Rockbox WPS/SBS, Reborn vzhledy a Y2Player formát vzhledu v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>Všechny dovednosti</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Procházejte složku dovedností</a></h3>
+          <p>Rockbox Y1/Y2, zásoby Android ROM, Y2Linux, aplikace pro Android, spouštěče, poznámky k vydání a publikování stránek.</p>
         </article>
       </div>
     </section>

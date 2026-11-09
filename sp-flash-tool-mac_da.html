@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>SP Flash Tool for Mac · MediaTek Scatter Flashing Guide & Alternatives</title>
-  <meta name="description" content="How to use SP Flash Tool on Mac using Updater CE and browse scatter files to flash MediaTek devices like Mechen H1, Innioasis Y1/Y2, Timmkoo, and MT6580/MT6572 MP3 players and phones.">
+  <title>SP Flash Tool til Mac · MediaTek Scatter blinkende guide og alternativer</title>
+  <meta name="description" content="Sådan bruger du SP Flash Tool på Mac ved hjælp af Updater CE og gennemser scatter-filer for at flashe MediaTek-enheder som Mechen H1, Innioasis Y1/Y2, Timmkoo og MT6580/MT6572 MP3-afspillere og -telefoner.">
   <link rel="canonical" href="https://innioasis.app/sp-flash-tool-mac_da.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/sp-flash-tool-mac.html">
@@ -81,42 +81,42 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">MediaTek Tools & Cross-Platform Flashing</p>
-      <h1>SP Flash Tool for Mac: The Complete Guide & Scatter Browser</h1>
-      <p class="lead">Does official MediaTek SP Flash Tool run on macOS? Here is the exact status, how <strong>Opdaterer CE</strong> provides native MediaTek flashing on Mac, and how to flash any scatter-based MediaTek MP3 player or smartphone.</p>
+      <p class="lumen-kicker">MediaTek Værktøj &amp; Blinker på tværs af platforme</p>
+      <h1>SP Flash Tool til Mac: Den komplette guide og scatter-browser</h1>
+      <p class="lead">Kører den officielle MediaTek SP Flash Tool på macOS? Her er den nøjagtige status, hvordan <strong>Opdaterer CE</strong> giver indbygget MediaTek flash på Mac, og hvordan man flasher enhver scatter-baseret MediaTek MP3-afspiller eller smartphone.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>The Truth About SP Flash Tool on macOS</h2>
-      <p>MediaTek never released an official macOS build of <strong>Smart Phone Flash Tool (SP Flash Tool)</strong>. The tool has only ever existed as a 32-bit/64-bit Windows application and an x86_64 Linux binary. Emulating SP Flash Tool on macOS through Wine or CrossOver fails because macOS kernel USB extensions do not allow USB serial pass-through at the precision required during BROM boot handshakes.</p>
-      <p><strong>The Solution:</strong> <strong>Opdaterer CE</strong> bridges this gap by bundling native Apple Silicon and Intel macOS flashing libraries (via MTKclient low-level protocol engine) alongside automated scatter discovery!</p>
+      <h2>Sandheden om SP Flash Tool på macOS</h2>
+      <p>MediaTek har aldrig udgivet en officiel macOS-version af <strong>Smart Phone Flash-værktøj (SP Flash Tool)</strong>. Værktøjet har kun nogensinde eksisteret som en 32-bit/64-bit Windows-applikation og en x86_64 Linux binær. Emulering af SP Flash Tool på macOS gennem Wine eller CrossOver mislykkes, fordi macOS-kernen USB-udvidelser ikke tillader USB seriel pass-through med den præcision, der kræves under BROM boot-handshakes.</p>
+      <p><strong>Løsningen:</strong> <strong>Opdaterer CE</strong> bygger bro over dette hul ved at samle native Apple Silicon og Intel macOS flashing-biblioteker (via MTKclient-protokolmotor på lavt niveau) sammen med automatiseret scatter-opdagelse!</p>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Flashing Any MediaTek Device with 'Install from File' (Scatter Browser)</h2>
-      <p>Updater CE is not restricted to Innioasis players. You can use it as a powerful universal MediaTek scatter flasher for any device requiring <strong>SP Flash Tool v5 or earlier</strong>:</p>
+      <h2>Blinker enhver MediaTek enhed med 'Installer fra fil' (Scatter Browser)</h2>
+      <p>Updater CE er ikke begrænset til Innioasis spillere. Du kan bruge den som en kraftfuld universel MediaTek scatter flasher til enhver enhed, der kræver det <strong>SP Flash Tool v5 eller tidligere</strong>:</p>
       <ul class="lumen-benefits-list">
-        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 portable HiFi Android players.</li>
-        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek touchscreen digital audio players.</li>
-        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek MT6572 / MT6582 music players.</li>
-        <li><strong>Legacy MediaTek Smartphones &amp; Feature Phones:</strong> Devices running MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753, and MT8163.</li>
+        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 bærbare HiFi Android-afspillere.</li>
+        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek digitale lydafspillere med berøringsskærm.</li>
+        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek MT6572 / MT6582 musikafspillere.</li>
+        <li><strong>Ældre MediaTek smartphones og featuretelefoner:</strong> Enheder, der kører MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753 og MT8163.</li>
       </ul>
       <div class="lumen-callout">
-        <h3>How to Load Custom Scatter Files in Updater CE:</h3>
+        <h3>Sådan indlæses brugerdefinerede scatter-filer i Updater CE:</h3>
         <ol class="lumen-steps">
-          <li>Download the factory firmware archive (<code>.zip</code> eller <code>.rar</code>) or extract its folder containing the <code>*scatter*.txt</code> file.</li>
-          <li>In Updater CE, choose <strong>Browse Files…</strong> on the firmware selection screen.</li>
-          <li>Select the scatter text file (e.g., <code>MT6580_Android_scatter.txt</code>) or firmware zip package.</li>
-          <li>Updater CE parses memory offsets, partition addresses (preloader, boot, recovery, system, userdata), and verifies scatter integrity.</li>
-          <li>Follow the on-screen live prompt: power down the device and connect the USB cable to flash.</li>
+          <li>Download fabriksfirmwarearkivet (<code>.zip</code> eller <code>.rar</code>) eller udpak dens mappe, der indeholder <code>*scatter*.txt</code> fil.</li>
+          <li>I Updater CE skal du vælge <strong>Gennemse filer...</strong> på skærmen til valg af firmware.</li>
+          <li>Vælg scatter-tekstfilen (f.eks. <code>MT6580_Android_scatter.txt</code>) eller firmware zip-pakke.</li>
+          <li>Updater CE analyserer hukommelsesoffsets, partitionsadresser (preloader, boot, recovery, system, userdata) og verificerer scatter-integritet.</li>
+          <li>Følg liveprompten på skærmen: Sluk for enheden, og tilslut USB-kablet for at blinke.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>When You Need an x64 Computer for Unbricking</h2>
-      <p>While macOS handles standard flashing and custom ROM installs cleanly via MTKclient, recovering from deep bootloop failures (where the preloader partition was wiped or mismatched) requires SP Flash Tool's full partition table rebuild.</p>
-      <p>If you encounter error stalls on Mac, switch to a 64-bit Windows PC or x86_64 Linux workstation, select <strong>Settings &gt; Show Advanced Settings &gt; Flash Method &gt; SP Flash Tool</strong>, and flash the factory scatter package.</p>
+      <h2>Når du har brug for en x64-computer til at fjerne mursten</h2>
+      <p>Mens macOS håndterer standard flashing og brugerdefinerede ROM-installationer rent via MTKclient, kræver genopretning fra dybe bootloop-fejl (hvor preloader-partitionen blev slettet eller ikke matchede) SP Flash Tools fulde partitionstabel genopbygning.</p>
+      <p>Hvis du støder på fejlstop på Mac, skal du skifte til en 64-bit Windows-pc eller x86_64 Linux-arbejdsstation, vælg <strong>Indstillinger &gt; Vis avancerede indstillinger &gt; Flash-metode &gt; SP Flash Tool</strong>, og flash fabriksspredningspakken.</p>
     </section>
   </main>
   <div id="footer-root"></div>

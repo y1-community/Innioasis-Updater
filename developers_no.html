@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>Utviklere | Legg til tilpasset fastvare til Innioasis Updater CE - Innioasis fastvarenedlastinger</title>
+  <meta name="description" content="Utviklerdokumentasjon for å legge til en tilpasset Innioasis Y1 eller Y2 fastvare til Updater CE: Fork the repository, publiser rom.zip assets, rediger slidia_manifest.xml, test og åpne en pull request.">
+  <meta name="keywords" content="Innioasis Utviklerveiledning for oppdatering, slidia_manifest.xml, tilpasset fastvare, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, utgivelseselementer">
   <link rel="canonical" href="https://innioasis.app/developers_no.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="Utviklere | Legg til tilpasset fastvare til Innioasis Updater CE - Innioasis fastvarenedlastinger">
+  <meta property="og:description" content="Utviklerdokumentasjon for å legge til en tilpasset Innioasis Y1 eller Y2 fastvare til Updater CE: Fork the repository, publiser rom.zip assets, rediger slidia_manifest.xml, test og åpne en pull request.">
   <meta property="og:url" content="https://innioasis.app/developers_no.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="Utviklere | Legg til tilpasset fastvare til Innioasis Updater CE - Innioasis fastvarenedlastinger">
+  <meta name="twitter:description" content="Utviklerdokumentasjon for å legge til en tilpasset Innioasis Y1 eller Y2 fastvare til Updater CE: Fork the repository, publiser rom.zip assets, rediger slidia_manifest.xml, test og åpne en pull request.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">For fastvareutviklere</p>
+      <h1>Legg til fastvaren til Updater CE.</h1>
+      <p class="lead">Updater CE er fellesskapskatalogen og installasjonsprogrammet for tilpasset fastvare. Utvikl prosjektet ditt fra en base ROM, publiser det som et offentlig depot med de riktige utgivelseselementene, legg til modelloppføringene i <code>slidia_manifest.xml</code>, test modellfiltrene og åpne en pull-forespørsel. Ett depot kan betjene hver modell den støtter.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Se Updater CE-kilden</a>
         <a class="lumen-button" href="firmware_no.html">Bla gjennom programvarenedlastinger</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">Start fra en base ROM</h2>
+      <p>Base-ROM-er gir tilpassede fastvareutviklere et rent Android-grunnlag med de trådløse radiobrikkene aktivert. På Y1 aktiverer de Wi-Fi og GPS sammen med fabrikkens Bluetooth og FM; på Y2 aktiverer de Wi-Fi, GPS og FM sammen med fabrikkens Bluetooth.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">Base ROM nedlastinger for tilpasset fastvareutvikling, med Android-versjonen og trådløse funksjoner som hver muliggjør</caption>
           <thead>
-            <tr><th scope="col">Last ned</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">Last ned</th><th scope="col">Enhet</th><th scope="col">Android</th><th scope="col">Trådløse funksjoner</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Legger til Wi-Fi og GPS til fabrikkens Bluetooth og FM (FM fungerer allerede på Y1 fra fabrikken). For Y1 spillere som ble levert med OS 2.0.0 eller nyere.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Legger til Wi-Fi og GPS til fabrikkens Bluetooth og FM (FM fungerer allerede på Y1 fra fabrikken). For Y1 spillere som ble levert med et OS tidligere enn 2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Legger til Wi-Fi, GPS og FM til fabrikkinstallert Bluetooth. Radiobrikken Y2 er fullt aktivert, så FM er også tilgjengelig her.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">Disse bildene er standard Android-base (AOSP) med enhetens trådløse radioer aktivert, slik at en tilpasset fastvare kan legge til nettverksfunksjoner i stedet for å erstatte radiostabelen. De er det praktiske utgangspunktet for publiseringstrinnene nedenfor.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">Bruk disse navnene på utgivelseselementer</h2>
+      <p>Filnavnet er en del av kompatibilitetssignalet. Hold navnene nøyaktige og plasser ZIP-filene i prosjektets utgivelsesressurser, ikke bare i kildetreet for depotet.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">Firmware ZIP-aktivanavn og støttede enheter</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Maskinvare</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">Eiendel</th><th scope="col">Enhet</th><th scope="col">Maskinvare</th><th scope="col">Mening</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 enheter som ble levert med OS 2.0.0 eller nyere.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 enheter som ble levert med et OS tidligere enn 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Y2 fullinstalleringspakken. Hold den atskilt fra Y1 eiendeler.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>Ikke gi nytt navn til en pakke for å få den til å passe til en annen modell.</strong> Y1 og Y2 bruker forskjellige MediaTek plattformfiler og blinkende konfigurasjon. Publiser pakken for maskinvaren den faktisk støtter.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">Hvordan tilkoblingen fungerer</h2>
+      <p>Updater CE leser manifestet som sin katalog. Hver <code>&lt;package&gt;</code> linje forteller den prosjektnavnet, depotet, modellen og behandleren. Når en bruker velger det prosjektet, sjekker Updater depotets publiserte utgivelser og ser etter en <code>rom*.zip</code> eiendel.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
           <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <p>Navngir prosjektet og tilordner det til en modell. Y1 og Y2 trenger separate linjer, selv når de deler et depot.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>Publisert utgivelse</h3>
+          <p>Inneholder de installerbare ZIP-elementene. En enkelt utgivelse kan inneholde pakkene Y1 Type A, Y1 Type B, og Y2 sammen.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>Updater CE installering</h3>
+          <p>Bruker den valgte modellen til å velge matchende pakke og modellspesifikk blinkbane. Brukeren skal ikke måtte gjette et filnavn.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">Publiser et prosjekt i fem trinn</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>, og <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> Åpne <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Fork Updater CE-depotet.</strong> Lag din egen gaffel av <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, klone deretter gaffelen lokalt.</li>
+        <li><strong>Forbered et offentlig fastvarelager.</strong> Sørg for at depotet er offentlig og at utgivelsen inneholder de riktige ZIP-elementene. Du kan sette <code>rom.zip</code>, <code>rom_type_b.zip</code>, og <code>rom_y2.zip</code> på samme utgivelse når de tilhører samme versjon.</li>
+        <li><strong>Rediger manifestet.</strong> Åpne <code>slidia_manifest.xml</code> i roten av din Updater CE-gaffel. Legg til én linje for hver modell utgivelsen støtter (Y1 og Y2 er det vanlige paret). Den <code>repo</code> verdien er depotets <code>owner/repository</code>; <code>url</code> er den offentlige prosjektsiden.</li>
+        <li><strong>Test katalogen.</strong> Kjør Updater fra den redigerte kassen. Velg Y1 og bekreft at prosjektet viser Y1 eiendeler. Velg Y2 og bekreft at det viser Y2-utgivelsen. Sjekk Type A og Type B separat når begge er publisert.</li>
+        <li><strong>Åpne en pull-forespørsel.</strong> Skyv manifestendringen til gaffelen din og åpne en pull-forespørsel mot oppstrøms Updater CE-lageret. Inkluder prosjektkoblingen, støttede modeller, utgivelsesmerke, ressursnavn og enhetene du testet.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">Generer manifestlinjene dine</h2>
+      <p>Fyll ut depotet og merk av for hver modell utgivelsen støtter. Generatoren skriver en <code>&lt;package&gt;</code> linje per modell og inkluderer kun attributtene du angir, slik at resultatet samsvarer med gjeldende <code>slidia_manifest.xml</code> format. Hvert attributt Updater CE leser er tilgjengelig nedenfor - de valgfrie er under <strong>Flere alternativer</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
             <label for="manifest-repo-url">Repository URL</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">Det offentlige GitHub depotet. Generatoren trekker ut <code>owner/repository</code> fra URL-en.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">Programvarenavn</label>
+            <input type="text" id="manifest-name" placeholder="Standard til depotnavnet" autocomplete="off">
+            <span class="lumen-field-help">Vist i appen og nettstedskatalogen.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">Prosjekt-URL</label>
+            <input type="url" id="manifest-project-url" placeholder="Standard til depot-URLen" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Menneskevendt side for prosjektet eller dets utgivelsesnotater.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">Merke</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">Fjern dette for å bruke modellens standardmerke. SR1, Q3, Q5 og Q3e er Timmkoo modeller.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>Enheter (en linje hver)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">Andre modeller</label>
+            <input type="text" id="manifest-other-devices" placeholder="Kommaseparert, f.eks. X1, X2" autocomplete="off">
+            <span class="lumen-field-help">For en modell som ikke er oppført ovenfor. Kjente modeller beholder stavemåten i katalogen.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>Flagg</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — aldri tilby Keep Data for denne fastvaren</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Bygget fra original programvare — legger til <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">Keep Data tilbys kun når den innkommende fastvaren og den installerte fastvaren er den samme eller deler en <code>derivative</code> rot. Bruk flagget kun når brukerdata virkelig ikke kan overføres.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>Flere alternativer: ikon, kunstverk, utgivelseselementer, etterinstallering og speil</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>Ikon og kunstverk</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">Ikon fil</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">Velg bildet du vil forplikte til depotet. Dette forhåndsviser den og bygger dens rå URL; den laster ikke opp noe.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">Ikonbane i depotet</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">Banen til det forpliktede bildet, i forhold til depotroten.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">Ikon gren</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">Ikon URL</label>
+              <input type="url" id="manifest-icon-url" placeholder="Fylles fra filbanen" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">En direkte bilde-URL. Når den er tom, bruker appen utgivelsens <code>updater.png</code> eller et generert ikon.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="Forhåndsvisning av valgt ikon">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
+              <label for="manifest-icon-dark-url">Mørk modus-ikon URL</label>
               <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <span class="lumen-field-help">Valgfritt mørkt tema-ikon. <code>image_dark</code> er et akseptert alias.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">Lett kunstverk URL</label>
+              <input type="url" id="manifest-image-url" placeholder="bilde" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Sekundært kunstverk, prøvd etter utgivelsesbildet og <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
+              <label for="manifest-image-dark-url">URL til mørk kunst</label>
               <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>Frigjør eiendeler</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">Utgivelseselementnavn</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">Ett navn for hver valgt modell. La stå tomt for bruk <code>rom.zip</code> på Y1 og <code>rom_&lt;model&gt;.zip</code> andre steder.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
+              <label for="manifest-asset-pattern">Eiendelsmønster</label>
               <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <span class="lumen-field-help">Glob brukes når utgivelsens glidelåser ikke er navngitt <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A eiendel</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob for Y1 Type A-pakken når navnet ikke sier det.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B eiendel</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob for Y1 Type B-pakken når navnet ikke sier det.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">Minimum appversjon</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">Skjul oppføringen fra eldre Updater CE-bygg.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>Lenker, speil og Keep Data-familie</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">Siden etter installasjon</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">Åpnet etter vellykket installasjon.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">Andre side etter installasjon</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">Valgfritt andre trinn for en flersidig oppsettveiledning.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">Bærbare glidelåsspeil</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">Kommaseparert <code>*-mirror</code> repositories som bygger Portable Flashing Zip-pakker.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">Derivatlager</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">Fastvaren denne utgivelsen er bygget fra. Relaterte fastvare deler en datapartisjon, som er det Keep Data sjekker.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">Infolager</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">App-repo hvis utgivelser beskriver appene i denne fastvaren. Den trenger også en side etter installasjon.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK depot</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">App-repo hvis APK appen laster ned og installerer etter fastvaren.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>Katalog ekstrautstyr</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">Snegl</label>
+              <input type="text" id="manifest-slug" placeholder="Generert fra navn og modell" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Stabil identifikator for koblinger og lagrede installasjonsposter. Modellen legges til automatisk når flere modeller velges.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">Beskrivelse</label>
+              <input type="text" id="manifest-description" placeholder="En kort katalogbeskrivelse" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Kopier linjer</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">Laster det siste manifestet …</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>Forhåndsvis det siste manifestet med linjene dine lagt til</summary>
+          <p>Generatoren hentet strømmen <code>slidia_manifest.xml</code> fra dette depotet og satte inn dine genererte linjer rett før <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>Én linje er ikke nok for et delt depot.</strong> Hvis Y2-linjen mangler, vil ikke Y2-brukere få en modelltilpasset oppføring selv når <code>rom_y2.zip</code> finnes i prosjektets utgivelse. Det samme gjelder for alle andre modeller utgivelsen din støtter.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">Hvert attributt manifestet leser</h3>
+      <p>Dette er attributtene som nåværende Updater CE-bygg forstår. Generatoren skriver kun de du fyller inn; appen faller tilbake til fornuftige standardverdier for resten.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">slidia_manifest.xml-pakkeattributter og deres betydning</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">Attributt</th><th scope="col">Trengs</th><th scope="col">Hva den gjør</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>Ja</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>Ja</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>Ja</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> og <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>Valgfritt</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>Valgfritt</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>Valgfritt</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Valgfritt</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>Valgfritt</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>Valgfritt</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>Valgfritt</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Valgfritt</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Valgfritt</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>Valgfritt</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>Valgfritt</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> eller <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>Valgfritt</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>Valgfritt</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Valgfritt</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>Valgfritt</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>Valgfritt</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Ja</td><td>Programvarenavn vist i katalogen og på installasjonskort.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>Ja</td><td><code>owner/repo</code>. Appen leser det depotets GitHub utgivelser.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Ja</td><td>Målmodell, store bokstaver (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Behold én oppføring per modell.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Anbefalt</td><td>Prosjektside eller utgivelsesnotater åpnet fra katalogen.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Ja i praksis</td><td><code>type="img"</code> og <code>handler="Custom Firmware"</code>. Andre typer og ikke-fastvarebehandlere hoppes over.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Valgfritt</td><td>Katalog merke (<code>Innioasis</code>, <code>Timmkoo</code>). Empty bruker modellens standardmerke.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Valgfritt</td><td>Frigi filnavnet på ressursen. Standard til <code>rom.zip</code> på Y1 og <code>rom_&lt;model&gt;.zip</code> på andre modeller.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Valgfritt</td><td>Glob som ikke skiller mellom store og små bokstaver for utgivelser hvis fastvare-zips ikke er navngitt <code>rom*.zip</code> (for eksempel <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Valgfritt</td><td>Globs som identifiserer zip-ene Y1 Type A og Type B når filnavnene deres ikke inneholder de vanlige markørene.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Valgfritt</td><td>Logo URL. Brukt etter utgivelsens egen <code>updater.png</code> / <code>updater.jpg</code>, og som reserve for hver utgivelse.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Valgfritt</td><td>Logo med mørkt tema. <code>image_dark</code> er et akseptert alias.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Valgfritt</td><td>Sekundært lys kunstverk, prøvd etter <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Valgfritt</td><td>Siden(er) åpnet etter vellykket installasjon. Den andre dekker en flertrinnsguide.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Valgfritt</td><td>Kommaseparert <code>*-mirror</code> repos som publiserer klare til å kjøre bærbare pakker.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Valgfritt</td><td>Repository firmwaren er bygget fra. Fastvare med samme avledede rot kan beholde brukerdata.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Valgfritt</td><td>Applager hvis utgivelser beskriver hva fastvaren distribuerer. Krever <code>post_install</code> eller <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Valgfritt</td><td>Applager hvis APK appen installeres etter fastvaren.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Valgfritt</td><td>Skjul oppføringen når Updater CE er eldre enn denne versjonen.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Valgfritt</td><td><code>true</code> (også <code>1</code> / <code>yes</code>) blokkerer Behold data fullstendig for denne fastvaren.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Valgfritt</td><td>Stabil identifikator for koblinger og lagrede installasjonsposter. Generert fra navnet og modellen når den er tom.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Valgfritt</td><td>Kort katalogbeskrivelse. Det kan være attributtverdien eller elementets tekst.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> og <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">Eldre navn leses fortsatt for kompatibilitet: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> og <code>image_dark</code>. Nye oppføringer bør bruke de gjeldende navnene ovenfor.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Send inn linjene som en pull-forespørsel</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Kopier de genererte linjene ovenfor.</strong> De samsvarer allerede med det nyeste manifestformatet.</li>
+        <li><strong>Rediger <code>slidia_manifest.xml</code> i depotet.</strong> Bruk redigeringslenken nedenfor; depotverten oppretter automatisk en gaffel og en gren for deg.</li>
+        <li><strong>Lim inn linjene rett før <code>&lt;/slidia&gt;</code>,</strong> holde de eksisterende oppføringene uendret.</li>
+        <li><strong>Forplikte seg til en ny filial</strong> (for eksempel <code>add-your-firmware</code>), åpne deretter en pull-forespørsel mot Updater CE-depotet.</li>
+        <li><strong>I PR, inkluderer</strong> prosjektkoblingen, støttede modeller, utgivelsestag, aktivanavn og enhetene du testet.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Rediger Updater CE-manifestet</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Se siste manifest</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> og <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Behold modellnavnene med store bokstaver, bruk den nøyaktige URL-en til det offentlige depotet ditt, og behold <code>type="img"</code> og <code>handler="Custom Firmware"</code> for en fastvareoppføring.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">Gjør utgivelsen enkel å verifisere</h2>
+      <p>Gi utgivelsen en tydelig kode og utgivelsesnotat. Taggen er nyttig for folk, men ZIP-aktivanavnene er det Updater CE bruker for å identifisere installasjonspakkene.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>Slipp sjekkliste</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>Publiser utgivelsen offentlig.</li>
+            <li>Legg ved ZIP-filene som utgivelseselementer.</li>
+            <li>Oppgi den støttede modellen og Type A eller Type B i merknadene.</li>
+            <li>List opp eventuelle nødvendige forberedelser eller kjente grenser.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>, og <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>En utgivelse, tre eiendeler</h3>
+          <p>En delt utgivelse kan inneholde <code>rom.zip</code>, <code>rom_type_b.zip</code>, og <code>rom_y2.zip</code>. Updater klassifiserer dem separat og velger fra modell- og maskinvarefiltre.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>Ikke sett sammen gjetninger</h3>
+          <p>Ikke inkluder en Y1-pakke under Y2-filnavnet, eller legg til ikke-testet scatter-, forhåndslaster- eller partisjonsdata bare for å få en ressurs til å vises.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">Hvorfor modelloppføringene betyr noe under blinking</h2>
+      <p>Manifestet er ikke bare en nedlastingsmeny. Etter utvinning bruker Updater CE den løste modellen for å klargjøre den matchende installasjonsbanen. Y1 og Y2 har forskjellige plattformfiler, forhåndslastere, spredningskonfigurasjon og enhetsoppsett.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> oppdateringsprogrammet forbereder Y1-banen og bruker enhetens navngitte partisjoner når MTKClient brukes.</li>
+        <li><strong>Y2:</strong> oppdateringsprogrammet forbereder Y2-banen og bruker Y2 MT6582-konfigurasjonen. Full gjenoppretting kan bruke fysiske adresser fra modellriktige spredningsdata.</li>
+        <li><strong>Støtte på tvers av plattformer:</strong> Updater CE håndterer native flashing direkte på tvers av Windows, Linux og macOS (støtter både Intel og Apple Silicon Macs) uten ekstra blinkende verktøy.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>Bidragsytere bør oppgi korrekte fastvarefiler, ikke flash-forskyvninger.</strong> Ikke rediger scatter-adresser, forhåndslastere, DA-filer eller partisjonskommandoer for å omgå en dårlig pakke. Fiks utgivelseselementet og test på den tiltenkte modellen.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">Før du ber om en sammenslåing</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>, og <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>Valider XML med en XML-parser. Et manglende tilbud eller avslutning <code>/&gt;</code> kan skjule hver oppføring etter den.</li>
+        <li>Start oppdateringsprogrammet fra kassen slik at det laster det lokale manifestet før den eksterne oppdateringen.</li>
+        <li>Sjekk Y1 og Y2 uavhengig. Bekreft at prosjektet bare vises der pakken støttes.</li>
+        <li>Sjekk utgivelseslisten for <code>rom.zip</code>, <code>rom_type_b.zip</code>, og <code>rom_y2.zip</code> som aktuelt.</li>
+        <li>Test selve installasjonen på den tiltenkte enheten, med en pålitelig USB datakabel og en gjenopprettingsplan for retur til original programvare.</li>
+        <li>Forklar hva du testet i pull-forespørselen. Ikke beskriv en uprøvd modell som støttet.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>For en lokal sjekk, kjør den kommandoen fra depotroten. Den verifiserer kun XML-syntaks; det beviser ikke at en utgivelse inneholder gyldig fastvare eller at en enhet er trygg å flashe.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">Nyttige prosjektlenker</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_no.html">Community contribution notes</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Gaffeloppdatering CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Se manifestet</a>
+        <a class="lumen-button" href="support_devs_no.html">Notater om samfunnsbidrag</a>
         <a class="lumen-button" href="troubleshooting_no.html">Feilsøking</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">Moddingsferdigheter for AI-agenter</h2>
+      <p>Depotets <code>skills/</code> katalogen er en kildebasert kunnskapsbase for agenter som jobber med Y1 og Y2 maskinvare, fastvare, temaer og apper. Hver ferdighet navngir prosjektfilene kravene kommer fra, slik at en agent kan sjekke et faktum før du endrer en enhet.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>Start her</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Ferdighetsindeks og sikkerhetsregler</a></h3>
+          <p>Hvordan laste en ferdighet, hvilken modell et faktum gjelder for, og partisjonene som ingen pakke skal skrive.</p>
         </article>
         <article class="lumen-card">
           <small>Maskinvare</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 maskinvare</a></h3>
+          <p>MT6572, hjulet som nøkkelhendelser, 480x360 skjerm, FM/lydbaner, lagring og partisjonskartet Type A/B.</p>
         </article>
         <article class="lumen-card">
           <small>Maskinvare</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 maskinvare</a></h3>
+          <p>MT6582-kort, enhetstre, GC9503V/ST7701S-paneler, PMIC/DAC-skinner, partisjoner og oppstartsbildet.</p>
         </article>
         <article class="lumen-card">
-          <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <small>Fastvare</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware-pakker</a></h3>
+          <p>rom.zip anatomi, scatter-filer, klasse A-oppdateringskontrakter og utgivelsessjekklisten.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>Temaer</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Tema- og hudforfatting</a></h3>
+          <p>Y1 config.json-temaer, Rockbox WPS/SBS, Reborn skins og Y2Player skin format v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>Alle ferdigheter</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Bla gjennom ferdighetsmappen</a></h3>
+          <p>Rockbox Y1/Y2, lager Android-ROM, Y2Linux, Android-apper, lanseringer, utgivelsesnotater og nettstedspublisering.</p>
         </article>
       </div>
     </section>

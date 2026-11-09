@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>Προγραμματιστές | Προσθήκη προσαρμοσμένου υλικολογισμικού στο Innioasis Updater CE - Innioasis Λήψεις υλικολογισμικού</title>
+  <meta name="description" content="Τεκμηρίωση προγραμματιστή για την προσθήκη προσαρμοσμένου υλικολογισμικού Innioasis Y1 ή Y2 στο Updater CE: διαχωρίστε το αποθετήριο, δημοσιεύστε rom.zip στοιχεία, επεξεργαστείτε το slidia_manifest.xml, δοκιμάστε και ανοίξτε ένα αίτημα έλξης.">
+  <meta name="keywords" content="Innioasis Οδηγός προγραμματιστή ενημέρωσης, slidia_manifest.xml, προσαρμοσμένο υλικολογισμικό, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, στοιχεία κυκλοφορίας">
   <link rel="canonical" href="https://innioasis.app/developers_el.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="Προγραμματιστές | Προσθήκη προσαρμοσμένου υλικολογισμικού στο Innioasis Updater CE - Innioasis Λήψεις υλικολογισμικού">
+  <meta property="og:description" content="Τεκμηρίωση προγραμματιστή για την προσθήκη προσαρμοσμένου υλικολογισμικού Innioasis Y1 ή Y2 στο Updater CE: διαχωρίστε το αποθετήριο, δημοσιεύστε rom.zip στοιχεία, επεξεργαστείτε το slidia_manifest.xml, δοκιμάστε και ανοίξτε ένα αίτημα έλξης.">
   <meta property="og:url" content="https://innioasis.app/developers_el.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="Προγραμματιστές | Προσθήκη προσαρμοσμένου υλικολογισμικού στο Innioasis Updater CE - Innioasis Λήψεις υλικολογισμικού">
+  <meta name="twitter:description" content="Τεκμηρίωση προγραμματιστή για την προσθήκη προσαρμοσμένου υλικολογισμικού Innioasis Y1 ή Y2 στο Updater CE: διαχωρίστε το αποθετήριο, δημοσιεύστε rom.zip στοιχεία, επεξεργαστείτε το slidia_manifest.xml, δοκιμάστε και ανοίξτε ένα αίτημα έλξης.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -87,7 +87,7 @@
     "about": ["Innioasis Updater CE", "Innioasis Y1", "Innioasis Y2", "custom firmware"]
   }
   </script>
-<meta property="og:site_name" content="Ενημερώσεις λογισμικού Innioasis">
+<meta property="og:site_name" content="Innioasis Ενημερώσεις λογισμικού">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/developers.html">
   <link rel="alternate" hreflang="en" href="https://innioasis.app/developers.html">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">Για προγραμματιστές υλικολογισμικού</p>
+      <h1>Προσθέστε το υλικολογισμικό σας στο Updater CE.</h1>
+      <p class="lead">Το Updater CE είναι ο κοινοτικός κατάλογος και το πρόγραμμα εγκατάστασης για προσαρμοσμένο υλικολογισμικό. Αναπτύξτε το έργο σας από μια βάση ROM, δημοσιεύστε το ως δημόσιο αποθετήριο με τα σωστά στοιχεία έκδοσης, προσθέστε τις καταχωρήσεις μοντέλων στο <code>slidia_manifest.xml</code>, δοκιμάστε τα φίλτρα του μοντέλου και ανοίξτε ένα αίτημα έλξης. Ένα αποθετήριο μπορεί να εξυπηρετήσει κάθε μοντέλο που υποστηρίζει.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
-        <a class="lumen-button" href="firmware_el.html">Browse Software Downloads</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Δείτε την πηγή του Updater CE</a>
+        <a class="lumen-button" href="firmware_el.html">Περιήγηση σε Λήψεις λογισμικού</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">Ξεκινήστε από μια βάση ROM</h2>
+      <p>Οι βασικές ROM δίνουν στους προγραμματιστές προσαρμοσμένου υλικολογισμικού μια καθαρή βάση Android με ενεργοποιημένα τα ασύρματα τσιπ ραδιοφώνου. Στο Y1 ενεργοποιούν το Wi-Fi και το GPS παράλληλα με το εργοστασιακό Bluetooth και FM. στο Y2 ενεργοποιούν Wi-Fi, GPS και FM παράλληλα με το εργοστασιακό Bluetooth.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">Βασικές λήψεις ROM για ανάπτυξη προσαρμοσμένου υλικολογισμικού, με την έκδοση Android και τις ασύρματες δυνατότητες που ενεργοποιεί το καθένα</caption>
           <thead>
-            <tr><th scope="col">Λήψη</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">Λήψη</th><th scope="col">Συσκευή</th><th scope="col">Android</th><th scope="col">Ασύρματα χαρακτηριστικά</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Προσθέτει Wi-Fi και GPS στα εργοστασιακά Bluetooth και FM (το FM λειτουργεί ήδη στο Y1 από το εργοστάσιο). Για Y1 παίκτες που έχουν αποσταλεί με OS 2.0.0 ή μεταγενέστερη έκδοση.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Προσθέτει Wi-Fi και GPS στα εργοστασιακά Bluetooth και FM (το FM λειτουργεί ήδη στο Y1 από το εργοστάσιο). Για Y1 παίκτες που απεστάλησαν με λειτουργικό σύστημα νωρίτερα από την έκδοση 2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Προσθέτει Wi-Fi, GPS και FM στο εργοστασιακό Bluetooth. Το τσιπ ραδιοφώνου Y2 είναι πλήρως ενεργοποιημένο, επομένως τα FM είναι διαθέσιμα και εδώ.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">Αυτές οι εικόνες είναι η βασική βάση Android (AOSP) με ενεργοποιημένα τα ασύρματα ραδιόφωνα της συσκευής, επομένως ένα προσαρμοσμένο υλικολογισμικό μπορεί να προσθέσει λειτουργίες δικτύου αντί να αντικαταστήσει τη στοίβα ραδιοφώνου. Αποτελούν το πρακτικό σημείο εκκίνησης για τα παρακάτω βήματα δημοσίευσης.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">Χρησιμοποιήστε αυτά τα ονόματα στοιχείων έκδοσης</h2>
+      <p>Το όνομα αρχείου είναι μέρος του σήματος συμβατότητας. Διατηρήστε τα ονόματα ακριβή και τοποθετήστε τα αρχεία ZIP στα στοιχεία κυκλοφορίας του έργου, όχι μόνο στο δέντρο προέλευσης του αποθετηρίου.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">Ονόματα στοιχείων ZIP υλικολογισμικού και υποστηριζόμενες συσκευές</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Hardware</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">Περιουσιακό στοιχείο</th><th scope="col">Συσκευή</th><th scope="col">Υλικό</th><th scope="col">Σημασία</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 συσκευές που αποστέλλονται με OS 2.0.0 ή μεταγενέστερη έκδοση.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 συσκευές που απεστάλησαν με λειτουργικό σύστημα νωρίτερα από την έκδοση 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Το πακέτο πλήρους εγκατάστασης Y2. Διατηρήστε το χωριστά από Y1 στοιχεία.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>Μην μετονομάζετε ένα πακέτο για να ταιριάζει σε άλλο μοντέλο.</strong> Οι Y1 και Y2 χρησιμοποιούν διαφορετικά MediaTek αρχεία πλατφόρμας και διαμόρφωση που αναβοσβήνει. Δημοσιεύστε το πακέτο για το υλικό που υποστηρίζει πραγματικά.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">Πώς λειτουργεί η σύνδεση</h2>
+      <p>Το Updater CE διαβάζει το μανιφέστο ως τον κατάλογό του. Κάθε ένα <code>&lt;package&gt;</code> γραμμή του λέει το όνομα του έργου, το αποθετήριο, το μοντέλο και τον χειριστή. Όταν ένας χρήστης επιλέγει αυτό το έργο, το Updater ελέγχει τις δημοσιευμένες εκδόσεις του αποθετηρίου και αναζητά <code>rom*.zip</code> περιουσιακό στοιχείο.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <h3>Μανιφέστο</h3>
+          <p>Ονομάζει το έργο και το αντιστοιχίζει σε ένα μοντέλο. Οι Y1 και Y2 χρειάζονται ξεχωριστές γραμμές, ακόμη και όταν μοιράζονται ένα αποθετήριο.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>Δημοσιευμένη έκδοση</h3>
+          <p>Περιέχει τα στοιχεία ZIP με δυνατότητα εγκατάστασης. Μια μεμονωμένη κυκλοφορία μπορεί να περιέχει τα πακέτα Y1 Type A, Y1 Type B και Y2 μαζί.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>Εγκατάσταση του Updater CE</h3>
+          <p>Χρησιμοποιεί το επιλεγμένο μοντέλο για να επιλέξει το αντίστοιχο πακέτο και τη διαδρομή που αναβοσβήνει για το συγκεκριμένο μοντέλο. Ο χρήστης δεν πρέπει να μαντέψει ένα όνομα αρχείου.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">Δημοσιεύστε ένα έργο σε πέντε βήματα</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>, and <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> Ανοιχτό <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Διαχωρίστε το αποθετήριο του Updater CE.</strong> Δημιουργήστε το δικό σας πιρούνι <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, στη συνέχεια κλωνοποιήστε το πιρούνι σας τοπικά.</li>
+        <li><strong>Προετοιμάστε ένα δημόσιο αποθετήριο υλικολογισμικού.</strong> Βεβαιωθείτε ότι το αποθετήριο είναι δημόσιο και η κυκλοφορία του περιέχει τα σωστά στοιχεία ZIP. Μπορείτε να βάλετε <code>rom.zip</code>, <code>rom_type_b.zip</code>, και <code>rom_y2.zip</code> στην ίδια έκδοση όταν ανήκουν στην ίδια έκδοση.</li>
+        <li><strong>Επεξεργαστείτε τη δήλωση.</strong> Ανοίξτε <code>slidia_manifest.xml</code> στη ρίζα του πιρουνιού σας Updater CE. Προσθέστε μία γραμμή για κάθε μοντέλο που υποστηρίζει η έκδοση (Y1 και Y2 είναι το κοινό ζεύγος). Το <code>repo</code> η τιμή είναι του αποθετηρίου <code>owner/repository</code>; <code>url</code> είναι η δημόσια σελίδα του έργου.</li>
+        <li><strong>Δοκιμάστε τον κατάλογο.</strong> Εκτελέστε το Updater από το επεξεργασμένο ταμείο. Επιλέξτε Y1 και επιβεβαιώστε ότι το έργο εμφανίζει τα στοιχεία Y1. Επιλέξτε Y2 και επιβεβαιώστε ότι εμφανίζεται η έκδοση Y2. Ελέγξτε τα Type A και Type B ξεχωριστά όταν δημοσιεύονται και τα δύο.</li>
+        <li><strong>Ανοίξτε ένα αίτημα έλξης.</strong> Σπρώξτε την αλλαγή του μανιφέστου στο πιρούνι σας και ανοίξτε ένα αίτημα έλξης στο αποθετήριο CE του Updater Updater. Συμπεριλάβετε τον σύνδεσμο του έργου, τα υποστηριζόμενα μοντέλα, την ετικέτα κυκλοφορίας, τα ονόματα στοιχείων και τις συσκευές που δοκιμάσατε.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">Δημιουργήστε τις γραμμές φανερών σας</h2>
+      <p>Συμπληρώστε το αποθετήριο και σημειώστε κάθε μοντέλο που υποστηρίζει η έκδοση. Η γεννήτρια γράφει ένα <code>&lt;package&gt;</code> γραμμή ανά μοντέλο και περιλαμβάνει μόνο τα χαρακτηριστικά που ορίζετε, επομένως το αποτέλεσμα ταιριάζει με το τρέχον <code>slidia_manifest.xml</code> σχήμα και διάταξις βιβλίου. Κάθε χαρακτηριστικό που διαβάζει το Updater CE είναι διαθέσιμο παρακάτω — τα προαιρετικά είναι κάτω <strong>Περισσότερες επιλογές</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">URL αποθετηρίου</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">Το δημόσιο αποθετήριο GitHub. Η γεννήτρια εξάγει <code>owner/repository</code> από τη διεύθυνση URL.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">Όνομα λογισμικού</label>
+            <input type="text" id="manifest-name" placeholder="Προεπιλογές στο όνομα του αποθετηρίου" autocomplete="off">
+            <span class="lumen-field-help">Εμφανίζεται στην εφαρμογή και στον κατάλογο του ιστότοπου.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">URL έργου</label>
+            <input type="url" id="manifest-project-url" placeholder="Προεπιλογές στη διεύθυνση URL του αποθετηρίου" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Ανθρώπινη σελίδα για το έργο ή τις σημειώσεις κυκλοφορίας του.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">Μάρκα</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">Διαγράψτε το για να χρησιμοποιήσετε την προεπιλεγμένη επωνυμία του μοντέλου. SR1, Q3, Q5 και Q3e είναι Timmkoo μοντέλα.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>Συσκευές (μία γραμμή η καθεμία)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">Άλλα μοντέλα</label>
+            <input type="text" id="manifest-other-devices" placeholder="Διαχωρίζονται με κόμμα, π.χ. Χ1, Χ2" autocomplete="off">
+            <span class="lumen-field-help">Για ένα μοντέλο που δεν αναφέρεται παραπάνω. Τα γνωστά μοντέλα διατηρούν την ορθογραφία του καταλόγου τους.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>Σημαίες</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — μην προσφέρετε ποτέ το Keep Data για αυτό το υλικολογισμικό</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Κατασκευασμένο από πρωτότυπο λογισμικό — προσθέτει <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">Το Keep Data προσφέρεται μόνο όταν το εισερχόμενο υλικολογισμικό και το εγκατεστημένο υλικολογισμικό είναι το ίδιο ή μοιράζονται α <code>derivative</code> ρίζα. Χρησιμοποιήστε τη σημαία μόνο όταν τα δεδομένα χρήστη πραγματικά δεν μπορούν να μεταφερθούν.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>Περισσότερες επιλογές: εικονίδιο, έργο τέχνης, στοιχεία κυκλοφορίας, μετά την εγκατάσταση και καθρέφτες</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>Εικονίδιο και έργα τέχνης</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">Αρχείο εικονιδίων</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">Επιλέξτε την εικόνα που θα δεσμεύσετε στο αποθετήριο. Αυτό το κάνει προεπισκόπηση και δημιουργεί το ακατέργαστο URL του. δεν ανεβάζει τίποτα.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">Διαδρομή εικονιδίου στο αποθετήριο</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">Διαδρομή προς τη δεσμευμένη εικόνα, σε σχέση με τη ρίζα του αποθετηρίου.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">Κλάδος εικονιδίων</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">Διεύθυνση URL εικονιδίου</label>
+              <input type="url" id="manifest-icon-url" placeholder="Συμπληρώνεται από τη διαδρομή αρχείου" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Μια άμεση διεύθυνση URL εικόνας. Όταν είναι κενή, η εφαρμογή χρησιμοποιεί τις εκδόσεις <code>updater.png</code> ή ένα εικονίδιο που δημιουργήθηκε.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="Προεπισκόπηση επιλεγμένου εικονιδίου">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
-              <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <label for="manifest-icon-dark-url">URL εικονιδίου σκοτεινής λειτουργίας</label>
+              <input type="url" id="manifest-icon-dark-url" placeholder="εικονίδιο_σκοτεινό" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Προαιρετικό εικονίδιο με σκούρο θέμα. <code>image_dark</code> είναι ένα αποδεκτό ψευδώνυμο.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">Ελαφρύ URL έργου τέχνης</label>
+              <input type="url" id="manifest-image-url" placeholder="εικόνα" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Δευτερεύον έργο τέχνης, δοκιμασμένο μετά την απελευθέρωση εικόνα και <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
+              <label for="manifest-image-dark-url">URL σκοτεινής τέχνης</label>
               <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>Αποδέσμευση περιουσιακών στοιχείων</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">Όνομα στοιχείου απελευθέρωσης</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">Ένα όνομα για κάθε επιλεγμένο μοντέλο. Αφήστε κενό για χρήση <code>rom.zip</code> στις Y1 και <code>rom_&lt;model&gt;.zip</code> αλλού.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
+              <label for="manifest-asset-pattern">Μοτίβο ενεργητικού</label>
               <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <span class="lumen-field-help">Το Glob χρησιμοποιείται όταν τα φερμουάρ της έκδοσης δεν ονομάζονται <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A περιουσιακό στοιχείο</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob για το πακέτο Y1 Type A όταν το όνομά του δεν το λέει.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B περιουσιακό στοιχείο</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob για το πακέτο Y1 Type B όταν το όνομά του δεν το λέει.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">Ελάχιστη έκδοση εφαρμογής</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">Απόκρυψη της καταχώρισης από παλαιότερες εκδόσεις του Updater CE.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>Σύνδεσμοι, καθρέφτες και οικογένεια Keep Data</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">Σελίδα μετά την εγκατάσταση</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">Άνοιξε μετά από επιτυχή εγκατάσταση.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">Δεύτερη σελίδα μετά την εγκατάσταση</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">Προαιρετικό δεύτερο βήμα για έναν οδηγό εγκατάστασης πολλών σελίδων.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">Φορητοί καθρέφτες με φερμουάρ</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">Διαχωρίζονται με κόμματα <code>*-mirror</code> αποθετήρια που δημιουργούν πακέτα Portable Flashing Zip.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">Αποθετήριο παραγώγων</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">Το υλικολογισμικό από το οποίο δημιουργήθηκε αυτή η έκδοση. Τα σχετικά υλικολογισμικά μοιράζονται ένα διαμέρισμα δεδομένων, κάτι που ελέγχει το Keep Data.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">Αποθετήριο πληροφοριών</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">Αποθετήριο εφαρμογών του οποίου οι εκδόσεις περιγράφουν τις εφαρμογές σε αυτό το υλικολογισμικό. Χρειάζεται επίσης μια σελίδα μετά την εγκατάσταση.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK αποθετήριο</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">Αποθετήριο εφαρμογών του οποίου APK η εφαρμογή κατεβάζει και εγκαθιστά μετά το υλικολογισμικό.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>Πρόσθετα καταλόγου</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">γυμνοσάλιαγκας</label>
+              <input type="text" id="manifest-slug" placeholder="Δημιουργήθηκε από το όνομα και το μοντέλο" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Σταθερό αναγνωριστικό για συνδέσμους και αποθηκευμένες εγγραφές εγκατάστασης. Το μοντέλο προσαρτάται αυτόματα όταν επιλέγονται πολλά μοντέλα.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">Περιγραφή</label>
+              <input type="text" id="manifest-description" placeholder="Σύντομη περιγραφή καταλόγου" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Αντιγραφή γραμμών</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">Φόρτωση της πιο πρόσφατης δήλωσης…</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>Κάντε προεπισκόπηση της πιο πρόσφατης δήλωσης με τις γραμμές σας να έχουν προστεθεί</summary>
+          <p>Η γεννήτρια πήρε το ρεύμα <code>slidia_manifest.xml</code> από αυτό το αποθετήριο και εισήγαγε τις γραμμές που δημιουργήσατε λίγο πριν <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>Μια γραμμή δεν αρκεί για ένα κοινόχρηστο αποθετήριο.</strong> Εάν λείπει η γραμμή Y2, οι χρήστες Y2 δεν θα λάβουν καταχώριση που ταιριάζει με το μοντέλο, ακόμη και όταν <code>rom_y2.zip</code> υπάρχει στην κυκλοφορία του έργου. Το ίδιο ισχύει για κάθε άλλο μοντέλο που υποστηρίζει η κυκλοφορία σας.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">Κάθε χαρακτηριστικό που διαβάζεται στο μανιφέστο</h3>
+      <p>Αυτά είναι τα χαρακτηριστικά που κατανοεί η τρέχουσα έκδοση του Updater CE. Η γεννήτρια γράφει μόνο αυτά που συμπληρώνετε. η εφαρμογή επανέρχεται σε λογικές προεπιλογές για τα υπόλοιπα.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">Τα χαρακτηριστικά του πακέτου slidia_manifest.xml και η σημασία τους</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">Ιδιότητα</th><th scope="col">Χρειάζεται</th><th scope="col">Τι κάνει</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>Yes</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>Yes</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>Yes</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> και <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>Προαιρετικός</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>Προαιρετικός</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>Προαιρετικός</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Προαιρετικός</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>Προαιρετικός</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>Προαιρετικός</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>Προαιρετικός</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Προαιρετικός</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Προαιρετικός</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>Προαιρετικός</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>Προαιρετικός</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> ή <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>Προαιρετικός</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>Προαιρετικός</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Προαιρετικός</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>Προαιρετικός</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>Προαιρετικός</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Ναι</td><td>Το όνομα λογισμικού εμφανίζεται στον κατάλογο και στις κάρτες εγκατάστασης.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>Ναι</td><td><code>owner/repo</code>. Η εφαρμογή διαβάζει τις εκδόσεις GitHub αυτού του αποθετηρίου.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Ναι</td><td>Μοντέλο στόχου, κεφαλαία (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>,…). Κρατήστε μία καταχώρηση ανά μοντέλο.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Συνιστάται</td><td>Η σελίδα του έργου ή οι σημειώσεις έκδοσης άνοιξαν από τον κατάλογο.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Ναι στην πράξη</td><td><code>type="img"</code> και <code>handler="Custom Firmware"</code>. Άλλοι τύποι και χειριστές μη υλικολογισμικού παραλείπονται.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Προαιρετικό</td><td>Μάρκα καταλόγου (<code>Innioasis</code>, <code>Timmkoo</code>). Το Empty χρησιμοποιεί την προεπιλεγμένη επωνυμία του μοντέλου.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Προαιρετικό</td><td>Αποδέσμευση ονόματος αρχείου στοιχείου. Προεπιλογές σε <code>rom.zip</code> στις Y1 και <code>rom_&lt;model&gt;.zip</code> σε άλλα μοντέλα.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Προαιρετικό</td><td>Σφαίρα χωρίς διάκριση πεζών-κεφαλαίων για εκδόσεις των οποίων τα φερμουάρ υλικολογισμικού δεν ονομάζονται <code>rom*.zip</code> (για παράδειγμα <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Προαιρετικό</td><td>Globs που προσδιορίζουν τα φερμουάρ Y1 Type A και Type B όταν τα ονόματα των αρχείων τους δεν περιέχουν τους συνήθεις δείκτες.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Προαιρετικό</td><td>URL λογότυπου. Χρησιμοποιείται μετά την κυκλοφορία του <code>updater.png</code> / <code>updater.jpg</code>, και ως εναλλακτική για κάθε κυκλοφορία.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Προαιρετικό</td><td>Λογότυπο με σκούρο θέμα. <code>image_dark</code> είναι ένα αποδεκτό ψευδώνυμο.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Προαιρετικό</td><td>Δευτερεύον ελαφρύ έργο τέχνης, δοκιμασμένο μετά <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Προαιρετικό</td><td>Οι σελίδες άνοιξαν μετά από επιτυχή εγκατάσταση. Το δεύτερο καλύπτει έναν οδηγό πολλαπλών βημάτων.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Προαιρετικό</td><td>Διαχωρίζονται με κόμματα <code>*-mirror</code> repos που δημοσιεύουν έτοιμα προς εκτέλεση φορητά πακέτα.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Προαιρετικό</td><td>Αποθετήριο από το οποίο έχει κατασκευαστεί το υλικολογισμικό. Το υλικολογισμικό με την ίδια παράγωγη ρίζα μπορεί να διατηρήσει δεδομένα χρήστη.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Προαιρετικό</td><td>Αποθετήριο εφαρμογών του οποίου οι εκδόσεις περιγράφουν τι αναπτύσσει το υλικολογισμικό. Απαιτεί <code>post_install</code> ή <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Προαιρετικό</td><td>Αποθετήριο εφαρμογών του οποίου APK εγκαθίσταται η εφαρμογή μετά το υλικολογισμικό.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Προαιρετικό</td><td>Απόκρυψη της καταχώρισης όταν το Updater CE είναι παλαιότερο από αυτήν την έκδοση.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Προαιρετικό</td><td><code>true</code> (επίσης <code>1</code> / <code>yes</code>) αποκλείει πλήρως το Keep Data για αυτό το υλικολογισμικό.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Προαιρετικό</td><td>Σταθερό αναγνωριστικό για συνδέσμους και αποθηκευμένες εγγραφές εγκατάστασης. Δημιουργείται από το όνομα και το μοντέλο όταν είναι κενό.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Προαιρετικό</td><td>Σύντομη περιγραφή καταλόγου. Μπορεί να είναι η τιμή του χαρακτηριστικού ή το κείμενο του στοιχείου.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> και <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">Τα ονόματα παλαιού τύπου εξακολουθούν να διαβάζονται για συμβατότητα: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> και <code>image_dark</code>. Οι νέες καταχωρήσεις θα πρέπει να χρησιμοποιούν τα τρέχοντα ονόματα παραπάνω.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Υποβάλετε τις γραμμές ως αίτημα έλξης</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Αντιγράψτε τις γραμμές που δημιουργούνται παραπάνω.</strong> Αντιστοιχούν ήδη στην πιο πρόσφατη μορφή δήλωσης.</li>
+        <li><strong>Επεξεργασία <code>slidia_manifest.xml</code> στο αποθετήριο.</strong> Χρησιμοποιήστε τον παρακάτω σύνδεσμο επεξεργασίας. ο κεντρικός υπολογιστής αποθετηρίου δημιουργεί αυτόματα μια διχάλα και έναν κλάδο για εσάς.</li>
+        <li><strong>Επικολλήστε τις γραμμές λίγο πριν <code>&lt;/slidia&gt;</code>,</strong> διατηρώντας αμετάβλητες τις υπάρχουσες εγγραφές.</li>
+        <li><strong>Δεσμευτείτε σε νέο κλάδο</strong> (για παράδειγμα <code>add-your-firmware</code>), στη συνέχεια ανοίξτε ένα αίτημα έλξης στο χώρο αποθήκευσης του Updater CE.</li>
+        <li><strong>Στο PR, συμπεριλάβετε</strong> ο σύνδεσμος του έργου, τα υποστηριζόμενα μοντέλα, η ετικέτα κυκλοφορίας, τα ονόματα στοιχείων και οι συσκευές που δοκιμάσατε.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Επεξεργαστείτε τη δήλωση του Updater CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Δείτε το πιο πρόσφατο μανιφέστο</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> και <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Διατηρήστε τα ονόματα μοντέλων με κεφαλαία, χρησιμοποιήστε την ακριβή διεύθυνση URL του δημόσιου αποθετηρίου σας και κρατήστε <code>type="img"</code> και <code>handler="Custom Firmware"</code> για καταχώρηση υλικολογισμικού.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">Κάντε την κυκλοφορία εύκολη στην επαλήθευση</h2>
+      <p>Δώστε στην κυκλοφορία μια σαφή ετικέτα και σημείωση έκδοσης. Η ετικέτα είναι χρήσιμη για τα άτομα, αλλά τα ονόματα στοιχείων ZIP είναι αυτά που χρησιμοποιεί το Updater CE για την αναγνώριση των πακέτων εγκατάστασης.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>Λίστα ελέγχου έκδοσης</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>Δημοσιεύστε την κυκλοφορία δημόσια.</li>
+            <li>Επισυνάψτε τα αρχεία ZIP ως στοιχεία έκδοσης.</li>
+            <li>Δηλώστε το υποστηριζόμενο μοντέλο και Type A ή Type B στις σημειώσεις.</li>
+            <li>Αναφέρετε οποιαδήποτε απαιτούμενη προετοιμασία ή γνωστά όρια.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>, and <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>Μία κυκλοφορία, τρία περιουσιακά στοιχεία</h3>
+          <p>Μια κοινόχρηστη κυκλοφορία μπορεί να περιέχει <code>rom.zip</code>, <code>rom_type_b.zip</code>, και <code>rom_y2.zip</code>. Το Updater τα ταξινομεί ξεχωριστά και επιλέγει από τα φίλτρα μοντέλου και υλικού.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>Μην συνδυάζετε εικασίες</h3>
+          <p>Μην συμπεριλάβετε ένα πακέτο Y1 κάτω από το όνομα αρχείου Y2 και μην προσθέσετε μη δοκιμασμένα δεδομένα scatter, preloader ή partition μόνο για να εμφανιστεί ένα στοιχείο.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">Γιατί οι καταχωρήσεις του μοντέλου έχουν σημασία κατά το αναβοσβήσιμο</h2>
+      <p>Το μανιφέστο δεν είναι απλώς ένα μενού λήψης. Μετά την εξαγωγή, το Updater CE χρησιμοποιεί το επιλυμένο μοντέλο για να προετοιμάσει την αντίστοιχη διαδρομή εγκατάστασης. Τα Y1 και Y2 έχουν διαφορετικά αρχεία πλατφόρμας, προγράμματα προφόρτωσης, διαμόρφωση scatter και διατάξεις συσκευών.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> το πρόγραμμα ενημέρωσης προετοιμάζει τη διαδρομή Y1 και χρησιμοποιεί τα διαμερίσματα με το όνομα της συσκευής όταν χρησιμοποιείται το MTKClient.</li>
+        <li><strong>Y2:</strong> το πρόγραμμα ενημέρωσης προετοιμάζει τη διαδρομή Y2 και χρησιμοποιεί τη διαμόρφωση Y2 MT6582. Η πλήρης ανάκτηση μπορεί να χρησιμοποιήσει φυσικές διευθύνσεις από τα σωστά δεδομένα διασποράς του μοντέλου.</li>
+        <li><strong>Υποστήριξη μεταξύ πλατφορμών:</strong> Το Updater CE χειρίζεται το εγγενές αναβοσβήσιμο απευθείας σε Windows, Linux και macOS (υποστηρίζοντας τόσο Intel όσο και Apple Silicon Mac) χωρίς επιπλέον εργαλεία που αναβοσβήνουν.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>Οι συνεισφέροντες θα πρέπει να παρέχουν σωστά αρχεία υλικολογισμικού, όχι μετατοπίσεις flash.</strong> Μην επεξεργάζεστε διευθύνσεις scatter, προγράμματα προφόρτωσης, αρχεία DA ή εντολές διαμερισμάτων για να επιλύσετε ένα κακό πακέτο. Διορθώστε το στοιχείο αποδέσμευσης και δοκιμάστε στο προβλεπόμενο μοντέλο.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">Πριν ζητήσετε συγχώνευση</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>, and <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>Επικυρώστε το XML με έναν αναλυτή XML. Λείπει απόσπασμα ή κλείσιμο <code>/&gt;</code> μπορεί να κρύψει κάθε καταχώρηση μετά από αυτό.</li>
+        <li>Εκκινήστε το πρόγραμμα ενημέρωσης από το ταμείο σας, ώστε να φορτώνει το τοπικό μανιφέστο πριν από την απομακρυσμένη ανανέωση.</li>
+        <li>Ελέγξτε τα Y1 και Y2 ανεξάρτητα. Επιβεβαιώστε ότι το έργο εμφανίζεται μόνο όπου υποστηρίζεται το πακέτο του.</li>
+        <li>Ελέγξτε τη λίστα εκδόσεων για <code>rom.zip</code>, <code>rom_type_b.zip</code>, και <code>rom_y2.zip</code> όπως ισχύει.</li>
+        <li>Δοκιμάστε την πραγματική εγκατάσταση στη συσκευή που προορίζεται, με ένα αξιόπιστο καλώδιο δεδομένων USB και ένα σχέδιο ανάκτησης για επιστροφή στο Αρχικό Λογισμικό.</li>
+        <li>Στο αίτημα έλξης, εξηγήστε τι δοκιμάσατε. Μην περιγράφετε ένα μη δοκιμασμένο μοντέλο ως υποστηριζόμενο.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>Για έναν τοπικό έλεγχο, εκτελέστε αυτήν την εντολή από τη ρίζα του αποθετηρίου. Επαληθεύει μόνο τη σύνταξη XML. δεν αποδεικνύει ότι μια έκδοση περιέχει έγκυρο υλικολογισμικό ή ότι μια συσκευή είναι ασφαλής να αναβοσβήνει.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">Χρήσιμοι σύνδεσμοι έργου</h2>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_el.html">Community contribution notes</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Δείτε το μανιφέστο</a>
+        <a class="lumen-button" href="support_devs_el.html">Σημειώσεις κοινοτικής συνεισφοράς</a>
         <a class="lumen-button" href="troubleshooting_el.html">Αντιμετώπιση προβλημάτων</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">Δεξιότητες τροποποίησης για πράκτορες AI</h2>
+      <p>Το αποθετήριο <code>skills/</code> Ο κατάλογος είναι μια βάση γνώσεων βασισμένη σε πηγές για πράκτορες που εργάζονται σε Y1 και Y2 υλικό, υλικολογισμικό, θέματα και εφαρμογές. Κάθε δεξιότητα ονομάζει τα αρχεία του έργου από τα οποία προέρχονται οι αξιώσεις της, έτσι ώστε ένας πράκτορας να μπορεί να ελέγξει ένα γεγονός πριν αλλάξει μια συσκευή.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>Ξεκινήστε εδώ</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Δείκτης δεξιοτήτων και κανόνες ασφαλείας</a></h3>
+          <p>Πώς να φορτώσετε ένα skill, σε ποιο μοντέλο ισχύει ένα γεγονός και τα διαμερίσματα που δεν πρέπει να γράφει κανένα πακέτο.</p>
         </article>
         <article class="lumen-card">
-          <small>Hardware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <small>Υλικό</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 υλικό</a></h3>
+          <p>MT6572, ο τροχός ως βασικά συμβάντα, οθόνη 480x360, διαδρομές FM/ήχου, χώρος αποθήκευσης και ο χάρτης διαμερισμάτων Type A/B.</p>
         </article>
         <article class="lumen-card">
-          <small>Hardware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <small>Υλικό</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 υλικό</a></h3>
+          <p>Πλακέτα MT6582, δέντρο συσκευών, πάνελ GC9503V/ST7701S, ράγες PMIC/DAC, χωρίσματα και η εικόνα εκκίνησης.</p>
         </article>
         <article class="lumen-card">
-          <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <small>Υλικολογισμικό</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Πακέτα υλικολογισμικού</a></h3>
+          <p>rom.zip ανατομία, αρχεία διασποράς, συμβόλαια ενημέρωσης κατηγορίας Α και λίστα ελέγχου έκδοσης.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>Θέματα</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Συγγραφή θεμάτων και δέρματος</a></h3>
+          <p>Y1 θέματα config.json, Rockbox WPS/SBS, Reborn δέρματα και Y2Player μορφή δέρματος v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>Όλες οι δεξιότητες</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Περιηγηθείτε στο φάκελο δεξιότητες</a></h3>
+          <p>Rockbox Y1/Y2, stock Android ROM, Y2Linux, εφαρμογές Android, προγράμματα εκκίνησης, σημειώσεις έκδοσης και δημοσίευση ιστότοπου.</p>
         </article>
       </div>
     </section>

@@ -1,0 +1,2165 @@
+<!doctype html>
+<html lang="zh-tw" dir="ltr" data-locale="zh-tw">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>支持 Innioasis 更新者和社區積分 - Innioasis 更新者</title>
+  <meta name="description" content="一個友善的地方，可以支持 Updater CE，查看它所幫助的社區項目，並感謝那些讓它繼續下去的人。">
+  <link rel="canonical" href="https://innioasis.app/support_devs_zh-tw.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="支持 Innioasis 更新者和社區積分 - Innioasis 更新者">
+  <meta property="og:description" content="一個友善的地方，可以支持 Updater CE，查看它所幫助的社區項目，並感謝那些讓它繼續下去的人。">
+  <meta property="og:url" content="https://innioasis.app/support_devs_zh-tw.html">
+  <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="支持 Innioasis 更新者和社區積分 - Innioasis 更新者">
+  <meta name="twitter:description" content="一個友善的地方，可以支持 Updater CE，查看它所幫助的社區項目，並感謝那些讓它繼續下去的人。">
+  <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261108headerfix">
+  <link rel="stylesheet" href="lumen.css?v=20261108headerfix">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
+  <script src="site-init.js" defer></script>
+  <style>
+    .supported-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .supported-project-card {
+      background: var(--lumen-card-bg, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.12));
+      border-left: 4px solid #10b981;
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .supported-project-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      align-self: flex-start;
+    }
+    .filter-tabs-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 16px;
+    }
+    .filter-tab-btn {
+      background: var(--lumen-card-bg, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.15));
+      color: var(--lumen-text, #fff);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-tab-btn:hover {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: #10b981;
+    }
+    .filter-tab-btn.active {
+      background: #10b981;
+      color: #fff;
+      border-color: #10b981;
+    }
+    .donations-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.12));
+      border-radius: 10px;
+      background: var(--lumen-card-bg, rgba(255, 255, 255, 0.03));
+      margin-top: 12px;
+    }
+    .donations-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+    .donations-table th {
+      background: var(--lumen-table-header-bg, rgba(0, 0, 0, 0.25));
+      padding: 12px 16px;
+      font-weight: 700;
+      color: var(--lumen-muted, #9aa3b5);
+      border-bottom: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.12));
+    }
+    .donations-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.07));
+      color: var(--lumen-text, #fff);
+      vertical-align: top;
+    }
+    .donations-table tr:last-child td {
+      border-bottom: none;
+    }
+    .donations-table tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .supporter-badge-regular {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+      background: rgba(234, 179, 8, 0.18);
+      color: #eab308;
+      border: 1px solid rgba(234, 179, 8, 0.4);
+      margin-right: 6px;
+    }
+    .supporter-badge-corporate {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+      background: rgba(59, 130, 246, 0.18);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      margin-right: 6px;
+    }
+    .supporter-badge-outgoing {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+      background: rgba(239, 68, 68, 0.18);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      margin-right: 6px;
+    }
+    .method-tag {
+      font-size: 0.76rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--lumen-muted, #9aa3b5);
+    }
+    .crypto-accordion-content {
+      display: none;
+      background: var(--lumen-card-bg, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.12));
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 10px;
+    }
+    .crypto-accordion-content.open {
+      display: block;
+    }
+    .crypto-addr-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 8px 0;
+      font-size: 0.82rem;
+      word-break: break-all;
+    }
+    .donor-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .donor-name-line {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .donor-chat-bubble {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      background: var(--lumen-card-bg, rgba(255, 255, 255, 0.06));
+      border: 1px solid var(--lumen-card-border, rgba(255, 255, 255, 0.12));
+      border-radius: 8px;
+      padding: 4px 8px;
+      margin-top: 2px;
+      max-width: 420px;
+      width: fit-content;
+      font-size: 0.78rem;
+      color: var(--lumen-text, #e5e7eb);
+      line-height: 1.35;
+      position: relative;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    .donor-chat-bubble::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 14px;
+      border-width: 0 5px 5px 5px;
+      border-style: solid;
+      border-color: transparent transparent var(--lumen-card-border, rgba(255, 255, 255, 0.25)) transparent;
+    }
+    .donor-bubble-text-wrap {
+      max-height: 2.7em;
+      overflow: hidden;
+      position: relative;
+    }
+    .donor-bubble-marquee {
+      display: inline-block;
+      animation: marqueeScroll 12s linear infinite alternate;
+    }
+    @keyframes marqueeScroll {
+      0%, 25% { transform: translateY(0); }
+      75%, 100% { transform: translateY(calc(-100% + 2.7em)); }
+    }
+    .method-icon-img {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+    .contribution-amount-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .donation-method-intro {
+      max-width: 700px;
+      margin: 22px 0 12px;
+    }
+    .donation-method-intro h3 {
+      margin: 0 0 5px;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+    .donation-method-intro p { margin: 0; color: var(--lumen-muted, #9aa3b5); }
+    .donation-method-ru-note { display: none; }
+    html.y1-region-ru .donation-method-copy { display: none !important; }
+    html.y1-region-ru .donation-method-ru-note { display: block; }
+    .donation-method-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .donation-method-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 68px;
+      padding: 12px 14px;
+      border: 1px solid var(--lumen-card-border, rgba(255,255,255,.14));
+      border-radius: 12px;
+      background: var(--lumen-card-bg, rgba(255,255,255,.05));
+      color: var(--lumen-text, #fff);
+      text-decoration: none;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .donation-method-card:hover { transform: translateY(-2px); border-color: #10b981; background: rgba(16,185,129,.10); }
+    .donation-method-card--primary { border-color: rgba(16,185,129,.65); background: linear-gradient(135deg, rgba(16,185,129,.18), rgba(16,185,129,.06)); }
+    .donation-method-card--bmac { border-color: rgba(255,221,0,.55); background: linear-gradient(135deg, rgba(255,221,0,.16), rgba(255,221,0,.05)); }
+    .donation-method-card--boosty { border-color: rgba(241,95,44,.65); background: linear-gradient(135deg, rgba(241,95,44,.22), rgba(241,95,44,.08)); display: none; }
+    html.y1-region-ru .donation-method-card:not(.donation-method-card--boosty),
+    html.y1-region-ru .y1-donate-alt-link,
+    html.y1-region-ru #crypto-accordion { display: none !important; }
+    html.y1-region-ru .donation-method-card--boosty { display: flex !important; }
+    .donation-method-card img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 22px; }
+    .donation-method-card span { display: flex; flex-direction: column; gap: 2px; }
+    .donation-method-card strong { font-size: .92rem; }
+    .donation-method-card small { color: var(--lumen-muted, #9aa3b5); font-size: .74rem; line-height: 1.25; }
+    .donation-impact-note {
+      margin: 22px 0 0;
+      padding: 16px 18px;
+      border-left: 3px solid #10b981;
+      border-radius: 10px;
+      background: rgba(16,185,129,.08);
+    }
+    .donation-impact-note strong { color: var(--lumen-text, #fff); }
+    .donation-impact-note p { margin: 4px 0 0; color: var(--lumen-muted, #9aa3b5); }
+    .financial-accounting-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .financial-accounting-card {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-height: 126px;
+      padding: 16px;
+      border: 1px solid var(--lumen-card-border, rgba(255,255,255,.14));
+      border-radius: 12px;
+      background: var(--lumen-card-bg, rgba(255,255,255,.05));
+    }
+    .financial-accounting-card--total { border-color: rgba(16,185,129,.55); background: linear-gradient(135deg, rgba(16,185,129,.14), rgba(16,185,129,.04)); }
+    .financial-accounting-card strong { font-size: 1.35rem; color: var(--lumen-text, #fff); }
+    .financial-accounting-card small { color: var(--lumen-muted, #9aa3b5); line-height: 1.4; }
+    .financial-accounting-label { color: var(--lumen-muted, #9aa3b5); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+    .sponsorship-list { margin-top: 18px; }
+    .sponsorship-list h3 { margin-bottom: 6px; }
+    .donor-contributor-key {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin: 12px 0 6px;
+      padding: 7px 11px;
+      border: 1px solid var(--lumen-line, rgba(255,255,255,.14));
+      border-radius: 999px;
+      background: var(--lumen-panel, rgba(255,255,255,.04));
+      color: var(--lumen-muted, #9aa3b5);
+      font-size: .8rem;
+      font-weight: 600;
+    }
+    .contributor-star {
+      color: #f5b942;
+      font-size: 1rem;
+      line-height: 1;
+      text-shadow: 0 0 8px rgba(245,185,66,.35);
+    }
+    .donor-credits-thanks {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 18px;
+      border: 1px solid var(--lumen-line-strong, rgba(255,255,255,.24));
+      border-radius: 999px;
+      background: var(--lumen-panel, rgba(255,255,255,.08));
+      color: var(--lumen-text, #fff);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,.14);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .donor-credits-thanks:hover, .donor-credits-thanks:focus-visible { transform: translateY(-1px); background: var(--lumen-accent, #10b981); border-color: var(--lumen-accent, #10b981); color: var(--lumen-ink, #03140d); outline: none; }
+    .donor-credits-hint { color: var(--lumen-muted, #9aa3b5); font-size: .82rem; }
+    body.donor-credits-open { overflow: hidden; }
+    .donor-credits-overlay { position: fixed; inset: 0; z-index: 10000; overflow: hidden; background: #000; color: #fff; }
+    .donor-credits-overlay[hidden] { display: none; }
+    .donor-credits-stage { box-sizing: border-box; min-height: 100vh; width: min(100%, 1680px); margin: 0 auto; padding: clamp(28px, 5vw, 80px) clamp(20px, 5vw, 90px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .donor-credits-eyebrow { margin: 0 0 12px; color: #10b981; font-size: clamp(.8rem, 1.3vw, 1.1rem); font-weight: 800; letter-spacing: .28em; text-transform: uppercase; }
+    .donor-credits-title { margin: 0; font-size: clamp(2.8rem, 7vw, 7rem); line-height: .95; letter-spacing: -.06em; }
+    .donor-credits-subtitle { max-width: 800px; margin: 24px auto 34px; color: #b8bec9; font-size: clamp(1rem, 1.8vw, 1.45rem); line-height: 1.45; }
+    .donor-credits-names { width: 100%; max-width: 1420px; height: min(48vh, 560px); display: grid; opacity: 1; transition: opacity .45s ease; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 20px); overflow: hidden; padding: 8px 4px; }
+    .donor-credit-entry { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-width: 0; min-height: 0; padding: 8px 5px; }
+    .donor-credit-name { max-width: 100%; overflow-wrap: anywhere; color: #fff; font-size: clamp(1.1rem, 2.5vw, 2.5rem); font-weight: 700; line-height: 1.08; }
+    .donor-credit-amount { color: #10b981; font-size: clamp(.85rem, 1.2vw, 1.15rem); font-weight: 600; }
+    .donor-credits-footer { max-width: 760px; margin: 20px auto 0; color: #8f98a8; font-size: clamp(.85rem, 1.4vw, 1.1rem); line-height: 1.45; }
+    .donor-credits-page-indicator { display: block; margin-top: 5px; color: #687386; font-size: .8em; }
+    .donor-credits-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; align-items: center; }
+    .donor-credits-actions button { min-height: 44px; padding: 10px 17px; border: 1px solid #3a414d; border-radius: 999px; background: #17191d; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+    .donor-credits-actions select { min-height: 44px; padding: 10px 14px; border: 1px solid #3a414d; border-radius: 999px; background: #17191d; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+    .donor-credits-actions .donor-credits-optional { display: none; }
+    body.donor-credits-controls-unlocked .donor-credits-actions .donor-credits-optional { display: inline-flex; }
+    body.donor-credits-controls-hidden .donor-credits-actions { display: none; }
+    .donor-credits-actions button:hover, .donor-credits-actions button:focus-visible, .donor-credits-actions select:hover, .donor-credits-actions select:focus-visible { border-color: #10b981; background: #10b981; color: #03140d; outline: none; }
+  </style>
+<meta property="og:site_name" content="Innioasis 更新程序">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/support_devs.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/support_devs.html">
+  <link rel="alternate" hreflang="de" href="https://innioasis.app/support_devs_de.html">
+  <link rel="alternate" hreflang="ja" href="https://innioasis.app/support_devs_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/support_devs_jp.html">
+  <link rel="alternate" hreflang="es" href="https://innioasis.app/support_devs_es.html">
+  <link rel="alternate" hreflang="fr" href="https://innioasis.app/support_devs_fr.html">
+  <link rel="alternate" hreflang="it" href="https://innioasis.app/support_devs_it.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/support_devs_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/support_devs_pt.html">
+  <link rel="alternate" hreflang="pt-br" href="https://innioasis.app/support_devs_pt-br.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/support_devs_pt-PT.html">
+  <link rel="alternate" hreflang="pt-pt" href="https://innioasis.app/support_devs_pt-pt.html">
+  <link rel="alternate" hreflang="ru" href="https://innioasis.app/support_devs_ru.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/support_devs_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/support_devs_zh.html">
+  <link rel="alternate" hreflang="zh-cn" href="https://innioasis.app/support_devs_zh-cn.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/support_devs_zh-TW.html">
+  <link rel="alternate" hreflang="zh-tw" href="https://innioasis.app/support_devs_zh-tw.html">
+  <link rel="alternate" hreflang="ko" href="https://innioasis.app/support_devs_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/support_devs_kr.html">
+  <link rel="alternate" hreflang="ar" href="https://innioasis.app/support_devs_ar.html">
+  <link rel="alternate" hreflang="nl" href="https://innioasis.app/support_devs_nl.html">
+  <link rel="alternate" hreflang="pl" href="https://innioasis.app/support_devs_pl.html">
+  <link rel="alternate" hreflang="tr" href="https://innioasis.app/support_devs_tr.html">
+  <link rel="alternate" hreflang="uk" href="https://innioasis.app/support_devs_uk.html">
+  <link rel="alternate" hreflang="vi" href="https://innioasis.app/support_devs_vi.html">
+  <link rel="alternate" hreflang="th" href="https://innioasis.app/support_devs_th.html">
+  <link rel="alternate" hreflang="id" href="https://innioasis.app/support_devs_id.html">
+  <link rel="alternate" hreflang="he" href="https://innioasis.app/support_devs_he.html">
+  <link rel="alternate" hreflang="hi" href="https://innioasis.app/support_devs_hi.html">
+  <link rel="alternate" hreflang="cs" href="https://innioasis.app/support_devs_cs.html">
+  <link rel="alternate" hreflang="el" href="https://innioasis.app/support_devs_el.html">
+  <link rel="alternate" hreflang="sv" href="https://innioasis.app/support_devs_sv.html">
+  <link rel="alternate" hreflang="fa" href="https://innioasis.app/support_devs_fa.html">
+  <link rel="alternate" hreflang="da" href="https://innioasis.app/support_devs_da.html">
+  <link rel="alternate" hreflang="fi" href="https://innioasis.app/support_devs_fi.html">
+  <link rel="alternate" hreflang="hu" href="https://innioasis.app/support_devs_hu.html">
+  <link rel="alternate" hreflang="no" href="https://innioasis.app/support_devs_no.html">
+  <link rel="alternate" hreflang="ro" href="https://innioasis.app/support_devs_ro.html">
+  <!-- i18n-hreflang-end -->
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">跳至主要內容</a>
+  <div id="nav-root"></div>
+
+  <main id="main" class="lumen-guide">
+    <header>
+      <p class="lumen-kicker">一點幫助就大有幫助</p>
+      <h1>讓美好的事物繼續下去。</h1>
+      <p class="lead">更新程式 CE 是免費的。它是由那些希望 Innioasis 和 Timmkoo 玩家保持有用的人所建構的。您的支援將支付存檔、伺服器和時間的費用。</p>
+      <div class="lumen-callout" id="community-project" style="margin-top: 18px;">
+        <h2 style="margin-top: 0;">這是一個以人為本的項目。</h2>
+        <p>每一個貢獻都可以幫助某人找到一個可用的固件，嘗試一個新項目，或者讓老玩家活得更久一些。感謝您參與其中。</p>
+      </div>
+      <div class="lumen-actions" style="margin-top: 14px;">
+        <a class="lumen-button lumen-button--primary" href="#donate">做出貢獻</a>
+        <a class="lumen-button" href="#projects-supported">查看您正在協助的項目</a>
+        <a class="lumen-button" href="#supporters">與支持者見面</a>
+      </div>
+    </header>
+
+    <section class="lumen-guide-section" id="donate" style="margin-top: 24px;" data-donations-appeal>
+      <div class="y1-contributor-stream-box" id="unified-donors-feed" style="min-height: 78px; padding: 16px 18px; max-width: 620px; margin-bottom: 16px;" aria-live="polite" data-i18n-skip="true" translate="no">
+        <div class="y1-contributor-stream-line" id="unified-contributor-line" data-i18n-skip="true" translate="no">Loading supporters...</div>
+      </div>
+
+      <div class="y1-developer-profile-wrap" style="margin: 4px 0 10px; display: flex; align-items: center; gap: 14px;">
+        <img class="y1-developer-avatar" id="unified-dev-avatar" src="/assets/developer.png?v=20260831" loading="eager" decoding="async" onerror="if(!this.dataset.t1){this.dataset.t1='1';this.src='/assets/developer.png';}else if(!this.dataset.t2){this.dataset.t2='1';this.src='/assets/developer.png';}else{this.src='https://innioasis.app/assets/developer.png';this.onerror=null;}" alt="瑞安（開發者）" width="54" height="54" style="border: 0; display: block; object-fit: contain;">
+        <div>
+          <h2 class="y1-donate-panel-hook" style="margin: 0; font-size: 1.6rem;">這需要 <span>你</span>.</h2>
+          <small style="color: var(--lumen-muted, #9aa3b5); font-weight: 600;">我們的專案依賴捐款</small>
+        </div>
+      </div>
+
+      <p id="unified-dev-intro"><strong>嗨，我是瑞安。</strong> 我與 Innioasis 一起管理 Innioasis Updater CE、此韌體存檔和主題庫。我自己付錢，所以每個人都可以免費使用。運行它們三個的成本約為 <strong>$200</strong> 一個月，我購買來測試每個版本的播放器都是最重要的，所以任何支援都會有幫助。</p>
+
+      <div class="donation-method-intro">
+        <p class="lumen-kicker">選擇您的幫助方式</p>
+        <h3>無論什麼對你有用。</h3>
+        <p class="donation-method-copy">一杯咖啡、一份一次性禮物，或只是在 Honeygain 上分享 100MB——這一切都加起來了。選擇您最喜歡的，您將直接被帶到那裡。</p>
+        <p class="donation-method-ru-note">在俄羅斯，Boosty 是支持該計畫的方式。</p>
+      </div>
+      <div class="donation-method-grid" aria-label="做出貢獻的方式">
+        <a class="donation-method-card donation-method-card--primary" href="https://ko-fi.com/teamslide" target="_blank" rel="noopener noreferrer"><img src="./assets/icon_kofi.png" data-method-icon="icon_kofi.png" alt=""><span><strong>捐贈於 Ko-fi</strong><small>支持 Ko-fi</small></span></a>
+        <a class="donation-method-card donation-method-card--bmac" href="https://buymeacoffee.com/ryanspecter" target="_blank" rel="noopener noreferrer"><span aria-hidden="true" style="font-size: 1.15rem; line-height: 1;">☕</span><span><strong>Buy Me a Coffee</strong><small>BMAC 支援</small></span></a>
+        <a class="donation-method-card donation-method-card--boosty" href="https://boosty.to/ryanspecter" target="_blank" rel="noopener noreferrer" hidden><img src="./assets/icon_boosty.png" data-method-icon="icon_boosty.png" alt=""><span><strong>捐贈於 Boosty</strong><small>支持 Boosty</small></span></a>
+        <a class="donation-method-card" href="https://paypal.me/RyanSpecter282" target="_blank" rel="noopener noreferrer"><img src="./assets/icon_paypal.png" data-method-icon="icon_paypal.png" alt=""><span><strong>PayPal 捐贈</strong></span></a>
+        <a class="donation-method-card" href="https://revolut.me/rspecter" target="_blank" rel="noopener noreferrer"><img src="./assets/icon_revolut.png" data-method-icon="icon_revolut.png" alt=""><span><strong>Revolut 捐贈</strong></span></a>
+        <a class="donation-method-card" href="https://www.patreon.com/ryanspecter" target="_blank" rel="noopener noreferrer"><img src="./assets/icon_patreon.png" data-method-icon="icon_patreon.png" alt=""><span><strong>Patreon 捐贈</strong></span></a>
+        <button type="button" class="donation-method-card" id="toggle-crypto-btn"><img src="./assets/icon_bitcoin.png" data-method-icon="icon_bitcoin.png" alt=""><span><strong>使用加密貨幣</strong><small>BTC、ETH 或 SHIB</small></span></button>
+      </div>
+      <p class="y1-donate-alt-link" style="margin-top: 10px;">或者 <a href="https://join.honeygain.com/ITSRY2B5D7" target="_blank" rel="noopener noreferrer">Honeygain 免費幫助</a> — 透過共享 100MB 未使用的頻寬賺取 3 美元。</p>
+
+      <div class="crypto-accordion-content" id="crypto-accordion">
+        <div class="crypto-addr-row">
+          <span><strong>Bitcoin (BTC):</strong> <code style="user-select: all;">bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g</code></span>
+        </div>
+        <div class="crypto-addr-row">
+          <span><strong>Ethereum /仲裁/樂觀：</strong> <code style="user-select: all;">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code></span>
+        </div>
+        <div class="crypto-addr-row">
+          <span><strong>柴犬 (ERC-20)：</strong> <code style="user-select: all;">0x5E902083ee1B3A05dd39d824012B39cB10FB80D3</code></span>
+        </div>
+      </div>
+      <div class="donation-impact-note">
+        <strong>小小的貢獻可以帶來真正的改變。</strong>
+        <p>他們將檔案保存在網路上，幫助專案交付，並使得無需付費即可繼續共享這項工作成為可能。</p>
+      </div>
+    </section>
+
+    <!-- Section 1: People and projects your support reaches -->
+    <section class="lumen-guide-section" id="projects-supported">
+      <h2>您支援的人員和項目</h2>
+      <p>您的支持不止於此。它還幫助獨立人士建立 Rockbox、Solar、JJ Launcher、主題和其他出色的小型專案。</p>
+      
+      <div class="supported-projects-grid" id="supported-projects-grid">
+        <!-- Dynamically populated with our sister projects and community grants -->
+      </div>
+    </section>
+
+    <!-- Section 2: Donors & Supporters -->
+    <section class="lumen-guide-section" id="supporters">
+      <a id="donors-honor-roll" style="display:none;" aria-hidden="true"></a>
+      <h2>感謝我們所有的支持者</h2>
+      <p>對所有提供過幫助的人表示適當的感謝。無論您是買了一杯咖啡還是繼續回來，您都是咖啡仍然存在的部分原因。</p>
+      <button type="button" class="donor-credits-thanks" id="open-donor-credits" aria-label="打開全螢幕社區製作人員名單">謝謝</button>
+      <div class="donor-contributor-key" aria-label="貢獻者傳奇">
+        <span class="contributor-star" aria-hidden="true">★</span>
+        <span>頂級支持者——超過一項貢獻或一份禮物，至少是平均水平的兩倍</span>
+      </div>
+
+
+
+      <div class="donations-table-wrap">
+        <table class="donations-table" aria-label="支持者和捐款台賬">
+          <thead>
+            <tr>
+              <th>支持者</th>
+              <th>日期</th>
+            </tr>
+          </thead>
+          <tbody id="donations-table-body" data-i18n-skip="true" translate="no">
+            <tr>
+              <td colspan="2" style="text-align: center; color: var(--lumen-muted);">Loading ledger...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- Section 3: Developer documentation & Ecosystem links -->
+    <section class="lumen-guide-section">
+      <h2>開發者文檔</h2>
+      <p>發布客製化軟體？閱讀 <a href="developers_zh-TW.html">將 Y1 和 Y2 版本新增至更新程式的開發人員指南</a>.</p>
+    </section>
+
+    <section class="lumen-guide-section">
+      <h2>項目連結</h2>
+      <p><a href="https://github.com/rockbox-y1/rockbox" target="_blank" rel="noopener noreferrer">Rockbox Y1</a> · <a href="https://github.com/y1-community/rockbox-y2-rom" target="_blank" rel="noopener noreferrer">Rockbox Y2</a> · <a href="https://github.com/thesolarproject/solar" target="_blank" rel="noopener noreferrer">Solar</a> · <a href="https://themes.innioasis.app/?lang=zh-TW" target="_blank" rel="noopener noreferrer">主題畫廊</a></p>
+    </section>
+  </main>
+
+  <div id="donor-credits-overlay" class="donor-credits-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="donor-credits-title">
+    <div class="donor-credits-stage">
+      <p class="donor-credits-eyebrow">Innioasis Updater CE·學分</p>
+      <h2 class="donor-credits-title" id="donor-credits-title">謝謝你。</h2>
+      <p class="donor-credits-subtitle">這個項目之所以存在，是因為人們選擇提供幫助。對於以下的每一位支持者：感謝您讓檔案、工具和社群不斷發展。</p>
+      <div class="donor-credits-names" id="donor-credits-names" aria-live="polite"><p>正在加載支持者...</p></div>
+      <p class="donor-credits-footer">為 Innioasis 和 Timmkoo 社區精心打造。每一項貢獻，無論大小，都很重要。<span class="donor-credits-page-indicator" id="donor-credits-page-indicator">自動循環命名</span></p>
+      <div class="donor-credits-actions">
+        <label class="donor-credits-optional"><span class="lumen-visually-hidden">導出格式</span><select id="donor-credits-export-format" aria-label="導出格式"><option value="both">風景+人像</option><option value="landscape">僅風景</option><option value="portrait">僅肖像</option></select></label>
+        <button type="button" class="donor-credits-optional" id="save-donor-credits">下載 PNG 套件 (.zip)</button>
+        <button type="button" class="donor-credits-optional" id="enter-donor-fullscreen">進入全螢幕</button>
+        <button type="button" id="close-donor-credits">關閉</button>
+      </div>
+    </div>
+  </div>
+  <div id="footer-root"></div>
+  <div id="support-toolbar-slot"></div>
+  <script src="nav.js?v=20261113cepersona" defer></script>
+  <script src="site-i18n.js?v=20260830" defer></script>
+
+  <script>
+
+  (function () {
+    function _interpolate(str, params) {
+      if (!str || !params) return str;
+      return String(str).replace(/\{([A-Za-z0-9_]+)\}/g, function (match, key) {
+        return Object.prototype.hasOwnProperty.call(params, key) ? params[key] : match;
+      });
+    }
+
+    function _t(str, params) {
+      if (!str) return "";
+      var res = str;
+      if (window.InnioasisLocale && typeof window.InnioasisLocale.translate === "function") {
+        var tr = window.InnioasisLocale.translate(str);
+        if (tr !== undefined && tr !== null && tr !== "") res = tr;
+      }
+      return params ? _interpolate(res, params) : res;
+    }
+    var RU_TIMEZONES = {
+      "europe/moscow": true,
+      "europe/kaliningrad": true,
+      "europe/samara": true,
+      "asia/yekaterinburg": true,
+      "asia/omsk": true,
+      "asia/novosibirsk": true,
+      "asia/krasnoyarsk": true,
+      "asia/irkutsk": true,
+      "asia/yakutsk": true,
+      "asia/vladivostok": true,
+      "asia/magadan": true,
+      "asia/kamchatka": true,
+      "europe/volgograd": true,
+      "europe/kirov": true,
+      "europe/saratov": true,
+      "europe/astrakhan": true,
+      "europe/ulyanovsk": true,
+      "europe/simferopol": true,
+      "asia/tomsk": true,
+      "asia/barnaul": true,
+      "asia/novokuznetsk": true,
+      "asia/chita": true,
+      "asia/sakhalin": true,
+      "asia/srednekolymsk": true,
+      "asia/ust-nera": true,
+      "asia/khandyga": true
+    };
+
+    function detectTerritory() {
+      var locales = [];
+      try {
+        if (navigator.languages && navigator.languages.length) {
+          locales = locales.concat(Array.prototype.slice.call(navigator.languages));
+        }
+        if (navigator.language) locales.push(navigator.language);
+        if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+          var resolved = Intl.DateTimeFormat().resolvedOptions();
+          if (resolved && resolved.locale) locales.push(resolved.locale);
+        }
+      } catch (_) {}
+      for (var i = 0; i < locales.length; i++) {
+        var loc = String(locales[i] || "").replace(/_/g, "-").trim();
+        var parts = loc.split("-");
+        for (var j = 1; j < parts.length; j++) {
+          var sub = parts[j].toUpperCase();
+          if (sub.length === 2 && /^[A-Z]{2}$/.test(sub)) return sub;
+        }
+      }
+      try {
+        if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+          var tz = String((Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || "").toLowerCase();
+          if (RU_TIMEZONES[tz]) return "RU";
+        }
+      } catch (_) {}
+      return "";
+    }
+
+    function isRussianVisitor() {
+      if (detectTerritory() === "RU") return true;
+      try {
+        if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+          var tz = String((Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || "").toLowerCase();
+          if (RU_TIMEZONES[tz]) return true;
+        }
+      } catch (_) {}
+      return false;
+    }
+
+    if (isRussianVisitor()) {
+      document.documentElement.classList.add("y1-region-ru");
+      var boostyCard = document.querySelector(".donation-method-card--boosty");
+      if (boostyCard) boostyCard.hidden = false;
+      document.querySelectorAll(".donation-method-card:not(.donation-method-card--boosty)").forEach(function (el) {
+        el.hidden = true;
+      });
+      var altLink = document.querySelector(".y1-donate-alt-link");
+      if (altLink) altLink.hidden = true;
+    }
+
+    var devImg = document.getElementById("unified-dev-avatar");
+    if (devImg) {
+      var filename = Math.random() < 0.5 ? "developer.png" : "developer_2.png";
+      var fallbackFilename = filename === "developer.png" ? "developer_2.png" : "developer.png";
+      var candidates = [
+        "/assets/" + filename + "?v=20260831",
+        "/" + filename + "?v=20260831",
+        "/assets/" + filename + "?v=20260831",
+        "assets/" + filename + "?v=20260831",
+        "assets/" + filename + "?v=20260831",
+        "https://innioasis.app/assets/" + filename + "?v=20260831",
+        "https://innioasis.app/" + filename + "?v=20260831",
+        "/assets/" + fallbackFilename + "?v=20260831",
+        "/" + fallbackFilename + "?v=20260831",
+        "/assets/" + fallbackFilename + "?v=20260831",
+        "https://innioasis.app/assets/" + fallbackFilename + "?v=20260831"
+      ];
+      var testIdx = 0;
+      function tryNext() {
+        if (testIdx < candidates.length) {
+          devImg.src = candidates[testIdx++];
+        }
+      }
+      devImg.onerror = function () {
+        tryNext();
+      };
+      tryNext();
+    }
+
+    var devIntro = document.getElementById("unified-dev-intro");
+    if (devIntro) {
+      var r = Math.random();
+      if (r < 0.40) {
+        var familyChoices = [
+          "<strong>Hey! I'm Ryan.</strong> I look after Innioasis Updater CE, the Innioasis Firmware Archive and the Themes Gallery, supporting every Innioasis and Timmkoo player, new and old alike. I pay for the servers, the file storage, the web addresses and the players I test each release on, so everything stays free and open for the community.<br><br>Donations cover roughly 15% of what all of that really costs; the rest comes out of my own pocket. Whatever you give funds our device preservation and software archiving efforts, and it directly helps my partner and me raise our family. Thank you so much!",
+          "<strong>Hey there, I'm Ryan.</strong> I build and maintain Innioasis Updater CE, the Themes Gallery and the firmware archive as hobby projects, supporting every Innioasis and Timmkoo player, new and old alike. I pay for the servers, the file storage, the web addresses and the test players out of my own pocket - the players cost more than the servers do - so everyone gets in for free.<br><br>Donations cover about 15% of the real cost, and they directly support my partner and me as we raise our young family. Every contribution makes a real difference to us."
+        ];
+        devIntro.innerHTML = familyChoices[Math.floor(Math.random() * familyChoices.length)];
+      } else {
+        var standardChoices = [
+          "<strong>Hey! I'm Ryan.</strong> I look after Innioasis Updater CE, the Innioasis Firmware Archive and the Themes Gallery, supporting every Innioasis and Timmkoo player, new and old alike. I pay for the servers, the file storage, the web addresses and the players each release is tested on, so everything stays free for everyone.<br><br>Donations cover roughly 15% of what the project costs each month, so any support you can share takes the weight off and keeps the project going for the community.",
+          "<strong>Hey, I'm Ryan.</strong> I built Innioasis Updater CE and the firmware archive so every player always has working software, custom builds and themes, without paywalls or ads. I pay for the servers and web addresses myself each month, and for the players each release is tested on - some of which do not survive the testing.<br><br>If you've found it useful, chipping in covers part of those costs (about 15% of the total today) and keeps the archive online for everyone.",
+          "<strong>Hey! I'm Ryan, and I look after Innioasis Updater CE, the Innioasis Firmware Archive and the Themes Gallery.</strong> I pay for the servers, the upkeep and the test players myself because I love this community and want to keep every tool open to everyone.<br><br>Community contributions come to about 15% of the project's real costs. Any contribution you make goes toward keeping everything online, tested and up to date."
+        ];
+        devIntro.innerHTML = standardChoices[Math.floor(Math.random() * standardChoices.length)];
+      }
+    }
+
+    var toggleCryptoBtn = document.getElementById("toggle-crypto-btn");
+    var cryptoAccordion = document.getElementById("crypto-accordion");
+    if (toggleCryptoBtn && cryptoAccordion) {
+      toggleCryptoBtn.addEventListener("click", function () {
+        var isOpen = cryptoAccordion.classList.toggle("open");
+        toggleCryptoBtn.textContent = isOpen ? "Hide Crypto Options" : "Show Crypto Options (BTC, ETH, SHIB)";
+      });
+    }
+
+    var METHOD_URLS = {
+      "ko-fi": "https://ko-fi.com/teamslide", "kofi": "https://ko-fi.com/teamslide",
+      "bmac": "https://buymeacoffee.com/ryanspecter",
+      "buymeacoffee": "https://buymeacoffee.com/ryanspecter",
+      "buy me a coffee": "https://buymeacoffee.com/ryanspecter",
+      "paypal": "https://paypal.me/RyanSpecter282", "revolut": "https://revolut.me/rspecter",
+      "revolut pay": "https://revolut.me/rspecter", "patreon": "https://www.patreon.com/ryanspecter",
+      "boosty": "https://boosty.to/ryanspecter",
+      "honeygain": "https://join.honeygain.com/ITSRY2B5D7",
+      "bitcoin": "https://www.blockchain.com/explorer/addresses/BTC/bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g",
+      "btc": "https://www.blockchain.com/explorer/addresses/BTC/bc1qv4gjkqczqy4wdl297k7ak5swtkusgaz5au6c6g"
+    };
+
+    function coffeeMethod(method) {
+      var low = String(method || "").toLowerCase().replace(/\s+/g, " ").trim();
+      if (low.indexOf("bmac") !== -1 || low.indexOf("buymeacoffee") !== -1 || low.indexOf("buy me a coffee") !== -1) return "bmac";
+      if (low.indexOf("ko-fi") !== -1 || low.indexOf("kofi") !== -1 || low.indexOf("ko fi") !== -1) return "kofi";
+      return "";
+    }
+
+    function parseDate(s) {
+      if (!s) return null;
+      var raw = String(s).trim();
+      if (!raw) return null;
+      var dt = null;
+      var hasTime = false;
+
+      /* ISO 8601: 2026-11-08T14:32:00Z, 2026-11-08 14:32, 2026-11-08 */
+      var iso = raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ](\d{1,2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?(Z|[+-]\d{2}:?\d{2})?)?$/i);
+      if (iso) {
+        var iy = parseInt(iso[1], 10);
+        var im = parseInt(iso[2], 10) - 1;
+        var id = parseInt(iso[3], 10);
+        if (iso[4] !== undefined) {
+          hasTime = true;
+          var ih = parseInt(iso[4], 10);
+          var imin = parseInt(iso[5], 10);
+          var isec = parseInt(iso[6] || "0", 10);
+          if (iso[7]) {
+            var zone = iso[7].toUpperCase();
+            var utc = Date.UTC(iy, im, id, ih, imin, isec);
+            if (zone !== "Z") {
+              var sign = zone.charAt(0) === "-" ? -1 : 1;
+              var zh = parseInt(zone.substring(1, 3), 10);
+              var zm = parseInt(zone.substring(zone.length - 2), 10);
+              utc -= sign * (zh * 60 + zm) * 60000;
+            }
+            dt = new Date(utc);
+          } else {
+            dt = new Date(iy, im, id, ih, imin, isec);
+          }
+        } else {
+          dt = new Date(iy, im, id);
+        }
+      } else {
+        /* Day-first, as donors.csv has always been written: 08/11/2026 14:32 */
+        var m = raw.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})(?:[\s,T]+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm)?)?$/i);
+        if (!m) return null;
+        var dy = parseInt(m[3], 10);
+        if (dy < 100) dy += dy >= 70 ? 1900 : 2000;
+        if (m[4] !== undefined) {
+          hasTime = true;
+          var dh = parseInt(m[4], 10);
+          var dmin = parseInt(m[5], 10);
+          var dsec = parseInt(m[6] || "0", 10);
+          var ap = String(m[7] || "").toLowerCase();
+          if (ap === "pm" && dh < 12) dh += 12;
+          if (ap === "am" && dh === 12) dh = 0;
+          dt = new Date(dy, parseInt(m[2], 10) - 1, parseInt(m[1], 10), dh, dmin, dsec);
+        } else {
+          dt = new Date(dy, parseInt(m[2], 10) - 1, parseInt(m[1], 10));
+        }
+      }
+      if (!dt || isNaN(dt.getTime())) return null;
+      try { dt.hasTime = hasTime; } catch (_) {}
+      return dt;
+    }
+
+    function getRel(dt) {
+      if (!dt) return "";
+      var now = new Date();
+      var diffMs = now.getTime() - dt.getTime();
+      /* Clock-bearing rows can be described precisely; date-only rows keep the
+         calendar wording they have always used. */
+      if (dt.hasTime) {
+        if (diffMs < 0) diffMs = 0;
+        var mins = Math.floor(diffMs / 60000);
+        if (mins < 1) return _t("just now");
+        if (mins < 60) return mins === 1 ? _t("1 minute ago") : _t("{count} minutes ago", { count: mins });
+        var hrs = Math.floor(diffMs / 3600000);
+        if (hrs < 24) return hrs === 1 ? _t("1 hour ago") : _t("{count} hours ago", { count: hrs });
+      }
+      var startToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var startThat = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
+      var d = Math.round((startToday.getTime() - startThat.getTime()) / 86400000);
+      if (d <= 0) return _t("today");
+      if (d === 1) return _t("yesterday");
+      if (d < 7) return d === 1 ? _t("1 day ago") : _t("{count} days ago", { count: d });
+      if (d < 14) return _t("1 week ago");
+      if (d < 30) {
+        var w = Math.floor(d / 7);
+        return w === 1 ? _t("1 week ago") : _t("{count} weeks ago", { count: w });
+      }
+      if (d < 60) return _t("1 month ago");
+      if (d < 365) {
+        var m = Math.floor(d / 30);
+        return m === 1 ? _t("1 month ago") : _t("{count} months ago", { count: m });
+      }
+      if (d < 730) return _t("1 year ago");
+      var y = Math.floor(d / 365);
+      return y === 1 ? _t("1 year ago") : _t("{count} years ago", { count: y });
+    }
+
+    function formatDonorTimestamp(dt) {
+      if (!dt) return "";
+      try {
+        return dt.toLocaleString(undefined, dt.hasTime
+          ? { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }
+          : { year: "numeric", month: "short", day: "numeric" });
+      } catch (_) {}
+      try { return dt.toLocaleString(); } catch (_) {}
+      return "";
+    }
+
+    function escapeDonorAttr(value) {
+      return String(value == null ? "" : value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    /* The visible text stays short; the title carries the exact local date and
+       time so a reader can see precisely when the donation was made. */
+    function donorTimeHTML(dt) {
+      var rel = getRel(dt);
+      if (!rel) return "";
+      var stamp = formatDonorTimestamp(dt);
+      if (!stamp) return " · " + rel;
+      return ' · <span class="y1-donor-time" title="' + escapeDonorAttr(stamp) + '">' + rel + '</span>';
+    }
+
+    function parseCSV(text) {
+      var lines = text.trim().split("\n");
+      if (lines.length < 2) return [];
+      var results = [];
+      for (var i = 1; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (!line) continue;
+        var parts = [];
+        var inQuotes = false, cur = "";
+        for (var c = 0; c < line.length; c++) {
+          var ch = line[c];
+          if (ch === '"') { inQuotes = !inQuotes; }
+          else if (ch === ',' && !inQuotes) { parts.push(cur.trim()); cur = ""; }
+          else { cur += ch; }
+        }
+        parts.push(cur.trim());
+        if (parts.length >= 5) {
+          var amt = parseFloat(parts[1].replace(/[$£€\s,]/g, "")) || 0;
+          results.push({
+            name: (parts[0] || "").trim(),
+            amount: amt,
+            dateStr: parts[2],
+            dt: parseDate(parts[2]),
+            url: parts[3],
+            method: parts[4],
+            message: parts.length > 5 ? parts[5] : ""
+          });
+        }
+      }
+      return results;
+    }
+
+    var ANONYMOUS_SUPPORTER_NAMES = { "": true, "supporter": true, "supporters": true, "a supporter": true, "top supporter": true, "a top supporter": true, "someone": true, "anonymous": true, "anon": true, "none": true, "n/a": true, "unknown": true, "null": true };
+    function isAnonymous(n) {
+      var low = String(n == null ? "" : n).toLowerCase().replace(/\s+/g, " ").trim();
+      if (ANONYMOUS_SUPPORTER_NAMES[low]) return true;
+      return low.indexOf("supporter") === 0 || low.indexOf("anonymous") === 0 || low.indexOf("someone") === 0;
+    }
+
+    function isInnioasisCorporate(n) {
+      if (!n) return false;
+      var low = n.toLowerCase().trim();
+      return low === "innioasis" || low.indexOf("innioasis") === 0;
+    }
+
+    function cleanSupporterName(name, isTop) {
+      var raw = String(name || "").trim();
+      var clean = raw.replace(/^(?:(?:regular|top)\s+(?:supporters?|contributors?)\s*:?[\s-]*)+/i, "").trim();
+      if (isAnonymous(clean)) {
+        return isTop ? "A top supporter" : "A supporter";
+      }
+      return clean || (isTop ? "A top supporter" : "A supporter");
+    }
+
+    function contributorLabel(name, top) {
+      var cleanName = cleanSupporterName(name, top);
+      var label = top ? "Top Supporter" : "Supporter";
+      return /(?:\band\b|[+&])/i.test(cleanName) ? label + "s" : label;
+    }
+
+    function getTopSupporterGroups(donations) {
+      var groups = {};
+      var amounts = [];
+      donations.forEach(function (d) {
+        var name = (d.name || "").trim();
+        if (d.amount <= 0 || isAnonymous(name) || isInnioasisCorporate(name)) return;
+        var key = name.toLowerCase();
+        if (!groups[key]) groups[key] = { name: name, items: [], total: 0, latestDt: null };
+        groups[key].items.push(d);
+        groups[key].total += d.amount;
+        amounts.push(d.amount);
+        if (!groups[key].latestDt || (d.dt && d.dt > groups[key].latestDt)) groups[key].latestDt = d.dt;
+      });
+      var average = amounts.length ? amounts.reduce(function (sum, amount) { return sum + amount; }, 0) / amounts.length : 0;
+      return Object.keys(groups).map(function (key) {
+        var group = groups[key];
+        group.items.sort(function (a, b) {
+          return (a.dt ? a.dt.getTime() : 0) - (b.dt ? b.dt.getTime() : 0);
+        });
+        return group;
+      }).filter(function (group) {
+        return group.items.length >= 2 || group.items.some(function (item) { return item.amount >= average * 2; });
+      }).sort(function (a, b) {
+        var totalOrder = b.total - a.total;
+        if (totalOrder) return totalOrder;
+        return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0);
+      });
+    }
+
+    var donorCreditsEntries = [];
+    var donorCreditsPageIndex = 0;
+    var donorCreditsPageTimer = null;
+
+    function donorCreditsLayout(format) {
+      return format === "portrait"
+        ? { width: 1080, height: 1920, columns: 2, rows: 7 }
+        : { width: 1920, height: 1080, columns: 5, rows: 4 };
+    }
+
+    function donorCreditsPageCount(format) {
+      var layout = donorCreditsLayout(format);
+      return Math.max(1, Math.ceil(donorCreditsEntries.length / (layout.columns * layout.rows)));
+    }
+
+    function donorCreditsAmount(entry) {
+      if (entry.amountLabel) return entry.amountLabel;
+      var amount = "$" + (entry.total % 1 === 0 ? entry.total.toFixed(0) : entry.total.toFixed(2));
+      return amount + (entry.count > 1 ? " · " + entry.count + " contributions" : "");
+    }
+
+    function renderDonorCreditsPage(pageIndex, format) {
+      var namesEl = document.getElementById("donor-credits-names");
+      if (!namesEl) return;
+      var layout = donorCreditsLayout(format);
+      var pageCount = donorCreditsPageCount(format);
+      namesEl.style.opacity = "0";
+      var slots = layout.columns * layout.rows;
+      donorCreditsPageIndex = pageCount > 1 ? pageIndex % pageCount : 0;
+      namesEl.style.gridTemplateColumns = "repeat(" + layout.columns + ", minmax(0, 1fr))";
+      namesEl.style.gridTemplateRows = "repeat(" + layout.rows + ", minmax(0, 1fr))";
+      namesEl.innerHTML = "";
+
+      var pageEntries = donorCreditsEntries.slice(donorCreditsPageIndex * slots, (donorCreditsPageIndex + 1) * slots);
+      if (!pageEntries.length) {
+        namesEl.innerHTML = '<p class="donor-credits-footer">Waiting for supporters to appear.</p>';
+      } else {
+        pageEntries.forEach(function (entry) {
+          var item = document.createElement("div");
+          item.className = "donor-credit-entry";
+          var nameEl = document.createElement("span");
+          nameEl.className = "donor-credit-name";
+          nameEl.textContent = entry.name;
+          item.appendChild(nameEl);
+          namesEl.appendChild(item);
+        });
+      }
+
+      requestAnimationFrame(function () { namesEl.style.opacity = "1"; });
+      var indicator = document.getElementById("donor-credits-page-indicator");
+      if (indicator) {
+        indicator.textContent = pageCount > 1
+          ? "Page " + (donorCreditsPageIndex + 1) + " of " + pageCount + " · Names cycle automatically"
+          : "Names cycle automatically";
+      }
+    }
+
+    function startDonorCreditsCycle() {
+      if (donorCreditsPageTimer) clearInterval(donorCreditsPageTimer);
+      var format = window.innerHeight > window.innerWidth ? "portrait" : "landscape";
+      var pageCount = donorCreditsPageCount(format);
+      renderDonorCreditsPage(donorCreditsPageIndex, format);
+      if (pageCount > 1) {
+        donorCreditsPageTimer = setInterval(function () {
+          renderDonorCreditsPage(donorCreditsPageIndex + 1, format);
+        }, 6000);
+      }
+    }
+
+    function stopDonorCreditsCycle() {
+      if (donorCreditsPageTimer) clearInterval(donorCreditsPageTimer);
+      donorCreditsPageTimer = null;
+    }
+
+    function renderDonorCredits(donations) {
+      var groups = {};
+      var anonymousSeen = 0;
+      donations.forEach(function (d) {
+        var name = (d.name || "").trim();
+        if (d.amount <= 0 || isInnioasisCorporate(name)) return;
+        if (isAnonymous(name)) {
+          anonymousSeen += 1;
+          groups["__anonymous_" + anonymousSeen] = {
+            name: cleanSupporterName(name),
+            total: d.amount,
+            count: 1,
+            latestDt: d.dt
+          };
+          return;
+        }
+        var key = name.toLowerCase();
+        if (!groups[key]) groups[key] = { name: cleanSupporterName(name), total: 0, count: 0, latestDt: null };
+        groups[key].total += d.amount;
+        groups[key].count += 1;
+        if (!groups[key].latestDt || (d.dt && d.dt > groups[key].latestDt)) groups[key].latestDt = d.dt;
+      });
+
+      var topKeys = {};
+      getTopSupporterGroups(donations).forEach(function (group) { topKeys[group.name.toLowerCase()] = true; });
+      var topEntries = [];
+      var otherEntries = [];
+      Object.keys(groups).forEach(function (key) {
+        if (key.indexOf("__anonymous_") !== 0 && topKeys[key]) topEntries.push(groups[key]);
+        else otherEntries.push(groups[key]);
+      });
+      var chronologicalEntries = topEntries.concat(otherEntries);
+      chronologicalEntries.sort(function (a, b) {
+        return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0) ||
+          a.name.localeCompare(b.name);
+      });
+      donorCreditsEntries = chronologicalEntries;
+
+      var overlay = document.getElementById("donor-credits-overlay");
+      if (overlay && !overlay.hidden) startDonorCreditsCycle();
+    }
+
+    function wrapCanvasText(ctx, text, maxWidth) {
+      var words = String(text).split(/\\s+/);
+      var lines = [];
+      var line = "";
+      words.forEach(function (word) {
+        var candidate = line ? line + " " + word : word;
+        if (line && ctx.measureText(candidate).width > maxWidth) {
+          lines.push(line);
+          line = word;
+        } else {
+          line = candidate;
+        }
+      });
+      if (line) lines.push(line);
+      return lines.length ? lines : [""];
+    }
+
+    function drawDonorCreditsCanvas(format, pageIndex) {
+      var layout = donorCreditsLayout(format);
+      var canvas = document.createElement("canvas");
+      canvas.width = layout.width;
+      canvas.height = layout.height;
+      var ctx = canvas.getContext("2d");
+      if (!ctx) return null;
+      var portrait = format === "portrait";
+      var margin = portrait ? 72 : 110;
+      var pageCount = donorCreditsPageCount(format);
+      var slots = layout.columns * layout.rows;
+      var entries = donorCreditsEntries.slice(pageIndex * slots, (pageIndex + 1) * slots);
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "alphabetic";
+
+      ctx.fillStyle = "#10b981";
+      ctx.font = "800 " + (portrait ? 22 : 24) + "px Arial, sans-serif";
+      ctx.fillText("INNIOASIS UPDATER CE · CREDITS", layout.width / 2, portrait ? 112 : 86);
+      ctx.fillStyle = "#fff";
+      ctx.font = "800 " + (portrait ? 88 : 92) + "px Arial, sans-serif";
+      ctx.fillText("Thank you.", layout.width / 2, portrait ? 250 : 190);
+
+      ctx.fillStyle = "#b8bec9";
+      ctx.font = "400 " + (portrait ? 27 : 30) + "px Arial, sans-serif";
+      var subtitle = wrapCanvasText(ctx, "This project is here because people chose to help. Thank you for keeping the archive, the tools, and the community moving.", layout.width - margin * 2);
+      subtitle.forEach(function (line, index) {
+        ctx.fillText(line, layout.width / 2, (portrait ? 330 : 270) + index * (portrait ? 38 : 40));
+      });
+
+      var gridTop = portrait ? 530 : 390;
+      var gridBottom = layout.height - (portrait ? 180 : 145);
+      var rowHeight = (gridBottom - gridTop) / layout.rows;
+      var columnWidth = (layout.width - margin * 2) / layout.columns;
+      entries.forEach(function (entry, index) {
+        var col = Math.floor(index / layout.rows);
+        var row = index % layout.rows;
+        var centerX = margin + columnWidth * col + columnWidth / 2;
+        var centerY = gridTop + rowHeight * row + rowHeight / 2;
+        var nameFontSize = portrait ? 37 : 43;
+        ctx.font = "700 " + nameFontSize + "px Arial, sans-serif";
+        while (nameFontSize > 22 && ctx.measureText(entry.name).width > columnWidth * .82) {
+          nameFontSize -= 2;
+          ctx.font = "700 " + nameFontSize + "px Arial, sans-serif";
+        }
+        var nameLines = wrapCanvasText(ctx, entry.name, columnWidth * .82);
+        var nameLineHeight = nameFontSize * 1.08;
+        var totalHeight = nameLines.length * nameLineHeight;
+        var firstBaseline = centerY - totalHeight / 2 + nameFontSize;
+        ctx.fillStyle = "#fff";
+        ctx.font = "700 " + nameFontSize + "px Arial, sans-serif";
+        nameLines.forEach(function (line, lineIndex) {
+          ctx.fillText(line, centerX, firstBaseline + lineIndex * nameLineHeight);
+        });
+      });
+
+      ctx.fillStyle = "#8f98a8";
+      ctx.font = "400 " + (portrait ? 19 : 22) + "px Arial, sans-serif";
+      ctx.fillText("Page " + (pageIndex + 1) + " of " + pageCount + " · Every contribution matters.", layout.width / 2, layout.height - (portrait ? 76 : 58));
+      return canvas;
+    }
+
+    function canvasBytes(canvas) {
+      var base64 = canvas.toDataURL("image/png").split(",")[1];
+      var binary = atob(base64);
+      var bytes = new Uint8Array(binary.length);
+      for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      return bytes;
+    }
+
+    function zipCrc32(bytes) {
+      var crc = 0xffffffff;
+      for (var i = 0; i < bytes.length; i++) {
+        crc ^= bytes[i];
+        for (var bit = 0; bit < 8; bit++) crc = (crc >>> 1) ^ ((crc & 1) ? 0xedb88320 : 0);
+      }
+      return (crc ^ 0xffffffff) >>> 0;
+    }
+
+    function zipBytes(files) {
+      var encoder = new TextEncoder();
+      var localParts = [];
+      var centralParts = [];
+      var offset = 0;
+      function concat(parts) {
+        var length = parts.reduce(function (sum, part) { return sum + part.length; }, 0);
+        var result = new Uint8Array(length);
+        var at = 0;
+        parts.forEach(function (part) { result.set(part, at); at += part.length; });
+        return result;
+      }
+      function header(size, signature) {
+        var bytes = new Uint8Array(size);
+        new DataView(bytes.buffer).setUint32(0, signature, true);
+        return bytes;
+      }
+      function put16(view, offsetValue, value) { view.setUint16(offsetValue, value, true); }
+      function put32(view, offsetValue, value) { view.setUint32(offsetValue, value >>> 0, true); }
+
+      files.forEach(function (file) {
+        var name = encoder.encode(file.name);
+        var data = file.data;
+        var crc = zipCrc32(data);
+        var local = header(30 + name.length, 0x04034b50);
+        var localView = new DataView(local.buffer);
+        put16(localView, 4, 20); put16(localView, 6, 0); put16(localView, 8, 0);
+        put32(localView, 14, crc); put32(localView, 18, data.length); put32(localView, 22, data.length);
+        put16(localView, 26, name.length); put16(localView, 28, 0); local.set(name, 30);
+        localParts.push(local, data);
+
+        var central = header(46 + name.length, 0x02014b50);
+        var centralView = new DataView(central.buffer);
+        put16(centralView, 4, 20); put16(centralView, 6, 20); put16(centralView, 8, 0); put16(centralView, 10, 0);
+        put32(centralView, 16, crc); put32(centralView, 20, data.length); put32(centralView, 24, data.length);
+        put16(centralView, 28, name.length); put16(centralView, 30, 0); put16(centralView, 32, 0); put16(centralView, 34, 0); put16(centralView, 36, 0);
+        put32(centralView, 38, 0); put32(centralView, 42, offset); central.set(name, 46);
+        centralParts.push(central);
+        offset += local.length + data.length;
+      });
+
+      var localData = concat(localParts);
+      var centralData = concat(centralParts);
+      var end = header(22, 0x06054b50);
+      var endView = new DataView(end.buffer);
+      put16(endView, 8, files.length); put16(endView, 10, files.length);
+      put32(endView, 12, centralData.length); put32(endView, 16, localData.length); put16(endView, 20, 0);
+      return concat([localData, centralData, end]);
+    }
+
+    function downloadDonorCreditsImage() {
+      if (!donorCreditsEntries.length) return;
+      var choice = (document.getElementById("donor-credits-export-format") || {}).value || "both";
+      var formats = choice === "both" ? ["landscape", "portrait"] : [choice];
+      var files = [];
+      formats.forEach(function (format) {
+        var pageCount = donorCreditsPageCount(format);
+        for (var page = 0; page < pageCount; page++) {
+          var canvas = drawDonorCreditsCanvas(format, page);
+          if (canvas) files.push({ name: "innioasis-credits-" + format + "-" + String(page + 1).padStart(2, "0") + ".png", data: canvasBytes(canvas) });
+        }
+      });
+      var blob = new Blob([zipBytes(files)], { type: "application/zip" });
+      var link = document.createElement("a");
+      link.download = "innioasis-credits-png-pack.zip";
+      link.href = URL.createObjectURL(blob);
+      link.click();
+      setTimeout(function () { URL.revokeObjectURL(link.href); }, 1000);
+    }
+
+    function setupDonorCredits() {
+      var overlay = document.getElementById("donor-credits-overlay");
+      var openButton = document.getElementById("open-donor-credits");
+      var closeButton = document.getElementById("close-donor-credits");
+      var saveButton = document.getElementById("save-donor-credits");
+      var fullscreenButton = document.getElementById("enter-donor-fullscreen");
+      var browserMode = /(?:^|[?&])(?:thank-you|credits)=(?:1|true|yes)(?:&|$)/i.test(window.location.search);
+      var controlsUnlocked = false;
+      var controlsHidden = false;
+      if (!overlay || !openButton) return;
+      function setAllControlsHidden(hidden) {
+        controlsHidden = !!hidden;
+        document.body.classList.toggle("donor-credits-controls-hidden", controlsHidden);
+        if (controlsHidden) setOptionalControlsVisible(false);
+      }
+      function setOptionalControlsVisible(visible) {
+        controlsUnlocked = !!visible;
+        document.body.classList.toggle("donor-credits-controls-unlocked", controlsUnlocked);
+      }
+      function close() {
+        stopDonorCreditsCycle();
+        overlay.hidden = true;
+        setAllControlsHidden(false);
+        setOptionalControlsVisible(false);
+        document.body.classList.remove("donor-credits-open");
+        if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+        openButton.focus();
+      }
+      function openCreditsScreen(requestFullscreen) {
+        setAllControlsHidden(false);
+        setOptionalControlsVisible(false);
+        overlay.hidden = false;
+        document.body.classList.add("donor-credits-open");
+        startDonorCreditsCycle();
+        if (requestFullscreen && overlay.requestFullscreen) overlay.requestFullscreen().catch(function () {});
+        if (closeButton && !browserMode) closeButton.focus();
+      }
+
+      if (browserMode) {
+        openCreditsScreen(false);
+      } else {
+        openButton.addEventListener("click", function () {
+          openCreditsScreen(true);
+        });
+      }
+      if (closeButton) closeButton.addEventListener("click", close);
+      if (saveButton) saveButton.addEventListener("click", downloadDonorCreditsImage);
+      if (fullscreenButton) fullscreenButton.addEventListener("click", function () {
+        if (overlay.requestFullscreen) overlay.requestFullscreen().catch(function () {});
+      });
+      document.addEventListener("keydown", function (event) {
+        if (overlay.hidden) return;
+        if (event.key === "Escape") {
+          close();
+        } else if ((event.key || "").toLowerCase() === "h") {
+          setAllControlsHidden(!controlsHidden);
+          event.preventDefault();
+        } else if (!controlsHidden && (event.key || "").toLowerCase() === "o") {
+          setOptionalControlsVisible(!controlsUnlocked);
+          event.preventDefault();
+        }
+      });
+      window.addEventListener("resize", function () {
+        if (!overlay.hidden) startDonorCreditsCycle();
+      });
+    }
+
+    setupDonorCredits();
+
+    function makeTable(text, asFloat) {
+      var parts = String(text || "").trim().split(/\s+/);
+      var map = {};
+      for (var i = 0; i < parts.length - 1; i += 2) {
+        map[parts[i]] = asFloat ? parseFloat(parts[i + 1]) : parts[i + 1];
+      }
+      return map;
+    }
+
+    var FX_BAKED = makeTable(
+      "USD 1.000 EUR 0.8934 GBP 0.7454 JPY 158.4 CNY 6.684 INR 94.83 AUD 1.434 CAD 1.399 " +
+      "CHF 0.8200 SEK 9.791 NOK 9.281 DKK 6.680 PLN 3.945 CZK 21.76 HUF 325.9 RON 4.772 " +
+      "BGN 1.748 TRY 50.04 BRL 5.486 MXN 18.74 ARS 1550 CLP 978.1 COP 3221 PEN 3.465 " +
+      "ZAR 16.62 NGN 1346 KES 130.0 EGP 55.37 ILS 3.164 AED 3.6725 SAR 3.750 QAR 3.640 " +
+      "KWD 0.3112 BHD 0.3760 OMR 0.3845 JOD 0.7090 HKD 7.846 SGD 1.281 TWD 32.77 " +
+      "KRW 1344 THB 33.76 MYR 4.077 IDR 18140 PHP 63.52 VND 25769 PKR 276.5 BDT 124.5 " +
+      "LKR 332.4 NPR 151.7 UAH 45.68 RUB 81.42 KZT 452.7 UZS 11911 GEL 2.595 AMD 360.2 " +
+      "AZN 1.701 MAD 9.823 TND 3.004 DZD 136.0 GHS 11.68 TZS 2640 UGX 4092 RWF 1479 " +
+      "ETB 161.7 MZN 63.75 ZMW 20.26 BWP 14.09 MUR 47.58 ISK 121.7 HRK 6.732 RSD 108.0 " +
+      "BAM 1.748 MKD 61.50 ALL 92.50 MDL 17.80 BYN 3.200 XPF 119.3 XOF 655.96 XAF 655.96 " +
+      "CDF 2900 AOA 950.0 GMD 73.00 GNF 8700 SLE 22.80 LRD 200.0 SDG 600.0 LYD 6.600 " +
+      "SOS 570.0 NAD 16.62 LSL 16.62 SZL 16.62 MWK 1750 MGA 4600 SCR 14.50 CVE 100.4 " +
+      "BTN 94.83 MMK 2100 KHR 4075 LAK 21500 MNT 3400 MOP 8.080 BND 1.281 MVR 15.40 " +
+      "AFN 65.00 PGK 4.200 FJD 2.240 SBD 8.500 VUV 120.0 WST 2.700 TOP 2.350 BOB 6.900 " +
+      "PYG 7300 UYU 40.00 VES 60.00 CRC 500.0 PAB 1.000 GTQ 7.700 HNL 25.00 NIO 36.80 " +
+      "DOP 60.00 CUP 24.00 JMD 157.0 TTD 6.800 BBD 2.000 BSD 1.000 BZD 2.000 GYD 209.0 " +
+      "SRD 36.00 HTG 130.0 IRR 42000 IQD 1310 LBP 89500 SYP 13000 YER 250.0 TMT 3.500 " +
+      "KGS 87.00 TJS 10.80 ZWL 360.0 ERN 15.00 DJF 178.0 BIF 2900 KMF 440.0 MRU 39.60 " +
+      "STN 22.00 SSP 1300 XCD 2.700 AWG 1.790 ANG 1.800 BMD 1.000 KYD 0.830 FKP 0.7454 " +
+      "GIP 0.7454",
+      true
+    );
+
+    var FX_ZERO = {};
+    "JPY KRW VND IDR CLP ISK HUF PYG UGX RWF XAF XOF XPF KMF DJF GNF BIF VUV MGA".split(" ").forEach(function (c) {
+      FX_ZERO[c] = true;
+    });
+
+    var FX_SYM = makeTable(
+      "USD $ EUR € GBP £ JPY ¥ CNY ¥ INR ₹ AUD A$ CAD CA$ CHF CHF SEK kr NOK kr DKK kr " +
+      "PLN zł CZK Kč HUF Ft RON lei BGN лв TRY ₺ BRL R$ MXN MX$ ARS AR$ CLP CL$ COP COL$ " +
+      "PEN S/ ZAR R NGN ₦ KES KSh EGP E£ ILS ₪ AED د.إ SAR ﷼ QAR ﷼ KWD د.ك BHD د.ب " +
+      "OMR ﷼ JOD د.ا HKD HK$ SGD S$ TWD NT$ KRW ₩ THB ฿ MYR RM IDR Rp PHP ₱ VND ₫ " +
+      "PKR Rs BDT ৳ LKR Rs NPR Rs UAH ₴ RUB ₽ KZT ₸ UZS soʻm GEL ₾ AMD ֏ AZN ₼ MAD DH " +
+      "TND DT DZD DA GHS ₵ TZS TSh UGX USh RWF FRw ETB Br MZN MT ZMW ZK BWP P MUR Rs " +
+      "ISK kr HRK € RSD дин BAM KM MKD ден ALL L MDL L BYN Br XPF F XOF FCFA XAF FCFA " +
+      "CDF FC AOA Kz GMD D GNF FG SLE Le LRD L$ SDG ج.س LYD ل.د SOS Sh NAD N$ LSL L " +
+      "SZL E MWK MK MGA Ar SCR ₨ CVE Esc BTN Nu. MMK K KHR ៛ LAK ₭ MNT ₮ MOP MOP$ " +
+      "BND B$ MVR Rf AFN ؋ PGK K FJD FJ$ SBD SI$ VUV VT WST WS$ TOP T$ BOB Bs PYG ₲ " +
+      "UYU $U VES Bs. CRC ₡ PAB B/. GTQ Q HNL L NIO C$ DOP RD$ CUP $ JMD J$ TTD TT$ " +
+      "BBD Bds$ BSD B$ BZD BZ$ GYD G$ SRD Sr$ HTG G IQD ع.د LBP ل.ل SYP £ YER ﷼ " +
+      "TMT m KGS сом TJS SM ZWL Z$ ERN Nfk DJF Fdj BIF FBu KMF CF MRU UM STN Db " +
+      "SSP £ XCD EC$ AWG ƒ ANG ƒ KYD CI$ FKP £ GIP £",
+      false
+    );
+
+    var FX_REGION = makeTable(
+      "US USD GB GBP IE EUR FR EUR DE EUR AT EUR BE EUR NL EUR LU EUR ES EUR PT EUR IT EUR " +
+      "GR EUR FI EUR EE EUR LV EUR LT EUR CY EUR MT EUR SK EUR SI EUR HR EUR AD EUR MC EUR " +
+      "SM EUR VA EUR XK EUR ME EUR NO NOK SE SEK DK DKK IS ISK CH CHF LI CHF PL PLN CZ CZK " +
+      "HU HUF RO RON BG BGN RS RSD BA BAM MK MKD AL ALL MD MDL UA UAH BY BYN RU RUB TR TRY " +
+      "GE GEL AM AMD AZ AZN KZ KZT UZ UZS KG KGS TJ TJS TM TMT CA CAD MX MXN BR BRL AR ARS " +
+      "CL CLP CO COP PE PEN UY UYU PY PYG BO BOB VE VES EC USD SV USD PA PAB GT GTQ HN HNL " +
+      "NI NIO CR CRC DO DOP CU CUP JM JMD TT TTD BB BBD BS BSD BZ BZD GY GYD SR SRD HT HTG " +
+      "PR USD IL ILS PS ILS AE AED SA SAR QA QAR KW KWD BH BHD OM OMR JO JOD LB LBP IQ IQD " +
+      "IR IRR SY SYP YE YER EG EGP MA MAD TN TND DZ DZD LY LYD SD SDG ET ETB ER ERN DJ DJF " +
+      "SO SOS KE KES TZ TZS UG UGX RW RWF BI BIF CD CDF CG XAF GA XAF CM XAF CF XAF TD XAF " +
+      "NE XOF ML XOF BF XOF SN XOF CI XOF TG XOF BJ XOF GW XOF GM GMD GN GNF SL SLE LR LRD " +
+      "GH GHS NG NGN ZA ZAR NA NAD BW BWP LS LSL SZ SZL ZW ZWL MZ MZN ZM ZMW MW MWK MU MUR " +
+      "SC SCR MG MGA KM KMF AO AOA CV CVE ST STN MR MRU SS SSP JP JPY CN CNY HK HKD MO MOP " +
+      "TW TWD KR KRW SG SGD MY MYR TH THB ID IDR PH PHP VN VND IN INR PK PKR BD BDT LK LKR " +
+      "NP NPR BT BTN MM MMK KH KHR LA LAK MN MNT BN BND MV MVR AU AUD NZ NZD PG PGK FJ FJD " +
+      "SB SBD VU VUV WS WST TO TOP NC XPF PF XPF",
+      false
+    );
+
+    var FX_CACHE_KEY = "y1_fx_rates_v1";
+    var fxRates = {};
+    try {
+      var rawFx = localStorage.getItem(FX_CACHE_KEY);
+      if (rawFx) {
+        var parsedFx = JSON.parse(rawFx);
+        if (parsedFx && parsedFx.rates && typeof parsedFx.rates === "object") fxRates = parsedFx.rates;
+      }
+    } catch (_) {}
+
+    function detectCurrencyCode() {
+      var region = detectTerritory();
+      if (region && FX_REGION[region]) return FX_REGION[region];
+      try {
+        if (typeof Intl !== "undefined" && Intl.DateTimeFormat) {
+          var tz = String((Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || "").toLowerCase();
+          if (tz.indexOf("tokyo") !== -1) return "JPY";
+          if (tz.indexOf("london") !== -1) return "GBP";
+          if (tz.indexOf("berlin") !== -1 || tz.indexOf("paris") !== -1 || tz.indexOf("rome") !== -1 || tz.indexOf("madrid") !== -1 || tz.indexOf("amsterdam") !== -1) return "EUR";
+        }
+      } catch (_) {}
+      return "USD";
+    }
+
+    function fxSymbol(code) {
+      code = String(code || "USD").toUpperCase();
+      return FX_SYM[code] || (code + "\u00a0");
+    }
+
+    function fxRate(code) {
+      code = String(code || "USD").toUpperCase();
+      var r = Number(fxRates[code] || FX_BAKED[code] || 1.0);
+      return (isFinite(r) && r > 0) ? r : 1.0;
+    }
+
+    function fxUnit(code) {
+      code = String(code || "USD").toUpperCase();
+      var r = fxRate(code);
+      if (FX_ZERO[code] || r >= 10) return 1.0;
+      return 0.01;
+    }
+
+    function fxLocal(usd, code) {
+      var q = fxUnit(code);
+      return Math.round((Number(usd || 0) * fxRate(code)) / q) * q;
+    }
+
+    function fxGoal(usd, code) {
+      var r = fxRate(code);
+      var value = Number(usd || 0) * r;
+      if (r >= 10) return Math.round(value);
+      return Math.round(value * 100) / 100;
+    }
+
+    function fxShare(raised, target) {
+      if (!(target > 0)) return 0.0;
+      return Math.min(100.0, Math.max(0.0, (Number(raised) / Number(target)) * 100.0));
+    }
+
+    var MONTHLY_TARGET = 200.0;
+    var WEEKLY_TARGET = MONTHLY_TARGET / 4;
+    var DAILY_TARGET = MONTHLY_TARGET / 20;
+    /* The ladder is written in the currency the reader sees: a £50 weekly goal
+       is reached at £50, however many dollars that is today. Currencies whose
+       unit sits close to the dollar (euro, pound, franc, Canadian and
+       Australian dollars, the dollar pegs) use those same round rungs. An
+       inflated, non-decimal or far-pegged currency keeps the dollar ladder
+       converted at the live rate, because "10 of them" would be a few pence. */
+    var LADDER_COMPACT_MIN_RATE = 0.5;
+    var LADDER_COMPACT_MAX_RATE = 1.6;
+
+    function fundingTargets(code) {
+      code = String(code || "USD").toUpperCase();
+      var rate = fxRate(code);
+      if (!FX_ZERO[code] && rate >= LADDER_COMPACT_MIN_RATE && rate <= LADDER_COMPACT_MAX_RATE) {
+        return { daily: DAILY_TARGET, weekly: WEEKLY_TARGET, monthly: MONTHLY_TARGET, compact: true };
+      }
+      return {
+        daily: fxGoal(DAILY_TARGET, code),
+        weekly: fxGoal(WEEKLY_TARGET, code),
+        monthly: fxGoal(MONTHLY_TARGET, code),
+        compact: false
+      };
+    }
+
+    function fundingGoalView(donations, monthTotal, now) {
+      now = now || new Date();
+      var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+      var dayOfMonth = now.getDate();
+      var starts = {
+        monthly: new Date(now.getFullYear(), now.getMonth(), 1),
+        weekly: new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7)),
+        daily: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+        rolling: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6)
+      };
+      function raisedSince(start) {
+        var total = 0;
+        (donations || []).forEach(function (d) {
+          if (!d || !d.dt || !(d.amount > 0)) return;
+          if (d.dt >= start && d.dt <= now) total += d.amount;
+        });
+        return total;
+      }
+      var monthRaised = Math.max(monthTotal || 0, raisedSince(starts.monthly));
+      var raisedBy = { monthly: monthRaised, weekly: raisedSince(starts.weekly), daily: raisedSince(starts.daily) };
+      var code = detectCurrencyCode();
+      var targets = fundingTargets(code);
+      /* Compare the figures the reader can see. Converting the rungs to
+         dollars instead let a £37.27 week count as "target met" while the
+         page promised a £50 one, so UK and euro readers lost it early. */
+      var shownBy = {
+        monthly: fxLocal(raisedBy.monthly, code),
+        weekly: fxLocal(raisedBy.weekly, code),
+        daily: fxLocal(raisedBy.daily, code)
+      };
+      var scope = null;
+      var metScope = null;
+      var dailyMet = shownBy.daily >= targets.daily;
+      var weeklyMet = shownBy.weekly >= targets.weekly;
+      /* The month's own figure is forced on the first day, when the month has
+         just started, and on the last three days when something came in today.
+         A closing day with no donations falls back to the daily rung, which is
+         measured against today alone. Every other day starts at the daily rung,
+         however much the month has already raised. */
+      var monthSummary = dayOfMonth === 1 ||
+        (dayOfMonth > daysInMonth - 3 && raisedBy.daily > 0);
+      /* A quiet day leads with the daily rung even when the month is already
+         covered, because it is measured against today's donations alone. The
+         month summary only wins on the first day and on closing days that
+         brought something in today. */
+      if (monthSummary) {
+        if (shownBy.monthly >= targets.monthly) metScope = "monthly";
+        else scope = "monthly";
+      } else if (!dailyMet) {
+        scope = "daily";
+      } else if (shownBy.monthly >= targets.monthly) {
+        metScope = "monthly";
+      } else if (!weeklyMet) {
+        scope = "weekly";
+      } else {
+        scope = "monthly";
+      }
+      var symbol = fxSymbol(code);
+      if (!scope) {
+        return {
+          scope: null, covered: true, met: true, metScope: metScope, periodWord: "", periodPhrase: "", periodSuffix: "", periodAdjective: "",
+          raised: 0, target: 0, pct: 0, remaining: 0, symbol: symbol, code: code
+        };
+      }
+      var usdRaised = raisedBy[scope];
+      var shownRaised = shownBy[scope];
+      var shownTarget = targets[scope];
+      var usdTarget = fxRate(code) > 0 ? shownTarget / fxRate(code) : 0;
+      var words = { monthly: "month", weekly: "week", daily: "day" };
+      var adjectives = { monthly: "monthly", weekly: "weekly", daily: "daily" };
+      var phrases = { monthly: "this month", weekly: "this week", daily: "today" };
+      var suffixes = { monthly: "for this month", weekly: "for this week", daily: "for today" };
+      return {
+        scope: scope, covered: false,
+        periodWord: words[scope], periodPhrase: phrases[scope], periodSuffix: suffixes[scope], periodAdjective: adjectives[scope],
+        raised: shownRaised, target: shownTarget,
+        pct: fxShare(shownRaised, shownTarget),
+        remaining: Math.max(0, shownTarget - shownRaised),
+        met: false,
+        symbol: symbol,
+        code: code
+      };
+    }
+
+    function moneyLabel(value) {
+      var n = Number(value || 0);
+      return (n % 1 === 0) ? n.toFixed(0) : n.toFixed(2);
+    }
+
+    function fundingGoalText(goal, withEncouragement) {
+      if (goal && goal.covered) {
+        var metWords = {
+          monthly: _t("This month's costs are covered - thank you!"),
+          weekly: _t("This week's costs are covered - thank you!"),
+          daily: _t("Today's costs are covered - thank you!")
+        };
+        var metLabel = metWords[goal.metScope];
+        if (metLabel) return metLabel;
+      }
+      if (!goal || !goal.scope) {
+        return _t("We rely on your donations to keep running. Donate now");
+      }
+      var periodSuffix = goal.periodSuffix ? _t(goal.periodSuffix) : (_t("for this ") + _t(goal.periodWord));
+      var raisedStr = goal.symbol + moneyLabel(goal.raised);
+      var targetStr = goal.symbol + moneyLabel(goal.target);
+      return withEncouragement
+        ? _t("You've helped us raise {raised} of our {target} costs {period}. All donations are appreciated.", {
+            raised: raisedStr,
+            target: targetStr,
+            period: periodSuffix
+          })
+        : _t("You've helped us raise {raised} of our {target} costs {period}.", {
+            raised: raisedStr,
+            target: targetStr,
+            period: periodSuffix
+          });
+    }
+
+    function renderCreditsPage(donations) {
+      var now = new Date();
+      var curMonth = now.getMonth();
+      var curYear = now.getFullYear();
+
+      renderDonorCredits(donations);
+
+      var totalCommunityRaised = 0;
+      var curMonthRaised = 0;
+      var bySupporter = {};
+      var outgoingProjects = [];
+      var corporateSponsorships = [];
+      var totalCorporateRaised = 0;
+      var totalOutgoingSpent = 0;
+
+      donations.forEach(function (d) {
+        if (d.amount > 0) {
+          if (isInnioasisCorporate(d.name)) {
+            totalCorporateRaised += d.amount;
+            corporateSponsorships.push(d);
+          } else {
+            totalCommunityRaised += d.amount;
+            if (d.dt && d.dt.getMonth() === curMonth && d.dt.getFullYear() === curYear) {
+              curMonthRaised += d.amount;
+            }
+            var rawName = (d.name || "").trim();
+            if (!isAnonymous(rawName)) {
+              var key = rawName.toLowerCase();
+              if (!bySupporter[key]) bySupporter[key] = [];
+              bySupporter[key].push(d);
+            }
+          }
+        } else if (d.amount < 0) {
+          outgoingProjects.push(d);
+          totalOutgoingSpent += Math.abs(d.amount);
+        }
+      });
+
+      var streamBox = document.getElementById("unified-donors-feed");
+      var streamLine = document.getElementById("unified-contributor-line");
+      if (streamBox && streamLine) {
+        var goal = fundingGoalView(donations, curMonthRaised, now);
+        var pct = goal.pct;
+        var goalBarText = fundingGoalText(goal, true);
+
+        var goalBarHTML = goal.covered ? "" :
+          '<div style="width: 100%; display: flex; flex-direction: column; gap: 4px; align-items: center;">' +
+            '<div style="font-size: 0.8rem; font-weight: bold; color: var(--lumen-text, #fff);">' +
+              goalBarText +
+            '</div>' +
+            '<div style="width: 100%; max-width: 480px; height: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 4px; overflow: hidden;">' +
+              '<div id="unified-goal-fill" style="width: 0%; height: 100%; background: #10b981; border-radius: 3px; transition: width 0.8s ease-out;"></div>' +
+            '</div>' +
+          '</div>';
+
+        var donorItems = [];
+        var topSupporterKeys = {};
+        getTopSupporterGroups(donations).forEach(function (group) {
+          topSupporterKeys[group.name.toLowerCase()] = true;
+          var items = group.items;
+          var lastItem = items[items.length - 1];
+          var totStr = "$" + (group.total % 1 === 0 ? group.total.toFixed(0) : group.total.toFixed(2));
+          var tUrl = lastItem.url || METHOD_URLS[(lastItem.method || "").toLowerCase()] || "https://innioasis.app";
+          var sH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + lastItem.name + '</a>';
+          var totH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + totStr + '</a>';
+          donorItems.push(_t("{supporter} donated {amount}", {
+            supporter: contributorLabel(lastItem.name, true) + " " + sH,
+            amount: totH
+          }));
+        });
+
+        donations.slice().sort(function (a, b) { return (b.dt ? b.dt.getTime() : 0) - (a.dt ? a.dt.getTime() : 0); }).forEach(function (item) {
+          if (item.amount <= 0 || isInnioasisCorporate(item.name)) return;
+          var rawN = cleanSupporterName(item.name);
+          var isCorp = item.amount > 0 && isInnioasisCorporate(rawN);
+          var isAn = isAnonymous(item.name);
+          var absVal = Math.abs(item.amount);
+          var aStr = "$" + (absVal % 1 === 0 ? absVal.toFixed(0) : absVal.toFixed(2));
+          var tP = donorTimeHTML(item.dt);
+          var mL = (item.method || "").toLowerCase();
+          var cKind = coffeeMethod(item.method);
+          var mUrl = METHOD_URLS[mL] || METHOD_URLS[cKind] || "https://innioasis.app";
+          var tUrl = item.url || mUrl;
+
+          if (isCorp || (!isAn && topSupporterKeys[rawN.toLowerCase()])) {
+            return;
+          }
+
+          var sH = isAn ? "<strong>" + _t("A supporter") + "</strong>" : '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + rawN + '</strong></a>';
+
+          var aH = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + aStr + '</strong></a>';
+          var mH = '<a href="' + mUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + item.method + '</strong></a>';
+
+          if (mL === "honeygain") {
+            donorItems.push(_t("{supporter} contributed {amount} for free by sharing 100MB on Honeygain{time}", {
+              supporter: sH,
+              amount: aH,
+              time: tP
+            }));
+          } else if (cKind) {
+            var coffees = Math.max(1, Math.round(absVal));
+            var cWord = (coffees === 1)
+              ? (cKind === "kofi" ? _t("a coffee on Ko-Fi") : _t("a coffee"))
+              : (cKind === "kofi" ? _t("{count} coffees on Ko-Fi", { count: coffees }) : _t("{count} coffees", { count: coffees }));
+            var cHTML = '<a href="' + tUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + cWord + '</strong></a>';
+            donorItems.push(_t("{supporter} bought us {coffees}{time}", {
+              supporter: sH,
+              coffees: cHTML,
+              time: tP
+            }));
+          } else {
+            donorItems.push(_t("{supporter} donated {amount} by {method}{time}", {
+              supporter: sH,
+              amount: aH,
+              method: mH,
+              time: tP
+            }));
+          }
+        });
+
+        function shuffleDonorTicker() {
+          for (var shuffleI = donorItems.length - 1; shuffleI > 0; shuffleI--) {
+            var shuffleJ = Math.floor(Math.random() * (shuffleI + 1));
+            var shuffleValue = donorItems[shuffleI];
+            donorItems[shuffleI] = donorItems[shuffleJ];
+            donorItems[shuffleJ] = shuffleValue;
+          }
+        }
+        shuffleDonorTicker();
+
+        var showGoal = !goal.covered;
+        var donorIdx = 0;
+        var donorLinesSinceGoal = 0;
+        var appealStep = 0;
+        var annualBarHTML =
+          '<div style="width: 100%; display: flex; flex-direction: column; gap: 4px; align-items: center;">' +
+            '<div style="font-size: 0.8rem; font-weight: bold; color: var(--lumen-text, #fff); text-align: center;">' +
+              'If everyone visiting today donated, we\'d be able to run for a year' +
+            '</div>' +
+          '</div>';
+        function updateFeed() {
+          streamLine.style.opacity = "0";
+          setTimeout(function () {
+            if (showGoal || donorLinesSinceGoal >= 3) {
+              if (donorLinesSinceGoal >= 3 && donorItems.length > 1) {
+                shuffleDonorTicker();
+                donorIdx = 0;
+              }
+              if (appealStep % 2 === 0 && !goal.covered) {
+                streamLine.innerHTML = goalBarHTML;
+                setTimeout(function () {
+                  var fill = document.getElementById("unified-goal-fill");
+                  if (fill) fill.style.width = pct.toFixed(1) + "%";
+                }, 50);
+              } else {
+                streamLine.innerHTML = annualBarHTML;
+              }
+              appealStep += 1;
+              showGoal = false;
+              donorLinesSinceGoal = 0;
+            } else {
+              if (donorItems.length > 0) {
+                streamLine.innerHTML = donorItems[donorIdx % donorItems.length];
+                donorIdx = (donorIdx + 1) % donorItems.length;
+                donorLinesSinceGoal += 1;
+              }
+              streamLine.style.opacity = "1";
+            }
+          }, 550);
+        }
+
+        updateFeed();
+        setInterval(updateFeed, 6500);
+      }
+
+      var projectsGrid = document.getElementById("supported-projects-grid");
+      if (projectsGrid) {
+        projectsGrid.innerHTML = "";
+
+        var perProjectAmt = totalCommunityRaised / 3.0;
+        var perProjectStr = "$" + (perProjectAmt % 1 === 0 ? perProjectAmt.toFixed(0) : perProjectAmt.toFixed(2));
+        var greenBadgeStyle = "background: rgba(16, 185, 129, 0.18); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35);";
+
+        var allItems = [];
+
+        allItems.push({
+          name: "Innioasis Updater CE",
+          url: "https://innioasis.app",
+          amountFormatted: perProjectStr,
+          desc: "Open-source cross-platform updater, brick recovery tool, and driver installer for Innioasis Y1 & Y2 hardware. Maintained by Ryan Specter.",
+          btnText: "Visit Updater Website →"
+        });
+
+        allItems.push({
+          name: "Innioasis Firmware Archive",
+          url: "https://innioasis.app/firmware.html",
+          amountFormatted: perProjectStr,
+          desc: "Preserving and archiving all stock, legacy, and custom ROM firmware packages on high-bandwidth edge mirrors. Maintained by Ryan Specter.",
+          btnText: "View Firmware Archive →"
+        });
+
+        allItems.push({
+          name: "Themes Gallery",
+          url: "https://themes.innioasis.app",
+          amountFormatted: perProjectStr,
+          desc: "Community theme directory, artwork archive, and documentation hub for Rockbox and stock player customizations. Maintained by Ryan Specter.",
+          btnText: "Explore Themes Gallery →"
+        });
+
+        var outgoingByProject = {};
+        outgoingProjects.forEach(function (p) {
+          var rawN = (p.name || "Community Project").trim();
+          var key = rawN.toLowerCase();
+          if (!outgoingByProject[key]) {
+            outgoingByProject[key] = {
+              name: rawN,
+              totalAmt: 0,
+              count: 0,
+              url: p.url || "https://ko-fi.com",
+              lastDateStr: p.dateStr,
+              methods: []
+            };
+          }
+          outgoingByProject[key].totalAmt += Math.abs(p.amount);
+          outgoingByProject[key].count += 1;
+          if (p.url && p.url.indexOf("http") === 0) outgoingByProject[key].url = p.url;
+          outgoingByProject[key].lastDateStr = p.dateStr;
+          if (p.method && outgoingByProject[key].methods.indexOf(p.method) === -1) {
+            outgoingByProject[key].methods.push(p.method);
+          }
+        });
+
+        Object.keys(outgoingByProject).forEach(function (k) {
+          var proj = outgoingByProject[k];
+          var amtStr = "$" + (proj.totalAmt % 1 === 0 ? proj.totalAmt.toFixed(0) : proj.totalAmt.toFixed(2));
+          var badgeLabel = proj.count > 1 ? ("Community project donation · " + amtStr) : ("Community project donation · " + amtStr);
+          var mText = proj.methods.length > 0 ? (" via " + proj.methods.join(", ")) : "";
+
+          allItems.push({
+            name: proj.name,
+            url: proj.url,
+            amountFormatted: amtStr,
+            desc: (proj.url && proj.url.indexOf("github.com/sippedaway") !== -1)
+              ? "Paid to Sipped when they sent in a pull request with a full redesign of the Firmware Archive and Updater site."
+              : ("Funded" + mText + " to support independent firmware research and open software development."),
+            btnText: "View Project / Receipt →"
+          });
+        });
+
+        function getSortKey(str) {
+          var s = (str || "").toLowerCase().trim();
+          if (s.indexOf("the ") === 0) {
+            s = s.substring(4).trim();
+          }
+          return s;
+        }
+
+        allItems.sort(function (a, b) {
+          return getSortKey(a.name).localeCompare(getSortKey(b.name));
+        });
+
+        allItems.forEach(function (item) {
+          var card = document.createElement("div");
+          card.className = "supported-project-card";
+          card.innerHTML = 
+            '<div>' +
+              '<h3 style="margin: 0 0 10px; font-size: 1.18rem; font-weight: 700; line-height: 1.35;"><span style="color: #10b981;">' + item.amountFormatted + '</span> raised for <a href="' + item.url + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">' + item.name + '</a></h3>' +
+              '<p style="font-size: 0.85rem; color: var(--lumen-muted, #9aa3b5); margin: 0;">' + item.desc + '</p>' +
+            '</div>';
+          projectsGrid.appendChild(card);
+        });
+      }
+
+      var tableBody = document.getElementById("donations-table-body");
+      if (tableBody) {
+        tableBody.innerHTML = "";
+
+        var communityDonations = donations.filter(function (d) {
+          return d.amount > 0 && !isInnioasisCorporate(d.name);
+        });
+
+        if (communityDonations.length === 0) {
+          tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: var(--lumen-muted);">No contributions recorded yet.</td></tr>';
+        } else {
+          var mergedMap = {};
+          var anonEntries = [];
+
+          communityDonations.forEach(function (d) {
+            var rawName = (d.name || "").trim();
+            var isAnon = isAnonymous(rawName);
+            if (isAnon) {
+              anonEntries.push(d);
+              return;
+            }
+            var key = rawName.toLowerCase();
+            if (!mergedMap[key]) {
+              mergedMap[key] = {
+                name: cleanSupporterName(rawName),
+                total: 0,
+                count: 0,
+                methods: [],
+                methodSet: {},
+                latestUrl: "",
+                latestDate: "",
+                latestDt: null,
+                firstDate: "",
+                messages: []
+              };
+            }
+            var entry = mergedMap[key];
+            entry.total += d.amount;
+            entry.count += 1;
+            if (d.url && d.url.indexOf("http") === 0) entry.latestUrl = d.url;
+            if (!entry.latestDt || (d.dt && d.dt > entry.latestDt)) {
+              entry.latestDt = d.dt;
+              entry.latestDate = d.dateStr;
+              if (!entry.latestUrl && d.url) entry.latestUrl = d.url;
+            }
+            if (!entry.firstDate) entry.firstDate = d.dateStr;
+            var mLow = (d.method || "").toLowerCase();
+            if (!entry.methodSet[mLow]) {
+              entry.methodSet[mLow] = true;
+              entry.methods.push({ name: d.method, lower: mLow });
+            }
+            if (d.message && d.message.trim() && entry.messages.indexOf(d.message.trim()) === -1) {
+              entry.messages.push(d.message.trim());
+            }
+          });
+
+          var topSupporters = [], otherContributors = [];
+          var topSupporterKeys = {};
+          getTopSupporterGroups(communityDonations).forEach(function (group) {
+            topSupporterKeys[group.name.toLowerCase()] = true;
+          });
+          Object.keys(mergedMap).forEach(function (k) {
+            var e = mergedMap[k];
+            e.isTopSupporter = !!topSupporterKeys[k];
+            if (e.isTopSupporter) topSupporters.push(e);
+            else otherContributors.push(e);
+          });
+
+          var chronologicalCredits = topSupporters.concat(otherContributors);
+          chronologicalCredits.sort(function (a, b) {
+            return (b.latestDt ? b.latestDt.getTime() : 0) - (a.latestDt ? a.latestDt.getTime() : 0) ||
+              a.name.localeCompare(b.name);
+          });
+          anonEntries.sort(function (a, b) {
+            if (b.dt && a.dt) return b.dt - a.dt;
+            return 0;
+          });
+
+          function iconForMethod(mLow) {
+            if (mLow.indexOf("paypal") >= 0) return "icon_paypal.png";
+            if (mLow.indexOf("revolut") >= 0) return "icon_revolut.png";
+            if (mLow.indexOf("patreon") >= 0) return "icon_patreon.png";
+            if (mLow.indexOf("boosty") >= 0) return "icon_boosty.png";
+            if (mLow.indexOf("honeygain") >= 0) return "icon_honeygain.svg";
+            if (mLow.indexOf("btc") >= 0 || mLow.indexOf("bitcoin") >= 0) return "icon_bitcoin.png";
+            if (mLow.indexOf("ko-fi") >= 0 || mLow.indexOf("kofi") >= 0) return "icon_kofi.png";
+            return "icon_kofi.png";
+          }
+
+          function buildMethodIcons(methods) {
+            return methods.map(function (m) {
+              var f = iconForMethod(m.lower);
+              return '<img class="method-icon-img" data-method-icon="' + f + '" src="./assets/' + f + '" alt="' + m.name + '" title="' + m.name + '">';
+            }).join("");
+          }
+
+          function fallbackIconFile(file) {
+            var fallbacks = {
+              "icon_bitcoin.png": "icon_bitcoin.svg",
+              "icon_kofi.png": "icon_kofi.svg",
+              "icon_paypal.png": "icon_paypal.svg",
+              "icon_patreon.png": "icon_patreon.svg",
+              "icon_revolut.png": "icon_revolut.svg",
+              "icon_honeygain.svg": "icon_honeygain.svg"
+            };
+            return fallbacks[file] || "icon_kofi.svg";
+          }
+
+          function wireIconFallbacks(root) {
+            var scope = root || document;
+            scope.querySelectorAll("img[data-method-icon]").forEach(function (img) {
+              if (img.dataset.iconFallbackBound === "1") return;
+              img.dataset.iconFallbackBound = "1";
+              var useFallback = function () {
+                var file = img.dataset.methodIcon;
+                var sources = [
+                  "./assets/" + file,
+                  "/assets/" + file,
+                  "/assets/" + fallbackIconFile(file),
+                  "./assets/" + fallbackIconFile(file)
+                ];
+                var next = parseInt(img.dataset.iconSourceIndex || "0", 10) + 1;
+                if (next >= sources.length) {
+                  img.style.display = "none";
+                  return;
+                }
+                img.dataset.iconSourceIndex = String(next);
+                img.src = sources[next];
+              };
+              img.addEventListener("error", useFallback);
+              if (img.complete && img.naturalWidth === 0) useFallback();
+            });
+          }
+
+          wireIconFallbacks(document);
+
+          function renderMergedRow(entry, isReg) {
+            var tr = document.createElement("tr");
+            var absTotal = entry.total;
+            var amtStr = "$" + (absTotal % 1 === 0 ? absTotal.toFixed(0) : absTotal.toFixed(2));
+            var targetUrl = entry.latestUrl || METHOD_URLS[(entry.methods[0] && entry.methods[0].lower) || ""] || "https://innioasis.app";
+
+            var nameHeader;
+            var contributionCount = entry.count > 1
+              ? ' <small style="color: var(--lumen-muted); font-weight: 400;">(' + entry.count + ' contributions)</small>'
+              : '';
+            if (isReg) {
+              nameHeader = '<span class="contributor-star" aria-hidden="true">&#9733;</span>' +
+                        '<span class="lumen-visually-hidden">' + contributorLabel(entry.name, true) + ': </span>' +
+                        '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + entry.name + '</a>' +
+                        contributionCount;
+            } else {
+              nameHeader = '<a href="' + targetUrl + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: bold;">' + entry.name + '</a>' +
+                        contributionCount;
+            }
+            var nameCol = '<div class="donor-cell">' +
+              '<div class="donor-name-line">' + nameHeader + '</div>';
+
+            var msg = entry.messages.length > 0 ? entry.messages[entry.messages.length - 1] : "";
+            if (msg) {
+              var cleanMsg = msg.replace(/^note\s*[:\-–—]?\s*/i, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              var marqueeClass = cleanMsg.length > 60 ? " donor-bubble-marquee" : "";
+              nameCol += '<div class="donor-chat-bubble" data-i18n-dynamic>' +
+                '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '" data-i18n-dynamic>' + cleanMsg + '</span></div>' +
+                '</div>';
+            }
+            nameCol += '</div>';
+
+            var dateStr;
+            if (isReg && entry.firstDate && entry.firstDate !== entry.latestDate) {
+              dateStr = entry.firstDate + ' – ' + entry.latestDate;
+            } else {
+              dateStr = entry.latestDate;
+            }
+            var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + dateStr + '</span>';
+
+            tr.innerHTML = '<td>' + nameCol + '</td><td>' + dateCol + '</td>';
+            wireIconFallbacks(tr);
+            return tr;
+          }
+
+          chronologicalCredits.forEach(function (e) {
+            tableBody.appendChild(renderMergedRow(e, !!e.isTopSupporter));
+          });
+
+          anonEntries.forEach(function (d) {
+            var tr = document.createElement("tr");
+            var nameCol = '<div class="donor-cell">' +
+              '<div class="donor-name-line"><span style="color: var(--lumen-muted, #9aa3b5);">A supporter</span></div>';
+            if (d.message && d.message.trim()) {
+              var cleanAnonMsg = d.message.trim().replace(/^note\s*[:\-–—]?\s*/i, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              var marqueeClass = cleanAnonMsg.length > 60 ? " donor-bubble-marquee" : "";
+              nameCol += '<div class="donor-chat-bubble" data-i18n-dynamic>' +
+                '<div class="donor-bubble-text-wrap"><span class="donor-bubble-text' + marqueeClass + '" data-i18n-dynamic>' + cleanAnonMsg + '</span></div>' +
+                '</div>';
+            }
+            nameCol += '</div>';
+            var dateCol = '<span style="font-size: 0.82rem; color: var(--lumen-muted);">' + d.dateStr + '</span>';
+            tr.innerHTML = '<td>' + nameCol + '</td><td>' + dateCol + '</td>';
+            wireIconFallbacks(tr);
+            tableBody.appendChild(tr);
+          });
+
+          if (window.InnioasisLocale && typeof window.InnioasisLocale.translateDynamic === "function") {
+            window.InnioasisLocale.translateDynamic(tableBody);
+          }
+        }
+      }
+
+
+      var sponsorshipBody = document.getElementById("corporate-sponsorship-body");
+      if (sponsorshipBody) {
+        sponsorshipBody.innerHTML = "";
+        if (!corporateSponsorships.length) {
+          sponsorshipBody.innerHTML = '<tr><td colspan="2" style="text-align: center; color: var(--lumen-muted);">No commercial sponsorship recorded yet.</td></tr>';
+        } else {
+          corporateSponsorships.slice().sort(function (a, b) { return (b.dt || 0) - (a.dt || 0); }).forEach(function (d) {
+            var amount = Math.abs(d.amount);
+            var amountText = "$" + (amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2));
+            var tr = document.createElement("tr");
+            tr.innerHTML = '<td><strong style="color: #60a5fa;">' + amountText + '</strong></td><td>' + (d.dateStr || "") + '</td>';
+            sponsorshipBody.appendChild(tr);
+          });
+        }
+      }
+
+      var launchMonthIndex = 2025 * 12 + 6;
+      var currentMonthIndex = curYear * 12 + curMonth;
+      var elapsedMonths = Math.max(1, currentMonthIndex - launchMonthIndex + 1);
+      var monthlyRunningCosts = elapsedMonths * 200;
+      var annualCertificationPeriods = Math.max(1, Math.ceil(elapsedMonths / 12));
+      var appleDeveloperCosts = annualCertificationPeriods * 99;
+      var macMiniTestingHardware = 599;
+      var totalAccountedCost = monthlyRunningCosts + appleDeveloperCosts + macMiniTestingHardware + totalOutgoingSpent;
+      function setMoney(id, amount) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = "$" + (amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2));
+      }
+      setMoney("financial-total-cost", totalAccountedCost);
+      setMoney("financial-community-raised", totalCommunityRaised);
+      setMoney("financial-corporate-raised", totalCorporateRaised);
+      setMoney("financial-outgoing-cost", totalOutgoingSpent);
+      setMoney("financial-apple-cost", appleDeveloperCosts);
+      var totalDetail = document.getElementById("financial-total-cost-detail");
+      if (totalDetail) totalDetail.textContent = "$200 monthly running costs × " + elapsedMonths + " calendar months + $" + appleDeveloperCosts.toFixed(0) + " Apple certification + $" + macMiniTestingHardware.toFixed(0) + " Mac mini + $" + totalOutgoingSpent.toFixed(2) + " project support.";
+
+    }
+
+    /* The root path is tried first (a relative "donors.csv" from a nested
+       page asks for the wrong file first), the path that worked is remembered
+       for next time, and the file is left cacheable instead of being busted
+       on every load. */
+    var DONORS_URL_KEY = "innioasis-donors-url";
+    var rememberedUrl = null;
+    try { rememberedUrl = localStorage.getItem(DONORS_URL_KEY); } catch (_) {}
+    var candidates = [
+      "https://raw.githubusercontent.com/y1-community/Innioasis-Updater/main/donors.csv",
+      "/donors.csv",
+      "donors.csv",
+      "https://innioasis.app/donors.csv"
+    ];
+    if (rememberedUrl) {
+      candidates = [rememberedUrl].concat(candidates.filter(function (item) { return item !== rememberedUrl; }));
+    }
+    var cIdx = 0;
+    function tryFetch() {
+      if (cIdx >= candidates.length) return;
+      var u = candidates[cIdx++];
+      fetch(u, { cache: "default" })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.status);
+          return res.text();
+        })
+        .then(function (txt) {
+          var data = parseCSV(txt);
+          if (data && data.length > 0) {
+            window._lastCreditsDonations = data;
+            renderCreditsPage(data);
+            try { localStorage.setItem(DONORS_URL_KEY, new URL(u, window.location.href).href); } catch (_) {}
+          }
+        })
+        .catch(function (err) {
+          if (err) console.error("Credits fetch/render error:", err);
+          tryFetch();
+        });
+    }
+    tryFetch();
+
+    ["site-locale-ready", "site-locale-change", "y1-locale-change"].forEach(function (evName) {
+      window.addEventListener(evName, function () {
+        if (window._lastCreditsDonations && window._lastCreditsDonations.length) {
+          renderCreditsPage(window._lastCreditsDonations);
+        }
+      });
+    });
+  })();
+  
+</script>
+<script src="site-locale.js?v=20261109i18n" defer></script></body>
+</html>

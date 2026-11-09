@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>SP Flash Tool for Mac · MediaTek Scatter Flashing Guide & Alternatives</title>
-  <meta name="description" content="How to use SP Flash Tool on Mac using Updater CE and browse scatter files to flash MediaTek devices like Mechen H1, Innioasis Y1/Y2, Timmkoo, and MT6580/MT6572 MP3 players and phones.">
+  <title>SP Flash Tool pro Mac · MediaTek Scatter Flashing Guide &amp; Alternatives</title>
+  <meta name="description" content="Jak používat SP Flash Tool na Macu pomocí Updater CE a procházet rozptýlené soubory pro flashování MediaTek zařízení, jako jsou Mechen H1, Innioasis Y1/Y2, Timmkoo a MP3 přehrávače a telefony MT6580/MT6572.">
   <link rel="canonical" href="https://innioasis.app/sp-flash-tool-mac_cs.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/sp-flash-tool-mac.html">
@@ -81,42 +81,42 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">MediaTek Tools & Cross-Platform Flashing</p>
+      <p class="lumen-kicker">MediaTek Nástroje a multiplatformní blikání</p>
       <h1>SP Flash Tool pro Mac: Kompletní průvodce a Scatter Browser</h1>
-      <p class="lead">Does official MediaTek SP Flash Tool run on macOS? Here is the exact status, how <strong>Aktualizátor CE</strong> provides native MediaTek flashing on Mac, and how to flash any scatter-based MediaTek MP3 player or smartphone.</p>
+      <p class="lead">Funguje oficiální MediaTek SP Flash Tool na macOS? Zde je přesný stav, jak <strong>Aktualizátor CE</strong> poskytuje nativní MediaTek flashování na Mac a jak flashovat libovolný MediaTek MP3 přehrávač nebo chytrý telefon založený na rozptylu.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>The Truth About SP Flash Tool on macOS</h2>
-      <p>MediaTek never released an official macOS build of <strong>Smart Phone Flash Tool (SP Flash Tool)</strong>. The tool has only ever existed as a 32-bit/64-bit Windows application and an x86_64 Linux binary. Emulating SP Flash Tool on macOS through Wine or CrossOver fails because macOS kernel USB extensions do not allow USB serial pass-through at the precision required during BROM boot handshakes.</p>
-      <p><strong>The Solution:</strong> <strong>Aktualizátor CE</strong> bridges this gap by bundling native Apple Silicon and Intel macOS flashing libraries (via MTKclient low-level protocol engine) alongside automated scatter discovery!</p>
+      <h2>Pravda o SP Flash Tool na macOS</h2>
+      <p>MediaTek nikdy nevydal oficiální sestavení macOS <strong>Smart Phone Flash Tool (SP Flash Tool)</strong>. Tento nástroj vždy existoval pouze jako 32bitová/64bitová aplikace pro Windows a binární x86_64 Linux. Emulace SP Flash Tool na macOS přes Wine nebo CrossOver se nezdaří, protože rozšíření jádra USB macOS neumožňují USB sériové předávání s přesností požadovanou během navázání spojení BROM.</p>
+      <p><strong>Řešení:</strong> <strong>Aktualizátor CE</strong> překlenuje tuto propast spojením nativních flashovacích knihoven Apple Silicon a Intel macOS (prostřednictvím nízkoúrovňového protokolu MTKclient) spolu s automatickým zjišťováním rozptylu!</p>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Flashing Any MediaTek Device with 'Install from File' (Scatter Browser)</h2>
-      <p>Updater CE is not restricted to Innioasis players. You can use it as a powerful universal MediaTek scatter flasher for any device requiring <strong>SP Flash Tool v5 or earlier</strong>:</p>
+      <h2>Blikání libovolného MediaTek zařízení pomocí „Instalovat ze souboru“ (rozptylový prohlížeč)</h2>
+      <p>Updater CE není omezen na Innioasis hráče. Můžete jej použít jako výkonný univerzální MediaTek rozptylový blikač pro jakékoli zařízení, které to vyžaduje <strong>SP Flash Tool v5 nebo starší</strong>:</p>
       <ul class="lumen-benefits-list">
-        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 portable HiFi Android players.</li>
-        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek touchscreen digital audio players.</li>
-        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek MT6572 / MT6582 music players.</li>
-        <li><strong>Legacy MediaTek Smartphones &amp; Feature Phones:</strong> Devices running MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753, and MT8163.</li>
+        <li><strong>Mechen H1 &amp; H11:</strong> Přenosné HiFi přehrávače Android MT6580.</li>
+        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek digitální audio přehrávače s dotykovou obrazovkou.</li>
+        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek Hudební přehrávače MT6572 / MT6582.</li>
+        <li><strong>Starší MediaTek chytré telefony a běžné telefony:</strong> Zařízení se systémem MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753 a MT8163.</li>
       </ul>
       <div class="lumen-callout">
-        <h3>How to Load Custom Scatter Files in Updater CE:</h3>
+        <h3>Jak načíst vlastní soubory Scatter v Updater CE:</h3>
         <ol class="lumen-steps">
-          <li>Download the factory firmware archive (<code>.zip</code> nebo <code>.rar</code>) or extract its folder containing the <code>*scatter*.txt</code> file.</li>
-          <li>In Updater CE, choose <strong>Procházet soubory…</strong> on the firmware selection screen.</li>
-          <li>Select the scatter text file (e.g., <code>MT6580_Android_scatter.txt</code>) or firmware zip package.</li>
-          <li>Updater CE parses memory offsets, partition addresses (preloader, boot, recovery, system, userdata), and verifies scatter integrity.</li>
-          <li>Follow the on-screen live prompt: power down the device and connect the USB cable to flash.</li>
+          <li>Stáhněte si archiv továrního firmwaru (<code>.zip</code> nebo <code>.rar</code>) nebo extrahujte jeho složku obsahující <code>*scatter*.txt</code> soubor.</li>
+          <li>V Updater CE vyberte <strong>Procházet soubory…</strong> na obrazovce výběru firmwaru.</li>
+          <li>Vyberte soubor bodového textu (např. <code>MT6580_Android_scatter.txt</code>) nebo balíček zip firmwaru.</li>
+          <li>Updater CE analyzuje offsety paměti, adresy oddílů (preloader, boot, recovery, systém, uživatelská data) a ověřuje integritu rozptylu.</li>
+          <li>Postupujte podle pokynů na obrazovce: vypněte zařízení a připojte kabel USB k blesku.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>When You Need an x64 Computer for Unbricking</h2>
-      <p>While macOS handles standard flashing and custom ROM installs cleanly via MTKclient, recovering from deep bootloop failures (where the preloader partition was wiped or mismatched) requires SP Flash Tool's full partition table rebuild.</p>
-      <p>If you encounter error stalls on Mac, switch to a 64-bit Windows PC or x86_64 Linux workstation, select <strong>Settings &gt; Show Advanced Settings &gt; Flash Method &gt; SP Flash Tool</strong>, and flash the factory scatter package.</p>
+      <h2>Když potřebujete x64 počítač pro Unbricking</h2>
+      <p>Zatímco macOS zvládá standardní flashování a vlastní ROM instalace čistě přes MTKclient, obnova po hlubokých selháních bootloop (kde byl oddíl s preloaderem vymazán nebo se neshodoval) vyžaduje úplné znovu sestavení tabulky oddílů SP Flash Tool.</p>
+      <p>Pokud na Macu narazíte na zasekávání chyb, přejděte na 64bitový Windows PC nebo x86_64 Linux pracovní stanici, vyberte <strong>Nastavení &gt; Zobrazit pokročilá nastavení &gt; Metoda blesku &gt; SP Flash Tool</strong>a flashujte tovární rozptylový balíček.</p>
     </section>
   </main>
   <div id="footer-root"></div>

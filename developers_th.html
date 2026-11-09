@@ -152,12 +152,12 @@
         <table class="lumen-doc-table">
           <caption class="lumen-visually-hidden">การดาวน์โหลดพื้นฐาน ROM เพื่อการพัฒนาเฟิร์มแวร์แบบกำหนดเอง โดยที่แต่ละเวอร์ชันเปิดใช้งานคุณสมบัติ Android และคุณสมบัติไร้สาย</caption>
           <thead>
-            <tr><th scope="col">ดาวน์โหลด</th><th scope="col">อุปกรณ์</th><th scope="col">หุ่นยนต์</th><th scope="col">คุณสมบัติไร้สาย</th></tr>
+            <tr><th scope="col">ดาวน์โหลด</th><th scope="col">อุปกรณ์</th><th scope="col">Android</th><th scope="col">คุณสมบัติไร้สาย</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>แอนดรอยด์ 4.2.2</td><td>เพิ่ม Wi-Fi และ GPS ให้กับ Bluetooth และ FM จากโรงงาน (FM ใช้งานได้แล้วใน Y1 จากโรงงาน) สำหรับผู้เล่น Y1 ที่มาพร้อมกับ OS 2.0.0 หรือใหม่กว่า</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>แอนดรอยด์ 4.2.2</td><td>เพิ่ม Wi-Fi และ GPS ให้กับ Bluetooth และ FM จากโรงงาน (FM ใช้งานได้แล้วใน Y1 จากโรงงาน) สำหรับผู้เล่น Y1 ที่มาพร้อมกับระบบปฏิบัติการที่เก่ากว่า 2.0.0</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>แอนดรอยด์ 4.4.2</td><td>เพิ่ม Wi-Fi, GPS และ FM ให้กับ Bluetooth จากโรงงาน ชิปวิทยุ Y2 เปิดใช้งานโดยสมบูรณ์ ดังนั้น FM ก็ใช้งานได้ที่นี่เช่นกัน</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>เพิ่ม Wi-Fi และ GPS ให้กับ Bluetooth และ FM จากโรงงาน (FM ใช้งานได้แล้วใน Y1 จากโรงงาน) สำหรับผู้เล่น Y1 ที่มาพร้อมกับ OS 2.0.0 หรือใหม่กว่า</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>เพิ่ม Wi-Fi และ GPS ให้กับ Bluetooth และ FM จากโรงงาน (FM ใช้งานได้แล้วใน Y1 จากโรงงาน) สำหรับผู้เล่น Y1 ที่มาพร้อมกับระบบปฏิบัติการที่เก่ากว่า 2.0.0</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>เพิ่ม Wi-Fi, GPS และ FM ให้กับ Bluetooth จากโรงงาน ชิปวิทยุ Y2 เปิดใช้งานโดยสมบูรณ์ ดังนั้น FM ก็ใช้งานได้ที่นี่เช่นกัน</td></tr>
           </tbody>
         </table>
       </div>
@@ -436,7 +436,7 @@
             <tr><th scope="row"><code>package_name</code></th><td>ไม่จำเป็น</td><td>ปล่อยชื่อไฟล์เนื้อหา ค่าเริ่มต้นเป็น <code>rom.zip</code> บน Y1 และ <code>rom_&lt;model&gt;.zip</code> ในรูปแบบอื่นๆ</td></tr>
             <tr><th scope="row"><code>asset_pattern</code></th><td>ไม่จำเป็น</td><td>glob ที่ไม่คำนึงถึงตัวพิมพ์เล็กและตัวพิมพ์ใหญ่สำหรับการเผยแพร่ที่ไม่มีชื่อรหัสไปรษณีย์ของเฟิร์มแวร์ <code>rom*.zip</code> (ตัวอย่างเช่น <code>my-firmware-*.zip</code>).</td></tr>
             <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>ไม่จำเป็น</td><td>Globs ที่ระบุ Y1 Type A และ Type B zip เมื่อชื่อไฟล์ไม่มีเครื่องหมายปกติ</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>ไม่จำเป็น</td><td>URL โลโก้ ใช้หลังจากออกวางจำหน่ายแล้วนั้นเอง <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>ไม่จำเป็น</td><td>URL โลโก้ ใช้หลังจากออกวางจำหน่ายแล้วนั้นเอง <code>updater.png</code> / <code>updater.jpg</code>และเป็นทางเลือกสำรองสำหรับทุกๆ รุ่น</td></tr>
             <tr><th scope="row"><code>icon_dark</code></th><td>ไม่จำเป็น</td><td>โลโก้ธีมสีเข้ม <code>image_dark</code> เป็นนามแฝงที่ยอมรับ</td></tr>
             <tr><th scope="row"><code>image</code></th><td>ไม่จำเป็น</td><td>งานศิลปะแสงรอง ลองใช้แล้ว <code>icon</code>.</td></tr>
             <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>ไม่จำเป็น</td><td>เปิดเพจหลังจากการติดตั้งสำเร็จ ส่วนที่สองครอบคลุมคำแนะนำแบบหลายขั้นตอน</td></tr>

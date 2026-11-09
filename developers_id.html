@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>Pengembang | Tambahkan firmware khusus ke Innioasis Updater CE - Innioasis Unduhan Firmware</title>
+  <meta name="description" content="Dokumentasi pengembang untuk menambahkan firmware khusus Innioasis Y1 atau Y2 ke Updater CE: membagi repositori, menerbitkan aset rom.zip, mengedit slidia_manifest.xml, menguji, dan membuka permintaan tarik.">
+  <meta name="keywords" content="Innioasis Panduan pengembang updater, slidia_manifest.xml, firmware khusus, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, aset rilis">
   <link rel="canonical" href="https://innioasis.app/developers_id.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="Pengembang | Tambahkan firmware khusus ke Innioasis Updater CE - Innioasis Unduhan Firmware">
+  <meta property="og:description" content="Dokumentasi pengembang untuk menambahkan firmware khusus Innioasis Y1 atau Y2 ke Updater CE: membagi repositori, menerbitkan aset rom.zip, mengedit slidia_manifest.xml, menguji, dan membuka permintaan tarik.">
   <meta property="og:url" content="https://innioasis.app/developers_id.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="Pengembang | Tambahkan firmware khusus ke Innioasis Updater CE - Innioasis Unduhan Firmware">
+  <meta name="twitter:description" content="Dokumentasi pengembang untuk menambahkan firmware khusus Innioasis Y1 atau Y2 ke Updater CE: membagi repositori, menerbitkan aset rom.zip, mengedit slidia_manifest.xml, menguji, dan membuka permintaan tarik.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">Untuk pengembang firmware</p>
+      <h1>Tambahkan firmware Anda ke Updater CE.</h1>
+      <p class="lead">Updater CE adalah katalog komunitas dan penginstal untuk firmware khusus. Kembangkan proyek Anda dari basis ROM, publikasikan sebagai repositori publik dengan aset rilis yang benar, tambahkan entri model ke <code>slidia_manifest.xml</code>, uji filter model, dan buka permintaan tarik. Satu repositori dapat melayani setiap model yang didukungnya.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">Lihat sumber Updater CE</a>
         <a class="lumen-button" href="firmware_id.html">Telusuri Unduhan Perangkat Lunak</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">Mulai dari basis ROM</h2>
+      <p>ROM Dasar memberi pengembang firmware khusus fondasi Android yang bersih dengan chip radio nirkabel diaktifkan. Pada Y1 mereka mengaktifkan Wi-Fi dan GPS bersama dengan Bluetooth dan FM pabrik; pada Y2 mereka mengaktifkan Wi-Fi, GPS, dan FM bersama dengan Bluetooth pabrik.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">Unduhan dasar ROM untuk pengembangan firmware khusus, dengan versi Android dan fitur nirkabel yang diaktifkan masing-masing</caption>
           <thead>
-            <tr><th scope="col">Unduh</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">Unduh</th><th scope="col">Perangkat</th><th scope="col">Android</th><th scope="col">Fitur nirkabel</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Menambahkan Wi-Fi dan GPS ke Bluetooth dan FM pabrik (FM sudah berfungsi di Y1 dari pabrik). Untuk pemutar Y1 yang dikirimkan dengan OS 2.0.0 atau lebih baru.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Menambahkan Wi-Fi dan GPS ke Bluetooth dan FM pabrik (FM sudah berfungsi di Y1 dari pabrik). Untuk Y1 pemain yang dikirimkan dengan OS lebih awal dari 2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Menambahkan Wi-Fi, GPS, dan FM ke Bluetooth pabrik. Chip radio Y2 diaktifkan sepenuhnya, jadi FM juga tersedia di sini.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">Gambar-gambar ini adalah stok basis Android (AOSP) dengan radio nirkabel perangkat diaktifkan, sehingga firmware khusus dapat menambahkan fitur jaringan alih-alih mengganti tumpukan radio. Ini adalah titik awal praktis untuk langkah-langkah penerbitan di bawah ini.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">Gunakan nama aset rilis ini</h2>
+      <p>Nama file adalah bagian dari sinyal kompatibilitas. Pertahankan nama yang tepat dan letakkan file ZIP di aset rilis proyek, tidak hanya di pohon sumber repositori.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">Nama aset ZIP firmware dan perangkat yang didukung</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">Perangkat keras</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">Aset</th><th scope="col">Perangkat</th><th scope="col">Perangkat keras</th><th scope="col">Artinya</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 perangkat yang dikirimkan dengan OS 2.0.0 atau lebih baru.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 perangkat yang dikirimkan dengan OS lebih awal dari 2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>Paket instalasi lengkap Y2. Pisahkan dari aset Y1 .</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>Jangan mengganti nama paket agar sesuai dengan model lain.</strong> Y1 dan Y2 menggunakan file platform MediaTek dan konfigurasi flashing yang berbeda. Publikasikan paket untuk perangkat keras yang didukungnya.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">Cara kerja koneksi</h2>
+      <p>Updater CE membaca manifes sebagai katalognya. Masing-masing <code>&lt;package&gt;</code> baris memberitahukannya nama proyek, repositori, model, dan penangan. Saat pengguna memilih proyek tersebut, Updater memeriksa rilis repositori yang diterbitkan dan mencari a <code>rom*.zip</code> aset.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <h3>nyata</h3>
+          <p>Beri nama proyek dan petakan ke model. Y1 dan Y2 memerlukan baris terpisah, meskipun keduanya berbagi repositori.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>Rilis yang diterbitkan</h3>
+          <p>Berisi aset ZIP yang dapat diinstal. Sebuah rilis tunggal mungkin berisi paket Y1 Type A, Y1 Type B, dan Y2 secara bersamaan.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>Pemasangan pembaruan CE</h3>
+          <p>Menggunakan model yang dipilih untuk memilih paket yang cocok dan jalur flashing khusus model. Pengguna tidak perlu menebak nama file.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">Publikasikan proyek dalam lima langkah</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>, dan <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> Buka <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Cabangkan repositori Updater CE.</strong> Buat garpu Anda sendiri <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, lalu kloning garpu Anda secara lokal.</li>
+        <li><strong>Siapkan repositori firmware publik.</strong> Pastikan repositori bersifat publik dan rilisnya berisi aset ZIP yang benar. Anda bisa menempatkan <code>rom.zip</code>, <code>rom_type_b.zip</code>, dan <code>rom_y2.zip</code> pada rilis yang sama padahal keduanya berasal dari versi yang sama.</li>
+        <li><strong>Edit manifes.</strong> Buka <code>slidia_manifest.xml</code> di root garpu Updater CE Anda. Tambahkan satu baris untuk setiap model yang didukung rilis (Y1 dan Y2 adalah pasangan yang umum). Itu <code>repo</code> nilainya adalah milik repositori <code>owner/repository</code>; <code>url</code> adalah halaman proyek publik.</li>
+        <li><strong>Uji katalognya.</strong> Jalankan Updater dari checkout yang diedit. Pilih Y1 dan konfirmasikan bahwa proyek menampilkan aset Y1. Pilih Y2 dan konfirmasikan bahwa rilis Y2 ditampilkan. Centang Type A dan Type B secara terpisah ketika keduanya dipublikasikan.</li>
+        <li><strong>Buka permintaan tarik.</strong> Dorong perubahan manifes ke fork Anda dan buka permintaan tarik terhadap repositori Updater CE upstream. Sertakan tautan proyek, model yang didukung, tag rilis, nama aset, dan perangkat yang Anda uji.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">Hasilkan garis manifes Anda</h2>
+      <p>Isi repositori dan centang setiap model yang didukung rilis. Generator menulis satu <code>&lt;package&gt;</code> baris per model dan hanya menyertakan atribut yang Anda tetapkan, sehingga hasilnya sesuai dengan yang sekarang <code>slidia_manifest.xml</code> format. Setiap atribut yang dibaca Updater CE tersedia di bawah — atribut opsional ada di bawah <strong>Opsi lainnya</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">URL repositori</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">Repositori publik GitHub. Ekstrak generator <code>owner/repository</code> dari URL.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">Nama perangkat lunak</label>
+            <input type="text" id="manifest-name" placeholder="Defaultnya adalah nama repositori" autocomplete="off">
+            <span class="lumen-field-help">Ditampilkan di aplikasi dan katalog situs.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">URL proyek</label>
+            <input type="url" id="manifest-project-url" placeholder="Defaultnya adalah URL repositori" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">Halaman yang dapat dilihat manusia untuk proyek atau catatan rilisnya.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">Merek</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">Hapus ini untuk menggunakan merek default model. SR1, Q3, Q5 dan Q3e adalah model Timmkoo.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>Perangkat (masing-masing satu baris)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">Model lainnya</label>
+            <input type="text" id="manifest-other-devices" placeholder="Dipisahkan koma, mis. X1, X2" autocomplete="off">
+            <span class="lumen-field-help">Untuk model yang tidak tercantum di atas. Model terkenal menjaga ejaan katalognya.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>Bendera</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — jangan pernah menawarkan Simpan Data untuk firmware ini</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Dibangun dari Perangkat Lunak Asli — menambahkan <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">Keep Data hanya ditawarkan ketika firmware yang masuk dan firmware yang diinstal sama atau berbagi a <code>derivative</code> akar. Gunakan tanda ini hanya jika data pengguna benar-benar tidak dapat dipindahkan.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>Opsi lainnya: ikon, karya seni, aset rilis, pasca-instalasi, dan mirror</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>Ikon dan karya seni</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">Berkas ikon</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">Pilih gambar yang akan Anda komit ke repositori. Ini mempratinjaunya dan membuat URL mentahnya; itu tidak mengunggah apa pun.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">Jalur ikon di repositori</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">Jalur ke gambar yang dikomit, relatif terhadap akar repositori.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">Cabang ikon</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">URL Ikon</label>
+              <input type="url" id="manifest-icon-url" placeholder="Diisi dari jalur file" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">URL gambar langsung. Jika kosong, aplikasi akan menggunakan rilis tersebut <code>updater.png</code> atau ikon yang dihasilkan.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="Pratinjau ikon yang dipilih">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
-              <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <label for="manifest-icon-dark-url">URL ikon mode gelap</label>
+              <input type="url" id="manifest-icon-dark-url" placeholder="ikon_gelap" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Ikon tema gelap opsional. <code>image_dark</code> adalah alias yang diterima.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">URL karya seni ringan</label>
+              <input type="url" id="manifest-image-url" placeholder="gambar" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Karya seni sekunder, dicoba setelah gambar rilis dan <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
-              <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
+              <label for="manifest-image-dark-url">URL karya seni gelap</label>
+              <input type="url" id="manifest-image-dark-url" placeholder="gambar_gelap" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>Lepaskan aset</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">Rilis nama aset</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">Satu nama untuk setiap model yang dipilih. Biarkan kosong untuk digunakan <code>rom.zip</code> pada Y1 dan <code>rom_&lt;model&gt;.zip</code> di tempat lain.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
-              <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <label for="manifest-asset-pattern">Pola aset</label>
+              <input type="text" id="manifest-asset-pattern" placeholder="firmware-saya-*.zip" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Glob digunakan ketika ritsleting rilis tidak diberi nama <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A aset</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob untuk paket Y1 Type A ketika namanya tidak disebutkan.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B aset</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">Glob untuk paket Y1 Type B ketika namanya tidak disebutkan.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">Versi aplikasi minimum</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">Sembunyikan entri dari versi Updater CE yang lebih lama.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>Tautan, cermin, dan keluarga Keep Data</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">Halaman pasca-instal</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">Dibuka setelah instalasi berhasil.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">Halaman kedua pasca pemasangan</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">Langkah kedua opsional untuk panduan pengaturan multi-halaman.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">Cermin zip portabel</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">Dipisahkan koma <code>*-mirror</code> repositori yang membuat paket Portable Flashing Zip.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">Repositori turunan</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">Firmware yang digunakan untuk membuat rilis ini. Firmware terkait berbagi partisi data, yang merupakan pemeriksaan Keep Data.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">Gudang informasi</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">Repo aplikasi yang rilisnya menjelaskan aplikasi dalam firmware ini. Itu juga memerlukan halaman pasca-instalasi.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK repositori</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">Repo aplikasi yang APK aplikasinya diunduh dan diinstal setelah firmware.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>Ekstra katalog</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">Siput</label>
+              <input type="text" id="manifest-slug" placeholder="Dihasilkan dari nama dan modelnya" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">Pengidentifikasi stabil untuk tautan dan catatan pemasangan yang disimpan. Model ditambahkan secara otomatis ketika beberapa model dipilih.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">Deskripsi</label>
+              <input type="text" id="manifest-description" placeholder="Deskripsi katalog singkat" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">Salin garis</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">Memuat manifes terbaru…</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>Pratinjau manifes terbaru dengan baris Anda yang ditambahkan</summary>
+          <p>Generator mengambil arus <code>slidia_manifest.xml</code> dari repositori ini dan masukkan baris yang Anda buat sebelumnya <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>Satu baris saja tidak cukup untuk repositori bersama.</strong> Jika baris Y2 tidak ada, pengguna Y2 tidak akan mendapatkan entri yang cocok dengan model meskipun <code>rom_y2.zip</code> ada dalam rilis proyek. Hal yang sama juga berlaku untuk setiap model lain yang didukung rilis Anda.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">Setiap atribut yang dibaca manifes</h3>
+      <p>Ini adalah atribut yang dipahami oleh Updater CE build saat ini. Generator hanya menulis yang Anda isi; aplikasi lainnya kembali ke default yang masuk akal.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">atribut paket slidia_manifest.xml dan artinya</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">Atribut</th><th scope="col">Dibutuhkan</th><th scope="col">Apa fungsinya</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>Ya</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>Ya</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>Ya</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> dan <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>Opsional</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>Opsional</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>Opsional</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Opsional</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>Opsional</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>Opsional</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>Opsional</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Opsional</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>Opsional</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>Opsional</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>Opsional</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> atau <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>Opsional</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>Opsional</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Opsional</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>Opsional</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>Opsional</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Ya</td><td>Nama perangkat lunak ditampilkan di katalog dan di kartu instalasi.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>Ya</td><td><code>owner/repo</code>. Aplikasi membaca rilis GitHub repositori tersebut.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Ya</td><td>Model target, huruf besar (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Simpan satu entri per model.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>Direkomendasikan</td><td>Halaman proyek atau catatan rilis dibuka dari katalog.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Ya dalam praktiknya</td><td><code>type="img"</code> dan <code>handler="Custom Firmware"</code>. Tipe lain dan penangan non-firmware dilewati.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>Opsional</td><td>Merek katalog (<code>Innioasis</code>, <code>Timmkoo</code>). Kosong menggunakan merek default model.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>Opsional</td><td>Rilis nama file aset. Defaultnya adalah <code>rom.zip</code> pada Y1 dan <code>rom_&lt;model&gt;.zip</code> pada model lain.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>Opsional</td><td>Gumpalan yang tidak peka huruf besar-kecil untuk rilis yang ritsleting firmwarenya tidak diberi nama <code>rom*.zip</code> (misalnya <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>Opsional</td><td>Glob yang mengidentifikasi zip Y1 Type A dan Type B ketika nama filenya tidak berisi penanda biasa.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>Opsional</td><td>URL logo. Digunakan setelah rilisnya sendiri <code>updater.png</code> / <code>updater.jpg</code>, dan sebagai pengganti untuk setiap rilis.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>Opsional</td><td>Logo bertema gelap. <code>image_dark</code> adalah alias yang diterima.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>Opsional</td><td>Karya seni ringan sekunder, dicoba setelahnya <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>Opsional</td><td>Halaman dibuka setelah instalasi berhasil. Yang kedua mencakup panduan multi-langkah.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>Opsional</td><td>Dipisahkan koma <code>*-mirror</code> repo yang menerbitkan paket portabel yang siap dijalankan.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>Opsional</td><td>Repositori tempat firmware dibuat. Firmware dengan root turunan yang sama dapat menyimpan data pengguna.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>Opsional</td><td>Repositori aplikasi yang rilisnya menjelaskan apa yang disebarkan firmware. Membutuhkan <code>post_install</code> atau <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>Opsional</td><td>Repositori aplikasi yang APK aplikasinya diinstal setelah firmware.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>Opsional</td><td>Sembunyikan entri ketika Updater CE lebih tua dari versi ini.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>Opsional</td><td><code>true</code> (juga <code>1</code> / <code>yes</code>) memblokir Simpan Data sepenuhnya untuk firmware ini.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>Opsional</td><td>Pengidentifikasi stabil untuk tautan dan catatan pemasangan yang disimpan. Dihasilkan dari nama dan model saat kosong.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>Opsional</td><td>Deskripsi katalog singkat. Ini bisa berupa nilai atribut atau teks elemen.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> dan <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">Nama lama masih dibaca untuk kompatibilitas: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> dan <code>image_dark</code>. Entri baru harus menggunakan nama saat ini di atas.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Kirimkan baris sebagai permintaan tarik</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>Salin baris yang dihasilkan di atas.</strong> Mereka sudah cocok dengan format manifes terbaru.</li>
+        <li><strong>Sunting <code>slidia_manifest.xml</code> di repositori.</strong> Gunakan tautan edit di bawah; host repositori membuat fork dan cabang untuk Anda secara otomatis.</li>
+        <li><strong>Tempelkan baris sebelumnya <code>&lt;/slidia&gt;</code>,</strong> menjaga entri yang ada tidak berubah.</li>
+        <li><strong>Berkomitmen pada cabang baru</strong> (misalnya <code>add-your-firmware</code>), lalu buka permintaan tarik terhadap repositori Updater CE.</li>
+        <li><strong>Dalam PR, sertakan</strong> tautan proyek, model yang didukung, tag rilis, nama aset, dan perangkat yang Anda uji.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit manifes Updater CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Lihat manifes terbaru</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> dan <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">Pertahankan nama model dalam huruf besar, gunakan URL persis dari repositori publik Anda, dan simpan <code>type="img"</code> dan <code>handler="Custom Firmware"</code> untuk entri firmware.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">Jadikan rilisnya mudah untuk diverifikasi</h2>
+      <p>Berikan label rilis dan catatan rilis yang jelas pada rilis tersebut. Tag ini berguna bagi orang-orang, tetapi nama aset ZIP adalah apa yang digunakan Updater CE untuk mengidentifikasi paket instalasi.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>Daftar periksa rilis</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>Publikasikan rilis tersebut secara publik.</li>
+            <li>Lampirkan file ZIP sebagai aset rilis.</li>
+            <li>Nyatakan model yang didukung dan Type A atau Type B dalam catatan.</li>
+            <li>Buat daftar persiapan yang diperlukan atau batasan yang diketahui.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>, dan <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>Satu rilis, tiga aset</h3>
+          <p>Rilis bersama dapat berisi <code>rom.zip</code>, <code>rom_type_b.zip</code>, dan <code>rom_y2.zip</code>. Updater mengklasifikasikannya secara terpisah dan memilih dari model dan filter perangkat keras.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>Jangan menggabungkan tebakan</h3>
+          <p>Jangan menyertakan paket Y1 di bawah nama file Y2, atau menambahkan data sebar, prapemuat, atau partisi yang belum teruji hanya untuk memunculkan aset.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">Mengapa entri model penting selama flashing</h2>
+      <p>Manifes bukan sekedar menu download. Setelah ekstraksi, Updater CE menggunakan model yang diselesaikan untuk menyiapkan jalur instalasi yang cocok. Y1 dan Y2 memiliki file platform, prapemuat, konfigurasi sebar, dan tata letak perangkat yang berbeda.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> pembaru menyiapkan jalur Y1 dan menggunakan partisi bernama perangkat saat MTKClient digunakan.</li>
+        <li><strong>Y2:</strong> pembaru menyiapkan jalur Y2 dan menggunakan konfigurasi Y2 MT6582. Pemulihan penuh dapat menggunakan alamat fisik dari data sebar yang modelnya benar.</li>
+        <li><strong>Dukungan Lintas Platform:</strong> Updater CE menangani flashing asli langsung di Windows, Linux, dan macOS (mendukung Intel dan Apple Silicon Mac) tanpa alat flashing tambahan.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>Kontributor harus memberikan file firmware yang benar, bukan offset flash.</strong> Jangan mengedit alamat pencar, prapemuat, file DA, atau perintah partisi untuk mengatasi paket yang buruk. Perbaiki aset rilis dan uji pada model yang diinginkan.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">Sebelum Anda meminta penggabungan</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>, dan <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>Validasi XML dengan parser XML. Kutipan atau penutup hilang <code>/&gt;</code> dapat menyembunyikan setiap entri setelahnya.</li>
+        <li>Luncurkan pembaru dari checkout Anda sehingga memuat manifes lokal sebelum penyegaran jarak jauh.</li>
+        <li>Periksa Y1 dan Y2 secara terpisah. Konfirmasikan bahwa proyek hanya muncul jika paketnya didukung.</li>
+        <li>Periksa daftar rilis untuk <code>rom.zip</code>, <code>rom_type_b.zip</code>, dan <code>rom_y2.zip</code> sebagaimana berlaku.</li>
+        <li>Uji penginstalan sebenarnya pada perangkat yang dimaksud, dengan kabel data USB yang andal dan rencana pemulihan untuk kembali ke Perangkat Lunak Asli.</li>
+        <li>Dalam permintaan tarik, jelaskan apa yang Anda uji. Jangan mendeskripsikan model yang belum diuji sebagai model yang didukung.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>Untuk pemeriksaan lokal, jalankan perintah itu dari root repositori. Ini memverifikasi sintaks XML saja; itu tidak membuktikan bahwa rilis berisi firmware yang valid atau perangkat aman untuk di-flash.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">Tautan proyek yang berguna</h2>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_id.html">Community contribution notes</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Pembaruan Garpu CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Lihat manifesnya</a>
+        <a class="lumen-button" href="support_devs_id.html">Catatan kontribusi komunitas</a>
         <a class="lumen-button" href="troubleshooting_id.html">Pemecahan masalah</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">Memodifikasi keterampilan untuk agen AI</h2>
+      <p>Repositori itu <code>skills/</code> direktori adalah basis pengetahuan berbasis sumber untuk agen yang mengerjakan Y1 dan Y2 perangkat keras, firmware, tema, dan aplikasi. Setiap keterampilan memberi nama pada file proyek asal klaimnya, sehingga agen dapat memeriksa fakta sebelum mengganti perangkat.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>Mulai di sini</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Indeks keterampilan dan aturan keselamatan</a></h3>
+          <p>Cara memuat keterampilan, model mana yang berlaku, dan partisi yang tidak boleh ditulis oleh paket mana pun.</p>
         </article>
         <article class="lumen-card">
           <small>Perangkat keras</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 perangkat keras</a></h3>
+          <p>MT6572, roda sebagai peristiwa penting, tampilan 480x360, jalur FM/audio, penyimpanan dan peta partisi Type A/B.</p>
         </article>
         <article class="lumen-card">
           <small>Perangkat keras</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 perangkat keras</a></h3>
+          <p>Papan MT6582, pohon perangkat, panel GC9503V/ST7701S, rel PMIC/DAC, partisi dan image boot.</p>
         </article>
         <article class="lumen-card">
           <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Paket firmware</a></h3>
+          <p>rom.zip anatomi, file sebar, kontrak pembaruan Kelas A, dan daftar periksa rilis.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>Tema</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Penulisan tema dan kulit</a></h3>
+          <p>Y1 tema config.json, Rockbox WPS/SBS, Reborn skin dan Y2Player format skin v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>Semua keterampilan</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Jelajahi folder keterampilan</a></h3>
+          <p>Rockbox Y1/Y2, stok ROM Android, Y2Linux, aplikasi Android, peluncur, catatan rilis, dan penerbitan situs.</p>
         </article>
       </div>
     </section>

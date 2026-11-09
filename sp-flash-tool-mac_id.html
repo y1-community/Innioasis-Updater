@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>SP Flash Tool for Mac · MediaTek Scatter Flashing Guide & Alternatives</title>
-  <meta name="description" content="How to use SP Flash Tool on Mac using Updater CE and browse scatter files to flash MediaTek devices like Mechen H1, Innioasis Y1/Y2, Timmkoo, and MT6580/MT6572 MP3 players and phones.">
+  <title>SP Flash Tool untuk Mac · MediaTek Panduan &amp; Alternatif Scatter Flashing</title>
+  <meta name="description" content="Cara menggunakan SP Flash Tool di Mac menggunakan Updater CE dan menelusuri file pencar untuk mem-flash perangkat MediaTek seperti Mechen H1, Innioasis Y1/Y2, Timmkoo, dan pemutar MP3 serta ponsel MT6580/MT6572.">
   <link rel="canonical" href="https://innioasis.app/sp-flash-tool-mac_id.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/sp-flash-tool-mac.html">
@@ -81,42 +81,42 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">MediaTek Tools & Cross-Platform Flashing</p>
+      <p class="lumen-kicker">MediaTek Alat &amp; Flashing Lintas Platform</p>
       <h1>SP Flash Tool untuk Mac: Panduan Lengkap &amp; Browser Sebar</h1>
-      <p class="lead">Does official MediaTek SP Flash Tool run on macOS? Here is the exact status, how <strong>Pembaru CE</strong> provides native MediaTek flashing on Mac, and how to flash any scatter-based MediaTek MP3 player or smartphone.</p>
+      <p class="lead">Apakah MediaTek SP Flash Tool resmi berjalan di macOS? Berikut status tepatnya, caranya <strong>Pembaruan CE</strong> menyediakan flashing MediaTek asli pada Mac, dan cara mem-flash pemutar MP3 atau smartphone berbasis scatter MediaTek apa pun.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>The Truth About SP Flash Tool on macOS</h2>
-      <p>MediaTek never released an official macOS build of <strong>Smart Phone Flash Tool (SP Flash Tool)</strong>. The tool has only ever existed as a 32-bit/64-bit Windows application and an x86_64 Linux binary. Emulating SP Flash Tool on macOS through Wine or CrossOver fails because macOS kernel USB extensions do not allow USB serial pass-through at the precision required during BROM boot handshakes.</p>
-      <p><strong>The Solution:</strong> <strong>Pembaru CE</strong> bridges this gap by bundling native Apple Silicon and Intel macOS flashing libraries (via MTKclient low-level protocol engine) alongside automated scatter discovery!</p>
+      <h2>Kebenaran Tentang SP Flash Tool di macOS</h2>
+      <p>MediaTek tidak pernah merilis versi resmi macOS <strong>Alat Flash Ponsel Pintar (SP Flash Tool)</strong>. Alat ini hanya ada sebagai aplikasi Windows 32-bit/64-bit dan biner Linux x86_64. Meniru SP Flash Tool pada macOS melalui Wine atau CrossOver gagal karena ekstensi kernel macOS USB tidak mengizinkan serial pass-through USB pada presisi yang diperlukan selama jabat tangan boot BROM.</p>
+      <p><strong>Solusinya:</strong> <strong>Pembaruan CE</strong> menjembatani kesenjangan ini dengan menggabungkan pustaka flashing asli Apple Silicon dan Intel macOS (melalui mesin protokol tingkat rendah MTKclient) bersama dengan penemuan pencar otomatis!</p>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Flashing Any MediaTek Device with 'Install from File' (Scatter Browser)</h2>
-      <p>Updater CE is not restricted to Innioasis players. You can use it as a powerful universal MediaTek scatter flasher for any device requiring <strong>SP Flash Tool v5 or earlier</strong>:</p>
+      <h2>Mem-flash Semua Perangkat MediaTek dengan 'Instal dari File' (Browser Sebar)</h2>
+      <p>Updater CE tidak terbatas pada pemain Innioasis. Anda dapat menggunakannya sebagai flasher pencar universal MediaTek yang kuat untuk perangkat apa pun yang memerlukannya <strong>SP Flash Tool v5 atau lebih lama</strong>:</p>
       <ul class="lumen-benefits-list">
-        <li><strong>Mechen H1 &amp; H11:</strong> MT6580 portable HiFi Android players.</li>
-        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek touchscreen digital audio players.</li>
-        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek MT6572 / MT6582 music players.</li>
-        <li><strong>Legacy MediaTek Smartphones &amp; Feature Phones:</strong> Devices running MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753, and MT8163.</li>
+        <li><strong>Mechen H1 &amp; H11:</strong> Pemutar Android HiFi portabel MT6580.</li>
+        <li><strong>Timmkoo Q3, Q5, G1, A5:</strong> MediaTek pemutar audio digital layar sentuh.</li>
+        <li><strong>Oilsky, Phueut, Luoran:</strong> MediaTek pemutar musik MT6572 / MT6582.</li>
+        <li><strong>Ponsel Pintar &amp; Ponsel Menengah Lama MediaTek:</strong> Perangkat yang menjalankan MT6572, MT6580, MT6582, MT6735, MT6737, MT6739, MT6753, dan MT8163.</li>
       </ul>
       <div class="lumen-callout">
-        <h3>How to Load Custom Scatter Files in Updater CE:</h3>
+        <h3>Cara Memuat File Sebar Khusus di Updater CE:</h3>
         <ol class="lumen-steps">
-          <li>Download the factory firmware archive (<code>.zip</code> atau <code>.rar</code>) or extract its folder containing the <code>*scatter*.txt</code> file.</li>
-          <li>In Updater CE, choose <strong>Telusuri File…</strong> on the firmware selection screen.</li>
-          <li>Select the scatter text file (e.g., <code>MT6580_Android_scatter.txt</code>) or firmware zip package.</li>
-          <li>Updater CE parses memory offsets, partition addresses (preloader, boot, recovery, system, userdata), and verifies scatter integrity.</li>
-          <li>Follow the on-screen live prompt: power down the device and connect the USB cable to flash.</li>
+          <li>Unduh arsip firmware pabrik (<code>.zip</code> atau <code>.rar</code>) atau ekstrak foldernya yang berisi <code>*scatter*.txt</code> mengajukan.</li>
+          <li>Di Updater CE, pilih <strong>Telusuri File…</strong> pada layar pemilihan firmware.</li>
+          <li>Pilih file teks sebar (mis., <code>MT6580_Android_scatter.txt</code>) atau paket zip firmware.</li>
+          <li>Updater CE mem-parsing offset memori, alamat partisi (preloader, boot, recovery, sistem, data pengguna), dan memverifikasi integritas pencar.</li>
+          <li>Ikuti perintah langsung di layar: matikan perangkat dan sambungkan kabel USB untuk melakukan flash.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>When You Need an x64 Computer for Unbricking</h2>
-      <p>While macOS handles standard flashing and custom ROM installs cleanly via MTKclient, recovering from deep bootloop failures (where the preloader partition was wiped or mismatched) requires SP Flash Tool's full partition table rebuild.</p>
-      <p>If you encounter error stalls on Mac, switch to a 64-bit Windows PC or x86_64 Linux workstation, select <strong>Settings &gt; Show Advanced Settings &gt; Flash Method &gt; SP Flash Tool</strong>, and flash the factory scatter package.</p>
+      <h2>Saat Anda Membutuhkan Komputer x64 untuk Unbricking</h2>
+      <p>Meskipun macOS menangani flashing standar dan instalasi kustom ROM dengan bersih melalui klien MTK, pemulihan dari kegagalan bootloop yang mendalam (di mana partisi prapemuat dihapus atau tidak cocok) memerlukan pembuatan ulang tabel partisi lengkap SP Flash Tool.</p>
+      <p>Jika Anda mengalami error stall di Mac, beralihlah ke PC Windows 64-bit atau workstation Linux x86_64, pilih <strong>Pengaturan &gt; Tampilkan Pengaturan Lanjutan &gt; Metode Flash &gt; SP Flash Tool</strong>, dan flash paket pencar pabrik.</p>
     </section>
   </main>
   <div id="footer-root"></div>

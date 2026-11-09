@@ -188,7 +188,7 @@
       <p>Updater CE leest het manifest als catalogus. Elk <code>&lt;package&gt;</code> line vertelt de projectnaam, repository, model en handler. Wanneer een gebruiker dat project kiest, controleert Updater de gepubliceerde releases van de repository en zoekt naar een <code>rom*.zip</code> bezit.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
+          <h3>Duidelijk</h3>
           <p>Geeft het project een naam en wijst het toe aan een model. Y1 en Y2 hebben aparte regels nodig, zelfs als ze een repository delen.</p>
         </article>
         <article class="lumen-card">
@@ -429,9 +429,9 @@
           <tbody>
             <tr><th scope="row"><code>name</code></th><td>Ja</td><td>Softwarenaam weergegeven in de catalogus en op installatiekaarten.</td></tr>
             <tr><th scope="row"><code>repo</code></th><td>Ja</td><td><code>owner/repo</code>. De app leest de GitHub-releases van die repository.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>Ja</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Bewaar één inzending per model.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>Ja</td><td>Doelmodel, hoofdletter (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Bewaar één inzending per model.</td></tr>
             <tr><th scope="row"><code>url</code></th><td>Aanbevolen</td><td>Projectpagina of release-opmerkingen geopend vanuit de catalogus.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Ja in de praktijk</td><td><code>type="img"</code> en <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Ja in de praktijk</td><td><code>type="img"</code> en <code>handler="Custom Firmware"</code>. Andere typen en niet-firmware-handlers worden overgeslagen.</td></tr>
             <tr><th scope="row"><code>brand</code></th><td>Optioneel</td><td>Catalogusmerk (<code>Innioasis</code>, <code>Timmkoo</code>). Leeg gebruikt het standaardmerk van het model.</td></tr>
             <tr><th scope="row"><code>package_name</code></th><td>Optioneel</td><td>Bestandsnaam van item vrijgeven. Standaard ingesteld op <code>rom.zip</code> op Y1 en <code>rom_&lt;model&gt;.zip</code> op andere modellen.</td></tr>
             <tr><th scope="row"><code>asset_pattern</code></th><td>Optioneel</td><td>Hoofdletterongevoelige glob voor releases waarvan de firmware-zips geen naam hebben <code>rom*.zip</code> (Bijvoorbeeld <code>my-firmware-*.zip</code>).</td></tr>
@@ -453,7 +453,7 @@
       </div>
       <p class="lumen-meta">Verouderde namen worden nog steeds gelezen op compatibiliteit: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> en <code>image_dark</code>. Nieuwe vermeldingen moeten de huidige namen hierboven gebruiken.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>Dien de regels in als een pull-aanvraag</h3>
       <ol class="lumen-steps">
         <li><strong>Kopieer de gegenereerde regels hierboven.</strong> Ze komen al overeen met het nieuwste manifestformaat.</li>
         <li><strong>Bewerking <code>slidia_manifest.xml</code> in de repository.</strong> Gebruik de onderstaande bewerkingslink; de repositoryhost maakt automatisch een fork en een branch voor u.</li>

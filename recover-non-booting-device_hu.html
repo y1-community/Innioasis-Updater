@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20260803" defer></script>
-  <title>How to Recover a Non-Booting MediaTek Player After MTKclient Failure · Innioasis Community</title>
-  <meta name="description" content="Step-by-step guide to unbrick and recover non-booting Innioasis Y1, Y2, G1, Timmkoo, and MediaTek players after MTKclient interrupted flashes on Linux or macOS.">
+  <title>Nem induló MediaTek lejátszó helyreállítása MTK-kliens meghibásodása után · Innioasis Közösség</title>
+  <meta name="description" content="Útmutató lépésről lépésre a nem induló Innioasis Y1, Y2, G1, Timmkoo és MediaTek lejátszók leállításához és helyreállításához, miután az MTKclient megszakította a flash-eket Linuxon vagy macOS-en.">
   <link rel="canonical" href="https://innioasis.app/recover-non-booting-device_hu.html">
   <!-- i18n-hreflang-start -->
   <link rel="alternate" hreflang="x-default" href="https://innioasis.app/recover-non-booting-device.html">
@@ -77,78 +77,78 @@
   <!-- i18n-hreflang-end -->
 </head>
 <body class="site-themes-app">
-  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <a class="lumen-skip-link" href="#main">Ugrás a tartalomhoz</a>
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide">
     <header>
-      <p class="lumen-kicker">Troubleshooting & Device Recovery</p>
-      <h1>Recovering a Non-Booting Device After MTKclient Flashing</h1>
-      <p class="lead">If your Innioasis Y1, Y2, or MediaTek device fails to power on or shows a black screen after flashing with MTKclient on macOS or Linux, do not panic. The hardware BootROM (BROM) is permanent and cannot be destroyed.</p>
+      <p class="lumen-kicker">Hibaelhárítás és eszköz-helyreállítás</p>
+      <h1>Nem rendszerindító eszköz helyreállítása az MTKclient villogása után</h1>
+      <p class="lead">Ha a Innioasis Y1, Y2 vagy MediaTek eszköz nem kapcsol be, vagy fekete képernyőt mutat, miután az MTKclienttel villogott macOS vagy Linux rendszeren, ne essen pánikba. A hardveres BootROM (BROM) állandó és nem semmisíthető meg.</p>
     </header>
 
     <section class="lumen-guide-section">
-      <h2>Why MTKclient May Stall or Leave a Black Screen</h2>
-      <p>MTKclient relies on software exploit payloads (kamakiri / amonet) to bypass DA authentication and raw USB communication via libusb. On macOS and Linux ARM64 systems:</p>
+      <h2>Miért akadhat el vagy hagyhat el fekete képernyőt az MTKclient?</h2>
+      <p>Az MTKclient szoftveres hasznos terhelésekre (kamakiri / amonet) támaszkodik, hogy megkerülje a DA hitelesítést és a libusb-n keresztüli nyers USB kommunikációt. MacOS és Linux ARM64 rendszereken:</p>
       <ul class="lumen-benefits-list">
-        <li>USB handshake latency or port timeouts on macOS can stall DA payload injection mid-transfer.</li>
-        <li>Missing or incomplete partition headers leave the bootloader (preloader / lk) in a non-responsive state.</li>
-        <li>The player appears completely dead—no LED, no charging icon, no screen backlight.</li>
+        <li>USB A kézfogási késleltetés vagy a port időtúllépései a macOS rendszeren leállíthatják a DA hasznos terhelés beadását az átvitel közben.</li>
+        <li>A hiányzó vagy hiányos partíciófejlécek a rendszerbetöltőt (preloader / lk) nem reagáló állapotban hagyják.</li>
+        <li>A lejátszó teljesen halottnak tűnik – nincs LED, nincs töltési ikon, nincs képernyő háttérvilágítása.</li>
       </ul>
-      <p>Even in this state, the MediaTek chipset drops back into <strong>BROM Mode</strong> (USB VID 0e8d, PID 0003), ready for official low-level recovery.</p>
+      <p>Még ebben az állapotban is visszaesik a MediaTek lapkakészlet <strong>BROM mód</strong> (USB VID 0e8d, PID 0003), készen áll a hivatalos alacsony szintű helyreállításra.</p>
     </section>
 
     <section class="lumen-guide-section" id="sp-flash-tool-engine">
-      <h2>The Definitive Recovery Method: SP Flash Tool Engine in Updater CE</h2>
-      <p>The safest, most reliable way to recover your bricked player is using <strong>Frissítő CE</strong> configured with the official <strong>SP Flash Tool</strong> backend.</p>
+      <h2>A végleges helyreállítási módszer: SP Flash Tool Motor az Updater CE-ben</h2>
+      <p>A legbiztonságosabb és legmegbízhatóbb módja annak, hogy helyreállítsd a tégla lejátszód <strong>Frissítő CE</strong> a tisztviselővel konfigurálva <strong>SP Flash Tool</strong> backend.</p>
       
       <div class="lumen-callout" style="margin: 20px 0; padding: 20px; border-left: 4px solid #3b82f6; background: rgba(59,130,246,0.08);">
-        <h3>Exact Steps in Updater CE:</h3>
+        <h3>Pontos lépések az Updater CE-ben:</h3>
         <ol class="lumen-steps" style="margin-top: 10px;">
-          <li>Open <strong>Frissítő CE</strong>.</li>
-          <li>Click <strong>Settings</strong> in the left navigation sidebar.</li>
-          <li>Scroll down to the Advanced section and enable <strong>Show Advanced Settings</strong>.</li>
-          <li>Under <strong>Install Method</strong> (or <em>Flashing Engine for MediaTek installer</em>), locate the <strong>Flash Method</strong> dropdown.</li>
-          <li>Change the selection from <em>Auto (recommended)</em> or <em>MTKClient</em> to <strong>SP Flash Tool</strong>.</li>
-          <li>Confirm the prompt and return to the main install flow.</li>
+          <li>Nyissa meg <strong>Frissítő CE</strong>.</li>
+          <li>Kattintson <strong>Beállítások elemre</strong> a bal oldali navigációs oldalsávban.</li>
+          <li>Görgessen le a Speciális részhez, és engedélyezze <strong>Speciális beállítások megjelenítése</strong>.</li>
+          <li>alatt <strong>Telepítési módszer</strong> (vagy <em>Villogó motor a MediaTek telepítő számára</em>), keresse meg a <strong>Flash-módszer</strong> legördülő menüt.</li>
+          <li>Módosítsa a kijelölést innen <em>Automatikus (ajánlott)</em> vagy <em>MTKClient</em> hogy <strong>SP Flash Tool</strong>.</li>
+          <li>Erősítse meg a felszólítást, és térjen vissza a fő telepítési folyamathoz.</li>
         </ol>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Platform Architecture & OS Requirements for SP Flash Tool</h2>
-      <p>MediaTek's official <code>SP Flash Tool</code> binary is compiled natively as an <strong>x86_64 ELF binary for Linux</strong> and a <strong>PE32+ executable for Windows x64</strong>.</p>
+      <h2>Platformarchitektúra és operációs rendszer követelményei a következőhöz: SP Flash Tool</h2>
+      <p>MediaTek tisztviselője <code>SP Flash Tool</code> bináris natív módon, mint an <strong>x86_64 ELF bináris Linuxhoz</strong> és a <strong>PE32+ futtatható Windows x64-hez</strong>.</p>
       <div class="lumen-warning" style="padding: 16px; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; background: rgba(239,68,68,0.08); margin: 16px 0;">
-        <strong>Important Hardware Note for macOS and ARM64 Linux Users:</strong><br>
-        Because MediaTek does not compile SP Flash Tool for macOS (Darwin) or Linux ARM64 (aarch64), macOS users and ARM64 Linux users (such as Raspberry Pi or Apple Silicon running Asahi Linux) experiencing a brick must connect their player to:
+        <strong>Fontos hardver megjegyzés macOS és ARM64 Linux felhasználók számára:</strong><br>
+        Mivel a MediaTek nem fordítja le a SP Flash Tool-et macOS-re (Darwin) vagy Linux ARM64-re (aarch64), a macOS-felhasználók és az ARM64 Linux-felhasználók (például az Asahi Linuxot futtató Raspberry Pi vagy az Apple Silicon), ha kockával rendelkeznek, a lejátszójukat a következőhöz kell csatlakoztatniuk:
         <ul style="margin: 8px 0 0 20px;">
-          <li>An <strong>x64 Windows PC</strong> (Windows 10 / 11 64-bit), or</li>
-          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64-bit).</li>
+          <li>An <strong>x64 Windows PC</strong> (Windows 10/11 64 bites), vagy</li>
+          <li>An <strong>x86_64 Linux PC</strong> (Ubuntu, Debian, Fedora, Arch 64 bites).</li>
         </ul>
       </div>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Step-by-Step Hardware Unbricking Process</h2>
+      <h2>Lépésről lépésre a hardver feloldási folyamata</h2>
       <ol class="lumen-steps">
-        <li><strong>Disconnect the Player:</strong> Unplug the USB cable from the player and PC completely.</li>
-        <li><strong>Hard Power Off:</strong> Hold the Power button (or Power + Volume Down) for 15 seconds to ensure the chipset is fully powered down and not stuck in a low-power USB loop.</li>
-        <li><strong>Launch Updater CE with SP Flash Tool Mode:</strong> Select your device model (e.g. <em>Innioasis Y1</em> or <em>Innioasis Y2</em>) and choose <em>Original Software</em> to restore stock partitions.</li>
-        <li><strong>Initiate Install / Restore:</strong> Click <em>Install / Restore</em> in Updater CE. Wait until the status prompt says <em>Waiting for player...</em></li>
-        <li><strong>Insert USB Cable to Trigger BROM:</strong> While the device is OFF, plug in the USB cable directly to a high-speed motherboard USB port (avoid unpowered USB hubs).</li>
-        <li>The system will detect the MediaTek VCOM port, push the Download Agent (DA), rewrite partition tables, and restore all firmware images cleanly.</li>
+        <li><strong>A lejátszó leválasztása:</strong> Húzza ki teljesen a USB kábelt a lejátszóból és a számítógépből.</li>
+        <li><strong>Erős kikapcsolás:</strong> Tartsa lenyomva a bekapcsológombot (vagy a bekapcsológombot + a hangerő csökkentése) 15 másodpercig, hogy megbizonyosodjon arról, hogy a lapkakészlet teljesen ki van kapcsolva, és ne ragadjon be az alacsony fogyasztású USB hurokba.</li>
+        <li><strong>Indítsa el az Updater CE-t SP Flash Tool móddal:</strong> Válassza ki a készülék modelljét (pl. <em>Innioasis Y1</em> vagy <em>Innioasis Y2</em>), és válassza ki <em>Eredeti szoftver</em> az állománypartíciók visszaállításához.</li>
+        <li><strong>Telepítés/visszaállítás indítása:</strong> Kattintson <em>Telepítés / visszaállítás</em> az Updater CE-ben. Várja meg, amíg az állapotjelző üzenet meg nem jelenik <em>Játékosra várva...</em></li>
+        <li><strong>Helyezze be a USB kábelt a BROM indításához:</strong> Amíg az eszköz KI van kapcsolva, csatlakoztassa a USB kábelt közvetlenül a nagy sebességű alaplap USB portjához (kerülje a tápellátás nélküli USB hubokat).</li>
+        <li>A rendszer észleli a MediaTek VCOM portot, lenyomja a letöltési ügynököt (DA), átírja a partíciós táblákat, és tisztán visszaállítja az összes firmware lemezképet.</li>
       </ol>
     </section>
 
     <section class="lumen-guide-section">
-      <h2>Permutations by Model and Operating System</h2>
+      <h2>Permutációk modell és operációs rendszer szerint</h2>
       <div style="overflow-x: auto;">
         <table class="lumen-release-table">
           <thead>
             <tr>
-              <th>Model</th>
-              <th>Failed Platform</th>
-              <th>Recommended Recovery Setup</th>
-              <th>Engine &amp; Mode</th>
+              <th>Modell</th>
+              <th>Sikertelen platform</th>
+              <th>Javasolt helyreállítási beállítások</th>
+              <th>Motor és üzemmód</th>
             </tr>
           </thead>
           <tbody>
@@ -156,31 +156,31 @@
               <td><strong>Innioasis Y1</strong></td>
               <td>macOS (Apple Silicon / Intel)</td>
               <td>Windows x64 / Linux x86_64 PC</td>
-              <td>SP Flash Tool + Y1 Stock ROM</td>
+              <td>SP Flash Tool + Y1 Részvény ROM</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y1</strong></td>
               <td>Linux ARM64 / x86_64</td>
-              <td>Linux x86_64 or Windows x64 PC</td>
-              <td>SP Flash Tool + Community DA</td>
+              <td>Linux x86_64 vagy Windows x64 PC</td>
+              <td>SP Flash Tool + Közösségi DA</td>
             </tr>
             <tr>
               <td><strong>Innioasis Y2</strong></td>
-              <td>macOS (MTKclient stalled)</td>
+              <td>macOS (MTK-kliens leállt)</td>
               <td>Windows x64 / Linux x86_64 PC</td>
               <td>SP Flash Tool + Y2 Scatter Recovery</td>
             </tr>
             <tr>
               <td><strong>Innioasis G1 / G3 / G5</strong></td>
               <td>macOS / Linux MTKclient</td>
-              <td>Windows x64 PC with VCOM Drivers</td>
-              <td>SP Flash Tool + Factory Firmware</td>
+              <td>Windows x64 PC VCOM illesztőprogramokkal</td>
+              <td>SP Flash Tool + Gyári firmware</td>
             </tr>
             <tr>
               <td><strong>Mechen H1 / Timmkoo A5</strong></td>
-              <td>Any platform</td>
-              <td>Windows x64 or Linux x86_64 PC</td>
-              <td>SP Flash Tool + Scatter file</td>
+              <td>Bármilyen platform</td>
+              <td>Windows x64 vagy Linux x86_64 PC</td>
+              <td>SP Flash Tool + Scatter fájl</td>
             </tr>
           </tbody>
         </table>

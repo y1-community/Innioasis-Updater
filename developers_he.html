@@ -26,18 +26,18 @@
   <meta name="author" content="Innioasis and Ryan Specter">
   <meta name="creator" content="Innioasis and Ryan Specter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads</title>
-  <meta name="description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
-  <meta name="keywords" content="Innioasis Updater developer guide, slidia_manifest.xml, custom firmware, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, release assets">
+  <title>מפתחים | הוסף קושחה מותאמת אישית ל-Innioasis Updater CE - Innioasis הורדות קושחה</title>
+  <meta name="description" content="תיעוד למפתחים להוספת קושחה מותאמת אישית Innioasis Y1 או Y2 לעדכון CE: חלוק את המאגר, פרסם rom.zip נכסים, ערוך slidia_manifest.xml, בדוק ופתח בקשת משיכה.">
+  <meta name="keywords" content="Innioasis מדריך למפתחים לעדכון, slidia_manifest.xml, קושחה מותאמת אישית, Y1 ROM, Y2 ROM, rom.zip, rom_type_b.zip, rom_y2.zip, נכסי שחרור">
   <link rel="canonical" href="https://innioasis.app/developers_he.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta property="og:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta property="og:title" content="מפתחים | הוסף קושחה מותאמת אישית ל-Innioasis Updater CE - Innioasis הורדות קושחה">
+  <meta property="og:description" content="תיעוד למפתחים להוספת קושחה מותאמת אישית Innioasis Y1 או Y2 לעדכון CE: חלוק את המאגר, פרסם rom.zip נכסים, ערוך slidia_manifest.xml, בדוק ופתח בקשת משיכה.">
   <meta property="og:url" content="https://innioasis.app/developers_he.html">
   <meta property="og:image" content="https://innioasis.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Developers | Add custom firmware to Innioasis Updater CE - Innioasis Firmware Downloads">
-  <meta name="twitter:description" content="Developer documentation for adding a custom Innioasis Y1 or Y2 firmware to Updater CE: fork the repository, publish rom.zip assets, edit slidia_manifest.xml, test, and open a pull request.">
+  <meta name="twitter:title" content="מפתחים | הוסף קושחה מותאמת אישית ל-Innioasis Updater CE - Innioasis הורדות קושחה">
+  <meta name="twitter:description" content="תיעוד למפתחים להוספת קושחה מותאמת אישית Innioasis Y1 או Y2 לעדכון CE: חלוק את המאגר, פרסם rom.zip נכסים, ערוך slidia_manifest.xml, בדוק ופתח בקשת משיכה.">
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
 
   <link rel="icon" href="y1_illustration.png">
@@ -136,117 +136,117 @@
   <div id="nav-root"></div>
   <main id="main" class="lumen-guide lumen-developer-guide">
     <header>
-      <p class="lumen-kicker">For firmware developers</p>
-      <h1>Add your firmware to Updater CE.</h1>
-      <p class="lead">Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to <code>slidia_manifest.xml</code>, test the model filters, and open a pull request. One repository can serve every model it supports.</p>
+      <p class="lumen-kicker">למפתחי קושחה</p>
+      <h1>הוסף את הקושחה שלך ל-Updater CE.</h1>
+      <p class="lead">Updater CE הוא קטלוג הקהילה ומתקין עבור קושחה מותאמת אישית. פתח את הפרויקט שלך מבסיס ROM, פרסם אותו כמאגר ציבורי עם נכסי השחרור הנכונים, הוסף את ערכי המודל ל- <code>slidia_manifest.xml</code>, בדוק את מסנני הדגם ופתח בקשת משיכה. מאגר אחד יכול לשרת כל דגם שהוא תומך בו.</p>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">View the Updater CE source</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">צפה במקור Updater CE</a>
         <a class="lumen-button" href="firmware_he.html">עיין בהורדות תוכנה</a>
       </div>
     </header>
 
 <section class="lumen-guide-section" aria-labelledby="base-roms-title">
-      <h2 id="base-roms-title">Start from a base ROM</h2>
-      <p>Base ROMs give custom firmware developers a clean Android foundation with the wireless radio chips enabled. On the Y1 they enable Wi-Fi and GPS alongside the factory Bluetooth and FM; on the Y2 they enable Wi-Fi, GPS, and FM alongside the factory Bluetooth.</p>
+      <h2 id="base-roms-title">התחל מבסיס ROM</h2>
+      <p>רכיבי ROM בסיסיים מעניקים למפתחי קושחה מותאמים אישית בסיס אנדרואיד נקי עם שבבי הרדיו האלחוטיים מופעלים. ב-Y1 הם מאפשרים Wi-Fi ו-GPS לצד Bluetooth ו-FM של היצרן; ב-Y2 הם מאפשרים Wi-Fi, GPS ו-FM לצד Bluetooth של היצרן.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Base ROM downloads for custom firmware development, with the Android version and wireless features each one enables</caption>
+          <caption class="lumen-visually-hidden">הורדות בסיס ROM לפיתוח קושחה מותאם אישית, עם גרסת אנדרואיד ותכונות אלחוטיות שכל אחת מהן מאפשרת</caption>
           <thead>
-            <tr><th scope="col">הורדה</th><th scope="col">Device</th><th scope="col">Android</th><th scope="col">Wireless features</th></tr>
+            <tr><th scope="col">הורדה</th><th scope="col">מכשיר</th><th scope="col">Android</th><th scope="col">תכונות אלחוטיות</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>Adds Wi-Fi and GPS to the factory Bluetooth and FM (FM already works on the Y1 from the factory). For Y1 players that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>Adds Wi-Fi, GPS, and FM to the factory Bluetooth. The Y2 radio chip is fully enabled, so FM is available here too.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom.zip"><code>rom.zip</code></a></th><td>Y1 · Type A</td><td>Android 4.2.2</td><td>מוסיף Wi-Fi ו-GPS למפעל Bluetooth ו-FM (FM כבר עובד על Y1 מהמפעל). עבור Y1 נגנים שנשלחו עם מערכת הפעלה 2.0.0 ואילך.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y1-ata-rom/releases/download/0.1/rom_type_b.zip"><code>rom_type_b.zip</code></a></th><td>Y1 · Type B</td><td>Android 4.2.2</td><td>מוסיף Wi-Fi ו-GPS למפעל Bluetooth ו-FM (FM כבר עובד על Y1 מהמפעל). עבור Y1 שחקנים שנשלחו עם מערכת הפעלה קודמת מ-2.0.0.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/y1-community/y2-ata-rom/releases/download/y2-ata/rom_y2.zip"><code>rom_y2.zip</code></a></th><td>Y2</td><td>Android 4.4.2</td><td>מוסיף Wi-Fi, GPS ו-FM ל-Bluetooth של היצרן. שבב הרדיו Y2 מופעל במלואו, כך ש-FM זמין גם כאן.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">These images are the stock Android base (AOSP) with the device wireless radios enabled, so a custom firmware can add network features instead of replacing the radio stack. They are the practical starting point for the publishing steps below.</p>
+      <p class="lumen-meta">תמונות אלה הן בסיס אנדרואיד (AOSP) המניות עם מכשירי הרדיו האלחוטיים מופעלים, כך שקושחה מותאמת אישית יכולה להוסיף תכונות רשת במקום להחליף את מחסנית הרדיו. הם נקודת ההתחלה המעשית לשלבי הפרסום שלהלן.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="packages-title">
-      <h2 id="packages-title">Use these release asset names</h2>
-      <p>The filename is part of the compatibility signal. Keep the names exact and put the ZIP files in the project's release assets, not only in the repository source tree.</p>
+      <h2 id="packages-title">השתמש בשמות נכסי ההפצה האלה</h2>
+      <p>שם הקובץ הוא חלק מאות התאימות. שמרו על השמות מדויקים והכניסו את קובצי ה-ZIP לנכסי השחרור של הפרויקט, לא רק בעץ המקור של המאגר.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">Firmware ZIP asset names and supported devices</caption>
+          <caption class="lumen-visually-hidden">שמות נכסי ZIP של קושחה ומכשירים נתמכים</caption>
           <thead>
-            <tr><th scope="col">Asset</th><th scope="col">Device</th><th scope="col">חומרה</th><th scope="col">Meaning</th></tr>
+            <tr><th scope="col">נכס</th><th scope="col">מכשיר</th><th scope="col">חומרה</th><th scope="col">משמעות</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 devices that shipped with OS 2.0.0 or later.</td></tr>
-            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 devices that shipped with an OS earlier than 2.0.0.</td></tr>
-            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>The Y2 full-install package. Keep it separate from Y1 assets.</td></tr>
+            <tr><th scope="row"><code>rom.zip</code></th><td>Y1</td><td>Type A</td><td>Y1 מכשירים שנשלחו עם מערכת הפעלה 2.0.0 ואילך.</td></tr>
+            <tr><th scope="row"><code>rom_type_b.zip</code></th><td>Y1</td><td>Type B</td><td>Y1 מכשירים שנשלחו עם מערכת הפעלה קודמת מ-2.0.0.</td></tr>
+            <tr><th scope="row"><code>rom_y2.zip</code></th><td>Y2</td><td>Y2</td><td>חבילת ההתקנה המלאה Y2. שמור אותו בנפרד מנכסי Y1.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="lumen-warning"><strong>Do not rename a package to make it fit another model.</strong> Y1 and Y2 use different MediaTek platform files and flashing configuration. Publish the package for the hardware it actually supports.</div>
+      <div class="lumen-warning"><strong>אל תשנה שם של חבילה כדי שתתאים לדגם אחר.</strong> Y1 ו-Y2 משתמשים בקבצי פלטפורמה שונים MediaTek ובתצורה מהבהבת. פרסם את החבילה עבור החומרה שהיא באמת תומכת בה.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="how-it-works-title">
-      <h2 id="how-it-works-title">How the connection works</h2>
-      <p>Updater CE reads the manifest as its catalogue. Each <code>&lt;package&gt;</code> line tells it the project name, repository, model, and handler. When a user chooses that project, Updater checks the repository’s published releases and looks for a <code>rom*.zip</code> asset.</p>
+      <h2 id="how-it-works-title">איך החיבור עובד</h2>
+      <p>Updater CE קורא את המניפסט כקטלוג שלו. כל אחד <code>&lt;package&gt;</code> line אומר לו את שם הפרויקט, המאגר, המודל והמטפל. כאשר משתמש בוחר בפרוייקט זה, Updater בודק את המהדורות שפורסמו של המאגר ומחפש א <code>rom*.zip</code> נכס.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Manifest</h3>
-          <p>Names the project and maps it to a model. Y1 and Y2 need separate lines, even when they share a repository.</p>
+          <h3>מניפסט</h3>
+          <p>נותן שם לפרויקט וממפה אותו למודל. Y1 ו-Y2 צריכים שורות נפרדות, גם כאשר הם חולקים מאגר.</p>
         </article>
         <article class="lumen-card">
-          <h3>Published release</h3>
-          <p>Contains the installable ZIP assets. A single release may contain the Y1 Type A, Y1 Type B, and Y2 packages together.</p>
+          <h3>מהדורה שפורסמה</h3>
+          <p>מכיל את נכסי ה-ZIP הניתנים להתקנה. מהדורה בודדת עשויה להכיל את החבילות Y1 Type A, Y1 Type B, ו-Y2 יחד.</p>
         </article>
         <article class="lumen-card">
-          <h3>Updater CE install</h3>
-          <p>Uses the selected model to choose the matching package and model-specific flashing path. The user should not have to guess a filename.</p>
+          <h3>התקנת Updater CE</h3>
+          <p>משתמש בדגם שנבחר כדי לבחור את החבילה התואמת ואת נתיב ההבהוב הספציפי לדגם. המשתמש לא צריך לנחש שם קובץ.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="steps-title">
-      <h2 id="steps-title">Publish a project in five steps</h2>
+      <h2 id="steps-title">פרסם פרויקט בחמישה שלבים</h2>
       <ol class="lumen-steps">
-        <li><strong>Fork the Updater CE repository.</strong> Create your own fork of <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, then clone your fork locally.</li>
-        <li><strong>Prepare a public firmware repository.</strong> Make sure the repository is public and its release contains the correct ZIP assets. You can put <code>rom.zip</code>, <code>rom_type_b.zip</code>, ו <code>rom_y2.zip</code> on the same release when they belong to the same version.</li>
-        <li><strong>Edit the manifest.</strong> פתוח <code>slidia_manifest.xml</code> in the root of your Updater CE fork. Add one line for each model the release supports (Y1 and Y2 are the common pair). The <code>repo</code> value is the repository's <code>owner/repository</code>; <code>url</code> is the public project page.</li>
-        <li><strong>Test the catalogue.</strong> Run Updater from the edited checkout. Select Y1 and confirm the project shows the Y1 assets. Select Y2 and confirm it shows the Y2 release. Check Type A and Type B separately when both are published.</li>
-        <li><strong>Open a pull request.</strong> Push the manifest change to your fork and open a pull request against the upstream Updater CE repository. Include the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>מזלג את מאגר Updater CE.</strong> צור מזלג משלך <a href="https://github.com/y1-community/Innioasis-Updater" target="_blank" rel="noopener noreferrer">y1-community/Innioasis-Updater</a>, ואז לשבט את המזלג שלך באופן מקומי.</li>
+        <li><strong>הכן מאגר קושחה ציבורי.</strong> ודא שהמאגר הוא ציבורי והשחרור שלו מכיל את נכסי ה-ZIP הנכונים. אתה יכול לשים <code>rom.zip</code>, <code>rom_type_b.zip</code>, ו <code>rom_y2.zip</code> באותה גרסה כשהם שייכים לאותה גרסה.</li>
+        <li><strong>ערוך את המניפסט.</strong> פתוח <code>slidia_manifest.xml</code> בשורש המזלג של Updater CE. הוסף שורה אחת עבור כל דגם שהמהדורה תומכת בו (Y1 ו-Y2 הם הזוג המשותף). ה <code>repo</code> הערך הוא של המאגר <code>owner/repository</code>; <code>url</code> הוא עמוד הפרויקט הציבורי.</li>
+        <li><strong>בדוק את הקטלוג.</strong> הפעל את Updater מהקופה הערוכה. בחר Y1 ואשר שהפרויקט מציג את הנכסים Y1. בחר Y2 ואשר שזה מציג את השחרור Y2. סמן את Type A ואת Type B בנפרד כאשר שניהם מתפרסמים.</li>
+        <li><strong>פתח בקשת משיכה.</strong> דחף את שינוי המניפסט למזלג שלך ופתח בקשת משיכה כנגד מאגר ה-Upstream CE במעלה הזרם. כלול את קישור הפרויקט, דגמים נתמכים, תג שחרור, שמות נכסים והמכשירים שבדקת.</li>
       </ol>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="manifest-title">
-      <h2 id="manifest-title">Generate your manifest lines</h2>
-      <p>Fill in the repository and tick every model the release supports. The generator writes one <code>&lt;package&gt;</code> line per model and only includes the attributes you set, so the result matches the current <code>slidia_manifest.xml</code> format. Every attribute Updater CE reads is available below — the optional ones are under <strong>More options</strong>.</p>
+      <h2 id="manifest-title">צור את שורות המניפסט שלך</h2>
+      <p>מלא את המאגר וסמן כל דגם שהמהדורה תומכת בו. המחולל כותב אחד <code>&lt;package&gt;</code> שורה לכל דגם וכוללת רק את התכונות שהגדרת, כך שהתוצאה תואמת את הנוכחי <code>slidia_manifest.xml</code> פוּרמָט. כל תכונה ש- Updater CE קורא זמינה למטה - האופציונליים נמצאים מתחת <strong>אפשרויות נוספות</strong>.</p>
 
       <div class="lumen-manifest-form" id="manifest-generator" data-manifest-generator>
         <div class="lumen-manifest-fields">
           <div class="lumen-field">
-            <label for="manifest-repo-url">Repository URL</label>
+            <label for="manifest-repo-url">כתובת האתר של מאגר</label>
             <input type="url" id="manifest-repo-url" value="https://github.com/your-account/your-firmware" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">The public GitHub repository. The generator extracts <code>owner/repository</code> from the URL.</span>
+            <span class="lumen-field-help">המאגר הציבורי GitHub. הגנרטור מחלץ <code>owner/repository</code> מכתובת האתר.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-name">Software name</label>
-            <input type="text" id="manifest-name" placeholder="Defaults to the repository name" autocomplete="off">
-            <span class="lumen-field-help">Shown in the app and the site catalogue.</span>
+            <label for="manifest-name">שם תוכנה</label>
+            <input type="text" id="manifest-name" placeholder="ברירת המחדל של שם המאגר" autocomplete="off">
+            <span class="lumen-field-help">מוצג באפליקציה ובקטלוג האתר.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-project-url">Project URL</label>
-            <input type="url" id="manifest-project-url" placeholder="Defaults to the repository URL" autocomplete="off" spellcheck="false">
-            <span class="lumen-field-help">Human-facing page for the project or its release notes.</span>
+            <label for="manifest-project-url">כתובת האתר של הפרויקט</label>
+            <input type="url" id="manifest-project-url" placeholder="ברירת המחדל של כתובת האתר של המאגר" autocomplete="off" spellcheck="false">
+            <span class="lumen-field-help">דף הפונה לאדם עבור הפרויקט או הערות השחרור שלו.</span>
           </div>
           <div class="lumen-field">
-            <label for="manifest-brand">Brand</label>
+            <label for="manifest-brand">מותג</label>
             <input type="text" id="manifest-brand" value="Innioasis" list="manifest-brand-suggestions" autocomplete="off">
             <datalist id="manifest-brand-suggestions">
               <option value="Innioasis"></option>
               <option value="Timmkoo"></option>
             </datalist>
-            <span class="lumen-field-help">Clear this to use the model's default brand. SR1, Q3, Q5 and Q3e are Timmkoo models.</span>
+            <span class="lumen-field-help">נקה זאת כדי להשתמש במותג ברירת המחדל של הדגם. SR1, Q3, Q5 ו-Q3e הם Timmkoo דגמים.</span>
           </div>
         </div>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Devices (one line each)</legend>
+          <legend>מכשירים (שורה אחת כל אחד)</legend>
           <div class="lumen-manifest-checks">
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y1" checked><span>Y1</span></label>
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Y2" checked><span>Y2</span></label>
@@ -262,140 +262,140 @@
             <label class="lumen-checkbox"><input type="checkbox" name="manifest-device" value="Q3e"><span>Q3e</span></label>
           </div>
           <div class="lumen-field lumen-manifest-other-device">
-            <label for="manifest-other-devices">Other models</label>
-            <input type="text" id="manifest-other-devices" placeholder="Comma separated, e.g. X1, X2" autocomplete="off">
-            <span class="lumen-field-help">For a model that is not listed above. Known models keep their catalogue spelling.</span>
+            <label for="manifest-other-devices">דגמים אחרים</label>
+            <input type="text" id="manifest-other-devices" placeholder="מופרדים בפסיקים, למשל. X1, X2" autocomplete="off">
+            <span class="lumen-field-help">לדגם שאינו מופיע למעלה. דגמים מוכרים שומרים על האיות בקטלוג שלהם.</span>
           </div>
         </fieldset>
 
         <fieldset class="lumen-manifest-group">
-          <legend>Flags</legend>
+          <legend>דגלים</legend>
           <div class="lumen-manifest-checks lumen-manifest-checks--stack">
-            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> — never offer Keep Data for this firmware</span></label>
-            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>Built from Original Software — adds <code>derivative="y1-community/y1-stock-rom"</code></span></label>
+            <label class="lumen-checkbox" for="manifest-do-not-keep-data"><input type="checkbox" id="manifest-do-not-keep-data"><span><code>do_not_keep_data</code> - לעולם אל תציע את Keep Data עבור קושחה זו</span></label>
+            <label class="lumen-checkbox" for="manifest-derivative-original"><input type="checkbox" id="manifest-derivative-original"><span>נבנה מתוכנה מקורית - מוסיף <code>derivative="y1-community/y1-stock-rom"</code></span></label>
           </div>
-          <p class="lumen-field-help">Keep Data is only offered when the incoming firmware and the installed firmware are the same or share a <code>derivative</code> root. Use the flag only when user data genuinely cannot carry over.</p>
+          <p class="lumen-field-help">Keep Data מוצע רק כאשר הקושחה הנכנסת והקושחה המותקנת זהות או חולקות א <code>derivative</code> שורש. השתמש בדגל רק כאשר נתוני המשתמש באמת אינם יכולים להעביר.</p>
         </fieldset>
 
         <details class="lumen-manifest-advanced">
-          <summary>More options: icon, artwork, release assets, post-install and mirrors</summary>
+          <summary>אפשרויות נוספות: אייקון, גרפיקה, נכסי שחרור, לאחר התקנה ומראות</summary>
 
-          <h4>Icon and artwork</h4>
+          <h4>אייקון ויצירות אמנות</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-file">Icon file</label>
+              <label for="manifest-icon-file">קובץ אייקונים</label>
               <input type="file" id="manifest-icon-file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
-              <span class="lumen-field-help">Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.</span>
+              <span class="lumen-field-help">בחר את התמונה שתתחייב למאגר. זה מציג אותו בתצוגה מקדימה ובונה את כתובת האתר הגולמית שלו; זה לא מעלה כלום.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-path">Icon path in repository</label>
+              <label for="manifest-icon-path">נתיב אייקונים במאגר</label>
               <input type="text" id="manifest-icon-path" value="docs/icons/icon.png" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Path to the committed image, relative to the repository root.</span>
+              <span class="lumen-field-help">נתיב לתמונה המחויבת, ביחס לשורש המאגר.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-branch">Icon branch</label>
+              <label for="manifest-icon-branch">סניף אייקונים</label>
               <input type="text" id="manifest-icon-branch" value="main" autocomplete="off" spellcheck="false">
             </div>
             <div class="lumen-field">
-              <label for="manifest-icon-url">Icon URL</label>
-              <input type="url" id="manifest-icon-url" placeholder="Filled from the file path" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">A direct image URL. When empty, the app uses the release's <code>updater.png</code> or a generated icon.</span>
+              <label for="manifest-icon-url">כתובת אתר של סמל</label>
+              <input type="url" id="manifest-icon-url" placeholder="מולא מנתיב הקובץ" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">כתובת אתר ישירה של תמונה. כשהאפליקציה ריקה, האפליקציה משתמשת במהדורה <code>updater.png</code> או סמל שנוצר.</span>
             </div>
           </div>
           <div class="lumen-manifest-icon-preview" id="manifest-icon-preview" hidden>
-            <img alt="Selected icon preview">
+            <img alt="תצוגה מקדימה של סמל נבחר">
           </div>
           <p class="lumen-meta" id="manifest-icon-resolved"></p>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-icon-dark-url">Dark-mode icon URL</label>
+              <label for="manifest-icon-dark-url">כתובת האתר של סמל מצב כהה</label>
               <input type="url" id="manifest-icon-dark-url" placeholder="icon_dark" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional dark-theme icon. <code>image_dark</code> is an accepted alias.</span>
+              <span class="lumen-field-help">סמל ערכת נושא כהה אופציונלי. <code>image_dark</code> הוא כינוי מקובל.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-url">Light artwork URL</label>
-              <input type="url" id="manifest-image-url" placeholder="image" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Secondary artwork, tried after the release image and <code>icon</code>.</span>
+              <label for="manifest-image-url">כתובת URL של יצירות אמנות קלות</label>
+              <input type="url" id="manifest-image-url" placeholder="תמונה" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">יצירת אמנות משנית, נוסתה לאחר תמונת השחרור ו <code>icon</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-image-dark-url">Dark artwork URL</label>
-              <input type="url" id="manifest-image-dark-url" placeholder="image_dark" autocomplete="off" spellcheck="false">
+              <label for="manifest-image-dark-url">כתובת אתר של גרפיקה כהה</label>
+              <input type="url" id="manifest-image-dark-url" placeholder="תמונה_כהה" autocomplete="off" spellcheck="false">
             </div>
           </div>
 
-          <h4>Release assets</h4>
+          <h4>שחרר נכסים</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-package-name">Release asset name</label>
+              <label for="manifest-package-name">שחרר את שם הנכס</label>
               <input type="text" id="manifest-package-name" placeholder="rom.zip / rom_MODEL.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">One name for every selected model. Leave empty to use <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> elsewhere.</span>
+              <span class="lumen-field-help">שם אחד לכל דגם שנבחר. השאר ריק לשימוש <code>rom.zip</code> ב-Y1 ו <code>rom_&lt;model&gt;.zip</code> במקום אחר.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-asset-pattern">Asset pattern</label>
+              <label for="manifest-asset-pattern">דפוס נכס</label>
               <input type="text" id="manifest-asset-pattern" placeholder="my-firmware-*.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob used when the release's zips are not named <code>rom*.zip</code>.</span>
+              <span class="lumen-field-help">גלוב משמש כאשר הרוכסנים של המהדורה אינם נקראים בשם <code>rom*.zip</code>.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-a-asset">Type A asset</label>
+              <label for="manifest-type-a-asset">Type A נכס</label>
               <input type="text" id="manifest-type-a-asset" placeholder="my-firmware-a.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type A package when its name does not say so.</span>
+              <span class="lumen-field-help">גלוב עבור החבילה Y1 Type A כאשר שמה אינו אומר זאת.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-type-b-asset">Type B asset</label>
+              <label for="manifest-type-b-asset">Type B נכס</label>
               <input type="text" id="manifest-type-b-asset" placeholder="my-firmware-b.zip" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Glob for the Y1 Type B package when its name does not say so.</span>
+              <span class="lumen-field-help">גלוב עבור החבילה Y1 Type B כאשר שמה אינו אומר זאת.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-min-version">Minimum app version</label>
+              <label for="manifest-min-version">גרסת אפליקציה מינימלית</label>
               <input type="text" id="manifest-min-version" placeholder="2.5.0" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Hide the entry from older Updater CE builds.</span>
+              <span class="lumen-field-help">הסתר את הערך ממבנים ישנים יותר של Updater CE.</span>
             </div>
           </div>
 
-          <h4>Links, mirrors and Keep Data family</h4>
+          <h4>קישורים, מראות ומשפחת Keep Data</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-post-install">Post-install page</label>
+              <label for="manifest-post-install">עמוד לאחר ההתקנה</label>
               <input type="url" id="manifest-post-install" placeholder="https://…/docs/install.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Opened after a successful install.</span>
+              <span class="lumen-field-help">נפתח לאחר התקנה מוצלחת.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-post-install2">Second post-install page</label>
+              <label for="manifest-post-install2">עמוד שני לאחר ההתקנה</label>
               <input type="url" id="manifest-post-install2" placeholder="https://…/docs/install-2.md" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Optional second step for a multi-page setup guide.</span>
+              <span class="lumen-field-help">שלב שני אופציונלי עבור מדריך התקנה מרובה עמודים.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-portable-zips">Portable zip mirrors</label>
+              <label for="manifest-portable-zips">מראות רוכסן ניידות</label>
               <input type="text" id="manifest-portable-zips" placeholder="y1-community/your-mirror" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Comma-separated <code>*-mirror</code> repositories that build Portable Flashing Zip packages.</span>
+              <span class="lumen-field-help">מופרדים בפסיקים <code>*-mirror</code> מאגרים הבונים חבילות Flashing Zip ניידות.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-derivative">Derivative repository</label>
+              <label for="manifest-derivative">מאגר נגזרות</label>
               <input type="text" id="manifest-derivative" placeholder="owner/base-firmware" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">The firmware this release is built from. Related firmwares share a data partition, which is what Keep Data checks.</span>
+              <span class="lumen-field-help">הקושחה שממנה בנויה מהדורה זו. קושחות קשורות חולקות מחיצת נתונים, וזה מה ש-Keep Data בודק.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-info-repo">Info repository</label>
+              <label for="manifest-info-repo">מאגר מידע</label>
               <input type="text" id="manifest-info-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose releases describe the apps in this firmware. It also needs a post-install page.</span>
+              <span class="lumen-field-help">ריפו של אפליקציות שהגרסאות שלה מתארות את האפליקציות בקושחה זו. זה גם צריך עמוד לאחר ההתקנה.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-apk-repo">APK repository</label>
+              <label for="manifest-apk-repo">APK מאגר</label>
               <input type="text" id="manifest-apk-repo" placeholder="owner/app-repo" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">App repo whose APK the app downloads and installs after the firmware.</span>
+              <span class="lumen-field-help">ריפו של אפליקציה שהאפליקציה מורידה ומתקין את APK לאחר הקושחה.</span>
             </div>
           </div>
 
-          <h4>Catalogue extras</h4>
+          <h4>תוספות קטלוג</h4>
           <div class="lumen-manifest-subgrid">
             <div class="lumen-field">
-              <label for="manifest-slug">Slug</label>
-              <input type="text" id="manifest-slug" placeholder="Generated from the name and model" autocomplete="off" spellcheck="false">
-              <span class="lumen-field-help">Stable identifier for links and saved install records. The model is appended automatically when several models are selected.</span>
+              <label for="manifest-slug">שבלול</label>
+              <input type="text" id="manifest-slug" placeholder="נוצר מהשם והדגם" autocomplete="off" spellcheck="false">
+              <span class="lumen-field-help">מזהה יציב לקישורים ורשומות התקנה שמורות. הדגם מצורף אוטומטית כאשר נבחרים מספר דגמים.</span>
             </div>
             <div class="lumen-field">
-              <label for="manifest-description">Description</label>
-              <input type="text" id="manifest-description" placeholder="A short catalogue description" autocomplete="off">
+              <label for="manifest-description">תיאור</label>
+              <input type="text" id="manifest-description" placeholder="תיאור קטלוגי קצר" autocomplete="off">
             </div>
           </div>
         </details>
@@ -403,163 +403,163 @@
         <div class="lumen-code-copy">
           <pre class="lumen-code lumen-code--compact" id="manifest-output"><code>&lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y1" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;
 &lt;package name="Your Firmware" brand="Innioasis" repo="your-account/your-firmware" device="Y2" url="https://github.com/your-account/your-firmware" type="img" handler="Custom Firmware" /&gt;</code></pre>
-          <button type="button" class="lumen-copy-button" id="manifest-copy">Copy lines</button>
+          <button type="button" class="lumen-copy-button" id="manifest-copy">העתק שורות</button>
         </div>
 
-        <p class="lumen-meta" id="manifest-status">Loading the latest manifest…</p>
+        <p class="lumen-meta" id="manifest-status">טוען את המניפסט האחרון...</p>
 
         <details id="manifest-preview" hidden>
-          <summary>Preview the latest manifest with your lines added</summary>
-          <p>The generator fetched the current <code>slidia_manifest.xml</code> from this repository and inserted your generated lines just before <code>&lt;/slidia&gt;</code>.</p>
+          <summary>הצג תצוגה מקדימה של המניפסט האחרון עם השורות שלך</summary>
+          <p>המחולל הביא את הזרם <code>slidia_manifest.xml</code> מהמאגר הזה והכנסת את השורות שנוצרו ממש לפני <code>&lt;/slidia&gt;</code>.</p>
           <pre class="lumen-code lumen-code--compact" id="manifest-preview-output"></pre>
           <p class="lumen-meta lumen-manifest-validation" id="manifest-validation" role="status"></p>
         </details>
       </div>
 
-      <div class="lumen-warning"><strong>One line is not enough for a shared repository.</strong> If the Y2 line is missing, Y2 users will not get a model-matched entry even when <code>rom_y2.zip</code> exists in the project's release. The same is true for every other model your release supports.</div>
+      <div class="lumen-warning"><strong>שורה אחת לא מספיקה למאגר משותף.</strong> אם השורה Y2 חסרה, משתמשים Y2 לא יקבלו ערך תואם דגם גם כאשר <code>rom_y2.zip</code> קיים בשחרור הפרויקט. הדבר נכון לגבי כל דגם אחר שהגרסה שלך תומכת בו.</div>
 
-      <h3 id="manifest-attributes-title">Every attribute the manifest reads</h3>
-      <p>These are the attributes current Updater CE builds understand. The generator writes only the ones you fill in; the app falls back to sensible defaults for the rest.</p>
+      <h3 id="manifest-attributes-title">כל תכונה שהמניפסט קורא</h3>
+      <p>אלו הן התכונות שמבינות ה- Updater CE הנוכחיות. המחולל כותב רק את אלה שאתה ממלא; האפליקציה חוזרת לברירות המחדל הגיוניות עבור השאר.</p>
       <div class="lumen-table-wrap">
         <table class="lumen-doc-table">
-          <caption class="lumen-visually-hidden">slidia_manifest.xml package attributes and their meaning</caption>
+          <caption class="lumen-visually-hidden">תכונות החבילה slidia_manifest.xml ומשמעותן</caption>
           <thead>
-            <tr><th scope="col">Attribute</th><th scope="col">Needed</th><th scope="col">What it does</th></tr>
+            <tr><th scope="col">תכונה</th><th scope="col">נחוץ</th><th scope="col">מה זה עושה</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><code>name</code></th><td>כן</td><td>Software name shown in the catalogue and on install cards.</td></tr>
-            <tr><th scope="row"><code>repo</code></th><td>כן</td><td><code>owner/repo</code>. The app reads that repository's GitHub releases.</td></tr>
-            <tr><th scope="row"><code>device</code></th><td>כן</td><td>Target model, uppercase (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>, …). Keep one entry per model.</td></tr>
-            <tr><th scope="row"><code>url</code></th><td>Recommended</td><td>Project page or release notes opened from the catalogue.</td></tr>
-            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>Yes in practice</td><td><code>type="img"</code> ו <code>handler="Custom Firmware"</code>. Other types and non-firmware handlers are skipped.</td></tr>
-            <tr><th scope="row"><code>brand</code></th><td>אופציונלי</td><td>Catalogue brand (<code>Innioasis</code>, <code>Timmkoo</code>). Empty uses the model's default brand.</td></tr>
-            <tr><th scope="row"><code>package_name</code></th><td>אופציונלי</td><td>Release asset filename. Defaults to <code>rom.zip</code> on Y1 and <code>rom_&lt;model&gt;.zip</code> on other models.</td></tr>
-            <tr><th scope="row"><code>asset_pattern</code></th><td>אופציונלי</td><td>Case-insensitive glob for releases whose firmware zips are not named <code>rom*.zip</code> (for example <code>my-firmware-*.zip</code>).</td></tr>
-            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>אופציונלי</td><td>Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.</td></tr>
-            <tr><th scope="row"><code>icon</code></th><td>אופציונלי</td><td>Logo URL. Used after the release's own <code>updater.png</code> / <code>updater.jpg</code>, and as the fallback for every release.</td></tr>
-            <tr><th scope="row"><code>icon_dark</code></th><td>אופציונלי</td><td>Dark-theme logo. <code>image_dark</code> is an accepted alias.</td></tr>
-            <tr><th scope="row"><code>image</code></th><td>אופציונלי</td><td>Secondary light artwork, tried after <code>icon</code>.</td></tr>
-            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>אופציונלי</td><td>Page(s) opened after a successful install. The second one covers a multi-step guide.</td></tr>
-            <tr><th scope="row"><code>portable_zips</code></th><td>אופציונלי</td><td>Comma-separated <code>*-mirror</code> repos that publish ready-to-run portable packages.</td></tr>
-            <tr><th scope="row"><code>derivative</code></th><td>אופציונלי</td><td>Repository the firmware is built from. Firmware with the same derivative root can keep user data.</td></tr>
-            <tr><th scope="row"><code>info_repo</code></th><td>אופציונלי</td><td>App repository whose releases describe what the firmware deploys. Requires <code>post_install</code> או <code>post_install2</code>.</td></tr>
-            <tr><th scope="row"><code>apk_repo</code></th><td>אופציונלי</td><td>App repository whose APK the app installs after the firmware.</td></tr>
-            <tr><th scope="row"><code>min_version</code></th><td>אופציונלי</td><td>Hide the entry when Updater CE is older than this version.</td></tr>
-            <tr><th scope="row"><code>do_not_keep_data</code></th><td>אופציונלי</td><td><code>true</code> (also <code>1</code> / <code>yes</code>) blocks Keep Data completely for this firmware.</td></tr>
-            <tr><th scope="row"><code>slug</code></th><td>אופציונלי</td><td>Stable identifier for links and saved install records. Generated from the name and model when empty.</td></tr>
-            <tr><th scope="row"><code>description</code></th><td>אופציונלי</td><td>Short catalogue description. It can be the attribute value or the element's text.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>כן</td><td>שם התוכנה מוצג בקטלוג ובכרטיסי ההתקנה.</td></tr>
+            <tr><th scope="row"><code>repo</code></th><td>כן</td><td><code>owner/repo</code>. האפליקציה קוראת את מהדורות GitHub של המאגר הזה.</td></tr>
+            <tr><th scope="row"><code>device</code></th><td>כן</td><td>דגם יעד, אותיות רישיות (<code>Y1</code>, <code>Y2</code>, <code>G1</code>, <code>Q3e</code>,…). שמור כניסה אחת לכל דגם.</td></tr>
+            <tr><th scope="row"><code>url</code></th><td>מומלץ</td><td>דף הפרויקט או הערות שחרור נפתחו מהקטלוג.</td></tr>
+            <tr><th scope="row"><code>type</code>, <code>handler</code></th><td>כן בפועל</td><td><code>type="img"</code> ו <code>handler="Custom Firmware"</code>. סוגים אחרים ומטפלים שאינם קושחה מדלגים.</td></tr>
+            <tr><th scope="row"><code>brand</code></th><td>אופציונלי</td><td>מותג קטלוג (<code>Innioasis</code>, <code>Timmkoo</code>). Empty משתמש במותג ברירת המחדל של הדגם.</td></tr>
+            <tr><th scope="row"><code>package_name</code></th><td>אופציונלי</td><td>שחרר את שם הקובץ של הנכס. ברירת מחדל ל <code>rom.zip</code> ב-Y1 ו <code>rom_&lt;model&gt;.zip</code> על דגמים אחרים.</td></tr>
+            <tr><th scope="row"><code>asset_pattern</code></th><td>אופציונלי</td><td>גלוב לא רגיש לאותיות רישיות עבור מהדורות שהקושחה שלהן לא נקראת <code>rom*.zip</code> (לדוגמה <code>my-firmware-*.zip</code>).</td></tr>
+            <tr><th scope="row"><code>type_a_asset</code>, <code>type_b_asset</code></th><td>אופציונלי</td><td>גלובס המזהים את ה-Y1 Type A ו-Type B zip כאשר שמות הקבצים שלהם אינם מכילים את הסמנים הרגילים.</td></tr>
+            <tr><th scope="row"><code>icon</code></th><td>אופציונלי</td><td>כתובת אתר של לוגו. בשימוש לאחר המהדורה משלו <code>updater.png</code> / <code>updater.jpg</code>, וכנקודת המוצא לכל מהדורה.</td></tr>
+            <tr><th scope="row"><code>icon_dark</code></th><td>אופציונלי</td><td>לוגו עם נושא כהה. <code>image_dark</code> הוא כינוי מקובל.</td></tr>
+            <tr><th scope="row"><code>image</code></th><td>אופציונלי</td><td>יצירת אמנות קלה משנית, נוסתה לאחר מכן <code>icon</code>.</td></tr>
+            <tr><th scope="row"><code>post_install</code>, <code>post_install2</code></th><td>אופציונלי</td><td>דפים נפתחו לאחר התקנה מוצלחת. השני מכסה מדריך רב-שלבי.</td></tr>
+            <tr><th scope="row"><code>portable_zips</code></th><td>אופציונלי</td><td>מופרדים בפסיקים <code>*-mirror</code> מאגרים המפרסמים חבילות ניידות מוכנות להפעלה.</td></tr>
+            <tr><th scope="row"><code>derivative</code></th><td>אופציונלי</td><td>מאגר שממנו בנויה הקושחה. קושחה עם אותו שורש נגזרת יכולה לשמור על נתוני משתמש.</td></tr>
+            <tr><th scope="row"><code>info_repo</code></th><td>אופציונלי</td><td>מאגר אפליקציות שהגרסאות שלו מתארות את מה שהקושחה פורסת. דורש <code>post_install</code> או <code>post_install2</code>.</td></tr>
+            <tr><th scope="row"><code>apk_repo</code></th><td>אופציונלי</td><td>מאגר אפליקציות שאת APK האפליקציה מתקינה לאחר הקושחה.</td></tr>
+            <tr><th scope="row"><code>min_version</code></th><td>אופציונלי</td><td>הסתר את הערך כאשר Updater CE ישן יותר מגרסה זו.</td></tr>
+            <tr><th scope="row"><code>do_not_keep_data</code></th><td>אופציונלי</td><td><code>true</code> (גם <code>1</code> / <code>yes</code>) חוסם את Keep Data לחלוטין עבור קושחה זו.</td></tr>
+            <tr><th scope="row"><code>slug</code></th><td>אופציונלי</td><td>מזהה יציב לקישורים ורשומות התקנה שמורות. נוצר מהשם והדגם כשהם ריקים.</td></tr>
+            <tr><th scope="row"><code>description</code></th><td>אופציונלי</td><td>תיאור קטלוג קצר. זה יכול להיות ערך התכונה או הטקסט של האלמנט.</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lumen-meta">Legacy names are still read for compatibility: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> ו <code>image_dark</code>. New entries should use the current names above.</p>
+      <p class="lumen-meta">שמות מדור קודם עדיין נקראים לצורך תאימות: <code>model</code>, <code>package</code>, <code>portable_zip</code>, <code>post_install_2</code>, <code>min_app_version</code> ו <code>image_dark</code>. ערכים חדשים צריכים להשתמש בשמות הנוכחיים שלמעלה.</p>
 
-      <h3>Submit the lines as a pull request</h3>
+      <h3>שלח את השורות כבקשת משיכה</h3>
       <ol class="lumen-steps">
-        <li><strong>Copy the generated lines above.</strong> They already match the latest manifest format.</li>
-        <li><strong>Edit <code>slidia_manifest.xml</code> in the repository.</strong> Use the edit link below; the repository host creates a fork and a branch for you automatically.</li>
-        <li><strong>Paste the lines just before <code>&lt;/slidia&gt;</code>,</strong> keeping the existing entries unchanged.</li>
-        <li><strong>Commit to a new branch</strong> (for example <code>add-your-firmware</code>), then open a pull request against the Updater CE repository.</li>
-        <li><strong>In the PR, include</strong> the project link, supported models, release tag, asset names, and the devices you tested.</li>
+        <li><strong>העתק את השורות שנוצרו למעלה.</strong> הם כבר תואמים לפורמט המניפסט האחרון.</li>
+        <li><strong>ערוך <code>slidia_manifest.xml</code> במאגר.</strong> השתמש בקישור העריכה למטה; מארח המאגר יוצר עבורך מזלג וענף באופן אוטומטי.</li>
+        <li><strong>הדבק את השורות ממש לפני <code>&lt;/slidia&gt;</code>,</strong> שמירה על הערכים הקיימים ללא שינוי.</li>
+        <li><strong>התחייבו לסניף חדש</strong> (לדוגמה <code>add-your-firmware</code>), ולאחר מכן פתח בקשת משיכה כנגד מאגר Updater CE.</li>
+        <li><strong>ב-PR, כלול</strong> קישור הפרויקט, הדגמים הנתמכים, תג ההפצה, שמות הנכסים והמכשירים שבדקת.</li>
       </ol>
       <div class="lumen-actions">
-        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">Edit the Updater CE manifest</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the latest manifest</a>
+        <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/edit/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">ערוך את המניפסט של Updater CE</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">ראה את המניפסט האחרון</a>
       </div>
-      <p class="lumen-meta">Keep the model names uppercase, use the exact URL of your public repository, and keep <code>type="img"</code> ו <code>handler="Custom Firmware"</code> for a firmware entry.</p>
+      <p class="lumen-meta">שמור את שמות המודלים באותיות רישיות, השתמש בכתובת האתר המדויקת של המאגר הציבורי שלך ושמור <code>type="img"</code> ו <code>handler="Custom Firmware"</code> עבור ערך קושחה.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="release-title">
-      <h2 id="release-title">Make the release easy to verify</h2>
-      <p>Give the release a clear tag and release note. The tag is useful to people, but the ZIP asset names are what Updater CE uses to identify the install packages.</p>
+      <h2 id="release-title">קל לאמת את השחרור</h2>
+      <p>תן לשחרור תג ברור והערת שחרור. התג שימושי לאנשים, אבל שמות נכסי ה-ZIP הם מה שבהם Updater CE משתמש כדי לזהות את חבילות ההתקנה.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <h3>Release checklist</h3>
+          <h3>רשימת שחרור</h3>
           <ul>
-            <li>Publish the release publicly.</li>
-            <li>Attach the ZIP files as release assets.</li>
-            <li>State the supported model and Type A or Type B in the notes.</li>
-            <li>List any required preparation or known limits.</li>
+            <li>פרסם את המהדורה בפומבי.</li>
+            <li>צרף את קובצי ה-ZIP כנכסי שחרור.</li>
+            <li>ציינו את הדגם הנתמך ואת Type A או Type B בהערות.</li>
+            <li>רשום כל הכנה נדרשת או מגבלות ידועות.</li>
           </ul>
         </article>
         <article class="lumen-card">
-          <h3>One release, three assets</h3>
-          <p>A shared release can contain <code>rom.zip</code>, <code>rom_type_b.zip</code>, ו <code>rom_y2.zip</code>. Updater classifies them separately and chooses from the model and hardware filters.</p>
+          <h3>שחרור אחד, שלושה נכסים</h3>
+          <p>גרסה משותפת יכולה להכיל <code>rom.zip</code>, <code>rom_type_b.zip</code>, ו <code>rom_y2.zip</code>. Updater מסווג אותם בנפרד ובוחר מבין מסנני הדגם והחומרה.</p>
         </article>
         <article class="lumen-card">
-          <h3>Do not bundle guesses</h3>
-          <p>Do not include a Y1 package under the Y2 filename, or add untested scatter, preloader, or partition data just to make an asset appear.</p>
+          <h3>אין לצרור ניחושים</h3>
+          <p>אל תכלול חבילה Y1 תחת שם הקובץ Y2, או הוסף נתוני פיזור, טוען מראש או מחיצה שלא נבדקו רק כדי לגרום לנכס להופיע.</p>
         </article>
       </div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="flashing-title">
-      <h2 id="flashing-title">Why the model entries matter during flashing</h2>
-      <p>The manifest is not just a download menu. After extraction, Updater CE uses the resolved model to prepare the matching install path. Y1 and Y2 have different platform files, preloaders, scatter configuration, and device layouts.</p>
+      <h2 id="flashing-title">מדוע ערכי הדגם חשובים במהלך ההבהוב</h2>
+      <p>המניפסט אינו רק תפריט הורדה. לאחר החילוץ, Updater CE משתמש במודל שנפתר כדי להכין את נתיב ההתקנה התואם. ל-Y1 ו-Y2 יש קבצי פלטפורמה שונים, מטמינים מראש, תצורת פיזור ופריסות מכשירים.</p>
       <ul class="lumen-steps">
-        <li><strong>Y1:</strong> the updater prepares the Y1 path and uses the device’s named partitions when MTKClient is used.</li>
-        <li><strong>Y2:</strong> the updater prepares the Y2 path and uses the Y2 MT6582 configuration. Full recovery can use physical addresses from the model-correct scatter data.</li>
-        <li><strong>Cross-Platform Support:</strong> Updater CE handles native flashing directly across Windows, Linux, and macOS (supporting both Intel and Apple Silicon Macs) without extra flashing tools.</li>
+        <li><strong>Y1:</strong> המעדכן מכין את הנתיב Y1 ומשתמש במחיצות השמות של המכשיר כאשר נעשה שימוש ב-MTKClient.</li>
+        <li><strong>Y2:</strong> המעדכן מכין את הנתיב Y2 ומשתמש בתצורת Y2 MT6582. שחזור מלא יכול להשתמש בכתובות פיזיות מנתוני הפיזור הנכונים לדגם.</li>
+        <li><strong>תמיכה בין פלטפורמות:</strong> Updater CE מטפל בהבהוב מקורי ישירות על פני Windows, Linux ו-macOS (תומך גם במחשבי Intel ו- Apple Silicon Mac) ללא כלים מהבהבים נוספים.</li>
       </ul>
-      <div class="lumen-warning"><strong>Contributors should provide correct firmware files, not flash offsets.</strong> Do not edit scatter addresses, preloaders, DA files, or partition commands to work around a bad package. Fix the release asset and test on the intended model.</div>
+      <div class="lumen-warning"><strong>התורמים צריכים לספק קבצי קושחה נכונים, לא קיזוז הבזק.</strong> אל תערוך כתובות פיזור, טעינות מוקדמות, קבצי DA או פקודות מחיצה כדי לעקוף חבילה גרועה. תקן את נכס השחרור ובדוק את הדגם המיועד.</div>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="test-title">
-      <h2 id="test-title">Before you request a merge</h2>
+      <h2 id="test-title">לפני שאתה מבקש מיזוג</h2>
       <ol class="lumen-steps">
-        <li>Validate the XML with an XML parser. A missing quote or closing <code>/&gt;</code> can hide every entry after it.</li>
-        <li>Launch the updater from your checkout so it loads the local manifest before the remote refresh.</li>
-        <li>Check Y1 and Y2 independently. Confirm that the project appears only where its package is supported.</li>
-        <li>Check the release list for <code>rom.zip</code>, <code>rom_type_b.zip</code>, ו <code>rom_y2.zip</code> as applicable.</li>
-        <li>Test the actual install on the intended device, with a reliable USB data cable and a recovery plan for returning to Original Software.</li>
-        <li>In the pull request, explain what you tested. Do not describe an untested model as supported.</li>
+        <li>אמת את ה-XML עם מנתח XML. ציטוט חסר או סגירה <code>/&gt;</code> יכול להסתיר כל ערך אחריו.</li>
+        <li>הפעל את העדכון מהקופה שלך כך שיטען את המניפסט המקומי לפני הרענון מרחוק.</li>
+        <li>סמן את Y1 ו-Y2 באופן עצמאי. אשר שהפרויקט מופיע רק במקום שבו החבילה שלו נתמכת.</li>
+        <li>בדוק את רשימת השחרורים עבור <code>rom.zip</code>, <code>rom_type_b.zip</code>, ו <code>rom_y2.zip</code> לפי העניין.</li>
+        <li>בדוק את ההתקנה בפועל במכשיר המיועד, עם כבל נתונים אמין USB ותוכנית שחזור לחזרה לתוכנה המקורית.</li>
+        <li>בבקשת המשיכה, הסבירו מה בדקתם. אין לתאר דגם שלא נבדק כנתמך.</li>
       </ol>
       <pre class="lumen-code"><code>python -c "from xml.etree import ElementTree as ET; ET.parse('slidia_manifest.xml'); print('manifest ok')"</code></pre>
-      <p>For a local check, run that command from the repository root. It verifies XML syntax only; it does not prove that a release contains valid firmware or that a device is safe to flash.</p>
+      <p>לבדיקה מקומית, הפעל את הפקודה משורש המאגר. הוא מאמת את תחביר ה-XML בלבד; זה לא מוכיח שגרסה מכילה קושחה חוקית או שהתקן בטוח להבהב.</p>
     </section>
 
 <section class="lumen-guide-section" aria-labelledby="links-title">
-      <h2 id="links-title">Useful project links</h2>
+      <h2 id="links-title">קישורים שימושיים לפרויקט</h2>
       <div class="lumen-actions">
         <a class="lumen-button lumen-button--primary" href="https://github.com/y1-community/Innioasis-Updater/fork" target="_blank" rel="noopener noreferrer">Fork Updater CE</a>
-        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">See the manifest</a>
-        <a class="lumen-button" href="support_devs_he.html">Community contribution notes</a>
+        <a class="lumen-button" href="https://github.com/y1-community/Innioasis-Updater/blob/main/slidia_manifest.xml" target="_blank" rel="noopener noreferrer">ראה את המניפסט</a>
+        <a class="lumen-button" href="support_devs_he.html">הערות תרומה לקהילה</a>
         <a class="lumen-button" href="troubleshooting_he.html">פתרון תקלות</a>
       </div>
     </section>
 
     <section class="lumen-guide-section" aria-labelledby="skills-title">
-      <h2 id="skills-title">Modding skills for AI agents</h2>
-      <p>The repository's <code>skills/</code> directory is a source-grounded knowledge base for agents working on Y1 and Y2 hardware, firmware, themes and apps. Each skill names the project files its claims come from, so an agent can check a fact before changing a device.</p>
+      <h2 id="skills-title">כישורי שינוי עבור סוכני AI</h2>
+      <p>של המאגר <code>skills/</code> ספרייה היא בסיס ידע מבוסס מקור לסוכנים העובדים על Y1 ו-Y2 חומרה, קושחה, ערכות נושא ואפליקציות. כל מיומנות שמה לקבצי הפרויקט שמהם מגיעות התביעות, כך שסוכן יכול לבדוק עובדה לפני שינוי מכשיר.</p>
       <div class="lumen-grid">
         <article class="lumen-card">
-          <small>Start here</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">Skills index and safety rules</a></h3>
-          <p>How to load a skill, which model a fact applies to, and the partitions no package should write.</p>
+          <small>התחל כאן</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/README.md" target="_blank" rel="noopener noreferrer">אינדקס מיומנויות וכללי בטיחות</a></h3>
+          <p>איך לטעון מיומנות, על איזה דגם חלה עובדה, ועל המחיצות שאסור לכתוב בחבילה.</p>
         </article>
         <article class="lumen-card">
           <small>חומרה</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 hardware</a></h3>
-          <p>MT6572, the wheel as key events, 480x360 display, FM/audio paths, storage and the Type A/B partition map.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y1-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y1 חומרה</a></h3>
+          <p>MT6572, הגלגל כאירועי מפתח, תצוגה בגודל 480x360, נתיבי FM/שמע, אחסון ומפת המחיצות Type A/B.</p>
         </article>
         <article class="lumen-card">
           <small>חומרה</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 hardware</a></h3>
-          <p>MT6582 board, device tree, GC9503V/ST7701S panels, PMIC/DAC rails, partitions and the boot image.</p>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/y2-hardware/SKILL.md" target="_blank" rel="noopener noreferrer">Y2 חומרה</a></h3>
+          <p>לוח MT6582, עץ התקנים, לוחות GC9503V/ST7701S, מסילות PMIC/DAC, מחיצות ותמונת האתחול.</p>
         </article>
         <article class="lumen-card">
-          <small>Firmware</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">Firmware packages</a></h3>
-          <p>rom.zip anatomy, scatter files, Class A update contracts and the release checklist.</p>
+          <small>קושחה</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/firmware-packages/SKILL.md" target="_blank" rel="noopener noreferrer">חבילות קושחה</a></h3>
+          <p>rom.zip אנטומיה, קבצי פיזור, חוזי עדכון Class A ורשימת הבדיקה לשחרור.</p>
         </article>
         <article class="lumen-card">
-          <small>Themes</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">Theme and skin authoring</a></h3>
-          <p>Y1 config.json themes, Rockbox WPS/SBS, Reborn skins and Y2Player skin format v2.</p>
+          <small>ערכות נושא</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/blob/main/skills/theme-authoring/SKILL.md" target="_blank" rel="noopener noreferrer">עריכת נושאים ועור</a></h3>
+          <p>Y1 ערכות נושא של config.json, Rockbox WPS/SBS, Reborn סקינים ו-Y2Player פורמט עור v2.</p>
         </article>
         <article class="lumen-card">
-          <small>All skills</small>
-          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">Browse the skills folder</a></h3>
-          <p>Rockbox Y1/Y2, stock Android ROMs, Y2Linux, Android apps, launchers, release notes and site publishing.</p>
+          <small>כל הכישורים</small>
+          <h3><a href="https://github.com/y1-community/Innioasis-Updater/tree/main/skills" target="_blank" rel="noopener noreferrer">עיין בתיקיית הכישורים</a></h3>
+          <p>Rockbox Y1/Y2, רומי אנדרואיד במלאי, Y2Linux, אפליקציות אנדרואיד, משגרים, הערות מהדורה ופרסום אתרים.</p>
         </article>
       </div>
     </section>
