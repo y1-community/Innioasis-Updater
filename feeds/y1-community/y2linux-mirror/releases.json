@@ -1,5 +1,299 @@
 [
   {
+    "id": 438647399,
+    "tag_name": "baseline-228",
+    "name": "Portable Flashing Package: Y2Linux 1.0 Beta 9.3.19",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=schulzcode%2Fy2linux&amp;tag=baseline-228#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**Y2Linux 1.0 Beta 9.3.19**: update notifications, if you want them.\n\n## What's new\n- **Update Notifications**: Settings \u2192 System \u2192 Software Update \u2192 **Update Notifications**. Turn it on and the player tells you once when a new version is out, on whatever screen you are on. It's off by default, so nothing changes if you'd rather not be told.\n\n## Fixed\n- **\"Software update available\" never showed**: the player kept checking for new versions, but the message only came if you happened to open Settings. With Update Notifications on, it now comes by itself, once for each new version.\n\n## Known issues\n- A charge-only USB cable only charges. If your computer doesn't see the player, try a cable that transfers data with a phone.\n- Skins with their own fonts (Luna XP, Winamp and others) show boxes instead of Chinese, Japanese and Korean titles.\n- After a sleep, Bluetooth headphones reconnect within a few seconds of waking. Headphones that went back to a phone meanwhile must be picked again in Settings \u2192 Bluetooth.\n- WPA3-only Wi-Fi networks can't be joined; a \"WPA2/WPA3 mixed\" setting on the router works.\n- Some players turned off by themselves during playback; the cause isn't found yet.\n- Something wrong? Send an error report (Settings \u2192 System \u2192 Error Reports). **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.\n\nMore details in plain words: **[Beta 9.3.19 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.19.md)**.\n\n<!-- github-only -->\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.)\n\n## Install with the Innioasis Updater (easiest)\nThe community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.\n\n1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.\n2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.\n3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.\n4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nStep-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.\n\n## Install with SP Flash Tool\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.19-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## How it was tested\nOn the developer's player, a check result offering a newer version was placed while the Music screen showed: with the switch off no message came; with it on, a version already named stayed quiet and a new one was announced (screenshot). New tests cover when the message is shown, kept quiet or recorded. The platform's full check, Reborn's workspace tests and the tests of the release images passed. Installed by update on the developer's player.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.19-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 15300).\n- `Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-228`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.\n\n<!-- /github-only -->\n\n<!-- github-only -->\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-2f565b901c03.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-sources-third-party-2f565b901c03.tar) (attached to `baseline-224`), SHA-256 `2f565b901c03b7e6dc431c7a48656a356e4687bc2844ec0724464ad5480c8f79`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n<!-- /github-only -->\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip\",\"platform\":\"linux\",\"sha256\":\"24174cd7da663329d72c6e0e589747fa640505225808ecaba4d73c9a6a28ac97\",\"size\":455248922,\"source_asset\":\"Y2Linux-1.0.0-beta.9.3.19-first-install.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip\",\"platform\":\"macos\",\"sha256\":\"0fd5b98aa392c6820cdf46a572d71ca37c03dfbcf7a2f8459e39f4158b130731\",\"size\":187415713,\"source_asset\":\"Y2Linux-1.0.0-beta.9.3.19-first-install.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip\",\"platform\":\"windows\",\"sha256\":\"0c994153e9c91848fadea6dfb363e92685641ab4ed099b02f1912e884d5a9059\",\"size\":273759893,\"source_asset\":\"Y2Linux-1.0.0-beta.9.3.19-first-install.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-09T01:17:38Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"e93d649fb9185ad72aeac9f1b35a60f9c9052375f40cd6c7d67b68568ee825dc\",\"original_assets\":[\"bootimg.img.gz\",\"manifest.json\",\"manifest.sig\",\"recovery.img.gz\",\"rootfs.ext4.gz\",\"SHA256SUMS\",\"Y2Linux-1.0.0-beta.9.3.19-first-install.zip\",\"Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar\"],\"skipped\":[],\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-09T01:17:38Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-09T01:12:12Z",
+    "published_at": "2026-11-09T01:17:39Z",
+    "html_url": "https://github.com/y1-community/y2linux-mirror/releases/tag/baseline-228",
+    "icon_url": "",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 725782484,
+        "name": "bootimg.img.gz",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/bootimg.img.gz",
+        "size": 7539688,
+        "download_count": 1,
+        "content_type": "application/gzip",
+        "created_at": "2026-11-09T01:17:41Z",
+        "updated_at": "2026-11-09T01:17:42Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782484"
+      },
+      {
+        "id": 725782479,
+        "name": "manifest.json",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/manifest.json",
+        "size": 4238,
+        "download_count": 1,
+        "content_type": "application/json",
+        "created_at": "2026-11-09T01:17:41Z",
+        "updated_at": "2026-11-09T01:17:41Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782479"
+      },
+      {
+        "id": 725782496,
+        "name": "manifest.sig",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/manifest.sig",
+        "size": 64,
+        "download_count": 1,
+        "content_type": "application/pgp-signature",
+        "created_at": "2026-11-09T01:17:41Z",
+        "updated_at": "2026-11-09T01:17:42Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782496"
+      },
+      {
+        "id": 725782517,
+        "name": "recovery.img.gz",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/recovery.img.gz",
+        "size": 7539705,
+        "download_count": 1,
+        "content_type": "application/gzip",
+        "created_at": "2026-11-09T01:17:42Z",
+        "updated_at": "2026-11-09T01:17:43Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782517"
+      },
+      {
+        "id": 725782527,
+        "name": "rootfs.ext4.gz",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/rootfs.ext4.gz",
+        "size": 51653922,
+        "download_count": 1,
+        "content_type": "application/gzip",
+        "created_at": "2026-11-09T01:17:42Z",
+        "updated_at": "2026-11-09T01:17:44Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782527"
+      },
+      {
+        "id": 725782540,
+        "name": "SHA256SUMS",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/SHA256SUMS",
+        "size": 945,
+        "download_count": 2,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-09T01:17:43Z",
+        "updated_at": "2026-11-09T01:17:43Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782540"
+      },
+      {
+        "id": 725783157,
+        "name": "stats.txt",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/stats.txt",
+        "size": 2253,
+        "download_count": 1,
+        "content_type": "text/plain; charset=utf-8",
+        "created_at": "2026-11-09T01:18:03Z",
+        "updated_at": "2026-11-09T01:18:03Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725783157"
+      },
+      {
+        "id": 725782476,
+        "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-linux.zip",
+        "size": 455248922,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:17:41Z",
+        "updated_at": "2026-11-09T01:18:02Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782476"
+      },
+      {
+        "id": 725782478,
+        "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-macos.zip",
+        "size": 187415713,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:17:41Z",
+        "updated_at": "2026-11-09T01:17:52Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782478"
+      },
+      {
+        "id": 725782481,
+        "name": "Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install-windows.zip",
+        "size": 273759893,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:17:41Z",
+        "updated_at": "2026-11-09T01:17:55Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782481"
+      },
+      {
+        "id": 725782557,
+        "name": "Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-first-install.zip",
+        "size": 67734753,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:17:44Z",
+        "updated_at": "2026-11-09T01:17:47Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725782557"
+      },
+      {
+        "id": 725783161,
+        "name": "Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-228/Y2Linux-1.0.0-beta.9.3.19-sources-buildroot-legal-info.tar",
+        "size": 19312640,
+        "download_count": 1,
+        "content_type": "application/x-tar",
+        "created_at": "2026-11-09T01:18:03Z",
+        "updated_at": "2026-11-09T01:18:04Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725783161"
+      }
+    ]
+  },
+  {
+    "id": 438646884,
+    "tag_name": "baseline-227",
+    "name": "Portable Flashing Package: Y2Linux 1.0 Beta 9.3.18",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=schulzcode%2Fy2linux&amp;tag=baseline-227#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**Y2 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for Y2 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/y2linux-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for Y2 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\n**Y2Linux 1.0 Beta 9.3.18**: USB that always reconnects, a new skin and quicker settings.\n\n## What's new\n- **Luna XP skin**: blue title bars, a green start button and rolling hills, made by eNKay. Pick it in Settings \u2192 Skin.\n- **Quick settings from the Quick Menu**: hold Power to open the Quick Menu, then hold Select on Wi-Fi, Bluetooth or Brightness to jump straight to that setting.\n- **Sort an artist's albums your way**: Settings \u2192 Customize \u2192 Browsing \u2192 Artist's Albums: Oldest First, Newest First or A to Z.\n- **Cover Flow matches your skin**: its colours, fonts and cover shape now follow the skin you picked.\n- **Updates without Wi-Fi**: when Wi-Fi is off, Software Update shows **Connect to Wi-Fi** and takes you there, instead of a check that can't work.\n- **Songs the player can't play**: if your card has files the player can't play (WMA or DSD, for example), Settings \u2192 Library now tells you how many and which kind, so they no longer just seem to be missing.\n- **For skin makers**: `{bitrate}` shows a song's bitrate, like \"320 kbps\".\n\n## Fixed\n- **USB connection**: after unplugging at the wrong moment, a computer sometimes never found the player again until it was restarted. The player now reconnects every time.\n\n## Known issues\n- A charge-only USB cable only charges. If your computer doesn't see the player, try a cable that transfers data with a phone.\n- Skins with their own fonts (Luna XP, Winamp and others) show boxes instead of Chinese, Japanese and Korean titles.\n- After a sleep, Bluetooth headphones reconnect within a few seconds of waking. Headphones that went back to a phone meanwhile must be picked again in Settings \u2192 Bluetooth.\n- WPA3-only Wi-Fi networks can't be joined; a \"WPA2/WPA3 mixed\" setting on the router works.\n- Some players turned off by themselves during playback; the cause isn't found yet.\n- Something wrong? Send an error report (Settings \u2192 System \u2192 Error Reports). **Restore Previous System** (Settings \u2192 System \u2192 About, tap Version seven times, then Diagnostics) takes you back to the version you had, with your data kept.\n\nMore details in plain words: **[Beta 9.3.18 report](https://github.com/SchulzCode/Y2Linux/blob/main/docs/validation/Y2-LINUX-1.0-BETA-9.3.18.md)**.\n\n<!-- github-only -->\n\n## Already running Y2Linux\nSettings \u2192 System \u2192 Software Update \u2192 **Update Now**. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. (On Beta 9.2.8 and older: Settings \u2192 About & Updates \u2192 Check for Updates \u2192 **Update Now**.)\n\n## Install with the Innioasis Updater (easiest)\nThe community **Innioasis Updater CE** installs Y2Linux for you, on **Windows, macOS and Linux**. No SP Flash Tool needed.\n\n1. Download Innioasis Updater CE for your computer from [innioasis.app](https://innioasis.app/guide.html#download-updater) and open it.\n2. Choose **Y2**, then **Reborn (Y2Linux)** and the latest release.\n3. Click **Install / Restore**, switch the Y2 off and connect it when the updater asks. Wait until it confirms, then unplug.\n4. Connect the Y2 to the computer and **copy** `system.img` from the Innioasis Y2 firmware package v3.2.0 into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nStep-by-step guides for each computer: [Reborn (Y2Linux) install guide](https://innioasis.app/guides/reborn-y2linux-y2.html). The way back to stock is in the updater too: choose **Y2** and **Original Software**.\n\n## Install with SP Flash Tool\nYou need SP Flash Tool v5.2032, a USB cable, **`Y2Linux-1.0.0-beta.9.3.18-first-install.zip`** below and the **Innioasis Y2 firmware package v3.2.0** from Innioasis (only this version works; it is also your way back to stock).\n\n1. Unpack both.\n2. SP Flash Tool \u2192 **Download Only** \u2192 load `MT6582_Android_scatter.txt` **from the Y2Linux zip**. Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.\n3. Click Download and connect the switched-off Y2; wait for the green tick.\n4. Unplug and press Power: the player sets up its Internal Storage (a few seconds), then Y2Linux and Reborn start, music works.\n5. Connect the Y2 to the computer and **copy** (don't move) `system.img` from the Innioasis package into the **Firmware** folder on **Internal Storage**. The player takes the Wi-Fi/Bluetooth firmware from it and turns the radios on.\n\nFull guide: [INSTALL](https://github.com/SchulzCode/Y2Linux/blob/main/docs/INSTALL.md) \u00b7 How updates work: [Recovery and updates](https://github.com/SchulzCode/Y2Linux/blob/main/docs/RECOVERY-AND-UPDATES.md) \u00b7 Storage: [Storage](https://github.com/SchulzCode/Y2Linux/blob/main/docs/STORAGE.md) \u00b7 [Audiobooks](https://github.com/SchulzCode/Y2Linux/blob/main/docs/AUDIOBOOKS.md) \u00b7 Headphone settings: [Headphone output](https://github.com/SchulzCode/Y2Linux/blob/main/docs/HEADPHONE-OUTPUT.md) \u00b7 [Error reports](https://github.com/SchulzCode/Y2Linux/blob/main/docs/ERROR-REPORTS.md) \u00b7 Skins: [skin guide](https://github.com/SchulzCode/Y2Reborn/blob/main/docs/skins.md)\n\n## How it was tested\nThe USB fault was reproduced on the developer's player and is gone with this build (it reconnects half a second after plugging in; before, never). Every change has new tests, and the platform's full check, Reborn's workspace tests and the tests of the release images passed. Installed by update on the developer's player.\n\n## Files\n- `Y2Linux-1.0.0-beta.9.3.18-first-install.zip`: images, scatter files and checksums for SP Flash Tool. The data image has no SSH key (developers: `tools/production/first_owner.py`).\n- `manifest.json`, `manifest.sig`, `rootfs.ext4.gz`, `bootimg.img.gz`, `recovery.img.gz`: the signed over-the-air update (Ed25519 key `platform-v1-release-20261015`, sequence 15200).\n- `Y2Linux-1.0.0-beta.9.3.18-sources-buildroot-legal-info.tar` (licences, manifests, this project's packages) and the third-party, toolchain and Linux sources linked below: corresponding sources. Our own code: Y2Linux and Y2Reborn at tag `baseline-227`. The speaker amplifier driver is Chris Hendrickson's GPL-2.0 AW87559 driver. The headphone profiles are AutoEq results (MIT, Jaakko Pasanen); their licence ships with them.\n- `SHA256SUMS` for the attached files.\n\nBeta software: use at your own risk. Not affiliated with Innioasis, MediaTek, Awinic, Last.fm, AutoEq, Strawberry, MusicBee or Google. Noto Sans CJK is licensed under the SIL Open Font License 1.1.\n\n<!-- /github-only -->\n\n<!-- github-only -->\n\n## Sources unchanged since an earlier release\n- [`Y2Linux-sources-third-party-2f565b901c03.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-224/Y2Linux-sources-third-party-2f565b901c03.tar) (attached to `baseline-224`), SHA-256 `2f565b901c03b7e6dc431c7a48656a356e4687bc2844ec0724464ad5480c8f79`\n- [`Y2Linux-sources-toolchain-f7cda4c7d213.tar`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/Y2Linux-sources-toolchain-f7cda4c7d213.tar) (attached to `baseline-120`), SHA-256 `f7cda4c7d2134bed15dacc7afd7e1687621a57412d60e49c725efc3880bf1bc6`\n- [`linux-6.18.56.tar.xz`](https://github.com/SchulzCode/Y2Linux/releases/download/baseline-120/linux-6.18.56.tar.xz) (attached to `baseline-120`), SHA-256 `4633bbda2ab95eaf2a7af4041236451d6759c72e6946265531af4b3aacefbf89`\n\n<!-- /github-only -->\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"Y2\",\"name\":\"Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip\",\"platform\":\"linux\",\"sha256\":\"a2a8467f03b9ed1f6789f4fe6672caa54d575e22218f44924c820442564c7358\",\"size\":455247514,\"source_asset\":\"Y2Linux-1.0.0-beta.9.3.18-first-install.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2Linux-1.0.0-beta.9.3.18-first-install-macos.zip\",\"platform\":\"macos\",\"sha256\":\"cc5e2699e915758df2d214d675520607922e33734347f1f7765dd285bf047cea\",\"size\":187414304,\"source_asset\":\"Y2Linux-1.0.0-beta.9.3.18-first-install.zip\",\"type\":\"Stock\"},{\"model\":\"Y2\",\"name\":\"Y2Linux-1.0.0-beta.9.3.18-first-install-windows.zip\",\"platform\":\"windows\",\"sha256\":\"2e10f24a3f3a4c369794195351cd556bcb5485ac4b337191d1ec630f7f129f03\",\"size\":273758485,\"source_asset\":\"Y2Linux-1.0.0-beta.9.3.18-first-install.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-09T01:16:17Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"00a61ec369a99873b37c297093c2dd46afdb5c20b1ac5d86dc182fc20dc6684e\",\"original_assets\":[\"bootimg.img.gz\",\"manifest.json\",\"manifest.sig\",\"recovery.img.gz\",\"rootfs.ext4.gz\",\"SHA256SUMS\",\"Y2Linux-1.0.0-beta.9.3.18-first-install.zip\",\"Y2Linux-1.0.0-beta.9.3.18-sources-buildroot-legal-info.tar\"],\"skipped\":[],\"stats\":{\"baseline\":{},\"generated_at\":\"2026-11-09T01:16:17Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-09T01:12:12Z",
+    "published_at": "2026-11-09T01:16:18Z",
+    "html_url": "https://github.com/y1-community/y2linux-mirror/releases/tag/baseline-227",
+    "icon_url": "",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 725779744,
+        "name": "bootimg.img.gz",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/bootimg.img.gz",
+        "size": 7539745,
+        "download_count": 1,
+        "content_type": "application/gzip",
+        "created_at": "2026-11-09T01:16:20Z",
+        "updated_at": "2026-11-09T01:16:20Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779744"
+      },
+      {
+        "id": 725779750,
+        "name": "manifest.json",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/manifest.json",
+        "size": 4240,
+        "download_count": 1,
+        "content_type": "application/json",
+        "created_at": "2026-11-09T01:16:20Z",
+        "updated_at": "2026-11-09T01:16:20Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779750"
+      },
+      {
+        "id": 725779769,
+        "name": "manifest.sig",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/manifest.sig",
+        "size": 64,
+        "download_count": 1,
+        "content_type": "application/pgp-signature",
+        "created_at": "2026-11-09T01:16:21Z",
+        "updated_at": "2026-11-09T01:16:21Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779769"
+      },
+      {
+        "id": 725779787,
+        "name": "recovery.img.gz",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/recovery.img.gz",
+        "size": 7539768,
+        "download_count": 1,
+        "content_type": "application/gzip",
+        "created_at": "2026-11-09T01:16:21Z",
+        "updated_at": "2026-11-09T01:16:23Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779787"
+      },
+      {
+        "id": 725779798,
+        "name": "rootfs.ext4.gz",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/rootfs.ext4.gz",
+        "size": 51660739,
+        "download_count": 1,
+        "content_type": "application/gzip",
+        "created_at": "2026-11-09T01:16:21Z",
+        "updated_at": "2026-11-09T01:16:24Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779798"
+      },
+      {
+        "id": 725779889,
+        "name": "SHA256SUMS",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/SHA256SUMS",
+        "size": 945,
+        "download_count": 1,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-09T01:16:23Z",
+        "updated_at": "2026-11-09T01:16:23Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779889"
+      },
+      {
+        "id": 725780576,
+        "name": "stats.txt",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/stats.txt",
+        "size": 2254,
+        "download_count": 1,
+        "content_type": "text/plain; charset=utf-8",
+        "created_at": "2026-11-09T01:16:43Z",
+        "updated_at": "2026-11-09T01:16:43Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725780576"
+      },
+      {
+        "id": 725779748,
+        "name": "Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-linux.zip",
+        "size": 455247514,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:16:20Z",
+        "updated_at": "2026-11-09T01:16:42Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779748"
+      },
+      {
+        "id": 725779746,
+        "name": "Y2Linux-1.0.0-beta.9.3.18-first-install-macos.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-macos.zip",
+        "size": 187414304,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:16:20Z",
+        "updated_at": "2026-11-09T01:16:31Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779746"
+      },
+      {
+        "id": 725779745,
+        "name": "Y2Linux-1.0.0-beta.9.3.18-first-install-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install-windows.zip",
+        "size": 273758485,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:16:20Z",
+        "updated_at": "2026-11-09T01:16:29Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779745"
+      },
+      {
+        "id": 725779900,
+        "name": "Y2Linux-1.0.0-beta.9.3.18-first-install.zip",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-first-install.zip",
+        "size": 67730309,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-09T01:16:24Z",
+        "updated_at": "2026-11-09T01:16:26Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725779900"
+      },
+      {
+        "id": 725780577,
+        "name": "Y2Linux-1.0.0-beta.9.3.18-sources-buildroot-legal-info.tar",
+        "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-227/Y2Linux-1.0.0-beta.9.3.18-sources-buildroot-legal-info.tar",
+        "size": 19312640,
+        "download_count": 1,
+        "content_type": "application/x-tar",
+        "created_at": "2026-11-09T01:16:43Z",
+        "updated_at": "2026-11-09T01:16:44Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725780577"
+      }
+    ]
+  },
+  {
     "id": 438530483,
     "tag_name": "baseline-225",
     "name": "Portable Flashing Package: Y2Linux 1.0 Beta 9.3.17",
@@ -79,15 +373,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725233038"
       },
       {
-        "id": 725233659,
+        "id": 725777344,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-225/stats.txt",
-        "size": 2256,
+        "size": 2926,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:22:24Z",
-        "updated_at": "2026-11-08T21:22:24Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725233659"
+        "created_at": "2026-11-09T01:15:18Z",
+        "updated_at": "2026-11-09T01:15:18Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725777344"
       },
       {
         "id": 725232945,
@@ -226,15 +520,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/718562937"
       },
       {
-        "id": 725230716,
+        "id": 725777224,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/stats.txt",
-        "size": 3050,
+        "size": 3052,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:21:13Z",
-        "updated_at": "2026-11-08T21:21:13Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725230716"
+        "created_at": "2026-11-09T01:15:16Z",
+        "updated_at": "2026-11-09T01:15:16Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725777224"
       },
       {
         "id": 725230715,
@@ -274,7 +568,7 @@
         "name": "Y2Linux-1.0.0-beta.9.3.16-first-install.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-224/Y2Linux-1.0.0-beta.9.3.16-first-install.zip",
         "size": 67428817,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-06T21:05:57Z",
         "updated_at": "2026-11-06T21:06:00Z",
@@ -384,15 +678,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/714910749"
       },
       {
-        "id": 725227884,
+        "id": 725777117,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-223/stats.txt",
-        "size": 2927,
+        "size": 2928,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:20:08Z",
-        "updated_at": "2026-11-08T21:20:09Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725227884"
+        "created_at": "2026-11-09T01:15:14Z",
+        "updated_at": "2026-11-09T01:15:14Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725777117"
       },
       {
         "id": 725227880,
@@ -531,15 +825,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/714907455"
       },
       {
-        "id": 725225469,
+        "id": 725777016,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-221/stats.txt",
         "size": 2927,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:19:11Z",
-        "updated_at": "2026-11-08T21:19:11Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725225469"
+        "created_at": "2026-11-09T01:15:12Z",
+        "updated_at": "2026-11-09T01:15:12Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725777016"
       },
       {
         "id": 725225470,
@@ -678,15 +972,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/711667504"
       },
       {
-        "id": 725223200,
+        "id": 725776941,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-220/stats.txt",
         "size": 3049,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:18:14Z",
-        "updated_at": "2026-11-08T21:18:14Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725223200"
+        "created_at": "2026-11-09T01:15:10Z",
+        "updated_at": "2026-11-09T01:15:10Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776941"
       },
       {
         "id": 725223208,
@@ -836,15 +1130,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707822978"
       },
       {
-        "id": 725220827,
+        "id": 725776837,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-215/stats.txt",
-        "size": 3047,
+        "size": 3048,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:17:11Z",
-        "updated_at": "2026-11-08T21:17:11Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725220827"
+        "created_at": "2026-11-09T01:15:08Z",
+        "updated_at": "2026-11-09T01:15:08Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776837"
       },
       {
         "id": 725220825,
@@ -994,15 +1288,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707817387"
       },
       {
-        "id": 725203593,
+        "id": 725776315,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-201/stats.txt",
-        "size": 2928,
-        "download_count": 0,
+        "size": 2930,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:10:30Z",
-        "updated_at": "2026-11-08T21:10:30Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725203593"
+        "created_at": "2026-11-09T01:14:53Z",
+        "updated_at": "2026-11-09T01:14:53Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776315"
       },
       {
         "id": 725203594,
@@ -1141,15 +1435,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706368270"
       },
       {
-        "id": 725105844,
+        "id": 725773051,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-95/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:27:37Z",
-        "updated_at": "2026-11-08T20:27:37Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725105844"
+        "created_at": "2026-11-09T01:13:21Z",
+        "updated_at": "2026-11-09T01:13:21Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773051"
       },
       {
         "id": 725105843,
@@ -1288,15 +1582,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706363802"
       },
       {
-        "id": 725102902,
+        "id": 725772951,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-94/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:26:40Z",
-        "updated_at": "2026-11-08T20:26:40Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725102902"
+        "created_at": "2026-11-09T01:13:19Z",
+        "updated_at": "2026-11-09T01:13:19Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772951"
       },
       {
         "id": 725102905,
@@ -1435,15 +1729,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706359040"
       },
       {
-        "id": 725100376,
+        "id": 725772861,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-93/stats.txt",
-        "size": 2911,
+        "size": 2912,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:25:42Z",
-        "updated_at": "2026-11-08T20:25:43Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725100376"
+        "created_at": "2026-11-09T01:13:17Z",
+        "updated_at": "2026-11-09T01:13:17Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772861"
       },
       {
         "id": 725100371,
@@ -1582,15 +1876,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706353146"
       },
       {
-        "id": 725098550,
+        "id": 725772775,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-90/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:24:50Z",
-        "updated_at": "2026-11-08T20:24:51Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725098550"
+        "created_at": "2026-11-09T01:13:15Z",
+        "updated_at": "2026-11-09T01:13:15Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772775"
       },
       {
         "id": 725098552,
@@ -1729,15 +2023,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706348531"
       },
       {
-        "id": 725096246,
+        "id": 725772675,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-89/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:23:58Z",
-        "updated_at": "2026-11-08T20:23:58Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725096246"
+        "created_at": "2026-11-09T01:13:13Z",
+        "updated_at": "2026-11-09T01:13:13Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772675"
       },
       {
         "id": 725096241,
@@ -1876,15 +2170,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706344550"
       },
       {
-        "id": 725094150,
+        "id": 725772611,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-88/stats.txt",
-        "size": 2911,
+        "size": 2912,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:23:04Z",
-        "updated_at": "2026-11-08T20:23:04Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725094150"
+        "created_at": "2026-11-09T01:13:11Z",
+        "updated_at": "2026-11-09T01:13:11Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772611"
       },
       {
         "id": 725094162,
@@ -2023,15 +2317,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706340087"
       },
       {
-        "id": 725091939,
+        "id": 725772529,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-86/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:22:07Z",
-        "updated_at": "2026-11-08T20:22:07Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725091939"
+        "created_at": "2026-11-09T01:13:09Z",
+        "updated_at": "2026-11-09T01:13:09Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772529"
       },
       {
         "id": 725091942,
@@ -2170,15 +2464,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706335637"
       },
       {
-        "id": 725089363,
+        "id": 725772470,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-75/stats.txt",
-        "size": 3035,
+        "size": 3036,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:21:07Z",
-        "updated_at": "2026-11-08T20:21:07Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725089363"
+        "created_at": "2026-11-09T01:13:07Z",
+        "updated_at": "2026-11-09T01:13:07Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772470"
       },
       {
         "id": 725089361,
@@ -2328,15 +2622,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706330326"
       },
       {
-        "id": 725086663,
+        "id": 725772377,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-74/stats.txt",
-        "size": 2916,
+        "size": 2917,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:20:09Z",
-        "updated_at": "2026-11-08T20:20:09Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725086663"
+        "created_at": "2026-11-09T01:13:05Z",
+        "updated_at": "2026-11-09T01:13:05Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772377"
       },
       {
         "id": 725086669,
@@ -2475,15 +2769,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706325241"
       },
       {
-        "id": 725084447,
+        "id": 725772300,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/stats.txt",
-        "size": 2918,
+        "size": 2919,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:19:14Z",
-        "updated_at": "2026-11-08T20:19:14Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725084447"
+        "created_at": "2026-11-09T01:13:03Z",
+        "updated_at": "2026-11-09T01:13:03Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772300"
       },
       {
         "id": 725084451,
@@ -2501,7 +2795,7 @@
         "name": "Y2Linux-1.0.0-beta.7.10-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-73/Y2Linux-1.0.0-beta.7.10-first-install-macos.zip",
         "size": 177463696,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:19:14Z",
         "updated_at": "2026-11-08T20:19:22Z",
@@ -2622,15 +2916,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706319179"
       },
       {
-        "id": 725082026,
+        "id": 725772208,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-72/stats.txt",
-        "size": 2911,
+        "size": 2912,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:18:15Z",
-        "updated_at": "2026-11-08T20:18:15Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725082026"
+        "created_at": "2026-11-09T01:13:01Z",
+        "updated_at": "2026-11-09T01:13:01Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772208"
       },
       {
         "id": 725082033,
@@ -2769,15 +3063,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706314784"
       },
       {
-        "id": 725079619,
+        "id": 725772132,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-71/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:17:18Z",
-        "updated_at": "2026-11-08T20:17:18Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725079619"
+        "created_at": "2026-11-09T01:12:59Z",
+        "updated_at": "2026-11-09T01:12:59Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772132"
       },
       {
         "id": 725079616,
@@ -2916,15 +3210,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706309411"
       },
       {
-        "id": 725077366,
+        "id": 725772039,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-70/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:16:21Z",
-        "updated_at": "2026-11-08T20:16:22Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725077366"
+        "created_at": "2026-11-09T01:12:57Z",
+        "updated_at": "2026-11-09T01:12:57Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725772039"
       },
       {
         "id": 725077365,
@@ -3063,15 +3357,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706304246"
       },
       {
-        "id": 725075270,
+        "id": 725771943,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-67/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:15:25Z",
-        "updated_at": "2026-11-08T20:15:25Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725075270"
+        "created_at": "2026-11-09T01:12:54Z",
+        "updated_at": "2026-11-09T01:12:55Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771943"
       },
       {
         "id": 725075273,
@@ -3210,15 +3504,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706299774"
       },
       {
-        "id": 725073159,
+        "id": 725771867,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-66/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:14:32Z",
-        "updated_at": "2026-11-08T20:14:32Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725073159"
+        "created_at": "2026-11-09T01:12:52Z",
+        "updated_at": "2026-11-09T01:12:53Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771867"
       },
       {
         "id": 725073158,
@@ -3357,15 +3651,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706294590"
       },
       {
-        "id": 725071065,
+        "id": 725771782,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-65/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:13:34Z",
-        "updated_at": "2026-11-08T20:13:35Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725071065"
+        "created_at": "2026-11-09T01:12:50Z",
+        "updated_at": "2026-11-09T01:12:51Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771782"
       },
       {
         "id": 725071066,
@@ -3504,15 +3798,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706289375"
       },
       {
-        "id": 725068128,
+        "id": 725771663,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-64/stats.txt",
-        "size": 2911,
+        "size": 2912,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:12:35Z",
-        "updated_at": "2026-11-08T20:12:35Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725068128"
+        "created_at": "2026-11-09T01:12:48Z",
+        "updated_at": "2026-11-09T01:12:49Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771663"
       },
       {
         "id": 725068127,
@@ -3651,15 +3945,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706284041"
       },
       {
-        "id": 725065826,
+        "id": 725771566,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-63/stats.txt",
-        "size": 2911,
-        "download_count": 1,
+        "size": 2913,
+        "download_count": 2,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:11:38Z",
-        "updated_at": "2026-11-08T20:11:39Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725065826"
+        "created_at": "2026-11-09T01:12:46Z",
+        "updated_at": "2026-11-09T01:12:46Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771566"
       },
       {
         "id": 725065825,
@@ -3798,15 +4092,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706279206"
       },
       {
-        "id": 725063413,
+        "id": 725771497,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-62/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:10:44Z",
-        "updated_at": "2026-11-08T20:10:44Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725063413"
+        "created_at": "2026-11-09T01:12:44Z",
+        "updated_at": "2026-11-09T01:12:44Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771497"
       },
       {
         "id": 725063410,
@@ -3945,15 +4239,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706274892"
       },
       {
-        "id": 725060959,
+        "id": 725771425,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-61/stats.txt",
-        "size": 2905,
+        "size": 2907,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:09:48Z",
-        "updated_at": "2026-11-08T20:09:49Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725060959"
+        "created_at": "2026-11-09T01:12:42Z",
+        "updated_at": "2026-11-09T01:12:42Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771425"
       },
       {
         "id": 725060964,
@@ -4092,15 +4386,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706270436"
       },
       {
-        "id": 725058794,
+        "id": 725771324,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-60/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:08:52Z",
-        "updated_at": "2026-11-08T20:08:53Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725058794"
+        "created_at": "2026-11-09T01:12:40Z",
+        "updated_at": "2026-11-09T01:12:40Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771324"
       },
       {
         "id": 725058798,
@@ -4239,15 +4533,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706262928"
       },
       {
-        "id": 725056266,
+        "id": 725771234,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-59/stats.txt",
-        "size": 2911,
+        "size": 2912,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:07:58Z",
-        "updated_at": "2026-11-08T20:07:58Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725056266"
+        "created_at": "2026-11-09T01:12:38Z",
+        "updated_at": "2026-11-09T01:12:38Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771234"
       },
       {
         "id": 725056268,
@@ -4386,15 +4680,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706257883"
       },
       {
-        "id": 725054000,
+        "id": 725771165,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-58/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:07:05Z",
-        "updated_at": "2026-11-08T20:07:05Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725054000"
+        "created_at": "2026-11-09T01:12:36Z",
+        "updated_at": "2026-11-09T01:12:36Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771165"
       },
       {
         "id": 725054016,
@@ -4533,15 +4827,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706253998"
       },
       {
-        "id": 725052298,
+        "id": 725771071,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/stats.txt",
-        "size": 2905,
+        "size": 2907,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:06:13Z",
-        "updated_at": "2026-11-08T20:06:13Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725052298"
+        "created_at": "2026-11-09T01:12:33Z",
+        "updated_at": "2026-11-09T01:12:34Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725771071"
       },
       {
         "id": 725052293,
@@ -4559,7 +4853,7 @@
         "name": "Y2Linux-1.0.0-beta.6-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-57/Y2Linux-1.0.0-beta.6-first-install-macos.zip",
         "size": 177168224,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:06:13Z",
         "updated_at": "2026-11-08T20:06:20Z",
@@ -4680,15 +4974,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706249355"
       },
       {
-        "id": 725049749,
+        "id": 725770986,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-56/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:05:14Z",
-        "updated_at": "2026-11-08T20:05:14Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725049749"
+        "created_at": "2026-11-09T01:12:31Z",
+        "updated_at": "2026-11-09T01:12:32Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770986"
       },
       {
         "id": 725049750,
@@ -4827,15 +5121,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706244653"
       },
       {
-        "id": 725047269,
+        "id": 725770926,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/stats.txt",
-        "size": 2908,
+        "size": 2909,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:04:18Z",
-        "updated_at": "2026-11-08T20:04:19Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725047269"
+        "created_at": "2026-11-09T01:12:29Z",
+        "updated_at": "2026-11-09T01:12:29Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770926"
       },
       {
         "id": 725047266,
@@ -4864,7 +5158,7 @@
         "name": "Y2Linux-1.0.0-beta.5-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-55/Y2Linux-1.0.0-beta.5-first-install-windows.zip",
         "size": 263334098,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:04:18Z",
         "updated_at": "2026-11-08T20:04:28Z",
@@ -4974,15 +5268,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706239615"
       },
       {
-        "id": 725045241,
+        "id": 725770836,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-54/stats.txt",
-        "size": 2911,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:03:23Z",
-        "updated_at": "2026-11-08T20:03:23Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725045241"
+        "created_at": "2026-11-09T01:12:27Z",
+        "updated_at": "2026-11-09T01:12:27Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770836"
       },
       {
         "id": 725045244,
@@ -5121,15 +5415,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706234817"
       },
       {
-        "id": 725043295,
+        "id": 725770768,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/stats.txt",
-        "size": 2905,
+        "size": 2907,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:02:25Z",
-        "updated_at": "2026-11-08T20:02:25Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725043295"
+        "created_at": "2026-11-09T01:12:25Z",
+        "updated_at": "2026-11-09T01:12:25Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770768"
       },
       {
         "id": 725043303,
@@ -5158,7 +5452,7 @@
         "name": "Y2Linux-1.0.0-beta.4-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-53/Y2Linux-1.0.0-beta.4-first-install-windows.zip",
         "size": 263288588,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:02:25Z",
         "updated_at": "2026-11-08T20:02:36Z",
@@ -5279,15 +5573,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706229325"
       },
       {
-        "id": 725041037,
+        "id": 725770706,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-52/stats.txt",
-        "size": 3151,
+        "size": 3152,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:01:22Z",
-        "updated_at": "2026-11-08T20:01:23Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725041037"
+        "created_at": "2026-11-09T01:12:23Z",
+        "updated_at": "2026-11-09T01:12:23Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770706"
       },
       {
         "id": 725041034,
@@ -5437,15 +5731,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706222253"
       },
       {
-        "id": 725038881,
+        "id": 725770665,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-51/stats.txt",
-        "size": 3035,
+        "size": 3036,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:00:17Z",
-        "updated_at": "2026-11-08T20:00:17Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725038881"
+        "created_at": "2026-11-09T01:12:21Z",
+        "updated_at": "2026-11-09T01:12:21Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770665"
       },
       {
         "id": 725038877,
@@ -5595,15 +5889,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706215385"
       },
       {
-        "id": 725036372,
+        "id": 725770608,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-50/stats.txt",
-        "size": 3034,
+        "size": 3035,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T19:59:13Z",
-        "updated_at": "2026-11-08T19:59:14Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725036372"
+        "created_at": "2026-11-09T01:12:18Z",
+        "updated_at": "2026-11-09T01:12:19Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770608"
       },
       {
         "id": 725036441,
@@ -5753,15 +6047,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706209055"
       },
       {
-        "id": 725033974,
+        "id": 725770533,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-49/stats.txt",
         "size": 3014,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T19:58:05Z",
-        "updated_at": "2026-11-08T19:58:05Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725033974"
+        "created_at": "2026-11-09T01:12:16Z",
+        "updated_at": "2026-11-09T01:12:16Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725770533"
       },
       {
         "id": 725033972,
@@ -5911,15 +6205,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706112411"
       },
       {
-        "id": 725218073,
+        "id": 725776738,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-207/stats.txt",
         "size": 3055,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:16:11Z",
-        "updated_at": "2026-11-08T21:16:11Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725218073"
+        "created_at": "2026-11-09T01:15:05Z",
+        "updated_at": "2026-11-09T01:15:06Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776738"
       },
       {
         "id": 725218071,
@@ -6069,15 +6363,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707447886"
       },
       {
-        "id": 725215367,
+        "id": 725776657,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-206/stats.txt",
         "size": 2930,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:15:08Z",
-        "updated_at": "2026-11-08T21:15:08Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725215367"
+        "created_at": "2026-11-09T01:15:03Z",
+        "updated_at": "2026-11-09T01:15:03Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776657"
       },
       {
         "id": 725215366,
@@ -6216,15 +6510,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707442802"
       },
       {
-        "id": 725213126,
+        "id": 725776579,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-205/stats.txt",
-        "size": 2930,
+        "size": 2931,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:14:13Z",
-        "updated_at": "2026-11-08T21:14:13Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725213126"
+        "created_at": "2026-11-09T01:15:01Z",
+        "updated_at": "2026-11-09T01:15:01Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776579"
       },
       {
         "id": 725213132,
@@ -6363,15 +6657,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707439472"
       },
       {
-        "id": 725210290,
+        "id": 725776512,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-204/stats.txt",
         "size": 2931,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:13:17Z",
-        "updated_at": "2026-11-08T21:13:17Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725210290"
+        "created_at": "2026-11-09T01:14:59Z",
+        "updated_at": "2026-11-09T01:14:59Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776512"
       },
       {
         "id": 725210291,
@@ -6510,15 +6804,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707435529"
       },
       {
-        "id": 725208054,
+        "id": 725776434,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-203/stats.txt",
-        "size": 2928,
+        "size": 2930,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:12:19Z",
-        "updated_at": "2026-11-08T21:12:19Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725208054"
+        "created_at": "2026-11-09T01:14:57Z",
+        "updated_at": "2026-11-09T01:14:57Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776434"
       },
       {
         "id": 725208058,
@@ -6657,15 +6951,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707431649"
       },
       {
-        "id": 725205899,
+        "id": 725776381,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-202/stats.txt",
-        "size": 2928,
+        "size": 2930,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:11:25Z",
-        "updated_at": "2026-11-08T21:11:25Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725205899"
+        "created_at": "2026-11-09T01:14:55Z",
+        "updated_at": "2026-11-09T01:14:55Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776381"
       },
       {
         "id": 725205897,
@@ -6804,15 +7098,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707425165"
       },
       {
-        "id": 725201200,
+        "id": 725776265,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-199/stats.txt",
-        "size": 2923,
+        "size": 2925,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:09:26Z",
-        "updated_at": "2026-11-08T21:09:26Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725201200"
+        "created_at": "2026-11-09T01:14:51Z",
+        "updated_at": "2026-11-09T01:14:51Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776265"
       },
       {
         "id": 725201196,
@@ -6841,7 +7135,7 @@
         "name": "Y2Linux-1.0.0-beta.9.2.8-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-199/Y2Linux-1.0.0-beta.9.2.8-first-install-windows.zip",
         "size": 272850839,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-08T21:09:26Z",
         "updated_at": "2026-11-08T21:09:35Z",
@@ -6951,15 +7245,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707420690"
       },
       {
-        "id": 725199054,
+        "id": 725776128,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-198/stats.txt",
-        "size": 2922,
+        "size": 2924,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:08:29Z",
-        "updated_at": "2026-11-08T21:08:29Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725199054"
+        "created_at": "2026-11-09T01:14:49Z",
+        "updated_at": "2026-11-09T01:14:49Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776128"
       },
       {
         "id": 725199051,
@@ -7098,15 +7392,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707416936"
       },
       {
-        "id": 725196893,
+        "id": 725776065,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-197/stats.txt",
-        "size": 2922,
+        "size": 2923,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:07:33Z",
-        "updated_at": "2026-11-08T21:07:33Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725196893"
+        "created_at": "2026-11-09T01:14:47Z",
+        "updated_at": "2026-11-09T01:14:47Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725776065"
       },
       {
         "id": 725196895,
@@ -7245,15 +7539,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707412733"
       },
       {
-        "id": 725194939,
+        "id": 725775998,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-196/stats.txt",
-        "size": 2922,
+        "size": 2924,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:06:38Z",
-        "updated_at": "2026-11-08T21:06:38Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725194939"
+        "created_at": "2026-11-09T01:14:45Z",
+        "updated_at": "2026-11-09T01:14:45Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775998"
       },
       {
         "id": 725194937,
@@ -7392,15 +7686,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707407455"
       },
       {
-        "id": 725192979,
+        "id": 725775923,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-195/stats.txt",
-        "size": 2922,
+        "size": 2924,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:05:46Z",
-        "updated_at": "2026-11-08T21:05:46Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725192979"
+        "created_at": "2026-11-09T01:14:43Z",
+        "updated_at": "2026-11-09T01:14:43Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775923"
       },
       {
         "id": 725192977,
@@ -7539,15 +7833,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707402580"
       },
       {
-        "id": 725190783,
+        "id": 725775857,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-194/stats.txt",
-        "size": 2922,
+        "size": 2924,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:04:49Z",
-        "updated_at": "2026-11-08T21:04:49Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725190783"
+        "created_at": "2026-11-09T01:14:41Z",
+        "updated_at": "2026-11-09T01:14:41Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775857"
       },
       {
         "id": 725190786,
@@ -7686,15 +7980,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707397265"
       },
       {
-        "id": 725188376,
+        "id": 725775810,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-193/stats.txt",
-        "size": 2922,
+        "size": 2924,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:03:48Z",
-        "updated_at": "2026-11-08T21:03:48Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725188376"
+        "created_at": "2026-11-09T01:14:39Z",
+        "updated_at": "2026-11-09T01:14:39Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775810"
       },
       {
         "id": 725188382,
@@ -7833,22 +8127,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707393503"
       },
       {
-        "id": 725186444,
+        "id": 725775758,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-191/stats.txt",
         "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:02:49Z",
-        "updated_at": "2026-11-08T21:02:49Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725186444"
+        "created_at": "2026-11-09T01:14:37Z",
+        "updated_at": "2026-11-09T01:14:37Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775758"
       },
       {
         "id": 725186445,
         "name": "Y2Linux-1.0.0-beta.9.2-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-191/Y2Linux-1.0.0-beta.9.2-first-install-linux.zip",
         "size": 454305154,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T21:02:49Z",
         "updated_at": "2026-11-08T21:03:06Z",
@@ -7980,15 +8274,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707389938"
       },
       {
-        "id": 725184346,
+        "id": 725775665,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-189/stats.txt",
-        "size": 2912,
+        "size": 2913,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:01:49Z",
-        "updated_at": "2026-11-08T21:01:50Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725184346"
+        "created_at": "2026-11-09T01:14:35Z",
+        "updated_at": "2026-11-09T01:14:35Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775665"
       },
       {
         "id": 725184349,
@@ -8127,15 +8421,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707385354"
       },
       {
-        "id": 725181930,
+        "id": 725775586,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-186/stats.txt",
-        "size": 3034,
+        "size": 3036,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T21:00:52Z",
-        "updated_at": "2026-11-08T21:00:53Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725181930"
+        "created_at": "2026-11-09T01:14:33Z",
+        "updated_at": "2026-11-09T01:14:33Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775586"
       },
       {
         "id": 725181929,
@@ -8285,15 +8579,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707381598"
       },
       {
-        "id": 725179009,
+        "id": 725775525,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-164/stats.txt",
-        "size": 2919,
+        "size": 2920,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:59:48Z",
-        "updated_at": "2026-11-08T20:59:48Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725179009"
+        "created_at": "2026-11-09T01:14:31Z",
+        "updated_at": "2026-11-09T01:14:31Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775525"
       },
       {
         "id": 725179010,
@@ -8432,15 +8726,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707377964"
       },
       {
-        "id": 725176792,
+        "id": 725775457,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-163/stats.txt",
-        "size": 2917,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:58:48Z",
-        "updated_at": "2026-11-08T20:58:48Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725176792"
+        "created_at": "2026-11-09T01:14:28Z",
+        "updated_at": "2026-11-09T01:14:29Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775457"
       },
       {
         "id": 725176789,
@@ -8579,15 +8873,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707374628"
       },
       {
-        "id": 725174869,
+        "id": 725775389,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-159/stats.txt",
-        "size": 2917,
+        "size": 2919,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:57:52Z",
-        "updated_at": "2026-11-08T20:57:52Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725174869"
+        "created_at": "2026-11-09T01:14:26Z",
+        "updated_at": "2026-11-09T01:14:26Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775389"
       },
       {
         "id": 725174866,
@@ -8726,15 +9020,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707370925"
       },
       {
-        "id": 725172548,
+        "id": 725775291,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-154/stats.txt",
-        "size": 2917,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:56:55Z",
-        "updated_at": "2026-11-08T20:56:55Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725172548"
+        "created_at": "2026-11-09T01:14:24Z",
+        "updated_at": "2026-11-09T01:14:24Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775291"
       },
       {
         "id": 725172549,
@@ -8873,15 +9167,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707366059"
       },
       {
-        "id": 725170668,
+        "id": 725775222,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-153/stats.txt",
-        "size": 2917,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:55:58Z",
-        "updated_at": "2026-11-08T20:55:59Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725170668"
+        "created_at": "2026-11-09T01:14:22Z",
+        "updated_at": "2026-11-09T01:14:22Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775222"
       },
       {
         "id": 725170666,
@@ -9020,15 +9314,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707361433"
       },
       {
-        "id": 725168674,
+        "id": 725775157,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-146/stats.txt",
-        "size": 2917,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:55:01Z",
-        "updated_at": "2026-11-08T20:55:01Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725168674"
+        "created_at": "2026-11-09T01:14:20Z",
+        "updated_at": "2026-11-09T01:14:20Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775157"
       },
       {
         "id": 725168676,
@@ -9167,15 +9461,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707357051"
       },
       {
-        "id": 725166816,
+        "id": 725775081,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-144/stats.txt",
-        "size": 2916,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:54:03Z",
-        "updated_at": "2026-11-08T20:54:03Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725166816"
+        "created_at": "2026-11-09T01:14:18Z",
+        "updated_at": "2026-11-09T01:14:18Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775081"
       },
       {
         "id": 725166813,
@@ -9314,15 +9608,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707352876"
       },
       {
-        "id": 725164743,
+        "id": 725775031,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-138/stats.txt",
         "size": 2917,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:53:02Z",
-        "updated_at": "2026-11-08T20:53:02Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725164743"
+        "created_at": "2026-11-09T01:14:16Z",
+        "updated_at": "2026-11-09T01:14:16Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725775031"
       },
       {
         "id": 725164745,
@@ -9461,15 +9755,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707348813"
       },
       {
-        "id": 725162804,
+        "id": 725774905,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-136/stats.txt",
-        "size": 2917,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:52:04Z",
-        "updated_at": "2026-11-08T20:52:05Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725162804"
+        "created_at": "2026-11-09T01:14:14Z",
+        "updated_at": "2026-11-09T01:14:14Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774905"
       },
       {
         "id": 725162807,
@@ -9608,15 +9902,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707344238"
       },
       {
-        "id": 725160728,
+        "id": 725774769,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-135/stats.txt",
-        "size": 2917,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:51:03Z",
-        "updated_at": "2026-11-08T20:51:03Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725160728"
+        "created_at": "2026-11-09T01:14:12Z",
+        "updated_at": "2026-11-09T01:14:12Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774769"
       },
       {
         "id": 725160719,
@@ -9755,15 +10049,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/707339870"
       },
       {
-        "id": 725158186,
+        "id": 725774659,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-134/stats.txt",
-        "size": 2917,
-        "download_count": 0,
+        "size": 2918,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:50:05Z",
-        "updated_at": "2026-11-08T20:50:05Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725158186"
+        "created_at": "2026-11-09T01:14:09Z",
+        "updated_at": "2026-11-09T01:14:10Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774659"
       },
       {
         "id": 725158187,
@@ -9902,15 +10196,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706473926"
       },
       {
-        "id": 725155657,
+        "id": 725774551,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-130/stats.txt",
-        "size": 2918,
+        "size": 2919,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:49:08Z",
-        "updated_at": "2026-11-08T20:49:09Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725155657"
+        "created_at": "2026-11-09T01:14:07Z",
+        "updated_at": "2026-11-09T01:14:08Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774551"
       },
       {
         "id": 725155655,
@@ -9939,7 +10233,7 @@
         "name": "Y2Linux-1.0.0-beta.8.31-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-130/Y2Linux-1.0.0-beta.8.31-first-install-windows.zip",
         "size": 278148696,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:49:09Z",
         "updated_at": "2026-11-08T20:49:15Z",
@@ -10049,15 +10343,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706469595"
       },
       {
-        "id": 725153172,
+        "id": 725774501,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-129/stats.txt",
-        "size": 2916,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:48:14Z",
-        "updated_at": "2026-11-08T20:48:14Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725153172"
+        "created_at": "2026-11-09T01:14:05Z",
+        "updated_at": "2026-11-09T01:14:06Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774501"
       },
       {
         "id": 725153171,
@@ -10196,15 +10490,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706465292"
       },
       {
-        "id": 725150735,
+        "id": 725774447,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-128/stats.txt",
-        "size": 2917,
+        "size": 2919,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:47:17Z",
-        "updated_at": "2026-11-08T20:47:17Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725150735"
+        "created_at": "2026-11-09T01:14:03Z",
+        "updated_at": "2026-11-09T01:14:03Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774447"
       },
       {
         "id": 725150732,
@@ -10343,15 +10637,15 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706460977"
       },
       {
-        "id": 725148084,
+        "id": 725774377,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-127/stats.txt",
-        "size": 2917,
+        "size": 2919,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:46:17Z",
-        "updated_at": "2026-11-08T20:46:17Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725148084"
+        "created_at": "2026-11-09T01:14:01Z",
+        "updated_at": "2026-11-09T01:14:01Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774377"
       },
       {
         "id": 725148081,
@@ -10490,22 +10784,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706455450"
       },
       {
-        "id": 725145066,
+        "id": 725774323,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-126/stats.txt",
-        "size": 2917,
+        "size": 2918,
         "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:45:10Z",
-        "updated_at": "2026-11-08T20:45:10Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725145066"
+        "created_at": "2026-11-09T01:13:59Z",
+        "updated_at": "2026-11-09T01:13:59Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774323"
       },
       {
         "id": 725145071,
         "name": "Y2Linux-1.0.0-beta.8.27-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-126/Y2Linux-1.0.0-beta.8.27-first-install-linux.zip",
         "size": 459610331,
-        "download_count": 1,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:45:10Z",
         "updated_at": "2026-11-08T20:45:34Z",
@@ -10637,22 +10931,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706450708"
       },
       {
-        "id": 725142882,
+        "id": 725774233,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/stats.txt",
         "size": 2918,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:44:11Z",
-        "updated_at": "2026-11-08T20:44:11Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725142882"
+        "created_at": "2026-11-09T01:13:57Z",
+        "updated_at": "2026-11-09T01:13:57Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774233"
       },
       {
         "id": 725142883,
         "name": "Y2Linux-1.0.0-beta.8.26-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install-linux.zip",
         "size": 459601124,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:44:11Z",
         "updated_at": "2026-11-08T20:44:27Z",
@@ -10663,7 +10957,7 @@
         "name": "Y2Linux-1.0.0-beta.8.26-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install-macos.zip",
         "size": 191767915,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:44:11Z",
         "updated_at": "2026-11-08T20:44:19Z",
@@ -10674,7 +10968,7 @@
         "name": "Y2Linux-1.0.0-beta.8.26-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-125/Y2Linux-1.0.0-beta.8.26-first-install-windows.zip",
         "size": 278112095,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:44:11Z",
         "updated_at": "2026-11-08T20:44:22Z",
@@ -10784,22 +11078,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706445417"
       },
       {
-        "id": 725140827,
+        "id": 725774154,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/stats.txt",
-        "size": 2918,
-        "download_count": 0,
+        "size": 2919,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:43:15Z",
-        "updated_at": "2026-11-08T20:43:16Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725140827"
+        "created_at": "2026-11-09T01:13:55Z",
+        "updated_at": "2026-11-09T01:13:55Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774154"
       },
       {
         "id": 725140824,
         "name": "Y2Linux-1.0.0-beta.8.25-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install-linux.zip",
         "size": 459600549,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:43:15Z",
         "updated_at": "2026-11-08T20:43:29Z",
@@ -10810,7 +11104,7 @@
         "name": "Y2Linux-1.0.0-beta.8.25-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install-macos.zip",
         "size": 191767340,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:43:15Z",
         "updated_at": "2026-11-08T20:43:25Z",
@@ -10821,7 +11115,7 @@
         "name": "Y2Linux-1.0.0-beta.8.25-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-124/Y2Linux-1.0.0-beta.8.25-first-install-windows.zip",
         "size": 278111520,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:43:15Z",
         "updated_at": "2026-11-08T20:43:26Z",
@@ -10931,22 +11225,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706441201"
       },
       {
-        "id": 725138646,
+        "id": 725774080,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/stats.txt",
-        "size": 2917,
-        "download_count": 0,
+        "size": 2918,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:42:16Z",
-        "updated_at": "2026-11-08T20:42:16Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725138646"
+        "created_at": "2026-11-09T01:13:52Z",
+        "updated_at": "2026-11-09T01:13:53Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774080"
       },
       {
         "id": 725138643,
         "name": "Y2Linux-1.0.0-beta.8.24-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install-linux.zip",
         "size": 459598988,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:42:16Z",
         "updated_at": "2026-11-08T20:42:33Z",
@@ -10957,7 +11251,7 @@
         "name": "Y2Linux-1.0.0-beta.8.24-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install-macos.zip",
         "size": 191765779,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:42:16Z",
         "updated_at": "2026-11-08T20:42:25Z",
@@ -10968,7 +11262,7 @@
         "name": "Y2Linux-1.0.0-beta.8.24-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-123/Y2Linux-1.0.0-beta.8.24-first-install-windows.zip",
         "size": 278109959,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:42:16Z",
         "updated_at": "2026-11-08T20:42:26Z",
@@ -11078,22 +11372,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706436801"
       },
       {
-        "id": 725136696,
+        "id": 725774000,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/stats.txt",
         "size": 2918,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:41:17Z",
-        "updated_at": "2026-11-08T20:41:17Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725136696"
+        "created_at": "2026-11-09T01:13:50Z",
+        "updated_at": "2026-11-09T01:13:50Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725774000"
       },
       {
         "id": 725136695,
         "name": "Y2Linux-1.0.0-beta.8.23-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install-linux.zip",
         "size": 459603021,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:41:17Z",
         "updated_at": "2026-11-08T20:41:34Z",
@@ -11104,7 +11398,7 @@
         "name": "Y2Linux-1.0.0-beta.8.23-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install-macos.zip",
         "size": 191769812,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:41:17Z",
         "updated_at": "2026-11-08T20:41:25Z",
@@ -11115,7 +11409,7 @@
         "name": "Y2Linux-1.0.0-beta.8.23-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-122/Y2Linux-1.0.0-beta.8.23-first-install-windows.zip",
         "size": 278113992,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:41:17Z",
         "updated_at": "2026-11-08T20:41:27Z",
@@ -11225,22 +11519,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706431943"
       },
       {
-        "id": 725134643,
+        "id": 725773938,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/stats.txt",
-        "size": 2918,
-        "download_count": 0,
+        "size": 2919,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:40:16Z",
-        "updated_at": "2026-11-08T20:40:16Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725134643"
+        "created_at": "2026-11-09T01:13:48Z",
+        "updated_at": "2026-11-09T01:13:48Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773938"
       },
       {
         "id": 725134644,
         "name": "Y2Linux-1.0.0-beta.8.22-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install-linux.zip",
         "size": 459580912,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:40:16Z",
         "updated_at": "2026-11-08T20:40:34Z",
@@ -11251,7 +11545,7 @@
         "name": "Y2Linux-1.0.0-beta.8.22-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install-macos.zip",
         "size": 191747703,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:40:16Z",
         "updated_at": "2026-11-08T20:40:26Z",
@@ -11262,7 +11556,7 @@
         "name": "Y2Linux-1.0.0-beta.8.22-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-121/Y2Linux-1.0.0-beta.8.22-first-install-windows.zip",
         "size": 278091883,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:40:16Z",
         "updated_at": "2026-11-08T20:40:28Z",
@@ -11383,22 +11677,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706425892"
       },
       {
-        "id": 725132640,
+        "id": 725773881,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/stats.txt",
-        "size": 3284,
-        "download_count": 0,
+        "size": 3285,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:39:19Z",
-        "updated_at": "2026-11-08T20:39:19Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725132640"
+        "created_at": "2026-11-09T01:13:46Z",
+        "updated_at": "2026-11-09T01:13:46Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773881"
       },
       {
         "id": 725132643,
         "name": "Y2Linux-1.0.0-beta.8.21-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install-linux.zip",
         "size": 459556329,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:39:19Z",
         "updated_at": "2026-11-08T20:39:33Z",
@@ -11409,7 +11703,7 @@
         "name": "Y2Linux-1.0.0-beta.8.21-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install-macos.zip",
         "size": 191723119,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:39:19Z",
         "updated_at": "2026-11-08T20:39:30Z",
@@ -11420,7 +11714,7 @@
         "name": "Y2Linux-1.0.0-beta.8.21-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-120/Y2Linux-1.0.0-beta.8.21-first-install-windows.zip",
         "size": 278067300,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:39:19Z",
         "updated_at": "2026-11-08T20:39:31Z",
@@ -11552,22 +11846,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706419797"
       },
       {
-        "id": 725130504,
+        "id": 725773819,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/stats.txt",
-        "size": 2918,
-        "download_count": 0,
+        "size": 2919,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:38:09Z",
-        "updated_at": "2026-11-08T20:38:09Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725130504"
+        "created_at": "2026-11-09T01:13:44Z",
+        "updated_at": "2026-11-09T01:13:44Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773819"
       },
       {
         "id": 725130503,
         "name": "Y2Linux-1.0.0-beta.8.20-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install-linux.zip",
         "size": 459555868,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:38:09Z",
         "updated_at": "2026-11-08T20:38:23Z",
@@ -11578,7 +11872,7 @@
         "name": "Y2Linux-1.0.0-beta.8.20-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install-macos.zip",
         "size": 191722658,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:38:09Z",
         "updated_at": "2026-11-08T20:38:17Z",
@@ -11589,7 +11883,7 @@
         "name": "Y2Linux-1.0.0-beta.8.20-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-119/Y2Linux-1.0.0-beta.8.20-first-install-windows.zip",
         "size": 278066839,
-        "download_count": 0,
+        "download_count": 2,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:38:09Z",
         "updated_at": "2026-11-08T20:38:18Z",
@@ -11699,22 +11993,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706415459"
       },
       {
-        "id": 725128450,
+        "id": 725773730,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/stats.txt",
-        "size": 2918,
-        "download_count": 0,
+        "size": 2919,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:37:11Z",
-        "updated_at": "2026-11-08T20:37:11Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725128450"
+        "created_at": "2026-11-09T01:13:42Z",
+        "updated_at": "2026-11-09T01:13:42Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773730"
       },
       {
         "id": 725128445,
         "name": "Y2Linux-1.0.0-beta.8.19-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install-linux.zip",
         "size": 459555779,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:37:11Z",
         "updated_at": "2026-11-08T20:37:29Z",
@@ -11725,7 +12019,7 @@
         "name": "Y2Linux-1.0.0-beta.8.19-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install-macos.zip",
         "size": 191722570,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:37:11Z",
         "updated_at": "2026-11-08T20:37:19Z",
@@ -11736,7 +12030,7 @@
         "name": "Y2Linux-1.0.0-beta.8.19-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-118/Y2Linux-1.0.0-beta.8.19-first-install-windows.zip",
         "size": 278066750,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:37:11Z",
         "updated_at": "2026-11-08T20:37:21Z",
@@ -11846,22 +12140,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706410256"
       },
       {
-        "id": 725126563,
+        "id": 725773625,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/stats.txt",
-        "size": 3040,
-        "download_count": 0,
+        "size": 3041,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:36:14Z",
-        "updated_at": "2026-11-08T20:36:14Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725126563"
+        "created_at": "2026-11-09T01:13:40Z",
+        "updated_at": "2026-11-09T01:13:40Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773625"
       },
       {
         "id": 725126556,
         "name": "Y2Linux-1.0.0-beta.8.17-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install-linux.zip",
         "size": 459345802,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:36:14Z",
         "updated_at": "2026-11-08T20:36:30Z",
@@ -11872,7 +12166,7 @@
         "name": "Y2Linux-1.0.0-beta.8.17-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install-macos.zip",
         "size": 191512593,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:36:14Z",
         "updated_at": "2026-11-08T20:36:21Z",
@@ -11883,7 +12177,7 @@
         "name": "Y2Linux-1.0.0-beta.8.17-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-114/Y2Linux-1.0.0-beta.8.17-first-install-windows.zip",
         "size": 277856773,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:36:14Z",
         "updated_at": "2026-11-08T20:36:23Z",
@@ -12004,22 +12298,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706405488"
       },
       {
-        "id": 725124010,
+        "id": 725773585,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/stats.txt",
-        "size": 2919,
-        "download_count": 0,
+        "size": 2920,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:35:10Z",
-        "updated_at": "2026-11-08T20:35:10Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725124010"
+        "created_at": "2026-11-09T01:13:38Z",
+        "updated_at": "2026-11-09T01:13:38Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773585"
       },
       {
         "id": 725124008,
         "name": "Y2Linux-1.0.0-beta.8.16-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-linux.zip",
         "size": 459327061,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:35:10Z",
         "updated_at": "2026-11-08T20:35:24Z",
@@ -12030,7 +12324,7 @@
         "name": "Y2Linux-1.0.0-beta.8.16-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-macos.zip",
         "size": 191493852,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:35:10Z",
         "updated_at": "2026-11-08T20:35:19Z",
@@ -12041,7 +12335,7 @@
         "name": "Y2Linux-1.0.0-beta.8.16-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-113/Y2Linux-1.0.0-beta.8.16-first-install-windows.zip",
         "size": 277838032,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:35:10Z",
         "updated_at": "2026-11-08T20:35:21Z",
@@ -12151,22 +12445,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706401769"
       },
       {
-        "id": 725121448,
+        "id": 725773504,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/stats.txt",
-        "size": 2917,
-        "download_count": 0,
+        "size": 2918,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:34:14Z",
-        "updated_at": "2026-11-08T20:34:14Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725121448"
+        "created_at": "2026-11-09T01:13:35Z",
+        "updated_at": "2026-11-09T01:13:36Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773504"
       },
       {
         "id": 725121444,
         "name": "Y2Linux-1.0.0-beta.8.15-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install-linux.zip",
         "size": 459309856,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:34:14Z",
         "updated_at": "2026-11-08T20:34:29Z",
@@ -12177,7 +12471,7 @@
         "name": "Y2Linux-1.0.0-beta.8.15-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install-macos.zip",
         "size": 191476647,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:34:14Z",
         "updated_at": "2026-11-08T20:34:24Z",
@@ -12188,7 +12482,7 @@
         "name": "Y2Linux-1.0.0-beta.8.15-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-112/Y2Linux-1.0.0-beta.8.15-first-install-windows.zip",
         "size": 277820827,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:34:14Z",
         "updated_at": "2026-11-08T20:34:24Z",
@@ -12298,22 +12592,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706397240"
       },
       {
-        "id": 725119346,
+        "id": 725773433,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/stats.txt",
         "size": 2918,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:33:19Z",
-        "updated_at": "2026-11-08T20:33:19Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725119346"
+        "created_at": "2026-11-09T01:13:33Z",
+        "updated_at": "2026-11-09T01:13:33Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773433"
       },
       {
         "id": 725119340,
         "name": "Y2Linux-1.0.0-beta.8.14-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install-linux.zip",
         "size": 445600591,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:33:19Z",
         "updated_at": "2026-11-08T20:33:33Z",
@@ -12324,7 +12618,7 @@
         "name": "Y2Linux-1.0.0-beta.8.14-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install-macos.zip",
         "size": 177767382,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:33:19Z",
         "updated_at": "2026-11-08T20:33:26Z",
@@ -12335,7 +12629,7 @@
         "name": "Y2Linux-1.0.0-beta.8.14-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-111/Y2Linux-1.0.0-beta.8.14-first-install-windows.zip",
         "size": 264111562,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:33:19Z",
         "updated_at": "2026-11-08T20:33:29Z",
@@ -12445,22 +12739,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706393054"
       },
       {
-        "id": 725117079,
+        "id": 725773376,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/stats.txt",
-        "size": 2917,
-        "download_count": 0,
+        "size": 2918,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:32:24Z",
-        "updated_at": "2026-11-08T20:32:24Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725117079"
+        "created_at": "2026-11-09T01:13:31Z",
+        "updated_at": "2026-11-09T01:13:31Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773376"
       },
       {
         "id": 725117073,
         "name": "Y2Linux-1.0.0-beta.8.13-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install-linux.zip",
         "size": 445603838,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:32:24Z",
         "updated_at": "2026-11-08T20:32:38Z",
@@ -12471,7 +12765,7 @@
         "name": "Y2Linux-1.0.0-beta.8.13-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install-macos.zip",
         "size": 177770629,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:32:24Z",
         "updated_at": "2026-11-08T20:32:31Z",
@@ -12482,7 +12776,7 @@
         "name": "Y2Linux-1.0.0-beta.8.13-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-110/Y2Linux-1.0.0-beta.8.13-first-install-windows.zip",
         "size": 264114809,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:32:24Z",
         "updated_at": "2026-11-08T20:32:38Z",
@@ -12592,22 +12886,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706388028"
       },
       {
-        "id": 725114943,
+        "id": 725773316,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/stats.txt",
-        "size": 2917,
-        "download_count": 0,
+        "size": 2919,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:31:26Z",
-        "updated_at": "2026-11-08T20:31:26Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725114943"
+        "created_at": "2026-11-09T01:13:29Z",
+        "updated_at": "2026-11-09T01:13:29Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773316"
       },
       {
         "id": 725114946,
         "name": "Y2Linux-1.0.0-beta.8.12-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install-linux.zip",
         "size": 445596539,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:31:26Z",
         "updated_at": "2026-11-08T20:31:43Z",
@@ -12618,7 +12912,7 @@
         "name": "Y2Linux-1.0.0-beta.8.12-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install-macos.zip",
         "size": 177763330,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:31:26Z",
         "updated_at": "2026-11-08T20:31:35Z",
@@ -12629,7 +12923,7 @@
         "name": "Y2Linux-1.0.0-beta.8.12-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-108/Y2Linux-1.0.0-beta.8.12-first-install-windows.zip",
         "size": 264107510,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:31:26Z",
         "updated_at": "2026-11-08T20:31:37Z",
@@ -12739,22 +13033,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706382845"
       },
       {
-        "id": 725112530,
+        "id": 725773261,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/stats.txt",
-        "size": 2918,
-        "download_count": 0,
+        "size": 2919,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:30:25Z",
-        "updated_at": "2026-11-08T20:30:26Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725112530"
+        "created_at": "2026-11-09T01:13:27Z",
+        "updated_at": "2026-11-09T01:13:27Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773261"
       },
       {
         "id": 725112533,
         "name": "Y2Linux-1.0.0-beta.8.11-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install-linux.zip",
         "size": 445583851,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:30:25Z",
         "updated_at": "2026-11-08T20:30:44Z",
@@ -12765,7 +13059,7 @@
         "name": "Y2Linux-1.0.0-beta.8.11-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install-macos.zip",
         "size": 177750641,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:30:25Z",
         "updated_at": "2026-11-08T20:30:35Z",
@@ -12776,7 +13070,7 @@
         "name": "Y2Linux-1.0.0-beta.8.11-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-106/Y2Linux-1.0.0-beta.8.11-first-install-windows.zip",
         "size": 264094822,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:30:25Z",
         "updated_at": "2026-11-08T20:30:37Z",
@@ -12886,22 +13180,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706377997"
       },
       {
-        "id": 725109792,
+        "id": 725773181,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/stats.txt",
         "size": 2919,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:29:31Z",
-        "updated_at": "2026-11-08T20:29:32Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725109792"
+        "created_at": "2026-11-09T01:13:25Z",
+        "updated_at": "2026-11-09T01:13:25Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773181"
       },
       {
         "id": 725109796,
         "name": "Y2Linux-1.0.0-beta.8.10-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install-linux.zip",
         "size": 445586129,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:29:32Z",
         "updated_at": "2026-11-08T20:29:44Z",
@@ -12912,7 +13206,7 @@
         "name": "Y2Linux-1.0.0-beta.8.10-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install-macos.zip",
         "size": 177752919,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:29:31Z",
         "updated_at": "2026-11-08T20:29:41Z",
@@ -12923,7 +13217,7 @@
         "name": "Y2Linux-1.0.0-beta.8.10-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-105/Y2Linux-1.0.0-beta.8.10-first-install-windows.zip",
         "size": 264097100,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:29:31Z",
         "updated_at": "2026-11-08T20:29:43Z",
@@ -13033,22 +13327,22 @@
         "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/706372923"
       },
       {
-        "id": 725107914,
+        "id": 725773129,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/stats.txt",
-        "size": 2912,
-        "download_count": 0,
+        "size": 2914,
+        "download_count": 1,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-08T20:28:34Z",
-        "updated_at": "2026-11-08T20:28:34Z",
-        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725107914"
+        "created_at": "2026-11-09T01:13:23Z",
+        "updated_at": "2026-11-09T01:13:23Z",
+        "url": "https://api.github.com/repos/y1-community/y2linux-mirror/releases/assets/725773129"
       },
       {
         "id": 725107918,
         "name": "Y2Linux-1.0.0-beta.8.8-first-install-linux.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install-linux.zip",
         "size": 445572350,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:28:34Z",
         "updated_at": "2026-11-08T20:28:51Z",
@@ -13059,7 +13353,7 @@
         "name": "Y2Linux-1.0.0-beta.8.8-first-install-macos.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install-macos.zip",
         "size": 177739141,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:28:34Z",
         "updated_at": "2026-11-08T20:28:40Z",
@@ -13070,7 +13364,7 @@
         "name": "Y2Linux-1.0.0-beta.8.8-first-install-windows.zip",
         "browser_download_url": "https://github.com/y1-community/y2linux-mirror/releases/download/baseline-101/Y2Linux-1.0.0-beta.8.8-first-install-windows.zip",
         "size": 264083321,
-        "download_count": 0,
+        "download_count": 1,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:28:34Z",
         "updated_at": "2026-11-08T20:28:43Z",
