@@ -5,12 +5,19 @@
     "use strict";
 
     function resolveEffectiveTheme(theme) {
-        if (theme === "auto" || theme === "light" || !theme) return "dark";
-        return (theme === "high-contrast" || theme === "2077") ? theme : "dark";
+        if (!theme || theme === "auto") {
+            try {
+                if (global.matchMedia && global.matchMedia("(prefers-color-scheme: light)").matches) {
+                    return "light";
+                }
+            } catch (_) {}
+            return "dark";
+        }
+        return (theme === "light" || theme === "high-contrast" || theme === "2077" || theme === "dark") ? theme : "dark";
     }
 
     function applyStoredTheme() {
-        var allowed = ["auto", "dark", "high-contrast", "2077"];
+        var allowed = ["auto", "dark", "light", "high-contrast", "2077"];
         var stored = null;
         try { stored = global.localStorage.getItem("lumen-theme"); } catch (_) {}
         var urlTheme = null;
@@ -28,7 +35,11 @@
             try { global.localStorage.setItem("lumen-theme", urlTheme); } catch (_) {}
             setSharedCookie("innioasis-theme", urlTheme);
         }
-        if (document.documentElement) document.documentElement.setAttribute("data-lumen-theme", resolveEffectiveTheme(theme));
+        var effective = resolveEffectiveTheme(theme);
+        if (document.documentElement) {
+            document.documentElement.setAttribute("data-lumen-theme", effective);
+            document.documentElement.setAttribute("data-theme", effective);
+        }
         return theme;
     }
 
@@ -70,6 +81,46 @@
         }
     }
     applyAccessibility();
+
+    /* Accessibility font size adjustment with URL variables & cross-site persistence */
+    function applyFontScale() {
+        var raw = null;
+        try {
+            var search = (global.location && global.location.search) || "";
+            var p = new URLSearchParams(search);
+            raw = p.get("fontSize") || p.get("fontScale") || p.get("font-scale") || p.get("fs") || p.get("lumen-font-scale");
+        } catch (_) {}
+        var fontScale = 1;
+        var hasUrlScale = false;
+        if (raw) {
+            var cleaned = String(raw).trim().replace("%", "");
+            var val = parseFloat(cleaned);
+            if (val > 10) val = val / 100;
+            if (val >= 0.7 && val <= 1.6) {
+                fontScale = +(val.toFixed(2));
+                hasUrlScale = true;
+            }
+        }
+        if (!hasUrlScale) {
+            try {
+                var storedScale = parseFloat(global.localStorage.getItem("lumen-font-scale") || "");
+                if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = +(storedScale.toFixed(2));
+            } catch (_) {}
+            if (fontScale === 1) {
+                var cookieScale = parseFloat(getSharedCookie("lumen-font-scale") || "");
+                if (cookieScale >= 0.7 && cookieScale <= 1.6) fontScale = +(cookieScale.toFixed(2));
+            }
+        }
+        if (document.documentElement) {
+            document.documentElement.style.setProperty("--lumen-font-scale", String(fontScale));
+            document.documentElement.setAttribute("data-font-scale", String(fontScale));
+        }
+        try { global.localStorage.setItem("lumen-font-scale", String(fontScale)); } catch (_) {}
+        setSharedCookie("lumen-font-scale", String(fontScale), 365);
+        return fontScale;
+    }
+    applyFontScale();
+    global.y1ApplyFontScale = applyFontScale;
 
     /* Shared cross-subdomain cookie helper (.innioasis.app) */
     function setSharedCookie(name, value, days) {
@@ -379,13 +430,15 @@
         var control = document.createElement("label");
         control.id = "lumen-theme-fallback";
         control.className = "lumen-theme-control lumen-theme-control--fallback";
-        control.innerHTML = '<span>Theme</span><select aria-label="Choose site colour theme"><option value="auto">Auto</option><option value="dark">Dark</option><option value="high-contrast">High contrast</option><option value="2077">2077</option></select>';
+        control.innerHTML = '<span>Theme</span><select aria-label="Choose site colour theme"><option value="auto">Auto</option><option value="dark">Dark</option><option value="light">Light</option><option value="high-contrast">High contrast</option><option value="2077">2077</option></select>';
         var select = control.querySelector("select");
         var stored = "auto";
         try { stored = global.localStorage.getItem("lumen-theme") || "auto"; } catch (_) {}
-        select.value = ["auto", "dark", "high-contrast", "2077"].indexOf(stored) >= 0 ? stored : "auto";
+        select.value = ["auto", "dark", "light", "high-contrast", "2077"].indexOf(stored) >= 0 ? stored : "auto";
         select.addEventListener("change", function () {
-            document.documentElement.setAttribute("data-lumen-theme", resolveEffectiveTheme(select.value));
+            var effective = resolveEffectiveTheme(select.value);
+            document.documentElement.setAttribute("data-lumen-theme", effective);
+            document.documentElement.setAttribute("data-theme", effective);
             try { global.localStorage.setItem("lumen-theme", select.value); } catch (_) {}
         });
         document.body.appendChild(control);

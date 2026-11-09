@@ -1,5 +1,6 @@
 /* Innioasis Y1 Themes — fintech-grade typography & chrome (Gold Badge aesthetic) */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("tokens.css");
 @import url("lumen.css");
 
 :root {
@@ -18,17 +19,27 @@
     --site-footer-luci-max-width: 165px;
 }
 
-/* Light Appearance (temporarily aliases Dark mode) */
+/* Light Appearance */
+:root[data-theme="light"],
 :root[data-lumen-theme="light"] {
-    --site-bg: #0a0b0f;
-    --site-bg-elevated: #12141c;
-    --site-bg-card: rgba(255, 255, 255, 0.03);
-    --site-text: #f4f6fb;
-    --site-muted: #9aa3b5;
-    --site-accent: #6b9fff;
-    --site-border: rgba(255, 255, 255, 0.08);
+    --site-bg: #f8fafc;
+    --site-bg-elevated: #ffffff;
+    --site-bg-card: rgba(15, 23, 42, 0.04);
+    --site-text: #0f172a;
+    --site-muted: #475569;
+    --site-accent: #2563eb;
+    --site-border: rgba(15, 23, 42, 0.12);
+    --site-border-hover: rgba(15, 23, 42, 0.28);
+    --bg-dark: #f1f5f9;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
 }
 
+/* High Contrast Appearance */
+:root[data-theme="high-contrast"],
 :root[data-lumen-theme="high-contrast"] {
     --site-bg: #000;
     --site-bg-elevated: #000;
@@ -37,6 +48,32 @@
     --site-muted: #fff;
     --site-accent: #73d7ff;
     --site-border: #fff;
+    --site-border-hover: #fff;
+    --bg-dark: #000;
+    --bg-card: #111;
+    --text-primary: #fff;
+    --text-secondary: #fff;
+    --primary: #73d7ff;
+    --primary-dark: #9ee6ff;
+}
+
+/* Cyberpunk 2077 Appearance */
+:root[data-theme="2077"],
+:root[data-lumen-theme="2077"] {
+    --site-bg: #06060b;
+    --site-bg-elevated: #0c0d14;
+    --site-bg-card: #11131d;
+    --site-text: #e9f0f5;
+    --site-muted: #aab8c8;
+    --site-accent: #ff1e3c;
+    --site-border: rgba(35, 230, 224, 0.25);
+    --site-border-hover: rgba(35, 230, 224, 0.55);
+    --bg-dark: #06060b;
+    --bg-card: #11131d;
+    --text-primary: #e9f0f5;
+    --text-secondary: #aab8c8;
+    --primary: #ff1e3c;
+    --primary-dark: #ff3352;
 }
 
 html {

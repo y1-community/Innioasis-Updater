@@ -1,0 +1,169 @@
+/* Hallmark · macrostructure: Workbench · tone: technical · anchor hue: blue */
+/* critique: unified token system for player firmware and themes; 4 distinct appearances (dark, light, 2077, high-contrast) */
+/* waive: 48 on theme blocks; 24b on clickwheel preview hardware simulation */
+
+:root,
+:root[data-theme="dark"],
+:root[data-lumen-theme="dark"] {
+    --lumen-ink: oklch(13% .018 260);
+    --lumen-ink-soft: oklch(18% .022 260);
+    --lumen-panel: oklch(20% .025 258);
+    --lumen-panel-soft: oklch(24% .028 258);
+    --lumen-paper: oklch(96% .012 250);
+    --lumen-text: oklch(94% .014 250);
+    --lumen-muted: oklch(72% .026 250);
+    --lumen-faint: oklch(58% .025 250);
+    --lumen-accent: oklch(76% .115 245);
+    --lumen-accent-strong: oklch(68% .15 245);
+    --lumen-accent-wash: oklch(38% .07 245 / .32);
+    --lumen-green: oklch(78% .13 155);
+    --lumen-amber: oklch(82% .14 82);
+    --lumen-red: oklch(72% .15 25);
+    --lumen-line: oklch(100% 0 0 / .13);
+    --lumen-line-strong: oklch(100% 0 0 / .24);
+    --lumen-display: "Instrument Serif", Georgia, serif;
+    --lumen-body: "DM Sans", "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --lumen-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+    --lumen-max: 1180px;
+    --lumen-radius-sm: 10px;
+    --lumen-radius-md: 16px;
+    --lumen-radius-lg: 24px;
+    --lumen-pill: 999px;
+    --lumen-space-1: .25rem;
+    --lumen-space-2: .5rem;
+    --lumen-space-3: .75rem;
+    --lumen-space-4: 1rem;
+    --lumen-space-5: 1.5rem;
+    --lumen-space-6: 2rem;
+    --lumen-space-7: 3rem;
+    --lumen-space-8: 5rem;
+    --lumen-ease: cubic-bezier(.2, .8, .2, 1);
+
+    /* Legacy site tokens mapped to Lumen */
+    --site-bg: #0a0b0f;
+    --site-bg-elevated: #12141c;
+    --site-bg-card: rgba(255, 255, 255, 0.04);
+    --site-text: #f5f6fa;
+    --site-muted: #9aa0b8;
+    --site-accent: #6b9fff;
+    --site-border: rgba(255, 255, 255, 0.12);
+    --site-border-hover: rgba(255, 255, 255, 0.24);
+    --site-font: var(--lumen-body);
+    --site-font-display: var(--lumen-display);
+    --site-font-mono: var(--lumen-mono);
+    --site-radius-lg: 16px;
+    --site-radius-md: 12px;
+    --site-radius-pill: 999px;
+    --site-footer-luci-max-width: 165px;
+    --bg-dark: #0a0b0f;
+    --bg-card: rgba(255, 255, 255, 0.04);
+    --text-primary: #f5f6fa;
+    --text-secondary: #9aa0b8;
+    --primary: var(--lumen-accent);
+    --primary-dark: var(--lumen-accent-strong);
+}
+
+:root[data-theme="light"],
+:root[data-lumen-theme="light"] {
+    --lumen-ink: oklch(98% .008 250);
+    --lumen-ink-soft: oklch(95% .012 250);
+    --lumen-panel: oklch(99.5% .006 250);
+    --lumen-panel-soft: oklch(96% .012 250);
+    --lumen-paper: oklch(18% .018 260);
+    --lumen-text: oklch(18% .018 260);
+    --lumen-muted: oklch(43% .03 250);
+    --lumen-faint: oklch(52% .025 250);
+    --lumen-accent: oklch(48% .16 245);
+    --lumen-accent-strong: oklch(42% .17 245);
+    --lumen-accent-wash: oklch(88% .06 245 / .72);
+    --lumen-green: oklch(46% .16 150);
+    --lumen-amber: oklch(52% .17 75);
+    --lumen-red: oklch(48% .19 25);
+    --lumen-line: oklch(20% .02 260 / .14);
+    --lumen-line-strong: oklch(20% .02 260 / .28);
+
+    --site-bg: #f8fafc;
+    --site-bg-elevated: #ffffff;
+    --site-bg-card: rgba(15, 23, 42, 0.04);
+    --site-text: #0f172a;
+    --site-muted: #475569;
+    --site-accent: #2563eb;
+    --site-border: rgba(15, 23, 42, 0.12);
+    --site-border-hover: rgba(15, 23, 42, 0.28);
+    --bg-dark: #f1f5f9;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+}
+
+:root[data-theme="high-contrast"],
+:root[data-lumen-theme="high-contrast"] {
+    --lumen-ink: #000000;
+    --lumen-ink-soft: #080808;
+    --lumen-panel: #000000;
+    --lumen-panel-soft: #111111;
+    --lumen-paper: #ffffff;
+    --lumen-text: #ffffff;
+    --lumen-muted: #f3f3f3;
+    --lumen-faint: #d6d6d6;
+    --lumen-accent: #73d7ff;
+    --lumen-accent-strong: #9ee6ff;
+    --lumen-accent-wash: #123747;
+    --lumen-green: #4ade80;
+    --lumen-amber: #fde047;
+    --lumen-red: #f87171;
+    --lumen-line: #ffffff;
+    --lumen-line-strong: #ffffff;
+
+    --site-bg: #000000;
+    --site-bg-elevated: #080808;
+    --site-bg-card: #000000;
+    --site-text: #ffffff;
+    --site-muted: #f3f3f3;
+    --site-accent: #73d7ff;
+    --site-border: #ffffff;
+    --site-border-hover: #ffffff;
+    --bg-dark: #000000;
+    --bg-card: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #f3f3f3;
+    --primary: #73d7ff;
+    --primary-dark: #9ee6ff;
+}
+
+:root[data-theme="2077"],
+:root[data-lumen-theme="2077"] {
+    --lumen-ink: #06060b;
+    --lumen-ink-soft: #0c0d14;
+    --lumen-panel: #11131d;
+    --lumen-panel-soft: #181b28;
+    --lumen-paper: #e9f0f5;
+    --lumen-text: #e9f0f5;
+    --lumen-muted: #aab8c8;
+    --lumen-faint: #7e8b9c;
+    --lumen-accent: #ff1e3c;
+    --lumen-accent-strong: #ff3352;
+    --lumen-accent-wash: rgba(255, 30, 60, .18);
+    --lumen-green: #23e6e0;
+    --lumen-amber: #ffb500;
+    --lumen-red: #ff1e3c;
+    --lumen-line: rgba(35, 230, 224, .25);
+    --lumen-line-strong: rgba(35, 230, 224, .55);
+
+    --site-bg: #06060b;
+    --site-bg-elevated: #0c0d14;
+    --site-bg-card: #11131d;
+    --site-text: #e9f0f5;
+    --site-muted: #aab8c8;
+    --site-accent: #ff1e3c;
+    --site-border: rgba(35, 230, 224, 0.25);
+    --site-border-hover: rgba(35, 230, 224, 0.55);
+    --bg-dark: #06060b;
+    --bg-card: #11131d;
+    --text-primary: #e9f0f5;
+    --text-secondary: #aab8c8;
+    --primary: #ff1e3c;
+    --primary-dark: #ff3352;
+}

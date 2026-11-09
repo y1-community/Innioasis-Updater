@@ -418,14 +418,9 @@
     padding-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)) !important;
   }
 
-  /* compact: the two extra text-size steps go. The running-costs and goal line remains visible for all users who have not disabled donations. */
+  /* compact & minimal: keep priority controls and font sizing reachable */
   #support-toolbar-container[data-dock-density="compact"] .y1-dock-goal-layer,
-  #support-toolbar-container[data-dock-density="compact"] .y1-font-btn--small,
-  #support-toolbar-container[data-dock-density="compact"] .y1-font-btn--large,
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-goal-layer,
-  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--small,
-  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--large,
-  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn--reset,
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-sep {
     display: none !important;
   }
@@ -444,7 +439,6 @@
     max-width: 100% !important;
   }
   #support-toolbar-container[data-dock-density="minimal"] .y1-dock-link,
-  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn,
   #support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
     font-size: 0 !important;
     padding: 6px 8px !important;
@@ -453,6 +447,24 @@
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-control {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+  }
+  #support-toolbar-container[data-dock-density="minimal"] .y1-font-btn {
+    font-size: 0.78rem !important;
+    font-weight: 800 !important;
+    padding: 4px 6px !important;
+    min-width: 26px !important;
+    min-height: 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
     flex-shrink: 0 !important;
   }
   #support-toolbar-container[data-dock-density="minimal"] .site-locale-dock-btn {
@@ -1168,20 +1180,56 @@
   var FONT_KEY = "lumen-font-scale";
   var fontScale = 1;
   try {
-    var storedScale = parseFloat(localStorage.getItem(FONT_KEY) || "");
-    if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = storedScale;
+    var p = new URLSearchParams(window.location.search);
+    var urlFs = p.get("fontSize") || p.get("fontScale") || p.get("font-scale") || p.get("fs") || p.get("lumen-font-scale");
+    if (urlFs) {
+      var v = parseFloat(String(urlFs).replace("%", ""));
+      if (v > 10) v = v / 100;
+      if (v >= 0.7 && v <= 1.6) fontScale = +(v.toFixed(2));
+    } else {
+      var storedScale = parseFloat(localStorage.getItem(FONT_KEY) || "");
+      if (storedScale >= 0.7 && storedScale <= 1.6) fontScale = +(storedScale.toFixed(2));
+    }
   } catch (_) {}
   function applyFontScale() {
     document.documentElement.style.setProperty("--lumen-font-scale", String(fontScale));
+    document.documentElement.setAttribute("data-font-scale", String(fontScale));
     try { localStorage.setItem(FONT_KEY, String(fontScale)); } catch (_) {}
+    try {
+      var d = new Date(); d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+      var host = window.location.hostname || "";
+      var domain = /(^|\.)innioasis\.app$/i.test(host) ? "; domain=.innioasis.app" : "";
+      document.cookie = FONT_KEY + "=" + fontScale + "; expires=" + d.toUTCString() + "; path=/" + domain + "; SameSite=Lax";
+    } catch (_) {}
     var live = document.getElementById("y1-font-live");
     if (live) live.textContent = "Text size " + Math.round(fontScale * 100) + "%";
+    try {
+      window.dispatchEvent(new CustomEvent("y1-font-scale-change", { detail: { fontScale: fontScale } }));
+    } catch (_) {}
+    try {
+      if (window.history && window.history.replaceState) {
+        var u = new URL(window.location.href);
+        if (fontScale !== 1) {
+          u.searchParams.set("fontSize", String(fontScale));
+        } else {
+          u.searchParams.delete("fontSize");
+          u.searchParams.delete("fontScale");
+          u.searchParams.delete("font-scale");
+          u.searchParams.delete("fs");
+        }
+        window.history.replaceState(null, "", u.toString());
+      }
+    } catch (_) {}
   }
   var fontDown = document.querySelector("[data-font-down]");
   var fontReset = document.querySelector("[data-font-reset]");
   var fontUp = document.querySelector("[data-font-up]");
   if (fontDown) fontDown.addEventListener("click", function () { fontScale = Math.max(0.7, +(fontScale - 0.1).toFixed(2)); applyFontScale(); });
-  if (fontReset) fontReset.addEventListener("click", function () { fontScale = 1; applyFontScale(); });
+  if (fontReset) fontReset.addEventListener("click", function () {
+    if (fontScale === 1) fontScale = 1.2;
+    else fontScale = 1;
+    applyFontScale();
+  });
   if (fontUp) fontUp.addEventListener("click", function () { fontScale = Math.min(1.6, +(fontScale + 0.1).toFixed(2)); applyFontScale(); });
   applyFontScale();
 

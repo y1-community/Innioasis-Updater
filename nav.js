@@ -265,15 +265,15 @@
   function getActiveTheme() {
     try {
       var stored = window.localStorage.getItem("lumen-theme");
-      if (stored && ["auto", "dark", "high-contrast", "2077"].indexOf(stored) >= 0) {
+      if (stored && ["auto", "dark", "light", "high-contrast", "2077"].indexOf(stored) >= 0) {
         return stored;
       }
       var cookie = getSharedCookie("innioasis-theme");
-      if (cookie && ["auto", "dark", "high-contrast", "2077"].indexOf(cookie) >= 0) {
+      if (cookie && ["auto", "dark", "light", "high-contrast", "2077"].indexOf(cookie) >= 0) {
         return cookie;
       }
-      var attr = document.documentElement && document.documentElement.getAttribute("data-lumen-theme");
-      if (attr && ["dark", "high-contrast", "2077"].indexOf(attr) >= 0) {
+      var attr = document.documentElement && (document.documentElement.getAttribute("data-theme") || document.documentElement.getAttribute("data-lumen-theme"));
+      if (attr && ["dark", "light", "high-contrast", "2077"].indexOf(attr) >= 0) {
         return attr;
       }
     } catch (_) {}
@@ -292,6 +292,23 @@
       if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         return "reduce-motion";
       }
+    } catch (_) {}
+    return null;
+  }
+
+  function getActiveFontScale() {
+    try {
+      var p = new URLSearchParams(window.location.search);
+      var raw = p.get("fontSize") || p.get("fontScale") || p.get("font-scale") || p.get("fs") || p.get("lumen-font-scale");
+      if (raw) {
+        var v = parseFloat(String(raw).replace("%", ""));
+        if (v > 10) v = v / 100;
+        if (v >= 0.7 && v <= 1.6) return +(v.toFixed(2));
+      }
+      var stored = parseFloat(window.localStorage.getItem("lumen-font-scale") || "");
+      if (stored >= 0.7 && stored <= 1.6) return +(stored.toFixed(2));
+      var cookie = parseFloat(getSharedCookie("lumen-font-scale") || "");
+      if (cookie >= 0.7 && cookie <= 1.6) return +(cookie.toFixed(2));
     } catch (_) {}
     return null;
   }
@@ -368,6 +385,12 @@
     var curA11y = getActiveAccessibility();
     if (curA11y) {
       url.searchParams.set("accessibility", curA11y);
+    }
+
+    // 6. Accessibility font size preference
+    var curFs = getActiveFontScale();
+    if (curFs && curFs !== 1) {
+      url.searchParams.set("fontSize", String(curFs));
     }
 
     if (!isSameHost || isAbsoluteInput) {
@@ -791,7 +814,7 @@
       '</div>' +
       '</div>' +
       '</div>' +
-      '<label class="lumen-theme-control"><span>Theme</span><select id="lumen-theme-select" aria-label="Choose site colour theme"><option value="auto">Auto</option><option value="dark">Dark</option><option value="high-contrast">High contrast</option><option value="2077">2077</option></select></label>' +
+      '<label class="lumen-theme-control"><span>Theme</span><select id="lumen-theme-select" aria-label="Choose site colour theme"><option value="auto">Auto</option><option value="dark">Dark</option><option value="light">Light</option><option value="high-contrast">High contrast</option><option value="2077">2077</option></select></label>' +
       '<button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '</div>' +
       '<ul class="nav-links" id="navLinks">' +
@@ -1503,12 +1526,19 @@
     }
   });
 
-  /* Theme Switcher Logic - dark is the automatic appearance; light is temporarily disabled. */
+  /* Theme Switcher Logic */
   var themeSelect = document.getElementById("lumen-theme-select");
-  var SITE_THEMES = ["auto", "dark", "high-contrast", "2077"];
+  var SITE_THEMES = ["auto", "dark", "light", "high-contrast", "2077"];
   function resolveEffectiveTheme(theme) {
-    if (theme === "auto" || theme === "light" || !theme) return "dark";
-    return (theme === "high-contrast" || theme === "2077") ? theme : "dark";
+    if (!theme || theme === "auto") {
+      try {
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+          return "light";
+        }
+      } catch (_) {}
+      return "dark";
+    }
+    return (theme === "light" || theme === "high-contrast" || theme === "2077" || theme === "dark") ? theme : "dark";
   }
   var storedTheme = "auto";
   try {
@@ -1517,14 +1547,18 @@
   if (SITE_THEMES.indexOf(storedTheme) < 0) storedTheme = "auto";
   var effectiveTheme = resolveEffectiveTheme(storedTheme);
   document.documentElement.setAttribute("data-lumen-theme", effectiveTheme);
+  document.documentElement.setAttribute("data-theme", effectiveTheme);
   if (themeSelect) {
     themeSelect.value = storedTheme;
     themeSelect.addEventListener("change", function () {
       var value = themeSelect.value;
-      document.documentElement.setAttribute("data-lumen-theme", resolveEffectiveTheme(value));
+      var eff = resolveEffectiveTheme(value);
+      document.documentElement.setAttribute("data-lumen-theme", eff);
+      document.documentElement.setAttribute("data-theme", eff);
       try {
         localStorage.setItem("lumen-theme", value);
       } catch (_) {}
+      setSharedCookie("innioasis-theme", value);
     });
   }
 

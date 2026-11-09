@@ -293,14 +293,16 @@
     function confirmCountry() {
         if (readStorage(STORAGE_COUNTRY)) return Promise.resolve();
         if (param("region")) return Promise.resolve();
-        return fetch(baseUrl + "cdn-cgi/trace", { cache: "no-store" })
-            .then(function (response) { return response.ok ? response.text() : ""; })
+        var ctrl = typeof AbortController === "function" ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 1200) : null;
+        return fetch(baseUrl + "cdn-cgi/trace", { cache: "no-store", signal: ctrl ? ctrl.signal : undefined })
+            .then(function (response) { if (timer) clearTimeout(timer); return response.ok ? response.text() : ""; })
             .then(function (text) {
                 var match = /(?:^|\n)loc=([A-Z]{2})(?:\n|$)/.exec(text || "");
                 if (!match) return;
                 writeStorage(STORAGE_COUNTRY, match[1]);
             })
-            .catch(function () {});
+            .catch(function () { if (timer) clearTimeout(timer); });
     }
 
     /* ---------------------------------------------------------------- */
@@ -646,8 +648,8 @@
                 });
         }
 
-        return tryGTX()
-            .catch(tryClients5)
+        return tryClients5()
+            .catch(tryGTX)
             .catch(tryMyMemory)
             .then(function (translated) {
                 if (!translated || !translated.trim()) return "";
