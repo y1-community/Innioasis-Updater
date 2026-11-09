@@ -575,6 +575,41 @@
         return null;
     }
 
+    function accentHsl(hue, sat, light) {
+        var h = Number(hue) || 0;
+        var s = Math.max(0, Math.min(100, Number(sat))) / 100;
+        var l = Math.max(0, Math.min(100, Number(light))) / 100;
+        var c = (1 - Math.abs(2 * l - 1)) * s;
+        var x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+        var m = l - c / 2;
+        var r = 0, g = 0, b = 0;
+        if (h < 60) { r = c; g = x; }
+        else if (h < 120) { r = x; g = c; }
+        else if (h < 180) { g = c; b = x; }
+        else if (h < 240) { g = x; b = c; }
+        else if (h < 300) { r = x; b = c; }
+        else { r = c; b = x; }
+        return accentHexOf(Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255));
+    }
+
+    /* The hue of a stored accent, so the hue slider starts where the colour
+       already is instead of snapping the page to blue when the tray opens. */
+    function accentHue(hex) {
+        var value = normalizeAccent(hex);
+        if (!value) return 212;
+        var r = parseInt(value.slice(1, 3), 16) / 255;
+        var g = parseInt(value.slice(3, 5), 16) / 255;
+        var b = parseInt(value.slice(5, 7), 16) / 255;
+        var max = Math.max(r, g, b), min = Math.min(r, g, b), delta = max - min;
+        if (!delta) return 0;
+        var hue;
+        if (max === r) hue = ((g - b) / delta) % 6;
+        else if (max === g) hue = (b - r) / delta + 2;
+        else hue = (r - g) / delta + 4;
+        hue *= 60;
+        return Math.round(hue < 0 ? hue + 360 : hue);
+    }
+
     /* Text drawn on the accent: dark ink on light colours, white on dark
        ones, by relative luminance rather than by guesswork. */
     function accentInk(hex) {
@@ -743,6 +778,9 @@
             '<label class="lumen-accent-row">' +
             '<input type="color" id="lumen-accent-input" value="#4f8cff" aria-label="Accent colour"></label>' +
             '<div class="lumen-accent-swatches">' + swatches + '</div>' +
+            '<label class="lumen-accent-row lumen-accent-range-row">Hue' +
+            '<input type="range" id="lumen-accent-hue" class="lumen-accent-hue" min="0" max="359" step="1" value="212" aria-label="Accent hue"></label>' +
+            '<button type="button" class="lumen-accent-eyedrop" id="lumen-accent-eyedrop" hidden>Pick a colour from the screen</button>' +
             '<label class="lumen-accent-match" id="lumen-accent-match-row" hidden>' +
             '<input type="checkbox" id="lumen-accent-match"><span>Match my PC\'s theme colours</span></label>' +
             '<button type="button" class="lumen-accent-reset" id="lumen-accent-reset">Use the site default</button>' +
@@ -770,6 +808,10 @@
             swatches[i].setAttribute("aria-pressed",
                 swatches[i].getAttribute("data-accent-value") === accent ? "true" : "false");
         }
+        var hueField = document.getElementById("lumen-accent-hue");
+        if (hueField) hueField.value = String(accentHue(accent));
+        var eyedropButton = document.getElementById("lumen-accent-eyedrop");
+        if (eyedropButton) eyedropButton.hidden = typeof global.EyeDropper !== "function";
         var pc = pcAccent();
         var matchRow = document.getElementById("lumen-accent-match-row");
         var matchInput = document.getElementById("lumen-accent-match");
@@ -791,6 +833,27 @@
         var hexField = document.getElementById("lumen-accent-hex");
         var matchInput = document.getElementById("lumen-accent-match");
         var reset = document.getElementById("lumen-accent-reset");
+        var hue = document.getElementById("lumen-accent-hue");
+        var eyedrop = document.getElementById("lumen-accent-eyedrop");
+
+        if (hue) {
+            hue.addEventListener("input", function () {
+                setMatchPcTheme(false);
+                applyAccent(accentHsl(hue.value, 72, 55), true);
+            });
+        }
+        /* Chromium can sample any pixel on screen; elsewhere the native colour
+           input already opens the system picker, so the button stays hidden. */
+        if (eyedrop && typeof global.EyeDropper === "function") {
+            eyedrop.addEventListener("click", function () {
+                new global.EyeDropper().open().then(function (result) {
+                    var picked = normalizeAccent(result && result.sRGBHex);
+                    if (!picked) return;
+                    setMatchPcTheme(false);
+                    applyAccent(picked, true);
+                }).catch(function () {});
+            });
+        }
 
         function setOpen(open) {
             if (!tray) return;
