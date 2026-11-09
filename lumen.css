@@ -1168,6 +1168,18 @@ body.site-themes-app .nav-tools, #nav-root nav, #nav-root .nav-container { overf
     font: 600 .78rem ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 .lumen-accent-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .3rem; margin: 0 0 .5rem; }
+.lumen-accent-range-row { display: block; }
+.lumen-accent-hue { width: 100%; margin: .2rem 0 .55rem; accent-color: var(--lumen-accent, #4f8cff); }
+.lumen-accent-eyedrop {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 100%; min-height: 30px; margin: 0 0 .5rem; padding: .3rem .5rem;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
+    border-radius: 8px; background: var(--lumen-panel-soft, rgba(255, 255, 255, .06));
+    color: var(--lumen-text, #f3f5f9); cursor: pointer;
+    font-family: var(--lumen-body, system-ui, sans-serif); font-size: .76rem; font-weight: 600;
+}
+.lumen-accent-eyedrop[hidden] { display: none; }
+.lumen-accent-eyedrop:hover { border-color: var(--lumen-accent, #4f8cff); }
 .lumen-accent-swatch {
     width: 100%; aspect-ratio: 1; padding: 0;
     border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
