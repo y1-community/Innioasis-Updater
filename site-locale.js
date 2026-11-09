@@ -326,6 +326,9 @@
         if (!state.strings) return value;
         var translated = state.strings[core];
         if (translated === undefined) return value;
+        if (typeof translated === "string" && translated.indexOf("Spectre") !== -1) {
+            translated = translated.replace(/\bRyan Spectre\b/g, "Ryan Specter").replace(/\bSpectre\b/g, "Specter");
+        }
         return parts[1] + translated + parts[3];
     }
 
@@ -520,6 +523,8 @@
     var DYNAMIC_BRANDS = [
         "Innioasis Universal Flash Tool", "Universal Flash Tool", "SP Flash Tool", "SP Flash",
         "MTKClient", "MediaTek", "Innioasis Y1", "Innioasis Y2", "Innioasis",
+        "Innioasis Updater CE", "Innioasis Updater", "Updater Community Edition", "Updater CE",
+        "Ryan Specter", "Ryan Specter and Team Slide", "Copyleft - Innioasis and Ryan Specter",
         "Timmkoo", "Mechen H11", "Mechen H1", "Mechen",
         "Rockbox-Y1", "Rockbox-Y2", "Rockbox",
         "Better-Y", "Y2Linux", "Y2Player", "Y2Reborn", "Reborn",
@@ -675,15 +680,23 @@
         var style = document.createElement("style");
         style.id = "site-i18n-badge-styles";
         style.textContent = [
-            ".site-i18n-badge{display:none!important;}",
+            ".site-i18n-badge{display:inline-flex;align-items:center;gap:4px;",
+            "margin-inline-start:6px;vertical-align:middle;color:currentColor;opacity:.68;",
+            "font-size:.85em;line-height:1;pointer-events:none;user-select:none;}",
+            "html[lang^=\"en\"] .site-i18n-badge,html:not([lang]) .site-i18n-badge,[lang^=\"en\"] .site-i18n-badge,[data-locale^=\"en\"] .site-i18n-badge{display:none!important;}",
+            ".site-i18n-globe{flex:none;width:13px;height:13px;}",
+            ".site-i18n-spinner{flex:none;width:10px;height:10px;border-radius:50%;",
+            "border:1.5px solid currentColor;border-top-color:transparent;box-sizing:border-box;",
+            "animation:site-i18n-spin .8s linear infinite;}",
             ".site-locale-throbber{display:none;width:12px;height:12px;border-radius:50%;",
             "border:1.5px solid currentColor;border-top-color:transparent;box-sizing:border-box;",
             "animation:site-locale-spin .8s linear infinite;margin-inline-start:6px;vertical-align:middle;flex:none;}",
             "[data-locale-open].is-translating .site-locale-throbber,",
             ".site-locale-toggle.is-translating .site-locale-throbber,",
             ".site-locale-dock-btn.is-translating .site-locale-throbber{display:inline-block!important;}",
+            "@keyframes site-i18n-spin{to{transform:rotate(360deg);}}",
             "@keyframes site-locale-spin{to{transform:rotate(360deg);}}",
-            "@media (prefers-reduced-motion:reduce){.site-locale-throbber{animation:none;opacity:.6;}}"
+            "@media (prefers-reduced-motion:reduce){.site-i18n-spinner,.site-locale-throbber{animation:none;opacity:.6;}}"
         ].join("");
         (document.head || document.documentElement).appendChild(style);
     }

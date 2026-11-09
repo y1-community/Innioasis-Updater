@@ -1699,7 +1699,7 @@
       '<a href="' + escapeHtml(decorateMainSiteHref("/credits.html")) + '">Credits</a>' +
       '</div>' +
       '</div>' +
-      '<div class="footer-bottom"><span class="footer-copyleft">Copyleft - Innioasis and Ryan Specter</span>' +
+      '<div class="footer-bottom"><span class="footer-copyleft">Copyleft - Innioasis and <span translate="no" data-i18n-skip>Ryan Specter</span></span>' +
       '<span class="footer-legal"><a href="' + escapeHtml(decorateMainSiteHref("/about.html")) + '">About &amp; Editorial</a>' +
       '<a href="/privacy.html">Privacy</a>' +
       '<a class="footer-privacy-button" href="/privacy.html#choices">Privacy settings</a></span></div>' +

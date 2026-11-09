@@ -359,8 +359,30 @@ html:not([lang]) .site-i18n-badge,
 [data-locale^="en"] .site-i18n-badge {
   display: none !important;
 }
-.site-i18n-badge {
-  display: none !important;
+
+.site-i18n-globe {
+  flex: none;
+  width: 13px;
+  height: 13px;
+}
+
+.site-i18n-spinner {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  border-top-color: transparent;
+  box-sizing: border-box;
+  animation: site-i18n-spin .8s linear infinite;
+}
+
+@keyframes site-i18n-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-i18n-spinner { animation: none; opacity: .6; }
 }
 
 .site-locale-throbber {
