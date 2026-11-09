@@ -64,9 +64,9 @@ MODELS = {
         "other_label": "Rockbox-Y2",
         "other_dir": "../rockbox-y2/",
         "build_note": (
-            "Y1 community builds are labelled by screen resolution: 240p builds work "
-            "with classic iPod-style Rockbox themes, while 360p builds use higher-resolution "
-            "Y1 themes."
+            "Y1 community builds are labelled by screen resolution. 360p is current: "
+            "Rockbox-Y1 0.5 and later is 360p only. 240p builds ended at 0.4 and use "
+            "the Rockbox iPod classic themes."
         ),
     },
     "y2": {
@@ -233,7 +233,7 @@ def head(title: str, description: str, canonical: str, up: str) -> str:
   <meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
   <link rel="icon" href="{up}y1_illustration.png">
   <link rel="stylesheet" href="{up}site-theme.css?v=20260803">
-  <link rel="stylesheet" href="{up}lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="{up}lumen.css?v=20261115shared">
   <link rel="stylesheet" href="{up}site-pages.css?v=20260818">
   <link rel="stylesheet" href="{up}site-toolbar.css?v=20261105dockclose">
   <script src="{up}site-init.js?v=20260803" defer></script>
@@ -248,7 +248,7 @@ FOOT = """<div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="{up}firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="{up}docs-viewer.js?v=20261104cite" defer></script>
 <script src="{up}portable-zip-links.js?v=20261106direct" defer></script>
-<script src="{up}nav.js?v=20261103brand" defer></script>
+<script src="{up}nav.js?v=20261115shared" defer></script>
 <script src="{up}site-locale.js?v=20261108c" defer></script>
 <script src="{up}site-i18n.js?v=20260830" defer></script>
 </body></html>
@@ -858,17 +858,28 @@ def topic_body(m, slug: str, release) -> tuple[str, str, list, list, list]:
             "A 240p theme is designed for 320×240 builds, while a 360p theme is designed for "
             "480×360 builds."
         )))
-        sections.append(section("How to choose", ul([
-            "Pick the build resolution that matches the themes you want to use.",
-            "If you want the widest library of classic Rockbox themes, 240p builds have the broadest compatibility.",
-            "If you want sharper text and newer Y1-specific themes, choose a 360p build.",
-        ]) + actions(("Browse themes", "https://themes.innioasis.app/"), ("%s theme guide" % label, m["themes"]))))
-        faqs += [
-            ("Can installing the wrong resolution harm my player?",
-             "No. Both are safe for the hardware; you just need themes that match the build resolution you installed."),
-            ("Can I switch between 240p and 360p later?",
-             "Yes. Just select the other build in Updater CE and install it."),
-        ]
+        if m["key"] == "y1":
+            sections.append(section("How to choose", ul([
+                "Choose 360p. Rockbox-Y1 0.5 and later is 360p only, and it is the build every Y1 can run.",
+                "Updater CE 2.5 or later installs every 360p Rockbox-Y1 theme for you during a Rockbox-Y1 install.",
+                "240p builds stopped at 0.4. They can't be used on a Y1 bought new after May 2026, or on any Y1 that shipped with Original Software 3.0.7 or later.",
+                "240p themes are the Rockbox iPod classic themes on rockbox.org, installed by hand.",
+            ]) + actions(("%s theme guide" % label, m["themes"]), ("Firmware Downloads", "../firmware.html?model=Y1&amp;software=rockbox-y1"))))
+            faqs += [
+                ("Can installing the wrong resolution harm my player?",
+                 "A 240p build is a pre-0.5 build, and on a Y1 bought new after May 2026 or one that shipped with Original Software 3.0.7 or later it stops the player from starting. Use 360p unless you know your Y1 is older."),
+                ("Can I switch between 240p and 360p later?",
+                 "Yes, by installing the other build. Themes don't carry over: 240p and 360p themes are separate sets."),
+            ]
+        else:
+            sections.append(section("How to choose", ul([
+                "Pick the build resolution that matches the themes you want to use.",
+                "360p Rockbox-Y1 themes can be copied to a Y2 by hand; check the release notes for your Rockbox-Y2 version first.",
+            ]) + actions(("%s theme guide" % label, m["themes"]), ("Rockbox-Y1 themes", "../rockbox-y1-themes.html"))))
+            faqs += [
+                ("Can I switch themes later?",
+                 "Yes. Themes are files in the <code>.rockbox</code> folder, so adding or removing one never needs a reflash."),
+            ]
 
     elif slug == "offline":
         lead = (

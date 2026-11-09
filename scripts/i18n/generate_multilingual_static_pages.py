@@ -91,6 +91,7 @@ CORE_PAGE_STEMS = [
     "y2player-y2-software",
     "y2reborn_wifibt",
     "recover-non-booting-device",
+    "rockbox-y1-themes",
     # Themes repo specific pages
     "solar",
     "upload",
