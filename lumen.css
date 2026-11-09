@@ -192,9 +192,11 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 .lumen-carousel-video { width: 100%; max-width: none; height: 100%; margin: 0; border: 0; border-radius: 0; }
 
 .lumen-directory { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; padding: var(--lumen-space-7) 0 var(--lumen-space-8); }
-.lumen-directory-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); align-items: end; gap: var(--lumen-space-6); padding: var(--lumen-space-6) 0; border-bottom: 1px solid var(--lumen-line); }
-.lumen-directory-hero h1 { margin: 0 0 .75rem; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(2.6rem, 5.5vw, 4.4rem) * var(--lumen-font-scale, 1)); line-height: 1; letter-spacing: -.03em; text-wrap: balance; }
-.lumen-directory-hero p { margin: 0; color: var(--lumen-muted); line-height: 1.6; }
+.lumen-directory-hero { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; padding: var(--lumen-space-4) 0 var(--lumen-space-5); border-bottom: 1px solid var(--lumen-line); }
+.lumen-directory-hero h1 { margin: 0; max-width: 22ch; font-family: var(--lumen-display); font-weight: 400; font-size: calc(clamp(2.4rem, 4.6vw, 3.6rem) * var(--lumen-font-scale, 1)); line-height: 1.02; letter-spacing: -.03em; text-wrap: balance; }
+.lumen-directory-hero p { margin: 0; max-width: 68ch; color: var(--lumen-muted); line-height: 1.55; }
+.lumen-directory-hero p + p { margin-top: .35rem; }
+.lumen-directory-hero .lumen-actions { margin-top: .85rem; }
 .lumen-filterbar { display: flex; flex-wrap: wrap; gap: .7rem; align-items: end; padding: var(--lumen-space-5) 0; }
 .lumen-field { display: grid; gap: .35rem; min-width: 150px; flex: 1 1 160px; }
 .lumen-field[hidden] { display: none; }
@@ -693,7 +695,7 @@ body.site-themes-app a.lumen-updater-button small,
     body.site-themes-app .hamburger { display: block; }
     body.site-themes-app .lumen-theme-control span { position: absolute; width: 1px; height: 1px; overflow: clip; clip-path: inset(50%); white-space: nowrap; }
 
-    .lumen-directory-hero { grid-template-columns: 1fr; }
+    .lumen-directory-hero { padding-top: var(--lumen-space-4); }
     .lumen-hero { min-height: auto; padding-top: var(--lumen-space-7); }
     .lumen-hero { grid-template-columns: minmax(0, 1fr) minmax(180px, 230px); gap: clamp(1.1rem, 2.5vw, 2rem); }
     .lumen-hero-art { width: min(100%, 230px); }

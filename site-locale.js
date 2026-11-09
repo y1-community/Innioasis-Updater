@@ -1088,6 +1088,62 @@
         scheduleDynamicDrain();
     }
 
+    /* A non-English page can still be showing the English source: the catalog
+       had no entry, or a script painted English after the catalog pass. Those
+       leftovers go out together and come back onto the same nodes. Text that
+       is already a catalog translation is left alone. */
+    function queueEnglishGaps(root) {
+        if (!dynamicEnabled() || !root || typeof document.createTreeWalker !== "function") return;
+        var scope = root.nodeType === 1 || root.nodeType === 9 || root.nodeType === 11 ? root : null;
+        if (!scope) return;
+        var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+                var parent = node.parentElement;
+                if (!parent) return NodeFilter.FILTER_REJECT;
+                if (/^(SCRIPT|STYLE|PRE|CODE|KBD|SAMP|TEXTAREA|NOSCRIPT)$/.test(parent.tagName)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                if (parent.closest("[data-i18n-skip], [translate='no'], .theme-card, [data-locale-panel]")) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                if (parent.closest("[hidden], [aria-hidden='true'], dialog:not([open])")) return NodeFilter.FILTER_REJECT;
+                if (catalogApplied && catalogApplied.has(node)) return NodeFilter.FILTER_REJECT;
+                if (dynamicSeen && dynamicSeen.has(node)) return NodeFilter.FILTER_REJECT;
+                var value = normalise(node.nodeValue);
+                if (value.length < 8 || !/[A-Za-z]{3}/.test(value)) return NodeFilter.FILTER_REJECT;
+                if (catalogHasValue(value)) return NodeFilter.FILTER_REJECT;
+                if (isBrandOnly(value)) return NodeFilter.FILTER_REJECT;
+                var known = state.strings && state.strings[value];
+                if (known && known !== value) return NodeFilter.FILTER_ACCEPT;
+                var source = node.__y1Source == null ? "" : normalise(node.__y1Source);
+                if (source && source === value) return NodeFilter.FILTER_ACCEPT;
+                if (parent.closest("[data-i18n-english]")) return NodeFilter.FILTER_ACCEPT;
+                if (known === value) return NodeFilter.FILTER_ACCEPT;
+                return NodeFilter.FILTER_REJECT;
+            }
+        });
+        var node;
+        while ((node = walker.nextNode())) {
+            if (dynamicSeen) dynamicSeen.add(node);
+            (function (target) {
+                var raw = target.nodeValue;
+                var prefix = /^\s*/.exec(raw)[0];
+                var suffix = /\s*$/.exec(raw)[0];
+                var text = normalise(raw);
+                var known = state.strings && state.strings[text];
+                if (known && known !== text) {
+                    target.nodeValue = prefix + known + suffix;
+                    if (catalogApplied) catalogApplied.add(target);
+                    return;
+                }
+                queueDynamicText(text, function (translated) {
+                    if (!translated || normalise(translated) === text) return;
+                    target.nodeValue = prefix + translated + suffix;
+                });
+            }(node));
+        }
+    }
+
     function queueDynamic(root) {
         if (!dynamicEnabled() || !root) return;
         var containers = [];
@@ -1154,6 +1210,7 @@
             }
             if (!wholePage) container.setAttribute("data-i18n-dynamic-state", "done");
         });
+        queueEnglishGaps(root);
 
         /* Attribute copy (aria-label, title, alt, placeholder) needs the same
            treatment; the catalog pass only handles what it was given. */

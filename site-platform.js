@@ -142,6 +142,7 @@
         var section = document.createElement("section");
         section.className = "lumen-guide-section install-section install-os-copy";
         section.setAttribute("data-os-guide-copy", platform);
+        section.setAttribute("data-i18n-english", "");
         section.innerHTML =
             '<p class="lumen-kicker">Your computer · ' + OS[platform].label + '</p>' +
             '<h2>' + copy.heading + '</h2>' +
