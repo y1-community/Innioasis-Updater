@@ -25,8 +25,8 @@ def strip_for(item: dict, prefix: str) -> str:
     model = item["model"]
     action = "Restore" if family["action"] == "restore" else "Install"
     links = "".join(
-        '<a class="lumen-button" data-os-guide="%s" href="%sinstall/%s">%s guide</a>'
-        % (key, prefix, e(data.deep_name(item["slug"], key)), e(data.OS_PROFILES[key]["label"]))
+        '<a class="lumen-button" data-os-guide="%s" href="/install/%s">%s guide</a>'
+        % (key, e(data.deep_name(item["slug"], key)), e(data.OS_PROFILES[key]["label"]))
         for key in data.OS_ORDER
     )
     return (
@@ -36,12 +36,12 @@ def strip_for(item: dict, prefix: str) -> str:
         '<p>Pick the guide for the computer you are using. <span data-os-strip-note>'
         'Every version has the platform setup, Updater CE steps and the way back to stock.</span></p>'
         '<div class="lumen-actions install-os-actions">%s</div>'
-        '<p class="lumen-meta"><a href="%sinstall/%s">All %s guides</a> · '
-        '<a href="%sinstall/%s">All %s guides</a></p>'
+        '<p class="lumen-meta"><a href="/install/%s">All %s guides</a> · '
+        '<a href="/install/%s">All %s guides</a></p>'
         "</section>"
         % (action, e(family["name"]), e(model), links,
-           prefix, e(data.model_hub_name(model)), e(data.display_model(model)),
-           prefix, e(data.family_name(family["key"])), e(family["name"]))
+           e(data.model_hub_name(model)), e(data.display_model(model)),
+           e(data.family_name(family["key"])), e(family["name"]))
     )
 
 

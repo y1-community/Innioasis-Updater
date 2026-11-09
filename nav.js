@@ -301,8 +301,9 @@
     var raw = String(rawHref).trim();
     if (!raw || /^(mailto:|tel:|javascript:|#|blob:|data:)/i.test(raw)) return raw;
     var url;
+    var isAbsoluteInput = /^[a-z]+:\/\//i.test(raw) || raw.indexOf("//") === 0;
     try {
-      url = new URL(raw, window.location.origin);
+      url = new URL(raw, window.location.href);
     } catch (_) {
       return raw;
     }
@@ -369,18 +370,10 @@
       url.searchParams.set("accessibility", curA11y);
     }
 
-    if (!isSameHost || /^[a-z]+:\/\//i.test(raw) || raw.indexOf("//") === 0) {
-      return url.toString();
-    }
-    if (raw.charAt(0) === "/") {
-      var isAbsolute = /^[a-z]+:\/\//i.test(raw) || raw.indexOf("//") === 0;
-    if (isAbsolute || !isSameHost) {
+    if (!isSameHost || isAbsoluteInput) {
       return url.toString();
     }
     return url.pathname + url.search + url.hash;
-    }
-    var rel = url.pathname.replace(/^\//, "");
-    return (rel || ".") + url.search + url.hash;
   }
 
   function handleLinkClick(event) {
