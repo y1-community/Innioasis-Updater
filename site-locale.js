@@ -679,9 +679,10 @@
     ].join(", ");
     var DYNAMIC_CACHE_KEY = "innioasis-dynamic-translations";
     var DYNAMIC_MAX_REQUESTS = 800;
-    /* Missing strings share a request. One batch is in flight at a time so a
-       page in another language does not open hundreds of connections. */
-    var DYNAMIC_BATCH_MAX = 32;
+    /* Missing strings share a request. A few batches run together so the
+       visible page finishes without opening a connection per string. */
+    var DYNAMIC_BATCH_MAX = 48;
+    var DYNAMIC_CONCURRENCY = 3;
     var DYNAMIC_BATCH_URL = 6000;
     /* gtx answers without CORS headers once it rate limits, which is a failed
        fetch rather than a status. Remember it and go straight to the endpoint
@@ -949,20 +950,19 @@
     }
 
     function scheduleDynamicDrain() {
-        if (dynamicInFlight || dynamicDrainTimer || !dynamicQueue.length) return;
-        var run = function () {
+        if (dynamicDrainTimer || !dynamicQueue.length) return;
+        dynamicDrainTimer = setTimeout(function () {
             dynamicDrainTimer = null;
-            drainDynamic();
-        };
-        if (typeof global.requestIdleCallback === "function") {
-            dynamicDrainTimer = global.requestIdleCallback(run, { timeout: 200 });
-        } else {
-            dynamicDrainTimer = setTimeout(run, 40);
-        }
+            var guard = 0;
+            while (dynamicInFlight < DYNAMIC_CONCURRENCY && dynamicQueue.length && guard < DYNAMIC_CONCURRENCY) {
+                drainDynamic();
+                guard += 1;
+            }
+        }, 0);
     }
 
     function drainDynamic() {
-        if (dynamicInFlight || !dynamicQueue.length) {
+        if (dynamicInFlight >= DYNAMIC_CONCURRENCY || !dynamicQueue.length) {
             updateToolbarTranslatingState();
             return;
         }
@@ -977,7 +977,7 @@
             var masked = maskBrands(item.text);
             return { key: item.key, text: item.text, hidden: masked.text, found: masked.found };
         });
-        dynamicInFlight = 1;
+        dynamicInFlight += 1;
         dynamicRequests += prepared.length;
         updateToolbarTranslatingState();
         requestDynamicBatch(prepared).then(function (list) {
@@ -998,7 +998,7 @@
             }
             prepared.forEach(function (item) { settleDynamic(item, ""); });
         }).then(function () {
-            dynamicInFlight = 0;
+            dynamicInFlight -= 1;
             updateToolbarTranslatingState();
             if (dynamicQueue.length) scheduleDynamicDrain();
         });
@@ -1058,7 +1058,12 @@
             toolbarTranslatingTimer = null;
         }
         ensureBadgeStyles();
-        var buttons = document.querySelectorAll("[data-locale-open]");
+        /* The footer/dock language control is not always the header button: on
+           the archive and gallery shells it is a dock button, so every trigger
+           carries the same throbber while a batch is in flight. */
+        var buttons = document.querySelectorAll(
+            "[data-locale-open], .site-locale-toggle, .site-locale-dock-btn, [data-locale-dock]"
+        );
         if (buttons.length) {
             for (var i = 0; i < buttons.length; i += 1) {
                 var button = buttons[i];
@@ -1083,10 +1088,50 @@
         setToolbarTranslating(isTranslatingActive());
     }
 
-    function queueDynamicText(text, apply) {
+    /* A string waiting on the batch shows a spinner beside it, so a reader can
+       tell which sentence is still English because it is in flight from one the
+       catalog simply has no entry for. Bounded: on a long docs page the toolbar
+       throbber is the indicator, sixty spinners are enough to show the page is
+       working without turning it into a fairground. */
+    var DYNAMIC_MAX_SPINNERS = 60;
+    var dynamicSpinners = 0;
+
+    function addPendingSpinner(anchor) {
+        if (!anchor || !anchor.parentNode) return null;
+        if (dynamicSpinners >= DYNAMIC_MAX_SPINNERS) return null;
+        if (typeof document.createElement !== "function") return null;
+        var parent = anchor.parentNode;
+        var tag = String(parent.tagName || "").toUpperCase();
+        /* Never inside a control or a heading: there a spinner reads as part of
+           the label, and the label is short enough to wait for. */
+        if (/^(A|BUTTON|LABEL|OPTION|SUMMARY)$/.test(tag)) return null;
+        var spinner = document.createElement("span");
+        spinner.className = "site-i18n-spinner";
+        spinner.setAttribute("aria-hidden", "true");
+        spinner.setAttribute("data-i18n-pending", "1");
+        try {
+            parent.insertBefore(spinner, anchor.nextSibling);
+        } catch (_) {
+            return null;
+        }
+        dynamicSpinners += 1;
+        return spinner;
+    }
+
+    function removePendingSpinner(spinner) {
+        if (!spinner) return;
+        dynamicSpinners = Math.max(0, dynamicSpinners - 1);
+        try {
+            if (spinner.parentNode) spinner.parentNode.removeChild(spinner);
+        } catch (_) {}
+    }
+
+    function queueDynamicText(text, apply, anchor) {
         var cache = loadDynamicCache();
         var key = dynamicKey(text);
+        var spinner = null;
         var waiter = function (value) {
+            removePendingSpinner(spinner);
             if (value) apply(value);
         };
         /* The catalog is already in memory, so a string it covers costs no
@@ -1109,11 +1154,13 @@
             return;
         }
         if (dynamicPending[key]) {
+            spinner = addPendingSpinner(anchor);
             dynamicPending[key].push(waiter);
             updateToolbarTranslatingState();
             return;
         }
         if (dynamicRequests >= DYNAMIC_MAX_REQUESTS) return;
+        spinner = addPendingSpinner(anchor);
         dynamicPending[key] = [waiter];
         dynamicQueue.push({ key: key, text: text });
         updateToolbarTranslatingState();
@@ -1171,7 +1218,7 @@
                 queueDynamicText(text, function (translated) {
                     if (!translated || normalise(translated) === text) return;
                     target.nodeValue = prefix + translated + suffix;
-                });
+                }, target);
             }(node));
         }
     }
@@ -1237,7 +1284,7 @@
                     var text = normalise(raw);
                     queueDynamicText(text, function (translated) {
                         target.nodeValue = prefix + translated + suffix;
-                    });
+                    }, target);
                 }(node));
             }
             if (!wholePage) container.setAttribute("data-i18n-dynamic-state", "done");
@@ -1819,7 +1866,12 @@
     }
 
     function bindExistingToggle() {
-        var buttons = document.querySelectorAll("[data-locale-open]");
+        /* The footer/dock language control is not always the header button: on
+           the archive and gallery shells it is a dock button, so every trigger
+           carries the same throbber while a batch is in flight. */
+        var buttons = document.querySelectorAll(
+            "[data-locale-open], .site-locale-toggle, .site-locale-dock-btn, [data-locale-dock]"
+        );
         var bound = 0;
         Array.prototype.forEach.call(buttons, function (button) {
             markToggle(button);

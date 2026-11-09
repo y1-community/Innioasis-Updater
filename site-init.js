@@ -26,9 +26,12 @@
     }
 
     function storedAppearance() {
-        var value = null;
-        try { value = global.localStorage.getItem(APPEARANCE_KEY); } catch (_) {}
-        if (APPEARANCES.indexOf(value) < 0) value = getSharedCookie("innioasis-theme");
+        /* The shared cookie is the last choice made on either site. This
+           origin's own storage is only the fallback for a first visit. */
+        var value = getSharedCookie("innioasis-theme");
+        if (APPEARANCES.indexOf(value) < 0) {
+            try { value = global.localStorage.getItem(APPEARANCE_KEY); } catch (_) {}
+        }
         return APPEARANCES.indexOf(value) >= 0 ? value : "auto";
     }
 
@@ -44,6 +47,9 @@
         if (persist) {
             try { global.localStorage.setItem(APPEARANCE_KEY, theme); } catch (_) {}
             setSharedCookie("innioasis-theme", theme);
+            try {
+                global.dispatchEvent(new CustomEvent("y1-appearance-change", { detail: { theme: theme } }));
+            } catch (_) {}
         }
         var selects = document.querySelectorAll("#lumen-theme-select");
         for (var i = 0; i < selects.length; i++) {
@@ -70,7 +76,7 @@
             }
         } catch (_) {}
         if (urlTheme) theme = urlTheme;
-        applyAppearance(theme, Boolean(urlTheme));
+        applyAppearance(theme, true);
         return theme;
     }
 
@@ -96,14 +102,18 @@
             var p = new URLSearchParams(global.location.search);
             raw = p.get("accessibility") || p.get("a11y");
         } catch (_) {}
+        if (!raw) raw = getSharedCookie("innioasis-accessibility");
         if (!raw) {
             try { raw = global.localStorage.getItem("innioasis-accessibility"); } catch (_) {}
         }
-        if (!raw) {
-            raw = getSharedCookie("innioasis-accessibility");
-        }
+        /* The operating system setting applies on this visit only. Writing it
+           into storage made every other Innioasis site inherit it as a choice. */
         if (!raw && global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            raw = "reduce-motion";
+            if (document.documentElement) {
+                document.documentElement.classList.add("reduce-motion");
+                document.documentElement.setAttribute("data-reduced-motion", "true");
+            }
+            return;
         }
         if (raw) {
             var v = String(raw).toLowerCase().trim();
@@ -147,6 +157,17 @@
             }
         }
         if (!hasScale) {
+            var cookieScale = parseFloat(getSharedCookie("lumen-font-scale") || "");
+            if (cookieScale >= 0.7 && cookieScale <= 1.6) {
+                if (cookieScale === 1 && global.localStorage.getItem("lumen-font-scale-default-80") !== "1") {
+                    cookieScale = 0.8;
+                    try { global.localStorage.setItem("lumen-font-scale-default-80", "1"); } catch (_) {}
+                }
+                fontScale = +(cookieScale.toFixed(2));
+                hasScale = true;
+            }
+        }
+        if (!hasScale) {
             try {
                 var storedScale = parseFloat(global.localStorage.getItem("lumen-font-scale") || "");
                 if (storedScale >= 0.7 && storedScale <= 1.6) {
@@ -158,16 +179,6 @@
                     hasScale = true;
                 }
             } catch (_) {}
-        }
-        if (!hasScale) {
-            var cookieScale = parseFloat(getSharedCookie("lumen-font-scale") || "");
-            if (cookieScale >= 0.7 && cookieScale <= 1.6) {
-                if (cookieScale === 1 && global.localStorage.getItem("lumen-font-scale-default-80") !== "1") {
-                    cookieScale = 0.8;
-                    try { global.localStorage.setItem("lumen-font-scale-default-80", "1"); } catch (_) {}
-                }
-                fontScale = +(cookieScale.toFixed(2));
-            }
         }
         if (document.documentElement) {
             document.documentElement.style.setProperty("--lumen-font-scale", String(fontScale));
@@ -245,27 +256,58 @@
         try {
             var search = (global.location && global.location.search) || "";
             var params = new URLSearchParams(search);
+            var result = null;
             var raw = params.get("privacy");
             if (raw) {
                 var v = String(raw).trim().toLowerCase();
-                if (v === "all" || v === "1" || v === "true" || v === "yes") return { feedback: true, nightly: true };
-                if (v === "none" || v === "0" || v === "false" || v === "no") return { feedback: false, nightly: false };
-                if (v === "feedback") return { feedback: true, nightly: false };
-                if (v === "nightly") return { feedback: false, nightly: true };
+                if (v === "all" || v === "1" || v === "true" || v === "yes") result = { feedback: true, nightly: true };
+                else if (v === "none" || v === "0" || v === "false" || v === "no") result = { feedback: false, nightly: false };
+                else if (v === "feedback") result = { feedback: true, nightly: false };
+                else if (v === "nightly") result = { feedback: false, nightly: true };
             }
-            var pf = params.get("privacy_feedback");
-            var pn = params.get("privacy_nightly");
-            if (pf !== null || pn !== null) {
-                return {
-                    feedback: pf === "1" || pf === "true" || pf === "yes",
-                    nightly: pn === "1" || pn === "true" || pn === "yes"
-                };
+            if (!result) {
+                var pf = params.get("privacy_feedback");
+                var pn = params.get("privacy_nightly");
+                if (pf !== null || pn !== null) {
+                    result = {
+                        feedback: pf === "1" || pf === "true" || pf === "yes",
+                        nightly: pn === "1" || pn === "true" || pn === "yes"
+                    };
+                }
             }
+            var analytics = params.get("privacy_analytics");
+            if (analytics) {
+                var mode = String(analytics).trim().toLowerCase();
+                var analyticsMode = null;
+                if (mode === "off" || mode === "false" || mode === "0" || mode === "none" || mode === "no") analyticsMode = "off";
+                else if (mode === "essential" || mode === "on" || mode === "true" || mode === "1" || mode === "yes") analyticsMode = "essential";
+                if (analyticsMode) {
+                    if (!result) result = { feedback: true, nightly: true };
+                    result.analytics = analyticsMode;
+                }
+            }
+            return result;
         } catch (_) {}
         return null;
     }
 
     function readConsent() {
+        try {
+            var fromCookie = getSharedCookie(CONSENT_KEY);
+            if (fromCookie) {
+                var cookieData = JSON.parse(fromCookie);
+                if (cookieData && typeof cookieData === "object") {
+                    var parsed = {
+                        feedback: typeof cookieData.feedback === "boolean" ? cookieData.feedback : true,
+                        nightly: typeof cookieData.nightly === "boolean" ? cookieData.nightly : true,
+                        analytics: cookieData.analytics === "off" ? "off" : "essential"
+                    };
+                    try { global.localStorage.setItem(CONSENT_KEY, JSON.stringify(parsed)); } catch (_) {}
+                    return parsed;
+                }
+            }
+        } catch (_) {}
+
         try {
             var raw = global.localStorage.getItem(CONSENT_KEY);
             if (raw) {
@@ -275,22 +317,6 @@
                     var nl = typeof data.nightly === "boolean" ? data.nightly : true;
                     var an = data.analytics === "off" ? "off" : "essential";
                     return { feedback: fb, nightly: nl, analytics: an };
-                }
-            }
-        } catch (_) {}
-
-        // Fallback to shared cross-subdomain cookie if available
-        try {
-            var fromCookie = getSharedCookie(CONSENT_KEY);
-            if (fromCookie) {
-                var cookieData = JSON.parse(fromCookie);
-                if (cookieData && typeof cookieData === "object") {
-                    var cfb = typeof cookieData.feedback === "boolean" ? cookieData.feedback : true;
-                    var cnl = typeof cookieData.nightly === "boolean" ? cookieData.nightly : true;
-                    var can = cookieData.analytics === "off" ? "off" : "essential";
-                    var parsed = { feedback: cfb, nightly: cnl, analytics: can };
-                    try { global.localStorage.setItem(CONSENT_KEY, JSON.stringify(parsed)); } catch (_) {}
-                    return parsed;
                 }
             }
         } catch (_) {}
@@ -488,9 +514,10 @@
     }
 
     function accentRead(key, cookie) {
-        var value = null;
-        try { value = global.localStorage.getItem(key); } catch (_) {}
-        if (!value) value = getSharedCookie(cookie);
+        var value = getSharedCookie(cookie);
+        if (!value) {
+            try { value = global.localStorage.getItem(key); } catch (_) {}
+        }
         return value || null;
     }
 
@@ -517,7 +544,8 @@
     function normalizeAccent(value) {
         var text = String(value == null ? "" : value).trim();
         if (!text) return null;
-        if (/^[0-9a-f]{3}$/i.test(text) || /^[0-9a-f]{6}$/i.test(text)) text = "#" + text;
+        if (/^[0-9a-f]{3}$/i.test(text) || /^[0-9a-f]{6}$/i.test(text) || /^[0-9a-f]{8}$/i.test(text)) text = "#" + text;
+        if (/^#[0-9a-f]{8}$/i.test(text)) text = text.slice(0, 7);
         try {
             if (global.CSS && typeof global.CSS.supports === "function" && !global.CSS.supports("color", text)) {
                 return null;
@@ -710,6 +738,8 @@
             '</button>' +
             '<div class="lumen-accent-tray" id="lumen-accent-tray" hidden>' +
             '<p class="lumen-accent-heading">Accent colour</p>' +
+            '<label class="lumen-accent-row">Hex' +
+            '<input type="text" id="lumen-accent-hex" class="lumen-accent-hex" value="" placeholder="#4f8cff" spellcheck="false" autocapitalize="off" maxlength="9" aria-label="Accent hex code" inputmode="text"></label>' +
             '<label class="lumen-accent-row">' +
             '<input type="color" id="lumen-accent-input" value="#4f8cff" aria-label="Accent colour"></label>' +
             '<div class="lumen-accent-swatches">' + swatches + '</div>' +
@@ -733,6 +763,8 @@
         if (dot) dot.style.background = accent || "";
         var input = document.getElementById("lumen-accent-input");
         if (input) input.value = accent || "#4f8cff";
+        var hexField = document.getElementById("lumen-accent-hex");
+        if (hexField && document.activeElement !== hexField) hexField.value = accent || "";
         var swatches = picker.querySelectorAll(".lumen-accent-swatch");
         for (var i = 0; i < swatches.length; i++) {
             swatches[i].setAttribute("aria-pressed",
@@ -756,6 +788,7 @@
         var toggle = document.getElementById("lumen-accent-toggle");
         var tray = document.getElementById("lumen-accent-tray");
         var input = document.getElementById("lumen-accent-input");
+        var hexField = document.getElementById("lumen-accent-hex");
         var matchInput = document.getElementById("lumen-accent-match");
         var reset = document.getElementById("lumen-accent-reset");
 
@@ -779,6 +812,21 @@
             input.addEventListener("change", function () {
                 setMatchPcTheme(false);
                 applyAccent(input.value, true);
+            });
+        }
+        function commitHex() {
+            if (!hexField) return;
+            var next = normalizeAccent(hexField.value);
+            if (!next) return;
+            setMatchPcTheme(false);
+            applyAccent(next, true);
+        }
+        if (hexField) {
+            hexField.addEventListener("change", commitHex);
+            hexField.addEventListener("keydown", function (event) {
+                if (event.key !== "Enter") return;
+                event.preventDefault();
+                commitHex();
             });
         }
         picker.addEventListener("click", function (event) {
@@ -1005,6 +1053,11 @@
         });
     }
 
+    function pinDockToViewport() {
+        var dock = document.getElementById("support-toolbar-container");
+        if (dock && dock.parentNode !== document.body) document.body.appendChild(dock);
+    }
+
     async function loadSupportToolbar() {
         var slot = document.getElementById("support-toolbar-slot");
         if (!slot || slot.dataset.shellLoaded === "1" || slot.dataset.shellLoading === "1") return;
@@ -1019,6 +1072,7 @@
                     executeInlineScripts(slot);
                     removeDuplicateSupportToolbars(slot);
                     slot.dataset.shellLoaded = "1";
+                    pinDockToViewport();
                     notifyDockReady();
                     return;
                 } catch (_) {}
@@ -1060,6 +1114,29 @@
     } else {
         void init();
     }
+
+    /* In-page downloads live in their own file so this shell stays readable.
+       Pages need no extra script tag: the module is fetched from the directory
+       that holds this script and upgrades every download link it finds. */
+    function loadSiteDownloads() {
+        if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
+        var base = "";
+        try {
+            var scripts = document.getElementsByTagName("script");
+            for (var i = 0; i < scripts.length; i++) {
+                var src = scripts[i].src || "";
+                if (src.indexOf("site-init.js") === -1) continue;
+                base = src.replace(/[?#].*$/, "").replace(/[^/]*$/, "");
+                break;
+            }
+        } catch (_) {}
+        var node = document.createElement("script");
+        node.id = "site-downloads-script";
+        node.src = base + "site-downloads.js?v=20261109dl";
+        node.defer = true;
+        document.head.appendChild(node);
+    }
+    loadSiteDownloads();
 
     global.y1LoadSupportToolbar = loadSupportToolbar;
 })(typeof window !== "undefined" ? window : globalThis);

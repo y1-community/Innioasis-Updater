@@ -7,6 +7,25 @@ html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: var(--gall
 html, body { min-width: 0; }
 body.site-themes-app { overflow-x: clip; background: var(--lumen-ink); color: var(--lumen-text); font-family: var(--lumen-body); }
 
+/* A page shorter than the window keeps its footer on the floor: the body is
+   the column, <main> takes the slack, and the strip reserved for the bottom
+   dock is only left empty while a dock is actually on screen. Without the
+   :has rule the footer hung a dock's height above the viewport floor on pages
+   whose dock had been dismissed, which read as a footer that floated away. */
+body.site-themes-app {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+body.site-themes-app > main { flex: 1 0 auto; }
+body.site-themes-app #footer-root {
+    margin-top: auto;
+    padding-bottom: max(var(--y1-dock-space, 96px), env(safe-area-inset-bottom, 0px));
+}
+body.site-themes-app:has(#support-toolbar-container.y1-toolbar-hidden) #footer-root {
+    padding-bottom: max(0px, env(safe-area-inset-bottom, 0px));
+}
+
 :root[data-theme="light"],
 :root[data-lumen-theme="light"] {
     color-scheme: light;
@@ -103,13 +122,18 @@ body.site-themes-app #footer-root {
     position: relative;
     z-index: 10;
     margin-top: auto;
+    flex: 0 0 auto;
+    width: 100%;
     border-top: 1px solid var(--lumen-line);
     background: var(--lumen-panel);
     color: var(--lumen-text);
+    padding-bottom: var(--y1-dock-space, 96px);
 }
 
 body.site-themes-app #nav-root:empty { display: block; min-height: 58px; }
-body.site-themes-app #nav-root { display: contents; }
+/* One header on the updater, the archive and the gallery. Page styles that
+   set display:none on #nav-root lose to this. */
+body.site-themes-app #nav-root { display: block !important; }
 body.site-themes-app .nav-tools { display: flex; align-items: center; gap: .55rem; min-width: 0; flex-wrap: nowrap; }
 body.site-themes-app .lumen-theme-control--fallback { position: fixed; top: .75rem; right: 1rem; z-index: 10000; padding: .3rem .45rem .3rem .6rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); box-shadow: 0 4px 18px color-mix(in oklab, var(--lumen-ink) 25%, transparent); }
 body.site-themes-app .lumen-theme-control--fallback select { min-height: 36px; padding: .35rem 1.7rem .35rem .55rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font: 600 .78rem var(--lumen-body); }
@@ -229,7 +253,8 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 @media (max-width: 600px) {
     .lumen-table-wrap { min-height: 221px; }
 }
-.lumen-release-table { table-layout: fixed; width: 100%; min-width: 720px; border-collapse: collapse; }
+.lumen-release-table { table-layout: auto; width: 100%; min-width: 0; border-collapse: collapse; }
+.lumen-release-table:has(> thead > tr > th:nth-child(3)) { table-layout: fixed; min-width: 640px; }
 .lumen-release-table > thead > tr > th:nth-child(1) { width: 52%; }
 .lumen-release-table > thead > tr > th:nth-child(2) { width: 32%; }
 .lumen-release-table > thead > tr > th:nth-child(3) { width: 16%; }
@@ -261,6 +286,19 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 .lumen-release-table tbody tr:last-child th,
 .lumen-release-table tbody tr:last-child td { border-bottom: 0; }
 .lumen-release-table tbody tr:hover { background: color-mix(in oklab, var(--lumen-text) 3%, transparent); }
+
+/* Long asset names and mirror URLs used to push the last column out of the
+   table's own box; let them break and keep the wrapper scrollable. */
+.lumen-table-wrap { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+.lumen-release-table td a { overflow-wrap: anywhere; }
+.lumen-release-table .lumen-portable-downloads { margin-top: .45rem; }
+
+/* One focus ring for every control, including the download badges that carry
+   their own background. */
+:where(.lumen-button, .btn, .lumen-zip-download-button, .lumen-updater-button, .y1-dock-btn):focus-visible {
+    outline: 2px solid var(--lumen-accent, #6b9fff);
+    outline-offset: 2px;
+}
 /* Guide pages put a release table in their own scroll container instead of the
    shared wrapper, so give those tables the same framed panel rather than
    decorations that stop at the last row. */
@@ -270,8 +308,9 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
     background: var(--lumen-panel);
 }
 .lumen-release-table strong { color: var(--lumen-text); }
-.lumen-release-table .lumen-actions { margin: 0; }
-.lumen-release-table .lumen-button { min-height: 38px; padding: .5rem .7rem; font-size: .8rem; }
+.lumen-release-table .lumen-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: 0; }
+.lumen-release-table .lumen-button,
+.lumen-release-table .lumen-updater-button { min-height: 38px; max-width: 100%; padding: .5rem .7rem; font-size: .8rem; }
 .lumen-release-table .lumen-project-link { color: var(--lumen-text); font-weight: 700; text-decoration: none; }
 .lumen-release-table .lumen-project-link:hover,
 .lumen-release-table .lumen-project-link:focus-visible { color: var(--lumen-accent); text-decoration: underline; text-underline-offset: 2px; }
@@ -502,9 +541,9 @@ The installer table builds these controls in JS. The design replacement
 swapped lumen.css and dropped their rules, so the "Get it on Updater" badge,
 the portable ZIP buttons and the nightly checkbox rendered as bare text.
 Restored on the same tokens as every other control on the site. */
-/* App Store badge pair. The site default is dark, so the badge is the white
-   one; light mode uses the black one. Specificity beats the global anchor
-   colour, which was turning these into ordinary accent links. */
+/* Get in Updater stays the black App Store badge on every appearance.
+   High contrast is the exception: it uses the system ink so the badge
+   still reads when the page is forced to Canvas and CanvasText. */
 body.site-themes-app a.lumen-updater-button,
 a.lumen-updater-button {
     display: inline-flex;
@@ -512,47 +551,44 @@ a.lumen-updater-button {
     gap: .55rem;
     min-height: 46px;
     padding: .32rem .85rem .32rem .4rem;
-    border: 1px solid #fff;
+    border: 1px solid #000;
     border-radius: 8px;
-    background: #fff;
-    color: #000 !important;
+    background: #000;
+    color: #fff !important;
     text-decoration: none !important;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .35);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .25);
     transition: transform .18s var(--lumen-ease), filter .18s var(--lumen-ease);
 }
 body.site-themes-app a.lumen-updater-button:hover,
 a.lumen-updater-button:hover {
     transform: translateY(-1px);
-    filter: brightness(1.06);
-    color: #000 !important;
+    filter: brightness(1.15);
+    color: #fff !important;
     text-decoration: none !important;
-    background: #fff;
+    background: #000;
 }
 .lumen-updater-button img, .lumen-updater-summary img { display: block; flex: 0 0 auto; width: 26px; height: 26px; border-radius: 6px; }
 .lumen-updater-button span, .lumen-updater-summary span { display: grid; gap: .05rem; text-align: left; }
 body.site-themes-app a.lumen-updater-button strong,
-.lumen-updater-button strong, .lumen-updater-summary strong { color: #000 !important; font-size: .92rem; font-weight: 700; line-height: 1.05; letter-spacing: -.02em; }
+.lumen-updater-button strong, .lumen-updater-summary strong { color: #fff !important; font-size: .92rem; font-weight: 700; line-height: 1.05; letter-spacing: -.02em; }
 body.site-themes-app a.lumen-updater-button small,
-.lumen-updater-button small, .lumen-updater-summary small { color: rgba(0, 0, 0, .62) !important; font-size: .62rem; font-weight: 500; line-height: 1.1; letter-spacing: .01em; }
-:root[data-theme="light"] body.site-themes-app a.lumen-updater-button,
-:root[data-lumen-theme="light"] body.site-themes-app a.lumen-updater-button,
-:root[data-theme="light"] a.lumen-updater-button,
-:root[data-lumen-theme="light"] a.lumen-updater-button {
-    background: #000;
-    border-color: #000;
-    color: #fff !important;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+.lumen-updater-button small, .lumen-updater-summary small { color: rgba(255, 255, 255, .78) !important; font-size: .62rem; font-weight: 500; line-height: 1.1; letter-spacing: .01em; }
+:root[data-theme="high-contrast"] a.lumen-updater-button,
+:root[data-lumen-theme="high-contrast"] a.lumen-updater-button,
+:root[data-theme="high-contrast"] body.site-themes-app a.lumen-updater-button,
+:root[data-lumen-theme="high-contrast"] body.site-themes-app a.lumen-updater-button {
+    background: Canvas;
+    border-color: CanvasText;
+    color: CanvasText !important;
+    box-shadow: none;
+    filter: none;
 }
-:root[data-theme="light"] body.site-themes-app a.lumen-updater-button:hover,
-:root[data-lumen-theme="light"] a.lumen-updater-button:hover {
-    background: #000;
-    color: #fff !important;
-    filter: brightness(1.15);
+:root[data-theme="high-contrast"] a.lumen-updater-button strong,
+:root[data-lumen-theme="high-contrast"] a.lumen-updater-button strong,
+:root[data-theme="high-contrast"] a.lumen-updater-button small,
+:root[data-lumen-theme="high-contrast"] a.lumen-updater-button small {
+    color: CanvasText !important;
 }
-:root[data-theme="light"] body.site-themes-app a.lumen-updater-button strong,
-:root[data-lumen-theme="light"] a.lumen-updater-button strong { color: #fff !important; }
-:root[data-theme="light"] body.site-themes-app a.lumen-updater-button small,
-:root[data-lumen-theme="light"] a.lumen-updater-button small { color: rgba(255, 255, 255, .78) !important; }
 .lumen-updater-button--table { min-height: 40px; padding: .28rem .62rem .28rem .32rem; }
 .lumen-updater-button--table strong { font-size: .78rem; }
 .lumen-updater-button--table small { font-size: .58rem; }
@@ -860,22 +896,24 @@ body.site-themes-app .lumen-theme-control,
 /* Gallery top bar */
 .gallery-topbar {
     position: relative;
-    z-index: 1200;
+    z-index: 1;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     gap: .4rem .75rem;
-    padding: .5rem clamp(.5rem, 2.2vw, 1rem);
+    padding: .75rem clamp(.5rem, 2.2vw, 1rem) 0;
     min-width: 0;
     max-width: 100%;
     box-sizing: border-box;
-    background: var(--lumen-ink);
-    background: color-mix(in oklab, var(--lumen-ink) 92%, transparent);
-    border-bottom: 1px solid var(--lumen-line);
+    background: transparent;
+    border: 0;
     color: var(--lumen-text);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+}
+/* The shared header is the bar. The old gallery strip keeps the search. */
+body.site-themes-app > .gallery-topbar .gallery-brand,
+body.site-themes-app > .gallery-topbar .gallery-tabs {
+    display: none;
 }
 .gallery-brand { display: inline-flex; align-items: center; gap: .5rem; min-width: 0; color: var(--lumen-text); font-weight: 700; font-size: 1rem; letter-spacing: -.02em; text-decoration: none; }
 .gallery-brand:hover { color: var(--lumen-paper); text-decoration: none; }
@@ -965,8 +1003,8 @@ body.site-themes-app .lumen-theme-control,
 .nav-container.nav-compact .nav-links .lumen-nav-install-cta { justify-content: center; padding: .75rem 1rem; }
 .nav-container.nav-compact .nav-links li:has(> .lumen-nav-social-btn) { flex: 0 0 auto; width: auto; }
 .nav-container.nav-compact .nav-links a.lumen-nav-social-btn { width: 44px; min-height: 44px; justify-content: center; padding: 0; }
-.nav-container.nav-compact .hamburger { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-.nav-container.nav-compact .hamburger span { width: 20px; height: 2px; margin: 0; border-radius: 2px; transition: transform .2s var(--lumen-ease), opacity .15s var(--lumen-ease); }
+.nav-container.nav-compact .hamburger { display: inline-flex; flex: 0 0 auto; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 40px; height: 40px; color: var(--lumen-text); }
+.nav-container.nav-compact .hamburger span { display: block; width: 18px; height: 2px; margin: 0; border-radius: 2px; background: currentColor; transition: transform .2s var(--lumen-ease), opacity .15s var(--lumen-ease); }
 .nav-container.nav-compact .hamburger.is-active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .nav-container.nav-compact .hamburger.is-active span:nth-child(2) { opacity: 0; }
 .nav-container.nav-compact .hamburger.is-active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
@@ -1062,9 +1100,9 @@ body.site-themes-app .lumen-theme-control,
 .lumen-accent-wrap { position: relative; display: inline-flex; align-items: center; }
 .lumen-accent-toggle {
     display: inline-flex; align-items: center; justify-content: center;
-    min-width: 34px; min-height: 34px; padding: 0 .5rem;
+    width: 34px; height: 34px; min-width: 34px; min-height: 34px; padding: 0;
     border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
-    border-radius: var(--lumen-pill, 999px);
+    border-radius: 50%;
     background: var(--lumen-panel, rgba(255, 255, 255, .04));
     cursor: pointer;
     transition: border-color .15s var(--lumen-ease, ease);
@@ -1072,7 +1110,7 @@ body.site-themes-app .lumen-theme-control,
 .lumen-accent-toggle:hover { border-color: var(--lumen-accent, #4f8cff); }
 .lumen-accent-toggle:focus-visible { outline: 2px solid var(--lumen-accent, #4f8cff); outline-offset: 2px; }
 .lumen-accent-dot {
-    width: 15px; height: 15px; border-radius: 50%;
+    width: 22px; height: 22px; border-radius: 50%;
     background: var(--lumen-accent, #4f8cff);
     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--lumen-text, #fff) 35%, transparent);
 }
@@ -1100,6 +1138,13 @@ body.site-themes-app .lumen-theme-control,
     width: 48px; height: 30px; padding: 2px; margin-left: auto;
     border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
     border-radius: 8px; background: var(--lumen-panel-soft, rgba(255, 255, 255, .06)); cursor: pointer;
+}
+.lumen-accent-hex {
+    width: 7.2rem; margin-left: auto; padding: .35rem .5rem;
+    border: 1px solid var(--lumen-line-strong, rgba(255, 255, 255, .18));
+    border-radius: 8px; background: var(--lumen-panel-soft, rgba(255, 255, 255, .06));
+    color: var(--lumen-text, #f3f5f9);
+    font: 600 .78rem ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 .lumen-accent-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .3rem; margin: 0 0 .5rem; }
 .lumen-accent-swatch {

@@ -60,7 +60,7 @@ body.site-themes-app > .error-container {
 }
 
 #nav-root {
-    display: none;
+    display: block;
 }
 
 /* —— Display typography (serif headlines) —— */
@@ -662,13 +662,19 @@ a.theme-preview-gold-badge[hidden] {
 body.site-themes-app #footer-root {
     margin-top: auto;
     width: 100%;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     background: var(--site-bg-elevated);
     border-top: 1px solid var(--site-border);
-    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: max(var(--y1-dock-space, 96px), env(safe-area-inset-bottom, 0px));
     box-sizing: border-box;
+}
+
+/* No dock, no reserved strip: the footer sits on the viewport floor instead
+   of hovering a bar's height above it. */
+body.site-themes-app:has(#support-toolbar-container.y1-toolbar-hidden) #footer-root {
+    padding-bottom: max(0px, env(safe-area-inset-bottom, 0px));
 }
 
 body.site-themes-app #footer-root .site-footer.site-footer--themes,
@@ -681,7 +687,7 @@ body.site-themes-app .site-footer.site-footer--themes {
 }
 
 .site-footer--themes {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -689,7 +695,7 @@ body.site-themes-app .site-footer.site-footer--themes {
     border-top: none;
     color: var(--site-muted);
     padding: 2.5rem 1.25rem 0.5rem;
-    margin-
+    margin-top: 0;
     margin-bottom: 0;
     width: 100%;
     box-sizing: border-box;
@@ -802,17 +808,53 @@ body.site-themes-app .site-footer.site-footer--themes {
     background: var(--lumen-accent-wash);
 }
 
-.site-footer--themes .footer-grid,
-.site-footer--updater .footer-grid {
+/* nav.js emits site-footer--firmware, --themes and --updater, so the footer
+   layout hangs off the base class: a variant rename must not flatten the two
+   link sections into one run-on line. */
+.site-footer .footer-grid {
+    display: grid;
+    max-width: 1100px;
+    margin: 0 auto;
     align-items: start;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem 2.5rem;
 }
 
+.site-footer .footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35rem;
+    min-width: 0;
+}
+
+.site-footer .footer-col h4 {
+    margin: 0 0 .35rem;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--site-text);
+}
+
+.site-footer .footer-col a {
+    display: block;
+    color: var(--site-text);
+    font-size: .9rem;
+    line-height: 1.5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.site-footer .footer-col a:hover {
+    color: var(--site-accent);
+    text-decoration: underline;
+}
+
 @media (max-width: 640px) {
-    .site-footer--themes .footer-grid,
-    .site-footer--updater .footer-grid {
+    .site-footer .footer-grid {
         grid-template-columns: 1fr;
+        gap: 1.75rem;
     }
 }
 
@@ -862,13 +904,7 @@ body.site-themes-app .site-footer--updater .footer-logo.footer-logo-luci,
     object-fit: contain;
 }
 
-.site-footer--themes .footer-col a,
-.site-footer--updater .footer-col a {
-    color: var(--site-text);
-}
-
-.site-footer--themes .footer-bottom,
-.site-footer--updater .footer-bottom {
+.site-footer .footer-bottom {
     color: var(--site-muted);
     font-size: 0.82rem;
     text-align: center;
