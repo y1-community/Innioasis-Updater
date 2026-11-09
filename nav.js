@@ -378,17 +378,29 @@
   window.addEventListener("innioasis-privacy-change", decorateAllDocumentLinks);
 
 
-  function detectPersona() {
+  function canonicalPageKey() {
     var path = (window.location.pathname || "").toLowerCase();
+    var file = path.split("/").pop() || "";
+    if (!file || file === "." || file === "..") return "index";
+    file = file.replace(/\.html?$/, "");
+    /* Pre-rendered locale copies carry a language suffix (index_de, guide_pt-BR,
+       about_zh-CN). They are the same page as the English original, so the
+       suffix must not change which product the page belongs to. */
+    file = file.replace(/_(?:[a-z]{2,3})(?:-[a-z0-9]{2,4})?$/, "");
+    return file || "index";
+  }
+
+  function detectPersona() {
+    var key = canonicalPageKey();
     if (
-      path === "/" ||
-      path.endsWith("/index.html") ||
-      path.endsWith("/guide.html") ||
-      path.endsWith("/installguide.html") ||
-      path.endsWith("/troubleshooting.html") ||
-      path.endsWith("/credits.html") ||
-      path.endsWith("/support_devs.html") ||
-      path.endsWith("/updater-comparison.html")
+      key === "index" ||
+      key === "guide" ||
+      key === "installguide" ||
+      key === "troubleshooting" ||
+      key === "credits" ||
+      key === "support_devs" ||
+      key === "updater-comparison" ||
+      key === "about"
     ) {
       return "updater";
     }
