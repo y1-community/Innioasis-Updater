@@ -771,9 +771,12 @@
          firmware page as the repository link below. */
       var release = href.match(/^https?:\/\/(?:www\.)?github\.com\/([^/?#]+)\/([^/?#]+)\/releases(?:\/tag\/([^?#]+))?/i);
       if (release) {
+        /* Our release view lists the same releases with the portable builds
+           for this computer, so the reader never leaves for github.com. */
         var releaseRepo = release[1] + "/" + release[2];
-        if (release[3]) return internalReleasePath(releaseRepo, decodeURIComponent(release[3]));
-        return firmwarePageFor(releaseRepo) || href;
+        var viewParams = { repo: releaseRepo };
+        if (release[3]) viewParams.tag = decodeURIComponent(release[3]);
+        return siteUrl(buildHref("release_view.html", viewParams));
       }
       /* A "Full Changelog" compare link names the newer of the two releases it
          spans, so it opens those notes. */

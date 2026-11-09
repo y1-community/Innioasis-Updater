@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Innioasis and Ryan Specter">
+  <meta name="creator" content="Innioasis and Ryan Specter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firmware releases - Innioasis Updater</title>
+  <meta name="description" content="Every release of a community firmware project, with the portable build for your computer and the original release file, without leaving Innioasis.">
+  <link rel="canonical" href="https://innioasis.app/release_view.html">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261108headerfix">
+  <link rel="stylesheet" href="lumen.css?v=20261108headerfix">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="docs-viewer.css?v=20261112cites">
+  <script src="site-init.js?v=20260803" defer></script>
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Firmware releases - Innioasis Updater">
+  <meta property="og:description" content="Every release of a community firmware project, with the portable build for your computer and the original release file.">
+  <meta property="og:url" content="https://innioasis.app/release_view.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- i18n-hreflang-start -->
+  <link rel="alternate" hreflang="x-default" href="https://innioasis.app/release_view.html">
+  <link rel="alternate" hreflang="en" href="https://innioasis.app/release_view.html">
+  <!-- i18n-hreflang-end -->
+  <style>
+    .rv-head { margin-bottom: 1.4rem; }
+    .rv-card {
+      border: 1px solid rgba(127, 127, 127, .28);
+      border-radius: 16px;
+      padding: 1.25rem 1.35rem;
+      margin: 0 0 1.4rem;
+      background: rgba(127, 127, 127, .04);
+    }
+    .rv-card > header { display: flex; flex-wrap: wrap; gap: .55rem .9rem; align-items: baseline; }
+    .rv-card h2 { font-size: 1.2rem; margin: 0; }
+    .rv-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .82rem;
+      padding: .12rem .5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(127, 127, 127, .35);
+    }
+    .rv-meta { font-size: .84rem; opacity: .75; margin: .35rem 0 .9rem; }
+    .rv-notes :first-child { margin-top: 0; }
+    .rv-downloads {
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(127, 127, 127, .22);
+    }
+    .rv-downloads h3 { font-size: .95rem; margin: 0 0 .55rem; }
+    .rv-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .rv-actions .lumen-button { font-size: .9rem; }
+    .rv-actions--secondary { margin-top: .6rem; }
+    .rv-note { font-size: .82rem; opacity: .72; margin: .45rem 0 0; }
+    /* Ad slots: reserved, disabled until we sign with a provider. */
+    .ad-slot { display: none; }
+  </style>
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide lumen-doc-page lumen-release-page">
+    <p class="lumen-doc-back"><a href="firmware.html">← Firmware Downloads</a></p>
+
+    <header class="lumen-doc-head rv-head">
+      <div class="lumen-release-head">
+        <span class="lumen-release-icon lumen-release-icon--generic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></span>
+        <div class="lumen-release-titles">
+          <p class="lumen-kicker" id="rv-kicker">Firmware releases</p>
+          <h1 id="rv-title">Releases</h1>
+        </div>
+      </div>
+      <p class="lumen-lead" id="rv-lead">Every published release, with the portable build for your computer and the original file from the developer.</p>
+      <div class="lumen-release-tag-row" id="rv-meta"></div>
+      <div class="lumen-doc-actions" id="rv-actions" hidden>
+        <a class="lumen-button lumen-button--primary" id="rv-updater" href="guide.html">Get it in Updater CE</a>
+        <a class="lumen-button" id="rv-project" href="firmware.html">Project page</a>
+      </div>
+    </header>
+
+    <p class="lumen-doc-status" id="rv-status">Loading releases…</p>
+
+    <div id="rv-list" aria-live="polite"></div>
+
+    <div id="footer-root"></div>
+    <div id="support-toolbar-slot"></div>
+  </main>
+  <script src="firmware-catalog.js?v=20261106mirror" defer></script>
+  <script src="docs-viewer.js?v=20261112releaseview" defer></script>
+  <script src="nav.js?v=20261113cepersona" defer></script>
+  <script>
+    /* Release viewer.
+
+       GitHub releases links anywhere on the site land here instead of on
+       github.com: the same releases, the same notes, and two download rows -
+       the portable build repackaged for this computer (published by the
+       project's portable mirror) and the original release file. Both save
+       under the release's own file name through our download proxy. */
+    (function () {
+      "use strict";
+
+      var D = null;
+      var repo = "";
+      var wantedTag = "";
+      var entry = null;
+
+      function el(id) { return document.getElementById(id); }
+
+      function escapeHtml(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function catalogEntry(forRepo) {
+        var catalog = window.INNIOASIS_FIRMWARE_CATALOG || [];
+        var lower = String(forRepo || "").toLowerCase();
+        for (var i = 0; i < catalog.length; i += 1) {
+          var item = catalog[i] || {};
+          var candidates = [item.repo, item.github, item.source_repo, item.upstream];
+          for (var c = 0; c < candidates.length; c += 1) {
+            if (candidates[c] && String(candidates[c]).toLowerCase() === lower) return item;
+          }
+        }
+        return null;
+      }
+
+      function portableMirrors(forEntry) {
+        if (!forEntry) return [];
+        var value = forEntry.portable_zips || forEntry.portableZips || "";
+        if (Array.isArray(value)) return value.map(String);
+        return String(value).split(/[\s,]+/).filter(Boolean);
+      }
+
+      function proxyHref(assetUrl, filename) {
+        var meta = document.querySelector('meta[name="innioasis-download-proxy"]');
+        var base = (meta && meta.getAttribute("content")) || "/download-proxy";
+        try {
+          var url = new URL(base, window.location.origin);
+          url.searchParams.set("url", assetUrl);
+          if (filename) url.searchParams.set("filename", filename);
+          return url.pathname + url.search;
+        } catch (_) {
+          return assetUrl;
+        }
+      }
+
+      function fetchJson(url) {
+        return fetch(url, { cache: "force-cache" }).then(function (res) {
+          if (!res.ok) throw new Error("http-" + res.status);
+          return res.json();
+        });
+      }
+
+      /* The portable mirror publishes an index.json next to its releases. */
+      function mirrorIndex(mirrorRepo) {
+        if (!mirrorRepo) return Promise.resolve([]);
+        if (mirrorIndex.cache[mirrorRepo]) return mirrorIndex.cache[mirrorRepo];
+        var base = "https://raw.githubusercontent.com/" + mirrorRepo + "/";
+        var promise = fetchJson(base + "main/index.json")
+          .catch(function () { return fetchJson(base + "master/index.json"); })
+          .then(function (index) {
+            var releases = (index && index.releases) || [];
+            return Array.isArray(releases) ? releases : [];
+          })
+          .catch(function () { return []; });
+        mirrorIndex.cache[mirrorRepo] = promise;
+        return promise;
+      }
+      mirrorIndex.cache = {};
+
+      function mirrorAssetsFor(mirrorRepos, tag) {
+        var wanted = String(tag || "").toLowerCase();
+        var found = [];
+        return Promise.all(mirrorRepos.map(mirrorIndex)).then(function (lists) {
+          lists.forEach(function (releases) {
+            (releases || []).forEach(function (release) {
+              if (String(release.tag || "").toLowerCase() !== wanted) return;
+              (release.assets || []).forEach(function (asset) {
+                if (!asset || !asset.url) return;
+                found.push(asset);
+              });
+            });
+          });
+          return found;
+        });
+      }
+
+      function platformLabel(key) {
+        var labels = {
+          "windows": "Windows",
+          "windows-arm64": "Windows (ARM64)",
+          "macos": "macOS",
+          "linux": "Linux",
+          "linux-arm64": "Linux (ARM64)"
+        };
+        return labels[key] || String(key || "").replace(/-/g, " ");
+      }
+
+      function platformOrder(key) {
+        var order = { "windows": 1, "macos": 2, "linux": 3, "windows-arm64": 4, "linux-arm64": 5 };
+        return order[key] || 9;
+      }
+
+      function zipAssets(release) {
+        return (release.assets || []).filter(function (asset) {
+          return asset && asset.name && /\.zip$/i.test(asset.name) && asset.browser_download_url;
+        });
+      }
+
+      function downloadRow(label, assets, primary) {
+        if (!assets.length) return "";
+        var buttons = assets.map(function (asset) {
+          var href = proxyHref(asset.browser_download_url || asset.url, asset.name);
+          var size = asset.size ? D.formatBytes(asset.size) : "";
+          var label = asset.label || asset.name;
+          return '<a class="lumen-button' + (primary ? " lumen-button--primary" : "") + '"' +
+            ' href="' + escapeHtml(href) + '" download="' + escapeHtml(asset.name) + '"' +
+            ' rel="noopener">' + escapeHtml(label) + (size ? " · " + escapeHtml(size) : "") + "</a>";
+        }).join("");
+        return '<div class="rv-downloads">' +
+          "<h3>" + escapeHtml(label) + "</h3>" +
+          '<div class="rv-actions">' + buttons + "</div>" +
+          "</div>";
+      }
+
+      function adSlot(name) {
+        /* Reserved for Raptive/AdSense once we sign with a provider. The
+           container stays in the markup, and hidden, so enabling ads later is
+           a CSS/attribute change rather than a layout rewrite. */
+        return '<aside class="ad-slot" data-ad-slot="' + escapeHtml(name) + '" hidden aria-hidden="true"></aside>';
+      }
+
+      function renderRelease(release, mirrors, index) {
+        var tag = release.tag_name || release.name || "";
+        var ctx = {};
+        if (repo && tag) {
+          ctx.repo = repo;
+          ctx.ref = tag;
+          ctx.dirBlob = "https://github.com/" + repo + "/blob/" + tag + "/";
+          ctx.dirRaw = "https://raw.githubusercontent.com/" + repo + "/" + tag + "/";
+        }
+        var notes = "";
+        try {
+          notes = D.markdownToHtml(D.releaseBody(release), ctx);
+        } catch (_) {
+          notes = "<p>" + escapeHtml(release.body || "") + "</p>";
+        }
+
+        /* The mirror is only a host: each portable build keeps the name of the
+           release file it was repackaged from, so it saves as rom.zip rather
+           than rom-windows.zip. */
+        var portable = (mirrors || []).map(function (asset) {
+          return {
+            url: asset.url,
+            name: asset.source_asset || asset.name,
+            label: platformLabel(asset.platform),
+            size: asset.size,
+            platform: asset.platform
+          };
+        }).sort(function (a, b) {
+          return platformOrder(a.platform) - platformOrder(b.platform);
+        });
+        var original = zipAssets(release);
+
+        return '<article class="rv-card lumen-doc-body">' +
+          "<header>" +
+            "<h2>" + escapeHtml(release.name || tag || "Release") + "</h2>" +
+            (tag ? '<span class="rv-tag">' + escapeHtml(tag) + "</span>" : "") +
+          "</header>" +
+          '<p class="rv-meta">' +
+            (release.published_at ? escapeHtml(D.formatDate(release.published_at)) : "") +
+            (release.prerelease ? " · Pre-release" : "") +
+            (index === 0 ? " · Latest" : "") +
+          "</p>" +
+          '<div class="rv-notes">' + notes + "</div>" +
+          downloadRow("Portable build for your computer", portable, true) +
+          downloadRow("Original release file", original, false) +
+          (portable.length
+            ? '<p class="rv-note">Portable builds save as the original release file name (' +
+              escapeHtml(portable[0].source_asset || portable[0].name) +
+              ") and run the same flashing tool, without a separate runtime install.</p>"
+            : "") +
+          adSlot("release-" + tag) +
+        "</article>";
+      }
+
+      function renderPicker() {
+        var catalog = window.INNIOASIS_FIRMWARE_CATALOG || [];
+        var seen = {};
+        var cards = catalog.filter(function (item) {
+          if (!item || !item.repo) return false;
+          var key = String(item.repo).toLowerCase();
+          if (seen[key]) return false;
+          seen[key] = true;
+          return true;
+        }).slice(0, 40).map(function (item) {
+          return '<a class="lumen-button" href="release_view.html?repo=' +
+            encodeURIComponent(item.repo) + '">' + escapeHtml(item.name || item.repo) + "</a>";
+        }).join("");
+        el("rv-status").textContent = "Choose a project to see its releases.";
+        el("rv-list").innerHTML = '<div class="rv-actions">' + cards + "</div>";
+      }
+
+      function fail(message) {
+        el("rv-status").textContent = message;
+      }
+
+      function start() {
+        if (!D) D = window.InnioasisDocs;
+        if (!D) { fail("The release reader could not load."); return; }
+
+        repo = String(D.queryParam("repo") || "").trim();
+        wantedTag = String(D.queryParam("tag") || "").trim();
+        if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) {
+          document.title = "Firmware releases - Innioasis Updater";
+          renderPicker();
+          return;
+        }
+
+        entry = catalogEntry(repo);
+        var title = (entry && entry.name) || repo;
+        document.title = title + " releases - Innioasis Updater";
+        el("rv-title").textContent = title;
+        el("rv-kicker").textContent = entry ? "Firmware releases" : "GitHub releases";
+        el("rv-lead").textContent = "Every published release of " + title +
+          ", with the portable build for your computer and the original file from the developer.";
+        el("rv-meta").innerHTML = '<span class="rv-tag">' + escapeHtml(repo) + "</span>";
+        el("rv-actions").hidden = false;
+        if (entry) {
+          el("rv-project").href = "firmware.html?model=" + encodeURIComponent(entry.model || "") + "#" + encodeURIComponent(entry.slug || "");
+        }
+
+        var listPromise = wantedTag
+          ? D.fetchRelease(repo, wantedTag).then(function (release) { return release ? [release] : []; })
+              .catch(function () { return []; })
+          : D.fetchReleases(repo, 1);
+
+        listPromise.then(function (releases) {
+          releases = (releases || []).filter(Boolean);
+          if (!releases.length) {
+            fail("No releases were found for " + repo + " yet.");
+            return;
+          }
+          var mirrors = portableMirrors(entry);
+          return Promise.all(releases.slice(0, 10).map(function (release) {
+            return mirrorAssetsFor(mirrors, release.tag_name).then(function (assets) {
+              return { release: release, assets: assets };
+            });
+          })).then(function (rows) {
+            el("rv-status").hidden = true;
+            el("rv-list").innerHTML = rows.map(function (row, index) {
+              return renderRelease(row.release, row.assets, index);
+            }).join("");
+          });
+        }).catch(function () {
+          fail("The releases for " + repo + " could not be loaded just now. Try again in a moment.");
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", start);
+      } else {
+        start();
+      }
+    })();
+  </script>
+</body>
+</html>

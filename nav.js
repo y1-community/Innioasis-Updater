@@ -325,6 +325,17 @@
       return raw;
     }
 
+    /* A GitHub releases page is served by our own release view: the same
+       releases, plus the portable builds for this computer, on our site. */
+    if (/(^|\.)github\.com$/i.test(url.hostname)) {
+      var ghRelease = url.pathname.match(/^\/([^/]+)\/([^/]+)\/releases(?:\/tag\/([^/]+))?\/?$/i);
+      if (ghRelease) {
+        var viewQuery = "repo=" + encodeURIComponent(ghRelease[1] + "/" + ghRelease[2]);
+        if (ghRelease[3]) viewQuery += "&tag=" + encodeURIComponent(decodeURIComponent(ghRelease[3]));
+        return "/release_view.html?" + viewQuery;
+      }
+    }
+
     var isSameHost = url.hostname === window.location.hostname;
     var isSubdomain = /(^|\.)innioasis\.app$/i.test(url.hostname) || url.hostname === "localhost" || url.hostname === "127.0.0.1";
     if (!isSameHost && !isSubdomain) return raw;
