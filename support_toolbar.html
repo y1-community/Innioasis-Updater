@@ -1322,8 +1322,8 @@
       var isOff = prefs && (prefs.analytics === false || prefs.analytics === "off");
       analyticsSelect.value = isOff ? "off" : "essential";
     }
-    if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback : false;
-    if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly : false;
+    if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback !== false : true;
+    if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly !== false : true;
     if (donationsToggle) donationsToggle.checked = !donationsOff();
   }
 

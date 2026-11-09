@@ -1222,8 +1222,8 @@
   function prefillToggles() {
     var prefs = (consent && consent.read) ? consent.read() : null;
     if (privacyStatus) privacyStatus.textContent = "";
-    if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback : false;
-    if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly : false;
+    if (feedbackToggle) feedbackToggle.checked = prefs ? prefs.feedback !== false : true;
+    if (nightlyToggle) nightlyToggle.checked = prefs ? prefs.nightly !== false : true;
     if (donationsToggle) donationsToggle.checked = !donationsOff();
   }
 

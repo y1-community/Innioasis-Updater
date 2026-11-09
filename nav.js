@@ -262,6 +262,40 @@
     return d + name + "_" + matchedCode + ".html";
   }
 
+  function getActiveTheme() {
+    try {
+      var stored = window.localStorage.getItem("lumen-theme");
+      if (stored && ["auto", "dark", "high-contrast", "2077"].indexOf(stored) >= 0) {
+        return stored;
+      }
+      var cookie = getSharedCookie("innioasis-theme");
+      if (cookie && ["auto", "dark", "high-contrast", "2077"].indexOf(cookie) >= 0) {
+        return cookie;
+      }
+      var attr = document.documentElement && document.documentElement.getAttribute("data-lumen-theme");
+      if (attr && ["dark", "high-contrast", "2077"].indexOf(attr) >= 0) {
+        return attr;
+      }
+    } catch (_) {}
+    return "dark";
+  }
+
+  function getActiveAccessibility() {
+    try {
+      var stored = window.localStorage.getItem("innioasis-accessibility");
+      if (stored) return stored;
+      var cookie = getSharedCookie("innioasis-accessibility");
+      if (cookie) return cookie;
+      if (document.documentElement && (document.documentElement.classList.contains("reduce-motion") || document.documentElement.getAttribute("data-reduced-motion") === "true")) {
+        return "reduce-motion";
+      }
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return "reduce-motion";
+      }
+    } catch (_) {}
+    return null;
+  }
+
   function decorateLinkUrl(rawHref) {
     if (!rawHref) return rawHref;
     var raw = String(rawHref).trim();
@@ -319,6 +353,22 @@
       }
     }
 
+    // 4. Theme preference
+    var curTheme = getActiveTheme();
+    if (curTheme) {
+      if (url.searchParams.has("theme") && /theme(?:_[a-zA-Z0-9_-]+)?\.html$/i.test(url.pathname)) {
+        url.searchParams.set("site_theme", curTheme);
+      } else {
+        url.searchParams.set("theme", curTheme);
+      }
+    }
+
+    // 5. Accessibility preference
+    var curA11y = getActiveAccessibility();
+    if (curA11y) {
+      url.searchParams.set("accessibility", curA11y);
+    }
+
     if (!isSameHost || /^[a-z]+:\/\//i.test(raw) || raw.indexOf("//") === 0) {
       return url.toString();
     }
@@ -349,6 +399,9 @@
 
   function decorateAllDocumentLinks() {
     try {
+      if (typeof window.y1ClearPreferencesFromUrl === "function") {
+        window.y1ClearPreferencesFromUrl();
+      }
       var links = document.querySelectorAll("a[href]");
       for (var i = 0; i < links.length; i++) {
         var link = links[i];
