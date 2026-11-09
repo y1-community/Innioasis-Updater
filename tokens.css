@@ -203,3 +203,9 @@
     --primary: #ff1e3c;
     --primary-dark: #ff3352;
 }
+
+/* Native controls (selects, scrollbars) follow the selected palette. */
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="high-contrast"] { color-scheme: dark; }
+:root[data-theme="2077"] { color-scheme: dark; }
