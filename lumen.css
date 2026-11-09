@@ -445,7 +445,7 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 .lumen-steps { display: grid; gap: .7rem; margin: var(--lumen-space-5) 0 0; padding: 0; list-style: none; counter-reset: lumen-step; }
 .lumen-steps[ start ] { counter-reset: lumen-step 2; }
 .lumen-steps li { position: relative; padding: 1rem 1rem 1rem 3.2rem; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); color: var(--lumen-text); }
-.lumen-steps li::before { counter-increment: lumen-step; content: counter(lumen-step); position: absolute; left: 1rem; top: 1rem; display: grid; place-items: center; width: 1.55rem; height: 1.55rem; border-radius: 50%; background: var(--lumen-accent); color: var(--lumen-ink); font-size: .78rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.lumen-steps li::before { counter-increment: lumen-step; content: counter(lumen-step); position: absolute; left: 1rem; top: 1rem; display: grid; place-items: center; width: 1.55rem; height: 1.55rem; border-radius: 50%; background: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)); font-size: .78rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .lumen-guide figure { margin: 0; }
 figure.lumen-shot { display: block; width: min(100%, 640px); height: auto; margin: var(--lumen-space-5) 0; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); padding: .5rem; }
 figure.lumen-shot--compact { width: min(100%, 520px); }

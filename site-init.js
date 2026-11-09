@@ -428,8 +428,64 @@
     ];
     var ACCENT_TOKENS = [
         "--lumen-accent", "--lumen-accent-strong", "--lumen-accent-wash",
-        "--lumen-on-accent", "--site-accent", "--primary", "--primary-dark"
+        "--lumen-on-accent", "--site-accent", "--accent", "--primary", "--primary-dark"
     ];
+
+    /* Pages carry their own legacy palette variables, and a page-level
+       `--accent` on <body> beats the one set on <html>. Mirroring the accent
+       onto the body keeps those older declarations from painting a different
+       colour than the rest of the page. */
+    function mirrorAccentOnBody(hex) {
+        var body = document.body;
+        if (!body || !body.style) return;
+        if (hex) {
+            body.style.setProperty("--accent", hex);
+            body.style.setProperty("--primary", hex);
+            body.style.setProperty("--primary-dark", "color-mix(in oklab, " + hex + " 84%, black)");
+        } else {
+            body.style.removeProperty("--accent");
+            body.style.removeProperty("--primary");
+            body.style.removeProperty("--primary-dark");
+        }
+    }
+
+    /* Some widgets were drawn before the accent existed and still name a
+       literal blue: numbered step circles, primary buttons, progress bars and
+       the active tab. These rules put the decorations the accent is supposed
+       to cover on the visitor's colour, injected once with !important because
+       the rules they override are literal values in older markup. */
+    var ACCENT_DECOR_ID = "innioasis-accent-decor-styles";
+
+    function ensureAccentDecorStyles() {
+        if (!document || typeof document.createElement !== "function") return;
+        if (document.getElementById && document.getElementById(ACCENT_DECOR_ID)) return;
+        var style = document.createElement("style");
+        style.id = ACCENT_DECOR_ID;
+        style.textContent = [
+            ".step-number,.progress-step .step-number,.lumen-step-number{",
+            "background:var(--lumen-accent,#2563eb)!important;",
+            "color:var(--lumen-on-accent,#fff)!important;",
+            "border-color:var(--lumen-accent,#2563eb)!important;}",
+            ".progress-step.active .step-number,.progress-step.completed .step-number{",
+            "background:var(--lumen-accent,#2563eb)!important;",
+            "color:var(--lumen-on-accent,#fff)!important;}",
+            ".lumen-steps li::before{",
+            "background:var(--lumen-accent,#2563eb)!important;",
+            "color:var(--lumen-on-accent,#fff)!important;}",
+            ".btn-primary,.btn.primary,.button-primary,.btn--primary,.lumen-btn-primary,a.btn-primary{",
+            "background:var(--lumen-accent,#2563eb)!important;",
+            "border-color:var(--lumen-accent-strong,var(--lumen-accent,#2563eb))!important;",
+            "color:var(--lumen-on-accent,#fff)!important;}",
+            ".lumen-progress>span,.progress-bar>span,.lumen-bar>span{",
+            "background:var(--lumen-accent,#2563eb)!important;}",
+            ".lumen-tab.is-active,.tab.is-active,.lumen-chip.is-active,.chip.is-active{",
+            "border-color:var(--lumen-accent,#2563eb)!important;",
+            "color:var(--lumen-accent,#2563eb)!important;}"
+        ].join("");
+        try {
+            (document.head || document.documentElement).appendChild(style);
+        } catch (_) {}
+    }
 
     function accentRead(key, cookie) {
         var value = null;
@@ -557,6 +613,7 @@
     function applyAccent(value, persist) {
         var root = document.documentElement;
         var hex = value ? normalizeAccent(value) : null;
+        ensureAccentDecorStyles();
         if (root) {
             if (hex) {
                 root.style.setProperty("--lumen-accent", hex);
@@ -574,6 +631,9 @@
                 root.removeAttribute("data-accent");
             }
         }
+        /* site-init can run before <body> exists, so the body mirror also
+           happens on DOMContentLoaded below. */
+        mirrorAccentOnBody(hex);
         if (persist) accentWrite(ACCENT_KEY, ACCENT_COOKIE, hex);
         syncAccentPicker();
         try {
@@ -590,6 +650,15 @@
         }
         syncAccentPicker();
     }
+
+    /* The early call paints the tokens on <html> before first paint; this one
+       repeats it once <body> is there so page-level palette variables pick the
+       same colour up. */
+    try {
+        document.addEventListener("DOMContentLoaded", function () {
+            applyAccent(currentAccent(), false);
+        });
+    } catch (_) {}
 
     function applyStoredAccent() {
         var params = null;

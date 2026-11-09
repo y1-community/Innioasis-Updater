@@ -1057,6 +1057,21 @@
         var waiter = function (value) {
             if (value) apply(value);
         };
+        /* The catalog is already in memory, so a string it covers costs no
+           request at all. Without this check a docs page sent its whole body
+           to the provider even for copy every catalog carries, one batch of
+           thirty-two strings at a time. */
+        if (state.strings) {
+            var known = state.strings[text];
+            if (known && known !== text) {
+                apply(known);
+                return;
+            }
+        }
+        /* Already translated text (a repaint after a language switch) and
+           brand-only labels are not missing sources either. */
+        if (catalogHasValue(text)) return;
+        if (isBrandOnly(text)) return;
         if (cache[key]) {
             waiter(cache[key]);
             return;
