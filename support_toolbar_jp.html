@@ -339,6 +339,13 @@
     accent-color: #10b981;
     cursor: pointer;
   }
+
+  /* The donations switch is a recovery control, not a default setting. The
+     HTML hidden attribute alone loses to display:flex rules in some themes. */
+  #support-toolbar-container .y1-privacy-option[hidden],
+  .y1-privacy-option[hidden] {
+    display: none !important;
+  }
   /* Heart button that brings the dock back after the cross hides it. It sits
      outside #support-toolbar-container so the hidden-container rule cannot
      take it with it. */
@@ -1224,13 +1231,22 @@
     return typeof window.hasY1DonationsPreference === "function" && window.hasY1DonationsPreference();
   }
 
-  /* The donation switch only belongs here once the visitor has already opted
-     out, because that is the only way back. On a first visit they have not
-     seen the project yet, so the option is not shown and nothing about
-     donations is written. */
+  /* Donation appeals are on by default. The switch that brings them back is
+     only meaningful after a visitor has actually turned them off (the donate
+     dialog's "don't ask again" option or ?donations=false), so everyone else
+     never sees it. A stylesheet display rule on the row outranks the HTML
+     hidden attribute, so the row is also taken out of layout and the tab order
+     while it is not applicable. */
   function syncDonationsOption() {
-    if (donationsOptionRow) donationsOptionRow.hidden = !hasDonationsPreference();
-    if (donationsToggle) donationsToggle.checked = hasDonationsPreference() ? !donationsOff() : true;
+    var optedOut = donationsOff();
+    if (donationsOptionRow) {
+      donationsOptionRow.hidden = !optedOut;
+      if (donationsOptionRow.style) donationsOptionRow.style.display = optedOut ? "" : "none";
+    }
+    if (donationsToggle) {
+      donationsToggle.disabled = !optedOut;
+      donationsToggle.checked = !optedOut;
+    }
   }
 
   function openPrivacyNotice() {
@@ -1254,7 +1270,7 @@
 
   function saveFromPanel() {
     var reenabledDonations = false;
-    if (hasDonationsPreference() && donationsToggle && typeof window.setY1DonationsDisabled === "function") {
+    if (donationsOptionRow && !donationsOptionRow.hidden && donationsToggle && typeof window.setY1DonationsDisabled === "function") {
       var disableDonations = !donationsToggle.checked;
       reenabledDonations = donationsOff() && !disableDonations;
       window.setY1DonationsDisabled(disableDonations);
@@ -1721,19 +1737,80 @@
 
   function parseDate(dateStr) {
     if (!dateStr) return null;
-    var parts = dateStr.trim().split("/");
-    if (parts.length !== 3) return null;
-    var d = parseInt(parts[0], 10);
-    var m = parseInt(parts[1], 10) - 1;
-    var y = parseInt(parts[2], 10);
-    return new Date(y, m, d);
+    var raw = String(dateStr).trim();
+    if (!raw) return null;
+    var dt = null;
+    var hasTime = false;
+
+    /* ISO 8601: 2026-11-08T14:32:00Z, 2026-11-08 14:32, 2026-11-08 */
+    var iso = raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ](\d{1,2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?(Z|[+-]\d{2}:?\d{2})?)?$/i);
+    if (iso) {
+      var iy = parseInt(iso[1], 10);
+      var im = parseInt(iso[2], 10) - 1;
+      var id = parseInt(iso[3], 10);
+      if (iso[4] !== undefined) {
+        hasTime = true;
+        var ih = parseInt(iso[4], 10);
+        var imin = parseInt(iso[5], 10);
+        var isec = parseInt(iso[6] || "0", 10);
+        if (iso[7]) {
+          var zone = iso[7].toUpperCase();
+          var utc = Date.UTC(iy, im, id, ih, imin, isec);
+          if (zone !== "Z") {
+            var sign = zone.charAt(0) === "-" ? -1 : 1;
+            var zh = parseInt(zone.substring(1, 3), 10);
+            var zm = parseInt(zone.substring(zone.length - 2), 10);
+            utc -= sign * (zh * 60 + zm) * 60000;
+          }
+          dt = new Date(utc);
+        } else {
+          dt = new Date(iy, im, id, ih, imin, isec);
+        }
+      } else {
+        dt = new Date(iy, im, id);
+      }
+    } else {
+      /* Day-first, as donors.csv has always been written: 08/11/2026 14:32 */
+      var m = raw.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})(?:[\s,T]+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm)?)?$/i);
+      if (!m) return null;
+      var dy = parseInt(m[3], 10);
+      if (dy < 100) dy += dy >= 70 ? 1900 : 2000;
+      if (m[4] !== undefined) {
+        hasTime = true;
+        var dh = parseInt(m[4], 10);
+        var dmin = parseInt(m[5], 10);
+        var dsec = parseInt(m[6] || "0", 10);
+        var ap = String(m[7] || "").toLowerCase();
+        if (ap === "pm" && dh < 12) dh += 12;
+        if (ap === "am" && dh === 12) dh = 0;
+        dt = new Date(dy, parseInt(m[2], 10) - 1, parseInt(m[1], 10), dh, dmin, dsec);
+      } else {
+        dt = new Date(dy, parseInt(m[2], 10) - 1, parseInt(m[1], 10));
+      }
+    }
+    if (!dt || isNaN(dt.getTime())) return null;
+    try { dt.hasTime = hasTime; } catch (_) {}
+    return dt;
   }
 
   function getRelativeTime(dt) {
     if (!dt) return "";
     var now = new Date();
     var diffMs = now.getTime() - dt.getTime();
-    var diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    /* A timestamp that includes a clock time can say "just now", "12 minutes
+       ago" or "3 hours ago". A date-only row keeps the day-based wording,
+       because midnight is not the time the gift actually arrived. */
+    if (dt.hasTime) {
+      if (diffMs < 0) diffMs = 0;
+      var mins = Math.floor(diffMs / 60000);
+      if (mins < 1) return _t("just now");
+      if (mins < 60) return mins === 1 ? _t("1 minute ago") : _t("{count} minutes ago", { count: mins });
+      var hrs = Math.floor(diffMs / 3600000);
+      if (hrs < 24) return hrs === 1 ? _t("1 hour ago") : _t("{count} hours ago", { count: hrs });
+    }
+    var startToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var startThat = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
+    var diffDays = Math.round((startToday.getTime() - startThat.getTime()) / 86400000);
     if (diffDays <= 0) return _t("today");
     if (diffDays === 1) return _t("yesterday");
     if (diffDays < 7) {
@@ -1752,6 +1829,35 @@
     if (diffDays < 730) return _t("1 year ago");
     var y = Math.floor(diffDays / 365);
     return y === 1 ? _t("1 year ago") : _t("{count} years ago", { count: y });
+  }
+
+  function formatDonorTimestamp(dt) {
+    if (!dt) return "";
+    try {
+      return dt.toLocaleString(undefined, dt.hasTime
+        ? { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }
+        : { year: "numeric", month: "short", day: "numeric" });
+    } catch (_) {}
+    try { return dt.toLocaleString(); } catch (_) {}
+    return "";
+  }
+
+  function escapeDonorAttr(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  /* The visible text stays short; the title carries the exact local date and
+     time so a reader can see precisely when the donation was made. */
+  function donorTimeHTML(dt) {
+    var rel = getRelativeTime(dt);
+    if (!rel) return "";
+    var stamp = formatDonorTimestamp(dt);
+    if (!stamp) return " · " + rel;
+    return ' · <span class="y1-donor-time" title="' + escapeDonorAttr(stamp) + '">' + rel + '</span>';
   }
 
   function formatAmount(amt) {
@@ -1857,8 +1963,7 @@
     var cKind = coffeeMethod(method);
     var displayMethod = cKind === "bmac" ? "Buy Me a Coffee" : (cKind === "kofi" ? "Ko-fi" : method);
     var url = item.url || "";
-    var relTime = getRelativeTime(item.dt);
-    var timePart = relTime ? " · " + relTime : "";
+    var timePart = donorTimeHTML(item.dt);
 
     var defaultMethodUrl = METHOD_URLS[mLower] || METHOD_URLS[cKind] || METHOD_URLS[mLower.replace(" pay", "")] || "https://ko-fi.com/teamslide";
     var methodUrl = ((mLower.indexOf("bitcoin") !== -1 || mLower.indexOf("btc") !== -1) && url && url.indexOf("http") === 0)

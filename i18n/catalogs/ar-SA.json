@@ -1928,6 +1928,13 @@
     "Works on Intel and Apple Silicon Macs with macOS Monterey and later.": "يعمل على أجهزة Mac المزودة بمعالجات Intel وApple Silicon بنظام macOS Monterey والإصدارات الأحدث.",
     "If Windows Security or Smart App Control stops Updater CE from opening, open": "إذا منع أمان Windows أو التحكم الذكي في التطبيقات فتح Updater CE، فافتح",
     ". Smart App Control is currently impacting popular applications like the Epic Overlay Service (used by Fortnite) — Updater CE is safe and verified to use. To re-enable later, set": ". يؤثر التحكم الذكي في التطبيقات حاليًا على التطبيقات الشائعة مثل Epic Overlay Service (المستخدم في Fortnite) - تطبيق Updater CE آمن وموثوق للاستخدام. لإعادة التمكين لاحقًا، اضبط",
-    "in Registry Editor.": "في محرر التسجيل."
+    "in Registry Editor.": "في محرر التسجيل.",
+    "Install to Y1": "تثبيت على Y1",
+    "Direct Install": "تثبيت مباشر",
+    "Variant": "متغير",
+    "Default": "افتراضي",
+    "Already on your Y1": "موجود بالفعل على Y1 الخاص بك",
+    "Search": "بحث",
+    "Firmware zip downloaded": "تم تنزيل ملف البرنامج الثابت المضغوط"
   }
 }

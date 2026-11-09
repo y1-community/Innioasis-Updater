@@ -75,6 +75,11 @@ body.site-themes-app.site-dock-mode section {
     color: var(--site-text);
 }
 
+body.site-themes-app #nav-root:empty {
+    display: block;
+    min-height: 58px;
+}
+
 body.site-themes-app #nav-root {
     display: contents;
 }

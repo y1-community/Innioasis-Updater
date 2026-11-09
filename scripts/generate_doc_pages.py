@@ -1005,8 +1005,37 @@ def parse_list_block(lines: list[str], start: int, ctx: dict | None) -> tuple[st
     return "".join(parts), index
 
 
+_GITHUB_ONLY_OPEN = re.compile(r"^[ \t]*<!--\s*github-only\s*-->[ \t]*$")
+_GITHUB_ONLY_CLOSE = re.compile(r"^[ \t]*<!--\s*/github-only\s*-->[ \t]*$")
+
+
+def without_github_only(text: str) -> str:
+    """Release notes and docs without the parts their project marked as GitHub-only."""
+    text = text or ""
+    if "github-only" not in text:
+        return text
+    kept = []
+    hiding = False
+    for line in text.split("\n"):
+        bare = line.rstrip("\r")
+        if _GITHUB_ONLY_OPEN.match(bare):
+            if hiding:
+                return text
+            hiding = True
+        elif _GITHUB_ONLY_CLOSE.match(bare):
+            if not hiding:
+                return text
+            hiding = False
+        elif not hiding:
+            kept.append(line)
+    if hiding:
+        return text
+    return re.sub(r"(?:\r?\n){3,}", "\n\n", "\n".join(kept))
+
+
 def markdown_to_html(markdown: str, ctx: dict | None = None) -> str:
-    text = DROP_BLOCKS.sub("", (markdown or "").replace("\r\n", "\n").replace("\r", "\n"))
+    cleaned = without_github_only(markdown or "")
+    text = DROP_BLOCKS.sub("", cleaned.replace("\r\n", "\n").replace("\r", "\n"))
     text = text.replace("\t", "    ").replace("\u00a0", " ")
     lines = text.split("\n")
     out: list[str] = []

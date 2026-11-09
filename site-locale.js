@@ -1708,6 +1708,7 @@
             state.locales = (results[0] && results[0].locales) || [];
             state.regions = results[1];
             state.prerendered = results[2];
+            global.__y1Prerendered = results[2];
             state.copies = (results[2] && results[2].locales) || [];
             return confirmCountry();
         }).then(function () {

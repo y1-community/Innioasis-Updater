@@ -159,6 +159,7 @@ body.site-themes-app :where(p, li) { max-width: 70ch; }
    containing block, so it needs the full-height body as parent. A 58px
    wrapper leaves the nav no room to stick and it scrolls away (and pops
    back in on the way up). */
+body.site-themes-app #nav-root:empty { display: block; min-height: 58px; }
 body.site-themes-app #nav-root { display: contents; }
 body.site-themes-app .nav-tools { display: flex; align-items: center; gap: .55rem; }
 body.site-themes-app .lumen-theme-control--fallback { position: fixed; top: .75rem; right: 1rem; z-index: 10000; padding: .3rem .45rem .3rem .6rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel); color: var(--lumen-text); box-shadow: 0 4px 18px color-mix(in oklab, var(--lumen-ink) 25%, transparent); }
