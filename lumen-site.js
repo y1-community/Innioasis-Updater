@@ -71,6 +71,24 @@
         return "";
     }
 
+    /* Rockbox-Y1 shipped 240p and 360p packages side by side until 0.5,
+       when 240p was discontinued. A 240p package is listed as its own row,
+       hidden unless the visitor asks for it. */
+    function is240pAsset(name) {
+        return /(?:^|[_-])240p(?=[_.-]|$)/i.test(String(name || ""));
+    }
+
+    function has240pPackages(release) {
+        return zipAssets(release).some(function (asset) { return is240pAsset(asset.name); });
+    }
+
+    function resolutionOf(name) {
+        var match = String(name || "").match(/(?:^|[_-])(240p|360p)(?=[_.-]|$)/i);
+        return match ? match[1].toLowerCase() : "";
+    }
+
+    var WARNING_240P = "240p builds can't be used on a Y1 bought new after May 2026, or on any Y1 that shipped with Original Software 3.0.7 or later. Flashing one there stops the player from starting.";
+
     /* The packages a release may ship for an item, narrowed to the selected
        hardware type. Y1 releases can use rom.zip (Type A), rom_type_b.zip
        (Type B), or the 240p/360p split of either; Rockbox-style Y1 releases
@@ -1528,11 +1546,11 @@
         if (viewParam === "firmware") {
             if (heroKicker) heroKicker.textContent = "Innioasis & Timmkoo Firmware Downloads";
             if (heroH1) heroH1.textContent = "Software Updates and Firmware";
-            if (heroLead) heroLead.textContent = "Browse verified Original Software and community custom firmwares for every Innioasis player (Y1, Y2, G1, G3, G5, R1, PR1) and every Timmkoo player (A5, Q5, Q3). Download standalone packages or install directly with Updater CE; Timmkoo firmware installs from the ZIP and RAR packages Timmkoo supplies.";
+            if (heroLead) heroLead.textContent = "Browse verified Original Software and community custom firmwares for every Innioasis player (Y1, Y2, G1, G3, G5, R1, PR1) and every Timmkoo player (Q3, Q5, SR1). Download standalone packages or install directly with Updater CE; Timmkoo firmware installs from the ZIP and RAR packages Timmkoo supplies.";
         } else {
             if (heroKicker) heroKicker.textContent = "Innioasis Software Updates & Downloads";
             if (heroH1) heroH1.textContent = "Software Updates and Firmware";
-            if (heroLead) heroLead.textContent = "Browse verified Original Software and community custom firmwares for every Innioasis player (Y1, Y2, G1, G3, G5, R1, PR1) and every Timmkoo player (A5, Q5, Q3). Download standalone packages or install directly with Updater CE; Timmkoo firmware installs from the ZIP and RAR packages Timmkoo supplies.";
+            if (heroLead) heroLead.textContent = "Browse verified Original Software and community custom firmwares for every Innioasis player (Y1, Y2, G1, G3, G5, R1, PR1) and every Timmkoo player (Q3, Q5, SR1). Download standalone packages or install directly with Updater CE; Timmkoo firmware installs from the ZIP and RAR packages Timmkoo supplies.";
         }
         /* Nightly / pre-release filter, mirroring the Updater app's
            "Show nightly builds" checkbox. Off by default: stable releases
@@ -1633,6 +1651,51 @@
                 blocklistRules = lists[0].concat(lists[1]);
                 render();
             });
+        }
+
+        /* 240p builds: off by default, and only offered for a project that
+           has any. ?resolution=240p opens a shareable view with them on. */
+        var show240p = (searchParams.get("resolution") || "").toLowerCase() === "240p";
+        var lowResField = null;
+        var lowResToggle = null;
+        var lowResWarning = null;
+        function ensure240pControls() {
+            if (lowResField || !nightly) return;
+            var nightlyField = nightly.closest ? nightly.closest(".lumen-field") : null;
+            if (!nightlyField || !nightlyField.parentNode) return;
+            lowResField = document.createElement("div");
+            lowResField.className = "lumen-field lumen-field--check";
+            lowResField.id = "lumen-240p-field";
+            lowResField.hidden = true;
+            lowResField.innerHTML =
+                '<label class="lumen-checkbox" for="lumen-240p-filter"><input type="checkbox" id="lumen-240p-filter" aria-describedby="lowres-help"><span>Show 240p builds</span></label>' +
+                '<span class="lumen-field-help" id="lowres-help">For a portable ZIP on an older Y1 only.</span>';
+            nightlyField.parentNode.insertBefore(lowResField, nightlyField.nextSibling);
+            lowResToggle = lowResField.querySelector("input");
+            lowResToggle.checked = show240p;
+            lowResToggle.addEventListener("change", function () {
+                show240p = lowResToggle.checked;
+                render();
+                syncUrl();
+            });
+            var legacyBox = document.getElementById("lumen-legacy-warning");
+            lowResWarning = document.createElement("div");
+            lowResWarning.id = "lumen-240p-warning";
+            lowResWarning.className = "lumen-warning";
+            lowResWarning.setAttribute("role", "alert");
+            lowResWarning.hidden = true;
+            lowResWarning.innerHTML = '<strong>240p builds are for older Y1 players only</strong><p style="margin: 0.35rem 0 0;"></p>';
+            lowResWarning.querySelector("p").textContent = WARNING_240P;
+            if (legacyBox && legacyBox.parentNode) legacyBox.parentNode.insertBefore(lowResWarning, legacyBox.nextSibling);
+        }
+        function sync240pControls() {
+            ensure240pControls();
+            if (!lowResField) return;
+            var first = matchingItems()[0] || null;
+            var offered = !!first && releases240p(first).length > 0;
+            lowResField.hidden = !offered;
+            if (lowResToggle) lowResToggle.checked = show240p;
+            if (lowResWarning) lowResWarning.hidden = !(offered && show240p);
         }
 
         function fillModelFilter() {
@@ -1886,17 +1949,35 @@
             return all;
         }
 
+        /* Releases that carry a 240p package for this item. They ignore the
+           pre-0.5 floor (every 240p build predates it) but still respect the
+           blocklist and the nightly switch. */
+        function releases240p(item) {
+            var all = releasesForItem(item);
+            if (!all) return [];
+            var type = typeForItem(item);
+            return all.filter(function (release) {
+                if (!has240pPackages(release)) return false;
+                if (isBlockedRelease(blocklistRules, item, release, type)) return false;
+                if (!showNightly && isNightly(release)) return false;
+                return true;
+            });
+        }
+
         /* Release details list only the zips that belong to the selected
            item's model, so a combined release never offers a rom_y2.zip
            under the Y1 row or a rom.zip under the Y2 row. */
-        function releaseDetails(release, item, type) {
+        function releaseDetails(release, item, type, mode) {
             if (!release) return '';
             var names = packageNamesFor(item, type);
             var assets = zipAssets(release);
+            var only240p = mode === "240p";
+            var hasOther = assets.some(function (asset) { return !is240pAsset(asset.name); });
             var links = [];
             assets.forEach(function (asset) {
                 var aName = (asset.name || "").toLowerCase();
                 var assetType = zipType(aName);
+                if (only240p ? !is240pAsset(aName) : (hasOther && is240pAsset(aName))) return;
                 /* Never offer the other hardware revision's ROM. */
                 if (type && assetType && assetType !== type) return;
                 if (names.indexOf(aName) !== -1 || aName === (item.packageName || "").toLowerCase() || aName.indexOf(item.model.toLowerCase()) !== -1) {
@@ -1994,7 +2075,8 @@
             return { version: version, date: dated ? dated.date : "" };
         }
 
-        function releaseRows(release, item, state) {
+        function releaseRows(release, item, state, mode) {
+            var is240pRow = mode === "240p" && !!release;
             /* The Release column label with icon and semver detection. */
             var iconHtml = firmwareIconLink(resolveFirmwareIcon(release, item), item);
             var versionDetails = release ? releaseVersionDetails(release, item) : null;
@@ -2006,6 +2088,7 @@
                 : state === "blocked" ? "Not available right now"
                 : "Checking public releases";
             var versionInnerHtml = escapeHtml(versionLabel) +
+                (is240pRow ? ' <span class="lumen-resolution-tag">(240p)</span>' : "") +
                 (versionDetails && versionDetails.date ? ' <em>(' + escapeHtml(versionDetails.date) + ')</em>' : "");
             var plainVersionHtml = (state === "failed" && !release)
                 ? "<strong>" + versionInnerHtml + "</strong>"
@@ -2034,7 +2117,9 @@
                 : state === "blocked" ? '<span class="lumen-muted-inline">Held back from this list.</span>'
                 : '';
             var guideUrl = 'guide.html?model=' + encodeURIComponent(item.model) + '&software=' + encodeURIComponent(item.slug);
-            var listedInManifest = manifestRepoListed(item);
+            /* A 240p build is a portable ZIP only: it is never offered as a
+               guided install. */
+            var listedInManifest = manifestRepoListed(item) && !is240pRow;
             var updater = listedInManifest
                 ? '<a class="lumen-updater-button lumen-updater-button--table" href="' + guideUrl + '" aria-label="Get ' + escapeHtml(item.name) + ' for ' + escapeHtml(item.model) + ' on Innioasis Updater"><img src="assets/icon.ico" width="28" height="28" alt=""><span><strong>Get it on Updater</strong><small>with guided install</small></span></a>'
                 : '';
@@ -2045,7 +2130,11 @@
             if (release && !listedInManifest) {
                 var rowType = typeForItem(item);
                 var names = packageNamesFor(item, rowType);
-                var assets = zipAssets(release);
+                var allZips = zipAssets(release);
+                var onlyLowRes = !allZips.some(function (a) { return !is240pAsset(a.name); });
+                var assets = allZips.filter(function (a) {
+                    return is240pRow ? is240pAsset(a.name) : (onlyLowRes || !is240pAsset(a.name));
+                });
                 var primaryAsset = null;
                 for (var z = 0; z < MODEL_ZIPS.length; z++) {
                     var entry = MODEL_ZIPS[z];
@@ -2076,16 +2165,19 @@
                whether the file is useful without Updater CE. */
             var standaloneNote = listedInManifest ? ''
                 : '<span class="lumen-meta lumen-standalone-note" style="flex-basis:100%;display:block;">Works with Updater CE, Innioasis Universal Flash Tool, SP Flash Tool and MTKClient (Updater CE Recommended).</span>';
+            if (is240pRow) {
+                standaloneNote = '<span class="lumen-warning-inline lumen-240p-warning" role="note" style="flex-basis:100%;display:block;">' + escapeHtml(WARNING_240P) + '</span>';
+            }
 
             /* The Software name is not shown here: the software filter above
                already sets the project, so every row belongs to it. */
             /* The reader goes to our own release-notes page. Never fall back
                to a source-host URL when a release tag is missing. */
-            return '<tr data-release-key="' + escapeHtml(rowKeyFor(item, release)) + '" data-release-tag="' + escapeHtml(release && (release.tag_name || release.name) || "") + '">' +
+            return '<tr data-release-key="' + escapeHtml(rowKeyFor(item, release) + (is240pRow ? ":240p" : "")) + '" data-release-tag="' + escapeHtml(release && (release.tag_name || release.name) || "") + '"' + (is240pRow ? ' data-resolution="240p" class="lumen-row-240p"' : '') + '>' +
                 '<td><div style="display:flex;align-items:center;gap:10px;">' + iconHtml + '<div>' + versionHtml + (release && release.published_at ? '<br><span class="lumen-meta">' + escapeHtml(release.published_at.slice(0, 10)) + '</span>' : '') + '</div></div></td>' +
                 /* The package is not shown: the Release details expander lists
                    the rom zips this release is packaged in. */
-                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + '</div>' + releaseDetails(release, item, typeForItem(item)) + '</td>' +
+                '<td><div class="lumen-actions">' + updater + zipBtn + standaloneNote + hint + '</div>' + releaseDetails(release, item, typeForItem(item), is240pRow ? "240p" : "") + '</td>' +
                 '<td><a class="lumen-release-notes-link" href="' + releaseNotesUrl + '" aria-label="Read the release notes for ' + escapeHtml(release && release.tag_name ? release.tag_name : item.name) + '">' +                '<svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h6l3 3v11H6z"/><path d="M12 3v3h3"/><path d="M8.5 10h5M8.5 13h5"/></svg></a></td>' +
                 '</tr>';
         }
@@ -2136,7 +2228,16 @@
                 if (betterYExplain && isBetterYItem(item)) return;
                 var itemReleases = visibleReleases(item);
                 var modelReleases = releasesForItem(item);
-                if (itemReleases) {
+                var lowRes = show240p ? releases240p(item) : [];
+                if (lowRes.length) {
+                    var shown = itemReleases || [];
+                    var merged = shown.concat(lowRes.filter(function (r) { return shown.indexOf(r) === -1; }));
+                    merged.sort(function (a, b) { return compareReleaseKeys(releaseSortKey(b), releaseSortKey(a)); });
+                    merged.forEach(function (release) {
+                        if (shown.indexOf(release) !== -1) pushRow(releaseRows(release, item, "loaded"), rowKeyFor(item, release));
+                        if (lowRes.indexOf(release) !== -1) pushRow(releaseRows(release, item, "loaded", "240p"), rowKeyFor(item, release) + ":240p");
+                    });
+                } else if (itemReleases) {
                     itemReleases.forEach(function (release) { pushRow(releaseRows(release, item, "loaded"), rowKeyFor(item, release)); });
                 } else if (modelReleases) {
                     /* The repo has model-matched releases, but the stable
@@ -2183,6 +2284,7 @@
             }
             /* The checkbox label follows the project that is on screen. */
             syncNightlyCopy();
+            sync240pControls();
             /* Model, type, software and release are all known here: hand them
                to the notice card so it can re-rank and surface what applies. */
             syncNoticeContext();
@@ -2417,6 +2519,8 @@
             else params.delete("type");
             if (showNightly) params.set("nightly", "1");
             else params.delete("nightly");
+            if (show240p) params.set("resolution", "240p");
+            else params.delete("resolution");
             var qs = params.toString();
             try { history.replaceState(null, "", "?" + qs + window.location.hash); } catch (_) {}
         }
@@ -2434,8 +2538,52 @@
             var itemModel = btn.getAttribute("data-item-model") || "Y1";
             var releaseTag = btn.getAttribute("data-release-tag") || "release";
             var portableZips = btn.getAttribute("data-portable-zips") || "";
+            trackFirmwareDownload({
+                software: itemName,
+                version: releaseTag,
+                model: itemModel,
+                zipName: zipName,
+                method: "portable_zip",
+                action: "open"
+            });
             startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips);
         }
+
+        /* One analytics event per download, named with the Updater CE link
+           contract so app and site downloads read the same in reports. */
+        function trackFirmwareDownload(info) {
+            if (typeof window.y1TrackDownload !== "function") return;
+            var modelName = String(info.model || "").toUpperCase();
+            var hwType = modelName === "Y1" ? (zipType(info.zipName) || (typeSelect ? typeSelect.value : "")) : "";
+            window.y1TrackDownload({
+                what: "firmware",
+                software: info.software,
+                version: info.version,
+                model: modelName,
+                brand: brandForModel(modelName),
+                type: hwType,
+                resolution: resolutionOf(info.zipName),
+                action: info.action,
+                file_name: info.zipName || "",
+                download_method: info.method
+            });
+        }
+
+        table.addEventListener("click", function (event) {
+            var link = event.target && event.target.closest ? event.target.closest(".lumen-updater-button--table") : null;
+            if (!link) return;
+            var row = link.closest("tr");
+            var item = matchingItems()[0] || null;
+            if (!item) return;
+            trackFirmwareDownload({
+                software: item.name,
+                version: row ? row.getAttribute("data-release-tag") : "",
+                model: item.model,
+                zipName: item.packageName || "",
+                method: "updater_ce",
+                action: "install"
+            });
+        });
 
         table.addEventListener("click", handleZipDownloadClick);
         document.addEventListener("click", handleZipDownloadClick);

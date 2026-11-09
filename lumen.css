@@ -400,6 +400,8 @@ figure.lumen-shot--wide { width: min(100%, 680px); }
 img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); height: auto; margin: var(--lumen-space-5) 0 0; border: 1px solid var(--lumen-line); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); }
 .lumen-shot-caption { width: 100%; margin: .55rem auto 0; padding-inline: .15rem; color: var(--lumen-faint); font-size: .8rem; text-align: left; }
 .lumen-warning { margin: var(--lumen-space-5) 0; padding: 1rem; border: 1px solid var(--lumen-line); border-left: 3px solid var(--lumen-amber); background: color-mix(in oklab, var(--lumen-amber) 25%, transparent); color: var(--lumen-muted); }
+.lumen-warning-inline { margin-top: .35rem; padding: .45rem .6rem; border-left: 3px solid var(--lumen-amber); background: color-mix(in oklab, var(--lumen-amber) 18%, transparent); color: var(--lumen-text); font-size: .8rem; line-height: 1.4; border-radius: 6px; }
+.lumen-resolution-tag { font-weight: 600; color: var(--lumen-muted); }
 .lumen-feedback { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-top: var(--lumen-space-7); padding-top: var(--lumen-space-5); border-top: 1px solid var(--lumen-line); }
 .lumen-feedback p { width: 100%; margin: 0; color: var(--lumen-muted); }
 .lumen-feedback button { min-height: 44px; padding: .6rem .9rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: transparent; color: var(--lumen-text); cursor: pointer; }
