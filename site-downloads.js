@@ -552,7 +552,36 @@
     /* The one and only path to the browser's own downloader. Marked so the
        click interceptor never claims it: a synthetic anchor click used to come
        straight back through this module and start another copy of the file. */
+    function crossOrigin(url) {
+        try {
+            return new global.URL(url, global.location.href).origin !== global.location.origin;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    /* A cross-origin asset goes to a hidden frame. Clicking an anchor at it
+       navigated the tab instead of downloading, and that navigation is what
+       made the browser ask whether to leave the page in the middle of a
+       download; cancelling the question cancelled the download. */
+    function downloadFrame() {
+        var frame = doc.getElementById("innioasis-download-frame");
+        if (!frame) {
+            frame = doc.createElement("iframe");
+            frame.id = "innioasis-download-frame";
+            frame.setAttribute("aria-hidden", "true");
+            frame.tabIndex = -1;
+            frame.style.cssText = "display:none;width:0;height:0;border:0;";
+            doc.body.appendChild(frame);
+        }
+        return frame;
+    }
+
     function clickDirect(url, name) {
+        if (crossOrigin(url)) {
+            downloadFrame().src = url;
+            return;
+        }
         var link = doc.createElement("a");
         link.href = url;
         if (name) link.download = name;
@@ -598,36 +627,14 @@
         job.controller = controller;
         var requestUrl = proxiedUrl(url, job.name);
 
-        /* Chromium can write the response straight to a file: no 1.5 GB blob
-           in memory, and progress that matches what the disk is receiving. The
-           picker must be opened while the click still counts as a gesture, so
-           it comes before the request. */
-        /* A 1.8 GB portable package never fits in a JavaScript array, so the
-           reader picks a file once and the bytes go straight to disk. A
-           small measured package is buffered instead, and a blocked or
-           unreadable response falls back to the browser's downloader. */
+        /* A package is never read through a save dialog or held in memory:
+           the browser's own downloader takes the URL a few lines below. The
+           picker this replaced opened a Save As window on every click, and
+           cancelling it silently lost the download entirely. Only a measured
+           response small enough to buffer is still read here, so the button
+           can show its own progress. */
         var writer = null;
-        if (typeof global.showSaveFilePicker === "function") {
-            try {
-                var extension = "." + ((job.name.split(".").pop() || "bin").toLowerCase());
-                var handle = await global.showSaveFilePicker({
-                    suggestedName: job.name,
-                    types: [{ description: "Download", accept: { "application/octet-stream": [extension] } }]
-                });
-                writer = await handle.createWritable();
-                job.writer = writer;
-            } catch (error) {
-                if (error && error.name === "AbortError") {
-                    cancelJob(job);
-                    return;
-                }
-                writer = null;
-            }
-        }
-        if (job.cancelled) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
-            return;
-        }
+        if (job.cancelled) return;
 
         var response;
         try {
@@ -846,14 +853,10 @@
             jobs.forEach(paint);
         });
 
-        /* Closing or reloading takes the transfer with it; the reader gets the
-           browser's own confirmation while a download is still running. */
-        global.addEventListener("beforeunload", function (event) {
-            if (!activeJobs().length) return undefined;
-            event.preventDefault();
-            event.returnValue = t("Keep this tab open");
-            return event.returnValue;
-        });
+        /* No leave guard. A download belongs to the browser, so nothing on
+           the page may block navigation, and a running transfer is not a
+           reason to ask the reader to confirm leaving a page they are not
+           leaving. That question is what looped on every download click. */
     }
 
     global.InnioasisDownloads = {
