@@ -1852,10 +1852,26 @@
 
       var states = [];
       var phraseIdx = 0;
+      /* Say which period the ask covers. Without it a visitor reads "a coffee
+         keeps the servers online" and never learns whether the shortfall is
+         today's, this week's or this month's. The long lines are prose, so the
+         period rides along as a short tag rather than being spliced into a
+         sentence that translators would have to reorder. */
+      function periodTag() {
+        if (!goal || !goal.periodPhrase) return "";
+        return " · " + _t(goal.periodPhrase);
+      }
+
       function nextPhrase() {
         var p = rotatingPhrases[phraseIdx % rotatingPhrases.length];
         phraseIdx++;
-        return makeGoalState(p);
+        var state = makeGoalState(p);
+        var tag = periodTag();
+        if (tag && !p.isTarget) {
+          state.desktop = (state.desktop || "") + tag;
+          state.mobile = (state.mobile || "") + tag;
+        }
+        return state;
       }
 
       if (targetPhrase) states.push(makeGoalState(targetPhrase));

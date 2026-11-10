@@ -2,6 +2,7 @@
 """Translate all donation, goal, and toolbar strings across all site catalogs."""
 
 import argparse
+import csv
 import json
 import os
 import re
@@ -175,6 +176,84 @@ CANONICAL_STRINGS = [
     "Ryan and his partner are getting ready for their child. If this tool has been useful, a donation for the running costs and our growing family would help more than you know."
 ]
 
+# ---------------------------------------------------------------------------
+# Batches beyond the hand-written list
+#
+# The footer rotates appeals from two pools and the donate dialog picks one of
+# them, while the credits screens print whatever the donor typed into the
+# ledger. Those strings were never in this batch, so a translated page could
+# still show them in English. Collect both at run time: the pools from the
+# toolbar source, the messages from donors.csv (canonical here, mirrored to the
+# gallery). A new pool entry or a new donor message is translated on the next
+# run without anyone remembering to edit this file.
+# ---------------------------------------------------------------------------
+
+TOOLBAR_SOURCES = [
+    ROOT / "support_toolbar.html",
+    ROOT.parent / "InnioasisY1Themes" / "support_toolbar.html",
+]
+DONOR_LEDGERS = [
+    ROOT / "donors.csv",
+    ROOT.parent / "InnioasisY1Themes" / "donors.csv",
+]
+
+_T_LITERAL_RE = re.compile(r'_t\(\s*"((?:[^"\\]|\\.)*)"')
+_JS_ESCAPE_RE = re.compile(r"\\(.)")
+_JS_ESCAPES = {"n": "\n", "t": "\t", '"': '"', "\\": "\\", "'": "'"}
+
+
+def _unescape_js(text: str) -> str:
+    return _JS_ESCAPE_RE.sub(lambda m: _JS_ESCAPES.get(m.group(1), m.group(1)), text)
+
+
+def _toolbar_strings() -> list[str]:
+    """Every _t("...") literal the toolbar can put on screen."""
+    found: list[str] = []
+    for path in TOOLBAR_SOURCES:
+        try:
+            source = path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        for match in _T_LITERAL_RE.finditer(source):
+            raw = match.group(1)
+            # "for this " + _t(goal.periodWord) is a fragment, not a sentence.
+            if raw != raw.strip():
+                continue
+            text = _unescape_js(raw)
+            if text:
+                found.append(text)
+    return found
+
+
+def _donor_strings() -> list[str]:
+    """The messages donors wrote. They appear verbatim on the credits pages."""
+    found: list[str] = []
+    for path in DONOR_LEDGERS:
+        if not path.exists():
+            continue
+        try:
+            with path.open(encoding="utf-8", newline="") as handle:
+                for row in csv.DictReader(handle):
+                    message = (row.get("Message") or "").strip()
+                    if message and "\n" not in message and len(message) <= 500:
+                        found.append(message)
+        except OSError:
+            continue
+    return found
+
+
+def _unique(items: list[str]) -> list[str]:
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for item in items:
+        if item and item not in seen:
+            seen.add(item)
+            ordered.append(item)
+    return ordered
+
+
+ALL_STRINGS = _unique(CANONICAL_STRINGS + _toolbar_strings() + _donor_strings())
+
 PLACEHOLDER_RE = re.compile(r"\{[A-Za-z0-9_]+\}")
 
 def mask_text(text: str):
@@ -228,7 +307,7 @@ def process_locale(loc: str, write: bool = True):
         data = json.load(f)
     strings = data.get("strings", {})
 
-    missing = [s for s in CANONICAL_STRINGS if s not in strings]
+    missing = [s for s in ALL_STRINGS if s not in strings]
     if not missing:
         return 0
 
@@ -257,12 +336,33 @@ def process_locale(loc: str, write: bool = True):
         f.write("\n")
     os.replace(temp_path, path)
 
-    # Sync to InnioasisY1Themes if exists
+    # Sync to InnioasisY1Themes if it exists. Merge only the keys translated
+    # here: writing this whole catalog over the gallery's copy would drop
+    # strings the gallery has but this repository does not.
     themes_path = THEMES_CATALOGS_DIR / f"{loc}.json"
-    if themes_path.parent.exists():
-        with open(themes_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=1, sort_keys=True)
-            f.write("\n")
+    if themes_path.exists():
+        try:
+            with open(themes_path, "r", encoding="utf-8") as f:
+                themes_data = json.load(f)
+        except (OSError, ValueError):
+            themes_data = None
+        if isinstance(themes_data, dict):
+            merged = themes_data.get("strings")
+            if not isinstance(merged, dict):
+                merged = {}
+            changed = False
+            for key in missing:
+                if key in strings and merged.get(key) != strings[key]:
+                    merged[key] = strings[key]
+                    changed = True
+            if changed:
+                themes_data["strings"] = merged
+                themes_data["count"] = len(merged)
+                temp_path = str(themes_path) + ".tmp"
+                with open(temp_path, "w", encoding="utf-8") as f:
+                    json.dump(themes_data, f, ensure_ascii=False, indent=1, sort_keys=True)
+                    f.write("\n")
+                os.replace(temp_path, themes_path)
 
     return len(missing)
 
@@ -302,7 +402,11 @@ def main():
             except Exception as e:
                 print(f"[{loc}] Error: {e}")
 
-    print(f"\nDone! Translated {total_translated} strings across {len(locales)} catalogs.")
+    print(
+        f"\nDone! Translated {total_translated} strings across {len(locales)} catalogs "
+        f"({len(ALL_STRINGS)} keys in the batch: {len(CANONICAL_STRINGS)} curated, "
+        f"{len(_toolbar_strings())} toolbar, {len(_donor_strings())} donor messages)."
+    )
 
 if __name__ == "__main__":
     main()
