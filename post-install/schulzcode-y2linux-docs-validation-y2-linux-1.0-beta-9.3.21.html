@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes Release 1.0.0-beta.9.3.21 , Y2Reborn 1.0.0-beta.9">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.21.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes Release 1.0.0-beta.9.3.21 , Y2Reborn 1.0.0-beta.9">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.21.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes Release 1.0.0-beta.9.3.21 , Y2Reborn 1.0.0-beta.9">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20261110warn" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9321-steadier-bluetooth-on-a-weak-signal-wi-fi-on-channels-12-and-13-two-battery-and-sd-card-fixes">Y2Linux 1.0 Beta 9.3.21: steadier Bluetooth on a weak signal, Wi-Fi on channels 12 and 13, two battery and SD card fixes</h1>
+<p>Release <code>1.0.0-beta.9.3.21</code>, Y2Reborn <code>1.0.0-beta.9.3.21</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.21</code>, update sequence 15700, root <code>2026.08-platform-v1.255</code>. Published as GitHub release <code>baseline-232</code> (test builds 230 to 232). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.20.md">Beta 9.3.20</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>This release comes out of a day of measuring Bluetooth on a real player. **When the Bluetooth signal gets weak, the music no longer drops out and then plays fast**: the player used to send everything it had missed in one burst (Y2Reborn #87, probably #99). <strong>Bluetooth now keeps off the channel your Wi-Fi uses.</strong> **Wi-Fi networks on channels 12 and 13 are found<strong> without any setting (#110). </strong>A player whose Wi-Fi and Bluetooth never started no longer stays awake all night<strong> (Y2Reborn #116). </strong>Reading a damaged file on an exFAT SD card no longer freezes the card.<strong> FLAC and Opus songs </strong>show a bitrate** (#87).</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Bluetooth on a weak signal</strong> (Y2Reborn #87, #99): measured with the player moved away from the headphones until<p>the sound broke up, the link paused up to 2.9 seconds, and the player then sent all the audio it had missed as fast as it could, six seconds of music in three. Headphones answer that with a dropout and fast playback. Now at most 0.2 seconds is made up after a pause in the link, gently; the music simply continues where it stopped.</p></li><li><strong>Bluetooth never goes quiet in the middle of a stream</strong>: if the player is busy for a moment and delivers no<p>audio, silence is sent in its place after a tenth of a second, so the headphones always receive something while music is on. Some headphones (AirPods among them) went silent after such a gap until the next song.</p></li><li><strong>Bluetooth keeps off your Wi-Fi&#x27;s channel</strong>: Wi-Fi and Bluetooth share one antenna. While Wi-Fi is connected,<p>Bluetooth is told which channels the Wi-Fi network uses and leaves them alone. Before, it left out only a few of them.</p></li><li><strong>The audio runs first</strong>: the parts that prepare and send audio now run ahead of the player&#x27;s other work (a<p>library scan, covers, copying over USB).</p></li><li><strong>Slow headphones get their time</strong>: starting music waited 5 seconds for Bluetooth headphones to answer and then<p>gave up, although headphones may take 6. It now waits 8.</p></li><li><strong>Wi-Fi on channels 12 and 13</strong> (#110): the player has no country setting, and without one these two channels may<p>only be listened on until an access point is heard there. The player skipped them completely, so a router on channel 12 or 13 never showed up. Every scan now also listens on them; once your router is heard, the channel is used like any other.</p></li><li><strong>A player without radios sleeps</strong> (Y2Reborn #116): on a player whose Wi-Fi and Bluetooth never start, every<p>sleep failed at the step &quot;switch Bluetooth off&quot;, so it stayed awake and the battery was empty by morning.</p></li><li><strong>exFAT SD cards</strong>: reading a file whose data ends in an odd place (an interrupted copy, for example) could crash<p>inside the system and freeze the whole card until a restart. Fixed.</p></li><li><strong>FLAC and Opus have a bitrate</strong> (#87), which skins can show. For songs already in your library, run<p>Settings → System → Reset &amp; Maintenance → <strong>Rebuild Music Library</strong> once.</p></li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>On a player</strong> (the developer&#x27;s, with AirPods Pro): before the changes, ten-minute recordings of the Bluetooth<p>stream on the desk, with the player moved away, during Wi-Fi scans and downloads, and with the processor and the SD card busy. With this release: music over Bluetooth through play, a short pause, a long pause, a seek and several skips, with a packet every 23 milliseconds and never a gap over 40; Wi-Fi scanning and connecting; the Wi-Fi channel left out by Bluetooth within two seconds; every file on an exFAT card read without the freeze.</p></li><li><strong>Found on the way and fixed before release:</strong> the first version of the channel 12 and 13 change made the system<p>log an error when a network was heard there (test build 231); the release has the corrected version.</p></li><li><strong>New tests</strong> for each change, and the platform&#x27;s full check, Reborn&#x27;s workspace tests and the tests of the<p>release images.</p></li><li><strong>Not yet tried:</strong> the weak-signal test again with this release (the fix was checked on a computer against the<p>recorded pauses); joining a router on channel 12 or 13 (a neighbour&#x27;s network on channel 13 appeared once during testing, then was out of range); a night on a player without radios; other headphones than AirPods.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<p>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.20.md%23known-issues&amp;anchor=known-issues">Beta 9.3.20</a> still applies.</p>
+<ul><li>A network on channel 12 or 13 may need a second scan to appear: the player only listens there, briefly.</li><li>Far from the headphones the music still pauses when the signal is lost; it no longer rushes afterwards.</li><li>Skins that draw their own lists scroll row by row, without the glide of Reborn&#x27;s own lists (Y2Reborn #114).</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Linux <code>e8b6a145</code>: BlueALSA patches <code>0009</code> (<code>src/shared/y2-catchup.h</code>: at most 200 ms owed after a stall, sent at<p>no more than 4/3 of real time; daemon and ALSA plug-in) and <code>0010</code> (<code>src/y2-filler.h</code>: an A2DP source stream whose client has played gets silence after 100 ms without audio, until audio, drain or close); <code>--io-rt-priority=1</code>; <code>tools/connectivity/bt-afh.c</code> = <code>/usr/sbin/y2-bt-afh</code> and the service daemon&#x27;s <code>daemon/channels.rs</code> (AFH host channel classification from wpa_supplicant&#x27;s <code>freq</code>, on association, Bluetooth power-on and every 30 s; record <code>/run/y2/bt-channel-mask.json</code>); kernel patch <code>0072</code> (<code>exfat_get_block</code> zeroes the unwritten rest of a block with <code>folio_zero_segment</code>, not through <code>b_data</code>, which is only an offset for a highmem folio).</p></li><li>Linux <code>c263fd89</code>: <code>y2-radiod ctl</code> quiesce without the daemon succeeds when the radio core&#x27;s Bluetooth function is<p>off. <code>c1102671</code>, <code>a82907a4</code>: <code>wifi/y2_listen.h</code>, <code>regulatory.c</code> (listen-only channels in the firmware&#x27;s domain, a second <code>SCAN_TYPE_PASSIVE_SCAN</code> pass per scan, cfg80211&#x27;s flags read before each ordinary pass), beacon hints on (<code>regulatory_flags = 0</code>), no notifier call for a hint (it waits; cfg80211 calls it under a spinlock).</p></li><li>Reborn <code>cd5bd45</code>: <code>reborn_platform::audio_thread_priority</code> (SCHED_FIFO 1) for the sink thread;<p><code>BLUETOOTH_OPEN_DEADLINE</code> 8 s. <code>b42c10f</code>: <code>media.c</code> bitrate from file size over length when stream and container name none.</p></li><li>Measurements and method: <code>docs/architecture/radio-daemon.md</code> (last section). Bumps <code>c099b38</code>, <code>8fb7b826</code>.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+
