@@ -578,7 +578,7 @@
 
   var persona = detectPersona();
   var isFirmwarePersona = persona === "firmware";
-  var activeTitle = isThemesSite ? "Themes Gallery" : (isFirmwarePersona ? "Downloads" : "Updater CE");
+  var activeTitle = isThemesSite ? "Themes Gallery" : (isFirmwarePersona ? "Firmware archive" : "Updater CE");
   var activeHomeHref = isFirmwarePersona ? "/firmware.html" : "/";
 
   (function updateDocumentTitle() {
@@ -609,7 +609,7 @@
   var allSwitcherItems = [
     {
       id: "firmware",
-      title: "Downloads",
+      title: "Firmware archive",
       subtitle: "Software and updates for your player",
       href: "/firmware.html",
       icon: '<span class="lumen-app-icon lumen-app-icon--firmware" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg></span>'
@@ -696,7 +696,7 @@
       '<svg class="lumen-site-switcher-glyph" viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/></svg>' +
       '</button>' +
       '</div>' +
-      '<div class="lumen-site-switcher-tray" id="lumen-site-switcher-tray" hidden role="menu" aria-label="Switch between Themes Gallery, Updater CE, and Downloads">' +
+      '<div class="lumen-site-switcher-tray" id="lumen-site-switcher-tray" hidden role="menu" aria-label="Switch between Themes Gallery, Updater CE, and Firmware archive">' +
       '<p class="lumen-site-switcher-heading">Innioasis Sites</p>' +
       '<ul class="lumen-site-switcher-list">' + switcherListHtml + '</ul>' +
       '</div>' +
