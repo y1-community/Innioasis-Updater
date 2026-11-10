@@ -371,7 +371,7 @@
   }
   .y1-dock-reopen-icon {
     display: block !important;
-    color: #ff5e5b !important;
+    color: var(--lumen-accent, #ff5e5b) !important;
   }
   .site-locale-throbber {
     display: none;
@@ -1624,6 +1624,8 @@
     container.style.setProperty("display", "none", "important");
     container.setAttribute("aria-hidden", "true");
     setDockReopenVisible(true);
+    try { sessionStorage.setItem("y1-dock-dismissed", "1"); } catch (_) {}
+    if (typeof setSharedCookie === "function") setSharedCookie("innioasis-dock", "closed", 365);
   }
 
   function showSupportToolbar() {
@@ -1633,7 +1635,8 @@
     container.style.removeProperty("display");
     container.removeAttribute("aria-hidden");
     setDockReopenVisible(false);
-    try { sessionStorage.removeItem("y1-dock-dismissed"); } catch (_) {}
+    try { sessionStorage.setItem("y1-dock-dismissed", "0"); } catch (_) {}
+    if (typeof setSharedCookie === "function") setSharedCookie("innioasis-dock", "open", 365);
     var closeBtn = document.querySelector("[data-dock-close]");
     if (closeBtn && typeof closeBtn.focus === "function") closeBtn.focus();
   }
