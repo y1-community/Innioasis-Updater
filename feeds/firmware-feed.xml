@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-10T17:58:53Z</updated>
+  <updated>2026-11-10T20:23:44Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -2894,7 +2894,7 @@
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
-    <inni:mirror repo="y1-community/y2player-mirror" source_repo="schulzcode/y2player" updated_at="2026-11-10T17:58:53Z">
+    <inni:mirror repo="y1-community/y2player-mirror" source_repo="schulzcode/y2player" updated_at="2026-11-10T20:23:44Z">
       <inni:release tag="ReleaseV2.3" original_tag="ReleaseV2.3" mirror_tag="ReleaseV2.3" release_name="Portable Flashing Package: Y2Player V2.3" published_at="2026-11-03T16:10:44Z">
         <inni:mirror_asset name="rom_y2-linux.zip" tag="ReleaseV2.3" original_url="" original_size="624788284" mirror_original_url="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux.zip">
         </inni:mirror_asset>
@@ -35713,22 +35713,22 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/installer.exe" title="installer.exe" length="148283609" type="application/x-msdownload"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Windows-Portable.zip" title="UpdaterCE-Windows-Portable.zip" length="205854850" type="application/x-zip-compressed"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119787348" type="application/x-diskcopy"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz" title="UpdaterCE-Linux-Portable.tar.gz" length="296731501" type="application/x-gtar"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz.sha256" title="UpdaterCE-Linux-Portable.tar.gz.sha256" length="98" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip" title="UpdaterCE-Linux-Portable.zip" length="298649304" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="305895928" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="172796424" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE.appimage.sha256" title="UpdaterCE.appimage.sha256" length="85" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="242010616" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip.sha256" title="UpdaterCE-Linux-Portable.zip.sha256" length="95" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/run_linux.sh" title="run_linux.sh" length="39210" type="application/x-sh"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="109152776" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-arm64.appimage.sha256" title="UpdaterCE-arm64.appimage.sha256" length="91" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.tar.gz" title="UpdaterCE-Linux-Portable-arm64.tar.gz" length="120771618" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz" title="UpdaterCE-Linux-Portable.tar.gz" length="360566479" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.tar.gz" title="UpdaterCE-Linux-Portable-arm64.tar.gz" length="184583052" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz.sha256" title="UpdaterCE-Linux-Portable.tar.gz.sha256" length="98" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.tar.gz.sha256" title="UpdaterCE-Linux-Portable-arm64.tar.gz.sha256" length="104" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.zip" title="UpdaterCE-Linux-Portable-arm64.zip" length="122666773" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip" title="UpdaterCE-Linux-Portable.zip" length="363859936" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip.sha256" title="UpdaterCE-Linux-Portable.zip.sha256" length="95" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.zip" title="UpdaterCE-Linux-Portable-arm64.zip" length="187878034" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.zip.sha256" title="UpdaterCE-Linux-Portable-arm64.zip.sha256" length="101" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228616607" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/run_linux.sh" title="run_linux.sh" length="53935" type="application/x-sh"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Lite.tar.gz.sha256" title="UpdaterCE-Lite.tar.gz.sha256" length="88" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228621532" type="application/x-gtar"/>
     <content type="text">In this release changes include:
 
 Keep Settings and Media - Retains your player&#x27;s settings and personal files/media where the firmware you&#x27;re installing is compatible with your existing firmware*
@@ -35804,20 +35804,20 @@ Support for the full Innioasis and Timmkoo product line in Updater CE and Firmwa
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="148283609" type="application/x-msdownload"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119787348" type="application/x-apple-diskimage"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage.sha256" title="UpdaterCE.appimage.sha256" length="85" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz.sha256" title="UpdaterCE-Linux-Portable.tar.gz.sha256" length="98" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz" title="UpdaterCE-Linux-Portable.tar.gz" length="296731501" type="application/x-gtar"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip" title="UpdaterCE-Linux-Portable.zip" length="298649304" type="application/zip"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip.sha256" title="UpdaterCE-Linux-Portable.zip.sha256" length="95" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="242010616" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh" title="run_linux.sh" length="39210" type="application/x-sh"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="109152776" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-arm64.appimage.sha256" title="UpdaterCE-arm64.appimage.sha256" length="91" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.tar.gz" title="UpdaterCE-Linux-Portable-arm64.tar.gz" length="120771618" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-arm64.appimage" title="UpdaterCE-arm64.appimage" length="172796424" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="305895928" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz" title="UpdaterCE-Linux-Portable.tar.gz" length="360566479" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.tar.gz" title="UpdaterCE-Linux-Portable-arm64.tar.gz" length="184583052" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.tar.gz.sha256" title="UpdaterCE-Linux-Portable.tar.gz.sha256" length="98" type="application/octet-stream"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.tar.gz.sha256" title="UpdaterCE-Linux-Portable-arm64.tar.gz.sha256" length="104" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.zip" title="UpdaterCE-Linux-Portable-arm64.zip" length="122666773" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip" title="UpdaterCE-Linux-Portable.zip" length="363859936" type="application/zip"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable.zip.sha256" title="UpdaterCE-Linux-Portable.zip.sha256" length="95" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.zip" title="UpdaterCE-Linux-Portable-arm64.zip" length="187878034" type="application/zip"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Linux-Portable-arm64.zip.sha256" title="UpdaterCE-Linux-Portable-arm64.zip.sha256" length="101" type="application/octet-stream"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228616607" type="application/x-gtar"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh" title="run_linux.sh" length="53935" type="application/x-sh"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/run_linux.sh.sha256" title="run_linux.sh.sha256" length="79" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228621532" type="application/x-gtar"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE-Lite.tar.gz.sha256" title="UpdaterCE-Lite.tar.gz.sha256" length="88" type="application/octet-stream"/>
     <content type="text">In this release changes include:
 
