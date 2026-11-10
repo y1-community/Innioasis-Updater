@@ -1,12 +1,12 @@
 {
- "generated": "2026-11-10T19:24:17+00:00",
+ "generated": "2026-11-10T21:51:14+00:00",
  "tiers": [
   "core",
   "full"
  ],
  "pages": 1634,
- "occurrences": 183108,
- "count": 84125,
+ "occurrences": 182109,
+ "count": 84259,
  "strings": {
   "Skip to content": {
    "n": 1388,
@@ -80,14 +80,6 @@
    "n": 420,
    "pages": 420
   },
-  "Download this release": {
-   "n": 388,
-   "pages": 388
-  },
-  "Portable packages include the flashing tool for your computer; the file is saved under the release's own name.": {
-   "n": 388,
-   "pages": 388
-  },
   "Post-install setup · Reborn (Y2Linux) · Y2": {
    "n": 386,
    "pages": 386
@@ -95,6 +87,10 @@
   "These are Reborn (Y2Linux)'s own instructions, shown here word for word.": {
    "n": 386,
    "pages": 386
+  },
+  "Download this release": {
+   "n": 380,
+   "pages": 380
   },
   "Y2": {
    "n": 756,
@@ -113,18 +109,15 @@
    "n": 287,
    "pages": 250
   },
-  "rom.zip": {
-   "n": 659,
-   "pages": 240
-  },
   "Linux": {
    "n": 494,
    "pages": 239,
    "script": true
   },
-  "rom_type_b.zip": {
-   "n": 416,
-   "pages": 209
+  "Original Software": {
+   "n": 346,
+   "pages": 231,
+   "script": true
   },
   "Was this useful?": {
    "n": 200,
@@ -138,11 +131,6 @@
   "macOS": {
    "n": 393,
    "pages": 197
-  },
-  "Original Software": {
-   "n": 311,
-   "pages": 196,
-   "script": true
   },
   "Home": {
    "n": 201,
@@ -255,8 +243,12 @@
    "n": 188,
    "pages": 139
   },
+  "Solar": {
+   "n": 231,
+   "pages": 128
+  },
   "434 MB": {
-   "n": 274,
+   "n": 261,
    "pages": 127
   },
   "Innioasis Updater CE": {
@@ -268,13 +260,17 @@
    "n": 122,
    "pages": 122
   },
-  "Solar": {
-   "n": 136,
-   "pages": 120
-  },
   "> **Historical record.** The dates, candidate identity, \"current\" claims, > next steps and permissions below belong to this recorded boundary. See > [current state](../CURRENT_PLATFORM_STATE.md) for the latest physically observed result.": {
    "n": 117,
    "pages": 117
+  },
+  "Reborn (Y2Linux)": {
+   "n": 122,
+   "pages": 114
+  },
+  "Rockbox-Y1": {
+   "n": 220,
+   "pages": 113
   },
   "Open": {
    "n": 113,
@@ -296,10 +292,6 @@
   "Firmware": {
    "n": 107,
    "pages": 104
-  },
-  "rom_y2.zip": {
-   "n": 237,
-   "pages": 100
   },
   "type-a-base": {
    "n": 106,
@@ -479,6 +471,10 @@
    "n": 90,
    "pages": 90
   },
+  "Solar (rom.zip)": {
+   "n": 90,
+   "pages": 90
+  },
   "InniClassic 20261013": {
    "n": 90,
    "pages": 89
@@ -490,10 +486,6 @@
   "InniClassic 20261104": {
    "n": 90,
    "pages": 89
-  },
-  "Rockbox-Y1": {
-   "n": 167,
-   "pages": 88
   },
   ". Exactly BOOTIMG, RECOVERY, ANDROID and USRDATA are ticked.": {
    "n": 88,
@@ -890,14 +882,6 @@
    "n": 72,
    "pages": 72
   },
-  "rom_y1_type_a.zip": {
-   "n": 142,
-   "pages": 71
-  },
-  "rom_y1_type_b.zip": {
-   "n": 142,
-   "pages": 71
-  },
   "Preview build": {
    "n": 71,
    "pages": 71,
@@ -1068,6 +1052,10 @@
   "← All documentation": {
    "n": 62,
    "pages": 62
+  },
+  "JJ Launcher": {
+   "n": 81,
+   "pages": 61
   },
   "Error reports": {
    "n": 64,
@@ -1435,6 +1423,14 @@
    "n": 44,
    "pages": 44
   },
+  "Solar · Type B": {
+   "n": 44,
+   "pages": 44
+  },
+  "Solar · Type B (rom_type_b.zip)": {
+   "n": 44,
+   "pages": 44
+  },
   ", Linux": {
    "n": 152,
    "pages": 43
@@ -1446,6 +1442,14 @@
   ", and": {
    "n": 62,
    "pages": 43
+  },
+  "rom.zip": {
+   "n": 257,
+   "pages": 42
+  },
+  "Classy": {
+   "n": 62,
+   "pages": 42
   },
   "A launcher Software for Y1.": {
    "n": 44,
@@ -1518,6 +1522,10 @@
    "n": 55,
    "pages": 39
   },
+  "Inniclassic": {
+   "n": 52,
+   "pages": 39
+  },
   "Why": {
    "n": 42,
    "pages": 39
@@ -1526,8 +1534,12 @@
    "n": 39,
    "pages": 39
   },
+  "rom_type_b.zip": {
+   "n": 74,
+   "pages": 38
+  },
   "435 MB": {
-   "n": 72,
+   "n": 70,
    "pages": 38
   },
   "Check": {
@@ -1538,28 +1550,12 @@
    "n": 39,
    "pages": 38
   },
-  "389 MB": {
-   "n": 38,
-   "pages": 38
-  },
   "The player cannot detect wired headphones yet; the jack plays whenever no Bluetooth headphones are connected.": {
    "n": 38,
    "pages": 38
   },
-  "portable · 503 MB": {
-   "n": 38,
-   "pages": 38
-  },
-  "portable · 585 MB": {
-   "n": 38,
-   "pages": 38
-  },
-  "portable · 758 MB": {
-   "n": 38,
-   "pages": 38
-  },
-  "438 MB": {
-   "n": 67,
+  "rom_y2.zip": {
+   "n": 111,
    "pages": 37
   },
   "rockbox-y1/rockbox": {
@@ -1568,10 +1564,6 @@
   },
   "Model guides": {
    "n": 78,
-   "pages": 36
-  },
-  "404 MB": {
-   "n": 72,
    "pages": 36
   },
   "55 MB": {
@@ -1592,6 +1584,10 @@
    "script": true
   },
   "Choose a stable release listed for that model.": {
+   "n": 36,
+   "pages": 36
+  },
+  "Classy (rom.zip)": {
    "n": 36,
    "pages": 36
   },
@@ -1625,11 +1621,23 @@
    "n": 36,
    "pages": 36
   },
+  "rom_y1_type_a.zip": {
+   "n": 70,
+   "pages": 35
+  },
+  "rom_y1_type_b.zip": {
+   "n": 70,
+   "pages": 35
+  },
   "Community firmware package for the Y2.": {
    "n": 35,
    "pages": 35
   },
   "Detail": {
+   "n": 35,
+   "pages": 35
+  },
+  "Portable packages include the flashing tool for your computer; the file is saved under the release's own name.": {
    "n": 35,
    "pages": 35
   },
@@ -1679,6 +1687,10 @@
    "pages": 32,
    "script": true
   },
+  "Y2Player": {
+   "n": 44,
+   "pages": 32
+  },
   "Innioasis PR1": {
    "n": 40,
    "pages": 32
@@ -1718,14 +1730,6 @@
   "portable · 169 MB": {
    "n": 32,
    "pages": 32
-  },
-  "portable · 550 MB": {
-   "n": 32,
-   "pages": 32
-  },
-  "JJ Launcher": {
-   "n": 47,
-   "pages": 31
   },
   ", Y2Reborn": {
    "n": 33,
@@ -1850,10 +1854,6 @@
    "n": 43,
    "pages": 29
   },
-  "Inniclassic": {
-   "n": 42,
-   "pages": 29
-  },
   "Validation": {
    "n": 30,
    "pages": 29
@@ -1894,16 +1894,16 @@
    "n": 109,
    "pages": 28
   },
+  "438 MB": {
+   "n": 58,
+   "pages": 28
+  },
   "Linux install guides": {
    "n": 42,
    "pages": 28
   },
   "macOS install guides": {
    "n": 42,
-   "pages": 28
-  },
-  "381 MB": {
-   "n": 29,
    "pages": 28
   },
   ". Published as GitHub release": {
@@ -1920,6 +1920,10 @@
    "script": true
   },
   "In one paragraph": {
+   "n": 28,
+   "pages": 28
+  },
+  "JJ Launcher (rom.zip)": {
    "n": 28,
    "pages": 28
   },
@@ -1943,11 +1947,7 @@
    "n": 28,
    "pages": 28
   },
-  "portable · 584 MB": {
-   "n": 28,
-   "pages": 28
-  },
-  "portable · 757 MB": {
+  "portable · 550 MB": {
    "n": 28,
    "pages": 28
   },
@@ -1955,12 +1955,16 @@
    "n": 28,
    "pages": 28
   },
+  "404 MB": {
+   "n": 54,
+   "pages": 27
+  },
   "on": {
    "n": 46,
    "pages": 27
   },
   "Rondo": {
-   "n": 36,
+   "n": 39,
    "pages": 27
   },
   "Bytes": {
@@ -2223,18 +2227,6 @@
    "n": 26,
    "pages": 26
   },
-  "portable · 495 MB": {
-   "n": 26,
-   "pages": 26
-  },
-  "portable · 502 MB": {
-   "n": 26,
-   "pages": 26
-  },
-  "portable · 751 MB": {
-   "n": 26,
-   "pages": 26
-  },
   "release, then allow it. Do not run an installer from an untrusted mirror.": {
    "n": 26,
    "pages": 26
@@ -2320,6 +2312,14 @@
    "n": 39,
    "pages": 24
   },
+  "Better-Y": {
+   "n": 33,
+   "pages": 24
+  },
+  "Koensayr": {
+   "n": 33,
+   "pages": 24
+  },
   "SHA256": {
    "n": 30,
    "pages": 24
@@ -2376,10 +2376,6 @@
    "n": 33,
    "pages": 23
   },
-  "Y2Player": {
-   "n": 32,
-   "pages": 23
-  },
   "Q5": {
    "n": 29,
    "pages": 23
@@ -2415,14 +2411,6 @@
   },
   "Field": {
    "n": 32,
-   "pages": 22
-  },
-  "Better-Y": {
-   "n": 31,
-   "pages": 22
-  },
-  "Koensayr": {
-   "n": 31,
    "pages": 22
   },
   "A Y1 custom Software maintained by the community.": {
@@ -2491,16 +2479,8 @@
    "n": 22,
    "pages": 22
   },
-  "portable · 549 MB": {
-   "n": 22,
-   "pages": 22
-  },
   "Bluetooth": {
    "n": 34,
-   "pages": 21
-  },
-  "Reborn (Y2Linux)": {
-   "n": 29,
    "pages": 21
   },
   ", then": {
@@ -2580,6 +2560,10 @@
    "n": 21,
    "pages": 21
   },
+  "portable · 549 MB": {
+   "n": 21,
+   "pages": 21
+  },
   "Flashable ROM for Y1 players with original firmware": {
    "n": 40,
    "pages": 20
@@ -2593,8 +2577,16 @@
    "pages": 20,
    "script": true
   },
+  "Linux for Y1 (Dev)": {
+   "n": 28,
+   "pages": 20
+  },
   "Now Playing": {
    "n": 27,
+   "pages": 20
+  },
+  "Rockbox-Y1 · Type B": {
+   "n": 24,
    "pages": 20
   },
   ". The": {
@@ -2725,10 +2717,6 @@
    "n": 57,
    "pages": 19
   },
-  "Linux for Y1 (Dev)": {
-   "n": 27,
-   "pages": 19
-  },
   "Play/Pause": {
    "n": 22,
    "pages": 19
@@ -2743,6 +2731,10 @@
    "script": true
   },
   ". Identity: build": {
+   "n": 19,
+   "pages": 19
+  },
+  "389 MB": {
    "n": 19,
    "pages": 19
   },
@@ -2767,6 +2759,18 @@
    "n": 19,
    "pages": 19
   },
+  "portable · 503 MB": {
+   "n": 19,
+   "pages": 19
+  },
+  "portable · 585 MB": {
+   "n": 19,
+   "pages": 19
+  },
+  "portable · 758 MB": {
+   "n": 19,
+   "pages": 19
+  },
   "Y2Linux": {
    "n": 68,
    "pages": 18
@@ -2777,6 +2781,10 @@
   },
   "from": {
    "n": 48,
+   "pages": 18
+  },
+  "Classy · Type B": {
+   "n": 36,
    "pages": 18
   },
   "Library": {
@@ -2805,6 +2813,26 @@
    "n": 18,
    "pages": 18
   },
+  "Classy (rom_y2.zip)": {
+   "n": 18,
+   "pages": 18
+  },
+  "Classy · Type A": {
+   "n": 18,
+   "pages": 18
+  },
+  "Classy · Type A (rom_y1_type_a.zip)": {
+   "n": 18,
+   "pages": 18
+  },
+  "Classy · Type B (rom_type_b.zip)": {
+   "n": 18,
+   "pages": 18
+  },
+  "Classy · Type B (rom_y1_type_b.zip)": {
+   "n": 18,
+   "pages": 18
+  },
   "Device results": {
    "n": 18,
    "pages": 18
@@ -2813,15 +2841,15 @@
    "n": 18,
    "pages": 18
   },
+  "Rockbox-Y1 (rom.zip)": {
+   "n": 18,
+   "pages": 18
+  },
   "Step-by-step install for Classy": {
    "n": 18,
    "pages": 18
   },
   "first.": {
-   "n": 18,
-   "pages": 18
-  },
-  "portable · 578 MB": {
    "n": 18,
    "pages": 18
   },
@@ -2843,10 +2871,6 @@
   },
   "Power": {
    "n": 19,
-   "pages": 17
-  },
-  "387 MB": {
-   "n": 18,
    "pages": 17
   },
   "Rockbox-Y1 release notes": {
@@ -3134,6 +3158,10 @@
    "n": 16,
    "pages": 16
   },
+  "Rockbox-Y1 · Type B (rom_type_b.zip)": {
+   "n": 16,
+   "pages": 16
+  },
   "Songs with several artists (\"A;B\") count as one artist; there is no Album Artist view yet.": {
    "n": 16,
    "pages": 16
@@ -3168,10 +3196,6 @@
   },
   "after": {
    "n": 37,
-   "pages": 15
-  },
-  "update.zip": {
-   "n": 30,
    "pages": 15
   },
   "Sleep timer": {
@@ -3260,6 +3284,10 @@
    "n": 17,
    "pages": 15
   },
+  "381 MB": {
+   "n": 16,
+   "pages": 15
+  },
   "Classy Release": {
    "n": 15,
    "pages": 15
@@ -3273,6 +3301,10 @@
    "pages": 15
   },
   "Layout": {
+   "n": 15,
+   "pages": 15
+  },
+  "Rockbox-Y1 (update.zip)": {
    "n": 15,
    "pages": 15
   },
@@ -3297,10 +3329,6 @@
   },
   "FM radio": {
    "n": 40,
-   "pages": 14
-  },
-  "423 MB": {
-   "n": 19,
    "pages": 14
   },
   "BOOTIMG.img": {
@@ -3380,6 +3408,14 @@
    "n": 14,
    "pages": 14
   },
+  "JJ Launcher · Type B": {
+   "n": 14,
+   "pages": 14
+  },
+  "JJ Launcher · Type B (rom_type_b.zip)": {
+   "n": 14,
+   "pages": 14
+  },
   "Model details": {
    "n": 14,
    "pages": 14
@@ -3419,6 +3455,18 @@
    "pages": 14
   },
   "portable · 251 MB": {
+   "n": 14,
+   "pages": 14
+  },
+  "portable · 495 MB": {
+   "n": 14,
+   "pages": 14
+  },
+  "portable · 584 MB": {
+   "n": 14,
+   "pages": 14
+  },
+  "portable · 757 MB": {
    "n": 14,
    "pages": 14
   },
@@ -3480,10 +3528,6 @@
   },
   "Cover Flow": {
    "n": 16,
-   "pages": 13
-  },
-  "444 MB": {
-   "n": 15,
    "pages": 13
   },
   "Android 4.2 development ROM for Innioasis Y1.": {
@@ -3599,6 +3643,14 @@
    "n": 13,
    "pages": 13
   },
+  "portable · 502 MB": {
+   "n": 13,
+   "pages": 13
+  },
+  "portable · 751 MB": {
+   "n": 13,
+   "pages": 13
+  },
   "troubleshooting": {
    "n": 13,
    "pages": 13
@@ -3615,14 +3667,6 @@
    "n": 26,
    "pages": 12
   },
-  "420 MB": {
-   "n": 25,
-   "pages": 12
-  },
-  "403 MB": {
-   "n": 24,
-   "pages": 12
-  },
   "y1-community/g1-stock-rom": {
    "n": 24,
    "pages": 12
@@ -3637,6 +3681,10 @@
   },
   "System": {
    "n": 23,
+   "pages": 12
+  },
+  "420 MB": {
+   "n": 22,
    "pages": 12
   },
   "436 MB": {
@@ -3665,10 +3713,6 @@
   },
   ", build": {
    "n": 18,
-   "pages": 12
-  },
-  "460 MB": {
-   "n": 16,
    "pages": 12
   },
   "Display": {
@@ -3749,14 +3793,6 @@
    "pages": 12
   },
   "32e45d2 Merge branch 'nightly' into main": {
-   "n": 12,
-   "pages": 12
-  },
-  "388 MB": {
-   "n": 12,
-   "pages": 12
-  },
-  "391 MB": {
    "n": 12,
    "pages": 12
   },
@@ -3975,10 +4011,6 @@
    "n": 12,
    "pages": 12
   },
-  "portable · 505 MB": {
-   "n": 12,
-   "pages": 12
-  },
   "to check for a stock restore package, and read the": {
    "n": 12,
    "pages": 12
@@ -4028,6 +4060,10 @@
    "pages": 11
   },
   "Going back to a version older than 8.33 starts with an empty queue (your settings are kept).": {
+   "n": 11,
+   "pages": 11
+  },
+  "Inniclassic (rom.zip)": {
    "n": 11,
    "pages": 11
   },
@@ -4139,6 +4175,10 @@
    "n": 14,
    "pages": 10
   },
+  "Rockbox-Y2": {
+   "n": 14,
+   "pages": 10
+  },
   "Run": {
    "n": 14,
    "pages": 10
@@ -4164,6 +4204,10 @@
    "pages": 10
   },
   ", so": {
+   "n": 12,
+   "pages": 10
+  },
+  "444 MB": {
    "n": 12,
    "pages": 10
   },
@@ -4573,6 +4617,10 @@
    "n": 10,
    "pages": 10
   },
+  "Original Software (rom.zip)": {
+   "n": 10,
+   "pages": 10
+  },
   "Other manuals": {
    "n": 10,
    "pages": 10
@@ -4857,10 +4905,6 @@
    "n": 10,
    "pages": 10
   },
-  "portable · 469 MB": {
-   "n": 10,
-   "pages": 10
-  },
   "portable · 633 MB": {
    "n": 10,
    "pages": 10
@@ -4909,16 +4953,16 @@
    "n": 27,
    "pages": 9
   },
-  "424 MB": {
-   "n": 21,
-   "pages": 9
-  },
   "Fix": {
    "n": 21,
    "pages": 9
   },
   "New": {
    "n": 19,
+   "pages": 9
+  },
+  "403 MB": {
+   "n": 18,
    "pages": 9
   },
   "y1-community/q5-stock-rom": {
@@ -4954,6 +4998,10 @@
    "n": 15,
    "pages": 9
   },
+  "423 MB": {
+   "n": 14,
+   "pages": 9
+  },
   "MX2-ES-WV4.01-20250619": {
    "n": 14,
    "pages": 9
@@ -4967,6 +5015,10 @@
    "pages": 9
   },
   ", the": {
+   "n": 13,
+   "pages": 9
+  },
+  "460 MB": {
    "n": 13,
    "pages": 9
   },
@@ -4984,6 +5036,10 @@
   },
   "plus": {
    "n": 11,
+   "pages": 9
+  },
+  "387 MB": {
+   "n": 10,
    "pages": 9
   },
   "ANDROID": {
@@ -5132,7 +5188,7 @@
    "n": 9,
    "pages": 9
   },
-  "portable · 577 MB": {
+  "portable · 578 MB": {
    "n": 9,
    "pages": 9
   },
@@ -5150,14 +5206,6 @@
   },
   "writes": {
    "n": 21,
-   "pages": 8
-  },
-  "system.zip": {
-   "n": 20,
-   "pages": 8
-  },
-  "417 MB": {
-   "n": 16,
    "pages": 8
   },
   "kernel": {
@@ -5277,6 +5325,10 @@
    "pages": 8
   },
   "Always use the scatter file that ships inside the same release.": {
+   "n": 8,
+   "pages": 8
+  },
+  "Android 4.2 (Dev)": {
    "n": 8,
    "pages": 8
   },
@@ -5433,19 +5485,7 @@
    "n": 8,
    "pages": 8
   },
-  "portable · 588 MB": {
-   "n": 8,
-   "pages": 8
-  },
   "portable · 624 MB": {
-   "n": 8,
-   "pages": 8
-  },
-  "portable · 723 MB": {
-   "n": 8,
-   "pages": 8
-  },
-  "portable · 761 MB": {
    "n": 8,
    "pages": 8
   },
@@ -5485,19 +5525,15 @@
    "n": 19,
    "pages": 7
   },
+  "424 MB": {
+   "n": 19,
+   "pages": 7
+  },
   "After": {
    "n": 19,
    "pages": 7
   },
   "Audio": {
-   "n": 18,
-   "pages": 7
-  },
-  "rom_g1.zip": {
-   "n": 18,
-   "pages": 7
-  },
-  "rom_g3.zip": {
    "n": 18,
    "pages": 7
   },
@@ -5557,15 +5593,7 @@
    "n": 9,
    "pages": 7
   },
-  "437 MB": {
-   "n": 9,
-   "pages": 7
-  },
   "Feature": {
-   "n": 9,
-   "pages": 7
-  },
-  "Rockbox-Y2": {
    "n": 9,
    "pages": 7
   },
@@ -5665,7 +5693,7 @@
    "n": 7,
    "pages": 7
   },
-  "Android 4.2 (Dev)": {
+  "Android 4.4 (Dev)": {
    "n": 7,
    "pages": 7
   },
@@ -5933,6 +5961,10 @@
    "n": 7,
    "pages": 7
   },
+  "Y2Player (system.zip)": {
+   "n": 7,
+   "pages": 7
+  },
   "Yes, internal storage is erased. Files on a microSD card usually survive, but copy them somewhere safe first.": {
    "n": 7,
    "pages": 7
@@ -6080,6 +6112,10 @@
    "n": 12,
    "pages": 6
   },
+  "417 MB": {
+   "n": 12,
+   "pages": 6
+  },
   "vs": {
    "n": 12,
    "pages": 6
@@ -6149,7 +6185,7 @@
    "n": 9,
    "pages": 6
   },
-  "Classy": {
+  "437 MB": {
    "n": 8,
    "pages": 6
   },
@@ -6277,6 +6313,14 @@
    "n": 6,
    "pages": 6
   },
+  "388 MB": {
+   "n": 6,
+   "pages": 6
+  },
+  "391 MB": {
+   "n": 6,
+   "pages": 6
+  },
   "3c118d8 Fix gapless Reach/Deezer playback at 100% and split Now Playing metadata lines.": {
    "n": 6,
    "pages": 6
@@ -6342,10 +6386,6 @@
    "pages": 6
   },
   "All Solar platforms": {
-   "n": 6,
-   "pages": 6
-  },
-  "Android 4.4 (Dev)": {
    "n": 6,
    "pages": 6
   },
@@ -6573,6 +6613,14 @@
    "pages": 6
   },
   "Order": {
+   "n": 6,
+   "pages": 6
+  },
+  "Original Software (rom_g1.zip)": {
+   "n": 6,
+   "pages": 6
+  },
+  "Original Software (rom_g3.zip)": {
    "n": 6,
    "pages": 6
   },
@@ -6912,7 +6960,7 @@
    "n": 6,
    "pages": 6
   },
-  "portable · 582 MB": {
+  "portable · 505 MB": {
    "n": 6,
    "pages": 6
   },
@@ -7093,14 +7141,6 @@
    "n": 13,
    "pages": 5
   },
-  "rom_240p.zip": {
-   "n": 13,
-   "pages": 5
-  },
-  "Y1_Themes.zip": {
-   "n": 12,
-   "pages": 5
-  },
   "Error Reports": {
    "n": 11,
    "pages": 5
@@ -7173,10 +7213,6 @@
    "n": 8,
    "pages": 5
   },
-  "1 MB": {
-   "n": 8,
-   "pages": 5
-  },
   "1.15 V": {
    "n": 8,
    "pages": 5
@@ -7186,10 +7222,6 @@
    "pages": 5
   },
   "283 MB": {
-   "n": 8,
-   "pages": 5
-  },
-  "339 MB": {
    "n": 8,
    "pages": 5
   },
@@ -7230,10 +7262,6 @@
    "pages": 5
   },
   ", rootfs": {
-   "n": 7,
-   "pages": 5
-  },
-  "606 MB": {
    "n": 7,
    "pages": 5
   },
@@ -8246,6 +8274,10 @@
    "pages": 5,
    "script": true
   },
+  "Rockbox-Y1 (rom_240p.zip)": {
+   "n": 5,
+   "pages": 5
+  },
   "Rondo 1.0.0": {
    "n": 5,
    "pages": 5
@@ -8595,6 +8627,14 @@
    "n": 5,
    "pages": 5
   },
+  "portable · 469 MB": {
+   "n": 5,
+   "pages": 5
+  },
+  "portable · 577 MB": {
+   "n": 5,
+   "pages": 5
+  },
   "requires": {
    "n": 5,
    "pages": 5
@@ -8782,31 +8822,11 @@
    "n": 9,
    "pages": 4
   },
-  "rom_q3.zip": {
-   "n": 9,
-   "pages": 4
-  },
-  "rom_q5.zip": {
-   "n": 9,
-   "pages": 4
-  },
   "0x01": {
    "n": 8,
    "pages": 4
   },
   "0x06": {
-   "n": 8,
-   "pages": 4
-  },
-  "396 MB": {
-   "n": 8,
-   "pages": 4
-  },
-  "397 MB": {
-   "n": 8,
-   "pages": 4
-  },
-  "405 MB": {
    "n": 8,
    "pages": 4
   },
@@ -8846,31 +8866,7 @@
    "n": 8,
    "pages": 4
   },
-  "rom_240p_type_b.zip": {
-   "n": 8,
-   "pages": 4
-  },
-  "rom_360p.zip": {
-   "n": 8,
-   "pages": 4
-  },
-  "rom_360p_type_b.zip": {
-   "n": 8,
-   "pages": 4
-  },
   "the": {
-   "n": 8,
-   "pages": 4
-  },
-  "update_240p.zip": {
-   "n": 8,
-   "pages": 4
-  },
-  "update_360p.zip": {
-   "n": 8,
-   "pages": 4
-  },
-  "voices.zip": {
    "n": 8,
    "pages": 4
   },
@@ -8887,10 +8883,6 @@
    "pages": 4
   },
   "2.4.0-koensayr-3.0.7": {
-   "n": 7,
-   "pages": 4
-  },
-  "413 MB": {
    "n": 7,
    "pages": 4
   },
@@ -9479,14 +9471,6 @@
    "pages": 4
   },
   "3. Bug Fixes": {
-   "n": 4,
-   "pages": 4
-  },
-  "386 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "392 MB": {
    "n": 4,
    "pages": 4
   },
@@ -10340,6 +10324,10 @@
    "n": 4,
    "pages": 4
   },
+  "JJ Launcher (rom_y2.zip)": {
+   "n": 4,
+   "pages": 4
+  },
   "Language Bug Fix:": {
    "n": 4,
    "pages": 4
@@ -10796,11 +10784,31 @@
    "n": 4,
    "pages": 4
   },
+  "Rockbox-Y1 (rom_360p.zip)": {
+   "n": 4,
+   "pages": 4
+  },
+  "Rockbox-Y1 (update_240p.zip)": {
+   "n": 4,
+   "pages": 4
+  },
+  "Rockbox-Y1 (update_360p.zip)": {
+   "n": 4,
+   "pages": 4
+  },
   "Rockbox-Y1 Nightly-24-08-2026": {
    "n": 4,
    "pages": 4
   },
   "Rockbox-Y1 downloads": {
+   "n": 4,
+   "pages": 4
+  },
+  "Rockbox-Y1 · Type B (rom_240p_type_b.zip)": {
+   "n": 4,
+   "pages": 4
+  },
+  "Rockbox-Y1 · Type B (rom_360p_type_b.zip)": {
    "n": 4,
    "pages": 4
   },
@@ -11138,6 +11146,10 @@
    "pages": 4
   },
   "Y2Linux 1.0 Beta 8.19": {
+   "n": 4,
+   "pages": 4
+  },
+  "Y2Player (rom_y2.zip)": {
    "n": 4,
    "pages": 4
   },
@@ -11589,30 +11601,6 @@
    "n": 4,
    "pages": 4
   },
-  "portable · 442 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 500 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 506 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 523 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 524 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 529 MB": {
-   "n": 4,
-   "pages": 4
-  },
   "portable · 537 MB": {
    "n": 4,
    "pages": 4
@@ -11625,11 +11613,11 @@
    "n": 4,
    "pages": 4
   },
-  "portable · 587 MB": {
+  "portable · 582 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 589 MB": {
+  "portable · 588 MB": {
    "n": 4,
    "pages": 4
   },
@@ -11645,14 +11633,6 @@
    "n": 4,
    "pages": 4
   },
-  "portable · 653 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 697 MB": {
-   "n": 4,
-   "pages": 4
-  },
   "portable · 706 MB": {
    "n": 4,
    "pages": 4
@@ -11661,19 +11641,11 @@
    "n": 4,
    "pages": 4
   },
-  "portable · 734 MB": {
+  "portable · 723 MB": {
    "n": 4,
    "pages": 4
   },
-  "portable · 755 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 760 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 762 MB": {
+  "portable · 761 MB": {
    "n": 4,
    "pages": 4
   },
@@ -11686,10 +11658,6 @@
    "pages": 4
   },
   "portable · 880 MB": {
-   "n": 4,
-   "pages": 4
-  },
-  "portable · 907 MB": {
    "n": 4,
    "pages": 4
   },
@@ -12050,6 +12018,26 @@
    "n": 6,
    "pages": 3
   },
+  "1 MB": {
+   "n": 6,
+   "pages": 3
+  },
+  "339 MB": {
+   "n": 6,
+   "pages": 3
+  },
+  "396 MB": {
+   "n": 6,
+   "pages": 3
+  },
+  "397 MB": {
+   "n": 6,
+   "pages": 3
+  },
+  "405 MB": {
+   "n": 6,
+   "pages": 3
+  },
   "; Y2ROOT": {
    "n": 6,
    "pages": 3
@@ -12158,7 +12146,11 @@
    "n": 5,
    "pages": 3
   },
-  "519 MB": {
+  "413 MB": {
+   "n": 5,
+   "pages": 3
+  },
+  "606 MB": {
    "n": 5,
    "pages": 3
   },
@@ -12282,10 +12274,6 @@
    "n": 4,
    "pages": 3
   },
-  "168 MB": {
-   "n": 4,
-   "pages": 3
-  },
   "173 MB": {
    "n": 4,
    "pages": 3
@@ -12322,10 +12310,6 @@
    "n": 4,
    "pages": 3
   },
-  "338 MB": {
-   "n": 4,
-   "pages": 3
-  },
   "345 MB": {
    "n": 4,
    "pages": 3
@@ -12339,6 +12323,10 @@
    "pages": 3
   },
   "509 MB": {
+   "n": 4,
+   "pages": 3
+  },
+  "519 MB": {
    "n": 4,
    "pages": 3
   },
@@ -14721,6 +14709,18 @@
    "n": 3,
    "pages": 3
   },
+  "Original Software (rom_q3.zip)": {
+   "n": 3,
+   "pages": 3
+  },
+  "Original Software (rom_q5.zip)": {
+   "n": 3,
+   "pages": 3
+  },
+  "Original Software (rom_y2.zip)": {
+   "n": 3,
+   "pages": 3
+  },
   "Original Software Compatibility Warning": {
    "n": 3,
    "pages": 3,
@@ -15053,6 +15053,10 @@
    "n": 3,
    "pages": 3
   },
+  "Rockbox-Y1 (voices.zip)": {
+   "n": 3,
+   "pages": 3
+  },
   "Rockbox-Y1 Base ROM - Type A": {
    "n": 3,
    "pages": 3,
@@ -15124,6 +15128,10 @@
    "pages": 3
   },
   "Rockbox-Y2 theme guide": {
+   "n": 3,
+   "pages": 3
+  },
+  "Rondo (rom.zip)": {
    "n": 3,
    "pages": 3
   },
@@ -15316,6 +15324,10 @@
    "pages": 3
   },
   "Software for the Innioasis Y2": {
+   "n": 3,
+   "pages": 3
+  },
+  "Solar (rom_y2.zip)": {
    "n": 3,
    "pages": 3
   },
@@ -16686,7 +16698,11 @@
    "n": 3,
    "pages": 3
   },
-  "portable · 441 MB": {
+  "portable · 523 MB": {
+   "n": 3,
+   "pages": 3
+  },
+  "portable · 529 MB": {
    "n": 3,
    "pages": 3
   },
@@ -16726,14 +16742,6 @@
    "n": 3,
    "pages": 3
   },
-  "portable · 648 MB": {
-   "n": 3,
-   "pages": 3
-  },
-  "portable · 696 MB": {
-   "n": 3,
-   "pages": 3
-  },
   "portable · 702 MB": {
    "n": 3,
    "pages": 3
@@ -16747,10 +16755,6 @@
    "pages": 3
   },
   "portable · 810 MB": {
-   "n": 3,
-   "pages": 3
-  },
-  "portable · 821 MB": {
    "n": 3,
    "pages": 3
   },
@@ -18420,10 +18424,6 @@
    "n": 4,
    "pages": 2
   },
-  "rom_a5.zip": {
-   "n": 4,
-   "pages": 2
-  },
   "v6.18": {
    "n": 4,
    "pages": 2
@@ -18580,6 +18580,10 @@
    "n": 3,
    "pages": 2
   },
+  "168 MB": {
+   "n": 3,
+   "pages": 2
+  },
   "1k": {
    "n": 3,
    "pages": 2
@@ -18593,6 +18597,10 @@
    "pages": 2
   },
   "3.9 s": {
+   "n": 3,
+   "pages": 2
+  },
+  "338 MB": {
    "n": 3,
    "pages": 2
   },
@@ -20213,378 +20221,6 @@
    "n": 3,
    "pages": 2
   },
-  "Y2Linux-1.0.0-beta.1-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.2-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.3-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.4-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.4.1-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.5-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.5.1-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.6-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.6.1-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.6.2-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.6.3-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.1-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.10-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.11-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.2-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.3-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.4-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.5-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.6-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.7-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.8-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.7.9-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.0-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.1-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.10-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.11-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.12-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.13-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.14-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.15-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.16-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.17-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.19-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.2-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.20-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.21-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.22-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.23-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.24-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.25-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.26-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.27-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.28-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.29-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.3-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.30-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.31-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.33-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.34-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.35-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.36-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.37-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.38-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.39-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.4-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.40-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.41-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.42-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.43-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.5-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.6-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.7-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.8.8-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.0-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.1-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.10-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.11-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.12-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.13-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.14-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.15-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.16-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.2-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.3-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.4-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.5-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.6-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.7-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.2.8-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.12-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.13-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.15-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.16-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.17-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.18-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.19-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.20-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.21-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.22-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-1.0.0-beta.9.3.7-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "Y2Linux-49-first-install.zip": {
-   "n": 3,
-   "pages": 2
-  },
   "Y2N-500 — M5 connectivity, firmware and conditional FM coverage": {
    "n": 3,
    "pages": 2
@@ -20693,10 +20329,6 @@
    "n": 3,
    "pages": 2
   },
-  "libs.zip": {
-   "n": 3,
-   "pages": 2
-  },
   "macOS:": {
    "n": 3,
    "pages": 2
@@ -20746,22 +20378,6 @@
    "pages": 2
   },
   "result without changing the image. Current physical media is clean ext4, with successful explicit": {
-   "n": 3,
-   "pages": 2
-  },
-  "rom_g5.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "rom_pr1.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "rom_r1.zip": {
-   "n": 3,
-   "pages": 2
-  },
-  "rom_sr1.zip": {
    "n": 3,
    "pages": 2
   },
@@ -22421,7 +22037,15 @@
    "n": 2,
    "pages": 2
   },
+  "386 MB": {
+   "n": 2,
+   "pages": 2
+  },
   "39.4 s": {
+   "n": 2,
+   "pages": 2
+  },
+  "392 MB": {
    "n": 2,
    "pages": 2
   },
@@ -22458,10 +22082,6 @@
    "pages": 2
   },
   "452 MB": {
-   "n": 2,
-   "pages": 2
-  },
-  "466 MB": {
    "n": 2,
    "pages": 2
   },
@@ -23815,6 +23435,10 @@
    "pages": 2
   },
   "Better Audiobook Separation": {
+   "n": 2,
+   "pages": 2
+  },
+  "Better-Y (rom.zip)": {
    "n": 2,
    "pages": 2
   },
@@ -26829,6 +26453,10 @@
    "n": 2,
    "pages": 2
   },
+  "JJ Launcher (Y1_Themes.zip)": {
+   "n": 2,
+   "pages": 2
+  },
   "JJ Launcher does not change the route back to the stock interface. Once Updater is set up for your computer, open it on Windows, macOS, or Linux and select": {
    "n": 2,
    "pages": 2
@@ -26930,6 +26558,10 @@
    "pages": 2
   },
   "Known limits": {
+   "n": 2,
+   "pages": 2
+  },
+  "Koensayr (rom.zip)": {
    "n": 2,
    "pages": 2
   },
@@ -29787,6 +29419,10 @@
    "n": 2,
    "pages": 2
   },
+  "Rockbox-Y2 (rom_y2.zip)": {
+   "n": 2,
+   "pages": 2
+  },
   "Rockbox-Y2 developer ROM package": {
    "n": 2,
    "pages": 2
@@ -30280,6 +29916,10 @@
    "n": 2,
    "pages": 2,
    "script": true
+  },
+  "Solar (rom_a5.zip)": {
+   "n": 2,
+   "pages": 2
   },
   "Solar 0.1 (c6c0bbe) — stable": {
    "n": 2,
@@ -34194,10 +33834,6 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 273 MB": {
-   "n": 2,
-   "pages": 2
-  },
   "portable · 278 MB": {
    "n": 2,
    "pages": 2
@@ -34210,15 +33846,19 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 356 MB": {
-   "n": 2,
-   "pages": 2
-  },
   "portable · 387 MB": {
    "n": 2,
    "pages": 2
   },
   "portable · 408 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 441 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 442 MB": {
    "n": 2,
    "pages": 2
   },
@@ -34230,15 +33870,15 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 496 MB": {
+  "portable · 500 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 501 MB": {
+  "portable · 506 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 514 MB": {
+  "portable · 524 MB": {
    "n": 2,
    "pages": 2
   },
@@ -34254,11 +33894,11 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 567 MB": {
+  "portable · 587 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 594 MB": {
+  "portable · 589 MB": {
    "n": 2,
    "pages": 2
   },
@@ -34286,11 +33926,35 @@
    "n": 2,
    "pages": 2
   },
-  "portable · 722 MB": {
+  "portable · 648 MB": {
    "n": 2,
    "pages": 2
   },
-  "portable · 767 MB": {
+  "portable · 653 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 696 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 697 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 734 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 755 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 760 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 762 MB": {
    "n": 2,
    "pages": 2
   },
@@ -34311,6 +33975,14 @@
    "pages": 2
   },
   "portable · 820 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 821 MB": {
+   "n": 2,
+   "pages": 2
+  },
+  "portable · 907 MB": {
    "n": 2,
    "pages": 2
   },
@@ -37318,11 +36990,23 @@
    "n": 6,
    "pages": 1
   },
+  "rom_g1.zip": {
+   "n": 6,
+   "pages": 1
+  },
+  "rom_g3.zip": {
+   "n": 6,
+   "pages": 1
+  },
   "runtime enablement uses compiled inventory and explicit Experimental gate; physical qualification pending": {
    "n": 6,
    "pages": 1
   },
   "suspend, usb": {
+   "n": 6,
+   "pages": 1
+  },
+  "system.zip": {
    "n": 6,
    "pages": 1
   },
@@ -37603,6 +37287,10 @@
    "pages": 1
   },
   "no (loader)": {
+   "n": 5,
+   "pages": 1
+  },
+  "rom_240p.zip": {
    "n": 5,
    "pages": 1
   },
@@ -38107,6 +37795,10 @@
    "pages": 1
   },
   "Work list, in this order:": {
+   "n": 4,
+   "pages": 1
+  },
+  "Y1_Themes.zip": {
    "n": 4,
    "pages": 1
   },
@@ -47204,6 +46896,14 @@
    "n": 3,
    "pages": 1
   },
+  "rom_q3.zip": {
+   "n": 3,
+   "pages": 1
+  },
+  "rom_q5.zip": {
+   "n": 3,
+   "pages": 1
+  },
   "see raw metrics": {
    "n": 3,
    "pages": 1
@@ -50893,18 +50593,6 @@
    "n": 2,
    "pages": 1
   },
-  "Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip": {
-   "n": 2,
-   "pages": 1
-  },
-  "Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip": {
-   "n": 2,
-   "pages": 1
-  },
-  "Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip": {
-   "n": 2,
-   "pages": 1
-  },
   "Y2B-201 — Pin and reproduce the ARMv7 build environment - Innioasis Updater": {
    "n": 2,
    "pages": 1
@@ -51897,10 +51585,6 @@
    "n": 2,
    "pages": 1
   },
-  "system.img.zip": {
-   "n": 2,
-   "pages": 1
-  },
   "tab and tick": {
    "n": 2,
    "pages": 1
@@ -51954,6 +51638,10 @@
    "pages": 1
   },
   "uses virtual": {
+   "n": 2,
+   "pages": 1
+  },
+  "voices.zip": {
    "n": 2,
    "pages": 1
   },
@@ -106753,6 +106441,10 @@
    "n": 1,
    "pages": 1
   },
+  "466 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "47 AutoEq profiles of common": {
    "n": 1,
    "pages": 1
@@ -126048,6 +125740,10 @@
    "n": 1,
    "pages": 1
   },
+  "Android 4.2 (Dev) (rom.zip)": {
+   "n": 1,
+   "pages": 1
+  },
   "Android 4.2 (Dev) README": {
    "n": 1,
    "pages": 1
@@ -126057,6 +125753,14 @@
    "pages": 1
   },
   "Android 4.2 (Dev) releases for the Innioasis Y1": {
+   "n": 1,
+   "pages": 1
+  },
+  "Android 4.2 (Dev) · Type B": {
+   "n": 1,
+   "pages": 1
+  },
+  "Android 4.2 (Dev) · Type B (rom_type_b.zip)": {
    "n": 1,
    "pages": 1
   },
@@ -126085,6 +125789,10 @@
    "pages": 1
   },
   "Android 4.4": {
+   "n": 1,
+   "pages": 1
+  },
+  "Android 4.4 (Dev) (rom_y2.zip)": {
    "n": 1,
    "pages": 1
   },
@@ -180447,6 +180155,10 @@
    "n": 1,
    "pages": 1
   },
+  "Linux for Y1 (Dev) (rom.zip)": {
+   "n": 1,
+   "pages": 1
+  },
   "Linux for Y1 (Dev) README": {
    "n": 1,
    "pages": 1
@@ -192952,10 +192664,6 @@
    "pages": 1,
    "script": true
   },
-  "Older Windows install guide": {
-   "n": 1,
-   "pages": 1
-  },
   "Older Windows overview": {
    "n": 1,
    "pages": 1
@@ -195549,6 +195257,22 @@
    "n": 1,
    "pages": 1
   },
+  "Original Software (rom_g5.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Original Software (rom_pr1.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Original Software (rom_r1.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Original Software (rom_sr1.zip)": {
+   "n": 1,
+   "pages": 1
+  },
   "Original Software + Rockbox, Better-Y, Solar, Reborn, Rondo": {
    "n": 1,
    "pages": 1
@@ -195747,6 +195471,14 @@
    "pages": 1
   },
   "Original Software · Linux": {
+   "n": 1,
+   "pages": 1
+  },
+  "Original Software · Type B": {
+   "n": 1,
+   "pages": 1
+  },
+  "Original Software · Type B (rom_type_b.zip)": {
    "n": 1,
    "pages": 1
   },
@@ -211741,6 +211473,378 @@
    "n": 1,
    "pages": 1
   },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.1-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.2-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.3-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.4-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.4.1-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.5-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.5.1-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.6-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.6.1-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.6.2-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.6.3-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.1-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.10-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.11-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.2-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.3-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.4-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.5-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.6-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.7-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.8-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.7.9-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.0-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.1-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.10-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.11-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.12-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.13-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.14-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.15-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.16-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.17-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.19-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.2-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.20-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.21-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.22-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.23-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.24-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.25-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.26-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.27-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.28-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.29-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.3-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.30-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.31-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.33-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.34-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.35-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.36-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.37-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.38-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.39-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.4-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.40-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.41-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.42-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.43-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.5-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.6-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.7-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.8.8-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.0-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.1-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.10-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.11-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.12-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.13-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.14-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.15-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.16-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.2-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.3-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.4-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.5-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.6-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.7-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.2.8-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.12-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.13-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.15-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.16-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.17-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.18-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.19-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.20-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.21-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.22-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-1.0.0-beta.9.3.7-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reborn (Y2Linux) (Y2Linux-49-first-install.zip)": {
+   "n": 1,
+   "pages": 1
+  },
   "Reborn (Y2Linux) README": {
    "n": 1,
    "pages": 1
@@ -219803,6 +219907,10 @@
    "n": 1,
    "pages": 1
   },
+  "Rockbox-Y1 (libs.zip)": {
+   "n": 1,
+   "pages": 1
+  },
   "Rockbox-Y1 240p and 360p builds": {
    "n": 1,
    "pages": 1
@@ -219924,6 +220032,18 @@
    "pages": 1
   },
   "Rockbox-Y2 (Innioasis Y2)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Rockbox-Y2 (Y2-Rockbox-Beta-v0.1.0-V88-InnioasisUpdater.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Rockbox-Y2 (Y2-Rockbox-Beta-v0.2.0-UPDATE-ONLY.zip)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Rockbox-Y2 (Y2-Rockbox-Beta-v0.2.0-Windows-UPDATE-ONLY.zip)": {
    "n": 1,
    "pages": 1
   },
@@ -251310,10 +251430,6 @@
    "n": 1,
    "pages": 1
   },
-  "Updater CE cannot run on those PCs. Use the same firmware with SP Flash Tool instead.": {
-   "n": 1,
-   "pages": 1
-  },
   "Updater CE does the same job with fewer steps, and it keeps your music and Bluetooth pairings. It is only available on 64-bit Windows 10 (1809 or newer), macOS and Linux. A legacy package flash writes the system partition, so copy your music off the player first if you have files you cannot replace.": {
    "n": 1,
    "pages": 1
@@ -258004,19 +258120,11 @@
    "n": 1,
    "pages": 1
   },
-  "Windows XP, 7, 8 or 32-bit": {
-   "n": 1,
-   "pages": 1
-  },
   "Windows XP, Vista, 7, 8 or 8.1, 32-bit or 64-bit. Windows 10 and 11 can use Updater CE from the": {
    "n": 1,
    "pages": 1
   },
   "Windows XP/7/8 (32/64-bit)": {
-   "n": 1,
-   "pages": 1
-  },
-  "Windows XP/7/8 and 32-bit": {
    "n": 1,
    "pages": 1
   },
@@ -262872,6 +262980,378 @@
    "n": 1,
    "pages": 1
   },
+  "Y2Linux-1.0.0-beta.1-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.2-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.3-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.4-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.4.1-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.5-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.5.1-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.6-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.6.1-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.6.2-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.6.3-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.1-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.10-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.11-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.2-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.3-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.4-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.5-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.6-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.7-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.8-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.7.9-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.0-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.1-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.10-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.11-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.12-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.13-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.14-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.15-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.16-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.17-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.19-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.2-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.20-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.21-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.22-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.23-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.24-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.25-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.26-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.27-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.28-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.29-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.3-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.30-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.31-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.33-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.34-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.35-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.36-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.37-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.38-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.39-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.4-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.40-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.41-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.42-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.43-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.5-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.6-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.7-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.8.8-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.0-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.1-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.10-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.11-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.12-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.13-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.14-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.15-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.16-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.2-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.3-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.4-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.5-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.6-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.7-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.2.8-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.12-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.13-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.15-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.16-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.17-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.18-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.19-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.20-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.21-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.22-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-1.0.0-beta.9.3.7-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Linux-49-first-install.zip": {
+   "n": 1,
+   "pages": 1
+  },
   "Y2Linux/Y2PlayerNative blueprint": {
    "n": 1,
    "pages": 1
@@ -262909,6 +263389,10 @@
    "pages": 1
   },
   "Y2P-400 — M4 end-user production power platform <!-- knowledge-base-scope: historical-issue-specification -- Historical record. The dates, candidate i": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2Player (system.img.zip)": {
    "n": 1,
    "pages": 1
   },
@@ -297672,6 +298156,10 @@
    "n": 1,
    "pages": 1
   },
+  "libs.zip": {
+   "n": 1,
+   "pages": 1
+  },
   "libsbc 2.0": {
    "n": 1,
    "pages": 1
@@ -308564,7 +309052,15 @@
    "n": 1,
    "pages": 1
   },
+  "portable · 273 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "portable · 343 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 356 MB": {
    "n": 1,
    "pages": 1
   },
@@ -308604,6 +309100,18 @@
    "n": 1,
    "pages": 1
   },
+  "portable · 496 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 501 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 514 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "portable · 520 MB": {
    "n": 1,
    "pages": 1
@@ -308624,7 +309132,15 @@
    "n": 1,
    "pages": 1
   },
+  "portable · 567 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "portable · 576 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 594 MB": {
    "n": 1,
    "pages": 1
   },
@@ -308688,11 +309204,19 @@
    "n": 1,
    "pages": 1
   },
+  "portable · 722 MB": {
+   "n": 1,
+   "pages": 1
+  },
   "portable · 749 MB": {
    "n": 1,
    "pages": 1
   },
   "portable · 750 MB": {
+   "n": 1,
+   "pages": 1
+  },
+  "portable · 767 MB": {
    "n": 1,
    "pages": 1
   },
@@ -314917,6 +315441,22 @@
    "pages": 1
   },
   "rom.zip anatomy, scatter files, Class A update contracts and the release checklist.": {
+   "n": 1,
+   "pages": 1
+  },
+  "rom_g5.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "rom_pr1.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "rom_r1.zip": {
+   "n": 1,
+   "pages": 1
+  },
+  "rom_sr1.zip": {
    "n": 1,
    "pages": 1
   },
@@ -334925,11 +335465,6 @@
    "script": true
   },
   "Download preparation failed, using the original release:": {
-   "n": 1,
-   "pages": 1,
-   "script": true
-  },
-  "Download started": {
    "n": 1,
    "pages": 1,
    "script": true
