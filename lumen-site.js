@@ -150,9 +150,9 @@
         },
         stockY1: {
             version: [3, 0, 7],
-            label: "Show pre-3.0.7 stock firmware / nightly builds",
+            label: "Include older and test versions",
             help: "Y1 stock firmware older than 3.0.7 and nightly builds are hidden by default. Tick to include them.",
-            hint: "Tick the pre-3.0.7 stock firmware / nightly-builds option to see older builds",
+            hint: "Tick this to include older releases and nightly builds.",
             warning: {
                 title: "Original Software Compatibility Warning",
                 body: "Original Software releases older than 3.0.7 are not compatible with Y1 units sold with Innioasis OS 3.0.7. Flashing an older build on these units will prevent them from booting until a newer version is reinstalled.\n\nAre you sure you want to show Original Software releases older than 3.0.7?"
@@ -1323,15 +1323,38 @@
         if (panel) panel.hidden = true;
         var button = document.getElementById("lumen-download-progress-dismiss");
         if (button) button.hidden = true;
+        var hostRow = document.getElementById("lumen-download-progress-host");
+        if (hostRow && hostRow.parentNode) hostRow.parentNode.removeChild(hostRow);
         restorePanelLinks();
     }
 
-    /* Progress belongs to the release that was clicked: put the box in that
-       row and move the row's zip links aside instead of scrolling the page. */
+    /* The install cell is the narrow column. A progress box dropped in there
+       wraps one word per line. The strip belongs under the whole release row. */
     function mountDownloadPanel(wrap, trigger) {
         restorePanelLinks();
+        var row = trigger && trigger.closest ? trigger.closest("tr") : null;
+        if (row && row.parentNode) {
+            var hostRow = document.getElementById("lumen-download-progress-host");
+            if (!hostRow) {
+                hostRow = document.createElement("tr");
+                hostRow.id = "lumen-download-progress-host";
+                hostRow.className = "lumen-download-progress-host";
+                var cell = document.createElement("td");
+                cell.className = "lumen-download-progress-cell";
+                hostRow.appendChild(cell);
+            }
+            var cell = hostRow.querySelector("td");
+            if (cell) cell.colSpan = row.cells ? row.cells.length : 3;
+            row.parentNode.insertBefore(hostRow, row.nextSibling);
+            cell.appendChild(wrap);
+            Array.prototype.forEach.call(row.querySelectorAll("a[data-zip-url], a[href*='.zip']"), function (node) {
+                node.hidden = true;
+                panelHiddenLinks.push(node);
+            });
+            return;
+        }
         var host = trigger && trigger.isConnected
-            ? (trigger.closest("td, .lumen-release-card, li, .lumen-actions") || trigger.parentElement)
+            ? (trigger.closest(".lumen-release-card, li, .lumen-actions") || trigger.parentElement)
             : null;
         if (!host) {
             var container = document.querySelector(".lumen-catalog-container") || document.querySelector("main") || document.body;
@@ -1408,18 +1431,26 @@
                 ? Math.min(99, Math.round((loaded / totalBytesExpected) * 100))
                 : 0;
             if (bar) bar.style.width = pct + "%";
-            if (label) label.textContent = "Downloading…";
+            if (label) label.textContent = zipName || "Downloading…";
             if (metrics) {
+                var eta = "";
+                var rate = parseFloat(speedMBs);
+                if (totalBytesExpected > loaded && rate > 0) {
+                    var remain = (totalBytesExpected - loaded) / (rate * 1024 * 1024);
+                    eta = remain < 90
+                        ? " · " + Math.max(1, Math.round(remain)) + "s"
+                        : " · " + Math.max(1, Math.round(remain / 60)) + "m";
+                }
                 metrics.textContent = totalBytesExpected > 0
-                    ? pct + "% (" + speedMBs + " MB/s)"
-                    : (loaded / 1024 / 1024).toFixed(1) + " MB (" + speedMBs + " MB/s)";
+                    ? pct + "% · " + speedMBs + " MB/s" + eta
+                    : (loaded / 1024 / 1024).toFixed(1) + " MB · " + speedMBs + " MB/s";
             }
         }
 
         function markCompleted(saveName, osLabel, streamed) {
             isPackagingDone = true;
             if (bar) bar.style.width = "100%";
-            if (label) label.textContent = "Firmware zip downloaded";
+            if (label) label.textContent = saveName || "Download finished";
             if (metrics) metrics.textContent = streamed && saveName ? saveName : "Check your Downloads folder";
             if (dismissBtn) {
                 dismissBtn.hidden = false;
@@ -1570,7 +1601,7 @@
             if (heroLead) heroLead.textContent = "Browse verified Original Software and community custom firmwares for every Innioasis player (Y1, Y2, G1, G3, G5, R1, PR1) and every Timmkoo player (A5, Q5, Q3). Download standalone packages or install directly with Updater CE; Timmkoo firmware installs from the ZIP and RAR packages Timmkoo supplies.";
         }
         /* Nightly / pre-release filter, mirroring the Updater app's
-           "Show nightly builds" checkbox. Off by default: stable releases
+           "Include older and test versions" checkbox. Off by default: stable releases
            only. Tick it to see preview, nightly, and RC builds. The URL
            ?nightly=1 param wins so filtered views stay shareable; without
            it we reuse the same preference as the home page table. */
@@ -1586,7 +1617,7 @@
         var nightlyCopy = nightly && nightly.parentNode ? nightly.parentNode.querySelector("span") : null;
         var nightlyHelp = document.getElementById("nightly-help");
         var GENERIC_FILTER_COPY = {
-            label: "Show nightly builds",
+            label: "Include older and test versions",
             help: "Show preview and nightly builds alongside stable releases."
         };
         function syncNightlyCopy() {
