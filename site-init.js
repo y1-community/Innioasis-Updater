@@ -469,10 +469,17 @@
     var ACCENT_MATCH_COOKIE = "innioasis-accent-match-pc";
     var ACCENT_CE_KEY = "innioasis-referred-by-ce";
     var ACCENT_CE_COOKIE = "innioasis-referred-by-ce";
+    /* Presets are quick picks, not the whole gamut: the pad and the hex field
+       still reach every colour. Black and white are not accents - a black
+       swatch vanishes on a dark surface and a white one leaves nothing
+       readable on paper - so neither is ever offered as a preset. */
+    var ACCENT_POLAR = ["#000000", "#ffffff"];
     var ACCENT_SWATCHES = [
         "#4f8cff", "#7c5cff", "#12b5a5", "#2fb344", "#f0a01a",
         "#ff6b35", "#e5484d", "#e93d82", "#8d6e63", "#6b7280"
-    ];
+    ].filter(function (hex) {
+        return ACCENT_POLAR.indexOf(String(hex).toLowerCase()) === -1;
+    });
     var ACCENT_TOKENS = [
         "--lumen-accent", "--lumen-accent-strong", "--lumen-accent-wash",
         "--lumen-on-accent", "--lumen-on-accent-strong", "--lumen-accent-ink",
@@ -929,8 +936,6 @@
             '<span class="lumen-accent-pad-thumb" id="lumen-accent-pad-thumb"></span></div>' +
             '<label class="lumen-accent-row">Hex' +
             '<input type="text" id="lumen-accent-hex" class="lumen-accent-hex" value="" placeholder="#4f8cff" spellcheck="false" autocapitalize="off" maxlength="9" aria-label="Accent hex code" inputmode="text"></label>' +
-            '<label class="lumen-accent-row">' +
-            '<input type="color" id="lumen-accent-input" value="#4f8cff" aria-label="Accent colour"></label>' +
             '<div class="lumen-accent-swatches" role="group" aria-label="Preset accents">' + swatches + '</div>' +
             '<label class="lumen-accent-row lumen-accent-range-row" for="lumen-accent-hue">Hue' +
             '<input type="range" id="lumen-accent-hue" class="lumen-accent-hue" min="0" max="359" step="1" value="212" aria-label="Accent hue"></label>' +
@@ -953,11 +958,11 @@
         var accent = currentAccent();
         var dot = document.getElementById("lumen-accent-dot");
         if (dot) dot.style.background = accent || "";
-        var input = document.getElementById("lumen-accent-input");
-        if (input) input.value = accent || "#4f8cff";
         var hexField = document.getElementById("lumen-accent-hex");
         if (hexField && document.activeElement !== hexField) hexField.value = accent || "";
-        var swatches = picker.querySelectorAll(".lumen-accent-swatch");
+        /* The tray moves into <body> once it opens, so the presets are not
+           always inside the wrapper. */
+        var swatches = document.querySelectorAll(".lumen-accent-swatch");
         for (var i = 0; i < swatches.length; i++) {
             swatches[i].setAttribute("aria-pressed",
                 swatches[i].getAttribute("data-accent-value") === accent ? "true" : "false");
@@ -984,7 +989,6 @@
         if (!picker) return;
         var toggle = document.getElementById("lumen-accent-toggle");
         var tray = document.getElementById("lumen-accent-tray");
-        var input = document.getElementById("lumen-accent-input");
         var hexField = document.getElementById("lumen-accent-hex");
         var matchInput = document.getElementById("lumen-accent-match");
         var reset = document.getElementById("lumen-accent-reset");
@@ -1037,13 +1041,6 @@
         /* A colour the visitor picks is their own, so it turns the PC match off:
            otherwise the next page Updater CE opens sees the match still ticked
            and puts the desktop colour back over the one they just chose. */
-        if (input) {
-            input.addEventListener("input", function () { applyAccent(input.value, false); });
-            input.addEventListener("change", function () {
-                setMatchPcTheme(false);
-                applyAccent(input.value, true);
-            });
-        }
         function commitHex() {
             if (!hexField) return;
             var next = normalizeAccent(hexField.value);
@@ -1091,12 +1088,17 @@
                 applyAccent(hsvToHex(pickerHsv.h, pickerHsv.s, pickerHsv.v), true);
             });
         }
-        picker.addEventListener("click", function (event) {
+        /* The tray is reparented into <body> when it opens, so a listener on
+           the wrapper never sees a preset click. Delegate on the tray itself
+           and, for the moment before it is moved, on the wrapper too. */
+        function useSwatch(event) {
             var swatch = event.target && event.target.closest ? event.target.closest(".lumen-accent-swatch") : null;
             if (!swatch) return;
             setMatchPcTheme(false);
             applyAccent(swatch.getAttribute("data-accent-value"), true);
-        });
+        }
+        if (tray) tray.addEventListener("click", useSwatch);
+        picker.addEventListener("click", useSwatch);
         if (matchInput) {
             matchInput.addEventListener("change", function () {
                 setMatchPcTheme(Boolean(matchInput.checked));
@@ -1396,7 +1398,7 @@
         } catch (_) {}
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = base + "site-downloads.js?v=20261109dl";
+        node.src = base + "site-downloads.js?v=20261110install";
         node.defer = true;
         document.head.appendChild(node);
     }
