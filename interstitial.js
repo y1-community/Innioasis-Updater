@@ -59,6 +59,39 @@
     th: "กำลังพาคุณไปที่",
     sv: "Du skickas till"
   };
+  /* Which site the visitor is leaving. The naming follows the header switcher:
+     the archive, Updater CE and the Themes Gallery are three products on two
+     hosts, and a visitor who clicked a Reddit link on a gallery page should not
+     be told they are leaving "Innioasis". The app passes ?from=updater-ce so a
+     link inside release notes names the app too. */
+  var BRANDS = {
+    "updater-ce": "Updater CE",
+    "themes-gallery": "Themes Gallery",
+    "firmware-archive": "Firmware archive"
+  };
+  var LEAVING = {
+    en: "You're leaving {brand}",
+    de: "Du verlässt {brand}",
+    es: "Vas a salir de {brand}",
+    fr: "Vous quittez {brand}",
+    it: "Stai lasciando {brand}",
+    pt: "Está a sair de {brand}",
+    "pt-br": "Você está saindo de {brand}",
+    nl: "Je verlaat {brand}",
+    pl: "Opuszczasz {brand}",
+    ru: "Вы покидаете {brand}",
+    ja: "{brand}を離れます",
+    ko: "{brand}에서 나갑니다",
+    "zh-cn": "你即将离开{brand}",
+    "zh-tw": "你即將離開{brand}",
+    uk: "Ви залишаєте {brand}",
+    tr: "{brand} sitesinden ayrılıyorsunuz",
+    ar: "أنت تغادر {brand}",
+    vi: "Bạn đang rời {brand}",
+    id: "Anda meninggalkan {brand}",
+    th: "คุณกำลังออกจาก {brand}",
+    sv: "Du lämnar {brand}"
+  };
   var METHODS = {
     kofi: "https://ko-fi.com/teamslide",
     bmc: "https://buymeacoffee.com/ryanspecter",
@@ -72,6 +105,21 @@
     revolut: "Revolut",
     patreon: "Patreon"
   };
+
+  function brandFor(params) {
+    var raw = "";
+    try {
+      raw = String((params && (params.get("from") || params.get("brand"))) || "").toLowerCase().trim();
+    } catch (_) {}
+    if (BRANDS[raw]) return BRANDS[raw];
+    if (/updater|app|release/.test(raw)) return BRANDS["updater-ce"];
+    if (/theme|gallery/.test(raw)) return BRANDS["themes-gallery"];
+    if (/archive|firmware|site/.test(raw)) return BRANDS["firmware-archive"];
+    var attr = document.body ? document.body.getAttribute("data-interstitial-brand") : "";
+    if (attr) return attr;
+    if (/^themes\./i.test(window.location.hostname || "")) return BRANDS["themes-gallery"];
+    return BRANDS["firmware-archive"];
+  }
 
   function cleanBase() {
     var me = document.currentScript || document.querySelector('script[src*="interstitial.js"]');
@@ -102,6 +150,7 @@
       url.searchParams.delete("to");
       url.searchParams.delete("url");
       url.searchParams.delete("method");
+      url.searchParams.delete("from");
       window.history.replaceState(null, "", url.pathname + (url.search ? url.search : "") + url.hash);
     } catch (_) {}
   }
@@ -192,9 +241,13 @@
       }
     }
 
+    var heading = document.querySelector(".interstitial-main h1");
     if (kind === "donate") {
-      var heading = document.querySelector(".interstitial-main h1");
       if (heading) heading.textContent = THANKS[lang] || THANKS[lang.split("-")[0]] || THANKS.en;
+    } else if (heading) {
+      var template = LEAVING[lang] || LEAVING[lang.split("-")[0]] || LEAVING.en;
+      heading.textContent = template.replace("{brand}", brandFor(params));
+      document.title = heading.textContent + " - Innioasis";
     }
     stripInterstitialParams();
 
