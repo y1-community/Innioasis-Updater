@@ -63,15 +63,23 @@
   <link rel="alternate" hreflang="en" href="https://innioasis.app/privacy.html">
   <link rel="alternate" hreflang="de" href="https://innioasis.app/privacy_de.html">
   <link rel="alternate" hreflang="ja" href="https://innioasis.app/privacy_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/privacy_jp.html">
   <link rel="alternate" hreflang="es" href="https://innioasis.app/privacy_es.html">
   <link rel="alternate" hreflang="fr" href="https://innioasis.app/privacy_fr.html">
   <link rel="alternate" hreflang="it" href="https://innioasis.app/privacy_it.html">
   <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/privacy_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/privacy_pt.html">
+  <link rel="alternate" hreflang="pt-br" href="https://innioasis.app/privacy_pt-br.html">
   <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/privacy_pt-PT.html">
+  <link rel="alternate" hreflang="pt-pt" href="https://innioasis.app/privacy_pt-pt.html">
   <link rel="alternate" hreflang="ru" href="https://innioasis.app/privacy_ru.html">
   <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/privacy_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/privacy_zh.html">
+  <link rel="alternate" hreflang="zh-cn" href="https://innioasis.app/privacy_zh-cn.html">
   <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/privacy_zh-TW.html">
+  <link rel="alternate" hreflang="zh-tw" href="https://innioasis.app/privacy_zh-tw.html">
   <link rel="alternate" hreflang="ko" href="https://innioasis.app/privacy_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/privacy_kr.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/privacy_ar.html">
   <link rel="alternate" hreflang="nl" href="https://innioasis.app/privacy_nl.html">
   <link rel="alternate" hreflang="pl" href="https://innioasis.app/privacy_pl.html">
@@ -117,6 +125,11 @@
     <p>การวิเคราะห์อยู่ในขณะนี้ <span class="privacy-state" id="privacy-state">บน</span> สำหรับเบราว์เซอร์นี้</p>
     <p><button type="button" class="btn" id="privacy-open-settings">ปิดการวิเคราะห์</button></p>
 
+    <h2 id="accent">สีเน้นจาก Updater CE</h2>
+    <p>เมื่อคุณเปิดไซต์นี้จาก Innioasis Updater CE แอปจะส่งสีเน้นที่คุณเลือกไว้ในแอปมาให้ ไซต์จะเก็บสีนั้นและสิทธิ์ในการใช้ไว้ในอุปกรณ์ของคุณเท่านั้น</p>
+    <p>สถานะ: <span class="privacy-state" id="privacy-accent-state">อนุญาต</span></p>
+    <p><label class="privacy-toggle"><input type="checkbox" id="privacy-accent-ignore"> ไม่สนใจสีเน้นจาก Updater CE</label></p>
+
     <h2>การบริจาค</h2>
     <p>ปุ่มบริจาคเชื่อมโยงกับ Ko-fi, Buy Me a Coffee, PayPal, Revolut, Patreon และ Boosty บริการเหล่านั้นจัดการการชำระเงินและข้อมูลของตนเอง ไซต์นี้ไม่เคยเห็นรายละเอียดบัตรของคุณ</p>
 
@@ -148,6 +161,38 @@
     (function () {
       var button = document.getElementById('privacy-open-settings');
       var state = document.getElementById('privacy-state');
+      /* Accent colour from Updater CE: same preference the site reads, set
+         here because the picker module is not loaded on this page. */
+      (function () {
+        var box = document.getElementById('privacy-accent-ignore');
+        var stateEl = document.getElementById('privacy-accent-state');
+        var KEY = 'innioasis-ignore-ce-accent';
+        function read() {
+          try {
+            if (typeof window.y1IgnoreCeAccent === 'function') return Boolean(window.y1IgnoreCeAccent());
+            if (window.localStorage.getItem(KEY) === '1') return true;
+            if (document.cookie.indexOf(KEY + '=1') !== -1) return true;
+          } catch (e) {}
+          return false;
+        }
+        function save(ignore) {
+          try { window.localStorage.setItem(KEY, ignore ? '1' : '0'); } catch (e) {}
+          try {
+            document.cookie = KEY + '=' + (ignore ? '1' : '0') + '; path=/; max-age=' +
+              (ignore ? 34560000 : 0) + '; SameSite=Lax';
+          } catch (e) {}
+          if (typeof window.y1SetIgnoreCeAccent === 'function') {
+            try { window.y1SetIgnoreCeAccent(ignore); } catch (e) {}
+          }
+        }
+        function render() {
+          if (stateEl) stateEl.textContent = (box && box.checked) ? "ไม่สนใจ" : "อนุญาต";
+        }
+        if (!box) return;
+        box.checked = read();
+        box.addEventListener('change', function () { save(box.checked); render(); });
+        render();
+      })();
       function read() {
         if (window.INNIOASIS_PRIVACY && typeof window.INNIOASIS_PRIVACY.read === 'function') {
           return window.INNIOASIS_PRIVACY.read();

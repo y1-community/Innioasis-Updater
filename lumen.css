@@ -1167,8 +1167,8 @@ body.site-themes-app .nav-tools, #nav-root nav, #nav-root .nav-container { overf
 body.site-themes-app #nav-root nav { position: sticky; top: 0; width: 100%; }
 
 /* Accent colour picker. One swatch in the header shows the accent in use; the
-   tray holds the picker, a few presets and -- only after Updater CE has handed
-   a colour over -- "Match my PC's theme colours". */
+   tray holds the picker, a few presets and -- only while the colour on screen
+   came from Updater CE -- a line saying so and a link back. */
 .lumen-accent-wrap { position: relative; display: inline-flex; align-items: center; }
 .lumen-accent-toggle {
     display: inline-flex; align-items: center; justify-content: center;
@@ -1250,16 +1250,32 @@ body.site-themes-app #nav-root nav { position: sticky; top: 0; width: 100%; }
     border-radius: 8px; background: var(--swatch); cursor: pointer;
 }
 .lumen-accent-swatch[aria-pressed="true"] { outline: 2px solid var(--lumen-text, #f3f5f9); outline-offset: 2px; }
-.lumen-accent-match {
-    display: flex; align-items: flex-start; gap: .45rem;
+/* The accent Updater CE handed over: say so, and offer one link back. A
+   checkbox never belonged here -- a browser cannot read the PC accent, so
+   "match my PC" could only promise something the page could not do. */
+.lumen-accent-import {
     margin: .5rem 0; padding-top: .5rem;
     border-top: 1px solid var(--lumen-line, rgba(255, 255, 255, .1));
     font-family: var(--lumen-body, system-ui, sans-serif);
-    font-size: .78rem; font-weight: 600; line-height: 1.35;
-    color: var(--lumen-text, #f3f5f9); cursor: pointer;
 }
-.lumen-accent-match[hidden] { display: none; }
-.lumen-accent-match input { margin: .1rem 0 0; accent-color: var(--lumen-accent, #4f8cff); }
+.lumen-accent-import[hidden] { display: none; }
+.lumen-accent-import-label {
+    margin: 0 0 .15rem; font-size: .78rem; font-weight: 600; line-height: 1.35;
+    color: var(--lumen-text, #f3f5f9);
+}
+.lumen-accent-revert {
+    padding: 0; border: 0; background: none;
+    color: var(--lumen-muted, #a8b0bf); cursor: pointer;
+    font-family: inherit; font-size: .78rem; font-weight: 600;
+    text-align: left; text-decoration: underline; text-underline-offset: 2px;
+}
+.lumen-accent-revert:hover { color: var(--lumen-accent, #4f8cff); }
+
+/* A privacy choice the visitor turns on or off, on the privacy page. */
+.privacy-toggle {
+    display: inline-flex; align-items: center; gap: .45rem; cursor: pointer;
+}
+.privacy-toggle input { margin: 0; accent-color: var(--lumen-accent, #4f8cff); }
 .lumen-accent-reset {
     display: inline-flex; align-items: center; justify-content: center;
     width: 100%; min-height: 32px; padding: .35rem .5rem;
