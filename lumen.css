@@ -1283,3 +1283,29 @@ body.site-themes-app #nav-root nav { position: sticky; top: 0; width: 100%; }
     }
     .lumen-carousel-credit { padding-inline: .75rem; }
 }
+
+/* —— Accent is a surface, not a text colour, when it sits on a control. —— */
+body.site-themes-app .lumen-button:hover:not(.lumen-button--primary),
+body.site-themes-app .lumen-button--secondary:hover,
+body.site-themes-app .lumen-secondary-action:hover,
+.btn:hover:not(.btn-primary),
+.guide-action-btn:hover {
+    background: var(--lumen-accent) !important;
+    border-color: var(--lumen-accent) !important;
+    color: var(--lumen-on-accent, var(--lumen-ink)) !important;
+}
+
+.lumen-download-progress-bar-fill { background: var(--lumen-accent); }
+
+.lumen-spinner,
+.lumen-loading-spinner,
+.lumen-throbber,
+.spinner {
+    border-color: var(--lumen-line-strong);
+    border-top-color: var(--lumen-accent);
+}
+
+/* The tray keeps one hue field and lets the eyedropper sit on its own row. */
+.lumen-accent-range-row { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.lumen-accent-range-row .lumen-accent-hue { flex: 1 1 auto; width: auto; margin: 0; }
+.lumen-accent-swatches { margin-top: .25rem; }

@@ -241,6 +241,27 @@
         } catch (_) {}
     })();
 
+    /* The footer dock is open or closed. The URL wins for the first frame,
+       then the shared cookie, so a reader who closed it on one site does not
+       see it open again on the next. */
+    (function rememberDock() {
+        try {
+            var search = (global.location && global.location.search) || "";
+            var raw = String(new URLSearchParams(search).get("dock") || new URLSearchParams(search).get("footer") || "").trim().toLowerCase();
+            var closed = null;
+            if (raw === "closed" || raw === "0" || raw === "off" || raw === "hidden") closed = true;
+            else if (raw === "open" || raw === "1" || raw === "on") closed = false;
+            else {
+                var stored = getSharedCookie("innioasis-dock");
+                if (stored === "closed") closed = true;
+                else if (stored === "open") closed = false;
+            }
+            if (closed === null) return;
+            try { global.sessionStorage.setItem("y1-dock-dismissed", closed ? "1" : "0"); } catch (_) {}
+            setSharedCookie("innioasis-dock", closed ? "closed" : "open", 365);
+        } catch (_) {}
+    })();
+
     /* Privacy consent. The site uses Google Analytics (via Google Tag Manager)
        and Cloudflare to measure and optimise performance and protect the site
        from attacks. Local storage remembers the visitor's own theme choice
@@ -507,7 +528,12 @@
             "background:var(--lumen-accent,#2563eb)!important;}",
             ".lumen-tab.is-active,.tab.is-active,.lumen-chip.is-active,.chip.is-active{",
             "border-color:var(--lumen-accent,#2563eb)!important;",
-            "color:var(--lumen-accent,#2563eb)!important;}"
+            "color:var(--lumen-accent,#2563eb)!important;}",
+            "a.btn,button.btn,.lumen-button--primary,.btn-primary,.gallery-action-row>.btn{",
+            "color:var(--lumen-on-accent,#fff)!important;}",
+            "h1,h2,h3,.site-display,.section-display,.lumen-brand-title{",
+            "color:var(--lumen-accent,#2563eb);}",
+            ".y1-dock-icon,.y1-dock-reopen-icon{color:var(--lumen-accent,#2563eb)!important;}"
         ].join("");
         try {
             (document.head || document.documentElement).appendChild(style);
@@ -839,16 +865,14 @@
             '<p class="lumen-accent-heading">Accent colour</p>' +
             '<div class="lumen-accent-pad" id="lumen-accent-pad" role="slider" aria-label="Saturation and brightness" aria-valuemin="0" aria-valuemax="100">' +
             '<span class="lumen-accent-pad-thumb" id="lumen-accent-pad-thumb"></span></div>' +
-            '<label class="lumen-accent-row">Hue' +
-            '<input type="range" id="lumen-accent-hue" class="lumen-accent-hue" min="0" max="360" step="1" value="220" aria-label="Hue"></label>' +
             '<label class="lumen-accent-row">Hex' +
             '<input type="text" id="lumen-accent-hex" class="lumen-accent-hex" value="" placeholder="#4f8cff" spellcheck="false" autocapitalize="off" maxlength="9" aria-label="Accent hex code" inputmode="text"></label>' +
             '<label class="lumen-accent-row">' +
             '<input type="color" id="lumen-accent-input" value="#4f8cff" aria-label="Accent colour"></label>' +
-            '<div class="lumen-accent-swatches">' + swatches + '</div>' +
-            '<label class="lumen-accent-row lumen-accent-range-row">Hue' +
+            '<div class="lumen-accent-swatches" role="group" aria-label="Preset accents">' + swatches + '</div>' +
+            '<label class="lumen-accent-row lumen-accent-range-row" for="lumen-accent-hue">Hue' +
             '<input type="range" id="lumen-accent-hue" class="lumen-accent-hue" min="0" max="359" step="1" value="212" aria-label="Accent hue"></label>' +
-            '<button type="button" class="lumen-accent-eyedrop" id="lumen-accent-eyedrop" hidden>Pick a colour from the screen</button>' +
+            '<button type="button" class="lumen-accent-eyedrop" id="lumen-accent-eyedrop" hidden aria-label="Pick a colour from the screen">Pick a colour from the screen</button>' +
             '<label class="lumen-accent-match" id="lumen-accent-match-row" hidden>' +
             '<input type="checkbox" id="lumen-accent-match"><span>Match my PC\'s theme colours</span></label>' +
             '<button type="button" class="lumen-accent-reset" id="lumen-accent-reset">Use the site default</button>' +
@@ -1131,6 +1155,8 @@
                 "font-scale",
                 "fs",
                 "lumen-font-scale",
+                "dock",
+                "footer",
                 "utm_source",
                 "utm_medium",
                 "utm_campaign",
