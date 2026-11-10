@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-10T22:50:56Z",
+  "generated_at": "2026-11-10T23:38:28Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -296,11 +296,11 @@
     },
     "y1-community/g1-stock-rom-mirror": {
       "source_repo": "y1-community/g1-stock-rom",
-      "updated_at": "2026-11-08T20:41:39Z"
+      "updated_at": "2026-11-10T23:25:06Z"
     },
     "y1-community/g3-stock-rom-mirror": {
       "source_repo": "y1-community/g3-stock-rom",
-      "updated_at": "2026-11-08T20:33:09Z"
+      "updated_at": "2026-11-10T23:15:26Z"
     },
     "y1-community/g5-stock-rom-mirror": {
       "source_repo": "y1-community/g5-stock-rom",
@@ -348,7 +348,7 @@
     },
     "y1-community/y1_launcher-mirror": {
       "source_repo": "ismileblue/y1_launcher",
-      "updated_at": "2026-11-08T20:45:25Z"
+      "updated_at": "2026-11-10T23:23:36Z"
     },
     "y1-community/y2-ata-rom-mirror": {
       "source_repo": "y1-community/y2-ata-rom",
@@ -363,8 +363,8 @@
       "updated_at": "2026-11-10T13:14:49Z"
     },
     "y1-community/y2player-mirror": {
-      "source_repo": "schulzcode/y2player",
-      "updated_at": "2026-11-10T22:50:56Z"
+      "source_repo": "schulzcode/Y2Player",
+      "updated_at": "2026-11-10T22:59:09Z"
     }
   }
 }
