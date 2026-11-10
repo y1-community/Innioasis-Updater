@@ -28,6 +28,7 @@ import argparse
 import datetime as dt
 import pathlib
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 
@@ -63,10 +64,6 @@ NOINDEX_RE = re.compile(
 LAST_RE = re.compile(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>")
 
 
-def rel_for(path: pathlib.Path) -> str:
-    return path.relative_to(ROOT).as_posix()
-
-
 def url_for(rel: str) -> str:
     if rel == "index.html":
         return SITE + "/"
@@ -75,37 +72,71 @@ def url_for(rel: str) -> str:
     return SITE + "/" + rel
 
 
-def is_noindex(path: pathlib.Path) -> bool:
-    try:
-        return bool(NOINDEX_RE.search(path.read_text(encoding="utf-8", errors="ignore")[:6000]))
-    except OSError:
-        return False
+def tracked_html() -> list[str]:
+    """Every HTML path in git, including pairs that differ only by case.
+
+    A directory walk drops one of ``page_pt-BR.html`` and ``page_pt-br.html``
+    on a case-insensitive disk. Both files are published, so the list has to
+    come from the index.
+    """
+    raw = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT)
+    return sorted(
+        path for path in raw.decode("utf-8", "surrogateescape").split("\0")
+        if path.endswith(".html")
+    )
 
 
-def locale_dirs() -> set[str]:
-    found = set()
-    for child in ROOT.iterdir():
-        if child.is_dir() and child.name.lower() not in NOT_LOCALES:
-            if re.fullmatch(r"[a-z]{2,3}(?:-[A-Za-z0-9]{1,8})?", child.name):
-                found.add(child.name)
+def blob_prefixes(rels: list[str], limit: int = 6000) -> dict[str, str]:
+    if not rels:
+        return {}
+    proc = subprocess.Popen(
+        ["git", "cat-file", "--batch"],
+        cwd=ROOT,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+    )
+    assert proc.stdin is not None and proc.stdout is not None
+    found: dict[str, str] = {}
+    for rel in rels:
+        proc.stdin.write(f"HEAD:{rel}\n".encode("utf-8", "surrogateescape"))
+        proc.stdin.flush()
+        header = proc.stdout.readline()
+        if b" missing" in header:
+            found[rel] = ""
+            continue
+        size = int(header.split()[-1])
+        data = proc.stdout.read(size)
+        proc.stdout.read(1)
+        found[rel] = data[:limit].decode("utf-8", "ignore")
+    proc.stdin.close()
+    proc.wait()
     return found
 
 
-def static_pages() -> list[str]:
+def locale_dirs(pages: list[str]) -> set[str]:
+    found = set()
+    for rel in pages:
+        head = rel.split("/", 1)[0]
+        if "/" in rel and head.lower() not in NOT_LOCALES:
+            if re.fullmatch(r"[A-Za-z]{2,3}(?:-[A-Za-z0-9]{1,8})?", head):
+                found.add(head)
+    return found
+
+
+def static_pages(prefixes: dict[str, str]) -> list[str]:
     pages = []
-    for path in ROOT.rglob("*.html"):
-        rel = rel_for(path)
+    for rel in prefixes:
         parts = rel.split("/")
         if any(part in SKIP_DIRS for part in parts[:-1]):
             continue
         if rel in SKIP_FILES or rel.startswith("404") or parts[0].startswith("."):
             continue
-        if path.name.startswith("theme_downloader"):
+        if parts[-1].startswith("theme_downloader"):
             continue
-        if is_noindex(path):
+        if NOINDEX_RE.search(prefixes[rel]):
             continue
         pages.append(rel)
-    return sorted(pages)
+    return pages
 
 
 def split_locale(rel: str, dirs: set[str]) -> tuple[str, str] | None:
@@ -211,9 +242,10 @@ def render_index(children: list[tuple[str, str]]) -> str:
 
 
 def build() -> dict[pathlib.Path, str]:
-    dirs = locale_dirs()
+    prefixes = blob_prefixes(tracked_html())
+    dirs = locale_dirs(list(prefixes))
     known = lastmod_map()
-    pages = static_pages()
+    pages = static_pages(prefixes)
 
     main: list[tuple[str, str, str, str]] = []
     localized: list[tuple[str, str, str, str]] = []
