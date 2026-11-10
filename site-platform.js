@@ -48,7 +48,22 @@
         }
     };
 
+    /* site-legacy.js hides the Updater CE install links on Windows XP through
+       8.1 and on 32-bit Windows, where the app cannot run. Highlighting a
+       Windows install guide there would point at a download that does not
+       work, so this shell stands down for that visit. */
+    function legacyVisitor() {
+        try {
+            if (document.documentElement.getAttribute("data-windows-legacy") === "true") return true;
+            var marker = global.INNIOASIS_LEGACY;
+            return Boolean(marker && marker.isLegacy);
+        } catch (_) {
+            return false;
+        }
+    }
+
     function detectPlatform() {
+        if (legacyVisitor()) return null;
         var ua = navigator.userAgent || "";
         if (/android|iphone|ipad|ipod|iemobile|windows phone|mobile|tablet|kindle|silk|cros|chrome os|chromeos|fuchsia/i.test(ua)) return null;
         if (navigator.maxTouchPoints > 1 && global.matchMedia && !global.matchMedia("(pointer: fine)").matches) return null;

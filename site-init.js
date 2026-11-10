@@ -459,14 +459,25 @@
        computer's own theme. The choice is kept locally and mirrored to the
        shared .innioasis.app cookie, like the palette, so both sites agree.
        The computer's accent is stored apart from the visitor's own pick:
-       that is what lets the picker offer "Match my PC's theme colours" only
-       after the app has handed a colour over, and remember a refusal. */
+       that is what lets the picker say where the colour came from, offer one
+       link back to the previous one, and remember a refusal. */
     var ACCENT_KEY = "lumen-accent";
     var ACCENT_COOKIE = "innioasis-accent";
     var ACCENT_PC_KEY = "innioasis-pc-accent";
     var ACCENT_PC_COOKIE = "innioasis-pc-accent";
     var ACCENT_MATCH_KEY = "innioasis-accent-match-pc";
     var ACCENT_MATCH_COOKIE = "innioasis-accent-match-pc";
+    /* Accepting the accent Updater CE hands over is a privacy choice, so the
+       opt-out is stored beside the other preferences rather than in the
+       picker: a visitor who turns it off expects it to stay off. */
+    var ACCENT_IGNORE_CE_KEY = "innioasis-ignore-ce-accent";
+    var ACCENT_IGNORE_CE_COOKIE = "innioasis-ignore-ce-accent";
+    /* The colour in effect before an import, so one link can put it back. */
+    var ACCENT_PRE_CE_KEY = "innioasis-accent-before-ce";
+    var ACCENT_PRE_CE_COOKIE = "innioasis-accent-before-ce";
+    /* An imported colour the visitor reverted, so a reload does not reapply it. */
+    var ACCENT_CE_DECLINED_KEY = "innioasis-ce-accent-declined";
+    var ACCENT_CE_DECLINED_COOKIE = "innioasis-ce-accent-declined";
     var ACCENT_CE_KEY = "innioasis-referred-by-ce";
     var ACCENT_CE_COOKIE = "innioasis-referred-by-ce";
     /* Presets are quick picks, not the whole gamut: the pad and the hex field
@@ -753,10 +764,20 @@
         return normalizeAccent(accentRead(ACCENT_PC_KEY, ACCENT_PC_COOKIE));
     }
 
-    /* Un-ticked is stored as "0"; anything else means "follow the computer",
-       which is what a first visit does once the app has handed a colour over. */
+    /* The accent from Updater CE is used unless the visitor opted out in the
+       privacy controls, turned the older match checkbox off, or reverted this
+       exact colour already. */
     function matchesPcTheme() {
-        return accentRead(ACCENT_MATCH_KEY, ACCENT_MATCH_COOKIE) !== "0";
+        if (ignoresCeAccent()) return false;
+        if (accentRead(ACCENT_MATCH_KEY, ACCENT_MATCH_COOKIE) === "0") return false;
+        var pc = pcAccent();
+        if (!pc) return false;
+        var declined = normalizeAccent(accentRead(ACCENT_CE_DECLINED_KEY, ACCENT_CE_DECLINED_COOKIE));
+        return pc !== declined;
+    }
+
+    function ignoresCeAccent() {
+        return accentRead(ACCENT_IGNORE_CE_KEY, ACCENT_IGNORE_CE_COOKIE) === "1";
     }
 
     function referredByCe() {
@@ -805,12 +826,35 @@
         return hex;
     }
 
-    function setMatchPcTheme(enabled) {
-        accentWrite(ACCENT_MATCH_KEY, ACCENT_MATCH_COOKIE, enabled ? "1" : "0");
-        if (enabled) {
+    /* One click in the picker: do not put this imported colour back, while a
+       different one the app sends later is still offered. */
+    function declineCeAccent() {
+        var imported = pcAccent();
+        if (imported) accentWrite(ACCENT_CE_DECLINED_KEY, ACCENT_CE_DECLINED_COOKIE, imported);
+        syncAccentPicker();
+    }
+
+    /* The privacy control: never apply an accent from Updater CE. The choice is
+       remembered, so it survives every later handoff. */
+    function setIgnoreCeAccent(ignore) {
+        accentWrite(ACCENT_IGNORE_CE_KEY, ACCENT_IGNORE_CE_COOKIE, ignore ? "1" : "0");
+        if (ignore) {
+            applyAccent(normalizeAccent(accentRead(ACCENT_KEY, ACCENT_COOKIE)), false);
+        } else {
             var pc = pcAccent();
-            if (pc) applyAccent(pc, true);
+            if (pc && matchesPcTheme()) applyAccent(pc, false);
         }
+        syncAccentPicker();
+    }
+
+    /* Back to the colour the visitor had before the current import: their own
+       pick when there was one, the site default otherwise. */
+    function revertCeAccent() {
+        var imported = pcAccent();
+        if (imported) accentWrite(ACCENT_CE_DECLINED_KEY, ACCENT_CE_DECLINED_COOKIE, imported);
+        var previous = normalizeAccent(accentRead(ACCENT_PRE_CE_KEY, ACCENT_PRE_CE_COOKIE));
+        accentWrite(ACCENT_KEY, ACCENT_COOKIE, previous || "");
+        applyAccent(previous, true);
         syncAccentPicker();
     }
 
@@ -845,11 +889,18 @@
 
         if (handed) {
             if (fromCe) {
+                /* What to go back to: whatever was on screen before the app's
+                   colour arrived, kept for the revert link in the picker. */
+                var previous = normalizeAccent(accentRead(ACCENT_KEY, ACCENT_COOKIE));
                 accentWrite(ACCENT_PC_KEY, ACCENT_PC_COOKIE, handed);
+                if (previous !== handed) {
+                    accentWrite(ACCENT_PRE_CE_KEY, ACCENT_PRE_CE_COOKIE, previous || "");
+                }
                 if (matchesPcTheme()) return void applyAccent(handed, true);
-                /* Refused on an earlier visit: keep the visitor's own colour
+                /* Opted out in the privacy controls, reverted already, or
+                   refused on an earlier visit: keep the visitor's own colour
                    instead of overriding it every time the app opens a page. */
-                return void applyAccent(accentRead(ACCENT_KEY, ACCENT_COOKIE), false);
+                return void applyAccent(previous, false);
             }
             return void applyAccent(handed, true);
         }
@@ -940,8 +991,10 @@
             '<label class="lumen-accent-row lumen-accent-range-row" for="lumen-accent-hue">Hue' +
             '<input type="range" id="lumen-accent-hue" class="lumen-accent-hue" min="0" max="359" step="1" value="212" aria-label="Accent hue"></label>' +
             '<button type="button" class="lumen-accent-eyedrop" id="lumen-accent-eyedrop" hidden aria-label="Pick a colour from the screen">Pick a colour from the screen</button>' +
-            '<label class="lumen-accent-match" id="lumen-accent-match-row" hidden>' +
-            '<input type="checkbox" id="lumen-accent-match"><span>Match my PC\'s theme colours</span></label>' +
+            '<div class="lumen-accent-import" id="lumen-accent-import" hidden>' +
+            '<p class="lumen-accent-import-label">Accent colour imported from Updater CE</p>' +
+            '<button type="button" class="lumen-accent-revert" id="lumen-accent-revert">Revert to my previous colour</button>' +
+            '</div>' +
             '<button type="button" class="lumen-accent-reset" id="lumen-accent-reset">Use the site default</button>' +
             '</div></div>';
     }
@@ -971,13 +1024,16 @@
         if (hueField) hueField.value = String(accentHue(accent));
         var eyedropButton = document.getElementById("lumen-accent-eyedrop");
         if (eyedropButton) eyedropButton.hidden = typeof global.EyeDropper !== "function";
-        var pc = pcAccent();
-        var matchRow = document.getElementById("lumen-accent-match-row");
-        var matchInput = document.getElementById("lumen-accent-match");
-        if (matchRow) matchRow.hidden = !pc;
-        if (matchInput) {
-            matchInput.disabled = !pc;
-            matchInput.checked = Boolean(pc) && matchesPcTheme();
+        var imported = pcAccent();
+        var importRow = document.getElementById("lumen-accent-import");
+        var revertLink = document.getElementById("lumen-accent-revert");
+        /* Only while the colour on screen really is the one the app sent: once
+           the visitor picks their own or reverts, there is nothing to explain. */
+        var showImport = Boolean(imported) && matchesPcTheme() && accent === imported;
+        if (importRow) importRow.hidden = !showImport;
+        if (revertLink) {
+            var before = normalizeAccent(accentRead(ACCENT_PRE_CE_KEY, ACCENT_PRE_CE_COOKIE));
+            revertLink.textContent = before ? "Revert to my previous colour" : "Revert to the site default";
         }
         var reset = document.getElementById("lumen-accent-reset");
         if (reset) reset.disabled = !accent;
@@ -990,8 +1046,8 @@
         var toggle = document.getElementById("lumen-accent-toggle");
         var tray = document.getElementById("lumen-accent-tray");
         var hexField = document.getElementById("lumen-accent-hex");
-        var matchInput = document.getElementById("lumen-accent-match");
         var reset = document.getElementById("lumen-accent-reset");
+        var revertLink = document.getElementById("lumen-accent-revert");
         var hue = document.getElementById("lumen-accent-hue");
         var eyedrop = document.getElementById("lumen-accent-eyedrop");
 
@@ -1002,7 +1058,7 @@
                 new global.EyeDropper().open().then(function (result) {
                     var picked = normalizeAccent(result && result.sRGBHex);
                     if (!picked) return;
-                    setMatchPcTheme(false);
+                    declineCeAccent();
                     applyAccent(picked, true);
                 }).catch(function () {});
             });
@@ -1038,14 +1094,13 @@
                 setOpen(tray ? tray.hidden : false);
             });
         }
-        /* A colour the visitor picks is their own, so it turns the PC match off:
-           otherwise the next page Updater CE opens sees the match still ticked
-           and puts the desktop colour back over the one they just chose. */
+        /* A colour the visitor picks is their own, so the imported one is not
+           put back over it on the next page Updater CE opens. */
         function commitHex() {
             if (!hexField) return;
             var next = normalizeAccent(hexField.value);
             if (!next) return;
-            setMatchPcTheme(false);
+            declineCeAccent();
             applyAccent(next, true);
         }
         if (hexField) {
@@ -1064,7 +1119,7 @@
             pickerHsv.s = Math.min(1, Math.max(0, (event.clientX - rect.left) / Math.max(1, rect.width)));
             pickerHsv.v = Math.min(1, Math.max(0, 1 - (event.clientY - rect.top) / Math.max(1, rect.height)));
             var next = hsvToHex(pickerHsv.h, pickerHsv.s, pickerHsv.v);
-            if (persist) setMatchPcTheme(false);
+            if (persist) declineCeAccent();
             applyAccent(next, persist);
         }
         if (pad) {
@@ -1084,7 +1139,7 @@
                 applyAccent(hsvToHex(pickerHsv.h, pickerHsv.s, pickerHsv.v), false);
             });
             hue.addEventListener("change", function () {
-                setMatchPcTheme(false);
+                declineCeAccent();
                 applyAccent(hsvToHex(pickerHsv.h, pickerHsv.s, pickerHsv.v), true);
             });
         }
@@ -1094,19 +1149,17 @@
         function useSwatch(event) {
             var swatch = event.target && event.target.closest ? event.target.closest(".lumen-accent-swatch") : null;
             if (!swatch) return;
-            setMatchPcTheme(false);
+            declineCeAccent();
             applyAccent(swatch.getAttribute("data-accent-value"), true);
         }
         if (tray) tray.addEventListener("click", useSwatch);
         picker.addEventListener("click", useSwatch);
-        if (matchInput) {
-            matchInput.addEventListener("change", function () {
-                setMatchPcTheme(Boolean(matchInput.checked));
-            });
+        if (revertLink) {
+            revertLink.addEventListener("click", function () { revertCeAccent(); });
         }
         if (reset) {
             reset.addEventListener("click", function () {
-                setMatchPcTheme(false);
+                declineCeAccent();
                 applyAccent(null, true);
             });
         }
@@ -1173,12 +1226,17 @@
         pc: pcAccent,
         hasPcAccent: function () { return Boolean(pcAccent()); },
         matchesPcTheme: matchesPcTheme,
-        setMatchPcTheme: setMatchPcTheme,
+        ignoreCeAccent: ignoresCeAccent,
+        setIgnoreCeAccent: setIgnoreCeAccent,
+        revertCeAccent: revertCeAccent,
         referredByCe: referredByCe
     };
     global.y1GetAccent = currentAccent;
     global.y1SetAccent = function (value) { return applyAccent(value, true); };
     global.y1ApplyAccent = applyAccent;
+    global.y1IgnoreCeAccent = ignoresCeAccent;
+    global.y1SetIgnoreCeAccent = setIgnoreCeAccent;
+    global.y1RevertCeAccent = revertCeAccent;
     global.y1HasPcAccent = function () { return Boolean(pcAccent()); };
 
     function clearPreferenceParamsFromUrl() {
@@ -1384,8 +1442,7 @@
     /* In-page downloads live in their own file so this shell stays readable.
        Pages need no extra script tag: the module is fetched from the directory
        that holds this script and upgrades every download link it finds. */
-    function loadSiteDownloads() {
-        if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
+    function siteBase() {
         var base = "";
         try {
             var scripts = document.getElementsByTagName("script");
@@ -1396,14 +1453,18 @@
                 break;
             }
         } catch (_) {}
+        return base;
+    }
+
+    function loadSiteDownloads() {
+        if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = base + "site-downloads.js?v=20261110install";
+        node.src = siteBase() + "site-downloads.js?v=20261110install";
         node.defer = true;
         document.head.appendChild(node);
     }
     loadSiteDownloads();
-
 
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install

@@ -1114,7 +1114,21 @@
         return repos;
     }
 
+    /* Legacy Windows is decided once, by site-legacy.js: XP through 8.1 and
+       32-bit PCs take the flash-tool bundle, because Updater CE cannot run
+       there. Supported Windows, macOS and Linux follow the reported arch. */
+    function legacyPortableKey() {
+        try {
+            var marker = window.INNIOASIS_LEGACY;
+            return marker && marker.isLegacy ? "windows-legacy" : "";
+        } catch (_) {
+            return "";
+        }
+    }
+
     function portablePlatformKey(platform) {
+        var legacy = legacyPortableKey();
+        if (legacy) return legacy;
         if (!platform) return "";
         if (platform.os === "macos") return "macos";
         if (platform.os !== "windows" && platform.os !== "linux") return "";
@@ -1213,6 +1227,7 @@
         var suffix = platformKey === "macos" ? "-macos.zip" :
             platformKey === "windows" ? "-windows.zip" :
             platformKey === "windows-arm64" ? "-windows-arm64.zip" :
+            platformKey === "windows-legacy" ? "-windows-legacy.zip" :
             platformKey === "linux" ? "-linux.zip" :
             platformKey === "linux-arm64" ? "-linux-arm64.zip" : "";
         return release.assets.find(function (asset) {
@@ -1465,6 +1480,7 @@
             return key === "macos" ? "macOS" :
                 key === "windows" ? "Windows" :
                 key === "windows-arm64" ? "Windows on ARM" :
+                key === "windows-legacy" ? "Windows XP/7/8 (32/64-bit)" :
                 key === "linux" ? "Linux" :
                 key === "linux-arm64" ? "Linux on ARM" : "";
         }

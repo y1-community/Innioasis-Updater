@@ -66,6 +66,10 @@ PLATFORM_LABELS = {
     "linux": "Linux",
     "linux-arm64": "Linux on ARM",
     "macos": "macOS",
+    # The SP Flash Tool bundle the mirror builds for Windows XP through 8.1 and
+    # 32-bit Windows, where Updater CE cannot run. Listed last so the normal
+    # desktop builds stay first in the row.
+    "windows-legacy": "Windows XP/7/8 (32/64-bit)",
 }
 
 AUTHOR_ORG = {"@type": "Organization", "name": "Innioasis Community",
