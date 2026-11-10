@@ -405,7 +405,9 @@
       "font-scale",
       "fs",
       "lumen-font-scale",
-      "lang"
+      "lang",
+      "dock",
+      "footer"
     ];
     prefKeys.forEach(function (k) {
       url.searchParams.delete(k);
@@ -466,6 +468,12 @@
         if (handoffPrivacy) url.searchParams.set("privacy", handoffPrivacy);
         var handoffAnalytics = getPrivacyAnalyticsParam();
         if (handoffAnalytics) url.searchParams.set("privacy_analytics", handoffAnalytics);
+        var dockClosed = false;
+        try {
+          dockClosed = sessionStorage.getItem("y1-dock-dismissed") === "1" ||
+            (typeof getSharedCookie === "function" && getSharedCookie("innioasis-dock") === "closed");
+        } catch (_) {}
+        url.searchParams.set("dock", dockClosed ? "closed" : "open");
       }
       return url.toString();
     }
@@ -570,7 +578,7 @@
 
   var persona = detectPersona();
   var isFirmwarePersona = persona === "firmware";
-  var activeTitle = isThemesSite ? "Themes Gallery" : (isFirmwarePersona ? "Firmware Archive" : "Updater CE");
+  var activeTitle = isThemesSite ? "Themes Gallery" : (isFirmwarePersona ? "Downloads" : "Updater CE");
   var activeHomeHref = isFirmwarePersona ? "/firmware.html" : "/";
 
   (function updateDocumentTitle() {
@@ -601,8 +609,8 @@
   var allSwitcherItems = [
     {
       id: "firmware",
-      title: "Innioasis Firmware Archive",
-      subtitle: "Original Software, custom ROMs & guides",
+      title: "Downloads",
+      subtitle: "Software and updates for your player",
       href: "/firmware.html",
       icon: '<span class="lumen-app-icon lumen-app-icon--firmware" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg></span>'
     },
@@ -688,7 +696,7 @@
       '<svg class="lumen-site-switcher-glyph" viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/></svg>' +
       '</button>' +
       '</div>' +
-      '<div class="lumen-site-switcher-tray" id="lumen-site-switcher-tray" hidden role="menu" aria-label="Switch between Themes Gallery, Updater CE, and Firmware Archive">' +
+      '<div class="lumen-site-switcher-tray" id="lumen-site-switcher-tray" hidden role="menu" aria-label="Switch between Themes Gallery, Updater CE, and Downloads">' +
       '<p class="lumen-site-switcher-heading">Innioasis Sites</p>' +
       '<ul class="lumen-site-switcher-list">' + switcherListHtml + '</ul>' +
       '</div>' +
@@ -715,7 +723,7 @@
       '<ul class="nav-links" id="navLinks">' +
       '<li><a class="lumen-nav-install-cta" id="lumen-nav-install-cta" href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '"><span class="lumen-nav-install-cta-label">' + escapeHtml(ctaLabel) + '</span>' + ctaPlatformHtml + '</a></li>' +
       '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=software")) + '">Software Updates</a></li>' +
-      '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Firmware Downloads</a></li>' +
+      '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Downloads</a></li>' +
       '<li><a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">Themes</a></li>' +
       '</ul>' +
       '</div>' +
@@ -1657,9 +1665,9 @@
       '<a href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '">Installation Guide</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/manuals/index.html")) + '">Player manuals</a>' +
       (isThemesSite
-        ? '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html")) + '">Player Updates and Firmware</a>'
+        ? '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html")) + '">Player updates</a>'
         : '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=software")) + '">Software Updates</a>' +
-          '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Custom Firmware Downloads</a>'
+          '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Custom software</a>'
       ) +
       '<a href="' + escapeHtml(decorateMainSiteHref("/rockbox-benefits.html")) + '">Rockbox on Innioasis</a>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/reborn-y2linux-benefits.html")) + '">Reborn (Y2Linux) for Y2</a>' +
@@ -1671,7 +1679,7 @@
       '<h4>Developers</h4>' +
       '<a href="' + escapeHtml(decorateMainSiteHref("/developers.html")) + '">Developer Guide &amp; Tooling</a>' +
       '<a href="' + escapeHtml(decorateCrossDomainHref("https://innioasis.app/")) + '">Updater CE</a>' +
-      '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html")) + '">Firmware Archive</a>' +
+      '<a href="' + escapeHtml(decorateMainSiteHref("/firmware.html")) + '">Downloads</a>' +
       '<a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">Themes Gallery</a>' +
       '<a href="https://discord.gg/zHrT2zrcek" target="_blank" rel="noopener noreferrer">Discord Server</a>' +
       '<a href="https://reddit.com/r/innioasis" target="_blank" rel="noopener noreferrer">r/innioasis on Reddit</a>' +
@@ -1703,7 +1711,7 @@
     var me = document.querySelector('script[src*="nav.js"]');
     var base = me && me.src ? me.src.replace(/[^\/]*$/, "") : "";
     var s = document.createElement("script");
-    s.src = base + "interstitial.js?v=20261110a";
+    s.src = base + "interstitial.js?v=20261110fast";
     s.defer = true;
     document.head.appendChild(s);
   } catch (_) {}

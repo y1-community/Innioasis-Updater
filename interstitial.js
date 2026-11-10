@@ -12,11 +12,65 @@
 (function () {
   "use strict";
 
-  var DONATION_HOSTS = /(^|\.)(ko-fi\.com|buymeacoffee\.com|boosty\.to)$/i;
+  var DONATION_HOSTS = /(^|\.)(ko-fi\.com|buymeacoffee\.com|boosty\.to|paypal\.me|patreon\.com|revolut\.me)$/i;
+  var THANKS = {
+    en: "Thank you for supporting us",
+    de: "Danke, dass du uns unterstützt",
+    es: "Gracias por apoyarnos",
+    fr: "Merci de nous soutenir",
+    it: "Grazie per il tuo sostegno",
+    pt: "Obrigado por nos apoiar",
+    "pt-br": "Obrigado por nos apoiar",
+    nl: "Bedankt dat je ons steunt",
+    pl: "Dziękujemy za wsparcie",
+    ru: "Спасибо за поддержку",
+    ja: "ご支援ありがとうございます",
+    ko: "응원해 주셔서 감사합니다",
+    "zh-cn": "感谢你的支持",
+    "zh-tw": "感謝你的支持",
+    uk: "Дякуємо за підтримку",
+    tr: "Bizi desteklediğiniz için teşekkürler",
+    ar: "شكرا لدعمك لنا",
+    vi: "Cảm ơn bạn đã ủng hộ chúng tôi",
+    id: "Terima kasih sudah mendukung kami",
+    th: "ขอบคุณที่สนับสนุนเรา",
+    sv: "Tack för att du stöttar oss"
+  };
+  var TAKING = {
+    en: "Taking you to",
+    de: "Weiter zu",
+    es: "Te llevamos a",
+    fr: "Redirection vers",
+    it: "Ti portiamo su",
+    pt: "A caminho de",
+    "pt-br": "Levando você para",
+    nl: "Je gaat naar",
+    pl: "Przechodzimy do",
+    ru: "Переходим на",
+    ja: "移動しています:",
+    ko: "이동 중:",
+    "zh-cn": "正在前往",
+    "zh-tw": "正在前往",
+    uk: "Переходимо на",
+    tr: "Yönlendiriliyorsunuz:",
+    ar: "جارٍ نقلك إلى",
+    vi: "Đang chuyển đến",
+    id: "Mengalihkan ke",
+    th: "กำลังพาคุณไปที่",
+    sv: "Du skickas till"
+  };
   var METHODS = {
     kofi: "https://ko-fi.com/teamslide",
     bmc: "https://buymeacoffee.com/ryanspecter",
     boosty: "https://boosty.to/ryanspecter"
+  };
+  var PROVIDERS = {
+    kofi: "Ko-fi",
+    bmc: "Buy Me a Coffee",
+    boosty: "Boosty",
+    paypal: "PayPal",
+    revolut: "Revolut",
+    patreon: "Patreon"
   };
 
   function cleanBase() {
@@ -58,7 +112,7 @@
       var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
       if (!link) return;
       if (link.hasAttribute("download") || link.hasAttribute("data-no-interstitial")) return;
-      if (link.closest(".theme-card, [data-card-download], [data-direct-install-btn]")) return;
+      if (link.closest(".theme-card, [data-card-download], [data-direct-install-btn], [data-external-download], [data-theme-download]")) return;
       var url = safeUrl(link.getAttribute("href"));
       if (!url || isInternal(url)) return;
       if (/\.(zip|7z|tar|gz|theme|rbtheme|apk|dmg|exe|msi)$/i.test(url.pathname)) return;
@@ -71,6 +125,34 @@
     }, true);
   }
 
+  function providerName(method, url) {
+    if (PROVIDERS[method]) return PROVIDERS[method];
+    var host = url.hostname.replace(/^www\./, "").toLowerCase();
+    if (host === "ko-fi.com" || /\.ko-fi\.com$/.test(host)) return "Ko-fi";
+    if (host === "buymeacoffee.com" || /\.buymeacoffee\.com$/.test(host)) return "Buy Me a Coffee";
+    if (host === "boosty.to" || /\.boosty\.to$/.test(host)) return "Boosty";
+    if (host === "paypal.me" || host === "paypal.com" || /\.paypal\.com$/.test(host)) return "PayPal";
+    if (host === "revolut.me" || host === "revolut.com" || /\.revolut\.com$/.test(host)) return "Revolut";
+    if (host === "patreon.com" || /\.patreon\.com$/.test(host)) return "Patreon";
+    return host;
+  }
+
+  function languageFrom(params) {
+    var lang = "";
+    try {
+      lang = (params.get("lang") || "").toLowerCase();
+      if (!lang) {
+        var cookie = document.cookie.split(";").map(function (part) { return part.trim(); });
+        for (var i = 0; i < cookie.length; i++) {
+          if (cookie[i].indexOf("innioasis-locale=") === 0) {
+            lang = decodeURIComponent(cookie[i].slice(17)).toLowerCase();
+          }
+        }
+      }
+    } catch (_) {}
+    return lang;
+  }
+
   function initPage() {
     var kind = document.body ? document.body.getAttribute("data-interstitial") : "";
     var params = new URLSearchParams(window.location.search);
@@ -81,10 +163,15 @@
     var hostEl = document.getElementById("interstitial-host");
     var goEl = document.getElementById("interstitial-continue");
     var cancelEl = document.getElementById("interstitial-cancel");
+    var statusEl = document.getElementById("interstitial-status");
+    var fillEl = document.getElementById("interstitial-progress-fill");
+    var progressEl = fillEl ? fillEl.closest(".interstitial-progress") : null;
 
     if (!destination) {
       if (hostEl) hostEl.textContent = "";
-      if (goEl) { goEl.hidden = true; }
+      if (goEl) goEl.hidden = true;
+      if (statusEl) statusEl.hidden = true;
+      if (progressEl) progressEl.hidden = true;
       var fallback = document.getElementById("interstitial-fallback");
       if (fallback) fallback.hidden = false;
       stripInterstitialParams();
@@ -93,22 +180,50 @@
 
     if (hostEl) hostEl.textContent = destination.hostname.replace(/^www\./, "");
     if (goEl) goEl.setAttribute("href", destination.href);
+
+    var lang = languageFrom(params);
+    var provider = providerName(method, destination);
+    if (statusEl) {
+      if (kind === "donate") {
+        var taking = TAKING[lang] || TAKING[lang.split("-")[0]] || TAKING.en;
+        statusEl.textContent = taking + " " + provider + "\u2026";
+      } else {
+        statusEl.textContent = "Taking you to " + provider + "\u2026";
+      }
+    }
+
+    if (kind === "donate") {
+      var heading = document.querySelector(".interstitial-main h1");
+      if (heading) heading.textContent = THANKS[lang] || THANKS[lang.split("-")[0]] || THANKS.en;
+    }
     stripInterstitialParams();
 
-    var delay = kind === "donate" ? 2600 : 0;
-    if (delay) {
-      var left = Math.ceil(delay / 1000);
-      var countEl = document.getElementById("interstitial-count");
-      if (countEl) countEl.textContent = String(left);
-      var timer = setInterval(function () {
-        left -= 1;
-        if (countEl) countEl.textContent = String(Math.max(left, 0));
-        if (left <= 0) {
-          clearInterval(timer);
-          window.location.replace(destination.href);
+    /* Donations leave almost immediately: the bar is the only countdown, and
+       the page never sits there counting seconds at the visitor. */
+    var delay = kind === "donate" ? 900 : 750;
+    if (fillEl) {
+      fillEl.style.transitionDuration = delay + "ms";
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          fillEl.style.transform = "scaleX(1)";
+          if (progressEl) progressEl.setAttribute("aria-valuenow", "100");
+        });
+      });
+    }
+    var timer = window.setTimeout(function () {
+      window.location.replace(destination.href);
+    }, delay);
+
+    if (cancelEl) {
+      cancelEl.addEventListener("click", function () {
+        window.clearTimeout(timer);
+        if (fillEl) {
+          fillEl.style.transitionDuration = "0ms";
+          fillEl.style.transform = "scaleX(0)";
         }
-      }, 1000);
-      if (cancelEl) cancelEl.addEventListener("click", function () { clearInterval(timer); });
+        if (window.history.length > 1) window.history.back();
+        else window.location.assign("index.html");
+      });
     }
   }
 

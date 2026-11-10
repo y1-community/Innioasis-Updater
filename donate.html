@@ -15,6 +15,9 @@
   .interstitial-main p { margin: 0 0 .9rem; color: var(--lumen-muted, #a8b0bf); line-height: 1.55; }
   .interstitial-host { font-weight: 700; color: var(--lumen-text, #f3f5f9); word-break: break-all; }
   .interstitial-actions { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.4rem; }
+  .interstitial-status { margin: 0 0 .35rem; font-weight: 700; color: var(--lumen-text, #f3f5f9); }
+  .interstitial-progress { position: relative; width: 100%; max-width: 20rem; height: 4px; margin: .9rem auto 0; border-radius: 999px; overflow: hidden; background: color-mix(in oklab, var(--lumen-line-strong, #3a3f4a) 75%, transparent); }
+  .interstitial-progress span { display: block; width: 100%; height: 100%; background: var(--lumen-accent, #4f8cff); transform: scaleX(0); transform-origin: left center; transition: transform 900ms linear; }
 </style>
 </head>
 <body class="site-themes-app" data-interstitial="donate">
@@ -23,7 +26,9 @@
 <main id="main" class="interstitial-main">
   <span class="interstitial-mark" aria-hidden="true">&#9829;</span>
   <h1>Thank you for supporting us</h1>
-  <p>Your support keeps the firmware archive, the theme gallery and Updater CE going. Taking you to the payment page in a moment<span id="interstitial-count">3</span>s - <span class="interstitial-host" id="interstitial-host"></span>.</p>
+    <p>Your support keeps the archive, the gallery and Updater CE going.</p>
+  <p class="interstitial-status" id="interstitial-status" aria-live="polite">Taking you to the payment page…</p>
+  <div class="interstitial-progress" role="progressbar" aria-label="Redirect progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="interstitial-progress-fill"></span></div>
   <div class="interstitial-actions">
     <a id="interstitial-continue" class="lumen-button lumen-button--primary" href="#">Continue to the payment page</a>
     <button id="interstitial-cancel" class="lumen-button lumen-button--secondary" type="button" data-interstitial-back>Go back</button>
@@ -35,6 +40,6 @@
 <script src="site-init.js?v=20261110ink" defer></script>
 <script src="nav.js?v=20261109accent" defer></script>
 <script src="site-locale.js?v=20261109live" defer></script>
-<script src="interstitial.js?v=20261110b" defer></script>
+<script src="interstitial.js?v=20261110fast" defer></script>
 </body>
 </html>
