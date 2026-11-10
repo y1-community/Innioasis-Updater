@@ -206,7 +206,7 @@ body.site-themes-app .lumen-secondary-action { display: inline-flex; align-items
 body.site-themes-app .lumen-button--secondary:hover,
 body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px); border-color: var(--lumen-accent); color: var(--lumen-paper); background: var(--lumen-accent-wash) !important; }
 
-.lumen-home { min-height: 100dvh; }
+.lumen-home { min-height: 0; }
 .lumen-hero, .lumen-section { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; }
 .lumen-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 260px); align-items: center; gap: clamp(1.5rem, 3.5vw, 3rem); min-height: auto; padding: clamp(1.75rem, 3.5vw, 2.75rem) 0 clamp(0.75rem, 1.5vw, 1.25rem); }
 .lumen-hero > * { min-width: 0; }
@@ -668,7 +668,7 @@ body.site-themes-app a.lumen-updater-button small,
 .lumen-zip-download-button--table small { font-size: .64rem; }
 .lumen-download-progress--inline { margin: 0; padding: .6rem .7rem; gap: .5rem; background: var(--lumen-panel); }
 .lumen-download-progress--inline .lumen-download-progress-row { font-size: .82rem; }
-.lumen-download-progress--inline .lumen-download-progress-text { white-space: normal; }
+.lumen-download-progress--inline .lumen-download-progress-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .lumen-download-progress-item { list-style: none; margin: .35rem 0 0; padding: 0; }
 .lumen-download-progress-wrap { display: block; margin: .5rem 0 0; padding: .85rem 1rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-md); background: var(--lumen-panel-soft); }
 .lumen-download-progress-wrap[hidden] { display: none !important; }
@@ -1359,3 +1359,156 @@ body.site-themes-app .lumen-secondary-action:hover,
 /* The model select fills its cell now that the pill is gone. */
 .lumen-model-control { margin: 0; }
 .lumen-model-control select { width: 100%; }
+
+/* Download progress spans the release row. The install cell is too narrow
+   for a status line, and overflow-wrap on table cells was splitting words. */
+.lumen-download-progress-host .lumen-download-progress-cell {
+    overflow-wrap: normal;
+    word-break: normal;
+    padding-top: .4rem;
+    padding-bottom: .85rem;
+}
+.lumen-download-progress-cell .lumen-download-progress-wrap,
+.lumen-download-progress-cell .lumen-download-progress {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+.lumen-download-progress-header,
+.lumen-download-progress-cell .lumen-download-progress-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: .75rem;
+    min-width: 0;
+}
+#lumen-download-progress-label,
+.lumen-download-progress-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.lumen-download-progress-actions,
+#lumen-download-progress-metrics,
+.lumen-download-progress-pct {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+.lumen-download-progress-dismiss {
+    white-space: nowrap;
+    flex: 0 0 auto;
+    border-radius: var(--lumen-radius-sm, 8px);
+    min-height: 32px;
+    writing-mode: horizontal-tb;
+}
+.lumen-download-progress-bar-bg { height: 8px; }
+@media (max-width: 560px) {
+    .lumen-download-progress-header,
+    .lumen-download-progress-cell .lumen-download-progress-row { flex-wrap: wrap; }
+    #lumen-download-progress-label,
+    .lumen-download-progress-cell .lumen-download-progress-text { flex-basis: 100%; }
+}
+
+/* The page is one column. Main grows, and the footer sits on the floor
+   just above the dock. Column links stay stacked; a later colour rule on
+   anchors must not put them back on one line. */
+body.site-themes-app {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+body.site-themes-app > main,
+body.site-themes-app > .wrap { flex: 1 0 auto; }
+body.site-themes-app #footer-root {
+    margin-top: auto;
+    flex: 0 0 auto;
+    width: 100%;
+    background: var(--lumen-panel);
+    padding-bottom: calc(var(--y1-dock-space, 96px) + 12px);
+}
+body.site-themes-app:has(#support-toolbar-container.y1-toolbar-hidden) #footer-root {
+    padding-bottom: max(0px, env(safe-area-inset-bottom, 0px));
+}
+body.site-themes-app .site-footer { margin: 0; }
+body.site-themes-app .site-footer .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2.5rem;
+}
+body.site-themes-app .site-footer .footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .4rem;
+    min-width: 0;
+}
+body.site-themes-app .site-footer .footer-col > a {
+    display: block;
+}
+@media (max-width: 640px) {
+    body.site-themes-app .site-footer .footer-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* —— Footer: readable lists, two columns, anchored to the page bottom. —— */
+body.site-themes-app {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.site-themes-app #main { flex: 1 0 auto; }
+
+body.site-themes-app #footer-root {
+    margin-top: auto;
+    flex: 0 0 auto;
+}
+
+.site-footer .footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1.75rem 2.5rem !important;
+    align-items: start;
+    width: min(var(--lumen-max, 1120px), calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.site-footer .footer-col {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35rem;
+    min-width: 0;
+}
+
+.site-footer .footer-col h4 { margin: 0 0 .4rem; }
+
+.site-footer .footer-col a {
+    display: block !important;
+    padding: .12rem 0;
+    line-height: 1.45;
+}
+
+.site-footer .footer-bottom {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem 1.25rem;
+    width: min(var(--lumen-max, 1120px), calc(100% - 2rem));
+    margin: 0 auto;
+    text-align: left;
+}
+
+.site-footer .footer-bottom .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1rem;
+}
+
+@media (max-width: 720px) {
+    .site-footer .footer-grid { grid-template-columns: 1fr !important; }
+    .site-footer .footer-bottom { justify-content: flex-start; }
+}
