@@ -30,11 +30,11 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261110inline3";
+    var VERSION = "20261110inline4";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
-    var STREAMABLE = /\.(zip|7z)(\?|#|$)/i;
+    var STREAMABLE = /\.(zip|7z|tar\.gz|tgz|tar\.xz|txz|tar\.bz2|tbz2)(\?|#|$)/i;
     var NEVER_STREAM = /\.(exe|dmg|appimage|msi|pkg|apk|img|bin|iso|jar|ipa)(\?|#|$)/i;
     /* rom_y1-windows.zip is a portable build of rom_y1.zip, so a portable
        download saves under the mother package's name. */
@@ -317,7 +317,10 @@
         var speed = speedOf(job);
         if (speed > 512) parts.push(bytes(speed) + "/s");
         var eta = etaOf(job);
-        if (eta && !overrun) parts.push(seconds(eta));
+        /* seconds() returns "" once the estimate rounds below a second, and a
+           blank entry would leave a dangling separator on the button. */
+        var etaText = eta && !overrun ? seconds(eta) : "";
+        if (etaText) parts.push(etaText);
         if (!parts.length) parts.push(t(job.status === "starting" ? "Preparing…" : "Downloading…"));
         return parts.join(" · ");
     }
@@ -330,7 +333,9 @@
 
     function restoreButton(job) {
         if (!job.buttonEl) return;
-        job.buttonEl.textContent = job.buttonLabel || "";
+        /* innerHTML, not textContent: a catalog button carries an icon, and a
+           finished download must leave the control exactly as it found it. */
+        job.buttonEl.innerHTML = job.buttonHtml || job.buttonLabel || "";
         job.buttonEl.removeAttribute("aria-busy");
         job.buttonEl = null;
     }
@@ -412,8 +417,14 @@
         var fill = job.panel.querySelector(".site-dl-progress__fill");
         if (fill) fill.style.width = (job.total && !overrun ? percent : 0) + "%";
 
+        /* The button carries percent, speed and time left; the card only
+           repeats them for a job that has no button of its own. */
+        var onButton = Boolean(job.button);
         var pct = job.panel.querySelector(".site-dl-progress__pct");
-        if (pct) pct.textContent = pctText;
+        if (pct) {
+            pct.hidden = onButton;
+            pct.textContent = pctText;
+        }
 
         var size = job.panel.querySelector(".site-dl-progress__size");
         if (size) {
@@ -423,10 +434,16 @@
         }
 
         var speedNode = job.panel.querySelector(".site-dl-progress__speed");
-        if (speedNode) speedNode.textContent = job.status === "running" && speed > 0 ? bytes(speed) + "/s" : "";
+        if (speedNode) {
+            speedNode.hidden = onButton;
+            speedNode.textContent = job.status === "running" && speed > 0 ? bytes(speed) + "/s" : "";
+        }
 
         var etaNode = job.panel.querySelector(".site-dl-progress__eta");
-        if (etaNode) etaNode.textContent = eta && !overrun ? t("Time left") + " " + seconds(eta) : "";
+        if (etaNode) {
+            etaNode.hidden = onButton;
+            etaNode.textContent = eta && !overrun ? t("Time left") + " " + seconds(eta) : "";
+        }
 
         var state = job.panel.querySelector(".site-dl-progress__state");
         if (state) {
@@ -454,19 +471,45 @@
         return base;
     }
 
-    function filenameOf(url, response) {
-        var name = "";
+    function fileNameOf(url) {
         try {
             var parsed = new global.URL(url, global.location.href);
-            name = decodeURIComponent(parsed.pathname.split("/").pop() || "");
-        } catch (_) {}
-        if (response) {
-            var header = "";
-            try { header = response.headers.get("content-disposition") || ""; } catch (_) {}
-            var match = /filename\*?=(?:UTF-8''|")?([^";]+)/i.exec(header);
-            if (match) name = decodeURIComponent(match[1]);
+            /* The download proxy carries the name the file must be saved
+               under, so a same-origin proxy link still knows its filename. */
+            var declared = parsed.searchParams.get("filename");
+            if (declared) return decodeURIComponent(declared);
+            return decodeURIComponent(parsed.pathname.split("/").pop() || "");
+        } catch (_) {
+            return "";
         }
-        return name || "download.bin";
+    }
+
+    function headerFileName(response) {
+        var header = "";
+        try { header = response.headers.get("content-disposition") || ""; } catch (_) {}
+        var match = /filename\*?=(?:UTF-8''|")?([^";]+)/i.exec(header);
+        if (!match) return "";
+        try { return decodeURIComponent(match[1]); } catch (_) { return match[1]; }
+    }
+
+    /* GitHub serves release assets without CORS headers, so a page cannot read
+       one. The site's own proxy streams the same bytes from this origin: real
+       progress, a real Content-Length, and the mother package's name. */
+    function downloadProxyUrl() {
+        var meta = doc.querySelector('meta[name="innioasis-download-proxy"]');
+        var value = meta ? (meta.getAttribute("content") || "").trim() : "";
+        if (value) return value;
+        if (/^https?:$/.test(global.location.protocol)) return "/download-proxy";
+        return "";
+    }
+
+    function proxiedUrl(url, saveName) {
+        if (!/^https:\/\/github\.com\/[^/]+\/[^/]+\/releases\/(?:latest\/)?download\//i.test(String(url || ""))) return url;
+        var proxy = downloadProxyUrl();
+        if (!proxy) return url;
+        return proxy + (proxy.indexOf("?") === -1 ? "?" : "&") +
+            "url=" + encodeURIComponent(url) +
+            "&filename=" + encodeURIComponent(saveName || motherName(fileNameOf(url)) || "firmware.zip");
     }
 
     function activeJobs() {
@@ -525,7 +568,12 @@
     function handOff(job, url) {
         job.status = "handoff";
         paint(job);
-        clickDirect(url || job.url, job.name);
+        /* Only bytes that actually arrived prove the proxy works. A request it
+           refused (403 for a repository outside its allowlist) must never be
+           saved under the package's name, so a transfer with nothing in it
+           always sends the browser to the original release URL. */
+        var target = job.loaded > 0 ? (url || job.url) : job.url;
+        clickDirect(target, job.name);
         setTimeout(function () {
             if (job.status === "handoff") finish(job, 4000);
         }, 5000);
@@ -547,6 +595,7 @@
 
         var controller = typeof AbortController === "function" ? new AbortController() : null;
         job.controller = controller;
+        var requestUrl = proxiedUrl(url, job.name);
 
         /* Chromium can write the response straight to a file: no 1.5 GB blob
            in memory, and progress that matches what the disk is receiving. The
@@ -581,7 +630,7 @@
 
         var response;
         try {
-            response = await fetch(url, {
+            response = await fetch(requestUrl, {
                 mode: "cors",
                 credentials: "omit",
                 redirect: "follow",
@@ -589,16 +638,24 @@
             });
         } catch (error) {
             if (job.cancelled) return;
+            /* Nothing is known about the proxy yet: the original asset is the
+               only URL that is certain to download. */
             handOff(job, url);
             return;
         }
         if (!response || !response.ok) {
             if (writer) { try { await writer.abort(); } catch (_) {} }
+            /* A repository outside the proxy's allowlist answers 403 here. The
+               browser must get the release asset, never that error page. */
             handOff(job, url);
             return;
         }
 
-        job.name = motherName(job.name || filenameOf(url, response));
+        /* The response knows the real name: the proxy answers with
+           Content-Disposition, and a portable build resolves to its mother
+           package (rom_y1-windows.zip saves as rom_y1.zip). */
+        var headerName = headerFileName(response);
+        job.name = motherName(headerName || job.name || fileNameOf(url) || "download.bin");
         var length = Number(response.headers.get("content-length") || 0);
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
         job.status = "running";
@@ -609,7 +666,7 @@
            or hold it all in memory. Those go to the browser once. */
         if (!writer && (!job.total || job.total > BLOB_LIMIT)) {
             try { if (response.body && response.body.cancel) await response.body.cancel(); } catch (_) {}
-            handOff(job, url);
+            handOff(job, requestUrl);
             return;
         }
 
@@ -622,7 +679,7 @@
         }
         if (!reader) {
             if (writer) { try { await writer.abort(); } catch (_) {} }
-            handOff(job, url);
+            handOff(job, requestUrl);
             return;
         }
 
@@ -655,7 +712,7 @@
         } catch (error) {
             if (writer) { try { await writer.abort(); } catch (_) {} }
             if (job.cancelled) return;
-            handOff(job, url);
+            handOff(job, requestUrl);
             return;
         }
 
@@ -673,16 +730,17 @@
     function queue(url, anchor, name) {
         injectStyles();
         if (anchor && jobByAnchor && jobByAnchor.get(anchor)) return true;
+        var saveName = motherName(name || fileNameOf(url) || "download.bin");
         if (activeJobs().length >= MAX_JOBS) {
             /* The browser can still take it; the page just will not run a third
                stream beside two the reader is already watching. */
-            clickDirect(url, name || "");
+            clickDirect(url, saveName);
             return true;
         }
         var job = {
             id: ++seq,
             url: url,
-            name: motherName(name || filenameOf(url)),
+            name: saveName,
             anchor: anchor || null,
             status: "starting",
             loaded: 0,
@@ -698,6 +756,7 @@
         if (anchor && jobByAnchor) jobByAnchor.set(anchor, job);
         if (buttonLike(anchor)) {
             job.buttonEl = anchor;
+            job.buttonHtml = anchor.innerHTML;
             job.buttonLabel = (anchor.textContent || "").trim();
         } else {
             mount(job, anchor || doc.body);
@@ -780,7 +839,11 @@
     global.InnioasisDownloads = {
         version: VERSION,
         start: function (url, anchor, name) { return queue(url, anchor, name); },
-        jobs: function () { return jobs.slice(); }
+        jobs: function () { return jobs.slice(); },
+        /* Exposed so a page, a test or the firmware catalog can ask the same
+           questions the click handler asks without starting a download. */
+        name: motherName,
+        proxy: proxiedUrl
     };
 
     if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
