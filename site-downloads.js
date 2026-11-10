@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261110inline5";
+    var VERSION = "20261111portable1";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -833,19 +833,20 @@
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         var link = anchorOf(event.target);
         if (!streamable(link)) return;
-        /* The firmware catalog owns these: it resolves the mirror's package
-           for this computer before starting the transfer. Claiming the link
-           here would fetch the release's own rom.zip instead. */
-        if (link.closest("[data-portable-zips]")) return;
+        /* A portable package's anchor already points at the mirror build for
+           its platform, so the module takes it: the release's own rom.zip is
+           only the fallback when no mirror build exists. Leaving these to the
+           browser navigated the tab at GitHub instead of downloading. */
         if (link.target && link.target !== "_self") return;
         var href = link.href || link.getAttribute("href");
         if (/^(blob|data):/i.test(href)) return;
         /* data-save-as is what a rendered document uses to name the package
            it links to; it outranks the asset's own filename. */
         var started = queue(href, link,
+            link.getAttribute("data-zip-name") ||
+            link.getAttribute("download") ||
             link.getAttribute("data-download-name") ||
             link.getAttribute("data-save-as") ||
-            link.getAttribute("download") ||
             "");
         if (started === false) return;
         /* A stale copy of docs-viewer.js also claims this click and would
