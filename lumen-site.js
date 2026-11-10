@@ -2620,6 +2620,11 @@
             var href = btn.getAttribute("href") || "";
             var zipUrl = btn.getAttribute("data-zip-url") || href;
             if (!zipUrl || !/\.zip/i.test(zipUrl)) return;
+            /* The same click bubbles through the table and the document, and
+               both listeners are this function. Resolving twice fetched the
+               package twice, so only the first listener may start a job. */
+            if (event.__innioasisZipClaimed) return;
+            event.__innioasisZipClaimed = true;
             /* The catalog's control is a button, so the inline module cannot
                see it through its anchor handler. Give it the button itself:
                it paints percent, speed and time left straight onto it. If the
