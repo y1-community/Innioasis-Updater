@@ -196,7 +196,7 @@ FAMILIES = {
         "post": "The first boot may take longer while the library indexes. Let the scan finish before you judge performance.",
         "restore": "Restore Original Software for the same model if you want the stock interface back.",
         "source": "https://github.com/FabianZettl/inniclassic",
-        "source_label": "FabianZettl/inniclassic and JonaszPotoniec/inniclassic-y2",
+        "source_label": "FabianZettl/inniclassic and ClassyPlayer/Classy",
     },
     "y2player": {
         "key": "y2player",

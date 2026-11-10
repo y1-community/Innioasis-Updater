@@ -218,15 +218,14 @@ window.INNIOASIS_FIRMWARE_CATALOG = [
     },
     {
         "slug": "inniclassic-y2",
-        "name": "Inniclassic",
+        "name": "Classy",
         "model": "Y2",
-        "repo": "JonaszPotoniec/inniclassic-y2",
-        "portable_zips": "y1-community/inniclassic-y2-mirror",
+        "repo": "ClassyPlayer/Classy",
         "packageName": "rom_y2.zip",
         "benefits": "inniclassic-benefits.html",
         "guide": "guides/inniclassic-y2.html",
         "seoPage": "inniclassic-y2-software.html",
-        "description": "Inniclassic build for the Innioasis Y2."
+        "description": "Classy build for the Innioasis Y2, formerly Inniclassic for Y2."
     },
     {
         "slug": "y2player-y2",
