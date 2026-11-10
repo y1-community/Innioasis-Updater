@@ -598,11 +598,10 @@
     function handOff(job, url) {
         job.status = "handoff";
         paint(job);
-        /* Only bytes that actually arrived prove the proxy works. A request it
-           refused (403 for a repository outside its allowlist) must never be
-           saved under the package's name, so a transfer with nothing in it
-           always sends the browser to the original release URL. */
-        var target = job.loaded > 0 ? (url || job.url) : job.url;
+        /* Callers pass the original release URL whenever the proxy refused the
+           request (403 for a repository outside its allowlist), so a refused
+           response is never saved under the package's name. */
+        var target = url || job.url;
         clickDirect(target, job.name);
         setTimeout(function () {
             if (job.status === "handoff") finish(job, 4000);
@@ -636,9 +635,13 @@
         var writer = null;
         if (job.cancelled) return;
 
+        /* Ask what the file is before pulling a byte. A package is hundreds of
+           megabytes, and fetching it only to read its headers started a second
+           transfer beside the browser's own download. */
         var response;
         try {
             response = await fetch(requestUrl, {
+                method: "HEAD",
                 mode: "cors",
                 credentials: "omit",
                 redirect: "follow",
@@ -652,7 +655,6 @@
             return;
         }
         if (!response || !response.ok) {
-            if (writer) { try { await writer.abort(); } catch (_) {} }
             /* A repository outside the proxy's allowlist answers 403 here. The
                browser must get the release asset, never that error page. */
             handOff(job, url);
@@ -666,15 +668,31 @@
         job.name = motherName(headerName || job.name || fileNameOf(url) || "download.bin");
         var length = Number(response.headers.get("content-length") || 0);
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
+
+        /* Anything the page cannot read whole goes to the browser at once,
+           under the name the proxy just gave it. */
+        if (!writer && (!job.total || job.total > BLOB_LIMIT)) {
+            handOff(job, requestUrl);
+            return;
+        }
+
         job.status = "running";
         paint(job);
 
-        /* Without a file handle, only a measured, small response is worth
-           reading: streaming a huge or unmeasured one would download it twice
-           or hold it all in memory. Those go to the browser once. */
-        if (!writer && (!job.total || job.total > BLOB_LIMIT)) {
-            try { if (response.body && response.body.cancel) await response.body.cancel(); } catch (_) {}
-            handOff(job, requestUrl);
+        try {
+            response = await fetch(requestUrl, {
+                mode: "cors",
+                credentials: "omit",
+                redirect: "follow",
+                signal: controller ? controller.signal : undefined
+            });
+        } catch (error) {
+            if (job.cancelled) return;
+            handOff(job, url);
+            return;
+        }
+        if (!response || !response.ok) {
+            handOff(job, url);
             return;
         }
 
