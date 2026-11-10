@@ -13,6 +13,12 @@
  * release, because the portable packages cannot run there. Type B packages
  * (rom_type_b.zip and its 240p/360p variants) follow exactly the same rule.
  *
+ * Windows XP through 8.1 and 32-bit Windows cannot run Updater CE at all, so
+ * those visits resolve a separate mirror asset instead: <rom>-windows-legacy.zip,
+ * the same rom packed beside the flash-tool-only package published with Updater
+ * CE releases (Innioasis-SP-Flash-Tool-windows-legacy.zip). Without that asset
+ * in the mirror release, the click keeps the standard Windows build.
+ *
  * The file is saved under the release's own name (rom.zip, rom_y2.zip,
  * rom_type_b.zip) rather than the mirror's OS-prefixed name. A cross-origin
  * response cannot be renamed by the download attribute, so when the
@@ -35,6 +41,7 @@
         macos: "-macos.zip",
         windows: "-windows.zip",
         "windows-arm64": "-windows-arm64.zip",
+        "windows-legacy": "-windows-legacy.zip",
         linux: "-linux.zip",
         "linux-arm64": "-linux-arm64.zip"
     };
@@ -42,6 +49,7 @@
         macos: "macOS",
         windows: "Windows",
         "windows-arm64": "Windows on ARM",
+        "windows-legacy": "Windows XP/7/8 (32/64-bit)",
         linux: "Linux",
         "linux-arm64": "Linux on ARM"
     };
@@ -91,6 +99,15 @@
        because the portable package wraps a desktop flash tool. */
     function platformKey() {
         if (platformCache) return platformCache;
+        /* Windows XP through 8.1 and 32-bit Windows cannot run Updater CE, so
+           the flash-tool bundle is the only package that works there. The
+           verdict comes from site-legacy.js, which reads the user agent once
+           for the whole site; until it loads, the standard build is used. */
+        var legacy = legacyKey();
+        if (legacy) {
+            platformCache = Promise.resolve(legacy);
+            return platformCache;
+        }
         platformCache = (async function () {
             var ua = navigator.userAgent || "";
             var plat = navigator.platform || "";
@@ -119,6 +136,18 @@
             return "";
         })();
         return platformCache;
+    }
+
+    /* Legacy Windows (XP through 8.1, and 32-bit) is decided once for the
+       whole site by site-legacy.js. Its verdict selects the flash-tool bundle,
+       which is the only package that can run there. */
+    function legacyKey() {
+        try {
+            var marker = window.INNIOASIS_LEGACY;
+            return marker && marker.isLegacy ? "windows-legacy" : "";
+        } catch (_) {
+            return "";
+        }
     }
 
     /* repo -> mirror repositories, straight from the manifest the app reads. */
@@ -288,7 +317,8 @@
        the release's own filename in Downloads on every path. */
     function releaseFileName(name, fallback) {
         var base = String(name || fallback || "rom.zip").split(/[?#]/)[0].split("/").pop();
-        base = base.replace(/[-_](?:windows|win|macos|mac|linux|android|darwin)(?:[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64))?(?=\.zip$)/i, "");
+        base = base.replace(/[-_]windows[-_]legacy(?=\.zip$)/i, "");
+        base = base.replace(/[-_](?:windows[-_]legacy|windows|win|macos|mac|linux|android|darwin)(?:[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64))?(?=\.zip$)/i, "");
         base = base.replace(/[-_](?:x64|amd64|x86[-_]?64|arm64|aarch64)(?=\.zip$)/i, "");
         if (!/\.zip$/i.test(base)) base = fallback || "rom.zip";
         return base;
@@ -530,7 +560,7 @@
         startToast(link);
         var label = osLabel(explicitPlatform);
         var target = null;
-        if (explicitPlatform && parseAssetUrl(href)) {
+        if (explicitPlatform && explicitPlatform !== "windows-legacy" && !legacyKey() && parseAssetUrl(href)) {
             /* The reader picked a named OS build; honour that link, but save
                it under the release's own name. */
             target = { url: href, platform: explicitPlatform };

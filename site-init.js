@@ -1404,5 +1404,30 @@
     }
     loadSiteDownloads();
 
+
+    /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
+       that visit gets the portable SP Flash Tool route instead of install
+       links it cannot use. Same pattern as site-downloads.js: no page needs an
+       extra script tag. */
+    function loadSiteLegacy() {
+        if (global.InnioasisLegacy || document.getElementById("site-legacy-script")) return;
+        var base = "";
+        try {
+            var scripts = document.getElementsByTagName("script");
+            for (var i = 0; i < scripts.length; i++) {
+                var src = scripts[i].src || "";
+                if (src.indexOf("site-init.js") === -1) continue;
+                base = src.replace(/[?#].*$/, "").replace(/[^/]*$/, "");
+                break;
+            }
+        } catch (_) {}
+        var node = document.createElement("script");
+        node.id = "site-legacy-script";
+        node.src = base + "site-legacy.js?v=20261110legacy";
+        node.defer = true;
+        document.head.appendChild(node);
+    }
+    loadSiteLegacy();
+
     global.y1LoadSupportToolbar = loadSupportToolbar;
 })(typeof window !== "undefined" ? window : globalThis);

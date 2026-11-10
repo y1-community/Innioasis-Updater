@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en"><head><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<meta charset="utf-8">
+<meta name="author" content="Innioasis and Ryan Specter">
+<meta name="creator" content="Innioasis and Ryan Specter">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install firmware on Windows XP, Vista, 7, 8 or 8.1 (32-bit and 64-bit) | Older Windows install guide</title>
+<meta name="description" content="Step-by-step install guide for Innioasis and Timmkoo firmware on Windows XP, Vista, 7, 8, 8.1 and 32-bit Windows. Download the package that includes SP Flash Tool, install the MediaTek driver, load the scatter file and flash the player when Updater CE cannot run.">
+<meta name="keywords" content="install Innioasis firmware Windows XP, install Innioasis firmware Windows 7, Innioasis software Windows 8, Innioasis update 32-bit Windows, Timmkoo firmware Windows 7, SP Flash Tool portable install, flash Innioasis on old Windows PC, firmware install Windows Vista">
+<link rel="canonical" href="https://innioasis.app/install/legacy-windows.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install firmware on Windows XP, Vista, 7, 8 or 8.1 (32-bit and 64-bit)">
+<meta property="og:description" content="Step-by-step install guide for Innioasis and Timmkoo firmware on Windows XP through 8.1 and 32-bit Windows, using the package that includes SP Flash Tool.">
+<meta property="og:url" content="https://innioasis.app/install/legacy-windows.html">
+<meta property="og:image" content="https://innioasis.app/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Install firmware on Windows XP, Vista, 7, 8 or 8.1">
+<meta name="twitter:description" content="Install Innioasis or Timmkoo firmware, software or an update on an older or 32-bit Windows PC with SP Flash Tool.">
+<meta name="twitter:image" content="https://innioasis.app/assets/og-image.png">
+<meta property="og:site_name" content="Innioasis Updater">
+<link rel="icon" href="../y1_illustration.png">
+<link rel="stylesheet" href="../site-theme.css?v=20261109theme">
+<link rel="stylesheet" href="../lumen.css?v=20261110picker">
+<link rel="stylesheet" href="../site-pages.css?v=20260818">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
+<link rel="stylesheet" href="../install.css?v=20261106">
+<script src="../site-init.js?v=20261110picker" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Install Innioasis or Timmkoo firmware on Windows XP, Vista, 7, 8 or 8.1","description":"Download the firmware package that includes SP Flash Tool, install the MediaTek USB driver, load the scatter file and flash the powered-off player on an older or 32-bit Windows PC.","totalTime":"PT15M","tool":[{"@type":"HowToTool","name":"A PC running Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows"},{"@type":"HowToTool","name":"A USB cable that carries data"},{"@type":"HowToTool","name":"SP Flash Tool, included in the firmware package"}],"step":[{"@type":"HowToStep","name":"Download the package for your model","text":"Open the firmware list, choose the model printed on the player, then choose the release. Download the zip whose name ends in -windows-legacy.zip."},{"@type":"HowToStep","name":"Install the MediaTek USB driver","text":"Unpack the package and run the driver installer from the Driver folder. Restart the PC afterwards."},{"@type":"HowToStep","name":"Open SP Flash Tool and load the scatter file","text":"Run flash_tool.exe from the SP_Flash_Tool folder, choose Scatter-loading and select the _Android_scatter.txt file from the firmware folder."},{"@type":"HowToStep","name":"Flash the player","text":"Press Download, power the player fully off, then connect it with the USB cable. Wait for the green success box before unplugging anything."},{"@type":"HowToStep","name":"Let the player finish its first boot","text":"Disconnect the player, switch it on and allow a few minutes for the first start. Restore the stock package for the same model if anything looks wrong."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I install Innioasis firmware on Windows XP or Windows 7?","acceptedAnswer":{"@type":"Answer","text":"Yes. Updater CE cannot run there, but every release has a package ending in -windows-legacy.zip that carries SP Flash Tool and the same firmware. It works from Windows XP onwards, on both 32-bit and 64-bit Windows."}},{"@type":"Question","name":"Why is Updater CE not offered on this computer?","acceptedAnswer":{"@type":"Answer","text":"Updater CE is a 64-bit application and needs Windows 10 1809 or newer. On Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows the site offers the SP Flash Tool package instead, because the app cannot open there."}},{"@type":"Question","name":"Is the -windows-legacy.zip the same firmware?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is the same rom for the same release, packed beside SP Flash Tool instead of the Updater CE app. The scatter file and partition images are identical."}},{"@type":"Question","name":"Do I need the internet on the player?","acceptedAnswer":{"@type":"Answer","text":"No. Everything needed is inside the zip: the firmware, SP Flash Tool, the MediaTek driver and a donate.txt. Nothing is downloaded during the flash."}},{"@type":"Question","name":"Will flashing erase my music?","acceptedAnswer":{"@type":"Answer","text":"A flash writes the system partition, so copy any files you cannot replace off the player first. Files on a microSD card are normally left alone, but remove the card if you want to be certain."}},{"@type":"Question","name":"What if SP Flash Tool does not detect the player?","acceptedAnswer":{"@type":"Answer","text":"Reinstall the MediaTek driver from the Driver folder, restart the PC, use a USB port on the PC itself rather than a hub, and press Download before connecting the powered-off player."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innioasis.app/"},{"@type":"ListItem","position":2,"name":"Install guides","item":"https://innioasis.app/install/"},{"@type":"ListItem","position":3,"name":"Older Windows","item":"https://innioasis.app/install/legacy-windows.html"}]}</script>
+</head>
+<body class="site-themes-app install-page install-deep"><a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-install">
+<nav class="install-crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span class="install-crumb-sep">/</span> <a href="index.html">Install guides</a> <span class="install-crumb-sep">/</span> <span aria-current="page">Older Windows</span></nav>
+<header>
+<p class="lumen-kicker">Older Windows · Windows XP / Vista / 7 / 8 / 8.1 · 32-bit and 64-bit</p>
+<h1>Install firmware on Windows XP, Vista, 7, 8 or 8.1</h1>
+<p class="lead">Updater CE needs 64-bit Windows 10 (1809 or newer), so it cannot open on these PCs. The same firmware is published as a package that carries SP Flash Tool beside the rom, and that tool runs from Windows XP onwards. This guide installs firmware, a community software release, an update or a stock package with it.</p>
+<div class="lumen-actions"><a class="lumen-button lumen-button--primary" href="../firmware-list.html">Browse packages for my model</a><a class="lumen-button" href="../windows-legacy.html">What is in the package?</a><a class="lumen-button" href="index.html">All install guides</a></div>
+</header>
+<section class="lumen-guide-section install-section">
+<h2>Before you start</h2>
+<ul class="install-checklist">
+<li><strong>Model:</strong> the name printed on the player. A Y1 package will not work on a Y2, and Timmkoo models are not interchangeable with Innioasis ones either.</li>
+<li><strong>Computer:</strong> Windows XP, Vista, 7, 8 or 8.1, 32-bit or 64-bit. Windows 10 and 11 can use Updater CE from the <a href="../guide.html">main guide</a> instead.</li>
+<li><strong>Cable:</strong> a USB cable that carries data. A charge-only cable is the usual reason the player is never detected.</li>
+<li><strong>Power:</strong> charge the player to at least half before you begin.</li>
+<li><strong>Backup:</strong> copy music and other files you cannot replace off the player. A flash replaces the system partition.</li>
+</ul>
+</section>
+<section class="lumen-guide-section install-section" id="which-package">
+<h2>Which file do I download?</h2>
+<p>Open the <a href="../firmware-list.html">firmware list</a>, find the model, then the software you want: Original Software, Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, Koensayr or another community system. For each release the archive lists the packages it has.</p>
+<p>A package for this computer ends in <code>-windows-legacy.zip</code>. It is named after the release, for example <code>rom-windows-legacy.zip</code> or <code>rom_y2-windows-legacy.zip</code>, and it contains the firmware, SP Flash Tool, the MediaTek driver and a <code>donate.txt</code>. If you only see Windows, macOS or Linux packages, that release has not been built for older Windows yet; try the newest release of the same software.</p>
+<div class="lumen-callout"><p><strong>Same firmware, different wrapper.</strong> The legacy package holds exactly the same scatter file and partition images as the Updater CE version. The only difference is which tool opens them.</p></div>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Step 1: install the MediaTek USB driver</h2>
+<ol class="lumen-steps">
+<li>Unpack the zip somewhere short and simple, such as <code>C:\Innioasis</code>. Avoid folders with long names or spaces.</li>
+<li>Open the <code>Driver</code> folder and run the installer inside it. Windows XP and Vista will warn about an unsigned driver; allow it, because the player is invisible without it.</li>
+<li>Restart the PC. The driver only takes effect after a reboot.</li>
+</ol>
+<p class="lumen-meta">If Windows still does not see the player later, reinstall the driver and try another USB port on the PC itself rather than a hub. <a href="../drivers.html#windows">Full Windows driver notes</a>.</p>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Step 2: unpack the firmware package</h2>
+<ol class="lumen-steps">
+<li>Right-click the downloaded zip and choose <strong>Extract All</strong>, or use 7-Zip or WinRAR. Do not run anything from inside the zip window.</li>
+<li>You should now have a folder with the <code>SP_Flash_Tool</code> folder, a <code>Driver</code> folder, <code>README.txt</code> and <code>donate.txt</code>.</li>
+<li>Find the scatter file: a small text file ending in <code>_Android_scatter.txt</code>. It sits in the <code>SP_Flash_Tool</code> folder beside the rom images.</li>
+</ol>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Step 3: flash the player</h2>
+<ol class="lumen-steps">
+<li>Open <code>flash_tool.exe</code> from the <code>SP_Flash_Tool</code> folder.</li>
+<li>Click <strong>Scatter-loading</strong> and choose the <code>_Android_scatter.txt</code> file. The partition list should fill with the rom files beside it.</li>
+<li>Leave the mode on <strong>Download Only</strong>. Tick <strong>Preloader</strong> only when the player will not start at all and you are restoring it.</li>
+<li>Click <strong>Download</strong>, then power the player fully off and connect the USB cable.</li>
+<li>Wait for the green success box. Do not unplug the player or close SP Flash Tool while the progress bar is moving.</li>
+</ol>
+<div class="lumen-warning"><strong>Never cross-install a model.</strong><span>A Y1 package on a Y2, or the other way round, can leave the player with dead controls or a boot loop. Check the printed model before you start.</span></div>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>If the flash does not start</h2>
+<ol class="lumen-steps">
+<li><strong>Nothing happens after Download:</strong> unplug the cable, hold the player's power button for ten seconds, then click <strong>Download</strong> again and reconnect only after SP Flash Tool is waiting.</li>
+<li><strong>The player is never detected:</strong> reinstall the MediaTek driver from the <code>Driver</code> folder, restart the PC and try a different USB port. Some older PCs only work on a rear port.</li>
+<li><strong>An error appears part-way through:</strong> close SP Flash Tool, power the player off completely, and start again from the scatter file. Do not try a different model's package.</li>
+<li><strong>It finishes but will not boot:</strong> give the first boot a few minutes, then restore Original Software for the same model from the <a href="../firmware-list.html">firmware list</a>.</li>
+</ol>
+<p class="lumen-meta">If no tool detects the player at all, treat it as a cable, driver or hardware problem before trying another firmware.</p>
+</section>
+<section class="lumen-guide-section install-section" id="terms">
+<h2>Firmware, software, update or package?</h2>
+<p>The words are used interchangeably across this site, and the steps above are the same for each:</p>
+<ul>
+<li><strong>Firmware</strong> or <strong>rom</strong>: the complete system image for a model.</li>
+<li><strong>Software</strong> or <strong>system</strong>: a community build such as Rockbox, Solar or JJ Launcher, delivered as the same kind of package.</li>
+<li><strong>Update</strong>: a newer release of either. Install it exactly like a fresh package.</li>
+<li><strong>Package</strong> or <strong>zip</strong>: the download. A legacy package is the one that includes SP Flash Tool.</li>
+</ul>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Supporting the projects</h2>
+<p>Every legacy package includes <code>donate.txt</code>, which lists the ways to support the people who keep these players usable. Nothing in the package is limited by whether you donate.</p>
+<div class="lumen-actions"><a class="lumen-button" href="../support_devs.html">Support the projects</a><a class="lumen-button" href="../windows-legacy.html">Older Windows overview</a></div>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Questions people ask</h2>
+<details><summary>Can I install Innioasis firmware on Windows XP or Windows 7?</summary><p>Yes. Updater CE cannot run there, but every release has a package ending in <code>-windows-legacy.zip</code> that carries SP Flash Tool and the same firmware. It works from Windows XP onwards, on both 32-bit and 64-bit Windows.</p></details>
+<details><summary>Why is Updater CE not offered on this computer?</summary><p>Updater CE is a 64-bit application and needs Windows 10 1809 or newer. On Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows the site offers the SP Flash Tool package instead, because the app cannot open there.</p></details>
+<details><summary>Is the -windows-legacy.zip the same firmware?</summary><p>Yes. It is the same rom for the same release, packed beside SP Flash Tool instead of the Updater CE app. The scatter file and partition images are identical.</p></details>
+<details><summary>Do I need the internet on the player?</summary><p>No. Everything needed is inside the zip: the firmware, SP Flash Tool, the MediaTek driver and a <code>donate.txt</code>. Nothing is downloaded during the flash.</p></details>
+<details><summary>Will flashing erase my music?</summary><p>A flash writes the system partition, so copy any files you cannot replace off the player first. Files on a microSD card are normally left alone, but remove the card if you want to be certain.</p></details>
+<details><summary>What if SP Flash Tool does not detect the player?</summary><p>Reinstall the MediaTek driver from the <code>Driver</code> folder, restart the PC, use a USB port on the PC itself rather than a hub, and press Download before connecting the powered-off player.</p></details>
+</section>
+<section class="lumen-guide-section install-section">
+<h2>Other computers and references</h2>
+<div class="lumen-grid install-related">
+<article class="lumen-card install-card"><h3>Windows 10 and 11</h3><p>The guided install with Updater CE, including the MediaTek driver.</p><div class="lumen-actions"><a class="lumen-button" href="windows.html">Windows install guides</a></div></article>
+<article class="lumen-card install-card"><h3>macOS and Linux</h3><p>Updater CE runs on a Mac and on x86-64 Linux, and neither needs SP Flash Tool.</p><div class="lumen-actions"><a class="lumen-button" href="mac.html">macOS</a><a class="lumen-button" href="linux.html">Linux</a></div></article>
+<article class="lumen-card install-card"><h3>SP Flash Tool notes</h3><p>How the tool is used outside Updater CE, and what each download mode does.</p><div class="lumen-actions"><a class="lumen-button" href="../sp-flash-tool.html">SP Flash Tool guide</a></div></article>
+</div>
+<div class="lumen-actions"><a class="lumen-button" href="index.html">All install guides</a><a class="lumen-button" href="../troubleshooting.html">Troubleshooting</a><a class="lumen-button" href="../firmware-list.html">Firmware list</a></div>
+</section>
+<section class="lumen-guide-section" data-lumen-feedback data-feedback="install-guide"><h2>Was this useful?</h2><div class="lumen-feedback"><p>Your answer helps improve this guide.</p><button type="button" data-feedback-value="yes" aria-pressed="false">Yes, I found it useful</button><button type="button" data-feedback-value="no" aria-pressed="false">Not yet</button><a class="lumen-feedback-support" data-feedback-support hidden href="https://github.com/y1-community/Innioasis-Updater/issues" target="_blank" rel="noopener noreferrer">Let us know how we can improve</a></div></section>
+</main>
+<div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../nav.js?v=20261105copyleft" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+<script src="../site-platform.js?v=20261106" defer></script>
+</body></html>
