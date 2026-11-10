@@ -2626,14 +2626,48 @@
                module is not on this page, the browser downloads as before. */
             var downloads = window.InnioasisDownloads;
             if (downloads && typeof downloads.start === "function") {
-                downloads.start(zipUrl, btn, btn.getAttribute("data-zip-name") || "");
+                /* Resolve the mirror's package for this computer before the
+                   module streams anything: handing it the release's own
+                   rom.zip would skip the OS/arch build every time. */
+                preparePortableZip(btn, zipUrl).then(function (portableUrl) {
+                    downloads.start(portableUrl || zipUrl, btn, btn.getAttribute("data-zip-name") || "rom.zip");
+                });
                 return;
             }
-            if (!href) startBrowserDownload(zipUrl);
+            preparePortableZip(btn, zipUrl).then(function (portableUrl) {
+                if (portableUrl) startBrowserDownload(portableUrl);
+                else if (!href) startBrowserDownload(zipUrl);
+            });
+        }
+
+        /* The mirror names the file it built for this computer; a project
+           with no portable build keeps its own rom.zip. One lookup per
+           control, shared by the hover warm-up and the click, so the click
+           never repeats a request the pointer already started. */
+        function preparePortableZip(btn, zipUrl) {
+            if (btn._portableZip) return btn._portableZip;
+            var portableZips = btn.getAttribute("data-portable-zips") || "";
+            var releaseTag = btn.getAttribute("data-release-tag") || "";
+            var assetName = btn.getAttribute("data-zip-name") || String(zipUrl || "").split("/").pop() || "rom.zip";
+            if (!portableZips || !releaseTag) return Promise.resolve("");
+            btn._portableZip = resolvePortableZip(portableZips, releaseTag, assetName).then(function (portable) {
+                return portable ? portable.url : "";
+            }, function () { return ""; });
+            return btn._portableZip;
+        }
+
+        /* The lookup asks raw.githubusercontent.com and api.github.com, so it
+           starts when the reader points at the control, not when they click. */
+        function warmPortableZip(event) {
+            var btn = event.target && event.target.closest ? event.target.closest("[data-portable-zips]") : null;
+            if (!btn) return;
+            preparePortableZip(btn, btn.getAttribute("data-zip-url") || btn.getAttribute("href") || "");
         }
 
         table.addEventListener("click", handleZipDownloadClick);
         document.addEventListener("click", handleZipDownloadClick);
+        table.addEventListener("pointerover", warmPortableZip);
+        table.addEventListener("focusin", warmPortableZip);
 
         /* Opening a release's details means the visitor is reading about that
            exact version, so version-targeted notices apply from then on. */
