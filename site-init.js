@@ -1456,15 +1456,87 @@
         return base;
     }
 
+    /* Downloads go to the browser's own downloader by default: the reader
+       sees the file start in the browser and its copy land in Downloads,
+       with the browser's own progress and retry. The in-page progress UI is
+       opt-in while it is repaired: set window.InnioasisInlineDownloads =
+       true before this script runs to let site-downloads.js claim links
+       again (site-downloads.js stays on disk, unused, until then). */
+    function installDirectDownloads() {
+        if (global.InnioasisDownloads) return;
+        var FILE = /\.(zip|img|dmg|pkg|apk|appimage|exe|msi|7z|tar|gz|xz|bz2|tgz|iso|bin|jar|ipa|app)(?:[?#]|$)/i;
+        var ASSET = /^https:\/\/github\.com\/[^/]+\/[^/]+\/releases\/(?:latest\/)?download\//i;
+
+        function unwrap(href) {
+            try {
+                var url = new URL(href, global.location.href);
+                var target = url.searchParams.get("url");
+                if (target && ASSET.test(target)) return target;
+                return url.href;
+            } catch (_) { return href; }
+        }
+
+        /* Mark the link so lumen-site.js and site-downloads.js both leave it
+           to the browser, and point a proxy-wrapped link at the asset
+           itself. Marked on click because table rows and release details are
+           rendered after this script runs. */
+        function handBack(link) {
+            if (!link || !link.getAttribute) return false;
+            var href = link.getAttribute("href") || "";
+            if (!href || /^(#|mailto:|tel:|javascript:)/i.test(href)) return false;
+            var url = unwrap(href);
+            if (!FILE.test(url) && !link.hasAttribute("download")) return false;
+            link.setAttribute("data-direct-download", "");
+            link.setAttribute("data-no-inpage-download", "");
+            if (url !== href) link.setAttribute("href", url);
+            return true;
+        }
+
+        function anchorOf(node) {
+            while (node && node !== document.body && node.nodeType === 1) {
+                if (node.tagName === "A" && node.getAttribute("href")) return node;
+                node = node.parentNode;
+            }
+            return null;
+        }
+
+        /* Pages and scripts that ask for a download by URL get the same
+           browser download, so no caller is left without its file. */
+        global.InnioasisDownloads = {
+            version: "20261110direct",
+            start: function (url, anchor, name) {
+                var link = document.createElement("a");
+                link.href = unwrap(url);
+                link.download = name || "";
+                link.rel = "noopener";
+                link.setAttribute("data-direct-download", "");
+                (document.body || document.documentElement).appendChild(link);
+                link.click();
+                setTimeout(function () {
+                    if (link.parentNode) link.parentNode.removeChild(link);
+                }, 3000);
+                return true;
+            },
+            jobs: function () { return []; }
+        };
+
+        document.addEventListener("click", function (event) {
+            if (event.defaultPrevented || event.button !== 0) return;
+            handBack(anchorOf(event.target));
+        }, true);
+    }
+
     function loadSiteDownloads() {
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261110inline";
+        node.src = siteBase() + "site-downloads.js?v=20261110inline2";
         node.defer = true;
         document.head.appendChild(node);
     }
-    loadSiteDownloads();
+
+    if (global.InnioasisInlineDownloads === true) loadSiteDownloads();
+    else installDirectDownloads();
 
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install
