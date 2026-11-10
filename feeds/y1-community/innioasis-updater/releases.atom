@@ -13,9 +13,9 @@
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/Innioasis-Updater/releases/tag/2.5.3"/>
     <innioasis:tag_name>2.5.3</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="319339000" type="application/vnd.appimage" innioasis:download_count="106" innioasis:asset_id="719980052"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="148283609" type="application/x-msdownload" innioasis:download_count="322" innioasis:asset_id="722043025"/>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119787348" type="application/x-apple-diskimage" innioasis:download_count="80" innioasis:asset_id="724733963"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/UpdaterCE.appimage" title="UpdaterCE.appimage" length="319339000" type="application/vnd.appimage" innioasis:download_count="110" innioasis:asset_id="719980052"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/installer.exe" title="installer.exe" length="148283609" type="application/x-msdownload" innioasis:download_count="363" innioasis:asset_id="722043025"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119787348" type="application/x-apple-diskimage" innioasis:download_count="93" innioasis:asset_id="724733963"/>
     <content type="text">In this release changes include:
 
 Keep Settings and Media - Retains your player&#x27;s settings and personal files/media where the firmware you&#x27;re installing is compatible with your existing firmware*
@@ -106,7 +106,7 @@ Ryan - Maintainer of Updater CE.</content>
     <link rel="alternate" type="text/html" href="https://github.com/y1-community/Innioasis-Updater/releases/tag/2.0.4"/>
     <innioasis:tag_name>2.0.4</innioasis:tag_name>
     <innioasis:prerelease>false</innioasis:prerelease>
-    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.4/run_linux.sh" title="run_linux.sh" length="87903" type="application/octet-stream" innioasis:download_count="1079" innioasis:asset_id="520237990"/>
+    <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.4/run_linux.sh" title="run_linux.sh" length="87903" type="application/octet-stream" innioasis:download_count="1080" innioasis:asset_id="520237990"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.4/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="1389069" type="application/octet-stream" innioasis:download_count="1369" innioasis:asset_id="520238058"/>
     <link rel="enclosure" href="https://github.com/y1-community/Innioasis-Updater/releases/download/2.0.4/installer.exe" title="installer.exe" length="264870688" type="application/x-msdownload" innioasis:download_count="4140" innioasis:asset_id="520238168"/>
     <content type="text"># Looking to get started with Updater, and custom firmware on your Innioasis Y1 or Y2 Please visit www.innioasis.app to get started. 

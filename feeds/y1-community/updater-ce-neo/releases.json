@@ -28,7 +28,7 @@
         "name": "installer.exe",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/installer.exe",
         "size": 148283609,
-        "download_count": 89,
+        "download_count": 94,
         "content_type": "application/x-msdownload",
         "created_at": "2026-11-07T21:49:50Z",
         "updated_at": "2026-11-07T21:50:33Z",
@@ -50,11 +50,33 @@
         "name": "Innioasis.Updater.for.Mac.dmg",
         "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg",
         "size": 119787348,
-        "download_count": 13,
+        "download_count": 14,
         "content_type": "application/x-diskcopy",
         "created_at": "2026-11-08T17:15:56Z",
         "updated_at": "2026-11-08T17:16:33Z",
         "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/724630592"
+      },
+      {
+        "id": 730942067,
+        "name": "UpdaterCE-Lite.tar.gz.sha256",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Lite.tar.gz.sha256",
+        "size": 88,
+        "download_count": 0,
+        "content_type": "application/octet-stream",
+        "created_at": "2026-11-10T10:03:18Z",
+        "updated_at": "2026-11-10T10:03:18Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/730942067"
+      },
+      {
+        "id": 730942070,
+        "name": "UpdaterCE-Lite.tar.gz",
+        "browser_download_url": "https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Lite.tar.gz",
+        "size": 228570373,
+        "download_count": 0,
+        "content_type": "application/x-gtar",
+        "created_at": "2026-11-10T10:03:18Z",
+        "updated_at": "2026-11-10T10:03:44Z",
+        "url": "https://api.github.com/repos/y1-community/updater-ce-neo/releases/assets/730942070"
       }
     ]
   },

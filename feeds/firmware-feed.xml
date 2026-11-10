@@ -4,7 +4,7 @@
   <title>Innioasis and Timmkoo firmware releases</title>
   <link rel="alternate" type="text/html" href="https://innioasis.app/firmware-list.html"/>
   <link rel="self" type="application/atom+xml" href="https://innioasis.app/feeds/firmware-feed.xml"/>
-  <updated>2026-11-10T02:18:12Z</updated>
+  <updated>2026-11-10T10:04:43Z</updated>
   <inni:schema_version>2</inni:schema_version>
   <inni:manifest_url>https://innioasis.app/slidia_manifest.xml</inni:manifest_url>
   <inni:firmware_list_url>https://innioasis.app/firmware-list.html</inni:firmware_list_url>
@@ -2864,7 +2864,7 @@
         </inni:mirror_asset>
       </inni:release>
     </inni:mirror>
-    <inni:mirror repo="y1-community/y2player-mirror" source_repo="schulzcode/y2player" updated_at="2026-11-10T02:18:12Z">
+    <inni:mirror repo="y1-community/y2player-mirror" source_repo="schulzcode/y2player" updated_at="2026-11-10T10:04:43Z">
       <inni:release tag="ReleaseV2.3" original_tag="ReleaseV2.3" mirror_tag="ReleaseV2.3" release_name="Portable Flashing Package: Y2Player V2.3" published_at="2026-11-03T16:10:44Z">
         <inni:mirror_asset name="rom_y2-linux.zip" tag="ReleaseV2.3" original_url="" original_size="624788284" mirror_original_url="https://github.com/y1-community/y2player-mirror/releases/download/ReleaseV2.3/rom_y2-linux.zip">
         </inni:mirror_asset>
@@ -35334,6 +35334,8 @@ Features
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/installer.exe" title="installer.exe" length="148283609" type="application/x-msdownload"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Windows-Portable.zip" title="UpdaterCE-Windows-Portable.zip" length="205854850" type="application/x-zip-compressed"/>
     <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/Innioasis.Updater.for.Mac.dmg" title="Innioasis.Updater.for.Mac.dmg" length="119787348" type="application/x-diskcopy"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Lite.tar.gz.sha256" title="UpdaterCE-Lite.tar.gz.sha256" length="88" type="application/octet-stream"/>
+    <link rel="enclosure" href="https://github.com/y1-community/updater-ce-neo/releases/download/2.5.3/UpdaterCE-Lite.tar.gz" title="UpdaterCE-Lite.tar.gz" length="228570373" type="application/x-gtar"/>
     <content type="text">In this release changes include:
 
 Keep Settings and Media - Retains your player&#x27;s settings and personal files/media where the firmware you&#x27;re installing is compatible with your existing firmware*
