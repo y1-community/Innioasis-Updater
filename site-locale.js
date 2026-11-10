@@ -35,7 +35,7 @@
     /* Catalogs are re-fetched under a new URL when their content changes.
        Without this a returning visitor keeps the copy they cached, so a
        language whose catalog was just completed still reads as English. */
-    var CATALOG_VERSION = "20261109i18n";
+    var CATALOG_VERSION = "20261110i18n";;
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -682,7 +682,13 @@
     /* Missing strings share a request. A few batches run together so the
        visible page finishes without opening a connection per string. */
     var DYNAMIC_BATCH_MAX = 48;
-    var DYNAMIC_CONCURRENCY = 3;
+    var DYNAMIC_CONCURRENCY = (function () {
+        var cores = (typeof navigator !== "undefined" && navigator.hardwareConcurrency) || 8;
+        var ua = (typeof navigator !== "undefined" && navigator.userAgent) || "";
+        var mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+        try { if (navigator.userAgentData && navigator.userAgentData.mobile) mobile = true; } catch (_) {}
+        return (mobile || cores <= 4) ? 1 : 2;
+    })();
     var DYNAMIC_BATCH_URL = 6000;
     /* gtx answers without CORS headers once it rate limits, which is a failed
        fetch rather than a status. Remember it and go straight to the endpoint
@@ -2212,7 +2218,8 @@
                 mountToggle();
                 bindExistingToggle();
                 updateDockLabel();
-                applyLanguage();
+                var dock = document.getElementById("support-toolbar-container");
+                if (dock) queueChrome(dock);
             });
             document.addEventListener("click", function (event) {
                 var trigger = event.target.closest && event.target.closest("[data-locale-open]");
@@ -2361,6 +2368,10 @@
            subtree in one write. */
         refresh: applyLanguage,
         translateDynamic: queueDynamic,
+        /* The footer dock is inserted after the first pass. Translate that
+           subtree only, and put any strings the catalog missed into the
+           same batch the rest of the page uses. */
+        queueChrome: queueChrome,
         /* Translate one string that a page rendered itself (theme cards, list
            rows). Resolves to "" when the locale is English, the request is
            over the page cap, or the provider has nothing to add, so callers
