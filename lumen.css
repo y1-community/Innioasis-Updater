@@ -1512,3 +1512,38 @@ body.site-themes-app #footer-root {
     .site-footer .footer-grid { grid-template-columns: 1fr !important; }
     .site-footer .footer-bottom { justify-content: flex-start; }
 }
+
+/* —— Release rows: the action cell holds a two-line button and a download
+   prompt, so it needs real width and labels must never break per letter. —— */
+.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(1) { width: 38%; }
+.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(2) { width: 26%; }
+.lumen-release-table:has(> thead > tr > th:nth-child(3)) > thead > tr > th:nth-child(3) { width: 36%; }
+
+.lumen-release-table .lumen-actions { min-width: 230px; }
+
+.lumen-release-table .lumen-actions a,
+.lumen-release-table .lumen-actions button,
+.lumen-release-table .lumen-updater-button,
+.lumen-release-table .lumen-updater-button strong,
+.lumen-release-table .lumen-updater-button small {
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.lumen-release-table .lumen-updater-button { max-width: 100%; }
+
+.lumen-download-progress-box {
+    min-width: 240px;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.lumen-download-progress-box button,
+.lumen-download-progress-box a { white-space: nowrap; }
+
+@media (max-width: 760px) {
+    .lumen-download-progress-box { min-width: 0; }
+    .lumen-release-table .lumen-actions { min-width: 0; }
+    .lumen-release-table .lumen-actions button { white-space: normal; }
+}
