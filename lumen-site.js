@@ -959,21 +959,11 @@
         document.body.removeChild(area);
     }
 
-    /* Download links with data-download-confirm swap their label for the
-       confirm phrase once the browser starts the download (e.g. the Windows
-       installer button reads "Download started"). The label is translated
-       for the Night City theme when that theme is active. */
-    function initDownloadConfirm() {
-        document.querySelectorAll("[data-download-confirm]").forEach(function (link) {
-            link.addEventListener("click", function () {
-                var label = link.getAttribute("data-download-confirm");
-                if (window.INNIOASIS_I18N && window.INNIOASIS_I18N.isActive && window.INNIOASIS_I18N.isActive()) {
-                    label = window.INNIOASIS_I18N.translate(label);
-                }
-                link.textContent = label;
-            });
-        });
-    }
+    /* Download links hand the file to the browser's own downloader, so the
+       label stays exactly as written: the control reads like an ordinary
+       download and never claims progress the page cannot see. The
+       data-download-confirm attribute is left in the markup, unused. */
+    function initDownloadConfirm() {}
 
     function openEdgeKeepModal() {
         var modal = document.getElementById("edge-keep-modal");
@@ -2601,6 +2591,28 @@
             try { history.replaceState(null, "", "?" + qs + window.location.hash); } catch (_) {}
         }
 
+        /* One anchor click, nothing held by the page: the request goes to the
+           browser's own downloader and the file streams into Downloads with
+           the browser's progress, retry and resume. */
+        function startBrowserDownload(url) {
+            var link = document.createElement("a");
+            link.href = url;
+            link.rel = "noopener";
+            link.setAttribute("data-direct-download", "1");
+            (document.body || document.documentElement).appendChild(link);
+            link.click();
+            setTimeout(function () {
+                if (link.parentNode) link.parentNode.removeChild(link);
+            }, 2000);
+        }
+
+        /* Downloads hand straight back to the browser. Nothing is prevented,
+           nothing is streamed by the page, and no ZIP is assembled here: the
+           in-page progress panel is paused while it is rebuilt, so a click
+           must always start a real download. The catalog's ZIP control is a
+           <button data-zip-url> with no href of its own, so it is given an
+           anchor to click; every other control is a link whose own href the
+           browser already downloads. */
         function handleZipDownloadClick(event) {
             if (event.defaultPrevented || event.button !== 0) return;
             var btn = event.target && event.target.closest ? event.target.closest(".lumen-zip-download-button, .lumen-zip-text-link, a[data-zip-url], a[href*='rom.zip'], a[href$='.zip']") : null;
@@ -2608,13 +2620,7 @@
             var href = btn.getAttribute("href") || "";
             var zipUrl = btn.getAttribute("data-zip-url") || href;
             if (!zipUrl || !/\.zip/i.test(zipUrl)) return;
-            event.preventDefault();
-            var zipName = btn.getAttribute("data-zip-name") || (zipUrl.match(/[^/?#]+\.zip/i) ? zipUrl.match(/[^/?#]+\.zip/i)[0] : "rom.zip");
-            var itemName = btn.getAttribute("data-item-name") || "Software";
-            var itemModel = btn.getAttribute("data-item-model") || "Y1";
-            var releaseTag = btn.getAttribute("data-release-tag") || "release";
-            var portableZips = btn.getAttribute("data-portable-zips") || "";
-            startSmartZipDownload(zipUrl, zipName, itemName, itemModel, releaseTag, portableZips, btn);
+            if (!href) startBrowserDownload(zipUrl);
         }
 
         table.addEventListener("click", handleZipDownloadClick);
