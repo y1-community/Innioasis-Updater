@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terminal session for developers | Innioasis Updater CE</title>
+  <meta name="description" content="Developer notes for the Updater CE text session: --tui, --cli, and the streamed Linux lite installer. This is not a promoted download path.">
+  <link rel="canonical" href="https://innioasis.app/developers-terminal.html">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="y1_illustration.png">
+  <link rel="stylesheet" href="site-theme.css?v=20261109theme">
+  <link rel="stylesheet" href="lumen.css?v=20261110picker">
+  <link rel="stylesheet" href="site-pages.css?v=20260818">
+  <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
+  <script src="site-init.js?v=20261110picker" defer></script>
+</head>
+<body class="site-themes-app">
+  <a class="lumen-skip-link" href="#main">Skip to content</a>
+  <div id="nav-root"></div>
+  <main id="main" class="lumen-guide lumen-developer-guide">
+    <header>
+      <p class="lumen-kicker">For developers</p>
+      <h1>The text session.</h1>
+      <p class="lead">This page is for people working on Updater CE. It is not a promoted way to install the app. The AppImage, the tarball and the zip still open the window when they are started with no flag. The window's flashing path is unchanged.</p>
+      <div class="lumen-actions">
+        <a class="lumen-button" href="developers.html">Back to the developer guide</a>
+      </div>
+    </header>
+
+    <section class="lumen-guide-section" aria-labelledby="flags-title">
+      <h2 id="flags-title">How to open it</h2>
+      <p><code>--tui</code> opens Select Software in the terminal: Brand, Model, Type, Software, the release list, notes, Install, Install from a file, Settings, Support, Language and Credits. A mouse click and the keyboard both complete that journey. <code>--cli</code> is the non-interactive command path. Windows, macOS and Linux use the same entry. Windows has no curses in the standard library, so it uses numbered prompts; a terminal that reports mouse clicks still selects a row.</p>
+      <pre class="lumen-code"><code>python3 launcher.py --tui
+python3 launcher.py --cli list --model Y1</code></pre>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="lite-title">
+      <h2 id="lite-title">Streamed Linux installer</h2>
+      <p><code>run_linux_lite.sh</code>, also served at <code>https://innioasis.app/run_linux_lite.sh</code>, is the Linux text session for a headless machine or a 32-bit Intel or ARM board. It does not install the Qt window. On those machines, and whenever there is no display, the session says so and uses MTKclient (<code>mtk wl &lt;folder&gt;</code>) instead of the Qt SP Flash Tool window. SP Flash Tool remains the Linux x86_64 tool.</p>
+    </section>
+
+    <section class="lumen-guide-section" aria-labelledby="components-title">
+      <h2 id="components-title">When tools are downloaded</h2>
+      <p>A component that is already inside the AppImage, the tarball, the portable zip, or the user tool cache is not downloaded again. On a measured link above 60 Mbps the session prefetches the tools that session will need before the menu. At 60 Mbps or below, or if the probe fails, each file is fetched at the step that needs it, with progress. adb is fetched for a Rockbox step. On Linux x86_64 with a display, SP Flash Tool is fetched before the first install that needs it, then run with the same console arguments the window uses.</p>
+    </section>
+  </main>
+  <script src="nav.js?v=20261110rows2" defer></script>
+</body>
+</html>
