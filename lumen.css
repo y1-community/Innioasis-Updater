@@ -112,7 +112,7 @@ body.site-themes-app:has(#support-toolbar-container.y1-toolbar-hidden) #footer-r
 }
 body.site-themes-app *, body.site-themes-app *::before, body.site-themes-app *::after { box-sizing: border-box; }
 body.site-themes-app :where(a:not(.btn, .lumen-button, .guide-action-btn, .site-compat-banner__cta, .y1-dock-link, .lumen-brand-home)) { color: var(--lumen-accent); text-underline-offset: .18em; }
-body.site-themes-app :where(a:not(.btn, .lumen-button, .guide-action-btn, .site-compat-banner__cta, .y1-dock-link, .lumen-brand-home)):hover { color: var(--lumen-paper); }
+body.site-themes-app :where(a:not(.btn, .lumen-button, .guide-action-btn, .site-compat-banner__cta, .y1-dock-link, .lumen-brand-home)):hover { color: var(--lumen-text); }
 body.site-themes-app .btn,
 body.site-themes-app .lumen-button:not(.lumen-button--secondary),
 body.site-themes-app .guide-action-btn,
@@ -172,7 +172,7 @@ body.site-themes-app .logo > a:first-child,
 body.site-themes-app .lumen-brand-home,
 .lumen-brand-home { display: flex; align-items: center; color: var(--lumen-text) !important; font-weight: 700; text-decoration: none; letter-spacing: -.02em; white-space: nowrap !important; }
 body.site-themes-app .lumen-brand-title,
-.lumen-brand-title { color: var(--lumen-accent) !important; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; }
+.lumen-brand-title { color: var(--lumen-accent-ink, var(--lumen-accent)) !important; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; }
 :root[data-theme="light"] body.site-themes-app .lumen-brand-title,
 :root[data-theme="light"] body.site-themes-app .lumen-brand-home,
 :root[data-theme="light"] .lumen-brand-title,
@@ -180,7 +180,7 @@ body.site-themes-app .lumen-brand-title,
 :root[data-lumen-theme="light"] body.site-themes-app .lumen-brand-title,
 :root[data-lumen-theme="light"] body.site-themes-app .lumen-brand-home,
 :root[data-lumen-theme="light"] .lumen-brand-title,
-:root[data-lumen-theme="light"] .lumen-brand-home { color: var(--lumen-accent) !important; }
+:root[data-lumen-theme="light"] .lumen-brand-home { color: var(--lumen-accent-ink, var(--lumen-accent)) !important; text-shadow: var(--lumen-accent-glow, none); }
 :root[data-theme="2077"] body.site-themes-app .lumen-brand-title,
 :root[data-theme="2077"] body.site-themes-app .lumen-brand-home,
 :root[data-theme="2077"] .lumen-brand-title,
@@ -198,13 +198,16 @@ body.site-themes-app .nav-links a[aria-current="page"] { color: var(--lumen-acce
 body.site-themes-app .hamburger { display: none; background: transparent; border: 0; color: var(--lumen-accent); font-size: 1.4rem; padding: .4rem; cursor: pointer; flex: 0 0 auto; }
 body.site-themes-app .hamburger span { display: block; width: 18px; height: 2px; margin: 3px 0; border-radius: 2px; background: var(--lumen-accent); }
 body.site-themes-app .lumen-button, .btn, .guide-action-btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 44px; padding: .65rem 1.25rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font: 700 .9rem var(--lumen-body); text-decoration: none; cursor: pointer; transition: transform .18s var(--lumen-ease), background .18s var(--lumen-ease), border-color .18s var(--lumen-ease), color .18s var(--lumen-ease); }
-body.site-themes-app .lumen-button:hover, .btn:hover, .guide-action-btn:hover { transform: translateY(-1px); border-color: var(--lumen-accent); color: var(--lumen-paper); background: var(--lumen-accent-wash); }
+/* Hover text must be the readable text colour, never --lumen-paper: paper is
+   the page background, so on the light theme the label turned white on a
+   pale accent wash and vanished. */
+body.site-themes-app .lumen-button:hover, .btn:hover, .guide-action-btn:hover { transform: translateY(-1px); border-color: var(--lumen-accent); color: var(--lumen-text); background: var(--lumen-accent-wash); }
 body.site-themes-app .lumen-button--primary, .btn-primary { background: var(--lumen-accent); color: var(--lumen-on-accent, var(--lumen-ink)) !important; border-color: var(--lumen-accent); }
-body.site-themes-app .lumen-button--primary:hover, .btn-primary:hover { background: var(--lumen-accent-strong); border-color: var(--lumen-accent-strong); color: var(--lumen-on-accent, var(--lumen-ink)) !important; }
+body.site-themes-app .lumen-button--primary:hover, .btn-primary:hover { background: var(--lumen-accent-strong); border-color: var(--lumen-accent-strong); color: var(--lumen-on-accent-strong, var(--lumen-on-accent, var(--lumen-ink))) !important; }
 body.site-themes-app .lumen-button--secondary,
 body.site-themes-app .lumen-secondary-action { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 44px; padding: .65rem 1.25rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: transparent !important; color: var(--lumen-text); font: 700 .9rem var(--lumen-body); text-decoration: none; cursor: pointer; transition: transform .18s var(--lumen-ease), background .18s var(--lumen-ease), border-color .18s var(--lumen-ease), color .18s var(--lumen-ease); }
 body.site-themes-app .lumen-button--secondary:hover,
-body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px); border-color: var(--lumen-accent); color: var(--lumen-paper); background: var(--lumen-accent-wash) !important; }
+body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px); border-color: var(--lumen-accent); color: var(--lumen-text); background: var(--lumen-accent-wash) !important; }
 
 .lumen-home { min-height: 0; }
 .lumen-hero, .lumen-section { width: min(var(--lumen-max), calc(100% - 2rem)); margin: 0 auto; }
@@ -466,7 +469,7 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
     transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease);
 }
 .lumen-guide-section details:not(#download-updater)[open] summary::after { transform: rotate(45deg); }
-.lumen-guide-section details:not(#download-updater) summary:hover { background: var(--lumen-panel-soft); color: var(--lumen-paper); }
+.lumen-guide-section details:not(#download-updater) summary:hover { background: var(--lumen-panel-soft); color: var(--lumen-text); }
 .lumen-guide-section details:not(#download-updater) summary:active { background: var(--lumen-accent-wash); }
 .lumen-guide-section details:not(#download-updater) > :not(summary) {
     margin: 0;
@@ -580,7 +583,7 @@ img.lumen-shot { display: block; width: auto; max-width: min(100%, 640px); heigh
 .lumen-muted-inline { color: var(--lumen-faint); font-size: .82rem; }
 .lumen-download-link { color: var(--lumen-accent); font-size: .82rem; white-space: nowrap; }
 .lumen-release-notes-link { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); color: var(--lumen-muted); transition: transform .18s var(--lumen-ease), border-color .18s var(--lumen-ease), background .18s var(--lumen-ease), color .18s var(--lumen-ease); }
-.lumen-release-notes-link:hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-paper); }
+.lumen-release-notes-link:hover { transform: translateY(-1px); border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-text); }
 :root[data-theme="high-contrast"] .lumen-release-notes-link,
 :root[data-lumen-theme="high-contrast"] .lumen-release-notes-link { color: var(--lumen-paper); border-color: var(--lumen-paper); }
 .lumen-release-details { margin-top: .6rem; font-size: .82rem; }
@@ -925,7 +928,7 @@ body.site-themes-app .lumen-brand-bar { display: inline-flex; align-items: cente
     flex: 0 0 auto;
     transition: color .15s var(--lumen-ease), background .15s var(--lumen-ease), border-color .15s var(--lumen-ease);
 }
-.lumen-site-switcher-toggle:hover { border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-paper); }
+.lumen-site-switcher-toggle:hover { border-color: var(--lumen-accent); background: var(--lumen-accent-wash); color: var(--lumen-text); }
 .lumen-site-switcher-tray {
     position: absolute;
     top: calc(100% + .5rem);
@@ -982,7 +985,7 @@ body.site-themes-app > .gallery-topbar .gallery-tabs {
     display: none;
 }
 .gallery-brand { display: inline-flex; align-items: center; gap: .5rem; min-width: 0; color: var(--lumen-text); font-weight: 700; font-size: 1rem; letter-spacing: -.02em; text-decoration: none; }
-.gallery-brand:hover { color: var(--lumen-paper); text-decoration: none; }
+.gallery-brand:hover { color: var(--lumen-text); text-decoration: none; }
 .gallery-brand-text { min-width: 0; overflow-wrap: anywhere; }
 .gallery-social-links, .gallery-social-tools { display: inline-flex; align-items: center; gap: .375rem; flex-wrap: wrap; min-width: 0; }
 .gallery-tabs { display: inline-flex; align-items: center; gap: .25rem; padding: 0; margin-left: auto; background: transparent; border: 0; flex-wrap: wrap; }

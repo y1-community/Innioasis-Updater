@@ -475,7 +475,8 @@
     ];
     var ACCENT_TOKENS = [
         "--lumen-accent", "--lumen-accent-strong", "--lumen-accent-wash",
-        "--lumen-on-accent", "--site-accent", "--accent", "--primary", "--primary-dark"
+        "--lumen-on-accent", "--lumen-on-accent-strong", "--lumen-accent-ink",
+        "--lumen-accent-glow", "--site-accent", "--accent", "--primary", "--primary-dark"
     ];
 
     /* Pages carry their own legacy palette variables, and a page-level
@@ -532,7 +533,8 @@
             "a.btn,button.btn,.lumen-button--primary,.btn-primary,.gallery-action-row>.btn{",
             "color:var(--lumen-on-accent,#fff)!important;}",
             "h1,.site-display,.lumen-brand-title,.lumen-site-switcher-item-copy strong{",
-            "color:var(--lumen-accent,#2563eb);}",
+            "color:var(--lumen-accent-ink,var(--lumen-accent,#2563eb));",
+            "text-shadow:var(--lumen-accent-glow,none);}",
             "h2,h3,h4{color:var(--lumen-text,CanvasText);}",
             ".y1-dock-icon,.y1-dock-reopen-icon{color:var(--lumen-accent,#2563eb)!important;}"
         ].join("");
@@ -655,6 +657,55 @@
         return onBlack >= onWhite ? "#0a0b0f" : "#ffffff";
     }
 
+    function accentLuminance(hex) {
+        var value = String(hex || "").replace("#", "");
+        if (value.length !== 6) return 0;
+        var channel = function (i) {
+            var c = parseInt(value.slice(i, i + 2), 16) / 255;
+            return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+        };
+        return 0.2126 * channel(0) + 0.7152 * channel(2) + 0.0722 * channel(4);
+    }
+
+    function accentMix(a, b, ratio) {
+        var pa = String(a || "").replace("#", "");
+        var pb = String(b || "").replace("#", "");
+        if (pa.length !== 6 || pb.length !== 6) return a;
+        var out = "#";
+        for (var i = 0; i < 6; i += 2) {
+            var mixed = Math.round(parseInt(pa.slice(i, i + 2), 16) * (1 - ratio) + parseInt(pb.slice(i, i + 2), 16) * ratio);
+            out += ("0" + Math.max(0, Math.min(255, mixed)).toString(16)).slice(-2);
+        }
+        return out;
+    }
+
+    function accentThemeIsLight() {
+        try {
+            var root = document.documentElement;
+            var theme = (root.getAttribute("data-lumen-theme") || root.getAttribute("data-theme") || "dark").toLowerCase();
+            return theme.indexOf("light") !== -1;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    /* A heading has to stay readable in the colour the visitor chose. Yellow on
+       white paper is about 1.3:1, so the raw accent cannot be the heading ink.
+       Keep the hue, pull it toward the text colour until it clears a
+       heading-sized contrast, and give the light-theme case a soft dark glow
+       so a bright orange keeps its character instead of turning brown. */
+    function accentTextTokens(hex) {
+        var light = accentThemeIsLight();
+        var luminance = accentLuminance(hex);
+        var paper = light ? 0.91 : 0.015;
+        var contrast = (Math.max(luminance, paper) + 0.05) / (Math.min(luminance, paper) + 0.05);
+        if (contrast >= 3) return { ink: hex, glow: "none" };
+        return {
+            ink: "color-mix(in oklab, " + hex + " 58%, " + (light ? "#0b0d12" : "#ffffff") + ")",
+            glow: light ? "0 0 1px rgba(0, 0, 0, .55), 0 1px 1px rgba(0, 0, 0, .22)" : "none"
+        };
+    }
+
     /* Browsers expose no API for the OS accent, but the CSS AccentColor
        system colour resolves to it where it is supported. Read it from a
        probe and compare against an inherited probe, so a browser that does
@@ -712,9 +763,19 @@
         if (root) {
             if (hex) {
                 root.style.setProperty("--lumen-accent", hex);
-                root.style.setProperty("--lumen-accent-strong", "color-mix(in oklab, " + hex + " 84%, black)");
+                /* Derive the pressed state away from the ink, not blindly toward
+                   black: an 84%-black mix under a yellow accent left black text
+                   on dark mustard. Moving 14% toward the ink keeps the accent's
+                   hue and keeps its own ink readable on top. */
+                var ink = accentInk(hex);
+                var strong = accentMix(hex, ink === "#0a0b0f" ? "#000000" : "#ffffff", 0.14);
+                var textTokens = accentTextTokens(hex);
+                root.style.setProperty("--lumen-accent-strong", strong);
+                root.style.setProperty("--lumen-on-accent-strong", accentInk(strong));
+                root.style.setProperty("--lumen-accent-ink", textTokens.ink);
+                root.style.setProperty("--lumen-accent-glow", textTokens.glow);
                 root.style.setProperty("--lumen-accent-wash", "color-mix(in srgb, " + hex + " 30%, transparent)");
-                root.style.setProperty("--lumen-on-accent", accentInk(hex));
+                root.style.setProperty("--lumen-on-accent", ink);
                 root.style.setProperty("--site-accent", hex);
                 root.style.setProperty("--primary", hex);
                 root.style.setProperty("--primary-dark", "color-mix(in oklab, " + hex + " 84%, black)");
