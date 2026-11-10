@@ -17,7 +17,7 @@
         "name": "rom_g1-linux.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-linux.zip",
         "size": 2036964039,
-        "download_count": 2,
+        "download_count": 3,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:39:31Z",
         "updated_at": "2026-11-08T20:41:23Z",
@@ -39,7 +39,7 @@
         "name": "rom_g1-windows.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-G1-EN-WM-V5.01-20260805/rom_g1-windows.zip",
         "size": 1855475057,
-        "download_count": 9,
+        "download_count": 10,
         "content_type": "application/zip",
         "created_at": "2026-11-08T20:39:31Z",
         "updated_at": "2026-11-08T20:41:38Z",
@@ -165,7 +165,7 @@
     "id": 436711891,
     "tag_name": "MX3-9_G1_MULTI-V3.03-20260826",
     "name": "Portable Flashing Package: MX3-9_G1_MULTI-V3.03-20260826",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_G1_MULTI-V3.03-20260826#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_G1_MULTI-V3.03-20260826**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_G1_MULTI-V3.03-20260826`\n- Build date: 2026-08-26\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1500.3 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"61ad817c5427ba3da7adfb4b5c3502fd8da868983a99028ac2ce1f75fef78e16\",\"size\":1782815026,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"dd475c1ea1a79ac8164428f5e7c2628b7e699b51128d4a27ae338e11366898a5\",\"size\":1964304008,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"3f4f62336b870d1c9fa8064c4a66db6808439b3be03359ec82f4b59bdd556953\",\"size\":1696470675,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T20:23:56Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"ad8ab7ffc08ebdfaa4f19f0d99f2407b74acc136455ed472d9813c8f6db27b77\",\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826\":4,\"rom_g1-linux.zip\":1,\"rom_g1-macos.zip\":1,\"rom_g1-windows.zip\":1,\"rom_g1.zip\":0},\"generated_at\":\"2026-11-08T20:23:56Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_G1_MULTI-V3.03-20260826#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for G1 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_G1_MULTI-V3.03-20260826**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_G1_MULTI-V3.03-20260826`\n- Build date: 2026-08-26\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1500.3 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"4f832a1afa4ab223bbcb57f9c4a7f245ae9e7a50dd07c183623f186eeb8bfd60\",\"size\":1778970635,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"f49bb943a583b5b8d00d98b8d79cd62c9965331fa50f385281e9cc43513d6309\",\"size\":1933090989,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"fa812af4062eacec21788d77a4dd40368a761f1ad38ce08f6c5c018dfc24e450\",\"size\":1757995931,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"c3ace2b2e69b6f667e32f969007649eb605b4792f15b2294325b904f5290bd55\",\"size\":1693017933,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-10T22:42:01Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"2b656bae1dd041eac9cf9b34b26c6e11d9d66171334ad5683a68542d934da2c0\",\"original_asset_sizes\":{\"SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826\":78,\"rom_g1.zip\":1573225707},\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_G1_MULTI-V3.03-20260826\":5,\"rom_g1-linux.zip\":1,\"rom_g1-macos.zip\":2,\"rom_g1-windows.zip\":1,\"rom_g1.zip\":0},\"generated_at\":\"2026-11-10T22:42:01Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:40:11Z",
@@ -175,37 +175,48 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725096447,
+        "id": 733242184,
+        "name": "rom_g1-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux-arm64.zip",
+        "size": 1757995931,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T22:42:05Z",
+        "updated_at": "2026-11-10T22:45:23Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733242184"
+      },
+      {
+        "id": 733242190,
         "name": "rom_g1-linux.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-linux.zip",
-        "size": 1964304008,
+        "size": 1933090989,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:24:03Z",
-        "updated_at": "2026-11-08T20:26:10Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725096447"
+        "created_at": "2026-11-10T22:42:05Z",
+        "updated_at": "2026-11-10T22:44:51Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733242190"
       },
       {
-        "id": 725096457,
+        "id": 733242195,
         "name": "rom_g1-macos.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-macos.zip",
-        "size": 1696470675,
-        "download_count": 1,
-        "content_type": "application/zip",
-        "created_at": "2026-11-08T20:24:03Z",
-        "updated_at": "2026-11-08T20:26:01Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725096457"
-      },
-      {
-        "id": 725096456,
-        "name": "rom_g1-windows.zip",
-        "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip",
-        "size": 1782815026,
+        "size": 1693017933,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:24:03Z",
-        "updated_at": "2026-11-08T20:25:46Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725096456"
+        "created_at": "2026-11-10T22:42:05Z",
+        "updated_at": "2026-11-10T22:44:46Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733242195"
+      },
+      {
+        "id": 733242191,
+        "name": "rom_g1-windows.zip",
+        "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/rom_g1-windows.zip",
+        "size": 1778970635,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T22:42:05Z",
+        "updated_at": "2026-11-10T22:44:53Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733242191"
       },
       {
         "id": 717713244,
@@ -230,15 +241,15 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717713241"
       },
       {
-        "id": 731238480,
+        "id": 733242193,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.03-20260826/stats.txt",
-        "size": 2185,
+        "size": 2282,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:44:53Z",
-        "updated_at": "2026-11-10T11:44:53Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/731238480"
+        "created_at": "2026-11-10T22:42:05Z",
+        "updated_at": "2026-11-10T22:42:05Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733242193"
       }
     ]
   },
@@ -246,7 +257,7 @@
     "id": 436705770,
     "tag_name": "MX3-9_G1_MULTI-V3.01-20260720",
     "name": "Portable Flashing Package: MX3-9_G1_MULTI-V3.01-20260720",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_G1_MULTI-V3.01-20260720#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_G1_MULTI-V3.01-20260720**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_G1_MULTI-V3.01-20260720`\n- Build date: 2026-07-20\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1500.4 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"582f8a27115aa4e3b53c0aed9fb636f2fb42b94eeeecd881a962a08fb00d9839\",\"size\":1782773576,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"ec772a477457d493a46dcd0748de7d3f5eda25a25b8732a125396b9bfbadbbc6\",\"size\":1964262558,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"77c040bee27fc158cfcb877131947bfe939cd74fca037172a148e75519f09b67\",\"size\":1696429226,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T20:17:01Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"ec20d59f5ff55908e3fdd967e099fc56f7d98e416c0d2e31ac071a8f1a23cfa4\",\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720\":4,\"rom_g1-linux.zip\":1,\"rom_g1-macos.zip\":0,\"rom_g1-windows.zip\":1,\"rom_g1.zip\":4},\"generated_at\":\"2026-11-08T20:17:01Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_G1_MULTI-V3.01-20260720#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for G1 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_G1_MULTI-V3.01-20260720**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_G1_MULTI-V3.01-20260720`\n- Build date: 2026-07-20\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1500.4 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"30f35fc4910172a76e912a0bcc04a488d41febf7376cbe1ba5de85fa70904155\",\"size\":1778977566,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"e4b5a8fd6ca68bb2a2e831985ad2cd62d3ef03ec7ccf399a13706fc2aa98efcf\",\"size\":1933097920,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"c37774e8202fc91279ec1b4317e23e08f1b65537f45d510e137a55d843d4fc4f\",\"size\":1758002862,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"c68b88168339b3a9ff4fa5ec27b69cbae4afa377e5f47eee9c16f9f76947289e\",\"size\":1693024865,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-10T22:22:58Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"924c1429a181dd158eb7d40a3f25b0a4d17d1124be3db2f8e7fb17a06501df67\",\"original_asset_sizes\":{\"SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720\":78,\"rom_g1.zip\":1573232640},\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_G1_MULTI-V3.01-20260720\":5,\"rom_g1-linux.zip\":1,\"rom_g1-macos.zip\":0,\"rom_g1-windows.zip\":1,\"rom_g1.zip\":5},\"generated_at\":\"2026-11-10T22:22:58Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:40:11Z",
@@ -256,37 +267,48 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725079180,
+        "id": 733187676,
+        "name": "rom_g1-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux-arm64.zip",
+        "size": 1758002862,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T22:23:01Z",
+        "updated_at": "2026-11-10T22:24:38Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733187676"
+      },
+      {
+        "id": 733187698,
         "name": "rom_g1-linux.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-linux.zip",
-        "size": 1964262558,
+        "size": 1933097920,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:17:08Z",
-        "updated_at": "2026-11-08T20:18:50Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725079180"
+        "created_at": "2026-11-10T22:23:01Z",
+        "updated_at": "2026-11-10T22:24:37Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733187698"
       },
       {
-        "id": 725079178,
+        "id": 733187712,
         "name": "rom_g1-macos.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-macos.zip",
-        "size": 1696429226,
+        "size": 1693024865,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:17:08Z",
-        "updated_at": "2026-11-08T20:18:47Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725079178"
+        "created_at": "2026-11-10T22:23:02Z",
+        "updated_at": "2026-11-10T22:24:14Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733187712"
       },
       {
-        "id": 725079179,
+        "id": 733187703,
         "name": "rom_g1-windows.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/rom_g1-windows.zip",
-        "size": 1782773576,
+        "size": 1778977566,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:17:08Z",
-        "updated_at": "2026-11-08T20:18:45Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725079179"
+        "created_at": "2026-11-10T22:23:02Z",
+        "updated_at": "2026-11-10T22:24:17Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733187703"
       },
       {
         "id": 717696543,
@@ -311,15 +333,15 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717696541"
       },
       {
-        "id": 731238427,
+        "id": 733187699,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_G1_MULTI-V3.01-20260720/stats.txt",
-        "size": 2187,
+        "size": 2284,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:44:51Z",
-        "updated_at": "2026-11-10T11:44:51Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/731238427"
+        "created_at": "2026-11-10T22:23:01Z",
+        "updated_at": "2026-11-10T22:23:02Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733187699"
       }
     ]
   },
@@ -327,7 +349,7 @@
     "id": 436699728,
     "tag_name": "MX3-9_EN-V1.04-20260805",
     "name": "Portable Flashing Package: MX3-9_EN-V1.04-20260805",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_EN-V1.04-20260805#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_EN-V1.04-20260805**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_EN-V1.04-20260805`\n- Build date: 2026-08-05\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1569.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"77a33d2478f27aa4f9984936472868f7141772496c1afcd7334fdeda3a33175c\",\"size\":1855076184,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"83fba02f54faeebef5aadea56ee60f981a7584ba0831385658334536ffd7a948\",\"size\":2036565166,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"f8b81f7faa3ef79cfb1109da38b1619fe4a75636c997ac15ed3c8b1774a96370\",\"size\":1768731839,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T20:09:46Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"88da4c7871f8e7405fb9e41a28172a4e34d828919584d31a1582d0c09315b62e\",\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_EN-V1.04-20260805\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_EN-V1.04-20260805\":4,\"rom_g1-linux.zip\":1,\"rom_g1-macos.zip\":0,\"rom_g1-windows.zip\":0,\"rom_g1.zip\":4},\"generated_at\":\"2026-11-08T20:09:46Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_EN-V1.04-20260805#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for G1 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_EN-V1.04-20260805**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_EN-V1.04-20260805`\n- Build date: 2026-08-05\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1569.1 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"ed98d27f22eec599e7f0e96c8ff6d7cedffdb00e0568e6c34d99037256b44cba\",\"size\":1851091977,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"4c2d04bff38654331a6d9a277e6dd55838817d6b205f9dacd177cc5d6f37ef8c\",\"size\":2005212331,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"573fd26ec525882b6f14a9e3577d6d7eb2bbd28acb3ac1efb6970d93125e7b76\",\"size\":1830117273,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"5d72df62ce5946cfac7e2abbd3f15401750b9f4ea7840680a4c5e228019b61ef\",\"size\":1765139281,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-10T22:03:28Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"43d20555ac66322bfdfdc4412093610dc53e108dbeb6f8a3bbcd01b7e4f326ec\",\"original_asset_sizes\":{\"SHA256SUMS.MX3-9_EN-V1.04-20260805\":78,\"rom_g1.zip\":1645347061},\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_EN-V1.04-20260805\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_EN-V1.04-20260805\":5,\"rom_g1-linux.zip\":1,\"rom_g1-macos.zip\":0,\"rom_g1-windows.zip\":0,\"rom_g1.zip\":5},\"generated_at\":\"2026-11-10T22:03:28Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:40:11Z",
@@ -337,37 +359,48 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725061188,
+        "id": 733125977,
+        "name": "rom_g1-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux-arm64.zip",
+        "size": 1830117273,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T22:03:31Z",
+        "updated_at": "2026-11-10T22:05:38Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733125977"
+      },
+      {
+        "id": 733126020,
         "name": "rom_g1-linux.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-linux.zip",
-        "size": 2036565166,
+        "size": 2005212331,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:09:53Z",
-        "updated_at": "2026-11-08T20:11:45Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725061188"
+        "created_at": "2026-11-10T22:03:32Z",
+        "updated_at": "2026-11-10T22:05:26Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733126020"
       },
       {
-        "id": 725061194,
+        "id": 733126019,
         "name": "rom_g1-macos.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-macos.zip",
-        "size": 1768731839,
+        "size": 1765139281,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:09:53Z",
-        "updated_at": "2026-11-08T20:11:53Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725061194"
+        "created_at": "2026-11-10T22:03:32Z",
+        "updated_at": "2026-11-10T22:05:29Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733126019"
       },
       {
-        "id": 725061190,
+        "id": 733126018,
         "name": "rom_g1-windows.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/rom_g1-windows.zip",
-        "size": 1855076184,
+        "size": 1851091977,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:09:53Z",
-        "updated_at": "2026-11-08T20:11:53Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725061190"
+        "created_at": "2026-11-10T22:03:32Z",
+        "updated_at": "2026-11-10T22:05:07Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733126018"
       },
       {
         "id": 717678118,
@@ -392,15 +425,15 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717678114"
       },
       {
-        "id": 731238338,
+        "id": 733126016,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.04-20260805/stats.txt",
-        "size": 2181,
+        "size": 2278,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:44:49Z",
-        "updated_at": "2026-11-10T11:44:49Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/731238338"
+        "created_at": "2026-11-10T22:03:32Z",
+        "updated_at": "2026-11-10T22:03:32Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733126016"
       }
     ]
   },
@@ -408,7 +441,7 @@
     "id": 436693237,
     "tag_name": "MX3-9_EN-V1.03-20260707",
     "name": "Portable Flashing Package: MX3-9_EN-V1.03-20260707",
-    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_EN-V1.03-20260707#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_EN-V1.03-20260707**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_EN-V1.03-20260707`\n- Build date: 2026-07-07\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1569.2 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"9d3939eea0a220f8145caac8c433672cfc5c0d773b5913d0fe6a6807193aea6e\",\"size\":1855082027,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"6af15d45f486a5b14e4737f50c342b78c8eb40a8e3a456534a91cee4dd77a8e4\",\"size\":2036571009,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"a6fc32d5306637b4b32fd8d52d82b6b6eb1d30b02710a63c83a7144a139d1804\",\"size\":1768737682,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-08T20:02:10Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"eb070118ccf5ffd676a9ab99f4698e9ea74fffe845368ffd29ab3c7cfe466a6e\",\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_EN-V1.03-20260707\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_EN-V1.03-20260707\":0,\"rom_g1-linux.zip\":0,\"rom_g1-macos.zip\":1,\"rom_g1-windows.zip\":1,\"rom_g1.zip\":4},\"generated_at\":\"2026-11-08T20:02:10Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":387920108,\"tag\":\"2.5.1\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":11} -->\n",
+    "body": "<p align=\"center\">\n  <a href=\"https://innioasis.app/guide.html?repo=y1-community%2Fg1-stock-rom&amp;tag=MX3-9_EN-V1.03-20260707#download-updater\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-updater.svg\" width=\"400\" alt=\"Get it on Updater CE - with guided install\"></a>\n</p>\n\n### Downloads\n\n**G1 \u00b7 Stock**\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-windows.svg\" width=\"400\" alt=\"Download .zip for Windows for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux.svg\" width=\"400\" alt=\"Download .zip for Linux for G1 \u00b7 Stock - x86-64 \u00b7 portable package\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux-arm64.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-linux-arm64.svg\" width=\"400\" alt=\"Download .zip for Linux arm64 for G1 \u00b7 Stock - portable package\"></a>\n  <a href=\"https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-macos.zip\"><img src=\"https://raw.githubusercontent.com/y1-community/g1-stock-rom-mirror/main/.mirror-assets/release-button-macos.svg\" width=\"400\" alt=\"Download .zip for macOS 12+ for G1 \u00b7 Stock - Intel + Apple silicon\"></a>\n</p>\n\n---\n\nOriginal Innioasis G1 software **MX3-9_EN-V1.03-20260707**.\n\n- Model: **G1** (Innioasis)\n- Package: `rom_g1.zip`\n- Build tag: `MX3-9_EN-V1.03-20260707`\n- Build date: 2026-07-07\n\n## Install\n\n1. Download `rom_g1.zip` (every numbered volume if the release has more than one, then `cat rom_g1.zip.* > rom_g1.zip`).\n2. Unzip it. Keep the scatter file next to the images.\n3. Open SP Flash Tool, choose **Download Only**, load the scatter file from the archive and flash.\n4. Or use Innioasis Updater CE: <https://innioasis.app/guide.html>\n\nThis wipes the player. Back up music and recordings first.\n\n## Files\n\n| File | Size |\n| --- | --- |\n| `rom_g1.zip` | 1569.2 MB |\n| `SHA256SUMS` | 0.0 MB |\n\nFull archive: <https://innioasis.app/firmware.html?model=G1>\n\n<!-- portable-mirror:{\"assets\":[{\"model\":\"G1\",\"name\":\"rom_g1-windows.zip\",\"platform\":\"windows\",\"sha256\":\"14dddbe4fc8e197c22532df651631f598930e371e99cc91f145798549e27c141\",\"size\":1851125165,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux.zip\",\"platform\":\"linux\",\"sha256\":\"a57f7359295b8b56fd65e5ce5cdbad1bde6b0c1b2f65fd9a82a24c51dc0948d6\",\"size\":2005245519,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-linux-arm64.zip\",\"platform\":\"linux-arm64\",\"sha256\":\"98d2e83240ed36230df9a0a7dda78cb0087119cc1b1efe9cf777e40b985ffddd\",\"size\":1830150461,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"},{\"model\":\"G1\",\"name\":\"rom_g1-macos.zip\",\"platform\":\"macos\",\"sha256\":\"8d520980e550aec6a05fa8a806119ca33c1d3dc1ade2e7f4b368fe2497467e7e\",\"size\":1765172469,\"source_asset\":\"rom_g1.zip\",\"type\":\"Stock\"}],\"built_at\":\"2026-11-10T21:43:29Z\",\"button_assets\":[{\"name\":\"release-button-updater.svg\",\"size\":1540},{\"name\":\"release-button-windows.svg\",\"size\":1522},{\"name\":\"release-button-linux.svg\",\"size\":1518},{\"name\":\"release-button-linux-arm64.svg\",\"size\":1510},{\"name\":\"release-button-macos.svg\",\"size\":1516}],\"failures\":[],\"fingerprint\":\"d862679d02151884574ee9fa1dfaf586e0917a3b255c10831aef907eb0852a48\",\"original_asset_sizes\":{\"SHA256SUMS.MX3-9_EN-V1.03-20260707\":78,\"rom_g1.zip\":1645380249},\"original_assets\":[\"rom_g1.zip\",\"SHA256SUMS.MX3-9_EN-V1.03-20260707\"],\"skipped\":[],\"stats\":{\"baseline\":{\"SHA256SUMS.MX3-9_EN-V1.03-20260707\":0,\"rom_g1-linux.zip\":0,\"rom_g1-macos.zip\":1,\"rom_g1-windows.zip\":1,\"rom_g1.zip\":5},\"generated_at\":\"2026-11-10T21:43:29Z\",\"retired\":{}},\"updater\":{\"linux\":{\"name\":\"UpdaterCE-Linux-Portable.zip\",\"size\":363859936,\"tag\":\"2.5.3\"},\"linux-arm64\":{\"name\":\"UpdaterCE-Linux-Portable-arm64.zip\",\"size\":187878034,\"tag\":\"2.5.3\"},\"macos\":{\"name\":\"Innioasis.Updater.for.Mac.dmg\",\"size\":119787348,\"tag\":\"2.5.3\"},\"windows\":{\"name\":\"UpdaterCE-Windows-Portable.zip\",\"size\":205854850,\"tag\":\"2.5.3\"}},\"v\":13} -->\n",
     "draft": false,
     "prerelease": false,
     "created_at": "2026-11-06T15:40:11Z",
@@ -418,37 +451,48 @@
     "icon_dark_url": "",
     "assets": [
       {
-        "id": 725042938,
+        "id": 733059853,
+        "name": "rom_g1-linux-arm64.zip",
+        "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux-arm64.zip",
+        "size": 1830150461,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T21:43:33Z",
+        "updated_at": "2026-11-10T21:45:11Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733059853"
+      },
+      {
+        "id": 733059884,
         "name": "rom_g1-linux.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-linux.zip",
-        "size": 2036571009,
+        "size": 2005245519,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:02:17Z",
-        "updated_at": "2026-11-08T20:04:21Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725042938"
+        "created_at": "2026-11-10T21:43:33Z",
+        "updated_at": "2026-11-10T21:44:47Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733059884"
       },
       {
-        "id": 725042942,
+        "id": 733059881,
         "name": "rom_g1-macos.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-macos.zip",
-        "size": 1768737682,
+        "size": 1765172469,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:02:17Z",
-        "updated_at": "2026-11-08T20:04:09Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725042942"
+        "created_at": "2026-11-10T21:43:33Z",
+        "updated_at": "2026-11-10T21:45:06Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733059881"
       },
       {
-        "id": 725042940,
+        "id": 733059885,
         "name": "rom_g1-windows.zip",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/rom_g1-windows.zip",
-        "size": 1855082027,
+        "size": 1851125165,
         "download_count": 0,
         "content_type": "application/zip",
-        "created_at": "2026-11-08T20:02:17Z",
-        "updated_at": "2026-11-08T20:04:24Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/725042940"
+        "created_at": "2026-11-10T21:43:33Z",
+        "updated_at": "2026-11-10T21:44:56Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733059885"
       },
       {
         "id": 717658744,
@@ -473,15 +517,15 @@
         "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/717658742"
       },
       {
-        "id": 731238243,
+        "id": 733059887,
         "name": "stats.txt",
         "browser_download_url": "https://github.com/y1-community/g1-stock-rom-mirror/releases/download/MX3-9_EN-V1.03-20260707/stats.txt",
-        "size": 2180,
+        "size": 2277,
         "download_count": 0,
         "content_type": "text/plain; charset=utf-8",
-        "created_at": "2026-11-10T11:44:47Z",
-        "updated_at": "2026-11-10T11:44:47Z",
-        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/731238243"
+        "created_at": "2026-11-10T21:43:33Z",
+        "updated_at": "2026-11-10T21:43:34Z",
+        "url": "https://api.github.com/repos/y1-community/g1-stock-rom-mirror/releases/assets/733059887"
       }
     ]
   }
