@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-10T16:10:07Z",
+  "generated_at": "2026-11-10T16:46:01Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -110,11 +110,11 @@
       "releases_atom": "https://innioasis.app/feeds/fabianzettl/inniclassic/releases.atom",
       "repo_json": "https://innioasis.app/feeds/fabianzettl/inniclassic/repo.json"
     },
-    "JonaszPotoniec/inniclassic-y2": {
-      "repo": "JonaszPotoniec/inniclassic-y2",
-      "releases_json": "https://innioasis.app/feeds/jonaszpotoniec/inniclassic-y2/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/jonaszpotoniec/inniclassic-y2/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/jonaszpotoniec/inniclassic-y2/repo.json"
+    "ClassyPlayer/Classy": {
+      "repo": "ClassyPlayer/Classy",
+      "releases_json": "https://innioasis.app/feeds/classyplayer/classy/releases.json",
+      "releases_atom": "https://innioasis.app/feeds/classyplayer/classy/releases.atom",
+      "repo_json": "https://innioasis.app/feeds/classyplayer/classy/repo.json"
     },
     "schulzcode/Y2Player": {
       "repo": "schulzcode/Y2Player",
@@ -223,12 +223,6 @@
       "releases_json": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/releases.json",
       "releases_atom": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/releases.atom",
       "repo_json": "https://innioasis.app/feeds/y1-community/y1_launcher-mirror/repo.json"
-    },
-    "ClassyPlayer/Classy": {
-      "repo": "ClassyPlayer/Classy",
-      "releases_json": "https://innioasis.app/feeds/classyplayer/classy/releases.json",
-      "releases_atom": "https://innioasis.app/feeds/classyplayer/classy/releases.atom",
-      "repo_json": "https://innioasis.app/feeds/classyplayer/classy/repo.json"
     },
     "y1-community/y2player-mirror": {
       "repo": "y1-community/y2player-mirror",
@@ -350,7 +344,7 @@
     },
     "y1-community/y2player-mirror": {
       "source_repo": "schulzcode/y2player",
-      "updated_at": "2026-11-10T16:10:07Z"
+      "updated_at": "2026-11-10T16:46:01Z"
     }
   }
 }
