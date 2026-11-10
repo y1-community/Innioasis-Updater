@@ -1733,16 +1733,19 @@
   }
 })();
 
-/* Outbound links go through leaving.html (or donate.html for a donation
-   host) so preferences travel and the visitor sees where they are going.
-   interstitial.js is loaded here rather than in every page's markup. */
+/* Most outbound clicks go through leaving.html (or donate.html for a
+   donation host) so preferences travel and the visitor sees where they are
+   going. Reddit, Discord and donation hrefs stay the real external address
+   on a normal website visit, so Google can follow that cross-link. A visit
+   the app referred still uses the interstitial. interstitial.js is loaded
+   here rather than in every page's markup. */
 (function () {
   try {
     if (document.body && document.body.hasAttribute("data-interstitial")) return;
     var me = document.querySelector('script[src*="nav.js"]');
     var base = me && me.src ? me.src.replace(/[^\/]*$/, "") : "";
     var s = document.createElement("script");
-    s.src = base + "interstitial.js?v=20261110fast";
+    s.src = base + "interstitial.js?v=20261110direct";
     s.defer = true;
     document.head.appendChild(s);
   } catch (_) {}
