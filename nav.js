@@ -576,7 +576,10 @@
     return decorateLinkUrl(path);
   }
 
-  var persona = detectPersona();
+  /* The gallery is a site of its own. detectPersona() reads the path, and the
+     gallery lives at "/", which is the Updater CE path, so the tray used to
+     drop Updater CE and offer Themes Gallery back to the reader already on it. */
+  var persona = isThemesSite ? "themes" : detectPersona();
   var isFirmwarePersona = persona === "firmware";
   var activeTitle = isThemesSite ? "Themes Gallery" : (isFirmwarePersona ? "Firmware archive" : "Updater CE");
   var activeHomeHref = isFirmwarePersona ? "/firmware.html" : "/";
@@ -676,6 +679,12 @@
     ? '<span class="lumen-nav-install-cta-platform" translate="no" class="notranslate" data-i18n-skip> · ' + escapeHtml(platformLabel) + "</span>"
     : "";
 
+  /* The Themes link is for the other two sites; on the gallery itself it would
+     point at the page the reader is already on. */
+  var themesNavLinkHtml = isThemesSite
+    ? ""
+    : '<li><a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">Themes</a></li>';
+
   var brandIconHtml = isFirmwarePersona
     ? '<span class="lumen-brand-icon lumen-brand-icon--firmware" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg></span>'
     : '<span class="lumen-brand-icon lumen-brand-icon--updater" aria-hidden="true"><img src="/assets/icon.ico" width="38" height="38" alt="" aria-hidden="true"></span>';
@@ -696,8 +705,8 @@
       '<svg class="lumen-site-switcher-glyph" viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/></svg>' +
       '</button>' +
       '</div>' +
-      '<div class="lumen-site-switcher-tray" id="lumen-site-switcher-tray" hidden role="menu" aria-label="Switch between Themes Gallery, Updater CE, and Firmware archive">' +
-      '<p class="lumen-site-switcher-heading">Innioasis Sites</p>' +
+      '<div class="lumen-site-switcher-tray" id="lumen-site-switcher-tray" hidden role="menu" aria-label="Switch between Updater CE, Firmware Archive and Themes Gallery">' +
+      '<p class="lumen-site-switcher-heading">Innioasis Community Sites</p>' +
       '<ul class="lumen-site-switcher-list">' + switcherListHtml + '</ul>' +
       '</div>' +
       '</div>' +
@@ -724,7 +733,7 @@
       '<li><a class="lumen-nav-install-cta" id="lumen-nav-install-cta" href="' + escapeHtml(decorateMainSiteHref("/guide.html")) + '"><span class="lumen-nav-install-cta-label">' + escapeHtml(ctaLabel) + '</span>' + ctaPlatformHtml + '</a></li>' +
       '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=software")) + '">Software Updates</a></li>' +
       '<li><a href="' + escapeHtml(decorateMainSiteHref("/firmware.html?view=firmware")) + '">Downloads</a></li>' +
-      '<li><a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">Themes</a></li>' +
+      themesNavLinkHtml +
       '</ul>' +
       '</div>' +
       '</nav>';
@@ -1719,7 +1728,9 @@
       '<a href="' + escapeHtml(decorateMainSiteHref("/credits.html")) + '">Credits</a>' +
       '</div>' +
       '</div>' +
-      '<div class="footer-bottom"><span class="footer-copyleft">Copyleft - Innioasis and <span translate="no" data-i18n-skip>Ryan Specter</span></span>' +
+      '<div class="footer-bottom">' +
+      '<p class="footer-works-with"><a href="' + escapeHtml(decorateMainSiteHref("/y1-firmware.html")) + '">Y1 firmware</a>, <a href="' + escapeHtml(decorateMainSiteHref("/y2-firmware.html")) + '">Y2 firmware</a>, <a href="' + escapeHtml(decorateMainSiteHref("/unbrick.html")) + '">unbrick</a>, <a href="' + escapeHtml(decorateMainSiteHref("/timmkoo-firmware.html")) + '">Timmkoo firmware</a>, <a href="' + escapeHtml(decorateCrossDomainHref("https://themes.innioasis.app/")) + '" data-cross-site-link="1">themes</a>.</p>' +
+      '<span class="footer-copyleft">Copyleft - Innioasis and <span translate="no" data-i18n-skip>Ryan Specter</span></span>' +
       '<span class="footer-legal"><a href="' + escapeHtml(decorateMainSiteHref("/about.html")) + '">About &amp; Editorial</a>' +
       '<a href="/privacy.html">Privacy</a>' +
       '<a class="footer-privacy-button" href="/privacy.html#choices">Privacy settings</a></span></div>' +
