@@ -1217,12 +1217,12 @@
 
     function toolbarCandidates() {
         return [
-            "support_toolbar.html",
-            "../support_toolbar.html",
-            "../../support_toolbar.html",
-            "../../../support_toolbar.html",
-            "https://innioasis.app/support_toolbar.html",
-            "https://themes.innioasis.app/support_toolbar.html",
+            "support_toolbar.html?v=20261110panel",
+            "../support_toolbar.html?v=20261110panel",
+            "../../support_toolbar.html?v=20261110panel",
+            "../../../support_toolbar.html?v=20261110panel",
+            "https://innioasis.app/support_toolbar.html?v=20261110panel",
+            "https://themes.innioasis.app/support_toolbar.html?v=20261110panel",
         ];
     }
 
