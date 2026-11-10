@@ -104,7 +104,7 @@
     <p>innoasis.app 托管 Innioasis 更新程序 CE 下载、固件存档以及随附的指南。它由 Ryan Specter 与 Innioasis 社区一起运营。 Luci Ltd 提供托管服务。没有帐户，也没有登录。</p>
 
     <h2>您的设备上保留的内容</h2>
-    <p>该网站会在您的浏览器中保存一些设置：您的语言、颜色主题、文本大小、隐私选择、是否隐藏捐赠呼吁以及已获取的翻译。这些保留在您的设备上。清除站点数据会将其删除。</p>
+    <p>The site saves a few settings in your browser: your language, colour theme, text size, privacy choices, whether it may use the accent colour Updater CE passes over, whether you hid the donation appeals, and translations it has already fetched. These stay on your device. Clearing site data removes them.</p>
 
     <h2>我们测量什么</h2>
     <p>我们使用 Google Tag Manager 和 Google Analytics 来计算页面浏览量并查看哪些页面失败或加载缓慢。 Cloudflare 提供托管、安全和攻击保护。下载计数保持汇总。我们不会询问您的姓名、电子邮件或邮政地址，也不出售数据。</p>
@@ -116,6 +116,11 @@
     <p>您可以关闭分析，而不会失去对任何下载的访问权限。该设置会被记住在此设备上，并通过 innoasis.app 上的 cookie 与主题库共享。</p>
     <p>目前正在分析 <span class="privacy-state" id="privacy-state">于</span> 对于这个浏览器。</p>
     <p><button type="button" class="btn" id="privacy-open-settings">关闭分析</button></p>
+
+    <h2 id="accent">Accent colour from Updater CE</h2>
+    <p>When you open this site from Innioasis Updater CE, the app passes the accent colour you chose in it so the pages match your player. The site saves that colour and whether it may use it in your browser. Nothing about the app is sent anywhere, and the colour is only used for this site's own buttons and links.</p>
+    <p>Accent colours from Updater CE are currently <span class="privacy-state" id="privacy-accent-state">allowed</span> 对于这个浏览器。</p>
+    <p><label class="privacy-toggle"><input type="checkbox" id="privacy-accent-ignore"> Ignore accent colours from Updater CE</label></p>
 
     <h2>捐款</h2>
     <p>捐赠按钮链接到 Ko-fi、Buy Me a Coffee、PayPal、Revolut、Patreon 和 Boosty。这些服务处理付款和自己的数据。该网站永远不会看到您的银行卡详细信息。</p>
@@ -148,6 +153,38 @@
     (function () {
       var button = document.getElementById('privacy-open-settings');
       var state = document.getElementById('privacy-state');
+      var accentBox = document.getElementById('privacy-accent-ignore');
+      var accentState = document.getElementById('privacy-accent-state');
+
+      /* The accent preference lives in the same two places the site reads the
+         accent from, so this page can change it even though the picker module
+         is not loaded here. */
+      var ACCENT_IGNORE_KEY = 'innioasis-ignore-ce-accent';
+      function readIgnoreAccent() {
+        try {
+          if (typeof window.y1IgnoreCeAccent === 'function') return Boolean(window.y1IgnoreCeAccent());
+          if (window.localStorage.getItem(ACCENT_IGNORE_KEY) === '1') return true;
+          if (typeof getSharedCookie === 'function' && getSharedCookie(ACCENT_IGNORE_KEY) === '1') return true;
+          if (document.cookie.indexOf(ACCENT_IGNORE_KEY + '=1') !== -1) return true;
+        } catch (e) {}
+        return false;
+      }
+      function saveIgnoreAccent(ignore) {
+        var value = ignore ? '1' : '0';
+        try { window.localStorage.setItem(ACCENT_IGNORE_KEY, value); } catch (e) {}
+        try {
+          document.cookie = ACCENT_IGNORE_KEY + '=' + value + '; path=/; max-age=' +
+            (ignore ? 34560000 : 0) + '; SameSite=Lax';
+        } catch (e) {}
+        if (typeof window.y1SetIgnoreCeAccent === 'function') {
+          try { window.y1SetIgnoreCeAccent(ignore); } catch (e) {}
+        }
+      }
+      function syncAccent() {
+        var ignore = readIgnoreAccent();
+        if (accentBox) accentBox.checked = ignore;
+        if (accentState) accentState.textContent = tr(ignore ? 'ignored' : 'allowed');
+      }
       function read() {
         if (window.INNIOASIS_PRIVACY && typeof window.INNIOASIS_PRIVACY.read === 'function') {
           return window.INNIOASIS_PRIVACY.read();
@@ -166,6 +203,7 @@
         var on = !prefs || prefs.analytics !== 'off';
         if (state) state.textContent = tr(on ? 'on' : 'off');
         if (button) button.textContent = tr(on ? 'Turn analytics off' : 'Turn analytics on');
+        syncAccent();
       }
       if (button) {
         button.addEventListener('click', function () {
@@ -179,6 +217,12 @@
             });
           }
           sync();
+        });
+      }
+      if (accentBox) {
+        accentBox.addEventListener('change', function () {
+          saveIgnoreAccent(Boolean(accentBox.checked));
+          syncAccent();
         });
       }
       if (document.readyState === 'loading') {

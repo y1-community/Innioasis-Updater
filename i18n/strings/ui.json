@@ -101,6 +101,9 @@
    "index_zh-tw.html",
    "index_zh.html"
   ],
+  "A USB cable that carries data": [
+   "install/legacy-windows.html"
+  ],
   "A USB data cable": [
    "install/android-4-2-y1-linux.html",
    "install/android-4-2-y1-mac.html",
@@ -363,6 +366,9 @@
    "support_toolbar_uk.html",
    "support_toolbar_zh-CN.html",
    "support_toolbar_zh-TW.html"
+  ],
+  "A flash writes the system partition, so copy any files you cannot replace off the player first. Files on a microSD card are normally left alone, but remove the card if you want to be certain.": [
+   "install/legacy-windows.html"
   ],
   "A launcher Software for Y1.": [
    "firmware-catalog.js"
@@ -1072,6 +1078,9 @@
    "post_install_zh.html"
   ],
   "Accent colour": [
+   "site-init.js"
+  ],
+  "Accent colour imported from Updater CE": [
    "site-init.js"
   ],
   "Add custom firmware to Innioasis Updater CE": [
@@ -2143,6 +2152,9 @@
   ],
   "Can I install Inniclassic on Innioasis Y2 on macOS?": [
    "install/inniclassic-y2-mac.html"
+  ],
+  "Can I install Innioasis firmware on Windows XP or Windows 7?": [
+   "install/legacy-windows.html"
   ],
   "Can I install JJ Launcher on Innioasis Y1 on Linux?": [
    "install/jj-launcher-y1-linux.html"
@@ -3985,6 +3997,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -3995,6 +4009,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -4048,20 +4064,251 @@
   ],
   "Classy for Innioasis Y1": [
    "firmware-list.html",
-   "firmware.html"
+   "firmware-list_ar.html",
+   "firmware-list_cs.html",
+   "firmware-list_da.html",
+   "firmware-list_de.html",
+   "firmware-list_el.html",
+   "firmware-list_es.html",
+   "firmware-list_fa.html",
+   "firmware-list_fi.html",
+   "firmware-list_fr.html",
+   "firmware-list_he.html",
+   "firmware-list_hi.html",
+   "firmware-list_hu.html",
+   "firmware-list_id.html",
+   "firmware-list_it.html",
+   "firmware-list_ja.html",
+   "firmware-list_jp.html",
+   "firmware-list_ko.html",
+   "firmware-list_kr.html",
+   "firmware-list_nl.html",
+   "firmware-list_no.html",
+   "firmware-list_pl.html",
+   "firmware-list_pt-BR.html",
+   "firmware-list_pt-PT.html",
+   "firmware-list_pt-br.html",
+   "firmware-list_pt-pt.html",
+   "firmware-list_pt.html",
+   "firmware-list_ro.html",
+   "firmware-list_ru.html",
+   "firmware-list_sv.html",
+   "firmware-list_th.html",
+   "firmware-list_tr.html",
+   "firmware-list_uk.html",
+   "firmware-list_vi.html",
+   "firmware-list_zh-CN.html",
+   "firmware-list_zh-TW.html",
+   "firmware-list_zh-cn.html",
+   "firmware-list_zh-tw.html",
+   "firmware-list_zh.html",
+   "firmware.html",
+   "firmware_ar.html",
+   "firmware_cs.html",
+   "firmware_da.html",
+   "firmware_de.html",
+   "firmware_el.html",
+   "firmware_es.html",
+   "firmware_fa.html",
+   "firmware_fi.html",
+   "firmware_fr.html",
+   "firmware_he.html",
+   "firmware_hi.html",
+   "firmware_hu.html",
+   "firmware_id.html",
+   "firmware_it.html",
+   "firmware_ja.html",
+   "firmware_jp.html",
+   "firmware_ko.html",
+   "firmware_kr.html",
+   "firmware_nl.html",
+   "firmware_no.html",
+   "firmware_pl.html",
+   "firmware_pt-BR.html",
+   "firmware_pt-PT.html",
+   "firmware_pt-br.html",
+   "firmware_pt-pt.html",
+   "firmware_pt.html",
+   "firmware_ro.html",
+   "firmware_ru.html",
+   "firmware_sv.html",
+   "firmware_th.html",
+   "firmware_tr.html",
+   "firmware_uk.html",
+   "firmware_vi.html",
+   "firmware_zh-CN.html",
+   "firmware_zh-TW.html",
+   "firmware_zh-cn.html",
+   "firmware_zh-tw.html",
+   "firmware_zh.html"
   ],
   "Classy for Innioasis Y2": [
    "firmware-list.html",
-   "firmware.html"
+   "firmware-list_ar.html",
+   "firmware-list_cs.html",
+   "firmware-list_da.html",
+   "firmware-list_de.html",
+   "firmware-list_el.html",
+   "firmware-list_es.html",
+   "firmware-list_fa.html",
+   "firmware-list_fi.html",
+   "firmware-list_fr.html",
+   "firmware-list_he.html",
+   "firmware-list_hi.html",
+   "firmware-list_hu.html",
+   "firmware-list_id.html",
+   "firmware-list_it.html",
+   "firmware-list_ja.html",
+   "firmware-list_jp.html",
+   "firmware-list_ko.html",
+   "firmware-list_kr.html",
+   "firmware-list_nl.html",
+   "firmware-list_no.html",
+   "firmware-list_pl.html",
+   "firmware-list_pt-BR.html",
+   "firmware-list_pt-PT.html",
+   "firmware-list_pt-br.html",
+   "firmware-list_pt-pt.html",
+   "firmware-list_pt.html",
+   "firmware-list_ro.html",
+   "firmware-list_ru.html",
+   "firmware-list_sv.html",
+   "firmware-list_th.html",
+   "firmware-list_tr.html",
+   "firmware-list_uk.html",
+   "firmware-list_vi.html",
+   "firmware-list_zh-CN.html",
+   "firmware-list_zh-TW.html",
+   "firmware-list_zh-cn.html",
+   "firmware-list_zh-tw.html",
+   "firmware-list_zh.html",
+   "firmware.html",
+   "firmware_ar.html",
+   "firmware_cs.html",
+   "firmware_da.html",
+   "firmware_de.html",
+   "firmware_el.html",
+   "firmware_es.html",
+   "firmware_fa.html",
+   "firmware_fi.html",
+   "firmware_fr.html",
+   "firmware_he.html",
+   "firmware_hi.html",
+   "firmware_hu.html",
+   "firmware_id.html",
+   "firmware_it.html",
+   "firmware_ja.html",
+   "firmware_jp.html",
+   "firmware_ko.html",
+   "firmware_kr.html",
+   "firmware_nl.html",
+   "firmware_no.html",
+   "firmware_pl.html",
+   "firmware_pt-BR.html",
+   "firmware_pt-PT.html",
+   "firmware_pt-br.html",
+   "firmware_pt-pt.html",
+   "firmware_pt.html",
+   "firmware_ro.html",
+   "firmware_ru.html",
+   "firmware_sv.html",
+   "firmware_th.html",
+   "firmware_tr.html",
+   "firmware_uk.html",
+   "firmware_vi.html",
+   "firmware_zh-CN.html",
+   "firmware_zh-TW.html",
+   "firmware_zh-cn.html",
+   "firmware_zh-tw.html",
+   "firmware_zh.html"
   ],
   "Classy on Innioasis Y1": [
-   "firmware-list.html"
+   "firmware-list.html",
+   "firmware-list_ar.html",
+   "firmware-list_cs.html",
+   "firmware-list_da.html",
+   "firmware-list_de.html",
+   "firmware-list_el.html",
+   "firmware-list_es.html",
+   "firmware-list_fa.html",
+   "firmware-list_fi.html",
+   "firmware-list_fr.html",
+   "firmware-list_he.html",
+   "firmware-list_hi.html",
+   "firmware-list_hu.html",
+   "firmware-list_id.html",
+   "firmware-list_it.html",
+   "firmware-list_ja.html",
+   "firmware-list_jp.html",
+   "firmware-list_ko.html",
+   "firmware-list_kr.html",
+   "firmware-list_nl.html",
+   "firmware-list_no.html",
+   "firmware-list_pl.html",
+   "firmware-list_pt-BR.html",
+   "firmware-list_pt-PT.html",
+   "firmware-list_pt-br.html",
+   "firmware-list_pt-pt.html",
+   "firmware-list_pt.html",
+   "firmware-list_ro.html",
+   "firmware-list_ru.html",
+   "firmware-list_sv.html",
+   "firmware-list_th.html",
+   "firmware-list_tr.html",
+   "firmware-list_uk.html",
+   "firmware-list_vi.html",
+   "firmware-list_zh-CN.html",
+   "firmware-list_zh-TW.html",
+   "firmware-list_zh-cn.html",
+   "firmware-list_zh-tw.html",
+   "firmware-list_zh.html"
   ],
   "Classy on Innioasis Y2": [
-   "firmware-list.html"
+   "firmware-list.html",
+   "firmware-list_ar.html",
+   "firmware-list_cs.html",
+   "firmware-list_da.html",
+   "firmware-list_de.html",
+   "firmware-list_el.html",
+   "firmware-list_es.html",
+   "firmware-list_fa.html",
+   "firmware-list_fi.html",
+   "firmware-list_fr.html",
+   "firmware-list_he.html",
+   "firmware-list_hi.html",
+   "firmware-list_hu.html",
+   "firmware-list_id.html",
+   "firmware-list_it.html",
+   "firmware-list_ja.html",
+   "firmware-list_jp.html",
+   "firmware-list_ko.html",
+   "firmware-list_kr.html",
+   "firmware-list_nl.html",
+   "firmware-list_no.html",
+   "firmware-list_pl.html",
+   "firmware-list_pt-BR.html",
+   "firmware-list_pt-PT.html",
+   "firmware-list_pt-br.html",
+   "firmware-list_pt-pt.html",
+   "firmware-list_pt.html",
+   "firmware-list_ro.html",
+   "firmware-list_ru.html",
+   "firmware-list_sv.html",
+   "firmware-list_th.html",
+   "firmware-list_tr.html",
+   "firmware-list_uk.html",
+   "firmware-list_vi.html",
+   "firmware-list_zh-CN.html",
+   "firmware-list_zh-TW.html",
+   "firmware-list_zh-cn.html",
+   "firmware-list_zh-tw.html",
+   "firmware-list_zh.html"
   ],
   "Click": [
    "lumen-site.js"
+  ],
+  "Click Download, then connect the switched-off player. Wait for the green success box before unplugging.": [
+   "windows-legacy.html"
   ],
   "Close bottom toolbar": [
    "support_toolbar.html"
@@ -4436,11 +4683,7 @@
   "Computer with Innioasis Updater installed": [
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "sp-flash-tool_ms.html"
   ],
   "Confirm and wait": [
    "guides/factory-reset-g1.html",
@@ -5245,6 +5488,9 @@
   "Digital Audio Player Hardware Preservation": [
    "about.html"
   ],
+  "Disconnect the player, switch it on and allow a few minutes for the first start. Restore the stock package for the same model if anything looks wrong.": [
+   "install/legacy-windows.html"
+  ],
   "Discord Server": [
    "nav.js"
   ],
@@ -5411,6 +5657,9 @@
    "install/y2player-linux.html",
    "install/y2player-mac.html",
    "install/y2player-windows.html"
+  ],
+  "Do I need the internet on the player?": [
+   "install/legacy-windows.html"
   ],
   "Do I need to install Python or MediaTek tools separately?": [
    "rockbox-y1/portable-zip.html",
@@ -5940,6 +6189,15 @@
    "rockbox-y1/portable-zip.html",
    "rockbox-y2/portable-zip.html"
   ],
+  "Download the firmware package for your model": [
+   "windows-legacy.html"
+  ],
+  "Download the firmware package that includes SP Flash Tool, install the MediaTek USB driver, load the scatter file and flash the powered-off player on an older or 32-bit Windows PC.": [
+   "install/legacy-windows.html"
+  ],
+  "Download the package for your model": [
+   "install/legacy-windows.html"
+  ],
   "Downloads": [
    "nav.js"
   ],
@@ -6204,11 +6462,7 @@
   "Extract the firmware ZIP": [
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "sp-flash-tool_ms.html"
   ],
   "FM radio uses the headphone cable as its antenna. Plug in a pair, scan once, then save the stations you like.": [
    "manuals/fm-radio.html"
@@ -7329,20 +7583,14 @@
   "Flash an Innioasis Y1 or Y2 with SP Flash Tool": [
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "sp-flash-tool_ms.html"
   ],
   "Flash the player": [
+   "install/legacy-windows.html",
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
    "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "windows-legacy.html"
   ],
   "Folders starting with a dot are hidden by default on Windows, macOS, and Linux. Enable hidden files in your file manager.": [
    "rockbox-y1/sd-card.html",
@@ -9578,88 +9826,12 @@
    "firmware_zh.html"
   ],
   "Inniclassic for Innioasis Y2": [
-   "firmware-list_ar.html",
    "firmware-list_bn.html",
-   "firmware-list_cs.html",
-   "firmware-list_da.html",
-   "firmware-list_de.html",
-   "firmware-list_el.html",
    "firmware-list_es-419.html",
-   "firmware-list_es.html",
-   "firmware-list_fa.html",
-   "firmware-list_fi.html",
-   "firmware-list_fr.html",
-   "firmware-list_he.html",
-   "firmware-list_hi.html",
-   "firmware-list_hu.html",
-   "firmware-list_id.html",
-   "firmware-list_it.html",
-   "firmware-list_ja.html",
-   "firmware-list_jp.html",
-   "firmware-list_ko.html",
-   "firmware-list_kr.html",
    "firmware-list_ms.html",
-   "firmware-list_nl.html",
-   "firmware-list_no.html",
-   "firmware-list_pl.html",
-   "firmware-list_pt-BR.html",
-   "firmware-list_pt-PT.html",
-   "firmware-list_pt-br.html",
-   "firmware-list_pt-pt.html",
-   "firmware-list_pt.html",
-   "firmware-list_ro.html",
-   "firmware-list_ru.html",
-   "firmware-list_sv.html",
-   "firmware-list_th.html",
-   "firmware-list_tr.html",
-   "firmware-list_uk.html",
-   "firmware-list_vi.html",
-   "firmware-list_zh-CN.html",
-   "firmware-list_zh-TW.html",
-   "firmware-list_zh-cn.html",
-   "firmware-list_zh-tw.html",
-   "firmware-list_zh.html",
-   "firmware_ar.html",
    "firmware_bn.html",
-   "firmware_cs.html",
-   "firmware_da.html",
-   "firmware_de.html",
-   "firmware_el.html",
    "firmware_es-419.html",
-   "firmware_es.html",
-   "firmware_fa.html",
-   "firmware_fi.html",
-   "firmware_fr.html",
-   "firmware_he.html",
-   "firmware_hi.html",
-   "firmware_hu.html",
-   "firmware_id.html",
-   "firmware_it.html",
-   "firmware_ja.html",
-   "firmware_jp.html",
-   "firmware_ko.html",
-   "firmware_kr.html",
-   "firmware_ms.html",
-   "firmware_nl.html",
-   "firmware_no.html",
-   "firmware_pl.html",
-   "firmware_pt-BR.html",
-   "firmware_pt-PT.html",
-   "firmware_pt-br.html",
-   "firmware_pt-pt.html",
-   "firmware_pt.html",
-   "firmware_ro.html",
-   "firmware_ru.html",
-   "firmware_sv.html",
-   "firmware_th.html",
-   "firmware_tr.html",
-   "firmware_uk.html",
-   "firmware_vi.html",
-   "firmware_zh-CN.html",
-   "firmware_zh-TW.html",
-   "firmware_zh-cn.html",
-   "firmware_zh-tw.html",
-   "firmware_zh.html"
+   "firmware_ms.html"
   ],
   "Inniclassic install guides for Windows, macOS and Linux": [
    "install/inniclassic.html"
@@ -9719,47 +9891,9 @@
    "install/inniclassic-mac.html"
   ],
   "Inniclassic on Innioasis Y2": [
-   "firmware-list_ar.html",
    "firmware-list_bn.html",
-   "firmware-list_cs.html",
-   "firmware-list_da.html",
-   "firmware-list_de.html",
-   "firmware-list_el.html",
    "firmware-list_es-419.html",
-   "firmware-list_es.html",
-   "firmware-list_fa.html",
-   "firmware-list_fi.html",
-   "firmware-list_fr.html",
-   "firmware-list_he.html",
-   "firmware-list_hi.html",
-   "firmware-list_hu.html",
-   "firmware-list_id.html",
-   "firmware-list_it.html",
-   "firmware-list_ja.html",
-   "firmware-list_jp.html",
-   "firmware-list_ko.html",
-   "firmware-list_kr.html",
    "firmware-list_ms.html",
-   "firmware-list_nl.html",
-   "firmware-list_no.html",
-   "firmware-list_pl.html",
-   "firmware-list_pt-BR.html",
-   "firmware-list_pt-PT.html",
-   "firmware-list_pt-br.html",
-   "firmware-list_pt-pt.html",
-   "firmware-list_pt.html",
-   "firmware-list_ro.html",
-   "firmware-list_ru.html",
-   "firmware-list_sv.html",
-   "firmware-list_th.html",
-   "firmware-list_tr.html",
-   "firmware-list_uk.html",
-   "firmware-list_vi.html",
-   "firmware-list_zh-CN.html",
-   "firmware-list_zh-TW.html",
-   "firmware-list_zh-cn.html",
-   "firmware-list_zh-tw.html",
-   "firmware-list_zh.html",
    "install/inniclassic.html"
   ],
   "Inniclassic on Innioasis Y2 Linux": [
@@ -11975,6 +12109,12 @@
   "Install Innioasis and Timmkoo software on macOS": [
    "install/mac.html"
   ],
+  "Install Innioasis firmware on Windows XP, Vista, 7 or 8": [
+   "windows-legacy.html"
+  ],
+  "Install Innioasis or Timmkoo firmware on Windows XP, Vista, 7, 8 or 8.1": [
+   "install/legacy-windows.html"
+  ],
   "Install JJ Launcher on Innioasis Y1": [
    "jj-launcher-y1-software.html",
    "jj-launcher-y1-software_ar.html",
@@ -12736,6 +12876,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -12746,6 +12888,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -12902,6 +13046,7 @@
    "install/koensayr-y1-mac.html",
    "install/koensayr-y1-windows.html",
    "install/koensayr.html",
+   "install/legacy-windows.html",
    "install/linux-dev-linux.html",
    "install/linux-dev-mac.html",
    "install/linux-dev-windows.html",
@@ -13308,6 +13453,10 @@
   "Install software on Innioasis Y2 with a Windows PC": [
    "install/y2-windows.html"
   ],
+  "Install the MediaTek USB driver": [
+   "install/legacy-windows.html",
+   "windows-legacy.html"
+  ],
   "Install the Y2 Rockbox build with Innioasis Updater.": [
    "guides/rockbox-y2.html",
    "guides/rockbox-y2_ar.html",
@@ -13606,6 +13755,9 @@
   "Is switching between dual-boot systems safe?": [
    "rockbox-y1/dual-boot.html",
    "rockbox-y2/dual-boot.html"
+  ],
+  "Is the -windows-legacy.zip the same firmware?": [
+   "install/legacy-windows.html"
   ],
   "It fixes failures caused by an update or a mismatched package, and it is the first thing to try. It will not repair a physically damaged wheel, a loose ribbon, or liquid damage.": [
    "guides/y1-scroll-wheel-not-working.html",
@@ -14461,6 +14613,9 @@
    "install/original-y2-mac.html",
    "install/original-y2-windows.html"
   ],
+  "Let the player finish its first boot": [
+   "install/legacy-windows.html"
+  ],
   "Light": [
    "nav.js",
    "site-init.js"
@@ -14533,11 +14688,10 @@
   "Load the matching scatter file": [
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "sp-flash-tool_ms.html"
+  ],
+  "Load the scatter file in SP Flash Tool": [
+   "windows-legacy.html"
   ],
   "Loading notices": [
    "nav.js"
@@ -14775,9 +14929,6 @@
    "developers_zh-cn.html",
    "developers_zh-tw.html",
    "developers_zh.html"
-  ],
-  "Match my PC's theme colours": [
-   "site-init.js"
   ],
   "MediaTek SoC Bootrom Flashing": [
    "about.html"
@@ -15303,6 +15454,9 @@
    "rockbox-y1/sd-card.html",
    "rockbox-y2/sd-card.html"
   ],
+  "No. Everything needed is inside the zip: the firmware, SP Flash Tool, the MediaTek driver and a donate.txt. Nothing is downloaded during the flash.": [
+   "install/legacy-windows.html"
+  ],
   "No. Everything runs locally from the files on your MicroSD card.": [
    "rockbox-y1/offline.html",
    "rockbox-y2/offline.html"
@@ -15496,6 +15650,9 @@
    "innioasis-g5-firmware_zh-TW.html",
    "innioasis-g5-firmware_zh.html"
   ],
+  "Older Windows": [
+   "install/legacy-windows.html"
+  ],
   "Once the download finishes, flashing takes only a couple of minutes. Keep the USB cable connected until Updater CE shows the success message.": [
    "rockbox-y1/install.html",
    "rockbox-y2/install.html"
@@ -15618,6 +15775,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -15628,6 +15787,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -15635,14 +15796,13 @@
   "Open Rockbox-Y1 for Type B": [
    "lumen-site.js"
   ],
+  "Open SP Flash Tool and load the scatter file": [
+   "install/legacy-windows.html"
+  ],
   "Open SP Flash Tool from the Updater install": [
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "sp-flash-tool_ms.html"
   ],
   "Open Settings": [
    "guides/factory-reset-g1.html",
@@ -15839,6 +15999,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -15849,6 +16011,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -16193,6 +16357,9 @@
   ],
   "Open the": [
    "lumen-site.js"
+  ],
+  "Open the firmware list, choose the model printed on the player, then choose the release. Download the zip whose name ends in -windows-legacy.zip.": [
+   "install/legacy-windows.html"
   ],
   "Open the full": [
    "lumen-site.js"
@@ -18722,11 +18889,7 @@
   "Power the player off, connect USB when the tool is ready, and wait for the green check.": [
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "sp-flash-tool_ms.html"
   ],
   "Preparing your download…": [
    "lumen-site.js",
@@ -18817,6 +18980,9 @@
    "support_devs_zh-cn.html",
    "support_devs_zh-tw.html",
    "support_devs_zh.html"
+  ],
+  "Press Download, power the player fully off, then connect it with the USB cable. Wait for the green success box before unplugging anything.": [
+   "install/legacy-windows.html"
   ],
   "Preview XML is valid —": [
    "developers.html",
@@ -19061,6 +19227,9 @@
   ],
   "Read the release notes for": [
    "lumen-site.js"
+  ],
+  "Reinstall the MediaTek driver from the Driver folder, restart the PC, use a USB port on the PC itself rather than a hub, and press Download before connecting the powered-off player.": [
+   "install/legacy-windows.html"
   ],
   "Release details and zip": [
    "lumen-site.js"
@@ -19853,6 +20022,12 @@
    "guides/rockbox-y2_uk.html",
    "guides/rockbox-y2_zh-CN.html",
    "guides/rockbox-y2_zh-TW.html"
+  ],
+  "Revert to my previous colour": [
+   "site-init.js"
+  ],
+  "Revert to the site default": [
+   "site-init.js"
   ],
   "Rockbox Compatibility Warning": [
    "lumen-site.js"
@@ -20912,6 +21087,9 @@
   "Rondo on Innioasis Y1 macOS": [
    "install/rondo-mac.html"
   ],
+  "Run the driver installer from the SP Flash Tool folder, then restart the PC.": [
+   "windows-legacy.html"
+  ],
   "Running Costs": [
    "support_toolbar.html"
   ],
@@ -20966,6 +21144,12 @@
   ],
   "SP Flash Tool": [
    "site-locale.js"
+  ],
+  "SP Flash Tool portable package": [
+   "windows-legacy.html"
+  ],
+  "SP Flash Tool, included in the firmware package": [
+   "install/legacy-windows.html"
   ],
   "Save choices": [
    "support_toolbar.html"
@@ -22107,6 +22291,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -22117,6 +22303,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -22171,11 +22359,7 @@
   "Set up the SP Flash Tool bundled with Innioasis Updater, extract the firmware ZIP, load the scatter file, and flash a Y1 or Y2.": [
    "sp-flash-tool_bn.html",
    "sp-flash-tool_es-419.html",
-   "sp-flash-tool_ms.html",
-   "sp-flash-tool_pt-BR.html",
-   "sp-flash-tool_pt-PT.html",
-   "sp-flash-tool_zh-CN.html",
-   "sp-flash-tool_zh-TW.html"
+   "sp-flash-tool_ms.html"
   ],
   "Settings": [
    "lumen-site.js"
@@ -25130,6 +25314,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -25140,6 +25326,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -25273,7 +25461,8 @@
    "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
-   "sp-flash-tool_zh.html"
+   "sp-flash-tool_zh.html",
+   "windows-legacy.html"
   ],
   "Under": [
    "lumen-site.js"
@@ -25301,6 +25490,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -25311,6 +25502,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -25329,6 +25522,15 @@
   ],
   "Universal Flash Tool": [
    "site-locale.js"
+  ],
+  "Unpack the downloaded zip so the rom files and its scatter file sit in one folder.": [
+   "windows-legacy.html"
+  ],
+  "Unpack the package": [
+   "windows-legacy.html"
+  ],
+  "Unpack the package and run the driver installer from the Driver folder. Restart the PC afterwards.": [
+   "install/legacy-windows.html"
   ],
   "Unusable FX payload": [
    "support_toolbar.html",
@@ -26043,6 +26245,9 @@
    "release_notes_zh-cn.html",
    "release_notes_zh-tw.html",
    "release_notes_zh.html"
+  ],
+  "What if SP Flash Tool does not detect the player?": [
+   "install/legacy-windows.html"
   ],
   "What if the player is not detected?": [
    "install/android-4-2-y1-linux.html",
@@ -26949,6 +27154,9 @@
    "rockbox-y1-themes_zh-TW.html",
    "rockbox-y1-themes_zh.html"
   ],
+  "Why is Updater CE not offered on this computer?": [
+   "install/legacy-windows.html"
+  ],
   "Why is my Y1 or Y2 scroll wheel not working?": [
    "guides/recovery.html",
    "guides/recovery_ar.html",
@@ -27053,6 +27261,9 @@
   "Will deleting .rockbox erase my music?": [
    "rockbox-y1/sd-card.html",
    "rockbox-y2/sd-card.html"
+  ],
+  "Will flashing erase my music?": [
+   "install/legacy-windows.html"
   ],
   "Will installing Rockbox-Y1 erase my music?": [
    "rockbox-y1/faq.html"
@@ -27215,6 +27426,8 @@
    "sp-flash-tool_nl.html",
    "sp-flash-tool_no.html",
    "sp-flash-tool_pl.html",
+   "sp-flash-tool_pt-BR.html",
+   "sp-flash-tool_pt-PT.html",
    "sp-flash-tool_pt-br.html",
    "sp-flash-tool_pt-pt.html",
    "sp-flash-tool_pt.html",
@@ -27225,6 +27438,8 @@
    "sp-flash-tool_tr.html",
    "sp-flash-tool_uk.html",
    "sp-flash-tool_vi.html",
+   "sp-flash-tool_zh-CN.html",
+   "sp-flash-tool_zh-TW.html",
    "sp-flash-tool_zh-cn.html",
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
@@ -27702,6 +27917,9 @@
    "install/solar-windows.html",
    "install/y2player-windows.html"
   ],
+  "Yes. It is the same rom for the same release, packed beside SP Flash Tool instead of the Updater CE app. The scatter file and partition images are identical.": [
+   "install/legacy-windows.html"
+  ],
   "Yes. It uses the same MediaTek flashing process as the factory firmware, and you can restore Original Software at any time. Always use a reliable USB data cable and keep the player charged.": [
    "rockbox-y1/index.html",
    "rockbox-y2/index.html"
@@ -28059,6 +28277,9 @@
   ],
   "Yes. This page is the macOS guide for Y2Player on the Innioasis Y2. Install Updater CE, select the model, choose the project and follow the install prompt.": [
    "install/y2player-y2-mac.html"
+  ],
+  "Yes. Updater CE cannot run there, but every release has a package ending in -windows-legacy.zip that carries SP Flash Tool and the same firmware. It works from Windows XP onwards, on both 32-bit and 64-bit Windows.": [
+   "install/legacy-windows.html"
   ],
   "Yes. Updater CE lists it as Rockbox when Y1 is selected, while guides and release notes call it Rockbox-Y1 so it is clear which player model it is for.": [
    "rockbox-y1/faq.html"

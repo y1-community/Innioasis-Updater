@@ -1,20 +1,20 @@
 {
- "generated": "2026-11-10T17:39:29+00:00",
+ "generated": "2026-11-10T18:38:11+00:00",
  "tiers": [
   "core",
   "full"
  ],
- "pages": 1627,
- "occurrences": 182747,
- "count": 83858,
+ "pages": 1629,
+ "occurrences": 183003,
+ "count": 84053,
  "strings": {
   "Skip to content": {
-   "n": 1385,
-   "pages": 1385
+   "n": 1387,
+   "pages": 1387
   },
   "Innioasis Updater": {
-   "n": 1119,
-   "pages": 1094,
+   "n": 1121,
+   "pages": 1096,
    "script": true
   },
   "Project README": {
@@ -106,8 +106,8 @@
    "script": true
   },
   "and": {
-   "n": 723,
-   "pages": 284
+   "n": 724,
+   "pages": 285
   },
   "Y1": {
    "n": 287,
@@ -118,8 +118,8 @@
    "pages": 240
   },
   "Linux": {
-   "n": 493,
-   "pages": 238,
+   "n": 494,
+   "pages": 239,
    "script": true
   },
   "rom_type_b.zip": {
@@ -127,8 +127,8 @@
    "pages": 209
   },
   "Was this useful?": {
-   "n": 199,
-   "pages": 199
+   "n": 200,
+   "pages": 200
   },
   "Windows": {
    "n": 394,
@@ -136,8 +136,8 @@
    "script": true
   },
   "macOS": {
-   "n": 392,
-   "pages": 196
+   "n": 393,
+   "pages": 197
   },
   "Original Software": {
    "n": 310,
@@ -145,26 +145,30 @@
    "script": true
   },
   "Home": {
-   "n": 200,
-   "pages": 195
+   "n": 201,
+   "pages": 196
   },
   "Download Only": {
-   "n": 199,
-   "pages": 193
+   "n": 201,
+   "pages": 195
   },
   "Not yet": {
+   "n": 192,
+   "pages": 192
+  },
+  "Let us know how we can improve": {
    "n": 191,
    "pages": 191
   },
-  "Let us know how we can improve": {
-   "n": 190,
-   "pages": 190
-  },
   "Questions people ask": {
-   "n": 190,
-   "pages": 190
+   "n": 191,
+   "pages": 191
   },
   "Your answer helps improve this guide.": {
+   "n": 191,
+   "pages": 191
+  },
+  "Yes, I found it useful": {
    "n": 190,
    "pages": 190
   },
@@ -172,22 +176,18 @@
    "n": 303,
    "pages": 189
   },
-  "Yes, I found it useful": {
-   "n": 189,
-   "pages": 189
-  },
   "Install guides": {
-   "n": 200,
-   "pages": 186,
+   "n": 201,
+   "pages": 187,
    "script": true
   },
   "Breadcrumb": {
-   "n": 186,
-   "pages": 186
+   "n": 187,
+   "pages": 187
   },
   "All install guides": {
-   "n": 185,
-   "pages": 185
+   "n": 187,
+   "pages": 186
   },
   "Innioasis Y1": {
    "n": 314,
@@ -210,8 +210,8 @@
    "pages": 167
   },
   "Click": {
-   "n": 169,
-   "pages": 163,
+   "n": 173,
+   "pages": 165,
    "script": true
   },
   "File": {
@@ -227,16 +227,16 @@
    "pages": 156
   },
   "Download": {
-   "n": 193,
-   "pages": 153
+   "n": 196,
+   "pages": 155
   },
   "or": {
-   "n": 183,
-   "pages": 149
+   "n": 191,
+   "pages": 151
   },
   "Software": {
-   "n": 147,
-   "pages": 146
+   "n": 149,
+   "pages": 148
   },
   "Get Updater CE": {
    "n": 169,
@@ -276,6 +276,11 @@
    "n": 117,
    "pages": 117
   },
+  "Open": {
+   "n": 113,
+   "pages": 111,
+   "script": true
+  },
   "Status:": {
    "n": 111,
    "pages": 111
@@ -284,18 +289,13 @@
    "n": 418,
    "pages": 110
   },
-  "Open": {
-   "n": 111,
-   "pages": 109,
-   "script": true
-  },
   "Update Now": {
    "n": 120,
    "pages": 105
   },
   "Firmware": {
-   "n": 105,
-   "pages": 102
+   "n": 107,
+   "pages": 104
   },
   "rom_y2.zip": {
    "n": 237,
@@ -459,6 +459,10 @@
    "n": 93,
    "pages": 92
   },
+  "Before you start": {
+   "n": 92,
+   "pages": 91
+  },
   "Innioasis Y2": {
    "n": 177,
    "pages": 90
@@ -469,10 +473,6 @@
   },
   "Podcasts": {
    "n": 92,
-   "pages": 90
-  },
-  "Before you start": {
-   "n": 91,
    "pages": 90
   },
   "Recovery and updates": {
@@ -675,15 +675,31 @@
    "n": 81,
    "pages": 81
   },
+  "Power:": {
+   "n": 81,
+   "pages": 81
+  },
   "Going back to Original Software": {
    "n": 80,
    "pages": 80
   },
-  "Power:": {
-   "n": 80,
-   "pages": 80
+  "Backup:": {
+   "n": 79,
+   "pages": 79
+  },
+  "Cable:": {
+   "n": 79,
+   "pages": 79
+  },
+  "Computer:": {
+   "n": 79,
+   "pages": 79
   },
   "OTA update metadata for in-app updater": {
+   "n": 79,
+   "pages": 79
+  },
+  "SP Flash Tool notes": {
    "n": 79,
    "pages": 79
   },
@@ -691,6 +707,14 @@
    "n": 79,
    "pages": 79,
    "script": true
+  },
+  "charge the player to at least half before you begin.": {
+   "n": 79,
+   "pages": 79
+  },
+  "main guide": {
+   "n": 79,
+   "pages": 79
   },
   "on the same ROM (switch without reboot).": {
    "n": 79,
@@ -716,19 +740,7 @@
    "n": 78,
    "pages": 78
   },
-  "Backup:": {
-   "n": 78,
-   "pages": 78
-  },
-  "Cable:": {
-   "n": 78,
-   "pages": 78
-  },
   "Choose a release:": {
-   "n": 78,
-   "pages": 78
-  },
-  "Computer:": {
    "n": 78,
    "pages": 78
   },
@@ -769,10 +781,6 @@
    "n": 78,
    "pages": 78
   },
-  "SP Flash Tool notes": {
-   "n": 78,
-   "pages": 78
-  },
   "The player stopped responding:": {
    "n": 78,
    "pages": 78
@@ -794,19 +802,11 @@
    "n": 78,
    "pages": 78
   },
-  "charge the player to at least half before you begin.": {
-   "n": 78,
-   "pages": 78
-  },
   "do not keep reconnecting. Read the": {
    "n": 78,
    "pages": 78
   },
   "has the download links.": {
-   "n": 78,
-   "pages": 78
-  },
-  "main guide": {
    "n": 78,
    "pages": 78
   },
@@ -1061,13 +1061,13 @@
    "n": 62,
    "pages": 62
   },
-  "← All documentation": {
+  "Model:": {
    "n": 62,
    "pages": 62
   },
-  "Model:": {
-   "n": 61,
-   "pages": 61
+  "← All documentation": {
+   "n": 62,
+   "pages": 62
   },
   "Error reports": {
    "n": 64,
@@ -1846,6 +1846,10 @@
    "n": 58,
    "pages": 29
   },
+  "Windows install guides": {
+   "n": 43,
+   "pages": 29
+  },
   "Inniclassic": {
    "n": 41,
    "pages": 29
@@ -1891,10 +1895,6 @@
    "pages": 28
   },
   "Linux install guides": {
-   "n": 42,
-   "pages": 28
-  },
-  "Windows install guides": {
    "n": 42,
    "pages": 28
   },
@@ -2048,6 +2048,11 @@
   "Downloads from Firmware Archive": {
    "n": 27,
    "pages": 26
+  },
+  "Troubleshooting": {
+   "n": 27,
+   "pages": 26,
+   "script": true
   },
   ", and confirm you are on x86_64. A blank window under Wayland usually means trying an X11 session.": {
    "n": 26,
@@ -2245,11 +2250,6 @@
   "Baseline02": {
    "n": 35,
    "pages": 25
-  },
-  "Troubleshooting": {
-   "n": 26,
-   "pages": 25,
-   "script": true
   },
   "BBC radio stations stream only in HLS, which the player does not play yet (planned for a later beta).": {
    "n": 25,
@@ -2576,6 +2576,10 @@
    "n": 21,
    "pages": 21
   },
+  "from the": {
+   "n": 21,
+   "pages": 21
+  },
   "Flashable ROM for Y1 players with original firmware": {
    "n": 40,
    "pages": 20
@@ -2690,10 +2694,6 @@
    "pages": 20
   },
   "for Y2,": {
-   "n": 20,
-   "pages": 20
-  },
-  "from the": {
    "n": 20,
    "pages": 20
   },
@@ -2982,6 +2982,11 @@
   "Finding": {
    "n": 18,
    "pages": 16
+  },
+  "Open the": {
+   "n": 18,
+   "pages": 16,
+   "script": true
   },
   "Rockbox-Y1 240p and 360p builds: choosing a theme resolution": {
    "n": 18,
@@ -3392,11 +3397,6 @@
    "n": 14,
    "pages": 14
   },
-  "Open the": {
-   "n": 14,
-   "pages": 14,
-   "script": true
-  },
   "See the archive": {
    "n": 14,
    "pages": 14
@@ -3567,6 +3567,10 @@
    "pages": 13
   },
   "Owner steps": {
+   "n": 13,
+   "pages": 13
+  },
+  "SP Flash Tool guide": {
    "n": 13,
    "pages": 13
   },
@@ -3874,10 +3878,6 @@
    "n": 12,
    "pages": 12
   },
-  "SP Flash Tool guide": {
-   "n": 12,
-   "pages": 12
-  },
   "Solar is not yet stable for everyday use - we recommend using this only if you're willing to face bugs and report issues at github.com/thesolarproject/solar/issues": {
    "n": 12,
    "pages": 12
@@ -4103,6 +4103,10 @@
    "n": 53,
    "pages": 10
   },
+  "Package": {
+   "n": 47,
+   "pages": 10
+  },
   "no": {
    "n": 43,
    "pages": 10
@@ -4121,6 +4125,10 @@
   },
   "NoahDomingues/Lithium": {
    "n": 20,
+   "pages": 10
+  },
+  "Update": {
+   "n": 18,
    "pages": 10
   },
   "Input": {
@@ -4885,6 +4893,10 @@
    "n": 40,
    "pages": 9
   },
+  "before": {
+   "n": 36,
+   "pages": 9
+  },
   "<!-- knowledge-base-scope: historical-issue-specification -- Historical record. The dates, candidate identity,": {
    "n": 27,
    "pages": 9
@@ -5128,16 +5140,8 @@
    "n": 9,
    "pages": 9
   },
-  "Package": {
-   "n": 45,
-   "pages": 8
-  },
   "NOT_TESTED": {
    "n": 38,
-   "pages": 8
-  },
-  "before": {
-   "n": 35,
    "pages": 8
   },
   "; Reborn": {
@@ -5153,10 +5157,6 @@
    "pages": 8
   },
   "417 MB": {
-   "n": 16,
-   "pages": 8
-  },
-  "Update": {
    "n": 16,
    "pages": 8
   },
@@ -6888,6 +6888,10 @@
    "n": 6,
    "pages": 6
   },
+  "instead.": {
+   "n": 6,
+   "pages": 6
+  },
   "latest CPU-idle hardware proof": {
    "n": 6,
    "pages": 6
@@ -8538,6 +8542,10 @@
    "n": 5,
    "pages": 5
   },
+  "folder.": {
+   "n": 5,
+   "pages": 5
+  },
   "historical execution order": {
    "n": 5,
    "pages": 5
@@ -8555,10 +8563,6 @@
    "pages": 5
   },
   "initramfs": {
-   "n": 5,
-   "pages": 5
-  },
-  "instead.": {
    "n": 5,
    "pages": 5
   },
@@ -8595,6 +8599,10 @@
    "pages": 5
   },
   "so scrobble importers read their timestamps as UTC.": {
+   "n": 5,
+   "pages": 5
+  },
+  "system": {
    "n": 5,
    "pages": 5
   },
@@ -11338,10 +11346,6 @@
    "pages": 4
   },
   "fix: point repository links at ClassyPlayer/Classy by @JonaszPotoniec in": {
-   "n": 4,
-   "pages": 4
-  },
-  "folder.": {
    "n": 4,
    "pages": 4
   },
@@ -16826,10 +16830,6 @@
    "n": 3,
    "pages": 3
   },
-  "system": {
-   "n": 3,
-   "pages": 3
-  },
   "the C3 UART handoff": {
    "n": 3,
    "pages": 3
@@ -19060,6 +19060,10 @@
    "n": 3,
    "pages": 2
   },
+  "Ko-fi": {
+   "n": 3,
+   "pages": 2
+  },
   "LUNA Software Modernization 01": {
    "n": 3,
    "pages": 2
@@ -19485,6 +19489,10 @@
    "pages": 2
   },
   "Power, charging, suspend and safety audit": {
+   "n": 3,
+   "pages": 2
+  },
+  "Preloader": {
    "n": 3,
    "pages": 2
   },
@@ -20661,6 +20669,10 @@
    "n": 3,
    "pages": 2
   },
+  "firmware list": {
+   "n": 3,
+   "pages": 2
+  },
   "first": {
    "n": 3,
    "pages": 2
@@ -21682,6 +21694,10 @@
    "pages": 2
   },
   ", thaw and": {
+   "n": 2,
+   "pages": 2
+  },
+  ", then power the player fully off and connect the USB cable.": {
    "n": 2,
    "pages": 2
   },
@@ -23972,6 +23988,10 @@
    "pages": 2
   },
   "Browse all releases": {
+   "n": 2,
+   "pages": 2
+  },
+  "Browse packages for my model": {
    "n": 2,
    "pages": 2
   },
@@ -27597,6 +27617,10 @@
    "n": 2,
    "pages": 2
   },
+  "Never cross-install a model.": {
+   "n": 2,
+   "pages": 2
+  },
   "New BOOTIMG": {
    "n": 2,
    "pages": 2
@@ -29963,6 +29987,10 @@
    "n": 2,
    "pages": 2
   },
+  "Scatter-loading": {
+   "n": 2,
+   "pages": 2
+  },
   "Scope: characterize C1 then freeze its proven architecture; decode/fix actual C2 clock/device ownership; resolve every source-backed C3 topology/deadline/CIRQ/PCM/ context prerequisite, without masking blockers or undocumented register writes. Bounded existing runtime controls and workload/storage/network regression tests are authorized, with safe abort and state restoration. First C3 entry requires all real prerequisites; no repeated hammering of a failed deep path. Preserve GPT6/GPT4/PPI29, schedutil/QoS/thermal, hotplug, all guarded OPPs, exact memory/ partition layout and Hardware02 fallback. Full system-suspend acceptance remains a separate gate. Coherent source fixes and fresh software/package qualification precede owner flash and current-candidate physical acceptance.": {
    "n": 2,
    "pages": 2
@@ -30469,11 +30497,19 @@
    "n": 2,
    "pages": 2
   },
+  "Step 1: install the MediaTek USB driver": {
+   "n": 2,
+   "pages": 2
+  },
   "Step 2": {
    "n": 2,
    "pages": 2
   },
   "Step 2 of 2 · Check": {
+   "n": 2,
+   "pages": 2
+  },
+  "Step 2: unpack the firmware package": {
    "n": 2,
    "pages": 2
   },
@@ -30563,6 +30599,10 @@
    "pages": 2
   },
   "Support on Ko-fi": {
+   "n": 2,
+   "pages": 2
+  },
+  "Support the projects": {
    "n": 2,
    "pages": 2
   },
@@ -34442,6 +34482,10 @@
    "n": 2,
    "pages": 2
   },
+  "rom": {
+   "n": 2,
+   "pages": 2
+  },
   "safe to remove, since InniClassic's own Radio and PC Upload features depend on them under the hood. This isn't baked into the ROM yet; ask if you want the exact list of packages.": {
    "n": 2,
    "pages": 2
@@ -35051,6 +35095,10 @@
    "pages": 2
   },
   "zImage-dtb": {
+   "n": 2,
+   "pages": 2
+  },
+  "zip": {
    "n": 2,
    "pages": 2
   },
@@ -49184,6 +49232,10 @@
    "pages": 1,
    "script": true
   },
+  "Install Innioasis software, firmware, updates and stock packages on Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows with the portable SP Flash Tool package.": {
+   "n": 2,
+   "pages": 1
+  },
   "Install JJ Launcher on Innioasis Y1 on Linux": {
    "n": 2,
    "pages": 1,
@@ -49343,6 +49395,14 @@
    "n": 2,
    "pages": 1
   },
+  "Install firmware on Windows XP, Vista, 7 or 8 (32-bit and 64-bit) - Innioasis Updater": {
+   "n": 2,
+   "pages": 1
+  },
+  "Install firmware on Windows XP, Vista, 7, 8 or 8.1": {
+   "n": 2,
+   "pages": 1
+  },
   "Interim with": {
    "n": 2,
    "pages": 1
@@ -49368,10 +49428,6 @@
    "pages": 1
   },
   "Kia EV6": {
-   "n": 2,
-   "pages": 1
-  },
-  "Ko-fi": {
    "n": 2,
    "pages": 1
   },
@@ -51373,6 +51429,10 @@
    "pages": 1
   },
   "for the build.": {
+   "n": 2,
+   "pages": 1
+  },
+  "for this browser.": {
    "n": 2,
    "pages": 1
   },
@@ -58277,6 +58337,10 @@
    "pages": 1
   },
   "(a short list and a link to the privacy note), the install ID with": {
+   "n": 1,
+   "pages": 1
+  },
+  "(a small text file ending in": {
    "n": 1,
    "pages": 1
   },
@@ -66921,6 +66985,10 @@
    "pages": 1
   },
   ") and the reporting helper (": {
+   "n": 1,
+   "pages": 1
+  },
+  ") and the rom files beside it.": {
    "n": 1,
    "pages": 1
   },
@@ -77480,6 +77548,10 @@
    "n": 1,
    "pages": 1
   },
+  ", and it contains the firmware, SP Flash Tool, the MediaTek driver and a": {
+   "n": 1,
+   "pages": 1
+  },
   ", and its capture directory under": {
    "n": 1,
    "pages": 1
@@ -78700,6 +78772,10 @@
    "n": 1,
    "pages": 1
   },
+  ", choose the scatter file you found, and confirm the partition list appears.": {
+   "n": 1,
+   "pages": 1
+  },
   ", clarified by the owner after the initial identity check found a different Reborn from the original plain Platform v1 package. The": {
    "n": 1,
    "pages": 1
@@ -79649,6 +79725,14 @@
    "pages": 1
   },
   ", final": {
+   "n": 1,
+   "pages": 1
+  },
+  ", find the model, then the software you want: Original Software, Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, Koensayr or another community system. For each release the archive lists the packages it has.": {
+   "n": 1,
+   "pages": 1
+  },
+  ", find your model, then find the software you want: Original Software, Rockbox, Solar, JJ Launcher, Inniclassic, Y2Player, Koensayr or a community system. Each release shows its packages as buttons. On an older or 32-bit Windows PC the archive offers the": {
    "n": 1,
    "pages": 1
   },
@@ -81960,6 +82044,10 @@
    "n": 1,
    "pages": 1
   },
+  ", on": {
+   "n": 1,
+   "pages": 1
+  },
   ", on System Software 2.1.9": {
    "n": 1,
    "pages": 1
@@ -82181,6 +82269,14 @@
    "pages": 1
   },
   ", or the manifest's release) now sets Up to Date / Available at once.": {
+   "n": 1,
+   "pages": 1
+  },
+  ", or through": {
+   "n": 1,
+   "pages": 1
+  },
+  ", or use 7-Zip or WinRAR. Do not run anything from inside the zip window.": {
    "n": 1,
    "pages": 1
   },
@@ -87500,6 +87596,10 @@
    "n": 1,
    "pages": 1
   },
+  ", which lists the ways to support the people who keep these players usable. Nothing in the package is limited by whether you donate.": {
+   "n": 1,
+   "pages": 1
+  },
   ", which lives in the RECOVERY partition and runs from memory while the main system is switched off.": {
    "n": 1,
    "pages": 1
@@ -89137,6 +89237,14 @@
    "pages": 1
   },
   ". Automatic admission": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Avoid": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Avoid folders with long names or spaces.": {
    "n": 1,
    "pages": 1
   },
@@ -91304,6 +91412,10 @@
    "n": 1,
    "pages": 1
   },
+  ". If you only see Windows, macOS or Linux packages, that release has not been built for older Windows yet; try the newest release of the same software.": {
+   "n": 1,
+   "pages": 1
+  },
   ". If you use Cloudflare, the record must be \"DNS only\".": {
    "n": 1,
    "pages": 1
@@ -91576,6 +91688,10 @@
    "n": 1,
    "pages": 1
   },
+  ". It holds the firmware files (rom and scatter file), SP Flash Tool, the MediaTek USB driver and a": {
+   "n": 1,
+   "pages": 1
+  },
   ". It includes the atomic Reborn session (settings/queue/position) and Bluetooth preferred peer, excluding bonds and all private keys. Add": {
    "n": 1,
    "pages": 1
@@ -91597,6 +91713,10 @@
    "pages": 1
   },
   ". It is insufficient for raw partition acquisition, any recovery write or Linux boot. Battery service inconsistency is recorded as a separate observation for later passive power investigation.": {
+   "n": 1,
+   "pages": 1
+  },
+  ". It is named after the release, for example": {
    "n": 1,
    "pages": 1
   },
@@ -91705,6 +91825,10 @@
    "pages": 1
   },
   ". It shows an address like": {
+   "n": 1,
+   "pages": 1
+  },
+  ". It sits in the": {
    "n": 1,
    "pages": 1
   },
@@ -92081,6 +92205,10 @@
    "pages": 1
   },
   ". Legacy SDP-shape byte-patch attempt (later determined inadequate and removed in 2.0.0).": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Legacy packages include the same links in": {
    "n": 1,
    "pages": 1
   },
@@ -92973,6 +93101,14 @@
    "pages": 1
   },
   ". Nothing here is a hardware result. Every row stays NOT_TESTED until a receipt from the installed Fix03 identity replaces it. The": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Nothing in it needs an internet connection.": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Nothing is downloaded during the flash.": {
    "n": 1,
    "pages": 1
   },
@@ -96813,6 +96949,10 @@
    "pages": 1
   },
   ". Three architectural changes:": {
+   "n": 1,
+   "pages": 1
+  },
+  ". Tick": {
    "n": 1,
    "pages": 1
   },
@@ -110348,6 +110488,14 @@
    "n": 1,
    "pages": 1
   },
+  ": a community build such as Rockbox, Solar or JJ Launcher, delivered as the same kind of package.": {
+   "n": 1,
+   "pages": 1
+  },
+  ": a community build such as Rockbox, Solar or JJ Launcher, delivered as the same kind of rom package.": {
+   "n": 1,
+   "pages": 1
+  },
   ": a computer at home that stays on (a 64-bit": {
    "n": 1,
    "pages": 1
@@ -110381,6 +110529,14 @@
    "pages": 1
   },
   ": a mode-1 completion below the request length continues the same request.": {
+   "n": 1,
+   "pages": 1
+  },
+  ": a newer release of either of the above. Install it exactly like a fresh package.": {
+   "n": 1,
+   "pages": 1
+  },
+  ": a newer release of either. Install it exactly like a fresh package.": {
    "n": 1,
    "pages": 1
   },
@@ -112220,6 +112376,14 @@
    "n": 1,
    "pages": 1
   },
+  ": the complete system image for a model.": {
+   "n": 1,
+   "pages": 1
+  },
+  ": the complete system image for a model. Flashing it replaces everything on the player's system partition.": {
+   "n": 1,
+   "pages": 1
+  },
   ": the contribution registry and the connection to the plugin host.": {
    "n": 1,
    "pages": 1
@@ -112237,6 +112401,14 @@
    "pages": 1
   },
   ": the digit is LK's DCS 0x0A read result, not the ID match. The name is the first driver of the list": {
+   "n": 1,
+   "pages": 1
+  },
+  ": the download itself. The legacy package is the one that includes SP Flash Tool.": {
+   "n": 1,
+   "pages": 1
+  },
+  ": the download. A legacy package is the one that includes SP Flash Tool.": {
    "n": 1,
    "pages": 1
   },
@@ -118076,6 +118248,10 @@
    "n": 1,
    "pages": 1
   },
+  "A Y1 package on a Y2, or the other way round, can leave the player with dead controls or a boot loop. Check the printed model before you start.": {
+   "n": 1,
+   "pages": 1
+  },
   "A Y1 restore needs a Y1 Original Software release, even if the player is currently running a different custom software.": {
    "n": 1,
    "pages": 1
@@ -118626,6 +118802,11 @@
    "n": 1,
    "pages": 1
   },
+  "A flash writes the system partition, so copy any files you cannot replace off the player first. Files on a microSD card are normally left alone, but remove the card if you want to be certain.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "A flat": {
    "n": 1,
    "pages": 1
@@ -118679,6 +118860,10 @@
    "pages": 1
   },
   "A full charge on the PC with SSH:": {
+   "n": 1,
+   "pages": 1
+  },
+  "A full flash takes a few minutes on an older PC. Use a cable that carries data, not a charge-only cable, and keep the PC awake. If the progress bar does not start, disconnect, hold the player's power button for ten seconds, and start again from the Download button.": {
    "n": 1,
    "pages": 1
   },
@@ -118827,6 +119012,10 @@
    "pages": 1
   },
   "A layout named after a screen wins over": {
+   "n": 1,
+   "pages": 1
+  },
+  "A legacy package is named after the release, with": {
    "n": 1,
    "pages": 1
   },
@@ -119077,6 +119266,10 @@
    "pages": 1
   },
   "A one-shot resident qualification observer uses the existing SRAM receipt and": {
+   "n": 1,
+   "pages": 1
+  },
+  "A package for this computer ends in": {
    "n": 1,
    "pages": 1
   },
@@ -122024,6 +122217,10 @@
    "n": 1,
    "pages": 1
   },
+  "About SP Flash Tool": {
+   "n": 1,
+   "pages": 1
+  },
   "About Us & Editorial Standards": {
    "n": 1,
    "pages": 1
@@ -122101,6 +122298,14 @@
    "pages": 1
   },
   "Accent / focus / focus fill": {
+   "n": 1,
+   "pages": 1
+  },
+  "Accent colour from Updater CE": {
+   "n": 1,
+   "pages": 1
+  },
+  "Accent colours from Updater CE are currently": {
    "n": 1,
    "pages": 1
   },
@@ -123892,6 +124097,10 @@
    "n": 1,
    "pages": 1
   },
+  "After the flash": {
+   "n": 1,
+   "pages": 1
+  },
   "After the flash (read-only first):": {
    "n": 1,
    "pages": 1
@@ -125489,6 +125698,10 @@
    "pages": 1
   },
   "An equalizer or profile no longer asks for the heavy playback class (747.5 MHz floor, 1 ms wake-up limit); only crossfade does. The FFmpeg filter graph runs on one thread (bit-identical output).": {
+   "n": 1,
+   "pages": 1
+  },
+  "An error appears part-way through:": {
    "n": 1,
    "pages": 1
   },
@@ -137634,6 +137847,11 @@
    "pages": 1,
    "script": true
   },
+  "Can I install Innioasis firmware on Windows XP or Windows 7?": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Can I install JJ Launcher on Innioasis Y1 on Linux?": {
    "n": 1,
    "pages": 1,
@@ -149600,6 +149818,10 @@
    "n": 1,
    "pages": 1
   },
+  "Disconnect the player, switch it on, and let it finish its first boot. If it starts but shows the wrong language, install the package again with the language you want. If it does not start, connect it while switched off and flash again, this time with": {
+   "n": 1,
+   "pages": 1
+  },
   "Disconnect through gadget request owner; refuse any enabled DMA channel, no live buffer reset. Clear only quiescent system status before context/IRQ restore; preserve runtime/failed-DMA completion status. Restore exact runtime L1 gate after endpoints, connection for system enumeration, reset quiescent IRQ burst window.": {
    "n": 1,
    "pages": 1
@@ -150015,6 +150237,11 @@
   "Divider / track": {
    "n": 1,
    "pages": 1
+  },
+  "Do I need the internet on the player?": {
+   "n": 1,
+   "pages": 1,
+   "script": true
   },
   "Do I need to install a driver on Linux?": {
    "n": 1,
@@ -153391,6 +153618,10 @@
    "n": 1,
    "pages": 1
   },
+  "Every legacy package includes": {
+   "n": 1,
+   "pages": 1
+  },
   "Every logged start": {
    "n": 1,
    "pages": 1
@@ -156416,6 +156647,10 @@
    "pages": 1
   },
   "Extract": {
+   "n": 1,
+   "pages": 1
+  },
+  "Extract All": {
    "n": 1,
    "pages": 1
   },
@@ -159923,6 +160158,10 @@
    "n": 1,
    "pages": 1
   },
+  "Find the scatter file: a small text file ending in": {
+   "n": 1,
+   "pages": 1
+  },
   "Find your feed URL:": {
    "n": 1,
    "pages": 1
@@ -160211,6 +160450,10 @@
    "n": 1,
    "pages": 1
   },
+  "Firmware guide": {
+   "n": 1,
+   "pages": 1
+  },
   "Firmware image sizes": {
    "n": 1,
    "pages": 1
@@ -160222,6 +160465,15 @@
   "Firmware inventory and supply policy": {
    "n": 1,
    "pages": 1
+  },
+  "Firmware is model-specific. Software written for the Y1 cannot be installed on a Y2, and the reverse is also true. Check the model printed on the player before you download.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Firmware list": {
+   "n": 1,
+   "pages": 1,
+   "script": true
   },
   "Firmware list: every release, model and download": {
    "n": 1,
@@ -160269,6 +160521,10 @@
    "pages": 1
   },
   "Firmware, per-device calibration and FM": {
+   "n": 1,
+   "pages": 1
+  },
+  "Firmware, software, update or package?": {
    "n": 1,
    "pages": 1
   },
@@ -163386,6 +163642,10 @@
    "n": 1,
    "pages": 1
   },
+  "Full Windows driver notes": {
+   "n": 1,
+   "pages": 1
+  },
   "Full Y1 restore guide": {
    "n": 1,
    "pages": 1
@@ -165269,6 +165529,10 @@
    "pages": 1
   },
   "GitHub Issues:": {
+   "n": 1,
+   "pages": 1
+  },
+  "GitHub Sponsors": {
    "n": 1,
    "pages": 1
   },
@@ -168722,6 +168986,10 @@
    "n": 1,
    "pages": 1
   },
+  "How the tool is used outside Updater CE, and what each download mode does.": {
+   "n": 1,
+   "pages": 1
+  },
   "How the wheel feels.": {
    "n": 1,
    "pages": 1
@@ -168787,6 +169055,10 @@
    "pages": 1
   },
   "How to get started with Solar": {
+   "n": 1,
+   "pages": 1
+  },
+  "How to install Innioasis software, firmware, updates and stock packages on Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows using the portable SP Flash Tool package, when Updater CE cannot run.": {
    "n": 1,
    "pages": 1
   },
@@ -170086,6 +170358,10 @@
    "n": 1,
    "pages": 1
   },
+  "If Windows still does not see the player later, reinstall the driver and try another USB port on the PC itself rather than a hub.": {
+   "n": 1,
+   "pages": 1
+  },
   "If Windows stops you from running the app or won't launch it, please open Settings, click Privacy & security → Windows Security → App & browser control, and turn Smart App Control off.": {
    "n": 1,
    "pages": 1
@@ -170226,6 +170502,10 @@
    "n": 1,
    "pages": 1
   },
+  "If no tool detects the player at all, treat it as a cable, driver or hardware problem before trying another firmware.": {
+   "n": 1,
+   "pages": 1
+  },
   "If no track numbers are specified for the songs on the album, the stock numbers are used instead.": {
    "n": 1,
    "pages": 1
@@ -170326,6 +170606,10 @@
    "n": 1,
    "pages": 1
   },
+  "If the archive has a": {
+   "n": 1,
+   "pages": 1
+  },
   "If the battery dies or the player crashes halfway through, a system that": {
    "n": 1,
    "pages": 1
@@ -170359,6 +170643,10 @@
    "pages": 1
   },
   "If the download does not fit, disposable data goes one entry at a time until it does:": {
+   "n": 1,
+   "pages": 1
+  },
+  "If the flash does not start": {
    "n": 1,
    "pages": 1
   },
@@ -170415,6 +170703,10 @@
    "pages": 1
   },
   "If the player is detected but will not boot, reinstall Y2 Original Software. Use a Y2 package only; a Y1 build will not start on Y2 hardware.": {
+   "n": 1,
+   "pages": 1
+  },
+  "If the player is never detected later, reinstall the driver and try another USB port on the PC itself rather than a hub.": {
    "n": 1,
    "pages": 1
   },
@@ -170680,6 +170972,10 @@
    "pages": 1
   },
   "If your player sometimes would not sleep with an SD card in, it should now.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Ignore accent colours from Updater CE": {
    "n": 1,
    "pages": 1
   },
@@ -173587,6 +173883,10 @@
    "pages": 1,
    "script": true
   },
+  "Install Innioasis or Timmkoo firmware, software or an update on an older or 32-bit Windows PC with SP Flash Tool.": {
+   "n": 1,
+   "pages": 1
+  },
   "Install JJ Launcher after choosing the model.": {
    "n": 1,
    "pages": 1
@@ -173990,6 +174290,18 @@
    "pages": 1
   },
   "Install easily using Innioasis Updater CE and return to Original Software or Rockbox whenever you choose.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Install firmware on Windows XP, Vista, 7 or 8 - Innioasis Updater": {
+   "n": 1,
+   "pages": 1
+  },
+  "Install firmware on Windows XP, Vista, 7, 8 or 8.1 (32-bit and 64-bit)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Install firmware on Windows XP, Vista, 7, 8 or 8.1 (32-bit and 64-bit) | Older Windows install guide": {
    "n": 1,
    "pages": 1
   },
@@ -174427,6 +174739,10 @@
    "n": 1,
    "pages": 1,
    "script": true
+  },
+  "Install software, firmware or updates on an older Windows PC": {
+   "n": 1,
+   "pages": 1
   },
   "Install speed": {
    "n": 1,
@@ -175743,6 +176059,11 @@
    "n": 1,
    "pages": 1
   },
+  "Is the -windows-legacy.zip the same firmware?": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Is there a Koensayr Y2 package?": {
    "n": 1,
    "pages": 1
@@ -175876,6 +176197,10 @@
    "pages": 1
   },
   "It explicitly rejects the retired community mirror,": {
+   "n": 1,
+   "pages": 1
+  },
+  "It finishes but will not boot:": {
    "n": 1,
    "pages": 1
   },
@@ -179011,6 +179336,14 @@
    "pages": 1
   },
   "Leave the cable alone until the success message.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Leave the default": {
+   "n": 1,
+   "pages": 1
+  },
+  "Leave the mode on": {
    "n": 1,
    "pages": 1
   },
@@ -187356,10 +187689,6 @@
    "n": 1,
    "pages": 1
   },
-  "Never cross-install a model.": {
-   "n": 1,
-   "pages": 1
-  },
   "Never disconnect or reset while a read or write is active.": {
    "n": 1,
    "pages": 1
@@ -190054,6 +190383,10 @@
    "n": 1,
    "pages": 1
   },
+  "No. Everything needed is inside the zip: the firmware, SP Flash Tool, the MediaTek driver and a": {
+   "n": 1,
+   "pages": 1
+  },
   "No. Keep the Y1 player on the Y1 entry and check the model before installing.": {
    "n": 1,
    "pages": 1
@@ -191031,6 +191364,10 @@
    "pages": 1
   },
   "Nothing gets louder by itself: not after the update, not on plug-in, restart or gain change.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Nothing happens after Download:": {
    "n": 1,
    "pages": 1
   },
@@ -192464,6 +192801,27 @@
    "pages": 1
   },
   "Older S16/44.1 audio": {
+   "n": 1,
+   "pages": 1
+  },
+  "Older Windows": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Older Windows install guide": {
+   "n": 1,
+   "pages": 1
+  },
+  "Older Windows overview": {
+   "n": 1,
+   "pages": 1
+  },
+  "Older Windows · 32-bit · Windows XP / Vista / 7 / 8 / 8.1": {
+   "n": 1,
+   "pages": 1
+  },
+  "Older Windows · Windows XP / Vista / 7 / 8 / 8.1 · 32-bit and 64-bit": {
    "n": 1,
    "pages": 1
   },
@@ -195426,6 +195784,10 @@
    "pages": 1
   },
   "Other changes:": {
+   "n": 1,
+   "pages": 1
+  },
+  "Other computers and references": {
    "n": 1,
    "pages": 1
   },
@@ -214516,6 +214878,10 @@
    "n": 1,
    "pages": 1
   },
+  "Recover a player that will not boot": {
+   "n": 1,
+   "pages": 1
+  },
   "Recover locally, record; no codec switch or persistent failure penalty": {
    "n": 1,
    "pages": 1
@@ -215137,6 +215503,10 @@
    "pages": 1
   },
   "Reinstall Y2Linux with SP Flash Tool (first-install package)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Reinstall the MediaTek driver from the": {
    "n": 1,
    "pages": 1
   },
@@ -217511,6 +217881,14 @@
    "n": 1,
    "pages": 1
   },
+  "Restart the PC. The driver only takes effect after a reboot.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Restart the PC. The driver only works after a reboot.": {
+   "n": 1,
+   "pages": 1
+  },
   "Restart the computer.": {
    "n": 1,
    "pages": 1
@@ -218986,6 +219364,10 @@
    "pages": 1
   },
   "Right-arrow indicator now only shows on the focused row, everywhere.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Right-click the downloaded zip and choose": {
    "n": 1,
    "pages": 1
   },
@@ -222995,6 +223377,10 @@
    "pages": 1
   },
   "Same file-read pattern; emit": {
+   "n": 1,
+   "pages": 1
+  },
+  "Same firmware, different wrapper.": {
    "n": 1,
    "pages": 1
   },
@@ -228418,6 +228804,10 @@
    "n": 1,
    "pages": 1
   },
+  "Software, firmware, update or package: what is the difference?": {
+   "n": 1,
+   "pages": 1
+  },
   "Software24 WAV/FLAC low bits survive final S24/S32 buffers at44100/48000; general full32 input loses bits in FLTP. Saturating ties-even narrowing and truthful kernel/platform diagnostics are implemented. Six audio/clock/DT tests, 19 localized source checks,241 Reborn workspace tests, fmt/clippy, ARM build, 32 ARM media/ALSA QEMU tests and16 ARM ALSA query intersections pass. Issues #16/#27/#28/#29/#31/#32/#33/#34 were refreshed read-only and remain OPEN; the evidence warrants no remote status change. Source handoff is ready, native wider admission remains blocked by exact silicon evidence. Backup/calibration, protected storage, power and release gates retain their existing obligations. No flash, push, merge, MMIO write, source/ROM rehash or production-scope expansion.": {
    "n": 1,
    "pages": 1
@@ -231315,6 +231705,14 @@
    "n": 1,
    "pages": 1
   },
+  "Step 3: flash the player": {
+   "n": 1,
+   "pages": 1
+  },
+  "Step 3: flash with SP Flash Tool": {
+   "n": 1,
+   "pages": 1
+  },
   "Step 4 — install it": {
    "n": 1,
    "pages": 1
@@ -231388,6 +231786,18 @@
    "pages": 1
   },
   "Step-by-step install for Linux for Y1 (Dev)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Step-by-step install guide": {
+   "n": 1,
+   "pages": 1
+  },
+  "Step-by-step install guide for Innioasis and Timmkoo firmware on Windows XP through 8.1 and 32-bit Windows, using the package that includes SP Flash Tool.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Step-by-step install guide for Innioasis and Timmkoo firmware on Windows XP, Vista, 7, 8, 8.1 and 32-bit Windows. Download the package that includes SP Flash Tool, install the MediaTek driver, load the scatter file and flash the player when Updater CE cannot run.": {
    "n": 1,
    "pages": 1
   },
@@ -233540,7 +233950,7 @@
    "n": 1,
    "pages": 1
   },
-  "Support the projects": {
+  "Support the project": {
    "n": 1,
    "pages": 1
   },
@@ -233605,6 +234015,10 @@
    "pages": 1
   },
   "SupportedFeatures via SDP response": {
+   "n": 1,
+   "pages": 1
+  },
+  "Supporting the projects": {
    "n": 1,
    "pages": 1
   },
@@ -238784,6 +239198,10 @@
    "n": 1,
    "pages": 1
   },
+  "The firmware archive and Updater CE are run by the community and are free. If a package saved your player, you can say thanks from the": {
+   "n": 1,
+   "pages": 1
+  },
   "The firmware has no SystemUI, so Rondo does its visible jobs: the click on each wheel step, the low battery warning, the wallpaper Android waits for before it ends the boot animation, and a power screen for when Power is held.": {
    "n": 1,
    "pages": 1
@@ -239333,6 +239751,10 @@
    "pages": 1
   },
   "The guided install fixes most of these": {
+   "n": 1,
+   "pages": 1
+  },
+  "The guided install with Updater CE, including the MediaTek driver.": {
    "n": 1,
    "pages": 1
   },
@@ -239893,6 +240315,10 @@
    "pages": 1
   },
   "The legacy Universal Flash Tool remains available for emergency unbricking when a device cannot boot into fastboot.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The legacy package holds exactly the same scatter file and partition images as the Updater CE version. The only difference is which tool opens them.": {
    "n": 1,
    "pages": 1
   },
@@ -241380,6 +241806,10 @@
    "n": 1,
    "pages": 1
   },
+  "The package name tells you what it is.": {
+   "n": 1,
+   "pages": 1
+  },
   "The package policy is intentionally conservative. Provisioning, Settings, SystemUI, Keyguard, storage/media providers, Bluetooth, input, package-management, thermal/battery, and underlying framework services remain in the image. Both the integrator and independent verifier use the same policy: optional APK/ODEX files must be absent, critical APKs must be present, and freed ext4 blocks must be zero before sparse repacking.": {
    "n": 1,
    "pages": 1
@@ -241657,6 +242087,10 @@
    "pages": 1
   },
   "The player finds its time zone over Wi-Fi by itself (Settings → Display → Time Zone → Automatic). It asks a public service (ipapi.co, or ipwho.is) where its internet address is, once per Wi-Fi network; nothing else is sent. A time zone you already chose stays as it is.": {
+   "n": 1,
+   "pages": 1
+  },
+  "The player is never detected:": {
    "n": 1,
    "pages": 1
   },
@@ -242988,7 +243422,7 @@
    "n": 1,
    "pages": 1
   },
-  "The site saves a few settings in your browser: your language, colour theme, text size, privacy choices, whether you hid the donation appeals, and translations it has already fetched. These stay on your device. Clearing site data removes them.": {
+  "The site saves a few settings in your browser: your language, colour theme, text size, privacy choices, whether it may use the accent colour Updater CE passes over, whether you hid the donation appeals, and translations it has already fetched. These stay on your device. Clearing site data removes them.": {
    "n": 1,
    "pages": 1
   },
@@ -243838,6 +244272,14 @@
    "pages": 1
   },
   "The wired profile check matches whole rates (8000 no longer matched inside 48000).": {
+   "n": 1,
+   "pages": 1
+  },
+  "The words are used interchangeably across this site, and the steps above are the same for each:": {
+   "n": 1,
+   "pages": 1
+  },
+  "The words are used interchangeably on this site, and the steps above are the same for each:": {
    "n": 1,
    "pages": 1
   },
@@ -245690,6 +246132,10 @@
    "n": 1,
    "pages": 1
   },
+  "Time and safety.": {
+   "n": 1,
+   "pages": 1
+  },
   "Time bases:": {
    "n": 1,
    "pages": 1
@@ -247403,6 +247849,10 @@
    "pages": 1
   },
   "Troubleshooting guide": {
+   "n": 1,
+   "pages": 1
+  },
+  "Troubleshooting the flash": {
    "n": 1,
    "pages": 1
   },
@@ -250040,6 +250490,18 @@
    "n": 1,
    "pages": 1
   },
+  "Unpack the legacy package somewhere simple, such as": {
+   "n": 1,
+   "pages": 1
+  },
+  "Unpack the package with the built-in Windows zip support, 7-Zip, or WinRAR. You need the folder that contains the": {
+   "n": 1,
+   "pages": 1
+  },
+  "Unpack the zip somewhere short and simple, such as": {
+   "n": 1,
+   "pages": 1
+  },
   "Unplug USB (charging was active; required for devices+ stages).": {
    "n": 1,
    "pages": 1
@@ -250624,6 +251086,14 @@
    "n": 1,
    "pages": 1
   },
+  "Updater CE cannot run on those PCs. Use the same firmware with SP Flash Tool instead.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Updater CE does the same job with fewer steps, and it keeps your music and Bluetooth pairings. It is only available on 64-bit Windows 10 (1809 or newer), macOS and Linux. A legacy package flash writes the system partition, so copy your music off the player first if you have files you cannot replace.": {
+   "n": 1,
+   "pages": 1
+  },
   "Updater CE download source": {
    "n": 1,
    "pages": 1
@@ -250665,11 +251135,23 @@
    "n": 1,
    "pages": 1
   },
+  "Updater CE is a 64-bit application and needs Windows 10 (1809) or newer, so it cannot open on Windows XP, Vista, 7, 8, 8.1 or on a 32-bit PC. Your player is not stuck: every package in the archive also has a": {
+   "n": 1,
+   "pages": 1
+  },
+  "Updater CE is a 64-bit application and needs Windows 10 1809 or newer. On Windows XP, Vista, 7, 8, 8.1 or 32-bit Windows the site offers the SP Flash Tool package instead, because the app cannot open there.": {
+   "n": 1,
+   "pages": 1
+  },
   "Updater CE is not restricted to Innioasis players. You can use it as a powerful universal MediaTek scatter flasher for any device requiring": {
    "n": 1,
    "pages": 1
   },
   "Updater CE is the community catalogue and installer for custom firmware. Develop your project from a base ROM, publish it as a public repository with the correct release assets, add the model entries to": {
+   "n": 1,
+   "pages": 1
+  },
+  "Updater CE needs 64-bit Windows 10 (1809 or newer), so it cannot open on these PCs. The same firmware is published as a package that carries SP Flash Tool beside the rom, and that tool runs from Windows XP onwards. This guide installs firmware, a community software release, an update or a stock package with it.": {
    "n": 1,
    "pages": 1
   },
@@ -250682,6 +251164,10 @@
    "pages": 1
   },
   "Updater CE reads the manifest as its catalogue. Each": {
+   "n": 1,
+   "pages": 1
+  },
+  "Updater CE runs on a Mac and on x86-64 Linux, and neither needs SP Flash Tool.": {
    "n": 1,
    "pages": 1
   },
@@ -253838,6 +254324,14 @@
    "n": 1,
    "pages": 1
   },
+  "Wait for the green success box. Do not unplug before it appears, and do not close SP Flash Tool while the progress bar is moving.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Wait for the green success box. Do not unplug the player or close SP Flash Tool while the progress bar is moving.": {
+   "n": 1,
+   "pages": 1
+  },
   "Wait for the live connection prompt.": {
    "n": 1,
    "pages": 1
@@ -254579,6 +255073,11 @@
    "n": 1,
    "pages": 1
   },
+  "What if SP Flash Tool does not detect the player?": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "What if Solar is not shown for Y2?": {
    "n": 1,
    "pages": 1
@@ -254690,6 +255189,10 @@
    "pages": 1
   },
   "What is in a report": {
+   "n": 1,
+   "pages": 1
+  },
+  "What is in the package?": {
    "n": 1,
    "pages": 1
   },
@@ -255005,6 +255508,10 @@
    "pages": 1
   },
   "What to do": {
+   "n": 1,
+   "pages": 1
+  },
+  "What to do after installing": {
    "n": 1,
    "pages": 1
   },
@@ -255524,6 +256031,10 @@
    "n": 1,
    "pages": 1
   },
+  "When you open this site from Innioasis Updater CE, the app passes the accent colour you chose in it so the pages match your player. The site saves that colour and whether it may use it in your browser. Nothing about the app is sent anywhere, and the colour is only used for this site's own buttons and links.": {
+   "n": 1,
+   "pages": 1
+  },
   "When you turn off this setting, the playlist and the likes you've given aren't deleted - they're simply hidden": {
    "n": 1,
    "pages": 1
@@ -255922,6 +256433,10 @@
    "n": 1,
    "pages": 1
   },
+  "Which file do I download?": {
+   "n": 1,
+   "pages": 1
+  },
   "Which guide do you need?": {
    "n": 1,
    "pages": 1
@@ -255944,6 +256459,10 @@
    "pages": 1
   },
   "Which network is the player on?": {
+   "n": 1,
+   "pages": 1
+  },
+  "Which package do I download?": {
    "n": 1,
    "pages": 1
   },
@@ -256332,6 +256851,11 @@
   "Why install Rondo on your Innioasis Y1?": {
    "n": 1,
    "pages": 1
+  },
+  "Why is Updater CE not offered on this computer?": {
+   "n": 1,
+   "pages": 1,
+   "script": true
   },
   "Why is Y1's GEA so much larger than Pixel's?": {
    "n": 1,
@@ -257180,6 +257704,11 @@
    "n": 1,
    "pages": 1
   },
+  "Will flashing erase my music?": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Will installing Rockbox-Y2 erase my music?": {
    "n": 1,
    "pages": 1,
@@ -257196,6 +257725,10 @@
    "script": true
   },
   "Window failures now carry both the error and any PCM": {
+   "n": 1,
+   "pages": 1
+  },
+  "Windows 10 and 11": {
    "n": 1,
    "pages": 1
   },
@@ -257228,6 +257761,22 @@
    "pages": 1
   },
   "Windows MTP driver association": {
+   "n": 1,
+   "pages": 1
+  },
+  "Windows XP, 7, 8 or 32-bit": {
+   "n": 1,
+   "pages": 1
+  },
+  "Windows XP, Vista, 7, 8 or 8.1, 32-bit or 64-bit. Windows 10 and 11 can use Updater CE from the": {
+   "n": 1,
+   "pages": 1
+  },
+  "Windows XP/7/8 (32/64-bit)": {
+   "n": 1,
+   "pages": 1
+  },
+  "Windows XP/7/8 and 32-bit": {
    "n": 1,
    "pages": 1
   },
@@ -263195,6 +263744,11 @@
    "pages": 1,
    "script": true
   },
+  "Yes. It is the same rom for the same release, packed beside SP Flash Tool instead of the Updater CE app. The scatter file and partition images are identical.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Yes. JJLauncher, JJ launcher, y1_launcher, JJ Launcher Y1, JJ Launcher Y2 all refer to the same project.": {
    "n": 1,
    "pages": 1
@@ -263618,6 +264172,10 @@
    "pages": 1,
    "script": true
   },
+  "Yes. Updater CE cannot run there, but every release has a package ending in": {
+   "n": 1,
+   "pages": 1
+  },
   "Yes. Updater CE lists it as Rockbox when Y1 is selected, while guides and release notes call it Rockbox-Y1 so it is clear which player model it is for.": {
    "n": 1,
    "pages": 1,
@@ -263830,6 +264388,10 @@
    "pages": 1
   },
   "You should no longer need to turn Wi-Fi off and on after the screen was off or the player slept.": {
+   "n": 1,
+   "pages": 1
+  },
+  "You should now have a folder with the": {
    "n": 1,
    "pages": 1
   },
@@ -264619,6 +265181,10 @@
    "pages": 1
   },
   "a TID-echo issue. If": {
+   "n": 1,
+   "pages": 1
+  },
+  "a USB cable that carries data. A charge-only cable is the usual reason the player is never detected.": {
    "n": 1,
    "pages": 1
   },
@@ -266442,6 +267008,10 @@
    "n": 1,
    "pages": 1
   },
+  "again and reconnect only after SP Flash Tool is waiting.": {
+   "n": 1,
+   "pages": 1
+  },
   "again and send an error report.": {
    "n": 1,
    "pages": 1
@@ -266891,6 +267461,10 @@
    "pages": 1
   },
   "allow the existing policy to settle without bypassing its hysteresis. A radio restore/start-up burst escalated the hold to 480000 ms. Thirty-second observations show CPU3 parked at": {
+   "n": 1,
+   "pages": 1
+  },
+  "allowed": {
    "n": 1,
    "pages": 1
   },
@@ -267983,6 +268557,10 @@
    "pages": 1
   },
   "and choose Y2, then": {
+   "n": 1,
+   "pages": 1
+  },
+  "and choose the": {
    "n": 1,
    "pages": 1
   },
@@ -276662,6 +277240,10 @@
    "n": 1,
    "pages": 1
   },
+  "close SP Flash Tool, power the player off completely, and start again from the scatter file. Do not try a different model's package.": {
+   "n": 1,
+   "pages": 1
+  },
   "closes C3 for this boot. Status CPU exposes the boot-policy result/rejection.": {
    "n": 1,
    "pages": 1
@@ -278167,6 +278749,10 @@
    "pages": 1
   },
   "copy and per-track cloning/upsert on unchanged scans are removed. The only per-track insertion loop on reuse writes fingerprints into a bounded TEMP table; identity checks use set joins, not per-file RPCs or statement preparation.": {
+   "n": 1,
+   "pages": 1
+  },
+  "copy music and other files you cannot replace off the player. A flash replaces the system partition.": {
    "n": 1,
    "pages": 1
   },
@@ -280667,6 +281253,10 @@
    "pages": 1
   },
   "don't trigger long-press FF/RW handlers.": {
+   "n": 1,
+   "pages": 1
+  },
+  "donate page": {
    "n": 1,
    "pages": 1
   },
@@ -284066,6 +284656,10 @@
    "n": 1,
    "pages": 1
   },
+  "file. The partition list should fill with the rom files beside it.": {
+   "n": 1,
+   "pages": 1
+  },
   "file; it is not published or automatically destructively repaired/deleted. Inspect it when needed. A directory fsync failure after rename returns an error; a complete published file may exist without acknowledged durability. Inspect its hash before retrying. No storage device can guarantee protection against electrical power loss; this design removes concurrent host/Linux block ownership and acknowledges success only after checked filesystem durability.": {
    "n": 1,
    "pages": 1
@@ -285118,7 +285712,19 @@
    "n": 1,
    "pages": 1
   },
+  "folder and run the installer inside it. On Windows XP accept the unsigned-driver warning.": {
+   "n": 1,
+   "pages": 1
+  },
+  "folder and run the installer inside it. Windows XP and Vista will warn about an unsigned driver; allow it, because the player is invisible without it.": {
+   "n": 1,
+   "pages": 1
+  },
   "folder before flashing. Keep the official Y2 stock-recovery package available.": {
+   "n": 1,
+   "pages": 1
+  },
+  "folder beside the rom images.": {
    "n": 1,
    "pages": 1
   },
@@ -285230,7 +285836,15 @@
    "n": 1,
    "pages": 1
   },
+  "folder,": {
+   "n": 1,
+   "pages": 1
+  },
   "folder, Updater CE pushes the themes and fonts straight to the player for you with no manual zip extraction required.": {
+   "n": 1,
+   "pages": 1
+  },
+  "folder, a": {
    "n": 1,
    "pages": 1
   },
@@ -285239,6 +285853,14 @@
    "pages": 1
   },
   "folder, favorites": {
+   "n": 1,
+   "pages": 1
+  },
+  "folder, restart the PC and try a different USB port. Some older PCs only work on a rear port.": {
+   "n": 1,
+   "pages": 1
+  },
+  "folder, restart the PC, use a USB port on the PC itself rather than a hub, and press Download before connecting the powered-off player.": {
    "n": 1,
    "pages": 1
   },
@@ -285295,6 +285917,10 @@
    "pages": 1
   },
   "folders read.": {
+   "n": 1,
+   "pages": 1
+  },
+  "folders with long names and spaces.": {
    "n": 1,
    "pages": 1
   },
@@ -285571,6 +286197,10 @@
    "pages": 1
   },
   "for Windows 11 and Windows Server 2022; it does not establish Windows 10 support.": {
+   "n": 1,
+   "pages": 1
+  },
+  "for Windows XP/7/8 32/64-bit": {
    "n": 1,
    "pages": 1
   },
@@ -286598,10 +287228,6 @@
    "n": 1,
    "pages": 1
   },
-  "for this browser.": {
-   "n": 1,
-   "pages": 1
-  },
   "for this commit. Patcher prints the computed MD5 on first flash without erroring. Update them once a clean flash + capture cycle confirms the new bytes are correct.": {
    "n": 1,
    "pages": 1
@@ -287270,6 +287896,10 @@
    "n": 1,
    "pages": 1
   },
+  "from the SP Flash Tool folder.": {
+   "n": 1,
+   "pages": 1
+  },
   "from the Software drop down menu and select \"Install/Restore\" to be guided through the install process.": {
    "n": 1,
    "pages": 1
@@ -287907,6 +288537,10 @@
    "pages": 1
   },
   "give semantic ownership and required regressions.": {
+   "n": 1,
+   "pages": 1
+  },
+  "give the first boot a few minutes, then restore Original Software for the same model from the": {
    "n": 1,
    "pages": 1
   },
@@ -292159,6 +292793,14 @@
    "pages": 1
   },
   "install ID format, body SHA-256. Budget in a Durable Object (exact): 100 reports and 40 MiB a day for the whole service, 10 a day per install ID, 30 per network (IPv4 address or IPv6 /64). See \"Cost review\" at the end.": {
+   "n": 1,
+   "pages": 1
+  },
+  "install Innioasis firmware Windows 7, Innioasis update Windows XP, 32 bit Windows firmware install, SP Flash Tool portable, Innioasis software package Windows 8, Timmkoo firmware Windows 7, flash Innioasis on old Windows PC": {
+   "n": 1,
+   "pages": 1
+  },
+  "install Innioasis firmware Windows XP, install Innioasis firmware Windows 7, Innioasis software Windows 8, Innioasis update 32-bit Windows, Timmkoo firmware Windows 7, SP Flash Tool portable install, flash Innioasis on old Windows PC, firmware install Windows Vista": {
    "n": 1,
    "pages": 1
   },
@@ -297858,6 +298500,10 @@
    "n": 1,
    "pages": 1
   },
+  "macOS and Linux": {
+   "n": 1,
+   "pages": 1
+  },
   "macOS asset:": {
    "n": 1,
    "pages": 1
@@ -298947,6 +299593,10 @@
    "pages": 1
   },
   "mode-1 DMA transfer of the remaining length (multiple of 512, capped at the channel maximum), with AUTOCLEAR, DMAENAB and the Inventra DMAREQMODE sequence.": {
+   "n": 1,
+   "pages": 1
+  },
+  "mode. Keep": {
    "n": 1,
    "pages": 1
   },
@@ -303866,6 +304516,10 @@
    "n": 1,
    "pages": 1
   },
+  "only when the player will not start at all and you are restoring it.": {
+   "n": 1,
+   "pages": 1
+  },
   "only when they share the same album tag (": {
    "n": 1,
    "pages": 1
@@ -305471,6 +306125,10 @@
    "pages": 1
   },
   "package/validation": {
+   "n": 1,
+   "pages": 1
+  },
+  "package; on a supported PC the same row offers the normal Windows, macOS and Linux builds.": {
    "n": 1,
    "pages": 1
   },
@@ -311478,6 +312136,10 @@
    "n": 1,
    "pages": 1
   },
+  "reinstall the MediaTek driver from the": {
+   "n": 1,
+   "pages": 1
+  },
   "reject (msg=520) instead of an ACK (msg=536), matching Pixel-as-TG byte-for-byte at the AV/C ctype level.": {
    "n": 1,
    "pages": 1
@@ -314843,6 +315505,10 @@
    "pages": 1
   },
   "scans the": {
+   "n": 1,
+   "pages": 1
+  },
+  "scatter file": {
    "n": 1,
    "pages": 1
   },
@@ -319230,6 +319896,10 @@
    "n": 1,
    "pages": 1
   },
+  "subfolder, the scatter file is inside it.": {
+   "n": 1,
+   "pages": 1
+  },
   "subject to license obligations": {
    "n": 1,
    "pages": 1
@@ -320514,6 +321184,10 @@
    "n": 1,
    "pages": 1
   },
+  "that carries SP Flash Tool and the same firmware. It works from Windows XP onwards, on both 32-bit and 64-bit Windows.": {
+   "n": 1,
+   "pages": 1
+  },
   "that conditionally branched past": {
    "n": 1,
    "pages": 1
@@ -321399,6 +322073,10 @@
    "pages": 1
   },
   "the music-app files and get ENOENT (no": {
+   "n": 1,
+   "pages": 1
+  },
+  "the name printed on the player. A Y1 package will not work on a Y2, and Timmkoo models are not interchangeable with Innioasis ones either.": {
    "n": 1,
    "pages": 1
   },
@@ -322555,6 +323233,14 @@
    "pages": 1
   },
   "tick, instead of restoring the screen.": {
+   "n": 1,
+   "pages": 1
+  },
+  "ticked only if you are restoring a player that will not start at all.": {
+   "n": 1,
+   "pages": 1
+  },
+  "ticked.": {
    "n": 1,
    "pages": 1
   },
@@ -324412,6 +325098,10 @@
    "pages": 1
   },
   "unplug": {
+   "n": 1,
+   "pages": 1
+  },
+  "unplug the cable, hold the player's power button for ten seconds, then click": {
    "n": 1,
    "pages": 1
   },
@@ -328919,6 +329609,10 @@
    "n": 1,
    "pages": 1
   },
+  "zip that carries SP Flash Tool beside the rom, and that tool runs on those systems.": {
+   "n": 1,
+   "pages": 1
+  },
   "zip-rebuild: no longer swaps AndroidManifest.xml (it stays bit-exact stock).": {
    "n": 1,
    "pages": 1
@@ -333209,6 +333903,11 @@
    "pages": 42,
    "script": true
   },
+  "A USB cable that carries data": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "A USB data cable": {
    "n": 1,
    "pages": 78,
@@ -333320,6 +334019,11 @@
    "script": true
   },
   "Accent colour": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Accent colour imported from Updater CE": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -333676,7 +334380,7 @@
   },
   "Choose your model and firmware": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Choose your model and software": {
@@ -333686,15 +334390,20 @@
   },
   "Classy for Innioasis Y1": {
    "n": 1,
-   "pages": 2,
+   "pages": 78,
    "script": true
   },
   "Classy for Innioasis Y2": {
    "n": 1,
-   "pages": 2,
+   "pages": 78,
    "script": true
   },
   "Classy on Innioasis Y1": {
+   "n": 1,
+   "pages": 39,
+   "script": true
+  },
+  "Click Download, then connect the switched-off player. Wait for the green success box before unplugging.": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -333741,7 +334450,7 @@
   },
   "Computer with Innioasis Updater installed": {
    "n": 1,
-   "pages": 7,
+   "pages": 3,
    "script": true
   },
   "Confirm and wait": {
@@ -333869,6 +334578,11 @@
    "pages": 1,
    "script": true
   },
+  "Disconnect the player, switch it on and allow a few minutes for the first start. Restore the stock package for the same model if anything looks wrong.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Discord Server": {
    "n": 1,
    "pages": 1,
@@ -333949,6 +334663,21 @@
    "pages": 2,
    "script": true
   },
+  "Download the firmware package for your model": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Download the firmware package that includes SP Flash Tool, install the MediaTek USB driver, load the scatter file and flash the powered-off player on an older or 32-bit Windows PC.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Download the package for your model": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Draft": {
    "n": 1,
    "pages": 42,
@@ -334006,7 +334735,7 @@
   },
   "Extract the firmware ZIP": {
    "n": 1,
-   "pages": 7,
+   "pages": 3,
    "script": true
   },
   "Factory firmware restore packages and software updates for Innioasis A5 and Timmkoo A5 digital audio players.": {
@@ -334094,11 +334823,6 @@
    "pages": 42,
    "script": true
   },
-  "Firmware list": {
-   "n": 1,
-   "pages": 42,
-   "script": true
-  },
   "Firmware list - every Innioasis and Timmkoo release": {
    "n": 1,
    "pages": 42,
@@ -334111,12 +334835,12 @@
   },
   "Flash an Innioasis Y1 or Y2 with SP Flash Tool": {
    "n": 1,
-   "pages": 7,
+   "pages": 3,
    "script": true
   },
   "Flash the player": {
    "n": 1,
-   "pages": 7,
+   "pages": 5,
    "script": true
   },
   "Follow along with the setup guide to complete post-install setup on your Y1.": {
@@ -334451,7 +335175,7 @@
   },
   "Inniclassic for Innioasis Y2": {
    "n": 1,
-   "pages": 82,
+   "pages": 6,
    "script": true
   },
   "Inniclassic on Innioasis Y1 Linux": {
@@ -334709,6 +335433,16 @@
    "pages": 42,
    "script": true
   },
+  "Install Innioasis firmware on Windows XP, Vista, 7 or 8": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Install Innioasis or Timmkoo firmware on Windows XP, Vista, 7, 8 or 8.1": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Install JJ Launcher on Innioasis Y1": {
    "n": 1,
    "pages": 36,
@@ -334796,7 +335530,7 @@
   },
   "Install firmware with the SP Flash Tool install method in Innioasis Updater CE": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Install or restore firmware on your player": {
@@ -334812,6 +335546,11 @@
   "Install or restore the Y2 stock firmware with Innioasis Updater.": {
    "n": 1,
    "pages": 42,
+   "script": true
+  },
+  "Install the MediaTek USB driver": {
+   "n": 1,
+   "pages": 2,
    "script": true
   },
   "Install the Y2 Rockbox build with Innioasis Updater.": {
@@ -334924,6 +335663,11 @@
    "pages": 1,
    "script": true
   },
+  "Let the player finish its first boot": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Linux Mode Setup": {
    "n": 1,
    "pages": 42,
@@ -334946,7 +335690,12 @@
   },
   "Load the matching scatter file": {
    "n": 1,
-   "pages": 7,
+   "pages": 3,
+   "script": true
+  },
+  "Load the scatter file in SP Flash Tool": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Loading notices": {
@@ -334977,11 +335726,6 @@
   "Manifest icon URL:": {
    "n": 1,
    "pages": 42,
-   "script": true
-  },
-  "Match my PC's theme colours": {
-   "n": 1,
-   "pages": 1,
    "script": true
   },
   "MediaTek SoC Bootrom Flashing": {
@@ -335084,6 +335828,11 @@
    "pages": 17,
    "script": true
   },
+  "No. Everything needed is inside the zip: the firmware, SP Flash Tool, the MediaTek driver and a donate.txt. Nothing is downloaded during the flash.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "No. Firmware ROM packages are flashed from a computer over USB using Updater CE. See installing from a downloaded ZIP.": {
    "n": 1,
    "pages": 2,
@@ -335181,7 +335930,7 @@
   },
   "Open Innioasis Updater CE, select the model printed on the player, then choose the software and release you want to install.": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Open Rockbox-Y1 for Type B": {
@@ -335189,9 +335938,14 @@
    "pages": 1,
    "script": true
   },
+  "Open SP Flash Tool and load the scatter file": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Open SP Flash Tool from the Updater install": {
    "n": 1,
-   "pages": 7,
+   "pages": 3,
    "script": true
   },
   "Open Settings": {
@@ -335201,7 +335955,7 @@
   },
   "Open Settings in Updater CE and enable Show Advanced Settings. This needs a Windows x64 or Linux x86-64 computer.": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Open Settings on the Innioasis G1 and choose Factory reset.": {
@@ -335310,6 +336064,11 @@
    "script": true
   },
   "Open navigation menu": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Open the firmware list, choose the model printed on the player, then choose the release. Download the zip whose name ends in -windows-legacy.zip.": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -335576,7 +336335,7 @@
   },
   "Power the player off, connect USB when the tool is ready, and wait for the green check.": {
    "n": 1,
-   "pages": 7,
+   "pages": 3,
    "script": true
   },
   "Preparing your download…": {
@@ -335587,6 +336346,11 @@
   "Preserving and archiving all stock, legacy, and custom ROM firmware packages on high-bandwidth edge mirrors. Maintained by Ryan Specter.": {
    "n": 1,
    "pages": 84,
+   "script": true
+  },
+  "Press Download, power the player fully off, then connect it with the USB cable. Wait for the green success box before unplugging anything.": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Preview XML is valid —": {
@@ -335635,6 +336399,11 @@
    "script": true
   },
   "Read the release notes for": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Reinstall the MediaTek driver from the Driver folder, restart the PC, use a USB port on the PC itself rather than a hub, and press Download before connecting the powered-off player.": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -335824,6 +336593,16 @@
    "pages": 17,
    "script": true
   },
+  "Revert to my previous colour": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Revert to the site default": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Rockbox Digital Audio Player OS": {
    "n": 1,
    "pages": 1,
@@ -335929,6 +336708,11 @@
    "pages": 1,
    "script": true
   },
+  "Run the driver installer from the SP Flash Tool folder, then restart the PC.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
   "Running Costs": {
    "n": 1,
    "pages": 1,
@@ -335942,6 +336726,16 @@
   "Ryan and his partner are getting ready for their child. If this tool has been useful, a donation for the running costs and our growing family would help more than you know.": {
    "n": 1,
    "pages": 17,
+   "script": true
+  },
+  "SP Flash Tool portable package": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "SP Flash Tool, included in the firmware package": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Saved your player with a free firmware download? Consider buying us a coffee.": {
@@ -336091,7 +336885,7 @@
   },
   "Set Install method to SP Flash Tool": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Set a GitHub repository URL and icon path to build the public icon URL.": {
@@ -336101,7 +336895,7 @@
   },
   "Set up the SP Flash Tool bundled with Innioasis Updater, extract the firmware ZIP, load the scatter file, and flash a Y1 or Y2.": {
    "n": 1,
-   "pages": 7,
+   "pages": 3,
    "script": true
   },
   "Setup on Mac": {
@@ -336531,7 +337325,7 @@
   },
   "Turn on Show Advanced Settings": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Type B Rockbox guide": {
@@ -336541,15 +337335,30 @@
   },
   "USB data cable": {
    "n": 1,
-   "pages": 126,
+   "pages": 127,
    "script": true
   },
   "Under Install method, choose SP Flash Tool instead of Auto, then return to the install screen.": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "Universal Flash Tool": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Unpack the downloaded zip so the rom files and its scatter file sit in one folder.": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Unpack the package": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Unpack the package and run the driver installer from the Driver folder. Restart the PC afterwards.": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -336701,7 +337510,7 @@
   },
   "Windows x64 or Linux x86-64 computer with Innioasis Updater CE": {
    "n": 1,
-   "pages": 35,
+   "pages": 39,
    "script": true
   },
   "XML parse error": {
@@ -336757,6 +337566,11 @@
   "Yes. Rockbox, Rockbox-Y2, Rockbox for Y2 and rockbox-y2 all refer to the community Rockbox port for the Innioasis Y2.": {
    "n": 1,
    "pages": 42,
+   "script": true
+  },
+  "Yes. Updater CE cannot run there, but every release has a package ending in -windows-legacy.zip that carries SP Flash Tool and the same firmware. It works from Windows XP onwards, on both 32-bit and 64-bit Windows.": {
+   "n": 1,
+   "pages": 1,
    "script": true
   },
   "Yes. Use the same model-matched Updater CE flow and choose Original Software instead of the community project.": {
