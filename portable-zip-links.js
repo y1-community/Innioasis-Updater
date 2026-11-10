@@ -368,6 +368,23 @@
        is already looking at the release they chose. */
     function mountPanel(link) {
         var root = ensurePanel();
+        var row = link.closest ? link.closest("tr") : null;
+        if (row && row.parentNode) {
+            var hostRow = document.getElementById("lumen-download-progress-host");
+            if (!hostRow) {
+                hostRow = document.createElement("tr");
+                hostRow.id = "lumen-download-progress-host";
+                hostRow.className = "lumen-download-progress-host";
+                var cell = document.createElement("td");
+                cell.className = "lumen-download-progress-cell";
+                hostRow.appendChild(cell);
+            }
+            var cell = hostRow.querySelector("td");
+            if (cell) cell.colSpan = row.cells ? row.cells.length : 3;
+            row.parentNode.insertBefore(hostRow, row.nextSibling);
+            cell.appendChild(root);
+            return root;
+        }
         var anchor = link.closest("li") || link.closest("p") || link;
         if (!anchor.parentNode) return root;
         var holder = root.parentNode;
@@ -389,6 +406,8 @@
             var holder = panel.parentNode;
             panel.remove();
             if (holder && holder.classList && holder.classList.contains("lumen-download-progress-item")) holder.remove();
+            var hostRow = document.getElementById("lumen-download-progress-host");
+            if (hostRow && hostRow.parentNode && !hostRow.querySelector(".lumen-download-progress")) hostRow.parentNode.removeChild(hostRow);
         }
         restoreLinks();
     }
@@ -419,7 +438,7 @@
         if (!panel || !panel.isConnected) return;
         var nodes = toastNodes();
         nodes.bar.style.width = "100%";
-        nodes.label.textContent = "Firmware zip downloaded";
+        nodes.label.textContent = saveName || "Download finished";
         nodes.meta.textContent = streamed && saveName ? "Saved as " + saveName : "Check your Downloads folder";
         nodes.dismiss.hidden = false;
         if (panelTimer) clearTimeout(panelTimer);

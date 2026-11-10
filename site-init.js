@@ -531,8 +531,9 @@
             "color:var(--lumen-accent,#2563eb)!important;}",
             "a.btn,button.btn,.lumen-button--primary,.btn-primary,.gallery-action-row>.btn{",
             "color:var(--lumen-on-accent,#fff)!important;}",
-            "h1,h2,h3,.site-display,.section-display,.lumen-brand-title{",
+            "h1,.site-display,.lumen-brand-title,.lumen-site-switcher-item-copy strong{",
             "color:var(--lumen-accent,#2563eb);}",
+            "h2,h3,h4{color:var(--lumen-text,CanvasText);}",
             ".y1-dock-icon,.y1-dock-reopen-icon{color:var(--lumen-accent,#2563eb)!important;}"
         ].join("");
         try {
@@ -929,12 +930,6 @@
         var hue = document.getElementById("lumen-accent-hue");
         var eyedrop = document.getElementById("lumen-accent-eyedrop");
 
-        if (hue) {
-            hue.addEventListener("input", function () {
-                setMatchPcTheme(false);
-                applyAccent(accentHsl(hue.value, 72, 55), true);
-            });
-        }
         /* Chromium can sample any pixel on screen; elsewhere the native colour
            input already opens the system picker, so the button stays hidden. */
         if (eyedrop && typeof global.EyeDropper === "function") {
