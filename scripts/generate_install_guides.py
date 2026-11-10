@@ -567,6 +567,7 @@ def family_hub_page(key: str) -> tuple[str, str]:
             % (e(data.display_model(item["model"])), e(item.get("description") or ""),
                "".join('<td><a href="%s">%s</a></td>' % (e(data.deep_name(item["slug"], os_key)), e(data.OS_PROFILES[os_key]["label"])) for os_key in data.OS_ORDER))
         )
+    archive_name = next((item.get("name") for item in items if item.get("name")), family["name"])
     faqs = [
         (f"What is {family['name']}?", family["summary"] + " " + family["why"]),
         (f"Is {family['aliases'][0]} the same as {family['name']}?" if family["aliases"] else "Which models support it?",
@@ -585,7 +586,7 @@ def family_hub_page(key: str) -> tuple[str, str]:
         f'<section class="lumen-guide-section install-section"><h2>Every {e(family["name"])} install by model</h2>'
         f'<div class="lumen-table-wrap"><table class="install-matrix"><thead><tr><th>Model</th><th>Windows</th><th>macOS</th><th>Linux</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div></section>',
         f'<section class="lumen-guide-section install-section"><h2>Why people install {e(family["name"])}</h2><p>{family["why"]}</p>'
-        f'<p class="lumen-meta">Source: <a href="{e(family["source"])}" target="_blank" rel="noopener noreferrer">{e(family["source_label"])}</a></p></section>',
+        f'<p class="lumen-meta">In Updater CE and the firmware archive: <a href="../firmware.html">{e(archive_name)}</a></p></section>',
         faq_section(faqs),
         feedback_section(),
     ])

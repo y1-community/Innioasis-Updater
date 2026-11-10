@@ -109,8 +109,6 @@ FAMILIES = {
         "preinstall": "Back up music and recordings first. A stock restore replaces the system and can wipe internal storage; the microSD card is normally left alone.",
         "post": "The first start can take a few minutes. Set the language, Wi-Fi and Bluetooth again if the restore cleared them.",
         "restore": "This is the restore path itself: choose Original Software for the model and run Install / Restore.",
-        "source": "https://github.com/y1-community/y1-stock-rom",
-        "source_label": "y1-community stock firmware archive",
     },
     "reborn": {
         "key": "reborn",
@@ -123,8 +121,6 @@ FAMILIES = {
         "preinstall": "Reborn is for the Y2 only. Back up the microSD and internal storage; the install replaces the system. Keep a stock Y2 package available for the way back.",
         "post": "After the first start, copy <code>system.img</code> from the stock Y2 package into the <strong>Firmware</strong> folder on Internal Storage to enable Wi-Fi, FM radio and Bluetooth. Follow the Y2 Reborn radio setup guide for the exact steps.",
         "restore": "Restore Original Software for Y2 if you want the stock player back.",
-        "source": "https://github.com/schulzcode/y2linux",
-        "source_label": "SchulzCode/Y2Linux",
         "post_url": "y2reborn_wifibt.html",
         "post_label": "Y2 Reborn Wi-Fi, FM and Bluetooth setup",
     },
@@ -139,8 +135,6 @@ FAMILIES = {
         "preinstall": "Rondo is for the Y1 Type A only (players that shipped with software 2.0.0 or later). Do not install it on a Type B Y1 or a Y2.",
         "post": "The first start takes a couple of minutes. For YouTube Music and YouTube, set up a Rondo server; the card, radio and Bluetooth work without one.",
         "restore": "Restore Original Software for Y1 if you want the stock player back.",
-        "source": "https://github.com/jarvissax/rondo",
-        "source_label": "jarvissax/rondo",
     },
     "rockbox": {
         "key": "rockbox",
@@ -153,8 +147,6 @@ FAMILIES = {
         "preinstall": "Use the build for this exact model. Rockbox-Y1 and Rockbox-Y2 are separate packages. On a Y1, check whether the player is Type A or Type B before you pick the asset.",
         "post": "On first start, let Rockbox scan the microSD card. Themes and settings live on the card, so keep a copy before you change cards.",
         "restore": "Restore Original Software for the same model if you want the stock player back.",
-        "source": "https://github.com/rockbox-y1/rockbox",
-        "source_label": "rockbox-y1/rockbox and spycemagic/y2-rockbox",
     },
     "solar": {
         "key": "solar",
@@ -167,8 +159,6 @@ FAMILIES = {
         "preinstall": "Check the release notes for the model you have: Solar features differ between Y1 and Y2. Keep a stock package ready because this is a full system replacement.",
         "post": "Connect to Wi-Fi after the first boot and sign in to the services you use. Podcasts and streaming need a working network.",
         "restore": "Restore Original Software for the same model if you want the stock player back.",
-        "source": "https://github.com/thesolarproject/solar",
-        "source_label": "thesolarproject/solar",
     },
     "jj-launcher": {
         "key": "jj-launcher",
@@ -181,8 +171,6 @@ FAMILIES = {
         "preinstall": "Choose the build that matches the model. The Y1 package is not the Y2 package, even when both entries share the same project name.",
         "post": "Set your preferred home layout after the first boot. Your music library stays on the card.",
         "restore": "Restore Original Software for the same model if you want the stock home screen back.",
-        "source": "https://github.com/ismileblue/y1_launcher",
-        "source_label": "ismileblue/y1_launcher",
     },
     "inniclassic": {
         "key": "inniclassic",
@@ -195,8 +183,6 @@ FAMILIES = {
         "preinstall": "The Y1 and Y2 builds come from separate release lines. Never cross-flash them, and pick the Type B asset if you have an early Y1.",
         "post": "The first boot may take longer while the library indexes. Let the scan finish before you judge performance.",
         "restore": "Restore Original Software for the same model if you want the stock interface back.",
-        "source": "https://github.com/FabianZettl/inniclassic",
-        "source_label": "FabianZettl/inniclassic and ClassyPlayer/Classy",
     },
     "y2player": {
         "key": "y2player",
@@ -209,8 +195,6 @@ FAMILIES = {
         "preinstall": "Y2Player is Y2-only. Back up first; it replaces the system.",
         "post": "Let the library scan finish before judging the first start.",
         "restore": "Restore Original Software for Y2 if you want the stock interface back.",
-        "source": "https://github.com/schulzcode/Y2Player",
-        "source_label": "schulzcode/Y2Player",
     },
     "koensayr": {
         "key": "koensayr",
@@ -223,8 +207,6 @@ FAMILIES = {
         "preinstall": "Koensayr is a Y1 build based on stock firmware. Check the supported stock version in the release notes before you start.",
         "post": "Open the after-install notes for the extra patch options and the first-start checks.",
         "restore": "Restore Original Software for Y1 if you want the untouched stock software back.",
-        "source": "https://github.com/ryan-specter/koensayr-auto",
-        "source_label": "ryan-specter/koensayr-auto",
     },
     "better-y": {
         "key": "better-y",
@@ -237,8 +219,6 @@ FAMILIES = {
         "preinstall": "Better-Y releases are Y1 Type A packages. Do not flash them on a Type B Y1; use Rockbox-Y1 Type B for early units.",
         "post": "No extra setup is needed for the core features. Check the release notes for the stock version it builds on.",
         "restore": "Restore Original Software for Y1 if you want the stock software back.",
-        "source": "https://github.com/Leska1337/better-Y",
-        "source_label": "Leska1337/better-Y",
     },
     "android-dev": {
         "key": "android-dev",
@@ -251,8 +231,6 @@ FAMILIES = {
         "preinstall": "This is a development build. Expect missing features, and keep a stock restore package ready before you flash.",
         "post": "Boot may take longer. Reinstall Original Software when you finish testing.",
         "restore": "Restore Original Software for the same model when you are done testing.",
-        "source": "https://github.com/y1-community/y1-ata-rom",
-        "source_label": "y1-community ATA ROM projects",
     },
     "linux-dev": {
         "key": "linux-dev",
@@ -265,8 +243,6 @@ FAMILIES = {
         "preinstall": "This is an early development build. Keep a stock restore ready and expect rough edges.",
         "post": "Expect missing features and occasional instability. Reinstall Original Software when you finish testing.",
         "restore": "Restore Original Software for Y1 when you are done testing.",
-        "source": "https://github.com/y1-community/y1-linux-rom",
-        "source_label": "y1-community/y1-linux-rom",
     },
 }
 
