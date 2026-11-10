@@ -35,7 +35,7 @@
     /* Catalogs are re-fetched under a new URL when their content changes.
        Without this a returning visitor keeps the copy they cached, so a
        language whose catalog was just completed still reads as English. */
-    var CATALOG_VERSION = "20261110i18n";;
+    var CATALOG_VERSION = "20261110plain";;
     var STORAGE_LOCALE = "innioasis-locale";
     var STORAGE_REGION = "innioasis-region";
     var STORAGE_COUNTRY = "innioasis-country";
@@ -1229,6 +1229,57 @@
         }
     }
 
+    /* Visible chrome that arrived after the catalog pass: the footer dock,
+       its buttons, and any panel it opened. One walk of that subtree, then
+       the leftovers share the page's existing translation batch. Donor
+       ticker lines are rebuilt by the dock itself and stay out of this walk. */
+    function queueChrome(root) {
+        if (!root) return;
+        var nested = applying;
+        if (!nested) applying = true;
+        try { translateTree(root); } finally { if (!nested) applying = false; }
+        if (!dynamicEnabled() || typeof document.createTreeWalker !== "function") return;
+        var groups = {};
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+                var parent = node.parentElement;
+                if (!parent) return NodeFilter.FILTER_REJECT;
+                if (/^(SCRIPT|STYLE|NOSCRIPT)$/.test(parent.tagName)) return NodeFilter.FILTER_REJECT;
+                if (parent.closest("[data-i18n-skip], [translate='no'], [data-locale-panel]")) return NodeFilter.FILTER_REJECT;
+                var value = normalise(node.nodeValue);
+                if (value.length < 2 || !/[A-Za-z]{2}/.test(value)) return NodeFilter.FILTER_REJECT;
+                if (catalogHasValue(value) || isBrandOnly(value)) return NodeFilter.FILTER_REJECT;
+                var known = state.strings && state.strings[value];
+                if (known && known !== value) return NodeFilter.FILTER_REJECT;
+                if (node.__y1Chrome === value) return NodeFilter.FILTER_REJECT;
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        });
+        var node;
+        while ((node = walker.nextNode())) {
+            var text = normalise(node.nodeValue);
+            node.__y1Chrome = text;
+            if (!groups[text]) groups[text] = [];
+            groups[text].push(node);
+        }
+        Object.keys(groups).forEach(function (text) {
+            var nodes = groups[text];
+            queueDynamicText(text, function (translated) {
+                if (!translated || normalise(translated) === text) return;
+                nodes.forEach(function (target) {
+                    if (!target.parentNode || normalise(target.nodeValue) !== text) return;
+                    var raw = target.nodeValue;
+                    var prefix = /^\s*/.exec(raw)[0];
+                    var suffix = /\s*$/.exec(raw)[0];
+                    applying = true;
+                    try { target.nodeValue = prefix + translated + suffix; }
+                    finally { applying = false; }
+                    target.__y1Chrome = normalise(translated);
+                });
+            });
+        });
+    }
+
     function queueDynamic(root) {
         if (!dynamicEnabled() || !root) return;
         var containers = [];
@@ -1387,6 +1438,15 @@
                     if (record.type === "childList") {
                         for (var j = 0; j < record.addedNodes.length; j += 1) {
                             var added = record.addedNodes[j];
+                            /* The dock redraws its ticker on a timer. Those
+                               writes stay inside the dock and must not start
+                               another pass over the page. */
+                            if (added.nodeType === 1 && (added.id === "support-toolbar-container" || added.id === "y1-dock-reopen")) {
+                                queueChrome(added);
+                                continue;
+                            }
+                            var dockHost = added.nodeType === 1 ? added : (added.parentElement || null);
+                            if (dockHost && dockHost.closest && dockHost.closest("#support-toolbar-container, #y1-dock-reopen")) continue;
                             if (added.nodeType === 3) translateTree(added);
                             else if (added.nodeType === 1 && !added.hasAttribute("data-locale-panel")) {
                                 translateTree(added);
@@ -1395,8 +1455,15 @@
                             }
                         }
                     } else if (record.type === "attributes") {
+                        var attrHost = record.target;
+                        if (attrHost && attrHost.closest && attrHost.closest("#support-toolbar-container")) {
+                            if (record.attributeName === "hidden" && !attrHost.hasAttribute("hidden")) queueChrome(attrHost);
+                            continue;
+                        }
                         scheduleDynamicScan();
                     } else if (record.type === "characterData" && record.target) {
+                        var charHost = record.target.parentElement;
+                        if (charHost && charHost.closest && charHost.closest("#support-toolbar-container")) continue;
                         var value = translateValue(record.target.nodeValue);
                         if (value !== record.target.nodeValue) record.target.nodeValue = value;
                     }

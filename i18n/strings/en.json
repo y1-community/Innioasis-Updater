@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-10T00:11:11+00:00",
+ "generated": "2026-11-10T00:19:06+00:00",
  "tiers": [
   "core"
  ],
  "pages": 327,
- "occurrences": 12090,
- "count": 6491,
+ "occurrences": 12088,
+ "count": 6487,
  "strings": {
   "Skip to content": {
    "n": 123,
@@ -1403,6 +1403,10 @@
    "n": 3,
    "pages": 2
   },
+  "Browse software": {
+   "n": 3,
+   "pages": 2
+  },
   "Date": {
    "n": 3,
    "pages": 2
@@ -1650,10 +1654,6 @@
    "pages": 2
   },
   "Browse Y2 releases": {
-   "n": 2,
-   "pages": 2
-  },
-  "Browse software": {
    "n": 2,
    "pages": 2
   },
@@ -8176,10 +8176,6 @@
    "n": 1,
    "pages": 1
   },
-  "Browse firmware": {
-   "n": 1,
-   "pages": 1
-  },
   "Browse software and stock firmware by model": {
    "n": 1,
    "pages": 1
@@ -8192,7 +8188,7 @@
    "n": 1,
    "pages": 1
   },
-  "Browse verified stock firmware, original factory restore packages, and custom firmware for Innioasis Y1, Y2, G1, G3, G5, R1, PR1 and Timmkoo Q5, Q3.": {
+  "Browse verified software, original factory restore packages, and community software for Innioasis Y1, Y2, G1, G3, G5, R1, PR1 and Timmkoo Q5, Q3.": {
    "n": 1,
    "pages": 1
   },
@@ -8548,10 +8544,6 @@
    "n": 1,
    "pages": 1
   },
-  "Choose the build you want from the catalog for your hardware revision.": {
-   "n": 1,
-   "pages": 1
-  },
   "Choose the image you will commit to the repository. This previews it and builds its raw URL; it does not upload anything.": {
    "n": 1,
    "pages": 1
@@ -8593,6 +8585,10 @@
    "pages": 1
   },
   "Choose the software you want to run.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Choose the version that matches your player.": {
    "n": 1,
    "pages": 1
   },
@@ -10249,7 +10245,7 @@
    "n": 1,
    "pages": 1
   },
-  "G-Series ROMs": {
+  "G-Series software": {
    "n": 1,
    "pages": 1
   },
@@ -11653,6 +11649,10 @@
    "n": 1,
    "pages": 1
   },
+  "Install the official software, bring a player back to life, or try a community system made for it.": {
+   "n": 1,
+   "pages": 1
+  },
   "Install your choice with Updater CE": {
    "n": 1,
    "pages": 1
@@ -12639,10 +12639,6 @@
    "n": 1,
    "pages": 1
   },
-  "Official restore packages, factory firmware, and community operating systems for portable players.": {
-   "n": 1,
-   "pages": 1
-  },
   "Official software and custom systems including Rockbox, Better-Y, and Solar.": {
    "n": 1,
    "pages": 1
@@ -13027,11 +13023,11 @@
    "n": 1,
    "pages": 1
   },
-  "Original firmware and recovery images for dedicated audio players.": {
+  "Original software and recovery files for audio players.": {
    "n": 1,
    "pages": 1
   },
-  "Original software and recovery files for audio players.": {
+  "Original software and recovery files for dedicated audio players.": {
    "n": 1,
    "pages": 1
   },
@@ -13452,7 +13448,7 @@
    "n": 1,
    "pages": 1
   },
-  "R-Series ROMs": {
+  "R-Series software": {
    "n": 1,
    "pages": 1
   },
@@ -14575,7 +14571,7 @@
    "n": 1,
    "pages": 1
   },
-  "Select firmware": {
+  "Select software": {
    "n": 1,
    "pages": 1
   },
@@ -15140,15 +15136,15 @@
    "n": 1,
    "pages": 1
   },
-  "Supported Devices and Official Stock Firmware": {
-   "n": 1,
-   "pages": 1
-  },
   "Supported Models & Packages": {
    "n": 1,
    "pages": 1
   },
   "Supported device models": {
+   "n": 1,
+   "pages": 1
+  },
+  "Supported devices and official software": {
    "n": 1,
    "pages": 1
   },
@@ -15252,7 +15248,7 @@
    "n": 1,
    "pages": 1
   },
-  "The Innioasis Firmware Archive hosts verified stock firmware, original factory restore images, and custom operating systems for portable players:": {
+  "The Innioasis Firmware Archive hosts verified software, original restore files, and custom operating systems for portable players:": {
    "n": 1,
    "pages": 1
   },
@@ -16319,7 +16315,7 @@
    "n": 1,
    "pages": 1
   },
-  "Verified stock ROMs, original restore packages, and custom firmware for portable players.": {
+  "Verified software, original restore files, and community systems for portable players.": {
    "n": 1,
    "pages": 1
   },
@@ -17094,10 +17090,6 @@
    "pages": 1,
    "script": true
   },
-  "Y1 Firmware": {
-   "n": 1,
-   "pages": 1
-  },
   "Y1 Original Software in Updater CE": {
    "n": 1,
    "pages": 1
@@ -17206,6 +17198,10 @@
    "n": 1,
    "pages": 1
   },
+  "Y1 software": {
+   "n": 1,
+   "pages": 1
+  },
   "Y1 software downloads": {
    "n": 1,
    "pages": 1
@@ -17230,10 +17226,6 @@
    "n": 1,
    "pages": 1
   },
-  "Y2 Firmware": {
-   "n": 1,
-   "pages": 1
-  },
   "Y2 Original Software in Updater CE": {
    "n": 1,
    "pages": 1
@@ -17251,10 +17243,6 @@
    "pages": 1
   },
   "Y2 Rockbox Guide →": {
-   "n": 1,
-   "pages": 1
-  },
-  "Y2 Software is available. Switch to the Y2 release list.": {
    "n": 1,
    "pages": 1
   },
@@ -17294,10 +17282,6 @@
    "n": 1,
    "pages": 1
   },
-  "Y2 ready": {
-   "n": 1,
-   "pages": 1
-  },
   "Y2 releases can use a different package name and release entry. Select Y2 in Updater rather than guessing from a manual ZIP filename.": {
    "n": 1,
    "pages": 1
@@ -17311,6 +17295,10 @@
    "pages": 1
   },
   "Y2 scroll wheel guide": {
+   "n": 1,
+   "pages": 1
+  },
+  "Y2 software": {
    "n": 1,
    "pages": 1
   },
@@ -27499,7 +27487,7 @@
    "pages": 1,
    "script": true
   },
-  "\">Firmware Downloads": {
+  "\">Downloads": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -27529,12 +27517,12 @@
    "pages": 1,
    "script": true
   },
-  "\">Player Updates and Firmware": {
+  "\">Player updates": {
    "n": 1,
    "pages": 1,
    "script": true
   },
-  "\">Custom Firmware Downloads": {
+  "\">Custom software": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -27570,11 +27558,6 @@
    "script": true
   },
   "\">Updater CE": {
-   "n": 1,
-   "pages": 1,
-   "script": true
-  },
-  "\">Firmware Archive": {
    "n": 1,
    "pages": 1,
    "script": true
