@@ -38,6 +38,11 @@
     var stylesInjected = false;
     var trayCollapsed = false;
     var sheetOpen = false;
+    /* Element cache for the tray, the sheet and the dock button. tray(),
+       sheet() and dockButton() each build their nodes once and read them back
+       from here; without this object every one of them threw on first call
+       and the page fell back to the browser's own download shelf. */
+    var ui = {};
 
     /* ------------------------------------------------------------- wording
 
