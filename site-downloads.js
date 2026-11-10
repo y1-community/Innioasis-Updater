@@ -587,6 +587,7 @@
         if (name) link.download = name;
         link.rel = "noopener";
         link.setAttribute("data-site-download-direct", "1");
+        link.setAttribute("data-direct-download", "1");
         link.style.display = "none";
         doc.body.appendChild(link);
         link.click();

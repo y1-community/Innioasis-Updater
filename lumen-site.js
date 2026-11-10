@@ -2614,9 +2614,14 @@
            anchor to click; every other control is a link whose own href the
            browser already downloads. */
         function handleZipDownloadClick(event) {
+            /* A scripted anchor click is how the download module hands a file
+               to the browser. Hearing it as a reader click started a second
+               copy of the same package, whose hand-off clicked again: the
+               download restarted until the page was closed. */
+            if (event.isTrusted === false) return;
             if (event.defaultPrevented || event.button !== 0) return;
             var btn = event.target && event.target.closest ? event.target.closest(".lumen-zip-download-button, .lumen-zip-text-link, a[data-zip-url], a[href*='rom.zip'], a[href$='.zip']") : null;
-            if (!btn || btn.hasAttribute("data-direct-download")) return;
+            if (!btn || btn.hasAttribute("data-direct-download") || btn.hasAttribute("data-site-download-direct")) return;
             var href = btn.getAttribute("href") || "";
             var zipUrl = btn.getAttribute("data-zip-url") || href;
             if (!zipUrl || !/\.zip/i.test(zipUrl)) return;
