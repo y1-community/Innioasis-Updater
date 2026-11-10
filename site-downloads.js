@@ -167,7 +167,7 @@
             }
         } catch (_) {}
         var code = localeCode();
-        var table = WORDING[english];
+        var table = WORDING[english] || (english === "Saved to PC" ? WORDING["Saved"] : null);
         if (!table) return english;
         if (table[code]) return table[code];
         var base = code.split("-")[0];
@@ -300,6 +300,41 @@
 
     /* The card belongs beside the button that was pressed, not floating over
        the page. A button row keeps its own layout; the card follows it. */
+    /* A control that is already a button shows the transfer on itself, so the
+       reader never has to look away from the thing they pressed. A plain text
+       link keeps the card beside it. */
+    function buttonLike(link) {
+        if (!link || typeof link.className !== "string") return false;
+        return /(^|\s)(lumen-button|lumen-zip-download-button)(\s|$)/.test(link.className);
+    }
+
+    function buttonText(job) {
+        if (job.status === "done" || job.status === "handoff") return t("Saved to PC");
+        if (job.status === "failed") return t("Failed");
+        var overrun = job.total && job.loaded > job.total;
+        var parts = [];
+        if (job.total && !overrun) parts.push(Math.round((job.loaded / job.total) * 100) + "%");
+        var speed = speedOf(job);
+        if (speed > 512) parts.push(bytes(speed) + "/s");
+        var eta = etaOf(job);
+        if (eta && !overrun) parts.push(seconds(eta));
+        if (!parts.length) parts.push(t(job.status === "starting" ? "Preparing…" : "Downloading…"));
+        return parts.join(" · ");
+    }
+
+    function paintButton(job) {
+        if (!job.buttonEl) return;
+        job.buttonEl.textContent = buttonText(job);
+        job.buttonEl.setAttribute("aria-busy", job.status === "running" || job.status === "starting" ? "true" : "false");
+    }
+
+    function restoreButton(job) {
+        if (!job.buttonEl) return;
+        job.buttonEl.textContent = job.buttonLabel || "";
+        job.buttonEl.removeAttribute("aria-busy");
+        job.buttonEl = null;
+    }
+
     function mount(job, link) {
         var panel = buildPanel(job);
         job.panel = panel;
@@ -361,6 +396,7 @@
 
     /* ---------------------------------------------------------------- painting */
     function paint(job) {
+        if (job.buttonEl) { paintButton(job); return; }
         if (!job.panel) return;
         var overrun = job.total && job.loaded > job.total;
         var percent = job.total && !overrun ? (job.loaded / job.total) * 100 : 0;
@@ -394,9 +430,9 @@
 
         var state = job.panel.querySelector(".site-dl-progress__state");
         if (state) {
-            var wording = job.status === "done" ? t("Saved")
+            var wording = job.status === "done" ? t("Saved to PC")
                 : job.status === "failed" ? t("Failed")
-                : job.status === "handoff" ? t("Your browser takes over")
+                : job.status === "handoff" ? t("Saved to PC")
                 : job.status === "running" ? t("Keep this tab open")
                 : t("Preparing…");
             if (state.textContent !== wording) state.textContent = wording;
@@ -448,6 +484,7 @@
             try { job.writer.abort(); } catch (_) {}
         }
         if (job.anchor && jobByAnchor) jobByAnchor.delete(job.anchor);
+        restoreButton(job);
         removePanel(job);
         var index = jobs.indexOf(job);
         if (index !== -1) jobs.splice(index, 1);
@@ -497,6 +534,7 @@
     function finish(job, delay) {
         if (job.anchor && jobByAnchor) jobByAnchor.delete(job.anchor);
         setTimeout(function () {
+            restoreButton(job);
             removePanel(job);
             var index = jobs.indexOf(job);
             if (index !== -1) jobs.splice(index, 1);
@@ -658,7 +696,12 @@
         };
         jobs.push(job);
         if (anchor && jobByAnchor) jobByAnchor.set(anchor, job);
-        mount(job, anchor || doc.body);
+        if (buttonLike(anchor)) {
+            job.buttonEl = anchor;
+            job.buttonLabel = (anchor.textContent || "").trim();
+        } else {
+            mount(job, anchor || doc.body);
+        }
         paint(job);
         if (job.panel) {
             setTimeout(function () { reveal(job); }, 60);
