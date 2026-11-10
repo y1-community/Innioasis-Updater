@@ -1805,23 +1805,6 @@
             if (item) return item.slug;
             return (curModel === "Y2") ? "original-y2" : "original-y1";
         }
-        if (y2Switch) {
-            y2Switch.addEventListener("click", function (event) {
-                event.preventDefault();
-                if (brandSelect) brandSelect.value = "Innioasis";
-                fillModelFilter();
-                if (model) {
-                    model.value = "Y2";
-                    syncTypeField();
-                    fillSoftwareFilter();
-                    render();
-                    refreshLive();
-                    refreshAvailability();
-                    if (filterSection) filterSection.scrollIntoView({ block: "start" });
-                }
-            });
-        }
-
         /* The Software filter always names one project, so a single row set
            (never an "all software" view) is rendered. */
         function matchingItems() {
