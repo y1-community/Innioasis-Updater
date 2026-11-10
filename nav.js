@@ -1388,12 +1388,9 @@
             }
             var typeTag = (item.type || "INFO").toUpperCase();
             /* The tray is the unfiltered view: every current notice is listed
-               whatever its targeting, with its targets named so a reader can
-               tell who it was written for. */
+               whatever its targeting; the card no longer lists the models or
+               firmware it was written for. */
             var targetLabel = noticeTargetLabel(item);
-            var modelsBadge = targetLabel
-              ? '<span class="lumen-notice-models">' + escapeHtml(targetLabel) + '</span>'
-              : '';
             /* The tray opens the notice itself. A notice that only points at
                the bare site has no page of its own to send anyone to. */
             var detailHref = item.id ? noticeDetailHref(item.id) : "";
@@ -1412,7 +1409,6 @@
               '<article class="lumen-notice-card lumen-notice-card--' + escapeHtml(item.type) + '">' +
               '<div class="lumen-notice-meta">' +
               '<span class="lumen-notice-type">' + escapeHtml(typeTag) + '</span>' +
-              modelsBadge +
               (item.date ? '<time class="lumen-notice-date">' + escapeHtml(item.date) + '</time>' : '') +
               '</div>' +
               '<h4 class="lumen-notice-title">' + escapeHtml(item.title) + '</h4>' +
