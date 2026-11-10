@@ -1504,7 +1504,6 @@
         var typeField = document.getElementById("lumen-type-field");
         var software = document.getElementById("lumen-software-filter");
         var status = document.getElementById("lumen-release-status");
-        var y2Switch = document.querySelector("[data-y2-switch]");
         var filterSection = document.getElementById("firmware-filters");
         var catalog = window.INNIOASIS_FIRMWARE_CATALOG;
         /* Brand is the name on the player, and each brand lists only its own

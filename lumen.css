@@ -102,8 +102,6 @@ body.site-themes-app:has(#support-toolbar-container.y1-toolbar-hidden) #footer-r
     background: var(--lumen-accent);
 }
 
-:root[data-theme="2077"] .lumen-y2-pill,
-:root[data-lumen-theme="2077"] .lumen-y2-pill { background: var(--lumen-ink); color: var(--lumen-accent); border-color: var(--lumen-accent); }
 
 @media (forced-colors: active) {
     :root[data-theme="high-contrast"], :root[data-lumen-theme="high-contrast"], :root[data-theme="auto"], :root[data-lumen-theme="auto"] {
@@ -299,8 +297,6 @@ body.site-themes-app .lumen-secondary-action:hover { transform: translateY(-1px)
 .lumen-model-control { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: var(--lumen-space-3) 0 var(--lumen-space-5); }
 .lumen-model-control label { color: var(--lumen-muted); font-size: .8rem; font-weight: 700; }
 .lumen-model-control select { min-height: 40px; padding: .45rem 2rem .45rem .75rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-radius-sm); background: var(--lumen-panel); color: var(--lumen-text); font: 600 .86rem var(--lumen-body); cursor: pointer; }
-.lumen-y2-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .32rem .75rem; border: 1px solid var(--lumen-line-strong); border-radius: var(--lumen-pill); background: var(--lumen-panel-soft); color: var(--lumen-text); font-size: .78rem; font-weight: 700; letter-spacing: normal; text-transform: none; text-decoration: none; }
-.lumen-y2-pill:hover { border-color: var(--lumen-accent); color: var(--lumen-accent); background: var(--lumen-accent-wash); }
 .lumen-nightly-badge { display: inline-flex; align-items: center; padding: .2rem .55rem; font-size: .74rem; font-weight: 700; letter-spacing: normal; text-transform: none; border-radius: var(--lumen-pill); background: var(--lumen-amber); color: var(--lumen-ink); font-variant-numeric: tabular-nums; }
 
 .lumen-button--model { min-height: 30px; padding: .3rem .6rem; font-size: .76rem; margin: 0 .3rem .25rem 0; }
@@ -1359,3 +1355,7 @@ body.site-themes-app .lumen-secondary-action:hover,
     .lumen-filterbar { grid-template-columns: 1fr; }
     .lumen-filterbar .lumen-field-help { min-height: 0; }
 }
+
+/* The model select fills its cell now that the pill is gone. */
+.lumen-model-control { margin: 0; }
+.lumen-model-control select { width: 100%; }
