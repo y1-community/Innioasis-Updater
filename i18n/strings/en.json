@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-09T23:03:17+00:00",
+ "generated": "2026-11-09T23:49:51+00:00",
  "tiers": [
   "core",
   "full"
  ],
- "pages": 1575,
- "occurrences": 177971,
- "count": 83413,
+ "pages": 1577,
+ "occurrences": 177989,
+ "count": 83432,
  "strings": {
   "Skip to content": {
-   "n": 1333,
-   "pages": 1333
+   "n": 1335,
+   "pages": 1335
   },
   "Innioasis Updater": {
    "n": 1069,
@@ -76105,6 +76105,10 @@
    "n": 1,
    "pages": 1
   },
+  ", a site we do not run. Your language, accent and privacy choices stay here.": {
+   "n": 1,
+   "pages": 1
+  },
   ", a static byte field that's set when the bind succeeds and reset by F2 on disable. With it false, the Java layer's AVRCP-event-callback paths short-circuit and the AVRCP wire defaults to the compile-time AVRCP 1.0 dispatch.": {
    "n": 1,
    "pages": 1
@@ -139022,6 +139026,10 @@
    "n": 1,
    "pages": 1
   },
+  "Choose a donation method": {
+   "n": 1,
+   "pages": 1
+  },
   "Choose a model and Software": {
    "n": 1,
    "pages": 1
@@ -142265,6 +142273,14 @@
    "pages": 1
   },
   "Continue to the installation guide": {
+   "n": 1,
+   "pages": 1
+  },
+  "Continue to the payment page": {
+   "n": 1,
+   "pages": 1
+  },
+  "Continue to the site": {
    "n": 1,
    "pages": 1
   },
@@ -164345,6 +164361,10 @@
    "pages": 1
   },
   "Globs that identify the Y1 Type A and Type B zips when their filenames do not contain the usual markers.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Go back": {
    "n": 1,
    "pages": 1
   },
@@ -187755,6 +187775,10 @@
    "n": 1,
    "pages": 1
   },
+  "No destination was supplied.": {
+   "n": 1,
+   "pages": 1
+  },
   "No destructive one-click effects": {
    "n": 1,
    "pages": 1
@@ -188384,6 +188408,10 @@
    "pages": 1
   },
   "No partition contents, deep sysfs walks, radio changes, input generation, playback changes, permission workarounds or collector framework.": {
+   "n": 1,
+   "pages": 1
+  },
+  "No payment page was supplied.": {
    "n": 1,
    "pages": 1
   },
@@ -217464,6 +217492,10 @@
    "n": 1,
    "pages": 1
   },
+  "Return home": {
+   "n": 1,
+   "pages": 1
+  },
   "Return immediately to SD development Linux": {
    "n": 1,
    "pages": 1
@@ -229930,6 +229962,10 @@
    "n": 1,
    "pages": 1
   },
+  "Stay on Innioasis": {
+   "n": 1,
+   "pages": 1
+  },
   "Stays in poll-on-each-event mode when TRACK_CHANGED carries the": {
    "n": 1,
    "pages": 1
@@ -234260,6 +234296,14 @@
    "pages": 1
   },
   "Texture slot 8 = skin atlas (≤1024×1024 RGBA, uploaded on choice, released on Reborn, re-uploaded after a renderer restart); quads validated against its size. One extra texture name, no new shader.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Thank you for supporting us": {
+   "n": 1,
+   "pages": 1
+  },
+  "Thank you for supporting us - Innioasis": {
    "n": 1,
    "pages": 1
   },
@@ -243721,6 +243765,10 @@
    "pages": 1
   },
   "This later research used passive stock ADB, including a previous kernel RAM-console tail. It made no device state change or experimental boot. After U10a passes, resolve installed loader/authentication U07b, with U07c and backup/recovery/power gates preserved.": {
+   "n": 1,
+   "pages": 1
+  },
+  "This link opens": {
    "n": 1,
    "pages": 1
   },
@@ -262272,6 +262320,14 @@
    "n": 1,
    "pages": 1
   },
+  "You are leaving Innioasis": {
+   "n": 1,
+   "pages": 1
+  },
+  "You are leaving Innioasis - Innioasis": {
+   "n": 1,
+   "pages": 1
+  },
   "You are working locally with me on Y2Linux for the Innioasis Y2 / MT6582. Investigate and fix the remaining intermittent full-system suspend failure, then work toward reliable normal automatic suspend and resume. Continue the existing investigation using its actual evidence. Implement justified local source fixes and validate them; do not stop at a generic list of hypotheses. Coordinate physical trials and owner installation when needed.": {
    "n": 1,
    "pages": 1
@@ -262610,6 +262666,10 @@
    "pages": 1
   },
   "Your sign-in on the player": {
+   "n": 1,
+   "pages": 1
+  },
+  "Your support keeps the firmware archive, the theme gallery and Updater CE going. Taking you to the payment page in a moment": {
    "n": 1,
    "pages": 1
   },
@@ -312849,6 +312909,10 @@
    "n": 1,
    "pages": 1
   },
+  "s -": {
+   "n": 1,
+   "pages": 1
+  },
   "s are 681,574,400-byte ext4.": {
    "n": 1,
    "pages": 1
@@ -333228,7 +333292,7 @@
    "pages": 42,
    "script": true
   },
-  "Loading notices...": {
+  "Loading notices": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -333784,6 +333848,11 @@
    "script": true
   },
   "Passer en français": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Pick a colour from the screen": {
    "n": 1,
    "pages": 1,
    "script": true
@@ -335314,6 +335383,16 @@
    "script": true
   },
   "\">About & Editorial": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Hue": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Hex": {
    "n": 1,
    "pages": 1,
    "script": true

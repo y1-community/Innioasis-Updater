@@ -14627,7 +14627,7 @@
    "sp-flash-tool_zh-tw.html",
    "sp-flash-tool_zh.html"
   ],
-  "Loading notices...": [
+  "Loading notices": [
    "nav.js"
   ],
   "Loading supporters...": [
@@ -18019,6 +18019,9 @@
   ],
   "Passer en français": [
    "site-locale.js"
+  ],
+  "Pick a colour from the screen": [
+   "site-init.js"
   ],
   "Pick a project to read the notes for its released builds.": [
    "release_notes.html",
