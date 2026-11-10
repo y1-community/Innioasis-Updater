@@ -277,9 +277,11 @@ def main() -> int:
 
         print(f"[{position}/{len(shipping)}] {code:<8} {len(pages):>4} pages, {replaced_total:>6} strings, region {region_id}")
 
+    # The sitemap belongs next to the copies this run actually wrote. Copying
+    # it onto the site root listed /de/page addresses that are not published
+    # there. The live sitemap is scripts/generate_sitemap.py plus the
+    # index_<locale>.html sitemap from generate_multilingual_static_pages.py.
     write_sitemap(output_root, pages, codes, origin, config)
-    if os.path.abspath(output_root) != os.path.abspath(ROOT):
-        write_sitemap(ROOT, pages, codes, origin, config)
 
     # The browser runtime reads this to decide whether a language change can
     # navigate to a real /<locale>/ copy or must fall back to ?lang=. It is

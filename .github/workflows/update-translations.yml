@@ -139,9 +139,10 @@ jobs:
 
       - name: Commit updated catalogs, literal static pages, and sitemaps
         run: |
+          python3 scripts/generate_sitemap.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add i18n/catalogs i18n/strings i18n/site-locales.json i18n/reviewed i18n/prerendered.json sitemap.xml sitemap-i18n.xml *.html || true
+          git add i18n/catalogs i18n/strings i18n/site-locales.json i18n/reviewed i18n/prerendered.json sitemap.xml sitemap-index.xml sitemap-i18n*.xml *.html || true
           if git diff --cached --quiet; then
             echo "No translation changes."
           else

@@ -74,6 +74,7 @@ jobs:
         run: |
           python3 scripts/i18n/generate_multilingual_static_pages.py
           python3 scripts/i18n/prerender.py --locales all --tiers core --out dist
+          python3 scripts/generate_sitemap.py
 
       - name: Upload static page artifact
         if: always()
