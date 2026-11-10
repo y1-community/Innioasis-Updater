@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-10T00:19:06+00:00",
+ "generated": "2026-11-10T00:20:38+00:00",
  "tiers": [
   "core"
  ],
  "pages": 327,
  "occurrences": 12088,
- "count": 6487,
+ "count": 6490,
  "strings": {
   "Skip to content": {
    "n": 123,
@@ -2594,11 +2594,6 @@
   "Small contributions make a real difference.": {
    "n": 2,
    "pages": 2
-  },
-  "Software Updates and Firmware": {
-   "n": 2,
-   "pages": 2,
-   "script": true
   },
   "Software for Y1:": {
    "n": 2,
@@ -9699,6 +9694,10 @@
    "pages": 1,
    "script": true
   },
+  "Every download is checked before it is listed, and the installer walks you through each step.": {
+   "n": 1,
+   "pages": 1
+  },
   "Every format, one engine": {
    "n": 1,
    "pages": 1
@@ -10900,6 +10899,10 @@
    "pages": 1
   },
   "In-depth guide comparing the Innioasis Universal Flash Tool (Shared Flash Tool) and Innioasis Updater CE. Discover why Updater CE is the installer for Windows, macOS, and Linux.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Include older and test versions": {
    "n": 1,
    "pages": 1
   },
@@ -12695,6 +12698,10 @@
    "n": 1,
    "pages": 1
   },
+  "Older releases and nightly builds, useful when a newer version gives you trouble.": {
+   "n": 1,
+   "pages": 1
+  },
   "Older theme collections may be made for 240p; check the resolution and release notes before choosing a build": {
    "n": 1,
    "pages": 1
@@ -13156,6 +13163,10 @@
    "pages": 1
   },
   "Pick your model. Then download the file, or let Updater CE install it for you. Every package is checked before it goes up.": {
+   "n": 1,
+   "pages": 1
+  },
+  "Pick your model. Updater CE finds the right software and does the rest.": {
    "n": 1,
    "pages": 1
   },
@@ -14685,16 +14696,6 @@
    "n": 1,
    "pages": 1
   },
-  "Show nightly builds": {
-   "n": 1,
-   "pages": 1,
-   "script": true
-  },
-  "Show preview and nightly builds alongside stable releases.": {
-   "n": 1,
-   "pages": 1,
-   "script": true
-  },
   "Shown in the app and the site catalogue.": {
    "n": 1,
    "pages": 1
@@ -14785,6 +14786,11 @@
   "Software Overview": {
    "n": 1,
    "pages": 1
+  },
+  "Software Updates and Firmware": {
+   "n": 1,
+   "pages": 1,
+   "script": true
   },
   "Software and release:": {
    "n": 1,
@@ -15958,6 +15964,10 @@
    "n": 1,
    "pages": 1
   },
+  "Type A: software 2.0.0 or newer. Type B: older software.": {
+   "n": 1,
+   "pages": 1
+  },
   "Type B asset": {
    "n": 1,
    "pages": 1
@@ -16044,10 +16054,6 @@
    "script": true
   },
   "Updater CE install": {
-   "n": 1,
-   "pages": 1
-  },
-  "Updater CE installs Timmkoo’s ZIP and RAR packages. Select your model below.": {
    "n": 1,
    "pages": 1
   },
@@ -16312,10 +16318,6 @@
    "pages": 1
   },
   "Validate the XML with an XML parser. A missing quote or closing": {
-   "n": 1,
-   "pages": 1
-  },
-  "Verified software, original restore files, and community systems for portable players.": {
    "n": 1,
    "pages": 1
   },
@@ -17163,10 +17165,6 @@
    "pages": 1
   },
   "Y1 manual": {
-   "n": 1,
-   "pages": 1
-  },
-  "Y1 only. Type A players shipped with software 2.0.0 or later; Type B players shipped with an earlier version.": {
    "n": 1,
    "pages": 1
   },
@@ -18284,6 +18282,10 @@
    "pages": 1
   },
   "Your computer needs to know how to talk to your Y1. We'll install two drivers to make this happen:": {
+   "n": 1,
+   "pages": 1
+  },
+  "Your player, working like new": {
    "n": 1,
    "pages": 1
   },
@@ -25513,6 +25515,16 @@
    "script": true
   },
   "Shiba Inu": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Show nightly builds": {
+   "n": 1,
+   "pages": 1,
+   "script": true
+  },
+  "Show preview and nightly builds alongside stable releases.": {
    "n": 1,
    "pages": 1,
    "script": true
