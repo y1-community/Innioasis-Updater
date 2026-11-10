@@ -1219,7 +1219,7 @@ HEAD = """<!doctype html>
   <link rel="stylesheet" href="{up}site-theme.css?v=20261109theme">
   <link rel="stylesheet" href="{up}lumen.css?v=20261105hero">
   <link rel="stylesheet" href="{up}site-pages.css?v=20260818">
-  <link rel="stylesheet" href="{up}site-toolbar.css?v=20261105dockclose">
+  <link rel="stylesheet" href="{up}site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="{up}docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
   <script src="{up}site-init.js?v=20261110warn" defer></script>

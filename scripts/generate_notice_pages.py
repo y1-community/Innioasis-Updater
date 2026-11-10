@@ -123,7 +123,7 @@ HEAD = """<!doctype html>
   <link rel="stylesheet" href="{up}site-theme.css?v=20261109theme">
   <link rel="stylesheet" href="{up}lumen.css?v=20261105hero">
   <link rel="stylesheet" href="{up}site-pages.css?v=20260818">
-  <link rel="stylesheet" href="{up}site-toolbar.css?v=20261105dockclose">
+  <link rel="stylesheet" href="{up}site-toolbar.css?v=20261108hero">
   <script src="{up}site-init.js?v=20261110warn" defer></script>
 </head>
 <body class="site-themes-app"><a class="lumen-skip-link" href="#main">Skip to content</a><div id="nav-root"></div>

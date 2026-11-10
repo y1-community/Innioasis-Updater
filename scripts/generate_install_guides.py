@@ -99,7 +99,7 @@ def page_title(title: str, description: str, canonical: str, keywords: list[str]
 <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
 <link rel="stylesheet" href="../lumen.css?v=20261114video">
 <link rel="stylesheet" href="../site-pages.css?v=20260818">
-<link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+<link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
 <link rel="stylesheet" href="../install.css?v=20261106">
 <script src="../site-init.js?v=20261110warn" defer></script>
 {blocks}

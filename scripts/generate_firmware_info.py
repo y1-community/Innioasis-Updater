@@ -359,7 +359,7 @@ def page_document(title: str, description: str, canonical: str, main: str, slug:
         '  <link rel="stylesheet" href="../site-theme.css?v=20261109theme">\n'
         '  <link rel="stylesheet" href="../lumen.css?v=20261113readme">\n'
         '  <link rel="stylesheet" href="../site-pages.css?v=20260818">\n'
-        '  <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">\n'
+        '  <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">\n'
         '  <link rel="stylesheet" href="../docs-viewer.css?v=20261113readme">\n'
         '  <script src="../site-init.js?v=20261110warn" defer></script>\n'
         '</head>\n<body class="site-themes-app">\n'
