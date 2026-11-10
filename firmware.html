@@ -47,69 +47,11 @@
   <link rel="stylesheet" href="lumen.css?v=20261110picker">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
-  <script src="site-init.js?v=20261110inline" defer></script>
-  <!-- Emergency: downloads on this page hand straight back to the browser's
-       own downloader. The in-page progress UI is paused here while it is
-       being fixed; remove this block to let it claim links again. -->
-  <script>
-  (function () {
-    var FILE = /\.(zip|img|dmg|pkg|apk|appimage|exe|msi|7z|tar|gz|xz|bz2|tgz|iso|bin|jar|ipa|app)(?:[?#]|$)/i;
-    var ASSET = /^https:\/\/github\.com\/[^/]+\/[^/]+\/releases\/(?:latest\/)?download\//i;
-    function unwrap(href) {
-      try {
-        var url = new URL(href, location.href);
-        var target = url.searchParams.get("url");
-        if (target && ASSET.test(target)) return target;
-        return url.href;
-      } catch (_) { return href; }
-    }
-    /* Mark the link so lumen-site.js and site-downloads.js both leave it to
-       the browser, and point a proxy-wrapped link at the asset itself. */
-    function handBack(link) {
-      if (!link || !link.getAttribute) return false;
-      var href = link.getAttribute("href") || "";
-      if (!href || /^(#|mailto:|tel:|javascript:)/i.test(href)) return false;
-      var url = unwrap(href);
-      if (!FILE.test(url) && !link.hasAttribute("download")) return false;
-      link.setAttribute("data-direct-download", "");
-      link.setAttribute("data-no-inpage-download", "");
-      if (url !== href) link.setAttribute("href", url);
-      return true;
-    }
-    function anchorOf(node) {
-      while (node && node !== document.body && node.nodeType === 1) {
-        if (node.tagName === "A" && node.getAttribute("href")) return node;
-        node = node.parentNode;
-      }
-      return null;
-    }
-    window.InnioasisDownloads = {
-      version: "20261110direct",
-      start: function (url, anchor, name) {
-        var link = document.createElement("a");
-        link.href = unwrap(url);
-        link.download = name || "";
-        link.rel = "noopener";
-        link.setAttribute("data-direct-download", "");
-        (document.body || document.documentElement).appendChild(link);
-        link.click();
-        setTimeout(function () {
-          if (link.parentNode) link.parentNode.removeChild(link);
-        }, 3000);
-        return true;
-      },
-      jobs: function () { return []; }
-    };
-    document.addEventListener("click", function (event) {
-      if (event.defaultPrevented || event.button !== 0) return;
-      handBack(anchorOf(event.target));
-    }, true);
-  })();
-  </script>
+  <script src="site-init.js?v=20261110inline2" defer></script>
   <script src="jszip.min.js" defer></script>
   <script src="firmware-catalog.js?v=20261106mirror" defer></script>
   <script src="firmware-info/manifest.js?v=20261104cite"></script>
-  <script src="lumen-site.js?v=20261110types2" defer></script>
+  <script src="lumen-site.js?v=20261110direct2" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Innioasis and Timmkoo Firmware Archive","description":"Verified Original Software, software updates, and community software downloads for Innioasis Y1, Y2, G1, G3, G5, Q8, R1, PR1, D1 and Timmkoo Q5, Q3.","url":"https://innioasis.app/firmware.html"}</script>
 <meta property="og:site_name" content="Innioasis Software Updates">
 <!-- BEGIN GENERATED FIRMWARE SEO -->
@@ -125,15 +67,23 @@
   <link rel="alternate" hreflang="en" href="https://innioasis.app/firmware.html">
   <link rel="alternate" hreflang="de" href="https://innioasis.app/firmware_de.html">
   <link rel="alternate" hreflang="ja" href="https://innioasis.app/firmware_ja.html">
+  <link rel="alternate" hreflang="jp" href="https://innioasis.app/firmware_jp.html">
   <link rel="alternate" hreflang="es" href="https://innioasis.app/firmware_es.html">
   <link rel="alternate" hreflang="fr" href="https://innioasis.app/firmware_fr.html">
   <link rel="alternate" hreflang="it" href="https://innioasis.app/firmware_it.html">
   <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/firmware_pt-BR.html">
+  <link rel="alternate" hreflang="pt" href="https://innioasis.app/firmware_pt.html">
+  <link rel="alternate" hreflang="pt-br" href="https://innioasis.app/firmware_pt-br.html">
   <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/firmware_pt-PT.html">
+  <link rel="alternate" hreflang="pt-pt" href="https://innioasis.app/firmware_pt-pt.html">
   <link rel="alternate" hreflang="ru" href="https://innioasis.app/firmware_ru.html">
   <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/firmware_zh-CN.html">
+  <link rel="alternate" hreflang="zh" href="https://innioasis.app/firmware_zh.html">
+  <link rel="alternate" hreflang="zh-cn" href="https://innioasis.app/firmware_zh-cn.html">
   <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/firmware_zh-TW.html">
+  <link rel="alternate" hreflang="zh-tw" href="https://innioasis.app/firmware_zh-tw.html">
   <link rel="alternate" hreflang="ko" href="https://innioasis.app/firmware_ko.html">
+  <link rel="alternate" hreflang="kr" href="https://innioasis.app/firmware_kr.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/firmware_ar.html">
   <link rel="alternate" hreflang="nl" href="https://innioasis.app/firmware_nl.html">
   <link rel="alternate" hreflang="pl" href="https://innioasis.app/firmware_pl.html">

@@ -587,28 +587,11 @@
         return true;
     }
 
-    document.addEventListener("click", function (event) {
-        if (event.defaultPrevented || event.button !== 0) return;
-        if (!isFirmwareDownloadPage()) return;
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
-        if (!link || link.hasAttribute("data-save-as") || link.target) return;
-        if (link.hasAttribute("data-direct-download")) return;
-
-        var href = link.getAttribute("href") || "";
-        var declaredSource = link.getAttribute("data-zip-url") || "";
-        var declaredName = link.getAttribute("data-zip-name") || "";
-        var explicitPlatform = link.getAttribute("data-platform") || "";
-        var parts = parseAssetUrl(declaredSource || href);
-        if (!parts) return;
-        if (!isFirmwareZip(declaredName || parts.name)) return;
-
-        event.preventDefault();
-        downloadLink(link).catch(function () {
-            hideToast();
-            window.location.href = href;
-        });
-    }, false);
+    /* ZIP links are left entirely to the browser: no click is claimed, no
+       bytes are read by the page, and the file streams into Downloads with
+       the browser's own progress, retry and resume. The platform lookup and
+       the in-page progress panel above stay on disk, unused, until they are
+       rebuilt; re-enabling this handler is what turns them back on. */
 
     /* Exposed so a page script or a test can ask the same question the click
        handler asks, without navigating. */
