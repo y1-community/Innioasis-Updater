@@ -39,12 +39,12 @@
   <meta name="twitter:description" content="Audiobooks Since Y2Linux 1.0 Beta 8.19 the Reborn player has a place of its own for audiobooks: it remembers where you stopped in every book, moves by chapter, plays at t">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20260803">
-  <link rel="stylesheet" href="../lumen.css?v=20261110rows2">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
   <meta name="innioasis-download-proxy" content="/download-proxy">
-  <script src="../site-init.js?v=20261109accent" defer></script>
+  <script src="../site-init.js?v=20260803" defer></script>
 </head>
 <body class="site-themes-app">
 <a class="lumen-skip-link" href="#main">Skip to content</a>
@@ -62,7 +62,7 @@
 <table><thead><tr><th>Button</th><th>What it does</th></tr></thead><tbody><tr><td><strong>Continue</strong> (<strong>Play</strong> for a new book)</td><td>Goes on where you stopped, a little before.</td></tr><tr><td><strong>Start Over</strong></td><td>From the first chapter.</td></tr><tr><td>A chapter</td><td>Plays from the start of that chapter.</td></tr></tbody></table>
 <p>Hold Select on a book for <strong>Continue</strong>, <strong>Start Over</strong>, <strong>Mark as Finished</strong> (or <strong>Not Finished</strong>) and <strong>Forget Progress</strong>.</p>
 <p><strong>Chapters</strong> are the book&#x27;s own chapter marks when its files have them (M4B, MP3 and Ogg files usually do), otherwise each file is a chapter. While a book plays:</p>
-<ul><li><strong>Next / Previous</strong> go to the next or previous chapter. Previous more than 5 seconds into a<p>chapter goes back to that chapter&#x27;s start. Next in the last chapter does nothing: your place is never lost.</p></li><li><strong>Holding Next / Previous</strong> winds through the book: 10 seconds a step at first, then half a<p>minute, then a minute.</p></li><li>Now Playing shows the chapter, the book and its author, the chapter&#x27;s progress and how much of<p>the book is left. Bluetooth headphones and car radios see the chapter as the title.</p></li><li>Shuffle, Repeat and Crossfade never apply to books; your music settings stay as they are.</li></ul>
+<ul><li><strong>Next / Previous</strong> go to the next or previous chapter when its start is less than 10 minutes<p>away; further away they skip 30 seconds (so a press in a pocket never costs you an hour of a long chapter). Previous more than 5 seconds into a chapter goes back to that chapter&#x27;s start. Next in the last chapter does nothing: your place is never lost.</p></li><li>Hold Select on Now Playing for <strong>Previous Chapter</strong> and <strong>Next Chapter</strong>: they go to the chapter<p>start however far away it is.</p></li><li><strong>Holding Next / Previous</strong> winds through the book: 10 seconds a step at first, then half a<p>minute, then a minute.</p></li><li>Now Playing shows the chapter, the book and its author, the chapter&#x27;s progress and how much of<p>the book is left. Bluetooth headphones and car radios see the chapter as the title.</p></li><li>Shuffle, Repeat and Crossfade never apply to books; your music settings stay as they are.</li></ul>
 <h2 id="where-you-stopped">Where you stopped</h2>
 <p>Reborn keeps your place in every book (every few seconds while it plays, when you pause, change chapter, switch to music and when the player turns off), also across restarts, updates and a library rebuild. When you continue, it goes back a little so you can find your way in again: 5 seconds after a short pause, 15 seconds after more than ten minutes, 30 seconds after a day. Renaming or moving a book&#x27;s folder keeps its place.</p>
 <p>A book that has played to its end is <strong>Finished</strong> and starts over next time.</p>
@@ -74,9 +74,9 @@
 <ul><li>Very long single-file books play and seek normally (tested with a 10.5-hour M4B; books up to<p>about 36 hours of AAC at 44.1 kHz). Opening such a book takes a moment more memory than a song.</p></li><li>An M4B that carries its cover as a video track plays (the video part is ignored).</li><li>A paused book with Bluetooth headphones connected keeps the player awake for 15 minutes, so the<p>headphones&#x27; own play button can continue it.</p></li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261109live" defer></script>
-<script src="../nav.js?v=20261110notices" defer></script>
-<script src="../site-locale.js?v=20261109stack" defer></script>
+<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
 <script>

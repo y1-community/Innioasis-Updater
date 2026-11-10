@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TNDGC37L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="creator" content="Ryan Specter &amp; Innioasis Community">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking - Innioasis Updater</title>
+  <meta name="description" content="Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking Release 1.0.0-beta.9.3.20 , Y2Reborn 1.0.0-beta.9.3.20 , kernel 6.1">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.20.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innioasis Updater">
+  <meta property="og:title" content="Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking - Innioasis Updater">
+  <meta property="og:description" content="Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking Release 1.0.0-beta.9.3.20 , Y2Reborn 1.0.0-beta.9.3.20 , kernel 6.1">
+  <meta property="og:url" content="https://innioasis.app/post-install/schulzcode-y2linux-docs-validation-y2-linux-1.0-beta-9.3.20.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking - Innioasis Updater">
+  <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking Release 1.0.0-beta.9.3.20 , Y2Reborn 1.0.0-beta.9.3.20 , kernel 6.1">
+  <link rel="icon" href="../y1_illustration.png">
+  <link rel="stylesheet" href="../site-theme.css?v=20260803">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
+  <link rel="stylesheet" href="../site-pages.css?v=20260818">
+  <link rel="stylesheet" href="../site-toolbar.css?v=20261105dockclose">
+  <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
+  <meta name="innioasis-download-proxy" content="/download-proxy">
+  <script src="../site-init.js?v=20260803" defer></script>
+</head>
+<body class="site-themes-app">
+<a class="lumen-skip-link" href="#main">Skip to content</a>
+<div id="nav-root"></div>
+<main id="main" class="lumen-guide lumen-doc-page"><p class="lumen-doc-back"><a href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">← Firmware Downloads</a></p><header class="lumen-doc-head"><p class="lumen-kicker">Post-install setup · Reborn (Y2Linux) · Y2</p><h1>Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking</h1><p class="lumen-lead">Debian-based Linux with a fast clickwheel interface for the Innioasis Y2.</p><p class="lumen-doc-source">Instructions published by the project, shown here word for word.</p><div class="lumen-doc-actions"><a class="lumen-button lumen-button--primary" href="../firmware.html?model=Y2&amp;software=reborn-y2linux-y2">Firmware Downloads →</a><a class="lumen-button" href="../guide.html?model=Y2&amp;software=reborn-y2linux-y2">Install guide</a></div></header><article class="lumen-doc-body"><h1 id="y2linux-10-beta-9320-audiobooks-keep-your-place-albums-play-in-order-steadier-wi-fi-after-waking">Y2Linux 1.0 Beta 9.3.20: audiobooks keep your place, albums play in order, steadier Wi-Fi after waking</h1>
+<p>Release <code>1.0.0-beta.9.3.20</code>, Y2Reborn <code>1.0.0-beta.9.3.20</code>, kernel <code>6.18.56-y2linux-1.0.0-beta.9.3.20</code>, update sequence 15400, root <code>2026.08-platform-v1.252</code>. Published as GitHub release <code>baseline-229</code> (test build 229). Previous release: <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.19.md">Beta 9.3.19</a>.</p>
+<p>This report is written for people who use the player. A short technical appendix is at the end.</p>
+<h2 id="in-one-paragraph">In one paragraph</h2>
+<p>A bug-fix release for the open issues. <strong>Audiobooks no longer jump back to the start of a long chapter</strong> when Previous or Next is pressed by accident (#103), and Now Playing&#x27;s menu has Previous Chapter / Next Chapter. **A single album plays in order<strong> even with Shuffle on (Y2Reborn #113). </strong>Skins&#x27; Cover Flow titles move with the covers** (Y2Reborn #112). <strong>Wi-Fi after waking</strong> no longer gives up on a network it can see, and Bluetooth no longer holds the radio for almost a minute looking for headphones that weren&#x27;t connected before the sleep (#83). Settings → Library counts <strong>audiobook files too long to read</strong> (#84), and Diagnostics has <strong>SBC Auto Rate</strong> for anyone hearing Bluetooth dropouts (#99).</p>
+<h2 id="what-changed">What changed</h2>
+<ul><li><strong>Audiobook buttons</strong> (#103): Previous and Next go to a chapter start only when it is less than 10 minutes away;<p>further away they skip 30 seconds. So one press in a pocket costs half a minute, not an hour of a one-chapter book. Previous near the start of a book&#x27;s file continues into the file before. Hold Select on Now Playing for <strong>Previous Chapter</strong> and <strong>Next Chapter</strong>, which go to the chapter start however far away. While a book is starting, the buttons do nothing (before, a press then could act on the music queue).</p></li><li><strong>Your place at 0:00</strong> (#103): a book you had started kept no place when you stopped at its very beginning, and<p>dropped out of &quot;continue&quot;. It now keeps it; only Forget Progress removes it.</p></li><li><strong>One album, in order</strong> (Y2Reborn #113): when everything you start is one album (same album, album artist and<p>folder; &quot;CD 1&quot; / &quot;CD 2&quot; folders count as one), it plays in order whatever the Shuffle setting. Playlists and mixed songs still shuffle. Now Playing still shows the Shuffle setting itself.</p></li><li><strong>Skins: Cover Flow titles</strong> (Y2Reborn #112): a skin that draws its own Cover Flow titles now sees them glide and<p>fade with the covers, like Reborn&#x27;s own.</p></li><li><strong>Wi-Fi after waking</strong> (#83): the player gave up on a network as &quot;not found&quot; while the radio was still joining it<p>and restarted Wi-Fi. It now gives up only when the radio isn&#x27;t joining and the network isn&#x27;t in the scan. After a sleep without Bluetooth headphones, Bluetooth looks for them once on waking (as when you switch it on yourself it still looks three times); before, its three searches of about 18 seconds each held up Wi-Fi on the shared radio.</p></li><li><strong>Long audiobook files</strong> (#84): a single file of more than about 50 hours is too big to read and was missing from<p>the library without a word. Settings → Library now counts it with the files that couldn&#x27;t be read.</p></li><li><strong>SBC Auto Rate</strong> (#99): Diagnostics (Settings → System → About, tap Version seven times) has a switch for SBC<p>headphones to lower the rate when the signal gets weak. Off by default, as since 9.3.16.</p></li><li><strong>Skin guide</strong>: rewritten for skin makers, with three example skins (Ember, Poster, Console).</li></ul>
+<h2 id="how-it-was-tested">How it was tested</h2>
+<ul><li><strong>New tests:</strong> the audiobook buttons (near and far chapters, across files, last chapter), the Now Playing menu,<p>keeping a place at 0:00, when a queue counts as one album (same-named albums in different folders do not), the skin Cover Flow titles, a Wi-Fi join with the network in the scan, the SBC Auto Rate switch, and the Bluetooth wake (one search after a sleep alone, three after switching on, cleared by an interrupted sleep).</p></li><li><strong>Against 9.3.19:</strong> every Reborn test that passed on 9.3.19 still passes, and the preview pictures of every screen<p>state, in Reborn and in every shipped skin (3,760 files), are identical.</p></li><li><strong>Before release:</strong> the platform&#x27;s full check, Reborn&#x27;s workspace tests and the tests of the release images.</li><li><strong>Not yet on a player:</strong> Wi-Fi after waking and the Bluetooth wake need a real sleep; the audiobook buttons need a<p>long book.</p></li></ul>
+<h2 id="updating">Updating</h2>
+<p>Settings → System → Software Update → <strong>Update Now</strong>. Your music, playlists, settings, Wi-Fi networks and Bluetooth pairings stay. <strong>Restore Previous System</strong> (Settings → System → About, tap Version seven times, then Diagnostics) goes back to the version you had.</p>
+<h2 id="known-issues">Known issues</h2>
+<p>Everything listed for <a href="https://innioasis.app/post_install.html?url=https%3A%2F%2Fgithub.com%2Fschulzcode%2Fy2linux%2Fblob%2FHEAD%2Fdocs%2Fvalidation%2FY2-LINUX-1.0-BETA-9.3.19.md%23known-issues&amp;anchor=known-issues">Beta 9.3.19</a> still applies.</p>
+<ul><li>One audiobook file of about 36 to 50 hours shows up but may not play (the player&#x27;s index of it doesn&#x27;t fit);<p>longer ones are counted as unreadable. Split such books into parts of up to 30 hours.</p></li><li>Clear All for favourites (#103) isn&#x27;t there yet.</li><li>Whether SBC Auto Rate helps against Bluetooth stutter (#99) is not known yet.</li></ul>
+<h2 id="technical-appendix">Technical appendix</h2>
+<ul><li>Reborn <code>5c6e769</code>: <code>reborn-core::books</code> <code>Listening::button_step</code> (<code>BUTTON_REACH_MS</code> 10 min, <code>BUTTON_SKIP_MS</code> 30 s,<p>backward continues into the previous part), <code>chapter_step</code> for the menu, <code>Shelf::record</code> keeps a place that existed; Now Playing book rows Previous/Next Chapter → <code>Effect::PlayBook(key, BookStart::Chapter(n))</code>; <code>queue::one_album</code> (album tag, album artist, <code>album_folder</code> folding CD/Disc folders) makes <code>play_members</code> use <code>ShuffleMode::Off</code>; <code>Canvas::flow_caption</code> + <code>skin/draw.rs::flow_glide</code>; <code>reborn-platform::wifi</code> <code>PendingJoin::absent()</code> (STATUS not associating/handshaking and SCAN_RESULTS without the SSID) before NotFound or the deadline restart; <code>media.c</code> checks EFBIG before the demuxer error; <code>components::left_out_note</code>; <code>PlatformTask::SbcAbr</code> → <code>codec-settings --sbc-abr</code>. Architecture guard skips every <code>tests.rs</code> host module.</p></li><li>Linux <code>588c7789</code>: y2-radiod <code>links::Trigger::Wake</code> (limit 1) when <code>asleep_alone</code> (no connected audio at quiesce);<p>cleared on an interrupted sleep and on <code>set_power</code>. Code-quality baseline exception for the SBC plumbing (glue lines in files already over the ceilings). Bump <code>f6ba913</code>, <code>d5403d04</code>.</p></li><li>F56 (silent cold restarts) has no code change: the PMIC keeps no brown-out record.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
+<script src="../firmware-catalog.js?v=20261106mirror" defer></script>
+<script src="../docs-viewer.js?v=20261104cite" defer></script>
+<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
+<script src="../site-locale.js?v=20261108c" defer></script>
+<script src="../site-i18n.js?v=20260830" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var D = window.InnioasisDocs;
+  if (D && D.applyPostInstall2Links) D.applyPostInstall2Links(document);
+});
+</script>
+</body></html>
+
