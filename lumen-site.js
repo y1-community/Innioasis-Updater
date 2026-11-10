@@ -34,10 +34,24 @@
         return attempt();
     }
 
-    function zipAssets(release) {
+    /* Which player an asset is built for, read from the file name. Shared
+       projects publish rom_y2.zip beside the Y1 Type A and Type B packages,
+       so a name that says nothing fits both players. */
+    function assetModel(name) {
+        var n = String(name || "").toLowerCase();
+        if (n.indexOf("y2") !== -1 || n.indexOf("6582") !== -1 || n.indexOf("eastaeon") !== -1) return "Y2";
+        if (n.indexOf("y1") !== -1 || /type[_-]?[ab]/.test(n)) return "Y1";
+        return "";
+    }
+
+    function zipAssets(release, model) {
         if (!release || !Array.isArray(release.assets)) return [];
+        var wanted = String(model || "").toUpperCase();
         return release.assets.filter(function (asset) {
-            return asset.name && asset.name.toLowerCase().endsWith(".zip");
+            var name = asset.name ? String(asset.name) : "";
+            if (!name || !/\.zip$/i.test(name)) return false;
+            var named = assetModel(name);
+            return !wanted || !named || named === wanted;
         });
     }
 
@@ -103,7 +117,7 @@
         var wanted = String(type || "").toUpperCase();
         var isDedicatedRepo = item.repo && item.repo.toLowerCase() !== "y1-community/y1-stock-rom";
         return releaseList.filter(function (release) {
-            var zips = zipAssets(release);
+            var zips = zipAssets(release, item.model);
             if (!zips.length) return false;
             /* A player must never be offered a release whose packages only fit
                the other hardware revision: that ROM will not boot. Only
@@ -524,6 +538,11 @@
        the manifest answers: a blocked or missing manifest then keeps today's
        behaviour instead of stripping every Updater CE button from the page. */
     var manifestListedRepos = null;
+
+    /* Hardware types each model declares in slidia_manifest.xml, from
+       type_a_asset and type_b_asset. A model that declares none is not made to
+       invent one; typed release asset names fill this in for such projects. */
+    var manifestTypesByModel = {};
 
     /* Updater CE only installs a project the manifest lists. A firmware that
        lives in the feeds alone has releases worth reading, but no install route
@@ -1777,10 +1796,38 @@
            Here the same choice narrows the release list and the packages
            offered for download. Type A is the default because a bare
            rom.zip is a Type A package, matching the app. */
-        if (typeSelect && (typeParam === "A" || typeParam === "B")) typeSelect.value = typeParam;
+        /* The hardware types a model really ships, in A/B order. The manifest
+           declares them with type_a_asset / type_b_asset; the rest come from
+           the release asset names that are loaded for that model's projects.
+           An empty list means the model has no hardware revisions at all. */
+        function typesForModel(modelName) {
+            var wanted = String(modelName || "").toUpperCase();
+            if (!wanted) return [];
+            var found = { A: false, B: false };
+            var declared = manifestTypesByModel[wanted] || {};
+            if (declared.A) found.A = true;
+            if (declared.B) found.B = true;
+            catalogItemsForModel().forEach(function (item) {
+                var list = releases[repoKey(item.repo)] || [];
+                list.forEach(function (release) {
+                    (release.assets || []).forEach(function (asset) {
+                        var named = assetModel(asset.name);
+                        if (named && named !== wanted) return;
+                        var assetType = zipType(asset.name);
+                        if (assetType) found[assetType] = true;
+                    });
+                });
+            });
+            return ["A", "B"].filter(function (t) { return found[t]; });
+        }
+
         function typeForItem(item) {
-            if (!item || String(item.model || "").toUpperCase() !== "Y1") return "";
-            return typeSelect && typeSelect.value ? typeSelect.value.toUpperCase() : "A";
+            if (!item) return "";
+            var types = typesForModel(item.model);
+            if (!types.length) return "";
+            if (types.length === 1) return types[0];
+            var chosen = typeSelect && typeSelect.value ? typeSelect.value.toUpperCase() : "";
+            return types.indexOf(chosen) !== -1 ? chosen : types[0];
         }
 
         function isBetterYItem(item) {
@@ -1818,9 +1865,27 @@
             return '<tr class="lumen-typeb-subhead"><td colspan="3"><strong>Better-Y Type B packages also fit this player</strong>' +
                 '<br><span class="lumen-meta">These rows appear under Original Software for Type B because the package targets the same early Y1 hardware.</span></td></tr>';
         }
+        /* Only a model with two or more hardware types can be asked to pick
+           one. A model with none, or with a single type, keeps the control off
+           screen; its one type is still applied to the release filter. */
         function syncTypeField() {
             if (!typeField) return;
-            typeField.hidden = !(model && model.value === "Y1");
+            var types = typesForModel(model ? model.value : "");
+            typeField.hidden = types.length < 2;
+            if (!typeSelect) return;
+            var current = String(typeSelect.value || "").toUpperCase();
+            var wanted = types.indexOf(current) !== -1 ? current : (types[0] || "");
+            var key = types.join(",") + "|" + wanted;
+            if (typeSelect.getAttribute("data-type-key") === key) return;
+            typeSelect.setAttribute("data-type-key", key);
+            while (typeSelect.firstChild) typeSelect.removeChild(typeSelect.firstChild);
+            (types.length ? types : [""]).forEach(function (t) {
+                var option = document.createElement("option");
+                option.value = t;
+                option.textContent = t === "B" ? "Type B" : "Type A";
+                typeSelect.appendChild(option);
+            });
+            typeSelect.value = wanted;
         }
         syncTypeField();
 
@@ -1957,7 +2022,7 @@
         function releaseDetails(release, item, type) {
             if (!release) return '';
             var names = packageNamesFor(item, type);
-            var assets = zipAssets(release);
+            var assets = zipAssets(release, item.model);
             var links = [];
             assets.forEach(function (asset) {
                 var aName = (asset.name || "").toLowerCase();
@@ -2110,7 +2175,7 @@
             if (release && !listedInManifest) {
                 var rowType = typeForItem(item);
                 var names = packageNamesFor(item, rowType);
-                var assets = zipAssets(release);
+                var assets = zipAssets(release, item.model);
                 var primaryAsset = null;
                 for (var z = 0; z < MODEL_ZIPS.length; z++) {
                     var entry = MODEL_ZIPS[z];
@@ -2391,6 +2456,9 @@
            no ZIP for this model, is left out here and named under the table
            instead (renderUnavailable), so every option leads to a download. */
         function fillSoftwareFilter() {
+            /* Repos load in the background, and each load can reveal a model's
+               Type B build, so the type control is re-read before the list. */
+            syncTypeField();
             if (!software) return;
             var previous = software.value;
             var items = catalogItemsForModel().filter(function (item) {
@@ -2466,7 +2534,7 @@
             else params.delete("model");
             if (software && software.value) params.set("software", software.value);
             else params.delete("software");
-            if (typeSelect && model && model.value === "Y1") params.set("type", typeSelect.value);
+            if (typeSelect && typeField && !typeField.hidden) params.set("type", typeSelect.value);
             else params.delete("type");
             if (showNightly) params.set("nightly", "1");
             else params.delete("nightly");
@@ -3073,6 +3141,13 @@ syncTypeField(); fillSoftwareFilter(); render(); refreshLive(); refreshAvailabil
                     var name = (pkg.getAttribute("name") || "").trim();
                     var repo = (pkg.getAttribute("repo") || "").trim();
                     var device = (pkg.getAttribute("device") || "").toUpperCase().trim();
+                    var typeAAsset = (pkg.getAttribute("type_a_asset") || "").trim();
+                    var typeBAsset = (pkg.getAttribute("type_b_asset") || "").trim();
+                    if (device && (typeAAsset || typeBAsset)) {
+                        var declaredTypes = manifestTypesByModel[device] || (manifestTypesByModel[device] = {});
+                        if (typeAAsset) declaredTypes.A = true;
+                        if (typeBAsset) declaredTypes.B = true;
+                    }
                     var icon = (pkg.getAttribute("icon") || "").trim();
                     var postInstall = (pkg.getAttribute("post_install") || "").trim();
                     var postInstall2 = (pkg.getAttribute("post_install2") || "").trim();
