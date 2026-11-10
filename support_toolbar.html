@@ -709,15 +709,42 @@
     });
   }
 
+  var dockRemote = {};
+  var dockPending = {};
+  var dockRefreshTimer = null;
+  function scheduleDockRefresh() {
+    if (dockRefreshTimer) return;
+    dockRefreshTimer = setTimeout(function () {
+      dockRefreshTimer = null;
+      if (typeof renderGoalAndDonors === "function" && lastDonations && lastDonations.length) {
+        renderGoalAndDonors(lastDonations);
+      }
+    }, 150);
+  }
   function _t(str, params) {
     if (!str) return "";
     var res = str;
     if (window.InnioasisLocale && typeof window.InnioasisLocale.translate === "function") {
       var tr = window.InnioasisLocale.translate(str);
-      if (tr !== undefined && tr !== null && tr !== "") res = tr;
+      if (tr && tr !== str) res = tr;
+    }
+    if (res === str && dockRemote[str] && dockRemote[str] !== str) res = dockRemote[str];
+    var locale = "";
+    try { locale = (window.InnioasisLocale && window.InnioasisLocale.locale) || ""; } catch (_) {}
+    if (res === str && locale && !/^en(-|$)/.test(locale) && !dockPending[str] &&
+        window.InnioasisLocale && typeof window.InnioasisLocale.translateRemote === "function") {
+      dockPending[str] = true;
+      window.InnioasisLocale.translateRemote(str).then(function (translated) {
+        dockPending[str] = false;
+        if (translated && translated !== str) dockRemote[str] = translated;
+        scheduleDockRefresh();
+      });
     }
     return params ? _interpolate(res, params) : res;
   }
+  window.addEventListener("site-locale-ready", scheduleDockRefresh);
+  window.addEventListener("site-locale-change", scheduleDockRefresh);
+  window.addEventListener("y1-locale-change", scheduleDockRefresh);
 
   var consent = window.INNIOASIS_PRIVACY;
 

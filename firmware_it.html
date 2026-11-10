@@ -44,7 +44,7 @@
   <link rel="preload" as="image" href="y1_illustration.png" fetchpriority="high">
   <link rel="icon" href="y1_illustration.png">
   <link rel="stylesheet" href="site-theme.css?v=20261108headerfix">
-  <link rel="stylesheet" href="lumen.css?v=20261110accent">
+  <link rel="stylesheet" href="lumen.css?v=20261110filters">
   <link rel="stylesheet" href="site-pages.css?v=20260818">
   <link rel="stylesheet" href="site-toolbar.css?v=20261108hero">
   <script src="site-init.js?v=20261109accent" defer></script>
@@ -120,7 +120,7 @@
       <h2 id="filter-title" class="lumen-visually-hidden">Scegli un modello e un software</h2>
       <div class="lumen-filterbar">
         <div class="lumen-field"><label for="lumen-brand-filter">Marca</label><select id="lumen-brand-filter" aria-describedby="brand-help"><option value="Innioasis" selected>Innioasis</option><option value="Timmkoo">Timmkoo</option></select><span id="brand-help" class="lumen-field-help">Il nome sul giocatore. Ogni marchio elenca i propri modelli.</span></div>
-        <div class="lumen-field"><label for="lumen-model-filter">Modello del dispositivo</label><div class="lumen-model-control"><select id="lumen-model-filter" aria-describedby="model-help"><option value="Y1" selected>Y1</option><option value="Y2">Y2</option></select><a class="lumen-y2-pill" href="#y2" data-y2-switch aria-label="Y2 Il software è disponibile. Passa all&#39;elenco delle versioni Y2.">Y2 pronto</a></div><span id="model-help" class="lumen-field-help">Utilizzare il modello stampato sul lettore.</span></div>
+        <div class="lumen-field"><label for="lumen-model-filter">Modello del dispositivo</label><div class="lumen-model-control"><select id="lumen-model-filter" aria-describedby="model-help"><option value="Y1" selected>Y1</option><option value="Y2">Y2</option></select></div><span id="model-help" class="lumen-field-help">Utilizzare il modello stampato sul lettore.</span></div>
         <div class="lumen-field" id="lumen-type-field"><label for="lumen-type-filter">Tipo di dispositivo</label><select id="lumen-type-filter" aria-describedby="type-help"><option value="A" selected>Type A</option><option value="B">Type B</option></select><span id="type-help" class="lumen-field-help">Solo Y1. Type A lettori forniti con il software 2.0.0 o successivo; Type B lettori forniti con una versione precedente.</span></div>
         <div class="lumen-field"><label for="lumen-software-filter">Software</label><select id="lumen-software-filter" aria-describedby="software-help"></select><span id="software-help" class="lumen-field-help">Scegli il software che desideri eseguire.</span></div>
         <div class="lumen-field lumen-field--check"><label class="lumen-checkbox" for="lumen-nightly-filter"><input type="checkbox" id="lumen-nightly-filter" aria-describedby="nightly-help"><span>Mostra build notturne</span></label><span class="lumen-field-help" id="nightly-help">Mostra l'anteprima e le build notturne insieme alle versioni stabili.</span></div>

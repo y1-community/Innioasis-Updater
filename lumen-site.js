@@ -2383,19 +2383,7 @@
                    table explains that and the page names each one below. */
                 software.value = options.length ? options[0][0] : "";
             }
-            if (y2Switch) {
-                var selectedModel = model ? model.value : "Y1";
-                var y2Offered = currentBrand() === "Innioasis" && selectedModel !== "Y2";
-                if (y2Offered) {
-                    y2Switch.removeAttribute("aria-hidden");
-                    y2Switch.removeAttribute("tabindex");
-                    y2Switch.textContent = "Y2 ready";
-                } else {
-                    y2Switch.setAttribute("aria-hidden", "true");
-                    y2Switch.setAttribute("tabindex", "-1");
-                    y2Switch.textContent = "Y2";
-                }
-            }
+
         }
 
 
