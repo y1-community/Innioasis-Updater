@@ -1,7 +1,7 @@
 {
  "count": 6713,
  "dir": "ltr",
- "generated": "2026-11-10T00:12:17+00:00",
+ "generated": "2026-11-10T00:22:00+00:00",
  "locale": "pt",
  "name": "Portuguese",
  "native": "Português",
@@ -17,6 +17,7 @@
   "\" + lines + \"": "\"+ linhas +\"",
   "\" + pageLink + \"": "\" + páginaLink + \"",
   "\" : \"\"; html += '": "\" : \"\";html += '",
+  "\" data-donations-appeal>Support Independent Projects": "\"data-donations-appeal>Apoie Projetos Independentes",
   "\").replace(/\\n/g, \"": "\").substituir(/\\n/g, \"",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { previewOutput.textContent = lastManifestText; setValidation(\"O manifesto obtido não tem fechamento",
   "\"); if (release && release.prerelease) bits.push('": "\"); if (liberação && liberação.prerelease) bits.push('",
