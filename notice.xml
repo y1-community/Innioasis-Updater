@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<notices updated="2026-11-08">
+<notices updated="2026-11-10">
 
-  <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" models="Y1,Y2">
+  <notice id="2026-11-07-codesigning" persistent="false" severity="info" from="2026-10-25" until="2026-12-31" platform="windows" models="Y1,Y2">
     <title>Windows 10/11 app launch issues &amp; Smart App Control workaround</title>
     <content>If Windows 10/11 or Smart App Control stops you from launching the app, follow the workaround here.</content>
     <full_content>False-positive reports were submitted to Microsoft for `installer.exe` and `InnioasisUpdater.exe` and actioned, but if Windows Endpoint Protection or Smart App Control is still blocking the application on your computer, use this workaround:

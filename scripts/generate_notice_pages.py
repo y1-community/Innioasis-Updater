@@ -148,6 +148,12 @@ def window(n):
         parts.append("From " + n.get("from"))
     if n.get("until"):
         parts.append("until " + n.get("until"))
+    platform = (n.get("platform") or n.get("os") or "").strip()
+    if platform:
+        names = {"windows": "Windows", "win": "Windows", "mac": "macOS", "macos": "macOS", "darwin": "macOS", "linux": "Linux"}
+        labels = [names.get(part.strip().lower(), part.strip()) for part in platform.split(",") if part.strip()]
+        if labels:
+            parts.append("Platform: " + ", ".join(labels))
     if n.get("models"):
         parts.append("Models: " + n.get("models"))
     if n.get("device_type"):
