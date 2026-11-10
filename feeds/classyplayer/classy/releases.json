@@ -1,5 +1,119 @@
 [
   {
+    "id": 440558040,
+    "tag_name": "20261110",
+    "name": "Classy 20261110",
+    "body": "### Classy Release\n\nAutomated build with full support for **Innioasis Y1** (Type A & Type B) and **Innioasis Y2**.\n\n#### \ud83d\udce6 Release Assets\n\n| File | Target Device | Notes |\n| :--- | :--- | :--- |\n| **`Classy-20261110.apk`** | All Devices (Y1 / Y2) | Standalone launcher APK (sideload or install) |\n| **`update.json`** | All Devices | OTA update metadata for in-app updater |\n| **`rom_y2.zip`** | **Innioasis Y2** (MT6582) | Complete flashable ROM with dual-storage, watchdog & clickwheel keylayout |\n| **`rom_y1_type_a.zip`** (`rom.zip`) | **Innioasis Y1** (Type A) | Flashable ROM for Y1 players with original firmware **2.0.0 or higher** |\n| **`rom_y1_type_b.zip`** (`rom_type_b.zip`) | **Innioasis Y1** (Type B) | Flashable ROM for Y1 players with original firmware **below 2.0.0** |\n| **`SHA256SUMS.txt`** | All Files | SHA-256 integrity checksums |\n\n#### \u26a1 Flashing Instructions (SP Flash Tool)\n1. Extract the corresponding zip file for your device.\n2. Launch `flash_tool.exe` (or Linux `flash_tool`).\n3. Load the scatter file (`MT6582_Android_scatter.txt` for Y2, `MT6572_Android_scatter.txt` for Y1).\n4. Select **Firmware Upgrade** or **Download Only**.\n5. Power off the device completely, click **Download**, and connect the USB cable.\n\n---\n\n\n## What's Changed\n* feat(video): hide the overlay while the video plays, and open scrub mode with the centre button by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/69\n* Feat/boot progress screen by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/73\n* feat(system): strip unused Android bloat, daemons, and SystemUI on Y2 by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/49\n* fix(storage): replace the MediaTek \"SD card ready\" dialog with a themed notice by @JonaszPotoniec in https://github.com/ClassyPlayer/Classy/pull/75\n* fix(battery): show all level bars of Last 24 Hours on the Y2 by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/77\n* fix(system): remove the keyboard as input method before it is disabled on the Y2 by @ferrolho in https://github.com/ClassyPlayer/Classy/pull/78\n\n\n**Full Changelog**: https://github.com/ClassyPlayer/Classy/compare/20261107...20261110",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-09T20:56:27Z",
+    "published_at": "2026-11-10T15:42:56Z",
+    "html_url": "https://github.com/ClassyPlayer/Classy/releases/tag/20261110",
+    "icon_url": "https://github.com/ClassyPlayer/Classy/raw/main/docs/icons/icon.png",
+    "icon_dark_url": "",
+    "assets": [
+      {
+        "id": 731967647,
+        "name": "Classy-20261110.apk",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/Classy-20261110.apk",
+        "size": 24675311,
+        "download_count": 0,
+        "content_type": "application/vnd.android.package-archive",
+        "created_at": "2026-11-10T15:42:29Z",
+        "updated_at": "2026-11-10T15:42:30Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967647"
+      },
+      {
+        "id": 731967648,
+        "name": "index.html",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/index.html",
+        "size": 38392,
+        "download_count": 0,
+        "content_type": "text/html",
+        "created_at": "2026-11-10T15:42:29Z",
+        "updated_at": "2026-11-10T15:42:29Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967648"
+      },
+      {
+        "id": 731967645,
+        "name": "rom.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom.zip",
+        "size": 440224174,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T15:42:28Z",
+        "updated_at": "2026-11-10T15:42:46Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967645"
+      },
+      {
+        "id": 731967649,
+        "name": "rom_type_b.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_type_b.zip",
+        "size": 433056054,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T15:42:29Z",
+        "updated_at": "2026-11-10T15:42:46Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967649"
+      },
+      {
+        "id": 731967646,
+        "name": "rom_y1_type_a.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y1_type_a.zip",
+        "size": 440224174,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T15:42:29Z",
+        "updated_at": "2026-11-10T15:42:44Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967646"
+      },
+      {
+        "id": 731967641,
+        "name": "rom_y1_type_b.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y1_type_b.zip",
+        "size": 433056054,
+        "download_count": 1,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T15:42:28Z",
+        "updated_at": "2026-11-10T15:42:53Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967641"
+      },
+      {
+        "id": 731967642,
+        "name": "rom_y2.zip",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/rom_y2.zip",
+        "size": 482334719,
+        "download_count": 0,
+        "content_type": "application/zip",
+        "created_at": "2026-11-10T15:42:28Z",
+        "updated_at": "2026-11-10T15:42:49Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967642"
+      },
+      {
+        "id": 731967651,
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/SHA256SUMS.txt",
+        "size": 486,
+        "download_count": 0,
+        "content_type": "text/plain",
+        "created_at": "2026-11-10T15:42:29Z",
+        "updated_at": "2026-11-10T15:42:29Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967651"
+      },
+      {
+        "id": 731967635,
+        "name": "update.json",
+        "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261110/update.json",
+        "size": 269,
+        "download_count": 1,
+        "content_type": "application/json",
+        "created_at": "2026-11-10T15:42:28Z",
+        "updated_at": "2026-11-10T15:42:29Z",
+        "url": "https://api.github.com/repos/ClassyPlayer/Classy/releases/assets/731967635"
+      }
+    ]
+  },
+  {
     "id": 437609316,
     "tag_name": "20261107-v2",
     "name": "Classy 20261107 (v2)",
@@ -105,7 +219,7 @@
         "name": "update.json",
         "browser_download_url": "https://github.com/ClassyPlayer/Classy/releases/download/20261107-v2/update.json",
         "size": 288,
-        "download_count": 18,
+        "download_count": 19,
         "content_type": "application/json",
         "created_at": "2026-11-07T13:56:50Z",
         "updated_at": "2026-11-07T13:56:51Z",

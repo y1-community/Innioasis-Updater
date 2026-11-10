@@ -3,10 +3,11 @@
    Release-table icons link here; anything missing opens firmware_info.html. */
 window.INNIOASIS_README_PAGES = {
   "classyplayer/classy": {
-    "name": "Classy (formerly Inniclassic for Y2)",
+    "name": "Classy",
     "page": "firmware-info/classyplayer-classy.html",
     "slugs": [
-      "classy-formerly-inniclassic-for-y2-y2"
+      "classy-y1",
+      "classy-y2"
     ]
   },
   "fabianzettl/inniclassic": {
