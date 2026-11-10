@@ -63,23 +63,15 @@
   <link rel="alternate" hreflang="en" href="https://innioasis.app/privacy.html">
   <link rel="alternate" hreflang="de" href="https://innioasis.app/privacy_de.html">
   <link rel="alternate" hreflang="ja" href="https://innioasis.app/privacy_ja.html">
-  <link rel="alternate" hreflang="jp" href="https://innioasis.app/privacy_jp.html">
   <link rel="alternate" hreflang="es" href="https://innioasis.app/privacy_es.html">
   <link rel="alternate" hreflang="fr" href="https://innioasis.app/privacy_fr.html">
   <link rel="alternate" hreflang="it" href="https://innioasis.app/privacy_it.html">
   <link rel="alternate" hreflang="pt-BR" href="https://innioasis.app/privacy_pt-BR.html">
-  <link rel="alternate" hreflang="pt" href="https://innioasis.app/privacy_pt.html">
-  <link rel="alternate" hreflang="pt-br" href="https://innioasis.app/privacy_pt-br.html">
   <link rel="alternate" hreflang="pt-PT" href="https://innioasis.app/privacy_pt-PT.html">
-  <link rel="alternate" hreflang="pt-pt" href="https://innioasis.app/privacy_pt-pt.html">
   <link rel="alternate" hreflang="ru" href="https://innioasis.app/privacy_ru.html">
   <link rel="alternate" hreflang="zh-CN" href="https://innioasis.app/privacy_zh-CN.html">
-  <link rel="alternate" hreflang="zh" href="https://innioasis.app/privacy_zh.html">
-  <link rel="alternate" hreflang="zh-cn" href="https://innioasis.app/privacy_zh-cn.html">
   <link rel="alternate" hreflang="zh-TW" href="https://innioasis.app/privacy_zh-TW.html">
-  <link rel="alternate" hreflang="zh-tw" href="https://innioasis.app/privacy_zh-tw.html">
   <link rel="alternate" hreflang="ko" href="https://innioasis.app/privacy_ko.html">
-  <link rel="alternate" hreflang="kr" href="https://innioasis.app/privacy_kr.html">
   <link rel="alternate" hreflang="ar" href="https://innioasis.app/privacy_ar.html">
   <link rel="alternate" hreflang="nl" href="https://innioasis.app/privacy_nl.html">
   <link rel="alternate" hreflang="pl" href="https://innioasis.app/privacy_pl.html">
@@ -112,7 +104,7 @@
     <p>innioasis.app מארח את ההורדות של Innioasis Updater CE, את ארכיון הקושחה והמדריכים הנלווים אליהם. הוא מנוהל על ידי ריאן ספקטר עם הקהילה Innioasis. Luci Ltd מספקת אירוח. אין חשבונות ואין כניסה.</p>
 
     <h2>מה נשאר במכשיר שלך</h2>
-    <p>האתר שומר כמה הגדרות בדפדפן שלך: השפה שלך, נושא הצבע, גודל הטקסט, אפשרויות הפרטיות, האם הסתרת את הערעורים על התרומה ותרגומים שהוא כבר הביא. אלה נשארים במכשיר שלך. ניקוי נתוני האתר מסיר אותם.</p>
+    <p>The site saves a few settings in your browser: your language, colour theme, text size, privacy choices, whether it may use the accent colour Updater CE passes over, whether you hid the donation appeals, and translations it has already fetched. These stay on your device. Clearing site data removes them.</p>
 
     <h2>מה אנחנו מודדים</h2>
     <p>אנו משתמשים ב-Google Tag Manager עם Google Analytics כדי לספור צפיות בדפים וכדי לראות אילו דפים נכשלים או נטענים לאט. Cloudflare מספק הגנה על אירוח, אבטחה והתקפה. ספירת ההורדות נשמרת במצטבר. אנו לא מבקשים את שמך, הדוא"ל או כתובת הדואר שלך, ואיננו מוכרים נתונים.</p>
@@ -125,10 +117,10 @@
     <p>אנליטיקס נמצא כרגע <span class="privacy-state" id="privacy-state">על</span> עבור הדפדפן הזה.</p>
     <p><button type="button" class="btn" id="privacy-open-settings">כבה את הניתוח</button></p>
 
-    <h2 id="accent">צבע הדגשה מ-Updater CE</h2>
-    <p>כשפותחים את האתר הזה מ-Innioasis Updater CE, האפליקציה מעבירה את צבע ההדגשה שבחרתם בה. האתר שומר את הצבע ואת ההרשאה להשתמש בו רק במכשיר שלכם.</p>
-    <p>מצב: <span class="privacy-state" id="privacy-accent-state">מותר</span></p>
-    <p><label class="privacy-toggle"><input type="checkbox" id="privacy-accent-ignore"> התעלם מצבעי הדגשה מ-Updater CE</label></p>
+    <h2 id="accent">Accent colour from Updater CE</h2>
+    <p>When you open this site from Innioasis Updater CE, the app passes the accent colour you chose in it so the pages match your player. The site saves that colour and whether it may use it in your browser. Nothing about the app is sent anywhere, and the colour is only used for this site's own buttons and links.</p>
+    <p>Accent colours from Updater CE are currently <span class="privacy-state" id="privacy-accent-state">allowed</span> עבור הדפדפן הזה.</p>
+    <p><label class="privacy-toggle"><input type="checkbox" id="privacy-accent-ignore"> Ignore accent colours from Updater CE</label></p>
 
     <h2>תרומות</h2>
     <p>כפתורי תרומה מקשרים אל Ko-fi, Buy Me a Coffee, PayPal, Revolut, Patreon ו-Boosty. שירותים אלה מטפלים בתשלום ובנתונים שלהם. אתר זה לעולם לא רואה את פרטי הכרטיס שלך.</p>
@@ -161,38 +153,38 @@
     (function () {
       var button = document.getElementById('privacy-open-settings');
       var state = document.getElementById('privacy-state');
-      /* Accent colour from Updater CE: same preference the site reads, set
-         here because the picker module is not loaded on this page. */
-      (function () {
-        var box = document.getElementById('privacy-accent-ignore');
-        var stateEl = document.getElementById('privacy-accent-state');
-        var KEY = 'innioasis-ignore-ce-accent';
-        function read() {
-          try {
-            if (typeof window.y1IgnoreCeAccent === 'function') return Boolean(window.y1IgnoreCeAccent());
-            if (window.localStorage.getItem(KEY) === '1') return true;
-            if (document.cookie.indexOf(KEY + '=1') !== -1) return true;
-          } catch (e) {}
-          return false;
+      var accentBox = document.getElementById('privacy-accent-ignore');
+      var accentState = document.getElementById('privacy-accent-state');
+
+      /* The accent preference lives in the same two places the site reads the
+         accent from, so this page can change it even though the picker module
+         is not loaded here. */
+      var ACCENT_IGNORE_KEY = 'innioasis-ignore-ce-accent';
+      function readIgnoreAccent() {
+        try {
+          if (typeof window.y1IgnoreCeAccent === 'function') return Boolean(window.y1IgnoreCeAccent());
+          if (window.localStorage.getItem(ACCENT_IGNORE_KEY) === '1') return true;
+          if (typeof getSharedCookie === 'function' && getSharedCookie(ACCENT_IGNORE_KEY) === '1') return true;
+          if (document.cookie.indexOf(ACCENT_IGNORE_KEY + '=1') !== -1) return true;
+        } catch (e) {}
+        return false;
+      }
+      function saveIgnoreAccent(ignore) {
+        var value = ignore ? '1' : '0';
+        try { window.localStorage.setItem(ACCENT_IGNORE_KEY, value); } catch (e) {}
+        try {
+          document.cookie = ACCENT_IGNORE_KEY + '=' + value + '; path=/; max-age=' +
+            (ignore ? 34560000 : 0) + '; SameSite=Lax';
+        } catch (e) {}
+        if (typeof window.y1SetIgnoreCeAccent === 'function') {
+          try { window.y1SetIgnoreCeAccent(ignore); } catch (e) {}
         }
-        function save(ignore) {
-          try { window.localStorage.setItem(KEY, ignore ? '1' : '0'); } catch (e) {}
-          try {
-            document.cookie = KEY + '=' + (ignore ? '1' : '0') + '; path=/; max-age=' +
-              (ignore ? 34560000 : 0) + '; SameSite=Lax';
-          } catch (e) {}
-          if (typeof window.y1SetIgnoreCeAccent === 'function') {
-            try { window.y1SetIgnoreCeAccent(ignore); } catch (e) {}
-          }
-        }
-        function render() {
-          if (stateEl) stateEl.textContent = (box && box.checked) ? "מתעלמים" : "מותר";
-        }
-        if (!box) return;
-        box.checked = read();
-        box.addEventListener('change', function () { save(box.checked); render(); });
-        render();
-      })();
+      }
+      function syncAccent() {
+        var ignore = readIgnoreAccent();
+        if (accentBox) accentBox.checked = ignore;
+        if (accentState) accentState.textContent = tr(ignore ? 'ignored' : 'allowed');
+      }
       function read() {
         if (window.INNIOASIS_PRIVACY && typeof window.INNIOASIS_PRIVACY.read === 'function') {
           return window.INNIOASIS_PRIVACY.read();
@@ -211,6 +203,7 @@
         var on = !prefs || prefs.analytics !== 'off';
         if (state) state.textContent = tr(on ? 'on' : 'off');
         if (button) button.textContent = tr(on ? 'Turn analytics off' : 'Turn analytics on');
+        syncAccent();
       }
       if (button) {
         button.addEventListener('click', function () {
@@ -224,6 +217,12 @@
             });
           }
           sync();
+        });
+      }
+      if (accentBox) {
+        accentBox.addEventListener('change', function () {
+          saveIgnoreAccent(Boolean(accentBox.checked));
+          syncAccent();
         });
       }
       if (document.readyState === 'loading') {
