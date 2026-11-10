@@ -5,7 +5,12 @@
 
 $ErrorActionPreference = "Stop"
 $Site = "https://innioasis.app"
-$Api = "https://api.github.com/repos/y1-community/updater-ce-neo/releases/latest"
+# The archive is an extra file on 2.5.3, beside the Windows and Mac packages.
+# A newer tag would offer those installed apps an update they should not get.
+$Apis = @(
+    "https://api.github.com/repos/y1-community/updater-ce-neo/releases/tags/2.5.3",
+    "https://api.github.com/repos/y1-community/updater-ce-neo/releases/latest"
+)
 $Dest = Join-Path $env:LOCALAPPDATA "innioasis-updater\lite"
 $Archive = Join-Path $env:TEMP "UpdaterCE-Lite.tar.gz"
 
@@ -24,12 +29,14 @@ if (-not $Python) {
 
 Write-Host "2/4  Fetching the release index"
 $Url = "$Site/UpdaterCE-Lite.tar.gz"
-try {
-    $release = Invoke-RestMethod -Uri $Api -Headers @{ "User-Agent" = "UpdaterCE-lite" }
-    $asset = $release.assets | Where-Object { $_.name -eq "UpdaterCE-Lite.tar.gz" } | Select-Object -First 1
-    if ($asset) { $Url = $asset.browser_download_url }
-} catch {
-    Write-Host "GitHub did not answer. Using the copy on innioasis.app."
+foreach ($Api in $Apis) {
+    try {
+        $release = Invoke-RestMethod -Uri $Api -Headers @{ "User-Agent" = "UpdaterCE-lite" }
+        $asset = $release.assets | Where-Object { $_.name -eq "UpdaterCE-Lite.tar.gz" } | Select-Object -First 1
+        if ($asset) { $Url = $asset.browser_download_url; break }
+    } catch {
+        continue
+    }
 }
 
 Write-Host "3/4  Downloading"
