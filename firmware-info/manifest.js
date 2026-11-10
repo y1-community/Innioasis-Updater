@@ -7,7 +7,7 @@ window.INNIOASIS_README_PAGES = {
     "page": "firmware-info/classyplayer-classy.html",
     "slugs": [
       "classy-y1",
-      "classy-y2"
+      "inniclassic-y2"
     ]
   },
   "fabianzettl/inniclassic": {
@@ -30,13 +30,6 @@ window.INNIOASIS_README_PAGES = {
     "page": "firmware-info/jarvissax-rondo.html",
     "slugs": [
       "rondo-y1"
-    ]
-  },
-  "jonaszpotoniec/inniclassic-y2": {
-    "name": "Inniclassic",
-    "page": "firmware-info/jonaszpotoniec-inniclassic-y2.html",
-    "slugs": [
-      "inniclassic-y2"
     ]
   },
   "leska1337/better-y": {
