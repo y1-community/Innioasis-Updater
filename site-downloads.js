@@ -30,7 +30,7 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261110inline4";
+    var VERSION = "20261110inline5";
     /* Only archive packages get the in-page treatment. Installers and app
        images always go to the browser's own downloader: a page must never
        stand between a reader and the app they are installing. */
@@ -332,6 +332,7 @@
     }
 
     function restoreButton(job) {
+        if (job.anchor && job.anchor.removeAttribute) job.anchor.removeAttribute("data-save-busy");
         if (!job.buttonEl) return;
         /* innerHTML, not textContent: a catalog button carries an icon, and a
            finished download must leave the control exactly as it found it. */
@@ -787,7 +788,12 @@
         if (!href || href.charAt(0) === "#" || /^(mailto|tel|javascript):/i.test(href)) return false;
         /* Installers and app images belong to the browser, always. */
         if (NEVER_STREAM.test(href)) return false;
-        var explicit = link.hasAttribute("data-inpage-download");
+        /* A rendered document names the package it links to. When that name is
+           an archive, the link is a package download even if the asset URL
+           carries no extension of its own. */
+        var declared = link.getAttribute("data-save-as") || link.getAttribute("data-download-name") || "";
+        if (NEVER_STREAM.test(declared)) return false;
+        var explicit = link.hasAttribute("data-inpage-download") || STREAMABLE.test(declared);
         if (!explicit && !STREAMABLE.test(href)) return false;
         return true;
     }
@@ -802,11 +808,25 @@
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         var link = anchorOf(event.target);
         if (!streamable(link)) return;
+        /* The firmware catalog owns these: it resolves the mirror's package
+           for this computer before starting the transfer. Claiming the link
+           here would fetch the release's own rom.zip instead. */
+        if (link.closest("[data-portable-zips]")) return;
         if (link.target && link.target !== "_self") return;
         var href = link.href || link.getAttribute("href");
         if (/^(blob|data):/i.test(href)) return;
-        var started = queue(href, link, link.getAttribute("data-download-name") || link.getAttribute("download") || "");
+        /* data-save-as is what a rendered document uses to name the package
+           it links to; it outranks the asset's own filename. */
+        var started = queue(href, link,
+            link.getAttribute("data-download-name") ||
+            link.getAttribute("data-save-as") ||
+            link.getAttribute("download") ||
+            "");
         if (started === false) return;
+        /* A stale copy of docs-viewer.js also claims this click and would
+           fetch a second copy. It skips a link marked busy, so the mark is
+           what keeps one click to one transfer whichever copy is cached. */
+        link.setAttribute("data-save-busy", "1");
         event.preventDefault();
     }
 
@@ -843,7 +863,16 @@
         /* Exposed so a page, a test or the firmware catalog can ask the same
            questions the click handler asks without starting a download. */
         name: motherName,
-        proxy: proxiedUrl
+        proxy: proxiedUrl,
+        /* Whether this module would stream a URL at all: archive packages yes,
+           installers and app images never. Callers use this instead of
+           repeating the rules and drifting from them. */
+        eligible: function (url, name) {
+            var href = String(url || "");
+            var declared = String(name || "");
+            if (NEVER_STREAM.test(href) || NEVER_STREAM.test(declared)) return false;
+            return STREAMABLE.test(href) || STREAMABLE.test(declared);
+        }
     };
 
     if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);

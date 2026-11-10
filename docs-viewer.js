@@ -605,10 +605,25 @@
   }
 
   document.addEventListener("click", function (event) {
+    /* The inline download module listens in the capture phase and has already
+       claimed this click. Claiming it here as well started a second copy of
+       the same file through this blob path. */
+    if (event.defaultPrevented) return;
     var target = event.target;
     var link = target && target.closest ? target.closest("a[data-save-as]") : null;
     if (!link) return;
     if (event.metaKey || event.ctrlKey || event.shiftKey || (event.button && event.button > 0)) return;
+    var href = link.getAttribute("href") || "";
+    var saveAs = link.getAttribute("data-save-as") || "";
+    var downloads = window.InnioasisDownloads;
+    /* Archive packages stream with progress on the button. Anything the
+       module will not take — installers, app images — keeps the browser's own
+       downloader through the path below. */
+    if (downloads && typeof downloads.eligible === "function" && downloads.eligible(href, saveAs)) {
+      downloads.start(href, link, saveAs);
+      event.preventDefault();
+      return;
+    }
     if (saveDownload(link)) event.preventDefault();
   }, false);
 
