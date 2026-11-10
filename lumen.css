@@ -1547,3 +1547,30 @@ body.site-themes-app #footer-root {
     .lumen-release-table .lumen-actions { min-width: 0; }
     .lumen-release-table .lumen-actions button { white-space: normal; }
 }
+
+/* —— The download prompt lives in the release row action cell. It must keep a
+   usable width there, and its header wraps instead of squeezing the label. —— */
+.lumen-download-progress-wrap { min-width: 240px; }
+.lumen-download-progress-cell { min-width: 240px; }
+
+.lumen-download-progress-header {
+    flex-wrap: wrap;
+    row-gap: .35rem;
+}
+
+.lumen-download-progress-actions {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    flex: 0 0 auto;
+}
+
+.lumen-download-progress-dismiss { white-space: nowrap; }
+
+.lumen-updater-button { width: auto; max-width: 100%; }
+.lumen-updater-button span { min-width: 0; }
+
+@media (max-width: 760px) {
+    .lumen-download-progress-wrap,
+    .lumen-download-progress-cell { min-width: 0; }
+}
