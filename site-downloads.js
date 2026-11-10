@@ -30,8 +30,15 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261110inline";
-    var STREAMABLE = /\.(zip|img|dmg|pkg|apk|exe|msi|7z|tar|gz|xz|bz2|tgz|iso|bin|jar|ipa|app)(\?|#|$)/i;
+    var VERSION = "20261110inline3";
+    /* Only archive packages get the in-page treatment. Installers and app
+       images always go to the browser's own downloader: a page must never
+       stand between a reader and the app they are installing. */
+    var STREAMABLE = /\.(zip|7z)(\?|#|$)/i;
+    var NEVER_STREAM = /\.(exe|dmg|appimage|msi|pkg|apk|img|bin|iso|jar|ipa)(\?|#|$)/i;
+    /* rom_y1-windows.zip is a portable build of rom_y1.zip, so a portable
+       download saves under the mother package's name. */
+    var PORTABLE_SUFFIX = /[-_.](windows|win32|win64|win|macos|mac|osx|darwin|linux|android|portable|x64|amd64|x86_64|x86-64|x86|arm64|aarch64)(?:[-_.](x64|amd64|x86_64|x86-64|x86|arm64|aarch64))?(\.zip)$/i;
     /* A blob that big is the most a phone can hold while still rendering. */
     var BLOB_LIMIT = 128 * 1024 * 1024;
     var MAX_JOBS = 2;
@@ -355,25 +362,26 @@
     /* ---------------------------------------------------------------- painting */
     function paint(job) {
         if (!job.panel) return;
-        var percent = job.total ? Math.min(100, (job.loaded / job.total) * 100) : 0;
-        var pctText = job.total ? Math.round(percent) + "%" : "";
+        var overrun = job.total && job.loaded > job.total;
+        var percent = job.total && !overrun ? (job.loaded / job.total) * 100 : 0;
+        var pctText = job.total && !overrun ? Math.round(percent) + "%" : "";
         var speed = speedOf(job);
         var eta = etaOf(job);
 
         job.panel.classList.toggle("is-done", job.status === "done");
         job.panel.classList.toggle("is-failed", job.status === "failed");
         job.panel.classList.toggle("is-handoff", job.status === "handoff");
-        job.panel.classList.toggle("is-indeterminate", !job.total && (job.status === "running" || job.status === "starting"));
+        job.panel.classList.toggle("is-indeterminate", (!job.total || overrun) && (job.status === "running" || job.status === "starting"));
 
         var fill = job.panel.querySelector(".site-dl-progress__fill");
-        if (fill) fill.style.width = (job.total ? percent : 0) + "%";
+        if (fill) fill.style.width = (job.total && !overrun ? percent : 0) + "%";
 
         var pct = job.panel.querySelector(".site-dl-progress__pct");
         if (pct) pct.textContent = pctText;
 
         var size = job.panel.querySelector(".site-dl-progress__size");
         if (size) {
-            if (job.total) size.textContent = bytes(job.loaded) + " / " + bytes(job.total);
+            if (job.total && !overrun) size.textContent = bytes(job.loaded) + " / " + bytes(job.total);
             else if (job.loaded) size.textContent = bytes(job.loaded);
             else size.textContent = "";
         }
@@ -382,7 +390,7 @@
         if (speedNode) speedNode.textContent = job.status === "running" && speed > 0 ? bytes(speed) + "/s" : "";
 
         var etaNode = job.panel.querySelector(".site-dl-progress__eta");
-        if (etaNode) etaNode.textContent = eta ? t("Time left") + " " + seconds(eta) : "";
+        if (etaNode) etaNode.textContent = eta && !overrun ? t("Time left") + " " + seconds(eta) : "";
 
         var state = job.panel.querySelector(".site-dl-progress__state");
         if (state) {
@@ -399,6 +407,17 @@
     }
 
     /* ------------------------------------------------------------------- jobs */
+    function motherName(name) {
+        var base = String(name || "").split(/[?#]/)[0].split(/[\\/]/).pop() || "";
+        base = base.replace(/^portable[-_.]/i, "");
+        var previous;
+        do {
+            previous = base;
+            base = base.replace(PORTABLE_SUFFIX, "$3");
+        } while (base !== previous);
+        return base;
+    }
+
     function filenameOf(url, response) {
         var name = "";
         try {
@@ -495,6 +514,10 @@
            in memory, and progress that matches what the disk is receiving. The
            picker must be opened while the click still counts as a gesture, so
            it comes before the request. */
+        /* A 1.8 GB portable package never fits in a JavaScript array, so the
+           reader picks a file once and the bytes go straight to disk. A
+           small measured package is buffered instead, and a blocked or
+           unreadable response falls back to the browser's downloader. */
         var writer = null;
         if (typeof global.showSaveFilePicker === "function") {
             try {
@@ -537,7 +560,7 @@
             return;
         }
 
-        job.name = job.name || filenameOf(url, response);
+        job.name = motherName(job.name || filenameOf(url, response));
         var length = Number(response.headers.get("content-length") || 0);
         job.total = Number.isFinite(length) && length > 0 ? length : 0;
         job.status = "running";
@@ -621,7 +644,7 @@
         var job = {
             id: ++seq,
             url: url,
-            name: name || filenameOf(url),
+            name: motherName(name || filenameOf(url)),
             anchor: anchor || null,
             status: "starting",
             loaded: 0,
@@ -660,6 +683,8 @@
         if (link.hasAttribute("data-site-download-direct")) return false;
         var href = link.getAttribute("href") || "";
         if (!href || href.charAt(0) === "#" || /^(mailto|tel|javascript):/i.test(href)) return false;
+        /* Installers and app images belong to the browser, always. */
+        if (NEVER_STREAM.test(href)) return false;
         var explicit = link.hasAttribute("data-inpage-download");
         if (!explicit && !STREAMABLE.test(href)) return false;
         return true;

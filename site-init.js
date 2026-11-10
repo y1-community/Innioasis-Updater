@@ -1530,13 +1530,16 @@
         if (global.InnioasisDownloads || document.getElementById("site-downloads-script")) return;
         var node = document.createElement("script");
         node.id = "site-downloads-script";
-        node.src = siteBase() + "site-downloads.js?v=20261110inline2";
+        node.src = siteBase() + "site-downloads.js?v=20261110inline3";
         node.defer = true;
         document.head.appendChild(node);
     }
 
-    if (global.InnioasisInlineDownloads === true) loadSiteDownloads();
-    else installDirectDownloads();
+    /* In-page progress for rom packages is on by default; installer links
+       are excluded inside site-downloads.js itself, so app and driver
+       buttons always stay plain browser downloads. */
+    if (global.InnioasisInlineDownloads === false) installDirectDownloads();
+    else loadSiteDownloads();
 
     /* Windows XP/Vista/7/8/8.1 and 32-bit Windows cannot run Updater CE, so
        that visit gets the portable SP Flash Tool route instead of install
