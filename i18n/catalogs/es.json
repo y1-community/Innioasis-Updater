@@ -18,7 +18,6 @@
   "\" + escapeHtml(title) + \"": "\" + escapeHtml(título) + \"",
   "\" + lines + \"": "\" + líneas + \"",
   "\" + pageLink + \"": "\" + páginaEnlace + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\" data-donations-appeal>Apoyo a proyectos independientes",
   "\").replace(/\\n/g, \"": "\").reemplazar(/\\n/g, \"",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) {vista previaOutput.textContent = lastManifestText; setValidation(\"El manifiesto obtenido no tiene cierre",
   "\"); if (release && release.prerelease) bits.push('": "\"); if (lanzamiento && lanzamiento.prelanzamiento) bits.push('",

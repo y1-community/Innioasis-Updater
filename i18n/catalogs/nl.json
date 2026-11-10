@@ -16,7 +16,6 @@
   "\" + escapeHtml(title) + \"": "\" + escapeHtml(titel) + \"",
   "\" + lines + \"": "\" + lijnen + \"",
   "\" + pageLink + \"": "\" + paginaLink + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\"data-donations-appeal>Ondersteun onafhankelijke projecten",
   "\").replace(/\\n/g, \"": "\").vervang(/\\n/g, \"",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { previewOutput.textContent = nieuwsteManifestText; setValidation(\"Het opgehaalde manifest heeft geen afsluiting",
   "\"); if (state.model) bits.push(\"": "\"); if (status.model) bits.push(\"",

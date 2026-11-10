@@ -19,7 +19,6 @@
   "\" + lines + \"": "\" + linee + \"",
   "\" + pageLink + \"": "\" + paginaLink + \"",
   "\" : \"\"; html += '": "\" : \"\";html += '",
-  "\" data-donations-appeal>Support Independent Projects": "\"appello-donazioni-dati>Supporta progetti indipendenti",
   "\").replace(/\\n/g, \"": "\").sostituisci(/\\n/g, \"",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { anteprimaOutput.textContent = latestManifestText; setValidation(\"Il manifest recuperato non ha chiusura",
   "\"); if (state.model) bits.push(\"": "\"); if (stato.modello) bits.push(\"",

@@ -12,7 +12,6 @@
   "\" + _t(\"A supporter\") + \"": "\" + _t(\"Ein Unterstützer\") + \"",
   "\" + _t(\"Waiting for supporters to appear.\") + \"": "\" + _t(\"Warten auf das Erscheinen von Unterstützern.\") + \"",
   "\" + lines + \"": "\" + Zeilen + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\" data-donations-appeal>Unterstützen Sie unabhängige Projekte",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { VorschauOutput.textContent = LatestManifestText; setValidation(\"Das abgerufene Manifest hat keinen Abschluss",
   "\">About & Editorial": "\">Über & Redaktion",
   "\">All notices →": "\">Alle Mitteilungen →",

@@ -18,7 +18,6 @@
   "\" + escapeHtml(title) + \"": "\" + kaçışHtml(başlık) + \"",
   "\" + lines + \"": "\" + çizgiler + \"",
   "\" + pageLink + \"": "\" + sayfaBağlantı + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\" data-donations-appeal>Bağımsız Projeleri Destekleyin",
   "\").replace(/\\n/g, \"": "\").değiştir(/\\n/g, \"",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { önizlemeOutput.textContent = lastManifestText; setValidation(\"Getirilen bildirimin kapanışı yok",
   "\"); if (release && release.prerelease) bits.push('": "\"); if (release &&release.prerelease) bits.push('",

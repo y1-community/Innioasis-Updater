@@ -16,7 +16,6 @@
   "\" + lines + \"": "“+行+”",
   "\" + pageLink + \"": "\" + 頁面連結 + \"",
   "\" : \"\"; html += '": "” : “”; html += '",
-  "\" data-donations-appeal>Support Independent Projects": "「 data-donations-appeal>支持獨立項目",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { PreviewOutput.textContent = latestManifestText; setValidation(\"取得的清單沒有關閉",
   "\"); if (release && release.prerelease) bits.push('": "\"); if (release && release.prerelease) Bits.push('",
   "\"); if (state.model) bits.push(\"": "\"); if (state.model) Bits.push(\"",

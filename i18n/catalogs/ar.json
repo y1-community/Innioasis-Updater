@@ -15,7 +15,6 @@
   "\" + escapeHtml(title) + \"": "\" + escapeHtml(العنوان) + \"",
   "\" + lines + \"": "\" + خطوط + \"",
   "\" + pageLink + \"": "\" + رابط الصفحة + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\"data-donations-appeal>دعم المشاريع المستقلة",
   "\").replace(/\\n/g, \"": "\").استبدال(/\\n/ز، \"",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { PreviewOutput.textContent = الأحدثManifestText; setValidation(\"البيان الذي تم جلبه ليس له إغلاق",
   "\"); if (release && release.prerelease) bits.push('": "\"); إذا (الإصدار && الإصدار التجريبي) bits.push('",

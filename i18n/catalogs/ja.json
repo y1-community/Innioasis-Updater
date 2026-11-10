@@ -19,7 +19,6 @@
   "\" + escapeHtml(title) + \"": "\" + エスケープHTML(タイトル) + \"",
   "\" + lines + \"": "\" + 行 + \"",
   "\" + pageLink + \"": "\" + ページリンク + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\" data-donations-appeal>独立したプロジェクトをサポートする",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) {reviewOutput.textContent = 最新ManifestText; setValidation(\"フェッチされたマニフェストにはクロージングがありません",
   "\"); if (release && release.prerelease) bits.push('": "\"); if (リリース && release.prerelease) bits.push('",
   "\"); if (release && release.published_at) bits.push(\"": "\"); if (リリース && release.published_at) bits.push(\"",

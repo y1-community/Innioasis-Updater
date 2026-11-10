@@ -15,7 +15,6 @@
   "\" + escapeHtml(title) + \"": "\" + escapeHtml(제목) + \"",
   "\" + lines + \"": "\" + 줄 + \"",
   "\" + pageLink + \"": "\" + 페이지링크 + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\" data-donations-appeal>독립 프로젝트 지원",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) { PreviewOutput.textContent =latestManifestText; setValidation(\"가져온 매니페스트에 닫는 항목이 없습니다.",
   "\"); if (release && release.prerelease) bits.push('": "\"); if (릴리스 && 릴리스.프리릴리즈) bit.push('",
   "\"); if (release && release.published_at) bits.push(\"": "\"); if (릴리스 && release.published_at) bit.push(\"",

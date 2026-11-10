@@ -14,7 +14,6 @@
   "\" + escapeHtml(title) + \"": "\" + escapeHtml(заголовок) + \"",
   "\" + lines + \"": "\" + строки + \"",
   "\" + pageLink + \"": "\" + ссылка на страницу + \"",
-  "\" data-donations-appeal>Support Independent Projects": "\" data-donations-appeal>Поддержка независимых проектов",
   "\"); if (idx === -1) { previewOutput.textContent = latestManifestText; setValidation(\"The fetched manifest has no closing": "\"); if (idx === -1) {viewOutput.textContent = lateManifestText; setValidation(\"Извлеченный манифест не имеет закрытия",
   "\"); if (release && release.prerelease) bits.push('": "\"); if (release && Release.prerelease) bits.push('",
   "\"); if (release && release.published_at) bits.push(\"": "\"); if (release && Release.published_at) bits.push(\"",
