@@ -1361,13 +1361,46 @@ def size_label(size) -> str:
     return "%.0f MB" % max(1, round(value / 1024 ** 2))
 
 
+def asset_model(name: str) -> str:
+    """The player a release asset is built for, read from its file name.
+
+    Release file names are the source of truth for what a ZIP fits: the
+    repositories rename assets by hand, so the name is more reliable than any
+    label stored beside it. "" means the name covers both players or neither.
+    """
+    lower = str(name or "").lower()
+    if "y2" in lower or "6582" in lower or "eastaeon" in lower:
+        return "Y2"
+    if "y1" in lower or "type_a" in lower or "type_b" in lower:
+        return "Y1"
+    return ""
+
+
+def model_assets(item: dict, release: dict) -> list[dict]:
+    """The release's install ZIPs that fit the player this page is about.
+
+    Shared projects publish one release with rom_y2.zip beside the Y1 Type A
+    and Type B packages. Without this filter a Y2 page lists (and labels) the
+    Y1 builds as if they installed on a Y2, and a Y1 page offers the Y2 image.
+    """
+    model = str(item.get("model") or "").upper()
+    assets = []
+    for asset in (release.get("assets") or []):
+        name = str(asset.get("name") or "")
+        if not re.search(r"\.zip$", name, re.I):
+            continue
+        if re.search(r"sources?|legal-info", name, re.I):
+            continue
+        named_for = asset_model(name)
+        if model and named_for and named_for != model:
+            continue
+        assets.append(asset)
+    return assets
+
+
 def release_portable_packages(item: dict, release: dict, refresh: bool = False) -> list[tuple[dict, list[dict]]]:
     """The release's install zips, each with the mirror's per-OS builds."""
-    assets = [
-        asset for asset in (release.get("assets") or [])
-        if re.search(r"\.zip$", str(asset.get("name") or ""), re.I)
-        and not re.search(r"sources?|legal-info", str(asset.get("name") or ""), re.I)
-    ]
+    assets = model_assets(item, release)
     if not assets:
         return []
     repos = [
@@ -1415,16 +1448,19 @@ def release_portable_packages(item: dict, release: dict, refresh: bool = False) 
 
 
 def release_downloads_html(item: dict, release: dict, portable: list[tuple[dict, list[dict]]]) -> str:
-    """Static downloads: the original zip plus one link per portable OS build."""
-    assets = [
-        asset for asset in (release.get("assets") or [])
-        if re.search(r"\.zip$", str(asset.get("name") or ""), re.I)
-        and not re.search(r"sources?|legal-info", str(asset.get("name") or ""), re.I)
-    ]
+    """Portable builds first, then the release's own archive.
+
+    The archive button names the software, not the file it saves; its download
+    attribute still carries the release's own filename. site-downloads.js moves
+    the archive ahead of the portable builds on phones and other systems that
+    cannot run a portable package.
+    """
+    assets = model_assets(item, release)
     if not assets:
         return ""
     tag = str(release.get("tag_name") or "")
     mirrors = str(item.get("portable_zips") or "")
+    software = software_label(item)
     rows = []
     for asset in assets:
         name = str(asset.get("name") or "rom.zip")
@@ -1433,12 +1469,6 @@ def release_downloads_html(item: dict, release: dict, portable: list[tuple[dict,
             (pkgs for candidate, pkgs in portable if str(candidate.get("name")) == name), []
         )
         buttons = []
-        if url:
-            buttons.append(
-                '<a class="lumen-button" href="%s" download="%s" rel="nofollow">%s '
-                '<span class="lumen-meta">%s</span></a>'
-                % (esc(url), esc(name), esc(name), esc(size_label(asset.get("size")) or "original"))
-            )
         for package in packages:
             buttons.append(
                 '<a class="lumen-button" href="%s" download="%s" rel="nofollow" '
@@ -1449,14 +1479,26 @@ def release_downloads_html(item: dict, release: dict, portable: list[tuple[dict,
                    esc(mirrors), esc(package["platform"]), esc(package["label"]),
                    esc(size_label(package.get("size")) or "package"))
             )
+        if url:
+            label = software
+            if re.search(r"type[_-]?b", name, re.I):
+                label += " · Type B"
+            elif len(assets) > 1 and re.search(r"type[_-]?a", name, re.I):
+                label += " · Type A"
+            buttons.append(
+                '<a class="lumen-button" href="%s" download="%s" rel="nofollow" '
+                'data-release-zip="1" aria-label="%s">%s '
+                '<span class="lumen-meta">%s</span></a>'
+                % (esc(url), esc(name), esc("%s (%s)" % (label, name)), esc(label),
+                   esc(size_label(asset.get("size")) or "ZIP"))
+            )
         rows.append(
-            '<div class="lumen-download-row"><p class="lumen-meta">%s</p>'
-            '<div class="lumen-actions">%s</div></div>' % (esc(name), "".join(buttons))
+            '<div class="lumen-download-row"><div class="lumen-actions">%s</div></div>'
+            % "".join(buttons)
         )
     return (
-        '<section class="lumen-doc-downloads"><h2>Download this release</h2>'
-        '<p class="lumen-meta">Portable packages include the flashing tool for your computer; '
-        'the file is saved under the release\'s own name.</p>%s</section>' % "".join(rows)
+        '<section class="lumen-doc-downloads" data-release-downloads>'
+        '<h2>Download this release</h2>%s</section>' % "".join(rows)
     )
 
 
@@ -1614,7 +1656,9 @@ def release_page(item: dict, release: dict, siblings: list[dict], portable: list
 
 
 def software_index_page(item: dict, releases: list[dict]) -> str:
-    up = "../"
+    # This page is release-notes/<software>/index.html: two levels below the
+    # site root, exactly like the individual release pages.
+    up = "../../"
     name = software_label(item)
     model = item.get("model") or ""
     canonical = "%s/release-notes/%s/index.html" % (SITE, item["slug"])

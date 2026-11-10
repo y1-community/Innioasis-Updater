@@ -262,6 +262,12 @@ def _classify_variant_model(asset_name: str, tag_name: str = "", repo: str = "")
     lower_repo = (repo or "").lower()
     if "y2" in lower_name or "6582" in lower_name or "eastaeon" in lower_name:
         return "Y2"
+    # A shared release can carry both models: the Y2 projects publish a
+    # rom_y2.zip beside the Y1 Type A/B packages. The file name says which
+    # player an asset belongs to, so a typed or y1-named asset is Y1 here
+    # rather than "dual" -- otherwise a Y2 page inherits Y1 hardware types.
+    if "y1" in lower_name or "type_a" in lower_name or "type_b" in lower_name:
+        return "Y1"
     if "y2" in lower_tag or "6582" in lower_tag or "eastaeon" in lower_tag:
         if "y1" not in lower_tag:
             return "Y2"
@@ -280,8 +286,12 @@ def _extract_rom_variants(assets: list[dict], tag_name: str, repo: str) -> list[
             continue
         if not (fnmatch.fnmatch(lower, "rom*.zip") or lower in ("system.zip", "update.zip") or "y2linux" in lower):
             continue
+        variant_model = _classify_variant_model(name, tag_name, repo)
         is_type_b = "_type_b" in lower or "type-b" in lower or " type b" in lower or "type-b" in tag_lower
-        hw_type = "B" if is_type_b else "A"
+        # Hardware types are a Y1 idea only. Y2 players have no A/B revision,
+        # so a Y2 package must never be stamped with one, not even when it
+        # sits in the same release as the Y1 Type A and Type B ZIPs.
+        hw_type = "" if variant_model == "Y2" else ("B" if is_type_b else "A")
         if "_360p" in lower:
             resolution = "360p"
         elif "_240p" in lower:
@@ -292,7 +302,7 @@ def _extract_rom_variants(assets: list[dict], tag_name: str, repo: str) -> list[
             "asset": asset,
             "type": hw_type,
             "resolution": resolution,
-            "model": _classify_variant_model(name, tag_name, repo),
+            "model": variant_model,
         })
     return variants
 
