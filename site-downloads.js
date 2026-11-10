@@ -4,21 +4,25 @@
    file linked from a guide normally hands the reader to the browser's own
    download shelf: no progress on the page, no speed, no way to see how long a
    1.5 GB image will take. This module takes those clicks, streams the file,
-   and draws progress where the reader clicked:
+   and draws progress directly beside the button that was clicked — the same
+   inline pattern the Themes Gallery uses.
 
-     - a card directly above the link that was clicked, with percent, transfer
-       speed and time left;
-     - a tray in the corner once that link is scrolled out of view, so several
-       downloads can run at once (themes, portable packages, runtimes);
-     - a sheet opened from the tray or the footer dock that lists every job,
-       because a phone has no room for a corner tray.
+   There is deliberately no corner tray, no download sheet and no footer dock
+   button. Progress belongs to the control the reader just pressed: an inline
+   card that opens under it with percent, transferred bytes, speed and time
+   left, and scrolls itself into view so the reader sees it start.
+
+   Every job is tied to its own link, so two downloads run side by side
+   without any global list to get out of step. While a download is running the
+   page warns before it is closed or reloaded.
 
    Where the File System Access API exists the bytes are written straight to a
    file the reader picks, so a 1.5 GB image never sits in a JavaScript array.
-   Without it, small files (<= 64 MB) are buffered into a blob; larger ones
-   hand off to the browser's downloader with an indeterminate card, and every
-   failure falls back to a plain navigation. A blocked CORS response must never
-   turn a download into a dead click. */
+   Without it, files up to 128 MB are buffered into a blob; larger or
+   unmeasured responses are handed to the browser once, with an inline note
+   that the browser has taken over. A blocked CORS response must never turn a
+   download into a dead click — and never into a second click of its own.
+*/
 (function (global) {
     "use strict";
     if (global.InnioasisDownloads) return;
@@ -26,43 +30,26 @@
     var doc = global.document;
     if (!doc || !global.addEventListener) return;
 
-    var VERSION = "20261109dl";
+    var VERSION = "20261110inline";
     var STREAMABLE = /\.(zip|img|dmg|pkg|apk|exe|msi|7z|tar|gz|xz|bz2|tgz|iso|bin|jar|ipa|app)(\?|#|$)/i;
-    var BIG_BLOB = 64 * 1024 * 1024;
-    var MAX_JOBS = 3;
-    var TICK = 120;
+    /* A blob that big is the most a phone can hold while still rendering. */
+    var BLOB_LIMIT = 128 * 1024 * 1024;
+    var MAX_JOBS = 2;
+    var TICK = 150;
 
     var jobs = [];
     var seq = 0;
     var jobByAnchor = typeof WeakMap === "function" ? new WeakMap() : null;
     var stylesInjected = false;
-    var trayCollapsed = false;
-    var sheetOpen = false;
-    /* Element cache for the tray, the sheet and the dock button. tray(),
-       sheet() and dockButton() each build their nodes once and read them back
-       from here; without this object every one of them threw on first call
-       and the page fell back to the browser's own download shelf. */
-    var ui = {};
 
     /* ------------------------------------------------------------- wording
 
        Download wording is the one part of the site a reader sees while the
        page is busy, so it has to match the language they picked. The published
-       catalogs answer first (that keeps every translated download sentence in
-       one place); the small table below covers the languages where the UI
-       sentence has not made it into a catalog yet. A miss is still shown in
+       catalogs answer first; the table below covers the languages where the
+       UI sentence has not made it into a catalog yet. A miss is still shown in
        English rather than blank. */
     var WORDING = {
-        "Downloads": {
-            de: "Downloads", fr: "Téléchargements", es: "Descargas", it: "Download",
-            pt: "Transferências", "pt-BR": "Downloads", nl: "Downloads", pl: "Pobierania",
-            ru: "Загрузки", uk: "Завантаження", ja: "ダウンロード", ko: "다운로드",
-            "zh-CN": "下载", "zh-TW": "下載", tr: "İndirmeler", ar: "التنزيلات",
-            hi: "डाउनलोड", id: "Unduhan", vi: "Tải xuống", th: "ดาวน์โหลด",
-            sv: "Nedladdningar", da: "Downloads", fi: "Lataukset", cs: "Stahování",
-            el: "Λήψεις", he: "הורדות", hu: "Letöltések", ro: "Descărcări",
-            bg: "Изтегляния"
-        },
         "Downloading…": {
             de: "Wird heruntergeladen…", fr: "Téléchargement…", es: "Descargando…",
             it: "Download in corso…", pt: "A transferir…", "pt-BR": "Baixando…",
@@ -126,15 +113,6 @@
             da: "Annuller", fi: "Peruuta", cs: "Zrušit", el: "Άκυρο",
             he: "ביטול", hu: "Mégse", ro: "Anulează", bg: "Отказ"
         },
-        "Speed": {
-            de: "Geschwindigkeit", fr: "Vitesse", es: "Velocidad", it: "Velocità",
-            pt: "Velocidade", "pt-BR": "Velocidade", nl: "Snelheid", pl: "Prędkość",
-            ru: "Скорость", uk: "Швидкість", ja: "速度", ko: "속도",
-            "zh-CN": "速度", "zh-TW": "速度", tr: "Hız", ar: "السرعة",
-            hi: "गति", id: "Kecepatan", vi: "Tốc độ", th: "ความเร็ว", sv: "Hastighet",
-            da: "Hastighed", fi: "Nopeus", cs: "Rychlost", el: "Ταχύτητα",
-            he: "מהירות", hu: "Sebesség", ro: "Viteză", bg: "Скорост"
-        },
         "Time left": {
             de: "Restzeit", fr: "Temps restant", es: "Tiempo restante",
             it: "Tempo rimasto", pt: "Tempo restante", "pt-BR": "Tempo restante",
@@ -145,17 +123,21 @@
             fi: "Jäljellä", cs: "Zbývá", el: "Απομένει", he: "נותר",
             hu: "Hátralévő", ro: "Rămas", bg: "Остава"
         },
-        "Show downloads": {
-            de: "Downloads anzeigen", fr: "Afficher les téléchargements",
-            es: "Mostrar descargas", it: "Mostra download", pt: "Mostrar transferências",
-            "pt-BR": "Mostrar downloads", nl: "Downloads tonen", pl: "Pokaż pobierania",
-            ru: "Показать загрузки", uk: "Показати завантаження", ja: "ダウンロードを表示",
-            ko: "다운로드 표시", "zh-CN": "显示下载", "zh-TW": "顯示下載",
-            tr: "İndirmeleri göster", ar: "إظهار التنزيلات", hi: "डाउनलोड दिखाएँ",
-            id: "Tampilkan unduhan", vi: "Hiện tải xuống", th: "แสดงการดาวน์โหลด",
-            sv: "Visa nedladdningar", da: "Vis downloads", fi: "Näytä lataukset",
-            cs: "Zobrazit stahování", el: "Εμφάνιση λήψεων", he: "הצג הורדות",
-            hu: "Letöltések megjelenítése", ro: "Arată descărcările", bg: "Покажи изтеглянията"
+        "Keep this tab open": {
+            de: "Diesen Tab geöffnet lassen", fr: "Gardez cet onglet ouvert",
+            es: "Mantén esta pestaña abierta", it: "Tieni aperta questa scheda",
+            pt: "Mantenha este separador aberto", "pt-BR": "Mantenha esta aba aberta",
+            nl: "Houd dit tabblad open", pl: "Pozostaw tę kartę otwartą",
+            ru: "Не закрывайте эту вкладку", uk: "Не закривайте цю вкладку",
+            ja: "このタブを開いたままにしてください", ko: "이 탭을 열어 두세요",
+            "zh-CN": "请保持此标签页打开", "zh-TW": "請保持此分頁開啟",
+            tr: "Bu sekmeyi açık tutun", ar: "اترك هذا التبويب مفتوحًا",
+            hi: "यह टैब खुला रखें", id: "Biarkan tab ini terbuka",
+            vi: "Giữ tab này mở", th: "เปิดแท็บนี้ไว้", sv: "Håll fliken öppen",
+            da: "Behold denne fane", fi: "Pidä tämä välilehti auki",
+            cs: "Nechte tuto kartu otevřenou", el: "Κρατήστε αυτή την καρτέλα ανοιχτή",
+            he: "השאירו כרטיסייה זו פתוחה", hu: "Tartsa nyitva ezt a lapot",
+            ro: "Ține acest tab deschis", bg: "Оставете този раздел отворен"
         }
     };
 
@@ -238,38 +220,27 @@
         var style = doc.createElement("style");
         style.id = "site-downloads-styles";
         style.textContent = [
-            ".site-dl-card{position:fixed;z-index:10004;box-sizing:border-box;width:min(320px,calc(100vw - 24px));padding:.7rem .8rem;border:1px solid var(--lumen-line-strong,rgba(255,255,255,.24));border-radius:12px;background:var(--lumen-panel,#14161f);color:var(--lumen-text,#f4f6fb);box-shadow:0 18px 38px rgba(0,0,0,.42);font:500 12px/1.35 var(--lumen-body,system-ui,sans-serif);}",
-            ".site-dl-card__top{display:flex;align-items:baseline;gap:.5rem;}",
-            ".site-dl-card__name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;}",
-            ".site-dl-card__pct{font-variant-numeric:tabular-nums;color:var(--lumen-accent,#6b9fff);font-weight:800;}",
-            ".site-dl-bar{margin:.5rem 0 .35rem;height:5px;border-radius:999px;background:color-mix(in oklab,var(--lumen-text,#fff) 14%,transparent);overflow:hidden;}",
-            ".site-dl-bar__fill{height:100%;width:0;border-radius:inherit;background:var(--lumen-accent,#6b9fff);transition:width .18s linear;}",
-            ".site-dl-card.is-done .site-dl-bar__fill{background:#43c98b;}",
-            ".site-dl-card.is-failed .site-dl-bar__fill{background:#e2564f;}",
-            ".is-indeterminate .site-dl-bar__fill{animation:site-dl-drift 1.15s ease-in-out infinite alternate;}",
-            "@keyframes site-dl-drift{from{transform:translateX(-18%);}to{transform:translateX(190%);}}",
-            ".site-dl-card__meta{display:flex;justify-content:space-between;gap:.6rem;color:var(--lumen-muted,#9aa3b5);font-size:11px;}",
-            ".site-dl-card__row{display:flex;justify-content:space-between;gap:.6rem;}",
-            ".site-dl-card__cancel{border:0;background:none;padding:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;font-size:11px;}",
-            ".site-dl-tray{position:fixed;right:14px;bottom:calc(var(--y1-dock-space,104px) + 12px);z-index:10005;box-sizing:border-box;width:min(330px,calc(100vw - 24px));max-height:min(46vh,420px);overflow:auto;padding:.6rem;border:1px solid var(--lumen-line-strong,rgba(255,255,255,.24));border-radius:14px;background:var(--lumen-panel,#14161f);color:var(--lumen-text,#f4f6fb);box-shadow:0 22px 46px rgba(0,0,0,.5);font:500 12px/1.35 var(--lumen-body,system-ui,sans-serif);}",
-            ".site-dl-tray[hidden]{display:none!important;}",
-            ".site-dl-tray__head{display:flex;align-items:center;gap:.5rem;margin:0 .15rem .5rem;}",
-            ".site-dl-tray__title{flex:1;margin:0;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--lumen-muted,#9aa3b5);}",
-            ".site-dl-tray__btn{border:1px solid var(--lumen-line,rgba(255,255,255,.16));border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:11px;padding:.2rem .55rem;cursor:pointer;}",
-            ".site-dl-tray__btn:hover{border-color:var(--lumen-accent,#6b9fff);}",
-            ".site-dl-row{display:grid;gap:.28rem;padding:.45rem .35rem;border-radius:9px;}",
-            ".site-dl-row + .site-dl-row{border-top:1px solid var(--lumen-line,rgba(255,255,255,.12));}",
-            ".site-dl-row__top{display:flex;align-items:baseline;gap:.5rem;}",
-            ".site-dl-row__name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}",
-            ".site-dl-row__pct{font-variant-numeric:tabular-nums;font-weight:800;}",
-            ".site-dl-row__meta{display:flex;justify-content:space-between;gap:.5rem;color:var(--lumen-muted,#9aa3b5);font-size:10.5px;}",
-            ".site-dl-sheet{position:fixed;inset:0;z-index:10006;display:grid;place-items:center;padding:1rem;background:rgba(4,7,14,.6);}",
-            ".site-dl-sheet[hidden]{display:none!important;}",
-            ".site-dl-sheet__panel{box-sizing:border-box;width:min(460px,100%);max-height:min(78vh,640px);overflow:auto;padding:.9rem;border:1px solid var(--lumen-line-strong,rgba(255,255,255,.24));border-radius:16px;background:var(--lumen-panel,#14161f);color:var(--lumen-text,#f4f6fb);box-shadow:0 30px 70px rgba(0,0,0,.55);font:500 12px/1.4 var(--lumen-body,system-ui,sans-serif);}",
-            ".site-dl-dock-btn{display:inline-flex;align-items:center;gap:.35rem;}",
-            ".site-dl-dock-btn__count{min-width:18px;padding:0 .25rem;border-radius:999px;background:var(--lumen-accent,#6b9fff);color:var(--lumen-on-accent,#fff);font-size:10px;font-weight:800;line-height:16px;text-align:center;}",
-            ".site-dl-visually-hidden{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}",
-            "@media (prefers-reduced-motion: reduce){.site-dl-bar__fill{transition:none;}}"
+            ".site-dl-progress{display:grid;gap:.45rem;box-sizing:border-box;width:100%;max-width:540px;margin:.55rem 0 .25rem;padding:.7rem .8rem;border:1px solid var(--lumen-line-strong,rgba(255,255,255,.22));border-radius:12px;background:var(--lumen-panel-soft,var(--lumen-panel,#161a24));color:var(--lumen-text,#f4f6fb);box-shadow:0 8px 22px rgba(0,0,0,.24);font:500 12.5px/1.4 var(--lumen-body,system-ui,sans-serif);text-align:start;}",
+            ".site-dl-progress[hidden]{display:none!important;}",
+            ".site-dl-progress__head{display:flex;align-items:center;gap:.55rem;min-width:0;}",
+            ".site-dl-progress__icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:22px;height:22px;border-radius:999px;background:color-mix(in oklab,var(--lumen-accent,#6b9fff) 20%,transparent);color:var(--lumen-accent,#6b9fff);}",
+            ".site-dl-progress__name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:750;}",
+            ".site-dl-progress__pct{flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:800;color:var(--lumen-accent,#6b9fff);}",
+            ".site-dl-progress__bar{position:relative;height:6px;border-radius:999px;background:color-mix(in oklab,var(--lumen-text,#fff) 14%,transparent);overflow:hidden;}",
+            ".site-dl-progress__fill{height:100%;width:0;border-radius:inherit;background:var(--lumen-accent,#6b9fff);transition:width .2s linear;}",
+            ".site-dl-progress__stats{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .75rem;color:var(--lumen-muted,#9aa3b5);font-size:11px;font-variant-numeric:tabular-nums;}",
+            ".site-dl-progress__state{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}",
+            ".site-dl-progress__cancel{flex:0 0 auto;border:0;background:none;padding:0;color:inherit;font:inherit;font-size:11px;text-decoration:underline;text-underline-offset:2px;cursor:pointer;}",
+            ".site-dl-progress__cancel:hover{color:var(--lumen-text,#fff);}",
+            ".site-dl-progress.is-indeterminate .site-dl-progress__fill{width:34%!important;animation:site-dl-drift 1.15s ease-in-out infinite alternate;}",
+            "@keyframes site-dl-drift{from{transform:translateX(-16%);}to{transform:translateX(190%);}}",
+            ".site-dl-progress.is-done .site-dl-progress__fill{background:#43c98b;}",
+            ".site-dl-progress.is-done .site-dl-progress__pct{color:#43c98b;}",
+            ".site-dl-progress.is-done .site-dl-progress__icon{background:rgba(67,201,139,.18);color:#43c98b;}",
+            ".site-dl-progress.is-failed .site-dl-progress__fill{background:#e2564f;}",
+            ".site-dl-progress.is-handoff .site-dl-progress__fill{width:100%!important;background:color-mix(in oklab,var(--lumen-accent,#6b9fff) 55%,transparent);}",
+            ".site-dl-progress-item{list-style:none;}",
+            "@media (prefers-reduced-motion: reduce){.site-dl-progress__fill{transition:none;}.site-dl-progress.is-indeterminate .site-dl-progress__fill{animation:none;}}"
         ].join("");
         doc.head.appendChild(style);
     }
@@ -282,287 +253,152 @@
         return node;
     }
 
-    function buildCard(job) {
-        var card = element("div", "site-dl-card");
-        card.setAttribute("role", "status");
-        card.setAttribute("aria-live", "polite");
-        var top = element("div", "site-dl-card__top");
-        top.appendChild(element("span", "site-dl-card__name", job.name));
-        top.appendChild(element("span", "site-dl-card__pct", "0%"));
-        card.appendChild(top);
-        var bar = element("div", "site-dl-bar");
-        var fill = element("div", "site-dl-bar__fill");
-        bar.appendChild(fill);
-        card.appendChild(bar);
-        var meta = element("div", "site-dl-card__meta");
-        meta.appendChild(element("span", "site-dl-card__speed", ""));
-        meta.appendChild(element("span", "site-dl-card__eta", ""));
-        card.appendChild(meta);
-        var row = element("div", "site-dl-card__row");
-        row.appendChild(element("span", "site-dl-card__state", t("Preparing…")));
-        var cancel = element("button", "site-dl-card__cancel", t("Cancel"));
+    function buildPanel(job) {
+        var panel = element("div", "site-dl-progress");
+        panel.setAttribute("role", "status");
+        panel.setAttribute("aria-live", "polite");
+
+        var head = element("div", "site-dl-progress__head");
+        var icon = element("span", "site-dl-progress__icon");
+        icon.setAttribute("aria-hidden", "true");
+        icon.innerHTML = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>';
+        head.appendChild(icon);
+        head.appendChild(element("span", "site-dl-progress__name", job.name));
+        head.appendChild(element("span", "site-dl-progress__pct", "0%"));
+        panel.appendChild(head);
+
+        var bar = element("div", "site-dl-progress__bar");
+        bar.appendChild(element("div", "site-dl-progress__fill"));
+        panel.appendChild(bar);
+
+        var stats = element("div", "site-dl-progress__stats");
+        var state = element("span", "site-dl-progress__state", t("Preparing…"));
+        stats.appendChild(state);
+        stats.appendChild(element("span", "site-dl-progress__size", ""));
+        stats.appendChild(element("span", "site-dl-progress__speed", ""));
+        stats.appendChild(element("span", "site-dl-progress__eta", ""));
+        var cancel = element("button", "site-dl-progress__cancel", t("Cancel"));
         cancel.type = "button";
         cancel.addEventListener("click", function (event) {
             event.preventDefault();
             event.stopPropagation();
             cancelJob(job);
         });
-        row.appendChild(cancel);
-        card.appendChild(row);
-        return card;
+        stats.appendChild(cancel);
+        panel.appendChild(stats);
+
+        panel.hidden = false;
+        return panel;
     }
 
-    function buildRow(job) {
-        var row = element("div", "site-dl-row");
-        row.setAttribute("data-dl-job", job.id);
-        var top = element("div", "site-dl-row__top");
-        top.appendChild(element("span", "site-dl-row__name", job.name));
-        top.appendChild(element("span", "site-dl-row__pct", "0%"));
-        row.appendChild(top);
-        var bar = element("div", "site-dl-bar");
-        bar.appendChild(element("div", "site-dl-bar__fill"));
-        row.appendChild(bar);
-        var meta = element("div", "site-dl-row__meta");
-        meta.appendChild(element("span", "site-dl-row__speed", ""));
-        meta.appendChild(element("span", "site-dl-row__eta", ""));
-        row.appendChild(meta);
-        return row;
-    }
-
-    function tray() {
-        if (ui.tray) return ui.tray;
-        var node = element("section", "site-dl-tray");
-        node.id = "site-dl-tray";
-        node.setAttribute("aria-label", t("Downloads"));
-        var head = element("div", "site-dl-tray__head");
-        var title = element("p", "site-dl-tray__title", t("Downloads"));
-        head.appendChild(title);
-        var openAll = element("button", "site-dl-tray__btn", t("Show downloads"));
-        openAll.type = "button";
-        openAll.addEventListener("click", function () { openSheet(true); });
-        head.appendChild(openAll);
-        var hide = element("button", "site-dl-tray__btn", "×");
-        hide.type = "button";
-        hide.setAttribute("aria-label", t("Cancel"));
-        hide.addEventListener("click", function () { trayCollapsed = true; syncUi(); });
-        head.appendChild(hide);
-        node.appendChild(head);
-        var list = element("div", "site-dl-tray__list");
-        node.appendChild(list);
-        node.hidden = true;
-        doc.body.appendChild(node);
-        ui.tray = node;
-        ui.trayList = list;
-        ui.trayTitle = title;
-        return node;
-    }
-
-    function sheet() {
-        if (ui.sheet) return ui.sheet;
-        var overlay = element("div", "site-dl-sheet");
-        overlay.id = "site-dl-sheet";
-        overlay.hidden = true;
-        overlay.addEventListener("click", function (event) {
-            if (event.target === overlay) openSheet(false);
-        });
-        var panel = element("div", "site-dl-sheet__panel");
-        panel.setAttribute("role", "dialog");
-        panel.setAttribute("aria-modal", "true");
-        panel.setAttribute("aria-label", t("Downloads"));
-        var head = element("div", "site-dl-tray__head");
-        var title = element("p", "site-dl-tray__title", t("Downloads"));
-        head.appendChild(title);
-        var close = element("button", "site-dl-tray__btn", "×");
-        close.type = "button";
-        close.setAttribute("aria-label", t("Cancel"));
-        close.addEventListener("click", function () { openSheet(false); });
-        head.appendChild(close);
-        panel.appendChild(head);
-        var list = element("div", "site-dl-tray__list");
-        panel.appendChild(list);
-        overlay.appendChild(panel);
-        doc.body.appendChild(overlay);
-        ui.sheet = overlay;
-        ui.sheetList = list;
-        return overlay;
-    }
-
-    function openSheet(open) {
-        var overlay = sheet();
-        sheetOpen = Boolean(open);
-        overlay.hidden = !sheetOpen;
-        if (sheetOpen) {
-            renderList(ui.sheetList, true);
-            var first = overlay.querySelector("button");
-            if (first && typeof first.focus === "function") first.focus();
+    /* The card belongs beside the button that was pressed, not floating over
+       the page. A button row keeps its own layout; the card follows it. */
+    function mount(job, link) {
+        var panel = buildPanel(job);
+        job.panel = panel;
+        var host = null;
+        if (!link || !link.closest || !link.parentNode) {
+            if (doc.body) doc.body.appendChild(panel);
+            return panel;
         }
-    }
-
-    function renderList(host, expanded) {
-        if (!host) return;
-        host.textContent = "";
-        var visible = jobs.filter(function (job) { return !job.dismissed; });
-        if (!visible.length) {
-            host.appendChild(element("p", "site-dl-row__meta", t("Downloads")));
-            return;
+        try {
+            host = link.closest(".lumen-actions, .lumen-release-details, .firmware-list-actions, .lumen-hero-actions, .lumen-button-row, .hero-actions, .btn-row, .actions, li, p, td");
+        } catch (_) {}
+        if (!host) host = link.parentElement;
+        if (!host || !host.parentNode) {
+            if (doc.body) doc.body.appendChild(panel);
+            return panel;
         }
-        visible.forEach(function (job) {
-            var row = buildRow(job);
-            row.setAttribute("data-dl-job", String(job.id));
-            if (!expanded && job.anchorVisible) row.hidden = true;
-            host.appendChild(row);
-            paint(job);
-        });
+        if (host.tagName === "TD" || host === link.parentElement) {
+            host.appendChild(panel);
+            return panel;
+        }
+        if (host.tagName === "LI") {
+            var item = element("li", "site-dl-progress-item");
+            item.appendChild(panel);
+            host.parentNode.insertBefore(item, host.nextSibling);
+            job.holder = item;
+            return panel;
+        }
+        host.parentNode.insertBefore(panel, host.nextSibling);
+        return panel;
     }
 
-    function dockButton() {
-        if (ui.dockButton || !doc.body) return ui.dockButton;
-        var host = doc.querySelector("#support-toolbar-container .y1-site-dock-bar") ||
-            doc.getElementById("support-toolbar-container");
-        if (!host) return null;
-        var button = element("button", "y1-dock-btn site-dl-dock-btn");
-        button.type = "button";
-        button.id = "site-dl-dock-btn";
-        var label = element("span", "site-dl-dock-btn__label", t("Downloads"));
-        button.appendChild(label);
-        var count = element("span", "site-dl-dock-btn__count", "0");
-        count.hidden = true;
-        button.appendChild(count);
-        button.addEventListener("click", function () { openSheet(!sheetOpen); });
-        host.appendChild(button);
-        ui.dockButton = button;
-        ui.dockCount = count;
-        ui.dockLabel = label;
-        return button;
+    function removePanel(job) {
+        if (job.panel && job.panel.parentNode) job.panel.parentNode.removeChild(job.panel);
+        if (job.holder && job.holder.parentNode) job.holder.parentNode.removeChild(job.holder);
+        job.panel = null;
+        job.holder = null;
+    }
+
+    function inView(node) {
+        var rect = node.getBoundingClientRect();
+        var viewH = global.innerHeight || 0;
+        return rect.top >= 0 && rect.bottom <= viewH;
+    }
+
+    /* Show the reader the progress they just started: the card opens where the
+       button is, and if that is off screen the page scrolls back to it. */
+    function reveal(job) {
+        if (!job.panel || !inView(job.panel)) return;
+        var reduce = false;
+        try {
+            reduce = global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        } catch (_) {}
+        try {
+            job.panel.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center", inline: "nearest" });
+        } catch (_) {
+            try { job.panel.scrollIntoView(); } catch (__) {}
+        }
     }
 
     /* ---------------------------------------------------------------- painting */
     function paint(job) {
+        if (!job.panel) return;
         var percent = job.total ? Math.min(100, (job.loaded / job.total) * 100) : 0;
         var pctText = job.total ? Math.round(percent) + "%" : "";
-        var speedText = job.status === "running" && job.loaded
-            ? bytes(speedOf(job)) + "/s"
-            : job.status === "done" ? bytes(job.loaded) : "";
+        var speed = speedOf(job);
         var eta = etaOf(job);
-        var etaText = eta ? t("Time left") + " " + seconds(eta) : "";
 
-        function apply(root) {
-            if (!root) return;
-            var fill = root.querySelector(".site-dl-bar__fill");
-            if (fill) fill.style.width = (job.total ? percent : 34) + "%";
-            root.classList.toggle("is-indeterminate", !job.total && job.status === "running");
-            var pct = root.querySelector(".site-dl-row__pct, .site-dl-card__pct");
-            if (pct) pct.textContent = pctText;
-            var speed = root.querySelector(".site-dl-row__speed, .site-dl-card__speed");
-            if (speed) speed.textContent = speedText;
-            var left = root.querySelector(".site-dl-row__eta, .site-dl-card__eta");
-            if (left) left.textContent = etaText;
-            root.classList.toggle("is-done", job.status === "done");
-            root.classList.toggle("is-failed", job.status === "failed");
+        job.panel.classList.toggle("is-done", job.status === "done");
+        job.panel.classList.toggle("is-failed", job.status === "failed");
+        job.panel.classList.toggle("is-handoff", job.status === "handoff");
+        job.panel.classList.toggle("is-indeterminate", !job.total && (job.status === "running" || job.status === "starting"));
+
+        var fill = job.panel.querySelector(".site-dl-progress__fill");
+        if (fill) fill.style.width = (job.total ? percent : 0) + "%";
+
+        var pct = job.panel.querySelector(".site-dl-progress__pct");
+        if (pct) pct.textContent = pctText;
+
+        var size = job.panel.querySelector(".site-dl-progress__size");
+        if (size) {
+            if (job.total) size.textContent = bytes(job.loaded) + " / " + bytes(job.total);
+            else if (job.loaded) size.textContent = bytes(job.loaded);
+            else size.textContent = "";
         }
 
-        apply(job.card);
-        var rows = doc.querySelectorAll('[data-dl-job="' + job.id + '"]');
-        Array.prototype.forEach.call(rows, function (row) { apply(row); });
+        var speedNode = job.panel.querySelector(".site-dl-progress__speed");
+        if (speedNode) speedNode.textContent = job.status === "running" && speed > 0 ? bytes(speed) + "/s" : "";
 
-        if (job.card) {
-            var state = job.card.querySelector(".site-dl-card__state");
-            if (state) {
-                var wording = job.status === "done" ? t("Saved")
-                    : job.status === "failed" ? t("Failed")
-                    : job.status === "handoff" ? t("Your browser takes over")
-                    : job.status === "running" ? t("Downloading…") : t("Preparing…");
-                if (state.textContent !== wording) state.textContent = wording;
-            }
-            var cancel = job.card.querySelector(".site-dl-card__cancel");
-            if (cancel) cancel.hidden = job.status === "done" || job.status === "failed" || job.status === "handoff";
+        var etaNode = job.panel.querySelector(".site-dl-progress__eta");
+        if (etaNode) etaNode.textContent = eta ? t("Time left") + " " + seconds(eta) : "";
+
+        var state = job.panel.querySelector(".site-dl-progress__state");
+        if (state) {
+            var wording = job.status === "done" ? t("Saved")
+                : job.status === "failed" ? t("Failed")
+                : job.status === "handoff" ? t("Your browser takes over")
+                : job.status === "running" ? t("Keep this tab open")
+                : t("Preparing…");
+            if (state.textContent !== wording) state.textContent = wording;
         }
-        syncDock();
+
+        var cancel = job.panel.querySelector(".site-dl-progress__cancel");
+        if (cancel) cancel.hidden = job.status === "done" || job.status === "handoff";
     }
 
-    function syncDock() {
-        var button = dockButton();
-        if (!button) return;
-        var active = jobs.filter(function (job) { return !job.dismissed; });
-        var running = active.filter(function (job) { return job.status === "running" || job.status === "starting"; });
-        ui.dockCount.textContent = String(running.length || active.length);
-        ui.dockCount.hidden = !active.length;
-        button.hidden = !active.length;
-    }
-
-    /* The corner tray only speaks for downloads the reader can no longer see:
-       a card is already above the link in the viewport. */
-    function syncUi() {
-        var trayList = ui.trayList;
-        if (!jobs.length) {
-            if (ui.tray) ui.tray.hidden = true;
-            syncDock();
-            return;
-        }
-        var offscreen = jobs.filter(function (job) {
-            return !job.dismissed && !job.anchorVisible && job.status !== "done";
-        });
-        var finished = jobs.filter(function (job) { return !job.dismissed && job.status === "done"; });
-        var show = offscreen.length > 0 || finished.length > 0;
-        var node = tray();
-        node.hidden = !show || trayCollapsed;
-        if (sheetOpen) renderList(ui.sheetList, true);
-        if (!trayList || node.hidden) {
-            syncDock();
-            return;
-        }
-        /* One row per job, reused across ticks so the list does not flicker. */
-        var wanted = offscreen.concat(finished);
-        var seen = {};
-        wanted.forEach(function (job) {
-            seen[job.id] = true;
-            var row = trayList.querySelector('[data-dl-job="' + job.id + '"]');
-            if (!row) {
-                row = buildRow(job);
-                row.setAttribute("data-dl-job", String(job.id));
-                trayList.appendChild(row);
-            }
-            paint(job);
-        });
-        Array.prototype.forEach.call(trayList.querySelectorAll("[data-dl-job]"), function (row) {
-            if (!seen[row.getAttribute("data-dl-job")]) row.parentNode.removeChild(row);
-        });
-        syncDock();
-    }
-
-    /* ------------------------------------------------------------- positioning */
-    function placeCard(job) {
-        var card = job.card;
-        var anchor = job.anchor;
-        if (!card) return;
-        if (!anchor || !anchor.isConnected) {
-            card.hidden = true;
-            return;
-        }
-        var rect = anchor.getBoundingClientRect();
-        var viewH = global.innerHeight || 0;
-        var visible = rect.bottom > 8 && rect.top < viewH - 8;
-        job.anchorVisible = visible;
-        card.hidden = !visible;
-        if (!visible) return;
-        card.style.visibility = "hidden";
-        card.style.left = "0px";
-        card.style.top = "0px";
-        var size = card.getBoundingClientRect();
-        var left = Math.min(Math.max(8, rect.left), Math.max(8, (global.innerWidth || 0) - size.width - 8));
-        var top = rect.top - size.height - 10;
-        if (top < 8) top = Math.min(viewH - size.height - 8, rect.bottom + 10);
-        card.style.left = Math.round(left) + "px";
-        card.style.top = Math.round(top) + "px";
-        card.style.visibility = "";
-    }
-
-    function placeCards() {
-        jobs.forEach(placeCard);
-        syncUi();
-    }
-
-    /* ------------------------------------------------------------------ jobs */
+    /* ------------------------------------------------------------------- jobs */
     function filenameOf(url, response) {
         var name = "";
         try {
@@ -578,15 +414,24 @@
         return name || "download.bin";
     }
 
+    function activeJobs() {
+        return jobs.filter(function (job) {
+            return job.status === "starting" || job.status === "running";
+        });
+    }
+
     function cancelJob(job) {
         job.cancelled = true;
         if (job.controller) {
             try { job.controller.abort(); } catch (_) {}
         }
-        job.dismissed = true;
+        if (job.writer) {
+            try { job.writer.abort(); } catch (_) {}
+        }
         if (job.anchor && jobByAnchor) jobByAnchor.delete(job.anchor);
-        if (job.card && job.card.parentNode) job.card.parentNode.removeChild(job.card);
-        syncUi();
+        removePanel(job);
+        var index = jobs.indexOf(job);
+        if (index !== -1) jobs.splice(index, 1);
     }
 
     function saveBlob(blob, name) {
@@ -595,6 +440,7 @@
         link.href = href;
         link.download = name;
         link.rel = "noopener";
+        link.setAttribute("data-site-download-direct", "1");
         doc.body.appendChild(link);
         link.click();
         setTimeout(function () {
@@ -603,64 +449,75 @@
         }, 30000);
     }
 
-    function handOff(job, url) {
-        job.status = "handoff";
-        paint(job);
-        var link = element("a");
+    /* The one and only path to the browser's own downloader. Marked so the
+       click interceptor never claims it: a synthetic anchor click used to come
+       straight back through this module and start another copy of the file. */
+    function clickDirect(url, name) {
+        var link = doc.createElement("a");
         link.href = url;
+        if (name) link.download = name;
         link.rel = "noopener";
-        if (job.name) link.download = job.name;
+        link.setAttribute("data-site-download-direct", "1");
+        link.style.display = "none";
         doc.body.appendChild(link);
         link.click();
         setTimeout(function () {
             if (link.parentNode) link.parentNode.removeChild(link);
-            finish(job);
-        }, 1200);
+        }, 1500);
     }
 
-    function finish(job) {
-        job.dismissed = true;
-        if (job.anchor && jobByAnchor) jobByAnchor.delete(job.anchor);
-        if (job.observer) {
-            try { job.observer.disconnect(); } catch (_) {}
-        }
-        if (job.card && job.card.parentNode) job.card.parentNode.removeChild(job.card);
-        syncUi();
-        setTimeout(function () {
-            var index = jobs.indexOf(job);
-            if (index !== -1 && job.status !== "running") jobs.splice(index, 1);
-            syncDock();
-        }, 8000);
-    }
-
-    function fail(job, error, url) {
-        if (job.cancelled) return;
-        job.status = "failed";
+    function handOff(job, url) {
+        job.status = "handoff";
         paint(job);
-        if (job.card) {
-            var cancel = job.card.querySelector(".site-dl-card__cancel");
-            if (cancel) {
-                cancel.hidden = false;
-                cancel.textContent = t("Cancel");
-                cancel.onclick = function () {
-                    if (job.card && job.card.parentNode) job.card.parentNode.removeChild(job.card);
-                    job.dismissed = true;
-                    syncUi();
-                };
-            }
-        }
-        /* A blocked download is still a download: let the browser have it
-           rather than leaving the reader with a red bar and no file. */
-        handOff(job, url || job.url);
+        clickDirect(url || job.url, job.name);
+        setTimeout(function () {
+            if (job.status === "handoff") finish(job, 4000);
+        }, 5000);
+    }
+
+    function finish(job, delay) {
+        if (job.anchor && jobByAnchor) jobByAnchor.delete(job.anchor);
+        setTimeout(function () {
+            removePanel(job);
+            var index = jobs.indexOf(job);
+            if (index !== -1) jobs.splice(index, 1);
+        }, delay == null ? 12000 : delay);
     }
 
     async function start(job, url) {
         job.status = "starting";
-        job.started = Date.now();
-        job.startedAt = typeof performance !== "undefined" && performance.now ? performance.now() : Date.now();
         paint(job);
+
         var controller = typeof AbortController === "function" ? new AbortController() : null;
         job.controller = controller;
+
+        /* Chromium can write the response straight to a file: no 1.5 GB blob
+           in memory, and progress that matches what the disk is receiving. The
+           picker must be opened while the click still counts as a gesture, so
+           it comes before the request. */
+        var writer = null;
+        if (typeof global.showSaveFilePicker === "function") {
+            try {
+                var extension = "." + ((job.name.split(".").pop() || "bin").toLowerCase());
+                var handle = await global.showSaveFilePicker({
+                    suggestedName: job.name,
+                    types: [{ description: "Download", accept: { "application/octet-stream": [extension] } }]
+                });
+                writer = await handle.createWritable();
+                job.writer = writer;
+            } catch (error) {
+                if (error && error.name === "AbortError") {
+                    cancelJob(job);
+                    return;
+                }
+                writer = null;
+            }
+        }
+        if (job.cancelled) {
+            if (writer) { try { await writer.abort(); } catch (_) {} }
+            return;
+        }
+
         var response;
         try {
             response = await fetch(url, {
@@ -670,50 +527,33 @@
                 signal: controller ? controller.signal : undefined
             });
         } catch (error) {
-            fail(job, error, url);
+            if (job.cancelled) return;
+            handOff(job, url);
             return;
         }
         if (!response || !response.ok) {
-            fail(job, new Error("HTTP " + (response ? response.status : 0)), url);
-            return;
-        }
-        job.name = job.name || filenameOf(url, response);
-        var length = Number(response.headers.get("content-length") || 0);
-        job.total = Number.isFinite(length) ? length : 0;
-        job.status = "running";
-        paint(job);
-
-        /* Chromium can write the response straight to a file: no 1.5 GB blob
-           in memory, and progress that matches what the disk is receiving. */
-        var writer = null;
-        /* Reading the body is only worth it when the bytes have somewhere to
-           go. Without a file handle a huge or unmeasured response is handed
-           to the browser untouched; streaming it first would download it
-           twice. */
-        var canBuffer = job.total > 0 && job.total <= BIG_BLOB;
-        if (typeof global.showSaveFilePicker === "function") {
-            try {
-                var handle = await global.showSaveFilePicker({
-                    suggestedName: job.name,
-                    types: [{ description: t("Downloads"), accept: { "application/octet-stream": ["." + (job.name.split(".").pop() || "bin")] } }]
-                });
-                var writable = await handle.createWritable();
-                writer = writable;
-            } catch (error) {
-                if (error && error.name === "AbortError") {
-                    cancelJob(job);
-                    return;
-                }
-                writer = null;
-            }
-        }
-        if (!writer && !canBuffer) {
+            if (writer) { try { await writer.abort(); } catch (_) {} }
             handOff(job, url);
             return;
         }
 
-        var chunks = canBuffer && !writer ? [] : null;
-        var reader;
+        job.name = job.name || filenameOf(url, response);
+        var length = Number(response.headers.get("content-length") || 0);
+        job.total = Number.isFinite(length) && length > 0 ? length : 0;
+        job.status = "running";
+        paint(job);
+
+        /* Without a file handle, only a measured, small response is worth
+           reading: streaming a huge or unmeasured one would download it twice
+           or hold it all in memory. Those go to the browser once. */
+        if (!writer && (!job.total || job.total > BLOB_LIMIT)) {
+            try { if (response.body && response.body.cancel) await response.body.cancel(); } catch (_) {}
+            handOff(job, url);
+            return;
+        }
+
+        var chunks = writer ? null : [];
+        var reader = null;
         try {
             reader = response.body && typeof response.body.getReader === "function" ? response.body.getReader() : null;
         } catch (_) {
@@ -734,7 +574,7 @@
                 var chunk = step.value;
                 job.loaded += chunk.byteLength;
                 if (writer) await writer.write(chunk);
-                else if (chunks) chunks.push(chunk);
+                else chunks.push(chunk);
                 var now = Date.now();
                 if (now - lastSample > 400) {
                     job.samples.push({ at: now, bytes: job.loaded });
@@ -747,13 +587,14 @@
                 }
                 if (job.cancelled) {
                     try { await reader.cancel(); } catch (_) {}
+                    if (writer) { try { await writer.abort(); } catch (_) {} }
                     return;
                 }
             }
         } catch (error) {
             if (writer) { try { await writer.abort(); } catch (_) {} }
             if (job.cancelled) return;
-            fail(job, error, url);
+            handOff(job, url);
             return;
         }
 
@@ -761,27 +602,21 @@
         if (!job.total) job.total = job.loaded;
         if (writer) {
             try { await writer.close(); } catch (_) {}
-        } else if (chunks) {
-            saveBlob(new Blob(chunks, { type: response.headers.get("content-type") || "application/octet-stream" }), job.name);
         } else {
-            /* No writer and no buffer: the response was read only to report
-               progress, so hand the finished file to the browser. */
-            handOff(job, url);
-            return;
+            saveBlob(new Blob(chunks, { type: response.headers.get("content-type") || "application/octet-stream" }), job.name);
         }
         paint(job);
-        setTimeout(function () { finish(job); }, 6000);
+        finish(job);
     }
 
     function queue(url, anchor, name) {
         injectStyles();
-        dockButton();
-        if (anchor && jobByAnchor && jobByAnchor.get(anchor)) return;
-        var active = jobs.filter(function (job) { return job.status === "running" || job.status === "starting"; });
-        if (active.length >= MAX_JOBS) {
-            /* The reader asked for a fourth file; the browser can still take
-               it, but the page is not going to animate four streams. */
-            return false;
+        if (anchor && jobByAnchor && jobByAnchor.get(anchor)) return true;
+        if (activeJobs().length >= MAX_JOBS) {
+            /* The browser can still take it; the page just will not run a third
+               stream beside two the reader is already watching. */
+            clickDirect(url, name || "");
+            return true;
         }
         var job = {
             id: ++seq,
@@ -793,32 +628,19 @@
             total: 0,
             lastSpeed: 0,
             samples: [],
-            anchorVisible: true,
             dismissed: false,
-            cancelled: false
+            cancelled: false,
+            writer: null,
+            panel: null
         };
-        trayCollapsed = false;
         jobs.push(job);
         if (anchor && jobByAnchor) jobByAnchor.set(anchor, job);
-        if (anchor && anchor.parentNode) {
-            job.card = buildCard(job);
-            job.card.hidden = true;
-            doc.body.appendChild(job.card);
-        }
-        if (anchor && global.IntersectionObserver) {
-            try {
-                job.observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        job.anchorVisible = entry.isIntersecting;
-                        placeCard(job);
-                        syncUi();
-                    });
-                }, { threshold: 0.15 });
-                job.observer.observe(anchor);
-            } catch (_) {}
+        mount(job, anchor || doc.body);
+        paint(job);
+        if (job.panel) {
+            setTimeout(function () { reveal(job); }, 60);
         }
         start(job, url);
-        placeCards();
         return true;
     }
 
@@ -833,7 +655,9 @@
     }
 
     function streamable(link) {
-        if (!link || link.hasAttribute("data-no-inpage-download")) return false;
+        if (!link) return false;
+        if (link.hasAttribute("data-no-inpage-download")) return false;
+        if (link.hasAttribute("data-site-download-direct")) return false;
         var href = link.getAttribute("href") || "";
         if (!href || href.charAt(0) === "#" || /^(mailto|tel|javascript):/i.test(href)) return false;
         var explicit = link.hasAttribute("data-inpage-download");
@@ -842,76 +666,53 @@
     }
 
     function onClick(event) {
+        /* A scripted anchor click is how this module hands a file to the
+           browser. Claiming it again restarted the same download, which is the
+           loop that filled the old tray with copies of one file. Only real
+           reader clicks may start a job. */
+        if (event.isTrusted === false) return;
         if (event.defaultPrevented || event.button !== 0) return;
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         var link = anchorOf(event.target);
         if (!streamable(link)) return;
         if (link.target && link.target !== "_self") return;
         var href = link.href || link.getAttribute("href");
-        /* A same-page blob or data URL is not something to stream again. */
         if (/^(blob|data):/i.test(href)) return;
         var started = queue(href, link, link.getAttribute("data-download-name") || link.getAttribute("download") || "");
         if (started === false) return;
         event.preventDefault();
     }
 
-    function watchDownloads(scope) {
-        var root = scope || doc;
-        var links = root.querySelectorAll ? root.querySelectorAll("a[href]") : [];
-        Array.prototype.forEach.call(links, function (link) {
-            if (!streamable(link) || link.hasAttribute("data-site-download-ready")) return;
-            link.setAttribute("data-site-download-ready", "1");
-        });
-    }
-
     function boot() {
         if (!doc.body) return;
         injectStyles();
-        watchDownloads(doc);
         doc.addEventListener("click", onClick, true);
-        global.addEventListener("scroll", placeCards, { passive: true });
-        global.addEventListener("resize", placeCards);
         doc.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && sheetOpen) openSheet(false);
+            if (event.key !== "Escape") return;
+            jobs.forEach(function (job) {
+                if (job.status === "running" || job.status === "starting") {
+                    if (job.panel) job.panel.focus();
+                }
+            });
         });
         global.addEventListener("y1-locale-change", function () {
             jobs.forEach(paint);
-            syncUi();
         });
-        var observer = typeof MutationObserver === "function" ? new MutationObserver(function () { watchDownloads(doc); }) : null;
-        if (observer) observer.observe(doc.body, { childList: true, subtree: true });
-        dockButton();
 
-        /* The older firmware-list progress panel wrote English sentences into
-           the page. Translate them in place so a reader who picked Japanese
-           does not get "Preparing your download…" in the middle of Japanese. */
-        var legacy = {
-            "Preparing your download…": "Preparing…",
-            "Downloading…": "Downloading…",
-            "Firmware zip downloaded": "Saved",
-            "Check your Downloads folder": "Saved"
-        };
-        function localizeLegacy() {
-            var label = doc.getElementById("lumen-download-progress-label");
-            if (!label) return;
-            var source = legacy[label.textContent];
-            if (!source) return;
-            var translated = t(source);
-            if (translated && translated !== label.textContent) label.textContent = translated;
-        }
-        if (typeof MutationObserver === "function") {
-            new MutationObserver(localizeLegacy).observe(doc.body, {
-                childList: true, subtree: true, characterData: true
-            });
-        }
-        localizeLegacy();
+        /* Closing or reloading takes the transfer with it; the reader gets the
+           browser's own confirmation while a download is still running. */
+        global.addEventListener("beforeunload", function (event) {
+            if (!activeJobs().length) return undefined;
+            event.preventDefault();
+            event.returnValue = t("Keep this tab open");
+            return event.returnValue;
+        });
     }
 
     global.InnioasisDownloads = {
         version: VERSION,
         start: function (url, anchor, name) { return queue(url, anchor, name); },
-        jobs: function () { return jobs.slice(); },
-        open: function () { openSheet(true); }
+        jobs: function () { return jobs.slice(); }
     };
 
     if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
