@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-10T00:35:06Z",
+  "generated_at": "2026-11-10T02:04:12Z",
   "manifest_url": "https://innioasis.app/slidia_manifest.xml",
   "firmware_list_url": "https://innioasis.app/firmware-list.html",
   "feeds": {
@@ -346,11 +346,11 @@
     },
     "y1-community/y2linux-mirror": {
       "source_repo": "schulzcode/y2linux",
-      "updated_at": "2026-11-09T01:18:04Z"
+      "updated_at": "2026-11-10T01:20:41Z"
     },
     "y1-community/y2player-mirror": {
       "source_repo": "schulzcode/y2player",
-      "updated_at": "2026-11-10T00:35:06Z"
+      "updated_at": "2026-11-10T02:04:12Z"
     }
   }
 }

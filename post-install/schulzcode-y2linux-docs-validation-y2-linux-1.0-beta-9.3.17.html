@@ -39,7 +39,7 @@
   <meta name="twitter:description" content="Y2Linux 1.0 Beta 9.3.17: covers, file names, Bluetooth first connect Release 1.0.0-beta.9.3.17 , Y2Reborn 1.0.0-beta.9.3.17 , kernel 6.18.56-y2linux-1.0.0-beta.9.3.17 , u">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
-  <link rel="stylesheet" href="../lumen.css?v=20261110rows2">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
@@ -69,8 +69,8 @@
 <ul><li>Reborn <code>0978fb4</code> (<code>playback/decode.rs</code>): <code>Unsettled::due</code> settles a song (cover, media state, gapless preopen of<p>the next song) once ≥ 250 ms are queued or <code>SETTLE_WAIT</code> 500 ms after its first block. The decoder→sink channel holds 8 blocks; 8 MP3 (1152), AAC (1024) or Opus (960) blocks are 190–210 ms, so 9.3.16&#x27;s cushion was unreachable (F74). Fixtures <code>cover-3s.*</code>, test <code>every_codec_gets_its_cover_early_in_the_song_and_after_a_gapless_boundary</code>.</p></li><li>Reborn <code>e9f72a0</code> (<code>outputs.rs</code>, <code>main_loop.rs</code>): <code>AutoOutput</code> treats a peer as ready when <code>playback_rate</code> succeeds<p>(stereo, rate known) and retries a failed switch after <code>AUTO_OUTPUT_RETRY</code> 2 s, <code>AUTO_OUTPUT_TRIES</code> 5 per connection (F76).</p></li><li>Reborn <code>0f09caa</code> (<code>artwork.rs</code>): the thumbnail cache name carries <code>Key::folder_revision</code> (folder cover candidates&#x27;<p>names, sizes, mtimes); prefix <code>thumb4-</code> (F77).</p></li><li>Linux <code>fc0888c5</code>: uMTP patch 0007 (only &quot;.&quot; and &quot;..&quot; refused; surrogate pairs in both directions; &#x27;;&#x27; kept;<p>1024-byte name buffers), <code>tests/usb_mtp_protocol.c</code> name cases; patch 0006 <code>(void)ret</code> for gcc 16 (F75).</p></li><li>Linux <code>132cbec9</code> (built), Reborn <code>e14b17b</code> (built). Findings F74–F77 in the report ledger.</li></ul></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261110warn" defer></script>
-<script src="../nav.js?v=20261110sites" defer></script>
+<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 

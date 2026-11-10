@@ -39,7 +39,7 @@
   <meta name="twitter:description" content="POWER-FINAL-17 — modem request gate and screen-first wake Status: INSTALLED, FIRST BOOT AND FIRST SLEEP CLEAN; tagged baseline-17 2026-10-13. Package out/y2linux-platform">
   <link rel="icon" href="../y1_illustration.png">
   <link rel="stylesheet" href="../site-theme.css?v=20261109theme">
-  <link rel="stylesheet" href="../lumen.css?v=20261110rows2">
+  <link rel="stylesheet" href="../lumen.css?v=20261105hero">
   <link rel="stylesheet" href="../site-pages.css?v=20260818">
   <link rel="stylesheet" href="../site-toolbar.css?v=20261108hero">
   <link rel="stylesheet" href="../docs-viewer.css?v=20261112cites">
@@ -65,8 +65,8 @@
 <ol><li><code>cat /sys/devices/platform/10006000.power-controller/state</code>: <code>md1_gate=1 md1_result=0 md1_sta=0x3ffffff</code>; USB,<p>Wi-Fi, Bluetooth, charger and audio as on 16.</p></li><li>Wake: press Power after a sleep and judge the time to the screen; read <code>restoring_radios</code> vs the DSI modeset in<p><code>dmesg</code> (screen now before the radios).</p></li><li>After one sleep: <code>golden</code> row <code>PERI_PDN0_MD1_STA</code> now matches (<code>e=3ffffff 1</code>), and <code>y2_infra/state</code> <code>last_lost</code><p>(non-zero = INFRA finally powers down).</p></li><li>Overnight drain against 16&#x27;s ≈8.6 mA.</li></ol></article><p class="lumen-doc-footer-note">These are Reborn (Y2Linux)'s own instructions, shown here word for word.</p><p class="lumen-doc-sources">Published by the <a href="https://innioasis.app/firmware.html?model=Y2&amp;software=reborn-y2linux-y2">schulzcode/y2linux</a> project <a class="lumen-cite" href="https://innioasis.app/firmware_info.html?repo=schulzcode%2Fy2linux&amp;software=reborn-y2linux-y2" title="Project README">[1]</a> <a class="lumen-cite" href="https://github.com/y1-community/Innioasis-Updater/pulls?q=is%3Apr%20author%3Aschulzcode" rel="noopener" title="Catalogue pull requests">[3]</a></p></main><div id="footer-root"></div><div id="support-toolbar-slot"></div>
 <script src="../firmware-catalog.js?v=20261106mirror" defer></script>
 <script src="../docs-viewer.js?v=20261104cite" defer></script>
-<script src="../portable-zip-links.js?v=20261110warn" defer></script>
-<script src="../nav.js?v=20261110sites" defer></script>
+<script src="../portable-zip-links.js?v=20261106direct" defer></script>
+<script src="../nav.js?v=20261103brand" defer></script>
 <script src="../site-locale.js?v=20261108c" defer></script>
 <script src="../site-i18n.js?v=20260830" defer></script>
 
